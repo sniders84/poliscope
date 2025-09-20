@@ -58,31 +58,35 @@
 
   <!-- Script -->
   <script>
-  async function loadOfficials() {
-    try {
-      const res = await fetch('data/legislators-current.json');
-      const data = await res.json();
+async function loadOfficials() {
+  try {
+    const res = await fetch('./data/legislators-current.json'); // <-- exact relative path
+    if (!res.ok) throw new Error('HTTP error ' + res.status);
+    const data = await res.json();
 
-      const listEl = document.getElementById('officials-list');
-      listEl.innerHTML = '';
+    const listEl = document.getElementById('officials-list');
+    listEl.innerHTML = '';
 
-      data.forEach(person => {
-        const name = person.name.first + ' ' + person.name.last;
-        const terms = person.terms || [];
-        const latestTerm = terms[terms.length - 1] || {};
-        const party = latestTerm.party === 'D' ? 'Democratic' : latestTerm.party === 'R' ? 'Republican' : '';
-        const state = latestTerm.state || '';
-        const office = latestTerm.type === 'sen' ? 'Senator' : latestTerm.type === 'rep' ? 'Representative' : 'Delegate';
+    data.forEach(person => {
+      const name = person.name.first + ' ' + person.name.last;
+      const terms = person.terms || [];
+      const latestTerm = terms[terms.length - 1] || {};
+      const party = latestTerm.party === 'D' ? 'Democratic' : latestTerm.party === 'R' ? 'Republican' : '';
+      const state = latestTerm.state || '';
+      const office = latestTerm.type === 'sen' ? 'Senator' : latestTerm.type === 'rep' ? 'Representative' : 'Delegate';
 
-        const li = document.createElement('li');
-        li.textContent = `${name} (${office}, ${party}, ${state})`;
-        listEl.appendChild(li);
-      });
-    } catch (err) {
-      console.error('Error loading officials:', err);
-      alert('Failed to load officials. Make sure legislators-current.json exists in /data.');
-    }
+      const li = document.createElement('li');
+      li.textContent = `${name} (${office}, ${party}, ${state})`;
+      listEl.appendChild(li);
+    });
+  } catch (err) {
+    console.error('Error loading officials:', err);
+    alert('Failed to load officials. Check console for details.');
   }
+}
+
+loadOfficials();
+</script>
 
   loadOfficials();
 </script>
