@@ -58,41 +58,34 @@
 
   <!-- Script -->
   <script>
-    // Mock data
-    const officials = [
-      {id:1, name:'Jane Doe', office:'Senator', state:'CA', party:'Democratic', platform:['Healthcare','Environment']},
-      {id:2, name:'John Smith', office:'Governor', state:'NY', party:'Republican', platform:['Economy','Education']},
-      {id:3, name:'Alice Johnson', office:'Representative', state:'CA', party:'Democratic', platform:['Tech','Healthcare']}
-    ];
+  async function loadOfficials() {
+    try {
+      const res = await fetch('data/legislators-current.json');
+      const data = await res.json();
 
-    let activity = [
-      {id:1, official:'Jane Doe', type:'Vote', title:'Healthcare Bill', position:'Yes', date:new Date()},
-      {id:2, official:'John Smith', type:'Signed Bill', title:'Education Reform', date:new Date()},
-      {id:3, official:'Alice Johnson', type:'Vote', title:'Tech Funding', position:'No', date:new Date()}
-    ];
+      const listEl = document.getElementById('officials-list');
+      listEl.innerHTML = '';
 
-    const officialsList = document.getElementById('officialsList');
-    const activityList = document.getElementById('activityList');
-    const searchInput = document.getElementById('searchInput');
-    const filterState = document.getElementById('filterState');
-    const filterParty = document.getElementById('filterParty');
-    const filterOffice = document.getElementById('filterOffice');
-    const applyFilters = document.getElementById('applyFilters');
-    const darkToggle = document.getElementById('darkToggle');
+      data.forEach(person => {
+        const name = person.name.first + ' ' + person.name.last;
+        const terms = person.terms || [];
+        const latestTerm = terms[terms.length - 1] || {};
+        const party = latestTerm.party === 'D' ? 'Democratic' : latestTerm.party === 'R' ? 'Republican' : '';
+        const state = latestTerm.state || '';
+        const office = latestTerm.type === 'sen' ? 'Senator' : latestTerm.type === 'rep' ? 'Representative' : 'Delegate';
 
-    function renderOfficials(list) {
-      officialsList.innerHTML = '';
-      list.forEach(o => {
-        const card = document.createElement('div');
-        card.className = 'bg-white p-4 rounded-lg shadow hover:shadow-md transition cursor-pointer';
-        card.innerHTML = `
-          <h3 class="text-lg font-semibold">${o.name}</h3>
-          <p class="text-sm text-gray-600">${o.office} - ${o.state} - ${o.party}</p>
-          <p class="mt-2 text-sm"><strong>Platform:</strong> ${o.platform.join(', ')}</p>
-        `;
-        officialsList.appendChild(card);
+        const li = document.createElement('li');
+        li.textContent = `${name} (${office}, ${party}, ${state})`;
+        listEl.appendChild(li);
       });
+    } catch (err) {
+      console.error('Error loading officials:', err);
+      alert('Failed to load officials. Make sure legislators-current.json exists in /data.');
     }
+  }
+
+  loadOfficials();
+</script>
 
     function renderActivity(list) {
       activityList.innerHTML = '';
@@ -137,3 +130,5 @@
   </script>
 </body>
 </html>
+<h1>All Current Officials</h1>
+<ul id="officials-list"></ul>
