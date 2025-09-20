@@ -58,65 +58,19 @@
 
   <!-- Script -->
   <script>
-<script>
-  // Embedded data from legislators-current.json
-  const officials = [
-    // Example of two entries — you can expand this with the full JSON later
-    {
-      "name": { "first": "Chuck", "last": "Schumer" },
-      "terms": [ { "type": "sen", "party": "D", "state": "NY" } ]
-    },
-    {
-      "name": { "first": "Nancy", "last": "Pelosi" },
-      "terms": [ { "type": "rep", "party": "D", "state": "CA" } ]
-    }
-  ];
+  const listEl = document.getElementById('officials-list');
+  listEl.innerHTML = '';
+
+  officials.forEach(person => {
+    const name = person.name.first + ' ' + person.name.last;
+    const terms = person.terms || [];
+    const latestTerm = terms[terms.length - 1] || {};
+    const party = latestTerm.party === 'D' ? 'Democratic' : latestTerm.party === 'R' ? 'Republican' : '';
+    const state = latestTerm.state || '';
+    const office = latestTerm.type === 'sen' ? 'Senator' : latestTerm.type === 'rep' ? 'Representative' : 'Delegate';
+
+    const li = document.createElement('li');
+    li.textContent = `${name} (${office}, ${party}, ${state})`;
+    listEl.appendChild(li);
+  });
 </script>
-  loadOfficials();
-</script>
-
-    function renderActivity(list) {
-      activityList.innerHTML = '';
-      list.forEach(a => {
-        const card = document.createElement('div');
-        card.className = 'bg-white p-3 rounded-lg shadow-sm';
-        let badge = '';
-        const oneHourAgo = new Date(new Date() - 60*60*1000);
-        if (a.date > oneHourAgo) badge = '<span class="ml-2 text-xs bg-red-500 text-white px-2 py-0.5 rounded">NEW</span>';
-        card.innerHTML = `
-          <p><strong>${a.official}</strong> ${a.type}: ${a.title} ${badge}</p>
-        `;
-        activityList.appendChild(card);
-      });
-    }
-
-    function applyFiltersAndSearch() {
-      let filtered = officials.filter(o => 
-        (filterState.value === '' || o.state === filterState.value) &&
-        (filterParty.value === '' || o.party === filterParty.value) &&
-        (filterOffice.value === '' || o.office === filterOffice.value) &&
-        (o.name.toLowerCase().includes(searchInput.value.toLowerCase()))
-      );
-      renderOfficials(filtered);
-    }
-
-    applyFilters.addEventListener('click', applyFiltersAndSearch);
-    searchInput.addEventListener('input', applyFiltersAndSearch);
-    darkToggle.addEventListener('click', () => document.body.classList.toggle('bg-gray-900'));
-
-    // Initial render
-    renderOfficials(officials);
-    renderActivity(activity);
-
-    // Simulate live updates
-    setInterval(() => {
-      const randomOfficial = officials[Math.floor(Math.random()*officials.length)];
-      const newAct = {id:Date.now(), official:randomOfficial.name, type:'Vote', title:'Random Bill '+Date.now(), position:'Yes', date:new Date()};
-      activity.unshift(newAct);
-      renderActivity(activity);
-    }, 10000);
-  </script>
-</body>
-  <h1>All Current Officials</h1>
-<ul id="officials-list"></ul>
-</html>
