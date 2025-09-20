@@ -3,75 +3,75 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PoliScope App</title>
-  <!-- Tailwind CSS (styling library) -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>U.S. Officials Directory</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h1 { text-align: center; }
+    ul { list-style-type: none; padding: 0; }
+    li { margin: 5px 0; }
+    .official { font-weight: bold; }
+    .party { font-style: italic; }
+  </style>
 </head>
-<body class="bg-gray-100 text-gray-900">
-  <!-- Header -->
-  <header class="flex items-center justify-between px-4 py-3 bg-blue-600 text-white shadow-md sticky top-0">
-    <h1 class="text-xl font-bold">PoliScope</h1>
-    <button id="darkToggle" class="bg-blue-800 px-3 py-1 rounded-lg">Dark Mode</button>
-  </header>
-<h1>All Current Officials</h1>
-<ul id="officials-list"></ul>
-  <!-- Main container -->
-  <div class="flex flex-col md:flex-row">
-    <!-- Sidebar (filters) -->
-    <aside class="md:w-64 bg-white shadow-md p-4">
-      <h3 class="text-lg font-semibold mb-2">Filters</h3>
-      <select id="filterState" class="w-full mb-2 border rounded p-2">
-        <option value="">All States</option>
-        <option value="CA">California</option>
-        <option value="NY">New York</option>
-      </select>
-      <select id="filterParty" class="w-full mb-2 border rounded p-2">
-        <option value="">All Parties</option>
-        <option value="Democratic">Democratic</option>
-        <option value="Republican">Republican</option>
-      </select>
-      <select id="filterOffice" class="w-full mb-2 border rounded p-2">
-        <option value="">All Offices</option>
-        <option value="Senator">Senator</option>
-        <option value="Representative">Representative</option>
-        <option value="Governor">Governor</option>
-      </select>
-      <button id="applyFilters" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Apply Filters</button>
-    </aside>
+<body>
+  <h1>U.S. Officials Directory</h1>
+  <h2>Senators</h2>
+  <ul id="senators-list"></ul>
 
-    <!-- Main content -->
-    <main class="flex-1 p-4">
-      <!-- Search bar -->
-      <div class="mb-4">
-        <input id="searchInput" type="text" placeholder="Search officials..."
-          class="w-full border rounded p-2 shadow-sm" />
-      </div>
+  <h2>Representatives</h2>
+  <ul id="representatives-list"></ul>
 
-      <!-- Officials list -->
-      <h2 class="text-lg font-bold mb-2">Officials</h2>
-      <div id="officialsList" class="grid gap-4"></div>
+  <h2>Delegates</h2>
+  <ul id="delegates-list"></ul>
 
-      <!-- Activity feed -->
-      <h2 class="text-lg font-bold mt-6 mb-2">Recent Activity</h2>
-      <div id="activityList" class="space-y-3"></div>
-    </main>
-  </div>
+  <h2>Governors</h2>
+  <ul id="governors-list"></ul>
 
-  <!-- Script -->
   <script>
-  const listEl = document.getElementById('officials-list');
-  listEl.innerHTML = '';
+    // Senators Data
+    const senators = [
+      { name: "Tom Rice", state: "Alabama", party: "Republican" },
+      { name: "Katie Britt", state: "Alabama", party: "Republican" },
+      // Add all other senators here...
+    ];
 
-  officials.forEach(person => {
-    const name = person.name.first + ' ' + person.name.last;
-    const terms = person.terms || [];
-    const latestTerm = terms[terms.length - 1] || {};
-    const party = latestTerm.party === 'D' ? 'Democratic' : latestTerm.party === 'R' ? 'Republican' : '';
-    const state = latestTerm.state || '';
-    const office = latestTerm.type === 'sen' ? 'Senator' : latestTerm.type === 'rep' ? 'Representative' : 'Delegate';
+    // Representatives Data
+    const representatives = [
+      { name: "Jerry Carl", state: "Alabama", party: "Republican" },
+      { name: "Barry Moore", state: "Alabama", party: "Republican" },
+      // Add all other representatives here...
+    ];
 
-    const li = document.createElement('li');
-    li.textContent = `${name} (${office}, ${party}, ${state})`;
-    listEl.appendChild(li);
-  });
-</script>
+    // Delegates Data
+    const delegates = [
+      { name: "Eleanor Holmes Norton", state: "District of Columbia", party: "Democratic" },
+      { name: "Michael San Nicolas", state: "Guam", party: "Democratic" },
+      // Add all other delegates here...
+    ];
+
+    // Governors Data
+    const governors = [
+      { name: "Kay Ivey", state: "Alabama", party: "Republican" },
+      { name: "Mike Dunleavy", state: "Alaska", party: "Republican" },
+      // Add all other governors here...
+    ];
+
+    // Function to render a list of officials
+    function renderList(data, elementId) {
+      const listElement = document.getElementById(elementId);
+      data.forEach(official => {
+        const li = document.createElement('li');
+        li.innerHTML = `<span class="official">${official.name}</span> (${official.state}) - <span class="party">${official.party}</span>`;
+        listElement.appendChild(li);
+      });
+    }
+
+    // Render all lists
+    renderList(senators, 'senators-list');
+    renderList(representatives, 'representatives-list');
+    renderList(delegates, 'delegates-list');
+    renderList(governors, 'governors-list');
+  </script>
+</body>
+</html>
+
