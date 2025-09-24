@@ -1,23 +1,26 @@
-async function loadData() {
-  try {
-    const house = await fetch('House.json').then(res => res.json())
-    const governors = await fetch('Governors.json').then(res => res.json())
-    const senate = await fetch('Senate.json').then(res => res.json())
+let allOfficials = []
 
-    const houseList = house.map(rep => `<li>${rep.name} (${rep.state})</li>`).join('')
-    const govList = governors.map(gov => `<li>${gov.name} (${gov.state})</li>`).join('')
-    const senateList = senate.map(sen => `<li>${sen.name} (${sen.state})</li>`).join('')
-
-    document.getElementById('house').innerHTML = `<h2>House</h2><ul>${houseList}</ul>`
-    document.getElementById('governors').innerHTML = `<h2>Governors</h2><ul>${govList}</ul>`
-    document.getElementById('senate').innerHTML = `<h2>Senate</h2><ul>${senateList}</ul>`
-  } catch (err) {
-    console.error("Error loading data:", err)
-  }
+function renderCards(data, containerId) {
+  const container = document.getElementById(containerId)
+  const cardsHTML = data.map(person => {
+    const imageUrl = `https://ballotpedia.org/images/thumb/${person.slug || 'placeholder'}.jpg`
+    return `
+      <div class="card" onclick="expandCard('${person.slug}')">
+        <img src="${imageUrl}" alt="${person.name}" onerror="this.src='fallback.jpg'" />
+        <h3>${person.name}</h3>
+        <p>${person.office || person.position || ''}</p>
+        <p>${person.state}${person.party ? ', ' + person.party : ''}</p>
+        <p>Term: ${person.termStart || '—'} to ${person.termEnd || '—'}</p>
+        <p>Approval: ${person.approval || '—'}%</p>
+      </div>
+    `
+  }).join('')
+  container.innerHTML = cardsHTML
 }
 
-loadData()
-let allOfficials = []
+function expandCard(slug) {
+  alert(`Expand view for: ${slug}`)
+}
 
 async function loadData() {
   try {
@@ -27,11 +30,15 @@ async function loadData() {
 
     allOfficials = [...house, ...governors, ...senate]
 
-    // Existing rendering logic...
+    renderCards(house, 'house-cards')
+    renderCards(governors, 'governor-cards')
+    renderCards(senate, 'senate-cards')
   } catch (err) {
     console.error("Error loading data:", err)
   }
 }
+
+loadData()
 
 document.getElementById('search').addEventListener('input', function (e) {
   const query = e.target.value.toLowerCase()
@@ -41,16 +48,16 @@ document.getElementById('search').addEventListener('input', function (e) {
     (person.party && person.party.toLowerCase().includes(query))
   )
 
-const resultsHTML = matches.map(person => {
-  const label = `${person.name} (${person.state}${person.party ? ', ' + person.party : ''})`
-  const link = person.ballotpediaLink || person.contact?.website || null
+  const resultsHTML = matches.map(person => {
+    const label = `${person.name} (${person.state}${person.party ? ', ' + person.party : ''})`
+    const link = person.ballotpediaLink || person.contact?.website || null
 
-  if (link) {
-    return `<li><a href="${link}" target="_blank" rel="noopener noreferrer">${label}</a></li>`
-  } else {
-    return `<li>${label}</li>`
-  }
-}).join('')
+    if (link) {
+      return `<li><a href="${link}" target="_blank" rel="noopener noreferrer">${label}</a></li>`
+    } else {
+      return `<li>${label}</li>`
+    }
+  }).join('')
 
   document.getElementById('results').innerHTML = resultsHTML
 })
