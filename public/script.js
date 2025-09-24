@@ -105,3 +105,14 @@ function showTab(id) {
     if (el) el.style.display = sectionId === id ? 'block' : 'none'
   })
 }
+function populateCompareDropdowns() {
+  const left = document.getElementById('compare-left')
+  const right = document.getElementById('compare-right')
+
+  allOfficials.forEach(person => {
+    const label = `${person.name} (${person.state}${person.party ? ', ' + person.party : ''})`
+    const option = new Option(label, person.slug)
+    left.add(option.cloneNode(true))
+    right.add(option.cloneNode(true))
+  })
+}
