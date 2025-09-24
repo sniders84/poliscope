@@ -105,3 +105,22 @@ section {
   font-size: 0.9rem;
   color: #555;
 }
+#tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+#tabs button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background: #0077cc;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#tabs button:hover {
+  background: #005fa3;
+}
