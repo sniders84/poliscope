@@ -61,3 +61,10 @@ document.getElementById('search').addEventListener('input', function (e) {
 
   document.getElementById('results').innerHTML = resultsHTML
 })
+function showTab(id) {
+  const sections = ['my-officials', 'compare', 'top10', 'bottom10', 'calendar', 'registration']
+  sections.forEach(sectionId => {
+    const el = document.getElementById(sectionId)
+    if (el) el.style.display = sectionId === id ? 'block' : 'none'
+  })
+}
