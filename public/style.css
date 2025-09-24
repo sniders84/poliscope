@@ -61,3 +61,9 @@ section {
     padding: 0.5rem;
   }
 }
+#search {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 10;
+}
