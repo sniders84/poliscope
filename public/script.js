@@ -97,6 +97,14 @@ document.getElementById('search').addEventListener('input', function (e) {
   }).join('')
 
   document.getElementById('results').innerHTML = resultsHTML
+  document.getElementById('compare-left').addEventListener('change', function (e) {
+  renderCompareCard(e.target.value, 'compare-card-left')
+})
+
+document.getElementById('compare-right').addEventListener('change', function (e) {
+  renderCompareCard(e.target.value, 'compare-card-right')
+})
+
 })
 
 function showTab(id) {
