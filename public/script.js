@@ -19,7 +19,38 @@ function renderCards(data, containerId) {
 }
 
 function expandCard(slug) {
-  alert(`Expand view for: ${slug}`)
+  const person = allOfficials.find(p => p.slug === slug)
+  if (!person) return
+
+  const imageUrl = `https://ballotpedia.org/images/thumb/${person.slug || 'placeholder'}.jpg`
+  const link = person.ballotpediaLink || person.contact?.website || null
+
+  const profileHTML = `
+    <div class="card">
+      <img src="${imageUrl}" alt="${person.name}" onerror="this.src='fallback.jpg'" />
+      <h2>${person.name}</h2>
+      <p><strong>Office:</strong> ${person.office || person.position || ''}</p>
+      <p><strong>State:</strong> ${person.state}</p>
+      <p><strong>Party:</strong> ${person.party || '—'}</p>
+      <p><strong>Term:</strong> ${person.termStart || '—'} to ${person.termEnd || '—'}</p>
+      <p><strong>Approval:</strong> ${person.approval || '—'}%</p>
+      ${link ? `<p><a href="${link}" target="_blank">Ballotpedia Profile</a></p>` : ''}
+      <p><strong>Platform:</strong> ${person.platform || '—'}</p>
+      <p><strong>Bio:</strong> ${person.bio || '—'}</p>
+      <p><strong>Contact:</strong> ${person.contact?.email || '—'} | ${person.contact?.phone || '—'} | ${person.contact?.website || '—'}</p>
+      <p><strong>Social:</strong> Twitter: ${person.social?.twitter || '—'}, Facebook: ${person.social?.facebook || '—'}, Instagram: ${person.social?.instagram || '—'}</p>
+    </div>
+  `
+
+  const view = document.getElementById('profile-view')
+  view.innerHTML = profileHTML
+  view.style.display = 'block'
+  window.scrollTo({ top: view.offsetTop, behavior: 'smooth' })
+}
+
+function renderMyOfficials(state) {
+  const matches = allOfficials.filter(person => person.state === state)
+  renderCards(matches, 'my-cards')
 }
 
 async function loadData() {
@@ -30,9 +61,14 @@ async function loadData() {
 
     allOfficials = [...house, ...governors, ...senate]
 
-    renderCards(house, 'house-cards')
-    renderCards(governors, 'governor-cards')
-    renderCards(senate, 'senate-cards')
+    const stateSelect = document.getElementById('state-select')
+    stateSelect.value = 'North Carolina'
+    renderMyOfficials('North Carolina')
+
+    stateSelect.addEventListener('change', function (e) {
+      const selectedState = e.target.value
+      renderMyOfficials(selectedState)
+    })
   } catch (err) {
     console.error("Error loading data:", err)
   }
@@ -61,6 +97,7 @@ document.getElementById('search').addEventListener('input', function (e) {
 
   document.getElementById('results').innerHTML = resultsHTML
 })
+
 function showTab(id) {
   const sections = ['my-officials', 'compare', 'top10', 'bottom10', 'calendar', 'registration']
   sections.forEach(sectionId => {
