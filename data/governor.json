@@ -1,332 +1,1218 @@
 [
   {
-    "Office": "Governor of Alabama",
-    "Name": "Kay Ivey",
-    "Party": "Republican",
-    "Date assumed office": "10-Apr-17"
+    "name": "Kay Ivey",
+    "state": "Alabama",
+    "district": "",
+    "party": "Republican",
+    "office": "Governor",
+    "slug": "kay-ivey",
+    "ballotpediaLink": "https://ballotpedia.org/Kay_Ivey",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2017-04-10"
   },
   {
-    "Office": "Governor of Alaska",
-    "Name": "Mike Dunleavy",
-    "Party": "Republican",
-    "Date assumed office": "3-Dec-18"
+    "name": "Mike Dunleavy",
+    "state": "Alaska",
+    "district": "",
+    "party": "Republican",
+    "office": "Governor",
+    "slug": "mike-dunleavy",
+    "ballotpediaLink": "https://ballotpedia.org/Mike_Dunleavy",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2018-12-03"
   },
   {
-    "Office": "Governor of American Samoa",
-    "Name": "Nikolao Pula",
-    "Party": "Republican",
-    "Date assumed office": "3-Jan-25"
+    "name": "Nikolao Pula",
+    "state": "American Samoa",
+    "district": "",
+    "party": "Republican",
+    "office": "Governor",
+    "slug": "",
+    "ballotpediaLink": "",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2025-01-03"
   },
   {
-    "Office": "Governor of Arizona",
-    "Name": "Katie Hobbs",
-    "Party": "Democratic",
-    "Date assumed office": "2-Jan-23"
+    "name": "Katie Hobbs",
+    "state": "Arizona",
+    "district": "",
+    "party": "Democratic",
+    "office": "Governor",
+    "slug": "katie-hobbs",
+    "ballotpediaLink": "https://ballotpedia.org/Katie_Hobbs",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2023-01-02"
   },
   {
-    "Office": "Governor of Arkansas",
-    "Name": "Sarah Huckabee Sanders",
-    "Party": "Republican",
-    "Date assumed office": "10-Jan-23"
+    "name": "Sarah Huckabee Sanders",
+    "state": "Arkansas",
+    "district": "",
+    "party": "Republican",
+    "office": "Governor",
+    "slug": "sarah-huckabee-sanders",
+    "ballotpediaLink": "https://ballotpedia.org/Sarah_Huckabee_Sanders",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2023-01-10"
   },
   {
-    "Office": "Governor of California",
-    "Name": "Gavin Newsom",
-    "Party": "Democratic",
-    "Date assumed office": "7-Jan-19"
+    "name": "Gavin Newsom",
+    "state": "California",
+    "district": "",
+    "party": "Democratic",
+    "office": "Governor",
+    "slug": "gavin-newsom",
+    "ballotpediaLink": "https://ballotpedia.org/Gavin_Newsom",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2019-01-07"
   },
   {
-    "Office": "Governor of Colorado",
-    "Name": "Jared Polis",
-    "Party": "Democratic",
-    "Date assumed office": "8-Jan-19"
+    "name": "Jared Polis",
+    "state": "Colorado",
+    "district": "",
+    "party": "Democratic",
+    "office": "Governor",
+    "slug": "jared-polis",
+    "ballotpediaLink": "https://ballotpedia.org/Jared_Polis",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2019-01-08"
   },
   {
-    "Office": "Governor of Connecticut",
-    "Name": "Ned Lamont",
-    "Party": "Democratic",
-    "Date assumed office": "9-Jan-19"
+    "name": "Ned Lamont",
+    "state": "Connecticut",
+    "district": "",
+    "party": "Democratic",
+    "office": "Governor",
+    "slug": "ned-lamont",
+    "ballotpediaLink": "https://ballotpedia.org/Ned_Lamont",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2019-01-09"
   },
   {
-    "Office": "Governor of Delaware",
-    "Name": "Matt Meyer",
-    "Party": "Democratic",
-    "Date assumed office": "21-Jan-25"
+    "name": "Matt Meyer",
+    "state": "Delaware",
+    "district": "",
+    "party": "Democratic",
+    "office": "Governor",
+    "slug": "",
+    "ballotpediaLink": "",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2025-01-21"
   },
   {
-    "Office": "Governor of Florida",
-    "Name": "Ron DeSantis",
-    "Party": "Republican",
-    "Date assumed office": "8-Jan-19"
+    "name": "Ron DeSantis",
+    "state": "Florida",
+    "district": "",
+    "party": "Republican",
+    "office": "Governor",
+    "slug": "ron-desantis",
+    "ballotpediaLink": "https://ballotpedia.org/Ron_DeSantis",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2019-01-08"
+  },
+{
+    "name": "Brian Kemp",
+    "state": "Georgia",
+    "district": "",
+    "party": "Republican",
+    "office": "Governor",
+    "slug": "brian-kemp",
+    "ballotpediaLink": "https://ballotpedia.org/Brian_Kemp",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2019-01-14"
   },
   {
-    "Office": "Governor of Georgia",
-    "Name": "Brian Kemp",
-    "Party": "Republican",
-    "Date assumed office": "14-Jan-19"
+    "name": "Lou Leon Guerrero",
+    "state": "Guam",
+    "district": "",
+    "party": "Democratic",
+    "office": "Governor",
+    "slug": "lou-leon-guerrero",
+    "ballotpediaLink": "https://ballotpedia.org/Lou_Leon_Guerrero",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2019-01-07"
   },
   {
-    "Office": "Governor of Guam",
-    "Name": "Lou Leon Guerrero",
-    "Party": "Democratic",
-    "Date assumed office": "7-Jan-19"
+    "name": "Joshua Green",
+    "state": "Hawaii",
+    "district": "",
+    "party": "Democratic",
+    "office": "Governor",
+    "slug": "josh-green",
+    "ballotpediaLink": "https://ballotpedia.org/Josh_Green",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2022-12-05"
   },
   {
-    "Office": "Governor of Hawaii",
-    "Name": "Joshua Green",
-    "Party": "Democratic",
-    "Date assumed office": "5-Dec-22"
+    "name": "Brad Little",
+    "state": "Idaho",
+    "district": "",
+    "party": "Republican",
+    "office": "Governor",
+    "slug": "brad-little",
+    "ballotpediaLink": "https://ballotpedia.org/Brad_Little",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2019-01-07"
   },
   {
-    "Office": "Governor of Idaho",
-    "Name": "Brad Little",
-    "Party": "Republican",
-    "Date assumed office": "7-Jan-19"
+    "name": "J.B. Pritzker",
+    "state": "Illinois",
+    "district": "",
+    "party": "Democratic",
+    "office": "Governor",
+    "slug": "jb-pritzker",
+    "ballotpediaLink": "https://ballotpedia.org/J.B._Pritzker",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2019-01-14"
   },
   {
-    "Office": "Governor of Illinois",
-    "Name": "J.B. Pritzker",
-    "Party": "Democratic",
-    "Date assumed office": "14-Jan-19"
+    "name": "Mike Braun",
+    "state": "Indiana",
+    "district": "",
+    "party": "Republican",
+    "office": "Governor",
+    "slug": "mike-braun",
+    "ballotpediaLink": "https://ballotpedia.org/Mike_Braun",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2025-01-13"
   },
   {
-    "Office": "Governor of Indiana",
-    "Name": "Mike Braun",
-    "Party": "Republican",
-    "Date assumed office": "13-Jan-25"
+    "name": "Kim Reynolds",
+    "state": "Iowa",
+    "district": "",
+    "party": "Republican",
+    "office": "Governor",
+    "slug": "kim-reynolds",
+    "ballotpediaLink": "https://ballotpedia.org/Kim_Reynolds",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2017-05-24"
   },
   {
-    "Office": "Governor of Iowa",
-    "Name": "Kim Reynolds",
-    "Party": "Republican",
-    "Date assumed office": "24-May-17"
+    "name": "Laura Kelly",
+    "state": "Kansas",
+    "district": "",
+    "party": "Democratic",
+    "office": "Governor",
+    "slug": "laura-kelly",
+    "ballotpediaLink": "https://ballotpedia.org/Laura_Kelly",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2019-01-14"
   },
   {
-    "Office": "Governor of Kansas",
-    "Name": "Laura Kelly",
-    "Party": "Democratic",
-    "Date assumed office": "14-Jan-19"
+    "name": "Andy Beshear",
+    "state": "Kentucky",
+    "district": "",
+    "party": "Democratic",
+    "office": "Governor",
+    "slug": "andy-beshear",
+    "ballotpediaLink": "https://ballotpedia.org/Andy_Beshear",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2019-12-10"
   },
   {
-    "Office": "Governor of Kentucky",
-    "Name": "Andy Beshear",
-    "Party": "Democratic",
-    "Date assumed office": "10-Dec-19"
+    "name": "Jeff Landry",
+    "state": "Louisiana",
+    "district": "",
+    "party": "Republican",
+    "office": "Governor",
+    "slug": "jeff-landry",
+    "ballotpediaLink": "https://ballotpedia.org/Jeff_Landry",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2024-01-08"
+  },
+{
+    "name": "Janet T. Mills",
+    "state": "Maine",
+    "district": "",
+    "party": "Democratic",
+    "office": "Governor",
+    "slug": "janet-mills",
+    "ballotpediaLink": "https://ballotpedia.org/Janet_Mills",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2019-01-02"
   },
   {
-    "Office": "Governor of Louisiana",
-    "Name": "Jeff Landry",
-    "Party": "Republican",
-    "Date assumed office": "8-Jan-24"
+    "name": "Wes Moore",
+    "state": "Maryland",
+    "district": "",
+    "party": "Democratic",
+    "office": "Governor",
+    "slug": "wes-moore",
+    "ballotpediaLink": "https://ballotpedia.org/Wes_Moore",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2023-01-18"
   },
   {
-    "Office": "Governor of Maine",
-    "Name": "Janet T. Mills",
-    "Party": "Democratic",
-    "Date assumed office": "2-Jan-19"
+    "name": "Maura Healey",
+    "state": "Massachusetts",
+    "district": "",
+    "party": "Democratic",
+    "office": "Governor",
+    "slug": "maura-healey",
+    "ballotpediaLink": "https://ballotpedia.org/Maura_Healey",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2023-01-05"
   },
   {
-    "Office": "Governor of Maryland",
-    "Name": "Wes Moore",
-    "Party": "Democratic",
-    "Date assumed office": "18-Jan-23"
+    "name": "Gretchen Whitmer",
+    "state": "Michigan",
+    "district": "",
+    "party": "Democratic",
+    "office": "Governor",
+    "slug": "gretchen-whitmer",
+    "ballotpediaLink": "https://ballotpedia.org/Gretchen_Whitmer",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2019-01-01"
   },
   {
-    "Office": "Governor of Massachusetts",
-    "Name": "Maura Healey",
-    "Party": "Democratic",
-    "Date assumed office": "5-Jan-23"
+    "name": "Tim Walz",
+    "state": "Minnesota",
+    "district": "",
+    "party": "Democratic",
+    "office": "Governor",
+    "slug": "tim-walz",
+    "ballotpediaLink": "https://ballotpedia.org/Tim_Walz",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2019-01-07"
   },
   {
-    "Office": "Governor of Michigan",
-    "Name": "Gretchen Whitmer",
-    "Party": "Democratic",
-    "Date assumed office": "1-Jan-19"
+    "name": "Tate Reeves",
+    "state": "Mississippi",
+    "district": "",
+    "party": "Republican",
+    "office": "Governor",
+    "slug": "tate-reeves",
+    "ballotpediaLink": "https://ballotpedia.org/Tate_Reeves",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2020-01-14"
   },
   {
-    "Office": "Governor of Minnesota",
-    "Name": "Tim Walz",
-    "Party": "Democratic",
-    "Date assumed office": "7-Jan-19"
+    "name": "Mike Kehoe",
+    "state": "Missouri",
+    "district": "",
+    "party": "Republican",
+    "office": "Governor",
+    "slug": "mike-kehoe",
+    "ballotpediaLink": "https://ballotpedia.org/Mike_Kehoe",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2025-01-13"
   },
   {
-    "Office": "Governor of Mississippi",
-    "Name": "Tate Reeves",
-    "Party": "Republican",
-    "Date assumed office": "14-Jan-20"
+    "name": "Greg Gianforte",
+    "state": "Montana",
+    "district": "",
+    "party": "Republican",
+    "office": "Governor",
+    "slug": "greg-gianforte",
+    "ballotpediaLink": "https://ballotpedia.org/Greg_Gianforte",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2021-01-04"
   },
   {
-    "Office": "Governor of Missouri",
-    "Name": "Mike Kehoe",
-    "Party": "Republican",
-    "Date assumed office": "13-Jan-25"
+    "name": "Jim Pillen",
+    "state": "Nebraska",
+    "district": "",
+    "party": "Republican",
+    "office": "Governor",
+    "slug": "jim-pillen",
+    "ballotpediaLink": "https://ballotpedia.org/Jim_Pillen",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2023-01-05"
   },
   {
-    "Office": "Governor of Montana",
-    "Name": "Greg Gianforte",
-    "Party": "Republican",
-    "Date assumed office": "4-Jan-21"
+    "name": "Joe Lombardo",
+    "state": "Nevada",
+    "district": "",
+    "party": "Republican",
+    "office": "Governor",
+    "slug": "joe-lombardo",
+    "ballotpediaLink": "https://ballotpedia.org/Joe_Lombardo",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2023-01-02"
+  },
+{
+    "name": "Kelly Ayotte",
+    "state": "New Hampshire",
+    "district": "",
+    "party": "Republican",
+    "office": "Governor",
+    "slug": "kelly-ayotte",
+    "ballotpediaLink": "https://ballotpedia.org/Kelly_Ayotte",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2025-01-08"
   },
   {
-    "Office": "Governor of Nebraska",
-    "Name": "Jim Pillen",
-    "Party": "Republican",
-    "Date assumed office": "5-Jan-23"
+    "name": "Phil Murphy",
+    "state": "New Jersey",
+    "district": "",
+    "party": "Democratic",
+    "office": "Governor",
+    "slug": "phil-murphy",
+    "ballotpediaLink": "https://ballotpedia.org/Phil_Murphy",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2018-01-16"
   },
   {
-    "Office": "Governor of Nevada",
-    "Name": "Joe Lombardo",
-    "Party": "Republican",
-    "Date assumed office": "2-Jan-23"
+    "name": "Michelle Lujan Grisham",
+    "state": "New Mexico",
+    "district": "",
+    "party": "Democratic",
+    "office": "Governor",
+    "slug": "michelle-lujan-grisham",
+    "ballotpediaLink": "https://ballotpedia.org/Michelle_Lujan_Grisham",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2019-01-01"
   },
   {
-    "Office": "Governor of New Hampshire",
-    "Name": "Kelly Ayotte",
-    "Party": "Republican",
-    "Date assumed office": "8-Jan-25"
+    "name": "Kathy Hochul",
+    "state": "New York",
+    "district": "",
+    "party": "Democratic",
+    "office": "Governor",
+    "slug": "kathy-hochul",
+    "ballotpediaLink": "https://ballotpedia.org/Kathy_Hochul",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2021-08-24"
   },
   {
-    "Office": "Governor of New Jersey",
-    "Name": "Phil Murphy",
-    "Party": "Democratic",
-    "Date assumed office": "16-Jan-18"
+    "name": "Josh Stein",
+    "state": "North Carolina",
+    "district": "",
+    "party": "Democratic",
+    "office": "Governor",
+    "slug": "josh-stein",
+    "ballotpediaLink": "https://ballotpedia.org/Josh_Stein",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2025-01-01"
   },
   {
-    "Office": "Governor of New Mexico",
-    "Name": "Michelle Lujan Grisham",
-    "Party": "Democratic",
-    "Date assumed office": "1-Jan-19"
+    "name": "Kelly Armstrong",
+    "state": "North Dakota",
+    "district": "",
+    "party": "Republican",
+    "office": "Governor",
+    "slug": "kelly-armstrong",
+    "ballotpediaLink": "https://ballotpedia.org/Kelly_Armstrong",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2024-12-15"
   },
   {
-    "Office": "Governor of New York",
-    "Name": "Kathy Hochul",
-    "Party": "Democratic",
-    "Date assumed office": "24-Aug-21"
+    "name": "Richard Michael DeWine",
+    "state": "Ohio",
+    "district": "",
+    "party": "Republican",
+    "office": "Governor",
+    "slug": "mike-dewine",
+    "ballotpediaLink": "https://ballotpedia.org/Mike_DeWine",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2019-01-14"
   },
   {
-    "Office": "Governor of North Carolina",
-    "Name": "Josh Stein",
-    "Party": "Democratic",
-    "Date assumed office": "1-Jan-25"
+    "name": "Kevin Stitt",
+    "state": "Oklahoma",
+    "district": "",
+    "party": "Republican",
+    "office": "Governor",
+    "slug": "kevin-stitt",
+    "ballotpediaLink": "https://ballotpedia.org/Kevin_Stitt",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2019-01-14"
   },
   {
-    "Office": "Governor of North Dakota",
-    "Name": "Kelly Armstrong",
-    "Party": "Republican",
-    "Date assumed office": "15-Dec-24"
+    "name": "Tina Kotek",
+    "state": "Oregon",
+    "district": "",
+    "party": "Democratic",
+    "office": "Governor",
+    "slug": "tina-kotek",
+    "ballotpediaLink": "https://ballotpedia.org/Tina_Kotek",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2023-01-09"
   },
   {
-    "Office": "Governor of Ohio",
-    "Name": "Richard Michael DeWine",
-    "Party": "Republican",
-    "Date assumed office": "14-Jan-19"
+    "name": "Josh Shapiro",
+    "state": "Pennsylvania",
+    "district": "",
+    "party": "Democratic",
+    "office": "Governor",
+    "slug": "josh-shapiro",
+    "ballotpediaLink": "https://ballotpedia.org/Josh_Shapiro",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2023-01-17"
+  },
+{
+    "name": "Jenniffer González-Colón",
+    "state": "Puerto Rico",
+    "district": "",
+    "party": "New Progressive",
+    "office": "Governor",
+    "slug": "jenniffer-gonzalez-colon",
+    "ballotpediaLink": "https://ballotpedia.org/Jenniffer_González-Colón",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2025-01-02"
   },
   {
-    "Office": "Governor of Oklahoma",
-    "Name": "Kevin Stitt",
-    "Party": "Republican",
-    "Date assumed office": "14-Jan-19"
+    "name": "Daniel McKee",
+    "state": "Rhode Island",
+    "district": "",
+    "party": "Democratic",
+    "office": "Governor",
+    "slug": "daniel-mckee",
+    "ballotpediaLink": "https://ballotpedia.org/Daniel_McKee",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2021-03-02"
   },
   {
-    "Office": "Governor of Oregon",
-    "Name": "Tina Kotek",
-    "Party": "Democratic",
-    "Date assumed office": "9-Jan-23"
+    "name": "Henry McMaster",
+    "state": "South Carolina",
+    "district": "",
+    "party": "Republican",
+    "office": "Governor",
+    "slug": "henry-mcmaster",
+    "ballotpediaLink": "https://ballotpedia.org/Henry_McMaster",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2017-01-24"
   },
   {
-    "Office": "Governor of Pennsylvania",
-    "Name": "Josh Shapiro",
-    "Party": "Democratic",
-    "Date assumed office": "17-Jan-23"
+    "name": "Larry Rhoden",
+    "state": "South Dakota",
+    "district": "",
+    "party": "Republican",
+    "office": "Governor",
+    "slug": "",
+    "ballotpediaLink": "",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2025-01-25"
   },
   {
-    "Office": "Governor of Puerto Rico",
-    "Name": "Jenniffer González-Colón",
-    "Party": "New Progressive",
-    "Date assumed office": "2-Jan-25"
+    "name": "Bill Lee",
+    "state": "Tennessee",
+    "district": "",
+    "party": "Republican",
+    "office": "Governor",
+    "slug": "bill-lee",
+    "ballotpediaLink": "https://ballotpedia.org/Bill_Lee_(Tennessee)",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2019-01-15"
   },
   {
-    "Office": "Governor of Rhode Island",
-    "Name": "Daniel McKee",
-    "Party": "Democratic",
-    "Date assumed office": "2-Mar-21"
+    "name": "Greg Abbott",
+    "state": "Texas",
+    "district": "",
+    "party": "Republican",
+    "office": "Governor",
+    "slug": "greg-abbott",
+    "ballotpediaLink": "https://ballotpedia.org/Greg_Abbott",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2015-01-20"
   },
   {
-    "Office": "Governor of South Carolina",
-    "Name": "Henry McMaster",
-    "Party": "Republican",
-    "Date assumed office": "24-Jan-17"
+    "name": "Spencer Cox",
+    "state": "Utah",
+    "district": "",
+    "party": "Republican",
+    "office": "Governor",
+    "slug": "spencer-cox",
+    "ballotpediaLink": "https://ballotpedia.org/Spencer_Cox",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2021-01-04"
   },
   {
-    "Office": "Governor of South Dakota",
-    "Name": "Larry Rhoden",
-    "Party": "Republican",
-    "Date assumed office": "25-Jan-25"
+    "name": "Phil Scott",
+    "state": "Vermont",
+    "district": "",
+    "party": "Republican",
+    "office": "Governor",
+    "slug": "phil-scott",
+    "ballotpediaLink": "https://ballotpedia.org/Phil_Scott",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2017-01-05"
   },
   {
-    "Office": "Governor of Tennessee",
-    "Name": "Bill Lee",
-    "Party": "Republican",
-    "Date assumed office": "15-Jan-19"
+    "name": "Glenn Youngkin",
+    "state": "Virginia",
+    "district": "",
+    "party": "Republican",
+    "office": "Governor",
+    "slug": "glenn-youngkin",
+    "ballotpediaLink": "https://ballotpedia.org/Glenn_Youngkin",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2022-01-15"
   },
   {
-    "Office": "Governor of Texas",
-    "Name": "Greg Abbott",
-    "Party": "Republican",
-    "Date assumed office": "20-Jan-15"
+    "name": "Bob Ferguson",
+    "state": "Washington",
+    "district": "",
+    "party": "Democratic",
+    "office": "Governor",
+    "slug": "bob-ferguson",
+    "ballotpediaLink": "https://ballotpedia.org/Bob_Ferguson",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2025-01-13"
+  },
+{
+    "name": "Patrick Morrisey",
+    "state": "West Virginia",
+    "district": "",
+    "party": "Republican",
+    "office": "Governor",
+    "slug": "patrick-morrisey",
+    "ballotpediaLink": "https://ballotpedia.org/Patrick_Morrisey",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2025-01-13"
   },
   {
-    "Office": "Governor of Utah",
-    "Name": "Spencer Cox",
-    "Party": "Republican",
-    "Date assumed office": "4-Jan-21"
+    "name": "Tony Evers",
+    "state": "Wisconsin",
+    "district": "",
+    "party": "Democratic",
+    "office": "Governor",
+    "slug": "tony-evers",
+    "ballotpediaLink": "https://ballotpedia.org/Tony_Evers",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2019-01-07"
   },
   {
-    "Office": "Governor of Vermont",
-    "Name": "Phil Scott",
-    "Party": "Republican",
-    "Date assumed office": "5-Jan-17"
+    "name": "Mark Gordon",
+    "state": "Wyoming",
+    "district": "",
+    "party": "Republican",
+    "office": "Governor",
+    "slug": "mark-gordon",
+    "ballotpediaLink": "https://ballotpedia.org/Mark_Gordon",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2019-01-07"
   },
   {
-    "Office": "Governor of Virginia",
-    "Name": "Glenn Youngkin",
-    "Party": "Republican",
-    "Date assumed office": "15-Jan-22"
+    "name": "David Apatang",
+    "state": "Northern Mariana Islands",
+    "district": "",
+    "party": "Independent",
+    "office": "Governor",
+    "slug": "",
+    "ballotpediaLink": "",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2025-07-23"
   },
   {
-    "Office": "Governor of Washington",
-    "Name": "Bob Ferguson",
-    "Party": "Democratic",
-    "Date assumed office": "13-Jan-25"
-  },
-  {
-    "Office": "Governor of West Virginia",
-    "Name": "Patrick Morrisey",
-    "Party": "Republican",
-    "Date assumed office": "13-Jan-25"
-  },
-  {
-    "Office": "Governor of Wisconsin",
-    "Name": "Tony Evers",
-    "Party": "Democratic",
-    "Date assumed office": "7-Jan-19"
-  },
-  {
-    "Office": "Governor of Wyoming",
-    "Name": "Mark Gordon",
-    "Party": "Republican",
-    "Date assumed office": "7-Jan-19"
-  },
-  {
-    "Office": "Governor of the Northern Mariana Islands",
-    "Name": "David Apatang",
-    "Party": "Independent",
-    "Date assumed office": "23-Jul-25"
-  },
-  {
-    "Office": "Governor of the U.S. Virgin Islands",
-    "Name": "Albert Bryan",
-    "Party": "Democratic",
-    "Date assumed office": "7-Jan-19"
+    "name": "Albert Bryan",
+    "state": "U.S. Virgin Islands",
+    "district": "",
+    "party": "Democratic",
+    "office": "Governor",
+    "slug": "albert-bryan",
+    "ballotpediaLink": "https://ballotpedia.org/Albert_Bryan",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": [],
+    "startDate": "2019-01-07"
   }
-]
+]  
+  
+  
+  
+  
+  
+  
