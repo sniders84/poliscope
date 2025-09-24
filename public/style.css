@@ -16,3 +16,11 @@ ul {
 li {
   margin: 0.5rem 0;
 }
+#results a {
+  text-decoration: none;
+  color: #0077cc;
+  font-weight: bold;
+}
+#results a:hover {
+  text-decoration: underline;
+}
