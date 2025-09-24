@@ -1,5 +1,6 @@
 async function loadData() {
   const house = await fetch('data/house.json').then(res => res.json())
+
   const governors = await fetch('data/governors.json').then(res => res.json())
 
   const houseList = house.map(rep => `<li>${rep.name} (${rep.state})</li>`).join('')
