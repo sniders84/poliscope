@@ -154,3 +154,11 @@ function renderCompareCard(slug, containerId) {
     <p><strong>Social:</strong> Twitter: ${person.social?.twitter || '—'}, Facebook: ${person.social?.facebook || '—'}, Instagram: ${person.social?.instagram || '—'}</p>
   `
 }
+loadData()
+document.getElementById('compare-left').addEventListener('change', function (e) {
+  renderCompareCard(e.target.value, 'compare-card-left')
+})
+
+document.getElementById('compare-right').addEventListener('change', function (e) {
+  renderCompareCard(e.target.value, 'compare-card-right')
+})
