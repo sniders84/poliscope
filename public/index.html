@@ -10,9 +10,24 @@
   <h1>Poliscope</h1>
   <input type="text" id="search" placeholder="Search by name, state, or party..." />
 <ul id="results"></ul>
-<section id="house"><h2>House</h2><div class="card-container" id="house-cards"></div></section>
-<section id="governors"><h2>Governors</h2><div class="card-container" id="governor-cards"></div></section>
-<section id="senate"><h2>Senate</h2><div class="card-container" id="senate-cards"></div></section>
+<!-- 🔹 State Selector -->
+<label for="state-select">Select your state:</label>
+<select id="state-select">
+  <option value="">Choose a state</option>
+  <option value="North Carolina">North Carolina</option>
+  <option value="California">California</option>
+  <option value="Texas">Texas</option>
+  <!-- Add more states as needed -->
+</select>
+
+<!-- 🔹 My Officials Section -->
+<section id="my-officials">
+  <h2>My Officials</h2>
+  <div class="card-container" id="my-cards"></div>
+</section>
+
+<!-- 🔹 Civic Profile View (when card is clicked) -->
+<section id="profile-view" style="display:none;"></section>
   <script src="script.js"></script>
 </body>
 </html>
