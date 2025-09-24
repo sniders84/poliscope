@@ -128,10 +128,12 @@ function populateCompareDropdowns() {
     right.add(option.cloneNode(true))
   })
 }
+console.log("Rendering compare card for:", slug)
+
 function renderCompareCard(slug, containerId) {
   const person = allOfficials.find(p => p.slug === slug)
   if (!person) {
-    document.getElementById(containerId).innerHTML = ''
+    document.getElementById(containerId).innerHTML = `<p>No data found for: ${slug}</p>`
     return
   }
 
