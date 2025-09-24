@@ -60,6 +60,7 @@ async function loadData() {
     const senate = await fetch('Senate.json').then(res => res.json())
 
     allOfficials = [...house, ...governors, ...senate]
+    populateCompareDropdowns()
 
     const stateSelect = document.getElementById('state-select')
     stateSelect.value = 'North Carolina'
@@ -115,4 +116,28 @@ function populateCompareDropdowns() {
     left.add(option.cloneNode(true))
     right.add(option.cloneNode(true))
   })
+}
+function renderCompareCard(slug, containerId) {
+  const person = allOfficials.find(p => p.slug === slug)
+  if (!person) {
+    document.getElementById(containerId).innerHTML = ''
+    return
+  }
+
+  const imageUrl = `https://ballotpedia.org/images/thumb/${person.slug || 'placeholder'}.jpg`
+  const link = person.ballotpediaLink || person.contact?.website || null
+
+  document.getElementById(containerId).innerHTML = `
+    <img src="${imageUrl}" alt="${person.name}" onerror="this.src='fallback.jpg'" />
+    <h3>${person.name}</h3>
+    <p><strong>Office:</strong> ${person.office || person.position || ''}</p>
+    <p><strong>State:</strong> ${person.state}</p>
+    <p><strong>Party:</strong> ${person.party || '—'}</p>
+    <p><strong>Term:</strong> ${person.termStart || '—'} to ${person.termEnd || '—'}</p>
+    <p><strong>Approval:</strong> ${person.approval || '—'}%</p>
+    ${link ? `<p><a href="${link}" target="_blank">Ballotpedia Profile</a></p>` : ''}
+    <p><strong>Platform:</strong> ${person.platform || '—'}</p>
+    <p><strong>Contact:</strong> ${person.contact?.email || '—'} | ${person.contact?.phone || '—'} | ${person.contact?.website || '—'}</p>
+    <p><strong>Social:</strong> Twitter: ${person.social?.twitter || '—'}, Facebook: ${person.social?.facebook || '—'}, Instagram: ${person.social?.instagram || '—'}</p>
+  `
 }
