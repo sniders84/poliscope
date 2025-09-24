@@ -19,7 +19,8 @@ function renderCards(data, containerId) {
 }
 
 function expandCard(slug) {
-  const person = allOfficials.find(p => p.slug === slug)
+  const person = allOfficials.find(p => p.slug === slug || p.name === slug)
+
   if (!person) return
 
   const imageUrl = `https://ballotpedia.org/images/thumb/${person.slug || 'placeholder'}.jpg`
