@@ -48,6 +48,8 @@ function expandCard(slug) {
   view.style.display = 'block'
   window.scrollTo({ top: view.offsetTop, behavior: 'smooth' })
 }
+loadData()
+
 
 function renderMyOfficials(state) {
   const matches = allOfficials.filter(person => person.state === state)
