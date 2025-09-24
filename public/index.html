@@ -84,8 +84,21 @@
   <!-- 🔹 Tab Sections -->
 <section id="compare" style="display:none;">
   <h2>Compare Officials</h2>
-  <p>Coming soon: side-by-side comparison of officials.</p>
-</section>
+
+<div class="compare-selectors">
+  <select id="compare-left">
+    <option value="">Select official A</option>
+  </select>
+
+  <select id="compare-right">
+    <option value="">Select official B</option>
+  </select>
+</div>
+
+<div class="compare-results">
+  <div id="compare-card-left" class="card"></div>
+  <div id="compare-card-right" class="card"></div>
+</div>
 
 <section id="top10" style="display:none;">
   <h2>Top 10 Officials</h2>
