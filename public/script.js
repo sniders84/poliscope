@@ -131,11 +131,35 @@ function populateCompareDropdowns() {
 console.log("Rendering compare card for:", slug)
 
 function renderCompareCard(slug, containerId) {
+  const container = document.getElementById(containerId)
+  container.innerHTML = `<p>Looking for: ${slug}</p>`
+
   const person = allOfficials.find(p => p.slug === slug)
   if (!person) {
-    document.getElementById(containerId).innerHTML = `<p>No data found for: ${slug}</p>`
+    container.innerHTML += `<p>No match found in allOfficials</p>`
     return
   }
+
+  container.innerHTML += `<p>Match found: ${person.name}</p>`
+
+  const imageUrl = `https://ballotpedia.org/images/thumb/${person.slug || 'placeholder'}.jpg`
+  const link = person.ballotpediaLink || person.contact?.website || null
+
+  container.innerHTML += `
+    <img src="${imageUrl}" alt="${person.name}" onerror="this.src='fallback.jpg'" />
+    <h3>${person.name}</h3>
+    <p><strong>Office:</strong> ${person.office || person.position || ''}</p>
+    <p><strong>State:</strong> ${person.state}</p>
+    <p><strong>Party:</strong> ${person.party || '—'}</p>
+    <p><strong>Term:</strong> ${person.termStart || '—'} to ${person.termEnd || '—'}</p>
+    <p><strong>Approval:</strong> ${person.approval || '—'}%</p>
+    ${link ? `<p><a href="${link}" target="_blank">Ballotpedia Profile</a></p>` : ''}
+    <p><strong>Platform:</strong> ${person.platform || '—'}</p>
+    <p><strong>Contact:</strong> ${person.contact?.email || '—'} | ${person.contact?.phone || '—'} | ${person.contact?.website || '—'}</p>
+    <p><strong>Social:</strong> Twitter: ${person.social?.twitter || '—'}, Facebook: ${person.social?.facebook || '—'}, Instagram: ${person.social?.instagram || '—'}</p>
+  `
+}
+
 
   const imageUrl = `https://ballotpedia.org/images/thumb/${person.slug || 'placeholder'}.jpg`
   const link = person.ballotpediaLink || person.contact?.website || null
