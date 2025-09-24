@@ -1,627 +1,2023 @@
 [
   {
-    "U.S. Senate": "",
-    "": "",
-    "__1": ""
-  },
-  {
-    "U.S. Senate": "Leadership and partisan balance",
-    "": "",
-    "__1": ""
-  },
-  {
-    "U.S. Senate": "U.S. Senate leadership",
-    "": "",
-    "__1": ""
-  },
-  {
-    "U.S. Senate": "Position",
-    "": "Representative",
-    "__1": "Party"
-  },
-  {
-    "U.S. Senate": "President of the Senate",
-    "": "J.D. Vance",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "Senate Majority Leadership",
-    "": "",
-    "__1": ""
-  },
-  {
-    "U.S. Senate": "President pro tempore",
-    "": "Chuck Grassley",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "Senate Majority Leader",
-    "": "John Thune",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "Senate Majority Whip",
-    "": "John Barrasso",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "Senate Minority Leadership",
-    "": "",
-    "__1": ""
-  },
-  {
-    "U.S. Senate": "Senate Minority Leader",
-    "": "Chuck Schumer",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "Senate Minority Whip",
-    "": "Dick Durbin",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "",
-    "": "",
-    "__1": ""
-  },
-  {
-    "U.S. Senate": "Partisan composition, U.S. Senate",
-    "": "",
-    "__1": ""
-  },
-  {
-    "U.S. Senate": "119th Congress",
-    "": "",
-    "__1": ""
-  },
-  {
-    "U.S. Senate": "Party",
-    "": "Members",
-    "__1": ""
-  },
-  {
-    "U.S. Senate": "Democratic",
-    "": 45,
-    "__1": ""
-  },
-  {
-    "U.S. Senate": "Republican",
-    "": 53,
-    "__1": ""
-  },
-  {
-    "U.S. Senate": "Independent",
-    "": "2[1]",
-    "__1": ""
-  },
-  {
-    "U.S. Senate": "Vacancies",
-    "": 0,
-    "__1": ""
-  },
-  {
-    "U.S. Senate": "Total",
-    "": 100,
-    "__1": ""
-  },
-  {
-    "U.S. Senate": "",
-    "": "",
-    "__1": ""
-  },
-  {
-    "U.S. Senate": "List of current U.S. Senate members",
-    "": "",
-    "__1": ""
-  },
-  {
-    "U.S. Senate": "",
-    "": "",
-    "__1": ""
-  },
-  {
-    "U.S. Senate": "State",
-    "": "Name",
-    "__1": "Party"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Alabama",
-    "": "Katie Britt",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Alabama",
-    "": "Tommy Tuberville",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Alaska",
-    "": "Lisa Murkowski",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Alaska",
-    "": "Daniel S. Sullivan",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Arizona",
-    "": "Ruben Gallego",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Arizona",
-    "": "Mark Kelly",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Arkansas",
-    "": "John Boozman",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Arkansas",
-    "": "Tom Cotton",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate California",
-    "": "Alex Padilla",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate California",
-    "": "Adam Schiff",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Colorado",
-    "": "Michael Bennet",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Colorado",
-    "": "John Hickenlooper",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Connecticut",
-    "": "Richard Blumenthal",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Connecticut",
-    "": "Christopher S. Murphy",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Delaware",
-    "": "Lisa Blunt Rochester",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Delaware",
-    "": "Chris Coons",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Florida",
-    "": "Ashley B. Moody",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Florida",
-    "": "Rick Scott",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Georgia",
-    "": "Jon Ossoff",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Georgia",
-    "": "Raphael Warnock",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Hawaii",
-    "": "Mazie K. Hirono",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Hawaii",
-    "": "Brian E. Schatz",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Idaho",
-    "": "Mike Crapo",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Idaho",
-    "": "Jim Risch",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Illinois",
-    "": "Tammy Duckworth",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Illinois",
-    "": "Dick Durbin",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Indiana",
-    "": "Jim Banks",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Indiana",
-    "": "Todd C. Young",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Iowa",
-    "": "Joni Ernst",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Iowa",
-    "": "Chuck Grassley",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Kansas",
-    "": "Roger Marshall",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Kansas",
-    "": "Jerry Moran",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Kentucky",
-    "": "Mitch McConnell",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Kentucky",
-    "": "Rand Paul",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Louisiana",
-    "": "Bill Cassidy",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Louisiana",
-    "": "John Neely Kennedy",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Maine",
-    "": "Susan Collins",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Maine",
-    "": "Angus King",
-    "__1": "Independent"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Maryland",
-    "": "Angela Alsobrooks",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Maryland",
-    "": "Chris Van Hollen",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Massachusetts",
-    "": "Edward J. Markey",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Massachusetts",
-    "": "Elizabeth Warren",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Michigan",
-    "": "Gary Peters",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Michigan",
-    "": "Elissa Slotkin",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Minnesota",
-    "": "Amy Klobuchar",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Minnesota",
-    "": "Tina Smith",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Mississippi",
-    "": "Cindy Hyde-Smith",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Mississippi",
-    "": "Roger Wicker",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Missouri",
-    "": "Josh Hawley",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Missouri",
-    "": "Eric Schmitt",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Montana",
-    "": "Steve Daines",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Montana",
-    "": "Tim Sheehy",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Nebraska",
-    "": "Deb Fischer",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Nebraska",
-    "": "Pete Ricketts",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Nevada",
-    "": "Catherine Cortez Masto",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Nevada",
-    "": "Jacky Rosen",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate New Hampshire",
-    "": "Maggie Hassan",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate New Hampshire",
-    "": "Jeanne Shaheen",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate New Jersey",
-    "": "Cory Booker",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate New Jersey",
-    "": "Andrew Kim",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate New Mexico",
-    "": "Martin Heinrich",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate New Mexico",
-    "": "Ben Ray Luján",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate New York",
-    "": "Kirsten Gillibrand",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate New York",
-    "": "Chuck Schumer",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate North Carolina",
-    "": "Ted Budd",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate North Carolina",
-    "": "Thom Tillis",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate North Dakota",
-    "": "Kevin Cramer",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate North Dakota",
-    "": "John Hoeven",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Ohio",
-    "": "Jon Husted",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Ohio",
-    "": "Bernie Moreno",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Oklahoma",
-    "": "James Lankford",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Oklahoma",
-    "": "Markwayne Mullin",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Oregon",
-    "": "Jeff Merkley",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Oregon",
-    "": "Ron Wyden",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Pennsylvania",
-    "": "John Fetterman",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Pennsylvania",
-    "": "David McCormick",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Rhode Island",
-    "": "Jack Reed",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Rhode Island",
-    "": "Sheldon Whitehouse",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate South Carolina",
-    "": "Lindsey Graham",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate South Carolina",
-    "": "Tim Scott",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate South Dakota",
-    "": "Mike Rounds",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate South Dakota",
-    "": "John Thune",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Tennessee",
-    "": "Marsha Blackburn",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Tennessee",
-    "": "Bill Hagerty",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Texas",
-    "": "John Cornyn",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Texas",
-    "": "Ted Cruz",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Utah",
-    "": "John Curtis",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Utah",
-    "": "Mike Lee",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Vermont",
-    "": "Bernie Sanders",
-    "__1": "Independent"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Vermont",
-    "": "Peter Welch",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Virginia",
-    "": "Tim Kaine",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Virginia",
-    "": "Mark Warner",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Washington",
-    "": "Maria Cantwell",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Washington",
-    "": "Patty Murray",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate West Virginia",
-    "": "Shelley Moore Capito",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate West Virginia",
-    "": "Jim Justice",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Wisconsin",
-    "": "Tammy Baldwin",
-    "__1": "Democratic"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Wisconsin",
-    "": "Ronald Harold Johnson",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Wyoming",
-    "": "John Barrasso",
-    "__1": "Republican"
-  },
-  {
-    "U.S. Senate": "U.S. Senate Wyoming",
-    "": "Cynthia Lummis",
-    "__1": "Republican"
+    "name": "Katie Britt",
+    "state": "Alabama",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "katie-britt",
+    "ballotpediaLink": "https://ballotpedia.org/Katie_Britt",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Tommy Tuberville",
+    "state": "Alabama",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "tommy-tuberville",
+    "ballotpediaLink": "https://ballotpedia.org/Tommy_Tuberville",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Lisa Murkowski",
+    "state": "Alaska",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "lisa-murkowski",
+    "ballotpediaLink": "https://ballotpedia.org/Lisa_Murkowski",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Dan Sullivan",
+    "state": "Alaska",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "dan-sullivan",
+    "ballotpediaLink": "https://ballotpedia.org/Dan_Sullivan",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Kyrsten Sinema",
+    "state": "Arizona",
+    "party": "Independent",
+    "office": "U.S. Senator",
+    "slug": "kyrsten-sinema",
+    "ballotpediaLink": "https://ballotpedia.org/Kyrsten_Sinema",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+[
+  {
+    "name": "John Boozman",
+    "state": "Arkansas",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "john-boozman",
+    "ballotpediaLink": "https://ballotpedia.org/John_Boozman",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Tom Cotton",
+    "state": "Arkansas",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "tom-cotton",
+    "ballotpediaLink": "https://ballotpedia.org/Tom_Cotton",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Alex Padilla",
+    "state": "California",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "alex-padilla",
+    "ballotpediaLink": "https://ballotpedia.org/Alex_Padilla",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Laphonza Butler",
+    "state": "California",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "laphonza-butler",
+    "ballotpediaLink": "https://ballotpedia.org/Laphonza_Butler",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Michael Bennet",
+    "state": "Colorado",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "michael-bennet",
+    "ballotpediaLink": "https://ballotpedia.org/Michael_Bennet",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+[
+  {
+    "name": "John Hickenlooper",
+    "state": "Colorado",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "john-hickenlooper",
+    "ballotpediaLink": "https://ballotpedia.org/John_Hickenlooper",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Richard Blumenthal",
+    "state": "Connecticut",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "richard-blumenthal",
+    "ballotpediaLink": "https://ballotpedia.org/Richard_Blumenthal",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Chris Murphy",
+    "state": "Connecticut",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "chris-murphy",
+    "ballotpediaLink": "https://ballotpedia.org/Chris_Murphy",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Tom Carper",
+    "state": "Delaware",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "tom-carper",
+    "ballotpediaLink": "https://ballotpedia.org/Tom_Carper",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Chris Coons",
+    "state": "Delaware",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "chris-coons",
+    "ballotpediaLink": "https://ballotpedia.org/Chris_Coons",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+[
+  {
+    "name": "Marco Rubio",
+    "state": "Florida",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "marco-rubio",
+    "ballotpediaLink": "https://ballotpedia.org/Marco_Rubio",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Rick Scott",
+    "state": "Florida",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "rick-scott",
+    "ballotpediaLink": "https://ballotpedia.org/Rick_Scott_(Florida)",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Jon Ossoff",
+    "state": "Georgia",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "jon-ossoff",
+    "ballotpediaLink": "https://ballotpedia.org/Jon_Ossoff",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Raphael Warnock",
+    "state": "Georgia",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "raphael-warnock",
+    "ballotpediaLink": "https://ballotpedia.org/Raphael_Warnock",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Brian Schatz",
+    "state": "Hawaii",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "brian-schatz",
+    "ballotpediaLink": "https://ballotpedia.org/Brian_Schatz",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+[
+  {
+    "name": "Mazie Hirono",
+    "state": "Hawaii",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "mazie-hirono",
+    "ballotpediaLink": "https://ballotpedia.org/Mazie_Hirono",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Mike Crapo",
+    "state": "Idaho",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "mike-crapo",
+    "ballotpediaLink": "https://ballotpedia.org/Mike_Crapo",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "James Risch",
+    "state": "Idaho",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "james-risch",
+    "ballotpediaLink": "https://ballotpedia.org/James_Risch",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Dick Durbin",
+    "state": "Illinois",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "dick-durbin",
+    "ballotpediaLink": "https://ballotpedia.org/Dick_Durbin",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Tammy Duckworth",
+    "state": "Illinois",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "tammy-duckworth",
+    "ballotpediaLink": "https://ballotpedia.org/Tammy_Duckworth",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+[
+  {
+    "name": "Todd Young",
+    "state": "Indiana",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "todd-young",
+    "ballotpediaLink": "https://ballotpedia.org/Todd_Young",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Mike Braun",
+    "state": "Indiana",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "mike-braun",
+    "ballotpediaLink": "https://ballotpedia.org/Mike_Braun",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Chuck Grassley",
+    "state": "Iowa",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "chuck-grassley",
+    "ballotpediaLink": "https://ballotpedia.org/Chuck_Grassley",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Joni Ernst",
+    "state": "Iowa",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "joni-ernst",
+    "ballotpediaLink": "https://ballotpedia.org/Joni_Ernst",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Jerry Moran",
+    "state": "Kansas",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "jerry-moran",
+    "ballotpediaLink": "https://ballotpedia.org/Jerry_Moran",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+[
+  {
+    "name": "Roger Marshall",
+    "state": "Kansas",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "roger-marshall",
+    "ballotpediaLink": "https://ballotpedia.org/Roger_Marshall",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Mitch McConnell",
+    "state": "Kentucky",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "mitch-mcconnell",
+    "ballotpediaLink": "https://ballotpedia.org/Mitch_McConnell",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Rand Paul",
+    "state": "Kentucky",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "rand-paul",
+    "ballotpediaLink": "https://ballotpedia.org/Rand_Paul",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Bill Cassidy",
+    "state": "Louisiana",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "bill-cassidy",
+    "ballotpediaLink": "https://ballotpedia.org/Bill_Cassidy",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "John Kennedy",
+    "state": "Louisiana",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "john-kennedy",
+    "ballotpediaLink": "https://ballotpedia.org/John_Neely_Kennedy",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+[
+  {
+    "name": "Susan Collins",
+    "state": "Maine",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "susan-collins",
+    "ballotpediaLink": "https://ballotpedia.org/Susan_Collins",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Angus King",
+    "state": "Maine",
+    "party": "Independent",
+    "office": "U.S. Senator",
+    "slug": "angus-king",
+    "ballotpediaLink": "https://ballotpedia.org/Angus_King",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Ben Cardin",
+    "state": "Maryland",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "ben-cardin",
+    "ballotpediaLink": "https://ballotpedia.org/Ben_Cardin",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Chris Van Hollen",
+    "state": "Maryland",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "chris-van-hollen",
+    "ballotpediaLink": "https://ballotpedia.org/Chris_Van_Hollen",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Elizabeth Warren",
+    "state": "Massachusetts",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "elizabeth-warren",
+    "ballotpediaLink": "https://ballotpedia.org/Elizabeth_Warren",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+[
+  {
+    "name": "Edward Markey",
+    "state": "Massachusetts",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "edward-markey",
+    "ballotpediaLink": "https://ballotpedia.org/Edward_J._Markey",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Gary Peters",
+    "state": "Michigan",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "gary-peters",
+    "ballotpediaLink": "https://ballotpedia.org/Gary_Peters",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Debbie Stabenow",
+    "state": "Michigan",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "debbie-stabenow",
+    "ballotpediaLink": "https://ballotpedia.org/Debbie_Stabenow",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Amy Klobuchar",
+    "state": "Minnesota",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "amy-klobuchar",
+    "ballotpediaLink": "https://ballotpedia.org/Amy_Klobuchar",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Tina Smith",
+    "state": "Minnesota",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "tina-smith",
+    "ballotpediaLink": "https://ballotpedia.org/Tina_Smith",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+[
+  {
+    "name": "Roger Wicker",
+    "state": "Mississippi",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "roger-wicker",
+    "ballotpediaLink": "https://ballotpedia.org/Roger_Wicker",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Cindy Hyde-Smith",
+    "state": "Mississippi",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "cindy-hyde-smith",
+    "ballotpediaLink": "https://ballotpedia.org/Cindy_Hyde-Smith",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Josh Hawley",
+    "state": "Missouri",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "josh-hawley",
+    "ballotpediaLink": "https://ballotpedia.org/Josh_Hawley",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Eric Schmitt",
+    "state": "Missouri",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "eric-schmitt",
+    "ballotpediaLink": "https://ballotpedia.org/Eric_Schmitt",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Jon Tester",
+    "state": "Montana",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "jon-tester",
+    "ballotpediaLink": "https://ballotpedia.org/Jon_Tester",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+[
+  {
+    "name": "Steve Daines",
+    "state": "Montana",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "steve-daines",
+    "ballotpediaLink": "https://ballotpedia.org/Steve_Daines",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Deb Fischer",
+    "state": "Nebraska",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "deb-fischer",
+    "ballotpediaLink": "https://ballotpedia.org/Deb_Fischer",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Pete Ricketts",
+    "state": "Nebraska",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "pete-ricketts",
+    "ballotpediaLink": "https://ballotpedia.org/Pete_Ricketts",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Jacky Rosen",
+    "state": "Nevada",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "jacky-rosen",
+    "ballotpediaLink": "https://ballotpedia.org/Jacky_Rosen",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Catherine Cortez Masto",
+    "state": "Nevada",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "catherine-cortez-masto",
+    "ballotpediaLink": "https://ballotpedia.org/Catherine_Cortez_Masto",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+[
+  {
+    "name": "Jeanne Shaheen",
+    "state": "New Hampshire",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "jeanne-shaheen",
+    "ballotpediaLink": "https://ballotpedia.org/Jeanne_Shaheen",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Maggie Hassan",
+    "state": "New Hampshire",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "maggie-hassan",
+    "ballotpediaLink": "https://ballotpedia.org/Maggie_Hassan",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Robert Menendez",
+    "state": "New Jersey",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "robert-menendez",
+    "ballotpediaLink": "https://ballotpedia.org/Robert_Menendez",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Cory Booker",
+    "state": "New Jersey",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "cory-booker",
+    "ballotpediaLink": "https://ballotpedia.org/Cory_Booker",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Ben Ray Luján",
+    "state": "New Mexico",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "ben-ray-lujan",
+    "ballotpediaLink": "https://ballotpedia.org/Ben_Ray_Luján",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+[
+  {
+    "name": "Martin Heinrich",
+    "state": "New Mexico",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "martin-heinrich",
+    "ballotpediaLink": "https://ballotpedia.org/Martin_Heinrich",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Chuck Schumer",
+    "state": "New York",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "chuck-schumer",
+    "ballotpediaLink": "https://ballotpedia.org/Chuck_Schumer",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Kirsten Gillibrand",
+    "state": "New York",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "kirsten-gillibrand",
+    "ballotpediaLink": "https://ballotpedia.org/Kirsten_Gillibrand",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Ted Budd",
+    "state": "North Carolina",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "ted-budd",
+    "ballotpediaLink": "https://ballotpedia.org/Ted_Budd",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Thom Tillis",
+    "state": "North Carolina",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "thom-tillis",
+    "ballotpediaLink": "https://ballotpedia.org/Thom_Tillis",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+[
+  {
+    "name": "John Hoeven",
+    "state": "North Dakota",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "john-hoeven",
+    "ballotpediaLink": "https://ballotpedia.org/John_Hoeven",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Kevin Cramer",
+    "state": "North Dakota",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "kevin-cramer",
+    "ballotpediaLink": "https://ballotpedia.org/Kevin_Cramer",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Sherrod Brown",
+    "state": "Ohio",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "sherrod-brown",
+    "ballotpediaLink": "https://ballotpedia.org/Sherrod_Brown",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "J.D. Vance",
+    "state": "Ohio",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "jd-vance",
+    "ballotpediaLink": "https://ballotpedia.org/J.D._Vance",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "James Lankford",
+    "state": "Oklahoma",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "james-lankford",
+    "ballotpediaLink": "https://ballotpedia.org/James_Lankford",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+[
+  {
+    "name": "Markwayne Mullin",
+    "state": "Oklahoma",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "markwayne-mullin",
+    "ballotpediaLink": "https://ballotpedia.org/Markwayne_Mullin",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Ron Wyden",
+    "state": "Oregon",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "ron-wyden",
+    "ballotpediaLink": "https://ballotpedia.org/Ron_Wyden",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Jeff Merkley",
+    "state": "Oregon",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "jeff-merkley",
+    "ballotpediaLink": "https://ballotpedia.org/Jeff_Merkley",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Bob Casey Jr.",
+    "state": "Pennsylvania",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "bob-casey-jr",
+    "ballotpediaLink": "https://ballotpedia.org/Bob_Casey_Jr.",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "John Fetterman",
+    "state": "Pennsylvania",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "john-fetterman",
+    "ballotpediaLink": "https://ballotpedia.org/John_Fetterman",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+[
+  {
+    "name": "Jack Reed",
+    "state": "Rhode Island",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "jack-reed",
+    "ballotpediaLink": "https://ballotpedia.org/Jack_Reed",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Sheldon Whitehouse",
+    "state": "Rhode Island",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "sheldon-whitehouse",
+    "ballotpediaLink": "https://ballotpedia.org/Sheldon_Whitehouse",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Lindsey Graham",
+    "state": "South Carolina",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "lindsey-graham",
+    "ballotpediaLink": "https://ballotpedia.org/Lindsey_Graham",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Tim Scott",
+    "state": "South Carolina",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "tim-scott",
+    "ballotpediaLink": "https://ballotpedia.org/Tim_Scott_(South_Carolina)",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Mike Rounds",
+    "state": "South Dakota",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "mike-rounds",
+    "ballotpediaLink": "https://ballotpedia.org/Mike_Rounds",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+[
+  {
+    "name": "John Thune",
+    "state": "South Dakota",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "john-thune",
+    "ballotpediaLink": "https://ballotpedia.org/John_Thune",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Marsha Blackburn",
+    "state": "Tennessee",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "marsha-blackburn",
+    "ballotpediaLink": "https://ballotpedia.org/Marsha_Blackburn",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Bill Hagerty",
+    "state": "Tennessee",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "bill-hagerty",
+    "ballotpediaLink": "https://ballotpedia.org/Bill_Hagerty",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "John Cornyn",
+    "state": "Texas",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "john-cornyn",
+    "ballotpediaLink": "https://ballotpedia.org/John_Cornyn",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Ted Cruz",
+    "state": "Texas",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "ted-cruz",
+    "ballotpediaLink": "https://ballotpedia.org/Ted_Cruz",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+[
+  {
+    "name": "Mitt Romney",
+    "state": "Utah",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "mitt-romney",
+    "ballotpediaLink": "https://ballotpedia.org/Mitt_Romney",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Mike Lee",
+    "state": "Utah",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "mike-lee",
+    "ballotpediaLink": "https://ballotpedia.org/Mike_Lee_(Utah)",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Bernie Sanders",
+    "state": "Vermont",
+    "party": "Independent",
+    "office": "U.S. Senator",
+    "slug": "bernie-sanders",
+    "ballotpediaLink": "https://ballotpedia.org/Bernie_Sanders",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Peter Welch",
+    "state": "Vermont",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "peter-welch",
+    "ballotpediaLink": "https://ballotpedia.org/Peter_Welch",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Mark Warner",
+    "state": "Virginia",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "mark-warner",
+    "ballotpediaLink": "https://ballotpedia.org/Mark_Warner",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+[
+  {
+    "name": "Tim Kaine",
+    "state": "Virginia",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "tim-kaine",
+    "ballotpediaLink": "https://ballotpedia.org/Tim_Kaine",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Maria Cantwell",
+    "state": "Washington",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "maria-cantwell",
+    "ballotpediaLink": "https://ballotpedia.org/Maria_Cantwell",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Patty Murray",
+    "state": "Washington",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "patty-murray",
+    "ballotpediaLink": "https://ballotpedia.org/Patty_Murray",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Joe Manchin",
+    "state": "West Virginia",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "joe-manchin",
+    "ballotpediaLink": "https://ballotpedia.org/Joe_Manchin",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Shelley Moore Capito",
+    "state": "West Virginia",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "shelley-moore-capito",
+    "ballotpediaLink": "https://ballotpedia.org/Shelley_Moore_Capito",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+[
+  {
+    "name": "Bernie Sanders",
+    "state": "Vermont",
+    "party": "Independent",
+    "office": "U.S. Senator",
+    "slug": "bernie-sanders",
+    "ballotpediaLink": "https://ballotpedia.org/Bernie_Sanders",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Peter Welch",
+    "state": "Vermont",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "peter-welch",
+    "ballotpediaLink": "https://ballotpedia.org/Peter_Welch",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Mark Warner",
+    "state": "Virginia",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "mark-warner",
+    "ballotpediaLink": "https://ballotpedia.org/Mark_Warner",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Tim Kaine",
+    "state": "Virginia",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "tim-kaine",
+    "ballotpediaLink": "https://ballotpedia.org/Tim_Kaine",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Maria Cantwell",
+    "state": "Washington",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "maria-cantwell",
+    "ballotpediaLink": "https://ballotpedia.org/Maria_Cantwell",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
   }
 ]
+  
+  
