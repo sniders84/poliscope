@@ -122,12 +122,8 @@ async function loadData() {
   try {
     console.log("Starting loadData()")
 
-    const houseText = await fetch('House.json').then(res => res.text())
-
-    console.log('Character at 28764:', houseText.charAt(28764))
-    console.log('Surrounding:', houseText.slice(28760, 28770))
-
-    const house = JSON.parse(houseText)
+    // Use cleaned data from cleanHouse.js
+    const house = window.cleanedHouse || []
     const governors = await fetch('Governors.json').then(res => res.json())
     const senate = await fetch('Senate.json').then(res => res.json())
 
