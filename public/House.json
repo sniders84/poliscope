@@ -1165,27 +1165,27 @@
     "bills": []
   },
   {
-    "name": "Brad Sherman",
-    "state": "California",
-    "district": "32",
-    "party": "Democratic",
-    "office": "U.S. Representative",
-    "slug": "brad-sherman",
-    "photo": "https://www.congress.gov/img/member/s000344_200.jpg",
-    "ballotpediaLink": "https://ballotpedia.org/Brad_Sherman",
-    "contact": {
-      "email": "",
-      "phone": "",
-      "website": ""
-    },
-    "social": {
-      "twitter": "",
-      "facebook": "",
-      "instagram": ""
-    },
-    "platform": "",
-    "bills": []
+  "name": "Brad Sherman",
+  "state": "California",
+  "district": "32",
+  "party": "Democratic",
+  "office": "U.S. Representative",
+  "slug": "brad-sherman",
+  "photo": "https://www.congress.gov/img/member/s000344_200.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Brad_Sherman",
+  "contact": {
+    "email": "",
+    "phone": "",
+    "website": ""
   },
+  "social": {
+    "twitter": "",
+    "facebook": "",
+    "instagram": ""
+  },
+  "platform": "",
+  "bills": []
+},
   {
     "name": "Pete Aguilar",
     "state": "California",
