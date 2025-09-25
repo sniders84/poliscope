@@ -10,14 +10,18 @@ function renderCards(data, containerId) {
 
   const cardsHTML = data.map(person => {
     const imageUrl = person.photo || 'images/fallback.jpg'
+    const branchIcon = person.office?.includes("Senator") ? "🏛️" :
+                       person.office?.includes("Representative") ? "🏠" :
+                       person.office?.includes("Governor") ? "🎖️" : "❓"
     return `
       <div class="card" onclick="expandCard('${person.slug}')">
         <img src="${imageUrl}" alt="${person.name}" onerror="this.src='images/fallback.jpg'" />
-        <h3>${person.name}</h3>
+        <h3>${branchIcon} ${person.name}</h3>
         <p>${person.office || person.position || ''}</p>
+        <p>${person.district || ''}</p>
         <p>${person.state}${person.party ? ', ' + person.party : ''}</p>
         <p>Term: ${person.termStart || '—'} to ${person.termEnd || '—'}</p>
-        <p>Approval: ${person.approval || '—'}%</p>
+        <p>Approval: ${person.approval || person.score || '—'}%</p>
       </div>
     `
   }).join('')
@@ -26,32 +30,46 @@ function renderCards(data, containerId) {
 
 function expandCard(slug) {
   const person = allOfficials.find(p => p.slug === slug)
-  if (!person) return
+  const container = document.getElementById('profile-view')
+  if (!person || !container) return
 
   const imageUrl = person.photo || 'images/fallback.jpg'
   const link = person.ballotpediaLink || person.contact?.website || null
+  const score = person.score || '—'
+  const badge = score >= 85 ? '🟢 Civic Champion' :
+                score >= 70 ? '🟡 Solid Contributor' :
+                score < 70 ? '🔴 Needs Accountability' : '⚪ Unscored'
+
+  const breakdown = person.scoreBreakdown || {}
+
+  const breakdownHTML = Object.entries(breakdown).map(([label, value]) => {
+    return `<tr><td>${label}</td><td>${value}/10</td></tr>`
+  }).join('')
 
   const profileHTML = `
     <div class="card">
       <img src="${imageUrl}" alt="${person.name}" onerror="this.src='images/fallback.jpg'" />
       <h2>${person.name}</h2>
       <p><strong>Office:</strong> ${person.office || person.position || ''}</p>
+      <p><strong>District:</strong> ${person.district || '—'}</p>
       <p><strong>State:</strong> ${person.state}</p>
       <p><strong>Party:</strong> ${person.party || '—'}</p>
       <p><strong>Term:</strong> ${person.termStart || '—'} to ${person.termEnd || '—'}</p>
-      <p><strong>Approval:</strong> ${person.approval || '—'}%</p>
+      <p><strong>Score:</strong> ${score}/100 (${badge})</p>
+
+      <table style="margin: 10px auto; border-collapse: collapse;">
+        <thead><tr><th>Metric</th><th>Score</th></tr></thead>
+        <tbody>${breakdownHTML}</tbody>
+      </table>
+
       ${link ? `<p><a href="${link}" target="_blank">Ballotpedia Profile</a></p>` : ''}
-      <p><strong>Platform:</strong> ${person.platform || '—'}</p>
-      <p><strong>Bio:</strong> ${person.bio || '—'}</p>
       <p><strong>Contact:</strong> ${person.contact?.email || '—'} | ${person.contact?.phone || '—'} | ${person.contact?.website || '—'}</p>
-      <p><strong>Social:</strong> Twitter: ${person.social?.twitter || '—'}, Facebook: ${person.social?.facebook || '—'}, Instagram: ${person.social?.instagram || '—'}</p>
     </div>
   `
 
-  const view = document.getElementById('profile-view')
-  view.innerHTML = profileHTML
-  view.style.display = 'block'
-  window.scrollTo({ top: view.offsetTop, behavior: 'smooth' })
+  container.innerHTML = profileHTML
+  container.style.display = 'block'
+  window.scrollTo({ top: container.offsetTop, behavior: 'smooth' })
 }
 
 function renderMyOfficials(state) {
@@ -80,10 +98,15 @@ function populateCompareDropdowns() {
 
   allOfficials.forEach(person => {
     const label = `${person.name} (${person.state}${person.party ? ', ' + person.party : ''})`
-    const option = new Option(label, person.slug)
-    left.add(option.cloneNode(true))
-    right.add(option.cloneNode(true))
+    const optionLeft = new Option(label, person.slug)
+    const optionRight = new Option(label, person.slug)
+
+    left.add(optionLeft)
+    right.add(optionRight)
   })
+
+  console.log(`Compare A options: ${left.options.length}`)
+  console.log(`Compare B options: ${right.options.length}`)
 }
 
 function renderCompareCard(slug, containerId) {
@@ -107,11 +130,8 @@ function renderCompareCard(slug, containerId) {
       <p><strong>State:</strong> ${person.state}</p>
       <p><strong>Party:</strong> ${person.party || '—'}</p>
       <p><strong>Term:</strong> ${person.termStart || '—'} to ${person.termEnd || '—'}</p>
-      <p><strong>Approval:</strong> ${person.approval || '—'}%</p>
+      <p><strong>Approval:</strong> ${person.approval || person.score || '—'}%</p>
       ${link ? `<p><a href="${link}" target="_blank">Ballotpedia Profile</a></p>` : ''}
-      <p><strong>Platform:</strong> ${person.platform || '—'}</p>
-      <p><strong>Contact:</strong> ${person.contact?.email || '—'} | ${person.contact?.phone || '—'} | ${person.contact?.website || '—'}</p>
-      <p><strong>Social:</strong> Twitter: ${person.social?.twitter || '—'}, Facebook: ${person.social?.facebook || '—'}, Instagram: ${person.social?.instagram || '—'}</p>
     </div>
   `
 }
@@ -122,6 +142,12 @@ function showTab(id) {
     const el = document.getElementById(sectionId)
     if (el) el.style.display = sectionId === id ? 'block' : 'none'
   })
+
+  // Clear search results when switching tabs
+  const results = document.getElementById('results')
+  if (results) results.innerHTML = ''
+  const search = document.getElementById('search')
+  if (search) search.value = ''
 }
 
 async function loadData() {
@@ -180,42 +206,4 @@ document.addEventListener('DOMContentLoaded', function () {
   const search = document.getElementById('search')
 
   if (left) {
-    left.addEventListener('change', function (e) {
-      renderCompareCard(e.target.value, 'compare-card-left')
-    })
-  }
-
-  if (right) {
-    right.addEventListener('change', function (e) {
-      renderCompareCard(e.target.value, 'compare-card-right')
-    })
-  }
-
-  if (search) {
-    search.addEventListener('input', function (e) {
-      const query = e.target.value.toLowerCase()
-      const matches = allOfficials.filter(person =>
-        person.name.toLowerCase().includes(query) ||
-        person.state.toLowerCase().includes(query) ||
-        (person.party && person.party.toLowerCase().includes(query))
-      )
-
-      const resultsHTML = matches.map(person => {
-        const label = `${person.name} (${person.state}${person.party ? ', ' + person.party : ''})`
-        const link = person.ballotpediaLink || person.contact?.website || null
-                if (link) {
-          return `<li><a href="${link}" target="_blank" rel="noopener noreferrer">${label}</a></li>`
-        } else {
-          return `<li>${label}</li>`
-        }
-      }).join('')
-
-      document.getElementById('results').innerHTML = resultsHTML
-    })
-  }
-})
-
-// ✅ Expose showTab globally so buttons work
-window.showTab = showTab
-
-
+    left.add
