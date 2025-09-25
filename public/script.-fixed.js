@@ -1,3 +1,4 @@
+console.log("✅ script-fixed.js loaded")
 let allOfficials = []
 
 function renderCards(data, containerId) {
