@@ -115,8 +115,6 @@ async function loadData() {
   }
 }
 
-loadData()
-
 document.getElementById('compare-left').addEventListener('change', function (e) {
   renderCompareCard(e.target.value, 'compare-card-left')
 })
@@ -154,3 +152,4 @@ function showTab(id) {
     if (el) el.style.display = sectionId === id ? 'block' : 'none'
   })
 }
+loadData()
