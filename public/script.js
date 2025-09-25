@@ -110,47 +110,21 @@ async function loadData() {
     populateCompareDropdowns()
 
     const stateSelect = document.getElementById('state-select')
-    stateSelect.value = 'North Carolina'
-    renderMyOfficials('North Carolina')
+    if (stateSelect) {
+      stateSelect.value = 'North Carolina'
+      renderMyOfficials('North Carolina')
 
-    stateSelect.addEventListener('change', function (e) {
-      const selectedState = e.target.value
-      renderMyOfficials(selectedState)
-    })
+      stateSelect.addEventListener('change', function (e) {
+        const selectedState = e.target.value
+        renderMyOfficials(selectedState)
+      })
+    } else {
+      console.warn("State selector not found")
+    }
   } catch (err) {
     console.error("Error loading data:", err)
   }
 }
-
-document.getElementById('compare-left').addEventListener('change', function (e) {
-  renderCompareCard(e.target.value, 'compare-card-left')
-})
-
-document.getElementById('compare-right').addEventListener('change', function (e) {
-  renderCompareCard(e.target.value, 'compare-card-right')
-})
-
-document.getElementById('search').addEventListener('input', function (e) {
-  const query = e.target.value.toLowerCase()
-  const matches = allOfficials.filter(person =>
-    person.name.toLowerCase().includes(query) ||
-    person.state.toLowerCase().includes(query) ||
-    (person.party && person.party.toLowerCase().includes(query))
-  )
-
-  const resultsHTML = matches.map(person => {
-    const label = `${person.name} (${person.state}${person.party ? ', ' + person.party : ''})`
-    const link = person.ballotpediaLink || person.contact?.website || null
-
-    if (link) {
-      return `<li><a href="${link}" target="_blank" rel="noopener noreferrer">${label}</a></li>`
-    } else {
-      return `<li>${label}</li>`
-    }
-  }).join('')
-
-  document.getElementById('results').innerHTML = resultsHTML
-})
 
 function showTab(id) {
   const sections = ['my-officials', 'compare', 'top10', 'bottom10', 'calendar', 'registration']
@@ -160,4 +134,46 @@ function showTab(id) {
   })
 }
 
-loadData()
+document.addEventListener('DOMContentLoaded', function () {
+  loadData()
+
+  const left = document.getElementById('compare-left')
+  const right = document.getElementById('compare-right')
+  const search = document.getElementById('search')
+
+  if (left) {
+    left.addEventListener('change', function (e) {
+      renderCompareCard(e.target.value, 'compare-card-left')
+    })
+  }
+
+  if (right) {
+    right.addEventListener('change', function (e) {
+      renderCompareCard(e.target.value, 'compare-card-right')
+    })
+  }
+
+  if (search) {
+    search.addEventListener('input', function (e) {
+      const query = e.target.value.toLowerCase()
+      const matches = allOfficials.filter(person =>
+        person.name.toLowerCase().includes(query) ||
+        person.state.toLowerCase().includes(query) ||
+        (person.party && person.party.toLowerCase().includes(query))
+      )
+
+      const resultsHTML = matches.map(person => {
+        const label = `${person.name} (${person.state}${person.party ? ', ' + person.party : ''})`
+        const link = person.ballotpediaLink || person.contact?.website || null
+
+        if (link) {
+          return `<li><a href="${link}" target="_blank" rel="noopener noreferrer">${label}</a></li>`
+        } else {
+          return `<li>${label}</li>`
+        }
+      }).join('')
+
+      document.getElementById('results').innerHTML = resultsHTML
+    })
+  }
+})
