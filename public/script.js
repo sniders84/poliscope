@@ -122,7 +122,6 @@ async function loadData() {
   try {
     console.log("Starting loadData()")
 
-    // Use cleaned data from cleanHouse.js
     const house = window.cleanedHouse || []
     const governors = await fetch('Governors.json').then(res => res.json())
     const senate = await fetch('Senate.json').then(res => res.json())
