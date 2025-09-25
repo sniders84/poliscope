@@ -3,10 +3,10 @@ let allOfficials = []
 function renderCards(data, containerId) {
   const container = document.getElementById(containerId)
   const cardsHTML = data.map(person => {
-    const imageUrl = `https://ballotpedia.org/images/thumb/${person.slug || 'placeholder'}.jpg`
+    const imageUrl = person.photo || 'images/fallback.jpg'
     return `
       <div class="card" onclick="expandCard('${person.slug}')">
-        <img src="${imageUrl}" alt="${person.name}" onerror="this.src='fallback.jpg'" />
+        <img src="${imageUrl}" alt="${person.name}" onerror="this.src='images/fallback.jpg'" />
         <h3>${person.name}</h3>
         <p>${person.office || person.position || ''}</p>
         <p>${person.state}${person.party ? ', ' + person.party : ''}</p>
@@ -22,12 +22,12 @@ function expandCard(slug) {
   const person = allOfficials.find(p => p.slug === slug)
   if (!person) return
 
-  const imageUrl = `https://ballotpedia.org/images/thumb/${person.slug || 'placeholder'}.jpg`
+  const imageUrl = person.photo || 'images/fallback.jpg'
   const link = person.ballotpediaLink || person.contact?.website || null
 
   const profileHTML = `
     <div class="card">
-      <img src="${imageUrl}" alt="${person.name}" onerror="this.src='fallback.jpg'" />
+      <img src="${imageUrl}" alt="${person.name}" onerror="this.src='images/fallback.jpg'" />
       <h2>${person.name}</h2>
       <p><strong>Office:</strong> ${person.office || person.position || ''}</p>
       <p><strong>State:</strong> ${person.state}</p>
@@ -72,12 +72,12 @@ function renderCompareCard(slug, containerId) {
     return
   }
 
-  const imageUrl = `https://ballotpedia.org/images/thumb/${person.slug || 'placeholder'}.jpg`
+  const imageUrl = person.photo || 'images/fallback.jpg'
   const link = person.ballotpediaLink || person.contact?.website || null
 
   document.getElementById(containerId).innerHTML = `
     <div class="card">
-      <img src="${imageUrl}" alt="${person.name}" onerror="this.src='fallback.jpg'" />
+      <img src="${imageUrl}" alt="${person.name}" onerror="this.src='images/fallback.jpg'" />
       <h3>${person.name}</h3>
       <p><strong>Office:</strong> ${person.office || person.position || ''}</p>
       <p><strong>State:</strong> ${person.state}</p>
