@@ -128,6 +128,8 @@ async function loadData() {
   try {
     console.log("Starting loadData()")
 
+    await waitForHouseData()
+
     const house = window.cleanedHouse || []
     const governors = await fetch('Governors.json').then(res => res.json())
     const senate = await fetch('Senate.json').then(res => res.json())
@@ -155,6 +157,19 @@ async function loadData() {
   } catch (err) {
     console.error("Error loading data:", err)
   }
+}
+
+function waitForHouseData() {
+  return new Promise(resolve => {
+    const check = () => {
+      if (window.cleanedHouse && window.cleanedHouse.length > 0) {
+        resolve()
+      } else {
+        setTimeout(check, 50)
+      }
+    }
+    check()
+  })
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -193,12 +208,3 @@ document.addEventListener('DOMContentLoaded', function () {
           return `<li><a href="${link}" target="_blank" rel="noopener noreferrer">${label}</a></li>`
         } else {
           return `<li>${label}</li>`
-        }
-      }).join('')
-
-      document.getElementById('results').innerHTML = resultsHTML
-    })
-  }
-})
-
-window.showTab = showTab
