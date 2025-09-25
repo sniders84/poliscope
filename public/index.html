@@ -1,11 +1,3 @@
-<nav id="tabs">
- <button onclick="showTab('my-officials')">My Officials</button>
-<button onclick="showTab('compare')">Compare</button>
-<button onclick="showTab('top10')">Top 10</button>
-<button onclick="showTab('bottom10')">Bottom 10</button>
-<button onclick="showTab('calendar')">Calendar</button>
-<button onclick="showTab('registration')">Registration</button>
-</nav>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +8,14 @@
 </head>
 <body>
   <h1>Poliscope</h1>
+ <nav id="tabs">
+ <button onclick="showTab('my-officials')">My Officials</button>
+<button onclick="showTab('compare')">Compare</button>
+<button onclick="showTab('top10')">Top 10</button>
+<button onclick="showTab('bottom10')">Bottom 10</button>
+<button onclick="showTab('calendar')">Calendar</button>
+<button onclick="showTab('registration')">Registration</button>
+</nav>
   <input type="text" id="search" placeholder="Search by name, state, or party..." />
 <ul id="results"></ul>
 <!-- 🔹 State Selector -->
