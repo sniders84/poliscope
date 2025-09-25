@@ -5,6 +5,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "katie-britt",
+    "photo": ""photo": https://www.britt.senate.gov/",
     "ballotpediaLink": "https://ballotpedia.org/Katie_Britt",
     "contact": {
       "email": "",
@@ -25,6 +26,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "tommy-tuberville",
+    "photo": "https://www.congress.gov/img/member/t000278_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Tommy_Tuberville",
     "contact": {
       "email": "",
@@ -45,6 +47,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "lisa-murkowski",
+    "photo": "https://www.congress.gov/img/member/m001153_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Lisa_Murkowski",
     "contact": {
       "email": "",
@@ -65,6 +68,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "dan-sullivan",
+    "photo": "https://www.congress.gov/img/member/s001198_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Dan_Sullivan",
     "contact": {
       "email": "",
@@ -80,12 +84,34 @@
     "bills": []
   },
   {
-    "name": "Kyrsten Sinema",
+    "name": "Ruben Gallego",
     "state": "Arizona",
-    "party": "Independent",
+    "party": "Democratic",
     "office": "U.S. Senator",
-    "slug": "kyrsten-sinema",
-    "ballotpediaLink": "https://ballotpedia.org/Kyrsten_Sinema",
+    "slug": "ruben-gallego",
+    "photo": "https://www.congress.gov/img/member/c6870f487cf4bc9a568d8afbe61d754b_200.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/Ruben_Gallego",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+    {
+    "name": "Mark Kelly",
+    "state": "Arizona",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "mark-kelly",
+    "photo": "https://www.congress.gov/img/member/k000377_200.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/Mark_Kelly",
     "contact": {
       "email": "",
       "phone": "",
@@ -105,6 +131,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "john-boozman",
+    "photo": "https://www.congress.gov/img/member/b001236_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/John_Boozman",
     "contact": {
       "email": "",
@@ -125,6 +152,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "tom-cotton",
+    "photo": "https://www.congress.gov/img/member/c001095_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Tom_Cotton",
     "contact": {
       "email": "",
@@ -145,6 +173,7 @@
     "party": "Democratic",
     "office": "U.S. Senator",
     "slug": "alex-padilla",
+    "photo": "https://www.congress.gov/img/member/p000145_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Alex_Padilla",
     "contact": {
       "email": "",
@@ -160,12 +189,13 @@
     "bills": []
   },
   {
-    "name": "Laphonza Butler",
+    "name": "Adam Schiff",
     "state": "California",
     "party": "Democratic",
     "office": "U.S. Senator",
-    "slug": "laphonza-butler",
-    "ballotpediaLink": "https://ballotpedia.org/Laphonza_Butler",
+    "slug": "adam-schiff",
+    "photo": "https://www.congress.gov/img/member/677d870dfdb6cf36bbb649b3_200.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/Adam_Schiff",
     "contact": {
       "email": "",
       "phone": "",
@@ -185,6 +215,7 @@
     "party": "Democratic",
     "office": "U.S. Senator",
     "slug": "michael-bennet",
+    "photo": "https://www.congress.gov/img/member/b001267_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Michael_Bennet",
     "contact": {
       "email": "",
@@ -205,6 +236,7 @@
     "party": "Democratic",
     "office": "U.S. Senator",
     "slug": "john-hickenlooper",
+    "photo": "https://www.congress.gov/img/member/h000273_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/John_Hickenlooper",
     "contact": {
       "email": "",
@@ -225,6 +257,7 @@
     "party": "Democratic",
     "office": "U.S. Senator",
     "slug": "richard-blumenthal",
+    "photo": "https://www.congress.gov/img/member/b001277_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Richard_Blumenthal",
     "contact": {
       "email": "",
@@ -245,6 +278,7 @@
     "party": "Democratic",
     "office": "U.S. Senator",
     "slug": "chris-murphy",
+    "photo": "https://www.congress.gov/img/member/m001169_200.jpg
     "ballotpediaLink": "https://ballotpedia.org/Chris_Murphy",
     "contact": {
       "email": "",
@@ -260,12 +294,13 @@
     "bills": []
   },
   {
-    "name": "Tom Carper",
+    "name": "Lisa Blunt Rochester",
     "state": "Delaware",
     "party": "Democratic",
     "office": "U.S. Senator",
-    "slug": "tom-carper",
-    "ballotpediaLink": "https://ballotpedia.org/Tom_Carper",
+    "slug": "lisa-blunt-rochester",
+    "photo": "https://www.congress.gov/img/member/b001303_200.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/Lisa_Blunt_Rochester",
     "contact": {
       "email": "",
       "phone": "",
@@ -285,6 +320,7 @@
     "party": "Democratic",
     "office": "U.S. Senator",
     "slug": "chris-coons",
+    "photo": "https://www.congress.gov/img/member/c001088_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Chris_Coons",
     "contact": {
       "email": "",
@@ -300,12 +336,13 @@
     "bills": []
   },
   {
-    "name": "Marco Rubio",
+    "name": "Ashley B. Moody",
     "state": "Florida",
     "party": "Republican",
     "office": "U.S. Senator",
-    "slug": "marco-rubio",
-    "ballotpediaLink": "https://ballotpedia.org/Marco_Rubio",
+    "slug": "ashley-b.-moody",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Senator_Ashley_Moody_Official_Portrait.jpg/500px-Senator_Ashley_Moody_Official_Portrait.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/Ashley_B._Moody",
     "contact": {
       "email": "",
       "phone": "",
@@ -325,6 +362,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "rick-scott",
+    "photo": "https://www.congress.gov/img/member/s001217_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Rick_Scott_(Florida)",
     "contact": {
       "email": "",
@@ -345,6 +383,7 @@
     "party": "Democratic",
     "office": "U.S. Senator",
     "slug": "jon-ossoff",
+    "photo": "https://www.congress.gov/img/member/o000174_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Jon_Ossoff",
     "contact": {
       "email": "",
@@ -365,6 +404,7 @@
     "party": "Democratic",
     "office": "U.S. Senator",
     "slug": "raphael-warnock",
+    "photo": "https://www.congress.gov/img/member/w000790_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Raphael_Warnock",
     "contact": {
       "email": "",
@@ -385,6 +425,7 @@
     "party": "Democratic",
     "office": "U.S. Senator",
     "slug": "brian-schatz",
+    "photo": "https://www.congress.gov/img/member/s001194_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Brian_Schatz",
     "contact": {
       "email": "",
@@ -405,6 +446,7 @@
     "party": "Democratic",
     "office": "U.S. Senator",
     "slug": "mazie-hirono",
+    "photo": "https://www.congress.gov/img/member/h001042_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Mazie_Hirono",
     "contact": {
       "email": "",
@@ -425,6 +467,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "mike-crapo",
+    "photo": "https://www.congress.gov/img/member/c000880_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Mike_Crapo",
     "contact": {
       "email": "",
@@ -445,6 +488,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "james-risch",
+    "photo": "https://www.congress.gov/img/member/r000584_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/James_Risch",
     "contact": {
       "email": "",
@@ -465,6 +509,7 @@
     "party": "Democratic",
     "office": "U.S. Senator",
     "slug": "dick-durbin",
+    "photo": "https://www.congress.gov/img/member/d000563_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Dick_Durbin",
     "contact": {
       "email": "",
@@ -485,7 +530,29 @@
     "party": "Democratic",
     "office": "U.S. Senator",
     "slug": "tammy-duckworth",
+    "photo": "https://www.congress.gov/img/member/d000622_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Tammy_Duckworth",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+  {
+    "name": "Dick Durbin",
+    "state": "Illinois",
+    "party": "Democratic",
+    "office": "U.S. Senator",
+    "slug": "dick-durbin",
+    "photo": "https://www.congress.gov/img/member/d000563_200.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/Dick_Durbin",
     "contact": {
       "email": "",
       "phone": "",
@@ -505,6 +572,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "todd-young",
+    "photo": "https://www.congress.gov/img/member/y000064_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Todd_Young",
     "contact": {
       "email": "",
@@ -520,12 +588,13 @@
     "bills": []
   },
   {
-    "name": "Mike Braun",
+    "name": "Jim Banks",
     "state": "Indiana",
     "party": "Republican",
     "office": "U.S. Senator",
-    "slug": "mike-braun",
-    "ballotpediaLink": "https://ballotpedia.org/Mike_Braun",
+    "slug": "jim-banks",
+    "photo": "https://www.congress.gov/img/member/677d83cbfdb6cf36bbb64998_200.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/Jim_Banks",
     "contact": {
       "email": "",
       "phone": "",
@@ -545,6 +614,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "chuck-grassley",
+    "photo": "https://www.congress.gov/img/member/g000386_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Chuck_Grassley",
     "contact": {
       "email": "",
@@ -565,6 +635,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "joni-ernst",
+    "photo": "https://www.congress.gov/img/member/e000295_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Joni_Ernst",
     "contact": {
       "email": "",
@@ -585,6 +656,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "jerry-moran",
+    "photo": "https://www.congress.gov/img/member/m000934_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Jerry_Moran",
     "contact": {
       "email": "",
@@ -605,6 +677,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "roger-marshall",
+    "photo": "https://www.congress.gov/img/member/m001198_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Roger_Marshall",
     "contact": {
       "email": "",
@@ -625,6 +698,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "mitch-mcconnell",
+    "photo": "https://www.congress.gov/img/member/m000355_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Mitch_McConnell",
     "contact": {
       "email": "",
@@ -645,6 +719,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "rand-paul",
+    "photo": "https://www.congress.gov/img/member/p000603_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Rand_Paul",
     "contact": {
       "email": "",
@@ -665,6 +740,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "bill-cassidy",
+    "photo": "https://www.congress.gov/img/member/c001075_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Bill_Cassidy",
     "contact": {
       "email": "",
@@ -685,6 +761,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "john-kennedy",
+    "photo": "https://www.congress.gov/img/member/k000393_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/John_Neely_Kennedy",
     "contact": {
       "email": "",
@@ -705,6 +782,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "susan-collins",
+    "photo": "https://www.congress.gov/img/member/c001035_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Susan_Collins",
     "contact": {
       "email": "",
@@ -725,6 +803,7 @@
     "party": "Independent",
     "office": "U.S. Senator",
     "slug": "angus-king",
+    "photo": "https://www.congress.gov/img/member/k000383_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Angus_King",
     "contact": {
       "email": "",
@@ -740,12 +819,13 @@
     "bills": []
   },
   {
-    "name": "Ben Cardin",
+    "name": "Angela Alsobrooks",
     "state": "Maryland",
     "party": "Democratic",
     "office": "U.S. Senator",
-    "slug": "ben-cardin",
-    "ballotpediaLink": "https://ballotpedia.org/Ben_Cardin",
+    "slug": "angela-alsobrooks",
+    "photo": "https://www.congress.gov/img/member/67acdbbf044eb506e25958f2_200.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/Angela_Alsobrooks",
     "contact": {
       "email": "",
       "phone": "",
@@ -765,6 +845,7 @@
     "party": "Democratic",
     "office": "U.S. Senator",
     "slug": "chris-van-hollen",
+    "photo": "https://www.congress.gov/img/member/v000128_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Chris_Van_Hollen",
     "contact": {
       "email": "",
@@ -785,6 +866,7 @@
     "party": "Democratic",
     "office": "U.S. Senator",
     "slug": "elizabeth-warren",
+    "photo": "https://www.congress.gov/img/member/w000817_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Elizabeth_Warren",
     "contact": {
       "email": "",
@@ -805,6 +887,7 @@
     "party": "Democratic",
     "office": "U.S. Senator",
     "slug": "edward-markey",
+    "photo": "https://www.congress.gov/img/member/m000133_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Edward_J._Markey",
     "contact": {
       "email": "",
@@ -825,6 +908,7 @@
     "party": "Democratic",
     "office": "U.S. Senator",
     "slug": "gary-peters",
+    "photo": "https://www.congress.gov/img/member/p000595_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Gary_Peters",
     "contact": {
       "email": "",
@@ -840,12 +924,13 @@
     "bills": []
   },
   {
-    "name": "Debbie Stabenow",
+    "name": "Elissa Slotkin",
     "state": "Michigan",
     "party": "Democratic",
     "office": "U.S. Senator",
-    "slug": "debbie-stabenow",
-    "ballotpediaLink": "https://ballotpedia.org/Debbie_Stabenow",
+    "slug": "elissa-slotkin",
+    "photo": "https://www.congress.gov/img/member/p000595_200.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/Elissa_Slotkin",
     "contact": {
       "email": "",
       "phone": "",
@@ -865,6 +950,7 @@
     "party": "Democratic",
     "office": "U.S. Senator",
     "slug": "amy-klobuchar",
+    "photo": "https://www.congress.gov/img/member/k000367_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Amy_Klobuchar",
     "contact": {
       "email": "",
@@ -885,6 +971,7 @@
     "party": "Democratic",
     "office": "U.S. Senator",
     "slug": "tina-smith",
+    "photo": "https://www.congress.gov/img/member/s001203_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Tina_Smith",
     "contact": {
       "email": "",
@@ -905,6 +992,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "roger-wicker",
+    "photo": "https://www.congress.gov/img/member/f49ac425119375e9fe6a075762734079_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Roger_Wicker",
     "contact": {
       "email": "",
@@ -925,6 +1013,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "cindy-hyde-smith",
+    "photo": "https://www.congress.gov/img/member/h001079_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Cindy_Hyde-Smith",
     "contact": {
       "email": "",
@@ -945,6 +1034,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "josh-hawley",
+    "photo": "https://www.congress.gov/img/member/h001089_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Josh_Hawley",
     "contact": {
       "email": "",
@@ -965,6 +1055,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "eric-schmitt",
+    "photo": "https://www.congress.gov/img/member/b66a0806e77f63e862391b15a0b1f753_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Eric_Schmitt",
     "contact": {
       "email": "",
@@ -980,12 +1071,13 @@
     "bills": []
   },
   {
-    "name": "Jon Tester",
+    "name": "Tim Sheehy",
     "state": "Montana",
-    "party": "Democratic",
+    "party": "Republican",
     "office": "U.S. Senator",
-    "slug": "jon-tester",
-    "ballotpediaLink": "https://ballotpedia.org/Jon_Tester",
+    "slug": "tim-sheehyr",
+    "photo": "https://www.congress.gov/img/member/677d8231fdb6cf36bbb6498b_200.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/Tim_Sheehy",
     "contact": {
       "email": "",
       "phone": "",
@@ -1005,6 +1097,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "steve-daines",
+    "photo": "https://www.congress.gov/img/member/d000618_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Steve_Daines",
     "contact": {
       "email": "",
@@ -1025,6 +1118,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "deb-fischer",
+    "photo": "https://www.congress.gov/img/member/669ec7925d19788d1f2034a1_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Deb_Fischer",
     "contact": {
       "email": "",
@@ -1045,6 +1139,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "pete-ricketts",
+    "photo": "https://www.congress.gov/img/member/r000618_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Pete_Ricketts",
     "contact": {
       "email": "",
@@ -1065,6 +1160,7 @@
     "party": "Democratic",
     "office": "U.S. Senator",
     "slug": "jacky-rosen",
+    "photo": "https://www.congress.gov/img/member/r000608_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Jacky_Rosen",
     "contact": {
       "email": "",
@@ -1085,6 +1181,7 @@
     "party": "Democratic",
     "office": "U.S. Senator",
     "slug": "catherine-cortez-masto",
+    "photo": "https://www.congress.gov/img/member/c001113_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Catherine_Cortez_Masto",
     "contact": {
       "email": "",
@@ -1105,6 +1202,7 @@
     "party": "Democratic",
     "office": "U.S. Senator",
     "slug": "jeanne-shaheen",
+    "photo": "https://www.congress.gov/img/member/s001181_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Jeanne_Shaheen",
     "contact": {
       "email": "",
@@ -1125,6 +1223,7 @@
     "party": "Democratic",
     "office": "U.S. Senator",
     "slug": "maggie-hassan",
+    "photo": "https://www.congress.gov/img/member/h001076_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Maggie_Hassan",
     "contact": {
       "email": "",
@@ -1140,12 +1239,13 @@
     "bills": []
   },
   {
-    "name": "Robert Menendez",
+    "name": "Andrew Kim",
     "state": "New Jersey",
     "party": "Democratic",
     "office": "U.S. Senator",
-    "slug": "robert-menendez",
-    "ballotpediaLink": "https://ballotpedia.org/Robert_Menendez",
+    "slug": "andrew-kim",
+    "photo": "https://www.congress.gov/img/member/677d84cbfdb6cf36bbb649a1_200.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/Andrew_Kim",
     "contact": {
       "email": "",
       "phone": "",
@@ -1165,6 +1265,7 @@
     "party": "Democratic",
     "office": "U.S. Senator",
     "slug": "cory-booker",
+    "photo": "https://www.congress.gov/img/member/b001288_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Cory_Booker",
     "contact": {
       "email": "",
@@ -1185,6 +1286,7 @@
     "party": "Democratic",
     "office": "U.S. Senator",
     "slug": "ben-ray-lujan",
+    "photo": "https://www.congress.gov/img/member/l000570_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Ben_Ray_Luján",
     "contact": {
       "email": "",
@@ -1205,6 +1307,7 @@
     "party": "Democratic",
     "office": "U.S. Senator",
     "slug": "martin-heinrich",
+    "photo": "https://www.congress.gov/img/member/h001046_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Martin_Heinrich",
     "contact": {
       "email": "",
@@ -1225,6 +1328,7 @@
     "party": "Democratic",
     "office": "U.S. Senator",
     "slug": "chuck-schumer",
+    "photo": "https://www.congress.gov/img/member/s000148_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Chuck_Schumer",
     "contact": {
       "email": "",
@@ -1245,6 +1349,7 @@
     "party": "Democratic",
     "office": "U.S. Senator",
     "slug": "kirsten-gillibrand",
+    "photo": "https://www.congress.gov/img/member/g000555_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Kirsten_Gillibrand",
     "contact": {
       "email": "",
@@ -1265,6 +1370,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "ted-budd",
+    "photo": "https://www.congress.gov/img/member/b001305_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Ted_Budd",
     "contact": {
       "email": "",
@@ -1285,6 +1391,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "thom-tillis",
+    "photo": "https://www.congress.gov/img/member/t000476_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Thom_Tillis",
     "contact": {
       "email": "",
@@ -1305,6 +1412,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "john-hoeven",
+    "photo": "https://www.congress.gov/img/member/h001061_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/John_Hoeven",
     "contact": {
       "email": "",
@@ -1325,6 +1433,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "kevin-cramer",
+    "photo": "https://www.congress.gov/img/member/c001096_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Kevin_Cramer",
     "contact": {
       "email": "",
@@ -1340,12 +1449,13 @@
     "bills": []
   },
   {
-    "name": "Sherrod Brown",
+    "name": "Jon Husted",
     "state": "Ohio",
     "party": "Democratic",
     "office": "U.S. Senator",
-    "slug": "sherrod-brown",
-    "ballotpediaLink": "https://ballotpedia.org/Sherrod_Brown",
+    "slug": "jon-husted",
+    "photo": "https://www.congress.gov/img/member/67f0316b1b05a5a598f7fdf3_200.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/Jon_Husted",
     "contact": {
       "email": "",
       "phone": "",
@@ -1360,12 +1470,13 @@
     "bills": []
   },
   {
-    "name": "J.D. Vance",
+    "name": "Bernie Moreno",
     "state": "Ohio",
     "party": "Republican",
     "office": "U.S. Senator",
-    "slug": "jd-vance",
-    "ballotpediaLink": "https://ballotpedia.org/J.D._Vance",
+    "slug": "bernie-moreno",
+    "photo": "https://www.congress.gov/img/member/67c8694e6159152e59828afb_200.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/Bernie_Moreno",
     "contact": {
       "email": "",
       "phone": "",
@@ -1385,6 +1496,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "james-lankford",
+    "photo": "https://www.congress.gov/img/member/l000575_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/James_Lankford",
     "contact": {
       "email": "",
@@ -1405,6 +1517,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "markwayne-mullin",
+    "photo": "https://www.congress.gov/img/member/m001190_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Markwayne_Mullin",
     "contact": {
       "email": "",
@@ -1425,6 +1538,7 @@
     "party": "Democratic",
     "office": "U.S. Senator",
     "slug": "ron-wyden",
+    "photo": "https://www.congress.gov/img/member/w000779_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Ron_Wyden",
     "contact": {
       "email": "",
@@ -1445,6 +1559,7 @@
     "party": "Democratic",
     "office": "U.S. Senator",
     "slug": "jeff-merkley",
+    "photo": "https://www.congress.gov/img/member/m001176_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Jeff_Merkley",
     "contact": {
       "email": "",
@@ -1460,12 +1575,13 @@
     "bills": []
   },
   {
-    "name": "Bob Casey Jr.",
+    "name": "David McCormick",
     "state": "Pennsylvania",
-    "party": "Democratic",
+    "party": "Republican",
     "office": "U.S. Senator",
-    "slug": "bob-casey-jr",
-    "ballotpediaLink": "https://ballotpedia.org/Bob_Casey_Jr.",
+    "slug": "david-mccormick",
+    "photo": "https://www.congress.gov/img/member/677d85e0fdb6cf36bbb649aa_200.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/David_McCormick.",
     "contact": {
       "email": "",
       "phone": "",
@@ -1485,6 +1601,7 @@
     "party": "Democratic",
     "office": "U.S. Senator",
     "slug": "john-fetterman",
+    "photo": "https://www.congress.gov/img/member/f000479_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/John_Fetterman",
     "contact": {
       "email": "",
@@ -1505,6 +1622,7 @@
     "party": "Democratic",
     "office": "U.S. Senator",
     "slug": "jack-reed",
+    "photo": "https://www.congress.gov/img/member/r000122_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Jack_Reed",
     "contact": {
       "email": "",
@@ -1525,6 +1643,7 @@
     "party": "Democratic",
     "office": "U.S. Senator",
     "slug": "sheldon-whitehouse",
+    "photo": "https://www.congress.gov/img/member/w000802_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Sheldon_Whitehouse",
     "contact": {
       "email": "",
@@ -1545,6 +1664,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "lindsey-graham",
+    "photo": "https://www.congress.gov/img/member/g000359_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Lindsey_Graham",
     "contact": {
       "email": "",
@@ -1565,6 +1685,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "tim-scott",
+    "photo": "https://www.congress.gov/img/member/s001184_200.jpg"
     "ballotpediaLink": "https://ballotpedia.org/Tim_Scott_(South_Carolina)",
     "contact": {
       "email": "",
@@ -1585,6 +1706,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "mike-rounds",
+    "photo": "https://www.congress.gov/img/member/r000605_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Mike_Rounds",
     "contact": {
       "email": "",
@@ -1605,6 +1727,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "john-thune",
+    "photo": "https://www.congress.gov/img/member/t000250_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/John_Thune",
     "contact": {
       "email": "",
@@ -1625,6 +1748,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "marsha-blackburn",
+    "photo": "https://www.congress.gov/img/member/b001243_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Marsha_Blackburn",
     "contact": {
       "email": "",
@@ -1645,6 +1769,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "bill-hagerty",
+    "photo": "https://www.congress.gov/img/member/h000601_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Bill_Hagerty",
     "contact": {
       "email": "",
@@ -1665,6 +1790,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "john-cornyn",
+    "photo": "https://www.congress.gov/img/member/c001056_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/John_Cornyn",
     "contact": {
       "email": "",
@@ -1685,6 +1811,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "ted-cruz",
+    "photo": "https://www.congress.gov/img/member/c001098_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Ted_Cruz",
     "contact": {
       "email": "",
@@ -1700,12 +1827,13 @@
     "bills": []
   },
   {
-    "name": "Mitt Romney",
+    "name": "John Curtis",
     "state": "Utah",
     "party": "Republican",
     "office": "U.S. Senator",
-    "slug": "mitt-romney",
-    "ballotpediaLink": "https://ballotpedia.org/Mitt_Romney",
+    "slug": "john-curtis",
+    "photo": "https://www.congress.gov/img/member/1b9d1007d6895a37da28a67cd8149803_200.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/John_Curtis_(Utah)",
     "contact": {
       "email": "",
       "phone": "",
@@ -1725,6 +1853,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "mike-lee",
+    "photo": "https://www.congress.gov/img/member/l000577_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Mike_Lee_(Utah)",
     "contact": {
       "email": "",
@@ -1745,6 +1874,7 @@
     "party": "Independent",
     "office": "U.S. Senator",
     "slug": "bernie-sanders",
+    "photo": "https://www.congress.gov/img/member/s000033_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Bernie_Sanders",
     "contact": {
       "email": "",
@@ -1765,6 +1895,7 @@
     "party": "Democratic",
     "office": "U.S. Senator",
     "slug": "peter-welch",
+    "photo": "https://www.congress.gov/img/member/fd3cb364b8bf93c25834cff750637802_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Peter_Welch",
     "contact": {
       "email": "",
@@ -1785,6 +1916,7 @@
     "party": "Democratic",
     "office": "U.S. Senator",
     "slug": "mark-warner",
+    "photo": "https://www.congress.gov/img/member/w000805_200.jpg"
     "ballotpediaLink": "https://ballotpedia.org/Mark_Warner",
     "contact": {
       "email": "",
@@ -1805,6 +1937,7 @@
     "party": "Democratic",
     "office": "U.S. Senator",
     "slug": "tim-kaine",
+    "photo": "https://www.congress.gov/img/member/k000384_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Tim_Kaine",
     "contact": {
       "email": "",
@@ -1825,6 +1958,7 @@
     "party": "Democratic",
     "office": "U.S. Senator",
     "slug": "maria-cantwell",
+    "photo": "https://www.congress.gov/img/member/c000127_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Maria_Cantwell",
     "contact": {
       "email": "",
@@ -1845,6 +1979,7 @@
     "party": "Democratic",
     "office": "U.S. Senator",
     "slug": "patty-murray",
+    "photo": "https://www.congress.gov/img/member/1b52ad6d215684d847d1c2bf28b9b262_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Patty_Murray",
     "contact": {
       "email": "",
@@ -1860,12 +1995,13 @@
     "bills": []
   },
   {
-    "name": "Joe Manchin",
+    "name": "Jim Justice",
     "state": "West Virginia",
     "party": "Democratic",
     "office": "U.S. Senator",
-    "slug": "joe-manchin",
-    "ballotpediaLink": "https://ballotpedia.org/Joe_Manchin",
+    "slug": "jim-justice",
+    "photo": "https://www.congress.gov/img/member/67c86b5e6159152e59828b1a_200.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/Jim_Justice",
     "contact": {
       "email": "",
       "phone": "",
@@ -1885,6 +2021,7 @@
     "party": "Republican",
     "office": "U.S. Senator",
     "slug": "shelley-moore-capito",
+    "photo": "https://www.congress.gov/img/member/c001047_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Shelley_Moore_Capito",
     "contact": {
       "email": "",
@@ -1899,13 +2036,35 @@
     "platform": "",
     "bills": []
   },
-  {
-    "name": "Bernie Sanders",
-    "state": "Vermont",
-    "party": "Independent",
+    {
+    "name": "Tammy Baldwin",
+    "state": "Wisconsin",
+    "party": "Democratic",
     "office": "U.S. Senator",
-    "slug": "bernie-sanders",
-    "ballotpediaLink": "https://ballotpedia.org/Bernie_Sanders",
+    "slug": "tammy-baldwin",
+    "photo": "https://www.congress.gov/img/member/b001230_200.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/Tammy_Baldwin",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": ""
+    },
+    "social": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": ""
+    },
+    "platform": "",
+    "bills": []
+  },
+    {
+    "name": "Ronald Johnson",
+    "state": "Wisconsin",
+    "party": "Republican",
+    "office": "U.S. Senator",
+    "slug": "ronald-johnson",
+    "photo": "https://www.congress.gov/img/member/j000293_200.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/Ron_Johnson_(Wisconsin)",
     "contact": {
       "email": "",
       "phone": "",
@@ -1920,12 +2079,13 @@
     "bills": []
   },
   {
-    "name": "Peter Welch",
-    "state": "Vermont",
-    "party": "Democratic",
+    "name": "John Barrasso",
+    "state": "Wyoming",
+    "party": "Republican",
     "office": "U.S. Senator",
-    "slug": "peter-welch",
-    "ballotpediaLink": "https://ballotpedia.org/Peter_Welch",
+    "slug": "john-barrasso",
+    "photo": "https://www.congress.gov/img/member/b001261_200.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/John_Burrasso",
     "contact": {
       "email": "",
       "phone": "",
@@ -1939,53 +2099,14 @@
     "platform": "",
     "bills": []
   },
-  {
-    "name": "Mark Warner",
-    "state": "Virginia",
-    "party": "Democratic",
+   {
+    "name": "Cynthia Lummis",
+    "state": "Wyoming",
+    "party": "Republican",
     "office": "U.S. Senator",
-    "slug": "mark-warner",
-    "ballotpediaLink": "https://ballotpedia.org/Mark_Warner",
-    "contact": {
-      "email": "",
-      "phone": "",
-      "website": ""
-    },
-    "social": {
-      "twitter": "",
-      "facebook": "",
-      "instagram": ""
-    },
-    "platform": "",
-    "bills": []
-  },
-  {
-    "name": "Tim Kaine",
-    "state": "Virginia",
-    "party": "Democratic",
-    "office": "U.S. Senator",
-    "slug": "tim-kaine",
-    "ballotpediaLink": "https://ballotpedia.org/Tim_Kaine",
-    "contact": {
-      "email": "",
-      "phone": "",
-      "website": ""
-    },
-    "social": {
-      "twitter": "",
-      "facebook": "",
-      "instagram": ""
-    },
-    "platform": "",
-    "bills": []
-  },
-  {
-    "name": "Maria Cantwell",
-    "state": "Washington",
-    "party": "Democratic",
-    "office": "U.S. Senator",
-    "slug": "maria-cantwell",
-    "ballotpediaLink": "https://ballotpedia.org/Maria_Cantwell",
+    "slug": "cynthia-lummis",
+    "photo": "https://www.congress.gov/img/member/l000571_200.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/Cynthia_Lummis",
     "contact": {
       "email": "",
       "phone": "",
@@ -1999,4 +2120,6 @@
     "platform": "",
     "bills": []
   }
-]
+]  
+  
+ 
