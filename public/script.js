@@ -2,6 +2,11 @@ let allOfficials = []
 
 function renderCards(data, containerId) {
   const container = document.getElementById(containerId)
+  if (!container) {
+    console.warn(`Missing container: ${containerId}`)
+    return
+  }
+
   const cardsHTML = data.map(person => {
     const imageUrl = person.photo || 'images/fallback.jpg'
     return `
@@ -49,13 +54,20 @@ function expandCard(slug) {
 }
 
 function renderMyOfficials(state) {
+  console.log("Rendering officials for:", state)
   const matches = allOfficials.filter(person => person.state === state)
   renderCards(matches, 'my-cards')
 }
 
 function populateCompareDropdowns() {
+  console.log("Populating compare dropdowns")
   const left = document.getElementById('compare-left')
   const right = document.getElementById('compare-right')
+
+  if (!left || !right) {
+    console.warn("Compare dropdowns not found")
+    return
+  }
 
   left.innerHTML = '<option value="">Select official A</option>'
   right.innerHTML = '<option value="">Select official B</option>'
@@ -70,15 +82,18 @@ function populateCompareDropdowns() {
 
 function renderCompareCard(slug, containerId) {
   const person = allOfficials.find(p => p.slug === slug)
+  const container = document.getElementById(containerId)
+  if (!container) return
+
   if (!person) {
-    document.getElementById(containerId).innerHTML = `<p>No match found for: ${slug}</p>`
+    container.innerHTML = `<p>No match found for: ${slug}</p>`
     return
   }
 
   const imageUrl = person.photo || 'images/fallback.jpg'
   const link = person.ballotpediaLink || person.contact?.website || null
 
-  document.getElementById(containerId).innerHTML = `
+  container.innerHTML = `
     <div class="card">
       <img src="${imageUrl}" alt="${person.name}" onerror="this.src='images/fallback.jpg'" />
       <h3>${person.name}</h3>
@@ -95,6 +110,14 @@ function renderCompareCard(slug, containerId) {
   `
 }
 
+function showTab(id) {
+  const sections = ['my-officials', 'compare', 'top10', 'bottom10', 'calendar', 'registration']
+  sections.forEach(sectionId => {
+    const el = document.getElementById(sectionId)
+    if (el) el.style.display = sectionId === id ? 'block' : 'none'
+  })
+}
+
 async function loadData() {
   try {
     console.log("Starting loadData()")
@@ -105,7 +128,6 @@ async function loadData() {
 
     allOfficials = [...house, ...governors, ...senate]
     console.log("Loaded officials:", allOfficials.length)
-    console.log("First official:", allOfficials[0])
 
     populateCompareDropdowns()
 
@@ -115,8 +137,7 @@ async function loadData() {
       renderMyOfficials('North Carolina')
 
       stateSelect.addEventListener('change', function (e) {
-        const selectedState = e.target.value
-        renderMyOfficials(selectedState)
+        renderMyOfficials(e.target.value)
       })
     } else {
       console.warn("State selector not found")
@@ -124,14 +145,6 @@ async function loadData() {
   } catch (err) {
     console.error("Error loading data:", err)
   }
-}
-
-function showTab(id) {
-  const sections = ['my-officials', 'compare', 'top10', 'bottom10', 'calendar', 'registration']
-  sections.forEach(sectionId => {
-    const el = document.getElementById(sectionId)
-    if (el) el.style.display = sectionId === id ? 'block' : 'none'
-  })
 }
 
 document.addEventListener('DOMContentLoaded', function () {
