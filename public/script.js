@@ -107,7 +107,7 @@ function renderCompareCard(slug, containerId) {
       <p><strong>Contact:</strong> ${person.contact?.email || '—'} | ${person.contact?.phone || '—'} | ${person.contact?.website || '—'}</p>
       <p><strong>Social:</strong> Twitter: ${person.social?.twitter || '—'}, Facebook: ${person.social?.facebook || '—'}, Instagram: ${person.social?.instagram || '—'}</p>
     </div>
-  `
+  
 }
 
 function showTab(id) {
