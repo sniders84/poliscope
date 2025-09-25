@@ -57,6 +57,9 @@ function populateCompareDropdowns() {
   const left = document.getElementById('compare-left')
   const right = document.getElementById('compare-right')
 
+  left.innerHTML = '<option value="">Select official A</option>'
+  right.innerHTML = '<option value="">Select official B</option>'
+
   allOfficials.forEach(person => {
     const label = `${person.name} (${person.state}${person.party ? ', ' + person.party : ''})`
     const option = new Option(label, person.slug)
@@ -94,11 +97,15 @@ function renderCompareCard(slug, containerId) {
 
 async function loadData() {
   try {
+    console.log("Starting loadData()")
+
     const house = await fetch('House.json').then(res => res.json())
     const governors = await fetch('Governors.json').then(res => res.json())
     const senate = await fetch('Senate.json').then(res => res.json())
 
     allOfficials = [...house, ...governors, ...senate]
+    console.log("Loaded officials:", allOfficials.length)
+    console.log("First official:", allOfficials[0])
 
     populateCompareDropdowns()
 
@@ -152,4 +159,5 @@ function showTab(id) {
     if (el) el.style.display = sectionId === id ? 'block' : 'none'
   })
 }
+
 loadData()
