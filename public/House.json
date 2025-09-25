@@ -50,7 +50,7 @@
     "party": "Republican",
     "office": "U.S. Representative",
     "slug": "mike-rogers",
-     "photo": "https://www.congress.gov/img/member/116_rp_al_3_rogers_mike_200.jpg",
+    "photo": "https://www.congress.gov/img/member/116_rp_al_3_rogers_mike_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Mike_Rogers_(Alabama)",
     "contact": {
       "email": "",
@@ -1178,7 +1178,7 @@
       "phone": "",
       "website": ""
     },
-     "social": {
+    "social": {
       "twitter": "",
       "facebook": "",
       "instagram": ""
@@ -9674,5 +9674,5 @@
     },
     "platform": "",
     "bills": []
-  }  
-]  
+  }
+]
