@@ -1,4 +1,4 @@
-console.log("✅ script-fixed.js loaded")
+console.log("✅ script.js loaded")
 let allOfficials = []
 
 function renderCards(data, containerId) {
@@ -56,7 +56,12 @@ function expandCard(slug) {
 
 function renderMyOfficials(state) {
   console.log("Rendering officials for:", state)
-  const matches = allOfficials.filter(person => person.state === state)
+  const matches = allOfficials.filter(person =>
+    person.state === state ||
+    person.stateName === state ||
+    person.stateAbbreviation === state
+  )
+  console.log(`Found ${matches.length} officials for ${state}`)
   renderCards(matches, 'my-cards')
 }
 
@@ -196,5 +201,4 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 })
 
-// ✅ Expose showTab globally so buttons work
 window.showTab = showTab
