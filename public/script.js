@@ -134,6 +134,10 @@ async function loadData() {
 
     const stateSelect = document.getElementById('state-select')
     if (stateSelect) {
+      const states = [...new Set(allOfficials.map(p => p.state))].sort()
+      stateSelect.innerHTML = '<option value="">Choose a state</option>' +
+        states.map(state => `<option value="${state}">${state}</option>`).join('')
+
       stateSelect.value = 'North Carolina'
       renderMyOfficials('North Carolina')
 
