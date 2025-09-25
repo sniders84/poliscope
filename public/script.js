@@ -203,4 +203,19 @@ document.addEventListener('DOMContentLoaded', function () {
       const resultsHTML = matches.map(person => {
         const label = `${person.name} (${person.state}${person.party ? ', ' + person.party : ''})`
         const link = person.ballotpediaLink || person.contact?.website || null
+                if (link) {
+          return `<li><a href="${link}" target="_blank" rel="noopener noreferrer">${label}</a></li>`
+        } else {
+          return `<li>${label}</li>`
+        }
+      }).join('')
+
+      document.getElementById('results').innerHTML = resultsHTML
+    })
+  }
+})
+
+// ✅ Expose showTab globally so buttons work
+window.showTab = showTab
+
 
