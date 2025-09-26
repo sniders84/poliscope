@@ -1,4 +1,80 @@
 console.log("✅ script.js loaded");
+const civicEvents = [
+  {
+    title: "General Election",
+    date: "2025-11-04",
+    state: "Alabama",
+    type: "Election",
+    link: "https://www.vote411.org/upcoming/1/events",
+    details: "Statewide general election including Governor and House seats."
+  },
+  {
+    title: "Municipal Runoff Election (if needed)",
+    date: "2025-10-07",
+    state: "Alabama",
+    type: "Election",
+    link: "https://www.sos.alabama.gov/alabama-votes/voter/election-information/2025",
+    details: "Runoff elections for municipalities where no candidate received a majority."
+  },
+  {
+    title: "Town Hall with Gov. Kay Ivey",
+    date: "2025-10-15",
+    state: "Alabama",
+    type: "Public Engagement",
+    link: "https://governor.alabama.gov/newsroom/events",
+    details: "Public Q&A session in Montgomery. Open to all residents."
+  },
+  {
+    title: "Last Day to Register for General Election",
+    date: "2025-10-21",
+    state: "Alabama",
+    type: "Deadline",
+    link: "https://www.sos.alabama.gov/alabama-votes/voter/register-to-vote",
+    details: "Deadline to register to vote in the November 4 general election."
+  },
+  {
+    title: "Signed 'Working for Alabama' Legislative Package",
+    date: "2025-05-01",
+    state: "Alabama",
+    type: "Bill Signing",
+    link: "https://governor.alabama.gov/newsroom/2024/05/governor-ivey-signs-landmark-working-for-alabama-legislative-package-into-law/",
+    details: "Six-bill package to boost workforce participation, childcare access, and rural job growth."
+  }
+];
+function renderCalendar(events, selectedState) {
+  const container = document.getElementById('calendar-container');
+  if (!container) return;
+
+  const today = new Date();
+
+  const filtered = events
+    .filter(e => e.state === selectedState && new Date(e.date) >= today)
+    .sort((a, b) => new Date(a.date) - new Date(b.date));
+
+  const html = filtered.map(event => `
+    <div class="card" onclick="openEventModal('${event.title}', '${event.date}', '${event.state}', '${event.type}', '${event.details}', '${event.link}')">
+      <h3>${event.title}</h3>
+      <p><strong>Date:</strong> ${event.date}</p>
+      <p><strong>Type:</strong> ${event.type}</p>
+    </div>
+  `).join('');
+
+  container.innerHTML = html || `<p>No upcoming events for ${selectedState}.</p>`;
+}
+function openEventModal(title, date, state, type, details, link) {
+  document.getElementById('modal-content').innerHTML = `
+    <div class="event-modal">
+      <h2>${title}</h2>
+      <p><strong>Date:</strong> ${date}</p>
+      <p><strong>State:</strong> ${state}</p>
+      <p><strong>Type:</strong> ${type}</p>
+      <p>${details}</p>
+      <a href="${link}" target="_blank" rel="noopener noreferrer">More Info</a>
+    </div>
+  `;
+  document.getElementById('modal-overlay').style.display = 'flex';
+}
+
 let allOfficials = [];
 
 function renderCards(data, containerId) {
@@ -264,7 +340,16 @@ document.addEventListener('DOMContentLoaded', function () {
   const results = document.getElementById('results');
 
   if (search) {
-    search.addEventListener('input', function (e) {
+    search.addEventListener('input', function (e) const stateSelect = document.getElementById('state-select');
+if (stateSelect) {
+  const defaultState = stateSelect.value || 'Alabama';
+  renderCalendar(civicEvents, defaultState);
+
+  stateSelect.addEventListener('change', () => {
+    renderCalendar(civicEvents, stateSelect.value);
+  });
+}
+{
       const query = e.target.value.toLowerCase();
       if (!query) {
         results.innerHTML = '';
