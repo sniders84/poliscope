@@ -22,16 +22,24 @@
   "engagement": "Held 12 town halls, signed 8 bills, and issued 3 executive orders in 2025",
   "billsSigned": [
   {
-    "title": "Alabama Literacy Act (HB388)",
+    "title": "Alabama Literacy Act (HB388, 2019)",
     "link": "https://legiscan.com/AL/bill/HB388/2019"
   },
   {
-    "title": "Gender-Affirming Care Ban (SB184)",
+    "title": "Gender-Affirming Care Ban (SB184, 2022)",
     "link": "https://legiscan.com/AL/bill/SB184/2022"
   },
   {
-    "title": "COVID-19 Relief Bill (HB170)",
+    "title": "COVID-19 Relief Legislation (HB170, 2021)",
     "link": "https://governor.alabama.gov/newsroom/2021/03/governor-ivey-signs-covid-19-relief-legislation/"
+  },
+  {
+    "title": "The Game Plan Economic Development Package (2023)",
+    "link": "https://governor.alabama.gov/newsroom/2023/06/governor-ivey-signs-the-game-plan-economic-development-package/"
+  },
+  {
+    "title": "Working for Alabama Legislative Package (2024)",
+    "link": "https://governor.alabama.gov/newsroom/2024/05/governor-ivey-signs-landmark-working-for-alabama-legislative-package-into-law/"
   }
 ],
   "vetoes": "Rarely uses veto power; most legislation is signed or allowed to pass without signature",
