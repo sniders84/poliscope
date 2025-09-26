@@ -71,6 +71,7 @@ const modalHTML = `
       ${person.endorsements ? `<p><strong>Endorsements:</strong> ${person.endorsements}</p>` : ''}
       ${person.platform ? `<p><strong>Platform:</strong> ${person.platform}</p>` : ''}
       ${person.proposals ? `<p><strong>Legislative Proposals:</strong> ${person.proposals}</p>` : ''}
+      ${person.engagement ? `<p><strong>Public Engagement:</strong> ${person.engagement}</p>` : ''}
       ${person.billsSigned?.length ? `
   <p><strong>Bills Signed:</strong></p>
   <ul>
