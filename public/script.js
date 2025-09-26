@@ -102,7 +102,7 @@ function renderTop10() {
     .sort((a, b) => Number(b.score) - Number(a.score))
     .slice(0, 10)
 
-  renderCards(top, 'top10')
+  renderCards(top, 'top10-cards')
 }
 
 function renderBottom10() {
@@ -111,7 +111,7 @@ function renderBottom10() {
     .sort((a, b) => Number(a.score) - Number(b.score))
     .slice(0, 10)
 
-  renderCards(bottom, 'bottom10')
+  renderCards(bottom, 'bottom10-cards')
 }
 
 function populateCompareDropdowns() {
@@ -193,83 +193,4 @@ async function loadData() {
         renderMyOfficials(e.target.value)
       })
     }
-
-    renderTop10()
-    renderBottom10()
-  } catch (err) {
-    console.error("Error loading data:", err)
-  }
-}
-
-function waitForHouseData() {
-  return new Promise(resolve => {
-    const check = () => {
-      if (window.cleanedHouse && window.cleanedHouse.length > 0) {
-        resolve()
-      } else {
-        setTimeout(check, 50)
-      }
-    }
-    check()
-  })
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-  loadData()
-
-  const left = document.getElementById('compare-left')
-  const right = document.getElementById('compare-right')
-  const search = document.getElementById('search')
-  const results = document.getElementById('results')
-
-  if (left) {
-    left.addEventListener('change', function (e) {
-      renderCompareCard(e.target.value, 'compare-card-left')
-    })
-  }
-
-  if (right) {
-    right.addEventListener('change', function (e) {
-      renderCompareCard(e.target.value, 'compare-card-right')
-    })
-  }
-
-  if (search) {
-    search.addEventListener('input', function (e) {
-      const query = e.target.value.toLowerCase()
-      if (!query) {
-        results.innerHTML = ''
-        return
-      }
-
-      const matches = allOfficials.filter(person =>
-        person.name.toLowerCase().includes(query) ||
-        person.state.toLowerCase().includes(query) ||
-        (person.party && person.party.toLowerCase().includes(query))
-      )
-
-      const resultsHTML = matches.map(person => {
-        const label = `${person.name} (${person.state}${person.party ? ', ' + person.party : ''})`
-        const link = person.ballotpediaLink || person.contact?.website || null
-
-        if (link) {
-          return `<li><a href="${link}" target="_blank" rel="noopener noreferrer">${label}</a></li>`
-        } else {
-          return `<li>${label}</li>`
-        }
-      }).join('')
-
-      results.innerHTML = resultsHTML
-    })
-
-    document.addEventListener('click', function (e) {
-      if (!search.contains(e.target) && !results.contains(e.target)) {
-        results.innerHTML = ''
-        search.value = ''
-      }
-    })
-  }
-})
-
-window.showTab = showTab
 
