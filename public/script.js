@@ -99,22 +99,19 @@ function renderMyOfficials(state) {
   renderCards(matches, 'my-cards')
 }
 
-function renderTop10() {
-  const top = [...allOfficials]
-    .filter(p => !isNaN(Number(p.score)))
-    .sort((a, b) => Number(b.score) - Number(a.score))
-    .slice(0, 10)
+function renderRankings() {
+  const scored = allOfficials.filter(p => !isNaN(Number(p.score)))
 
-  renderCards(top, 'top10-cards')
-}
+  const top10 = scored.sort((a, b) => b.score - a.score).slice(0, 10)
+  renderCards(top10, 'top10-overall')
 
-function renderBottom10() {
-  const bottom = [...allOfficials]
-    .filter(p => !isNaN(Number(p.score)))
-    .sort((a, b) => Number(a.score) - Number(b.score))
-    .slice(0, 10)
+  const governors = scored.filter(p => p.office?.includes("Governor")).sort((a, b) => b.score - a.score)
+  const senators = scored.filter(p => p.office?.includes("Senator")).sort((a, b) => b.score - a.score)
+  const house = scored.filter(p => p.office?.includes("Representative")).sort((a, b) => b.score - a.score)
 
-  renderCards(bottom, 'bottom10-cards')
+  renderCards(governors, 'rankings-governors')
+  renderCards(senators, 'rankings-senators')
+  renderCards(house, 'rankings-house')
 }
 
 function renderRookies() {
@@ -185,106 +182,4 @@ function renderCompareCard(slug, containerId) {
 }
 
 function showTab(id) {
-  const sections = ['my-officials', 'compare', 'top10', 'bottom10', 'rookies', 'calendar', 'registration']
-  sections.forEach(sectionId => {
-    const el = document.getElementById(sectionId)
-        if (el) el.style.display = sectionId === id ? 'block' : 'none'
-  })
-
-  const results = document.getElementById('results')
-  if (results) results.innerHTML = ''
-  const search = document.getElementById('search')
-  if (search) search.value = ''
-}
-
-async function loadData() {
-  try {
-    await waitForHouseData()
-
-    const house = window.cleanedHouse || []
-    const governors = await fetch('Governors.json').then(res => res.json())
-    const senate = await fetch('Senate.json').then(res => res.json())
-
-    allOfficials = [...house, ...governors, ...senate]
-
-    populateCompareDropdowns()
-
-    const stateSelect = document.getElementById('state-select')
-    if (stateSelect) {
-      const states = [...new Set(allOfficials.map(p => p.state))].sort()
-      stateSelect.innerHTML = '<option value="">Choose a state</option>' +
-        states.map(state => `<option value="${state}">${state}</option>`).join('')
-
-      stateSelect.value = 'North Carolina'
-      renderMyOfficials('North Carolina')
-
-      stateSelect.addEventListener('change', function (e) {
-        renderMyOfficials(e.target.value)
-      })
-    }
-
-    renderTop10()
-    renderBottom10()
-    renderRookies()
-  } catch (err) {
-    console.error("Error loading data:", err)
-  }
-}
-
-function waitForHouseData() {
-  return new Promise(resolve => {
-    const check = () => {
-      if (window.cleanedHouse && window.cleanedHouse.length > 0) {
-        resolve()
-      } else {
-        setTimeout(check, 50)
-      }
-    }
-    check()
-  })
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-  loadData()
-
-  const search = document.getElementById('search')
-  const results = document.getElementById('results')
-
-  if (search) {
-    search.addEventListener('input', function (e) {
-      const query = e.target.value.toLowerCase()
-      if (!query) {
-        results.innerHTML = ''
-        return
-      }
-
-      const matches = allOfficials.filter(person =>
-        person.name.toLowerCase().includes(query) ||
-        person.state.toLowerCase().includes(query) ||
-        (person.party && person.party.toLowerCase().includes(query))
-      )
-
-      const resultsHTML = matches.map(person => {
-        const label = `${person.name} (${person.state}${person.party ? ', ' + person.party : ''})`
-        const link = person.ballotpediaLink || person.contact?.website || null
-
-        if (link) {
-          return `<li><a href="${link}" target="_blank" rel="noopener noreferrer">${label}</a></li>`
-        } else {
-          return `<li>${label}</li>`
-        }
-      }).join('')
-
-      results.innerHTML = resultsHTML
-    })
-
-    document.addEventListener('click', function (e) {
-      if (!search.contains(e.target) && !results.contains(e.target)) {
-        results.innerHTML = ''
-        search.value = ''
-      }
-    })
-  }
-})
-
-window.showTab = showTab
+  const sections = ['my-officials', 'compare', 'rankings', 'rookies
