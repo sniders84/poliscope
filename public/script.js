@@ -52,6 +52,16 @@ function expandCard(slug) {
     return `<tr><td>${label}</td><td>${value}/10</td></tr>`
   }).join('')
 
+let billsHTML = ''
+if (person.billsSigned?.length) {
+  billsHTML = `
+    <p><strong>Bills Signed:</strong></p>
+    <ul>
+      ${person.billsSigned.map(bill => `<li><a href="${bill.link}" target="_blank">${bill.title}</a></li>`).join('')}
+    </ul>
+  `
+}
+
 const modalHTML = `
   <div class="modal-container">
     <div class="modal-left">
@@ -72,14 +82,7 @@ const modalHTML = `
       ${person.platform ? `<p><strong>Platform:</strong> ${person.platform}</p>` : ''}
       ${person.proposals ? `<p><strong>Legislative Proposals:</strong> ${person.proposals}</p>` : ''}
       ${person.engagement ? `<p><strong>Public Engagement:</strong> ${person.engagement}</p>` : ''}
-      ${person.billsSigned?.length ? `
-        <p><strong>Bills Signed:</strong></p>
-        <ul>
-          ${person.billsSigned.map(bill => `
-            <li><a href="${bill.link}" target="_blank">${bill.title}</a></li>
-          `).join('')}
-        </ul>
-      ` : ''}
+      ${billsHTML}
       ${person.vetoes ? `<p><strong>Vetoes:</strong> ${person.vetoes}</p>` : ''}
       ${person.salary ? `<p><strong>Salary:</strong> ${person.salary}</p>` : ''}
       ${person.predecessor ? `<p><strong>Predecessor:</strong> ${person.predecessor}</p>` : ''}
