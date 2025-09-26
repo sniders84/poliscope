@@ -169,4 +169,18 @@ function renderCompareCard(slug, containerId) {
       <p><strong>Office:</strong> ${person.office || person.position || ''}</p>
       <p><strong>State:</strong> ${person.state}</p>
       <p><strong>Party:</strong> ${person.party || '—'}</p>
-      <p><strong>Term:</strong> ${person.termStart ||
+      <p><strong>Term:</strong> ${person.termStart || '—'} to ${person.termEnd || '—'}</p>
+      <p><strong>Approval:</strong> ${person.approval || person.score || '—'}%</p>
+      ${link ? `<p><a href="${link}" target="_blank">Ballotpedia Profile</a></p>` : ''}
+    </div>
+  `
+}
+
+function showTab(id) {
+  const sections = ['my-officials', 'compare', 'top10', 'bottom10', 'rookies', 'calendar', 'registration']
+  sections.forEach(sectionId => {
+    const el = document.getElementById(sectionId)
+    if (el) el.style.display = sectionId === id ? 'block' : 'none'
+  })
+
+  const
