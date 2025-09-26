@@ -55,16 +55,6 @@ function expandCard(slug) {
 let billsHTML = ''
 if (person.billsSigned?.length) {
   billsHTML = `
-    <p><strong>Bills Signed:</strong></p>
-    <ul>
-      ${person.billsSigned.map(bill => `<li><a href="${bill.link}" target="_blank">${bill.title}</a></li>`).join('')}
-    </ul>
-  `
-}
-
-let billsHTML = ''
-if (person.billsSigned?.length) {
-  billsHTML = `
     <p><strong>Key Bills Signed:</strong></p>
     <ul>
       ${person.billsSigned.map(bill => `<li><a href="${bill.link}" target="_blank">${bill.title}</a></li>`).join('')}
@@ -117,7 +107,6 @@ const modalHTML = `
 
 document.getElementById('modal-content').innerHTML = modalHTML
 document.getElementById('modal-overlay').style.display = 'flex'
-
 }
 
 function closeModal() {
