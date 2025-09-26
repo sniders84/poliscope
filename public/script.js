@@ -18,8 +18,8 @@ function renderCards(data, containerId) {
                        person.party?.toLowerCase().includes("constit") ? "#984ea3" :
                        "#cccccc";
 
-    const isRookie = Number(person.termStart) >= new Date().getFullYear() - 6;
-    const rookieBadge = isRookie ? '<span class="badge">🟢 Rookie</span>' : '';
+   <h3>${person.name}</h3>
+
 
     return `
       <div class="card" onclick="expandCard('${person.slug}')" style="border-left: 8px solid ${partyColor};">
