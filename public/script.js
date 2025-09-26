@@ -29,8 +29,7 @@ function renderCards(data, containerId) {
         <p>${person.district || ''}</p>
         <p>${person.state}${person.party ? ', ' + person.party : ''}</p>
         <p>Term: ${person.termStart || '—'} to ${person.termEnd || '—'}</p>
-        <p>Approval: ${person.approval || person.score || '—'}%</p>
-      </div>
+        </div>
     `
   }).join('')
   container.innerHTML = cardsHTML
