@@ -120,6 +120,7 @@ function openModal(person) {
 function closeModal() {
   document.getElementById('modal-overlay').style.display = 'none';
 }
+
 function renderMyOfficials(state) {
   const matches = allOfficials
     .filter(person =>
@@ -233,6 +234,7 @@ async function loadData() {
     const house = window.cleanedHouse || [];
     const governors = await fetch('Governors.json').then(res => res.json());
     const senate = await fetch('Senate.json').then(res => res.json());
+
     allOfficials = [...house, ...governors, ...senate];
 
     populateCompareDropdowns();
@@ -310,6 +312,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   }
+});
 });
 
 window.showTab = showTab;
