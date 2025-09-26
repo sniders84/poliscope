@@ -313,7 +313,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
-});
 
 window.showTab = showTab;
 
