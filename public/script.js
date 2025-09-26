@@ -54,25 +54,30 @@ function expandCard(slug) {
   }).join('')
 
   const modalHTML = `
-    <div class="card">
-      <img src="${imageUrl}" alt="${person.name}" onerror="this.src='images/fallback.jpg'" />
-      <h2>${person.name}</h2>
-      <p><strong>Office:</strong> ${person.office || person.position || ''}</p>
-      <p><strong>District:</strong> ${person.district || '—'}</p>
-      <p><strong>State:</strong> ${person.state}</p>
-      <p><strong>Party:</strong> ${person.party || '—'}</p>
-      <p><strong>Term:</strong> ${person.termStart || '—'} to ${person.termEnd || '—'}</p>
-      <p><strong>Score:</strong> ${score}/100 (${badge})</p>
+  <div class="card">
+    <img src="${imageUrl}" alt="${person.name}" onerror="this.src='images/fallback.jpg'" />
+    <h2>${person.name}</h2>
+    <p><strong>Office:</strong> ${person.office || person.position || ''}</p>
+    ${person.office === "U.S. Representative" ? `<p><strong>District:</strong> ${person.district}</p>` : ""}
+    <p><strong>State:</strong> ${person.state}</p>
+    <p><strong>Party:</strong> ${person.party || '—'}</p>
+    <p><strong>Term:</strong> ${person.termStart || '—'} to ${person.termEnd || '—'}</p>
+    <p><strong>Score:</strong> ${score}/100 (${badge})</p>
 
-      <table style="margin: 10px auto; border-collapse: collapse;">
-        <thead><tr><th>Metric</th><th>Score</th></tr></thead>
-        <tbody>${breakdownHTML}</tbody>
-      </table>
+    <table style="margin: 10px auto; border-collapse: collapse;">
+      <thead><tr><th>Metric</th><th>Score</th></tr></thead>
+      <tbody>${breakdownHTML}</tbody>
+    </table>
 
-      ${link ? `<p><a href="${link}" target="_blank">Ballotpedia Profile</a></p>` : ''}
-      <p><strong>Contact:</strong> ${person.contact?.email || '—'} | ${person.contact?.phone || '—'} | ${person.contact?.website || '—'}</p>
-    </div>
-  `
+    ${link ? `<p><a href="${link}" target="_blank">Ballotpedia Profile</a></p>` : ''}
+
+    <p><strong>Contact:</strong>
+      ${person.contact?.email ? `<a href="mailto:${person.contact.email}">${person.contact.email}</a>` : '—'} |
+      ${person.contact?.phone ? `<a href="tel:${person.contact.phone.replace(/[^0-9]/g, '')}">${person.contact.phone}</a>` : '—'} |
+      ${person.contact?.website ? `<a href="${person.contact.website}" target="_blank">${person.contact.website}</a>` : '—'}
+    </p>
+  </div>
+`
 
   document.getElementById('modal-content').innerHTML = modalHTML
   document.getElementById('modal-overlay').style.display = 'flex'
