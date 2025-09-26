@@ -183,4 +183,6 @@ function showTab(id) {
     if (el) el.style.display = sectionId === id ? 'block' : 'none'
   })
 
-  const results = document.getElementById('results
+  const results = document.getElementById('results')
+  if (results) results.innerHTML = ''
+  const search = document.getElementById('
