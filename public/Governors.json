@@ -2,48 +2,44 @@
   {
     "name": "Kay Ivey",
     "state": "Alabama",
-    "district": "",
     "party": "Republican",
     "office": "Governor",
     "slug": "kay-ivey",
     "photo": "https://www.nga.org/wp-content/uploads/2018/01/Governor-Ivey-2019-Headshot-scaled.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Kay_Ivey",
-    "contact": {
-      "email": "",
-      "phone": "",
-      "website": ""
-    },
-    "social": {
-      "twitter": "",
-      "facebook": "",
-      "instagram": ""
-    },
-    "platform": "",
-    "bills": [],
-    "startDate": "2017-04-10"
+"termStart": 2023,
+"termEnd": 2027,
+"contact": {
+  "email": "engage@az.gov",
+  "phone": "602-542-4331",
+  "website": "https://azgovernor.gov"
+},
+"platform": "Affordable housing, water security, and reproductive rights.",
+"bills": [
+  "Arizona Promise Program Expansion",
+  "Water Infrastructure Finance Authority Act"
+]
   },
   {
     "name": "Mike Dunleavy",
     "state": "Alaska",
-    "district": "",
     "party": "Republican",
     "office": "Governor",
     "slug": "mike-dunleavy",
     "photo": "https://www.nga.org/wp-content/uploads/2019/09/Gov_Dunleavy_Sep2023_square-scaled.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Mike_Dunleavy",
-    "contact": {
-      "email": "",
-      "phone": "",
-      "website": ""
-    },
-    "social": {
-      "twitter": "",
-      "facebook": "",
-      "instagram": ""
-    },
-    "platform": "",
-    "bills": [],
-    "startDate": "2018-12-03"
+    "termStart": 2018,
+"termEnd": 2026,
+"contact": {
+  "email": "governor@alaska.gov",
+  "phone": "907-465-3500",
+  "website": "https://gov.alaska.gov"
+},
+"platform": "Resource development, fiscal responsibility, and public safety.",
+"bills": [
+  "Alaska Reads Act",
+  "Permanent Fund Dividend Protection Bill"
+]
   },
   {
     "name": "Nikolao Pula",
@@ -77,19 +73,18 @@
     "slug": "katie-hobbs",
     "photo": "https://www.nga.org/wp-content/uploads/2023/01/governor-katie-hobbs-scaled.jpeg",
     "ballotpediaLink": "https://ballotpedia.org/Katie_Hobbs",
-    "contact": {
-      "email": "",
-      "phone": "",
-      "website": ""
-    },
-    "social": {
-      "twitter": "",
-      "facebook": "",
-      "instagram": ""
-    },
-    "platform": "",
-    "bills": [],
-    "startDate": "2023-01-02"
+    "termStart": 2023,
+"termEnd": 2027,
+"contact": {
+  "email": "engage@az.gov",
+  "phone": "602-542-4331",
+  "website": "https://azgovernor.gov"
+},
+"platform": "Affordable housing, water security, and reproductive rights.",
+"bills": [
+  "Arizona Promise Program Expansion",
+  "Water Infrastructure Finance Authority Act"
+]
   },
   {
     "name": "Sarah Huckabee Sanders",
@@ -100,19 +95,18 @@
     "slug": "sarah-huckabee-sanders",
     "photo": "https://www.nga.org/wp-content/uploads/2023/01/Governor-Headshot-sanders-e1756131825437.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Sarah_Huckabee_Sanders",
-    "contact": {
-      "email": "",
-      "phone": "",
-      "website": ""
-    },
-    "social": {
-      "twitter": "",
-      "facebook": "",
-      "instagram": ""
-    },
-    "platform": "",
-    "bills": [],
-    "startDate": "2023-01-10"
+    "termStart": 2023,
+"termEnd": 2027,
+"contact": {
+  "email": "info@governor.arkansas.gov",
+  "phone": "501-682-2345",
+  "website": "https://governor.arkansas.gov"
+},
+"platform": "Education reform, public safety, and economic growth.",
+"bills": [
+  "Arkansas LEARNS Act",
+  "Public Safety Enhancement Act"
+]
   },
   {
     "name": "Gavin Newsom",
@@ -123,19 +117,18 @@
     "slug": "gavin-newsom",
     "photo": "https://www.nga.org/wp-content/uploads/2019/09/1200px-Gavin_Newsom_official_photo_square.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Gavin_Newsom",
-    "contact": {
-      "email": "",
-      "phone": "",
-      "website": ""
-    },
-    "social": {
-      "twitter": "",
-      "facebook": "",
-      "instagram": ""
-    },
-    "platform": "",
-    "bills": [],
-    "startDate": "2019-01-07"
+    "termStart": 2019,
+"termEnd": 2027,
+"contact": {
+  "email": "governor@governor.ca.gov",
+  "phone": "916-445-2841",
+  "website": "https://www.gov.ca.gov"
+},
+"platform": "Climate action, homelessness, and public health equity.",
+"bills": [
+  "California Climate Crisis Act",
+  "CARE Court Framework"
+]
   },
   {
     "name": "Jared Polis",
