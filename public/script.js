@@ -21,7 +21,7 @@ const civicEvents = [
     date: "2025-10-15",
     state: "Alabama",
     type: "Public Engagement",
-    link: "https://governor.alabama.gov/newsroom/events",
+    link: "https://governor.alabama.gov/newsroom/",
     details: "Public Q&A session in Montgomery. Open to all residents."
   },
   {
