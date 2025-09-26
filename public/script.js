@@ -96,52 +96,66 @@ function renderMyOfficials(state) {
   renderCards(matches, 'my-cards')
 }
 
-async function loadData() {
-  try {
-    await waitForHouseData()
+function renderTop10() {
+  const top = [...allOfficials]
+    .filter(p => !isNaN(Number(p.score)))
+    .sort((a, b) => Number(b.score) - Number(a.score))
+    .slice(0, 10)
 
-    const house = window.cleanedHouse || []
-    const governors = await fetch('Governors.json').then(res => res.json())
-    const senate = await fetch('Senate.json').then(res => res.json())
-
-    allOfficials = [...house, ...governors, ...senate]
-
-    const stateSelect = document.getElementById('state-select')
-    if (stateSelect) {
-      const states = [...new Set(allOfficials.map(p => p.state))].sort()
-      stateSelect.innerHTML = '<option value="">Choose a state</option>' +
-        states.map(state => `<option value="${state}">${state}</option>`).join('')
-
-      stateSelect.value = 'North Carolina'
-      renderMyOfficials('North Carolina')
-
-      stateSelect.addEventListener('change', function (e) {
-        renderMyOfficials(e.target.value)
-      })
-    }
-  } catch (err) {
-    console.error("Error loading data:", err)
-  }
+  renderCards(top, 'top10')
 }
 
-function waitForHouseData() {
-  return new Promise(resolve => {
-    const check = () => {
-      if (window.cleanedHouse && window.cleanedHouse.length > 0) {
-        resolve()
-      } else {
-        setTimeout(check, 50)
-      }
-    }
-    check()
+function renderBottom10() {
+  const bottom = [...allOfficials]
+    .filter(p => !isNaN(Number(p.score)))
+    .sort((a, b) => Number(a.score) - Number(b.score))
+    .slice(0, 10)
+
+  renderCards(bottom, 'bottom10')
+}
+
+function populateCompareDropdowns() {
+  const left = document.getElementById('compare-left')
+  const right = document.getElementById('compare-right')
+
+  if (!left || !right) return
+
+  left.innerHTML = '<option value="">Select official A</option>'
+  right.innerHTML = '<option value="">Select official B</option>'
+
+  allOfficials.forEach(person => {
+    const label = `${person.name} (${person.state}${person.party ? ', ' + person.party : ''})`
+    const optionLeft = new Option(label, person.slug)
+    const optionRight = new Option(label, person.slug)
+
+    left.add(optionLeft)
+    right.add(optionRight)
   })
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-  loadData()
-})
+function renderCompareCard(slug, containerId) {
+  const person = allOfficials.find(p => p.slug === slug)
+  const container = document.getElementById(containerId)
+  if (!container || !person) return
 
-window.showTab = function(id) {
+  const imageUrl = person.photo || 'images/fallback.jpg'
+  const link = person.ballotpediaLink || person.contact?.website || null
+
+  container.innerHTML = `
+    <div class="card">
+      <img src="${imageUrl}" alt="${person.name}" onerror="this.src='images/fallback.jpg'" />
+      <h3>${person.name}</h3>
+      <p><strong>Office:</strong> ${person.office || person.position || ''}</p>
+      <p><strong>State:</strong> ${person.state}</p>
+      <p><strong>Party:</strong> ${person.party || '—'}</p>
+      <p><strong>Term:</strong> ${person.termStart || '—'} to ${person.termEnd || '—'}</p>
+      <p><strong>Approval:</strong> ${person.approval || person.score || '—'}%</p>
+      ${link ? `<p><a href="${link}" target="_blank">Ballotpedia Profile</a></p>` : ''}
+    </div>
+  `
+}
+
+function showTab(id) {
   const sections = ['my-officials', 'compare', 'top10', 'bottom10', 'calendar', 'registration']
   sections.forEach(sectionId => {
     const el = document.getElementById(sectionId)
@@ -153,3 +167,26 @@ window.showTab = function(id) {
   const search = document.getElementById('search')
   if (search) search.value = ''
 }
+
+async function loadData() {
+  try {
+    await waitForHouseData()
+
+    const house = window.cleanedHouse || []
+    const governors = await fetch('Governors.json').then(res => res.json())
+    const senate = await fetch('Senate.json').then(res => res.json())
+
+    allOfficials = [...house, ...governors, ...senate]
+
+    populateCompareDropdowns()
+
+    const stateSelect = document.getElementById('state-select')
+    if (stateSelect) {
+      const states = [...new Set(allOfficials.map(p => p.state))].sort()
+      stateSelect.innerHTML = '<option value="">Choose a state</option>' +
+        states.map(state => `<option value="${state}">${state}</option>`).join('')
+
+      stateSelect.value = 'North Carolina'
+      renderMyOfficials('North Carolina')
+
+      stateSelect.addEventListener
