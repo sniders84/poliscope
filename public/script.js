@@ -80,7 +80,6 @@ function closeModal() {
 }
 
 function renderMyOfficials(state) {
-  console.log("Rendering officials for:", state)
   const matches = allOfficials
     .filter(person =>
       person.state === state ||
@@ -94,19 +93,32 @@ function renderMyOfficials(state) {
       return rank(a.office || "") - rank(b.office || "")
     })
 
-  console.log(`Found ${matches.length} officials for ${state}`)
   renderCards(matches, 'my-cards')
 }
 
+function renderTop10() {
+  const top = [...allOfficials]
+    .filter(p => typeof p.score === 'number')
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 10)
+
+  renderCards(top, 'top10')
+}
+
+function renderBottom10() {
+  const bottom = [...allOfficials]
+    .filter(p => typeof p.score === 'number')
+    .sort((a, b) => a.score - b.score)
+    .slice(0, 10)
+
+  renderCards(bottom, 'bottom10')
+}
+
 function populateCompareDropdowns() {
-  console.log("Populating compare dropdowns")
   const left = document.getElementById('compare-left')
   const right = document.getElementById('compare-right')
 
-  if (!left || !right) {
-    console.warn("Compare dropdowns not found")
-    return
-  }
+  if (!left || !right) return
 
   left.innerHTML = '<option value="">Select official A</option>'
   right.innerHTML = '<option value="">Select official B</option>'
@@ -119,20 +131,12 @@ function populateCompareDropdowns() {
     left.add(optionLeft)
     right.add(optionRight)
   })
-
-  console.log(`Compare A options: ${left.options.length}`)
-  console.log(`Compare B options: ${right.options.length}`)
 }
 
 function renderCompareCard(slug, containerId) {
   const person = allOfficials.find(p => p.slug === slug)
   const container = document.getElementById(containerId)
-  if (!container) return
-
-  if (!person) {
-    container.innerHTML = `<p>No match found for: ${slug}</p>`
-    return
-  }
+  if (!container || !person) return
 
   const imageUrl = person.photo || 'images/fallback.jpg'
   const link = person.ballotpediaLink || person.contact?.website || null
@@ -166,8 +170,6 @@ function showTab(id) {
 
 async function loadData() {
   try {
-    console.log("Starting loadData()")
-
     await waitForHouseData()
 
     const house = window.cleanedHouse || []
@@ -175,7 +177,6 @@ async function loadData() {
     const senate = await fetch('Senate.json').then(res => res.json())
 
     allOfficials = [...house, ...governors, ...senate]
-    console.log("Loaded officials:", allOfficials.length)
 
     populateCompareDropdowns()
 
@@ -187,75 +188,12 @@ async function loadData() {
 
       stateSelect.value = 'North Carolina'
       renderMyOfficials('North Carolina')
-
-      stateSelect.addEventListener('change', function (e) {
-        renderMyOfficials(e.target.value)
-      })
-    } else {
-      console.warn("State selector not found")
     }
+
+    renderTop10()
+    renderBottom10()
   } catch (err) {
     console.error("Error loading data:", err)
   }
 }
-
-function waitForHouseData() {
-  return new Promise(resolve => {
-    const check = () => {
-      if (window.cleanedHouse && window.cleanedHouse.length > 0) {
-        resolve()
-      } else {
-        setTimeout(check, 50)
-      }
-    }
-    check()
-  })
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-  loadData()
-
-  const left = document.getElementById('compare-left')
-  const right = document.getElementById('compare-right')
-  const search = document.getElementById('search')
-
-  if (left) {
-    left.addEventListener('change', function (e) {
-      renderCompareCard(e.target.value, 'compare-card-left')
-    })
-  }
-
-  if (right) {
-    right.addEventListener('change', function (e) {
-      renderCompareCard(e.target.value, 'compare-card-right')
-    })
-  }
-
-  if (search) {
-    search.addEventListener('input', function (e) {
-      const query = e.target.value.toLowerCase()
-      const matches = allOfficials.filter(person =>
-        person.name.toLowerCase().includes(query) ||
-        person.state.toLowerCase().includes(query) ||
-        (person.party && person.party.toLowerCase().includes(query))
-      )
-
-      const resultsHTML = matches.map(person => {
-        const label = `${person.name} (${person.state}${person.party ? ', ' + person.party : ''})`
-        const link = person.ballotpediaLink || person.contact?.website || null
-
-        if (link) {
-          return `<li><a href="${link}" target="_blank" rel="noopener noreferrer">${label}</a></li>`
-        } else {
-          return `<li>${label}</li>`
-        }
-      }).join('')
-
-      document.getElementById('results').innerHTML = resultsHTML
-    })
-  }
-})
-
-// ✅ Expose showTab globally so tabs work
-window.showTab = showTab
 
