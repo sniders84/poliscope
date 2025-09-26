@@ -256,4 +256,84 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // ✅ Expose showTab globally so tabs work
 window.showTab = showTab
+function waitForHouseData() {
+  return new Promise(resolve => {
+    const check = () => {
+      if (window.cleanedHouse && window.cleanedHouse.length > 0) {
+        resolve()
+      } else {
+        setTimeout(check, 50)
+      }
+    }
+    check()
+  })
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  loadData()
+
+  const left = document.getElementById('compare-left')
+  const right = document.getElementById('compare-right')
+  const search = document.getElementById('search')
+  const results = document.getElementById('results')
+  const stateSelect = document.getElementById('state-select')
+
+  if (left) {
+    left.addEventListener('change', function (e) {
+      renderCompareCard(e.target.value, 'compare-card-left')
+    })
+  }
+
+  if (right) {
+    right.addEventListener('change', function (e) {
+      renderCompareCard(e.target.value, 'compare-card-right')
+    })
+  }
+
+  if (search) {
+    search.addEventListener('input', function (e) {
+      const query = e.target.value.toLowerCase()
+      if (!query) {
+        results.innerHTML = ''
+        return
+      }
+
+      const matches = allOfficials.filter(person =>
+        person.name.toLowerCase().includes(query) ||
+        person.state.toLowerCase().includes(query) ||
+        (person.party && person.party.toLowerCase().includes(query))
+      )
+
+      const resultsHTML = matches.map(person => {
+        const label = `${person.name} (${person.state}${person.party ? ', ' + person.party : ''})`
+        const link = person.ballotpediaLink || person.contact?.website || null
+
+        if (link) {
+          return `<li><a href="${link}" target="_blank" rel="noopener noreferrer">${label}</a></li>`
+        } else {
+          return `<li>${label}</li>`
+        }
+      }).join('')
+
+      results.innerHTML = resultsHTML
+    })
+
+    // Collapse results when clicking outside
+    document.addEventListener('click', function (e) {
+      if (!search.contains(e.target) && !results.contains(e.target)) {
+        results.innerHTML = ''
+        search.value = ''
+      }
+    })
+  }
+
+  if (stateSelect) {
+    stateSelect.addEventListener('change', function (e) {
+      renderMyOfficials(e.target.value)
+    })
+  }
+})
+
+// ✅ Expose showTab globally
+window.showTab = showTab
 
