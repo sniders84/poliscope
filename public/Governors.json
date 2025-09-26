@@ -19,7 +19,22 @@
   "endorsements": "Endorsed by Alabama Farmers Federation, National Rifle Association, and Alabama Forestry Association",
   "platform": "Workforce development, broadband expansion, and education reform.",
   "proposals": "Led a $1.3 billion prison construction initiative; proposed broadband expansion and workforce development programs",
-  "billsSigned": "Signed legislation banning gender-affirming medical care for minors; signed the Alabama Literacy Act; signed COVID-19 relief bills",
+  "engagement": "Held 12 town halls, signed 8 bills, and issued 3 executive orders in 2025"
+  "billsSigned": [
+  {
+    "title": "Alabama Literacy Act",
+    "link": "https://legiscan.com/AL/text/HB388/id/2032483"
+  },
+  {
+    "title": "Gender-Affirming Care Ban (SB184)",
+    "link": "https://legiscan.com/AL/text/SB184/id/2556396"
+  },
+  {
+    "title": "COVID-19 Relief Bill",
+    "link": "https://governor.alabama.gov/newsroom/2021/03/governor-ivey-signs-covid-19-relief-legislation/"
+  }
+]
+
   "vetoes": "Rarely uses veto power; most legislation is signed or allowed to pass without signature",
   "salary": "$131,800/year",
   "predecessor": "Robert J. Bentley"
