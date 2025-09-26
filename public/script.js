@@ -71,7 +71,14 @@ const modalHTML = `
       ${person.endorsements ? `<p><strong>Endorsements:</strong> ${person.endorsements}</p>` : ''}
       ${person.platform ? `<p><strong>Platform:</strong> ${person.platform}</p>` : ''}
       ${person.proposals ? `<p><strong>Legislative Proposals:</strong> ${person.proposals}</p>` : ''}
-      ${person.billsSigned ? `<p><strong>Bills Signed:</strong> ${person.billsSigned}</p>` : ''}
+      ${person.billsSigned?.length ? `
+  <p><strong>Bills Signed:</strong></p>
+  <ul>
+    ${person.billsSigned.map(bill => `
+      <li><a href="${bill.link}" target="_blank">${bill.title}</a></li>
+    `).join('')}
+  </ul>
+` : ''}
       ${person.vetoes ? `<p><strong>Vetoes:</strong> ${person.vetoes}</p>` : ''}
       ${person.salary ? `<p><strong>Salary:</strong> ${person.salary}</p>` : ''}
       ${person.predecessor ? `<p><strong>Predecessor:</strong> ${person.predecessor}</p>` : ''}
