@@ -80,6 +80,16 @@ const modalHTML = `
       ${person.education ? `<p><strong>Education:</strong> ${person.education}</p>` : ''}
       ${person.endorsements ? `<p><strong>Endorsements:</strong> ${person.endorsements}</p>` : ''}
       ${person.platform ? `<p><strong>Platform:</strong> ${person.platform}</p>` : ''}
+      ${person.platformFollowThrough ? `
+  <div class="platform-followthrough">
+    <h3>Platform Follow-Through</h3>
+    <ul>
+      ${Object.entries(person.platformFollowThrough).map(([key, value]) => `
+        <li><strong>${key}:</strong> ${value}</li>
+      `).join('')}
+    </ul>
+  </div>
+` : ''}
       ${person.proposals ? `<p><strong>Legislative Proposals:</strong> ${person.proposals}</p>` : ''}
       ${billsHTML}
       ${person.vetoes ? `<p><strong>Vetoes:</strong> ${person.vetoes}</p>` : ''}
