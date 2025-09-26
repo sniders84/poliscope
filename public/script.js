@@ -297,7 +297,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const label = `${person.name} (${person.state}${person.party ? ', ' + person.party : ''})`;
         const link = person.ballotpediaLink || person.contact?.website || null;
 
-        return link
+                return link
           ? `<li><a href="${link}" target="_blank" rel="noopener noreferrer">${label}</a></li>`
           : `<li>${label}</li>`;
       }).join('');
@@ -306,15 +306,13 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     document.addEventListener('click', function (e) {
-      if (!search.contains(e.target) && !results.contains(e.target)) {
+      if (search && results && !search.contains(e.target) && !results.contains(e.target)) {
         results.innerHTML = '';
         search.value = '';
       }
     });
   }
 });
-
-window.showTab = showTab;
 
 function showTab(id) {
   const sections = ['my-officials', 'compare', 'rankings', 'rookies', 'calendar', 'registration'];
@@ -328,3 +326,5 @@ function showTab(id) {
   const search = document.getElementById('search');
   if (search) search.value = '';
 }
+
+window.showTab = showTab;
