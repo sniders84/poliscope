@@ -41,6 +41,20 @@ const civicEvents = [
     details: "Six-bill package to boost workforce participation, childcare access, and rural job growth."
   }
 ];
+const votingInfo = {
+  "Alabama": {
+    registrationLink: "https://www.sos.alabama.gov/alabama-votes/voter/register-to-vote",
+    statusCheckLink: "https://www.sos.alabama.gov/alabama-votes/voter/check-your-voter-registration-status",
+    pollingPlaceLink: "https://myinfo.alabamavotes.gov/VoterView/RegistrantSearch.do",
+    volunteerLink: "https://www.sos.alabama.gov/alabama-votes/voter/poll-workers",
+    absenteeLink: "https://www.sos.alabama.gov/alabama-votes/voter/absentee-voting",
+    registrationDeadline: "2025-10-21",
+    absenteeRequestDeadline: "2025-10-29",
+    absenteeReturnDeadline: "2025-11-04 12:00 PM",
+    earlyVotingStart: null,
+    earlyVotingEnd: null
+  }
+};
 function renderCalendar(events, selectedState) {
   const container = document.getElementById('calendar-container');
   if (!container) return;
@@ -73,6 +87,39 @@ function openEventModal(title, date, state, type, details, link) {
     </div>
   `;
   document.getElementById('modal-overlay').style.display = 'flex';
+}
+function renderVotingInfo(state) {
+  const container = document.getElementById('voting-container');
+  if (!container || !votingInfo[state]) {
+    container.innerHTML = `<p>No voting info available for ${state}.</p>`;
+    return;
+  }
+
+  const info = votingInfo[state];
+  container.innerHTML = `
+    <div class="card">
+      <h3>Register to Vote</h3>
+      <p><a href="${info.registrationLink}" target="_blank">Register Online</a></p>
+      <p><a href="${info.statusCheckLink}" target="_blank">Check Registration Status</a></p>
+      <p><strong>Deadline:</strong> ${info.registrationDeadline}</p>
+    </div>
+    <div class="card">
+      <h3>Find Your Polling Place</h3>
+      <p><a href="${info.pollingPlaceLink}" target="_blank">Polling Place Lookup</a></p>
+      ${info.earlyVotingStart ? `<p><strong>Early Voting:</strong> ${info.earlyVotingStart} to ${info.earlyVotingEnd}</p>` : '<p><em>Early voting not available statewide.</em></p>'}
+    </div>
+    <div class="card">
+      <h3>Vote by Mail</h3>
+      <p><a href="${info.absenteeLink}" target="_blank">Request Absentee Ballot</a></p>
+      <p><strong>Request Deadline:</strong> ${info.absenteeRequestDeadline}</p>
+      <p><strong>Return Deadline:</strong> ${info.absenteeReturnDeadline}</p>
+      <p>Must include a copy of valid photo ID.</p>
+    </div>
+    <div class="card">
+      <h3>Volunteer</h3>
+      <p><a href="${info.volunteerLink}" target="_blank">Become a Poll Worker</a></p>
+    </div>
+  `;
 }
 
 let allOfficials = [];
