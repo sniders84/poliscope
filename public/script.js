@@ -52,7 +52,7 @@ function expandCard(slug) {
     return `<tr><td>${label}</td><td>${value}/10</td></tr>`
   }).join('')
 
-  const modalHTML = `
+const modalHTML = `
   <div class="card">
     <img src="${imageUrl}" alt="${person.name}" onerror="this.src='images/fallback.jpg'" />
     <h2>${person.name}</h2>
@@ -61,30 +61,31 @@ function expandCard(slug) {
     <p><strong>State:</strong> ${person.state}</p>
     <p><strong>Party:</strong> ${person.party || '—'}</p>
     <p><strong>Term:</strong> ${person.termStart || '—'} to ${person.termEnd || '—'}</p>
-      
-    <table style="margin: 10px auto; border-collapse: collapse;">
-      <thead><tr><th>Metric</th><th>Score</th></tr></thead>
-      <tbody>${breakdownHTML}</tbody>
-    </table>
+
+    ${person.bio ? `<p><strong>Bio:</strong> ${person.bio}</p>` : ''}
+    ${person.education ? `<p><strong>Education:</strong> ${person.education}</p>` : ''}
+    ${person.endorsements ? `<p><strong>Endorsements:</strong> ${person.endorsements}</p>` : ''}
+    ${person.platform ? `<p><strong>Platform:</strong> ${person.platform}</p>` : ''}
+    ${person.proposals ? `<p><strong>Legislative Proposals:</strong> ${person.proposals}</p>` : ''}
+    ${person.billsSigned ? `<p><strong>Bills Signed:</strong> ${person.billsSigned}</p>` : ''}
+    ${person.vetoes ? `<p><strong>Vetoes:</strong> ${person.vetoes}</p>` : ''}
+    ${person.salary ? `<p><strong>Salary:</strong> ${person.salary}</p>` : ''}
+    ${person.predecessor ? `<p><strong>Predecessor:</strong> ${person.predecessor}</p>` : ''}
+    ${person.donationLink ? `<p><strong>Donate:</strong> <a href="${person.donationLink}" target="_blank">💸</a></p>` : ''}
 
     ${link ? `<p><a href="${link}" target="_blank">Ballotpedia Profile</a></p>` : ''}
 
     <p><strong>Contact:</strong>
-  ${person.contact?.email
-    ? `<a href="mailto:${person.contact.email}" style="margin-right:10px;">📧</a>`
-    : ''}
-  ${person.contact?.phone
-    ? `<a href="tel:${person.contact.phone.replace(/[^0-9]/g, '')}" style="margin-right:10px;">📞</a>`
-    : ''}
-  ${person.contact?.website
-    ? `<a href="${person.contact.website}" target="_blank" style="margin-right:10px;">🌐</a>`
-    : ''}
-</p>
+      ${person.contact?.email ? `<a href="mailto:${person.contact.email}" style="margin-right:10px;">📧</a>` : ''}
+      ${person.contact?.phone ? `<a href="tel:${person.contact.phone.replace(/[^0-9]/g, '')}" style="margin-right:10px;">📞</a>` : ''}
+      ${person.contact?.website ? `<a href="${person.contact.website}" target="_blank" style="margin-right:10px;">🌐</a>` : ''}
+    </p>
   </div>
 `
 
-  document.getElementById('modal-content').innerHTML = modalHTML
-  document.getElementById('modal-overlay').style.display = 'flex'
+document.getElementById('modal-content').innerHTML = modalHTML
+document.getElementById('modal-overlay').style.display = 'flex'
+
 }
 
 function closeModal() {
