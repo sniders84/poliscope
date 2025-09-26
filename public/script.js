@@ -62,10 +62,7 @@ function expandCard(slug) {
     <p><strong>State:</strong> ${person.state}</p>
     <p><strong>Party:</strong> ${person.party || '—'}</p>
     <p><strong>Term:</strong> ${person.termStart || '—'} to ${person.termEnd || '—'}</p>
-    <p><strong>Score:</strong> ${score}/100 (${badge})</p>
-    ${person.approvalRatingLink
-  ? `<p><strong>Approval:</strong> <a href="${person.approvalRatingLink}" target="_blank">📊</a></p>`
-  : ''}
+      : ''}
 
     <table style="margin: 10px auto; border-collapse: collapse;">
       <thead><tr><th>Metric</th><th>Score</th></tr></thead>
