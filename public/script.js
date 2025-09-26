@@ -62,8 +62,7 @@ function expandCard(slug) {
     <p><strong>State:</strong> ${person.state}</p>
     <p><strong>Party:</strong> ${person.party || '—'}</p>
     <p><strong>Term:</strong> ${person.termStart || '—'} to ${person.termEnd || '—'}</p>
-      : ''}
-
+      
     <table style="margin: 10px auto; border-collapse: collapse;">
       <thead><tr><th>Metric</th><th>Score</th></tr></thead>
       <tbody>${breakdownHTML}</tbody>
