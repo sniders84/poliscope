@@ -107,12 +107,10 @@ const modalHTML = `
 
 document.getElementById('modal-content').innerHTML = modalHTML
 document.getElementById('modal-overlay').style.display = 'flex'
-}
 
 function closeModal() {
   document.getElementById('modal-overlay').style.display = 'none'
 }
-
 function renderMyOfficials(state) {
   const matches = allOfficials
     .filter(person =>
