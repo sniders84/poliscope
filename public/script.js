@@ -340,16 +340,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const results = document.getElementById('results');
 
   if (search) {
-    search.addEventListener('input', function (e) const stateSelect = document.getElementById('state-select');
-if (stateSelect) {
-  const defaultState = stateSelect.value || 'Alabama';
-  renderCalendar(civicEvents, defaultState);
-
-  stateSelect.addEventListener('change', () => {
-    renderCalendar(civicEvents, stateSelect.value);
-  });
-}
-{
+    search.addEventListener('input', function (e) {
       const query = e.target.value.toLowerCase();
       if (!query) {
         results.innerHTML = '';
@@ -366,7 +357,7 @@ if (stateSelect) {
         const label = `${person.name} (${person.state}${person.party ? ', ' + person.party : ''})`;
         const link = person.ballotpediaLink || person.contact?.website || null;
 
-                return link
+        return link
           ? `<li><a href="${link}" target="_blank" rel="noopener noreferrer">${label}</a></li>`
           : `<li>${label}</li>`;
       }).join('');
@@ -379,6 +370,17 @@ if (stateSelect) {
         results.innerHTML = '';
         search.value = '';
       }
+    });
+  }
+
+  // ✅ Calendar sync logic goes here, outside the search block
+  const stateSelect = document.getElementById('state-select');
+  if (stateSelect) {
+    const defaultState = stateSelect.value || 'Alabama';
+    renderCalendar(civicEvents, defaultState);
+
+    stateSelect.addEventListener('change', () => {
+      renderCalendar(civicEvents, stateSelect.value);
     });
   }
 });
