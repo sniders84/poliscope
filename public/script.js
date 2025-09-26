@@ -71,11 +71,21 @@ function expandCard(slug) {
 
     ${link ? `<p><a href="${link}" target="_blank">Ballotpedia Profile</a></p>` : ''}
 
-    <p><strong>Contact:</strong>
-      ${person.contact?.email ? `<a href="mailto:${person.contact.email}">${person.contact.email}</a>` : '—'} |
-      ${person.contact?.phone ? `<a href="tel:${person.contact.phone.replace(/[^0-9]/g, '')}">${person.contact.phone}</a>` : '—'} |
-      ${person.contact?.website ? `<a href="${person.contact.website}" target="_blank">${person.contact.website}</a>` : '—'}
-    </p>
+    <p><strong>Email:</strong> ${
+  person.contact?.email
+    ? `<a href="mailto:${person.contact.email}">${person.contact.email}</a>`
+    : '—'
+}</p>
+<p><strong>Phone:</strong> ${
+  person.contact?.phone
+    ? `<a href="tel:${person.contact.phone.replace(/[^0-9]/g, '')}">${person.contact.phone}</a>`
+    : '—'
+}</p>
+<p><strong>Website:</strong> ${
+  person.contact?.website
+    ? `<a href="${person.contact.website}" target="_blank">${person.contact.website}</a>`
+    : '—'
+}</p>
   </div>
 `
 
