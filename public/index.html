@@ -43,8 +43,7 @@
   <nav id="tabs">
     <button onclick="showTab('my-officials')">My Officials</button>
     <button onclick="showTab('compare')">Compare</button>
-    <button onclick="showTab('top10')">Top 10</button>
-    <button onclick="showTab('bottom10')">Bottom 10</button>
+    <button onclick="showTab('rankings')">Rankings</button>
     <button onclick="showTab('rookies')">Rookies to Watch</button>
     <button onclick="showTab('calendar')">Calendar</button>
     <button onclick="showTab('registration')">Registration</button>
@@ -82,14 +81,26 @@
     </div>
   </section>
 
-  <section id="top10" style="display:none;">
-    <h2>Top 10 Officials</h2>
-    <div class="card-container" id="top10-cards"></div>
-  </section>
+  <section id="rankings" style="display:none;">
+    <h2>Official Rankings</h2>
 
-  <section id="bottom10" style="display:none;">
-    <h2>Bottom 10 Officials</h2>
-    <div class="card-container" id="bottom10-cards"></div>
+    <h3>Top 10 Overall</h3>
+    <div class="card-container" id="top10-overall"></div>
+
+    <details>
+      <summary><strong>Full Rankings: Governors</strong></summary>
+      <div class="card-container" id="rankings-governors"></div>
+    </details>
+
+    <details>
+      <summary><strong>Full Rankings: Senators</strong></summary>
+      <div class="card-container" id="rankings-senators"></div>
+    </details>
+
+    <details>
+      <summary><strong>Full Rankings: House Representatives</strong></summary>
+      <div class="card-container" id="rankings-house"></div>
+    </details>
   </section>
 
   <section id="rookies" style="display:none;">
