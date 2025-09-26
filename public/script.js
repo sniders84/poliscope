@@ -52,65 +52,71 @@ function expandCard(slug) {
     return `<tr><td>${label}</td><td>${value}/10</td></tr>`
   }).join('')
 
-let billsHTML = ''
-if (person.billsSigned?.length) {
-  billsHTML = `
-    <p><strong>Key Bills Signed:</strong></p>
-    <ul>
-      ${person.billsSigned.map(bill => `<li><a href="${bill.link}" target="_blank">${bill.title}</a></li>`).join('')}
-    </ul>
-  `
-}
+function openModal(person) {
+  const imageUrl = person.imageUrl || 'images/fallback.jpg'
+  const link = person.ballotpediaLink || ''
 
-let followThroughHTML = ''
-if (person.platformFollowThrough) {
-  followThroughHTML = `
-    <div class="platform-followthrough">
-      <h3>Platform Follow-Through</h3>
+  let billsHTML = ''
+  if (person.billsSigned?.length) {
+    billsHTML = `
+      <p><strong>Key Bills Signed:</strong></p>
       <ul>
-        ${Object.entries(person.platformFollowThrough).map(([key, value]) => `
-          <li><strong>${key}:</strong> ${value}</li>
-        `).join('')}
+        ${person.billsSigned.map(bill => `<li><a href="${bill.link}" target="_blank">${bill.title}</a></li>`).join('')}
       </ul>
+    `
+  }
+
+  let followThroughHTML = ''
+  if (person.platformFollowThrough) {
+    followThroughHTML = `
+      <div class="platform-followthrough">
+        <h3>Platform Follow-Through</h3>
+        <ul>
+          ${Object.entries(person.platformFollowThrough).map(([key, value]) => `
+            <li><strong>${key}:</strong> ${value}</li>
+          `).join('')}
+        </ul>
+      </div>
+    `
+  }
+
+  const modalHTML = `
+    <div class="modal-container">
+      <div class="modal-left">
+        <img src="${imageUrl}" alt="${person.name}" onerror="this.src='images/fallback.jpg'" />
+        <h2>${person.name}</h2>
+        ${link ? `<p><a href="${link}" target="_blank">Ballotpedia Profile</a></p>` : ''}
+        <p><strong>Contact:</strong>
+          ${person.contact?.email ? `<a href="mailto:${person.contact.email}" style="margin-right:10px;">📧</a>` : ''}
+          ${person.contact?.phone ? `<a href="tel:${person.contact.phone.replace(/[^0-9]/g, '')}" style="margin-right:10px;">📞</a>` : ''}
+          ${person.contact?.website ? `<a href="${person.contact.website}" target="_blank" style="margin-right:10px;">🌐</a>` : ''}
+        </p>
+      </div>
+
+      <div class="modal-right">
+        ${person.bio ? `<p><strong>Bio:</strong> ${person.bio}</p>` : ''}
+        ${person.education ? `<p><strong>Education:</strong> ${person.education}</p>` : ''}
+        ${person.endorsements ? `<p><strong>Endorsements:</strong> ${person.endorsements}</p>` : ''}
+        ${person.platform ? `<p><strong>Platform:</strong> ${person.platform}</p>` : ''}
+        ${followThroughHTML}
+        ${person.proposals ? `<p><strong>Legislative Proposals:</strong> ${person.proposals}</p>` : ''}
+        ${billsHTML}
+        ${person.vetoes ? `<p><strong>Vetoes:</strong> ${person.vetoes}</p>` : ''}
+        ${person.salary ? `<p><strong>Salary:</strong> ${person.salary}</p>` : ''}
+        ${person.predecessor ? `<p><strong>Predecessor:</strong> ${person.predecessor}</p>` : ''}
+        ${person.donationLink ? `<p><strong>Donate:</strong> <a href="${person.donationLink}" target="_blank">💸</a></p>` : ''}
+      </div>
     </div>
   `
+
+  document.getElementById('modal-content').innerHTML = modalHTML
+  document.getElementById('modal-overlay').style.display = 'flex'
 }
-
-const modalHTML = `
-  <div class="modal-container">
-    <div class="modal-left">
-      <img src="${imageUrl}" alt="${person.name}" onerror="this.src='images/fallback.jpg'" />
-      <h2>${person.name}</h2>
-      ${link ? `<p><a href="${link}" target="_blank">Ballotpedia Profile</a></p>` : ''}
-      <p><strong>Contact:</strong>
-        ${person.contact?.email ? `<a href="mailto:${person.contact.email}" style="margin-right:10px;">📧</a>` : ''}
-        ${person.contact?.phone ? `<a href="tel:${person.contact.phone.replace(/[^0-9]/g, '')}" style="margin-right:10px;">📞</a>` : ''}
-        ${person.contact?.website ? `<a href="${person.contact.website}" target="_blank" style="margin-right:10px;">🌐</a>` : ''}
-      </p>
-    </div>
-
-    <div class="modal-right">
-      ${person.bio ? `<p><strong>Bio:</strong> ${person.bio}</p>` : ''}
-      ${person.education ? `<p><strong>Education:</strong> ${person.education}</p>` : ''}
-      ${person.endorsements ? `<p><strong>Endorsements:</strong> ${person.endorsements}</p>` : ''}
-      ${person.platform ? `<p><strong>Platform:</strong> ${person.platform}</p>` : ''}
-      ${followThroughHTML}
-      ${person.proposals ? `<p><strong>Legislative Proposals:</strong> ${person.proposals}</p>` : ''}
-      ${billsHTML}
-      ${person.vetoes ? `<p><strong>Vetoes:</strong> ${person.vetoes}</p>` : ''}
-      ${person.salary ? `<p><strong>Salary:</strong> ${person.salary}</p>` : ''}
-      ${person.predecessor ? `<p><strong>Predecessor:</strong> ${person.predecessor}</p>` : ''}
-      ${person.donationLink ? `<p><strong>Donate:</strong> <a href="${person.donationLink}" target="_blank">💸</a></p>` : ''}
-    </div>
-  </div>
-`
-
-document.getElementById('modal-content').innerHTML = modalHTML
-document.getElementById('modal-overlay').style.display = 'flex'
 
 function closeModal() {
   document.getElementById('modal-overlay').style.display = 'none'
 }
+
 function renderMyOfficials(state) {
   const matches = allOfficials
     .filter(person =>
