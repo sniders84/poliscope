@@ -73,13 +73,13 @@ const modalHTML = `
       ${person.proposals ? `<p><strong>Legislative Proposals:</strong> ${person.proposals}</p>` : ''}
       ${person.engagement ? `<p><strong>Public Engagement:</strong> ${person.engagement}</p>` : ''}
       ${person.billsSigned?.length ? `
-  <p><strong>Bills Signed:</strong></p>
-  <ul>
-    ${person.billsSigned.map(bill => `
-      <li><a href="${bill.link}" target="_blank">${bill.title}</a></li>
-    `).join('')}
-  </ul>
-` : ''}
+        <p><strong>Bills Signed:</strong></p>
+        <ul>
+          ${person.billsSigned.map(bill => `
+            <li><a href="${bill.link}" target="_blank">${bill.title}</a></li>
+          `).join('')}
+        </ul>
+      ` : ''}
       ${person.vetoes ? `<p><strong>Vetoes:</strong> ${person.vetoes}</p>` : ''}
       ${person.salary ? `<p><strong>Salary:</strong> ${person.salary}</p>` : ''}
       ${person.predecessor ? `<p><strong>Predecessor:</strong> ${person.predecessor}</p>` : ''}
