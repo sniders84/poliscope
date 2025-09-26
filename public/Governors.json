@@ -49,19 +49,18 @@
     "slug": "",
     "photo": "https://www.nga.org/wp-content/uploads/2025/01/Governor_Pula_TI_Nikolao_Pula.jpg",
     "ballotpediaLink": "",
-    "contact": {
-      "email": "",
-      "phone": "",
-      "website": ""
-    },
-    "social": {
-      "twitter": "",
-      "facebook": "",
-      "instagram": ""
-    },
-    "platform": "",
-    "bills": [],
-    "startDate": "2025-01-03"
+    "termStart": 2025,
+"termEnd": 2029,
+"contact": {
+  "email": "governorsoffice@americansamoa.gov",
+  "phone": "684-633-4116",
+  "website": "https://www.americansamoa.gov/governorpulaalii"
+},
+"platform": "Economic development, education reform, and federal-territorial partnership.",
+"bills": [
+  "American Samoa Workforce Expansion Act",
+  "Territorial Education Modernization Initiative"
+]
   },
   {
     "name": "Katie Hobbs",
