@@ -29,7 +29,7 @@ function renderCards(data, containerId) {
         <p>${person.district || ''}</p>
         <p>${person.state}${person.party ? ', ' + person.party : ''}</p>
         <p>Term: ${person.termStart || '—'} to ${person.termEnd || '—'}</p>
-        </div>
+      </div>
     `
   }).join('')
   container.innerHTML = cardsHTML
@@ -52,9 +52,20 @@ function expandCard(slug) {
     return `<tr><td>${label}</td><td>${value}/10</td></tr>`
   }).join('')
 
+  document.getElementById('modal-content').innerHTML = `
+    <div class="scorecard">
+      <h2>${person.name}</h2>
+      <p><strong>Score:</strong> ${score} ${badge}</p>
+      <table>${breakdownHTML}</table>
+      <button onclick="openModal(allOfficials.find(p => p.slug === '${person.slug}'))">Full Profile</button>
+    </div>
+  `
+  document.getElementById('modal-overlay').style.display = 'flex'
+}
+
 function openModal(person) {
-  const imageUrl = person.imageUrl || 'images/fallback.jpg'
-  const link = person.ballotpediaLink || ''
+  const imageUrl = person.imageUrl || person.photo || 'images/fallback.jpg'
+  const link = person.ballotpediaLink || person.contact?.website || ''
 
   let billsHTML = ''
   if (person.billsSigned?.length) {
@@ -116,7 +127,6 @@ function openModal(person) {
 function closeModal() {
   document.getElementById('modal-overlay').style.display = 'none'
 }
-
 function renderMyOfficials(state) {
   const matches = allOfficials
     .filter(person =>
@@ -125,9 +135,10 @@ function renderMyOfficials(state) {
       person.stateAbbreviation === state
     )
     .sort((a, b) => {
-      const rank = role => role.includes("Governor") ? 1 :
-                           role.includes("Senator") ? 2 :
-                           role.includes("Representative") ? 3 : 4
+      const rank = role =>
+        role.includes("Governor") ? 1 :
+        role.includes("Senator") ? 2 :
+        role.includes("Representative") ? 3 : 4
       return rank(a.office || "") - rank(b.office || "")
     })
 
@@ -148,6 +159,7 @@ function renderRankings() {
   renderCards(senators, 'rankings-senators')
   renderCards(house, 'rankings-house')
 }
+
 function renderRookies() {
   const cutoffYear = new Date().getFullYear() - 6
 
@@ -169,7 +181,6 @@ function renderRookies() {
 function populateCompareDropdowns() {
   const left = document.getElementById('compare-left')
   const right = document.getElementById('compare-right')
-
   if (!left || !right) return
 
   left.innerHTML = '<option value="">Select official A</option>'
@@ -218,6 +229,8 @@ function renderCompareCard(slug, containerId) {
 function showTab(id) {
   const sections = ['my-officials', 'compare', 'rankings', 'rookies', 'calendar', 'registration']
   sections.forEach(sectionId => {
+    const el = document.getElementById(sectionId)
+    if (el) el.style.display = sectionId === id ? 'block' : 'none'
   })
 
   const results = document.getElementById('results')
@@ -233,9 +246,7 @@ async function loadData() {
     const house = window.cleanedHouse || []
     const governors = await fetch('Governors.json').then(res => res.json())
     const senate = await fetch('Senate.json').then(res => res.json())
-
     allOfficials = [...house, ...governors, ...senate]
-
     populateCompareDropdowns()
 
     const stateSelect = document.getElementById('state-select')
@@ -296,11 +307,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const label = `${person.name} (${person.state}${person.party ? ', ' + person.party : ''})`
         const link = person.ballotpediaLink || person.contact?.website || null
 
-        if (link) {
-          return `<li><a href="${link}" target="_blank" rel="noopener noreferrer">${label}</a></li>`
-        } else {
-          return `<li>${label}</li>`
-        }
+        return link
+          ? `<li><a href="${link}" target="_blank" rel="noopener noreferrer">${label}</a></li>`
+          : `<li>${label}</li>`
       }).join('')
 
       results.innerHTML = resultsHTML
@@ -316,6 +325,7 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 window.showTab = showTab
+
 function showTab(id) {
   const sections = ['my-officials', 'compare', 'rankings', 'rookies', 'calendar', 'registration']
   sections.forEach(sectionId => {
@@ -328,7 +338,3 @@ function showTab(id) {
   const search = document.getElementById('search')
   if (search) search.value = ''
 }
-
-window.showTab = showTab
-
-
