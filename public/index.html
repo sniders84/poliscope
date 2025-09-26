@@ -55,12 +55,12 @@
 
   <section id="top10" style="display:none;">
     <h2>Top 10 Officials</h2>
-    <p>Coming soon: top performers based on attendance, votes, and more.</p>
+    <div class="card-container" id="top10"></div>
   </section>
 
   <section id="bottom10" style="display:none;">
     <h2>Bottom 10 Officials</h2>
-    <p>Coming soon: lowest performers based on civic metrics.</p>
+    <div class="card-container" id="bottom10"></div>
   </section>
 
   <section id="calendar" style="display:none;">
@@ -73,8 +73,14 @@
     <p>Coming soon: how to register and vote in your state.</p>
   </section>
 
+  <!-- ✅ Modal overlay for expanded card view -->
+  <div id="modal-overlay" style="display:none;">
+    <div id="modal-content"></div>
+    <button onclick="closeModal()" id="modal-close">Close</button>
+  </div>
+
   <!-- ✅ Load scripts AFTER all HTML is parsed -->
-<script src="cleanHouse.js"></script>
-<script src="script.js"></script>
+  <script src="cleanHouse.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
