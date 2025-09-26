@@ -281,4 +281,19 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 window.showTab = showTab
+function showTab(id) {
+  const sections = ['my-officials', 'compare', 'rankings', 'rookies', 'calendar', 'registration']
+  sections.forEach(sectionId => {
+    const el = document.getElementById(sectionId)
+    if (el) el.style.display = sectionId === id ? 'block' : 'none'
+  })
+
+  const results = document.getElementById('results')
+  if (results) results.innerHTML = ''
+  const search = document.getElementById('search')
+  if (search) search.value = ''
+}
+
+window.showTab = showTab
+
 
