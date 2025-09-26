@@ -38,22 +38,7 @@ function renderCards(data, containerId) {
 function expandCard(slug) {
   const person = allOfficials.find(p => p.slug === slug);
   if (!person) return;
-
-  const imageUrl = person.photo || 'images/fallback.jpg';
-  const link = person.ballotpediaLink || person.contact?.website || null;
-
-  document.getElementById('modal-content').innerHTML = `
-    <div class="scorecard">
-      <h2>${person.name}</h2>
-      <p><strong>Office:</strong> ${person.office || person.position || ''}</p>
-      <p><strong>State:</strong> ${person.state}</p>
-      <p><strong>Party:</strong> ${person.party || '—'}</p>
-      <p><strong>Term:</strong> ${person.termStart || '—'} to ${person.termEnd || '—'}</p>
-      ${link ? `<p><a href="${link}" target="_blank">Ballotpedia Profile</a></p>` : ''}
-      <button onclick="openModal(allOfficials.find(p => p.slug === '${person.slug}'))">Full Profile</button>
-    </div>
-  `;
-  document.getElementById('modal-overlay').style.display = 'flex';
+  openModal(person);
 }
 
 function openModal(person) {
