@@ -96,78 +96,6 @@ function renderMyOfficials(state) {
   renderCards(matches, 'my-cards')
 }
 
-function renderTop10() {
-  const top = [...allOfficials]
-    .filter(p => typeof p.score === 'number')
-    .sort((a, b) => b.score - a.score)
-    .slice(0, 10)
-
-  renderCards(top, 'top10')
-}
-
-function renderBottom10() {
-  const bottom = [...allOfficials]
-    .filter(p => typeof p.score === 'number')
-    .sort((a, b) => a.score - b.score)
-    .slice(0, 10)
-
-  renderCards(bottom, 'bottom10')
-}
-
-function populateCompareDropdowns() {
-  const left = document.getElementById('compare-left')
-  const right = document.getElementById('compare-right')
-
-  if (!left || !right) return
-
-  left.innerHTML = '<option value="">Select official A</option>'
-  right.innerHTML = '<option value="">Select official B</option>'
-
-  allOfficials.forEach(person => {
-    const label = `${person.name} (${person.state}${person.party ? ', ' + person.party : ''})`
-    const optionLeft = new Option(label, person.slug)
-    const optionRight = new Option(label, person.slug)
-
-    left.add(optionLeft)
-    right.add(optionRight)
-  })
-}
-
-function renderCompareCard(slug, containerId) {
-  const person = allOfficials.find(p => p.slug === slug)
-  const container = document.getElementById(containerId)
-  if (!container || !person) return
-
-  const imageUrl = person.photo || 'images/fallback.jpg'
-  const link = person.ballotpediaLink || person.contact?.website || null
-
-  container.innerHTML = `
-    <div class="card">
-      <img src="${imageUrl}" alt="${person.name}" onerror="this.src='images/fallback.jpg'" />
-      <h3>${person.name}</h3>
-      <p><strong>Office:</strong> ${person.office || person.position || ''}</p>
-      <p><strong>State:</strong> ${person.state}</p>
-      <p><strong>Party:</strong> ${person.party || '—'}</p>
-      <p><strong>Term:</strong> ${person.termStart || '—'} to ${person.termEnd || '—'}</p>
-      <p><strong>Approval:</strong> ${person.approval || person.score || '—'}%</p>
-      ${link ? `<p><a href="${link}" target="_blank">Ballotpedia Profile</a></p>` : ''}
-    </div>
-  `
-}
-
-function showTab(id) {
-  const sections = ['my-officials', 'compare', 'top10', 'bottom10', 'calendar', 'registration']
-  sections.forEach(sectionId => {
-    const el = document.getElementById(sectionId)
-    if (el) el.style.display = sectionId === id ? 'block' : 'none'
-  })
-
-  const results = document.getElementById('results')
-  if (results) results.innerHTML = ''
-  const search = document.getElementById('search')
-  if (search) search.value = ''
-}
-
 async function loadData() {
   try {
     await waitForHouseData()
@@ -178,8 +106,6 @@ async function loadData() {
 
     allOfficials = [...house, ...governors, ...senate]
 
-    populateCompareDropdowns()
-
     const stateSelect = document.getElementById('state-select')
     if (stateSelect) {
       const states = [...new Set(allOfficials.map(p => p.state))].sort()
@@ -188,10 +114,11 @@ async function loadData() {
 
       stateSelect.value = 'North Carolina'
       renderMyOfficials('North Carolina')
-    }
 
-    renderTop10()
-    renderBottom10()
+      stateSelect.addEventListener('change', function (e) {
+        renderMyOfficials(e.target.value)
+      })
+    }
   } catch (err) {
     console.error("Error loading data:", err)
   }
@@ -212,128 +139,17 @@ function waitForHouseData() {
 
 document.addEventListener('DOMContentLoaded', function () {
   loadData()
-
-  const left = document.getElementById('compare-left')
-  const right = document.getElementById('compare-right')
-  const search = document.getElementById('search')
-
-  if (left) {
-    left.addEventListener('change', function (e) {
-      renderCompareCard(e.target.value, 'compare-card-left')
-    })
-  }
-
-  if (right) {
-    right.addEventListener('change', function (e) {
-      renderCompareCard(e.target.value, 'compare-card-right')
-    })
-  }
-
-  if (search) {
-    search.addEventListener('input', function (e) {
-      const query = e.target.value.toLowerCase()
-      const matches = allOfficials.filter(person =>
-        person.name.toLowerCase().includes(query) ||
-        person.state.toLowerCase().includes(query) ||
-        (person.party && person.party.toLowerCase().includes(query))
-      )
-
-      const resultsHTML = matches.map(person => {
-        const label = `${person.name} (${person.state}${person.party ? ', ' + person.party : ''})`
-        const link = person.ballotpediaLink || person.contact?.website || null
-
-        if (link) {
-          return `<li><a href="${link}" target="_blank" rel="noopener noreferrer">${label}</a></li>`
-        } else {
-          return `<li>${label}</li>`
-        }
-      }).join('')
-
-      document.getElementById('results').innerHTML = resultsHTML
-    })
-  }
 })
 
-// ✅ Expose showTab globally so tabs work
-window.showTab = showTab
-function waitForHouseData() {
-  return new Promise(resolve => {
-    const check = () => {
-      if (window.cleanedHouse && window.cleanedHouse.length > 0) {
-        resolve()
-      } else {
-        setTimeout(check, 50)
-      }
-    }
-    check()
+window.showTab = function(id) {
+  const sections = ['my-officials', 'compare', 'top10', 'bottom10', 'calendar', 'registration']
+  sections.forEach(sectionId => {
+    const el = document.getElementById(sectionId)
+    if (el) el.style.display = sectionId === id ? 'block' : 'none'
   })
-}
 
-document.addEventListener('DOMContentLoaded', function () {
-  loadData()
-
-  const left = document.getElementById('compare-left')
-  const right = document.getElementById('compare-right')
-  const search = document.getElementById('search')
   const results = document.getElementById('results')
-  const stateSelect = document.getElementById('state-select')
-
-  if (left) {
-    left.addEventListener('change', function (e) {
-      renderCompareCard(e.target.value, 'compare-card-left')
-    })
-  }
-
-  if (right) {
-    right.addEventListener('change', function (e) {
-      renderCompareCard(e.target.value, 'compare-card-right')
-    })
-  }
-
-  if (search) {
-    search.addEventListener('input', function (e) {
-      const query = e.target.value.toLowerCase()
-      if (!query) {
-        results.innerHTML = ''
-        return
-      }
-
-      const matches = allOfficials.filter(person =>
-        person.name.toLowerCase().includes(query) ||
-        person.state.toLowerCase().includes(query) ||
-        (person.party && person.party.toLowerCase().includes(query))
-      )
-
-      const resultsHTML = matches.map(person => {
-        const label = `${person.name} (${person.state}${person.party ? ', ' + person.party : ''})`
-        const link = person.ballotpediaLink || person.contact?.website || null
-
-        if (link) {
-          return `<li><a href="${link}" target="_blank" rel="noopener noreferrer">${label}</a></li>`
-        } else {
-          return `<li>${label}</li>`
-        }
-      }).join('')
-
-      results.innerHTML = resultsHTML
-    })
-
-    // Collapse results when clicking outside
-    document.addEventListener('click', function (e) {
-      if (!search.contains(e.target) && !results.contains(e.target)) {
-        results.innerHTML = ''
-        search.value = ''
-      }
-    })
-  }
-
-  if (stateSelect) {
-    stateSelect.addEventListener('change', function (e) {
-      renderMyOfficials(e.target.value)
-    })
-  }
-})
-
-// ✅ Expose showTab globally
-window.showTab = showTab
-
+  if (results) results.innerHTML = ''
+  const search = document.getElementById('search')
+  if (search) search.value = ''
+}
