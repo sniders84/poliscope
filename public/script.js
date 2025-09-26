@@ -233,7 +233,7 @@ async function loadData() {
     const house = window.cleanedHouse || [];
     const governors = await fetch('Governors.json').then(res => res.json());
     const senate = await fetch('Senate.json').then(res => res.json());
-        allOfficials = [...house, ...governors, ...senate];
+    allOfficials = [...house, ...governors, ...senate];
 
     populateCompareDropdowns();
 
@@ -256,7 +256,7 @@ async function loadData() {
   } catch (err) {
     console.error("Error loading data:", err);
   }
-} // ← closes loadData()
+}
 
 function waitForHouseData() {
   return new Promise(resolve => {
