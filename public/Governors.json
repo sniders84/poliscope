@@ -1,36 +1,30 @@
 [
   {
-    "name": "Kay Ivey",
-    "state": "Alabama",
-    "party": "Republican",
-    "office": "Governor",
-    "slug": "kay-ivey",
-    "photo": "https://www.nga.org/wp-content/uploads/2018/01/Governor-Ivey-2019-Headshot-scaled.jpg",
-    "ballotpediaLink": "https://ballotpedia.org/Kay_Ivey",
-"termStart": 2017,
-"termEnd": 2027,
-"contact": {
-  "email": "governor@governor.alabama.gov",
-  "phone": "334-242-7100",
-  "website": "https://governor.alabama.gov"
-},
-{
+  "name": "Kay Ivey",
+  "state": "Alabama",
+  "party": "Republican",
+  "office": "Governor",
+  "slug": "kay-ivey",
+  "photo": "https://www.nga.org/wp-content/uploads/2018/01/Governor-Ivey-2019-Headshot-scaled.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Kay_Ivey",
+  "termStart": 2017,
+  "termEnd": 2027,
+  "contact": {
+    "email": "governor@governor.alabama.gov",
+    "phone": "334-242-7100",
+    "website": "https://governor.alabama.gov"
+  },
   "bio": "Kay Ivey is the 54th Governor of Alabama, serving since 2017. She previously served as State Treasurer and Lieutenant Governor, becoming the first Republican woman elected to both offices in Alabama history.",
   "education": "B.A. in Secondary Education, Auburn University, 1967",
   "endorsements": "Endorsed by Alabama Farmers Federation, National Rifle Association, and Alabama Forestry Association",
-  "platform": "Conservative leadership focused on economic development, education reform, and public safety",
+  "platform": "Workforce development, broadband expansion, and education reform.",
   "proposals": "Led a $1.3 billion prison construction initiative; proposed broadband expansion and workforce development programs",
   "billsSigned": "Signed legislation banning gender-affirming medical care for minors; signed the Alabama Literacy Act; signed COVID-19 relief bills",
   "vetoes": "Rarely uses veto power; most legislation is signed or allowed to pass without signature",
   "salary": "$131,800/year",
   "predecessor": "Robert J. Bentley",
-  "donationLink": "https://kayivey.com/donate"  
-  "platform": "Workforce development, broadband expansion, and education reform.",
-  "bills": [
-  "Alabama Literacy Act",
-  "Rebuild Alabama Infrastructure Plan"
-]
-  },
+  "donationLink": "https://kayivey.com/donate"
+},
   {
     "name": "Mike Dunleavy",
     "state": "Alaska",
