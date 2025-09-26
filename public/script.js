@@ -113,7 +113,6 @@ function renderRankings() {
   renderCards(senators, 'rankings-senators')
   renderCards(house, 'rankings-house')
 }
-
 function renderRookies() {
   const cutoffYear = new Date().getFullYear() - 6
 
@@ -184,9 +183,6 @@ function renderCompareCard(slug, containerId) {
 function showTab(id) {
   const sections = ['my-officials', 'compare', 'rankings', 'rookies', 'calendar', 'registration']
   sections.forEach(sectionId => {
-    const el = document.getElementById(sectionId)
-    if (el) el.style.display = sectionId === id ? 'block
-          : 'none'
   })
 
   const results = document.getElementById('results')
