@@ -18,13 +18,10 @@ function renderCards(data, containerId) {
                        person.party?.toLowerCase().includes("constit") ? "#984ea3" :
                        "#cccccc";
 
-   <h3>${person.name}</h3>
-
-
     return `
       <div class="card" onclick="expandCard('${person.slug}')" style="border-left: 8px solid ${partyColor};">
         <img src="${imageUrl}" alt="${person.name}" onerror="this.src='images/fallback.jpg'" />
-        <h3>${person.name} ${rookieBadge}</h3>
+        <h3>${person.name}</h3>
         <p>${person.office || person.position || ''}</p>
         <p>${person.district || ''}</p>
         <p>${person.state}${person.party ? ', ' + person.party : ''}</p>
@@ -32,6 +29,7 @@ function renderCards(data, containerId) {
       </div>
     `;
   }).join('');
+
   container.innerHTML = cardsHTML;
 }
 
