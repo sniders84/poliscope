@@ -74,9 +74,10 @@ function openModal(person) {
         <h2>${person.name}</h2>
         ${link ? `<p><a href="${link}" target="_blank">Ballotpedia Profile</a></p>` : ''}
         <p><strong>Contact:</strong>
-          ${person.contact?.email ? `<a href="mailto:${person.contact.email}" style="margin-right:10px;">📧</a>` : ''}
-          ${person.contact?.phone ? `<a href="tel:${person.contact.phone.replace(/[^0-9]/g, '')}" style="margin-right:10px;">📞</a>` : ''}
-          ${person.contact?.website ? `<a href="${person.contact.website}" target="_blank" style="margin-right:10px;">🌐</a>` : ''}
+          ${person.contact?.email ? `<a href="mailto:${person.contact.email}" class="contact-icon" aria-label="Email" style="margin-right:10px; font-size:1.5em; display:inline-block;">📧</a>` : ''}
+${person.contact?.phone ? `<a href="tel:${person.contact.phone.replace(/[^0-9]/g, '')}" class="contact-icon" aria-label="Phone" style="margin-right:10px; font-size:1.5em; display:inline-block;">📞</a>` : ''}
+${person.contact?.website ? `<a href="${person.contact.website}" target="_blank" rel="noopener noreferrer" class="contact-icon" aria-label="Website" style="margin-right:10px; font-size:1.5em; display:inline-block;">🌐</a>` : ''}
+
         </p>
       </div>
 
