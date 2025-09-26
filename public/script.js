@@ -62,6 +62,30 @@ if (person.billsSigned?.length) {
   `
 }
 
+let billsHTML = ''
+if (person.billsSigned?.length) {
+  billsHTML = `
+    <p><strong>Key Bills Signed:</strong></p>
+    <ul>
+      ${person.billsSigned.map(bill => `<li><a href="${bill.link}" target="_blank">${bill.title}</a></li>`).join('')}
+    </ul>
+  `
+}
+
+let followThroughHTML = ''
+if (person.platformFollowThrough) {
+  followThroughHTML = `
+    <div class="platform-followthrough">
+      <h3>Platform Follow-Through</h3>
+      <ul>
+        ${Object.entries(person.platformFollowThrough).map(([key, value]) => `
+          <li><strong>${key}:</strong> ${value}</li>
+        `).join('')}
+      </ul>
+    </div>
+  `
+}
+
 const modalHTML = `
   <div class="modal-container">
     <div class="modal-left">
@@ -80,16 +104,7 @@ const modalHTML = `
       ${person.education ? `<p><strong>Education:</strong> ${person.education}</p>` : ''}
       ${person.endorsements ? `<p><strong>Endorsements:</strong> ${person.endorsements}</p>` : ''}
       ${person.platform ? `<p><strong>Platform:</strong> ${person.platform}</p>` : ''}
-      ${person.platformFollowThrough ? `
-  <div class="platform-followthrough">
-    <h3>Platform Follow-Through</h3>
-    <ul>
-      ${Object.entries(person.platformFollowThrough).map(([key, value]) => `
-        <li><strong>${key}:</strong> ${value}</li>
-      `).join('')}
-    </ul>
-  </div>
-` : ''}
+      ${followThroughHTML}
       ${person.proposals ? `<p><strong>Legislative Proposals:</strong> ${person.proposals}</p>` : ''}
       ${billsHTML}
       ${person.vetoes ? `<p><strong>Vetoes:</strong> ${person.vetoes}</p>` : ''}
