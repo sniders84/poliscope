@@ -81,7 +81,6 @@ const modalHTML = `
       ${person.endorsements ? `<p><strong>Endorsements:</strong> ${person.endorsements}</p>` : ''}
       ${person.platform ? `<p><strong>Platform:</strong> ${person.platform}</p>` : ''}
       ${person.proposals ? `<p><strong>Legislative Proposals:</strong> ${person.proposals}</p>` : ''}
-      ${person.engagement ? `<p><strong>Public Engagement:</strong> ${person.engagement}</p>` : ''}
       ${billsHTML}
       ${person.vetoes ? `<p><strong>Vetoes:</strong> ${person.vetoes}</p>` : ''}
       ${person.salary ? `<p><strong>Salary:</strong> ${person.salary}</p>` : ''}
