@@ -10,13 +10,18 @@ function renderCards(data, containerId) {
 
   const cardsHTML = data.map(person => {
     const imageUrl = person.photo || 'images/fallback.jpg'
-    const branchIcon = person.office?.includes("Senator") ? "🏛️" :
-                       person.office?.includes("Representative") ? "🏠" :
-                       person.office?.includes("Governor") ? "🎖️" : "❓"
+    const partyColor = person.party?.toLowerCase().includes("repub") ? "#d73027" :
+                       person.party?.toLowerCase().includes("dem") ? "#4575b4" :
+                       person.party?.toLowerCase().includes("libert") ? "#fdae61" :
+                       person.party?.toLowerCase().includes("indep") ? "#999999" :
+                       person.party?.toLowerCase().includes("green") ? "#66bd63" :
+                       person.party?.toLowerCase().includes("constit") ? "#984ea3" :
+                       "#cccccc"
+
     return `
-      <div class="card" onclick="expandCard('${person.slug}')">
+      <div class="card" onclick="expandCard('${person.slug}')" style="border-left: 8px solid ${partyColor};">
         <img src="${imageUrl}" alt="${person.name}" onerror="this.src='images/fallback.jpg'" />
-        <h3>${branchIcon} ${person.name}</h3>
+        <h3>${person.name}</h3>
         <p>${person.office || person.position || ''}</p>
         <p>${person.district || ''}</p>
         <p>${person.state}${person.party ? ', ' + person.party : ''}</p>
@@ -30,8 +35,7 @@ function renderCards(data, containerId) {
 
 function expandCard(slug) {
   const person = allOfficials.find(p => p.slug === slug)
-  const container = document.getElementById('profile-view')
-  if (!person || !container) return
+  if (!person) return
 
   const imageUrl = person.photo || 'images/fallback.jpg'
   const link = person.ballotpediaLink || person.contact?.website || null
@@ -46,7 +50,7 @@ function expandCard(slug) {
     return `<tr><td>${label}</td><td>${value}/10</td></tr>`
   }).join('')
 
-  const profileHTML = `
+  const modalHTML = `
     <div class="card">
       <img src="${imageUrl}" alt="${person.name}" onerror="this.src='images/fallback.jpg'" />
       <h2>${person.name}</h2>
@@ -67,18 +71,29 @@ function expandCard(slug) {
     </div>
   `
 
-  container.innerHTML = profileHTML
-  container.style.display = 'block'
-  window.scrollTo({ top: container.offsetTop, behavior: 'smooth' })
+  document.getElementById('modal-content').innerHTML = modalHTML
+  document.getElementById('modal-overlay').style.display = 'flex'
+}
+
+function closeModal() {
+  document.getElementById('modal-overlay').style.display = 'none'
 }
 
 function renderMyOfficials(state) {
   console.log("Rendering officials for:", state)
-  const matches = allOfficials.filter(person =>
-    person.state === state ||
-    person.stateName === state ||
-    person.stateAbbreviation === state
-  )
+  const matches = allOfficials
+    .filter(person =>
+      person.state === state ||
+      person.stateName === state ||
+      person.stateAbbreviation === state
+    )
+    .sort((a, b) => {
+      const rank = role => role.includes("Governor") ? 1 :
+                           role.includes("Senator") ? 2 :
+                           role.includes("Representative") ? 3 : 4
+      return rank(a.office || "") - rank(b.office || "")
+    })
+
   console.log(`Found ${matches.length} officials for ${state}`)
   renderCards(matches, 'my-cards')
 }
@@ -143,7 +158,6 @@ function showTab(id) {
     if (el) el.style.display = sectionId === id ? 'block' : 'none'
   })
 
-  // Clear search results when switching tabs
   const results = document.getElementById('results')
   if (results) results.innerHTML = ''
   const search = document.getElementById('search')
@@ -180,68 +194,4 @@ async function loadData() {
     } else {
       console.warn("State selector not found")
     }
-  } catch (err) {
-    console.error("Error loading data:", err)
-  }
-}
-
-function waitForHouseData() {
-  return new Promise(resolve => {
-    const check = () => {
-      if (window.cleanedHouse && window.cleanedHouse.length > 0) {
-        resolve()
-      } else {
-        setTimeout(check, 50)
-      }
-    }
-    check()
-  })
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-  loadData()
-
-  const left = document.getElementById('compare-left')
-  const right = document.getElementById('compare-right')
-  const search = document.getElementById('search')
-
-  if (left) {
-    left.addEventListener('change', function (e) {
-      renderCompareCard(e.target.value, 'compare-card-left')
-    })
-  }
-
-  if (right) {
-    right.addEventListener('change', function (e) {
-      renderCompareCard(e.target.value, 'compare-card-right')
-    })
-  }
-
-  if (search) {
-    search.addEventListener('input', function (e) {
-      const query = e.target.value.toLowerCase()
-      const matches = allOfficials.filter(person =>
-        person.name.toLowerCase().includes(query) ||
-        person.state.toLowerCase().includes(query) ||
-        (person.party && person.party.toLowerCase().includes(query))
-      )
-
-      const resultsHTML = matches.map(person => {
-        const label = `${person.name} (${person.state}${person.party ? ', ' + person.party : ''})`
-        const link = person.ballotpediaLink || person.contact?.website || null
-
-        if (link) {
-          return `<li><a href="${link}" target="_blank" rel="noopener noreferrer">${label}</a></li>`
-        } else {
-          return `<li>${label}</li>`
-        }
-      }).join('')
-
-      document.getElementById('results').innerHTML = resultsHTML
-    })
-  }
-})
-
-// ✅ Expose showTab globally so tabs work
-window.showTab = showTab
-
+  } catch (err
