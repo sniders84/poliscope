@@ -154,7 +154,7 @@ h2 {
 }
 
 .electorate-header {
-  height: 220px; /* gives room for logo */
+  height: 180px; /* gives room for logo */
   display: flex;
   align-items: center;
   justify-content: center;
