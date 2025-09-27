@@ -232,6 +232,27 @@ async function loadData() {
 
       stateSelect.addEventListener('change', function (e) {
         renderMyOfficials(e.target.value)
+        const searchInput = document.getElementById('search')
+const resultsList = document.getElementById('results')
+
+if (searchInput && resultsList) {
+  searchInput.addEventListener('input', function () {
+    const query = this.value.toLowerCase()
+    const matches = allOfficials.filter(off =>
+      off.name.toLowerCase().includes(query) ||
+      off.state.toLowerCase().includes(query) ||
+      off.party.toLowerCase().includes(query)
+    )
+
+    resultsList.innerHTML = ''
+
+    matches.forEach(match => {
+      const li = document.createElement('li')
+      li.textContent = `${match.name} (${match.state}, ${match.party})`
+      resultsList.appendChild(li)
+    })
+  })
+}
       })
     }
 
