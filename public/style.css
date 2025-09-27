@@ -154,11 +154,14 @@ h2 {
 }
 
 .electorate-header {
-  padding: 1rem 0;
+  height: 160px; /* fixed height */
   background: linear-gradient(to right, #f9f9f9, #eaeaea);
   border-bottom: 1px solid #ccc;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .electorate-logo {
