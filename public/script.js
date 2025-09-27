@@ -462,11 +462,6 @@ document.querySelectorAll('.tab-button').forEach(button => {
     });
   });
 });
-function openModal(contentId) {
-  const modalContent = document.getElementById('modal-content');
-  modalContent.innerHTML = getModalContent(contentId);
-  document.getElementById('modal-overlay').style.display = 'block';
-}
 
 function closeModal() {
   document.getElementById('modal-overlay').style.display = 'none';
