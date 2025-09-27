@@ -1,4 +1,5 @@
 console.log("✅ script.js loaded");
+
 const civicEvents = [
   {
     title: "General Election",
@@ -41,6 +42,7 @@ const civicEvents = [
     details: "Six-bill package to boost workforce participation, childcare access, and rural job growth."
   }
 ];
+
 const votingInfo = {
   "Alabama": {
     registrationLink: "https://www.sos.alabama.gov/alabama-votes/voter/register-to-vote",
@@ -55,6 +57,7 @@ const votingInfo = {
     earlyVotingEnd: null
   }
 };
+
 function renderCalendar(events, selectedState) {
   const container = document.getElementById('calendar-container');
   if (!container) return;
@@ -62,7 +65,7 @@ function renderCalendar(events, selectedState) {
   const today = new Date();
 
   const filtered = events
-    .filter(e => e.state === selectedState && new Date(e.date) >= today)
+    .filter(e => (e.state === selectedState || e.state === "National") && new Date(e.date) >= today)
     .sort((a, b) => new Date(a.date) - new Date(b.date));
 
   const html = filtered.map(event => `
@@ -75,6 +78,7 @@ function renderCalendar(events, selectedState) {
 
   container.innerHTML = html || `<p>No upcoming events for ${selectedState}.</p>`;
 }
+
 function openEventModal(title, date, state, type, details, link) {
   document.getElementById('modal-content').innerHTML = `
     <div class="event-modal">
@@ -88,6 +92,7 @@ function openEventModal(title, date, state, type, details, link) {
   `;
   document.getElementById('modal-overlay').style.display = 'flex';
 }
+
 function renderVotingInfo(state) {
   const container = document.getElementById('voting-container');
   if (!container || !votingInfo[state]) {
@@ -121,7 +126,6 @@ function renderVotingInfo(state) {
     </div>
   `;
 }
-
 let allOfficials = [];
 
 function renderCards(data, containerId) {
@@ -198,12 +202,10 @@ function openModal(person) {
         ${link ? `<p><a href="${link}" target="_blank">Ballotpedia Profile</a></p>` : ''}
         <p><strong>Contact:</strong>
           ${person.contact?.email ? `<a href="mailto:${person.contact.email}" class="contact-icon" aria-label="Email" style="margin-right:10px; font-size:1.5em; display:inline-block;">📧</a>` : ''}
-${person.contact?.phone ? `<a href="tel:${person.contact.phone.replace(/[^0-9]/g, '')}" class="contact-icon" aria-label="Phone" style="margin-right:10px; font-size:1.5em; display:inline-block;">📞</a>` : ''}
-${person.contact?.website ? `<a href="${person.contact.website}" target="_blank" rel="noopener noreferrer" class="contact-icon" aria-label="Website" style="margin-right:10px; font-size:1.5em; display:inline-block;">🌐</a>` : ''}
-
+          ${person.contact?.phone ? `<a href="tel:${person.contact.phone.replace(/[^0-9]/g, '')}" class="contact-icon" aria-label="Phone" style="margin-right:10px; font-size:1.5em; display:inline-block;">📞</a>` : ''}
+          ${person.contact?.website ? `<a href="${person.contact.website}" target="_blank" rel="noopener noreferrer" class="contact-icon" aria-label="Website" style="margin-right:10px; font-size:1.5em; display:inline-block;">🌐</a>` : ''}
         </p>
       </div>
-
       <div class="modal-right">
         ${person.bio ? `<p><strong>Bio:</strong> ${person.bio}</p>` : ''}
         ${person.education ? `<p><strong>Education:</strong> ${person.education}</p>` : ''}
@@ -225,7 +227,11 @@ ${person.contact?.website ? `<a href="${person.contact.website}" target="_blank"
 }
 function filterByState(state) {
   if (!state) return;
-  const filtered = allOfficials.filter(person => person.state === state);
+  const filtered = allOfficials.filter(person =>
+    person.state === state ||
+    person.stateName === state ||
+    person.stateAbbreviation === state
+  );
   renderCards(filtered, 'my-cards');
   renderCards(filtered, 'rookie-governors');
   renderCards(filtered, 'rookie-senators');
@@ -244,6 +250,7 @@ function filterBySearch(query) {
   });
   renderCards(filtered, 'my-cards');
 }
+
 function closeModal() {
   document.getElementById('modal-overlay').style.display = 'none';
 }
@@ -319,7 +326,6 @@ function populateCompareDropdowns() {
     renderCompareCard(e.target.value, 'compare-card-right');
   });
 }
-
 function renderCompareCard(slug, containerId) {
   const person = allOfficials.find(p => p.slug === slug);
   const container = document.getElementById(containerId);
@@ -363,59 +369,38 @@ async function loadData() {
     const senate = await fetch('Senate.json').then(res => res.json());
 
     allOfficials = [...house, ...governors, ...senate];
-    const stateSelect = document.getElementById('state-select');
-if (stateSelect) {
-  const states = [...new Set(
-  allOfficials
-    .map(p => p.stateAbbreviation || p.stateName || p.state)
-    .filter(Boolean)
-)].sort();
-
-stateSelect.innerHTML = '<option value="">Choose a state</option>' +
-  states.map(state => `<option value="${state}">${state}</option>`).join('');
-
-  stateSelect.value = 'Alabama'; // Default state
-  renderMyOfficials('Alabama');
-  renderCalendar(civicEvents, 'Alabama');
-  renderVotingInfo('Alabama');
-
-  stateSelect.addEventListener('change', function (e) {
-    const selectedState = e.target.value;
-    renderMyOfficials(selectedState);
-    renderCalendar(civicEvents, selectedState);
-    renderVotingInfo(selectedState);
-  });
-}
-
-    populateCompareDropdowns();
 
     const stateSelect = document.getElementById('state-select');
     if (stateSelect) {
-      const states = [...new Set(allOfficials.map(p => p.state))].sort();
+      const states = [...new Set(
+        allOfficials
+          .map(p => p.stateAbbreviation || p.stateName || p.state)
+          .filter(Boolean)
+      )].sort();
+
       stateSelect.innerHTML = '<option value="">Choose a state</option>' +
         states.map(state => `<option value="${state}">${state}</option>`).join('');
 
-      stateSelect.value = 'Alabama';
-renderMyOfficials('Alabama');
-renderCalendar(civicEvents, 'Alabama');
-renderVotingInfo('Alabama');
-      
+      stateSelect.value = 'Alabama'; // Default state
+      renderMyOfficials('Alabama');
+      renderCalendar(civicEvents, 'Alabama');
+      renderVotingInfo('Alabama');
 
       stateSelect.addEventListener('change', function (e) {
-  const selectedState = e.target.value;
-  renderMyOfficials(selectedState);
-  renderCalendar(civicEvents, selectedState);
-  renderVotingInfo(selectedState);
-});
+        const selectedState = e.target.value;
+        renderMyOfficials(selectedState);
+        renderCalendar(civicEvents, selectedState);
+        renderVotingInfo(selectedState);
+      });
     }
 
+    populateCompareDropdowns();
     renderRankings();
     renderRookies();
   } catch (err) {
     console.error("Error loading data:", err);
   }
 }
-
 function waitForHouseData() {
   return new Promise(resolve => {
     const check = () => {
@@ -443,6 +428,9 @@ document.addEventListener('DOMContentLoaded', () => {
       renderCalendar(civicEvents, selectedState);
       renderVotingInfo(selectedState);
     });
+
+    const defaultState = stateSelect.value || 'Alabama';
+    renderCalendar(civicEvents, defaultState);
   }
 
   if (searchInput) {
@@ -484,22 +472,9 @@ document.addEventListener('DOMContentLoaded', () => {
   renderRookies();
   populateCompareDropdowns();
 });
-  }
-
-  // ✅ Calendar sync logic goes here, outside the search block
-  const stateSelect = document.getElementById('state-select');
-  if (stateSelect) {
-    const defaultState = stateSelect.value || 'Alabama';
-    renderCalendar(civicEvents, defaultState);
-
-    stateSelect.addEventListener('change', () => {
-      renderCalendar(civicEvents, stateSelect.value);
-    });
-  }
-});
 
 function showTab(id) {
-  const sections = ['my-officials', 'compare', 'rankings', 'rookies', 'calendar', 'registration'];
+  const sections = ['my-officials', 'compare', 'rankings', 'rookies', 'calendar', 'voting'];
   sections.forEach(sectionId => {
     const el = document.getElementById(sectionId);
     if (el) el.style.display = sectionId === id ? 'block' : 'none';
@@ -519,15 +494,9 @@ document.querySelectorAll('.tab-button').forEach(button => {
 
     document.querySelectorAll('.tab-content').forEach(content => {
       content.style.display = content.id === tabId ? 'block' : 'none';
-      document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('state-select').addEventListener('change', handleStateChange);
-  document.getElementById('search').addEventListener('input', handleSearch);
-
-  // Optional: load default state or all officials
-  handleStateChange();
-});
-
     });
+
+    showTab(tabId);
   });
 });
 
@@ -541,89 +510,5 @@ function openModal(contentId) {
   modalContent.innerHTML = source ? source.innerHTML : `<p>No content available.</p>`;
   document.getElementById('modal-overlay').style.display = 'block';
 }
-document.addEventListener('DOMContentLoaded', () => {
-  const stateSelect = document.getElementById('state-select');
-  const searchInput = document.getElementById('search');
 
-  if (stateSelect) {
-    stateSelect.addEventListener('change', () => {
-      const selectedState = stateSelect.value;
-      loadOfficials(selectedState); // ← replace with your actual function
-    });
-  }
-
-  if (searchInput) {
-    searchInput.addEventListener('input', () => {
-      const query = searchInput.value.toLowerCase();
-      filterBySearch(query); // ← replace with your actual function
-    });
-  }
-
-  // Optional: load default state
-  if (stateSelect && stateSelect.value) {
-    loadOfficials(stateSelect.value); // ← again, replace as needed
-  }
-});
-document.addEventListener('DOMContentLoaded', () => {
-  const stateSelect = document.getElementById('state-select');
-  const searchInput = document.getElementById('search');
-
-  if (stateSelect) {
-    stateSelect.addEventListener('change', () => {
-      const selectedState = stateSelect.value;
-      filterByState(selectedState);
-    });
-
-    if (stateSelect.value) {
-      filterByState(stateSelect.value);
-    }
-  }
-
-  if (searchInput) {
-    searchInput.addEventListener('input', () => {
-      const query = searchInput.value.toLowerCase();
-      filterBySearch(query);
-    });
-  }
-});
-document.addEventListener('DOMContentLoaded', () => {
-  const stateSelect = document.getElementById('state-select');
-  const searchInput = document.getElementById('search');
-
-  if (stateSelect) {
-    stateSelect.addEventListener('change', () => {
-      const selectedState = stateSelect.value;
-      renderMyOfficials(selectedState);
-      renderCalendar(civicEvents, selectedState);
-      renderVotingInfo(selectedState);
-    });
-
-    if (stateSelect.value) {
-      renderMyOfficials(stateSelect.value);
-      renderCalendar(civicEvents, stateSelect.value);
-      renderVotingInfo(stateSelect.value);
-    }
-  }
-
-  if (searchInput) {
-    searchInput.addEventListener('input', () => {
-      const query = searchInput.value.toLowerCase();
-      const selectedState = stateSelect?.value || '';
-      const filtered = allOfficials.filter(person =>
-        (person.state === selectedState ||
-         person.stateName === selectedState ||
-         person.stateAbbreviation === selectedState) &&
-        (
-          person.name?.toLowerCase().includes(query) ||
-          person.party?.toLowerCase().includes(query)
-        )
-      );
-      renderCards(filtered, 'my-cards');
-    });
-  }
-
-  renderRankings();
-  renderRookies();
-  populateCompareDropdowns();
-});
 window.showTab = showTab;
