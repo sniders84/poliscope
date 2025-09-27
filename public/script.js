@@ -450,5 +450,17 @@ function showTab(id) {
   const search = document.getElementById('search');
   if (search) search.value = '';
 }
+document.querySelectorAll('.tab-button').forEach(button => {
+  button.addEventListener('click', () => {
+    const tabId = button.getAttribute('data-tab');
+
+    document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+
+    document.querySelectorAll('.tab-content').forEach(content => {
+      content.style.display = content.id === tabId ? 'block' : 'none';
+    });
+  });
+});
 
 window.showTab = showTab;
