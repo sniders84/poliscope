@@ -480,34 +480,39 @@ function openModal(contentId) {
   const source = document.getElementById(contentId);
   modalContent.innerHTML = source ? source.innerHTML : `<p>No content available.</p>`;
   document.getElementById('modal-overlay').style.display = 'block';
-}
 document.addEventListener('DOMContentLoaded', () => {
   const stateSelect = document.getElementById('state-select');
   const searchInput = document.getElementById('search');
+  const resultsList = document.getElementById('results');
 
   if (stateSelect) {
     stateSelect.addEventListener('change', () => {
       const selectedState = stateSelect.value;
-      loadOfficials(selectedState); // ← replace with your actual function
+      loadOfficials(selectedState); // ← make sure this function exists elsewhere
     });
   }
 
-  if (searchInput) {
+  if (searchInput && resultsList) {
     searchInput.addEventListener('input', function () {
-  const query = this.value.toLowerCase();
-  const matches = allOfficials.filter(off =>
-    off.name.toLowerCase().includes(query) ||
-    off.state.toLowerCase().includes(query) ||
-    off.party.toLowerCase().includes(query)
-  );
+      const query = this.value.toLowerCase();
+      const matches = (window.allOfficials || []).filter(off =>
+        off.name.toLowerCase().includes(query) ||
+        off.state.toLowerCase().includes(query) ||
+        off.party.toLowerCase().includes(query)
+      );
 
-  resultsList.innerHTML = '';
+      resultsList.innerHTML = '';
 
-  matches.forEach(match => {
-    const li = document.createElement('li');
-    li.textContent = `${match.name} (${match.state}, ${match.party})`;
-    resultsList.appendChild(li);
-  });
-});
-window.showTab = showTab;
+      matches.forEach(match => {
+        const li = document.createElement('li');
+        li.textContent = `${match.name} (${match.state}, ${match.party})`;
+        resultsList.appendChild(li);
+      });
+    });
   }
+
+  // Optional: expose showTab globally if defined elsewhere
+  if (typeof showTab === 'function') {
+    window.showTab = showTab;
+  }
+});
