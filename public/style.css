@@ -154,40 +154,38 @@ h2 {
 }
 
 .electorate-header {
-  height: 160px;
-  background: linear-gradient(to right,
-    #1877F2,   /* Bright Democratic Blue */
-    #888888,   /* Medium Gray */
-    #FFFFFF,   /* White */
-    #888888,   /* Medium Gray */
-    #FF4136    /* Republican Red */
-  );
-  border-bottom: 1px solid #ccc;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  height: 220px; /* gives room for logo */
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column; /* stack logo + any text */
+  background: linear-gradient(to right,
+    #1877F2,
+    #888888,
+    #FFFFFF,
+    #888888,
+    #FF4136
+  );
+  border-bottom: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   overflow: hidden;
 }
-
 .electorate-logo {
+  height: 140px; /* clean desktop height */
+  width: auto;
   display: block;
-  margin: 1rem auto;
-  max-width: 100%;
-  height: auto;
+  margin: 0 auto;
 }
 
-/* Mobile-specific tweak */
+/* Mobile tweak */
 @media (max-width: 600px) {
   .electorate-logo {
-    width: 120px;       /* Shrinks logo width */
-    margin-top: 30px;   /* Pushes it down from top */
+    width: 120px;
+    height: auto;
+    margin-top: 30px;
     margin-bottom: 20px;
   }
-  @media (min-width: 601px) {
-  .electorate-logo {
-    height: 160px;
-  }
+}
 }
 .tab-container {
   margin: 2rem auto;
