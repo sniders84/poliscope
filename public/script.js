@@ -44,9 +44,9 @@ const civicEvents = [
 const votingInfo = {
   "Alabama": {
     registrationLink: "https://www.sos.alabama.gov/alabama-votes/voter/register-to-vote",
-    statusCheckLink: "https://www.sos.alabama.gov/alabama-votes/voter/check-your-voter-registration-status",
-    pollingPlaceLink: "https://myinfo.alabamavotes.gov/VoterView/RegistrantSearch.do",
-    volunteerLink: "https://www.sos.alabama.gov/alabama-votes/voter/poll-workers",
+    statusCheckLink: "https://myinfo.alabamavotes.gov/voterview/",
+    pollingPlaceLink: "https://myinfo.alabamavotes.gov/voterview/",
+    volunteerLink: "https://www.sos.alabama.gov/alabama-votes/become-poll-worker",
     absenteeLink: "https://www.sos.alabama.gov/alabama-votes/voter/absentee-voting",
     registrationDeadline: "2025-10-21",
     absenteeRequestDeadline: "2025-10-29",
