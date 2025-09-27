@@ -459,60 +459,8 @@ document.querySelectorAll('.tab-button').forEach(button => {
 
     document.querySelectorAll('.tab-content').forEach(content => {
       content.style.display = content.id === tabId ? 'block' : 'none';
-      document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('state-select').addEventListener('change', handleStateChange);
-  document.getElementById('search').addEventListener('input', handleSearch);
-
-  // Optional: load default state or all officials
-  handleStateChange();
-});
-
     });
   });
 });
 
-function closeModal() {
-  document.getElementById('modal-overlay').style.display = 'none';
-}
-
-function openModal(contentId) {
-  const modalContent = document.getElementById('modal-content');
-  const source = document.getElementById(contentId);
-  modalContent.innerHTML = source ? source.innerHTML : `<p>No content available.</p>`;
-  document.getElementById('modal-overlay').style.display = 'block';
-document.addEventListener('DOMContentLoaded', () => {
-  const stateSelect = document.getElementById('state-select');
-  const searchInput = document.getElementById('search');
-  const resultsList = document.getElementById('results');
-
-  if (stateSelect) {
-    stateSelect.addEventListener('change', () => {
-      const selectedState = stateSelect.value;
-      loadOfficials(selectedState); // ← make sure this function exists elsewhere
-    });
-  }
-
-  if (searchInput && resultsList) {
-    searchInput.addEventListener('input', function () {
-      const query = this.value.toLowerCase();
-      const matches = (window.allOfficials || []).filter(off =>
-        off.name.toLowerCase().includes(query) ||
-        off.state.toLowerCase().includes(query) ||
-        off.party.toLowerCase().includes(query)
-      );
-
-      resultsList.innerHTML = '';
-
-      matches.forEach(match => {
-        const li = document.createElement('li');
-        li.textContent = `${match.name} (${match.state}, ${match.party})`;
-        resultsList.appendChild(li);
-      });
-    });
-  }
-
-  // Optional: expose showTab globally if defined elsewhere
-  if (typeof showTab === 'function') {
-    window.showTab = showTab;
-  }
-});
+window.showTab = showTab;
