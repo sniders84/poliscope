@@ -493,16 +493,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (searchInput) {
-    searchInput.addEventListener('input', () => {
-      const query = searchInput.value.toLowerCase();
-      filterBySearch(query); // ← replace with your actual function
-    });
-  }
+    searchInput.addEventListener('input', function () {
+  const query = this.value.toLowerCase();
+  const matches = allOfficials.filter(off =>
+    off.name.toLowerCase().includes(query) ||
+    off.state.toLowerCase().includes(query) ||
+    off.party.toLowerCase().includes(query)
+  );
 
-  // Optional: load default state
-  if (stateSelect && stateSelect.value) {
-    loadOfficials(stateSelect.value); // ← again, replace as needed
-  }
-});
+  resultsList.innerHTML = '';
 
+  matches.forEach(match => {
+    const li = document.createElement('li');
+    li.textContent = `${match.name} (${match.state}, ${match.party})`;
+    resultsList.appendChild(li);
+  });
 window.showTab = showTab;
