@@ -1,4 +1,3 @@
-console.log("✅ script.js loaded");
 const civicEvents = [
   {
     title: "General Election",
