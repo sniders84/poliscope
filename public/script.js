@@ -363,6 +363,24 @@ async function loadData() {
     const senate = await fetch('Senate.json').then(res => res.json());
 
     allOfficials = [...house, ...governors, ...senate];
+    const stateSelect = document.getElementById('state-select');
+if (stateSelect) {
+  const states = [...new Set(allOfficials.map(p => p.state))].sort();
+  stateSelect.innerHTML = '<option value="">Choose a state</option>' +
+    states.map(state => `<option value="${state}">${state}</option>`).join('');
+
+  stateSelect.value = 'Alabama'; // Default state
+  renderMyOfficials('Alabama');
+  renderCalendar(civicEvents, 'Alabama');
+  renderVotingInfo('Alabama');
+
+  stateSelect.addEventListener('change', function (e) {
+    const selectedState = e.target.value;
+    renderMyOfficials(selectedState);
+    renderCalendar(civicEvents, selectedState);
+    renderVotingInfo(selectedState);
+  });
+}
 
     populateCompareDropdowns();
 
