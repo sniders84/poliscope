@@ -50,38 +50,31 @@
     <button onclick="showTab('calendar')">Calendar</button>
     <button onclick="showTab('voting')">Voting</button>
   </nav>
-<div id="search-tools">
-  <input type="text" id="search" placeholder="Search by name, state, or party..." />
-  <ul id="results"></ul>
 
-  <label for="state-select">Select your state:</label>
-  <select id="state-select">
-    <option value="">Choose a state</option>
-    <option value="North Carolina">North Carolina</option>
-    <option value="California">California</option>
-    <option value="Texas">Texas</option>
-    <!-- Add more states as needed -->
-  </select>
-</div>
-  <section id="my-officials">
+  <div id="search-tools">
+    <input type="text" id="search" placeholder="Search by name, state, or party..." />
+    <ul id="results"></ul>
+
+    <label for="state-select">Select your state:</label>
+    <select id="state-select">
+      <option value="">Choose a state</option>
+      <option value="North Carolina">North Carolina</option>
+      <option value="California">California</option>
+      <option value="Texas">Texas</option>
+      <!-- Add more states as needed -->
+    </select>
+  </div>
+
+  <section id="my-officials" style="display:none;">
     <h2>My Officials</h2>
-    <div class="card-container">
-      <div class="card" onclick="openModal('kay-ivey-modal')">
-        <h3>Kay Ivey</h3>
-        <p>Governor of Alabama</p>
-      </div>
-    </div>
+    <div id="my-cards" class="card-container"></div>
   </section>
 
   <section id="compare" style="display:none;">
     <h2>Compare Officials</h2>
     <div class="compare-selectors">
-      <select id="compare-left">
-        <option value="">Select official A</option>
-      </select>
-      <select id="compare-right">
-        <option value="">Select official B</option>
-      </select>
+      <select id="compare-left"></select>
+      <select id="compare-right"></select>
     </div>
     <div class="compare-results">
       <div id="compare-card-left" class="card"></div>
@@ -119,38 +112,12 @@
 
   <section id="calendar" style="display:none;">
     <h2>Civic Calendar</h2>
-    <div class="card-container">
-      <div class="card" onclick="openModal('calendar-event-1')">
-        <h3>Special Election</h3>
-        <p>October 15, 2025 – Alabama House District 16</p>
-      </div>
-    </div>
+    <div id="calendar-container" class="card-container"></div>
   </section>
 
   <section id="voting" style="display:none;">
     <h2>🗳️ Alabama Voting Info – 2025</h2>
-    <div class="card-grid">
-      <div class="card" onclick="openModal('next-election')">
-        <h3>Next Election</h3>
-        <p>Municipal Runoff<br><strong>Tuesday, September 23, 2025</strong></p>
-      </div>
-      <div class="card" onclick="openModal('mail-deadline')">
-        <h3>Mail-In Deadline</h3>
-        <p>Ballot must be <strong>received by noon</strong> on Election Day if mailed.</p>
-      </div>
-      <div class="card" onclick="openModal('in-person-deadline')">
-        <h3>In-Person Deadline</h3>
-        <p>Drop off by <strong>Monday, September 22</strong> or vote in person on Election Day.</p>
-      </div>
-      <div class="card" onclick="openModal('registration-deadline')">
-        <h3>Registration Deadline</h3>
-        <p>Register by <strong>Monday, September 8, 2025</strong></p>
-      </div>
-      <div class="card" onclick="openModal('absentee-form')">
-        <h3>Absentee Form</h3>
-        <p><a href="https://www.sos.alabama.gov/sites/default/files/voter-pdfs/absentee-ballot-app.pdf" target="_blank">Download Application</a></p>
-      </div>
-    </div>
+    <div id="voting-container" class="card-grid"></div>
     <p style="margin-top:1rem;">🔗 <a href="https://www.sos.alabama.gov/alabama-votes/voter/election-information/2025" target="_blank">Full Election Info from Alabama Secretary of State</a></p>
   </section>
 
@@ -186,7 +153,7 @@
     <p><a href="https://www.sos.alabama.gov/sites/default/files/voter-pdfs/absentee-ballot-app.pdf" target="_blank">Download the official form (PDF)</a></p>
   </div>
 
-    <div id="kay-ivey-modal" style="display:none;">
+  <div id="kay-ivey-modal" style="display:none;">
     <h2>Kay Ivey</h2>
     <p>Governor of Alabama. Signed 12 bills in 2025. <a href="https://governor.alabama.gov" target="_blank">Official site</a></p>
   </div>
@@ -203,28 +170,4 @@
         tab.style.display = tab.id === tabId ? 'block' : 'none';
       });
 
-      const buttons = document.querySelectorAll('#tabs button');
-      buttons.forEach(button => {
-        button.classList.toggle('active', button.getAttribute('onclick') === `showTab('${tabId}')`);
-      });
-    }
-
-    function openModal(contentId) {
-      const modalContent = document.getElementById('modal-content');
-      const source = document.getElementById(contentId);
-      modalContent.innerHTML = source ? source.innerHTML : `<p>No content available.</p>`;
-      document.getElementById('modal-overlay').style.display = 'flex';
-    }
-
-    function closeModal() {
-      document.getElementById('modal-overlay').style.display = 'none';
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      showTab('my-officials');
-    });
-  </script>
-  <script src="cleanHouse.js"></script>
-<script src="script.js"></script>
-</body>
-</html>
+      const buttons = document.query
