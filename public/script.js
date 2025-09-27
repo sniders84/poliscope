@@ -1,103 +1,231 @@
-console.log("✅ script.js loaded")
-let allOfficials = []
+console.log("✅ script.js loaded");
+const civicEvents = [
+  {
+    title: "General Election",
+    date: "2025-11-04",
+    state: "Alabama",
+    type: "Election",
+    link: "https://www.vote411.org/upcoming/1/events",
+    details: "Statewide general election including Governor and House seats."
+  },
+  {
+    title: "Municipal Runoff Election (if needed)",
+    date: "2025-10-07",
+    state: "Alabama",
+    type: "Election",
+    link: "https://www.sos.alabama.gov/alabama-votes/voter/election-information/2025",
+    details: "Runoff elections for municipalities where no candidate received a majority."
+  },
+  {
+    title: "Town Hall with Gov. Kay Ivey",
+    date: "2025-10-15",
+    state: "Alabama",
+    type: "Public Engagement",
+    link: "https://governor.alabama.gov/newsroom/",
+    details: "Public Q&A session in Montgomery. Open to all residents."
+  },
+  {
+    title: "Last Day to Register for General Election",
+    date: "2025-10-21",
+    state: "Alabama",
+    type: "Deadline",
+    link: "https://www.sos.alabama.gov/alabama-votes/voter/register-to-vote",
+    details: "Deadline to register to vote in the November 4 general election."
+  },
+  {
+    title: "Signed 'Working for Alabama' Legislative Package",
+    date: "2025-05-01",
+    state: "Alabama",
+    type: "Bill Signing",
+    link: "https://governor.alabama.gov/newsroom/2024/05/governor-ivey-signs-landmark-working-for-alabama-legislative-package-into-law/",
+    details: "Six-bill package to boost workforce participation, childcare access, and rural job growth."
+  }
+];
+const votingInfo = {
+  "Alabama": {
+    registrationLink: "https://www.sos.alabama.gov/alabama-votes/voter/register-to-vote",
+    statusCheckLink: "https://myinfo.alabamavotes.gov/voterview/",
+    pollingPlaceLink: "https://myinfo.alabamavotes.gov/voterview/",
+    volunteerLink: "https://www.sos.alabama.gov/alabama-votes/become-poll-worker",
+    absenteeLink: "https://www.sos.alabama.gov/alabama-votes/voter/absentee-voting",
+    registrationDeadline: "2025-10-21",
+    absenteeRequestDeadline: "2025-10-29",
+    absenteeReturnDeadline: "2025-11-04 12:00 PM",
+    earlyVotingStart: null,
+    earlyVotingEnd: null
+  }
+};
+function renderCalendar(events, selectedState) {
+  const container = document.getElementById('calendar-container');
+  if (!container) return;
+
+  const today = new Date();
+
+  const filtered = events
+    .filter(e => e.state === selectedState && new Date(e.date) >= today)
+    .sort((a, b) => new Date(a.date) - new Date(b.date));
+
+  const html = filtered.map(event => `
+    <div class="card" onclick="openEventModal('${event.title}', '${event.date}', '${event.state}', '${event.type}', '${event.details}', '${event.link}')">
+      <h3>${event.title}</h3>
+      <p><strong>Date:</strong> ${event.date}</p>
+      <p><strong>Type:</strong> ${event.type}</p>
+    </div>
+  `).join('');
+
+  container.innerHTML = html || `<p>No upcoming events for ${selectedState}.</p>`;
+}
+function openEventModal(title, date, state, type, details, link) {
+  document.getElementById('modal-content').innerHTML = `
+    <div class="event-modal">
+      <h2>${title}</h2>
+      <p><strong>Date:</strong> ${date}</p>
+      <p><strong>State:</strong> ${state}</p>
+      <p><strong>Type:</strong> ${type}</p>
+      <p>${details}</p>
+      <a href="${link}" target="_blank" rel="noopener noreferrer">More Info</a>
+    </div>
+  `;
+  document.getElementById('modal-overlay').style.display = 'flex';
+}
+function renderVotingInfo(state) {
+  const container = document.getElementById('voting-container');
+  if (!container || !votingInfo[state]) {
+    container.innerHTML = `<p>No voting info available for ${state}.</p>`;
+    return;
+  }
+
+  const info = votingInfo[state];
+  container.innerHTML = `
+    <div class="card">
+      <h3>Register to Vote</h3>
+      <p><a href="${info.registrationLink}" target="_blank">Register Online</a></p>
+      <p><a href="${info.statusCheckLink}" target="_blank">Check Registration Status</a></p>
+      <p><strong>Deadline:</strong> ${info.registrationDeadline}</p>
+    </div>
+    <div class="card">
+      <h3>Find Your Polling Place</h3>
+      <p><a href="${info.pollingPlaceLink}" target="_blank">Polling Place Lookup</a></p>
+      ${info.earlyVotingStart ? `<p><strong>Early Voting:</strong> ${info.earlyVotingStart} to ${info.earlyVotingEnd}</p>` : '<p><em>Early voting not available statewide.</em></p>'}
+    </div>
+    <div class="card">
+      <h3>Vote by Mail</h3>
+      <p><a href="${info.absenteeLink}" target="_blank">Request Absentee Ballot</a></p>
+      <p><strong>Request Deadline:</strong> ${info.absenteeRequestDeadline}</p>
+      <p><strong>Return Deadline:</strong> ${info.absenteeReturnDeadline}</p>
+      <p>Must include a copy of valid photo ID.</p>
+    </div>
+    <div class="card">
+      <h3>Volunteer</h3>
+      <p><a href="${info.volunteerLink}" target="_blank">Become a Poll Worker</a></p>
+    </div>
+  `;
+}
+
+let allOfficials = [];
 
 function renderCards(data, containerId) {
-  const container = document.getElementById(containerId)
+  const container = document.getElementById(containerId);
   if (!container) {
-    console.warn(`Missing container: ${containerId}`)
-    return
+    console.warn(`Missing container: ${containerId}`);
+    return;
   }
 
   const cardsHTML = data.map(person => {
-    const imageUrl = person.photo || 'images/fallback.jpg'
+    const imageUrl = person.photo || 'images/fallback.jpg';
     const partyColor = person.party?.toLowerCase().includes("repub") ? "#d73027" :
                        person.party?.toLowerCase().includes("dem") ? "#4575b4" :
                        person.party?.toLowerCase().includes("libert") ? "#fdae61" :
                        person.party?.toLowerCase().includes("indep") ? "#999999" :
                        person.party?.toLowerCase().includes("green") ? "#66bd63" :
                        person.party?.toLowerCase().includes("constit") ? "#984ea3" :
-                       "#cccccc"
-
-    const isRookie = Number(person.termStart) >= new Date().getFullYear() - 6
-    const rookieBadge = isRookie ? '<span class="badge">🟢 Rookie</span>' : ''
+                       "#cccccc";
 
     return `
       <div class="card" onclick="expandCard('${person.slug}')" style="border-left: 8px solid ${partyColor};">
         <img src="${imageUrl}" alt="${person.name}" onerror="this.src='images/fallback.jpg'" />
-        <h3>${person.name} ${rookieBadge}</h3>
+        <h3>${person.name}</h3>
         <p>${person.office || person.position || ''}</p>
         <p>${person.district || ''}</p>
         <p>${person.state}${person.party ? ', ' + person.party : ''}</p>
         <p>Term: ${person.termStart || '—'} to ${person.termEnd || '—'}</p>
-        <p>Approval: ${person.approval || person.score || '—'}%</p>
       </div>
-    `
-  }).join('')
-  container.innerHTML = cardsHTML
+    `;
+  }).join('');
+
+  container.innerHTML = cardsHTML;
 }
 
 function expandCard(slug) {
-  const person = allOfficials.find(p => p.slug === slug)
-  if (!person) return
+  const person = allOfficials.find(p => p.slug === slug);
+  if (!person) return;
+  openModal(person);
+}
 
-  const imageUrl = person.photo || 'images/fallback.jpg'
-  const link = person.ballotpediaLink || person.contact?.website || null
-  const score = person.score || '—'
-  const badge = score >= 85 ? '🟢 Civic Champion' :
-                score >= 70 ? '🟡 Solid Contributor' :
-                score < 70 ? '🔴 Needs Accountability' : '⚪ Unscored'
+function openModal(person) {
+  const imageUrl = person.imageUrl || person.photo || 'images/fallback.jpg';
+  const link = person.ballotpediaLink || person.contact?.website || '';
 
-  const breakdown = person.scoreBreakdown || {}
+  let billsHTML = '';
+  if (person.billsSigned?.length) {
+    billsHTML = `
+      <p><strong>Key Bills Signed:</strong></p>
+      <ul>
+        ${person.billsSigned.map(bill => `<li><a href="${bill.link}" target="_blank">${bill.title}</a></li>`).join('')}
+      </ul>
+    `;
+  }
 
-  const breakdownHTML = Object.entries(breakdown).map(([label, value]) => {
-    return `<tr><td>${label}</td><td>${value}/10</td></tr>`
-  }).join('')
+  let followThroughHTML = '';
+  if (person.platformFollowThrough) {
+    followThroughHTML = `
+      <div class="platform-followthrough">
+        <h3>Platform Follow-Through</h3>
+        <ul>
+          ${Object.entries(person.platformFollowThrough).map(([key, value]) => `
+            <li><strong>${key}:</strong> ${value}</li>
+          `).join('')}
+        </ul>
+      </div>
+    `;
+  }
 
   const modalHTML = `
-  <div class="card">
-    <img src="${imageUrl}" alt="${person.name}" onerror="this.src='images/fallback.jpg'" />
-    <h2>${person.name}</h2>
-    <p><strong>Office:</strong> ${person.office || person.position || ''}</p>
-    ${person.office === "U.S. Representative" ? `<p><strong>District:</strong> ${person.district}</p>` : ""}
-    <p><strong>State:</strong> ${person.state}</p>
-    <p><strong>Party:</strong> ${person.party || '—'}</p>
-    <p><strong>Term:</strong> ${person.termStart || '—'} to ${person.termEnd || '—'}</p>
-    <p><strong>Score:</strong> ${score}/100 (${badge})</p>
+    <div class="modal-container">
+      <div class="modal-left">
+        <img src="${imageUrl}" alt="${person.name}" onerror="this.src='images/fallback.jpg'" />
+        <h2>${person.name}</h2>
+        ${link ? `<p><a href="${link}" target="_blank">Ballotpedia Profile</a></p>` : ''}
+        <p><strong>Contact:</strong>
+          ${person.contact?.email ? `<a href="mailto:${person.contact.email}" class="contact-icon" aria-label="Email" style="margin-right:10px; font-size:1.5em; display:inline-block;">📧</a>` : ''}
+${person.contact?.phone ? `<a href="tel:${person.contact.phone.replace(/[^0-9]/g, '')}" class="contact-icon" aria-label="Phone" style="margin-right:10px; font-size:1.5em; display:inline-block;">📞</a>` : ''}
+${person.contact?.website ? `<a href="${person.contact.website}" target="_blank" rel="noopener noreferrer" class="contact-icon" aria-label="Website" style="margin-right:10px; font-size:1.5em; display:inline-block;">🌐</a>` : ''}
 
-    <table style="margin: 10px auto; border-collapse: collapse;">
-      <thead><tr><th>Metric</th><th>Score</th></tr></thead>
-      <tbody>${breakdownHTML}</tbody>
-    </table>
+        </p>
+      </div>
 
-    ${link ? `<p><a href="${link}" target="_blank">Ballotpedia Profile</a></p>` : ''}
+      <div class="modal-right">
+        ${person.bio ? `<p><strong>Bio:</strong> ${person.bio}</p>` : ''}
+        ${person.education ? `<p><strong>Education:</strong> ${person.education}</p>` : ''}
+        ${person.endorsements ? `<p><strong>Endorsements:</strong> ${person.endorsements}</p>` : ''}
+        ${person.platform ? `<p><strong>Platform:</strong> ${person.platform}</p>` : ''}
+        ${followThroughHTML}
+        ${person.proposals ? `<p><strong>Legislative Proposals:</strong> ${person.proposals}</p>` : ''}
+        ${billsHTML}
+        ${person.vetoes ? `<p><strong>Vetoes:</strong> ${person.vetoes}</p>` : ''}
+        ${person.salary ? `<p><strong>Salary:</strong> ${person.salary}</p>` : ''}
+        ${person.predecessor ? `<p><strong>Predecessor:</strong> ${person.predecessor}</p>` : ''}
+        ${person.donationLink ? `<p><strong>Donate:</strong> <a href="${person.donationLink}" target="_blank">💸</a></p>` : ''}
+      </div>
+    </div>
+  `;
 
-    <p>
-  <strong>Contact:</strong><br>
-  ${person.contact?.email
-    ? `<a href="mailto:${person.contact.email}" style="display:block; margin:4px 0;">
-         📧 ${person.contact.email}
-       </a>`
-    : '📧 —'}
-  ${person.contact?.phone
-    ? `<a href="tel:${person.contact.phone.replace(/[^0-9]/g, '')}" style="display:block; margin:4px 0;">
-         📞 ${person.contact.phone}
-       </a>`
-    : '📞 —'}
-  ${person.contact?.website
-    ? `<a href="${person.contact.website}" target="_blank" style="display:block; margin:4px 0;">
-         🌐 ${person.contact.website}
-       </a>`
-    : '🌐 —'}
-</p>
-  </div>
-`
-
-  document.getElementById('modal-content').innerHTML = modalHTML
-  document.getElementById('modal-overlay').style.display = 'flex'
+  document.getElementById('modal-content').innerHTML = modalHTML;
+  document.getElementById('modal-overlay').style.display = 'flex';
 }
 
 function closeModal() {
-  document.getElementById('modal-overlay').style.display = 'none'
+  document.getElementById('modal-overlay').style.display = 'none';
 }
 
 function renderMyOfficials(state) {
@@ -108,81 +236,77 @@ function renderMyOfficials(state) {
       person.stateAbbreviation === state
     )
     .sort((a, b) => {
-      const rank = role => role.includes("Governor") ? 1 :
-                           role.includes("Senator") ? 2 :
-                           role.includes("Representative") ? 3 : 4
-      return rank(a.office || "") - rank(b.office || "")
-    })
+      const rank = role =>
+        role.includes("Governor") ? 1 :
+        role.includes("Senator") ? 2 :
+        role.includes("Representative") ? 3 : 4;
+      return rank(a.office || "") - rank(b.office || "");
+    });
 
-  renderCards(matches, 'my-cards')
+  renderCards(matches, 'my-cards');
 }
 
 function renderRankings() {
-  const scored = allOfficials.filter(p => !isNaN(Number(p.score)))
+  const governors = allOfficials.filter(p => p.office?.includes("Governor"));
+  const senators = allOfficials.filter(p => p.office?.includes("Senator"));
+  const house = allOfficials.filter(p => p.office?.includes("Representative"));
 
-  const top10 = scored.sort((a, b) => b.score - a.score).slice(0, 10)
-  renderCards(top10, 'top10-overall')
-
-  const governors = scored.filter(p => p.office?.includes("Governor")).sort((a, b) => b.score - a.score)
-  const senators = scored.filter(p => p.office?.includes("Senator")).sort((a, b) => b.score - a.score)
-  const house = scored.filter(p => p.office?.includes("Representative")).sort((a, b) => b.score - a.score)
-
-  renderCards(governors, 'rankings-governors')
-  renderCards(senators, 'rankings-senators')
-  renderCards(house, 'rankings-house')
+  renderCards(governors, 'rankings-governors');
+  renderCards(senators, 'rankings-senators');
+  renderCards(house, 'rankings-house');
 }
+
 function renderRookies() {
-  const cutoffYear = new Date().getFullYear() - 6
+  const cutoffYear = new Date().getFullYear() - 6;
 
   const rookieGovernors = allOfficials.filter(p =>
     p.office?.includes("Governor") && Number(p.termStart) >= cutoffYear
-  )
+  );
   const rookieSenators = allOfficials.filter(p =>
     p.office?.includes("Senator") && Number(p.termStart) >= cutoffYear
-  )
+  );
   const rookieHouse = allOfficials.filter(p =>
     p.office?.includes("Representative") && Number(p.termStart) >= cutoffYear
-  )
+  );
 
-  renderCards(rookieGovernors, 'rookie-governors')
-  renderCards(rookieSenators, 'rookie-senators')
-  renderCards(rookieHouse, 'rookie-house')
+  renderCards(rookieGovernors, 'rookie-governors');
+  renderCards(rookieSenators, 'rookie-senators');
+  renderCards(rookieHouse, 'rookie-house');
 }
 
 function populateCompareDropdowns() {
-  const left = document.getElementById('compare-left')
-  const right = document.getElementById('compare-right')
+  const left = document.getElementById('compare-left');
+  const right = document.getElementById('compare-right');
+  if (!left || !right) return;
 
-  if (!left || !right) return
-
-  left.innerHTML = '<option value="">Select official A</option>'
-  right.innerHTML = '<option value="">Select official B</option>'
+  left.innerHTML = '<option value="">Select official A</option>';
+  right.innerHTML = '<option value="">Select official B</option>';
 
   allOfficials.forEach(person => {
-    const label = `${person.name} (${person.state}${person.party ? ', ' + person.party : ''})`
-    const optionLeft = new Option(label, person.slug)
-    const optionRight = new Option(label, person.slug)
+    const label = `${person.name} (${person.state}${person.party ? ', ' + person.party : ''})`;
+    const optionLeft = new Option(label, person.slug);
+    const optionRight = new Option(label, person.slug);
 
-    left.add(optionLeft)
-    right.add(optionRight)
-  })
+    left.add(optionLeft);
+    right.add(optionRight);
+  });
 
   left.addEventListener('change', function (e) {
-    renderCompareCard(e.target.value, 'compare-card-left')
-  })
+    renderCompareCard(e.target.value, 'compare-card-left');
+  });
 
   right.addEventListener('change', function (e) {
-    renderCompareCard(e.target.value, 'compare-card-right')
-  })
+    renderCompareCard(e.target.value, 'compare-card-right');
+  });
 }
 
 function renderCompareCard(slug, containerId) {
-  const person = allOfficials.find(p => p.slug === slug)
-  const container = document.getElementById(containerId)
-  if (!container || !person) return
+  const person = allOfficials.find(p => p.slug === slug);
+  const container = document.getElementById(containerId);
+  if (!container || !person) return;
 
-  const imageUrl = person.photo || 'images/fallback.jpg'
-  const link = person.ballotpediaLink || person.contact?.website || null
+  const imageUrl = person.photo || 'images/fallback.jpg';
+  const link = person.ballotpediaLink || person.contact?.website || null;
 
   container.innerHTML = `
     <div class="card">
@@ -192,74 +316,60 @@ function renderCompareCard(slug, containerId) {
       <p><strong>State:</strong> ${person.state}</p>
       <p><strong>Party:</strong> ${person.party || '—'}</p>
       <p><strong>Term:</strong> ${person.termStart || '—'} to ${person.termEnd || '—'}</p>
-      <p><strong>Approval:</strong> ${person.approval || person.score || '—'}%</p>
       ${link ? `<p><a href="${link}" target="_blank">Ballotpedia Profile</a></p>` : ''}
     </div>
-  `
+  `;
 }
 
 function showTab(id) {
-  const sections = ['my-officials', 'compare', 'rankings', 'rookies', 'calendar', 'registration']
+  const sections = ['my-officials', 'compare', 'rankings', 'rookies', 'calendar', 'registration'];
   sections.forEach(sectionId => {
-  })
+    const el = document.getElementById(sectionId);
+    if (el) el.style.display = sectionId === id ? 'block' : 'none';
+  });
 
-  const results = document.getElementById('results')
-  if (results) results.innerHTML = ''
-  const search = document.getElementById('search')
-  if (search) search.value = ''
+  const results = document.getElementById('results');
+  if (results) results.innerHTML = '';
+  const search = document.getElementById('search');
+  if (search) search.value = '';
 }
 
 async function loadData() {
   try {
-    await waitForHouseData()
+    await waitForHouseData();
 
-    const house = window.cleanedHouse || []
-    const governors = await fetch('Governors.json').then(res => res.json())
-    const senate = await fetch('Senate.json').then(res => res.json())
+    const house = window.cleanedHouse || [];
+    const governors = await fetch('Governors.json').then(res => res.json());
+    const senate = await fetch('Senate.json').then(res => res.json());
 
-    allOfficials = [...house, ...governors, ...senate]
+    allOfficials = [...house, ...governors, ...senate];
 
-    populateCompareDropdowns()
+    populateCompareDropdowns();
 
-    const stateSelect = document.getElementById('state-select')
+    const stateSelect = document.getElementById('state-select');
     if (stateSelect) {
-      const states = [...new Set(allOfficials.map(p => p.state))].sort()
+      const states = [...new Set(allOfficials.map(p => p.state))].sort();
       stateSelect.innerHTML = '<option value="">Choose a state</option>' +
-        states.map(state => `<option value="${state}">${state}</option>`).join('')
+        states.map(state => `<option value="${state}">${state}</option>`).join('');
 
-      stateSelect.value = 'North Carolina'
-      renderMyOfficials('North Carolina')
+      stateSelect.value = 'Alabama';
+renderMyOfficials('Alabama');
+renderCalendar(civicEvents, 'Alabama');
+renderVotingInfo('Alabama');
+      
 
       stateSelect.addEventListener('change', function (e) {
-        renderMyOfficials(e.target.value)
-        const searchInput = document.getElementById('search')
-const resultsList = document.getElementById('results')
-
-if (searchInput && resultsList) {
-  searchInput.addEventListener('input', function () {
-    const query = this.value.toLowerCase()
-    const matches = allOfficials.filter(off =>
-      off.name.toLowerCase().includes(query) ||
-      off.state.toLowerCase().includes(query) ||
-      off.party.toLowerCase().includes(query)
-    )
-
-    resultsList.innerHTML = ''
-
-    matches.forEach(match => {
-      const li = document.createElement('li')
-      li.textContent = `${match.name} (${match.state}, ${match.party})`
-      resultsList.appendChild(li)
-    })
-  })
-}
-      })
+  const selectedState = e.target.value;
+  renderMyOfficials(selectedState);
+  renderCalendar(civicEvents, selectedState);
+  renderVotingInfo(selectedState);
+});
     }
 
-    renderRankings()
-    renderRookies()
+    renderRankings();
+    renderRookies();
   } catch (err) {
-    console.error("Error loading data:", err)
+    console.error("Error loading data:", err);
   }
 }
 
@@ -267,70 +377,132 @@ function waitForHouseData() {
   return new Promise(resolve => {
     const check = () => {
       if (window.cleanedHouse && window.cleanedHouse.length > 0) {
-        resolve()
+        resolve();
       } else {
-        setTimeout(check, 50)
+        setTimeout(check, 50);
       }
-    }
-    check()
-  })
+    };
+    check();
+  });
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  loadData()
+  loadData();
 
-  const search = document.getElementById('search')
-  const results = document.getElementById('results')
+  const search = document.getElementById('search');
+  const results = document.getElementById('results');
 
   if (search) {
     search.addEventListener('input', function (e) {
-      const query = e.target.value.toLowerCase()
+      const query = e.target.value.toLowerCase();
       if (!query) {
-        results.innerHTML = ''
-        return
+        results.innerHTML = '';
+        return;
       }
 
       const matches = allOfficials.filter(person =>
         person.name.toLowerCase().includes(query) ||
         person.state.toLowerCase().includes(query) ||
         (person.party && person.party.toLowerCase().includes(query))
-      )
+      );
 
       const resultsHTML = matches.map(person => {
-        const label = `${person.name} (${person.state}${person.party ? ', ' + person.party : ''})`
-        const link = person.ballotpediaLink || person.contact?.website || null
+        const label = `${person.name} (${person.state}${person.party ? ', ' + person.party : ''})`;
+        const link = person.ballotpediaLink || person.contact?.website || null;
 
-        if (link) {
-          return `<li><a href="${link}" target="_blank" rel="noopener noreferrer">${label}</a></li>`
-        } else {
-          return `<li>${label}</li>`
-        }
-      }).join('')
+        return link
+          ? `<li><a href="${link}" target="_blank" rel="noopener noreferrer">${label}</a></li>`
+          : `<li>${label}</li>`;
+      }).join('');
 
-      results.innerHTML = resultsHTML
-    })
+      results.innerHTML = resultsHTML;
+    });
 
     document.addEventListener('click', function (e) {
-      if (!search.contains(e.target) && !results.contains(e.target)) {
-        results.innerHTML = ''
-        search.value = ''
+      if (search && results && !search.contains(e.target) && !results.contains(e.target)) {
+        results.innerHTML = '';
+        search.value = '';
       }
-    })
+    });
   }
-})
 
-window.showTab = showTab
+  // ✅ Calendar sync logic goes here, outside the search block
+  const stateSelect = document.getElementById('state-select');
+  if (stateSelect) {
+    const defaultState = stateSelect.value || 'Alabama';
+    renderCalendar(civicEvents, defaultState);
+
+    stateSelect.addEventListener('change', () => {
+      renderCalendar(civicEvents, stateSelect.value);
+    });
+  }
+});
+
 function showTab(id) {
-  const sections = ['my-officials', 'compare', 'rankings', 'rookies', 'calendar', 'registration']
+  const sections = ['my-officials', 'compare', 'rankings', 'rookies', 'calendar', 'registration'];
   sections.forEach(sectionId => {
-    const el = document.getElementById(sectionId)
-    if (el) el.style.display = sectionId === id ? 'block' : 'none'
-  })
+    const el = document.getElementById(sectionId);
+    if (el) el.style.display = sectionId === id ? 'block' : 'none';
+  });
 
-  const results = document.getElementById('results')
-  if (results) results.innerHTML = ''
-  const search = document.getElementById('search')
-  if (search) search.value = ''
+  const results = document.getElementById('results');
+  if (results) results.innerHTML = '';
+  const search = document.getElementById('search');
+  if (search) search.value = '';
+}
+document.querySelectorAll('.tab-button').forEach(button => {
+  button.addEventListener('click', () => {
+    const tabId = button.getAttribute('data-tab');
+
+    document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+
+    document.querySelectorAll('.tab-content').forEach(content => {
+      content.style.display = content.id === tabId ? 'block' : 'none';
+      document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('state-select').addEventListener('change', handleStateChange);
+  document.getElementById('search').addEventListener('input', handleSearch);
+
+  // Optional: load default state or all officials
+  handleStateChange();
+});
+
+    });
+  });
+});
+
+function closeModal() {
+  document.getElementById('modal-overlay').style.display = 'none';
 }
 
-window.showTab = showTab
+function openModal(contentId) {
+  const modalContent = document.getElementById('modal-content');
+  const source = document.getElementById(contentId);
+  modalContent.innerHTML = source ? source.innerHTML : `<p>No content available.</p>`;
+  document.getElementById('modal-overlay').style.display = 'block';
+}
+document.addEventListener('DOMContentLoaded', () => {
+  const stateSelect = document.getElementById('state-select');
+  const searchInput = document.getElementById('search');
+
+  if (stateSelect) {
+    stateSelect.addEventListener('change', () => {
+      const selectedState = stateSelect.value;
+      loadOfficials(selectedState); // ← replace with your actual function
+    });
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase();
+      filterBySearch(query); // ← replace with your actual function
+    });
+  }
+
+  // Optional: load default state
+  if (stateSelect && stateSelect.value) {
+    loadOfficials(stateSelect.value); // ← again, replace as needed
+  }
+});
+
+window.showTab = showTab;
