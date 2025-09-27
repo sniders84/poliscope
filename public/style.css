@@ -154,7 +154,7 @@ h2 {
 }
 
 .electorate-header {
-  height: 160px; /* fixed height */
+  height: 160px; /* or whatever fixed height you want */
   background: linear-gradient(to right, #f9f9f9, #eaeaea);
   border-bottom: 1px solid #ccc;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
@@ -170,6 +170,3 @@ h2 {
   display: block;
   margin: 1rem auto;
 }
-
-
-
