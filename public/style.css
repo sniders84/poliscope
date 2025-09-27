@@ -171,10 +171,19 @@ h2 {
 }
 
 .electorate-logo {
-  height: 400px;
-  width: auto;
   display: block;
   margin: 1rem auto;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Mobile-specific tweak */
+@media (max-width: 600px) {
+  .electorate-logo {
+    width: 120px;       /* Shrinks logo width */
+    margin-top: 30px;   /* Pushes it down from top */
+    margin-bottom: 20px;
+  }
 }
 .tab-container {
   margin: 2rem auto;
