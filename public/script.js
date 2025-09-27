@@ -472,20 +472,11 @@ function closeModal() {
   document.getElementById('modal-overlay').style.display = 'none';
 }
 
-function getModalContent(id) {
-  switch (id) {
-    case 'next-election':
-      return `<h2>Next Election</h2><p>Alabama's next municipal runoff is Tuesday, September 23, 2025. Polls open at 7 AM and close at 7 PM.</p>`;
-    case 'mail-deadline':
-      return `<h2>Mail-In Deadline</h2><p>Your absentee ballot must be received by noon on Election Day if mailed. Drop-offs must arrive by the day before.</p>`;
-    case 'in-person-deadline':
-      return `<h2>In-Person Deadline</h2><p>Drop off your ballot by Monday, September 22, or vote in person on Election Day.</p>`;
-    case 'registration-deadline':
-      return `<h2>Registration Deadline</h2><p>You must register by Monday, September 8, 2025 to vote in the municipal runoff.</p>`;
-    case 'absentee-form':
-      return `<h2>Absentee Ballot Application</h2><p>Use the official <a href="https://www.sos.alabama.gov/sites/default/files/voter-pdfs/absentee-ballot-app.pdf" target="_blank">Absentee Ballot Form</a> to request your ballot.</p>`;
-    default:
-      return `<p>No content available.</p>`;
-  }
+function openModal(contentId) {
+  const modalContent = document.getElementById('modal-content');
+  const source = document.getElementById(contentId);
+  modalContent.innerHTML = source ? source.innerHTML : `<p>No content available.</p>`;
+  document.getElementById('modal-overlay').style.display = 'block';
 }
+
 window.showTab = showTab;
