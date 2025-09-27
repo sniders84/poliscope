@@ -459,6 +459,14 @@ document.querySelectorAll('.tab-button').forEach(button => {
 
     document.querySelectorAll('.tab-content').forEach(content => {
       content.style.display = content.id === tabId ? 'block' : 'none';
+      document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('state-select').addEventListener('change', handleStateChange);
+  document.getElementById('search').addEventListener('input', handleSearch);
+
+  // Optional: load default state or all officials
+  handleStateChange();
+});
+
     });
   });
 });
