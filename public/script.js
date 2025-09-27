@@ -1,3 +1,4 @@
+
 console.log("✅ script.js loaded");
 const civicEvents = [
   {
@@ -449,29 +450,6 @@ function showTab(id) {
   if (results) results.innerHTML = '';
   const search = document.getElementById('search');
   if (search) search.value = '';
-}
-document.querySelectorAll('.tab-button').forEach(button => {
-  button.addEventListener('click', () => {
-    const tabId = button.getAttribute('data-tab');
-
-    document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-    button.classList.add('active');
-
-    document.querySelectorAll('.tab-content').forEach(content => {
-      content.style.display = content.id === tabId ? 'block' : 'none';
-    });
-  });
-});
-
-function closeModal() {
-  document.getElementById('modal-overlay').style.display = 'none';
-}
-
-function openModal(contentId) {
-  const modalContent = document.getElementById('modal-content');
-  const source = document.getElementById(contentId);
-  modalContent.innerHTML = source ? source.innerHTML : `<p>No content available.</p>`;
-  document.getElementById('modal-overlay').style.display = 'block';
 }
 
 window.showTab = showTab;
