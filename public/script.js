@@ -1,4 +1,15 @@
 console.log("✅ script.js loaded");
+function showTab(tabId) {
+  const tabs = document.querySelectorAll('section[id]');
+  tabs.forEach(tab => {
+    tab.style.display = tab.id === tabId ? 'block' : 'none';
+  });
+
+  const buttons = document.querySelectorAll('#tabs button');
+  buttons.forEach(button => {
+    button.classList.toggle('active', button.getAttribute('onclick') === `showTab('${tabId}')`);
+  });
+}
 
 const civicEvents = [
   {
