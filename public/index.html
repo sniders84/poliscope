@@ -50,7 +50,19 @@
     <button onclick="showTab('calendar')">Calendar</button>
     <button onclick="showTab('voting')">Voting</button>
   </nav>
+<div id="search-tools">
+  <input type="text" id="search" placeholder="Search by name, state, or party..." />
+  <ul id="results"></ul>
 
+  <label for="state-select">Select your state:</label>
+  <select id="state-select">
+    <option value="">Choose a state</option>
+    <option value="North Carolina">North Carolina</option>
+    <option value="California">California</option>
+    <option value="Texas">Texas</option>
+    <!-- Add more states as needed -->
+  </select>
+</div>
   <section id="my-officials">
     <h2>My Officials</h2>
     <div class="card-container">
@@ -212,5 +224,7 @@
       showTab('my-officials');
     });
   </script>
+  <script src="cleanHouse.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
