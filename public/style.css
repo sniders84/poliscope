@@ -156,11 +156,11 @@ h2 {
 .electorate-header {
   height: 160px;
   background: linear-gradient(to right,
-    #001f3f,   /* Deep Blue */
+    #1877F2,   /* Bright Democratic Blue */
     #888888,   /* Medium Gray */
     #FFFFFF,   /* White */
     #888888,   /* Medium Gray */
-    #FF4136    /* Red */
+    #FF4136    /* Republican Red */
   );
   border-bottom: 1px solid #ccc;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
