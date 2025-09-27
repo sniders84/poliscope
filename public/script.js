@@ -5,8 +5,14 @@ function showTab(tabId) {
   tabs.forEach(tab => {
     tab.style.display = tab.id === tabId ? 'block' : 'none';
   });
-  
-  window.showTab = showTab;
+
+  const buttons = document.querySelectorAll('#tabs button');
+  buttons.forEach(button => {
+    button.classList.toggle('active', button.getAttribute('onclick') === `showTab('${tabId}')`);
+  });
+}
+
+window.showTab = showTab;
 
   const buttons = document.querySelectorAll('#tabs button');
   buttons.forEach(button => {
