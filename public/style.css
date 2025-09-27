@@ -237,4 +237,31 @@ h2 {
   padding: 1rem;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
+/* Modal tab buttons */
+.modal-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+
+.modal-tab {
+  padding: 6px 12px;
+  border: none;
+  background-color: #eee;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.modal-tab.active {
+  background-color: #0077cc;
+  color: white;
+}
+
+/* Modal sections */
+.modal-section {
+  padding: 10px;
+  border-top: 1px solid #ccc;
+}
 
