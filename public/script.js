@@ -481,5 +481,28 @@ function openModal(contentId) {
   modalContent.innerHTML = source ? source.innerHTML : `<p>No content available.</p>`;
   document.getElementById('modal-overlay').style.display = 'block';
 }
+document.addEventListener('DOMContentLoaded', () => {
+  const stateSelect = document.getElementById('state-select');
+  const searchInput = document.getElementById('search');
+
+  if (stateSelect) {
+    stateSelect.addEventListener('change', () => {
+      const selectedState = stateSelect.value;
+      loadOfficials(selectedState); // ← replace with your actual function
+    });
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase();
+      filterBySearch(query); // ← replace with your actual function
+    });
+  }
+
+  // Optional: load default state
+  if (stateSelect && stateSelect.value) {
+    loadOfficials(stateSelect.value); // ← again, replace as needed
+  }
+});
 
 window.showTab = showTab;
