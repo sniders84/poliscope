@@ -14,12 +14,6 @@ function showTab(tabId) {
 
 window.showTab = showTab;
 
-  const buttons = document.querySelectorAll('#tabs button');
-  buttons.forEach(button => {
-    button.classList.toggle('active', button.getAttribute('onclick') === `showTab('${tabId}')`);
-  });
-}
-
 function renderCards(data, containerId) {
   const container = document.getElementById(containerId);
   if (!container) {
@@ -222,5 +216,3 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   showTab('my-officials');
-});
-
