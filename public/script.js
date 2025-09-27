@@ -1,3 +1,4 @@
+
 console.log("✅ script.js loaded")
 let allOfficials = []
 
@@ -62,7 +63,8 @@ function expandCard(slug) {
     <p><strong>State:</strong> ${person.state}</p>
     <p><strong>Party:</strong> ${person.party || '—'}</p>
     <p><strong>Term:</strong> ${person.termStart || '—'} to ${person.termEnd || '—'}</p>
-      
+    <p><strong>Score:</strong> ${score}/100 (${badge})</p>
+
     <table style="margin: 10px auto; border-collapse: collapse;">
       <thead><tr><th>Metric</th><th>Score</th></tr></thead>
       <tbody>${breakdownHTML}</tbody>
@@ -70,16 +72,23 @@ function expandCard(slug) {
 
     ${link ? `<p><a href="${link}" target="_blank">Ballotpedia Profile</a></p>` : ''}
 
-    <p><strong>Contact:</strong>
+    <p>
+  <strong>Contact:</strong><br>
   ${person.contact?.email
-    ? `<a href="mailto:${person.contact.email}" style="margin-right:10px;">📧</a>`
-    : ''}
+    ? `<a href="mailto:${person.contact.email}" style="display:block; margin:4px 0;">
+         📧 ${person.contact.email}
+       </a>`
+    : '📧 —'}
   ${person.contact?.phone
-    ? `<a href="tel:${person.contact.phone.replace(/[^0-9]/g, '')}" style="margin-right:10px;">📞</a>`
-    : ''}
+    ? `<a href="tel:${person.contact.phone.replace(/[^0-9]/g, '')}" style="display:block; margin:4px 0;">
+         📞 ${person.contact.phone}
+       </a>`
+    : '📞 —'}
   ${person.contact?.website
-    ? `<a href="${person.contact.website}" target="_blank" style="margin-right:10px;">🌐</a>`
-    : ''}
+    ? `<a href="${person.contact.website}" target="_blank" style="display:block; margin:4px 0;">
+         🌐 ${person.contact.website}
+       </a>`
+    : '🌐 —'}
 </p>
   </div>
 `
