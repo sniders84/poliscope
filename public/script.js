@@ -126,10 +126,28 @@ let allOfficials = [];
 
 function renderCards(data, containerId) {
   const container = document.getElementById(containerId);
-  if (!container) {
-    console.warn(`Missing container: ${containerId}`);
-    return;
-  }
+  if (!container) return;
+
+  container.innerHTML = ''; // Clear old cards
+
+  data.forEach(official => {
+    const card = document.createElement('div');
+    card.classList.add('official-card');
+    card.dataset.slug = official.slug;
+
+    card.innerHTML = `
+      <h3>${official.name}</h3>
+      <p>${official.title || ''}</p>
+      <img src="${official.imageUrl || official.photo || 'images/fallback.jpg'}" alt="${official.name}" />
+    `;
+
+    card.addEventListener('click', () => {
+      expandCard(official.slug);
+    });
+
+    container.appendChild(card);
+  });
+}
 
   const cardsHTML = data.map(person => {
     const imageUrl = person.photo || 'images/fallback.jpg';
