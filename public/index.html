@@ -1,1 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Poliscope</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    #modal-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+    #modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      width: 90%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      overflow-y: auto;
+      max-height: 80vh;
+    }
+    #modal-close {
+      margin-top: 10px;
+      padding: 8px 16px;
+      background: #0055a5;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+  <link rel="stylesheet" href="style.css" />
+<script src="script.js" defer></script>
 
+<body>
+ <header class="electorate-header">
+  <img src="assets/electorate-logo.png" alt="Electorate logo" class="electorate-logo" />
+</header>
+
+  <nav id="tabs">
+    <button onclick="showTab('my-officials')">My Officials</button>
+    <button onclick="showTab('compare')">Compare</button>
+    <button onclick="showTab('rankings')">Rankings</button>
+    <button onclick="showTab('rookies')">Rookies to Watch</button>
+    <button onclick="showTab('calendar')">Calendar</button>
+    <button onclick="showTab('registration')">Registration</button>
+  </nav>
+
+  <input type="text" id="search" placeholder="Search by name, state, or party..." />
+  <ul id="results"></ul>
+
+  <label for="state-select">Select your state:</label>
+  <select id="state-select">
+    <option value="">Choose a state</option>
+    <option value="North Carolina">North Carolina</option>
+    <option value="California">California</option>
+    <option value="Texas">Texas</option>
+  </select>
+
+  <section id="my-officials">
+    <h2>My Officials</h2>
+    <div class="card-container" id="my-cards"></div>
+  </section>
+
+  <section id="compare" style="display:none;">
+    <h2>Compare Officials</h2>
+    <div class="compare-selectors">
+      <select id="compare-left">
+        <option value="">Select official A</option>
+      </select>
+      <select id="compare-right">
+        <option value="">Select official B</option>
+      </select>
+    </div>
+    <div class="compare-results">
+      <div id="compare-card-left" class="card"></div>
+      <div id="compare-card-right" class="card"></div>
+    </div>
+  </section>
+
+  <section id="rankings" style="display:none;">
+    <h2>Official Rankings</h2>
+
+    <h3>Top 10 Overall</h3>
+    <div class="card-container" id="top10-overall"></div>
+
+    <details>
+      <summary><strong>Full Rankings: Governors</strong></summary>
+      <div class="card-container" id="rankings-governors"></div>
+    </details>
+
+    <details>
+      <summary><strong>Full Rankings: Senators</strong></summary>
+      <div class="card-container" id="rankings-senators"></div>
+    </details>
+
+    <details>
+      <summary><strong>Full Rankings: House Representatives</strong></summary>
+      <div class="card-container" id="rankings-house"></div>
+    </details>
+  </section>
+
+  <section id="rookies" style="display:none;">
+    <h2>Rookies to Watch</h2>
+    <h3>Governors</h3>
+    <div class="card-container" id="rookie-governors"></div>
+    <h3>Senators</h3>
+    <div class="card-container" id="rookie-senators"></div>
+    <h3>House Representatives</h3>
+    <div class="card-container" id="rookie-house"></div>
+  </section>
+
+ <section id="calendar" style="display:none;">
+  <h2>Civic Calendar</h2>
+  <div id="calendar-container"></div>
+</section>
+
+  <section id="registration" style="display:none;">
+  <h2>Voting & Registration</h2>
+  <div id="voting-container"></div>
+</section>
+
+  <div id="modal-overlay" style="display:none;">
+    <div id="modal-content"></div>
+    <button onclick="closeModal()" id="modal-close">Close</button>
+  </div>
+
+  <script src="cleanHouse.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
