@@ -1,3 +1,8 @@
+if (window.scriptAlreadyLoaded) {
+  console.warn('script.js already loaded—skipping duplicate execution');
+  return;
+}
+window.scriptAlreadyLoaded = true;
 console.log("✅ script.js loaded");
 const civicEvents = [
   {
