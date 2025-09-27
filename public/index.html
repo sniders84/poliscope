@@ -53,7 +53,19 @@
     <button onclick="showTab('calendar')">Calendar</button>
     <button onclick="showTab('voting')">Voting</button>
   </nav>
-<div class="tab-content" id="voting">
+  <script>
+  function openModal(contentId) {
+    const modalContent = document.getElementById('modal-content');
+    const source = document.getElementById(contentId);
+    modalContent.innerHTML = source ? source.innerHTML : `<p>No content available.</p>`;
+    document.getElementById('modal-overlay').style.display = 'flex';
+  }
+
+  function closeModal() {
+    document.getElementById('modal-overlay').style.display = 'none';
+  }
+</script>
+<div class="tab-content" id="search-tools">
   
   <input type="text" id="search" placeholder="Search by name, state, or party..." />
   <ul id="results"></ul>
