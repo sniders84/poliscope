@@ -352,12 +352,18 @@ async function loadData() {
       stateSelect.innerHTML = '<option value="">Choose a state</option>' +
         states.map(state => `<option value="${state}">${state}</option>`).join('');
 
-      stateSelect.value = 'North Carolina';
-      renderMyOfficials('North Carolina');
+      stateSelect.value = 'Alabama';
+renderMyOfficials('Alabama');
+renderCalendar(civicEvents, 'Alabama');
+renderVotingInfo('Alabama');
+      
 
       stateSelect.addEventListener('change', function (e) {
-        renderMyOfficials(e.target.value);
-      });
+  const selectedState = e.target.value;
+  renderMyOfficials(selectedState);
+  renderCalendar(civicEvents, selectedState);
+  renderVotingInfo(selectedState);
+});
     }
 
     renderRankings();
