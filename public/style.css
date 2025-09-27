@@ -153,3 +153,16 @@ h2 {
   overflow-y: auto;
 }
 
+.electorate-header {
+  padding: 1rem 0;
+  background: linear-gradient(to right, #f9f9f9, #eaeaea);
+  border-bottom: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.electorate-logo {
+  height: 80px;
+  width: auto;
+  display: inline-block;
+}
