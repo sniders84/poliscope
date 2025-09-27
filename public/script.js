@@ -508,4 +508,5 @@ document.addEventListener('DOMContentLoaded', () => {
     li.textContent = `${match.name} (${match.state}, ${match.party})`;
     resultsList.appendChild(li);
   });
+});
 window.showTab = showTab;
