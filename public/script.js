@@ -98,26 +98,26 @@ function renderVotingInfo(state) {
   const info = votingInfo[state];
   container.innerHTML = `
     <div class="card">
-      <h3>Register to Vote</h3>
-      <p><a href="${info.registrationLink}" target="_blank">Register Online</a></p>
-      <p><a href="${info.statusCheckLink}" target="_blank">Check Registration Status</a></p>
-      <p><strong>Deadline:</strong> ${info.registrationDeadline}</p>
+      <h3>Registration Deadline</h3>
+      <p>${info.registrationDeadline}</p>
+      <a href="${info.registrationLink}" target="_blank">Register to Vote</a>
     </div>
     <div class="card">
-      <h3>Find Your Polling Place</h3>
-      <p><a href="${info.pollingPlaceLink}" target="_blank">Polling Place Lookup</a></p>
-      ${info.earlyVotingStart ? `<p><strong>Early Voting:</strong> ${info.earlyVotingStart} to ${info.earlyVotingEnd}</p>` : '<p><em>Early voting not available statewide.</em></p>'}
+      <h3>Absentee Ballot</h3>
+      <p>Request by ${info.absenteeRequestDeadline}, return by ${info.absenteeReturnDeadline}</p>
+      <a href="${info.absenteeLink}" target="_blank">Absentee Info</a>
     </div>
     <div class="card">
-      <h3>Vote by Mail</h3>
-      <p><a href="${info.absenteeLink}" target="_blank">Request Absentee Ballot</a></p>
-      <p><strong>Request Deadline:</strong> ${info.absenteeRequestDeadline}</p>
-      <p><strong>Return Deadline:</strong> ${info.absenteeReturnDeadline}</p>
-      <p>Must include a copy of valid photo ID.</p>
+      <h3>Polling Place</h3>
+      <a href="${info.pollingPlaceLink}" target="_blank">Find Your Polling Place</a>
+    </div>
+    <div class="card">
+      <h3>Check Registration Status</h3>
+      <a href="${info.statusCheckLink}" target="_blank">Check Status</a>
     </div>
     <div class="card">
       <h3>Volunteer</h3>
-      <p><a href="${info.volunteerLink}" target="_blank">Become a Poll Worker</a></p>
+      <a href="${info.volunteerLink}" target="_blank">Become a Poll Worker</a>
     </div>
   `;
 }
@@ -223,7 +223,27 @@ ${person.contact?.website ? `<a href="${person.contact.website}" target="_blank"
   document.getElementById('modal-content').innerHTML = modalHTML;
   document.getElementById('modal-overlay').style.display = 'flex';
 }
+function filterByState(state) {
+  if (!state) return;
+  const filtered = allOfficials.filter(person => person.state === state);
+  renderCards(filtered, 'my-cards');
+  renderCards(filtered, 'rookie-governors');
+  renderCards(filtered, 'rookie-senators');
+  renderCards(filtered, 'rookie-house');
+  renderCards(filtered, 'rankings-governors');
+  renderCards(filtered, 'rankings-senators');
+  renderCards(filtered, 'rankings-house');
+}
 
+function filterBySearch(query) {
+  const filtered = allOfficials.filter(person => {
+    const name = person.name?.toLowerCase() || '';
+    const state = person.state?.toLowerCase() || '';
+    const party = person.party?.toLowerCase() || '';
+    return name.includes(query) || state.includes(query) || party.includes(query);
+  });
+  renderCards(filtered, 'my-cards');
+}
 function closeModal() {
   document.getElementById('modal-overlay').style.display = 'none';
 }
@@ -322,7 +342,7 @@ function renderCompareCard(slug, containerId) {
 }
 
 function showTab(id) {
-  const sections = ['my-officials', 'compare', 'rankings', 'rookies', 'calendar', 'registration'];
+  const sections = ['my-officials', 'compare', 'rankings', 'rookies', 'calendar', 'voting'];
   sections.forEach(sectionId => {
     const el = document.getElementById(sectionId);
     if (el) el.style.display = sectionId === id ? 'block' : 'none';
@@ -386,44 +406,61 @@ function waitForHouseData() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
   loadData();
 
-  const search = document.getElementById('search');
+  const stateSelect = document.getElementById('state-select');
+  const searchInput = document.getElementById('search');
   const results = document.getElementById('results');
 
-  if (search) {
-    search.addEventListener('input', function (e) {
-      const query = e.target.value.toLowerCase();
-      if (!query) {
-        results.innerHTML = '';
-        return;
-      }
+  if (stateSelect) {
+    stateSelect.addEventListener('change', () => {
+      const selectedState = stateSelect.value;
+      renderMyOfficials(selectedState);
+      renderCalendar(civicEvents, selectedState);
+      renderVotingInfo(selectedState);
+    });
+  }
 
-      const matches = allOfficials.filter(person =>
-        person.name.toLowerCase().includes(query) ||
-        person.state.toLowerCase().includes(query) ||
-        (person.party && person.party.toLowerCase().includes(query))
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase();
+      const selectedState = stateSelect?.value || '';
+      const filtered = allOfficials.filter(person =>
+        (person.state === selectedState ||
+         person.stateName === selectedState ||
+         person.stateAbbreviation === selectedState) &&
+        (
+          person.name?.toLowerCase().includes(query) ||
+          person.party?.toLowerCase().includes(query)
+        )
       );
+      renderCards(filtered, 'my-cards');
 
-      const resultsHTML = matches.map(person => {
-        const label = `${person.name} (${person.state}${person.party ? ', ' + person.party : ''})`;
-        const link = person.ballotpediaLink || person.contact?.website || null;
-
-        return link
-          ? `<li><a href="${link}" target="_blank" rel="noopener noreferrer">${label}</a></li>`
-          : `<li>${label}</li>`;
-      }).join('');
-
-      results.innerHTML = resultsHTML;
+      if (results) {
+        const resultsHTML = filtered.map(person => {
+          const label = `${person.name} (${person.state}${person.party ? ', ' + person.party : ''})`;
+          const link = person.ballotpediaLink || person.contact?.website || null;
+          return link
+            ? `<li><a href="${link}" target="_blank" rel="noopener noreferrer">${label}</a></li>`
+            : `<li>${label}</li>`;
+        }).join('');
+        results.innerHTML = resultsHTML;
+      }
     });
 
     document.addEventListener('click', function (e) {
-      if (search && results && !search.contains(e.target) && !results.contains(e.target)) {
+      if (!searchInput.contains(e.target) && !results.contains(e.target)) {
         results.innerHTML = '';
-        search.value = '';
+        searchInput.value = '';
       }
     });
+  }
+
+  renderRankings();
+  renderRookies();
+  populateCompareDropdowns();
+});
   }
 
   // ✅ Calendar sync logic goes here, outside the search block
@@ -504,5 +541,66 @@ document.addEventListener('DOMContentLoaded', () => {
     loadOfficials(stateSelect.value); // ← again, replace as needed
   }
 });
+document.addEventListener('DOMContentLoaded', () => {
+  const stateSelect = document.getElementById('state-select');
+  const searchInput = document.getElementById('search');
 
+  if (stateSelect) {
+    stateSelect.addEventListener('change', () => {
+      const selectedState = stateSelect.value;
+      filterByState(selectedState);
+    });
+
+    if (stateSelect.value) {
+      filterByState(stateSelect.value);
+    }
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase();
+      filterBySearch(query);
+    });
+  }
+});
+document.addEventListener('DOMContentLoaded', () => {
+  const stateSelect = document.getElementById('state-select');
+  const searchInput = document.getElementById('search');
+
+  if (stateSelect) {
+    stateSelect.addEventListener('change', () => {
+      const selectedState = stateSelect.value;
+      renderMyOfficials(selectedState);
+      renderCalendar(civicEvents, selectedState);
+      renderVotingInfo(selectedState);
+    });
+
+    if (stateSelect.value) {
+      renderMyOfficials(stateSelect.value);
+      renderCalendar(civicEvents, stateSelect.value);
+      renderVotingInfo(stateSelect.value);
+    }
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase();
+      const selectedState = stateSelect?.value || '';
+      const filtered = allOfficials.filter(person =>
+        (person.state === selectedState ||
+         person.stateName === selectedState ||
+         person.stateAbbreviation === selectedState) &&
+        (
+          person.name?.toLowerCase().includes(query) ||
+          person.party?.toLowerCase().includes(query)
+        )
+      );
+      renderCards(filtered, 'my-cards');
+    });
+  }
+
+  renderRankings();
+  renderRookies();
+  populateCompareDropdowns();
+});
 window.showTab = showTab;
