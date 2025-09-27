@@ -365,9 +365,14 @@ async function loadData() {
     allOfficials = [...house, ...governors, ...senate];
     const stateSelect = document.getElementById('state-select');
 if (stateSelect) {
-  const states = [...new Set(allOfficials.map(p => p.state))].sort();
-  stateSelect.innerHTML = '<option value="">Choose a state</option>' +
-    states.map(state => `<option value="${state}">${state}</option>`).join('');
+  const states = [...new Set(
+  allOfficials
+    .map(p => p.stateAbbreviation || p.stateName || p.state)
+    .filter(Boolean)
+)].sort();
+
+stateSelect.innerHTML = '<option value="">Choose a state</option>' +
+  states.map(state => `<option value="${state}">${state}</option>`).join('');
 
   stateSelect.value = 'Alabama'; // Default state
   renderMyOfficials('Alabama');
