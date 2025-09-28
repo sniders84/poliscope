@@ -1,18 +1,21 @@
 // scripts/validateOfficials.js
-// Safe validator: reads your JSON files and writes missingDataReport.json
+// Safe validator: reads your JSON files and writes two reports:
+// - missingDataReport.json (full detail)
+// - missingDataReport.md (human-readable)
 // It does NOT modify your original data files.
 
 const fs = require('fs');
 const path = require('path');
 
-const REPORT_FILE = 'missingDataReport.json'; // Safety lock: must be this exact name
+const JSON_REPORT = 'missingDataReport.json';
+const MD_REPORT = 'missingDataReport.md';
 
-if (REPORT_FILE !== 'missingDataReport.json') {
-  console.error('Safety check failed: report filename must be missingDataReport.json');
+// Safety locks
+if (JSON_REPORT !== 'missingDataReport.json' || MD_REPORT !== 'missingDataReport.md') {
+  console.error('Safety check failed on output filenames.');
   process.exit(1);
 }
 
-// Candidate locations to find your JSONs (tries in order)
 const candidates = {
   governors: ['Governors.json', 'public/Governors.json', 'data/Governors.json', 'src/data/Governors.json'],
   house: ['House.json', 'public/House.json', 'data/House.json', 'src/data/House.json'],
@@ -43,10 +46,7 @@ function isEmptyValue(v) {
   if (v === null || v === undefined) return true;
   if (typeof v === 'string' && v.trim() === '') return true;
   if (Array.isArray(v) && v.length === 0) return true;
-  if (typeof v === 'object' && !Array.isArray(v)) {
-    // treat empty object as empty
-    return Object.keys(v).length === 0;
-  }
+  if (typeof v === 'object' && !Array.isArray(v)) return Object.keys(v).length === 0;
   return false;
 }
 
@@ -60,7 +60,6 @@ function getByPath(obj, pathStr) {
   return cur;
 }
 
-// Which fields we check. We report REQUIRED vs OPTIONAL missing fields.
 const REQUIRED_FIELDS = [
   'name',
   'state',
@@ -75,7 +74,7 @@ const REQUIRED_FIELDS = [
 ];
 
 const OPTIONAL_FIELDS = [
-  'district', // for Representatives
+  'district',
   'contact.email',
   'contact.phone',
   'contact.website',
@@ -134,14 +133,9 @@ function generateReport() {
   const report = {
     generatedAt: new Date().toISOString(),
     summary: {},
-    details: {
-      governors: [],
-      house: [],
-      senate: []
-    }
+    details: { governors: [], house: [], senate: [] }
   };
 
-  // Process each file type
   for (const [label, paths] of Object.entries(candidates)) {
     const fileFound = findFile(paths);
     if (!fileFound) {
@@ -156,32 +150,61 @@ function generateReport() {
     }
 
     const res = analyzeList(data, label, fileFound);
-    report.summary[label] = { found: true, total: res.items.length, missingCount: res.items.filter(i => i.missingRequired.length + i.missingOptional.length > 0).length };
+    report.summary[label] = {
+      found: true,
+      total: res.items.length,
+      missingCount: res.items.filter(i => i.missingRequired.length + i.missingOptional.length > 0).length
+    };
     report.details[label] = res.items;
   }
 
   return report;
 }
 
-function writeReport(report) {
-  const outPath = path.join(process.cwd(), REPORT_FILE);
-  try {
-    fs.writeFileSync(outPath, JSON.stringify(report, null, 2), { encoding: 'utf8', flag: 'w' });
-    console.log(`Report written to ${outPath}`);
-    return outPath;
-  } catch (err) {
-    console.error(`Failed to write report: ${err.message}`);
-    process.exit(2);
+function writeJson(report) {
+  const outPath = path.join(process.cwd(), JSON_REPORT);
+  fs.writeFileSync(outPath, JSON.stringify(report, null, 2), 'utf8');
+  console.log(`JSON report written to ${outPath}`);
+}
+
+function writeMarkdown(report) {
+  let md = `# Missing Data Report\n\nGenerated: ${report.generatedAt}\n\n`;
+
+  for (const section of ['governors','house','senate']) {
+    const s = report.summary[section];
+    md += `## ${section.toUpperCase()}\n`;
+    if (!s || !s.found) {
+      md += `- ❌ ${s ? s.message : 'No data found'}\n\n`;
+      continue;
+    }
+    md += `- Total: ${s.total}\n- With Missing Fields: ${s.missingCount}\n\n`;
+
+    report.details[section].forEach(item => {
+      if (item.missingRequired.length || item.missingOptional.length) {
+        md += `**${item.name} (${item.slug})**\n`;
+        if (item.missingRequired.length) {
+          md += `- ❗ Missing required: ${item.missingRequired.join(', ')}\n`;
+        }
+        if (item.missingOptional.length) {
+          md += `- ⚠️ Missing optional: ${item.missingOptional.join(', ')}\n`;
+        }
+        md += '\n';
+      }
+    });
   }
+
+  const outPath = path.join(process.cwd(), MD_REPORT);
+  fs.writeFileSync(outPath, md, 'utf8');
+  console.log(`Markdown report written to ${outPath}`);
 }
 
 (function main() {
   console.log('Starting safe validation run...');
   const report = generateReport();
-  writeReport(report);
+  writeJson(report);
+  writeMarkdown(report);
 
-  // Print a short console summary to make it easy to read logs
-  for (const section of ['governors', 'house', 'senate']) {
+  for (const section of ['governors','house','senate']) {
     const s = report.summary[section];
     if (!s || !s.found) {
       console.log(`- ${section}: ${s ? s.message : 'no data found'}`);
@@ -190,5 +213,5 @@ function writeReport(report) {
     }
   }
 
-  console.log('Validation complete. The file missingDataReport.json is available in the workspace for download.');
+  console.log('Validation complete. Reports are available in the workspace.');
 })();
