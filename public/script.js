@@ -245,6 +245,24 @@ function renderMyOfficials(state) {
     });
 
   renderCards(matches, 'my-cards');
+  function renderLtGovernors(data) {
+  const container = document.getElementById('lt-governors-container');
+  if (!container) {
+    console.warn('Missing container: lt-governors-container');
+    return;
+  }
+  container.innerHTML = '';
+  data.forEach(gov => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <h3>${gov.name}</h3>
+      <p>${gov.state}</p>
+      <img src="${gov.photo || 'https://via.placeholder.com/200x300?text=No+Photo'}" alt="${gov.name}" />
+    `;
+    container.appendChild(card);
+  });
+}
 }
 
 function renderRankings() {
