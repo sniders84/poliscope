@@ -373,7 +373,6 @@ try {
   populateCompareDropdowns();
   renderRankings();
   renderRookies();
- 
 } catch (err) {
   console.error('Error loading LtGovernors:', err);
 }
@@ -381,7 +380,6 @@ try {
     const ltContainer = document.getElementById('lt-governors-container');
 
 }
-    console.log('Lt. Governors loaded:', ltGovernors);
 
          const stateSelect = document.getElementById('state-select');
     if (stateSelect) {
