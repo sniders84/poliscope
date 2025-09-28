@@ -372,6 +372,9 @@ try {
   ltGovernors = await res.json();
   console.log('Lt. Governors loaded:', ltGovernors.length, 'entries');
   window.allOfficials = [...governors, ...senate, ...house, ...ltGovernors];
+  populateCompareDropdowns();
+  renderRankings();
+  renderRookies();
  
 } catch (err) {
   console.error('Error loading LtGovernors:', err);
@@ -420,9 +423,7 @@ if (ltContainer) {
 }
     console.log('Lt. Governors loaded:', ltGovernors);
 
-      populateCompareDropdowns();
-
-    const stateSelect = document.getElementById('state-select');
+         const stateSelect = document.getElementById('state-select');
     if (stateSelect) {
       const states = [...new Set(allOfficials.map(p => p.state))].sort();
       stateSelect.innerHTML = '<option value="">Choose a state</option>' +
@@ -441,9 +442,7 @@ renderVotingInfo('Alabama');
   renderVotingInfo(selectedState);
 });
     }
-
-    renderRankings();
-    renderRookies();
+  
   } catch (err) {
     console.error("Error loading data:", err);
   }
