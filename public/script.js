@@ -143,15 +143,13 @@ function renderCards(data, containerId) {
                        "#cccccc";
 
     return `
-      <div class="card" onclick="expandCard('${person.slug}')" style="border-left: 8px solid ${partyColor};">
-        <img src="${imageUrl}" alt="${person.name}" onerror="this.onerror=null;this.src='https://via.placeholder.com/200x300?text=No+Photo'" />
-        <h3>${person.name}</h3>
-        <p>${person.office || person.position || ''}</p>
-        <p>${person.district || ''}</p>
-        <p>${person.state}${person.party ? ', ' + person.party : ''}</p>
-        <p>Term: ${person.termStart || '—'} to ${person.termEnd || '—'}</p>
-      </div>
-    `;
+  <div class="card" onclick="expandCard('${person.slug}')" style="border-left: 8px solid ${partyColor};">
+    <img src="${imageUrl}" alt="${person.name}" onerror="this.onerror=null;this.src='https://via.placeholder.com/200x300?text=No+Photo'" />
+    <h3>${person.name}</h3>
+    <p>${person.office || person.position || ''}</p>
+    <p>${person.state}${person.party ? ', ' + person.party : ''}</p>
+  </div>
+`;
   }).join('');
 
   container.innerHTML = cardsHTML;
