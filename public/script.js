@@ -230,7 +230,7 @@ function closeModal() {
 }
 
 function renderMyOfficials(state) {
-  const matches = window.allOfficials.filter(person => ...);
+  const matches = window.allOfficials.filter(person => 
       person.state === state ||
       person.stateName === state ||
       person.stateAbbreviation === state
@@ -370,7 +370,7 @@ try {
   const res = await fetch('LtGovernors.json');
   ltGovernors = await res.json();
   console.log('Lt. Governors loaded:', ltGovernors.length, 'entries');
-  window.allOfficials = [...governors, ...senate, ...house, ...ltGovernors];
+  window.allOfficials = [governors, senate, house, ltGovernors];
   populateCompareDropdowns();
   renderRankings();
   renderRookies();
@@ -424,7 +424,7 @@ if (ltContainer) {
 
          const stateSelect = document.getElementById('state-select');
     if (stateSelect) {
-      const states = [...new Set(allOfficials.map(p => p.state))].sort();
+      const states = [new Set(allOfficials.map(p => p.state))].sort();
       stateSelect.innerHTML = '<option value="">Choose a state</option>' +
         states.map(state => `<option value="${state}">${state}</option>`).join('');
 
