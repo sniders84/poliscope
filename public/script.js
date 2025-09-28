@@ -249,7 +249,7 @@ function renderMyOfficials(state) {
 
 function renderRankings() {
   const governors = allOfficials.filter(p => p.office?.includes("Governor"));
-  const ltGovernors = await fetch('LtGovernors.json').then(res => res.json());
+  const ltGovernors = allOfficials.filter(p => p.office?.includes("LtGovernor"));
   const senators = allOfficials.filter(p => p.office?.includes("Senator"));
   const house = allOfficials.filter(p => p.office?.includes("Representative"));
 
