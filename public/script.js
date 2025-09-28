@@ -258,7 +258,7 @@ function renderMyOfficials(state) {
     card.innerHTML = `
       <h3>${gov.name}</h3>
       <p>${gov.state}</p>
-      <img src="${gov.photo || 'https://via.placeholder.com/200x300?text=No+Photo'}" alt="${gov.name}" />
+      <img src="${official.photo || 'https://via.placeholder.com/200x300?text=No+Photo'}" alt="${official.name}" />
     `;
     container.appendChild(card);
   });
