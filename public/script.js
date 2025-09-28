@@ -342,6 +342,8 @@ async function loadData() {
     const house = window.cleanedHouse || [];
     const governors = await fetch('Governors.json').then(res => res.json());
     const senate = await fetch('Senate.json').then(res => res.json());
+    const ltGovernors = await fetch('LtGovernors.json').then(res => res.json());
+    console.log('Lt. Governors loaded:', ltGovernors);
 
     allOfficials = [...house, ...governors, ...senate];
 
