@@ -377,10 +377,6 @@ try {
   console.error('Error loading LtGovernors:', err);
 }
 
-    const ltContainer = document.getElementById('lt-governors-container');
-
-}
-
          const stateSelect = document.getElementById('state-select');
     if (stateSelect) {
       const states = [new Set(allOfficials.map(p => p.state))].sort();
