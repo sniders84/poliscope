@@ -133,7 +133,7 @@ function renderCards(data, containerId) {
   }
 
   const cardsHTML = data.map(person => {
-    const imageUrl = person.photo || 'images/fallback.jpg';
+   const imageUrl = person.photo?.trim() ? person.photo : 'https://via.placeholder.com/200x300?text=No+Photo';
     const partyColor = person.party?.toLowerCase().includes("repub") ? "#d73027" :
                        person.party?.toLowerCase().includes("dem") ? "#4575b4" :
                        person.party?.toLowerCase().includes("libert") ? "#fdae61" :
@@ -327,7 +327,7 @@ function renderCompareCard(slug, containerId) {
   const container = document.getElementById(containerId);
   if (!container || !person) return;
 
-  const imageUrl = person.photo || 'images/fallback.jpg';
+ const imageUrl = person.photo?.trim() ? person.photo : 'https://via.placeholder.com/200x300?text=No+Photo';
   const link = person.ballotpediaLink || person.contact?.website || null;
 
   container.innerHTML = `
