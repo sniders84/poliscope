@@ -1,0 +1,26 @@
+name: Validate Officials JSON
+
+on:
+  workflow_dispatch:   # This means you run it manually from the Actions tab
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Run validator script
+        run: node scripts/validateOfficials.js
+
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: missing-data-report
+          path: missingDataReport.json
