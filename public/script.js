@@ -287,14 +287,15 @@ function renderRookies() {
     p.office?.includes("Senator") && Number(p.termStart) >= cutoffYear
   );
   const rookieHouse = allOfficials.filter(p =>
-    p.office?.includes("Representative") && Number(p.termStart) >= cutoffYear
+    p.office?.includes("Representative") && Number(p.termStart) >= cutoffYear                                        
   );
-
+  const rookieLtGovernors = allOfficials.filter(p =>
+    p.office?.includes("LtGovernor") && Number(p.termStart) >= cutoffYear);
+  
   renderCards(rookieGovernors, 'rookie-governors');
   renderCards(rookieSenators, 'rookie-senators');
   renderCards(rookieHouse, 'rookie-house');
-  const rookieLtGovernors = allOfficials.filter(p => p.office?.includes("LtGovernor") && Number(p.termStart) >= cutoffYear);
-renderCards(rookieLtGovernors, 'rookie-ltgovernors');
+  renderCards(rookieLtGovernors, 'rookie-ltgovernors');
 
 }
 
