@@ -228,18 +228,12 @@ function closeModal() {
 }
 
 function renderMyOfficials(state) {
-  const matches = window.allOfficials.filter(person => 
-    person.state === state ||
-    person.stateName === state ||
-    person.stateAbbreviation === state
-  )
-  .sort((a, b) => {
-    const rank = role =>
-      role.includes("Governor") ? 1 :
-      role.includes("Senator") ? 2 :
-      role.includes("Representative") ? 3 : 4;
-    return rank(a.office || "") - rank(b.office || "");
-  });
+ const matches = window.allOfficials.filter(person =>
+  (person.state === state ||
+   person.stateName === state ||
+   person.stateAbbreviation === state) &&
+  !person.office?.toLowerCase().includes("lieutenant governor")
+);
 
   renderCards(matches, 'my-cards');
 }
