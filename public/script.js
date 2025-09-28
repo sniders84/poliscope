@@ -274,7 +274,7 @@ function renderRankings() {
   renderCards(governors, 'rankings-governors');
   renderCards(senators, 'rankings-senators');
   renderCards(house, 'rankings-house');
-  renderCards(house, 'rankings-ltgovernors');
+  renderCards(ltGovernors, 'rankings-ltgovernors');
 }
 
 function renderRookies() {
@@ -293,7 +293,9 @@ function renderRookies() {
   renderCards(rookieGovernors, 'rookie-governors');
   renderCards(rookieSenators, 'rookie-senators');
   renderCards(rookieHouse, 'rookie-house');
-   renderCards(rookieHouse, 'rookie-ltgovernors');
+  const rookieLtGovernors = allOfficials.filter(p => p.office?.includes("LtGovernor") && Number(p.termStart) >= cutoffYear);
+renderCards(rookieLtGovernors, 'rookie-ltgovernors');
+
 }
 
 function populateCompareDropdowns() {
