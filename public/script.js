@@ -228,7 +228,18 @@ function closeModal() {
 }
 
 function renderMyOfficials(state) {
- const matches = window.allOfficials.filter(person =>
+  const matches = window.allOfficials.filter(person => {
+  const stateMatch =
+    person.state === state ||
+    person.stateName === state ||
+    person.stateAbbreviation === state;
+
+  const role = (person.office || person.position || "").toLowerCase();
+  const isLtGovernor = role.includes("lt. governor") || role.includes("lieutenant governor");
+
+  return stateMatch && !isLtGovernor;
+});
+
   (person.state === state ||
    person.stateName === state ||
    person.stateAbbreviation === state) &&
@@ -363,7 +374,7 @@ try {
   const res = await fetch('LtGovernors.json');
   ltGovernors = await res.json();
   console.log('Lt. Governors loaded:', ltGovernors.length, 'entries');
-  window.allOfficials = [governors, senate, house, ltGovernors];
+  window.allOfficials = [...governors, ...senate, ...house, ...ltGovernors];
   populateCompareDropdowns();
   renderRankings();
   renderRookies();
@@ -374,44 +385,6 @@ try {
 
     const ltContainer = document.getElementById('lt-governors-container');
 
-if (ltContainer) {
-  ltGovernors.forEach((official) => {
-    const card = document.createElement('div');
-    card.className = 'official-card';
-
-    card.innerHTML = `
-     <img src="${official.photo || 'https://via.placeholder.com/200x300?text=No+Photo'}" alt="${official.name}" />
-      <h2>${official.name}</h2>
-      <p><strong>State:</strong> ${official.state}</p>
-      <p><strong>Party:</strong> ${official.party}</p>
-      <p><strong>Office:</strong> ${official.office}</p>
-      <p><strong>Term:</strong> ${official.termStart} to ${official.termEnd}</p>
-      <p><strong>Polling:</strong> ${official.pollingScore || 'Not available'}</p>
-      ${official.pollingSource ? `<a href="${official.pollingSource}" target="_blank">Polling Source</a>` : ''}
-      <p><strong>Salary:</strong> ${official.salary}</p>
-      <p><strong>Predecessor:</strong> ${official.predecessor}</p>
-      <p><strong>Education:</strong> ${official.education}</p>
-      <p><strong>Endorsements:</strong> ${official.endorsements}</p>
-      <p><strong>Platform:</strong> ${official.platform}</p>
-      <p><strong>Proposals:</strong> ${official.proposals}</p>
-      <p><strong>Engagement:</strong> ${official.engagement}</p>
-      <p><strong>Bio:</strong> ${official.bio}</p>
-      <p><strong>Contact:</strong><br>
-        ${official.contact.email ? `Email: ${official.contact.email}<br>` : ''}
-        ${official.contact.phone ? `Phone: ${official.contact.phone}<br>` : ''}
-        ${official.contact.website ? `<a href="${official.contact.website}" target="_blank">Website</a>` : ''}
-      </p>
-      <p><strong>Ballotpedia:</strong> <a href="${official.ballotpediaLink}" target="_blank">Profile</a></p>
-      <div><strong>Bills Signed:</strong><ul>
-        ${official.billsSigned.map(bill => `<li><a href="${bill.link}" target="_blank">${bill.title}</a></li>`).join('')}
-      </ul></div>
-      <div><strong>Platform Follow-Through:</strong><ul>
-        ${Object.entries(official.platformFollowThrough).map(([key, value]) => `<li><strong>${key}:</strong> ${value}</li>`).join('')}
-      </ul></div>
-    `;
-
-    ltContainer.appendChild(card);
-  });
 }
     console.log('Lt. Governors loaded:', ltGovernors);
 
