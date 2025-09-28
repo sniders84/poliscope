@@ -256,6 +256,7 @@ function renderRankings() {
   renderCards(governors, 'rankings-governors');
   renderCards(senators, 'rankings-senators');
   renderCards(house, 'rankings-house');
+  renderCards(house, 'rankings-ltgovernors');
 }
 
 function renderRookies() {
@@ -274,6 +275,7 @@ function renderRookies() {
   renderCards(rookieGovernors, 'rookie-governors');
   renderCards(rookieSenators, 'rookie-senators');
   renderCards(rookieHouse, 'rookie-house');
+   renderCards(rookieHouse, 'rookie-ltgovernors');
 }
 
 function populateCompareDropdowns() {
