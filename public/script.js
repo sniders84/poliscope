@@ -538,3 +538,4 @@ document.querySelectorAll('.tab-button').forEach(button => {
 });
 
 window.showTab = showTab;
+loadData();
