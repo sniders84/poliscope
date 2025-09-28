@@ -231,20 +231,22 @@ function closeModal() {
 
 function renderMyOfficials(state) {
   const matches = window.allOfficials.filter(person => 
-      person.state === state ||
-      person.stateName === state ||
-      person.stateAbbreviation === state
-    )
-    .sort((a, b) => {
-      const rank = role =>
-        role.includes("Governor") ? 1 :
-        role.includes("Senator") ? 2 :
-        role.includes("Representative") ? 3 : 4;
-      return rank(a.office || "") - rank(b.office || "");
-    });
+    person.state === state ||
+    person.stateName === state ||
+    person.stateAbbreviation === state
+  )
+  .sort((a, b) => {
+    const rank = role =>
+      role.includes("Governor") ? 1 :
+      role.includes("Senator") ? 2 :
+      role.includes("Representative") ? 3 : 4;
+    return rank(a.office || "") - rank(b.office || "");
+  });
 
   renderCards(matches, 'my-cards');
-  function renderLtGovernors(data) {
+}
+
+function renderLtGovernors(data) {
   const container = document.getElementById('lt-governors-container');
   if (!container) {
     console.warn('Missing container: lt-governors-container');
@@ -257,11 +259,10 @@ function renderMyOfficials(state) {
     card.innerHTML = `
       <h3>${gov.name}</h3>
       <p>${gov.state}</p>
-      <img src="${official.photo || 'https://via.placeholder.com/200x300?text=No+Photo'}" alt="${official.name}" />
+      <img src="${gov.photo || 'https://via.placeholder.com/200x300?text=No+Photo'}" alt="${gov.name}" />
     `;
     container.appendChild(card);
   });
-}
 }
 
 function renderRankings() {
