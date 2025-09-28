@@ -363,7 +363,14 @@ async function loadData() {
     const house = window.cleanedHouse || [];
     const governors = await fetch('Governors.json').then(res => res.json());
     const senate = await fetch('Senate.json').then(res => res.json());
-    const ltGovernors = await fetch('LtGovernors.json').then(res => res.json());
+    const ltGovernors = await fetch('LtGovernors.json')
+  .then(res => res.json())
+  .then(data => {
+    console.log('Lt. Governors loaded:', data.length, 'entries');
+    renderLtGovernors(data);
+  })
+  .catch(err => console.error('Error loading LtGovernors:', err));
+
     const ltContainer = document.getElementById('lt-governors-container');
 
 if (ltContainer) {
