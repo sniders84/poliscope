@@ -230,8 +230,7 @@ function closeModal() {
 }
 
 function renderMyOfficials(state) {
-  const matches = allOfficials
-    .filter(person =>
+  const matches = window.allOfficials.filter(person => ...);
       person.state === state ||
       person.stateName === state ||
       person.stateAbbreviation === state
