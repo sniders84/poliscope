@@ -381,7 +381,7 @@ if (ltContainer) {
     card.className = 'official-card';
 
     card.innerHTML = `
-      <img src="${official.photo}" alt="${official.name}" />
+     <img src="${official.photo || 'https://via.placeholder.com/200x300?text=No+Photo'}" alt="${official.name}" />
       <h2>${official.name}</h2>
       <p><strong>State:</strong> ${official.state}</p>
       <p><strong>Party:</strong> ${official.party}</p>
