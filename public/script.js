@@ -1,6 +1,6 @@
 
 console.log("✅ script.js loaded");
-const civicEvents = [
+let civicEvents = [
   {
     title: "General Election",
     date: "2025-11-04",
