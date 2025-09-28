@@ -239,6 +239,8 @@ function renderMyOfficials(state) {
 
   return stateMatch && !isLtGovernor;
 });
+  console.log("Filtered My Officials:", matches.map(p => `${p.name} (${p.office})`));
+
 
   (person.state === state ||
    person.stateName === state ||
