@@ -232,7 +232,7 @@ function renderMyOfficials(state) {
   (person.state === state ||
    person.stateName === state ||
    person.stateAbbreviation === state) &&
-  !person.office?.toLowerCase().includes("lieutenant governor")
+  !person.office?.toLowerCase().includes("lt. governor")
 );
 
   renderCards(matches, 'my-cards');
