@@ -368,7 +368,7 @@ try {
   const res = await fetch('LtGovernors.json');
   ltGovernors = await res.json();
   console.log('Lt. Governors loaded:', ltGovernors.length, 'entries');
-  renderLtGovernors(ltGovernors);
+ 
 } catch (err) {
   console.error('Error loading LtGovernors:', err);
 }
