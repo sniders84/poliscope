@@ -122,7 +122,8 @@ h2 {
 
 #results li {
   margin: 6px 0;
-},
+}
+
 /* === Modal Layout Styles === */
 .modal-container {
   display: flex;
@@ -229,4 +230,7 @@ h2 {
 }
 #matchup-state {
   margin-bottom: 120px;
+}
+#compare {
+  padding-bottom: 150px;
 }
