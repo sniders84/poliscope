@@ -144,7 +144,7 @@ function renderCards(data, containerId) {
 
     return `
       <div class="card" onclick="expandCard('${person.slug}')" style="border-left: 8px solid ${partyColor};">
-        <img src="${imageUrl}" alt="${person.name}" onerror="this.src='images/fallback.jpg'" />
+        <img src="${imageUrl}" alt="${person.name}" onerror="this.onerror=null;this.src='https://via.placeholder.com/200x300?text=No+Photo'" />
         <h3>${person.name}</h3>
         <p>${person.office || person.position || ''}</p>
         <p>${person.district || ''}</p>
@@ -194,7 +194,7 @@ function openModal(person) {
   const modalHTML = `
     <div class="modal-container">
       <div class="modal-left">
-        <img src="${imageUrl}" alt="${person.name}" onerror="this.src='images/fallback.jpg'" />
+        <img src="${imageUrl}" alt="${person.name}" onerror="this.onerror=null;this.src='https://via.placeholder.com/200x300?text=No+Photo'" />
         <h2>${person.name}</h2>
         ${link ? `<p><a href="${link}" target="_blank">Ballotpedia Profile</a></p>` : ''}
         <p><strong>Contact:</strong>
@@ -332,7 +332,7 @@ function renderCompareCard(slug, containerId) {
 
   container.innerHTML = `
     <div class="card">
-      <img src="${imageUrl}" alt="${person.name}" onerror="this.src='images/fallback.jpg'" />
+      <img src="${imageUrl}" alt="${person.name}" onerror="this.onerror=null;this.src='https://via.placeholder.com/200x300?text=No+Photo'" />
       <h3>${person.name}</h3>
       <p><strong>Office:</strong> ${person.office || person.position || ''}</p>
       <p><strong>State:</strong> ${person.state}</p>
