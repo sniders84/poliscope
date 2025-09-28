@@ -133,7 +133,7 @@ function renderCards(data, containerId) {
   }
 
   const cardsHTML = data.map(person => {
-   const imageUrl = person.photo?.trim() ? person.photo : 'https://via.placeholder.com/200x300?text=No+Photo';
+   const imageUrl = person.photo?.trim() || 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/200px-No_image_available.svg.png';
     const partyColor = person.party?.toLowerCase().includes("repub") ? "#d73027" :
                        person.party?.toLowerCase().includes("dem") ? "#4575b4" :
                        person.party?.toLowerCase().includes("libert") ? "#fdae61" :
