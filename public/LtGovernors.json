@@ -1,0 +1,39 @@
+{
+  "name": "Will Ainsworth",
+  "state": "Alabama",
+  "party": "Republican",
+  "office": "Lieutenant Governor",
+  "slug": "will-ainsworth",
+  "photo": "https://ltgov.alabama.gov/wp-content/uploads/2023/01/WA-Headshot-2023.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Will_Ainsworth",
+  "termStart": "2019-01-14",
+  "termEnd": "2027-01-14",
+  "contact": {
+    "email": "ltgov@ltgov.alabama.gov",
+    "phone": "(334) 261-9590",
+    "website": "https://ltgov.alabama.gov/"
+  },
+  "bio": "Will Ainsworth is the 31st Lieutenant Governor of Alabama. A former youth pastor, entrepreneur, and cattle farmer, he previously served in the Alabama House from 2014 to 2018. He is known for championing education reform, election integrity, and military support.",
+  "education": "Auburn University (BA in Marketing)",
+  "endorsements": "Alabama Retail Association PAC, Marco Rubio 2016 Campaign Chair (Alabama)",
+  "platform": "School choice expansion, grocery tax repeal, skilled trades education, military support, and government transparency.",
+  "platformFollowThrough": {
+    "CHOOSE Act": "Expanded school choice options across Alabama",
+    "Grocery Tax Cut": "Reduced state sales tax on groceries",
+    "Workforce Commission": "Led transformative workforce development reforms"
+  },
+  "proposals": "Repeal grocery tax entirely, expand Pre-K access, and streamline workforce credentialing.",
+  "engagement": "High engagement through military legislation, education reform, and economic development commissions.",
+  "billsSigned": [
+    {
+      "title": "Pro-Military Legislative Package (2024)",
+      "link": "https://ltgov.alabama.gov/news/lt-gov-ainsworth-highlights-full-enactment-of-pro-military-legislative-package/"
+    }
+  ],
+  "vetoes": "",
+  "salary": "$65,000",
+  "predecessor": "Kay Ivey",
+  "pollingScore": "52%",
+  "pollingSource": "https://emersoncollegepolling.com/statewide-poll-alabama-ainsworth-2026/",
+  "electionYear": "2026"
+},
