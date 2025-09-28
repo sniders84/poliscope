@@ -249,6 +249,7 @@ function renderMyOfficials(state) {
 
 function renderRankings() {
   const governors = allOfficials.filter(p => p.office?.includes("Governor"));
+  const ltGovernors = await fetch('LtGovernors.json').then(res => res.json());
   const senators = allOfficials.filter(p => p.office?.includes("Senator"));
   const house = allOfficials.filter(p => p.office?.includes("Representative"));
 
@@ -343,6 +344,47 @@ async function loadData() {
     const governors = await fetch('Governors.json').then(res => res.json());
     const senate = await fetch('Senate.json').then(res => res.json());
     const ltGovernors = await fetch('LtGovernors.json').then(res => res.json());
+    const ltContainer = document.getElementById('lt-governors-container');
+
+if (ltContainer) {
+  ltGovernors.forEach((official) => {
+    const card = document.createElement('div');
+    card.className = 'official-card';
+
+    card.innerHTML = `
+      <img src="${official.photo}" alt="${official.name}" />
+      <h2>${official.name}</h2>
+      <p><strong>State:</strong> ${official.state}</p>
+      <p><strong>Party:</strong> ${official.party}</p>
+      <p><strong>Office:</strong> ${official.office}</p>
+      <p><strong>Term:</strong> ${official.termStart} to ${official.termEnd}</p>
+      <p><strong>Polling:</strong> ${official.pollingScore || 'Not available'}</p>
+      ${official.pollingSource ? `<a href="${official.pollingSource}" target="_blank">Polling Source</a>` : ''}
+      <p><strong>Salary:</strong> ${official.salary}</p>
+      <p><strong>Predecessor:</strong> ${official.predecessor}</p>
+      <p><strong>Education:</strong> ${official.education}</p>
+      <p><strong>Endorsements:</strong> ${official.endorsements}</p>
+      <p><strong>Platform:</strong> ${official.platform}</p>
+      <p><strong>Proposals:</strong> ${official.proposals}</p>
+      <p><strong>Engagement:</strong> ${official.engagement}</p>
+      <p><strong>Bio:</strong> ${official.bio}</p>
+      <p><strong>Contact:</strong><br>
+        ${official.contact.email ? `Email: ${official.contact.email}<br>` : ''}
+        ${official.contact.phone ? `Phone: ${official.contact.phone}<br>` : ''}
+        ${official.contact.website ? `<a href="${official.contact.website}" target="_blank">Website</a>` : ''}
+      </p>
+      <p><strong>Ballotpedia:</strong> <a href="${official.ballotpediaLink}" target="_blank">Profile</a></p>
+      <div><strong>Bills Signed:</strong><ul>
+        ${official.billsSigned.map(bill => `<li><a href="${bill.link}" target="_blank">${bill.title}</a></li>`).join('')}
+      </ul></div>
+      <div><strong>Platform Follow-Through:</strong><ul>
+        ${Object.entries(official.platformFollowThrough).map(([key, value]) => `<li><strong>${key}:</strong> ${value}</li>`).join('')}
+      </ul></div>
+    `;
+
+    ltContainer.appendChild(card);
+  });
+}
     console.log('Lt. Governors loaded:', ltGovernors);
 
     allOfficials = [...house, ...governors, ...senate];
