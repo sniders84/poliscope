@@ -420,9 +420,7 @@ if (ltContainer) {
 }
     console.log('Lt. Governors loaded:', ltGovernors);
 
-    allOfficials = [...house, ...governors, ...senate];
-
-    populateCompareDropdowns();
+      populateCompareDropdowns();
 
     const stateSelect = document.getElementById('state-select');
     if (stateSelect) {
