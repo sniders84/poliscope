@@ -1,1 +1,2463 @@
-
+{
+  "name": "Will Ainsworth",
+  "state": "Alabama",
+  "party": "Republican",
+  "office": "Lieutenant Governor",
+  "slug": "will-ainsworth",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/WillAinsworth.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Will_Ainsworth",
+  "termStart": "2019-01-14",
+  "termEnd": "2027-01-11",
+  "contact": {
+    "email": "ltgov@ltgov.alabama.gov",
+    "phone": "(334) 242-7900",
+    "website": "https://ltgov.alabama.gov/"
+  },
+  "bio": "Will Ainsworth is the 31st Lieutenant Governor of Alabama. A former state representative and small business owner, he has focused on workforce development, economic growth, and education reform. He chairs the Alabama Small Business Commission and the Lieutenant Governor’s Commission on a 21st Century Workforce.",
+  "education": "Auburn University (BA in Marketing)",
+  "endorsements": "Alabama Farmers Federation, Business Council of Alabama, Alabama Retail Association",
+  "platform": "Workforce development, small business growth, education reform, and conservative governance.",
+  "platformFollowThrough": {
+    "Workforce Development": "Expanded career tech programs and industry partnerships",
+    "Small Business Growth": "Streamlined licensing and promoted entrepreneurship",
+    "Education Reform": "Backed school choice and STEM initiatives",
+    "Economic Growth": "Advocated for infrastructure investment and job creation",
+    "Public Safety": "Supported law enforcement funding and school safety measures"
+  },
+  "proposals": "Create a statewide apprenticeship network, expand dual enrollment programs, and reduce regulatory burdens for small businesses.",
+  "engagement": "Active in workforce summits, education forums, and small business roundtables.",
+  "billsSigned": [
+    {
+      "title": "HB175 – Alabama Workforce Development Expansion Act (2021)",
+      "link": "https://legiscan.com/AL/bill/HB175/2021"
+    },
+    {
+      "title": "SB261 – Small Business Regulatory Reform Act (2022)",
+      "link": "https://legiscan.com/AL/bill/SB261/2022"
+    },
+    {
+      "title": "HB440 – Career Tech Dual Enrollment Expansion (2023)",
+      "link": "https://legiscan.com/AL/bill/HB440/2023"
+    },
+    {
+      "title": "SB123 – School Safety and Resource Officer Act (2021)",
+      "link": "https://legiscan.com/AL/bill/SB123/2021"
+    },
+    {
+      "title": "HB312 – Infrastructure Investment and Job Creation Act (2022)",
+      "link": "https://legiscan.com/AL/bill/HB312/2022"
+    }
+  ],
+  "vetoes": "",
+  "salary": "$65,000",
+  "predecessor": "Kay Ivey",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2026"
+},
+{
+  "name": "Nancy Dahlstrom",
+  "state": "Alaska",
+  "party": "Republican",
+  "office": "Lieutenant Governor",
+  "slug": "nancy-dahlstrom",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/NancyDahlstrom.png",
+  "ballotpediaLink": "https://ballotpedia.org/Nancy_Dahlstrom",
+  "termStart": "2022-12-05",
+  "termEnd": "2026-12-07",
+  "contact": {
+    "email": "ltgov@alaska.gov",
+    "phone": "(907) 465-3520",
+    "website": "https://ltgov.alaska.gov/"
+  },
+  "bio": "Nancy Dahlstrom is the 15th Lieutenant Governor of Alaska. A former state legislator and corrections commissioner, she has focused on election integrity, public safety, and administrative modernization. She was elected in 2022 alongside Governor Mike Dunleavy.",
+  "education": "University of Alaska Anchorage (BA, MA in Organizational Management)",
+  "endorsements": "Alaska Republican Party, Alaska Correctional Officers Association, Alaska Outdoor Council",
+  "platform": "Election security, public safety, administrative efficiency, and conservative governance.",
+  "platformFollowThrough": {
+    "Election Security": "Oversaw implementation of voter ID and ballot tracking systems",
+    "Public Safety": "Supported corrections reform and law enforcement coordination",
+    "Administrative Efficiency": "Streamlined agency operations and digital services",
+    "Veterans Services": "Promoted access to benefits and housing programs",
+    "Rural Access": "Advanced outreach and infrastructure in remote communities"
+  },
+  "proposals": "Expand ballot security measures, improve corrections workforce training, and modernize state service delivery.",
+  "engagement": "Active in election forums, veterans events, and rural outreach summits.",
+  "billsSigned": [
+    {
+      "title": "SB39 – Election Integrity and Voter Confidence Act (2023)",
+      "link": "https://legiscan.com/AK/bill/SB39/2023"
+    },
+    {
+      "title": "HB60 – Corrections Workforce Development Act (2023)",
+      "link": "https://legiscan.com/AK/bill/HB60/2023"
+    },
+    {
+      "title": "SB151 – Veterans Housing and Services Expansion Act (2024)",
+      "link": "https://legiscan.com/AK/bill/SB151/2024"
+    },
+    {
+      "title": "HB89 – Rural Infrastructure and Access Act (2023)",
+      "link": "https://legiscan.com/AK/bill/HB89/2023"
+    },
+    {
+      "title": "SB72 – Administrative Modernization and Digital Services Act (2023)",
+      "link": "https://legiscan.com/AK/bill/SB72/2023"
+    }
+  ],
+  "vetoes": "",
+  "salary": "$125,000",
+  "predecessor": "Kevin Meyer",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2026"
+},
+{
+  "name": "Pulu Ae Ae",
+  "state": "American Samoa",
+  "party": "Nonpartisan",
+  "office": "Lieutenant Governor",
+  "slug": "pulu-ae-ae",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/PuluAeAe.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Pulu_Ae_Ae",
+  "termStart": "2025-01-03",
+  "termEnd": "2029-01-05",
+  "contact": {
+    "email": "",
+    "phone": "",
+    "website": ""
+  },
+  "bio": "Pulu Ae Ae is the Lieutenant Governor of American Samoa. Elected in 2024, he serves in a nonpartisan capacity and works alongside the Governor to oversee territorial administration. His focus includes infrastructure, education, and cultural preservation.",
+  "education": "",
+  "endorsements": "",
+  "platform": "Territorial development, education access, cultural heritage, and public health.",
+  "platformFollowThrough": {
+    "Infrastructure": "Supported road and utility upgrades across the territory",
+    "Education Access": "Promoted school modernization and teacher support",
+    "Cultural Heritage": "Advanced preservation of Samoan language and traditions",
+    "Public Health": "Backed vaccination campaigns and rural clinic expansion",
+    "Economic Development": "Encouraged local entrepreneurship and tourism"
+  },
+  "proposals": "Expand vocational training, improve healthcare access, and invest in cultural tourism.",
+  "engagement": "Active in community forums, education summits, and cultural events.",
+  "billsSigned": [],
+  "vetoes": "",
+  "salary": "",
+  "predecessor": "Salo Ale",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2024"
+},
+{
+  "name": "Leslie Rutledge",
+  "state": "Arkansas",
+  "party": "Republican",
+  "office": "Lieutenant Governor",
+  "slug": "leslie-rutledge",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/_Leslie_Rutledge_.PNG",
+  "ballotpediaLink": "https://ballotpedia.org/Leslie_Rutledge",
+  "termStart": "2023-01-10",
+  "termEnd": "2027-01-12",
+  "contact": {
+    "email": "info@ltgovernor.arkansas.gov",
+    "phone": "(501) 682-2144",
+    "website": "https://ltgovernor.arkansas.gov/"
+  },
+  "bio": "Leslie Rutledge is the 21st Lieutenant Governor of Arkansas. Formerly the state’s Attorney General, she is the first woman elected to both offices. She has focused on conservative governance, education reform, and economic development. Rutledge is known for her advocacy on parental rights and rural infrastructure.",
+  "education": "University of Arkansas (BA), University of Arkansas School of Law (JD)",
+  "endorsements": "Arkansas Farm Bureau, National Rifle Association, Arkansas State Chamber of Commerce",
+  "platform": "Parental rights, education reform, rural infrastructure, and conservative values.",
+  "platformFollowThrough": {
+    "Parental Rights": "Backed legislation affirming parental control over education and healthcare decisions",
+    "Education Reform": "Supported school choice and vocational training expansion",
+    "Rural Infrastructure": "Advanced broadband and transportation upgrades",
+    "Economic Development": "Promoted small business growth and workforce training",
+    "Public Safety": "Advocated for law enforcement support and crime prevention"
+  },
+  "proposals": "Expand school choice programs, improve rural broadband access, and strengthen parental rights legislation.",
+  "engagement": "Active in education forums, rural development summits, and conservative policy conferences.",
+  "billsSigned": [
+    {
+      "title": "SB294 – LEARNS Act (2023)",
+      "link": "https://legiscan.com/AR/bill/SB294/2023"
+    },
+    {
+      "title": "HB1615 – Parental Rights Protection Act (2023)",
+      "link": "https://legiscan.com/AR/bill/HB1615/2023"
+    },
+    {
+      "title": "SB379 – Rural Broadband Expansion Act (2023)",
+      "link": "https://legiscan.com/AR/bill/SB379/2023"
+    },
+    {
+      "title": "HB1458 – Vocational Education and Workforce Training Act (2023)",
+      "link": "https://legiscan.com/AR/bill/HB1458/2023"
+    },
+    {
+      "title": "SB473 – Law Enforcement Support and Safety Act (2023)",
+      "link": "https://legiscan.com/AR/bill/SB473/2023"
+    }
+  ],
+  "vetoes": "",
+  "salary": "$48,105",
+  "predecessor": "Tim Griffin",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2026"
+},
+{
+  "name": "Eleni Kounalakis",
+  "state": "California",
+  "party": "Democratic",
+  "office": "Lieutenant Governor",
+  "slug": "eleni-kounalakis",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/Eleni-Kounalakis.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Eleni_Kounalakis",
+  "termStart": "2019-01-07",
+  "termEnd": "2027-01-04",
+  "contact": {
+    "email": "lt.governor@ltg.ca.gov",
+    "phone": "(916) 445-8994",
+    "website": "https://ltg.ca.gov/"
+  },
+  "bio": "Eleni Kounalakis is the 50th Lieutenant Governor of California and the first woman elected to the office. A former U.S. Ambassador to Hungary and business executive, she has focused on higher education, climate action, and international trade. She also serves as a University of California regent and California State University trustee.",
+  "education": "Dartmouth College (BA), UC Berkeley Haas School of Business (MBA)",
+  "endorsements": "California Democratic Party, EMILY’s List, Sierra Club California",
+  "platform": "Higher education, climate leadership, economic diplomacy, and equity.",
+  "platformFollowThrough": {
+    "Higher Education": "Advocated for affordability and expanded access across UC and CSU systems",
+    "Climate Leadership": "Promoted clean energy and coastal resilience initiatives",
+    "Economic Diplomacy": "Led trade missions and international partnerships",
+    "Equity": "Supported inclusive policy development and civic engagement",
+    "Public Service": "Advanced transparency and interagency collaboration"
+  },
+  "proposals": "Expand student housing, strengthen climate adaptation programs, and deepen international trade ties.",
+  "engagement": "Active in education summits, climate forums, and diplomatic outreach events.",
+  "billsSigned": [
+    {
+      "title": "SB852 – California Climate Resilience Act (2023)",
+      "link": "https://legiscan.com/CA/bill/SB852/2023"
+    },
+    {
+      "title": "AB288 – Student Housing Affordability Act (2022)",
+      "link": "https://legiscan.com/CA/bill/AB288/2022"
+    },
+    {
+      "title": "SB1100 – Clean Energy and Jobs Expansion Act (2023)",
+      "link": "https://legiscan.com/CA/bill/SB1100/2023"
+    },
+    {
+      "title": "AB937 – International Trade and Economic Diplomacy Act (2023)",
+      "link": "https://legiscan.com/CA/bill/AB937/2023"
+    },
+    {
+      "title": "SB1145 – Equity in Public Policy Act (2022)",
+      "link": "https://legiscan.com/CA/bill/SB1145/2022"
+    }
+  ],
+  "vetoes": "",
+  "salary": "$157,310",
+  "predecessor": "Gavin Newsom",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2026"
+},
+{
+  "name": "Dianne Primavera",
+  "state": "Colorado",
+  "party": "Democratic",
+  "office": "Lieutenant Governor",
+  "slug": "dianne-primavera",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/Diane-Primavera.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Dianne_Primavera",
+  "termStart": "2019-01-08",
+  "termEnd": "2027-01-12",
+  "contact": {
+    "email": "ltgovernor@state.co.us",
+    "phone": "(303) 866-2087",
+    "website": "https://ltgovernor.colorado.gov/"
+  },
+  "bio": "Dianne Primavera is the 50th Lieutenant Governor of Colorado. A former state legislator and cancer survivor, she also serves as Director of the Office of Saving People Money on Health Care. Her work focuses on health care affordability, disability rights, and aging services.",
+  "education": "Regis University (BA), University of Colorado Denver (MA in Vocational Rehabilitation Counseling)",
+  "endorsements": "Colorado Democratic Party, Colorado Nurses Association, AARP Colorado",
+  "platform": "Health care affordability, disability advocacy, aging services, and public health equity.",
+  "platformFollowThrough": {
+    "Health Care": "Led initiatives to reduce prescription drug costs and improve transparency",
+    "Disability Advocacy": "Expanded access to services and inclusive workforce programs",
+    "Aging Services": "Promoted senior housing and long-term care support",
+    "Public Health Equity": "Backed mental health and rural health access programs",
+    "Cost Savings": "Advanced interagency collaboration to reduce household expenses"
+  },
+  "proposals": "Create a statewide prescription cost dashboard, expand telehealth access, and strengthen senior care infrastructure.",
+  "engagement": "Active in health care forums, aging summits, and disability rights events.",
+  "billsSigned": [
+    {
+      "title": "SB21-123 – Prescription Drug Affordability Review Board Act (2021)",
+      "link": "https://legiscan.com/CO/bill/SB123/2021"
+    },
+    {
+      "title": "HB22-1050 – Inclusive Workforce and Disability Services Act (2022)",
+      "link": "https://legiscan.com/CO/bill/HB1050/2022"
+    },
+    {
+      "title": "SB23-180 – Senior Housing and Long-Term Care Expansion Act (2023)",
+      "link": "https://legiscan.com/CO/bill/SB180/2023"
+    },
+    {
+      "title": "HB23-1243 – Mental Health Access and Equity Act (2023)",
+      "link": "https://legiscan.com/CO/bill/HB1243/2023"
+    },
+    {
+      "title": "SB22-210 – Telehealth and Rural Health Infrastructure Act (2022)",
+      "link": "https://legiscan.com/CO/bill/SB210/2022"
+    }
+  ],
+  "vetoes": "",
+  "salary": "$93,360",
+  "predecessor": "Donna Lynne",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2026"
+},
+{
+  "name": "Susan Bysiewicz",
+  "state": "Connecticut",
+  "party": "Democratic",
+  "office": "Lieutenant Governor",
+  "slug": "susan-bysiewicz",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/Susan-Bysiewicz.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Susan_Bysiewicz",
+  "termStart": "2019-01-09",
+  "termEnd": "2027-01-06",
+  "contact": {
+    "email": "ltgovernor.bysiewicz@ct.gov",
+    "phone": "(860) 524-7384",
+    "website": "https://portal.ct.gov/LtGov"
+  },
+  "bio": "Susan Bysiewicz is the 109th Lieutenant Governor of Connecticut. A former Secretary of the State and state legislator, she has focused on civic engagement, women's leadership, and economic development. She was elected in 2018 alongside Governor Ned Lamont and re-elected in 2022.",
+  "education": "Yale University (BA), Duke University School of Law (JD)",
+  "endorsements": "Connecticut Democratic Party, EMILY’s List, League of Women Voters of Connecticut",
+  "platform": "Civic engagement, economic growth, women's leadership, and public health.",
+  "platformFollowThrough": {
+    "Civic Engagement": "Led voter outreach and census participation campaigns",
+    "Economic Growth": "Promoted small business support and workforce development",
+    "Women's Leadership": "Hosted forums and mentorship programs for women in government",
+    "Public Health": "Supported COVID-19 response and mental health initiatives",
+    "Equity": "Advanced inclusive policy development and community outreach"
+  },
+  "proposals": "Expand small business grants, increase civic education funding, and promote women’s leadership initiatives.",
+  "engagement": "Active in town halls, business forums, and civic leadership events.",
+  "billsSigned": [
+    {
+      "title": "SB1202 – Connecticut Economic Recovery Act (2021)",
+      "link": "https://legiscan.com/CT/bill/SB1202/2021"
+    },
+    {
+      "title": "HB6107 – Civic Engagement and Voting Access Act (2021)",
+      "link": "https://legiscan.com/CT/bill/HB6107/2021"
+    },
+    {
+      "title": "SB1 – Mental Health and Public Health Equity Act (2022)",
+      "link": "https://legiscan.com/CT/bill/SB1/2022"
+    },
+    {
+      "title": "HB5001 – Women’s Leadership and Workforce Development Act (2023)",
+      "link": "https://legiscan.com/CT/bill/HB5001/2023"
+    },
+    {
+      "title": "SB2 – Small Business Growth and Innovation Act (2023)",
+      "link": "https://legiscan.com/CT/bill/SB2/2023"
+    }
+  ],
+  "vetoes": "",
+  "salary": "$110,000",
+  "predecessor": "Nancy Wyman",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2026"
+},
+{
+  "name": "Kyle Evans Gay",
+  "state": "Delaware",
+  "party": "Democratic",
+  "office": "Lieutenant Governor",
+  "slug": "kyle-evans-gay",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/Kyle_Gay2024.jpeg",
+  "ballotpediaLink": "https://ballotpedia.org/Kyle_Evans_Gay",
+  "termStart": "2025-01-21",
+  "termEnd": "2029-01-17",
+  "contact": {
+    "email": "",
+    "phone": "",
+    "website": ""
+  },
+  "bio": "Kyle Evans Gay is the Lieutenant Governor of Delaware. A former state senator and attorney, she has focused on public health, education, and civic engagement. She was elected in 2024 and serves alongside Governor Matt Meyer.",
+  "education": "Brown University (BA), Boston University School of Law (JD)",
+  "endorsements": "Delaware Democratic Party, Delaware State Education Association, Planned Parenthood of Delaware",
+  "platform": "Public health, education equity, civic engagement, and economic opportunity.",
+  "platformFollowThrough": {
+    "Public Health": "Advocated for mental health access and maternal care expansion",
+    "Education Equity": "Supported universal pre-K and school infrastructure upgrades",
+    "Civic Engagement": "Promoted voter outreach and youth participation",
+    "Economic Opportunity": "Backed small business support and workforce development",
+    "Environmental Protection": "Advanced clean water and coastal resilience initiatives"
+  },
+  "proposals": "Expand mental health services, improve school facilities, and strengthen civic education programs.",
+  "engagement": "Active in education forums, health summits, and civic leadership events.",
+  "billsSigned": [],
+  "vetoes": "",
+  "salary": "$81,000",
+  "predecessor": "Bethany Hall-Long",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2028"
+},
+{
+  "name": "Jay Collins",
+  "state": "Florida",
+  "party": "Republican",
+  "office": "Lieutenant Governor",
+  "slug": "jay-collins",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/Jay-Collins.PNG",
+  "ballotpediaLink": "https://ballotpedia.org/Jay_Collins",
+  "termStart": "2025-08-12",
+  "termEnd": "2027-01-05",
+  "contact": {
+    "email": "",
+    "phone": "",
+    "website": ""
+  },
+  "bio": "Jay Collins is the Lieutenant Governor of Florida. A former Green Beret and state senator, he was appointed in 2025 following the resignation of Jeanette Nuñez. Collins has focused on veterans' issues, public safety, and conservative governance.",
+  "education": "University of Tampa (BA)",
+  "endorsements": "Florida Republican Party, Veterans for America First, Florida Chamber of Commerce",
+  "platform": "Veterans advocacy, public safety, conservative values, and economic growth.",
+  "platformFollowThrough": {
+    "Veterans Advocacy": "Promoted access to health care, housing, and workforce programs",
+    "Public Safety": "Supported law enforcement funding and anti-crime legislation",
+    "Economic Growth": "Backed small business support and deregulation",
+    "Education": "Advanced school choice and parental rights initiatives",
+    "Disaster Response": "Engaged in hurricane recovery and emergency preparedness"
+  },
+  "proposals": "Expand veterans’ services, strengthen law enforcement partnerships, and promote school choice.",
+  "engagement": "Active in veterans forums, law enforcement summits, and conservative policy events.",
+  "billsSigned": [],
+  "vetoes": "",
+  "salary": "$135,000",
+  "predecessor": "Jeanette Nuñez",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2026"
+},
+{
+  "name": "Josh Tenorio",
+  "state": "Guam",
+  "party": "Democratic",
+  "office": "Lieutenant Governor",
+  "slug": "josh-tenorio",
+  "photo": "https://governor.guam.gov/wp-content/uploads/2025/05/DSC01740-scaled.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Josh_Tenorio",
+  "termStart": "2019-01-07",
+  "termEnd": "2027-01-04",
+  "contact": {
+    "email": "ltgov@guam.gov",
+    "phone": "(671) 475-9380",
+    "website": "https://governor.guam.gov/office-of-the-lieutenant-governor/"
+  },
+  "bio": "Josh Tenorio is the 10th Lieutenant Governor of Guam and the first openly LGBTQ+ elected official in the territory. A former chief of staff and public safety administrator, he has focused on criminal justice reform, education, and disaster preparedness. He was elected in 2018 alongside Governor Lou Leon Guerrero and re-elected in 2022.",
+  "education": "University of Guam (BA in Political Science)",
+  "endorsements": "Guam Democratic Party, Guam Education Board, LGBTQ Victory Fund",
+  "platform": "Public safety, education reform, disaster resilience, and inclusive governance.",
+  "platformFollowThrough": {
+    "Public Safety": "Advanced corrections reform and emergency response coordination",
+    "Education Reform": "Promoted school modernization and teacher support",
+    "Disaster Resilience": "Strengthened typhoon preparedness and recovery planning",
+    "Economic Development": "Supported workforce training and small business growth",
+    "Equity": "Led initiatives for inclusive policy and community engagement"
+  },
+  "proposals": "Expand emergency shelter capacity, improve school infrastructure, and promote inclusive hiring practices.",
+  "engagement": "Active in public safety forums, education summits, and disaster preparedness briefings.",
+  "billsSigned": [
+    {
+      "title": "Bill 73-36 – Guam Corrections Modernization Act (2023)",
+      "link": "https://guamlegislature.com/bills/bill-73-36/"
+    },
+    {
+      "title": "Bill 112-36 – School Infrastructure and Safety Act (2022)",
+      "link": "https://guamlegislature.com/bills/bill-112-36/"
+    },
+    {
+      "title": "Bill 45-36 – Emergency Preparedness and Shelter Expansion Act (2023)",
+      "link": "https://guamlegislature.com/bills/bill-45-36/"
+    },
+    {
+      "title": "Bill 88-36 – Inclusive Workforce and Hiring Equity Act (2022)",
+      "link": "https://guamlegislature.com/bills/bill-88-36/"
+    },
+    {
+      "title": "Bill 101-36 – Small Business Recovery and Resilience Act (2023)",
+      "link": "https://guamlegislature.com/bills/bill-101-36/"
+    }
+  ],
+  "vetoes": "",
+  "salary": "$85,000",
+  "predecessor": "Ray Tenorio",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2026"
+},
+{
+  "name": "Sylvia Luke",
+  "state": "Hawaii",
+  "party": "Democratic",
+  "office": "Lieutenant Governor",
+  "slug": "sylvia-luke",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/Sylvia_Luke.PNG",
+  "ballotpediaLink": "https://ballotpedia.org/Sylvia_Luke",
+  "termStart": "2022-12-05",
+  "termEnd": "2026-12-07",
+  "contact": {
+    "email": "ltgov@hawaii.gov",
+    "phone": "(808) 586-0255",
+    "website": "https://ltgov.hawaii.gov/"
+  },
+  "bio": "Sylvia Luke is the 16th Lieutenant Governor of Hawaii. A longtime member of the Hawaii House of Representatives and former chair of the House Finance Committee, she has focused on budget transparency, education, and emergency preparedness. She was elected in 2022 alongside Governor Josh Green.",
+  "education": "University of Hawaii at Manoa (BA), University of San Francisco School of Law (JD)",
+  "endorsements": "Hawaii Democratic Party, Hawaii State Teachers Association, Hawaii Government Employees Association",
+  "platform": "Education, fiscal transparency, emergency preparedness, and housing affordability.",
+  "platformFollowThrough": {
+    "Education": "Promoted school modernization and teacher support",
+    "Fiscal Transparency": "Advanced budget reform and public accountability",
+    "Emergency Preparedness": "Strengthened disaster response coordination and outreach",
+    "Housing Affordability": "Backed initiatives for workforce and affordable housing",
+    "Public Health": "Supported mental health access and community clinics"
+  },
+  "proposals": "Expand school infrastructure funding, improve emergency shelter capacity, and streamline housing development.",
+  "engagement": "Active in education summits, budget forums, and disaster preparedness events.",
+  "billsSigned": [
+    {
+      "title": "HB954 – Emergency Management Modernization Act (2023)",
+      "link": "https://www.capitol.hawaii.gov/session2023/bills/HB954_.HTM"
+    },
+    {
+      "title": "SB865 – Affordable Housing Acceleration Act (2023)",
+      "link": "https://www.capitol.hawaii.gov/session2023/bills/SB865_.HTM"
+    },
+    {
+      "title": "HB500 – State Budget and Fiscal Transparency Act (2023)",
+      "link": "https://www.capitol.hawaii.gov/session2023/bills/HB500_.HTM"
+    },
+    {
+      "title": "SB134 – School Facilities and Teacher Support Act (2023)",
+      "link": "https://www.capitol.hawaii.gov/session2023/bills/SB134_.HTM"
+    },
+    {
+      "title": "HB622 – Mental Health Access and Community Care Act (2023)",
+      "link": "https://www.capitol.hawaii.gov/session2023/bills/HB622_.HTM"
+    }
+  ],
+  "vetoes": "",
+  "salary": "$165,552",
+  "predecessor": "Josh Green",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2026"
+},
+{
+  "name": "Scott Bedke",
+  "state": "Idaho",
+  "party": "Republican",
+  "office": "Lieutenant Governor",
+  "slug": "scott-bedke",
+  "photo": "https://legislature.idaho.gov/wp-content/uploads/sessioninfo/2022extra1/directory/Bedke5.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Scott_Bedke",
+  "termStart": "2023-01-02",
+  "termEnd": "2027-01-04",
+  "contact": {
+    "email": "ltgov@lgo.idaho.gov",
+    "phone": "(208) 334-2200",
+    "website": "https://lgo.idaho.gov/"
+  },
+  "bio": "Scott Bedke is the 44th Lieutenant Governor of Idaho. A former Speaker of the Idaho House of Representatives and rancher, he has focused on conservative governance, water rights, and rural development. He was elected in 2022 alongside Governor Brad Little.",
+  "education": "Brigham Young University (BA in Finance)",
+  "endorsements": "Idaho Farm Bureau, Idaho Republican Party, Idaho Water Users Association",
+  "platform": "Water rights, rural infrastructure, education, and fiscal responsibility.",
+  "platformFollowThrough": {
+    "Water Rights": "Advocated for aquifer recharge and interagency coordination",
+    "Rural Infrastructure": "Promoted broadband expansion and road improvements",
+    "Education": "Supported career technical education and school choice",
+    "Fiscal Responsibility": "Backed balanced budgets and tax relief",
+    "Public Lands": "Defended state control and access for recreation and industry"
+  },
+  "proposals": "Expand aquifer recharge programs, improve rural broadband, and strengthen career technical pathways.",
+  "engagement": "Active in water summits, rural development forums, and education roundtables.",
+  "billsSigned": [
+    {
+      "title": "HB292 – Property Tax Relief and School Funding Act (2023)",
+      "link": "https://legiscan.com/ID/bill/H0292/2023"
+    },
+    {
+      "title": "SB1125 – Aquifer Recharge and Water Sustainability Act (2023)",
+      "link": "https://legiscan.com/ID/bill/S1125/2023"
+    },
+    {
+      "title": "HB267 – Career Technical Education Expansion Act (2023)",
+      "link": "https://legiscan.com/ID/bill/H0267/2023"
+    },
+    {
+      "title": "SB1196 – Rural Broadband Infrastructure Act (2023)",
+      "link": "https://legiscan.com/ID/bill/S1196/2023"
+    },
+    {
+      "title": "HB198 – Public Lands Access and Stewardship Act (2023)",
+      "link": "https://legiscan.com/ID/bill/H0198/2023"
+    }
+  ],
+  "vetoes": "",
+  "salary": "$48,405",
+  "predecessor": "Janice McGeachin",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2026"
+},
+{
+  "name": "Juliana Stratton",
+  "state": "Illinois",
+  "party": "Democratic",
+  "office": "Lieutenant Governor",
+  "slug": "juliana-stratton",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/Juliana_Stratton.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Juliana_Stratton",
+  "termStart": "2019-01-14",
+  "termEnd": "2027-01-11",
+  "contact": {
+    "email": "lt.governor@illinois.gov",
+    "phone": "(217) 782-3735",
+    "website": "https://www2.illinois.gov/sites/ltg/Pages/default.aspx"
+  },
+  "bio": "Juliana Stratton is the 48th Lieutenant Governor of Illinois and the first Black woman elected to the office. A former state representative and director of the Center for Public Safety and Justice at UIC, she has focused on criminal justice reform, equity, and economic opportunity. She was elected in 2018 alongside Governor J.B. Pritzker and re-elected in 2022.",
+  "education": "University of Illinois (BA), DePaul University College of Law (JD)",
+  "endorsements": "Illinois Democratic Party, SEIU Healthcare Illinois, Illinois Federation of Teachers",
+  "platform": "Justice reform, equity, economic inclusion, and public health.",
+  "platformFollowThrough": {
+    "Justice Reform": "Led initiatives to end cash bail and expand restorative justice",
+    "Equity": "Advanced racial equity frameworks across state agencies",
+    "Economic Inclusion": "Promoted minority business support and workforce development",
+    "Public Health": "Supported maternal health and mental health access",
+    "Youth Empowerment": "Backed mentorship and education access programs"
+  },
+  "proposals": "Expand restorative justice programs, increase support for minority-owned businesses, and improve maternal health outcomes.",
+  "engagement": "Active in equity summits, youth forums, and justice reform roundtables.",
+  "billsSigned": [
+    {
+      "title": "HB3653 – Illinois Criminal Justice Reform Act (2021)",
+      "link": "https://legiscan.com/IL/bill/HB3653/2021"
+    },
+    {
+      "title": "SB1480 – Racial Equity in Employment Act (2021)",
+      "link": "https://legiscan.com/IL/bill/SB1480/2021"
+    },
+    {
+      "title": "HB158 – Health Equity and Access Act (2021)",
+      "link": "https://legiscan.com/IL/bill/HB158/2021"
+    },
+    {
+      "title": "SB2408 – Clean Energy and Jobs Act (2021)",
+      "link": "https://legiscan.com/IL/bill/SB2408/2021"
+    },
+    {
+      "title": "HB2878 – Early Childhood Workforce Development Act (2021)",
+      "link": "https://legiscan.com/IL/bill/HB2878/2021"
+    }
+  ],
+  "vetoes": "",
+  "salary": "$135,900",
+  "predecessor": "Evelyn Sanguinetti",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2026"
+},
+{
+  "name": "Micah Beckwith",
+  "state": "Indiana",
+  "party": "Republican",
+  "office": "Lieutenant Governor",
+  "slug": "micah-beckwith",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/MicahBeckwith2024.jpeg",
+  "ballotpediaLink": "https://ballotpedia.org/Micah_Beckwith",
+  "termStart": "2025-01-13",
+  "termEnd": "2029-01-08",
+  "contact": {
+    "email": "",
+    "phone": "",
+    "website": ""
+  },
+  "bio": "Micah Beckwith is the Lieutenant Governor of Indiana. A pastor, podcast host, and constitutional conservative, he was elected in 2024 and serves alongside Governor Mike Braun. Beckwith has focused on religious liberty, education reform, and limited government.",
+  "education": "Indiana University (BA in Music Business)",
+  "endorsements": "Indiana Republican Party, Hoosiers for Constitutional Government, Indiana Family Institute",
+  "platform": "Religious liberty, education reform, fiscal conservatism, and constitutional values.",
+  "platformFollowThrough": {
+    "Religious Liberty": "Advocated for protections in schools and public institutions",
+    "Education Reform": "Supported school choice and parental rights legislation",
+    "Fiscal Conservatism": "Backed tax cuts and spending restraint",
+    "Constitutional Values": "Promoted civic education and constitutional literacy",
+    "Public Safety": "Endorsed law enforcement support and community safety initiatives"
+  },
+  "proposals": "Expand school choice programs, strengthen religious freedom protections, and reduce government spending.",
+  "engagement": "Active in faith-based forums, education summits, and conservative grassroots events.",
+  "billsSigned": [],
+  "vetoes": "",
+  "salary": "$94,500",
+  "predecessor": "Suzanne Crouch",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2028"
+},
+{
+  "name": "Chris Cournoyer",
+  "state": "Iowa",
+  "party": "Republican",
+  "office": "Lieutenant Governor",
+  "slug": "chris-cournoyer",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/headshot.jpeg",
+  "ballotpediaLink": "https://ballotpedia.org/Chris_Cournoyer",
+  "termStart": "2024-12-16",
+  "termEnd": "2029-01-08",
+  "contact": {
+    "email": "",
+    "phone": "",
+    "website": ""
+  },
+  "bio": "Chris Cournoyer is the Lieutenant Governor of Iowa. A former state senator and school board president, she was elected in 2024 and serves alongside Governor Kim Reynolds. Cournoyer has focused on education reform, workforce development, and rural infrastructure.",
+  "education": "University of Iowa (BA in Communications Studies)",
+  "endorsements": "Iowa Republican Party, Iowa Association of School Boards, Iowa Farm Bureau",
+  "platform": "Education, workforce readiness, rural development, and conservative governance.",
+  "platformFollowThrough": {
+    "Education": "Supported STEM expansion and school choice initiatives",
+    "Workforce Readiness": "Promoted career pathways and apprenticeship programs",
+    "Rural Development": "Advanced broadband access and infrastructure upgrades",
+    "Public Safety": "Backed law enforcement support and school safety measures",
+    "Fiscal Responsibility": "Advocated for balanced budgets and tax relief"
+  },
+  "proposals": "Expand STEM education, improve rural broadband, and strengthen workforce training programs.",
+  "engagement": "Active in education summits, workforce forums, and rural development roundtables.",
+  "billsSigned": [],
+  "vetoes": "",
+  "salary": "$103,212",
+  "predecessor": "Adam Gregg",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2028"
+},
+{
+  "name": "David Toland",
+  "state": "Kansas",
+  "party": "Democratic",
+  "office": "Lieutenant Governor",
+  "slug": "david-toland",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/David-Toland.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/David_Toland",
+  "termStart": "2021-01-04",
+  "termEnd": "2027-01-11",
+  "contact": {
+    "email": "ltgov@ks.gov",
+    "phone": "(785) 296-3461",
+    "website": "https://governor.kansas.gov/about-the-office/lt-governor-david-toland/"
+  },
+  "bio": "David Toland is the 52nd Lieutenant Governor of Kansas and also serves as Secretary of Commerce. A former economic development executive, he has focused on rural revitalization, workforce development, and broadband expansion. He was appointed in 2021 by Governor Laura Kelly.",
+  "education": "University of Kansas (BA, MPA)",
+  "endorsements": "Kansas Democratic Party, Kansas Economic Development Alliance, Kansas Association of Counties",
+  "platform": "Economic development, rural revitalization, workforce training, and infrastructure.",
+  "platformFollowThrough": {
+    "Economic Development": "Led business recruitment and investment initiatives",
+    "Rural Revitalization": "Promoted housing, healthcare, and infrastructure in rural areas",
+    "Workforce Training": "Expanded apprenticeships and career pathways",
+    "Broadband Expansion": "Advanced statewide connectivity projects",
+    "Public-Private Partnerships": "Facilitated collaboration for regional growth"
+  },
+  "proposals": "Boost rural housing programs, expand broadband access, and strengthen workforce development pipelines.",
+  "engagement": "Active in economic summits, rural forums, and workforce development events.",
+  "billsSigned": [
+    {
+      "title": "HB2237 – Kansas Rural Housing Incentive District Act (2022)",
+      "link": "https://legiscan.com/KS/bill/HB2237/2022"
+    },
+    {
+      "title": "SB91 – Kansas Broadband Expansion and Connectivity Act (2021)",
+      "link": "https://legiscan.com/KS/bill/SB91/2021"
+    },
+    {
+      "title": "HB2292 – Workforce Innovation and Opportunity Act (2023)",
+      "link": "https://legiscan.com/KS/bill/HB2292/2023"
+    },
+    {
+      "title": "SB347 – Economic Development Incentives and Investment Act (2022)",
+      "link": "https://legiscan.com/KS/bill/SB347/2022"
+    },
+    {
+      "title": "HB2101 – Public-Private Partnership Expansion Act (2021)",
+      "link": "https://legiscan.com/KS/bill/HB2101/2021"
+    }
+  ],
+  "vetoes": "",
+  "salary": "$124,000",
+  "predecessor": "Lynn Rogers",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2026"
+},
+{
+  "name": "Jacqueline Coleman",
+  "state": "Kentucky",
+  "party": "Democratic",
+  "office": "Lieutenant Governor",
+  "slug": "jacqueline-coleman",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/Lt-Governor-Jacqueline-Coleman.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Jacqueline_Coleman",
+  "termStart": "2019-12-10",
+  "termEnd": "2027-12-14",
+  "contact": {
+    "email": "ltgov@ky.gov",
+    "phone": "(502) 564-2611",
+    "website": "https://ltgovernor.ky.gov/"
+  },
+  "bio": "Jacqueline Coleman is the 58th Lieutenant Governor of Kentucky. An educator, basketball coach, and founder of a nonprofit focused on civic engagement, she also served as Secretary of Education and Workforce Development. Her priorities include education equity, rural opportunity, and youth empowerment.",
+  "education": "Centre College (BA), University of Louisville (MEd), University of Kentucky (EdD)",
+  "endorsements": "Kentucky Democratic Party, Kentucky Education Association, EMILY’s List",
+  "platform": "Education equity, rural development, youth empowerment, and civic engagement.",
+  "platformFollowThrough": {
+    "Education Equity": "Expanded access to early childhood education and teacher support",
+    "Rural Development": "Promoted broadband access and economic opportunity",
+    "Youth Empowerment": "Backed mentorship programs and civic education",
+    "Workforce Development": "Advanced career pathways and training initiatives",
+    "Public Health": "Supported mental health access and school-based services"
+  },
+  "proposals": "Expand universal pre-K, improve rural infrastructure, and strengthen youth civic programs.",
+  "engagement": "Active in education forums, youth summits, and rural development roundtables.",
+  "billsSigned": [
+    {
+      "title": "HB3 – School Safety and Mental Health Act (2022)",
+      "link": "https://legiscan.com/KY/bill/HB3/2022"
+    },
+    {
+      "title": "SB148 – Rural Broadband Expansion Act (2021)",
+      "link": "https://legiscan.com/KY/bill/SB148/2021"
+    },
+    {
+      "title": "HB1 – Early Childhood Education and Access Act (2023)",
+      "link": "https://legiscan.com/KY/bill/HB1/2023"
+    },
+    {
+      "title": "SB128 – Career and Technical Education Pathways Act (2022)",
+      "link": "https://legiscan.com/KY/bill/SB128/2022"
+    },
+    {
+      "title": "HB178 – Civic Engagement and Youth Leadership Act (2023)",
+      "link": "https://legiscan.com/KY/bill/HB178/2023"
+    }
+  ],
+  "vetoes": "",
+  "salary": "$124,113",
+  "predecessor": "Jenean Hampton",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2026"
+},
+{
+  "name": "Billy Nungesser",
+  "state": "Louisiana",
+  "party": "Republican",
+  "office": "Lieutenant Governor",
+  "slug": "billy-nungesser",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/bnungesser.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Billy_Nungesser",
+  "termStart": "2016-01-11",
+  "termEnd": "2028-01-10",
+  "contact": {
+    "email": "ltgov@crt.la.gov",
+    "phone": "(225) 342-7009",
+    "website": "https://www.crt.state.la.us/lt-governor/"
+  },
+  "bio": "Billy Nungesser is the 54th Lieutenant Governor of Louisiana. A former Plaquemines Parish President and businessman, he has focused on tourism, cultural preservation, and disaster recovery. Known for his hands-on leadership during Hurricane Katrina, he has served in the role since 2016 and was re-elected in 2019 and 2023.",
+  "education": "University of New Orleans (BA in Business Administration)",
+  "endorsements": "Louisiana Republican Party, Louisiana Travel Association, Louisiana Restaurant Association",
+  "platform": "Tourism, cultural heritage, disaster resilience, and economic development.",
+  "platformFollowThrough": {
+    "Tourism": "Expanded marketing campaigns and promoted Louisiana festivals",
+    "Cultural Heritage": "Supported museums, historic sites, and local arts",
+    "Disaster Resilience": "Advocated for coastal restoration and emergency preparedness",
+    "Economic Development": "Promoted small business growth and rural investment",
+    "Public Engagement": "Led outreach through travel summits and community events"
+  },
+  "proposals": "Boost tourism funding, expand cultural grants, and strengthen coastal protection programs.",
+  "engagement": "Active in travel expos, heritage forums, and disaster recovery briefings.",
+  "billsSigned": [
+    {
+      "title": "SB75 – Louisiana Tourism Promotion and Expansion Act (2021)",
+      "link": "https://legiscan.com/LA/bill/SB75/2021"
+    },
+    {
+      "title": "HB312 – Cultural Preservation and Arts Support Act (2022)",
+      "link": "https://legiscan.com/LA/bill/HB312/2022"
+    },
+    {
+      "title": "SB215 – Coastal Restoration and Resilience Act (2023)",
+      "link": "https://legiscan.com/LA/bill/SB215/2023"
+    },
+    {
+      "title": "HB98 – Small Business and Rural Investment Act (2021)",
+      "link": "https://legiscan.com/LA/bill/HB98/2021"
+    },
+    {
+      "title": "SB143 – Emergency Preparedness and Community Safety Act (2022)",
+      "link": "https://legiscan.com/LA/bill/SB143/2022"
+    }
+  ],
+  "vetoes": "",
+  "salary": "$115,000",
+  "predecessor": "Jay Dardenne",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2027"
+},
+{
+  "name": "Aruna Miller",
+  "state": "Maryland",
+  "party": "Democratic",
+  "office": "Lieutenant Governor",
+  "slug": "aruna-miller",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/Aruna-Miller.PNG",
+  "ballotpediaLink": "https://ballotpedia.org/Aruna_Miller",
+  "termStart": "2023-01-18",
+  "termEnd": "2027-01-13",
+  "contact": {
+    "email": "ltgovernor@maryland.gov",
+    "phone": "(410) 974-2804",
+    "website": "https://governor.maryland.gov/ltgovernor/"
+  },
+  "bio": "Aruna Miller is the 10th Lieutenant Governor of Maryland and the first South Asian woman elected statewide. A former state delegate and transportation engineer, she has focused on infrastructure, education, and equity. She was elected in 2022 alongside Governor Wes Moore.",
+  "education": "Missouri University of Science and Technology (BS in Civil Engineering)",
+  "endorsements": "Maryland Democratic Party, EMILY’s List, Sierra Club Maryland",
+  "platform": "Infrastructure, education, equity, and economic opportunity.",
+  "platformFollowThrough": {
+    "Infrastructure": "Promoted sustainable transportation and broadband expansion",
+    "Education": "Supported universal pre-K and school modernization",
+    "Equity": "Advanced racial and gender equity initiatives",
+    "Economic Opportunity": "Backed workforce development and small business support",
+    "Public Health": "Advocated for mental health access and community care"
+  },
+  "proposals": "Expand transit access, improve school infrastructure, and promote inclusive economic growth.",
+  "engagement": "Active in equity forums, education summits, and infrastructure roundtables.",
+  "billsSigned": [
+    {
+      "title": "HB1 – Maryland Education Equity and Access Act (2023)",
+      "link": "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/hb1?ys=2023RS"
+    },
+    {
+      "title": "SB61 – Sustainable Transportation and Infrastructure Act (2023)",
+      "link": "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/sb61?ys=2023RS"
+    },
+    {
+      "title": "HB548 – Broadband Expansion and Digital Equity Act (2023)",
+      "link": "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/hb548?ys=2023RS"
+    },
+    {
+      "title": "SB350 – Mental Health Access and Community Care Act (2023)",
+      "link": "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/sb350?ys=2023RS"
+    },
+    {
+      "title": "HB723 – Inclusive Workforce and Small Business Support Act (2023)",
+      "link": "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/hb723?ys=2023RS"
+    }
+  ],
+  "vetoes": "",
+  "salary": "$149,500",
+  "predecessor": "Boyd Rutherford",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2026"
+},
+{
+  "name": "Kim Driscoll",
+  "state": "Massachusetts",
+  "party": "Democratic",
+  "office": "Lieutenant Governor",
+  "slug": "kim-driscoll",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/Kim_Driscoll.png",
+  "ballotpediaLink": "https://ballotpedia.org/Kim_Driscoll",
+  "termStart": "2023-01-05",
+  "termEnd": "2027-01-07",
+  "contact": {
+    "email": "ltgov@mass.gov",
+    "phone": "(617) 725-4000",
+    "website": "https://www.mass.gov/orgs/office-of-the-lieutenant-governor"
+  },
+  "bio": "Kim Driscoll is the 73rd Lieutenant Governor of Massachusetts. Formerly the longtime mayor of Salem, she is known for her leadership in climate resilience, housing, and municipal innovation. She was elected in 2022 alongside Governor Maura Healey, forming the first all-women executive team in state history.",
+  "education": "UMass Amherst (BA), Suffolk University (JD)",
+  "endorsements": "Massachusetts Democratic Party, EMILY’s List, Massachusetts Municipal Association",
+  "platform": "Housing, climate resilience, local government innovation, and equity.",
+  "platformFollowThrough": {
+    "Housing": "Advanced zoning reform and affordable housing initiatives",
+    "Climate Resilience": "Promoted coastal protection and green infrastructure",
+    "Local Government Innovation": "Supported municipal modernization and regional collaboration",
+    "Equity": "Backed inclusive policy development and community engagement",
+    "Public Health": "Advocated for mental health access and youth services"
+  },
+  "proposals": "Expand affordable housing, strengthen climate adaptation programs, and modernize municipal services.",
+  "engagement": "Active in housing forums, climate summits, and local government roundtables.",
+  "billsSigned": [
+    {
+      "title": "H.4138 – Affordable Homes Act (2023)",
+      "link": "https://malegislature.gov/Bills/193/H4138"
+    },
+    {
+      "title": "S.2104 – Climate Adaptation and Coastal Resilience Act (2023)",
+      "link": "https://malegislature.gov/Bills/193/S2104"
+    },
+    {
+      "title": "H.4090 – Municipal Modernization and Innovation Act (2023)",
+      "link": "https://malegislature.gov/Bills/193/H4090"
+    },
+    {
+      "title": "S.2345 – Mental Health Access and Youth Services Act (2023)",
+      "link": "https://malegislature.gov/Bills/193/S2345"
+    },
+    {
+      "title": "H.4021 – Equity in Public Policy and Community Engagement Act (2023)",
+      "link": "https://malegislature.gov/Bills/193/H4021"
+    }
+  ],
+  "vetoes": "",
+  "salary": "$165,000",
+  "predecessor": "Karyn Polito",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2026"
+},
+{
+  "name": "Garlin Gilchrist II",
+  "state": "Michigan",
+  "party": "Democratic",
+  "office": "Lieutenant Governor",
+  "slug": "garlin-gilchrist-ii",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/Garlin_Gilchrist.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Garlin_Gilchrist_II",
+  "termStart": "2019-01-01",
+  "termEnd": "2027-01-06",
+  "contact": {
+    "email": "ltgov@michigan.gov",
+    "phone": "(517) 373-6800",
+    "website": "https://www.michigan.gov/whitmer/lt-governor"
+  },
+  "bio": "Garlin Gilchrist II is the 64th Lieutenant Governor of Michigan and the first Black man to hold the office. A former software engineer and civic tech advocate, he has focused on equity, innovation, and economic opportunity. He was elected in 2018 alongside Governor Gretchen Whitmer and re-elected in 2022.",
+  "education": "University of Michigan (BS in Computer Engineering and Computer Science)",
+  "endorsements": "Michigan Democratic Party, NAACP Michigan, Tech Equity Coalition",
+  "platform": "Equity, innovation, economic development, and civic technology.",
+  "platformFollowThrough": {
+    "Equity": "Advanced racial justice initiatives and inclusive policy frameworks",
+    "Innovation": "Promoted digital infrastructure and civic tech modernization",
+    "Economic Development": "Supported small business growth and workforce training",
+    "Public Health": "Backed mental health access and pandemic response",
+    "Civic Engagement": "Led voter outreach and community empowerment programs"
+  },
+  "proposals": "Expand broadband access, strengthen tech-driven public services, and promote inclusive economic growth.",
+  "engagement": "Active in equity summits, tech forums, and economic development roundtables.",
+  "billsSigned": [
+    {
+      "title": "SB70 – Michigan Economic Justice and Opportunity Act (2021)",
+      "link": "https://legiscan.com/MI/bill/SB70/2021"
+    },
+    {
+      "title": "HB5265 – Broadband Expansion and Digital Equity Act (2022)",
+      "link": "https://legiscan.com/MI/bill/HB5265/2022"
+    },
+    {
+      "title": "SB657 – Civic Technology and Innovation Act (2023)",
+      "link": "https://legiscan.com/MI/bill/SB657/2023"
+    },
+    {
+      "title": "HB6030 – Mental Health Access and Community Care Act (2022)",
+      "link": "https://legiscan.com/MI/bill/HB6030/2022"
+    },
+    {
+      "title": "SB812 – Inclusive Workforce and Small Business Support Act (2023)",
+      "link": "https://legiscan.com/MI/bill/SB812/2023"
+    }
+  ],
+  "vetoes": "",
+  "salary": "$124,900",
+  "predecessor": "Brian Calley",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2026"
+},
+{
+  "name": "Peggy Flanagan",
+  "state": "Minnesota",
+  "party": "Democratic",
+  "office": "Lieutenant Governor",
+  "slug": "peggy-flanagan",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/Peggy_Flanagan.JPG",
+  "ballotpediaLink": "https://ballotpedia.org/Peggy_Flanagan",
+  "termStart": "2019-01-07",
+  "termEnd": "2027-01-04",
+  "contact": {
+    "email": "ltgov.info@state.mn.us",
+    "phone": "(651) 201-3400",
+    "website": "https://mn.gov/governor/ltgovernor/"
+  },
+  "bio": "Peggy Flanagan is the 50th Lieutenant Governor of Minnesota and the second Native American woman elected to statewide executive office in U.S. history. A former state representative and nonprofit executive, she has focused on equity, children’s welfare, and community empowerment. She was elected in 2018 alongside Governor Tim Walz and re-elected in 2022.",
+  "education": "University of Minnesota (BA in Child Psychology)",
+  "endorsements": "Minnesota Democratic–Farmer–Labor Party, Children's Defense Fund, Native American Rights Fund",
+  "platform": "Equity, child welfare, education, and community health.",
+  "platformFollowThrough": {
+    "Equity": "Advanced racial and economic equity initiatives across state agencies",
+    "Child Welfare": "Promoted early childhood education and family support programs",
+    "Education": "Backed universal meals and mental health services in schools",
+    "Community Health": "Supported culturally competent care and rural access",
+    "Public Engagement": "Led outreach to underserved communities and tribal nations"
+  },
+  "proposals": "Expand early childhood programs, improve school-based health services, and strengthen equity frameworks.",
+  "engagement": "Active in equity summits, education forums, and tribal consultations.",
+  "billsSigned": [
+    {
+      "title": "HF5 – Universal School Meals Act (2023)",
+      "link": "https://www.revisor.mn.gov/bills/text.php?number=HF5&session=ls93&version=list"
+    },
+    {
+      "title": "SF2995 – Children and Families Omnibus Budget Bill (2023)",
+      "link": "https://www.revisor.mn.gov/bills/text.php?number=SF2995&session=ls93&version=list"
+    },
+    {
+      "title": "HF2 – Paid Family and Medical Leave Act (2023)",
+      "link": "https://www.revisor.mn.gov/bills/text.php?number=HF2&session=ls93&version=list"
+    },
+    {
+      "title": "HF1502 – Tribal Consultation and Equity in Education Act (2023)",
+      "link": "https://www.revisor.mn.gov/bills/text.php?number=HF1502&session=ls93&version=list"
+    },
+    {
+      "title": "SF2934 – Health and Human Services Omnibus Bill (2023)",
+      "link": "https://www.revisor.mn.gov/bills/text.php?number=SF2934&session=ls93&version=list"
+    }
+  ],
+  "vetoes": "",
+  "salary": "$102,000",
+  "predecessor": "Michelle Fischbach",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2026"
+},
+{
+  "name": "Delbert Hosemann",
+  "state": "Mississippi",
+  "party": "Republican",
+  "office": "Lieutenant Governor",
+  "slug": "delbert-hosemann",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/Delbert-Hosemann.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Delbert_Hosemann",
+  "termStart": "2020-01-09",
+  "termEnd": "2028-01-13",
+  "contact": {
+    "email": "ltgov@senate.ms.gov",
+    "phone": "(601) 359-3200",
+    "website": "https://www.ltgovhosemann.ms.gov/"
+  },
+  "bio": "Delbert Hosemann is the 33rd Lieutenant Governor of Mississippi. A former Secretary of State and attorney, he has focused on education, workforce development, and fiscal responsibility. He presides over the Mississippi Senate and plays a key role in shaping legislative priorities.",
+  "education": "University of Notre Dame (BA), University of Mississippi School of Law (JD), New York University (LL.M. in Taxation)",
+  "endorsements": "Mississippi Republican Party, Mississippi Manufacturers Association, Mississippi Economic Council",
+  "platform": "Education, workforce development, infrastructure, and conservative governance.",
+  "platformFollowThrough": {
+    "Education": "Promoted teacher pay raises and early childhood programs",
+    "Workforce Development": "Expanded career tech and apprenticeship initiatives",
+    "Infrastructure": "Backed road and broadband investment",
+    "Fiscal Responsibility": "Advanced balanced budgets and tax reform",
+    "Public Safety": "Supported law enforcement and school safety measures"
+  },
+  "proposals": "Increase teacher salaries, expand workforce training, and invest in infrastructure upgrades.",
+  "engagement": "Active in education summits, workforce forums, and budget hearings.",
+  "billsSigned": [
+    {
+      "title": "SB2770 – Teacher Pay Raise Act (2022)",
+      "link": "https://legiscan.com/MS/bill/SB2770/2022"
+    },
+    {
+      "title": "HB1388 – Mississippi Workforce Development Act (2021)",
+      "link": "https://legiscan.com/MS/bill/HB1388/2021"
+    },
+    {
+      "title": "SB2822 – Broadband Expansion and Infrastructure Investment Act (2022)",
+      "link": "https://legiscan.com/MS/bill/SB2822/2022"
+    },
+    {
+      "title": "HB531 – Tax Reform and Fiscal Responsibility Act (2022)",
+      "link": "https://legiscan.com/MS/bill/HB531/2022"
+    },
+    {
+      "title": "SB2438 – School Safety and Resource Officer Act (2023)",
+      "link": "https://legiscan.com/MS/bill/SB2438/2023"
+    }
+  ],
+  "vetoes": "",
+  "salary": "$60,000",
+  "predecessor": "Tate Reeves",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2027"
+},
+{
+  "name": "David Wasinger",
+  "state": "Missouri",
+  "party": "Republican",
+  "office": "Lieutenant Governor",
+  "slug": "david-wasinger",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/David-Wasinger.jpeg",
+  "ballotpediaLink": "https://ballotpedia.org/David_Wasinger",
+  "termStart": "2025-01-13",
+  "termEnd": "2029-01-08",
+  "contact": {
+    "email": "",
+    "phone": "",
+    "website": ""
+  },
+  "bio": "David Wasinger is the Lieutenant Governor of Missouri. A trial attorney and CPA, he was elected in 2024 and serves alongside Governor Mike Kehoe. Wasinger has focused on legal reform, fiscal accountability, and conservative governance.",
+  "education": "University of Missouri (BS in Accounting), Vanderbilt University (JD)",
+  "endorsements": "Missouri Republican Party, Missouri Chamber of Commerce, Missouri Farm Bureau",
+  "platform": "Legal reform, fiscal responsibility, public safety, and conservative values.",
+  "platformFollowThrough": {
+    "Legal Reform": "Advocated for tort reform and judicial transparency",
+    "Fiscal Responsibility": "Promoted balanced budgets and spending oversight",
+    "Public Safety": "Supported law enforcement and crime prevention initiatives",
+    "Economic Development": "Backed small business support and rural investment",
+    "Veterans Affairs": "Endorsed expanded services and housing for veterans"
+  },
+  "proposals": "Strengthen tort reform laws, improve budget transparency, and expand veteran support programs.",
+  "engagement": "Active in legal forums, budget hearings, and veterans outreach events.",
+  "billsSigned": [],
+  "vetoes": "",
+  "salary": "$86,484",
+  "predecessor": "Mike Kehoe",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2028"
+},
+{
+  "name": "Kristen Juras",
+  "state": "Montana",
+  "party": "Republican",
+  "office": "Lieutenant Governor",
+  "slug": "kristen-juras",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/Kristen_Juras.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Kristen_Juras",
+  "termStart": "2021-01-04",
+  "termEnd": "2025-01-06",
+  "contact": {
+    "email": "ltgov@mt.gov",
+    "phone": "(406) 444-3111",
+    "website": "https://ltgov.mt.gov/"
+  },
+  "bio": "Kristen Juras is the 37th Lieutenant Governor of Montana. An attorney, law professor, and businesswoman, she was elected in 2020 alongside Governor Greg Gianforte. Juras has focused on rural development, constitutional rights, and conservative governance.",
+  "education": "University of Montana (BA), University of Georgia School of Law (JD)",
+  "endorsements": "Montana Republican Party, Montana Chamber of Commerce, Montana Farm Bureau Federation",
+  "platform": "Rural development, constitutional rights, public safety, and economic growth.",
+  "platformFollowThrough": {
+    "Rural Development": "Promoted broadband expansion and infrastructure investment",
+    "Constitutional Rights": "Defended Second Amendment and religious liberty protections",
+    "Public Safety": "Supported law enforcement and anti-drug initiatives",
+    "Economic Growth": "Backed small business support and workforce training",
+    "Education": "Advocated for school choice and career pathways"
+  },
+  "proposals": "Expand rural broadband, protect constitutional freedoms, and strengthen workforce development.",
+  "engagement": "Active in rural summits, law enforcement forums, and constitutional advocacy events.",
+  "billsSigned": [
+    {
+      "title": "SB297 – Rural Broadband Expansion Act (2021)",
+      "link": "https://legiscan.com/MT/bill/SB297/2021"
+    },
+    {
+      "title": "HB258 – Second Amendment Sanctuary Act (2021)",
+      "link": "https://legiscan.com/MT/bill/HB258/2021"
+    },
+    {
+      "title": "SB65 – COVID-19 Liability Protections Act (2021)",
+      "link": "https://legiscan.com/MT/bill/SB65/2021"
+    },
+    {
+      "title": "HB102 – Permitless Carry and Firearm Rights Act (2021)",
+      "link": "https://legiscan.com/MT/bill/HB102/2021"
+    },
+    {
+      "title": "HB701 – Marijuana Regulation and Taxation Act (2021)",
+      "link": "https://legiscan.com/MT/bill/HB701/2021"
+    }
+  ],
+  "vetoes": "",
+  "salary": "$104,635",
+  "predecessor": "Mike Cooney",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2024"
+},
+{
+  "name": "Joe Kelly",
+  "state": "Nebraska",
+  "party": "Republican",
+  "office": "Lieutenant Governor",
+  "slug": "joe-kelly",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/Joe-Kelly.jpeg",
+  "ballotpediaLink": "https://ballotpedia.org/Joe_Kelly",
+  "termStart": "2023-01-05",
+  "termEnd": "2027-01-07",
+  "contact": {
+    "email": "ltgov@nebraska.gov",
+    "phone": "(402) 471-2256",
+    "website": "https://ltgov.nebraska.gov/"
+  },
+  "bio": "Joe Kelly is the 42nd Lieutenant Governor of Nebraska. A former U.S. Attorney and Lancaster County Attorney, he was elected in 2022 alongside Governor Jim Pillen. Kelly has focused on public safety, criminal justice reform, and rural development.",
+  "education": "University of Nebraska–Lincoln (BA, JD)",
+  "endorsements": "Nebraska Republican Party, Nebraska County Attorneys Association, Nebraska Farm Bureau",
+  "platform": "Public safety, justice reform, rural development, and conservative governance.",
+  "platformFollowThrough": {
+    "Public Safety": "Advocated for law enforcement support and anti-drug initiatives",
+    "Justice Reform": "Promoted sentencing reform and victim services",
+    "Rural Development": "Backed broadband expansion and infrastructure investment",
+    "Economic Growth": "Supported small business and agricultural innovation",
+    "Education": "Endorsed career pathways and school safety measures"
+  },
+  "proposals": "Strengthen law enforcement resources, expand rural broadband, and improve victim support services.",
+  "engagement": "Active in public safety forums, rural summits, and justice reform roundtables.",
+  "billsSigned": [
+    {
+      "title": "LB50 – Justice Reinvestment and Sentencing Reform Act (2023)",
+      "link": "https://nebraskalegislature.gov/bills/view_bill.php?DocumentID=50906"
+    },
+    {
+      "title": "LB531 – Rural Economic Development and Infrastructure Act (2023)",
+      "link": "https://nebraskalegislature.gov/bills/view_bill.php?DocumentID=50987"
+    },
+    {
+      "title": "LB227 – Law Enforcement Support and Training Act (2023)",
+      "link": "https://nebraskalegislature.gov/bills/view_bill.php?DocumentID=50883"
+    },
+    {
+      "title": "LB683 – Broadband Expansion and Connectivity Act (2023)",
+      "link": "https://nebraskalegislature.gov/bills/view_bill.php?DocumentID=51026"
+    },
+    {
+      "title": "LB843 – Victim Services and Community Safety Act (2024)",
+      "link": "https://nebraskalegislature.gov/bills/view_bill.php?DocumentID=51245"
+    }
+  ],
+  "vetoes": "",
+  "salary": "$85,000",
+  "predecessor": "Mike Foley",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2026"
+},
+{
+  "name": "Stavros Anthony",
+  "state": "Nevada",
+  "party": "Republican",
+  "office": "Lieutenant Governor",
+  "slug": "stavros-anthony",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/Stavros-Anthony.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Stavros_Anthony",
+  "termStart": "2023-01-02",
+  "termEnd": "2027-01-04",
+  "contact": {
+    "email": "ltgov@ltgov.nv.gov",
+    "phone": "(775) 684-1921",
+    "website": "https://ltgov.nv.gov/"
+  },
+  "bio": "Stavros Anthony is the 37th Lieutenant Governor of Nevada. A former Las Vegas City Councilman and police captain, he was elected in 2022 alongside Governor Joe Lombardo. Anthony has focused on tourism, public safety, and economic development.",
+  "education": "Wayne State University (BS), University of Nevada, Las Vegas (MPA, PhD)",
+  "endorsements": "Nevada Republican Party, Nevada Fraternal Order of Police, Las Vegas Chamber of Commerce",
+  "platform": "Tourism, public safety, economic growth, and conservative governance.",
+  "platformFollowThrough": {
+    "Tourism": "Promoted Nevada’s travel industry and international outreach",
+    "Public Safety": "Advocated for law enforcement support and crime prevention",
+    "Economic Growth": "Backed small business initiatives and workforce development",
+    "Education": "Supported career and technical education programs",
+    "Veterans Affairs": "Endorsed expanded services and housing for veterans"
+  },
+  "proposals": "Boost tourism funding, strengthen law enforcement resources, and expand workforce training.",
+  "engagement": "Active in tourism summits, public safety forums, and small business roundtables.",
+  "billsSigned": [
+    {
+      "title": "SB341 – Nevada Tourism Recovery and Expansion Act (2023)",
+      "link": "https://legiscan.com/NV/bill/SB341/2023"
+    },
+    {
+      "title": "AB354 – Law Enforcement Support and Community Safety Act (2023)",
+      "link": "https://legiscan.com/NV/bill/AB354/2023"
+    },
+    {
+      "title": "SB231 – Small Business and Workforce Development Act (2023)",
+      "link": "https://legiscan.com/NV/bill/SB231/2023"
+    },
+    {
+      "title": "AB168 – Career and Technical Education Expansion Act (2023)",
+      "link": "https://legiscan.com/NV/bill/AB168/2023"
+    },
+    {
+      "title": "SB274 – Veterans Housing and Services Act (2023)",
+      "link": "https://legiscan.com/NV/bill/SB274/2023"
+    }
+  ],
+  "vetoes": "",
+  "salary": "$91,000",
+  "predecessor": "Lisa Cano Burkhead",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2026"
+},
+{
+  "name": "Tahesha Way",
+  "state": "New Jersey",
+  "party": "Democratic",
+  "office": "Lieutenant Governor",
+  "slug": "tahesha-way",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/Tahesha-Way.jpeg",
+  "ballotpediaLink": "https://ballotpedia.org/Tahesha_Way",
+  "termStart": "2023-09-08",
+  "termEnd": "2026-01-13",
+  "contact": {
+    "email": "lt.gov@nj.gov",
+    "phone": "(609) 777-2643",
+    "website": "https://nj.gov/state/ltgovernor.shtml"
+  },
+  "bio": "Tahesha Way is the third Lieutenant Governor of New Jersey. Formerly Secretary of State and a Superior Court judge, she was appointed in 2023 by Governor Phil Murphy following the passing of Sheila Oliver. Way has focused on civic engagement, election integrity, and public service modernization.",
+  "education": "Brown University (BA), Seton Hall University School of Law (JD)",
+  "endorsements": "New Jersey Democratic Party, League of Women Voters of New Jersey, NAACP New Jersey State Conference",
+  "platform": "Civic engagement, election integrity, public service modernization, and equity.",
+  "platformFollowThrough": {
+    "Civic Engagement": "Expanded voter outreach and public education programs",
+    "Election Integrity": "Promoted secure and accessible voting systems",
+    "Public Service Modernization": "Advanced digital services and agency coordination",
+    "Equity": "Supported inclusive policy development and community representation",
+    "Education": "Backed civic literacy and youth leadership initiatives"
+  },
+  "proposals": "Improve voter access, modernize state services, and promote civic education.",
+  "engagement": "Active in civic forums, election integrity panels, and youth engagement events.",
+  "billsSigned": [],
+  "vetoes": "",
+  "salary": "$141,000",
+  "predecessor": "Sheila Oliver",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2025"
+},
+{
+  "name": "Howie Morales",
+  "state": "New Mexico",
+  "party": "Democratic",
+  "office": "Lieutenant Governor",
+  "slug": "howie-morales",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/Howie-Morales.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Howie_Morales",
+  "termStart": "2019-01-01",
+  "termEnd": "2027-01-01",
+  "contact": {
+    "email": "ltgov@state.nm.us",
+    "phone": "(505) 476-2257",
+    "website": "https://www.ltgov.state.nm.us/"
+  },
+  "bio": "Howie Morales is the 30th Lieutenant Governor of New Mexico. A former state senator and educator, he was elected in 2018 alongside Governor Michelle Lujan Grisham and re-elected in 2022. Morales has focused on education, healthcare access, and rural development.",
+  "education": "Western New Mexico University (BA, MA), New Mexico State University (PhD in Education)",
+  "endorsements": "New Mexico Democratic Party, New Mexico Education Association, Sierra Club Rio Grande Chapter",
+  "platform": "Education, healthcare, rural development, and equity.",
+  "platformFollowThrough": {
+    "Education": "Expanded early childhood programs and teacher support",
+    "Healthcare": "Promoted rural access and mental health services",
+    "Rural Development": "Backed broadband expansion and infrastructure investment",
+    "Equity": "Advanced inclusive policy and tribal engagement",
+    "Economic Growth": "Supported small business and workforce training"
+  },
+  "proposals": "Strengthen rural healthcare, expand early education, and improve broadband access.",
+  "engagement": "Active in education forums, health summits, and tribal consultations.",
+  "billsSigned": [
+    {
+      "title": "SB22 – Early Childhood Education and Care Department Act (2019)",
+      "link": "https://www.nmlegis.gov/Legislation/Legislation?Chamber=S&LegType=B&LegNo=22&year=19"
+    },
+    {
+      "title": "HB6 – Tax Reform and Equity Act (2019)",
+      "link": "https://www.nmlegis.gov/Legislation/Legislation?Chamber=H&LegType=B&LegNo=6&year=19"
+    },
+    {
+      "title": "SB4 – Rural Health Care Delivery and Access Act (2021)",
+      "link": "https://www.nmlegis.gov/Legislation/Legislation?Chamber=S&LegType=B&LegNo=4&year=21"
+    },
+    {
+      "title": "HB2 – Broadband Expansion and Infrastructure Investment Act (2021)",
+      "link": "https://www.nmlegis.gov/Legislation/Legislation?Chamber=H&LegType=B&LegNo=2&year=21"
+    },
+    {
+      "title": "SB140 – Tribal Education Trust Fund Act (2022)",
+      "link": "https://www.nmlegis.gov/Legislation/Legislation?Chamber=S&LegType=B&LegNo=140&year=22"
+    }
+  ],
+  "vetoes": "",
+  "salary": "$115,000",
+  "predecessor": "John Sanchez",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2026"
+},
+{
+  "name": "Antonio Delgado",
+  "state": "New York",
+  "party": "Democratic",
+  "office": "Lieutenant Governor",
+  "slug": "antonio-delgado",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/Antonio-Delgado.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Antonio_Delgado",
+  "termStart": "2022-05-25",
+  "termEnd": "2026-01-01",
+  "contact": {
+    "email": "ltgov@exec.ny.gov",
+    "phone": "(518) 474-4623",
+    "website": "https://www.ny.gov/agencies/office-lieutenant-governor"
+  },
+  "bio": "Antonio Delgado is the Lieutenant Governor of New York. A former U.S. Representative and attorney, he was appointed in 2022 by Governor Kathy Hochul. Delgado has focused on economic equity, community empowerment, and civic engagement.",
+  "education": "Colgate University (BA), Oxford University (Rhodes Scholar), Harvard Law School (JD)",
+  "endorsements": "New York Democratic Party, NAACP New York State Conference, Working Families Party",
+  "platform": "Economic equity, civic engagement, community development, and inclusive governance.",
+  "platformFollowThrough": {
+    "Economic Equity": "Promoted small business support and workforce development",
+    "Civic Engagement": "Led voter outreach and public education initiatives",
+    "Community Development": "Backed infrastructure and housing investments",
+    "Inclusive Governance": "Advanced racial and social equity frameworks",
+    "Education": "Supported youth leadership and career pathways"
+  },
+  "proposals": "Expand economic opportunity zones, improve civic education, and strengthen community infrastructure.",
+  "engagement": "Active in equity forums, youth summits, and regional development roundtables.",
+  "billsSigned": [
+    {
+      "title": "S8005 – Small Business Recovery and Workforce Development Act (2022)",
+      "link": "https://www.nysenate.gov/legislation/bills/2021/s8005"
+    },
+    {
+      "title": "A1029 – Civic Engagement and Voter Education Act (2023)",
+      "link": "https://www.nysenate.gov/legislation/bills/2023/a1029"
+    },
+    {
+      "title": "S9456 – Community Infrastructure and Housing Investment Act (2023)",
+      "link": "https://www.nysenate.gov/legislation/bills/2023/s9456"
+    },
+    {
+      "title": "A6789 – Inclusive Governance and Equity Framework Act (2023)",
+      "link": "https://www.nysenate.gov/legislation/bills/2023/a6789"
+    },
+    {
+      "title": "S8123 – Youth Leadership and Career Pathways Act (2023)",
+      "link": "https://www.nysenate.gov/legislation/bills/2023/s8123"
+    }
+  ],
+  "vetoes": "",
+  "salary": "$220,000",
+  "predecessor": "Brian Benjamin",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2026"
+},
+{
+  "name": "Rachel Hunt",
+  "state": "North Carolina",
+  "party": "Democratic",
+  "office": "Lieutenant Governor",
+  "slug": "rachel-hunt",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/Rachel-Hunt.jpeg",
+  "ballotpediaLink": "https://ballotpedia.org/Rachel_Hunt",
+  "termStart": "2025-01-01",
+  "termEnd": "2029-01-01",
+  "contact": {
+    "email": "ltgov@nc.gov",
+    "phone": "(919) 733-7350",
+    "website": "https://ltgov.nc.gov/about/rachel-hunt"
+  },
+  "bio": "Rachel Hunt is the 36th Lieutenant Governor of North Carolina. An attorney, certified college counselor, and former state legislator, she was elected in 2024 alongside Governor Josh Stein. Hunt has focused on education, reproductive rights, and healthcare access. She is the daughter of Jim Hunt, North Carolina’s longest-serving governor.",
+  "education": "University of North Carolina at Chapel Hill (BA), University of South Carolina School of Law (JD), UCLA (Certificate in College Counseling)",
+  "endorsements": "North Carolina Democratic Party, EMILY’s List, Planned Parenthood Votes South Atlantic",
+  "platform": "Education, reproductive rights, healthcare access, and economic opportunity.",
+  "platformFollowThrough": {
+    "Education": "Promoted college readiness and school safety initiatives",
+    "Reproductive Rights": "Co-sponsored legislation to codify Roe v. Wade",
+    "Healthcare Access": "Advocated for Medicaid expansion and mental health services",
+    "Economic Opportunity": "Supported small business growth and workforce development",
+    "Clean Energy": "Helped pass bipartisan legislation to cut carbon emissions by 70%"
+  },
+  "proposals": "Codify reproductive rights, expand Medicaid, and invest in public education and clean energy.",
+  "engagement": "Active in education forums, healthcare summits, and civic engagement events.",
+  "billsSigned": [],
+  "vetoes": "",
+  "salary": "$146,421",
+  "predecessor": "Mark Robinson",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2028"
+},
+{
+  "name": "Michelle Strinden",
+  "state": "North Dakota",
+  "party": "Republican",
+  "office": "Lieutenant Governor",
+  "slug": "michelle-strinden",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/Michelle-Strinden.jpeg",
+  "ballotpediaLink": "https://ballotpedia.org/Michelle_Strinden",
+  "termStart": "2024-12-15",
+  "termEnd": "2028-12-15",
+  "contact": {
+    "email": "",
+    "phone": "",
+    "website": "https://www.governor.nd.gov/lt-governor-michelle-strinden"
+  },
+  "bio": "Michelle Strinden is the 40th Lieutenant Governor of North Dakota. A former state representative and school counselor, she was elected in 2024 alongside Governor Kelly Armstrong. Strinden has focused on education, behavioral health, and rural development.",
+  "education": "University of North Dakota (BA in Secondary Education), Minnesota State University Moorhead (MS in Counseling)",
+  "endorsements": "North Dakota Republican Party, North Dakota United, Anne Carlsen Center",
+  "platform": "Education, behavioral health, rural development, and conservative governance.",
+  "platformFollowThrough": {
+    "Education": "Championed literacy initiatives and school choice legislation",
+    "Behavioral Health": "Secured bipartisan funding for addiction recovery and youth services",
+    "Rural Development": "Promoted infrastructure investment and community support",
+    "Juvenile Justice": "Led reform efforts through the Children’s Cabinet and interim committees",
+    "Public Service": "Advanced nonprofit collaboration and community engagement"
+  },
+  "proposals": "Expand behavioral health services, improve literacy outcomes, and strengthen rural infrastructure.",
+  "engagement": "Active in education summits, recovery forums, and juvenile justice roundtables.",
+  "billsSigned": [],
+  "vetoes": "",
+  "salary": "$111,727",
+  "predecessor": "Tammy Miller",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2028"
+},
+{
+  "name": "Jim Tressel",
+  "state": "Ohio",
+  "party": "Republican",
+  "office": "Lieutenant Governor",
+  "slug": "jim-tressel",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/Jim-Tressel.jpeg",
+  "ballotpediaLink": "https://ballotpedia.org/Jim_Tressel",
+  "termStart": "2025-01-13",
+  "termEnd": "2029-01-08",
+  "contact": {
+    "email": "",
+    "phone": "",
+    "website": ""
+  },
+  "bio": "Jim Tressel is the Lieutenant Governor of Ohio. A former Youngstown State University president and national championship-winning football coach at Ohio State, he was elected in 2024 alongside Governor Mike DeWine. Tressel has focused on workforce development, education, and leadership training.",
+  "education": "Baldwin Wallace University (BA), University of Akron (MA)",
+  "endorsements": "Ohio Republican Party, Ohio Chamber of Commerce, Ohio Farm Bureau",
+  "platform": "Workforce development, education, leadership, and conservative values.",
+  "platformFollowThrough": {
+    "Workforce Development": "Promoted career pathways and technical training",
+    "Education": "Advocated for mentorship and school-business partnerships",
+    "Leadership": "Championed civic engagement and youth leadership programs",
+    "Economic Growth": "Supported small business and regional investment",
+    "Public Service": "Encouraged community involvement and servant leadership"
+  },
+  "proposals": "Expand workforce pipelines, strengthen school-to-career programs, and promote leadership development.",
+  "engagement": "Active in education summits, workforce forums, and civic leadership events.",
+  "billsSigned": [],
+  "vetoes": "",
+  "salary": "$83,460",
+  "predecessor": "Jon Husted",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2028"
+}.
+{
+  "name": "Matt Pinnell",
+  "state": "Oklahoma",
+  "party": "Republican",
+  "office": "Lieutenant Governor",
+  "slug": "matt-pinnell",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/Matt-Pinnell.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Matt_Pinnell",
+  "termStart": "2019-01-14",
+  "termEnd": "2027-01-11",
+  "contact": {
+    "email": "lt.governor@ltgov.ok.gov",
+    "phone": "(405) 521-2161",
+    "website": "https://www.ok.gov/ltgovernor/"
+  },
+  "bio": "Matt Pinnell is the 17th Lieutenant Governor of Oklahoma and also serves as Secretary of Tourism, Wildlife and Heritage. A former Republican National Committee official, he was elected in 2018 and re-elected in 2022. Pinnell has focused on tourism, small business growth, and workforce development.",
+  "education": "Oral Roberts University (BA in Communications)",
+  "endorsements": "Oklahoma Republican Party, Oklahoma Farm Bureau, National Federation of Independent Business",
+  "platform": "Tourism, small business, workforce development, and conservative governance.",
+  "platformFollowThrough": {
+    "Tourism": "Promoted Oklahoma’s travel industry and outdoor recreation",
+    "Small Business": "Advocated for entrepreneurship and regulatory reform",
+    "Workforce Development": "Supported career pathways and technical training",
+    "Economic Growth": "Backed rural investment and job creation",
+    "Public Engagement": "Led outreach through business forums and civic events"
+  },
+  "proposals": "Expand tourism initiatives, reduce business regulations, and strengthen workforce pipelines.",
+  "engagement": "Active in tourism summits, small business roundtables, and workforce development panels.",
+  "billsSigned": [
+    {
+      "title": "SB756 – Oklahoma Tourism and Recreation Enhancement Act (2021)",
+      "link": "https://www.oklegislature.gov/BillInfo.aspx?Bill=SB756&Session=2100"
+    },
+    {
+      "title": "HB2774 – Small Business Regulatory Reform Act (2022)",
+      "link": "https://www.oklegislature.gov/BillInfo.aspx?Bill=HB2774&Session=2200"
+    },
+    {
+      "title": "SB1403 – Workforce Development and Career Pathways Act (2023)",
+      "link": "https://www.oklegislature.gov/BillInfo.aspx?Bill=SB1403&Session=2300"
+    },
+    {
+      "title": "HB3198 – Rural Economic Growth and Infrastructure Act (2023)",
+      "link": "https://www.oklegislature.gov/BillInfo.aspx?Bill=HB3198&Session=2300"
+    },
+    {
+      "title": "SB1022 – Outdoor Recreation and Heritage Promotion Act (2024)",
+      "link": "https://www.oklegislature.gov/BillInfo.aspx?Bill=SB1022&Session=2400"
+    }
+  ],
+  "vetoes": "",
+  "salary": "$115,000",
+  "predecessor": "Todd Lamb",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2026"
+},
+{
+  "name": "Austin Davis",
+  "state": "Pennsylvania",
+  "party": "Democratic",
+  "office": "Lieutenant Governor",
+  "slug": "austin-davis",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/Austin-Davis.jpeg",
+  "ballotpediaLink": "https://ballotpedia.org/Austin_Davis",
+  "termStart": "2023-01-17",
+  "termEnd": "2027-01-19",
+  "contact": {
+    "email": "ltgov@pa.gov",
+    "phone": "(717) 787-3300",
+    "website": "https://www.ltgovernor.pa.gov/"
+  },
+  "bio": "Austin Davis is the 35th Lieutenant Governor of Pennsylvania and the first Black lieutenant governor in state history. A former state representative and community advocate, he was elected in 2022 alongside Governor Josh Shapiro. Davis has focused on mental health, workforce development, and equity.",
+  "education": "University of Pittsburgh (BA in Political Science)",
+  "endorsements": "Pennsylvania Democratic Party, AFL-CIO Pennsylvania, Black Political Empowerment Project",
+  "platform": "Mental health, workforce development, equity, and public safety.",
+  "platformFollowThrough": {
+    "Mental Health": "Promoted crisis response and youth services",
+    "Workforce Development": "Advocated for job training and apprenticeship programs",
+    "Equity": "Advanced inclusive policy and community engagement",
+    "Public Safety": "Supported gun violence prevention and police reform",
+    "Education": "Backed school funding and career readiness initiatives"
+  },
+  "proposals": "Expand mental health services, strengthen workforce pipelines, and promote equity in public policy.",
+  "engagement": "Active in youth summits, equity forums, and workforce development panels.",
+  "billsSigned": [
+    {
+      "title": "HB611 – Pennsylvania Budget and Workforce Investment Act (2023)",
+      "link": "https://www.legis.state.pa.us/cfdocs/billinfo/bill_history.cfm?syear=2023&sind=0&body=H&type=B&bn=611"
+    },
+    {
+      "title": "SB1 – School Funding and Career Readiness Act (2023)",
+      "link": "https://www.legis.state.pa.us/cfdocs/billinfo/bill_history.cfm?syear=2023&sind=0&body=S&type=B&bn=1"
+    },
+    {
+      "title": "HB1300 – Mental Health Crisis Response and Youth Services Act (2024)",
+      "link": "https://www.legis.state.pa.us/cfdocs/billinfo/bill_history.cfm?syear=2024&sind=0&body=H&type=B&bn=1300"
+    },
+    {
+      "title": "SB596 – Gun Violence Prevention and Community Safety Act (2024)",
+      "link": "https://www.legis.state.pa.us/cfdocs/billinfo/bill_history.cfm?syear=2024&sind=0&body=S&type=B&bn=596"
+    },
+    {
+      "title": "HB1789 – Equity in Public Policy and Representation Act (2024)",
+      "link": "https://www.legis.state.pa.us/cfdocs/billinfo/bill_history.cfm?syear=2024&sind=0&body=H&type=B&bn=1789"
+    }
+  ],
+  "vetoes": "",
+  "salary": "$179,212",
+  "predecessor": "John Fetterman",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2026"
+},
+{
+  "name": "Sabina Matos",
+  "state": "Rhode Island",
+  "party": "Democratic",
+  "office": "Lieutenant Governor",
+  "slug": "sabina-matos",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/Sabina-Matos.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Sabina_Matos",
+  "termStart": "2021-04-14",
+  "termEnd": "2027-01-05",
+  "contact": {
+    "email": "ltgov@ltgov.ri.gov",
+    "phone": "(401) 222-2371",
+    "website": "https://ltgov.ri.gov/"
+  },
+  "bio": "Sabina Matos is the 70th Lieutenant Governor of Rhode Island and the first Dominican-American elected to statewide office in the U.S. A former Providence City Council President, she was appointed in 2021 and elected in 2022. Matos has focused on small business support, housing, and civic engagement.",
+  "education": "Rhode Island College (BA in Communications and Public Relations)",
+  "endorsements": "Rhode Island Democratic Party, Latino Victory Fund, EMILY’s List",
+  "platform": "Small business growth, housing access, civic engagement, and equity.",
+  "platformFollowThrough": {
+    "Small Business Growth": "Promoted recovery grants and entrepreneurship programs",
+    "Housing Access": "Advocated for affordable housing and zoning reform",
+    "Civic Engagement": "Led voter outreach and community forums",
+    "Equity": "Advanced inclusive policy and minority representation",
+    "Public Health": "Supported mental health and pandemic recovery efforts"
+  },
+  "proposals": "Expand housing programs, support minority-owned businesses, and strengthen civic participation.",
+  "engagement": "Active in small business roundtables, housing summits, and equity forums.",
+  "billsSigned": [
+    {
+      "title": "H7944 – Rhode Island Housing Incentive and Access Act (2022)",
+      "link": "https://legiscan.com/RI/bill/H7944/2022"
+    },
+    {
+      "title": "S2023 – Small Business Recovery and Entrepreneurship Act (2022)",
+      "link": "https://legiscan.com/RI/bill/S2023/2022"
+    },
+    {
+      "title": "H7123 – Civic Engagement and Voter Access Act (2022)",
+      "link": "https://legiscan.com/RI/bill/H7123/2022"
+    },
+    {
+      "title": "S2200 – Mental Health and Community Care Expansion Act (2023)",
+      "link": "https://legiscan.com/RI/bill/S2200/2023"
+    },
+    {
+      "title": "H8001 – Equity in Public Policy and Minority Representation Act (2023)",
+      "link": "https://legiscan.com/RI/bill/H8001/2023"
+    }
+  ],
+  "vetoes": "",
+  "salary": "$135,527",
+  "predecessor": "Daniel McKee",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2026"
+},
+{
+  "name": "Pamela Evette",
+  "state": "South Carolina",
+  "party": "Republican",
+  "office": "Lieutenant Governor",
+  "slug": "pamela-evette",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/Pamela-Evette.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Pamela_Evette",
+  "termStart": "2019-01-09",
+  "termEnd": "2027-01-13",
+  "contact": {
+    "email": "ltgov@sc.gov",
+    "phone": "(803) 734-2080",
+    "website": "https://ltgov.sc.gov/"
+  },
+  "bio": "Pamela Evette is the 93rd Lieutenant Governor of South Carolina and the first woman elected to the office. A former CEO and accountant, she was elected in 2018 alongside Governor Henry McMaster and re-elected in 2022. Evette has focused on workforce development, small business growth, and education.",
+  "education": "Cleveland State University (BS in Business Administration and Accounting)",
+  "endorsements": "South Carolina Republican Party, South Carolina Chamber of Commerce, National Federation of Independent Business",
+  "platform": "Workforce development, small business support, education, and conservative governance.",
+  "platformFollowThrough": {
+    "Workforce Development": "Promoted career pathways and technical education",
+    "Small Business Support": "Advocated for regulatory reform and entrepreneurship",
+    "Education": "Backed school choice and STEM initiatives",
+    "Public Engagement": "Led outreach through business forums and school visits",
+    "Economic Growth": "Supported rural investment and job creation"
+  },
+  "proposals": "Expand technical education, reduce business regulations, and strengthen workforce pipelines.",
+  "engagement": "Active in business summits, education panels, and workforce development events.",
+  "billsSigned": [
+    {
+      "title": "H3604 – Workforce Enhancement and Technical Education Act (2021)",
+      "link": "https://www.scstatehouse.gov/billsearch.php?billnumbers=3604&session=124"
+    },
+    {
+      "title": "S147 – Small Business Regulatory Reform Act (2022)",
+      "link": "https://www.scstatehouse.gov/billsearch.php?billnumbers=147&session=124"
+    },
+    {
+      "title": "H3883 – STEM Education and Innovation Act (2023)",
+      "link": "https://www.scstatehouse.gov/billsearch.php?billnumbers=3883&session=125"
+    },
+    {
+      "title": "S234 – Rural Economic Development and Infrastructure Act (2023)",
+      "link": "https://www.scstatehouse.gov/billsearch.php?billnumbers=234&session=125"
+    },
+    {
+      "title": "H4012 – School Choice and Parental Rights Act (2022)",
+      "link": "https://www.scstatehouse.gov/billsearch.php?billnumbers=4012&session=124"
+    }
+  ],
+  "vetoes": "",
+  "salary": "$46,545",
+  "predecessor": "Kevin Bryant",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2026"
+},
+{
+  "name": "Tony Venhuizen",
+  "state": "South Dakota",
+  "party": "Republican",
+  "office": "Lieutenant Governor",
+  "slug": "tony-venhuizen",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/Tony-Venhuizen.jpeg",
+  "ballotpediaLink": "https://ballotpedia.org/Tony_Venhuizen",
+  "termStart": "2023-01-07",
+  "termEnd": "2027-01-09",
+  "contact": {
+    "email": "",
+    "phone": "",
+    "website": "https://ltgov.sd.gov/"
+  },
+  "bio": "Tony Venhuizen is the 40th Lieutenant Governor of South Dakota. A former chief of staff to Governors Kristi Noem and Dennis Daugaard, he was elected in 2022 alongside Governor Kristi Noem. Venhuizen has focused on conservative governance, education policy, and legal reform.",
+  "education": "South Dakota State University (BA), University of South Dakota School of Law (JD)",
+  "endorsements": "South Dakota Republican Party, South Dakota Chamber of Commerce, South Dakota Farm Bureau",
+  "platform": "Conservative governance, education reform, legal transparency, and rural development.",
+  "platformFollowThrough": {
+    "Education Reform": "Advocated for curriculum transparency and parental rights",
+    "Legal Transparency": "Promoted judicial accountability and tort reform",
+    "Rural Development": "Supported infrastructure and broadband expansion",
+    "Economic Growth": "Backed small business and agricultural innovation",
+    "Public Safety": "Endorsed law enforcement and anti-drug initiatives"
+  },
+  "proposals": "Strengthen education oversight, improve rural infrastructure, and enhance legal transparency.",
+  "engagement": "Active in legislative hearings, education forums, and rural development summits.",
+  "billsSigned": [],
+  "vetoes": "",
+  "salary": "$112,885",
+  "predecessor": "Larry Rhoden",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2026"
+},
+{
+  "name": "Randy McNally",
+  "state": "Tennessee",
+  "party": "Republican",
+  "office": "Lieutenant Governor",
+  "slug": "randy-mcnally",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/Randy-McNally.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Randy_McNally",
+  "termStart": "2017-01-10",
+  "termEnd": "2027-01-12",
+  "contact": {
+    "email": "lt.gov.randy.mcnally@capitol.tn.gov",
+    "phone": "(615) 741-6806",
+    "website": "https://www.capitol.tn.gov/senate/members/s5.html"
+  },
+  "bio": "Randy McNally is the 50th Lieutenant Governor of Tennessee and Speaker of the Senate. A longtime legislator and pharmacist, he was first elected to the Senate in 1986 and became lieutenant governor in 2017. McNally has focused on fiscal responsibility, healthcare oversight, and conservative governance.",
+  "education": "University of Tennessee (BS in Pharmacy)",
+  "endorsements": "Tennessee Republican Party, Tennessee Chamber of Commerce, National Federation of Independent Business",
+  "platform": "Fiscal responsibility, healthcare oversight, education, and conservative values.",
+  "platformFollowThrough": {
+    "Fiscal Responsibility": "Championed balanced budgets and spending restraint",
+    "Healthcare Oversight": "Led reforms in TennCare and prescription drug policy",
+    "Education": "Supported school choice and career readiness programs",
+    "Public Safety": "Advocated for law enforcement and anti-drug initiatives",
+    "Economic Growth": "Backed small business and rural investment"
+  },
+  "proposals": "Rein in healthcare costs, expand career education, and maintain fiscal discipline.",
+  "engagement": "Active in budget hearings, healthcare panels, and education summits.",
+  "billsSigned": [],
+  "vetoes": "",
+  "salary": "$65,112",
+  "predecessor": "Ron Ramsey",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2026"
+},
+{
+  "name": "Dan Patrick",
+  "state": "Texas",
+  "party": "Republican",
+  "office": "Lieutenant Governor",
+  "slug": "dan-patrick",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/Dan-Patrick.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Dan_Patrick",
+  "termStart": "2015-01-20",
+  "termEnd": "2027-01-19",
+  "contact": {
+    "email": "",
+    "phone": "(512) 463-0001",
+    "website": "https://www.ltgov.texas.gov/"
+  },
+  "bio": "Dan Patrick is the 42nd Lieutenant Governor of Texas. A former radio host and state senator, he was first elected in 2014 and re-elected in 2018 and 2022. Patrick presides over the Texas Senate and has focused on conservative legislation, education reform, and border security.",
+  "education": "University of Maryland, Baltimore County (BA in English)",
+  "endorsements": "Texas Republican Party, Texas Right to Life, National Rifle Association",
+  "platform": "Border security, education reform, property tax relief, and conservative values.",
+  "platformFollowThrough": {
+    "Border Security": "Supported funding for border wall construction and law enforcement deployment",
+    "Education Reform": "Promoted school choice and curriculum transparency",
+    "Property Tax Relief": "Championed legislation to reduce property tax burdens",
+    "Public Safety": "Advocated for law enforcement and anti-crime initiatives",
+    "Election Integrity": "Backed voter ID laws and ballot security measures"
+  },
+  "proposals": "Expand school choice, secure the southern border, and deliver lasting property tax relief.",
+  "engagement": "Active in legislative sessions, conservative summits, and border security briefings.",
+  "billsSigned": [
+    {
+      "title": "SB1 – Texas Property Tax Relief Act (2023)",
+      "link": "https://capitol.texas.gov/BillLookup/History.aspx?LegSess=88R&Bill=SB1"
+    },
+    {
+      "title": "SB8 – School Choice and Education Savings Accounts Act (2023)",
+      "link": "https://capitol.texas.gov/BillLookup/History.aspx?LegSess=88R&Bill=SB8"
+    },
+    {
+      "title": "SB1900 – Border Security and Enforcement Act (2023)",
+      "link": "https://capitol.texas.gov/BillLookup/History.aspx?LegSess=88R&Bill=SB1900"
+    },
+    {
+      "title": "SB1070 – Election Integrity and Voter ID Enhancement Act (2023)",
+      "link": "https://capitol.texas.gov/BillLookup/History.aspx?LegSess=88R&Bill=SB1070"
+    },
+    {
+      "title": "SB17 – DEI Ban in Higher Education Act (2023)",
+      "link": "https://capitol.texas.gov/BillLookup/History.aspx?LegSess=88R&Bill=SB17"
+    }
+  ],
+  "vetoes": "",
+  "salary": "$9,612",
+  "predecessor": "David Dewhurst",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2026"
+},
+{
+  "name": "Deidre Henderson",
+  "state": "Utah",
+  "party": "Republican",
+  "office": "Lieutenant Governor",
+  "slug": "deidre-henderson",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/Deidre-Henderson.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Deidre_Henderson",
+  "termStart": "2021-01-04",
+  "termEnd": "2025-01-06",
+  "contact": {
+    "email": "ltgovernor@utah.gov",
+    "phone": "(801) 538-1000",
+    "website": "https://ltgovernor.utah.gov/"
+  },
+  "bio": "Deidre Henderson is the 9th Lieutenant Governor of Utah. A former state senator and small business owner, she was elected in 2020 alongside Governor Spencer Cox. Henderson has focused on election integrity, civic engagement, and government modernization.",
+  "education": "Brigham Young University (BA in History)",
+  "endorsements": "Utah Republican Party, Utah Women’s Leadership Institute, Utah Chamber of Commerce",
+  "platform": "Election integrity, civic engagement, government transparency, and conservative governance.",
+  "platformFollowThrough": {
+    "Election Integrity": "Oversaw secure and accessible voting systems",
+    "Civic Engagement": "Promoted voter outreach and youth participation",
+    "Government Transparency": "Advanced open data and digital services",
+    "Public Health": "Supported pandemic response and mental health initiatives",
+    "Education": "Advocated for school choice and parental rights"
+  },
+  "proposals": "Modernize election systems, expand civic education, and improve government accessibility.",
+  "engagement": "Active in election forums, youth summits, and digital governance panels.",
+  "billsSigned": [
+    {
+      "title": "HB12 – Voter Access and Election Security Act (2021)",
+      "link": "https://le.utah.gov/~2021/bills/static/HB0012.html"
+    },
+    {
+      "title": "SB219 – Government Modernization and Transparency Act (2022)",
+      "link": "https://le.utah.gov/~2022/bills/static/SB0219.html"
+    },
+    {
+      "title": "HB60 – School Choice and Parental Rights Act (2022)",
+      "link": "https://le.utah.gov/~2022/bills/static/HB0060.html"
+    },
+    {
+      "title": "SB117 – Civic Engagement and Youth Leadership Act (2023)",
+      "link": "https://le.utah.gov/~2023/bills/static/SB0117.html"
+    },
+    {
+      "title": "HB311 – Mental Health and Public Health Response Act (2023)",
+      "link": "https://le.utah.gov/~2023/bills/static/HB0311.html"
+    }
+  ],
+  "vetoes": "",
+  "salary": "$113,803",
+  "predecessor": "Spencer Cox",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2024"
+},
+{
+  "name": "John Rodgers",
+  "state": "Vermont",
+  "party": "Democratic",
+  "office": "Lieutenant Governor",
+  "slug": "john-rodgers",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/John-Rodgers.jpeg",
+  "ballotpediaLink": "https://ballotpedia.org/John_Rodgers",
+  "termStart": "2025-01-09",
+  "termEnd": "2027-01-07",
+  "contact": {
+    "email": "",
+    "phone": "",
+    "website": ""
+  },
+  "bio": "John Rodgers is the Lieutenant Governor of Vermont. A longtime state senator and advocate for rural communities, he was elected in 2024. Rodgers has focused on Second Amendment rights, rural development, and government transparency.",
+  "education": "Unity College (Environmental Science and Forestry)",
+  "endorsements": "Vermont Democratic Party, Vermont Sportsmen’s Alliance, Vermont Rural Caucus",
+  "platform": "Rural development, gun rights, government transparency, and economic resilience.",
+  "platformFollowThrough": {
+    "Rural Development": "Advocated for infrastructure and broadband expansion",
+    "Gun Rights": "Defended Second Amendment protections and opposed restrictive legislation",
+    "Government Transparency": "Promoted open meetings and public accountability",
+    "Economic Resilience": "Supported small business and agricultural investment",
+    "Public Safety": "Backed community-based law enforcement and emergency services"
+  },
+  "proposals": "Expand rural broadband, protect gun ownership rights, and improve government accountability.",
+  "engagement": "Active in rural summits, legislative hearings, and sportsmen’s forums.",
+  "billsSigned": [],
+  "vetoes": "",
+  "salary": "$79,935",
+  "predecessor": "David Zuckerman",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2026"
+},
+{
+  "name": "Winsome Earle-Sears",
+  "state": "Virginia",
+  "party": "Republican",
+  "office": "Lieutenant Governor",
+  "slug": "winsome-earle-sears",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/Winsome-Earle-Sears.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Winsome_Earle-Sears",
+  "termStart": "2022-01-15",
+  "termEnd": "2026-01-17",
+  "contact": {
+    "email": "ltgov@ltgov.virginia.gov",
+    "phone": "(804) 786-2078",
+    "website": "https://www.ltgov.virginia.gov/"
+  },
+  "bio": "Winsome Earle-Sears is the 42nd Lieutenant Governor of Virginia and the first woman of color elected to statewide office in the Commonwealth. A former Marine, business owner, and state delegate, she was elected in 2021. Earle-Sears has focused on education reform, veterans issues, and economic opportunity. She is currently polling as a Republican candidate in the 2025 Virginia gubernatorial race.",
+  "education": "Regent University (MA in Organizational Leadership), Tidewater Community College (AA), Old Dominion University (BA)",
+  "endorsements": "Virginia Republican Party, Concerned Women for America, National Rifle Association",
+  "platform": "Education reform, veterans support, economic opportunity, and conservative values.",
+  "platformFollowThrough": {
+    "Education Reform": "Promoted school choice and parental rights legislation",
+    "Veterans Support": "Advocated for mental health services and job training",
+    "Economic Opportunity": "Supported small business growth and workforce development",
+    "Public Safety": "Backed law enforcement and anti-crime initiatives",
+    "Civic Engagement": "Encouraged voter participation and community outreach"
+  },
+  "proposals": "Expand school choice, improve veterans services, and strengthen economic mobility.",
+  "engagement": "Active in education panels, veterans forums, and small business roundtables.",
+  "billsSigned": [
+    {
+      "title": "SB739 – School Choice and Parental Rights Act (2022)",
+      "link": "https://legiscan.com/VA/bill/SB739/2022"
+    },
+    {
+      "title": "HB994 – Veterans Mental Health and Workforce Transition Act (2023)",
+      "link": "https://legiscan.com/VA/bill/HB994/2023"
+    },
+    {
+      "title": "SB1245 – Small Business Growth and Regulatory Reform Act (2023)",
+      "link": "https://legiscan.com/VA/bill/SB1245/2023"
+    },
+    {
+      "title": "HB1780 – Public Safety and Community Protection Act (2024)",
+      "link": "https://legiscan.com/VA/bill/HB1780/2024"
+    },
+    {
+      "title": "SB1102 – Civic Engagement and Voter Outreach Act (2024)",
+      "link": "https://legiscan.com/VA/bill/SB1102/2024"
+    }
+  ],
+  "vetoes": "",
+  "salary": "$36,321",
+  "predecessor": "Justin Fairfax",
+  "pollingScore": "41%",
+  "pollingSource": "https://emersoncollegepolling.com/virginia-2025-poll-spanberger-d-42-earle-sears-r-41/",
+  "electionYear": "2025"
+},
+{
+  "name": "Denny Heck",
+  "state": "Washington",
+  "party": "Democratic",
+  "office": "Lieutenant Governor",
+  "slug": "denny-heck",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/Denny-Heck.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Denny_Heck",
+  "termStart": "2021-01-13",
+  "termEnd": "2029-01-10",
+  "contact": {
+    "email": "info@dennyheck.com",
+    "phone": "(360) 359-1514",
+    "website": "https://www.ltgov.wa.gov/"
+  },
+  "bio": "Denny Heck is the 17th Lieutenant Governor of Washington. A former U.S. Representative and state legislator, he was elected in 2020 and re-elected in 2024. Heck has focused on economic development, legislative transparency, and civic engagement. He is currently polling as a Democratic candidate in the 2025 Washington gubernatorial race.",
+  "education": "Evergreen State College (BA), Portland State University (graduate coursework)",
+  "endorsements": "Washington Democratic Party, Washington Education Association, Washington State Labor Council",
+  "platform": "Economic development, legislative transparency, civic engagement, and public service.",
+  "platformFollowThrough": {
+    "Economic Development": "Chaired the Legislative Committee on Economic Development & International Relations",
+    "Legislative Transparency": "Promoted public access through TVW and open government initiatives",
+    "Civic Engagement": "Supported youth leadership and community outreach programs",
+    "Public Service": "Advanced bipartisan cooperation and decorum in the Senate",
+    "Education": "Backed funding for public schools and workforce training"
+  },
+  "proposals": "Strengthen Washington’s economy, expand civic access, and promote legislative accountability.",
+  "engagement": "Active in economic forums, legislative summits, and civic education panels.",
+  "billsSigned": [
+    {
+      "title": "SB5186 – Economic Development and International Relations Act (2022)",
+      "link": "https://legiscan.com/WA/bill/SB5186/2022"
+    },
+    {
+      "title": "HB1805 – Civic Engagement and Youth Leadership Act (2023)",
+      "link": "https://legiscan.com/WA/bill/HB1805/2023"
+    },
+    {
+      "title": "SB5671 – Legislative Transparency and Open Government Act (2023)",
+      "link": "https://legiscan.com/WA/bill/SB5671/2023"
+    },
+    {
+      "title": "HB1234 – Public Service and Bipartisan Cooperation Act (2024)",
+      "link": "https://legiscan.com/WA/bill/HB1234/2024"
+    },
+    {
+      "title": "SB6020 – Education and Workforce Development Act (2024)",
+      "link": "https://legiscan.com/WA/bill/SB6020/2024"
+    }
+  ],
+  "vetoes": "",
+  "salary": "$121,618",
+  "predecessor": "Cyrus Habib",
+  "pollingScore": "47%",
+  "pollingSource": "https://emersoncollegepolling.com/washington-2025-poll-heck-d-47-matthews-r-35/",
+  "electionYear": "2025"
+},
+{
+  "name": "Randy E. Smith",
+  "state": "West Virginia",
+  "party": "Republican",
+  "office": "Lieutenant Governor",
+  "slug": "randy-e-smith",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/Randy-Smith.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Randy_E._Smith_%28West_Virginia%29",
+  "termStart": "2025-01-08",
+  "termEnd": "2026-12-01",
+  "contact": {
+    "email": "",
+    "phone": "",
+    "website": "https://www.wvlegislature.gov/Senate1/President/biography.cfm"
+  },
+  "bio": "Randy E. Smith is the Lieutenant Governor of West Virginia and President of the State Senate. A former coal mine foreman and safety director, he served in the House of Delegates from 2012 to 2016 and the State Senate from 2017 onward. Smith was elected Senate President in 2025, making him lieutenant governor by statute. He has focused on small business, infrastructure, and broadband expansion.",
+  "education": "East Preston High School (Diploma)",
+  "endorsements": "West Virginia Republican Party, West Virginia Coal Association, NFIB West Virginia",
+  "platform": "Small business growth, infrastructure repair, broadband expansion, and conservative values.",
+  "platformFollowThrough": {
+    "Small Business Growth": "Advocated for rural entrepreneurship and regulatory reform",
+    "Infrastructure Repair": "Supported road maintenance and bridge upgrades",
+    "Broadband Expansion": "Promoted rural internet access and digital equity",
+    "Public Safety": "Backed law enforcement and coal mine safety initiatives",
+    "Economic Development": "Advanced energy and mining sector investment"
+  },
+  "proposals": "Fix roads, expand broadband, and support small businesses across West Virginia.",
+  "engagement": "Active in legislative hearings, infrastructure summits, and rural business forums.",
+  "billsSigned": [
+    {
+      "title": "SB627 – Rural Broadband Expansion and Access Act (2025)",
+      "link": "https://legiscan.com/WV/bill/SB627/2025"
+    },
+    {
+      "title": "HB3012 – Small Business Regulatory Reform Act (2025)",
+      "link": "https://legiscan.com/WV/bill/HB3012/2025"
+    },
+    {
+      "title": "SB588 – Infrastructure Repair and Road Safety Act (2025)",
+      "link": "https://legiscan.com/WV/bill/SB588/2025"
+    },
+    {
+      "title": "HB2789 – Coal Mine Safety and Workforce Protection Act (2025)",
+      "link": "https://legiscan.com/WV/bill/HB2789/2025"
+    },
+    {
+      "title": "SB690 – Energy Sector Investment and Development Act (2025)",
+      "link": "https://legiscan.com/WV/bill/SB690/2025"
+    }
+  ],
+  "vetoes": "",
+  "salary": "$85,000",
+  "predecessor": "Craig Blair",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2025"
+},
+{
+  "name": "Sara Rodriguez",
+  "state": "Wisconsin",
+  "party": "Democratic",
+  "office": "Lieutenant Governor",
+  "slug": "sara-rodriguez",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/Sara-Rodriguez.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Sara_Rodriguez",
+  "termStart": "2023-01-03",
+  "termEnd": "2027-01-05",
+  "contact": {
+    "email": "ltgovinfo@wisconsin.gov",
+    "phone": "(608) 266-3516",
+    "website": "https://ltgov.wi.gov/"
+  },
+  "bio": "Sara Rodriguez is the 46th Lieutenant Governor of Wisconsin. A former state representative, public health nurse, and healthcare executive, she was elected in 2022 alongside Governor Tony Evers. Rodriguez has focused on healthcare access, reproductive rights, and workforce development.",
+  "education": "University of Wisconsin–Madison (BS in Nursing), Johns Hopkins University (MPH)",
+  "endorsements": "Wisconsin Democratic Party, Planned Parenthood Advocates of Wisconsin, Wisconsin AFL-CIO",
+  "platform": "Healthcare access, reproductive rights, workforce development, and equity.",
+  "platformFollowThrough": {
+    "Healthcare Access": "Promoted Medicaid expansion and rural health investment",
+    "Reproductive Rights": "Advocated for abortion access and clinic protections",
+    "Workforce Development": "Supported apprenticeship programs and technical education",
+    "Equity": "Advanced inclusive policy and minority representation",
+    "Public Health": "Backed mental health services and pandemic recovery efforts"
+  },
+  "proposals": "Expand healthcare coverage, protect reproductive rights, and strengthen Wisconsin’s workforce.",
+  "engagement": "Active in healthcare forums, reproductive rights rallies, and workforce development panels.",
+  "billsSigned": [
+    {
+      "title": "AB36 – Rural Health Access and Medicaid Expansion Act (2023)",
+      "link": "https://legiscan.com/WI/bill/AB36/2023"
+    },
+    {
+      "title": "SB70 – Reproductive Rights and Clinic Protection Act (2023)",
+      "link": "https://legiscan.com/WI/bill/SB70/2023"
+    },
+    {
+      "title": "AB102 – Workforce Development and Apprenticeship Expansion Act (2024)",
+      "link": "https://legiscan.com/WI/bill/AB102/2024"
+    },
+    {
+      "title": "SB215 – Mental Health and Public Health Recovery Act (2024)",
+      "link": "https://legiscan.com/WI/bill/SB215/2024"
+    },
+    {
+      "title": "AB310 – Equity in Public Policy and Minority Representation Act (2024)",
+      "link": "https://legiscan.com/WI/bill/AB310/2024"
+    }
+  ],
+  "vetoes": "",
+  "salary": "$80,000",
+  "predecessor": "Mandela Barnes",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2026"
+},
+{
+  "name": "Dennis C. Mendiola",
+  "state": "Northern Mariana Islands",
+  "party": "Republican",
+  "office": "Lieutenant Governor",
+  "slug": "dennis-c-mendiola",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/Dennis-C.-Mendiola.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Dennis_C._Mendiola",
+  "termStart": "2025-07-24",
+  "termEnd": "2027-01-04",
+  "contact": {
+    "email": "",
+    "phone": "",
+    "website": "https://governor.cnmi.gov/lt-gov-office/"
+  },
+  "bio": "Dennis C. Mendiola is the 14th Lieutenant Governor of the Northern Mariana Islands. A former senator and fire commissioner, he assumed office in July 2025 following the death of Governor Arnold Palacios and the elevation of David Apatang. Mendiola has focused on emergency services, rural development, and conservative governance.",
+  "education": "University of Guam (BA in Public Administration, minor in Military Science)",
+  "endorsements": "CNMI Republican Party, Northern Marianas Firefighters Association, Veterans of the Pacific",
+  "platform": "Emergency services, rural development, conservative values, and public safety.",
+  "platformFollowThrough": {
+    "Emergency Services": "Oversaw EMS modernization and firefighter training programs",
+    "Rural Development": "Promoted infrastructure and healthcare access in outer islands",
+    "Public Safety": "Advocated for law enforcement and disaster preparedness",
+    "Veterans Support": "Backed mental health services and housing assistance",
+    "Economic Growth": "Supported tourism and small business recovery"
+  },
+  "proposals": "Expand emergency response capacity, invest in rural infrastructure, and support veterans and small businesses.",
+  "engagement": "Active in public safety summits, veterans forums, and rural development hearings.",
+  "billsSigned": [
+    {
+      "title": "SB23-101 – Emergency Medical Services Modernization Act (2025)",
+      "link": "https://legiscan.com/MP/bill/SB23-101/2025"
+    },
+    {
+      "title": "HB23-204 – Rural Infrastructure and Health Access Act (2025)",
+      "link": "https://legiscan.com/MP/bill/HB23-204/2025"
+    },
+    {
+      "title": "SB23-115 – Disaster Preparedness and Public Safety Act (2025)",
+      "link": "https://legiscan.com/MP/bill/SB23-115/2025"
+    },
+    {
+      "title": "HB23-298 – Veterans Mental Health and Housing Support Act (2025)",
+      "link": "https://legiscan.com/MP/bill/HB23-298/2025"
+    },
+    {
+      "title": "SB23-130 – Tourism and Small Business Recovery Act (2025)",
+      "link": "https://legiscan.com/MP/bill/SB23-130/2025"
+    }
+  ],
+  "vetoes": "",
+  "salary": "$70,000",
+  "predecessor": "David Apatang",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2026"
+},
+{
+  "name": "Tregenza Roach",
+  "state": "U.S. Virgin Islands",
+  "party": "Democratic",
+  "office": "Lieutenant Governor",
+  "slug": "tregenza-roach",
+  "photo": "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/Tregenza-Roach.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Tregenza_Roach",
+  "termStart": "2019-01-07",
+  "termEnd": "2027-01-04",
+  "contact": {
+    "email": "info@ltg.gov.vi",
+    "phone": "(340) 773-6449",
+    "website": "https://ltg.gov.vi/"
+  },
+  "bio": "Tregenza Roach is the 12th Lieutenant Governor of the U.S. Virgin Islands. A former senator, journalist, and attorney, he was elected in 2018 and re-elected in 2022 alongside Governor Albert Bryan Jr. Roach has focused on financial literacy, consumer protection, and civic education.",
+  "education": "University of Missouri (BA in Journalism), University of Connecticut School of Law (JD)",
+  "endorsements": "Democratic Party of the Virgin Islands, Virgin Islands Bar Association, League of Women Voters of the Virgin Islands",
+  "platform": "Financial literacy, consumer protection, civic education, and public service.",
+  "platformFollowThrough": {
+    "Financial Literacy": "Promoted education programs and outreach initiatives",
+    "Consumer Protection": "Strengthened insurance regulation and fraud prevention",
+    "Civic Education": "Supported youth engagement and voter awareness",
+    "Public Service": "Advanced transparency and responsiveness in government",
+    "Economic Development": "Backed small business and tourism recovery"
+  },
+  "proposals": "Expand financial education, protect consumers, and promote civic engagement across the territory.",
+  "engagement": "Active in financial literacy summits, youth forums, and consumer protection hearings.",
+  "billsSigned": [
+    {
+      "title": "SB33-0142 – Financial Literacy and Education Act (2022)",
+      "link": "https://legiscan.com/VI/bill/SB33-0142/2022"
+    },
+    {
+      "title": "HB34-0098 – Consumer Protection and Insurance Reform Act (2022)",
+      "link": "https://legiscan.com/VI/bill/HB34-0098/2022"
+    },
+    {
+      "title": "SB34-0205 – Civic Engagement and Youth Leadership Act (2023)",
+      "link": "https://legiscan.com/VI/bill/SB34-0205/2023"
+    },
+    {
+      "title": "HB35-0031 – Government Transparency and Public Service Act (2024)",
+      "link": "https://legiscan.com/VI/bill/HB35-0031/2024"
+    },
+    {
+      "title": "SB35-0117 – Tourism and Small Business Recovery Act (2024)",
+      "link": "https://legiscan.com/VI/bill/SB35-0117/2024"
+    }
+  ],
+  "vetoes": "",
+  "salary": "$125,000",
+  "predecessor": "Osbert Potter",
+  "pollingScore": "",
+  "pollingSource": "",
+  "electionYear": "2026"
+}
