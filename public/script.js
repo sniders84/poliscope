@@ -311,15 +311,15 @@ function renderLtGovernors(data) {
 
 /* ---------------- RANKINGS & ROOKIES ---------------- */
 function renderRankings() {
-  const governors = allOfficials.filter(p => (p.office || '').includes("Governor"));
-  const ltGovernors = allOfficials.filter(p => (p.office || '').includes("LtGovernor") || (p.office || '').toLowerCase().includes("lieutenant"));
-  const senators = allOfficials.filter(p => (p.office || '').includes("Senator"));
-  const house = allOfficials.filter(p => (p.office || '').includes("Representative") || (p.office || '').includes("House"));
+  const governors = allOfficials.filter(p => p.office?.includes("Governor") && !p.office?.includes("LtGovernor"));
+  const ltGovernors = allOfficials.filter(p => p.office?.includes("LtGovernor"));
+  const senators = allOfficials.filter(p => p.office?.includes("Senator"));
+  const house = allOfficials.filter(p => p.office?.includes("Representative"));
 
   renderCards(governors, 'rankings-governors');
   renderCards(senators, 'rankings-senators');
   renderCards(house, 'rankings-house');
-  renderCards(ltGovernors, 'rankings-ltgovernors');
+  renderCards(ltGovernors, 'rankings-ltgovernors'); // ✅ This makes them show up
 }
 
 function renderRookies() {
