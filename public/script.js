@@ -1,5 +1,5 @@
 console.log("✅ script.js loaded");
-window.civicEvents = [];
+window.civicEvents = [
   {
     title: "General Election",
     date: "2025-11-04",
