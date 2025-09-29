@@ -347,17 +347,18 @@ function renderRookies() {
   };
 
   rookies.forEach(person => {
-    const role = (person.office || person.position || "").toLowerCase();
-    if (role.includes("governor") && !role.includes("lt")) {
-      groups.governor.push(person);
-    } else if (role.includes("senator")) {
-      groups.senator.push(person);
-    } else if (role.includes("representative") || role.includes("house")) {
-      groups.representative.push(person);
-    } else if (role.includes("lt")) {
-      groups.ltgovernor.push(person);
-    }
-  });
+  const role = (person.office || person.position || "").toLowerCase();
+
+  if (role.includes("senator")) {
+    groups.senator.push(person);
+  } else if (role.includes("representative") || role.includes("house")) {
+    groups.representative.push(person);
+  } else if (role.includes("lt. governor") || role.includes("lt governor") || role.includes("ltgovernor") || role.includes("lieutenant governor")) {
+    groups.ltgovernor.push(person);
+  } else if (role.includes("governor")) {
+    groups.governor.push(person);
+  }
+});
 
   renderCards(groups.governor, 'rookie-governors');
   renderCards(groups.senator, 'rookie-senators');
