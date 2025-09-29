@@ -44,14 +44,12 @@
   <img src="assets/electorate-logo.png" alt="Electorate logo" class="electorate-logo" />
 </header>
 
-  <nav id="tabs">
-    <button onclick="showTab('my-officials')">My Officials</button>
-    <button onclick="showTab('compare')">Current Matchups</button>
-    <button onclick="showTab('rankings')">Rankings</button>
-    <button onclick="showTab('rookies')">Rookies to Watch</button>
-    <button onclick="showTab('calendar')">Calendar</button>
-    <button onclick="showTab('registration')">Registration</button>
-  </nav>
+ <div id="tab-buttons">
+  <button onclick="showTab('calendar')">Calendar</button>
+  <button onclick="showTab('rankings')">Rankings</button>
+  <button onclick="showTab('rookies')">Rookies</button>
+  <button onclick="showTab('my-officials')">My Officials</button>
+</div>
 
   <input type="text" id="search" placeholder="Search by name, state, or party..." />
   <ul id="results"></ul>
