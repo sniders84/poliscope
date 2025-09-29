@@ -608,3 +608,35 @@ function showTab(tabId) {
   }
 });
 loadData();
+async function populateMatchupStates() {
+  const matchupSelect = document.getElementById("matchup-state");
+  matchupSelect.innerHTML = '<option value="">Choose a state</option>'; // reset
+
+  const stateSet = new Set();
+
+  const officialFiles = [
+    'data/governors.json',
+    'data/ltgovernors.json',
+    'data/senators.json',
+    'data/house.json'
+  ];
+
+  for (const file of officialFiles) {
+    const response = await fetch(file);
+    const data = await response.json();
+    data.forEach(official => stateSet.add(official.state));
+  }
+
+  // Sort states alphabetically
+  const states = Array.from(stateSet).sort();
+  states.forEach(state => {
+    const option = document.createElement("option");
+    option.value = state;
+    option.textContent = state;
+    matchupSelect.appendChild(option);
+  });
+}
+
+// Call this after loading officials
+populateMatchupStates();
+
