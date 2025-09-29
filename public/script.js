@@ -435,7 +435,6 @@ function renderCompareCard(slug, containerId) {
     </div>
   `;
 }
-
 /* ---------------- DATA LOADING ---------------- */
 async function loadData() {
   try {
