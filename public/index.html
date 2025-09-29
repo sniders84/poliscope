@@ -8,64 +8,59 @@
 </head>
 <body>
 
-  <!-- 🔹 Header -->
+  <!-- Header -->
   <header class="electorate-header">
     <img src="assets/logo.png" alt="Electorate Logo" class="electorate-logo">
-    <h1>Electorate Dashboard</h1>
+    <h1>Electorate</h1>
   </header>
 
-  <!-- 🔹 Tab Buttons -->
+  <!-- Tab Buttons -->
   <div class="tab-buttons">
-    <button class="tab-button" data-target="my-officials">My Officials</button>
-    <button class="tab-button" data-target="rankings">Rankings</button>
-    <button class="tab-button" data-target="matchups">Match Ups</button>
-    <button class="tab-button" data-target="rookies">Rookies to Watch</button>
-    <button class="tab-button" data-target="calendar">Calendar</button>
-    <button class="tab-button" data-target="registration">Registration</button>
+    <button class="tab-button active" data-tab="myOfficials">My Officials</button>
+    <button class="tab-button" data-tab="rankings">Rankings</button>
+    <button class="tab-button" data-tab="matchups">Matchups</button>
+    <button class="tab-button" data-tab="rookies">Rookies to Watch</button>
+    <button class="tab-button" data-tab="calendar">Calendar</button>
+    <button class="tab-button" data-tab="registration">Registration</button>
   </div>
 
-  <!-- 🔹 Tab Contents -->
-  <div id="my-officials" class="tab-content">
-    <label for="stateSelect">Select Your State:</label>
-    <select id="stateSelect">
-      <option value="">--Choose State--</option>
-      <!-- State options will populate here -->
-    </select>
-    <input type="text" id="search" placeholder="Search officials by name or state...">
-    <div id="cards" class="card-container"></div>
+  <!-- Tab Contents -->
+  <div id="myOfficials" class="tab-content">
+    <input type="text" id="search" placeholder="Search officials...">
+    <select id="stateSelect"></select>
+    <div class="card-container" id="officialsContainer"></div>
   </div>
 
   <div id="rankings" class="tab-content" style="display:none;">
-    <div class="card-container" id="rankings-cards"></div>
+    <div class="card-container" id="rankingsContainer"></div>
   </div>
 
   <div id="matchups" class="tab-content" style="display:none;">
-    <label for="matchupStateSelect">Select State for Matchups:</label>
-    <select id="matchupStateSelect">
-      <option value="">--Choose State--</option>
-    </select>
-    <div class="card-container" id="matchup-cards"></div>
+    <input type="text" id="matchupSearch" placeholder="Search matchups...">
+    <select id="matchupStateSelect"></select>
+    <div class="card-container" id="matchupsContainer"></div>
   </div>
 
   <div id="rookies" class="tab-content" style="display:none;">
-    <div class="card-container" id="rookie-cards"></div>
+    <div class="card-container" id="rookiesContainer"></div>
   </div>
 
   <div id="calendar" class="tab-content" style="display:none;">
-    <div id="calendar-content">
-      <!-- Calendar will populate here -->
-    </div>
+    <div id="calendarContainer"></div>
   </div>
 
   <div id="registration" class="tab-content" style="display:none;">
-    <div id="registration-content">
-      <!-- Registration information will populate here -->
-    </div>
+    <div id="registrationContainer"></div>
   </div>
 
-  <!-- 🔹 Modal -->
-  <div id="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); align-items:center; justify-content:center; z-index:1000;">
-    <div class="modal-content"></div>
+  <!-- Modal -->
+  <div id="modal" class="modal" style="display:none;">
+    <div class="modal-container">
+      <div class="modal-left">
+        <img id="modalPhoto" src="" alt="">
+      </div>
+      <div class="modal-right" id="modalContent"></div>
+    </div>
   </div>
 
   <script src="script.js"></script>
