@@ -10,7 +10,7 @@ window.showTab = function(tabId) {
   const search = document.getElementById('search');
   if (search) search.value = '';
 };
-
+const calendarEvents = [
   {
     title: "General Election",
     date: "2025-11-04",
