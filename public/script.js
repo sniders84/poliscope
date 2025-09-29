@@ -1,16 +1,5 @@
-window.showTab = function(tabId) {
-  const sections = ['my-officials', 'compare', 'rankings', 'rookies', 'calendar', 'registration'];
-  sections.forEach(sectionId => {
-    const el = document.getElementById(sectionId);
-    if (el) el.style.display = sectionId === tabId ? 'block' : 'none';
-  });
-
-  const results = document.getElementById('results');
-  if (results) results.innerHTML = '';
-  const search = document.getElementById('search');
-  if (search) search.value = '';
-};
-const calendarEvents = [
+console.log("✅ script.js loaded");
+window.civicEvents = [
   {
     title: "General Election",
     date: "2025-11-04",
@@ -254,18 +243,10 @@ function renderMyOfficials(state) {
     const official = allOfficials.find(p => p.id === officialId);
     if (official) openModal(official);
 });
-});      
   console.log("Filtered My Officials:", matches.map(p => `${p.name} (${p.office})`));
 
-renderCards(matches, 'my-cards');
-
-document.querySelectorAll('#my-cards .card').forEach(card => {
-  card.addEventListener('click', () => {
-    const officialId = card.getAttribute('data-id');
-    const official = window.allOfficials.find(p => p.id === officialId);
-    if (official) openModal(official);
-  });
-});
+  renderCards(matches, 'my-cards');
+}
 
 function renderLtGovernors(data) {
   const container = document.getElementById('lt-governors-container');
@@ -284,6 +265,7 @@ function renderLtGovernors(data) {
     `;
     container.appendChild(card);
   });
+}
 
 function renderRankings() {
   const governors = allOfficials.filter(p => p.office?.includes("Governor"));
@@ -501,23 +483,18 @@ function showTab(id) {
   const search = document.getElementById('search');
   if (search) search.value = '';
 }
-
 document.querySelectorAll('.tab-button').forEach(button => {
   button.addEventListener('click', () => {
     const tabId = button.getAttribute('data-tab');
+
     document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
     button.classList.add('active');
-    showTab(tabId);
+
+    document.querySelectorAll('.tab-content').forEach(content => {
+      content.style.display = content.id === tabId ? 'block' : 'none';
+    });
   });
 });
-
-fetch('LtGovernors.json')
-  .then(res => res.json())
-  .then(data => {
-    console.log(`✅ Loaded LtGovernors.json: ${data.length} entries`);
-    renderLtGovernors(data);
-  })
-  .catch(err => console.error("❌ Failed to load LtGovernors.json:", err));
 
 window.showTab = showTab;
 loadData();
