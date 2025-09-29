@@ -568,6 +568,13 @@ document.addEventListener('DOMContentLoaded', function () {
       if (e.target === overlay) closeModal();
     });
   }
+function showTab(tabId) {
+  document.querySelectorAll('section').forEach(section => {
+    section.style.display = 'none';
+  });
+  const target = document.getElementById(tabId);
+  if (target) target.style.display = 'block';
+}
 
   // Tab button wiring
   document.querySelectorAll('.tab-button').forEach(button => {
