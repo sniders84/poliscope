@@ -490,18 +490,15 @@ function showTab(id) {
   const search = document.getElementById('search');
   if (search) search.value = '';
 }
+
 document.querySelectorAll('.tab-button').forEach(button => {
   button.addEventListener('click', () => {
     const tabId = button.getAttribute('data-tab');
-
     document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
     button.classList.add('active');
-
-    function showTab(tabId) {
-  document.querySelectorAll('section').forEach(section => {
-    section.style.display = section.id === tabId ? 'block' : 'none';
+    showTab(tabId);
   });
-}
+});
 
 fetch('LtGovernors.json')
   .then(res => res.json())
