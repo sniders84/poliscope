@@ -1,103 +1,51 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>Poliscope — Officials</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="assets/favicon.ico" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electorate Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="header-left">
-      <h1>Poliscope</h1>
-    </div>
-    <div class="header-right">
-      <input id="search" placeholder="Search officials, state, or party..." />
-      <ul id="results" class="search-results" role="list"></ul>
-      <select id="state-select" aria-label="Select state"></select>
-    </div>
+
+  <!-- Header -->
+  <header class="electorate-header">
+    <img src="logo.png" alt="Electorate Logo" class="electorate-logo">
+    <h1>Electorate Dashboard</h1>
   </header>
 
-  <nav class="tabs">
-    <button class="tab-button" data-tab="my-officials">My Officials</button>
-    <button class="tab-button" data-tab="compare">Compare</button>
-    <button class="tab-button" data-tab="rankings">Rankings</button>
-    <button class="tab-button" data-tab="rookies">Rookies</button>
-    <button class="tab-button" data-tab="calendar">Calendar</button>
-    <button class="tab-button" data-tab="registration">Registration</button>
-  </nav>
-
-  <main class="main-content">
-    <section id="my-officials" class="tab-section">
-      <h2>My Officials</h2>
-      <div id="my-cards" class="cards-grid" aria-live="polite"></div>
-      <!-- optional Lt Governors container -->
-      <div id="lt-governors-container" class="cards-grid"></div>
-    </section>
-
-    <section id="compare" class="tab-section" style="display:none">
-      <h2>Compare</h2>
-      <div class="compare-row">
-        <div>
-          <label for="compare-left">Official A</label>
-          <select id="compare-left"></select>
-        </div>
-        <div>
-          <label for="compare-right">Official B</label>
-          <select id="compare-right"></select>
-        </div>
-      </div>
-      <div class="compare-cards">
-        <div id="compare-card-left" class="compare-card"></div>
-        <div id="compare-card-right" class="compare-card"></div>
-      </div>
-    </section>
-
-    <section id="rankings" class="tab-section" style="display:none">
-      <h2>Rankings</h2>
-      <h3>Governors</h3>
-      <div id="rankings-governors" class="cards-grid"></div>
-      <h3>Lt. Governors</h3>
-      <div id="rankings-ltgovernors" class="cards-grid"></div>
-      <h3>Senators</h3>
-      <div id="rankings-senators" class="cards-grid"></div>
-      <h3>House</h3>
-      <div id="rankings-house" class="cards-grid"></div>
-    </section>
-
-    <section id="rookies" class="tab-section" style="display:none">
-      <h2>Rookies</h2>
-      <h3>Governors</h3>
-      <div id="rookie-governors" class="cards-grid"></div>
-      <h3>Lt. Governors</h3>
-      <div id="rookie-ltgovernors" class="cards-grid"></div>
-      <h3>Senators</h3>
-      <div id="rookie-senators" class="cards-grid"></div>
-      <h3>House</h3>
-      <div id="rookie-house" class="cards-grid"></div>
-    </section>
-
-    <section id="calendar" class="tab-section" style="display:none">
-      <h2>Calendar</h2>
-      <div id="calendar-container" class="cards-grid"></div>
-      <div id="voting-container" class="cards-grid"></div>
-    </section>
-
-    <section id="registration" class="tab-section" style="display:none">
-      <h2>Registration</h2>
-      <p>State resources and deadlines will appear here.</p>
-    </section>
-  </main>
-
-  <!-- Modal overlay -->
-  <div id="modal-overlay" style="display:none;" aria-hidden="true">
-    <div id="modal-content" role="dialog" aria-modal="true"></div>
+  <!-- Tabs -->
+  <div id="tabs" class="tab-buttons">
+    <button class="tab-button active" data-tab="governors">Governors</button>
+    <button class="tab-button" data-tab="lt-governors">Lieutenant Governors</button>
+    <button class="tab-button" data-tab="senate">Senators</button>
+    <button class="tab-button" data-tab="house">House</button>
   </div>
 
-  <!-- Your existing scripts (cleanHouse if you have it, then script) -->
-  <!-- If you have cleanHouse.js that sets window.cleanedHouse, keep it here -->
-  <script src="cleanHouse.js"></script>
+  <!-- Tab Container -->
+  <div class="tab-container">
+    <div class="tab-content card-container" id="governors"></div>
+    <div class="tab-content card-container" id="lt-governors" style="display:none;"></div>
+    <div class="tab-content card-container" id="senate" style="display:none;"></div>
+    <div class="tab-content card-container" id="house" style="display:none;"></div>
+  </div>
+
+  <!-- Search -->
+  <input type="text" id="search" placeholder="Search officials by name or state...">
+  <ul id="results"></ul>
+
+  <!-- Modal -->
+  <div class="modal-container" id="modal" style="display:none;">
+    <div class="modal-left">
+      <img id="modal-photo" src="" alt="Official Photo">
+    </div>
+    <div class="modal-right" id="modal-content">
+      <!-- Populated dynamically -->
+    </div>
+  </div>
+
+  <!-- Script -->
   <script src="script.js"></script>
+
 </body>
 </html>
