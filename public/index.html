@@ -1,545 +1,197 @@
-// --- Tabs (single canonical function) ---
-window.showTab = function(id) {
-  const sections = ['my-officials', 'compare', 'rankings', 'rookies', 'calendar', 'registration'];
-  sections.forEach(sectionId => {
-    const el = document.getElementById(sectionId);
-    if (el) el.style.display = sectionId === id ? 'block' : 'none';
-  });
-
-  const results = document.getElementById('results');
-  if (results) results.innerHTML = '';
-  const search = document.getElementById('search');
-  if (search) search.value = '';
-};
-
-/* ---------------- CALENDAR EVENTS ---------------- */
-const calendarEvents = [
-  {
-    title: "General Election",
-    date: "2025-11-04",
-    state: "Alabama",
-    type: "Election",
-    link: "https://www.vote411.org/upcoming/1/events",
-    details: "Statewide general election including Governor and House seats."
-  },
-  {
-    title: "Municipal Runoff Election (if needed)",
-    date: "2025-10-07",
-    state: "Alabama",
-    type: "Election",
-    link: "https://www.sos.alabama.gov/alabama-votes/voter/election-information/2025",
-    details: "Runoff elections for municipalities where no candidate received a majority."
-  },
-  {
-    title: "Town Hall with Gov. Kay Ivey",
-    date: "2025-10-15",
-    state: "Alabama",
-    type: "Public Engagement",
-    link: "https://governor.alabama.gov/newsroom/",
-    details: "Public Q&A session in Montgomery. Open to all residents."
-  },
-  {
-    title: "Last Day to Register for General Election",
-    date: "2025-10-21",
-    state: "Alabama",
-    type: "Deadline",
-    link: "https://www.sos.alabama.gov/alabama-votes/voter/register-to-vote",
-    details: "Deadline to register to vote in the November 4 general election."
-  },
-  {
-    title: "Signed 'Working for Alabama' Legislative Package",
-    date: "2025-05-01",
-    state: "Alabama",
-    type: "Bill Signing",
-    link: "https://governor.alabama.gov/newsroom/2024/05/governor-ivey-signs-landmark-working-for-alabama-legislative-package-into-law/",
-    details: "Six-bill package to boost workforce participation, childcare access, and rural job growth."
-  }
-];
-
-/* ---------------- VOTING INFO ---------------- */
-const votingInfo = {
-  "Alabama": {
-    registrationLink: "https://www.sos.alabama.gov/alabama-votes/voter/register-to-vote",
-    statusCheckLink: "https://myinfo.alabamavotes.gov/voterview/",
-    pollingPlaceLink: "https://myinfo.alabamavotes.gov/voterview/",
-    volunteerLink: "https://www.sos.alabama.gov/alabama-votes/become-poll-worker",
-    absenteeLink: "https://www.sos.alabama.gov/alabama-votes/voter/absentee-voting",
-    registrationDeadline: "2025-10-21",
-    absenteeRequestDeadline: "2025-10-29",
-    absenteeReturnDeadline: "2025-11-04 12:00 PM",
-    earlyVotingStart: null,
-    earlyVotingEnd: null
-  }
-};
-
-/* ---------------- GLOBAL STATE ---------------- */
-let allOfficials = [];
-
-/* ---------------- CALENDAR RENDER ---------------- */
-function renderCalendar(events, selectedState) {
-  const container = document.getElementById('calendar-container');
-  if (!container) return;
-
-  const today = new Date();
-
-  const filtered = events
-    .filter(e => e.state === selectedState && new Date(e.date) >= today)
-    .sort((a, b) => new Date(a.date) - new Date(b.date));
-
-  const html = filtered.map(event => `
-    <div class="card" onclick="openEventModal('${escapeJs(event.title)}', '${event.date}', '${escapeJs(event.state)}', '${escapeJs(event.type)}', '${escapeJs(event.details)}', '${event.link}')">
-      <h3>${event.title}</h3>
-      <p><strong>Date:</strong> ${event.date}</p>
-      <p><strong>Type:</strong> ${event.type}</p>
-    </div>
-  `).join('');
-
-  container.innerHTML = html || `<p>No upcoming events for ${selectedState}.</p>`;
-}
-
-function openEventModal(title, date, state, type, details, link) {
-  const content = `
-    <div class="event-modal">
-      <h2>${title}</h2>
-      <p><strong>Date:</strong> ${date}</p>
-      <p><strong>State:</strong> ${state}</p>
-      <p><strong>Type:</strong> ${type}</p>
-      <p>${details}</p>
-      <p><a href="${link}" target="_blank" rel="noopener noreferrer">More Info</a></p>
-      <p><button id="event-modal-close">Close</button></p>
-    </div>
-  `;
-  const modalContent = document.getElementById('modal-content');
-  if (!modalContent) return;
-  modalContent.innerHTML = content;
-  const overlay = document.getElementById('modal-overlay');
-  if (overlay) overlay.style.display = 'flex';
-
-  const closeBtn = document.getElementById('event-modal-close');
-  if (closeBtn) closeBtn.addEventListener('click', closeModal);
-}
-
-/* ---------------- VOTING RENDER ---------------- */
-function renderVotingInfo(state) {
-  const container = document.getElementById('voting-container');
-  if (!container || !votingInfo[state]) {
-    if (container) container.innerHTML = `<p>No voting info available for ${state}.</p>`;
-    return;
-  }
-
-  const info = votingInfo[state];
-  container.innerHTML = `
-    <div class="card">
-      <h3>Register to Vote</h3>
-      <p><a href="${info.registrationLink}" target="_blank">Register Online</a></p>
-      <p><a href="${info.statusCheckLink}" target="_blank">Check Registration Status</a></p>
-      <p><strong>Deadline:</strong> ${info.registrationDeadline}</p>
-    </div>
-    <div class="card">
-      <h3>Find Your Polling Place</h3>
-      <p><a href="${info.pollingPlaceLink}" target="_blank">Polling Place Lookup</a></p>
-      ${info.earlyVotingStart ? `<p><strong>Early Voting:</strong> ${info.earlyVotingStart} to ${info.earlyVotingEnd}</p>` : '<p><em>Early voting not available statewide.</em></p>'}
-    </div>
-    <div class="card">
-      <h3>Vote by Mail</h3>
-      <p><a href="${info.absenteeLink}" target="_blank">Request Absentee Ballot</a></p>
-      <p><strong>Request Deadline:</strong> ${info.absenteeRequestDeadline}</p>
-      <p><strong>Return Deadline:</strong> ${info.absenteeReturnDeadline}</p>
-      <p>Must include a copy of valid photo ID.</p>
-    </div>
-    <div class="card">
-      <h3>Volunteer</h3>
-      <p><a href="${info.volunteerLink}" target="_blank">Become a Poll Worker</a></p>
-    </div>
-  `;
-}
-
-/* ---------------- UTIL ---------------- */
-// Basic escaping to avoid quotes breaking injected onclick strings
-function escapeJs(str = '') {
-  return String(str).replace(/'/g, "\\'").replace(/"/g, '\\"').replace(/\n/g, '\\n').replace(/\r/g, '\\r');
-}
-
-/* ---------------- OFFICIALS RENDER ---------------- */
-function renderCards(data, containerId) {
-  const container = document.getElementById(containerId);
-  if (!container) {
-    console.warn(`Missing container: ${containerId}`);
-    return;
-  }
-
-  const cardsHTML = data.map(person => {
-    const imageUrl = person.photo?.trim() || 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/200px-No_image_available.svg.png';
-    const partyLower = (person.party || '').toLowerCase();
-    const partyColor = partyLower.includes("repub") ? "#d73027" :
-                       partyLower.includes("dem") ? "#4575b4" :
-                       partyLower.includes("libert") ? "#fdae61" :
-                       partyLower.includes("indep") ? "#999999" :
-                       partyLower.includes("green") ? "#66bd63" :
-                       partyLower.includes("constit") ? "#984ea3" :
-                       "#cccccc";
-
-    // Use data-slug attribute used by the click handler
-    return `
-      <div class="card" data-slug="${person.slug}" onclick="expandCard('${person.slug}')" style="border-left: 8px solid ${partyColor};">
-        <img src="${imageUrl}" alt="${person.name}" onerror="this.onerror=null;this.src='https://via.placeholder.com/200x300?text=No+Photo'" />
-        <h3>${person.name}</h3>
-        <p>${person.office || person.position || ''}</p>
-        <p>${person.state}${person.party ? ', ' + person.party : ''}</p>
-      </div>
-    `;
-  }).join('');
-
-  container.innerHTML = cardsHTML;
-}
-
-function expandCard(slug) {
-  const person = allOfficials.find(p => p.slug === slug);
-  if (person) openModal(person);
-}
-
-function openModal(person) {
-  const imageUrl = person.imageUrl || person.photo || 'images/fallback.jpg';
-  const link = person.ballotpediaLink || person.contact?.website || '';
-
-  let billsHTML = '';
-  if (person.billsSigned?.length) {
-    billsHTML = `
-      <p><strong>Key Bills Signed:</strong></p>
-      <ul>
-        ${person.billsSigned.map(bill => `<li><a href="${bill.link}" target="_blank" rel="noopener noreferrer">${bill.title}</a></li>`).join('')}
-      </ul>
-    `;
-  }
-
-  let followThroughHTML = '';
-  if (person.platformFollowThrough && Object.keys(person.platformFollowThrough).length) {
-    followThroughHTML = `
-      <div class="platform-followthrough">
-        <h3>Platform Follow-Through</h3>
-        <ul>
-          ${Object.entries(person.platformFollowThrough).map(([key, value]) => `
-            <li><strong>${key}:</strong> ${value}</li>
-          `).join('')}
-        </ul>
-      </div>
-    `;
-  }
-
-  const modalHTML = `
-    <div class="modal-container">
-      <div class="modal-left">
-        <img src="${imageUrl}" alt="${person.name}" onerror="this.onerror=null;this.src='https://via.placeholder.com/200x300?text=No+Photo'" />
-        <h2>${person.name}</h2>
-        ${link ? `<p><a href="${link}" target="_blank" rel="noopener noreferrer">External Profile</a></p>` : ''}
-        <p><strong>Contact:</strong>
-          ${person.contact?.email ? `<a href="mailto:${person.contact.email}" class="contact-icon">📧</a>` : ''}
-          ${person.contact?.phone ? `<a href="tel:${person.contact.phone.replace(/[^0-9]/g, '')}" class="contact-icon">📞</a>` : ''}
-          ${person.contact?.website ? `<a href="${person.contact.website}" target="_blank" rel="noopener noreferrer" class="contact-icon">🌐</a>` : ''}
-        </p>
-      </div>
-
-      <div class="modal-right">
-        ${person.bio ? `<p><strong>Bio:</strong> ${person.bio}</p>` : ''}
-        ${person.education ? `<p><strong>Education:</strong> ${person.education}</p>` : ''}
-        ${person.endorsements ? `<p><strong>Endorsements:</strong> ${person.endorsements}</p>` : ''}
-        ${person.platform ? `<p><strong>Platform:</strong> ${person.platform}</p>` : ''}
-        ${followThroughHTML}
-        ${person.proposals ? `<p><strong>Legislative Proposals:</strong> ${person.proposals}</p>` : ''}
-        ${billsHTML}
-        ${person.vetoes ? `<p><strong>Vetoes:</strong> ${person.vetoes}</p>` : ''}
-        ${person.salary ? `<p><strong>Salary:</strong> ${person.salary}</p>` : ''}
-        ${person.predecessor ? `<p><strong>Predecessor:</strong> ${person.predecessor}</p>` : ''}
-        ${person.donationLink ? `<p><strong>Donate:</strong> <a href="${person.donationLink}" target="_blank" rel="noopener noreferrer">💸</a></p>` : ''}
-        <p><button id="modal-close-btn">Close</button></p>
-      </div>
-    </div>
-  `;
-
-  const modalContent = document.getElementById('modal-content');
-  if (!modalContent) return;
-  modalContent.innerHTML = modalHTML;
-
-  const overlay = document.getElementById('modal-overlay');
-  if (overlay) overlay.style.display = 'flex';
-
-  const closeBtn = document.getElementById('modal-close-btn');
-  if (closeBtn) closeBtn.addEventListener('click', closeModal);
-}
-
-function closeModal() {
-  const overlay = document.getElementById('modal-overlay');
-  if (overlay) overlay.style.display = 'none';
-  const modalContent = document.getElementById('modal-content');
-  if (modalContent) modalContent.innerHTML = '';
-}
-
-/* ---------------- INDIVIDUAL LIST RENDERS ---------------- */
-function renderMyOfficials(state) {
-  const matches = window.allOfficials.filter(person => {
-    const stateMatch =
-      person.state === state ||
-      person.stateName === state ||
-      person.stateAbbreviation === state;
-
-    const role = (person.office || person.position || "").toLowerCase();
-    const isLtGovernor = role.includes("lt. governor") || role.includes("lieutenant governor");
-
-    return stateMatch && !isLtGovernor;
-  });
-
-  console.log("Filtered My Officials:", matches.map(p => `${p.name} (${p.office})`));
-  renderCards(matches, 'my-cards');
-}
-
-function renderLtGovernors(data) {
-  const container = document.getElementById('lt-governors-container');
-  if (!container) return;
-
-  container.innerHTML = '';
-  data.forEach(gov => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerHTML = `
-      <h3>${gov.name}</h3>
-      <p>${gov.state}</p>
-      <img src="${gov.photo || 'https://via.placeholder.com/200x300?text=No+Photo'}" alt="${gov.name}" />
-    `;
-    container.appendChild(card);
-  });
-}
-
-/* ---------------- RANKINGS & ROOKIES ---------------- */
-function renderRankings() {
-  const governors = allOfficials.filter(p => p.office?.includes("Governor") && !p.office?.includes("LtGovernor"));
-  const ltGovernors = allOfficials.filter(p => p.office?.includes("LtGovernor"));
-  const senators = allOfficials.filter(p => p.office?.includes("Senator"));
-  const house = allOfficials.filter(p => p.office?.includes("Representative"));
-
-  renderCards(governors, 'rankings-governors');
-  renderCards(senators, 'rankings-senators');
-  renderCards(house, 'rankings-house');
-  renderCards(ltGovernors, 'rankings-ltgovernors'); // ✅ This makes them show up
-}
-
-function renderRookies() {
-  const cutoffYear = new Date().getFullYear() - 6;
-
-  const rookieGovernors = allOfficials.filter(p =>
-    (p.office || '').includes("Governor") && Number(p.termStart) >= cutoffYear
-  );
-  const rookieSenators = allOfficials.filter(p =>
-    (p.office || '').includes("Senator") && Number(p.termStart) >= cutoffYear
-  );
-  const rookieHouse = allOfficials.filter(p =>
-    (p.office || '').includes("Representative") && Number(p.termStart) >= cutoffYear
-  );
-  const rookieLtGovernors = allOfficials.filter(p =>
-    (p.office || '').includes("LtGovernor") && Number(p.termStart) >= cutoffYear
-  );
-
-  renderCards(rookieGovernors, 'rookie-governors');
-  renderCards(rookieSenators, 'rookie-senators');
-  renderCards(rookieHouse, 'rookie-house');
-  renderCards(rookieLtGovernors, 'rookie-ltgovernors');
-}
-
-/* ---------------- COMPARE ---------------- */
-function populateCompareDropdowns() {
-  const left = document.getElementById('compare-left');
-  const right = document.getElementById('compare-right');
-  if (!left || !right) return;
-
-  left.innerHTML = '<option value="">Select official A</option>';
-  right.innerHTML = '<option value="">Select official B</option>';
-
-  allOfficials.forEach(person => {
-    const label = `${person.name} (${person.state}${person.party ? ', ' + person.party : ''})`;
-    left.add(new Option(label, person.slug));
-    right.add(new Option(label, person.slug));
-  });
-
-  left.addEventListener('change', e => renderCompareCard(e.target.value, 'compare-card-left'));
-  right.addEventListener('change', e => renderCompareCard(e.target.value, 'compare-card-right'));
-}
-
-function renderCompareCard(slug, containerId) {
-  const person = allOfficials.find(p => p.slug === slug);
-  const container = document.getElementById(containerId);
-  if (!container) return;
-
-  if (!person) {
-    container.innerHTML = '<p>No official selected.</p>';
-    return;
-  }
-
-  const imageUrl = person.photo?.trim() || 'https://via.placeholder.com/200x300?text=No+Photo';
-  const link = person.ballotpediaLink || person.contact?.website || null;
-
-  container.innerHTML = `
-    <div class="card">
-      <img src="${imageUrl}" alt="${person.name}" onerror="this.onerror=null;this.src='https://via.placeholder.com/200x300?text=No+Photo'" />
-      <h3>${person.name}</h3>
-      <p><strong>Office:</strong> ${person.office || person.position || ''}</p>
-      <p><strong>State:</strong> ${person.state}</p>
-      <p><strong>Party:</strong> ${person.party || '—'}</p>
-      <p><strong>Term:</strong> ${person.termStart || '—'} to ${person.termEnd || '—'}</p>
-      ${link ? `<p><a href="${link}" target="_blank" rel="noopener noreferrer">External Profile</a></p>` : ''}
-    </div>
-  `;
-}
-
-/* ---------------- DATA LOADING ---------------- */
-async function loadData() {
-  try {
-    await waitForHouseData();
-
-    const house = window.cleanedHouse || [];
-    const governors = await fetch('Governors.json').then(res => res.json()).catch(() => []);
-    const senate = await fetch('Senate.json').then(res => res.json()).catch(() => []);
-    let ltGovernors = [];
-
-    try {
-      const res = await fetch('LtGovernors.json');
-      ltGovernors = await res.json();
-      console.log('Lt. Governors loaded:', ltGovernors.length);
-    } catch (err) {
-      console.warn('LtGovernors.json not found or failed to parse.', err);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Poliscope</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    #modal-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
     }
-
-    // Compose global officials list
-    window.allOfficials = [...(governors || []), ...(senate || []), ...(house || []), ...(ltGovernors || [])];
-    allOfficials = window.allOfficials; // local reference too
-
-    // Populate UI
-    populateCompareDropdowns();
-    renderRankings();
-    renderRookies();
-    renderLtGovernors(ltGovernors || []);
-
-    // State select setup
-    const stateSelect = document.getElementById('state-select');
-    if (stateSelect) {
-      const states = [...new Set(allOfficials.map(p => p.state).filter(Boolean))].sort();
-      stateSelect.innerHTML = '<option value="">Choose a state</option>' + states.map(state => `<option value="${state}">${state}</option>`).join('');
-      // Default selection (if present)
-      stateSelect.value = stateSelect.querySelector('option[value="Alabama"]') ? 'Alabama' : (states[0] || '');
-
-      const defaultState = stateSelect.value || 'Alabama';
-      renderMyOfficials(defaultState);
-      renderCalendar(calendarEvents, defaultState);
-      renderVotingInfo(defaultState);
-
-      stateSelect.addEventListener('change', function (e) {
-        const selectedState = e.target.value;
-        renderMyOfficials(selectedState);
-        renderCalendar(calendarEvents, selectedState);
-        renderVotingInfo(selectedState);
-      });
-    } else {
-      // If no state-select element, at least render something for Alabama
-      renderMyOfficials('Alabama');
-      renderCalendar(calendarEvents, 'Alabama');
-      renderVotingInfo('Alabama');
+    #modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      width: 90%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      overflow-y: auto;
+      max-height: 80vh;
     }
-  } catch (err) {
-    console.error("Error loading data:", err);
-  }
-}
-
-/* Wait for window.cleanedHouse to be available (if other script produces it) */
-function waitForHouseData() {
-  return new Promise(resolve => {
-    const check = () => {
-      if (window.cleanedHouse && Array.isArray(window.cleanedHouse)) {
-        resolve();
-      } else {
-        setTimeout(check, 50);
-      }
-    };
-    check();
-  });
-}
-
-/* ---------------- BOOTSTRAP / DOM ---------------- */
-document.addEventListener('DOMContentLoaded', function () {
-  loadData();
-
-  // Search input logic
-  const search = document.getElementById('search');
-  const results = document.getElementById('results');
-
-  if (search) {
-    search.addEventListener('input', function (e) {
-      const query = e.target.value.toLowerCase().trim();
-      if (!query) {
-        if (results) results.innerHTML = '';
-        return;
-      }
-
-      const matches = allOfficials.filter(person =>
-        (person.name || '').toLowerCase().includes(query) ||
-        (person.state || '').toLowerCase().includes(query) ||
-        ((person.party || '').toLowerCase().includes(query))
-      );
-
-      const resultsHTML = matches.map(person => {
-        const label = `${person.name} (${person.state}${person.party ? ', ' + person.party : ''})`;
-        const link = person.ballotpediaLink || person.contact?.website || null;
-
-        return link
-          ? `<li><a href="${link}" target="_blank" rel="noopener noreferrer">${label}</a></li>`
-          : `<li>${label}</li>`;
-      }).join('');
-
-      if (results) results.innerHTML = resultsHTML || `<li>No matches for "${query}"</li>`;
-    });
-
-    // Click outside to clear results
-    document.addEventListener('click', function (e) {
-      if (search && results && !search.contains(e.target) && !results.contains(e.target)) {
-        results.innerHTML = '';
-        search.value = '';
-      }
-    });
-  }
-
-  // Calendar initial render & state sync (ensures calendar updates if state-select exists)
-  const stateSelect = document.getElementById('state-select');
-  if (stateSelect) {
-    const defaultState = stateSelect.value || 'Alabama';
-    renderCalendar(calendarEvents, defaultState);
-
-    stateSelect.addEventListener('change', () => {
-      renderCalendar(calendarEvents, stateSelect.value);
-    });
-  }
-
-  // Modal overlay click to close
-  const overlay = document.getElementById('modal-overlay');
-  if (overlay) {
-    overlay.addEventListener('click', function (e) {
-      if (e.target === overlay) closeModal();
-    });
-  }
-
-  // Tab button wiring
-  document.querySelectorAll('.tab-button').forEach(button => {
-    button.addEventListener('click', () => {
-      const tabId = button.getAttribute('data-tab');
-      document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-      button.classList.add('active');
-      window.showTab(tabId);
-    });
-  });
-
-  // Ensure UI starts at a sensible tab
-  if (!document.querySelector('.tab-button.active')) {
-    const firstTab = document.querySelector('.tab-button');
-    if (firstTab) {
-      firstTab.classList.add('active');
-      const tabId = firstTab.getAttribute('data-tab');
-      window.showTab(tabId);
+    #modal-close {
+      margin-top: 10px;
+      padding: 8px 16px;
+      background: #0055a5;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
     }
-  }
-});
+  </style>
+</head>
+  <link rel="stylesheet" href="style.css" />
+
+<body>
+ <header class="electorate-header">
+  <img src="assets/electorate-logo.png" alt="Electorate logo" class="electorate-logo" />
+</header>
+
+  <nav id="tabs">
+    <button onclick="showTab('my-officials')">My Officials</button>
+    <button onclick="showTab('compare')">Current Matchups</button>
+    <button onclick="showTab('rankings')">Rankings</button>
+    <button onclick="showTab('rookies')">Rookies to Watch</button>
+    <button onclick="showTab('calendar')">Calendar</button>
+    <button onclick="showTab('registration')">Registration</button>
+  </nav>
+
+  <input type="text" id="search" placeholder="Search by name, state, or party..." />
+  <ul id="results"></ul>
+  <label for="state-select">Select your state:</label>
+<select id="state-select">
+  <option value="">Choose a state</option>
+  <option value="North Carolina">North Carolina</option>
+  <option value="California">California</option>
+  <option value="Texas">Texas</option>
+</select>
+
+    <section id="my-officials">
+    <h2>My Officials</h2>
+    <div class="card-container" id="my-cards"></div>
+    <div class="card-container" id="rankings"></div>
+    <div class="card-container" id="rookies"></div>
+    <div class="card-container" id="lt-governors-container"></div>
+  </section>
+
+  <section id="compare" style="display:none;">
+  <h2>Current Matchups</h2>
+    <div class="matchup-dropdown-wrapper">
+  <label for="matchup-state">Select a state:</label>
+  <select id="matchup-state">
+  <option value="">Choose a state</option>
+  <option value="Alabama">Alabama</option>
+  <option value="Alaska">Alaska</option>
+  <option value="Arizona">Arizona</option>
+  <option value="Arkansas">Arkansas</option>
+  <option value="California">California</option>
+  <option value="Colorado">Colorado</option>
+  <option value="Connecticut">Connecticut</option>
+  <option value="Delaware">Delaware</option>
+  <option value="Florida">Florida</option>
+  <option value="Georgia">Georgia</option>
+  <option value="Hawaii">Hawaii</option>
+  <option value="Idaho">Idaho</option>
+  <option value="Illinois">Illinois</option>
+  <option value="Indiana">Indiana</option>
+  <option value="Iowa">Iowa</option>
+  <option value="Kansas">Kansas</option>
+  <option value="Kentucky">Kentucky</option>
+  <option value="Louisiana">Louisiana</option>
+  <option value="Maine">Maine</option>
+  <option value="Maryland">Maryland</option>
+  <option value="Massachusetts">Massachusetts</option>
+  <option value="Michigan">Michigan</option>
+  <option value="Minnesota">Minnesota</option>
+  <option value="Mississippi">Mississippi</option>
+  <option value="Missouri">Missouri</option>
+  <option value="Montana">Montana</option>
+  <option value="Nebraska">Nebraska</option>
+  <option value="Nevada">Nevada</option>
+  <option value="New Hampshire">New Hampshire</option>
+  <option value="New Jersey">New Jersey</option>
+  <option value="New Mexico">New Mexico</option>
+  <option value="New York">New York</option>
+  <option value="North Carolina">North Carolina</option>
+  <option value="North Dakota">North Dakota</option>
+  <option value="Ohio">Ohio</option>
+  <option value="Oklahoma">Oklahoma</option>
+  <option value="Oregon">Oregon</option>
+  <option value="Pennsylvania">Pennsylvania</option>
+  <option value="Rhode Island">Rhode Island</option>
+  <option value="South Carolina">South Carolina</option>
+  <option value="South Dakota">South Dakota</option>
+  <option value="Tennessee">Tennessee</option>
+  <option value="Texas">Texas</option>
+  <option value="Utah">Utah</option>
+  <option value="Vermont">Vermont</option>
+  <option value="Virginia">Virginia</option>
+  <option value="Washington">Washington</option>
+  <option value="West Virginia">West Virginia</option>
+  <option value="Wisconsin">Wisconsin</option>
+  <option value="Wyoming">Wyoming</option>
+</select>
+ </div>
+     
+  </section>
+
+  <section id="rankings" style="display:none;">
+    <h2>Official Rankings</h2>
+<details>
+  <summary><strong>Full Rankings: Lt. Governors</strong></summary>
+  <div class="card-container" id="rankings-ltgovernors"></div>
+</details>
+
+    <h3>Top 10 Overall</h3>
+    <div class="card-container" id="top10-overall"></div>
+
+    <details>
+      <summary><strong>Full Rankings: Governors</strong></summary>
+      <div class="card-container" id="rankings-governors"></div>
+    </details>
+
+    <details>
+      <summary><strong>Full Rankings: Senators</strong></summary>
+      <div class="card-container" id="rankings-senators"></div>
+    </details>
+
+    <details>
+      <summary><strong>Full Rankings: House Representatives</strong></summary>
+      <div class="card-container" id="rankings-house"></div>
+    </details>
+  </section>
+
+  <section id="rookies" style="display:none;">
+  <h2>Rookies to Watch</h2>
+  <h3>Governors</h3>
+  <div class="card-container" id="rookie-governors"></div>
+  <h3>Senators</h3>
+  <div class="card-container" id="rookie-senators"></div>
+  <h3>House Representatives</h3>
+  <div class="card-container" id="rookie-house"></div>
+   <h3>Lt. Governors</h3>
+<div class="card-container" id="rookie-ltgovernors"></div>
+
+</section>
+
+<section id="lt-governors" style="display:none;">
+  <h2>Lieutenant Governors</h2>
+  <div class="card-container" id="lt-governors-container"></div>
+</section>
+
+ <section id="calendar" style="display:none;">
+  <h2>Civic Calendar</h2>
+  <div id="calendar-container"></div>
+</section>
+
+  <section id="registration" style="display:none;">
+  <h2>Voting & Registration</h2>
+  <div id="voting-container"></div>
+</section>
+
+  <div id="modal-overlay" style="display:none;">
+    <div id="modal-content"></div>
+    <button onclick="closeModal()" id="modal-close">Close</button>
+  </div>
+
+<script src="script.js"></script>
+<script src="cleanHouse.js"></script>
+</body>
+</html>
