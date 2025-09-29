@@ -13,7 +13,10 @@ window.showTab = function(id) {
 };
 // --- Rookie Logic ---
 function isRookie(person) {
-  return person.firstTerm === true || (person.termStart && person.termStart.includes("2025"));
+  const termStart = person.termStart;
+  const termStartStr = typeof termStart === 'string' ? termStart : '';
+
+  return person.firstTerm === true || termStartStr.includes("2025");
 }
 /* ---------------- CALENDAR EVENTS ---------------- */
 const calendarEvents = [
