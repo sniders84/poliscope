@@ -407,22 +407,23 @@ async function loadData() {
       console.warn('LtGovernors.json not found or failed to parse.', err);
     }
 
-    // Compose global officials list
-    window.allOfficials = [...(governors || []), ...(senate || []), ...(house || []), ...(ltGovernors || [])];
-    allOfficials = window.allOfficials; // local reference too
+    // ✅ Compose global officials list WITHOUT Lt. Governors
+    window.allOfficials = [...(governors || []), ...(senate || []), ...(house || [])];
+    allOfficials = window.allOfficials;
 
-    // Populate UI
+    // ✅ Render Lt. Governors separately
+    renderLtGovernors(ltGovernors || []);
+
+    // ✅ Populate UI
     populateCompareDropdowns();
     renderRankings();
     renderRookies();
-    renderLtGovernors(ltGovernors || []);
 
-    // State select setup
+    // ✅ State select setup
     const stateSelect = document.getElementById('state-select');
     if (stateSelect) {
       const states = [...new Set(allOfficials.map(p => p.state).filter(Boolean))].sort();
       stateSelect.innerHTML = '<option value="">Choose a state</option>' + states.map(state => `<option value="${state}">${state}</option>`).join('');
-      // Default selection (if present)
       stateSelect.value = stateSelect.querySelector('option[value="Alabama"]') ? 'Alabama' : (states[0] || '');
 
       const defaultState = stateSelect.value || 'Alabama';
@@ -437,7 +438,6 @@ async function loadData() {
         renderVotingInfo(selectedState);
       });
     } else {
-      // If no state-select element, at least render something for Alabama
       renderMyOfficials('Alabama');
       renderCalendar(calendarEvents, 'Alabama');
       renderVotingInfo('Alabama');
