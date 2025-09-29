@@ -1,3 +1,11 @@
+function showTab(tabId) {
+  document.querySelectorAll('section').forEach(section => {
+    section.style.display = 'none';
+  });
+  const target = document.getElementById(tabId);
+  if (target) target.style.display = 'block';
+}
+
 console.log("✅ script.js loaded");
 window.civicEvents = [
   {
