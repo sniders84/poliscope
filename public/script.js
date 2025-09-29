@@ -346,20 +346,24 @@ function renderRookies() {
     ltgovernor: []
   };
 
-  rookies.forEach(person => {
+ rookies.forEach(person => {
   const role = (person.office || person.position || "").toLowerCase();
 
   if (role.includes("senator")) {
     groups.senator.push(person);
   } else if (role.includes("representative") || role.includes("house")) {
     groups.representative.push(person);
-  } else if (role.includes("lt. governor") || role.includes("lt governor") || role.includes("ltgovernor") || role.includes("lieutenant governor")) {
+  } else if (
+    role.includes("lt. governor") ||
+    role.includes("lt governor") ||
+    role.includes("ltgovernor") ||
+    role.includes("lieutenant governor")
+  ) {
     groups.ltgovernor.push(person);
   } else if (role.includes("governor")) {
     groups.governor.push(person);
   }
 });
-
   renderCards(groups.governor, 'rookie-governors');
   renderCards(groups.senator, 'rookie-senators');
   renderCards(groups.representative, 'rookie-house');
