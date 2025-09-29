@@ -4,78 +4,102 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Electorate Dashboard</title>
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- 🔹 Header -->
   <header class="electorate-header">
-    <img src="/assets/logo.png" alt="Electorate Logo" class="electorate-logo">
+    <img src="assets/logo.png" alt="Electorate Logo" class="electorate-logo">
     <h1>Electorate Dashboard</h1>
   </header>
 
-  <div class="tab-container">
-    <div class="tab-buttons">
-      <button class="tab-button active" data-tab="my-officials">My Officials</button>
-      <button class="tab-button" data-tab="rankings">Rankings</button>
-      <button class="tab-button" data-tab="matchups">Match Ups</button>
-      <button class="tab-button" data-tab="rookies">Rookies to Watch</button>
-      <button class="tab-button" data-tab="calendar">Calendar</button>
-      <button class="tab-button" data-tab="registration">Registration</button>
-    </div>
-
-    <div id="my-officials" class="tab-content">
-      <input type="text" id="search-state" placeholder="Enter state to filter officials">
-      <div class="card-container" id="officials-container"></div>
-    </div>
-
-    <div id="rankings" class="tab-content" style="display:none;">
-      <select id="ranking-category">
-        <option value="governor">Governor</option>
-        <option value="lt-governor">Lieutenant Governor</option>
-        <option value="senate">Senate</option>
-        <option value="house">House</option>
-      </select>
-      <div class="card-container" id="rankings-container"></div>
-    </div>
-
-    <div id="matchups" class="tab-content" style="display:none;">
-      <input type="text" id="matchup-state" placeholder="Enter state to filter matchups">
-      <div class="card-container" id="matchups-container"></div>
-    </div>
-
-    <div id="rookies" class="tab-content" style="display:none;">
-      <select id="rookie-category">
-        <option value="governor">Governor</option>
-        <option value="lt-governor">Lieutenant Governor</option>
-        <option value="senate">Senate</option>
-        <option value="house">House</option>
-      </select>
-      <div class="card-container" id="rookies-container"></div>
-    </div>
-
-    <div id="calendar" class="tab-content" style="display:none;">
-      <div id="calendar-content">Select a state in "My Officials" to see upcoming events.</div>
-    </div>
-
-    <div id="registration" class="tab-content" style="display:none;">
-      <div id="registration-content">Select a state in "My Officials" for voter registration info.</div>
-    </div>
+  <!-- 🔹 Tabs -->
+  <div id="tabs" class="tab-buttons">
+    <button class="tab-button active" data-tab="my-officials">My Officials</button>
+    <button class="tab-button" data-tab="rankings">Rankings</button>
+    <button class="tab-button" data-tab="matchups">Matchups</button>
+    <button class="tab-button" data-tab="rookies">Rookies to Watch</button>
+    <button class="tab-button" data-tab="calendar">Calendar</button>
+    <button class="tab-button" data-tab="registration">Registration</button>
   </div>
 
-  <!-- Modal -->
+  <!-- 🔹 Tab Content -->
+  <div class="tab-container">
+
+    <!-- My Officials -->
+    <div id="my-officials" class="tab-content active">
+      <input type="text" id="search-officials" placeholder="Search by state..." />
+      <div class="card-container" id="officials-cards"></div>
+    </div>
+
+    <!-- Rankings -->
+    <div id="rankings" class="tab-content">
+      <h2>Senate Rankings</h2>
+      <div class="card-container" id="senate-rankings"></div>
+      <h2>House Rankings</h2>
+      <div class="card-container" id="house-rankings"></div>
+      <h2>Governor Rankings</h2>
+      <div class="card-container" id="governor-rankings"></div>
+      <h2>Lt Governor Rankings</h2>
+      <div class="card-container" id="ltgovernor-rankings"></div>
+    </div>
+
+    <!-- Matchups -->
+    <div id="matchups" class="tab-content">
+      <input type="text" id="search-matchups" placeholder="Search matchups by state..." />
+      <div class="card-container" id="matchups-cards"></div>
+    </div>
+
+    <!-- Rookies to Watch -->
+    <div id="rookies" class="tab-content">
+      <h2>Senate Rookies</h2>
+      <div class="card-container" id="rookies-senate"></div>
+      <h2>House Rookies</h2>
+      <div class="card-container" id="rookies-house"></div>
+      <h2>Governor Rookies</h2>
+      <div class="card-container" id="rookies-governor"></div>
+      <h2>Lt Governor Rookies</h2>
+      <div class="card-container" id="rookies-ltgovernor"></div>
+    </div>
+
+    <!-- Calendar -->
+    <div id="calendar" class="tab-content">
+      <h2>Important Dates</h2>
+      <div id="calendar-events"></div>
+    </div>
+
+    <!-- Registration -->
+    <div id="registration" class="tab-content">
+      <h2>Voter Registration & Info</h2>
+      <div id="registration-info"></div>
+    </div>
+
+  </div>
+
+  <!-- 🔹 Modal -->
   <div id="modal" class="modal-container" style="display:none;">
     <div class="modal-left">
       <img id="modal-photo" src="" alt="Official Photo">
     </div>
-    <div class="modal-right">
+    <div class="modal-right" id="modal-content">
       <h3 id="modal-name"></h3>
       <p id="modal-office"></p>
       <p id="modal-party"></p>
       <p id="modal-bio"></p>
-      <ul id="modal-details"></ul>
-      <button onclick="closeModal()">Close</button>
+      <p><strong>Education:</strong> <span id="modal-education"></span></p>
+      <p><strong>Contact:</strong> <span id="modal-contact"></span></p>
+      <p><strong>Platform:</strong> <span id="modal-platform"></span></p>
+      <p><strong>Proposals:</strong> <span id="modal-proposals"></span></p>
+      <p><strong>Bills Signed:</strong></p>
+      <ul id="modal-bills"></ul>
+      <p><strong>Vetoes:</strong> <span id="modal-vetoes"></span></p>
+      <p><strong>Salary:</strong> <span id="modal-salary"></span></p>
+      <p><strong>Predecessor:</strong> <span id="modal-predecessor"></span></p>
+      <p><strong>Polling Score:</strong> <span id="modal-polling"></span></p>
+      <button id="modal-close">Close</button>
     </div>
   </div>
 
-  <script src="/script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
