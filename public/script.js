@@ -15,8 +15,14 @@ window.showTab = function(id) {
 function isRookie(person) {
   const termStart = person.termStart;
   const termStartStr = typeof termStart === 'string' ? termStart : '';
+  const year = termStartStr.slice(0, 4);
 
-  return person.firstTerm === true || termStartStr.includes("2025");
+  return (
+    person.firstTerm === true ||
+    year === "2025" ||
+    person.rookie === true ||
+    person.newlyElected === true
+  );
 }
 /* ---------------- CALENDAR EVENTS ---------------- */
 const calendarEvents = [
