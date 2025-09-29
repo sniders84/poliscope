@@ -243,6 +243,7 @@ function renderMyOfficials(state) {
     const official = allOfficials.find(p => p.id === officialId);
     if (official) openModal(official);
 });
+});      
   console.log("Filtered My Officials:", matches.map(p => `${p.name} (${p.office})`));
 
   renderCards(matches, 'my-cards');
@@ -266,6 +267,14 @@ function renderLtGovernors(data) {
     container.appendChild(card);
   });
 }
+  fetch('LtGovernors.json')
+  .then(res => res.json())
+  .then(data => {
+    console.log("✅ Loaded LtGovernors.json:", data.length, "entries");
+    renderLtGovernors(data);
+  })
+  .catch(err => console.error("❌ Failed to load LtGovernors.json:", err));
+
 
 function renderRankings() {
   const governors = allOfficials.filter(p => p.office?.includes("Governor"));
