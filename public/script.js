@@ -461,11 +461,7 @@ async function loadData() {
     populateCompareDropdowns();
     renderRankings();
     renderRookies();
-  } catch (err) {
-    console.error('Data loading failed:', err);
-  }
-}
-
+ 
 // ✅ Call the function AFTER it's defined
 loadData();
 
