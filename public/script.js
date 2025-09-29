@@ -1,13 +1,6 @@
-function showTab(tabId) {
-  document.querySelectorAll('section').forEach(section => {
-    section.style.display = 'none';
-  });
-  const target = document.getElementById(tabId);
-  if (target) target.style.display = 'block';
-}
 
 console.log("✅ script.js loaded");
-window.civicEvents = [
+let civicEvents = [
   {
     title: "General Election",
     date: "2025-11-04",
@@ -245,13 +238,13 @@ function renderMyOfficials(state) {
   const isLtGovernor = role.includes("lt. governor") || role.includes("lieutenant governor");
 
   return stateMatch && !isLtGovernor;
-    document.querySelectorAll('.card').forEach(card => {
-  card.addEventListener('click', () => {
-    const officialId = card.getAttribute('data-id');
-    const official = allOfficials.find(p => p.id === officialId);
-    if (official) openModal(official);
 });
-  console.log("Filtered My Officials:", matches.map(p => `${p.name} (${p.office})`));
+
+  (person.state === state ||
+   person.stateName === state ||
+   person.stateAbbreviation === state) &&
+  !person.office?.toLowerCase().includes("lt. governor")
+);
 
   renderCards(matches, 'my-cards');
 }
@@ -385,9 +378,15 @@ try {
   populateCompareDropdowns();
   renderRankings();
   renderRookies();
+ 
 } catch (err) {
   console.error('Error loading LtGovernors:', err);
 }
+
+    const ltContainer = document.getElementById('lt-governors-container');
+
+}
+    console.log('Lt. Governors loaded:', ltGovernors);
 
          const stateSelect = document.getElementById('state-select');
     if (stateSelect) {
