@@ -493,8 +493,7 @@ document.querySelectorAll('.tab-button').forEach(button => {
     document.querySelectorAll('.tab-content').forEach(content => {
       content.style.display = content.id === tabId ? 'block' : 'none';
     });
-  });
-});
+
   fetch('LtGovernors.json')
   .then(res => res.json())
   .then(data => {
