@@ -639,4 +639,41 @@ async function populateMatchupStates() {
 
 // Call this after loading officials
 populateMatchupStates();
+async function showMatchupOfficials(state) {
+  const matchupContainer = document.getElementById("compare-container");
+
+  // Clear previous results
+  matchupContainer.innerHTML = "";
+
+  if (!state) return; // nothing selected
+
+  const officialFiles = [
+    {file: 'data/governors.json', type: 'Governor'},
+    {file: 'data/ltgovernors.json', type: 'Lt. Governor'},
+    {file: 'data/senators.json', type: 'Senator'},
+    {file: 'data/house.json', type: 'House Representative'}
+  ];
+
+  for (const {file, type} of officialFiles) {
+    const response = await fetch(file);
+    const data = await response.json();
+
+    data
+      .filter(official => official.state === state)
+      .forEach(official => {
+        const card = document.createElement("div");
+        card.className = "official-card";
+        card.innerHTML = `
+          <h3>${official.name}</h3>
+          <p>${type} - ${official.party}</p>
+        `;
+        matchupContainer.appendChild(card);
+      });
+  }
+}
+
+// Listen for dropdown changes
+document.getElementById("matchup-state").addEventListener("change", (e) => {
+  showMatchupOfficials(e.target.value);
+});
 
