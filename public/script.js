@@ -497,7 +497,7 @@ document.querySelectorAll('.tab-button').forEach(button => {
   fetch('LtGovernors.json')
   .then(res => res.json())
   .then(data => {
-    console.log("✅ Loaded LtGovernors.json:", data.length, "entries");
+    console.log(`✅ Loaded LtGovernors.json: ${data.length} entries`);
     renderLtGovernors(data);
   })
   .catch(err => console.error("❌ Failed to load LtGovernors.json:", err));
