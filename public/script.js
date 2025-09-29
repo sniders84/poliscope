@@ -456,20 +456,16 @@ async function loadData() {
 
     // ✅ Merge all roles into one array
     window.allOfficials = [...house, ...governors, ...senate, ...ltGovernors];
-
-    // ✅ Trigger your rendering logic
-    renderEverything(); // or whatever your init function is
-  } catch (err) {
-    console.error('Data loading failed:', err);
-  }
-    // ✅ Compose global officials list WITHOUT Lt. Governors
-    window.allOfficials = [...(governors || []), ...(senate || []), ...(house || []), ...(ltGovernors || [])];
     allOfficials = window.allOfficials;
-    
+
     // ✅ Populate UI
     populateCompareDropdowns();
     renderRankings();
     renderRookies();
+  } catch (err) {
+    console.error('Data loading failed:', err);
+  }
+}
 
     // ✅ State select setup
     const stateSelect = document.getElementById('state-select');
