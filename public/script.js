@@ -11,7 +11,10 @@ window.showTab = function(id) {
   const search = document.getElementById('search');
   if (search) search.value = '';
 };
-
+// --- Rookie Logic ---
+function isRookie(person) {
+  return person.firstTerm === true || (person.termStart && person.termStart.includes("2025"));
+}
 /* ---------------- CALENDAR EVENTS ---------------- */
 const calendarEvents = [
   {
@@ -331,27 +334,33 @@ function renderRankings() {
 }
 
 function renderRookies() {
-  const cutoffYear = new Date().getFullYear() - 6;
+  const rookies = window.allOfficials.filter(person => isRookie(person));
 
-  const rookieGovernors = allOfficials.filter(p =>
-    (p.office || '').includes("Governor") && Number(p.termStart) >= cutoffYear
-  );
-  const rookieSenators = allOfficials.filter(p =>
-    (p.office || '').includes("Senator") && Number(p.termStart) >= cutoffYear
-  );
-  const rookieHouse = allOfficials.filter(p =>
-    (p.office || '').includes("Representative") && Number(p.termStart) >= cutoffYear
-  );
-  const rookieLtGovernors = allOfficials.filter(p =>
-    (p.office || '').includes("LtGovernor") && Number(p.termStart) >= cutoffYear
-  );
+  const groups = {
+    governor: [],
+    senator: [],
+    representative: [],
+    ltgovernor: []
+  };
 
-  renderCards(rookieGovernors, 'rookie-governors');
-  renderCards(rookieSenators, 'rookie-senators');
-  renderCards(rookieHouse, 'rookie-house');
-  renderCards(rookieLtGovernors, 'rookie-ltgovernors');
+  rookies.forEach(person => {
+    const role = (person.office || person.position || "").toLowerCase();
+    if (role.includes("governor") && !role.includes("lt")) {
+      groups.governor.push(person);
+    } else if (role.includes("senator")) {
+      groups.senator.push(person);
+    } else if (role.includes("representative") || role.includes("house")) {
+      groups.representative.push(person);
+    } else if (role.includes("lt")) {
+      groups.ltgovernor.push(person);
+    }
+  });
+
+  renderCards(groups.governor, 'rookie-governors');
+  renderCards(groups.senator, 'rookie-senators');
+  renderCards(groups.representative, 'rookie-house');
+  renderCards(groups.ltgovernor, 'rookie-ltgovernors');
 }
-
 /* ---------------- COMPARE ---------------- */
 function populateCompareDropdowns() {
   const left = document.getElementById('compare-left');
