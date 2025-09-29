@@ -2,161 +2,91 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Poliscope</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    #modal-overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 999;
-    }
-    #modal-content {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 600px;
-      width: 90%;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      overflow-y: auto;
-      max-height: 80vh;
-    }
-    #modal-close {
-      margin-top: 10px;
-      padding: 8px 16px;
-      background: #0055a5;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-  </style>
+  <title>Officials Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="electorate-header">
-    <img src="assets/electorate-logo.png" alt="Electorate logo" class="electorate-logo" />
+  <header>
+    <h1>Officials Dashboard</h1>
+    <nav>
+      <button onclick="showTab('my-officials')">My Officials</button>
+      <button onclick="showTab('rankings')">Rankings</button>
+      <button onclick="showTab('rookies')">Rookies</button>
+      <button onclick="showTab('compare')">Compare</button>
+      <button onclick="showTab('matchups')">Matchups</button>
+    </nav>
   </header>
 
-  <nav id="tabs">
-    <button onclick="showTab('my-officials')">My Officials</button>
-    <button onclick="showTab('compare')">Current Matchups</button>
-    <button onclick="showTab('rankings')">Rankings</button>
-    <button onclick="showTab('rookies')">Rookies to Watch</button>
-    <button onclick="showTab('calendar')">Calendar</button>
-    <button onclick="showTab('registration')">Registration</button>
-  </nav>
-
-  <input type="text" id="search" placeholder="Search by name, state, or party..." />
-  <ul id="results"></ul>
-
-  <label for="state-select">Select your state:</label>
-  <select id="state-select">
-    <option value="">Choose a state</option>
-    <option value="North Carolina">North Carolina</option>
-    <option value="California">California</option>
-    <option value="Texas">Texas</option>
-  </select>
-
   <!-- My Officials -->
-  <section id="my-officials" style="display:none;">
+  <section id="my-officials" style="display:block;">
     <h2>My Officials</h2>
+    <label for="state-select">Select State:</label>
+    <select id="state-select"></select>
     <div id="my-cards" class="card-container"></div>
   </section>
 
-  <!-- Current Matchups -->
-  <section id="compare" style="display:none;">
-    <h2>Current Matchups</h2>
-    <div class="matchup-dropdown-wrapper">
-      <label for="matchup-state">Select a state:</label>
-      <select id="matchup-state">
-        <option value="">Choose a state</option>
-        <!-- You can populate this dynamically later if desired -->
-      </select>
-    </div>
-  </section>
-  <section id="compare" style="display:none;">
-  <h2>Current Matchups</h2>
-  <div class="matchup-dropdown-wrapper">
-    <label for="matchup-state">Select a state:</label>
-    <select id="matchup-state">
-      <option value="">Choose a state</option>
-    </select>
-  </div>
-  <div id="compare-container" class="card-container"></div>
-</section>
-
   <!-- Rankings -->
   <section id="rankings" style="display:none;">
-    <h2>Official Rankings</h2>
-
-    <details>
-      <summary><strong>Full Rankings: Senators</strong></summary>
-      <div class="card-container" id="rankings-senators"></div>
-    </details>
-
-    <details>
-      <summary><strong>Full Rankings: House Representatives</strong></summary>
-      <div class="card-container" id="rankings-house"></div>
-    </details>
-
-    <details>
-      <summary><strong>Full Rankings: Governors</strong></summary>
-      <div class="card-container" id="rankings-governors"></div>
-    </details>
-
-    <details>
-      <summary><strong>Full Rankings: Lt. Governors</strong></summary>
-      <div class="card-container" id="rankings-ltgovernors"></div>
-    </details>
-
+    <h2>Rankings</h2>
     <h3>Top 10 Overall</h3>
-    <div class="card-container" id="top10-overall"></div>
+    <div id="top10-overall" class="card-container"></div>
+
+    <h3>Senators</h3>
+    <div id="rankings-senators" class="card-container"></div>
+
+    <h3>House Reps</h3>
+    <div id="rankings-house" class="card-container"></div>
+
+    <h3>Governors</h3>
+    <div id="rankings-governors" class="card-container"></div>
+
+    <h3>Lt. Governors</h3>
+    <div id="rankings-ltgovernors" class="card-container"></div>
   </section>
 
   <!-- Rookies -->
   <section id="rookies" style="display:none;">
-    <h2>Rookies to Watch</h2>
+    <h2>Rookies</h2>
     <h3>Senators</h3>
-    <div class="card-container" id="rookie-senators"></div>
-    <h3>House Representatives</h3>
-    <div class="card-container" id="rookie-house"></div>
+    <div id="rookie-senators" class="card-container"></div>
+
+    <h3>House Reps</h3>
+    <div id="rookie-house" class="card-container"></div>
+
     <h3>Governors</h3>
-    <div class="card-container" id="rookie-governors"></div>
+    <div id="rookie-governors" class="card-container"></div>
+
     <h3>Lt. Governors</h3>
-    <div class="card-container" id="rookie-ltgovernors"></div>
+    <div id="rookie-ltgovernors" class="card-container"></div>
   </section>
 
-  <!-- Lt. Governors -->
-  <section id="lt-governors" style="display:none;">
-    <h2>Lieutenant Governors</h2>
-    <div class="card-container" id="lt-governors-container"></div>
+  <!-- Compare -->
+  <section id="compare" style="display:none;">
+    <h2>Compare Officials</h2>
+    <div class="compare-selects">
+      <select id="compare-left"></select>
+      <select id="compare-right"></select>
+    </div>
+    <div class="compare-cards">
+      <div id="compare-card-left" class="card"></div>
+      <div id="compare-card-right" class="card"></div>
+    </div>
   </section>
 
-  <!-- Calendar -->
-  <section id="calendar" style="display:none;">
-    <h2>Civic Calendar</h2>
-    <div id="calendar-container"></div>
-  </section>
-
-  <!-- Registration -->
-  <section id="registration" style="display:none;">
-    <h2>Voting & Registration</h2>
-    <div id="voting-container"></div>
+  <!-- Matchups -->
+  <section id="matchups" style="display:none;">
+    <h2>State Matchups</h2>
+    <label for="matchup-state">Select State:</label>
+    <select id="matchup-state"></select>
+    <div id="compare-container" class="card-container"></div>
   </section>
 
   <!-- Modal -->
   <div id="modal-overlay" style="display:none;">
     <div id="modal-content"></div>
-    <button onclick="closeModal()" id="modal-close">Close</button>
   </div>
 
-  <!-- Scripts -->
-  <script src="script.js"></script>
   <script src="cleanHouse.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
