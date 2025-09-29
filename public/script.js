@@ -237,6 +237,11 @@ function renderMyOfficials(state) {
   const isLtGovernor = role.includes("lt. governor") || role.includes("lieutenant governor");
 
   return stateMatch && !isLtGovernor;
+    document.querySelectorAll('.card').forEach(card => {
+  card.addEventListener('click', () => {
+    const officialId = card.getAttribute('data-id');
+    const official = allOfficials.find(p => p.id === officialId);
+    if (official) openModal(official);
 });
   console.log("Filtered My Officials:", matches.map(p => `${p.name} (${p.office})`));
 
