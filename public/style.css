@@ -1,6 +1,4 @@
-/* ==============================
-   🔷 Layout and Branding
-   ============================== */
+/* 🔷 Layout and Branding */
 body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #f0f4f8;
@@ -16,23 +14,21 @@ h1 {
   text-align: center;
 }
 
-h2 {
+h2, h3 {
   color: #003f7f;
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
-/* ==============================
-   🔹 Tabs
-   ============================== */
-#tabs {
+/* 🔹 Tabs */
+#tabs, .tab-buttons {
   display: flex;
   gap: 12px;
-  margin-bottom: 20px;
   flex-wrap: wrap;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
-#tabs button {
+.tab-button {
   background-color: #0055a5;
   color: white;
   border: none;
@@ -43,40 +39,15 @@ h2 {
   transition: background-color 0.2s ease;
 }
 
-#tabs button:hover {
-  background-color: #003f7f;
-}
-
-.tab-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.tab-button {
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  font-weight: bold;
-  border: none;
-  border-radius: 6px;
-  background-color: #f0f0f0;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
 .tab-button:hover {
-  background-color: #e0e0e0;
+  background-color: #003f7f;
 }
 
 .tab-button.active {
   background-color: #1877F2;
-  color: white;
 }
 
-/* ==============================
-   🔸 Card Container
-   ============================== */
+/* 🔸 Card Container */
 .card-container {
   display: flex;
   flex-wrap: wrap;
@@ -84,6 +55,7 @@ h2 {
   justify-content: center;
 }
 
+/* 🟦 Official Cards */
 .card {
   border: 2px solid #ccc;
   border-radius: 10px;
@@ -93,6 +65,7 @@ h2 {
   text-align: center;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   transition: transform 0.2s ease;
+  cursor: pointer;
 }
 
 .card:hover {
@@ -120,25 +93,8 @@ h2 {
   color: #555;
 }
 
-/* ==============================
-   🔹 Compare Layout
-   ============================== */
-.compare-results {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.compare-results .card {
-  flex: 1 1 45%;
-  min-width: 300px;
-}
-
-/* ==============================
-   🔍 Search
-   ============================== */
-#search {
+/* 🔍 Search */
+#search, #matchup-search {
   display: block;
   margin: 20px auto;
   padding: 10px;
@@ -149,22 +105,13 @@ h2 {
   border-radius: 6px;
 }
 
-#results {
-  list-style: none;
-  padding: 0;
-  margin-top: 10px;
-  text-align: center;
-}
-
-#results li {
-  margin: 6px 0;
-}
-
-/* ==============================
-   === Modal Layout Styles ===
-   ============================== */
+/* === Modal Layout Styles === */
 .modal-container {
   display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   flex-direction: row;
   gap: 30px;
   background-color: #fff;
@@ -174,10 +121,6 @@ h2 {
   max-height: 90vh;
   overflow-y: auto;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   z-index: 1000;
 }
 
@@ -197,81 +140,61 @@ h2 {
   overflow-y: auto;
 }
 
-/* ==============================
-   🔹 Header
-   ============================== */
+#modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #ff4136;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+#modal-close:hover {
+  background-color: #c22a1a;
+}
+
+/* 🔹 Header */
 .electorate-header {
   height: 180px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background: linear-gradient(to right, #1877F2, #888888, #FFFFFF, #888888, #FF4136);
+  background: linear-gradient(
+    to right,
+    #1877F2,
+    #888888,
+    #FFFFFF,
+    #888888,
+    #FF4136
+  );
   border-bottom: 1px solid #ccc;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   overflow: hidden;
 }
 
 .electorate-logo {
-  height: 350px;
+  height: 120px;
   width: auto;
   display: block;
   margin: 0 auto;
 }
 
-/* Mobile tweaks */
-@media (max-width: 900px) {
-  .modal-container {
-    flex-direction: column;
-    width: 90%;
-  }
-  .modal-left, .modal-right {
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 600px) {
-  .electorate-logo {
-    width: 120px;
-    height: auto;
-    margin-top: 30px;
-    margin-bottom: 20px;
-  }
-  .card {
-    width: 100%;
-    max-width: 280px;
-  }
-}
-
-/* ==============================
-   🔹 Tab Content
-   ============================== */
-.tab-container {
-  margin: 2rem auto;
-  max-width: 960px;
-  padding: 0 1rem;
-}
-
+/* 🔹 Tab Content */
 .tab-content {
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 6px;
   padding: 1.5rem;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
 }
 
-/* ==============================
-   🔹 Matchup Section
-   ============================== */
-#matchup-state {
+/* 🔹 Matchup Section */
+#matchup-state, #compare {
   margin-bottom: 120px;
-}
-
-#compare {
-  padding-bottom: 150px;
 }
 
 .matchup-dropdown-wrapper {
@@ -281,4 +204,28 @@ h2 {
   margin-bottom: 60px;
   padding-top: 20px;
   padding-bottom: 200px;
+}
+
+/* Mobile tweaks */
+@media (max-width: 600px) {
+  .electorate-logo {
+    width: 120px;
+    height: auto;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .modal-container {
+    width: 90%;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .modal-left, .modal-right {
+    max-width: 100%;
+  }
+
+  .card {
+    width: 90%;
+  }
 }
