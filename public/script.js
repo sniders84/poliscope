@@ -497,11 +497,13 @@ document.querySelectorAll('.tab-button').forEach(button => {
     document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
     button.classList.add('active');
 
-    document.querySelectorAll('.tab-content').forEach(content => {
-      content.style.display = content.id === tabId ? 'block' : 'none';
-    });
+    function showTab(tabId) {
+  document.querySelectorAll('section').forEach(section => {
+    section.style.display = section.id === tabId ? 'block' : 'none';
+  });
+}
 
-  fetch('LtGovernors.json')
+fetch('LtGovernors.json')
   .then(res => res.json())
   .then(data => {
     console.log(`✅ Loaded LtGovernors.json: ${data.length} entries`);
