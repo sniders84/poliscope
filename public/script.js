@@ -341,10 +341,11 @@ function renderRankings() {
   const senators = allOfficials.filter(p => p.office?.includes("Senator"));
   const house = allOfficials.filter(p => p.office?.includes("Representative"));
 
-  renderCards(governors, 'rankings-governors');
+  renderCards(governorRankings, 'rankings-governors');
   renderCards(senators, 'rankings-senators');
   renderCards(house, 'rankings-house');
-  renderCards(ltGovernors, 'rankings-ltgovernors'); // ✅ This makes them show up
+  renderCards(ltGovernorRankings, 'rankings-ltgovernors'); 
+  // ✅ This makes them show up
 }
 
 function renderRookies() {
