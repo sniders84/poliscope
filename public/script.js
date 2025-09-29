@@ -1,5 +1,16 @@
-console.log("✅ script.js loaded");
-window.civicEvents = [
+window.showTab = function(tabId) {
+  const sections = ['my-officials', 'compare', 'rankings', 'rookies', 'calendar', 'registration'];
+  sections.forEach(sectionId => {
+    const el = document.getElementById(sectionId);
+    if (el) el.style.display = sectionId === tabId ? 'block' : 'none';
+  });
+
+  const results = document.getElementById('results');
+  if (results) results.innerHTML = '';
+  const search = document.getElementById('search');
+  if (search) search.value = '';
+};
+
   {
     title: "General Election",
     date: "2025-11-04",
