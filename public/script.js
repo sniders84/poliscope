@@ -1,6 +1,6 @@
 
 console.log("✅ script.js loaded");
-let civicEvents = [
+window.civicEvents = [];
   {
     title: "General Election",
     date: "2025-11-04",
@@ -239,12 +239,7 @@ function renderMyOfficials(state) {
 
   return stateMatch && !isLtGovernor;
 });
-
-  (person.state === state ||
-   person.stateName === state ||
-   person.stateAbbreviation === state) &&
-  !person.office?.toLowerCase().includes("lt. governor")
-);
+  console.log("Filtered My Officials:", matches.map(p => `${p.name} (${p.office})`));
 
   renderCards(matches, 'my-cards');
 }
@@ -378,15 +373,9 @@ try {
   populateCompareDropdowns();
   renderRankings();
   renderRookies();
- 
 } catch (err) {
   console.error('Error loading LtGovernors:', err);
 }
-
-    const ltContainer = document.getElementById('lt-governors-container');
-
-}
-    console.log('Lt. Governors loaded:', ltGovernors);
 
          const stateSelect = document.getElementById('state-select');
     if (stateSelect) {
