@@ -246,8 +246,15 @@ function renderMyOfficials(state) {
 });      
   console.log("Filtered My Officials:", matches.map(p => `${p.name} (${p.office})`));
 
-  renderCards(matches, 'my-cards');
-}
+renderCards(matches, 'my-cards');
+
+document.querySelectorAll('#my-cards .card').forEach(card => {
+  card.addEventListener('click', () => {
+    const officialId = card.getAttribute('data-id');
+    const official = window.allOfficials.find(p => p.id === officialId);
+    if (official) openModal(official);
+  });
+});
 
 function renderLtGovernors(data) {
   const container = document.getElementById('lt-governors-container');
