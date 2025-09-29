@@ -1,15 +1,10 @@
-window.showTab = function(tabId) {
+window.showTab = function(id) {
   const sections = ['my-officials', 'compare', 'rankings', 'rookies', 'calendar', 'registration'];
   sections.forEach(sectionId => {
     const el = document.getElementById(sectionId);
-    if (el) el.style.display = sectionId === tabId ? 'block' : 'none';
+    if (el) el.style.display = sectionId === id ? 'block' : 'none';
   });
 
-  const results = document.getElementById('results');
-  if (results) results.innerHTML = '';
-  const search = document.getElementById('search');
-  if (search) search.value = '';
-};
 const calendarEvents = [
   {
     title: "General Election",
@@ -489,13 +484,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
-function showTab(id) {
-  const sections = ['my-officials', 'compare', 'rankings', 'rookies', 'calendar', 'registration'];
-  sections.forEach(sectionId => {
-    const el = document.getElementById(sectionId);
-    if (el) el.style.display = sectionId === id ? 'block' : 'none';
-  });
-
   const results = document.getElementById('results');
   if (results) results.innerHTML = '';
   const search = document.getElementById('search');
@@ -510,13 +498,6 @@ document.querySelectorAll('.tab-button').forEach(button => {
     showTab(tabId);
   });
 });
-
-window.showTab = function(id) {
-  const sections = ['my-officials', 'compare', 'rankings', 'rookies', 'calendar', 'registration'];
-  sections.forEach(sectionId => {
-    const el = document.getElementById(sectionId);
-    if (el) el.style.display = sectionId === id ? 'block' : 'none';
-  });
 
   const results = document.getElementById('results');
   if (results) results.innerHTML = '';
