@@ -511,13 +511,15 @@ document.querySelectorAll('.tab-button').forEach(button => {
   });
 });
 
-fetch('LtGovernors.json')
-  .then(res => res.json())
-  .then(data => {
-    console.log(`✅ Loaded LtGovernors.json: ${data.length} entries`);
-    renderLtGovernors(data);
-  })
-  .catch(err => console.error("❌ Failed to load LtGovernors.json:", err));
+window.showTab = function(id) {
+  const sections = ['my-officials', 'compare', 'rankings', 'rookies', 'calendar', 'registration'];
+  sections.forEach(sectionId => {
+    const el = document.getElementById(sectionId);
+    if (el) el.style.display = sectionId === id ? 'block' : 'none';
+  });
 
-window.showTab = showTab;
-loadData();
+  const results = document.getElementById('results');
+  if (results) results.innerHTML = '';
+  const search = document.getElementById('search');
+  if (search) search.value = '';
+};
