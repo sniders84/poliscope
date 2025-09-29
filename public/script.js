@@ -182,7 +182,7 @@ function renderCards(data, containerId) {
     // Use data-slug attribute used by the click handler
     return `
       <div class="card" data-slug="${person.slug}" onclick="expandCard('${person.slug}')" style="border-left: 8px solid ${partyColor};">
-        <img src="${imageUrl}" alt="${person.name}" onerror="this.onerror=null;this.src='https://via.placeholder.com/200x300?text=No+Photo'" />
+        <img src="${person.photo || 'https://via.placeholder.com/200x300?text=No+Photo'}" />
         <h3>${person.name}</h3>
         <p>${person.office || person.position || ''}</p>
         <p>${person.state}${person.party ? ', ' + person.party : ''}</p>
@@ -229,7 +229,7 @@ function openModal(person) {
   const modalHTML = `
     <div class="modal-container">
       <div class="modal-left">
-        <img src="${imageUrl}" alt="${person.name}" onerror="this.onerror=null;this.src='https://via.placeholder.com/200x300?text=No+Photo'" />
+        <img src="${person.photo || 'https://via.placeholder.com/200x300?text=No+Photo'}" />
         <h2>${person.name}</h2>
         ${link ? `<p><a href="${link}" target="_blank" rel="noopener noreferrer">External Profile</a></p>` : ''}
         <p><strong>Contact:</strong>
@@ -303,7 +303,7 @@ function renderLtGovernors(data) {
     card.innerHTML = `
       <h3>${gov.name}</h3>
       <p>${gov.state}</p>
-      <img src="${gov.photo || 'https://via.placeholder.com/200x300?text=No+Photo'}" alt="${gov.name}" />
+     <img src="${person.photo || 'https://via.placeholder.com/200x300?text=No+Photo'}" />
     `;
     container.appendChild(card);
   });
@@ -378,7 +378,7 @@ function renderCompareCard(slug, containerId) {
 
   container.innerHTML = `
     <div class="card">
-      <img src="${imageUrl}" alt="${person.name}" onerror="this.onerror=null;this.src='https://via.placeholder.com/200x300?text=No+Photo'" />
+      <img src="${person.photo || 'https://via.placeholder.com/200x300?text=No+Photo'}" />
       <h3>${person.name}</h3>
       <p><strong>Office:</strong> ${person.office || person.position || ''}</p>
       <p><strong>State:</strong> ${person.state}</p>
