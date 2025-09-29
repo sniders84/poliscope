@@ -154,13 +154,15 @@ h2 {
   overflow-y: auto;
 }
 
+/* 🔹 Header */
 .electorate-header {
   height: 180px; /* gives room for logo */
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column; /* stack logo + any text */
-  background: linear-gradient(to right,
+  flex-direction: column;
+  background: linear-gradient(
+    to right,
     #1877F2,
     #888888,
     #FFFFFF,
@@ -171,8 +173,9 @@ h2 {
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   overflow: hidden;
 }
+
 .electorate-logo {
-  height: 350px; /* clean desktop height */
+  height: 350px; /* desktop height */
   width: auto;
   display: block;
   margin: 0 auto;
@@ -187,7 +190,8 @@ h2 {
     margin-bottom: 20px;
   }
 }
-}
+
+/* 🔹 Tab Containers */
 .tab-container {
   margin: 2rem auto;
   max-width: 960px;
@@ -228,17 +232,21 @@ h2 {
   padding: 1.5rem;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
+
+/* 🔹 Matchup Section */
 #matchup-state {
   margin-bottom: 120px;
 }
+
 #compare {
   padding-bottom: 150px;
 }
+
 .matchup-dropdown-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 60px;
   padding-top: 20px;
-  padding-bottom: 200px; /* forces space below */
+  padding-bottom: 200px;
 }
