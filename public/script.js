@@ -1,174 +1,152 @@
-// ====================
-// Global Variables
-// ====================
-let officialsData = {
-  governors: [],
-  ltGovernors: [],
-  senate: [],
-  house: []
-};
-
+// ==========================
+// Global Data
+// ==========================
+let officialsData = { governors: [], ltGovernors: [], senate: [], house: [] };
 let currentState = "";
 
-// ====================
-// Fetch JSON Data
-// ====================
-async function loadOfficials() {
+// ==========================
+// Load Data
+// ==========================
+async function loadData() {
   try {
-    const [govRes, ltGovRes, senRes, houseRes] = await Promise.all([
-      fetch("/Governors.json"),
-      fetch("/LtGovernors.json"),
-      fetch("/Senate.json"),
-      fetch("/House.json")
+    const [govRes, ltGovRes, senateRes, houseRes] = await Promise.all([
+      fetch('public/Governors.json'),
+      fetch('public/LtGovernors.json'),
+      fetch('public/Senate.json'),
+      fetch('public/House.json')
     ]);
 
     officialsData.governors = await govRes.json();
     officialsData.ltGovernors = await ltGovRes.json();
-    officialsData.senate = await senRes.json();
+    officialsData.senate = await senateRes.json();
     officialsData.house = await houseRes.json();
+
+    populateStateSelectors();
+    populateAllOfficials();
   } catch (err) {
     console.error("Error loading JSON data:", err);
   }
 }
 
-// ====================
-// Utility Functions
-// ====================
-function slugify(name) {
-  return name.toLowerCase().replace(/\s+/g, "-");
+// ==========================
+// Populate State Selectors
+// ==========================
+function populateStateSelectors() {
+  const states = [...new Set([
+    ...officialsData.governors.map(o => o.state),
+    ...officialsData.ltGovernors.map(o => o.state),
+    ...officialsData.senate.map(o => o.state),
+    ...officialsData.house.map(o => o.state)
+  ])].sort();
+
+  ['stateSelect','matchupStateSelect'].forEach(id => {
+    const select = document.getElementById(id);
+    select.innerHTML = '<option value="">All States</option>';
+    states.forEach(state => {
+      const option = document.createElement('option');
+      option.value = state;
+      option.textContent = state;
+      select.appendChild(option);
+    });
+    select.addEventListener('change', e => {
+      currentState = e.target.value;
+      if(id === 'stateSelect') populateAllOfficials();
+      else populateMatchups();
+    });
+  });
 }
 
+// ==========================
+// Populate Officials Cards
+// ==========================
+function populateAllOfficials() {
+  const container = document.getElementById('officialsContainer');
+  container.innerHTML = '';
+
+  const allOfficials = [
+    ...officialsData.senate,
+    ...officialsData.house,
+    ...officialsData.governors,
+    ...officialsData.ltGovernors
+  ];
+
+  const filtered = currentState ? allOfficials.filter(o => o.state === currentState) : allOfficials;
+
+  filtered.forEach(o => container.appendChild(createCard(o)));
+}
+
+// ==========================
+// Populate Matchups Cards
+// ==========================
+function populateMatchups() {
+  const container = document.getElementById('matchupsContainer');
+  container.innerHTML = '';
+  // TODO: Replace with your matchups data logic
+}
+
+// ==========================
+// Create Card
+// ==========================
 function createCard(official) {
-  const card = document.createElement("div");
-  card.classList.add("card");
+  const card = document.createElement('div');
+  card.className = 'card';
   card.innerHTML = `
     <img src="${official.photo}" alt="${official.name}">
     <h3>${official.name}</h3>
     <p>${official.office} - ${official.state}</p>
     <p>${official.party}</p>
   `;
-  card.addEventListener("click", () => openModal(official));
+  card.addEventListener('click', () => showModal(official));
   return card;
 }
 
-// ====================
-// Modal Functions
-// ====================
-function openModal(official) {
-  const modal = document.getElementById("modal");
-  const modalContent = modal.querySelector(".modal-content");
+// ==========================
+// Show Modal
+// ==========================
+function showModal(official) {
+  document.getElementById('modalPhoto').src = official.photo;
+  const modalContent = document.getElementById('modalContent');
   modalContent.innerHTML = `
-    <div class="modal-container">
-      <div class="modal-left">
-        <img src="${official.photo}" alt="${official.name}">
-      </div>
-      <div class="modal-right">
-        <h2>${official.name}</h2>
-        <p><strong>Office:</strong> ${official.office}</p>
-        <p><strong>State:</strong> ${official.state}</p>
-        <p><strong>Party:</strong> ${official.party}</p>
-        <p><strong>Term Start:</strong> ${official.termStart}</p>
-        <p><strong>Term End:</strong> ${official.termEnd}</p>
-        <p><strong>Contact:</strong> ${official.contact?.phone || "N/A"}, ${official.contact?.email || "N/A"}</p>
-        <p><strong>Website:</strong> <a href="${official.contact?.website || "#"}" target="_blank">${official.contact?.website || "N/A"}</a></p>
-        <p><strong>Bio:</strong> ${official.bio || "N/A"}</p>
-        <p><strong>Education:</strong> ${official.education || "N/A"}</p>
-        <p><strong>Endorsements:</strong> ${official.endorsements || "N/A"}</p>
-        <p><strong>Platform:</strong> ${official.platform || "N/A"}</p>
-        <p><strong>Proposals:</strong> ${official.proposals || "N/A"}</p>
-        <p><strong>Engagement:</strong> ${official.engagement || "N/A"}</p>
-        <p><strong>Salary:</strong> ${official.salary || "N/A"}</p>
-        <p><strong>Predecessor:</strong> ${official.predecessor || "N/A"}</p>
-        <p><strong>Polling Score:</strong> ${official.pollingScore || "N/A"}</p>
-        <p><strong>Election Year:</strong> ${official.electionYear || "N/A"}</p>
-      </div>
-    </div>
+    <h2>${official.name}</h2>
+    <p><strong>Office:</strong> ${official.office}</p>
+    <p><strong>Party:</strong> ${official.party}</p>
+    <p><strong>State:</strong> ${official.state}</p>
+    <p><strong>Term:</strong> ${official.termStart} - ${official.termEnd}</p>
+    <p><strong>Bio:</strong> ${official.bio || 'No bio available'}</p>
   `;
-  modal.style.display = "flex";
+  document.getElementById('modal').style.display = 'flex';
 }
 
-function closeModal() {
-  document.getElementById("modal").style.display = "none";
-}
+// Close modal on click outside
+document.getElementById('modal').addEventListener('click', (e) => {
+  if(e.target.id === 'modal') document.getElementById('modal').style.display = 'none';
+});
 
-// ====================
-// Populate Cards by State
-// ====================
-function populateOfficials(state) {
-  const container = document.getElementById("cards");
-  container.innerHTML = "";
-  currentState = state;
-
-  const combined = [
-    ...officialsData.senate.filter(o => o.state === state),
-    ...officialsData.house.filter(o => o.state === state),
-    ...officialsData.governors.filter(o => o.state === state),
-    ...officialsData.ltGovernors.filter(o => o.state === state)
-  ];
-
-  combined.forEach(official => {
-    container.appendChild(createCard(official));
+// ==========================
+// Tab Switching
+// ==========================
+document.querySelectorAll('.tab-button').forEach(button => {
+  button.addEventListener('click', () => {
+    document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
+    button.classList.add('active');
+    document.getElementById(button.dataset.tab).style.display = 'block';
   });
-}
+});
 
-// ====================
-// Tab Functions
-// ====================
-function setupTabs() {
-  const tabButtons = document.querySelectorAll(".tab-button");
-  const tabContents = document.querySelectorAll(".tab-content");
-
-  tabButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      tabButtons.forEach(b => b.classList.remove("active"));
-      tabContents.forEach(c => c.style.display = "none");
-
-      btn.classList.add("active");
-      const target = document.getElementById(btn.dataset.target);
-      if (target) target.style.display = "block";
-    });
+// ==========================
+// Search Functionality
+// ==========================
+document.getElementById('search').addEventListener('input', (e) => {
+  const query = e.target.value.toLowerCase();
+  const container = document.getElementById('officialsContainer');
+  container.childNodes.forEach(card => {
+    const text = card.innerText.toLowerCase();
+    card.style.display = text.includes(query) ? 'block' : 'none';
   });
+});
 
-  // Activate first tab by default
-  if (tabButtons.length > 0) tabButtons[0].click();
-}
-
-// ====================
-// Search Function
-// ====================
-function setupSearch() {
-  const searchInput = document.getElementById("search");
-  searchInput.addEventListener("input", () => {
-    const term = searchInput.value.toLowerCase();
-    const container = document.getElementById("cards");
-    container.innerHTML = "";
-
-    const combined = [
-      ...officialsData.senate,
-      ...officialsData.house,
-      ...officialsData.governors,
-      ...officialsData.ltGovernors
-    ].filter(o => o.name.toLowerCase().includes(term) || o.state.toLowerCase().includes(term));
-
-    combined.forEach(official => {
-      container.appendChild(createCard(official));
-    });
-  });
-}
-
-// ====================
-// Init Function
-// ====================
-async function init() {
-  await loadOfficials();
-  setupTabs();
-  setupSearch();
-  document.getElementById("stateSelect").addEventListener("change", (e) => populateOfficials(e.target.value));
-
-  // Close modal when clicking outside
-  document.getElementById("modal").addEventListener("click", (e) => {
-    if (e.target.id === "modal") closeModal();
-  });
-}
-
-window.addEventListener("DOMContentLoaded", init);
+// ==========================
+// Init
+// ==========================
+window.onload = loadData;
