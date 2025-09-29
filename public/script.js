@@ -437,7 +437,6 @@ function renderCompareCard(slug, containerId) {
 }
 
 /* ---------------- DATA LOADING ---------------- */
-// ✅ Define the function
 async function loadData() {
   try {
     await waitForHouseData();
@@ -467,8 +466,10 @@ async function loadData() {
     console.error('Data loading failed:', err);
   }
 }
+
 // ✅ Call the function AFTER it's defined
 loadData();
+
     // ✅ State select setup
     const stateSelect = document.getElementById('state-select');
     if (stateSelect) {
