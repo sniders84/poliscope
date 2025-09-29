@@ -3,49 +3,99 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Electorate Dashboard</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Electorate Tracker</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- 🔹 Header -->
   <header class="electorate-header">
-    <img src="logo.png" alt="Electorate Logo" class="electorate-logo">
-    <h1>Electorate Dashboard</h1>
+    <img src="assets/logo.png" alt="Electorate Tracker Logo" class="electorate-logo">
+    <h1>Electorate Tracker</h1>
   </header>
 
-  <!-- Tabs -->
+  <!-- 🔹 Tabs -->
   <div id="tabs" class="tab-buttons">
-    <button class="tab-button active" data-tab="governors">Governors</button>
-    <button class="tab-button" data-tab="lt-governors">Lieutenant Governors</button>
-    <button class="tab-button" data-tab="senate">Senators</button>
-    <button class="tab-button" data-tab="house">House</button>
+    <button class="tab-button active" data-tab="my-officials">My Officials</button>
+    <button class="tab-button" data-tab="rankings">Rankings</button>
+    <button class="tab-button" data-tab="matchups">Match Ups</button>
+    <button class="tab-button" data-tab="rookies">Rookies to Watch</button>
+    <button class="tab-button" data-tab="calendar">Calendar</button>
+    <button class="tab-button" data-tab="registration">Registration</button>
   </div>
 
-  <!-- Tab Container -->
+  <!-- 🔹 Tab Contents -->
   <div class="tab-container">
-    <div class="tab-content card-container" id="governors"></div>
-    <div class="tab-content card-container" id="lt-governors" style="display:none;"></div>
-    <div class="tab-content card-container" id="senate" style="display:none;"></div>
-    <div class="tab-content card-container" id="house" style="display:none;"></div>
+
+    <!-- 🔹 My Officials -->
+    <div id="my-officials" class="tab-content">
+      <input type="text" id="search" placeholder="Search by state..." />
+      <div class="card-container" id="officials-container">
+        <!-- Dynamic official cards populate here -->
+      </div>
+    </div>
+
+    <!-- 🔹 Rankings -->
+    <div id="rankings" class="tab-content" style="display:none;">
+      <div id="rankings-tabs" class="tab-buttons">
+        <button class="tab-button active" data-category="governor">Governors</button>
+        <button class="tab-button" data-category="lt-governor">Lt Governors</button>
+        <button class="tab-button" data-category="senate">Senate</button>
+        <button class="tab-button" data-category="house">House</button>
+      </div>
+      <div id="rankings-container" class="card-container">
+        <!-- Dynamic rankings cards populate here -->
+      </div>
+    </div>
+
+    <!-- 🔹 Match Ups -->
+    <div id="matchups" class="tab-content" style="display:none;">
+      <input type="text" id="matchup-search" placeholder="Search state for upcoming elections..." />
+      <div class="card-container" id="matchups-container">
+        <!-- Matchup cards populate here -->
+      </div>
+    </div>
+
+    <!-- 🔹 Rookies to Watch -->
+    <div id="rookies" class="tab-content" style="display:none;">
+      <div id="rookie-tabs" class="tab-buttons">
+        <button class="tab-button active" data-category="governor">Governors</button>
+        <button class="tab-button" data-category="lt-governor">Lt Governors</button>
+        <button class="tab-button" data-category="senate">Senate</button>
+        <button class="tab-button" data-category="house">House</button>
+      </div>
+      <div class="card-container" id="rookies-container">
+        <!-- Rookie cards populate here -->
+      </div>
+    </div>
+
+    <!-- 🔹 Calendar -->
+    <div id="calendar" class="tab-content" style="display:none;">
+      <div id="calendar-container">
+        <!-- Calendar events populate here based on state -->
+      </div>
+    </div>
+
+    <!-- 🔹 Registration -->
+    <div id="registration" class="tab-content" style="display:none;">
+      <div id="registration-container">
+        <!-- Registration info populates here based on state -->
+      </div>
+    </div>
+
   </div>
 
-  <!-- Search -->
-  <input type="text" id="search" placeholder="Search officials by name or state...">
-  <ul id="results"></ul>
-
-  <!-- Modal -->
-  <div class="modal-container" id="modal" style="display:none;">
+  <!-- 🔹 Modal Container -->
+  <div id="modal" class="modal-container" style="display:none;">
     <div class="modal-left">
       <img id="modal-photo" src="" alt="Official Photo">
     </div>
     <div class="modal-right" id="modal-content">
-      <!-- Populated dynamically -->
+      <!-- Official details populate dynamically here -->
     </div>
+    <button id="modal-close" style="position:absolute; top:10px; right:10px;">Close</button>
   </div>
 
-  <!-- Script -->
   <script src="script.js"></script>
-
 </body>
 </html>
