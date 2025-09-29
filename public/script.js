@@ -277,13 +277,13 @@ function closeModal() {
 /* ---------------- INDIVIDUAL LIST RENDERS ---------------- */
 function renderMyOfficials(state) {
   const matches = window.allOfficials.filter(person => {
-  const stateMatch =
-    person.state === state ||
-    person.stateName === state ||
-    person.stateAbbreviation === state;
+    const stateMatch =
+      person.state === state ||
+      person.stateName === state ||
+      person.stateAbbreviation === state;
 
-  return stateMatch;
-});
+    return stateMatch;
+  });
 
   console.log("Filtered My Officials:", matches.map(p => `${p.name} (${p.office})`));
   renderCards(matches, 'my-cards');
@@ -407,10 +407,7 @@ async function loadData() {
     // ✅ Compose global officials list WITHOUT Lt. Governors
     window.allOfficials = [...(governors || []), ...(senate || []), ...(house || []), ...(ltGovernors || [])];
     allOfficials = window.allOfficials;
-
-    // ✅ Render Lt. Governors separately
-    renderLtGovernors(ltGovernors || []);
-
+    
     // ✅ Populate UI
     populateCompareDropdowns();
     renderRankings();
