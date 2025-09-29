@@ -285,10 +285,21 @@ function renderMyOfficials(state) {
     return stateMatch;
   });
 
+  const roleOrder = ['senator', 'representative', 'governor', 'lt. governor', 'lt governor', 'ltgovernor', 'lieutenant governor'];
+
+  matches.sort((a, b) => {
+    const roleA = (a.office || a.position || '').toLowerCase();
+    const roleB = (b.office || b.position || '').toLowerCase();
+
+    const indexA = roleOrder.findIndex(role => roleA.includes(role));
+    const indexB = roleOrder.findIndex(role => roleB.includes(role));
+
+    return indexA - indexB;
+  });
+
   console.log("Filtered My Officials:", matches.map(p => `${p.name} (${p.office})`));
   renderCards(matches, 'my-cards');
 }
-
 function renderLtGovernors(data) {
   const container = document.getElementById('lt-governors-container');
   if (!container) return;
