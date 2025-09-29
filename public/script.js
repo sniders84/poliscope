@@ -454,6 +454,16 @@ async function loadData() {
       console.warn('LtGovernors.json not found or failed to parse.', err);
     }
 
+    // ✅ Merge all roles into one array
+    window.allOfficials = [...house, ...governors, ...senate, ...ltGovernors];
+
+    // ✅ Trigger your rendering logic
+    renderEverything(); // or whatever your init function is
+  } catch (err) {
+    console.error('Data loading failed:', err);
+  }
+}
+
     // ✅ Compose global officials list WITHOUT Lt. Governors
     window.allOfficials = [...(governors || []), ...(senate || []), ...(house || []), ...(ltGovernors || [])];
     allOfficials = window.allOfficials;
