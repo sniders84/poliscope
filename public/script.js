@@ -175,11 +175,21 @@ function escapeJs(str = '') {
 /* ---------------- OFFICIALS RENDER ---------------- */
 function renderCards(data, containerId) {
   const container = document.getElementById(containerId);
-  if (!container) {
-    console.warn(`Missing container: ${containerId}`);
-    return;
-  }
+  if (!container) return;
 
+  container.innerHTML = '';
+  data.forEach(person => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <h3>${person.name}</h3>
+      <p>${person.state}</p>
+      <img src="${person.photo || 'https://via.placeholder.com/200x300?text=No+Photo'}" />
+    `;
+    card.addEventListener('click', () => openModal(person)); // ✅ This wires the click
+    container.appendChild(card);
+  });
+}
   const cardsHTML = data.map(person => {
     const imageUrl = person.photo?.trim() || 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/200px-No_image_available.svg.png';
     const partyLower = (person.party || '').toLowerCase();
