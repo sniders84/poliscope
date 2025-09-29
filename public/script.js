@@ -303,7 +303,7 @@ function renderLtGovernors(data) {
     card.innerHTML = `
       <h3>${gov.name}</h3>
       <p>${gov.state}</p>
-     <img src="${person.photo || 'https://via.placeholder.com/200x300?text=No+Photo'}" />
+      <img src="${gov.photo || 'https://via.placeholder.com/200x300?text=No+Photo'}" alt="${gov.name}" />
     `;
     container.appendChild(card);
   });
