@@ -317,16 +317,17 @@ function renderLtGovernors(data) {
   if (!container) return;
 
   container.innerHTML = '';
-  data.forEach(gov => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerHTML = `
-      <h3>${gov.name}</h3>
-      <p>${gov.state}</p>
-      <img src="${gov.photo || 'https://via.placeholder.com/200x300?text=No+Photo'}" alt="${gov.name}" />
-    `;
-    container.appendChild(card);
-  });
+  data.forEach(person => {
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.innerHTML = `
+    <h3>${person.name}</h3>
+    <p>${person.state}</p>
+    <img src="${person.photo || 'https://via.placeholder.com/200x300?text=No+Photo'}" />
+  `;
+  card.addEventListener('click', () => openModal(person)); // ✅ This is the fix
+  container.appendChild(card);
+});
 }
 
 /* ---------------- RANKINGS & ROOKIES ---------------- */
