@@ -266,15 +266,6 @@ function renderLtGovernors(data) {
     `;
     container.appendChild(card);
   });
-}
-  fetch('LtGovernors.json')
-  .then(res => res.json())
-  .then(data => {
-    console.log("✅ Loaded LtGovernors.json:", data.length, "entries");
-    renderLtGovernors(data);
-  })
-  .catch(err => console.error("❌ Failed to load LtGovernors.json:", err));
-
 
 function renderRankings() {
   const governors = allOfficials.filter(p => p.office?.includes("Governor"));
@@ -504,6 +495,13 @@ document.querySelectorAll('.tab-button').forEach(button => {
     });
   });
 });
+  fetch('LtGovernors.json')
+  .then(res => res.json())
+  .then(data => {
+    console.log("✅ Loaded LtGovernors.json:", data.length, "entries");
+    renderLtGovernors(data);
+  })
+  .catch(err => console.error("❌ Failed to load LtGovernors.json:", err));
 
 window.showTab = showTab;
 loadData();
