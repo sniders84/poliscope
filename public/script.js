@@ -462,8 +462,6 @@ async function loadData() {
   } catch (err) {
     console.error('Data loading failed:', err);
   }
-}
-
     // ✅ Compose global officials list WITHOUT Lt. Governors
     window.allOfficials = [...(governors || []), ...(senate || []), ...(house || []), ...(ltGovernors || [])];
     allOfficials = window.allOfficials;
