@@ -1,223 +1,161 @@
-// =====================
-// 🔹 Globals
-// =====================
-let allOfficials = []; // Load this with JSON files: governors.json, ltgovernors.json, senate.json, house.json
-let matchupsData = []; // Load matchup info JSON
-let selectedState = ""; // Tracks current selected state
+// =================== Data Loading ===================
+const publicPath = ''; // Your JSON files are in the public folder
 
-// =====================
-// 🔹 Tab Switching
-// =====================
-const tabButtons = document.querySelectorAll(".tab-button");
-tabButtons.forEach(btn => {
-  btn.addEventListener("click", () => {
-    const parent = btn.closest(".tab-buttons");
-    parent.querySelectorAll(".tab-button").forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
+let senate = [];
+let house = [];
+let governors = [];
+let ltgovernors = [];
+let matchups = [];
 
-    const tabName = btn.dataset.tab || btn.dataset.category;
-    switchTab(btn.closest(".tab-container"), tabName);
-  });
-});
-
-function switchTab(container, tabName) {
-  const contents = container.querySelectorAll(".tab-content");
-  contents.forEach(c => (c.style.display = "none"));
-
-  const target = container.querySelector(`#${tabName}`);
-  if (target) target.style.display = "block";
-
-  if (tabName === "my-officials") populateOfficials();
-  if (tabName === "rankings") populateRankings();
-  if (tabName === "matchups") populateMatchups();
-  if (tabName === "rookies") populateRookies();
-  if (tabName === "calendar") populateCalendar();
-  if (tabName === "registration") populateRegistration();
+// Fetch JSON files
+async function loadData() {
+  [senate, house, governors, ltgovernors, matchups] = await Promise.all([
+    fetch(`${publicPath}/senate.json`).then(res => res.json()),
+    fetch(`${publicPath}/house.json`).then(res => res.json()),
+    fetch(`${publicPath}/governors.json`).then(res => res.json()),
+    fetch(`${publicPath}/ltgovernors.json`).then(res => res.json()),
+    fetch(`${publicPath}/matchups.json`).then(res => res.json())
+  ]);
 }
 
-// =====================
-// 🔹 Populate Officials
-// =====================
-const searchInput = document.getElementById("search");
-searchInput.addEventListener("input", () => {
-  selectedState = searchInput.value.trim();
-  populateOfficials();
-});
+// =================== Utility Functions ===================
+function createCardHTML(official) {
+  return `
+    <div class="card" data-slug="${official.slug}">
+      <img src="${official.photo}" alt="${official.name}">
+      <h3>${official.name}</h3>
+      <p>${official.office} - ${official.state}</p>
+      <p>${official.party}</p>
+    </div>
+  `;
+}
 
-function populateOfficials() {
-  const container = document.getElementById("officials-container");
-  container.innerHTML = "";
-
-  let filtered = allOfficials;
-  if (selectedState) {
-    filtered = allOfficials.filter(o => o.state.toLowerCase() === selectedState.toLowerCase());
+function showModal(official) {
+  document.getElementById('modal-photo').src = official.photo;
+  document.getElementById('modal-name').innerText = official.name;
+  document.getElementById('modal-office').innerText = official.office + ' - ' + official.state;
+  document.getElementById('modal-party').innerText = official.party;
+  document.getElementById('modal-bio').innerText = official.bio || '';
+  document.getElementById('modal-education').innerText = official.education || '';
+  document.getElementById('modal-contact').innerText = official.contact?.email || '';
+  document.getElementById('modal-platform').innerText = official.platform || '';
+  document.getElementById('modal-proposals').innerText = official.proposals || '';
+  
+  const billsUl = document.getElementById('modal-bills');
+  billsUl.innerHTML = '';
+  if(official.billsSigned) {
+    official.billsSigned.forEach(bill => {
+      const li = document.createElement('li');
+      li.innerHTML = `<a href="${bill.link}" target="_blank">${bill.title}</a>`;
+      billsUl.appendChild(li);
+    });
   }
-
-  // Sort by office: Senate -> House -> Governor -> Lt Governor
-  const officeOrder = ["Senator", "Representative", "Governor", "Lt Governor"];
-  filtered.sort((a, b) => officeOrder.indexOf(a.office) - officeOrder.indexOf(b.office));
-
-  filtered.forEach(o => {
-    const card = createOfficialCard(o);
-    container.appendChild(card);
-  });
+  
+  document.getElementById('modal-vetoes').innerText = official.vetoes || '';
+  document.getElementById('modal-salary').innerText = official.salary || '';
+  document.getElementById('modal-predecessor').innerText = official.predecessor || '';
+  document.getElementById('modal-polling').innerText = official.pollingScore || '';
+  
+  document.getElementById('modal').style.display = 'flex';
 }
 
-// =====================
-// 🔹 Populate Rankings
-// =====================
+// Close modal
+document.getElementById('modal-close').addEventListener('click', () => {
+  document.getElementById('modal').style.display = 'none';
+});
+
+// =================== Populate Functions ===================
+function populateOfficials(state = '') {
+  const container = document.getElementById('officials-cards');
+  container.innerHTML = '';
+  
+  const allOfficials = [...senate, ...house, ...governors, ...ltgovernors];
+  const filtered = state ? allOfficials.filter(o => o.state.toLowerCase() === state.toLowerCase()) : allOfficials;
+  
+  filtered.forEach(official => {
+    container.innerHTML += createCardHTML(official);
+  });
+
+  addCardClickEvents(container);
+}
+
 function populateRankings() {
-  const container = document.getElementById("rankings-container");
-  container.innerHTML = "";
+  document.getElementById('senate-rankings').innerHTML = senate.map(createCardHTML).join('');
+  document.getElementById('house-rankings').innerHTML = house.map(createCardHTML).join('');
+  document.getElementById('governor-rankings').innerHTML = governors.map(createCardHTML).join('');
+  document.getElementById('ltgovernor-rankings').innerHTML = ltgovernors.map(createCardHTML).join('');
 
-  const activeTab = document.querySelector("#rankings-tabs .tab-button.active");
-  const category = activeTab.dataset.category;
+  addCardClickEvents(document);
+}
 
-  let filtered = allOfficials.filter(o => getCategory(o.office) === category);
-  filtered.sort((a, b) => (b.pollingScore || 0) - (a.pollingScore || 0));
+function populateMatchups(state = '') {
+  const container = document.getElementById('matchups-cards');
+  container.innerHTML = '';
+  const filtered = state ? matchups.filter(m => m.state.toLowerCase() === state.toLowerCase()) : matchups;
+  filtered.forEach(m => container.innerHTML += createCardHTML(m));
+  addCardClickEvents(container);
+}
 
-  filtered.forEach(o => {
-    container.appendChild(createOfficialCard(o));
+function populateRookies() {
+  const now = new Date();
+  const categories = [
+    { data: senate, id: 'rookies-senate' },
+    { data: house, id: 'rookies-house' },
+    { data: governors, id: 'rookies-governor' },
+    { data: ltgovernors, id: 'rookies-ltgovernor' }
+  ];
+  
+  categories.forEach(cat => {
+    const container = document.getElementById(cat.id);
+    container.innerHTML = '';
+    cat.data.filter(o => {
+      const start = new Date(o.termStart);
+      const end = new Date(o.termEnd);
+      return ((end - start)/1000/60/60/24/365.25 <= 6); // 6 years or less
+    }).forEach(official => container.innerHTML += createCardHTML(official));
+    addCardClickEvents(container);
   });
 }
 
-// =====================
-// 🔹 Populate Matchups
-// =====================
-const matchupSearch = document.getElementById("matchup-search");
-matchupSearch.addEventListener("input", () => {
-  selectedState = matchupSearch.value.trim();
-  populateMatchups();
+// =================== Card Click Event ===================
+function addCardClickEvents(parent) {
+  parent.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('click', () => {
+      const slug = card.dataset.slug;
+      const allOfficials = [...senate, ...house, ...governors, ...ltgovernors, ...matchups];
+      const official = allOfficials.find(o => o.slug === slug);
+      if (official) showModal(official);
+    });
+  });
+}
+
+// =================== Tab Switching ===================
+document.querySelectorAll('.tab-button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const tabId = btn.dataset.tab;
+    document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+    document.getElementById(tabId).classList.add('active');
+  });
 });
 
-function populateMatchups() {
-  const container = document.getElementById("matchups-container");
-  container.innerHTML = "";
+// =================== Search ===================
+document.getElementById('search-officials').addEventListener('input', (e) => {
+  populateOfficials(e.target.value);
+});
 
-  let filtered = matchupsData;
-  if (selectedState) {
-    filtered = matchupsData.filter(m => m.state.toLowerCase() === selectedState.toLowerCase());
-  }
+document.getElementById('search-matchups').addEventListener('input', (e) => {
+  populateMatchups(e.target.value);
+});
 
-  filtered.forEach(m => {
-    container.appendChild(createOfficialCard(m));
-  });
+// =================== Initialization ===================
+async function init() {
+  await loadData();
+  populateOfficials();
+  populateRankings();
+  populateMatchups();
+  populateRookies();
 }
 
-// =====================
-// 🔹 Populate Rookies
-// =====================
-function populateRookies() {
-  const container = document.getElementById("rookies-container");
-  container.innerHTML = "";
-
-  const activeTab = document.querySelector("#rookie-tabs .tab-button.active");
-  const category = activeTab.dataset.category;
-
-  const now = new Date();
-  const filtered = allOfficials.filter(o => {
-    return getCategory(o.office) === category &&
-      new Date(o.termStart) >= new Date(now.getFullYear() - 6, now.getMonth(), now.getDate());
-  });
-
-  filtered.forEach(o => container.appendChild(createOfficialCard(o)));
-}
-
-// =====================
-// 🔹 Populate Calendar
-// =====================
-function populateCalendar() {
-  const container = document.getElementById("calendar-container");
-  container.innerHTML = "";
-
-  if (!selectedState) return;
-
-  // Example placeholder, replace with real data
-  container.innerHTML = `
-    <h3>${selectedState} Calendar</h3>
-    <ul>
-      <li>Election Day: Nov 5, 2025</li>
-      <li>Voter Registration Deadline: Oct 10, 2025</li>
-      <li>Town Hall: Sep 15, 2025</li>
-    </ul>
-  `;
-}
-
-// =====================
-// 🔹 Populate Registration
-// =====================
-function populateRegistration() {
-  const container = document.getElementById("registration-container");
-  container.innerHTML = "";
-
-  if (!selectedState) return;
-
-  // Example placeholder, replace with real data
-  container.innerHTML = `
-    <h3>${selectedState} Voter Registration</h3>
-    <ul>
-      <li>Register to vote: <a href="#">Click here</a></li>
-      <li>Polling stations info</li>
-      <li>Volunteer opportunities</li>
-    </ul>
-  `;
-}
-
-// =====================
-// 🔹 Helper Functions
-// =====================
-function getCategory(office) {
-  office = office.toLowerCase();
-  if (office.includes("governor") && !office.includes("lt")) return "governor";
-  if (office.includes("lt governor")) return "lt-governor";
-  if (office.includes("senator")) return "senate";
-  if (office.includes("representative") || office.includes("house")) return "house";
-  return "";
-}
-
-function createOfficialCard(o) {
-  const card = document.createElement("div");
-  card.className = "card";
-
-  card.innerHTML = `
-    <img src="${o.photo}" alt="${o.name}">
-    <h3>${o.name}</h3>
-    <p>${o.office} - ${o.state}</p>
-    <p>${o.party}</p>
-  `;
-
-  card.addEventListener("click", () => openModal(o));
-  return card;
-}
-
-// =====================
-// 🔹 Modal Functions
-// =====================
-const modal = document.getElementById("modal");
-const modalPhoto = document.getElementById("modal-photo");
-const modalContent = document.getElementById("modal-content");
-document.getElementById("modal-close").addEventListener("click", () => modal.style.display = "none");
-
-function openModal(o) {
-  modalPhoto.src = o.photo;
-  modalContent.innerHTML = `
-    <h2>${o.name}</h2>
-    <p><strong>Office:</strong> ${o.office}</p>
-    <p><strong>State:</strong> ${o.state}</p>
-    <p><strong>Party:</strong> ${o.party}</p>
-    <p><strong>Term:</strong> ${o.termStart} - ${o.termEnd}</p>
-    <p><strong>Salary:</strong> ${o.salary}</p>
-    <p><strong>Bio:</strong> ${o.bio}</p>
-    <p><strong>Education:</strong> ${o.education}</p>
-    <p><strong>Platform:</strong> ${o.platform}</p>
-    <p><strong>Endorsements:</strong> ${o.endorsements}</p>
-    <p><strong>Proposals:</strong> ${o.proposals}</p>
-    <p><strong>Bills Signed:</strong></p>
-    <ul>
-      ${o.billsSigned?.map(b => `<li><a href="${b.link}" target="_blank">${b.title}</a></li>`).join("") || ""}
-    </ul>
-    <p><strong>Vetoes:</strong> ${o.vetoes || "None"}</p>
-    <p><strong>Contact:</strong> Email: <a href="mailto:${o.contact.email}">${o.contact.email}</a>, Phone: ${o.contact.phone}, Website: <a href="${o.contact.website}" target="_blank">${o.contact.website}</a></p>
-  `;
-  modal.style.display = "flex";
-}
+init();
