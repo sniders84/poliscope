@@ -282,10 +282,7 @@ function renderMyOfficials(state) {
     person.stateName === state ||
     person.stateAbbreviation === state;
 
-  const role = (person.office || person.position || "").toLowerCase();
-  const isLtGovernor = /(lt.? governor|ltgovernor|lieutenant governor)/i.test(role);
-
-  return stateMatch && !isLtGovernor;
+  return stateMatch;
 });
 
   console.log("Filtered My Officials:", matches.map(p => `${p.name} (${p.office})`));
