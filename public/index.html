@@ -3,66 +3,82 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Electorate App</title>
+  <title>Electorate Dashboard</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
   <!-- Header -->
   <header class="electorate-header">
     <img src="assets/logo.png" alt="Electorate Logo" class="electorate-logo">
-    <h1>Electorate</h1>
+    <h1>Electorate Dashboard</h1>
   </header>
 
-  <!-- Tab Buttons -->
-  <div class="tab-buttons">
-    <button class="tab-button active" data-tab="myOfficials">My Officials</button>
+  <!-- Tabs -->
+  <div id="tabs" class="tab-buttons">
+    <button class="tab-button active" data-tab="my-officials">My Officials</button>
     <button class="tab-button" data-tab="rankings">Rankings</button>
-    <button class="tab-button" data-tab="matchups">Matchups</button>
+    <button class="tab-button" data-tab="matchups">Match Ups</button>
     <button class="tab-button" data-tab="rookies">Rookies to Watch</button>
     <button class="tab-button" data-tab="calendar">Calendar</button>
     <button class="tab-button" data-tab="registration">Registration</button>
   </div>
 
-  <!-- Tab Contents -->
-  <div id="myOfficials" class="tab-content">
-    <input type="text" id="search" placeholder="Search officials...">
-    <select id="stateSelect"></select>
-    <div class="card-container" id="officialsContainer"></div>
+  <!-- Search bar for My Officials -->
+  <div id="my-officials-search-wrapper">
+    <input type="text" id="search" placeholder="Search by state...">
+    <ul id="results"></ul>
   </div>
 
-  <div id="rankings" class="tab-content" style="display:none;">
-    <div class="card-container" id="rankingsContainer"></div>
-  </div>
+  <!-- Tab content -->
+  <div id="tab-contents">
+    <div id="my-officials" class="tab-content active">
+      <div class="card-container" id="officials-cards"></div>
+    </div>
 
-  <div id="matchups" class="tab-content" style="display:none;">
-    <input type="text" id="matchupSearch" placeholder="Search matchups...">
-    <select id="matchupStateSelect"></select>
-    <div class="card-container" id="matchupsContainer"></div>
-  </div>
+    <div id="rankings" class="tab-content">
+      <div class="card-container" id="rankings-cards"></div>
+    </div>
 
-  <div id="rookies" class="tab-content" style="display:none;">
-    <div class="card-container" id="rookiesContainer"></div>
-  </div>
-
-  <div id="calendar" class="tab-content" style="display:none;">
-    <div id="calendarContainer"></div>
-  </div>
-
-  <div id="registration" class="tab-content" style="display:none;">
-    <div id="registrationContainer"></div>
-  </div>
-
-  <!-- Modal -->
-  <div id="modal" class="modal" style="display:none;">
-    <div class="modal-container">
-      <div class="modal-left">
-        <img id="modalPhoto" src="" alt="">
+    <div id="matchups" class="tab-content">
+      <div class="matchup-dropdown-wrapper">
+        <input type="text" id="matchup-search" placeholder="Search matchups by state...">
       </div>
-      <div class="modal-right" id="modalContent"></div>
+      <div class="compare-results" id="matchup-cards"></div>
+    </div>
+
+    <div id="rookies" class="tab-content">
+      <div class="card-container" id="rookies-cards"></div>
+    </div>
+
+    <div id="calendar" class="tab-content">
+      <div id="calendar-content">
+        <!-- Calendar content will be populated based on state selection -->
+      </div>
+    </div>
+
+    <div id="registration" class="tab-content">
+      <div id="registration-content">
+        <!-- Registration info will be populated based on state selection -->
+      </div>
     </div>
   </div>
 
+  <!-- Modal -->
+  <div id="modal" class="modal-container" style="display:none;">
+    <div class="modal-left">
+      <img id="modal-photo" src="" alt="Official Photo">
+    </div>
+    <div class="modal-right" id="modal-info">
+      <!-- Full official info populated here -->
+    </div>
+  </div>
+
+  <!-- JS -->
   <script src="script.js"></script>
 </body>
 </html>
