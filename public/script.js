@@ -124,7 +124,16 @@ function openEventModal(title, date, state, type, details, link) {
   const closeBtn = document.getElementById('event-modal-close');
   if (closeBtn) closeBtn.addEventListener('click', closeModal);
 }
+function showTab(tabId) {
+  document.querySelectorAll('section').forEach(section => {
+    section.style.display = 'none';
+  });
+  const target = document.getElementById(tabId);
+  if (target) target.style.display = 'block';
 
+  if (tabId === 'rankings') renderRankings();
+  if (tabId === 'rookies') renderRookies();
+}
 /* ---------------- VOTING RENDER ---------------- */
 function renderVotingInfo(state) {
   const container = document.getElementById('voting-container');
@@ -333,7 +342,8 @@ function renderRankings() {
   renderCards(governors, 'rankings-governors');
   renderCards(senators, 'rankings-senators');
   renderCards(house, 'rankings-house');
-  renderCards(ltGovernors, 'rankings-ltgovernors'); // ✅ This makes them show up
+  renderCards(ltGovernors, 'rankings-ltgovernors');
+ // ✅ This makes them show up
 }
 
 function renderRookies() {
