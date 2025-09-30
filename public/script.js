@@ -16,7 +16,7 @@ function isRookie(person) {
   const termStart = person.termStart;
   const termStartStr = typeof termStart === 'string' ? termStart : '';
 
-  return person.firstTerm === true || termStartStr.includes("2025");
+  return person.firstTerm === true || /^20(2[3-9]|3[0-9])/.test(termStartStr);
 }
 /* ---------------- CALENDAR EVENTS ---------------- */
 const calendarEvents = [
