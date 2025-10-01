@@ -1182,6 +1182,7 @@ function renderPollsForState(stateName) {
   `;
   pollsContainer.appendChild(rcpCard);
 }
+
 document.getElementById("search").addEventListener("input", syncOfficialsAndPolls);
 document.getElementById("state-select").addEventListener("change", syncOfficialsAndPolls);
 
@@ -1239,3 +1240,23 @@ document.getElementById("state-select").addEventListener("change", function () {
 
   showTab("polls");
 });
+function syncOfficialsAndPolls() {
+  var query = document.getElementById("search").value.toLowerCase();
+  var selectedState = document.getElementById("state-select").value;
+  var cards = document.querySelectorAll("#my-cards .card");
+
+  cards.forEach(function (card) {
+    var text = card.textContent.toLowerCase();
+    var matchesQuery = text.includes(query);
+    var matchesState = selectedState === "" || text.includes(selectedState.toLowerCase());
+
+    card.style.display = (matchesQuery && matchesState) ? "block" : "none";
+  });
+
+  // ✅ Render polls for selected state
+  renderPollsForState(selectedState);
+  showTab("polls");
+}
+document.getElementById("search").addEventListener("input", syncOfficialsAndPolls);
+document.getElementById("state-select").addEventListener("change", syncOfficialsAndPolls);
+
