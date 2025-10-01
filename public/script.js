@@ -480,6 +480,10 @@ async function loadData() {
     // ✅ Compose global officials list WITHOUT Lt. Governors
     window.allOfficials = [...(governors || []), ...(senate || []), ...(house || []), ...(ltGovernors || [])];
     allOfficials = window.allOfficials;
+    const sarah = window.allOfficials.find(p =>
+  (p.name || "").toLowerCase().includes("sanders")
+);
+console.log("🧪 Sarah Huckabee Sanders:", sarah);
     
     // ✅ Populate UI
     populateCompareDropdowns();
