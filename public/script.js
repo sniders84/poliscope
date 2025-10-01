@@ -12,8 +12,8 @@ window.showTab = function(id) {
   if (search) search.value = '';
 };
 // --- Rookie Logic ---
-console.log("🧪 Checking rookie:", person.name, person.termStart || person.termBegin || person.startDate);
 function isRookie(person) {
+  console.log("🧪 Checking rookie:", person.name, person.termStart || person.termBegin || person.startDate);
   const rawStart = person.termStart || person.termBegin || person.startDate || "";
   const role = (person.office || person.position || "").toLowerCase();
 
