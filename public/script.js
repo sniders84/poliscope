@@ -870,8 +870,17 @@ function renderMyOfficials(state) {
     return indexA - indexB;
   });
 
-  console.log("Filtered My Officials:", matches.map(p => `${p.name} (${p.office})`));
-  renderCards(matches, 'my-cards');
+  const container = document.getElementById("my-cards");
+  container.innerHTML = "";
+
+  matches.forEach(person => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.textContent = `${person.name} – ${person.office || person.position || 'Unknown'} – ${person.state}`;
+    container.appendChild(card);
+  });
+
+  console.log("Rendered My Officials:", matches.map(p => `${p.name} (${p.office})`));
 }
 function renderLtGovernors(data) {
   const container = document.getElementById('lt-governors-container');
