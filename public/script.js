@@ -1,21 +1,3 @@
-function showTab(tabId) {
-  const tabs = document.querySelectorAll('.tab-content');
-  tabs.forEach(tab => tab.style.display = 'none');
-
-  const activeTab = document.getElementById(tabId);
-  if (activeTab) activeTab.style.display = 'block';
-
-  const stateSelect = document.getElementById('state-select');
-  const selectedState = stateSelect?.value?.trim();
-
-  if (tabId === 'calendar' && selectedState) {
-    renderCalendar(selectedState);
-  }
-
-  if (tabId === 'registration' && selectedState) {
-    renderRegistration(selectedState);
-  }
-}
 /* ---------------- GLOBAL DATA ---------------- */
 window.allOfficials = [];
 window.allStats = [];
@@ -603,356 +585,67 @@ const votingInfo = {
 let allOfficials = [];
 
 /* ---------------- CALENDAR RENDER ---------------- */
-function renderCalendar(selectedState) {
-  const container = document.getElementById('calendar-container');
-  if (!container || !selectedState) return;
+function renderCalendar(events, selectedState) {
+  const container = document.getElementById("calendar-container");
+  if (!container) return;
 
-  const links = {
-"Alabama": {
-  registration: "https://www.sos.alabama.gov/alabama-votes/voter/register-to-vote",
-  polling: "https://myinfo.alabamavotes.gov/voterview/",
-  absentee: "https://www.sos.alabama.gov/alabama-votes/voter/absentee-voting",
-  volunteer: "https://www.sos.alabama.gov/alabama-votes/become-poll-worker"
-},
-"Alaska": {
-  registration: "https://www.elections.alaska.gov/Core/voterregistration.php",
-  polling: "https://www.elections.alaska.gov/election-polls/",
-  absentee: "https://www.elections.alaska.gov/voter-information/absentee-and-early-voting/",
-  volunteer: "https://www.elections.alaska.gov/election-workers/"
-},
-"American Samoa": {
-  registration: "https://www.aselectionoffice.gov/",
-  polling: "https://www.aselectionoffice.gov/",
-  absentee: "https://www.aselectionoffice.gov/absentee-voting",
-  volunteer: "https://www.aselectionoffice.gov/"
-},
-"Arizona": {
-  registration: "https://azsos.gov/elections/voters",
-  polling: "https://my.arizona.vote/",
-  absentee: "https://elections.maricopa.gov/voting/request-mail-ballot.html",
-  volunteer: "https://azsos.gov/elections/about-elections/county-poll-worker-information"
-},
-"Arkansas": {
-  registration: "https://www.sos.arkansas.gov/elections/voter-information",
-  polling: "https://www.voterview.ar-nova.org/VoterView",
-  absentee: "https://www.sos.arkansas.gov/elections/voter-information/absentee-voting",
-  volunteer: "https://sbec.arkansas.gov/"
-},
-"California": {
-  registration: "https://registertovote.ca.gov/",
-  polling: "https://www.sos.ca.gov/elections/polling-place",
-  absentee: "https://www.sos.ca.gov/elections/voter-registration/vote-mail",
-  volunteer: "https://www.sos.ca.gov/elections/poll-worker-information"
-},
-"Colorado": {
-  registration: "https://www.sos.state.co.us/pubs/elections/vote/VoterHome.html",
-  polling: "https://www.sos.state.co.us/voter/pages/pub/home.xhtml",
-  absentee: "https://www.sos.state.co.us/pubs/elections/vote/mailBallotFAQ.html",
-  volunteer: "https://www.sos.state.co.us/pubs/elections/Resources/pollworker.html"
-},
-"Connecticut": {
-  registration: "https://voterregistration.ct.gov/OLVR",
-  polling: "https://portaldir.ct.gov/sots/LookUp.aspx",
-  absentee: "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Absentee-Voting",
-  volunteer: "https://portal.ct.gov/SOTS/Election-Services/Poll-Worker-Information"
-},
-"Delaware": {
-  registration: "https://ivote.de.gov/",
-  polling: "https://ivote.de.gov/",
-  absentee: "https://elections.delaware.gov/voter/absentee.shtml",
-  volunteer: "https://elections.delaware.gov/voter/pollworker.shtml"
-},
-"Georgia": {
-  registration: "https://registertovote.sos.ga.gov/",
-  polling: "https://mvp.sos.ga.gov/",
-  absentee: "https://sos.ga.gov/page/absentee-voting",
-  volunteer: "https://sos.ga.gov/page/become-poll-worker"
-},
-"Hawaii": {
-  registration: "https://elections.hawaii.gov/voters/voter-registration/",
-  polling: "https://elections.hawaii.gov/voters/voting-in-person/",
-  absentee: "https://elections.hawaii.gov/voters/voting-by-mail/",
-  volunteer: "https://elections.hawaii.gov/election-worker-info/"
-},
-"Idaho": {
-  registration: "https://voteidaho.gov/register-to-vote/",
-  polling: "https://voteidaho.gov/where-to-vote/",
-  absentee: "https://voteidaho.gov/vote-by-mail/",
-  volunteer: "https://voteidaho.gov/become-a-poll-worker/"
-},
-"Illinois": {
-  registration: "https://ova.elections.il.gov/",
-  polling: "https://www.elections.il.gov/ElectionOperations/VotingInformation.aspx",
-  absentee: "https://www.elections.il.gov/ElectionOperations/VotingByMail.aspx",
-  volunteer: "https://www.elections.il.gov/ElectionOperations/PollWorkerInformation.aspx"
-},
-"Indiana": {
-  registration: "https://indianavoters.in.gov/",
-  polling: "https://indianavoters.in.gov/",
-  absentee: "https://www.in.gov/sos/elections/voter-information/vote-by-mail/",
-  volunteer: "https://www.in.gov/sos/elections/voter-information/become-a-poll-worker/"
-},
-"Iowa": {
-  registration: "https://sos.iowa.gov/elections/voterinformation/voterregistration.html",
-  polling: "https://sos.iowa.gov/elections/voterinformation/pollingplace.html",
-  absentee: "https://sos.iowa.gov/elections/voterinformation/absenteeballotinfo.html",
-  volunteer: "https://sos.iowa.gov/elections/voterinformation/electionofficials.html"
-},
-"Kansas": {
-  registration: "https://www.ksvotes.org/",
-  polling: "https://myvoteinfo.voteks.org/VoterView/",
-  absentee: "https://www.sos.ks.gov/elections/elections.html",
-  volunteer: "https://www.sos.ks.gov/elections/elections.html"
-},
-"Kentucky": {
-  registration: "https://vrsws.sos.ky.gov/ovrweb/",
-  polling: "https://vrsws.sos.ky.gov/vic/",
-  absentee: "https://elect.ky.gov/Voters/Pages/Absentee-Voting.aspx",
-  volunteer: "https://elect.ky.gov/Pages/Become-an-Election-Officer.aspx"
-},
-"Louisiana": {
-  registration: "https://www.sos.la.gov/ElectionsAndVoting/RegisterToVote/Pages/default.aspx",
-  polling: "https://voterportal.sos.la.gov/",
-  absentee: "https://www.sos.la.gov/ElectionsAndVoting/Vote/VoteByMail/Pages/default.aspx",
-  volunteer: "https://www.sos.la.gov/ElectionsAndVoting/GetInvolved/Pages/default.aspx"
-},
-"Maine": {
-  registration: "https://www.maine.gov/sos/cec/elec/voter-info/votreg.html",
-  polling: "https://www.maine.gov/sos/cec/elec/voter-info/polling-place.html",
-  absentee: "https://www.maine.gov/sos/cec/elec/voter-info/absenteevoting.html",
-  volunteer: "https://www.maine.gov/sos/cec/elec/voter-info/election-officials.html"
-},
-"Maryland": {
-  registration: "https://elections.maryland.gov/voter_registration/index.html",
-  polling: "https://voterservices.elections.maryland.gov/PollingPlaceSearch",
-  absentee: "https://elections.maryland.gov/voting/absentee.html",
-  volunteer: "https://elections.maryland.gov/get_involved/election_judges.html"
-},
-"Massachusetts": {
-  registration: "https://www.sec.state.ma.us/ovr/",
-  polling: "https://www.sec.state.ma.us/wheredoivotema/bal/MyElectionInfo.aspx",
-  absentee: "https://www.sec.state.ma.us/ele/eleabsentee/absidx.htm",
-  volunteer: "https://www.sec.state.ma.us/ele/eleidx.htm"
-},
-"Michigan": {
-  registration: "https://mvic.sos.state.mi.us/RegisterVoter",
-  polling: "https://mvic.sos.state.mi.us/VoterInformation",
-  absentee: "https://mvic.sos.state.mi.us/AVApplication/Index",
-  volunteer: "https://www.michigan.gov/sos/elections/pollworker"
-},
-"Minnesota": {
-  registration: "https://mnvotes.sos.state.mn.us/VoterRegistration/VoterRegistrationMain.aspx",
-  polling: "https://pollfinder.sos.state.mn.us/",
-  absentee: "https://mnvotes.sos.state.mn.us/ABRegistration/ABRegistrationStep1.aspx",
-  volunteer: "https://www.sos.state.mn.us/elections-voting/election-day-voting/become-an-election-judge/"
-},
-"Mississippi": {
-  registration: "https://www.sos.ms.gov/elections-voting/voter-registration-information",
-  polling: "https://www.sos.ms.gov/content/documents/Elections/PollingPlaceLocator.pdf",
-  absentee: "https://www.sos.ms.gov/elections-voting/absentee-voting-information",
-  volunteer: "https://www.sos.ms.gov/elections-voting/become-poll-worker"
-},
-"Missouri": {
-  registration: "https://www.sos.mo.gov/elections/goVoteMissouri/register",
-  polling: "https://voteroutreach.sos.mo.gov/PRD/VoterOutreach/VoterLookup.aspx",
-  absentee: "https://www.sos.mo.gov/elections/goVoteMissouri/howtovote#Absentee",
-  volunteer: "https://www.sos.mo.gov/elections/goVoteMissouri/pollworker"
-},
-"Montana": {
-  registration: "https://sosmt.gov/elections/vote/",
-  polling: "https://app.mt.gov/voterinfo/",
-  absentee: "https://sosmt.gov/elections/absentee/",
-  volunteer: "https://sosmt.gov/elections/poll-workers/"
-},
-"Nebraska": {
-  registration: "https://www.nebraska.gov/apps-sos-voter-registration/",
-  polling: "https://www.votercheck.necvr.ne.gov/",
-  absentee: "https://sos.nebraska.gov/elections/early-voting",
-  volunteer: "https://sos.nebraska.gov/elections/become-election-worker"
-},
-"Nevada": {
-  registration: "https://www.registertovotenv.gov/",
-  polling: "https://www.nvsos.gov/votersearch/",
-  absentee: "https://www.nvsos.gov/sos/elections/voters/absentee-voting",
-  volunteer: "https://www.nvsos.gov/sos/elections/poll-workers"
-},
-"New Hampshire": {
-  registration: "https://www.nh.gov/sos/elections/voters/register-to-vote.htm",
-  polling: "https://app.sos.nh.gov/Public/PollingPlaceSearch",
-  absentee: "https://www.nh.gov/sos/elections/voters/absentee-ballots.htm",
-  volunteer: "https://www.nh.gov/sos/elections/election-workers.htm"
-},
-"New Jersey": {
-  registration: "https://nj.gov/state/elections/voter-registration.shtml",
-  polling: "https://nj.gov/state/elections/vote-polling-location.shtml",
-  absentee: "https://nj.gov/state/elections/vote-by-mail.shtml",
-  volunteer: "https://nj.gov/state/elections/poll-worker.shtml"
-},
-  "New Mexico": {
-  registration: "https://www.sos.state.nm.us/voting-and-elections/voter-registration-information/",
-  polling: "https://voterportal.servis.sos.state.nm.us/WhereToVote.aspx",
-  absentee: "https://www.sos.state.nm.us/voting-and-elections/voting-by-absentee/",
-  volunteer: "https://www.sos.state.nm.us/voting-and-elections/election-worker-information/"
-},
-"New York": {
-  registration: "https://www.elections.ny.gov/VotingRegister.html",
-  polling: "https://voterlookup.elections.ny.gov/",
-  absentee: "https://www.elections.ny.gov/VotingAbsentee.html",
-  volunteer: "https://www.elections.ny.gov/BecomePollworker.html"
-},
-"North Carolina": {
-  registration: "https://www.ncsbe.gov/registering",
-  polling: "https://vt.ncsbe.gov/PPLkup/",
-  absentee: "https://www.ncsbe.gov/voting/vote-mail",
-  volunteer: "https://www.ncsbe.gov/about-elections/become-election-official"
-},
-"North Dakota": {
-  registration: "https://vip.sos.nd.gov/PortalListDetails.aspx?ptlhPKID=79&ptlPKID=7",
-  polling: "https://vip.sos.nd.gov/WhereToVote.aspx",
-  absentee: "https://vip.sos.nd.gov/Absentee.aspx",
-  volunteer: "https://vip.sos.nd.gov/PollWorker.aspx"
-},
-"Ohio": {
-  registration: "https://olvr.ohiosos.gov/",
-  polling: "https://voterlookup.ohiosos.gov/voterlookup.aspx",
-  absentee: "https://www.ohiosos.gov/elections/voters/absentee-voting/",
-  volunteer: "https://www.ohiosos.gov/elections/poll-workers/"
-},
-"Oklahoma": {
-  registration: "https://okvoterportal.okelections.us/",
-  polling: "https://okvoterportal.okelections.us/",
-  absentee: "https://oklahoma.gov/elections/voters/absentee-voting.html",
-  volunteer: "https://oklahoma.gov/elections/poll-workers.html"
-},
-"Oregon": {
-  registration: "https://sos.oregon.gov/voting/pages/registration.aspx",
-  polling: "https://sos.oregon.gov/voting/pages/myvote.aspx",
-  absentee: "https://sos.oregon.gov/voting/pages/voteearly.aspx",
-  volunteer: "https://sos.oregon.gov/elections/pages/poll-workers.aspx"
-},
-"Pennsylvania": {
-  registration: "https://www.vote.pa.gov/Register-to-Vote/Pages/default.aspx",
-  polling: "https://www.vote.pa.gov/Pages/Polling-Place.aspx",
-  absentee: "https://www.vote.pa.gov/Voting-in-PA/Pages/Mail-and-Absentee-Ballot.aspx",
-  volunteer: "https://www.vote.pa.gov/About-Elections/Pages/Become-a-Poll-Worker.aspx"
-},
-"Rhode Island": {
-  registration: "https://vote.sos.ri.gov/",
-  polling: "https://vote.sos.ri.gov/",
-  absentee: "https://vote.sos.ri.gov/Voter/VoteRI",
-  volunteer: "https://elections.ri.gov/pollworkers/"
-},
-"South Carolina": {
-  registration: "https://www.scvotes.gov/voters/register-vote",
-  polling: "https://www.scvotes.gov/voters/your-voter-registration",
-  absentee: "https://www.scvotes.gov/voters/absentee-voting",
-  volunteer: "https://www.scvotes.gov/voters/become-poll-manager"
-},
-"South Dakota": {
-  registration: "https://sdsos.gov/elections-voting/voting/register-to-vote/default.aspx",
-  polling: "https://vip.sdsos.gov/VIPLogin.aspx",
-  absentee: "https://sdsos.gov/elections-voting/voting/absentee-voting/default.aspx",
-  volunteer: "https://sdsos.gov/elections-voting/voting/become-election-worker/default.aspx"
-},
-"Tennessee": {
-  registration: "https://ovr.govote.tn.gov/",
-  polling: "https://tnmap.tn.gov/voterlookup/",
-  absentee: "https://sos.tn.gov/elections/guides/absentee-voting-guide",
-  volunteer: "https://sos.tn.gov/elections/guides/poll-officials-guide"
-},
-"Texas": {
-  registration: "https://www.votetexas.gov/register-to-vote/",
-  polling: "https://teamrv-mvp.sos.texas.gov/MVP/mvp.do",
-  absentee: "https://www.votetexas.gov/voting-by-mail/",
-  volunteer: "https://www.votetexas.gov/election-officials/poll-workers.html"
-},
-"Utah": {
-  registration: "https://vote.utah.gov/",
-  polling: "https://vote.utah.gov/",
-  absentee: "https://vote.utah.gov/",
-  volunteer: "https://vote.utah.gov/"
-},
-"Vermont": {
-  registration: "https://olvr.vermont.gov/",
-  polling: "https://mvp.vermont.gov/",
-  absentee: "https://sos.vermont.gov/elections/voters/early-absentee-voting/",
-  volunteer: "https://sos.vermont.gov/elections/election-officials/"
-},
-"Virginia": {
-  registration: "https://vote.elections.virginia.gov/Registration/Eligibility",
-  polling: "https://vote.elections.virginia.gov/VoterInformation",
-  absentee: "https://vote.elections.virginia.gov/VoterInformation",
-  volunteer: "https://www.elections.virginia.gov/officers/"
-},
-"Washington": {
-  registration: "https://www.sos.wa.gov/elections/register.aspx",
-  polling: "https://www.sos.wa.gov/elections/voters/",
-  absentee: "https://www.sos.wa.gov/elections/voters/vote-by-mail.aspx",
-  volunteer: "https://www.sos.wa.gov/elections/election-workers.aspx"
-},
-"West Virginia": {
-  registration: "https://ovr.sos.wv.gov/Register/Landing",
-  polling: "https://services.sos.wv.gov/Elections/Voter/Lookup",
-  absentee: "https://sos.wv.gov/elections/Pages/AbsenteeVotingInformation.aspx",
-  volunteer: "https://sos.wv.gov/elections/Pages/PollWorkers.aspx"
-},
-"Wisconsin": {
-  registration: "https://myvote.wi.gov/en-us/Register-To-Vote",
-  polling: "https://myvote.wi.gov/en-us/Find-My-Polling-Place",
-  absentee: "https://myvote.wi.gov/en-us/Vote-Absentee",
-  volunteer: "https://elections.wi.gov/clerks/poll-workers"
-},
-"Wyoming": {
-  registration: "https://sos.wyo.gov/Elections/State/RegisteringToVote.aspx",
-  polling: "https://sos.wyo.gov/Elections/State/PollingPlaces.aspx",
-  absentee: "https://sos.wyo.gov/Elections/State/AbsenteeVoting.aspx",
-  volunteer: "https://sos.wyo.gov/Elections/State/PollWorkers.aspx"
-},
-"District of Columbia": {
-  registration: "https://www.dcboe.org/Voters/Register-To-Vote",
-  polling: "https://www.dcboe.org/Voters/Where-to-Vote",
-  absentee: "https://www.dcboe.org/Voters/Absentee-Voting",
-  volunteer: "https://www.dcboe.org/Election-Workers"
-},
-"Puerto Rico": {
-  registration: "https://www.ceepur.org/",
-  polling: "https://www.ceepur.org/",
-  absentee: "https://www.ceepur.org/",
-  volunteer: "https://www.ceepur.org/"
-},
-"Guam": {
-  registration: "https://gec.guam.gov/register-to-vote/",
-  polling: "https://gec.guam.gov/polling-places/",
-  absentee: "https://gec.guam.gov/absentee-voting/",
-  volunteer: "https://gec.guam.gov/poll-workers/"
-},
-"U.S. Virgin Islands": {
-  registration: "https://www.vivote.gov/register",
-  polling: "https://www.vivote.gov/polling-places",
-  absentee: "https://www.vivote.gov/absentee-voting",
-  volunteer: "https://www.vivote.gov/election-workers"
-},
-"Northern Mariana Islands": {
-  registration: "https://www.votecnmi.gov.mp/registration.html",
-  polling: "https://www.votecnmi.gov.mp/pollingplaces.html",
-  absentee: "https://www.votecnmi.gov.mp/absenteevoting.html",
-  volunteer: "https://www.votecnmi.gov.mp/pollworkers.html"
+  const today = new Date();
+
+  const filtered = events
+  .filter(e => {
+    const eventState = (e.state || "").trim().toLowerCase();
+    const selected = (selectedState || "").trim().toLowerCase();
+    const eventDate = new Date(Date.parse(e.date));
+    return (
+      (eventState === selected || eventState === "all") &&
+      eventDate.toString() !== "Invalid Date" &&
+      eventDate >= today
+    );
+  })
+  .sort((a, b) => new Date(a.date) - new Date(b.date));
+
+  const html = filtered.map(event => `
+    <div class="card" onclick="openEventModal('${escapeJs(event.title)}', '${event.date}', '${escapeJs(event.state)}', '${escapeJs(event.type)}', '${escapeJs(event.details)}', '${event.link}')">
+      <h3>${event.title}</h3>
+      <p><strong>Date:</strong> ${event.date}</p>
+      <p><strong>Type:</strong> ${event.type}</p>
+    </div>
+  `).join('');
+
+  container.innerHTML = html || `<p>No upcoming events for ${selectedState}.</p>`;
 }
 
-  const stateLinks = links[selectedState];
-  if (!stateLinks) {
-    container.innerHTML = `<p>No registration info available for ${selectedState}.</p>`;
-    return;
-  }
+/* ---------------- REGISTRATION RENDER ---------------- */
+function renderRegistration(selectedState) {
+  const container = document.getElementById("registration-container");
+  if (!container) return;
 
-  container.innerHTML = `
-    <div class="card"><h3>Voter Registration</h3><a href="${stateLinks.registration}" target="_blank">Register to vote</a></div>
-    <div class="card"><h3>Polling Locations</h3><a href="${stateLinks.polling}" target="_blank">Find your polling place</a></div>
-    <div class="card"><h3>Absentee Ballot</h3><a href="${stateLinks.absentee}" target="_blank">Request or track absentee ballot</a></div>
-    <div class="card"><h3>Volunteer</h3><a href="${stateLinks.volunteer}" target="_blank">Become an election official</a></div>
-  `;
+  container.innerHTML = `<p>Registration info for ${selectedState} coming soon.</p>`;
 }
+
 /* ---------------- MODAL LOGIC ---------------- */
+function openEventModal(title, date, state, type, details, link) {
+  const content = `
+    <div class="event-modal">
+      <h2>${title}</h2>
+      <p><strong>Date:</strong> ${date}</p>
+      <p><strong>State:</strong> ${state}</p>
+      <p><strong>Type:</strong> ${type}</p>
+      <p>${details}</p>
+      <p><a href="${link}" target="_blank" rel="noopener noreferrer">More Info</a></p>
+      <p><button id="event-modal-close">Close</button></p>
+    </div>
+  `;
+  const modalContent = document.getElementById('modal-content');
+  if (!modalContent) return;
+  modalContent.innerHTML = content;
+  const overlay = document.getElementById('modal-overlay');
+  if (overlay) overlay.style.display = 'flex';
+
+  const closeBtn = document.getElementById('event-modal-close');
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+}
+
 /* ---------------- TAB SWITCHING ---------------- */
 function showTab(tabId) {
   document.querySelectorAll('section').forEach(section => {
@@ -1122,31 +815,6 @@ function closeModal() {
   if (overlay) overlay.style.display = 'none';
   const modalContent = document.getElementById('modal-content');
   if (modalContent) modalContent.innerHTML = '';
-}
-function closeModal() {
-  const overlay = document.getElementById('modal-overlay');
-  if (overlay) overlay.style.display = 'none';
-  const modalContent = document.getElementById('modal-content');
-  if (modalContent) modalContent.innerHTML = '';
-}
-
-function openEventModal(title, details, link) {
-  const modalHTML = `
-    <div class="modal-container">
-      <h2>${title}</h2>
-      <p>${details}</p>
-      <p><a href="${link}" target="_blank" rel="noopener noreferrer">Open Official Site</a></p>
-      <button id="modal-close-btn">Close</button>
-    </div>
-  `;
-  const modalContent = document.getElementById('modal-content');
-  if (modalContent) modalContent.innerHTML = modalHTML;
-
-  const overlay = document.getElementById('modal-overlay');
-  if (overlay) overlay.style.display = 'flex';
-
-  const closeBtn = document.getElementById('modal-close-btn');
-  if (closeBtn) closeBtn.addEventListener('click', closeModal);
 }
 /* ---------------- INDIVIDUAL LIST RENDERS ---------------- */
 function renderMyOfficials(state) {
@@ -1444,14 +1112,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Calendar initial render & state sync (ensures calendar updates if state-select exists)
   const stateSelect = document.getElementById('state-select');
-if (stateSelect) {
-  const defaultState = stateSelect.value || 'Alabama';
-  renderCalendar(defaultState);
+  if (stateSelect) {
+    const defaultState = stateSelect.value || 'Alabama';
+    renderCalendar(calendarEvents, defaultState);
 
-  stateSelect.addEventListener('change', () => {
-    renderCalendar(stateSelect.value);
-  });
-}
+    stateSelect.addEventListener('change', () => {
+      renderCalendar(calendarEvents, stateSelect.value);
+    });
+  }
 
   // Modal overlay click to close
   const overlay = document.getElementById('modal-overlay');
@@ -1490,24 +1158,3 @@ document.getElementById("state-select").addEventListener("change", function () {
   renderCalendar(window.allEvents || [], selectedState);
   renderRegistration(selectedState);
 });
-document.addEventListener('DOMContentLoaded', () => {
-  const stateSelect = document.getElementById('state-select');
-  if (stateSelect && !stateSelect.value) {
-    stateSelect.value = 'North Carolina'; // or any default
-  }
-  showTab('calendar');
-});
-function showTab(tabName) {
-  // Hide all tabs
-  const tabs = document.querySelectorAll(".tab");
-  tabs.forEach(function(tab) {
-    tab.style.display = "none";
-  });
-
-  // Show the one tab that matches the name
-  const targetTab = document.getElementById(tabName);
-  if (targetTab) {
-    targetTab.style.display = "block";
-  }
-}
-
