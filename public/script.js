@@ -595,7 +595,7 @@ function renderCalendar(events, selectedState) {
   .filter(e => {
     const eventState = (e.state || "").trim().toLowerCase();
     const selected = (selectedState || "").trim().toLowerCase();
-    const eventDate = new Date(e.date);
+    const eventDate = new Date(Date.parse(e.date));
     return (
       (eventState === selected || eventState === "all") &&
       eventDate.toString() !== "Invalid Date" &&
