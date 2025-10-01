@@ -16,12 +16,10 @@ function isRookie(person) {
   const rawStart = person.termStart || person.termBegin || person.startDate || "";
   const role = (person.office || person.position || "").toLowerCase();
 
-  // Normalize year
   const yearMatch = rawStart.match(/\d{4}/);
   const startYear = yearMatch ? parseInt(yearMatch[0]) : null;
   if (!startYear) return false;
 
-  // Role-aware rookie windows
   const currentYear = new Date().getFullYear();
 
   if (role.includes("senator")) {
