@@ -368,7 +368,12 @@ function renderRookies() {
 
 rookies.forEach(person => {
   const role = (person.office || person.position || "").toLowerCase();
-
+console.log("Grouped rookies:", {
+  governor: groups.governor.length,
+  senator: groups.senator.length,
+  representative: groups.representative.length,
+  ltgovernor: groups.ltgovernor.length
+});
   if (
     role.includes("senator") ||
     role.includes("u.s. senator") ||
