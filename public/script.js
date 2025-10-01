@@ -162,9 +162,12 @@ function renderCalendar(events, selectedState) {
 
   const today = new Date();
 
-  const filtered = events
-    .filter(e => e.state === selectedState && new Date(e.date) >= today)
-    .sort((a, b) => new Date(a.date) - new Date(b.date));
+const filtered = events
+  .filter(e =>
+    (e.state === selectedState || e.state === "ALL") &&
+    new Date(e.date) >= today
+  )
+  .sort((a, b) => new Date(a.date) - new Date(b.date));
 
   const html = filtered.map(event => `
     <div class="card" onclick="openEventModal('${escapeJs(event.title)}', '${event.date}', '${escapeJs(event.state)}', '${escapeJs(event.type)}', '${escapeJs(event.details)}', '${event.link}')">
