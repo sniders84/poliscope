@@ -757,20 +757,6 @@ function renderRegistration(selectedState) {
   `;
 }
 /* ---------------- MODAL LOGIC ---------------- */
-function openEventModal(title, details, link) {
-  const modalHTML = `
-    <div class="modal-container">
-      <h2>${title}</h2>
-      <p>${details}</p>
-      <p><a href="${link}" target="_blank" rel="noopener noreferrer">Open Official Site</a></p>
-      <button id="modal-close-btn">Close</button>
-    </div>
-  `;
-  document.getElementById('modal-content').innerHTML = modalHTML;
-  document.getElementById('modal-overlay').style.display = 'flex';
-  document.getElementById('modal-close-btn').addEventListener('click', closeModal);
-}
-
 /* ---------------- TAB SWITCHING ---------------- */
 function showTab(tabId) {
   document.querySelectorAll('section').forEach(section => {
