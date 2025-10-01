@@ -31,6 +31,23 @@ function isRookie(person) {
 
   return false;
 }
+function getSafePhotoUrl(person) {
+  const raw = person.photo;
+  if (!raw || typeof raw !== 'string') return 'https://via.placeholder.com/200x300?text=No+Photo';
+
+  const trimmed = raw.trim();
+  if (
+    trimmed === '' ||
+    trimmed.startsWith('200x300') ||
+    trimmed.startsWith('/200x300') ||
+    trimmed.includes('?text=No+Photo') ||
+    trimmed.startsWith('http') === false
+  ) {
+    return 'https://via.placeholder.com/200x300?text=No+Photo';
+  }
+
+  return trimmed;
+}
 /* ---------------- CALENDAR EVENTS ---------------- */
 const calendarEvents = [
   {
@@ -197,7 +214,8 @@ function renderCards(data, containerId) {
   }
 
   const cardsHTML = data.map(person => {
-    const imageUrl = person.photo?.trim() || 'https://via.placeholder.com/200x300?text=No+Photo';
+    const imageUrl = getSafePhotoUrl(person);
+
     const partyLower = (person.party || '').toLowerCase();
     const partyColor = partyLower.includes("repub") ? "#d73027" :
                        partyLower.includes("dem") ? "#4575b4" :
@@ -207,7 +225,6 @@ function renderCards(data, containerId) {
                        partyLower.includes("constit") ? "#984ea3" :
                        "#cccccc";
 
-    // Use data-slug attribute used by the click handler
     return `
       <div class="card" data-slug="${person.slug}" onclick="expandCard('${person.slug}')" style="border-left: 8px solid ${partyColor};">
         <img src="${imageUrl}" />
@@ -257,7 +274,7 @@ function openModal(person) {
   const modalHTML = `
     <div class="modal-container">
       <div class="modal-left">
-        <img src="${person.photo || 'https://via.placeholder.com/200x300?text=No+Photo'}" />
+        <img src="${imageUrl}" />
         <h2>${person.name}</h2>
         ${link ? `<p><a href="${link}" target="_blank" rel="noopener noreferrer">External Profile</a></p>` : ''}
         <p><strong>Contact:</strong>
@@ -301,7 +318,6 @@ function closeModal() {
   const modalContent = document.getElementById('modal-content');
   if (modalContent) modalContent.innerHTML = '';
 }
-
 /* ---------------- INDIVIDUAL LIST RENDERS ---------------- */
 function renderMyOfficials(state) {
   const matches = window.allOfficials.filter(person => {
@@ -460,7 +476,7 @@ function renderCompareCard(slug, containerId) {
 
   container.innerHTML = `
     <div class="card">
-      <img src="${person.photo || 'https://via.placeholder.com/200x300?text=No+Photo'}" />
+      <img src="${imageUrl}" />
       <h3>${person.name}</h3>
       <p><strong>Office:</strong> ${person.office || person.position || ''}</p>
       <p><strong>State:</strong> ${person.state}</p>
