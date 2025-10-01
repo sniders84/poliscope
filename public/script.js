@@ -1,27 +1,19 @@
 /* ---------------- GLOBAL DATA ---------------- */
 window.allOfficials = []; // populated from Excel or JSON feed
-window.allEvents = [];    // populated with verified civic events per state
 window.allStats = [];     // used for rankings, rookie tracking, etc
 
-/* ---------------- UTILITY FUNCTIONS ---------------- */
-function escapeJs(str) {
-  return str.replace(/'/g, "\\'").replace(/"/g, '\\"');
-}
-
-/* ---------------- EVENT FEED ---------------- */
-window.allEvents = [
-  // Real civic events go here, starting with Alabama and continuing state by state
-// Nationwide
-{
-  title: "General Election",
-  date: "2024-11-05",
-  state: "ALL",
-  type: "Federal",
-  details: "Presidential, Senate, and House races across all states.",
-  link: "https://www.nass.org/Can-I-Vote"
-},
-
-// Alabama
+window.allEvents = [      // populated with verified civic events per state
+  // Nationwide
+  {
+    title: "General Election",
+    date: "2024-11-05",
+    state: "ALL",
+    type: "Federal",
+    details: "Presidential, Senate, and House races across all states.",
+    link: "https://www.nass.org/Can-I-Vote"
+  }
+  // Add state-specific events below this line
+  // Alabama
 {
   title: "Municipal Runoff – Birmingham",
   date: "2025-10-07",
@@ -463,6 +455,11 @@ window.allEvents = [
   link: "https://sos.wyo.gov/Elections"
 }
 ];
+
+/* ---------------- UTILITY FUNCTIONS ---------------- */
+function escapeJs(str) {
+  return str.replace(/'/g, "\\'").replace(/"/g, '\\"');
+},
 
 // --- Tabs (single canonical function) ---
 window.showTab = function(id) {
