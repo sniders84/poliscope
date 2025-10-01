@@ -368,6 +368,36 @@ function renderRookies() {
 
 rookies.forEach(person => {
   const role = (person.office || person.position || "").toLowerCase();
+
+  if (
+    role.includes("senator") ||
+    role.includes("u.s. senator") ||
+    role.includes("state senator")
+  ) {
+    groups.senator.push(person);
+  } else if (
+    role.includes("representative") ||
+    role.includes("house") ||
+    role.includes("u.s. representative") ||
+    role.includes("state representative")
+  ) {
+    groups.representative.push(person);
+  } else if (
+    role.includes("lt. governor") ||
+    role.includes("lt governor") ||
+    role.includes("ltgovernor") ||
+    role.includes("lieutenant governor")
+  ) {
+    groups.ltgovernor.push(person);
+  } else if (
+    role.includes("governor") &&
+    !role.includes("lt") &&
+    !role.includes("lieutenant")
+  ) {
+    groups.governor.push(person);
+  }
+});
+
 console.log("Grouped rookies:", {
   governor: groups.governor.length,
   senator: groups.senator.length,
