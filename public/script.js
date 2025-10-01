@@ -13,11 +13,31 @@ window.showTab = function(id) {
 };
 // --- Rookie Logic ---
 function isRookie(person) {
-  const termStart = person.termStart;
-  const termStartStr = typeof termStart === 'string' ? termStart : '';
+  const rawStart = person.termStart || person.termBegin || person.startDate || "";
+  const termStartStr = String(rawStart).trim();
+  const yearMatch = termStartStr.match(/^(\d{4})/);
+  const year = yearMatch ? parseInt(yearMatch[1], 10) : null;
 
-  return person.firstTerm === true || /^20(2[3-9]|3[0-9])/.test(termStartStr);
-  console.log("🧪 Checking termStart:", person.name, termStartStr);
+  const role = (person.office || person.position || "").toLowerCase();
+
+  if (!year) return false;
+
+  if (role.includes("senator")) {
+    return year >= 2018; // 6-year term
+  } else if (role.includes("governor")) {
+    return year >= 2020; // 4-year term
+  } else if (role.includes("representative") || role.includes("house")) {
+    return year >= 2022; // 2-year term
+  } else if (
+    role.includes("lt. governor") ||
+    role.includes("lt governor") ||
+    role.includes("ltgovernor") ||
+    role.includes("lieutenant governor")
+  ) {
+    return year >= 2020; // assume 4-year term
+  }
+
+  return false;
 }
 /* ---------------- CALENDAR EVENTS ---------------- */
 const calendarEvents = [
