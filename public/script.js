@@ -817,6 +817,30 @@ function closeModal() {
   if (modalContent) modalContent.innerHTML = '';
 }
 /* ---------------- INDIVIDUAL LIST RENDERS ---------------- */
+function renderPolls(selectedState) {
+  const pollsContainer = document.getElementById('polls-container');
+  if (!pollsContainer) return;
+
+  // Replace "polls" with your actual event/poll data array
+  const filtered = polls.filter(
+    poll => poll.state && poll.state.trim().toLowerCase() === (selectedState || '').trim().toLowerCase()
+  );
+
+  if (filtered.length === 0) {
+    pollsContainer.innerHTML = `<p>No polls for this state.</p>`;
+    return;
+  }
+
+  pollsContainer.innerHTML = filtered.map(poll => `
+    <div class="poll-card">
+      <h3>${poll.title}</h3>
+      <p><strong>Date:</strong> ${poll.date || ''}</p>
+      <p><strong>Type:</strong> ${poll.type || ''}</p>
+      <p>${poll.details || ''}</p>
+      <p><a href="${poll.link}" target="_blank" rel="noopener noreferrer">More info</a></p>
+    </div>
+  `).join('');
+}
 function renderMyOfficials(state) {
   const matches = window.allOfficials.filter(person => {
     const stateMatch =
@@ -1070,7 +1094,16 @@ function waitForHouseData() {
 /* ---------------- BOOTSTRAP / DOM ---------------- */
 document.addEventListener('DOMContentLoaded', function () {
   loadData();
-
+const stateSelect = document.getElementById('state-select');
+if (stateSelect) {
+  stateSelect.addEventListener('change', function () {
+    const selectedState = stateSelect.value;
+    renderPolls(selectedState);        // Call if you have polls
+    renderCalendar(window.allEvents || [], selectedState);
+    renderRegistration(selectedState);
+    // Add other renderers that depend on state here, if needed
+  });
+}
   // Search input logic
   const search = document.getElementById('search');
   const results = document.getElementById('results');
