@@ -1,10 +1,21 @@
 window.allEvents = [
+  // Nationwide events
   {
     title: "General Election",
     date: "2024-11-05",
+    state: "ALL",
+    type: "Federal",
+    details: "Presidential and Congressional races across all states.",
+    link: "https://www.nass.org/Can-I-Vote"
+  },
+
+  // State-specific events
+  {
+    title: "Municipal Runoff",
+    date: "2025-03-03",
     state: "Alabama",
-    type: "Statewide",
-    details: "Includes races for President, Senate, and House.",
+    type: "Local",
+    details: "Runoff for city council and mayoral races.",
     link: "https://www.sos.alabama.gov/alabama-votes"
   },
   {
@@ -12,18 +23,10 @@ window.allEvents = [
     date: "2025-03-04",
     state: "North Carolina",
     type: "Statewide",
-    details: "Primary races for Governor and Lt. Governor.",
+    details: "Governor, Lt. Governor, and legislative primaries.",
     link: "https://www.ncsbe.gov"
-  },
-  {
-    title: "Special Election",
-    date: "2025-06-03",
-    state: "California",
-    type: "Municipal",
-    details: "Local ballot measures and city council races.",
-    link: "https://www.sos.ca.gov/elections"
   }
-  // Add more events here
+  // Add more states here
 ];
 
 // --- Tabs (single canonical function) ---
