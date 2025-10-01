@@ -511,17 +511,15 @@ function getSafePhotoUrl(person) {
   if (!raw || typeof raw !== 'string') return 'https://via.placeholder.com/200x300?text=No+Photo';
 
   const trimmed = raw.trim();
-  if (
+  const isBroken =
     trimmed === '' ||
     trimmed.startsWith('200x300') ||
     trimmed.startsWith('/200x300') ||
     trimmed.includes('?text=No+Photo') ||
-    trimmed.startsWith('http') === false
-  ) {
-    return 'https://via.placeholder.com/200x300?text=No+Photo';
-  }
+    trimmed.startsWith('http') === false ||
+    trimmed.includes('ERR_NAME_NOT_RESOLVED');
 
-  return trimmed;
+  return isBroken ? 'https://via.placeholder.com/200x300?text=No+Photo' : trimmed;
 }
 /* ---------------- CALENDAR EVENTS ---------------- */
 const calendarEvents = [
