@@ -3,176 +3,100 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Poliscope</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    #modal-overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 999;
-    }
-    #modal-content {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 600px;
-      width: 90%;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      overflow-y: auto;
-      max-height: 80vh;
-    }
-    #modal-close {
-      margin-top: 10px;
-      padding: 8px 16px;
-      background: #0055a5;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-  </style>
+  <title>Electorate</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-  <link rel="stylesheet" href="style.css" />
-
 <body>
- <header class="electorate-header">
-  <img src="assets/electorate-logo.png" alt="Electorate logo" class="electorate-logo" />
-</header>
+  <header>
+    <h1>Electorate</h1>
+    <nav>
+      <button onclick="showTab('officials')">My Officials</button>
+      <button onclick="showTab('calendar')">Calendar</button>
+      <button onclick="showTab('registration')">Registration</button>
+    </nav>
+  </header>
 
-  <nav id="tabs">
-    <button onclick="showTab('my-officials')">My Officials</button>
-    <button onclick="showTab('compare')">Current Matchups</button>
-    <button onclick="showTab('rankings')">Rankings</button>
-    <button onclick="showTab('calendar')">Calendar</button>
-    <button onclick="showTab('registration')">Registration</button>
-  </nav>
+  <main>
+    <!-- My Officials Tab -->
+    <section id="officials">
+      <label for="state-select">Select your state:</label>
+      <select id="state-select">
+        <option value="">Choose a state</option>
+        <option value="Alabama">Alabama</option>
+        <option value="Alaska">Alaska</option>
+        <option value="Arizona">Arizona</option>
+        <option value="Arkansas">Arkansas</option>
+        <option value="California">California</option>
+        <option value="Colorado">Colorado</option>
+        <option value="Connecticut">Connecticut</option>
+        <option value="Delaware">Delaware</option>
+        <option value="Florida">Florida</option>
+        <option value="Georgia">Georgia</option>
+        <option value="Hawaii">Hawaii</option>
+        <option value="Idaho">Idaho</option>
+        <option value="Illinois">Illinois</option>
+        <option value="Indiana">Indiana</option>
+        <option value="Iowa">Iowa</option>
+        <option value="Kansas">Kansas</option>
+        <option value="Kentucky">Kentucky</option>
+        <option value="Louisiana">Louisiana</option>
+        <option value="Maine">Maine</option>
+        <option value="Maryland">Maryland</option>
+        <option value="Massachusetts">Massachusetts</option>
+        <option value="Michigan">Michigan</option>
+        <option value="Minnesota">Minnesota</option>
+        <option value="Mississippi">Mississippi</option>
+        <option value="Missouri">Missouri</option>
+        <option value="Montana">Montana</option>
+        <option value="Nebraska">Nebraska</option>
+        <option value="Nevada">Nevada</option>
+        <option value="New Hampshire">New Hampshire</option>
+        <option value="New Jersey">New Jersey</option>
+        <option value="New Mexico">New Mexico</option>
+        <option value="New York">New York</option>
+        <option value="North Carolina">North Carolina</option>
+        <option value="North Dakota">North Dakota</option>
+        <option value="Ohio">Ohio</option>
+        <option value="Oklahoma">Oklahoma</option>
+        <option value="Oregon">Oregon</option>
+        <option value="Pennsylvania">Pennsylvania</option>
+        <option value="Rhode Island">Rhode Island</option>
+        <option value="South Carolina">South Carolina</option>
+        <option value="South Dakota">South Dakota</option>
+        <option value="Tennessee">Tennessee</option>
+        <option value="Texas">Texas</option>
+        <option value="Utah">Utah</option>
+        <option value="Vermont">Vermont</option>
+        <option value="Virginia">Virginia</option>
+        <option value="Washington">Washington</option>
+        <option value="West Virginia">West Virginia</option>
+        <option value="Wisconsin">Wisconsin</option>
+        <option value="Wyoming">Wyoming</option>
+      </select>
 
-  <input type="text" id="search" placeholder="Search by name, state, or party..." />
-  <ul id="results"></ul>
-  <label for="state-select">Select your state:</label>
-<select id="state-select">
-  <option value="">Choose a state</option>
-  <option value="North Carolina">North Carolina</option>
-  <option value="California">California</option>
-  <option value="Texas">Texas</option>
-</select>
-<div id="calendar-container"></div>
-  
-    <section id="my-officials" style="display:none;">
-  <h2>My Officials</h2>
-  <div class="card-container" id="my-cards"></div>
-</section>
+      <div id="officials-container"></div>
+    </section>
 
-  <section id="compare" style="display:none;">
-  <h2>Current Matchups</h2>
-    <div class="matchup-dropdown-wrapper">
-  <label for="matchup-state">Select a state:</label>
-  <select id="matchup-state">
-  <option value="">Choose a state</option>
-  <option value="Alabama">Alabama</option>
-  <option value="Alaska">Alaska</option>
-  <option value="Arizona">Arizona</option>
-  <option value="Arkansas">Arkansas</option>
-  <option value="California">California</option>
-  <option value="Colorado">Colorado</option>
-  <option value="Connecticut">Connecticut</option>
-  <option value="Delaware">Delaware</option>
-  <option value="Florida">Florida</option>
-  <option value="Georgia">Georgia</option>
-  <option value="Hawaii">Hawaii</option>
-  <option value="Idaho">Idaho</option>
-  <option value="Illinois">Illinois</option>
-  <option value="Indiana">Indiana</option>
-  <option value="Iowa">Iowa</option>
-  <option value="Kansas">Kansas</option>
-  <option value="Kentucky">Kentucky</option>
-  <option value="Louisiana">Louisiana</option>
-  <option value="Maine">Maine</option>
-  <option value="Maryland">Maryland</option>
-  <option value="Massachusetts">Massachusetts</option>
-  <option value="Michigan">Michigan</option>
-  <option value="Minnesota">Minnesota</option>
-  <option value="Mississippi">Mississippi</option>
-  <option value="Missouri">Missouri</option>
-  <option value="Montana">Montana</option>
-  <option value="Nebraska">Nebraska</option>
-  <option value="Nevada">Nevada</option>
-  <option value="New Hampshire">New Hampshire</option>
-  <option value="New Jersey">New Jersey</option>
-  <option value="New Mexico">New Mexico</option>
-  <option value="New York">New York</option>
-  <option value="North Carolina">North Carolina</option>
-  <option value="North Dakota">North Dakota</option>
-  <option value="Ohio">Ohio</option>
-  <option value="Oklahoma">Oklahoma</option>
-  <option value="Oregon">Oregon</option>
-  <option value="Pennsylvania">Pennsylvania</option>
-  <option value="Rhode Island">Rhode Island</option>
-  <option value="South Carolina">South Carolina</option>
-  <option value="South Dakota">South Dakota</option>
-  <option value="Tennessee">Tennessee</option>
-  <option value="Texas">Texas</option>
-  <option value="Utah">Utah</option>
-  <option value="Vermont">Vermont</option>
-  <option value="Virginia">Virginia</option>
-  <option value="Washington">Washington</option>
-  <option value="West Virginia">West Virginia</option>
-  <option value="Wisconsin">Wisconsin</option>
-  <option value="Wyoming">Wyoming</option>
-</select>
- </div>
-     
-  </section>
+    <!-- Calendar Tab -->
+    <section id="calendar" style="display:none;">
+      <h2>Upcoming Events</h2>
+      <div id="calendar-container"></div>
+    </section>
 
-  <section id="rankings" style="display:none;">
-    <h2>Official Rankings</h2>
-<details>
-  <summary><strong>Full Rankings: Senators</strong></summary>
-  <div class="card-container" id="rankings-senators"></div>
-</details>
+    <!-- Registration Tab -->
+    <section id="registration" style="display:none;">
+      <h2>Voter Registration</h2>
+      <div id="registration-container">
+        <!-- You can wire in renderRegistration(state) here -->
+      </div>
+    </section>
+  </main>
 
-<details>
-  <summary><strong>Full Rankings: House Representatives</strong></summary>
-  <div class="card-container" id="rankings-house"></div>
-</details>
-
-<details>
-  <summary><strong>Full Rankings: Governors</strong></summary>
-  <div class="card-container" id="rankings-governors"></div>
-</details>
-
-<details>
-  <summary><strong>Full Rankings: Lt. Governors</strong></summary>
-  <div class="card-container" id="rankings-ltgovernors"></div>
-</details>
-
-<h3>Top 10 Overall</h3>
-<div class="card-container" id="top10-overall"></div>
-
-    </details>
-  </section>
-
- <section id="calendar" style="display:none;">
-  <h2>Civic Calendar</h2>
-  <div id="calendar-container"></div>
-</section>
-
-  <section id="registration" style="display:none;">
-  <h2>Voting & Registration</h2>
-  <div id="voting-container"></div>
-</section>
-
+  <!-- Modal Overlay -->
   <div id="modal-overlay" style="display:none;">
     <div id="modal-content"></div>
-    <button onclick="closeModal()" id="modal-close">Close</button>
   </div>
 
-<script src="script.js"></script>
-<script src="cleanHouse.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
