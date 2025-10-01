@@ -14,7 +14,7 @@ window.showTab = function(id) {
 // --- Rookie Logic ---
 function isRookie(person) {
   console.log("🧪 Checking rookie:", person.name, person.termStart || person.termBegin || person.startDate);
-
+  console.log("🧪 Checking rookie:", person.name);
   const rawStart = person.termStart || person.termBegin || person.startDate || "";
   const rawStartStr = String(rawStart); // ✅ normalize to string
   const yearMatch = rawStartStr.match(/\d{4}/);
