@@ -827,6 +827,31 @@ function closeModal() {
   const modalContent = document.getElementById('modal-content');
   if (modalContent) modalContent.innerHTML = '';
 }
+function closeModal() {
+  const overlay = document.getElementById('modal-overlay');
+  if (overlay) overlay.style.display = 'none';
+  const modalContent = document.getElementById('modal-content');
+  if (modalContent) modalContent.innerHTML = '';
+}
+
+function openEventModal(title, details, link) {
+  const modalHTML = `
+    <div class="modal-container">
+      <h2>${title}</h2>
+      <p>${details}</p>
+      <p><a href="${link}" target="_blank" rel="noopener noreferrer">Open Official Site</a></p>
+      <button id="modal-close-btn">Close</button>
+    </div>
+  `;
+  const modalContent = document.getElementById('modal-content');
+  if (modalContent) modalContent.innerHTML = modalHTML;
+
+  const overlay = document.getElementById('modal-overlay');
+  if (overlay) overlay.style.display = 'flex';
+
+  const closeBtn = document.getElementById('modal-close-btn');
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+}
 /* ---------------- INDIVIDUAL LIST RENDERS ---------------- */
 function renderMyOfficials(state) {
   const matches = window.allOfficials.filter(person => {
