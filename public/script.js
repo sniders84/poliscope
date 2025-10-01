@@ -197,7 +197,7 @@ function renderCards(data, containerId) {
   }
 
   const cardsHTML = data.map(person => {
-    const imageUrl = person.photo?.trim() || 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/200px-No_image_available.svg.png';
+    const imageUrl = person.photo?.trim() || 'https://via.placeholder.com/200x300?text=No+Photo';
     const partyLower = (person.party || '').toLowerCase();
     const partyColor = partyLower.includes("repub") ? "#d73027" :
                        partyLower.includes("dem") ? "#4575b4" :
@@ -210,7 +210,7 @@ function renderCards(data, containerId) {
     // Use data-slug attribute used by the click handler
     return `
       <div class="card" data-slug="${person.slug}" onclick="expandCard('${person.slug}')" style="border-left: 8px solid ${partyColor};">
-        <img src="${person.photo || 'https://via.placeholder.com/200x300?text=No+Photo'}" />
+        <img src="${imageUrl}" />
         <h3>${person.name}</h3>
         <p>${person.office || person.position || ''}</p>
         <p>${person.state}${person.party ? ', ' + person.party : ''}</p>
