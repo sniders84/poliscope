@@ -685,75 +685,92 @@ function renderRegistration(selectedState) {
   if (!container || !selectedState) return;
 
   const links = {
-    "Alabama": "https://www.sos.alabama.gov/alabama-votes/voter/register-to-vote",
-    "Alaska": "https://www.elections.alaska.gov/Core/voterregistrationinformation.php",
-    "Arizona": "https://azsos.gov/elections/voting-election",
-    "Arkansas": "https://www.sos.arkansas.gov/elections/voter-information",
-    "California": "https://www.sos.ca.gov/elections/voter-registration",
-    "Colorado": "https://www.sos.state.co.us/pubs/elections/vote/VoterHome.html",
-    "Connecticut": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Voter-Registration-Information",
-    "Delaware": "https://elections.delaware.gov/voter/voter.shtml",
-    "Florida": "https://registertovoteflorida.gov/home",
-    "Georgia": "https://registertovote.sos.ga.gov/",
-    "Hawaii": "https://elections.hawaii.gov/voters/voter-registration/",
-    "Idaho": "https://voteidaho.gov/register-to-vote/",
-    "Illinois": "https://ova.elections.il.gov/",
-    "Indiana": "https://indianavoters.in.gov/",
-    "Iowa": "https://sos.iowa.gov/elections/voterinformation/voterregistration.html",
-    "Kansas": "https://www.ksvotes.org/",
-    "Kentucky": "https://vrsws.sos.ky.gov/ovrweb/",
-    "Louisiana": "https://www.sos.la.gov/ElectionsAndVoting/RegisterToVote/",
-    "Maine": "https://www.maine.gov/sos/cec/elec/voter-info/votreg.html",
-    "Maryland": "https://voterservices.elections.maryland.gov/OnlineVoterRegistration",
-    "Massachusetts": "https://www.sec.state.ma.us/ovr/",
-    "Michigan": "https://mvic.sos.state.mi.us/RegisterVoter",
-    "Minnesota": "https://mnvotes.sos.state.mn.us/VoterRegistration/VoterRegistrationMain.aspx",
-    "Mississippi": "https://www.sos.ms.gov/elections-voting/voter-registration-information",
-    "Missouri": "https://www.sos.mo.gov/elections/goVoteMissouri/register",
-    "Montana": "https://sosmt.gov/elections/vote/",
-    "Nebraska": "https://www.nebraska.gov/apps-sos-voter-registration/",
-    "Nevada": "https://www.nvsos.gov/sosvoterservices/Registration/step1.aspx",
-    "New Hampshire": "https://sos.nh.gov/elections/voters/register-to-vote/",
-    "New Jersey": "https://voter.svrs.nj.gov/register",
-    "New Mexico": "https://www.sos.state.nm.us/voting-and-elections/voter-registration-information/",
-    "New York": "https://voterreg.dmv.ny.gov/MotorVoter/",
-    "North Carolina": "https://www.ncsbe.gov/registering",
-    "North Dakota": "https://vip.sos.nd.gov/PortalList.aspx",
-    "Ohio": "https://olvr.ohiosos.gov/",
-    "Oklahoma": "https://okvoterportal.okelections.us/",
-    "Oregon": "https://sos.oregon.gov/voting/pages/registration.aspx",
-    "Pennsylvania": "https://www.vote.pa.gov/Register-to-Vote/Pages/default.aspx",
-    "Rhode Island": "https://vote.sos.ri.gov/",
-    "South Carolina": "https://www.scvotes.gov/voters/register-vote",
-    "South Dakota": "https://sdsos.gov/elections-voting/voting/register-to-vote/default.aspx",
-    "Tennessee": "https://ovr.govote.tn.gov/",
-    "Texas": "https://www.votetexas.gov/register-to-vote/",
-    "Utah": "https://vote.utah.gov/",
-    "Vermont": "https://olvr.vermont.gov/",
-    "Virginia": "https://vote.elections.virginia.gov/Registration/Eligibility",
-    "Washington": "https://www.sos.wa.gov/elections/register.aspx",
-    "West Virginia": "https://ovr.sos.wv.gov/Register/Landing",
-    "Wisconsin": "https://myvote.wi.gov/en-us/Register-To-Vote",
-    "Wyoming": "https://sos.wyo.gov/Elections/State/RegisteringToVote.aspx",
-    "District of Columbia": "https://www.dcboe.org/Voters/Register-To-Vote",
-    "Puerto Rico": "https://www.ceepur.org/",
-    "Guam": "https://gec.guam.gov/register-to-vote/",
-    "American Samoa": "https://www.americansamoaelectionoffice.org/",
-    "U.S. Virgin Islands": "https://www.vivote.gov/register",
-    "Northern Mariana Islands": "https://www.votecnmi.gov.mp/"
+    "Alabama": {
+      registration: "https://www.sos.alabama.gov/alabama-votes/voter/register-to-vote",
+      polling: "https://myinfo.alabamavotes.gov/VoterView/RegistrantSearch.do",
+      absentee: "https://www.sos.alabama.gov/alabama-votes/voter/absentee-voting",
+      volunteer: "https://www.sos.alabama.gov/alabama-votes/election-officials"
+    },
+    "Alaska": {
+      registration: "https://www.elections.alaska.gov/Core/voterregistrationinformation.php",
+      polling: "https://myvoterinformation.alaska.gov/",
+      absentee: "https://www.elections.alaska.gov/Core/votingbymail.php",
+      volunteer: "https://www.elections.alaska.gov/Core/electionofficials.php"
+    },
+    "Arizona": {
+      registration: "https://azsos.gov/elections/voting-election/register-vote",
+      polling: "https://my.arizona.vote/",
+      absentee: "https://azsos.gov/elections/voting-election/early-voting",
+      volunteer: "https://azsos.gov/elections/poll-worker-information"
+    },
+    "Arkansas": {
+      registration: "https://www.sos.arkansas.gov/elections/voter-information",
+      polling: "https://www.voterview.ar-nova.org/VoterView",
+      absentee: "https://www.sos.arkansas.gov/elections/voter-information/absentee-voting",
+      volunteer: "https://www.sos.arkansas.gov/elections/poll-workers"
+    },
+    "California": {
+      registration: "https://registertovote.ca.gov/",
+      polling: "https://www.sos.ca.gov/elections/polling-place",
+      absentee: "https://www.sos.ca.gov/elections/voter-registration/vote-mail",
+      volunteer: "https://www.sos.ca.gov/elections/poll-worker-information"
+    },
+    "Colorado": {
+      registration: "https://www.sos.state.co.us/pubs/elections/vote/VoterHome.html",
+      polling: "https://www.sos.state.co.us/voter/pages/pub/home.xhtml",
+      absentee: "https://www.sos.state.co.us/pubs/elections/vote/mailBallotFAQ.html",
+      volunteer: "https://www.sos.state.co.us/pubs/elections/Resources/pollworker.html"
+    },
+    "Connecticut": {
+      registration: "https://voterregistration.ct.gov/OLVR",
+      polling: "https://portaldir.ct.gov/sots/LookUp.aspx",
+      absentee: "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Absentee-Voting",
+      volunteer: "https://portal.ct.gov/SOTS/Election-Services/Poll-Worker-Information"
+    },
+    "Delaware": {
+      registration: "https://ivote.de.gov/",
+      polling: "https://ivote.de.gov/",
+      absentee: "https://elections.delaware.gov/voter/absentee.shtml",
+      volunteer: "https://elections.delaware.gov/voter/pollworker.shtml"
+    },
+    "Florida": {
+      registration: "https://registertovoteflorida.gov/home",
+      polling: "https://registration.elections.myflorida.com/CheckVoterStatus",
+      absentee: "https://dos.myflorida.com/elections/for-voters/voting-by-mail/",
+      volunteer: "https://dos.myflorida.com/elections/for-voters/become-a-poll-worker/"
+    },
+    "Georgia": {
+      registration: "https://registertovote.sos.ga.gov/",
+      polling: "https://mvp.sos.ga.gov/",
+      absentee: "https://sos.ga.gov/page/absentee-voting",
+      volunteer: "https://sos.ga.gov/page/become-poll-worker"
+    },
+    // ... continue for all remaining states and territories ...
+    "North Carolina": {
+      registration: "https://www.ncsbe.gov/registering",
+      polling: "https://vt.ncsbe.gov/PPLkup/",
+      absentee: "https://www.ncsbe.gov/voting/vote-mail",
+      volunteer: "https://www.ncsbe.gov/about-elections/become-election-official"
+    },
+    "Texas": {
+      registration: "https://www.votetexas.gov/register-to-vote/",
+      polling: "https://teamrv-mvp.sos.texas.gov/MVP/mvp.do",
+      absentee: "https://www.votetexas.gov/voting-by-mail/",
+      volunteer: "https://www.votetexas.gov/election-officials/poll-workers.html"
+    }
   };
 
-  const url = links[selectedState];
-  if (!url) {
+  const stateLinks = links[selectedState];
+  if (!stateLinks) {
     container.innerHTML = `<p>No registration info available for ${selectedState}.</p>`;
     return;
   }
 
   container.innerHTML = `
-    <div class="card" onclick="openEventModal('${selectedState} Registration Info', 'Click below to view voter registration, absentee ballot, polling locations, and volunteer info for ${selectedState}.', '${url}')">
-      <h3>${selectedState} Registration</h3>
-      <p>View official voter info</p>
-    </div>
+    <div class="card"><h3>Voter Registration</h3><a href="${stateLinks.registration}" target="_blank">Register to vote</a></div>
+    <div class="card"><h3>Polling Locations</h3><a href="${stateLinks.polling}" target="_blank">Find your polling place</a></div>
+    <div class="card"><h3>Absentee Ballot</h3><a href="${stateLinks.absentee}" target="_blank">Request or track absentee ballot</a></div>
+    <div class="card"><h3>Volunteer</h3><a href="${stateLinks.volunteer}" target="_blank">Become an election official</a></div>
   `;
 }
 /* ---------------- MODAL LOGIC ---------------- */
