@@ -20,8 +20,7 @@ const yearMatch = rawStartStr.match(/\d{4}/);
 
   const role = (person.office || person.position || "").toLowerCase();
 
-  const yearMatch = rawStart.match(/\d{4}/);
-  const startYear = yearMatch ? parseInt(yearMatch[0]) : null;
+    const startYear = yearMatch ? parseInt(yearMatch[0]) : null;
   if (!startYear) return false;
 
   const currentYear = new Date().getFullYear();
