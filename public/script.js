@@ -357,7 +357,10 @@ function renderRankings() {
 function renderRookies() {
   const rookies = window.allOfficials.filter(person => isRookie(person));
   console.log("Rookies to render:", rookies.length);
-  rookies.forEach(p => console.log("Rookie role:", p.office || p.position));
+  rookies.forEach(p => {
+  const rawRole = p.office || p.position || "";
+  console.log("🔍 Raw rookie role:", rawRole);
+});
 
   const groups = {
     governor: [],
