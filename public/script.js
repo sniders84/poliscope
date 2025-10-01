@@ -614,10 +614,7 @@ function renderCalendar(events, selectedState) {
 
   container.innerHTML = html || `<p>No upcoming events for ${selectedState}.</p>`;
 }
-document.getElementById('state-select').addEventListener('change', function() {
-  const selectedState = this.value;
-  renderCalendar(selectedState);
-});
+
 /* ---------------- REGISTRATION RENDER ---------------- */
 function renderRegistration(selectedState) {
   const container = document.getElementById("registration-container");
