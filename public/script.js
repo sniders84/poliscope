@@ -592,34 +592,78 @@ const votingInfo = {
 let allOfficials = [];
 
 /* ---------------- CALENDAR RENDER ---------------- */
-function renderCalendar(selectedState) {
+function renderCalendar() {
   const container = document.getElementById('calendar-container');
   if (!container) return;
 
-  const stateSlug = selectedState.trim().replace(/\s+/g, '_');
-  const link = `https://ballotpedia.org/${stateSlug}_elections`;
+  const links = {
+    "Alabama": "https://www.sos.alabama.gov/alabama-votes/voter/upcoming-elections",
+    "Alaska": "https://www.elections.alaska.gov/",
+    "Arizona": "https://azsos.gov/elections",
+    "Arkansas": "https://www.sos.arkansas.gov/elections",
+    "California": "https://www.sos.ca.gov/elections/upcoming-elections",
+    "Colorado": "https://www.coloradosos.gov/pubs/elections/",
+    "Connecticut": "https://portal.ct.gov/SOTS/Election-Services/Election-Calendar",
+    "Delaware": "https://elections.delaware.gov/",
+    "Florida": "https://dos.fl.gov/elections/for-voters/election-dates/",
+    "Georgia": "https://sos.ga.gov/elections",
+    "Hawaii": "https://elections.hawaii.gov/",
+    "Idaho": "https://voteidaho.gov/",
+    "Illinois": "https://www.elections.il.gov/",
+    "Indiana": "https://www.in.gov/sos/elections/",
+    "Iowa": "https://sos.iowa.gov/elections/",
+    "Kansas": "https://sos.ks.gov/elections/elections.html",
+    "Kentucky": "https://elect.ky.gov/",
+    "Louisiana": "https://www.sos.la.gov/ElectionsAndVoting/",
+    "Maine": "https://www.maine.gov/sos/cec/elec/",
+    "Maryland": "https://elections.maryland.gov/",
+    "Massachusetts": "https://www.sec.state.ma.us/ele/",
+    "Michigan": "https://www.michigan.gov/sos/elections",
+    "Minnesota": "https://www.sos.state.mn.us/elections-voting/",
+    "Mississippi": "https://www.sos.ms.gov/elections-voting",
+    "Missouri": "https://www.sos.mo.gov/elections",
+    "Montana": "https://sosmt.gov/elections/",
+    "Nebraska": "https://sos.nebraska.gov/elections",
+    "Nevada": "https://www.nvsos.gov/sos/elections",
+    "New Hampshire": "https://sos.nh.gov/elections/",
+    "New Jersey": "https://www.nj.gov/state/elections/",
+    "New Mexico": "https://www.sos.state.nm.us/voting-and-elections/",
+    "New York": "https://www.elections.ny.gov/",
+    "North Carolina": "https://www.ncsbe.gov/voting/upcoming-election",
+    "North Dakota": "https://vip.sos.nd.gov/",
+    "Ohio": "https://www.ohiosos.gov/elections/",
+    "Oklahoma": "https://oklahoma.gov/elections.html",
+    "Oregon": "https://sos.oregon.gov/voting/pages/default.aspx",
+    "Pennsylvania": "https://www.vote.pa.gov/",
+    "Rhode Island": "https://vote.sos.ri.gov/",
+    "South Carolina": "https://www.scvotes.gov/",
+    "South Dakota": "https://sdsos.gov/elections-voting/",
+    "Tennessee": "https://sos.tn.gov/elections",
+    "Texas": "https://www.sos.texas.gov/elections/voter/important-election-dates.shtml",
+    "Utah": "https://vote.utah.gov/",
+    "Vermont": "https://sos.vermont.gov/elections/",
+    "Virginia": "https://www.elections.virginia.gov/",
+    "Washington": "https://www.sos.wa.gov/elections/",
+    "West Virginia": "https://sos.wv.gov/elections/",
+    "Wisconsin": "https://elections.wi.gov/",
+    "Wyoming": "https://sos.wyo.gov/Elections/",
+    "District of Columbia": "https://www.dcboe.org/",
+    "Puerto Rico": "https://www.ceepur.org/",
+    "Guam": "https://gec.guam.gov/",
+    "American Samoa": "https://www.americansamoaelectionoffice.org/",
+    "U.S. Virgin Islands": "https://www.vivote.gov/",
+    "Northern Mariana Islands": "https://www.votecnmi.gov.mp/"
+  };
 
-  const html = `
-    <div class="card" onclick="openEventModal('${selectedState} Election Calendar', 'Click below to view all upcoming elections and deadlines for ${selectedState}.', '${link}')">
-      <h3>${selectedState} Elections</h3>
+  const html = Object.entries(links).map(([state, url]) => `
+    <div class="card" onclick="openEventModal('${state} Election Calendar', 'Click below to view all upcoming elections and deadlines for ${state}.', '${url}')">
+      <h3>${state} Elections</h3>
       <p>View official calendar</p>
-    </div>
-  `;
-
-  container.innerHTML = html;
-}
-
-  const html = filtered.map(event => `
-    <div class="card" onclick="openEventModal('${escapeJs(event.title)}', '${event.date}', '${escapeJs(event.state)}', '${escapeJs(event.type)}', '${escapeJs(event.details)}', '${event.link}')">
-      <h3>${event.title}</h3>
-      <p><strong>Date:</strong> ${event.date}</p>
-      <p><strong>Type:</strong> ${event.type}</p>
     </div>
   `).join('');
 
-  container.innerHTML = html || `<p>No upcoming events for ${selectedState}.</p>`;
+  container.innerHTML = html;
 }
-
 /* ---------------- REGISTRATION RENDER ---------------- */
 function renderRegistration(selectedState) {
   const container = document.getElementById("registration-container");
@@ -629,27 +673,6 @@ function renderRegistration(selectedState) {
 }
 
 /* ---------------- MODAL LOGIC ---------------- */
-function openEventModal(title, date, state, type, details, link) {
-  const content = `
-    <div class="event-modal">
-      <h2>${title}</h2>
-      <p><strong>Date:</strong> ${date}</p>
-      <p><strong>State:</strong> ${state}</p>
-      <p><strong>Type:</strong> ${type}</p>
-      <p>${details}</p>
-      <p><a href="${link}" target="_blank" rel="noopener noreferrer">More Info</a></p>
-      <p><button id="event-modal-close">Close</button></p>
-    </div>
-  `;
-  const modalContent = document.getElementById('modal-content');
-  if (!modalContent) return;
-  modalContent.innerHTML = content;
-  const overlay = document.getElementById('modal-overlay');
-  if (overlay) overlay.style.display = 'flex';
-
-  const closeBtn = document.getElementById('event-modal-close');
-  if (closeBtn) closeBtn.addEventListener('click', closeModal);
-}
 function openEventModal(title, details, link) {
   const modalHTML = `
     <div class="modal-container">
