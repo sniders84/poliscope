@@ -1112,14 +1112,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Calendar initial render & state sync (ensures calendar updates if state-select exists)
   const stateSelect = document.getElementById('state-select');
-  if (stateSelect) {
-    const defaultState = stateSelect.value || 'Alabama';
-    renderCalendar(calendarEvents, defaultState);
+if (stateSelect) {
+  const defaultState = stateSelect.value || 'Alabama';
+  renderCalendar(defaultState);
 
-    stateSelect.addEventListener('change', () => {
-      renderCalendar(calendarEvents, stateSelect.value);
-    });
-  }
+  stateSelect.addEventListener('change', () => {
+    renderCalendar(stateSelect.value);
+  });
+}
 
   // Modal overlay click to close
   const overlay = document.getElementById('modal-overlay');
