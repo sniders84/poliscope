@@ -14,13 +14,14 @@ window.showTab = function(id) {
 // --- Rookie Logic ---
 function isRookie(person) {
   console.log("🧪 Checking rookie:", person.name, person.termStart || person.termBegin || person.startDate);
- const rawStart = person.termStart || person.termBegin || person.startDate || "";
-const rawStartStr = String(rawStart); // ✅ normalize to string
-const yearMatch = rawStartStr.match(/\d{4}/);
+
+  const rawStart = person.termStart || person.termBegin || person.startDate || "";
+  const rawStartStr = String(rawStart); // ✅ normalize to string
+  const yearMatch = rawStartStr.match(/\d{4}/);
 
   const role = (person.office || person.position || "").toLowerCase();
 
-    const startYear = yearMatch ? parseInt(yearMatch[0]) : null;
+  const startYear = yearMatch ? parseInt(yearMatch[0]) : null;
   if (!startYear) return false;
 
   const currentYear = new Date().getFullYear();
