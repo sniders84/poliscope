@@ -376,7 +376,11 @@ function renderLtGovernors(data) {
 
 /* ---------------- RANKINGS & ROOKIES ---------------- */
 function renderRankings() {
-  const governors = allOfficials.filter(p => p.office?.includes("Governor") && !p.office?.includes("LtGovernor"));
+  const governors = allOfficials.filter(p => {
+  const role = (p.office || p.position || "").toLowerCase();
+  return role.includes("governor") && !role.includes("lt") && !role.includes("lieutenant");
+});
+
   const ltGovernors = allOfficials.filter(p => {
   const role = (p.office || p.position || "").toLowerCase();
   return (
