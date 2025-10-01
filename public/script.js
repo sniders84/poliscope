@@ -1129,14 +1129,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 });
-document.getElementById("state-select").addEventListener("change", function(e) {
-  const selectedState = e.target.value;
+document.getElementById("state-select").addEventListener("change", function () {
+  const selectedState = this.value;
+  if (!selectedState) return;
 
+  // Render each tab's content
   renderMyOfficials(selectedState);
-
-  const filteredEvents = window.allEvents.filter(function(ev) {
-    return ev.state === selectedState || ev.state === "ALL";
-  });
-
-renderCalendar(filteredEvents, selectedState);
+  renderCalendar(window.allEvents || [], selectedState);
+  renderRegistration(selectedState);
 });
