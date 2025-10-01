@@ -20,6 +20,7 @@ function isRookie(person) {
   const yearMatch = rawStartStr.match(/\d{4}/);
 
   const role = (person.office || person.position || "").toLowerCase();
+  console.log("🧪 Role:", role, "| Start Year:", yearMatch ? yearMatch[0] : "N/A");
 
   const startYear = yearMatch ? parseInt(yearMatch[0]) : null;
   if (!startYear) return false;
