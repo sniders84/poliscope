@@ -1186,3 +1186,32 @@ function syncOfficialsAndPolls() {
     showTab("polls");
   }
 }
+document.getElementById("state-select").addEventListener("change", function () {
+  var selectedState = this.value;
+  var pollsContainer = document.getElementById("polls-container");
+  pollsContainer.innerHTML = ""; // Clear previous
+
+  if (selectedState === "") return;
+
+  // Create Emerson card
+  var emersonCard = document.createElement("div");
+  emersonCard.className = "card";
+  emersonCard.innerHTML = `
+    <h3>${selectedState} Polls</h3>
+    <p>Source: Emerson College</p>
+    <a href="https://emersoncollegepolling.com/category/state-polls/" target="_blank">View Emerson Polls</a>
+  `;
+  pollsContainer.appendChild(emersonCard);
+
+  // Create RealClearPolitics card
+  var rcpCard = document.createElement("div");
+  rcpCard.className = "card";
+  rcpCard.innerHTML = `
+    <h3>${selectedState} Polls</h3>
+    <p>Source: RealClearPolitics</p>
+    <a href="https://www.realclearpolitics.com/epolls/latest_polls/" target="_blank">View RCP Polls</a>
+  `;
+  pollsContainer.appendChild(rcpCard);
+
+  showTab("polls");
+});
