@@ -244,7 +244,7 @@ function expandCard(slug) {
 }
 
 function openModal(person) {
-  const imageUrl = person.imageUrl || person.photo || 'images/fallback.jpg';
+  const imageUrl = getSafePhotoUrl(person); // ✅ bulletproof fallback logic
   const link = person.ballotpediaLink || person.contact?.website || '';
 
   let billsHTML = '';
