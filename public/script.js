@@ -1197,16 +1197,22 @@ function filterOfficials() {
   });
 }
 
-// ✅ 2. Attach search bar listener
-document.getElementById("search").addEventListener("input", function () {
-  filterOfficials();
-});
-
-// ✅ 3. Attach state dropdown listener
 document.getElementById("state-select").addEventListener("change", function () {
-  var selectedState = this.value;
+  const selectedState = this.value;
+  if (!selectedState) return;
+
+  // ✅ Filter officials
   filterOfficials();
+
+  // ✅ Render polls
   renderPollsForState(selectedState);
+
+  // ✅ Render other tabs
+  renderMyOfficials(selectedState);
+  renderCalendar(window.allEvents || [], selectedState);
+  renderRegistration(selectedState);
+
+  // ✅ Show officials tab
   showTab("my-officials");
 });
 function renderPollsForState(stateName) {
