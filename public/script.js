@@ -594,10 +594,16 @@ function renderCalendar(events, selectedState) {
   const today = new Date();
 
 const filtered = events
-  .filter(e =>
-    (e.state === selectedState || e.state === "ALL") &&
-    new Date(e.date) >= today
-  )
+  .filter(e => {
+    const eventState = (e.state || "").trim().toLowerCase();
+    const selected = (selectedState || "").trim().toLowerCase();
+    const eventDate = new Date(e.date);
+    return (
+      (eventState === selected || eventState === "all") &&
+      eventDate.toString() !== "Invalid Date" &&
+      eventDate >= today
+    );
+  })
   .sort((a, b) => new Date(a.date) - new Date(b.date));
 
   const html = filtered.map(event => `
