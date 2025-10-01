@@ -594,17 +594,17 @@ function renderCalendar(events, selectedState) {
   const today = new Date();
 
   const filtered = events
-    .filter(e => {
-      const eventState = (e.state || "").trim().toLowerCase();
-      const selected = (selectedState || "").trim().toLowerCase();
-      const eventDate = new Date(e.date);
-      return (
-        (eventState === selected || eventState === "all") &&
-        eventDate.toString() !== "Invalid Date" &&
-        eventDate >= today
-      );
-    })
-    .sort((a, b) => new Date(a.date) - new Date(b.date));
+  .filter(e => {
+    const eventState = (e.state || "").trim().toLowerCase();
+    const selected = (selectedState || "").trim().toLowerCase();
+    const eventDate = new Date(e.date);
+    return (
+      (eventState === selected || eventState === "all") &&
+      eventDate.toString() !== "Invalid Date" &&
+      eventDate >= today
+    );
+  })
+  .sort((a, b) => new Date(a.date) - new Date(b.date));
 
   const html = filtered.map(event => `
     <div class="card" onclick="openEventModal('${escapeJs(event.title)}', '${event.date}', '${escapeJs(event.state)}', '${escapeJs(event.type)}', '${escapeJs(event.details)}', '${event.link}')">
