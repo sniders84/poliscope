@@ -1228,3 +1228,6 @@ document.getElementById("state-select").addEventListener("change", function () {
   renderCalendar(window.allEvents || [], selectedState);
   renderRegistration(selectedState);
 });
+document.addEventListener('DOMContentLoaded', () => {
+  showTab('calendar'); // or whichever tab you want to show first
+});
