@@ -1132,6 +1132,10 @@ document.getElementById("state-select").addEventListener("change", function(e) {
   const selectedState = e.target.value;
 
   renderMyOfficials(selectedState);
-  renderCalendar(selectedState);
   renderRegistration(selectedState);
+
+  const filteredEvents = window.allEvents.filter(ev =>
+    ev.state === selectedState || ev.state === "ALL"
+  );
+  renderCalendar(filteredEvents);
 });
