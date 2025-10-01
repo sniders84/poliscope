@@ -17,6 +17,7 @@ function isRookie(person) {
   const termStartStr = typeof termStart === 'string' ? termStart : '';
 
   return person.firstTerm === true || /^20(2[3-9]|3[0-9])/.test(termStartStr);
+  console.log("🧪 Checking termStart:", person.name, termStartStr);
 }
 /* ---------------- CALENDAR EVENTS ---------------- */
 const calendarEvents = [
