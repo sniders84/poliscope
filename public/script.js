@@ -1158,6 +1158,30 @@ document.getElementById("state-select").addEventListener("change", function () {
   renderCalendar(window.allEvents || [], selectedState);
   renderRegistration(selectedState);
 });
+function renderPollsForState(stateName) {
+  var pollsContainer = document.getElementById("polls-container");
+  pollsContainer.innerHTML = "";
+
+  if (!stateName) return;
+
+  var emersonCard = document.createElement("div");
+  emersonCard.className = "card";
+  emersonCard.innerHTML = `
+    <h3>${stateName} Polls</h3>
+    <p>Source: Emerson College</p>
+    <a href="https://emersoncollegepolling.com/category/state-polls/" target="_blank">View Emerson Polls</a>
+  `;
+  pollsContainer.appendChild(emersonCard);
+
+  var rcpCard = document.createElement("div");
+  rcpCard.className = "card";
+  rcpCard.innerHTML = `
+    <h3>${stateName} Polls</h3>
+    <p>Source: RealClearPolitics</p>
+    <a href="https://www.realclearpolitics.com/epolls/latest_polls/" target="_blank">View RCP Polls</a>
+  `;
+  pollsContainer.appendChild(rcpCard);
+}
 document.getElementById("search").addEventListener("input", syncOfficialsAndPolls);
 document.getElementById("state-select").addEventListener("change", syncOfficialsAndPolls);
 
