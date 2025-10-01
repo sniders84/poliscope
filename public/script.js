@@ -14,20 +14,30 @@ window.showTab = function(id) {
 // --- Rookie Logic ---
 function isRookie(person) {
   const rawStart = person.termStart || person.termBegin || person.startDate || "";
-  const year = typeof rawStart === 'number' ? rawStart : parseInt(String(rawStart).trim().slice(0, 4), 10);
-  if (!year || isNaN(year)) return false;
-
   const role = (person.office || person.position || "").toLowerCase();
 
-  if (role.includes("senator")) return year >= 2018;       // 6-year term
-  if (role.includes("governor")) return year >= 2020;      // 4-year term
-  if (role.includes("representative") || role.includes("house")) return year >= 2022; // 2-year term
-  if (
+  // Normalize year
+  const yearMatch = rawStart.match(/\d{4}/);
+  const startYear = yearMatch ? parseInt(yearMatch[0]) : null;
+  if (!startYear) return false;
+
+  // Role-aware rookie windows
+  const currentYear = new Date().getFullYear();
+
+  if (role.includes("senator")) {
+    return currentYear - startYear < 6;
+  } else if (role.includes("representative") || role.includes("house")) {
+    return currentYear - startYear < 2;
+  } else if (role.includes("governor") && !role.includes("lt") && !role.includes("lieutenant")) {
+    return currentYear - startYear < 4;
+  } else if (
     role.includes("lt. governor") ||
     role.includes("lt governor") ||
     role.includes("ltgovernor") ||
     role.includes("lieutenant governor")
-  ) return year >= 2020;
+  ) {
+    return currentYear - startYear < 4;
+  }
 
   return false;
 }
