@@ -587,10 +587,12 @@ const votingInfo = {
 let allOfficials = [];
 
 /* ---------------- CALENDAR RENDER ---------------- */
-function renderCalendar(events, selectedState) {
-  const container = document.getElementById('calendar-container');
+function renderRegistration(selectedState) {
+  const container = document.getElementById("registration-container");
   if (!container) return;
 
+  container.innerHTML = `<p>Registration info for ${selectedState} coming soon.</p>`;
+}
   const today = new Date();
 
 const filtered = events
