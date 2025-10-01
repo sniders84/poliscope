@@ -1196,25 +1196,7 @@ function filterOfficials() {
     card.style.display = (matchesQuery && matchesState) ? "block" : "none";
   });
 }
-
-document.getElementById("state-select").addEventListener("change", function () {
-  const selectedState = this.value;
-  if (!selectedState) return;
-
-  // ✅ Filter officials
-  filterOfficials();
-
-  // ✅ Render polls
-  renderPollsForState(selectedState);
-
-  // ✅ Render other tabs
-  renderMyOfficials(selectedState);
-  renderCalendar(window.allEvents || [], selectedState);
-  renderRegistration(selectedState);
-
-  // ✅ Show officials tab
-  showTab("my-officials");
-});
+// ✅ Render polls for selected state
 function renderPollsForState(stateName) {
   var pollsContainer = document.getElementById("polls-container");
   pollsContainer.innerHTML = "";
@@ -1239,12 +1221,21 @@ function renderPollsForState(stateName) {
   `;
   pollsContainer.appendChild(rcpCard);
 }
+
+// ✅ Unified state-select listener
 document.getElementById("state-select").addEventListener("change", function () {
   const selectedState = this.value;
   if (!selectedState) return;
 
-  // Render each tab's content
+  // 🔧 Filter officials
+  filterOfficials();
+
+  // 🔧 Render all tabs
   renderMyOfficials(selectedState);
   renderCalendar(window.allEvents || [], selectedState);
   renderRegistration(selectedState);
+  renderPollsForState(selectedState);
+
+  // 🔧 Show officials tab
+  showTab("my-officials");
 });
