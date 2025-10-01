@@ -11,6 +11,7 @@ window.allEvents = [
     details: "Presidential, Senate, and House races across all states.",
     link: "https://www.nass.org/Can-I-Vote"
   },
+  
   // Alabama
   {
     title: "Municipal Runoff – Birmingham",
@@ -21,13 +22,14 @@ window.allEvents = [
     link: "https://www.sos.alabama.gov/alabama-votes"
   },
   {
-    title: "Special Primary – House District 38",
-    date: "2025-10-21",
-    state: "Alabama",
-    type: "State Legislative Special",
-    details: "Special primary for Alabama House District 38.",
-    link: "https://www.sos.alabama.gov/alabama-votes"
-  },
+  title: "Special Primary – House District 38",
+  date: "2025-10-21",
+  state: "Alabama",
+  type: "State Legislative Special",
+  details: "Special primary for Alabama House District 38.",
+  link: "https://www.sos.alabama.gov/alabama-votes"
+},
+
 // Alaska
 {
   title: "Juneau General Election",
