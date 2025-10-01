@@ -11,6 +11,7 @@ window.allEvents = [
     details: "Presidential, Senate, and House races across all states.",
     link: "https://www.nass.org/Can-I-Vote"
   },
+  // Alabama
   {
     title: "Municipal Runoff – Birmingham",
     date: "2025-10-07",
@@ -27,8 +28,6 @@ window.allEvents = [
     details: "Special primary for Alabama House District 38.",
     link: "https://www.sos.alabama.gov/alabama-votes"
   },
-  // ✅ Add more events here, each separated by a comma // ✅ CLOSE the array properly
-
 // Alaska
 {
   title: "Juneau General Election",
@@ -1132,10 +1131,10 @@ document.getElementById("state-select").addEventListener("change", function(e) {
   const selectedState = e.target.value;
 
   renderMyOfficials(selectedState);
-  renderRegistration(selectedState);
 
-  const filteredEvents = window.allEvents.filter(ev =>
-    ev.state === selectedState || ev.state === "ALL"
-  );
+  const filteredEvents = window.allEvents.filter(function(ev) {
+    return ev.state === selectedState || ev.state === "ALL";
+  });
+
   renderCalendar(filteredEvents);
 });
