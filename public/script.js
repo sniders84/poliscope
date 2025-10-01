@@ -587,26 +587,24 @@ const votingInfo = {
 let allOfficials = [];
 
 /* ---------------- CALENDAR RENDER ---------------- */
-function renderRegistration(selectedState) {
-  const container = document.getElementById("registration-container");
+function renderCalendar(events, selectedState) {
+  const container = document.getElementById("calendar-container");
   if (!container) return;
 
-  container.innerHTML = `<p>Registration info for ${selectedState} coming soon.</p>`;
-}
   const today = new Date();
 
-const filtered = events
-  .filter(e => {
-    const eventState = (e.state || "").trim().toLowerCase();
-    const selected = (selectedState || "").trim().toLowerCase();
-    const eventDate = new Date(e.date);
-    return (
-      (eventState === selected || eventState === "all") &&
-      eventDate.toString() !== "Invalid Date" &&
-      eventDate >= today
-    );
-  })
-  .sort((a, b) => new Date(a.date) - new Date(b.date));
+  const filtered = events
+    .filter(e => {
+      const eventState = (e.state || "").trim().toLowerCase();
+      const selected = (selectedState || "").trim().toLowerCase();
+      const eventDate = new Date(e.date);
+      return (
+        (eventState === selected || eventState === "all") &&
+        eventDate.toString() !== "Invalid Date" &&
+        eventDate >= today
+      );
+    })
+    .sort((a, b) => new Date(a.date) - new Date(b.date));
 
   const html = filtered.map(event => `
     <div class="card" onclick="openEventModal('${escapeJs(event.title)}', '${event.date}', '${escapeJs(event.state)}', '${escapeJs(event.type)}', '${escapeJs(event.details)}', '${event.link}')">
@@ -619,6 +617,15 @@ const filtered = events
   container.innerHTML = html || `<p>No upcoming events for ${selectedState}.</p>`;
 }
 
+/* ---------------- REGISTRATION RENDER ---------------- */
+function renderRegistration(selectedState) {
+  const container = document.getElementById("registration-container");
+  if (!container) return;
+
+  container.innerHTML = `<p>Registration info for ${selectedState} coming soon.</p>`;
+}
+
+/* ---------------- MODAL LOGIC ---------------- */
 function openEventModal(title, date, state, type, details, link) {
   const content = `
     <div class="event-modal">
@@ -640,6 +647,8 @@ function openEventModal(title, date, state, type, details, link) {
   const closeBtn = document.getElementById('event-modal-close');
   if (closeBtn) closeBtn.addEventListener('click', closeModal);
 }
+
+/* ---------------- TAB SWITCHING ---------------- */
 function showTab(tabId) {
   document.querySelectorAll('section').forEach(section => {
     section.style.display = 'none';
@@ -647,6 +656,11 @@ function showTab(tabId) {
   const target = document.getElementById(tabId);
   if (target) target.style.display = 'block';
 
+  const selectedState = document.getElementById("state-select").value;
+
+  if (tabId === 'calendar') renderCalendar(window.allEvents || [], selectedState);
+  if (tabId === 'registration') renderRegistration(selectedState);
+  if (tabId === 'officials') renderMyOfficials(selectedState);
   if (tabId === 'rankings') renderRankings();
   if (tabId === 'rookies') renderRookies();
 }
