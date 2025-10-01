@@ -1309,5 +1309,9 @@ document.getElementById("state-select").addEventListener("change", function () {
   renderRegistration(selectedState);
 });
 document.addEventListener('DOMContentLoaded', () => {
-  showTab('calendar'); // or whichever tab you want to show first
+  const stateSelect = document.getElementById('state-select');
+  if (stateSelect && !stateSelect.value) {
+    stateSelect.value = 'North Carolina'; // or any default
+  }
+  showTab('calendar');
 });
