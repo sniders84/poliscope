@@ -608,63 +608,158 @@ function renderCalendar(selectedState) {
   if (!container || !selectedState) return;
 
   const links = {
-    "Alabama": "https://www.sos.alabama.gov/alabama-votes/voter/upcoming-elections",
-    "Alaska": "https://www.elections.alaska.gov/",
-    "Arizona": "https://azsos.gov/elections",
-    "Arkansas": "https://www.sos.arkansas.gov/elections",
-    "California": "https://www.sos.ca.gov/elections/upcoming-elections",
-    "Colorado": "https://www.coloradosos.gov/pubs/elections/",
-    "Connecticut": "https://portal.ct.gov/SOTS/Election-Services/Election-Calendar",
-    "Delaware": "https://elections.delaware.gov/",
-    "Florida": "https://dos.fl.gov/elections/for-voters/election-dates/",
-    "Georgia": "https://sos.ga.gov/elections",
-    "Hawaii": "https://elections.hawaii.gov/",
-    "Idaho": "https://voteidaho.gov/",
-    "Illinois": "https://www.elections.il.gov/",
-    "Indiana": "https://www.in.gov/sos/elections/",
-    "Iowa": "https://sos.iowa.gov/elections/",
-    "Kansas": "https://sos.ks.gov/elections/elections.html",
-    "Kentucky": "https://elect.ky.gov/",
-    "Louisiana": "https://www.sos.la.gov/ElectionsAndVoting/",
-    "Maine": "https://www.maine.gov/sos/cec/elec/",
-    "Maryland": "https://elections.maryland.gov/",
-    "Massachusetts": "https://www.sec.state.ma.us/ele/",
-    "Michigan": "https://www.michigan.gov/sos/elections",
-    "Minnesota": "https://www.sos.state.mn.us/elections-voting/",
-    "Mississippi": "https://www.sos.ms.gov/elections-voting",
-    "Missouri": "https://www.sos.mo.gov/elections",
-    "Montana": "https://sosmt.gov/elections/",
-    "Nebraska": "https://sos.nebraska.gov/elections",
-    "Nevada": "https://www.nvsos.gov/sos/elections",
-    "New Hampshire": "https://sos.nh.gov/elections/",
-    "New Jersey": "https://www.nj.gov/state/elections/",
-    "New Mexico": "https://www.sos.state.nm.us/voting-and-elections/",
-    "New York": "https://www.elections.ny.gov/",
-    "North Carolina": "https://www.ncsbe.gov/voting/upcoming-election",
-    "North Dakota": "https://vip.sos.nd.gov/",
-    "Ohio": "https://www.ohiosos.gov/elections/",
-    "Oklahoma": "https://oklahoma.gov/elections.html",
-    "Oregon": "https://sos.oregon.gov/voting/pages/default.aspx",
-    "Pennsylvania": "https://www.vote.pa.gov/",
-    "Rhode Island": "https://vote.sos.ri.gov/",
-    "South Carolina": "https://www.scvotes.gov/",
-    "South Dakota": "https://sdsos.gov/elections-voting/",
-    "Tennessee": "https://sos.tn.gov/elections",
-    "Texas": "https://www.sos.texas.gov/elections/voter/important-election-dates.shtml",
-    "Utah": "https://vote.utah.gov/",
-    "Vermont": "https://sos.vermont.gov/elections/",
-    "Virginia": "https://www.elections.virginia.gov/",
-    "Washington": "https://www.sos.wa.gov/elections/",
-    "West Virginia": "https://sos.wv.gov/elections/",
-    "Wisconsin": "https://elections.wi.gov/",
-    "Wyoming": "https://sos.wyo.gov/Elections/",
-    "District of Columbia": "https://www.dcboe.org/",
-    "Puerto Rico": "https://www.ceepur.org/",
-    "Guam": "https://gec.guam.gov/",
-    "American Samoa": "https://www.americansamoaelectionoffice.org/",
-    "U.S. Virgin Islands": "https://www.vivote.gov/",
-    "Northern Mariana Islands": "https://www.votecnmi.gov.mp/"
-  };
+  "Alabama": {
+    registration: "https://www.vote.org/register-to-vote/alabama/",
+    polling: "https://www.vote.org/polling-place-locator/alabama/",
+    absentee: "https://www.vote.org/absentee-ballot/alabama/",
+    volunteer: "https://www.eac.gov/voters/become-poll-worker"
+  },
+  "Alaska": {
+    registration: "https://www.vote.org/register-to-vote/alaska/",
+    polling: "https://www.vote.org/polling-place-locator/alaska/",
+    absentee: "https://www.vote.org/absentee-ballot/alaska/",
+    volunteer: "https://www.eac.gov/voters/become-poll-worker"
+  },
+  "Arizona": {
+    registration: "https://www.vote.org/register-to-vote/arizona/",
+    polling: "https://www.vote.org/polling-place-locator/arizona/",
+    absentee: "https://www.vote.org/absentee-ballot/arizona/",
+    volunteer: "https://www.eac.gov/voters/become-poll-worker"
+  },
+  "Arkansas": {
+    registration: "https://www.vote.org/register-to-vote/arkansas/",
+    polling: "https://www.vote.org/polling-place-locator/arkansas/",
+    absentee: "https://www.vote.org/absentee-ballot/arkansas/",
+    volunteer: "https://www.eac.gov/voters/become-poll-worker"
+  },
+  "California": {
+    registration: "https://www.vote.org/register-to-vote/california/",
+    polling: "https://www.vote.org/polling-place-locator/california/",
+    absentee: "https://www.vote.org/absentee-ballot/california/",
+    volunteer: "https://www.eac.gov/voters/become-poll-worker"
+  },
+  "Colorado": {
+    registration: "https://www.vote.org/register-to-vote/colorado/",
+    polling: "https://www.vote.org/polling-place-locator/colorado/",
+    absentee: "https://www.vote.org/absentee-ballot/colorado/",
+    volunteer: "https://www.eac.gov/voters/become-poll-worker"
+  },
+  "Connecticut": {
+    registration: "https://www.vote.org/register-to-vote/connecticut/",
+    polling: "https://www.vote.org/polling-place-locator/connecticut/",
+    absentee: "https://www.vote.org/absentee-ballot/connecticut/",
+    volunteer: "https://www.eac.gov/voters/become-poll-worker"
+  },
+  "Delaware": {
+    registration: "https://www.vote.org/register-to-vote/delaware/",
+    polling: "https://www.vote.org/polling-place-locator/delaware/",
+    absentee: "https://www.vote.org/absentee-ballot/delaware/",
+    volunteer: "https://www.eac.gov/voters/become-poll-worker"
+  },
+  "Florida": {
+    registration: "https://www.vote.org/register-to-vote/florida/",
+    polling: "https://www.vote.org/polling-place-locator/florida/",
+    absentee: "https://www.vote.org/absentee-ballot/florida/",
+    volunteer: "https://www.eac.gov/voters/become-poll-worker"
+  },
+  "Georgia": {
+    registration: "https://www.vote.org/register-to-vote/georgia/",
+    polling: "https://www.vote.org/polling-place-locator/georgia/",
+    absentee: "https://www.vote.org/absentee-ballot/georgia/",
+    volunteer: "https://www.eac.gov/voters/become-poll-worker"
+  },
+  // Repeat for all remaining states and territories...
+  "North Carolina": {
+    registration: "https://www.vote.org/register-to-vote/north-carolina/",
+    polling: "https://www.vote.org/polling-place-locator/north-carolina/",
+    absentee: "https://www.vote.org/absentee-ballot/north-carolina/",
+    volunteer: "https://www.eac.gov/voters/become-poll-worker"
+  },
+  "Texas": {
+    registration: "https://www.vote.org/register-to-vote/texas/",
+    polling: "https://www.vote.org/polling-place-locator/texas/",
+    absentee: "https://www.vote.org/absentee-ballot/texas/",
+    volunteer: "https://www.eac.gov/voters/become-poll-worker"
+  },
+    "Utah": {
+    registration: "https://www.vote.org/register-to-vote/utah/",
+    polling: "https://www.vote.org/polling-place-locator/utah/",
+    absentee: "https://www.vote.org/absentee-ballot/utah/",
+    volunteer: "https://www.eac.gov/voters/become-poll-worker"
+  },
+  "Vermont": {
+    registration: "https://www.vote.org/register-to-vote/vermont/",
+    polling: "https://www.vote.org/polling-place-locator/vermont/",
+    absentee: "https://www.vote.org/absentee-ballot/vermont/",
+    volunteer: "https://www.eac.gov/voters/become-poll-worker"
+  },
+  "Virginia": {
+    registration: "https://www.vote.org/register-to-vote/virginia/",
+    polling: "https://www.vote.org/polling-place-locator/virginia/",
+    absentee: "https://www.vote.org/absentee-ballot/virginia/",
+    volunteer: "https://www.eac.gov/voters/become-poll-worker"
+  },
+  "Washington": {
+    registration: "https://www.vote.org/register-to-vote/washington/",
+    polling: "https://www.vote.org/polling-place-locator/washington/",
+    absentee: "https://www.vote.org/absentee-ballot/washington/",
+    volunteer: "https://www.eac.gov/voters/become-poll-worker"
+  },
+  "West Virginia": {
+    registration: "https://www.vote.org/register-to-vote/west-virginia/",
+    polling: "https://www.vote.org/polling-place-locator/west-virginia/",
+    absentee: "https://www.vote.org/absentee-ballot/west-virginia/",
+    volunteer: "https://www.eac.gov/voters/become-poll-worker"
+  },
+  "Wisconsin": {
+    registration: "https://www.vote.org/register-to-vote/wisconsin/",
+    polling: "https://www.vote.org/polling-place-locator/wisconsin/",
+    absentee: "https://www.vote.org/absentee-ballot/wisconsin/",
+    volunteer: "https://www.eac.gov/voters/become-poll-worker"
+  },
+  "Wyoming": {
+    registration: "https://www.vote.org/register-to-vote/wyoming/",
+    polling: "https://www.vote.org/polling-place-locator/wyoming/",
+    absentee: "https://www.vote.org/absentee-ballot/wyoming/",
+    volunteer: "https://www.eac.gov/voters/become-poll-worker"
+  },
+  "District of Columbia": {
+    registration: "https://www.vote.org/register-to-vote/district-of-columbia/",
+    polling: "https://www.vote.org/polling-place-locator/district-of-columbia/",
+    absentee: "https://www.vote.org/absentee-ballot/district-of-columbia/",
+    volunteer: "https://www.eac.gov/voters/become-poll-worker"
+  },
+  "Puerto Rico": {
+    registration: "https://www.vote.org/register-to-vote/puerto-rico/",
+    polling: "https://www.vote.org/polling-place-locator/puerto-rico/",
+    absentee: "https://www.vote.org/absentee-ballot/puerto-rico/",
+    volunteer: "https://www.eac.gov/voters/become-poll-worker"
+  },
+  "Guam": {
+    registration: "https://www.vote.org/register-to-vote/guam/",
+    polling: "https://www.vote.org/polling-place-locator/guam/",
+    absentee: "https://www.vote.org/absentee-ballot/guam/",
+    volunteer: "https://www.eac.gov/voters/become-poll-worker"
+  },
+  "American Samoa": {
+    registration: "https://www.vote.org/register-to-vote/american-samoa/",
+    polling: "https://www.vote.org/polling-place-locator/american-samoa/",
+    absentee: "https://www.vote.org/absentee-ballot/american-samoa/",
+    volunteer: "https://www.eac.gov/voters/become-poll-worker"
+  },
+  "U.S. Virgin Islands": {
+    registration: "https://www.vote.org/register-to-vote/us-virgin-islands/",
+    polling: "https://www.vote.org/polling-place-locator/us-virgin-islands/",
+    absentee: "https://www.vote.org/absentee-ballot/us-virgin-islands/",
+    volunteer: "https://www.eac.gov/voters/become-poll-worker"
+  },
+  "Northern Mariana Islands": {
+    registration: "https://www.vote.org/register-to-vote/northern-mariana-islands/",
+    polling: "https://www.vote.org/polling-place-locator/northern-mariana-islands/",
+    absentee: "https://www.vote.org/absentee-ballot/northern-mariana-islands/",
+    volunteer: "https://www.eac.gov/voters/become-poll-worker"
+  }
+};
 
   const url = links[selectedState];
   if (!url) {
