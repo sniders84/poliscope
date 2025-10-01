@@ -125,45 +125,6 @@ h2 {
 }
 
 /* === Modal Layout Styles === */
-#modal-overlay {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0,0,0,0.6);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  overflow: hidden;
-}
-
-#modal-content {
-  background: #fff;
-  max-width: 500px;
-  width: 90%;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.3);
-  overflow-y: auto;
-  max-height: 80vh;
-}
-
-#modal-content a {
-  color: #0066cc;
-  font-weight: bold;
-}
-
-#modal-content button {
-  margin-top: 20px;
-  padding: 8px 16px;
-  background: #0066cc;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
 .modal-container {
   display: flex;
   flex-direction: row;
