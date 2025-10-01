@@ -335,7 +335,15 @@ function renderLtGovernors(data) {
 /* ---------------- RANKINGS & ROOKIES ---------------- */
 function renderRankings() {
   const governors = allOfficials.filter(p => p.office?.includes("Governor") && !p.office?.includes("LtGovernor"));
-  const ltGovernors = allOfficials.filter(p => p.office?.includes("LtGovernor"));
+  const ltGovernors = allOfficials.filter(p => {
+  const role = (p.office || p.position || "").toLowerCase();
+  return (
+    role.includes("lt. governor") ||
+    role.includes("lt governor") ||
+    role.includes("ltgovernor") ||
+    role.includes("lieutenant governor")
+  );
+});
   const senators = allOfficials.filter(p => p.office?.includes("Senator"));
   const house = allOfficials.filter(p => p.office?.includes("Representative"));
 
