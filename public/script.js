@@ -592,9 +592,9 @@ const votingInfo = {
 let allOfficials = [];
 
 /* ---------------- CALENDAR RENDER ---------------- */
-function renderCalendar() {
+function renderCalendar(selectedState) {
   const container = document.getElementById('calendar-container');
-  if (!container) return;
+  if (!container || !selectedState) return;
 
   const links = {
     "Alabama": "https://www.sos.alabama.gov/alabama-votes/voter/upcoming-elections",
@@ -655,14 +655,18 @@ function renderCalendar() {
     "Northern Mariana Islands": "https://www.votecnmi.gov.mp/"
   };
 
-  const html = Object.entries(links).map(([state, url]) => `
-    <div class="card" onclick="openEventModal('${state} Election Calendar', 'Click below to view all upcoming elections and deadlines for ${state}.', '${url}')">
-      <h3>${state} Elections</h3>
+  const url = links[selectedState];
+  if (!url) {
+    container.innerHTML = `<p>No calendar available for ${selectedState}.</p>`;
+    return;
+  }
+
+  container.innerHTML = `
+    <div class="card" onclick="openEventModal('${selectedState} Election Calendar', 'Click below to view all upcoming elections and deadlines for ${selectedState}.', '${url}')">
+      <h3>${selectedState} Elections</h3>
       <p>View official calendar</p>
     </div>
-  `).join('');
-
-  container.innerHTML = html;
+  `;
 }
 /* ---------------- REGISTRATION RENDER ---------------- */
 function renderRegistration(selectedState) {
