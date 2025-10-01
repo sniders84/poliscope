@@ -1182,6 +1182,57 @@ if (stateSelect) {
     }
   }
 });
+// ✅ 1. Define the filtering function
+function filterOfficials() {
+  var query = document.getElementById("search").value.toLowerCase();
+  var selectedState = document.getElementById("state-select").value.toLowerCase();
+  var cards = document.querySelectorAll("#my-cards .card");
+
+  cards.forEach(function (card) {
+    var text = card.textContent.toLowerCase();
+    var matchesQuery = text.includes(query);
+    var matchesState = selectedState === "" || text.includes(selectedState);
+
+    card.style.display = (matchesQuery && matchesState) ? "block" : "none";
+  });
+}
+
+// ✅ 2. Attach search bar listener
+document.getElementById("search").addEventListener("input", function () {
+  filterOfficials();
+});
+
+// ✅ 3. Attach state dropdown listener
+document.getElementById("state-select").addEventListener("change", function () {
+  var selectedState = this.value;
+  filterOfficials();
+  renderPollsForState(selectedState);
+  showTab("my-officials");
+});
+function renderPollsForState(stateName) {
+  var pollsContainer = document.getElementById("polls-container");
+  pollsContainer.innerHTML = "";
+
+  if (!stateName) return;
+
+  var emersonCard = document.createElement("div");
+  emersonCard.className = "card";
+  emersonCard.innerHTML = `
+    <h3>${stateName} Polls</h3>
+    <p>Source: Emerson College</p>
+    <a href="https://emersoncollegepolling.com/category/state-polls/" target="_blank">View Emerson Polls</a>
+  `;
+  pollsContainer.appendChild(emersonCard);
+
+  var rcpCard = document.createElement("div");
+  rcpCard.className = "card";
+  rcpCard.innerHTML = `
+    <h3>${stateName} Polls</h3>
+    <p>Source: RealClearPolitics</p>
+    <a href="https://www.realclearpolitics.com/epolls/latest_polls/" target="_blank">View RCP Polls</a>
+  `;
+  pollsContainer.appendChild(rcpCard);
+}
 document.getElementById("state-select").addEventListener("change", function () {
   const selectedState = this.value;
   if (!selectedState) return;
