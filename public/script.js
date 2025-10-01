@@ -1,3 +1,31 @@
+window.allEvents = [
+  {
+    title: "General Election",
+    date: "2024-11-05",
+    state: "Alabama",
+    type: "Statewide",
+    details: "Includes races for President, Senate, and House.",
+    link: "https://www.sos.alabama.gov/alabama-votes"
+  },
+  {
+    title: "Primary Election",
+    date: "2025-03-04",
+    state: "North Carolina",
+    type: "Statewide",
+    details: "Primary races for Governor and Lt. Governor.",
+    link: "https://www.ncsbe.gov"
+  },
+  {
+    title: "Special Election",
+    date: "2025-06-03",
+    state: "California",
+    type: "Municipal",
+    details: "Local ballot measures and city council races.",
+    link: "https://www.sos.ca.gov/elections"
+  }
+  // Add more events here
+];
+
 // --- Tabs (single canonical function) ---
 window.showTab = function(id) {
   const sections = ['my-officials', 'compare', 'rankings', 'rookies', 'calendar', 'registration'];
