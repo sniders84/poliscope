@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Poliscope</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:,">
   <style>
     #modal-overlay {
       position: fixed;
@@ -37,12 +38,10 @@
     }
   </style>
 </head>
-  <link rel="stylesheet" href="style.css" />
-
 <body>
- <header class="electorate-header">
-  <img src="assets/electorate-logo.png" alt="Electorate logo" class="electorate-logo" />
-</header>
+  <header class="electorate-header">
+    <img src="assets/electorate-logo.png" alt="Electorate logo" class="electorate-logo" />
+  </header>
 
   <nav id="tabs">
     <button onclick="showTab('my-officials')">My Officials</button>
@@ -53,67 +52,64 @@
   </nav>
 
   <input type="text" id="search" placeholder="Search by name, state, or party..." />
-  <ul id="results"></ul>
   <label for="state-select">Select your state:</label>
-<select id="state-select">
-  <option value="">Choose a state</option>
-  <option value="North Carolina">North Carolina</option>
-  <option value="California">California</option>
-  <option value="Texas">Texas</option>
-</select>
+  <select id="state-select">
+    <option value="">Choose a state</option>
+    <option value="North Carolina">North Carolina</option>
+    <option value="California">California</option>
+    <option value="Texas">Texas</option>
+    <!-- Add more states as needed -->
+  </select>
 
-    <section id="my-officials" style="display:none;">
-  <h2>My Officials</h2>
-  <div class="card-container" id="my-cards"></div>
-  <div id="polls-container"></div>
-</section>
-   
+  <section id="my-officials" style="display:none;">
+    <h2>My Officials</h2>
+    <div class="card-container" id="my-cards"></div>
+    <div id="polls-container"></div>
+  </section>
+
+  <section id="compare" style="display:none;">
+    <h2>Compare Polls</h2>
+    <div id="compare-container"></div>
   </section>
 
   <section id="rankings" style="display:none;">
     <h2>Official Rankings</h2>
-<details>
-  <summary><strong>Full Rankings: Senators</strong></summary>
-  <div class="card-container" id="rankings-senators"></div>
-</details>
-
-<details>
-  <summary><strong>Full Rankings: House Representatives</strong></summary>
-  <div class="card-container" id="rankings-house"></div>
-</details>
-
-<details>
-  <summary><strong>Full Rankings: Governors</strong></summary>
-  <div class="card-container" id="rankings-governors"></div>
-</details>
-
-<details>
-  <summary><strong>Full Rankings: Lt. Governors</strong></summary>
-  <div class="card-container" id="rankings-ltgovernors"></div>
-</details>
-
-<h3>Top 10 Overall</h3>
-<div class="card-container" id="top10-overall"></div>
-
+    <details>
+      <summary><strong>Full Rankings: Senators</strong></summary>
+      <div class="card-container" id="rankings-senators"></div>
     </details>
+    <details>
+      <summary><strong>Full Rankings: House Representatives</strong></summary>
+      <div class="card-container" id="rankings-house"></div>
+    </details>
+    <details>
+      <summary><strong>Full Rankings: Governors</strong></summary>
+      <div class="card-container" id="rankings-governors"></div>
+    </details>
+    <details>
+      <summary><strong>Full Rankings: Lt. Governors</strong></summary>
+      <div class="card-container" id="rankings-ltgovernors"></div>
+    </details>
+    <h3>Top 10 Overall</h3>
+    <div class="card-container" id="top10-overall"></div>
   </section>
 
- <section id="calendar" style="display:none;">
-  <h2>Civic Calendar</h2>
-  <div id="calendar-container"></div>
-</section>
+  <section id="calendar" style="display:none;">
+    <h2>Civic Calendar</h2>
+    <div id="calendar-container"></div>
+  </section>
 
   <section id="registration" style="display:none;">
-  <h2>Voting & Registration</h2>
-  <div id="voting-container"></div>
-</section>
+    <h2>Voting & Registration</h2>
+    <div id="voting-container"></div>
+  </section>
 
   <div id="modal-overlay" style="display:none;">
     <div id="modal-content"></div>
     <button onclick="closeModal()" id="modal-close">Close</button>
   </div>
 
-<script src="script.js"></script>
-<script src="cleanHouse.js"></script>
+  <script src="script.js"></script>
+  <script src="cleanHouse.js"></script>
 </body>
 </html>
