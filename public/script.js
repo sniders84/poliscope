@@ -585,24 +585,22 @@ const votingInfo = {
 let allOfficials = [];
 
 /* ---------------- CALENDAR RENDER ---------------- */
-function renderCalendar(events, selectedState) {
-  const container = document.getElementById("calendar-container");
+function renderCalendar(selectedState) {
+  const container = document.getElementById('calendar-container');
   if (!container) return;
 
-  const today = new Date();
+  const stateSlug = selectedState.trim().replace(/\s+/g, '_');
+  const link = `https://ballotpedia.org/${stateSlug}_elections`;
 
-  const filtered = events
-  .filter(e => {
-    const eventState = (e.state || "").trim().toLowerCase();
-    const selected = (selectedState || "").trim().toLowerCase();
-    const eventDate = new Date(Date.parse(e.date));
-    return (
-      (eventState === selected || eventState === "all") &&
-      eventDate.toString() !== "Invalid Date" &&
-      eventDate >= today
-    );
-  })
-  .sort((a, b) => new Date(a.date) - new Date(b.date));
+  const html = `
+    <div class="card" onclick="openEventModal('${selectedState} Election Calendar', 'Click below to view all upcoming elections and deadlines for ${selectedState}.', '${link}')">
+      <h3>${selectedState} Elections</h3>
+      <p>View official calendar</p>
+    </div>
+  `;
+
+  container.innerHTML = html;
+}
 
   const html = filtered.map(event => `
     <div class="card" onclick="openEventModal('${escapeJs(event.title)}', '${event.date}', '${escapeJs(event.state)}', '${escapeJs(event.type)}', '${escapeJs(event.details)}', '${event.link}')">
@@ -644,6 +642,19 @@ function openEventModal(title, date, state, type, details, link) {
 
   const closeBtn = document.getElementById('event-modal-close');
   if (closeBtn) closeBtn.addEventListener('click', closeModal);
+}
+function openEventModal(title, details, link) {
+  const modalHTML = `
+    <div class="modal-container">
+      <h2>${title}</h2>
+      <p>${details}</p>
+      <p><a href="${link}" target="_blank" rel="noopener noreferrer">Open Official Site</a></p>
+      <button id="modal-close-btn">Close</button>
+    </div>
+  `;
+  document.getElementById('modal-content').innerHTML = modalHTML;
+  document.getElementById('modal-overlay').style.display = 'flex';
+  document.getElementById('modal-close-btn').addEventListener('click', closeModal);
 }
 
 /* ---------------- TAB SWITCHING ---------------- */
