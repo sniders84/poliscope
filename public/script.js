@@ -664,3 +664,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 });
+document.getElementById("state-select").addEventListener("change", function(e) {
+  const selectedState = e.target.value;
+
+  renderMyOfficials(selectedState);
+  renderCalendar(selectedState);
+  renderRegistration(selectedState);
+});
