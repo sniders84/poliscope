@@ -14,28 +14,20 @@ window.showTab = function(id) {
 // --- Rookie Logic ---
 function isRookie(person) {
   const rawStart = person.termStart || person.termBegin || person.startDate || "";
-  const termStartStr = String(rawStart).trim();
-  const yearMatch = termStartStr.match(/^(\d{4})/);
-  const year = yearMatch ? parseInt(yearMatch[1], 10) : null;
+  const year = typeof rawStart === 'number' ? rawStart : parseInt(String(rawStart).trim().slice(0, 4), 10);
+  if (!year || isNaN(year)) return false;
 
   const role = (person.office || person.position || "").toLowerCase();
 
-  if (!year) return false;
-
-  if (role.includes("senator")) {
-    return year >= 2018; // 6-year term
-  } else if (role.includes("governor")) {
-    return year >= 2020; // 4-year term
-  } else if (role.includes("representative") || role.includes("house")) {
-    return year >= 2022; // 2-year term
-  } else if (
+  if (role.includes("senator")) return year >= 2018;       // 6-year term
+  if (role.includes("governor")) return year >= 2020;      // 4-year term
+  if (role.includes("representative") || role.includes("house")) return year >= 2022; // 2-year term
+  if (
     role.includes("lt. governor") ||
     role.includes("lt governor") ||
     role.includes("ltgovernor") ||
     role.includes("lieutenant governor")
-  ) {
-    return year >= 2020; // assume 4-year term
-  }
+  ) return year >= 2020;
 
   return false;
 }
