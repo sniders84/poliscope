@@ -506,6 +506,11 @@ async function loadData() {
     }
 
     // ✅ Compose global officials list WITHOUT Lt. Governors
+    console.log("🧪 Governor count:", governors?.length);
+console.log("🧪 Senate count:", senate?.length);
+console.log("🧪 House count:", house?.length);
+console.log("🧪 Lt. Governor count:", ltGovernors?.length);
+
     window.allOfficials = [...(governors || []), ...(senate || []), ...(house || []), ...(ltGovernors || [])];
     allOfficials = window.allOfficials;
     const sarah = window.allOfficials.find(p =>
