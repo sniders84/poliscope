@@ -1138,5 +1138,5 @@ document.getElementById("state-select").addEventListener("change", function(e) {
     return ev.state === selectedState || ev.state === "ALL";
   });
 
-  renderCalendar(filteredEvents);
+renderCalendar(filteredEvents, selectedState);
 });
