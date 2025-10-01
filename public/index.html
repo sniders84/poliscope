@@ -69,7 +69,26 @@
 
   <section id="polls" style="display:none;">
   <h2>Polls</h2>
-  <div id="polls-container"></div>
+  <div id="polls-container">
+
+    <!-- ✅ Drop this block below -->
+    <div class="card" onclick="openModal('poll-nj-gov')">
+      <h3>New Jersey Governor</h3>
+      <p>Sherrill: 46% &nbsp;|&nbsp; Ciattarelli: 45%</p>
+    </div>
+
+    <div id="poll-nj-gov" class="modal" style="display:none;">
+      <div class="modal-content">
+        <h2>New Jersey Governor Poll</h2>
+        <p><strong>Source:</strong> Emerson College</p>
+        <p><strong>Date:</strong> September 25, 2025</p>
+        <p><strong>Results:</strong> Sherrill 46%, Ciattarelli 45%</p>
+        <a href="https://emersoncollegepolling.com/new-jersey-2025-poll/" target="_blank">View Full Poll</a>
+        <button onclick="closeModal('poll-nj-gov')">Close</button>
+      </div>
+    </div>
+
+  </div>
 </section>
 
   <section id="rankings" style="display:none;">
