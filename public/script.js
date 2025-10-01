@@ -1158,3 +1158,31 @@ document.getElementById("state-select").addEventListener("change", function () {
   renderCalendar(window.allEvents || [], selectedState);
   renderRegistration(selectedState);
 });
+document.getElementById("search").addEventListener("input", syncOfficialsAndPolls);
+document.getElementById("state-select").addEventListener("change", syncOfficialsAndPolls);
+
+function syncOfficialsAndPolls() {
+  var query = document.getElementById("search").value.toLowerCase();
+  var selectedState = document.getElementById("state-select").value;
+  var cards = document.querySelectorAll("#my-cards .card");
+
+  cards.forEach(function (card) {
+    var text = card.textContent.toLowerCase();
+    var matchesQuery = text.includes(query);
+    var matchesState = selectedState === "" || text.includes(selectedState.toLowerCase());
+
+    card.style.display = (matchesQuery && matchesState) ? "block" : "none";
+  });
+
+  // Show polls for selected state
+  var pollsContainer = document.getElementById("polls-container");
+  pollsContainer.innerHTML = ""; // Clear previous
+
+  if (selectedState !== "") {
+    var pollCard = document.createElement("div");
+    pollCard.className = "card";
+    pollCard.textContent = "Live polling data for " + selectedState;
+    pollsContainer.appendChild(pollCard);
+    showTab("polls");
+  }
+}
