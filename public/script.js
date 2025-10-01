@@ -938,7 +938,7 @@ function renderCalendar(selectedState) {
   absentee: "https://www.votecnmi.gov.mp/absenteevoting.html",
   volunteer: "https://www.votecnmi.gov.mp/pollworkers.html"
 }
-};,
+
   const stateLinks = links[selectedState];
   if (!stateLinks) {
     container.innerHTML = `<p>No registration info available for ${selectedState}.</p>`;
@@ -1497,3 +1497,17 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   showTab('calendar');
 });
+function showTab(tabName) {
+  // Hide all tabs
+  const tabs = document.querySelectorAll(".tab");
+  tabs.forEach(function(tab) {
+    tab.style.display = "none";
+  });
+
+  // Show the one tab that matches the name
+  const targetTab = document.getElementById(tabName);
+  if (targetTab) {
+    targetTab.style.display = "block";
+  }
+}
+
