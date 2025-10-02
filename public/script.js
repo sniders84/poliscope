@@ -19,26 +19,20 @@ window.showTab = function(tabId) {
     const el = document.getElementById(sectionId);
     if (el) el.style.display = sectionId === tabId ? 'block' : 'none';
   });
-// --- Photo URL Logic ---
-function getSafePhotoUrl(person) {
-  const raw = person.photo;
-  if (!raw || typeof raw !== 'string') return 'https://via.placeholder.com/200x300?text=No+Photo';
 
-  const trimmed = raw.trim();
-  const isBroken =
-    trimmed === '' ||
-    trimmed.startsWith('200x300') ||
-    trimmed.startsWith('/200x300') ||
-    trimmed.includes('?text=No+Photo') ||
-    !trimmed.startsWith('http') ||
-    trimmed.includes('ERR_NAME_NOT_RESOLVED');
+  const selectedState = window.selectedState || document.getElementById("state-select").value || 'North Carolina';
 
-  return isBroken ? 'https://via.placeholder.com/200x300?text=No+Photo' : trimmed;
-}
-document.getElementById('state-select').addEventListener('change', function() {
-  const selected = this.value;
-  window.selectedState = selected; // ✅ stores globally
-});
+  if (tabId === 'calendar') window.renderCalendarForState(selectedState);
+  if (tabId === 'registration') renderRegistration(selectedState);
+  if (tabId === 'my-officials') renderMyOfficials(selectedState);
+  if (tabId === 'polls') renderPollsForState(selectedState);
+  if (tabId === 'rankings') renderRankings();
+
+  const results = document.getElementById('results');
+  if (results) results.innerHTML = '';
+  const search = document.getElementById('search');
+  if (search) search.value = '';
+};
 /* ---------------- CALENDAR EVENTS ---------------- */
 const calendarEvents = [
   {
