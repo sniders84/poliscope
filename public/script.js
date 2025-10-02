@@ -15,15 +15,6 @@ window.showTab = function(tabId) {
 }
 
 };
-
-function showTab(tabId) {
-  const sections = document.querySelectorAll("section");
-  sections.forEach(section => section.style.display = "none");
-
-  const target = document.getElementById(tabId);
-  if (target) target.style.display = "block";
-}
-
 /* ---------------- GLOBAL DATA ---------------- */
 window.allOfficials = [];
 window.allStats = [];
@@ -700,7 +691,7 @@ function openEventModal(title, date, state, type, details, link) {
 }
 
 /* ---------------- TAB SWITCHING ---------------- */
-function showTab(tabId) {
+
   document.querySelectorAll('section').forEach(section => {
     section.style.display = 'none';
   });
