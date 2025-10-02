@@ -2,9 +2,7 @@
 
 /** ---- GLOBALS ---- */
 let allOfficials = [];
-let calendarEvents = [
-  // ... (keep your provided calendarEvents array here)
-];
+let calendarEvents = []; // Will be populated dynamically via API
 
 const votingInfo = {
   Alabama: {
@@ -18,8 +16,36 @@ const votingInfo = {
     absenteeReturnDeadline: "2025-11-04 12:00 PM",
     earlyVotingStart: null,
     earlyVotingEnd: null
+  },
+  // Placeholder for other states/territories - expand this with real data
+  Alaska: {
+    registrationLink: "https://www.elections.alaska.gov/Core/voterregistration.php",
+    statusCheckLink: "https://myvoterinformation.alaska.gov/",
+    pollingPlaceLink: "https://www.elections.alaska.gov/Core/precinctinformation.php",
+    volunteerLink: "https://www.elections.alaska.gov/Core/pollworkerinformation.php",
+    absenteeLink: "https://www.elections.alaska.gov/Core/votingbyabsenteeballot.php",
+    registrationDeadline: "2025-10-05",
+    absenteeRequestDeadline: "2025-10-25",
+    absenteeReturnDeadline: "2025-11-04",
+    earlyVotingStart: "2025-10-20",
+    earlyVotingEnd: "2025-11-03"
+  },
+  // ... Add similar entries for all 50 states, DC, PR, GU, VI, AS
+  // Example structure:
+  /*
+  "Puerto Rico": {
+    registrationLink: "https://www.ceepur.org/",
+    statusCheckLink: "https://www.ceepur.org/",
+    pollingPlaceLink: "https://www.ceepur.org/",
+    volunteerLink: "https://www.ceepur.org/",
+    absenteeLink: "https://www.ceepur.org/",
+    registrationDeadline: "2025-09-15",
+    absenteeRequestDeadline: "2025-10-20",
+    absenteeReturnDeadline: "2025-11-04",
+    earlyVotingStart: null,
+    earlyVotingEnd: null
   }
-  // Add more states as needed
+  */
 };
 
 /** ---- UTILS ---- */
@@ -47,13 +73,10 @@ function getSafePhotoUrl(person) {
 
 /** ---- TABS ---- */
 window.showTab = function(tabId) {
-  // Hide all sections
   document.querySelectorAll('section').forEach(sec => sec.style.display = 'none');
-  // Show requested
   const target = document.getElementById(tabId);
   if (target) target.style.display = 'block';
 
-  // Rerender for stateful sections
   const selectedState = document.getElementById('state-select').value;
 
   switch(tabId) {
@@ -67,7 +90,7 @@ window.showTab = function(tabId) {
       renderRankings();
       break;
     case 'calendar':
-      renderCalendar(calendarEvents, selectedState);
+      renderCalendar(selectedState);
       break;
     case 'registration':
       renderVotingInfo(selectedState);
@@ -120,7 +143,6 @@ function renderCards(data, containerId) {
 window.expandCard = function(slug) {
   const person = allOfficials.find(p => p.slug === slug);
   if (!person) return;
-  // Modal HTML
   const imageUrl = getSafePhotoUrl(person);
   const link = person.ballotpediaLink || person.contact?.website || '';
   let html = `
@@ -167,7 +189,6 @@ function renderMyOfficials(state) {
   const matches = allOfficials.filter(p =>
     p.state === state || p.stateName === state || p.stateAbbreviation === state
   );
-  // Sort by role
   const roleOrder = ['senator', 'representative', 'governor', 'lt. governor', 'lt governor', 'ltgovernor', 'lieutenant governor'];
   matches.sort((a, b) => {
     const roleA = (a.office || a.position || '').toLowerCase();
@@ -203,21 +224,47 @@ function renderRankings() {
 }
 
 /** ---- CALENDAR ---- */
-function renderCalendar(events, selectedState) {
+async function fetchCalendarEvents(state) {
+  // Placeholder API call - replace with your actual endpoint
+  try {
+    const response = await fetch(`https://api.ballotpedia.org/v3/events?state=${state}&months=6`);
+    const data = await response.json();
+    return data.events || [];
+  } catch {
+    // Fallback to static national events if API fails
+    return [
+      {
+        title: "General Election",
+        date: "2025-11-04",
+        state: "national",
+        type: "Election",
+        details: "National and state-level general elections",
+        link: "https://www.usa.gov/election-day"
+      }
+      // Add more static events as needed
+    ];
+  }
+}
+
+async function renderCalendar(selectedState) {
   const container = document.getElementById("calendar-container");
   if (!container) return;
   const today = new Date();
   const selected = (selectedState || "").trim().toLowerCase();
+  
+  // Fetch events for the selected state
+  const events = await fetchCalendarEvents(selected);
   const filtered = events.filter(e => {
     const eventState = (e.state || "").trim().toLowerCase();
     const eventDate = new Date(e.date);
-    // Show if (event is national) or (event matches selected state)
     return (
       (!selected || eventState === selected || eventState === "all" || eventState === "national") &&
       !isNaN(eventDate) &&
-      eventDate >= today
+      eventDate >= today &&
+      eventDate <= new Date(today.setMonth(today.getMonth() + 6))
     );
   }).sort((a, b) => new Date(a.date) - new Date(b.date));
+
   container.innerHTML = filtered.length
     ? filtered.map(event => `
       <div class="card" onclick="openEventModal('${escapeJs(event.title)}', '${event.date}', '${escapeJs(event.state)}', '${escapeJs(event.type)}', '${escapeJs(event.details)}', '${event.link}')">
@@ -228,6 +275,7 @@ function renderCalendar(events, selectedState) {
     `).join('')
     : `<p>No upcoming events for ${selectedState ? selectedState : 'your selection'}.</p>`;
 }
+
 window.openEventModal = function(title, date, state, type, details, link) {
   openModal(`
     <div class="event-modal">
@@ -244,14 +292,22 @@ window.openEventModal = function(title, date, state, type, details, link) {
 /** ---- VOTING INFO ---- */
 function renderVotingInfo(state) {
   const container = document.getElementById('voting-container');
-  const info = votingInfo[state];
-  if (!container || !info) {
-    if (container) container.innerHTML = `<p>No voting info available for ${state}. Please check your state’s official voter website.</p>`;
-    return;
-  }
+  const info = votingInfo[state] || {
+    registrationLink: "https://www.usa.gov/register-to-vote",
+    statusCheckLink: "https://www.usa.gov/voter-registration-status",
+    pollingPlaceLink: "https://www.usa.gov/polling-place",
+    volunteerLink: "https://www.usa.gov/election-office",
+    absenteeLink: "https://www.usa.gov/absentee-voting",
+    registrationDeadline: "Varies by state",
+    absenteeRequestDeadline: "Varies by state",
+    absenteeReturnDeadline: "Varies by state",
+    earlyVotingStart: null,
+    earlyVotingEnd: null
+  };
+  
   container.innerHTML = `
     <div class="card">
-      <h3>Register to Vote in ${state}</h3>
+      <h3>Register to Vote${state ? ` in ${state}` : ''}</h3>
       <p><a href="${info.registrationLink}" target="_blank">Register Online</a></p>
       <p><a href="${info.statusCheckLink}" target="_blank">Check Registration Status</a></p>
       <p><strong>Deadline:</strong> ${info.registrationDeadline}</p>
@@ -265,31 +321,31 @@ function renderVotingInfo(state) {
       <p><a href="${info.absenteeLink}" target="_blank">Request Absentee Ballot</a></p>
       <p><strong>Request Deadline:</strong> ${info.absenteeRequestDeadline}</p>
       <p><strong>Return Deadline:</strong> ${info.absenteeReturnDeadline}</p>
+      ${info.earlyVotingStart ? `<p><strong>Early Voting:</strong> ${info.earlyVotingStart} to ${info.earlyVotingEnd}</p>` : ''}
     </div>
     <div class="card">
       <h3>Volunteer</h3>
       <p><a href="${info.volunteerLink}" target="_blank">Become a Poll Worker</a></p>
     </div>
+    <div class="card">
+      <h3>National Election Info</h3>
+      <p><a href="https://www.usa.gov/election-day" target="_blank">General Election: Nov 4, 2025</a></p>
+    </div>
   `;
 }
 
 /** ---- POLLS ---- */
-function renderPollsForState(stateName) {
+function renderPollsForState() {
   const pollsContainer = document.getElementById("polls-container");
-  if (!pollsContainer || !stateName) return;
-  // Direct to state-specific poll pages if available
-  const emersonLink = `https://emersoncollegepolling.com/category/state-polls/${stateName.replace(/\s+/g, '-').toLowerCase()}/`;
-  const rcpLink = `https://www.realclearpolitics.com/epolls/${stateName.replace(/\s+/g, '_').toLowerCase()}/`;
+  if (!pollsContainer) return;
   pollsContainer.innerHTML = `
     <div class="card">
-      <h3>${stateName} Polls</h3>
-      <p>Source: Emerson College</p>
-      <a href="${emersonLink}" target="_blank">View Emerson Polls</a>
+      <h3>Polling Data</h3>
+      <p><a href="https://www.realclearpolling.com" target="_blank">RealClearPolling</a></p>
     </div>
     <div class="card">
-      <h3>${stateName} Polls</h3>
-      <p>Source: RealClearPolitics</p>
-      <a href="${rcpLink}" target="_blank">View RCP Polls</a>
+      <h3>Polling Data</h3>
+      <p><a href="https://www.emersoncollegepolling.com" target="_blank">EmersonCollege</a></p>
     </div>
   `;
 }
@@ -315,7 +371,6 @@ function setupGlobalSearch() {
       dropdown.style.display = 'none';
       return;
     }
-    // Find matches anywhere in the country
     const matches = allOfficials.filter(
       p => p.name.toLowerCase().includes(q) || (p.office || '').toLowerCase().includes(q) || (p.position || '').toLowerCase().includes(q)
     );
@@ -332,7 +387,6 @@ function setupGlobalSearch() {
     dropdown.style.display = 'block';
   });
 
-  // Hide dropdown on click outside
   document.addEventListener('click', function (e) {
     if (!dropdown.contains(e.target) && e.target !== searchInput) {
       dropdown.style.display = 'none';
@@ -342,7 +396,6 @@ function setupGlobalSearch() {
 
 /** ---- LOAD DATA ---- */
 async function loadData() {
-  // Wait for cleanHouse.js to load window.cleanedHouse
   await new Promise(resolve => {
     const check = () => {
       if (window.cleanedHouse && Array.isArray(window.cleanedHouse)) resolve();
@@ -360,48 +413,41 @@ async function loadData() {
   window.allOfficials = [...(governors || []), ...(senate || []), ...(house || []), ...(ltGovernors || [])];
   allOfficials = window.allOfficials;
 
-  // Populate state-select dropdown in strict alphabetical order
   const stateSelect = document.getElementById('state-select');
   if (stateSelect) {
-    // Use a set of all state names
     const states = [...new Set(allOfficials.map(p => p.state).filter(Boolean))].sort((a, b) => a.localeCompare(b));
-    // Remove all previous options except the first (e.g., "Select a State")
     while (stateSelect.options.length > 1) stateSelect.remove(1);
     states.forEach(state => {
       const opt = document.createElement('option');
       opt.value = opt.text = state;
       stateSelect.appendChild(opt);
     });
-    // Set default
     stateSelect.value = stateSelect.querySelector('option[value="Alabama"]') ? 'Alabama' : (states[0] || '');
   }
-  // Initial render
   const defaultState = stateSelect ? (stateSelect.value || 'Alabama') : 'Alabama';
   renderMyOfficials(defaultState);
-  renderCalendar(calendarEvents, defaultState);
+  renderCalendar(defaultState);
   renderVotingInfo(defaultState);
   renderPollsForState(defaultState);
 }
+
 document.addEventListener('DOMContentLoaded', function () {
   loadData();
 
-  // State select logic
   const stateSelect = document.getElementById('state-select');
   if (stateSelect) {
     stateSelect.addEventListener('change', function () {
       const selectedState = this.value;
       renderMyOfficials(selectedState);
-      renderCalendar(calendarEvents, selectedState);
+      renderCalendar(selectedState);
       renderVotingInfo(selectedState);
       renderPollsForState(selectedState);
       window.showTab("my-officials");
     });
   }
 
-  // Set up global search bar with dropdown
   setupGlobalSearch();
 
-  // Modal overlay click to close
   const overlay = document.getElementById('modal-overlay');
   if (overlay) {
     overlay.addEventListener('click', function (e) {
@@ -409,10 +455,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Tab button wiring (use nav > button, not .tab-button)
   document.querySelectorAll('#tabs button').forEach(button => {
     button.addEventListener('click', () => {
-      // Remove 'active' from all, add to this
       document.querySelectorAll('#tabs button').forEach(btn => btn.classList.remove('active'));
       button.classList.add('active');
       const tabId = button.getAttribute('onclick').match(/'(.+)'/)[1];
@@ -420,6 +464,5 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Start on My Officials tab
   window.showTab('my-officials');
 });
