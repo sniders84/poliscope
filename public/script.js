@@ -1,23 +1,8 @@
-/* ---------------- CALENDAR RENDERING ---------------- */
-window.renderCalendarForState = function(state) {
-  const tables = document.querySelectorAll('.calendar-table');
-  tables.forEach(table => table.style.display = 'none');
-
-  const activeTable = document.getElementById(`calendar-${state}`);
-  if (activeTable) activeTable.style.display = 'table';
-};
-
-/* ---------------- UTILITY FUNCTIONS ---------------- */
-function escapeJs(str) {
-  return str.replace(/'/g, "\\'").replace(/"/g, '\\"');
-}
-
-/* ---------------- TAB LOGIC ---------------- */
 window.showTab = function(tabId) {
   const sections = ['my-officials', 'polls', 'rankings', 'calendar', 'registration'];
-  sections.forEach(sectionId => {
-    const el = document.getElementById(sectionId);
-    if (el) el.style.display = sectionId === tabId ? 'block' : 'none';
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.style.display = id === tabId ? 'block' : 'none';
   });
 
   const selectedState = window.selectedState || document.getElementById("state-select").value || 'North Carolina';
@@ -33,6 +18,21 @@ window.showTab = function(tabId) {
   const search = document.getElementById('search');
   if (search) search.value = '';
 };
+
+/* ---------------- CALENDAR RENDERING ---------------- */
+window.renderCalendarForState = function(state) {
+  const tables = document.querySelectorAll('.calendar-table');
+  tables.forEach(table => table.style.display = 'none');
+
+  const activeTable = document.getElementById(`calendar-${state}`);
+  if (activeTable) activeTable.style.display = 'table';
+};
+
+/* ---------------- UTILITY FUNCTIONS ---------------- */
+function escapeJs(str) {
+  return str.replace(/'/g, "\\'").replace(/"/g, '\\"');
+}
+
 /* ---------------- CALENDAR EVENTS ---------------- */
 const calendarEvents = [
   {
