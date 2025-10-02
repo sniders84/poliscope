@@ -5,6 +5,7 @@ function showTab(tabId) {
   const target = document.getElementById(tabId);
   if (target) target.style.display = "block";
 }
+
 /* ---------------- GLOBAL DATA ---------------- */
 window.allOfficials = [];
 window.allStats = [];
@@ -18,7 +19,7 @@ window.allEvents = [
     details: "Presidential, Senate, and House races across all states.",
     link: "https://www.nass.org/Can-I-Vote"
   },
-  
+
   // Alabama
   {
     title: "Municipal Runoff – Birmingham",
@@ -29,439 +30,443 @@ window.allEvents = [
     link: "https://www.sos.alabama.gov/alabama-votes"
   },
   {
-  title: "Special Primary – House District 38",
-  date: "2025-10-21",
-  state: "Alabama",
-  type: "State Legislative Special",
-  details: "Special primary for Alabama House District 38.",
-  link: "https://www.sos.alabama.gov/alabama-votes"
-},
+    title: "Special Primary – House District 38",
+    date: "2025-10-21",
+    state: "Alabama",
+    type: "State Legislative Special",
+    details: "Special primary for Alabama House District 38.",
+    link: "https://www.sos.alabama.gov/alabama-votes"
+  },
 
-// Alaska
-{
-  title: "Juneau General Election",
-  date: "2025-10-07",
-  state: "Alaska",
-  type: "Municipal",
-  details: "General election for city offices in Juneau.",
-  link: "https://www.elections.alaska.gov"
-},
+  // Alaska
+  {
+    title: "Juneau General Election",
+    date: "2025-10-07",
+    state: "Alaska",
+    type: "Municipal",
+    details: "General election for city offices in Juneau.",
+    link: "https://www.elections.alaska.gov"
+  },
 
-// Arizona
-{
-  title: "Phoenix Town Hall – Senate Redistricting",
-  date: "2025-10-15",
-  state: "Arizona",
-  type: "Town Hall",
-  details: "Public town hall on redistricting hosted by Arizona Senate.",
-  link: "https://www.azleg.gov"
-},
+  // Arizona
+  {
+    title: "Phoenix Town Hall – Senate Redistricting",
+    date: "2025-10-15",
+    state: "Arizona",
+    type: "Town Hall",
+    details: "Public town hall on redistricting hosted by Arizona Senate.",
+    link: "https://www.azleg.gov"
+  },
 
-// Arkansas
-{
-  title: "Little Rock Mayoral Runoff",
-  date: "2025-10-22",
-  state: "Arkansas",
-  type: "Municipal Runoff",
-  details: "Runoff election for mayor of Little Rock.",
-  link: "https://www.sos.arkansas.gov/elections"
-},
+  // Arkansas
+  {
+    title: "Little Rock Mayoral Runoff",
+    date: "2025-10-22",
+    state: "Arkansas",
+    type: "Municipal Runoff",
+    details: "Runoff election for mayor of Little Rock.",
+    link: "https://www.sos.arkansas.gov/elections"
+  },
 
-// California
-{
-  title: "Special Election – San Diego City Council District 4",
-  date: "2025-10-08",
-  state: "California",
-  type: "Municipal Special",
-  details: "Special election to fill vacancy in District 4.",
-  link: "https://www.sos.ca.gov/elections"
-},
+  // California
+  {
+    title: "Special Election – San Diego City Council District 4",
+    date: "2025-10-08",
+    state: "California",
+    type: "Municipal Special",
+    details: "Special election to fill vacancy in District 4.",
+    link: "https://www.sos.ca.gov/elections"
+  },
 
-// Colorado
-{
-  title: "Denver Town Hall – Governor’s Budget Preview",
-  date: "2025-10-10",
-  state: "Colorado",
-  type: "Town Hall",
-  details: "Governor’s office hosts public budget preview and Q&A.",
-  link: "https://www.colorado.gov/governor"
-},
+  // Colorado
+  {
+    title: "Denver Town Hall – Governor’s Budget Preview",
+    date: "2025-10-10",
+    state: "Colorado",
+    type: "Town Hall",
+    details: "Governor’s office hosts public budget preview and Q&A.",
+    link: "https://www.colorado.gov/governor"
+  },
 
-// Connecticut
-{
-  title: "Special Election – State Senate District 1",
-  date: "2025-10-14",
-  state: "Connecticut",
-  type: "State Legislative Special",
-  details: "Special election to fill vacant Senate seat.",
-  link: "https://portal.ct.gov/SOTS/Election-Services"
-},
+  // Connecticut
+  {
+    title: "Special Election – State Senate District 1",
+    date: "2025-10-14",
+    state: "Connecticut",
+    type: "State Legislative Special",
+    details: "Special election to fill vacant Senate seat.",
+    link: "https://portal.ct.gov/SOTS/Election-Services"
+  },
 
-// Delaware
-{
-  title: "Wilmington Town Hall – Lt. Governor’s Civic Engagement Tour",
-  date: "2025-10-09",
-  state: "Delaware",
-  type: "Town Hall",
-  details: "Lt. Governor hosts civic engagement session with local leaders.",
-  link: "https://elections.delaware.gov"
-},
+  // Delaware
+  {
+    title: "Wilmington Town Hall – Lt. Governor’s Civic Engagement Tour",
+    date: "2025-10-09",
+    state: "Delaware",
+    type: "Town Hall",
+    details: "Lt. Governor hosts civic engagement session with local leaders.",
+    link: "https://elections.delaware.gov"
+  },
 
-// Florida
-{
-  title: "Special Primary – Senate District 11",
-  date: "2025-09-30",
-  state: "Florida",
-  type: "State Senate Special",
-  details: "Special primary for Florida Senate District 11.",
-  link: "https://dos.myflorida.com/elections"
-},
+  // Florida
+  {
+    title: "Special Primary – Senate District 11",
+    date: "2025-09-30",
+    state: "Florida",
+    type: "State Senate Special",
+    details: "Special primary for Florida Senate District 11.",
+    link: "https://dos.myflorida.com/elections"
+  },
+
   // Hawaii
-{
-  title: "Children & Youth Day – State Capitol",
-  date: "2025-10-05",
-  state: "Hawaii",
-  type: "Town Hall",
-  details: "Annual civic celebration with performances, workshops, and youth engagement.",
-  link: "https://www.hawaiicyd.org"
-},
-{
-  title: "Honolulu Pride Parade & Festival",
-  date: "2025-10-19",
-  state: "Hawaii",
-  type: "Civic Festival",
-  details: "Public parade and civic engagement festival hosted by Honolulu Pride.",
-  link: "https://hawaiilgbtlegacyfoundation.com/honolulu-pride"
-},
+  {
+    title: "Children & Youth Day – State Capitol",
+    date: "2025-10-05",
+    state: "Hawaii",
+    type: "Town Hall",
+    details: "Annual civic celebration with performances, workshops, and youth engagement.",
+    link: "https://www.hawaiicyd.org"
+  },
+  {
+    title: "Honolulu Pride Parade & Festival",
+    date: "2025-10-19",
+    state: "Hawaii",
+    type: "Civic Festival",
+    details: "Public parade and civic engagement festival hosted by Honolulu Pride.",
+    link: "https://hawaiilgbtlegacyfoundation.com/honolulu-pride"
+  },
 
-// Idaho
-{
-  title: "Boise Town Hall – Lt. Governor’s Education Tour",
-  date: "2025-10-09",
-  state: "Idaho",
-  type: "Town Hall",
-  details: "Lt. Governor hosts education-focused town hall with local leaders.",
-  link: "https://gov.idaho.gov"
-},
+  // Idaho
+  {
+    title: "Boise Town Hall – Lt. Governor’s Education Tour",
+    date: "2025-10-09",
+    state: "Idaho",
+    type: "Town Hall",
+    details: "Lt. Governor hosts education-focused town hall with local leaders.",
+    link: "https://gov.idaho.gov"
+  },
 
-// Illinois
-{
-  title: "Chicago Special Election – Alderman Ward 34",
-  date: "2025-10-15",
-  state: "Illinois",
-  type: "Municipal Special",
-  details: "Special election to fill vacancy in Chicago’s Ward 34.",
-  link: "https://www.chicagoelections.gov"
-},
+  // Illinois
+  {
+    title: "Chicago Special Election – Alderman Ward 34",
+    date: "2025-10-15",
+    state: "Illinois",
+    type: "Municipal Special",
+    details: "Special election to fill vacancy in Chicago’s Ward 34.",
+    link: "https://www.chicagoelections.gov"
+  },
 
-// Indiana
-{
-  title: "Indianapolis Town Hall – Senate Redistricting Forum",
-  date: "2025-10-11",
-  state: "Indiana",
-  type: "Town Hall",
-  details: "Public forum hosted by Indiana Senate on redistricting proposals.",
-  link: "https://iga.in.gov"
-},
+  // Indiana
+  {
+    title: "Indianapolis Town Hall – Senate Redistricting Forum",
+    date: "2025-10-11",
+    state: "Indiana",
+    type: "Town Hall",
+    details: "Public forum hosted by Indiana Senate on redistricting proposals.",
+    link: "https://iga.in.gov"
+  },
 
-// Iowa
-{
-  title: "Des Moines Special Election – School Board At-Large",
-  date: "2025-10-08",
-  state: "Iowa",
-  type: "Local Special",
-  details: "Special election for at-large seat on Des Moines School Board.",
-  link: "https://sos.iowa.gov/elections"
-},
+  // Iowa
+  {
+    title: "Des Moines Special Election – School Board At-Large",
+    date: "2025-10-08",
+    state: "Iowa",
+    type: "Local Special",
+    details: "Special election for at-large seat on Des Moines School Board.",
+    link: "https://sos.iowa.gov/elections"
+  },
 
-// Kansas
-{
-  title: "Wichita Town Hall – Governor’s Infrastructure Listening Tour",
-  date: "2025-10-10",
-  state: "Kansas",
-  type: "Town Hall",
-  details: "Governor hosts infrastructure-focused listening session with residents.",
-  link: "https://governor.kansas.gov"
-},
+  // Kansas
+  {
+    title: "Wichita Town Hall – Governor’s Infrastructure Listening Tour",
+    date: "2025-10-10",
+    state: "Kansas",
+    type: "Town Hall",
+    details: "Governor hosts infrastructure-focused listening session with residents.",
+    link: "https://governor.kansas.gov"
+  },
 
-// Kentucky
-{
-  title: "Louisville Special Election – Metro Council District 6",
-  date: "2025-10-16",
-  state: "Kentucky",
-  type: "Municipal Special",
-  details: "Special election to fill vacancy in Metro Council District 6.",
-  link: "https://elect.ky.gov"
-},
+  // Kentucky
+  {
+    title: "Louisville Special Election – Metro Council District 6",
+    date: "2025-10-16",
+    state: "Kentucky",
+    type: "Municipal Special",
+    details: "Special election to fill vacancy in Metro Council District 6.",
+    link: "https://elect.ky.gov"
+  },
 
-// Louisiana
-{
-  title: "New Orleans Town Hall – Lt. Governor’s Tourism Roundtable",
-  date: "2025-10-12",
-  state: "Louisiana",
-  type: "Town Hall",
-  details: "Lt. Governor hosts tourism roundtable with civic leaders.",
-  link: "https://www.sos.la.gov/ElectionsAndVoting"
-},
+  // Louisiana
+  {
+    title: "New Orleans Town Hall – Lt. Governor’s Tourism Roundtable",
+    date: "2025-10-12",
+    state: "Louisiana",
+    type: "Town Hall",
+    details: "Lt. Governor hosts tourism roundtable with civic leaders.",
+    link: "https://www.sos.la.gov/ElectionsAndVoting"
+  },
 
-// Missouri
-{
-  title: "St. Louis Special Election – State House District 82",
-  date: "2025-10-22",
-  state: "Missouri",
-  type: "State Legislative Special",
-  details: "Special election to fill vacancy in Missouri House District 82.",
-  link: "https://www.sos.mo.gov/elections"
-},
+  // Missouri
+  {
+    title: "St. Louis Special Election – State House District 82",
+    date: "2025-10-22",
+    state: "Missouri",
+    type: "State Legislative Special",
+    details: "Special election to fill vacancy in Missouri House District 82.",
+    link: "https://www.sos.mo.gov/elections"
+  },
+
   // Montana
-{
-  title: "Missoula Town Hall – Governor’s Rural Broadband Tour",
-  date: "2025-10-17",
-  state: "Montana",
-  type: "Town Hall",
-  details: "Governor hosts public forum on rural broadband expansion.",
-  link: "https://governor.mt.gov"
-},
+  {
+    title: "Missoula Town Hall – Governor’s Rural Broadband Tour",
+    date: "2025-10-17",
+    state: "Montana",
+    type: "Town Hall",
+    details: "Governor hosts public forum on rural broadband expansion.",
+    link: "https://governor.mt.gov"
+  },
 
-// Nebraska
-{
-  title: "Lincoln Special Election – City Council District 2",
-  date: "2025-10-08",
-  state: "Nebraska",
-  type: "Municipal Special",
-  details: "Special election to fill vacancy in Lincoln City Council.",
-  link: "https://sos.nebraska.gov/elections"
-},
+  // Nebraska
+  {
+    title: "Lincoln Special Election – City Council District 2",
+    date: "2025-10-08",
+    state: "Nebraska",
+    type: "Municipal Special",
+    details: "Special election to fill vacancy in Lincoln City Council.",
+    link: "https://sos.nebraska.gov/elections"
+  },
+// Remaining civic events by state
+window.allEvents.push(
+  // Nevada
+  {
+    title: "Las Vegas Town Hall – Lt. Governor’s Workforce Roundtable",
+    date: "2025-10-10",
+    state: "Nevada",
+    type: "Town Hall",
+    details: "Lt. Governor hosts roundtable on workforce development.",
+    link: "https://www.nvsos.gov/sos/elections"
+  },
 
-// Nevada
-{
-  title: "Las Vegas Town Hall – Lt. Governor’s Workforce Roundtable",
-  date: "2025-10-10",
-  state: "Nevada",
-  type: "Town Hall",
-  details: "Lt. Governor hosts roundtable on workforce development.",
-  link: "https://www.nvsos.gov/sos/elections"
-},
+  // New Hampshire
+  {
+    title: "Manchester Special Election – State House District Hillsborough 17",
+    date: "2025-10-15",
+    state: "New Hampshire",
+    type: "State Legislative Special",
+    details: "Special election to fill vacancy in Hillsborough District 17.",
+    link: "https://sos.nh.gov/elections"
+  },
 
-// New Hampshire
-{
-  title: "Manchester Special Election – State House District Hillsborough 17",
-  date: "2025-10-15",
-  state: "New Hampshire",
-  type: "State Legislative Special",
-  details: "Special election to fill vacancy in Hillsborough District 17.",
-  link: "https://sos.nh.gov/elections"
-},
+  // New Jersey
+  {
+    title: "Newark Town Hall – Senate Committee on Public Safety",
+    date: "2025-10-12",
+    state: "New Jersey",
+    type: "Town Hall",
+    details: "Public hearing on public safety hosted by NJ Senate Committee.",
+    link: "https://www.njleg.state.nj.us"
+  },
 
-// New Jersey
-{
-  title: "Newark Town Hall – Senate Committee on Public Safety",
-  date: "2025-10-12",
-  state: "New Jersey",
-  type: "Town Hall",
-  details: "Public hearing on public safety hosted by NJ Senate Committee.",
-  link: "https://www.njleg.state.nj.us"
-},
   // New Mexico
-{
-  title: "Santa Fe Town Hall – Governor’s Climate Resilience Tour",
-  date: "2025-10-18",
-  state: "New Mexico",
-  type: "Town Hall",
-  details: "Governor hosts public forum on climate resilience and infrastructure.",
-  link: "https://www.governor.state.nm.us"
-},
+  {
+    title: "Santa Fe Town Hall – Governor’s Climate Resilience Tour",
+    date: "2025-10-18",
+    state: "New Mexico",
+    type: "Town Hall",
+    details: "Governor hosts public forum on climate resilience and infrastructure.",
+    link: "https://www.governor.state.nm.us"
+  },
 
-// New York
-{
-  title: "Brooklyn Special Election – Assembly District 58",
-  date: "2025-10-22",
-  state: "New York",
-  type: "State Legislative Special",
-  details: "Special election to fill vacancy in Assembly District 58.",
-  link: "https://www.elections.ny.gov"
-},
+  // New York
+  {
+    title: "Brooklyn Special Election – Assembly District 58",
+    date: "2025-10-22",
+    state: "New York",
+    type: "State Legislative Special",
+    details: "Special election to fill vacancy in Assembly District 58.",
+    link: "https://www.elections.ny.gov"
+  },
 
-// North Carolina
-{
-  title: "Raleigh Town Hall – Lt. Governor’s Education Roundtable",
-  date: "2025-10-10",
-  state: "North Carolina",
-  type: "Town Hall",
-  details: "Lt. Governor hosts education-focused roundtable with local leaders.",
-  link: "https://www.ncsbe.gov"
-},
+  // North Carolina
+  {
+    title: "Raleigh Town Hall – Lt. Governor’s Education Roundtable",
+    date: "2025-10-10",
+    state: "North Carolina",
+    type: "Town Hall",
+    details: "Lt. Governor hosts education-focused roundtable with local leaders.",
+    link: "https://www.ncsbe.gov"
+  },
 
-// North Dakota
-{
-  title: "Fargo Special Election – City Commission At-Large",
-  date: "2025-10-08",
-  state: "North Dakota",
-  type: "Municipal Special",
-  details: "Special election for at-large seat on Fargo City Commission.",
-  link: "https://vip.sos.nd.gov"
-},
+  // North Dakota
+  {
+    title: "Fargo Special Election – City Commission At-Large",
+    date: "2025-10-08",
+    state: "North Dakota",
+    type: "Municipal Special",
+    details: "Special election for at-large seat on Fargo City Commission.",
+    link: "https://vip.sos.nd.gov"
+  },
 
-// Ohio
-{
-  title: "Cleveland Town Hall – Senate Committee on Public Health",
-  date: "2025-10-14",
-  state: "Ohio",
-  type: "Town Hall",
-  details: "Public hearing on public health hosted by Ohio Senate Committee.",
-  link: "https://www.ohiosos.gov/elections"
-},
+  // Ohio
+  {
+    title: "Cleveland Town Hall – Senate Committee on Public Health",
+    date: "2025-10-14",
+    state: "Ohio",
+    type: "Town Hall",
+    details: "Public hearing on public health hosted by Ohio Senate Committee.",
+    link: "https://www.ohiosos.gov/elections"
+  },
 
-// Oklahoma
-{
-  title: "Tulsa Special Election – School Board District 3",
-  date: "2025-10-09",
-  state: "Oklahoma",
-  type: "Local Special",
-  details: "Special election for Tulsa School Board District 3.",
-  link: "https://oklahoma.gov/elections"
-},
+  // Oklahoma
+  {
+    title: "Tulsa Special Election – School Board District 3",
+    date: "2025-10-09",
+    state: "Oklahoma",
+    type: "Local Special",
+    details: "Special election for Tulsa School Board District 3.",
+    link: "https://oklahoma.gov/elections"
+  },
 
-// Oregon
-{
-  title: "Portland Town Hall – Governor’s Housing Affordability Tour",
-  date: "2025-10-11",
-  state: "Oregon",
-  type: "Town Hall",
-  details: "Governor hosts public forum on housing affordability and zoning.",
-  link: "https://www.oregon.gov/gov"
-},
+  // Oregon
+  {
+    title: "Portland Town Hall – Governor’s Housing Affordability Tour",
+    date: "2025-10-11",
+    state: "Oregon",
+    type: "Town Hall",
+    details: "Governor hosts public forum on housing affordability and zoning.",
+    link: "https://www.oregon.gov/gov"
+  },
 
-// Pennsylvania
-{
-  title: "Philadelphia Special Election – State Senate District 3",
-  date: "2025-10-15",
-  state: "Pennsylvania",
-  type: "State Legislative Special",
-  details: "Special election to fill vacancy in Senate District 3.",
-  link: "https://www.vote.pa.gov"
-},
+  // Pennsylvania
+  {
+    title: "Philadelphia Special Election – State Senate District 3",
+    date: "2025-10-15",
+    state: "Pennsylvania",
+    type: "State Legislative Special",
+    details: "Special election to fill vacancy in Senate District 3.",
+    link: "https://www.vote.pa.gov"
+  },
 
-// Rhode Island
-{
-  title: "Providence Town Hall – Lt. Governor’s Civic Engagement Series",
-  date: "2025-10-13",
-  state: "Rhode Island",
-  type: "Town Hall",
-  details: "Lt. Governor hosts civic engagement session with local leaders.",
-  link: "https://vote.sos.ri.gov"
-},
+  // Rhode Island
+  {
+    title: "Providence Town Hall – Lt. Governor’s Civic Engagement Series",
+    date: "2025-10-13",
+    state: "Rhode Island",
+    type: "Town Hall",
+    details: "Lt. Governor hosts civic engagement session with local leaders.",
+    link: "https://vote.sos.ri.gov"
+  },
 
-// South Carolina
-{
-  title: "Charleston Special Election – State House District 114",
-  date: "2025-10-16",
-  state: "South Carolina",
-  type: "State Legislative Special",
-  details: "Special election to fill vacancy in House District 114.",
-  link: "https://www.scvotes.gov"
-},
+  // South Carolina
+  {
+    title: "Charleston Special Election – State House District 114",
+    date: "2025-10-16",
+    state: "South Carolina",
+    type: "State Legislative Special",
+    details: "Special election to fill vacancy in House District 114.",
+    link: "https://www.scvotes.gov"
+  },
+
   // South Dakota
-{
-  title: "Rapid City Special Election – City Council Ward 3",
-  date: "2025-10-08",
-  state: "South Dakota",
-  type: "Municipal Special",
-  details: "Special election to fill vacancy in Rapid City Council Ward 3.",
-  link: "https://sdsos.gov/elections-voting"
-},
+  {
+    title: "Rapid City Special Election – City Council Ward 3",
+    date: "2025-10-08",
+    state: "South Dakota",
+    type: "Municipal Special",
+    details: "Special election to fill vacancy in Rapid City Council Ward 3.",
+    link: "https://sdsos.gov/elections-voting"
+  },
 
-// Tennessee
-{
-  title: "Nashville Town Hall – Governor’s Public Safety Tour",
-  date: "2025-10-10",
-  state: "Tennessee",
-  type: "Town Hall",
-  details: "Governor hosts public forum on public safety and emergency response.",
-  link: "https://sos.tn.gov/elections"
-},
+  // Tennessee
+  {
+    title: "Nashville Town Hall – Governor’s Public Safety Tour",
+    date: "2025-10-10",
+    state: "Tennessee",
+    type: "Town Hall",
+    details: "Governor hosts public forum on public safety and emergency response.",
+    link: "https://sos.tn.gov/elections"
+  },
 
-// Texas
-{
-  title: "Houston Special Election – State House District 139",
-  date: "2025-10-22",
-  state: "Texas",
-  type: "State Legislative Special",
-  details: "Special election to fill vacancy in House District 139.",
-  link: "https://www.sos.texas.gov/elections"
-},
+  // Texas
+  {
+    title: "Houston Special Election – State House District 139",
+    date: "2025-10-22",
+    state: "Texas",
+    type: "State Legislative Special",
+    details: "Special election to fill vacancy in House District 139.",
+    link: "https://www.sos.texas.gov/elections"
+  },
 
-// Utah
-{
-  title: "Salt Lake City Town Hall – Lt. Governor’s Civic Tech Forum",
-  date: "2025-10-09",
-  state: "Utah",
-  type: "Town Hall",
-  details: "Lt. Governor hosts forum on civic technology and voter access.",
-  link: "https://vote.utah.gov"
-},
+  // Utah
+  {
+    title: "Salt Lake City Town Hall – Lt. Governor’s Civic Tech Forum",
+    date: "2025-10-09",
+    state: "Utah",
+    type: "Town Hall",
+    details: "Lt. Governor hosts forum on civic technology and voter access.",
+    link: "https://vote.utah.gov"
+  },
 
-// Vermont
-{
-  title: "Montpelier Town Hall – Governor’s Rural Health Listening Session",
-  date: "2025-10-11",
-  state: "Vermont",
-  type: "Town Hall",
-  details: "Governor hosts listening session on rural health access.",
-  link: "https://sos.vermont.gov/elections"
-},
+  // Vermont
+  {
+    title: "Montpelier Town Hall – Governor’s Rural Health Listening Session",
+    date: "2025-10-11",
+    state: "Vermont",
+    type: "Town Hall",
+    details: "Governor hosts listening session on rural health access.",
+    link: "https://sos.vermont.gov/elections"
+  },
 
-// Virginia
-{
-  title: "Richmond Special Election – Senate District 9",
-  date: "2025-10-15",
-  state: "Virginia",
-  type: "State Senate Special",
-  details: "Special election to fill vacancy in Senate District 9.",
-  link: "https://www.elections.virginia.gov"
-},
+  // Virginia
+  {
+    title: "Richmond Special Election – Senate District 9",
+    date: "2025-10-15",
+    state: "Virginia",
+    type: "State Senate Special",
+    details: "Special election to fill vacancy in Senate District 9.",
+    link: "https://www.elections.virginia.gov"
+  },
 
-// Washington
-{
-  title: "Seattle Town Hall – Lt. Governor’s Climate Innovation Tour",
-  date: "2025-10-13",
-  state: "Washington",
-  type: "Town Hall",
-  details: "Lt. Governor hosts forum on climate innovation and civic engagement.",
-  link: "https://www.sos.wa.gov/elections"
-},
+  // Washington
+  {
+    title: "Seattle Town Hall – Lt. Governor’s Climate Innovation Tour",
+    date: "2025-10-13",
+    state: "Washington",
+    type: "Town Hall",
+    details: "Lt. Governor hosts forum on climate innovation and civic engagement.",
+    link: "https://www.sos.wa.gov/elections"
+  },
 
-// West Virginia
-{
-  title: "Charleston Special Election – House District 35",
-  date: "2025-10-16",
-  state: "West Virginia",
-  type: "State Legislative Special",
-  details: "Special election to fill vacancy in House District 35.",
-  link: "https://sos.wv.gov/elections"
-},
+  // West Virginia
+  {
+    title: "Charleston Special Election – House District 35",
+    date: "2025-10-16",
+    state: "West Virginia",
+    type: "State Legislative Special",
+    details: "Special election to fill vacancy in House District 35.",
+    link: "https://sos.wv.gov/elections"
+  },
 
-// Wisconsin
-{
-  title: "Madison Town Hall – Governor’s Workforce Development Tour",
-  date: "2025-10-10",
-  state: "Wisconsin",
-  type: "Town Hall",
-  details: "Governor hosts public forum on workforce development and training.",
-  link: "https://elections.wi.gov"
-},
+  // Wisconsin
+  {
+    title: "Madison Town Hall – Governor’s Workforce Development Tour",
+    date: "2025-10-10",
+    state: "Wisconsin",
+    type: "Town Hall",
+    details: "Governor hosts public forum on workforce development and training.",
+    link: "https://elections.wi.gov"
+  },
 
-// Wyoming
-{
-  title: "Cheyenne Special Election – City Council At-Large",
-  date: "2025-10-08",
-  state: "Wyoming",
-  type: "Municipal Special",
-  details: "Special election for at-large seat on Cheyenne City Council.",
-  link: "https://sos.wyo.gov/Elections"
-}
-];
-
+  // Wyoming
+  {
+    title: "Cheyenne Special Election – City Council At-Large",
+    date: "2025-10-08",
+    state: "Wyoming",
+    type: "Municipal Special",
+    details: "Special election for at-large seat on Cheyenne City Council.",
+    link: "https://sos.wyo.gov/Elections"
+  }
+);
 /* ---------------- UTILITY FUNCTIONS ---------------- */
 function escapeJs(str) {
   return str.replace(/'/g, "\\'").replace(/"/g, '\\"');
@@ -480,17 +485,14 @@ window.showTab = function(id) {
   const search = document.getElementById('search');
   if (search) search.value = '';
 };
+
 // --- Rookie Logic ---
 function isRookie(person) {
-  console.log("🧪 Checking rookie:", person.name, person.termStart || person.termBegin || person.startDate);
-  console.log("🧪 Checking rookie:", person.name);
   const rawStart = person.termStart || person.termBegin || person.startDate || "";
-  const rawStartStr = String(rawStart); // ✅ normalize to string
+  const rawStartStr = String(rawStart);
   const yearMatch = rawStartStr.match(/\d{4}/);
 
   const role = (person.office || person.position || "").toLowerCase();
-  console.log("🧪 Role:", role, "| Start Year:", yearMatch ? yearMatch[0] : "N/A");
-
   const startYear = yearMatch ? parseInt(yearMatch[0]) : null;
   if (!startYear) return false;
 
@@ -513,6 +515,8 @@ function isRookie(person) {
 
   return false;
 }
+
+// --- Photo URL Logic ---
 function getSafePhotoUrl(person) {
   const raw = person.photo;
   if (!raw || typeof raw !== 'string') return 'https://via.placeholder.com/200x300?text=No+Photo';
@@ -523,7 +527,7 @@ function getSafePhotoUrl(person) {
     trimmed.startsWith('200x300') ||
     trimmed.startsWith('/200x300') ||
     trimmed.includes('?text=No+Photo') ||
-    trimmed.startsWith('http') === false ||
+    !trimmed.startsWith('http') ||
     trimmed.includes('ERR_NAME_NOT_RESOLVED');
 
   return isBroken ? 'https://via.placeholder.com/200x300?text=No+Photo' : trimmed;
@@ -574,7 +578,7 @@ const calendarEvents = [
 
 /* ---------------- VOTING INFO ---------------- */
 const votingInfo = {
-  "Alabama": {
+  Alabama: {
     registrationLink: "https://www.sos.alabama.gov/alabama-votes/voter/register-to-vote",
     statusCheckLink: "https://myinfo.alabamavotes.gov/voterview/",
     pollingPlaceLink: "https://myinfo.alabamavotes.gov/voterview/",
@@ -597,31 +601,30 @@ function renderCalendar(events, selectedState) {
   if (!container) return;
 
   const today = new Date();
+  const selected = (selectedState || "").trim().toLowerCase();
 
   const filtered = events
-  .filter(e => {
-    const eventState = (e.state || "").trim().toLowerCase();
-    const selected = (selectedState || "").trim().toLowerCase();
-    const eventDate = new Date(Date.parse(e.date));
-    return (
-      (eventState === selected || eventState === "all") &&
-      eventDate.toString() !== "Invalid Date" &&
-      eventDate >= today
-    );
-  })
-  .sort((a, b) => new Date(a.date) - new Date(b.date));
+    .filter(e => {
+      const eventState = (e.state || "").trim().toLowerCase();
+      const eventDate = new Date(e.date);
+      return (
+        (eventState === selected || eventState === "all") &&
+        !isNaN(eventDate) &&
+        eventDate >= today
+      );
+    })
+    .sort((a, b) => new Date(a.date) - new Date(b.date));
 
-  const html = filtered.map(event => `
-    <div class="card" onclick="openEventModal('${escapeJs(event.title)}', '${event.date}', '${escapeJs(event.state)}', '${escapeJs(event.type)}', '${escapeJs(event.details)}', '${event.link}')">
-      <h3>${event.title}</h3>
-      <p><strong>Date:</strong> ${event.date}</p>
-      <p><strong>Type:</strong> ${event.type}</p>
-    </div>
-  `).join('');
-
-  container.innerHTML = html || `<p>No upcoming events for ${selectedState}.</p>`;
+  container.innerHTML = filtered.length
+    ? filtered.map(event => `
+        <div class="card" onclick="openEventModal('${escapeJs(event.title)}', '${event.date}', '${escapeJs(event.state)}', '${escapeJs(event.type)}', '${escapeJs(event.details)}', '${event.link}')">
+          <h3>${event.title}</h3>
+          <p><strong>Date:</strong> ${event.date}</p>
+          <p><strong>Type:</strong> ${event.type}</p>
+        </div>
+      `).join('')
+    : `<p>No upcoming events for ${selectedState}.</p>`;
 }
-
 /* ---------------- REGISTRATION RENDER ---------------- */
 function renderRegistration(selectedState) {
   const container = document.getElementById("registration-container");
@@ -632,7 +635,11 @@ function renderRegistration(selectedState) {
 
 /* ---------------- MODAL LOGIC ---------------- */
 function openEventModal(title, date, state, type, details, link) {
-  const content = `
+  const modalContent = document.getElementById('modal-content');
+  const overlay = document.getElementById('modal-overlay');
+  if (!modalContent || !overlay) return;
+
+  modalContent.innerHTML = `
     <div class="event-modal">
       <h2>${title}</h2>
       <p><strong>Date:</strong> ${date}</p>
@@ -643,11 +650,7 @@ function openEventModal(title, date, state, type, details, link) {
       <p><button id="event-modal-close">Close</button></p>
     </div>
   `;
-  const modalContent = document.getElementById('modal-content');
-  if (!modalContent) return;
-  modalContent.innerHTML = content;
-  const overlay = document.getElementById('modal-overlay');
-  if (overlay) overlay.style.display = 'flex';
+  overlay.style.display = 'flex';
 
   const closeBtn = document.getElementById('event-modal-close');
   if (closeBtn) closeBtn.addEventListener('click', closeModal);
@@ -658,26 +661,41 @@ function showTab(tabId) {
   document.querySelectorAll('section').forEach(section => {
     section.style.display = 'none';
   });
+
   const target = document.getElementById(tabId);
   if (target) target.style.display = 'block';
 
   const selectedState = document.getElementById("state-select").value;
 
-  if (tabId === 'calendar') renderCalendar(window.allEvents || [], selectedState);
-  if (tabId === 'registration') renderRegistration(selectedState);
-  if (tabId === 'officials') renderMyOfficials(selectedState);
-  if (tabId === 'rankings') renderRankings();
-  if (tabId === 'rookies') renderRookies();
+  switch (tabId) {
+    case 'calendar':
+      renderCalendar(window.allEvents || [], selectedState);
+      break;
+    case 'registration':
+      renderRegistration(selectedState);
+      break;
+    case 'officials':
+      renderMyOfficials(selectedState);
+      break;
+    case 'rankings':
+      renderRankings();
+      break;
+    case 'rookies':
+      renderRookies();
+      break;
+  }
 }
+
 /* ---------------- VOTING RENDER ---------------- */
 function renderVotingInfo(state) {
   const container = document.getElementById('voting-container');
-  if (!container || !votingInfo[state]) {
+  const info = votingInfo[state];
+
+  if (!container || !info) {
     if (container) container.innerHTML = `<p>No voting info available for ${state}.</p>`;
     return;
   }
 
-  const info = votingInfo[state];
   container.innerHTML = `
     <div class="card">
       <h3>Register to Vote</h3>
@@ -703,11 +721,13 @@ function renderVotingInfo(state) {
     </div>
   `;
 }
-
 /* ---------------- UTIL ---------------- */
-// Basic escaping to avoid quotes breaking injected onclick strings
 function escapeJs(str = '') {
-  return String(str).replace(/'/g, "\\'").replace(/"/g, '\\"').replace(/\n/g, '\\n').replace(/\r/g, '\\r');
+  return String(str)
+    .replace(/'/g, "\\'")
+    .replace(/"/g, '\\"')
+    .replace(/\n/g, '\\n')
+    .replace(/\r/g, '\\r');
 }
 
 /* ---------------- OFFICIALS RENDER ---------------- */
@@ -720,15 +740,15 @@ function renderCards(data, containerId) {
 
   const cardsHTML = data.map(person => {
     const imageUrl = getSafePhotoUrl(person);
-
     const partyLower = (person.party || '').toLowerCase();
-    const partyColor = partyLower.includes("repub") ? "#d73027" :
-                       partyLower.includes("dem") ? "#4575b4" :
-                       partyLower.includes("libert") ? "#fdae61" :
-                       partyLower.includes("indep") ? "#999999" :
-                       partyLower.includes("green") ? "#66bd63" :
-                       partyLower.includes("constit") ? "#984ea3" :
-                       "#cccccc";
+    const partyColor =
+      partyLower.includes("repub") ? "#d73027" :
+      partyLower.includes("dem") ? "#4575b4" :
+      partyLower.includes("libert") ? "#fdae61" :
+      partyLower.includes("indep") ? "#999999" :
+      partyLower.includes("green") ? "#66bd63" :
+      partyLower.includes("constit") ? "#984ea3" :
+      "#cccccc";
 
     return `
       <div class="card" data-slug="${person.slug}" onclick="expandCard('${person.slug}')" style="border-left: 8px solid ${partyColor};">
@@ -749,32 +769,22 @@ function expandCard(slug) {
 }
 
 function openModal(person) {
-  const imageUrl = getSafePhotoUrl(person); // ✅ bulletproof fallback logic
+  const imageUrl = getSafePhotoUrl(person);
   const link = person.ballotpediaLink || person.contact?.website || '';
 
-  let billsHTML = '';
-  if (person.billsSigned?.length) {
-    billsHTML = `
-      <p><strong>Key Bills Signed:</strong></p>
-      <ul>
-        ${person.billsSigned.map(bill => `<li><a href="${bill.link}" target="_blank" rel="noopener noreferrer">${bill.title}</a></li>`).join('')}
-      </ul>
-    `;
-  }
+  const billsHTML = person.billsSigned?.length
+    ? `<p><strong>Key Bills Signed:</strong></p><ul>${person.billsSigned.map(bill =>
+        `<li><a href="${bill.link}" target="_blank" rel="noopener noreferrer">${bill.title}</a></li>`
+      ).join('')}</ul>`
+    : '';
 
-  let followThroughHTML = '';
-  if (person.platformFollowThrough && Object.keys(person.platformFollowThrough).length) {
-    followThroughHTML = `
-      <div class="platform-followthrough">
-        <h3>Platform Follow-Through</h3>
-        <ul>
-          ${Object.entries(person.platformFollowThrough).map(([key, value]) => `
-            <li><strong>${key}:</strong> ${value}</li>
-          `).join('')}
-        </ul>
-      </div>
-    `;
-  }
+  const followThroughHTML = person.platformFollowThrough && Object.keys(person.platformFollowThrough).length
+    ? `<div class="platform-followthrough"><h3>Platform Follow-Through</h3><ul>${
+        Object.entries(person.platformFollowThrough).map(([key, value]) =>
+          `<li><strong>${key}:</strong> ${value}</li>`
+        ).join('')
+      }</ul></div>`
+    : '';
 
   const modalHTML = `
     <div class="modal-container">
@@ -807,11 +817,11 @@ function openModal(person) {
   `;
 
   const modalContent = document.getElementById('modal-content');
-  if (!modalContent) return;
-  modalContent.innerHTML = modalHTML;
-
   const overlay = document.getElementById('modal-overlay');
-  if (overlay) overlay.style.display = 'flex';
+  if (!modalContent || !overlay) return;
+
+  modalContent.innerHTML = modalHTML;
+  overlay.style.display = 'flex';
 
   const closeBtn = document.getElementById('modal-close-btn');
   if (closeBtn) closeBtn.addEventListener('click', closeModal);
@@ -819,8 +829,8 @@ function openModal(person) {
 
 function closeModal() {
   const overlay = document.getElementById('modal-overlay');
-  if (overlay) overlay.style.display = 'none';
   const modalContent = document.getElementById('modal-content');
+  if (overlay) overlay.style.display = 'none';
   if (modalContent) modalContent.innerHTML = '';
 }
 /* ---------------- INDIVIDUAL LIST RENDERS ---------------- */
@@ -828,8 +838,7 @@ function renderPolls(selectedState) {
   const pollsContainer = document.getElementById('polls-container');
   if (!pollsContainer) return;
 
-  // Replace "polls" with your actual event/poll data array
-  const filtered = polls.filter(
+  const filtered = (window.polls || []).filter(
     poll => poll.state && poll.state.trim().toLowerCase() === (selectedState || '').trim().toLowerCase()
   );
 
@@ -848,6 +857,7 @@ function renderPolls(selectedState) {
     </div>
   `).join('');
 }
+
 function renderMyOfficials(state) {
   const matches = window.allOfficials.filter(person => {
     const stateMatch =
@@ -871,6 +881,7 @@ function renderMyOfficials(state) {
   });
 
   const container = document.getElementById("my-cards");
+  if (!container) return;
   container.innerHTML = "";
 
   matches.forEach(person => {
@@ -882,6 +893,7 @@ function renderMyOfficials(state) {
 
   console.log("Rendered My Officials:", matches.map(p => `${p.name} (${p.office})`));
 }
+
 function renderLtGovernors(data) {
   const container = document.getElementById('lt-governors-container');
   if (!container) return;
@@ -899,22 +911,23 @@ function renderLtGovernors(data) {
   });
 }
 
-/* ---------------- RANKINGS & ROOKIES ---------------- */
+/* ---------------- RANKINGS ---------------- */
 function renderRankings() {
   const governors = allOfficials.filter(p => {
-  const role = (p.office || p.position || "").toLowerCase();
-  return role.includes("governor") && !role.includes("lt") && !role.includes("lieutenant");
-});
+    const role = (p.office || p.position || "").toLowerCase();
+    return role.includes("governor") && !role.includes("lt") && !role.includes("lieutenant");
+  });
 
   const ltGovernors = allOfficials.filter(p => {
-  const role = (p.office || p.position || "").toLowerCase();
-  return (
-    role.includes("lt. governor") ||
-    role.includes("lt governor") ||
-    role.includes("ltgovernor") ||
-    role.includes("lieutenant governor")
-  );
-});
+    const role = (p.office || p.position || "").toLowerCase();
+    return (
+      role.includes("lt. governor") ||
+      role.includes("lt governor") ||
+      role.includes("ltgovernor") ||
+      role.includes("lieutenant governor")
+    );
+  });
+
   const senators = allOfficials.filter(p => p.office?.includes("Senator"));
   const house = allOfficials.filter(p => p.office?.includes("Representative"));
 
@@ -922,113 +935,7 @@ function renderRankings() {
   renderCards(senators, 'rankings-senators');
   renderCards(house, 'rankings-house');
   renderCards(ltGovernors, 'rankings-ltgovernors');
- // ✅ This makes them show up
 }
-
-function renderRookies() {
-  const rookies = window.allOfficials.filter(person => isRookie(person));
-  console.log("Rookies to render:", rookies.length);
-  rookies.forEach(p => {
-  const rawRole = p.office || p.position || "";
-  console.log("🔍 Raw rookie role:", rawRole);
-});
-
-  const groups = {
-    governor: [],
-    senator: [],
-    representative: [],
-    ltgovernor: []
-  };
-
-  rookies.forEach(person => {
-    const role = (person.office || person.position || "").toLowerCase();
-
-    if (
-      role.includes("senator") ||
-      role.includes("u.s. senator") ||
-      role.includes("state senator")
-    ) {
-      groups.senator.push(person);
-    } else if (
-      role.includes("representative") ||
-      role.includes("house") ||
-      role.includes("u.s. representative") ||
-      role.includes("state representative")
-    ) {
-      groups.representative.push(person);
-    } else if (
-      role.includes("lt. governor") ||
-      role.includes("lt governor") ||
-      role.includes("ltgovernor") ||
-      role.includes("lieutenant governor")
-    ) {
-      groups.ltgovernor.push(person);
-    } else if (
-      role.includes("governor") &&
-      !role.includes("lt") &&
-      !role.includes("lieutenant")
-    ) {
-      groups.governor.push(person);
-    }
-  });
-
-  console.log("Grouped rookies:", {
-    governor: groups.governor.length,
-    senator: groups.senator.length,
-    representative: groups.representative.length,
-    ltgovernor: groups.ltgovernor.length
-  });
-
-  renderCards(groups.governor, 'rookie-governors');
-  renderCards(groups.senator, 'rookie-senators');
-  renderCards(groups.representative, 'rookie-house');
-  renderCards(groups.ltgovernor, 'rookie-ltgovernors');
-}
-/* ---------------- COMPARE ---------------- */
-function populateCompareDropdowns() {
-  const left = document.getElementById('compare-left');
-  const right = document.getElementById('compare-right');
-  if (!left || !right) return;
-
-  left.innerHTML = '<option value="">Select official A</option>';
-  right.innerHTML = '<option value="">Select official B</option>';
-
-  allOfficials.forEach(person => {
-    const label = `${person.name} (${person.state}${person.party ? ', ' + person.party : ''})`;
-    left.add(new Option(label, person.slug));
-    right.add(new Option(label, person.slug));
-  });
-
-  left.addEventListener('change', e => renderCompareCard(e.target.value, 'compare-card-left'));
-  right.addEventListener('change', e => renderCompareCard(e.target.value, 'compare-card-right'));
-}
-
-function renderCompareCard(slug, containerId) {
-  const person = allOfficials.find(p => p.slug === slug);
-  const container = document.getElementById(containerId);
-  if (!container) return;
-
-  if (!person) {
-    container.innerHTML = '<p>No official selected.</p>';
-    return;
-  }
-
-  const imageUrl = person.photo?.trim() || 'https://via.placeholder.com/200x300?text=No+Photo';
-  const link = person.ballotpediaLink || person.contact?.website || null;
-
-  container.innerHTML = `
-    <div class="card">
-      <img src="${imageUrl}" />
-      <h3>${person.name}</h3>
-      <p><strong>Office:</strong> ${person.office || person.position || ''}</p>
-      <p><strong>State:</strong> ${person.state}</p>
-      <p><strong>Party:</strong> ${person.party || '—'}</p>
-      <p><strong>Term:</strong> ${person.termStart || '—'} to ${person.termEnd || '—'}</p>
-      ${link ? `<p><a href="${link}" target="_blank" rel="noopener noreferrer">External Profile</a></p>` : ''}
-    </div>
-  `;
-}
-
 /* ---------------- DATA LOADING ---------------- */
 async function loadData() {
   try {
@@ -1047,52 +954,55 @@ async function loadData() {
       console.warn('LtGovernors.json not found or failed to parse.', err);
     }
 
-    // ✅ Compose global officials list WITHOUT Lt. Governors
+    // ✅ Compose global officials list
     console.log("🧪 Governor count:", governors?.length);
-console.log("🧪 Senate count:", senate?.length);
-console.log("🧪 House count:", house?.length);
-console.log("🧪 Lt. Governor count:", ltGovernors?.length);
+    console.log("🧪 Senate count:", senate?.length);
+    console.log("🧪 House count:", house?.length);
+    console.log("🧪 Lt. Governor count:", ltGovernors?.length);
 
     window.allOfficials = [...(governors || []), ...(senate || []), ...(house || []), ...(ltGovernors || [])];
     allOfficials = window.allOfficials;
+
     const sarah = window.allOfficials.find(p =>
-  (p.name || "").toLowerCase().includes("sanders")
-);
-console.log("🧪 Sarah Huckabee Sanders:", sarah);
-    
+      (p.name || "").toLowerCase().includes("sanders")
+    );
+    console.log("🧪 Sarah Huckabee Sanders:", sarah);
+
     // ✅ Populate UI
-    populateCompareDropdowns();
     renderRankings();
-    renderRookies();
 
-   // ✅ State select setup
-try {
-  const stateSelect = document.getElementById('state-select');
-  if (stateSelect) {
-    const states = [...new Set(allOfficials.map(p => p.state).filter(Boolean))].sort();
-    stateSelect.innerHTML = '<option value="">Choose a state</option>' + states.map(state => `<option value="${state}">${state}</option>`).join('');
-    stateSelect.value = stateSelect.querySelector('option[value="Alabama"]') ? 'Alabama' : (states[0] || '');
+    // ✅ State select setup
+    const stateSelect = document.getElementById('state-select');
+    if (stateSelect) {
+      const states = [...new Set(allOfficials.map(p => p.state).filter(Boolean))].sort();
+      stateSelect.innerHTML = '<option value="">Choose a state</option>' + states.map(state => `<option value="${state}">${state}</option>`).join('');
+      stateSelect.value = stateSelect.querySelector('option[value="Alabama"]') ? 'Alabama' : (states[0] || '');
 
-    const defaultState = stateSelect.value || 'Alabama';
-    renderMyOfficials(defaultState);
-    renderCalendar(calendarEvents, defaultState);
-    renderVotingInfo(defaultState);
+      const defaultState = stateSelect.value || 'Alabama';
+      renderMyOfficials(defaultState);
+      renderCalendar(calendarEvents, defaultState);
+      renderVotingInfo(defaultState);
+      renderPolls(defaultState);
 
-    stateSelect.addEventListener('change', function (e) {
-      const selectedState = e.target.value;
-      renderMyOfficials(selectedState);
-      renderCalendar(calendarEvents, selectedState);
-      renderVotingInfo(selectedState);
-    });
-  } else {
-    renderMyOfficials('Alabama');
-    renderCalendar(calendarEvents, 'Alabama');
-    renderVotingInfo('Alabama');
+      stateSelect.addEventListener('change', function (e) {
+        const selectedState = e.target.value;
+        renderMyOfficials(selectedState);
+        renderCalendar(calendarEvents, selectedState);
+        renderVotingInfo(selectedState);
+        renderPolls(selectedState);
+      });
+    } else {
+      renderMyOfficials('Alabama');
+      renderCalendar(calendarEvents, 'Alabama');
+      renderVotingInfo('Alabama');
+      renderPolls('Alabama');
+    }
+  } catch (err) {
+    console.error("Error loading data:", err);
   }
-} catch (err) {
-  console.error("Error loading data:", err);
 }
-/* Wait for window.cleanedHouse to be available (if other script produces it) */
+
+/* ---------------- HOUSE DATA WAIT ---------------- */
 function waitForHouseData() {
   return new Promise(resolve => {
     const check = () => {
@@ -1105,20 +1015,36 @@ function waitForHouseData() {
     check();
   });
 }
-
 /* ---------------- BOOTSTRAP / DOM ---------------- */
 document.addEventListener('DOMContentLoaded', function () {
   loadData();
-const stateSelect = document.getElementById('state-select');
-if (stateSelect) {
-  stateSelect.addEventListener('change', function () {
-    const selectedState = stateSelect.value;
-    renderPolls(selectedState);        // Call if you have polls
-    renderCalendar(window.allEvents || [], selectedState);
-    renderRegistration(selectedState);
-    // Add other renderers that depend on state here, if needed
-  });
-}
+
+  const stateSelect = document.getElementById('state-select');
+  if (stateSelect) {
+    const defaultState = stateSelect.value || 'Alabama';
+
+    // Initial render
+    renderMyOfficials(defaultState);
+    renderCalendar(calendarEvents, defaultState);
+    renderRegistration(defaultState);
+    renderVotingInfo(defaultState);
+    renderPollsForState(defaultState);
+
+    // Unified listener
+    stateSelect.addEventListener('change', function () {
+      const selectedState = this.value;
+      if (!selectedState) return;
+
+      filterOfficials();
+      renderMyOfficials(selectedState);
+      renderCalendar(calendarEvents, selectedState);
+      renderRegistration(selectedState);
+      renderVotingInfo(selectedState);
+      renderPollsForState(selectedState);
+      showTab("my-officials");
+    });
+  }
+
   // Search input logic
   const search = document.getElementById('search');
   const results = document.getElementById('results');
@@ -1158,17 +1084,6 @@ if (stateSelect) {
     });
   }
 
-  // Calendar initial render & state sync (ensures calendar updates if state-select exists)
-  const stateSelect = document.getElementById('state-select');
-  if (stateSelect) {
-    const defaultState = stateSelect.value || 'Alabama';
-    renderCalendar(calendarEvents, defaultState);
-
-    stateSelect.addEventListener('change', () => {
-      renderCalendar(calendarEvents, stateSelect.value);
-    });
-  }
-
   // Modal overlay click to close
   const overlay = document.getElementById('modal-overlay');
   if (overlay) {
@@ -1197,28 +1112,39 @@ if (stateSelect) {
     }
   }
 });
-// ✅ 1. Define the filtering function
+
+/* ---------------- FILTERING ---------------- */
 function filterOfficials() {
-  var query = document.getElementById("search").value.toLowerCase();
-  var selectedState = document.getElementById("state-select").value.toLowerCase();
-  var cards = document.querySelectorAll("#my-cards .card");
+  const query = document.getElementById("search").value.toLowerCase();
+  const selectedState = document.getElementById("state-select").value.toLowerCase();
 
-  cards.forEach(function (card) {
-    var text = card.textContent.toLowerCase();
-    var matchesQuery = text.includes(query);
-    var matchesState = selectedState === "" || text.includes(selectedState);
+  // Filter official cards
+  const officialCards = document.querySelectorAll("#my-cards .card");
+  officialCards.forEach(card => {
+    const text = card.textContent.toLowerCase();
+    const matchesQuery = text.includes(query);
+    const matchesState = selectedState === "" || text.includes(selectedState);
+    card.style.display = (matchesQuery && matchesState) ? "block" : "none";
+  });
 
+  // Filter poll cards
+  const pollCards = document.querySelectorAll("#polls-container .poll-card, #polls-container .card");
+  pollCards.forEach(card => {
+    const text = card.textContent.toLowerCase();
+    const matchesQuery = text.includes(query);
+    const matchesState = selectedState === "" || text.includes(selectedState);
     card.style.display = (matchesQuery && matchesState) ? "block" : "none";
   });
 }
-// ✅ Render polls for selected state
+
+/* ---------------- POLL SOURCES ---------------- */
 function renderPollsForState(stateName) {
-  var pollsContainer = document.getElementById("polls-container");
+  const pollsContainer = document.getElementById("polls-container");
+  if (!pollsContainer || !stateName) return;
+
   pollsContainer.innerHTML = "";
 
-  if (!stateName) return;
-
-  var emersonCard = document.createElement("div");
+  const emersonCard = document.createElement("div");
   emersonCard.className = "card";
   emersonCard.innerHTML = `
     <h3>${stateName} Polls</h3>
@@ -1227,7 +1153,7 @@ function renderPollsForState(stateName) {
   `;
   pollsContainer.appendChild(emersonCard);
 
-  var rcpCard = document.createElement("div");
+  const rcpCard = document.createElement("div");
   rcpCard.className = "card";
   rcpCard.innerHTML = `
     <h3>${stateName} Polls</h3>
@@ -1236,21 +1162,3 @@ function renderPollsForState(stateName) {
   `;
   pollsContainer.appendChild(rcpCard);
 }
-
-// ✅ Unified state-select listener
-document.getElementById("state-select").addEventListener("change", function () {
-  const selectedState = this.value;
-  if (!selectedState) return;
-
-  // 🔧 Filter officials
-  filterOfficials();
-
-  // 🔧 Render all tabs
-  renderMyOfficials(selectedState);
-  renderCalendar(window.allEvents || [], selectedState);
-  renderRegistration(selectedState);
-  renderPollsForState(selectedState);
-
-  // 🔧 Show officials tab
-  showTab("my-officials");
-});
