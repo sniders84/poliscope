@@ -461,6 +461,12 @@ window.allEvents = [
  // ✅ closes window.allEvents.push([...])
 
 /* ---------------- UTILITY FUNCTIONS ---------------- */
+/* ---------------- UTILITY FUNCTIONS ---------------- */
+function escapeJs(str) {
+  return str.replace(/'/g, "\\'").replace(/"/g, '\\"');
+}
+
+/* ---------------- TAB LOGIC ---------------- */
 window.showTab = function(tabId) {
   const sections = ['my-officials', 'polls', 'rankings', 'calendar', 'registration'];
   sections.forEach(sectionId => {
@@ -480,37 +486,7 @@ window.showTab = function(tabId) {
   if (results) results.innerHTML = '';
   const search = document.getElementById('search');
   if (search) search.value = '';
-};
-// --- Rookie Logic ---
-function isRookie(person) {
-  const rawStart = person.termStart || person.termBegin || person.startDate || "";
-  const rawStartStr = String(rawStart);
-  const yearMatch = rawStartStr.match(/\d{4}/);
-
-  const role = (person.office || person.position || "").toLowerCase();
-  const startYear = yearMatch ? parseInt(yearMatch[0]) : null;
-  if (!startYear) return false;
-
-  const currentYear = new Date().getFullYear();
-
-  if (role.includes("senator")) {
-    return currentYear - startYear < 6;
-  } else if (role.includes("representative") || role.includes("house")) {
-    return currentYear - startYear < 2;
-  } else if (role.includes("governor") && !role.includes("lt") && !role.includes("lieutenant")) {
-    return currentYear - startYear < 4;
-  } else if (
-    role.includes("lt. governor") ||
-    role.includes("lt governor") ||
-    role.includes("ltgovernor") ||
-    role.includes("lieutenant governor")
-  ) {
-    return currentYear - startYear < 4;
-  }
-
-  return false;
-}
-
+}; // ✅ closes the function cleanly
 // --- Photo URL Logic ---
 function getSafePhotoUrl(person) {
   const raw = person.photo;
