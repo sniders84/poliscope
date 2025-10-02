@@ -5,15 +5,18 @@ window.showTab = function(tabId) {
     if (el) el.style.display = sectionId === tabId ? 'block' : 'none';
   });
 
+  const selectedState = document.getElementById("state-select").value;
+
+  if (tabId === 'calendar') renderCalendar(window.allEvents || [], selectedState);
+  if (tabId === 'registration') renderRegistration(selectedState);
+  if (tabId === 'my-officials') renderMyOfficials(selectedState);
+  if (tabId === 'polls') renderPollsForState(selectedState);
+  if (tabId === 'rankings') renderRankings();
+
   const results = document.getElementById('results');
   if (results) results.innerHTML = '';
   const search = document.getElementById('search');
   if (search) search.value = '';
-  if (tabId === 'polls') {
-  const selectedState = document.getElementById("state-select").value;
-  renderPollsForState(selectedState); // ✅ triggers polling card render
-}
-
 };
 /* ---------------- GLOBAL DATA ---------------- */
 window.allOfficials = [];
@@ -474,7 +477,7 @@ window.allEvents = [
   details: "Special election for at-large seat on Cheyenne City Council.",
   link: "https://sos.wyo.gov/Elections"
 }
-]; // ✅ closes window.allEvents.push([...])
+); // ✅ closes window.allEvents.push([...])
 
 /* ---------------- UTILITY FUNCTIONS ---------------- */
 function escapeJs(str) {
