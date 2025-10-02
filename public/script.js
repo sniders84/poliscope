@@ -471,7 +471,7 @@ window.allEvents = [
     type: "Municipal Special",
     details: "Special election for at-large seat on Cheyenne City Council.",
     link: "https://sos.wyo.gov/Elections"
-  }
+  },
 /* ---------------- UTILITY FUNCTIONS ---------------- */
 function escapeJs(str) {
   return str.replace(/'/g, "\\'").replace(/"/g, '\\"');
