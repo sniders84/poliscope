@@ -1,3 +1,24 @@
+/* ---------------- TAB SWITCHING ---------------- */
+window.showTab = function(tabId) {
+  const sections = ['my-officials', 'polls', 'rankings', 'calendar', 'registration'];
+  sections.forEach(sectionId => {
+    const el = document.getElementById(sectionId);
+    if (el) el.style.display = sectionId === tabId ? 'block' : 'none';
+  });
+
+  const selectedState = document.getElementById("state-select").value;
+
+  if (tabId === 'calendar') window.renderCalendarForState(selectedState);
+  if (tabId === 'registration') renderRegistration(selectedState);
+  if (tabId === 'my-officials') renderMyOfficials(selectedState);
+  if (tabId === 'polls') renderPollsForState(selectedState);
+  if (tabId === 'rankings') renderRankings();
+
+  const results = document.getElementById('results');
+  if (results) results.innerHTML = '';
+  const search = document.getElementById('search');
+  if (search) search.value = '';
+};
 /* ---------------- GLOBAL DATA ---------------- */
 /* ---------------- CALENDAR RENDERING ---------------- */
 window.renderCalendarForState = function(state) {
