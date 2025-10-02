@@ -1065,34 +1065,33 @@ console.log("🧪 Sarah Huckabee Sanders:", sarah);
     renderRankings();
     renderRookies();
 
-    // ✅ State select setup
-    const stateSelect = document.getElementById('state-select');
-    if (stateSelect) {
-      const states = [...new Set(allOfficials.map(p => p.state).filter(Boolean))].sort();
-      stateSelect.innerHTML = '<option value="">Choose a state</option>' + states.map(state => `<option value="${state}">${state}</option>`).join('');
-      stateSelect.value = stateSelect.querySelector('option[value="Alabama"]') ? 'Alabama' : (states[0] || '');
+   // ✅ State select setup
+try {
+  const stateSelect = document.getElementById('state-select');
+  if (stateSelect) {
+    const states = [...new Set(allOfficials.map(p => p.state).filter(Boolean))].sort();
+    stateSelect.innerHTML = '<option value="">Choose a state</option>' + states.map(state => `<option value="${state}">${state}</option>`).join('');
+    stateSelect.value = stateSelect.querySelector('option[value="Alabama"]') ? 'Alabama' : (states[0] || '');
 
-      const defaultState = stateSelect.value || 'Alabama';
-      renderMyOfficials(defaultState);
-      renderCalendar(calendarEvents, defaultState);
-      renderVotingInfo(defaultState);
+    const defaultState = stateSelect.value || 'Alabama';
+    renderMyOfficials(defaultState);
+    renderCalendar(calendarEvents, defaultState);
+    renderVotingInfo(defaultState);
 
-      stateSelect.addEventListener('change', function (e) {
-        const selectedState = e.target.value;
-        renderMyOfficials(selectedState);
-        renderCalendar(calendarEvents, selectedState);
-        renderVotingInfo(selectedState);
-      });
-    } else {
-      renderMyOfficials('Alabama');
-      renderCalendar(calendarEvents, 'Alabama');
-      renderVotingInfo('Alabama');
-    }
-  } catch (err) {
-    console.error("Error loading data:", err);
+    stateSelect.addEventListener('change', function (e) {
+      const selectedState = e.target.value;
+      renderMyOfficials(selectedState);
+      renderCalendar(calendarEvents, selectedState);
+      renderVotingInfo(selectedState);
+    });
+  } else {
+    renderMyOfficials('Alabama');
+    renderCalendar(calendarEvents, 'Alabama');
+    renderVotingInfo('Alabama');
   }
+} catch (err) {
+  console.error("Error loading data:", err);
 }
-
 /* Wait for window.cleanedHouse to be available (if other script produces it) */
 function waitForHouseData() {
   return new Promise(resolve => {
