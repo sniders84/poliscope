@@ -1,4 +1,4 @@
-/* ---------------- GLOBAL DATA ---------------- */
+
 /* ---------------- CALENDAR RENDERING ---------------- */
 window.renderCalendarForState = function(state) {
   const tables = document.querySelectorAll('.calendar-table');
