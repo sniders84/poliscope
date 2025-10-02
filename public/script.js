@@ -263,7 +263,7 @@ const electionData = {
     { date: 'June 3, 2025', type: 'Primary', link: 'https://sdsos.gov/elections-voting/' },
     { date: 'November 4, 2025', type: 'General Election', link: 'https://sdsos.gov/elections-voting/' },
     { date: 'October 20, 2025', type: 'Voter Registration Deadline', link: 'https://sdsos.gov/elections-voting/voting/register-to-vote/default.aspx' },
-    { date: 'October 31, 2025', type: 'Absentee Request Deadline', link: 'https://sdsos.gov/elections-voting/voting/absentee-voting.aspx' }
+    { date: 'October 31, 2025', type: 'Absente Request Deadline', link: 'https://sdsos.gov/elections-voting/voting/absentee-voting.aspx' }
   ],
   'Tennessee': [
     { date: 'August 7, 2025', type: 'Primary', link: 'https://sos.tn.gov/elections' },
@@ -890,4 +890,4 @@ document.getElementById('search').addEventListener('input', (e) => {
     o.party.toLowerCase().includes(query) ||
     o.position.toLowerCase().includes(query)
   );
-  dropdown.innerHTML = suggestions.map
+  dropdown.inner
