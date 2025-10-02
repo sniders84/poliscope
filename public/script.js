@@ -235,8 +235,7 @@ window.allEvents = [
     details: "Special election to fill vacancy in Lincoln City Council.",
     link: "https://sos.nebraska.gov/elections"
   },
-// Remaining civic events by state
-window.allEvents.push(
+
   // Nevada
   {
     title: "Las Vegas Town Hall – Lt. Governor’s Workforce Roundtable",
@@ -466,7 +465,6 @@ window.allEvents.push(
     details: "Special election for at-large seat on Cheyenne City Council.",
     link: "https://sos.wyo.gov/Elections"
   }
-);
 /* ---------------- UTILITY FUNCTIONS ---------------- */
 function escapeJs(str) {
   return str.replace(/'/g, "\\'").replace(/"/g, '\\"');
