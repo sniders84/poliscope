@@ -1,23 +1,3 @@
-window.showTab = function(tabId) {
-  const sections = ['my-officials', 'polls', 'rankings', 'calendar', 'registration'];
-  sections.forEach(sectionId => {
-    const el = document.getElementById(sectionId);
-    if (el) el.style.display = sectionId === tabId ? 'block' : 'none';
-  });
-
-  const selectedState = document.getElementById("state-select").value;
-
-  if (tabId === 'calendar') renderCalendar(window.allEvents || [], selectedState);
-  if (tabId === 'registration') renderRegistration(selectedState);
-  if (tabId === 'my-officials') renderMyOfficials(selectedState);
-  if (tabId === 'polls') renderPollsForState(selectedState);
-  if (tabId === 'rankings') renderRankings();
-
-  const results = document.getElementById('results');
-  if (results) results.innerHTML = '';
-  const search = document.getElementById('search');
-  if (search) search.value = '';
-};
 /* ---------------- GLOBAL DATA ---------------- */
 window.allOfficials = [];
 window.allStats = [];
@@ -481,23 +461,26 @@ window.allEvents = [
  // ✅ closes window.allEvents.push([...])
 
 /* ---------------- UTILITY FUNCTIONS ---------------- */
-function escapeJs(str) {
-  return str.replace(/'/g, "\\'").replace(/"/g, '\\"');
-}
-// --- Tabs (single canonical function) ---
-window.showTab = function(id) {
-  const sections = ['my-officials', 'compare', 'rankings', 'rookies', 'calendar', 'registration'];
+window.showTab = function(tabId) {
+  const sections = ['my-officials', 'polls', 'rankings', 'calendar', 'registration'];
   sections.forEach(sectionId => {
     const el = document.getElementById(sectionId);
-    if (el) el.style.display = sectionId === id ? 'block' : 'none';
+    if (el) el.style.display = sectionId === tabId ? 'block' : 'none';
   });
+
+  const selectedState = document.getElementById("state-select").value;
+
+  if (tabId === 'calendar') renderCalendar(window.allEvents || [], selectedState);
+  if (tabId === 'registration') renderRegistration(selectedState);
+  if (tabId === 'my-officials') renderMyOfficials(selectedState);
+  if (tabId === 'polls') renderPollsForState(selectedState);
+  if (tabId === 'rankings') renderRankings();
 
   const results = document.getElementById('results');
   if (results) results.innerHTML = '';
   const search = document.getElementById('search');
   if (search) search.value = '';
 };
-
 // --- Rookie Logic ---
 function isRookie(person) {
   const rawStart = person.termStart || person.termBegin || person.startDate || "";
