@@ -477,7 +477,7 @@ window.allEvents = [
   details: "Special election for at-large seat on Cheyenne City Council.",
   link: "https://sos.wyo.gov/Elections"
 }
-  ]
+  ]);
  // ✅ closes window.allEvents.push([...])
 
 /* ---------------- UTILITY FUNCTIONS ---------------- */
