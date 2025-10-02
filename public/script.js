@@ -463,20 +463,21 @@ window.allEvents = [
     link: "https://elections.wi.gov"
   },
 
-  // Wyoming
-  {
-    title: "Cheyenne Special Election – City Council At-Large",
-    date: "2025-10-08",
-    state: "Wyoming",
-    type: "Municipal Special",
-    details: "Special election for at-large seat on Cheyenne City Council.",
-    link: "https://sos.wyo.gov/Elections"
-  },
+ // Wyoming
+{
+  title: "Cheyenne Special Election – City Council At-Large",
+  date: "2025-10-08",
+  state: "Wyoming",
+  type: "Municipal Special",
+  details: "Special election for at-large seat on Cheyenne City Council.",
+  link: "https://sos.wyo.gov/Elections"
+}
+]; // ✅ closes window.allEvents.push([...])
+
 /* ---------------- UTILITY FUNCTIONS ---------------- */
 function escapeJs(str) {
   return str.replace(/'/g, "\\'").replace(/"/g, '\\"');
 }
-
 // --- Tabs (single canonical function) ---
 window.showTab = function(id) {
   const sections = ['my-officials', 'compare', 'rankings', 'rookies', 'calendar', 'registration'];
