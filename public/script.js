@@ -458,9 +458,6 @@ window.allEvents = [
   link: "https://sos.wyo.gov/Elections"
 }
   ];
- // ✅ closes window.allEvents.push([...])
-
-/* ---------------- UTILITY FUNCTIONS ---------------- */
 /* ---------------- UTILITY FUNCTIONS ---------------- */
 function escapeJs(str) {
   return str.replace(/'/g, "\\'").replace(/"/g, '\\"');
