@@ -1,4 +1,4 @@
-/* --- Poliscope Main Script: Clean Complete Rewrite --- */
+/* --- Poliscope Main Script: Fully Corrected Version --- */
 
 /** ---- GLOBALS ---- */
 let allOfficials = [];
@@ -211,8 +211,9 @@ function renderCalendar(events, selectedState) {
   const filtered = events.filter(e => {
     const eventState = (e.state || "").trim().toLowerCase();
     const eventDate = new Date(e.date);
+    // Show if (event is national) or (event matches selected state)
     return (
-      (eventState === selected || eventState === "all") &&
+      (!selected || eventState === selected || eventState === "all" || eventState === "national") &&
       !isNaN(eventDate) &&
       eventDate >= today
     );
@@ -225,7 +226,7 @@ function renderCalendar(events, selectedState) {
         <p><strong>Type:</strong> ${event.type}</p>
       </div>
     `).join('')
-    : `<p>No upcoming events for ${selectedState}.</p>`;
+    : `<p>No upcoming events for ${selectedState ? selectedState : 'your selection'}.</p>`;
 }
 window.openEventModal = function(title, date, state, type, details, link) {
   openModal(`
@@ -245,7 +246,7 @@ function renderVotingInfo(state) {
   const container = document.getElementById('voting-container');
   const info = votingInfo[state];
   if (!container || !info) {
-    if (container) container.innerHTML = `<p>No voting info available for ${state}.</p>`;
+    if (container) container.innerHTML = `<p>No voting info available for ${state}. Please check your state’s official voter website.</p>`;
     return;
   }
   container.innerHTML = `
@@ -276,39 +277,66 @@ function renderVotingInfo(state) {
 function renderPollsForState(stateName) {
   const pollsContainer = document.getElementById("polls-container");
   if (!pollsContainer || !stateName) return;
+  // Direct to state-specific poll pages if available
+  const emersonLink = `https://emersoncollegepolling.com/category/state-polls/${stateName.replace(/\s+/g, '-').toLowerCase()}/`;
+  const rcpLink = `https://www.realclearpolitics.com/epolls/${stateName.replace(/\s+/g, '_').toLowerCase()}/`;
   pollsContainer.innerHTML = `
     <div class="card">
       <h3>${stateName} Polls</h3>
       <p>Source: Emerson College</p>
-      <a href="https://emersoncollegepolling.com/category/state-polls/" target="_blank">View Emerson Polls</a>
+      <a href="${emersonLink}" target="_blank">View Emerson Polls</a>
     </div>
     <div class="card">
       <h3>${stateName} Polls</h3>
       <p>Source: RealClearPolitics</p>
-      <a href="https://www.realclearpolitics.com/epolls/latest_polls/" target="_blank">View RCP Polls</a>
+      <a href="${rcpLink}" target="_blank">View RCP Polls</a>
     </div>
   `;
 }
 
-/** ---- SEARCH ---- */
-function filterOfficials() {
-  const query = document.getElementById("search").value.toLowerCase();
-  const selectedState = document.getElementById("state-select").value.toLowerCase();
-  // Filter official cards
-  const officialCards = document.querySelectorAll("#my-cards .card");
-  officialCards.forEach(card => {
-    const text = card.textContent.toLowerCase();
-    const matchesQuery = text.includes(query);
-    const matchesState = selectedState === "" || text.includes(selectedState);
-    card.style.display = (matchesQuery && matchesState) ? "block" : "none";
+/** ---- GLOBAL SEARCH ---- */
+function setupGlobalSearch() {
+  const searchInput = document.getElementById("search");
+  const dropdown = document.createElement('div');
+  dropdown.className = 'search-dropdown';
+  dropdown.style.position = 'absolute';
+  dropdown.style.zIndex = '1001';
+  dropdown.style.display = 'none';
+  dropdown.style.maxHeight = '300px';
+  dropdown.style.overflowY = 'auto';
+  dropdown.style.background = '#fff';
+  dropdown.style.border = '1px solid #ccc';
+
+  searchInput.parentNode.appendChild(dropdown);
+
+  searchInput.addEventListener('input', function () {
+    const q = searchInput.value.trim().toLowerCase();
+    if (!q) {
+      dropdown.style.display = 'none';
+      return;
+    }
+    // Find matches anywhere in the country
+    const matches = allOfficials.filter(
+      p => p.name.toLowerCase().includes(q) || (p.office || '').toLowerCase().includes(q) || (p.position || '').toLowerCase().includes(q)
+    );
+    if (matches.length === 0) {
+      dropdown.innerHTML = '<div style="padding:8px;">No matches found.</div>';
+      dropdown.style.display = 'block';
+      return;
+    }
+    dropdown.innerHTML = matches.map(p => `
+      <div class="search-result-item" style="padding:8px; cursor:pointer; border-bottom:1px solid #eee;" onclick="expandCard('${escapeJs(p.slug)}');document.querySelector('.search-dropdown').style.display='none';">
+        <strong>${p.name}</strong> <span style="font-size:90%;">(${p.state}, ${p.office || p.position})</span>
+      </div>
+    `).join('');
+    dropdown.style.display = 'block';
   });
-  // Filter poll cards
-  const pollCards = document.querySelectorAll("#polls-container .card");
-  pollCards.forEach(card => {
-    const text = card.textContent.toLowerCase();
-    const matchesQuery = text.includes(query);
-    const matchesState = selectedState === "" || text.includes(selectedState);
-    card.style.display = (matchesQuery && matchesState) ? "block" : "none";
+
+  // Hide dropdown on click outside
+  document.addEventListener('click', function (e) {
+    if (!dropdown.contains(e.target) && e.target !== searchInput) {
+      dropdown.style.display = 'none';
+    }
   });
 }
 
@@ -332,18 +360,17 @@ async function loadData() {
   window.allOfficials = [...(governors || []), ...(senate || []), ...(house || []), ...(ltGovernors || [])];
   allOfficials = window.allOfficials;
 
-  // Populate state-select dropdown
+  // Populate state-select dropdown in strict alphabetical order
   const stateSelect = document.getElementById('state-select');
   if (stateSelect) {
-    const states = [...new Set(allOfficials.map(p => p.state).filter(Boolean))].sort();
-    // Only add options not already present
-    const existing = Array.from(stateSelect.options).map(opt => opt.value);
+    // Use a set of all state names
+    const states = [...new Set(allOfficials.map(p => p.state).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+    // Remove all previous options except the first (e.g., "Select a State")
+    while (stateSelect.options.length > 1) stateSelect.remove(1);
     states.forEach(state => {
-      if (!existing.includes(state)) {
-        const opt = document.createElement('option');
-        opt.value = opt.text = state;
-        stateSelect.appendChild(opt);
-      }
+      const opt = document.createElement('option');
+      opt.value = opt.text = state;
+      stateSelect.appendChild(opt);
     });
     // Set default
     stateSelect.value = stateSelect.querySelector('option[value="Alabama"]') ? 'Alabama' : (states[0] || '');
@@ -371,15 +398,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Search logic
-  const search = document.getElementById('search');
-  if (search) {
-    search.addEventListener('input', filterOfficials);
-    // Clear results on click outside
-    document.addEventListener('click', function (e) {
-      if (!search.contains(e.target)) search.value = '';
-    });
-  }
+  // Set up global search bar with dropdown
+  setupGlobalSearch();
 
   // Modal overlay click to close
   const overlay = document.getElementById('modal-overlay');
