@@ -553,33 +553,33 @@ document.addEventListener('DOMContentLoaded', function () {
   const results = document.getElementById('results');
 
   if (search) {
-    search.addEventListener('input', function () {
-  filterOfficials(); // ✅ triggers filtering across officials and polls
-});
-      const query = e.target.value.toLowerCase().trim();
-      if (!query) {
-        if (results) results.innerHTML = '';
-        return;
-      }
+  search.addEventListener('input', function (e) {
+    filterOfficials(); // ✅ triggers filtering across officials and polls
 
-      const matches = allOfficials.filter(person =>
-        (person.name || '').toLowerCase().includes(query) ||
-        (person.state || '').toLowerCase().includes(query) ||
-        ((person.party || '').toLowerCase().includes(query))
-      );
+    const query = e.target.value.toLowerCase().trim();
+    if (!query) {
+      if (results) results.innerHTML = '';
+      return;
+    }
 
-      const resultsHTML = matches.map(person => {
-        const label = `${person.name} (${person.state}${person.party ? ', ' + person.party : ''})`;
-        const link = person.ballotpediaLink || person.contact?.website || null;
+    const matches = allOfficials.filter(person =>
+      (person.name || '').toLowerCase().includes(query) ||
+      (person.state || '').toLowerCase().includes(query) ||
+      ((person.party || '').toLowerCase().includes(query))
+    );
 
-        return link
-          ? `<li><a href="${link}" target="_blank" rel="noopener noreferrer">${label}</a></li>`
-          : `<li>${label}</li>`;
-      }).join('');
+    const resultsHTML = matches.map(person => {
+      const label = `${person.name} (${person.state}${person.party ? ', ' + person.party : ''})`;
+      const link = person.ballotpediaLink || person.contact?.website || null;
 
-      if (results) results.innerHTML = resultsHTML || `<li>No matches for "${query}"</li>`;
-    });
+      return link
+        ? `<li><a href="${link}" target="_blank" rel="noopener noreferrer">${label}</a></li>`
+        : `<li>${label}</li>`;
+    }).join('');
 
+    if (results) results.innerHTML = resultsHTML || `<li>No matches for "${query}"</li>`;
+  });
+}
     // Click outside to clear results
     document.addEventListener('click', function (e) {
       if (search && results && !search.contains(e.target) && !results.contains(e.target)) {
