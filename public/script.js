@@ -50,6 +50,10 @@ function getSafePhotoUrl(person) {
 
   return isBroken ? 'https://via.placeholder.com/200x300?text=No+Photo' : trimmed;
 }
+document.getElementById('state-select').addEventListener('change', function() {
+  const selected = this.value;
+  window.selectedState = selected; // ✅ stores globally
+});
 /* ---------------- CALENDAR EVENTS ---------------- */
 const calendarEvents = [
   {
