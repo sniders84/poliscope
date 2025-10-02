@@ -1,31 +1,3 @@
-window.showTab = function(tabId) {
-  const sections = ['my-officials', 'polls', 'rankings', 'calendar', 'registration'];
-  sections.forEach(sectionId => {
-    const el = document.getElementById(sectionId);
-    if (el) el.style.display = sectionId === tabId ? 'block' : 'none';
-  });
-};
-/* ---------------- TAB SWITCHING ---------------- */
-window.showTab = function(tabId) {
-  const sections = ['my-officials', 'polls', 'rankings', 'calendar', 'registration'];
-  sections.forEach(sectionId => {
-    const el = document.getElementById(sectionId);
-    if (el) el.style.display = sectionId === tabId ? 'block' : 'none';
-  });
-
-  const selectedState = document.getElementById("state-select").value;
-
-  if (tabId === 'calendar') window.renderCalendarForState(selectedState);
-  if (tabId === 'registration') renderRegistration(selectedState);
-  if (tabId === 'my-officials') renderMyOfficials(selectedState);
-  if (tabId === 'polls') renderPollsForState(selectedState);
-  if (tabId === 'rankings') renderRankings();
-
-  const results = document.getElementById('results');
-  if (results) results.innerHTML = '';
-  const search = document.getElementById('search');
-  if (search) search.value = '';
-
 /* ---------------- GLOBAL DATA ---------------- */
 /* ---------------- CALENDAR RENDERING ---------------- */
 window.renderCalendarForState = function(state) {
@@ -233,30 +205,6 @@ function openEventModal(title, date, state, type, details, link) {
 }
 
 /* ---------------- TAB SWITCHING ---------------- */
-window.showTab = function(tabId) {
-  const tabs = document.querySelectorAll('.tab-content');
-  tabs.forEach(tab => tab.style.display = 'none');
-
-  const activeTab = document.getElementById(tabId);
-  if (activeTab) activeTab.style.display = 'block';
-
-  // Calendar tab logic
-  if (tabId === 'calendar') {
-    const selectedState = window.selectedState || 'North Carolina'; // fallback
-    window.renderCalendarForState(selectedState);
-  }
-};
-
-
-  document.querySelectorAll('section').forEach(section => {
-    section.style.display = 'none';
-  });
-
-  const target = document.getElementById(tabId);
-  if (target) target.style.display = 'block';
-
-  const selectedState = document.getElementById("state-select").value;
-
   switch (tabId) {
     case 'calendar':
       renderCalendar(window.allEvents || [], selectedState);
