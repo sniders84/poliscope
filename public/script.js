@@ -18,7 +18,7 @@ window.showTab = function(tabId) {
   if (results) results.innerHTML = '';
   const search = document.getElementById('search');
   if (search) search.value = '';
-};
+
 /* ---------------- GLOBAL DATA ---------------- */
 /* ---------------- CALENDAR RENDERING ---------------- */
 window.renderCalendarForState = function(state) {
