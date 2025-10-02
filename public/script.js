@@ -1,893 +1,1094 @@
-// script.js for Poliscope - Complete rebuild with all tweaks
+/* --- Poliscope Main Script: Fully Corrected and Tweaked Version --- */
+
+/** ---- GLOBALS ---- */
+let allOfficials = [];
 let currentState = 'Alabama';
-let officials = {
-  governors: [],
-  senators: [],
-  representatives: [],
-  ltGovernors: []
-};
+let calendarEvents = []; // Placeholder for calendar events, to be populated as needed
 
-// Full state/territory list for dropdown
-const states = [
-  'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia',
-  'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland',
-  'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey',
-  'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina',
-  'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming',
-  'District of Columbia', 'Puerto Rico', 'Guam', 'U.S. Virgin Islands', 'American Samoa', 'Northern Mariana Islands'
-];
-
-// Election data for 2025 (state-specific, live links from Ballotpedia/state sites)
-const electionData = {
-  'Alabama': [
-    { date: 'March 3, 2025', type: 'Primary', link: 'https://www.sos.alabama.gov/elections' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://www.sos.alabama.gov/elections' },
-    { date: 'October 20, 2025', type: 'Voter Registration Deadline', link: 'https://www.sos.alabama.gov/alabama-votes/voter/register-to-vote' },
-    { date: 'October 28, 2025', type: 'Absentee Request Deadline', link: 'https://www.sos.alabama.gov/alabama-votes/voter/absentee-voting' }
-  ],
-  'Alaska': [
-    { date: 'August 19, 2025', type: 'Primary', link: 'https://www.elections.alaska.gov/' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://www.elections.alaska.gov/' },
-    { date: 'October 5, 2025', type: 'Voter Registration Deadline', link: 'https://www.elections.alaska.gov/Core/voterregistration.php' },
-    { date: 'October 20, 2025', type: 'Absentee Request Deadline', link: 'https://www.elections.alaska.gov/Core/absenteevotingbyabsenteeballot.php' }
-  ],
-  'Arizona': [
-    { date: 'July 29, 2025', type: 'Primary', link: 'https://azsos.gov/elections' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://azsos.gov/elections' },
-    { date: 'October 4, 2025', type: 'Voter Registration Deadline', link: 'https://azsos.gov/elections/voting-election/register-vote-or-update-your-current-voter-information' },
-    { date: 'October 24, 2025', type: 'Absentee Request Deadline', link: 'https://azsos.gov/elections/voting-election/vote-mail' }
-  ],
-  'Arkansas': [
-    { date: 'March 3, 2025', type: 'Primary', link: 'https://www.sos.arkansas.gov/elections' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://www.sos.arkansas.gov/elections' },
-    { date: 'October 5, 2025', type: 'Voter Registration Deadline', link: 'https://www.sos.arkansas.gov/elections/voter-information/voter-registration-information' },
-    { date: 'October 28, 2025', type: 'Absentee Request Deadline', link: 'https://www.sos.arkansas.gov/elections/voter-information/absentee-voting' }
-  ],
-  'California': [
-    { date: 'March 3, 2025', type: 'Primary', link: 'https://www.sos.ca.gov/elections' },
-    { date: 'November 4, 2025', type: 'Gubernatorial', link: 'https://www.sos.ca.gov/elections' },
-    { date: 'October 21, 2025', type: 'Voter Registration Deadline', link: 'https://www.sos.ca.gov/elections/voter-registration' },
-    { date: 'October 28, 2025', type: 'Absentee Request Deadline', link: 'https://www.sos.ca.gov/elections/voter-registration/vote-mail' }
-  ],
-  'Colorado': [
-    { date: 'June 24, 2025', type: 'Primary', link: 'https://www.sos.state.co.us/pubs/elections/' },
-    { date: 'November 4, 2025', type: 'State Supreme Court', link: 'https://www.sos.state.co.us/pubs/elections/' },
-    { date: 'October 27, 2025', type: 'Voter Registration Deadline', link: 'https://www.sos.state.co.us/pubs/elections/vote.html' },
-    { date: 'October 27, 2025', type: 'Absentee Request Deadline', link: 'https://www.sos.state.co.us/pubs/elections/vote.html' }
-  ],
-  'Connecticut': [
-    { date: 'September 9, 2025', type: 'Primary', link: 'https://portal.ct.gov/SOTS/Election-Services/Election-Services' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://portal.ct.gov/SOTS/Election-Services/Election-Services' },
-    { date: 'October 20, 2025', type: 'Voter Registration Deadline', link: 'https://portal.ct.gov/SOTS/Election-Services/Voter-Registration-Information/Voter-Registration' },
-    { date: 'November 1, 2025', type: 'Absentee Request Deadline', link: 'https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Absentee-Voting' }
-  ],
-  'Delaware': [
-    { date: 'September 9, 2025', type: 'Primary', link: 'https://elections.delaware.gov/' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://elections.delaware.gov/' },
-    { date: 'October 14, 2025', type: 'Voter Registration Deadline', link: 'https://elections.delaware.gov/voter/register.shtml' },
-    { date: 'October 29, 2025', type: 'Absentee Request Deadline', link: 'https://elections.delaware.gov/voter/absentee.shtml' }
-  ],
-  'Florida': [
-    { date: 'August 19, 2025', type: 'Primary', link: 'https://www.dos.myflorida.com/elections/' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://www.dos.myflorida.com/elections/' },
-    { date: 'October 7, 2025', type: 'Voter Registration Deadline', link: 'https://dos.myflorida.com/elections/for-voters/voter-registration/register-to-vote-or-update-your-information/' },
-    { date: 'October 28, 2025', type: 'Absentee Request Deadline', link: 'https://dos.myflorida.com/elections/for-voters/voting/vote-by-mail/' }
-  ],
-  'Georgia': [
-    { date: 'May 20, 2025', type: 'Primary', link: 'https://sos.ga.gov/elections' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://sos.ga.gov/elections' },
-    { date: 'October 6, 2025', type: 'Voter Registration Deadline', link: 'https://sos.ga.gov/how-to-guide/how-guide-register-vote' },
-    { date: 'October 29, 2025', type: 'Absentee Request Deadline', link: 'https://sos.ga.gov/how-to-guide/how-guide-absentee-voting' }
-  ],
-  'Hawaii': [
-    { date: 'August 8, 2025', type: 'Primary', link: 'https://elections.hawaii.gov/' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://elections.hawaii.gov/' },
-    { date: 'October 14, 2025', type: 'Voter Registration Deadline', link: 'https://elections.hawaii.gov/voters/registration/' },
-    { date: 'October 28, 2025', type: 'Absentee Request Deadline', link: 'https://elections.hawaii.gov/voters/absentee-voting/' }
-  ],
-  'Idaho': [
-    { date: 'May 20, 2025', type: 'Primary', link: 'https://sos.idaho.gov/elections-division/' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://sos.idaho.gov/elections-division/' },
-    { date: 'October 20, 2025', type: 'Voter Registration Deadline', link: 'https://voteidaho.gov/voter-registration/' },
-    { date: 'October 31, 2025', type: 'Absentee Request Deadline', link: 'https://voteidaho.gov/absentee-voting/' }
-  ],
-  'Illinois': [
-    { date: 'March 17, 2025', type: 'Primary', link: 'https://www.elections.il.gov/' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://www.elections.il.gov/' },
-    { date: 'October 21, 2025', type: 'Voter Registration Deadline', link: 'https://www.elections.il.gov/VoterReg.aspx' },
-    { date: 'October 31, 2025', type: 'Absentee Request Deadline', link: 'https://www.elections.il.gov/VotingByMail.aspx' }
-  ],
-  'Indiana': [
-    { date: 'May 6, 2025', type: 'Primary', link: 'https://www.in.gov/sos/elections/' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://www.in.gov/sos/elections/' },
-    { date: 'October 7, 2025', type: 'Voter Registration Deadline', link: 'https://indianavoters.in.gov/MVPHome/PrintDocuments' },
-    { date: 'October 31, 2025', type: 'Absentee Request Deadline', link: 'https://www.in.gov/sos/elections/absentee-voting/' }
-  ],
-  'Iowa': [
-    { date: 'June 3, 2025', type: 'Primary', link: 'https://sos.iowa.gov/elections/' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://sos.iowa.gov/elections/' },
-    { date: 'October 21, 2025', type: 'Voter Registration Deadline', link: 'https://sos.iowa.gov/elections/voterinformation/voterregistration.html' },
-    { date: 'October 31, 2025', type: 'Absentee Request Deadline', link: 'https://sos.iowa.gov/elections/voterinformation/absenteeinfo.html' }
-  ],
-  'Kansas': [
-    { date: 'August 5, 2025', type: 'Primary', link: 'https://www.sos.ks.gov/elections/' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://www.sos.ks.gov/elections/' },
-    { date: 'October 14, 2025', type: 'Voter Registration Deadline', link: 'https://sos.ks.gov/elections/voter-registration.html' },
-    { date: 'October 28, 2025', type: 'Absentee Request Deadline', link: 'https://sos.ks.gov/elections/advance-voting.html' }
-  ],
-  'Kentucky': [
-    { date: 'May 20, 2025', type: 'Primary', link: 'https://elect.ky.gov/' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://elect.ky.gov/' },
-    { date: 'October 7, 2025', type: 'Voter Registration Deadline', link: 'https://elect.ky.gov/registertovote/Pages/default.aspx' },
-    { date: 'October 31, 2025', type: 'Absentee Request Deadline', link: 'https://elect.ky.gov/Voters/Pages/Absentee-Voting.aspx' }
-  ],
-  'Louisiana': [
-    { date: 'October 11, 2025', type: 'Primary', link: 'https://www.sos.la.gov/ElectionsAndVoting' },
-    { date: 'November 15, 2025', type: 'General Election', link: 'https://www.sos.la.gov/ElectionsAndVoting' },
-    { date: 'October 14, 2025', type: 'Voter Registration Deadline', link: 'https://www.sos.la.gov/ElectionsAndVoting/Pages/OnlineVoterRegistration.aspx' },
-    { date: 'November 1, 2025', type: 'Absentee Request Deadline', link: 'https://www.sos.la.gov/ElectionsAndVoting/Vote/VoteByMail/Pages/default.aspx' }
-  ],
-  'Maine': [
-    { date: 'June 10, 2025', type: 'Primary', link: 'https://www.maine.gov/sos/cec/elec/' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://www.maine.gov/sos/cec/elec/' },
-    { date: 'October 29, 2025', type: 'Voter Registration Deadline', link: 'https://www.maine.gov/sos/cec/elec/voter-info/voterreg.html' },
-    { date: 'November 1, 2025', type: 'Absentee Request Deadline', link: 'https://www.maine.gov/sos/cec/elec/voter-info/absent.html' }
-  ],
-  'Maryland': [
-    { date: 'May 13, 2025', type: 'Primary', link: 'https://elections.maryland.gov/' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://elections.maryland.gov/' },
-    { date: 'October 14, 2025', type: 'Voter Registration Deadline', link: 'https://elections.maryland.gov/voter_registration/index.html' },
-    { date: 'October 21, 2025', type: 'Absentee Request Deadline', link: 'https://elections.maryland.gov/voting/absentee.html' }
-  ],
-  'Massachusetts': [
-    { date: 'September 16, 2025', type: 'Primary', link: 'https://www.sec.state.ma.us/ele/' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://www.sec.state.ma.us/ele/' },
-    { date: 'October 19, 2025', type: 'Voter Registration Deadline', link: 'https://www.sec.state.ma.us/ovr/' },
-    { date: 'October 29, 2025', type: 'Absentee Request Deadline', link: 'https://www.sec.state.ma.us/ele/eleabs/absidx.htm' }
-  ],
-  'Michigan': [
-    { date: 'August 5, 2025', type: 'Primary', link: 'https://www.michigan.gov/sos/elections' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://www.michigan.gov/sos/elections' },
-    { date: 'October 20, 2025', type: 'Voter Registration Deadline', link: 'https://mvic.sos.state.mi.us/RegisterVoter/Index' },
-    { date: 'October 27, 2025', type: 'Absentee Request Deadline', link: 'https://mvic.sos.state.mi.us/AVApplication/Index' }
-  ],
-  'Minnesota': [
-    { date: 'August 12, 2025', type: 'Primary', link: 'https://www.sos.state.mn.us/elections-voting/' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://www.sos.state.mn.us/elections-voting/' },
-    { date: 'October 14, 2025', type: 'Voter Registration Deadline', link: 'https://www.sos.state.mn.us/elections-voting/register-to-vote/' },
-    { date: 'October 31, 2025', type: 'Absentee Request Deadline', link: 'https://www.sos.state.mn.us/elections-voting/other-ways-to-vote/vote-early-by-mail/' }
-  ],
-  'Mississippi': [
-    { date: 'August 5, 2025', type: 'Primary', link: 'https://www.sos.ms.gov/elections-voting' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://www.sos.ms.gov/elections-voting' },
-    { date: 'October 7, 2025', type: 'Voter Registration Deadline', link: 'https://www.sos.ms.gov/elections-voting/voter-registration' },
-    { date: 'October 31, 2025', type: 'Absentee Request Deadline', link: 'https://www.sos.ms.gov/elections-voting/absentee-voting' }
-  ],
-  'Missouri': [
-    { date: 'August 5, 2025', type: 'Primary', link: 'https://www.sos.mo.gov/elections' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://www.sos.mo.gov/elections' },
-    { date: 'October 7, 2025', type: 'Voter Registration Deadline', link: 'https://www.sos.mo.gov/elections/goVoteMissouri/register' },
-    { date: 'October 29, 2025', type: 'Absentee Request Deadline', link: 'https://www.sos.mo.gov/elections/goVoteMissouri/howtovote#absentee' }
-  ],
-  'Montana': [
-    { date: 'June 3, 2025', type: 'Primary', link: 'https://sosmt.gov/elections/' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://sosmt.gov/elections/' },
-    { date: 'October 27, 2025', type: 'Voter Registration Deadline', link: 'https://sosmt.gov/elections/voter/' },
-    { date: 'October 31, 2025', type: 'Absentee Request Deadline', link: 'https://sosmt.gov/elections/absentee/' }
-  ],
-  'Nebraska': [
-    { date: 'May 13, 2025', type: 'Primary', link: 'https://sos.nebraska.gov/elections' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://sos.nebraska.gov/elections' },
-    { date: 'October 20, 2025', type: 'Voter Registration Deadline', link: 'https://www.nebraska.gov/apps-sos-voter-registration' },
-    { date: 'October 24, 2025', type: 'Absentee Request Deadline', link: 'https://sos.nebraska.gov/elections/absentee-voting' }
-  ],
-  'Nevada': [
-    { date: 'June 10, 2025', type: 'Primary', link: 'https://www.nvsos.gov/sos/elections' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://www.nvsos.gov/sos/elections' },
-    { date: 'October 20, 2025', type: 'Voter Registration Deadline', link: 'https://www.nvsos.gov/sos/voter-services/registering-to-vote' },
-    { date: 'October 31, 2025', type: 'Absentee Request Deadline', link: 'https://www.nvsos.gov/sos/elections/voters/absentee-voting' }
-  ],
-  'New Hampshire': [
-    { date: 'September 9, 2025', type: 'Primary', link: 'https://sos.nh.gov/elections' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://sos.nh.gov/elections' },
-    { date: 'October 29, 2025', type: 'Voter Registration Deadline', link: 'https://sos.nh.gov/elections/voters/register-to-vote/' },
-    { date: 'November 1, 2025', type: 'Absentee Request Deadline', link: 'https://sos.nh.gov/elections/voters/absentee-ballots/' }
-  ],
-  'New Jersey': [
-    { date: 'June 3, 2025', type: 'Primary', link: 'https://www.state.nj.us/state/elections/index.shtml' },
-    { date: 'November 4, 2025', type: 'Gubernatorial', link: 'https://www.state.nj.us/state/elections/index.shtml' },
-    { date: 'October 14, 2025', type: 'Voter Registration Deadline', link: 'https://nj.gov/state/elections/voter-registration.shtml' },
-    { date: 'October 31, 2025', type: 'Absentee Request Deadline', link: 'https://nj.gov/state/elections/vote-by-mail.shtml' }
-  ],
-  'New Mexico': [
-    { date: 'June 3, 2025', type: 'Primary', link: 'https://www.sos.state.nm.us/voting-and-elections/' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://www.sos.state.nm.us/voting-and-elections/' },
-    { date: 'October 7, 2025', type: 'Voter Registration Deadline', link: 'https://www.sos.state.nm.us/voting-and-elections/voter-information-portal-nmvote-org/voter-registration-information/' },
-    { date: 'October 28, 2025', type: 'Absentee Request Deadline', link: 'https://www.sos.state.nm.us/voting-and-elections/absentee-and-early-voting/absentee-voting-by-mail/' }
-  ],
-  'New York': [
-    { date: 'June 24, 2025', type: 'Primary', link: 'https://www.elections.ny.gov/' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://www.elections.ny.gov/' },
-    { date: 'October 27, 2025', type: 'Voter Registration Deadline', link: 'https://www.elections.ny.gov/registervote.html' },
-    { date: 'October 31, 2025', type: 'Absentee Request Deadline', link: 'https://www.elections.ny.gov/votingabsentees.html' }
-  ],
-  'North Carolina': [
-    { date: 'March 3, 2025', type: 'Primary', link: 'https://www.ncsbe.gov/' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://www.ncsbe.gov/' },
-    { date: 'October 14, 2025', type: 'Voter Registration Deadline', link: 'https://www.ncsbe.gov/registering/how-register' },
-    { date: 'October 28, 2025', type: 'Absentee Request Deadline', link: 'https://www.ncsbe.gov/voting/vote-mail/absentee-ballot-tools' }
-  ],
-  'North Dakota': [
-    { date: 'June 10, 2025', type: 'Primary', link: 'https://sos.nd.gov/elections' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://sos.nd.gov/elections' },
-    { date: 'October 27, 2025', type: 'Voter Registration Deadline', link: 'https://sos.nd.gov/elections/voter/voting-north-dakota' },
-    { date: 'October 31, 2025', type: 'Absentee Request Deadline', link: 'https://sos.nd.gov/elections/voter/absentee-or-mail-ballot-voting' }
-  ],
-  'Ohio': [
-    { date: 'May 6, 2025', type: 'Primary', link: 'https://www.ohiosos.gov/elections/' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://www.ohiosos.gov/elections/' },
-    { date: 'October 7, 2025', type: 'Voter Registration Deadline', link: 'https://olvr.ohiosos.gov/' },
-    { date: 'October 29, 2025', type: 'Absentee Request Deadline', link: 'https://www.ohiosos.gov/elections/voters/absentee-voting/' }
-  ],
-  'Oklahoma': [
-    { date: 'June 17, 2025', type: 'Primary', link: 'https://oklahoma.gov/elections.html' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://oklahoma.gov/elections.html' },
-    { date: 'October 14, 2025', type: 'Voter Registration Deadline', link: 'https://oklahoma.gov/elections/voters/register-to-vote.html' },
-    { date: 'October 28, 2025', type: 'Absentee Request Deadline', link: 'https://oklahoma.gov/elections/voters/absentee-voting.html' }
-  ],
-  'Oregon': [
-    { date: 'May 20, 2025', type: 'Primary', link: 'https://sos.oregon.gov/elections' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://sos.oregon.gov/elections' },
-    { date: 'October 21, 2025', type: 'Voter Registration Deadline', link: 'https://sos.oregon.gov/elections/Pages/registration.aspx' },
-    { date: 'October 29, 2025', type: 'Absentee Request Deadline', link: 'https://sos.oregon.gov/elections/Pages/votebymail.aspx' }
-  ],
-  'Pennsylvania': [
-    { date: 'May 20, 2025', type: 'Primary', link: 'https://www.pa.gov/en/agencies/dos/elections.html' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://www.pa.gov/en/agencies/dos/elections.html' },
-    { date: 'October 21, 2025', type: 'Voter Registration Deadline', link: 'https://pavoterservices.pa.gov/Pages/VoterRegistrationApplication.aspx' },
-    { date: 'October 31, 2025', type: 'Absentee Request Deadline', link: 'https://www.pa.gov/en/agencies/vote/other-election-information/vote-by-mail.html' }
-  ],
-  'Rhode Island': [
-    { date: 'September 9, 2025', type: 'Primary', link: 'https://vote.ri.gov/' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://vote.ri.gov/' },
-    { date: 'October 6, 2025', type: 'Voter Registration Deadline', link: 'https://vote.sos.ri.gov/Voter/RegisterToVote' },
-    { date: 'October 29, 2025', type: 'Absentee Request Deadline', link: 'https://vote.sos.ri.gov/Voter/MailBallot' }
-  ],
-  'South Carolina': [
-    { date: 'June 10, 2025', type: 'Primary', link: 'https://www.scvotes.gov/' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://www.scvotes.gov/' },
-    { date: 'October 7, 2025', type: 'Voter Registration Deadline', link: 'https://scvotes.gov/voters/register-to-vote/' },
-    { date: 'October 28, 2025', type: 'Absentee Request Deadline', link: 'https://scvotes.gov/voters/absentee-voting/' }
-  ],
-  'South Dakota': [
-    { date: 'June 3, 2025', type: 'Primary', link: 'https://sdsos.gov/elections-voting/' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://sdsos.gov/elections-voting/' },
-    { date: 'October 20, 2025', type: 'Voter Registration Deadline', link: 'https://sdsos.gov/elections-voting/voting/register-to-vote/default.aspx' },
-    { date: 'October 31, 2025', type: 'Absente Request Deadline', link: 'https://sdsos.gov/elections-voting/voting/absentee-voting.aspx' }
-  ],
-  'Tennessee': [
-    { date: 'August 7, 2025', type: 'Primary', link: 'https://sos.tn.gov/elections' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://sos.tn.gov/elections' },
-    { date: 'October 7, 2025', type: 'Voter Registration Deadline', link: 'https://sos.tn.gov/elections/guides/how-to-register-to-vote' },
-    { date: 'October 28, 2025', type: 'Absentee Request Deadline', link: 'https://sos.tn.gov/elections/guides/how-to-vote-absentee-by-mail' }
-  ],
-  'Texas': [
-    { date: 'March 3, 2025', type: 'Primary', link: 'https://www.sos.state.tx.us/elections/' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://www.sos.state.tx.us/elections/' },
-    { date: 'October 7, 2025', type: 'Voter Registration Deadline', link: 'https://www.sos.state.tx.us/elections/voter/reqvr.shtml' },
-    { date: 'October 28, 2025', type: 'Absentee Request Deadline', link: 'https://www.sos.state.tx.us/elections/voter/absentee-ballot.shtml' }
-  ],
-  'Utah': [
-    { date: 'June 24, 2025', type: 'Primary', link: 'https://vote.utah.gov/' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://vote.utah.gov/' },
-    { date: 'October 21, 2025', type: 'Voter Registration Deadline', link: 'https://vote.utah.gov/register-to-vote/' },
-    { date: 'October 28, 2025', type: 'Absentee Request Deadline', link: 'https://vote.utah.gov/vote-by-mail/' }
-  ],
-  'Vermont': [
-    { date: 'August 12, 2025', type: 'Primary', link: 'https://sos.vermont.gov/elections' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://sos.vermont.gov/elections' },
-    { date: 'October 29, 2025', type: 'Voter Registration Deadline', link: 'https://sos.vermont.gov/elections/voters/registration/' },
-    { date: 'November 1, 2025', type: 'Absentee Request Deadline', link: 'https://sos.vermont.gov/elections/voters/absentee-ballots/' }
-  ],
-  'Virginia': [
-    { date: 'June 17, 2025', type: 'Primary', link: 'https://www.elections.virginia.gov/' },
-    { date: 'November 4, 2025', type: 'Gubernatorial', link: 'https://www.elections.virginia.gov/' },
-    { date: 'October 14, 2025', type: 'Voter Registration Deadline', link: 'https://www.elections.virginia.gov/registration/how-to-register/' },
-    { date: 'October 24, 2025', type: 'Absentee Request Deadline', link: 'https://www.elections.virginia.gov/voter-information/absentee-voting/' }
-  ],
-  'Washington': [
-    { date: 'August 5, 2025', type: 'Primary', link: 'https://www.sos.wa.gov/elections/' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://www.sos.wa.gov/elections/' },
-    { date: 'October 27, 2025', type: 'Voter Registration Deadline', link: 'https://www.sos.wa.gov/elections/register.aspx' },
-    { date: 'October 31, 2025', type: 'Absentee Request Deadline', link: 'https://www.sos.wa.gov/elections/absentee-voting.aspx' }
-  ],
-  'West Virginia': [
-    { date: 'May 13, 2025', type: 'Primary', link: 'https://sos.wv.gov/elections/' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://sos.wv.gov/elections/' },
-    { date: 'October 14, 2025', type: 'Voter Registration Deadline', link: 'https://sos.wv.gov/elections/Pages/RegisterToVote.aspx' },
-    { date: 'October 28, 2025', type: 'Absentee Request Deadline', link: 'https://sos.wv.gov/elections/Pages/AbsenteeVoting.aspx' }
-  ],
-  'Wisconsin': [
-    { date: 'August 12, 2025', type: 'Primary', link: 'https://elections.wi.gov/' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://elections.wi.gov/' },
-    { date: 'October 14, 2025', type: 'Voter Registration Deadline', link: 'https://myvote.wi.gov/en-us/Register-To-Vote' },
-    { date: 'October 31, 2025', type: 'Absentee Request Deadline', link: 'https://myvote.wi.gov/en-us/Vote-Absentee-By-Mail' }
-  ],
-  'Wyoming': [
-    { date: 'August 19, 2025', type: 'Primary', link: 'https://sos.wyo.gov/Elections/' },
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://sos.wyo.gov/Elections/' },
-    { date: 'October 20, 2025', type: 'Voter Registration Deadline', link: 'https://sos.wyo.gov/Elections/State/RegisteringToVote.aspx' },
-    { date: 'October 28, 2025', type: 'Absentee Request Deadline', link: 'https://sos.wyo.gov/Elections/State/AbsenteeVoting.aspx' }
-  ],
-  'District of Columbia': [
-    { date: 'June 3, 2025', type: 'Primary', link: 'https://dcboe.org/' },
-    { date: 'November 4, 2025', type: 'At-Large Council', link: 'https://dcboe.org/' },
-    { date: 'October 14, 2025', type: 'Voter Registration Deadline', link: 'https://dcboe.org/Voters/Register-To-Vote/Register-to-Vote' },
-    { date: 'October 28, 2025', type: 'Absentee Request Deadline', link: 'https://dcboe.org/Voters/Absentee-Voting/Mail-in-Voting' }
-  ],
-  'Puerto Rico': [
-    { date: 'June 1, 2025', type: 'Primary', link: 'https://www.ceepur.org/' },
-    { date: 'November 4, 2025', type: 'Mayoral Runoffs', link: 'https://www.ceepur.org/' },
-    { date: 'September 19, 2025', type: 'Voter Registration Deadline', link: 'https://ww2.election.pr/cee-2024/solicitud-registro-electoral/' },
-    { date: 'October 5, 2025', type: 'Absentee Request Deadline', link: 'https://ww2.election.pr/cee-2024/voto-por-correo/' }
-  ],
-  'Guam': [
-    { date: 'August 30, 2025', type: 'Primary', link: 'https://gec.guam.gov/' },
-    { date: 'November 4, 2025', type: 'Local Election', link: 'https://gec.guam.gov/' },
-    { date: 'October 5, 2025', type: 'Voter Registration Deadline', link: 'https://gec.guam.gov/register/' },
-    { date: 'October 20, 2025', type: 'Absentee Request Deadline', link: 'https://gec.guam.gov/absentee-voting/' }
-  ],
-  'U.S. Virgin Islands': [
-    { date: 'November 4, 2025', type: 'Local Election', link: 'https://www.vivote.gov/' },
-    { date: 'October 5, 2025', type: 'Voter Registration Deadline', link: 'https://www.vivote.gov/voters/register-to-vote' },
-    { date: 'October 28, 2025', type: 'Absentee Request Deadline', link: 'https://www.vivote.gov/voters/absentee-voting' }
-  ],
-  'American Samoa': [
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://www.americansamoa.gov/elections' },
-    { date: 'October 5, 2025', type: 'Voter Registration Deadline', link: 'https://election.as.gov/register-to-vote/' },
-    { date: 'October 20, 2025', type: 'Absentee Request Deadline', link: 'https://election.as.gov/absentee-voting/' }
-  ],
-  'Northern Mariana Islands': [
-    { date: 'November 4, 2025', type: 'General Election', link: 'https://www.votecnmi.gov.mp/' },
-    { date: 'October 5, 2025', type: 'Voter Registration Deadline', link: 'https://www.votecnmi.gov.mp/voter-registration/' },
-    { date: 'October 20, 2025', type: 'Absentee Request Deadline', link: 'https://www.votecnmi.gov.mp/absentee-voting/' }
-  ]
-};
-
-// Registration links (full, live from vote.gov and state sites)
-const registrationLinks = {
+// Expanded votingInfo with all states and territories
+const votingInfo = {
   'Alabama': {
-    register: 'https://www.sos.alabama.gov/alabama-votes/voter/register-to-vote',
-    polling: 'https://myinfo.alabamavotes.gov/voterview',
-    absentee: 'https://www.sos.alabama.gov/alabama-votes/voter/absentee-voting',
-    volunteer: 'https://www.sos.alabama.gov/alabama-votes/poll-worker-information'
+    registrationLink: 'https://www.sos.alabama.gov/alabama-votes/voter/register-to-vote',
+    statusCheckLink: 'https://myinfo.alabamavotes.gov/voterview/',
+    pollingPlaceLink: 'https://myinfo.alabamavotes.gov/voterview/',
+    volunteerLink: 'https://www.sos.alabama.gov/alabama-votes/poll-worker-information',
+    absenteeLink: 'https://www.sos.alabama.gov/alabama-votes/voter/absentee-voting',
+    registrationDeadline: '2025-10-20',
+    absenteeRequestDeadline: '2025-10-28',
+    absenteeReturnDeadline: '2025-11-04 12:00 PM',
+    earlyVotingStart: null,
+    earlyVotingEnd: null
   },
   'Alaska': {
-    register: 'https://www.elections.alaska.gov/Core/voterregistration.php',
-    polling: 'https://myvoterinformation.alaska.gov/',
-    absentee: 'https://www.elections.alaska.gov/Core/absenteevotingbyabsenteeballot.php',
-    volunteer: 'https://www.elections.alaska.gov/Core/pollworkerinformation.php'
+    registrationLink: 'https://www.elections.alaska.gov/Core/voterregistration.php',
+    statusCheckLink: 'https://myvoterinformation.alaska.gov/',
+    pollingPlaceLink: 'https://myvoterinformation.alaska.gov/',
+    volunteerLink: 'https://www.elections.alaska.gov/Core/pollworkerinformation.php',
+    absenteeLink: 'https://www.elections.alaska.gov/Core/absenteevotingbyabsenteeballot.php',
+    registrationDeadline: '2025-10-05',
+    absenteeRequestDeadline: '2025-10-20',
+    absenteeReturnDeadline: '2025-11-04 12:00 PM',
+    earlyVotingStart: '2025-10-20',
+    earlyVotingEnd: '2025-11-04'
   },
   'Arizona': {
-    register: 'https://azsos.gov/elections/voting-election/register-vote-or-update-your-current-voter-information',
-    polling: 'https://voter.azsos.gov/VoterView/PollingPlaceSearch.do',
-    absentee: 'https://azsos.gov/elections/voting-election/vote-mail',
-    volunteer: 'https://azsos.gov/elections/poll-worker-information'
+    registrationLink: 'https://azsos.gov/elections/voting-election/register-vote-or-update-your-current-voter-information',
+    statusCheckLink: 'https://voter.azsos.gov/VoterView/RegistrantSearch.do',
+    pollingPlaceLink: 'https://voter.azsos.gov/VoterView/PollingPlaceSearch.do',
+    volunteerLink: 'https://azsos.gov/elections/poll-worker-information',
+    absenteeLink: 'https://azsos.gov/elections/voting-election/vote-mail',
+    registrationDeadline: '2025-10-04',
+    absenteeRequestDeadline: '2025-10-24',
+    absenteeReturnDeadline: '2025-11-04 7:00 PM',
+    earlyVotingStart: '2025-10-08',
+    earlyVotingEnd: '2025-10-31'
   },
   'Arkansas': {
-    register: 'https://www.sos.arkansas.gov/elections/voter-information/voter-registration-information',
-    polling: 'https://www.sos.arkansas.gov/elections/voter-information/find-your-polling-place',
-    absentee: 'https://www.sos.arkansas.gov/elections/voter-information/absentee-voting',
-    volunteer: 'https://www.sos.arkansas.gov/elections/voter-information/become-a-poll-worker'
+    registrationLink: 'https://www.sos.arkansas.gov/elections/voter-information/voter-registration-information',
+    statusCheckLink: 'https://www.voterview.ar-nova.org/voterview',
+    pollingPlaceLink: 'https://www.sos.arkansas.gov/elections/voter-information/find-your-polling-place',
+    volunteerLink: 'https://www.sos.arkansas.gov/elections/voter-information/become-a-poll-worker',
+    absenteeLink: 'https://www.sos.arkansas.gov/elections/voter-information/absentee-voting',
+    registrationDeadline: '2025-10-05',
+    absenteeRequestDeadline: '2025-10-28',
+    absenteeReturnDeadline: '2025-11-04 7:30 PM',
+    earlyVotingStart: '2025-10-20',
+    earlyVotingEnd: '2025-11-03'
   },
   'California': {
-    register: 'https://www.sos.ca.gov/elections/voter-registration',
-    polling: 'https://www.sos.ca.gov/elections/polling-place',
-    absentee: 'https://www.sos.ca.gov/elections/voter-registration/vote-mail',
-    volunteer: 'https://www.sos.ca.gov/elections/poll-worker-information'
+    registrationLink: 'https://www.sos.ca.gov/elections/voter-registration',
+    statusCheckLink: 'https://voterstatus.sos.ca.gov/',
+    pollingPlaceLink: 'https://www.sos.ca.gov/elections/polling-place',
+    volunteerLink: 'https://www.sos.ca.gov/elections/poll-worker-information',
+    absenteeLink: 'https://www.sos.ca.gov/elections/voter-registration/vote-mail',
+    registrationDeadline: '2025-10-21',
+    absenteeRequestDeadline: '2025-10-28',
+    absenteeReturnDeadline: '2025-11-04 8:00 PM',
+    earlyVotingStart: '2025-10-06',
+    earlyVotingEnd: '2025-11-04'
   },
   'Colorado': {
-    register: 'https://www.sos.state.co.us/pubs/elections/vote.html',
-    polling: 'https://www.sos.state.co.us/pubs/elections/vote.html',
-    absentee: 'https://www.sos.state.co.us/pubs/elections/vote.html',
-    volunteer: 'https://www.sos.state.co.us/pubs/elections/pollworkers.html'
+    registrationLink: 'https://www.sos.state.co.us/pubs/elections/vote.html',
+    statusCheckLink: 'https://www.sos.state.co.us/voter/pages/pub/olvr/findVoterReg.xhtml',
+    pollingPlaceLink: 'https://www.sos.state.co.us/pubs/elections/vote.html',
+    volunteerLink: 'https://www.sos.state.co.us/pubs/elections/pollworkers.html',
+    absenteeLink: 'https://www.sos.state.co.us/pubs/elections/vote.html',
+    registrationDeadline: '2025-10-27',
+    absenteeRequestDeadline: '2025-10-27',
+    absenteeReturnDeadline: '2025-11-04 7:00 PM',
+    earlyVotingStart: '2025-10-20',
+    earlyVotingEnd: '2025-11-04'
   },
   'Connecticut': {
-    register: 'https://portal.ct.gov/SOTS/Election-Services/Voter-Registration-Information/Voter-Registration',
-    polling: 'https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Polling-Place-Locator',
-    absentee: 'https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Absentee-Voting',
-    volunteer: 'https://portal.ct.gov/SOTS/Election-Services/Poll-Worker-Information/Poll-Worker-Information'
+    registrationLink: 'https://portal.ct.gov/SOTS/Election-Services/Voter-Registration-Information/Voter-Registration',
+    statusCheckLink: 'https://portaldir.ct.gov/sots/LookUp.aspx',
+    pollingPlaceLink: 'https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Polling-Place-Locator',
+    volunteerLink: 'https://portal.ct.gov/SOTS/Election-Services/Poll-Worker-Information/Poll-Worker-Information',
+    absenteeLink: 'https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Absentee-Voting',
+    registrationDeadline: '2025-10-20',
+    absenteeRequestDeadline: '2025-11-01',
+    absenteeReturnDeadline: '2025-11-04 8:00 PM',
+    earlyVotingStart: null,
+    earlyVotingEnd: null
   },
   'Delaware': {
-    register: 'https://elections.delaware.gov/voter/register.shtml',
-    polling: 'https://elections.delaware.gov/voter/pollfinder.shtml',
-    absentee: 'https://elections.delaware.gov/voter/absentee.shtml',
-    volunteer: 'https://elections.delaware.gov/pollworkers/index.shtml'
+    registrationLink: 'https://elections.delaware.gov/voter/register.shtml',
+    statusCheckLink: 'https://ivote.de.gov/VoterView',
+    pollingPlaceLink: 'https://elections.delaware.gov/voter/pollfinder.shtml',
+    volunteerLink: 'https://elections.delaware.gov/pollworkers/index.shtml',
+    absenteeLink: 'https://elections.delaware.gov/voter/absentee.shtml',
+    registrationDeadline: '2025-10-14',
+    absenteeRequestDeadline: '2025-10-29',
+    absenteeReturnDeadline: '2025-11-04 8:00 PM',
+    earlyVotingStart: '2025-10-25',
+    earlyVotingEnd: '2025-11-02'
   },
   'Florida': {
-    register: 'https://dos.myflorida.com/elections/for-voters/voter-registration/register-to-vote-or-update-your-information/',
-    polling: 'https://dos.myflorida.com/elections/for-voters/voting/find-my-polling-place/',
-    absentee: 'https://dos.myflorida.com/elections/for-voters/voting/vote-by-mail/',
-    volunteer: 'https://dos.myflorida.com/elections/for-voters/become-a-poll-worker/'
+    registrationLink: 'https://dos.myflorida.com/elections/for-voters/voter-registration/register-to-vote-or-update-your-information/',
+    statusCheckLink: 'https://registration.elections.myflorida.com/CheckVoterStatus',
+    pollingPlaceLink: 'https://dos.myflorida.com/elections/for-voters/voting/find-my-polling-place/',
+    volunteerLink: 'https://dos.myflorida.com/elections/for-voters/become-a-poll-worker/',
+    absenteeLink: 'https://dos.myflorida.com/elections/for-voters/voting/vote-by-mail/',
+    registrationDeadline: '2025-10-07',
+    absenteeRequestDeadline: '2025-10-28',
+    absenteeReturnDeadline: '2025-11-04 7:00 PM',
+    earlyVotingStart: '2025-10-25',
+    earlyVotingEnd: '2025-11-02'
   },
   'Georgia': {
-    register: 'https://sos.ga.gov/how-to-guide/how-guide-register-vote',
-    polling: 'https://mvp.sos.ga.gov/s/',
-    absentee: 'https://sos.ga.gov/how-to-guide/how-guide-absentee-voting',
-    volunteer: 'https://sos.ga.gov/poll-worker-training'
+    registrationLink: 'https://sos.ga.gov/how-to-guide/how-guide-register-vote',
+    statusCheckLink: 'https://mvp.sos.ga.gov/s/',
+    pollingPlaceLink: 'https://mvp.sos.ga.gov/s/',
+    volunteerLink: 'https://sos.ga.gov/poll-worker-training',
+    absenteeLink: 'https://sos.ga.gov/how-to-guide/how-guide-absentee-voting',
+    registrationDeadline: '2025-10-06',
+    absenteeRequestDeadline: '2025-10-29',
+    absenteeReturnDeadline: '2025-11-04 7:00 PM',
+    earlyVotingStart: '2025-10-14',
+    earlyVotingEnd: '2025-10-31'
   },
   'Hawaii': {
-    register: 'https://elections.hawaii.gov/voters/registration/',
-    polling: 'https://elections.hawaii.gov/voters/voting-locations/',
-    absentee: 'https://elections.hawaii.gov/voters/absentee-voting/',
-    volunteer: 'https://elections.hawaii.gov/volunteer/'
+    registrationLink: 'https://elections.hawaii.gov/voters/registration/',
+    statusCheckLink: 'https://olvr.hawaii.gov/',
+    pollingPlaceLink: 'https://elections.hawaii.gov/voters/voting-locations/',
+    volunteerLink: 'https://elections.hawaii.gov/volunteer/',
+    absenteeLink: 'https://elections.hawaii.gov/voters/absentee-voting/',
+    registrationDeadline: '2025-10-14',
+    absenteeRequestDeadline: '2025-10-28',
+    absenteeReturnDeadline: '2025-11-04 7:00 PM',
+    earlyVotingStart: '2025-10-21',
+    earlyVotingEnd: '2025-11-04'
   },
   'Idaho': {
-    register: 'https://voteidaho.gov/voter-registration/',
-    polling: 'https://voteidaho.gov/vote-early-vote-in-person/',
-    absentee: 'https://voteidaho.gov/absentee-voting/',
-    volunteer: 'https://voteidaho.gov/election-day-poll-worker/'
+    registrationLink: 'https://voteidaho.gov/voter-registration/',
+    statusCheckLink: 'https://elections.sos.idaho.gov/ElectionLink/ElectionLink/VoterSearch.aspx',
+    pollingPlaceLink: 'https://voteidaho.gov/vote-early-vote-in-person/',
+    volunteerLink: 'https://voteidaho.gov/election-day-poll-worker/',
+    absenteeLink: 'https://voteidaho.gov/absentee-voting/',
+    registrationDeadline: '2025-10-20',
+    absenteeRequestDeadline: '2025-10-31',
+    absenteeReturnDeadline: '2025-11-04 8:00 PM',
+    earlyVotingStart: '2025-10-20',
+    earlyVotingEnd: '2025-10-31'
   },
   'Illinois': {
-    register: 'https://www.elections.il.gov/VoterReg.aspx',
-    polling: 'https://www.elections.il.gov/PollingPlaces.aspx',
-    absentee: 'https://www.elections.il.gov/VotingByMail.aspx',
-    volunteer: 'https://www.elections.il.gov/PollWorker.aspx'
+    registrationLink: 'https://www.elections.il.gov/VoterReg.aspx',
+    statusCheckLink: 'https://ova.elections.il.gov/RegistrationLookup.aspx',
+    pollingPlaceLink: 'https://www.elections.il.gov/PollingPlaces.aspx',
+    volunteerLink: 'https://www.elections.il.gov/PollWorker.aspx',
+    absenteeLink: 'https://www.elections.il.gov/VotingByMail.aspx',
+    registrationDeadline: '2025-10-21',
+    absenteeRequestDeadline: '2025-10-31',
+    absenteeReturnDeadline: '2025-11-04 7:00 PM',
+    earlyVotingStart: '2025-09-25',
+    earlyVotingEnd: '2025-11-04'
   },
   'Indiana': {
-    register: 'https://indianavoters.in.gov/MVPHome/PrintDocuments',
-    polling: 'https://indianavoters.in.gov/PublicSite/Public/FT1/PublicLookupMain.aspx?Link=Polling',
-    absentee: 'https://www.in.gov/sos/elections/absentee-voting/',
-    volunteer: 'https://www.in.gov/sos/elections/poll-workers/'
+    registrationLink: 'https://indianavoters.in.gov/MVPHome/PrintDocuments',
+    statusCheckLink: 'https://indianavoters.in.gov/',
+    pollingPlaceLink: 'https://indianavoters.in.gov/PublicSite/Public/FT1/PublicLookupMain.aspx?Link=Polling',
+    volunteerLink: 'https://www.in.gov/sos/elections/poll-workers/',
+    absenteeLink: 'https://www.in.gov/sos/elections/absentee-voting/',
+    registrationDeadline: '2025-10-07',
+    absenteeRequestDeadline: '2025-10-31',
+    absenteeReturnDeadline: '2025-11-04 6:00 PM',
+    earlyVotingStart: '2025-10-07',
+    earlyVotingEnd: '2025-11-03'
   },
   'Iowa': {
-    register: 'https://sos.iowa.gov/elections/voterinformation/voterregistration.html',
-    polling: 'https://sos.iowa.gov/elections/voterinformation/edayreg.html',
-    absentee: 'https://sos.iowa.gov/elections/voterinformation/absenteeinfo.html',
-    volunteer: 'https://sos.iowa.gov/elections/pollworker/index.html'
+    registrationLink: 'https://sos.iowa.gov/elections/voterinformation/voterregistration.html',
+    statusCheckLink: 'https://sos.iowa.gov/elections/voterinformation/voterregistration.html',
+    pollingPlaceLink: 'https://sos.iowa.gov/elections/voterinformation/edayreg.html',
+    volunteerLink: 'https://sos.iowa.gov/elections/pollworker/index.html',
+    absenteeLink: 'https://sos.iowa.gov/elections/voterinformation/absenteeinfo.html',
+    registrationDeadline: '2025-10-21',
+    absenteeRequestDeadline: '2025-10-31',
+    absenteeReturnDeadline: '2025-11-04 8:00 PM',
+    earlyVotingStart: '2025-10-15',
+    earlyVotingEnd: '2025-11-03'
   },
   'Kansas': {
-    register: 'https://sos.ks.gov/elections/voter-registration.html',
-    polling: 'https://myvoteinfo.voteks.org/voterview',
-    absentee: 'https://sos.ks.gov/elections/advance-voting.html',
-    volunteer: 'https://sos.ks.gov/elections/poll-worker-information.html'
+    registrationLink: 'https://sos.ks.gov/elections/voter-registration.html',
+    statusCheckLink: 'https://myvoteinfo.voteks.org/voterview',
+    pollingPlaceLink: 'https://myvoteinfo.voteks.org/voterview',
+    volunteerLink: 'https://sos.ks.gov/elections/poll-worker-information.html',
+    absenteeLink: 'https://sos.ks.gov/elections/advance-voting.html',
+    registrationDeadline: '2025-10-14',
+    absenteeRequestDeadline: '2025-10-28',
+    absenteeReturnDeadline: '2025-11-04 7:00 PM',
+    earlyVotingStart: '2025-10-20',
+    earlyVotingEnd: '2025-11-03'
   },
   'Kentucky': {
-    register: 'https://elect.ky.gov/registertovote/Pages/default.aspx',
-    polling: 'https://elect.ky.gov/Voters/Pages/Polling-Locations.aspx',
-    absentee: 'https://elect.ky.gov/Voters/Pages/Absentee-Voting.aspx',
-    volunteer: 'https://elect.ky.gov/Voters/Pages/Poll-Worker-Training.aspx'
+    registrationLink: 'https://elect.ky.gov/registertovote/Pages/default.aspx',
+    statusCheckLink: 'https://vrsws.sos.ky.gov/ovrweb/',
+    pollingPlaceLink: 'https://elect.ky.gov/Voters/Pages/Polling-Locations.aspx',
+    volunteerLink: 'https://elect.ky.gov/Voters/Pages/Poll-Worker-Training.aspx',
+    absenteeLink: 'https://elect.ky.gov/Voters/Pages/Absentee-Voting.aspx',
+    registrationDeadline: '2025-10-07',
+    absenteeRequestDeadline: '2025-10-31',
+    absenteeReturnDeadline: '2025-11-04 6:00 PM',
+    earlyVotingStart: '2025-10-30',
+    earlyVotingEnd: '2025-11-01'
   },
   'Louisiana': {
-    register: 'https://www.sos.la.gov/ElectionsAndVoting/Pages/OnlineVoterRegistration.aspx',
-    polling: 'https://voterportal.sos.la.gov/',
-    absentee: 'https://www.sos.la.gov/ElectionsAndVoting/Vote/VoteByMail/Pages/default.aspx',
-    volunteer: 'https://www.sos.la.gov/ElectionsAndVoting/GetInvolved/BecomeACommissioner/Pages/default.aspx'
+    registrationLink: 'https://www.sos.la.gov/ElectionsAndVoting/Pages/OnlineVoterRegistration.aspx',
+    statusCheckLink: 'https://voterportal.sos.la.gov/',
+    pollingPlaceLink: 'https://voterportal.sos.la.gov/',
+    volunteerLink: 'https://www.sos.la.gov/ElectionsAndVoting/GetInvolved/BecomeACommissioner/Pages/default.aspx',
+    absenteeLink: 'https://www.sos.la.gov/ElectionsAndVoting/Vote/VoteByMail/Pages/default.aspx',
+    registrationDeadline: '2025-10-14',
+    absenteeRequestDeadline: '2025-11-01',
+    absenteeReturnDeadline: '2025-11-04 8:00 PM',
+    earlyVotingStart: '2025-10-18',
+    earlyVotingEnd: '2025-10-28'
   },
   'Maine': {
-    register: 'https://www.maine.gov/sos/cec/elec/voter-info/voterreg.html',
-    polling: 'https://www.maine.gov/sos/cec/elec/voter-info/pollfinder/index.html',
-    absentee: 'https://www.maine.gov/sos/cec/elec/voter-info/absent.html',
-    volunteer: 'https://www.maine.gov/sos/cec/elec/municipal/election-warden-guide.pdf'
+    registrationLink: 'https://www.maine.gov/sos/cec/elec/voter-info/voterreg.html',
+    statusCheckLink: 'https://www.maine.gov/sos/cec/elec/voter-info/voter-lookup.html',
+    pollingPlaceLink: 'https://www.maine.gov/sos/cec/elec/voter-info/pollfinder/index.html',
+    volunteerLink: 'https://www.maine.gov/sos/cec/elec/municipal/election-warden-guide.pdf',
+    absenteeLink: 'https://www.maine.gov/sos/cec/elec/voter-info/absent.html',
+    registrationDeadline: '2025-10-29',
+    absenteeRequestDeadline: '2025-11-01',
+    absenteeReturnDeadline: '2025-11-04 8:00 PM',
+    earlyVotingStart: null,
+    earlyVotingEnd: null
   },
   'Maryland': {
-    register: 'https://elections.maryland.gov/voter_registration/index.html',
-    polling: 'https://elections.maryland.gov/voting/early_voting.html',
-    absentee: 'https://elections.maryland.gov/voting/absentee.html',
-    volunteer: 'https://elections.maryland.gov/get_involved/election_judges.html'
+    registrationLink: 'https://elections.maryland.gov/voter_registration/index.html',
+    statusCheckLink: 'https://voterservices.elections.maryland.gov/VoterSearch',
+    pollingPlaceLink: 'https://elections.maryland.gov/voting/early_voting.html',
+    volunteerLink: 'https://elections.maryland.gov/get_involved/election_judges.html',
+    absenteeLink: 'https://elections.maryland.gov/voting/absentee.html',
+    registrationDeadline: '2025-10-14',
+    absenteeRequestDeadline: '2025-10-21',
+    absenteeReturnDeadline: '2025-11-04 8:00 PM',
+    earlyVotingStart: '2025-10-23',
+    earlyVotingEnd: '2025-10-30'
   },
   'Massachusetts': {
-    register: 'https://www.sec.state.ma.us/ovr/',
-    polling: 'https://www.sec.state.ma.us/WhereDoIVoteMA/WhereDoIVote',
-    absentee: 'https://www.sec.state.ma.us/ele/eleabs/absidx.htm',
-    volunteer: 'https://www.sec.state.ma.us/ele/elepollworkers/pollworkersidx.htm'
+    registrationLink: 'https://www.sec.state.ma.us/ovr/',
+    statusCheckLink: 'https://www.sec.state.ma.us/VoterRegistrationSearch/MyVoterRegStatus.aspx',
+    pollingPlaceLink: 'https://www.sec.state.ma.us/WhereDoIVoteMA/WhereDoIVote',
+    volunteerLink: 'https://www.sec.state.ma.us/ele/elepollworkers/pollworkersidx.htm',
+    absenteeLink: 'https://www.sec.state.ma.us/ele/eleabs/absidx.htm',
+    registrationDeadline: '2025-10-19',
+    absenteeRequestDeadline: '2025-10-29',
+    absenteeReturnDeadline: '2025-11-04 8:00 PM',
+    earlyVotingStart: '2025-10-18',
+    earlyVotingEnd: '2025-10-31'
   },
   'Michigan': {
-    register: 'https://mvic.sos.state.mi.us/RegisterVoter/Index',
-    polling: 'https://mvic.sos.state.mi.us/Voter/Index',
-    absentee: 'https://mvic.sos.state.mi.us/AVApplication/Index',
-    volunteer: 'https://www.michigan.gov/sos/elections/administrator/election-workers'
+    registrationLink: 'https://mvic.sos.state.mi.us/RegisterVoter/Index',
+    statusCheckLink: 'https://mvic.sos.state.mi.us/Voter/Index',
+    pollingPlaceLink: 'https://mvic.sos.state.mi.us/Voter/Index',
+    volunteerLink: 'https://www.michigan.gov/sos/elections/administrator/election-workers',
+    absenteeLink: 'https://mvic.sos.state.mi.us/AVApplication/Index',
+    registrationDeadline: '2025-10-20',
+    absenteeRequestDeadline: '2025-10-27',
+    absenteeReturnDeadline: '2025-11-04 8:00 PM',
+    earlyVotingStart: '2025-10-20',
+    earlyVotingEnd: '2025-11-04'
   },
   'Minnesota': {
-    register: 'https://www.sos.state.mn.us/elections-voting/register-to-vote/',
-    polling: 'https://pollfinder.sos.state.mn.us/',
-    absentee: 'https://www.sos.state.mn.us/elections-voting/other-ways-to-vote/vote-early-by-mail/',
-    volunteer: 'https://www.sos.state.mn.us/elections-voting/get-involved/become-an-election-judge/'
+    registrationLink: 'https://www.sos.state.mn.us/elections-voting/register-to-vote/',
+    statusCheckLink: 'https://mnvotes.sos.state.mn.us/VoterStatus.aspx',
+    pollingPlaceLink: 'https://pollfinder.sos.state.mn.us/',
+    volunteerLink: 'https://www.sos.state.mn.us/elections-voting/get-involved/become-an-election-judge/',
+    absenteeLink: 'https://www.sos.state.mn.us/elections-voting/other-ways-to-vote/vote-early-by-mail/',
+    registrationDeadline: '2025-10-14',
+    absenteeRequestDeadline: '2025-10-31',
+    absenteeReturnDeadline: '2025-11-04 8:00 PM',
+    earlyVotingStart: '2025-09-19',
+    earlyVotingEnd: '2025-11-03'
   },
   'Mississippi': {
-    register: 'https://www.sos.ms.gov/elections-voting/voter-registration',
-    polling: 'https://myelectionday.sos.state.ms.us/VoterSearch/PollingLocation.aspx',
-    absentee: 'https://www.sos.ms.gov/elections-voting/absentee-voting',
-    volunteer: 'https://www.sos.ms.gov/elections-voting/poll-worker-training'
+    registrationLink: 'https://www.sos.ms.gov/elections-voting/voter-registration',
+    statusCheckLink: 'https://myelectionday.sos.state.ms.us/VoterSearch/VoterStatus.aspx',
+    pollingPlaceLink: 'https://myelectionday.sos.state.ms.us/VoterSearch/PollingLocation.aspx',
+    volunteerLink: 'https://www.sos.ms.gov/elections-voting/poll-worker-training',
+    absenteeLink: 'https://www.sos.ms.gov/elections-voting/absentee-voting',
+    registrationDeadline: '2025-10-07',
+    absenteeRequestDeadline: '2025-10-31',
+    absenteeReturnDeadline: '2025-11-04 7:00 PM',
+    earlyVotingStart: null,
+    earlyVotingEnd: null
   },
   'Missouri': {
-    register: 'https://www.sos.mo.gov/elections/goVoteMissouri/register',
-    polling: 'https://s1.sos.mo.gov/elections/pollingplacelookup',
-    absentee: 'https://www.sos.mo.gov/elections/goVoteMissouri/howtovote#absentee',
-    volunteer: 'https://www.sos.mo.gov/elections/pollworker'
+    registrationLink: 'https://www.sos.mo.gov/elections/goVoteMissouri/register',
+    statusCheckLink: 'https://s1.sos.mo.gov/elections/voterlookup',
+    pollingPlaceLink: 'https://s1.sos.mo.gov/elections/pollingplacelookup',
+    volunteerLink: 'https://www.sos.mo.gov/elections/pollworker',
+    absenteeLink: 'https://www.sos.mo.gov/elections/goVoteMissouri/howtovote#absentee',
+    registrationDeadline: '2025-10-07',
+    absenteeRequestDeadline: '2025-10-29',
+    absenteeReturnDeadline: '2025-11-04 7:00 PM',
+    earlyVotingStart: '2025-10-21',
+    earlyVotingEnd: '2025-11-03'
   },
   'Montana': {
-    register: 'https://sosmt.gov/elections/voter/',
-    polling: 'https://sosmt.gov/elections/vote/',
-    absentee: 'https://sosmt.gov/elections/absentee/',
-    volunteer: 'https://sosmt.gov/elections/poll-worker/'
+    registrationLink: 'https://sosmt.gov/elections/voter/',
+    statusCheckLink: 'https://app.mt.gov/voterinfo/',
+    pollingPlaceLink: 'https://sosmt.gov/elections/vote/',
+    volunteerLink: 'https://sosmt.gov/elections/poll-worker/',
+    absenteeLink: 'https://sosmt.gov/elections/absentee/',
+    registrationDeadline: '2025-10-27',
+    absenteeRequestDeadline: '2025-10-31',
+    absenteeReturnDeadline: '2025-11-04 8:00 PM',
+    earlyVotingStart: '2025-10-06',
+    earlyVotingEnd: '2025-11-03'
   },
   'Nebraska': {
-    register: 'https://www.nebraska.gov/apps-sos-voter-registration',
-    polling: 'https://www.voterinformationlookup.nebraska.gov/voterlookup',
-    absentee: 'https://sos.nebraska.gov/elections/absentee-voting',
-    volunteer: 'https://sos.nebraska.gov/elections/poll-worker-information'
+    registrationLink: 'https://www.nebraska.gov/apps-sos-voter-registration',
+    statusCheckLink: 'https://www.voterinformationlookup.nebraska.gov/voterlookup',
+    pollingPlaceLink: 'https://www.voterinformationlookup.nebraska.gov/voterlookup',
+    volunteerLink: 'https://sos.nebraska.gov/elections/poll-worker-information',
+    absenteeLink: 'https://sos.nebraska.gov/elections/absentee-voting',
+    registrationDeadline: '2025-10-20',
+    absenteeRequestDeadline: '2025-10-24',
+    absenteeReturnDeadline: '2025-11-04 8:00 PM',
+    earlyVotingStart: '2025-10-06',
+    earlyVotingEnd: '2025-11-03'
   },
   'Nevada': {
-    register: 'https://www.nvsos.gov/sos/voter-services/registering-to-vote',
-    polling: 'https://www.nvsos.gov/sos/elections/voters/polling-place-locator',
-    absentee: 'https://www.nvsos.gov/sos/elections/voters/absentee-voting',
-    volunteer: 'https://www.nvsos.gov/sos/elections/poll-workers'
+    registrationLink: 'https://www.nvsos.gov/sos/voter-services/registering-to-vote',
+    statusCheckLink: 'https://www.nvsos.gov/votersearch/',
+    pollingPlaceLink: 'https://www.nvsos.gov/sos/elections/voters/polling-place-locator',
+    volunteerLink: 'https://www.nvsos.gov/sos/elections/poll-workers',
+    absenteeLink: 'https://www.nvsos.gov/sos/elections/voters/absentee-voting',
+    registrationDeadline: '2025-10-20',
+    absenteeRequestDeadline: '2025-10-31',
+    absenteeReturnDeadline: '2025-11-04 7:00 PM',
+    earlyVotingStart: '2025-10-18',
+    earlyVotingEnd: '2025-10-31'
   },
   'New Hampshire': {
-    register: 'https://sos.nh.gov/elections/voters/register-to-vote/',
-    polling: 'https://app.sos.nh.gov/voterinformation',
-    absentee: 'https://sos.nh.gov/elections/voters/absentee-ballots/',
-    volunteer: 'https://sos.nh.gov/elections/election-officials/poll-worker-resources/'
+    registrationLink: 'https://sos.nh.gov/elections/voters/register-to-vote/',
+    statusCheckLink: 'https://app.sos.nh.gov/voterinformation',
+    pollingPlaceLink: 'https://app.sos.nh.gov/voterinformation',
+    volunteerLink: 'https://sos.nh.gov/elections/election-officials/poll-worker-resources/',
+    absenteeLink: 'https://sos.nh.gov/elections/voters/absentee-ballots/',
+    registrationDeadline: '2025-10-29',
+    absenteeRequestDeadline: '2025-11-01',
+    absenteeReturnDeadline: '2025-11-04 5:00 PM',
+    earlyVotingStart: null,
+    earlyVotingEnd: null
   },
   'New Jersey': {
-    register: 'https://nj.gov/state/elections/voter-registration.shtml',
-    polling: 'https://nj.gov/state/elections/vote-polling-locations.shtml',
-    absentee: 'https://nj.gov/state/elections/vote-by-mail.shtml',
-    volunteer: 'https://nj.gov/state/elections/poll-worker.shtml'
+    registrationLink: 'https://nj.gov/state/elections/voter-registration.shtml',
+    statusCheckLink: 'https://voter.svrs.nj.gov/register/status',
+    pollingPlaceLink: 'https://nj.gov/state/elections/vote-polling-locations.shtml',
+    volunteerLink: 'https://nj.gov/state/elections/poll-worker.shtml',
+    absenteeLink: 'https://nj.gov/state/elections/vote-by-mail.shtml',
+    registrationDeadline: '2025-10-14',
+    absenteeRequestDeadline: '2025-10-31',
+    absenteeReturnDeadline: '2025-11-04 8:00 PM',
+    earlyVotingStart: '2025-10-25',
+    earlyVotingEnd: '2025-11-02'
   },
   'New Mexico': {
-    register: 'https://www.sos.state.nm.us/voting-and-elections/voter-information-portal-nmvote-org/voter-registration-information/',
-    polling: 'https://voterinfo.sos.state.nm.us/whereToVote.aspx',
-    absentee: 'https://www.sos.state.nm.us/voting-and-elections/absentee-and-early-voting/absentee-voting-by-mail/',
-    volunteer: 'https://www.sos.state.nm.us/voting-and-elections/become-a-poll-worker/'
+    registrationLink: 'https://www.sos.state.nm.us/voting-and-elections/voter-information-portal-nmvote-org/voter-registration-information/',
+    statusCheckLink: 'https://voterinfo.sos.state.nm.us/',
+    pollingPlaceLink: 'https://voterinfo.sos.state.nm.us/whereToVote.aspx',
+    volunteerLink: 'https://www.sos.state.nm.us/voting-and-elections/become-a-poll-worker/',
+    absenteeLink: 'https://www.sos.state.nm.us/voting-and-elections/absentee-and-early-voting/absentee-voting-by-mail/',
+    registrationDeadline: '2025-10-07',
+    absenteeRequestDeadline: '2025-10-28',
+    absenteeReturnDeadline: '2025-11-04 7:00 PM',
+    earlyVotingStart: '2025-10-07',
+    earlyVotingEnd: '2025-11-01'
   },
   'New York': {
-    register: 'https://www.elections.ny.gov/registervote.html',
-    polling: 'https://voterlookup.elections.ny.gov/votersearch.aspx',
-    absentee: 'https://www.elections.ny.gov/votingabsentees.html',
-    volunteer: 'https://www.elections.ny.gov/becomepollworker.html'
+    registrationLink: 'https://www.elections.ny.gov/registervote.html',
+    statusCheckLink: 'https://voterlookup.elections.ny.gov/votersearch.aspx',
+    pollingPlaceLink: 'https://voterlookup.elections.ny.gov/votersearch.aspx',
+    volunteerLink: 'https://www.elections.ny.gov/becomepollworker.html',
+    absenteeLink: 'https://www.elections.ny.gov/votingabsentees.html',
+    registrationDeadline: '2025-10-27',
+    absenteeRequestDeadline: '2025-10-31',
+    absenteeReturnDeadline: '2025-11-04 9:00 PM',
+    earlyVotingStart: '2025-10-25',
+    earlyVotingEnd: '2025-11-02'
   },
   'North Carolina': {
-    register: 'https://www.ncsbe.gov/registering/how-register',
-    polling: 'https://vt.ncsbe.gov/PPLkup/',
-    absentee: 'https://www.ncsbe.gov/voting/vote-mail/absentee-ballot-tools',
-    volunteer: 'https://www.ncsbe.gov/get-involved/become-precinct-official'
+    registrationLink: 'https://www.ncsbe.gov/registering/how-register',
+    statusCheckLink: 'https://vt.ncsbe.gov/VRInfo/',
+    pollingPlaceLink: 'https://vt.ncsbe.gov/PPLkup/',
+    volunteerLink: 'https://www.ncsbe.gov/get-involved/become-precinct-official',
+    absenteeLink: 'https://www.ncsbe.gov/voting/vote-mail/absentee-ballot-tools',
+    registrationDeadline: '2025-10-14',
+    absenteeRequestDeadline: '2025-10-28',
+    absenteeReturnDeadline: '2025-11-04 7:30 PM',
+    earlyVotingStart: '2025-10-16',
+    earlyVotingEnd: '2025-11-01'
   },
   'North Dakota': {
-    register: 'https://sos.nd.gov/elections/voter/voting-north-dakota',
-    polling: 'https://vip.sos.nd.gov/WhereToVote.aspx?tab=AddressandVotingTimes',
-    absentee: 'https://sos.nd.gov/elections/voter/absentee-or-mail-ballot-voting',
-    volunteer: 'https://sos.nd.gov/elections/election-officials/poll-workers'
+    registrationLink: 'https://sos.nd.gov/elections/voter/voting-north-dakota',
+    statusCheckLink: 'https://vip.sos.nd.gov/WhereToVote.aspx?tab=Voter%20Information',
+    pollingPlaceLink: 'https://vip.sos.nd.gov/WhereToVote.aspx?tab=AddressandVotingTimes',
+    volunteerLink: 'https://sos.nd.gov/elections/election-officials/poll-workers',
+    absenteeLink: 'https://sos.nd.gov/elections/voter/absentee-or-mail-ballot-voting',
+    registrationDeadline: null, // No voter registration required
+    absenteeRequestDeadline: '2025-10-31',
+    absenteeReturnDeadline: '2025-11-04 8:00 PM',
+    earlyVotingStart: '2025-10-20',
+    earlyVotingEnd: '2025-11-03'
   },
   'Ohio': {
-    register: 'https://olvr.ohiosos.gov/',
-    polling: 'https://www.ohiosos.gov/elections/voters/toolkit/polling-location/',
-    absentee: 'https://www.ohiosos.gov/elections/voters/absentee-voting/',
-    volunteer: 'https://www.ohiosos.gov/elections/election-officials/poll-worker-training/'
+    registrationLink: 'https://olvr.ohiosos.gov/',
+    statusCheckLink: 'https://voterlookup.ohiosos.gov/voterlookup.aspx',
+    pollingPlaceLink: 'https://www.ohiosos.gov/elections/voters/toolkit/polling-location/',
+    volunteerLink: 'https://www.ohiosos.gov/elections/election-officials/poll-worker-training/',
+    absenteeLink: 'https://www.ohiosos.gov/elections/voters/absentee-voting/',
+    registrationDeadline: '2025-10-07',
+    absenteeRequestDeadline: '2025-10-29',
+    absenteeReturnDeadline: '2025-11-04 7:30 PM',
+    earlyVotingStart: '2025-10-07',
+    earlyVotingEnd: '2025-11-03'
   },
   'Oklahoma': {
-    register: 'https://oklahoma.gov/elections/voters/register-to-vote.html',
-    polling: 'https://okvoterportal.okelections.us/',
-    absentee: 'https://oklahoma.gov/elections/voters/absentee-voting.html',
-    volunteer: 'https://oklahoma.gov/elections/election-officials/become-poll-worker.html'
+    registrationLink: 'https://oklahoma.gov/elections/voters/register-to-vote.html',
+    statusCheckLink: 'https://okvoterportal.okelections.us/',
+    pollingPlaceLink: 'https://okvoterportal.okelections.us/',
+    volunteerLink: 'https://oklahoma.gov/elections/election-officials/become-poll-worker.html',
+    absenteeLink: 'https://oklahoma.gov/elections/voters/absentee-voting.html',
+    registrationDeadline: '2025-10-14',
+    absenteeRequestDeadline: '2025-10-28',
+    absenteeReturnDeadline: '2025-11-04 7:00 PM',
+    earlyVotingStart: '2025-10-30',
+    earlyVotingEnd: '2025-11-01'
   },
   'Oregon': {
-    register: 'https://sos.oregon.gov/elections/Pages/registration.aspx',
-    polling: 'https://sos.oregon.gov/voting/Pages/drop-box-locator.aspx',
-    absentee: 'https://sos.oregon.gov/elections/Pages/votebymail.aspx',
-    volunteer: 'https://sos.oregon.gov/elections/Pages/election-officials.aspx'
+    registrationLink: 'https://sos.oregon.gov/elections/Pages/registration.aspx',
+    statusCheckLink: 'https://secure.sos.state.or.us/orestar/vr/showVoterSearch.do',
+    pollingPlaceLink: 'https://sos.oregon.gov/voting/Pages/drop-box-locator.aspx',
+    volunteerLink: 'https://sos.oregon.gov/elections/Pages/election-officials.aspx',
+    absenteeLink: 'https://sos.oregon.gov/elections/Pages/votebymail.aspx',
+    registrationDeadline: '2025-10-21',
+    absenteeRequestDeadline: '2025-10-29',
+    absenteeReturnDeadline: '2025-11-04 8:00 PM',
+    earlyVotingStart: null,
+    earlyVotingEnd: null
   },
   'Pennsylvania': {
-    register: 'https://pavoterservices.pa.gov/Pages/VoterRegistrationApplication.aspx',
-    polling: 'https://www.pavoterservices.pa.gov/Pages/PollingPlaceInfo.aspx',
-    absentee: 'https://www.pa.gov/en/agencies/vote/other-election-information/vote-by-mail.html',
-    volunteer: 'https://www.pa.gov/en/agencies/vote/help-america-vote/poll-workers.html'
+    registrationLink: 'https://pavoterservices.pa.gov/Pages/VoterRegistrationApplication.aspx',
+    statusCheckLink: 'https://www.pavoterservices.pa.gov/Pages/VoterRegistrationStatus.aspx',
+    pollingPlaceLink: 'https://www.pavoterservices.pa.gov/Pages/PollingPlaceInfo.aspx',
+    volunteerLink: 'https://www.pa.gov/en/agencies/vote/help-america-vote/poll-workers.html',
+    absenteeLink: 'https://www.pa.gov/en/agencies/vote/other-election-information/vote-by-mail.html',
+    registrationDeadline: '2025-10-21',
+    absenteeRequestDeadline: '2025-10-31',
+    absenteeReturnDeadline: '2025-11-04 8:00 PM',
+    earlyVotingStart: null,
+    earlyVotingEnd: null
   },
   'Rhode Island': {
-    register: 'https://vote.sos.ri.gov/Voter/RegisterToVote',
-    polling: 'https://vote.sos.ri.gov/Voter/VoteLocation',
-    absentee: 'https://vote.sos.ri.gov/Voter/MailBallot',
-    volunteer: 'https://vote.sos.ri.gov/PollWorker'
+    registrationLink: 'https://vote.sos.ri.gov/Voter/RegisterToVote',
+    statusCheckLink: 'https://vote.sos.ri.gov/Home/UpdateVoterRecord?ActiveFlag=0',
+    pollingPlaceLink: 'https://vote.sos.ri.gov/Voter/VoteLocation',
+    volunteerLink: 'https://vote.sos.ri.gov/PollWorker',
+    absenteeLink: 'https://vote.sos.ri.gov/Voter/MailBallot',
+    registrationDeadline: '2025-10-06',
+    absenteeRequestDeadline: '2025-10-29',
+    absenteeReturnDeadline: '2025-11-04 8:00 PM',
+    earlyVotingStart: '2025-10-15',
+    earlyVotingEnd: '2025-11-03'
   },
   'South Carolina': {
-    register: 'https://scvotes.gov/voters/register-to-vote/',
-    polling: 'https://scvotes.gov/voters/find-your-polling-place/',
-    absentee: 'https://scvotes.gov/voters/absentee-voting/',
-    volunteer: 'https://scvotes.gov/poll-managers/'
+    registrationLink: 'https://scvotes.gov/voters/register-to-vote/',
+    statusCheckLink: 'https://info.scvotes.sc.gov/eng/voterinquiry/VoterInquiry/voterInquiry.action',
+    pollingPlaceLink: 'https://scvotes.gov/voters/find-your-polling-place/',
+    volunteerLink: 'https://scvotes.gov/poll-managers/',
+    absenteeLink: 'https://scvotes.gov/voters/absentee-voting/',
+    registrationDeadline: '2025-10-07',
+    absenteeRequestDeadline: '2025-10-28',
+    absenteeReturnDeadline: '2025-11-04 7:00 PM',
+    earlyVotingStart: '2025-10-20',
+    earlyVotingEnd: '2025-11-01'
   },
   'South Dakota': {
-    register: 'https://sdsos.gov/elections-voting/voting/register-to-vote/default.aspx',
-    polling: 'https://vip.sdsos.gov/VIPLogin.aspx',
-    absentee: 'https://sdsos.gov/elections-voting/voting/absentee-voting.aspx',
-    volunteer: 'https://sdsos.gov/elections-voting/election-officials/poll-worker-information.aspx'
+    registrationLink: 'https://sdsos.gov/elections-voting/voting/register-to-vote/default.aspx',
+    statusCheckLink: 'https://vip.sdsos.gov/VIPLogin.aspx',
+    pollingPlaceLink: 'https://vip.sdsos.gov/VIPLogin.aspx',
+    volunteerLink: 'https://sdsos.gov/elections-voting/election-officials/poll-worker-information.aspx',
+    absenteeLink: 'https://sdsos.gov/elections-voting/voting/absentee-voting.aspx',
+    registrationDeadline: '2025-10-20',
+    absenteeRequestDeadline: '2025-10-31',
+    absenteeReturnDeadline: '2025-11-04 7:00 PM',
+    earlyVotingStart: '2025-09-19',
+    earlyVotingEnd: '2025-11-03'
   },
   'Tennessee': {
-    register: 'https://sos.tn.gov/elections/guides/how-to-register-to-vote',
-    polling: 'https://tnmap.tn.gov/voterlookup/',
-    absentee: 'https://sos.tn.gov/elections/guides/how-to-vote-absentee-by-mail',
-    volunteer: 'https://sos.tn.gov/elections/guides/become-a-poll-official'
+    registrationLink: 'https://sos.tn.gov/elections/guides/how-to-register-to-vote',
+    statusCheckLink: 'https://tnmap.tn.gov/voterlookup/',
+    pollingPlaceLink: 'https://tnmap.tn.gov/voterlookup/',
+    volunteerLink: 'https://sos.tn.gov/elections/guides/become-a-poll-official',
+    absenteeLink: 'https://sos.tn.gov/elections/guides/how-to-vote-absentee-by-mail',
+    registrationDeadline: '2025-10-07',
+    absenteeRequestDeadline: '2025-10-28',
+    absenteeReturnDeadline: '2025-11-04 8:00 PM',
+    earlyVotingStart: '2025-10-15',
+    earlyVotingEnd: '2025-10-30'
   },
   'Texas': {
-    register: 'https://www.sos.state.tx.us/elections/voter/reqvr.shtml',
-    polling: 'https://www.sos.state.tx.us/elections/voter/votreg.shtml',
-    absentee: 'https://www.sos.state.tx.us/elections/voter/absentee-ballot.shtml',
-    volunteer: 'https://www.sos.state.tx.us/elections/voter/election-officials.shtml'
+    registrationLink: 'https://www.sos.state.tx.us/elections/voter/reqvr.shtml',
+    statusCheckLink: 'https://teamrv-mvp.sos.texas.gov/MVP/mvp.do',
+    pollingPlaceLink: 'https://www.sos.state.tx.us/elections/voter/votreg.shtml',
+    volunteerLink: 'https://www.sos.state.tx.us/elections/voter/election-officials.shtml',
+    absenteeLink: 'https://www.sos.state.tx.us/elections/voter/absentee-ballot.shtml',
+    registrationDeadline: '2025-10-07',
+    absenteeRequestDeadline: '2025-10-28',
+    absenteeReturnDeadline: '2025-11-04 7:00 PM',
+    earlyVotingStart: '2025-10-20',
+    earlyVotingEnd: '2025-10-31'
   },
   'Utah': {
-    register: 'https://vote.utah.gov/register-to-vote/',
-    polling: 'https://votesearch.utah.gov/voter-search/search/search-by-address/how-and-where-can-i-vote',
-    absentee: 'https://vote.utah.gov/vote-by-mail/',
-    volunteer: 'https://vote.utah.gov/poll-worker/'
+    registrationLink: 'https://vote.utah.gov/register-to-vote/',
+    statusCheckLink: 'https://votesearch.utah.gov/voter-search/search/search-by-voter/voter-info',
+    pollingPlaceLink: 'https://votesearch.utah.gov/voter-search/search/search-by-address/how-and-where-can-i-vote',
+    volunteerLink: 'https://vote.utah.gov/poll-worker/',
+    absenteeLink: 'https://vote.utah.gov/vote-by-mail/',
+    registrationDeadline: '2025-10-21',
+    absenteeRequestDeadline: '2025-10-28',
+    absenteeReturnDeadline: '2025-11-04 8:00 PM',
+    earlyVotingStart: '2025-10-28',
+    earlyVotingEnd: '2025-11-03'
   },
   'Vermont': {
-    register: 'https://sos.vermont.gov/elections/voters/registration/',
-    polling: 'https://mvp.vermont.gov/',
-    absentee: 'https://sos.vermont.gov/elections/voters/absentee-ballots/',
-    volunteer: 'https://sos.vermont.gov/elections/election-officials/poll-worker-information/'
+    registrationLink: 'https://sos.vermont.gov/elections/voters/registration/',
+    statusCheckLink: 'https://mvp.vermont.gov/',
+    pollingPlaceLink: 'https://mvp.vermont.gov/',
+    volunteerLink: 'https://sos.vermont.gov/elections/election-officials/poll-worker-information/',
+    absenteeLink: 'https://sos.vermont.gov/elections/voters/absentee-ballots/',
+    registrationDeadline: '2025-10-29',
+    absenteeRequestDeadline: '2025-11-01',
+    absenteeReturnDeadline: '2025-11-04 7:00 PM',
+    earlyVotingStart: '2025-09-20',
+    earlyVotingEnd: '2025-11-03'
   },
   'Virginia': {
-    register: 'https://www.elections.virginia.gov/registration/how-to-register/',
-    polling: 'https://www.elections.virginia.gov/voter-information/polling-place-lookup/',
-    absentee: 'https://www.elections.virginia.gov/voter-information/absentee-voting/',
-    volunteer: 'https://www.elections.virginia.gov/poll-worker/'
+    registrationLink: 'https://www.elections.virginia.gov/registration/how-to-register/',
+    statusCheckLink: 'https://www.elections.virginia.gov/citizen-portal/',
+    pollingPlaceLink: 'https://www.elections.virginia.gov/voter-information/polling-place-lookup/',
+    volunteerLink: 'https://www.elections.virginia.gov/poll-worker/',
+    absenteeLink: 'https://www.elections.virginia.gov/voter-information/absentee-voting/',
+    registrationDeadline: '2025-10-14',
+    absenteeRequestDeadline: '2025-10-24',
+    absenteeReturnDeadline: '2025-11-04 7:00 PM',
+    earlyVotingStart: '2025-09-19',
+    earlyVotingEnd: '2025-11-01'
   },
   'Washington': {
-    register: 'https://www.sos.wa.gov/elections/register.aspx',
-    polling: 'https://voter.votewa.gov/WhereToVote.aspx',
-    absentee: 'https://www.sos.wa.gov/elections/absentee-voting.aspx',
-    volunteer: 'https://www.sos.wa.gov/elections/poll-workers.aspx'
+    registrationLink: 'https://www.sos.wa.gov/elections/register.aspx',
+    statusCheckLink: 'https://voter.votewa.gov/WhereToVote.aspx',
+    pollingPlaceLink: 'https://voter.votewa.gov/WhereToVote.aspx',
+    volunteerLink: 'https://www.sos.wa.gov/elections/poll-workers.aspx',
+    absenteeLink: 'https://www.sos.wa.gov/elections/absentee-voting.aspx',
+    registrationDeadline: '2025-10-27',
+    absenteeRequestDeadline: '2025-10-31',
+    absenteeReturnDeadline: '2025-11-04 8:00 PM',
+    earlyVotingStart: null,
+    earlyVotingEnd: null
   },
   'West Virginia': {
-    register: 'https://sos.wv.gov/elections/Pages/RegisterToVote.aspx',
-    polling: 'https://apps.sos.wv.gov/elections/voter/FindMyPollingPlace.aspx',
-    absentee: 'https://sos.wv.gov/elections/Pages/AbsenteeVoting.aspx',
-    volunteer: 'https://sos.wv.gov/elections/Pages/PollWorkerTraining.aspx'
+    registrationLink: 'https://sos.wv.gov/elections/Pages/RegisterToVote.aspx',
+    statusCheckLink: 'https://apps.sos.wv.gov/Elections/Voter/AmIRegisteredToVote.aspx',
+    pollingPlaceLink: 'https://apps.sos.wv.gov/elections/voter/FindMyPollingPlace.aspx',
+    volunteerLink: 'https://sos.wv.gov/elections/Pages/PollWorkerTraining.aspx',
+    absenteeLink: 'https://sos.wv.gov/elections/Pages/AbsenteeVoting.aspx',
+    registrationDeadline: '2025-10-14',
+    absenteeRequestDeadline: '2025-10-28',
+    absenteeReturnDeadline: '2025-11-04 7:30 PM',
+    earlyVotingStart: '2025-10-22',
+    earlyVotingEnd: '2025-11-01'
   },
   'Wisconsin': {
-    register: 'https://myvote.wi.gov/en-us/Register-To-Vote',
-    polling: 'https://myvote.wi.gov/en-us/Find-My-Polling-Place',
-    absentee: 'https://myvote.wi.gov/en-us/Vote-Absentee-By-Mail',
-    volunteer: 'https://elections.wi.gov/clerk/poll-workers'
+    registrationLink: 'https://myvote.wi.gov/en-us/Register-To-Vote',
+    statusCheckLink: 'https://myvote.wi.gov/en-us/Voter-Registration-Status',
+    pollingPlaceLink: 'https://myvote.wi.gov/en-us/Find-My-Polling-Place',
+    volunteerLink: 'https://elections.wi.gov/clerk/poll-workers',
+    absenteeLink: 'https://myvote.wi.gov/en-us/Vote-Absentee-By-Mail',
+    registrationDeadline: '2025-10-14',
+    absenteeRequestDeadline: '2025-10-31',
+    absenteeReturnDeadline: '2025-11-04 8:00 PM',
+    earlyVotingStart: '2025-10-21',
+    earlyVotingEnd: '2025-11-02'
   },
   'Wyoming': {
-    register: 'https://sos.wyo.gov/Elections/State/RegisteringToVote.aspx',
-    polling: 'https://sos.wyo.gov/Elections/PollPlace/Default.aspx',
-    absentee: 'https://sos.wyo.gov/Elections/State/AbsenteeVoting.aspx',
-    volunteer: 'https://sos.wyo.gov/Elections/Docs/PollWorkerInfo.aspx'
+    registrationLink: 'https://sos.wyo.gov/Elections/State/RegisteringToVote.aspx',
+    statusCheckLink: 'https://sos.wyo.gov/Elections/VoterServices.aspx',
+    pollingPlaceLink: 'https://sos.wyo.gov/Elections/PollPlace/Default.aspx',
+    volunteerLink: 'https://sos.wyo.gov/Elections/Docs/PollWorkerInfo.aspx',
+    absenteeLink: 'https://sos.wyo.gov/Elections/State/AbsenteeVoting.aspx',
+    registrationDeadline: '2025-10-20',
+    absenteeRequestDeadline: '2025-10-28',
+    absenteeReturnDeadline: '2025-11-04 7:00 PM',
+    earlyVotingStart: '2025-09-20',
+    earlyVotingEnd: '2025-11-03'
   },
   'District of Columbia': {
-    register: 'https://dcboe.org/Voters/Register-To-Vote/Register-to-Vote',
-    polling: 'https://dcboe.org/Voters/Where-to-Vote/Find-Your-Polling-Place',
-    absentee: 'https://dcboe.org/Voters/Absentee-Voting/Mail-in-Voting',
-    volunteer: 'https://dcboe.org/Voters/Become-a-Poll-Worker/Poll-Worker-Information'
+    registrationLink: 'https://dcboe.org/Voters/Register-To-Vote/Register-to-Vote',
+    statusCheckLink: 'https://dcboe.org/Voters/Check-Voter-Status/Check-Voter-Status',
+    pollingPlaceLink: 'https://dcboe.org/Voters/Where-to-Vote/Find-Your-Polling-Place',
+    volunteerLink: 'https://dcboe.org/Voters/Become-a-Poll-Worker/Poll-Worker-Information',
+    absenteeLink: 'https://dcboe.org/Voters/Absentee-Voting/Mail-in-Voting',
+    registrationDeadline: '2025-10-14',
+    absenteeRequestDeadline: '2025-10-28',
+    absenteeReturnDeadline: '2025-11-04 8:00 PM',
+    earlyVotingStart: '2025-10-27',
+    earlyVotingEnd: '2025-11-04'
   },
   'Puerto Rico': {
-    register: 'https://ww2.election.pr/cee-2024/solicitud-registro-electoral/',
-    polling: 'https://consulta.ceepur.org/',
-    absentee: 'https://ww2.election.pr/cee-2024/voto-por-correo/',
-    volunteer: 'https://ww2.election.pr/cee-2024/funcionarios-de-mesa/'
+    registrationLink: 'https://ww2.election.pr/cee-2024/solicitud-registro-electoral/',
+    statusCheckLink: 'https://consulta.ceepur.org/',
+    pollingPlaceLink: 'https://consulta.ceepur.org/',
+    volunteerLink: 'https://ww2.election.pr/cee-2024/funcionarios-de-mesa/',
+    absenteeLink: 'https://ww2.election.pr/cee-2024/voto-por-correo/',
+    registrationDeadline: '2025-09-19',
+    absenteeRequestDeadline: '2025-10-05',
+    absenteeReturnDeadline: '2025-11-04 8:00 PM',
+    earlyVotingStart: '2025-10-25',
+    earlyVotingEnd: '2025-11-04'
   },
   'Guam': {
-    register: 'https://gec.guam.gov/register/',
-    polling: 'https://gec.guam.gov/polling-places/',
-    absentee: 'https://gec.guam.gov/absentee-voting/',
-    volunteer: 'https://gec.guam.gov/poll-workers/'
+    registrationLink: 'https://gec.guam.gov/register/',
+    statusCheckLink: 'https://gec.guam.gov/voter-services/',
+    pollingPlaceLink: 'https://gec.guam.gov/polling-places/',
+    volunteerLink: 'https://gec.guam.gov/poll-workers/',
+    absenteeLink: 'https://gec.guam.gov/absentee-voting/',
+    registrationDeadline: '2025-10-05',
+    absenteeRequestDeadline: '2025-10-20',
+    absenteeReturnDeadline: '2025-11-04 8:00 PM',
+    earlyVotingStart: '2025-10-20',
+    earlyVotingEnd: '2025-11-04'
   },
   'U.S. Virgin Islands': {
-    register: 'https://www.vivote.gov/voters/register-to-vote',
-    polling: 'https://www.vivote.gov/voters/find-your-polling-place',
-    absentee: 'https://www.vivote.gov/voters/absentee-voting',
-    volunteer: 'https://www.vivote.gov/voters/become-a-poll-worker'
+    registrationLink: 'https://www.vivote.gov/voters/register-to-vote',
+    statusCheckLink: 'https://www.vivote.gov/voters/check-voter-status',
+    pollingPlaceLink: 'https://www.vivote.gov/voters/find-your-polling-place',
+    volunteerLink: 'https://www.vivote.gov/voters/become-a-poll-worker',
+    absenteeLink: 'https://www.vivote.gov/voters/absentee-voting',
+    registrationDeadline: '2025-10-05',
+    absenteeRequestDeadline: '2025-10-28',
+    absenteeReturnDeadline: '2025-11-04 7:00 PM',
+    earlyVotingStart: null,
+    earlyVotingEnd: null
   },
   'American Samoa': {
-    register: 'https://election.as.gov/register-to-vote/',
-    polling: 'https://election.as.gov/polling-places/',
-    absentee: 'https://election.as.gov/absentee-voting/',
-    volunteer: 'https://election.as.gov/poll-workers/'
+    registrationLink: 'https://election.as.gov/register-to-vote/',
+    statusCheckLink: 'https://election.as.gov/voter-services/',
+    pollingPlaceLink: 'https://election.as.gov/polling-places/',
+    volunteerLink: 'https://election.as.gov/poll-workers/',
+    absenteeLink: 'https://election.as.gov/absentee-voting/',
+    registrationDeadline: '2025-10-05',
+    absenteeRequestDeadline: '2025-10-20',
+    absenteeReturnDeadline: '2025-11-04 8:00 PM',
+    earlyVotingStart: null,
+    earlyVotingEnd: null
   },
   'Northern Mariana Islands': {
-    register: 'https://www.votecnmi.gov.mp/voter-registration/',
-    polling: 'https://www.votecnmi.gov.mp/polling-places/',
-    absentee: 'https://www.votecnmi.gov.mp/absentee-voting/',
-    volunteer: 'https://www.votecnmi.gov.mp/poll-workers/'
+    registrationLink: 'https://www.votecnmi.gov.mp/voter-registration/',
+    statusCheckLink: 'https://www.votecnmi.gov.mp/voter-services/',
+    pollingPlaceLink: 'https://www.votecnmi.gov.mp/polling-places/',
+    volunteerLink: 'https://www.votecnmi.gov.mp/poll-workers/',
+    absenteeLink: 'https://www.votecnmi.gov.mp/absentee-voting/',
+    registrationDeadline: '2025-10-05',
+    absenteeRequestDeadline: '2025-10-20',
+    absenteeReturnDeadline: '2025-11-04 7:00 PM',
+    earlyVotingStart: null,
+    earlyVotingEnd: null
   }
 };
 
-// Load all JSON files
-Promise.all([
-  fetch('Governors.json').then(res => res.ok ? res.json() : Promise.reject('Governors.json not found')),
-  fetch('Senators.json').then(res => res.ok ? res.json() : Promise.reject('Senators.json not found')),
-  fetch('House.json').then(res => res.ok ? res.json() : Promise.reject('House.json not found')),
-  fetch('LtGovernors.json').then(res => res.ok ? res.json() : Promise.reject('LtGovernors.json not found'))
-])
-  .then(([governors, senators, representatives, ltGovernors]) => {
-    officials.governors = governors.filter((g, i, arr) => arr.findIndex(t => t.state === g.state) === i);
-    officials.senators = senators;
-    officials.representatives = representatives;
-    officials.ltGovernors = ltGovernors.filter((lg, i, arr) => arr.findIndex(t => t.state === lg.state) === i);
-    populateStateSelect();
-    window.showTab('my-officials');
-  })
-  .catch(error => console.error('Error loading JSON files:', error));
-
-// Populate state select
-function populateStateSelect() {
-  const select = document.getElementById('state-select');
-  select.innerHTML = '<option value="">Choose a state</option>';
-  states.forEach(state => {
-    const option = document.createElement('option');
-    option.value = state;
-    option.textContent = state;
-    select.appendChild(option);
-  });
-  select.value = currentState;
+/** ---- UTILS ---- */
+function escapeJs(str = '') {
+  return String(str)
+    .replace(/'/g, "\\'")
+    .replace(/"/g, '\\"')
+    .replace(/\n/g, '\\n')
+    .replace(/\r/g, '\\r');
 }
 
-// Tab switching
-window.showTab = function(tabName) {
-  document.querySelectorAll('section').forEach(section => section.style.display = 'none');
-  let actualId = tabName === 'polls' ? 'compare' : tabName;
-  const target = document.getElementById(actualId);
+function getSafePhotoUrl(person) {
+  const raw = person.photo;
+  if (!raw || typeof raw !== 'string') return 'https://via.placeholder.com/200x300?text=No+Photo';
+  const trimmed = raw.trim();
+  const isBroken =
+    trimmed === '' ||
+    trimmed.startsWith('200x300') ||
+    trimmed.startsWith('/200x300') ||
+    trimmed.includes('?text=No+Photo') ||
+    !trimmed.startsWith('http') ||
+    trimmed.includes('ERR_NAME_NOT_RESOLVED');
+  return isBroken ? 'https://via.placeholder.com/200x300?text=No+Photo' : trimmed;
+}
+
+/** ---- TABS ---- */
+window.showTab = function(tabId) {
+  // Hide all sections
+  document.querySelectorAll('section').forEach(sec => sec.style.display = 'none');
+  // Show requested
+  const target = document.getElementById(tabId);
   if (target) target.style.display = 'block';
-  if (tabName === 'my-officials') renderMyOfficials(currentState);
-  if (tabName === 'rankings') renderRankings('governors');
-  if (tabName === 'polls') renderPolls();
-  if (tabName === 'calendar') renderCalendar(currentState);
-  if (tabName === 'registration') renderRegistration(currentState);
+
+  // Rerender for stateful sections
+  const selectedState = document.getElementById('state-select').value || 'Alabama';
+
+  switch(tabId) {
+    case 'my-officials':
+      renderMyOfficials(selectedState);
+      break;
+    case 'polls':
+      renderPollsForState(selectedState);
+      break;
+    case 'rankings':
+      renderRankings();
+      break;
+    case 'calendar':
+      renderCalendar(calendarEvents, selectedState);
+      break;
+    case 'registration':
+      renderVotingInfo(selectedState);
+      break;
+  }
 };
 
-// State switcher
-document.getElementById('state-select').addEventListener('change', (e) => {
-  currentState = e.target.value || 'Alabama';
-  const activeTab = document.querySelector('section[style="display: block;"]')?.id;
-  if (activeTab === 'my-officials') renderMyOfficials(currentState);
-  if (activeTab === 'calendar') renderCalendar(currentState);
-  if (activeTab === 'registration') renderRegistration(currentState);
-});
+/** ---- MODAL ---- */
+function openModal(html) {
+  const overlay = document.getElementById('modal-overlay');
+  const content = document.getElementById('modal-content');
+  if (overlay && content) {
+    content.innerHTML = html;
+    overlay.style.display = 'flex';
+  }
+}
+function closeModal() {
+  const overlay = document.getElementById('modal-overlay');
+  const content = document.getElementById('modal-content');
+  if (overlay) overlay.style.display = 'none';
+  if (content) content.innerHTML = '';
+}
+window.closeModal = closeModal;
 
-// My Officials
+/** ---- OFFICIAL CARDS ---- */
+function renderCards(data, containerId) {
+  let container = document.getElementById(containerId);
+  if (!container) return;
+  container.innerHTML = data.map(person => {
+    const partyLower = (person.party || '').toLowerCase();
+    const partyColor =
+      partyLower.includes('repub') ? '#d73027' :
+      partyLower.includes('dem') ? '#4575b4' :
+      partyLower.includes('libert') ? '#fdae61' :
+      partyLower.includes('indep') ? '#999999' :
+      partyLower.includes('green') ? '#66bd63' :
+      partyLower.includes('constit') ? '#984ea3' :
+      '#cccccc';
+    const imageUrl = getSafePhotoUrl(person);
+    return `
+      <div class="card" style="border-left: 8px solid ${partyColor}; cursor:pointer;" onclick="expandCard('${escapeJs(person.slug)}')">
+        <img src="${imageUrl}" alt="${escapeJs(person.name)}" />
+        <h3>${person.name}</h3>
+        <p>${person.office || person.position || ''}</p>
+        <p>${person.state}${person.party ? ', ' + person.party : ''}</p>
+      </div>
+    `;
+  }).join('');
+}
+window.expandCard = function(slug) {
+  const person = allOfficials.find(p => p.slug === slug);
+  if (!person) return;
+  // Modal HTML
+  const imageUrl = getSafePhotoUrl(person);
+  const link = person.ballotpediaLink || person.contact?.website || '';
+  let html = `
+    <div class="modal-container">
+      <div class="modal-left">
+        <img src="${imageUrl}" />
+        <h2>${person.name}</h2>
+        ${link ? `<p><a href="${link}" target="_blank" rel="noopener noreferrer">External Profile</a></p>` : ''}
+        <p><strong>Contact:</strong>
+          ${person.contact?.email ? `<a href="mailto:${person.contact.email}" class="contact-icon">📧</a>` : ''}
+          ${person.contact?.phone ? `<a href="tel:${person.contact.phone.replace(/[^0-9]/g, '')}" class="contact-icon">📞</a>` : ''}
+          ${person.contact?.website ? `<a href="${person.contact.website}" target="_blank" rel="noopener noreferrer" class="contact-icon">🌐</a>` : ''}
+        </p>
+      </div>
+      <div class="modal-right">
+        ${person.bio ? `<p><strong>Bio:</strong> ${person.bio}</p>` : ''}
+        ${person.education ? `<p><strong>Education:</strong> ${person.education}</p>` : ''}
+        ${person.endorsements ? `<p><strong>Endorsements:</strong> ${person.endorsements}</p>` : ''}
+        ${person.platform ? `<p><strong>Platform:</strong> ${person.platform}</p>` : ''}
+        ${person.platformFollowThrough && Object.keys(person.platformFollowThrough).length
+          ? `<div class="platform-followthrough"><h3>Platform Follow-Through</h3><ul>${
+            Object.entries(person.platformFollowThrough).map(([k, v]) => `<li><strong>${k}:</strong> ${v}</li>`).join('')
+          }</ul></div>`
+          : ''}
+        ${person.proposals ? `<p><strong>Legislative Proposals:</strong> ${person.proposals}</p>` : ''}
+        ${person.billsSigned?.length
+          ? `<p><strong>Key Bills Signed:</strong></p><ul>${
+            person.billsSigned.map(b => `<li><a href="${b.link}" target="_blank">${b.title}</a></li>`).join('')
+          }</ul>`
+          : ''}
+        ${person.vetoes ? `<p><strong>Vetoes:</strong> ${person.vetoes}</p>` : ''}
+        ${person.salary ? `<p><strong>Salary:</strong> ${person.salary}</p>` : ''}
+        ${person.predecessor ? `<p><strong>Predecessor:</strong> ${person.predecessor}</p>` : ''}
+        ${person.donationLink ? `<p><strong>Donate:</strong> <a href="${person.donationLink}" target="_blank">💸</a></p>` : ''}
+      </div>
+    </div>
+  `;
+  openModal(html);
+};
+
+/** ---- MY OFFICIALS ---- */
 function renderMyOfficials(state) {
-  const container = document.getElementById('my-cards');
-  if (!container) return;
-  container.innerHTML = '';
-  const positions = [
-    { data: officials.governors, title: 'Governor' },
-    { data: officials.senators, title: 'Senator' },
-    { data: officials.representatives, title: 'Representative' },
-    { data: officials.ltGovernors, title: 'Lieutenant Governor' }
-  ];
-  positions.forEach(position => {
-    const officialsForState = position.data.filter(o => o.state === state);
-    officialsForState.forEach(official => {
-      const card = document.createElement('div');
-      card.className = 'card';
-      card.innerHTML = `
-        <img src="${official.photo || 'https://via.placeholder.com/100'}" alt="${official.name}" style="width: 100px; height: auto;">
-        <h3>${official.name} (${official.party}) - ${position.title}</h3>
-        <p>${official.bio || 'Bio not available'}</p>
-        <p>Approval: ${official.approval || 'N/A'}% (Rank: ${official.rank || 'N/A'})</p>
-        <a href="${official.pollSource || '#'}" target="_blank">Poll Source</a>
-        <ul>Platforms: ${official.platforms ? official.platforms.map(p => `<li>${p}</li>`).join('') : '<li>Not available</li>'}</ul>
-        <p>Follow Through: ${official.follow_through || 'Not available'}</p>
-        <ul>Bills: ${official.bills_signed ? official.bills_signed.map(b => `<li>${b.name} (${b.year}): ${b.description}</li>`).join('') : '<li>Not available</li>'}</ul>
-      `;
-      container.appendChild(card);
-    });
+  if (!state) return;
+  const matches = allOfficials.filter(p =>
+    p.state === state || p.stateName === state || p.stateAbbreviation === state
+  );
+  // Sort by role
+  const roleOrder = ['senator', 'representative', 'governor', 'lt. governor', 'lt governor', 'ltgovernor', 'lieutenant governor'];
+  matches.sort((a, b) => {
+    const roleA = (a.office || a.position || '').toLowerCase();
+    const roleB = (b.office || b.position || '').toLowerCase();
+    const idxA = roleOrder.findIndex(role => roleA.includes(role));
+    const idxB = roleOrder.findIndex(role => roleB.includes(role));
+    return (idxA === -1 ? 99 : idxA) - (idxB === -1 ? 99 : idxB);
   });
-  document.getElementById('polls-container').innerHTML = '';
+  renderCards(matches, 'my-cards');
 }
 
-// Rankings (governors only, top/bottom 10)
-function renderRankings(type) {
-  const container = document.getElementById(`rankings-${type}`);
-  if (!container) return;
-  container.innerHTML = '';
-  const sorted = [...officials.governors].sort((a, b) => {
-    if (a.approval === b.approval) return b.tiebreaker - a.tiebreaker;
-    return b.approval - a.approval;
+/** ---- RANKINGS ---- */
+function renderRankings() {
+  const governors = allOfficials.filter(p => {
+    const role = (p.office || p.position || '').toLowerCase();
+    return role.includes('governor') && !role.includes('lt') && !role.includes('lieutenant');
   });
-  const top10 = sorted.slice(0, 10);
-  const bottom10 = sorted.slice(-10).reverse();
-  top10.forEach(official => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.style.height = '25%';
-    card.style.borderLeft = '5px solid green';
-    card.style.backgroundColor = '#CCFFCC';
-    card.innerHTML = `${official.name} (${official.state}, ${official.party}) - ${official.approval}%`;
-    container.appendChild(card);
+  const ltGovernors = allOfficials.filter(p => {
+    const role = (p.office || p.position || '').toLowerCase();
+    return (
+      role.includes('lt. governor') ||
+      role.includes('lt governor') ||
+      role.includes('ltgovernor') ||
+      role.includes('lieutenant governor')
+    );
   });
-  bottom10.forEach(official => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.style.height = '25%';
-    card.style.borderLeft = '5px solid red';
-    card.style.backgroundColor = '#FFCCCC';
-    card.innerHTML = `${official.name} (${official.state}, ${official.party}) - ${official.approval}%`;
-    container.appendChild(card);
-  });
-  ['senators', 'house', 'ltgovernors'].forEach(t => {
-    const c = document.getElementById(`rankings-${t}`);
-    if (c) c.innerHTML = '';
-  });
-  document.getElementById('top10-overall').innerHTML = '';
+  const senators = allOfficials.filter(p => (p.office || p.position || '').toLowerCase().includes('senator'));
+  const house = allOfficials.filter(p => (p.office || p.position || '').toLowerCase().includes('representative'));
+  renderCards(governors, 'rankings-governors');
+  renderCards(senators, 'rankings-senators');
+  renderCards(house, 'rankings-house');
+  renderCards(ltGovernors, 'rankings-ltgovernors');
 }
 
-// Calendar
-function renderCalendar(state) {
+/** ---- CALENDAR ---- */
+function renderCalendar(events, selectedState) {
   const container = document.getElementById('calendar-container');
   if (!container) return;
-  container.innerHTML = '';
-  const events = electionData[state] || [];
-  events.forEach(event => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.style.backgroundColor = event.type.includes('Primary') ? '#FFFF99' : '#99CCFF';
-    card.innerHTML = `<a href="${event.link}" target="_blank">${event.date} - ${event.type}</a>`;
-    container.appendChild(card);
-  });
+  const today = new Date();
+  const selected = (selectedState || '').trim().toLowerCase();
+  const filtered = events.filter(e => {
+    const eventState = (e.state || '').trim().toLowerCase();
+    const eventDate = new Date(e.date);
+    return (
+      (!selected || eventState === selected || eventState === 'all' || eventState === 'national') &&
+      !isNaN(eventDate) &&
+      eventDate >= today
+    );
+  }).sort((a, b) => new Date(a.date) - new Date(b.date));
+  container.innerHTML = filtered.length
+    ? filtered.map(event => `
+      <div class="card" onclick="openEventModal('${escapeJs(event.title)}', '${event.date}', '${escapeJs(event.state)}', '${escapeJs(event.type)}', '${escapeJs(event.details)}', '${event.link}')">
+        <h3>${event.title}</h3>
+        <p><strong>Date:</strong> ${event.date}</p>
+        <p><strong>Type:</strong> ${event.type}</p>
+      </div>
+    `).join('')
+    : `<p>No upcoming events for ${selectedState ? selectedState : 'your selection'}.</p>`;
 }
+window.openEventModal = function(title, date, state, type, details, link) {
+  openModal(`
+    <div class="event-modal">
+      <h2>${title}</h2>
+      <p><strong>Date:</strong> ${date}</p>
+      <p><strong>State:</strong> ${state}</p>
+      <p><strong>Type:</strong> ${type}</p>
+      <p>${details}</p>
+      <p><a href="${link}" target="_blank" rel="noopener noreferrer">More Info</a></p>
+    </div>
+  `);
+};
 
-// Registration
-function renderRegistration(state) {
+/** ---- VOTING INFO ---- */
+function renderVotingInfo(state) {
   const container = document.getElementById('voting-container');
-  if (!container) return;
-  container.innerHTML = '';
-  const links = registrationLinks[state] || {};
-  Object.keys(links).forEach(key => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerHTML = `<a href="${links[key]}" target="_blank">${key.charAt(0).toUpperCase() + key.slice(1)}</a>`;
-    container.appendChild(card);
-  });
-}
-
-// Polls (live URLs)
-function renderPolls() {
-  const container = document.getElementById('compare-container');
-  if (!container) return;
-  container.innerHTML = '';
-  const pollsData = [
-    { name: 'RealClearPolitics Presidential', link: 'https://www.realclearpolitics.com/epolls/latest_polls/president/', logo: 'https://www.realclearpolitics.com/favicon.ico' },
-    { name: 'RealClearPolitics Senate', link: 'https://www.realclearpolitics.com/epolls/latest_polls/senate/', logo: 'https://www.realclearpolitics.com/favicon.ico' },
-    { name: 'RealClearPolitics Governor', link: 'https://www.realclearpolitics.com/epolls/latest_polls/governor/', logo: 'https://www.realclearpolitics.com/favicon.ico' },
-    { name: 'Emerson College National', link: 'https://www.emersoncollegepolling.com/national-polls', logo: 'https://www.emersoncollegepolling.com/favicon.ico' },
-    { name: 'Emerson College State', link: 'https://www.emersoncollegepolling.com/state-polls', logo: 'https://www.emersoncollegepolling.com/favicon.ico' },
-    { name: 'FiveThirtyEight Polls', link: 'https://projects.fivethirtyeight.com/polls/', logo: 'https://projects.fivethirtyeight.com/favicon.ico' }
-  ];
-  pollsData.forEach(poll => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerHTML = `<a href="${poll.link}" target="_blank"><img src="${poll.logo}" style="width: 50px;" alt="${poll.name}"><br>${poll.name}</a>`;
-    container.appendChild(card);
-  });
-}
-
-// Search
-document.getElementById('search').addEventListener('input', (e) => {
-  const query = e.target.value.toLowerCase();
-  let dropdown = document.getElementById('search-dropdown');
-  if (!dropdown) {
-    dropdown = document.createElement('div');
-    dropdown.id = 'search-dropdown';
-    dropdown.style.position = 'absolute';
-    dropdown.style.background = 'white';
-    dropdown.style.border = '1px solid #ccc';
-    dropdown.style.zIndex = '10';
-    dropdown.style.width = '100%';
-    e.target.parentNode.appendChild(dropdown);
+  const info = votingInfo[state];
+  if (!container || !info) {
+    if (container) container.innerHTML = `<p>No voting info available for ${state}. Please check your state’s official voter website.</p>`;
+    return;
   }
-  const allOfficials = [
-    ...officials.governors.map(g => ({ ...g, position: 'Governor' })),
-    ...officials.senators.map(s => ({ ...s, position: 'Senator' })),
-    ...officials.representatives.map(r => ({ ...r, position: 'Representative' })),
-    ...officials.ltGovernors.map(lg => ({ ...lg, position: 'Lieutenant Governor' }))
-  ];
-  const suggestions = allOfficials.filter(o =>
-    o.name.toLowerCase().includes(query) ||
-    o.state.toLowerCase().includes(query) ||
-    o.party.toLowerCase().includes(query) ||
-    o.position.toLowerCase().includes(query)
-  );
-  dropdown.inner
+  container.innerHTML = `
+    <div class="card">
+      <h3>Register to Vote in ${state}</h3>
+      <p><a href="${info.registrationLink}" target="_blank">Register Online</a></p>
+      <p><a href="${info.statusCheckLink}" target="_blank">Check Registration Status</a></p>
+      <p><strong>Deadline:</strong> ${info.registrationDeadline || 'Varies'}</p>
+    </div>
+    <div class="card">
+      <h3>Polling Place</h3>
+      <p><a href="${info.pollingPlaceLink}" target="_blank">Find Your Polling Place</a></p>
+    </div>
+    <div class="card">
+      <h3>Vote by Mail</h3>
+      <p><a href="${info.absenteeLink}" target="_blank">Request Absentee Ballot</a></p>
+      <p><strong>Request Deadline:</strong> ${info.absenteeRequestDeadline}</p>
+      <p><strong>Return Deadline:</strong> ${info.absenteeReturnDeadline}</p>
+    </div>
+    <div class="card">
+      <h3>Early Voting</h3>
+      <p><strong>Start:</strong> ${info.earlyVotingStart || 'Not available'}</p>
+      <p><strong>End:</strong> ${info.earlyVotingEnd || 'Not available'}</p>
+    </div>
+    <div class="card">
+      <h3>Volunteer</h3>
+      <p><a href="${info.volunteerLink}" target="_blank">Become a Poll Worker</a></p>
+    </div>
+  `;
+}
+
+/** ---- POLLS ---- */
+function renderPollsForState(stateName) {
+  const pollsContainer = document.getElementById('polls-container');
+  if (!pollsContainer || !stateName) return;
+  const emersonLink = `https://emersoncollegepolling.com/category/state-polls/${stateName.replace(/\s+/g, '-').toLowerCase()}/`;
+  const rcpLink = `https://www.realclearpolitics.com/epolls/${stateName.replace(/\s+/g, '_').toLowerCase()}/`;
+  pollsContainer.innerHTML = `
+    <div class="card">
+      <h3>${stateName} Polls</h3>
+      <p>Source: Emerson College</p>
+      <a href="${emersonLink}" target="_blank">View Emerson Polls</a>
+    </div>
+    <div class="card">
+      <h3>${stateName} Polls</h3>
+      <p>Source: RealClearPolitics</p>
+      <a href="${rcpLink}" target="_blank">View RCP Polls</a>
+    </div>
+    <div class="card">
+      <h3>National Polls</h3>
+      <p>Source: FiveThirtyEight</p>
+      <a href="https://projects.fivethirtyeight.com/polls/" target="_blank">View FiveThirtyEight Polls</a>
+    </div>
+  `;
+}
+
+/** ---- GLOBAL SEARCH ---- */
+function setupGlobalSearch() {
+  const searchInput = document.getElementById('search');
+  const dropdown = document.createElement('div');
+  dropdown.className = 'search-dropdown';
+  dropdown.style.position = 'absolute';
+  dropdown.style.zIndex = '1001';
+  dropdown.style.display = 'none';
+  dropdown.style.maxHeight = '300px';
+  dropdown.style.overflowY = 'auto';
+  dropdown.style.background = '#fff';
+  dropdown.style.border = '1px solid #ccc';
+  dropdown.style.width = '100%';
+
+  searchInput.parentNode.appendChild(dropdown);
+
+  searchInput.addEventListener('input', function () {
+    const q = searchInput.value.trim().toLowerCase();
+    if (!q) {
+      dropdown.style.display = 'none';
+      return;
+    }
+    const matches = allOfficials.filter(
+      p => 
+        p.name.toLowerCase().includes(q) ||
+        (p.office || '').toLowerCase().includes(q) ||
+        (p.position || '').toLowerCase().includes(q) ||
+        p.state.toLowerCase().includes(q)
+    );
+    if (matches.length === 0) {
+      dropdown.innerHTML = '<div style="padding:8px;">No matches found.</div>';
+      dropdown.style.display = 'block';
+      return;
+    }
+    dropdown.innerHTML = matches.map(p => `
+      <div class="search-result-item" style="padding:8px; cursor:pointer; border-bottom:1px solid #eee;" onclick="expandCard('${escapeJs(p.slug)}');document.querySelector('.search-dropdown').style.display='none';document.getElementById('search').value='';">
+        <strong>${p.name}</strong> <span style="font-size:90%;">(${p.state}, ${p.office || p.position})</span>
+      </div>
+    `).join('');
+    dropdown.style.display = 'block';
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!dropdown.contains(e.target) && e.target !== searchInput) {
+      dropdown.style.display = 'none';
+    }
+  });
+}
+
+/** ---- LOAD DATA ---- */
+async function loadData() {
+  // Wait for cleanHouse.js to load window.cleanedHouse
+  await new Promise(resolve => {
+    const check = () => {
+      if (window.cleanedHouse && Array.isArray(window.cleanedHouse)) resolve();
+      else setTimeout(check, 50);
+    };
+    check();
+  });
+  const house = window.cleanedHouse || [];
+  const governors = await fetch('./Governors.json').then(res => res.ok ? res.json() : []).catch(() => []);
+  const senate = await fetch('./Senate.json').then(res => res.ok ? res.json() : []).catch(() => []);
+  let ltGovernors = [];
+  try {
+    ltGovernors = await fetch('./LtGovernors.json').then(res => res.ok ? res.json() : []).catch(() => []);
+  } catch {}
+  window.allOfficials = [...governors, ...senate, ...house, ...ltGovernors];
+  allOfficials = window.allOfficials;
+
+  // Populate state-select dropdown in strict alphabetical order
+  const stateSelect = document.getElementById('state-select');
+  if (stateSelect) {
+    const states = [...new Set(allOfficials.map(p => p.state).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+    while (stateSelect.options.length > 1) stateSelect.remove(1);
+    states.forEach(state => {
+      const opt = document.createElement('option');
+      opt.value = opt.text = state;
+      stateSelect.appendChild(opt);
+    });
+    stateSelect.value = stateSelect.querySelector('option[value="Alabama"]') ? 'Alabama' : (states[0] || '');
+  }
+  // Initial render
+  const defaultState = stateSelect ? (stateSelect.value || 'Alabama') : 'Alabama';
+  currentState = defaultState;
+  renderMyOfficials(defaultState);
+  renderCalendar(calendarEvents, defaultState);
+  renderVotingInfo(defaultState);
+  renderPollsForState(defaultState);
+}
+
+/** ---- INITIALIZATION ---- */
+document.addEventListener('DOMContentLoaded', function () {
+  loadData();
+
+  // State select logic
+  const stateSelect = document.getElementById('state-select');
+  if (stateSelect) {
+    stateSelect.addEventListener('change', function () {
+      currentState = this.value;
+      renderMyOfficials(currentState);
+      renderCalendar(calendarEvents, currentState);
+      renderVotingInfo(currentState);
+      renderPollsForState(currentState);
+      window.showTab('my-officials');
+    });
+  }
+
+  // Set up global search bar with dropdown
+  setupGlobalSearch();
+
+  // Modal overlay click to close
+  const overlay = document.getElementById('modal-overlay');
+  if (overlay) {
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) closeModal();
+    });
+  }
+
+  // Tab button wiring
+  document.querySelectorAll('#tabs button').forEach(button => {
+    button.addEventListener('click', () => {
+      document.querySelectorAll('#tabs button').forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+      const tabId = button.getAttribute('onclick').match(/'(.+)'/)[1];
+      window.showTab(tabId);
+    });
+  });
+
+  // Start on My Officials tab
+  window.showTab('my-officials');
+});
