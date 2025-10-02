@@ -1,10 +1,21 @@
 window.showTab = function(tabId) {
-  const sections = document.querySelectorAll("section");
-  sections.forEach(section => section.style.display = "none");
+  const sections = ['my-officials', 'polls', 'rankings', 'calendar', 'registration'];
+  sections.forEach(sectionId => {
+    const el = document.getElementById(sectionId);
+    if (el) el.style.display = sectionId === tabId ? 'block' : 'none';
+  });
 
-  const target = document.getElementById(tabId);
-  if (target) target.style.display = "block";
+  const results = document.getElementById('results');
+  if (results) results.innerHTML = '';
+  const search = document.getElementById('search');
+  if (search) search.value = '';
+  if (tabId === 'polls') {
+  const selectedState = document.getElementById("state-select").value;
+  renderPollsForState(selectedState); // ✅ triggers polling card render
+}
+
 };
+
 function showTab(tabId) {
   const sections = document.querySelectorAll("section");
   sections.forEach(section => section.style.display = "none");
@@ -636,9 +647,35 @@ function renderRegistration(selectedState) {
   const container = document.getElementById("registration-container");
   if (!container) return;
 
-  container.innerHTML = `<p>Registration info for ${selectedState} coming soon.</p>`;
-}
+  const info = votingInfo[selectedState];
+  if (!info) {
+    container.innerHTML = `<p>No registration info available for ${selectedState}.</p>`;
+    return;
+  }
 
+  container.innerHTML = `
+    <div class="card">
+      <h3>Register to Vote in ${selectedState}</h3>
+      <p><a href="${info.registrationLink}" target="_blank">Register Online</a></p>
+      <p><a href="${info.statusCheckLink}" target="_blank">Check Registration Status</a></p>
+      <p><strong>Deadline:</strong> ${info.registrationDeadline}</p>
+    </div>
+    <div class="card">
+      <h3>Polling Place</h3>
+      <p><a href="${info.pollingPlaceLink}" target="_blank">Find Your Polling Place</a></p>
+    </div>
+    <div class="card">
+      <h3>Vote by Mail</h3>
+      <p><a href="${info.absenteeLink}" target="_blank">Request Absentee Ballot</a></p>
+      <p><strong>Request Deadline:</strong> ${info.absenteeRequestDeadline}</p>
+      <p><strong>Return Deadline:</strong> ${info.absenteeReturnDeadline}</p>
+    </div>
+    <div class="card">
+      <h3>Volunteer</h3>
+      <p><a href="${info.volunteerLink}" target="_blank">Become a Poll Worker</a></p>
+    </div>
+  `;
+}
 /* ---------------- MODAL LOGIC ---------------- */
 function openEventModal(title, date, state, type, details, link) {
   const modalContent = document.getElementById('modal-content');
@@ -870,10 +907,11 @@ function renderMyOfficials(state) {
       person.state === state ||
       person.stateName === state ||
       person.stateAbbreviation === state;
-
     return stateMatch;
   });
 
+  renderCards(matches, 'my-cards'); // ✅ uses full card markup with modal logic
+}
   const roleOrder = ['senator', 'representative', 'governor', 'lt. governor', 'lt governor', 'ltgovernor', 'lieutenant governor'];
 
   matches.sort((a, b) => {
@@ -1056,7 +1094,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const results = document.getElementById('results');
 
   if (search) {
-    search.addEventListener('input', function (e) {
+    search.addEventListener('input', function () {
+  filterOfficials(); // ✅ triggers filtering across officials and polls
+});
       const query = e.target.value.toLowerCase().trim();
       if (!query) {
         if (results) results.innerHTML = '';
