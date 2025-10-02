@@ -1,4 +1,3 @@
-
 /* ---------------- CALENDAR RENDERING ---------------- */
 window.renderCalendarForState = function(state) {
   const tables = document.querySelectorAll('.calendar-table');
@@ -190,26 +189,6 @@ function openEventModal(title, date, state, type, details, link) {
   if (closeBtn) closeBtn.addEventListener('click', closeModal);
 }
 
-/* ---------------- TAB SWITCHING ---------------- */
-  switch (tabId) {
-    case 'calendar':
-      renderCalendar(window.allEvents || [], selectedState);
-      break;
-    case 'registration':
-      renderRegistration(selectedState);
-      break;
-    case 'officials':
-      renderMyOfficials(selectedState);
-      break;
-    case 'rankings':
-      renderRankings();
-      break;
-    case 'rookies':
-      renderRookies();
-      break;
-  }
-}
-
 /* ---------------- VOTING RENDER ---------------- */
 function renderVotingInfo(state) {
   const container = document.getElementById('voting-container');
@@ -390,9 +369,6 @@ function renderMyOfficials(state) {
       person.stateAbbreviation === state;
     return stateMatch;
   });
-
-  renderCards(matches, 'my-cards'); // ✅ uses full card markup with modal logic
-}
   const roleOrder = ['senator', 'representative', 'governor', 'lt. governor', 'lt governor', 'ltgovernor', 'lieutenant governor'];
 
   matches.sort((a, b) => {
@@ -417,6 +393,8 @@ function renderMyOfficials(state) {
   });
 
   console.log("Rendered My Officials:", matches.map(p => `${p.name} (${p.office})`));
+}
+  renderCards(matches, 'my-cards'); // ✅ uses full card markup with modal logic
 }
 
 function renderLtGovernors(data) {
