@@ -20,20 +20,6 @@ window.showTab = function(tabId) {
     const el = document.getElementById(sectionId);
     if (el) el.style.display = sectionId === tabId ? 'block' : 'none';
   });
-
-  const selectedState = document.getElementById("state-select").value;
-
-  if (tabId === 'calendar') renderCalendar(window.allEvents || [], selectedState);
-  if (tabId === 'registration') renderRegistration(selectedState);
-  if (tabId === 'my-officials') renderMyOfficials(selectedState);
-  if (tabId === 'polls') renderPollsForState(selectedState);
-  if (tabId === 'rankings') renderRankings();
-
-  const results = document.getElementById('results');
-  if (results) results.innerHTML = '';
-  const search = document.getElementById('search');
-  if (search) search.value = '';
-}; // ✅ closes the function cleanly
 // --- Photo URL Logic ---
 function getSafePhotoUrl(person) {
   const raw = person.photo;
