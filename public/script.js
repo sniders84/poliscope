@@ -1,3 +1,10 @@
+window.showTab = function(tabId) {
+  const sections = ['my-officials', 'polls', 'rankings', 'calendar', 'registration'];
+  sections.forEach(sectionId => {
+    const el = document.getElementById(sectionId);
+    if (el) el.style.display = sectionId === tabId ? 'block' : 'none';
+  });
+};
 /* ---------------- TAB SWITCHING ---------------- */
 window.showTab = function(tabId) {
   const sections = ['my-officials', 'polls', 'rankings', 'calendar', 'registration'];
