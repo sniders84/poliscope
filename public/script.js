@@ -127,7 +127,6 @@ window.allEvents = [
     details: "Public parade and civic engagement festival hosted by Honolulu Pride.",
     link: "https://hawaiilgbtlegacyfoundation.com/honolulu-pride"
   },
-
   // Idaho
   {
     title: "Boise Town Hall – Lt. Governor’s Education Tour",
@@ -277,7 +276,6 @@ window.allEvents = [
     details: "Special election to fill vacancy in Assembly District 58.",
     link: "https://www.elections.ny.gov"
   },
-
   // North Carolina
   {
     title: "Raleigh Town Hall – Lt. Governor’s Education Roundtable",
@@ -448,16 +446,65 @@ window.allEvents = [
     link: "https://elections.wi.gov"
   },
 
- // Wyoming
-{
-  title: "Cheyenne Special Election – City Council At-Large",
-  date: "2025-10-08",
-  state: "Wyoming",
-  type: "Municipal Special",
-  details: "Special election for at-large seat on Cheyenne City Council.",
-  link: "https://sos.wyo.gov/Elections"
-}
-  ];
+  // Wyoming
+  {
+    title: "Cheyenne Special Election – City Council At-Large",
+    date: "2025-10-08",
+    state: "Wyoming",
+    type: "Municipal Special",
+    details: "Special election for at-large seat on Cheyenne City Council.",
+    link: "https://sos.wyo.gov/Elections"
+  },
+  // American Samoa
+  {
+    title: "Pago Pago Voter Registration Drive",
+    date: "2025-10-10",
+    state: "American Samoa",
+    type: "Voter Registration",
+    details: "Local registration drive hosted by the American Samoa Election Office.",
+    link: "https://www.aselectionoffice.gov/"
+  },
+
+  // Guam
+  {
+    title: "Tamuning Town Hall – 2026 Election Preview",
+    date: "2025-10-15",
+    state: "Guam",
+    type: "Town Hall",
+    details: "Guam Election Commission hosts public forum on upcoming election cycle.",
+    link: "https://gec.guam.gov/"
+  },
+
+  // Puerto Rico
+  {
+    title: "San Juan Civic Engagement Fair",
+    date: "2025-10-12",
+    state: "Puerto Rico",
+    type: "Civic Festival",
+    details: "Comisión Estatal de Elecciones hosts voter education and engagement fair.",
+    link: "https://www.ceepur.org/"
+  },
+
+  // U.S. Virgin Islands
+  {
+    title: "St. Croix Voter Outreach Day",
+    date: "2025-10-09",
+    state: "U.S. Virgin Islands",
+    type: "Voter Outreach",
+    details: "Elections System of the Virgin Islands hosts outreach and registration event.",
+    link: "https://vivote.gov/"
+  },
+
+  // Northern Mariana Islands
+  {
+    title: "Saipan Town Hall – Election Integrity Forum",
+    date: "2025-10-11",
+    state: "Northern Mariana Islands",
+    type: "Town Hall",
+    details: "Commonwealth Election Commission hosts public forum on election integrity.",
+    link: "https://www.votecnmi.gov.mp/"
+  }
+];
 /* ---------------- UTILITY FUNCTIONS ---------------- */
 function escapeJs(str) {
   return str.replace(/'/g, "\\'").replace(/"/g, '\\"');
