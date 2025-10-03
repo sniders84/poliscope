@@ -1,4 +1,25 @@
 /* ---------------- GLOBAL DATA ---------------- */
+function renderRankings(data, mode = 'top10') {
+  if (!Array.isArray(data)) return showEmpty(true, 'No data for rankings.');
+
+  // Assume each item has a `score` field (from PDF or manual input)
+  const sorted = [...data].sort((a, b) => (b.score || 0) - (a.score || 0));
+
+  let list = [];
+  if (mode === 'top10') list = sorted.slice(0, 10);
+  else if (mode === 'bottom10') list = sorted.slice(-10).reverse();
+  else list = sorted; // full list
+
+  renderList(list, `Rankings: ${mode}`);
+}
+document.getElementById('rankingTabs').addEventListener('click', (e) => {
+  const mode = e.target.dataset.mode;
+  if (!mode) return;
+  const ds = datasetSelect.value;
+  const data = datasets[ds] || [];
+  renderRankings(data, mode);
+});
+
 /* ---------------- CALENDAR RENDERING ---------------- */
 window.renderCalendarForState = function(state) {
   const tables = document.querySelectorAll('.calendar-table');
