@@ -14,6 +14,5 @@ fetch('House.json', { cache: 'no-store' })
       window.cleanedHouse = data;
     } catch (err) {
       console.error('❌ Still broken:', err);
-    }
-  }) // ← this closes the .then block
+    })
   .catch(err => console.error('Fetch failed:', err));
