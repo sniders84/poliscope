@@ -1,15 +1,7 @@
-window.showTab = function(name) {
-  datasetSelect.value = name;
-  reloadAndRender();
-};
-
-// Part 1 — Global setup and DOM references
-window.showTab = function(name) {
-  datasetSelect.value = name;
-  reloadAndRender();
-};
+// script.js — Modular civic dataset loader and renderer
 
 (() => {
+  // Part 1 — Global setup
   const FILE_MAP = {
     Senate: 'Senate.json',
     House: 'House.json',
@@ -26,8 +18,18 @@ window.showTab = function(name) {
   const empty = document.getElementById('empty');
   const loadedFilesEl = document.getElementById('loadedFiles');
   const summaryEl = document.getElementById('summary');
-  // Part 2 — Sanitization + empty state logic
 
+  // Part 2 — Global tab switcher
+  window.showTab = function(name) {
+    if (!FILE_MAP[name]) {
+      console.warn('Unknown tab:', name);
+      return;
+    }
+    datasetSelect.value = name;
+    reloadAndRender();
+  };
+
+  // Part 3 — Sanitization
   function sanitizeText(v) {
     if (v === null || v === undefined) return '';
     return String(v);
@@ -43,13 +45,12 @@ window.showTab = function(name) {
       empty.classList.add('hidden');
     }
   }
-  // Part 3 — Card rendering logic
 
+  // Part 4 — Card rendering
   function createCard(item) {
     const card = document.createElement('article');
     card.className = 'card';
 
-    // Hero section
     const hero = document.createElement('div');
     hero.className = 'hero';
 
@@ -84,8 +85,11 @@ window.showTab = function(name) {
     hero.appendChild(photoWrap);
     hero.appendChild(meta);
     card.appendChild(hero);
-  // Part 4 — List rendering + summary
 
+    return card;
+  }
+
+  // Part 5 — List rendering
   function renderList(items, datasetName) {
     grid.innerHTML = '';
 
@@ -100,7 +104,6 @@ window.showTab = function(name) {
     items.forEach(it => fragment.appendChild(createCard(it)));
     grid.appendChild(fragment);
 
-    // Summary stats
     const total = items.length;
     const parties = items.reduce((acc, cur) => {
       const p = cur.party || 'Other';
@@ -112,8 +115,8 @@ window.showTab = function(name) {
       <div style="margin-left:12px">${Object.entries(parties).map(([k,v]) => `${k}: ${v}`).join(' • ')}</div>`;
     loadedFilesEl.textContent = datasetName;
   }
-  // Part 5 — Filtering logic
 
+  // Part 6 — Filtering
   function filterItems(items, q, party) {
     q = (q || '').trim().toLowerCase();
     party = (party || '').trim().toLowerCase();
@@ -128,8 +131,8 @@ window.showTab = function(name) {
       return haystack.includes(q);
     });
   }
-  // Part 6 — Dataset loading logic
 
+  // Part 7 — Dataset loading
   async function loadDataset(name, force = false) {
     if (!FILE_MAP[name]) throw new Error('Unknown dataset: ' + name);
     if (datasets[name] && !force) return datasets[name];
@@ -146,8 +149,8 @@ window.showTab = function(name) {
       return datasets[name];
     }
   }
-  // Part 7 — Reload and render logic
 
+  // Part 8 — Reload and render
   async function reloadAndRender() {
     const ds = datasetSelect.value;
     const data = await loadDataset(ds);
@@ -156,28 +159,20 @@ window.showTab = function(name) {
     const filtered = filterItems(data, q, party);
     renderList(filtered, ds);
   }
-  // Part 8 — Event wiring
 
-  datasetSelect.addEventListener('change', () => {
-    reloadAndRender();
-  });
-
-  searchInput.addEventListener('input', () => {
-    reloadAndRender();
-  });
-
-  partyFilter.addEventListener('change', () => {
-    reloadAndRender();
-  });
+  // Part 9 — Event wiring
+  datasetSelect.addEventListener('change', reloadAndRender);
+  searchInput.addEventListener('input', reloadAndRender);
+  partyFilter.addEventListener('change', reloadAndRender);
 
   refreshBtn.addEventListener('click', async () => {
     const ds = datasetSelect.value;
-    datasets[ds] = null; // clear cache
+    datasets[ds] = null;
     await loadDataset(ds, true);
     reloadAndRender();
   });
-  // Part 9 — Prefetch logic
 
+  // Part 10 — Prefetch and boot
   async function prefetchAll() {
     const names = Object.keys(FILE_MAP);
     for (const name of names) {
@@ -188,20 +183,9 @@ window.showTab = function(name) {
       }
     }
   }
-  // Part 10 — Boot + tab switching logic
 
   document.addEventListener('DOMContentLoaded', async () => {
     await prefetchAll();
     await reloadAndRender();
   });
-
-  // Optional: wire tab buttons like <button onclick="window.showTab('Senate')">
-  window.showTab = function(name) {
-    if (!FILE_MAP[name]) {
-      console.warn('Unknown tab:', name);
-      return;
-    }
-    datasetSelect.value = name;
-    reloadAndRender();
-  };
 })();
