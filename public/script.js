@@ -1,123 +1,137 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Array to hold all members
-    let allMembers = [];
+// script.js
 
-    // Load all JSON files
-    const jsonFiles = ['Senate.json', 'House.json', 'Governors.json', 'LtGovernors.json'];
+// Global variables
+let allMembers = [];
+let filteredMembers = [];
+const modal = document.getElementById('modal');
+const cardsContainer = document.getElementById('cards-container');
+const stateFilter = document.getElementById('state-filter');
+const partyFilter = document.getElementById('party-filter');
 
-    Promise.all(jsonFiles.map(file =>
-        fetch(file)
-            .then(response => {
-                if (!response.ok) throw new Error(`Failed to load ${file}`);
-                return response.json();
-            })
-    ))
-    .then(dataArrays => {
-        // Flatten all data into allMembers
-        allMembers = dataArrays.flat();
+// Fetch data from JSON files
+Promise.all([
+  fetch('Senate.json').then(res => res.json()),
+  fetch('House.json').then(res => res.json()),
+  fetch('Governors.json').then(res => res.json()),
+  fetch('LtGovernors.json').then(res => res.json())
+]).then(([senate, house, governors, ltGovernors]) => {
+  allMembers = [...senate, ...house, ...governors, ...ltGovernors];
+  filteredMembers = allMembers;
+  populateStateFilter();
+  displayCards(filteredMembers);
+}).catch(err => console.error('Error loading JSON files:', err));
 
-        // Initially render all cards
-        renderCards(allMembers);
+// Populate state filter dropdown
+function populateStateFilter() {
+  const states = [...new Set(allMembers.map(member => member.state))].sort();
+  states.forEach(state => {
+    const option = document.createElement('option');
+    option.value = state;
+    option.textContent = state;
+    stateFilter.appendChild(option);
+  });
+}
+// Display member cards
+function displayCards(members) {
+  cardsContainer.innerHTML = '';
+  members.forEach(member => {
+    const card = createCard(member);
+    cardsContainer.appendChild(card);
+  });
+}
 
-        // Initialize dropdown filters if present
-        setupFilters();
-    })
-    .catch(error => console.error('Error loading JSON data:', error));
+// Create a single card element
+function createCard(member) {
+  const card = document.createElement('article');
+  card.className = 'card';
+
+  const img = document.createElement('img');
+  img.src = member.photo || 'assets/default-photo.png';
+  img.alt = member.name;
+
+  const name = document.createElement('h3');
+  name.textContent = member.name;
+
+  const office = document.createElement('p');
+  office.textContent = member.office;
+
+  const state = document.createElement('p');
+  state.textContent = member.state;
+
+  card.appendChild(img);
+  card.appendChild(name);
+  card.appendChild(office);
+  card.appendChild(state);
+
+  // Click event to open modal
+  card.addEventListener('click', () => openModal(member));
+
+  return card;
+}
+
+// Open modal with member info
+function openModal(member) {
+  modal.querySelector('.modal-title').textContent = member.name;
+  modal.querySelector('.modal-photo').src = member.photo || 'assets/default-photo.png';
+  modal.querySelector('.modal-body').textContent = member.platform || 'No platform info';
+  modal.style.display = 'block';
+}
+
+// Close modal
+modal.querySelector('.modal-close').addEventListener('click', () => {
+  modal.style.display = 'none';
 });
-function renderCards(data) {
-    const container = document.getElementById('cards-container');
-    container.innerHTML = ''; // Clear existing cards
+window.addEventListener('click', e => {
+  if (e.target === modal) modal.style.display = 'none';
+});
+// Filters and search
+const officeFilter = document.getElementById('officeFilter');
+const stateFilter = document.getElementById('stateFilter');
+const partyFilter = document.getElementById('partyFilter');
+const searchInput = document.getElementById('searchInput');
 
-    data.forEach(item => {
-        const card = createCard(item);
-        container.appendChild(card);
-    });
+function applyFilters() {
+  let filtered = allMembers;
+
+  const officeVal = officeFilter.value;
+  const stateVal = stateFilter.value;
+  const partyVal = partyFilter.value;
+  const searchVal = searchInput.value.toLowerCase();
+
+  if (officeVal) filtered = filtered.filter(m => m.office === officeVal);
+  if (stateVal) filtered = filtered.filter(m => m.state === stateVal);
+  if (partyVal) filtered = filtered.filter(m => m.party === partyVal);
+  if (searchVal) filtered = filtered.filter(m => m.name.toLowerCase().includes(searchVal));
+
+  displayCards(filtered);
 }
 
-function createCard(item) {
-    const card = document.createElement('article');
-    card.className = 'card';
+// Event listeners for filters/search
+officeFilter.addEventListener('change', applyFilters);
+stateFilter.addEventListener('change', applyFilters);
+partyFilter.addEventListener('change', applyFilters);
+searchInput.addEventListener('input', applyFilters);
+let allMembers = [];
 
-    // Card inner HTML
-    card.innerHTML = `
-        <img src="${item.photo}" alt="${item.name}" class="card-photo">
-        <h3 class="card-name">${item.name}</h3>
-        <p class="card-office">${item.office} - ${item.state}</p>
-    `;
+// Fetch all JSON files and combine
+Promise.all([
+  fetch('Senate.json').then(res => res.json()),
+  fetch('House.json').then(res => res.json()),
+  fetch('Governors.json').then(res => res.json()),
+  fetch('LtGovernors.json').then(res => res.json())
+])
+.then(dataArrays => {
+  allMembers = dataArrays.flat(); // combine all arrays
+  populateFilters(allMembers);    // populate dropdown options
+  displayCards(allMembers);       // display all cards initially
+})
+.catch(err => console.error('Error loading data:', err));
 
-    // Click to open modal
-    card.addEventListener('click', () => openModal(item));
-
-    return card;
-}
-
-// Modal handling
-function openModal(item) {
-    const modal = document.getElementById('modal');
-    modal.querySelector('.modal-title').textContent = item.name;
-    modal.querySelector('.modal-photo').src = item.photo;
-    modal.querySelector('.modal-body').textContent = item.platform || 'No platform info';
-    modal.style.display = 'block';
-}
-
-// Close modal when clicking the X or outside the modal content
-function setupModalClose() {
-    const modal = document.getElementById('modal');
-    const closeBtn = modal.querySelector('.close');
-
-    closeBtn.addEventListener('click', () => modal.style.display = 'none');
-    window.addEventListener('click', (e) => {
-        if (e.target === modal) modal.style.display = 'none';
-    });
-}
-
-// Initialize modal close behavior
-setupModalClose();
-// Filtering by office and state
-function setupFilters(data) {
-    const officeSelect = document.getElementById('office-filter');
-    const stateSelect = document.getElementById('state-filter');
-    const searchInput = document.getElementById('search-input');
-
-    // Populate office options
-    const offices = [...new Set(data.map(item => item.office))].sort();
-    offices.forEach(office => {
-        const option = document.createElement('option');
-        option.value = office;
-        option.textContent = office;
-        officeSelect.appendChild(option);
-    });
-
-    // Populate state options
-    const states = [...new Set(data.map(item => item.state))].sort();
-    states.forEach(state => {
-        const option = document.createElement('option');
-        option.value = state;
-        option.textContent = state;
-        stateSelect.appendChild(option);
-    });
-
-    // Filter cards based on selections
-    function filterCards() {
-        const officeValue = officeSelect.value;
-        const stateValue = stateSelect.value;
-        const searchValue = searchInput.value.toLowerCase();
-
-        const filtered = data.filter(item => {
-            const matchesOffice = officeValue === 'All' || item.office === officeValue;
-            const matchesState = stateValue === 'All' || item.state === stateValue;
-            const matchesSearch = item.name.toLowerCase().includes(searchValue);
-            return matchesOffice && matchesState && matchesSearch;
-        });
-
-        renderCards(filtered);
-    }
-
-    // Event listeners
-    officeSelect.addEventListener('change', filterCards);
-    stateSelect.addEventListener('change', filterCards);
-    searchInput.addEventListener('input', filterCards);
-}
-
-// Initialize filters after data is loaded
-setupFilters(allMembers);
+// Close modal functionality
+const modal = document.getElementById('modal');
+modal.querySelector('.close').addEventListener('click', () => {
+  modal.style.display = 'none';
+});
+window.addEventListener('click', e => {
+  if (e.target === modal) modal.style.display = 'none';
+});
