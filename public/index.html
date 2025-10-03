@@ -34,6 +34,37 @@
             <!-- Cards will be dynamically inserted here -->
         </section>
     </main>
+<!-- Header with Logo -->
+<header id="main-header">
+    <div class="logo-container">
+        <img src="assets/electorate-logo.png" alt="Electorate Logo" id="logo">
+    </div>
+    <h1>Electorate Tracker</h1>
+</header>
+
+<!-- Filters Section -->
+<section id="filters">
+    <select id="office-filter">
+        <option value="All">All Offices</option>
+    </select>
+    <select id="state-filter">
+        <option value="All">All States</option>
+    </select>
+    <input type="text" id="search-input" placeholder="Search by name">
+</section>
+
+<!-- Cards Container -->
+<main id="cards-container"></main>
+
+<!-- Modal -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close-button" id="close-modal">&times;</span>
+        <h2 class="modal-title"></h2>
+        <img class="modal-photo" src="" alt="">
+        <p class="modal-body"></p>
+    </div>
+</div>
 
     <!-- Modal -->
     <div id="modal" class="modal">
