@@ -274,3 +274,18 @@ h2 {
   padding-top: 20px;
   padding-bottom: 200px; /* forces space below */
 }
+.filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.filters select,
+.filters input {
+    padding: 8px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
