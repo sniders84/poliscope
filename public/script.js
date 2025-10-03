@@ -1,4 +1,8 @@
 // Part 1 — Global setup and DOM references
+window.showTab = function(name) {
+  datasetSelect.value = name;
+  reloadAndRender();
+};
 
 (() => {
   const FILE_MAP = {
