@@ -267,3 +267,4 @@ window.addEventListener('click', (event) => {
     modal.style.display = 'none';
   }
 });
+<script src="script.js"></script>
