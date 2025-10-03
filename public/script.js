@@ -608,6 +608,11 @@ document.addEventListener('DOMContentLoaded', function () {
       renderPollsForState(selectedState);
       showTab("my-officials");
     });
+    window.showTab = function(name) {
+  datasetSelect.value = name;
+  reloadAndRender();
+};
+
   }
 
   // Search input logic
