@@ -1,148 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Congress App</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Officials Directory</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <header>
-        <h1>Congress Members</h1>
-    </header>
-<div class="filters">
-    <input type="text" id="search-input" placeholder="Search by name...">
-    <select id="state-filter">
-        <option value="All">All States</option>
-        <!-- Dynamically populate states via JS or hardcode -->
-    </select>
-    <select id="party-filter">
-        <option value="All">All Parties</option>
-        <option value="Democratic">Democratic</option>
-        <option value="Republican">Republican</option>
-        <option value="Independent">Independent</option>
-    </select>
-</div>
-<div class="filters">
-    <select id="state-filter">
-        <option value="all">All States</option>
-        <!-- Populate dynamically or manually add states -->
-    </select>
-<div class="filters">
-    <input type="text" id="search-input" placeholder="Search by name...">
-    <select id="filter-state">
-        <option value="All">All States</option>
-        <!-- State options will be dynamically populated -->
-    </select>
-    <select id="filter-party">
-        <option value="All">All Parties</option>
-        <option value="Democratic">Democratic</option>
-        <option value="Republican">Republican</option>
-        <option value="Independent">Independent</option>
-    </select>
-    <select id="filter-office">
-        <option value="All">All Offices</option>
-        <option value="U.S. Senator">U.S. Senator</option>
-        <option value="Governor">Governor</option>
-        <option value="Lt. Governor">Lt. Governor</option>
-        <option value="U.S. House">U.S. House</option>
-    </select>
-</div>
-    <select id="party-filter">
-        <option value="all">All Parties</option>
-        <option value="Democratic">Democratic</option>
-        <option value="Republican">Republican</option>
-        <option value="Independent">Independent</option>
-    </select>
-<div class="filters">
-    <input type="text" id="search-input" placeholder="Search by name...">
-    <select id="filter-state">
-        <option value="">All States</option>
-        <!-- Add your state options here -->
-    </select>
-    <select id="filter-party">
-        <option value="">All Parties</option>
-        <option value="Democratic">Democratic</option>
-        <option value="Republican">Republican</option>
-        <option value="Independent">Independent</option>
-    </select>
-    <select id="filter-office">
-        <option value="">All Offices</option>
-        <option value="U.S. Senator">U.S. Senator</option>
-        <option value="Governor">Governor</option>
-        <option value="Lt. Governor">Lt. Governor</option>
-        <option value="House Representative">House Representative</option>
-    </select>
-</div>
-    <input type="text" id="search-input" placeholder="Search by name">
-</div>
-    <main>
-        <section id="cards-container" class="cards-container">
-            <!-- Cards will be dynamically inserted here -->
-        </section>
-    </main>
-
-    <div id="member-modal" class="modal">
-    <div id="modal-content" class="modal-content">
-        <span id="modal-close" class="modal-close">&times;</span>
-        <!-- Member details will be injected here dynamically -->
-    </div>
-</div>
-<div id="member-modal" class="modal">
-    <div class="modal-content" id="modal-content">
-        <span id="close-modal" class="close-btn">&times;</span>
-        <!-- Member details will be injected here -->
-    </div>
-</div>
-    <!-- Modal for detailed view -->
-    <div id="member-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <div id="modal-body">
-                <!-- Modal content will be dynamically inserted here -->
-            </div>
-        </div>
-    </div>
-<div id="member-modal" class="modal">
-    <div class="modal-content" id="modal-content">
-        <span class="close" id="modal-close">&times;</span>
-        <!-- Member details injected dynamically -->
-    </div>
+  <header class="topbar">
+    <div class="brand">Officials Directory</div>
     <div class="controls">
-    <input type="text" id="search-input" placeholder="Search by name...">
-    <select id="party-filter">
-        <option value="All">All Parties</option>
-        <option value="Democratic">Democratic</option>
-        <option value="Republican">Republican</option>
-        <option value="Independent">Independent</option>
-    </select>
-</div>
+      <label for="datasetSelect" class="visually-hidden">Dataset</label>
+      <select id="datasetSelect" aria-label="Select dataset">
+        <option value="Senate">U.S. Senate</option>
+        <option value="House">U.S. House</option>
+        <option value="Governors">Governors</option>
+        <option value="LtGovernors">Lieutenant Governors</option>
+      </select>
 
-</div>
-    <script src="script.js"></script>
-    <div id="member-modal" class="modal">
-    <div class="modal-content" id="modal-content">
-        <span id="modal-close" class="modal-close">&times;</span>
-    </div>
-        <div class="filters">
-    <input type="text" id="search-input" placeholder="Search by name...">
-    <select id="state-filter">
-        <option value="">All States</option>
-        <!-- Options dynamically added or manually listed -->
-    </select>
-    <select id="party-filter">
-        <option value="">All Parties</option>
+      <input id="searchInput" type="search" placeholder="Search by name, state, or party" aria-label="Search" />
+      <select id="partyFilter" aria-label="Filter by party">
+        <option value="">All parties</option>
         <option value="Democratic">Democratic</option>
         <option value="Republican">Republican</option>
         <option value="Independent">Independent</option>
-    </select>
-    <select id="office-filter">
-        <option value="">All Offices</option>
-        <option value="U.S. Senator">U.S. Senator</option>
-        <option value="Governor">Governor</option>
-        <option value="Lt. Governor">Lt. Governor</option>
-        <option value="Representative">Representative</option>
-    </select>
-</div>
+        <option value="Nonpartisan">Nonpartisan</option>
+      </select>
+
+      <button id="refreshBtn" title="Reload data">Refresh</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="summary" id="summary">
+      <!-- summary counts and status will be inserted here -->
+    </section>
+
+    <section id="grid" class="grid" aria-live="polite">
+      <!-- cards inserted here -->
+    </section>
+
+    <div id="empty" class="empty hidden">No results found.</div>
+  </main>
+
+  <footer class="footer">
+    <small>Files loaded: <span id="loadedFiles">none</span></small>
+  </footer>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
