@@ -1,270 +1,123 @@
-// script.js - loads provided JSON files and renders a browsable directory
-// Expects these files to be reachable in same folder: Senate.json, House.json, Governors.json, LtGovernors.json
+document.addEventListener('DOMContentLoaded', () => {
+    // Array to hold all members
+    let allMembers = [];
 
-(() => {
-  const FILE_MAP = {
-    Senate: 'Senate.json',
-    House: 'House.json',
-    Governors: 'Governors.json',
-    LtGovernors: 'LtGovernors.json'
-  };
+    // Load all JSON files
+    const jsonFiles = ['Senate.json', 'House.json', 'Governors.json', 'LtGovernors.json'];
 
-  // cached data
-  const datasets = {};
+    Promise.all(jsonFiles.map(file =>
+        fetch(file)
+            .then(response => {
+                if (!response.ok) throw new Error(`Failed to load ${file}`);
+                return response.json();
+            })
+    ))
+    .then(dataArrays => {
+        // Flatten all data into allMembers
+        allMembers = dataArrays.flat();
 
-  // DOM refs
-  const datasetSelect = document.getElementById('datasetSelect');
-  const searchInput = document.getElementById('searchInput');
-  const partyFilter = document.getElementById('partyFilter');
-  const refreshBtn = document.getElementById('refreshBtn');
-  const grid = document.getElementById('grid');
-  const empty = document.getElementById('empty');
-  const loadedFilesEl = document.getElementById('loadedFiles');
-  const summaryEl = document.getElementById('summary');
+        // Initially render all cards
+        renderCards(allMembers);
 
-  // helpers
-  function sanitizeText(v) {
-    if (v === null || v === undefined) return '';
-    return String(v);
-  }
+        // Initialize dropdown filters if present
+        setupFilters();
+    })
+    .catch(error => console.error('Error loading JSON data:', error));
+});
+function renderCards(data) {
+    const container = document.getElementById('cards-container');
+    container.innerHTML = ''; // Clear existing cards
 
-  function showEmpty(show, message) {
-    if (show) {
-      empty.classList.remove('hidden');
-      empty.textContent = message || 'No results found.';
-      grid.innerHTML = '';
-      summaryEl.innerHTML = '';
-    } else {
-      empty.classList.add('hidden');
-    }
-  }
+    data.forEach(item => {
+        const card = createCard(item);
+        container.appendChild(card);
+    });
+}
 
-  function createCard(item) {
+function createCard(item) {
     const card = document.createElement('article');
     card.className = 'card';
 
-    // Hero
-    const hero = document.createElement('div');
-    hero.className = 'hero';
+    // Card inner HTML
+    card.innerHTML = `
+        <img src="${item.photo}" alt="${item.name}" class="card-photo">
+        <h3 class="card-name">${item.name}</h3>
+        <p class="card-office">${item.office} - ${item.state}</p>
+    `;
 
-    const photoWrap = document.createElement('div');
-    photoWrap.className = 'photo';
-    const img = document.createElement('img');
-    img.alt = sanitizeText(item.name || 'photo');
-    // Only set src if there's a non-empty photo field
-    if (item.photo) {
-      img.src = item.photo;
-      img.onerror = () => { img.style.display = 'none'; photoWrap.textContent = (item.name || '').slice(0,2).toUpperCase(); };
-    } else {
-      img.style.display = 'none';
-      photoWrap.textContent = (item.name || '').slice(0,2).toUpperCase();
-    }
-    photoWrap.appendChild(img);
-
-    const meta = document.createElement('div');
-    meta.className = 'meta';
-    const title = document.createElement('h3');
-    title.textContent = sanitizeText(item.name || 'Unknown');
-    const sub = document.createElement('div');
-    sub.className = 'sub';
-    sub.textContent = `${sanitizeText(item.office || '')} • ${sanitizeText(item.state || '')}${item.district ? ' • District ' + item.district : ''}`;
-
-    meta.appendChild(title);
-    meta.appendChild(sub);
-
-    hero.appendChild(photoWrap);
-    hero.appendChild(meta);
-
-    // Body
-    const body = document.createElement('div');
-    body.className = 'body';
-
-    const partyKV = document.createElement('div'); partyKV.className = 'kv';
-    partyKV.innerHTML = `<b>Party</b><div class="val">${sanitizeText(item.party || '') || '—'}</div>`;
-    body.appendChild(partyKV);
-
-    if (item.contact && (item.contact.email || item.contact.phone || item.contact.website)) {
-      const contactKV = document.createElement('div'); contactKV.className = 'kv';
-      let contactHtml = '';
-      if (item.contact.email) contactHtml += `Email: ${item.contact.email}<br/>`;
-      if (item.contact.phone) contactHtml += `Phone: ${item.contact.phone}<br/>`;
-      if (item.contact.website) contactHtml += `Website: ${item.contact.website}`;
-      contactKV.innerHTML = `<b>Contact</b><div class="val">${contactHtml}</div>`;
-      body.appendChild(contactKV);
-    }
-
-    if (item.platform) {
-      const plat = document.createElement('div'); plat.className = 'kv';
-      plat.innerHTML = `<b>Platform</b><div class="val">${sanitizeText(item.platform)}</div>`;
-      body.appendChild(plat);
-    }
-
-    // bills or summary
-    if (Array.isArray(item.bills) && item.bills.length) {
-      const bills = document.createElement('div'); bills.className = 'kv';
-      const list = item.bills.slice(0,5).map(b => {
-        const title = b.title || b.name || '';
-        const link = b.link ? `<a href="${b.link}" target="_blank" rel="noopener noreferrer">${title}</a>` : title;
-        return `<div>${link}</div>`;
-      }).join('');
-      bills.innerHTML = `<b>Bills</b><div class="val">${list}</div>`;
-      body.appendChild(bills);
-    }
-
-    // actions
-    const actions = document.createElement('div'); actions.className = 'actions';
-    const viewBtn = document.createElement('a');
-    viewBtn.className = 'view';
-    viewBtn.href = item.ballotpediaLink || '#';
-    viewBtn.textContent = 'Open Ballotpedia';
-    viewBtn.target = '_blank'; viewBtn.rel = 'noopener noreferrer';
-    if (!item.ballotpediaLink) viewBtn.setAttribute('aria-disabled', 'true');
-
-    const detailsBtn = document.createElement('button');
-    detailsBtn.type = 'button';
-    detailsBtn.textContent = 'Details';
-    detailsBtn.addEventListener('click', () => {
-      // expand/collapse a simple details view
-      if (card.classList.contains('expanded')) {
-        card.classList.remove('expanded');
-        detailsBtn.textContent = 'Details';
-      } else {
-        card.classList.add('expanded');
-        detailsBtn.textContent = 'Close';
-      }
-    });
-
-    actions.appendChild(viewBtn);
-    actions.appendChild(detailsBtn);
-
-    card.appendChild(hero);
-    card.appendChild(body);
-    card.appendChild(actions);
+    // Click to open modal
+    card.addEventListener('click', () => openModal(item));
 
     return card;
-  }
-
-  function renderList(items, datasetName) {
-    grid.innerHTML = '';
-
-    if (!Array.isArray(items) || !items.length) {
-      showEmpty(true, 'No entries in this dataset.');
-      loadedFilesEl.textContent = datasetName;
-      return;
-    }
-    showEmpty(false);
-    const fragment = document.createDocumentFragment();
-    items.forEach(it => fragment.appendChild(createCard(it)));
-    grid.appendChild(fragment);
-
-    // summary
-    const total = items.length;
-    const parties = items.reduce((acc, cur) => {
-      const p = cur.party || 'Other';
-      acc[p] = (acc[p] || 0) + 1;
-      return acc;
-    }, {});
-    summaryEl.innerHTML = `<div><strong>${datasetName}</strong> — ${total} entries</div>
-      <div style="margin-left:12px">${Object.entries(parties).map(([k,v])=>`${k}: ${v}`).join(' • ')}</div>`;
-    loadedFilesEl.textContent = datasetName;
-  }
-
-  function filterItems(items, q, party) {
-    q = (q || '').trim().toLowerCase();
-    return items.filter(it => {
-      if (party && (it.party || '').trim().toLowerCase() !== party.trim().toLowerCase()) return false;
-      if (!q) return true;
-      // search name, state, office, slug
-      const hay = `${it.name || ''} ${it.state || ''} ${it.office || ''} ${it.slug || ''}`.toLowerCase();
-      return hay.indexOf(q) !== -1;
-    });
-  }
-
-  async function loadDataset(name, force = false) {
-    if (!FILE_MAP[name]) throw new Error('Unknown dataset: ' + name);
-    if (datasets[name] && !force) return datasets[name];
-    const path = FILE_MAP[name];
-
-    try {
-      const res = await fetch(path, {cache: "no-store"});
-      if (!res.ok) throw new Error(`Failed to fetch ${path}: ${res.status} ${res.statusText}`);
-      const json = await res.json();
-      // ensure it's an array
-      datasets[name] = Array.isArray(json) ? json : [];
-      return datasets[name];
-    } catch (err) {
-      console.error(err);
-      datasets[name] = [];
-      return datasets[name];
-    }
-  }
-
-  // wiring
-  async function reloadAndRender() {
-    const ds = datasetSelect.value;
-    const data = await loadDataset(ds);
-    const q = searchInput.value || '';
-    const party = partyFilter.value || '';
-    const filtered = filterItems(data, q, party);
-    renderList(filtered, ds);
-  }
-
-  // events
-  datasetSelect.addEventListener('change', () => {
-    // clear search on dataset change to avoid confusion (you can change if you want)
-    // searchInput.value = '';
-    reloadAndRender();
-  });
-  searchInput.addEventListener('input', () => reloadAndRender());
-  partyFilter.addEventListener('change', () => reloadAndRender());
-  refreshBtn.addEventListener('click', async () => {
-    // force reload - clear cache and re-fetch
-    const ds = datasetSelect.value;
-    datasets[ds] = null;
-    await loadDataset(ds, true);
-    reloadAndRender();
-  });
-
-  // initial load: prefetch all files in background to improve responsiveness
-  async function prefetchAll() {
-    const names = Object.keys(FILE_MAP);
-    const results = [];
-    for (const n of names) {
-      // don't throw if one fails — continue
-      try {
-        await loadDataset(n);
-      } catch (e) {
-        // ignore
-      }
-    }
-  }
-
-  // boot
-  document.addEventListener('DOMContentLoaded', async () => {
-    // prefetch all, then render selected
-    await prefetchAll();
-    await reloadAndRender();
-  });
-
-})();
-function openModal(item) {
-  const modal = document.getElementById('modal');
-  modal.querySelector('.modal-title').textContent = item.name;
-  modal.querySelector('.modal-photo').src = item.photo;
-  modal.querySelector('.modal-body').textContent = item.platform || 'No platform info';
-  modal.style.display = 'block';
 }
 
-// Close modal when clicking the X
-document.querySelector('.modal-close').addEventListener('click', () => {
-  document.getElementById('modal').style.display = 'none';
-});
+// Modal handling
+function openModal(item) {
+    const modal = document.getElementById('modal');
+    modal.querySelector('.modal-title').textContent = item.name;
+    modal.querySelector('.modal-photo').src = item.photo;
+    modal.querySelector('.modal-body').textContent = item.platform || 'No platform info';
+    modal.style.display = 'block';
+}
 
-// Close modal when clicking outside the content
-window.addEventListener('click', (event) => {
-  const modal = document.getElementById('modal');
-  if (event.target === modal) {
-    modal.style.display = 'none';
-  }
-});
-<script src="script.js"></script>
+// Close modal when clicking the X or outside the modal content
+function setupModalClose() {
+    const modal = document.getElementById('modal');
+    const closeBtn = modal.querySelector('.close');
+
+    closeBtn.addEventListener('click', () => modal.style.display = 'none');
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) modal.style.display = 'none';
+    });
+}
+
+// Initialize modal close behavior
+setupModalClose();
+// Filtering by office and state
+function setupFilters(data) {
+    const officeSelect = document.getElementById('office-filter');
+    const stateSelect = document.getElementById('state-filter');
+    const searchInput = document.getElementById('search-input');
+
+    // Populate office options
+    const offices = [...new Set(data.map(item => item.office))].sort();
+    offices.forEach(office => {
+        const option = document.createElement('option');
+        option.value = office;
+        option.textContent = office;
+        officeSelect.appendChild(option);
+    });
+
+    // Populate state options
+    const states = [...new Set(data.map(item => item.state))].sort();
+    states.forEach(state => {
+        const option = document.createElement('option');
+        option.value = state;
+        option.textContent = state;
+        stateSelect.appendChild(option);
+    });
+
+    // Filter cards based on selections
+    function filterCards() {
+        const officeValue = officeSelect.value;
+        const stateValue = stateSelect.value;
+        const searchValue = searchInput.value.toLowerCase();
+
+        const filtered = data.filter(item => {
+            const matchesOffice = officeValue === 'All' || item.office === officeValue;
+            const matchesState = stateValue === 'All' || item.state === stateValue;
+            const matchesSearch = item.name.toLowerCase().includes(searchValue);
+            return matchesOffice && matchesState && matchesSearch;
+        });
+
+        renderCards(filtered);
+    }
+
+    // Event listeners
+    officeSelect.addEventListener('change', filterCards);
+    stateSelect.addEventListener('change', filterCards);
+    searchInput.addEventListener('input', filterCards);
+}
+
+// Initialize filters after data is loaded
+setupFilters(allMembers);
