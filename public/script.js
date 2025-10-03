@@ -247,3 +247,23 @@
   });
 
 })();
+function openModal(item) {
+  const modal = document.getElementById('modal');
+  modal.querySelector('.modal-title').textContent = item.name;
+  modal.querySelector('.modal-photo').src = item.photo;
+  modal.querySelector('.modal-body').textContent = item.platform || 'No platform info';
+  modal.style.display = 'block';
+}
+
+// Close modal when clicking the X
+document.querySelector('.modal-close').addEventListener('click', () => {
+  document.getElementById('modal').style.display = 'none';
+});
+
+// Close modal when clicking outside the content
+window.addEventListener('click', (event) => {
+  const modal = document.getElementById('modal');
+  if (event.target === modal) {
+    modal.style.display = 'none';
+  }
+});
