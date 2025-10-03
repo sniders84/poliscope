@@ -1,0 +1,14 @@
+{
+  "name": "poliscope",
+  "version": "1.0.0",
+  "description": "A civic engagement platform for tracking elected officials and voter information",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "echo 'This is a static site - no build needed'",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
