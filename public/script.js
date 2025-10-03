@@ -1,191 +1,121 @@
-// script.js — Modular civic dataset loader and renderer
-
 (() => {
-  // Part 1 — Global setup
   const FILE_MAP = {
+    Governors: 'Governors.json',
     Senate: 'Senate.json',
     House: 'House.json',
-    Governors: 'Governors.json',
     LtGovernors: 'LtGovernors.json'
   };
 
-  const datasets = {}; // cache
+  const datasets = {};
   const datasetSelect = document.getElementById('datasetSelect');
-  const searchInput = document.getElementById('searchInput');
-  const partyFilter = document.getElementById('partyFilter');
-  const refreshBtn = document.getElementById('refreshBtn');
   const grid = document.getElementById('grid');
-  const empty = document.getElementById('empty');
-  const loadedFilesEl = document.getElementById('loadedFiles');
-  const summaryEl = document.getElementById('summary');
+  const expandBtn = document.getElementById('expandBtn');
+  const calendarWrap = document.getElementById('calendarWrap');
+  const registrationWrap = document.getElementById('registrationWrap');
 
-  // Part 2 — Global tab switcher
+  let fullGovernorList = [];
+
   window.showTab = function(name) {
-    if (!FILE_MAP[name]) {
-      console.warn('Unknown tab:', name);
-      return;
-    }
     datasetSelect.value = name;
-    reloadAndRender();
+    renderTab(name);
   };
 
-  // Part 3 — Sanitization
-  function sanitizeText(v) {
-    if (v === null || v === undefined) return '';
-    return String(v);
-  }
-
-  function showEmpty(show, message) {
-    if (show) {
-      empty.classList.remove('hidden');
-      empty.textContent = message || 'No results found.';
-      grid.innerHTML = '';
-      summaryEl.innerHTML = '';
-    } else {
-      empty.classList.add('hidden');
-    }
-  }
-
-  // Part 4 — Card rendering
-  function createCard(item) {
-    const card = document.createElement('article');
-    card.className = 'card';
-
-    const hero = document.createElement('div');
-    hero.className = 'hero';
-
-    const photoWrap = document.createElement('div');
-    photoWrap.className = 'photo';
-    const img = document.createElement('img');
-    img.alt = sanitizeText(item.name || 'photo');
-
-    if (item.photo) {
-      img.src = item.photo;
-      img.onerror = () => {
-        img.style.display = 'none';
-        photoWrap.textContent = (item.name || '').slice(0, 2).toUpperCase();
-      };
-    } else {
-      img.style.display = 'none';
-      photoWrap.textContent = (item.name || '').slice(0, 2).toUpperCase();
-    }
-
-    photoWrap.appendChild(img);
-
-    const meta = document.createElement('div');
-    meta.className = 'meta';
-    const title = document.createElement('h3');
-    title.textContent = sanitizeText(item.name || 'Unknown');
-    const sub = document.createElement('div');
-    sub.className = 'sub';
-    sub.textContent = `${sanitizeText(item.office || '')} • ${sanitizeText(item.state || '')}${item.district ? ' • District ' + item.district : ''}`;
-
-    meta.appendChild(title);
-    meta.appendChild(sub);
-    hero.appendChild(photoWrap);
-    hero.appendChild(meta);
-    card.appendChild(hero);
-
-    return card;
-  }
-
-  // Part 5 — List rendering
-  function renderList(items, datasetName) {
-    grid.innerHTML = '';
-
-    if (!Array.isArray(items) || !items.length) {
-      showEmpty(true, 'No entries in this dataset.');
-      loadedFilesEl.textContent = datasetName;
-      return;
-    }
-
-    showEmpty(false);
-    const fragment = document.createDocumentFragment();
-    items.forEach(it => fragment.appendChild(createCard(it)));
-    grid.appendChild(fragment);
-
-    const total = items.length;
-    const parties = items.reduce((acc, cur) => {
-      const p = cur.party || 'Other';
-      acc[p] = (acc[p] || 0) + 1;
-      return acc;
-    }, {});
-
-    summaryEl.innerHTML = `<div><strong>${datasetName}</strong> — ${total} entries</div>
-      <div style="margin-left:12px">${Object.entries(parties).map(([k,v]) => `${k}: ${v}`).join(' • ')}</div>`;
-    loadedFilesEl.textContent = datasetName;
-  }
-
-  // Part 6 — Filtering
-  function filterItems(items, q, party) {
-    q = (q || '').trim().toLowerCase();
-    party = (party || '').trim().toLowerCase();
-
-    return items.filter(it => {
-      const matchParty = !party || (it.party || '').toLowerCase() === party;
-      if (!matchParty) return false;
-
-      if (!q) return true;
-
-      const haystack = `${it.name || ''} ${it.state || ''} ${it.office || ''} ${it.slug || ''}`.toLowerCase();
-      return haystack.includes(q);
-    });
-  }
-
-  // Part 7 — Dataset loading
-  async function loadDataset(name, force = false) {
-    if (!FILE_MAP[name]) throw new Error('Unknown dataset: ' + name);
-    if (datasets[name] && !force) return datasets[name];
+  async function loadDataset(name) {
+    if (!FILE_MAP[name]) return [];
+    if (datasets[name]) return datasets[name];
 
     try {
       const res = await fetch(FILE_MAP[name], { cache: 'no-store' });
-      if (!res.ok) throw new Error(`Failed to fetch ${FILE_MAP[name]}: ${res.status} ${res.statusText}`);
       const json = await res.json();
       datasets[name] = Array.isArray(json) ? json : [];
       return datasets[name];
     } catch (err) {
-      console.error(err);
-      datasets[name] = [];
-      return datasets[name];
+      console.error(`Failed to load ${name}:`, err);
+      return [];
     }
   }
 
-  // Part 8 — Reload and render
-  async function reloadAndRender() {
-    const ds = datasetSelect.value;
-    const data = await loadDataset(ds);
-    const q = searchInput.value || '';
-    const party = partyFilter.value || '';
-    const filtered = filterItems(data, q, party);
-    renderList(filtered, ds);
+  function createMiniCard(item, rank) {
+    const card = document.createElement('div');
+    card.className = 'mini-card';
+    if (rank <= 10) card.classList.add('top');
+    if (rank > fullGovernorList.length - 10) card.classList.add('bottom');
+
+    card.innerHTML = `
+      <div class="rank-badge">#${rank}</div>
+      <div class="name">${item.name}</div>
+      <div class="meta">${item.state} • ${item.party}</div>
+      <div class="polling">
+        👍 ${item.approvalPercent}% • 👎 ${item.disapprovalPercent}% • ❔ ${item.dkPercent}%
+      </div>
+    `;
+    return card;
   }
 
-  // Part 9 — Event wiring
-  datasetSelect.addEventListener('change', reloadAndRender);
-  searchInput.addEventListener('input', reloadAndRender);
-  partyFilter.addEventListener('change', reloadAndRender);
+  function sortGovernors(data) {
+    return [...data].sort((a, b) => {
+      if (b.approvalPercent !== a.approvalPercent)
+        return b.approvalPercent - a.approvalPercent;
+      if (a.disapprovalPercent !== b.disapprovalPercent)
+        return a.disapprovalPercent - b.disapprovalPercent;
+      return a.dkPercent - b.dkPercent;
+    });
+  }
 
-  refreshBtn.addEventListener('click', async () => {
-    const ds = datasetSelect.value;
-    datasets[ds] = null;
-    await loadDataset(ds, true);
-    reloadAndRender();
-  });
+  function renderRankings(data) {
+    grid.innerHTML = '';
+    fullGovernorList = sortGovernors(data);
 
-  // Part 10 — Prefetch and boot
-  async function prefetchAll() {
-    const names = Object.keys(FILE_MAP);
-    for (const name of names) {
-      try {
-        await loadDataset(name);
-      } catch (err) {
-        console.warn(`Prefetch failed for ${name}:`, err);
-      }
+    const top10 = fullGovernorList.slice(0, 10);
+    const bottom10 = fullGovernorList.slice(-10);
+
+    const topWrap = document.createElement('div');
+    topWrap.className = 'rank-section';
+    topWrap.innerHTML = `<h2>Top 10 Governors</h2>`;
+    top10.forEach((item, i) => topWrap.appendChild(createMiniCard(item, i + 1)));
+
+    const bottomWrap = document.createElement('div');
+    bottomWrap.className = 'rank-section';
+    bottomWrap.innerHTML = `<h2>Bottom 10 Governors</h2>`;
+    bottom10.forEach((item, i) => bottomWrap.appendChild(createMiniCard(item, fullGovernorList.length - 9 + i)));
+
+    grid.appendChild(topWrap);
+    grid.appendChild(bottomWrap);
+
+    expandBtn.classList.remove('hidden');
+  }
+
+  function expandFullRankings() {
+    const fullWrap = document.createElement('div');
+    fullWrap.className = 'rank-section';
+    fullWrap.innerHTML = `<h2>Full Rankings</h2>`;
+    fullGovernorList.forEach((item, i) => fullWrap.appendChild(createMiniCard(item, i + 1)));
+    grid.appendChild(fullWrap);
+    expandBtn.classList.add('hidden');
+  }
+
+  async function renderTab(name) {
+    grid.innerHTML = '';
+    expandBtn.classList.add('hidden');
+    calendarWrap.classList.add('hidden');
+    registrationWrap.classList.add('hidden');
+
+    if (name === 'Governors') {
+      const data = await loadDataset(name);
+      renderRankings(data);
+    } else if (name === 'Calendar') {
+      calendarWrap.classList.remove('hidden');
+    } else if (name === 'Registration') {
+      registrationWrap.classList.remove('hidden');
+    } else {
+      const data = await loadDataset(name);
+      grid.innerHTML = `<div class="message">Loaded ${data.length} entries for ${name}.</div>`;
     }
   }
+
+  expandBtn.addEventListener('click', expandFullRankings);
 
   document.addEventListener('DOMContentLoaded', async () => {
-    await prefetchAll();
-    await reloadAndRender();
+    await renderTab(datasetSelect.value);
   });
 })();
