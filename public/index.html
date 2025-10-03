@@ -10,6 +10,19 @@
     <header>
         <h1>Congress Members</h1>
     </header>
+<div class="filters">
+    <input type="text" id="search-input" placeholder="Search by name...">
+    <select id="state-filter">
+        <option value="All">All States</option>
+        <!-- Dynamically populate states via JS or hardcode -->
+    </select>
+    <select id="party-filter">
+        <option value="All">All Parties</option>
+        <option value="Democratic">Democratic</option>
+        <option value="Republican">Republican</option>
+        <option value="Independent">Independent</option>
+    </select>
+</div>
 
     <main>
         <section id="cards-container" class="cards-container">
