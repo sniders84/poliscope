@@ -1,369 +1,202 @@
+// Part 1 — Global setup and DOM references
+window.showTab = function(name) {
+  datasetSelect.value = name;
+  reloadAndRender();
+};
+
 (() => {
-  let selectedState = '';
-  let currentTab = 'my-officials';
-  const dataCache = {};
-  const US_STATES = [
-    'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado',
-    'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho',
-    'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
-    'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
-    'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada',
-    'New Hampshire', 'New Jersey', 'New Mexico', 'New York',
-    'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon',
-    'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota',
-    'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington',
-    'West Virginia', 'Wisconsin', 'Wyoming'
-  ];
+  const FILE_MAP = {
+    Senate: 'Senate.json',
+    House: 'House.json',
+    Governors: 'Governors.json',
+    LtGovernors: 'LtGovernors.json'
+  };
 
-  async function loadData(file) {
-    if (dataCache[file]) return dataCache[file];
-    try {
-      const response = await fetch(file);
-      const data = await response.json();
-      dataCache[file] = data;
-      return data;
-    } catch (error) {
-      console.error(`Error loading ${file}:`, error);
-      return [];
+  const datasets = {}; // cache
+  const datasetSelect = document.getElementById('datasetSelect');
+  const searchInput = document.getElementById('searchInput');
+  const partyFilter = document.getElementById('partyFilter');
+  const refreshBtn = document.getElementById('refreshBtn');
+  const grid = document.getElementById('grid');
+  const empty = document.getElementById('empty');
+  const loadedFilesEl = document.getElementById('loadedFiles');
+  const summaryEl = document.getElementById('summary');
+  // Part 2 — Sanitization + empty state logic
+
+  function sanitizeText(v) {
+    if (v === null || v === undefined) return '';
+    return String(v);
+  }
+
+  function showEmpty(show, message) {
+    if (show) {
+      empty.classList.remove('hidden');
+      empty.textContent = message || 'No results found.';
+      grid.innerHTML = '';
+      summaryEl.innerHTML = '';
+    } else {
+      empty.classList.add('hidden');
     }
   }
+  // Part 3 — Card rendering logic
 
-  function calculateRankings(officials) {
-    return officials
-      .filter(official => official.pollingScore && official.pollingScore !== 'N/A')
-      .map(official => {
-        const scoreMatch = String(official.pollingScore).match(/[\d.]+/);
-        const score = scoreMatch ? parseFloat(scoreMatch[0]) : 0;
-
-        const disapprovalMatch = String(official.disapprovalRating || '0').match(/[\d.]+/);
-        const disapproval = disapprovalMatch ? parseFloat(disapprovalMatch[0]) : 0;
-
-        const dontKnowMatch = String(official.dontKnow || '0').match(/[\d.]+/);
-        const dontKnow = dontKnowMatch ? parseFloat(dontKnowMatch[0]) : 0;
-
-        return {
-          ...official,
-          approvalScore: score,
-          disapprovalScore: disapproval,
-          dontKnowScore: dontKnow
-        };
-      })
-      .sort((a, b) => {
-        if (b.approvalScore !== a.approvalScore) {
-          return b.approvalScore - a.approvalScore;
-        }
-        if (a.disapprovalScore !== b.disapprovalScore) {
-          return a.disapprovalScore - b.disapprovalScore;
-        }
-        return a.dontKnowScore - b.dontKnowScore;
-      })
-      .map((official, index) => ({
-        ...official,
-        rank: index + 1
-      }));
-  }
-
-  function createOfficialCard(official, showRank = false) {
-    const card = document.createElement('div');
+  function createCard(item) {
+    const card = document.createElement('article');
     card.className = 'card';
 
+    // Hero section
+    const hero = document.createElement('div');
+    hero.className = 'hero';
+
+    const photoWrap = document.createElement('div');
+    photoWrap.className = 'photo';
     const img = document.createElement('img');
-    img.src = official.photo || 'https://via.placeholder.com/120';
-    img.alt = official.name;
-    img.onerror = () => {
+    img.alt = sanitizeText(item.name || 'photo');
+
+    if (item.photo) {
+      img.src = item.photo;
+      img.onerror = () => {
+        img.style.display = 'none';
+        photoWrap.textContent = (item.name || '').slice(0, 2).toUpperCase();
+      };
+    } else {
       img.style.display = 'none';
-    };
-
-    const name = document.createElement('h3');
-    name.textContent = official.name;
-
-    const office = document.createElement('p');
-    office.textContent = `${official.office} ${official.district ? '(District ' + official.district + ')' : ''}`;
-
-    const state = document.createElement('p');
-    state.textContent = `${official.state} • ${official.party}`;
-
-    card.appendChild(img);
-    card.appendChild(name);
-    card.appendChild(office);
-    card.appendChild(state);
-
-    if (showRank && official.rank) {
-      const rank = document.createElement('p');
-      rank.style.fontWeight = 'bold';
-      rank.style.color = '#0055a5';
-      rank.textContent = `Rank: #${official.rank}`;
-      card.appendChild(rank);
+      photoWrap.textContent = (item.name || '').slice(0, 2).toUpperCase();
     }
 
-    if (official.pollingScore && official.pollingScore !== 'N/A') {
-      const polling = document.createElement('p');
-      polling.textContent = `Approval: ${official.pollingScore}`;
-      card.appendChild(polling);
-    }
+    photoWrap.appendChild(img);
 
-    if (official.ballotpediaLink) {
-      const link = document.createElement('a');
-      link.href = official.ballotpediaLink;
-      link.target = '_blank';
-      link.textContent = 'View Profile';
-      link.style.color = '#0055a5';
-      link.style.textDecoration = 'none';
-      link.style.fontWeight = 'bold';
-      card.appendChild(link);
-    }
-
-    return card;
-  }
-
-  function createEventCard(event) {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.style.textAlign = 'left';
-
+    const meta = document.createElement('div');
+    meta.className = 'meta';
     const title = document.createElement('h3');
-    title.textContent = event.title;
+    title.textContent = sanitizeText(item.name || 'Unknown');
+    const sub = document.createElement('div');
+    sub.className = 'sub';
+    sub.textContent = `${sanitizeText(item.office || '')} • ${sanitizeText(item.state || '')}${item.district ? ' • District ' + item.district : ''}`;
 
-    const date = document.createElement('p');
-    date.textContent = `Date: ${event.date}`;
-    date.style.fontWeight = 'bold';
+    meta.appendChild(title);
+    meta.appendChild(sub);
+    hero.appendChild(photoWrap);
+    hero.appendChild(meta);
+    card.appendChild(hero);
+  // Part 4 — List rendering + summary
 
-    const link = document.createElement('a');
-    link.href = event.link;
-    link.target = '_blank';
-    link.textContent = 'More Information';
-    link.style.color = '#0055a5';
-    link.style.textDecoration = 'none';
-    link.style.fontWeight = 'bold';
+  function renderList(items, datasetName) {
+    grid.innerHTML = '';
 
-    card.appendChild(title);
-    card.appendChild(date);
-    card.appendChild(link);
-
-    return card;
-  }
-
-  function createResourceCard(title, url) {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.style.textAlign = 'left';
-
-    const heading = document.createElement('h3');
-    heading.textContent = title;
-
-    const link = document.createElement('a');
-    link.href = url;
-    link.target = '_blank';
-    link.textContent = 'Visit Resource';
-    link.style.color = '#0055a5';
-    link.style.textDecoration = 'none';
-    link.style.fontWeight = 'bold';
-
-    card.appendChild(heading);
-    card.appendChild(link);
-
-    return card;
-  }
-
-  async function renderMyOfficials() {
-    const container = document.getElementById('my-cards');
-    container.innerHTML = '';
-
-    if (!selectedState) {
-      container.innerHTML = '<p>Please select a state to view your officials.</p>';
+    if (!Array.isArray(items) || !items.length) {
+      showEmpty(true, 'No entries in this dataset.');
+      loadedFilesEl.textContent = datasetName;
       return;
     }
 
-    const [governors, ltGovernors, senators, house] = await Promise.all([
-      loadData('Governors.json'),
-      loadData('LtGovernors.json'),
-      loadData('Senate.json'),
-      loadData('House.json')
-    ]);
+    showEmpty(false);
+    const fragment = document.createDocumentFragment();
+    items.forEach(it => fragment.appendChild(createCard(it)));
+    grid.appendChild(fragment);
 
-    const stateOfficials = [
-      ...governors.filter(o => o.state === selectedState),
-      ...ltGovernors.filter(o => o.state === selectedState),
-      ...senators.filter(o => o.state === selectedState),
-      ...house.filter(o => o.state === selectedState)
-    ];
+    // Summary stats
+    const total = items.length;
+    const parties = items.reduce((acc, cur) => {
+      const p = cur.party || 'Other';
+      acc[p] = (acc[p] || 0) + 1;
+      return acc;
+    }, {});
 
-    if (stateOfficials.length === 0) {
-      container.innerHTML = '<p>No officials found for this state.</p>';
-      return;
-    }
+    summaryEl.innerHTML = `<div><strong>${datasetName}</strong> — ${total} entries</div>
+      <div style="margin-left:12px">${Object.entries(parties).map(([k,v]) => `${k}: ${v}`).join(' • ')}</div>`;
+    loadedFilesEl.textContent = datasetName;
+  }
+  // Part 5 — Filtering logic
 
-    stateOfficials.forEach(official => {
-      container.appendChild(createOfficialCard(official));
+  function filterItems(items, q, party) {
+    q = (q || '').trim().toLowerCase();
+    party = (party || '').trim().toLowerCase();
+
+    return items.filter(it => {
+      const matchParty = !party || (it.party || '').toLowerCase() === party;
+      if (!matchParty) return false;
+
+      if (!q) return true;
+
+      const haystack = `${it.name || ''} ${it.state || ''} ${it.office || ''} ${it.slug || ''}`.toLowerCase();
+      return haystack.includes(q);
     });
   }
+  // Part 6 — Dataset loading logic
 
-  async function renderCalendar() {
-    const container = document.getElementById('calendar-container');
-    container.innerHTML = '';
+  async function loadDataset(name, force = false) {
+    if (!FILE_MAP[name]) throw new Error('Unknown dataset: ' + name);
+    if (datasets[name] && !force) return datasets[name];
 
-    if (!selectedState) {
-      container.innerHTML = '<p>Please select a state to view election dates.</p>';
-      return;
+    try {
+      const res = await fetch(FILE_MAP[name], { cache: 'no-store' });
+      if (!res.ok) throw new Error(`Failed to fetch ${FILE_MAP[name]}: ${res.status} ${res.statusText}`);
+      const json = await res.json();
+      datasets[name] = Array.isArray(json) ? json : [];
+      return datasets[name];
+    } catch (err) {
+      console.error(err);
+      datasets[name] = [];
+      return datasets[name];
     }
-
-    if (!window.stateElectionCalendar || !window.stateElectionCalendar[selectedState]) {
-      container.innerHTML = '<p>No election information available for this state.</p>';
-      return;
-    }
-
-    const events = window.stateElectionCalendar[selectedState];
-    const cardContainer = document.createElement('div');
-    cardContainer.className = 'card-container';
-
-    events.forEach(event => {
-      cardContainer.appendChild(createEventCard(event));
-    });
-
-    container.appendChild(cardContainer);
   }
+  // Part 7 — Reload and render logic
 
-  async function renderRegistration() {
-    const container = document.getElementById('voting-container');
-    container.innerHTML = '';
-
-    if (!selectedState) {
-      container.innerHTML = '<p>Please select a state to view voting information.</p>';
-      return;
-    }
-
-    if (!window.stateVotingInfo || !window.stateVotingInfo[selectedState]) {
-      container.innerHTML = '<p>No voting information available for this state.</p>';
-      return;
-    }
-
-    const info = window.stateVotingInfo[selectedState];
-    const cardContainer = document.createElement('div');
-    cardContainer.className = 'card-container';
-
-    const resources = [
-      { title: 'Voter Registration', url: info.registration },
-      { title: 'Check Voter Status', url: info.voterInfo },
-      { title: 'Absentee Voting', url: info.absenteeInfo },
-      { title: 'Find Polling Location', url: info.pollingLocations }
-    ];
-
-    resources.forEach(resource => {
-      cardContainer.appendChild(createResourceCard(resource.title, resource.url));
-    });
-
-    container.appendChild(cardContainer);
+  async function reloadAndRender() {
+    const ds = datasetSelect.value;
+    const data = await loadDataset(ds);
+    const q = searchInput.value || '';
+    const party = partyFilter.value || '';
+    const filtered = filterItems(data, q, party);
+    renderList(filtered, ds);
   }
+  // Part 8 — Event wiring
 
-  async function renderRankings() {
-    const governorsContainer = document.getElementById('rankings-governors');
-    const ltGovernorsContainer = document.getElementById('rankings-ltgovernors');
-    const senatorsContainer = document.getElementById('rankings-senators');
-    const houseContainer = document.getElementById('rankings-house');
+  datasetSelect.addEventListener('change', () => {
+    reloadAndRender();
+  });
 
-    governorsContainer.innerHTML = '<p>Loading...</p>';
-    ltGovernorsContainer.innerHTML = '<p>Loading...</p>';
-    senatorsContainer.innerHTML = '<p>Loading...</p>';
-    houseContainer.innerHTML = '<p>Loading...</p>';
+  searchInput.addEventListener('input', () => {
+    reloadAndRender();
+  });
 
-    const [governors, ltGovernors, senators, house] = await Promise.all([
-      loadData('Governors.json'),
-      loadData('LtGovernors.json'),
-      loadData('Senate.json'),
-      loadData('House.json')
-    ]);
+  partyFilter.addEventListener('change', () => {
+    reloadAndRender();
+  });
 
-    const rankedGovernors = calculateRankings(governors);
-    const rankedLtGovernors = calculateRankings(ltGovernors);
-    const rankedSenators = calculateRankings(senators);
-    const rankedHouse = calculateRankings(house);
+  refreshBtn.addEventListener('click', async () => {
+    const ds = datasetSelect.value;
+    datasets[ds] = null; // clear cache
+    await loadDataset(ds, true);
+    reloadAndRender();
+  });
+  // Part 9 — Prefetch logic
 
-    governorsContainer.innerHTML = '';
-    rankedGovernors.forEach(official => {
-      governorsContainer.appendChild(createOfficialCard(official, true));
-    });
-
-    ltGovernorsContainer.innerHTML = '';
-    rankedLtGovernors.forEach(official => {
-      ltGovernorsContainer.appendChild(createOfficialCard(official, true));
-    });
-
-    senatorsContainer.innerHTML = '';
-    rankedSenators.forEach(official => {
-      senatorsContainer.appendChild(createOfficialCard(official, true));
-    });
-
-    houseContainer.innerHTML = '';
-    rankedHouse.forEach(official => {
-      houseContainer.appendChild(createOfficialCard(official, true));
-    });
-  }
-
-  function showTab(tabName) {
-    document.querySelectorAll('section').forEach(section => {
-      section.style.display = 'none';
-    });
-
-    const section = document.getElementById(tabName);
-    if (section) {
-      section.style.display = 'block';
-      currentTab = tabName;
-
-      if (tabName === 'my-officials') {
-        renderMyOfficials();
-      } else if (tabName === 'calendar') {
-        renderCalendar();
-      } else if (tabName === 'registration') {
-        renderRegistration();
-      } else if (tabName === 'rankings') {
-        renderRankings();
+  async function prefetchAll() {
+    const names = Object.keys(FILE_MAP);
+    for (const name of names) {
+      try {
+        await loadDataset(name);
+      } catch (err) {
+        console.warn(`Prefetch failed for ${name}:`, err);
       }
     }
   }
+  // Part 10 — Boot + tab switching logic
 
-  function initStateSelect() {
-    const select = document.getElementById('state-select');
-    select.innerHTML = '<option value="">Choose a state</option>';
+  document.addEventListener('DOMContentLoaded', async () => {
+    await prefetchAll();
+    await reloadAndRender();
+  });
 
-    US_STATES.forEach(state => {
-      const option = document.createElement('option');
-      option.value = state;
-      option.textContent = state;
-      select.appendChild(option);
-    });
-
-    select.addEventListener('change', (e) => {
-      selectedState = e.target.value;
-      if (currentTab === 'my-officials') {
-        renderMyOfficials();
-      } else if (currentTab === 'calendar') {
-        renderCalendar();
-      } else if (currentTab === 'registration') {
-        renderRegistration();
-      }
-    });
-  }
-
-  function initTabs() {
-    document.querySelectorAll('#tabs button').forEach(button => {
-      button.addEventListener('click', (e) => {
-        const tabName = e.target.textContent.toLowerCase().replace(' ', '-');
-        showTab(tabName);
-      });
-    });
-  }
-
-  function init() {
-    initStateSelect();
-    initTabs();
-    showTab('my-officials');
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
-
-  window.showTab = showTab;
+  // Optional: wire tab buttons like <button onclick="window.showTab('Senate')">
+  window.showTab = function(name) {
+    if (!FILE_MAP[name]) {
+      console.warn('Unknown tab:', name);
+      return;
+    }
+    datasetSelect.value = name;
+    reloadAndRender();
+  };
 })();
