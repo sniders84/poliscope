@@ -314,11 +314,6 @@ h2 {
     border: 1px solid #ccc;
     font-size: 14px;
 }
-<div id="member-modal" class="modal">
-    <div id="modal-content" class="modal-content">
-        <!-- Member details injected dynamically -->
-    </div>
-</div>
 
 /* Mobile tweak */
 @media (max-width: 600px) {
