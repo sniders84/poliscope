@@ -23,7 +23,21 @@
         <option value="Independent">Independent</option>
     </select>
 </div>
+<div class="filters">
+    <select id="state-filter">
+        <option value="all">All States</option>
+        <!-- Populate dynamically or manually add states -->
+    </select>
 
+    <select id="party-filter">
+        <option value="all">All Parties</option>
+        <option value="Democratic">Democratic</option>
+        <option value="Republican">Republican</option>
+        <option value="Independent">Independent</option>
+    </select>
+
+    <input type="text" id="search-input" placeholder="Search by name">
+</div>
     <main>
         <section id="cards-container" class="cards-container">
             <!-- Cards will be dynamically inserted here -->
