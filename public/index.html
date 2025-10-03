@@ -1,81 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Electorate Tracker</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electorate App</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <img src="assets/electorate-logo.png" alt="Electorate Logo" id="logo">
-        <h1>Electorate Tracker</h1>
-    </header>
-
-    <main>
-        <section class="filters">
-            <label for="state-filter">State:</label>
-            <select id="state-filter">
-                <option value="all">All</option>
-            </select>
-
-            <label for="office-filter">Office:</label>
-            <select id="office-filter">
-                <option value="all">All</option>
-            </select>
-
-            <label for="party-filter">Party:</label>
-            <select id="party-filter">
-                <option value="all">All</option>
-            </select>
-        </section>
-
-        <section id="cards-container">
-            <!-- Cards will be dynamically inserted here -->
-        </section>
-    </main>
-<!-- Header with Logo -->
-<header id="main-header">
-    <div class="logo-container">
-        <img src="assets/electorate-logo.png" alt="Electorate Logo" id="logo">
-    </div>
+  <header>
+    <img src="assets/electorate-logo.png" alt="Electorate Logo" class="logo">
     <h1>Electorate Tracker</h1>
-</header>
+  </header>
 
-<!-- Filters Section -->
-<section id="filters">
-    <select id="office-filter">
-        <option value="All">All Offices</option>
+  <section class="filters">
+    <select id="stateFilter">
+      <option value="">All States</option>
     </select>
-    <select id="state-filter">
-        <option value="All">All States</option>
+    <select id="partyFilter">
+      <option value="">All Parties</option>
     </select>
-    <input type="text" id="search-input" placeholder="Search by name">
-</section>
+    <select id="officeFilter">
+      <option value="">All Offices</option>
+    </select>
+  </section>
 
-<!-- Cards Container -->
-<main id="cards-container"></main>
+  <main id="cardsContainer"></main>
 
-<!-- Modal -->
-<div id="modal" class="modal">
+  <div id="modal" class="modal">
     <div class="modal-content">
-        <span class="close-button" id="close-modal">&times;</span>
-        <h2 class="modal-title"></h2>
-        <img class="modal-photo" src="" alt="">
-        <p class="modal-body"></p>
+      <span class="close">&times;</span>
+      <h2 class="modal-title"></h2>
+      <img class="modal-photo" src="" alt="Member Photo">
+      <p class="modal-body"></p>
     </div>
-</div>
+  </div>
 
-    <!-- Modal -->
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h2 class="modal-title"></h2>
-            <img class="modal-photo" src="" alt="Photo">
-            <p class="modal-body"></p>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
