@@ -12,26 +12,39 @@
     <h1>Electorate Tracker</h1>
   </header>
 
-  <section class="filters">
-    <select id="stateFilter">
-      <option value="">All States</option>
-    </select>
-    <select id="partyFilter">
-      <option value="">All Parties</option>
-    </select>
-    <select id="officeFilter">
-      <option value="">All Offices</option>
-    </select>
-  </section>
+  <main>
+    <section class="filters">
+      <select id="stateFilter">
+        <option value="">All States</option>
+      </select>
+      <select id="partyFilter">
+        <option value="">All Parties</option>
+        <option value="Democratic">Democratic</option>
+        <option value="Republican">Republican</option>
+        <option value="Independent">Independent</option>
+      </select>
+      <select id="officeFilter">
+        <option value="">All Offices</option>
+        <option value="U.S. Senator">U.S. Senator</option>
+        <option value="Governor">Governor</option>
+        <option value="Lt. Governor">Lt. Governor</option>
+        <option value="House Representative">House Representative</option>
+      </select>
+    </section>
 
-  <main id="cardsContainer"></main>
+    <section id="cardsContainer" class="cards-container">
+      <!-- Cards will be dynamically inserted here -->
+    </section>
+  </main>
 
+  <!-- Modal -->
   <div id="modal" class="modal">
     <div class="modal-content">
-      <span class="close">&times;</span>
+      <span class="modal-close">&times;</span>
       <h2 class="modal-title"></h2>
-      <img class="modal-photo" src="" alt="Member Photo">
+      <img class="modal-photo" src="" alt="Photo">
       <p class="modal-body"></p>
+      <a class="modal-link" href="" target="_blank">View on Ballotpedia</a>
     </div>
   </div>
 
