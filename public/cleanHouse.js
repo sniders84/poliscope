@@ -1,4 +1,4 @@
-fetch('House.json')
+fetch('./House.json')
   .then(res => res.text())
   .then(text => {
     // Remove BOM if present
