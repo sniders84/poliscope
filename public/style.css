@@ -132,3 +132,36 @@ select#stateDropdown {
   border-left: 6px solid #228B22;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
+#rankingsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 2rem;
+  justify-content: center;
+}
+
+.ranking-card {
+  background: white;
+  border-left: 8px solid gray;
+  padding: 1rem;
+  width: 250px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  cursor: pointer;
+}
+
+.ranking-card.democratic { border-left-color: #0033A0; }
+.ranking-card.republican { border-left-color: #C8102E; }
+.ranking-card.independent { border-left-color: #228B22; }
+.ranking-card.unknown { border-left-color: #808080; }
+
+#expandRankings {
+  margin: 1rem auto;
+  display: block;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: #0033A0;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
