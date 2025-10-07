@@ -97,7 +97,7 @@ function renderRankings(category) {
   });
 }
 
-// ✅ Render Calendar tab (placeholder)
+// ✅ Render Calendar tab (placeholder logic)
 function renderCalendar() {
   const container = document.getElementById("calendar");
   container.innerHTML = `
@@ -105,7 +105,7 @@ function renderCalendar() {
   `;
 }
 
-// ✅ Render Registration tab (placeholder)
+// ✅ Render Registration tab (placeholder logic)
 function renderRegistration() {
   const container = document.getElementById("registration");
   container.innerHTML = `
@@ -113,19 +113,18 @@ function renderRegistration() {
   `;
 }
 
-// ✅ Tab switching logic (vertical sidebar)
-document.querySelectorAll(".tabs-vertical button").forEach(btn => {
+// ✅ Tab switching logic
+document.querySelectorAll(".tabs button").forEach(btn => {
   btn.addEventListener("click", () => {
     const tab = btn.getAttribute("data-tab");
+
+    // Hide all panes
     document.querySelectorAll(".tab-pane").forEach(p => p.classList.remove("active"));
+
+    // Show selected pane
     document.getElementById(tab).classList.add("active");
   });
 });
 
 // ✅ Default tab on load
 document.getElementById("officials").classList.add("active");
-
-// ✅ State selector logic
-document.getElementById("stateSelect").addEventListener("change", e => {
-  renderOfficials(e.target.value);
-});
