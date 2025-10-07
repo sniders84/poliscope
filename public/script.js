@@ -46,17 +46,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ✅ Fetch JSONs from /public/
   Promise.all([
-    fetch("public/governors.json").then(r => r.json()),
-    fetch("public/ltgovernors.json").then(r => r.json()),
-    fetch("public/senators.json").then(r => r.json()),
-    fetch("public/housereps.json").then(r => r.json())
-  ]).then(([govs, ltgovs, sens, reps]) => {
-    allOfficials = [...govs, ...ltgovs, ...sens, ...reps];
-    rankingsData.governors = govs;
-    rankingsData.ltgovernors = ltgovs;
-    rankingsData.senators = sens;
-    rankingsData.housereps = reps;
-  });
+  fetch("/governors.json").then(r => r.json()),
+  fetch("/ltgovernors.json").then(r => r.json()),
+  fetch("/senators.json").then(r => r.json()),
+  fetch("/housereps.json").then(r => r.json())
+]).then(([govs, ltgovs, sens, reps]) => {
+  allOfficials = [...govs, ...ltgovs, ...sens, ...reps];
+  rankingsData.governors = govs;
+  rankingsData.ltgovernors = ltgovs;
+  rankingsData.senators = sens;
+  rankingsData.housereps = reps;
+});
 
   dropdown.addEventListener("change", () => {
     const state = dropdown.value;
