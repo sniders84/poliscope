@@ -66,14 +66,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   dropdown.addEventListener("change", () => {
     const selectedState = dropdown.value;
-    renderOfficials(selectedState);
-    renderCalendar(selectedState);
-    renderRegistration(selectedState);
-  });
 
-  function renderOfficials(state) {
+    // Officials tab
     container.innerHTML = "";
-    const filtered = allOfficials.filter(o => o.state === state);
+    const filtered = allOfficials.filter(o => o.state === selectedState);
+
+    // Sort by hierarchy
+    const hierarchy = ["Governor", "Lt. Governor", "Senator", "House Representative"];
+    filtered.sort((a, b) => {
+      return hierarchy.indexOf(a.office) - hierarchy.indexOf(b.office);
+    });
+
     filtered.forEach(o => {
       const card = document.createElement("div");
       card.className = `card ${getPartyClass(o.party)}`;
@@ -86,7 +89,11 @@ document.addEventListener("DOMContentLoaded", () => {
       card.addEventListener("click", () => showModal(o));
       container.appendChild(card);
     });
-  }
+
+    // Calendar + Registration tabs
+    renderCalendar(selectedState);
+    renderRegistration(selectedState);
+  });
 
   function renderCalendar(state) {
     calendarContainer.innerHTML = "";
