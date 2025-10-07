@@ -1,11 +1,9 @@
-/* Reset + Base */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   background-color: #f5f5f5;
 }
 
-/* Header */
 header {
   display: flex;
   justify-content: space-between;
@@ -32,7 +30,6 @@ select#stateDropdown {
   border: none;
 }
 
-/* Officials Container */
 #officialsContainer {
   display: flex;
   flex-wrap: wrap;
@@ -41,7 +38,6 @@ select#stateDropdown {
   justify-content: center;
 }
 
-/* Card Styling */
 .card {
   background-color: white;
   border-left: 8px solid gray;
@@ -61,7 +57,60 @@ select#stateDropdown {
 .card.independent { border-left-color: #228B22; }
 .card.unknown { border-left-color: #808080; }
 
-/* Modal Styling */
+#calendarContainer,
+#registrationContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.calendar-card,
+.registration-card {
+  background: white;
+  padding: 1rem;
+  border-left: 6px solid #0033A0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.registration-card {
+  border-left-color: #228B22;
+}
+
+#rankingsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 2rem;
+  justify-content: center;
+}
+
+.ranking-card {
+  background: white;
+  border-left: 8px solid gray;
+  padding: 1rem;
+  width: 250px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  cursor: pointer;
+}
+
+.ranking-card.democratic { border-left-color: #0033A0; }
+.ranking-card.republican { border-left-color: #C8102E; }
+.ranking-card.independent { border-left-color: #228B22; }
+.ranking-card.unknown { border-left-color: #808080; }
+
+#expandRankings {
+  margin: 1rem auto;
+  display: block;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: #0033A0;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 #modal {
   position: fixed;
   top: 0; left: 0;
@@ -96,136 +145,4 @@ select#stateDropdown {
 
 .hidden {
   display: none;
-}
-<header>
-  <div style="display:flex;align-items:center;">
-    <img src="logo.png" alt="Electorate Logo" />
-    <h1>Electorate</h1>
-  </div>
-  <select id="stateDropdown">
-    <option value="">Select a state or territory</option>
-  </select>
-</header>
-#calendarContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 2rem;
-}
-
-.calendar-card {
-  background: white;
-  padding: 1rem;
-  border-left: 6px solid #0033A0;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-#registrationContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 2rem;
-}
-
-.registration-card {
-  background: white;
-  padding: 1rem;
-  border-left: 6px solid #228B22;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-#rankingsContainer {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  padding: 2rem;
-  justify-content: center;
-}
-
-.ranking-card {
-  background: white;
-  border-left: 8px solid gray;
-  padding: 1rem;
-  width: 250px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  cursor: pointer;
-}
-
-.ranking-card.democratic { border-left-color: #0033A0; }
-.ranking-card.republican { border-left-color: #C8102E; }
-.ranking-card.independent { border-left-color: #228B22; }
-.ranking-card.unknown { border-left-color: #808080; }
-
-#expandRankings {
-  margin: 1rem auto;
-  display: block;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  background-color: #0033A0;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-const rankingsTab = document.getElementById("rankingsTab");
-const rankingsContainer = document.getElementById("rankingsContainer");
-const rankingCategory = document.getElementById("rankingCategory");
-const expandRankings = document.getElementById("expandRankings");
-
-let rankingsData = {
-  governors: [],
-  ltgovernors: [],
-  senators: [],
-  housereps: []
-};
-
-// Load all categories
-Promise.all([
-  fetch("governors.json").then(res => res.json()),
-  fetch("ltgovernors.json").then(res => res.json()),
-  fetch("senators.json").then(res => res.json()),
-  fetch("housereps.json").then(res => res.json())
-]).then(([govs, ltgovs, sens, reps]) => {
-  rankingsData.governors = govs;
-  rankingsData.ltgovernors = ltgovs;
-  rankingsData.senators = sens;
-  rankingsData.housereps = reps;
-});
-
-// Render rankings on category change
-rankingCategory.addEventListener("change", () => {
-  renderRankings(rankingCategory.value, false);
-});
-
-expandRankings.addEventListener("click", () => {
-  renderRankings(rankingCategory.value, true);
-});
-
-function renderRankings(category, expandAll) {
-  rankingsContainer.innerHTML = "";
-  rankingsTab.classList.remove("hidden");
-
-  let list = rankingsData[category].filter(o => o.pollingScore !== undefined);
-
-  list.sort((a, b) => {
-    if (b.pollingScore !== a.pollingScore) {
-      return b.pollingScore - a.pollingScore;
-    }
-    return (a.dkno || 0) - (b.dkno || 0); // Tie-break by DK/NO
-  });
-
-  let displayList = expandAll ? list : [...list.slice(0, 10), ...list.slice(-10)];
-
-  displayList.forEach(o => {
-    const card = document.createElement("div");
-    card.className = `ranking-card ${getPartyClass(o.party)}`;
-    card.innerHTML = `
-      <strong>${o.name}</strong><br/>
-      ${o.office}<br/>
-      ${o.party}<br/>
-      Approval: ${o.pollingScore || "N/A"}
-    `;
-    card.addEventListener("click", () => showModal(o));
-    rankingsContainer.appendChild(card);
-  });
-
-  expandRankings.classList.toggle("hidden", expandAll);
 }
