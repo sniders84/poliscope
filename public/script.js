@@ -54,7 +54,48 @@ dropdown.addEventListener("change", () => {
     container.appendChild(card);
   });
 });
+const calendarTab = document.getElementById("calendarTab");
+const calendarContainer = document.getElementById("calendarContainer");
+let calendarData = [];
 
+// Load calendar.json
+fetch("calendar.json")
+  .then(res => res.json())
+  .then(data => {
+    calendarData = data;
+  });
+
+// Sync calendar to selected state
+dropdown.addEventListener("change", () => {
+  const selectedState = dropdown.value;
+
+  // Officials rendering already handled above
+  renderCalendar(selectedState);
+});
+
+function renderCalendar(state) {
+  calendarContainer.innerHTML = "";
+  calendarTab.classList.remove("hidden");
+
+  const filteredEvents = calendarData.filter(e => e.state === state);
+
+  if (filteredEvents.length === 0) {
+    calendarContainer.innerHTML = `<p>No events found for ${state}.</p>`;
+    return;
+  }
+
+  filteredEvents.forEach(e => {
+    const card = document.createElement("div");
+    card.className = "calendar-card";
+    card.innerHTML = `
+      <strong>${e.title}</strong><br/>
+      ${e.date} – ${e.type}<br/>
+      ${e.description || ""}<br/>
+      <a href="${e.link}" target="_blank">Details</a>
+    `;
+    calendarContainer.appendChild(card);
+  });
+}
 // Party color class
 function getPartyClass(party) {
   if (!party) return "unknown";
