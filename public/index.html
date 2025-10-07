@@ -1,97 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-  <div class="tabs">
-  <button data-tab="officials">Officials</button>
-  <button data-tab="rankings">Rankings</button>
-  <button data-tab="calendar">Calendar</button>
-  <button data-tab="registration">Registration</button>
-</div>
-  <div id="tab-content">
-  <div id="officials" class="tab-pane"></div>
-  <div id="rankings" class="tab-pane"></div>
-  <div id="calendar" class="tab-pane"></div>
-  <div id="registration" class="tab-pane"></div>
-</div>
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Electorate – Civic Dashboard</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Electorate</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 2rem;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .tabs button {
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      background: #f0f0f0;
+    }
+
+    .tabs button:hover {
+      background: #e0e0e0;
+    }
+
+    .tab-pane {
+      display: none;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      background: #fafafa;
+    }
+
+    .tab-pane.active {
+      display: block;
+    }
+  </style>
 </head>
 <body>
-  <header id="appHeader">
-    <!-- Logo served from /public/assets -->
-   <img src="/assets/electorate-logo.png" alt="Electorate Logo" id="appLogo"/>
-  </header>
 
-  <div id="layout">
-    <aside id="sidebar">
-      <nav id="tabs">
-        <button data-tab="officialsTab">Officials</button>
-        <button data-tab="calendarTab">Calendar</button>
-        <button data-tab="registrationTab">Registration</button>
-        <button data-tab="rankingsTab">Rankings</button>
-      </nav>
-      <div id="controls">
-        <select id="stateDropdown">
-          <option value="">Select a state or territory</option>
-        </select>
-      </div>
-    </aside>
-
-    <main id="content">
-      <section id="officialsTab">
-        <h2>Officials</h2>
-        <div id="officialsContainer"></div>
-      </section>
-
-      <section id="calendarTab" class="hidden">
-        <h2>Civic Calendar</h2>
-        <div id="calendarContainer"></div>
-      </section>
-
-      <section id="registrationTab" class="hidden">
-        <h2>Voting & Registration</h2>
-        <div id="registrationContainer"></div>
-      </section>
-
-      <section id="rankingsTab" class="hidden">
-        <h2>Rankings</h2>
-        <select id="rankingCategory">
-          <option value="governors">Governors</option>
-          <option value="ltgovernors">Lt. Governors</option>
-          <option value="senators">Senators</option>
-          <option value="housereps">House Reps</option>
-        </select>
-        <div id="rankingsContainer"></div>
-        <button id="expandRankings" class="hidden">Expand Full List</button>
-      </section>
-    </main>
+  <!-- ✅ Single Tab Row -->
+  <div class="tabs">
+    <button data-tab="officials">Officials</button>
+    <button data-tab="rankings">Rankings</button>
+    <button data-tab="calendar">Calendar</button>
+    <button data-tab="registration">Registration</button>
   </div>
 
-  <div id="modal" class="hidden">
-    <div id="modalContent"></div>
-    <button id="closeModal">Close</button>
+  <!-- ✅ Tab Content Containers -->
+  <div id="tab-content">
+    <div id="officials" class="tab-pane"></div>
+    <div id="rankings" class="tab-pane"></div>
+    <div id="calendar" class="tab-pane"></div>
+    <div id="registration" class="tab-pane"></div>
   </div>
 
-  <script src="script.js"></script>
+  <!-- ✅ Tab Switching Logic -->
   <script>
-document.querySelectorAll(".tabs button").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const tab = btn.getAttribute("data-tab");
+    document.querySelectorAll(".tabs button").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const tab = btn.getAttribute("data-tab");
 
-    // hide all panes
-    document.querySelectorAll(".tab-pane").forEach(p => p.classList.remove("active"));
+        // Hide all panes
+        document.querySelectorAll(".tab-pane").forEach(p => p.classList.remove("active"));
 
-    // show the selected one
-    document.getElementById(tab).classList.add("active");
-  });
-});
+        // Show selected pane
+        document.getElementById(tab).classList.add("active");
+      });
+    });
 
-// default to Officials tab on load
-document.getElementById("officials").classList.add("active");
-</script>
-</body>
+    // Default to Officials tab on load
+    document.getElementById("officials").classList.add("active");
+  </script>
+
+  <!-- ✅ Your render functions go below -->
+  <script src="script.js"></script>
 
 </body>
 </html>
