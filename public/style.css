@@ -6,21 +6,21 @@ body {
 
 header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  background-color: #0033A0;
-  color: white;
-  padding: 1rem 2rem;
-}
-
-header h1 {
-  margin: 0;
-  font-size: 1.5rem;
+  padding: 1rem;
+  background: linear-gradient(to right, #0033A0, #808080, #ffffff, #808080, #C8102E);
 }
 
 header img {
-  height: 40px;
-  margin-right: 1rem;
+  height: 60px;
+}
+
+#controls {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  background-color: #eee;
 }
 
 select#stateDropdown {
@@ -30,53 +30,9 @@ select#stateDropdown {
   border: none;
 }
 
-#officialsContainer {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  padding: 2rem;
-  justify-content: center;
-}
-
-.card {
-  background-color: white;
-  border-left: 8px solid gray;
-  padding: 1rem;
-  width: 250px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.card:hover {
-  transform: scale(1.02);
-}
-
-.card.democratic { border-left-color: #0033A0; }
-.card.republican { border-left-color: #C8102E; }
-.card.independent { border-left-color: #228B22; }
-.card.unknown { border-left-color: #808080; }
-
+#officialsContainer,
 #calendarContainer,
-#registrationContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 2rem;
-}
-
-.calendar-card,
-.registration-card {
-  background: white;
-  padding: 1rem;
-  border-left: 6px solid #0033A0;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.registration-card {
-  border-left-color: #228B22;
-}
-
+#registrationContainer,
 #rankingsContainer {
   display: flex;
   flex-wrap: wrap;
@@ -85,8 +41,11 @@ select#stateDropdown {
   justify-content: center;
 }
 
+.card,
+.calendar-card,
+.registration-card,
 .ranking-card {
-  background: white;
+  background-color: white;
   border-left: 8px solid gray;
   padding: 1rem;
   width: 250px;
@@ -94,10 +53,17 @@ select#stateDropdown {
   cursor: pointer;
 }
 
+.card.democratic,
 .ranking-card.democratic { border-left-color: #0033A0; }
+.card.republican,
 .ranking-card.republican { border-left-color: #C8102E; }
+.card.independent,
 .ranking-card.independent { border-left-color: #228B22; }
+.card.unknown,
 .ranking-card.unknown { border-left-color: #808080; }
+
+.registration-card { border-left-color: #228B22; }
+.calendar-card { border-left-color: #0033A0; }
 
 #expandRankings {
   margin: 1rem auto;
