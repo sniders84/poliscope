@@ -1,4 +1,4 @@
-// ✅ Normalize function
+// ✅ Normalize function for consistent schema
 function normalize(entry, officeLabel) {
   return {
     name: entry.name,
@@ -63,34 +63,6 @@ Promise.all([
   renderRegistration();
   document.getElementById("officials").classList.add("active");
 });
-// ✅ Fetch and store all officials
-Promise.all([
-  fetch("/governors.json").then(r => r.json()).catch(() => []),
-  fetch("/ltgovernors.json").then(r => r.json()).catch(() => []),
-  fetch("/senators.json").then(r => r.json()).catch(() => []),
-  fetch("/housereps.json").then(r => r.json()).catch(() => [])
-])
-.then(([govs, ltgovs, sens, reps]) => {
-  const govNorm = govs.map(g => normalize(g, "Governor"));
-  const ltgNorm = ltgovs.map(l => normalize(l, "Lt. Governor"));
-  const senNorm = sens.map(s => normalize(s, "Senator"));
-  const repNorm = reps.map(h => normalize(h, "House Representative"));
-
-  window.rankingsData = {
-    governors: govNorm,
-    ltgovernors: ltgNorm,
-    senators: senNorm,
-    housereps: repNorm
-  };
-
-  window.allOfficials = [...govNorm, ...ltgNorm, ...senNorm, ...repNorm];
-
-  // ✅ Initial render
-  renderOfficials("Alabama");
-  renderRankings("governors");
-  renderCalendar();
-  renderRegistration();
-});
 
 // ✅ Render Officials tab
 function renderOfficials(state) {
@@ -143,7 +115,7 @@ function renderRankings(category) {
   });
 }
 
-// ✅ Render Calendar tab (placeholder logic)
+// ✅ Render Calendar tab (placeholder)
 function renderCalendar() {
   const container = document.getElementById("calendar");
   container.innerHTML = `
@@ -151,7 +123,7 @@ function renderCalendar() {
   `;
 }
 
-// ✅ Render Registration tab (placeholder logic)
+// ✅ Render Registration tab (placeholder)
 function renderRegistration() {
   const container = document.getElementById("registration");
   container.innerHTML = `
@@ -159,18 +131,16 @@ function renderRegistration() {
   `;
 }
 
-// ✅ Tab switching logic
-document.querySelectorAll(".tabs button").forEach(btn => {
+// ✅ Tab switching logic (vertical sidebar)
+document.querySelectorAll(".tabs-vertical button").forEach(btn => {
   btn.addEventListener("click", () => {
     const tab = btn.getAttribute("data-tab");
-
-    // Hide all panes
     document.querySelectorAll(".tab-pane").forEach(p => p.classList.remove("active"));
-
-    // Show selected pane
     document.getElementById(tab).classList.add("active");
   });
 });
 
-// ✅ Default tab on load
-document.getElementById("officials").classList.add("active");
+// ✅ State selector logic
+document.getElementById("stateSelect").addEventListener("change", e => {
+  renderOfficials(e.target.value);
+});
