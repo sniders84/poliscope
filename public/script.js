@@ -206,45 +206,38 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Rankings renderer (sort by numeric polling)
-  function renderRankings(category, expandAll) {
-    if (!rankingsContainer) return;
-    rankingsContainer.innerHTML = "";
+function renderRankings(category, expandAll) {
+  rankingsContainer.innerHTML = "";
 
-    let list = (rankingsData[category] || [])
-      .filter(o => o.pollingScore !== undefined)
-      .sort((a, b) => {
-        if (b.pollingScore !== a.pollingScore) return b.pollingScore - a.pollingScore;
-        // Optional tiebreaker: rank string if present (lower is better)
-        const ar = parseInt(String(a.rank).replace("#", "")) || Infinity;
-        const br = parseInt(String(b.rank).replace("#", "")) || Infinity;
-        return ar - br;
-      });
+  let list = (rankingsData[category] || [])
+    .filter(o => o.pollingScore !== undefined)
+    .sort((a, b) => b.pollingScore - a.pollingScore);
 
-    const displayList = expandAll ? list : [...list.slice(0, 10), ...list.slice(-10)];
-
-    displayList.forEach(o => {
-      const card = document.createElement("div");
-      card.className = `ranking-card ${getPartyClass(o.party)}`;
-      card.innerHTML = `
-        <img src="${o.photo}" alt="${o.name}" class="official-photo"/>
-        <div class="card-body">
-          <strong>${o.name}</strong><br/>
-          ${o.office} • ${o.state}<br/>
-          ${o.pollingScoreRaw ? `Approval: ${o.pollingScoreRaw}` : `${o.pollingScore}%`}
-          ${o.rank ? ` • Rank: ${o.rank}` : ""}
-          ${o.pollingDate ? ` • ${o.pollingDate}` : ""}
-          ${o.pollingSource ? ` • <a href="${o.pollingSource}" target="_blank" rel="noopener">Source</a>` : ""}
-        </div>
-      `;
-      card.addEventListener("click", () => showModal(o));
-      rankingsContainer.appendChild(card);
-    });
-
-    if (expandRankings) {
-      expandRankings.classList.toggle("hidden", expandAll || list.length <= 20);
-    }
+  let displayList;
+  if (expandAll) {
+    displayList = list;
+  } else {
+    displayList = [...list.slice(0, 10), ...list.slice(-10)];
   }
 
+  displayList.forEach(o => {
+    const card = document.createElement("div");
+    card.className = `ranking-card ${getPartyClass(o.party)}`;
+    card.innerHTML = `
+      <img src="${o.photo}" alt="${o.name}" class="official-photo"/>
+      <div>
+        <strong>${o.name}</strong><br/>
+        ${o.office} • ${o.state}<br/>
+        Approval: ${o.pollingScoreRaw || o.pollingScore + "%"}<br/>
+        ${o.rank ? `Rank: ${o.rank}` : ""}
+      </div>
+    `;
+    card.addEventListener("click", () => showModal(o));
+    rankingsContainer.appendChild(card);
+  });
+
+  expandRankings.classList.toggle("hidden", expandAll || list.length <= 20);
+}
   // Party class
   function getPartyClass(party) {
     if (!party) return "unknown";
@@ -265,23 +258,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const bills = (o.billsSigned || [])
       .map(b => `<li><a href="${b.link}" target="_blank" rel="noopener">${b.title}</a></li>`).join("");
 
-    modalContent.innerHTML = `
-      <div class="modal-header">
-        <img src="${o.photo}" alt="${o.name}" class="official-photo large"/>
-        <div>
-          <h2>${o.name}</h2>
-          <p><strong>Office:</strong> ${o.office}</p>
-          <p><strong>Party:</strong> ${o.party}</p>
-          <p><strong>State:</strong> ${o.state}</p>
-          ${o.termStart ? `<p><strong>Term:</strong> ${o.termStart} – ${o.termEnd || "Present"}</p>` : ""}
-          <p><strong>Approval:</strong> ${o.pollingScoreRaw || (o.pollingScore !== undefined ? `${o.pollingScore}%` : "N/A")}
-            ${o.pollingSource ? ` • <a href="${o.pollingSource}" target="_blank" rel="noopener">Source</a>` : ""}
-            ${o.pollingDate ? ` • ${o.pollingDate}` : ""}
-            ${o.rank ? ` • Rank: ${o.rank}` : ""}
-          </p>
-          ${o.ballotpediaLink ? `<p><a href="${o.ballotpediaLink}" target="_blank" rel="noopener">Ballotpedia</a></p>` : ""}
-        </div>
-      </div>
+   modalContent.innerHTML = `
+  <div class="modal-header">
+    <img src="${o.photo}" alt="${o.name}" />
+    <div>
+      <h2>${o.name}</h2>
+      <p>${o.office} • ${o.party} • ${o.state}</p>
+      ${o.termStart ? `<p>Term: ${o.termStart} – ${o.termEnd || "Present"}</p>` : ""}
+      <p>Approval: ${o.pollingScoreRaw || (o.pollingScore !== undefined ? o.pollingScore + "%" : "N/A")}</p>
+    </div>
+  </div>
+
+  ${o.bio ? `<div class="modal-content-section"><h3>Biography</h3><p>${o.bio}</p></div>` : ""}
+  ${o.education ? `<div class="modal-content-section"><h3>Education</h3><p>${o.education}</p></div>` : ""}
+  ${o.endorsements ? `<div class="modal-content-section"><h3>Endorsements</h3><p>${o.endorsements}</p></div>` : ""}
+  ${o.platform ? `<div class="modal-content-section"><h3>Platform</h3><p>${o.platform}</p></div>` : ""}
+  <!-- repeat for proposals, bills, engagement, etc. -->
+`;
 
       ${o.bio ? `<p><strong>Bio:</strong> ${o.bio}</p>` : ""}
       ${o.education ? `<p><strong>Education:</strong> ${o.education}</p>` : ""}
