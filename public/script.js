@@ -44,19 +44,19 @@ document.addEventListener("DOMContentLoaded", () => {
   let allOfficials = [];
   let rankingsData = { governors: [], ltgovernors: [], senators: [], housereps: [] };
 
-  // ✅ Fetch JSONs from /public/
+  // ✅ Fetch JSONs from /public (served at root)
   Promise.all([
-  fetch("/governors.json").then(r => r.json()),
-  fetch("/ltgovernors.json").then(r => r.json()),
-  fetch("/senators.json").then(r => r.json()),
-  fetch("/housereps.json").then(r => r.json())
-]).then(([govs, ltgovs, sens, reps]) => {
-  allOfficials = [...govs, ...ltgovs, ...sens, ...reps];
-  rankingsData.governors = govs;
-  rankingsData.ltgovernors = ltgovs;
-  rankingsData.senators = sens;
-  rankingsData.housereps = reps;
-});
+    fetch("/governors.json").then(r => r.json()),
+    fetch("/ltgovernors.json").then(r => r.json()),
+    fetch("/senators.json").then(r => r.json()),
+    fetch("/housereps.json").then(r => r.json())
+  ]).then(([govs, ltgovs, sens, reps]) => {
+    allOfficials = [...govs, ...ltgovs, ...sens, ...reps];
+    rankingsData.governors = govs;
+    rankingsData.ltgovernors = ltgovs;
+    rankingsData.senators = sens;
+    rankingsData.housereps = reps;
+  });
 
   dropdown.addEventListener("change", () => {
     const state = dropdown.value;
@@ -129,40 +129,4 @@ document.addEventListener("DOMContentLoaded", () => {
     displayList.forEach(o => {
       const card = document.createElement("div");
       card.className = `ranking-card ${getPartyClass(o.party)}`;
-      card.innerHTML = `
-        <strong>${o.name}</strong><br/>
-        ${o.office}<br/>
-        ${o.party}<br/>
-        Approval: ${o.pollingScore ?? "N/A"}
-      `;
-      card.addEventListener("click", () => showModal(o));
-      rankingsContainer.appendChild(card);
-    });
-    expandRankings.classList.toggle("hidden", expandAll || list.length <= 20);
-  }
-
-  function getPartyClass(party) {
-    if (!party) return "unknown";
-    const p = party.toLowerCase();
-    if (p.includes("dem")) return "democratic";
-    if (p.includes("rep")) return "republican";
-    if (p.includes("ind")) return "independent";
-    return "unknown";
-  }
-
-  function showModal(o) {
-    modalContent.innerHTML = `
-      <h2>${o.name}</h2>
-      <p><strong>Office:</strong> ${o.office}</p>
-      <p><strong>Party:</strong> ${o.party}</p>
-      <p><strong>State:</strong> ${o.state}</p>
-      <p><strong>Approval:</strong> ${o.pollingScore ?? "N/A"}</p>
-      <p><strong>Contact:</strong><br/>
-        Email: ${o.contact?.email || "—"}<br/>
-        Phone: ${o.contact?.phone || "—"}<br/>
-        ${o.contact?.website ? `<a href="${o.contact.website}" target="_blank">Website</a>` : "—"}
-      </p>
-    `;
-    modal.classList.remove("hidden");
-  }
-});
+      card.inner
