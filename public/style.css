@@ -1,62 +1,164 @@
+/* Base */
+* { box-sizing: border-box; }
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #222;
+  background: #f5f7fa;
 }
 
-header {
+/* Header */
+#appHeader {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
   background: linear-gradient(to right, #0033A0, #808080, #ffffff, #808080, #C8102E);
-  padding: 1rem;
-  text-align: center;
 }
-
-header img {
+#appHeader img {
   height: 60px;
+  display: block;
 }
 
+/* Layout */
+#layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 0;
+  min-height: calc(100vh - 84px);
+}
+
+/* Sidebar: tabs + dropdown, left-aligned */
 #sidebar {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 1rem;
-  background: #f0f0f0;
+  padding: 16px;
+  background: #eef1f5;
+  border-right: 1px solid #d5dae0;
 }
-
 #tabs {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 8px;
 }
-
 #tabs button {
-  padding: 0.5rem 1rem;
+  padding: 10px 12px;
   border: none;
+  border-radius: 6px;
   background: #0033A0;
-  color: white;
+  color: #fff;
+  font-weight: 600;
   cursor: pointer;
-  border-radius: 4px;
 }
+#tabs button:hover { background: #002a83; }
 
 #controls {
-  margin-top: 1rem;
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+#controls label {
+  font-size: 0.9rem;
+  color: #444;
+}
+#stateDropdown {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #c9ced6;
+  background: #fff;
+  font-size: 0.95rem;
 }
 
+/* Content area */
 #content {
-  flex: 1;
-  padding: 1rem;
+  padding: 20px;
+}
+#content section {
+  margin-bottom: 24px;
+}
+#content h2 {
+  margin: 0 0 12px 0;
+  font-size: 1.25rem;
 }
 
-.hidden {
-  display: none !important;
+/* Cards */
+#officialsContainer,
+#calendarContainer,
+#registrationContainer,
+#rankingsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.card,
+.calendar-card,
+.registration-card,
+.ranking-card {
+  background: #fff;
+  border-left: 8px solid #888;
+  border-radius: 8px;
+  padding: 12px;
+  width: 280px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  cursor: pointer;
+}
+.card.democratic,
+.ranking-card.democratic { border-left-color: #0033A0; }
+.card.republican,
+.ranking-card.republican { border-left-color: #C8102E; }
+.card.independent,
+.ranking-card.independent { border-left-color: #228B22; }
+.card.unknown,
+.ranking-card.unknown { border-left-color: #808080; }
+.calendar-card { border-left-color: #0033A0; }
+.registration-card { border-left-color: #228B22; }
+
+/* Rankings controls */
+.rankings-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+#expandRankings {
+  margin-top: 12px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  background: #0033A0;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-.card, .calendar-card, .registration-card, .ranking-card {
-  background: white;
-  border-left: 6px solid gray;
-  padding: 1rem;
-  margin: 0.5rem;
-  width: 250px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+/* Modal */
+#modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
 }
+#modalContent {
+  background: #fff;
+  width: 640px;
+  max-width: calc(100% - 40px);
+  max-height: 80vh;
+  overflow-y: auto;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+#closeModal {
+  margin-top: 12px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  background: #C8102E;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Utilities */
+.hidden { display: none !important; }
