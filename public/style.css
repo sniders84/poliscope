@@ -15,6 +15,9 @@ a:hover {
 }
 
 /* Tabs */
+.tab-pane { display: none; }
+.tab-pane.active { display: block; }
+
 #tabs {
   display: flex;
   background: #333;
