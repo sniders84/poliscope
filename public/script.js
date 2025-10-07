@@ -1,4 +1,4 @@
-// ✅ Normalize function for consistent schema
+// ✅ Normalize function
 function normalize(entry, officeLabel) {
   return {
     name: entry.name,
@@ -17,6 +17,52 @@ function normalize(entry, officeLabel) {
   };
 }
 
+// ✅ Fetch and store globally
+Promise.all([
+  fetch("/governors.json").then(r => r.json()).catch(err => {
+    console.error("Governors JSON error:", err);
+    return [];
+  }),
+  fetch("/ltgovernors.json").then(r => r.json()).catch(err => {
+    console.error("Lt. Governors JSON error:", err);
+    return [];
+  }),
+  fetch("/senators.json").then(r => r.json()).catch(err => {
+    console.error("Senators JSON error:", err);
+    return [];
+  }),
+  fetch("/housereps.json").then(r => r.json()).catch(err => {
+    console.error("House Reps JSON error:", err);
+    return [];
+  })
+])
+.then(([govs, ltgovs, sens, reps]) => {
+  window.govs = govs;
+  window.ltgovs = ltgovs;
+  window.sens = sens;
+  window.reps = reps;
+
+  const govNorm = govs.map(g => normalize(g, "Governor"));
+  const ltgNorm = ltgovs.map(l => normalize(l, "Lt. Governor"));
+  const senNorm = sens.map(s => normalize(s, "Senator"));
+  const repNorm = reps.map(h => normalize(h, "House Representative"));
+
+  window.rankingsData = {
+    governors: govNorm,
+    ltgovernors: ltgNorm,
+    senators: senNorm,
+    housereps: repNorm
+  };
+
+  window.allOfficials = [...govNorm, ...ltgNorm, ...senNorm, ...repNorm];
+
+  console.log("All officials loaded:", window.allOfficials.length);
+  renderOfficials("Alabama");
+  renderRankings("governors");
+  renderCalendar();
+  renderRegistration();
+  document.getElementById("officials").classList.add("active");
+});
 // ✅ Fetch and store all officials
 Promise.all([
   fetch("/governors.json").then(r => r.json()).catch(() => []),
