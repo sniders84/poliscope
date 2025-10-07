@@ -201,3 +201,4 @@ document.addEventListener("DOMContentLoaded", () => {
       <p><strong>Party:</strong> ${o.party}</p>
       <p><strong>State:</strong> ${o.state}</p>
       <p><strong>Approval:</strong> ${o.pollingScore || "N/A"}</p>
+      <p><strong>Bio
