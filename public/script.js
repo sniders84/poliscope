@@ -178,9 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
     rankingsContainer.innerHTML = "";
 
     let list = (window.rankingsData[category] || [])
-      .filter(o => o.pollingScore !== undefined)
-    // ...inside renderRankings
-    .sort((a, b) => b.pollingScore - a.pollingScore);
+  .sort((a, b) => (b.pollingScore || 0) - (a.pollingScore || 0));
 
     // Assign unique sequential ranks
     list.forEach((o, i) => {
