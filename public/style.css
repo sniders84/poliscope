@@ -109,3 +109,9 @@ header img {
   border: none;
   border-radius: 4px;
 }
+.official-photo {
+  width: 120px;
+  height: 120px;
+  object-fit: cover; /* crops to fill box without distortion */
+  border-radius: 6px; /* optional: rounded corners */
+}
