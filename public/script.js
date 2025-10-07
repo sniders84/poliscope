@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const rankingCategory = document.getElementById("rankingCategory");
   const expandRankings = document.getElementById("expandRankings");
 
+  modal.classList.add("hidden");
   closeModal.addEventListener("click", () => {
     modal.classList.add("hidden");
   });
@@ -38,8 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   let allOfficials = [];
-  let calendarData = [];
-  let registrationData = [];
   let rankingsData = {
     governors: [],
     ltgovernors: [],
@@ -51,13 +50,9 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch("governors.json").then(res => res.json()),
     fetch("ltgovernors.json").then(res => res.json()),
     fetch("senators.json").then(res => res.json()),
-    fetch("housereps.json").then(res => res.json()),
-    fetch("calendar.json").then(res => res.ok ? res.json() : []),
-    fetch("registration.json").then(res => res.ok ? res.json() : [])
-  ]).then(([govs, ltgovs, sens, reps, cal, reg]) => {
+    fetch("housereps.json").then(res => res.json())
+  ]).then(([govs, ltgovs, sens, reps]) => {
     allOfficials = [...govs, ...ltgovs, ...sens, ...reps];
-    calendarData = cal;
-    registrationData = reg;
     rankingsData.governors = govs;
     rankingsData.ltgovernors = ltgovs;
     rankingsData.senators = sens;
@@ -94,16 +89,27 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function renderCalendar(state) {
-    const filteredEvents = calendarData.filter(e => e.state === state);
-    if (filteredEvents.length === 0) {
-      calendarTab.classList.add("hidden");
-      return;
-    }
-
     calendarContainer.innerHTML = "";
-    calendarTab.classList.remove("hidden");
+    calendarTab.classList.add("hidden");
 
-    filteredEvents.forEach(e => {
+    const calendarEntries = {
+      "Alabama": [
+        {
+          title: "Municipal Runoff",
+          date: "2025-10-15",
+          type: "Election",
+          description: "Runoff for local offices",
+          link: "https://www.sos.alabama.gov/alabama-votes/voter/upcoming-elections"
+        }
+      ]
+      // Add more states here as needed
+    };
+
+    const events = calendarEntries[state];
+    if (!events || events.length === 0) return;
+
+    calendarTab.classList.remove("hidden");
+    events.forEach(e => {
       const card = document.createElement("div");
       card.className = "calendar-card";
       card.innerHTML = `
@@ -117,15 +123,23 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function renderRegistration(state) {
-    const entry = registrationData.find(r => r.state === state);
-    if (!entry || !entry.register || !entry.polling || !entry.absentee || !entry.volunteer) {
-      registrationTab.classList.add("hidden");
-      return;
-    }
-
     registrationContainer.innerHTML = "";
-    registrationTab.classList.remove("hidden");
+    registrationTab.classList.add("hidden");
 
+    const registrationEntries = {
+      "Alabama": {
+        register: "https://www.sos.alabama.gov/alabama-votes/voter/register-to-vote",
+        polling: "https://myinfo.alabamavotes.gov/VoterView/RegistrantSearch.do",
+        absentee: "https://www.sos.alabama.gov/alabama-votes/voter/absentee-voting",
+        volunteer: "https://www.sos.alabama.gov/alabama-votes"
+      }
+      // Add more states here as needed
+    };
+
+    const entry = registrationEntries[state];
+    if (!entry || !entry.register || !entry.polling || !entry.absentee || !entry.volunteer) return;
+
+    registrationTab.classList.remove("hidden");
     const card = document.createElement("div");
     card.className = "registration-card";
     card.innerHTML = `
@@ -191,11 +205,3 @@ document.addEventListener("DOMContentLoaded", () => {
       <p><strong>Approval:</strong> ${o.pollingScore || "N/A"}</p>
       <p><strong>Bio:</strong> ${o.bio || "—"}</p>
       <p><strong>Contact:</strong><br/>
-        Email: ${o.contact?.email || "—"}<br/>
-        Phone: ${o.contact?.phone || "—"}<br/>
-        <a href="${o.contact?.website}" target="_blank">Website</a>
-      </p>
-    `;
-    modal.classList.remove("hidden");
-  }
-});
