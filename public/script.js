@@ -44,11 +44,12 @@ document.addEventListener("DOMContentLoaded", () => {
   let allOfficials = [];
   let rankingsData = { governors: [], ltgovernors: [], senators: [], housereps: [] };
 
+  // ✅ Fetch JSONs from /public/
   Promise.all([
-    fetch("governors.json").then(r => r.json()),
-    fetch("ltgovernors.json").then(r => r.json()),
-    fetch("senators.json").then(r => r.json()),
-    fetch("housereps.json").then(r => r.json())
+    fetch("public/governors.json").then(r => r.json()),
+    fetch("public/ltgovernors.json").then(r => r.json()),
+    fetch("public/senators.json").then(r => r.json()),
+    fetch("public/housereps.json").then(r => r.json())
   ]).then(([govs, ltgovs, sens, reps]) => {
     allOfficials = [...govs, ...ltgovs, ...sens, ...reps];
     rankingsData.governors = govs;
