@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const modal = document.getElementById("modal");
   const modalContent = document.getElementById("modalContent");
   const closeModal = document.getElementById("closeModal");
-
   closeModal.addEventListener("click", () => modal.classList.add("hidden"));
 
   // Tabs
@@ -26,14 +25,12 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("officialsTab").classList.remove("hidden");
 
   // States
-  const states = [
-    "Alabama","Alaska","American Samoa","Arizona","Arkansas","California","Colorado","Connecticut",
+  const states = ["Alabama","Alaska","American Samoa","Arizona","Arkansas","California","Colorado","Connecticut",
     "Delaware","Florida","Georgia","Guam","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana",
     "Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada",
     "New Hampshire","New Jersey","New Mexico","New York","North Carolina","North Dakota","Northern Mariana Islands",
     "Ohio","Oklahoma","Oregon","Pennsylvania","Puerto Rico","Rhode Island","South Carolina","South Dakota","Tennessee",
-    "Texas","Utah","Vermont","Virgin Islands","Virginia","Washington","West Virginia","Wisconsin","Wyoming"
-  ];
+    "Texas","Utah","Vermont","Virgin Islands","Virginia","Washington","West Virginia","Wisconsin","Wyoming"];
   states.forEach(s => {
     const opt = document.createElement("option");
     opt.value = s;
@@ -71,7 +68,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const filtered = allOfficials.filter(o => o.state === state);
     const hierarchy = ["Governor","Lt. Governor","Senator","House Representative"];
     filtered.sort((a, b) => hierarchy.indexOf(a.office) - hierarchy.indexOf(b.office));
-
     filtered.forEach(o => {
       const card = document.createElement("div");
       card.className = `card ${getPartyClass(o.party)}`;
@@ -129,4 +125,40 @@ document.addEventListener("DOMContentLoaded", () => {
     displayList.forEach(o => {
       const card = document.createElement("div");
       card.className = `ranking-card ${getPartyClass(o.party)}`;
-      card.inner
+      card.innerHTML = `
+        <strong>${o.name}</strong><br/>
+        ${o.office}<br/>
+        ${o.party}<br/>
+        Approval: ${o.pollingScore ?? "N/A"}
+      `;
+      card.addEventListener("click", () => showModal(o));
+      rankingsContainer.appendChild(card);
+    });
+    expandRankings.classList.toggle("hidden", expandAll || list.length <= 20);
+  }
+
+  function getPartyClass(party) {
+    if (!party) return "unknown";
+    const p = party.toLowerCase();
+    if (p.includes("dem")) return "democratic";
+    if (p.includes("rep")) return "republican";
+    if (p.includes("ind")) return "independent";
+    return "unknown";
+  }
+
+  function showModal(o) {
+    modalContent.innerHTML = `
+      <h2>${o.name}</h2>
+      <p><strong>Office:</strong> ${o.office}</p>
+      <p><strong>Party:</strong> ${o.party}</p>
+      <p><strong>State:</strong> ${o.state}</p>
+      <p><strong>Approval:</strong> ${o.pollingScore ?? "N/A"}</p>
+      <p><strong>Contact:</strong><br/>
+        Email: ${o.contact?.email || "—"}<br/>
+        Phone: ${o.contact?.phone || "—"}<br/>
+        ${o.contact?.website ? `<a href="${o.contact.website}" target="_blank">Website</a>` : "—"}
+      </p>
+    `;
+    modal.classList.remove("hidden");
+  }
+});
