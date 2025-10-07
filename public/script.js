@@ -52,8 +52,8 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch("ltgovernors.json").then(res => res.json()),
     fetch("senators.json").then(res => res.json()),
     fetch("housereps.json").then(res => res.json()),
-    fetch("calendar.json").then(res => res.json()),
-    fetch("registration.json").then(res => res.json())
+    fetch("calendar.json").then(res => res.ok ? res.json() : []),
+    fetch("registration.json").then(res => res.ok ? res.json() : [])
   ]).then(([govs, ltgovs, sens, reps, cal, reg]) => {
     allOfficials = [...govs, ...ltgovs, ...sens, ...reps];
     calendarData = cal;
@@ -71,7 +71,6 @@ document.addEventListener("DOMContentLoaded", () => {
     container.innerHTML = "";
     const filtered = allOfficials.filter(o => o.state === selectedState);
 
-    // Sort by hierarchy
     const hierarchy = ["Governor", "Lt. Governor", "Senator", "House Representative"];
     filtered.sort((a, b) => {
       return hierarchy.indexOf(a.office) - hierarchy.indexOf(b.office);
@@ -90,19 +89,20 @@ document.addEventListener("DOMContentLoaded", () => {
       container.appendChild(card);
     });
 
-    // Calendar + Registration tabs
     renderCalendar(selectedState);
     renderRegistration(selectedState);
   });
 
   function renderCalendar(state) {
-    calendarContainer.innerHTML = "";
-    calendarTab.classList.remove("hidden");
     const filteredEvents = calendarData.filter(e => e.state === state);
     if (filteredEvents.length === 0) {
-      calendarContainer.innerHTML = `<p>No events found for ${state}.</p>`;
+      calendarTab.classList.add("hidden");
       return;
     }
+
+    calendarContainer.innerHTML = "";
+    calendarTab.classList.remove("hidden");
+
     filteredEvents.forEach(e => {
       const card = document.createElement("div");
       card.className = "calendar-card";
@@ -117,13 +117,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function renderRegistration(state) {
-    registrationContainer.innerHTML = "";
-    registrationTab.classList.remove("hidden");
     const entry = registrationData.find(r => r.state === state);
-    if (!entry) {
-      registrationContainer.innerHTML = `<p>No registration info found for ${state}.</p>`;
+    if (!entry || !entry.register || !entry.polling || !entry.absentee || !entry.volunteer) {
+      registrationTab.classList.add("hidden");
       return;
     }
+
+    registrationContainer.innerHTML = "";
+    registrationTab.classList.remove("hidden");
+
     const card = document.createElement("div");
     card.className = "registration-card";
     card.innerHTML = `
