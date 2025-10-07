@@ -48,10 +48,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let allOfficials = [];
   const rankingsData = { governors: [], ltgovernors: [], senators: [], housereps: [] };
 
-  // Normalize entries across datasets to consistent keys
+  // Normalize entries across datasets
   function normalize(entry, office) {
-    const pct = typeof entry.pollingScore === "string" ? entry.pollingScore.trim() : entry.pollingScore;
-    const pollingPercent = typeof pct === "string" && pct.endsWith("%")
+    const raw = entry.pollingScore;
+    const pct = typeof raw === "string" ? raw.trim() : raw;
+    const numeric = typeof pct === "string" && pct.endsWith("%")
       ? Number(pct.slice(0, -1))
       : typeof pct === "number" ? pct : undefined;
 
@@ -86,8 +87,8 @@ document.addEventListener("DOMContentLoaded", () => {
       vetoes: entry.vetoes || "",
       salary: entry.salary || "",
       predecessor: entry.predecessor || "",
-      pollingScoreRaw: typeof entry.pollingScore === "string" ? entry.pollingScore : (entry.pollingScore ?? ""),
-      pollingScore: pollingPercent, // numeric for sorting
+      pollingScoreRaw: typeof raw === "string" ? raw : (raw ?? ""),
+      pollingScore: numeric,
       pollingSource: entry.pollingSource || "",
       pollingDate: entry.pollingDate || "",
       rank: entry.rank || "",
@@ -104,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch("/housereps.json").then(r => r.json()).catch(() => [])
   ]).then(([govs, ltgovs, sens, reps]) => {
     const govNorm = (Array.isArray(govs) ? govs : []).map(g => normalize(g, "Governor"));
-    const ltgNorm = (Array.isArray(ltgovs) ? ltgovs : []).map(l => normalize(l, "Lt. Governor"));
+    const ltgNorm = (Array.isArray(ltgovs) ? ltgovors : []).map(l => normalize(l, "Lt. Governor"));
     const senNorm = (Array.isArray(sens) ? sens : []).map(s => normalize(s, "Senator"));
     const repNorm = (Array.isArray(reps) ? reps : []).map(h => normalize(h, "House Representative"));
 
@@ -115,13 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
     rankingsData.senators = senNorm;
     rankingsData.housereps = repNorm;
 
-    // If a state is preselected, render immediately
-    if (dropdown && dropdown.value) {
-      renderOfficials(dropdown.value);
-      renderCalendar(dropdown.value);
-      renderRegistration(dropdown.value);
-    }
-    // Initialize rankings default category
+    // Initialize rankings after data load
     if (rankingCategory) renderRankings(rankingCategory.value || "governors", false);
   });
 
@@ -135,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Officials renderer (rich card)
+  // Officials renderer
   function renderOfficials(state) {
     if (!officialsContainer) return;
     officialsContainer.innerHTML = "";
@@ -164,7 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Calendar (example: Alabama)
+  // Calendar (example only)
   function renderCalendar(state) {
     if (!calendarContainer) return;
     calendarContainer.innerHTML = "";
@@ -180,7 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
     calendarContainer.appendChild(card);
   }
 
-  // Registration (example: Alabama)
+  // Registration (example only)
   function renderRegistration(state) {
     if (!registrationContainer) return;
     registrationContainer.innerHTML = "";
@@ -205,40 +200,41 @@ document.addEventListener("DOMContentLoaded", () => {
     expandRankings.addEventListener("click", () => renderRankings(rankingCategory.value, true));
   }
 
-  // Rankings renderer (sort by numeric polling)
-function renderRankings(category, expandAll) {
-  rankingsContainer.innerHTML = "";
+  // Rankings renderer (top 10 + bottom 10 by numeric approval)
+  function renderRankings(category, expandAll) {
+    if (!rankingsContainer) return;
+    rankingsContainer.innerHTML = "";
 
-  let list = (rankingsData[category] || [])
-    .filter(o => o.pollingScore !== undefined)
-    .sort((a, b) => b.pollingScore - a.pollingScore);
+    let list = (rankingsData[category] || [])
+      .filter(o => o.pollingScore !== undefined)
+      .sort((a, b) => b.pollingScore - a.pollingScore);
 
-  let displayList;
-  if (expandAll) {
-    displayList = list;
-  } else {
-    displayList = [...list.slice(0, 10), ...list.slice(-10)];
+    const displayList = expandAll ? list : [...list.slice(0, 10), ...list.slice(-10)];
+
+    displayList.forEach(o => {
+      const card = document.createElement("div");
+      card.className = `ranking-card ${getPartyClass(o.party)}`;
+      card.innerHTML = `
+        <img src="${o.photo}" alt="${o.name}" class="official-photo"/>
+        <div class="card-body">
+          <strong>${o.name}</strong><br/>
+          ${o.office} • ${o.state}<br/>
+          Approval: ${o.pollingScoreRaw || (o.pollingScore !== undefined ? o.pollingScore + "%" : "N/A")}
+          ${o.rank ? ` • Rank: ${o.rank}` : ""}
+          ${o.pollingDate ? ` • ${o.pollingDate}` : ""}
+          ${o.pollingSource ? ` • <a href="${o.pollingSource}" target="_blank" rel="noopener">Source</a>` : ""}
+        </div>
+      `;
+      card.addEventListener("click", () => showModal(o));
+      rankingsContainer.appendChild(card);
+    });
+
+    if (expandRankings) {
+      expandRankings.classList.toggle("hidden", expandAll || list.length <= 20);
+    }
   }
 
-  displayList.forEach(o => {
-    const card = document.createElement("div");
-    card.className = `ranking-card ${getPartyClass(o.party)}`;
-    card.innerHTML = `
-      <img src="${o.photo}" alt="${o.name}" class="official-photo"/>
-      <div>
-        <strong>${o.name}</strong><br/>
-        ${o.office} • ${o.state}<br/>
-        Approval: ${o.pollingScoreRaw || o.pollingScore + "%"}<br/>
-        ${o.rank ? `Rank: ${o.rank}` : ""}
-      </div>
-    `;
-    card.addEventListener("click", () => showModal(o));
-    rankingsContainer.appendChild(card);
-  });
-
-  expandRankings.classList.toggle("hidden", expandAll || list.length <= 20);
-}
-  // Party class
+  // Party class mapping
   function getPartyClass(party) {
     if (!party) return "unknown";
     const p = String(party).toLowerCase();
@@ -248,7 +244,7 @@ function renderRankings(category, expandAll) {
     return "unknown";
   }
 
-  // Modal renderer (full details)
+  // Modal renderer (clean sections)
   function showModal(o) {
     if (!modal || !modalContent) return;
 
@@ -258,49 +254,43 @@ function renderRankings(category, expandAll) {
     const bills = (o.billsSigned || [])
       .map(b => `<li><a href="${b.link}" target="_blank" rel="noopener">${b.title}</a></li>`).join("");
 
-   modalContent.innerHTML = `
-  <div class="modal-header">
-    <img src="${o.photo}" alt="${o.name}" />
-    <div>
-      <h2>${o.name}</h2>
-      <p>${o.office} • ${o.party} • ${o.state}</p>
-      ${o.termStart ? `<p>Term: ${o.termStart} – ${o.termEnd || "Present"}</p>` : ""}
-      <p>Approval: ${o.pollingScoreRaw || (o.pollingScore !== undefined ? o.pollingScore + "%" : "N/A")}</p>
-    </div>
-  </div>
+    modalContent.innerHTML = `
+      <div class="modal-header">
+        <img src="${o.photo}" alt="${o.name}" class="official-photo modal-photo"/>
+        <div>
+          <h2>${o.name}</h2>
+          <p>${o.office} • ${o.party} • ${o.state}</p>
+          ${o.termStart ? `<p>Term: ${o.termStart} – ${o.termEnd || "Present"}</p>` : ""}
+          <p>Approval: ${o.pollingScoreRaw || (o.pollingScore !== undefined ? o.pollingScore + "%" : "N/A")}
+            ${o.pollingSource ? ` • <a href="${o.pollingSource}" target="_blank" rel="noopener">Source</a>` : ""}
+            ${o.pollingDate ? ` • ${o.pollingDate}` : ""}
+            ${o.rank ? ` • Rank: ${o.rank}` : ""}
+          </p>
+          ${o.ballotpediaLink ? `<p><a href="${o.ballotpediaLink}" target="_blank" rel="noopener">Ballotpedia</a></p>` : ""}
+        </div>
+      </div>
 
-  ${o.bio ? `<div class="modal-content-section"><h3>Biography</h3><p>${o.bio}</p></div>` : ""}
-  ${o.education ? `<div class="modal-content-section"><h3>Education</h3><p>${o.education}</p></div>` : ""}
-  ${o.endorsements ? `<div class="modal-content-section"><h3>Endorsements</h3><p>${o.endorsements}</p></div>` : ""}
-  ${o.platform ? `<div class="modal-content-section"><h3>Platform</h3><p>${o.platform}</p></div>` : ""}
-  <!-- repeat for proposals, bills, engagement, etc. -->
-`;
-
-      ${o.bio ? `<p><strong>Bio:</strong> ${o.bio}</p>` : ""}
-      ${o.education ? `<p><strong>Education:</strong> ${o.education}</p>` : ""}
-      ${o.endorsements ? `<p><strong>Endorsements:</strong> ${o.endorsements}</p>` : ""}
-      ${o.platform ? `<p><strong>Platform:</strong> ${o.platform}</p>` : ""}
+      ${o.bio ? `<div class="modal-section"><h3>Biography</h3><p>${o.bio}</p></div>` : ""}
+      ${o.education ? `<div class="modal-section"><h3>Education</h3><p>${o.education}</p></div>` : ""}
+      ${o.endorsements ? `<div class="modal-section"><h3>Endorsements</h3><p>${o.endorsements}</p></div>` : ""}
+      ${o.platform ? `<div class="modal-section"><h3>Platform</h3><p>${o.platform}</p></div>` : ""}
 
       ${
         Object.keys(pf).length
-          ? `<div>
-               <p><strong>Platform follow-through:</strong></p>
-               <ul>
-                 ${Object.entries(pf).map(([k,v]) => `<li><strong>${k}:</strong> ${v}</li>`).join("")}
-               </ul>
+          ? `<div class="modal-section"><h3>Platform follow-through</h3>
+               <ul>${Object.entries(pf).map(([k,v]) => `<li><strong>${k}:</strong> ${v}</li>`).join("")}</ul>
              </div>`
           : ""
       }
 
-      ${o.proposals ? `<p><strong>Proposals:</strong> ${o.proposals}</p>` : ""}
+      ${o.proposals ? `<div class="modal-section"><h3>Proposals</h3><p>${o.proposals}</p></div>` : ""}
 
       ${
         (o.engagement?.executiveOrders2025 !== undefined ||
          o.engagement?.socialMediaSurge !== undefined ||
          o.engagement?.earnedMediaCoverage !== undefined ||
          (o.engagement?.sources || []).length)
-          ? `<div>
-               <p><strong>Engagement:</strong></p>
+          ? `<div class="modal-section"><h3>Engagement</h3>
                <ul>
                  ${o.engagement?.executiveOrders2025 !== undefined ? `<li><strong>Executive orders (2025):</strong> ${o.engagement.executiveOrders2025}</li>` : ""}
                  ${o.engagement?.socialMediaSurge !== undefined ? `<li><strong>Social media surge:</strong> ${o.engagement.socialMediaSurge ? "Yes" : "No"}</li>` : ""}
@@ -311,26 +301,25 @@ function renderRankings(category, expandAll) {
           : ""
       }
 
-      ${bills ? `<div>
-          <p><strong>Bills signed:</strong></p>
-          <ul>${bills}</ul>
-        </div>` : ""}
+      ${bills ? `<div class="modal-section"><h3>Bills signed</h3><ul>${bills}</ul></div>` : ""}
 
-      ${o.vetoes ? `<p><strong>Vetoes:</strong> ${o.vetoes}</p>` : ""}
+      ${o.vetoes ? `<div class="modal-section"><h3>Vetoes</h3><p>${o.vetoes}</p></div>` : ""}
 
-      ${o.salary ? `<p><strong>Salary:</strong> ${o.salary}</p>` : ""}
+      ${o.salary ? `<div class="modal-section"><h3>Salary</h3><p>${o.salary}</p></div>` : ""}
 
-      ${o.predecessor ? `<p><strong>Predecessor:</strong> ${o.predecessor}</p>` : ""}
+      ${o.predecessor ? `<div class="modal-section"><h3>Predecessor</h3><p>${o.predecessor}</p></div>` : ""}
 
-      ${o.electionYear ? `<p><strong>Next election year:</strong> ${o.electionYear}</p>` : ""}
+      ${o.electionYear ? `<div class="modal-section"><h3>Next election year</h3><p>${o.electionYear}</p></div>` : ""}
 
-      ${o.rankingNote ? `<p><strong>Ranking note:</strong> ${o.rankingNote}</p>` : ""}
+      ${o.rankingNote ? `<div class="modal-section"><h3>Ranking note</h3><p>${o.rankingNote}</p></div>` : ""}
 
-      <p><strong>Contact:</strong><br/>
-        ${o.contact.email ? `Email: <a href="mailto:${o.contact.email}">${o.contact.email}</a><br/>` : ""}
-        ${o.contact.phone ? `Phone: ${o.contact.phone}<br/>` : ""}
-        ${o.contact.website ? `Website: <a href="${o.contact.website}" target="_blank" rel="noopener">${o.contact.website}</a>` : ""}
-      </p>
+      <div class="modal-section"><h3>Contact</h3>
+        <p>
+          ${o.contact.email ? `Email: <a href="mailto:${o.contact.email}">${o.contact.email}</a><br/>` : ""}
+          ${o.contact.phone ? `Phone: ${o.contact.phone}<br/>` : ""}
+          ${o.contact.website ? `Website: <a href="${o.contact.website}" target="_blank" rel="noopener">${o.contact.website}</a>` : ""}
+        </p>
+      </div>
     `;
     modal.classList.remove("hidden");
   }
