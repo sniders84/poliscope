@@ -1,19 +1,50 @@
 /* Base layout */
 body {
   font-family: sans-serif;
-  margin: 2rem;
+  margin: 0;
+  padding: 2rem;
   background-color: #ffffff;
   color: #222;
 }
 
-/* Tab button row */
-.tabs {
+/* Header */
+.site-header {
   display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
-.tabs button {
+.site-logo {
+  height: 60px;
+  width: auto;
+}
+
+.site-title {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* Layout grid */
+.layout {
+  display: flex;
+  gap: 2rem;
+}
+
+/* Sidebar */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 220px;
+}
+
+.tabs-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tabs-vertical button {
   padding: 0.5rem 1rem;
   cursor: pointer;
   border: 1px solid #ccc;
@@ -22,11 +53,32 @@ body {
   border-radius: 4px;
 }
 
-.tabs button:hover {
+.tabs-vertical button:hover {
   background: #e0e0e0;
 }
 
-/* Tab content containers */
+.state-search {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.state-search label {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.state-search select {
+  width: 100%;
+  padding: 0.4rem;
+  font-size: 0.9rem;
+}
+
+/* Main content */
+.main-content {
+  flex: 1;
+}
+
+/* Tab panes */
 .tab-pane {
   display: none;
   padding: 1rem;
@@ -40,9 +92,20 @@ body {
 }
 
 /* Official card layout */
+.ranking-card {
+  width: 200px;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 4px;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
 .official-photo {
   width: 100px;
-  height: auto;
+  height: 100px;
+  object-fit: cover;
   border-radius: 4px;
   margin-bottom: 0.5rem;
 }
@@ -52,29 +115,7 @@ body {
   line-height: 1.4;
 }
 
-/* Rankings layout */
-.rankings-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.ranking-card {
-  width: 200px;
-  padding: 1rem;
-  border: 1px solid #ddd;
-  background: #fff;
-  border-radius: 4px;
-  text-align: center;
-}
-
 .ranking-card strong {
   display: block;
   margin-bottom: 0.25rem;
-}
-
-/* Calendar and Registration tabs (placeholder styling) */
-#calendar, #registration {
-  font-size: 0.95rem;
-  line-height: 1.5;
 }
