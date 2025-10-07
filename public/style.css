@@ -110,20 +110,5 @@ select#stateDropdown {
 }
 
 .hidden {
-  display: none;
-}
-header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  background: linear-gradient(to right, #0033A0, #808080, #ffffff, #808080, #C8102E);
-}
-
-.header-logo img {
-  height: 60px;
-}
-
-.hidden {
   display: none !important;
 }
