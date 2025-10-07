@@ -3,79 +3,50 @@
 <head>
   <meta charset="UTF-8" />
   <title>Electorate</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      margin: 2rem;
-    }
-
-    .tabs {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .tabs button {
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      border: 1px solid #ccc;
-      background: #f0f0f0;
-    }
-
-    .tabs button:hover {
-      background: #e0e0e0;
-    }
-
-    .tab-pane {
-      display: none;
-      padding: 1rem;
-      border: 1px solid #ccc;
-      background: #fafafa;
-    }
-
-    .tab-pane.active {
-      display: block;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- ✅ Single Tab Row -->
-  <div class="tabs">
-    <button data-tab="officials">Officials</button>
-    <button data-tab="rankings">Rankings</button>
-    <button data-tab="calendar">Calendar</button>
-    <button data-tab="registration">Registration</button>
+  <!-- ✅ Header with Logo -->
+  <header class="site-header">
+    <img src="/logo.png" alt="Electorate Logo" class="site-logo" />
+    <h1 class="site-title">Electorate</h1>
+  </header>
+
+  <!-- ✅ Layout: Sidebar + Main Content -->
+  <div class="layout">
+    <!-- Sidebar: Tabs + State Selector -->
+    <aside class="sidebar">
+      <div class="tabs-vertical">
+        <button data-tab="officials">Officials</button>
+        <button data-tab="rankings">Rankings</button>
+        <button data-tab="calendar">Calendar</button>
+        <button data-tab="registration">Registration</button>
+      </div>
+
+      <div class="state-search">
+        <label for="stateSelect">Select State:</label>
+        <select id="stateSelect">
+          <option value="Alabama">Alabama</option>
+          <option value="Alaska">Alaska</option>
+          <option value="Arizona">Arizona</option>
+          <option value="Arkansas">Arkansas</option>
+          <option value="California">California</option>
+          <!-- Add remaining states as needed -->
+        </select>
+      </div>
+    </aside>
+
+    <!-- Main Content: Tab Panes -->
+    <main class="main-content">
+      <div id="officials" class="tab-pane"></div>
+      <div id="rankings" class="tab-pane"></div>
+      <div id="calendar" class="tab-pane"></div>
+      <div id="registration" class="tab-pane"></div>
+    </main>
   </div>
 
-  <!-- ✅ Tab Content Containers -->
-  <div id="tab-content">
-    <div id="officials" class="tab-pane"></div>
-    <div id="rankings" class="tab-pane"></div>
-    <div id="calendar" class="tab-pane"></div>
-    <div id="registration" class="tab-pane"></div>
-  </div>
-
-  <!-- ✅ Tab Switching Logic -->
-  <script>
-    document.querySelectorAll(".tabs button").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const tab = btn.getAttribute("data-tab");
-
-        // Hide all panes
-        document.querySelectorAll(".tab-pane").forEach(p => p.classList.remove("active"));
-
-        // Show selected pane
-        document.getElementById(tab).classList.add("active");
-      });
-    });
-
-    // Default to Officials tab on load
-    document.getElementById("officials").classList.add("active");
-  </script>
-
-  <!-- ✅ Your render functions go below -->
+  <!-- ✅ Scripts -->
   <script src="script.js"></script>
-
 </body>
 </html>
