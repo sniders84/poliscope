@@ -224,44 +224,40 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Rankings renderer (sort by numeric polling; top 10 + bottom 10)
-  function renderRankings(category, expandAll) {
-    if (!rankingsContainer) return;
-    rankingsContainer.innerHTML = "";
+function renderRankings(category, expandAll) {
+  rankingsContainer.innerHTML = "";
 
-    let list = (rankingsData[category] || [])
-      .filter(o => o.pollingScore !== undefined)
-      .sort((a, b) => {
-        if (b.pollingScore !== a.pollingScore) return b.pollingScore - a.pollingScore;
-        const ar = parseInt(String(a.rank).replace("#","")) || Infinity;
-        const br = parseInt(String(b.rank).replace("#","")) || Infinity;
-        return ar - br;
-      });
+  let list = (rankingsData[category] || [])
+    .filter(o => o.pollingScore !== undefined)
+    .sort((a, b) => b.pollingScore - a.pollingScore);
 
-    const displayList = expandAll ? list : [...list.slice(0, 10), ...list.slice(-10)];
+  // Assign unique sequential ranks
+  list.forEach((o, i) => {
+    o.computedRank = i + 1;
+  });
 
-    displayList.forEach(o => {
-      const card = document.createElement("div");
-      card.className = `ranking-card ${getPartyClass(o.party)}`;
-      card.innerHTML = `
-        <img src="${o.photo}" alt="${o.name}" class="official-photo"/>
-        <div class="card-body">
-          <strong>${o.name}</strong><br/>
-          ${o.office} • ${o.state}<br/>
-          ${o.pollingScoreRaw ? `Approval: ${o.pollingScoreRaw}` : (o.pollingScore !== undefined ? `${o.pollingScore}%` : "Approval: N/A")}
-          ${o.rank ? ` • Rank: ${o.rank}` : ""}
-          ${o.pollingDate ? ` • ${o.pollingDate}` : ""}
-          ${o.pollingSource ? ` • <a href="${o.pollingSource}" target="_blank" rel="noopener">Source</a>` : ""}
-        </div>
-      `;
-      card.addEventListener("click", () => showModal(o));
-      rankingsContainer.appendChild(card);
-    });
+  const displayList = expandAll ? list : [...list.slice(0, 10), ...list.slice(-10)];
 
-    if (expandRankings) {
-      expandRankings.classList.toggle("hidden", expandAll || list.length <= 20);
-    }
-  }
+  displayList.forEach(o => {
+    const card = document.createElement("div");
+    card.className = `ranking-card ${getPartyClass(o.party)}`;
+    card.innerHTML = `
+      <img src="${o.photo}" alt="${o.name}" class="official-photo"/>
+      <div class="card-body">
+        <strong>${o.name}</strong><br/>
+        ${o.office} • ${o.state}<br/>
+        Approval: ${o.pollingScoreRaw || (o.pollingScore !== undefined ? o.pollingScore + "%" : "N/A")}
+        • Rank: ${o.computedRank}
+        ${o.pollingDate ? ` • ${o.pollingDate}` : ""}
+        ${o.pollingSource ? ` • <a href="${o.pollingSource}" target="_blank" rel="noopener">Source</a>` : ""}
+      </div>
+    `;
+    card.addEventListener("click", () => showModal(o));
+    rankingsContainer.appendChild(card);
+  });
 
+  expandRankings.classList.toggle("hidden", expandAll || list.length <= 20);
+}
   // Party class mapping
   function getPartyClass(party) {
     if (!party) return "unknown";
