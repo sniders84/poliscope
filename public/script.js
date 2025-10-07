@@ -202,3 +202,12 @@ document.addEventListener("DOMContentLoaded", () => {
       <p><strong>State:</strong> ${o.state}</p>
       <p><strong>Approval:</strong> ${o.pollingScore || "N/A"}</p>
       <p><strong>Bio
+      <p><strong>Contact:</strong><br/>
+        Email: ${o.contact?.email || "—"}<br/>
+        Phone: ${o.contact?.phone || "—"}<br/>
+        <a href="${o.contact?.website}" target="_blank">Website</a>
+      </p>
+    `;
+    modal.classList.remove("hidden");
+  }
+});
