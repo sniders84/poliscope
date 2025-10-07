@@ -3,44 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Electorate – My Officials</title>
+  <title>Electorate – Civic Dashboard</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>Electorate</h1>
+    <div style="display:flex;align-items:center;">
+      <img src="logo.png" alt="Electorate Logo" />
+      <h1>Electorate</h1>
+    </div>
     <select id="stateDropdown">
       <option value="">Select a state or territory</option>
-      <!-- Dynamically populated -->
     </select>
   </header>
 
-  <main id="officialsContainer">
-    <!-- Cards will render here -->
-  </main>
-<section id="registrationTab" class="hidden">
-  <h2>Voting & Registration</h2>
-  <div id="registrationContainer"></div>
-</section>
+  <main id="officialsContainer"></main>
+
+  <section id="calendarTab" class="hidden">
+    <h2>Civic Calendar</h2>
+    <div id="calendarContainer"></div>
+  </section>
+
+  <section id="registrationTab" class="hidden">
+    <h2>Voting & Registration</h2>
+    <div id="registrationContainer"></div>
+  </section>
+
+  <section id="rankingsTab" class="hidden">
+    <h2>Rankings</h2>
+    <select id="rankingCategory">
+      <option value="governors">Governors</option>
+      <option value="ltgovernors">Lt. Governors</option>
+      <option value="senators">Senators</option>
+      <option value="housereps">House Reps</option>
+    </select>
+    <div id="rankingsContainer"></div>
+    <button id="expandRankings" class="hidden">Expand Full List</button>
+  </section>
+
   <div id="modal" class="hidden">
     <div id="modalContent"></div>
     <button id="closeModal">Close</button>
   </div>
-<section id="rankingsTab" class="hidden">
-  <h2>Rankings</h2>
-  <select id="rankingCategory">
-    <option value="governors">Governors</option>
-    <option value="ltgovernors">Lt. Governors</option>
-    <option value="senators">Senators</option>
-    <option value="housereps">House Reps</option>
-  </select>
-  <div id="rankingsContainer"></div>
-  <button id="expandRankings" class="hidden">Expand Full List</button>
-</section>
+
   <script src="script.js"></script>
-  <section id="calendarTab" class="hidden">
-  <h2>Civic Calendar</h2>
-  <div id="calendarContainer"></div>
-</section>
 </body>
 </html>
