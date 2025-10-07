@@ -48,7 +48,21 @@ document.addEventListener("DOMContentLoaded", () => {
   let allOfficials = [];
   const rankingsData = { governors: [], ltgovernors: [], senators: [], housereps: [] };
 
-  // Normalize entries across datasets
+  // Helper: try multiple paths for the same JSON (root and /data)
+  async function fetchJSON(possiblePaths) {
+    for (const path of possiblePaths) {
+      try {
+        const res = await fetch(path, { cache: "no-store" });
+        if (res.ok) {
+          const json = await res.json();
+          if (Array.isArray(json)) return json;
+        }
+      } catch (_) {}
+    }
+    return [];
+  }
+
+  // Normalize entries across datasets to consistent keys
   function normalize(entry, office) {
     const raw = entry.pollingScore;
     const pct = typeof raw === "string" ? raw.trim() : raw;
@@ -88,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
       salary: entry.salary || "",
       predecessor: entry.predecessor || "",
       pollingScoreRaw: typeof raw === "string" ? raw : (raw ?? ""),
-      pollingScore: numeric,
+      pollingScore: numeric, // numeric for sorting
       pollingSource: entry.pollingSource || "",
       pollingDate: entry.pollingDate || "",
       rank: entry.rank || "",
@@ -97,17 +111,19 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
 
-  // Fetch JSONs from /public (served at root)
-  Promise.all([
-    fetch("/governors.json").then(r => r.json()).catch(() => []),
-    fetch("/ltgovernors.json").then(r => r.json()).catch(() => []),
-    fetch("/senators.json").then(r => r.json()).catch(() => []),
-    fetch("/housereps.json").then(r => r.json()).catch(() => [])
-  ]).then(([govs, ltgovs, sens, reps]) => {
-    const govNorm = (Array.isArray(govs) ? govs : []).map(g => normalize(g, "Governor"));
-    const ltgNorm = (Array.isArray(ltgovs) ? ltgovors : []).map(l => normalize(l, "Lt. Governor"));
-    const senNorm = (Array.isArray(sens) ? sens : []).map(s => normalize(s, "Senator"));
-    const repNorm = (Array.isArray(reps) ? reps : []).map(h => normalize(h, "House Representative"));
+  // Load data (robust paths)
+  (async () => {
+    const [govs, ltgovs, sens, reps] = await Promise.all([
+      fetchJSON(["/governors.json", "/data/governors.json"]),
+      fetchJSON(["/ltgovernors.json", "/data/ltgovernors.json"]),
+      fetchJSON(["/senators.json", "/data/senators.json"]),
+      fetchJSON(["/housereps.json", "/data/housereps.json"])
+    ]);
+
+    const govNorm = govs.map(g => normalize(g, "Governor"));
+    const ltgNorm = ltgovs.map(l => normalize(l, "Lt. Governor"));
+    const senNorm = sens.map(s => normalize(s, "Senator"));
+    const repNorm = reps.map(h => normalize(h, "House Representative"));
 
     allOfficials = [...govNorm, ...ltgNorm, ...senNorm, ...repNorm];
 
@@ -116,9 +132,16 @@ document.addEventListener("DOMContentLoaded", () => {
     rankingsData.senators = senNorm;
     rankingsData.housereps = repNorm;
 
-    // Initialize rankings after data load
+    // If a state is preselected, render immediately
+    if (dropdown && dropdown.value) {
+      renderOfficials(dropdown.value);
+      renderCalendar(dropdown.value);
+      renderRegistration(dropdown.value);
+    }
+
+    // Initialize rankings default category
     if (rankingCategory) renderRankings(rankingCategory.value || "governors", false);
-  });
+  })();
 
   // Dropdown handler
   if (dropdown) {
@@ -130,7 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Officials renderer
+  // Officials renderer (rich card)
   function renderOfficials(state) {
     if (!officialsContainer) return;
     officialsContainer.innerHTML = "";
@@ -159,7 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Calendar (example only)
+  // Calendar (example: Alabama)
   function renderCalendar(state) {
     if (!calendarContainer) return;
     calendarContainer.innerHTML = "";
@@ -175,7 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
     calendarContainer.appendChild(card);
   }
 
-  // Registration (example only)
+  // Registration (example: Alabama)
   function renderRegistration(state) {
     if (!registrationContainer) return;
     registrationContainer.innerHTML = "";
@@ -200,14 +223,19 @@ document.addEventListener("DOMContentLoaded", () => {
     expandRankings.addEventListener("click", () => renderRankings(rankingCategory.value, true));
   }
 
-  // Rankings renderer (top 10 + bottom 10 by numeric approval)
+  // Rankings renderer (sort by numeric polling; top 10 + bottom 10)
   function renderRankings(category, expandAll) {
     if (!rankingsContainer) return;
     rankingsContainer.innerHTML = "";
 
     let list = (rankingsData[category] || [])
       .filter(o => o.pollingScore !== undefined)
-      .sort((a, b) => b.pollingScore - a.pollingScore);
+      .sort((a, b) => {
+        if (b.pollingScore !== a.pollingScore) return b.pollingScore - a.pollingScore;
+        const ar = parseInt(String(a.rank).replace("#","")) || Infinity;
+        const br = parseInt(String(b.rank).replace("#","")) || Infinity;
+        return ar - br;
+      });
 
     const displayList = expandAll ? list : [...list.slice(0, 10), ...list.slice(-10)];
 
@@ -219,7 +247,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="card-body">
           <strong>${o.name}</strong><br/>
           ${o.office} • ${o.state}<br/>
-          Approval: ${o.pollingScoreRaw || (o.pollingScore !== undefined ? o.pollingScore + "%" : "N/A")}
+          ${o.pollingScoreRaw ? `Approval: ${o.pollingScoreRaw}` : (o.pollingScore !== undefined ? `${o.pollingScore}%` : "Approval: N/A")}
           ${o.rank ? ` • Rank: ${o.rank}` : ""}
           ${o.pollingDate ? ` • ${o.pollingDate}` : ""}
           ${o.pollingSource ? ` • <a href="${o.pollingSource}" target="_blank" rel="noopener">Source</a>` : ""}
@@ -275,31 +303,25 @@ document.addEventListener("DOMContentLoaded", () => {
       ${o.endorsements ? `<div class="modal-section"><h3>Endorsements</h3><p>${o.endorsements}</p></div>` : ""}
       ${o.platform ? `<div class="modal-section"><h3>Platform</h3><p>${o.platform}</p></div>` : ""}
 
-      ${
-        Object.keys(pf).length
-          ? `<div class="modal-section"><h3>Platform follow-through</h3>
-               <ul>${Object.entries(pf).map(([k,v]) => `<li><strong>${k}:</strong> ${v}</li>`).join("")}</ul>
-             </div>`
-          : ""
-      }
+      ${Object.keys(pf).length ? `
+        <div class="modal-section"><h3>Platform follow-through</h3>
+          <ul>${Object.entries(pf).map(([k,v]) => `<li><strong>${k}:</strong> ${v}</li>`).join("")}</ul>
+        </div>` : ""}
 
       ${o.proposals ? `<div class="modal-section"><h3>Proposals</h3><p>${o.proposals}</p></div>` : ""}
 
-      ${
-        (o.engagement?.executiveOrders2025 !== undefined ||
+      ${(o.engagement?.executiveOrders2025 !== undefined ||
          o.engagement?.socialMediaSurge !== undefined ||
          o.engagement?.earnedMediaCoverage !== undefined ||
-         (o.engagement?.sources || []).length)
-          ? `<div class="modal-section"><h3>Engagement</h3>
-               <ul>
-                 ${o.engagement?.executiveOrders2025 !== undefined ? `<li><strong>Executive orders (2025):</strong> ${o.engagement.executiveOrders2025}</li>` : ""}
-                 ${o.engagement?.socialMediaSurge !== undefined ? `<li><strong>Social media surge:</strong> ${o.engagement.socialMediaSurge ? "Yes" : "No"}</li>` : ""}
-                 ${o.engagement?.earnedMediaCoverage !== undefined ? `<li><strong>Earned media coverage:</strong> ${o.engagement.earnedMediaCoverage ? "Yes" : "No"}</li>` : ""}
-                 ${engagementSources ? `<li><strong>Sources:</strong><ul>${engagementSources}</ul></li>` : ""}
-               </ul>
-             </div>`
-          : ""
-      }
+         (o.engagement?.sources || []).length) ? `
+        <div class="modal-section"><h3>Engagement</h3>
+          <ul>
+            ${o.engagement?.executiveOrders2025 !== undefined ? `<li><strong>Executive orders (2025):</strong> ${o.engagement.executiveOrders2025}</li>` : ""}
+            ${o.engagement?.socialMediaSurge !== undefined ? `<li><strong>Social media surge:</strong> ${o.engagement.socialMediaSurge ? "Yes" : "No"}</li>` : ""}
+            ${o.engagement?.earnedMediaCoverage !== undefined ? `<li><strong>Earned media coverage:</strong> ${o.engagement.earnedMediaCoverage ? "Yes" : "No"}</li>` : ""}
+            ${engagementSources ? `<li><strong>Sources:</strong><ul>${engagementSources}</ul></li>` : ""}
+          </ul>
+        </div>` : ""}
 
       ${bills ? `<div class="modal-section"><h3>Bills signed</h3><ul>${bills}</ul></div>` : ""}
 
