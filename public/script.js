@@ -102,7 +102,6 @@ document.addEventListener("DOMContentLoaded", () => {
           link: "https://www.sos.alabama.gov/alabama-votes/voter/upcoming-elections"
         }
       ]
-      // Add more states here as needed
     };
 
     const events = calendarEntries[state];
@@ -133,7 +132,6 @@ document.addEventListener("DOMContentLoaded", () => {
         absentee: "https://www.sos.alabama.gov/alabama-votes/voter/absentee-voting",
         volunteer: "https://www.sos.alabama.gov/alabama-votes"
       }
-      // Add more states here as needed
     };
 
     const entry = registrationEntries[state];
@@ -203,5 +201,3 @@ document.addEventListener("DOMContentLoaded", () => {
       <p><strong>Party:</strong> ${o.party}</p>
       <p><strong>State:</strong> ${o.state}</p>
       <p><strong>Approval:</strong> ${o.pollingScore || "N/A"}</p>
-      <p><strong>Bio:</strong> ${o.bio || "—"}</p>
-      <p><strong>Contact:</strong><br/>
