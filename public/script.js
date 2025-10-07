@@ -240,5 +240,5 @@ document.addEventListener("DOMContentLoaded", () => {
   // Force Officials tab visible on load
   Object.values(sections).forEach(sec => sec.classList.add("hidden"));
   sections.officials.classList.remove("hidden");
-});
+
 
