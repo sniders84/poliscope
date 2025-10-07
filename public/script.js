@@ -228,3 +228,17 @@ document.addEventListener("DOMContentLoaded", () => {
     modal.classList.remove("hidden");
   }
 });
+      <p><strong>Contact:</strong><br/>
+        Email: ${o.contact?.email || "—"}<br/>
+        Phone: ${o.contact?.phone || "—"}<br/>
+        ${o.contact?.website ? `<a href="${o.contact.website}" target="_blank">Website</a>` : "—"}
+      </p>
+    `;
+    modal.classList.remove("hidden");
+  }
+
+  // Force Officials tab visible on load
+  Object.values(sections).forEach(sec => sec.classList.add("hidden"));
+  sections.officials.classList.remove("hidden");
+});
+
