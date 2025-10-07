@@ -174,3 +174,43 @@ function renderRankings(category) {
 // ✅ Calendar rendering
 function renderCalendar() {
   const container = document.getElementById
+function renderCalendar() {
+  const container = document.getElementById("calendar");
+  const state = document.getElementById("stateSelect").value;
+  const events = window.calendarData[state] || [];
+
+  container.innerHTML = events.length
+    ? events.map(ev => `
+        <div class="calendar-event">
+          <strong>${ev.date}</strong>: ${ev.title}
+          ${ev.link ? ` • <a href="${ev.link}" target="_blank">Details</a>` : ""}
+        </div>
+      `).join("")
+    : `<p>No upcoming events found for ${state}.</p>`;
+}
+function renderRegistration() {
+  const container = document.getElementById("registration");
+  const state = document.getElementById("stateSelect").value;
+  const info = window.registrationData[state];
+
+  container.innerHTML = info
+    ? `
+      <p><strong>Deadline:</strong> ${info.deadline}</p>
+      <p><strong>Method:</strong> ${info.method}</p>
+      <p><a href="${info.link}" target="_blank">Register here</a></p>
+    `
+    : `<p>No registration info available for ${state}.</p>`;
+}
+document.querySelectorAll(".tabs-vertical button").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const tab = btn.getAttribute("data-tab");
+    document.querySelectorAll(".tab-pane").forEach(p => p.classList.remove("active"));
+    document.getElementById(tab).classList.add("active");
+  });
+});
+document.getElementById("stateSelect").addEventListener("change", e => {
+  const state = e.target.value;
+  renderOfficials(state);
+  renderCalendar();
+  renderRegistration();
+});
