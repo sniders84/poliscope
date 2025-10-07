@@ -165,3 +165,67 @@ select#stateDropdown {
   border-radius: 4px;
   cursor: pointer;
 }
+const rankingsTab = document.getElementById("rankingsTab");
+const rankingsContainer = document.getElementById("rankingsContainer");
+const rankingCategory = document.getElementById("rankingCategory");
+const expandRankings = document.getElementById("expandRankings");
+
+let rankingsData = {
+  governors: [],
+  ltgovernors: [],
+  senators: [],
+  housereps: []
+};
+
+// Load all categories
+Promise.all([
+  fetch("governors.json").then(res => res.json()),
+  fetch("ltgovernors.json").then(res => res.json()),
+  fetch("senators.json").then(res => res.json()),
+  fetch("housereps.json").then(res => res.json())
+]).then(([govs, ltgovs, sens, reps]) => {
+  rankingsData.governors = govs;
+  rankingsData.ltgovernors = ltgovs;
+  rankingsData.senators = sens;
+  rankingsData.housereps = reps;
+});
+
+// Render rankings on category change
+rankingCategory.addEventListener("change", () => {
+  renderRankings(rankingCategory.value, false);
+});
+
+expandRankings.addEventListener("click", () => {
+  renderRankings(rankingCategory.value, true);
+});
+
+function renderRankings(category, expandAll) {
+  rankingsContainer.innerHTML = "";
+  rankingsTab.classList.remove("hidden");
+
+  let list = rankingsData[category].filter(o => o.pollingScore !== undefined);
+
+  list.sort((a, b) => {
+    if (b.pollingScore !== a.pollingScore) {
+      return b.pollingScore - a.pollingScore;
+    }
+    return (a.dkno || 0) - (b.dkno || 0); // Tie-break by DK/NO
+  });
+
+  let displayList = expandAll ? list : [...list.slice(0, 10), ...list.slice(-10)];
+
+  displayList.forEach(o => {
+    const card = document.createElement("div");
+    card.className = `ranking-card ${getPartyClass(o.party)}`;
+    card.innerHTML = `
+      <strong>${o.name}</strong><br/>
+      ${o.office}<br/>
+      ${o.party}<br/>
+      Approval: ${o.pollingScore || "N/A"}
+    `;
+    card.addEventListener("click", () => showModal(o));
+    rankingsContainer.appendChild(card);
+  });
+
+  expandRankings.classList.toggle("hidden", expandAll);
+}
