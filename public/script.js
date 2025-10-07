@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Elements
   const dropdown = document.getElementById("stateDropdown");
   const officialsContainer = document.getElementById("officialsContainer");
   const calendarContainer = document.getElementById("calendarContainer");
@@ -22,9 +23,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Default to Officials
   document.querySelectorAll("#content section").forEach(sec => sec.classList.add("hidden"));
-  document.getElementById("officialsTab").classList.remove("hidden");
+  const officialsSection = document.getElementById("officialsTab");
+  if (officialsSection) officialsSection.classList.remove("hidden");
 
-  // States
+  // States (56 jurisdictions)
   const states = [
     "Alabama","Alaska","American Samoa","Arizona","Arkansas","California","Colorado","Connecticut",
     "Delaware","Florida","Georgia","Guam","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana",
@@ -42,8 +44,57 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Data stores
   let allOfficials = [];
-  let rankingsData = { governors: [], ltgovernors: [], senators: [], housereps: [] };
+  const rankingsData = { governors: [], ltgovernors: [], senators: [], housereps: [] };
+
+  // Normalize entries across datasets to consistent keys
+  function normalize(entry, office) {
+    const pct = typeof entry.pollingScore === "string" ? entry.pollingScore.trim() : entry.pollingScore;
+    const pollingPercent = typeof pct === "string" && pct.endsWith("%")
+      ? Number(pct.slice(0, -1))
+      : typeof pct === "number" ? pct : undefined;
+
+    return {
+      name: entry.name,
+      state: entry.state || entry.stateName || "",
+      party: entry.party || entry.affiliation || "Unknown",
+      office,
+      slug: entry.slug || "",
+      photo: entry.photo || "/assets/placeholder.png",
+      ballotpediaLink: entry.ballotpediaLink || "",
+      termStart: entry.termStart || "",
+      termEnd: entry.termEnd || "",
+      contact: {
+        email: entry.contact?.email || "",
+        phone: entry.contact?.phone || "",
+        website: entry.contact?.website || ""
+      },
+      bio: entry.bio || "",
+      education: entry.education || "",
+      endorsements: entry.endorsements || "",
+      platform: entry.platform || "",
+      platformFollowThrough: entry.platformFollowThrough || {},
+      proposals: entry.proposals || "",
+      engagement: {
+        executiveOrders2025: entry.engagement?.executiveOrders2025 ?? undefined,
+        socialMediaSurge: entry.engagement?.socialMediaSurge ?? undefined,
+        earnedMediaCoverage: entry.engagement?.earnedMediaCoverage ?? undefined,
+        sources: Array.isArray(entry.engagement?.sources) ? entry.engagement.sources : []
+      },
+      billsSigned: Array.isArray(entry.billsSigned) ? entry.billsSigned : [],
+      vetoes: entry.vetoes || "",
+      salary: entry.salary || "",
+      predecessor: entry.predecessor || "",
+      pollingScoreRaw: typeof entry.pollingScore === "string" ? entry.pollingScore : (entry.pollingScore ?? ""),
+      pollingScore: pollingPercent, // numeric for sorting
+      pollingSource: entry.pollingSource || "",
+      pollingDate: entry.pollingDate || "",
+      rank: entry.rank || "",
+      electionYear: entry.electionYear || "",
+      rankingNote: entry.rankingNote || ""
+    };
+  }
 
   // Fetch JSONs from /public (served at root)
   Promise.all([
@@ -52,23 +103,29 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch("/senators.json").then(r => r.json()).catch(() => []),
     fetch("/housereps.json").then(r => r.json()).catch(() => [])
   ]).then(([govs, ltgovs, sens, reps]) => {
-    allOfficials = [...govs, ...ltgovs, ...sens, ...reps];
-    rankingsData.governors = govs;
-    rankingsData.ltgovernors = ltgovs;
-    rankingsData.senators = sens;
-    rankingsData.housereps = reps;
+    const govNorm = (Array.isArray(govs) ? govs : []).map(g => normalize(g, "Governor"));
+    const ltgNorm = (Array.isArray(ltgovs) ? ltgovs : []).map(l => normalize(l, "Lt. Governor"));
+    const senNorm = (Array.isArray(sens) ? sens : []).map(s => normalize(s, "Senator"));
+    const repNorm = (Array.isArray(reps) ? reps : []).map(h => normalize(h, "House Representative"));
 
-    if (!allOfficials.length) {
-      allOfficials = [{
-        name: "Demo Official",
-        office: "Governor",
-        party: "Independent",
-        state: "Alabama",
-        pollingScore: 50
-      }];
+    allOfficials = [...govNorm, ...ltgNorm, ...senNorm, ...repNorm];
+
+    rankingsData.governors = govNorm;
+    rankingsData.ltgovernors = ltgNorm;
+    rankingsData.senators = senNorm;
+    rankingsData.housereps = repNorm;
+
+    // If a state is preselected, render immediately
+    if (dropdown && dropdown.value) {
+      renderOfficials(dropdown.value);
+      renderCalendar(dropdown.value);
+      renderRegistration(dropdown.value);
     }
+    // Initialize rankings default category
+    if (rankingCategory) renderRankings(rankingCategory.value || "governors", false);
   });
 
+  // Dropdown handler
   if (dropdown) {
     dropdown.addEventListener("change", () => {
       const state = dropdown.value;
@@ -78,27 +135,38 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Officials renderer (rich card)
   function renderOfficials(state) {
+    if (!officialsContainer) return;
     officialsContainer.innerHTML = "";
     if (!state) return;
+
     const filtered = allOfficials.filter(o => o.state === state);
     const hierarchy = ["Governor","Lt. Governor","Senator","House Representative"];
     filtered.sort((a, b) => hierarchy.indexOf(a.office) - hierarchy.indexOf(b.office));
+
     filtered.forEach(o => {
       const card = document.createElement("div");
       card.className = `card ${getPartyClass(o.party)}`;
       card.innerHTML = `
-        <strong>${o.name}</strong><br/>
-        ${o.office}<br/>
-        ${o.party}<br/>
-        Approval: ${o.pollingScore ?? "N/A"}
+        <img src="${o.photo}" alt="${o.name}" class="official-photo"/>
+        <div class="card-body">
+          <strong>${o.name}</strong><br/>
+          ${o.office} • ${o.party}<br/>
+          ${o.termStart ? `Term: ${o.termStart} – ${o.termEnd || "Present"}` : ""}<br/>
+          ${o.pollingScoreRaw ? `Approval: ${o.pollingScoreRaw}` : (o.pollingScore !== undefined ? `Approval: ${o.pollingScore}%` : "Approval: N/A")}
+          ${o.contact.website ? `<br/><a href="${o.contact.website}" target="_blank" rel="noopener">Website</a>` : ""}
+          ${o.ballotpediaLink ? ` • <a href="${o.ballotpediaLink}" target="_blank" rel="noopener">Ballotpedia</a>` : ""}
+        </div>
       `;
       card.addEventListener("click", () => showModal(o));
       officialsContainer.appendChild(card);
     });
   }
 
+  // Calendar (example: Alabama)
   function renderCalendar(state) {
+    if (!calendarContainer) return;
     calendarContainer.innerHTML = "";
     if (state !== "Alabama") return;
     const card = document.createElement("div");
@@ -107,26 +175,29 @@ document.addEventListener("DOMContentLoaded", () => {
       <strong>Municipal Runoff</strong><br/>
       2025-10-15 — Election<br/>
       Runoff for local offices<br/>
-      <a href="https://www.sos.alabama.gov/alabama-votes/voter/upcoming-elections" target="_blank">Details</a>
+      <a href="https://www.sos.alabama.gov/alabama-votes/voter/upcoming-elections" target="_blank" rel="noopener">Details</a>
     `;
     calendarContainer.appendChild(card);
   }
 
+  // Registration (example: Alabama)
   function renderRegistration(state) {
+    if (!registrationContainer) return;
     registrationContainer.innerHTML = "";
     if (state !== "Alabama") return;
     const card = document.createElement("div");
     card.className = "registration-card";
     card.innerHTML = `
       <strong>Alabama</strong><br/><br/>
-      <a href="https://www.sos.alabama.gov/alabama-votes/voter/register-to-vote" target="_blank">Register to Vote</a><br/>
-      <a href="https://myinfo.alabamavotes.gov/VoterView/RegistrantSearch.do" target="_blank">Find Your Polling Place</a><br/>
-      <a href="https://www.sos.alabama.gov/alabama-votes/voter/absentee-voting" target="_blank">Request Absentee Ballot</a><br/>
-      <a href="https://www.sos.alabama.gov/alabama-votes" target="_blank">Volunteer</a>
+      <a href="https://www.sos.alabama.gov/alabama-votes/voter/register-to-vote" target="_blank" rel="noopener">Register to Vote</a><br/>
+      <a href="https://myinfo.alabamavotes.gov/VoterView/RegistrantSearch.do" target="_blank" rel="noopener">Find Your Polling Place</a><br/>
+      <a href="https://www.sos.alabama.gov/alabama-votes/voter/absentee-voting" target="_blank" rel="noopener">Request Absentee Ballot</a><br/>
+      <a href="https://www.sos.alabama.gov/alabama-votes" target="_blank" rel="noopener">Volunteer</a>
     `;
     registrationContainer.appendChild(card);
   }
 
+  // Rankings handlers
   if (rankingCategory) {
     rankingCategory.addEventListener("change", () => renderRankings(rankingCategory.value, false));
   }
@@ -134,51 +205,141 @@ document.addEventListener("DOMContentLoaded", () => {
     expandRankings.addEventListener("click", () => renderRankings(rankingCategory.value, true));
   }
 
+  // Rankings renderer (sort by numeric polling)
   function renderRankings(category, expandAll) {
+    if (!rankingsContainer) return;
     rankingsContainer.innerHTML = "";
-    let list = (rankingsData[category] || []).filter(o => o.pollingScore !== undefined);
-    list.sort((a, b) => {
-      if (b.pollingScore !== a.pollingScore) return b.pollingScore - a.pollingScore;
-      return (a.dkno || 0) - (b.dkno || 0);
-    });
+
+    let list = (rankingsData[category] || [])
+      .filter(o => o.pollingScore !== undefined)
+      .sort((a, b) => {
+        if (b.pollingScore !== a.pollingScore) return b.pollingScore - a.pollingScore;
+        // Optional tiebreaker: rank string if present (lower is better)
+        const ar = parseInt(String(a.rank).replace("#", "")) || Infinity;
+        const br = parseInt(String(b.rank).replace("#", "")) || Infinity;
+        return ar - br;
+      });
+
     const displayList = expandAll ? list : [...list.slice(0, 10), ...list.slice(-10)];
+
     displayList.forEach(o => {
       const card = document.createElement("div");
       card.className = `ranking-card ${getPartyClass(o.party)}`;
       card.innerHTML = `
-        <strong>${o.name}</strong><br/>
-        ${o.office}<br/>
-        ${o.party}<br/>
-        Approval: ${o.pollingScore ?? "N/A"}
+        <img src="${o.photo}" alt="${o.name}" class="official-photo"/>
+        <div class="card-body">
+          <strong>${o.name}</strong><br/>
+          ${o.office} • ${o.state}<br/>
+          ${o.pollingScoreRaw ? `Approval: ${o.pollingScoreRaw}` : `${o.pollingScore}%`}
+          ${o.rank ? ` • Rank: ${o.rank}` : ""}
+          ${o.pollingDate ? ` • ${o.pollingDate}` : ""}
+          ${o.pollingSource ? ` • <a href="${o.pollingSource}" target="_blank" rel="noopener">Source</a>` : ""}
+        </div>
       `;
       card.addEventListener("click", () => showModal(o));
       rankingsContainer.appendChild(card);
     });
-    expandRankings.classList.toggle("hidden", expandAll || list.length <= 20);
+
+    if (expandRankings) {
+      expandRankings.classList.toggle("hidden", expandAll || list.length <= 20);
+    }
   }
 
+  // Party class
   function getPartyClass(party) {
     if (!party) return "unknown";
-    const p = party.toLowerCase();
+    const p = String(party).toLowerCase();
     if (p.includes("dem")) return "democratic";
     if (p.includes("rep")) return "republican";
     if (p.includes("ind")) return "independent";
     return "unknown";
   }
 
+  // Modal renderer (full details)
   function showModal(o) {
+    if (!modal || !modalContent) return;
+
+    const pf = o.platformFollowThrough || {};
+    const engagementSources = (o.engagement?.sources || [])
+      .map(src => `<li><a href="${src}" target="_blank" rel="noopener">${src}</a></li>`).join("");
+    const bills = (o.billsSigned || [])
+      .map(b => `<li><a href="${b.link}" target="_blank" rel="noopener">${b.title}</a></li>`).join("");
+
     modalContent.innerHTML = `
-      <h2>${o.name}</h2>
-      <p><strong>Office:</strong> ${o.office}</p>
-      <p><strong>Party:</strong> ${o.party}</p>
-      <p><strong>State:</strong> ${o.state}</p>
-      <p><strong>Approval:</strong> ${o.pollingScore ?? "N/A"}</p>
+      <div class="modal-header">
+        <img src="${o.photo}" alt="${o.name}" class="official-photo large"/>
+        <div>
+          <h2>${o.name}</h2>
+          <p><strong>Office:</strong> ${o.office}</p>
+          <p><strong>Party:</strong> ${o.party}</p>
+          <p><strong>State:</strong> ${o.state}</p>
+          ${o.termStart ? `<p><strong>Term:</strong> ${o.termStart} – ${o.termEnd || "Present"}</p>` : ""}
+          <p><strong>Approval:</strong> ${o.pollingScoreRaw || (o.pollingScore !== undefined ? `${o.pollingScore}%` : "N/A")}
+            ${o.pollingSource ? ` • <a href="${o.pollingSource}" target="_blank" rel="noopener">Source</a>` : ""}
+            ${o.pollingDate ? ` • ${o.pollingDate}` : ""}
+            ${o.rank ? ` • Rank: ${o.rank}` : ""}
+          </p>
+          ${o.ballotpediaLink ? `<p><a href="${o.ballotpediaLink}" target="_blank" rel="noopener">Ballotpedia</a></p>` : ""}
+        </div>
+      </div>
+
+      ${o.bio ? `<p><strong>Bio:</strong> ${o.bio}</p>` : ""}
+      ${o.education ? `<p><strong>Education:</strong> ${o.education}</p>` : ""}
+      ${o.endorsements ? `<p><strong>Endorsements:</strong> ${o.endorsements}</p>` : ""}
+      ${o.platform ? `<p><strong>Platform:</strong> ${o.platform}</p>` : ""}
+
+      ${
+        Object.keys(pf).length
+          ? `<div>
+               <p><strong>Platform follow-through:</strong></p>
+               <ul>
+                 ${Object.entries(pf).map(([k,v]) => `<li><strong>${k}:</strong> ${v}</li>`).join("")}
+               </ul>
+             </div>`
+          : ""
+      }
+
+      ${o.proposals ? `<p><strong>Proposals:</strong> ${o.proposals}</p>` : ""}
+
+      ${
+        (o.engagement?.executiveOrders2025 !== undefined ||
+         o.engagement?.socialMediaSurge !== undefined ||
+         o.engagement?.earnedMediaCoverage !== undefined ||
+         (o.engagement?.sources || []).length)
+          ? `<div>
+               <p><strong>Engagement:</strong></p>
+               <ul>
+                 ${o.engagement?.executiveOrders2025 !== undefined ? `<li><strong>Executive orders (2025):</strong> ${o.engagement.executiveOrders2025}</li>` : ""}
+                 ${o.engagement?.socialMediaSurge !== undefined ? `<li><strong>Social media surge:</strong> ${o.engagement.socialMediaSurge ? "Yes" : "No"}</li>` : ""}
+                 ${o.engagement?.earnedMediaCoverage !== undefined ? `<li><strong>Earned media coverage:</strong> ${o.engagement.earnedMediaCoverage ? "Yes" : "No"}</li>` : ""}
+                 ${engagementSources ? `<li><strong>Sources:</strong><ul>${engagementSources}</ul></li>` : ""}
+               </ul>
+             </div>`
+          : ""
+      }
+
+      ${bills ? `<div>
+          <p><strong>Bills signed:</strong></p>
+          <ul>${bills}</ul>
+        </div>` : ""}
+
+      ${o.vetoes ? `<p><strong>Vetoes:</strong> ${o.vetoes}</p>` : ""}
+
+      ${o.salary ? `<p><strong>Salary:</strong> ${o.salary}</p>` : ""}
+
+      ${o.predecessor ? `<p><strong>Predecessor:</strong> ${o.predecessor}</p>` : ""}
+
+      ${o.electionYear ? `<p><strong>Next election year:</strong> ${o.electionYear}</p>` : ""}
+
+      ${o.rankingNote ? `<p><strong>Ranking note:</strong> ${o.rankingNote}</p>` : ""}
+
       <p><strong>Contact:</strong><br/>
-        Email: ${o.contact?.email || "—"}<br/>
-        Phone: ${o.contact?.phone || "—"}<br/>
-        ${o.contact?.website ? `<a href="${o.contact.website}" target="_blank">Website</a>` : "—"}
+        ${o.contact.email ? `Email: <a href="mailto:${o.contact.email}">${o.contact.email}</a><br/>` : ""}
+        ${o.contact.phone ? `Phone: ${o.contact.phone}<br/>` : ""}
+        ${o.contact.website ? `Website: <a href="${o.contact.website}" target="_blank" rel="noopener">${o.contact.website}</a>` : ""}
       </p>
     `;
     modal.classList.remove("hidden");
   }
 });
+```
