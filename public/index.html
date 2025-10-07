@@ -75,5 +75,23 @@
   </div>
 
   <script src="script.js"></script>
+  <script>
+document.querySelectorAll(".tabs button").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const tab = btn.getAttribute("data-tab");
+
+    // hide all panes
+    document.querySelectorAll(".tab-pane").forEach(p => p.classList.remove("active"));
+
+    // show the selected one
+    document.getElementById(tab).classList.add("active");
+  });
+});
+
+// default to Officials tab on load
+document.getElementById("officials").classList.add("active");
+</script>
+</body>
+
 </body>
 </html>
