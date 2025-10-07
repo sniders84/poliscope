@@ -3,52 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Electorate</title>
+  <title>Electorate – My Officials</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
     <h1>Electorate</h1>
-    <nav>
-      <button onclick="window.showTab('Governors')">Rankings</button>
-      <button onclick="window.showTab('Calendar')">Calendar</button>
-      <button onclick="window.showTab('Registration')">Registration</button>
-      <button onclick="window.showTab('Senate')">Senate</button>
-      <button onclick="window.showTab('House')">House</button>
-      <button onclick="window.showTab('LtGovernors')">Lt. Governors</button>
-    </nav>
-    <select id="datasetSelect" class="hidden">
-      <option value="Governors">Governors</option>
-      <option value="Senate">Senate</option>
-      <option value="House">House</option>
-      <option value="LtGovernors">Lt. Governors</option>
+    <select id="stateDropdown">
+      <option value="">Select a state or territory</option>
+      <!-- Dynamically populated -->
     </select>
   </header>
 
-  <main>
-    <section id="grid"></section>
-    <button id="expandBtn" class="hidden">Expand Full Rankings</button>
-
-    <section id="calendarWrap" class="hidden">
-      <h2>Upcoming Civic Events</h2>
-      <div class="calendar-feed">
-        <!-- Events will be injected here -->
-      </div>
-    </section>
-
-    <section id="registrationWrap" class="hidden">
-      <h2>Voter Registration & Info</h2>
-      <ul class="registration-links">
-        <li><a href="#" target="_blank">Register to Vote</a></li>
-        <li><a href="#" target="_blank">Check Registration Status</a></li>
-        <li><a href="#" target="_blank">Deadlines</a></li>
-        <li><a href="#" target="_blank">Find Your Polling Place</a></li>
-        <li><a href="#" target="_blank">Vote by Mail / Request Absentee Ballot</a></li>
-        <li><a href="#" target="_blank">Early Voting</a></li>
-        <li><a href="#" target="_blank">Volunteer / Become a Poll Worker</a></li>
-      </ul>
-    </section>
+  <main id="officialsContainer">
+    <!-- Cards will render here -->
   </main>
+
+  <div id="modal" class="hidden">
+    <div id="modalContent"></div>
+    <button id="closeModal">Close</button>
+  </div>
 
   <script src="script.js"></script>
 </body>
