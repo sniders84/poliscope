@@ -197,8 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="card-body">
           <strong>${o.name}</strong><br/>
           ${o.office} • ${o.state}<br/>
-          Approval: ${o.pollingScoreRaw || (o.pollingScore !== undefined ? o.pollingScore + "%" : "N/A")}
-          • Rank: ${o.computedRank}
+         Rank: ${o.computedRank}
           ${o.pollingDate ? ` • ${o.pollingDate}` : ""}
           ${o.pollingSource ? ` • <a href="${o.pollingSource}" target="_blank" rel="noopener">Source</a>` : ""}
         </div>
