@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Electorate Tabs</title>
+  <title>Electorate</title>
   <style>
     body {
       font-family: sans-serif;
@@ -40,7 +40,7 @@
 </head>
 <body>
 
-  <!-- ✅ Tab Buttons -->
+  <!-- ✅ Single Tab Row -->
   <div class="tabs">
     <button data-tab="officials">Officials</button>
     <button data-tab="rankings">Rankings</button>
@@ -56,7 +56,7 @@
     <div id="registration" class="tab-pane"></div>
   </div>
 
-  <!-- ✅ Tab Switching Script -->
+  <!-- ✅ Tab Switching Logic -->
   <script>
     document.querySelectorAll(".tabs button").forEach(btn => {
       btn.addEventListener("click", () => {
@@ -73,6 +73,9 @@
     // Default to Officials tab on load
     document.getElementById("officials").classList.add("active");
   </script>
+
+  <!-- ✅ Your render functions go below -->
+  <script src="script.js"></script>
 
 </body>
 </html>
