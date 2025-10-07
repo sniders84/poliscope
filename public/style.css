@@ -97,3 +97,12 @@ select#stateDropdown {
 .hidden {
   display: none;
 }
+<header>
+  <div style="display:flex;align-items:center;">
+    <img src="logo.png" alt="Electorate Logo" />
+    <h1>Electorate</h1>
+  </div>
+  <select id="stateDropdown">
+    <option value="">Select a state or territory</option>
+  </select>
+</header>
