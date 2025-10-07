@@ -1,121 +1,88 @@
-(() => {
-  const FILE_MAP = {
-    Governors: 'Governors.json',
-    Senate: 'Senate.json',
-    House: 'House.json',
-    LtGovernors: 'LtGovernors.json'
-  };
+const dropdown = document.getElementById("stateDropdown");
+const container = document.getElementById("officialsContainer");
+const modal = document.getElementById("modal");
+const modalContent = document.getElementById("modalContent");
+const closeModal = document.getElementById("closeModal");
 
-  const datasets = {};
-  const datasetSelect = document.getElementById('datasetSelect');
-  const grid = document.getElementById('grid');
-  const expandBtn = document.getElementById('expandBtn');
-  const calendarWrap = document.getElementById('calendarWrap');
-  const registrationWrap = document.getElementById('registrationWrap');
+// Load state/territory list
+const states = [
+  "Alabama", "Alaska", "American Samoa", "Arizona", "Arkansas", "California", "Colorado", "Connecticut",
+  "Delaware", "Florida", "Georgia", "Guam", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas",
+  "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi",
+  "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York",
+  "North Carolina", "North Dakota", "Northern Mariana Islands", "Ohio", "Oklahoma", "Oregon", "Pennsylvania",
+  "Puerto Rico", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont",
+  "Virgin Islands", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
+];
 
-  let fullGovernorList = [];
+states.forEach(state => {
+  const option = document.createElement("option");
+  option.value = state;
+  option.textContent = state;
+  dropdown.appendChild(option);
+});
 
-  window.showTab = function(name) {
-    datasetSelect.value = name;
-    renderTab(name);
-  };
+// Load all officials
+let allOfficials = [];
 
-  async function loadDataset(name) {
-    if (!FILE_MAP[name]) return [];
-    if (datasets[name]) return datasets[name];
+Promise.all([
+  fetch("governors.json").then(res => res.json()),
+  fetch("ltgovernors.json").then(res => res.json()),
+  fetch("senators.json").then(res => res.json()),
+  fetch("housereps.json").then(res => res.json())
+]).then(([governors, ltgovernors, senators, housereps]) => {
+  allOfficials = [...governors, ...ltgovernors, ...senators, ...housereps];
+});
 
-    try {
-      const res = await fetch(FILE_MAP[name], { cache: 'no-store' });
-      const json = await res.json();
-      datasets[name] = Array.isArray(json) ? json : [];
-      return datasets[name];
-    } catch (err) {
-      console.error(`Failed to load ${name}:`, err);
-      return [];
-    }
-  }
+// Render officials for selected state
+dropdown.addEventListener("change", () => {
+  const selectedState = dropdown.value;
+  container.innerHTML = "";
 
-  function createMiniCard(item, rank) {
-    const card = document.createElement('div');
-    card.className = 'mini-card';
-    if (rank <= 10) card.classList.add('top');
-    if (rank > fullGovernorList.length - 10) card.classList.add('bottom');
+  const filtered = allOfficials.filter(o => o.state === selectedState);
 
+  filtered.forEach(o => {
+    const card = document.createElement("div");
+    card.className = `card ${getPartyClass(o.party)}`;
     card.innerHTML = `
-      <div class="rank-badge">#${rank}</div>
-      <div class="name">${item.name}</div>
-      <div class="meta">${item.state} • ${item.party}</div>
-      <div class="polling">
-        👍 ${item.approvalPercent}% • 👎 ${item.disapprovalPercent}% • ❔ ${item.dkPercent}%
-      </div>
+      <strong>${o.name}</strong><br/>
+      ${o.office}<br/>
+      ${o.party}<br/>
+      Approval: ${o.pollingScore || "N/A"}
     `;
-    return card;
-  }
-
-  function sortGovernors(data) {
-    return [...data].sort((a, b) => {
-      if (b.approvalPercent !== a.approvalPercent)
-        return b.approvalPercent - a.approvalPercent;
-      if (a.disapprovalPercent !== b.disapprovalPercent)
-        return a.disapprovalPercent - b.disapprovalPercent;
-      return a.dkPercent - b.dkPercent;
-    });
-  }
-
-  function renderRankings(data) {
-    grid.innerHTML = '';
-    fullGovernorList = sortGovernors(data);
-
-    const top10 = fullGovernorList.slice(0, 10);
-    const bottom10 = fullGovernorList.slice(-10);
-
-    const topWrap = document.createElement('div');
-    topWrap.className = 'rank-section';
-    topWrap.innerHTML = `<h2>Top 10 Governors</h2>`;
-    top10.forEach((item, i) => topWrap.appendChild(createMiniCard(item, i + 1)));
-
-    const bottomWrap = document.createElement('div');
-    bottomWrap.className = 'rank-section';
-    bottomWrap.innerHTML = `<h2>Bottom 10 Governors</h2>`;
-    bottom10.forEach((item, i) => bottomWrap.appendChild(createMiniCard(item, fullGovernorList.length - 9 + i)));
-
-    grid.appendChild(topWrap);
-    grid.appendChild(bottomWrap);
-
-    expandBtn.classList.remove('hidden');
-  }
-
-  function expandFullRankings() {
-    const fullWrap = document.createElement('div');
-    fullWrap.className = 'rank-section';
-    fullWrap.innerHTML = `<h2>Full Rankings</h2>`;
-    fullGovernorList.forEach((item, i) => fullWrap.appendChild(createMiniCard(item, i + 1)));
-    grid.appendChild(fullWrap);
-    expandBtn.classList.add('hidden');
-  }
-
-  async function renderTab(name) {
-    grid.innerHTML = '';
-    expandBtn.classList.add('hidden');
-    calendarWrap.classList.add('hidden');
-    registrationWrap.classList.add('hidden');
-
-    if (name === 'Governors') {
-      const data = await loadDataset(name);
-      renderRankings(data);
-    } else if (name === 'Calendar') {
-      calendarWrap.classList.remove('hidden');
-    } else if (name === 'Registration') {
-      registrationWrap.classList.remove('hidden');
-    } else {
-      const data = await loadDataset(name);
-      grid.innerHTML = `<div class="message">Loaded ${data.length} entries for ${name}.</div>`;
-    }
-  }
-
-  expandBtn.addEventListener('click', expandFullRankings);
-
-  document.addEventListener('DOMContentLoaded', async () => {
-    await renderTab(datasetSelect.value);
+    card.addEventListener("click", () => showModal(o));
+    container.appendChild(card);
   });
-})();
+});
+
+// Party color class
+function getPartyClass(party) {
+  if (!party) return "unknown";
+  const p = party.toLowerCase();
+  if (p.includes("dem")) return "democratic";
+  if (p.includes("rep")) return "republican";
+  if (p.includes("ind")) return "independent";
+  return "unknown";
+}
+
+// Modal logic
+function showModal(o) {
+  modalContent.innerHTML = `
+    <h2>${o.name}</h2>
+    <p><strong>Office:</strong> ${o.office}</p>
+    <p><strong>Party:</strong> ${o.party}</p>
+    <p><strong>State:</strong> ${o.state}</p>
+    <p><strong>Approval:</strong> ${o.pollingScore || "N/A"}</p>
+    <p><strong>Bio:</strong> ${o.bio || "—"}</p>
+    <p><strong>Contact:</strong><br/>
+      Email: ${o.contact?.email || "—"}<br/>
+      Phone: ${o.contact?.phone || "—"}<br/>
+      <a href="${o.contact?.website}" target="_blank">Website</a>
+    </p>
+  `;
+  modal.classList.remove("hidden");
+}
+
+closeModal.addEventListener("click", () => {
+  modal.classList.add("hidden");
+});
