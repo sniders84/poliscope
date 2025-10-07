@@ -106,3 +106,16 @@ select#stateDropdown {
     <option value="">Select a state or territory</option>
   </select>
 </header>
+#calendarContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.calendar-card {
+  background: white;
+  padding: 1rem;
+  border-left: 6px solid #0033A0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
