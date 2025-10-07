@@ -90,6 +90,25 @@ function renderOfficials(state) {
 }
 
 // ✅ Render Rankings tab
+function computeRankings(list) {
+  const rawList = window.rankingsData[category] || [];
+const list = computeRankings(rawList);
+
+  ranked.sort((a, b) => {
+    if (b.pollingScore !== a.pollingScore) {
+      return b.pollingScore - a.pollingScore;
+    }
+    if ((a.disapprove || 0) !== (b.disapprove || 0)) {
+      return a.disapprove - b.disapprove;
+    }
+    return (a.dk || 0) - (b.dk || 0);
+  });
+
+  ranked.forEach((o, i) => { o.computedRank = i + 1; });
+  unranked.forEach(o => { o.computedRank = null; });
+
+  return [...ranked, ...unranked];
+}
 function renderRankings(category) {
   const container = document.getElementById("rankings");
   const list = (window.rankingsData[category] || [])
