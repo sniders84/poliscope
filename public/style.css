@@ -119,3 +119,16 @@ select#stateDropdown {
   border-left: 6px solid #0033A0;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
+#registrationContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.registration-card {
+  background: white;
+  padding: 1rem;
+  border-left: 6px solid #228B22;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
