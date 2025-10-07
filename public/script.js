@@ -105,7 +105,47 @@ function getPartyClass(party) {
   if (p.includes("ind")) return "independent";
   return "unknown";
 }
+const registrationTab = document.getElementById("registrationTab");
+const registrationContainer = document.getElementById("registrationContainer");
+let registrationData = [];
 
+// Load registration.json
+fetch("registration.json")
+  .then(res => res.json())
+  .then(data => {
+    registrationData = data;
+  });
+
+// Sync registration to selected state
+dropdown.addEventListener("change", () => {
+  const selectedState = dropdown.value;
+
+  // Officials and calendar already handled
+  renderRegistration(selectedState);
+});
+
+function renderRegistration(state) {
+  registrationContainer.innerHTML = "";
+  registrationTab.classList.remove("hidden");
+
+  const entry = registrationData.find(r => r.state === state);
+
+  if (!entry) {
+    registrationContainer.innerHTML = `<p>No registration info found for ${state}.</p>`;
+    return;
+  }
+
+  const card = document.createElement("div");
+  card.className = "registration-card";
+  card.innerHTML = `
+    <strong>${state}</strong><br/><br/>
+    <a href="${entry.register}" target="_blank">Register to Vote</a><br/>
+    <a href="${entry.polling}" target="_blank">Find Your Polling Place</a><br/>
+    <a href="${entry.absentee}" target="_blank">Request Absentee Ballot</a><br/>
+    <a href="${entry.volunteer}" target="_blank">Volunteer</a>
+  `;
+  registrationContainer.appendChild(card);
+}
 // Modal logic
 function showModal(o) {
   modalContent.innerHTML = `
