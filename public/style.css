@@ -340,3 +340,74 @@ a:hover {
 .hidden {
   display: none;
 }
+/* Modal container */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Modal box */
+#modalContent {
+  background-color: #fff;
+  max-width: 900px;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+/* Close button */
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #ccc;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+.modal-close:hover {
+  background: #999;
+}
+
+/* Two-column layout */
+.modal-profile {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  text-align: left;
+}
+.modal-photo {
+  width: 100%;
+  max-width: 160px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+.modal-profile ul {
+  padding-left: 1.2rem;
+}
+.modal-profile li {
+  margin-bottom: 0.5rem;
+}
+
+/* Responsive fallback */
+@media (max-width: 700px) {
+  .modal-profile {
+    grid-template-columns: 1fr;
+  }
+}
