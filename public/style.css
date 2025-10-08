@@ -19,8 +19,9 @@ a:hover {
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: 160px;
+  height: 140px;
   border-bottom: 2px solid #333;
+  overflow: hidden;
 }
 
 .stripe {
@@ -48,8 +49,8 @@ a:hover {
 }
 
 .electorate-logo {
-  width: 100%;
-  height: auto;
+  max-height: 100%;
+  max-width: 100%;
   object-fit: contain;
   display: block;
 }
