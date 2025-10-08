@@ -56,11 +56,33 @@ Promise.all([
   const searchInput = document.getElementById("searchInput");
   if (searchInput) searchInput.addEventListener("input", handleSearch);
 
-  // ✅ Only render default tab
-  renderOfficials("Alabama");
+  activateTab("officials");
+});
+function activateTab(tabId) {
+  document.querySelectorAll(".tab-pane").forEach(p => {
+    p.classList.remove("active");
+    p.innerHTML = "";
+  });
 
-  const defaultTab = document.getElementById("officials");
-  if (defaultTab) defaultTab.classList.add("active");
+  const target = document.getElementById(tabId);
+  if (target) {
+    target.classList.add("active");
+
+    if (tabId === "officials") renderOfficials("Alabama");
+    if (tabId === "rankings") renderRankings("governors");
+    if (tabId === "calendar") renderCalendar();
+    if (tabId === "registration") renderRegistration();
+  }
+
+  const searchInput = document.getElementById("searchInput");
+  if (searchInput) searchInput.value = "";
+}
+
+document.querySelectorAll(".tabs-vertical button").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const tab = btn.getAttribute("data-tab");
+    activateTab(tab);
+  });
 });
 
 function handleSearch() {
@@ -69,6 +91,7 @@ function handleSearch() {
     o.name.toLowerCase().includes(query) ||
     o.state.toLowerCase().includes(query)
   );
+  activateTab("officials");
   renderOfficials(results);
 }
 
@@ -76,7 +99,6 @@ function renderHeader() {
   const header = document.querySelector(".electorate-header");
   if (!header) return;
 }
-
 function renderOfficials(stateOrList) {
   const container = document.getElementById("officials");
   if (!container) return;
@@ -108,6 +130,7 @@ function renderOfficials(stateOrList) {
     container.appendChild(card);
   });
 }
+
 function computeRankings(rawList) {
   const ranked = rawList.filter(o => o.pollingScore !== null);
   const unranked = rawList.filter(o => o.pollingScore === null);
@@ -163,6 +186,7 @@ function renderRankingCards(list) {
     </div>
   `).join("");
 }
+
 function renderCalendar() {
   const container = document.getElementById("calendar");
   if (!container) return;
@@ -174,34 +198,6 @@ function renderRegistration() {
   if (!container) return;
   container.innerHTML = `<p>Registration info will go here. You can wire in mail-in ballot links, deadlines, and instructions.</p>`;
 }
-document.querySelectorAll(".tabs-vertical button").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const tab = btn.getAttribute("data-tab");
-    document.querySelectorAll(".tab-pane").forEach(p => p.classList.remove("active"));
-    const target = document.getElementById(tab);
-    if (target) target.classList.add("active");
-
-    const searchInput = document.getElementById("searchInput");
-    if (searchInput) {
-      searchInput.value = "";
-      renderOfficials("Alabama");
-    }
-
-    if (tab === "rankings") renderRankings("governors", "lt. governors", "senators", "house reps");
-    if (tab === "calendar") renderCalendar();
-    if (tab === "registration") renderRegistration();
-  });
-});
-
-const stateSelect = document.getElementById("stateSelect");
-if (stateSelect) {
-  stateSelect.addEventListener("change", e => {
-    renderOfficials(e.target.value);
-    renderCalendar();
-    renderRegistration();
-  });
-}
-
 function openModal(o) {
   const modal = document.getElementById("modal");
   const content = document.getElementById("modalContent");
@@ -262,7 +258,6 @@ function openModal(o) {
 
   modal.classList.remove("hidden");
 
-  // ✅ Wire close button immediately
   const closeBtn = document.getElementById("closeModal");
   if (closeBtn) {
     closeBtn.addEventListener("click", () => {
