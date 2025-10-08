@@ -10,8 +10,8 @@
 
   <!-- ✅ Header -->
   <header class="electorate-header">
-  <img src="assets/electorate-logo.png" alt="Electorate Logo" class="electorate-logo" />
-</header>
+    <img src="assets/electorate-logo.png" alt="Electorate Logo" class="electorate-logo" />
+  </header>
 
   <!-- ✅ Search Bar -->
   <div class="search-bar">
@@ -34,10 +34,18 @@
 
   <!-- ✅ Tab Panes -->
   <div class="tab-content">
-    <div id="officials" class="tab-pane"></div>
+    <div id="officials" class="tab-pane active"></div>
     <div id="rankings" class="tab-pane"></div>
     <div id="calendar" class="tab-pane"></div>
     <div id="registration" class="tab-pane"></div>
+  </div>
+  <!-- ✅ Modal Container -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-overlay"></div>
+    <div class="modal-box">
+      <div id="modalContent" class="modal-content"></div>
+      <button id="closeModal" class="modal-close">Close</button>
+    </div>
   </div>
 
   <!-- ✅ Script -->
@@ -62,9 +70,7 @@
       opt.textContent = state;
       select.appendChild(opt);
     });
-<div class="official-photo-container">
-  <img src="PHOTO_URL_HERE" alt="Official Photo" class="official-photo" />
-</div>
+
     // ✅ Tab switching logic
     document.querySelectorAll(".tabs-vertical button").forEach(btn => {
       btn.addEventListener("click", () => {
@@ -82,6 +88,15 @@
       if (typeof renderCalendar === "function") renderCalendar();
       if (typeof renderRegistration === "function") renderRegistration();
     });
+
+    // ✅ Modal close logic
+    const closeModalBtn = document.getElementById("closeModal");
+    if (closeModalBtn) {
+      closeModalBtn.addEventListener("click", () => {
+        const modal = document.getElementById("modal");
+        if (modal) modal.classList.add("hidden");
+      });
+    }
   </script>
 </body>
 </html>
