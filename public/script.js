@@ -57,8 +57,13 @@ Promise.all([
   if (searchInput) searchInput.addEventListener("input", handleSearch);
 
   activateTab("officials");
-  document.getElementById("searchInput").addEventListener("input", handleSearch);
-});
+   // ✅ Wire search bar listener
+  const searchInput = document.getElementById("searchInput");
+  if (searchInput) {
+    searchInput.addEventListener("input", handleSearch);
+    searchInput.disabled = false;
+  }
+  });
 function activateTab(tabId) {
   document.querySelectorAll(".tab-pane").forEach(p => {
     p.classList.remove("active");
@@ -74,10 +79,6 @@ function activateTab(tabId) {
     if (tabId === "calendar") renderCalendar();
     if (tabId === "registration") renderRegistration();
   }
-
-  const searchInput = document.getElementById("searchInput");
-  if (searchInput) searchInput.value = "";
-}
 
 document.querySelectorAll(".tabs-vertical button").forEach(btn => {
   btn.addEventListener("click", () => {
