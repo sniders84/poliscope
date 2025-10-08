@@ -6,14 +6,39 @@ body {
   color: #222;
 }
 
+/* Header and Logo */
+.electorate-header {
+  background: linear-gradient(to right, #003366, #888888, #ffffff, #888888, #cc0000);
+  padding: 1.5rem 0;
+  text-align: center;
+}
+
+.electorate-logo {
+  max-width: 220px;
+  height: auto;
+  display: inline-block;
+}
+
+/* State Selector */
+.state-selector {
+  margin: 1rem 0;
+  font-size: 1rem;
+}
+
+.state-selector select {
+  padding: 0.4rem;
+  font-size: 1rem;
+}
+
 /* Tab button row */
-.tabs {
+.tabs-vertical {
   display: flex;
   gap: 0.5rem;
   margin-bottom: 1rem;
+  flex-wrap: wrap;
 }
 
-.tabs button {
+.tabs-vertical button {
   padding: 0.5rem 1rem;
   cursor: pointer;
   border: 1px solid #ccc;
@@ -22,11 +47,15 @@ body {
   border-radius: 4px;
 }
 
-.tabs button:hover {
+.tabs-vertical button:hover {
   background: #e0e0e0;
 }
 
 /* Tab content containers */
+.tab-content {
+  margin-top: 1rem;
+}
+
 .tab-pane {
   display: none;
   padding: 1rem;
@@ -40,6 +69,12 @@ body {
 }
 
 /* Official card layout */
+#officials {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
 .official-photo {
   width: 100px;
   height: auto;
@@ -73,20 +108,37 @@ body {
   margin-bottom: 0.25rem;
 }
 
-/* Calendar and Registration tabs (placeholder styling) */
-#calendar, #registration {
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-#officials {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1rem;
-}
 .unranked {
   color: #999;
   font-style: italic;
 }
+
+/* Calendar and Registration tabs */
+#calendar, #registration {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.calendar-event {
+  margin-bottom: 0.75rem;
+}
+
+/* Search Bar */
+.search-bar {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.search-bar input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  width: 60%;
+  max-width: 400px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Logo block */
 .app-logo {
   text-align: center;
   margin: 1rem 0;
@@ -95,15 +147,4 @@ body {
 .app-logo img {
   max-width: 200px;
   height: auto;
-}
-.electorate-header {
-  background: linear-gradient(to right, #003366, #888888, #ffffff, #888888, #cc0000);
-  padding: 1.5rem 0;
-  text-align: center;
-}
-
-.electorate-logo {
-  max-width: 220px;
-  height: auto;
-  display: inline-block;
 }
