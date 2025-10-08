@@ -234,3 +234,32 @@ a:hover {
 .modal-close:hover {
   background-color: #ddd;
 }
+.electorate-header {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.stripe {
+  height: 40px;
+  width: 100%;
+}
+.stripe.red {
+  background-color: #b30000;
+}
+.stripe.grey {
+  background-color: #ccc;
+}
+.stripe.white {
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.center-logo {
+  height: 80px;
+}
+.electorate-logo {
+  height: 64px;
+  max-width: 100%;
+}
