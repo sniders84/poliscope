@@ -1,176 +1,162 @@
-/* Base layout */
+/* ✅ Reset and base styles */
 body {
-  font-family: sans-serif;
-  margin: 2rem;
-  background-color: #ffffff;
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background-color: #f9f9f9;
   color: #222;
 }
 
-/* Header and Logo */
+a {
+  color: #0066cc;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* ✅ Header and logo */
 .electorate-header {
-  background: linear-gradient(to right, #003366, #888888, #ffffff, #888888, #cc0000);
-  padding: 1.5rem 0;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
 }
-
 .electorate-logo {
-  max-width: 220px;
-  height: auto;
-  display: inline-block;
+  height: 48px;
+  margin-right: 1rem;
 }
 
-/* State Selector */
-.state-selector {
-  margin: 1rem 0;
-  font-size: 1rem;
-}
-
-.state-selector select {
-  padding: 0.4rem;
-  font-size: 1rem;
-}
-
-/* Tab button row */
-.tabs-vertical {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
-}
-
-.tabs-vertical button {
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  border: 1px solid #ccc;
-  background: #f0f0f0;
-  font-weight: bold;
-  border-radius: 4px;
-}
-
-.tabs-vertical button:hover {
-  background: #e0e0e0;
-}
-
-/* Tab content containers */
-.tab-content {
-  margin-top: 1rem;
-}
-
-.tab-pane {
-  display: none;
-  padding: 1rem;
-  border: 1px solid #ccc;
-  background: #fafafa;
-  border-radius: 4px;
-}
-
-.tab-pane.active {
-  display: block;
-}
-
-/* Official card layout */
-#officials {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1rem;
-}
-
-.official-photo {
-  width: 100px;
-  height: auto;
-  border-radius: 4px;
-  margin-bottom: 0.5rem;
-}
-
-.card-body {
-  font-size: 0.9rem;
-  line-height: 1.4;
-}
-
-/* Rankings layout */
-.rankings-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.ranking-card {
-  width: 200px;
-  padding: 1rem;
-  border: 1px solid #ddd;
-  background: #fff;
-  border-radius: 4px;
-  text-align: center;
-}
-
-.ranking-card strong {
-  display: block;
-  margin-bottom: 0.25rem;
-}
-
-.unranked {
-  color: #999;
-  font-style: italic;
-}
-
-/* Calendar and Registration tabs */
-#calendar, #registration {
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-
-.calendar-event {
-  margin-bottom: 0.75rem;
-}
-
-/* Search Bar */
+/* ✅ Search bar */
 .search-bar {
-  margin: 1rem 0;
-  text-align: center;
+  padding: 1rem;
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
 }
-
 .search-bar input {
+  width: 100%;
+  max-width: 400px;
   padding: 0.5rem;
   font-size: 1rem;
-  width: 60%;
-  max-width: 400px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
 }
 
-/* Logo block */
-.app-logo {
-  text-align: center;
-  margin: 1rem 0;
+/* ✅ State selector */
+.state-selector {
+  padding: 1rem;
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+}
+.state-selector select {
+  padding: 0.5rem;
+  font-size: 1rem;
 }
 
-.app-logo img {
-  max-width: 200px;
-  height: auto;
-}
-.official-photo-container {
-  width: 60px;
-  height: 60px;
-  overflow: hidden;
+/* ✅ Tabs */
+.tabs-vertical {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #f0f0f0; /* Optional fallback */
-  border-radius: 4px;
-  flex-shrink: 0;
+  flex-direction: row;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #f0f0f0;
+}
+.tabs-vertical button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+.tabs-vertical button:hover {
+  background-color: #e6e6e6;
 }
 
-.official-photo {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* ✅ Keeps full image visible inside square */
+/* ✅ Tab panes */
+.tab-content {
+  padding: 1rem;
 }
-border: 1px solid #ccc;
-box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 .tab-pane {
   display: none;
 }
-
 .tab-pane.active {
   display: block;
+}
+/* ✅ Official and ranking cards */
+.ranking-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  cursor: pointer;
+}
+.official-photo {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+.card-body {
+  flex: 1;
+  font-size: 0.95rem;
+}
+
+/* ✅ Modal styling */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 1000;
+}
+.modal.hidden {
+  display: none;
+}
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+}
+.modal-box {
+  position: relative;
+  margin: 5% auto;
+  max-width: 600px;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  z-index: 1001;
+}
+.modal-content {
+  font-size: 1rem;
+}
+.modal-close {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #eee;
+  border: none;
+  cursor: pointer;
+}
+.modal-close:hover {
+  background-color: #ddd;
+}
+
+/* ✅ Responsive tweaks */
+@media (max-width: 600px) {
+  .ranking-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .official-photo {
+    width: 100px;
+    height: 100px;
+  }
 }
