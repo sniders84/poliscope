@@ -57,6 +57,7 @@ Promise.all([
   if (searchInput) searchInput.addEventListener("input", handleSearch);
 
   activateTab("officials");
+  document.getElementById("searchInput").addEventListener("input", handleSearch);
 });
 function activateTab(tabId) {
   document.querySelectorAll(".tab-pane").forEach(p => {
@@ -69,7 +70,7 @@ function activateTab(tabId) {
     target.classList.add("active");
 
     if (tabId === "officials") renderOfficials("Alabama");
-    if (tabId === "rankings") renderRankings("governors");
+    if (tabId === "rankings") renderRankings();
     if (tabId === "calendar") renderCalendar();
     if (tabId === "registration") renderRegistration();
   }
@@ -91,6 +92,7 @@ function handleSearch() {
     o.name.toLowerCase().includes(query) ||
     o.state.toLowerCase().includes(query)
   );
+
   activateTab("officials");
   renderOfficials(results);
 }
