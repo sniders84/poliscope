@@ -149,18 +149,19 @@ body {
   height: auto;
 }
 .official-photo-container {
-  width: 80px;         /* ✅ Half-width */
-  height: 120px;       /* ✅ Half-height */
+  width: 60px;
+  height: 60px;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #f0f0f0; /* Optional fallback */
-  border-radius: 4px;        /* Optional styling */
+  border-radius: 4px;
+  flex-shrink: 0;
 }
 
 .official-photo {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* ✅ Keeps full image visible */
+  object-fit: contain; /* ✅ Keeps full image visible inside square */
 }
