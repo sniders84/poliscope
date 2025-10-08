@@ -38,20 +38,18 @@ Promise.all([
   window.allOfficials = [...govNorm, ...ltgNorm, ...senNorm, ...repNorm];
   console.log("All officials loaded:", window.allOfficials.length);
 
-  // ✅ DOM Ready after data is loaded
-  document.addEventListener("DOMContentLoaded", () => {
-    renderHeader();
-    const searchInput = document.getElementById("searchInput");
-    if (searchInput) searchInput.addEventListener("input", handleSearch);
+  // ✅ UI Setup after data is loaded
+  renderHeader();
+  const searchInput = document.getElementById("searchInput");
+  if (searchInput) searchInput.addEventListener("input", handleSearch);
 
-    renderOfficials("Alabama");
-    renderRankings("governors");
-    renderCalendar();
-    renderRegistration();
+  renderOfficials("Alabama");
+  renderRankings("governors");
+  renderCalendar();
+  renderRegistration();
 
-    const defaultTab = document.getElementById("officials");
-    if (defaultTab) defaultTab.classList.add("active");
-  });
+  const defaultTab = document.getElementById("officials");
+  if (defaultTab) defaultTab.classList.add("active");
 });
 function handleSearch() {
   const query = document.getElementById("searchInput").value.trim().toLowerCase();
