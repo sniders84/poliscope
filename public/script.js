@@ -137,17 +137,6 @@ function renderOfficials(stateOrList) {
   });
 }
 
-function computeRankings(rawList) {
-  const ranked = rawList.filter(o => o.pollingScore !== null);
-  const unranked = rawList.filter(o => o.pollingScore === null);
-
-  ranked.sort((a, b) => b.pollingScore - a.pollingScore);
-  ranked.forEach((o, i) => o.computedRank = i + 1);
-  unranked.forEach(o => o.computedRank = null);
-
-  return [...ranked, ...unranked];
-}
-
 function renderCalendar() {
   const container = document.getElementById("calendar");
   if (!container) return;
@@ -159,6 +148,17 @@ function renderRegistration() {
   if (!container) return;
   container.innerHTML = `<p>Registration info will go here. You can wire in mail-in ballot links, deadlines, and instructions.</p>`;
 }
+function computeRankings(rawList) {
+  const ranked = rawList.filter(o => o.pollingScore !== null);
+  const unranked = rawList.filter(o => o.pollingScore === null);
+
+  ranked.sort((a, b) => b.pollingScore - a.pollingScore);
+  ranked.forEach((o, i) => o.computedRank = i + 1);
+  unranked.forEach(o => o.computedRank = null);
+
+  return [...ranked, ...unranked];
+}
+
 function renderRankings() {
   const container = document.getElementById("rankings");
   if (!container) return;
@@ -214,40 +214,25 @@ function renderRankings() {
     container.appendChild(section);
   });
 
-  document.querySelectorAll(".ranking-header").forEach(header => {
+    document.querySelectorAll(".ranking-header").forEach(header => {
     header.addEventListener("click", () => {
       const key = header.getAttribute("data-toggle");
       const content = document.getElementById(`content-${key}`);
       if (content) {
-       content.classList.toggle("active");
-        }
-      });
+        content.classList.toggle("active");
+      }
     });
+  });
 
-    document.querySelectorAll(".expand-button").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const targetId = btn.getAttribute("data-target");
-        const target = document.getElementById(targetId);
-        if (target) {
-          const isHidden = target.style.display === "none";
-          target.style.display = isHidden ? "grid" : "none";
-          btn.textContent = isHidden ? "Hide Full Rankings" : "Show Full Rankings";
-        }
-      });
+  document.querySelectorAll(".expand-button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const targetId = btn.getAttribute("data-target");
+      const target = document.getElementById(targetId);
+      if (target) {
+        const isHidden = target.style.display === "none";
+        target.style.display = isHidden ? "grid" : "none";
+        btn.textContent = isHidden ? "Hide Full Rankings" : "Show Full Rankings";
+      }
     });
-}
-function renderRankingCards(list) {
-  return list.map(o => {
-    const photoSrc = o.photo && o.photo.startsWith("http") ? o.photo : "default-photo.png";
-    return `
-      <div class="ranking-card" data-party="${o.party}">
-        <img src="${photoSrc}" alt="${o.name}" class="official-photo" />
-        <div class="card-body">
-          <strong>${o.name}</strong><br/>
-          ${o.office} • ${o.state}<br/>
-          Rank: ${o.computedRank !== null ? o.computedRank : "N/A"}
-        </div>
-      </div>
-    `;
-  }).join("");
+  });
 }
