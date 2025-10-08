@@ -213,3 +213,24 @@ a:hover {
 .modal-content li {
   margin-bottom: 0.5rem;
 }
+.modal-profile {
+  text-align: left;
+}
+.modal-photo {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+.modal-close {
+  margin-top: 2rem;
+  padding: 0.5rem 1rem;
+  background-color: #eee;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+.modal-close:hover {
+  background-color: #ddd;
+}
