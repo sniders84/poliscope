@@ -37,8 +37,22 @@ Promise.all([
 
   window.allOfficials = [...govNorm, ...ltgNorm, ...senNorm, ...repNorm];
   console.log("All officials loaded:", window.allOfficials.length);
-});
 
+  // ✅ DOM Ready after data is loaded
+  document.addEventListener("DOMContentLoaded", () => {
+    renderHeader();
+    const searchInput = document.getElementById("searchInput");
+    if (searchInput) searchInput.addEventListener("input", handleSearch);
+
+    renderOfficials("Alabama");
+    renderRankings("governors");
+    renderCalendar();
+    renderRegistration();
+
+    const defaultTab = document.getElementById("officials");
+    if (defaultTab) defaultTab.classList.add("active");
+  });
+});
 function handleSearch() {
   const query = document.getElementById("searchInput").value.trim().toLowerCase();
   const results = window.allOfficials.filter(o =>
@@ -47,32 +61,11 @@ function handleSearch() {
   );
   renderOfficials(results);
 }
-document.addEventListener("DOMContentLoaded", () => {
-  renderHeader();
-  const searchInput = document.getElementById("searchInput");
-  if (searchInput) searchInput.addEventListener("input", handleSearch);
-
-  renderOfficials("Alabama");
-  renderRankings("governors");
-  renderCalendar();
-  renderRegistration();
-
-  const defaultTab = document.getElementById("officials");
-  if (defaultTab) defaultTab.classList.add("active");
-});
 
 function renderHeader() {
-  const header = document.getElementById("header");
+  const header = document.querySelector(".electorate-header");
   if (!header) return;
-  header.innerHTML = `
-    <div class="logo-bar">
-      <img src="/logo.png" alt="Electorate Logo" class="site-logo"/>
-      <h1>Electorate</h1>
-    </div>
-    <div class="search-bar">
-      <input type="text" placeholder="Search officials..." id="searchInput"/>
-    </div>
-  `;
+  // Already rendered via HTML — no injection needed
 }
 
 function renderOfficials(stateOrList) {
@@ -95,7 +88,7 @@ function renderOfficials(stateOrList) {
     card.className = "ranking-card";
     card.innerHTML = `
       <img src="${o.photo}" alt="${o.name}" class="official-photo"
-           onerror="this.src='/fallback.png'" />
+           onerror="this.src='assets/fallback.png'" />
       <div class="card-body">
         <strong>${o.name}</strong><br/>
         ${o.office} • ${o.state}<br/>
@@ -110,7 +103,6 @@ function renderOfficials(stateOrList) {
     container.appendChild(card);
   });
 }
-
 function computeRankings(rawList) {
   const ranked = rawList.filter(o => o.pollingScore !== null);
   const unranked = rawList.filter(o => o.pollingScore === null);
@@ -135,7 +127,7 @@ function renderRankings(category) {
     card.className = "ranking-card";
     card.innerHTML = `
       <img src="${o.photo}" alt="${o.name}" class="official-photo"
-           onerror="this.src='/fallback.png'" />
+           onerror="this.src='assets/fallback.png'" />
       <div class="card-body">
         <strong>${o.name}</strong><br/>
         ${o.office} • ${o.state}<br/>
@@ -148,18 +140,18 @@ function renderRankings(category) {
     container.appendChild(card);
   });
 }
+
 function renderCalendar() {
   const container = document.getElementById("calendar");
   if (!container) return;
-  container.innerHTML = `<p>Calendar content will go here.</p>`;
+  container.innerHTML = `<p>Calendar content will go here. You can wire in election dates, civic events, and deadlines.</p>`;
 }
 
 function renderRegistration() {
   const container = document.getElementById("registration");
   if (!container) return;
-  container.innerHTML = `<p>Registration info will go here.</p>`;
+  container.innerHTML = `<p>Registration info will go here. You can wire in mail-in ballot links, deadlines, and instructions.</p>`;
 }
-
 document.querySelectorAll(".tabs-vertical button").forEach(btn => {
   btn.addEventListener("click", () => {
     const tab = btn.getAttribute("data-tab");
@@ -173,10 +165,11 @@ const stateSelect = document.getElementById("stateSelect");
 if (stateSelect) {
   stateSelect.addEventListener("change", e => {
     renderOfficials(e.target.value);
+    renderCalendar();
+    renderRegistration();
   });
 }
 
-// ✅ Modal logic
 function openModal(o) {
   const modal = document.getElementById("modal");
   const content = document.getElementById("modalContent");
@@ -200,7 +193,6 @@ function openModal(o) {
   modal.classList.remove("hidden");
 }
 
-// ✅ Modal close logic
 const closeModalBtn = document.getElementById("closeModal");
 if (closeModalBtn) {
   closeModalBtn.addEventListener("click", () => {
