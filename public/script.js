@@ -168,7 +168,7 @@ function renderRankings(category) {
     const section = document.createElement("section");
     section.className = "ranking-category";
     section.innerHTML = `
-      <h2>${label} Rankings</h2>
+      <h2>${label}</h2>
 
       <h3>Top 10</h3>
       <div class="ranking-row">${renderRankingCards(top10)}</div>
