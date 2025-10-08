@@ -48,8 +48,10 @@
     </div>
   </div>
 
-  <!-- ✅ Script -->
-  <script src="script.js"></script>
+  <!-- ✅ External Script -->
+  <script src="script.js" defer></script>
+
+  <!-- ✅ Inline Wiring -->
   <script>
     // ✅ Populate full state list
     const states = [
@@ -90,7 +92,8 @@
     });
 
     // ✅ Modal close logic
-       if (closeModalBtn) {
+    const closeModalBtn = document.getElementById("closeModal");
+    if (closeModalBtn) {
       closeModalBtn.addEventListener("click", () => {
         const modal = document.getElementById("modal");
         if (modal) modal.classList.add("hidden");
