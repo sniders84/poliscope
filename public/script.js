@@ -56,12 +56,13 @@ Promise.all([
   const searchInput = document.getElementById("searchInput");
   if (searchInput) searchInput.addEventListener("input", handleSearch);
 
+  // ✅ Only render default tab
   renderOfficials("Alabama");
 
   const defaultTab = document.getElementById("officials");
   if (defaultTab) defaultTab.classList.add("active");
+});
 
- });
 function handleSearch() {
   const query = document.getElementById("searchInput").value.trim().toLowerCase();
   const results = window.allOfficials.filter(o =>
