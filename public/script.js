@@ -183,7 +183,7 @@ function renderRankings() {
         </div>
 
         <button class="expand-button" data-target="full-${key}">Show Full Rankings</button>
-        <div id="full-${key}" class="ranking-grid-two hidden">
+        <div id="full-${key}" class="ranking-grid-two" style="display: none;">
           <div class="ranking-row">${renderRankingCards(middle.slice(0, Math.ceil(middle.length / 2)))}</div>
           <div class="ranking-row">${renderRankingCards(middle.slice(Math.ceil(middle.length / 2)))}</div>
         </div>
@@ -216,14 +216,14 @@ function renderRankings() {
       const targetId = btn.getAttribute("data-target");
       const target = document.getElementById(targetId);
       if (target) {
-        target.classList.toggle("hidden");
-        btn.textContent = target.classList.contains("hidden")
-          ? "Show Full Rankings"
-          : "Hide Full Rankings";
+        const isHidden = target.style.display === "none";
+        target.style.display = isHidden ? "grid" : "none";
+        btn.textContent = isHidden ? "Hide Full Rankings" : "Show Full Rankings";
       }
     });
   });
 }
+
 function renderRankingCards(list) {
   return list.map(o => {
     const photoSrc = o.photo && o.photo.startsWith("http") ? o.photo : "assets/default-photo.png";
