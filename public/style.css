@@ -96,3 +96,14 @@ body {
   max-width: 200px;
   height: auto;
 }
+.electorate-header {
+  background: linear-gradient(to right, #003366, #888888, #ffffff, #888888, #cc0000);
+  padding: 1.5rem 0;
+  text-align: center;
+}
+
+.electorate-logo {
+  max-width: 220px;
+  height: auto;
+  display: inline-block;
+}
