@@ -61,8 +61,7 @@ Promise.all([
   const defaultTab = document.getElementById("officials");
   if (defaultTab) defaultTab.classList.add("active");
 
-  wireModalClose();
-});
+ });
 function handleSearch() {
   const query = document.getElementById("searchInput").value.trim().toLowerCase();
   const results = window.allOfficials.filter(o =>
