@@ -156,18 +156,14 @@ function renderRankings(category) {
   const middle = list.slice(10, -10);
 
   container.innerHTML = `
-    <div class="ranking-section">
-      <div>
-        <h3>Top 10</h3>
-        <div class="ranking-grid">${renderRankingCards(top10)}</div>
-        <button id="expandRankings" class="expand-button">Show Full Rankings</button>
-      </div>
-      <div>
-        <h3>Bottom 10</h3>
-        <div class="ranking-grid">${renderRankingCards(bottom10)}</div>
-      </div>
-    </div>
-    <div id="fullRankings" class="ranking-grid hidden">${renderRankingCards(middle)}</div>
+    <h3>Top 10</h3>
+    <div class="ranking-row">${renderRankingCards(top10)}</div>
+
+    <h3>Bottom 10</h3>
+    <div class="ranking-row">${renderRankingCards(bottom10)}</div>
+
+    <button id="expandRankings" class="expand-button">Show Full Rankings</button>
+    <div id="fullRankings" class="ranking-row hidden">${renderRankingCards(middle)}</div>
   `;
 
   const expandBtn = document.getElementById("expandRankings");
