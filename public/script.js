@@ -58,11 +58,13 @@ Promise.all([
 
   console.log("All officials loaded:", window.allOfficials.length);
 
+  document.addEventListener("DOMContentLoaded", () => {
   renderHeader();
   renderOfficials("Alabama");
   renderRankings("governors");
   renderCalendar();
   renderRegistration();
+});
 
   const defaultTab = document.getElementById("officials");
   if (defaultTab) defaultTab.classList.add("active");
