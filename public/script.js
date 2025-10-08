@@ -233,8 +233,8 @@ function openModal(o) {
       <p>${o.party}</p>
       ${o.ballotpediaLink ? `<p><a href="${o.ballotpediaLink}" target="_blank">Ballotpedia Profile</a></p>` : ""}
       ${o.contact.website ? `<p><a href="${o.contact.website}" target="_blank">Official Website</a></p>` : ""}
-      ${o.contact.email ? `<p>Email: ${o.contact.email}</p>` : ""}
-      ${o.contact.phone ? `<p>Phone: ${o.contact.phone}</p>` : ""}
+      ${o.contact.email ? `<p>Email: <a href="mailto:${o.contact.email}">${o.contact.email}</a></p>` : ""}
+      ${o.contact.phone ? `<p>Phone: <a href="tel:${o.contact.phone}">${o.contact.phone}</a></p>` : ""}
       ${o.termStart ? `<p>Term Start: ${o.termStart}</p>` : ""}
       ${o.termEnd ? `<p>Term End: ${o.termEnd}</p>` : ""}
       ${o.salary ? `<p>Salary: ${o.salary}</p>` : ""}
