@@ -669,3 +669,27 @@ a:hover {
 #fullRankings {
   margin-top: 2rem;
 }
+.ranking-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.ranking-category {
+  margin-bottom: 3rem;
+}
+
+.expand-button {
+  margin-top: 0.5rem;
+  margin-left: 0;
+  padding: 0.5rem 1rem;
+  background-color: #eee;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 4px;
+}
+.expand-button:hover {
+  background-color: #ddd;
+}
