@@ -115,10 +115,12 @@ function renderOfficials(stateOrList) {
   }
 
   filtered.forEach(o => {
+    const photoSrc = o.photo && o.photo.startsWith("http") ? o.photo : "assets/default-photo.png";
     const card = document.createElement("div");
     card.className = "ranking-card";
+    card.setAttribute("data-party", o.party);
     card.innerHTML = `
-      <img src="${o.photo}" alt="${o.name}" class="official-photo" />
+      <img src="${photoSrc}" alt="${o.name}" class="official-photo" />
       <div class="card-body">
         <strong>${o.name}</strong><br/>
         ${o.office} • ${o.state}<br/>
@@ -175,16 +177,19 @@ function renderRankings(category) {
 }
 
 function renderRankingCards(list) {
-  return list.map(o => `
-    <div class="ranking-card">
-      <img src="${o.photo}" alt="${o.name}" class="official-photo" />
-      <div class="card-body">
-        <strong>${o.name}</strong><br/>
-        ${o.office} • ${o.state}<br/>
-        Rank: ${o.computedRank !== null ? o.computedRank : "N/A"}
+  return list.map(o => {
+    const photoSrc = o.photo && o.photo.startsWith("http") ? o.photo : "assets/default-photo.png";
+    return `
+      <div class="ranking-card" data-party="${o.party}">
+        <img src="${photoSrc}" alt="${o.name}" class="official-photo" />
+        <div class="card-body">
+          <strong>${o.name}</strong><br/>
+          ${o.office} • ${o.state}<br/>
+          Rank: ${o.computedRank !== null ? o.computedRank : "N/A"}
+        </div>
       </div>
-    </div>
-  `).join("");
+    `;
+  }).join("");
 }
 
 function renderCalendar() {
@@ -224,10 +229,12 @@ function openModal(o) {
     }).join("");
   }
 
+  const photoSrc = o.photo && o.photo.startsWith("http") ? o.photo : "assets/default-photo.png";
+
   content.innerHTML = `
     <button id="closeModal" class="modal-close">×</button>
     <div class="modal-left">
-      <img src="${o.photo}" alt="${o.name}" />
+      <img src="${photoSrc}" alt="${o.name}" />
       <p><strong>${o.name}</strong></p>
       <p>${o.office} • ${o.state}</p>
       <p>${o.party}</p>
