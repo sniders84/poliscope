@@ -223,7 +223,6 @@ function renderRankings() {
     });
   });
 }
-
 function renderRankingCards(list) {
   return list.map(o => {
     const photoSrc = o.photo && o.photo.startsWith("http") ? o.photo : "assets/default-photo.png";
