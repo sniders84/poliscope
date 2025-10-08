@@ -3,27 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <title>Electorate</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:,">
 </head>
 <body>
 
   <!-- ✅ Header -->
   <header class="electorate-header">
- <img src="assets/electorate-logo.png" alt="Electorate Logo" class="electorate-logo" />
+    <img src="assets/electorate-logo.png" alt="Electorate Logo" class="electorate-logo" />
     <h1>Electorate</h1>
   </header>
+
+  <!-- ✅ Search Bar -->
+  <div class="search-bar">
+    <input type="text" placeholder="Search officials..." id="searchInput" />
+  </div>
 
   <!-- ✅ State Selector -->
   <div class="state-selector">
     <label for="stateSelect">Select State:</label>
-    <select id="stateSelect">
-      <option>Alabama</option>
-      <option>Alaska</option>
-      <option>Arizona</option>
-      <option>Arkansas</option>
-      <option>California</option>
-      <!-- Add all states as needed -->
-    </select>
+    <select id="stateSelect"></select>
   </div>
 
   <!-- ✅ Tabs -->
@@ -43,182 +42,45 @@
   </div>
 
   <!-- ✅ Script -->
+  <script src="script.js"></script>
   <script>
-    // ✅ Normalize function
-    function normalize(entry, officeLabel) {
-      return {
-        name: entry.name,
-        state: entry.state,
-        party: entry.party,
-        office: officeLabel,
-        slug: entry.slug,
-        photo: entry.photo,
-        ballotpediaLink: entry.ballotpediaLink,
-        termStart: entry.termStart,
-        termEnd: entry.termEnd,
-        contact: entry.contact || {},
-        pollingScore: entry.pollingScore || null,
-        pollingDate: entry.pollingDate || null,
-        pollingSource: entry.pollingSource || null,
-        disapprove: entry.disapprove || null,
-        dk: entry.dk || null
-      };
-    }
-
-    // ✅ Fetch and store globally
-    Promise.all([
-      fetch("/governors.json").then(r => r.json()).catch(() => []),
-      fetch("/ltgovernors.json").then(r => r.json()).catch(() => []),
-      fetch("/senators.json").then(r => r.json()).catch(() => []),
-      fetch("/housereps.json").then(r => r.json()).catch(() => [])
-    ])
-    .then(([govs, ltgovs, sens, reps]) => {
-      const govNorm = govs.map(g => normalize(g, "Governor"));
-      const ltgNorm = ltgovs.map(l => normalize(l, "Lt. Governor"));
-      const senNorm = sens.map(s => normalize(s, "Senator"));
-      const repNorm = reps.map(h => normalize(h, "House Representative"));
-
-      window.allOfficials = [...govNorm, ...ltgNorm, ...senNorm, ...repNorm];
-
-      window.rankingsData = {
-        governors: govNorm,
-        ltgovernors: ltgNorm,
-        senators: senNorm,
-        housereps: repNorm
-      };
-
-      window.calendarData = {
-        "Alabama": [
-          {
-            date: "2025-11-04",
-            title: "General Election",
-            link: "https://www.sos.alabama.gov/alabama-votes/voter/upcoming-elections"
-          },
-          {
-            date: "2025-10-21",
-            title: "Municipal Runoff",
-            link: "https://www.sos.alabama.gov/alabama-votes/voter/upcoming-elections"
-          }
-        ],
-        "Alaska": [], "Arizona": [], "Arkansas": [], "California": []
-        // Add all states scaffolded
-      };
-
-      window.registrationData = {
-        "Alabama": {
-          deadline: "2025-10-21",
-          method: "Online, Mail, In-Person",
-          link: "https://www.sos.alabama.gov/alabama-votes/voter/register-to-vote"
-        },
-        "Alaska": {}, "Arizona": {}, "Arkansas": {}, "California": {}
-        // Add all states scaffolded
-      };
-
-      renderOfficials("Alabama");
-      renderRankings("governors");
-      renderCalendar();
-      renderRegistration();
-      document.getElementById("officials").classList.add("active");
+    // ✅ Populate full state list
+    const states = [
+      "Alabama", "Alaska", "American Samoa", "Arizona", "Arkansas", "California", "Colorado",
+      "Connecticut", "Delaware", "District of Columbia", "Florida", "Georgia", "Guam", "Hawaii",
+      "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine",
+      "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana",
+      "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York",
+      "North Carolina", "North Dakota", "Northern Mariana Islands", "Ohio", "Oklahoma", "Oregon",
+      "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina", "South Dakota", "Tennessee",
+      "Texas", "U.S. Virgin Islands", "Utah", "Vermont", "Virginia", "Washington",
+      "West Virginia", "Wisconsin", "Wyoming"
+    ];
+    const select = document.getElementById("stateSelect");
+    states.forEach(state => {
+      const opt = document.createElement("option");
+      opt.value = state;
+      opt.textContent = state;
+      select.appendChild(opt);
     });
 
-    // ✅ Officials rendering
-    function renderOfficials(state) {
-      const container = document.getElementById("officials");
-      const filtered = window.allOfficials.filter(o => o.state === state);
-      container.innerHTML = "";
-
-      filtered.forEach(o => {
-        const card = document.createElement("div");
-        card.className = "ranking-card";
-        card.innerHTML = `
-          <img src="${o.photo}" alt="${o.name}" class="official-photo"/>
-          <div class="card-body">
-            <strong>${o.name}</strong><br/>
-            ${o.office} • ${o.state}<br/>
-            ${o.party}<br/>
-            <a href="${o.ballotpediaLink}" target="_blank" rel="noopener">Ballotpedia</a><br/>
-            ${o.contact.website ? `<a href="${o.contact.website}" target="_blank">Website</a><br/>` : ""}
-            ${o.contact.email ? `Email: ${o.contact.email}<br/>` : ""}
-            ${o.contact.phone ? `Phone: ${o.contact.phone}` : ""}
-          </div>
-        `;
-        container.appendChild(card);
+    // ✅ Tab switching logic
+    document.querySelectorAll(".tabs-vertical button").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const tab = btn.getAttribute("data-tab");
+        document.querySelectorAll(".tab-pane").forEach(p => p.classList.remove("active"));
+        const target = document.getElementById(tab);
+        if (target) target.classList.add("active");
       });
-    }
+    });
 
-    // ✅ Ranking logic
-    function computeRankings(list) {
-      const ranked = list.filter(o => o.pollingScore !== null && o.pollingScore !== undefined);
-      const unranked = list.filter(o => o.pollingScore === null || o.pollingScore === undefined);
-
-      ranked.sort((a, b) => {
-        if (b.pollingScore !== a.pollingScore) {
-          return b.pollingScore - a.pollingScore;
-        }
-        if ((a.disapprove || 0) !== (b.disapprove || 0)) {
-          return a.disapprove - b.disapprove;
-        }
-        return (a.dk || 0) - (b.dk || 0);
-      });
-
-      ranked.forEach((o, i) => { o.computedRank = i + 1; });
-      unranked.forEach(o => { o.computedRank = null; });
-
-      return [...ranked, ...unranked];
-    }
-
-    // ✅ Rankings rendering
-    function renderRankings(category) {
-      const container = document.getElementById("rankings");
-      const rawList = window.rankingsData[category] || [];
-      const list = computeRankings(rawList);
-
-      container.innerHTML = "";
-      list.forEach(o => {
-        const rankText = o.computedRank
-          ? `Rank: ${o.computedRank}`
-          : `<span class="unranked">Insufficient data to rank</span>`;
-
-        const card = document.createElement("div");
-        card.className = "ranking-card";
-        card.innerHTML = `
-          <img src="${o.photo}" alt="${o.name}" class="official-photo"/>
-          <div class="card-body">
-            <strong>${o.name}</strong><br/>
-            ${o.office} • ${o.state}<br/>
-            ${rankText}
-            ${o.pollingDate ? ` • ${o.pollingDate}` : ""}
-            ${o.pollingSource ? ` • <a href="${o.pollingSource}" target="_blank" rel="noopener">Source</a>` : ""}
-          </div>
-        `;
-        container.appendChild(card);
-      });
-    }
-
-    // ✅ Calendar rendering
-    function renderCalendar() {
-      const container = document.getElementById("calendar");
-      const state = document.getElementById("stateSelect").value;
-      const events = window.calendarData[state] || [];
-
-      container.innerHTML = events.length
-        ? events.map(ev => `
-            <div class="calendar-event">
-              <strong>${ev.date}</strong>: ${ev.title}
-              ${ev.link ? ` • <a href="${ev.link}" target="_blank">Details</a>` : ""}
-            </div>
-          `).join("")
-        : `<p>No upcoming events found for ${state}.</p>`;
-    }
-
-    // ✅ Registration rendering
-    function renderRegistration() {
-      const container = document.getElementById("registration");
-      const state = document.getElementById("stateSelect").value;
-      const info = window.registrationData[state];
-
-      container.innerHTML = info
-        ? `
-          <p><strong>Deadline:</strong> ${info.deadline}</p>
-          <p><strong>Method:</strong> ${info.method}</p>
-          <p><a href="${info.link}" target="_blank">Register
+    // ✅ State change logic
+    select.addEventListener("change", e => {
+      const state = e.target.value;
+      if (typeof renderOfficials === "function") renderOfficials(state);
+      if (typeof renderCalendar === "function") renderCalendar();
+      if (typeof renderRegistration === "function") renderRegistration();
+    });
+  </script>
+</body>
+</html>
