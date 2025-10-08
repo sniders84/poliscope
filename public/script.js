@@ -203,6 +203,7 @@ function openModal(o) {
   const content = document.getElementById("modalContent");
   if (!modal || !content) return;
 
+  // Platform follow-through
   let platformDetails = "";
   if (o.platformFollowThrough) {
     platformDetails = Object.entries(o.platformFollowThrough).map(([key, val]) => {
@@ -210,6 +211,7 @@ function openModal(o) {
     }).join("<br/><br/>");
   }
 
+  // Bills signed
   let bills = "";
   if (Array.isArray(o.billsSigned)) {
     bills = o.billsSigned.map(b => {
@@ -217,6 +219,7 @@ function openModal(o) {
     }).join("");
   }
 
+  // Engagement sources
   let sources = "";
   if (o.engagement?.sources) {
     sources = o.engagement.sources.map(s => {
@@ -224,6 +227,7 @@ function openModal(o) {
     }).join("");
   }
 
+  // Modal content injection
   content.innerHTML = `
     <div class="modal-profile">
       <img src="${o.photo}" alt="${o.name}" class="modal-photo" />
@@ -258,10 +262,13 @@ function openModal(o) {
 
   modal.classList.remove("hidden");
 
-  const closeBtn = document.getElementById("closeModal");
-  if (closeBtn) {
-    closeBtn.addEventListener("click", () => {
-      modal.classList.add("hidden");
-    });
-  }
+  // ✅ Wire close button immediately after injection
+  setTimeout(() => {
+    const closeBtn = document.getElementById("closeModal");
+    if (closeBtn) {
+      closeBtn.addEventListener("click", () => {
+        modal.classList.add("hidden");
+      });
+    }
+  }, 0);
 }
