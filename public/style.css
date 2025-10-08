@@ -869,3 +869,91 @@ a:hover {
 .expand-button:hover {
   background-color: #ddd;
 }
+.ranking-category {
+  margin-bottom: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.ranking-header {
+  background-color: #f0f0f0;
+  padding: 0.75rem 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+}
+
+.ranking-content {
+  display: none;
+  padding: 1rem;
+}
+
+.ranking-content.active {
+  display: block;
+}
+
+.ranking-grid-two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.ranking-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ranking-card {
+  display: flex;
+  border-left: 6px solid transparent;
+  background-color: #f9f9f9;
+  padding: 0.75rem;
+  border-radius: 6px;
+  box-shadow: 0 0 4px rgba(0,0,0,0.1);
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ranking-card[data-party="Republican"] {
+  border-left-color: #b30000;
+}
+.ranking-card[data-party="Democratic"] {
+  border-left-color: #003366;
+}
+.ranking-card[data-party="Independent"] {
+  border-left-color: #666666;
+}
+.ranking-card[data-party="Libertarian"] {
+  border-left-color: #f4c542;
+}
+.ranking-card[data-party="Green"] {
+  border-left-color: #228B22;
+}
+
+.official-photo {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.card-body {
+  flex: 1;
+  font-size: 0.85rem;
+}
+
+.expand-button {
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #eee;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 4px;
+}
+.expand-button:hover {
+  background-color: #ddd;
+}
