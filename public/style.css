@@ -149,18 +149,18 @@ body {
   height: auto;
 }
 .official-photo-container {
-  width: 120px;       /* Set your desired width */
-  height: 160px;      /* Set your desired height */
+  width: 80px;         /* ✅ Half-width */
+  height: 120px;       /* ✅ Half-height */
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f0f0f0; /* Optional: fallback background */
-  border-radius: 6px;        /* Optional: rounded corners */
+  background-color: #f0f0f0; /* Optional fallback */
+  border-radius: 4px;        /* Optional styling */
 }
 
 .official-photo {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* ✅ Keeps full image visible, no cropping */
+  object-fit: contain; /* ✅ Keeps full image visible */
 }
