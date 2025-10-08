@@ -126,23 +126,43 @@ function renderRankings(category) {
   const rawList = window.rankingsData[category] || [];
   const list = computeRankings(rawList);
 
-  container.innerHTML = "";
-  list.forEach(o => {
-    const card = document.createElement("div");
-    card.className = "ranking-card";
-    card.innerHTML = `
+  const top10 = list.slice(0, 10);
+  const bottom10 = list.slice(-10);
+  const middle = list.slice(10, -10);
+
+  container.innerHTML = `
+    <h3>Top 10</h3>
+    <div class="ranking-grid">${renderRankingCards(top10)}</div>
+    <h3>Bottom 10</h3>
+    <div class="ranking-grid">${renderRankingCards(bottom10)}</div>
+    <button id="expandRankings" class="expand-button">Show Full Rankings</button>
+    <div id="fullRankings" class="ranking-grid hidden">${renderRankingCards(middle)}</div>
+  `;
+
+  const expandBtn = document.getElementById("expandRankings");
+  const fullList = document.getElementById("fullRankings");
+  if (expandBtn && fullList) {
+    expandBtn.addEventListener("click", () => {
+      fullList.classList.toggle("hidden");
+      expandBtn.textContent = fullList.classList.contains("hidden")
+        ? "Show Full Rankings"
+        : "Hide Full Rankings";
+    });
+  }
+}
+
+function renderRankingCards(list) {
+  return list.map(o => `
+    <div class="ranking-card">
       <img src="${o.photo}" alt="${o.name}" class="official-photo" />
       <div class="card-body">
         <strong>${o.name}</strong><br/>
         ${o.office} • ${o.state}<br/>
         Rank: ${o.computedRank !== null ? o.computedRank : "N/A"}
       </div>
-    `;
-    card.addEventListener("click", () => openModal(o));
-    container.appendChild(card);
-  });
+    </div>
+  `).join("");
 }
-
 function renderCalendar() {
   const container = document.getElementById("calendar");
   if (!container) return;
@@ -167,7 +187,7 @@ document.querySelectorAll(".tabs-vertical button").forEach(btn => {
       renderOfficials("Alabama");
     }
 
-    if (tab === "rankings") renderRankings("governors");
+    if (tab === "rankings") renderRankings("governors", "lt. governors", "senators", "house reps");
     if (tab === "calendar") renderCalendar();
     if (tab === "registration") renderRegistration();
   });
