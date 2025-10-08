@@ -49,7 +49,7 @@ a:hover {
 }
 
 .electorate-logo {
-  max-height: 500%;
+  max-height: 300%;
   max-width: 1000%;
   object-fit: contain;
   display: block;
