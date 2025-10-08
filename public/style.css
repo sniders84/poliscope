@@ -269,3 +269,17 @@ a:hover {
   max-width: 100%;
   object-fit: contain;
 }
+.ranking-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+.expand-button {
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+.hidden {
+  display: none;
+}
