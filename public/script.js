@@ -203,7 +203,6 @@ function openModal(o) {
   const content = document.getElementById("modalContent");
   if (!modal || !content) return;
 
-  // Platform follow-through
   let platformDetails = "";
   if (o.platformFollowThrough) {
     platformDetails = Object.entries(o.platformFollowThrough).map(([key, val]) => {
@@ -211,7 +210,6 @@ function openModal(o) {
     }).join("<br/><br/>");
   }
 
-  // Bills signed
   let bills = "";
   if (Array.isArray(o.billsSigned)) {
     bills = o.billsSigned.map(b => {
@@ -219,7 +217,6 @@ function openModal(o) {
     }).join("");
   }
 
-  // Engagement sources
   let sources = "";
   if (o.engagement?.sources) {
     sources = o.engagement.sources.map(s => {
@@ -228,11 +225,11 @@ function openModal(o) {
   }
 
   content.innerHTML = `
-    <div class="modal-profile">
-      <button id="closeModal" class="modal-close">×</button>
-      <img src="${o.photo}" alt="${o.name}" class="modal-photo" />
-      <h2>${o.name}</h2>
-      <p><strong>${o.office}</strong> • ${o.state}</p>
+    <button id="closeModal" class="modal-close">×</button>
+    <div class="modal-left">
+      <img src="${o.photo}" alt="${o.name}" />
+      <p><strong>${o.name}</strong></p>
+      <p>${o.office} • ${o.state}</p>
       <p>${o.party}</p>
       ${o.ballotpediaLink ? `<p><a href="${o.ballotpediaLink}" target="_blank">Ballotpedia Profile</a></p>` : ""}
       ${o.contact.website ? `<p><a href="${o.contact.website}" target="_blank">Official Website</a></p>` : ""}
@@ -246,22 +243,22 @@ function openModal(o) {
       ${o.pollingScore ? `<p>Polling Score: ${o.pollingScore}</p>` : ""}
       ${o.pollingDate ? `<p>Polling Date: ${o.pollingDate}</p>` : ""}
       ${o.pollingSource ? `<p><a href="${o.pollingSource}" target="_blank">Polling Source</a></p>` : ""}
-      ${o.rankingNote ? `<p>${o.rankingNote}</p>` : ""}
-      ${o.bio ? `<hr/><p><strong>Bio:</strong> ${o.bio}</p>` : ""}
+    </div>
+    <div class="modal-right">
+      ${o.bio ? `<p><strong>Bio:</strong> ${o.bio}</p>` : ""}
       ${o.education ? `<p><strong>Education:</strong> ${o.education}</p>` : ""}
       ${o.endorsements ? `<p><strong>Endorsements:</strong> ${o.endorsements}</p>` : ""}
       ${o.platform ? `<p><strong>Platform:</strong> ${o.platform}</p>` : ""}
-      ${platformDetails ? `<hr/><p><strong>Platform Follow-Through:</strong><br/>${platformDetails}</p>` : ""}
+      ${platformDetails ? `<p><strong>Platform Follow-Through:</strong><br/>${platformDetails}</p>` : ""}
       ${o.proposals ? `<p><strong>Proposals:</strong> ${o.proposals}</p>` : ""}
       ${o.vetoes ? `<p><strong>Veto History:</strong> ${o.vetoes}</p>` : ""}
-      ${bills ? `<hr/><p><strong>Bills Signed:</strong></p><ul>${bills}</ul>` : ""}
+      ${bills ? `<p><strong>Bills Signed:</strong></p><ul>${bills}</ul>` : ""}
       ${sources ? `<p><strong>Engagement Sources:</strong></p><ul>${sources}</ul>` : ""}
     </div>
   `;
 
   modal.classList.remove("hidden");
 
-  // ✅ Wire close button immediately
   setTimeout(() => {
     const closeBtn = document.getElementById("closeModal");
     if (closeBtn) {
