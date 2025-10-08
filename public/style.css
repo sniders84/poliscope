@@ -148,3 +148,19 @@ body {
   max-width: 200px;
   height: auto;
 }
+.official-photo-container {
+  width: 120px;       /* Set your desired width */
+  height: 160px;      /* Set your desired height */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0; /* Optional: fallback background */
+  border-radius: 6px;        /* Optional: rounded corners */
+}
+
+.official-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* ✅ Keeps full image visible, no cropping */
+}
