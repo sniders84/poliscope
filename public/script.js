@@ -68,17 +68,19 @@ function handleSearch() {
 }
 
 // ✅ Then wire the input field
-document.getElementById("searchInput").addEventListener("input", handleSearch);
-
-  console.log("All officials loaded:", window.allOfficials.length);
-
-  document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
   renderHeader();
+
+  // ✅ Wire search input AFTER it's injected by renderHeader
+  const searchInput = document.getElementById("searchInput");
+  if (searchInput) {
+    searchInput.addEventListener("input", handleSearch);
+  }
+
   renderOfficials("Alabama");
   renderRankings("governors");
   renderCalendar();
   renderRegistration();
-});
 
   const defaultTab = document.getElementById("officials");
   if (defaultTab) defaultTab.classList.add("active");
@@ -96,9 +98,11 @@ function renderHeader() {
     </div>
     <div class="search-bar">
       <input type="text" placeholder="Search officials..." id="searchInput"/>
-      document.getElementById("searchInput").addEventListener("input", handleSearch);
     </div>
   `;
+
+  // ✅ Wire the search input AFTER it's in the DOM
+  document.getElementById("searchInput").addEventListener("input", handleSearch);
 }
 
 // ✅ Render Officials tab
