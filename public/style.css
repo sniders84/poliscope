@@ -495,3 +495,42 @@ a:hover {
     align-items: flex-start;
   }
 }
+.ranking-card {
+  display: flex;
+  border-left: 8px solid transparent;
+  background-color: #f9f9f9;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  box-shadow: 0 0 4px rgba(0,0,0,0.1);
+  align-items: center;
+  gap: 1rem;
+}
+
+.ranking-card[data-party="Republican"] {
+  border-left-color: #b30000;
+}
+.ranking-card[data-party="Democratic"] {
+  border-left-color: #003366;
+}
+.ranking-card[data-party="Independent"] {
+  border-left-color: #666666;
+}
+.ranking-card[data-party="Libertarian"] {
+  border-left-color: #f4c542;
+}
+.ranking-card[data-party="Green"] {
+  border-left-color: #228B22;
+}
+
+.official-photo {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.card-body {
+  flex: 1;
+  font-size: 0.9rem;
+}
