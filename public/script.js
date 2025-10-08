@@ -191,10 +191,16 @@ function openModal(o) {
   modal.classList.remove("hidden");
 }
 
-const closeModalBtn = document.getElementById("closeModal");
-if (closeModalBtn) {
-  closeModalBtn.addEventListener("click", () => {
-    const modal = document.getElementById("modal");
-    if (modal) modal.classList.add("hidden");
-  });
+function wireModalClose() {
+  const closeBtn = document.getElementById("closeModal");
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
+      const modal = document.getElementById("modal");
+      if (modal) modal.classList.add("hidden");
+    });
+  }
 }
+
+// ✅ Call this once after DOM is ready
+wireModalClose();
+
