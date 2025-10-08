@@ -236,30 +236,36 @@ a:hover {
 }
 .electorate-header {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: 100%;
+  height: 120px;
 }
 
 .stripe {
-  height: 40px;
-  width: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.stripe.blue {
+  background-color: #003366;
+}
+.stripe.grey {
+  background-color: #cccccc;
+}
+.stripe.white {
+  background-color: #ffffff;
 }
 .stripe.red {
   background-color: #b30000;
 }
-.stripe.grey {
-  background-color: #ccc;
-}
-.stripe.white {
-  background-color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 .center-logo {
-  height: 80px;
+  flex: 2;
 }
+
 .electorate-logo {
-  height: 64px;
+  height: 160px;
   max-width: 100%;
+  object-fit: contain;
 }
