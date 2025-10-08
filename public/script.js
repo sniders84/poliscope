@@ -57,16 +57,38 @@ Promise.all([
   window.allOfficials = [...govNorm, ...ltgNorm, ...senNorm, ...repNorm];
 
   console.log("All officials loaded:", window.allOfficials.length);
+
+  renderHeader();
   renderOfficials("Alabama");
   renderRankings("governors");
   renderCalendar();
   renderRegistration();
-  document.getElementById("officials").classList.add("active");
+
+  const defaultTab = document.getElementById("officials");
+  if (defaultTab) defaultTab.classList.add("active");
 });
+
+// ✅ Render Header and Logo
+function renderHeader() {
+  const header = document.getElementById("header");
+  if (!header) return;
+
+  header.innerHTML = `
+    <div class="logo-bar">
+      <img src="/logo.png" alt="Electorate Logo" class="site-logo"/>
+      <h1>Electorate</h1>
+    </div>
+    <div class="search-bar">
+      <input type="text" placeholder="Search officials..." id="searchInput"/>
+    </div>
+  `;
+}
 
 // ✅ Render Officials tab
 function renderOfficials(state) {
   const container = document.getElementById("officials");
+  if (!container) return;
+
   const filtered = window.allOfficials.filter(o => o.state === state);
   container.innerHTML = "";
 
@@ -89,10 +111,10 @@ function renderOfficials(state) {
   });
 }
 
-// ✅ Render Rankings tab
-function computeRankings(list) {
-  const rawList = window.rankingsData[category] || [];
-const list = computeRankings(rawList);
+// ✅ Compute Rankings
+function computeRankings(rawList) {
+  const ranked = rawList.filter(o => o.pollingScore !== null);
+  const unranked = rawList.filter(o => o.pollingScore === null);
 
   ranked.sort((a, b) => {
     if (b.pollingScore !== a.pollingScore) {
@@ -109,12 +131,14 @@ const list = computeRankings(rawList);
 
   return [...ranked, ...unranked];
 }
+
+// ✅ Render Rankings tab
 function renderRankings(category) {
   const container = document.getElementById("rankings");
-  const list = (window.rankingsData[category] || [])
-    .sort((a, b) => (b.pollingScore || 0) - (a.pollingScore || 0));
+  if (!container) return;
 
-  list.forEach((o, i) => { o.computedRank = i + 1; });
+  const rawList = window.rankingsData[category] || [];
+  const list = computeRankings(rawList);
 
   container.innerHTML = "";
   list.forEach(o => {
@@ -125,7 +149,7 @@ function renderRankings(category) {
       <div class="card-body">
         <strong>${o.name}</strong><br/>
         ${o.office} • ${o.state}<br/>
-        Rank: ${o.computedRank}
+        Rank: ${o.computedRank !== null ? o.computedRank : "N/A"}
         ${o.pollingDate ? ` • ${o.pollingDate}` : ""}
         ${o.pollingSource ? ` • <a href="${o.pollingSource}" target="_blank" rel="noopener">Source</a>` : ""}
       </div>
@@ -137,6 +161,8 @@ function renderRankings(category) {
 // ✅ Render Calendar tab (placeholder)
 function renderCalendar() {
   const container = document.getElementById("calendar");
+  if (!container) return;
+
   container.innerHTML = `
     <p>Calendar content will go here. You can wire in election dates, civic events, and deadlines.</p>
   `;
@@ -145,21 +171,27 @@ function renderCalendar() {
 // ✅ Render Registration tab (placeholder)
 function renderRegistration() {
   const container = document.getElementById("registration");
+  if (!container) return;
+
   container.innerHTML = `
     <p>Registration info will go here. You can wire in mail-in ballot links, deadlines, and instructions.</p>
   `;
 }
 
-// ✅ Tab switching logic (vertical sidebar)
+// ✅ Tab switching logic
 document.querySelectorAll(".tabs-vertical button").forEach(btn => {
   btn.addEventListener("click", () => {
     const tab = btn.getAttribute("data-tab");
     document.querySelectorAll(".tab-pane").forEach(p => p.classList.remove("active"));
-    document.getElementById(tab).classList.add("active");
+    const target = document.getElementById(tab);
+    if (target) target.classList.add("active");
   });
 });
 
 // ✅ State selector logic
-document.getElementById("stateSelect").addEventListener("change", e => {
-  renderOfficials(e.target.value);
-});
+const stateSelect = document.getElementById("stateSelect");
+if (stateSelect) {
+  stateSelect.addEventListener("change", e => {
+    renderOfficials(e.target.value);
+  });
+}
