@@ -58,15 +58,16 @@ a:hover {
 .search-bar {
   padding: 1rem;
   background-color: #fff;
-  border-bottom: 1px solid #eee;
-}
-.search-bar input {
-  width: 100%;
-  max-width: 400px;
-  padding: 0.5rem;
-  font-size: 1rem;
+  border-bottom: 1px solid #ccc;
 }
 
+#searchInput {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
 /* ✅ State selector */
 .state-selector {
   padding: 1rem;
