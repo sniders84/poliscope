@@ -87,3 +87,12 @@ body {
   color: #999;
   font-style: italic;
 }
+.app-logo {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.app-logo img {
+  max-width: 200px;
+  height: auto;
+}
