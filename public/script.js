@@ -1,4 +1,3 @@
-// ✅ Normalize function for consistent schema
 function normalize(entry, officeLabel) {
   return {
     name: entry.name,
@@ -17,31 +16,13 @@ function normalize(entry, officeLabel) {
   };
 }
 
-// ✅ Fetch and store globally
 Promise.all([
-  fetch("/governors.json").then(r => r.json()).catch(err => {
-    console.error("Governors JSON error:", err);
-    return [];
-  }),
-  fetch("/ltgovernors.json").then(r => r.json()).catch(err => {
-    console.error("Lt. Governors JSON error:", err);
-    return [];
-  }),
-  fetch("/senators.json").then(r => r.json()).catch(err => {
-    console.error("Senators JSON error:", err);
-    return [];
-  }),
-  fetch("/housereps.json").then(r => r.json()).catch(err => {
-    console.error("House Reps JSON error:", err);
-    return [];
-  })
+  fetch("/governors.json").then(r => r.json()).catch(() => []),
+  fetch("/ltgovernors.json").then(r => r.json()).catch(() => []),
+  fetch("/senators.json").then(r => r.json()).catch(() => []),
+  fetch("/housereps.json").then(r => r.json()).catch(() => [])
 ])
 .then(([govs, ltgovs, sens, reps]) => {
-  window.govs = govs;
-  window.ltgovs = ltgovs;
-  window.sens = sens;
-  window.reps = reps;
-
   const govNorm = govs.map(g => normalize(g, "Governor"));
   const ltgNorm = ltgovs.map(l => normalize(l, "Lt. Governor"));
   const senNorm = sens.map(s => normalize(s, "Senator"));
@@ -55,29 +36,21 @@ Promise.all([
   };
 
   window.allOfficials = [...govNorm, ...ltgNorm, ...senNorm, ...repNorm];
-
   console.log("All officials loaded:", window.allOfficials.length);
 });
 
-// ✅ Search logic
 function handleSearch() {
   const query = document.getElementById("searchInput").value.trim().toLowerCase();
-
   const results = window.allOfficials.filter(o =>
     o.name.toLowerCase().includes(query) ||
     o.state.toLowerCase().includes(query)
   );
-
   renderOfficials(results);
 }
-// ✅ DOM Ready and UI Wiring
 document.addEventListener("DOMContentLoaded", () => {
   renderHeader();
-
   const searchInput = document.getElementById("searchInput");
-  if (searchInput) {
-    searchInput.addEventListener("input", handleSearch);
-  }
+  if (searchInput) searchInput.addEventListener("input", handleSearch);
 
   renderOfficials("Alabama");
   renderRankings("governors");
@@ -88,11 +61,9 @@ document.addEventListener("DOMContentLoaded", () => {
   if (defaultTab) defaultTab.classList.add("active");
 });
 
-// ✅ Render Header and Logo
 function renderHeader() {
   const header = document.getElementById("header");
   if (!header) return;
-
   header.innerHTML = `
     <div class="logo-bar">
       <img src="/logo.png" alt="Electorate Logo" class="site-logo"/>
@@ -104,7 +75,6 @@ function renderHeader() {
   `;
 }
 
-// ✅ Render Officials tab
 function renderOfficials(stateOrList) {
   const container = document.getElementById("officials");
   if (!container) return;
@@ -112,53 +82,46 @@ function renderOfficials(stateOrList) {
   const filtered = Array.isArray(stateOrList)
     ? stateOrList
     : window.allOfficials.filter(o => o.state === stateOrList);
-if (filtered.length === 0) {
-  container.innerHTML = `<p>No officials match your search.</p>`;
-  return;
-}
+
   container.innerHTML = "";
+
+  if (filtered.length === 0) {
+    container.innerHTML = `<p>No officials match your search.</p>`;
+    return;
+  }
 
   filtered.forEach(o => {
     const card = document.createElement("div");
     card.className = "ranking-card";
     card.innerHTML = `
-      <img src="${o.photo}" alt="${o.name}" class="official-photo"/>
+      <img src="${o.photo}" alt="${o.name}" class="official-photo"
+           onerror="this.src='/fallback.png'" />
       <div class="card-body">
         <strong>${o.name}</strong><br/>
         ${o.office} • ${o.state}<br/>
         ${o.party}<br/>
-        <a href="${o.ballotpediaLink}" target="_blank" rel="noopener">Ballotpedia</a><br/>
+        <a href="${o.ballotpediaLink}" target="_blank">Ballotpedia</a><br/>
         ${o.contact.website ? `<a href="${o.contact.website}" target="_blank">Website</a><br/>` : ""}
         ${o.contact.email ? `Email: ${o.contact.email}<br/>` : ""}
         ${o.contact.phone ? `Phone: ${o.contact.phone}` : ""}
       </div>
     `;
+    card.addEventListener("click", () => openModal(o));
     container.appendChild(card);
   });
 }
 
-// ✅ Compute Rankings
 function computeRankings(rawList) {
   const ranked = rawList.filter(o => o.pollingScore !== null);
   const unranked = rawList.filter(o => o.pollingScore === null);
 
-  ranked.sort((a, b) => {
-    if (b.pollingScore !== a.pollingScore) {
-      return b.pollingScore - a.pollingScore;
-    }
-    if ((a.disapprove || 0) !== (b.disapprove || 0)) {
-      return a.disapprove - b.disapprove;
-    }
-    return (a.dk || 0) - (b.dk || 0);
-  });
-
-  ranked.forEach((o, i) => { o.computedRank = i + 1; });
-  unranked.forEach(o => { o.computedRank = null; });
+  ranked.sort((a, b) => b.pollingScore - a.pollingScore);
+  ranked.forEach((o, i) => o.computedRank = i + 1);
+  unranked.forEach(o => o.computedRank = null);
 
   return [...ranked, ...unranked];
 }
 
-// ✅ Render Rankings tab
 function renderRankings(category) {
   const container = document.getElementById("rankings");
   if (!container) return;
@@ -171,40 +134,32 @@ function renderRankings(category) {
     const card = document.createElement("div");
     card.className = "ranking-card";
     card.innerHTML = `
-      <img src="${o.photo}" alt="${o.name}" class="official-photo"/>
+      <img src="${o.photo}" alt="${o.name}" class="official-photo"
+           onerror="this.src='/fallback.png'" />
       <div class="card-body">
         <strong>${o.name}</strong><br/>
         ${o.office} • ${o.state}<br/>
         Rank: ${o.computedRank !== null ? o.computedRank : "N/A"}
         ${o.pollingDate ? ` • ${o.pollingDate}` : ""}
-        ${o.pollingSource ? ` • <a href="${o.pollingSource}" target="_blank" rel="noopener">Source</a>` : ""}
+        ${o.pollingSource ? ` • <a href="${o.pollingSource}" target="_blank">Source</a>` : ""}
       </div>
     `;
+    card.addEventListener("click", () => openModal(o));
     container.appendChild(card);
   });
 }
-
-// ✅ Render Calendar tab (placeholder)
 function renderCalendar() {
   const container = document.getElementById("calendar");
   if (!container) return;
-
-  container.innerHTML = `
-    <p>Calendar content will go here. You can wire in election dates, civic events, and deadlines.</p>
-  `;
+  container.innerHTML = `<p>Calendar content will go here.</p>`;
 }
 
-// ✅ Render Registration tab (placeholder)
 function renderRegistration() {
   const container = document.getElementById("registration");
   if (!container) return;
-
-  container.innerHTML = `
-    <p>Registration info will go here. You can wire in mail-in ballot links, deadlines, and instructions.</p>
-  `;
+  container.innerHTML = `<p>Registration info will go here.</p>`;
 }
 
-// ✅ Tab switching logic
 document.querySelectorAll(".tabs-vertical button").forEach(btn => {
   btn.addEventListener("click", () => {
     const tab = btn.getAttribute("data-tab");
@@ -214,10 +169,42 @@ document.querySelectorAll(".tabs-vertical button").forEach(btn => {
   });
 });
 
-// ✅ State selector logic
 const stateSelect = document.getElementById("stateSelect");
 if (stateSelect) {
   stateSelect.addEventListener("change", e => {
     renderOfficials(e.target.value);
+  });
+}
+
+// ✅ Modal logic
+function openModal(o) {
+  const modal = document.getElementById("modal");
+  const content = document.getElementById("modalContent");
+  if (!modal || !content) return;
+
+  content.innerHTML = `
+    <h2>${o.name}</h2>
+    <p><strong>${o.office}</strong> • ${o.state}</p>
+    <p>${o.party}</p>
+    ${o.ballotpediaLink ? `<p><a href="${o.ballotpediaLink}" target="_blank">Ballotpedia Profile</a></p>` : ""}
+    ${o.contact.website ? `<p><a href="${o.contact.website}" target="_blank">Official Website</a></p>` : ""}
+    ${o.contact.email ? `<p>Email: ${o.contact.email}</p>` : ""}
+    ${o.contact.phone ? `<p>Phone: ${o.contact.phone}</p>` : ""}
+    ${o.termStart ? `<p>Term Start: ${o.termStart}</p>` : ""}
+    ${o.termEnd ? `<p>Term End: ${o.termEnd}</p>` : ""}
+    ${o.pollingScore !== null ? `<p>Polling Score: ${o.pollingScore}</p>` : ""}
+    ${o.pollingDate ? `<p>Polling Date: ${o.pollingDate}</p>` : ""}
+    ${o.pollingSource ? `<p><a href="${o.pollingSource}" target="_blank">Polling Source</a></p>` : ""}
+  `;
+
+  modal.classList.remove("hidden");
+}
+
+// ✅ Modal close logic
+const closeModalBtn = document.getElementById("closeModal");
+if (closeModalBtn) {
+  closeModalBtn.addEventListener("click", () => {
+    const modal = document.getElementById("modal");
+    if (modal) modal.classList.add("hidden");
   });
 }
