@@ -160,3 +160,37 @@ a:hover {
     height: 100px;
   }
 }
+/* ✅ Grid layout for officials and rankings */
+#officials, #rankings {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+/* ✅ Slim card styling */
+.ranking-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  cursor: pointer;
+  transition: box-shadow 0.2s ease;
+}
+.ranking-card:hover {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.official-photo {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+.card-body {
+  text-align: center;
+  font-size: 0.9rem;
+}
