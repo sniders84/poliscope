@@ -148,34 +148,53 @@ function renderRankings(category) {
   const container = document.getElementById("rankings");
   if (!container) return;
 
-  const rawList = window.rankingsData[category] || [];
-  const list = computeRankings(rawList);
+  const categories = {
+    governors: "Governor",
+    ltgovernors: "Lt. Governor",
+    senators: "Senator",
+    housereps: "House Representative"
+  };
 
-  const top10 = list.slice(0, 10);
-  const bottom10 = list.slice(-10);
-  const middle = list.slice(10, -10);
+  container.innerHTML = "";
 
-  container.innerHTML = `
-    <h3>Top 10</h3>
-    <div class="ranking-row">${renderRankingCards(top10)}</div>
+  Object.entries(categories).forEach(([key, label]) => {
+    const rawList = window.rankingsData[key] || [];
+    const list = computeRankings(rawList);
 
-    <h3>Bottom 10</h3>
-    <div class="ranking-row">${renderRankingCards(bottom10)}</div>
+    const top10 = list.slice(0, 10);
+    const bottom10 = list.slice(-10);
+    const middle = list.slice(10, -10);
 
-    <button id="expandRankings" class="expand-button">Show Full Rankings</button>
-    <div id="fullRankings" class="ranking-row hidden">${renderRankingCards(middle)}</div>
-  `;
+    const section = document.createElement("section");
+    section.className = "ranking-category";
+    section.innerHTML = `
+      <h2>${label} Rankings</h2>
 
-  const expandBtn = document.getElementById("expandRankings");
-  const fullList = document.getElementById("fullRankings");
-  if (expandBtn && fullList) {
-    expandBtn.addEventListener("click", () => {
-      fullList.classList.toggle("hidden");
-      expandBtn.textContent = fullList.classList.contains("hidden")
-        ? "Show Full Rankings"
-        : "Hide Full Rankings";
+      <h3>Top 10</h3>
+      <div class="ranking-row">${renderRankingCards(top10)}</div>
+
+      <h3>Bottom 10</h3>
+      <div class="ranking-row">${renderRankingCards(bottom10)}</div>
+
+      <button class="expand-button" data-target="full-${key}">Show Full Rankings</button>
+      <div id="full-${key}" class="ranking-row hidden">${renderRankingCards(middle)}</div>
+    `;
+
+    container.appendChild(section);
+  });
+
+  document.querySelectorAll(".expand-button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const targetId = btn.getAttribute("data-target");
+      const target = document.getElementById(targetId);
+      if (target) {
+        target.classList.toggle("hidden");
+        btn.textContent = target.classList.contains("hidden")
+          ? "Show Full Rankings"
+          : "Hide Full Rankings";
+      }
     });
-  }
+  });
 }
 function renderRankingCards(list) {
   return list.map(o => {
