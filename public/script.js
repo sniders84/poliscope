@@ -12,7 +12,21 @@ function normalize(entry, officeLabel) {
     contact: entry.contact || {},
     pollingScore: entry.pollingScore || null,
     pollingDate: entry.pollingDate || null,
-    pollingSource: entry.pollingSource || null
+    pollingSource: entry.pollingSource || null,
+    bio: entry.bio || "",
+    education: entry.education || "",
+    endorsements: entry.endorsements || "",
+    platform: entry.platform || "",
+    platformFollowThrough: entry.platformFollowThrough || {},
+    proposals: entry.proposals || "",
+    engagement: entry.engagement || {},
+    billsSigned: entry.billsSigned || [],
+    vetoes: entry.vetoes || "",
+    salary: entry.salary || "",
+    predecessor: entry.predecessor || "",
+    electionYear: entry.electionYear || "",
+    rankingNote: entry.rankingNote || "",
+    rank: entry.rank || ""
   };
 }
 
@@ -38,18 +52,16 @@ Promise.all([
   window.allOfficials = [...govNorm, ...ltgNorm, ...senNorm, ...repNorm];
   console.log("All officials loaded:", window.allOfficials.length);
 
-  // ✅ UI Setup after data is loaded
   renderHeader();
   const searchInput = document.getElementById("searchInput");
   if (searchInput) searchInput.addEventListener("input", handleSearch);
 
   renderOfficials("Alabama");
-  renderRankings("governors");
-  renderCalendar();
-  renderRegistration();
 
   const defaultTab = document.getElementById("officials");
   if (defaultTab) defaultTab.classList.add("active");
+
+  wireModalClose();
 });
 function handleSearch() {
   const query = document.getElementById("searchInput").value.trim().toLowerCase();
@@ -63,7 +75,6 @@ function handleSearch() {
 function renderHeader() {
   const header = document.querySelector(".electorate-header");
   if (!header) return;
-  // Already rendered via HTML — no injection needed
 }
 
 function renderOfficials(stateOrList) {
@@ -85,16 +96,12 @@ function renderOfficials(stateOrList) {
     const card = document.createElement("div");
     card.className = "ranking-card";
     card.innerHTML = `
-      <img src="${o.photo}" alt="${o.name}" class="official-photo"
-           onerror="this.src='assets/fallback.png'" />
+      <img src="${o.photo}" alt="${o.name}" class="official-photo" />
       <div class="card-body">
         <strong>${o.name}</strong><br/>
         ${o.office} • ${o.state}<br/>
         ${o.party}<br/>
-        <a href="${o.ballotpediaLink}" target="_blank">Ballotpedia</a><br/>
-        ${o.contact.website ? `<a href="${o.contact.website}" target="_blank">Website</a><br/>` : ""}
-        ${o.contact.email ? `Email: ${o.contact.email}<br/>` : ""}
-        ${o.contact.phone ? `Phone: ${o.contact.phone}` : ""}
+        <a href="${o.ballotpediaLink}" target="_blank">Ballotpedia</a>
       </div>
     `;
     card.addEventListener("click", () => openModal(o));
@@ -124,14 +131,11 @@ function renderRankings(category) {
     const card = document.createElement("div");
     card.className = "ranking-card";
     card.innerHTML = `
-      <img src="${o.photo}" alt="${o.name}" class="official-photo"
-           onerror="this.src='assets/fallback.png'" />
+      <img src="${o.photo}" alt="${o.name}" class="official-photo" />
       <div class="card-body">
         <strong>${o.name}</strong><br/>
         ${o.office} • ${o.state}<br/>
         Rank: ${o.computedRank !== null ? o.computedRank : "N/A"}
-        ${o.pollingDate ? ` • ${o.pollingDate}` : ""}
-        ${o.pollingSource ? ` • <a href="${o.pollingSource}" target="_blank">Source</a>` : ""}
       </div>
     `;
     card.addEventListener("click", () => openModal(o));
@@ -156,6 +160,16 @@ document.querySelectorAll(".tabs-vertical button").forEach(btn => {
     document.querySelectorAll(".tab-pane").forEach(p => p.classList.remove("active"));
     const target = document.getElementById(tab);
     if (target) target.classList.add("active");
+
+    const searchInput = document.getElementById("searchInput");
+    if (searchInput) {
+      searchInput.value = "";
+      renderOfficials("Alabama");
+    }
+
+    if (tab === "rankings") renderRankings("governors");
+    if (tab === "calendar") renderCalendar();
+    if (tab === "registration") renderRegistration();
   });
 });
 
@@ -173,7 +187,6 @@ function openModal(o) {
   const content = document.getElementById("modalContent");
   if (!modal || !content) return;
 
-  // ✅ Build platform follow-through
   let platformDetails = "";
   if (o.platformFollowThrough) {
     platformDetails = Object.entries(o.platformFollowThrough).map(([key, val]) => {
@@ -181,7 +194,6 @@ function openModal(o) {
     }).join("<br/><br/>");
   }
 
-  // ✅ Build bills signed
   let bills = "";
   if (Array.isArray(o.billsSigned)) {
     bills = o.billsSigned.map(b => {
@@ -189,7 +201,6 @@ function openModal(o) {
     }).join("");
   }
 
-  // ✅ Build engagement sources
   let sources = "";
   if (o.engagement?.sources) {
     sources = o.engagement.sources.map(s => {
@@ -199,8 +210,7 @@ function openModal(o) {
 
   content.innerHTML = `
     <div class="modal-profile">
-      <img src="${o.photo}" alt="${o.name}" class="modal-photo"
-           onerror="this.src='assets/fallback.png'" />
+      <img src="${o.photo}" alt="${o.name}" class="modal-photo" />
       <h2>${o.name}</h2>
       <p><strong>${o.office}</strong> • ${o.state}</p>
       <p>${o.party}</p>
@@ -231,6 +241,7 @@ function openModal(o) {
 
   modal.classList.remove("hidden");
 }
+
 function wireModalClose() {
   const closeBtn = document.getElementById("closeModal");
   if (closeBtn) {
@@ -240,7 +251,3 @@ function wireModalClose() {
     });
   }
 }
-
-// ✅ Call this once after DOM is ready
-wireModalClose();
-
