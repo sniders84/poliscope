@@ -55,7 +55,11 @@ Promise.all([
   };
 
   window.allOfficials = [...govNorm, ...ltgNorm, ...senNorm, ...repNorm];
-  // ✅ After all data is loaded and normalized
+
+  console.log("All officials loaded:", window.allOfficials.length);
+});
+
+// ✅ Search logic
 function handleSearch() {
   const query = document.getElementById("searchInput").value.trim().toLowerCase();
 
@@ -66,12 +70,10 @@ function handleSearch() {
 
   renderOfficials(results);
 }
-
-// ✅ Then wire the input field
+// ✅ DOM Ready and UI Wiring
 document.addEventListener("DOMContentLoaded", () => {
   renderHeader();
 
-  // ✅ Wire search input AFTER it's injected by renderHeader
   const searchInput = document.getElementById("searchInput");
   if (searchInput) {
     searchInput.addEventListener("input", handleSearch);
@@ -100,17 +102,20 @@ function renderHeader() {
       <input type="text" placeholder="Search officials..." id="searchInput"/>
     </div>
   `;
-
-  // ✅ Wire the search input AFTER it's in the DOM
-  document.getElementById("searchInput").addEventListener("input", handleSearch);
 }
 
 // ✅ Render Officials tab
-function renderOfficials(state) {
+function renderOfficials(stateOrList) {
   const container = document.getElementById("officials");
   if (!container) return;
 
-  const filtered = window.allOfficials.filter(o => o.state === state);
+  const filtered = Array.isArray(stateOrList)
+    ? stateOrList
+    : window.allOfficials.filter(o => o.state === stateOrList);
+if (filtered.length === 0) {
+  container.innerHTML = `<p>No officials match your search.</p>`;
+  return;
+}
   container.innerHTML = "";
 
   filtered.forEach(o => {
