@@ -227,9 +227,9 @@ function openModal(o) {
     }).join("");
   }
 
-  // Modal content injection
   content.innerHTML = `
     <div class="modal-profile">
+      <button id="closeModal" class="modal-close">×</button>
       <img src="${o.photo}" alt="${o.name}" class="modal-photo" />
       <h2>${o.name}</h2>
       <p><strong>${o.office}</strong> • ${o.state}</p>
@@ -256,13 +256,12 @@ function openModal(o) {
       ${o.vetoes ? `<p><strong>Veto History:</strong> ${o.vetoes}</p>` : ""}
       ${bills ? `<hr/><p><strong>Bills Signed:</strong></p><ul>${bills}</ul>` : ""}
       ${sources ? `<p><strong>Engagement Sources:</strong></p><ul>${sources}</ul>` : ""}
-      <button id="closeModal" class="modal-close">Close</button>
     </div>
   `;
 
   modal.classList.remove("hidden");
 
-  // ✅ Wire close button immediately after injection
+  // ✅ Wire close button immediately
   setTimeout(() => {
     const closeBtn = document.getElementById("closeModal");
     if (closeBtn) {
