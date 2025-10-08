@@ -55,6 +55,20 @@ Promise.all([
   };
 
   window.allOfficials = [...govNorm, ...ltgNorm, ...senNorm, ...repNorm];
+  // ✅ After all data is loaded and normalized
+function handleSearch() {
+  const query = document.getElementById("searchInput").value.trim().toLowerCase();
+
+  const results = window.allOfficials.filter(o =>
+    o.name.toLowerCase().includes(query) ||
+    o.state.toLowerCase().includes(query)
+  );
+
+  renderOfficials(results);
+}
+
+// ✅ Then wire the input field
+document.getElementById("searchInput").addEventListener("input", handleSearch);
 
   console.log("All officials loaded:", window.allOfficials.length);
 
@@ -82,6 +96,7 @@ function renderHeader() {
     </div>
     <div class="search-bar">
       <input type="text" placeholder="Search officials..." id="searchInput"/>
+      document.getElementById("searchInput").addEventListener("input", handleSearch);
     </div>
   `;
 }
