@@ -53,17 +53,14 @@ Promise.all([
   console.log("All officials loaded:", window.allOfficials.length);
 
   renderHeader();
-  const searchInput = document.getElementById("searchInput");
-  if (searchInput) searchInput.addEventListener("input", handleSearch);
-
   activateTab("officials");
-   // ✅ Wire search bar listener
+
   const searchInput = document.getElementById("searchInput");
   if (searchInput) {
     searchInput.addEventListener("input", handleSearch);
     searchInput.disabled = false;
   }
-  });
+});
 function activateTab(tabId) {
   document.querySelectorAll(".tab-pane").forEach(p => {
     p.classList.remove("active");
@@ -79,6 +76,10 @@ function activateTab(tabId) {
     if (tabId === "calendar") renderCalendar();
     if (tabId === "registration") renderRegistration();
   }
+
+  const searchInput = document.getElementById("searchInput");
+  if (searchInput) searchInput.value = "";
+}
 
 document.querySelectorAll(".tabs-vertical button").forEach(btn => {
   btn.addEventListener("click", () => {
@@ -118,7 +119,7 @@ function renderOfficials(stateOrList) {
   }
 
   filtered.forEach(o => {
-    const photoSrc = o.photo && o.photo.startsWith("http") ? o.photo : "assets/default-photo.png";
+    const photoSrc = o.photo && o.photo.startsWith("http") ? o.photo : "default-photo.png";
     const card = document.createElement("div");
     card.className = "ranking-card";
     card.setAttribute("data-party", o.party);
@@ -147,6 +148,17 @@ function computeRankings(rawList) {
   return [...ranked, ...unranked];
 }
 
+function renderCalendar() {
+  const container = document.getElementById("calendar");
+  if (!container) return;
+  container.innerHTML = `<p>Calendar content will go here. You can wire in election dates, civic events, and deadlines.</p>`;
+}
+
+function renderRegistration() {
+  const container = document.getElementById("registration");
+  if (!container) return;
+  container.innerHTML = `<p>Registration info will go here. You can wire in mail-in ballot links, deadlines, and instructions.</p>`;
+}
 function renderRankings() {
   const container = document.getElementById("rankings");
   if (!container) return;
@@ -202,33 +214,31 @@ function renderRankings() {
     container.appendChild(section);
   });
 
-  // Toggle dropdowns
   document.querySelectorAll(".ranking-header").forEach(header => {
     header.addEventListener("click", () => {
       const key = header.getAttribute("data-toggle");
       const content = document.getElementById(`content-${key}`);
       if (content) {
-        content.classList.toggle("active");
-      }
+       content.classList.toggle("active");
+        }
+      });
     });
-  });
 
-  // Expand full rankings
-  document.querySelectorAll(".expand-button").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const targetId = btn.getAttribute("data-target");
-      const target = document.getElementById(targetId);
-      if (target) {
-        const isHidden = target.style.display === "none";
-        target.style.display = isHidden ? "grid" : "none";
-        btn.textContent = isHidden ? "Hide Full Rankings" : "Show Full Rankings";
-      }
+    document.querySelectorAll(".expand-button").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const targetId = btn.getAttribute("data-target");
+        const target = document.getElementById(targetId);
+        if (target) {
+          const isHidden = target.style.display === "none";
+          target.style.display = isHidden ? "grid" : "none";
+          btn.textContent = isHidden ? "Hide Full Rankings" : "Show Full Rankings";
+        }
+      });
     });
-  });
 }
 function renderRankingCards(list) {
   return list.map(o => {
-    const photoSrc = o.photo && o.photo.startsWith("http") ? o.photo : "assets/default-photo.png";
+    const photoSrc = o.photo && o.photo.startsWith("http") ? o.photo : "default-photo.png";
     return `
       <div class="ranking-card" data-party="${o.party}">
         <img src="${photoSrc}" alt="${o.name}" class="official-photo" />
@@ -240,88 +250,4 @@ function renderRankingCards(list) {
       </div>
     `;
   }).join("");
-}
-
-function renderCalendar() {
-  const container = document.getElementById("calendar");
-  if (!container) return;
-  container.innerHTML = `<p>Calendar content will go here. You can wire in election dates, civic events, and deadlines.</p>`;
-}
-
-function renderRegistration() {
-  const container = document.getElementById("registration");
-  if (!container) return;
-  container.innerHTML = `<p>Registration info will go here. You can wire in mail-in ballot links, deadlines, and instructions.</p>`;
-}
-function openModal(o) {
-  const modal = document.getElementById("modal");
-  const content = document.getElementById("modalContent");
-  if (!modal || !content) return;
-
-  let platformDetails = "";
-  if (o.platformFollowThrough) {
-    platformDetails = Object.entries(o.platformFollowThrough).map(([key, val]) => {
-      return `<strong>${key}:</strong> ${val}`;
-    }).join("<br/><br/>");
-  }
-
-  let bills = "";
-  if (Array.isArray(o.billsSigned)) {
-    bills = o.billsSigned.map(b => {
-      return `<li><a href="${b.link}" target="_blank">${b.title}</a></li>`;
-    }).join("");
-  }
-
-  let sources = "";
-  if (o.engagement?.sources) {
-    sources = o.engagement.sources.map(s => {
-      return `<li><a href="${s}" target="_blank">${s}</a></li>`;
-    }).join("");
-  }
-
-  const photoSrc = o.photo && o.photo.startsWith("http") ? o.photo : "assets/default-photo.png";
-
-  content.innerHTML = `
-    <button id="closeModal" class="modal-close">×</button>
-    <div class="modal-left">
-      <img src="${photoSrc}" alt="${o.name}" />
-      <p><strong>${o.name}</strong></p>
-      <p>${o.office} • ${o.state}</p>
-      <p>${o.party}</p>
-      ${o.ballotpediaLink ? `<p><a href="${o.ballotpediaLink}" target="_blank">Ballotpedia Profile</a></p>` : ""}
-      ${o.contact.website ? `<p><a href="${o.contact.website}" target="_blank">Official Website</a></p>` : ""}
-      ${o.contact.email ? `<p>Email: <a href="mailto:${o.contact.email}">${o.contact.email}</a></p>` : ""}
-      ${o.contact.phone ? `<p>Phone: <a href="tel:${o.contact.phone}">${o.contact.phone}</a></p>` : ""}
-      ${o.termStart ? `<p>Term Start: ${o.termStart}</p>` : ""}
-      ${o.termEnd ? `<p>Term End: ${o.termEnd}</p>` : ""}
-      ${o.salary ? `<p>Salary: ${o.salary}</p>` : ""}
-      ${o.predecessor ? `<p>Predecessor: ${o.predecessor}</p>` : ""}
-      ${o.electionYear ? `<p>Next Election: ${o.electionYear}</p>` : ""}
-      ${o.pollingScore ? `<p>Polling Score: ${o.pollingScore}</p>` : ""}
-      ${o.pollingDate ? `<p>Polling Date: ${o.pollingDate}</p>` : ""}
-      ${o.pollingSource ? `<p><a href="${o.pollingSource}" target="_blank">Polling Source</a></p>` : ""}
-    </div>
-    <div class="modal-right">
-      ${o.bio ? `<p><strong>Bio:</strong> ${o.bio}</p>` : ""}
-      ${o.education ? `<p><strong>Education:</strong> ${o.education}</p>` : ""}
-      ${o.endorsements ? `<p><strong>Endorsements:</strong> ${o.endorsements}</p>` : ""}
-      ${o.platform ? `<p><strong>Platform:</strong> ${o.platform}</p>` : ""}
-      ${platformDetails ? `<p><strong>Platform Follow-Through:</strong><br/>${platformDetails}</p>` : ""}
-      ${o.proposals ? `<p><strong>Proposals:</strong> ${o.proposals}</p>` : ""}
-      ${o.vetoes ? `<p><strong>Veto History:</strong> ${o.vetoes}</p>` : ""}
-      ${bills ? `<p><strong>Bills Signed:</strong></p><ul>${bills}</ul>` : ""}
-      ${sources ? `<p><strong>Engagement Sources:</strong></p><ul>${sources}</ul>` : ""}
-    </div>
-  `;
-
-  modal.classList.remove("hidden");
-
-  setTimeout(() => {
-    const closeBtn = document.getElementById("closeModal");
-    if (closeBtn) {
-      closeBtn.addEventListener("click", () => {
-        modal.classList.add("hidden");
-      });
-    }
-  }, 0);
 }
