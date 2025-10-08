@@ -144,7 +144,7 @@ function computeRankings(rawList) {
   return [...ranked, ...unranked];
 }
 
-function renderRankings(category) {
+function renderRankings() {
   const container = document.getElementById("rankings");
   if (!container) return;
 
@@ -165,24 +165,52 @@ function renderRankings(category) {
     const bottom10 = list.slice(-10);
     const middle = list.slice(10, -10);
 
+    const topLeft = top10.slice(0, 5);
+    const topRight = top10.slice(5, 10);
+    const bottomLeft = bottom10.slice(0, 5);
+    const bottomRight = bottom10.slice(5, 10);
+
     const section = document.createElement("section");
     section.className = "ranking-category";
+
     section.innerHTML = `
-      <h2>${label}</h2>
+      <div class="ranking-header" data-toggle="${key}">${label}</div>
+      <div id="content-${key}" class="ranking-content">
+        <h4>Top 10</h4>
+        <div class="ranking-grid-two">
+          <div class="ranking-row">${renderRankingCards(topLeft)}</div>
+          <div class="ranking-row">${renderRankingCards(topRight)}</div>
+        </div>
 
-      <h3>Top 10</h3>
-      <div class="ranking-row">${renderRankingCards(top10)}</div>
+        <button class="expand-button" data-target="full-${key}">Show Full Rankings</button>
+        <div id="full-${key}" class="ranking-grid-two hidden">
+          <div class="ranking-row">${renderRankingCards(middle.slice(0, Math.ceil(middle.length / 2)))}</div>
+          <div class="ranking-row">${renderRankingCards(middle.slice(Math.ceil(middle.length / 2)))}</div>
+        </div>
 
-      <h3>Bottom 10</h3>
-      <div class="ranking-row">${renderRankingCards(bottom10)}</div>
-
-      <button class="expand-button" data-target="full-${key}">Show Full Rankings</button>
-      <div id="full-${key}" class="ranking-row hidden">${renderRankingCards(middle)}</div>
+        <h4>Bottom 10</h4>
+        <div class="ranking-grid-two">
+          <div class="ranking-row">${renderRankingCards(bottomLeft)}</div>
+          <div class="ranking-row">${renderRankingCards(bottomRight)}</div>
+        </div>
+      </div>
     `;
 
     container.appendChild(section);
   });
 
+  // Toggle dropdowns
+  document.querySelectorAll(".ranking-header").forEach(header => {
+    header.addEventListener("click", () => {
+      const key = header.getAttribute("data-toggle");
+      const content = document.getElementById(`content-${key}`);
+      if (content) {
+        content.classList.toggle("active");
+      }
+    });
+  });
+
+  // Expand full rankings
   document.querySelectorAll(".expand-button").forEach(btn => {
     btn.addEventListener("click", () => {
       const targetId = btn.getAttribute("data-target");
