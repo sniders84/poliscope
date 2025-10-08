@@ -236,18 +236,17 @@ function openModal(o) {
       ${o.vetoes ? `<p><strong>Veto History:</strong> ${o.vetoes}</p>` : ""}
       ${bills ? `<hr/><p><strong>Bills Signed:</strong></p><ul>${bills}</ul>` : ""}
       ${sources ? `<p><strong>Engagement Sources:</strong></p><ul>${sources}</ul>` : ""}
+      <button id="closeModal" class="modal-close">Close</button>
     </div>
   `;
 
   modal.classList.remove("hidden");
-}
 
-function wireModalClose() {
+  // ✅ Wire close button immediately
   const closeBtn = document.getElementById("closeModal");
   if (closeBtn) {
     closeBtn.addEventListener("click", () => {
-      const modal = document.getElementById("modal");
-      if (modal) modal.classList.add("hidden");
+      modal.classList.add("hidden");
     });
   }
 }
