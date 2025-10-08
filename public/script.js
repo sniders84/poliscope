@@ -156,11 +156,17 @@ function renderRankings(category) {
   const middle = list.slice(10, -10);
 
   container.innerHTML = `
-    <h3>Top 10</h3>
-    <div class="ranking-grid">${renderRankingCards(top10)}</div>
-    <h3>Bottom 10</h3>
-    <div class="ranking-grid">${renderRankingCards(bottom10)}</div>
-    <button id="expandRankings" class="expand-button">Show Full Rankings</button>
+    <div class="ranking-section">
+      <div>
+        <h3>Top 10</h3>
+        <div class="ranking-grid">${renderRankingCards(top10)}</div>
+        <button id="expandRankings" class="expand-button">Show Full Rankings</button>
+      </div>
+      <div>
+        <h3>Bottom 10</h3>
+        <div class="ranking-grid">${renderRankingCards(bottom10)}</div>
+      </div>
+    </div>
     <div id="fullRankings" class="ranking-grid hidden">${renderRankingCards(middle)}</div>
   `;
 
@@ -175,7 +181,6 @@ function renderRankings(category) {
     });
   }
 }
-
 function renderRankingCards(list) {
   return list.map(o => {
     const photoSrc = o.photo && o.photo.startsWith("http") ? o.photo : "assets/default-photo.png";
