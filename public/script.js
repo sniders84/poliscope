@@ -71,169 +71,9 @@ Promise.all([
     });
   }
 });
-
-// Tab activation
-function activateTab(tabId) {
-  document.querySelectorAll(".tab-pane").forEach(p => {
-    p.classList.remove("active");
-    p.innerHTML = "";
-  });
-
-  const target = document.getElementById(tabId);
-  if (target) {
-    target.classList.add("active");
-
-    if (tabId === "officials") renderOfficials(window.allOfficials);
-    if (tabId === "rankings") renderRankings();
-    if (tabId === "calendar") renderCalendar();
-    if (tabId === "registration") renderRegistration();
-  }
-
-  const searchInput = document.getElementById("searchInput");
-  if (searchInput) searchInput.value = "";
-}
-
-// Tabs click
-document.querySelectorAll(".tabs-vertical .tab-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const tab = btn.getAttribute("data-tab");
-    activateTab(tab);
-  });
-});
-
-// Search
-function handleSearch() {
-  const query = document.getElementById("searchInput").value.trim().toLowerCase();
-  const results = window.allOfficials.filter(o =>
-    o.name.toLowerCase().includes(query) ||
-    o.state.toLowerCase().includes(query)
-  );
-
-  const officialsPane = document.getElementById("officials");
-  if (!officialsPane.classList.contains("active")) {
-    activateTab("officials");
-  }
-  renderOfficials(results.length ? results : []);
-}
-
-// Header placeholder
-function renderHeader() {
-  // Reserved for future dynamic header content
-}
-
-// Officials
-function renderOfficials(stateOrList) {
-  const container = document.getElementById("officials");
-  if (!container) return;
-
-  const filtered = Array.isArray(stateOrList)
-    ? stateOrList
-    : window.allOfficials.filter(o => o.state === stateOrList);
-
-  container.innerHTML = "";
-
-  if (!filtered || filtered.length === 0) {
-    container.innerHTML = `<p>No officials match your search.</p>`;
-    return;
-  }
-
-  filtered.forEach(o => {
-    const photoSrc = o.photo && o.photo.startsWith("http") ? o.photo : "assets/default-photo.png";
-    const card = document.createElement("div");
-    card.className = "ranking-card";
-    card.setAttribute("data-party", o.party);
-    card.innerHTML = `
-      <img src="${photoSrc}" alt="${o.name}" class="official-photo" />
-      <div class="card-body">
-        <strong>${o.name}</strong><br/>
-        ${o.office} • ${o.state}<br/>
-        ${o.party}<br/>
-        <a href="${o.ballotpediaLink || '#'}" target="_blank" rel="noopener noreferrer">Ballotpedia</a>
+        <div class="ranking-row">${renderRankingCards(bottomRight)}</div>
       </div>
-    `;
-    card.addEventListener("click", () => openModal(o));
-    container.appendChild(card);
-  });
-}
-
-// Rankings helpers
-function computeRankings(rawList) {
-  const ranked = rawList.filter(o => o.pollingScore !== null);
-  const unranked = rawList.filter(o => o.pollingScore === null);
-
-  ranked.sort((a, b) => b.pollingScore - a.pollingScore);
-  ranked.forEach((o, i) => (o.computedRank = i + 1));
-  unranked.forEach(o => (o.computedRank = null));
-
-  return [...ranked, ...unranked];
-}
-
-function renderRankingCards(list) {
-  return list.map(o => {
-    const photoSrc = o.photo && o.photo.startsWith("http") ? o.photo : "assets/default-photo.png";
-    return `
-      <div class="ranking-card" data-party="${o.party}">
-        <img src="${photoSrc}" alt="${o.name}" class="official-photo" />
-        <div class="card-body">
-          <strong>${o.name}</strong><br/>
-          ${o.office} • ${o.state}<br/>
-          Rank: ${o.computedRank !== null ? o.computedRank : "N/A"}
-        </div>
-      </div>
-    `;
-  }).join("");
-}
-
-// Rankings
-function renderRankings() {
-  const container = document.getElementById("rankings");
-  if (!container) return;
-
-  const categories = {
-    governors: "Governor",
-    ltgovernors: "Lt. Governor",
-    senators: "Senator",
-    housereps: "House Representative"
-  };
-
-  container.innerHTML = "";
-
-  Object.entries(categories).forEach(([key, label]) => {
-    const rawList = window.rankingsData[key] || [];
-    const list = computeRankings(rawList);
-
-    const top10 = list.slice(0, 10);
-    const bottom10 = list.slice(-10);
-    const middle = list.slice(10, -10);
-
-    const topLeft = top10.slice(0, 5);
-    const topRight = top10.slice(5, 10);
-    const bottomLeft = bottom10.slice(0, 5);
-    const bottomRight = bottom10.slice(5, 10);
-
-    const section = document.createElement("section");
-    section.className = "ranking-category";
-    section.innerHTML = `
-      <div class="ranking-header" data-toggle="${key}">${label}</div>
-      <div id="content-${key}" class="ranking-content">
-        <h4>Top 10</h4>
-        <div class="ranking-grid-two">
-          <div class="ranking-row">${renderRankingCards(topLeft)}</div>
-          <div class="ranking-row">${renderRankingCards(topRight)}</div>
-        </div>
-
-        <button class="expand-button" data-target="full-${key}">Show Full Rankings</button>
-        <div id="full-${key}" class="ranking-grid-two" style="display: none;">
-          <div class="ranking-row">${renderRankingCards(middle.slice(0, Math.ceil(middle.length / 2)))}</div>
-          <div class="ranking-row">${renderRankingCards(middle.slice(Math.ceil(middle.length / 2)))}</div>
-        </div>
-
-        <h4>Bottom 10</h4>
-        <div class="ranking-grid-two">
-          <div class="ranking-row">${renderRankingCards(bottomLeft)}</div>
-          <div class="ranking-row">${renderRankingCards(bottomRight)}</div>
-        </div>
-      </div>
+    </div>
     `;
     container.appendChild(section);
   });
@@ -242,7 +82,7 @@ function renderRankings() {
   document.querySelectorAll(".ranking-header").forEach(header => {
     header.addEventListener("click", () => {
       const key = header.getAttribute("data-toggle");
-           const content = document.getElementById(`content-${key}`);
+      const content = document.getElementById(`content-${key}`);
       if (content) content.classList.toggle("active");
     });
   });
@@ -259,7 +99,6 @@ function renderRankings() {
     });
   });
 }
-
 // Calendar and Registration placeholders
 function renderCalendar() {
   const container = document.getElementById("calendar");
@@ -285,7 +124,6 @@ function populateStates() {
     stateSelect.appendChild(opt);
   });
 }
-
 // Modal
 function openModal(o) {
   const modal = document.getElementById("modal");
