@@ -187,7 +187,21 @@ function renderRankings() {
 
     const section = document.createElement("section");
     section.className = "ranking-category";
-
+function renderRankingCards(list) {
+  return list.map(o => {
+    const photoSrc = o.photo && o.photo.startsWith("http") ? o.photo : "default-photo.png";
+    return `
+      <div class="ranking-card" data-party="${o.party}">
+        <img src="${photoSrc}" alt="${o.name}" class="official-photo" />
+        <div class="card-body">
+          <strong>${o.name}</strong><br/>
+          ${o.office} • ${o.state}<br/>
+          Rank: ${o.computedRank !== null ? o.computedRank : "N/A"}
+        </div>
+      </div>
+    `;
+  }).join("");
+}
     section.innerHTML = `
       <div class="ranking-header" data-toggle="${key}">${label}</div>
       <div id="content-${key}" class="ranking-content">
