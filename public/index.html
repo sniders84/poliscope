@@ -11,6 +11,17 @@
       margin: 0;
       background: #f9f9f9;
     }
+    .electorate-header {
+      padding: 1rem;
+      background: #004080;
+      color: white;
+      text-align: center;
+    }
+    .electorate-header img {
+      height: 60px;
+      vertical-align: middle;
+      margin-right: 1rem;
+    }
     .search-bar {
       padding: 1rem;
       background: #fff;
@@ -89,6 +100,7 @@
 </head>
 <body>
   <div class="electorate-header">
+    <img src="logo.png" alt="Civic Logo" />
     <h1>Civic Dashboard</h1>
     <p>Explore officials, rankings, and registration tools</p>
   </div>
@@ -112,9 +124,9 @@
       <div id="registration" class="tab-pane"></div>
     </div>
   </div>
-  <!-- Optional Modal Placeholder -->
+
   <div id="modal" style="display: none;">
-    <!-- You can wire in modal content here -->
+    <!-- Modal content will go here -->
   </div>
   <script src="script.js"></script>
 </body>
