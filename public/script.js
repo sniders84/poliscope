@@ -119,7 +119,7 @@ function renderOfficials(stateOrList) {
   }
 
   filtered.forEach(o => {
-    const photoSrc = o.photo && o.photo.startsWith("http") ? o.photo : "default-photo.png";
+    const photoSrc = o.photo && o.photo.startsWith("http") ? o.photo : "assets/default-photo.png";
     const card = document.createElement("div");
     card.className = "ranking-card";
     card.setAttribute("data-party", o.party);
@@ -132,7 +132,7 @@ function renderOfficials(stateOrList) {
         <a href="${o.ballotpediaLink}" target="_blank">Ballotpedia</a>
       </div>
     `;
-    card.addEventListener("click", () => openModal(o));
+   // card.addEventListener("click", () => openModal(o));
     container.appendChild(card);
   });
 }
