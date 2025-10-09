@@ -1,3 +1,4 @@
+// Normalize incoming entries
 function normalize(entry, officeLabel) {
   return {
     name: entry.name,
@@ -10,9 +11,9 @@ function normalize(entry, officeLabel) {
     termStart: entry.termStart,
     termEnd: entry.termEnd,
     contact: entry.contact || {},
-    pollingScore: entry.pollingScore || null,
-    pollingDate: entry.pollingDate || null,
-    pollingSource: entry.pollingSource || null,
+    pollingScore: entry.pollingScore ?? null,
+    pollingDate: entry.pollingDate ?? null,
+    pollingSource: entry.pollingSource ?? null,
     bio: entry.bio || "",
     education: entry.education || "",
     endorsements: entry.endorsements || "",
@@ -30,13 +31,13 @@ function normalize(entry, officeLabel) {
   };
 }
 
+// Data load
 Promise.all([
   fetch("/governors.json").then(r => r.json()).catch(() => []),
   fetch("/ltgovernors.json").then(r => r.json()).catch(() => []),
   fetch("/senators.json").then(r => r.json()).catch(() => []),
   fetch("/housereps.json").then(r => r.json()).catch(() => [])
-])
-.then(([govs, ltgovs, sens, reps]) => {
+]).then(([govs, ltgovs, sens, reps]) => {
   const govNorm = govs.map(g => normalize(g, "Governor"));
   const ltgNorm = ltgovs.map(l => normalize(l, "Lt. Governor"));
   const senNorm = sens.map(s => normalize(s, "Senator"));
@@ -50,8 +51,8 @@ Promise.all([
   };
 
   window.allOfficials = [...govNorm, ...ltgNorm, ...senNorm, ...repNorm];
-  console.log("All officials loaded:", window.allOfficials.length);
 
+  populateStates();
   renderHeader();
   activateTab("officials");
 
@@ -60,7 +61,18 @@ Promise.all([
     searchInput.addEventListener("input", handleSearch);
     searchInput.disabled = false;
   }
+
+  const stateSelect = document.getElementById("stateSelect");
+  if (stateSelect) {
+    stateSelect.addEventListener("change", () => {
+      const state = stateSelect.value;
+      activateTab("officials");
+      renderOfficials(state || window.allOfficials);
+    });
+  }
 });
+
+// Tab activation
 function activateTab(tabId) {
   document.querySelectorAll(".tab-pane").forEach(p => {
     p.classList.remove("active");
@@ -71,7 +83,7 @@ function activateTab(tabId) {
   if (target) {
     target.classList.add("active");
 
-    if (tabId === "officials") renderOfficials("Alabama");
+    if (tabId === "officials") renderOfficials(window.allOfficials);
     if (tabId === "rankings") renderRankings();
     if (tabId === "calendar") renderCalendar();
     if (tabId === "registration") renderRegistration();
@@ -81,13 +93,15 @@ function activateTab(tabId) {
   if (searchInput) searchInput.value = "";
 }
 
-document.querySelectorAll(".tabs-vertical button").forEach(btn => {
+// Tabs click
+document.querySelectorAll(".tabs-vertical .tab-btn").forEach(btn => {
   btn.addEventListener("click", () => {
     const tab = btn.getAttribute("data-tab");
     activateTab(tab);
   });
 });
 
+// Search
 function handleSearch() {
   const query = document.getElementById("searchInput").value.trim().toLowerCase();
   const results = window.allOfficials.filter(o =>
@@ -95,14 +109,19 @@ function handleSearch() {
     o.state.toLowerCase().includes(query)
   );
 
-  activateTab("officials");
-  renderOfficials(results);
+  const officialsPane = document.getElementById("officials");
+  if (!officialsPane.classList.contains("active")) {
+    activateTab("officials");
+  }
+  renderOfficials(results.length ? results : []);
 }
 
+// Header placeholder
 function renderHeader() {
-  const header = document.querySelector(".electorate-header");
-  if (!header) return;
+  // Reserved for future dynamic header content
 }
+
+// Officials
 function renderOfficials(stateOrList) {
   const container = document.getElementById("officials");
   if (!container) return;
@@ -113,7 +132,7 @@ function renderOfficials(stateOrList) {
 
   container.innerHTML = "";
 
-  if (filtered.length === 0) {
+  if (!filtered || filtered.length === 0) {
     container.innerHTML = `<p>No officials match your search.</p>`;
     return;
   }
@@ -129,36 +148,43 @@ function renderOfficials(stateOrList) {
         <strong>${o.name}</strong><br/>
         ${o.office} • ${o.state}<br/>
         ${o.party}<br/>
-        <a href="${o.ballotpediaLink}" target="_blank">Ballotpedia</a>
+        <a href="${o.ballotpediaLink || '#'}" target="_blank" rel="noopener noreferrer">Ballotpedia</a>
       </div>
     `;
-   // card.addEventListener("click", () => openModal(o));
+    card.addEventListener("click", () => openModal(o));
     container.appendChild(card);
   });
 }
 
-function renderCalendar() {
-  const container = document.getElementById("calendar");
-  if (!container) return;
-  container.innerHTML = `<p>Calendar content will go here. You can wire in election dates, civic events, and deadlines.</p>`;
-}
-
-function renderRegistration() {
-  const container = document.getElementById("registration");
-  if (!container) return;
-  container.innerHTML = `<p>Registration info will go here. You can wire in mail-in ballot links, deadlines, and instructions.</p>`;
-}
+// Rankings helpers
 function computeRankings(rawList) {
   const ranked = rawList.filter(o => o.pollingScore !== null);
   const unranked = rawList.filter(o => o.pollingScore === null);
 
   ranked.sort((a, b) => b.pollingScore - a.pollingScore);
-  ranked.forEach((o, i) => o.computedRank = i + 1);
-  unranked.forEach(o => o.computedRank = null);
+  ranked.forEach((o, i) => (o.computedRank = i + 1));
+  unranked.forEach(o => (o.computedRank = null));
 
   return [...ranked, ...unranked];
 }
 
+function renderRankingCards(list) {
+  return list.map(o => {
+    const photoSrc = o.photo && o.photo.startsWith("http") ? o.photo : "assets/default-photo.png";
+    return `
+      <div class="ranking-card" data-party="${o.party}">
+        <img src="${photoSrc}" alt="${o.name}" class="official-photo" />
+        <div class="card-body">
+          <strong>${o.name}</strong><br/>
+          ${o.office} • ${o.state}<br/>
+          Rank: ${o.computedRank !== null ? o.computedRank : "N/A"}
+        </div>
+      </div>
+    `;
+  }).join("");
+}
+
+// Rankings
 function renderRankings() {
   const container = document.getElementById("rankings");
   if (!container) return;
@@ -187,21 +213,6 @@ function renderRankings() {
 
     const section = document.createElement("section");
     section.className = "ranking-category";
-function renderRankingCards(list) {
-  return list.map(o => {
-    const photoSrc = o.photo && o.photo.startsWith("http") ? o.photo : "default-photo.png";
-    return `
-      <div class="ranking-card" data-party="${o.party}">
-        <img src="${photoSrc}" alt="${o.name}" class="official-photo" />
-        <div class="card-body">
-          <strong>${o.name}</strong><br/>
-          ${o.office} • ${o.state}<br/>
-          Rank: ${o.computedRank !== null ? o.computedRank : "N/A"}
-        </div>
-      </div>
-    `;
-  }).join("");
-}
     section.innerHTML = `
       <div class="ranking-header" data-toggle="${key}">${label}</div>
       <div id="content-${key}" class="ranking-content">
@@ -224,29 +235,102 @@ function renderRankingCards(list) {
         </div>
       </div>
     `;
-
     container.appendChild(section);
   });
 
-    document.querySelectorAll(".ranking-header").forEach(header => {
+  // Toggle sections
+  document.querySelectorAll(".ranking-header").forEach(header => {
     header.addEventListener("click", () => {
       const key = header.getAttribute("data-toggle");
-      const content = document.getElementById(`content-${key}`);
-      if (content) {
-        content.classList.toggle("active");
-      }
+           const content = document.getElementById(`content-${key}`);
+      if (content) content.classList.toggle("active");
     });
   });
 
+  // Expand full rankings
   document.querySelectorAll(".expand-button").forEach(btn => {
     btn.addEventListener("click", () => {
       const targetId = btn.getAttribute("data-target");
       const target = document.getElementById(targetId);
-      if (target) {
-        const isHidden = target.style.display === "none";
-        target.style.display = isHidden ? "grid" : "none";
-        btn.textContent = isHidden ? "Hide Full Rankings" : "Show Full Rankings";
-      }
+      if (!target) return;
+      const isHidden = target.style.display === "none";
+      target.style.display = isHidden ? "grid" : "none";
+      btn.textContent = isHidden ? "Hide Full Rankings" : "Show Full Rankings";
     });
   });
+}
+
+// Calendar and Registration placeholders
+function renderCalendar() {
+  const container = document.getElementById("calendar");
+  if (!container) return;
+  container.innerHTML = `<p>Calendar content will go here. Wire in election dates, civic events, and deadlines.</p>`;
+}
+
+function renderRegistration() {
+  const container = document.getElementById("registration");
+  if (!container) return;
+  container.innerHTML = `<p>Registration info will go here. Wire in mail-in ballot links, deadlines, and instructions.</p>`;
+}
+
+// States
+function populateStates() {
+  const stateSelect = document.getElementById("stateSelect");
+  if (!stateSelect) return;
+  const states = Array.from(new Set(window.allOfficials.map(o => o.state))).sort();
+  states.forEach(s => {
+    const opt = document.createElement("option");
+    opt.value = s;
+    opt.textContent = s;
+    stateSelect.appendChild(opt);
+  });
+}
+
+// Modal
+function openModal(o) {
+  const modal = document.getElementById("modal");
+  const photo = document.getElementById("modalPhoto");
+  const name = document.getElementById("modalName");
+  const office = document.getElementById("modalOffice");
+  const state = document.getElementById("modalState");
+  const link = document.getElementById("modalLink");
+  const bio = document.getElementById("modalBio");
+  const details = document.getElementById("modalDetails");
+
+  photo.src = (o.photo && o.photo.startsWith("http")) ? o.photo : "assets/default-photo.png";
+  photo.alt = o.name;
+  name.textContent = o.name;
+  office.textContent = o.office;
+  state.textContent = o.state;
+  link.href = o.ballotpediaLink || "#";
+  bio.textContent = o.bio || "";
+
+  details.innerHTML = `
+    <li><strong>Party:</strong> ${o.party || "N/A"}</li>
+    <li><strong>Term:</strong> ${o.termStart || "?"} – ${o.termEnd || "?"}</li>
+    <li><strong>Polling:</strong> ${o.pollingScore ?? "N/A"} (${o.pollingSource || "N/A"})</li>
+  `;
+
+  modal.classList.remove("hidden");
+  modal.setAttribute("aria-hidden", "false");
+
+  // Close handlers
+  document.getElementById("modalClose").onclick = closeModal;
+  document.querySelector(".modal-overlay").onclick = closeModal;
+
+  // Escape to close
+  document.addEventListener("keydown", escCloseOnce);
+}
+
+function escCloseOnce(e) {
+  if (e.key === "Escape") {
+    closeModal();
+    document.removeEventListener("keydown", escCloseOnce);
+  }
+}
+
+function closeModal() {
+  const modal = document.getElementById("modal");
+  modal.classList.add("hidden");
+  modal.setAttribute("aria-hidden", "true");
 }
