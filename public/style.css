@@ -1,265 +1,79 @@
-/* ✅ Reset and base styles */
+/* Reset and base */
+* { box-sizing: border-box; }
 body {
   margin: 0;
   font-family: system-ui, sans-serif;
   background-color: #f9f9f9;
   color: #222;
 }
+a { color: #0066cc; text-decoration: none; }
+a:hover { text-decoration: underline; }
 
-a {
-  color: #0066cc;
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
-
-/* ✅ Header and logo */
+/* Header */
 .electorate-header {
   display: flex;
-  flex-direction: row;
   width: 100%;
   height: 140px;
   border-bottom: 2px solid #333;
   overflow: hidden;
 }
+.stripe { flex: 1; }
+.stripe.blue { background-color: #003366; }
+.stripe.grey { background-color: #cccccc; }
+.stripe.red { background-color: #b30000; }
+.center-logo { flex: 5; overflow: hidden; }
+.electorate-logo { max-height: 200%; max-width: 1000%; object-fit: contain; display: block; }
 
-.stripe {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.stripe.blue {
-  background-color: #003366;
-}
-.stripe.grey {
-  background-color: #cccccc;
-}
-.stripe.white {
-  background-color: #ffffff;
-}
-.stripe.red {
-  background-color: #b30000;
-}
-
-.center-logo {
-  flex: 5;
-  overflow: hidden;
-}
-
-.electorate-logo {
-  max-height: 200%;
-  max-width: 1000%;
-  object-fit: contain;
-  display: block;
-}
-/* ✅ Search bar */
-.search-bar {
-  padding: 1rem;
-  background-color: #fff;
-  border-bottom: 1px solid #ccc;
-}
-
-#searchInput {
-  width: 100%;
-  padding: 0.5rem;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-/* ✅ State selector */
-.state-selector {
+/* Search and selector */
+.search-bar, .state-selector {
   padding: 1rem;
   background-color: #fff;
   border-bottom: 1px solid #eee;
 }
-.state-selector select {
+#searchInput, #stateSelect {
+  width: 100%;
   padding: 0.5rem;
   font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-/* ✅ Tabs */
+/* Layout and tabs */
+.layout { display: flex; }
 .tabs-vertical {
   display: flex;
-  flex-direction: row;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 0.5rem;
   padding: 1rem;
   background-color: #f0f0f0;
+  min-width: 200px;
 }
-.tabs-vertical button {
+.tab-btn {
   padding: 0.5rem 1rem;
   font-size: 1rem;
   background-color: #fff;
   border: 1px solid #ccc;
   cursor: pointer;
 }
-.tabs-vertical button:hover {
-  background-color: #e6e6e6;
-}
+.tab-btn:hover { background-color: #e6e6e6; }
 
-/* ✅ Tab panes */
-.tab-content {
-  padding: 1rem;
-}
-.tab-pane {
-  display: none;
-}
-.tab-pane.active {
-  display: block;
-}
-/* ✅ Official and ranking cards */
-.ranking-card {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-  cursor: pointer;
-}
-.official-photo {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 4px;
-}
-.card-body {
-  flex: 1;
-  font-size: 0.95rem;
-}
+.tab-content { padding: 1rem; flex: 1; }
+.tab-pane { display: none; }
+.tab-pane.active { display: block; }
 
-/* ✅ Modal styling */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-  z-index: 1000;
-}
-.modal.hidden {
-  display: none;
-}
-.modal-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.5);
-}
-.modal-box {
-  position: relative;
-  margin: 5% auto;
-  max-width: 600px;
-  background-color: #fff;
-  padding: 2rem;
-  border-radius: 8px;
-  z-index: 1001;
-}
-.modal-content {
-  font-size: 1rem;
-}
-.modal-close {
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  background-color: #eee;
-  border: none;
-  cursor: pointer;
-}
-.modal-close:hover {
-  background-color: #ddd;
-}
-/* Modal container */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Modal box */
-#modalContent {
-  background-color: #fff;
-  max-width: 700px;
-  max-height: 80vh;
-  overflow-y: auto;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.3);
-  position: relative;
-}
-
-/* Close button */
-.modal-close {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: #ccc;
-  border: none;
-  font-size: 1.5rem;
-  font-weight: bold;
-  cursor: pointer;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-}
-.modal-close:hover {
-  background: #999;
-}
-
-/* Modal content layout */
-.modal-profile {
-  text-align: left;
-}
-.modal-photo {
-  width: 160px;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 6px;
-  margin-bottom: 1rem;
-}
-.modal-profile ul {
-  padding-left: 1.2rem;
-}
-.modal-profile li {
-  margin-bottom: 0.5rem;
-}
-/* ✅ Responsive tweaks */
-@media (max-width: 600px) {
-  .ranking-card {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .official-photo {
-    width: 100px;
-    height: 100px;
-  }
-}
-/* ✅ Grid layout for officials and rankings */
+/* Grid for officials and rankings */
 #officials, #rankings {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 1rem;
 }
 
-/* ✅ Slim card styling */
+/* Card styling */
 .ranking-card {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  padding: 1rem;
+  gap: 0.75rem;
+  padding: 0.75rem;
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 6px;
@@ -267,164 +81,67 @@ a:hover {
   cursor: pointer;
   transition: box-shadow 0.2s ease;
 }
-.ranking-card:hover {
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
+.ranking-card:hover { box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+.ranking-card[data-party="Republican"] { border-left: 6px solid #b30000; }
+.ranking-card[data-party="Democratic"] { border-left: 6px solid #003366; }
+.ranking-card[data-party="Independent"] { border-left: 6px solid #666666; }
+.ranking-card[data-party="Libertarian"] { border-left: 6px solid #f4c542; }
+.ranking-card[data-party="Green"] { border-left: 6px solid #228B22; }
+
 .official-photo {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   object-fit: cover;
   border-radius: 4px;
-  margin-bottom: 0.5rem;
 }
-.card-body {
-  text-align: center;
-  font-size: 0.9rem;
-}
-.modal-profile {
-  text-align: left;
-}
-.modal-photo {
-  width: 160px;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 6px;
-  margin-bottom: 1rem;
-}
-.modal-content h2 {
-  margin-top: 0;
-}
-.modal-content ul {
-  padding-left: 1.2rem;
-}
-.modal-content li {
-  margin-bottom: 0.5rem;
-}
-.modal-profile {
-  position: relative;
-  text-align: left;
-  padding: 1rem;
-}
-.modal-photo {
-  width: 160px;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 6px;
-  margin-bottom: 1rem;
-}
-.modal-close {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: #ccc;
-  border: none;
-  font-size: 1.5rem;
-  font-weight: bold;
-  cursor: pointer;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-}
-.modal-close:hover {
-  background: #999;
-}
-.ranking-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 1rem;
-}
-.expand-button {
-  margin: 1rem 0;
-  padding: 0.5rem 1rem;
-  font-weight: bold;
-  cursor: pointer;
-}
-.hidden {
-  display: none;
-}
-/* Modal container */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+.card-body { flex: 1; font-size: 0.95rem; }
 
-/* Modal box */
-#modalContent {
+/* Rankings sections */
+.ranking-category {
+  grid-column: 1 / -1;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
   background-color: #fff;
-  max-width: 900px;
-  max-height: 80vh;
-  overflow-y: auto;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.3);
-  position: relative;
 }
-
-/* Close button */
-.modal-close {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: #ccc;
-  border: none;
-  font-size: 1.5rem;
+.ranking-header {
+  background-color: #f0f0f0;
+  padding: 0.75rem 1rem;
   font-weight: bold;
   cursor: pointer;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
+  user-select: none;
 }
-.modal-close:hover {
-  background: #999;
-}
-
-/* Two-column layout */
-.modal-profile {
+.ranking-content { display: none; padding: 1rem; }
+.ranking-content.active { display: block; }
+.ranking-grid-two {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  text-align: left;
-}
-.modal-photo {
-  width: 100%;
-  max-width: 160px;
-  height: auto;
-  object-fit: cover;
-  border-radius: 6px;
+  gap: 1rem;
   margin-bottom: 1rem;
 }
-.modal-profile ul {
-  padding-left: 1.2rem;
+.ranking-row { display: flex; flex-direction: column; gap: 0.75rem; }
+.expand-button {
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #eee;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 4px;
 }
-.modal-profile li {
-  margin-bottom: 0.5rem;
-}
+.expand-button:hover { background-color: #ddd; }
 
-/* Responsive fallback */
-@media (max-width: 700px) {
-  .modal-profile {
-    grid-template-columns: 1fr;
-  }
-}
+/* Modal */
+.modal.hidden { display: none; }
 .modal {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0,0,0,0.5);
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 #modalContent {
   background-color: #fff;
   max-width: 900px;
@@ -438,7 +155,6 @@ a:hover {
   grid-template-columns: 300px 1fr;
   gap: 2rem;
 }
-
 .modal-close {
   position: absolute;
   top: 1rem;
@@ -451,510 +167,9 @@ a:hover {
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
 }
-.modal-close:hover {
-  background: #999;
-}
-
+.modal-close:hover { background: #999; }
 .modal-left {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 0.9rem;
-}
-.modal-left img {
-  width: 160px;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 6px;
-  margin-bottom: 1rem;
-}
-.modal-left p, .modal-left a {
-  margin: 0.25rem 0;
-  text-align: center;
-}
-
-.modal-right {
-  overflow-y: auto;
-  max-height: calc(80vh - 4rem);
-  font-size: 0.9rem;
-}
-.modal-right p {
-  margin: 0.5rem 0;
-}
-.modal-right ul {
-  padding-left: 1.2rem;
-}
-.modal-right li {
-  margin-bottom: 0.5rem;
-}
-
-@media (max-width: 700px) {
-  #modalContent {
-    grid-template-columns: 1fr;
-  }
-  .modal-left {
-    align-items: flex-start;
-  }
-}
-.ranking-card {
-  display: flex;
-  border-left: 8px solid transparent;
-  background-color: #f9f9f9;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border-radius: 6px;
-  box-shadow: 0 0 4px rgba(0,0,0,0.1);
-  align-items: center;
-  gap: 1rem;
-}
-
-.ranking-card[data-party="Republican"] {
-  border-left-color: #b30000;
-}
-.ranking-card[data-party="Democratic"] {
-  border-left-color: #003366;
-}
-.ranking-card[data-party="Independent"] {
-  border-left-color: #666666;
-}
-.ranking-card[data-party="Libertarian"] {
-  border-left-color: #f4c542;
-}
-.ranking-card[data-party="Green"] {
-  border-left-color: #228B22;
-}
-
-.official-photo {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 4px;
-}
-
-.card-body {
-  flex: 1;
-  font-size: 0.9rem;
-}
-.ranking-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin-bottom: 2rem;
-}
-
-.ranking-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.ranking-card {
-  display: flex;
-  border-left: 6px solid transparent;
-  background-color: #f9f9f9;
-  padding: 0.75rem;
-  border-radius: 6px;
-  box-shadow: 0 0 4px rgba(0,0,0,0.1);
-  align-items: center;
-  gap: 0.75rem;
-  transform: scale(0.95);
-  transform-origin: left center;
-}
-
-.ranking-card[data-party="Republican"] {
-  border-left-color: #b30000;
-}
-.ranking-card[data-party="Democratic"] {
-  border-left-color: #003366;
-}
-.ranking-card[data-party="Independent"] {
-  border-left-color: #666666;
-}
-.ranking-card[data-party="Libertarian"] {
-  border-left-color: #f4c542;
-}
-.ranking-card[data-party="Green"] {
-  border-left-color: #228B22;
-}
-
-.official-photo {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 4px;
-}
-
-.card-body {
-  flex: 1;
-  font-size: 0.85rem;
-}
-
-.expand-button {
-  margin-top: 1rem;
-  margin-left: 0;
-  padding: 0.5rem 1rem;
-  background-color: #eee;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  border-radius: 4px;
-}
-.expand-button:hover {
-  background-color: #ddd;
-}
-
-#fullRankings {
-  margin-top: 2rem;
-}
-.ranking-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.ranking-card {
-  display: flex;
-  border-left: 6px solid transparent;
-  background-color: #f9f9f9;
-  padding: 0.75rem;
-  border-radius: 6px;
-  box-shadow: 0 0 4px rgba(0,0,0,0.1);
-  align-items: center;
-  gap: 0.75rem;
-  width: 220px;
-}
-
-.ranking-card[data-party="Republican"] {
-  border-left-color: #b30000;
-}
-.ranking-card[data-party="Democratic"] {
-  border-left-color: #003366;
-}
-.ranking-card[data-party="Independent"] {
-  border-left-color: #666666;
-}
-.ranking-card[data-party="Libertarian"] {
-  border-left-color: #f4c542;
-}
-.ranking-card[data-party="Green"] {
-  border-left-color: #228B22;
-}
-
-.official-photo {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 4px;
-}
-
-.card-body {
-  flex: 1;
-  font-size: 0.85rem;
-}
-
-.expand-button {
-  margin-top: 0.5rem;
-  margin-left: 0;
-  padding: 0.5rem 1rem;
-  background-color: #eee;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  border-radius: 4px;
-}
-.expand-button:hover {
-  background-color: #ddd;
-}
-
-#fullRankings {
-  margin-top: 2rem;
-}
-.ranking-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.ranking-category {
-  margin-bottom: 3rem;
-}
-
-.expand-button {
-  margin-top: 0.5rem;
-  margin-left: 0;
-  padding: 0.5rem 1rem;
-  background-color: #eee;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  border-radius: 4px;
-}
-.expand-button:hover {
-  background-color: #ddd;
-}
-.ranking-category {
-  margin-bottom: 2rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  overflow: hidden;
-}
-
-.ranking-header {
-  background-color: #f0f0f0;
-  padding: 0.75rem 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  user-select: none;
-}
-
-.ranking-content {
-  display: none;
-  padding: 1rem;
-}
-
-.ranking-content.active {
-  display: block;
-}
-
-.ranking-grid-two {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.ranking-row {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.ranking-card {
-  display: flex;
-  border-left: 6px solid transparent;
-  background-color: #f9f9f9;
-  padding: 0.75rem;
-  border-radius: 6px;
-  box-shadow: 0 0 4px rgba(0,0,0,0.1);
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.ranking-card[data-party="Republican"] {
-  border-left-color: #b30000;
-}
-.ranking-card[data-party="Democratic"] {
-  border-left-color: #003366;
-}
-.ranking-card[data-party="Independent"] {
-  border-left-color: #666666;
-}
-.ranking-card[data-party="Libertarian"] {
-  border-left-color: #f4c542;
-}
-.ranking-card[data-party="Green"] {
-  border-left-color: #228B22;
-}
-
-.official-photo {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 4px;
-}
-
-.card-body {
-  flex: 1;
-  font-size: 0.85rem;
-}
-
-.expand-button {
-  margin-top: 0.5rem;
-  padding: 0.5rem 1rem;
-  background-color: #eee;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  border-radius: 4px;
-}
-.expand-button:hover {
-  background-color: #ddd;
-}
-.ranking-category {
-  margin-bottom: 2rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  overflow: hidden;
-}
-
-.ranking-header {
-  background-color: #f0f0f0;
-  padding: 0.75rem 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  user-select: none;
-}
-
-.ranking-content {
-  display: none;
-  padding: 1rem;
-}
-
-.ranking-content.active {
-  display: block;
-}
-
-.ranking-grid-two {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.ranking-row {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.ranking-card {
-  display: flex;
-  border-left: 6px solid transparent;
-  background-color: #f9f9f9;
-  padding: 0.75rem;
-  border-radius: 6px;
-  box-shadow: 0 0 4px rgba(0,0,0,0.1);
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.ranking-card[data-party="Republican"] {
-  border-left-color: #b30000;
-}
-.ranking-card[data-party="Democratic"] {
-  border-left-color: #003366;
-}
-.ranking-card[data-party="Independent"] {
-  border-left-color: #666666;
-}
-.ranking-card[data-party="Libertarian"] {
-  border-left-color: #f4c542;
-}
-.ranking-card[data-party="Green"] {
-  border-left-color: #228B22;
-}
-
-.official-photo {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 4px;
-}
-
-.card-body {
-  flex: 1;
-  font-size: 0.85rem;
-}
-
-.expand-button {
-  margin-bottom: 1rem;
-  padding: 0.5rem 1rem;
-  background-color: #eee;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  border-radius: 4px;
-}
-.expand-button:hover {
-  background-color: #ddd;
-}
-.ranking-category {
-  margin-bottom: 2rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  overflow: hidden;
-}
-
-.ranking-header {
-  background-color: #f0f0f0;
-  padding: 0.75rem 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  user-select: none;
-}
-
-.ranking-content {
-  display: none;
-  padding: 1rem;
-}
-
-.ranking-content.active {
-  display: block;
-}
-
-.ranking-grid-two {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.ranking-row {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.ranking-card {
-  display: flex;
-  border-left: 6px solid transparent;
-  background-color: #f9f9f9;
-  padding: 0.75rem;
-  border-radius: 6px;
-  box-shadow: 0 0 4px rgba(0,0,0,0.1);
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.ranking-card[data-party="Republican"] {
-  border-left-color: #b30000;
-}
-.ranking-card[data-party="Democratic"] {
-  border-left-color: #003366;
-}
-.ranking-card[data-party="Independent"] {
-  border-left-color: #666666;
-}
-.ranking-card[data-party="Libertarian"] {
-  border-left-color: #f4c542;
-}
-.ranking-card[data-party="Green"] {
-  border-left-color: #228B22;
-}
-
-.official-photo {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 4px;
-}
-
-.card-body {
-  flex: 1;
-  font-size: 0.85rem;
-}
-
-.expand-button {
-  margin-bottom: 1rem;
-  padding: 0.5rem 1rem;
-  background-color: #eee;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  border-radius: 4px;
-}
-.expand-button:hover {
-  background-color: #ddd;
-}
+  font-size:
