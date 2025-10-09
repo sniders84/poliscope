@@ -2,111 +2,120 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Electorate</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Civic Dashboard</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="data:,">
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+    }
+    .search-bar {
+      padding: 1rem;
+      background: #fff;
+      border-bottom: 1px solid #ccc;
+    }
+    #searchInput {
+      width: 100%;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .tabs-vertical {
+      display: flex;
+      flex-direction: column;
+      width: 200px;
+      background: #eee;
+      padding: 1rem;
+    }
+    .tabs-vertical button {
+      margin-bottom: 0.5rem;
+      padding: 0.5rem;
+      border: none;
+      background: #ddd;
+      cursor: pointer;
+    }
+    .tabs-vertical button:hover {
+      background: #ccc;
+    }
+    .tab-pane {
+      display: none;
+      padding: 1rem;
+    }
+    .tab-pane.active {
+      display: block;
+    }
+    .ranking-card {
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 0.5rem;
+      margin: 0.5rem;
+      background: #fff;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    .official-photo {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .ranking-grid-two {
+      display: flex;
+      gap: 1rem;
+    }
+    .ranking-row {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .ranking-header {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      cursor: pointer;
+    }
+    .expand-button {
+      margin: 1rem 0;
+      padding: 0.5rem;
+      background: #ddd;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-
-  <!-- ✅ Header -->
- <header class="electorate-header">
-  <div class="stripe blue"></div>
-  <div class="stripe grey"></div>
-  <div class="stripe white center-logo">
-    <img src="assets/electorate-logo.png" alt="Electorate Logo" class="electorate-logo" />
+  <div class="electorate-header">
+    <h1>Civic Dashboard</h1>
+    <p>Explore officials, rankings, and registration tools</p>
   </div>
-  <div class="stripe grey"></div>
-  <div class="stripe red"></div>
-</header>
 
-  <!-- ✅ Search Bar -->
   <div class="search-bar">
-  <input type="text" id="searchInput" placeholder="Search by name or state..." />
-</div>
-
-  <!-- ✅ State Selector -->
-  <div class="state-selector">
-    <label for="stateSelect">Select State:</label>
-    <select id="stateSelect"></select>
+    <input type="text" id="searchInput" placeholder="Search by name or state..." />
   </div>
 
-  <!-- ✅ Tabs -->
-  <div class="tabs-vertical">
-    <button data-tab="officials">Officials</button>
-    <button data-tab="rankings">Rankings</button>
-    <button data-tab="calendar">Calendar</button>
-    <button data-tab="registration">Registration</button>
+  <div style="display: flex;">
+    <div class="tabs-vertical">
+      <button data-tab="officials">Officials</button>
+      <button data-tab="rankings">Rankings</button>
+      <button data-tab="calendar">Calendar</button>
+      <button data-tab="registration">Registration</button>
+    </div>
+
+    <div style="flex: 1;">
+      <div id="officials" class="tab-pane"></div>
+      <div id="rankings" class="tab-pane"></div>
+      <div id="calendar" class="tab-pane"></div>
+      <div id="registration" class="tab-pane"></div>
+    </div>
   </div>
-
-  <!-- ✅ Tab Panes -->
-  <div class="tab-content">
-    <div id="officials" class="tab-pane active"></div>
-    <div id="rankings" class="tab-pane"></div>
-    <div id="calendar" class="tab-pane"></div>
-    <div id="registration" class="tab-pane"></div>
+  <!-- Optional Modal Placeholder -->
+  <div id="modal" style="display: none;">
+    <!-- You can wire in modal content here -->
   </div>
-  <!-- ✅ Modal Container -->
-  <div id="modal" class="modal hidden">
-  <div id="modalContent"></div>
-</div>
-
-  <!-- ✅ External Script -->
-  <script src="script.js" defer></script>
-
-  <!-- ✅ Inline Wiring -->
-  <script>
-    // ✅ Populate full state list
-    const states = [
-      "Alabama", "Alaska", "American Samoa", "Arizona", "Arkansas", "California", "Colorado",
-      "Connecticut", "Delaware", "District of Columbia", "Florida", "Georgia", "Guam", "Hawaii",
-      "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine",
-      "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana",
-      "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York",
-      "North Carolina", "North Dakota", "Northern Mariana Islands", "Ohio", "Oklahoma", "Oregon",
-      "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina", "South Dakota", "Tennessee",
-      "Texas", "U.S. Virgin Islands", "Utah", "Vermont", "Virginia", "Washington",
-      "West Virginia", "Wisconsin", "Wyoming"
-    ];
-    const select = document.getElementById("stateSelect");
-    states.forEach(state => {
-      const opt = document.createElement("option");
-      opt.value = state;
-      opt.textContent = state;
-      select.appendChild(opt);
-    });
-
-    // ✅ Tab switching logic
-    document.querySelectorAll(".tabs-vertical button").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const tab = btn.getAttribute("data-tab");
-        document.querySelectorAll(".tab-pane").forEach(p => p.classList.remove("active"));
-        const target = document.getElementById(tab);
-        if (target) target.classList.add("active");
-      });
-    });
-
-    // ✅ State change logic
-    select.addEventListener("change", e => {
-      const state = e.target.value;
-      if (typeof renderOfficials === "function") renderOfficials(state);
-      if (typeof renderCalendar === "function") renderCalendar();
-      if (typeof renderRegistration === "function") renderRegistration();
-    });
-
-    // ✅ Modal close logic
-    const closeModalBtn = document.getElementById("closeModal");
-    if (closeModalBtn) {
-      closeModalBtn.addEventListener("click", () => {
-        const modal = document.getElementById("modal");
-        if (modal) modal.classList.add("hidden");
-      });
-    }
-  </script>
-  .ranking-content {
-  display: none;
-}
-.ranking-content.active {
-  display: block;
-}
+  <script src="script.js"></script>
 </body>
 </html>
