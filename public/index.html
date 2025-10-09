@@ -5,25 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Electorate Dashboard</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:,">
 </head>
 <body>
-  <!-- ✅ Header with stripes and centered logo -->
   <div class="electorate-header">
     <div class="stripe blue"></div>
     <div class="stripe grey"></div>
     <div class="center-logo">
       <img src="logo.png" alt="Electorate Logo" class="electorate-logo" />
     </div>
-    <div class="stripe white"></div>
+    <div class="stripe grey"></div>
     <div class="stripe red"></div>
   </div>
-
-  <!-- ✅ Search bar -->
   <div class="search-bar">
     <input type="text" id="searchInput" placeholder="Search by name or state..." />
   </div>
 
-  <!-- ✅ State selector -->
   <div class="state-selector">
     <label for="stateSelect">Select a state:</label>
     <select id="stateSelect">
@@ -31,8 +28,6 @@
       <!-- Dynamically populated -->
     </select>
   </div>
-
-  <!-- ✅ Layout: vertical tabs and content -->
   <div style="display: flex;">
     <div class="tabs-vertical">
       <button data-tab="officials">Officials</button>
@@ -48,8 +43,6 @@
       <div id="registration" class="tab-pane"></div>
     </div>
   </div>
-
-  <!-- ✅ Modal container -->
   <div id="modal" class="modal hidden">
     <div class="modal-overlay"></div>
     <div id="modalContent">
@@ -67,8 +60,6 @@
       </div>
     </div>
   </div>
-
-  <!-- ✅ Script -->
   <script src="script.js"></script>
 </body>
 </html>
