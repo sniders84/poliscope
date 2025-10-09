@@ -8,6 +8,7 @@
   <link rel="icon" href="data:,">
 </head>
 <body>
+  <!-- Header -->
   <div class="electorate-header">
     <div class="stripe blue"></div>
     <div class="stripe grey"></div>
@@ -17,48 +18,58 @@
     <div class="stripe grey"></div>
     <div class="stripe red"></div>
   </div>
+
+  <!-- Search -->
   <div class="search-bar">
     <input type="text" id="searchInput" placeholder="Search by name or state..." />
   </div>
 
+  <!-- State selector -->
   <div class="state-selector">
     <label for="stateSelect">Select a state:</label>
     <select id="stateSelect">
       <option value="">-- Choose a state --</option>
     </select>
   </div>
-  <div style="display: flex;">
+
+  <!-- Tabs -->
+  <div class="layout">
     <div class="tabs-vertical">
-      <button data-tab="officials">Officials</button>
-      <button data-tab="rankings">Rankings</button>
-      <button data-tab="calendar">Calendar</button>
-      <button data-tab="registration">Registration</button>
+      <button class="tab-btn" data-tab="officials">Officials</button>
+      <button class="tab-btn" data-tab="rankings">Rankings</button>
+      <button class="tab-btn" data-tab="calendar">Calendar</button>
+      <button class="tab-btn" data-tab="registration">Registration</button>
     </div>
 
-    <div class="tab-content" style="flex: 1;">
+    <div class="tab-content">
       <div id="officials" class="tab-pane"></div>
       <div id="rankings" class="tab-pane"></div>
       <div id="calendar" class="tab-pane"></div>
       <div id="registration" class="tab-pane"></div>
     </div>
   </div>
-  <div id="modal" class="modal hidden">
-    <div class="modal-overlay"></div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal hidden" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-overlay" data-close="overlay"></div>
     <div id="modalContent">
-      <button class="modal-close" onclick="closeModal()">×</button>
+      <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+
       <div class="modal-left">
-        <img src="" alt="Official Photo" class="modal-photo" />
+        <img src="" alt="" class="modal-photo" id="modalPhoto" />
         <p id="modalName"></p>
         <p id="modalOffice"></p>
         <p id="modalState"></p>
-        <a id="modalLink" href="#" target="_blank">Ballotpedia</a>
+        <a id="modalLink" href="#" target="_blank" rel="noopener noreferrer">Ballotpedia</a>
       </div>
+
       <div class="modal-right">
         <p id="modalBio"></p>
         <ul id="modalDetails"></ul>
       </div>
     </div>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
