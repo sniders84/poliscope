@@ -10,10 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeModal = document.getElementById('close-modal');
   // Block 2: Load and merge all officials
   Promise.all([
-    fetch('data/senators.json').then(res => res.json()),
-    fetch('data/housereps.json').then(res => res.json()),
-    fetch('data/governors.json').then(res => res.json()),
-    fetch('data/ltgovernors.json').then(res => res.json())
+    fetch('public/senators.json').then(res => res.json()),
+    fetch('public/housereps.json').then(res => res.json()),
+    fetch('public/governors.json').then(res => res.json()),
+    fetch('public/ltgovernors.json').then(res => res.json())
   ]).then(([senators, reps, governors, ltgovs]) => {
     const allOfficials = [...senators, ...reps, ...governors, ...ltgovs];
     // Block 3: Render officials by selected state
