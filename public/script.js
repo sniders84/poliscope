@@ -5,10 +5,29 @@ document.addEventListener('DOMContentLoaded', () => {
   const stateSelector = document.getElementById('state-selector');
   const searchBar = document.getElementById('search-bar');
   const officialsContainer = document.getElementById('officials-container');
+  const federalContainer = document.getElementById('federal-container');
+  const calendarList = document.getElementById('calendar-list');
+  const calendarSection = document.getElementById('calendar-events');
   const modal = document.getElementById('official-modal');
   const modalContent = document.getElementById('modal-content');
   const closeModal = document.getElementById('close-modal');
 
+  // Tab switching logic
+  window.showTab = function(tabName) {
+    officialsContainer.style.display = 'none';
+    federalContainer.style.display = 'none';
+    calendarSection.style.display = 'none';
+
+    if (tabName === 'my-officials') {
+      officialsContainer.style.display = 'flex';
+    } else if (tabName === 'federal') {
+      federalContainer.style.display = 'flex';
+    } else if (tabName === 'calendar') {
+      calendarSection.style.display = 'block';
+    }
+  };
+
+  // Load officials from JSON
   Promise.all([
     fetch('senators.json').then(res => res.json()),
     fetch('housereps.json').then(res => res.json()),
@@ -23,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.error('Error loading officials:', error);
   });
 
+  // Render state-filtered officials
   function renderOfficials(stateFilter = null, query = '') {
     officialsContainer.innerHTML = '';
 
@@ -76,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Modal logic
   function openModal(o) {
     const modalPhoto = o.photo && o.photo.trim() !== '' ? o.photo : 'assets/default-photo.png';
 
@@ -146,22 +167,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  stateSelector.addEventListener('change', () => {
-    selectedState = stateSelector.value;
-    const query = searchBar.value.trim();
-    if (query === '') {
-      renderOfficials(selectedState, '');
-    } else {
-      renderOfficials(null, query);
-    }
-  });
-
-  searchBar.addEventListener('input', () => {
-    const query = searchBar.value.trim();
-    if (query === '') {
-      renderOfficials(selectedState, '');
-    } else {
-      renderOfficials(null, query);
-    }
-  });
-});
+  // Calendar civic dates
+  const calendarData = {
+    "North Carolina": [
+      "Oct 18 – Voter Registration Deadline",
+      "Oct 19–Nov 2 – Early Voting Period",
+      "Nov 5 – Election Day"
+    ],
+    "California": [
+      "Oct 21 – Registration Closes",
+      "Oct 22–Nov 4 – Early Voting",
+      "Nov 5 – Election Day"
+    ],
+    "
