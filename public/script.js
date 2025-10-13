@@ -42,7 +42,21 @@ document.addEventListener('DOMContentLoaded', () => {
       const photoSrc = o.photo && o.photo.trim() !== '' ? o.photo : 'assets/default-photo.png';
 
       const card = document.createElement('div');
-      const partyClass = (o.party || '').toLowerCase().replace(/\s+/g, '');
+     const partyMap = {
+  republican: 'republican',
+  democrat: 'democrat',
+  democratic: 'democrat',
+  independent: 'independent',
+  green: 'green',
+  libertarian: 'libertarian',
+  constitution: 'constitution',
+  'working families': 'workingfamilies',
+  progressive: 'progressive'
+};
+
+const rawParty = (o.party || '').toLowerCase().trim();
+const normalizedParty = partyMap[rawParty] || rawParty.replace(/\s+/g, '') || 'independent';
+card.className = `official-card ${normalizedParty}`;
       card.className = `official-card ${partyClass || 'independent'}`;
       card.innerHTML = `
         <div class="party-stripe"></div>
