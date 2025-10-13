@@ -89,12 +89,11 @@ card.innerHTML = `
       ${o.vetoes ? `<p><strong>Vetoes:</strong> ${o.vetoes}</p>` : ''}
       ${o.salary ? `<p><strong>Salary:</strong> ${o.salary}</p>` : ''}
       ${o.predecessor ? `<p><strong>Predecessor:</strong> ${o.predecessor}</p>` : ''}
-      ${o.pollingScore ? `<p><strong>Polling Score:</strong> ${o.pollingScore}</p>` : ''}
-      ${o.pollingSource ? `<p><a href="${o.pollingSource}" target="_blank">Polling Source</a></p>` : ''}
-      ${o.rank ? `<p><strong>Rank:</strong> ${o.rank}</p>` : ''}
-      ${o.pollingDate ? `<p><strong>Polling Date:</strong> ${o.pollingDate}</p>` : ''}
-      ${o.electionYear ? `<p><strong>Next Election:</strong> ${o.electionYear}</p>` : ''}
-      ${o.rankingNote ? `<p><strong>Ranking Note:</strong> ${o.rankingNote}</p>` : ''}
+     ${o.pollingScore && o.pollingSource ? `
+  <p><strong>Approval Rating:</strong> 
+    <a href="${o.pollingSource}" target="_blank">${o.pollingScore}</a>
+  </p>
+` : ''}
      ${o.contact ? `
   <h4>Contact</h4>
   ${o.contact.email ? `<p><strong>Email:</strong> <a href="mailto:${o.contact.email}">${o.contact.email}</a></p>` : ''}
