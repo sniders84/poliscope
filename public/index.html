@@ -2,72 +2,42 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Electorate Dashboard</title>
+  <title>Poliscope</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="data:,">
 </head>
 <body>
-  <!-- Header -->
-  <div class="electorate-header">
-    <div class="stripe blue"></div>
-    <div class="stripe grey"></div>
-    <div class="center-logo">
-      <img src="logo.png" alt="Electorate Logo" class="electorate-logo" />
-    </div>
-    <div class="stripe grey"></div>
-    <div class="stripe red"></div>
-  </div>
-
-  <!-- Search -->
-  <div class="search-bar">
-    <input type="text" id="searchInput" placeholder="Search by name or state..." />
-  </div>
-
-  <!-- State selector -->
-  <div class="state-selector">
-    <label for="stateSelect">Select a state:</label>
-    <select id="stateSelect">
-      <option value="">-- Choose a state --</option>
+  <header>
+    <h1>Poliscope</h1>
+    <label for="state-selector">Select Your State:</label>
+    <select id="state-selector">
+      <option value="Alabama">Alabama</option>
+      <option value="North Carolina">North Carolina</option>
+      <option value="Texas">Texas</option>
+      <option value="California">California</option>
+      <option value="New York">New York</option>
+      <!-- Add all states and territories -->
     </select>
-  </div>
+  </header>
 
-  <!-- Tabs -->
-  <div class="layout">
-    <div class="tabs-vertical">
-      <button class="tab-btn" data-tab="officials">Officials</button>
-      <button class="tab-btn" data-tab="rankings">Rankings</button>
-      <button class="tab-btn" data-tab="calendar">Calendar</button>
-      <button class="tab-btn" data-tab="registration">Registration</button>
-    </div>
+  <nav>
+    <button class="tab">My Officials</button>
+    <button class="tab">Calendar</button>
+    <button class="tab">Polls</button>
+    <button class="tab">Activist</button>
+    <button class="tab">Voting</button>
+  </nav>
 
-    <div class="tab-content">
-      <div id="officials" class="tab-pane"></div>
-      <div id="rankings" class="tab-pane"></div>
-      <div id="calendar" class="tab-pane"></div>
-      <div id="registration" class="tab-pane"></div>
-    </div>
-  </div>
+  <main>
+    <section id="my-officials">
+      <h2>My Officials</h2>
+      <div id="officials-container" class="grid"></div>
+    </section>
+    <!-- Future sections for other tabs -->
+  </main>
 
-  <!-- Modal -->
-  <div id="modal" class="modal hidden" aria-hidden="true" role="dialog" aria-modal="true">
-    <div class="modal-overlay" data-close="overlay"></div>
-    <div id="modalContent">
-      <button class="modal-close" id="modalClose" aria-label="Close">×</button>
-
-      <div class="modal-left">
-        <img src="" alt="" class="modal-photo" id="modalPhoto" />
-        <p id="modalName"></p>
-        <p id="modalOffice"></p>
-        <p id="modalState"></p>
-        <a id="modalLink" href="#" target="_blank" rel="noopener noreferrer">Ballotpedia</a>
-      </div>
-
-      <div class="modal-right">
-        <p id="modalBio"></p>
-        <ul id="modalDetails"></ul>
-      </div>
-    </div>
+  <div id="official-modal" class="modal">
+    <div class="modal-content" id="modal-content"></div>
+    <span id="close-modal">&times;</span>
   </div>
 
   <script src="script.js"></script>
