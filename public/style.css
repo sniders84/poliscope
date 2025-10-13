@@ -15,24 +15,26 @@ body {
 header {
   background: linear-gradient(to right, #2e74b5, #ccc, #fff, #ccc, #c0392b);
   color: #fff;
-  padding: 0.5rem 2rem;
+  padding: 1rem 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 192px;
 }
 
 .header-left {
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 100%;
 }
 
 .logo {
-  height: 192px;
-  width: auto;
+  height: 48px;           /* Keep vertical size fixed */
+  width: 192px;           /* Stretch horizontally */
+  object-fit: contain;
 }
 
+/* Header Controls */
 .header-right {
   display: flex;
   align-items: center;
@@ -121,6 +123,7 @@ main {
 /* Party Colors */
 .republican .party-stripe { background: #c0392b; }
 .democrat .party-stripe { background: #2e74b5; }
+.democratic .party-stripe { background: #2e74b5; }
 .independent .party-stripe { background: #7f8c8d; }
 .green .party-stripe { background: #27ae60; }
 .libertarian .party-stripe { background: #f1c40f; }
