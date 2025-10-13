@@ -4,35 +4,60 @@
   <meta charset="UTF-8" />
   <title>Poliscope</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" />
 </head>
 <body>
   <header>
-    <h1>Poliscope</h1>
-    <label for="state-selector">Select Your State:</label>
-    <select id="state-selector">
-      <option value="Alabama">Alabama</option>
-      <option value="North Carolina">North Carolina</option>
-      <option value="Texas">Texas</option>
-      <option value="California">California</option>
-      <option value="New York">New York</option>
-      <!-- Add all states and territories -->
-    </select>
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <img src="logo.png" alt="Poliscope Logo" class="logo" />
+      <h1>Poliscope</h1>
+    </div>
+    <div>
+      <label for="state-selector">State:</label>
+      <select id="state-selector">
+        <option value="Alabama">Alabama</option>
+        <option value="North Carolina">North Carolina</option>
+        <option value="Texas">Texas</option>
+        <option value="California">California</option>
+        <option value="New York">New York</option>
+        <!-- Add all states and territories -->
+      </select>
+    </div>
   </header>
 
   <nav>
-    <button class="tab">My Officials</button>
-    <button class="tab">Calendar</button>
-    <button class="tab">Polls</button>
-    <button class="tab">Activist</button>
-    <button class="tab">Voting</button>
+    <button class="tab" onclick="showTab('my-officials')">My Officials</button>
+    <button class="tab" onclick="showTab('calendar')">Calendar</button>
+    <button class="tab" onclick="showTab('polls')">Polls</button>
+    <button class="tab" onclick="showTab('activist')">Activist</button>
+    <button class="tab" onclick="showTab('voting')">Voting</button>
   </nav>
 
   <main>
-    <section id="my-officials">
+    <section id="my-officials" class="tab-content">
       <h2>My Officials</h2>
       <div id="officials-container" class="grid"></div>
     </section>
-    <!-- Future sections for other tabs -->
+
+    <section id="calendar" class="tab-content" style="display: none;">
+      <h2>Election Calendar</h2>
+      <p>Coming soon: synced election dates and deadlines for your state.</p>
+    </section>
+
+    <section id="polls" class="tab-content" style="display: none;">
+      <h2>Polls</h2>
+      <p>Coming soon: polling data and approval ratings for your state’s officials.</p>
+    </section>
+
+    <section id="activist" class="tab-content" style="display: none;">
+      <h2>Activist & Grassroots</h2>
+      <p>Coming soon: local organizations, events, and ways to get involved.</p>
+    </section>
+
+    <section id="voting" class="tab-content" style="display: none;">
+      <h2>Voting & Registration</h2>
+      <p>Coming soon: registration deadlines, ID requirements, and official links.</p>
+    </section>
   </main>
 
   <div id="official-modal" class="modal">
@@ -40,6 +65,14 @@
     <span id="close-modal">&times;</span>
   </div>
 
+  <script>
+    function showTab(id) {
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.style.display = 'none';
+      });
+      document.getElementById(id).style.display = 'block';
+    }
+  </script>
   <script src="script.js"></script>
 </body>
 </html>
