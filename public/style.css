@@ -38,7 +38,7 @@ header {
 }
 
 .header-logo {
-  height: 60px; /* Half of 120px */
+  height: 60px;
   width: auto;
   object-fit: contain;
 }
@@ -101,32 +101,53 @@ main {
   justify-content: center;
 }
 
-/* Responsive Tweaks */
-@media (max-width: 600px) {
-  .header-logo {
-    height: 50px;
-  }
-
-  header {
-    flex-direction: column;
-    align-items: center;
-    height: auto;
-    padding: 1rem;
-  }
-
-  .header-right {
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  nav {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .tab {
-    width: 90%;
-    text-align: center;
-  }
+/* Official Card */
+.official-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+  width: 240px;
+  height: 360px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 1rem;
 }
+
+.official-card:hover {
+  transform: scale(1.03);
+}
+
+.party-stripe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 100%;
+}
+
+/* Party Colors */
+.republican .party-stripe { background: #c0392b; }
+.democrat .party-stripe,
+.democratic .party-stripe { background: #2e74b5; }
+.independent .party-stripe { background: #7f8c8d; }
+.green .party-stripe { background: #27ae60; }
+.libertarian .party-stripe { background: #f1c40f; }
+.constitution .party-stripe { background: #8e44ad; }
+.workingfamilies .party-stripe { background: #34495e; }
+.progressive .party-stripe { background: #e67e22; }
+
+/* Photo Wrappers */
+.photo-wrapper {
+  width: 180px;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: #f0f0
