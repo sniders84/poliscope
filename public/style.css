@@ -11,35 +11,30 @@ body {
   color: #333;
 }
 
+/* Logo Banner ABOVE Header */
+.logo-banner {
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.logo-banner .logo {
+  height: 220px; /* Over 200px as requested */
+  width: auto;
+  object-fit: contain;
+}
+
 /* Header Layout */
 header {
   background: linear-gradient(to right, #2e74b5, #ccc, #fff, #ccc, #c0392b);
   color: #fff;
-  height: 80px; /* LOCKED height */
+  height: 80px;
   padding: 0 2rem;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Oversized Logo Floated Inside Header */
-.header-logo-wrapper {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 220px; /* over 200px as requested */
-  width: auto;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.logo {
-  height: 75%;
-  width: auto;
-  object-fit: contain;
 }
 
 /* Search Controls */
@@ -47,7 +42,6 @@ header {
   display: flex;
   align-items: center;
   gap: 1rem;
-  z-index: 1;
 }
 
 #search-bar {
