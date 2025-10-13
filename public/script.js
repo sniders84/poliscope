@@ -42,7 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const photoSrc = o.photo && o.photo.trim() !== '' ? o.photo : 'assets/default-photo.png';
 
       const card = document.createElement('div');
-      card.className = `official-card ${o.party?.toLowerCase() || 'independent'}`;
+      const partyClass = (o.party || '').toLowerCase().replace(/\s+/g, '');
+      card.className = `official-card ${partyClass || 'independent'}`;
       card.innerHTML = `
         <div class="party-stripe"></div>
         <div class="photo-wrapper">
