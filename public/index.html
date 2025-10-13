@@ -2,33 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MyCivics</title>
+  <title>Your Officials</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" />
 </head>
 <body>
-
-  <!-- Header with Centered Logo and Search Controls -->
   <header>
-    <div class="header-center">
-      <img src="assets/electorate-logo.png" alt="Electorate Logo" class="header-logo" />
+    <div class="header-left">
+      <img src="assets/electorate-logo.png" alt="Logo" class="logo" />
     </div>
     <div class="header-right">
       <input type="text" id="search-bar" placeholder="Search officials..." />
       <label for="state-selector">State:</label>
       <select id="state-selector">
-        <option value="">Select a state</option>
-        <!-- Full 50-state list -->
         <option value="Alabama">Alabama</option>
         <option value="Alaska">Alaska</option>
+        <option value="American Samoa">American Samoa</option>
         <option value="Arizona">Arizona</option>
         <option value="Arkansas">Arkansas</option>
         <option value="California">California</option>
         <option value="Colorado">Colorado</option>
         <option value="Connecticut">Connecticut</option>
         <option value="Delaware">Delaware</option>
+        <option value="District of Columbia">District of Columbia</option>
         <option value="Florida">Florida</option>
         <option value="Georgia">Georgia</option>
+        <option value="Guam">Guam</option>
         <option value="Hawaii">Hawaii</option>
         <option value="Idaho">Idaho</option>
         <option value="Illinois">Illinois</option>
@@ -53,10 +52,12 @@
         <option value="New York">New York</option>
         <option value="North Carolina">North Carolina</option>
         <option value="North Dakota">North Dakota</option>
+        <option value="Northern Mariana Islands">Northern Mariana Islands</option>
         <option value="Ohio">Ohio</option>
         <option value="Oklahoma">Oklahoma</option>
         <option value="Oregon">Oregon</option>
         <option value="Pennsylvania">Pennsylvania</option>
+        <option value="Puerto Rico">Puerto Rico</option>
         <option value="Rhode Island">Rhode Island</option>
         <option value="South Carolina">South Carolina</option>
         <option value="South Dakota">South Dakota</option>
@@ -64,6 +65,7 @@
         <option value="Texas">Texas</option>
         <option value="Utah">Utah</option>
         <option value="Vermont">Vermont</option>
+        <option value="Virgin Islands">Virgin Islands</option>
         <option value="Virginia">Virginia</option>
         <option value="Washington">Washington</option>
         <option value="West Virginia">West Virginia</option>
@@ -73,7 +75,6 @@
     </div>
   </header>
 
-  <!-- Navigation Tabs -->
   <nav>
     <button class="tab" onclick="showTab('my-officials')">My Officials</button>
     <button class="tab" onclick="showTab('calendar')">Calendar</button>
@@ -82,18 +83,46 @@
     <button class="tab" onclick="showTab('voting')">Voting</button>
   </nav>
 
-  <!-- Main Content -->
   <main>
-    <div id="officials-container" class="grid"></div>
+    <section id="my-officials" class="tab-content">
+      <h2>My Officials</h2>
+      <div id="officials-container" class="grid"></div>
+    </section>
+
+    <section id="calendar" class="tab-content" style="display: none;">
+      <h2>Election Calendar</h2>
+      <p>Coming soon: synced election dates and deadlines for your state.</p>
+    </section>
+
+    <section id="polls" class="tab-content" style="display: none;">
+      <h2>Polls</h2>
+      <p>Coming soon: polling data and approval ratings for your state’s officials.</p>
+    </section>
+
+    <section id="activist" class="tab-content" style="display: none;">
+      <h2>Activist & Grassroots</h2>
+      <p>Coming soon: local organizations, events, and ways to get involved.</p>
+    </section>
+
+    <section id="voting" class="tab-content" style="display: none;">
+      <h2>Voting & Registration</h2>
+      <p>Coming soon: registration deadlines, ID requirements, and official links.</p>
+    </section>
   </main>
 
-  <!-- Modal -->
   <div id="official-modal" class="modal">
-    <div id="modal-content" class="modal-content"></div>
+    <div class="modal-content" id="modal-content"></div>
     <span id="close-modal">&times;</span>
   </div>
 
-  <!-- Script -->
+  <script>
+    function showTab(id) {
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.style.display = 'none';
+      });
+      document.getElementById(id).style.display = 'block';
+    }
+  </script>
   <script src="script.js"></script>
 </body>
 </html>
