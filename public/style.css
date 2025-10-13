@@ -27,7 +27,7 @@ header {
 }
 
 .logo {
-  height: 180px;
+  height: 96px;
   width: auto;
 }
 
@@ -116,6 +116,7 @@ main {
   height: 100%;
 }
 
+/* Party Colors */
 .republican .party-stripe { background: #c0392b; }
 .democrat .party-stripe { background: #2e74b5; }
 .independent .party-stripe { background: #7f8c8d; }
