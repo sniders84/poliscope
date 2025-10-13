@@ -15,30 +15,22 @@ body {
 header {
   background: linear-gradient(to right, #2e74b5, #ccc, #fff, #ccc, #c0392b);
   color: #fff;
-  height: 80px;
+  height: 160px; /* enough to fit 144px logo comfortably */
   padding: 0 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: relative;
-  overflow: hidden;
 }
 
-/* Centered Logo */
-.header-center {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  height: 100%;
+/* Logo Left-Aligned, 3x Size */
+.header-left {
   display: flex;
   align-items: center;
-  justify-content: center;
-  pointer-events: none;
-  z-index: 0;
+  height: 100%;
 }
 
-.header-logo {
-  height: 60px;
+.logo {
+  height: 144px; /* 3x original size */
   width: auto;
   object-fit: contain;
 }
@@ -48,7 +40,6 @@ header {
   display: flex;
   align-items: center;
   gap: 1rem;
-  z-index: 1;
 }
 
 #search-bar {
@@ -71,11 +62,11 @@ nav {
   justify-content: center;
   background: #e0e0e0;
   padding: 0.5rem;
-  flex-wrap: wrap;
+  margin-top: 0;
 }
 
 nav .tab {
-  margin: 0.5rem;
+  margin: 0 1rem;
   padding: 0.5rem 1rem;
   background: #d0d0d0;
   border: none;
@@ -150,4 +141,89 @@ main {
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  background: #f0f0
+  background: #f0f0f0;
+}
+
+.photo-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 4px;
+}
+
+.official-info {
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.official-info h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+.official-info p {
+  font-size: 0.9rem;
+  margin: 0.2rem 0;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 2rem;
+  max-width: 700px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 8px;
+  position: relative;
+}
+
+.modal-content h2 {
+  margin-bottom: 1rem;
+}
+
+.modal-content p,
+.modal-content ul {
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.modal-content ul {
+  padding-left: 1.2rem;
+}
+
+.modal-photo-wrapper {
+  width: 300px;
+  height: 300px;
+  margin: 0 auto 1rem auto;
+  overflow: hidden;
+}
+
+.modal-photo-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 6px;
+}
+
+#close-modal {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
