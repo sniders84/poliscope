@@ -28,7 +28,8 @@ header {
 }
 
 .logo {
-  height: 40px;
+  height: 48px;
+  width: auto;
 }
 
 header h1 {
@@ -130,6 +131,7 @@ main {
 .workingfamilies .party-stripe { background: #34495e; }
 .progressive .party-stripe { background: #e67e22; }
 
+/* Photo Wrappers */
 .photo-wrapper {
   width: 180px;
   height: 180px;
