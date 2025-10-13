@@ -17,15 +17,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 120px;
+  height: 100px;
   padding: 0;
   border-bottom: 2px solid #ccc;
 }
 
 .masthead-logo {
-  height: auto;
-  width: 100%;
-  max-width: 1000px; /* Adjust based on your logo file */
+  height: 80px;
+  width: auto;
+  max-width: 95%;
   object-fit: contain;
 }
 
@@ -67,11 +67,11 @@ nav {
   justify-content: center;
   background: #e0e0e0;
   padding: 0.5rem;
-  margin-top: 0;
+  flex-wrap: wrap;
 }
 
 nav .tab {
-  margin: 0 1rem;
+  margin: 0.5rem;
   padding: 0.5rem 1rem;
   background: #d0d0d0;
   border: none;
@@ -231,4 +231,39 @@ main {
   right: 1.5rem;
   font-size: 1.5rem;
   cursor: pointer;
+}
+
+/* Responsive Tweaks */
+@media (max-width: 600px) {
+  .masthead {
+    height: 80px;
+  }
+
+  .masthead-logo {
+    height: 60px;
+    max-width: 90%;
+  }
+
+  header {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem;
+    align-items: flex-start;
+  }
+
+  .header-right {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tab {
+    width: 90%;
+    text-align: center;
+  }
 }
