@@ -95,12 +95,12 @@ card.innerHTML = `
       ${o.pollingDate ? `<p><strong>Polling Date:</strong> ${o.pollingDate}</p>` : ''}
       ${o.electionYear ? `<p><strong>Next Election:</strong> ${o.electionYear}</p>` : ''}
       ${o.rankingNote ? `<p><strong>Ranking Note:</strong> ${o.rankingNote}</p>` : ''}
-      ${o.contact ? `
-        <h4>Contact</h4>
-        <p><strong>Email:</strong> <a href="mailto:${o.contact.email}">${o.contact.email}</a></p>
-        <p><strong>Phone:</strong> ${o.contact.phone}</p>
-        <p><strong>Website:</strong> <a href="${o.contact.website}" target="_blank">${o.contact.website}</a></p>
-      ` : ''}
+     ${o.contact ? `
+  <h4>Contact</h4>
+  ${o.contact.email ? `<p><strong>Email:</strong> <a href="mailto:${o.contact.email}">${o.contact.email}</a></p>` : ''}
+  ${o.contact.phone ? `<p><strong>Phone:</strong> <a href="tel:${o.contact.phone}">${o.contact.phone}</a></p>` : ''}
+  ${o.contact.website ? `<p><strong>Website:</strong> <a href="${o.contact.website}" target="_blank">${o.contact.website}</a></p>` : ''}
+` : ''}
       ${o.ballotpediaLink ? `<p><a href="${o.ballotpediaLink}" target="_blank">Ballotpedia Profile</a></p>` : ''}
     `;
     modal.style.display = 'flex';
