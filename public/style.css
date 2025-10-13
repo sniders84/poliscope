@@ -124,11 +124,14 @@ main {
   height: 100%;
 }
 
-.republican .party-stripe { background: #c0392b; }
-.democrat .party-stripe { background: #2e74b5; }
-.independent .party-stripe { background: #7f8c8d; }
-.green .party-stripe { background: #27ae60; }
-.libertarian .party-stripe { background: #f1c40f; }
+.republican .party-stripe { background: #c0392b; }      /* Red */
+.democrat .party-stripe { background: #2e74b5; }        /* Blue */
+.independent .party-stripe { background: #7f8c8d; }     /* Gray */
+.green .party-stripe { background: #27ae60; }           /* Green */
+.libertarian .party-stripe { background: #f1c40f; }     /* Gold */
+.constitution .party-stripe { background: #8e44ad; }    /* Purple */
+.workingfamilies .party-stripe { background: #34495e; } /* Slate */
+.progressive .party-stripe { background: #e67e22; }     /* Orange */
 
 /* Modal */
 .modal {
