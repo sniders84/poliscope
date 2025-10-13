@@ -15,19 +15,21 @@ body {
 header {
   background: linear-gradient(to right, #2e74b5, #ccc, #fff, #ccc, #c0392b);
   color: #fff;
-  padding: 1rem 2rem;
+  padding: 0.5rem 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  min-height: 192px;
 }
 
 .header-left {
   display: flex;
   align-items: center;
+  height: 100%;
 }
 
 .logo {
-  height: 96px;
+  height: 192px;
   width: auto;
 }
 
