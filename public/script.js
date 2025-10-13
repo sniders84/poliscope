@@ -33,17 +33,19 @@ document.addEventListener('DOMContentLoaded', () => {
     filtered.forEach(o => {
       const card = document.createElement('div');
       card.className = `official-card ${o.party?.toLowerCase() || 'independent'}`;
-      card.innerHTML = `
-        <div class="party-stripe"></div>
-        <div class="photo-wrapper">
-          <img src="${o.photo}" alt="${o.name}" />
-        </div>
-        <div class="official-info">
-          <h3>${o.name}</h3>
-          <p>${o.office}</p>
-          <p>${o.termStart} → ${o.termEnd}</p>
-        </div>
-      `;
+card.innerHTML = `
+  <div class="party-stripe"></div>
+  <div class="photo-wrapper">
+    <img src="${o.photo}" alt="${o.name}" />
+  </div>
+  <div class="official-info">
+    <h3>${o.name}</h3>
+    <p><strong>Position:</strong> ${o.office}</p>
+    <p><strong>State:</strong> ${o.state}</p>
+    <p><strong>Term:</strong> ${o.termStart} → ${o.termEnd}</p>
+    <p><strong>Party:</strong> ${o.party}</p>
+  </div>
+`;
       card.addEventListener('click', () => openModal(o));
       officialsContainer.appendChild(card);
     });
