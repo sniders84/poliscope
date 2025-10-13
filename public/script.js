@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   ])
   .then(([senators, reps, governors, ltgovs]) => {
     allOfficials = [...senators, ...reps, ...governors, ...ltgovs];
-    renderOfficials(null, '');
+    renderOfficials(selectedState, '');
   })
   .catch(error => {
     console.error('Error loading officials:', error);
@@ -133,11 +133,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   stateSelector.addEventListener('change', () => {
     selectedState = stateSelector.value;
-    renderOfficials(null, searchBar.value.trim());
+    const query = searchBar.value.trim();
+    if (query === '') {
+      renderOfficials(selectedState, '');
+    } else {
+      renderOfficials(null, query);
+    }
   });
 
   searchBar.addEventListener('input', () => {
     const query = searchBar.value.trim();
-    renderOfficials(null, query);
+    if (query === '') {
+      renderOfficials(selectedState, '');
+    } else {
+      renderOfficials(null, query);
+    }
   });
 });
