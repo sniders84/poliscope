@@ -14,33 +14,22 @@ body {
 /* Header Gradient */
 header {
   background: linear-gradient(to right, #2e74b5, #ccc, #fff, #ccc, #c0392b);
-  color: #fff;
-  padding: 1rem 2rem;
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
+  height: 160px;
 }
 
-.header-left {
+.header-center {
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 1rem;
+  height: 100%;
 }
 
 .logo {
-  height: 48px;
+  height: 96px; /* double the original 48px */
   width: auto;
-}
-
-header h1 {
-  font-size: 1.8rem;
-  font-weight: bold;
-}
-
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
 }
 
 #search-bar {
