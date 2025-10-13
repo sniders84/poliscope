@@ -9,12 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalContent = document.getElementById('modal-content');
   const closeModal = document.getElementById('close-modal');
   // Block 2: Load and merge all officials
-  Promise.all([
-    fetch('public/senators.json').then(res => res.json()),
-    fetch('public/housereps.json').then(res => res.json()),
-    fetch('public/governors.json').then(res => res.json()),
-    fetch('public/ltgovernors.json').then(res => res.json())
-  ]).then(([senators, reps, governors, ltgovs]) => {
+Promise.all([
+  fetch('senators.json').then(res => res.json()),
+  fetch('housereps.json').then(res => res.json()),
+  fetch('governors.json').then(res => res.json()),
+  fetch('ltgovernors.json').then(res => res.json())
+])then(([senators, reps, governors, ltgovs]) => {
     const allOfficials = [...senators, ...reps, ...governors, ...ltgovs];
     // Block 3: Render officials by selected state
     function renderOfficials(state) {
