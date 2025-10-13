@@ -19,28 +19,41 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 80px;
+  position: relative;
 }
 
+/* Header Zones */
 .header-left {
+  flex: 1;
+}
+
+.header-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
 }
 
-.logo {
-  height: 48px;           /* Keep vertical size fixed */
-  width: 192px;           /* Stretch horizontally */
-  object-fit: contain;
-}
-
-/* Header Controls */
 .header-right {
   display: flex;
   align-items: center;
   gap: 1rem;
+  z-index: 1;
 }
 
+/* Logo Stretch */
+.logo {
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* Search Controls */
 #search-bar {
   padding: 0.5rem;
   font-size: 1rem;
@@ -122,7 +135,7 @@ main {
 
 /* Party Colors */
 .republican .party-stripe { background: #c0392b; }
-.democrat .party-stripe { background: #2e74b5; }
+.democrat .party-stripe,
 .democratic .party-stripe { background: #2e74b5; }
 .independent .party-stripe { background: #7f8c8d; }
 .green .party-stripe { background: #27ae60; }
