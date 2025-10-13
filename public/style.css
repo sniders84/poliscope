@@ -1,29 +1,16 @@
-/* Global Reset */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background: #f4f4f4;
-  color: #333;
-}
-
 /* Masthead Logo */
 .masthead {
   background: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100px;
+  height: 120px;
   padding: 0;
   border-bottom: 2px solid #ccc;
 }
 
 .masthead-logo {
-  height: 80px;
+  height: 100px;
   width: auto;
   max-width: 100%;
   object-fit: contain;
