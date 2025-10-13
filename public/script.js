@@ -71,18 +71,7 @@ card.innerHTML = `
           ${Object.entries(o.platformFollowThrough).map(([key, val]) => `<li><strong>${key}:</strong> ${val}</li>`).join('')}
         </ul>
       ` : ''}
-      ${o.proposals ? `<p><strong>Proposals:</strong> ${o.proposals}</p>` : ''}
-      ${o.engagement ? `
-        <h4>Engagement</h4>
-        <p><strong>Executive Orders (2025):</strong> ${o.engagement.executiveOrders2025 || 0}</p>
-        <p><strong>Social Media Surge:</strong> ${o.engagement.socialMediaSurge ? 'Yes' : 'No'}</p>
-        <p><strong>Earned Media Coverage:</strong> ${o.engagement.earnedMediaCoverage ? 'Yes' : 'No'}</p>
-        ${o.engagement.sources?.length ? `
-          <p><strong>Sources:</strong></p>
-          <ul>${o.engagement.sources.map(link => `<li><a href="${link}" target="_blank">${link}</a></li>`).join('')}</ul>
-        ` : ''}
-      ` : ''}
-      ${o.billsSigned?.length ? `
+        ${o.billsSigned?.length ? `
         <h4>Bills Signed</h4>
         <ul>${o.billsSigned.map(b => `<li><a href="${b.link}" target="_blank">${b.title}</a></li>`).join('')}</ul>
       ` : ''}
