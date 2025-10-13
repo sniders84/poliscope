@@ -17,26 +17,36 @@ document.addEventListener('DOMContentLoaded', () => {
   ])
   .then(([senators, reps, governors, ltgovs]) => {
     allOfficials = [...senators, ...reps, ...governors, ...ltgovs];
-    renderOfficials(selectedState);
+    renderOfficials(null, '');
   })
   .catch(error => {
     console.error('Error loading officials:', error);
   });
 
-  function renderOfficials(state, query = '') {
+  function renderOfficials(stateFilter = null, query = '') {
     officialsContainer.innerHTML = '';
-    const filtered = allOfficials.filter(o =>
-      o.state === state &&
-      (o.name.toLowerCase().includes(query) || o.office.toLowerCase().includes(query))
-    );
+
+    const queryLower = query.toLowerCase();
+    const filtered = allOfficials.filter(o => {
+      const matchesQuery =
+        o.name.toLowerCase().includes(queryLower) ||
+        o.office.toLowerCase().includes(queryLower) ||
+        o.state.toLowerCase().includes(queryLower);
+
+      const matchesState = stateFilter ? o.state === stateFilter : true;
+
+      return matchesQuery && matchesState;
+    });
 
     filtered.forEach(o => {
+      const photoSrc = o.photo && o.photo.trim() !== '' ? o.photo : 'assets/default-photo.png';
+
       const card = document.createElement('div');
       card.className = `official-card ${o.party?.toLowerCase() || 'independent'}`;
       card.innerHTML = `
         <div class="party-stripe"></div>
         <div class="photo-wrapper">
-          <img src="${o.photo}" alt="${o.name}" />
+          <img src="${photoSrc}" alt="${o.name}" onerror="this.onerror=null;this.src='assets/default-photo.png';" />
         </div>
         <div class="official-info">
           <h3>${o.name}</h3>
@@ -52,10 +62,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function openModal(o) {
+    const modalPhoto = o.photo && o.photo.trim() !== '' ? o.photo : 'assets/default-photo.png';
+
     modalContent.innerHTML = `
       <h2>${o.name}</h2>
       <div class="modal-photo-wrapper">
-        <img src="${o.photo}" alt="${o.name}" />
+        <img src="${modalPhoto}" alt="${o.name}" onerror="this.onerror=null;this.src='assets/default-photo.png';" />
       </div>
       <p><strong>Office:</strong> ${o.office}</p>
       <p><strong>Party:</strong> ${o.party}</p>
@@ -121,11 +133,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   stateSelector.addEventListener('change', () => {
     selectedState = stateSelector.value;
-    renderOfficials(selectedState, searchBar.value.trim().toLowerCase());
+    renderOfficials(null, searchBar.value.trim());
   });
 
   searchBar.addEventListener('input', () => {
-    const query = searchBar.value.trim().toLowerCase();
-    renderOfficials(selectedState, query);
+    const query = searchBar.value.trim();
+    renderOfficials(null, query);
   });
 });
