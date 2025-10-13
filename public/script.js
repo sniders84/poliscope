@@ -42,7 +42,7 @@ card.innerHTML = `
     <h3>${o.name}</h3>
     <p><strong>Position:</strong> ${o.office}</p>
     <p><strong>State:</strong> ${o.state}</p>
-    <p><strong>Term:</strong> ${o.termStart} → ${o.termEnd}</p>
+    <p><strong>Term:</strong> ${new Date(o.termStart).getFullYear()}–${new Date(o.termEnd).getFullYear()}</p>
     <p><strong>Party:</strong> ${o.party}</p>
   </div>
 `;
