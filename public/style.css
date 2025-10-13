@@ -11,9 +11,9 @@ body {
   color: #333;
 }
 
-/* Header + Logo */
+/* Header Gradient */
 header {
-  background: #1a1a1a;
+  background: linear-gradient(to right, #2e74b5, #ccc, #fff, #ccc, #c0392b);
   color: #fff;
   padding: 1rem 2rem;
   display: flex;
@@ -21,19 +21,39 @@ header {
   justify-content: space-between;
 }
 
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo {
+  height: 40px;
+}
+
 header h1 {
   font-size: 1.8rem;
   font-weight: bold;
 }
 
-header img.logo {
-  height: 40px;
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-header select {
-  margin-left: 1rem;
+#search-bar {
   padding: 0.5rem;
   font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+#state-selector {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
 }
 
 /* Navigation Tabs */
@@ -84,38 +104,15 @@ main {
   transition: transform 0.2s ease;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 1rem;
 }
 
 .official-card:hover {
   transform: scale(1.03);
 }
 
-.official-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  object-position: top center;
-}
-
-.official-info {
-  padding: 1rem;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.official-info h3 {
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-}
-
-.official-info p {
-  font-size: 0.9rem;
-  margin-bottom: 0.3rem;
-}
-
-/* Party Stripe */
 .party-stripe {
   position: absolute;
   top: 0;
@@ -124,14 +121,47 @@ main {
   height: 100%;
 }
 
-.republican .party-stripe { background: #c0392b; }      /* Red */
-.democrat .party-stripe { background: #2e74b5; }        /* Blue */
-.independent .party-stripe { background: #7f8c8d; }     /* Gray */
-.green .party-stripe { background: #27ae60; }           /* Green */
-.libertarian .party-stripe { background: #f1c40f; }     /* Gold */
-.constitution .party-stripe { background: #8e44ad; }    /* Purple */
-.workingfamilies .party-stripe { background: #34495e; } /* Slate */
-.progressive .party-stripe { background: #e67e22; }     /* Orange */
+.republican .party-stripe { background: #c0392b; }
+.democrat .party-stripe { background: #2e74b5; }
+.independent .party-stripe { background: #7f8c8d; }
+.green .party-stripe { background: #27ae60; }
+.libertarian .party-stripe { background: #f1c40f; }
+.constitution .party-stripe { background: #8e44ad; }
+.workingfamilies .party-stripe { background: #34495e; }
+.progressive .party-stripe { background: #e67e22; }
+
+.photo-wrapper {
+  width: 180px;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: #f0f0f0;
+}
+
+.photo-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 4px;
+}
+
+.official-info {
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.official-info h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+.official-info p {
+  font-size: 0.9rem;
+  margin: 0.2rem 0;
+}
 
 /* Modal */
 .modal {
@@ -161,13 +191,6 @@ main {
   margin-bottom: 1rem;
 }
 
-.modal-content img {
-  width: 100%;
-  max-height: 300px;
-  object-fit: cover;
-  margin-bottom: 1rem;
-}
-
 .modal-content p,
 .modal-content ul {
   margin-bottom: 1rem;
@@ -178,130 +201,25 @@ main {
   padding-left: 1.2rem;
 }
 
+.modal-photo-wrapper {
+  width: 300px;
+  height: 300px;
+  margin: 0 auto 1rem auto;
+  overflow: hidden;
+}
+
+.modal-photo-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 6px;
+}
+
 #close-modal {
   position: absolute;
   top: 1rem;
   right: 1.5rem;
   font-size: 1.5rem;
   cursor: pointer;
-}
-.official-card {
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 6px rgba(0,0,0,0.1);
-  width: 240px;
-  height: 360px;
-  overflow: hidden;
-  position: relative;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding-top: 1rem;
-}
-
-.official-card:hover {
-  transform: scale(1.03);
-}
-
-.party-stripe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 8px;
-  height: 100%;
-}
-
-.republican .party-stripe { background: #c0392b; }
-.democrat .party-stripe { background: #2e74b5; }
-.independent .party-stripe { background: #7f8c8d; }
-.green .party-stripe { background: #27ae60; }
-.libertarian .party-stripe { background: #f1c40f; }
-
-.photo-wrapper {
-  width: 180px;
-  height: 180px;
-  margin-bottom: 0.5rem;
-}
-
-.photo-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 4px;
-}
-
-.official-info {
-  text-align: center;
-  padding: 0 1rem;
-}
-
-.official-info h3 {
-  font-size: 1.1rem;
-  margin-bottom: 0.3rem;
-}
-
-.official-info p {
-  font-size: 0.9rem;
-  margin: 0.2rem 0;
-}
-
-/* Modal photo */
-.modal-photo-wrapper {
-  width: 300px;
-  height: 300px;
-  margin: 0 auto 1rem auto;
-}
-
-.modal-photo-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 6px;
-}
-.photo-wrapper {
-  width: 180px;
-  height: 180px;
-  margin-bottom: 0.5rem;
-}
-
-.photo-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 4px;
-}
-.photo-wrapper {
-  width: 180px;
-  height: 180px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  background: #f0f0f0;
-}
-
-.photo-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-  border-radius: 4px;
-}
-
-.modal-photo-wrapper {
-  width: 300px;
-  height: 300px;
-  margin: 0 auto 1rem auto;
-  overflow: hidden;
-}
-
-.modal-photo-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-  border-radius: 6px;
 }
