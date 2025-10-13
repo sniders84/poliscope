@@ -1,0 +1,75 @@
+{
+  "name": "Judge William H. Orrick",
+  "office": "U.S. District Judge, Northern District of California",
+  "party": "Democrat",
+  "state": "California",
+  "termStart": "2013-05-15",
+  "termEnd": "",
+  "photo": "assets/default-photo.png",
+  "bio": "Appointed by President Barack Obama. Known for rulings on immigration, civil rights, and tech-related cases.",
+  "education": "Yale University (BA), Boston College Law School (JD)",
+  "ballotpediaLink": "https://ballotpedia.org/William_H._Orrick",
+  "govtrackLink": "",
+  "contact": {
+    "website": "https://www.cand.uscourts.gov/judges/orrick-william-h-wh/"
+  },
+  "keyVotes": [
+    {
+      "vote": "Majority",
+      "title": "City and County of San Francisco v. Trump",
+      "link": "https://www.cand.uscourts.gov/wp-content/uploads/cases/Sanctuary-Cities-Ruling-Orrick.pdf",
+      "result": "Blocked federal funding cuts to sanctuary cities",
+      "date": "2017-04-25"
+    }
+  ]
+},
+{
+  "name": "Judge Jacqueline Scott Corley",
+  "office": "U.S. District Judge, Northern District of California",
+  "party": "Democrat",
+  "state": "California",
+  "termStart": "2022-03-30",
+  "termEnd": "",
+  "photo": "assets/default-photo.png",
+  "bio": "Appointed by President Joe Biden. Former magistrate judge with a focus on antitrust and tech litigation.",
+  "education": "UC Berkeley (BA), Harvard Law School (JD)",
+  "ballotpediaLink": "https://ballotpedia.org/Jacqueline_Scott_Corley",
+  "govtrackLink": "",
+  "contact": {
+    "website": "https://www.cand.uscourts.gov/judges/corley-jacqueline-scott-jsc/"
+  },
+  "keyVotes": [
+    {
+      "vote": "Majority",
+      "title": "FTC v. Microsoft Corp.",
+      "link": "https://www.cand.uscourts.gov/wp-content/uploads/cases/FTC-v-Microsoft-Opinion.pdf",
+      "result": "Denied FTC’s motion to block Microsoft’s acquisition of Activision",
+      "date": "2023-07-11"
+    }
+  ]
+},
+{
+  "name": "Judge Tanya S. Chutkan",
+  "office": "U.S. District Judge, District of Columbia",
+  "party": "Democrat",
+  "state": "District of Columbia",
+  "termStart": "2014-06-05",
+  "termEnd": "",
+  "photo": "assets/default-photo.png",
+  "bio": "Appointed by President Barack Obama. Presided over high-profile January 6 and election-related cases.",
+  "education": "George Washington University (BA), University of Pennsylvania Law School (JD)",
+  "ballotpediaLink": "https://ballotpedia.org/Tanya_S._Chutkan",
+  "govtrackLink": "",
+  "contact": {
+    "website": "https://www.dcd.uscourts.gov/content/judge-tanya-s-chutkan"
+  },
+  "keyVotes": [
+    {
+      "vote": "Majority",
+      "title": "United States v. Donald J. Trump (2023)",
+      "link": "https://www.dcd.uscourts.gov/sites/dcd/files/opinions/Trump_Pretrial_Orders.pdf",
+      "result": "Issued pretrial orders in federal election interference case",
+      "date": "2023-08-11"
+    }
+  ]
+}
