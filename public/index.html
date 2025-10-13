@@ -16,7 +16,6 @@
       <input type="text" id="search-bar" placeholder="Search officials..." />
       <label for="state-selector">State:</label>
       <select id="state-selector">
-        <!-- All states and territories -->
         <option value="Alabama">Alabama</option>
         <option value="North Carolina">North Carolina</option>
         <option value="Texas">Texas</option>
@@ -51,3 +50,30 @@
       <p>Coming soon: polling data and approval ratings for your state’s officials.</p>
     </section>
 
+    <section id="activist" class="tab-content" style="display: none;">
+      <h2>Activist & Grassroots</h2>
+      <p>Coming soon: local organizations, events, and ways to get involved.</p>
+    </section>
+
+    <section id="voting" class="tab-content" style="display: none;">
+      <h2>Voting & Registration</h2>
+      <p>Coming soon: registration deadlines, ID requirements, and official links.</p>
+    </section>
+  </main>
+
+  <div id="official-modal" class="modal">
+    <div class="modal-content" id="modal-content"></div>
+    <span id="close-modal">&times;</span>
+  </div>
+
+  <script>
+    function showTab(id) {
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.style.display = 'none';
+      });
+      document.getElementById(id).style.display = 'block';
+    }
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
