@@ -766,27 +766,51 @@
   "electionYear": "2024"
 },
   {
-    "name": "Paul Gosar",
-    "state": "Arizona",
-    "district": "9",
-    "party": "Republican",
-    "office": "U.S. Representative",
-    "slug": "paul-gosar",
-    "photo": "https://www.congress.gov/img/member/g000565_200.jpg",
-    "ballotpediaLink": "https://ballotpedia.org/Paul_Gosar",
-    "contact": {
-      "email": "",
-      "phone": "",
-      "website": ""
-    },
-    "social": {
-      "twitter": "",
-      "facebook": "",
-      "instagram": ""
-    },
-    "platform": "",
-    "bills": []
+  "name": "Paul Gosar",
+  "state": "Arizona",
+  "district": "9",
+  "party": "Republican",
+  "office": "U.S. Representative",
+  "slug": "paul-gosar",
+  "photo": "https://www.congress.gov/img/member/g000565_200.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Paul_Gosar",
+  "termStart": "2025-01-03",
+  "termEnd": "2027-01-03",
+  "contact": {
+    "email": "",
+    "phone": "202-225-2315",
+    "website": "https://gosar.house.gov"
   },
+  "bio": "Paul Gosar is the U.S. Representative for Arizona’s 9th congressional district, re-elected in 2024. A dentist by training, Gosar has served in Congress since 2011, previously representing AZ-4 before redistricting. He is known for his strong alignment with the House Freedom Caucus and his focus on energy independence, federal land use reform, and constitutional conservatism. Gosar serves on the House Natural Resources and Oversight Committees and frequently introduces legislation aimed at reducing federal control over Western lands.",
+  "education": "Creighton University (BS), Creighton University School of Dentistry (DDS)",
+  "endorsements": "House Freedom Fund, National Rifle Association, Arizona Farm Bureau",
+  "platform": "Energy independence, land use reform, constitutional rights, and federal spending cuts.",
+  "platformFollowThrough": {
+    "Energy Independence": "Advocated for expanded oil, gas, and rare earth mineral extraction on federal lands.",
+    "Land Use Reform": "Introduced bills to transfer federal land management authority to states.",
+    "Constitutional Rights": "Opposed surveillance expansion and defended religious liberty protections.",
+    "Federal Spending Cuts": "Proposed budget reductions across EPA, IRS, and Department of Education."
+  },
+  "proposals": "Eliminate federal grazing fees, defund climate oversight offices, and audit land acquisition programs.",
+  "engagement": {
+    "executiveOrders2025": 0,
+    "socialMediaSurge": true,
+    "earnedMediaCoverage": true,
+    "sources": [
+      "https://gosar.house.gov/news",
+      "https://ballotpedia.org/Paul_Gosar"
+    ]
+  },
+  "billsPassed": [
+    {
+      "title": "Western Land Sovereignty Act (H.R. 4821, 2023)",
+      "link": "https://www.congress.gov/bill/118th-congress/house-bill/4821"
+    }
+  ],
+  "salary": "$174,000/year",
+  "predecessor": "Greg Stanton (via redistricting)",
+  "electionYear": "2024"
+},
   {
     "name": "Rick Crawford",
     "state": "Arkansas",
