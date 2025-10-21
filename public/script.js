@@ -33,12 +33,19 @@ document.addEventListener('DOMContentLoaded', () => {
     officialsContainer.innerHTML = '';
 
     const queryLower = query.toLowerCase();
+    const filterByState = query === '';
 
-    const filteredGovs = governors.filter(o => o.state === stateFilter);
-    const filteredLtGovs = ltGovernors.filter(o => o.state === stateFilter);
-    const filteredSens = senators.filter(o => o.state === stateFilter);
+    const filteredGovs = governors.filter(o =>
+      (!filterByState || o.state === stateFilter)
+    );
+    const filteredLtGovs = ltGovernors.filter(o =>
+      (!filterByState || o.state === stateFilter)
+    );
+    const filteredSens = senators.filter(o =>
+      (!filterByState || o.state === stateFilter)
+    );
     const filteredReps = houseReps
-      .filter(o => o.state === stateFilter)
+      .filter(o => !filterByState || o.state === stateFilter)
       .sort((a, b) => parseInt(a.district) - parseInt(b.district));
 
     const allOfficials = [
@@ -46,13 +53,11 @@ document.addEventListener('DOMContentLoaded', () => {
       ...filteredLtGovs,
       ...filteredSens,
       ...filteredReps
-    ].filter(o => {
-      return (
-        o.name.toLowerCase().includes(queryLower) ||
-        o.office.toLowerCase().includes(queryLower) ||
-        o.state.toLowerCase().includes(queryLower)
-      );
-    });
+    ].filter(o =>
+      o.name.toLowerCase().includes(queryLower) ||
+      o.office.toLowerCase().includes(queryLower) ||
+      o.state.toLowerCase().includes(queryLower)
+    );
 
     const partyMap = {
       republican: 'republican',
@@ -177,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderOfficials(selectedState, searchBar.value.trim());
   });
 
-    searchBar.addEventListener('input', () => {
+  searchBar.addEventListener('input', () => {
     renderOfficials(selectedState, searchBar.value.trim());
   });
 });
