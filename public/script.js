@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch('ltgovernors.json').then(res => res.json())
   ])
   .then(([senators, reps, governors, ltgovs]) => {
-    allOfficials = [...senators, ...reps, ...governors, ...ltgovs];
+    allOfficials = [...governors, ...ltgovs, ...senators, ...reps];
     renderOfficials(selectedState, '');
   })
   .catch(error => {
@@ -38,6 +38,16 @@ document.addEventListener('DOMContentLoaded', () => {
       return matchesQuery && matchesState;
     });
 
+    // Sort by role: Governor, Lt. Governor, Senators, House Reps (by district)
+    const governors = filtered.filter(o => o.office === 'Governor');
+    const ltGovernors = filtered.filter(o => o.office === 'Lt. Governor');
+    const senators = filtered.filter(o => o.office === 'U.S. Senator');
+    const houseReps = filtered
+      .filter(o => o.office === 'U.S. Representative')
+      .sort((a, b) => parseInt(a.district) - parseInt(b.district));
+
+    const sortedOfficials = [...governors, ...ltGovernors, ...senators, ...houseReps];
+
     const partyMap = {
       republican: 'republican',
       democrat: 'democrat',
@@ -51,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
       progressive: 'progressive'
     };
 
-    filtered.forEach(o => {
+    sortedOfficials.forEach(o => {
       const rawParty = (o.party || '').toLowerCase().trim();
       const normalizedParty = partyMap[rawParty] || rawParty.replace(/\s+/g, '') || 'independent';
       const photoSrc = o.photo && o.photo.trim() !== '' ? o.photo : 'assets/default-photo.png';
@@ -160,18 +170,4 @@ document.addEventListener('DOMContentLoaded', () => {
     selectedState = stateSelector.value;
     const query = searchBar.value.trim();
     if (query === '') {
-      renderOfficials(selectedState, '');
-    } else {
-      renderOfficials(null, query);
-    }
-  });
-
-  searchBar.addEventListener('input', () => {
-    const query = searchBar.value.trim();
-    if (query === '') {
-      renderOfficials(selectedState, '');
-    } else {
-      renderOfficials(null, query);
-    }
-  });
-});
+      renderOfficials(selectedState,
