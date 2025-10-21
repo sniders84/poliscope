@@ -15,7 +15,7 @@ body {
 header {
   background: linear-gradient(to right, #2e74b5, #ccc, #fff, #ccc, #c0392b);
   color: #fff;
-  height: 160px; /* enough to fit 144px logo comfortably */
+  height: 160px;
   padding: 0 2rem;
   display: flex;
   align-items: center;
@@ -30,7 +30,7 @@ header {
 }
 
 .logo {
-  height: 144px; /* 3x original size */
+  height: 144px;
   width: auto;
   object-fit: contain;
 }
@@ -164,6 +164,14 @@ main {
 
 .official-info p {
   font-size: 0.9rem;
+  margin: 0.2rem 0;
+}
+
+/* District Display Styling */
+.district-display {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #555;
   margin: 0.2rem 0;
 }
 
