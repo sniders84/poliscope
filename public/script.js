@@ -38,7 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
       return matchesQuery && matchesState;
     });
 
-    // Sort by role: Governor, Lt. Governor, Senators, House Reps (by district)
     const governors = filtered.filter(o => o.office === 'Governor');
     const ltGovernors = filtered.filter(o => o.office === 'Lt. Governor');
     const senators = filtered.filter(o => o.office === 'U.S. Senator');
@@ -169,5 +168,10 @@ document.addEventListener('DOMContentLoaded', () => {
   stateSelector.addEventListener('change', () => {
     selectedState = stateSelector.value;
     const query = searchBar.value.trim();
-    if (query === '') {
-      renderOfficials(selectedState,
+    renderOfficials(selectedState, query);
+  });
+
+  searchBar.addEventListener('input', () => {
+    const query = searchBar.value.trim();
+    renderOfficials(selectedState, query);
+ 
