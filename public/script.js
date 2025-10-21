@@ -35,15 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const queryLower = query.toLowerCase();
     const filterByState = query === '';
 
-    const filteredGovs = governors.filter(o =>
-      (!filterByState || o.state === stateFilter)
-    );
-    const filteredLtGovs = ltGovernors.filter(o =>
-      (!filterByState || o.state === stateFilter)
-    );
-    const filteredSens = senators.filter(o =>
-      (!filterByState || o.state === stateFilter)
-    );
+    const filteredGovs = governors.filter(o => !filterByState || o.state === stateFilter);
+    const filteredLtGovs = ltGovernors.filter(o => !filterByState || o.state === stateFilter);
+    const filteredSens = senators.filter(o => !filterByState || o.state === stateFilter);
     const filteredReps = houseReps
       .filter(o => !filterByState || o.state === stateFilter)
       .sort((a, b) => parseInt(a.district) - parseInt(b.district));
@@ -102,6 +96,59 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  function showCalendar() {
+    officialsContainer.innerHTML = '<h2>State Calendar</h2>';
+
+    fetch('state-calendars.json')
+      .then(res => res.json())
+      .then(data => {
+        const events = data[selectedState] || [];
+        if (events.length === 0) {
+          officialsContainer.innerHTML += '<p>No events found for this state.</p>';
+          return;
+        }
+
+        const list = document.createElement('ul');
+        events.forEach(event => {
+          const item = document.createElement('li');
+          item.innerHTML = `
+            <strong>${event.title}</strong><br>
+            ${event.date} — ${event.location} (${event.type})
+          `;
+          list.appendChild(item);
+        });
+        officialsContainer.appendChild(list);
+      })
+      .catch(err => {
+        officialsContainer.innerHTML += '<p>Error loading calendar.</p>';
+        console.error(err);
+      });
+  }
+
+  function showActivist() {
+    officialsContainer.innerHTML = '<h2>National Grassroots Organizations</h2>';
+
+    fetch('activist-groups.json')
+      .then(res => res.json())
+      .then(data => {
+        const list = document.createElement('ul');
+        data.forEach(group => {
+          const item = document.createElement('li');
+          item.innerHTML = `
+            <strong>${group.name}</strong><br>
+            ${group.description}<br>
+            <a href="${group.website}" target="_blank">${group.website}</a>
+          `;
+          list.appendChild(item);
+        });
+        officialsContainer.appendChild(list);
+      })
+      .catch(err => {
+        officialsContainer.innerHTML += '<p>Error loading activist groups.</p>';
+        console.error(err);
+      });
+  }
+
   function openModal(o) {
     const modalPhoto = o.photo && o.photo.trim() !== '' ? o.photo : 'assets/default-photo.png';
 
@@ -152,14 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ${o.pollingScore && o.pollingSource ? `
         <p><strong>Approval Rating:</strong> 
           <a href="${o.pollingSource}" target="_blank">${o.pollingScore}</a>
-        </p>
-      ` : ''}
-      ${o.contact ? `
-        <h4>Contact</h4>
-        ${o.contact.email ? `<p><strong>Email:</strong> <a href="mailto:${o.contact.email}">${o.contact.email}</a></p>` : ''}
-        ${o.contact.phone ? `<p><strong>Phone:</strong> <a href="tel:${o.contact.phone}">${o.contact.phone}</a></p>` : ''}
-        ${o.contact.website ? `<p><strong>Website:</strong> <a href="${o.contact.website}" target="_blank">${o.contact.website}</a></p>` : ''}
-      ` : ''}
+        </p      ` : ''}
       ${o.ballotpediaLink ? `<p><a href="${o.ballotpediaLink}" target="_blank">Ballotpedia Profile</a></p>` : ''}
       ${o.govtrackLink ? `<p><a href="${o.govtrackLink}" target="_blank">GovTrack Profile</a></p>` : ''}
       ${o.govtrackReportCard ? `<p><a href="${o.govtrackReportCard}" target="_blank">GovTrack Report Card</a></p>` : ''}
