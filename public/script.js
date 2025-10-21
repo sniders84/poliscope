@@ -1,5 +1,8 @@
 let selectedState = 'North Carolina';
-let allOfficials = [];
+let governors = [];
+let ltGovernors = [];
+let senators = [];
+let houseReps = [];
 
 document.addEventListener('DOMContentLoaded', () => {
   const stateSelector = document.getElementById('state-selector');
@@ -8,11 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('official-modal');
   const modalContent = document.getElementById('modal-content');
   const closeModal = document.getElementById('close-modal');
-
-  let governors = [];
-  let ltGovernors = [];
-  let senators = [];
-  let houseReps = [];
 
   Promise.all([
     fetch('governors.json').then(res => res.json()),
@@ -35,30 +33,26 @@ document.addEventListener('DOMContentLoaded', () => {
     officialsContainer.innerHTML = '';
 
     const queryLower = query.toLowerCase();
-    const filtered = [...governors, ...ltGovernors, ...senators, ...houseReps].filter(o => {
-      const matchesQuery =
-        o.name.toLowerCase().includes(queryLower) ||
-        o.office.toLowerCase().includes(queryLower) ||
-        o.state.toLowerCase().includes(queryLower);
 
-      const matchesState = stateFilter ? o.state === stateFilter : true;
-
-      return matchesQuery && matchesState;
-    });
-
-    const sortedGovernors = filtered.filter(o => o.office === 'Governor');
-    const sortedLtGovernors = filtered.filter(o => o.office === 'Lt. Governor');
-    const sortedSenators = filtered.filter(o => o.office === 'U.S. Senator');
-    const sortedHouseReps = filtered
-      .filter(o => o.office === 'U.S. Representative')
+    const filteredGovs = governors.filter(o => o.state === stateFilter);
+    const filteredLtGovs = ltGovernors.filter(o => o.state === stateFilter);
+    const filteredSens = senators.filter(o => o.state === stateFilter);
+    const filteredReps = houseReps
+      .filter(o => o.state === stateFilter)
       .sort((a, b) => parseInt(a.district) - parseInt(b.district));
 
-    const sortedOfficials = [
-      ...sortedGovernors,
-      ...sortedLtGovernors,
-      ...sortedSenators,
-      ...sortedHouseReps
-    ];
+    const allOfficials = [
+      ...filteredGovs,
+      ...filteredLtGovs,
+      ...filteredSens,
+      ...filteredReps
+    ].filter(o => {
+      return (
+        o.name.toLowerCase().includes(queryLower) ||
+        o.office.toLowerCase().includes(queryLower) ||
+        o.state.toLowerCase().includes(queryLower)
+      );
+    });
 
     const partyMap = {
       republican: 'republican',
@@ -73,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
       progressive: 'progressive'
     };
 
-    sortedOfficials.forEach(o => {
+    allOfficials.forEach(o => {
       const rawParty = (o.party || '').toLowerCase().trim();
       const normalizedParty = partyMap[rawParty] || rawParty.replace(/\s+/g, '') || 'independent';
       const photoSrc = o.photo && o.photo.trim() !== '' ? o.photo : 'assets/default-photo.png';
@@ -183,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderOfficials(selectedState, searchBar.value.trim());
   });
 
-  searchBar.addEventListener('input', () => {
+    searchBar.addEventListener('input', () => {
     renderOfficials(selectedState, searchBar.value.trim());
   });
 });
