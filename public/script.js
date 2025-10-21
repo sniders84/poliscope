@@ -9,6 +9,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalContent = document.getElementById('modal-content');
   const closeModal = document.getElementById('close-modal');
 
+  let governors = [];
+  let ltGovernors = [];
+  let senators = [];
+  let houseReps = [];
+
   Promise.all([
     fetch('governors.json').then(res => res.json()),
     fetch('ltgovernors.json').then(res => res.json()),
@@ -16,21 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch('housereps.json').then(res => res.json())
   ])
   .then(([govs, ltgovs, sens, reps]) => {
-    const filteredGovs = govs.filter(o => o.state === selectedState);
-    const filteredLtGovs = ltgovs.filter(o => o.state === selectedState);
-    const filteredSens = sens.filter(o => o.state === selectedState);
-    const filteredReps = reps.filter(o => o.state === selectedState);
-
-    const sortedReps = filteredReps.sort((a, b) => parseInt(a.district) - parseInt(b.district));
-
-    allOfficials = [
-      ...filteredGovs,
-      ...filteredLtGovs,
-      ...filteredSens,
-      ...sortedReps
-    ];
-
-    renderOfficials('', '');
+    governors = govs;
+    ltGovernors = ltgovs;
+    senators = sens;
+    houseReps = reps;
+    renderOfficials(selectedState, '');
   })
   .catch(error => {
     console.error('Error loading officials:', error);
@@ -40,14 +35,30 @@ document.addEventListener('DOMContentLoaded', () => {
     officialsContainer.innerHTML = '';
 
     const queryLower = query.toLowerCase();
-    const filtered = allOfficials.filter(o => {
+    const filtered = [...governors, ...ltGovernors, ...senators, ...houseReps].filter(o => {
       const matchesQuery =
         o.name.toLowerCase().includes(queryLower) ||
         o.office.toLowerCase().includes(queryLower) ||
         o.state.toLowerCase().includes(queryLower);
 
-      return matchesQuery;
+      const matchesState = stateFilter ? o.state === stateFilter : true;
+
+      return matchesQuery && matchesState;
     });
+
+    const sortedGovernors = filtered.filter(o => o.office === 'Governor');
+    const sortedLtGovernors = filtered.filter(o => o.office === 'Lt. Governor');
+    const sortedSenators = filtered.filter(o => o.office === 'U.S. Senator');
+    const sortedHouseReps = filtered
+      .filter(o => o.office === 'U.S. Representative')
+      .sort((a, b) => parseInt(a.district) - parseInt(b.district));
+
+    const sortedOfficials = [
+      ...sortedGovernors,
+      ...sortedLtGovernors,
+      ...sortedSenators,
+      ...sortedHouseReps
+    ];
 
     const partyMap = {
       republican: 'republican',
@@ -62,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
       progressive: 'progressive'
     };
 
-    filtered.forEach(o => {
+    sortedOfficials.forEach(o => {
       const rawParty = (o.party || '').toLowerCase().trim();
       const normalizedParty = partyMap[rawParty] || rawParty.replace(/\s+/g, '') || 'independent';
       const photoSrc = o.photo && o.photo.trim() !== '' ? o.photo : 'assets/default-photo.png';
@@ -169,12 +180,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   stateSelector.addEventListener('change', () => {
     selectedState = stateSelector.value;
-    const query = searchBar.value.trim();
-    renderOfficials('', query);
+    renderOfficials(selectedState, searchBar.value.trim());
   });
 
   searchBar.addEventListener('input', () => {
-    const query = searchBar.value.trim();
-    renderOfficials('', query);
+    renderOfficials(selectedState, searchBar.value.trim());
   });
 });
