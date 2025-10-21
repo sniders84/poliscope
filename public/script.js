@@ -56,6 +56,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const normalizedParty = partyMap[rawParty] || rawParty.replace(/\s+/g, '') || 'independent';
       const photoSrc = o.photo && o.photo.trim() !== '' ? o.photo : 'assets/default-photo.png';
 
+      const districtDisplay = o.office === 'U.S. Representative' && o.district
+        ? `<p class="district-display"><strong>District:</strong> ${o.district}</p>`
+        : '';
+
       const card = document.createElement('div');
       card.className = `official-card ${normalizedParty}`;
       card.innerHTML = `
@@ -66,6 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="official-info">
           <h3>${o.name}</h3>
           <p><strong>Position:</strong> ${o.office}</p>
+          ${districtDisplay}
           <p><strong>State:</strong> ${o.state}</p>
           <p><strong>Term:</strong> ${new Date(o.termStart).getFullYear()}–${new Date(o.termEnd).getFullYear()}</p>
           <p><strong>Party:</strong> ${o.party}</p>
@@ -79,12 +84,17 @@ document.addEventListener('DOMContentLoaded', () => {
   function openModal(o) {
     const modalPhoto = o.photo && o.photo.trim() !== '' ? o.photo : 'assets/default-photo.png';
 
+    const districtDisplay = o.office === 'U.S. Representative' && o.district
+      ? `<p><strong>District:</strong> ${o.district}</p>`
+      : '';
+
     modalContent.innerHTML = `
       <h2>${o.name}</h2>
       <div class="modal-photo-wrapper">
         <img src="${modalPhoto}" alt="${o.name}" onerror="this.onerror=null;this.src='assets/default-photo.png';" />
       </div>
       <p><strong>Office:</strong> ${o.office}</p>
+      ${districtDisplay}
       <p><strong>Party:</strong> ${o.party}</p>
       <p><strong>State:</strong> ${o.state}</p>
       <p><strong>Term:</strong> ${o.termStart} → ${o.termEnd}</p>
