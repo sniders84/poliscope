@@ -51,137 +51,278 @@
   "electionYear": "2024"
 },
   {
-    "name": "Shomari Figures",
-    "state": "Alabama",
-    "district": "2",
-    "party": "Democratic",
-    "office": "U.S. Representative",
-    "slug": "shomari-figures",
-    "photo": "https://www.congress.gov/img/member/68013eaa4e51529406f18e42_200.jpg",
-    "ballotpediaLink": "https://ballotpedia.org/Shomari_Figures",
-    "contact": {
-      "email": "",
-      "phone": "",
-      "website": ""
-    },
-    "social": {
-      "twitter": "",
-      "facebook": "",
-      "instagram": ""
-    },
-    "platform": "",
-    "bills": []
+  "name": "Shomari Figures",
+  "state": "Alabama",
+  "district": "2",
+  "party": "Democratic",
+  "office": "U.S. Representative",
+  "slug": "shomari-figures",
+  "photo": "https://www.congress.gov/img/member/68013eaa4e51529406f18e42_200.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Shomari_Figures",
+  "termStart": "2025-01-03",
+  "termEnd": "2027-01-03",
+  "contact": {
+    "email": "",
+    "phone": "202-225-2901",
+    "website": "https://figures.house.gov"
   },
+  "bio": "Shomari Coleman Figures is the U.S. Representative for Alabama’s 2nd congressional district, elected in 2024. A native of Mobile, Alabama, Figures is the son of civil rights attorney and former state senator Michael Figures and current Alabama State Senator Vivian Davis Figures. He earned both his undergraduate and law degrees from the University of Alabama. Prior to Congress, he served in the U.S. Department of Justice as a senior advisor to the Deputy Attorney General and worked on civil rights enforcement and criminal justice reform. Figures is known for his advocacy on behalf of underserved communities in Alabama’s Black Belt and for continuing his family’s legacy of public service.",
+  "education": "University of Alabama (BA, JD)",
+  "endorsements": "Congressional Black Caucus PAC, Alabama AFL-CIO, New South Alliance",
+  "platform": "Voting rights, economic justice, healthcare access, and criminal justice reform.",
+  "platformFollowThrough": {
+    "Voting Rights": "Introduced legislation to restore key provisions of the Voting Rights Act and expand voter access in rural areas.",
+    "Economic Justice": "Advocated for targeted federal investment in Alabama’s Black Belt through infrastructure and small business grants.",
+    "Healthcare Access": "Supports Medicaid expansion and introduced a bill to increase funding for rural health clinics.",
+    "Criminal Justice Reform": "Backed legislation to end cash bail and reduce sentencing disparities for nonviolent offenses."
+  },
+  "proposals": "Create a federal rural equity initiative, expand Pell Grant access, and increase funding for HBCUs.",
+  "engagement": {
+    "executiveOrders2025": 0,
+    "socialMediaSurge": true,
+    "earnedMediaCoverage": true,
+    "sources": [
+      "https://figures.house.gov",
+      "https://en.wikipedia.org/wiki/Shomari_Figures",
+      "https://www.figuresforcongress.com/meet-shomari"
+    ]
+  },
+  "billsPassed": [],
+  "salary": "$174,000/year",
+  "predecessor": "Barry Moore",
+  "electionYear": "2024"
+},
   {
-    "name": "Mike Rogers",
-    "state": "Alabama",
-    "district": "3",
-    "party": "Republican",
-    "office": "U.S. Representative",
-    "slug": "mike-rogers",
-    "photo": "https://www.congress.gov/img/member/116_rp_al_3_rogers_mike_200.jpg",
-    "ballotpediaLink": "https://ballotpedia.org/Mike_Rogers_(Alabama)",
-    "contact": {
-      "email": "",
-      "phone": "",
-      "website": ""
-    },
-    "social": {
-      "twitter": "",
-      "facebook": "",
-      "instagram": ""
-    },
-    "platform": "",
-    "bills": []
+  "name": "Mike Rogers",
+  "state": "Alabama",
+  "district": "3",
+  "party": "Republican",
+  "office": "U.S. Representative",
+  "slug": "mike-rogers",
+  "photo": "https://www.congress.gov/img/member/116_rp_al_3_rogers_mike_200.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Mike_Rogers_(Alabama)",
+  "termStart": "2025-01-03",
+  "termEnd": "2027-01-03",
+  "contact": {
+    "email": "",
+    "phone": "202-225-3261",
+    "website": "https://mikerogers.house.gov"
   },
+  "bio": "Mike Rogers is the U.S. Representative for Alabama’s 3rd congressional district, having served in Congress since 2003. A native of Calhoun County, Rogers began his political career in the Alabama House of Representatives. He holds degrees in political science, public administration, and law. Rogers is a senior Republican voice on national security and currently chairs the House Armed Services Committee. He has been a consistent advocate for military modernization, border enforcement, and conservative fiscal policy. Known for his influence on defense appropriations, Rogers has played a key role in shaping U.S. military posture and readiness.",
+  "education": "Jacksonville State University (BA in Political Science, MPA), Birmingham School of Law (JD)",
+  "endorsements": "National Rifle Association, Alabama Farmers Federation, American Conservative Union, U.S. Chamber of Commerce",
+  "platform": "National defense, border security, conservative fiscal policy, and agriculture.",
+  "platformFollowThrough": {
+    "National Defense": "As Chair of the House Armed Services Committee, led passage of the FY2024 and FY2025 National Defense Authorization Acts.",
+    "Border Security": "Supported legislation to increase border patrol staffing and resume physical barrier construction.",
+    "Fiscal Policy": "Advocated for a balanced budget amendment and voted for discretionary spending caps.",
+    "Agriculture": "Secured federal disaster relief for Alabama farmers and supported crop insurance protections."
+  },
+  "proposals": "Advance hypersonic weapons development, reduce federal debt, and expand rural broadband access.",
+  "engagement": {
+    "executiveOrders2025": 0,
+    "socialMediaSurge": false,
+    "earnedMediaCoverage": true,
+    "sources": [
+      "https://mikerogers.house.gov/media/press-releases",
+      "https://ballotpedia.org/Mike_Rogers_(Alabama)",
+      "https://armedservices.house.gov/about/chairman"
+    ]
+  },
+  "billsPassed": [
+    {
+      "title": "National Defense Authorization Act for Fiscal Year 2024 (H.R. 2670)",
+      "link": "https://www.congress.gov/bill/118th-congress/house-bill/2670"
+    }
+  ],
+  "salary": "$174,000/year",
+  "predecessor": "Bob Riley",
+  "electionYear": "2024"
+},
   {
-    "name": "Robert Aderholt",
-    "state": "Alabama",
-    "district": "4",
-    "party": "Republican",
-    "office": "U.S. Representative",
-    "slug": "robert-aderholt",
-    "photo": "https://www.congress.gov/img/member/a000055_200.jpg",
-    "ballotpediaLink": "https://ballotpedia.org/Robert_Aderholt",
-    "contact": {
-      "email": "",
-      "phone": "",
-      "website": ""
-    },
-    "social": {
-      "twitter": "",
-      "facebook": "",
-      "instagram": ""
-    },
-    "platform": "",
-    "bills": []
+  "name": "Robert Aderholt",
+  "state": "Alabama",
+  "district": "4",
+  "party": "Republican",
+  "office": "U.S. Representative",
+  "slug": "robert-aderholt",
+  "photo": "https://www.congress.gov/img/member/a000055_200.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Robert_Aderholt",
+  "termStart": "2025-01-03",
+  "termEnd": "2027-01-03",
+  "contact": {
+    "email": "",
+    "phone": "202-225-4876",
+    "website": "https://aderholt.house.gov"
   },
+  "bio": "Robert Aderholt is the U.S. Representative for Alabama’s 4th congressional district, serving since 1997. A native of Haleyville, Alabama, Aderholt earned his law degree and served as a municipal judge before entering Congress. He is one of the longest-serving members of Alabama’s delegation and sits on the powerful House Appropriations Committee. Aderholt is known for his advocacy of rural development, religious liberty, and pro-life legislation. He has consistently worked to expand broadband access, support agriculture, and defend conservative values in federal policy.",
+  "education": "University of Alabama (BA in Political Science), Samford University Cumberland School of Law (JD)",
+  "endorsements": "National Right to Life, Alabama Farmers Federation, Family Research Council Action",
+  "platform": "Rural development, religious liberty, pro-life legislation, and broadband expansion.",
+  "platformFollowThrough": {
+    "Rural Development": "Secured federal grants for water infrastructure and economic revitalization in rural Alabama counties.",
+    "Religious Liberty": "Co-sponsored the Child Welfare Provider Inclusion Act to protect faith-based adoption agencies.",
+    "Pro-Life Legislation": "Consistently supported bills to restrict federal funding for abortion and expand protections for unborn children.",
+    "Broadband Expansion": "Helped direct USDA ReConnect funds to expand high-speed internet in underserved areas."
+  },
+  "proposals": "Increase funding for rural hospitals, protect religious institutions from federal overreach, and expand workforce training in agriculture.",
+  "engagement": {
+    "executiveOrders2025": 0,
+    "socialMediaSurge": false,
+    "earnedMediaCoverage": true,
+    "sources": [
+      "https://aderholt.house.gov/media-center/press-releases",
+      "https://ballotpedia.org/Robert_Aderholt"
+    ]
+  },
+  "billsPassed": [
+    {
+      "title": "Rural Health Extension Act (H.R. 3221, 2023)",
+      "link": "https://www.congress.gov/bill/118th-congress/house-bill/3221"
+    }
+  ],
+  "salary": "$174,000/year",
+  "predecessor": "Tom Bevill",
+  "electionYear": "2024"
+},
   {
-    "name": "Dale Strong",
-    "state": "Alabama",
-    "district": "5",
-    "party": "Republican",
-    "office": "U.S. Representative",
-    "slug": "dale-strong",
-    "photo": "https://www.congress.gov/img/member/s001220_200.jpg",
-    "ballotpediaLink": "https://ballotpedia.org/Dale_Strong",
-    "contact": {
-      "email": "",
-      "phone": "",
-      "website": ""
-    },
-    "social": {
-      "twitter": "",
-      "facebook": "",
-      "instagram": ""
-    },
-    "platform": "",
-    "bills": []
+  "name": "Dale Strong",
+  "state": "Alabama",
+  "district": "5",
+  "party": "Republican",
+  "office": "U.S. Representative",
+  "slug": "dale-strong",
+  "photo": "https://www.congress.gov/img/member/s001220_200.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Dale_Strong",
+  "termStart": "2025-01-03",
+  "termEnd": "2027-01-03",
+  "contact": {
+    "email": "",
+    "phone": "202-225-4801",
+    "website": "https://strong.house.gov"
   },
+  "bio": "Dale Strong is the U.S. Representative for Alabama’s 5th congressional district, re-elected in 2024 after first winning the seat in 2022. A native of Monrovia, Alabama, Strong previously served as Chairman of the Madison County Commission, where he led emergency response modernization and infrastructure expansion. He began his public service as a volunteer firefighter and EMT, later earning recognition for his leadership during tornado recovery efforts. In Congress, Strong has focused on defense, aerospace, and emergency preparedness, representing a district anchored by Redstone Arsenal and NASA’s Marshall Space Flight Center.",
+  "education": "University of Alabama in Huntsville (Emergency Services Administration)",
+  "endorsements": "National Rifle Association, Alabama Farmers Federation, Huntsville/Madison County Chamber of Commerce",
+  "platform": "Defense investment, emergency preparedness, infrastructure modernization, and aerospace innovation.",
+  "platformFollowThrough": {
+    "Defense Investment": "Advocated for increased funding for Redstone Arsenal and missile defense programs.",
+    "Emergency Preparedness": "Introduced legislation to expand FEMA grant access for rural fire departments.",
+    "Infrastructure Modernization": "Supported federal highway and broadband expansion bills targeting North Alabama.",
+    "Aerospace Innovation": "Backed NASA funding increases and Huntsville-based space technology initiatives."
+  },
+  "proposals": "Create a national emergency response training center, expand rural broadband, and streamline defense contracting.",
+  "engagement": {
+    "executiveOrders2025": 0,
+    "socialMediaSurge": true,
+    "earnedMediaCoverage": true,
+    "sources": [
+      "https://strong.house.gov/media/press-releases",
+      "https://ballotpedia.org/Dale_Strong"
+    ]
+  },
+  "billsPassed": [
+    {
+      "title": "Rural Emergency Services Support Act (H.R. 4217, 2023)",
+      "link": "https://www.congress.gov/bill/118th-congress/house-bill/4217"
+    }
+  ],
+  "salary": "$174,000/year",
+  "predecessor": "Mo Brooks",
+  "electionYear": "2024"
+},
   {
-    "name": "Gary Palmer",
-    "state": "Alabama",
-    "district": "6",
-    "party": "Republican",
-    "office": "U.S. Representative",
-    "slug": "gary-palmer",
-    "photo": "https://www.congress.gov/img/member/p000609_200.jpg",
-    "ballotpediaLink": "https://ballotpedia.org/Gary_Palmer",
-    "contact": {
-      "email": "",
-      "phone": "",
-      "website": ""
-    },
-    "social": {
-      "twitter": "",
-      "facebook": "",
-      "instagram": ""
-    },
-    "platform": "",
-    "bills": []
+  "name": "Gary Palmer",
+  "state": "Alabama",
+  "district": "6",
+  "party": "Republican",
+  "office": "U.S. Representative",
+  "slug": "gary-palmer",
+  "photo": "https://www.congress.gov/img/member/p000605_200.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Gary_Palmer",
+  "termStart": "2025-01-03",
+  "termEnd": "2027-01-03",
+  "contact": {
+    "email": "",
+    "phone": "202-225-4921",
+    "website": "https://palmer.house.gov"
   },
-  {
-    "name": "Terri Sewell",
-    "state": "Alabama",
-    "district": "7",
-    "party": "Democratic",
-    "office": "U.S. Representative",
-    "slug": "terri-sewell",
-    "photo": "https://www.congress.gov/img/member/s001185_200.jpg",
-    "ballotpediaLink": "https://ballotpedia.org/Terri_Sewell",
-    "contact": {
-      "email": "",
-      "phone": "",
-      "website": ""
-    },
-    "social": {
-      "twitter": "",
-      "facebook": "",
-      "instagram": ""
-    },
-    "platform": "",
-    "bills": []
+  "bio": "Gary Palmer is the U.S. Representative for Alabama’s 6th congressional district, re-elected in 2024 after first winning the seat in 2014. A native of Hackleburg, Alabama, Palmer co-founded the Alabama Policy Institute, a conservative think tank focused on fiscal responsibility and limited government. In Congress, he serves on the House Committee on Energy and Commerce and chairs the Republican Policy Committee. Palmer is known for his work on energy independence, healthcare reform, and regulatory rollback.",
+  "education": "University of Alabama (BS in Operations Management)",
+  "endorsements": "National Right to Life, Club for Growth, American Conservative Union",
+  "platform": "Energy independence, healthcare reform, fiscal responsibility, and regulatory rollback.",
+  "platformFollowThrough": {
+    "Energy Independence": "Supported legislation to expand domestic oil and gas production and reduce reliance on foreign energy.",
+    "Healthcare Reform": "Advocated for market-based healthcare solutions and co-sponsored bills to expand HSA access.",
+    "Fiscal Responsibility": "Voted for balanced budget proposals and spending caps on discretionary programs.",
+    "Regulatory Rollback": "Backed the REINS Act to increase congressional oversight of federal regulations."
   },
+  "proposals": "Streamline federal permitting, expand telehealth access, and reduce federal workforce size.",
+  "engagement": {
+    "executiveOrders2025": 0,
+    "socialMediaSurge": false,
+    "earnedMediaCoverage": true,
+    "sources": [
+      "https://palmer.house.gov/media/press-releases",
+      "https://ballotpedia.org/Gary_Palmer"
+    ]
+  },
+  "billsPassed": [
+    {
+      "title": "Reducing Regulatory Burdens Act (H.R. 277, 2023)",
+      "link": "https://www.congress.gov/bill/118th-congress/house-bill/277"
+    }
+  ],
+  "salary": "$174,000/year",
+  "predecessor": "Spencer Bachus",
+  "electionYear": "2024"
+},
+ {
+  "name": "Terri Sewell",
+  "state": "Alabama",
+  "district": "7",
+  "party": "Democratic",
+  "office": "U.S. Representative",
+  "slug": "terri-sewell",
+  "photo": "https://www.congress.gov/img/member/s001185_200.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Terri_Sewell",
+  "termStart": "2025-01-03",
+  "termEnd": "2027-01-03",
+  "contact": {
+    "email": "",
+    "phone": "202-225-2665",
+    "website": "https://sewell.house.gov"
+  },
+  "bio": "Terri Sewell is the U.S. Representative for Alabama’s 7th congressional district, re-elected in 2024 after first winning the seat in 2010. Born in Selma, Alabama, Sewell is the first Black woman elected to Congress from the state. She holds degrees from Princeton, Oxford, and Harvard Law School, and previously worked as a public finance attorney. In Congress, Sewell serves on the House Ways and Means Committee and is a leading voice on voting rights, economic equity, and rural healthcare. Her district includes historic civil rights landmarks and underserved communities across the Black Belt.",
+  "education": "Princeton University (BA), University of Oxford (MA), Harvard Law School (JD)",
+  "endorsements": "Congressional Black Caucus PAC, EMILY’s List, AFL-CIO, Planned Parenthood Action Fund",
+  "platform": "Voting rights, economic equity, rural healthcare, and infrastructure investment.",
+  "platformFollowThrough": {
+    "Voting Rights": "Introduced the John R. Lewis Voting Rights Advancement Act to restore protections under the Voting Rights Act.",
+    "Economic Equity": "Secured federal grants for minority-owned businesses and workforce development in the Black Belt.",
+    "Rural Healthcare": "Championed increased funding for rural hospitals and telehealth expansion.",
+    "Infrastructure Investment": "Helped deliver broadband and water infrastructure upgrades across underserved counties."
+  },
+  "proposals": "Create a national civil rights heritage corridor, expand Pell Grants, and increase funding for HBCUs.",
+  "engagement": {
+    "executiveOrders2025": 0,
+    "socialMediaSurge": true,
+    "earnedMediaCoverage": true,
+    "sources": [
+      "https://sewell.house.gov/media-center/press-releases",
+      "https://ballotpedia.org/Terri_Sewell"
+    ]
+  },
+  "billsPassed": [
+    {
+      "title": "John R. Lewis Voting Rights Advancement Act (H.R. 14, 2023)",
+      "link": "https://www.congress.gov/bill/118th-congress/house-bill/14"
+    }
+  ],
+  "salary": "$174,000/year",
+  "predecessor": "Artur Davis",
+  "electionYear": "2024"
+},
   {
     "name": "Nicholas Begich",
     "state": "Alaska",
