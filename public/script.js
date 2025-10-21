@@ -9,14 +9,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalContent = document.getElementById('modal-content');
   const closeModal = document.getElementById('close-modal');
 
+  let governors = [];
+  let ltGovernors = [];
+  let senators = [];
+  let houseReps = [];
+
   Promise.all([
-    fetch('senators.json').then(res => res.json()),
-    fetch('housereps.json').then(res => res.json()),
     fetch('governors.json').then(res => res.json()),
-    fetch('ltgovernors.json').then(res => res.json())
+    fetch('ltgovernors.json').then(res => res.json()),
+    fetch('senators.json').then(res => res.json()),
+    fetch('housereps.json').then(res => res.json())
   ])
-  .then(([senators, reps, governors, ltgovs]) => {
-    allOfficials = [...governors, ...ltgovs, ...senators, ...reps];
+  .then(([govs, ltgovs, sens, reps]) => {
+    governors = govs;
+    ltGovernors = ltgovs;
+    senators = sens;
+    houseReps = reps;
+    allOfficials = [...governors, ...ltGovernors, ...senators, ...houseReps];
     renderOfficials(selectedState, '');
   })
   .catch(error => {
@@ -38,14 +47,19 @@ document.addEventListener('DOMContentLoaded', () => {
       return matchesQuery && matchesState;
     });
 
-    const governors = filtered.filter(o => o.office === 'Governor');
-    const ltGovernors = filtered.filter(o => o.office === 'Lt. Governor');
-    const senators = filtered.filter(o => o.office === 'U.S. Senator');
-    const houseReps = filtered
+    const sortedGovernors = filtered.filter(o => o.office === 'Governor');
+    const sortedLtGovernors = filtered.filter(o => o.office === 'Lt. Governor');
+    const sortedSenators = filtered.filter(o => o.office === 'U.S. Senator');
+    const sortedHouseReps = filtered
       .filter(o => o.office === 'U.S. Representative')
       .sort((a, b) => parseInt(a.district) - parseInt(b.district));
 
-    const sortedOfficials = [...governors, ...ltGovernors, ...senators, ...houseReps];
+    const sortedOfficials = [
+      ...sortedGovernors,
+      ...sortedLtGovernors,
+      ...sortedSenators,
+      ...sortedHouseReps
+    ];
 
     const partyMap = {
       republican: 'republican',
@@ -165,15 +179,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  stateSelector.addEventListener('change', () => {
-    selectedState = stateSelector.value;
-    const query = searchBar.value.trim();
+  stateSelector.addEventListener('change', ()
+        const query = searchBar.value.trim();
     renderOfficials(selectedState, query);
   });
 
   searchBar.addEventListener('input', () => {
     const query = searchBar.value.trim();
     renderOfficials(selectedState, query);
-   });
+  });
 });
-
