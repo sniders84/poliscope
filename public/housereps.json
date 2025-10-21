@@ -1,26 +1,55 @@
 [
-  {
-    "name": "Barry Moore",
-    "state": "Alabama",
-    "district": "1",
-    "party": "Republican",
-    "office": "U.S. Representative",
-    "slug": "barry-moore",
-    "photo": "https://www.congress.gov/img/member/m001212_200.jpg",
-    "ballotpediaLink": "https://ballotpedia.org/Barry_Moore_(Alabama)",
-    "contact": {
-      "email": "",
-      "phone": "",
-      "website": ""
-    },
-    "social": {
-      "twitter": "",
-      "facebook": "",
-      "instagram": ""
-    },
-    "platform": "",
-    "bills": []
+ {
+  "name": "Barry Moore",
+  "state": "Alabama",
+  "district": "1",
+  "party": "Republican",
+  "office": "U.S. Representative",
+  "slug": "barry-moore",
+  "photo": "https://www.congress.gov/img/member/m001212_200.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Barry_Moore_(Alabama)",
+  "termStart": "2025-01-03",
+  "termEnd": "2027-01-03",
+  "contact": {
+    "email": "",
+    "phone": "202-225-4931",
+    "website": "https://barrymoore.house.gov"
   },
+  "bio": "Barry Moore is the U.S. Representative for Alabama’s 1st congressional district, elected in 2024 after previously serving two terms representing the 2nd district. A native of Coffee County, Moore is a veteran of the Alabama National Guard and founder of Hopper-Moore Inc., a waste hauling company. He served in the Alabama House from 2010 to 2018 and is known for his staunch conservative positions on fiscal policy, agriculture, and veterans’ affairs. Moore transitioned to the newly drawn 1st district following court-ordered redistricting in 2023.",
+  "education": "Enterprise State Community College (AS), Auburn University (BS in Agricultural Science)",
+  "endorsements": "National Rifle Association, Alabama Farmers Federation, Club for Growth",
+  "platform": "Fiscal conservatism, border security, veterans' support, and Second Amendment rights.",
+  "platformFollowThrough": {
+    "Fiscal Conservatism": "Co-sponsored the Spending Cuts to Expired and Unnecessary Programs Act to reduce federal waste.",
+    "Veterans' Support": "Introduced the Veterans Entrepreneurship Act to expand small business access for veterans.",
+    "Border Security": "Supported legislation to resume border wall construction and increase ICE funding.",
+    "Second Amendment": "Voted for the Concealed Carry Reciprocity Act and opposed federal firearm restrictions."
+  },
+  "proposals": "Eliminate federal overreach in agriculture, expand rural broadband, and reduce regulatory burdens on small businesses.",
+  "engagement": {
+    "executiveOrders2025": 0,
+    "socialMediaSurge": true,
+    "earnedMediaCoverage": true,
+    "sources": [
+      "https://barrymoore.house.gov/media/press-releases",
+      "https://alabamareflector.com/2024/11/05/u-s-rep-barry-moore-elected-in-alabamas-1st-congressional-district/",
+      "https://ballotpedia.org/Barry_Moore_(Alabama)"
+    ]
+  },
+  "billsPassed": [
+    {
+      "title": "Veterans Entrepreneurship Act (H.R. 4992, 2023)",
+      "link": "https://www.congress.gov/bill/118th-congress/house-bill/4992"
+    },
+    {
+      "title": "Spending Cuts to Expired and Unnecessary Programs Act (H.R. 4366, 2023)",
+      "link": "https://www.congress.gov/bill/118th-congress/house-bill/4366"
+    }
+  ],
+  "salary": "$174,000/year",
+  "predecessor": "Jerry Carl",
+  "electionYear": "2024"
+},
   {
     "name": "Shomari Figures",
     "state": "Alabama",
