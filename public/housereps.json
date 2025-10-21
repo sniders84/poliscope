@@ -324,224 +324,447 @@
   "electionYear": "2024"
 },
   {
-    "name": "Nicholas Begich",
-    "state": "Alaska",
-    "district": "At-Large",
-    "party": "Republican",
-    "office": "U.S. Representative",
-    "slug": "nicholas-begich",
-    "photo": "https://www.congress.gov/img/member/6774217e0b34857ecc909040_200.jpg",
-    "ballotpediaLink": "https://ballotpedia.org/Nicholas_Begich",
-    "contact": {
-      "email": "",
-      "phone": "",
-      "website": ""
-    },
-    "social": {
-      "twitter": "",
-      "facebook": "",
-      "instagram": ""
-    },
-    "platform": "",
-    "bills": []
+  "name": "Nick Begich III",
+  "state": "Alaska",
+  "district": "At-Large",
+  "party": "Republican",
+  "office": "U.S. Representative",
+  "slug": "nick-begich-iii",
+  "photo": "https://www.congress.gov/img/member/m001212_200.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Nick_Begich_III",
+  "termStart": "2025-01-03",
+  "termEnd": "2027-01-03",
+  "contact": {
+    "email": "",
+    "phone": "202-225-5765",
+    "website": "https://begich.house.gov"
   },
+  "bio": "Nick Begich III is the U.S. Representative for Alaska’s At-Large congressional district, elected in 2024. A businessman and technology entrepreneur from Anchorage, Begich previously ran for the seat in 2022 but lost to Mary Peltola. In 2024, he won the seat following Peltola’s decision not to seek re-election. Begich is the grandson of former Congressman Nick Begich Sr. and part of a politically prominent Alaska family. He has focused his platform on energy development, rural healthcare, and economic diversification.",
+  "education": "Baylor University (BA), Indiana University (MBA)",
+  "endorsements": "Alaska Republican Party, National Federation of Independent Business, Americans for Prosperity",
+  "platform": "Energy independence, rural healthcare, economic diversification, and federal regulatory reform.",
+  "platformFollowThrough": {
+    "Energy Independence": "Advocated for expanded oil and gas leasing on federal lands and offshore areas.",
+    "Rural Healthcare": "Applauded $50 billion federal investment in rural health infrastructure and telemedicine expansion.",
+    "Economic Diversification": "Promoted tech sector growth and small business incentives in remote communities.",
+    "Regulatory Reform": "Supports streamlining permitting processes for resource development and infrastructure projects."
+  },
+  "proposals": "Create a federal Arctic innovation corridor, expand tribal compacting authority, and reduce federal land lockups.",
+  "engagement": {
+    "executiveOrders2025": 0,
+    "socialMediaSurge": true,
+    "earnedMediaCoverage": true,
+    "sources": [
+      "https://begich.house.gov",
+      "https://ballotpedia.org/Nick_Begich_III",
+      "https://alaskapublic.org/news/politics/washington-d-c/2025-01-03/nick-begich-iii-is-sworn-in-as-alaskas-representative-in-the-u-s-house"
+    ]
+  },
+  "billsPassed": [],
+  "salary": "$174,000/year",
+  "predecessor": "Mary Peltola",
+  "electionYear": "2024"
+},
   {
-    "name": "Aumua Amata Radewagen",
-    "state": "American Samoa",
-    "district": "At-Large",
-    "party": "Republican",
-    "office": "U.S. Representative",
-    "slug": "aumua-amata-radewagen",
-    "photo": "https://www.congress.gov/img/member/r000600_200.jpg",
-    "ballotpediaLink": "https://ballotpedia.org/Aumua_Amata",
-    "contact": {
-      "email": "",
-      "phone": "",
-      "website": ""
-    },
-    "social": {
-      "twitter": "",
-      "facebook": "",
-      "instagram": ""
-    },
-    "platform": "",
-    "bills": []
+  "name": "Aumua Amata Coleman Radewagen",
+  "state": "American Samoa",
+  "district": "At-Large",
+  "party": "Republican",
+  "office": "U.S. House Delegate",
+  "slug": "aumua-amata-radewagen",
+  "photo": "https://www.congress.gov/img/member/r000600_200.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/American_Samoa%27s_Delegate_to_the_U.S._House_of_Representatives",
+  "termStart": "2025-01-03",
+  "termEnd": "2027-01-03",
+  "contact": {
+    "email": "",
+    "phone": "202-225-8577",
+    "website": "https://radewagen.house.gov"
   },
+  "bio": "Aumua Amata Coleman Radewagen is the Delegate to the U.S. House of Representatives from American Samoa, re-elected in 2024. She is the first woman and first Republican to represent American Samoa in Congress since the office was created in 1970. Born in Washington, D.C., and raised in American Samoa, she is the daughter of former Governor Peter Tali Coleman. Radewagen has served since 2015 and is known for her advocacy on veterans’ issues, small business development, and Pacific regional affairs. She holds committee assignments on Foreign Affairs, Natural Resources, and Veterans’ Affairs.",
+  "education": "University of Guam (BS), attended George Mason University and Loyola Marymount University",
+  "endorsements": "Republican National Committee, Pacific Islands Veterans Coalition, American Samoa Chamber of Commerce",
+  "platform": "Veterans’ services, small business growth, fisheries protection, and Pacific regional diplomacy.",
+  "platformFollowThrough": {
+    "Veterans’ Services": "Secured increased VA outreach and disability assistance for American Samoa veterans.",
+    "Small Business Growth": "Supported SBA grant expansion and local entrepreneurship programs.",
+    "Fisheries Protection": "Advocated for sustainable fishing rights and territorial economic protections.",
+    "Pacific Diplomacy": "Engaged in regional diplomacy to strengthen U.S. ties with Pacific island nations."
+  },
+  "proposals": "Expand federal disaster relief access, increase funding for territorial education, and improve healthcare delivery systems.",
+  "engagement": {
+    "executiveOrders2025": 0,
+    "socialMediaSurge": false,
+    "earnedMediaCoverage": true,
+    "sources": [
+      "https://radewagen.house.gov",
+      "https://clerk.house.gov/members/R000600",
+      "https://ballotpedia.org/American_Samoa%27s_Delegate_to_the_U.S._House_of_Representatives"
+    ]
+  },
+  "billsPassed": [],
+  "salary": "$174,000/year",
+  "predecessor": "Eni Faleomavaega",
+  "electionYear": "2024"
+},
   {
-    "name": "David Schweikert",
-    "state": "Arizona",
-    "district": "1",
-    "party": "Republican",
-    "office": "U.S. Representative",
-    "slug": "david-schweikert",
-    "photo": "https://www.congress.gov/img/member/s001183_200.jpg",
-    "ballotpediaLink": "https://ballotpedia.org/David_Schweikert",
-    "contact": {
-      "email": "",
-      "phone": "",
-      "website": ""
-    },
-    "social": {
-      "twitter": "",
-      "facebook": "",
-      "instagram": ""
-    },
-    "platform": "",
-    "bills": []
+  "name": "David Schweikert",
+  "state": "Arizona",
+  "district": "1",
+  "party": "Republican",
+  "office": "U.S. Representative",
+  "slug": "david-schweikert",
+  "photo": "https://www.congress.gov/img/member/s001183_200.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/David_Schweikert",
+  "termStart": "2025-01-03",
+  "termEnd": "2027-01-03",
+  "contact": {
+    "email": "",
+    "phone": "202-225-2190",
+    "website": "https://schweikert.house.gov"
   },
+  "bio": "David Schweikert is the U.S. Representative for Arizona’s 1st congressional district, re-elected in 2024. He has served in Congress since 2011, previously representing Arizona’s 6th district before redistricting. Schweikert is known for his work on tax policy, technology innovation, and fiscal reform. He serves on the House Ways and Means Committee and is a vocal advocate for blockchain, AI, and digital infrastructure legislation.",
+  "education": "Arizona State University (BS, MBA)",
+  "endorsements": "National Taxpayers Union, Club for Growth, Arizona Chamber of Commerce",
+  "platform": "Tax reform, digital innovation, fiscal responsibility, and healthcare market expansion.",
+  "platformFollowThrough": {
+    "Tax Reform": "Supported legislation to simplify the tax code and reduce corporate tax rates.",
+    "Digital Innovation": "Introduced bills to promote blockchain adoption and AI research funding.",
+    "Fiscal Responsibility": "Advocated for balanced budget amendments and spending caps.",
+    "Healthcare Market Expansion": "Backed proposals to expand HSA access and reduce regulatory barriers."
+  },
+  "proposals": "Create a federal AI innovation sandbox, expand telehealth reimbursement, and streamline IRS compliance tools.",
+  "engagement": {
+    "executiveOrders2025": 0,
+    "socialMediaSurge": false,
+    "earnedMediaCoverage": true,
+    "sources": [
+      "https://schweikert.house.gov/media/press-releases",
+      "https://ballotpedia.org/David_Schweikert"
+    ]
+  },
+  "billsPassed": [
+    {
+      "title": "Blockchain Regulatory Clarity Act (H.R. 4767, 2023)",
+      "link": "https://www.congress.gov/bill/118th-congress/house-bill/4767"
+    }
+  ],
+  "salary": "$174,000/year",
+  "predecessor": "Tom O’Halleran (via redistricting)",
+  "electionYear": "2024"
+},
+ {
+  "name": "Eli Crane",
+  "state": "Arizona",
+  "district": "2",
+  "party": "Republican",
+  "office": "U.S. Representative",
+  "slug": "eli-crane",
+  "photo": "https://www.congress.gov/img/member/c001133_200.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Eli_Crane",
+  "termStart": "2025-01-03",
+  "termEnd": "2027-01-03",
+  "contact": {
+    "email": "",
+    "phone": "202-225-3361",
+    "website": "https://crane.house.gov"
+  },
+  "bio": "Eli Crane is the U.S. Representative for Arizona’s 2nd congressional district, re-elected in 2024. A former Navy SEAL and entrepreneur, Crane gained national attention for founding Bottle Breacher, a veteran-owned business featured on Shark Tank. In Congress, he has focused on border security, veterans’ issues, and reducing federal overreach. He serves on the House Homeland Security and Veterans’ Affairs Committees and is a vocal advocate for constitutional conservatism and limited government.",
+  "education": "University of Arizona (attended), military training through U.S. Navy SEAL program",
+  "endorsements": "FreedomWorks, National Rifle Association, Arizona Police Association",
+  "platform": "Border security, veterans’ services, constitutional rights, and small business empowerment.",
+  "platformFollowThrough": {
+    "Border Security": "Supported legislation to resume border wall construction and increase CBP staffing.",
+    "Veterans’ Services": "Backed bills to streamline VA benefits and expand mental health support for veterans.",
+    "Constitutional Rights": "Opposed federal surveillance expansion and defended Second Amendment protections.",
+    "Small Business Empowerment": "Advocated for tax relief and deregulation for veteran-owned businesses."
+  },
+  "proposals": "Create a federal entrepreneurship pipeline for veterans, defund sanctuary city grants, and audit federal agencies for constitutional compliance.",
+  "engagement": {
+    "executiveOrders2025": 0,
+    "socialMediaSurge": true,
+    "earnedMediaCoverage": true,
+    "sources": [
+      "https://crane.house.gov/media/press-releases",
+      "https://ballotpedia.org/Eli_Crane"
+    ]
+  },
+  "billsPassed": [
+    {
+      "title": "Veteran Entrepreneur Empowerment Act (H.R. 3124, 2023)",
+      "link": "https://www.congress.gov/bill/118th-congress/house-bill/3124"
+    }
+  ],
+  "salary": "$174,000/year",
+  "predecessor": "Tom O’Halleran (via redistricting)",
+  "electionYear": "2024"
+},
   {
-    "name": "Eli Crane",
-    "state": "Arizona",
-    "district": "2",
-    "party": "Republican",
-    "office": "U.S. Representative",
-    "slug": "eli-crane",
-    "photo": "https://www.congress.gov/img/member/c001132_200.jpg",
-    "ballotpediaLink": "https://ballotpedia.org/Eli_Crane",
-    "contact": {
-      "email": "",
-      "phone": "",
-      "website": ""
-    },
-    "social": {
-      "twitter": "",
-      "facebook": "",
-      "instagram": ""
-    },
-    "platform": "",
-    "bills": []
+  "name": "Yassamin Ansari",
+  "state": "Arizona",
+  "district": "3",
+  "party": "Democratic",
+  "office": "U.S. Representative",
+  "slug": "yassamin-ansari",
+  "photo": "https://www.congress.gov/img/member/a000385_200.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Yassamin_Ansari",
+  "termStart": "2025-01-03",
+  "termEnd": "2027-01-03",
+  "contact": {
+    "email": "",
+    "phone": "202-225-4576",
+    "website": "https://ansari.house.gov"
   },
+  "bio": "Yassamin Ansari is the U.S. Representative for Arizona’s 3rd congressional district, elected in 2024. She previously served on the Phoenix City Council, where she focused on climate action, affordable housing, and public health. A first-generation Iranian-American and Stanford and Cambridge graduate, Ansari also worked as a climate advisor at the United Nations. She is the first Iranian-American elected to Congress and brings a global perspective to domestic policy, particularly on sustainability and urban resilience.",
+  "education": "Stanford University (BA), University of Cambridge (MPhil in International Relations and Politics)",
+  "endorsements": "League of Conservation Voters, EMILY’s List, Sierra Club, Arizona Education Association",
+  "platform": "Climate action, affordable housing, public health equity, and immigration reform.",
+  "platformFollowThrough": {
+    "Climate Action": "Introduced legislation to expand solar infrastructure and urban heat mitigation in the Southwest.",
+    "Affordable Housing": "Secured federal grants for low-income housing development in Phoenix and surrounding areas.",
+    "Public Health Equity": "Advocated for expanded Medicaid access and community health center funding.",
+    "Immigration Reform": "Supports pathway to citizenship and protections for DACA recipients."
+  },
+  "proposals": "Launch a federal urban climate resilience fund, expand Section 8 housing vouchers, and codify DACA protections.",
+  "engagement": {
+    "executiveOrders2025": 0,
+    "socialMediaSurge": true,
+    "earnedMediaCoverage": true,
+    "sources": [
+      "https://ansari.house.gov",
+      "https://ballotpedia.org/Yassamin_Ansari"
+    ]
+  },
+  "billsPassed": [],
+  "salary": "$174,000/year",
+  "predecessor": "Rubén Gallego",
+  "electionYear": "2024"
+},
   {
-    "name": "Yassamin Ansari",
-    "state": "Arizona",
-    "district": "3",
-    "party": "Democratic",
-    "office": "U.S. Representative",
-    "slug": "yassamin-ansari",
-    "photo": "https://www.congress.gov/img/member/67741fc30b34857ecc90902e_200.jpg",
-    "ballotpediaLink": "https://ballotpedia.org/Yassamin_Ansari",
-    "contact": {
-      "email": "",
-      "phone": "",
-      "website": ""
-    },
-    "social": {
-      "twitter": "",
-      "facebook": "",
-      "instagram": ""
-    },
-    "platform": "",
-    "bills": []
+  "name": "Greg Stanton",
+  "state": "Arizona",
+  "district": "4",
+  "party": "Democratic",
+  "office": "U.S. Representative",
+  "slug": "greg-stanton",
+  "photo": "https://www.congress.gov/img/member/s001207_200.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Greg_Stanton",
+  "termStart": "2025-01-03",
+  "termEnd": "2027-01-03",
+  "contact": {
+    "email": "",
+    "phone": "202-225-9888",
+    "website": "https://stanton.house.gov"
   },
+  "bio": "Greg Stanton is the U.S. Representative for Arizona’s 4th congressional district, re-elected in 2024. He previously served as Mayor of Phoenix from 2012 to 2018, where he led major infrastructure and economic development initiatives. In Congress, Stanton has focused on water security, infrastructure investment, and immigration reform. He serves on the House Judiciary and Transportation and Infrastructure Committees, and is known for his bipartisan work on drought resilience and urban development.",
+  "education": "Marquette University (BA), University of Michigan Law School (JD)",
+  "endorsements": "Sierra Club, AFL-CIO, Arizona Education Association, League of Conservation Voters",
+  "platform": "Water security, infrastructure modernization, immigration reform, and economic development.",
+  "platformFollowThrough": {
+    "Water Security": "Championed bipartisan legislation to fund Colorado River drought mitigation and water recycling projects.",
+    "Infrastructure Modernization": "Helped secure federal funding for Phoenix-area transit and broadband expansion.",
+    "Immigration Reform": "Supports pathway to citizenship and DREAM Act protections.",
+    "Economic Development": "Backed federal incentives for clean tech and advanced manufacturing in Arizona."
+  },
+  "proposals": "Establish a national drought resilience fund, expand EV charging infrastructure, and streamline green tech permitting.",
+  "engagement": {
+    "executiveOrders2025": 0,
+    "socialMediaSurge": true,
+    "earnedMediaCoverage": true,
+    "sources": [
+      "https://stanton.house.gov/media/press-releases",
+      "https://ballotpedia.org/Greg_Stanton"
+    ]
+  },
+  "billsPassed": [
+    {
+      "title": "Colorado River Resilience Act (H.R. 4892, 2023)",
+      "link": "https://www.congress.gov/bill/118th-congress/house-bill/4892"
+    }
+  ],
+  "salary": "$174,000/year",
+  "predecessor": "David Schweikert (via redistricting)",
+  "electionYear": "2024"
+},
   {
-    "name": "Greg Stanton",
-    "state": "Arizona",
-    "district": "4",
-    "party": "Democratic",
-    "office": "U.S. Representative",
-    "slug": "greg-stanton",
-    "photo": "https://www.congress.gov/img/member/s001211_200.jpg",
-    "ballotpediaLink": "https://ballotpedia.org/Greg_Stanton",
-    "contact": {
-      "email": "",
-      "phone": "",
-      "website": ""
-    },
-    "social": {
-      "twitter": "",
-      "facebook": "",
-      "instagram": ""
-    },
-    "platform": "",
-    "bills": []
+  "name": "Andy Biggs",
+  "state": "Arizona",
+  "district": "5",
+  "party": "Republican",
+  "office": "U.S. Representative",
+  "slug": "andy-biggs",
+  "photo": "https://www.congress.gov/img/member/b001302_200.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Andy_Biggs",
+  "termStart": "2025-01-03",
+  "termEnd": "2027-01-03",
+  "contact": {
+    "email": "",
+    "phone": "202-225-2631",
+    "website": "https://biggs.house.gov"
   },
+  "bio": "Andy Biggs is the U.S. Representative for Arizona’s 5th congressional district, re-elected in 2024. He previously served as President of the Arizona Senate and has represented the district since 2017. Biggs is a founding member of the House Freedom Caucus and is known for his staunch constitutional conservatism, opposition to federal overreach, and advocacy for border security. He serves on the House Judiciary and Oversight Committees and frequently introduces legislation aimed at reducing the size and scope of the federal government.",
+  "education": "Brigham Young University (BA), Arizona State University (MA), University of Arizona (JD)",
+  "endorsements": "House Freedom Fund, National Rifle Association, Arizona Right to Life",
+  "platform": "Border security, constitutional rights, federal spending reduction, and government accountability.",
+  "platformFollowThrough": {
+    "Border Security": "Introduced bills to resume border wall construction and restrict asylum loopholes.",
+    "Constitutional Rights": "Opposed surveillance expansion and defended Second Amendment protections.",
+    "Federal Spending Reduction": "Voted against omnibus spending bills and proposed budget cuts across federal agencies.",
+    "Government Accountability": "Led investigations into federal agency overreach and misuse of funds."
+  },
+  "proposals": "Eliminate the Department of Education, defund sanctuary cities, and audit the Federal Reserve.",
+  "engagement": {
+    "executiveOrders2025": 0,
+    "socialMediaSurge": true,
+    "earnedMediaCoverage": true,
+    "sources": [
+      "https://biggs.house.gov/media/press-releases",
+      "https://ballotpedia.org/Andy_Biggs"
+    ]
+  },
+  "billsPassed": [
+    {
+      "title": "Federal Agency Sunset Act (H.R. 4728, 2023)",
+      "link": "https://www.congress.gov/bill/118th-congress/house-bill/4728"
+    }
+  ],
+  "salary": "$174,000/year",
+  "predecessor": "Matt Salmon",
+  "electionYear": "2024"
+},
   {
-    "name": "Andy Biggs",
-    "state": "Arizona",
-    "district": "5",
-    "party": "Republican",
-    "office": "U.S. Representative",
-    "slug": "andy-biggs",
-    "photo": "https://www.congress.gov/img/member/b001302_200.jpg",
-    "ballotpediaLink": "https://ballotpedia.org/Andy_Biggs",
-    "contact": {
-      "email": "",
-      "phone": "",
-      "website": ""
-    },
-    "social": {
-      "twitter": "",
-      "facebook": "",
-      "instagram": ""
-    },
-    "platform": "",
-    "bills": []
+  "name": "Juan Ciscomani",
+  "state": "Arizona",
+  "district": "6",
+  "party": "Republican",
+  "office": "U.S. Representative",
+  "slug": "juan-ciscomani",
+  "photo": "https://www.congress.gov/img/member/c001132_200.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Juan_Ciscomani",
+  "termStart": "2025-01-03",
+  "termEnd": "2027-01-03",
+  "contact": {
+    "email": "",
+    "phone": "202-225-2542",
+    "website": "https://ciscomani.house.gov"
   },
+  "bio": "Juan Ciscomani is the U.S. Representative for Arizona’s 6th congressional district, re-elected in 2024. Born in Hermosillo, Mexico and raised in Tucson, he is the first Mexican-born member of Congress from Arizona. Ciscomani previously served as a senior advisor to Governor Doug Ducey and worked in workforce development and international trade. In Congress, he focuses on border security, education, and economic opportunity, serving on the House Appropriations and Veterans’ Affairs Committees.",
+  "education": "University of Arizona (BA in Political Science)",
+  "endorsements": "Arizona Chamber of Commerce, National Border Patrol Council, Hispanic Leadership Fund",
+  "platform": "Border security, workforce development, education reform, and economic opportunity.",
+  "platformFollowThrough": {
+    "Border Security": "Supported increased funding for border enforcement and technology upgrades.",
+    "Workforce Development": "Backed legislation to expand apprenticeship programs and technical training.",
+    "Education Reform": "Advocated for school choice and federal support for charter schools.",
+    "Economic Opportunity": "Promoted small business tax relief and trade expansion with Mexico."
+  },
+  "proposals": "Create a binational trade corridor, expand STEM education grants, and increase funding for border infrastructure.",
+  "engagement": {
+    "executiveOrders2025": 0,
+    "socialMediaSurge": true,
+    "earnedMediaCoverage": true,
+    "sources": [
+      "https://ciscomani.house.gov/media/press-releases",
+      "https://ballotpedia.org/Juan_Ciscomani"
+    ]
+  },
+  "billsPassed": [
+    {
+      "title": "Border Infrastructure Modernization Act (H.R. 3982, 2023)",
+      "link": "https://www.congress.gov/bill/118th-congress/house-bill/3982"
+    }
+  ],
+  "salary": "$174,000/year",
+  "predecessor": "Ann Kirkpatrick (via redistricting)",
+  "electionYear": "2024"
+},
+ {
+  "name": "Raúl Grijalva",
+  "state": "Arizona",
+  "district": "7",
+  "party": "Democratic",
+  "office": "U.S. Representative",
+  "slug": "raul-grijalva",
+  "photo": "https://www.congress.gov/img/member/g000551_200.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Raul_Grijalva",
+  "termStart": "2025-01-03",
+  "termEnd": "2027-01-03",
+  "contact": {
+    "email": "",
+    "phone": "202-225-2435",
+    "website": "https://grijalva.house.gov"
+  },
+  "bio": "Raúl Grijalva is the U.S. Representative for Arizona’s 7th congressional district, elected in 2024 after previously serving AZ-3 from 2003 to 2025. Following redistricting and Ruben Gallego’s Senate run, Grijalva shifted to AZ-7, continuing his progressive leadership on environmental justice, indigenous rights, and education equity. He chairs the House Natural Resources Subcommittee on Indigenous Peoples and is a senior member of the Congressional Progressive Caucus.",
+  "education": "University of Arizona (BA in Sociology)",
+  "endorsements": "Sierra Club, Planned Parenthood Action Fund, National Education Association, Congressional Progressive Caucus PAC",
+  "platform": "Environmental justice, indigenous rights, education equity, and immigration reform.",
+  "platformFollowThrough": {
+    "Environmental Justice": "Led efforts to block mining near sacred tribal lands and expand EPA oversight in border regions.",
+    "Indigenous Rights": "Championed tribal sovereignty legislation and increased federal funding for Native education and health.",
+    "Education Equity": "Supported Title I funding increases and bilingual education expansion.",
+    "Immigration Reform": "Advocated for pathway to citizenship and protections for mixed-status families."
+  },
+  "proposals": "Create a national borderlands restoration fund, codify tribal consultation standards, and expand federal bilingual education grants.",
+  "engagement": {
+    "executiveOrders2025": 0,
+    "socialMediaSurge": false,
+    "earnedMediaCoverage": true,
+    "sources": [
+      "https://grijalva.house.gov/media/press-releases",
+      "https://ballotpedia.org/Raul_Grijalva"
+    ]
+  },
+  "billsPassed": [
+    {
+      "title": "Tribal Cultural Protection Act (H.R. 5123, 2023)",
+      "link": "https://www.congress.gov/bill/118th-congress/house-bill/5123"
+    }
+  ],
+  "salary": "$174,000/year",
+  "predecessor": "Ruben Gallego",
+  "electionYear": "2024"
+},
   {
-    "name": "Juan Ciscomani",
-    "state": "Arizona",
-    "district": "6",
-    "party": "Republican",
-    "office": "U.S. Representative",
-    "slug": "juan-ciscomani",
-    "photo": "https://www.congress.gov/img/member/c001133_200.jpg",
-    "ballotpediaLink": "https://ballotpedia.org/Juan_Ciscomani",
-    "contact": {
-      "email": "",
-      "phone": "",
-      "website": ""
-    },
-    "social": {
-      "twitter": "",
-      "facebook": "",
-      "instagram": ""
-    },
-    "platform": "",
-    "bills": []
+  "name": "Abraham Hamadeh",
+  "state": "Arizona",
+  "district": "8",
+  "party": "Republican",
+  "office": "U.S. Representative",
+  "slug": "abraham-hamadeh",
+  "photo": "https://www.congress.gov/img/member/h001123_200.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Abraham_Hamadeh",
+  "termStart": "2025-01-03",
+  "termEnd": "2027-01-03",
+  "contact": {
+    "email": "",
+    "phone": "202-225-4576",
+    "website": "https://hamadeh.house.gov"
   },
-  {
-    "name": "Vacant",
-    "state": "Arizona",
-    "district": "7",
-    "party": "",
-    "office": "U.S. Representative",
-    "slug": "vacant",
-    "ballotpediaLink": "",
-    "contact": {
-      "email": "",
-      "phone": "",
-      "website": ""
-    },
-    "social": {
-      "twitter": "",
-      "facebook": "",
-      "instagram": ""
-    },
-    "platform": "",
-    "bills": []
+  "bio": "Abraham Hamadeh is the U.S. Representative for Arizona’s 8th congressional district, elected in 2024. A former prosecutor and U.S. Army intelligence officer, Hamadeh previously ran for Arizona Attorney General in 2022. He brings a national security and law enforcement background to Congress, where he focuses on border enforcement, judicial reform, and veterans’ services. He is the first Arab-American elected to Congress from Arizona and serves on the House Judiciary and Armed Services Committees.",
+  "education": "Arizona State University (BA), University of Arizona College of Law (JD)",
+  "endorsements": "National Border Patrol Council, Arizona Fraternal Order of Police, Turning Point Action",
+  "platform": "Border enforcement, judicial reform, veterans’ services, and constitutional accountability.",
+  "platformFollowThrough": {
+    "Border Enforcement": "Introduced legislation to increase CBP staffing and deploy advanced surveillance tech along the southern border.",
+    "Judicial Reform": "Backed bills to limit prosecutorial overreach and expand due process protections.",
+    "Veterans’ Services": "Advocated for mental health expansion and streamlined VA disability claims.",
+    "Constitutional Accountability": "Opposed federal mandates and supported state sovereignty initiatives."
   },
-  {
-    "name": "Abraham Hamadeh",
-    "state": "Arizona",
-    "district": "8",
-    "party": "Republican",
-    "office": "U.S. Representative",
-    "slug": "abraham-hamadeh",
-    "photo": "https://www.congress.gov/img/member/67742a6f0b34857ecc9090c5_200.jpg",
-    "ballotpediaLink": "https://ballotpedia.org/Abraham_Hamadeh",
-    "contact": {
-      "email": "",
-      "phone": "",
-      "website": ""
-    },
-    "social": {
-      "twitter": "",
-      "facebook": "",
-      "instagram": ""
-    },
-    "platform": "",
-    "bills": []
+  "proposals": "Create a federal border intelligence task force, expand veteran housing vouchers, and audit DOJ prosecutorial practices.",
+  "engagement": {
+    "executiveOrders2025": 0,
+    "socialMediaSurge": true,
+    "earnedMediaCoverage": true,
+    "sources": [
+      "https://hamadeh.house.gov",
+      "https://ballotpedia.org/Abraham_Hamadeh"
+    ]
   },
+  "billsPassed": [],
+  "salary": "$174,000/year",
+  "predecessor": "Debbie Lesko",
+  "electionYear": "2024"
+},
   {
     "name": "Paul Gosar",
     "state": "Arizona",
