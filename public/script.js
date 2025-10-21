@@ -174,4 +174,6 @@ document.addEventListener('DOMContentLoaded', () => {
   searchBar.addEventListener('input', () => {
     const query = searchBar.value.trim();
     renderOfficials(selectedState, query);
- 
+   });
+});
+
