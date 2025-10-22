@@ -23,42 +23,38 @@ function showTab(id) {
 function showCalendar() {
   showTab('civic');
   const calendarSection = document.getElementById('calendar');
-  calendarSection.innerHTML = `<h2>Civic Intelligence Dashboard</h2><p>Loading verified data for ${selectedState}...</p>`;
-
-  const stateSlug = selectedState.replace(/\s+/g, '_');
-  const lowerState = selectedState.toLowerCase();
+  calendarSection.innerHTML = `<h3>${selectedState}</h3>`;
 
   const stateLinks = {
     'North Carolina': {
-      elections: 'https://www.ncsbe.gov/voting/upcoming-election',
       bills: 'https://www.ncleg.gov/Legislation/Bills/LastActionByYear/2025/All',
+      senateRoster: 'https://www.ncleg.gov/Members/MemberList/S',
+      houseRoster: 'https://www.ncleg.gov/Members/MemberList/H',
       governorOrders: 'https://governor.nc.gov/news/executive-orders',
       ltGovPress: 'https://ltgov.nc.gov/news/press-release',
       federalRaces: 'https://ballotpedia.org/North_Carolina_elections,_2025'
-    },
-    // Add other states here as needed
+    }
+    // Add other states as needed
   };
 
   const links = stateLinks[selectedState] || {};
 
   const cards = [
     {
-      title: '🗳️ Special Elections',
-      content: links.elections
-        ? `<p>View all 2025 special elections for ${selectedState}.</p><a href="${links.elections}" target="_blank">State Board of Elections</a>`
-        : `<p>No direct election link available for ${selectedState}.</p>`
-    },
-    {
       title: '🏛️ Legislative Sessions & Bills',
-      content: links.bills
-        ? `<p>Track active legislation and session activity in ${selectedState}.</p><a href="${links.bills}" target="_blank">State Legislature Bill Tracker</a>`
-        : `<p>No bill tracker available for ${selectedState}.</p>`
+      content: `
+        <p>Track active legislation and session activity in ${selectedState}.</p>
+        <a href="${links.bills}" target="_blank">Bill Tracker</a><br>
+        <a href="${links.senateRoster}" target="_blank">State Senate Roster</a><br>
+        <a href="${links.houseRoster}" target="_blank">State House Roster</a>
+      `
     },
     {
-      title: '🇺🇸 Federal Races & Rematches',
-      content: links.federalRaces
-        ? `<p>Explore federal races tied to ${selectedState}.</p><a href="${links.federalRaces}" target="_blank">Ballotpedia Federal Races</a>`
-        : `<p>No federal race data available for ${selectedState}.</p>`
+      title: '🇺🇸 U.S. and Statewide Races and Elections',
+      content: `
+        <p>Explore federal and statewide races tied to ${selectedState}.</p>
+        <a href="${links.federalRaces}" target="_blank">Ballotpedia Election Page</a>
+      `
     },
     {
       title: '🎙️ Governor & Lt. Governor Activity',
@@ -78,7 +74,6 @@ function showCalendar() {
     }
   ];
 
-  calendarSection.innerHTML = `<h2>Civic Intelligence Dashboard</h2><h3>${selectedState}</h3>`;
   cards.forEach(card => {
     const div = document.createElement('div');
     div.className = 'calendar-card';
