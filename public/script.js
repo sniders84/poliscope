@@ -98,52 +98,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function showCalendar() {
-    if (!officialsContainer) {
-      console.error('officialsContainer not initialized');
-      return;
-    }
-
     officialsContainer.innerHTML = '<h2>State Calendar</h2>';
-    console.log('Selected State:', selectedState);
-
-    fetch('/state-calendars.json')
-      .then(res => {
-        if (!res.ok) throw new Error('Failed to load calendar file');
-        return res.json();
-      })
-      .then(data => {
-        console.log('Available states in calendar:', Object.keys(data));
-
-        const stateKey = Object.keys(data).find(k => k.toLowerCase() === selectedState.toLowerCase());
-        if (!stateKey) {
-          officialsContainer.innerHTML += `<p>No calendar data found for <strong>${selectedState}</strong>.</p>`;
-          console.warn(`State "${selectedState}" not found in calendar data.`);
-          return;
-        }
-
-        const events = data[stateKey];
-        console.log('Events for', stateKey, events);
-
-        if (!Array.isArray(events) || events.length === 0) {
-          officialsContainer.innerHTML += '<p>No events found for this state.</p>';
-          return;
-        }
-
-        const list = document.createElement('ul');
-        events.forEach(event => {
-          const item = document.createElement('li');
-          item.innerHTML = `
-            <strong>${event.title}</strong><br>
-            ${event.date} — ${event.location} (${event.type})
-          `;
-          list.appendChild(item);
-        });
-        officialsContainer.appendChild(list);
-      })
-      .catch(err => {
-        officialsContainer.innerHTML += '<p>Error loading calendar.</p>';
-        console.error('Calendar Load Error:', err);
-      });
+    officialsContainer.innerHTML += '<p>Calendar integration coming soon. This feature is being rebuilt from scratch.</p>';
   }
 
   function showActivist() {
@@ -204,16 +160,15 @@ document.addEventListener('DOMContentLoaded', () => {
           ${o.keyVotes.map(v => `
             <li>
               <strong>${v.vote}:</strong> 
-              <a href="${v.link}" target="_blank">${v.title}</a>               (${v.result}, ${v.date})
+              <a href="${v.link}" target="_blank">${v.title}</a> 
+              (${v.result}, ${v.date})
             </li>
           `).join('')}
         </ul>
       ` : ''}
       ${o.billsSigned?.length ? `
         <h4>Bills Signed</h4>
-        <ul>
-          ${o.billsSigned.map(b => `<li><a href="${b.link}" target="_blank">${b.title}</a></li>`).join('')}
-        </ul>
+        <ul>${o.billsSigned.map(b => `<li><a href="${b.link}" target="_blank">${b.title}</a></li>`).join('')}</ul>
       ` : ''}
       ${o.vetoes ? `<p><strong>Vetoes:</strong> ${o.vetoes}</p>` : ''}
       ${o.salary ? `<p><strong>Salary:</strong> ${o.salary}</p>` : ''}
@@ -249,4 +204,3 @@ document.addEventListener('DOMContentLoaded', () => {
     renderOfficials(selectedState, searchBar.value.trim());
   });
 });
-
