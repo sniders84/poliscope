@@ -52,10 +52,17 @@ function showCalendar() {
 
   const eventPromises = jurisdictions.map(jurisdiction =>
     fetch(`${baseUrl}/events?jurisdiction=${jurisdiction}&apikey=${apiKey}`)
-      .then(res => res.json())
-      .then(eventData => ({ jurisdiction, events: eventData.results || [] }))
-      .catch(err => ({ jurisdiction, events: [], error: true }))
-  );
+  .then(res => {
+    if (!res.ok) {
+      throw new Error(`HTTP ${res.status} for ${jurisdiction}`);
+    }
+    return res.json();
+  })
+  .then(eventData => ({ jurisdiction, events: eventData.results || [] }))
+  .catch(err => {
+    console.error(`Error fetching events for ${jurisdiction}:`, err);
+    return { jurisdiction, events: [], error: true };
+  });
 
   Promise.all(eventPromises)
     .then(allResults => {
