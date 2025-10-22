@@ -99,7 +99,6 @@
       "type": "Federal Senate"
     }
   ],
-  {
   "California": [
     {
       "title": "Senate Committee Hearing: Climate Legislation",
@@ -202,20 +201,20 @@
   ],
   "Georgia": [
     {
-      "title": "Senate Committee Hearing: Election Integrity",
-      "date": "2025-11-07",
-      "location": "Atlanta Capitol, Room 450",
+      "title": "Senate Committee Hearing: Voting Access Legislation",
+      "date": "2025-11-12",
+      "location": "Atlanta Capitol, Room 310",
       "type": "State Senate"
     },
     {
-      "title": "Governor’s Economic Development Briefing",
-      "date": "2026-01-19",
+      "title": "Governor’s Economic Strategy Briefing",
+      "date": "2026-01-24",
       "location": "Governor’s Office, Atlanta",
       "type": "Governor"
     },
     {
-      "title": "Federal House Judiciary Field Hearing",
-      "date": "2026-03-11",
+      "title": "Federal House Oversight Visit: Civil Rights & Judiciary",
+      "date": "2026-03-15",
       "location": "Georgia State University, Atlanta",
       "type": "Federal House"
     }
@@ -223,201 +222,199 @@
   "Guam": [
     {
       "title": "Legislature Session: Infrastructure Bond Review",
-      "date": "2025-11-15",
+      "date": "2025-11-17",
       "location": "Guam Congress Building, Hagåtña",
       "type": "Territorial Legislature"
     },
     {
-      "title": "Governor’s Fiscal Planning Briefing",
-      "date": "2026-01-28",
-      "location": "Governor’s Complex, Adelup",
+      "title": "Governor’s Disaster Recovery Briefing",
+      "date": "2026-01-26",
+      "location": "Governor’s Office, Hagåtña",
       "type": "Governor"
     },
     {
       "title": "Federal Executive Delegation Visit: Indo-Pacific Strategy",
-      "date": "2026-04-04",
-      "location": "University of Guam",
+      "date": "2026-03-29",
+      "location": "University of Guam, Mangilao",
       "type": "Federal Executive"
     }
   ],
   "Hawaii": [
     {
-      "title": "House Committee Hearing: Tourism Recovery",
-      "date": "2025-11-22",
-      "location": "Honolulu Capitol, Room 325",
-      "type": "State House"
+      "title": "Senate Committee Hearing: Climate Adaptation",
+      "date": "2025-11-15",
+      "location": "Honolulu Capitol, Room 224",
+      "type": "State Senate"
     },
     {
-      "title": "Governor’s Climate Resilience Briefing",
-      "date": "2026-02-10",
+      "title": "Governor’s Housing Strategy Briefing",
+      "date": "2026-01-30",
       "location": "Governor’s Office, Honolulu",
       "type": "Governor"
     },
     {
-      "title": "Federal Senate Hearing: Pacific Defense Strategy",
-      "date": "2026-03-18",
+      "title": "Federal Senate Hearing: Pacific Infrastructure",
+      "date": "2026-03-31",
       "location": "University of Hawaii, Manoa",
       "type": "Federal Senate"
     }
   ],
   "Idaho": [
     {
-      "title": "Senate Committee Hearing: Agricultural Subsidies",
-      "date": "2025-11-04",
-      "location": "Boise Capitol, Room WW02",
-      "type": "State Senate"
+      "title": "House Committee Hearing: Agricultural Policy",
+      "date": "2025-11-10",
+      "location": "Boise Capitol, Room EW42",
+      "type": "State House"
     },
     {
-      "title": "Governor’s Rural Broadband Briefing",
-      "date": "2026-01-23",
+      "title": "Governor’s Rural Development Briefing",
+      "date": "2026-01-22",
       "location": "Governor’s Office, Boise",
       "type": "Governor"
     },
     {
-      "title": "Federal House Oversight Visit: Energy & Commerce",
-      "date": "2026-03-25",
-      "location": "Idaho State University, Pocatello",
-      "type": "Federal House"
+      "title": "Federal Executive Delegation Visit: USDA & Interior",
+      "date": "2026-03-20",
+      "location": "Boise State University",
+      "type": "Federal Executive"
     }
   ],
   "Illinois": [
     {
-      "title": "House Committee Hearing: Public Safety Budget",
-      "date": "2025-11-16",
-      "location": "Springfield Capitol, Room 114",
-      "type": "State House"
+      "title": "Senate Committee Hearing: Public Health Policy",
+      "date": "2025-11-13",
+      "location": "Springfield Capitol, Room 400",
+      "type": "State Senate"
     },
     {
-      "title": "Governor’s Urban Development Briefing",
-      "date": "2026-02-01",
+      "title": "Governor’s Workforce Innovation Briefing",
+      "date": "2026-01-27",
       "location": "Governor’s Office, Springfield",
       "type": "Governor"
     },
     {
       "title": "Federal Judiciary Oversight Forum",
-      "date": "2026-04-08",
+      "date": "2026-03-22",
       "location": "Chicago Federal Courthouse",
       "type": "Federal Judicial"
     }
   ],
-  {
   "Indiana": [
     {
-      "title": "House Committee Hearing: Workforce Development",
-      "date": "2025-11-05",
-      "location": "Indiana Statehouse, Room 156-B",
+      "title": "House Committee Hearing: Education Reform",
+      "date": "2025-11-09",
+      "location": "Indianapolis Capitol, Room 156-B",
       "type": "State House"
     },
     {
-      "title": "Governor’s Education Reform Briefing",
-      "date": "2026-01-14",
+      "title": "Governor’s Infrastructure Strategy Briefing",
+      "date": "2026-01-25",
       "location": "Governor’s Office, Indianapolis",
       "type": "Governor"
     },
     {
       "title": "Federal Senate Hearing: Midwest Infrastructure",
-      "date": "2026-03-10",
-      "location": "Purdue University, West Lafayette",
+      "date": "2026-03-28",
+      "location": "Indiana University, Bloomington",
       "type": "Federal Senate"
     }
   ],
   "Iowa": [
     {
-      "title": "Senate Committee Hearing: Renewable Energy Incentives",
-      "date": "2025-11-12",
-      "location": "Iowa Capitol, Room 116",
+      "title": "Senate Committee Hearing: Agricultural Innovation",
+      "date": "2025-11-11",
+      "location": "Des Moines Capitol, Room 116",
       "type": "State Senate"
     },
     {
-      "title": "Governor’s Rural Health Briefing",
-      "date": "2026-01-26",
+      "title": "Governor’s Broadband Expansion Briefing",
+      "date": "2026-01-20",
       "location": "Governor’s Office, Des Moines",
       "type": "Governor"
     },
     {
-      "title": "Federal House Oversight Visit: Agriculture & Nutrition",
-      "date": "2026-03-22",
+      "title": "Federal House Oversight Visit: Rural Development",
+      "date": "2026-03-25",
       "location": "Iowa State University, Ames",
       "type": "Federal House"
     }
   ],
   "Kansas": [
     {
-      "title": "House Committee Hearing: School Funding Formula",
-      "date": "2025-11-14",
-      "location": "Kansas Statehouse, Room 346-S",
+      "title": "House Committee Hearing: Energy Policy",
+      "date": "2025-11-08",
+      "location": "Topeka Capitol, Room 112-N",
       "type": "State House"
     },
     {
-      "title": "Governor’s Economic Forecast Briefing",
-      "date": "2026-02-03",
+      "title": "Governor’s Economic Development Briefing",
+      "date": "2026-01-28",
       "location": "Governor’s Office, Topeka",
       "type": "Governor"
     },
     {
-      "title": "Federal Judiciary Oversight Forum",
-      "date": "2026-04-05",
-      "location": "Wichita Federal Courthouse",
-      "type": "Federal Judicial"
+      "title": "Federal Executive Delegation Visit: Commerce & Energy",
+      "date": "2026-03-26",
+      "location": "University of Kansas, Lawrence",
+      "type": "Federal Executive"
     }
   ],
   "Kentucky": [
     {
-      "title": "Senate Committee Hearing: Opioid Response Strategy",
-      "date": "2025-11-09",
-      "location": "Frankfort Capitol Annex, Room 131",
+      "title": "Senate Committee Hearing: Opioid Crisis Response",
+      "date": "2025-11-14",
+      "location": "Frankfort Capitol, Room 327",
       "type": "State Senate"
     },
     {
-      "title": "Governor’s Infrastructure Investment Briefing",
-      "date": "2026-01-30",
+      "title": "Governor’s Public Health Briefing",
+      "date": "2026-01-23",
       "location": "Governor’s Office, Frankfort",
       "type": "Governor"
     },
     {
-      "title": "Federal Executive Delegation Visit: Transportation & HUD",
-      "date": "2026-03-28",
+      "title": "Federal Senate Hearing: Appalachian Infrastructure",
+      "date": "2026-03-19",
       "location": "University of Kentucky, Lexington",
-      "type": "Federal Executive"
+      "type": "Federal Senate"
     }
   ],
   "Louisiana": [
     {
-      "title": "Special Legislative Session: Election Code Reform",
-      "date": "2025-10-23",
-      "location": "Louisiana State Capitol, Baton Rouge",
-      "type": "State Legislature Special"
+      "title": "House Committee Hearing: Flood Mitigation Strategy",
+      "date": "2025-11-16",
+      "location": "Baton Rouge Capitol, Room 204",
+      "type": "State House"
     },
     {
-      "title": "Governor’s Redistricting Briefing",
-      "date": "2025-11-10",
+      "title": "Governor’s Climate Resilience Briefing",
+      "date": "2026-01-29",
       "location": "Governor’s Office, Baton Rouge",
       "type": "Governor"
     },
     {
-      "title": "Federal Senate Hearing: Gulf Coast Resilience",
-      "date": "2026-04-15",
-      "location": "Tulane University, New Orleans",
-      "type": "Federal Senate"
+      "title": "Federal Executive Delegation Visit: FEMA & HUD",
+      "date": "2026-03-30",
+      "location": "Louisiana State University, Baton Rouge",
+      "type": "Federal Executive"
     }
   ],
-  {
   "Maine": [
     {
-      "title": "Senate Committee Hearing: Lobster Industry Regulation",
-      "date": "2025-11-06",
-      "location": "Augusta Capitol, Room 437",
+      "title": "Senate Committee Hearing: Fisheries Policy",
+      "date": "2025-11-07",
+      "location": "Augusta Capitol, Room 214",
       "type": "State Senate"
     },
     {
-      "title": "Governor’s Climate Resilience Briefing",
-      "date": "2026-01-20",
+      "title": "Governor’s Climate Strategy Briefing",
+      "date": "2026-01-21",
       "location": "Governor’s Office, Augusta",
       "type": "Governor"
     },
     {
-      "title": "Federal Executive Delegation Visit: NOAA & EPA",
-      "date": "2026-03-17",
+      "title": "Federal Executive Delegation Visit: NOAA & Interior",
+      "date": "2026-03-18",
       "location": "University of Maine, Orono",
       "type": "Federal Executive"
     }
@@ -425,19 +422,19 @@
   "Maryland": [
     {
       "title": "House Committee Hearing: Chesapeake Bay Restoration",
-      "date": "2025-11-13",
-      "location": "Annapolis Capitol, Room 142",
+      "date": "2025-11-10",
+      "location": "Annapolis Capitol, Room 120",
       "type": "State House"
     },
     {
       "title": "Governor’s Public Safety Briefing",
-      "date": "2026-02-06",
+      "date": "2026-01-26",
       "location": "Governor’s Office, Annapolis",
       "type": "Governor"
     },
     {
-      "title": "Federal Senate Hearing: Cybersecurity Infrastructure",
-      "date": "2026-04-03",
+      "title": "Federal Senate Hearing: Mid-Atlantic Infrastructure",
+      "date": "2026-03-27",
       "location": "University of Maryland, College Park",
       "type": "Federal Senate"
     }
@@ -445,165 +442,163 @@
   "Massachusetts": [
     {
       "title": "Senate Committee Hearing: Housing Affordability",
-      "date": "2025-11-10",
-      "location": "Boston State House, Room A-1",
+      "date": "2025-11-13",
+      "location": "Boston Capitol, Room 222",
       "type": "State Senate"
     },
     {
-      "title": "Governor’s Transportation Briefing",
-      "date": "2026-01-31",
+      "title": "Governor’s Climate Innovation Briefing",
+      "date": "2026-01-28",
       "location": "Governor’s Office, Boston",
       "type": "Governor"
     },
     {
       "title": "Federal Judiciary Oversight Forum",
-      "date": "2026-03-29",
+      "date": "2026-03-23",
       "location": "Boston Federal Courthouse",
       "type": "Federal Judicial"
     }
   ],
   "Michigan": [
     {
-      "title": "House Committee Hearing: Auto Industry Transition",
-      "date": "2025-11-18",
+      "title": "House Committee Hearing: Great Lakes Protection",
+      "date": "2025-11-08",
       "location": "Lansing Capitol, Room 110",
       "type": "State House"
     },
     {
-      "title": "Governor’s Water Infrastructure Briefing",
-      "date": "2026-02-14",
+      "title": "Governor’s Economic Development Briefing",
+      "date": "2026-01-24",
       "location": "Governor’s Office, Lansing",
       "type": "Governor"
     },
     {
-      "title": "Federal House Oversight Visit: Manufacturing & Labor",
-      "date": "2026-04-10",
-      "location": "Wayne State University, Detroit",
-      "type": "Federal House"
+      "title": "Federal Senate Hearing: Midwest Infrastructure",
+      "date": "2026-03-20",
+      "location": "University of Michigan, Ann Arbor",
+      "type": "Federal Senate"
     }
   ],
   "Minnesota": [
     {
       "title": "Senate Committee Hearing: Public Health Strategy",
-      "date": "2025-11-15",
-      "location": "St. Paul Capitol, Room 1200",
+      "date": "2025-11-11",
+      "location": "St. Paul Capitol, Room 321",
       "type": "State Senate"
     },
     {
-      "title": "Governor’s Education Equity Briefing",
-      "date": "2026-01-27",
+      "title": "Governor’s Climate Resilience Briefing",
+      "date": "2026-01-30",
       "location": "Governor’s Office, St. Paul",
       "type": "Governor"
     },
     {
-      "title": "Federal Senate Hearing: Great Lakes Policy",
-      "date": "2026-03-31",
+      "title": "Federal House Oversight Visit: Health & Environment",
+      "date": "2026-03-29",
       "location": "University of Minnesota, Twin Cities",
-      "type": "Federal Senate"
+      "type": "Federal House"
     }
   ],
-  {
   "Mississippi": [
     {
-      "title": "House Committee Hearing: Flood Mitigation Strategy",
-      "date": "2025-11-08",
-      "location": "Jackson Capitol, Room 113",
+      "title": "House Committee Hearing: Flood Control Strategy",
+      "date": "2025-11-14",
+      "location": "Jackson Capitol, Room 210",
       "type": "State House"
     },
     {
-      "title": "Governor’s Public Health Infrastructure Briefing",
-      "date": "2026-01-24",
+      "title": "Governor’s Infrastructure Briefing",
+      "date": "2026-01-22",
       "location": "Governor’s Office, Jackson",
       "type": "Governor"
     },
     {
-      "title": "Federal Senate Hearing: Gulf Coast Resilience",
-      "date": "2026-03-15",
-      "location": "University of Southern Mississippi",
-      "type": "Federal Senate"
+      "title": "Federal Executive Delegation Visit: FEMA & Army Corps",
+      "date": "2026-03-25",
+      "location": "Mississippi State University, Starkville",
+      "type": "Federal Executive"
     }
   ],
   "Missouri": [
     {
-      "title": "Senate Committee Hearing: Transportation Funding",
-      "date": "2025-11-12",
-      "location": "Jefferson City Capitol, Room 1",
+      "title": "Senate Committee Hearing: Transportation Strategy",
+      "date": "2025-11-09",
+      "location": "Jefferson City Capitol, Room 118",
       "type": "State Senate"
     },
     {
       "title": "Governor’s Workforce Development Briefing",
-      "date": "2026-02-02",
+      "date": "2026-01-27",
       "location": "Governor’s Office, Jefferson City",
       "type": "Governor"
     },
     {
-      "title": "Federal Judiciary Oversight Forum",
-      "date": "2026-03-27",
-      "location": "St. Louis Federal Courthouse",
-      "type": "Federal Judicial"
+      "title": "Federal Senate Hearing: Midwest Infrastructure",
+      "date": "2026-03-30",
+      "location": "University of Missouri, Columbia",
+      "type": "Federal Senate"
     }
   ],
   "Montana": [
     {
-      "title": "House Committee Hearing: Land Use and Conservation",
-      "date": "2025-11-14",
+      "title": "House Committee Hearing: Land Use Policy",
+      "date": "2025-11-12",
       "location": "Helena Capitol, Room 102",
       "type": "State House"
     },
     {
-      "title": "Governor’s Broadband Expansion Briefing",
-      "date": "2026-01-18",
+      "title": "Governor’s Energy Strategy Briefing",
+      "date": "2026-01-19",
       "location": "Governor’s Office, Helena",
       "type": "Governor"
     },
     {
-      "title": "Federal House Oversight Visit: Natural Resources",
-      "date": "2026-04-06",
+      "title": "Federal Executive Delegation Visit: Interior & Energy",
+      "date": "2026-03-28",
       "location": "Montana State University, Bozeman",
-      "type": "Federal House"
+      "type": "Federal Executive"
     }
   ],
   "Nebraska": [
     {
       "title": "Senate Committee Hearing: Agricultural Innovation",
       "date": "2025-11-10",
-      "location": "Lincoln Capitol, Room 1525",
+      "location": "Lincoln Capitol, Room 140",
       "type": "State Senate"
     },
     {
-      "title": "Governor’s Education Reform Briefing",
-      "date": "2026-01-29",
+      "title": "Governor’s Broadband Expansion Briefing",
+      "date": "2026-01-23",
       "location": "Governor’s Office, Lincoln",
       "type": "Governor"
     },
     {
-      "title": "Federal Executive Delegation Visit: USDA & DOE",
-      "date": "2026-03-20",
+      "title": "Federal House Oversight Visit: Rural Infrastructure",
+      "date": "2026-03-26",
       "location": "University of Nebraska, Lincoln",
-      "type": "Federal Executive"
+      "type": "Federal House"
     }
   ],
   "Nevada": [
     {
-      "title": "House Committee Hearing: Water Resource Management",
-      "date": "2025-11-17",
-      "location": "Carson City Capitol, Room 3142",
+      "title": "House Committee Hearing: Water Rights Reform",
+      "date": "2025-11-13",
+      "location": "Carson City Capitol, Room 201",
       "type": "State House"
     },
     {
-      "title": "Governor’s Housing Affordability Briefing",
-      "date": "2026-02-07",
+      "title": "Governor’s Climate Strategy Briefing",
+      "date": "2026-01-25",
       "location": "Governor’s Office, Carson City",
       "type": "Governor"
     },
     {
-      "title": "Federal Senate Hearing: Western Drought Response",
-      "date": "2026-04-01",
-      "location": "University of Nevada, Reno",
-      "type": "Federal Senate"
+      "title": "Federal Judiciary Oversight Forum",
+      "date": "2026-03-27",
+      "location": "Las Vegas Federal Courthouse",
+      "type": "Federal Judicial"
     }
-  ],
-  {
+  ]  ,
   "New Hampshire": [
     {
       "title": "Senate Committee Hearing: Energy Grid Modernization",
@@ -704,7 +699,6 @@
       "type": "Federal Senate"
     }
   ],
-  {
   "North Dakota": [
     {
       "title": "Senate Committee Hearing: Rural Health Access",
@@ -804,8 +798,7 @@
       "location": "Portland Federal Courthouse",
       "type": "Federal Judicial"
     }
-  ],
-  {
+  ]  ,
   "Pennsylvania": [
     {
       "title": "Senate Committee Hearing: Transportation Infrastructure",
@@ -906,7 +899,6 @@
       "type": "Federal Executive"
     }
   ],
-  {
   "Tennessee": [
     {
       "title": "House Committee Hearing: Rural Healthcare Access",
@@ -1054,7 +1046,7 @@
       "location": "Charleston Capitol, Room 215-E",
       "type": "State House"
     },
-    {
+        {
       "title": "Governor’s Economic Development Briefing",
       "date": "2026-01-24",
       "location": "Governor’s Office, Charleston",
