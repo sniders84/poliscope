@@ -98,9 +98,47 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function showCalendar() {
-    officialsContainer.innerHTML = '<h2>State Calendar</h2>';
-    officialsContainer.innerHTML += '<p>Calendar integration coming soon. This feature is being rebuilt from scratch.</p>';
-  }
+  officialsContainer.innerHTML = `<h2>${selectedState} Calendar</h2>`;
+
+  const apiKey = aeb782db-6584-4ffe-9902-da6e234e95e6; // ← Replace with your actual key
+  const jurisdiction = encodeURIComponent(selectedState);
+  const url = `https://v3.openstates.org/events?jurisdiction=${jurisdiction}&apikey=${apiKey}`;
+
+  fetch(url)
+    .then(res => {
+      if (!res.ok) throw new Error('Failed to fetch calendar events');
+      return res.json();
+    })
+    .then(data => {
+      const events = data.results || [];
+      if (events.length === 0) {
+        officialsContainer.innerHTML += '<p>No upcoming events found for this jurisdiction.</p>';
+        return;
+      }
+
+      const list = document.createElement('ul');
+      events.forEach(event => {
+        const date = new Date(event.start_date).toLocaleString('en-US', {
+          dateStyle: 'medium',
+          timeStyle: 'short'
+        });
+        const location = event.location?.name || 'Location TBD';
+        const type = event.classification || 'Unclassified';
+
+        const item = document.createElement('li');
+        item.innerHTML = `
+          <strong>${event.name}</strong><br>
+          ${date} — ${location} (${type})
+        `;
+        list.appendChild(item);
+      });
+      officialsContainer.appendChild(list);
+    })
+    .catch(err => {
+      officialsContainer.innerHTML += '<p>Error loading calendar events.</p>';
+      console.error('Calendar API Error:', err);
+    });
+}
 
   function showActivist() {
     officialsContainer.innerHTML = '<h2>National Grassroots Organizations</h2>';
