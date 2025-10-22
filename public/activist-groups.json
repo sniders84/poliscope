@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Turning Point USA",
+    "logo": "assets/logos/turningpoint.png",
+    "description": "Conservative youth organization focused on free markets and limited government.",
+    "website": "https://www.tpusa.com",
+    "platform": "Promotes capitalism, constitutional values, and campus activism."
+  },
+  {
+    "name": "Sunrise Movement",
+    "logo": "assets/logos/sunrise.png",
+    "description": "Progressive climate justice movement led by young activists.",
+    "website": "https://www.sunrisemovement.org",
+    "platform": "Supports Green New Deal, climate action, and electoral organizing."
+  },
+  {
+    "name": "Moms for Liberty",
+    "logo": "assets/logos/momsforliberty.png",
+    "description": "Advocates for parental rights in education and local government.",
+    "website": "https://www.momsforliberty.org",
+    "platform": "Focuses on school board accountability, curriculum transparency, and civic engagement."
+  },
+  {
+    "name": "Indivisible",
+    "logo": "assets/logos/indivisible.png",
+    "description": "Progressive grassroots network focused on resisting authoritarianism and building inclusive democracy.",
+    "website": "https://indivisible.org",
+    "platform": "Supports progressive candidates, voting rights, and structural reform."
+  },
+  {
+    "name": "Heritage Action for America",
+    "logo": "assets/logos/heritageaction.png",
+    "description": "Conservative policy advocacy group aligned with the Heritage Foundation.",
+    "website": "https://heritageaction.com",
+    "platform": "Advocates for limited government, free enterprise, and traditional values."
+  },
+  {
+    "name": "MoveOn",
+    "logo": "assets/logos/moveon.png",
+    "description": "Progressive advocacy group mobilizing voters and promoting social justice.",
+    "website": "https://www.moveon.org",
+    "platform": "Focuses on healthcare, climate, democracy reform, and economic equity."
+  },
+  {
+    "name": "FreedomWorks",
+    "logo": "assets/logos/freedomworks.png",
+    "description": "Libertarian-conservative group promoting small government and individual liberty.",
+    "website": "https://www.freedomworks.org",
+    "platform": "Supports tax reform, deregulation, and grassroots organizing."
+  },
+  {
+    "name": "Black Lives Matter Global Network",
+    "logo": "assets/logos/blm.png",
+    "description": "Movement advocating for racial justice and police accountability.",
+    "website": "https://blacklivesmatter.com",
+    "platform": "Focuses on systemic racism, community investment, and civil rights."
+  },
+  {
+    "name": "Center for Popular Democracy",
+    "logo": "assets/logos/cpd.png",
+    "description": "Progressive network of community organizations focused on equity and justice.",
+    "website": "https://www.populardemocracy.org",
+    "platform": "Supports economic justice, immigrant rights, and democratic reform."
+  },
+  {
+    "name": "Tea Party Patriots",
+    "logo": "assets/logos/teapartypatriots.png",
+    "description": "Grassroots conservative group advocating for fiscal responsibility and constitutional government.",
+    "website": "https://www.teapartypatriots.org",
+    "platform": "Focuses on limited government, free markets, and personal liberty."
+  }
+]
