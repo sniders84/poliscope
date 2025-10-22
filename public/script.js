@@ -19,48 +19,64 @@ function showTab(id) {
   if (activeTab) activeTab.style.display = 'block';
 }
 
-// ✅ Global function so it's accessible from HTML
+// ✅ REPLACED: Full API integration for calendar events across all jurisdictions
 function showCalendar() {
   showTab('calendar');
   const calendarSection = document.getElementById('calendar');
-  calendarSection.innerHTML = '<h2>Election Calendar</h2>';
+  calendarSection.innerHTML = '<h2>Election Calendar</h2><p>Loading events from all jurisdictions...</p>';
 
   const apiKey = 'aeb782db-6584-4ffe-9902-da6e234e95e6';
-  const jurisdiction = toJurisdictionSlug(selectedState);
-  const url = `https://v3.openstates.org/events?jurisdiction=${jurisdiction}&apikey=${apiKey}`;
+  const baseUrl = 'https://v3.openstates.org';
 
-  console.log("Calendar API URL:", url);
-
-  fetch(url)
-    .then(res => {
-      console.log("Calendar API status:", res.status);
-      return res.json();
-    })
+  fetch(`${baseUrl}/jurisdictions?classification=state&per_page=100&apikey=${apiKey}`)
+    .then(res => res.json())
     .then(data => {
-      console.log("Calendar API data:", data);
-      const events = data.results || [];
-      if (events.length === 0) {
-        calendarSection.innerHTML += '<p>No upcoming events found for this jurisdiction.</p>';
-        return;
-      }
+      const jurisdictions = data.results.map(j => j.id);
+      const eventPromises = jurisdictions.map(jurisdiction =>
+        fetch(`${baseUrl}/events?jurisdiction=${jurisdiction}&apikey=${apiKey}`)
+          .then(res => res.json())
+          .then(eventData => ({ jurisdiction, events: eventData.results || [] }))
+          .catch(err => ({ jurisdiction, events: [], error: true }))
+      );
 
-      const list = document.createElement('ul');
-      events.forEach(event => {
-        const date = new Date(event.start_date).toLocaleString('en-US', {
-          dateStyle: 'medium',
-          timeStyle: 'short'
+      return Promise.all(eventPromises);
+    })
+    .then(allResults => {
+      calendarSection.innerHTML = '<h2>Election Calendar</h2>';
+      let totalEvents = 0;
+
+      allResults.forEach(({ jurisdiction, events, error }) => {
+        if (error || events.length === 0) return;
+
+        const section = document.createElement('div');
+        section.className = 'calendar-jurisdiction';
+        section.innerHTML = `<h3>${jurisdiction.replace('ocd-jurisdiction/country:us/state:', '').replace(/_/g, ' ').toUpperCase()}</h3>`;
+        const list = document.createElement('ul');
+
+        events.forEach(event => {
+          const date = new Date(event.start_date).toLocaleString('en-US', {
+            dateStyle: 'medium',
+            timeStyle: 'short'
+          });
+          const location = event.location?.name || 'Location TBD';
+          const type = event.classification || 'Unclassified';
+
+          const item = document.createElement('li');
+          item.innerHTML = `
+            <strong>${event.name}</strong><br>
+            ${date} — ${location} (${type})
+          `;
+          list.appendChild(item);
         });
-        const location = event.location?.name || 'Location TBD';
-        const type = event.classification || 'Unclassified';
 
-        const item = document.createElement('li');
-        item.innerHTML = `
-          <strong>${event.name}</strong><br>
-          ${date} — ${location} (${type})
-        `;
-        list.appendChild(item);
+        section.appendChild(list);
+        calendarSection.appendChild(section);
+        totalEvents += events.length;
       });
-      calendarSection.appendChild(list);
+
+      if (totalEvents === 0) {
+        calendarSection.innerHTML += '<p>No upcoming events found for any jurisdiction.</p>';
+      }
     })
     .catch(err => {
       calendarSection.innerHTML += '<p>Error loading calendar events.</p>';
@@ -95,6 +111,7 @@ function showActivist() {
     });
 }
 
+// ✅ DOMContentLoaded block remains unchanged
 document.addEventListener('DOMContentLoaded', () => {
   const stateSelector = document.getElementById('state-selector');
   const searchBar = document.getElementById('search-bar');
@@ -204,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ${districtDisplay}
       <p><strong>Party:</strong> ${o.party}</p>
       <p><strong>State:</strong> ${o.state}</p>
-      <p><strong>Term:</strong> ${o.termStart} → ${o.termEnd}</p>
+            <p><strong>Term:</strong> ${o.termStart} → ${o.termEnd}</p>
       ${o.bio ? `<p><strong>Bio:</strong> ${o.bio}</p>` : ''}
       ${o.education ? `<p><strong>Education:</strong> ${o.education}</p>` : ''}
       ${o.endorsements ? `<p><strong>Endorsements:</strong> ${o.endorsements}</p>` : ''}
