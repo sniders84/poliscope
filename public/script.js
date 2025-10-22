@@ -35,23 +35,24 @@ function showCalendar() {
   federalRaces: 'https://ballotpedia.org/Alabama_elections,_2025'
 },
     'Alaska': {
-  bills: 'https://www.akleg.gov/basis/Bill/Range/33',
+  bills: 'https://www.akleg.gov/basis/Home/Bill',
   senateRoster: 'https://www.akleg.gov/senate.php',
   houseRoster: 'https://www.akleg.gov/house.php',
-  governorOrders: 'https://gov.alaska.gov/newsroom/executive-orders/',
+  governorOrders: 'https://gov.alaska.gov/administrative-orders/',
   ltGovPress: 'https://ltgov.alaska.gov/newsroom/',
   federalRaces: 'https://ballotpedia.org/Alaska_elections,_2025'
 },
     'American Samoa': {
-  bills: 'https://www.americansamoa.gov/legislation',
-  senateRoster: 'https://www.americansamoa.gov/senate',
-  houseRoster: 'https://www.americansamoa.gov/house-of-representatives',
-  governorOrders: 'https://www.americansamoa.gov/executive-orders',
-  ltGovPress: 'https://www.americansamoa.gov/news',
+  bills: 'https://www.asfono.gov/392documents',
+  senateRoster: 'https://www.asfono.gov/senate/members',
+  houseRoster: 'https://en.wikipedia.org/wiki/American_Samoa_House_of_Representatives',
+  governorOrders: 'https://www.americansamoa.gov/executiveorders',
+  ltGovPress: 'https://www.americansamoa.gov/lieutenantgovernorpulu',
   federalRaces: 'https://ballotpedia.org/American_Samoa_elections,_2025'
+
 },
     'Arizona': {
-  bills: 'https://www.azleg.gov/Bills.asp',
+  bills: 'https://www.azleg.gov/bills/',
   senateRoster: 'https://www.azleg.gov/MemberRoster/?body=S',
   houseRoster: 'https://www.azleg.gov/MemberRoster/?body=H',
   governorOrders: 'https://azgovernor.gov/executive-orders',
@@ -59,11 +60,11 @@ function showCalendar() {
   federalRaces: 'https://ballotpedia.org/Arizona_elections,_2025'
 },
     'Arkansas': {
-  bills: 'https://www.arkleg.state.ar.us/Bills',
+  bills: 'https://www.arkleg.state.ar.us/Bills/SearchByRange?ddBienniumSession=2025%2F2025R',
   senateRoster: 'https://senate.arkansas.gov/senators/',
   houseRoster: 'https://www.arkansashouse.org/representatives',
   governorOrders: 'https://governor.arkansas.gov/executive-orders/',
-  ltGovPress: 'https://ltgovernor.arkansas.gov/newsroom/',
+  ltGovPress: 'https://ltgovernor.arkansas.gov/news/',
   federalRaces: 'https://ballotpedia.org/Arkansas_elections,_2025'
 },
     'California': {
@@ -71,51 +72,51 @@ function showCalendar() {
   senateRoster: 'https://www.senate.ca.gov/senators',
   houseRoster: 'https://www.assembly.ca.gov/assemblymembers',
   governorOrders: 'https://www.gov.ca.gov/category/executive-orders/',
-  ltGovPress: 'https://ltg.ca.gov/newsroom/',
+  ltGovPress: 'https://ltg.ca.gov/press-releases/',
   federalRaces: 'https://ballotpedia.org/California_elections,_2025'
 },
     'Colorado': {
   bills: 'https://leg.colorado.gov/bills',
-  senateRoster: 'https://leg.colorado.gov/legislators/senate',
-  houseRoster: 'https://leg.colorado.gov/legislators/house',
+  senateRoster: 'https://leg.colorado.gov/legislators?field_chamber_value=Senate&field_chamber_target_id=2&field_political_affiliation_target_id=All&sort_bef_combine=field_last_name_value%20ASC',
+  houseRoster: 'https://leg.colorado.gov/legislators?field_chamber_value=Senate&field_chamber_target_id=1&field_political_affiliation_target_id=All&sort_bef_combine=field_last_name_value%20ASC',
   governorOrders: 'https://www.colorado.gov/governor/executive-orders',
-  ltGovPress: 'https://www.colorado.gov/ltgovernor/news',
+  ltGovPress: 'https://www.facebook.com/LtGovofCO/',
   federalRaces: 'https://ballotpedia.org/Colorado_elections,_2025'
 },
     'Connecticut': {
-  bills: 'https://www.cga.ct.gov/asp/menu/bills.asp',
+  bills: 'https://www.cga.ct.gov/2025/lbp/lobp.pdf',
   senateRoster: 'https://www.cga.ct.gov/asp/menu/slist.asp',
   houseRoster: 'https://www.cga.ct.gov/asp/menu/hlist.asp',
-  governorOrders: 'https://portal.ct.gov/Office-of-the-Governor/News/Executive-Orders',
-  ltGovPress: 'https://portal.ct.gov/LtGov/News',
+  governorOrders: 'https://portal.ct.gov/governor/governor-actions?language=en_US',
+  ltGovPress: 'https://portal.ct.gov/Office-of-the-Lt-Governor/News',
   federalRaces: 'https://ballotpedia.org/Connecticut_elections,_2025'
 },
     'Delaware': {
-  bills: 'https://legis.delaware.gov/BillSearch',
+  bills: 'https://legis.delaware.gov/AllLegislation',
   senateRoster: 'https://legis.delaware.gov/Senate',
   houseRoster: 'https://legis.delaware.gov/House',
   governorOrders: 'https://governor.delaware.gov/executive-orders/',
-  ltGovPress: 'https://ltgovernor.delaware.gov/newsroom/',
+  ltGovPress: 'https://ltgov.delaware.gov/press-releases/',
   federalRaces: 'https://ballotpedia.org/Delaware_elections,_2025'
 },
     'District of Columbia': {
-  bills: 'https://lims.dccouncil.gov/Legislation.aspx',
-  senateRoster: '', // Not applicable — DC has a unicameral council
+  bills: 'https://dccouncil.gov/legislation/',
+  senateRoster: '', // No state senate; unicameral council
   houseRoster: 'https://dccouncil.gov/councilmembers/',
-  governorOrders: '', // Not applicable — DC has a Mayor, not a Governor
-  ltGovPress: '', // Not applicable — DC has no Lt. Governor
-  federalRaces: 'https://ballotpedia.org/District_of_Columbia_elections,_2025'
+  governorOrders: 'https://mayor.dc.gov/',
+  ltGovPress: '', // No lieutenant governor
+  federalRaces: 'https://ballotpedia.org/Washington,_D.C.,_elections,_2025'
 },
-    'Florida': {
+   'Florida': {
   bills: 'https://www.flsenate.gov/Session/Bills/2025',
   senateRoster: 'https://www.flsenate.gov/Senators/',
-  houseRoster: 'https://www.myfloridahouse.gov/Representatives',
-  governorOrders: 'https://www.flgov.com/executive-orders/',
-  ltGovPress: 'https://www.flgov.com/news/',
+  houseRoster: 'https://www.flhouse.gov/representatives',
+  governorOrders: 'https://www.flgov.com/eog/news',
+  ltGovPress: 'https://www.flgov.com/eog/news',
   federalRaces: 'https://ballotpedia.org/Florida_elections,_2025'
 },
     'Georgia': {
-  bills: 'https://www.legis.ga.gov/legislation/en-US',
+  bills: 'https://www.legis.ga.gov/legislation/all',
   senateRoster: 'https://www.legis.ga.gov/members/senate',
   houseRoster: 'https://www.legis.ga.gov/members/house',
   governorOrders: 'https://gov.georgia.gov/executive-action/executive-orders',
@@ -123,19 +124,19 @@ function showCalendar() {
   federalRaces: 'https://ballotpedia.org/Georgia_elections,_2025'
 },
     'Guam': {
-  bills: 'https://www.guamlegislature.com/bills/',
-  senateRoster: '', // Guam has a unicameral legislature
-  houseRoster: 'https://www.guamlegislature.com/senators/',
+  bills: 'https://guamlegislature.gov/bills-page1/',
+  senateRoster: 'https://guamlegislature.gov/senators-2/',
+  houseRoster: 'https://guamlegislature.gov/legislative-committees/',
   governorOrders: 'https://governor.guam.gov/executive-orders/',
-  ltGovPress: 'https://ltgovernor.guam.gov/news/',
+  ltGovPress: '',
   federalRaces: 'https://ballotpedia.org/Guam_elections,_2025'
 },
     'Hawaii': {
-  bills: 'https://www.capitol.hawaii.gov/legislation/',
-  senateRoster: 'https://www.capitol.hawaii.gov/members/senate',
-  houseRoster: 'https://www.capitol.hawaii.gov/members/house',
-  governorOrders: 'https://governor.hawaii.gov/category/executive-orders/',
-  ltGovPress: 'https://ltgov.hawaii.gov/news/',
+  bills: 'https://www.capitol.hawaii.gov/session/slh.aspx',
+  senateRoster: 'https://www.capitol.hawaii.gov/legislature/legislators.aspx?chamber=S',
+  houseRoster: 'https://www.capitol.hawaii.gov/legislature/legislators.aspx?chamber=H',
+  governorOrders: 'https://governor.hawaii.gov/newsroom/',
+  ltGovPress: 'https://ltgov.hawaii.gov/category/press-releases/',
   federalRaces: 'https://ballotpedia.org/Hawaii_elections,_2025'
 },
     'Idaho': {
@@ -143,31 +144,31 @@ function showCalendar() {
   senateRoster: 'https://legislature.idaho.gov/senate/membership/',
   houseRoster: 'https://legislature.idaho.gov/house/membership/',
   governorOrders: 'https://gov.idaho.gov/executive-orders/',
-  ltGovPress: 'https://ltgov.idaho.gov/newsroom/',
+  ltGovPress: 'https://lgo.idaho.gov/pressrelease/',
   federalRaces: 'https://ballotpedia.org/Idaho_elections,_2025'
 },
-    'Illinois': {
-  bills: 'https://www.ilga.gov/legislation/default.asp',
-  senateRoster: 'https://www.ilga.gov/senate/',
-  houseRoster: 'https://www.ilga.gov/house/',
-  governorOrders: 'https://www.illinois.gov/government/executive-orders',
-  ltGovPress: 'https://www.illinois.gov/government/ltgovernor/news',
+   'Illinois': {
+  bills: 'https://ilga.gov/Legislation',
+  senateRoster: 'https://ilga.gov/Senate/Members',
+  houseRoster: 'https://ilga.gov/House/Members',
+  governorOrders: 'https://www.illinois.gov/government/executive-orders.html',
+  ltGovPress: 'https://ltgov.illinois.gov/about/office-reports.html',
   federalRaces: 'https://ballotpedia.org/Illinois_elections,_2025'
 },
     'Indiana': {
   bills: 'https://iga.in.gov/legislative/2025/bills/',
-  senateRoster: 'https://iga.in.gov/legislative/2025/legislators/senate',
-  houseRoster: 'https://iga.in.gov/legislative/2025/legislators/house',
+  senateRoster: 'https://iga.in.gov/legislative/2025/legislators',
+  houseRoster: 'https://iga.in.gov/legislative/2025/legislators',
   governorOrders: 'https://www.in.gov/gov/newsroom/executive-orders/',
-  ltGovPress: 'https://www.in.gov/lg/lt-governor-news/',
+  ltGovPress: 'https://www.in.gov/lg/newsroom/news-releases/',
   federalRaces: 'https://ballotpedia.org/Indiana_elections,_2025'
 },
     'Iowa': {
   bills: 'https://www.legis.iowa.gov/legislation',
   senateRoster: 'https://www.legis.iowa.gov/legislators/senate',
   houseRoster: 'https://www.legis.iowa.gov/legislators/house',
-  governorOrders: 'https://governor.iowa.gov/executive-orders',
-  ltGovPress: '', // Iowa does not have a lieutenant governor
+  governorOrders: 'https://governor.iowa.gov/meet-governor-kim-reynolds/executive-orders',
+  ltGovPress: '',
   federalRaces: 'https://ballotpedia.org/Iowa_elections,_2025'
 },
     'Kansas': {
