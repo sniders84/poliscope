@@ -98,11 +98,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function showCalendar() {
     officialsContainer.innerHTML = '<h2>State Calendar</h2>';
+    console.log('Selected State:', selectedState);
 
-    fetch('state-calendars.json')
-      .then(res => res.json())
+    fetch('/state-calendars.json')
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to load calendar file');
+        return res.json();
+      })
       .then(data => {
+        console.log('Calendar Data:', data);
         const events = data[selectedState] || [];
+        console.log('Events for', selectedState, events);
+
         if (events.length === 0) {
           officialsContainer.innerHTML += '<p>No events found for this state.</p>';
           return;
@@ -121,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
       })
       .catch(err => {
         officialsContainer.innerHTML += '<p>Error loading calendar.</p>';
-        console.error(err);
+        console.error('Calendar Load Error:', err);
       });
   }
 
@@ -197,9 +204,10 @@ document.addEventListener('DOMContentLoaded', () => {
       ${o.salary ? `<p><strong>Salary:</strong> ${o.salary}</p>` : ''}
       ${o.predecessor ? `<p><strong>Predecessor:</strong> ${o.predecessor}</p>` : ''}
       ${o.pollingScore && o.pollingSource ? `
-        <p><strong>Approval Rating:</strong> 
+                <p><strong>Approval Rating:</strong> 
           <a href="${o.pollingSource}" target="_blank">${o.pollingScore}</a>
-        </p      ` : ''}
+        </p>
+      ` : ''}
       ${o.ballotpediaLink ? `<p><a href="${o.ballotpediaLink}" target="_blank">Ballotpedia Profile</a></p>` : ''}
       ${o.govtrackLink ? `<p><a href="${o.govtrackLink}" target="_blank">GovTrack Profile</a></p>` : ''}
       ${o.govtrackReportCard ? `<p><a href="${o.govtrackReportCard}" target="_blank">GovTrack Report Card</a></p>` : ''}
