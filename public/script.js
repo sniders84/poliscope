@@ -27,11 +27,11 @@ function showCalendar() {
 
   const stateLinks = {
     'Alabama': {
-  bills: 'https://www.legislature.state.al.us/legacy/Splash_Bills.aspx',
-  senateRoster: 'https://www.legislature.state.al.us/legacy/Senate.aspx',
-  houseRoster: 'https://www.legislature.state.al.us/legacy/House.aspx',
-  governorOrders: 'https://governor.alabama.gov/newsroom/executive-orders/',
-  ltGovPress: 'https://ltgov.alabama.gov/newsroom/',
+  bills: 'https://alison.legislature.state.al.us/bill-search?tab=1',
+  senateRoster: 'https://alison.legislature.state.al.us/senate',
+  houseRoster: 'https://alison.legislature.state.al.us/house-of-representatives-sublanding',
+  governorOrders: 'https://governor.alabama.gov/newsroom/category/executive-orders/',
+  ltGovPress: 'https://ltgov.alabama.gov/category/press-release/',
   federalRaces: 'https://ballotpedia.org/Alabama_elections,_2025'
 },
     'Alaska': {
