@@ -121,13 +121,20 @@ document.addEventListener('DOMContentLoaded', () => {
           return;
         }
 
-        const events = data[selectedState];
-        console.log('Events for', selectedState, events);
+        const stateKey = Object.keys(data).find(k => k.toLowerCase() === selectedState.toLowerCase());
+if (!stateKey) {
+  officialsContainer.innerHTML += `<p>No calendar data found for <strong>${selectedState}</strong>.</p>`;
+  console.warn(`State "${selectedState}" not found in calendar data.`);
+  return;
+}
 
-        if (!Array.isArray(events) || events.length === 0) {
-          officialsContainer.innerHTML += '<p>No events found for this state.</p>';
-          return;
-        }
+const events = data[stateKey];
+console.log('Events for', stateKey, events);
+
+if (!Array.isArray(events) || events.length === 0) {
+  officialsContainer.innerHTML += '<p>No events found for this state.</p>';
+  return;
+}
 
         const list = document.createElement('ul');
         events.forEach(event => {
