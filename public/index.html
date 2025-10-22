@@ -92,7 +92,7 @@
 
     <section id="calendar" class="tab-content" style="display: none;">
       <h2>Election Calendar</h2>
-      <!-- Content will be injected by showCalendar() -->
+      <div id="calendar-content"></div>
     </section>
 
     <section id="polls" class="tab-content" style="display: none;">
@@ -102,7 +102,7 @@
 
     <section id="activist" class="tab-content" style="display: none;">
       <h2>Activist & Grassroots</h2>
-      <!-- Content will be injected by showActivist() -->
+      <div id="activist-content"></div>
     </section>
 
     <section id="voting" class="tab-content" style="display: none;">
@@ -121,7 +121,8 @@
       document.querySelectorAll('.tab-content').forEach(tab => {
         tab.style.display = 'none';
       });
-      document.getElementById(id).style.display = 'block';
+      const activeTab = document.getElementById(id);
+      if (activeTab) activeTab.style.display = 'block';
     }
   </script>
   <script src="script.js"></script>
