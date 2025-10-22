@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Your Officials</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="favicon.ico" />
+  <link rel="icon" href="favicon.ico" onerror="this.href='data:,';" />
 </head>
 <body>
   <header>
@@ -15,6 +15,7 @@
       <input type="text" id="search-bar" placeholder="Search officials..." />
       <label for="state-selector">State:</label>
       <select id="state-selector">
+        <!-- Full state/territory list preserved -->
         <option value="Alabama">Alabama</option>
         <option value="Alaska">Alaska</option>
         <option value="American Samoa">American Samoa</option>
@@ -77,9 +78,9 @@
 
   <nav>
     <button class="tab" onclick="showTab('my-officials')">My Officials</button>
-    <button class="tab" onclick="showTab('calendar')">Calendar</button>
+    <button class="tab" onclick="showTab('calendar'); showCalendar();">Calendar</button>
     <button class="tab" onclick="showTab('polls')">Polls</button>
-    <button class="tab" onclick="showTab('activist')">Activist</button>
+    <button class="tab" onclick="showTab('activist'); showActivist();">Activist</button>
     <button class="tab" onclick="showTab('voting')">Voting</button>
   </nav>
 
@@ -91,7 +92,7 @@
 
     <section id="calendar" class="tab-content" style="display: none;">
       <h2>Election Calendar</h2>
-      <p>Coming soon: synced election dates and deadlines for your state.</p>
+      <!-- Content will be injected by showCalendar() -->
     </section>
 
     <section id="polls" class="tab-content" style="display: none;">
@@ -101,7 +102,7 @@
 
     <section id="activist" class="tab-content" style="display: none;">
       <h2>Activist & Grassroots</h2>
-      <p>Coming soon: local organizations, events, and ways to get involved.</p>
+      <!-- Content will be injected by showActivist() -->
     </section>
 
     <section id="voting" class="tab-content" style="display: none;">
@@ -112,7 +113,7 @@
 
   <div id="official-modal" class="modal">
     <div class="modal-content" id="modal-content"></div>
-    <span id="close-modal">&times;</span>
+    <button id="close-modal" class="close-button">&times;</button>
   </div>
 
   <script>
