@@ -118,12 +118,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const jurisdiction = toJurisdictionSlug(selectedState);
     const url = `https://v3.openstates.org/events?jurisdiction=${jurisdiction}&apikey=${apiKey}`;
 
+    console.log("Calendar API URL:", url);
+
     fetch(url)
       .then(res => {
-        if (!res.ok) throw new Error('Failed to fetch calendar events');
+        console.log("Calendar API status:", res.status);
         return res.json();
       })
       .then(data => {
+        console.log("Calendar API data:", data);
         const events = data.results || [];
         if (events.length === 0) {
           calendarSection.innerHTML += '<p>No upcoming events found for this jurisdiction.</p>';
@@ -207,14 +210,13 @@ document.addEventListener('DOMContentLoaded', () => {
           ${Object.entries(o.platformFollowThrough).map(([key, val]) => `<li><strong>${key}:</strong> ${val}</li>`).join('')}
         </ul>
       ` : ''}
-           ${o.proposals ? `<p><strong>Proposals:</strong> ${o.proposals}</p>` : ''}
+      ${o.proposals ? `<p><strong>Proposals:</strong> ${o.proposals}</p>` : ''}
       ${o.keyVotes?.length ? `
         <h4>Key Votes</h4>
         <ul>
           ${o.keyVotes.map(v => `
             <li>
-              <strong>${v.vote}:</strong> 
-              <a href="${v.link}" target="_blank">${v.title}</a> 
+              <strong>${v.vote}:</strong>              <a href="${v.link}" target="_blank">${v.title}</a> 
               (${v.result}, ${v.date})
             </li>
           `).join('')}
