@@ -163,51 +163,6 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error(err);
       });
   }
-
-  function openModal(o) {
-    const modalPhoto = o.photo && o.photo.trim() !== '' ? o.photo : 'assets/default-photo.png';
-
-    const districtDisplay = o.office === 'U.S. Representative' && o.district
-      ? `<p><strong>District:</strong> ${o.district}</p>`
-      : '';
-
-    modalContent.innerHTML = `
-      <h2>${o.name}</h2>
-      <div class="modal-photo-wrapper">
-        <img src="${modalPhoto}" alt="${o.name}" onerror="this.onerror=null;this.src='assets/default-photo.png';" />
-      </div>
-      <p><strong>Office:</strong> ${o.office}</p>
-      ${districtDisplay}
-      <p><strong>Party:</strong> ${o.party}</p>
-      <p><strong>State:</strong> ${o.state}</p>
-      <p><strong>Term:</strong> ${o.termStart} → ${o.termEnd}</p>
-      ${o.bio ? `<p><strong>Bio:</strong> ${o.bio}</p>` : ''}
-      ${o.education ? `<p><strong>Education:</strong> ${o.education}</p>` : ''}
-      ${o.endorsements ? `<p><strong>Endorsements:</strong> ${o.endorsements}</p>` : ''}
-      ${o.platform ? `<p><strong>Platform:</strong> ${o.platform}</p>` : ''}
-      ${o.platformFollowThrough ? `
-        <h4>Platform Follow-Through</h4>
-        <ul>
-          ${Object.entries(o.platformFollowThrough).map(([key, val]) => `<li><strong>${key}:</strong> ${val}</li>`).join('')}
-        </ul>
-      ` : ''}
-      ${o.proposals ? `<p><strong>Proposals:</strong> ${o.proposals}</p>` : ''}
-      ${o.keyVotes?.length ? `
-        <h4>Key Votes</h4>
-        <ul>
-          ${o.keyVotes.map(v => `
-            <li>
-              <strong>${v.vote}:</strong> 
-              <a href="${v.link}" target="_blank">${v.title}</a> 
-              (${v.result}, ${v              (${v.result}, ${v.date})
-            </li>
-          `).join('')}
-        </ul>
-      ` : ''}
-      ${o.billsSigned?.length ? `
-        <h4>Bills Signed</h4>
-        <ul>
-          ${o.billsSigned.map(b => `<li><a href="${b.link}" target="_blank">${b.title}</a></li>`).join('')}
         </ul>
       ` : ''}
       ${o.vetoes ? `<p><strong>Vetoes:</strong> ${o.vetoes}</p>` : ''}
