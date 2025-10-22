@@ -19,43 +19,38 @@ function showTab(id) {
   if (activeTab) activeTab.style.display = 'block';
 }
 
-// ✅ Calendar fetch scoped to selectedState only
+// ✅ Calendar now shows active legislative sessions for selected state
 function showCalendar() {
   showTab('calendar');
   const calendarSection = document.getElementById('calendar');
-  calendarSection.innerHTML = `<h2>Election Calendar</h2><p>Loading events for ${selectedState}...</p>`;
+  calendarSection.innerHTML = `<h2>Legislative Sessions</h2><p>Loading active sessions for ${selectedState}...</p>`;
 
   const apiKey = 'aeb782db-6584-4ffe-9902-da6e234e95e6';
   const baseUrl = 'https://v3.openstates.org';
   const jurisdiction = `ocd-jurisdiction/country:us/state:${toJurisdictionSlug(selectedState)}`;
 
-  fetch(`${baseUrl}/events?jurisdiction=${jurisdiction}&apikey=${apiKey}`)
+  fetch(`${baseUrl}/sessions?jurisdiction=${jurisdiction}&apikey=${apiKey}`)
     .then(res => {
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       return res.json();
     })
     .then(data => {
-      const events = data.results || [];
-      calendarSection.innerHTML = `<h2>Election Calendar</h2><h3>${selectedState}</h3>`;
+      const sessions = data.results?.filter(s => s.active) || [];
+      calendarSection.innerHTML = `<h2>Legislative Sessions</h2><h3>${selectedState}</h3>`;
 
-      if (events.length === 0) {
-        calendarSection.innerHTML += '<p>No upcoming events found for this state.</p>';
+      if (sessions.length === 0) {
+        calendarSection.innerHTML += '<p>No active sessions found for this state.</p>';
         return;
       }
 
       const list = document.createElement('ul');
-      events.forEach(event => {
-        const date = new Date(event.start_date).toLocaleString('en-US', {
-          dateStyle: 'medium',
-          timeStyle: 'short'
-        });
-        const location = event.location?.name || 'Location TBD';
-        const type = event.classification || 'Unclassified';
-
+      sessions.forEach(session => {
+        const start = session.start_date ? new Date(session.start_date).toLocaleDateString() : 'Unknown';
+        const end = session.end_date ? new Date(session.end_date).toLocaleDateString() : 'Ongoing';
         const item = document.createElement('li');
         item.innerHTML = `
-          <strong>${event.name}</strong><br>
-          ${date} — ${location} (${type})
+          <strong>${session.name}</strong><br>
+          ${start} → ${end}
         `;
         list.appendChild(item);
       });
@@ -63,8 +58,8 @@ function showCalendar() {
       calendarSection.appendChild(list);
     })
     .catch(err => {
-      calendarSection.innerHTML += `<p>Error loading calendar events for ${selectedState}.</p>`;
-      console.error(`Calendar API Error for ${selectedState}:`, err);
+      calendarSection.innerHTML += `<p>Error loading sessions for ${selectedState}.</p>`;
+      console.error(`Session API Error for ${selectedState}:`, err);
     });
 }
 
