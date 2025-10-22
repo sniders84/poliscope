@@ -11,6 +11,15 @@ function toJurisdictionSlug(stateName) {
 }
 
 // ✅ Global function so it's accessible from HTML
+function showTab(id) {
+  document.querySelectorAll('.tab-content').forEach(tab => {
+    tab.style.display = 'none';
+  });
+  const activeTab = document.getElementById(id);
+  if (activeTab) activeTab.style.display = 'block';
+}
+
+// ✅ Global function so it's accessible from HTML
 function showCalendar() {
   showTab('calendar');
   const calendarSection = document.getElementById('calendar');
@@ -111,13 +120,6 @@ document.addEventListener('DOMContentLoaded', () => {
     console.error('Error loading officials:', error);
   });
 
-  function showTab(id) {
-    document.querySelectorAll('.tab-content').forEach(tab => {
-      tab.style.display = 'none';
-    });
-    document.getElementById(id).style.display = 'block';
-  }
-
   function renderOfficials(stateFilter = null, query = '') {
     showTab('my-officials');
     officialsContainer.innerHTML = '';
@@ -213,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ${Object.entries(o.platformFollowThrough).map(([key, val]) => `<li><strong>${key}:</strong> ${val}</li>`).join('')}
         </ul>
       ` : ''}
-            ${o.proposals ? `<p><strong>Proposals:</strong> ${o.proposals}</p>` : ''}
+      ${o.proposals ? `<p><strong>Proposals:</strong> ${o.proposals}</p>` : ''}
       ${o.keyVotes?.length ? `
         <h4>Key Votes</h4>
         <ul>
@@ -244,4 +246,23 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     modal.style.display = 'flex';
   }
+
+  closeModal.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
+
+  stateSelector.addEventListener('change', () => {
+    selectedState = stateSelector.value;
+    renderOfficials(selectedState, searchBar.value.trim());
+  });
+
+  searchBar.addEventListener('input', () => {
+    renderOfficials(selectedState, searchBar.value.trim());
+  });
 });
