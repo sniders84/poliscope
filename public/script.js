@@ -21,49 +21,59 @@ function showTab(id) {
 
 // ✅ Calendar tab now links to Ballotpedia session and election data
 function showCalendar() {
-  showTab('calendar');
+  showTab('civic');
   const calendarSection = document.getElementById('calendar');
   calendarSection.innerHTML = `<h2>Civic Intelligence Dashboard</h2><p>Loading verified data for ${selectedState}...</p>`;
 
   const stateSlug = selectedState.replace(/\s+/g, '_');
   const lowerState = selectedState.toLowerCase();
 
+  const stateLinks = {
+    'North Carolina': {
+      elections: 'https://www.ncsbe.gov/voting/upcoming-election',
+      bills: 'https://www.ncleg.gov/Legislation/Bills/LastActionByYear/2025/All',
+      governorOrders: 'https://governor.nc.gov/news/executive-orders',
+      ltGovPress: 'https://ltgov.nc.gov/news/press-release',
+      federalRaces: 'https://ballotpedia.org/North_Carolina_elections,_2025'
+    },
+    // Add other states here as needed
+  };
+
+  const links = stateLinks[selectedState] || {};
+
   const cards = [
     {
       title: '🗳️ Special Elections',
-      content: `
-        <p>View all 2025 special elections — past and upcoming — for ${selectedState}.</p>
-        <a href="https://ballotpedia.org/State_legislative_special_elections,_2025#${stateSlug}" target="_blank">Special Elections for ${selectedState}</a>
-      `
+      content: links.elections
+        ? `<p>View all 2025 special elections for ${selectedState}.</p><a href="${links.elections}" target="_blank">State Board of Elections</a>`
+        : `<p>No direct election link available for ${selectedState}.</p>`
     },
     {
-      title: '🏛️ Legislative Sessions & Key Issues',
-      content: `
-        <p>See session dates and top issues being debated in ${selectedState}’s legislature.</p>
-        <a href="https://ballotpedia.org/State_legislative_elections,_2025#${stateSlug}" target="_blank">Session Details for ${selectedState}</a>
-      `
+      title: '🏛️ Legislative Sessions & Bills',
+      content: links.bills
+        ? `<p>Track active legislation and session activity in ${selectedState}.</p><a href="${links.bills}" target="_blank">State Legislature Bill Tracker</a>`
+        : `<p>No bill tracker available for ${selectedState}.</p>`
     },
     {
       title: '🇺🇸 Federal Races & Rematches',
-      content: `
-        <p>Track U.S. House and Senate races tied to ${selectedState}, including rematches and retirements.</p>
-        <a href="https://ballotpedia.org/Special_elections_to_the_119th_United_States_Congress_%282025-2026%29" target="_blank">Federal Races Linked to ${selectedState}</a>
-      `
+      content: links.federalRaces
+        ? `<p>Explore federal races tied to ${selectedState}.</p><a href="${links.federalRaces}" target="_blank">Ballotpedia Federal Races</a>`
+        : `<p>No federal race data available for ${selectedState}.</p>`
     },
     {
       title: '🎙️ Governor & Lt. Governor Activity',
       content: `
-        <p>Explore speeches, executive orders, and public appearances by ${selectedState}’s top executives.</p>
-        <a href="https://ballotpedia.org/State_of_the_state_addresses_%282025%29#${stateSlug}" target="_blank">Governor Activity for ${selectedState}</a>
+        ${links.governorOrders ? `<p><a href="${links.governorOrders}" target="_blank">Governor Executive Orders</a></p>` : ''}
+        ${links.ltGovPress ? `<p><a href="${links.ltGovPress}" target="_blank">Lt. Governor Press Releases</a></p>` : ''}
+        ${!links.governorOrders && !links.ltGovPress ? `<p>No executive activity links available for ${selectedState}.</p>` : ''}
       `
     },
     {
       title: '📢 Public Events & Orders (All Officials)',
       content: `
-        <p>Track public-facing actions by all federal and state officials from ${selectedState}.</p>
-        <a href="https://www.federalregister.gov/index/2025/executive-office-of-the-president" target="_blank">Federal Executive Orders</a><br>
-        <a href="https://www.whitehouse.gov/presidential-actions/executive-orders/" target="_blank">White House Orders</a><br>
-        <a href="https://ballotpedia.org/Ballotpedia%27s_Election_Analysis_Hub,_2025" target="_blank">Election Analysis Hub</a>
+        <p>Track public-facing actions by all federal and state officials.</p>
+        <a href="https://www.federalregister.gov/index/2025/executive-office-of-the-president" target="_blank">Federal Register</a><br>
+        <a href="https://www.whitehouse.gov/presidential-actions/executive-orders/" target="_blank">White House Orders</a>
       `
     }
   ];
