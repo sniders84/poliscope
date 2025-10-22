@@ -213,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ${Object.entries(o.platformFollowThrough).map(([key, val]) => `<li><strong>${key}:</strong> ${val}</li>`).join('')}
         </ul>
       ` : ''}
-      ${o.proposals ? `<p><strong>Proposals:</strong> ${o.proposals}</p>` : ''}
+            ${o.proposals ? `<p><strong>Proposals:</strong> ${o.proposals}</p>` : ''}
       ${o.keyVotes?.length ? `
         <h4>Key Votes</h4>
         <ul>
@@ -244,3 +244,4 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     modal.style.display = 'flex';
   }
+});
