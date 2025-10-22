@@ -19,48 +19,24 @@ function showTab(id) {
   if (activeTab) activeTab.style.display = 'block';
 }
 
-// ✅ Calendar now shows active legislative sessions for selected state
+// ✅ Calendar tab now links to Ballotpedia session and election data
 function showCalendar() {
   showTab('calendar');
   const calendarSection = document.getElementById('calendar');
-  calendarSection.innerHTML = `<h2>Legislative Sessions</h2><p>Loading active sessions for ${selectedState}...</p>`;
+  calendarSection.innerHTML = `<h2>State Calendar</h2><p>Loading verified session and election dates for ${selectedState}...</p>`;
 
-  const apiKey = 'aeb782db-6584-4ffe-9902-da6e234e95e6';
-  const baseUrl = 'https://v3.openstates.org';
-  const jurisdiction = `ocd-jurisdiction/country:us/state:${toJurisdictionSlug(selectedState)}`;
+  const ballotpediaSessionLink = `https://ballotpedia.org/Dates_of_2025_state_legislative_sessions`;
+  const ballotpediaElectionLink = `https://ballotpedia.org/2025_election_and_voting_dates`;
 
-  fetch(`${baseUrl}/sessions?jurisdiction=${jurisdiction}&apikey=${apiKey}`)
-    .then(res => {
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return res.json();
-    })
-    .then(data => {
-      const sessions = data.results?.filter(s => s.active) || [];
-      calendarSection.innerHTML = `<h2>Legislative Sessions</h2><h3>${selectedState}</h3>`;
-
-      if (sessions.length === 0) {
-        calendarSection.innerHTML += '<p>No active sessions found for this state.</p>';
-        return;
-      }
-
-      const list = document.createElement('ul');
-      sessions.forEach(session => {
-        const start = session.start_date ? new Date(session.start_date).toLocaleDateString() : 'Unknown';
-        const end = session.end_date ? new Date(session.end_date).toLocaleDateString() : 'Ongoing';
-        const item = document.createElement('li');
-        item.innerHTML = `
-          <strong>${session.name}</strong><br>
-          ${start} → ${end}
-        `;
-        list.appendChild(item);
-      });
-
-      calendarSection.appendChild(list);
-    })
-    .catch(err => {
-      calendarSection.innerHTML += `<p>Error loading sessions for ${selectedState}.</p>`;
-      console.error(`Session API Error for ${selectedState}:`, err);
-    });
+  calendarSection.innerHTML = `
+    <h2>State Calendar</h2>
+    <h3>${selectedState}</h3>
+    <ul>
+      <li><strong>Legislative Sessions:</strong> <a href="${ballotpediaSessionLink}" target="_blank">View ${selectedState} session dates on Ballotpedia</a></li>
+      <li><strong>Election Deadlines:</strong> <a href="${ballotpediaElectionLink}" target="_blank">View ${selectedState} voting deadlines on Ballotpedia</a></li>
+    </ul>
+    <p>These links provide real-time updates from verified sources. Data is maintained by Ballotpedia and state election offices.</p>
+  `;
 }
 
 // ✅ Global function so it's accessible from HTML
@@ -204,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ${o.education ? `<p><strong>Education:</strong> ${o.education}</p>` : ''}
       ${o.endorsements ? `<p><strong>Endorsements:</strong> ${o.endorsements}</p>` : ''}
       ${o.platform ? `<p><strong>Platform:</strong> ${o.platform}</p>` : ''}
-            ${o.platformFollowThrough ? `
+      ${o.platformFollowThrough ? `
         <h4>Platform Follow-Through</h4>
         <ul>
           ${Object.entries(o.platformFollowThrough).map(([key, val]) => `<li><strong>${key}:</strong> ${val}</li>`).join('')}
@@ -216,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <ul>
           ${o.keyVotes.map(v => `
             <li>
-              <strong>${v.vote}:</strong> <a href="${v.link}" target="_blank">${v.title}</a> (${v.result}, ${v.date})
+              <strong>${v.vote}:</strong> <a href="${v.link}" target="_blank">${v.title}</a> (${            v.result}, ${v.date})
             </li>
           `).join('')}
         </ul>
