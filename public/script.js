@@ -36,8 +36,8 @@ function showCalendar() {
 },
     'Alaska': {
   bills: 'https://www.akleg.gov/basis/Home/Bill',
-  senateRoster: 'https://www.akleg.gov/senate.php',
-  houseRoster: 'https://www.akleg.gov/house.php',
+  senateRoster: 'https://akleg.gov/senate.php',
+  houseRoster: 'https://akleg.gov/house.php',
   governorOrders: 'https://gov.alaska.gov/administrative-orders/',
   ltGovPress: 'https://ltgov.alaska.gov/newsroom/',
   federalRaces: 'https://ballotpedia.org/Alaska_elections,_2025'
