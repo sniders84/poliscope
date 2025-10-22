@@ -150,7 +150,41 @@ function showActivist() {
       console.error(err);
     });
 }
+function showOrganizations() {
+  showTab('organizations');
+  const section = document.getElementById('organizations');
+  section.innerHTML = '<h2>Political Organizations</h2>';
 
+  fetch('political-groups.json')
+    .then(res => res.json())
+    .then(data => {
+      const grid = document.createElement('div');
+      grid.className = 'organization-grid';
+
+      data.forEach(group => {
+        const card = document.createElement('div');
+        card.className = 'organization-card';
+        card.innerHTML = `
+          <div class="logo-wrapper">
+            <img src="${group.logo}" alt="${group.name}" onerror="this.onerror=null;this.src='assets/default-logo.png';" />
+          </div>
+          <div class="info-wrapper">
+            <h3>${group.name}</h3>
+            <p>${group.description}</p>
+            <p><strong>Platform:</strong> ${group.platform}</p>
+            <p><a href="${group.website}" target="_blank">Visit Website</a></p>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+
+      section.appendChild(grid);
+    })
+    .catch(err => {
+      section.innerHTML += '<p>Error loading political groups.</p>';
+      console.error(err);
+    });
+}
 document.addEventListener('DOMContentLoaded', () => {
   const stateSelector = document.getElementById('state-selector');
   const searchBar = document.getElementById('search-bar');
