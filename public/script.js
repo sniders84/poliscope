@@ -30,6 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
     console.error('Error loading officials:', error);
   });
 
+  function toJurisdictionSlug(stateName) {
+    return stateName.toLowerCase().replace(/\s+/g, '-');
+  }
+
   function showTab(id) {
     document.querySelectorAll('.tab-content').forEach(tab => {
       tab.style.display = 'none';
@@ -111,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
     calendarSection.innerHTML = '<h2>Election Calendar</h2>';
 
     const apiKey = 'aeb782db-6584-4ffe-9902-da6e234e95e6';
-    const jurisdiction = encodeURIComponent(selectedState);
+    const jurisdiction = toJurisdictionSlug(selectedState);
     const url = `https://v3.openstates.org/events?jurisdiction=${jurisdiction}&apikey=${apiKey}`;
 
     fetch(url)
