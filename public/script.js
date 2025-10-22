@@ -30,7 +30,15 @@ document.addEventListener('DOMContentLoaded', () => {
     console.error('Error loading officials:', error);
   });
 
+  function showTab(id) {
+    document.querySelectorAll('.tab-content').forEach(tab => {
+      tab.style.display = 'none';
+    });
+    document.getElementById(id).style.display = 'block';
+  }
+
   function renderOfficials(stateFilter = null, query = '') {
+    showTab('my-officials');
     officialsContainer.innerHTML = '';
 
     const queryLower = query.toLowerCase();
@@ -98,7 +106,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function showCalendar() {
-    officialsContainer.innerHTML = `<h2>${selectedState} Calendar</h2>`;
+    showTab('calendar');
+    const calendarSection = document.getElementById('calendar');
+    calendarSection.innerHTML = '<h2>Election Calendar</h2>';
 
     const apiKey = 'aeb782db-6584-4ffe-9902-da6e234e95e6';
     const jurisdiction = encodeURIComponent(selectedState);
@@ -112,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
       .then(data => {
         const events = data.results || [];
         if (events.length === 0) {
-          officialsContainer.innerHTML += '<p>No upcoming events found for this jurisdiction.</p>';
+          calendarSection.innerHTML += '<p>No upcoming events found for this jurisdiction.</p>';
           return;
         }
 
@@ -132,16 +142,18 @@ document.addEventListener('DOMContentLoaded', () => {
           `;
           list.appendChild(item);
         });
-        officialsContainer.appendChild(list);
+        calendarSection.appendChild(list);
       })
       .catch(err => {
-        officialsContainer.innerHTML += '<p>Error loading calendar events.</p>';
+        calendarSection.innerHTML += '<p>Error loading calendar events.</p>';
         console.error('Calendar API Error:', err);
       });
   }
 
   function showActivist() {
-    officialsContainer.innerHTML = '<h2>National Grassroots Organizations</h2>';
+    showTab('activist');
+    const activistSection = document.getElementById('activist');
+    activistSection.innerHTML = '<h2>Activist & Grassroots</h2>';
 
     fetch('activist-groups.json')
       .then(res => res.json())
@@ -156,13 +168,58 @@ document.addEventListener('DOMContentLoaded', () => {
           `;
           list.appendChild(item);
         });
-        officialsContainer.appendChild(list);
+        activistSection.appendChild(list);
       })
       .catch(err => {
-        officialsContainer.innerHTML += '<p>Error loading activist groups.</p>';
+        activistSection.innerHTML += '<p>Error loading activist groups.</p>';
         console.error(err);
       });
   }
+
+  function openModal(o) {
+    const modalPhoto = o.photo && o.photo.trim() !== '' ? o.photo : 'assets/default-photo.png';
+
+    const districtDisplay = o.office === 'U.S. Representative' && o.district
+      ? `<p><strong>District:</strong> ${o.district}</p>`
+      : '';
+
+    modalContent.innerHTML = `
+      <h2>${o.name}</h2>
+      <div class="modal-photo-wrapper">
+        <img src="${modalPhoto}" alt="${o.name}" onerror="this.onerror=null;this.src='assets/default-photo.png';" />
+      </div>
+      <p><strong>Office:</strong> ${o.office}</p>
+      ${districtDisplay}
+      <p><strong>Party:</strong> ${o.party}</p>
+      <p><strong>State:</strong> ${o.state}</p>
+      <p><strong>Term:</strong> ${o.termStart} → ${o.termEnd}</p>
+      ${o.bio ? `<p><strong>Bio:</strong> ${o.bio}</p>` : ''}
+      ${o.education ? `<p><strong>Education:</strong> ${o.education}</p>` : ''}
+      ${o.endorsements ? `<p><strong>Endorsements:</strong> ${o.endorsements}</p>` : ''}
+      ${o.platform ? `<p><strong>Platform:</strong> ${o.platform}</p>` : ''}
+      ${o.platformFollowThrough ? `
+        <h4>Platform Follow-Through</h4>
+        <ul>
+          ${Object.entries(o.platformFollowThrough).map(([key, val]) => `<li><strong>${key}:</strong> ${val}</li>`).join('')}
+        </ul>
+      ` : ''}
+           ${o.proposals ? `<p><strong>Proposals:</strong> ${o.proposals}</p>` : ''}
+      ${o.keyVotes?.length ? `
+        <h4>Key Votes</h4>
+        <ul>
+          ${o.keyVotes.map(v => `
+            <li>
+              <strong>${v.vote}:</strong> 
+              <a href="${v.link}" target="_blank">${v.title}</a> 
+              (${v.result}, ${v.date})
+            </li>
+          `).join('')}
+        </ul>
+      ` : ''}
+      ${o.billsSigned?.length ? `
+        <h4>Bills Signed</h4>
+        <ul>
+          ${o.billsSigned.map(b => `<li><a href="${b.link}" target="_blank">${b.title}</a></li>`).join('')}
         </ul>
       ` : ''}
       ${o.vetoes ? `<p><strong>Vetoes:</strong> ${o.vetoes}</p>` : ''}
