@@ -235,3 +235,14 @@ main {
   font-size: 1.5rem;
   cursor: pointer;
 }
+.calendar-card {
+  border: 1px solid #ccc;
+  padding: 1em;
+  margin-bottom: 1em;
+  background-color: #f9f9f9;
+  border-radius: 6px;
+}
+.calendar-card h4 {
+  margin-top: 0;
+  font-size: 1.2em;
+}
