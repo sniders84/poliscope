@@ -7,7 +7,7 @@ let officialsContainer = null;
 
 // ✅ Global utility function
 function toJurisdictionSlug(stateName) {
-  return stateName.toLowerCase().replace(/\s+/g, '-');
+  return stateName.toLowerCase().replace(/\s+/g, '_');
 }
 
 // ✅ Global function so it's accessible from HTML
@@ -19,81 +19,56 @@ function showTab(id) {
   if (activeTab) activeTab.style.display = 'block';
 }
 
-// ✅ Global function — fixed and guarded
+// ✅ Calendar fetch scoped to selectedState only
 function showCalendar() {
   showTab('calendar');
   const calendarSection = document.getElementById('calendar');
-  calendarSection.innerHTML = '<h2>Election Calendar</h2><p>Loading events from all jurisdictions...</p>';
+  calendarSection.innerHTML = `<h2>Election Calendar</h2><p>Loading events for ${selectedState}...</p>`;
 
   const apiKey = 'aeb782db-6584-4ffe-9902-da6e234e95e6';
   const baseUrl = 'https://v3.openstates.org';
-  const jurisdictions = [
-    'ocd-jurisdiction/country:us/state:north_carolina',
-    'ocd-jurisdiction/country:us/state:california',
-    'ocd-jurisdiction/country:us/state:texas',
-    'ocd-jurisdiction/country:us/state:new_york',
-    'ocd-jurisdiction/country:us/state:florida'
-  ];
+  const jurisdiction = `ocd-jurisdiction/country:us/state:${toJurisdictionSlug(selectedState)}`;
 
-  const eventPromises = jurisdictions.map(jurisdiction =>
-    fetch(`${baseUrl}/events?jurisdiction=${jurisdiction}&apikey=${apiKey}`)
-      .then(res => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return res.json();
-      })
-      .then(eventData => ({ jurisdiction, events: eventData.results || [] }))
-      .catch(err => {
-        console.error(`Error fetching events for ${jurisdiction}:`, err);
-        return { jurisdiction, events: [], error: true };
-      })
-  );
+  fetch(`${baseUrl}/events?jurisdiction=${jurisdiction}&apikey=${apiKey}`)
+    .then(res => {
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return res.json();
+    })
+    .then(data => {
+      const events = data.results || [];
+      calendarSection.innerHTML = `<h2>Election Calendar</h2><h3>${selectedState}</h3>`;
 
-  Promise.all(eventPromises)
-    .then(allResults => {
-      calendarSection.innerHTML = '<h2>Election Calendar</h2>';
-      let totalEvents = 0;
+      if (events.length === 0) {
+        calendarSection.innerHTML += '<p>No upcoming events found for this state.</p>';
+        return;
+      }
 
-      allResults.forEach(({ jurisdiction, events, error }) => {
-        if (error || events.length === 0) return;
-
-        const stateName = jurisdiction.split(':')[2].replace(/_/g, ' ').toUpperCase();
-        const section = document.createElement('div');
-        section.className = 'calendar-jurisdiction';
-        section.innerHTML = `<h3>${stateName}</h3>`;
-        const list = document.createElement('ul');
-
-        events.forEach(event => {
-          const date = new Date(event.start_date).toLocaleString('en-US', {
-            dateStyle: 'medium',
-            timeStyle: 'short'
-          });
-          const location = event.location?.name || 'Location TBD';
-          const type = event.classification || 'Unclassified';
-
-          const item = document.createElement('li');
-          item.innerHTML = `
-            <strong>${event.name}</strong><br>
-            ${date} — ${location} (${type})
-          `;
-          list.appendChild(item);
+      const list = document.createElement('ul');
+      events.forEach(event => {
+        const date = new Date(event.start_date).toLocaleString('en-US', {
+          dateStyle: 'medium',
+          timeStyle: 'short'
         });
+        const location = event.location?.name || 'Location TBD';
+        const type = event.classification || 'Unclassified';
 
-        section.appendChild(list);
-        calendarSection.appendChild(section);
-        totalEvents += events.length;
+        const item = document.createElement('li');
+        item.innerHTML = `
+          <strong>${event.name}</strong><br>
+          ${date} — ${location} (${type})
+        `;
+        list.appendChild(item);
       });
 
-      if (totalEvents === 0) {
-        calendarSection.innerHTML += '<p>No upcoming events found for any jurisdiction.</p>';
-      }
+      calendarSection.appendChild(list);
     })
     .catch(err => {
-      calendarSection.innerHTML += '<p>Error loading calendar events.</p>';
-      console.error('Calendar API Error:', err);
+      calendarSection.innerHTML += `<p>Error loading calendar events for ${selectedState}.</p>`;
+      console.error(`Calendar API Error for ${selectedState}:`, err);
     });
 }
 
-// ✅ Global function — fixed scope
+// ✅ Global function so it's accessible from HTML
 function showActivist() {
   showTab('activist');
   const activistSection = document.getElementById('activist');
@@ -120,7 +95,6 @@ function showActivist() {
     });
 }
 
-// ✅ DOMContentLoaded block
 document.addEventListener('DOMContentLoaded', () => {
   const stateSelector = document.getElementById('state-selector');
   const searchBar = document.getElementById('search-bar');
@@ -224,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
     modalContent.innerHTML = `
       <h2>${o.name}</h2>
       <div class="modal-photo-wrapper">
-                <img src="${modalPhoto}" alt="${o.name}" onerror="this.onerror=null;this.src='assets/default-photo.png';" />
+        <img src="${modalPhoto}" alt="${o.name}" onerror="this.onerror=null;this.src='assets/default-photo.png';" />
       </div>
       <p><strong>Office:</strong> ${o.office}</p>
       ${districtDisplay}
@@ -235,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ${o.education ? `<p><strong>Education:</strong> ${o.education}</p>` : ''}
       ${o.endorsements ? `<p><strong>Endorsements:</strong> ${o.endorsements}</p>` : ''}
       ${o.platform ? `<p><strong>Platform:</strong> ${o.platform}</p>` : ''}
-      ${o.platformFollowThrough ? `
+            ${o.platformFollowThrough ? `
         <h4>Platform Follow-Through</h4>
         <ul>
           ${Object.entries(o.platformFollowThrough).map(([key, val]) => `<li><strong>${key}:</strong> ${val}</li>`).join('')}
