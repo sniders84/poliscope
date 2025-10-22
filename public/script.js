@@ -19,7 +19,7 @@ function showTab(id) {
   if (activeTab) activeTab.style.display = 'block';
 }
 
-// ✅ Full API integration for calendar events across all jurisdictions
+// ✅ Global function — fixed and guarded
 function showCalendar() {
   showTab('calendar');
   const calendarSection = document.getElementById('calendar');
@@ -32,37 +32,21 @@ function showCalendar() {
     'ocd-jurisdiction/country:us/state:california',
     'ocd-jurisdiction/country:us/state:texas',
     'ocd-jurisdiction/country:us/state:new_york',
-    'ocd-jurisdiction/country:us/state:florida',
-    'ocd-jurisdiction/country:us/state:illinois',
-    'ocd-jurisdiction/country:us/state:pennsylvania',
-    'ocd-jurisdiction/country:us/state:ohio',
-    'ocd-jurisdiction/country:us/state:georgia',
-    'ocd-jurisdiction/country:us/state:michigan',
-    'ocd-jurisdiction/country:us/state:arizona',
-    'ocd-jurisdiction/country:us/state:virginia',
-    'ocd-jurisdiction/country:us/state:massachusetts',
-    'ocd-jurisdiction/country:us/state:tennessee',
-    'ocd-jurisdiction/country:us/state:indiana',
-    'ocd-jurisdiction/country:us/state:missouri',
-    'ocd-jurisdiction/country:us/state:washington',
-    'ocd-jurisdiction/country:us/state:wisconsin',
-    'ocd-jurisdiction/country:us/state:colorado',
-    'ocd-jurisdiction/country:us/state:minnesota'
+    'ocd-jurisdiction/country:us/state:florida'
   ];
 
   const eventPromises = jurisdictions.map(jurisdiction =>
     fetch(`${baseUrl}/events?jurisdiction=${jurisdiction}&apikey=${apiKey}`)
-  .then(res => {
-    if (!res.ok) {
-      throw new Error(`HTTP ${res.status} for ${jurisdiction}`);
-    }
-    return res.json();
-  })
-  .then(eventData => ({ jurisdiction, events: eventData.results || [] }))
-  .catch(err => {
-    console.error(`Error fetching events for ${jurisdiction}:`, err);
-    return { jurisdiction, events: [], error: true };
-  });
+      .then(res => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
+      .then(eventData => ({ jurisdiction, events: eventData.results || [] }))
+      .catch(err => {
+        console.error(`Error fetching events for ${jurisdiction}:`, err);
+        return { jurisdiction, events: [], error: true };
+      })
+  );
 
   Promise.all(eventPromises)
     .then(allResults => {
@@ -109,7 +93,7 @@ function showCalendar() {
     });
 }
 
-// ✅ Global function so it's accessible from HTML
+// ✅ Global function — fixed scope
 function showActivist() {
   showTab('activist');
   const activistSection = document.getElementById('activist');
@@ -136,7 +120,7 @@ function showActivist() {
     });
 }
 
-// ✅ DOMContentLoaded block remains unchanged
+// ✅ DOMContentLoaded block
 document.addEventListener('DOMContentLoaded', () => {
   const stateSelector = document.getElementById('state-selector');
   const searchBar = document.getElementById('search-bar');
@@ -219,8 +203,8 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="official-info">
           <h3>${o.name}</h3>
           <p><strong>Position:</strong> ${o.office}</p>
-          ${districtDisplay
-                      <p><strong>State:</strong> ${o.state}</p>
+          ${districtDisplay}
+          <p><strong>State:</strong> ${o.state}</p>
           <p><strong>Term:</strong> ${new Date(o.termStart).getFullYear()}–${new Date(o.termEnd).getFullYear()}</p>
           <p><strong>Party:</strong> ${o.party}</p>
         </div>
@@ -240,7 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
     modalContent.innerHTML = `
       <h2>${o.name}</h2>
       <div class="modal-photo-wrapper">
-        <img src="${modalPhoto}" alt="${o.name}" onerror="this.onerror=null;this.src='assets/default-photo.png';" />
+                <img src="${modalPhoto}" alt="${o.name}" onerror="this.onerror=null;this.src='assets/default-photo.png';" />
       </div>
       <p><strong>Office:</strong> ${o.office}</p>
       ${districtDisplay}
