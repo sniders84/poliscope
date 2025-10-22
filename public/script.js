@@ -19,7 +19,7 @@ function showTab(id) {
   if (activeTab) activeTab.style.display = 'block';
 }
 
-// ✅ REPLACED: Full API integration for calendar events across all jurisdictions
+// ✅ Full API integration for calendar events across all jurisdictions
 function showCalendar() {
   showTab('calendar');
   const calendarSection = document.getElementById('calendar');
@@ -27,20 +27,37 @@ function showCalendar() {
 
   const apiKey = 'aeb782db-6584-4ffe-9902-da6e234e95e6';
   const baseUrl = 'https://v3.openstates.org';
+  const jurisdictions = [
+    'ocd-jurisdiction/country:us/state:north_carolina',
+    'ocd-jurisdiction/country:us/state:california',
+    'ocd-jurisdiction/country:us/state:texas',
+    'ocd-jurisdiction/country:us/state:new_york',
+    'ocd-jurisdiction/country:us/state:florida',
+    'ocd-jurisdiction/country:us/state:illinois',
+    'ocd-jurisdiction/country:us/state:pennsylvania',
+    'ocd-jurisdiction/country:us/state:ohio',
+    'ocd-jurisdiction/country:us/state:georgia',
+    'ocd-jurisdiction/country:us/state:michigan',
+    'ocd-jurisdiction/country:us/state:arizona',
+    'ocd-jurisdiction/country:us/state:virginia',
+    'ocd-jurisdiction/country:us/state:massachusetts',
+    'ocd-jurisdiction/country:us/state:tennessee',
+    'ocd-jurisdiction/country:us/state:indiana',
+    'ocd-jurisdiction/country:us/state:missouri',
+    'ocd-jurisdiction/country:us/state:washington',
+    'ocd-jurisdiction/country:us/state:wisconsin',
+    'ocd-jurisdiction/country:us/state:colorado',
+    'ocd-jurisdiction/country:us/state:minnesota'
+  ];
 
-  fetch(`${baseUrl}/jurisdictions?classification=state&per_page=100&apikey=${apiKey}`)
-    .then(res => res.json())
-    .then(data => {
-      const jurisdictions = data.results.map(j => j.id);
-      const eventPromises = jurisdictions.map(jurisdiction =>
-        fetch(`${baseUrl}/events?jurisdiction=${jurisdiction}&apikey=${apiKey}`)
-          .then(res => res.json())
-          .then(eventData => ({ jurisdiction, events: eventData.results || [] }))
-          .catch(err => ({ jurisdiction, events: [], error: true }))
-      );
+  const eventPromises = jurisdictions.map(jurisdiction =>
+    fetch(`${baseUrl}/events?jurisdiction=${jurisdiction}&apikey=${apiKey}`)
+      .then(res => res.json())
+      .then(eventData => ({ jurisdiction, events: eventData.results || [] }))
+      .catch(err => ({ jurisdiction, events: [], error: true }))
+  );
 
-      return Promise.all(eventPromises);
-    })
+  Promise.all(eventPromises)
     .then(allResults => {
       calendarSection.innerHTML = '<h2>Election Calendar</h2>';
       let totalEvents = 0;
@@ -48,9 +65,10 @@ function showCalendar() {
       allResults.forEach(({ jurisdiction, events, error }) => {
         if (error || events.length === 0) return;
 
+        const stateName = jurisdiction.split(':')[2].replace(/_/g, ' ').toUpperCase();
         const section = document.createElement('div');
         section.className = 'calendar-jurisdiction';
-        section.innerHTML = `<h3>${jurisdiction.replace('ocd-jurisdiction/country:us/state:', '').replace(/_/g, ' ').toUpperCase()}</h3>`;
+        section.innerHTML = `<h3>${stateName}</h3>`;
         const list = document.createElement('ul');
 
         events.forEach(event => {
@@ -194,8 +212,8 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="official-info">
           <h3>${o.name}</h3>
           <p><strong>Position:</strong> ${o.office}</p>
-          ${districtDisplay}
-          <p><strong>State:</strong> ${o.state}</p>
+          ${districtDisplay
+                      <p><strong>State:</strong> ${o.state}</p>
           <p><strong>Term:</strong> ${new Date(o.termStart).getFullYear()}–${new Date(o.termEnd).getFullYear()}</p>
           <p><strong>Party:</strong> ${o.party}</p>
         </div>
@@ -221,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ${districtDisplay}
       <p><strong>Party:</strong> ${o.party}</p>
       <p><strong>State:</strong> ${o.state}</p>
-            <p><strong>Term:</strong> ${o.termStart} → ${o.termEnd}</p>
+      <p><strong>Term:</strong> ${o.termStart} → ${o.termEnd}</p>
       ${o.bio ? `<p><strong>Bio:</strong> ${o.bio}</p>` : ''}
       ${o.education ? `<p><strong>Education:</strong> ${o.education}</p>` : ''}
       ${o.endorsements ? `<p><strong>Endorsements:</strong> ${o.endorsements}</p>` : ''}
