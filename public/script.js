@@ -98,47 +98,47 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function showCalendar() {
-  officialsContainer.innerHTML = `<h2>${selectedState} Calendar</h2>`;
+    officialsContainer.innerHTML = `<h2>${selectedState} Calendar</h2>`;
 
-  const apiKey = aeb782db-6584-4ffe-9902-da6e234e95e6; // ← Replace with your actual key
-  const jurisdiction = encodeURIComponent(selectedState);
-  const url = `https://v3.openstates.org/events?jurisdiction=${jurisdiction}&apikey=${apiKey}`;
+    const apiKey = 'aeb782db-6584-4ffe-9902-da6e234e95e6';
+    const jurisdiction = encodeURIComponent(selectedState);
+    const url = `https://v3.openstates.org/events?jurisdiction=${jurisdiction}&apikey=${apiKey}`;
 
-  fetch(url)
-    .then(res => {
-      if (!res.ok) throw new Error('Failed to fetch calendar events');
-      return res.json();
-    })
-    .then(data => {
-      const events = data.results || [];
-      if (events.length === 0) {
-        officialsContainer.innerHTML += '<p>No upcoming events found for this jurisdiction.</p>';
-        return;
-      }
+    fetch(url)
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to fetch calendar events');
+        return res.json();
+      })
+      .then(data => {
+        const events = data.results || [];
+        if (events.length === 0) {
+          officialsContainer.innerHTML += '<p>No upcoming events found for this jurisdiction.</p>';
+          return;
+        }
 
-      const list = document.createElement('ul');
-      events.forEach(event => {
-        const date = new Date(event.start_date).toLocaleString('en-US', {
-          dateStyle: 'medium',
-          timeStyle: 'short'
+        const list = document.createElement('ul');
+        events.forEach(event => {
+          const date = new Date(event.start_date).toLocaleString('en-US', {
+            dateStyle: 'medium',
+            timeStyle: 'short'
+          });
+          const location = event.location?.name || 'Location TBD';
+          const type = event.classification || 'Unclassified';
+
+          const item = document.createElement('li');
+          item.innerHTML = `
+            <strong>${event.name}</strong><br>
+            ${date} — ${location} (${type})
+          `;
+          list.appendChild(item);
         });
-        const location = event.location?.name || 'Location TBD';
-        const type = event.classification || 'Unclassified';
-
-        const item = document.createElement('li');
-        item.innerHTML = `
-          <strong>${event.name}</strong><br>
-          ${date} — ${location} (${type})
-        `;
-        list.appendChild(item);
+        officialsContainer.appendChild(list);
+      })
+      .catch(err => {
+        officialsContainer.innerHTML += '<p>Error loading calendar events.</p>';
+        console.error('Calendar API Error:', err);
       });
-      officialsContainer.appendChild(list);
-    })
-    .catch(err => {
-      officialsContainer.innerHTML += '<p>Error loading calendar events.</p>';
-      console.error('Calendar API Error:', err);
-    });
-}
+  }
 
   function showActivist() {
     officialsContainer.innerHTML = '<h2>National Grassroots Organizations</h2>';
@@ -199,14 +199,16 @@ document.addEventListener('DOMContentLoaded', () => {
             <li>
               <strong>${v.vote}:</strong> 
               <a href="${v.link}" target="_blank">${v.title}</a> 
-              (${v.result}, ${v.date})
+              (${v.result}, ${v              (${v.result}, ${v.date})
             </li>
           `).join('')}
         </ul>
       ` : ''}
       ${o.billsSigned?.length ? `
         <h4>Bills Signed</h4>
-        <ul>${o.billsSigned.map(b => `<li><a href="${b.link}" target="_blank">${b.title}</a></li>`).join('')}</ul>
+        <ul>
+          ${o.billsSigned.map(b => `<li><a href="${b.link}" target="_blank">${b.title}</a></li>`).join('')}
+        </ul>
       ` : ''}
       ${o.vetoes ? `<p><strong>Vetoes:</strong> ${o.vetoes}</p>` : ''}
       ${o.salary ? `<p><strong>Salary:</strong> ${o.salary}</p>` : ''}
