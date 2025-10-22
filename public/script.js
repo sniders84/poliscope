@@ -112,29 +112,22 @@ document.addEventListener('DOMContentLoaded', () => {
         return res.json();
       })
       .then(data => {
-        const availableStates = Object.keys(data);
-        console.log('Available states in calendar:', availableStates);
+        console.log('Available states in calendar:', Object.keys(data));
 
-        if (!data.hasOwnProperty(selectedState)) {
+        const stateKey = Object.keys(data).find(k => k.toLowerCase() === selectedState.toLowerCase());
+        if (!stateKey) {
           officialsContainer.innerHTML += `<p>No calendar data found for <strong>${selectedState}</strong>.</p>`;
           console.warn(`State "${selectedState}" not found in calendar data.`);
           return;
         }
 
-        const stateKey = Object.keys(data).find(k => k.toLowerCase() === selectedState.toLowerCase());
-if (!stateKey) {
-  officialsContainer.innerHTML += `<p>No calendar data found for <strong>${selectedState}</strong>.</p>`;
-  console.warn(`State "${selectedState}" not found in calendar data.`);
-  return;
-}
+        const events = data[stateKey];
+        console.log('Events for', stateKey, events);
 
-const events = data[stateKey];
-console.log('Events for', stateKey, events);
-
-if (!Array.isArray(events) || events.length === 0) {
-  officialsContainer.innerHTML += '<p>No events found for this state.</p>';
-  return;
-}
+        if (!Array.isArray(events) || events.length === 0) {
+          officialsContainer.innerHTML += '<p>No events found for this state.</p>';
+          return;
+        }
 
         const list = document.createElement('ul');
         events.forEach(event => {
@@ -211,15 +204,16 @@ if (!Array.isArray(events) || events.length === 0) {
           ${o.keyVotes.map(v => `
             <li>
               <strong>${v.vote}:</strong> 
-              <a href="${v.link}" target="_blank">${v.title}</a> 
-              (${v.result}, ${v.date})
+              <a href="${v.link}" target="_blank">${v.title}</a>               (${v.result}, ${v.date})
             </li>
           `).join('')}
         </ul>
       ` : ''}
       ${o.billsSigned?.length ? `
-                <h4>Bills Signed</h4>
-        <ul>${o.billsSigned.map(b => `<li><a href="${b.link}" target="_blank">${b.title}</a></li>`).join('')}</ul>
+        <h4>Bills Signed</h4>
+        <ul>
+          ${o.billsSigned.map(b => `<li><a href="${b.link}" target="_blank">${b.title}</a></li>`).join('')}
+        </ul>
       ` : ''}
       ${o.vetoes ? `<p><strong>Vetoes:</strong> ${o.vetoes}</p>` : ''}
       ${o.salary ? `<p><strong>Salary:</strong> ${o.salary}</p>` : ''}
@@ -255,3 +249,4 @@ if (!Array.isArray(events) || events.length === 0) {
     renderOfficials(selectedState, searchBar.value.trim());
   });
 });
+
