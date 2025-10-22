@@ -109,80 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  function showCalendar() {
-    showTab('calendar');
-    const calendarSection = document.getElementById('calendar');
-    calendarSection.innerHTML = '<h2>Election Calendar</h2>';
-
-    const apiKey = 'aeb782db-6584-4ffe-9902-da6e234e95e6';
-    const jurisdiction = toJurisdictionSlug(selectedState);
-    const url = `https://v3.openstates.org/events?jurisdiction=${jurisdiction}&apikey=${apiKey}`;
-
-    console.log("Calendar API URL:", url);
-
-    fetch(url)
-      .then(res => {
-        console.log("Calendar API status:", res.status);
-        return res.json();
-      })
-      .then(data => {
-        console.log("Calendar API data:", data);
-        const events = data.results || [];
-        if (events.length === 0) {
-          calendarSection.innerHTML += '<p>No upcoming events found for this jurisdiction.</p>';
-          return;
-        }
-
-        const list = document.createElement('ul');
-        events.forEach(event => {
-          const date = new Date(event.start_date).toLocaleString('en-US', {
-            dateStyle: 'medium',
-            timeStyle: 'short'
-          });
-          const location = event.location?.name || 'Location TBD';
-          const type = event.classification || 'Unclassified';
-
-          const item = document.createElement('li');
-          item.innerHTML = `
-            <strong>${event.name}</strong><br>
-            ${date} — ${location} (${type})
-          `;
-          list.appendChild(item);
-        });
-        calendarSection.appendChild(list);
-      })
-      .catch(err => {
-        calendarSection.innerHTML += '<p>Error loading calendar events.</p>';
-        console.error('Calendar API Error:', err);
-      });
-  }
-
-  function showActivist() {
-    showTab('activist');
-    const activistSection = document.getElementById('activist');
-    activistSection.innerHTML = '<h2>Activist & Grassroots</h2>';
-
-    fetch('activist-groups.json')
-      .then(res => res.json())
-      .then(data => {
-        const list = document.createElement('ul');
-        data.forEach(group => {
-          const item = document.createElement('li');
-          item.innerHTML = `
-            <strong>${group.name}</strong><br>
-            ${group.description}<br>
-            <a href="${group.website}" target="_blank">${group.website}</a>
-          `;
-          list.appendChild(item);
-        });
-        activistSection.appendChild(list);
-      })
-      .catch(err => {
-        activistSection.innerHTML += '<p>Error loading activist groups.</p>';
-        console.error(err);
-      });
-  }
-
   function openModal(o) {
     const modalPhoto = o.photo && o.photo.trim() !== '' ? o.photo : 'assets/default-photo.png';
 
@@ -216,8 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <ul>
           ${o.keyVotes.map(v => `
             <li>
-              <strong>${v.vote}:</strong>              <a href="${v.link}" target="_blank">${v.title}</a> 
-              (${v.result}, ${v.date})
+              <strong>${v.vote}:</strong> <a href="${v.link}" target="_blank">${v.title}</a> (${v.result}, ${v.date})
             </li>
           `).join('')}
         </ul>
@@ -262,3 +187,57 @@ document.addEventListener('DOMContentLoaded', () => {
     renderOfficials(selectedState, searchBar.value.trim());
   });
 });
+
+// ✅ Moved outside DOMContentLoaded so buttons can access them
+function showCalendar() {
+  showTab('calendar');
+  const calendarSection = document.getElementById('calendar');
+  calendarSection.innerHTML = '<h2>Election Calendar</h2>';
+
+  const apiKey = 'aeb782db-658function showCalendar() {
+  showTab('calendar');
+  const calendarSection = document.getElementById('calendar');
+  calendarSection.innerHTML = '<h2>Election Calendar</h2>';
+
+  const apiKey = 'aeb782db-6584-4ffe-9902-da6e234e95e6';
+  const jurisdiction = toJurisdictionSlug(selectedState);
+  const url = `https://v3.openstates.org/events?jurisdiction=${jurisdiction}&apikey=${apiKey}`;
+
+  console.log("Calendar API URL:", url);
+
+  fetch(url)
+    .then(res => {
+      console.log("Calendar API status:", res.status);
+      return res.json();
+    })
+    .then(data => {
+      console.log("Calendar API data:", data);
+      const events = data.results || [];
+      if (events.length === 0) {
+        calendarSection.innerHTML += '<p>No upcoming events found for this jurisdiction.</p>';
+        return;
+      }
+
+      const list = document.createElement('ul');
+      events.forEach(event => {
+        const date = new Date(event.start_date).toLocaleString('en-US', {
+          dateStyle: 'medium',
+          timeStyle: 'short'
+        });
+        const location = event.location?.name || 'Location TBD';
+        const type = event.classification || 'Unclassified';
+
+        const item = document.createElement('li');
+        item.innerHTML = `
+          <strong>${event.name}</strong><br>
+          ${date} — ${location} (${type})
+        `;
+        list.appendChild(item);
+      });
+      calendarSection.appendChild(list);
+    })
+    .catch(err => {
+      calendarSection.innerHTML += '<p>Error loading calendar events.</p>';
+      console.error('Calendar API Error:', err);
+    });
+}
