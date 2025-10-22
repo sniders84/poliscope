@@ -41,6 +41,36 @@ function getPollsByOffice(officeType) {
   return pollsData.filter(poll => poll.office === officeType);
 }
 
+// ✅ Poll tab rendering logic
+function showPolls(officeType = 'President') {
+  showTab('polls');
+  const pollsSection = document.getElementById('polls');
+  pollsSection.innerHTML = `<h2>${officeType} Polls</h2>`;
+
+  const filteredPolls = getPollsByOffice(officeType);
+
+  if (filteredPolls.length === 0) {
+    pollsSection.innerHTML += '<p>No polls available.</p>';
+    return;
+  }
+
+  filteredPolls.forEach(poll => {
+    const card = document.createElement('div');
+    card.className = 'poll-card';
+    card.innerHTML = `
+      <h3>${poll.topic}</h3>
+      <p><strong>Pollster:</strong> ${poll.pollster}</p>
+      <p><strong>Date:</strong> ${poll.date_range}</p>
+      <p><strong>Jurisdiction:</strong> ${poll.jurisdiction}</p>
+      <p><strong>Sample Size:</strong> ${poll.sample_size}</p>
+      <p><strong>Method:</strong> ${poll.method}</p>
+      <p><strong>Margin of Error:</strong> ${poll.margin_of_error}</p>
+      <p><strong>Source:</strong> <a href="${poll.source_url}" target="_blank">View</a></p>
+    `;
+    pollsSection.appendChild(card);
+  });
+}
+
 // ✅ Calendar tab now links to Ballotpedia session and election data
 function showCalendar() {
   showTab('civic');
@@ -189,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const normalizedParty = partyMap[rawParty] || rawParty.replace(/\s+/g, '') || 'independent';
       const photoSrc = o.photo && o.photo.trim() !== '' ? o.photo : 'assets/default-photo.png';
 
-      const districtDisplay = o.office === 'U.S. Representative' && o.district
+           const districtDisplay = o.office === 'U.S. Representative' && o.district
         ? `<p class="district-display"><strong>District:</strong> ${o.district}</p>`
         : '';
 
@@ -217,7 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function openModal(o) {
     const modalPhoto = o.photo && o.photo.trim() !== '' ? o.photo : 'assets/default-photo.png';
 
-       const districtDisplay = o.office === 'U.S. Representative' && o.district
+    const districtDisplay = o.office === 'U.S. Representative' && o.district
       ? `<p><strong>District:</strong> ${o.district}</p>`
       : '';
 
