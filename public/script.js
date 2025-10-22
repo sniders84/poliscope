@@ -23,22 +23,59 @@ function showTab(id) {
 function showCalendar() {
   showTab('calendar');
   const calendarSection = document.getElementById('calendar');
-  calendarSection.innerHTML = `<h2>State Calendar</h2><p>Loading verified session and election dates for ${selectedState}...</p>`;
+  calendarSection.innerHTML = `<h2>Civic Intelligence Dashboard</h2><p>Loading verified data for ${selectedState}...</p>`;
 
-  const ballotpediaSessionLink = `https://ballotpedia.org/Dates_of_2025_state_legislative_sessions`;
-  const ballotpediaElectionLink = `https://ballotpedia.org/2025_election_and_voting_dates`;
+  const stateSlug = selectedState.replace(/\s+/g, '_');
+  const lowerState = selectedState.toLowerCase();
 
-  calendarSection.innerHTML = `
-    <h2>State Calendar</h2>
-    <h3>${selectedState}</h3>
-    <ul>
-      <li><strong>Legislative Sessions:</strong> <a href="${ballotpediaSessionLink}" target="_blank">View ${selectedState} session dates on Ballotpedia</a></li>
-      <li><strong>Election Deadlines:</strong> <a href="${ballotpediaElectionLink}" target="_blank">View ${selectedState} voting deadlines on Ballotpedia</a></li>
-    </ul>
-    <p>These links provide real-time updates from verified sources. Data is maintained by Ballotpedia and state election offices.</p>
-  `;
+  const cards = [
+    {
+      title: '🗳️ Special Elections',
+      content: `
+        <p>View all 2025 special elections — past and upcoming — for ${selectedState}.</p>
+        <a href="https://ballotpedia.org/State_legislative_special_elections,_2025#${stateSlug}" target="_blank">Special Elections for ${selectedState}</a>
+      `
+    },
+    {
+      title: '🏛️ Legislative Sessions & Key Issues',
+      content: `
+        <p>See session dates and top issues being debated in ${selectedState}’s legislature.</p>
+        <a href="https://ballotpedia.org/State_legislative_elections,_2025#${stateSlug}" target="_blank">Session Details for ${selectedState}</a>
+      `
+    },
+    {
+      title: '🇺🇸 Federal Races & Rematches',
+      content: `
+        <p>Track U.S. House and Senate races tied to ${selectedState}, including rematches and retirements.</p>
+        <a href="https://ballotpedia.org/Special_elections_to_the_119th_United_States_Congress_%282025-2026%29" target="_blank">Federal Races Linked to ${selectedState}</a>
+      `
+    },
+    {
+      title: '🎙️ Governor & Lt. Governor Activity',
+      content: `
+        <p>Explore speeches, executive orders, and public appearances by ${selectedState}’s top executives.</p>
+        <a href="https://ballotpedia.org/State_of_the_state_addresses_%282025%29#${stateSlug}" target="_blank">Governor Activity for ${selectedState}</a>
+      `
+    },
+    {
+      title: '📢 Public Events & Orders (All Officials)',
+      content: `
+        <p>Track public-facing actions by all federal and state officials from ${selectedState}.</p>
+        <a href="https://www.federalregister.gov/index/2025/executive-office-of-the-president" target="_blank">Federal Executive Orders</a><br>
+        <a href="https://www.whitehouse.gov/presidential-actions/executive-orders/" target="_blank">White House Orders</a><br>
+        <a href="https://ballotpedia.org/Ballotpedia%27s_Election_Analysis_Hub,_2025" target="_blank">Election Analysis Hub</a>
+      `
+    }
+  ];
+
+  calendarSection.innerHTML = `<h2>Civic Intelligence Dashboard</h2><h3>${selectedState}</h3>`;
+  cards.forEach(card => {
+    const div = document.createElement('div');
+    div.className = 'calendar-card';
+    div.innerHTML = `<h4>${card.title}</h4>${card.content}`;
+    calendarSection.appendChild(div);
+  });
 }
-
 // ✅ Global function so it's accessible from HTML
 function showActivist() {
   showTab('activist');
