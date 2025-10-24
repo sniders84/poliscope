@@ -1,5 +1,4 @@
 [
-  // 🔵 Conservative / Right-Leaning
   {
     "name": "Turning Point USA",
     "logo": "assets/logos/turningpoint.png",
@@ -42,8 +41,6 @@
     "website": "https://www.momsforliberty.org",
     "platform": "Focuses on school board accountability, curriculum transparency, and civic engagement."
   },
-
-  // 🔴 Progressive / Left-Leaning
   {
     "name": "Indivisible",
     "logo": "assets/logos/indivisible.png",
@@ -86,8 +83,6 @@
     "website": "https://workingfamilies.org",
     "platform": "Supports labor rights, affordable housing, and progressive candidates."
   },
-
-  // 🟡 Centrist / Bipartisan / Civic Engagement
   {
     "name": "Unity Rising USA",
     "logo": "assets/logos/unityrising.png",
@@ -116,8 +111,6 @@
     "website": "https://www.commoncause.org",
     "platform": "Supports voting access, campaign finance reform, and democratic transparency."
   },
-
-  // 🟢 Green Party–Aligned
   {
     "name": "Green Party of the United States",
     "logo": "assets/logos/greenparty.png",
@@ -132,8 +125,6 @@
     "website": "https://www.youngecosocialists.org",
     "platform": "Advocates for ecosocialism, anti-imperialism, and youth-led climate action."
   },
-
-  // 🟣 Libertarian-Aligned
   {
     "name": "Libertarian Party",
     "logo": "assets/logos/libertarianparty.png",
@@ -155,8 +146,6 @@
     "website": "https://www.libertyhangout.org",
     "platform": "Promotes libertarian values, gun rights, and anti-authoritarianism."
   },
-
-  // ⚪ Independent / Centrist / Reform-Oriented
   {
     "name": "Forward Party",
     "logo": "assets/logos/forwardparty.png",
