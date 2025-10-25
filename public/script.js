@@ -22,7 +22,7 @@ function showVoting() {
   const votingCards = document.getElementById('voting-cards');
   votingCards.innerHTML = '';
 
-  fetch('/voting.json')
+  fetch('/voting-data.json')
     .then(res => res.json())
     .then(data => {
       const stateData = data[selectedState] || [];
