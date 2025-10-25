@@ -222,6 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function renderOfficials(stateFilter = null, query = '') {
     showTab('my-officials');
+    const officialsContainer = document.getElementById('officials-list');
     officialsContainer.innerHTML = '';
 
     const queryLower = query.toLowerCase();
