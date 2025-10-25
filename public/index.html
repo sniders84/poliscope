@@ -24,7 +24,7 @@
 
   <nav>
     <button class="tab" onclick="showTab('my-officials')">My Officials</button>
-    <button class="tab" onclick="showTab('civic');">Civic Intelligence</button>
+    <button class="tab" onclick="showTab('civic')">Civic Intelligence</button>
     <button class="tab" onclick="showTab('polls')">Polls</button>
     <button class="tab" onclick="showTab('organizations')">Political Groups</button>
     <button class="tab" id="tab-voting">Voting</button>
@@ -62,26 +62,6 @@
     <button id="close-modal" class="close-button">&times;</button>
   </div>
 
-  <script>
-
-    document.getElementById('state-selector').addEventListener('change', function () {
-      selectedState = this.value;
-    });
-
-    function showTab(id) {
-      document.querySelectorAll('.tab-content').forEach(tab => {
-        tab.style.display = 'none';
-      });
-      const activeTab = document.getElementById(id);
-      if (activeTab) activeTab.style.display = 'block';
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('tab-voting').addEventListener('click', () => {
-        showVoting();
-      });
-    });
-  </script>
   <script src="script.js"></script>
 </body>
 </html>
