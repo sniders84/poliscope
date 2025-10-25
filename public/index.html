@@ -12,6 +12,7 @@
       <img src="assets/electorate-logo.png" alt="Logo" class="logo" />
     </div>
     <div class="header-right">
+      <input type="text" id="search-bar" placeholder="Search officials..." />
       <label for="state-selector">State:</label>
       <select id="state-selector">
         <!-- All state options preserved -->
@@ -77,15 +78,16 @@
 
   <nav>
     <button class="tab" onclick="showTab('my-officials')">My Officials</button>
-    <button class="tab" onclick="showTab('civic')">Civic Intelligence</button>
-    <button class="tab" onclick="showTab('organizations')">Political Groups</button>
+    <button class="tab" onclick="showTab('civic'); showCalendar();">Civic Intelligence</button>
     <button class="tab" onclick="showTab('polls')">Polls</button>
+    <button class="tab" onclick="showOrganizations()">Political Groups</button>
     <button class="tab" onclick="showTab('voting')">Voting</button>
   </nav>
 
   <main>
     <section id="my-officials" class="tab-content">
-      <div id="officials-list"></div>
+      <h2>My Officials</h2>
+      <div id="officials-container" class="grid"></div>
     </section>
 
     <section id="civic" class="tab-content" style="display: none;">
@@ -93,13 +95,9 @@
       <div id="calendar"></div>
     </section>
 
-    <section id="polls-tab" class="tab-content" style="display: none;">
-      <h2>Polls</h2>
-      <div id="polls-container"></div>
-    </section>
-
     <section id="polls" class="tab-content" style="display: none;">
-      <!-- Polls will be injected here -->
+      <h2>Polls</h2>
+      <div id="polls"></div>
     </section>
 
     <section id="organizations" class="tab-content" style="display: none;">
@@ -127,6 +125,6 @@
       if (activeTab) activeTab.style.display = 'block';
     }
   </script>
-  <script type="module" src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
