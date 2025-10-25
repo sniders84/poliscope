@@ -67,18 +67,26 @@ function showCivic() {
   'local'
 ];
 
+const labelMap = {
+  bills: 'Bills',
+  senate: 'State Senate',
+  house: 'State House',
+  local: 'Local Government'
+};
+
 const filtered = Object.entries(links).filter(([label]) => {
   const lowerLabel = label.toLowerCase();
   return allowedLabels.some(key => lowerLabel.includes(key));
+}).map(([label, url]) => {
+  const key = allowedLabels.find(k => label.toLowerCase().includes(k));
+  const displayLabel = labelMap[key] || label;
+  return { label: displayLabel, url };
 });
 
-      if (filtered.length === 0) {
-        stateBlock.innerHTML += '<p>No state links available.</p>';
-      } else {
-        const grid = document.createElement('div');
-        grid.className = 'link-grid';
+const grid = document.createElement('div');
+grid.className = 'link-grid';
 
-        filtered.forEach(([label, url]) => {
+filtered.forEach(({ label, url }) => {
   const card = document.createElement('div');
   card.className = 'link-card';
   card.innerHTML = `
@@ -88,9 +96,9 @@ const filtered = Object.entries(links).filter(([label]) => {
   `;
   grid.appendChild(card);
 });
-        stateBlock.appendChild(grid);
-      }
 
+stateBlock.appendChild(grid);
+    }
       const federalBlock = document.createElement('div');
       federalBlock.className = 'civic-block';
       federalBlock.innerHTML = '<h2>Federal Oversight & Transparency</h2>';
