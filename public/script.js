@@ -60,16 +60,17 @@ function showCivic() {
     .then(stateLinks => {
       const links = stateLinks[selectedState] || {};
 
-      const allowedKeys = {
-        'Bills': 'Bills',
-        'State Senate Roster': 'State Senate Roster',
-        'State House Roster': 'State House Roster',
-        'Local Government Lookup': 'Local Government Lookup'
-      };
+     const allowedLabels = [
+  'bills',
+  'senate',
+  'house',
+  'local'
+];
 
-      const filtered = Object.entries(links).filter(([label]) =>
-        allowedKeys.hasOwnProperty(label)
-      );
+const filtered = Object.entries(links).filter(([label]) => {
+  const lowerLabel = label.toLowerCase();
+  return allowedLabels.some(key => lowerLabel.includes(key));
+});
 
       if (filtered.length === 0) {
         stateBlock.innerHTML += '<p>No state links available.</p>';
