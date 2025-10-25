@@ -22,10 +22,19 @@ function showVoting() {
   const votingCards = document.getElementById('voting-cards');
   votingCards.innerHTML = '';
 
-  fetch('/voting-data.json')
-    .then(res => res.json())
+  fetch('/poliscope/voting-data.json') // <-- Adjusted path
+    .then(res => {
+      if (!res.ok) throw new Error('Voting data file not found');
+      return res.json();
+    })
     .then(data => {
-      const stateData = data[selectedState] || [];
+      const stateData = data[selectedState];
+
+      if (!Array.isArray(stateData)) {
+        votingCards.innerHTML = `<p>No voting information available for ${selectedState}.</p>`;
+        return;
+      }
+
       stateData.forEach(item => {
         const card = document.createElement('div');
         card.className = 'voting-card';
@@ -42,7 +51,6 @@ function showVoting() {
       console.error(err);
     });
 }
-
 function showCivic() {
   showTab('civic');
   const calendar = document.getElementById('calendar');
