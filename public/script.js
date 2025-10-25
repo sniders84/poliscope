@@ -259,6 +259,63 @@ window.showVoting = function () {
       container.innerHTML += `<p>Error loading voting info for ${selectedState}.</p>`;
     });
 };
+function showCivic() {
+  showTab('civic');
+  const calendar = document.getElementById('calendar');
+  calendar.innerHTML = '<h2>State Legislative Links</h2>';
+
+  fetch('/state-links.json')
+    .then(res => res.json())
+    .then(stateLinks => {
+      const links = stateLinks[selectedState] || {};
+      const list = document.createElement('ul');
+
+      Object.entries(links).forEach(([label, url]) => {
+        const item = document.createElement('li');
+        item.innerHTML = `<strong>${label}:</strong> <a href="${url}" target="_blank">${url}</a>`;
+        list.appendChild(item);
+      });
+
+      calendar.appendChild(list);
+    })
+    .catch(err => {
+      calendar.innerHTML += '<p>Error loading civic links.</p>';
+      console.error(err);
+    });
+}
+function showOrganizations() {
+  showTab('organizations');
+  const section = document.getElementById('organizations');
+  section.innerHTML = '<h2>Political Organizations</h2>';
+
+  fetch('/political-groups.json')
+    .then(res => res.json())
+    .then(groups => {
+      const grid = document.createElement('div');
+      grid.className = 'grid';
+
+      groups.forEach(group => {
+        const card = document.createElement('div');
+        card.className = 'card';
+
+        card.innerHTML = `
+          <img src="${group.logo}" alt="${group.name} logo" />
+          <h3>${group.name}</h3>
+          <p>${group.description}</p>
+          <p><strong>Platform:</strong> ${group.platform}</p>
+          <a href="${group.website}" target="_blank">Visit Website</a>
+        `;
+
+        grid.appendChild(card);
+      });
+
+      section.appendChild(grid);
+    })
+    .catch(err => {
+      section.innerHTML += '<p>Error loading political groups.</p>';
+      console.error(err);
+    });
+}
 document.addEventListener('DOMContentLoaded', () => {
   const stateSelector = document.getElementById('state-selector');
     stateSelector.addEventListener('change', function () {
@@ -274,7 +331,9 @@ document.addEventListener('DOMContentLoaded', () => {
     showVoting();
   });
 
-  // ...rest of your code
+document.querySelector("button[onclick=\"showTab('civic')\"]").addEventListener('click', showCivic);
+document.querySelector("button[onclick=\"showTab('organizations')\"]").addEventListener('click', showOrganizations);
+
 });
 
   Promise.all([
