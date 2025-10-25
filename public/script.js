@@ -195,7 +195,80 @@ function showOrganizations() {
       console.error(err);
     });
 }
+window.showVoting = function () {
+  showTab('voting');
+  const container = document.getElementById('voting-cards');
+  container.innerHTML = `<h3>${selectedState}</h3>`;
 
+  const stateSlug = selectedState.toLowerCase().replace(/\s+/g, '-');
+
+  const cards = [
+    {
+      title: '🗳️ Register to Vote',
+      content: `
+        <p>Register online, by mail, or in person in ${selectedState}.</p>
+        <a href="https://www.ncsbe.gov/register" target="_blank">NC Registration Portal</a>
+      `
+    },
+    {
+      title: '🆔 Voter ID Requirements',
+      content: `
+        <p>Photo ID is required to vote in ${selectedState}. If you lack one, you may sign an affidavit.</p>
+        <a href="https://www.ncsbe.gov/voting/voter-id" target="_blank">ID Rules & Exceptions</a>
+      `
+    },
+    {
+      title: '📬 Absentee & Early Voting',
+      content: `
+        <p>Request an absentee ballot or vote early in person.</p>
+        <a href="https://www.ncsbe.gov/voting/vote-mail" target="_blank">Absentee Ballot Info</a><br>
+        <a href="https://www.ncsbe.gov/voting/early-voting" target="_blank">Early Voting Schedule</a>
+      `
+    },
+    {
+      title: '📍 Find Your Polling Place',
+      content: `
+        <p>Locate your assigned polling site for ${selectedState} elections.</p>
+        <a href="https://www.ncsbe.gov/voting/vote-person/polling-place" target="_blank">Polling Place Lookup</a>
+      `
+    },
+    {
+      title: '📄 Sample Ballots',
+      content: `
+        <p>Preview your ballot before voting.</p>
+        <a href="https://www.ncsbe.gov/voting/sample-ballots" target="_blank">View Sample Ballots</a>
+      `
+    },
+    {
+      title: '🌍 Military & Overseas Voting',
+      content: `
+        <p>Special provisions for military and overseas voters in ${selectedState}.</p>
+        <a href="https://www.ncsbe.gov/voting/military-overseas-voting" target="_blank">Military & Overseas Portal</a>
+      `
+    },
+    {
+      title: '📞 County Board Contacts',
+      content: `
+        <p>Contact your local board of elections for help.</p>
+        <a href="https://www.ncsbe.gov/about/contact-your-county-board-elections" target="_blank">County Board Directory</a>
+      `
+    },
+    {
+      title: '🔗 Voting Tools & Assistance',
+      content: `
+        <p>Check registration, track ballots, and get help.</p>
+        <a href="https://www.ncsbe.gov/voting" target="_blank">NC Voting Hub</a>
+      `
+    }
+  ];
+
+  cards.forEach(card => {
+    const div = document.createElement('div');
+    div.className = 'voting-card';
+    div.innerHTML = `<h4>${card.title}</h4>${card.content}`;
+    container.appendChild(div);
+  });
+};
 document.addEventListener('DOMContentLoaded', () => {
   const stateSelector = document.getElementById('state-selector');
   const searchBar = document.getElementById('search-bar');
