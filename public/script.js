@@ -52,7 +52,6 @@ function showCivic() {
   const section = document.createElement('div');
   section.className = 'civic-section';
 
-  // State Legislative Links
   const stateBlock = document.createElement('div');
   stateBlock.className = 'civic-block';
   stateBlock.innerHTML = '<h2>State Legislative Links</h2>';
@@ -62,16 +61,16 @@ function showCivic() {
     .then(stateLinks => {
       const links = stateLinks[selectedState] || {};
 
-     const allowedKeys = {
-  'Bills': 'Bills',
-  'State Senate Roster': 'State Senate Roster',
-  'State House Roster': 'State House Roster',
-  'Local Government Lookup': 'Local Government Lookup'
-};
+      const allowedKeys = {
+        'Bills': 'Bills',
+        'State Senate Roster': 'State Senate Roster',
+        'State House Roster': 'State House Roster',
+        'Local Government Lookup': 'Local Government Lookup'
+      };
 
-     const filtered = Object.entries(links).filter(([label]) =>
-  allowedKeys.hasOwnProperty(label)
-);
+      const filtered = Object.entries(links).filter(([label]) =>
+        allowedKeys.hasOwnProperty(label)
+      );
 
       if (filtered.length === 0) {
         stateBlock.innerHTML += '<p>No state links available.</p>';
@@ -80,7 +79,6 @@ function showCivic() {
         grid.className = 'link-grid';
 
         filtered.forEach(([label, url]) => {
-          const key = label.trim().toLowerCase();
           const displayLabel = allowedKeys[label];
           const card = document.createElement('div');
           card.className = 'link-card';
@@ -95,7 +93,6 @@ function showCivic() {
         stateBlock.appendChild(grid);
       }
 
-      // Federal Oversight & Transparency
       const federalBlock = document.createElement('div');
       federalBlock.className = 'civic-block';
       federalBlock.innerHTML = '<h2>Federal Oversight & Transparency</h2>';
@@ -248,109 +245,69 @@ function renderOfficials(stateFilter = null, query = '') {
     officialsContainer.appendChild(card);
   });
 }
-
-function openModal(o) {
-  const modalPhoto = o.photo && o.photo.trim() !== '' ? o.photo : 'assets/default-photo.png';
-
-  const districtDisplay = o.office === 'U.S. Representative' && o.district
-    ? `<p><strong>District:</strong> ${o.district}</p>`
-    : '';
-
+function openModal(official) {
   modalContent.innerHTML = `
-    <h2>${o.name}</h2>
-    <div class="modal-photo-wrapper">
-      <img src="${modalPhoto}" alt="${o.name}" onerror="this.onerror=null;this.src='assets/default-photo.png';" />
-    </div>
-    <p><strong>Office:</strong> ${o.office}</p>
-    ${districtDisplay}
-    <p><strong>Party:</strong> ${o.party}</p>
-    <p><strong>State:</strong> ${o.state}</p>
-    <p><strong>Term:</strong> ${o.termStart} → ${o.termEnd}</p>
-    ${o.bio ? `<p><strong>Bio:</strong> ${o.bio}</p>` : ''}
-    ${o.education ? `<p><strong>Education:</strong> ${o.education}</p>` : ''}
-    ${o.endorsements ? `<p><strong>Endorsements:</strong> ${o.endorsements}</p>` : ''}
-    ${o.platform ? `<p><strong>Platform:</strong> ${o.platform}</p>` : ''}
-    ${o.platformFollowThrough ? `
-      <h4>Platform Follow-Through</h4>
-      <ul>
-        ${Object.entries(o.platformFollowThrough).map(([key, val]) => `<li><strong>${key}:</strong> ${val}</li>`).join('')}
-      </ul>
-    ` : ''}
-    ${o.proposals ? `<p><strong>Proposals:</strong> ${o.proposals}</p>` : ''}
-    ${o.keyVotes?.length ? `
-      <h4>Key Votes</h4>
-      <ul>
-        ${o.keyVotes.map(v => `
-          <li>
-            <strong>${v.vote}:</strong> <a href="${v.link}" target="_blank">${v.title}</a> (${v.result}, ${v.date})
-          </li>
-        `).join('')}
-      </ul>
-    ` : ''}
-    ${o.billsSigned?.length ? `
-      <h4>Bills Signed</h4>
-      <ul>
-        ${o.billsSigned.map(b => `<li><a href="${b.link}" target="_blank">${b.title}</a></li>`).join('')}
-      </ul>
-    ` : ''}
-    ${o.vetoes && ["Governor", "President", "Mayor"].includes(o.office) ? `<p><strong>Vetoes:</strong> ${o.vetoes}</p>` : ''}
-    ${o.salary ? `<p><strong>Salary:</strong> ${o.salary}</p>` : ''}
-        ${o.predecessor ? `<p><strong>Predecessor:</strong> ${o.predecessor}</p>` : ''}
-    ${o.ballotpediaLink ? `<p><a href="${o.ballotpediaLink}" target="_blank">Ballotpedia Profile</a></p>` : ''}
-    ${o.govtrackLink ? `<p><a href="${o.govtrackLink}" target="_blank">GovTrack Profile</a></p>` : ''}
-    ${o.govtrackReportCard ? `<p><a href="${o.govtrackReportCard}" target="_blank">GovTrack Report Card</a></p>` : ''}
+    <h2>${official.name}</h2>
+    <p><strong>Office:</strong> ${official.office}</p>
+    ${official.district ? `<p><strong>District:</strong> ${official.district}</p>` : ''}
+    <p><strong>State:</strong> ${official.state}</p>
+    <p><strong>Party:</strong> ${official.party}</p>
+    <p><strong>Term:</strong> ${new Date(official.termStart).getFullYear()}–${new Date(official.termEnd).getFullYear()}</p>
+    ${official.bio ? `<p>${official.bio}</p>` : ''}
+    ${official.website ? `<p><a href="${official.website}" target="_blank">Official Website</a></p>` : ''}
   `;
-  modal.style.display = 'flex';
+  modal.style.display = 'block';
 }
 
+function closeModalWindow() {
+  modal.style.display = 'none';
+}
+
+function wireSearchBar() {
+  searchBar.addEventListener('input', () => {
+    const query = searchBar.value.trim();
+    renderOfficials(null, query);
+  });
+}
+
+function wireStateDropdown() {
+  const dropdown = document.getElementById('state-dropdown');
+  dropdown.value = selectedState;
+
+  dropdown.addEventListener('change', () => {
+    selectedState = dropdown.value;
+    renderOfficials(selectedState, '');
+  });
+}
 document.addEventListener('DOMContentLoaded', () => {
-  const stateSelector = document.getElementById('state-selector');
-  searchBar = document.getElementById('search-bar');
   officialsContainer = document.getElementById('officials-container');
-  modal = document.getElementById('official-modal');
+  searchBar = document.getElementById('search-bar');
+  modal = document.getElementById('modal');
   modalContent = document.getElementById('modal-content');
   closeModal = document.getElementById('close-modal');
 
-  stateSelector.addEventListener('change', function () {
-    selectedState = this.value;
-    renderOfficials(selectedState, searchBar.value.trim());
+  closeModal.addEventListener('click', closeModalWindow);
+  window.addEventListener('click', event => {
+    if (event.target === modal) closeModalWindow();
   });
 
-  searchBar.addEventListener('input', () => {
-    renderOfficials(selectedState, searchBar.value.trim());
-  });
-
-  closeModal.addEventListener('click', () => {
-    modal.style.display = 'none';
-  });
-
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      modal.style.display = 'none';
-    }
-  });
-
-  document.getElementById('tab-voting').addEventListener('click', () => {
-    showVoting();
-  });
-
-  document.querySelector("button[onclick=\"showTab('civic')\"]").addEventListener('click', showCivic);
-  document.querySelector("button[onclick=\"showTab('organizations')\"]").addEventListener('click', showOrganizations);
+  wireSearchBar();
+  wireStateDropdown();
 
   Promise.all([
     fetch('/governors.json').then(res => res.json()),
-    fetch('/ltgovernors.json').then(res => res.json()),
+    fetch('/lt-governors.json').then(res => res.json()),
     fetch('/senators.json').then(res => res.json()),
-    fetch('/housereps.json').then(res => res.json())
+    fetch('/house.json').then(res => res.json())
   ])
-  .then(([govs, ltgovs, sens, reps]) => {
-    governors = govs;
-    ltGovernors = ltgovs;
-    senators = sens;
-    houseReps = reps;
-    renderOfficials(selectedState, '');
-  })
-  .catch(error => {
-    console.error('Error loading officials:', error);
-  });
+    .then(([govs, ltGovs, sens, reps]) => {
+      governors = govs;
+      ltGovernors = ltGovs;
+      senators = sens;
+      houseReps = reps;
+      renderOfficials(selectedState, '');
+    })
+    .catch(err => {
+      console.error('Error loading official data:', err);
+    });
 });
