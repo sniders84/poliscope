@@ -78,6 +78,14 @@ function showCalendar() {
   calendarSection.innerHTML = `<h3>${selectedState}</h3>`;
 
   const stateLinks = { /* full stateLinks object from your batches — already dropped in */ };
+  const publicEvents = {
+    federalRegister: "https://www.federalregister.gov/presidential-documents/executive-orders",
+    whiteHouseOrders: "https://www.whitehouse.gov/presidential-actions/executive-orders/",
+    congressBills: "https://www.govtrack.us/congress/bills/",
+    congressVotes: "https://www.govtrack.us/congress/votes",
+    congressCommittees: "https://www.govtrack.us/congress/committees/",
+    congressMisconduct: "https://www.govtrack.us/misconduct"
+  };
 
   const links = stateLinks[selectedState] || {};
 
@@ -110,12 +118,23 @@ function showCalendar() {
       title: '📢 Public Events & Orders (All Officials)',
       content: `
         <p>Track public-facing actions by all federal and state officials.</p>
-        <a href="https://www.federalregister.gov/index/2025/executive-office-of-the-president" target="_blank">Federal Register</a><br>
-        <a href="https://www.whitehouse.gov/presidential-actions/executive-orders/" target="_blank">White House Orders</a>
+        <a href="${publicEvents.federalRegister}" target="_blank">Federal Register</a><br>
+        <a href="${publicEvents.whiteHouseOrders}" target="_blank">White House Orders</a><br>
+        <a href="${publicEvents.congressBills}" target="_blank">Congressional Bills</a><br>
+        <a href="${publicEvents.congressVotes}" target="_blank">Congressional Votes</a><br>
+        <a href="${publicEvents.congressCommittees}" target="_blank">Congressional Committees</a><br>
+        <a href="${publicEvents.congressMisconduct}" target="_blank">Misconduct Database</a>
       `
     }
   ];
 
+  cards.forEach(card => {
+    const div = document.createElement('div');
+    div.className = 'calendar-card';
+    div.innerHTML = `<h4>${card.title}</h4>${card.content}`;
+    calendarSection.appendChild(div);
+  });
+}
   cards.forEach(card => {
     const div = document.createElement('div');
     div.className = 'calendar-card';
