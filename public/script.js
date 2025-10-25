@@ -70,7 +70,6 @@ function showPolls(officeType = 'President') {
     pollsSection.appendChild(card);
   });
 }
-
 // ✅ Calendar tab now links to Ballotpedia session and election data
 function showCalendar() {
   showTab('civic');
@@ -133,7 +132,7 @@ function showCalendar() {
       console.error(err);
     });
 }
-// ✅ Global function so it's accessible from HTML
+// ✅ Activist tab rendering logic
 function showActivist() {
   showTab('activist');
   const activistSection = document.getElementById('activist');
@@ -160,6 +159,7 @@ function showActivist() {
     });
 }
 
+// ✅ Organizations tab rendering logic
 function showOrganizations() {
   showTab('organizations');
   const section = document.getElementById('organizations');
@@ -294,7 +294,7 @@ const votingOverrides = {
     military: "https://www.fvap.gov/arizona",
     counties: "https://azsos.gov/elections/voting-election/contact-information-county-election-officials",
     tools: "https://azsos.gov/elections"
-  },
+  }
   "Arkansas": {
     register: "https://www.sos.arkansas.gov/elections/voter-information",
     id: "https://www.sos.arkansas.gov/elections/voter-information/voter-id-requirements",
@@ -328,7 +328,7 @@ const votingOverrides = {
     counties: "https://www.sos.state.co.us/pubs/elections/Resources/CountyElectionOffices.html",
     tools: "https://www.sos.state.co.us/pubs/elections/main.html"
   },
-    "Connecticut": {
+  "Connecticut": {
     register: "https://voterregistration.ct.gov",
     id: "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Voter-ID-Requirements",
     absentee: "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Absentee-Voting",
@@ -371,7 +371,7 @@ const votingOverrides = {
     military: "https://www.fvap.gov/georgia",
     counties: "https://sos.ga.gov/county-election-offices",
     tools: "https://sos.ga.gov/elections"
-  },
+  }
   "Hawaii": {
     register: "https://elections.hawaii.gov/register-to-vote/",
     id: "https://elections.hawaii.gov/voters/voter-registration/voter-id-requirements/",
@@ -448,7 +448,7 @@ const votingOverrides = {
     military: "https://www.fvap.gov/kentucky",
     counties: "https://elect.ky.gov/About-Us/Pages/County-Clerks.aspx",
     tools: "https://elect.ky.gov"
-  },
+  }
   "Louisiana": {
     register: "https://www.sos.la.gov/ElectionsAndVoting/Pages/OnlineVoterRegistration.aspx",
     id: "https://www.sos.la.gov/ElectionsAndVoting/Vote/VoteEarly/Pages/default.aspx",
@@ -493,7 +493,7 @@ const votingOverrides = {
     counties: "https://www.sec.state.ma.us/ele/eleclk/clkidx.htm",
     tools: "https://www.sec.state.ma.us/ele/eleidx.htm"
   },
-    "Michigan": {
+  "Michigan": {
     register: "https://mvic.sos.state.mi.us/RegisterVoter",
     id: "https://www.michigan.gov/sos/elections/voting/voting-id",
     absentee: "https://mvic.sos.state.mi.us/AVApplication/Index",
@@ -514,14 +514,14 @@ const votingOverrides = {
     military: "https://www.fvap.gov/minnesota",
     counties: "https://www.sos.state.mn.us/elections-voting/contact-your-county-election-office/",
     tools: "https://www.sos.state.mn.us/elections-voting/"
-  },
+  }
   "Mississippi": {
-    register: "https://www.sos.ms.gov/elections-voting/voter-registration-information",
-    id: "https://www.sos.ms.gov/elections-voting/photo-id-law",
-    absentee: "https://www.sos.ms.gov/elections-voting/absentee-voting-information",
-    early: "https://www.sos.ms.gov/elections-voting/absentee-voting-information",
-    polling: "https://www.sos.ms.gov/elections-voting/polling-place-locator",
-    sample: "https://www.sos.ms.gov/elections-voting/sample-ballots",
+    register: "https://yallvote.sos.ms.gov",
+    id: "https://www.sos.ms.gov/voter-id",
+    absentee: "https://www.sos.ms.gov/absentee-voting-information",
+    early: "https://www.sos.ms.gov/early-voting-information",
+    polling: "https://yallvote.sos.ms.gov",
+    sample: "https://yallvote.sos.ms.gov",
     military: "https://www.fvap.gov/mississippi",
     counties: "https://www.sos.ms.gov/elections-voting/county-election-info",
     tools: "https://www.sos.ms.gov/elections-voting"
@@ -539,14 +539,14 @@ const votingOverrides = {
   },
   "Montana": {
     register: "https://sosmt.gov/elections/vote/",
-    id: "https://sosmt.gov/elections/vote/#ID",
-    absentee: "https://sosmt.gov/elections/vote/#Absentee",
-    early: "https://sosmt.gov/elections/vote/#Early",
+    id: "https://sosmt.gov/elections/vote/#id",
+    absentee: "https://sosmt.gov/elections/vote/#absentee",
+    early: "https://sosmt.gov/elections/vote/#early",
     polling: "https://app.mt.gov/voterinfo/",
     sample: "https://app.mt.gov/voterinfo/",
     military: "https://www.fvap.gov/montana",
-    counties: "https://sosmt.gov/elections/administration/#County",
-    tools: "https://sosmt.gov/elections/"
+    counties: "https://sosmt.gov/elections/contacts/",
+    tools: "https://sosmt.gov/elections"
   },
   "Nebraska": {
     register: "https://www.nebraska.gov/apps-sos-voter-registration/",
@@ -560,7 +560,7 @@ const votingOverrides = {
     tools: "https://sos.nebraska.gov/elections"
   },
   "Nevada": {
-    register: "https://www.registertovotenv.gov",
+    register: "https://www.nvsos.gov/sosvoterservices/Registration/step1.aspx",
     id: "https://www.nvsos.gov/sos/elections/voters/voter-id",
     absentee: "https://www.nvsos.gov/sos/elections/voters/absentee-voting",
     early: "https://www.nvsos.gov/sos/elections/voters/early-voting",
@@ -574,9 +574,9 @@ const votingOverrides = {
     register: "https://www.sos.nh.gov/elections/voters/register-vote",
     id: "https://www.sos.nh.gov/elections/voters/voter-id",
     absentee: "https://www.sos.nh.gov/elections/voters/absentee-voting",
-    early: "https://www.sos.nh.gov/elections/voters/absentee-voting",
+    early: "https://www.sos.nh.gov/elections/voters/early-voting",
     polling: "https://app.sos.nh.gov/Public/PollingPlaceSearch",
-    sample: "https://app.sos.nh.gov/Public/Ballot",
+    sample: "https://app.sos.nh.gov/Public/PollingPlaceSearch",
     military: "https://www.fvap.gov/new-hampshire",
     counties: "https://www.sos.nh.gov/elections/election-officials",
     tools: "https://www.sos.nh.gov/elections"
@@ -585,20 +585,20 @@ const votingOverrides = {
     register: "https://voter.svrs.nj.gov/register",
     id: "https://www.nj.gov/state/elections/vote/voter-id.shtml",
     absentee: "https://www.nj.gov/state/elections/vote-by-mail.shtml",
-    early: "https://www.nj.gov/state/elections/vote/early-voting.shtml",
+    early: "https://www.nj.gov/state/elections/early-voting.shtml",
     polling: "https://voter.svrs.nj.gov/polling-place-search",
     sample: "https://voter.svrs.nj.gov/sample-ballot",
     military: "https://www.fvap.gov/new-jersey",
     counties: "https://www.nj.gov/state/elections/county-eo.shtml",
     tools: "https://www.nj.gov/state/elections"
-  },
+  }
   "New Mexico": {
-    register: "https://portal.sos.state.nm.us/OVR/WebPages/InstructionsStep1.aspx",
+    register: "https://portal.sos.state.nm.us/OVR/WebPages/Instructions.aspx",
     id: "https://www.sos.state.nm.us/voting-and-elections/voter-information/voter-id-requirements/",
     absentee: "https://www.sos.state.nm.us/voting-and-elections/voter-information/absentee-voting/",
     early: "https://www.sos.state.nm.us/voting-and-elections/voter-information/early-voting/",
     polling: "https://voterportal.servis.sos.state.nm.us/WhereToVote.aspx",
-    sample: "https://voterportal.servis.sos.state.nm.us/WhereToVote.aspx",
+    sample: "https://voterportal.servis.sos.state.nm.us/SampleBallot.aspx",
     military: "https://www.fvap.gov/new-mexico",
     counties: "https://www.sos.state.nm.us/voting-and-elections/voter-information/county-clerks/",
     tools: "https://www.sos.state.nm.us/voting-and-elections/"
@@ -607,7 +607,7 @@ const votingOverrides = {
     register: "https://voterreg.dmv.ny.gov/MotorVoter/",
     id: "https://www.elections.ny.gov/VotingRegister.html",
     absentee: "https://www.elections.ny.gov/VotingAbsentee.html",
-    early: "https://www.elections.ny.gov/VotingEarlyVoting.html",
+    early: "https://www.elections.ny.gov/VotingEarly.html",
     polling: "https://voterlookup.elections.ny.gov/",
     sample: "https://voterlookup.elections.ny.gov/",
     military: "https://www.fvap.gov/new-york",
@@ -618,22 +618,22 @@ const votingOverrides = {
     register: "https://vip.sos.nd.gov/PortalListDetails.aspx?ptlhPKID=79&ptlPKID=7",
     id: "https://vip.sos.nd.gov/IDRequirements.aspx",
     absentee: "https://vip.sos.nd.gov/AbsenteeBallot.aspx",
-    early: "https://vip.sos.nd.gov/AbsenteeBallot.aspx",
+    early: "https://vip.sos.nd.gov/EarlyVoting.aspx",
     polling: "https://vip.sos.nd.gov/WhereToVote.aspx",
-    sample: "https://vip.sos.nd.gov/WhereToVote.aspx",
+    sample: "https://vip.sos.nd.gov/SampleBallot.aspx",
     military: "https://www.fvap.gov/north-dakota",
-    counties: "https://vip.sos.nd.gov/CountyAuditor.aspx",
+    counties: "https://vip.sos.nd.gov/CountyAuditors.aspx",
     tools: "https://vip.sos.nd.gov"
   },
   "Ohio": {
-    register: "https://olvr.ohiosos.gov",
-    id: "https://www.ohiosos.gov/elections/voters/voter-id/",
+    register: "https://olvr.ohiosos.gov/",
+    id: "https://www.ohiosos.gov/elections/voters/id-requirements/",
     absentee: "https://www.ohiosos.gov/elections/voters/absentee-voting/",
     early: "https://www.ohiosos.gov/elections/voters/early-in-person-voting/",
     polling: "https://www.ohiosos.gov/elections/voters/toolkit/polling-place/",
     sample: "https://www.ohiosos.gov/elections/voters/toolkit/sample-ballot/",
     military: "https://www.fvap.gov/ohio",
-    counties: "https://www.ohiosos.gov/elections/elections-officials/county-boards-of-elections-directory/",
+    counties: "https://www.ohiosos.gov/elections/election-officials/county-boards-of-elections/",
     tools: "https://www.ohiosos.gov/elections"
   },
   "Oklahoma": {
@@ -641,8 +641,8 @@ const votingOverrides = {
     id: "https://oklahoma.gov/elections/voters/voter-id.html",
     absentee: "https://oklahoma.gov/elections/voters/absentee-voting.html",
     early: "https://oklahoma.gov/elections/voters/early-voting.html",
-    polling: "https://okvoterportal.okelections.us/",
-    sample: "https://okvoterportal.okelections.us/",
+    polling: "https://okvoterportal.okelections.us/Home/WhereDoIVote",
+    sample: "https://okvoterportal.okelections.us/Home/ViewBallot",
     military: "https://www.fvap.gov/oklahoma",
     counties: "https://oklahoma.gov/elections/about-us/county-election-boards.html",
     tools: "https://oklahoma.gov/elections.html"
@@ -650,74 +650,74 @@ const votingOverrides = {
   "Oregon": {
     register: "https://sos.oregon.gov/voting/pages/registration.aspx",
     id: "https://sos.oregon.gov/voting/pages/id.aspx",
-    absentee: "https://sos.oregon.gov/voting/pages/voteearly.aspx",
-    early: "https://sos.oregon.gov/voting/pages/voteearly.aspx",
-    polling: "https://sos.oregon.gov/voting/pages/myvote.aspx",
-    sample: "https://sos.oregon.gov/voting/pages/myvote.aspx",
+    absentee: "https://sos.oregon.gov/voting/pages/absentee.aspx",
+    early: "https://sos.oregon.gov/voting/pages/early-voting.aspx",
+    polling: "https://sos.oregon.gov/voting/pages/drop-box-locations.aspx",
+    sample: "https://sos.oregon.gov/voting/pages/sample-ballots.aspx",
     military: "https://www.fvap.gov/oregon",
-    counties: "https://sos.oregon.gov/elections/pages/county-offices.aspx",
+    counties: "https://sos.oregon.gov/elections/pages/county-elections-offices.aspx",
     tools: "https://sos.oregon.gov/voting/pages/default.aspx"
   },
   "Pennsylvania": {
     register: "https://www.pavoterservices.pa.gov/Pages/VoterRegistrationApplication.aspx",
-    id: "https://www.vote.pa.gov/Register-to-Vote/Pages/Voter-ID-for-Voting.aspx",
+    id: "https://www.vote.pa.gov/Register-to-Vote/Pages/Voter-ID-Requirements.aspx",
     absentee: "https://www.vote.pa.gov/Voting-in-PA/Pages/Mail-and-Absentee-Ballot.aspx",
     early: "https://www.vote.pa.gov/Voting-in-PA/Pages/Early-Voting.aspx",
     polling: "https://www.pavoterservices.pa.gov/Pages/PollingPlaceInfo.aspx",
     sample: "https://www.pavoterservices.pa.gov/Pages/SampleBallot.aspx",
     military: "https://www.fvap.gov/pennsylvania",
-    counties: "https://www.vote.pa.gov/About-Elections/Pages/Contact-Your-Election-Officials.aspx",
+    counties: "https://www.vote.pa.gov/About-Elections/Pages/County-Contacts.aspx",
     tools: "https://www.vote.pa.gov"
-  },
+  }
   "Rhode Island": {
     register: "https://vote.sos.ri.gov/",
-    id: "https://vote.sos.ri.gov/VoterID",
-    absentee: "https://vote.sos.ri.gov/Voter/VoteByMail",
+    id: "https://vote.sos.ri.gov/Voter/VoterID",
+    absentee: "https://vote.sos.ri.gov/Voter/AbsenteeBallot",
     early: "https://vote.sos.ri.gov/Voter/EarlyVoting",
-    polling: "https://vote.sos.ri.gov/Voter/PollingPlace",
+    polling: "https://vote.sos.ri.gov/Voter/PollingPlaceLookup",
     sample: "https://vote.sos.ri.gov/Voter/SampleBallot",
     military: "https://www.fvap.gov/rhode-island",
-    counties: "https://vote.sos.ri.gov/Contact",
+    counties: "https://vote.sos.ri.gov/ContactUs",
     tools: "https://vote.sos.ri.gov"
   },
   "South Carolina": {
-    register: "https://votesc.gov",
-    id: "https://www.scvotes.gov/voter-id",
-    absentee: "https://www.scvotes.gov/absentee-voting",
-    early: "https://www.scvotes.gov/early-voting",
-    polling: "https://www.scvotes.gov/where-vote",
-    sample: "https://www.scvotes.gov/sample-ballots",
+    register: "https://info.scvotes.sc.gov/eng/ovr/start.aspx",
+    id: "https://www.scvotes.gov/voters/voter-id",
+    absentee: "https://www.scvotes.gov/voters/absentee-voting",
+    early: "https://www.scvotes.gov/voters/early-voting",
+    polling: "https://info.scvotes.sc.gov/eng/voterinquiry/VoterInformationRequest.aspx",
+    sample: "https://info.scvotes.sc.gov/eng/voterinquiry/VoterInformationRequest.aspx",
     military: "https://www.fvap.gov/south-carolina",
-    counties: "https://www.scvotes.gov/election-officials",
+    counties: "https://www.scvotes.gov/how-register/county-board-elections-and-voter-registration",
     tools: "https://www.scvotes.gov"
   },
   "South Dakota": {
-    register: "https://sdsos.gov/elections-voting/voting/register-to-vote/default.aspx",
-    id: "https://sdsos.gov/elections-voting/voting/voter-id/default.aspx",
-    absentee: "https://sdsos.gov/elections-voting/voting/absentee-voting/default.aspx",
-    early: "https://sdsos.gov/elections-voting/voting/early-voting/default.aspx",
+    register: "https://vip.sdsos.gov/VIPLogin.aspx",
+    id: "https://sdsos.gov/elections-voting/voting/voter-id-requirements.aspx",
+    absentee: "https://sdsos.gov/elections-voting/voting/absentee-voting.aspx",
+    early: "https://sdsos.gov/elections-voting/voting/early-voting.aspx",
     polling: "https://vip.sdsos.gov/VIPLogin.aspx",
     sample: "https://vip.sdsos.gov/VIPLogin.aspx",
     military: "https://www.fvap.gov/south-dakota",
-    counties: "https://sdsos.gov/elections-voting/election-resources/county-auditors.aspx",
-    tools: "https://sdsos.gov/elections-voting/default.aspx"
+    counties: "https://sdsos.gov/elections-voting/assets/CountyAuditorContactList.pdf",
+    tools: "https://sdsos.gov/elections-voting"
   },
   "Tennessee": {
     register: "https://ovr.govote.tn.gov",
-    id: "https://sos.tn.gov/elections/guides/voter-id-laws",
-    absentee: "https://sos.tn.gov/elections/guides/absentee-voting",
-    early: "https://sos.tn.gov/elections/guides/early-voting",
+    id: "https://sos.tn.gov/elections/voter-id-requirements",
+    absentee: "https://sos.tn.gov/elections/guides/absentee-voting-guide",
+    early: "https://sos.tn.gov/elections/guides/early-voting-guide",
     polling: "https://tnmap.tn.gov/voterlookup/",
     sample: "https://tnmap.tn.gov/voterlookup/",
     military: "https://www.fvap.gov/tennessee",
-    counties: "https://sos.tn.gov/elections/election-commission-information",
+    counties: "https://sos.tn.gov/elections/election-commissions",
     tools: "https://sos.tn.gov/elections"
   },
-    "Texas": {
+  "Texas": {
     register: "https://www.votetexas.gov/register-to-vote/",
     id: "https://www.votetexas.gov/register-to-vote/need-id.html",
     absentee: "https://www.votetexas.gov/voting-by-mail/",
-    early: "https://www.votetexas.gov/early-voting/",
+    early: "https://www.votetexas.gov/voting/when.html",
     polling: "https://teamrv-mvp.sos.texas.gov/MVP/mvp.do",
     sample: "https://teamrv-mvp.sos.texas.gov/MVP/mvp.do",
     military: "https://www.fvap.gov/texas",
@@ -729,8 +729,8 @@ const votingOverrides = {
     id: "https://vote.utah.gov/voter-id-requirements/",
     absentee: "https://vote.utah.gov/absentee-voting/",
     early: "https://vote.utah.gov/early-voting/",
-    polling: "https://vote.utah.gov",
-    sample: "https://vote.utah.gov",
+    polling: "https://vote.utah.gov/where-to-vote/",
+    sample: "https://vote.utah.gov/sample-ballots/",
     military: "https://www.fvap.gov/utah",
     counties: "https://vote.utah.gov/county-clerks/",
     tools: "https://vote.utah.gov"
@@ -748,7 +748,7 @@ const votingOverrides = {
   },
   "Virginia": {
     register: "https://vote.elections.virginia.gov/Registration/Eligibility",
-    id: "https://www.elections.virginia.gov/registration/voter-id-requirements/",
+    id: "https://www.elections.virginia.gov/registration/voterid/",
     absentee: "https://www.elections.virginia.gov/casting-a-ballot/absentee-voting/",
     early: "https://www.elections.virginia.gov/casting-a-ballot/early-voting/",
     polling: "https://vote.elections.virginia.gov/VoterInformation",
@@ -758,37 +758,37 @@ const votingOverrides = {
     tools: "https://www.elections.virginia.gov"
   },
   "Washington": {
-    register: "https://www.sos.wa.gov/elections/voters/register-to-vote/",
-    id: "https://www.sos.wa.gov/elections/voters/voter-id.aspx",
+    register: "https://voter.votewa.gov/WhereToVote.aspx",
+    id: "https://www.sos.wa.gov/elections/voters/voter-id-requirements.aspx",
     absentee: "https://www.sos.wa.gov/elections/voters/vote-by-mail.aspx",
     early: "https://www.sos.wa.gov/elections/voters/early-voting.aspx",
-    polling: "https://voter.votewa.gov",
-    sample: "https://voter.votewa.gov",
+    polling: "https://voter.votewa.gov/WhereToVote.aspx",
+    sample: "https://voter.votewa.gov/SampleBallot.aspx",
     military: "https://www.fvap.gov/washington",
     counties: "https://www.sos.wa.gov/elections/auditors/",
     tools: "https://www.sos.wa.gov/elections"
   },
   "West Virginia": {
-    register: "https://ovr.sos.wv.gov/Register/Landing",
+    register: "https://ovr.sos.wv.gov/Register",
     id: "https://sos.wv.gov/elections/Pages/VoterID.aspx",
     absentee: "https://sos.wv.gov/elections/Pages/AbsenteeVotingInformation.aspx",
-    early: "https://sos.wv.gov/elections/Pages/EarlyVotingInformation.aspx",
-    polling: "https://sos.wv.gov/elections/Pages/FindMyPollingPlace.aspx",
-    sample: "https://sos.wv.gov/elections/Pages/SampleBallots.aspx",
+    early: "https://sos.wv.gov/elections/Pages/EarlyVoting.aspx",
+    polling: "https://services.sos.wv.gov/Elections/Voter/FindMyPollingPlace",
+    sample: "https://services.sos.wv.gov/Elections/Voter/FindMyPollingPlace",
     military: "https://www.fvap.gov/west-virginia",
     counties: "https://sos.wv.gov/elections/Pages/CountyClerks.aspx",
     tools: "https://sos.wv.gov/elections"
   },
   "Wisconsin": {
     register: "https://myvote.wi.gov/en-us/Register-To-Vote",
-    id: "https://elections.wi.gov/voters/photo-id",
+    id: "https://bringit.wisconsin.gov",
     absentee: "https://myvote.wi.gov/en-us/Vote-Absentee-By-Mail",
-    early: "https://myvote.wi.gov/en-us/Vote-Absentee-In-Person",
+    early: "https://myvote.wi.gov/en-us/Vote-Early-In-Person",
     polling: "https://myvote.wi.gov/en-us/Find-My-Polling-Place",
     sample: "https://myvote.wi.gov/en-us/Whats-On-My-Ballot",
     military: "https://www.fvap.gov/wisconsin",
-    counties: "https://elections.wi.gov/contact-us",
-    tools: "https://elections.wi.gov"
+    counties: "https://elections.wi.gov/about/county-clerks",
+    tools: "https://myvote.wi.gov"
   },
   "Wyoming": {
     register: "https://sos.wyo.gov/Elections/RegisteringToVote.aspx",
@@ -798,9 +798,10 @@ const votingOverrides = {
     polling: "https://sos.wyo.gov/Elections/PollingPlaceLocator.aspx",
     sample: "https://sos.wyo.gov/Elections/SampleBallots.aspx",
     military: "https://www.fvap.gov/wyoming",
-    counties: "https://sos.wyo.gov/Elections/CountyClerks.aspx",
+       counties: "https://sos.wyo.gov/Elections/CountyClerks.aspx",
     tools: "https://sos.wyo.gov/Elections"
   }
+};
 window.showVoting = function () {
   showTab('voting');
   const container = document.getElementById('voting-cards');
@@ -809,51 +810,51 @@ window.showVoting = function () {
   const stateSlug = selectedState.toLowerCase().replace(/\s+/g, '-');
 
   const links = votingOverrides[selectedState] || {
-  register: "https://www.nass.org/can-I-vote/register-to-vote",
-  id: "https://www.nass.org/can-I-vote/valid-forms-id",
-  absentee: "https://www.nass.org/can-I-vote/absentee-early-voting",
-  early: "https://www.nass.org/can-I-vote/absentee-early-voting",
-  polling: "https://www.nass.org/can-I-vote/find-your-polling-place",
-  sample: "https://www.ballotready.org/",
-  military: "https://www.fvap.gov/",
-  counties: "https://www.nass.org/Can-I-Vote/contact-your-election-official",
-  tools: "https://www.nass.org/can-I-vote"
-};
+    register: "https://www.nass.org/can-I-vote/register-to-vote",
+    id: "https://www.nass.org/can-I-vote/valid-forms-id",
+    absentee: "https://www.nass.org/can-I-vote/absentee-early-voting",
+    early: "https://www.nass.org/can-I-vote/absentee-early-voting",
+    polling: "https://www.nass.org/can-I-vote/find-your-polling-place",
+    sample: "https://www.ballotready.org/",
+    military: "https://www.fvap.gov/",
+    counties: "https://www.nass.org/Can-I-Vote/contact-your-election-official",
+    tools: "https://www.nass.org/can-I-vote"
+  };
 
-const cards = [
-  {
-    title: '🗳️ Register to Vote',
-    content: `<p>Register in ${selectedState}.</p><a href="${links.register}" target="_blank">Registration Portal</a>`
-  },
-  {
-    title: '🆔 Voter ID Requirements',
-    content: `<p>ID rules for ${selectedState}.</p><a href="${links.id}" target="_blank">ID Info</a>`
-  },
-  {
-    title: '📬 Absentee & Early Voting',
-    content: `<p>Vote early or by mail.</p><a href="${links.absentee}" target="_blank">Absentee Info</a><br><a href="${links.early}" target="_blank">Early Voting</a>`
-  },
-  {
-    title: '📍 Find Your Polling Place',
-    content: `<p>Polling site lookup.</p><a href="${links.polling}" target="_blank">Find Polling Place</a>`
-  },
-  {
-    title: '📄 Sample Ballots',
-    content: `<p>Preview your ballot.</p><a href="${links.sample}" target="_blank">Sample Ballots</a>`
-  },
-  {
-    title: '🌍 Military & Overseas Voting',
-    content: `<p>Info for military/overseas voters.</p><a href="${links.military}" target="_blank">Military Voting</a>`
-  },
-  {
-    title: '📞 County Board Contacts',
-    content: `<p>Local election office.</p><a href="${links.counties}" target="_blank">County Directory</a>`
-  },
-  {
-    title: '🔗 Voting Tools & Assistance',
-    content: `<p>Check registration, deadlines, and more.</p><a href="${links.tools}" target="_blank">Voting Hub</a>`
-  }
-];
+  const cards = [
+    {
+      title: '🗳️ Register to Vote',
+      content: `<p>Register in ${selectedState}.</p><a href="${links.register}" target="_blank">Registration Portal</a>`
+    },
+    {
+      title: '🆔 Voter ID Requirements',
+      content: `<p>ID rules for ${selectedState}.</p><a href="${links.id}" target="_blank">ID Info</a>`
+    },
+    {
+      title: '📬 Absentee & Early Voting',
+      content: `<p>Vote early or by mail.</p><a href="${links.absentee}" target="_blank">Absentee Info</a><br><a href="${links.early}" target="_blank">Early Voting</a>`
+    },
+    {
+      title: '📍 Find Your Polling Place',
+      content: `<p>Polling site lookup.</p><a href="${links.polling}" target="_blank">Find Polling Place</a>`
+    },
+    {
+      title: '📄 Sample Ballots',
+      content: `<p>Preview your ballot.</p><a href="${links.sample}" target="_blank">Sample Ballots</a>`
+    },
+    {
+      title: '🌍 Military & Overseas Voting',
+      content: `<p>Info for military/overseas voters.</p><a href="${links.military}" target="_blank">Military Voting</a>`
+    },
+    {
+      title: '📞 County Board Contacts',
+      content: `<p>Local election office.</p><a href="${links.counties}" target="_blank">County Directory</a>`
+    },
+    {
+      title: '🔗 Voting Tools & Assistance',
+      content: `<p>Check registration, deadlines, and more.</p><a href="${links.tools}" target="_blank">Voting Hub</a>`
+    }
+  ];
 
   cards.forEach(card => {
     const div = document.createElement('div');
@@ -862,6 +863,7 @@ const cards = [
     container.appendChild(div);
   });
 };
+
 document.addEventListener('DOMContentLoaded', () => {
   const stateSelector = document.getElementById('state-selector');
   const searchBar = document.getElementById('search-bar');
@@ -886,7 +888,6 @@ document.addEventListener('DOMContentLoaded', () => {
   .catch(error => {
     console.error('Error loading officials:', error);
   });
-
   function renderOfficials(stateFilter = null, query = '') {
     showTab('my-officials');
     officialsContainer.innerHTML = '';
@@ -906,7 +907,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ...filteredLtGovs,
       ...filteredSens,
       ...filteredReps
-       ].filter(o =>
+    ].filter(o =>
       o.name.toLowerCase().includes(queryLower) ||
       o.office.toLowerCase().includes(queryLower) ||
       o.state.toLowerCase().includes(queryLower)
@@ -1008,7 +1009,6 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     modal.style.display = 'flex';
   }
-
   closeModal.addEventListener('click', () => {
     modal.style.display = 'none';
   });
@@ -1027,4 +1027,60 @@ document.addEventListener('DOMContentLoaded', () => {
   searchBar.addEventListener('input', () => {
     renderOfficials(selectedState, searchBar.value.trim());
   });
+
+  // Optional: preload tabs if needed
+  document.getElementById('tab-my-officials')?.addEventListener('click', () => renderOfficials(selectedState, ''));
+  document.getElementById('tab-voting')?.addEventListener('click', () => showVoting());
+  document.getElementById('tab-polls')?.addEventListener('click', () => showPolls('President'));
+  document.getElementById('tab-civic')?.addEventListener('click', () => showCalendar());
+  document.getElementById('tab-activist')?.addEventListener('click', () => showActivist());
+  document.getElementById('tab-organizations')?.addEventListener('click', () => showOrganizations());
 });
+// ✅ Optional preload for default tab
+window.addEventListener('load', () => {
+  renderOfficials(selectedState, '');
+});
+
+// ✅ Utility: normalize party string for styling
+function normalizeParty(partyRaw) {
+  const partyMap = {
+    republican: 'republican',
+    democrat: 'democrat',
+    democratic: 'democrat',
+    independent: 'independent',
+    green: 'green',
+    libertarian: 'libertarian',
+    constitution: 'constitution',
+    'working families': 'workingfamilies',
+    workingfamilies: 'workingfamilies',
+    progressive: 'progressive'
+  };
+  return partyMap[partyRaw.toLowerCase().trim()] || partyRaw.toLowerCase().replace(/\s+/g, '') || 'independent';
+}
+
+// ✅ Utility: fallback image handler
+function fallbackImage(img) {
+  img.onerror = null;
+  img.src = 'assets/default-photo.png';
+}
+// ✅ Final fallback for missing tab content
+function showTabFallback(tabId) {
+  const tab = document.getElementById(tabId);
+  if (tab) {
+    tab.innerHTML = '<p>Content not available.</p>';
+  }
+}
+
+// ✅ Export-ready closure
+export {
+  showTab,
+  showVoting,
+  showPolls,
+  showCalendar,
+  showActivist,
+  showOrganizations,
+  renderOfficials,
+  openModal,
+  normalizeParty,
+  fallbackImage
+};
