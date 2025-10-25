@@ -47,38 +47,69 @@ function showVoting() {
 function showCivic() {
   showTab('civic');
   const calendar = document.getElementById('calendar');
-  calendar.innerHTML = '<h2>State Legislative Links</h2>';
+  calendar.innerHTML = '';
 
+  const container = document.createElement('div');
+  container.className = 'civic-columns';
+
+  const stateCol = document.createElement('div');
+  stateCol.className = 'civic-column';
+  stateCol.innerHTML = '<h2>State Legislative Links</h2>';
+
+  const federalCol = document.createElement('div');
+  federalCol.className = 'civic-column';
+  federalCol.innerHTML = '<h2>Federal Oversight & Transparency</h2>';
+
+  // Fetch state links
   fetch('/state-links.json')
     .then(res => res.json())
     .then(stateLinks => {
       const links = stateLinks[selectedState] || {};
-      const list = document.createElement('ul');
+      const filtered = Object.entries(links).filter(([label]) =>
+        !['bills', 'senateRoster', 'houseRoster', 'governorOrders', 'ltGovPress', 'federalRaces'].includes(label)
+      );
 
-      Object.entries(links).forEach(([label, url]) => {
-        const item = document.createElement('li');
-        item.innerHTML = `<strong>${label}:</strong> <a href="${url}" target="_blank">${url}</a>`;
-        list.appendChild(item);
+      if (filtered.length === 0) {
+        stateCol.innerHTML += '<p>No state links available.</p>';
+      } else {
+        const grid = document.createElement('div');
+        grid.className = 'link-grid';
+
+        filtered.forEach(([label, url]) => {
+          const card = document.createElement('div');
+          card.className = 'link-card';
+          card.innerHTML = `<a href="${url}" target="_blank">${label}</a>`;
+          grid.appendChild(card);
+        });
+
+        stateCol.appendChild(grid);
+      }
+
+      // Add federal links
+      const federalGrid = document.createElement('div');
+      federalGrid.className = 'link-grid';
+
+      const federalLinks = [
+        { label: 'Congressional Directory', url: 'https://www.govtrack.us/congress/members' },
+        { label: 'Legislator Report Cards', url: 'https://www.govtrack.us/congress/members/report-cards' },
+        { label: 'All Federal Bills', url: 'https://www.govtrack.us/congress/bills/' },
+        { label: 'Recent Votes', url: 'https://www.govtrack.us/congress/votes' }
+      ];
+
+      federalLinks.forEach(link => {
+        const card = document.createElement('div');
+        card.className = 'link-card';
+        card.innerHTML = `<a href="${link.url}" target="_blank">${link.label}</a>`;
+        federalGrid.appendChild(card);
       });
 
-      calendar.appendChild(list);
-
-      // 🔗 Add federal GovTrack links
-      const federalBlock = document.createElement('div');
-      federalBlock.className = 'federal-links';
-      federalBlock.innerHTML = `
-        <h2>Federal Oversight & Transparency</h2>
-        <ul>
-          <li><strong>GovTrack Profiles:</strong> <a href="https://www.govtrack.us/congress/members" target="_blank">Congressional Directory</a></li>
-          <li><strong>Report Cards:</strong> <a href="https://www.govtrack.us/congress/members/report-cards" target="_blank">Legislator Report Cards</a></li>
-          <li><strong>Bill Tracker:</strong> <a href="https://www.govtrack.us/congress/bills/" target="_blank">All Federal Bills</a></li>
-          <li><strong>Voting Records:</strong> <a href="https://www.govtrack.us/congress/votes" target="_blank">Recent Votes</a></li>
-        </ul>
-      `;
-      calendar.appendChild(federalBlock);
+      federalCol.appendChild(federalGrid);
+      container.appendChild(stateCol);
+      container.appendChild(federalCol);
+      calendar.appendChild(container);
     })
     .catch(err => {
-      calendar.innerHTML += '<p>Error loading civic links.</p>';
+      calendar.innerHTML = '<p>Error loading civic links.</p>';
       console.error(err);
     });
 }
