@@ -49,18 +49,14 @@ function showCivic() {
   const calendar = document.getElementById('calendar');
   calendar.innerHTML = '';
 
-  const container = document.createElement('div');
-  container.className = 'civic-columns';
+  const section = document.createElement('div');
+  section.className = 'civic-section';
 
-  const stateCol = document.createElement('div');
-  stateCol.className = 'civic-column';
-  stateCol.innerHTML = '<h2>State Legislative Links</h2>';
+  // State Legislative Links
+  const stateBlock = document.createElement('div');
+  stateBlock.className = 'civic-block';
+  stateBlock.innerHTML = '<h2>State Legislative Links</h2>';
 
-  const federalCol = document.createElement('div');
-  federalCol.className = 'civic-column';
-  federalCol.innerHTML = '<h2>Federal Oversight & Transparency</h2>';
-
-  // Fetch state links
   fetch('/state-links.json')
     .then(res => res.json())
     .then(stateLinks => {
@@ -70,43 +66,40 @@ function showCivic() {
       );
 
       if (filtered.length === 0) {
-        stateCol.innerHTML += '<p>No state links available.</p>';
+        stateBlock.innerHTML += '<p>No state links available.</p>';
       } else {
-        const grid = document.createElement('div');
-        grid.className = 'link-grid';
-
+        const list = document.createElement('ul');
         filtered.forEach(([label, url]) => {
-          const card = document.createElement('div');
-          card.className = 'link-card';
-          card.innerHTML = `<a href="${url}" target="_blank">${label}</a>`;
-          grid.appendChild(card);
+          const item = document.createElement('li');
+          item.innerHTML = `<strong>${label}:</strong> <a href="${url}" target="_blank">${url}</a>`;
+          list.appendChild(item);
         });
-
-        stateCol.appendChild(grid);
+        stateBlock.appendChild(list);
       }
 
-      // Add federal links
-      const federalGrid = document.createElement('div');
-      federalGrid.className = 'link-grid';
+      // Federal Oversight & Transparency
+      const federalBlock = document.createElement('div');
+      federalBlock.className = 'civic-block';
+      federalBlock.innerHTML = '<h2>Federal Oversight & Transparency</h2>';
 
       const federalLinks = [
-        { label: 'Congressional Directory', url: 'https://www.govtrack.us/congress/members' },
+        { label: 'GovTrack Committees', url: 'https://www.govtrack.us/congress/committees' },
         { label: 'Legislator Report Cards', url: 'https://www.govtrack.us/congress/members/report-cards' },
         { label: 'All Federal Bills', url: 'https://www.govtrack.us/congress/bills/' },
         { label: 'Recent Votes', url: 'https://www.govtrack.us/congress/votes' }
       ];
 
+      const federalList = document.createElement('ul');
       federalLinks.forEach(link => {
-        const card = document.createElement('div');
-        card.className = 'link-card';
-        card.innerHTML = `<a href="${link.url}" target="_blank">${link.label}</a>`;
-        federalGrid.appendChild(card);
+        const item = document.createElement('li');
+        item.innerHTML = `<strong>${link.label}:</strong> <a href="${link.url}" target="_blank">${link.url}</a>`;
+        federalList.appendChild(item);
       });
 
-      federalCol.appendChild(federalGrid);
-      container.appendChild(stateCol);
-      container.appendChild(federalCol);
-      calendar.appendChild(container);
+      federalBlock.appendChild(federalList);
+      section.appendChild(stateBlock);
+      section.appendChild(federalBlock);
+      calendar.appendChild(section);
     })
     .catch(err => {
       calendar.innerHTML = '<p>Error loading civic links.</p>';
