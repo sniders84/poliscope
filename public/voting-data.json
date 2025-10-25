@@ -21,8 +21,7 @@
     "counties": "https://www.elections.alaska.gov/Core/contactinformation.php",
     "tools": "https://www.elections.alaska.gov/"
   },
-    {
-  "Arizona": {
+    "Arizona": {
     "register": "https://servicearizona.com/VoterRegistration",
     "id": "https://azsos.gov/elections/voters/voting-elections",
     "absentee": "https://azsos.gov/elections/voters/early-voting",
