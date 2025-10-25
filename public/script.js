@@ -30,18 +30,31 @@ function showVoting() {
     .then(data => {
       const stateData = data[selectedState];
 
-      if (!Array.isArray(stateData)) {
+      if (!stateData || typeof stateData !== 'object') {
         votingCards.innerHTML = `<p>No voting information available for ${selectedState}.</p>`;
         return;
       }
 
-      stateData.forEach(item => {
+      Object.entries(stateData).forEach(([key, url]) => {
+        const labelMap = {
+          register: 'Register to Vote',
+          id: 'Voter ID Requirements',
+          absentee: 'Absentee Voting',
+          early: 'Early Voting',
+          polling: 'Find Your Polling Place',
+          sample: 'View Sample Ballot',
+          military: 'Military & Overseas Voting',
+          counties: 'County Election Contacts',
+          tools: 'State Voting Tools'
+        };
+
+        const title = labelMap[key] || key;
+
         const card = document.createElement('div');
         card.className = 'voting-card';
         card.innerHTML = `
-          <h3>${item.title}</h3>
-          <p>${item.description}</p>
-          <a href="${item.link}" target="_blank">Learn More</a>
+          <h3>${title}</h3>
+          <a href="${url}" target="_blank">${url}</a>
         `;
         votingCards.appendChild(card);
       });
