@@ -78,7 +78,6 @@ function showCalendar() {
   calendarSection.innerHTML = `<h3>${selectedState}</h3>`;
 
   const stateLinks = { /* full stateLinks object from your batches — already dropped in */ };
-
   const links = stateLinks[selectedState] || {};
 
   const cards = [
@@ -150,6 +149,7 @@ function showActivist() {
       console.error(err);
     });
 }
+
 function showOrganizations() {
   showTab('organizations');
   const section = document.getElementById('organizations');
@@ -185,6 +185,7 @@ function showOrganizations() {
       console.error(err);
     });
 }
+
 document.addEventListener('DOMContentLoaded', () => {
   const stateSelector = document.getElementById('state-selector');
   const searchBar = document.getElementById('search-bar');
@@ -229,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ...filteredLtGovs,
       ...filteredSens,
       ...filteredReps
-    ].filter(o =>
+       ].filter(o =>
       o.name.toLowerCase().includes(queryLower) ||
       o.office.toLowerCase().includes(queryLower) ||
       o.state.toLowerCase().includes(queryLower)
@@ -253,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const normalizedParty = partyMap[rawParty] || rawParty.replace(/\s+/g, '') || 'independent';
       const photoSrc = o.photo && o.photo.trim() !== '' ? o.photo : 'assets/default-photo.png';
 
-           const districtDisplay = o.office === 'U.S. Representative' && o.district
+      const districtDisplay = o.office === 'U.S. Representative' && o.district
         ? `<p class="district-display"><strong>District:</strong> ${o.district}</p>`
         : '';
 
