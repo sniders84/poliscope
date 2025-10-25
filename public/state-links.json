@@ -1,8 +1,8 @@
 {
   "Alabama": {
     "bills": "https://www.legislature.state.al.us/legacy/Splash_Bills.aspx",
-    "senateRoster": "https://www.bamapolitics.com/alabama/alabama-state-senators/",
-    "houseRoster": "https://www.bamapolitics.com/alabama/alabama-state-representatives/",
+    "senateRoster": "https://alison.legislature.state.al.us/senate-leaders-members",
+    "houseRoster": "https://alison.legislature.state.al.us/house-leaders-members",
     "governorOrders": "https://governor.alabama.gov/newsroom/category/executive-orders/",
     "ltGovPress": "https://ltgov.alabama.gov/category/press-release/",
     "federalRaces": "https://ballotpedia.org/Alabama_elections,_2024"
