@@ -200,7 +200,7 @@ window.showVoting = function () {
   const container = document.getElementById('voting-cards');
   container.innerHTML = `<h3>${selectedState}</h3>`;
 
-  fetch('data/voting-data.json')
+ fetch('/voting-data.json')
     .then(res => res.json())
     .then(allVotingData => {
       const links = allVotingData[selectedState];
