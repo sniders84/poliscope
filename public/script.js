@@ -61,8 +61,10 @@ function showCivic() {
     .then(res => res.json())
     .then(stateLinks => {
       const links = stateLinks[selectedState] || {};
+      const allowedKeys = ['bills', 'senateRoster', 'houseRoster', 'localGovLookup'];
+
       const filtered = Object.entries(links).filter(([label]) =>
-        !['bills', 'senateRoster', 'houseRoster', 'governorOrders', 'ltGovPress', 'federalRaces'].includes(label)
+        allowedKeys.includes(label)
       );
 
       if (filtered.length === 0) {
@@ -76,8 +78,8 @@ function showCivic() {
           card.className = 'link-card';
           card.innerHTML = `
             <h4>${label}</h4>
-            <p><a href="${url}" target="_blank">${url}</a></p>
-            <p class="card-desc">This link provides information about ${label} in ${selectedState}.</p>
+            <p class="card-desc">Click to view ${label} information for ${selectedState}.</p>
+            <a href="${url}" target="_blank" class="card-button">Open</a>
           `;
           grid.appendChild(card);
         });
@@ -94,12 +96,12 @@ function showCivic() {
         {
           label: 'GovTrack Committees',
           url: 'https://www.govtrack.us/congress/committees',
-          desc: 'Explore all congressional committees and their membership.'
+          desc: 'Explore congressional committees and their membership.'
         },
         {
           label: 'Legislator Report Cards',
           url: 'https://www.govtrack.us/congress/members/report-cards',
-          desc: 'See performance grades for every federal legislator.'
+          desc: 'See performance grades for federal legislators.'
         },
         {
           label: 'All Federal Bills',
@@ -121,8 +123,8 @@ function showCivic() {
         card.className = 'link-card';
         card.innerHTML = `
           <h4>${link.label}</h4>
-          <p><a href="${link.url}" target="_blank">${link.url}</a></p>
           <p class="card-desc">${link.desc}</p>
+          <a href="${link.url}" target="_blank" class="card-button">Open</a>
         `;
         federalGrid.appendChild(card);
       });
