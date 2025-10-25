@@ -62,16 +62,16 @@ function showCivic() {
     .then(stateLinks => {
       const links = stateLinks[selectedState] || {};
 
-      const allowedKeys = {
-        bills: 'Bills',
-        'state senate roster': 'State Senate Roster',
-        'state house roster': 'State House Roster',
-        'local government lookup': 'Local Government Lookup'
-      };
+     const allowedKeys = {
+  'Bills': 'Bills',
+  'State Senate Roster': 'State Senate Roster',
+  'State House Roster': 'State House Roster',
+  'Local Government Lookup': 'Local Government Lookup'
+};
 
-      const filtered = Object.entries(links).filter(([label]) =>
-        Object.keys(allowedKeys).includes(label.trim().toLowerCase())
-      );
+     const filtered = Object.entries(links).filter(([label]) =>
+  allowedKeys.hasOwnProperty(label)
+);
 
       if (filtered.length === 0) {
         stateBlock.innerHTML += '<p>No state links available.</p>';
@@ -81,7 +81,7 @@ function showCivic() {
 
         filtered.forEach(([label, url]) => {
           const key = label.trim().toLowerCase();
-          const displayLabel = allowedKeys[key];
+          const displayLabel = allowedKeys[label];
           const card = document.createElement('div');
           card.className = 'link-card';
           card.innerHTML = `
