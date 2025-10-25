@@ -12,7 +12,6 @@
       <img src="assets/electorate-logo.png" alt="Logo" class="logo" />
     </div>
     <div class="header-right">
-      <input type="text" id="search-bar" placeholder="Search officials..." />
       <label for="state-selector">State:</label>
       <select id="state-selector">
         <!-- All state options preserved -->
@@ -86,24 +85,23 @@
 
   <main>
     <section id="my-officials" class="tab-content">
-  <input type="text" id="officials-search" placeholder="Search officials..." />
-  <div id="officials-list"></div>
-</section>
+      <div id="officials-list"></div>
+    </section>
 
     <section id="civic" class="tab-content" style="display: none;">
       <h2>Civic Intelligence Dashboard</h2>
       <div id="calendar"></div>
     </section>
 
-   <section id="polls-tab" class="tab-content" style="display: none;">
-  <h2>Polls</h2>
-  <div id="polls-container"></div>
+    <section id="polls-tab" class="tab-content" style="display: none;">
+      <h2>Polls</h2>
+      <div id="polls-container"></div>
     </section>
-    
-<section id="polls" class="tab-content" style="display: none;">
-  <!-- Polls will be injected here -->
-</section>
-    
+
+    <section id="polls" class="tab-content" style="display: none;">
+      <!-- Polls will be injected here -->
+    </section>
+
     <section id="organizations" class="tab-content" style="display: none;">
       <h2>Political Organizations</h2>
       <div id="organizations-content"></div>
