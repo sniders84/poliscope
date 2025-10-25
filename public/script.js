@@ -78,14 +78,6 @@ function showCalendar() {
   calendarSection.innerHTML = `<h3>${selectedState}</h3>`;
 
   const stateLinks = { /* full stateLinks object from your batches — already dropped in */ };
-  const publicEvents = {
-    federalRegister: "https://www.federalregister.gov/presidential-documents/executive-orders",
-    whiteHouseOrders: "https://www.whitehouse.gov/presidential-actions/executive-orders/",
-    congressBills: "https://www.govtrack.us/congress/bills/",
-    congressVotes: "https://www.govtrack.us/congress/votes",
-    congressCommittees: "https://www.govtrack.us/congress/committees/",
-    congressMisconduct: "https://www.govtrack.us/misconduct"
-  };
 
   const links = stateLinks[selectedState] || {};
 
@@ -118,12 +110,8 @@ function showCalendar() {
       title: '📢 Public Events & Orders (All Officials)',
       content: `
         <p>Track public-facing actions by all federal and state officials.</p>
-        <a href="${publicEvents.federalRegister}" target="_blank">Federal Register</a><br>
-        <a href="${publicEvents.whiteHouseOrders}" target="_blank">White House Orders</a><br>
-        <a href="${publicEvents.congressBills}" target="_blank">Congressional Bills</a><br>
-        <a href="${publicEvents.congressVotes}" target="_blank">Congressional Votes</a><br>
-        <a href="${publicEvents.congressCommittees}" target="_blank">Congressional Committees</a><br>
-        <a href="${publicEvents.congressMisconduct}" target="_blank">Misconduct Database</a>
+        <a href="https://www.federalregister.gov/index/2025/executive-office-of-the-president" target="_blank">Federal Register</a><br>
+        <a href="https://www.whitehouse.gov/presidential-actions/executive-orders/" target="_blank">White House Orders</a>
       `
     }
   ];
@@ -135,14 +123,68 @@ function showCalendar() {
     calendarSection.appendChild(div);
   });
 }
-  section.appendChild(grid);
+
+// ✅ Global function so it's accessible from HTML
+function showActivist() {
+  showTab('activist');
+  const activistSection = document.getElementById('activist');
+  activistSection.innerHTML = '<h2>Activist & Grassroots</h2>';
+
+  fetch('activist-groups.json')
+    .then(res => res.json())
+    .then(data => {
+      const list = document.createElement('ul');
+      data.forEach(group => {
+        const item = document.createElement('li');
+        item.innerHTML = `
+          <strong>${group.name}</strong><br>
+          ${group.description}<br>
+          <a href="${group.website}" target="_blank">${group.website}</a>
+        `;
+        list.appendChild(item);
+      });
+      activistSection.appendChild(list);
+    })
+    .catch(err => {
+      activistSection.innerHTML += '<p>Error loading activist groups.</p>';
+      console.error(err);
+    });
+}
+function showOrganizations() {
+  showTab('organizations');
+  const section = document.getElementById('organizations');
+  section.innerHTML = '<h2>Political Organizations</h2>';
+
+  fetch('political-groups.json')
+    .then(res => res.json())
+    .then(data => {
+      const grid = document.createElement('div');
+      grid.className = 'organization-grid';
+
+      data.forEach(group => {
+        const card = document.createElement('div');
+        card.className = 'organization-card';
+        card.innerHTML = `
+          <div class="logo-wrapper">
+            <img src="${group.logo}" alt="${group.name}" onerror="this.onerror=null;this.src='assets/default-logo.png';" />
+          </div>
+          <div class="info-wrapper">
+            <h3>${group.name}</h3>
+            <p>${group.description}</p>
+            <p><strong>Platform:</strong> ${group.platform}</p>
+            <p><a href="${group.website}" target="_blank">Visit Website</a></p>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+
+      section.appendChild(grid);
     })
     .catch(err => {
       section.innerHTML += '<p>Error loading political groups.</p>';
       console.error(err);
     });
 }
-
 document.addEventListener('DOMContentLoaded', () => {
   const stateSelector = document.getElementById('state-selector');
   const searchBar = document.getElementById('search-bar');
@@ -211,7 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const normalizedParty = partyMap[rawParty] || rawParty.replace(/\s+/g, '') || 'independent';
       const photoSrc = o.photo && o.photo.trim() !== '' ? o.photo : 'assets/default-photo.png';
 
-      const districtDisplay = o.office === 'U.S. Representative' && o.district
+           const districtDisplay = o.office === 'U.S. Representative' && o.district
         ? `<p class="district-display"><strong>District:</strong> ${o.district}</p>`
         : '';
 
