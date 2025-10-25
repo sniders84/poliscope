@@ -1,4 +1,4 @@
-let selectedState = 'North Carolina';
+let selectedState = 'Alabama';
 let governors = [];
 let ltGovernors = [];
 let senators = [];
