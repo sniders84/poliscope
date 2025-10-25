@@ -61,7 +61,7 @@ function showCivic() {
     .then(res => res.json())
     .then(stateLinks => {
       const links = stateLinks[selectedState] || {};
-      const allowedKeys = ['bills', 'senateRoster', 'houseRoster', 'localGovLookup'];
+      const allowedKeys = ['Bills', 'State Senate', 'State House', 'Local Govt'];
 
       const filtered = Object.entries(links).filter(([label]) =>
         allowedKeys.includes(label)
@@ -94,7 +94,7 @@ function showCivic() {
 
       const federalLinks = [
         {
-          label: 'GovTrack Committees',
+          label: 'Committees',
           url: 'https://www.govtrack.us/congress/committees',
           desc: 'Explore congressional committees and their membership.'
         },
