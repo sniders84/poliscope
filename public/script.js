@@ -272,6 +272,8 @@ function wireSearchBar() {
 
 function wireStateDropdown() {
   const dropdown = document.getElementById('state-dropdown');
+  if (!dropdown) return; // ✅ Prevent crash if dropdown is missing
+
   dropdown.value = selectedState;
 
   dropdown.addEventListener('change', () => {
