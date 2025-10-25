@@ -195,6 +195,42 @@ function showOrganizations() {
       console.error(err);
     });
 }
+const votingOverrides = {
+  "North Carolina": {
+    register: "https://www.ncsbe.gov/register",
+    id: "https://www.ncsbe.gov/voting/voter-id",
+    absentee: "https://www.ncsbe.gov/voting/vote-mail",
+    early: "https://www.ncsbe.gov/voting/early-voting",
+    polling: "https://www.ncsbe.gov/voting/vote-person/polling-place",
+    sample: "https://www.ncsbe.gov/voting/sample-ballots",
+    military: "https://www.ncsbe.gov/voting/military-overseas-voting",
+    counties: "https://www.ncsbe.gov/about/contact-your-county-board-elections",
+    tools: "https://www.ncsbe.gov/voting"
+  },
+  "Puerto Rico": {
+    register: "https://ceepur.org",
+    id: "https://ceepur.org",
+    absentee: "https://ceepur.org",
+    early: "https://ceepur.org",
+    polling: "https://ceepur.org",
+    sample: "https://ceepur.org",
+    military: "https://www.fvap.gov/puerto-rico",
+    counties: "https://ceepur.org",
+    tools: "https://ceepur.org"
+  },
+  "Guam": {
+    register: "https://gec.guam.gov/register-to-vote/",
+    id: "https://gec.guam.gov/voter-id/",
+    absentee: "https://gec.guam.gov/absentee-voting/",
+    early: "https://gec.guam.gov/early-voting/",
+    polling: "https://gec.guam.gov/polling-places/",
+    sample: "https://gec.guam.gov/sample-ballots/",
+    military: "https://www.fvap.gov/guam",
+    counties: "https://gec.guam.gov/contact-us/",
+    tools: "https://gec.guam.gov/"
+  }
+  // Add more states/territories as needed
+};
 window.showVoting = function () {
   showTab('voting');
   const container = document.getElementById('voting-cards');
@@ -202,65 +238,52 @@ window.showVoting = function () {
 
   const stateSlug = selectedState.toLowerCase().replace(/\s+/g, '-');
 
-  const cards = [
-    {
-      title: '🗳️ Register to Vote',
-      content: `
-        <p>Register online, by mail, or in person in ${selectedState}.</p>
-        <a href="https://www.ncsbe.gov/register" target="_blank">NC Registration Portal</a>
-      `
-    },
-    {
-      title: '🆔 Voter ID Requirements',
-      content: `
-        <p>Photo ID is required to vote in ${selectedState}. If you lack one, you may sign an affidavit.</p>
-        <a href="https://www.ncsbe.gov/voting/voter-id" target="_blank">ID Rules & Exceptions</a>
-      `
-    },
-    {
-      title: '📬 Absentee & Early Voting',
-      content: `
-        <p>Request an absentee ballot or vote early in person.</p>
-        <a href="https://www.ncsbe.gov/voting/vote-mail" target="_blank">Absentee Ballot Info</a><br>
-        <a href="https://www.ncsbe.gov/voting/early-voting" target="_blank">Early Voting Schedule</a>
-      `
-    },
-    {
-      title: '📍 Find Your Polling Place',
-      content: `
-        <p>Locate your assigned polling site for ${selectedState} elections.</p>
-        <a href="https://www.ncsbe.gov/voting/vote-person/polling-place" target="_blank">Polling Place Lookup</a>
-      `
-    },
-    {
-      title: '📄 Sample Ballots',
-      content: `
-        <p>Preview your ballot before voting.</p>
-        <a href="https://www.ncsbe.gov/voting/sample-ballots" target="_blank">View Sample Ballots</a>
-      `
-    },
-    {
-      title: '🌍 Military & Overseas Voting',
-      content: `
-        <p>Special provisions for military and overseas voters in ${selectedState}.</p>
-        <a href="https://www.ncsbe.gov/voting/military-overseas-voting" target="_blank">Military & Overseas Portal</a>
-      `
-    },
-    {
-      title: '📞 County Board Contacts',
-      content: `
-        <p>Contact your local board of elections for help.</p>
-        <a href="https://www.ncsbe.gov/about/contact-your-county-board-elections" target="_blank">County Board Directory</a>
-      `
-    },
-    {
-      title: '🔗 Voting Tools & Assistance',
-      content: `
-        <p>Check registration, track ballots, and get help.</p>
-        <a href="https://www.ncsbe.gov/voting" target="_blank">NC Voting Hub</a>
-      `
-    }
-  ];
+  const links = votingOverrides[selectedState] || {
+  register: "https://www.nass.org/can-I-vote/register-to-vote",
+  id: "https://www.nass.org/can-I-vote/valid-forms-id",
+  absentee: "https://www.nass.org/can-I-vote/absentee-early-voting",
+  early: "https://www.nass.org/can-I-vote/absentee-early-voting",
+  polling: "https://www.nass.org/can-I-vote/find-your-polling-place",
+  sample: "https://www.ballotready.org/",
+  military: "https://www.fvap.gov/",
+  counties: "https://www.nass.org/Can-I-Vote/contact-your-election-official",
+  tools: "https://www.nass.org/can-I-vote"
+};
+
+const cards = [
+  {
+    title: '🗳️ Register to Vote',
+    content: `<p>Register in ${selectedState}.</p><a href="${links.register}" target="_blank">Registration Portal</a>`
+  },
+  {
+    title: '🆔 Voter ID Requirements',
+    content: `<p>ID rules for ${selectedState}.</p><a href="${links.id}" target="_blank">ID Info</a>`
+  },
+  {
+    title: '📬 Absentee & Early Voting',
+    content: `<p>Vote early or by mail.</p><a href="${links.absentee}" target="_blank">Absentee Info</a><br><a href="${links.early}" target="_blank">Early Voting</a>`
+  },
+  {
+    title: '📍 Find Your Polling Place',
+    content: `<p>Polling site lookup.</p><a href="${links.polling}" target="_blank">Find Polling Place</a>`
+  },
+  {
+    title: '📄 Sample Ballots',
+    content: `<p>Preview your ballot.</p><a href="${links.sample}" target="_blank">Sample Ballots</a>`
+  },
+  {
+    title: '🌍 Military & Overseas Voting',
+    content: `<p>Info for military/overseas voters.</p><a href="${links.military}" target="_blank">Military Voting</a>`
+  },
+  {
+    title: '📞 County Board Contacts',
+    content: `<p>Local election office.</p><a href="${links.counties}" target="_blank">County Directory</a>`
+  },
+  {
+    title: '🔗 Voting Tools & Assistance',
+    content: `<p>Check registration, deadlines, and more.</p><a href="${links.tools}" target="_blank">Voting Hub</a>`
+  }
+];
 
   cards.forEach(card => {
     const div = document.createElement('div');
