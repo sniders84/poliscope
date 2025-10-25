@@ -266,9 +266,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalContent = document.getElementById('modal-content');
   const closeModal = document.getElementById('close-modal');
 
+  // ✅ Add this line right here:
+  stateSelector.addEventListener('change', function () {
+    selectedState = this.value;
+  });
+
   document.getElementById('tab-voting').addEventListener('click', () => {
     showVoting();
   });
+
+  // ...rest of your code
+});
 
   Promise.all([
     fetch('/governors.json').then(res => res.json()),
