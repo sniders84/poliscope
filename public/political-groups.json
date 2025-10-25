@@ -152,19 +152,5 @@
     "description": "Centrist political movement focused on electoral reform and pragmatic governance.",
     "website": "https://www.forwardparty.com",
     "platform": "Supports ranked-choice voting, open primaries, and data-driven policy."
-  },
-  {
-  "name": "Unity Rising USA",
-  "logo": "assets/unityrising.png",
-  "description": "Student-led PAC aiming to reorient Democrats toward working-class issues (often overlaps with independent sentiment).",
-  "website": "https://unityrisingusa.org",
-  "platform": "Focuses on economic populism, youth organizing, and progressive realignment."
-},
-{
-  "name": "No Labels",
-  "logo": "assets/nolabels.png",
-  "description": "Bipartisan group promoting cross-party cooperation and centrist policy solutions.",
-  "website": "https://www.nolabels.org",
-  "platform": "Focuses on unity, pragmatic problem-solving, and political reform."
-}
+  }
 ]
