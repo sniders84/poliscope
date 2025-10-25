@@ -62,13 +62,26 @@ function showCivic() {
       });
 
       calendar.appendChild(list);
+
+      // 🔗 Add federal GovTrack links
+      const federalBlock = document.createElement('div');
+      federalBlock.className = 'federal-links';
+      federalBlock.innerHTML = `
+        <h2>Federal Oversight & Transparency</h2>
+        <ul>
+          <li><strong>GovTrack Profiles:</strong> <a href="https://www.govtrack.us/congress/members" target="_blank">Congressional Directory</a></li>
+          <li><strong>Report Cards:</strong> <a href="https://www.govtrack.us/congress/members/report-cards" target="_blank">Legislator Report Cards</a></li>
+          <li><strong>Bill Tracker:</strong> <a href="https://www.govtrack.us/congress/bills/" target="_blank">All Federal Bills</a></li>
+          <li><strong>Voting Records:</strong> <a href="https://www.govtrack.us/congress/votes" target="_blank">Recent Votes</a></li>
+        </ul>
+      `;
+      calendar.appendChild(federalBlock);
     })
     .catch(err => {
       calendar.innerHTML += '<p>Error loading civic links.</p>';
       console.error(err);
     });
 }
-
 function showOrganizations() {
   showTab('organizations');
   const section = document.getElementById('organizations');
