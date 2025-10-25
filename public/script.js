@@ -1,3 +1,4 @@
+import { pollsData } from './pollsData.js';
 let selectedState = 'North Carolina';
 let governors = [];
 let ltGovernors = [];
