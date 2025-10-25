@@ -4,13 +4,11 @@ let ltGovernors = [];
 let senators = [];
 let houseReps = [];
 let officialsContainer = null;
+let searchBar = null;
+let modal = null;
+let modalContent = null;
+let closeModal = null;
 
-// ✅ Global utility function
-function toJurisdictionSlug(stateName) {
-  return stateName.toLowerCase().replace(/\s+/g, '_');
-}
-
-// ✅ Global function so it's accessible from HTML
 function showTab(id) {
   document.querySelectorAll('.tab-content').forEach(tab => {
     tab.style.display = 'none';
@@ -20,245 +18,32 @@ function showTab(id) {
 }
 window.showTab = showTab;
 
-// ✅ Poll schema and verified data
-const pollSchema = {
-  pollster: '',
-  date_range: '',
-  sample_size: 0,
-  method: '',
-  margin_of_error: '',
-  topic: '',
-  office: '',
-  jurisdiction: '',
-  results: {},
-  source_url: '',
-  ingested_at: '',
-  override: false
-};
-
-const pollsData = []; // Replace with verified poll data
-
-function getPollsByOffice(officeType) {
-  return pollsData.filter(poll => poll.office === officeType);
-}
-
-// ✅ Poll tab rendering logic
-function showPolls(officeType = 'President') {
-  showTab('polls');
-  const pollsSection = document.getElementById('polls');
-  pollsSection.innerHTML = `<h2>${officeType} Polls</h2>`;
-
-  const filteredPolls = getPollsByOffice(officeType);
-
-  if (filteredPolls.length === 0) {
-    pollsSection.innerHTML += '<p>No polls available.</p>';
-    return;
-  }
-
-  filteredPolls.forEach(poll => {
-    const card = document.createElement('div');
-    card.className = 'poll-card';
-    card.innerHTML = `
-      <h3>${poll.topic}</h3>
-      <p><strong>Pollster:</strong> ${poll.pollster}</p>
-      <p><strong>Date:</strong> ${poll.date_range}</p>
-      <p><strong>Jurisdiction:</strong> ${poll.jurisdiction}</p>
-      <p><strong>Sample Size:</strong> ${poll.sample_size}</p>
-      <p><strong>Method:</strong> ${poll.method}</p>
-      <p><strong>Margin of Error:</strong> ${poll.margin_of_error}</p>
-      <p><strong>Source:</strong> <a href="${poll.source_url}" target="_blank">View</a></p>
-    `;
-    pollsSection.appendChild(card);
-  });
-}
-
-// ✅ Calendar tab now links to Ballotpedia session and election data
-function showCalendar() {
-  showTab('civic');
-  const calendarSection = document.getElementById('calendar');
-  calendarSection.innerHTML = `<h3>${selectedState}</h3>`;
-
-  fetch('/state-links.json')
-    .then(res => res.json())
-    .then(stateLinks => {
-      const links = stateLinks[selectedState] || {};
-
-      const cards = [
-        {
-          title: '🏛️ Legislative Sessions & Bills',
-          content: `
-            <p>Track active legislation and session activity in ${selectedState}.</p>
-            <a href="${links.bills}" target="_blank">Bill Tracker</a><br>
-            <a href="${links.senateRoster}" target="_blank">State Senate Roster</a><br>
-            <a href="${links.houseRoster}" target="_blank">State House Roster</a>
-          `
-        },
-        {
-          title: '🇺🇸 U.S. and Statewide Races and Elections',
-          content: `
-            <p>Explore federal and statewide races tied to ${selectedState}.</p>
-            <a href="${links.federalRaces}" target="_blank">Ballotpedia Election Page</a>
-          `
-        },
-        {
-          title: '🎙️ Governor & Lt. Governor Activity',
-          content: `
-            ${links.governorOrders ? `<p><a href="${links.governorOrders}" target="_blank">Governor Executive Orders</a></p>` : ''}
-            ${links.ltGovPress ? `<p><a href="${links.ltGovPress}" target="_blank">Lt. Governor Press Releases</a></p>` : ''}
-            ${!links.governorOrders && !links.ltGovPress ? `<p>No executive activity links available for ${selectedState}.</p>` : ''}
-          `
-        },
-        {
-          title: '📢 Public Events & Orders (All Officials)',
-          content: `
-            <p>Track public-facing actions by all federal and state officials.</p>
-            <a href="https://www.federalregister.gov/index/2025/executive-office-of-the-president" target="_blank">Federal Register</a><br>
-            <a href="https://www.whitehouse.gov/presidential-actions/executive-orders/" target="_blank">White House Orders</a><br>
-            <a href="https://www.govtrack.us/congress/bills/" target="_blank">Congressional Bills</a><br>
-            <a href="https://www.govtrack.us/congress/votes" target="_blank">Congressional Votes</a><br>
-            <a href="https://www.govtrack.us/congress/committees/" target="_blank">Congressional Committees</a><br>
-            <a href="https://www.govtrack.us/misconduct" target="_blank">Misconduct Database</a>
-          `
-        }
-      ];
-
-      cards.forEach(card => {
-        const div = document.createElement('div');
-        div.className = 'calendar-card';
-        div.innerHTML = `<h4>${card.title}</h4>${card.content}`;
-        calendarSection.appendChild(div);
-      });
-    })
-    .catch(err => {
-      calendarSection.innerHTML += '<p>Error loading calendar data.</p>';
-      console.error(err);
-    });
-}
-// ✅ Activist tab
-function showActivist() {
-  showTab('activist');
-  const activistSection = document.getElementById('activist');
-  activistSection.innerHTML = '<h2>Activist & Grassroots</h2>';
-
-  fetch('/activist-groups.json')
-    .then(res => res.json())
-    .then(data => {
-      const list = document.createElement('ul');
-      data.forEach(group => {
-        const item = document.createElement('li');
-        item.innerHTML = `
-          <strong>${group.name}</strong><br>
-          ${group.description}<br>
-          <a href="${group.website}" target="_blank">${group.website}</a>
-        `;
-        list.appendChild(item);
-      });
-      activistSection.appendChild(list);
-    })
-    .catch(err => {
-      activistSection.innerHTML += '<p>Error loading activist groups.</p>';
-      console.error(err);
-    });
-}
-
-// ✅ Political Groups tab
-function showOrganizations() {
-  showTab('organizations');
-  const section = document.getElementById('organizations');
-  section.innerHTML = '<h2>Political Organizations</h2>';
-
-  fetch('/political-groups.json')
-    .then(res => res.json())
-    .then(data => {
-      const grid = document.createElement('div');
-      grid.className = 'organization-grid';
-
-      data.forEach(group => {
-        const card = document.createElement('div');
-        card.className = 'organization-card';
-        card.innerHTML = `
-          <div class="logo-wrapper">
-            <img src="${group.logo}" alt="${group.name}" onerror="this.onerror=null;this.src='assets/default-logo.png';" />
-          </div>
-          <div class="info-wrapper">
-            <h3>${group.name}</h3>
-            <p>${group.description}</p>
-            <p><strong>Platform:</strong> ${group.platform}</p>
-            <p><a href="${group.website}" target="_blank">Visit Website</a></p>
-          </div>
-        `;
-        grid.appendChild(card);
-      });
-
-      section.appendChild(grid);
-    })
-    .catch(err => {
-      section.innerHTML += '<p>Error loading political groups.</p>';
-      console.error(err);
-    });
-}
-
-// ✅ Voting tab
-window.showVoting = function () {
+function showVoting() {
   showTab('voting');
-  const container = document.getElementById('voting-cards');
-  container.innerHTML = `<h3>${selectedState}</h3>`;
+  const votingCards = document.getElementById('voting-cards');
+  votingCards.innerHTML = '';
 
-  fetch('/voting-data.json')
+  fetch('/voting.json')
     .then(res => res.json())
-    .then(allVotingData => {
-      const links = allVotingData[selectedState];
-      if (!links) {
-        container.innerHTML += `<p>No voting info available for ${selectedState}.</p>`;
-        return;
-      }
-
-      const cards = [
-        {
-          title: '🗳️ Register to Vote',
-          content: `<p>Register in ${selectedState}.</p><a href="${links.register}" target="_blank">Registration Portal</a>`
-        },
-        {
-          title: '🆔 Voter ID Requirements',
-          content: `<p>ID rules for ${selectedState}.</p><a href="${links.id}" target="_blank">ID Info</a>`
-        },
-        {
-          title: '📬 Absentee & Early Voting',
-          content: `<p>Vote early or by mail.</p><a href="${links.absentee}" target="_blank">Absentee Info</a><br><a href="${links.early}" target="_blank">Early Voting</a>`
-        },
-        {
-          title: '📍 Find Your Polling Place',
-          content: `<p>Polling site lookup.</p><a href="${links.polling}" target="_blank">Find Polling Place</a>`
-        },
-        {
-          title: '📄 Sample Ballots',
-          content: `<p>Preview your ballot.</p><a href="${links.sample}" target="_blank">Sample Ballots</a>`
-        },
-        {
-          title: '🌍 Military & Overseas Voting',
-          content: `<p>Info for military/overseas voters.</p><a href="${links.military}" target="_blank">Military Voting</a>`
-        },
-        {
-          title: '📞 County Board Contacts',
-          content: `<p>Local election office.</p><a href="${links.counties}" target="_blank">County Directory</a>`
-        },
-        {
-          title: '🔗 Voting Tools & Assistance',
-          content: `<p>Check registration, deadlines, and more.</p><a href="${links.tools}" target="_blank">Voting Hub</a>`
-        }
-      ];
-
-      cards.forEach(card => {
-        const div = document.createElement('div');
-        div.className = 'voting-card';
-        div.innerHTML = `<h4>${card.title}</h4>${card.content}`;
-        container.appendChild(div);
+    .then(data => {
+      const stateData = data[selectedState] || [];
+      stateData.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'voting-card';
+        card.innerHTML = `
+          <h3>${item.title}</h3>
+          <p>${item.description}</p>
+          <a href="${item.link}" target="_blank">Learn More</a>
+        `;
+        votingCards.appendChild(card);
       });
     })
-    .catch(() => {
-      container.innerHTML += `<p>Error loading voting info for ${selectedState}.</p>`;
+    .catch(err => {
+      votingCards.innerHTML = '<p>Error loading voting data.</p>';
+      console.error(err);
     });
-};
+}
+
 function showCivic() {
   showTab('civic');
   const calendar = document.getElementById('calendar');
@@ -283,6 +68,7 @@ function showCivic() {
       console.error(err);
     });
 }
+
 function showOrganizations() {
   showTab('organizations');
   const section = document.getElementById('organizations');
@@ -316,61 +102,6 @@ function showOrganizations() {
       console.error(err);
     });
 }
-document.addEventListener('DOMContentLoaded', () => {
-  const stateSelector = document.getElementById('state-selector');
-    stateSelector.addEventListener('change', function () {
-    selectedState = this.value;
-  const searchBar = document.getElementById('search-bar');
-  officialsContainer = document.getElementById('officials-container');
-  const modal = document.getElementById('official-modal');
-  const modalContent = document.getElementById('modal-content');
-  const closeModal = document.getElementById('close-modal');
-
-  document.getElementById('tab-voting').addEventListener('click', () => {
-    showVoting();
-  });
-
-document.querySelector("button[onclick=\"showTab('civic')\"]").addEventListener('click', showCivic);
-document.querySelector("button[onclick=\"showTab('organizations')\"]").addEventListener('click', showOrganizations);
-
-});
-
-  Promise.all([
-    fetch('/governors.json').then(res => res.json()),
-    fetch('/ltgovernors.json').then(res => res.json()),
-    fetch('/senators.json').then(res => res.json()),
-    fetch('/housereps.json').then(res => res.json())
-  ])
-  .then(([govs, ltgovs, sens, reps]) => {
-    governors = govs;
-    ltGovernors = ltgovs;
-    senators = sens;
-    houseReps = reps;
-    renderOfficials(selectedState, '');
-  })
-  .catch(error => {
-    console.error('Error loading officials:', error);
-  });
-
-  stateSelector.addEventListener('change', () => {
-    selectedState = stateSelector.value;
-    renderOfficials(selectedState, searchBar.value.trim());
-  });
-
-  searchBar.addEventListener('input', () => {
-    renderOfficials(selectedState, searchBar.value.trim());
-  });
-
-  closeModal.addEventListener('click', () => {
-    modal.style.display = 'none';
-  });
-
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      modal.style.display = 'none';
-    }
-  });
-});
 
 function renderOfficials(stateFilter = null, query = '') {
   showTab('my-officials');
@@ -486,11 +217,62 @@ function openModal(o) {
     ` : ''}
     ${o.vetoes && ["Governor", "President", "Mayor"].includes(o.office) ? `<p><strong>Vetoes:</strong> ${o.vetoes}</p>` : ''}
     ${o.salary ? `<p><strong>Salary:</strong> ${o.salary}</p>` : ''}
-    ${o.predecessor ? `<p><strong>Predecessor:</strong> ${o.predecessor}</p>` : ''}
+        ${o.predecessor ? `<p><strong>Predecessor:</strong> ${o.predecessor}</p>` : ''}
     ${o.ballotpediaLink ? `<p><a href="${o.ballotpediaLink}" target="_blank">Ballotpedia Profile</a></p>` : ''}
     ${o.govtrackLink ? `<p><a href="${o.govtrackLink}" target="_blank">GovTrack Profile</a></p>` : ''}
     ${o.govtrackReportCard ? `<p><a href="${o.govtrackReportCard}" target="_blank">GovTrack Report Card</a></p>` : ''}
   `;
-
   modal.style.display = 'flex';
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const stateSelector = document.getElementById('state-selector');
+  searchBar = document.getElementById('search-bar');
+  officialsContainer = document.getElementById('officials-container');
+  modal = document.getElementById('official-modal');
+  modalContent = document.getElementById('modal-content');
+  closeModal = document.getElementById('close-modal');
+
+  stateSelector.addEventListener('change', function () {
+    selectedState = this.value;
+    renderOfficials(selectedState, searchBar.value.trim());
+  });
+
+  searchBar.addEventListener('input', () => {
+    renderOfficials(selectedState, searchBar.value.trim());
+  });
+
+  closeModal.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
+
+  document.getElementById('tab-voting').addEventListener('click', () => {
+    showVoting();
+  });
+
+  document.querySelector("button[onclick=\"showTab('civic')\"]").addEventListener('click', showCivic);
+  document.querySelector("button[onclick=\"showTab('organizations')\"]").addEventListener('click', showOrganizations);
+
+  Promise.all([
+    fetch('/governors.json').then(res => res.json()),
+    fetch('/ltgovernors.json').then(res => res.json()),
+    fetch('/senators.json').then(res => res.json()),
+    fetch('/housereps.json').then(res => res.json())
+  ])
+  .then(([govs, ltgovs, sens, reps]) => {
+    governors = govs;
+    ltGovernors = ltgovs;
+    senators = sens;
+    houseReps = reps;
+    renderOfficials(selectedState, '');
+  })
+  .catch(error => {
+    console.error('Error loading officials:', error);
+  });
+});
