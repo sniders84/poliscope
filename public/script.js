@@ -68,13 +68,21 @@ function showCivic() {
       if (filtered.length === 0) {
         stateBlock.innerHTML += '<p>No state links available.</p>';
       } else {
-        const list = document.createElement('ul');
+        const grid = document.createElement('div');
+        grid.className = 'link-grid';
+
         filtered.forEach(([label, url]) => {
-          const item = document.createElement('li');
-          item.innerHTML = `<strong>${label}:</strong> <a href="${url}" target="_blank">${url}</a>`;
-          list.appendChild(item);
+          const card = document.createElement('div');
+          card.className = 'link-card';
+          card.innerHTML = `
+            <h4>${label}</h4>
+            <p><a href="${url}" target="_blank">${url}</a></p>
+            <p class="card-desc">This link provides information about ${label} in ${selectedState}.</p>
+          `;
+          grid.appendChild(card);
         });
-        stateBlock.appendChild(list);
+
+        stateBlock.appendChild(grid);
       }
 
       // Federal Oversight & Transparency
@@ -83,20 +91,43 @@ function showCivic() {
       federalBlock.innerHTML = '<h2>Federal Oversight & Transparency</h2>';
 
       const federalLinks = [
-        { label: 'GovTrack Committees', url: 'https://www.govtrack.us/congress/committees' },
-        { label: 'Legislator Report Cards', url: 'https://www.govtrack.us/congress/members/report-cards' },
-        { label: 'All Federal Bills', url: 'https://www.govtrack.us/congress/bills/' },
-        { label: 'Recent Votes', url: 'https://www.govtrack.us/congress/votes' }
+        {
+          label: 'GovTrack Committees',
+          url: 'https://www.govtrack.us/congress/committees',
+          desc: 'Explore all congressional committees and their membership.'
+        },
+        {
+          label: 'Legislator Report Cards',
+          url: 'https://www.govtrack.us/congress/members/report-cards',
+          desc: 'See performance grades for every federal legislator.'
+        },
+        {
+          label: 'All Federal Bills',
+          url: 'https://www.govtrack.us/congress/bills/',
+          desc: 'Track every bill introduced in Congress.'
+        },
+        {
+          label: 'Recent Votes',
+          url: 'https://www.govtrack.us/congress/votes',
+          desc: 'Review the latest recorded votes in Congress.'
+        }
       ];
 
-      const federalList = document.createElement('ul');
+      const federalGrid = document.createElement('div');
+      federalGrid.className = 'link-grid';
+
       federalLinks.forEach(link => {
-        const item = document.createElement('li');
-        item.innerHTML = `<strong>${link.label}:</strong> <a href="${link.url}" target="_blank">${link.url}</a>`;
-        federalList.appendChild(item);
+        const card = document.createElement('div');
+        card.className = 'link-card';
+        card.innerHTML = `
+          <h4>${link.label}</h4>
+          <p><a href="${link.url}" target="_blank">${link.url}</a></p>
+          <p class="card-desc">${link.desc}</p>
+        `;
+        federalGrid.appendChild(card);
       });
 
-      federalBlock.appendChild(federalList);
+      federalBlock.appendChild(federalGrid);
       section.appendChild(stateBlock);
       section.appendChild(federalBlock);
       calendar.appendChild(section);
