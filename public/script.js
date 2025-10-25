@@ -35,19 +35,19 @@ function showVoting() {
         return;
       }
 
-      Object.entries(stateData).forEach(([key, url]) => {
-        const labelMap = {
-          register: 'Register to Vote',
-          id: 'Voter ID Requirements',
-          absentee: 'Absentee Voting',
-          early: 'Early Voting',
-          polling: 'Find Your Polling Place',
-          sample: 'View Sample Ballot',
-          military: 'Military & Overseas Voting',
-          counties: 'County Election Contacts',
-          tools: 'State Voting Tools'
-        };
+      const labelMap = {
+        register: 'Register to Vote',
+        id: 'Voter ID Requirements',
+        absentee: 'Absentee Voting',
+        early: 'Early Voting',
+        polling: 'Find Your Polling Place',
+        sample: 'View Sample Ballot',
+        military: 'Military & Overseas Voting',
+        counties: 'County Election Contacts',
+        tools: 'State Voting Tools'
+      };
 
+      Object.entries(stateData).forEach(([key, url]) => {
         const title = labelMap[key] || key;
 
         const card = document.createElement('div');
