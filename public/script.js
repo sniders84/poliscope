@@ -128,7 +128,6 @@ function showCalendar() {
     }
   ];
 
-  // ✅ Add this to render the cards
   cards.forEach(card => {
     const div = document.createElement('div');
     div.className = 'calendar-card';
@@ -136,82 +135,14 @@ function showCalendar() {
     calendarSection.appendChild(div);
   });
 }
-  cards.forEach(card => {
-    const div = document.createElement('div');
-    div.className = 'calendar-card';
-    div.innerHTML = `<h4>${card.title}</h4>${card.content}`;
-    calendarSection.appendChild(div);
-  });
-}
-  cards.forEach(card => {
-    const div = document.createElement('div');
-    div.className = 'calendar-card';
-    div.innerHTML = `<h4>${card.title}</h4>${card.content}`;
-    calendarSection.appendChild(div);
-  });
-}
-
-// ✅ Global function so it's accessible from HTML
-function showActivist() {
-  showTab('activist');
-  const activistSection = document.getElementById('activist');
-  activistSection.innerHTML = '<h2>Activist & Grassroots</h2>';
-
-  fetch('activist-groups.json')
-    .then(res => res.json())
-    .then(data => {
-      const list = document.createElement('ul');
-      data.forEach(group => {
-        const item = document.createElement('li');
-        item.innerHTML = `
-          <strong>${group.name}</strong><br>
-          ${group.description}<br>
-          <a href="${group.website}" target="_blank">${group.website}</a>
-        `;
-        list.appendChild(item);
-      });
-      activistSection.appendChild(list);
-    })
-    .catch(err => {
-      activistSection.innerHTML += '<p>Error loading activist groups.</p>';
-      console.error(err);
-    });
-}
-function showOrganizations() {
-  showTab('organizations');
-  const section = document.getElementById('organizations');
-  section.innerHTML = '<h2>Political Organizations</h2>';
-
-  fetch('political-groups.json')
-    .then(res => res.json())
-    .then(data => {
-      const grid = document.createElement('div');
-      grid.className = 'organization-grid';
-
-      data.forEach(group => {
-        const card = document.createElement('div');
-        card.className = 'organization-card';
-        card.innerHTML = `
-          <div class="logo-wrapper">
-            <img src="${group.logo}" alt="${group.name}" onerror="this.onerror=null;this.src='assets/default-logo.png';" />
-          </div>
-          <div class="info-wrapper">
-            <h3>${group.name}</h3>
-            <p>${group.description}</p>
-            <p><strong>Platform:</strong> ${group.platform}</p>
-            <p><a href="${group.website}" target="_blank">Visit Website</a></p>
-          </div>
-        `;
-        grid.appendChild(card);
-      });
-
-      section.appendChild(grid);
+  section.appendChild(grid);
     })
     .catch(err => {
       section.innerHTML += '<p>Error loading political groups.</p>';
       console.error(err);
     });
 }
+
 document.addEventListener('DOMContentLoaded', () => {
   const stateSelector = document.getElementById('state-selector');
   const searchBar = document.getElementById('search-bar');
@@ -280,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const normalizedParty = partyMap[rawParty] || rawParty.replace(/\s+/g, '') || 'independent';
       const photoSrc = o.photo && o.photo.trim() !== '' ? o.photo : 'assets/default-photo.png';
 
-           const districtDisplay = o.office === 'U.S. Representative' && o.district
+      const districtDisplay = o.office === 'U.S. Representative' && o.district
         ? `<p class="district-display"><strong>District:</strong> ${o.district}</p>`
         : '';
 
