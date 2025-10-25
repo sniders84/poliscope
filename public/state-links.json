@@ -1,15 +1,10 @@
 {
   "Alabama": {
-    "bills": "https://www.legislature.state.al.us/aliswww/default.aspx",
-    "senateRoster": "https://www.legislature.state.al.us/aliswww/Senate/ALSenators.aspx",
-    "houseRoster": "https://www.legislature.state.al.us/aliswww/House/ALRepresentatives.aspx",
+    "bills": "https://alison.legislature.state.al.us/bill-search?tab=1",
+    "senateRoster": "https://alison.legislature.state.al.us/senate",
+    "houseRoster": "https://alison.legislature.state.al.us/house-of-representatives-sublanding",
     "federalRaces": "https://ballotpedia.org/Alabama_elections,_2024",
-    "governorOrders": "https://governor.alabama.gov/newsroom/executive-orders/",
-    "ltGovPress": "https://ltgov.alabama.gov/newsroom/",
-    
-    "congressBills": "https://www.govtrack.us/congress/bills/",
-    "congressVotes": "https://www.govtrack.us/congress/votes",
-    "congressCommittees": "https://www.govtrack.us/congress/committees/",
-    "congressMisconduct": "https://www.govtrack.us/misconduct"
+    "governorOrders": "https://governor.alabama.gov/newsroom/category/executive-orders/",
+    "ltGovPress": "https://ltgov.alabama.gov/category/press-release/"
   }
 },
