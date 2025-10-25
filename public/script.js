@@ -22,7 +22,7 @@ function showVoting() {
   const votingCards = document.getElementById('voting-cards');
   votingCards.innerHTML = '';
 
-  fetch('/poliscope/voting-data.json') // <-- Adjusted path
+  fetch('/voting-data.json')
     .then(res => {
       if (!res.ok) throw new Error('Voting data file not found');
       return res.json();
@@ -48,7 +48,7 @@ function showVoting() {
     })
     .catch(err => {
       votingCards.innerHTML = '<p>Error loading voting data.</p>';
-      console.error(err);
+      console.error('Voting fetch failed:', err);
     });
 }
 function showCivic() {
