@@ -17,7 +17,6 @@ function showTab(id) {
   if (activeTab) activeTab.style.display = 'block';
 }
 window.showTab = showTab;
-
 function showVoting() {
   showTab('voting');
   const votingCards = document.getElementById('voting-cards');
@@ -272,7 +271,7 @@ function wireSearchBar() {
 
 function wireStateDropdown() {
   const dropdown = document.getElementById('state-dropdown');
-  if (!dropdown) return; // ✅ Prevent crash if dropdown is missing
+  if (!dropdown) return;
 
   dropdown.value = selectedState;
 
@@ -295,20 +294,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   wireSearchBar();
   wireStateDropdown();
-Promise.all([
-  fetch('/governors.json').then(res => res.json()),
-  fetch('/ltgovernors.json').then(res => res.json()),
-  fetch('/senators.json').then(res => res.json()),
-  fetch('/housereps.json').then(res => res.json())
-])
-  .then(([govs, ltGovs, sens, reps]) => {
-    governors = govs;
-    ltGovernors = ltGovs;
-    senators = sens;
-    houseReps = reps;
-    renderOfficials(selectedState, '');
-  })
-  .catch(err => {
-    console.error('Error loading official data:', err);
-  });
 
+  Promise.all([
+    fetch('/governors.json').then(res => res.json()),
+    fetch('/ltgovernors.json').then(res => res.json()),
+    fetch('/senators.json').then(res => res.json()),
+    fetch('/housereps.json').then(res => res.json())
+  ])
+    .then(([govs, ltGovs, sens, reps]) => {
+      governors = govs;
+      ltGovernors = ltGovs;
+      senators = sens;
+      houseReps = reps;
+      renderOfficials(selectedState, '');
+    })
+    .catch(err => {
+      console.error('Error loading official data:', err);
+    });
+});
