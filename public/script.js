@@ -77,52 +77,62 @@ function showCalendar() {
   const calendarSection = document.getElementById('calendar');
   calendarSection.innerHTML = `<h3>${selectedState}</h3>`;
 
-  const stateLinks = { /* full stateLinks object from your batches — already dropped in */ };
-  const links = stateLinks[selectedState] || {};
+  fetch('state-links.json')
+    .then(res => res.json())
+    .then(stateLinks => {
+      const links = stateLinks[selectedState] || {};
 
-  const cards = [
-    {
-      title: '🏛️ Legislative Sessions & Bills',
-      content: `
-        <p>Track active legislation and session activity in ${selectedState}.</p>
-        <a href="${links.bills}" target="_blank">Bill Tracker</a><br>
-        <a href="${links.senateRoster}" target="_blank">State Senate Roster</a><br>
-        <a href="${links.houseRoster}" target="_blank">State House Roster</a>
-      `
-    },
-    {
-      title: '🇺🇸 U.S. and Statewide Races and Elections',
-      content: `
-        <p>Explore federal and statewide races tied to ${selectedState}.</p>
-        <a href="${links.federalRaces}" target="_blank">Ballotpedia Election Page</a>
-      `
-    },
-    {
-      title: '🎙️ Governor & Lt. Governor Activity',
-      content: `
-        ${links.governorOrders ? `<p><a href="${links.governorOrders}" target="_blank">Governor Executive Orders</a></p>` : ''}
-        ${links.ltGovPress ? `<p><a href="${links.ltGovPress}" target="_blank">Lt. Governor Press Releases</a></p>` : ''}
-        ${!links.governorOrders && !links.ltGovPress ? `<p>No executive activity links available for ${selectedState}.</p>` : ''}
-      `
-    },
-    {
-      title: '📢 Public Events & Orders (All Officials)',
-      content: `
-        <p>Track public-facing actions by all federal and state officials.</p>
-        <a href="https://www.federalregister.gov/index/2025/executive-office-of-the-president" target="_blank">Federal Register</a><br>
-        <a href="https://www.whitehouse.gov/presidential-actions/executive-orders/" target="_blank">White House Orders</a>
-      `
-    }
-  ];
+      const cards = [
+        {
+          title: '🏛️ Legislative Sessions & Bills',
+          content: `
+            <p>Track active legislation and session activity in ${selectedState}.</p>
+            <a href="${links.bills}" target="_blank">Bill Tracker</a><br>
+            <a href="${links.senateRoster}" target="_blank">State Senate Roster</a><br>
+            <a href="${links.houseRoster}" target="_blank">State House Roster</a>
+          `
+        },
+        {
+          title: '🇺🇸 U.S. and Statewide Races and Elections',
+          content: `
+            <p>Explore federal and statewide races tied to ${selectedState}.</p>
+            <a href="${links.federalRaces}" target="_blank">Ballotpedia Election Page</a>
+          `
+        },
+        {
+          title: '🎙️ Governor & Lt. Governor Activity',
+          content: `
+            ${links.governorOrders ? `<p><a href="${links.governorOrders}" target="_blank">Governor Executive Orders</a></p>` : ''}
+            ${links.ltGovPress ? `<p><a href="${links.ltGovPress}" target="_blank">Lt. Governor Press Releases</a></p>` : ''}
+            ${!links.governorOrders && !links.ltGovPress ? `<p>No executive activity links available for ${selectedState}.</p>` : ''}
+          `
+        },
+        {
+          title: '📢 Public Events & Orders (All Officials)',
+          content: `
+            <p>Track public-facing actions by all federal and state officials.</p>
+            <a href="https://www.federalregister.gov/index/2025/executive-office-of-the-president" target="_blank">Federal Register</a><br>
+            <a href="https://www.whitehouse.gov/presidential-actions/executive-orders/" target="_blank">White House Orders</a><br>
+            <a href="https://www.govtrack.us/congress/bills/" target="_blank">Congressional Bills</a><br>
+            <a href="https://www.govtrack.us/congress/votes" target="_blank">Congressional Votes</a><br>
+            <a href="https://www.govtrack.us/congress/committees/" target="_blank">Congressional Committees</a><br>
+            <a href="https://www.govtrack.us/misconduct" target="_blank">Misconduct Database</a>
+          `
+        }
+      ];
 
-  cards.forEach(card => {
-    const div = document.createElement('div');
-    div.className = 'calendar-card';
-    div.innerHTML = `<h4>${card.title}</h4>${card.content}`;
-    calendarSection.appendChild(div);
-  });
+      cards.forEach(card => {
+        const div = document.createElement('div');
+        div.className = 'calendar-card';
+        div.innerHTML = `<h4>${card.title}</h4>${card.content}`;
+        calendarSection.appendChild(div);
+      });
+    })
+    .catch(err => {
+      calendarSection.innerHTML += '<p>Error loading calendar data.</p>';
+      console.error(err);
+    });
 }
-
 // ✅ Global function so it's accessible from HTML
 function showActivist() {
   showTab('activist');
