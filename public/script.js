@@ -320,7 +320,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const stateSelector = document.getElementById('state-selector');
     stateSelector.addEventListener('change', function () {
     selectedState = this.value;
-  });
   const searchBar = document.getElementById('search-bar');
   officialsContainer = document.getElementById('officials-container');
   const modal = document.getElementById('official-modal');
