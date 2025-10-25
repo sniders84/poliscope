@@ -336,11 +336,6 @@ document.addEventListener('DOMContentLoaded', () => {
       ${o.vetoes ? `<p><strong>Vetoes:</strong> ${o.vetoes}</p>` : ''}
       ${o.salary ? `<p><strong>Salary:</strong> ${o.salary}</p>` : ''}
       ${o.predecessor ? `<p><strong>Predecessor:</strong> ${o.predecessor}</p>` : ''}
-      ${o.pollingScore && o.pollingSource ? `
-        <p><strong>Approval Rating:</strong> 
-          <a href="${o.pollingSource}" target="_blank">${o.pollingScore}</a>
-        </p>
-      ` : ''}
       ${o.ballotpediaLink ? `<p><a href="${o.ballotpediaLink}" target="_blank">Ballotpedia Profile</a></p>` : ''}
       ${o.govtrackLink ? `<p><a href="${o.govtrackLink}" target="_blank">GovTrack Profile</a></p>` : ''}
       ${o.govtrackReportCard ? `<p><a href="${o.govtrackReportCard}" target="_blank">GovTrack Report Card</a></p>` : ''}
