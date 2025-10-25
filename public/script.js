@@ -70,7 +70,7 @@ function showCivic() {
       };
 
       const filtered = Object.entries(links).filter(([label]) =>
-        Object.keys(allowedKeys).includes(label.toLowerCase())
+        Object.keys(allowedKeys).includes(label.trim().toLowerCase())
       );
 
       if (filtered.length === 0) {
@@ -80,7 +80,8 @@ function showCivic() {
         grid.className = 'link-grid';
 
         filtered.forEach(([label, url]) => {
-          const displayLabel = allowedKeys[label.toLowerCase()];
+          const key = label.trim().toLowerCase();
+          const displayLabel = allowedKeys[key];
           const card = document.createElement('div');
           card.className = 'link-card';
           card.innerHTML = `
