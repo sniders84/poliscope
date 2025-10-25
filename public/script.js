@@ -262,6 +262,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('official-modal');
   const modalContent = document.getElementById('modal-content');
   const closeModal = document.getElementById('close-modal');
+document.getElementById('tab-voting').addEventListener('click', () => {
+  showVoting();
+});
 
   Promise.all([
     fetch('governors.json').then(res => res.json()),
