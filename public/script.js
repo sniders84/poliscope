@@ -147,37 +147,54 @@ function showCivic() {
 function showOrganizations() {
   showTab('organizations');
   const section = document.getElementById('organizations');
-  section.innerHTML = '<h2>Political Organizations</h2>';
+  section.innerHTML = '';
 
   fetch('/political-groups.json')
     .then(res => res.json())
     .then(groups => {
       const grid = document.createElement('div');
-      grid.className = 'grid';
+      grid.className = 'organization-grid';
 
       groups.forEach(group => {
         const card = document.createElement('div');
-        card.className = 'card';
+        card.className = 'organization-card';
 
-        card.innerHTML = `
-          <img src="${group.logo}" alt="${group.name} logo" />
+        const logoWrapper = document.createElement('div');
+        logoWrapper.className = 'logo-wrapper';
+
+        const img = document.createElement('img');
+        img.src = group.logo;
+        img.alt = `${group.name} logo`;
+        img.style.width = '100%';
+        img.style.height = '100%';
+        img.style.objectFit = 'contain';
+        img.onerror = () => {
+          img.src = 'assets/default-logo.png';
+        };
+
+        logoWrapper.appendChild(img);
+
+        const infoWrapper = document.createElement('div');
+        infoWrapper.className = 'info-wrapper';
+        infoWrapper.innerHTML = `
           <h3>${group.name}</h3>
           <p>${group.description}</p>
           <p><strong>Platform:</strong> ${group.platform}</p>
           <a href="${group.website}" target="_blank">Visit Website</a>
         `;
 
+        card.appendChild(logoWrapper);
+        card.appendChild(infoWrapper);
         grid.appendChild(card);
       });
 
       section.appendChild(grid);
     })
     .catch(err => {
-      section.innerHTML += '<p>Error loading political groups.</p>';
+      section.innerHTML = '<p>Error loading political groups.</p>';
       console.error(err);
     });
 }
-
 function renderOfficials(stateFilter = null, query = '') {
   showTab('my-officials');
   officialsContainer.innerHTML = '';
