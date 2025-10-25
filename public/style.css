@@ -388,3 +388,44 @@ main {
   color: #333;
   font-weight: bold;
 }
+.civic-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.civic-block h2 {
+  margin-bottom: 0.5rem;
+  color: #b30000;
+}
+
+.link-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.link-card {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-left: 6px solid #b30000;
+  padding: 1rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.link-card h4 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.link-card a {
+  font-weight: bold;
+  color: #b30000;
+  word-break: break-all;
+}
+
+.card-desc {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 0.5rem;
+}
