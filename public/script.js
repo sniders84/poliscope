@@ -79,17 +79,15 @@ const filtered = Object.entries(links).filter(([label]) => {
         grid.className = 'link-grid';
 
         filtered.forEach(([label, url]) => {
-          const displayLabel = allowedKeys[label];
-          const card = document.createElement('div');
-          card.className = 'link-card';
-          card.innerHTML = `
-            <h4>${displayLabel}</h4>
-            <p class="card-desc">Click to view ${displayLabel} information for ${selectedState}.</p>
-            <a href="${url}" target="_blank" class="card-button">Open</a>
-          `;
-          grid.appendChild(card);
-        });
-
+  const card = document.createElement('div');
+  card.className = 'link-card';
+  card.innerHTML = `
+    <h4>${label}</h4>
+    <p class="card-desc">Click to view ${label} information for ${selectedState}.</p>
+    <a href="${url}" target="_blank" class="card-button">Open</a>
+  `;
+  grid.appendChild(card);
+});
         stateBlock.appendChild(grid);
       }
 
