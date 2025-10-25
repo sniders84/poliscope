@@ -21,7 +21,7 @@
     "counties": "https://www.elections.alaska.gov/Core/contactinformation.php",
     "tools": "https://www.elections.alaska.gov/"
   },
-    "Arizona": {
+  "Arizona": {
     "register": "https://servicearizona.com/VoterRegistration",
     "id": "https://azsos.gov/elections/voters/voting-elections",
     "absentee": "https://azsos.gov/elections/voters/early-voting",
@@ -43,7 +43,6 @@
     "counties": "https://www.sos.arkansas.gov/elections/",
     "tools": "https://www.sos.arkansas.gov/elections/"
   },
-    {
   "California": {
     "register": "https://registertovote.ca.gov/",
     "id": "https://www.sos.ca.gov/elections/voter-registration/voter-id",
@@ -110,7 +109,6 @@
     "counties": "https://sos.ga.gov/county-election-offices",
     "tools": "https://sos.ga.gov/elections"
   },
-    {
   "Hawaii": {
     "register": "https://olvr.hawaii.gov/",
     "id": "https://elections.hawaii.gov/voters/voter-registration/voter-id-requirements/",
@@ -188,7 +186,6 @@
     "counties": "https://elect.ky.gov/About-Us/Pages/County-Clerks.aspx",
     "tools": "https://elect.ky.gov/"
   },
-    {
   "Louisiana": {
     "register": "https://www.sos.la.gov/ElectionsAndVoting/RegisterToVote",
     "id": "https://www.sos.la.gov/ElectionsAndVoting/Vote/VoterIDRequirements",
@@ -244,7 +241,6 @@
     "counties": "https://www.michigan.gov/sos/elections/local-clerks",
     "tools": "https://www.michigan.gov/sos/elections"
   },
-    {
   "Minnesota": {
     "register": "https://mnvotes.sos.state.mn.us/VoterRegistration/VoterRegistrationMain.aspx",
     "id": "https://www.sos.state.mn.us/elections-voting/register-to-vote/voter-id-requirements/",
@@ -333,7 +329,6 @@
     "counties": "https://www.nj.gov/state/elections/county-eo.shtml",
     "tools": "https://www.nj.gov/state/elections/"
   },
-    {
   "New Mexico": {
     "register": "https://portal.sos.state.nm.us/OVR/WebPages/Instructions.aspx",
     "id": "https://www.sos.state.nm.us/voting-and-elections/voter-information/voter-id-requirements/",
@@ -444,7 +439,6 @@
     "counties": "https://www.scvotes.gov/how-register/county-board-elections-and-voter-registration",
     "tools": "https://www.scvotes.gov"
   },
-    {
   "South Dakota": {
     "register": "https://vip.sdsos.gov/VIPLogin.aspx",
     "id": "https://sdsos.gov/elections-voting/voting/voter-id-requirements.aspx",
