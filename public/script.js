@@ -36,8 +36,6 @@ const pollSchema = {
   override: false
 };
 
-const pollsData = [/* full verified polls from earlier — already dropped in */];
-
 function getPollsByOffice(officeType) {
   return pollsData.filter(poll => poll.office === officeType);
 }
