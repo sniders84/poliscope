@@ -1,18 +1,10 @@
 {
-  "North Carolina": {
-    "bills": "https://www.ncleg.gov/Legislation",
-    "senateRoster": "https://www.ncleg.gov/Members/Senate",
-    "houseRoster": "https://www.ncleg.gov/Members/House",
-    "governorOrders": "https://governor.nc.gov/news/executive-orders",
-    "ltGovPress": "https://ltgov.nc.gov/news",
-    "federalRaces": "https://ballotpedia.org/North_Carolina_elections,_2024"
-  },
-  "Alaska": {
-    "bills": "https://www.akleg.gov/basis/Bill/Selection",
-    "senateRoster": "https://www.akleg.gov/basis/Member/Selection",
-    "houseRoster": "https://www.akleg.gov/basis/Member/Selection",
-    "governorOrders": "https://gov.alaska.gov/newsroom/executive-orders/",
-    "ltGovPress": "https://ltgov.alaska.gov/newsroom/",
-    "federalRaces": "https://ballotpedia.org/Alaska_elections,_2024"
+  "Alabama": {
+    "bills": "https://www.legislature.state.al.us/legacy/Splash_Bills.aspx",
+    "senateRoster": "https://www.bamapolitics.com/alabama/alabama-state-senators/",
+    "houseRoster": "https://www.bamapolitics.com/alabama/alabama-state-representatives/",
+    "governorOrders": "https://governor.alabama.gov/newsroom/category/executive-orders/",
+    "ltGovPress": "https://ltgov.alabama.gov/category/press-release/",
+    "federalRaces": "https://ballotpedia.org/Alabama_elections,_2024"
   }
 }
