@@ -64,9 +64,9 @@ function showCivic() {
 
       const allowedKeys = {
         bills: 'Bills',
-        'state senate': 'State Senate',
-        'state house': 'State House',
-        'local govt': 'Local Govt'
+        'state senate roster': 'State Senate Roster',
+        'state house roster': 'State House Roster',
+        'local government lookup': 'Local Government Lookup'
       };
 
       const filtered = Object.entries(links).filter(([label]) =>
