@@ -60,45 +60,39 @@ function showCivic() {
     .then(stateLinks => {
       const links = stateLinks[selectedState] || {};
 
-     const allowedLabels = [
-  'bills',
-  'senate',
-  'house',
-  'local'
-];
+      const allowedLabels = ['bills', 'senate', 'house', 'local'];
+      const labelMap = {
+        bills: 'Bills',
+        senate: 'State Senate',
+        house: 'State House',
+        local: 'Local Government'
+      };
 
-const labelMap = {
-  bills: 'Bills',
-  senate: 'State Senate',
-  house: 'State House',
-  local: 'Local Government'
-};
+      const filtered = Object.entries(links).filter(([label]) => {
+        const lowerLabel = label.toLowerCase();
+        return allowedLabels.some(key => lowerLabel.includes(key));
+      }).map(([label, url]) => {
+        const key = allowedLabels.find(k => label.toLowerCase().includes(k));
+        const displayLabel = labelMap[key] || label;
+        return { label: displayLabel, url };
+      });
 
-const filtered = Object.entries(links).filter(([label]) => {
-  const lowerLabel = label.toLowerCase();
-  return allowedLabels.some(key => lowerLabel.includes(key));
-}).map(([label, url]) => {
-  const key = allowedLabels.find(k => label.toLowerCase().includes(k));
-  const displayLabel = labelMap[key] || label;
-  return { label: displayLabel, url };
-});
+      const grid = document.createElement('div');
+      grid.className = 'link-grid';
 
-const grid = document.createElement('div');
-grid.className = 'link-grid';
+      filtered.forEach(({ label, url }) => {
+        const card = document.createElement('div');
+        card.className = 'link-card';
+        card.innerHTML = `
+          <h4>${label}</h4>
+          <p class="card-desc">Click to view ${label} information for ${selectedState}.</p>
+          <a href="${url}" target="_blank" class="card-button">Open</a>
+        `;
+        grid.appendChild(card);
+      });
 
-filtered.forEach(({ label, url }) => {
-  const card = document.createElement('div');
-  card.className = 'link-card';
-  card.innerHTML = `
-    <h4>${label}</h4>
-    <p class="card-desc">Click to view ${label} information for ${selectedState}.</p>
-    <a href="${url}" target="_blank" class="card-button">Open</a>
-  `;
-  grid.appendChild(card);
-});
+      stateBlock.appendChild(grid);
 
-stateBlock.appendChild(grid);
-    }
       const federalBlock = document.createElement('div');
       federalBlock.className = 'civic-block';
       federalBlock.innerHTML = '<h2>Federal Oversight & Transparency</h2>';
