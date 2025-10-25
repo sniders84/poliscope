@@ -128,6 +128,14 @@ function showCalendar() {
     }
   ];
 
+  // ✅ Add this to render the cards
+  cards.forEach(card => {
+    const div = document.createElement('div');
+    div.className = 'calendar-card';
+    div.innerHTML = `<h4>${card.title}</h4>${card.content}`;
+    calendarSection.appendChild(div);
+  });
+}
   cards.forEach(card => {
     const div = document.createElement('div');
     div.className = 'calendar-card';
