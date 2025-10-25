@@ -328,7 +328,7 @@ const votingOverrides = {
     counties: "https://www.sos.state.co.us/pubs/elections/Resources/CountyElectionOffices.html",
     tools: "https://www.sos.state.co.us/pubs/elections/main.html"
   },
-  "Connecticut": {
+    "Connecticut": {
     register: "https://voterregistration.ct.gov",
     id: "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Voter-ID-Requirements",
     absentee: "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Absentee-Voting",
@@ -493,7 +493,7 @@ const votingOverrides = {
     counties: "https://www.sec.state.ma.us/ele/eleclk/clkidx.htm",
     tools: "https://www.sec.state.ma.us/ele/eleidx.htm"
   },
-  "Michigan": {
+    "Michigan": {
     register: "https://mvic.sos.state.mi.us/RegisterVoter",
     id: "https://www.michigan.gov/sos/elections/voting/voting-id",
     absentee: "https://mvic.sos.state.mi.us/AVApplication/Index",
@@ -592,7 +592,6 @@ const votingOverrides = {
     counties: "https://www.nj.gov/state/elections/county-eo.shtml",
     tools: "https://www.nj.gov/state/elections"
   },
-  {
   "New Mexico": {
     register: "https://portal.sos.state.nm.us/OVR/WebPages/InstructionsStep1.aspx",
     id: "https://www.sos.state.nm.us/voting-and-elections/voter-information/voter-id-requirements/",
@@ -614,17 +613,6 @@ const votingOverrides = {
     military: "https://www.fvap.gov/new-york",
     counties: "https://www.elections.ny.gov/CountyBoards.html",
     tools: "https://www.elections.ny.gov"
-  },
-  "North Carolina": {
-    register: "https://www.ncsbe.gov/register",
-    id: "https://www.ncsbe.gov/voting/voter-id",
-    absentee: "https://www.ncsbe.gov/voting/vote-mail",
-    early: "https://www.ncsbe.gov/voting/early-voting",
-    polling: "https://www.ncsbe.gov/voting/vote-person/polling-place",
-    sample: "https://www.ncsbe.gov/voting/sample-ballots",
-    military: "https://www.ncsbe.gov/voting/military-overseas-voting",
-    counties: "https://www.ncsbe.gov/about/contact-your-county-board-elections",
-    tools: "https://www.ncsbe.gov/voting"
   },
   "North Dakota": {
     register: "https://vip.sos.nd.gov/PortalListDetails.aspx?ptlhPKID=79&ptlPKID=7",
@@ -703,7 +691,6 @@ const votingOverrides = {
     counties: "https://www.scvotes.gov/election-officials",
     tools: "https://www.scvotes.gov"
   },
-  {
   "South Dakota": {
     register: "https://sdsos.gov/elections-voting/voting/register-to-vote/default.aspx",
     id: "https://sdsos.gov/elections-voting/voting/voter-id/default.aspx",
@@ -726,7 +713,7 @@ const votingOverrides = {
     counties: "https://sos.tn.gov/elections/election-commission-information",
     tools: "https://sos.tn.gov/elections"
   },
-  "Texas": {
+    "Texas": {
     register: "https://www.votetexas.gov/register-to-vote/",
     id: "https://www.votetexas.gov/register-to-vote/need-id.html",
     absentee: "https://www.votetexas.gov/voting-by-mail/",
@@ -814,7 +801,6 @@ const votingOverrides = {
     counties: "https://sos.wyo.gov/Elections/CountyClerks.aspx",
     tools: "https://sos.wyo.gov/Elections"
   }
-}
 window.showVoting = function () {
   showTab('voting');
   const container = document.getElementById('voting-cards');
