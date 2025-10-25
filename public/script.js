@@ -195,7 +195,66 @@ function showOrganizations() {
       console.error(err);
     });
 }
+window.showVoting = function () {
+  showTab('voting');
+  const container = document.getElementById('voting-cards');
+  container.innerHTML = `<h3>${selectedState}</h3>`;
 
+  fetch('data/voting-data.json')
+    .then(res => res.json())
+    .then(allVotingData => {
+      const links = allVotingData[selectedState];
+      if (!links) {
+        container.innerHTML += `<p>No voting info available for ${selectedState}.</p>`;
+        return;
+      }
+
+      const cards = [
+        {
+          title: '🗳️ Register to Vote',
+          content: `<p>Register in ${selectedState}.</p><a href="${links.register}" target="_blank">Registration Portal</a>`
+        },
+        {
+          title: '🆔 Voter ID Requirements',
+          content: `<p>ID rules for ${selectedState}.</p><a href="${links.id}" target="_blank">ID Info</a>`
+        },
+        {
+          title: '📬 Absentee & Early Voting',
+          content: `<p>Vote early or by mail.</p><a href="${links.absentee}" target="_blank">Absentee Info</a><br><a href="${links.early}" target="_blank">Early Voting</a>`
+        },
+        {
+          title: '📍 Find Your Polling Place',
+          content: `<p>Polling site lookup.</p><a href="${links.polling}" target="_blank">Find Polling Place</a>`
+        },
+        {
+          title: '📄 Sample Ballots',
+          content: `<p>Preview your ballot.</p><a href="${links.sample}" target="_blank">Sample Ballots</a>`
+        },
+        {
+          title: '🌍 Military & Overseas Voting',
+          content: `<p>Info for military/overseas voters.</p><a href="${links.military}" target="_blank">Military Voting</a>`
+        },
+        {
+          title: '📞 County Board Contacts',
+          content: `<p>Local election office.</p><a href="${links.counties}" target="_blank">County Directory</a>`
+        },
+        {
+          title: '🔗 Voting Tools & Assistance',
+          content: `<p>Check registration, deadlines, and more.</p><a href="${links.tools}" target="_blank">Voting Hub</a>`
+        }
+      ];
+
+      cards.forEach(card => {
+        const div = document.createElement('div');
+        div.className = 'voting-card';
+        div.innerHTML = `<h4>${card.title}</h4>${card.content}`;
+        container.appendChild(div);
+      });
+    })
+    .catch(() => {
+      container.innerHTML += `<p>Error loading voting info for ${selectedState}.</p>`;
+    });
+};
 document.addEventListener('DOMContentLoaded', () => {
   const stateSelector = document.getElementById('state-selector');
   const searchBar = document.getElementById('search-bar');
