@@ -18,6 +18,7 @@ function showTab(id) {
   const activeTab = document.getElementById(id);
   if (activeTab) activeTab.style.display = 'block';
 }
+window.showTab = showTab;
 
 // ✅ Poll schema and verified data
 const pollSchema = {
@@ -260,16 +261,14 @@ window.showVoting = function () {
 };
 document.addEventListener('DOMContentLoaded', () => {
   const stateSelector = document.getElementById('state-selector');
+    stateSelector.addEventListener('change', function () {
+    selectedState = this.value;
+  });
   const searchBar = document.getElementById('search-bar');
   officialsContainer = document.getElementById('officials-container');
   const modal = document.getElementById('official-modal');
   const modalContent = document.getElementById('modal-content');
   const closeModal = document.getElementById('close-modal');
-
-  // ✅ Add this line right here:
-  stateSelector.addEventListener('change', function () {
-    selectedState = this.value;
-  });
 
   document.getElementById('tab-voting').addEventListener('click', () => {
     showVoting();
