@@ -61,10 +61,16 @@ function showCivic() {
     .then(res => res.json())
     .then(stateLinks => {
       const links = stateLinks[selectedState] || {};
-      const allowedKeys = ['Bills', 'State Senate', 'State House', 'Local Govt'];
+
+      const allowedKeys = {
+        bills: 'Bills',
+        'state senate': 'State Senate',
+        'state house': 'State House',
+        'local govt': 'Local Govt'
+      };
 
       const filtered = Object.entries(links).filter(([label]) =>
-        allowedKeys.includes(label)
+        Object.keys(allowedKeys).includes(label.toLowerCase())
       );
 
       if (filtered.length === 0) {
@@ -74,11 +80,12 @@ function showCivic() {
         grid.className = 'link-grid';
 
         filtered.forEach(([label, url]) => {
+          const displayLabel = allowedKeys[label.toLowerCase()];
           const card = document.createElement('div');
           card.className = 'link-card';
           card.innerHTML = `
-            <h4>${label}</h4>
-            <p class="card-desc">Click to view ${label} information for ${selectedState}.</p>
+            <h4>${displayLabel}</h4>
+            <p class="card-desc">Click to view ${displayLabel} information for ${selectedState}.</p>
             <a href="${url}" target="_blank" class="card-button">Open</a>
           `;
           grid.appendChild(card);
