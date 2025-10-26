@@ -47,23 +47,44 @@ function showVoting() {
         tools: 'State Voting Tools'
       };
 
-      Object.entries(stateData).forEach(([key, url]) => {
-        const title = labelMap[key] || key;
+      Object.entries(stateData).forEach(([key, value]) => {
+  const { url, icon, description, deadline } = typeof value === 'string'
+    ? { url: value, icon: '🗳️', description: '', deadline: '' }
+    : value;
 
-        const card = document.createElement('div');
-        card.className = 'voting-card';
-        card.innerHTML = `
-          <h3>${title}</h3>
-          <a href="${url}" target="_blank">${url}</a>
-        `;
-        votingCards.appendChild(card);
-      });
-    })
-    .catch(err => {
-      votingCards.innerHTML = '<p>Error loading voting data.</p>';
-      console.error('Voting fetch failed:', err);
-    });
-}
+  const title = labelMap[key] || key;
+
+  const card = document.createElement('div');
+  card.className = 'voting-card';
+
+  const link = document.createElement('a');
+  link.href = url;
+  link.target = '_blank';
+
+  const iconDiv = document.createElement('div');
+  iconDiv.className = 'card-icon';
+  iconDiv.textContent = icon || '🗳️';
+
+  const labelDiv = document.createElement('div');
+  labelDiv.className = 'card-label';
+  labelDiv.textContent = title;
+
+  const descDiv = document.createElement('div');
+  descDiv.className = 'card-description';
+  descDiv.textContent = description || '';
+
+  const deadlineDiv = document.createElement('div');
+  deadlineDiv.className = 'card-date';
+  if (deadline) deadlineDiv.textContent = deadline;
+
+  link.appendChild(iconDiv);
+  link.appendChild(labelDiv);
+  link.appendChild(descDiv);
+  if (deadline) link.appendChild(deadlineDiv);
+
+  card.appendChild(link);
+  votingCards.appendChild(card);
+});
 function showCivic() {
   showTab('civic');
   const calendar = document.getElementById('calendar');
