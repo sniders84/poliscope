@@ -359,6 +359,13 @@ function openModal(official) {
         ? `<p><strong>Vetoes:</strong> ${official.vetoes}</p>`
         : ''}
         ${official.salary ? `<p><strong>Salary:</strong> ${official.salary}</p>` : ''}
+        ${official.govtrackStats
+        ? `<div class="govtrack-stats"><h3>Congressional Rankings</h3><ul>${
+        Object.entries(official.govtrackStats)
+        .map(([label, value]) => `<li><strong>${label.replace(/([A-Z])/g, ' $1')}:</strong> ${value}</li>`)
+        .join('')
+        }</ul></div>`
+        : ''}
         ${official.website ? `<p><a href="${official.website}" target="_blank">Official Website</a></p>` : ''}
         ${contact.email ? `<p><strong>Email:</strong> ${contact.email}</p>` : ''}
         ${contact.phone ? `<p><strong>Phone:</strong> ${contact.phone}</p>` : ''}
