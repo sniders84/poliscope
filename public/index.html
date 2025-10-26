@@ -86,7 +86,6 @@
     <section id="my-officials" class="tab-content">
       <h2>My Officials</h2>
       <div id="officials-container" class="grid"></div>
-      <button onclick="showModal('officials')">View Officials</button>
     </section>
 
     <section id="civic" class="tab-content" style="display: none;">
@@ -4053,16 +4052,11 @@
         </section> <!-- End of voting section -->
  </main>
 
-  <div id="officials-modal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModalWindow()">&times;</span>
-    <h2>Officials</h2>
-    <div id="officials-content">
-      <!-- Dynamic content goes here -->
-    </div>
+  <div id="official-modal" class="modal">
+    <div class="modal-content" id="modal-content"></div>
+    <button id="close-modal" class="close-button">&times;</button>
   </div>
-</div>
 
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
