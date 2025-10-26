@@ -28,8 +28,8 @@ console.log("showVoting() triggered");
       return res.json();
     })
     .then(data => {
-      const selectedState = "U.S. Virgin Islands";
-      const stateData = data[selectedState];
+     const selectedState = window.selectedState || 'North Carolina';
+     const stateData = data[selectedState] || (selectedState === 'U.S. Virgin Islands' ? data['U.S. Virgin Islands'] : null);
 
       if (!stateData || typeof stateData !== 'object') {
         votingCards.innerHTML = `<p>No voting information available for ${selectedState}.</p>`;
