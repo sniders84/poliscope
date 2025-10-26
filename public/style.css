@@ -329,20 +329,19 @@ main {
 
 .voting-card {
   background: #fff;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  height: 240px;
-  transition: transform 0.2s ease;
+  text-align: left;
+  transition: box-shadow 0.2s ease;
 }
 
 .voting-card:hover {
-  transform: scale(1.03);
+  box-shadow: 0 0 0 2px crimson;
 }
 
 .voting-card a {
@@ -359,18 +358,12 @@ main {
 .voting-card a:hover,
 .voting-card a:active {
   color: inherit;
-}
-
-.voting-card a::before,
-.voting-card a::after {
-  content: none !important;
-  display: none !important;
+  text-decoration: none;
 }
 
 .voting-card .card-icon {
   font-size: 2.6rem;
   margin-bottom: 0.5rem;
-  text-align: left;
 }
 
 .voting-card .card-label {
@@ -389,26 +382,4 @@ main {
   font-size: 0.85rem;
   color: #888;
   margin-top: auto;
-}
-.voting-card a {
-  text-decoration: none;
-  color: inherit;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-}
-
-.voting-card a:link,
-.voting-card a:visited,
-.voting-card a:hover,
-.voting-card a:active {
-  color: inherit;
-  text-decoration: none;
-}
-
-.voting-card a::before,
-.voting-card a::after {
-  content: none !important;
-  display: none !important;
 }
