@@ -383,3 +383,19 @@ main {
   color: #888;
   margin-top: auto;
 }
+.voting-card a {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+}
+
+.voting-card a::before,
+.voting-card a::after {
+  content: none !important;
+  display: none !important;
+}
+
+.voting-card a[href^="http"]:not(:has(.card-label)) {
+  font-size: 0 !important;
+}
