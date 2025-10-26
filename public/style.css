@@ -374,3 +374,18 @@ main {
   color: #888;
   margin-top: auto;
 }
+/* FINAL PATCH — LOCK VOTING CARD VISIBILITY AND SUPPRESS RAW URLS */
+.voting-card a[href^="http"]:not(:has(.card-label)) {
+  font-size: 0 !important;
+}
+
+.voting-card .card-icon,
+.voting-card .card-label,
+.voting-card .card-description,
+.voting-card .card-date {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  color: inherit !important;
+  font-size: inherit !important;
+}
