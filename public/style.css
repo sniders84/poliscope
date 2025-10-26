@@ -530,3 +530,12 @@ main {
   display: block;
   margin: 0 auto;
 }
+.govtrack-stats {
+  margin-top: 1em;
+}
+.govtrack-stats ul {
+  padding-left: 1em;
+}
+.govtrack-stats li {
+  margin-bottom: 0.5em;
+}
