@@ -31,7 +31,8 @@ console.log("showVoting() triggered");
   console.log('Voting data loaded:', data);
   console.log('Available voting keys:', Object.keys(data));
   console.log('Trying to match:', window.selectedState);
-  const selectedState = window.selectedState || 'North Carolina';
+  let selectedState = window.selectedState || 'North Carolina';
+  if (selectedState === 'Virgin Islands') selectedState = 'U.S. Virgin Islands';
   const stateData = data[selectedState] || (selectedState === 'U.S. Virgin Islands' ? data['U.S. Virgin Islands'] : null);
 
       if (!stateData || typeof stateData !== 'object') {
