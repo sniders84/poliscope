@@ -313,6 +313,10 @@ function renderOfficials(stateFilter = null, query = '') {
   });
 }
 function openModal(official) {
+  const modal = document.getElementById('officials-modal');
+  const modalContent = document.getElementById('officials-content');
+  if (!modal || !modalContent) return;
+
   modalContent.innerHTML = `
     <h2>${official.name}</h2>
     <p><strong>Office:</strong> ${official.office}</p>
@@ -323,11 +327,13 @@ function openModal(official) {
     ${official.bio ? `<p>${official.bio}</p>` : ''}
     ${official.website ? `<p><a href="${official.website}" target="_blank">Official Website</a></p>` : ''}
   `;
+
   modal.style.display = 'block';
 }
 
 function closeModalWindow() {
-  modal.style.display = 'none';
+  const modal = document.getElementById('officials-modal');
+  if (modal) modal.style.display = 'none';
 }
 
 function wireSearchBar() {
