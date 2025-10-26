@@ -36,6 +36,10 @@ console.log("showVoting() triggered");
         return;
       }
 console.log("Selected state:", selectedState);
+console.log('Available voting keys:', Object.keys(data));
+console.log('Trying to match:', selectedState);
+console.log('Direct match result:', data[selectedState]);
+
       const labelMap = {
         register: 'Register to Vote',
         id: 'Voter ID Requirements',
