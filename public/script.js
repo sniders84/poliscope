@@ -339,7 +339,9 @@ function openModal(official) {
         ${official.education ? `<p><strong>Education:</strong> ${official.education}</p>` : ''}
         ${official.platform ? `<p><strong>Platform:</strong> ${official.platform}</p>` : ''}
         ${official.proposals ? `<p><strong>Proposals:</strong> ${official.proposals}</p>` : ''}
-        ${official.vetoes ? `<p><strong>Vetoes:</strong> ${official.vetoes}</p>` : ''}
+        ${(official.vetoes && ['Governor', 'President'].includes(official.office))
+        ? `<p><strong>Vetoes:</strong> ${official.vetoes}</p>`
+        : ''}
         ${official.salary ? `<p><strong>Salary:</strong> ${official.salary}</p>` : ''}
         ${official.website ? `<p><a href="${official.website}" target="_blank">Official Website</a></p>` : ''}
         ${contact.email ? `<p><strong>Email:</strong> ${contact.email}</p>` : ''}
