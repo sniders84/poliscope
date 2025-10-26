@@ -346,7 +346,9 @@ function openModal(official) {
         ${contact.phone ? `<p><strong>Phone:</strong> ${contact.phone}</p>` : ''}
         ${contact.website ? `<p><a href="${contact.website}" target="_blank">Contact Website</a></p>` : ''}
         ${official.ballotpediaLink ? `<p><a href="${official.ballotpediaLink}" target="_blank">Ballotpedia Profile</a></p>` : ''}
-        ${bills.length > 0 ? `<h3>Bills Signed</h3><ul>${bills.map(b => `<li><a href="${b.link}" target="_blank">${b.title}</a></li>`).join('')}</ul>` : ''}
+        ${(bills.length > 0 && ['Governor', 'President'].includes(official.office))
+  ? `<h3>Bills Signed</h3><ul>${bills.map(b => `<li><a href="${b.link}" target="_blank">${b.title}</a></li>`).join('')}</ul>`
+  : ''}
       </div>
     </div>
   `;
