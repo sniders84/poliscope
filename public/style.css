@@ -113,7 +113,6 @@ main {
   height: 100%;
 }
 
-/* Party Colors */
 .republican .party-stripe { background: #c0392b; }
 .democrat .party-stripe,
 .democratic .party-stripe { background: #2e74b5; }
@@ -124,7 +123,6 @@ main {
 .workingfamilies .party-stripe { background: #34495e; }
 .progressive .party-stripe { background: #e67e22; }
 
-/* Photo Wrappers */
 .photo-wrapper {
   width: 180px;
   height: 180px;
@@ -210,6 +208,7 @@ main {
   font-size: 1.5rem;
   cursor: pointer;
 }
+
 /* Civic Intelligence */
 .civic-section {
   display: flex;
@@ -265,7 +264,6 @@ main {
   font-weight: bold;
   align-self: flex-start;
 }
-
 /* Organizations */
 .organization-grid {
   display: grid;
@@ -320,7 +318,7 @@ main {
   color: #0066cc;
   text-decoration: none;
 }
-/* Voting Cards — Final Spec */
+
 /* Voting Cards — Final Spec */
 #voting-cards {
   display: grid;
@@ -350,7 +348,7 @@ main {
 .voting-card a {
   text-decoration: none;
   color: inherit;
-  display: contents; /* Prevents link from wrapping visible content */
+  display: contents;
 }
 
 .voting-card .card-icon {
