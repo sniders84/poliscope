@@ -382,9 +382,10 @@ function wireStateDropdown() {
   dropdown.value = selectedState;
 
   dropdown.addEventListener('change', () => {
-    selectedState = dropdown.value;
-    renderOfficials(selectedState, '');
-  });
+  selectedState = dropdown.value;
+  window.selectedState = selectedState;
+  renderOfficials(selectedState, '');
+});
 }
 document.addEventListener('DOMContentLoaded', () => {
   officialsContainer = document.getElementById('officials-container');
