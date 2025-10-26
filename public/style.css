@@ -389,7 +389,7 @@ main {
   color: inherit !important;
   font-size: inherit !important;
 }
-/* 🔧 Voting Card Layout Fix — Center Icon and Label */
+/* 🔧 Refined Voting Card Layout — Center Icon and Label */
 .voting-card a {
   display: flex;
   flex-direction: column;
@@ -401,6 +401,7 @@ main {
 .voting-card .card-icon {
   font-size: 2.5em;
   margin-bottom: 0.5em;
+  line-height: 1;
 }
 
 .voting-card .card-label {
@@ -413,4 +414,8 @@ main {
 .voting-card .card-date {
   font-size: 0.95em;
   margin-bottom: 0.2em;
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  color: inherit;
 }
