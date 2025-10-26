@@ -7,7 +7,6 @@ let officialsContainer = null;
 let searchBar = null;
 let modal = null;
 let modalContent = null;
-let closeModal = null;
 
 function showTab(id) {
   document.querySelectorAll('.tab-content').forEach(tab => {
@@ -245,6 +244,11 @@ function showOrganizations() {
       console.error(err);
     });
 }
+function showVoting() {
+  showTab('voting');
+  console.log("showVoting triggered");
+}
+
 function renderOfficials(stateFilter = null, query = '') {
   showTab('my-officials');
   officialsContainer.innerHTML = '';
