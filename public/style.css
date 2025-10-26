@@ -419,3 +419,34 @@ main {
   opacity: 1;
   color: inherit;
 }
+/* 🔧 Triple-size emoji and vertical card stretch */
+.voting-card a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2em 1em;
+  min-height: 220px;
+}
+
+.voting-card .card-icon {
+  font-size: 6em;
+  margin-bottom: 0.5em;
+  line-height: 1;
+}
+
+.voting-card .card-label {
+  font-size: 1.4em;
+  font-weight: bold;
+  margin-bottom: 0.4em;
+}
+
+.voting-card .card-description,
+.voting-card .card-date {
+  font-size: 1em;
+  margin-bottom: 0.3em;
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  color: inherit;
+}
