@@ -75,6 +75,7 @@ nav .tab:hover {
 main {
   padding: 2rem;
 }
+
 /* Officials Grid */
 .grid {
   display: flex;
@@ -264,6 +265,7 @@ main {
   font-weight: bold;
   align-self: flex-start;
 }
+
 /* Organizations */
 .organization-grid {
   display: grid;
@@ -319,90 +321,13 @@ main {
   text-decoration: none;
 }
 
-/* Voting Cards — Final Spec */
-#voting-cards {
+/* Voting Cards */
+#voting-cards,
+.voting-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
   padding: 2rem;
-}
-
-.voting-card {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  text-align: left;
-  transition: box-shadow 0.2s ease;
-}
-
-.voting-card:hover {
-  box-shadow: 0 0 0 2px crimson;
-}
-
-.voting-card a {
-  text-decoration: none;
-  color: inherit;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-}
-
-.voting-card a:link,
-.voting-card a:visited,
-.voting-card a:hover,
-.voting-card a:active {
-  color: inherit;
-  text-decoration: none;
-}
-
-.voting-card .card-icon {
-  font-size: 2.6rem;
-  margin-bottom: 0.5rem;
-}
-
-.voting-card .card-label {
-  font-weight: bold;
-  font-size: 1.2rem;
-  margin-bottom: 0.25rem;
-}
-
-.voting-card .card-description {
-  font-size: 0.95rem;
-  color: #555;
-  margin-bottom: 0.5rem;
-}
-
-.voting-card .card-date {
-  font-size: 0.85rem;
-  color: #888;
-  margin-top: auto;
-}
-.voting-card a {
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  color: inherit;
-}
-
-.voting-card a::before,
-.voting-card a::after {
-  content: none !important;
-  display: none !important;
-}
-
-.voting-card a[href^="http"]:not(:has(.card-label)) {
-  font-size: 0 !important;
-}
-.voting-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
   margin-top: 2rem;
 }
 
@@ -442,88 +367,4 @@ main {
 
 .voting-card a::before,
 .voting-card a::after {
-  content: none !important;
-  display: none !important;
-}
-
-.voting-card a[href^="http"]:not(:has(.card-label)) {
-  font-size: 0 !important;
-}
-
-.voting-card .card-icon {
-  font-size: 2.6rem;
-  margin-bottom: 0.5rem;
-}
-
-.voting-card .card-label {
-  font-weight: bold;
-  font-size: 1.2rem;
-  margin-bottom: 0.25rem;
-}
-
-.voting-card .card-description {
-  font-size: 0.95rem;
-  color: #555;
-  margin-bottom: 0.5rem;
-}
-
-.voting-card .card-date {
-  font-size: 0.85rem;
-  color: #888;
-  margin-top: auto;
-}
-.voting-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.voting-card {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  text-align: left;
-  transition: box-shadow 0.2s ease;
-}
-
-.voting-card:hover {
-  box-shadow: 0 0 0 2px crimson;
-}
-
-.voting-card a {
-  text-decoration: none;
-  color: inherit;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-}
-
-.voting-card .card-icon {
-  font-size: 2.6rem;
-  margin-bottom: 0.5rem;
-}
-
-.voting-card .card-label {
-  font-weight: bold;
-  font-size: 1.2rem;
-  margin-bottom: 0.25rem;
-}
-
-.voting-card .card-description {
-  font-size: 0.95rem;
-  color: #555;
-  margin-bottom: 0.5rem;
-}
-
-.voting-card .card-date {
-  font-size: 0.85rem;
-  color: #888;
-  margin-top: auto;
-}
+  content
