@@ -391,3 +391,14 @@ function showModal(id) {
   const modal = document.getElementById(`${id}-modal`);
   if (modal) modal.style.display = 'block';
 }
+function renderOfficials() {
+  console.log("renderOfficials triggered");
+}
+
+function showCivic() {
+  console.log("showCivic triggered");
+}
+
+function showOrganizations() {
+  console.log("showOrganizations triggered");
+}
