@@ -1,15 +1,60 @@
 {
-    "Alabama": {
-        "register": "https://www.sos.alabama.gov/alabama-votes/voter/register-to-vote",
-        "id": "https://www.sos.alabama.gov/alabama-votes/voter/voter-id",
-        "absentee": "https://www.sos.alabama.gov/alabama-votes/voter/absentee-voting",
-        "early": "https://www.sos.alabama.gov/alabama-votes/voter/absentee-voting",
-        "polling": "https://myinfo.alabamavotes.gov/voterview/",
-        "sample": "https://www.sos.alabama.gov/alabama-votes/2024-general-election-sample-ballots",
-        "military": "https://www.sos.alabama.gov/alabama-votes/voter/absentee-voting/UOCAVA-voters",
-        "counties": "https://www.sos.alabama.gov/city-county-lookup",
-        "tools": "https://www.sos.alabama.gov/alabama-votes/voter/election-information"
-    },
+   "Alabama": {
+  "register": {
+    "url": "https://www.sos.alabama.gov/alabama-votes/voter/register-to-vote",
+    "icon": "📝",
+    "description": "Register online or check your status",
+    "deadline": "Deadline: October 21, 2025"
+  },
+  "id": {
+    "url": "https://www.sos.alabama.gov/alabama-votes/voter/voter-id",
+    "icon": "🪪",
+    "description": "Review Alabama's voter ID requirements",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://www.sos.alabama.gov/alabama-votes/voter/absentee-voting",
+    "icon": "📬",
+    "description": "Request and return absentee ballot",
+    "deadline": "Request by: October 29, 2025"
+  },
+  "early": {
+    "url": "https://www.sos.alabama.gov/alabama-votes/voter/absentee-voting",
+    "icon": "⏰",
+    "description": "Check early voting options and deadlines",
+    "deadline": ""
+  },
+  "polling": {
+    "url": "https://myinfo.alabamavotes.gov/voterview/",
+    "icon": "📍",
+    "description": "Find your polling place and hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://www.sos.alabama.gov/alabama-votes/2024-general-election-sample-ballots",
+    "icon": "🧾",
+    "description": "Preview your sample ballot",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://www.sos.alabama.gov/alabama-votes/voter/absentee-voting/UOCAVA-voters",
+    "icon": "🎖️",
+    "description": "Voting info for military and overseas voters",
+    "deadline": "Request by: October 29, 2025"
+  },
+  "counties": {
+    "url": "https://www.sos.alabama.gov/city-county-lookup",
+    "icon": "🏛️",
+    "description": "Find your county election office",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://www.sos.alabama.gov/alabama-votes/voter/election-information",
+    "icon": "🧰",
+    "description": "Explore Alabama's official voting tools",
+    "deadline": ""
+  }
+},
     "Alaska": {
         "register": "https://www.elections.alaska.gov/Core/voterregistration.php",
         "id": "https://www.elections.alaska.gov/Core/voteridrequirements.php",
