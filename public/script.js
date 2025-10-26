@@ -391,8 +391,3 @@ function showModal(id) {
   const modal = document.getElementById(`${id}-modal`);
   if (modal) modal.style.display = 'block';
 }
-
-function closeModal(id) {
-  const modal = document.getElementById(`${id}-modal`);
-  if (modal) modal.style.display = 'none';
-}
