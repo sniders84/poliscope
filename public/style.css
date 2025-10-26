@@ -525,3 +525,60 @@ main {
   color: #888;
   margin-top: auto;
 }
+#voting-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.voting-card {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 220px;
+  transition: transform 0.2s ease;
+}
+
+.voting-card:hover {
+  transform: scale(1.03);
+}
+
+.voting-card a {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.voting-card .card-icon {
+  font-size: 2.4rem;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+.voting-card .card-label {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+.voting-card .card-description {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.voting-card .card-date {
+  font-size: 0.85rem;
+  color: #888;
+  margin-top: auto;
+}
