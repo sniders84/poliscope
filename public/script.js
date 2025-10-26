@@ -326,6 +326,7 @@ function openModal(official) {
 
   const contact = official.contact || {};
   const bills = official.billsSigned || [];
+  console.log('Bills for', official.name, bills);
 
   const photoSrc = official.photo && official.photo.trim() !== ''
     ? official.photo
