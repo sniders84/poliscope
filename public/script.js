@@ -20,6 +20,7 @@ function showVoting() {
   showTab('voting');
   const votingCards = document.getElementById('voting-cards');
   votingCards.innerHTML = '';
+console.log("showVoting() triggered");
 
   fetch('/voting-data.json')
     .then(res => {
