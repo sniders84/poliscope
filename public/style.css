@@ -321,6 +321,7 @@ main {
   text-decoration: none;
 }
 /* Voting Cards — Final Spec */
+/* Voting Cards — Final Spec */
 #voting-cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -346,20 +347,10 @@ main {
   transform: scale(1.03);
 }
 
-/* Prevent <a> from displaying raw URL text */
 .voting-card a {
   text-decoration: none;
   color: inherit;
-  display: block;
-  height: 100%;
-  width: 100%;
-}
-
-/* Ensure only child divs are styled, not the link itself */
-.voting-card a::before,
-.voting-card a::after {
-  content: none;
-  display: none;
+  display: contents; /* Prevents link from wrapping visible content */
 }
 
 .voting-card .card-icon {
