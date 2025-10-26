@@ -478,3 +478,31 @@ main {
   margin: 0.1em 0;
   line-height: 1.2;
 }
+/* 🔧 TRIPLE the emoji size — no extra spacing */
+.voting-card .card-icon {
+  font-size: 9em; /* TRIPLE the size of 3em baseline */
+  line-height: 1;
+  margin-bottom: 0.2em;
+}
+
+.voting-card a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1em;
+  min-height: 200px;
+}
+
+.voting-card .card-label {
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-bottom: 0.2em;
+}
+
+.voting-card .card-description,
+.voting-card .card-date {
+  font-size: 0.9em;
+  margin: 0.1em 0;
+  line-height: 1.2;
+}
