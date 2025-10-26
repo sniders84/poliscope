@@ -312,6 +312,14 @@ function renderOfficials(stateFilter = null, query = '') {
   });
 }
 function openModal(official) {
+  const modal = document.getElementById('officials-modal');
+  const modalContent = document.getElementById('officials-content');
+  if (!modal || !modalContent) return;
+
+  const contact = official.contact || {};
+  const bills = official.billsSigned || [];
+  const sources = (official.engagement && official.engagement.sources) || [];
+
   modalContent.innerHTML = `
     <h2>${official.name}</h2>
     <p><strong>Office:</strong> ${official.office}</p>
@@ -320,11 +328,24 @@ function openModal(official) {
     <p><strong>Party:</strong> ${official.party}</p>
     <p><strong>Term:</strong> ${new Date(official.termStart).getFullYear()}–${new Date(official.termEnd).getFullYear()}</p>
     ${official.bio ? `<p>${official.bio}</p>` : ''}
+    ${official.education ? `<p><strong>Education:</strong> ${official.education}</p>` : ''}
+    ${official.platform ? `<p><strong>Platform:</strong> ${official.platform}</p>` : ''}
+    ${official.proposals ? `<p><strong>Proposals:</strong> ${official.proposals}</p>` : ''}
+    ${official.vetoes ? `<p><strong>Vetoes:</strong> ${official.vetoes}</p>` : ''}
+    ${official.salary ? `<p><strong>Salary:</strong> ${official.salary}</p>` : ''}
+    ${official.pollingScore ? `<p><strong>Polling:</strong> ${official.pollingScore}</p>` : ''}
+    ${official.pollingSource ? `<p><a href="${official.pollingSource}" target="_blank">Polling Source</a></p>` : ''}
     ${official.website ? `<p><a href="${official.website}" target="_blank">Official Website</a></p>` : ''}
+    ${contact.email ? `<p><strong>Email:</strong> ${contact.email}</p>` : ''}
+    ${contact.phone ? `<p><strong>Phone:</strong> ${contact.phone}</p>` : ''}
+    ${contact.website ? `<p><a href="${contact.website}" target="_blank">Contact Website</a></p>` : ''}
+    ${official.ballotpediaLink ? `<p><a href="${official.ballotpediaLink}" target="_blank">Ballotpedia Profile</a></p>` : ''}
+    ${bills.length > 0 ? `<h3>Bills Signed</h3><ul>${bills.map(b => `<li><a href="${b.link}" target="_blank">${b.title}</a></li>`).join('')}</ul>` : ''}
+    ${sources.length > 0 ? `<h3>Sources</h3><ul>${sources.map(s => `<li><a href="${s}" target="_blank">${s}</a></li>`).join('')}</ul>` : ''}
   `;
+
   modal.style.display = 'block';
 }
-
 function closeModalWindow() {
   modal.style.display = 'none';
 }
