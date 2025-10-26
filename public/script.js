@@ -28,6 +28,7 @@ console.log("showVoting() triggered");
       return res.json();
     })
     .then(data => {
+      const selectedState = "U.S. Virgin Islands";
       const stateData = data[selectedState];
 
       if (!stateData || typeof stateData !== 'object') {
