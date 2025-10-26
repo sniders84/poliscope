@@ -22,7 +22,7 @@ function showVoting() {
   votingCards.innerHTML = '';
 console.log("showVoting() triggered");
 
-  fetch('/voting-data.json')
+  fetch('voting-data.json')
     .then(res => {
       if (!res.ok) throw new Error('Voting data file not found');
       return res.json();
