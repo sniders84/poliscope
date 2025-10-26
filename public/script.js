@@ -62,7 +62,7 @@ function showVoting() {
 
         const iconDiv = document.createElement('div');
         iconDiv.className = 'card-icon';
-        iconDiv.textContent = icon || '🗳️';
+        iconDiv.innerHTML = `<span class="emoji">${icon || '🗳️'}</span>`;
 
         const labelDiv = document.createElement('div');
         labelDiv.className = 'card-label';
