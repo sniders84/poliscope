@@ -55,558 +55,3028 @@
     "deadline": ""
   }
 },
-    "Alaska": {
-        "register": "https://www.elections.alaska.gov/Core/voterregistration.php",
-        "id": "https://www.elections.alaska.gov/Core/voteridrequirements.php",
-        "absentee": "https://www.elections.alaska.gov/Core/absenteevoting.php",
-        "early": "https://www.elections.alaska.gov/Core/earlyvoting.php",
-        "polling": "https://www.elections.alaska.gov/Core/pollingplaces.php",
-        "sample": "https://www.elections.alaska.gov/Core/sampleballots.php",
-        "military": "https://www.elections.alaska.gov/Core/militaryandoverseasvoters.php",
-        "counties": "https://www.elections.alaska.gov/Core/contactregionaloffices.php",
-        "tools": "https://www.elections.alaska.gov/"
-    },
-    "Arizona": {
-        "register": "https://azsos.gov/elections/voters/register-vote",
-        "id": "https://azsos.gov/elections/voters/voter-id",
-        "absentee": "https://azsos.gov/elections/voters/early-voting",
-        "early": "https://azsos.gov/elections/voters/early-voting",
-        "polling": "https://my.arizona.vote/",
-        "sample": "https://my.arizona.vote/",
-        "military": "https://azsos.gov/elections/voters/military-overseas-voters",
-        "counties": "https://azsos.gov/elections/voting-election/county-election-info",
-        "tools": "https://azsos.gov/elections"
-    },
-    "Arkansas": {
-        "register": "https://www.sos.arkansas.gov/elections/voter-information/voter-registration-information",
-        "id": "https://www.sos.arkansas.gov/elections/voter-information/voter-id-requirements",
-        "absentee": "https://www.sos.arkansas.gov/elections/voter-information/absentee-voting",
-        "early": "https://www.sos.arkansas.gov/elections/voter-information/early-voting",
-        "polling": "https://www.voterview.ar-nova.org/voterview/",
-        "sample": "https://www.voterview.ar-nova.org/voterview/",
-        "military": "https://www.sos.arkansas.gov/elections/voter-information/military-overseas-voting",
-        "counties": "https://www.sos.arkansas.gov/elections/voter-information/county-clerks",
-        "tools": "https://www.sos.arkansas.gov/elections"
-    },
-    "California": {
-        "register": "https://registertovote.ca.gov/",
-        "id": "https://www.sos.ca.gov/elections/voter-registration/voter-id",
-        "absentee": "https://www.sos.ca.gov/elections/voter-registration/vote-mail",
-        "early": "https://www.sos.ca.gov/elections/voter-registration/early-voting",
-        "polling": "https://www.sos.ca.gov/elections/polling-place",
-        "sample": "https://www.sos.ca.gov/elections/sample-ballot",
-        "military": "https://www.sos.ca.gov/elections/voter-registration/military-overseas-voters",
-        "counties": "https://www.sos.ca.gov/elections/voting-resources/county-elections-offices",
-        "tools": "https://www.sos.ca.gov/elections"
-    },
-    "Colorado": {
-        "register": "https://www.coloradosos.gov/voter/pages/pub/home.xhtml",
-        "id": "https://www.coloradosos.gov/pubs/elections/Resources/IDRequirements.html",
-        "absentee": "https://www.coloradosos.gov/pubs/elections/FAQs/VotingByMail.html",
-        "early": "https://www.coloradosos.gov/pubs/elections/FAQs/EarlyVoting.html",
-        "polling": "https://www.coloradosos.gov/voter/pages/pub/WhereToVote.xhtml",
-        "sample": "https://www.coloradosos.gov/voter/pages/pub/sampleBallot.xhtml",
-        "military": "https://www.coloradosos.gov/pubs/elections/UOCAVA.html",
-        "counties": "https://www.coloradosos.gov/pubs/elections/Resources/CountyElectionOffices.html",
-        "tools": "https://www.coloradosos.gov/pubs/elections/main.html"
-    },
-    "Connecticut": {
-        "register": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Voter-Registration-Information",
-        "id": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Voter-ID-Requirements",
-        "absentee": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Absentee-Voting",
-        "early": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Early-Voting",
-        "polling": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Polling-Place-Lookup",
-        "sample": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Sample-Ballots",
-        "military": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Military-and-Overseas-Voting",
-        "counties": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Town-Clerk-Directory",
-        "tools": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information"
-    },
-    "Delaware": {
-        "register": "https://elections.delaware.gov/voter/votereg.shtml",
-        "id": "https://elections.delaware.gov/voter/voterid.shtml",
-        "absentee": "https://elections.delaware.gov/voter/absentee.shtml",
-        "early": "https://elections.delaware.gov/voter/earlyvoting.shtml",
-        "polling": "https://ivote.de.gov/voterview",
-        "sample": "https://elections.delaware.gov/voter/sampleballots.shtml",
-        "military": "https://elections.delaware.gov/voter/military.shtml",
-        "counties": "https://elections.delaware.gov/information/electionoffices.shtml",
-        "tools": "https://elections.delaware.gov/"
-    },
-    "Florida": {
-        "register": "https://registertovoteflorida.gov/",
-        "id": "https://dos.fl.gov/elections/for-voters/voter-registration/voter-id/",
-        "absentee": "https://dos.fl.gov/elections/for-voters/voting/vote-by-mail/",
-        "early": "https://dos.fl.gov/elections/for-voters/voting/early-voting/",
-        "polling": "https://dos.fl.gov/elections/for-voters/voting/election-day-voting/",
-        "sample": "https://dos.fl.gov/elections/for-voters/voting/sample-ballots/",
-        "military": "https://dos.fl.gov/elections/for-voters/military-and-overseas-voters/",
-        "counties": "https://dos.fl.gov/elections/contacts/supervisor-of-elections/",
-        "tools": "https://dos.fl.gov/elections/"
-    },
-    "Georgia": {
-        "register": "https://georgia.gov/register-vote",
-        "id": "https://sos.ga.gov/page/georgia-voter-identification-requirements",
-        "absentee": "https://sos.ga.gov/page/absentee-voting",
-        "early": "https://sos.ga.gov/page/advance-voting",
-        "polling": "https://mvp.sos.ga.gov/s/",
-        "sample": "https://mvp.sos.ga.gov/s/",
-        "military": "https://sos.ga.gov/page/military-and-overseas-voting",
-        "counties": "https://sos.ga.gov/elections/election-county-contact-information",
-        "tools": "https://sos.ga.gov/elections"
-    },
-    "Hawaii": {
-        "register": "https://olvr.hawaii.gov/",
-        "id": "https://elections.hawaii.gov/voting/voter-registration-drives/voter-id-requirements/",
-        "absentee": "https://elections.hawaii.gov/voting/vote-by-mail/",
-        "early": "https://elections.hawaii.gov/voting/in-person-voting/",
-        "polling": "https://elections.hawaii.gov/voting/in-person-voting/",
-        "sample": "https://elections.hawaii.gov/voting/sample-ballots/",
-        "military": "https://elections.hawaii.gov/voting/military-and-overseas-voting/",
-        "counties": "https://elections.hawaii.gov/contact-us/",
-        "tools": "https://elections.hawaii.gov/"
-    },
-    "Idaho": {
-        "register": "https://voteidaho.gov/voter-registration/",
-        "id": "https://voteidaho.gov/voter-id-requirements/",
-        "absentee": "https://voteidaho.gov/vote-absentee/",
-        "early": "https://voteidaho.gov/early-voting/",
-        "polling": "https://voteidaho.gov/where-to-vote/",
-        "sample": "https://voteidaho.gov/sample-ballots/",
-        "military": "https://voteidaho.gov/military-overseas-voters/",
-        "counties": "https://voteidaho.gov/county-elections-offices/",
-        "tools": "https://voteidaho.gov/"
-    },
-    "Illinois": {
-        "register": "https://ova.elections.il.gov/",
-        "id": "https://www.elections.il.gov/VotingInformation/VoterIdentification.aspx",
-        "absentee": "https://www.elections.il.gov/VotingInformation/VotingByMail.aspx",
-        "early": "https://www.elections.il.gov/VotingInformation/EarlyVoting.aspx",
-        "polling": "https://www.elections.il.gov/VotingInformation/PollingPlaceLookup.aspx",
-        "sample": "https://www.elections.il.gov/VotingInformation/SampleBallots.aspx",
-        "military": "https://www.elections.il.gov/VotingInformation/MilitaryOverseasVoting.aspx",
-        "counties": "https://www.elections.il.gov/AboutTheBoard/CountyClerks.aspx",
-        "tools": "https://www.elections.il.gov/"
-    },
-    "Indiana": {
-        "register": "https://indianavoters.in.gov/",
-        "id": "https://www.in.gov/sos/elections/voter-information/photo-id-requirements/",
-        "absentee": "https://www.in.gov/sos/elections/voter-information/absentee-voting/",
-        "early": "https://www.in.gov/sos/elections/voter-information/early-voting/",
-        "polling": "https://indianavoters.in.gov/",
-        "sample": "https://indianavoters.in.gov/",
-        "military": "https://www.in.gov/sos/elections/voter-information/military-and-overseas-voters/",
-        "counties": "https://www.in.gov/sos/elections/voter-information/county-election-offices/",
-        "tools": "https://www.in.gov/sos/elections/"
-    },
-    "Iowa": {
-        "register": "https://sos.iowa.gov/voters/voter-registration",
-        "id": "https://sos.iowa.gov/voters/voterid",
-        "absentee": "https://sos.iowa.gov/elections/electioninfo/absenteeinfo.html",
-        "early": "https://sos.iowa.gov/elections/electioninfo/earlyvoting.html",
-        "polling": "https://sos.iowa.gov/elections/voterreg/pollingplace/search.aspx",
-        "sample": "https://sos.iowa.gov/elections/electioninfo/sampleballots.html",
-        "military": "https://sos.iowa.gov/elections/electioninfo/uocava.html",
-        "counties": "https://sos.iowa.gov/elections/auditors/auditorslist.html",
-        "tools": "https://sos.iowa.gov/elections/voters/index.html"
-    },
-    "Kansas": {
-        "register": "https://sos.ks.gov/elections/voter-registration.html",
-        "id": "https://sos.ks.gov/elections/voter-id.html",
-        "absentee": "https://sos.ks.gov/elections/advance-voting.html",
-        "early": "https://sos.ks.gov/elections/advance-voting.html",
-        "polling": "https://myvoteinfo.voteks.org/voterview/",
-        "sample": "https://myvoteinfo.voteks.org/voterview/",
-        "military": "https://sos.ks.gov/elections/military-overseas-voters.html",
-        "counties": "https://sos.ks.gov/elections/election-officials.html",
-        "tools": "https://sos.ks.gov/elections/elections.html"
-    },
-    "Kentucky": {
-        "register": "https://elect.ky.gov/Resources/Pages/Registration.aspx",
-        "id": "https://elect.ky.gov/Resources/Pages/Voter-ID.aspx",
-        "absentee": "https://elect.ky.gov/Voters/Pages/Absentee-Voting.aspx",
-        "early": "https://elect.ky.gov/Voters/Pages/Early-Voting.aspx",
-        "polling": "https://vrsws.sos.ky.gov/vic/",
-        "sample": "https://elect.ky.gov/Voters/Pages/Sample-Ballots.aspx",
-        "military": "https://elect.ky.gov/Voters/Pages/Military-Voting.aspx",
-        "counties": "https://elect.ky.gov/About-Us/Pages/County-Clerks.aspx",
-        "tools": "https://elect.ky.gov/Voters/Pages/default.aspx"
-    },
-    "Louisiana": {
-        "register": "https://www.sos.la.gov/ElectionsAndVoting/Pages/OnlineVoterRegistration.aspx",
-        "id": "https://www.sos.la.gov/ElectionsAndVoting/Vote/VoterIDRequirements/Pages/default.aspx",
-        "absentee": "https://www.sos.la.gov/ElectionsAndVoting/Vote/VoteByMail/Pages/default.aspx",
-        "early": "https://www.sos.la.gov/ElectionsAndVoting/Vote/EarlyVoting/Pages/default.aspx",
-        "polling": "https://voterportal.sos.la.gov/",
-        "sample": "https://voterportal.sos.la.gov/",
-        "military": "https://www.sos.la.gov/ElectionsAndVoting/Vote/MilitaryAndOverseasVoting/Pages/default.aspx",
-        "counties": "https://www.sos.la.gov/ElectionsAndVoting/Pages/ParishOfficials.aspx",
-        "tools": "https://www.sos.la.gov/ElectionsAndVoting/Pages/default.aspx"
-    },
-    "Maine": {
-        "register": "https://www.maine.gov/sos/elections/voter-information/voter-registration",
-        "id": "https://www.maine.gov/sos/elections/voter-information/voter-id",
-        "absentee": "https://www.maine.gov/sos/elections/voter-information/absentee-voting",
-        "early": "https://www.maine.gov/sos/elections/voter-information/early-voting",
-        "polling": "https://www.maine.gov/sos/elections/voter-information/polling-places",
-        "sample": "https://www.maine.gov/sos/elections/voter-information/sample-ballots",
-        "military": "https://www.maine.gov/sos/elections/voter-information/military-overseas-voting",
-        "counties": "https://www.maine.gov/sos/elections/voter-information/municipal-clerks",
-        "tools": "https://www.maine.gov/sos/elections/voter-information"
-    },
-    "Maryland": {
-        "register": "https://elections.maryland.gov/voter_registration/index.html",
-        "id": "https://elections.maryland.gov/voting/voter_id.html",
-        "absentee": "https://elections.maryland.gov/voting/absentee.html",
-        "early": "https://elections.maryland.gov/voting/early_voting.html",
-        "polling": "https://voterservices.elections.maryland.gov/VoterSearch",
-        "sample": "https://voterservices.elections.maryland.gov/VoterSearch",
-        "military": "https://elections.maryland.gov/voting/military.html",
-        "counties": "https://elections.maryland.gov/about/county_boards.html",
-        "tools": "https://elections.maryland.gov/"
-    },
-    "Massachusetts": {
-        "register": "https://www.sec.state.ma.us/ovr/",
-        "id": "https://www.sec.state.ma.us/ele/eleidx.htm",
-        "absentee": "https://www.sec.state.ma.us/ele/eleabsentee/absidx.htm",
-        "early": "https://www.sec.state.ma.us/ele/eleev/early-voting.htm",
-        "polling": "https://www.sec.state.ma.us/wheredoivotema/bal/myelectioninfo.aspx",
-        "sample": "https://www.sec.state.ma.us/wheredoivotema/bal/myelectioninfo.aspx",
-        "military": "https://www.sec.state.ma.us/ele/elemil/milidx.htm",
-        "counties": "https://www.sec.state.ma.us/ele/eleclk/clkidx.htm",
-        "tools": "https://www.sec.state.ma.us/ele/eleidx.htm"
-    },
-    "Michigan": {
-        "register": "https://mvic.sos.state.mi.us/RegisterVoter",
-        "id": "https://mvic.sos.state.mi.us/VoterIDRequirements",
-        "absentee": "https://mvic.sos.state.mi.us/AVApplication",
-        "early": "https://mvic.sos.state.mi.us/VoteEarly",
-        "polling": "https://mvic.sos.state.mi.us/VoterInformation",
-        "sample": "https://mvic.sos.state.mi.us/VoterInformation",
-        "military": "https://mvic.sos.state.mi.us/MilitaryVoting",
-        "counties": "https://www.michigan.gov/sos/elections/local-officials",
-        "tools": "https://mvic.sos.state.mi.us/"
-    },
-    "Minnesota": {
-        "register": "https://www.sos.state.mn.us/elections-voting/register-to-vote/",
-        "id": "https://www.sos.state.mn.us/elections-voting/election-day-voting/voter-id-requirements/",
-        "absentee": "https://www.sos.state.mn.us/elections-voting/other-ways-to-vote/vote-by-mail/",
-        "early": "https://www.sos.state.mn.us/elections-voting/other-ways-to-vote/vote-early-in-person/",
-        "polling": "https://pollfinder.sos.state.mn.us/",
-        "sample": "https://www.sos.state.mn.us/elections-voting/whats-on-my-ballot/",
-        "military": "https://www.sos.state.mn.us/elections-voting/other-ways-to-vote/military-overseas-voting/",
-        "counties": "https://www.sos.state.mn.us/elections-voting/contact-your-election-office/",
-        "tools": "https://www.sos.state.mn.us/elections-voting/"
-    },
-    "Mississippi": {
-        "register": "https://www.sos.ms.gov/elections-voting/voter-registration-information",
-        "id": "https://www.sos.ms.gov/elections-voting/voter-id-information",
-        "absentee": "https://www.sos.ms.gov/elections-voting/absentee-voting-information",
-        "early": "https://www.sos.ms.gov/elections-voting/absentee-voting-information",
-        "polling": "https://www.sos.ms.gov/elections-voting/polling-place-information",
-        "sample": "https://www.sos.ms.gov/elections-voting/sample-ballots",
-        "military": "https://www.sos.ms.gov/elections-voting/military-overseas-voting",
-        "counties": "https://www.sos.ms.gov/elections-voting/county-election-offices",
-        "tools": "https://www.sos.ms.gov/elections-voting"
-    },
-    "Missouri": {
-        "register": "https://www.sos.mo.gov/elections/goVoteMissouri/register",
-        "id": "https://www.sos.mo.gov/elections/goVoteMissouri/voterid",
-        "absentee": "https://www.sos.mo.gov/elections/goVoteMissouri/howtovote#absentee",
-        "early": "https://www.sos.mo.gov/elections/goVoteMissouri/howtovote#early",
-        "polling": "https://voteroutreach.sos.mo.gov/PRD/VoterOutreach/VoterLookup.aspx",
-        "sample": "https://voteroutreach.sos.mo.gov/PRD/VoterOutreach/VoterLookup.aspx",
-        "military": "https://www.sos.mo.gov/elections/goVoteMissouri/military",
-        "counties": "https://www.sos.mo.gov/elections/goVoteMissouri/localelectionauthority",
-        "tools": "https://www.sos.mo.gov/elections"
-    },
-    "Montana": {
-        "register": "https://sosmt.gov/elections/vote/",
-        "id": "https://sosmt.gov/elections/vote/#id",
-        "absentee": "https://sosmt.gov/elections/vote/#absentee",
-        "early": "https://sosmt.gov/elections/vote/#early",
-        "polling": "https://app.mt.gov/voterinfo/",
-        "sample": "https://app.mt.gov/voterinfo/",
-        "military": "https://sosmt.gov/elections/vote/#military",
-        "counties": "https://sosmt.gov/elections/administration/#county",
-        "tools": "https://sosmt.gov/elections/"
-    },
-    "Nebraska": {
-        "register": "https://www.nebraska.gov/apps-sos-voter-registration/",
-        "id": "https://sos.nebraska.gov/elections/voter-id",
-        "absentee": "https://sos.nebraska.gov/elections/early-voting",
-        "early": "https://sos.nebraska.gov/elections/early-voting",
-        "polling": "https://www.votercheck.necvr.ne.gov/voterview/",
-        "sample": "https://www.votercheck.necvr.ne.gov/voterview/",
-        "military": "https://sos.nebraska.gov/elections/military-voters",
-        "counties": "https://sos.nebraska.gov/elections/election-officials",
-        "tools": "https://sos.nebraska.gov/elections"
-    },
-    "Nevada": {
-        "register": "https://www.nvsos.gov/voter-registration",
-        "id": "https://www.nvsos.gov/voter-id",
-        "absentee": "https://www.nvsos.gov/voting-by-mail",
-        "early": "https://www.nvsos.gov/early-voting",
-        "polling": "https://www.nvsos.gov/voter-search",
-        "sample": "https://www.nvsos.gov/sample-ballot",
-        "military": "https://www.nvsos.gov/military-voting",
-        "counties": "https://www.nvsos.gov/elections/county-clerks",
-        "tools": "https://www.nvsos.gov/elections"
-    },
-    "New Hampshire": {
-        "register": "https://www.sos.nh.gov/elections/voters/register-vote",
-        "id": "https://www.sos.nh.gov/elections/voters/voter-id",
-        "absentee": "https://www.sos.nh.gov/elections/voters/absentee-voting",
-        "early": "https://www.sos.nh.gov/elections/voters/early-voting",
-        "polling": "https://app.sos.nh.gov/voterinformation",
-        "sample": "https://app.sos.nh.gov/voterinformation",
-        "military": "https://www.sos.nh.gov/elections/voters/military-overseas-voting",
-        "counties": "https://www.sos.nh.gov/elections/election-officials",
-        "tools": "https://www.sos.nh.gov/elections"
-    },
-    "New Jersey": {
-        "register": "https://voter.svrs.nj.gov/register",
-        "id": "https://www.nj.gov/state/elections/voting-information-voter-id.shtml",
-        "absentee": "https://www.nj.gov/state/elections/vote-by-mail.shtml",
-        "early": "https://www.nj.gov/state/elections/vote-early.shtml",
-        "polling": "https://voter.svrs.nj.gov/polling-place-search",
-        "sample": "https://voter.svrs.nj.gov/sample-ballot",
-        "military": "https://www.nj.gov/state/elections/military-overseas-voting.shtml",
-        "counties": "https://www.nj.gov/state/elections/county-election-offices.shtml",
-        "tools": "https://www.nj.gov/state/elections/"
-    },
-    "New Mexico": {
-        "register": "https://www.sos.nm.gov/voting-and-elections/voter-information/voter-registration/",
-        "id": "https://www.sos.nm.gov/voting-and-elections/voter-information/voter-id-requirements/",
-        "absentee": "https://www.sos.nm.gov/voting-and-elections/voter-information/absentee-voting/",
-        "early": "https://www.sos.nm.gov/voting-and-elections/voter-information/early-voting/",
-        "polling": "https://voterportal.servis.sos.state.nm.us/WhereToVote.aspx",
-        "sample": "https://voterportal.servis.sos.state.nm.us/WhereToVote.aspx",
-        "military": "https://www.sos.nm.gov/voting-and-elections/voter-information/military-overseas-voting/",
-        "counties": "https://www.sos.nm.gov/voting-and-elections/voter-information/county-clerks/",
-        "tools": "https://www.sos.nm.gov/voting-and-elections/"
-    },
-    "New York": {
-        "register": "https://voterreg.dmv.ny.gov/MotorVoter/",
-        "id": "https://www.elections.ny.gov/VotingRegister.html#IDReq",
-        "absentee": "https://www.elections.ny.gov/VotingAbsentee.html",
-        "early": "https://www.elections.ny.gov/VotingEarly.html",
-        "polling": "https://voterlookup.elections.ny.gov/",
-        "sample": "https://voterlookup.elections.ny.gov/",
-        "military": "https://www.elections.ny.gov/VotingMilitaryFederal.html",
-        "counties": "https://www.elections.ny.gov/CountyBoards.html",
-        "tools": "https://www.elections.ny.gov/"
-    },
-    "North Carolina": {
-        "register": "https://www.ncsbe.gov/registering",
-        "id": "https://www.ncsbe.gov/voting/voter-id",
-        "absentee": "https://www.ncsbe.gov/voting/vote-mail",
-        "early": "https://www.ncsbe.gov/voting/vote-early-person",
-        "polling": "https://vt.ncsbe.gov/PPLkup/",
-        "sample": "https://www.ncsbe.gov/voting/sample-ballot",
-        "military": "https://www.ncsbe.gov/voting/military-and-overseas-voting",
-        "counties": "https://www.ncsbe.gov/about-elections/county-boards-elections",
-        "tools": "https://www.ncsbe.gov/voting/voter-tools-and-forms"
-    },
-    "North Dakota": {
-        "register": "https://vip.sos.nd.gov/PortalListDetails.aspx?ptlhPKID=79&ptlPKID=7",
-        "id": "https://vip.sos.nd.gov/IDRequirements.aspx",
-        "absentee": "https://vip.sos.nd.gov/AbsenteeBallot.aspx",
-        "early": "https://vip.sos.nd.gov/EarlyVoting.aspx",
-        "polling": "https://vip.sos.nd.gov/WhereToVote.aspx",
-        "sample": "https://vip.sos.nd.gov/SampleBallot.aspx",
-        "military": "https://vip.sos.nd.gov/MilitaryVoting.aspx",
-        "counties": "https://vip.sos.nd.gov/CountyAuditors.aspx",
-        "tools": "https://vip.sos.nd.gov/"
-    },
-    "Ohio": {
-        "register": "https://olvr.ohiosos.gov/",
-        "id": "https://www.ohiosos.gov/elections/voters/id-requirements/",
-        "absentee": "https://www.ohiosos.gov/elections/voters/absentee-voting/",
-        "early": "https://www.ohiosos.gov/elections/voters/early-in-person-voting/",
-        "polling": "https://voterlookup.ohiosos.gov/voterlookup.aspx",
-        "sample": "https://www.ohiosos.gov/elections/voters/sample-ballots/",
-        "military": "https://www.ohiosos.gov/elections/voters/military-overseas-voting/",
-        "counties": "https://www.ohiosos.gov/elections/elections-officials/county-boards-of-elections/",
-        "tools": "https://www.ohiosos.gov/elections/"
-    },
-    "Oklahoma": {
-        "register": "https://okvoterportal.okelections.us/Home/RegWizard",
-        "id": "https://oklahoma.gov/elections/voters/voter-id.html",
-        "absentee": "https://oklahoma.gov/elections/voters/absentee-voting.html",
-        "early": "https://oklahoma.gov/elections/voters/early-voting.html",
-        "polling": "https://okvoterportal.okelections.us/",
-        "sample": "https://okvoterportal.okelections.us/",
-        "military": "https://oklahoma.gov/elections/voters/military-and-overseas-voters.html",
-        "counties": "https://oklahoma.gov/elections/about-us/county-election-boards.html",
-        "tools": "https://oklahoma.gov/elections.html"
-    },
-    "Oregon": {
-        "register": "https://sos.oregon.gov/voting/pages/registration.aspx",
-        "id": "https://sos.oregon.gov/voting/pages/voter-id.aspx",
-        "absentee": "https://sos.oregon.gov/voting/pages/vote-by-mail.aspx",
-        "early": "https://sos.oregon.gov/voting/pages/vote-early.aspx",
-        "polling": "https://sos.oregon.gov/voting/pages/my-vote.aspx",
-        "sample": "https://sos.oregon.gov/voting/pages/my-vote.aspx",
-        "military": "https://sos.oregon.gov/voting/pages/military-overseas.aspx",
-        "counties": "https://sos.oregon.gov/elections/pages/county-offices.aspx",
-        "tools": "https://sos.oregon.gov/voting/pages/default.aspx"
-    },
-    "Pennsylvania": {
-        "register": "https://www.pavoterservices.pa.gov/Pages/VoterRegistrationApplication.aspx",
-        "id": "https://www.vote.pa.gov/Register-to-Vote/Pages/Voter-ID-Requirements.aspx",
-        "absentee": "https://www.vote.pa.gov/Voting-in-PA/Pages/Mail-and-Absentee-Ballot.aspx",
-        "early": "https://www.vote.pa.gov/Voting-in-PA/Pages/Early-Voting.aspx",
-        "polling": "https://www.pavoterservices.pa.gov/Pages/PollingPlaceInfo.aspx",
-        "sample": "https://www.pavoterservices.pa.gov/Pages/Ballot.aspx",
-        "military": "https://www.vote.pa.gov/Voting-in-PA/Pages/Military-and-Overseas-Voters.aspx",
-        "counties": "https://www.vote.pa.gov/About-Elections/Pages/Contact-Your-Election-Officials.aspx",
-        "tools": "https://www.vote.pa.gov/"
-    },
-    "Rhode Island": {
-        "register": "https://vote.sos.ri.gov/",
-        "id": "https://vote.sos.ri.gov/VoterID",
-        "absentee": "https://vote.sos.ri.gov/Voter/VoteByMail",
-        "early": "https://vote.sos.ri.gov/Voter/EarlyVoting",
-        "polling": "https://vote.sos.ri.gov/Voter/PollingPlace",
-        "sample": "https://vote.sos.ri.gov/Voter/Ballot",
-        "military": "https://vote.sos.ri.gov/Voter/Military",
-        "counties": "https://vote.sos.ri.gov/About/Contact",
-        "tools": "https://vote.sos.ri.gov/"
-    },
-    "South Carolina": {
-        "register": "https://votesc.gov/register",
-        "id": "https://votesc.gov/voter-id",
-        "absentee": "https://votesc.gov/absentee",
-        "early": "https://votesc.gov/early-voting",
-        "polling": "https://votesc.gov/polling-place",
-        "sample": "https://votesc.gov/sample-ballot",
-        "military": "https://votesc.gov/military",
-        "counties": "https://votesc.gov/elections-offices",
-        "tools": "https://votesc.gov/"
-    },
-    "South Dakota": {
-        "register": "https://sdsos.gov/elections-voting/voting/register-to-vote/default.aspx",
-        "id": "https://sdsos.gov/elections-voting/voting/voter-id-requirements/default.aspx",
-        "absentee": "https://sdsos.gov/elections-voting/voting/absentee-voting/default.aspx",
-        "early": "https://sdsos.gov/elections-voting/voting/early-voting/default.aspx",
-        "polling": "https://vip.sdsos.gov/VIPLogin.aspx",
-        "sample": "https://vip.sdsos.gov/VIPLogin.aspx",
-        "military": "https://sdsos.gov/elections-voting/voting/military-overseas-voting/default.aspx",
-        "counties": "https://sdsos.gov/elections-voting/election-resources/county-auditor-information/default.aspx",
-        "tools": "https://sdsos.gov/elections-voting/default.aspx"
-    },
-    "Tennessee": {
-        "register": "https://ovr.govote.tn.gov/",
-        "id": "https://sos.tn.gov/elections/voter-id",
-        "absentee": "https://sos.tn.gov/elections/guides/absentee-voting",
-        "early": "https://sos.tn.gov/elections/guides/early-voting",
-        "polling": "https://tnmap.tn.gov/voterlookup/",
-        "sample": "https://tnmap.tn.gov/voterlookup/",
-        "military": "https://sos.tn.gov/elections/guides/military-overseas-voting",
-        "counties": "https://sos.tn.gov/elections/election-commissions",
-        "tools": "https://sos.tn.gov/elections"
-    },
-    "Texas": {
-        "register": "https://www.votetexas.gov/register-to-vote/",
-        "id": "https://www.votetexas.gov/register-to-vote/need-id.html",
-        "absentee": "https://www.votetexas.gov/voting-by-mail/",
-        "early": "https://www.votetexas.gov/early-voting/",
-        "polling": "https://teamrv-mvp.sos.texas.gov/MVP/mvp.do",
-        "sample": "https://teamrv-mvp.sos.texas.gov/MVP/mvp.do",
-        "military": "https://www.votetexas.gov/military-overseas-voters/",
-        "counties": "https://www.sos.state.tx.us/elections/voter/county.shtml",
-        "tools": "https://www.votetexas.gov/"
-    },
-    "Utah": {
-        "register": "https://vote.utah.gov/",
-        "id": "https://vote.utah.gov/voter-id-requirements/",
-        "absentee": "https://vote.utah.gov/vote-by-mail/",
-        "early": "https://vote.utah.gov/early-voting/",
-        "polling": "https://vote.utah.gov/where-to-vote/",
-        "sample": "https://vote.utah.gov/whats-on-my-ballot/",
-        "military": "https://vote.utah.gov/military-overseas-voting/",
-        "counties": "https://vote.utah.gov/county-clerks/",
-        "tools": "https://vote.utah.gov/"
-    },
-    "Vermont": {
-        "register": "https://olvr.vermont.gov/",
-        "id": "https://sos.vermont.gov/elections/voters/voter-id-requirements/",
-        "absentee": "https://sos.vermont.gov/elections/voters/early-absentee-voting/",
-        "early": "https://sos.vermont.gov/elections/voters/early-absentee-voting/",
-        "polling": "https://mvp.vermont.gov/",
-        "sample": "https://mvp.vermont.gov/",
-        "military": "https://sos.vermont.gov/elections/voters/military-overseas-voting/",
-        "counties": "https://sos.vermont.gov/elections/election-officials/",
-        "tools": "https://sos.vermont.gov/elections/"
-    },
-    "Virginia": {
-        "register": "https://vote.elections.virginia.gov/Registration/Eligibility",
-        "id": "https://www.elections.virginia.gov/registration/voter-id/",
-        "absentee": "https://www.elections.virginia.gov/casting-a-ballot/absentee-voting/",
-        "early": "https://www.elections.virginia.gov/casting-a-ballot/early-voting/",
-        "polling": "https://vote.elections.virginia.gov/VoterInformation",
-        "sample": "https://vote.elections.virginia.gov/VoterInformation",
-        "military": "https://www.elections.virginia.gov/casting-a-ballot/military-overseas-voting/",
-        "counties": "https://www.elections.virginia.gov/local-election-officials/",
-        "tools": "https://www.elections.virginia.gov/"
-    },
-    "Washington": {
-        "register": "https://www.sos.wa.gov/elections/voters/register-to-vote/",
-        "id": "https://www.sos.wa.gov/elections/voters/voter-id-requirements/",
-        "absentee": "https://www.sos.wa.gov/elections/voters/vote-by-mail/",
-        "early": "https://www.sos.wa.gov/elections/voters/early-voting/",
-        "polling": "https://www.sos.wa.gov/elections/voters/polling-place/",
-        "sample": "https://www.sos.wa.gov/elections/voters/sample-ballots/",
-        "military": "https://www.sos.wa.gov/elections/voters/military-overseas-voting/",
-        "counties": "https://www.sos.wa.gov/elections/voters/county-election-offices/",
-        "tools": "https://www.sos.wa.gov/elections/"
-    },
-    "West Virginia": {
-        "register": "https://ovr.sos.wv.gov/Register/Landing",
-        "id": "https://sos.wv.gov/elections/voter-information/Pages/VoterID.aspx",
-        "absentee": "https://sos.wv.gov/elections/voter-information/Pages/AbsenteeVotingInformation.aspx",
-        "early": "https://sos.wv.gov/elections/voter-information/Pages/EarlyVotingInformation.aspx",
-        "polling": "https://sos.wv.gov/elections/Pages/GoVoteWV.aspx",
-        "sample": "https://sos.wv.gov/elections/Pages/GoVoteWV.aspx",
-        "military": "https://sos.wv.gov/elections/voter-information/Pages/MilitaryVotingInformation.aspx",
-        "counties": "https://sos.wv.gov/elections/Pages/CountyClerks.aspx",
-        "tools": "https://sos.wv.gov/elections/Pages/default.aspx"
-    },
-    "Wisconsin": {
-        "register": "https://myvote.wi.gov/en-us/Register-To-Vote",
-        "id": "https://myvote.wi.gov/en-us/Photo-ID",
-        "absentee": "https://myvote.wi.gov/en-us/Vote-Absentee-By-Mail",
-        "early": "https://myvote.wi.gov/en-us/Vote-Absentee-In-Person",
-        "polling": "https://myvote.wi.gov/en-us/Find-My-Polling-Place",
-        "sample": "https://myvote.wi.gov/en-us/Whats-On-My-Ballot",
-        "military": "https://myvote.wi.gov/en-us/Military-Voting",
-        "counties": "https://elections.wi.gov/about/county-clerks",
-        "tools": "https://myvote.wi.gov/en-us/"
-    },
-    "Wyoming": {
-        "register": "https://sos.wyo.gov/Elections/RegisteringToVote.aspx",
-        "id": "https://sos.wyo.gov/Elections/VoterID.aspx",
-        "absentee": "https://sos.wyo.gov/Elections/AbsenteeVoting.aspx",
-        "early": "https://sos.wyo.gov/Elections/EarlyVoting.aspx",
-        "polling": "https://sos.wyo.gov/Elections/PollingPlaces.aspx",
-        "sample": "https://sos.wyo.gov/Elections/SampleBallots.aspx",
-        "military": "https://sos.wyo.gov/Elections/MilitaryVoting.aspx",
-        "counties": "https://sos.wyo.gov/Elections/CountyClerks.aspx",
-        "tools": "https://sos.wyo.gov/Elections/"
-    },
-    "American Samoa": {
-        "tools": "https://www.americansamoaelectionoffice.gov/"
-    },
-    "Guam": {
-        "tools": "https://gec.guam.gov/"
-    },
-    "Northern Mariana Islands": {
-        "tools": "https://www.votecnmi.gov.mp/"
-    },
-    "Puerto Rico": {
-        "tools": "https://www.ceepur.org/"
-    },
-    "U.S. Virgin Islands": {
-        "tools": "https://vivote.gov/"
-    }
+   "Alaska": {
+  "register": {
+    "url": "https://voterregistration.alaska.gov/",
+    "icon": "📝",
+    "description": "Register online or update your voter information",
+    "deadline": "Deadline: October 6, 2025"
+  },
+  "id": {
+    "url": "https://www.elections.alaska.gov/Core/voteridrequirements.php",
+    "icon": "🪪",
+    "description": "Review Alaska's voter ID requirements",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://www.elections.alaska.gov/Core/votingbyabsentee.php",
+    "icon": "📬",
+    "description": "Request and return absentee ballot by mail or online",
+    "deadline": "Request by: October 26, 2025"
+  },
+  "early": {
+    "url": "https://www.elections.alaska.gov/Core/earlyvoting.php",
+    "icon": "⏰",
+    "description": "Find early voting locations and hours",
+    "deadline": "Starts: October 21, 2025"
+  },
+  "polling": {
+    "url": "https://www.elections.alaska.gov/Core/pollingplacelocations.php",
+    "icon": "📍",
+    "description": "Find your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://www.elections.alaska.gov/Core/sampleballots.php",
+    "icon": "🧾",
+    "description": "Preview your sample ballot by district",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://www.elections.alaska.gov/Core/militaryandoverseasvoters.php",
+    "icon": "🎖️",
+    "description": "Voting info for military and overseas voters",
+    "deadline": "Request by: October 26, 2025"
+  },
+  "counties": {
+    "url": "https://www.elections.alaska.gov/Core/contactinformation.php",
+    "icon": "🏛️",
+    "description": "Contact your regional election office",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://www.elections.alaska.gov/",
+    "icon": "🧰",
+    "description": "Explore Alaska's official voting tools and resources",
+    "deadline": ""
+  }
+},
+   "Arizona": {
+  "register": {
+    "url": "https://servicearizona.com/VoterRegistration",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online",
+    "deadline": "Deadline: October 7, 2025"
+  },
+  "id": {
+    "url": "https://azsos.gov/elections/voting-election/arizona-voter-id-requirements",
+    "icon": "🪪",
+    "description": "Check Arizona's voter ID requirements for in-person voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://azsos.gov/votebymail",
+    "icon": "📬",
+    "description": "Request and return your early ballot by mail",
+    "deadline": "Request by: October 24, 2025"
+  },
+  "early": {
+    "url": "https://azsos.gov/elections/voting-election/early-voting",
+    "icon": "⏰",
+    "description": "Find early voting locations and hours in your county",
+    "deadline": "Starts: October 9, 2025"
+  },
+  "polling": {
+    "url": "https://my.arizona.vote/WhereToVote.aspx",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://my.arizona.vote/PortalList.aspx",
+    "icon": "🧾",
+    "description": "View your sample ballot and election information",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://azsos.gov/elections/voting-election/military-and-overseas-voting",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas voters",
+    "deadline": "Request by: October 24, 2025"
+  },
+  "counties": {
+    "url": "https://azsos.gov/county-election-info",
+    "icon": "🏛️",
+    "description": "Contact your county election office for local info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://my.arizona.vote/",
+    "icon": "🧰",
+    "description": "Access Arizona's official voter portal and tools",
+    "deadline": ""
+  }
+},
+   "Arkansas": {
+  "register": {
+    "url": "https://www.sos.arkansas.gov/elections/voter-information",
+    "icon": "📝",
+    "description": "Register to vote or check your registration status",
+    "deadline": "Deadline: October 7, 2025"
+  },
+  "id": {
+    "url": "https://www.sos.arkansas.gov/elections/voter-information/voter-id-requirements",
+    "icon": "🪪",
+    "description": "Review Arkansas's voter ID requirements for in-person voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://www.sos.arkansas.gov/elections/voter-information/absentee-voting",
+    "icon": "📬",
+    "description": "Request and return your absentee ballot by mail or in person",
+    "deadline": "Request by: October 29, 2025"
+  },
+  "early": {
+    "url": "https://www.sos.arkansas.gov/elections/voter-information/early-voting",
+    "icon": "⏰",
+    "description": "Find early voting locations and hours in your county",
+    "deadline": "Starts: October 21, 2025"
+  },
+  "polling": {
+    "url": "https://www.voterview.ar-nova.org/VoterView",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://www.sos.arkansas.gov/elections/sample-ballots",
+    "icon": "🧾",
+    "description": "View your sample ballot by county and district",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://www.sos.arkansas.gov/elections/voter-information/military-and-overseas-voting",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas voters",
+    "deadline": "Request by: October 29, 2025"
+  },
+  "counties": {
+    "url": "https://www.sos.arkansas.gov/elections/election-officials",
+    "icon": "🏛️",
+    "description": "Contact your county clerk for local election info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://www.voterview.ar-nova.org/VoterView",
+    "icon": "🧰",
+    "description": "Access Arkansas's official voter portal and tools",
+    "deadline": ""
+  }
+},
+   "California": {
+  "register": {
+    "url": "https://registertovote.ca.gov/",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online",
+    "deadline": "Deadline: October 21, 2025"
+  },
+  "id": {
+    "url": "https://www.sos.ca.gov/elections/voter-registration/voter-id",
+    "icon": "🪪",
+    "description": "Review California's voter ID policies — ID not required for most voters",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://www.sos.ca.gov/elections/voting-resources/vote-mail",
+    "icon": "📬",
+    "description": "All registered voters receive a mail-in ballot automatically",
+    "deadline": "Return by: November 4, 2025"
+  },
+  "early": {
+    "url": "https://www.sos.ca.gov/elections/voting-resources/voting-california",
+    "icon": "⏰",
+    "description": "Find early voting locations and drop boxes in your county",
+    "deadline": "Starts: October 26, 2025"
+  },
+  "polling": {
+    "url": "https://www.sos.ca.gov/elections/polling-place",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://www.sos.ca.gov/elections/sample-ballot-booklets",
+    "icon": "🧾",
+    "description": "View your sample ballot and voter guide",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://www.sos.ca.gov/elections/voting-resources/military-overseas-voters",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Californians",
+    "deadline": "Ballot return by: November 4, 2025"
+  },
+  "counties": {
+    "url": "https://www.sos.ca.gov/elections/voting-resources/county-elections-offices",
+    "icon": "🏛️",
+    "description": "Contact your county elections office for local info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://voterstatus.sos.ca.gov/",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "Colorado": {
+  "register": {
+    "url": "https://www.sos.state.co.us/pubs/elections/vote/VoterHome.html",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online",
+    "deadline": "Deadline: October 14, 2025"
+  },
+  "id": {
+    "url": "https://www.sos.state.co.us/pubs/elections/vote/acceptableFormsOfID.html",
+    "icon": "🪪",
+    "description": "Review Colorado's accepted forms of voter ID",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://www.sos.state.co.us/pubs/elections/vote/mailBallotFAQ.html",
+    "icon": "📬",
+    "description": "All voters receive a mail ballot automatically",
+    "deadline": "Return by: November 4, 2025"
+  },
+  "early": {
+    "url": "https://www.sos.state.co.us/pubs/elections/vote/VoterHome.html",
+    "icon": "⏰",
+    "description": "Find early voting centers and drop box locations",
+    "deadline": "Starts: October 20, 2025"
+  },
+  "polling": {
+    "url": "https://www.sos.state.co.us/pubs/elections/vote/VoterHome.html",
+    "icon": "📍",
+    "description": "Locate voter service and polling centers near you",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://www.sos.state.co.us/pubs/elections/vote/sampleBallots.html",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://www.sos.state.co.us/pubs/elections/UOCAVA.html",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Coloradans",
+    "deadline": "Ballot return by: November 4, 2025"
+  },
+  "counties": {
+    "url": "https://www.sos.state.co.us/pubs/elections/Resources/CountyElectionOffices.html",
+    "icon": "🏛️",
+    "description": "Contact your county election office for local info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://www.sos.state.co.us/pubs/elections/vote/VoterHome.html",
+    "icon": "🧰",
+    "description": "Access Colorado's voter tools and ballot tracking",
+    "deadline": ""
+  }
+},
+   "Connecticut": {
+  "register": {
+    "url": "https://voterregistration.ct.gov/OLVR",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online",
+    "deadline": "Deadline: October 21, 2025"
+  },
+  "id": {
+    "url": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Voter-ID-Requirements",
+    "icon": "🪪",
+    "description": "Review Connecticut's voter ID requirements for in-person voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Absentee-Voting",
+    "icon": "📬",
+    "description": "Request and return your absentee ballot by mail or in person",
+    "deadline": "Request by: October 29, 2025"
+  },
+  "early": {
+    "url": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Early-Voting",
+    "icon": "⏰",
+    "description": "Find early voting locations and hours in your town",
+    "deadline": "Starts: October 21, 2025"
+  },
+  "polling": {
+    "url": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Polling-Places",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Sample-Ballots",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Military-and-Overseas-Voting",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas voters",
+    "deadline": "Request by: October 29, 2025"
+  },
+  "counties": {
+    "url": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Town-Clerk-Directory",
+    "icon": "🏛️",
+    "description": "Contact your town clerk for local election info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information",
+    "icon": "🧰",
+    "description": "Explore Connecticut's official voting tools and resources",
+    "deadline": ""
+  }
+},
+   "Delaware": {
+  "register": {
+    "url": "https://ivote.de.gov/",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online",
+    "deadline": "Deadline: October 12, 2025"
+  },
+  "id": {
+    "url": "https://elections.delaware.gov/voter/voter_id.shtml",
+    "icon": "🪪",
+    "description": "Review Delaware's voter ID requirements for in-person voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://elections.delaware.gov/voter/absentee.shtml",
+    "icon": "📬",
+    "description": "Request and return your absentee ballot by mail or in person",
+    "deadline": "Request by: October 29, 2025"
+  },
+  "early": {
+    "url": "https://elections.delaware.gov/voter/earlyvoting.shtml",
+    "icon": "⏰",
+    "description": "Find early voting locations and hours in your county",
+    "deadline": "Starts: October 21, 2025"
+  },
+  "polling": {
+    "url": "https://ivote.de.gov/",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://elections.delaware.gov/voter/sample_ballots.shtml",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://elections.delaware.gov/voter/military.shtml",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Delawareans",
+    "deadline": "Request by: October 29, 2025"
+  },
+  "counties": {
+    "url": "https://elections.delaware.gov/contact.shtml",
+    "icon": "🏛️",
+    "description": "Contact your county election office for local info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://ivote.de.gov/",
+    "icon": "🧰",
+    "description": "Access Delaware's voter portal and election tools",
+    "deadline": ""
+  }
+},
+   "Florida": {
+  "register": {
+    "url": "https://registertovoteflorida.gov/",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online",
+    "deadline": "Deadline: October 7, 2025"
+  },
+  "id": {
+    "url": "https://dos.myflorida.com/elections/for-voters/voter-id/",
+    "icon": "🪪",
+    "description": "Review Florida's voter ID requirements for in-person voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://dos.myflorida.com/elections/for-voters/voting-by-mail/",
+    "icon": "📬",
+    "description": "Request and return your vote-by-mail ballot",
+    "deadline": "Request by: October 24, 2025"
+  },
+  "early": {
+    "url": "https://dos.myflorida.com/elections/for-voters/early-voting/",
+    "icon": "⏰",
+    "description": "Find early voting locations and hours in your county",
+    "deadline": "Starts: October 21, 2025"
+  },
+  "polling": {
+    "url": "https://dos.elections.myflorida.com/voter-lookup/",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://dos.myflorida.com/elections/for-voters/sample-ballots/",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://www.fvap.gov/florida",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Floridians",
+    "deadline": "Request by: October 24, 2025"
+  },
+  "counties": {
+    "url": "https://dos.myflorida.com/elections/contact-your-county-supervisor-of-elections/",
+    "icon": "🏛️",
+    "description": "Contact your county Supervisor of Elections for local info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://dos.elections.myflorida.com/voter-lookup/",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "Georgia": {
+  "register": {
+    "url": "https://registertovote.sos.ga.gov/",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online",
+    "deadline": "Deadline: October 7, 2025"
+  },
+  "id": {
+    "url": "https://sos.ga.gov/page/georgia-voter-identification-requirements",
+    "icon": "🪪",
+    "description": "Review Georgia's voter ID requirements for in-person voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://sos.ga.gov/page/absentee-voting",
+    "icon": "📬",
+    "description": "Request and return your absentee ballot by mail or drop box",
+    "deadline": "Request by: October 25, 2025"
+  },
+  "early": {
+    "url": "https://sos.ga.gov/page/advance-voting",
+    "icon": "⏰",
+    "description": "Find early voting locations and hours in your county",
+    "deadline": "Starts: October 14, 2025"
+  },
+  "polling": {
+    "url": "https://mvp.sos.ga.gov/",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://mvp.sos.ga.gov/",
+    "icon": "🧾",
+    "description": "View your sample ballot and voter information",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://sos.ga.gov/page/military-and-overseas-voting",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Georgians",
+    "deadline": "Request by: October 25, 2025"
+  },
+  "counties": {
+    "url": "https://sos.ga.gov/page/county-elections-office",
+    "icon": "🏛️",
+    "description": "Contact your county elections office for local info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://mvp.sos.ga.gov/",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "Hawaii": {
+  "register": {
+    "url": "https://olvr.hawaii.gov/",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online",
+    "deadline": "Deadline: October 6, 2025"
+  },
+  "id": {
+    "url": "https://elections.hawaii.gov/voters/voter-registration/",
+    "icon": "🪪",
+    "description": "Review Hawaii's voter ID requirements — ID not required for mail voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://elections.hawaii.gov/voters/voting-by-mail/",
+    "icon": "📬",
+    "description": "All registered voters receive a mail ballot automatically",
+    "deadline": "Return by: November 4, 2025"
+  },
+  "early": {
+    "url": "https://elections.hawaii.gov/voters/voter-service-centers/",
+    "icon": "⏰",
+    "description": "Find voter service centers and drop box locations",
+    "deadline": "Starts: October 21, 2025"
+  },
+  "polling": {
+    "url": "https://elections.hawaii.gov/voters/voter-service-centers/",
+    "icon": "📍",
+    "description": "Locate voter service centers for in-person voting",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://elections.hawaii.gov/voters/sample-ballots/",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://elections.hawaii.gov/voters/military-overseas-voters/",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Hawaiians",
+    "deadline": "Ballot return by: November 4, 2025"
+  },
+  "counties": {
+    "url": "https://elections.hawaii.gov/contact-us/",
+    "icon": "🏛️",
+    "description": "Contact your county elections division for local info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://elections.hawaii.gov/",
+    "icon": "🧰",
+    "description": "Explore Hawaii's official voting tools and resources",
+    "deadline": ""
+  }
+},
+   "Idaho": {
+  "register": {
+    "url": "https://voteidaho.gov/register-to-vote/",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online or in person",
+    "deadline": "Deadline: October 10, 2025"
+  },
+  "id": {
+    "url": "https://voteidaho.gov/voter-id-requirements/",
+    "icon": "🪪",
+    "description": "Review Idaho's voter ID requirements for in-person voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://voteidaho.gov/vote-absentee/",
+    "icon": "📬",
+    "description": "Request and return your absentee ballot by mail or in person",
+    "deadline": "Request by: October 25, 2025"
+  },
+  "early": {
+    "url": "https://voteidaho.gov/early-voting/",
+    "icon": "⏰",
+    "description": "Find early voting locations and hours in your county",
+    "deadline": "Starts: October 21, 2025"
+  },
+  "polling": {
+    "url": "https://voteidaho.gov/where-to-vote/",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://voteidaho.gov/sample-ballots/",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://voteidaho.gov/military-overseas-voters/",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Idahoans",
+    "deadline": "Request by: October 25, 2025"
+  },
+  "counties": {
+    "url": "https://voteidaho.gov/county-clerks/",
+    "icon": "🏛️",
+    "description": "Contact your county clerk for local election info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://voteidaho.gov/",
+    "icon": "🧰",
+    "description": "Explore Idaho's official voting tools and resources",
+    "deadline": ""
+  }
+},
+   "Illinois": {
+  "register": {
+    "url": "https://ova.elections.il.gov/",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online",
+    "deadline": "Deadline: October 20, 2025"
+  },
+  "id": {
+    "url": "https://www.elections.il.gov/VotingInformation/VoterIdentification.aspx",
+    "icon": "🪪",
+    "description": "Review Illinois's voter ID requirements — ID not required for most voters",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://www.elections.il.gov/VotingInformation/VotingByMail.aspx",
+    "icon": "📬",
+    "description": "Request and return your vote-by-mail ballot",
+    "deadline": "Request by: October 31, 2025"
+  },
+  "early": {
+    "url": "https://www.elections.il.gov/VotingInformation/EarlyVotingLocations.aspx",
+    "icon": "⏰",
+    "description": "Find early voting locations and hours in your county",
+    "deadline": "Starts: October 21, 2025"
+  },
+  "polling": {
+    "url": "https://www.elections.il.gov/VotingInformation/RegistrationLookup.aspx",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://www.elections.il.gov/VotingInformation/SampleBallots.aspx",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://www.elections.il.gov/VotingInformation/MilitaryOverseasVoting.aspx",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Illinoisans",
+    "deadline": "Request by: October 31, 2025"
+  },
+  "counties": {
+    "url": "https://www.elections.il.gov/ElectionAuthorities/ElectionAuthoritiesList.aspx",
+    "icon": "🏛️",
+    "description": "Contact your local election authority for county-specific info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://www.elections.il.gov/",
+    "icon": "🧰",
+    "description": "Explore Illinois's official voting tools and resources",
+    "deadline": ""
+  }
+},
+   "Indiana": {
+  "register": {
+    "url": "https://indianavoters.in.gov/",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online",
+    "deadline": "Deadline: October 6, 2025"
+  },
+  "id": {
+    "url": "https://www.in.gov/sos/elections/voter-information/photo-id-law/",
+    "icon": "🪪",
+    "description": "Review Indiana's voter ID requirements for in-person voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://www.in.gov/sos/elections/voter-information/voting-by-absentee-ballot/",
+    "icon": "📬",
+    "description": "Request and return your absentee ballot by mail or in person",
+    "deadline": "Request by: October 24, 2025"
+  },
+  "early": {
+    "url": "https://www.in.gov/sos/elections/voter-information/early-voting/",
+    "icon": "⏰",
+    "description": "Find early voting locations and hours in your county",
+    "deadline": "Starts: October 8, 2025"
+  },
+  "polling": {
+    "url": "https://indianavoters.in.gov/",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://www.in.gov/sos/elections/voter-information/sample-ballots/",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://www.in.gov/sos/elections/voter-information/military-and-overseas-voters/",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Hoosiers",
+    "deadline": "Request by: October 24, 2025"
+  },
+  "counties": {
+    "url": "https://www.in.gov/sos/elections/voter-information/county-election-officials/",
+    "icon": "🏛️",
+    "description": "Contact your county election office for local info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://indianavoters.in.gov/",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "Iowa": {
+  "register": {
+    "url": "https://sos.iowa.gov/elections/voterinformation/voterregistration.html",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online or by mail",
+    "deadline": "Deadline: October 20, 2025"
+  },
+  "id": {
+    "url": "https://sos.iowa.gov/elections/voterinformation/voterid.html",
+    "icon": "🪪",
+    "description": "Review Iowa's voter ID requirements for in-person voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://sos.iowa.gov/elections/voterinformation/absenteeballotinfo.html",
+    "icon": "📬",
+    "description": "Request and return your absentee ballot by mail or in person",
+    "deadline": "Request by: October 25, 2025"
+  },
+  "early": {
+    "url": "https://sos.iowa.gov/elections/voterinformation/earlyvoting.html",
+    "icon": "⏰",
+    "description": "Find early voting locations and hours in your county",
+    "deadline": "Starts: October 16, 2025"
+  },
+  "polling": {
+    "url": "https://sos.iowa.gov/elections/voterreg/pollingplace/search.aspx",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://sos.iowa.gov/elections/voterinformation/sampleballots.html",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://sos.iowa.gov/elections/voterinformation/uocava.html",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Iowans",
+    "deadline": "Request by: October 25, 2025"
+  },
+  "counties": {
+    "url": "https://sos.iowa.gov/elections/auditors/auditorslist.html",
+    "icon": "🏛️",
+    "description": "Contact your county auditor for local election info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://sos.iowa.gov/elections/voterinformation/index.html",
+    "icon": "🧰",
+    "description": "Explore Iowa's official voting tools and resources",
+    "deadline": ""
+  }
+},
+   "Kansas": {
+  "register": {
+    "url": "https://www.ksvotes.org/",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online",
+    "deadline": "Deadline: October 14, 2025"
+  },
+  "id": {
+    "url": "https://www.sos.ks.gov/elections/elections-faq.html#id",
+    "icon": "🪪",
+    "description": "Review Kansas's voter ID requirements for in-person voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://www.sos.ks.gov/elections/elections-faq.html#advance",
+    "icon": "📬",
+    "description": "Request and return your advance ballot by mail or in person",
+    "deadline": "Request by: October 29, 2025"
+  },
+  "early": {
+    "url": "https://www.sos.ks.gov/elections/elections-faq.html#advance",
+    "icon": "⏰",
+    "description": "Find early voting locations and hours in your county",
+    "deadline": "Starts: October 16, 2025"
+  },
+  "polling": {
+    "url": "https://myvoteinfo.voteks.org/",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://www.sos.ks.gov/elections/elections-faq.html#ballot",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://www.fvap.gov/kansas",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Kansans",
+    "deadline": "Request by: October 29, 2025"
+  },
+  "counties": {
+    "url": "https://www.sos.ks.gov/elections/elections.html",
+    "icon": "🏛️",
+    "description": "Contact your county election office for local info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://myvoteinfo.voteks.org/",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "Kentucky": {
+  "register": {
+    "url": "https://vrsws.sos.ky.gov/ovrweb/",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online",
+    "deadline": "Deadline: October 6, 2025"
+  },
+  "id": {
+    "url": "https://elect.ky.gov/Voters/Pages/Voter-Identification.aspx",
+    "icon": "🪪",
+    "description": "Review Kentucky's voter ID requirements for in-person voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://elect.ky.gov/Voters/Pages/Absentee-Voting.aspx",
+    "icon": "📬",
+    "description": "Request and return your absentee ballot by mail or in person",
+    "deadline": "Request by: October 22, 2025"
+  },
+  "early": {
+    "url": "https://elect.ky.gov/Voters/Pages/Early-Voting.aspx",
+    "icon": "⏰",
+    "description": "Find early voting locations and hours in your county",
+    "deadline": "Starts: October 23, 2025"
+  },
+  "polling": {
+    "url": "https://vrsws.sos.ky.gov/vic/",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://elect.ky.gov/Voters/Pages/Sample-Ballots.aspx",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://elect.ky.gov/Voters/Pages/Military-and-Overseas-Voting.aspx",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Kentuckians",
+    "deadline": "Request by: October 22, 2025"
+  },
+  "counties": {
+    "url": "https://elect.ky.gov/About-Us/Pages/County-Clerks.aspx",
+    "icon": "🏛️",
+    "description": "Contact your county clerk for local election info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://vrsws.sos.ky.gov/vic/",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "Louisiana": {
+  "register": {
+    "url": "https://www.geauxvote.com/",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online or in person",
+    "deadline": "Deadline: October 14, 2025"
+  },
+  "id": {
+    "url": "https://www.sos.la.gov/ElectionsAndVoting/Vote/VoteEarly/Pages/default.aspx",
+    "icon": "🪪",
+    "description": "Review Louisiana's voter ID requirements for in-person voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://www.sos.la.gov/ElectionsAndVoting/Vote/VoteByMail/Pages/default.aspx",
+    "icon": "📬",
+    "description": "Request and return your absentee ballot by mail or in person",
+    "deadline": "Request by: October 31, 2025"
+  },
+  "early": {
+    "url": "https://www.sos.la.gov/ElectionsAndVoting/Vote/VoteEarly/Pages/default.aspx",
+    "icon": "⏰",
+    "description": "Find early voting locations and hours in your parish",
+    "deadline": "Starts: October 21, 2025"
+  },
+  "polling": {
+    "url": "https://voterportal.sos.la.gov/",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://voterportal.sos.la.gov/SampleBallot",
+    "icon": "🧾",
+    "description": "View your sample ballot and voter information",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://www.fvap.gov/louisiana",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Louisianans",
+    "deadline": "Request by: October 31, 2025"
+  },
+  "counties": {
+    "url": "https://www.sos.la.gov/ElectionsAndVoting/Pages/ParishRegistrarsAndClerks.aspx",
+    "icon": "🏛️",
+    "description": "Contact your parish registrar for local election info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://voterportal.sos.la.gov/",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "Maine": {
+  "register": {
+    "url": "https://www.maine.gov/sos/cec/elec/voter-info/votreg.html",
+    "icon": "📝",
+    "description": "Register to vote or update your registration by mail or in person",
+    "deadline": "Deadline: October 15, 2025"
+  },
+  "id": {
+    "url": "https://www.maine.gov/sos/cec/elec/voter-info/votreg.html#id",
+    "icon": "🪪",
+    "description": "Review Maine's voter ID requirements — ID not required for most voters",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://www.maine.gov/sos/cec/elec/voter-info/absenteevoting.html",
+    "icon": "📬",
+    "description": "Request and return your absentee ballot by mail or in person",
+    "deadline": "Request by: October 31, 2025"
+  },
+  "early": {
+    "url": "https://www.maine.gov/sos/cec/elec/voter-info/earlyvoting.html",
+    "icon": "⏰",
+    "description": "Find early in-person absentee voting options in your town",
+    "deadline": "Starts: October 7, 2025"
+  },
+  "polling": {
+    "url": "https://www.maine.gov/sos/cec/elec/voter-info/pollingplaces.html",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://www.maine.gov/sos/cec/elec/voter-info/sampleballots.html",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://www.maine.gov/sos/cec/elec/voter-info/uocava.html",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Mainers",
+    "deadline": "Request by: October 31, 2025"
+  },
+  "counties": {
+    "url": "https://www.maine.gov/sos/cec/elec/contact.html",
+    "icon": "🏛️",
+    "description": "Contact your municipal clerk for local election info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://www.maine.gov/sos/cec/elec/voter-info/index.html",
+    "icon": "🧰",
+    "description": "Explore Maine's official voting tools and resources",
+    "deadline": ""
+  }
+},
+   "Maryland": {
+  "register": {
+    "url": "https://voterservices.elections.maryland.gov/OnlineVoterRegistration",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online",
+    "deadline": "Deadline: October 15, 2025"
+  },
+  "id": {
+    "url": "https://elections.maryland.gov/voting/voting_information.html#ID",
+    "icon": "🪪",
+    "description": "Review Maryland's voter ID requirements — ID not required for most voters",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://elections.maryland.gov/voting/absentee.html",
+    "icon": "📬",
+    "description": "Request and return your mail-in ballot by mail or drop box",
+    "deadline": "Request by: October 29, 2025"
+  },
+  "early": {
+    "url": "https://elections.maryland.gov/voting/early_voting.html",
+    "icon": "⏰",
+    "description": "Find early voting centers and hours in your county",
+    "deadline": "Starts: October 23, 2025"
+  },
+  "polling": {
+    "url": "https://voterservices.elections.maryland.gov/VoterSearch",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://elections.maryland.gov/elections/sample_ballots.html",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://elections.maryland.gov/voting/military.html",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Marylanders",
+    "deadline": "Request by: October 29, 2025"
+  },
+  "counties": {
+    "url": "https://elections.maryland.gov/about/county_boards.html",
+    "icon": "🏛️",
+    "description": "Contact your local board of elections for county-specific info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://voterservices.elections.maryland.gov/VoterSearch",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "Massachusetts": {
+  "register": {
+    "url": "https://www.sec.state.ma.us/ovr/",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online",
+    "deadline": "Deadline: October 15, 2025"
+  },
+  "id": {
+    "url": "https://www.sec.state.ma.us/ele/eleidx.htm",
+    "icon": "🪪",
+    "description": "Review Massachusetts's voter ID requirements — ID not required for most voters",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://www.sec.state.ma.us/ele/eleabsentee/absidx.htm",
+    "icon": "📬",
+    "description": "Request and return your mail-in or absentee ballot",
+    "deadline": "Request by: October 29, 2025"
+  },
+  "early": {
+    "url": "https://www.sec.state.ma.us/ele/eleev/early-voting.htm",
+    "icon": "⏰",
+    "description": "Find early voting locations and hours in your city or town",
+    "deadline": "Starts: October 25, 2025"
+  },
+  "polling": {
+    "url": "https://www.sec.state.ma.us/wheredoivotema/bal/myelectioninfo.aspx",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://www.sec.state.ma.us/ele/elepdf/sample-ballots.htm",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://www.sec.state.ma.us/ele/elemil/milidx.htm",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Massachusetts voters",
+    "deadline": "Request by: October 29, 2025"
+  },
+  "counties": {
+    "url": "https://www.sec.state.ma.us/ele/eleclk/clkidx.htm",
+    "icon": "🏛️",
+    "description": "Contact your local election official for city or town-specific info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://www.sec.state.ma.us/ele/eleidx.htm",
+    "icon": "🧰",
+    "description": "Explore Massachusetts's official voting tools and resources",
+    "deadline": ""
+  }
+},
+   "Michigan": {
+  "register": {
+    "url": "https://mvic.sos.state.mi.us/RegisterVoter",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online",
+    "deadline": "Deadline: October 20, 2025"
+  },
+  "id": {
+    "url": "https://www.michigan.gov/sos/elections/voting/voter-id",
+    "icon": "🪪",
+    "description": "Review Michigan's voter ID requirements for in-person voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://mvic.sos.state.mi.us/AVApplication/Index",
+    "icon": "📬",
+    "description": "Request and return your absentee ballot by mail or drop box",
+    "deadline": "Request by: October 31, 2025"
+  },
+  "early": {
+    "url": "https://www.michigan.gov/sos/elections/voting/early-in-person-voting",
+    "icon": "⏰",
+    "description": "Find early voting locations and hours in your city or township",
+    "deadline": "Starts: October 25, 2025"
+  },
+  "polling": {
+    "url": "https://mvic.sos.state.mi.us/Voter/Index",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://mvic.sos.state.mi.us/Voter/Index",
+    "icon": "🧾",
+    "description": "View your sample ballot and voter information",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://www.michigan.gov/sos/elections/voting/military-and-overseas-voting",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Michiganders",
+    "deadline": "Request by: October 31, 2025"
+  },
+  "counties": {
+    "url": "https://www.michigan.gov/sos/elections/local-election-officials",
+    "icon": "🏛️",
+    "description": "Contact your local clerk for city or township-specific info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://mvic.sos.state.mi.us/",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "Minnesota": {
+  "register": {
+    "url": "https://mnvotes.sos.mn.gov/VoterRegistration/VoterRegistrationMain.aspx",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online",
+    "deadline": "Deadline: October 14, 2025"
+  },
+  "id": {
+    "url": "https://www.sos.state.mn.us/elections-voting/register-to-vote/voters-without-id/",
+    "icon": "🪪",
+    "description": "Review Minnesota's voter ID requirements — ID not required if registered",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://www.sos.state.mn.us/elections-voting/other-ways-to-vote/vote-early-by-mail/",
+    "icon": "📬",
+    "description": "Request and return your absentee ballot by mail or drop box",
+    "deadline": "Request by: October 31, 2025"
+  },
+  "early": {
+    "url": "https://www.sos.state.mn.us/elections-voting/other-ways-to-vote/vote-early-in-person/",
+    "icon": "⏰",
+    "description": "Find early voting locations and hours in your county",
+    "deadline": "Starts: September 20, 2025"
+  },
+  "polling": {
+    "url": "https://pollfinder.sos.mn.gov/",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://myballotmn.sos.mn.gov/",
+    "icon": "🧾",
+    "description": "View your sample ballot and voter information",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://www.sos.state.mn.us/elections-voting/other-ways-to-vote/voting-for-military-citizens/",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Minnesotans",
+    "deadline": "Request by: October 31, 2025"
+  },
+  "counties": {
+    "url": "https://www.sos.state.mn.us/elections-voting/find-county-election-office/",
+    "icon": "🏛️",
+    "description": "Contact your county election office for local info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://mnvotes.gov/",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "Mississippi": {
+  "register": {
+    "url": "https://yallvote.sos.ms.gov/RegisterToVote",
+    "icon": "📝",
+    "description": "Register to vote or update your registration by mail or in person",
+    "deadline": "Deadline: October 6, 2025"
+  },
+  "id": {
+    "url": "https://yallvote.sos.ms.gov/VoterID",
+    "icon": "🪪",
+    "description": "Review Mississippi's voter ID requirements for in-person voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://yallvote.sos.ms.gov/AbsenteeVoting",
+    "icon": "📬",
+    "description": "Request and return your absentee ballot by mail or in person",
+    "deadline": "Request by: October 31, 2025"
+  },
+  "early": {
+    "url": "https://yallvote.sos.ms.gov/AbsenteeVoting",
+    "icon": "⏰",
+    "description": "Early voting available via in-person absentee at your circuit clerk’s office",
+    "deadline": "Starts: September 22, 2025"
+  },
+  "polling": {
+    "url": "https://yallvote.sos.ms.gov/PollingPlace",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://yallvote.sos.ms.gov/SampleBallot",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://yallvote.sos.ms.gov/MilitaryOverseasVoting",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Mississippians",
+    "deadline": "Request by: October 31, 2025"
+  },
+  "counties": {
+    "url": "https://www.sos.ms.gov/elections-voting/county-election-info",
+    "icon": "🏛️",
+    "description": "Contact your county election office for local info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://yallvote.sos.ms.gov/",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "Missouri": {
+  "register": {
+    "url": "https://www.sos.mo.gov/elections/goVoteMissouri/register",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online or by mail",
+    "deadline": "Deadline: October 8, 2025"
+  },
+  "id": {
+    "url": "https://www.sos.mo.gov/elections/goVoteMissouri/voterID",
+    "icon": "🪪",
+    "description": "Review Missouri's voter ID requirements for in-person voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://www.sos.mo.gov/elections/goVoteMissouri/howtovote#absentee",
+    "icon": "📬",
+    "description": "Request and return your absentee ballot by mail or in person",
+    "deadline": "Request by: October 23, 2025"
+  },
+  "early": {
+    "url": "https://www.sos.mo.gov/elections/goVoteMissouri/howtovote#early",
+    "icon": "⏰",
+    "description": "Find early voting options and deadlines in your county",
+    "deadline": "Starts: October 22, 2025"
+  },
+  "polling": {
+    "url": "https://voteroutreach.sos.mo.gov/Pages/VoterOutreach/VOSearch.aspx",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://www.sos.mo.gov/elections/goVoteMissouri/sampleballot",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://www.sos.mo.gov/elections/goVoteMissouri/howtovote#military",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Missourians",
+    "deadline": "Request by: October 23, 2025"
+  },
+  "counties": {
+    "url": "https://www.sos.mo.gov/elections/govotemissouri/localelectionauthority",
+    "icon": "🏛️",
+    "description": "Contact your local election authority for county-specific info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://voteroutreach.sos.mo.gov/Pages/VoterOutreach/VOSearch.aspx",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "Montana": {
+  "register": {
+    "url": "https://www.voteinmt.gov/register-to-vote/",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online or in person",
+    "deadline": "Deadline: October 7, 2025"
+  },
+  "id": {
+    "url": "https://www.voteinmt.gov/voter-id-requirements/",
+    "icon": "🪪",
+    "description": "Review Montana's voter ID requirements for in-person voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://www.voteinmt.gov/absentee-voting/",
+    "icon": "📬",
+    "description": "Request and return your absentee ballot by mail or in person",
+    "deadline": "Request by: October 30, 2025"
+  },
+  "early": {
+    "url": "https://www.voteinmt.gov/early-voting/",
+    "icon": "⏰",
+    "description": "Find early voting options and hours in your county",
+    "deadline": "Starts: October 7, 2025"
+  },
+  "polling": {
+    "url": "https://app.mt.gov/voterinfo/",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://www.voteinmt.gov/sample-ballots/",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://www.voteinmt.gov/military-overseas-voting/",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Montanans",
+    "deadline": "Request by: October 30, 2025"
+  },
+  "counties": {
+    "url": "https://www.voteinmt.gov/election-offices/",
+    "icon": "🏛️",
+    "description": "Contact your county election office for local info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://app.mt.gov/voterinfo/",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "Nebraska": {
+  "register": {
+    "url": "https://www.nebraska.gov/apps-sos-voter-registration/",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online",
+    "deadline": "Deadline: October 17, 2025"
+  },
+  "id": {
+    "url": "https://sos.nebraska.gov/elections/voter-id",
+    "icon": "🪪",
+    "description": "Review Nebraska's voter ID requirements for in-person voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://sos.nebraska.gov/elections/early-voting",
+    "icon": "📬",
+    "description": "Request and return your early voting ballot by mail or in person",
+    "deadline": "Request by: October 25, 2025"
+  },
+  "early": {
+    "url": "https://sos.nebraska.gov/elections/early-voting",
+    "icon": "⏰",
+    "description": "Find early voting locations and hours in your county",
+    "deadline": "Starts: October 7, 2025"
+  },
+  "polling": {
+    "url": "https://www.votercheck.necvr.ne.gov/",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://sos.nebraska.gov/elections/sample-ballots",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://sos.nebraska.gov/elections/military-overseas-voters",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Nebraskans",
+    "deadline": "Request by: October 25, 2025"
+  },
+  "counties": {
+    "url": "https://sos.nebraska.gov/elections/election-officials-contact-information",
+    "icon": "🏛️",
+    "description": "Contact your county election office for local info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://www.votercheck.necvr.ne.gov/",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "Nevada": {
+  "register": {
+    "url": "https://www.registertovotenv.gov/",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online",
+    "deadline": "Deadline: October 15, 2025"
+  },
+  "id": {
+    "url": "https://www.nvsos.gov/sos/elections/voters/voter-id",
+    "icon": "🪪",
+    "description": "Review Nevada's voter ID requirements — ID not required for most voters",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://www.nvsos.gov/sos/elections/voters/vote-by-mail",
+    "icon": "📬",
+    "description": "All active registered voters receive a mail ballot automatically",
+    "deadline": "Return by: November 4, 2025"
+  },
+  "early": {
+    "url": "https://www.nvsos.gov/sos/elections/voters/early-voting-information",
+    "icon": "⏰",
+    "description": "Find early voting locations and hours in your county",
+    "deadline": "Starts: October 18, 2025"
+  },
+  "polling": {
+    "url": "https://www.nvsos.gov/votersearch/",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://www.nvsos.gov/sos/elections/voters/sample-ballots",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://www.nvsos.gov/sos/elections/voters/military-overseas-voting",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Nevadans",
+    "deadline": "Ballot return by: November 4, 2025"
+  },
+  "counties": {
+    "url": "https://www.nvsos.gov/sos/elections/election-officials",
+    "icon": "🏛️",
+    "description": "Contact your county election office for local info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://www.nvsos.gov/votersearch/",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "New Hampshire": {
+  "register": {
+    "url": "https://www.sos.nh.gov/elections/voters/register-vote",
+    "icon": "📝",
+    "description": "Register to vote by mail or in person — no online registration available",
+    "deadline": "Deadline: October 26, 2025"
+  },
+  "id": {
+    "url": "https://www.sos.nh.gov/elections/voters/voter-id",
+    "icon": "🪪",
+    "description": "Review New Hampshire's voter ID requirements for in-person voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://www.sos.nh.gov/elections/voters/absentee-ballots",
+    "icon": "📬",
+    "description": "Request and return your absentee ballot by mail or in person",
+    "deadline": "Request by: November 4, 2025"
+  },
+  "early": {
+    "url": "https://www.sos.nh.gov/elections/voters/absentee-ballots",
+    "icon": "⏰",
+    "description": "Early voting available via in-person absentee at your clerk’s office",
+    "deadline": "Starts: October 7, 2025"
+  },
+  "polling": {
+    "url": "https://app.sos.nh.gov/Public/PollingPlaceSearch",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://www.sos.nh.gov/elections/sample-ballots",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://www.sos.nh.gov/elections/voters/military-overseas-voters",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Granite Staters",
+    "deadline": "Request by: November 4, 2025"
+  },
+  "counties": {
+    "url": "https://www.sos.nh.gov/elections/voters/clerks",
+    "icon": "🏛️",
+    "description": "Contact your town or city clerk for local election info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://app.sos.nh.gov/",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "New Jersey": {
+  "register": {
+    "url": "https://voter.svrs.nj.gov/register",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online",
+    "deadline": "Deadline: October 14, 2025"
+  },
+  "id": {
+    "url": "https://www.nj.gov/state/elections/vote-id.shtml",
+    "icon": "🪪",
+    "description": "Review New Jersey's voter ID requirements — ID not required for most voters",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://www.nj.gov/state/elections/vote-by-mail.shtml",
+    "icon": "📬",
+    "description": "Request and return your mail-in ballot by mail or drop box",
+    "deadline": "Request by: October 29, 2025"
+  },
+  "early": {
+    "url": "https://nj.gov/state/elections/vote-early.shtml",
+    "icon": "⏰",
+    "description": "Find early voting locations and hours in your county",
+    "deadline": "Starts: October 26, 2025"
+  },
+  "polling": {
+    "url": "https://voter.svrs.nj.gov/polling-place-search",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://nj.gov/state/elections/vote-ballot.shtml",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://www.nj.gov/state/elections/vote-military-overseas.shtml",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas New Jerseyans",
+    "deadline": "Request by: October 29, 2025"
+  },
+  "counties": {
+    "url": "https://www.nj.gov/state/elections/county-eo.shtml",
+    "icon": "🏛️",
+    "description": "Contact your county election office for local info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://voter.svrs.nj.gov/",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "New Mexico": {
+  "register": {
+    "url": "https://portal.sos.state.nm.us/OVR/WebPages/InstructionsStep1.aspx",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online",
+    "deadline": "Deadline: October 15, 2025"
+  },
+  "id": {
+    "url": "https://www.sos.state.nm.us/voting-and-elections/voter-information/voter-id-information/",
+    "icon": "🪪",
+    "description": "Review New Mexico's voter ID requirements — ID not required for most voters",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://www.sos.state.nm.us/voting-and-elections/voter-information/absentee-and-early-voting/",
+    "icon": "📬",
+    "description": "Request and return your absentee ballot by mail or drop box",
+    "deadline": "Request by: October 29, 2025"
+  },
+  "early": {
+    "url": "https://www.sos.state.nm.us/voting-and-elections/voter-information/absentee-and-early-voting/",
+    "icon": "⏰",
+    "description": "Find early voting locations and hours in your county",
+    "deadline": "Starts: October 18, 2025"
+  },
+  "polling": {
+    "url": "https://voterportal.servis.sos.state.nm.us/WhereToVote.aspx",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://voterportal.servis.sos.state.nm.us/SampleBallot.aspx",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://www.sos.state.nm.us/voting-and-elections/voter-information/military-and-overseas-voters/",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas New Mexicans",
+    "deadline": "Request by: October 29, 2025"
+  },
+  "counties": {
+    "url": "https://www.sos.state.nm.us/voting-and-elections/voter-information/county-clerks/",
+    "icon": "🏛️",
+    "description": "Contact your county clerk for local election info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://voterportal.servis.sos.state.nm.us/",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "New York": {
+  "register": {
+    "url": "https://voterreg.dmv.ny.gov/MotorVoter/",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online",
+    "deadline": "Deadline: October 11, 2025"
+  },
+  "id": {
+    "url": "https://www.elections.ny.gov/VotingRegister.html#VoteID",
+    "icon": "🪪",
+    "description": "Review New York's voter ID requirements — ID not required for most voters",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://absenteeballot.elections.ny.gov/",
+    "icon": "📬",
+    "description": "Request and return your absentee ballot by mail or drop box",
+    "deadline": "Request by: October 25, 2025"
+  },
+  "early": {
+    "url": "https://www.elections.ny.gov/VotingEarly.html",
+    "icon": "⏰",
+    "description": "Find early voting locations and hours in your county",
+    "deadline": "Starts: October 25, 2025"
+  },
+  "polling": {
+    "url": "https://voterlookup.elections.ny.gov/",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://www.elections.ny.gov/Voting.html",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions from your county board of elections",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://www.elections.ny.gov/VotingMilitaryFed.html",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas New Yorkers",
+    "deadline": "Request by: October 25, 2025"
+  },
+  "counties": {
+    "url": "https://www.elections.ny.gov/CountyBoards.html",
+    "icon": "🏛️",
+    "description": "Contact your county board of elections for local info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://voterlookup.elections.ny.gov/",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "North Carolina": {
+  "register": {
+    "url": "https://www.ncsbe.gov/register",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online or by mail",
+    "deadline": "Deadline: October 11, 2025"
+  },
+  "id": {
+    "url": "https://www.ncsbe.gov/voting/voter-id",
+    "icon": "🪪",
+    "description": "Review North Carolina's voter ID requirements for in-person voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://www.ncsbe.gov/voting/vote-mail",
+    "icon": "📬",
+    "description": "Request and return your absentee ballot by mail or drop box",
+    "deadline": "Request by: October 29, 2025"
+  },
+  "early": {
+    "url": "https://www.ncsbe.gov/voting/early-voting",
+    "icon": "⏰",
+    "description": "Find early voting locations and hours in your county",
+    "deadline": "Starts: October 16, 2025"
+  },
+  "polling": {
+    "url": "https://www.ncsbe.gov/voting/vote-person",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://www.ncsbe.gov/voting/sample-ballots",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://www.ncsbe.gov/voting/military-overseas-voting",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas North Carolinians",
+    "deadline": "Request by: October 29, 2025"
+  },
+  "counties": {
+    "url": "https://www.ncsbe.gov/about-elections/county-boards-elections",
+    "icon": "🏛️",
+    "description": "Contact your county board of elections for local info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://www.ncsbe.gov/",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "North Dakota": {
+  "register": {
+    "url": "https://vip.sos.nd.gov/",
+    "icon": "📝",
+    "description": "No voter registration required — eligible voters may vote with valid ID",
+    "deadline": ""
+  },
+  "id": {
+    "url": "https://vip.sos.nd.gov/IDRequirements.aspx",
+    "icon": "🪪",
+    "description": "Review North Dakota's voter ID requirements for in-person voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://vip.sos.nd.gov/Absentee.aspx",
+    "icon": "📬",
+    "description": "Request and return your absentee ballot by mail or in person",
+    "deadline": "Request by: October 31, 2025"
+  },
+  "early": {
+    "url": "https://vip.sos.nd.gov/CountyAuditors.aspx",
+    "icon": "⏰",
+    "description": "Find early voting options and hours in your county",
+    "deadline": "Starts: October 21, 2025"
+  },
+  "polling": {
+    "url": "https://vip.sos.nd.gov/WhereToVote.aspx",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://vip.sos.nd.gov/SampleBallot.aspx",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://www.fvap.gov/north-dakota",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas North Dakotans",
+    "deadline": "Request by: October 31, 2025"
+  },
+  "counties": {
+    "url": "https://vip.sos.nd.gov/CountyAuditors.aspx",
+    "icon": "🏛️",
+    "description": "Contact your county auditor for local election info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://vip.sos.nd.gov/",
+    "icon": "🧰",
+    "description": "Check ballot status and voting tools — no registration lookup required",
+    "deadline": ""
+  }
+},
+   "Ohio": {
+  "register": {
+    "url": "https://olvr.ohiosos.gov/",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online",
+    "deadline": "Deadline: October 6, 2025"
+  },
+  "id": {
+    "url": "https://www.ohiosos.gov/elections/voters/id-requirements/",
+    "icon": "🪪",
+    "description": "Review Ohio's voter ID requirements for in-person voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://www.ohiosos.gov/elections/voters/absentee-voting/",
+    "icon": "📬",
+    "description": "Request and return your absentee ballot by mail or drop box",
+    "deadline": "Request by: October 29, 2025"
+  },
+  "early": {
+    "url": "https://www.ohiosos.gov/elections/voters/early-in-person-voting/",
+    "icon": "⏰",
+    "description": "Find early voting locations and hours in your county",
+    "deadline": "Starts: October 7, 2025"
+  },
+  "polling": {
+    "url": "https://www.ohiosos.gov/elections/voters/toolkit/polling-location/",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://www.ohiosos.gov/elections/voters/toolkit/sample-ballot/",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://www.ohiosos.gov/elections/voters/military-voters/",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Ohioans",
+    "deadline": "Request by: October 29, 2025"
+  },
+  "counties": {
+    "url": "https://www.ohiosos.gov/elections/elections-officials/county-boards-of-elections/",
+    "icon": "🏛️",
+    "description": "Contact your county board of elections for local info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://www.ohiosos.gov/elections/voters/toolkit/",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "Oklahoma": {
+  "register": {
+    "url": "https://okvoterportal.okelections.us/Home/RegWizard",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online or by mail",
+    "deadline": "Deadline: October 11, 2025"
+  },
+  "id": {
+    "url": "https://oklahoma.gov/elections/voters/voter-id.html",
+    "icon": "🪪",
+    "description": "Review Oklahoma's voter ID requirements for in-person voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://oklahoma.gov/elections/voters/absentee-voting.html",
+    "icon": "📬",
+    "description": "Request and return your absentee ballot by mail or in person",
+    "deadline": "Request by: October 29, 2025"
+  },
+  "early": {
+    "url": "https://oklahoma.gov/elections/voters/early-voting.html",
+    "icon": "⏰",
+    "description": "Find early voting locations and hours in your county",
+    "deadline": "Starts: October 31, 2025"
+  },
+  "polling": {
+    "url": "https://okvoterportal.okelections.us/",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://oklahoma.gov/elections/voters/sample-ballots.html",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://oklahoma.gov/elections/voters/military-and-overseas-voters.html",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Oklahomans",
+    "deadline": "Request by: October 29, 2025"
+  },
+  "counties": {
+    "url": "https://oklahoma.gov/elections/about-us/county-election-boards.html",
+    "icon": "🏛️",
+    "description": "Contact your county election board for local info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://okvoterportal.okelections.us/",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "Oregon": {
+  "register": {
+    "url": "https://sos.oregon.gov/voting/pages/registration.aspx",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online",
+    "deadline": "Deadline: October 15, 2025"
+  },
+  "id": {
+    "url": "https://sos.oregon.gov/voting/pages/voter-id.aspx",
+    "icon": "🪪",
+    "description": "Review Oregon's voter ID requirements — ID not required for most voters",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://sos.oregon.gov/voting/pages/voteearly.aspx",
+    "icon": "📬",
+    "description": "All registered voters receive a mail ballot automatically",
+    "deadline": "Return by: November 4, 2025"
+  },
+  "early": {
+    "url": "https://sos.oregon.gov/voting/pages/voteearly.aspx",
+    "icon": "⏰",
+    "description": "Return your mail ballot early or vote in person at select locations",
+    "deadline": "Starts: October 16, 2025"
+  },
+  "polling": {
+    "url": "https://sos.oregon.gov/voting/pages/drop-box-locator.aspx",
+    "icon": "📍",
+    "description": "Find official drop box locations and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://sos.oregon.gov/voting/pages/sample-ballots.aspx",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://sos.oregon.gov/voting/pages/military-overseas.aspx",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Oregonians",
+    "deadline": "Ballot return by: November 4, 2025"
+  },
+  "counties": {
+    "url": "https://sos.oregon.gov/elections/pages/county-elections-offices.aspx",
+    "icon": "🏛️",
+    "description": "Contact your county elections office for local info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://sos.oregon.gov/voting/pages/myvote.aspx",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "Pennsylvania": {
+  "register": {
+    "url": "https://www.pavoterservices.pa.gov/Pages/VoterRegistrationApplication.aspx",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online",
+    "deadline": "Deadline: October 6, 2025"
+  },
+  "id": {
+    "url": "https://www.vote.pa.gov/Register-to-Vote/Pages/Voter-ID-Requirements.aspx",
+    "icon": "🪪",
+    "description": "Review Pennsylvania's voter ID requirements — ID not required for most voters",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://www.vote.pa.gov/Voting-in-PA/Pages/Mail-and-Absentee-Ballot.aspx",
+    "icon": "📬",
+    "description": "Request and return your mail-in or absentee ballot",
+    "deadline": "Request by: October 29, 2025"
+  },
+  "early": {
+    "url": "https://www.vote.pa.gov/Voting-in-PA/Pages/Early-Voting.aspx",
+    "icon": "⏰",
+    "description": "Return your mail ballot early or vote in person at your county election office",
+    "deadline": "Starts: October 7, 2025"
+  },
+  "polling": {
+    "url": "https://www.pavoterservices.pa.gov/Pages/PollingPlaceInfo.aspx",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://www.vote.pa.gov/About-Elections/Pages/Sample-Ballots.aspx",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://www.vote.pa.gov/Voting-in-PA/Pages/Military-and-Overseas-Voters.aspx",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Pennsylvanians",
+    "deadline": "Request by: October 29, 2025"
+  },
+  "counties": {
+    "url": "https://www.vote.pa.gov/About-Elections/Pages/County-Election-Contacts.aspx",
+    "icon": "🏛️",
+    "description": "Contact your county election office for local info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://www.pavoterservices.pa.gov/Pages/default.aspx",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "Rhode Island": {
+  "register": {
+    "url": "https://vote.sos.ri.gov/Home/RegistertoVote?ActiveFlag=1",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online",
+    "deadline": "Deadline: October 6, 2025"
+  },
+  "id": {
+    "url": "https://vote.sos.ri.gov/Voter/VoterID",
+    "icon": "🪪",
+    "description": "Review Rhode Island's voter ID requirements for in-person voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://vote.sos.ri.gov/Voter/VotebyMail",
+    "icon": "📬",
+    "description": "Request and return your mail ballot by mail or drop box",
+    "deadline": "Request by: October 15, 2025"
+  },
+  "early": {
+    "url": "https://vote.sos.ri.gov/Voter/VoteEarly",
+    "icon": "⏰",
+    "description": "Find early voting locations and hours in your city or town",
+    "deadline": "Starts: October 16, 2025"
+  },
+  "polling": {
+    "url": "https://vote.sos.ri.gov/Home/PollingPlaces",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://vote.sos.ri.gov/Home/SampleBallot",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://vote.sos.ri.gov/Voter/MilitaryOverseas",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Rhode Islanders",
+    "deadline": "Request by: October 15, 2025"
+  },
+  "counties": {
+    "url": "https://vote.sos.ri.gov/ContactUs",
+    "icon": "🏛️",
+    "description": "Contact your local board of canvassers for election info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://vote.sos.ri.gov/",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+  "South Carolina": {
+  "register": {
+    "url": "https://info.scvotes.sc.gov/eng/ovr/start.aspx",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online or by mail",
+    "deadline": "Deadline: October 6, 2025"
+  },
+  "id": {
+    "url": "https://www.scvotes.gov/voters/voter-id",
+    "icon": "🪪",
+    "description": "Review South Carolina's voter ID requirements for in-person voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://www.scvotes.gov/voters/absentee-voting",
+    "icon": "📬",
+    "description": "Request and return your absentee ballot by mail or in person",
+    "deadline": "Request by: October 25, 2025"
+  },
+  "early": {
+    "url": "https://www.scvotes.gov/voters/early-voting",
+    "icon": "⏰",
+    "description": "Find early voting locations and hours in your county",
+    "deadline": "Starts: October 21, 2025"
+  },
+  "polling": {
+    "url": "https://www.scvotes.gov/where-do-i-vote",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://www.scvotes.gov/voters/sample-ballots",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://www.scvotes.gov/voters/military-overseas-citizens",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas South Carolinians",
+    "deadline": "Request by: October 25, 2025"
+  },
+  "counties": {
+    "url": "https://www.scvotes.gov/how-register-county-board",
+    "icon": "🏛️",
+    "description": "Contact your county board of voter registration and elections for local info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://www.scvotes.gov/",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "South Dakota": {
+  "register": {
+    "url": "https://sdsos.gov/elections-voting/voting/register-to-vote/default.aspx",
+    "icon": "📝",
+    "description": "Register to vote or update your registration by mail or in person",
+    "deadline": "Deadline: October 20, 2025"
+  },
+  "id": {
+    "url": "https://sdsos.gov/elections-voting/voting/voter-id-requirements/default.aspx",
+    "icon": "🪪",
+    "description": "Review South Dakota's voter ID requirements for in-person voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://sdsos.gov/elections-voting/voting/absentee-voting/default.aspx",
+    "icon": "📬",
+    "description": "Request and return your absentee ballot by mail or in person",
+    "deadline": "Request by: November 4, 2025"
+  },
+  "early": {
+    "url": "https://sdsos.gov/elections-voting/voting/absentee-voting/default.aspx",
+    "icon": "⏰",
+    "description": "Early voting available via in-person absentee at your county auditor’s office",
+    "deadline": "Starts: September 20, 2025"
+  },
+  "polling": {
+    "url": "https://sdsos.gov/elections-voting/voting/election-day-voting/default.aspx",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://sdsos.gov/elections-voting/assets/SampleBallotsGeneral2024.pdf",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://sdsos.gov/elections-voting/voting/military-overseas-voting/default.aspx",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas South Dakotans",
+    "deadline": "Request by: November 4, 2025"
+  },
+  "counties": {
+    "url": "https://sdsos.gov/elections-voting/assets/CountyAuditorContactInfo.pdf",
+    "icon": "🏛️",
+    "description": "Contact your county auditor for local election info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://vip.sdsos.gov/VIPLogin.aspx",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "Tennessee": {
+  "register": {
+    "url": "https://ovr.govote.tn.gov/",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online or by mail",
+    "deadline": "Deadline: October 6, 2025"
+  },
+  "id": {
+    "url": "https://sos.tn.gov/elections/voter-id-requirements",
+    "icon": "🪪",
+    "description": "Review Tennessee's voter ID requirements for in-person voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://sos.tn.gov/elections/guides/absentee-voting-guide",
+    "icon": "📬",
+    "description": "Request and return your absentee ballot by mail",
+    "deadline": "Request by: October 29, 2025"
+  },
+  "early": {
+    "url": "https://sos.tn.gov/elections/guides/early-voting-guide",
+    "icon": "⏰",
+    "description": "Find early voting locations and hours in your county",
+    "deadline": "Starts: October 16, 2025"
+  },
+  "polling": {
+    "url": "https://tnmap.tn.gov/voterlookup/",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://sos.tn.gov/elections/sample-ballots",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://sos.tn.gov/elections/guides/military-overseas-voting-guide",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Tennesseans",
+    "deadline": "Request by: October 29, 2025"
+  },
+  "counties": {
+    "url": "https://sos.tn.gov/elections/election-commission-contacts",
+    "icon": "🏛️",
+    "description": "Contact your county election commission for local info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://tnmap.tn.gov/voterlookup/",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "Texas": {
+  "register": {
+    "url": "https://www.votetexas.gov/register-to-vote/",
+    "icon": "📝",
+    "description": "Register to vote or update your registration by mail or in person",
+    "deadline": "Deadline: October 6, 2025"
+  },
+  "id": {
+    "url": "https://www.votetexas.gov/faq/faq-voter-id.html",
+    "icon": "🪪",
+    "description": "Review Texas's voter ID requirements for in-person voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://www.votetexas.gov/voting-by-mail/",
+    "icon": "📬",
+    "description": "Request and return your mail-in ballot by mail or drop box",
+    "deadline": "Request by: October 25, 2025"
+  },
+  "early": {
+    "url": "https://www.votetexas.gov/voting/when.html",
+    "icon": "⏰",
+    "description": "Find early voting locations and hours in your county",
+    "deadline": "Starts: October 20, 2025"
+  },
+  "polling": {
+    "url": "https://teamrv-mvp.sos.texas.gov/MVP/mvp.do",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://www.votetexas.gov/voting/sample-ballot.html",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://www.votetexas.gov/voting/military-overseas.html",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Texans",
+    "deadline": "Request by: October 25, 2025"
+  },
+  "counties": {
+    "url": "https://www.sos.state.tx.us/elections/voter/county.shtml",
+    "icon": "🏛️",
+    "description": "Contact your county election office for local info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://teamrv-mvp.sos.texas.gov/MVP/mvp.do",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "Utah": {
+  "register": {
+    "url": "https://vote.utah.gov/",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online or by mail",
+    "deadline": "Deadline: October 24, 2025"
+  },
+  "id": {
+    "url": "https://vote.utah.gov/voter-id-requirements/",
+    "icon": "🪪",
+    "description": "Review Utah's voter ID requirements for in-person voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://vote.utah.gov/vote-by-mail/",
+    "icon": "📬",
+    "description": "All active registered voters receive a mail ballot automatically",
+    "deadline": "Return by: November 4, 2025"
+  },
+  "early": {
+    "url": "https://vote.utah.gov/early-voting/",
+    "icon": "⏰",
+    "description": "Find early voting locations and hours in your county",
+    "deadline": "Starts: October 21, 2025"
+  },
+  "polling": {
+    "url": "https://vote.utah.gov/where-to-vote/",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://vote.utah.gov/sample-ballots/",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://vote.utah.gov/military-overseas-voters/",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Utahns",
+    "deadline": "Ballot return by: November 4, 2025"
+  },
+  "counties": {
+    "url": "https://vote.utah.gov/county-clerks/",
+    "icon": "🏛️",
+    "description": "Contact your county clerk for local election info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://vote.utah.gov/",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "Vermont": {
+  "register": {
+    "url": "https://olvr.vermont.gov/",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online",
+    "deadline": "Deadline: October 30, 2025"
+  },
+  "id": {
+    "url": "https://sos.vermont.gov/elections/voters/voter-id-requirements/",
+    "icon": "🪪",
+    "description": "Review Vermont's voter ID requirements — ID not required for most voters",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://sos.vermont.gov/elections/voters/early-absentee-voting/",
+    "icon": "📬",
+    "description": "All active registered voters receive a mail ballot automatically",
+    "deadline": "Return by: November 4, 2025"
+  },
+  "early": {
+    "url": "https://sos.vermont.gov/elections/voters/early-absentee-voting/",
+    "icon": "⏰",
+    "description": "Return your mail ballot early or vote in person at your town clerk’s office",
+    "deadline": "Starts: September 20, 2025"
+  },
+  "polling": {
+    "url": "https://mvp.vermont.gov/",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://sos.vermont.gov/elections/election-info-resources/sample-ballots/",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://sos.vermont.gov/elections/voters/military-overseas-voters/",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Vermonters",
+    "deadline": "Ballot return by: November 4, 2025"
+  },
+  "counties": {
+    "url": "https://sos.vermont.gov/elections/town-clerks/",
+    "icon": "🏛️",
+    "description": "Contact your town clerk for local election info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://mvp.vermont.gov/",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "Virginia": {
+  "register": {
+    "url": "https://vote.elections.virginia.gov/Registration/Eligibility",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online",
+    "deadline": "Deadline: October 14, 2025"
+  },
+  "id": {
+    "url": "https://www.elections.virginia.gov/registration/voter-id-requirements/",
+    "icon": "🪪",
+    "description": "Review Virginia's voter ID requirements for in-person voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://www.elections.virginia.gov/casting-a-ballot/absentee-voting/",
+    "icon": "📬",
+    "description": "Request and return your absentee ballot by mail or drop box",
+    "deadline": "Request by: October 24, 2025"
+  },
+  "early": {
+    "url": "https://www.elections.virginia.gov/casting-a-ballot/early-voting/",
+    "icon": "⏰",
+    "description": "Find early voting locations and hours in your locality",
+    "deadline": "Starts: September 20, 2025"
+  },
+  "polling": {
+    "url": "https://vote.elections.virginia.gov/VoterInformation",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://www.elections.virginia.gov/casting-a-ballot/sample-ballots/",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://www.elections.virginia.gov/casting-a-ballot/military-overseas-voting/",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Virginians",
+    "deadline": "Request by: October 24, 2025"
+  },
+  "counties": {
+    "url": "https://vote.elections.virginia.gov/VoterInformation/PublicContactLookup",
+    "icon": "🏛️",
+    "description": "Contact your local registrar for election information",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://vote.elections.virginia.gov/VoterInformation",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "Washington": {
+  "register": {
+    "url": "https://voter.votewa.gov/WhereToVote.aspx",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online",
+    "deadline": "Deadline: October 28, 2025"
+  },
+  "id": {
+    "url": "https://www.sos.wa.gov/elections/voters/voter-id-requirements.aspx",
+    "icon": "🪪",
+    "description": "Review Washington's voter ID requirements — ID not required for most voters",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://www.sos.wa.gov/elections/voters/vote-by-mail.aspx",
+    "icon": "📬",
+    "description": "All registered voters receive a mail ballot automatically",
+    "deadline": "Return by: November 4, 2025"
+  },
+  "early": {
+    "url": "https://www.sos.wa.gov/elections/voters/voting-early.aspx",
+    "icon": "⏰",
+    "description": "Return your mail ballot early or vote in person at a voting center",
+    "deadline": "Starts: October 18, 2025"
+  },
+  "polling": {
+    "url": "https://voter.votewa.gov/WhereToVote.aspx",
+    "icon": "📍",
+    "description": "Locate your voting center or drop box and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://www.sos.wa.gov/elections/voters/sample-ballot.aspx",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://www.sos.wa.gov/elections/voters/military-and-overseas-voters.aspx",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Washingtonians",
+    "deadline": "Ballot return by: November 4, 2025"
+  },
+  "counties": {
+    "url": "https://www.sos.wa.gov/elections/auditors/",
+    "icon": "🏛️",
+    "description": "Contact your county elections office for local info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://voter.votewa.gov/",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "West Virginia": {
+  "register": {
+    "url": "https://ovr.sos.wv.gov/Register/Landing",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online or by mail",
+    "deadline": "Deadline: October 14, 2025"
+  },
+  "id": {
+    "url": "https://sos.wv.gov/elections/Pages/Voter-ID-Laws.aspx",
+    "icon": "🪪",
+    "description": "Review West Virginia's voter ID requirements for in-person voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://sos.wv.gov/elections/Pages/AbsenteeVotingInformation.aspx",
+    "icon": "📬",
+    "description": "Request and return your absentee ballot by mail or in person",
+    "deadline": "Request by: October 30, 2025"
+  },
+  "early": {
+    "url": "https://sos.wv.gov/elections/Pages/EarlyVotingInformation.aspx",
+    "icon": "⏰",
+    "description": "Find early voting locations and hours in your county",
+    "deadline": "Starts: October 22, 2025"
+  },
+  "polling": {
+    "url": "https://sos.wv.gov/elections/Pages/VotingLocations.aspx",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://sos.wv.gov/elections/Pages/SampleBallots.aspx",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://sos.wv.gov/elections/Pages/MilitaryVoting.aspx",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas West Virginians",
+    "deadline": "Request by: October 30, 2025"
+  },
+  "counties": {
+    "url": "https://sos.wv.gov/elections/Pages/CountyClerks.aspx",
+    "icon": "🏛️",
+    "description": "Contact your county clerk for local election info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://www.vote.wv.gov/",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "Wisconsin": {
+  "register": {
+    "url": "https://myvote.wi.gov/en-us/Register-To-Vote",
+    "icon": "📝",
+    "description": "Register to vote or update your registration online or by mail",
+    "deadline": "Deadline: October 14, 2025"
+  },
+  "id": {
+    "url": "https://elections.wi.gov/voters/photo-id",
+    "icon": "🪪",
+    "description": "Review Wisconsin's voter ID requirements for in-person voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://myvote.wi.gov/en-us/Vote-Absentee-By-Mail",
+    "icon": "📬",
+    "description": "Request and return your absentee ballot by mail or drop box",
+    "deadline": "Request by: October 31, 2025"
+  },
+  "early": {
+    "url": "https://elections.wi.gov/voters/early-voting",
+    "icon": "⏰",
+    "description": "Find early voting options and hours in your municipality",
+    "deadline": "Starts: October 21, 2025"
+  },
+  "polling": {
+    "url": "https://myvote.wi.gov/en-us/Find-My-Polling-Place",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://myvote.wi.gov/en-us/Whats-On-My-Ballot",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://elections.wi.gov/voters/military-overseas",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Wisconsinites",
+    "deadline": "Request by: October 31, 2025"
+  },
+  "counties": {
+    "url": "https://elections.wi.gov/about/election-officials",
+    "icon": "🏛️",
+    "description": "Contact your municipal clerk for local election info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://myvote.wi.gov/",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "Wyoming": {
+  "register": {
+    "url": "https://sos.wyo.gov/Elections/RegisteringToVote.aspx",
+    "icon": "📝",
+    "description": "Register to vote or update your registration in person at your county clerk’s office",
+    "deadline": "Deadline: October 21, 2025"
+  },
+  "id": {
+    "url": "https://sos.wyo.gov/Elections/State/IDRequirements.aspx",
+    "icon": "🪪",
+    "description": "Review Wyoming's voter ID requirements for in-person voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://sos.wyo.gov/Elections/State/AbsenteeVoting.aspx",
+    "icon": "📬",
+    "description": "Request and return your absentee ballot by mail or in person",
+    "deadline": "Request by: November 4, 2025"
+  },
+  "early": {
+    "url": "https://sos.wyo.gov/Elections/State/AbsenteeVoting.aspx",
+    "icon": "⏰",
+    "description": "Vote early in person by requesting an absentee ballot from your county clerk",
+    "deadline": "Starts: September 20, 2025"
+  },
+  "polling": {
+    "url": "https://sos.wyo.gov/Elections/State/PollingPlaces.aspx",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://sos.wyo.gov/Elections/State/SampleBallots.aspx",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://sos.wyo.gov/Elections/State/MilitaryVoting.aspx",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Wyomingites",
+    "deadline": "Request by: November 4, 2025"
+  },
+  "counties": {
+    "url": "https://sos.wyo.gov/Elections/CountyClerks.aspx",
+    "icon": "🏛️",
+    "description": "Contact your county clerk for local election info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://sos.wyo.gov/Elections/ElectionTools.aspx",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "American Samoa": {
+  "register": {
+    "url": "https://aselectionoffice.gov.as/",
+    "icon": "📝",
+    "description": "Register to vote or update your registration in person at the Election Office",
+    "deadline": "Deadline: October 7, 2025"
+  },
+  "id": {
+    "url": "https://aselectionoffice.gov.as/",
+    "icon": "🪪",
+    "description": "Review American Samoa's voter ID requirements for in-person voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://aselectionoffice.gov.as/",
+    "icon": "📬",
+    "description": "Request and return your absentee ballot by mail or in person",
+    "deadline": "Request by: October 31, 2025"
+  },
+  "early": {
+    "url": "https://aselectionoffice.gov.as/",
+    "icon": "⏰",
+    "description": "Vote early in person at the Election Office",
+    "deadline": "Starts: October 21, 2025"
+  },
+  "polling": {
+    "url": "https://aselectionoffice.gov.as/",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 4, 2025"
+  },
+  "sample": {
+    "url": "https://aselectionoffice.gov.as/",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://www.fvap.gov/american-samoa",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas American Samoans",
+    "deadline": "Request by: October 31, 2025"
+  },
+  "counties": {
+    "url": "https://aselectionoffice.gov.as/",
+    "icon": "🏛️",
+    "description": "Contact the Election Office for local info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://aselectionoffice.gov.as/",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "Guam": {
+  "register": {
+    "url": "https://gec.guam.gov/voter-registration/",
+    "icon": "📝",
+    "description": "Register to vote or update your registration in person at the Guam Election Commission",
+    "deadline": "Deadline: October 18, 2025"
+  },
+  "id": {
+    "url": "https://gec.guam.gov/voter-registration/",
+    "icon": "🪪",
+    "description": "Review Guam's voter ID requirements for in-person voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://gec.guam.gov/absentee-voting/",
+    "icon": "📬",
+    "description": "Request and return your absentee ballot by mail or in person",
+    "deadline": "Request by: October 31, 2025"
+  },
+  "early": {
+    "url": "https://gec.guam.gov/early-voting/",
+    "icon": "⏰",
+    "description": "Vote early in person at designated early voting sites",
+    "deadline": "Starts: October 21, 2025"
+  },
+  "polling": {
+    "url": "https://gec.guam.gov/polling-places/",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 5, 2025"
+  },
+  "sample": {
+    "url": "https://gec.guam.gov/sample-ballots/",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://www.fvap.gov/guam",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Guamanians",
+    "deadline": "Request by: October 31, 2025"
+  },
+  "counties": {
+    "url": "https://gec.guam.gov/contact-us/",
+    "icon": "🏛️",
+    "description": "Contact the Guam Election Commission for local info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://gec.guam.gov/",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "Northern Mariana Islands": {
+  "register": {
+    "url": "https://www.votecnmi.gov.mp/",
+    "icon": "📝",
+    "description": "Register to vote or update your registration in person at the Election Commission",
+    "deadline": "Deadline: October 7, 2025"
+  },
+  "id": {
+    "url": "https://www.votecnmi.gov.mp/",
+    "icon": "🪪",
+    "description": "Review CNMI's voter ID requirements for in-person voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://www.votecnmi.gov.mp/",
+    "icon": "📬",
+    "description": "Request and return your absentee ballot by mail or in person",
+    "deadline": "Request by: October 31, 2025"
+  },
+  "early": {
+    "url": "https://www.votecnmi.gov.mp/",
+    "icon": "⏰",
+    "description": "Vote early in person at designated early voting sites",
+    "deadline": "Starts: October 21, 2025"
+  },
+  "polling": {
+    "url": "https://www.votecnmi.gov.mp/",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 5, 2025"
+  },
+  "sample": {
+    "url": "https://www.votecnmi.gov.mp/",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://www.fvap.gov/northern-mariana-islands",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas CNMI voters",
+    "deadline": "Request by: October 31, 2025"
+  },
+  "counties": {
+    "url": "https://www.votecnmi.gov.mp/",
+    "icon": "🏛️",
+    "description": "Contact the Election Commission for local info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://www.votecnmi.gov.mp/",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "Puerto Rico": {
+  "register": {
+    "url": "https://ceepur.org/",
+    "icon": "📝",
+    "description": "Register to vote or update your registration in person at your local CEEPUR office",
+    "deadline": "Deadline: September 30, 2025"
+  },
+  "id": {
+    "url": "https://ceepur.org/",
+    "icon": "🪪",
+    "description": "Review Puerto Rico's voter ID requirements for in-person voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://ceepur.org/",
+    "icon": "📬",
+    "description": "Request and return your absentee ballot by mail or in person",
+    "deadline": "Request by: October 31, 2025"
+  },
+  "early": {
+    "url": "https://ceepur.org/",
+    "icon": "⏰",
+    "description": "Vote early in person at designated early voting centers",
+    "deadline": "Starts: October 21, 2025"
+  },
+  "polling": {
+    "url": "https://ceepur.org/",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 5, 2025"
+  },
+  "sample": {
+    "url": "https://ceepur.org/",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://www.fvap.gov/puerto-rico",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Puerto Ricans",
+    "deadline": "Request by: October 31, 2025"
+  },
+  "counties": {
+    "url": "https://ceepur.org/",
+    "icon": "🏛️",
+    "description": "Contact your local CEEPUR office for election info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://ceepur.org/",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
+},
+   "U.S. Virgin Islands": {
+  "register": {
+    "url": "https://www.vivote.gov/voter-registration",
+    "icon": "📝",
+    "description": "Register to vote or update your registration in person at the Elections System office",
+    "deadline": "Deadline: October 7, 2025"
+  },
+  "id": {
+    "url": "https://www.vivote.gov/voter-registration",
+    "icon": "🪪",
+    "description": "Review USVI's voter ID requirements for in-person voting",
+    "deadline": ""
+  },
+  "absentee": {
+    "url": "https://www.vivote.gov/absentee-voting",
+    "icon": "📬",
+    "description": "Request and return your absentee ballot by mail or in person",
+    "deadline": "Request by: October 31, 2025"
+  },
+  "early": {
+    "url": "https://www.vivote.gov/early-voting",
+    "icon": "⏰",
+    "description": "Vote early in person at designated early voting centers",
+    "deadline": "Starts: October 21, 2025"
+  },
+  "polling": {
+    "url": "https://www.vivote.gov/polling-places",
+    "icon": "📍",
+    "description": "Locate your polling place and Election Day hours",
+    "deadline": "Election Day: November 5, 2025"
+  },
+  "sample": {
+    "url": "https://www.vivote.gov/sample-ballots",
+    "icon": "🧾",
+    "description": "View your sample ballot and voting instructions",
+    "deadline": ""
+  },
+  "military": {
+    "url": "https://www.fvap.gov/us-virgin-islands",
+    "icon": "🎖️",
+    "description": "Voting options for military and overseas Virgin Islanders",
+    "deadline": "Request by: October 31, 2025"
+  },
+  "counties": {
+    "url": "https://www.vivote.gov/contact-us",
+    "icon": "🏛️",
+    "description": "Contact the Elections System office for local info",
+    "deadline": ""
+  },
+  "tools": {
+    "url": "https://www.vivote.gov/",
+    "icon": "🧰",
+    "description": "Check registration, ballot status, and voting tools",
+    "deadline": ""
+  }
 }
+}   
