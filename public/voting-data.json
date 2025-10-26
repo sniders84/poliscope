@@ -1,571 +1,567 @@
 {
-  "Alabama": {
-  "register": "https://www.sos.alabama.gov/alabama-votes/voter/register-to-vote",
-  "id": "https://www.sos.alabama.gov/alabama-votes/voter/voter-id",
-  "absentee": "https://www.sos.alabama.gov/alabama-votes/voter/absentee-voting",
-  "early": "https://www.sos.alabama.gov/alabama-votes/voter/absentee-voting",
-  "polling": "https://myinfo.alabamavotes.gov/voterview/",
-  "sample": "https://www.sos.alabama.gov/alabama-votes/2024-general-election-sample-ballots",
-  "military": "https://www.sos.alabama.gov/alabama-votes/voter/absentee-voting/UOCAVA-voters",
-  "counties": "https://www.sos.alabama.gov/city-county-lookup",
-  "tools": "https://www.sos.alabama.gov/alabama-votes/voter/election-information"
-},
-  "Alaska": {
-  "register": "https://www.elections.alaska.gov/Core/voterregistration.php",
-  "id": "https://www.elections.alaska.gov/Core/voteridrequirements.php",
-  "absentee": "https://www.elections.alaska.gov/Core/absenteevoting.php",
-  "early": "https://www.elections.alaska.gov/Core/earlyvoting.php",
-  "polling": "https://www.elections.alaska.gov/Core/pollingplaces.php",
-  "sample": "https://www.elections.alaska.gov/Core/sampleballots.php",
-  "military": "https://www.elections.alaska.gov/Core/militaryandoverseasvoters.php",
-  "counties": "https://www.elections.alaska.gov/Core/contactregionaloffices.php",
-  "tools": "https://www.elections.alaska.gov/"
-},
-  "Arizona": {
-  "register": "https://azsos.gov/elections/voters/register-vote",
-  "id": "https://azsos.gov/elections/voters/voter-id",
-  "absentee": "https://azsos.gov/elections/voters/early-voting",
-  "early": "https://azsos.gov/elections/voters/early-voting",
-  "polling": "https://my.arizona.vote/",
-  "sample": "https://my.arizona.vote/",
-  "military": "https://azsos.gov/elections/voters/military-overseas-voters",
-  "counties": "https://azsos.gov/elections/voting-election/county-election-info",
-  "tools": "https://azsos.gov/elections"
-},
-  "Arkansas": {
-  "register": "https://www.sos.arkansas.gov/elections/voter-information/voter-registration-information",
-  "id": "https://www.sos.arkansas.gov/elections/voter-information/voter-id-requirements",
-  "absentee": "https://www.sos.arkansas.gov/elections/voter-information/absentee-voting",
-  "early": "https://www.sos.arkansas.gov/elections/voter-information/early-voting",
-  "polling": "https://www.voterview.ar-nova.org/voterview/",
-  "sample": "https://www.voterview.ar-nova.org/voterview/",
-  "military": "https://www.sos.arkansas.gov/elections/voter-information/military-overseas-voting",
-  "counties": "https://www.sos.arkansas.gov/elections/voter-information/county-clerks",
-  "tools": "https://www.sos.arkansas.gov/elections"
-},
-  "California": {
-  "register": "https://registertovote.ca.gov/",
-  "id": "https://www.sos.ca.gov/elections/voter-registration/voter-id",
-  "absentee": "https://www.sos.ca.gov/elections/voter-registration/vote-mail",
-  "early": "https://www.sos.ca.gov/elections/voter-registration/early-voting",
-  "polling": "https://www.sos.ca.gov/elections/polling-place",
-  "sample": "https://www.sos.ca.gov/elections/sample-ballot",
-  "military": "https://www.sos.ca.gov/elections/voter-registration/military-overseas-voters",
-  "counties": "https://www.sos.ca.gov/elections/voting-resources/county-elections-offices",
-  "tools": "https://www.sos.ca.gov/elections"
-},
-  "Colorado": {
-  "register": "https://www.coloradosos.gov/voter/pages/pub/home.xhtml",
-  "id": "https://www.coloradosos.gov/pubs/elections/Resources/IDRequirements.html",
-  "absentee": "https://www.coloradosos.gov/pubs/elections/FAQs/VotingByMail.html",
-  "early": "https://www.coloradosos.gov/pubs/elections/FAQs/EarlyVoting.html",
-  "polling": "https://www.coloradosos.gov/voter/pages/pub/WhereToVote.xhtml",
-  "sample": "https://www.coloradosos.gov/voter/pages/pub/sampleBallot.xhtml",
-  "military": "https://www.coloradosos.gov/pubs/elections/UOCAVA.html",
-  "counties": "https://www.coloradosos.gov/pubs/elections/Resources/CountyElectionOffices.html",
-  "tools": "https://www.coloradosos.gov/pubs/elections/main.html"
-},
-  "Connecticut": {
-  "register": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Voter-Registration-Information",
-  "id": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Voter-ID-Requirements",
-  "absentee": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Absentee-Voting",
-  "early": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Early-Voting",
-  "polling": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Polling-Place-Lookup",
-  "sample": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Sample-Ballots",
-  "military": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Military-and-Overseas-Voting",
-  "counties": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Town-Clerk-Directory",
-  "tools": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information"
-},
-  "Delaware": {
-  "register": "https://elections.delaware.gov/voter/votereg.shtml",
-  "id": "https://elections.delaware.gov/voter/voterid.shtml",
-  "absentee": "https://elections.delaware.gov/voter/absentee.shtml",
-  "early": "https://elections.delaware.gov/voter/earlyvoting.shtml",
-  "polling": "https://ivote.de.gov/voterview",
-  "sample": "https://elections.delaware.gov/voter/sampleballots.shtml",
-  "military": "https://elections.delaware.gov/voter/military.shtml",
-  "counties": "https://elections.delaware.gov/information/electionoffices.shtml",
-  "tools": "https://elections.delaware.gov/"
-},
-  "Florida": {
-  "register": "https://registertovoteflorida.gov/",
-  "id": "https://dos.fl.gov/elections/for-voters/voter-registration/voter-id/",
-  "absentee": "https://dos.fl.gov/elections/for-voters/voting/vote-by-mail/",
-  "early": "https://dos.fl.gov/elections/for-voters/voting/early-voting/",
-  "polling": "https://dos.fl.gov/elections/for-voters/voting/election-day-voting/",
-  "sample": "https://dos.fl.gov/elections/for-voters/voting/sample-ballots/",
-  "military": "https://dos.fl.gov/elections/for-voters/military-and-overseas-voters/",
-  "counties": "https://dos.fl.gov/elections/contacts/supervisor-of-elections/",
-  "tools": "https://dos.fl.gov/elections/"
-},
-  "Georgia": {
-  "register": "https://georgia.gov/register-vote",
-  "id": "https://sos.ga.gov/page/georgia-voter-identification-requirements",
-  "absentee": "https://sos.ga.gov/page/absentee-voting",
-  "early": "https://sos.ga.gov/page/advance-voting",
-  "polling": "https://mvp.sos.ga.gov/s/",
-  "sample": "https://mvp.sos.ga.gov/s/",
-  "military": "https://sos.ga.gov/page/military-and-overseas-voting",
-  "counties": "https://sos.ga.gov/elections/election-county-contact-information",
-  "tools": "https://sos.ga.gov/elections"
-},
-  "Hawaii": {
-    "register": "https://olvr.hawaii.gov/",
-    "id": "https://elections.hawaii.gov/voting/voter-registration-drives/voter-id-requirements/",
-    "absentee": "https://elections.hawaii.gov/voting/vote-by-mail/",
-    "early": "https://elections.hawaii.gov/voting/in-person-voting/",
-    "polling": "https://elections.hawaii.gov/voting/in-person-voting/",
-    "sample": "https://elections.hawaii.gov/voting/sample-ballots/",
-    "military": "https://elections.hawaii.gov/voting/military-and-overseas-voting/",
-    "counties": "https://elections.hawaii.gov/contact-us/",
-    "tools": "https://elections.hawaii.gov/"
-  },
-  "Idaho": {
-    "register": "https://voteidaho.gov/voter-registration/",
-    "id": "https://voteidaho.gov/voter-id-requirements/",
-    "absentee": "https://voteidaho.gov/vote-absentee/",
-    "early": "https://voteidaho.gov/early-voting/",
-    "polling": "https://voteidaho.gov/where-to-vote/",
-    "sample": "https://voteidaho.gov/sample-ballots/",
-    "military": "https://voteidaho.gov/military-overseas-voters/",
-    "counties": "https://voteidaho.gov/county-elections-offices/",
-    "tools": "https://voteidaho.gov/"
-  },
-  "Illinois": {
-    "register": "https://ova.elections.il.gov/",
-    "id": "https://www.elections.il.gov/VotingInformation/VoterIdentification.aspx",
-    "absentee": "https://www.elections.il.gov/VotingInformation/VotingByMail.aspx",
-    "early": "https://www.elections.il.gov/VotingInformation/EarlyVoting.aspx",
-    "polling": "https://www.elections.il.gov/VotingInformation/PollingPlaceLookup.aspx",
-    "sample": "https://www.elections.il.gov/VotingInformation/SampleBallots.aspx",
-    "military": "https://www.elections.il.gov/VotingInformation/MilitaryOverseasVoting.aspx",
-    "counties": "https://www.elections.il.gov/AboutTheBoard/CountyClerks.aspx",
-    "tools": "https://www.elections.il.gov/"
-  },
-  "Indiana": {
-    "register": "https://indianavoters.in.gov/",
-    "id": "https://www.in.gov/sos/elections/voter-information/photo-id-requirements/",
-    "absentee": "https://www.in.gov/sos/elections/voter-information/absentee-voting/",
-    "early": "https://www.in.gov/sos/elections/voter-information/early-voting/",
-    "polling": "https://indianavoters.in.gov/",
-    "sample": "https://indianavoters.in.gov/",
-    "military": "https://www.in.gov/sos/elections/voter-information/military-and-overseas-voters/",
-    "counties": "https://www.in.gov/sos/elections/voter-information/county-election-offices/",
-    "tools": "https://www.in.gov/sos/elections/"
-  },
-  "Iowa": {
-    "register": "https://sos.iowa.gov/voters/voter-registration",
-    "id": "https://sos.iowa.gov/voters/voterid",
-    "absentee": "https://sos.iowa.gov/elections/electioninfo/absenteeinfo.html",
-    "early": "https://sos.iowa.gov/elections/electioninfo/earlyvoting.html",
-    "polling": "https://sos.iowa.gov/elections/voterreg/pollingplace/search.aspx",
-    "sample": "https://sos.iowa.gov/elections/electioninfo/sampleballots.html",
-    "military": "https://sos.iowa.gov/elections/electioninfo/uocava.html",
-    "counties": "https://sos.iowa.gov/elections/auditors/auditorslist.html",
-    "tools": "https://sos.iowa.gov/elections/voters/index.html"
-  },
-  "Kansas": {
-    "register": "https://sos.ks.gov/elections/voter-registration.html",
-    "id": "https://sos.ks.gov/elections/voter-id.html",
-    "absentee": "https://sos.ks.gov/elections/advance-voting.html",
-    "early": "https://sos.ks.gov/elections/advance-voting.html",
-    "polling": "https://myvoteinfo.voteks.org/voterview/",
-    "sample": "https://myvoteinfo.voteks.org/voterview/",
-    "military": "https://sos.ks.gov/elections/military-overseas-voters.html",
-    "counties": "https://sos.ks.gov/elections/election-officials.html",
-    "tools": "https://sos.ks.gov/elections/elections.html"
-  },
-  "Kentucky": {
-    "register": "https://elect.ky.gov/Resources/Pages/Registration.aspx",
-    "id": "https://elect.ky.gov/Resources/Pages/Voter-ID.aspx",
-    "absentee": "https://elect.ky.gov/Voters/Pages/Absentee-Voting.aspx",
-    "early": "https://elect.ky.gov/Voters/Pages/Early-Voting.aspx",
-    "polling": "https://vrsws.sos.ky.gov/vic/",
-    "sample": "https://elect.ky.gov/Voters/Pages/Sample-Ballots.aspx",
-    "military": "https://elect.ky.gov/Voters/Pages/Military-Voting.aspx",
-    "counties": "https://elect.ky.gov/About-Us/Pages/County-Clerks.aspx",
-    "tools": "https://elect.ky.gov/Voters/Pages/default.aspx"
-  },
-  "Louisiana": {
-    "register": "https://www.sos.la.gov/ElectionsAndVoting/Pages/OnlineVoterRegistration.aspx",
-    "id": "https://www.sos.la.gov/ElectionsAndVoting/Vote/VoterIDRequirements/Pages/default.aspx",
-    "absentee": "https://www.sos.la.gov/ElectionsAndVoting/Vote/VoteByMail/Pages/default.aspx",
-    "early": "https://www.sos.la.gov/ElectionsAndVoting/Vote/EarlyVoting/Pages/default.aspx",
-    "polling": "https://voterportal.sos.la.gov/",
-    "sample": "https://voterportal.sos.la.gov/",
-    "military": "https://www.sos.la.gov/ElectionsAndVoting/Vote/MilitaryAndOverseasVoting/Pages/default.aspx",
-    "counties": "https://www.sos.la.gov/ElectionsAndVoting/Pages/ParishOfficials.aspx",
-    "tools": "https://www.sos.la.gov/ElectionsAndVoting/Pages/default.aspx"
-  },
-  "Maine": {
-    "register": "https://www.maine.gov/sos/elections/voter-information/voter-registration",
-    "id": "https://www.maine.gov/sos/elections/voter-information/voter-id",
-    "absentee": "https://www.maine.gov/sos/elections/voter-information/absentee-voting",
-    "early": "https://www.maine.gov/sos/elections/voter-information/early-voting",
-    "polling": "https://www.maine.gov/sos/elections/voter-information/polling-places",
-    "sample": "https://www.maine.gov/sos/elections/voter-information/sample-ballots",
-    "military": "https://www.maine.gov/sos/elections/voter-information/military-overseas-voting",
-    "counties": "https://www.maine.gov/sos/elections/voter-information/municipal-clerks",
-    "tools": "https://www.maine.gov/sos/elections/voter-information"
-  },
-  "Maryland": {
-    "register": "https://elections.maryland.gov/voter_registration/index.html",
-    "id": "https://elections.maryland.gov/voting/voter_id.html",
-    "absentee": "https://elections.maryland.gov/voting/absentee.html",
-    "early": "https://elections.maryland.gov/voting/early_voting.html",
-    "polling": "https://voterservices.elections.maryland.gov/VoterSearch",
-    "sample": "https://voterservices.elections.maryland.gov/VoterSearch",
-    "military": "https://elections.maryland.gov/voting/military.html",
-    "counties": "https://elections.maryland.gov/about/county_boards.html",
-    "tools": "https://elections.maryland.gov/"
-  },
-  {
-  "Massachusetts": {
-    "register": "https://www.sec.state.ma.us/ovr/",
-    "id": "https://www.sec.state.ma.us/ele/eleidx.htm",
-    "absentee": "https://www.sec.state.ma.us/ele/eleabsentee/absidx.htm",
-    "early": "https://www.sec.state.ma.us/ele/eleev/early-voting.htm",
-    "polling": "https://www.sec.state.ma.us/wheredoivotema/bal/myelectioninfo.aspx",
-    "sample": "https://www.sec.state.ma.us/wheredoivotema/bal/myelectioninfo.aspx",
-    "military": "https://www.sec.state.ma.us/ele/elemil/milidx.htm",
-    "counties": "https://www.sec.state.ma.us/ele/eleclk/clkidx.htm",
-    "tools": "https://www.sec.state.ma.us/ele/eleidx.htm"
-  },
-  "Michigan": {
-    "register": "https://mvic.sos.state.mi.us/RegisterVoter",
-    "id": "https://mvic.sos.state.mi.us/VoterIDRequirements",
-    "absentee": "https://mvic.sos.state.mi.us/AVApplication",
-    "early": "https://mvic.sos.state.mi.us/VoteEarly",
-    "polling": "https://mvic.sos.state.mi.us/VoterInformation",
-    "sample": "https://mvic.sos.state.mi.us/VoterInformation",
-    "military": "https://mvic.sos.state.mi.us/MilitaryVoting",
-    "counties": "https://www.michigan.gov/sos/elections/local-officials",
-    "tools": "https://mvic.sos.state.mi.us/"
-  },
-  "Minnesota": {
-    "register": "https://www.sos.state.mn.us/elections-voting/register-to-vote/",
-    "id": "https://www.sos.state.mn.us/elections-voting/election-day-voting/voter-id-requirements/",
-    "absentee": "https://www.sos.state.mn.us/elections-voting/other-ways-to-vote/vote-by-mail/",
-    "early": "https://www.sos.state.mn.us/elections-voting/other-ways-to-vote/vote-early-in-person/",
-    "polling": "https://pollfinder.sos.state.mn.us/",
-    "sample": "https://www.sos.state.mn.us/elections-voting/whats-on-my-ballot/",
-    "military": "https://www.sos.state.mn.us/elections-voting/other-ways-to-vote/military-overseas-voting/",
-    "counties": "https://www.sos.state.mn.us/elections-voting/contact-your-election-office/",
-    "tools": "https://www.sos.state.mn.us/elections-voting/"
-  },
-  "Mississippi": {
-    "register": "https://www.sos.ms.gov/elections-voting/voter-registration-information",
-    "id": "https://www.sos.ms.gov/elections-voting/voter-id-information",
-    "absentee": "https://www.sos.ms.gov/elections-voting/absentee-voting-information",
-    "early": "https://www.sos.ms.gov/elections-voting/absentee-voting-information",
-    "polling": "https://www.sos.ms.gov/elections-voting/polling-place-information",
-    "sample": "https://www.sos.ms.gov/elections-voting/sample-ballots",
-    "military": "https://www.sos.ms.gov/elections-voting/military-overseas-voting",
-    "counties": "https://www.sos.ms.gov/elections-voting/county-election-offices",
-    "tools": "https://www.sos.ms.gov/elections-voting"
-  },
-  "Missouri": {
-    "register": "https://www.sos.mo.gov/elections/goVoteMissouri/register",
-    "id": "https://www.sos.mo.gov/elections/goVoteMissouri/voterid",
-    "absentee": "https://www.sos.mo.gov/elections/goVoteMissouri/howtovote#absentee",
-    "early": "https://www.sos.mo.gov/elections/goVoteMissouri/howtovote#early",
-    "polling": "https://voteroutreach.sos.mo.gov/PRD/VoterOutreach/VoterLookup.aspx",
-    "sample": "https://voteroutreach.sos.mo.gov/PRD/VoterOutreach/VoterLookup.aspx",
-    "military": "https://www.sos.mo.gov/elections/goVoteMissouri/military",
-    "counties": "https://www.sos.mo.gov/elections/goVoteMissouri/localelectionauthority",
-    "tools": "https://www.sos.mo.gov/elections"
-  },
-  "Montana": {
-    "register": "https://sosmt.gov/elections/vote/",
-    "id": "https://sosmt.gov/elections/vote/#id",
-    "absentee": "https://sosmt.gov/elections/vote/#absentee",
-    "early": "https://sosmt.gov/elections/vote/#early",
-    "polling": "https://app.mt.gov/voterinfo/",
-    "sample": "https://app.mt.gov/voterinfo/",
-    "military": "https://sosmt.gov/elections/vote/#military",
-    "counties": "https://sosmt.gov/elections/administration/#county",
-    "tools": "https://sosmt.gov/elections/"
-  },
-  "Nebraska": {
-    "register": "https://www.nebraska.gov/apps-sos-voter-registration/",
-    "id": "https://sos.nebraska.gov/elections/voter-id",
-    "absentee": "https://sos.nebraska.gov/elections/early-voting",
-    "early": "https://sos.nebraska.gov/elections/early-voting",
-    "polling": "https://www.votercheck.necvr.ne.gov/voterview/",
-    "sample": "https://www.votercheck.necvr.ne.gov/voterview/",
-    "military": "https://sos.nebraska.gov/elections/military-voters",
-    "counties": "https://sos.nebraska.gov/elections/election-officials",
-    "tools": "https://sos.nebraska.gov/elections"
-  },
-  "Nevada": {
-    "register": "https://www.nvsos.gov/voter-registration",
-    "id": "https://www.nvsos.gov/voter-id",
-    "absentee": "https://www.nvsos.gov/voting-by-mail",
-    "early": "https://www.nvsos.gov/early-voting",
-    "polling": "https://www.nvsos.gov/voter-search",
-    "sample": "https://www.nvsos.gov/sample-ballot",
-    "military": "https://www.nvsos.gov/military-voting",
-    "counties": "https://www.nvsos.gov/elections/county-clerks",
-    "tools": "https://www.nvsos.gov/elections"
-  },
-  "New Hampshire": {
-    "register": "https://www.sos.nh.gov/elections/voters/register-vote",
-    "id": "https://www.sos.nh.gov/elections/voters/voter-id",
-    "absentee": "https://www.sos.nh.gov/elections/voters/absentee-voting",
-    "early": "https://www.sos.nh.gov/elections/voters/early-voting",
-    "polling": "https://app.sos.nh.gov/voterinformation",
-    "sample": "https://app.sos.nh.gov/voterinformation",
-    "military": "https://www.sos.nh.gov/elections/voters/military-overseas-voting",
-    "counties": "https://www.sos.nh.gov/elections/election-officials",
-    "tools": "https://www.sos.nh.gov/elections"
-  },
-  "New Jersey": {
-    "register": "https://voter.svrs.nj.gov/register",
-    "id": "https://www.nj.gov/state/elections/voting-information-voter-id.shtml",
-    "absentee": "https://www.nj.gov/state/elections/vote-by-mail.shtml",
-    "early": "https://www.nj.gov/state/elections/vote-early.shtml",
-    "polling": "https://voter.svrs.nj.gov/polling-place-search",
-    "sample": "https://voter.svrs.nj.gov/sample-ballot",
-    "military": "https://www.nj.gov/state/elections/military-overseas-voting.shtml",
-    "counties": "https://www.nj.gov/state/elections/county-election-offices.shtml",
-    "tools": "https://www.nj.gov/state/elections/"
-  },
-  {
-  "New Mexico": {
-    "register": "https://www.sos.nm.gov/voting-and-elections/voter-information/voter-registration/",
-    "id": "https://www.sos.nm.gov/voting-and-elections/voter-information/voter-id-requirements/",
-    "absentee": "https://www.sos.nm.gov/voting-and-elections/voter-information/absentee-voting/",
-    "early": "https://www.sos.nm.gov/voting-and-elections/voter-information/early-voting/",
-    "polling": "https://voterportal.servis.sos.state.nm.us/WhereToVote.aspx",
-    "sample": "https://voterportal.servis.sos.state.nm.us/WhereToVote.aspx",
-    "military": "https://www.sos.nm.gov/voting-and-elections/voter-information/military-overseas-voting/",
-    "counties": "https://www.sos.nm.gov/voting-and-elections/voter-information/county-clerks/",
-    "tools": "https://www.sos.nm.gov/voting-and-elections/"
-  },
-  "New York": {
-    "register": "https://voterreg.dmv.ny.gov/MotorVoter/",
-    "id": "https://www.elections.ny.gov/VotingRegister.html#IDReq",
-    "absentee": "https://www.elections.ny.gov/VotingAbsentee.html",
-    "early": "https://www.elections.ny.gov/VotingEarly.html",
-    "polling": "https://voterlookup.elections.ny.gov/",
-    "sample": "https://voterlookup.elections.ny.gov/",
-    "military": "https://www.elections.ny.gov/VotingMilitaryFederal.html",
-    "counties": "https://www.elections.ny.gov/CountyBoards.html",
-    "tools": "https://www.elections.ny.gov/"
-  },
-  "North Carolina": {
-    "register": "https://www.ncsbe.gov/registering",
-    "id": "https://www.ncsbe.gov/voting/voter-id",
-    "absentee": "https://www.ncsbe.gov/voting/vote-mail",
-    "early": "https://www.ncsbe.gov/voting/vote-early-person",
-    "polling": "https://vt.ncsbe.gov/PPLkup/",
-    "sample": "https://www.ncsbe.gov/voting/sample-ballot",
-    "military": "https://www.ncsbe.gov/voting/military-and-overseas-voting",
-    "counties": "https://www.ncsbe.gov/about-elections/county-boards-elections",
-    "tools": "https://www.ncsbe.gov/voting/voter-tools-and-forms"
-  },
-  "North Dakota": {
-    "register": "https://vip.sos.nd.gov/PortalListDetails.aspx?ptlhPKID=79&ptlPKID=7",
-    "id": "https://vip.sos.nd.gov/IDRequirements.aspx",
-    "absentee": "https://vip.sos.nd.gov/AbsenteeBallot.aspx",
-    "early": "https://vip.sos.nd.gov/EarlyVoting.aspx",
-    "polling": "https://vip.sos.nd.gov/WhereToVote.aspx",
-    "sample": "https://vip.sos.nd.gov/SampleBallot.aspx",
-    "military": "https://vip.sos.nd.gov/MilitaryVoting.aspx",
-    "counties": "https://vip.sos.nd.gov/CountyAuditors.aspx",
-    "tools": "https://vip.sos.nd.gov/"
-  },
-  "Ohio": {
-    "register": "https://olvr.ohiosos.gov/",
-    "id": "https://www.ohiosos.gov/elections/voters/id-requirements/",
-    "absentee": "https://www.ohiosos.gov/elections/voters/absentee-voting/",
-    "early": "https://www.ohiosos.gov/elections/voters/early-in-person-voting/",
-    "polling": "https://voterlookup.ohiosos.gov/voterlookup.aspx",
-    "sample": "https://www.ohiosos.gov/elections/voters/sample-ballots/",
-    "military": "https://www.ohiosos.gov/elections/voters/military-overseas-voting/",
-    "counties": "https://www.ohiosos.gov/elections/elections-officials/county-boards-of-elections/",
-    "tools": "https://www.ohiosos.gov/elections/"
-  },
-  "Oklahoma": {
-    "register": "https://okvoterportal.okelections.us/Home/RegWizard",
-    "id": "https://oklahoma.gov/elections/voters/voter-id.html",
-    "absentee": "https://oklahoma.gov/elections/voters/absentee-voting.html",
-    "early": "https://oklahoma.gov/elections/voters/early-voting.html",
-    "polling": "https://okvoterportal.okelections.us/",
-    "sample": "https://okvoterportal.okelections.us/",
-    "military": "https://oklahoma.gov/elections/voters/military-and-overseas-voters.html",
-    "counties": "https://oklahoma.gov/elections/about-us/county-election-boards.html",
-    "tools": "https://oklahoma.gov/elections.html"
-  },
-  "Oregon": {
-    "register": "https://sos.oregon.gov/voting/pages/registration.aspx",
-    "id": "https://sos.oregon.gov/voting/pages/voter-id.aspx",
-    "absentee": "https://sos.oregon.gov/voting/pages/vote-by-mail.aspx",
-    "early": "https://sos.oregon.gov/voting/pages/vote-early.aspx",
-    "polling": "https://sos.oregon.gov/voting/pages/my-vote.aspx",
-    "sample": "https://sos.oregon.gov/voting/pages/my-vote.aspx",
-    "military": "https://sos.oregon.gov/voting/pages/military-overseas.aspx",
-    "counties": "https://sos.oregon.gov/elections/pages/county-offices.aspx",
-    "tools": "https://sos.oregon.gov/voting/pages/default.aspx"
-  },
-  "Pennsylvania": {
-    "register": "https://www.pavoterservices.pa.gov/Pages/VoterRegistrationApplication.aspx",
-    "id": "https://www.vote.pa.gov/Register-to-Vote/Pages/Voter-ID-Requirements.aspx",
-    "absentee": "https://www.vote.pa.gov/Voting-in-PA/Pages/Mail-and-Absentee-Ballot.aspx",
-    "early": "https://www.vote.pa.gov/Voting-in-PA/Pages/Early-Voting.aspx",
-    "polling": "https://www.pavoterservices.pa.gov/Pages/PollingPlaceInfo.aspx",
-    "sample": "https://www.pavoterservices.pa.gov/Pages/Ballot.aspx",
-    "military": "https://www.vote.pa.gov/Voting-in-PA/Pages/Military-and-Overseas-Voters.aspx",
-    "counties": "https://www.vote.pa.gov/About-Elections/Pages/Contact-Your-Election-Officials.aspx",
-    "tools": "https://www.vote.pa.gov/"
-  },
-  "Rhode Island": {
-    "register": "https://vote.sos.ri.gov/",
-    "id": "https://vote.sos.ri.gov/VoterID",
-    "absentee": "https://vote.sos.ri.gov/Voter/VoteByMail",
-    "early": "https://vote.sos.ri.gov/Voter/EarlyVoting",
-    "polling": "https://vote.sos.ri.gov/Voter/PollingPlace",
-    "sample": "https://vote.sos.ri.gov/Voter/Ballot",
-    "military": "https://vote.sos.ri.gov/Voter/Military",
-    "counties": "https://vote.sos.ri.gov/About/Contact",
-    "tools": "https://vote.sos.ri.gov/"
-  },
-  "South Carolina": {
-    "register": "https://votesc.gov/register",
-    "id": "https://votesc.gov/voter-id",
-    "absentee": "https://votesc.gov/absentee",
-    "early": "https://votesc.gov/early-voting",
-    "polling": "https://votesc.gov/polling-place",
-    "sample": "https://votesc.gov/sample-ballot",
-    "military": "https://votesc.gov/military",
-    "counties": "https://votesc.gov/elections-offices",
-    "tools": "https://votesc.gov/"
-  },
-  {
-  "South Dakota": {
-    "register": "https://sdsos.gov/elections-voting/voting/register-to-vote/default.aspx",
-    "id": "https://sdsos.gov/elections-voting/voting/voter-id-requirements/default.aspx",
-    "absentee": "https://sdsos.gov/elections-voting/voting/absentee-voting/default.aspx",
-    "early": "https://sdsos.gov/elections-voting/voting/early-voting/default.aspx",
-    "polling": "https://vip.sdsos.gov/VIPLogin.aspx",
-    "sample": "https://vip.sdsos.gov/VIPLogin.aspx",
-    "military": "https://sdsos.gov/elections-voting/voting/military-overseas-voting/default.aspx",
-    "counties": "https://sdsos.gov/elections-voting/election-resources/county-auditor-information/default.aspx",
-    "tools": "https://sdsos.gov/elections-voting/default.aspx"
-  },
-  "Tennessee": {
-    "register": "https://ovr.govote.tn.gov/",
-    "id": "https://sos.tn.gov/elections/voter-id",
-    "absentee": "https://sos.tn.gov/elections/guides/absentee-voting",
-    "early": "https://sos.tn.gov/elections/guides/early-voting",
-    "polling": "https://tnmap.tn.gov/voterlookup/",
-    "sample": "https://tnmap.tn.gov/voterlookup/",
-    "military": "https://sos.tn.gov/elections/guides/military-overseas-voting",
-    "counties": "https://sos.tn.gov/elections/election-commissions",
-    "tools": "https://sos.tn.gov/elections"
-  },
-  "Texas": {
-    "register": "https://www.votetexas.gov/register-to-vote/",
-    "id": "https://www.votetexas.gov/register-to-vote/need-id.html",
-    "absentee": "https://www.votetexas.gov/voting-by-mail/",
-    "early": "https://www.votetexas.gov/early-voting/",
-    "polling": "https://teamrv-mvp.sos.texas.gov/MVP/mvp.do",
-    "sample": "https://teamrv-mvp.sos.texas.gov/MVP/mvp.do",
-    "military": "https://www.votetexas.gov/military-overseas-voters/",
-    "counties": "https://www.sos.state.tx.us/elections/voter/county.shtml",
-    "tools": "https://www.votetexas.gov/"
-  },
-  "Utah": {
-    "register": "https://vote.utah.gov/",
-    "id": "https://vote.utah.gov/voter-id-requirements/",
-    "absentee": "https://vote.utah.gov/vote-by-mail/",
-    "early": "https://vote.utah.gov/early-voting/",
-    "polling": "https://vote.utah.gov/where-to-vote/",
-    "sample": "https://vote.utah.gov/whats-on-my-ballot/",
-    "military": "https://vote.utah.gov/military-overseas-voting/",
-    "counties": "https://vote.utah.gov/county-clerks/",
-    "tools": "https://vote.utah.gov/"
-  },
-  "Vermont": {
-    "register": "https://olvr.vermont.gov/",
-    "id": "https://sos.vermont.gov/elections/voters/voter-id-requirements/",
-    "absentee": "https://sos.vermont.gov/elections/voters/early-absentee-voting/",
-    "early": "https://sos.vermont.gov/elections/voters/early-absentee-voting/",
-    "polling": "https://mvp.vermont.gov/",
-    "sample": "https://mvp.vermont.gov/",
-    "military": "https://sos.vermont.gov/elections/voters/military-overseas-voting/",
-    "counties": "https://sos.vermont.gov/elections/election-officials/",
-    "tools": "https://sos.vermont.gov/elections/"
-  },
-  "Virginia": {
-    "register": "https://vote.elections.virginia.gov/Registration/Eligibility",
-    "id": "https://www.elections.virginia.gov/registration/voter-id/",
-    "absentee": "https://www.elections.virginia.gov/casting-a-ballot/absentee-voting/",
-    "early": "https://www.elections.virginia.gov/casting-a-ballot/early-voting/",
-    "polling": "https://vote.elections.virginia.gov/VoterInformation",
-    "sample": "https://vote.elections.virginia.gov/VoterInformation",
-    "military": "https://www.elections.virginia.gov/casting-a-ballot/military-overseas-voting/",
-    "counties": "https://www.elections.virginia.gov/local-election-officials/",
-    "tools": "https://www.elections.virginia.gov/"
-  },
-  "Washington": {
-    "register": "https://www.sos.wa.gov/elections/voters/register-to-vote/",
-    "id": "https://www.sos.wa.gov/elections/voters/voter-id-requirements/",
-    "absentee": "https://www.sos.wa.gov/elections/voters/vote-by-mail/",
-    "early": "https://www.sos.wa.gov/elections/voters/early-voting/",
-    "polling": "https://www.sos.wa.gov/elections/voters/polling-place/",
-    "sample": "https://www.sos.wa.gov/elections/voters/sample-ballots/",
-    "military": "https://www.sos.wa.gov/elections/voters/military-overseas-voting/",
-    "counties": "https://www.sos.wa.gov/elections/voters/county-election-offices/",
-    "tools": "https://www.sos.wa.gov/elections/"
-  },
-  "West Virginia": {
-    "register": "https://ovr.sos.wv.gov/Register/Landing",
-    "id": "https://sos.wv.gov/elections/voter-information/Pages/VoterID.aspx",
-    "absentee": "https://sos.wv.gov/elections/voter-information/Pages/AbsenteeVotingInformation.aspx",
-    "early": "https://sos.wv.gov/elections/voter-information/Pages/EarlyVotingInformation.aspx",
-    "polling": "https://sos.wv.gov/elections/Pages/GoVoteWV.aspx",
-    "sample": "https://sos.wv.gov/elections/Pages/GoVoteWV.aspx",
-    "military": "https://sos.wv.gov/elections/voter-information/Pages/MilitaryVotingInformation.aspx",
-    "counties": "https://sos.wv.gov/elections/Pages/CountyClerks.aspx",
-    "tools": "https://sos.wv.gov/elections/Pages/default.aspx"
-  },
-  "Wisconsin": {
-    "register": "https://myvote.wi.gov/en-us/Register-To-Vote",
-    "id": "https://myvote.wi.gov/en-us/Photo-ID",
-    "absentee": "https://myvote.wi.gov/en-us/Vote-Absentee-By-Mail",
-    "early": "https://myvote.wi.gov/en-us/Vote-Absentee-In-Person",
-    "polling": "https://myvote.wi.gov/en-us/Find-My-Polling-Place",
-    "sample": "https://myvote.wi.gov/en-us/Whats-On-My-Ballot",
-    "military": "https://myvote.wi.gov/en-us/Military-Voting",
-    "counties": "https://elections.wi.gov/about/county-clerks",
-    "tools": "https://myvote.wi.gov/en-us/"
-  },
-  "Wyoming": {
-    "register": "https://sos.wyo.gov/Elections/RegisteringToVote.aspx",
-    "id": "https://sos.wyo.gov/Elections/VoterID.aspx",
-    "absentee": "https://sos.wyo.gov/Elections/AbsenteeVoting.aspx",
-    "early": "https://sos.wyo.gov/Elections/EarlyVoting.aspx",
-    "polling": "https://sos.wyo.gov/Elections/PollingPlaces.aspx",
-    "sample": "https://sos.wyo.gov/Elections/SampleBallots.aspx",
-    "military": "https://sos.wyo.gov/Elections/MilitaryVoting.aspx",
-    "counties": "https://sos.wyo.gov/Elections/CountyClerks.aspx",
-    "tools": "https://sos.wyo.gov/Elections/"
-  },
-  "American Samoa": {
-    "tools": "https://www.americansamoaelectionoffice.gov/"
-  },
-  "Guam": {
-    "tools": "https://gec.guam.gov/"
-  },
-  "Northern Mariana Islands": {
-    "tools": "https://www.votecnmi.gov.mp/"
-  },
-  "Puerto Rico": {
-    "tools": "https://www.ceepur.org/"
-  },
-  "U.S. Virgin Islands": {
-    "tools": "https://vivote.gov/"
-  }
+    "Alabama": {
+        "register": "https://www.sos.alabama.gov/alabama-votes/voter/register-to-vote",
+        "id": "https://www.sos.alabama.gov/alabama-votes/voter/voter-id",
+        "absentee": "https://www.sos.alabama.gov/alabama-votes/voter/absentee-voting",
+        "early": "https://www.sos.alabama.gov/alabama-votes/voter/absentee-voting",
+        "polling": "https://myinfo.alabamavotes.gov/voterview/",
+        "sample": "https://www.sos.alabama.gov/alabama-votes/2024-general-election-sample-ballots",
+        "military": "https://www.sos.alabama.gov/alabama-votes/voter/absentee-voting/UOCAVA-voters",
+        "counties": "https://www.sos.alabama.gov/city-county-lookup",
+        "tools": "https://www.sos.alabama.gov/alabama-votes/voter/election-information"
+    },
+    "Alaska": {
+        "register": "https://www.elections.alaska.gov/Core/voterregistration.php",
+        "id": "https://www.elections.alaska.gov/Core/voteridrequirements.php",
+        "absentee": "https://www.elections.alaska.gov/Core/absenteevoting.php",
+        "early": "https://www.elections.alaska.gov/Core/earlyvoting.php",
+        "polling": "https://www.elections.alaska.gov/Core/pollingplaces.php",
+        "sample": "https://www.elections.alaska.gov/Core/sampleballots.php",
+        "military": "https://www.elections.alaska.gov/Core/militaryandoverseasvoters.php",
+        "counties": "https://www.elections.alaska.gov/Core/contactregionaloffices.php",
+        "tools": "https://www.elections.alaska.gov/"
+    },
+    "Arizona": {
+        "register": "https://azsos.gov/elections/voters/register-vote",
+        "id": "https://azsos.gov/elections/voters/voter-id",
+        "absentee": "https://azsos.gov/elections/voters/early-voting",
+        "early": "https://azsos.gov/elections/voters/early-voting",
+        "polling": "https://my.arizona.vote/",
+        "sample": "https://my.arizona.vote/",
+        "military": "https://azsos.gov/elections/voters/military-overseas-voters",
+        "counties": "https://azsos.gov/elections/voting-election/county-election-info",
+        "tools": "https://azsos.gov/elections"
+    },
+    "Arkansas": {
+        "register": "https://www.sos.arkansas.gov/elections/voter-information/voter-registration-information",
+        "id": "https://www.sos.arkansas.gov/elections/voter-information/voter-id-requirements",
+        "absentee": "https://www.sos.arkansas.gov/elections/voter-information/absentee-voting",
+        "early": "https://www.sos.arkansas.gov/elections/voter-information/early-voting",
+        "polling": "https://www.voterview.ar-nova.org/voterview/",
+        "sample": "https://www.voterview.ar-nova.org/voterview/",
+        "military": "https://www.sos.arkansas.gov/elections/voter-information/military-overseas-voting",
+        "counties": "https://www.sos.arkansas.gov/elections/voter-information/county-clerks",
+        "tools": "https://www.sos.arkansas.gov/elections"
+    },
+    "California": {
+        "register": "https://registertovote.ca.gov/",
+        "id": "https://www.sos.ca.gov/elections/voter-registration/voter-id",
+        "absentee": "https://www.sos.ca.gov/elections/voter-registration/vote-mail",
+        "early": "https://www.sos.ca.gov/elections/voter-registration/early-voting",
+        "polling": "https://www.sos.ca.gov/elections/polling-place",
+        "sample": "https://www.sos.ca.gov/elections/sample-ballot",
+        "military": "https://www.sos.ca.gov/elections/voter-registration/military-overseas-voters",
+        "counties": "https://www.sos.ca.gov/elections/voting-resources/county-elections-offices",
+        "tools": "https://www.sos.ca.gov/elections"
+    },
+    "Colorado": {
+        "register": "https://www.coloradosos.gov/voter/pages/pub/home.xhtml",
+        "id": "https://www.coloradosos.gov/pubs/elections/Resources/IDRequirements.html",
+        "absentee": "https://www.coloradosos.gov/pubs/elections/FAQs/VotingByMail.html",
+        "early": "https://www.coloradosos.gov/pubs/elections/FAQs/EarlyVoting.html",
+        "polling": "https://www.coloradosos.gov/voter/pages/pub/WhereToVote.xhtml",
+        "sample": "https://www.coloradosos.gov/voter/pages/pub/sampleBallot.xhtml",
+        "military": "https://www.coloradosos.gov/pubs/elections/UOCAVA.html",
+        "counties": "https://www.coloradosos.gov/pubs/elections/Resources/CountyElectionOffices.html",
+        "tools": "https://www.coloradosos.gov/pubs/elections/main.html"
+    },
+    "Connecticut": {
+        "register": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Voter-Registration-Information",
+        "id": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Voter-ID-Requirements",
+        "absentee": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Absentee-Voting",
+        "early": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Early-Voting",
+        "polling": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Polling-Place-Lookup",
+        "sample": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Sample-Ballots",
+        "military": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Military-and-Overseas-Voting",
+        "counties": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Town-Clerk-Directory",
+        "tools": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information"
+    },
+    "Delaware": {
+        "register": "https://elections.delaware.gov/voter/votereg.shtml",
+        "id": "https://elections.delaware.gov/voter/voterid.shtml",
+        "absentee": "https://elections.delaware.gov/voter/absentee.shtml",
+        "early": "https://elections.delaware.gov/voter/earlyvoting.shtml",
+        "polling": "https://ivote.de.gov/voterview",
+        "sample": "https://elections.delaware.gov/voter/sampleballots.shtml",
+        "military": "https://elections.delaware.gov/voter/military.shtml",
+        "counties": "https://elections.delaware.gov/information/electionoffices.shtml",
+        "tools": "https://elections.delaware.gov/"
+    },
+    "Florida": {
+        "register": "https://registertovoteflorida.gov/",
+        "id": "https://dos.fl.gov/elections/for-voters/voter-registration/voter-id/",
+        "absentee": "https://dos.fl.gov/elections/for-voters/voting/vote-by-mail/",
+        "early": "https://dos.fl.gov/elections/for-voters/voting/early-voting/",
+        "polling": "https://dos.fl.gov/elections/for-voters/voting/election-day-voting/",
+        "sample": "https://dos.fl.gov/elections/for-voters/voting/sample-ballots/",
+        "military": "https://dos.fl.gov/elections/for-voters/military-and-overseas-voters/",
+        "counties": "https://dos.fl.gov/elections/contacts/supervisor-of-elections/",
+        "tools": "https://dos.fl.gov/elections/"
+    },
+    "Georgia": {
+        "register": "https://georgia.gov/register-vote",
+        "id": "https://sos.ga.gov/page/georgia-voter-identification-requirements",
+        "absentee": "https://sos.ga.gov/page/absentee-voting",
+        "early": "https://sos.ga.gov/page/advance-voting",
+        "polling": "https://mvp.sos.ga.gov/s/",
+        "sample": "https://mvp.sos.ga.gov/s/",
+        "military": "https://sos.ga.gov/page/military-and-overseas-voting",
+        "counties": "https://sos.ga.gov/elections/election-county-contact-information",
+        "tools": "https://sos.ga.gov/elections"
+    },
+    "Hawaii": {
+        "register": "https://olvr.hawaii.gov/",
+        "id": "https://elections.hawaii.gov/voting/voter-registration-drives/voter-id-requirements/",
+        "absentee": "https://elections.hawaii.gov/voting/vote-by-mail/",
+        "early": "https://elections.hawaii.gov/voting/in-person-voting/",
+        "polling": "https://elections.hawaii.gov/voting/in-person-voting/",
+        "sample": "https://elections.hawaii.gov/voting/sample-ballots/",
+        "military": "https://elections.hawaii.gov/voting/military-and-overseas-voting/",
+        "counties": "https://elections.hawaii.gov/contact-us/",
+        "tools": "https://elections.hawaii.gov/"
+    },
+    "Idaho": {
+        "register": "https://voteidaho.gov/voter-registration/",
+        "id": "https://voteidaho.gov/voter-id-requirements/",
+        "absentee": "https://voteidaho.gov/vote-absentee/",
+        "early": "https://voteidaho.gov/early-voting/",
+        "polling": "https://voteidaho.gov/where-to-vote/",
+        "sample": "https://voteidaho.gov/sample-ballots/",
+        "military": "https://voteidaho.gov/military-overseas-voters/",
+        "counties": "https://voteidaho.gov/county-elections-offices/",
+        "tools": "https://voteidaho.gov/"
+    },
+    "Illinois": {
+        "register": "https://ova.elections.il.gov/",
+        "id": "https://www.elections.il.gov/VotingInformation/VoterIdentification.aspx",
+        "absentee": "https://www.elections.il.gov/VotingInformation/VotingByMail.aspx",
+        "early": "https://www.elections.il.gov/VotingInformation/EarlyVoting.aspx",
+        "polling": "https://www.elections.il.gov/VotingInformation/PollingPlaceLookup.aspx",
+        "sample": "https://www.elections.il.gov/VotingInformation/SampleBallots.aspx",
+        "military": "https://www.elections.il.gov/VotingInformation/MilitaryOverseasVoting.aspx",
+        "counties": "https://www.elections.il.gov/AboutTheBoard/CountyClerks.aspx",
+        "tools": "https://www.elections.il.gov/"
+    },
+    "Indiana": {
+        "register": "https://indianavoters.in.gov/",
+        "id": "https://www.in.gov/sos/elections/voter-information/photo-id-requirements/",
+        "absentee": "https://www.in.gov/sos/elections/voter-information/absentee-voting/",
+        "early": "https://www.in.gov/sos/elections/voter-information/early-voting/",
+        "polling": "https://indianavoters.in.gov/",
+        "sample": "https://indianavoters.in.gov/",
+        "military": "https://www.in.gov/sos/elections/voter-information/military-and-overseas-voters/",
+        "counties": "https://www.in.gov/sos/elections/voter-information/county-election-offices/",
+        "tools": "https://www.in.gov/sos/elections/"
+    },
+    "Iowa": {
+        "register": "https://sos.iowa.gov/voters/voter-registration",
+        "id": "https://sos.iowa.gov/voters/voterid",
+        "absentee": "https://sos.iowa.gov/elections/electioninfo/absenteeinfo.html",
+        "early": "https://sos.iowa.gov/elections/electioninfo/earlyvoting.html",
+        "polling": "https://sos.iowa.gov/elections/voterreg/pollingplace/search.aspx",
+        "sample": "https://sos.iowa.gov/elections/electioninfo/sampleballots.html",
+        "military": "https://sos.iowa.gov/elections/electioninfo/uocava.html",
+        "counties": "https://sos.iowa.gov/elections/auditors/auditorslist.html",
+        "tools": "https://sos.iowa.gov/elections/voters/index.html"
+    },
+    "Kansas": {
+        "register": "https://sos.ks.gov/elections/voter-registration.html",
+        "id": "https://sos.ks.gov/elections/voter-id.html",
+        "absentee": "https://sos.ks.gov/elections/advance-voting.html",
+        "early": "https://sos.ks.gov/elections/advance-voting.html",
+        "polling": "https://myvoteinfo.voteks.org/voterview/",
+        "sample": "https://myvoteinfo.voteks.org/voterview/",
+        "military": "https://sos.ks.gov/elections/military-overseas-voters.html",
+        "counties": "https://sos.ks.gov/elections/election-officials.html",
+        "tools": "https://sos.ks.gov/elections/elections.html"
+    },
+    "Kentucky": {
+        "register": "https://elect.ky.gov/Resources/Pages/Registration.aspx",
+        "id": "https://elect.ky.gov/Resources/Pages/Voter-ID.aspx",
+        "absentee": "https://elect.ky.gov/Voters/Pages/Absentee-Voting.aspx",
+        "early": "https://elect.ky.gov/Voters/Pages/Early-Voting.aspx",
+        "polling": "https://vrsws.sos.ky.gov/vic/",
+        "sample": "https://elect.ky.gov/Voters/Pages/Sample-Ballots.aspx",
+        "military": "https://elect.ky.gov/Voters/Pages/Military-Voting.aspx",
+        "counties": "https://elect.ky.gov/About-Us/Pages/County-Clerks.aspx",
+        "tools": "https://elect.ky.gov/Voters/Pages/default.aspx"
+    },
+    "Louisiana": {
+        "register": "https://www.sos.la.gov/ElectionsAndVoting/Pages/OnlineVoterRegistration.aspx",
+        "id": "https://www.sos.la.gov/ElectionsAndVoting/Vote/VoterIDRequirements/Pages/default.aspx",
+        "absentee": "https://www.sos.la.gov/ElectionsAndVoting/Vote/VoteByMail/Pages/default.aspx",
+        "early": "https://www.sos.la.gov/ElectionsAndVoting/Vote/EarlyVoting/Pages/default.aspx",
+        "polling": "https://voterportal.sos.la.gov/",
+        "sample": "https://voterportal.sos.la.gov/",
+        "military": "https://www.sos.la.gov/ElectionsAndVoting/Vote/MilitaryAndOverseasVoting/Pages/default.aspx",
+        "counties": "https://www.sos.la.gov/ElectionsAndVoting/Pages/ParishOfficials.aspx",
+        "tools": "https://www.sos.la.gov/ElectionsAndVoting/Pages/default.aspx"
+    },
+    "Maine": {
+        "register": "https://www.maine.gov/sos/elections/voter-information/voter-registration",
+        "id": "https://www.maine.gov/sos/elections/voter-information/voter-id",
+        "absentee": "https://www.maine.gov/sos/elections/voter-information/absentee-voting",
+        "early": "https://www.maine.gov/sos/elections/voter-information/early-voting",
+        "polling": "https://www.maine.gov/sos/elections/voter-information/polling-places",
+        "sample": "https://www.maine.gov/sos/elections/voter-information/sample-ballots",
+        "military": "https://www.maine.gov/sos/elections/voter-information/military-overseas-voting",
+        "counties": "https://www.maine.gov/sos/elections/voter-information/municipal-clerks",
+        "tools": "https://www.maine.gov/sos/elections/voter-information"
+    },
+    "Maryland": {
+        "register": "https://elections.maryland.gov/voter_registration/index.html",
+        "id": "https://elections.maryland.gov/voting/voter_id.html",
+        "absentee": "https://elections.maryland.gov/voting/absentee.html",
+        "early": "https://elections.maryland.gov/voting/early_voting.html",
+        "polling": "https://voterservices.elections.maryland.gov/VoterSearch",
+        "sample": "https://voterservices.elections.maryland.gov/VoterSearch",
+        "military": "https://elections.maryland.gov/voting/military.html",
+        "counties": "https://elections.maryland.gov/about/county_boards.html",
+        "tools": "https://elections.maryland.gov/"
+    },
+    "Massachusetts": {
+        "register": "https://www.sec.state.ma.us/ovr/",
+        "id": "https://www.sec.state.ma.us/ele/eleidx.htm",
+        "absentee": "https://www.sec.state.ma.us/ele/eleabsentee/absidx.htm",
+        "early": "https://www.sec.state.ma.us/ele/eleev/early-voting.htm",
+        "polling": "https://www.sec.state.ma.us/wheredoivotema/bal/myelectioninfo.aspx",
+        "sample": "https://www.sec.state.ma.us/wheredoivotema/bal/myelectioninfo.aspx",
+        "military": "https://www.sec.state.ma.us/ele/elemil/milidx.htm",
+        "counties": "https://www.sec.state.ma.us/ele/eleclk/clkidx.htm",
+        "tools": "https://www.sec.state.ma.us/ele/eleidx.htm"
+    },
+    "Michigan": {
+        "register": "https://mvic.sos.state.mi.us/RegisterVoter",
+        "id": "https://mvic.sos.state.mi.us/VoterIDRequirements",
+        "absentee": "https://mvic.sos.state.mi.us/AVApplication",
+        "early": "https://mvic.sos.state.mi.us/VoteEarly",
+        "polling": "https://mvic.sos.state.mi.us/VoterInformation",
+        "sample": "https://mvic.sos.state.mi.us/VoterInformation",
+        "military": "https://mvic.sos.state.mi.us/MilitaryVoting",
+        "counties": "https://www.michigan.gov/sos/elections/local-officials",
+        "tools": "https://mvic.sos.state.mi.us/"
+    },
+    "Minnesota": {
+        "register": "https://www.sos.state.mn.us/elections-voting/register-to-vote/",
+        "id": "https://www.sos.state.mn.us/elections-voting/election-day-voting/voter-id-requirements/",
+        "absentee": "https://www.sos.state.mn.us/elections-voting/other-ways-to-vote/vote-by-mail/",
+        "early": "https://www.sos.state.mn.us/elections-voting/other-ways-to-vote/vote-early-in-person/",
+        "polling": "https://pollfinder.sos.state.mn.us/",
+        "sample": "https://www.sos.state.mn.us/elections-voting/whats-on-my-ballot/",
+        "military": "https://www.sos.state.mn.us/elections-voting/other-ways-to-vote/military-overseas-voting/",
+        "counties": "https://www.sos.state.mn.us/elections-voting/contact-your-election-office/",
+        "tools": "https://www.sos.state.mn.us/elections-voting/"
+    },
+    "Mississippi": {
+        "register": "https://www.sos.ms.gov/elections-voting/voter-registration-information",
+        "id": "https://www.sos.ms.gov/elections-voting/voter-id-information",
+        "absentee": "https://www.sos.ms.gov/elections-voting/absentee-voting-information",
+        "early": "https://www.sos.ms.gov/elections-voting/absentee-voting-information",
+        "polling": "https://www.sos.ms.gov/elections-voting/polling-place-information",
+        "sample": "https://www.sos.ms.gov/elections-voting/sample-ballots",
+        "military": "https://www.sos.ms.gov/elections-voting/military-overseas-voting",
+        "counties": "https://www.sos.ms.gov/elections-voting/county-election-offices",
+        "tools": "https://www.sos.ms.gov/elections-voting"
+    },
+    "Missouri": {
+        "register": "https://www.sos.mo.gov/elections/goVoteMissouri/register",
+        "id": "https://www.sos.mo.gov/elections/goVoteMissouri/voterid",
+        "absentee": "https://www.sos.mo.gov/elections/goVoteMissouri/howtovote#absentee",
+        "early": "https://www.sos.mo.gov/elections/goVoteMissouri/howtovote#early",
+        "polling": "https://voteroutreach.sos.mo.gov/PRD/VoterOutreach/VoterLookup.aspx",
+        "sample": "https://voteroutreach.sos.mo.gov/PRD/VoterOutreach/VoterLookup.aspx",
+        "military": "https://www.sos.mo.gov/elections/goVoteMissouri/military",
+        "counties": "https://www.sos.mo.gov/elections/goVoteMissouri/localelectionauthority",
+        "tools": "https://www.sos.mo.gov/elections"
+    },
+    "Montana": {
+        "register": "https://sosmt.gov/elections/vote/",
+        "id": "https://sosmt.gov/elections/vote/#id",
+        "absentee": "https://sosmt.gov/elections/vote/#absentee",
+        "early": "https://sosmt.gov/elections/vote/#early",
+        "polling": "https://app.mt.gov/voterinfo/",
+        "sample": "https://app.mt.gov/voterinfo/",
+        "military": "https://sosmt.gov/elections/vote/#military",
+        "counties": "https://sosmt.gov/elections/administration/#county",
+        "tools": "https://sosmt.gov/elections/"
+    },
+    "Nebraska": {
+        "register": "https://www.nebraska.gov/apps-sos-voter-registration/",
+        "id": "https://sos.nebraska.gov/elections/voter-id",
+        "absentee": "https://sos.nebraska.gov/elections/early-voting",
+        "early": "https://sos.nebraska.gov/elections/early-voting",
+        "polling": "https://www.votercheck.necvr.ne.gov/voterview/",
+        "sample": "https://www.votercheck.necvr.ne.gov/voterview/",
+        "military": "https://sos.nebraska.gov/elections/military-voters",
+        "counties": "https://sos.nebraska.gov/elections/election-officials",
+        "tools": "https://sos.nebraska.gov/elections"
+    },
+    "Nevada": {
+        "register": "https://www.nvsos.gov/voter-registration",
+        "id": "https://www.nvsos.gov/voter-id",
+        "absentee": "https://www.nvsos.gov/voting-by-mail",
+        "early": "https://www.nvsos.gov/early-voting",
+        "polling": "https://www.nvsos.gov/voter-search",
+        "sample": "https://www.nvsos.gov/sample-ballot",
+        "military": "https://www.nvsos.gov/military-voting",
+        "counties": "https://www.nvsos.gov/elections/county-clerks",
+        "tools": "https://www.nvsos.gov/elections"
+    },
+    "New Hampshire": {
+        "register": "https://www.sos.nh.gov/elections/voters/register-vote",
+        "id": "https://www.sos.nh.gov/elections/voters/voter-id",
+        "absentee": "https://www.sos.nh.gov/elections/voters/absentee-voting",
+        "early": "https://www.sos.nh.gov/elections/voters/early-voting",
+        "polling": "https://app.sos.nh.gov/voterinformation",
+        "sample": "https://app.sos.nh.gov/voterinformation",
+        "military": "https://www.sos.nh.gov/elections/voters/military-overseas-voting",
+        "counties": "https://www.sos.nh.gov/elections/election-officials",
+        "tools": "https://www.sos.nh.gov/elections"
+    },
+    "New Jersey": {
+        "register": "https://voter.svrs.nj.gov/register",
+        "id": "https://www.nj.gov/state/elections/voting-information-voter-id.shtml",
+        "absentee": "https://www.nj.gov/state/elections/vote-by-mail.shtml",
+        "early": "https://www.nj.gov/state/elections/vote-early.shtml",
+        "polling": "https://voter.svrs.nj.gov/polling-place-search",
+        "sample": "https://voter.svrs.nj.gov/sample-ballot",
+        "military": "https://www.nj.gov/state/elections/military-overseas-voting.shtml",
+        "counties": "https://www.nj.gov/state/elections/county-election-offices.shtml",
+        "tools": "https://www.nj.gov/state/elections/"
+    },
+    "New Mexico": {
+        "register": "https://www.sos.nm.gov/voting-and-elections/voter-information/voter-registration/",
+        "id": "https://www.sos.nm.gov/voting-and-elections/voter-information/voter-id-requirements/",
+        "absentee": "https://www.sos.nm.gov/voting-and-elections/voter-information/absentee-voting/",
+        "early": "https://www.sos.nm.gov/voting-and-elections/voter-information/early-voting/",
+        "polling": "https://voterportal.servis.sos.state.nm.us/WhereToVote.aspx",
+        "sample": "https://voterportal.servis.sos.state.nm.us/WhereToVote.aspx",
+        "military": "https://www.sos.nm.gov/voting-and-elections/voter-information/military-overseas-voting/",
+        "counties": "https://www.sos.nm.gov/voting-and-elections/voter-information/county-clerks/",
+        "tools": "https://www.sos.nm.gov/voting-and-elections/"
+    },
+    "New York": {
+        "register": "https://voterreg.dmv.ny.gov/MotorVoter/",
+        "id": "https://www.elections.ny.gov/VotingRegister.html#IDReq",
+        "absentee": "https://www.elections.ny.gov/VotingAbsentee.html",
+        "early": "https://www.elections.ny.gov/VotingEarly.html",
+        "polling": "https://voterlookup.elections.ny.gov/",
+        "sample": "https://voterlookup.elections.ny.gov/",
+        "military": "https://www.elections.ny.gov/VotingMilitaryFederal.html",
+        "counties": "https://www.elections.ny.gov/CountyBoards.html",
+        "tools": "https://www.elections.ny.gov/"
+    },
+    "North Carolina": {
+        "register": "https://www.ncsbe.gov/registering",
+        "id": "https://www.ncsbe.gov/voting/voter-id",
+        "absentee": "https://www.ncsbe.gov/voting/vote-mail",
+        "early": "https://www.ncsbe.gov/voting/vote-early-person",
+        "polling": "https://vt.ncsbe.gov/PPLkup/",
+        "sample": "https://www.ncsbe.gov/voting/sample-ballot",
+        "military": "https://www.ncsbe.gov/voting/military-and-overseas-voting",
+        "counties": "https://www.ncsbe.gov/about-elections/county-boards-elections",
+        "tools": "https://www.ncsbe.gov/voting/voter-tools-and-forms"
+    },
+    "North Dakota": {
+        "register": "https://vip.sos.nd.gov/PortalListDetails.aspx?ptlhPKID=79&ptlPKID=7",
+        "id": "https://vip.sos.nd.gov/IDRequirements.aspx",
+        "absentee": "https://vip.sos.nd.gov/AbsenteeBallot.aspx",
+        "early": "https://vip.sos.nd.gov/EarlyVoting.aspx",
+        "polling": "https://vip.sos.nd.gov/WhereToVote.aspx",
+        "sample": "https://vip.sos.nd.gov/SampleBallot.aspx",
+        "military": "https://vip.sos.nd.gov/MilitaryVoting.aspx",
+        "counties": "https://vip.sos.nd.gov/CountyAuditors.aspx",
+        "tools": "https://vip.sos.nd.gov/"
+    },
+    "Ohio": {
+        "register": "https://olvr.ohiosos.gov/",
+        "id": "https://www.ohiosos.gov/elections/voters/id-requirements/",
+        "absentee": "https://www.ohiosos.gov/elections/voters/absentee-voting/",
+        "early": "https://www.ohiosos.gov/elections/voters/early-in-person-voting/",
+        "polling": "https://voterlookup.ohiosos.gov/voterlookup.aspx",
+        "sample": "https://www.ohiosos.gov/elections/voters/sample-ballots/",
+        "military": "https://www.ohiosos.gov/elections/voters/military-overseas-voting/",
+        "counties": "https://www.ohiosos.gov/elections/elections-officials/county-boards-of-elections/",
+        "tools": "https://www.ohiosos.gov/elections/"
+    },
+    "Oklahoma": {
+        "register": "https://okvoterportal.okelections.us/Home/RegWizard",
+        "id": "https://oklahoma.gov/elections/voters/voter-id.html",
+        "absentee": "https://oklahoma.gov/elections/voters/absentee-voting.html",
+        "early": "https://oklahoma.gov/elections/voters/early-voting.html",
+        "polling": "https://okvoterportal.okelections.us/",
+        "sample": "https://okvoterportal.okelections.us/",
+        "military": "https://oklahoma.gov/elections/voters/military-and-overseas-voters.html",
+        "counties": "https://oklahoma.gov/elections/about-us/county-election-boards.html",
+        "tools": "https://oklahoma.gov/elections.html"
+    },
+    "Oregon": {
+        "register": "https://sos.oregon.gov/voting/pages/registration.aspx",
+        "id": "https://sos.oregon.gov/voting/pages/voter-id.aspx",
+        "absentee": "https://sos.oregon.gov/voting/pages/vote-by-mail.aspx",
+        "early": "https://sos.oregon.gov/voting/pages/vote-early.aspx",
+        "polling": "https://sos.oregon.gov/voting/pages/my-vote.aspx",
+        "sample": "https://sos.oregon.gov/voting/pages/my-vote.aspx",
+        "military": "https://sos.oregon.gov/voting/pages/military-overseas.aspx",
+        "counties": "https://sos.oregon.gov/elections/pages/county-offices.aspx",
+        "tools": "https://sos.oregon.gov/voting/pages/default.aspx"
+    },
+    "Pennsylvania": {
+        "register": "https://www.pavoterservices.pa.gov/Pages/VoterRegistrationApplication.aspx",
+        "id": "https://www.vote.pa.gov/Register-to-Vote/Pages/Voter-ID-Requirements.aspx",
+        "absentee": "https://www.vote.pa.gov/Voting-in-PA/Pages/Mail-and-Absentee-Ballot.aspx",
+        "early": "https://www.vote.pa.gov/Voting-in-PA/Pages/Early-Voting.aspx",
+        "polling": "https://www.pavoterservices.pa.gov/Pages/PollingPlaceInfo.aspx",
+        "sample": "https://www.pavoterservices.pa.gov/Pages/Ballot.aspx",
+        "military": "https://www.vote.pa.gov/Voting-in-PA/Pages/Military-and-Overseas-Voters.aspx",
+        "counties": "https://www.vote.pa.gov/About-Elections/Pages/Contact-Your-Election-Officials.aspx",
+        "tools": "https://www.vote.pa.gov/"
+    },
+    "Rhode Island": {
+        "register": "https://vote.sos.ri.gov/",
+        "id": "https://vote.sos.ri.gov/VoterID",
+        "absentee": "https://vote.sos.ri.gov/Voter/VoteByMail",
+        "early": "https://vote.sos.ri.gov/Voter/EarlyVoting",
+        "polling": "https://vote.sos.ri.gov/Voter/PollingPlace",
+        "sample": "https://vote.sos.ri.gov/Voter/Ballot",
+        "military": "https://vote.sos.ri.gov/Voter/Military",
+        "counties": "https://vote.sos.ri.gov/About/Contact",
+        "tools": "https://vote.sos.ri.gov/"
+    },
+    "South Carolina": {
+        "register": "https://votesc.gov/register",
+        "id": "https://votesc.gov/voter-id",
+        "absentee": "https://votesc.gov/absentee",
+        "early": "https://votesc.gov/early-voting",
+        "polling": "https://votesc.gov/polling-place",
+        "sample": "https://votesc.gov/sample-ballot",
+        "military": "https://votesc.gov/military",
+        "counties": "https://votesc.gov/elections-offices",
+        "tools": "https://votesc.gov/"
+    },
+    "South Dakota": {
+        "register": "https://sdsos.gov/elections-voting/voting/register-to-vote/default.aspx",
+        "id": "https://sdsos.gov/elections-voting/voting/voter-id-requirements/default.aspx",
+        "absentee": "https://sdsos.gov/elections-voting/voting/absentee-voting/default.aspx",
+        "early": "https://sdsos.gov/elections-voting/voting/early-voting/default.aspx",
+        "polling": "https://vip.sdsos.gov/VIPLogin.aspx",
+        "sample": "https://vip.sdsos.gov/VIPLogin.aspx",
+        "military": "https://sdsos.gov/elections-voting/voting/military-overseas-voting/default.aspx",
+        "counties": "https://sdsos.gov/elections-voting/election-resources/county-auditor-information/default.aspx",
+        "tools": "https://sdsos.gov/elections-voting/default.aspx"
+    },
+    "Tennessee": {
+        "register": "https://ovr.govote.tn.gov/",
+        "id": "https://sos.tn.gov/elections/voter-id",
+        "absentee": "https://sos.tn.gov/elections/guides/absentee-voting",
+        "early": "https://sos.tn.gov/elections/guides/early-voting",
+        "polling": "https://tnmap.tn.gov/voterlookup/",
+        "sample": "https://tnmap.tn.gov/voterlookup/",
+        "military": "https://sos.tn.gov/elections/guides/military-overseas-voting",
+        "counties": "https://sos.tn.gov/elections/election-commissions",
+        "tools": "https://sos.tn.gov/elections"
+    },
+    "Texas": {
+        "register": "https://www.votetexas.gov/register-to-vote/",
+        "id": "https://www.votetexas.gov/register-to-vote/need-id.html",
+        "absentee": "https://www.votetexas.gov/voting-by-mail/",
+        "early": "https://www.votetexas.gov/early-voting/",
+        "polling": "https://teamrv-mvp.sos.texas.gov/MVP/mvp.do",
+        "sample": "https://teamrv-mvp.sos.texas.gov/MVP/mvp.do",
+        "military": "https://www.votetexas.gov/military-overseas-voters/",
+        "counties": "https://www.sos.state.tx.us/elections/voter/county.shtml",
+        "tools": "https://www.votetexas.gov/"
+    },
+    "Utah": {
+        "register": "https://vote.utah.gov/",
+        "id": "https://vote.utah.gov/voter-id-requirements/",
+        "absentee": "https://vote.utah.gov/vote-by-mail/",
+        "early": "https://vote.utah.gov/early-voting/",
+        "polling": "https://vote.utah.gov/where-to-vote/",
+        "sample": "https://vote.utah.gov/whats-on-my-ballot/",
+        "military": "https://vote.utah.gov/military-overseas-voting/",
+        "counties": "https://vote.utah.gov/county-clerks/",
+        "tools": "https://vote.utah.gov/"
+    },
+    "Vermont": {
+        "register": "https://olvr.vermont.gov/",
+        "id": "https://sos.vermont.gov/elections/voters/voter-id-requirements/",
+        "absentee": "https://sos.vermont.gov/elections/voters/early-absentee-voting/",
+        "early": "https://sos.vermont.gov/elections/voters/early-absentee-voting/",
+        "polling": "https://mvp.vermont.gov/",
+        "sample": "https://mvp.vermont.gov/",
+        "military": "https://sos.vermont.gov/elections/voters/military-overseas-voting/",
+        "counties": "https://sos.vermont.gov/elections/election-officials/",
+        "tools": "https://sos.vermont.gov/elections/"
+    },
+    "Virginia": {
+        "register": "https://vote.elections.virginia.gov/Registration/Eligibility",
+        "id": "https://www.elections.virginia.gov/registration/voter-id/",
+        "absentee": "https://www.elections.virginia.gov/casting-a-ballot/absentee-voting/",
+        "early": "https://www.elections.virginia.gov/casting-a-ballot/early-voting/",
+        "polling": "https://vote.elections.virginia.gov/VoterInformation",
+        "sample": "https://vote.elections.virginia.gov/VoterInformation",
+        "military": "https://www.elections.virginia.gov/casting-a-ballot/military-overseas-voting/",
+        "counties": "https://www.elections.virginia.gov/local-election-officials/",
+        "tools": "https://www.elections.virginia.gov/"
+    },
+    "Washington": {
+        "register": "https://www.sos.wa.gov/elections/voters/register-to-vote/",
+        "id": "https://www.sos.wa.gov/elections/voters/voter-id-requirements/",
+        "absentee": "https://www.sos.wa.gov/elections/voters/vote-by-mail/",
+        "early": "https://www.sos.wa.gov/elections/voters/early-voting/",
+        "polling": "https://www.sos.wa.gov/elections/voters/polling-place/",
+        "sample": "https://www.sos.wa.gov/elections/voters/sample-ballots/",
+        "military": "https://www.sos.wa.gov/elections/voters/military-overseas-voting/",
+        "counties": "https://www.sos.wa.gov/elections/voters/county-election-offices/",
+        "tools": "https://www.sos.wa.gov/elections/"
+    },
+    "West Virginia": {
+        "register": "https://ovr.sos.wv.gov/Register/Landing",
+        "id": "https://sos.wv.gov/elections/voter-information/Pages/VoterID.aspx",
+        "absentee": "https://sos.wv.gov/elections/voter-information/Pages/AbsenteeVotingInformation.aspx",
+        "early": "https://sos.wv.gov/elections/voter-information/Pages/EarlyVotingInformation.aspx",
+        "polling": "https://sos.wv.gov/elections/Pages/GoVoteWV.aspx",
+        "sample": "https://sos.wv.gov/elections/Pages/GoVoteWV.aspx",
+        "military": "https://sos.wv.gov/elections/voter-information/Pages/MilitaryVotingInformation.aspx",
+        "counties": "https://sos.wv.gov/elections/Pages/CountyClerks.aspx",
+        "tools": "https://sos.wv.gov/elections/Pages/default.aspx"
+    },
+    "Wisconsin": {
+        "register": "https://myvote.wi.gov/en-us/Register-To-Vote",
+        "id": "https://myvote.wi.gov/en-us/Photo-ID",
+        "absentee": "https://myvote.wi.gov/en-us/Vote-Absentee-By-Mail",
+        "early": "https://myvote.wi.gov/en-us/Vote-Absentee-In-Person",
+        "polling": "https://myvote.wi.gov/en-us/Find-My-Polling-Place",
+        "sample": "https://myvote.wi.gov/en-us/Whats-On-My-Ballot",
+        "military": "https://myvote.wi.gov/en-us/Military-Voting",
+        "counties": "https://elections.wi.gov/about/county-clerks",
+        "tools": "https://myvote.wi.gov/en-us/"
+    },
+    "Wyoming": {
+        "register": "https://sos.wyo.gov/Elections/RegisteringToVote.aspx",
+        "id": "https://sos.wyo.gov/Elections/VoterID.aspx",
+        "absentee": "https://sos.wyo.gov/Elections/AbsenteeVoting.aspx",
+        "early": "https://sos.wyo.gov/Elections/EarlyVoting.aspx",
+        "polling": "https://sos.wyo.gov/Elections/PollingPlaces.aspx",
+        "sample": "https://sos.wyo.gov/Elections/SampleBallots.aspx",
+        "military": "https://sos.wyo.gov/Elections/MilitaryVoting.aspx",
+        "counties": "https://sos.wyo.gov/Elections/CountyClerks.aspx",
+        "tools": "https://sos.wyo.gov/Elections/"
+    },
+    "American Samoa": {
+        "tools": "https://www.americansamoaelectionoffice.gov/"
+    },
+    "Guam": {
+        "tools": "https://gec.guam.gov/"
+    },
+    "Northern Mariana Islands": {
+        "tools": "https://www.votecnmi.gov.mp/"
+    },
+    "Puerto Rico": {
+        "tools": "https://www.ceepur.org/"
+    },
+    "U.S. Virgin Islands": {
+        "tools": "https://vivote.gov/"
+    }
 }
-
