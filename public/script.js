@@ -162,7 +162,7 @@ function showCivic() {
         },
         {
           label: 'Legislator Report Cards',
-          url: 'https://www.govtrack.us/congress/members/report-cards',
+          url: 'https://www.govtrack.us/congress/members/report-cards/2024',
           desc: 'See performance grades for federal legislators.'
         },
         {
