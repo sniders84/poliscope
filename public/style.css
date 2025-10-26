@@ -336,11 +336,6 @@ main {
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  text-align: left;
   transition: box-shadow 0.2s ease;
 }
 
@@ -349,44 +344,12 @@ main {
 }
 
 .voting-card a {
-  text-decoration: none;
-  color: inherit;
   display: flex;
   flex-direction: column;
+  text-decoration: none;
+  color: inherit;
   height: 100%;
   width: 100%;
-  pointer-events: auto;
-  visibility: visible;
-  opacity: 1;
-}
-
-.voting-card a:link,
-.voting-card a:visited,
-.voting-card a:hover,
-.voting-card a:active {
-  color: inherit;
-  text-decoration: none;
-}
-
-.voting-card a::before,
-.voting-card a::after {
-  content: none !important;
-  display: none !important;
-}
-
-.voting-card a[href^="http"]:not(:has(.card-label)) {
-  font-size: 0 !important;
-}
-
-.voting-card .card-icon,
-.voting-card .card-label,
-.voting-card .card-description,
-.voting-card .card-date {
-  display: block;
-  visibility: visible;
-  opacity: 1;
-  color: inherit;
-  font-size: inherit;
 }
 
 .voting-card .card-icon {
@@ -410,13 +373,4 @@ main {
   font-size: 0.85rem;
   color: #888;
   margin-top: auto;
-}
-.voting-card * {
-  outline: 1px solid red !important;
-  background-color: rgba(255, 0, 0, 0.05) !important;
-  color: black !important;
-  font-size: 16px !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  display: block !important;
 }
