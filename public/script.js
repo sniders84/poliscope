@@ -346,6 +346,13 @@ function openModal(official) {
         ${official.bio ? `<p>${official.bio}</p>` : ''}
         ${official.education ? `<p><strong>Education:</strong> ${official.education}</p>` : ''}
         ${official.platform ? `<p><strong>Platform:</strong> ${official.platform}</p>` : ''}
+        ${official.platformFollowThrough
+        ? `<div class="follow-through"><h3>Platform Follow-Through</h3><ul>${
+        Object.entries(official.platformFollowThrough)
+        .map(([topic, summary]) => `<li><strong>${topic}:</strong> ${summary}</li>`)
+        .join('')
+        }</ul></div>`
+        : ''}
         ${official.proposals ? `<p><strong>Proposals:</strong> ${official.proposals}</p>` : ''}
         ${(official.vetoes && ['Governor', 'President'].includes(official.office))
         ? `<p><strong>Vetoes:</strong> ${official.vetoes}</p>`
