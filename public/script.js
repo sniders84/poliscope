@@ -316,7 +316,7 @@ function openModal(official) {
   const modal = document.getElementById('officials-modal');
   const modalContent = document.getElementById('officials-content');
   if (!modal || !modalContent) return;
-
+console.log("Modal trigger received:", official);
   modalContent.innerHTML = `
     <h2>${official.name}</h2>
     <p><strong>Office:</strong> ${official.office}</p>
