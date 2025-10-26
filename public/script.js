@@ -85,6 +85,7 @@ function showVoting() {
   card.appendChild(link);
   votingCards.appendChild(card);
 });
+}
 function showCivic() {
   showTab('civic');
   const calendar = document.getElementById('calendar');
