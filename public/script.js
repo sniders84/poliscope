@@ -33,7 +33,7 @@ function showVoting() {
         votingCards.innerHTML = `<p>No voting information available for ${selectedState}.</p>`;
         return;
       }
-
+console.log("Selected state:", selectedState);
       const labelMap = {
         register: 'Register to Vote',
         id: 'Voter ID Requirements',
