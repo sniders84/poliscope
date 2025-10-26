@@ -16,7 +16,6 @@ function showTab(id) {
   const activeTab = document.getElementById(id);
   if (activeTab) activeTab.style.display = 'block';
 }
-window.showTab = showTab;
 function showVoting() {
   showTab('voting');
   const votingCards = document.getElementById('voting-cards');
@@ -48,43 +47,48 @@ function showVoting() {
       };
 
       Object.entries(stateData).forEach(([key, value]) => {
-  const { url, icon, description, deadline } = typeof value === 'string'
-    ? { url: value, icon: '🗳️', description: '', deadline: '' }
-    : value;
+        const { url, icon, description, deadline } = typeof value === 'string'
+          ? { url: value, icon: '🗳️', description: '', deadline: '' }
+          : value;
 
-  const title = labelMap[key] || key;
+        const title = labelMap[key] || key;
 
-  const card = document.createElement('div');
-  card.className = 'voting-card';
+        const card = document.createElement('div');
+        card.className = 'voting-card';
 
-  const link = document.createElement('a');
-  link.href = url;
-  link.target = '_blank';
+        const link = document.createElement('a');
+        link.href = url;
+        link.target = '_blank';
 
-  const iconDiv = document.createElement('div');
-  iconDiv.className = 'card-icon';
-  iconDiv.textContent = icon || '🗳️';
+        const iconDiv = document.createElement('div');
+        iconDiv.className = 'card-icon';
+        iconDiv.textContent = icon || '🗳️';
 
-  const labelDiv = document.createElement('div');
-  labelDiv.className = 'card-label';
-  labelDiv.textContent = title;
+        const labelDiv = document.createElement('div');
+        labelDiv.className = 'card-label';
+        labelDiv.textContent = title;
 
-  const descDiv = document.createElement('div');
-  descDiv.className = 'card-description';
-  descDiv.textContent = description || '';
+        const descDiv = document.createElement('div');
+        descDiv.className = 'card-description';
+        descDiv.textContent = description || '';
 
-  const deadlineDiv = document.createElement('div');
-  deadlineDiv.className = 'card-date';
-  if (deadline) deadlineDiv.textContent = deadline;
+        const deadlineDiv = document.createElement('div');
+        deadlineDiv.className = 'card-date';
+        if (deadline) deadlineDiv.textContent = deadline;
 
-  link.appendChild(iconDiv);
-  link.appendChild(labelDiv);
-  link.appendChild(descDiv);
-  if (deadline) link.appendChild(deadlineDiv);
+        link.appendChild(iconDiv);
+        link.appendChild(labelDiv);
+        link.appendChild(descDiv);
+        if (deadline) link.appendChild(deadlineDiv);
 
-  card.appendChild(link);
-  votingCards.appendChild(card);
-});
+        card.appendChild(link);
+        votingCards.appendChild(card);
+      });
+    })
+    .catch(err => {
+      votingCards.innerHTML = '<p>Error loading voting data.</p>';
+      console.error('Voting fetch failed:', err);
+    });
 }
 function showCivic() {
   showTab('civic');
