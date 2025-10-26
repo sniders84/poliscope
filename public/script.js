@@ -282,6 +282,8 @@ function renderOfficials(stateFilter = null, query = '') {
     workingfamilies: 'workingfamilies',
     progressive: 'progressive'
   };
+const officialsContainer = document.getElementById('officials-container');
+if (!officialsContainer) return;
 
   allOfficials.forEach(o => {
     const rawParty = (o.party || '').toLowerCase().trim();
@@ -359,9 +361,10 @@ document.addEventListener('DOMContentLoaded', () => {
   searchBar = document.getElementById('search-bar');
   modal = document.getElementById('modal');
   modalContent = document.getElementById('modal-content');
-  closeModal = document.getElementById('close-modal');
+  const closeModalButton = document.getElementById('close-modal');
 
-  closeModal.addEventListener('click', closeModalWindow);
+  closeModalButton.addEventListener('click', closeModalWindow);
+
   window.addEventListener('click', event => {
     if (event.target === modal) closeModalWindow();
   });
