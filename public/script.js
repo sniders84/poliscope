@@ -7,6 +7,7 @@ let officialsContainer = null;
 let searchBar = null;
 let modal = null;
 let modalContent = null;
+let closeModal = null;
 
 function showTab(id) {
   document.querySelectorAll('.tab-content').forEach(tab => {
@@ -51,7 +52,6 @@ console.log("Selected state:", selectedState);
         const { url, icon, description, deadline } = typeof value === 'string'
           ? { url: value, icon: '🗳️', description: '', deadline: '' }
           : value;
-console.log("Rendering key:", key, "value:", value);
 
         const title = labelMap[key] || key;
 
@@ -244,11 +244,6 @@ function showOrganizations() {
       console.error(err);
     });
 }
-function showVoting() {
-  showTab('voting');
-  console.log("showVoting triggered");
-}
-
 function renderOfficials(stateFilter = null, query = '') {
   showTab('my-officials');
   officialsContainer.innerHTML = '';
@@ -286,8 +281,6 @@ function renderOfficials(stateFilter = null, query = '') {
     workingfamilies: 'workingfamilies',
     progressive: 'progressive'
   };
-const officialsContainer = document.getElementById('officials-container');
-if (!officialsContainer) return;
 
   allOfficials.forEach(o => {
     const rawParty = (o.party || '').toLowerCase().trim();
@@ -319,10 +312,6 @@ if (!officialsContainer) return;
   });
 }
 function openModal(official) {
-  const modal = document.getElementById('officials-modal');
-  const modalContent = document.getElementById('officials-content');
-  if (!modal || !modalContent) return;
-console.log("Modal trigger received:", official);
   modalContent.innerHTML = `
     <h2>${official.name}</h2>
     <p><strong>Office:</strong> ${official.office}</p>
@@ -333,13 +322,11 @@ console.log("Modal trigger received:", official);
     ${official.bio ? `<p>${official.bio}</p>` : ''}
     ${official.website ? `<p><a href="${official.website}" target="_blank">Official Website</a></p>` : ''}
   `;
-
   modal.style.display = 'block';
 }
 
 function closeModalWindow() {
-  const modal = document.getElementById('officials-modal');
-  if (modal) modal.style.display = 'none';
+  modal.style.display = 'none';
 }
 
 function wireSearchBar() {
@@ -365,10 +352,9 @@ document.addEventListener('DOMContentLoaded', () => {
   searchBar = document.getElementById('search-bar');
   modal = document.getElementById('modal');
   modalContent = document.getElementById('modal-content');
-  const closeModalButton = document.getElementById('close-modal');
+  closeModal = document.getElementById('close-modal');
 
-  closeModalButton.addEventListener('click', closeModalWindow);
-
+  closeModal.addEventListener('click', closeModalWindow);
   window.addEventListener('click', event => {
     if (event.target === modal) closeModalWindow();
   });
@@ -393,16 +379,3 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error('Error loading official data:', err);
     });
 });
-// === Modal Controls ===
-function showModal(id) {
-  const modal = document.getElementById(`${id}-modal`);
-  if (modal) modal.style.display = 'block';
-}
-
-function showCivic() {
-  console.log("showCivic triggered");
-}
-
-function showOrganizations() {
-  console.log("showOrganizations triggered");
-}
