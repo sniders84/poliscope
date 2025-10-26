@@ -52,6 +52,7 @@ console.log("Selected state:", selectedState);
         const { url, icon, description, deadline } = typeof value === 'string'
           ? { url: value, icon: '🗳️', description: '', deadline: '' }
           : value;
+console.log("Rendering key:", key, "value:", value);
 
         const title = labelMap[key] || key;
 
