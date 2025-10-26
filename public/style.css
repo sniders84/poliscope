@@ -348,7 +348,23 @@ main {
 .voting-card a {
   text-decoration: none;
   color: inherit;
-  display: contents;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.voting-card a:link,
+.voting-card a:visited,
+.voting-card a:hover,
+.voting-card a:active {
+  color: inherit;
+}
+
+.voting-card a::before,
+.voting-card a::after {
+  content: none !important;
+  display: none !important;
 }
 
 .voting-card .card-icon {
