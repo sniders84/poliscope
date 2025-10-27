@@ -397,14 +397,15 @@
         "ltGovPress": "https://ltgov.vermont.gov/newsroom",
         "federalRaces": "https://ballotpedia.org/Vermont_elections,_2024"
     },
-    "U.S. Virgin Islands": {
-         "bills": "https://legvi.org/",
-         "senateRoster": "https://legvi.org/legislature/36th/",
-         "houseRoster": "https://legvi.org/senators/", 
-         "governorOrders": "https://www.vi.gov/executive-orders/",
-         "ltGovPress": "https://www.vi.gov/news/",
-         "federalRaces": "https://ballotpedia.org/United_States_Virgin_Islands_elections,_2024"
-    },
+    {
+  "U.S. Virgin Islands": {
+    "bills": "https://legvi.org/",
+    "senateRoster": "https://legvi.org/legislature/36th/",
+    "houseRoster": "https://legvi.org/senators/",
+    "governorOrders": "https://www.vi.gov/executive-orders/",
+    "ltGovPress": "https://www.vi.gov/news/",
+    "federalRaces": "https://ballotpedia.org/United_States_Virgin_Islands_elections,_2024"
+  },
     "Virginia": {
         "bills": "https://legacylis.virginia.gov/cgi-bin/legp604.exe?241+men+BIL",
         "senateRoster": "https://apps.senate.virginia.gov/Senator/index.php",
