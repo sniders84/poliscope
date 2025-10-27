@@ -87,6 +87,14 @@
         "ltGovPress": "https://ltgov.georgia.gov/press-releases",
         "federalRaces": "https://ballotpedia.org/Georgia_elections,_2024"
     },
+    "Guam": {
+        "bills": "https://guamcourts.gov/compileroflaws/index.html",
+        "senateRoster": "https://guamlegislature.gov/senators-2/",
+        "houseRoster": "https://guamlegislature.gov/directories/",
+        "governorOrders": "https://governor.guam.gov/executive-orders/",
+        "ltGovPress": "https://governor.guam.gov/news/",
+        "federalRaces": "https://ballotpedia.org/Guam_elections,_2024"
+    },
     "Hawaii": {
         "bills": "https://legiscan.com/HI",
         "senateRoster": "https://www.capitol.hawaii.gov/legislature/legislators.aspx",
