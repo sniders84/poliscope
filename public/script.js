@@ -150,44 +150,52 @@ function showCivic() {
     .then(stateLinks => {
       const links = stateLinks[selectedState] || {};
 
-      const allowedLabels = ['bills', 'local'];
       const labelMap = {
         bills: 'Bills',
-        senate: 'State Senate',
-        house: 'State House',
+        senateRoster: 'State Senate',
+        houseRoster: 'State House',
         local: 'Local Government'
       };
-
-      const filtered = Object.entries(links).filter(([label]) => {
-        const lowerLabel = label.toLowerCase();
-        return allowedLabels.some(key => lowerLabel.includes(key));
-      }).map(([label, url]) => {
-        const key = allowedLabels.find(k => label.toLowerCase().includes(k));
-        const displayLabel = labelMap[key] || label;
-        return { label: displayLabel, url };
-      });
 
       const grid = document.createElement('div');
       grid.className = 'link-grid';
 
-      filtered.forEach(({ label, url }) => {
-        const card = document.createElement('div');
-        card.className = 'link-card';
-        card.innerHTML = `
-          <h4>${label}</h4>
-          <p class="card-desc">Click to view ${label} information for ${selectedState}.</p>
-          <a href="${url}" target="_blank" class="card-button">Open</a>
-        `;
-        grid.appendChild(card);
-      });
+      Object.entries(links).forEach(([label, value]) => {
+        if (label === 'federalRaces') return; // skip federal block here
 
-      // 🔧 Dual-source roster support
-      if (links.senateRoster) {
-        renderRosterCards(links.senateRoster, "State Senate", grid);
-      }
-      if (links.houseRoster) {
-        renderRosterCards(links.houseRoster, "State House", grid);
-      }
+        const displayLabel = labelMap[label] || label;
+
+        if (Array.isArray(value)) {
+          value.forEach(entry => {
+            const card = document.createElement('div');
+            card.className = 'link-card';
+            card.innerHTML = `
+              <h4>${displayLabel} – ${entry.party}</h4>
+              <p class="card-desc">Click to view ${entry.party} members of the ${displayLabel}.</p>
+              <a href="${entry.url}" target="_blank" class="card-button">Open</a>
+            `;
+            grid.appendChild(card);
+          });
+        } else if (typeof value === 'object' && value.url) {
+          const card = document.createElement('div');
+          card.className = 'link-card';
+          card.innerHTML = `
+            <h4>${displayLabel}</h4>
+            <p class="card-desc">Click to view ${displayLabel} information for ${selectedState}.</p>
+            <a href="${value.url}" target="_blank" class="card-button">Open</a>
+          `;
+          grid.appendChild(card);
+        } else if (typeof value === 'string') {
+          const card = document.createElement('div');
+          card.className = 'link-card';
+          card.innerHTML = `
+            <h4>${displayLabel}</h4>
+            <p class="card-desc">Click to view ${displayLabel} information for ${selectedState}.</p>
+            <a href="${value}" target="_blank" class="card-button">Open</a>
+          `;
+          grid.appendChild(card);
+        }
+      });
 
       stateBlock.appendChild(grid);
 
