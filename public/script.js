@@ -57,9 +57,11 @@ console.log('Direct match result:', data[selectedState]);
       };
 
       Object.entries(stateData).forEach(([key, value]) => {
-        const { url, icon, description, deadline } = typeof value === 'string'
-          ? { url: value, icon: '🗳️', description: '', deadline: '' }
-          : value;
+        if (value === null) return;
+
+const { url, icon, description, deadline } = typeof value === 'string'
+  ? { url: value, icon: '🗳️', description: '', deadline: '' }
+  : value;
 
         const title = labelMap[key] || key;
 
