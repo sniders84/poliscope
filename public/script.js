@@ -141,7 +141,7 @@ function showCivic() {
     .then(stateLinks => {
       const links = stateLinks[selectedState] || {};
 
-      const allowedLabels = ['bills', 'senate', 'house', 'local'];
+      const allowedLabels = ['bills', 'local'];
       const labelMap = {
         bills: 'Bills',
         senate: 'State Senate',
