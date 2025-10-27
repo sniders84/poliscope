@@ -113,9 +113,32 @@
     },
     "Indiana": {
         "bills": "https://iga.in.gov/legislative/2025/bills/",
-        "senateRoster": "",
-        "houseRoster": "https://iga.in.gov/legislative/2024/legislators/house/",
-        "governorOrders": "https://www.in.gov/governor/newsroom/executive-orders/",
+        "senateRoster": [
+  {
+    "party": "Republican",
+    "url": "https://www.indianasenaterepublicans.com/senators",
+    "memberCount": 39
+  },
+  {
+    "party": "Democratic",
+    "url": "https://indianasenatedemocrats.org/senators",
+    "memberCount": 11
+  }
+],
+"houseRoster": [
+  {
+    "party": "Republican",
+    "url": "https://www.indianahouserepublicans.com/members",
+    "memberCount": 70
+  },
+  {
+    "party": "Democratic",
+    "url": "https://indianahousedemocrats.org/members",
+    "memberCount": 30
+  }
+]
+},
+   "governorOrders": "https://www.in.gov/governor/newsroom/executive-orders/",
         "ltGovPress": "https://www.in.gov/lg/lt-governor-newsroom/",
         "federalRaces": "https://ballotpedia.org/Indiana_elections,_2024"
     },
