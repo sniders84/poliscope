@@ -57,7 +57,7 @@ console.log('Direct match result:', data[selectedState]);
       };
 
 Object.entries(stateData).forEach(([key, value]) => {
-  if (value === null || value === undefined) return;
+  if (!value) return; // skip null, undefined, false, 0
 
   let url, icon, description, deadline;
 
@@ -66,7 +66,7 @@ Object.entries(stateData).forEach(([key, value]) => {
     icon = '🗳️';
     description = '';
     deadline = '';
-  } else if (typeof value === 'object') {
+  } else if (typeof value === 'object' && value !== null) {
     ({ url, icon = '🗳️', description = '', deadline = '' } = value);
   } else {
     return; // skip anything unexpected
