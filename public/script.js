@@ -181,43 +181,43 @@ console.log("Resolved links:", stateLinks[selectedState]);
       const grid = document.createElement('div');
       grid.className = 'link-grid';
 
-      Object.entries(links).forEach(([label, value]) => {
-        if (label === 'federalRaces') return; // skip federal block here
+Object.entries(links).forEach(([label, value]) => {
+  if (label === 'federalRaces' || value === null || value === undefined) return;
 
-        const displayLabel = labelMap[label] || label;
+  const displayLabel = labelMap[label] || label;
 
-        if (Array.isArray(value)) {
-          value.forEach(entry => {
-            const card = document.createElement('div');
-            card.className = 'link-card';
-            card.innerHTML = `
-              <h4>${displayLabel} – ${entry.party}</h4>
-              <p class="card-desc">Click to view ${entry.party} members of the ${displayLabel}.</p>
-              <a href="${entry.url}" target="_blank" class="card-button">Open</a>
-            `;
-            grid.appendChild(card);
-          });
-        } else if (typeof value === 'object' && value.url) {
-          const card = document.createElement('div');
-          card.className = 'link-card';
-          card.innerHTML = `
-            <h4>${displayLabel}</h4>
-            <p class="card-desc">Click to view ${displayLabel} information for ${selectedState}.</p>
-            <a href="${value.url}" target="_blank" class="card-button">Open</a>
-          `;
-          grid.appendChild(card);
-        } else if (typeof value === 'string') {
-          const card = document.createElement('div');
-          card.className = 'link-card';
-          card.innerHTML = `
-            <h4>${displayLabel}</h4>
-            <p class="card-desc">Click to view ${displayLabel} information for ${selectedState}.</p>
-            <a href="${value}" target="_blank" class="card-button">Open</a>
-          `;
-          grid.appendChild(card);
-        }
-      });
-
+  if (Array.isArray(value)) {
+    value.forEach(entry => {
+      if (!entry || !entry.url) return;
+      const card = document.createElement('div');
+      card.className = 'link-card';
+      card.innerHTML = `
+        <h4>${displayLabel} – ${entry.party}</h4>
+        <p class="card-desc">Click to view ${entry.party} members of the ${displayLabel}.</p>
+        <a href="${entry.url}" target="_blank" class="card-button">Open</a>
+      `;
+      grid.appendChild(card);
+    });
+  } else if (typeof value === 'object' && value !== null && value.url) {
+    const card = document.createElement('div');
+    card.className = 'link-card';
+    card.innerHTML = `
+      <h4>${displayLabel}</h4>
+      <p class="card-desc">Click to view ${displayLabel} information for ${selectedState}.</p>
+      <a href="${value.url}" target="_blank" class="card-button">Open</a>
+    `;
+    grid.appendChild(card);
+  } else if (typeof value === 'string') {
+    const card = document.createElement('div');
+    card.className = 'link-card';
+    card.innerHTML = `
+      <h4>${displayLabel}</h4>
+      <p class="card-desc">Click to view ${displayLabel} information for ${selectedState}.</p>
+      <a href="${value}" target="_blank" class="card-button">Open</a>
+    `;
+    grid.appendChild(card);
+  }
+});
       stateBlock.appendChild(grid);
 
       const federalBlock = document.createElement('div');
