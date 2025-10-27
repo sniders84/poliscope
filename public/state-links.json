@@ -460,13 +460,5 @@
         "governorOrders": "https://www.fortaleza.pr.gov/ordenes-ejecutivas",
         "ltGovPress": null,
         "federalRaces": "https://ballotpedia.org/Puerto_Rico_elections,_2024"
-    },
-    "U.S. Virgin Islands": {
-        "bills": "https://legvi.org/",
-        "senateRoster": "https://legvi.org/senators/",
-        "houseRoster": null,
-        "governorOrders": "https://www.vi.gov/executive-orders/",
-        "ltGovPress": "https://ltg.gov.vi/news/",
-        "federalRaces": "https://ballotpedia.org/U.S._Virgin_Islands_elections,_2024"
-    }
+      }
 }
