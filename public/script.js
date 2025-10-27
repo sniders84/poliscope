@@ -218,6 +218,11 @@ Object.entries(links).forEach(([label, value]) => {
     grid.appendChild(card);
   }
 });
+if (grid.children.length === 0) {
+  const msg = document.createElement('p');
+  msg.textContent = `No state-level links available for ${selectedState}.`;
+  stateBlock.appendChild(msg);
+}
       stateBlock.appendChild(grid);
 
       const federalBlock = document.createElement('div');
