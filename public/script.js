@@ -56,46 +56,57 @@ console.log('Direct match result:', data[selectedState]);
         tools: 'State Voting Tools'
       };
 
-      Object.entries(stateData).forEach(([key, value]) => {
-        if (value === null) return;
+Object.entries(stateData).forEach(([key, value]) => {
+  if (value === null || value === undefined) return;
 
-const { url, icon, description, deadline } = typeof value === 'string'
-  ? { url: value, icon: '🗳️', description: '', deadline: '' }
-  : value;
+  let url, icon, description, deadline;
 
-        const title = labelMap[key] || key;
+  if (typeof value === 'string') {
+    url = value;
+    icon = '🗳️';
+    description = '';
+    deadline = '';
+  } else if (typeof value === 'object') {
+    ({ url, icon = '🗳️', description = '', deadline = '' } = value);
+  } else {
+    return; // skip anything unexpected
+  }
 
-        const card = document.createElement('div');
-        card.className = 'voting-card';
+  if (!url) return;
 
-        const link = document.createElement('a');
-        link.href = url;
-        link.target = '_blank';
+  const title = labelMap[key] || key;
 
-        const iconDiv = document.createElement('div');
-        iconDiv.className = 'card-icon';
-        iconDiv.innerHTML = `<span class="emoji">${icon || '🗳️'}</span>`;
+  const card = document.createElement('div');
+  card.className = 'voting-card';
 
-        const labelDiv = document.createElement('div');
-        labelDiv.className = 'card-label';
-        labelDiv.textContent = title;
+  const link = document.createElement('a');
+  link.href = url;
+  link.target = '_blank';
 
-        const descDiv = document.createElement('div');
-        descDiv.className = 'card-description';
-        descDiv.textContent = description || '';
+  const iconDiv = document.createElement('div');
+  iconDiv.className = 'card-icon';
+  iconDiv.innerHTML = `<span class="emoji">${icon}</span>`;
 
-        const deadlineDiv = document.createElement('div');
-        deadlineDiv.className = 'card-date';
-        if (deadline) deadlineDiv.textContent = deadline;
+  const labelDiv = document.createElement('div');
+  labelDiv.className = 'card-label';
+  labelDiv.textContent = title;
 
-        link.appendChild(iconDiv);
-        link.appendChild(labelDiv);
-        link.appendChild(descDiv);
-        if (deadline) link.appendChild(deadlineDiv);
+  const descDiv = document.createElement('div');
+  descDiv.className = 'card-description';
+  descDiv.textContent = description;
 
-        card.appendChild(link);
-        votingCards.appendChild(card);
-      });
+  const deadlineDiv = document.createElement('div');
+  deadlineDiv.className = 'card-date';
+  if (deadline) deadlineDiv.textContent = deadline;
+
+  link.appendChild(iconDiv);
+  link.appendChild(labelDiv);
+  link.appendChild(descDiv);
+  if (deadline) link.appendChild(deadlineDiv);
+
+  card.appendChild(link);
+  votingCards.appendChild(card);
+});
     })
     .catch(err => {
       votingCards.innerHTML = '<p>Error loading voting data.</p>';
