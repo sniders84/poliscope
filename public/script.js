@@ -185,6 +185,7 @@ Object.entries(links).forEach(([label, value]) => {
   if (label === 'federalRaces' || value === null || value === undefined) return;
 
   const displayLabel = labelMap[label] || label;
+console.log("Label:", label, "Value:", value);
 
   if (Array.isArray(value)) {
     value.forEach(entry => {
