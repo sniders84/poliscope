@@ -100,6 +100,30 @@ console.log('Direct match result:', data[selectedState]);
       console.error('Voting fetch failed:', err);
     });
 }
+function renderRosterCards(rosterData, chamberLabel, container) {
+  if (Array.isArray(rosterData)) {
+    rosterData.forEach(entry => {
+      const card = document.createElement('div');
+      card.className = 'link-card';
+      card.innerHTML = `
+        <h4>${chamberLabel} – ${entry.party}</h4>
+        <p class="card-desc">Click to view ${entry.party} members of the ${chamberLabel}.</p>
+        <a href="${entry.url}" target="_blank" class="card-button">Open</a>
+      `;
+      container.appendChild(card);
+    });
+  } else {
+    const card = document.createElement('div');
+    card.className = 'link-card';
+    card.innerHTML = `
+      <h4>${chamberLabel}</h4>
+      <p class="card-desc">Click to view ${chamberLabel} information for ${selectedState}.</p>
+      <a href="${rosterData.url}" target="_blank" class="card-button">Open</a>
+    `;
+    container.appendChild(card);
+  }
+}
+
 function showCivic() {
   showTab('civic');
   const calendar = document.getElementById('calendar');
@@ -147,6 +171,14 @@ function showCivic() {
         `;
         grid.appendChild(card);
       });
+
+      // 🔧 Dual-source roster support
+      if (links.senateRoster) {
+        renderRosterCards(links.senateRoster, "State Senate", grid);
+      }
+      if (links.houseRoster) {
+        renderRosterCards(links.houseRoster, "State House", grid);
+      }
 
       stateBlock.appendChild(grid);
 
