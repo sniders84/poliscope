@@ -1,6 +1,6 @@
 {
     "Alabama": {
-        "bills": "https://www.legislature.state.al.us/legacy/Splash_Bills.aspx",
+        "bills": "https://alison.legislature.state.al.us/bill-search?tab=1",
         "senateRoster": "https://alison.legislature.state.al.us/senate-leaders-members",
         "houseRoster": "https://alison.legislature.state.al.us/house-leaders-members",
         "governorOrders": "https://governor.alabama.gov/newsroom/category/executive-orders/",
@@ -18,7 +18,7 @@
     "American Samoa": {
         "bills": "https://www.asfono.gov/392documents",
         "senateRoster": "https://www.asfono.gov/senate/members",
-        "houseRoster": null,
+        "houseRoster": "https://en.wikipedia.org/wiki/American_Samoa_House_of_Representatives",
         "governorOrders": "https://www.americansamoa.gov/executiveorders",
         "ltGovPress": "https://www.americansamoa.gov/pressreleases",
         "federalRaces": "https://ballotpedia.org/American_Samoa_elections,_2024"
@@ -72,9 +72,9 @@
         "federalRaces": "https://ballotpedia.org/Delaware_elections,_2024"
     },
     "Florida": {
-        "bills": "https://www.flsenate.gov/Session/Bills",
-        "senateRoster": "https://www.flsenate.gov/Senators/",
-        "houseRoster": "https://www.myfloridahouse.gov/Representatives",
+        "bills": "https://www.flsenate.gov/Session/Bills/2026?chamber=both&searchOnlyCurrentVersion=True&isIncludeAmendments=False&isFirstReference=True&citationType=FL%20Statutes&pageNumber=1",
+        "senateRoster": "https://m.flsenate.gov/Senators/List",
+        "houseRoster": "https://www.flhouse.gov/representatives",
         "governorOrders": "https://www.flgov.com/executive-orders/",
         "ltGovPress": "https://www.flgov.com/lt-governor-jeanette-nunez/",
         "federalRaces": "https://ballotpedia.org/Florida_elections,_2024"
