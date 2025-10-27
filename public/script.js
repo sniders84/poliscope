@@ -148,10 +148,7 @@ function showCivic() {
   fetch('/state-links.json')
     .then(res => res.json())
     .then(stateLinks => {
-      console.log("Selected state:", selectedState);
-console.log("Available keys:", Object.keys(stateLinks));
-console.log("Resolved links:", stateLinks[selectedState]);
-
+      
       const normalizedState = selectedState.replace(/\./g, '').trim();
 const links = stateLinks[normalizedState] || stateLinks[selectedState] || {};
 
@@ -161,6 +158,9 @@ const links = stateLinks[normalizedState] || stateLinks[selectedState] || {};
         houseRoster: 'State House',
         local: 'Local Government'
       };
+console.log("Selected state:", selectedState);
+console.log("Available keys:", Object.keys(stateLinks));
+console.log("Resolved links:", stateLinks[selectedState]);
 
       const grid = document.createElement('div');
       grid.className = 'link-grid';
