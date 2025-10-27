@@ -335,6 +335,7 @@ function renderOfficials(stateFilter = null, query = '') {
   "Northern Mariana Islands": "Northern Mariana Islands",
   "Puerto Rico": "Puerto Rico"
 };
+console.log("Filtered reps:", filteredReps.map(r => r.name));
 
 if (stateFilter && stateAliases[stateFilter]) {
   stateFilter = stateAliases[stateFilter];
