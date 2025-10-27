@@ -151,8 +151,8 @@
     },
     "Kansas": {
         "bills": "https://kslegislature.org/li/b2023_24/measures/bills/",
-        "senateRoster": "https://kslegislature.org/li/b2023_24/members/senate/",
-        "houseRoster": "https://kslegislature.org/li/b2023_24/members/house/",
+        "senateRoster": "https://www.kslegislature.gov/li/b2025_26/chamber/senate/roster/",
+        "houseRoster": "https://kslegislature.gov/li/b2025_26/chamber/house/roster/",
         "governorOrders": "https://governor.kansas.gov/executive-orders/",
         "ltGovPress": "https://governor.kansas.gov/newsroom/",
         "federalRaces": "https://ballotpedia.org/Kansas_elections,_2024"
@@ -160,14 +160,14 @@
     "Kentucky": {
         "bills": "https://apps.legislature.ky.gov/record/24rs/record.html",
         "senateRoster": "https://legislature.ky.gov/Legislators/senate",
-        "houseRoster": "https://legislature.ky.gov/Legislators/house",
+        "houseRoster": "https://legislature.ky.gov/Legislators/house-of-representatives",
         "governorOrders": "https://governor.ky.gov/Executive-Orders",
         "ltGovPress": "https://ltgovernor.ky.gov/news",
         "federalRaces": "https://ballotpedia.org/Kentucky_elections,_2024"
     },
     "Louisiana": {
         "bills": "https://www.legis.la.gov/legis/BillSearch.aspx",
-        "senateRoster": "https://senate.la.gov/senators/",
+        "senateRoster": "https://senate.la.gov/Senators_FullInfo",
         "houseRoster": "https://house.louisiana.gov/H_Reps/H_Reps_FullInfo",
         "governorOrders": "https://www.gov.louisiana.gov/index.cfm/page/59",
         "ltGovPress": "https://www.crt.state.la.us/news/",
@@ -175,15 +175,15 @@
     },
     "Maine": {
         "bills": "https://legislature.maine.gov/LawMakerWeb/search.asp",
-        "senateRoster": "https://legislature.maine.gov/senate-home-page/senators/9464",
-        "houseRoster": "https://legislature.maine.gov/house-home-page/representatives/9396",
+        "senateRoster": "https://www.legislature.maine.gov/senate/senators/9536",
+        "houseRoster": "https://legislature.maine.gov/house/house/MemberProfiles/ListAlpha",
         "governorOrders": "https://www.maine.gov/governor/mills/executive-orders",
         "ltGovPress": null,
         "federalRaces": "https://ballotpedia.org/Maine_elections,_2024"
     },
     "Maryland": {
         "bills": "https://mgaleg.maryland.gov/mgawebsite/Legislation/Index",
-        "senateRoster": "https://mgaleg.maryland.gov/mgawebsite/Members/Index/senate",
+        "senateRoster": "https://mgaleg.maryland.gov/mgawebsite/members/index/senate",
         "houseRoster": "https://mgaleg.maryland.gov/mgawebsite/Members/Index/house",
         "governorOrders": "https://governor.maryland.gov/executive-orders/",
         "ltGovPress": "https://ltgovernor.maryland.gov/newsroom/",
@@ -199,7 +199,7 @@
     },
     "Michigan": {
         "bills": "https://www.legislature.mi.gov/",
-        "senateRoster": "https://www.senate.michigan.gov/senatorinfo.html",
+        "senateRoster": "https://senate.michigan.gov/senators/all-senators/",
         "houseRoster": "https://www.house.mi.gov/AllRepresentatives",
         "governorOrders": "https://www.michigan.gov/whitmer/news/state-orders-and-directives",
         "ltGovPress": "https://www.michigan.gov/whitmer/news/press-releases",
@@ -207,32 +207,32 @@
     },
     "Minnesota": {
         "bills": "https://www.revisor.mn.gov/bills/",
-        "senateRoster": "https://www.senate.mn/members/",
-        "houseRoster": "https://www.house.mn.gov/members/hmem.asp",
+        "senateRoster": "https://www.senate.mn/members?id=alphabetical",
+        "houseRoster": "https://www.house.mn.gov/members/list",
         "governorOrders": "https://mn.gov/governor/executive-orders/",
         "ltGovPress": "https://mn.gov/governor/newsroom/#/filterType=OFFICE&filterBy=Lt.%20Governor",
         "federalRaces": "https://ballotpedia.org/Minnesota_elections,_2024"
     },
     "Mississippi": {
         "bills": "http://billstatus.ls.state.ms.us/",
-        "senateRoster": "https://www.legislature.ms.gov/senate/",
-        "houseRoster": "https://www.legislature.ms.gov/house/",
+        "senateRoster": "https://www.legislature.ms.gov/legislators/senators/",
+        "houseRoster": "https://www.legislature.ms.gov/legislators/representatives/",
         "governorOrders": "https://www.gov.ms.gov/executive-orders/",
         "ltGovPress": "https://www.legislature.ms.gov/lt-governor/",
         "federalRaces": "https://ballotpedia.org/Mississippi_elections,_2024"
     },
     "Missouri": {
-        "bills": "https://www.house.mo.gov/billcentral.aspx",
-        "senateRoster": "https://www.senate.mo.gov/Senators/",
-        "houseRoster": "https://www.house.mo.gov/MemberRoster.aspx",
+        "bills": "https://house.mo.gov/LegislationSP.aspx",
+        "senateRoster": "https://www.senate.mo.gov/Senators",
+        "houseRoster": "https://house.mo.gov/MemberRoster.aspx?year=2025&code=R",
         "governorOrders": "https://governor.mo.gov/executive-orders",
         "ltGovPress": "https://ltgov.mo.gov/news/",
         "federalRaces": "https://ballotpedia.org/Missouri_elections,_2024"
     },
     "Montana": {
-        "bills": "https://leg.mt.gov/bills/",
-        "senateRoster": "https://leg.mt.gov/senate-members/",
-        "houseRoster": "https://leg.mt.gov/house-members/",
+        "bills": "https://bills.legmt.gov/#",
+        "senateRoster": "https://www.legmt.gov/senate/",
+        "houseRoster": "https://www.legmt.gov/house/",
         "governorOrders": "https://governor.mt.gov/Executive-Orders",
         "ltGovPress": "https://governor.mt.gov/Lt-Governor",
         "federalRaces": "https://ballotpedia.org/Montana_elections,_2024"
@@ -247,39 +247,39 @@
     },
     "Nevada": {
         "bills": "https://www.leg.state.nv.us/App/NELIS/REL/82nd2023/Bills",
-        "senateRoster": "https://www.leg.state.nv.us/App/Legislator/A/Senate/82nd2023",
-        "houseRoster": "https://www.leg.state.nv.us/App/Legislator/A/Assembly/82nd2023",
+        "senateRoster": "https://www.leg.state.nv.us/App/Legislator/A/Senate/Current",
+        "houseRoster": "https://www.leg.state.nv.us/App/Legislator/A/Assembly/Current",
         "governorOrders": "https://gov.nv.gov/Newsroom/Executive_Orders/",
         "ltGovPress": "https://ltgov.nv.gov/News/",
         "federalRaces": "https://ballotpedia.org/Nevada_elections,_2024"
     },
     "New Hampshire": {
-        "bills": "https://www.gencourt.state.nh.us/bill_status/",
-        "senateRoster": "https://www.gencourt.state.nh.us/Senate/members/default.aspx",
-        "houseRoster": "https://www.gencourt.state.nh.us/house/members/default.aspx",
+        "bills": "https://legiscan.com/NH",
+        "senateRoster": "https://gc.nh.gov/senate/members/senate_roster.aspx",
+        "houseRoster": "https://gc.nh.gov/house/members/",
         "governorOrders": "https://www.governor.nh.gov/news-and-media/executive-orders",
         "ltGovPress": null,
         "federalRaces": "https://ballotpedia.org/New_Hampshire_elections,_2024"
     },
     "New Jersey": {
         "bills": "https://www.njleg.state.nj.us/bill-search",
-        "senateRoster": "https://www.njleg.state.nj.us/legislative-roster?house=S",
-        "houseRoster": "https://www.njleg.state.nj.us/legislative-roster?house=A",
+        "senateRoster": "https://www.njleg.state.nj.us/legislative-roster",
+        "houseRoster": "https://www.njleg.state.nj.us/legislative-roster",
         "governorOrders": "https://nj.gov/infobank/eo/eoindex.htm",
         "ltGovPress": "https://nj.gov/state/press.html",
         "federalRaces": "https://ballotpedia.org/New_Jersey_elections,_2024"
     },
     "New Mexico": {
         "bills": "https://www.nmlegis.gov/Legislation/Legislation",
-        "senateRoster": "https://www.nmlegis.gov/Members/Legislator_List?T=S",
-        "houseRoster": "https://www.nmlegis.gov/Members/Legislator_List?T=H",
+        "senateRoster": "https://www.nmlegis.gov/members/Legislator_List?T=S",
+        "houseRoster": "https://www.nmlegis.gov/members/Legislator_List?T=R",
         "governorOrders": "https://www.governor.state.nm.us/executive-orders/",
         "ltGovPress": "https://www.ltgovernor.nm.gov/newsroom/",
         "federalRaces": "https://ballotpedia.org/New_Mexico_elections,_2024"
     },
     "New York": {
-        "bills": "https://nyassembly.gov/leg/",
-        "senateRoster": "https://www.nysenate.gov/senators",
+        "bills": "https://legiscan.com/NY",
+        "senateRoster": "https://www.nysenate.gov/senators-committees",
         "houseRoster": "https://nyassembly.gov/mem/",
         "governorOrders": "https://www.governor.ny.gov/executive-orders",
         "ltGovPress": "https://www.governor.ny.gov/news",
