@@ -346,8 +346,7 @@ if (stateFilter && stateAliases[stateFilter]) {
   const filteredGovs = governors.filter(o => !filterByState || o.state === stateFilter);
   const filteredLtGovs = ltGovernors.filter(o => !filterByState || o.state === stateFilter);
   const filteredSens = senators.filter(o => !filterByState || o.state === stateFilter);
-  const filteredReps = houseReps
-    .filter(o => !filterByState || o.state === stateFilter)
+  const filteredReps = houseReps.filter(o => !filterByState || o.state === stateFilter)
     .sort((a, b) => parseInt(a.district) - parseInt(b.district));
 
   const allOfficials = [
