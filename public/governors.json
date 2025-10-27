@@ -2666,7 +2666,66 @@
   "electionYear": "2024",
   "rankingNote": "Tied at 63% approval; ranked #2 using DK/NO tie-break logic. Engagement metrics sourced and verified."
 },
-{
+  {
+  "name": "Albert Bryan Jr.",
+  "state": "U.S. Virgin Islands",
+  "party": "Democratic",
+  "office": "Governor",
+  "slug": "albert-bryan-jr",
+  "photo": "https://www.vi.gov/wp-content/uploads/2025/01/Governor-Bryan-2025-Headshot.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Albert_Bryan_Jr.",
+  "termStart": "2019-01-07",
+  "termEnd": "2027-01-04",
+  "contact": {
+    "email": "governor@go.vi.gov",
+    "phone": "340-774-0001",
+    "website": "https://www.vi.gov"
+  },
+  "bio": "Albert Bryan Jr. is the 9th elected Governor of the U.S. Virgin Islands, serving since 2019. He previously led the Virgin Islands Department of Labor and chaired the Economic Development Authority. His administration focuses on economic recovery, sustainability, and post-hurricane resilience.",
+  "education": "Wittenberg University (BA in Economics), University of the Virgin Islands (MBA)",
+  "endorsements": "Virgin Islands Democratic Party, local labor unions, Caribbean Business Alliance",
+  "platform": "Economic recovery, infrastructure modernization, education reform, and healthcare access.",
+  "platformFollowThrough": {
+    "Economic Recovery": "Launched the Bryan-Roach Economic Development Plan, expanded tourism partnerships, and secured federal disaster recovery funds.",
+    "Infrastructure Modernization": "Oversaw major road and port reconstruction projects, including the St. Thomas waterfront revitalization.",
+    "Education Reform": "Expanded vocational training, rebuilt hurricane-damaged schools, and launched the 'Cradle to Career' initiative.",
+    "Healthcare Access": "Reopened clinics, expanded Medicaid enrollment, and secured funding for hospital upgrades."
+  },
+  "proposals": "Create a territorial energy bank, expand affordable housing, and modernize tax collection systems.",
+  "engagement": {
+    "executiveOrders2025": 3,
+    "socialMediaSurge": true,
+    "earnedMediaCoverage": true,
+    "sources": [
+      "https://www.vi.gov/news/",
+      "https://www.vi.gov/2025-state-of-the-territory-address/"
+    ]
+  },
+  "billsSigned": [
+    {
+      "title": "Economic Development Incentive Act (2023)",
+      "link": "https://www.vi.gov/news/2023/06/governor-bryan-signs-economic-development-incentive-act/"
+    },
+    {
+      "title": "Territorial Infrastructure Investment Act (2024)",
+      "link": "https://www.vi.gov/news/2024/03/governor-bryan-announces-infrastructure-investment-package/"
+    },
+    {
+      "title": "Healthcare Access Expansion Act (2025)",
+      "link": "https://www.vi.gov/news/2025/02/governor-bryan-signs-healthcare-access-expansion-act/"
+    }
+  ],
+  "vetoes": "Occasional use of veto power for budgetary or compliance concerns.",
+  "salary": "$150,690/year",
+  "predecessor": "Kenneth Mapp",
+  "pollingScore": "58%",
+  "pollingSource": "https://newjerseyglobe.com/wp-content/uploads/2025/04/Governor-Approval-Outlook-April-2025.pdf",
+  "rank": "#13",
+  "pollingDate": "2025-04",
+  "electionYear": "2026",
+  "rankingNote": "Ranked by polling score. Engagement metrics sourced and verified."
+},
+  {
   "name": "Glenn Youngkin",
   "state": "Virginia",
   "party": "Republican",
