@@ -335,7 +335,6 @@ function renderOfficials(stateFilter = null, query = '') {
   "Northern Mariana Islands": "Northern Mariana Islands",
   "Puerto Rico": "Puerto Rico"
 };
-console.log("Filtered reps:", filteredReps.map(r => r.name));
 
 if (stateFilter && stateAliases[stateFilter]) {
   stateFilter = stateAliases[stateFilter];
@@ -349,6 +348,7 @@ if (stateFilter && stateAliases[stateFilter]) {
   const filteredSens = senators.filter(o => !filterByState || o.state === stateFilter);
   const filteredReps = houseReps.filter(o => !filterByState || o.state === stateFilter)
     .sort((a, b) => parseInt(a.district) - parseInt(b.district));
+console.log("Filtered reps:", filteredReps.map(r => r.name));
 
   const allOfficials = [
     ...filteredGovs,
