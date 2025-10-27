@@ -24,7 +24,7 @@
         "federalRaces": "https://ballotpedia.org/American_Samoa_elections,_2024"
     },
     "Arizona": {
-        "bills": "https://apps.azleg.gov/BillStatus/BillOverview",
+        "bills": "https://legiscan.com/AZ",
         "senateRoster": "https://www.azleg.gov/MemberRoster/?body=S",
         "houseRoster": "https://www.azleg.gov/MemberRoster/?body=H",
         "governorOrders": "https://azgovernor.gov/executive-orders",
