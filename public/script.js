@@ -330,6 +330,15 @@ function showOrganizations() {
 function renderOfficials(stateFilter = null, query = '') {
   showTab('my-officials');
   officialsContainer.innerHTML = '';
+  const stateAliases = {
+  "Virgin Islands": "U.S. Virgin Islands",
+  "Northern Mariana Islands": "Northern Mariana Islands",
+  "Puerto Rico": "Puerto Rico"
+};
+
+if (stateFilter && stateAliases[stateFilter]) {
+  stateFilter = stateAliases[stateFilter];
+}
 
   const queryLower = query.toLowerCase();
   const filterByState = query === '';
