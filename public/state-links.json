@@ -32,7 +32,7 @@
         "federalRaces": "https://ballotpedia.org/Arizona_elections,_2024"
     },
     "Arkansas": {
-        "bills": "https://arkleg.state.ar.us/Bills/Search",
+        "bills": "https://arkleg.state.ar.us/Bills/SearchByRange?ddBienniumSession=2025%2F2025R",
         "senateRoster": "https://senate.arkansas.gov/senators/",
         "houseRoster": "https://www.arkansashouse.org/representatives/members",
         "governorOrders": "https://governor.arkansas.gov/feature_cards/executive-orders/",
@@ -80,7 +80,7 @@
         "federalRaces": "https://ballotpedia.org/Florida_elections,_2024"
     },
     "Georgia": {
-        "bills": "https://www.legis.ga.gov/legislation",
+        "bills": "https://www.legis.ga.gov/legislation/all",
         "senateRoster": "https://www.legis.ga.gov/members/senate",
         "houseRoster": "https://www.legis.ga.gov/members/house",
         "governorOrders": "https://gov.georgia.gov/executive-action/executive-orders",
@@ -88,8 +88,8 @@
         "federalRaces": "https://ballotpedia.org/Georgia_elections,_2024"
     },
     "Hawaii": {
-        "bills": "https://www.capitol.hawaii.gov/legislature.aspx",
-        "senateRoster": "https://www.capitol.hawaii.gov/memberpage.aspx?chamber=S",
+        "bills": "https://legiscan.com/HI",
+        "senateRoster": "https://www.capitol.hawaii.gov/legislature/legislators.aspx",
         "houseRoster": "https://www.capitol.hawaii.gov/memberpage.aspx?chamber=H",
         "governorOrders": "https://governor.hawaii.gov/category/executive-orders/",
         "ltGovPress": "https://ltgov.hawaii.gov/news/",
@@ -104,16 +104,16 @@
         "federalRaces": "https://ballotpedia.org/Idaho_elections,_2024"
     },
     "Illinois": {
-        "bills": "https://www.ilga.gov/legislation/default.asp",
-        "senateRoster": "https://www.ilga.gov/senate/",
-        "houseRoster": "https://www.ilga.gov/house/",
+        "bills": "https://www.ilga.gov/Legislation",
+        "senateRoster": "https://www.ilga.gov/Senate/Members",
+        "houseRoster": "https://www.ilga.gov/House/Members",
         "governorOrders": "https://www.illinois.gov/government/executive-orders.html",
         "ltGovPress": "https://ltgov.illinois.gov/news.html",
         "federalRaces": "https://ballotpedia.org/Illinois_elections,_2024"
     },
     "Indiana": {
-        "bills": "https://iga.in.gov/legislative/2024/bills/",
-        "senateRoster": "https://iga.in.gov/legislative/2024/legislators/senate/",
+        "bills": "https://iga.in.gov/legislative/2025/bills/",
+        "senateRoster": "https://indianasenatedemocrats.org/senators/","https://www.indianasenaterepublicans.com/senators",
         "houseRoster": "https://iga.in.gov/legislative/2024/legislators/house/",
         "governorOrders": "https://www.in.gov/governor/newsroom/executive-orders/",
         "ltGovPress": "https://www.in.gov/lg/lt-governor-newsroom/",
