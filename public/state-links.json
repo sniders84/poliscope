@@ -294,9 +294,9 @@
         "federalRaces": "https://ballotpedia.org/North_Carolina_elections,_2024"
     },
     "North Dakota": {
-        "bills": "https://www.legis.nd.gov/assembly/68-2023/bill-actions",
-        "senateRoster": "https://www.legis.nd.gov/assembly/68-2023/members/senate",
-        "houseRoster": "https://www.legis.nd.gov/assembly/68-2023/members/house",
+        "bills": "https://legiscan.com/ND",
+        "senateRoster": "https://ndlegis.gov/assembly/69-2025/regular/members/senate",
+        "houseRoster": "https://ndlegis.gov/assembly/68-2023/regular/members/house",
         "governorOrders": "https://www.governor.nd.gov/executive-orders",
         "ltGovPress": "https://www.governor.nd.gov/news-media",
         "federalRaces": "https://ballotpedia.org/North_Dakota_elections,_2024"
@@ -304,15 +304,15 @@
     "Ohio": {
         "bills": "https://www.legislature.ohio.gov/legislation/search",
         "senateRoster": "https://www.ohiosenate.gov/members",
-        "houseRoster": "https://ohiohouse.gov/members/all-members",
+        "houseRoster": "https://www.ohiohouse.gov/members/directory",
         "governorOrders": "https://governor.ohio.gov/media/executive-orders",
         "ltGovPress": "https://governor.ohio.gov/media/news-and-media",
         "federalRaces": "https://ballotpedia.org/Ohio_elections,_2024"
     },
     "Oklahoma": {
-        "bills": "https://www.oklegislature.gov/BillInfo.aspx",
-        "senateRoster": "https://www.oklegislature.gov/Senate_members.aspx",
-        "houseRoster": "https://www.okhouse.gov/Members",
+        "bills": "https://legiscan.com/OK",
+        "senateRoster": "https://oksenate.gov/senators",
+        "houseRoster": "https://www.okhouse.gov/representatives",
         "governorOrders": "https://www.governor.ok.gov/executive-orders",
         "ltGovPress": "https://www.ok.gov/ltgovernor/News_Room/index.html",
         "federalRaces": "https://ballotpedia.org/Oklahoma_elections,_2024"
@@ -326,31 +326,39 @@
         "federalRaces": "https://ballotpedia.org/Oregon_elections,_2024"
     },
     "Pennsylvania": {
-        "bills": "https://www.legis.state.pa.us/cfdocs/legis/home/session.cfm",
-        "senateRoster": "https://www.legis.state.pa.us/cfdocs/legis/home/member_information/senate.cfm",
-        "houseRoster": "https://www.legis.state.pa.us/cfdocs/legis/home/member_information/house.cfm",
+        "bills": "https://www.palegis.us/legislation/bills",
+        "senateRoster": "https://www.palegis.us/senate/members",
+        "houseRoster": "https://www.palegis.us/house/members",
         "governorOrders": "https://www.governor.pa.gov/executive-orders/",
         "ltGovPress": "https://www.governor.pa.gov/newsroom/",
         "federalRaces": "https://ballotpedia.org/Pennsylvania_elections,_2024"
     },
     "Rhode Island": {
-        "bills": "https://www.rilegislature.gov/billstatus/Pages/default.aspx",
+        "bills": "https://www.rilegislature.gov/pages/legislation.aspx",
         "senateRoster": "https://www.rilegislature.gov/senators/default.aspx",
         "houseRoster": "https://www.rilegislature.gov/representatives/default.aspx",
         "governorOrders": "https://governor.ri.gov/executive-orders",
         "ltGovPress": "https://ltgov.ri.gov/news",
         "federalRaces": "https://ballotpedia.org/Rhode_Island_elections,_2024"
     },
+        "South Carolina": {
+        "bills": "https://www.scstatehouse.gov/legislation.php",
+        "senateRoster": "https://www.scstatehouse.gov/member.php?chamber=S",
+        "houseRoster": "https://www.scstatehouse.gov/member.php?chamber=H",
+        "governorOrders": "https://governor.sc.gov/executive-orders",
+        "ltGovPress": "https://ltgov.sc.gov/news",
+        "federalRaces": "https://ballotpedia.org/South_Carolina_elections,_2024"
+    },
     "South Dakota": {
         "bills": "https://sdlegislature.gov/Session/Bills/68",
-        "senateRoster": "https://sdlegislature.gov/Legislators/Contact/117/Default",
-        "houseRoster": "https://sdlegislature.gov/Legislators/Contact/118/Default",
+        "senateRoster": "https://sdlegislature.gov/Session/Committee/1253/Detail",
+        "houseRoster": "https://sdlegislature.gov/Session/Committee/1231/Detail",
         "governorOrders": "https://boardsandcommissions.sd.gov/ExecutiveOrders.aspx",
         "ltGovPress": "https://news.sd.gov/newsitem.aspx?id=14506",
         "federalRaces": "https://ballotpedia.org/South_Dakota_elections,_2024"
     },
     "Tennessee": {
-        "bills": "https://wapp.capitol.tn.gov/apps/billinfo/default.aspx",
+        "bills": "https://wapp.capitol.tn.gov/apps/indexes/",
         "senateRoster": "https://www.capitol.tn.gov/senate/members/",
         "houseRoster": "https://www.capitol.tn.gov/house/members/",
         "governorOrders": "https://www.tn.gov/governor/executive-orders.html",
@@ -359,15 +367,15 @@
     },
     "Texas": {
         "bills": "https://capitol.texas.gov/Reports/General.aspx",
-        "senateRoster": "https://senate.texas.gov/directory.php",
+        "senateRoster": "https://senate.texas.gov/members.php",
         "houseRoster": "https://house.texas.gov/members/",
         "governorOrders": "https://gov.texas.gov/news/category/executive-order",
         "ltGovPress": "https://www.ltgov.texas.gov/news/",
         "federalRaces": "https://ballotpedia.org/Texas_elections,_2024"
     },
     "Utah": {
-        "bills": "https://le.utah.gov/asp/billsintro/LegResults.asp",
-        "senateRoster": "https://senate.utah.gov/senate-members/",
+        "bills": "https://le.utah.gov/bills/bills_By_Session.jsp",
+        "senateRoster": "https://senate.utah.gov/senate-roster/",
         "houseRoster": "https://house.utleg.gov/house-members/",
         "governorOrders": "https://governor.utah.gov/executive-orders/",
         "ltGovPress": "https://ltgovernor.utah.gov/news/",
@@ -381,8 +389,16 @@
         "ltGovPress": "https://ltgov.vermont.gov/newsroom",
         "federalRaces": "https://ballotpedia.org/Vermont_elections,_2024"
     },
+    "U.S. Virgin Islands": {
+         "bills": "https://legvi.org/",
+         "senateRoster": "https://legvi.org/legislature/36th/",
+         "houseRoster": "https://legvi.org/senators/", 
+         "governorOrders": "https://www.vi.gov/executive-orders/",
+         "ltGovPress": "https://www.vi.gov/news/",
+         "federalRaces": "https://ballotpedia.org/United_States_Virgin_Islands_elections,_2024"
+    },
     "Virginia": {
-        "bills": "https://lis.virginia.gov/cgi-bin/legp604.exe?241+men+SR1",
+        "bills": "https://legacylis.virginia.gov/cgi-bin/legp604.exe?241+men+BIL",
         "senateRoster": "https://apps.senate.virginia.gov/Senator/index.php",
         "houseRoster": "https://virginiageneralassembly.gov/house/members/members.php",
         "governorOrders": "https://www.governor.virginia.gov/executive-actions/",
@@ -391,8 +407,8 @@
     },
     "Washington": {
         "bills": "https://app.leg.wa.gov/billinfo/",
-        "senateRoster": "https://leg.wa.gov/Senate/Senators/Pages/default.aspx",
-        "houseRoster": "https://leg.wa.gov/House/Representatives/Pages/default.aspx",
+        "senateRoster": "https://leg.wa.gov/legislators/?chamber=senate",
+        "houseRoster": "https://leg.wa.gov/legislators/?chamber=house%20of%20representatives",
         "governorOrders": "https://www.governor.wa.gov/office-governor/official-actions/executive-orders",
         "ltGovPress": "https://www.ltgov.wa.gov/media/",
         "federalRaces": "https://ballotpedia.org/Washington_elections,_2024"
@@ -406,7 +422,7 @@
         "federalRaces": "https://ballotpedia.org/West_Virginia_elections,_2024"
     },
     "Wisconsin": {
-        "bills": "https://docs.legis.wisconsin.gov/2023/proposals",
+        "bills": "https://legiscan.com/WI",
         "senateRoster": "https://legis.wisconsin.gov/senate/",
         "houseRoster": "https://legis.wisconsin.gov/assembly/",
         "governorOrders": "https://evers.wi.gov/Pages/Executive-Orders.aspx",
@@ -430,9 +446,9 @@
         "federalRaces": "https://ballotpedia.org/Northern_Mariana_Islands_elections,_2024"
     },
     "Puerto Rico": {
-        "bills": "https://www.legislaturapr.gov/",
-        "senateRoster": "https://senado.pr.gov/Senadores/Pages/Senadores%20por%20Distrito.aspx",
-        "houseRoster": "https://camara.pr.gov/representantes/",
+        "bills": "https://sutra.oslpr.org/",
+        "senateRoster": "https://www.senado.pr.gov/senadores",
+        "houseRoster": "https://camara.registrok12.com/representante/",
         "governorOrders": "https://www.fortaleza.pr.gov/ordenes-ejecutivas",
         "ltGovPress": null,
         "federalRaces": "https://ballotpedia.org/Puerto_Rico_elections,_2024"
