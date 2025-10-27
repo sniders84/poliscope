@@ -148,7 +148,8 @@ function showCivic() {
   fetch('/state-links.json')
     .then(res => res.json())
     .then(stateLinks => {
-      const links = stateLinks[selectedState] || {};
+      const normalizedState = selectedState.replace(/\./g, '').trim();
+const links = stateLinks[normalizedState] || stateLinks[selectedState] || {};
 
       const labelMap = {
         bills: 'Bills',
