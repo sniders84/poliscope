@@ -112,13 +112,22 @@ function renderRosterCards(rosterData, chamberLabel, container) {
       `;
       container.appendChild(card);
     });
-  } else {
+  } else if (typeof rosterData === 'object' && rosterData.url) {
     const card = document.createElement('div');
     card.className = 'link-card';
     card.innerHTML = `
       <h4>${chamberLabel}</h4>
       <p class="card-desc">Click to view ${chamberLabel} information for ${selectedState}.</p>
       <a href="${rosterData.url}" target="_blank" class="card-button">Open</a>
+    `;
+    container.appendChild(card);
+  } else if (typeof rosterData === 'string') {
+    const card = document.createElement('div');
+    card.className = 'link-card';
+    card.innerHTML = `
+      <h4>${chamberLabel}</h4>
+      <p class="card-desc">Click to view ${chamberLabel} information for ${selectedState}.</p>
+      <a href="${rosterData}" target="_blank" class="card-button">Open</a>
     `;
     container.appendChild(card);
   }
