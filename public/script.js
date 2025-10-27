@@ -165,8 +165,8 @@ function showCivic() {
 console.log("Resolved links:", stateLinks[selectedState]);
 console.log("Available keys:", Object.keys(stateLinks));
 
-      const normalizedState = selectedState.replace(/\./g, '').trim();
-const links = stateLinks[normalizedState] || stateLinks[selectedState] || {};
+    const normalizedState = selectedState === "Virgin Islands" ? "U.S. Virgin Islands" : selectedState;
+    const links = stateLinks[normalizedState] || {};
 
       const labelMap = {
         bills: 'Bills',
