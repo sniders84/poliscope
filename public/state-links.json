@@ -112,36 +112,35 @@
         "federalRaces": "https://ballotpedia.org/Illinois_elections,_2024"
     },
     "Indiana": {
-        "bills": "https://iga.in.gov/legislative/2025/bills/",
-        "senateRoster": [
-  {
-    "party": "Republican",
-    "url": "https://www.indianasenaterepublicans.com/senators",
-    "memberCount": 39
-  },
-  {
-    "party": "Democratic",
-    "url": "https://indianasenatedemocrats.org/senators",
-    "memberCount": 11
-  }
-],
-"houseRoster": [
-  {
-    "party": "Republican",
-    "url": "https://www.indianahouserepublicans.com/members",
-    "memberCount": 70
-  },
-  {
-    "party": "Democratic",
-    "url": "https://indianahousedemocrats.org/members",
-    "memberCount": 30
-  }
-]
-},
-   "governorOrders": "https://www.in.gov/governor/newsroom/executive-orders/",
-        "ltGovPress": "https://www.in.gov/lg/lt-governor-newsroom/",
-        "federalRaces": "https://ballotpedia.org/Indiana_elections,_2024"
+  "bills": "https://iga.in.gov/legislative/2025/bills/",
+  "senateRoster": [
+    {
+      "party": "Republican",
+      "url": "https://www.indianasenaterepublicans.com/senators",
+      "memberCount": 39
     },
+    {
+      "party": "Democratic",
+      "url": "https://indianasenatedemocrats.org/senators",
+      "memberCount": 11
+    }
+  ],
+  "houseRoster": [
+    {
+      "party": "Republican",
+      "url": "https://www.indianahouserepublicans.com/members",
+      "memberCount": 70
+    },
+    {
+      "party": "Democratic",
+      "url": "https://indianahousedemocrats.org/members",
+      "memberCount": 30
+    }
+  ],
+  "governorOrders": "https://www.in.gov/governor/newsroom/executive-orders/",
+  "ltGovPress": "https://www.in.gov/lg/lt-governor-newsroom/",
+  "federalRaces": "https://ballotpedia.org/Indiana_elections,_2024"
+},
     "Iowa": {
         "bills": "https://www.legis.iowa.gov/legislation",
         "senateRoster": "https://www.legis.iowa.gov/legislators/senate",
