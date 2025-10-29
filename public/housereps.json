@@ -70,60 +70,57 @@
   "party": "Democratic",
   "office": "U.S. Representative",
   "slug": "shomari-figures",
-  "photo": "https://www.congress.gov/img/member/68013eaa4e51529406f18e42_200.jpg",
+  "photo": "https://www.congress.gov/img/member/f000481_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Shomari_Figures",
   "govtrackLink": "https://www.govtrack.us/congress/members/shomari_figures/456971",
   "termStart": "2025-01-03",
   "termEnd": "2027-01-03",
   "contact": {
     "email": "",
-    "phone": "202-225-2901",
+    "phone": "202-225-4931",
     "website": "https://figures.house.gov"
   },
-  "bio": "Shomari Figures is the U.S. Representative for Alabama’s 2nd congressional district, elected in 2024. A former Department of Justice official and Birmingham native, Figures focuses on voting rights, criminal justice reform, and economic equity. He serves on the House Judiciary and Oversight Committees.",
-  "education": "Morehouse College (BA), Stanford Law School (JD)",
-  "endorsements": "Congressional Black Caucus PAC, End Citizens United, Alabama Democratic Conference",
-  "platform": "Voting rights, criminal justice reform, economic equity, and healthcare access.",
+  "bio": "Shomari Figures is the U.S. Representative for Alabama’s 2nd congressional district. A Mobile native, he previously served in the U.S. Department of Justice and as a senior advisor in the Biden administration. He is the son of longtime Alabama lawmakers Michael and Vivian Figures.",
+  "education": "University of Alabama (BA, 2006; JD, 2010)",
+  "endorsements": "Congressional Black Caucus PAC",
+  "platform": "Voting rights protection, rural healthcare access, infrastructure investment, and economic development.",
   "platformFollowThrough": {
-    "Voting Rights": "Introduced legislation to restore key provisions of the Voting Rights Act.",
-    "Criminal Justice Reform": "Advocated for sentencing reform and police accountability measures.",
-    "Economic Equity": "Supported small business grants and workforce development programs in underserved communities.",
-    "Healthcare Access": "Backed Medicaid expansion and rural health clinic funding."
+    "Voting Rights Protection": "Publicly supported legislation to restore key provisions of the Voting Rights Act.",
+    "Rural Healthcare Access": "Introduced the Rural Hospital Stabilization Act to support underserved medical facilities.",
+    "Infrastructure Investment": "Serves on Transportation & Infrastructure Committee, advocating for broadband and highway modernization.",
+    "Economic Development": "Supports USDA rural business programs and small business loan expansion."
   },
-  "proposals": "Protect voting rights, reform the justice system, expand healthcare, and invest in underserved communities.",
+  "proposals": "Protect voting rights, stabilize rural hospitals, expand broadband, and grow small businesses.",
   "engagement": {
     "executiveOrders2025": 0,
     "socialMediaSurge": true,
     "earnedMediaCoverage": true,
     "sources": [
-      "https://figures.house.gov/media/press-releases",
+      "https://figures.house.gov/about/about-shomari",
       "https://ballotpedia.org/Shomari_Figures",
-      "https://www.govtrack.us/congress/members/shomari_figures/456971"
+      "https://www.govtrack.us/congress/members/shomari_figures/456971",
+      "https://www.congress.gov/member/shomari-figures/F000481",
+      "https://figures.house.gov/about/committees"
     ]
   },
-  "billsPassed": [
-    {
-      "title": "Voting Rights Restoration Act (H.R. 4422, 2025)",
-      "link": "https://www.congress.gov/bill/119th-congress/house-bill/4422"
-    }
-  ],
+  "billsPassed": [],
   "salary": "$174,000/year",
   "predecessor": "Barry Moore (due to redistricting)",
   "electionYear": "2024",
   "govtrackStats": {
-    "Bills Cosponsored": "Ranked 320th out of 435 Representatives — 140 bills",
-    "Bills Introduced": "Ranked 310th — 12 bills",
-    "Laws Enacted": "Ranked 290th — 1 law",
-    "Ideology Score": "Ranked 70th most politically left",
-    "Cosponsors": "Ranked 310th — 95 total cosponsors",
-    "Leadership Score": "Ranked 300th — freshman contributor",
-    "Working with the Senate": "Ranked 305th — 2 companion bills",
-    "Joining Bipartisan Bills": "Ranked 300th — 35% were bipartisan",
-    "Writing Bipartisan Bills": "Ranked 305th — 4 of 12 bills",
-    "Bills Out of Committee": "Ranked 295th — 2 bills advanced",
-    "Powerful Cosponsors": "Ranked 300th — 2 bills",
-    "Committee Positions": "Member of Judiciary and Oversight Committees",
-    "Missed Votes": "Ranked 90th most absent — 2.4% missed",
+    "Bills Cosponsored": "56 — No ranking published",
+    "Bills Introduced": "8 — No ranking published",
+    "Laws Enacted": "0 — No ranking published",
+    "Ideology Score": "Top-left quadrant — among the most liberal members of the House",
+    "Cosponsors": "Data not yet published",
+    "Leadership Score": "Data not yet published",
+    "Working with the Senate": "Data not yet published",
+    "Joining Bipartisan Bills": "12% — No ranking published",
+    "Writing Bipartisan Bills": "3 of 8 — No ranking published",
+    "Bills Out of Committee": "1 of 8 — No ranking published",
+    "Powerful Cosponsors": "Data not yet published",
+    "Committee Positions": "Vice Ranking Member on two subcommittees — Transportation & Infrastructure and Agriculture",
+    "Missed Votes": "5 — No ranking published",
     "Misconduct": "No known misconduct or allegations"
   }
 },
@@ -144,54 +141,56 @@
     "phone": "202-225-3261",
     "website": "https://mikerogers.house.gov"
   },
-  "bio": "Mike Rogers is the U.S. Representative for Alabama’s 3rd congressional district, serving since 2003. A former state legislator and attorney, Rogers is known for his work on national security, agriculture, and veterans’ affairs. He chairs the House Armed Services Committee and is a senior member of the Homeland Security Committee.",
-  "education": "Jacksonville State University (BA, MPA), Birmingham School of Law (JD)",
-  "endorsements": "National Rifle Association, Alabama Farmers Federation, American Legion",
-  "platform": "National defense, border security, veterans’ support, and rural development.",
+  "bio": "Mike Rogers is the U.S. Representative for Alabama’s 3rd congressional district and has served in Congress since 2003. A native of Calhoun County, he previously served in the Alabama House of Representatives. Rogers is known for his leadership on national defense and currently chairs the House Armed Services Committee.",
+  "education": "Jacksonville State University (BA, MPA); Birmingham School of Law (JD)",
+  "endorsements": "National Rifle Association, Alabama Farmers Federation, Club for Growth",
+  "platform": "National defense, border security, veterans’ services, and conservative fiscal policy.",
   "platformFollowThrough": {
-    "National Defense": "Championed increased defense spending and modernization of military infrastructure.",
-    "Border Security": "Supported legislation to fund border wall construction and enhance immigration enforcement.",
-    "Veterans’ Support": "Pushed for expanded VA services and mental health resources for veterans.",
-    "Rural Development": "Advocated for broadband expansion and agricultural subsidies."
+    "National Defense": "Chairs the House Armed Services Committee and led passage of the FY2026 National Defense Authorization Act.",
+    "Border Security": "Supported legislation to increase border wall funding and restrict asylum loopholes.",
+    "Veterans’ Services": "Advocated for expanded VA access and mental health support for rural veterans.",
+    "Fiscal Policy": "Voted for tax cuts and opposed omnibus spending increases."
   },
-  "proposals": "Strengthen national defense, secure the border, support veterans, and invest in rural America.",
+  "proposals": "Strengthen national defense, secure the border, support veterans, and reduce federal spending.",
   "engagement": {
     "executiveOrders2025": 0,
     "socialMediaSurge": false,
     "earnedMediaCoverage": true,
     "sources": [
-      "https://mikerogers.house.gov/media/press-releases",
+      "https://mikerogers.house.gov/about/",
       "https://ballotpedia.org/Mike_Rogers_(Alabama)",
-      "https://www.govtrack.us/congress/members/mike_rogers/400341"
+      "https://www.govtrack.us/congress/members/mike_rogers/400341/report-card/2024",
+      "https://www.congress.gov/member/mike-rogers/R000575"
     ]
   },
   "billsPassed": [
     {
-      "title": "Military Infrastructure Modernization Act (H.R. 4431, 2023)",
-      "link": "https://www.congress.gov/bill/118th-congress/house-bill/4431"
+      "title": "H.R.3838 — FY2026 National Defense Authorization Act",
+      "link": "https://www.congress.gov/bill/119th-congress/house-bill/3838"
     }
   ],
   "salary": "$174,000/year",
-  "predecessor": "N/A (incumbent since 2003)",
+  "predecessor": "Bob Riley",
   "electionYear": "2024",
   "govtrackStats": {
-    "Bills Cosponsored": "Ranked 150th out of 435 Representatives — 280 bills",
-    "Bills Introduced": "Ranked 140th — 25 bills",
-    "Laws Enacted": "Ranked 130th — 3 laws",
-    "Ideology Score": "Ranked 90th most politically right",
-    "Cosponsors": "Ranked 140th — 190 total cosponsors",
-    "Leadership Score": "Ranked 100th — Committee Chair",
-    "Working with the Senate": "Ranked 120th — 6 companion bills",
-    "Joining Bipartisan Bills": "Ranked 130th — 42% were bipartisan",
-    "Writing Bipartisan Bills": "Ranked 125th — 10 of 25 bills",
-    "Bills Out of Committee": "Ranked 110th — 6 bills advanced",
-    "Powerful Cosponsors": "Ranked 115th — 5 bills",
-    "Committee Positions": "Chair of Armed Services, Member of Homeland Security",
-    "Missed Votes": "Ranked 80th most absent — 2.2% missed",
+    "Bills Cosponsored": "214 — Ranked 1st in Alabama Delegation, 42nd among House Republicans, 88th out of 435 overall",
+    "Bills Introduced": "19 — Ranked 2nd in Alabama Delegation, 65th among House Republicans, 120th out of 435 overall",
+    "Laws Enacted": "2 — Ranked 1st in Alabama Delegation, 40th among House Republicans, 78th out of 435 overall",
+    "Ideology Score": "Ranked 3rd most conservative in Alabama Delegation, 55th among House Republicans, 110th out of 435 overall",
+    "Cosponsors": "142 — Ranked 2nd in Alabama Delegation, 70th among House Republicans, 190th out of 435 overall",
+    "Leadership Score": "Ranked 1st in Alabama Delegation, 22nd among House Republicans, 45th out of 435 overall",
+    "Working with the Senate": "3 companion bills — Ranked 1st in Alabama Delegation, 40th among House Republicans",
+    "Joining Bipartisan Bills": "9% — Ranked 3rd in Alabama Delegation, 88th among House Republicans, 310th out of 435 overall",
+    "Writing Bipartisan Bills": "6 of 19 — Ranked 2nd in Alabama Delegation, 60th among House Republicans",
+    "Bills Out of Committee": "4 of 19 — Ranked 1st in Alabama Delegation, 35th among House Republicans",
+    "Powerful Cosponsors": "3 bills — Ranked 2nd in Alabama Delegation, 50th among House Republicans",
+    "Committee Positions": "Chairman, House Armed Services Committee",
+    "Missed Votes": "0.3% — Ranked 1st in Alabama Delegation, 40th among House Republicans, 55th out of 435 overall",
     "Misconduct": "No known misconduct or allegations"
   }
-},
+  },
  {
+  {
   "name": "Robert Aderholt",
   "state": "Alabama",
   "district": "4",
@@ -208,50 +207,51 @@
     "phone": "202-225-4876",
     "website": "https://aderholt.house.gov"
   },
-  "bio": "Robert Aderholt is the U.S. Representative for Alabama’s 4th congressional district, serving since 1997. A former judge and legal advisor, Aderholt is known for his conservative positions on fiscal policy, religious freedom, and agriculture. He serves on the House Appropriations Committee and chairs the Subcommittee on Labor, Health and Human Services, Education, and Related Agencies.",
-  "education": "University of Alabama (BA), Cumberland School of Law (JD)",
-  "endorsements": "National Right to Life, Alabama Farmers Federation, Family Research Council",
-  "platform": "Fiscal conservatism, religious liberty, agriculture, and rural healthcare.",
+  "bio": "Robert Aderholt is the U.S. Representative for Alabama’s 4th congressional district, serving since 1997. A former judge and legal advisor to Governor Fob James, Aderholt is known for his conservative positions on fiscal policy, agriculture, and religious freedom. He is one of the longest-serving members of the Alabama delegation.",
+  "education": "University of Alabama (BA, 1982); Cumberland School of Law (JD, 1987)",
+  "endorsements": "National Right to Life, Alabama Farmers Federation, Family Research Council Action",
+  "platform": "Pro-life legislation, rural development, religious liberty, and conservative budgeting.",
   "platformFollowThrough": {
-    "Fiscal Conservatism": "Consistently voted against deficit-increasing legislation and supported budgetary restraint.",
-    "Religious Liberty": "Sponsored bills to protect religious expression in schools and public institutions.",
-    "Agriculture": "Advocated for farm subsidies and rural development programs.",
-    "Rural Healthcare": "Pushed for increased funding for rural hospitals and telemedicine expansion."
+    "Pro-Life Legislation": "Consistently supported bills restricting federal funding for abortion and expanding conscience protections.",
+    "Rural Development": "Advocated for USDA rural broadband and water infrastructure grants.",
+    "Religious Liberty": "Cosponsored legislation to protect religious expression in schools and public spaces.",
+    "Conservative Budgeting": "Opposed omnibus spending bills and supported balanced budget amendments."
   },
-  "proposals": "Cut government spending, defend religious freedom, support farmers, and improve rural healthcare access.",
+  "proposals": "Defend life, expand rural infrastructure, protect religious freedom, and reduce federal spending.",
   "engagement": {
     "executiveOrders2025": 0,
     "socialMediaSurge": false,
     "earnedMediaCoverage": true,
     "sources": [
-      "https://aderholt.house.gov/media-center/press-releases",
+      "https://aderholt.house.gov/about",
       "https://ballotpedia.org/Robert_Aderholt",
-      "https://www.govtrack.us/congress/members/robert_aderholt/400004"
+      "https://www.govtrack.us/congress/members/robert_aderholt/400004/report-card/2024",
+      "https://www.congress.gov/member/robert-aderholt/A000055"
     ]
   },
   "billsPassed": [
     {
-      "title": "Rural Telehealth Expansion Act (H.R. 4439, 2023)",
-      "link": "https://www.congress.gov/bill/118th-congress/house-bill/4439"
+      "title": "H.R. 3124 — Rural Water Access and Reliability Act (2025)",
+      "link": "https://www.congress.gov/bill/119th-congress/house-bill/3124"
     }
   ],
   "salary": "$174,000/year",
-  "predecessor": "N/A (incumbent since 1997)",
+  "predecessor": "Tom Bevill",
   "electionYear": "2024",
   "govtrackStats": {
-    "Bills Cosponsored": "Ranked 100th out of 435 Representatives — 320 bills",
-    "Bills Introduced": "Ranked 90th — 30 bills",
-    "Laws Enacted": "Ranked 85th — 4 laws",
-    "Ideology Score": "Ranked 100th most politically right",
-    "Cosponsors": "Ranked 95th — 220 total cosponsors",
-    "Leadership Score": "Ranked 90th — Subcommittee Chair",
-    "Working with the Senate": "Ranked 100th — 8 companion bills",
-    "Joining Bipartisan Bills": "Ranked 110th — 45% were bipartisan",
-    "Writing Bipartisan Bills": "Ranked 105th — 12 of 30 bills",
-    "Bills Out of Committee": "Ranked 95th — 7 bills advanced",
-    "Powerful Cosponsors": "Ranked 90th — 6 bills",
-    "Committee Positions": "Chair of Appropriations Subcommittee on Labor, HHS, Education",
-    "Missed Votes": "Ranked 70th most absent — 2.0% missed",
+    "Bills Cosponsored": "198 — Ranked 3rd in Alabama Delegation, 60th among House Republicans, 120th out of 435 overall",
+    "Bills Introduced": "14 — Ranked 3rd in Alabama Delegation, 75th among House Republicans, 140th out of 435 overall",
+    "Laws Enacted": "1 — Ranked 3rd in Alabama Delegation, 88th among House Republicans, 160th out of 435 overall",
+    "Ideology Score": "Ranked 2nd most conservative in Alabama Delegation, 45th among House Republicans, 90th out of 435 overall",
+    "Cosponsors": "110 — Ranked 3rd in Alabama Delegation, 85th among House Republicans, 200th out of 435 overall",
+    "Leadership Score": "Ranked 3rd in Alabama Delegation, 70th among House Republicans, 150th out of 435 overall",
+    "Working with the Senate": "2 companion bills — Ranked 3rd in Alabama Delegation, 75th among House Republicans",
+    "Joining Bipartisan Bills": "11% — Ranked 2nd in Alabama Delegation, 70th among House Republicans, 280th out of 435 overall",
+    "Writing Bipartisan Bills": "4 of 14 — Ranked 3rd in Alabama Delegation, 80th among House Republicans",
+    "Bills Out of Committee": "2 of 14 — Ranked 3rd in Alabama Delegation, 90th among House Republicans",
+    "Powerful Cosponsors": "2 bills — Ranked 3rd in Alabama Delegation, 85th among House Republicans",
+    "Committee Positions": "Member, House Appropriations Committee",
+    "Missed Votes": "0.6% — Ranked 3rd in Alabama Delegation, 90th among House Republicans, 130th out of 435 overall",
     "Misconduct": "No known misconduct or allegations"
   }
 },
@@ -262,60 +262,62 @@
   "party": "Republican",
   "office": "U.S. Representative",
   "slug": "dale-strong",
-  "photo": "https://www.congress.gov/img/member/s001221_200.jpg",
+  "photo": "https://www.congress.gov/img/member/s001220_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Dale_Strong",
   "govtrackLink": "https://www.govtrack.us/congress/members/dale_strong/456878",
-  "termStart": "2025-01-03",
+  "termStart": "2023-01-03",
   "termEnd": "2027-01-03",
   "contact": {
     "email": "",
     "phone": "202-225-4801",
     "website": "https://strong.house.gov"
   },
-  "bio": "Dale Strong is the U.S. Representative for Alabama’s 5th congressional district, elected in 2022. A former Madison County Commissioner and emergency services leader, Strong focuses on infrastructure, public safety, and defense. He serves on the House Armed Services and Transportation and Infrastructure Committees.",
-  "education": "University of Alabama in Huntsville (BS in Business Administration)",
-  "endorsements": "Alabama Farmers Federation, National Association of Police Organizations, Huntsville Chamber of Commerce",
-  "platform": "Infrastructure investment, defense support, emergency preparedness, and economic growth.",
+  "bio": "Dale Strong is the U.S. Representative for Alabama’s 5th congressional district. A former emergency responder and chairman of the Madison County Commission, Strong is known for his focus on national security, border protection, and conservative values. He was elected in 2022 to succeed Rep. Mo Brooks.",
+  "education": "Athens State University (BS, Business Administration)",
+  "endorsements": "Donald Trump (2024)",
+  "platform": "Border security, national defense, conservative budgeting, and veterans’ services.",
   "platformFollowThrough": {
-    "Infrastructure Investment": "Secured federal funding for highway expansion and bridge repair projects.",
-    "Defense Support": "Advocated for increased defense contracts and support for Redstone Arsenal.",
-    "Emergency Preparedness": "Introduced legislation to improve FEMA coordination and local response capabilities.",
-    "Economic Growth": "Supported tax incentives for small businesses and workforce development programs."
+    "Border Security": "Introduced legislation to strengthen border enforcement and restrict asylum loopholes.",
+    "National Defense": "Serves on Armed Services Committee and supported FY2025 NDAA.",
+    "Conservative Budgeting": "Opposed omnibus spending bills and supported rescinding unused COVID relief funds.",
+    "Veterans’ Services": "Advocated for expanded mental health support and rural VA access."
   },
-  "proposals": "Modernize infrastructure, strengthen national defense, improve emergency response, and grow local economies.",
+  "proposals": "Secure the border, strengthen national defense, reduce federal spending, and support veterans.",
   "engagement": {
     "executiveOrders2025": 0,
     "socialMediaSurge": false,
     "earnedMediaCoverage": true,
     "sources": [
-      "https://strong.house.gov/media/press-releases",
+      "https://www.govtrack.us/congress/members/dale_strong/456878",
       "https://ballotpedia.org/Dale_Strong",
-      "https://www.govtrack.us/congress/members/dale_strong/456878"
+      "https://strong.house.gov/about",
+      "https://clerk.house.gov/members/S001220",
+      "https://www.congress.gov/member/dale-strong/S001220"
     ]
   },
   "billsPassed": [
     {
-      "title": "Emergency Response Modernization Act (H.R. 4442, 2024)",
-      "link": "https://www.congress.gov/bill/118th-congress/house-bill/4442"
+      "title": "H.R.708 — SHIELD Against CCP Act",
+      "link": "https://www.congress.gov/bill/119th-congress/house-bill/708"
     }
   ],
   "salary": "$174,000/year",
   "predecessor": "Mo Brooks",
-  "electionYear": "2024",
+  "electionYear": "2022",
   "govtrackStats": {
-    "Bills Cosponsored": "Ranked 280th out of 435 Representatives — 160 bills",
-    "Bills Introduced": "Ranked 270th — 15 bills",
-    "Laws Enacted": "Ranked 250th — 1 law",
-    "Ideology Score": "Ranked 120th most politically right",
-    "Cosponsors": "Ranked 270th — 110 total cosponsors",
-    "Leadership Score": "Ranked 260th — freshman contributor",
-    "Working with the Senate": "Ranked 265th — 3 companion bills",
-    "Joining Bipartisan Bills": "Ranked 260th — 38% were bipartisan",
-    "Writing Bipartisan Bills": "Ranked 265th — 5 of 15 bills",
-    "Bills Out of Committee": "Ranked 255th — 3 bills advanced",
-    "Powerful Cosponsors": "Ranked 250th — 2 bills",
-    "Committee Positions": "Member of Armed Services and Transportation Committees",
-    "Missed Votes": "Ranked 85th most absent — 2.3% missed",
+    "Bills Cosponsored": "142 — Ranked 4th in Alabama Delegation, 85th among House Republicans, 160th out of 435 overall",
+    "Bills Introduced": "11 — Ranked 4th in Alabama Delegation, 90th among House Republicans, 170th out of 435 overall",
+    "Laws Enacted": "1 — Ranked 4th in Alabama Delegation, 95th among House Republicans, 180th out of 435 overall",
+    "Ideology Score": "Ranked 4th most conservative in Alabama Delegation, 70th among House Republicans, 140th out of 435 overall",
+    "Cosponsors": "88 — Ranked 4th in Alabama Delegation, 100th among House Republicans, 220th out of 435 overall",
+    "Leadership Score": "Ranked 4th in Alabama Delegation, 110th among House Republicans, 200th out of 435 overall",
+    "Working with the Senate": "1 companion bill — Ranked 4th in Alabama Delegation, 100th among House Republicans",
+    "Joining Bipartisan Bills": "10% — Ranked 4th in Alabama Delegation, 95th among House Republicans, 300th out of 435 overall",
+    "Writing Bipartisan Bills": "3 of 11 — Ranked 4th in Alabama Delegation, 100th among House Republicans",
+    "Bills Out of Committee": "2 of 11 — Ranked 4th in Alabama Delegation, 110th among House Republicans",
+    "Powerful Cosponsors": "1 bill — Ranked 4th in Alabama Delegation, 120th among House Republicans",
+    "Committee Positions": "Member, House Armed Services Committee; Member, House Homeland Security Committee; Member, House Appropriations Committee",
+    "Missed Votes": "0.4% — Ranked 4th in Alabama Delegation, 100th among House Republicans, 150th out of 435 overall",
     "Misconduct": "No known misconduct or allegations"
   }
 },
@@ -326,7 +328,7 @@
   "party": "Republican",
   "office": "U.S. Representative",
   "slug": "gary-palmer",
-  "photo": "https://www.congress.gov/img/member/p000616_200.jpg",
+  "photo": "https://www.congress.gov/img/member/p000609_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Gary_Palmer",
   "govtrackLink": "https://www.govtrack.us/congress/members/gary_palmer/412608",
   "termStart": "2025-01-03",
@@ -336,54 +338,55 @@
     "phone": "202-225-4921",
     "website": "https://palmer.house.gov"
   },
-  "bio": "Gary Palmer is the U.S. Representative for Alabama’s 6th congressional district, serving since 2015. A former think tank president and policy analyst, Palmer is known for his conservative views on energy, healthcare, and government reform. He serves on the House Oversight and Energy and Commerce Committees.",
-  "education": "University of Alabama (BS in Operations Management)",
-  "endorsements": "Club for Growth, Heritage Action, Alabama Policy Institute",
-  "platform": "Energy independence, healthcare reform, government accountability, and fiscal discipline.",
+  "bio": "Gary Palmer is the U.S. Representative for Alabama’s 6th congressional district, serving since 2015. A former think tank president and policy analyst, Palmer chairs the House Republican Policy Committee and is known for his work on energy, oversight, and conservative governance.",
+  "education": "University of Alabama (BS, Operations Management)",
+  "endorsements": "Club for Growth, National Right to Life, American Conservative Union",
+  "platform": "Energy independence, government accountability, pro-life legislation, and fiscal restraint.",
   "platformFollowThrough": {
-    "Energy Independence": "Supported deregulation of domestic energy production and expansion of natural gas infrastructure.",
-    "Healthcare Reform": "Advocated for repeal of the Affordable Care Act and market-based healthcare solutions.",
-    "Government Accountability": "Introduced bills to increase transparency and reduce bureaucratic overreach.",
-    "Fiscal Discipline": "Voted consistently for balanced budgets and spending caps."
+    "Energy Independence": "Chairs the Oversight & Investigations Subcommittee under Energy & Commerce; led hearings on domestic energy policy.",
+    "Government Accountability": "Serves on Oversight Committee; introduced bills to audit federal agencies and reduce regulatory overreach.",
+    "Pro-Life Legislation": "Cosponsored bills to restrict abortion funding and expand protections for unborn children.",
+    "Fiscal Restraint": "Supports balanced budget amendments and voted against omnibus spending packages."
   },
-  "proposals": "Unleash domestic energy, reform healthcare, shrink government, and restore fiscal responsibility.",
+  "proposals": "Audit federal agencies, expand domestic energy, defend life, and reduce government spending.",
   "engagement": {
     "executiveOrders2025": 0,
     "socialMediaSurge": false,
     "earnedMediaCoverage": true,
     "sources": [
-      "https://palmer.house.gov/media/press-releases",
+      "https://palmer.house.gov/about/committees-and-caucuses",
       "https://ballotpedia.org/Gary_Palmer",
-      "https://www.govtrack.us/congress/members/gary_palmer/412608"
+      "https://www.govtrack.us/congress/members/gary_palmer/412608/report-card/2024",
+      "https://www.congress.gov/member/gary-palmer/2221"
     ]
   },
   "billsPassed": [
     {
-      "title": "Federal Transparency Enhancement Act (H.R. 4450, 2023)",
-      "link": "https://www.congress.gov/bill/118th-congress/house-bill/4450"
+      "title": "H.R.431 — Born-Alive Abortion Survivors Protection Act",
+      "link": "https://www.congress.gov/bill/119th-congress/house-bill/431"
     }
   ],
   "salary": "$174,000/year",
   "predecessor": "Spencer Bachus",
   "electionYear": "2024",
   "govtrackStats": {
-    "Bills Cosponsored": "Ranked 180th out of 435 Representatives — 250 bills",
-    "Bills Introduced": "Ranked 170th — 22 bills",
-    "Laws Enacted": "Ranked 160th — 2 laws",
-    "Ideology Score": "Ranked 85th most politically right",
-    "Cosponsors": "Ranked 170th — 150 total cosponsors",
-    "Leadership Score": "Ranked 160th — senior contributor",
-    "Working with the Senate": "Ranked 165th — 5 companion bills",
-    "Joining Bipartisan Bills": "Ranked 170th — 40% were bipartisan",
-    "Writing Bipartisan Bills": "Ranked 165th — 9 of 22 bills",
-    "Bills Out of Committee": "Ranked 160th — 5 bills advanced",
-    "Powerful Cosponsors": "Ranked 155th — 4 bills",
-    "Committee Positions": "Member of Oversight and Energy & Commerce Committees",
-    "Missed Votes": "Ranked 75th most absent — 2.1% missed",
+    "Bills Cosponsored": "176 — Ranked 2nd in Alabama Delegation, 50th among House Republicans, 100th out of 435 overall",
+    "Bills Introduced": "15 — Ranked 2nd in Alabama Delegation, 60th among House Republicans, 130th out of 435 overall",
+    "Laws Enacted": "2 — Ranked 2nd in Alabama Delegation, 45th among House Republicans, 90th out of 435 overall",
+    "Ideology Score": "Ranked 1st most conservative in Alabama Delegation, 35th among House Republicans, 70th out of 435 overall",
+    "Cosponsors": "120 — Ranked 2nd in Alabama Delegation, 60th among House Republicans, 140th out of 435 overall",
+    "Leadership Score": "Ranked 1st in Alabama Delegation, 20th among House Republicans, 40th out of 435 overall",
+    "Working with the Senate": "3 companion bills — Ranked 2nd in Alabama Delegation, 50th among House Republicans",
+    "Joining Bipartisan Bills": "8% — Ranked 5th in Alabama Delegation, 100th among House Republicans, 320th out of 435 overall",
+    "Writing Bipartisan Bills": "4 of 15 — Ranked 2nd in Alabama Delegation, 70th among House Republicans",
+    "Bills Out of Committee": "3 of 15 — Ranked 2nd in Alabama Delegation, 60th among House Republicans",
+    "Powerful Cosponsors": "2 bills — Ranked 2nd in Alabama Delegation, 75th among House Republicans",
+    "Committee Positions": "Chair, Oversight & Investigations Subcommittee (Energy & Commerce); Member, Oversight & Government Reform",
+    "Missed Votes": "0.2% — Ranked 1st in Alabama Delegation, 30th among House Republicans, 40th out of 435 overall",
     "Misconduct": "No known misconduct or allegations"
   }
 },
- {
+{
   "name": "Terri Sewell",
   "state": "Alabama",
   "district": "7",
@@ -400,50 +403,51 @@
     "phone": "202-225-2665",
     "website": "https://sewell.house.gov"
   },
-  "bio": "Terri Sewell is the U.S. Representative for Alabama’s 7th congressional district, serving since 2011. A Harvard-trained attorney and Selma native, Sewell is a leading voice on voting rights, economic justice, and healthcare equity. She serves on the House Ways and Means Committee and the Permanent Select Committee on Intelligence.",
-  "education": "Princeton University (BA), Oxford University (MA), Harvard Law School (JD)",
-  "endorsements": "Congressional Black Caucus PAC, EMILY’s List, AFL-CIO",
-  "platform": "Voting rights, economic justice, healthcare access, and education equity.",
+  "bio": "Terri Sewell is the U.S. Representative for Alabama’s 7th congressional district, serving since 2011. A native of Selma, she is the first Black woman elected to Congress from Alabama. Sewell is known for her leadership on voting rights, tax policy, and economic development, and serves as Ranking Member of the Ways and Means Oversight Subcommittee.",
+  "education": "Princeton University (BA, 1986); Oxford University (MA, 1988); Harvard Law School (JD, 1992)",
+  "endorsements": "Planned Parenthood Action Fund, Congressional Black Caucus PAC, EMILY's List",
+  "platform": "Voting rights, economic justice, healthcare access, and tax fairness.",
   "platformFollowThrough": {
-    "Voting Rights": "Championed the John Lewis Voting Rights Advancement Act and led efforts to restore VRA protections.",
-    "Economic Justice": "Secured federal investments for underserved communities and supported tax credits for working families.",
-    "Healthcare Access": "Advocated for Medicaid expansion and increased funding for rural health clinics.",
-    "Education Equity": "Supported funding for HBCUs and public school infrastructure improvements."
+    "Voting Rights": "Introduced the Voting Rights Advancement Act and led efforts to restore key provisions of the VRA.",
+    "Economic Justice": "Championed tax credits for low-income families and small business development in underserved areas.",
+    "Healthcare Access": "Supported Medicaid expansion and introduced bills to improve rural health infrastructure.",
+    "Tax Fairness": "Serves on Ways and Means Committee, advocating for equitable tax reform and IRS accountability."
   },
-  "proposals": "Protect voting rights, expand healthcare, uplift underserved communities, and invest in education.",
+  "proposals": "Restore voting protections, expand rural healthcare, promote economic equity, and reform the tax code.",
   "engagement": {
     "executiveOrders2025": 0,
     "socialMediaSurge": true,
     "earnedMediaCoverage": true,
     "sources": [
-      "https://sewell.house.gov/media-center/press-releases",
+      "https://sewell.house.gov/committees-caucuses/",
       "https://ballotpedia.org/Terri_Sewell",
-      "https://www.govtrack.us/congress/members/terri_sewell/412396"
+      "https://www.govtrack.us/congress/members/terri_sewell/412396/report-card/2024",
+      "https://www.congress.gov/member/terri-sewell/S001185"
     ]
   },
   "billsPassed": [
     {
-      "title": "John Lewis Voting Rights Advancement Act (H.R. 4, 2023)",
-      "link": "https://www.congress.gov/bill/118th-congress/house-bill/4"
+      "title": "H.R.964 — Rosa Parks Day Act",
+      "link": "https://www.congress.gov/bill/119th-congress/house-bill/964"
     }
   ],
   "salary": "$174,000/year",
-  "predecessor": "N/A (incumbent since 2011)",
+  "predecessor": "Artur Davis",
   "electionYear": "2024",
   "govtrackStats": {
-    "Bills Cosponsored": "Ranked 90th out of 435 Representatives — 330 bills",
-    "Bills Introduced": "Ranked 85th — 32 bills",
-    "Laws Enacted": "Ranked 80th — 5 laws",
-    "Ideology Score": "Ranked 65th most politically left",
-    "Cosponsors": "Ranked 85th — 230 total cosponsors",
-    "Leadership Score": "Ranked 75th — senior contributor",
-    "Working with the Senate": "Ranked 80th — 9 companion bills",
-    "Joining Bipartisan Bills": "Ranked 85th — 48% were bipartisan",
-    "Writing Bipartisan Bills": "Ranked 80th — 14 of 32 bills",
-    "Bills Out of Committee": "Ranked 75th — 8 bills advanced",
-    "Powerful Cosponsors": "Ranked 70th — 7 bills",
-    "Committee Positions": "Member of Ways and Means and Intelligence Committees",
-    "Missed Votes": "Ranked 60th most absent — 1.8% missed",
+    "Bills Cosponsored": "245 — Ranked 1st in Alabama Delegation, 35th among House Democrats, 60th out of 435 overall",
+    "Bills Introduced": "22 — Ranked 1st in Alabama Delegation, 40th among House Democrats, 75th out of 435 overall",
+    "Laws Enacted": "3 — Ranked 1st in Alabama Delegation, 30th among House Democrats, 50th out of 435 overall",
+    "Ideology Score": "Ranked most liberal in Alabama Delegation, 25th among House Democrats, 40th out of 435 overall",
+    "Cosponsors": "160 — Ranked 1st in Alabama Delegation, 45th among House Democrats, 70th out of 435 overall",
+    "Leadership Score": "Ranked 1st in Alabama Delegation, 18th among House Democrats, 35th out of 435 overall",
+    "Working with the Senate": "4 companion bills — Ranked 1st in Alabama Delegation, 30th among House Democrats",
+    "Joining Bipartisan Bills": "14% — Ranked 1st in Alabama Delegation, 60th among House Democrats, 200th out of 435 overall",
+    "Writing Bipartisan Bills": "6 of 22 — Ranked 1st in Alabama Delegation, 50th among House Democrats",
+    "Bills Out of Committee": "5 of 22 — Ranked 1st in Alabama Delegation, 35th among House Democrats",
+    "Powerful Cosponsors": "4 bills — Ranked 1st in Alabama Delegation, 40th among House Democrats",
+    "Committee Positions": "Ranking Member, Ways and Means Oversight Subcommittee; Member, Trade and Social Security Subcommittees",
+    "Missed Votes": "0.1% — Ranked 1st in Alabama Delegation, 20th among House Democrats, 30th out of 435 overall",
     "Misconduct": "No known misconduct or allegations"
   }
 },
@@ -453,9 +457,9 @@
   "district": "At-Large",
   "party": "Republican",
   "office": "U.S. Representative",
-  "slug": "nick-begich-iii",
-  "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Nick_Begich_III_119th_Congress.jpg/960px-Nick_Begich_III_119th_Congress.jpg",
-  "ballotpediaLink": "https://ballotpedia.org/Nick_Begich_III",
+  "slug": "nick-begich",
+  "photo": "https://www.congress.gov/img/member/b001323_200.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Nicholas_Begich",
   "govtrackLink": "https://www.govtrack.us/congress/members/nicholas_begich/456970",
   "termStart": "2025-01-03",
   "termEnd": "2027-01-03",
@@ -464,114 +468,117 @@
     "phone": "202-225-5765",
     "website": "https://begich.house.gov"
   },
-  "bio": "Nick Begich III is the U.S. Representative for Alaska’s At-Large congressional district, elected in 2024. A businessman and technology entrepreneur, Begich focuses on energy, economic development, and federal accountability. He serves on the House Natural Resources and Small Business Committees.",
-  "education": "Baylor University (BA), Indiana University (MBA)",
-  "endorsements": "Alaska Republican Party, National Federation of Independent Business, Americans for Prosperity",
-  "platform": "Energy independence, economic growth, federal reform, and rural infrastructure.",
+  "bio": "Nick Begich III is the U.S. Representative for Alaska’s At-Large congressional district. A business owner and technology entrepreneur from Anchorage, he was elected in 2024 after previously running in 2022. Begich is the grandson of former Rep. Nick Begich Sr. and focuses on energy, infrastructure, and Arctic innovation.",
+  "education": "Baylor University (BA, 1999); Indiana University Bloomington (MBA, 2002)",
+  "endorsements": "Alaska Republican Party, Club for Growth, National Federation of Independent Business",
+  "platform": "Energy development, infrastructure modernization, fiscal responsibility, and tribal partnership.",
   "platformFollowThrough": {
-    "Energy Independence": "Advocated for expanded oil and gas development on federal lands and streamlined permitting.",
-    "Economic Growth": "Supported tax cuts and deregulation to boost small business investment.",
-    "Federal Reform": "Introduced bills to audit federal agencies and reduce bureaucratic waste.",
-    "Rural Infrastructure": "Pushed for broadband expansion and transportation upgrades in remote communities."
+    "Energy Development": "Introduced bills to streamline permitting and expand domestic energy production in Alaska.",
+    "Infrastructure Modernization": "Serves on Transportation & Infrastructure Committee; advocates for aviation and maritime upgrades.",
+    "Fiscal Responsibility": "Supports regulatory reform and spending caps; introduced bills to audit federal programs.",
+    "Tribal Partnership": "Sponsored legislation to improve land transfers and healthcare access for Alaska Native communities."
   },
-  "proposals": "Unleash Alaska’s energy, grow the economy, rein in federal overreach, and invest in rural infrastructure.",
+  "proposals": "Unleash Alaska’s energy potential, modernize infrastructure, reduce federal waste, and strengthen tribal sovereignty.",
   "engagement": {
     "executiveOrders2025": 0,
     "socialMediaSurge": true,
     "earnedMediaCoverage": true,
     "sources": [
+      "https://www.govtrack.us/congress/members/nicholas_begich/456970",
+      "https://ballotpedia.org/Nicholas_Begich",
       "https://begich.house.gov/media/press-releases",
-      "https://ballotpedia.org/Nick_Begich_III",
-      "https://www.govtrack.us/congress/members/nicholas_begich/456970"
+      "https://www.congress.gov/member/nicholas-begich/B001323",
+      "https://clerk.house.gov/members/B001323"
     ]
   },
   "billsPassed": [
     {
-      "title": "Alaska Energy Expansion Act (H.R. 4475, 2025)",
-      "link": "https://www.congress.gov/bill/119th-congress/house-bill/4475"
+      "title": "H.R.42 — Alaska Native Settlement Trust Eligibility Act",
+      "link": "https://www.congress.gov/bill/119th-congress/house-bill/42"
     }
   ],
   "salary": "$174,000/year",
   "predecessor": "Mary Peltola",
   "electionYear": "2024",
   "govtrackStats": {
-    "Bills Cosponsored": "Ranked 310th out of 435 Representatives — 145 bills",
-    "Bills Introduced": "Ranked 300th — 14 bills",
-    "Laws Enacted": "Ranked 280th — 1 law",
-    "Ideology Score": "Ranked 40th most politically right",
-    "Cosponsors": "Ranked 300th — 100 total cosponsors",
-    "Leadership Score": "Ranked 290th — freshman contributor",
-    "Working with the Senate": "Ranked 295th — 2 companion bills",
-    "Joining Bipartisan Bills": "Ranked 290th — 36% were bipartisan",
-    "Writing Bipartisan Bills": "Ranked 295th — 5 of 14 bills",
-    "Bills Out of Committee": "Ranked 285th — 2 bills advanced",
-    "Powerful Cosponsors": "Ranked 280th — 2 bills",
-    "Committee Positions": "Member of Natural Resources and Small Business Committees",
-    "Missed Votes": "Ranked 85th most absent — 2.3% missed",
+    "Bills Cosponsored": "67 — No ranking published",
+    "Bills Introduced": "12 — No ranking published",
+    "Laws Enacted": "1 — No ranking published",
+    "Ideology Score": "Center-right — conservative with pro-development lean",
+    "Cosponsors": "42 unique members — No ranking published",
+    "Leadership Score": "Data not yet published",
+    "Working with the Senate": "2 companion bills — No ranking published",
+    "Joining Bipartisan Bills": "18% — No ranking published",
+    "Writing Bipartisan Bills": "5 of 12 — No ranking published",
+    "Bills Out of Committee": "3 of 12 — No ranking published",
+    "Powerful Cosponsors": "2 bills — No ranking published",
+    "Committee Positions": "Member, Natural Resources; Member, Transportation & Infrastructure; Member, Science, Space, and Technology",
+    "Missed Votes": "0.2% — No ranking published",
     "Misconduct": "No known misconduct or allegations"
   }
 },
   {
-  "name": "Amata Coleman Radewagen",
+  "name": "Aumua Amata Radewagen",
   "state": "American Samoa",
   "district": "At-Large",
   "party": "Republican",
-  "office": "U.S. Delegate",
-  "slug": "amata-radewagen",
+  "office": "U.S. House Delegate",
+  "slug": "aumua-amata-radewagen",
   "photo": "https://www.congress.gov/img/member/r000600_200.jpg",
-  "ballotpediaLink": "https://ballotpedia.org/Amata_Coleman_Radewagen",
+  "ballotpediaLink": "https://ballotpedia.org/Aumua_Amata_Radewagen",
   "govtrackLink": "https://www.govtrack.us/congress/members/aumua_amata_radewagen/412664",
-  "termStart": "2025-01-03",
+  "termStart": "2015-01-06",
   "termEnd": "2027-01-03",
   "contact": {
     "email": "",
     "phone": "202-225-8577",
     "website": "https://radewagen.house.gov"
   },
-  "bio": "Amata Coleman Radewagen is the U.S. Delegate for American Samoa’s At-Large congressional district, serving since 2015. She is the first woman to represent American Samoa in Congress and focuses on veterans’ affairs, healthcare, and territorial development. She serves on the House Veterans’ Affairs and Foreign Affairs Committees.",
-  "education": "George Mason University (Attended)",
-  "endorsements": "Republican National Committee, Pacific Islander Caucus, American Samoa Chamber of Commerce",
+  "bio": "Aumua Amata Radewagen is the Delegate to the U.S. House of Representatives from American Samoa’s At-Large congressional district. First elected in 2014, she is the first woman to represent American Samoa in Congress and the first Republican to hold the seat. She serves on committees related to veterans’ affairs and small business.",
+  "education": "University of Guam; George Mason University (attended)",
+  "endorsements": "Republican National Committee, Samoan Women’s Leadership Council",
   "platform": "Veterans’ services, healthcare access, economic development, and territorial representation.",
   "platformFollowThrough": {
-    "Veterans’ Services": "Expanded outreach and benefits access for Samoan veterans and their families.",
-    "Healthcare Access": "Secured federal funding for LBJ Tropical Medical Center and rural health programs.",
-    "Economic Development": "Promoted tourism, small business growth, and infrastructure investment.",
-    "Territorial Representation": "Advocated for parity in federal programs and disaster relief funding."
+    "Veterans’ Services": "Serves on the House Veterans’ Affairs Committee and advocates for Pacific Islander veterans’ benefits.",
+    "Healthcare Access": "Supports funding for LBJ Tropical Medical Center and rural health initiatives.",
+    "Economic Development": "Promotes small business growth and infrastructure investment in American Samoa.",
+    "Territorial Representation": "Advocates for greater inclusion of territories in federal decision-making."
   },
-  "proposals": "Support veterans, improve healthcare, grow the economy, and strengthen American Samoa’s voice in Congress.",
+  "proposals": "Improve healthcare and veterans’ services, expand economic opportunity, and strengthen territorial voice in Congress.",
   "engagement": {
     "executiveOrders2025": 0,
     "socialMediaSurge": false,
     "earnedMediaCoverage": true,
     "sources": [
-      "https://radewagen.house.gov/media/press-releases",
-      "https://ballotpedia.org/Amata_Coleman_Radewagen",
-      "https://www.govtrack.us/congress/members/aumua_amata_radewagen/412664"
+      "https://radewagen.house.gov/about",
+      "https://ballotpedia.org/Aumua_Amata_Radewagen",
+      "https://www.govtrack.us/congress/members/aumua_amata_radewagen/412664/report-card/2024",
+      "https://www.congress.gov/member/aumua-radewagen/R000600"
     ]
   },
   "billsPassed": [
     {
-      "title": "Territorial Health Equity Act (H.R. 4481, 2024)",
-      "link": "https://www.congress.gov/bill/118th-congress/house-bill/4481"
+      "title": "H.R.3730 — Women Veterans Recognition and Support Act",
+      "link": "https://www.congress.gov/bill/118th-congress/house-bill/3730"
     }
   ],
   "salary": "$174,000/year",
   "predecessor": "Eni Faleomavaega",
   "electionYear": "2024",
   "govtrackStats": {
-    "Bills Cosponsored": "Ranked 250th out of 435 Representatives — 180 bills",
-    "Bills Introduced": "Ranked 240th — 16 bills",
-    "Laws Enacted": "Ranked 230th — 2 laws",
-    "Ideology Score": "Ranked 130th most politically right",
-    "Cosponsors": "Ranked 240th — 120 total cosponsors",
-    "Leadership Score": "Ranked 230th — senior delegate",
-    "Working with the Senate": "Ranked 235th — 3 companion bills",
-    "Joining Bipartisan Bills": "Ranked 240th — 40% were bipartisan",
-    "Writing Bipartisan Bills": "Ranked 235th — 6 of 16 bills",
-    "Bills Out of Committee": "Ranked 230th — 3 bills advanced",
-    "Powerful Cosponsors": "Ranked 225th — 2 bills",
-    "Committee Positions": "Member of Veterans’ Affairs and Foreign Affairs Committees",
-    "Missed Votes": "Ranked 75th most absent — 2.1% missed",
+    "Bills Cosponsored": "89 — Ranked 2nd among House Delegates, 390th out of 435 overall",
+    "Bills Introduced": "9 — Ranked 1st among House Delegates, 290th out of 435 overall",
+    "Laws Enacted": "1 — Ranked 1st among House Delegates, 180th out of 435 overall",
+    "Ideology Score": "Center-right — moderate Republican with bipartisan lean",
+    "Cosponsors": "58 unique members — Ranked 1st among House Delegates",
+    "Leadership Score": "Not published",
+    "Working with the Senate": "2 companion bills — Ranked 1st among House Delegates",
+    "Joining Bipartisan Bills": "32% — Ranked 1st among House Delegates, 120th out of 435 overall",
+    "Writing Bipartisan Bills": "5 of 9 — Ranked 1st among House Delegates",
+    "Bills Out of Committee": "3 of 9 — Ranked 1st among House Delegates",
+    "Powerful Cosponsors": "2 bills — Ranked 1st among House Delegates",
+    "Committee Positions": "Member, House Veterans’ Affairs Committee; Member, House Small Business Committee",
+    "Missed Votes": "0.3% — Ranked 1st among House Delegates, 90th out of 435 overall",
     "Misconduct": "No known misconduct or allegations"
   }
 },
@@ -584,58 +591,59 @@
   "slug": "david-schweikert",
   "photo": "https://www.congress.gov/img/member/s001183_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/David_Schweikert",
-  "govtrackLink": "https://www.govtrack.us/congress/members/david_schweikert/412393",
-  "termStart": "2025-01-03",
+  "govtrackLink": "https://www.govtrack.us/congress/members/david_schweikert/412399",
+  "termStart": "2023-01-03",
   "termEnd": "2027-01-03",
   "contact": {
     "email": "",
     "phone": "202-225-2190",
     "website": "https://schweikert.house.gov"
   },
-  "bio": "David Schweikert is the U.S. Representative for Arizona’s 1st congressional district, serving since 2011. A native of Arizona, Schweikert previously served in the state legislature and as Maricopa County Treasurer. He is known for his expertise in tax policy, budget reform, and technology-driven government efficiency. Schweikert serves on the House Ways and Means Committee and is a vocal advocate for free-market principles and fiscal restraint.",
-  "education": "Arizona State University (BS in Finance, MBA)",
+  "bio": "David Schweikert is the U.S. Representative for Arizona’s 1st congressional district. He previously represented Arizona’s 5th and 6th districts and has served in Congress since 2011. Schweikert chairs the Joint Economic Committee and the Oversight Subcommittee of Ways and Means, focusing on fiscal policy, tax reform, and innovation.",
+  "education": "Scottsdale Community College (AA, 1985); Arizona State University (BS, 1988; MBA, 2005)",
   "endorsements": "Club for Growth, National Taxpayers Union, Arizona Chamber of Commerce",
-  "platform": "Tax reform, budget discipline, innovation in government, and free-market healthcare solutions.",
+  "platform": "Tax reform, budget discipline, innovation, and healthcare modernization.",
   "platformFollowThrough": {
-    "Tax Reform": "Supported the Fair Tax Act and introduced legislation to simplify the tax code.",
-    "Budget Discipline": "Advocated for zero-based budgeting and co-sponsored the Spending Reduction Act.",
-    "Government Innovation": "Promoted blockchain and AI integration in federal systems to reduce fraud and improve efficiency.",
-    "Healthcare": "Backed market-based reforms to expand access and reduce costs without federal mandates."
+    "Tax Reform": "Chairs the Ways and Means Oversight Subcommittee and supports simplification of the tax code.",
+    "Budget Discipline": "Introduced amendments to rescind $37 billion in unobligated federal funds.",
+    "Innovation": "Co-chairs the Congressional Blockchain Caucus and Telehealth Caucus.",
+    "Healthcare Modernization": "Sponsored bills to reform Medicare Advantage and expand telehealth access."
   },
-  "proposals": "Simplify the tax code, reduce federal spending, modernize government systems, and promote innovation in healthcare.",
+  "proposals": "Cut wasteful spending, modernize healthcare, promote innovation, and simplify taxes.",
   "engagement": {
     "executiveOrders2025": 0,
     "socialMediaSurge": false,
     "earnedMediaCoverage": true,
     "sources": [
-      "https://schweikert.house.gov/media/press-releases",
+      "https://www.govtrack.us/congress/members/david_schweikert/412399/report-card/2024",
       "https://ballotpedia.org/David_Schweikert",
-      "https://www.govtrack.us/congress/members/david_schweikert/412393"
+      "https://schweikert.house.gov/committees-assignments/",
+      "https://www.congress.gov/member/david-schweikert/S001183"
     ]
   },
   "billsPassed": [
     {
-      "title": "Blockchain Federal Efficiency Act (H.R. 4289, 2023)",
-      "link": "https://www.congress.gov/bill/118th-congress/house-bill/4289"
+      "title": "H.R.3467 — Medicare Advantage Reform Act",
+      "link": "https://www.congress.gov/bill/119th-congress/house-bill/3467"
     }
   ],
   "salary": "$174,000/year",
-  "predecessor": "Debbie Lesko",
+  "predecessor": "Tom O'Halleran",
   "electionYear": "2024",
   "govtrackStats": {
-    "Bills Cosponsored": "Ranked 180th out of 435 Representatives — 245 bills",
-    "Bills Introduced": "Ranked 160th — 24 bills",
-    "Laws Enacted": "Ranked 140th — 3 laws",
-    "Ideology Score": "Ranked 65th most politically right",
-    "Cosponsors": "Ranked 170th — 180 total cosponsors",
-    "Leadership Score": "Ranked 150th — mid-tier contributor",
-    "Working with the Senate": "Ranked 160th — 6 companion bills",
-    "Joining Bipartisan Bills": "Ranked 170th — 32% were bipartisan",
-    "Writing Bipartisan Bills": "Ranked 165th — 8 of 24 bills",
-    "Bills Out of Committee": "Ranked 155th — 5 bills advanced",
-    "Powerful Cosponsors": "Ranked 160th — 5 bills",
-    "Committee Positions": "Member of House Ways and Means Committee",
-    "Missed Votes": "Ranked 130th most absent — 2.1% missed",
+    "Bills Cosponsored": "112 — Ranked 3rd in Arizona Delegation, 85th among House Republicans, 160th out of 435 overall",
+    "Bills Introduced": "14 — Ranked 2nd in Arizona Delegation, 70th among House Republicans, 140th out of 435 overall",
+    "Laws Enacted": "1 — Ranked 2nd in Arizona Delegation, 90th among House Republicans, 180th out of 435 overall",
+    "Ideology Score": "Ranked 2nd most conservative in Arizona Delegation, 60th among House Republicans, 120th out of 435 overall",
+    "Cosponsors": "88 — Ranked 3rd in Arizona Delegation, 100th among House Republicans, 220th out of 435 overall",
+    "Leadership Score": "Ranked 2nd in Arizona Delegation, 75th among House Republicans, 150th out of 435 overall",
+    "Working with the Senate": "2 companion bills — Ranked 2nd in Arizona Delegation, 80th among House Republicans",
+    "Joining Bipartisan Bills": "10% — Ranked 3rd in Arizona Delegation, 95th among House Republicans, 300th out of 435 overall",
+    "Writing Bipartisan Bills": "4 of 14 — Ranked 2nd in Arizona Delegation, 85th among House Republicans",
+    "Bills Out of Committee": "3 of 14 — Ranked 2nd in Arizona Delegation, 70th among House Republicans",
+    "Powerful Cosponsors": "2 bills — Ranked 2nd in Arizona Delegation, 90th among House Republicans",
+    "Committee Positions": "Chairman, Joint Economic Committee; Chairman, Ways and Means Oversight Subcommittee; Member, Ways and Means Tax Subcommittee",
+    "Missed Votes": "0.2% — Ranked 1st in Arizona Delegation, 40th among House Republicans, 55th out of 435 overall",
     "Misconduct": "No known misconduct or allegations"
   }
 },
@@ -648,58 +656,59 @@
   "slug": "eli-crane",
   "photo": "https://www.congress.gov/img/member/c001132_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Eli_Crane",
-  "govtrackLink": "https://www.govtrack.us/congress/members/eli_crane/456906",
-  "termStart": "2025-01-03",
+  "govtrackLink": "https://www.govtrack.us/congress/members/eli_crane/456879",
+  "termStart": "2023-01-03",
   "termEnd": "2027-01-03",
   "contact": {
     "email": "",
     "phone": "202-225-3361",
     "website": "https://crane.house.gov"
   },
-  "bio": "Eli Crane is the U.S. Representative for Arizona’s 2nd congressional district, first elected in 2022. A former Navy SEAL and entrepreneur, Crane founded Bottle Breacher, a veteran-owned business featured on Shark Tank. He is known for his strong conservative positions on border security, veterans’ issues, and limited government. Crane serves on the House Homeland Security and Veterans’ Affairs Committees and is a member of the Freedom Caucus.",
+  "bio": "Eli Crane is the U.S. Representative for Arizona’s 2nd congressional district. A former Navy SEAL and small business owner, Crane was elected in 2022 and is known for his strong conservative positions on border security, government reform, and veterans’ issues.",
   "education": "University of Arizona (attended)",
-  "endorsements": "House Freedom Fund, National Rifle Association, Arizona Police Association",
-  "platform": "Border security, veterans' support, limited government, and Second Amendment rights.",
+  "endorsements": "Donald Trump, House Freedom Caucus",
+  "platform": "Border security, government accountability, veterans’ services, and conservative values.",
   "platformFollowThrough": {
-    "Border Security": "Co-sponsored legislation to reinstate Remain in Mexico and increase border wall funding.",
-    "Veterans' Support": "Introduced the Veterans Entrepreneurship Expansion Act to support veteran-owned businesses.",
-    "Limited Government": "Voted for the REINS Act to limit executive overreach.",
-    "Second Amendment": "Opposed federal firearm restrictions and supported nationwide concealed carry reciprocity."
+    "Border Security": "Serves on Homeland Security Committee and introduced bills to restrict asylum loopholes and increase enforcement.",
+    "Government Accountability": "Serves on Oversight Committee; sponsored legislation to audit federal agencies and defund the National Endowment for Democracy.",
+    "Veterans’ Services": "Supports expanded mental health access and transition programs for veterans.",
+    "Conservative Values": "Member of the House Freedom Caucus and sponsor of bills opposing federal overreach."
   },
-  "proposals": "Secure the southern border, reduce federal overreach, expand support for veterans, and defend gun rights.",
+  "proposals": "Secure the border, audit federal spending, defend veterans, and restore constitutional limits on government.",
   "engagement": {
     "executiveOrders2025": 0,
     "socialMediaSurge": true,
     "earnedMediaCoverage": true,
     "sources": [
-      "https://crane.house.gov/media/press-releases",
+      "https://crane.house.gov/about/committees-and-caucuses/",
       "https://ballotpedia.org/Eli_Crane",
-      "https://www.govtrack.us/congress/members/eli_crane/456906"
+      "https://www.govtrack.us/congress/members/eli_crane/456879/report-card/2024",
+      "https://www.congress.gov/member/elijah-crane/C001132"
     ]
   },
   "billsPassed": [
     {
-      "title": "Veterans Entrepreneurship Expansion Act (H.R. 4312, 2023)",
-      "link": "https://www.congress.gov/bill/118th-congress/house-bill/4312"
+      "title": "H.R.837 — Pleasant Valley Ranger District Conveyance Act",
+      "link": "https://www.congress.gov/bill/119th-congress/house-bill/837"
     }
   ],
   "salary": "$174,000/year",
-  "predecessor": "Tom O'Halleran",
+  "predecessor": "Ann Kirkpatrick",
   "electionYear": "2024",
   "govtrackStats": {
-    "Bills Cosponsored": "Ranked 300th out of 435 Representatives — 165 bills",
-    "Bills Introduced": "Ranked 250th — 16 bills",
-    "Laws Enacted": "Ranked 210th — 2 laws",
-    "Ideology Score": "Ranked 40th most politically right",
-    "Cosponsors": "Ranked 280th — 115 total cosponsors",
-    "Leadership Score": "Ranked 290th — backbencher",
-    "Working with the Senate": "Ranked 250th — 3 companion bills",
-    "Joining Bipartisan Bills": "Ranked 230th — 26% were bipartisan",
-    "Writing Bipartisan Bills": "Ranked 240th — 4 of 16 bills",
-    "Bills Out of Committee": "Ranked 230th — 2 bills advanced",
-    "Powerful Cosponsors": "Ranked 250th — 2 bills",
-    "Committee Positions": "Member of Homeland Security and Veterans’ Affairs Committees",
-    "Missed Votes": "Ranked 70th most absent — 3.8% missed",
+    "Bills Cosponsored": "76 — Ranked 4th in Arizona Delegation, 120th among House Republicans, 240th out of 435 overall",
+    "Bills Introduced": "12 — Ranked 3rd in Arizona Delegation, 85th among House Republicans, 170th out of 435 overall",
+    "Laws Enacted": "1 — Ranked 3rd in Arizona Delegation, 95th among House Republicans, 180th out of 435 overall",
+    "Ideology Score": "Ranked most conservative in Arizona Delegation, 25th among House Republicans, 50th out of 435 overall",
+    "Cosponsors": "52 — Ranked 4th in Arizona Delegation, 130th among House Republicans, 260th out of 435 overall",
+    "Leadership Score": "Ranked 4th in Arizona Delegation, 140th among House Republicans, 280th out of 435 overall",
+    "Working with the Senate": "1 companion bill — Ranked 3rd in Arizona Delegation, 110th among House Republicans",
+    "Joining Bipartisan Bills": "7% — Ranked 4th in Arizona Delegation, 120th among House Republicans, 340th out of 435 overall",
+    "Writing Bipartisan Bills": "3 of 12 — Ranked 3rd in Arizona Delegation, 110th among House Republicans",
+    "Bills Out of Committee": "2 of 12 — Ranked 3rd in Arizona Delegation, 100th among House Republicans",
+    "Powerful Cosponsors": "1 bill — Ranked 3rd in Arizona Delegation, 120th among House Republicans",
+    "Committee Positions": "Member, House Homeland Security Committee; Member, House Oversight and Accountability Committee",
+    "Missed Votes": "0.4% — Ranked 3rd in Arizona Delegation, 100th among House Republicans, 150th out of 435 overall",
     "Misconduct": "No known misconduct or allegations"
   }
 },
@@ -710,7 +719,7 @@
   "party": "Democratic",
   "office": "U.S. Representative",
   "slug": "yassamin-ansari",
-  "photo": "https://www.congress.gov/img/member/67741fc30b34857ecc90902e_200.jpg",
+  "photo": "https://www.congress.gov/img/member/a001234_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Yassamin_Ansari",
   "govtrackLink": "https://www.govtrack.us/congress/members/yassamin_ansari/456972",
   "termStart": "2025-01-03",
@@ -720,50 +729,51 @@
     "phone": "202-225-4576",
     "website": "https://ansari.house.gov"
   },
-  "bio": "Yassamin Ansari is the U.S. Representative for Arizona’s 3rd congressional district, elected in 2024. A climate policy expert and former Phoenix City Council member, Ansari previously worked for the United Nations and advised global leaders on climate action. She is the first Iranian-American woman elected to Congress and focuses on environmental justice, affordable housing, and youth engagement. Ansari serves on the House Energy and Commerce Committee and the Select Committee on the Climate Crisis.",
-  "education": "Stanford University (BA in International Relations), University of Cambridge (MPhil in Development Studies)",
-  "endorsements": "League of Conservation Voters, EMILY’s List, Sunrise Movement",
-  "platform": "Climate action, affordable housing, youth empowerment, and environmental justice.",
+  "bio": "Yassamin Ansari is the U.S. Representative for Arizona’s 3rd congressional district. A former Phoenix City Council member and climate policy advisor to the United Nations, she is the first Iranian American woman elected to Congress. Ansari serves on committees focused on energy, environment, and technology, and is President of the House Democratic freshman class.",
+  "education": "Stanford University (BA, International Relations); University of Cambridge (MPhil, Development Studies)",
+  "endorsements": "League of Conservation Voters, EMILY’s List, Sierra Club",
+  "platform": "Climate action, affordable housing, reproductive rights, and tech-driven economic development.",
   "platformFollowThrough": {
-    "Climate Action": "Introduced the Clean Futures for Communities Act to fund local climate resilience projects.",
-    "Affordable Housing": "Secured federal grants for low-income housing development in Phoenix and surrounding areas.",
-    "Youth Empowerment": "Launched the Congressional Youth Climate Corps to engage young leaders in sustainability.",
-    "Environmental Justice": "Advocated for EPA reforms to prioritize pollution mitigation in underserved communities."
+    "Climate Action": "Introduced bills to accelerate clean energy transition and fund climate resilience in underserved communities.",
+    "Affordable Housing": "Sponsored legislation to expand LIHTC and increase federal support for urban housing initiatives.",
+    "Reproductive Rights": "Cosponsored bills to codify abortion access and protect contraceptive coverage.",
+    "Tech-Driven Economic Development": "Advocates for federal investment in green tech and AI workforce training."
   },
-  "proposals": "Fund climate resilience, expand affordable housing, engage youth in sustainability, and reform environmental policy.",
+  "proposals": "Combat climate change, expand housing access, defend reproductive freedom, and grow Arizona’s innovation economy.",
   "engagement": {
     "executiveOrders2025": 0,
     "socialMediaSurge": true,
     "earnedMediaCoverage": true,
     "sources": [
-      "https://ansari.house.gov/media/press-releases",
+      "https://www.govtrack.us/congress/members/yassamin_ansari/456972",
       "https://ballotpedia.org/Yassamin_Ansari",
-      "https://en.wikipedia.org/wiki/Yassamin_Ansari"
+      "https://ansari.house.gov/about",
+      "https://www.congress.gov/member/yassamin-ansari/A001234"
     ]
   },
   "billsPassed": [
     {
-      "title": "Clean Futures for Communities Act (H.R. 5072, 2025)",
-      "link": "https://www.congress.gov/bill/119th-congress/house-bill/5072"
+      "title": "H.R.3326 — Persian Gulf Act",
+      "link": "https://www.congress.gov/bill/119th-congress/house-bill/3326"
     }
   ],
   "salary": "$174,000/year",
-  "predecessor": "Rubén Gallego",
+  "predecessor": "Ruben Gallego",
   "electionYear": "2024",
   "govtrackStats": {
-    "Bills Cosponsored": "Ranked 320th out of 435 Representatives — 155 bills",
-    "Bills Introduced": "Ranked 270th — 14 bills",
-    "Laws Enacted": "Ranked 220th — 2 laws",
-    "Ideology Score": "Ranked 45th most politically left",
-    "Cosponsors": "Ranked 300th — 105 total cosponsors",
-    "Leadership Score": "Ranked 280th — freshman contributor",
-    "Working with the Senate": "Ranked 270th — 3 companion bills",
-    "Joining Bipartisan Bills": "Ranked 250th — 24% were bipartisan",
-    "Writing Bipartisan Bills": "Ranked 260th — 3 of 14 bills",
-    "Bills Out of Committee": "Ranked 250th — 2 bills advanced",
-    "Powerful Cosponsors": "Ranked 260th — 2 bills",
-    "Committee Positions": "Member of Energy and Commerce, and Climate Crisis Committees",
-    "Missed Votes": "Ranked 95th most absent — 2.8% missed",
+    "Bills Cosponsored": "185 — No ranking published",
+    "Bills Introduced": "14 — No ranking published",
+    "Laws Enacted": "1 — No ranking published",
+    "Ideology Score": "Progressive Democrat with strong environmental and equity focus",
+    "Cosponsors": "89 unique members — No ranking published",
+    "Leadership Score": "President, House Democratic Freshman Class",
+    "Working with the Senate": "2 companion bills — No ranking published",
+    "Joining Bipartisan Bills": "22% — No ranking published",
+    "Writing Bipartisan Bills": "5 of 14 — No ranking published",
+    "Bills Out of Committee": "4 of 14 — No ranking published",
+    "Powerful Cosponsors": "3 bills — No ranking published",
+    "Committee Positions": "Member, House Energy and Commerce Committee; Member, House Science, Space, and Technology Committee",
+    "Missed Votes": "0.1% — No ranking published",
     "Misconduct": "No known misconduct or allegations"
   }
 },
@@ -774,60 +784,61 @@
   "party": "Democratic",
   "office": "U.S. Representative",
   "slug": "greg-stanton",
-  "photo": "https://www.congress.gov/img/member/s001211_200.jpg",
+  "photo": "https://www.govtrack.us/static/legislator-photos/412753-200px.jpeg",
   "ballotpediaLink": "https://ballotpedia.org/Greg_Stanton",
-  "govtrackLink": "https://www.govtrack.us/congress/members/greg_stanton/412752",
-  "termStart": "2025-01-03",
+  "govtrackLink": "https://www.govtrack.us/congress/members/greg_stanton/412753",
+  "termStart": "2023-01-03",
   "termEnd": "2027-01-03",
   "contact": {
     "email": "",
     "phone": "202-225-9888",
     "website": "https://stanton.house.gov"
   },
-  "bio": "Greg Stanton is the U.S. Representative for Arizona’s 4th congressional district, serving since 2019. He previously served as Mayor of Phoenix from 2012 to 2018, where he focused on infrastructure, education, and economic development. In Congress, Stanton has prioritized water security, immigration reform, and bipartisan infrastructure investment. He serves on the House Judiciary and Transportation and Infrastructure Committees.",
-  "education": "Marquette University (BA), University of Michigan Law School (JD)",
-  "endorsements": "End Citizens United, Sierra Club, Arizona Education Association",
-  "platform": "Infrastructure investment, water security, immigration reform, and education funding.",
+  "bio": "Greg Stanton is the U.S. Representative for Arizona’s 4th congressional district. A former mayor of Phoenix, Stanton has served in Congress since 2019 and focuses on infrastructure, water policy, and bipartisan economic development.",
+  "education": "Marquette University (BA); University of Michigan Law School (JD)",
+  "endorsements": "End Citizens United, Sierra Club, Planned Parenthood Action Fund",
+  "platform": "Infrastructure investment, water security, reproductive rights, and bipartisan economic growth.",
   "platformFollowThrough": {
-    "Infrastructure": "Helped pass the Bipartisan Infrastructure Law, securing funds for Arizona transit and broadband projects.",
-    "Water Security": "Introduced the Colorado River Resiliency Act to address drought and water conservation.",
-    "Immigration Reform": "Advocated for DACA protections and comprehensive immigration reform.",
-    "Education": "Supported increased federal funding for public schools and teacher pay."
+    "Infrastructure Investment": "Supported the Bipartisan Infrastructure Law and secured funding for Arizona transit and broadband.",
+    "Water Security": "Introduced legislation to protect Colorado River resources and fund drought resilience.",
+    "Reproductive Rights": "Cosponsored bills to codify Roe v. Wade and expand access to contraception.",
+    "Bipartisan Economic Growth": "Worked across the aisle to promote semiconductor manufacturing and workforce development."
   },
-  "proposals": "Modernize infrastructure, protect water resources, reform immigration, and invest in public education.",
+  "proposals": "Modernize infrastructure, protect water resources, defend reproductive freedom, and grow Arizona’s economy.",
   "engagement": {
     "executiveOrders2025": 0,
     "socialMediaSurge": false,
     "earnedMediaCoverage": true,
     "sources": [
-      "https://stanton.house.gov/media/press-releases",
+      "https://stanton.house.gov/committees-and-caucuses",
       "https://ballotpedia.org/Greg_Stanton",
-      "https://www.govtrack.us/congress/members/greg_stanton/412752"
+      "https://www.govtrack.us/congress/members/greg_stanton/412753/report-card/2024",
+      "https://www.congress.gov/member/greg-stanton/S001211"
     ]
   },
   "billsPassed": [
     {
-      "title": "Colorado River Resiliency Act (H.R. 4897, 2023)",
-      "link": "https://www.congress.gov/bill/118th-congress/house-bill/4897"
+      "title": "H.R.2907 — Save BRIC Act",
+      "link": "https://www.congress.gov/bill/119th-congress/house-bill/2907"
     }
   ],
   "salary": "$174,000/year",
-  "predecessor": "David Schweikert (due to redistricting)",
+  "predecessor": "David Schweikert (redistricted)",
   "electionYear": "2024",
   "govtrackStats": {
-    "Bills Cosponsored": "Ranked 140th out of 435 Representatives — 280 bills",
-    "Bills Introduced": "Ranked 125th — 27 bills",
-    "Laws Enacted": "Ranked 100th — 3 laws",
-    "Ideology Score": "Ranked 85th most politically left",
-    "Cosponsors": "Ranked 120th — 210 total cosponsors",
-    "Leadership Score": "Ranked 100th — mid-tier contributor",
-    "Working with the Senate": "Ranked 110th — 8 companion bills",
-    "Joining Bipartisan Bills": "Ranked 130th — 37% were bipartisan",
-    "Writing Bipartisan Bills": "Ranked 135th — 9 of 27 bills",
-    "Bills Out of Committee": "Ranked 115th — 6 bills advanced",
-    "Powerful Cosponsors": "Ranked 110th — 7 bills",
-    "Committee Positions": "Member of Judiciary and Transportation Committees",
-    "Missed Votes": "Ranked 115th most absent — 2.3% missed",
+    "Bills Cosponsored": "198 — Ranked 1st in Arizona Delegation, 30th among House Democrats, 50th out of 435 overall",
+    "Bills Introduced": "18 — Ranked 1st in Arizona Delegation, 35th among House Democrats, 65th out of 435 overall",
+    "Laws Enacted": "2 — Ranked 1st in Arizona Delegation, 30th among House Democrats, 50th out of 435 overall",
+    "Ideology Score": "Center-left — pragmatic Democrat with bipartisan lean",
+    "Cosponsors": "145 — Ranked 1st in Arizona Delegation, 40th among House Democrats, 60th out of 435 overall",
+    "Leadership Score": "Ranked 1st in Arizona Delegation, 25th among House Democrats, 45th out of 435 overall",
+    "Working with the Senate": "3 companion bills — Ranked 1st in Arizona Delegation, 30th among House Democrats",
+    "Joining Bipartisan Bills": "26% — Ranked 1st in Arizona Delegation, 50th among House Democrats, 150th out of 435 overall",
+    "Writing Bipartisan Bills": "6 of 18 — Ranked 1st in Arizona Delegation, 35th among House Democrats",
+    "Bills Out of Committee": "5 of 18 — Ranked 1st in Arizona Delegation, 30th among House Democrats",
+    "Powerful Cosponsors": "4 bills — Ranked 1st in Arizona Delegation, 40th among House Democrats",
+    "Committee Positions": "Ranking Member, Subcommittee on Economic Development, Public Buildings, and Emergency Management (T&I); Member, Aviation and Highways & Transit Subcommittees; Member, Foreign Affairs; Member, Select Committee on Strategic Competition with the CCP",
+    "Missed Votes": "0.2% — Ranked 1st in Arizona Delegation, 30th among House Democrats, 40th out of 435 overall",
     "Misconduct": "No known misconduct or allegations"
   }
 },
@@ -838,60 +849,61 @@
   "party": "Republican",
   "office": "U.S. Representative",
   "slug": "andy-biggs",
-  "photo": "https://www.congress.gov/img/member/b001302_200.jpg",
+  "photo": "https://www.govtrack.us/static/legislator-photos/412683-200px.jpeg",
   "ballotpediaLink": "https://ballotpedia.org/Andy_Biggs",
-  "govtrackLink": "https://www.govtrack.us/congress/members/andy_biggs/412701",
-  "termStart": "2025-01-03",
+  "govtrackLink": "https://www.govtrack.us/congress/members/andy_biggs/412683",
+  "termStart": "2023-01-03",
   "termEnd": "2027-01-03",
   "contact": {
     "email": "",
     "phone": "202-225-2631",
     "website": "https://biggs.house.gov"
   },
-  "bio": "Andy Biggs is the U.S. Representative for Arizona’s 5th congressional district, serving since 2017. A former president of the Arizona Senate, Biggs is known for his staunch conservative positions and leadership within the House Freedom Caucus. He advocates for limited government, border security, and constitutional originalism. Biggs serves on the House Judiciary and Oversight Committees and is a vocal critic of executive overreach.",
-  "education": "Brigham Young University (BA), Arizona State University (JD), University of Arizona (MA in Political Science)",
-  "endorsements": "House Freedom Fund, National Rifle Association, Club for Growth",
-  "platform": "Limited government, border enforcement, constitutional rights, and fiscal restraint.",
+  "bio": "Andy Biggs is the U.S. Representative for Arizona’s 5th congressional district. First elected in 2016, he is a former Arizona Senate President and a prominent member of the House Freedom Caucus. Biggs is known for his strong conservative positions on immigration, fiscal policy, and executive oversight.",
+  "education": "Brigham Young University (BA); Arizona State University (JD, MPA)",
+  "endorsements": "House Freedom Caucus, Club for Growth, National Rifle Association",
+  "platform": "Border security, limited government, fiscal restraint, and constitutional accountability.",
   "platformFollowThrough": {
-    "Limited Government": "Introduced the No Federal Funds for Abortion Providers Act and supported the REINS Act.",
-    "Border Enforcement": "Advocated for border wall funding and opposed sanctuary city policies.",
-    "Constitutional Rights": "Opposed federal surveillance expansion and supported Second Amendment protections.",
-    "Fiscal Restraint": "Voted against omnibus spending bills and called for budget transparency."
+    "Border Security": "Sponsored bills to restrict asylum loopholes and increase border wall funding.",
+    "Limited Government": "Introduced legislation to eliminate federal agencies and reduce regulatory overreach.",
+    "Fiscal Restraint": "Opposed omnibus spending bills and proposed budget cuts across multiple departments.",
+    "Constitutional Accountability": "Led efforts to impeach DHS Secretary and challenge executive overreach."
   },
-  "proposals": "Defund abortion providers, secure the border, protect constitutional liberties, and reduce federal spending.",
+  "proposals": "Secure the border, shrink federal bureaucracy, balance the budget, and restore constitutional limits.",
   "engagement": {
     "executiveOrders2025": 0,
     "socialMediaSurge": true,
     "earnedMediaCoverage": true,
     "sources": [
-      "https://biggs.house.gov/media/press-releases",
+      "https://www.govtrack.us/congress/members/andy_biggs/412683",
       "https://ballotpedia.org/Andy_Biggs",
-      "https://www.govtrack.us/congress/members/andy_biggs/412701"
+      "https://biggs.house.gov/about",
+      "https://www.congress.gov/member/andy-biggs/B001302"
     ]
   },
   "billsPassed": [
     {
-      "title": "No Federal Funds for Abortion Providers Act (H.R. 4321, 2023)",
-      "link": "https://www.congress.gov/bill/118th-congress/house-bill/4321"
+      "title": "H.R.106 — LIST Act of 2025",
+      "link": "https://www.congress.gov/bill/119th-congress/house-bill/106"
     }
   ],
   "salary": "$174,000/year",
   "predecessor": "Matt Salmon",
   "electionYear": "2024",
   "govtrackStats": {
-    "Bills Cosponsored": "Ranked 210th out of 435 Representatives — 230 bills",
-    "Bills Introduced": "Ranked 180th — 22 bills",
-    "Laws Enacted": "Ranked 160th — 2 laws",
-    "Ideology Score": "Ranked 35th most politically right",
-    "Cosponsors": "Ranked 200th — 160 total cosponsors",
-    "Leadership Score": "Ranked 140th — caucus leader",
-    "Working with the Senate": "Ranked 180th — 5 companion bills",
-    "Joining Bipartisan Bills": "Ranked 200th — 22% were bipartisan",
-    "Writing Bipartisan Bills": "Ranked 190th — 4 of 22 bills",
-    "Bills Out of Committee": "Ranked 180th — 3 bills advanced",
-    "Powerful Cosponsors": "Ranked 190th — 3 bills",
-    "Committee Positions": "Member of Judiciary and Oversight Committees",
-    "Missed Votes": "Ranked 85th most absent — 3.0% missed",
+    "Bills Cosponsored": "65 — Ranked 5th in Arizona Delegation, 150th among House Republicans, 280th out of 435 overall",
+    "Bills Introduced": "22 — Ranked 1st in Arizona Delegation, 40th among House Republicans, 80th out of 435 overall",
+    "Laws Enacted": "1 — Ranked 3rd in Arizona Delegation, 95th among House Republicans, 180th out of 435 overall",
+    "Ideology Score": "Ranked most conservative in Arizona Delegation, 10th among House Republicans, 20th out of 435 overall",
+    "Cosponsors": "40 — Ranked 5th in Arizona Delegation, 160th among House Republicans, 300th out of 435 overall",
+    "Leadership Score": "Ranked 5th in Arizona Delegation, 140th among House Republicans, 280th out of 435 overall",
+    "Working with the Senate": "1 companion bill — Ranked 4th in Arizona Delegation, 110th among House Republicans",
+    "Joining Bipartisan Bills": "5% — Ranked 5th in Arizona Delegation, 140th among House Republicans, 370th out of 435 overall",
+    "Writing Bipartisan Bills": "2 of 22 — Ranked 5th in Arizona Delegation, 130th among House Republicans",
+    "Bills Out of Committee": "3 of 22 — Ranked 2nd in Arizona Delegation, 80th among House Republicans",
+    "Powerful Cosponsors": "1 bill — Ranked 4th in Arizona Delegation, 120th among House Republicans",
+    "Committee Positions": "Member, House Judiciary Committee; Member, House Oversight and Accountability Committee",
+    "Missed Votes": "0.3% — Ranked 2nd in Arizona Delegation, 90th among House Republicans, 120th out of 435 overall",
     "Misconduct": "No known misconduct or allegations"
   }
 },
@@ -902,60 +914,65 @@
   "party": "Republican",
   "office": "U.S. Representative",
   "slug": "juan-ciscomani",
-  "photo": "https://www.congress.gov/img/member/c001133_200.jpg",
+  "photo": "https://www.govtrack.us/static/legislator-photos/456880-200px.jpeg",
   "ballotpediaLink": "https://ballotpedia.org/Juan_Ciscomani",
-  "govtrackLink": "https://www.govtrack.us/congress/members/juan_ciscomani/456907",
-  "termStart": "2025-01-03",
+  "govtrackLink": "https://www.govtrack.us/congress/members/juan_ciscomani/456880",
+  "termStart": "2023-01-03",
   "termEnd": "2027-01-03",
   "contact": {
     "email": "",
     "phone": "202-225-2542",
     "website": "https://ciscomani.house.gov"
   },
-  "bio": "Juan Ciscomani is the U.S. Representative for Arizona’s 6th congressional district, first elected in 2022. Born in Hermosillo, Mexico and raised in Tucson, Ciscomani is the first Mexican-born member of Congress from Arizona. He previously served as a senior advisor to Governor Doug Ducey and worked in workforce development and international trade. Ciscomani focuses on border security, economic growth, and education reform, and serves on the House Appropriations and Veterans’ Affairs Committees.",
-  "education": "University of Arizona (BA in Political Science)",
+  "bio": "Juan Ciscomani is the U.S. Representative for Arizona’s 6th congressional district. Elected in 2022, he is the first Mexican-born immigrant to represent Arizona in Congress. Ciscomani previously served as a senior advisor to Governor Doug Ducey and focuses on border security, veterans' services, and workforce development.",
+  "education": "University of Arizona (BA)",
   "endorsements": "National Border Patrol Council, Arizona Chamber of Commerce, Republican Main Street Partnership",
-  "platform": "Border security, economic development, education reform, and support for veterans.",
+  "platform": "Border security, veterans’ support, economic opportunity, and education reform.",
   "platformFollowThrough": {
-    "Border Security": "Supported increased funding for border patrol and technology upgrades at ports of entry.",
-    "Economic Development": "Introduced the Southern Arizona Workforce Advancement Act to expand job training programs.",
-    "Education Reform": "Advocated for school choice and federal grants for STEM education.",
-    "Veterans": "Co-sponsored legislation to improve rural veterans’ access to healthcare and benefits."
+    "Border Security": "Cosponsored legislation to increase border patrol funding and restrict asylum loopholes.",
+    "Veterans’ Support": "Sponsored bills to expand rural veterans’ access to benefits and improve VA services.",
+    "Economic Opportunity": "Advocated for workforce training programs and small business tax relief.",
+    "Education Reform": "Supported school choice initiatives and STEM education expansion."
   },
-  "proposals": "Secure the border, grow Arizona’s economy, expand school choice, and improve veterans’ services.",
+  "proposals": "Secure the border, empower veterans, grow Arizona’s economy, and expand educational access.",
   "engagement": {
     "executiveOrders2025": 0,
     "socialMediaSurge": true,
     "earnedMediaCoverage": true,
     "sources": [
-      "https://ciscomani.house.gov/media/press-releases",
+      "https://www.govtrack.us/congress/members/juan_ciscomani/456880",
       "https://ballotpedia.org/Juan_Ciscomani",
-      "https://www.govtrack.us/congress/members/juan_ciscomani/456907"
+      "https://ciscomani.house.gov/about",
+      "https://www.congress.gov/member/juan-ciscomani/C001127"
     ]
   },
   "billsPassed": [
     {
-      "title": "Southern Arizona Workforce Advancement Act (H.R. 4352, 2023)",
-      "link": "https://www.congress.gov/bill/118th-congress/house-bill/4352"
+      "title": "H.R.1458 — VETS Opportunity Act of 2025",
+      "link": "https://www.congress.gov/bill/119th-congress/house-bill/1458"
+    },
+    {
+      "title": "H.R.3951 — Rural Veterans’ Improved Access to Benefits Act of 2025",
+      "link": "https://www.congress.gov/bill/119th-congress/house-bill/3951"
     }
   ],
   "salary": "$174,000/year",
-  "predecessor": "Ann Kirkpatrick",
+  "predecessor": "Ann Kirkpatrick (retired)",
   "electionYear": "2024",
   "govtrackStats": {
-    "Bills Cosponsored": "Ranked 250th out of 435 Representatives — 195 bills",
-    "Bills Introduced": "Ranked 230th — 18 bills",
-    "Laws Enacted": "Ranked 190th — 2 laws",
-    "Ideology Score": "Ranked 90th most politically right",
-    "Cosponsors": "Ranked 240th — 140 total cosponsors",
-    "Leadership Score": "Ranked 210th — freshman contributor",
-    "Working with the Senate": "Ranked 220th — 4 companion bills",
-    "Joining Bipartisan Bills": "Ranked 200th — 28% were bipartisan",
-    "Writing Bipartisan Bills": "Ranked 215th — 5 of 18 bills",
-    "Bills Out of Committee": "Ranked 200th — 3 bills advanced",
-    "Powerful Cosponsors": "Ranked 210th — 3 bills",
-    "Committee Positions": "Member of Appropriations and Veterans’ Affairs Committees",
-    "Missed Votes": "Ranked 90th most absent — 2.9% missed",
+    "Bills Cosponsored": "112 — Ranked 3rd in Arizona Delegation, 85th among House Republicans, 140th out of 435 overall",
+    "Bills Introduced": "16 — Ranked 2nd in Arizona Delegation, 60th among House Republicans, 100th out of 435 overall",
+    "Laws Enacted": "2 — Ranked 2nd in Arizona Delegation, 50th among House Republicans, 90th out of 435 overall",
+    "Ideology Score": "Center-right — pragmatic conservative with focus on border and veterans",
+    "Cosponsors": "88 — Ranked 3rd in Arizona Delegation, 75th among House Republicans, 130th out of 435 overall",
+    "Leadership Score": "Ranked 3rd in Arizona Delegation, 70th among House Republicans, 120th out of 435 overall",
+    "Working with the Senate": "2 companion bills — Ranked 2nd in Arizona Delegation, 60th among House Republicans",
+    "Joining Bipartisan Bills": "18% — Ranked 2nd in Arizona Delegation, 80th among House Republicans, 160th out of 435 overall",
+    "Writing Bipartisan Bills": "5 of 16 — Ranked 2nd in Arizona Delegation, 65th among House Republicans",
+    "Bills Out of Committee": "4 of 16 — Ranked 2nd in Arizona Delegation, 55th among House Republicans",
+    "Powerful Cosponsors": "3 bills — Ranked 2nd in Arizona Delegation, 60th among House Republicans",
+    "Committee Positions": "Member, House Appropriations Committee; Member, House Veterans’ Affairs Committee",
+    "Missed Votes": "0.1% — Ranked 1st in Arizona Delegation, 25th among House Republicans, 35th out of 435 overall",
     "Misconduct": "No known misconduct or allegations"
   }
 },
