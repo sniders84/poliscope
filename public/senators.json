@@ -7,6 +7,7 @@
   "slug": "katie-britt",
   "photo": "https://www.congress.gov/img/member/b001319_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Katie_Britt",
+  "govtrackLink": "https://www.govtrack.us/congress/members/katie_britt/456874/report-card/2024",
   "termStart": "2023-01-03",
   "termEnd": "2029-01-03",
   "contact": {
@@ -32,35 +33,13 @@
     "sources": [
       "https://www.britt.senate.gov/",
       "https://ballotpedia.org/Katie_Britt",
-      "https://www.msn.com/en-us/news/us/senator-katie-britt-requests-pay-be-withheld-until-government-shutdown-ends/ar-AA1NKn37"
+      "https://www.govtrack.us/congress/members/katie_britt/456874/report-card/2024"
     ]
   },
-  "billsSigned": [],
-  "vetoes": "N/A",
+  "billsPassed": [],
   "salary": "$174,000/year",
   "predecessor": "Richard Shelby",
-  "pollingScore": "58%",
-  "pollingSource": "https://pro.morningconsult.com/tags/senator-approval",
-  "rank": "#12",
-  "pollingDate": "2025-07",
-  "electionYear": "2028",
-  "govtrackStats": {
-  "Bills Cosponsored": "Ranked 84th out of 100 Senators — 194 bills",
-  "Bills Introduced": "Ranked 92nd — 18 bills",
-  "Laws Enacted": "Ranked 100th — 0 laws",
-  "Ideology Score": "Ranked 19th most politically right",
-  "Cosponsors": "Ranked 88th — 142 total cosponsors",
-  "Leadership Score": "Ranked 85th — bottom follower",
-  "Working with the Senate": "Ranked 85th — 6 companion bills",
-  "Joining Bipartisan Bills": "Ranked 82nd — 19% were bipartisan",
-  "Writing Bipartisan Bills": "Ranked 97th — 3 of 18 bills",
-  "Bills Out of Committee": "Ranked 100th — 0 bills advanced",
-  "Powerful Cosponsors": "Ranked 78th — 3 bills",
-  "Committee Positions": "Ranked 88th — 1 subcommittee role, no chair",
-  "Missed Votes": "Ranked 28th most absent — 5.8% missed",
-  "Misconduct": "No known misconduct or allegations"
-},
-"govtrackLink": "https://www.govtrack.us/congress/members/katie_britt/456874/report-card/2024"
+  "electionYear": "2028"
 },
 {
   "name": "Tommy Tuberville",
@@ -70,6 +49,7 @@
   "slug": "tommy-tuberville",
   "photo": "https://www.congress.gov/img/member/t000278_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Tommy_Tuberville",
+  "govtrackLink": "https://www.govtrack.us/congress/members/tommy_tuberville/456796",
   "termStart": "2021-01-03",
   "termEnd": "2027-01-03",
   "contact": {
@@ -94,7 +74,8 @@
     "earnedMediaCoverage": true,
     "sources": [
       "https://www.tuberville.senate.gov/",
-      "https://ballotpedia.org/Tommy_Tuberville"
+      "https://ballotpedia.org/Tommy_Tuberville",
+      "https://www.govtrack.us/congress/members/tommy_tuberville/456796"
     ]
   },
   "billsSigned": [],
@@ -105,24 +86,7 @@
   "pollingSource": "https://pro.morningconsult.com/tags/senator-approval",
   "rank": "#42",
   "pollingDate": "2025-07",
-  "electionYear": "2026",
-  "govtrackStats": {
-  "Bills Cosponsored": "Ranked 78th out of 100 Senators — 228 bills",
-  "Bills Introduced": "Ranked 94th — 21 bills",
-  "Laws Enacted": "Ranked 100th — 0 laws",
-  "Ideology Score": "Ranked 25th most politically right",
-  "Cosponsors": "Ranked 85th — 159 total cosponsors",
-  "Leadership Score": "Ranked 88th — bottom follower",
-  "Working with the Senate": "Ranked 81st — 8 companion bills",
-  "Joining Bipartisan Bills": "Ranked 84th — 17% were bipartisan",
-  "Writing Bipartisan Bills": "Ranked 98th — 4 of 21 bills",
-  "Bills Out of Committee": "Ranked 100th — 0 bills advanced",
-  "Powerful Cosponsors": "Ranked 72nd — 4 bills",
-  "Committee Positions": "Ranked 81st — 2 subcommittee roles, no chair",
-  "Missed Votes": "Ranked 20th most absent — 7.2% missed",
-  "Misconduct": "Accused of violating the STOCK Act by missing a financial disclosure deadline (July 2021, CNBC)"
-},
-"govtrackLink": "https://www.govtrack.us/congress/members/tommy_tuberville/456796"
+  "electionYear": "2026"
  },
   {
   "name": "Lisa Murkowski",
@@ -132,6 +96,7 @@
   "slug": "lisa-murkowski",
   "photo": "https://www.congress.gov/img/member/m001153_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Lisa_Murkowski",
+  "govtrackLink": "https://www.govtrack.us/congress/members/lisa_murkowski/300075/report-card/2022",
   "termStart": "2002-12-20",
   "termEnd": "2029-01-03",
   "contact": {
@@ -156,7 +121,8 @@
     "earnedMediaCoverage": true,
     "sources": [
       "https://www.murkowski.senate.gov/",
-      "https://ballotpedia.org/Lisa_Murkowski"
+      "https://ballotpedia.org/Lisa_Murkowski",
+      "https://www.govtrack.us/congress/members/lisa_murkowski/300075/report-card/2022"
     ]
   },
   "billsSigned": [],
@@ -169,7 +135,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2028"
 },
-  {
+ {
   "name": "Dan Sullivan",
   "state": "Alaska",
   "party": "Republican",
@@ -177,6 +143,7 @@
   "slug": "dan-sullivan",
   "photo": "https://www.congress.gov/img/member/s001198_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Dan_Sullivan",
+  "govtrackLink": "https://www.govtrack.us/congress/members/dan_sullivan/412665/report-card/2024",
   "termStart": "2015-01-03",
   "termEnd": "2027-01-03",
   "contact": {
@@ -201,7 +168,8 @@
     "earnedMediaCoverage": true,
     "sources": [
       "https://www.sullivan.senate.gov/",
-      "https://ballotpedia.org/Dan_Sullivan"
+      "https://ballotpedia.org/Dan_Sullivan",
+      "https://www.govtrack.us/congress/members/dan_sullivan/412665/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -222,6 +190,7 @@
   "slug": "ruben-gallego",
   "photo": "https://www.congress.gov/img/member/c6870f487cf4bc9a568d8afbe61d754b_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Ruben_Gallego",
+  "govtrackLink": "https://www.govtrack.us/congress/members/ruben_gallego/412612/report-card/2024",
   "termStart": "2025-01-03",
   "termEnd": "2031-01-03",
   "contact": {
@@ -247,7 +216,8 @@
     "sources": [
       "https://www.gallego.senate.gov/",
       "https://ballotpedia.org/Ruben_Gallego",
-      "https://en.wikipedia.org/wiki/Ruben_Gallego"
+      "https://en.wikipedia.org/wiki/Ruben_Gallego",
+      "https://www.govtrack.us/congress/members/ruben_gallego/412612/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -268,6 +238,7 @@
   "slug": "mark-kelly",
   "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Mark_Kelly%2C_Official_Portrait_117th.jpg/500px-Mark_Kelly%2C_Official_Portrait_117th.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Mark_Kelly",
+  "govtrackLink": "https://www.govtrack.us/congress/members/mark_kelly/456858/report-card/2024",
   "termStart": "2020-12-02",
   "termEnd": "2029-01-03",
   "contact": {
@@ -293,7 +264,8 @@
     "sources": [
       "https://www.kelly.senate.gov/",
       "https://ballotpedia.org/Mark_Kelly",
-      "https://en.wikipedia.org/wiki/Mark_Kelly_(politician)"
+      "https://en.wikipedia.org/wiki/Mark_Kelly_(politician)",
+      "https://www.govtrack.us/congress/members/mark_kelly/456858/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -306,7 +278,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2028"
 },
-  {
+{
   "name": "John Boozman",
   "state": "Arkansas",
   "party": "Republican",
@@ -314,6 +286,7 @@
   "slug": "john-boozman",
   "photo": "https://www.congress.gov/img/member/b001236_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/John_Boozman",
+  "govtrackLink": "https://www.govtrack.us/congress/members/john_boozman/400040/report-card/2024",
   "termStart": "2011-01-03",
   "termEnd": "2029-01-03",
   "contact": {
@@ -338,7 +311,8 @@
     "earnedMediaCoverage": false,
     "sources": [
       "https://www.boozman.senate.gov/",
-      "https://ballotpedia.org/John_Boozman"
+      "https://ballotpedia.org/John_Boozman",
+      "https://www.govtrack.us/congress/members/john_boozman/400040/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -351,7 +325,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2028"
 },
-  {
+ {
   "name": "Tom Cotton",
   "state": "Arkansas",
   "party": "Republican",
@@ -359,6 +333,7 @@
   "slug": "tom-cotton",
   "photo": "https://www.congress.gov/img/member/c001095_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Tom_Cotton",
+  "govtrackLink": "https://www.govtrack.us/congress/members/tom_cotton/412508/report-card/2024",
   "termStart": "2015-01-03",
   "termEnd": "2027-01-03",
   "contact": {
@@ -383,7 +358,8 @@
     "earnedMediaCoverage": true,
     "sources": [
       "https://www.cotton.senate.gov/",
-      "https://ballotpedia.org/Tom_Cotton"
+      "https://ballotpedia.org/Tom_Cotton",
+      "https://www.govtrack.us/congress/members/tom_cotton/412508/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -404,6 +380,7 @@
   "slug": "alex-padilla",
   "photo": "https://www.congress.gov/img/member/p000145_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Alex_Padilla",
+  "govtrackLink": "https://www.govtrack.us/congress/members/alex_padilla/456874/report-card/2024",
   "termStart": "2021-01-20",
   "termEnd": "2029-01-03",
   "contact": {
@@ -429,7 +406,8 @@
     "sources": [
       "https://www.padilla.senate.gov/",
       "https://ballotpedia.org/Alex_Padilla",
-      "https://www.padilla.senate.gov/newsroom/press-releases/padilla-rated-second-most-effective-u-s-senator-in-118th-congress/"
+      "https://www.padilla.senate.gov/newsroom/press-releases/padilla-rated-second-most-effective-u-s-senator-in-118th-congress/",
+      "https://www.govtrack.us/congress/members/alex_padilla/456874/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -442,7 +420,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2028"
 },
-  {
+{
   "name": "Adam Schiff",
   "state": "California",
   "party": "Democratic",
@@ -450,6 +428,7 @@
   "slug": "adam-schiff",
   "photo": "https://www.congress.gov/img/member/677d870dfdb6cf36bbb649b3_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Adam_Schiff",
+  "govtrackLink": "https://www.govtrack.us/congress/members/adam_schiff/400361/report-card/2024",
   "termStart": "2024-12-09",
   "termEnd": "2031-01-03",
   "contact": {
@@ -475,7 +454,8 @@
     "sources": [
       "https://www.schiff.senate.gov/",
       "https://ballotpedia.org/Adam_Schiff",
-      "https://en.wikipedia.org/wiki/Adam_Schiff"
+      "https://en.wikipedia.org/wiki/Adam_Schiff",
+      "https://www.govtrack.us/congress/members/adam_schiff/400361/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -488,7 +468,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2030"
 },
- {
+{
   "name": "Michael Bennet",
   "state": "Colorado",
   "party": "Democratic",
@@ -496,6 +476,7 @@
   "slug": "michael-bennet",
   "photo": "https://www.congress.gov/img/member/b001267_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Michael_Bennet",
+  "govtrackLink": "https://www.govtrack.us/congress/members/michael_bennet/412330/report-card/2024",
   "termStart": "2009-01-21",
   "termEnd": "2029-01-03",
   "contact": {
@@ -520,7 +501,8 @@
     "earnedMediaCoverage": false,
     "sources": [
       "https://www.bennet.senate.gov/",
-      "https://ballotpedia.org/Michael_Bennet"
+      "https://ballotpedia.org/Michael_Bennet",
+      "https://www.govtrack.us/congress/members/michael_bennet/412330/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -533,7 +515,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2028"
 },
-  {
+ {
   "name": "John Hickenlooper",
   "state": "Colorado",
   "party": "Democratic",
@@ -541,6 +523,7 @@
   "slug": "john-hickenlooper",
   "photo": "https://www.congress.gov/img/member/h000273_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/John_Hickenlooper",
+  "govtrackLink": "https://www.govtrack.us/congress/members/john_hickenlooper/456870/report-card/2024",
   "termStart": "2021-01-03",
   "termEnd": "2027-01-03",
   "contact": {
@@ -565,7 +548,8 @@
     "earnedMediaCoverage": true,
     "sources": [
       "https://www.hickenlooper.senate.gov/",
-      "https://ballotpedia.org/John_Hickenlooper"
+      "https://ballotpedia.org/John_Hickenlooper",
+      "https://www.govtrack.us/congress/members/john_hickenlooper/456870/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -578,7 +562,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2026"
 },
-  {
+{
   "name": "Richard Blumenthal",
   "state": "Connecticut",
   "party": "Democratic",
@@ -586,6 +570,7 @@
   "slug": "richard-blumenthal",
   "photo": "https://www.congress.gov/img/member/b001277_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Richard_Blumenthal",
+  "govtrackLink": "https://www.govtrack.us/congress/members/richard_blumenthal/412490/report-card/2024",
   "termStart": "2011-01-03",
   "termEnd": "2029-01-03",
   "contact": {
@@ -610,7 +595,8 @@
     "earnedMediaCoverage": true,
     "sources": [
       "https://www.blumenthal.senate.gov/",
-      "https://ballotpedia.org/Richard_Blumenthal"
+      "https://ballotpedia.org/Richard_Blumenthal",
+      "https://www.govtrack.us/congress/members/richard_blumenthal/412490/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -623,7 +609,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2028"
 },
-  {
+ {
   "name": "Chris Murphy",
   "state": "Connecticut",
   "party": "Democratic",
@@ -631,6 +617,7 @@
   "slug": "chris-murphy",
   "photo": "https://www.congress.gov/img/member/m001169_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Chris_Murphy",
+  "govtrackLink": "https://www.govtrack.us/congress/members/chris_murphy/412194/report-card/2024",
   "termStart": "2013-01-03",
   "termEnd": "2025-01-03",
   "contact": {
@@ -655,7 +642,8 @@
     "earnedMediaCoverage": true,
     "sources": [
       "https://www.murphy.senate.gov/",
-      "https://ballotpedia.org/Chris_Murphy"
+      "https://ballotpedia.org/Chris_Murphy",
+      "https://www.govtrack.us/congress/members/chris_murphy/412194/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -676,6 +664,7 @@
   "slug": "lisa-blunt-rochester",
   "photo": "https://www.congress.gov/img/member/b001303_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Lisa_Blunt_Rochester",
+  "govtrackLink": "https://www.govtrack.us/congress/members/lisa_blunt_rochester/412689/report-card/2024",
   "termStart": "2025-01-03",
   "termEnd": "2031-01-03",
   "contact": {
@@ -701,7 +690,8 @@
     "sources": [
       "https://www.bluntrochester.senate.gov/contact/",
       "https://ballotpedia.org/Lisa_Blunt_Rochester",
-      "https://lisabluntrochester.com/"
+      "https://lisabluntrochester.com/",
+      "https://www.govtrack.us/congress/members/lisa_blunt_rochester/412689/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -722,6 +712,7 @@
   "slug": "chris-coons",
   "photo": "https://www.congress.gov/img/member/c001088_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Chris_Coons",
+  "govtrackLink": "https://www.govtrack.us/congress/members/chris_coons/412390/report-card/2024",
   "termStart": "2010-11-15",
   "termEnd": "2027-01-03",
   "contact": {
@@ -746,7 +737,8 @@
     "earnedMediaCoverage": false,
     "sources": [
       "https://www.coons.senate.gov/",
-      "https://ballotpedia.org/Chris_Coons"
+      "https://ballotpedia.org/Chris_Coons",
+      "https://www.govtrack.us/congress/members/chris_coons/412390/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -759,7 +751,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2026"
 },
-  {
+{
   "name": "Ashley B. Moody",
   "state": "Florida",
   "party": "Republican",
@@ -767,6 +759,7 @@
   "slug": "ashley-b.-moody",
   "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Senator_Ashley_Moody_Official_Portrait.jpg/500px-Senator_Ashley_Moody_Official_Portrait.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Ashley_B._Moody",
+  "govtrackLink": "https://www.govtrack.us/congress/members/ashley_moody/457033",
   "termStart": "2025-01-21",
   "termEnd": "2027-01-03",
   "contact": {
@@ -792,7 +785,8 @@
     "sources": [
       "https://www.moody.senate.gov/about/",
       "https://ballotpedia.org/Ashley_B._Moody",
-      "https://en.wikipedia.org/wiki/Ashley_Moody"
+      "https://en.wikipedia.org/wiki/Ashley_Moody",
+      "https://www.govtrack.us/congress/members/ashley_moody/457033"
     ]
   },
   "billsSigned": [],
@@ -813,6 +807,7 @@
   "slug": "rick-scott",
   "photo": "https://www.congress.gov/img/member/s001217_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Rick_Scott_(Florida)",
+  "govtrackLink": "https://www.govtrack.us/congress/members/rick_scott/456858/report-card/2024",
   "termStart": "2019-01-08",
   "termEnd": "2025-01-03",
   "contact": {
@@ -837,7 +832,8 @@
     "earnedMediaCoverage": true,
     "sources": [
       "https://www.rickscott.senate.gov/",
-      "https://ballotpedia.org/Rick_Scott_(Florida)"
+      "https://ballotpedia.org/Rick_Scott_(Florida)",
+      "https://www.govtrack.us/congress/members/rick_scott/456858/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -858,6 +854,7 @@
   "slug": "jon-ossoff",
   "photo": "https://www.congress.gov/img/member/o000174_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Jon_Ossoff",
+  "govtrackLink": "https://www.govtrack.us/congress/members/jon_ossoff/456857/report-card/2024",
   "termStart": "2021-01-20",
   "termEnd": "2027-01-03",
   "contact": {
@@ -883,7 +880,8 @@
     "sources": [
       "https://www.ossoff.senate.gov/",
       "https://ballotpedia.org/Jon_Ossoff",
-      "https://en.wikipedia.org/wiki/Jon_Ossoff"
+      "https://en.wikipedia.org/wiki/Jon_Ossoff",
+      "https://www.govtrack.us/congress/members/jon_ossoff/456857/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -896,7 +894,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2026"
 },
- {
+{
   "name": "Raphael Warnock",
   "state": "Georgia",
   "party": "Democratic",
@@ -904,6 +902,7 @@
   "slug": "raphael-warnock",
   "photo": "https://www.congress.gov/img/member/w000790_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Raphael_Warnock",
+  "govtrackLink": "https://www.govtrack.us/congress/members/raphael_warnock/456856/report-card/2024",
   "termStart": "2021-01-20",
   "termEnd": "2029-01-03",
   "contact": {
@@ -929,7 +928,8 @@
     "sources": [
       "https://www.warnock.senate.gov/",
       "https://ballotpedia.org/Raphael_Warnock",
-      "https://en.wikipedia.org/wiki/Raphael_Warnock"
+      "https://en.wikipedia.org/wiki/Raphael_Warnock",
+      "https://www.govtrack.us/congress/members/raphael_warnock/456856/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -942,7 +942,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2028"
 },
-  {
+ {
   "name": "Brian Schatz",
   "state": "Hawaii",
   "party": "Democratic",
@@ -950,6 +950,7 @@
   "slug": "brian-schatz",
   "photo": "https://www.congress.gov/img/member/s001194_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Brian_Schatz",
+  "govtrackLink": "https://www.govtrack.us/congress/members/brian_schatz/412507/report-card/2024",
   "termStart": "2012-12-27",
   "termEnd": "2029-01-03",
   "contact": {
@@ -974,7 +975,8 @@
     "earnedMediaCoverage": true,
     "sources": [
       "https://www.schatz.senate.gov/",
-      "https://ballotpedia.org/Brian_Schatz"
+      "https://ballotpedia.org/Brian_Schatz",
+      "https://www.govtrack.us/congress/members/brian_schatz/412507/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -995,6 +997,7 @@
   "slug": "mazie-hirono",
   "photo": "https://www.congress.gov/img/member/h001042_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Mazie_Hirono",
+  "govtrackLink": "https://www.govtrack.us/congress/members/mazie_hirono/412200/report-card/2024",
   "termStart": "2013-01-03",
   "termEnd": "2025-01-03",
   "contact": {
@@ -1019,7 +1022,8 @@
     "earnedMediaCoverage": true,
     "sources": [
       "https://www.hirono.senate.gov/",
-      "https://ballotpedia.org/Mazie_Hirono"
+      "https://ballotpedia.org/Mazie_Hirono",
+      "https://www.govtrack.us/congress/members/mazie_hirono/412200/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -1032,7 +1036,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2024"
 },
-  {
+{
   "name": "Mike Crapo",
   "state": "Idaho",
   "party": "Republican",
@@ -1040,6 +1044,7 @@
   "slug": "mike-crapo",
   "photo": "https://www.congress.gov/img/member/c000880_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Mike_Crapo",
+  "govtrackLink": "https://www.govtrack.us/congress/members/mike_crapo/300030/report-card/2024",
   "termStart": "1999-01-03",
   "termEnd": "2029-01-03",
   "contact": {
@@ -1064,7 +1069,8 @@
     "earnedMediaCoverage": false,
     "sources": [
       "https://www.crapo.senate.gov/",
-      "https://ballotpedia.org/Mike_Crapo"
+      "https://ballotpedia.org/Mike_Crapo",
+      "https://www.govtrack.us/congress/members/mike_crapo/300030/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -1077,7 +1083,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2028"
 },
-  {
+ {
   "name": "James Risch",
   "state": "Idaho",
   "party": "Republican",
@@ -1085,6 +1091,7 @@
   "slug": "james-risch",
   "photo": "https://www.congress.gov/img/member/r000584_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/James_Risch",
+  "govtrackLink": "https://www.govtrack.us/congress/members/james_risch/412322/report-card/2024",
   "termStart": "2009-01-03",
   "termEnd": "2027-01-03",
   "contact": {
@@ -1109,7 +1116,8 @@
     "earnedMediaCoverage": false,
     "sources": [
       "https://www.risch.senate.gov/",
-      "https://ballotpedia.org/James_Risch"
+      "https://ballotpedia.org/James_Risch",
+      "https://www.govtrack.us/congress/members/james_risch/412322/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -1122,7 +1130,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2026"
 },
-  {
+{
   "name": "Dick Durbin",
   "state": "Illinois",
   "party": "Democratic",
@@ -1130,6 +1138,7 @@
   "slug": "dick-durbin",
   "photo": "https://www.congress.gov/img/member/d000563_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Dick_Durbin",
+  "govtrackLink": "https://www.govtrack.us/congress/members/richard_durbin/300041/report-card/2024",
   "termStart": "1997-01-03",
   "termEnd": "2027-01-03",
   "contact": {
@@ -1154,7 +1163,8 @@
     "earnedMediaCoverage": true,
     "sources": [
       "https://www.durbin.senate.gov/",
-      "https://ballotpedia.org/Dick_Durbin"
+      "https://ballotpedia.org/Dick_Durbin",
+      "https://www.govtrack.us/congress/members/richard_durbin/300041/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -1167,7 +1177,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2026"
 },
-  {
+ {
   "name": "Tammy Duckworth",
   "state": "Illinois",
   "party": "Democratic",
@@ -1175,6 +1185,7 @@
   "slug": "tammy-duckworth",
   "photo": "https://www.congress.gov/img/member/d000622_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Tammy_Duckworth",
+  "govtrackLink": "https://www.govtrack.us/congress/members/tammy_duckworth/412533/report-card/2024",
   "termStart": "2017-01-03",
   "termEnd": "2029-01-03",
   "contact": {
@@ -1200,7 +1211,8 @@
     "sources": [
       "https://www.duckworth.senate.gov/",
       "https://ballotpedia.org/Tammy_Duckworth",
-      "https://en.wikipedia.org/wiki/Tammy_Duckworth"
+      "https://en.wikipedia.org/wiki/Tammy_Duckworth",
+      "https://www.govtrack.us/congress/members/tammy_duckworth/412533/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -1213,7 +1225,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2028"
 },
-  {
+ {
   "name": "Todd Young",
   "state": "Indiana",
   "party": "Republican",
@@ -1221,6 +1233,7 @@
   "slug": "todd-young",
   "photo": "https://www.congress.gov/img/member/y000064_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Todd_Young",
+  "govtrackLink": "https://www.govtrack.us/congress/members/todd_young/412486/report-card/2024",
   "termStart": "2017-01-03",
   "termEnd": "2029-01-03",
   "contact": {
@@ -1245,7 +1258,8 @@
     "earnedMediaCoverage": true,
     "sources": [
       "https://www.young.senate.gov/",
-      "https://ballotpedia.org/Todd_Young"
+      "https://ballotpedia.org/Todd_Young",
+      "https://www.govtrack.us/congress/members/todd_young/412486/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -1258,7 +1272,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2028"
 },
-  {
+{
   "name": "Jim Banks",
   "state": "Indiana",
   "party": "Republican",
@@ -1266,6 +1280,7 @@
   "slug": "jim-banks",
   "photo": "https://www.congress.gov/img/member/677d83cbfdb6cf36bbb64998_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Jim_Banks",
+  "govtrackLink": "https://www.govtrack.us/congress/members/jim_banks/412722/report-card/2024",
   "termStart": "2025-01-03",
   "termEnd": "2031-01-03",
   "contact": {
@@ -1291,7 +1306,8 @@
     "sources": [
       "https://www.banks.senate.gov/",
       "https://ballotpedia.org/Jim_Banks",
-      "https://en.wikipedia.org/wiki/Jim_Banks"
+      "https://en.wikipedia.org/wiki/Jim_Banks",
+      "https://www.govtrack.us/congress/members/jim_banks/412722/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -1304,7 +1320,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2030"
 },
-  {
+{
   "name": "Chuck Grassley",
   "state": "Iowa",
   "party": "Republican",
@@ -1312,6 +1328,7 @@
   "slug": "chuck-grassley",
   "photo": "https://www.congress.gov/img/member/g000386_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Chuck_Grassley",
+  "govtrackLink": "https://www.govtrack.us/congress/members/charles_grassley/300048/report-card/2024",
   "termStart": "1981-01-03",
   "termEnd": "2029-01-03",
   "contact": {
@@ -1336,7 +1353,8 @@
     "earnedMediaCoverage": true,
     "sources": [
       "https://www.grassley.senate.gov/",
-      "https://ballotpedia.org/Chuck_Grassley"
+      "https://ballotpedia.org/Chuck_Grassley",
+      "https://www.govtrack.us/congress/members/charles_grassley/300048/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -1357,6 +1375,7 @@
   "slug": "joni-ernst",
   "photo": "https://www.congress.gov/img/member/e000295_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Joni_Ernst",
+  "govtrackLink": "https://www.govtrack.us/congress/members/joni_ernst/412667/report-card/2024",
   "termStart": "2015-01-03",
   "termEnd": "2027-01-03",
   "contact": {
@@ -1381,7 +1400,8 @@
     "earnedMediaCoverage": true,
     "sources": [
       "https://www.ernst.senate.gov/",
-      "https://ballotpedia.org/Joni_Ernst"
+      "https://ballotpedia.org/Joni_Ernst",
+      "https://www.govtrack.us/congress/members/joni_ernst/412667/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -1402,6 +1422,7 @@
   "slug": "jerry-moran",
   "photo": "https://www.congress.gov/img/member/m000934_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Jerry_Moran",
+  "govtrackLink": "https://www.govtrack.us/congress/members/jerry_moran/400284/report-card/2024",
   "termStart": "2011-01-03",
   "termEnd": "2029-01-03",
   "contact": {
@@ -1426,7 +1447,8 @@
     "earnedMediaCoverage": false,
     "sources": [
       "https://www.moran.senate.gov/",
-      "https://ballotpedia.org/Jerry_Moran"
+      "https://ballotpedia.org/Jerry_Moran",
+      "https://www.govtrack.us/congress/members/jerry_moran/400284/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -1439,7 +1461,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2028"
 },
-  {
+ {
   "name": "Roger Marshall",
   "state": "Kansas",
   "party": "Republican",
@@ -1447,6 +1469,7 @@
   "slug": "roger-marshall",
   "photo": "https://www.congress.gov/img/member/m001198_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Roger_Marshall",
+  "govtrackLink": "https://www.govtrack.us/congress/members/roger_marshall/412722/report-card/2024",
   "termStart": "2021-01-03",
   "termEnd": "2027-01-03",
   "contact": {
@@ -1471,7 +1494,8 @@
     "earnedMediaCoverage": true,
     "sources": [
       "https://www.marshall.senate.gov/",
-      "https://ballotpedia.org/Roger_Marshall"
+      "https://ballotpedia.org/Roger_Marshall",
+      "https://www.govtrack.us/congress/members/roger_marshall/412722/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -1492,6 +1516,7 @@
   "slug": "mitch-mcconnell",
   "photo": "https://www.congress.gov/img/member/m000355_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Mitch_McConnell",
+  "govtrackLink": "https://www.govtrack.us/congress/members/mitch_mcconnell/300072/report-card/2024",
   "termStart": "1985-01-03",
   "termEnd": "2027-01-03",
   "contact": {
@@ -1517,7 +1542,8 @@
     "sources": [
       "https://www.mcconnell.senate.gov/",
       "https://ballotpedia.org/Mitch_McConnell",
-      "https://thehill.com/homenews/senate/4366225-mcconnells-approval-rating-sinks-to-just-6-percent-monmouth-poll/"
+      "https://thehill.com/homenews/senate/4366225-mcconnells-approval-rating-sinks-to-just-6-percent-monmouth-poll/",
+      "https://www.govtrack.us/congress/members/mitch_mcconnell/300072/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -1530,7 +1556,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2026"
 },
-  {
+ {
   "name": "Rand Paul",
   "state": "Kentucky",
   "party": "Republican",
@@ -1538,6 +1564,7 @@
   "slug": "rand-paul",
   "photo": "https://www.congress.gov/img/member/p000603_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Rand_Paul",
+  "govtrackLink": "https://www.govtrack.us/congress/members/rand_paul/412492/report-card/2024",
   "termStart": "2011-01-03",
   "termEnd": "2029-01-03",
   "contact": {
@@ -1562,7 +1589,8 @@
     "earnedMediaCoverage": true,
     "sources": [
       "https://www.paul.senate.gov/",
-      "https://ballotpedia.org/Rand_Paul"
+      "https://ballotpedia.org/Rand_Paul",
+      "https://www.govtrack.us/congress/members/rand_paul/412492/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -1575,7 +1603,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2028"
 },
-  {
+{
   "name": "Bill Cassidy",
   "state": "Louisiana",
   "party": "Republican",
@@ -1583,6 +1611,7 @@
   "slug": "bill-cassidy",
   "photo": "https://www.congress.gov/img/member/c001075_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Bill_Cassidy",
+  "govtrackLink": "https://www.govtrack.us/congress/members/bill_cassidy/412269/report-card/2024",
   "termStart": "2015-01-03",
   "termEnd": "2027-01-03",
   "contact": {
@@ -1607,7 +1636,8 @@
     "earnedMediaCoverage": true,
     "sources": [
       "https://www.cassidy.senate.gov/",
-      "https://ballotpedia.org/Bill_Cassidy"
+      "https://ballotpedia.org/Bill_Cassidy",
+      "https://www.govtrack.us/congress/members/bill_cassidy/412269/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -1620,7 +1650,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2026"
 },
-  {
+ {
   "name": "John Kennedy",
   "state": "Louisiana",
   "party": "Republican",
@@ -1628,6 +1658,7 @@
   "slug": "john-kennedy",
   "photo": "https://www.congress.gov/img/member/k000393_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/John_Neely_Kennedy",
+  "govtrackLink": "https://www.govtrack.us/congress/members/john_kennedy/412679/report-card/2024",
   "termStart": "2017-01-03",
   "termEnd": "2029-01-03",
   "contact": {
@@ -1652,7 +1683,8 @@
     "earnedMediaCoverage": true,
     "sources": [
       "https://www.kennedy.senate.gov/",
-      "https://ballotpedia.org/John_Neely_Kennedy"
+      "https://ballotpedia.org/John_Neely_Kennedy",
+      "https://www.govtrack.us/congress/members/john_kennedy/412679/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -1665,7 +1697,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2028"
 },
-  {
+ {
   "name": "Susan Collins",
   "state": "Maine",
   "party": "Republican",
@@ -1673,6 +1705,7 @@
   "slug": "susan-collins",
   "photo": "https://www.congress.gov/img/member/c001035_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Susan_Collins",
+  "govtrackLink": "https://www.govtrack.us/congress/members/susan_collins/300025/report-card/2024",
   "termStart": "1997-01-03",
   "termEnd": "2027-01-03",
   "contact": {
@@ -1697,7 +1730,8 @@
     "earnedMediaCoverage": true,
     "sources": [
       "https://www.collins.senate.gov/",
-      "https://ballotpedia.org/Susan_Collins"
+      "https://ballotpedia.org/Susan_Collins",
+      "https://www.govtrack.us/congress/members/susan_collins/300025/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -1710,7 +1744,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2026"
 },
-  {
+{
   "name": "Angus King",
   "state": "Maine",
   "party": "Independent",
@@ -1718,6 +1752,7 @@
   "slug": "angus-king",
   "photo": "https://www.congress.gov/img/member/k000383_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Angus_King",
+  "govtrackLink": "https://www.govtrack.us/congress/members/angus_king/412545/report-card/2024",
   "termStart": "2013-01-03",
   "termEnd": "2029-01-03",
   "contact": {
@@ -1742,7 +1777,8 @@
     "earnedMediaCoverage": true,
     "sources": [
       "https://www.king.senate.gov/",
-      "https://ballotpedia.org/Angus_King"
+      "https://ballotpedia.org/Angus_King",
+      "https://www.govtrack.us/congress/members/angus_king/412545/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -1763,6 +1799,7 @@
   "slug": "angela-alsobrooks",
   "photo": "https://www.congress.gov/img/member/67acdbbf044eb506e25958f2_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Angela_Alsobrooks",
+  "govtrackLink": "https://www.govtrack.us/congress/members/angela_alsobrooks/456965/report-card/2024",
   "termStart": "2025-01-03",
   "termEnd": "2031-01-03",
   "contact": {
@@ -1788,7 +1825,8 @@
     "sources": [
       "https://www.alsobrooks.senate.gov/",
       "https://ballotpedia.org/Angela_Alsobrooks",
-      "https://www.alsobrooks.senate.gov/voting-record/"
+      "https://www.alsobrooks.senate.gov/voting-record/",
+      "https://www.govtrack.us/congress/members/angela_alsobrooks/456965/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -1801,7 +1839,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2030"
 },
- {
+{
   "name": "Chris Van Hollen",
   "state": "Maryland",
   "party": "Democratic",
@@ -1809,6 +1847,7 @@
   "slug": "chris-van-hollen",
   "photo": "https://www.congress.gov/img/member/v000128_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Chris_Van_Hollen",
+  "govtrackLink": "https://www.govtrack.us/congress/members/chris_van_hollen/400220/report-card/2024",
   "termStart": "2017-01-03",
   "termEnd": "2029-01-03",
   "contact": {
@@ -1833,7 +1872,8 @@
     "earnedMediaCoverage": true,
     "sources": [
       "https://www.vanhollen.senate.gov/",
-      "https://ballotpedia.org/Chris_Van_Hollen"
+      "https://ballotpedia.org/Chris_Van_Hollen",
+      "https://www.govtrack.us/congress/members/chris_van_hollen/400220/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -1854,6 +1894,7 @@
   "slug": "elizabeth-warren",
   "photo": "https://www.congress.gov/img/member/w000817_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Elizabeth_Warren",
+  "govtrackLink": "https://www.govtrack.us/congress/members/elizabeth_warren/412542/report-card/2024",
   "termStart": "2013-01-03",
   "termEnd": "2029-01-03",
   "contact": {
@@ -1879,7 +1920,8 @@
     "sources": [
       "https://www.warren.senate.gov/",
       "https://ballotpedia.org/Elizabeth_Warren",
-      "https://rrhelections.com/index.php/2025/07/29/rrh-elections-july-2025-senate-rankings/"
+      "https://rrhelections.com/index.php/2025/07/29/rrh-elections-july-2025-senate-rankings/",
+      "https://www.govtrack.us/congress/members/elizabeth_warren/412542/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -1892,7 +1934,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2028"
 },
-  {
+ {
   "name": "Edward Markey",
   "state": "Massachusetts",
   "party": "Democratic",
@@ -1900,6 +1942,7 @@
   "slug": "edward-markey",
   "photo": "https://www.congress.gov/img/member/m000133_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Edward_J._Markey",
+  "govtrackLink": "https://www.govtrack.us/congress/members/edward_markey/400253/report-card/2024",
   "termStart": "2013-07-16",
   "termEnd": "2027-01-03",
   "contact": {
@@ -1925,7 +1968,8 @@
     "sources": [
       "https://www.markey.senate.gov/",
       "https://ballotpedia.org/Edward_J._Markey",
-      "https://rrhelections.com/index.php/2025/07/29/rrh-elections-july-2025-senate-rankings/"
+      "https://rrhelections.com/index.php/2025/07/29/rrh-elections-july-2025-senate-rankings/",
+      "https://www.govtrack.us/congress/members/edward_markey/400253/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -1938,7 +1982,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2026"
 },
-  {
+ {
   "name": "Gary Peters",
   "state": "Michigan",
   "party": "Democratic",
@@ -1946,6 +1990,7 @@
   "slug": "gary-peters",
   "photo": "https://www.congress.gov/img/member/p000595_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Gary_Peters",
+  "govtrackLink": "https://www.govtrack.us/congress/members/gary_peters/412493/report-card/2024",
   "termStart": "2015-01-03",
   "termEnd": "2027-01-03",
   "contact": {
@@ -1970,7 +2015,8 @@
     "earnedMediaCoverage": true,
     "sources": [
       "https://www.peters.senate.gov/",
-      "https://ballotpedia.org/Gary_Peters"
+      "https://ballotpedia.org/Gary_Peters",
+      "https://www.govtrack.us/congress/members/gary_peters/412493/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -1991,6 +2037,7 @@
   "slug": "elissa-slotkin",
   "photo": "https://www.congress.gov/img/member/s001208_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Elissa_Slotkin",
+  "govtrackLink": "https://www.govtrack.us/congress/members/elissa_slotkin/412784/report-card/2024",
   "termStart": "2025-01-03",
   "termEnd": "2031-01-03",
   "contact": {
@@ -2016,7 +2063,8 @@
     "sources": [
       "https://www.slotkin.senate.gov/",
       "https://ballotpedia.org/Elissa_Slotkin",
-      "https://congressratings.com/michigan-mi/rep-elissa-slotkin-mi-democrat/"
+      "https://congressratings.com/michigan-mi/rep-elissa-slotkin-mi-democrat/",
+      "https://www.govtrack.us/congress/members/elissa_slotkin/412784/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -2037,6 +2085,7 @@
   "slug": "amy-klobuchar",
   "photo": "https://www.congress.gov/img/member/k000367_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Amy_Klobuchar",
+  "govtrackLink": "https://www.govtrack.us/congress/members/amy_klobuchar/412242/report-card/2024",
   "termStart": "2007-01-03",
   "termEnd": "2031-01-03",
   "contact": {
@@ -2062,7 +2111,8 @@
     "sources": [
       "https://www.klobuchar.senate.gov/",
       "https://ballotpedia.org/Amy_Klobuchar",
-      "https://kstp.com/kstp-news/top-news/kstp-surveyusa-poll-results-approval-ratings-for-leaders-and-issues/"
+      "https://kstp.com/kstp-news/top-news/kstp-surveyusa-poll-results-approval-ratings-for-leaders-and-issues/",
+      "https://www.govtrack.us/congress/members/amy_klobuchar/412242/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -2075,7 +2125,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2030"
 },
-  {
+ {
   "name": "Tina Smith",
   "state": "Minnesota",
   "party": "Democratic",
@@ -2083,6 +2133,7 @@
   "slug": "tina-smith",
   "photo": "https://www.congress.gov/img/member/s001203_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Tina_Smith",
+  "govtrackLink": "https://www.govtrack.us/congress/members/tina_smith/412742/report-card/2024",
   "termStart": "2018-01-03",
   "termEnd": "2027-01-03",
   "contact": {
@@ -2107,7 +2158,8 @@
     "earnedMediaCoverage": true,
     "sources": [
       "https://www.smith.senate.gov/",
-      "https://ballotpedia.org/Tina_Smith"
+      "https://ballotpedia.org/Tina_Smith",
+      "https://www.govtrack.us/congress/members/tina_smith/412742/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -2128,6 +2180,7 @@
   "slug": "roger-wicker",
   "photo": "https://www.congress.gov/img/member/f49ac425119375e9fe6a075762734079_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Roger_Wicker",
+  "govtrackLink": "https://www.govtrack.us/congress/members/roger_wicker/400432/report-card/2024",
   "termStart": "2007-12-31",
   "termEnd": "2031-01-03",
   "contact": {
@@ -2153,7 +2206,8 @@
     "sources": [
       "https://www.wicker.senate.gov/",
       "https://ballotpedia.org/Roger_Wicker",
-      "https://www.govtrack.us/congress/members/roger_wicker/400432"
+      "https://www.govtrack.us/congress/members/roger_wicker/400432",
+      "https://www.govtrack.us/congress/members/roger_wicker/400432/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -2166,7 +2220,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2030"
 },
- {
+{
   "name": "Cindy Hyde-Smith",
   "state": "Mississippi",
   "party": "Republican",
@@ -2174,6 +2228,7 @@
   "slug": "cindy-hyde-smith",
   "photo": "https://www.congress.gov/img/member/h001079_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Cindy_Hyde-Smith",
+  "govtrackLink": "https://www.govtrack.us/congress/members/cindy_hyde_smith/412743/report-card/2024",
   "termStart": "2018-04-09",
   "termEnd": "2027-01-03",
   "contact": {
@@ -2198,7 +2253,8 @@
     "earnedMediaCoverage": true,
     "sources": [
       "https://www.hydesmith.senate.gov/",
-      "https://ballotpedia.org/Cindy_Hyde-Smith"
+      "https://ballotpedia.org/Cindy_Hyde-Smith",
+      "https://www.govtrack.us/congress/members/cindy_hyde_smith/412743/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -2211,7 +2267,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2026"
 },
-  {
+ {
   "name": "Josh Hawley",
   "state": "Missouri",
   "party": "Republican",
@@ -2219,6 +2275,7 @@
   "slug": "josh-hawley",
   "photo": "https://www.congress.gov/img/member/h001089_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Josh_Hawley",
+  "govtrackLink": "https://www.govtrack.us/congress/members/josh_hawley/412841/report-card/2024",
   "termStart": "2019-01-03",
   "termEnd": "2031-01-03",
   "contact": {
@@ -2244,7 +2301,8 @@
     "sources": [
       "https://www.hawley.senate.gov/",
       "https://ballotpedia.org/Josh_Hawley",
-      "https://www.slu.edu/research/research-institute/big-ideas/slu-poll/data-archive/february-2025-poll/write-ups/republican-politicians.php"
+      "https://www.slu.edu/research/research-institute/big-ideas/slu-poll/data-archive/february-2025-poll/write-ups/republican-politicians.php",
+      "https://www.govtrack.us/congress/members/josh_hawley/412841/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -2265,6 +2323,7 @@
   "slug": "eric-schmitt",
   "photo": "https://www.congress.gov/img/member/b66a0806e77f63e862391b15a0b1f753_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Eric_Schmitt",
+  "govtrackLink": "https://www.govtrack.us/congress/members/eric_schmitt/456880/report-card/2024",
   "termStart": "2023-01-03",
   "termEnd": "2029-01-03",
   "contact": {
@@ -2290,7 +2349,8 @@
     "sources": [
       "https://www.schmitt.senate.gov/",
       "https://ballotpedia.org/Eric_Schmitt",
-      "https://rrhelections.com/index.php/2025/07/29/rrh-elections-july-2025-senate-rankings/"
+      "https://rrhelections.com/index.php/2025/07/29/rrh-elections-july-2025-senate-rankings/",
+      "https://www.govtrack.us/congress/members/eric_schmitt/456880/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -2303,7 +2363,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2028"
 },
- {
+{
   "name": "Tim Sheehy",
   "state": "Montana",
   "party": "Republican",
@@ -2311,6 +2371,7 @@
   "slug": "tim-sheehyr",
   "photo": "https://www.congress.gov/img/member/677d8231fdb6cf36bbb6498b_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Tim_Sheehy",
+  "govtrackLink": "https://www.govtrack.us/congress/members/tim_sheehy/456966/report-card/2024",
   "termStart": "2025-01-03",
   "termEnd": "2031-01-03",
   "contact": {
@@ -2336,7 +2397,8 @@
     "sources": [
       "https://www.sheehy.senate.gov/",
       "https://ballotpedia.org/Tim_Sheehy",
-      "https://congressratings.com/montana-mt/sen-tim-sheehy-mt-republican/"
+      "https://congressratings.com/montana-mt/sen-tim-sheehy-mt-republican/",
+      "https://www.govtrack.us/congress/members/tim_sheehy/456966/report-card/2024"
     ]
   },
   "billsSigned": ["S.160: Aerial Firefighting Enhancement Act of 2025"],
@@ -2349,7 +2411,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2030"
 },
- {
+{
   "name": "Steve Daines",
   "state": "Montana",
   "party": "Republican",
@@ -2357,6 +2419,7 @@
   "slug": "steve-daines",
   "photo": "https://www.congress.gov/img/member/d000618_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Steve_Daines",
+  "govtrackLink": "https://www.govtrack.us/congress/members/steve_daines/412613/report-card/2024",
   "termStart": "2015-01-03",
   "termEnd": "2027-01-03",
   "contact": {
@@ -2381,7 +2444,8 @@
     "earnedMediaCoverage": true,
     "sources": [
       "https://www.daines.senate.gov/",
-      "https://ballotpedia.org/Steve_Daines"
+      "https://ballotpedia.org/Steve_Daines",
+      "https://www.govtrack.us/congress/members/steve_daines/412613/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -2394,7 +2458,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2026"
 },
-  {
+ {
   "name": "Deb Fischer",
   "state": "Nebraska",
   "party": "Republican",
@@ -2402,6 +2466,7 @@
   "slug": "deb-fischer",
   "photo": "https://www.congress.gov/img/member/669ec7925d19788d1f2034a1_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Deb_Fischer",
+  "govtrackLink": "https://www.govtrack.us/congress/members/deb_fischer/412556/report-card/2024",
   "termStart": "2013-01-03",
   "termEnd": "2025-01-03",
   "contact": {
@@ -2426,7 +2491,8 @@
     "earnedMediaCoverage": true,
     "sources": [
       "https://www.fischer.senate.gov/",
-      "https://ballotpedia.org/Deb_Fischer"
+      "https://ballotpedia.org/Deb_Fischer",
+      "https://www.govtrack.us/congress/members/deb_fischer/412556/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -2447,6 +2513,7 @@
   "slug": "pete-ricketts",
   "photo": "https://www.congress.gov/img/member/r000618_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Pete_Ricketts",
+  "govtrackLink": "https://www.govtrack.us/congress/members/pete_ricketts/456881/report-card/2024",
   "termStart": "2023-01-23",
   "termEnd": "2027-01-03",
   "contact": {
@@ -2472,7 +2539,8 @@
     "sources": [
       "https://www.ricketts.senate.gov/",
       "https://ballotpedia.org/Pete_Ricketts",
-      "https://rrhelections.com/index.php/2025/07/29/rrh-elections-july-2025-senate-rankings/"
+      "https://rrhelections.com/index.php/2025/07/29/rrh-elections-july-2025-senate-rankings/",
+      "https://www.govtrack.us/congress/members/pete_ricketts/456881/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -2493,6 +2561,7 @@
   "slug": "jacky-rosen",
   "photo": "https://www.congress.gov/img/member/r000608_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Jacky_Rosen",
+  "govtrackLink": "https://www.govtrack.us/congress/members/jacky_rosen/412728/report-card/2024",
   "termStart": "2019-01-03",
   "termEnd": "2031-01-03",
   "contact": {
@@ -2518,7 +2587,8 @@
     "sources": [
       "https://www.rosen.senate.gov/",
       "https://ballotpedia.org/Jacky_Rosen",
-      "https://www.rosen.senate.gov/2025/03/25/report-rosen-recognized-as-one-of-the-top-10-most-effective-senate-democrats-for-second-time-in-a-row/"
+      "https://www.rosen.senate.gov/2025/03/25/report-rosen-recognized-as-one-of-the-top-10-most-effective-senate-democrats-for-second-time-in-a-row/",
+      "https://www.govtrack.us/congress/members/jacky_rosen/412728/report-card/2024"
     ]
   },
   "billsSigned": ["S.3448: Never Again Education Reauthorization Act of 2023", "S.932: No CORRUPTION Act"],
@@ -2539,6 +2609,7 @@
   "slug": "catherine-cortez-masto",
   "photo": "https://www.congress.gov/img/member/c001113_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Catherine_Cortez_Masto",
+  "govtrackLink": "https://www.govtrack.us/congress/members/catherine_cortez_masto/412681/report-card/2024",
   "termStart": "2017-01-03",
   "termEnd": "2029-01-03",
   "contact": {
@@ -2564,7 +2635,8 @@
     "sources": [
       "https://www.cortezmasto.senate.gov/",
       "https://ballotpedia.org/Catherine_Cortez_Masto",
-      "https://rrhelections.com/index.php/2025/07/29/rrh-elections-july-2025-senate-rankings/"
+      "https://rrhelections.com/index.php/2025/07/29/rrh-elections-july-2025-senate-rankings/",
+      "https://www.govtrack.us/congress/members/catherine_cortez_masto/412681/report-card/2024"
     ]
   },
   "billsSigned": ["S.366: Data Privacy and Protection Act of 2025"],
@@ -2585,6 +2657,7 @@
   "slug": "jeanne-shaheen",
   "photo": "https://www.congress.gov/img/member/s001181_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Jeanne_Shaheen",
+  "govtrackLink": "https://www.govtrack.us/congress/members/jeanne_shaheen/412323/report-card/2024",
   "termStart": "2009-01-03",
   "termEnd": "2027-01-03",
   "contact": {
@@ -2610,7 +2683,8 @@
     "sources": [
       "https://www.shaheen.senate.gov/",
       "https://ballotpedia.org/Jeanne_Shaheen",
-      "https://rrhelections.com/index.php/2025/07/29/rrh-elections-july-2025-senate-rankings/"
+      "https://rrhelections.com/index.php/2025/07/29/rrh-elections-july-2025-senate-rankings/",
+      "https://www.govtrack.us/congress/members/jeanne_shaheen/412323/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -2631,6 +2705,7 @@
   "slug": "maggie-hassan",
   "photo": "https://www.congress.gov/img/member/h001076_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Maggie_Hassan",
+  "govtrackLink": "https://www.govtrack.us/congress/members/maggie_hassan/412680/report-card/2024",
   "termStart": "2017-01-03",
   "termEnd": "2029-01-03",
   "contact": {
@@ -2656,7 +2731,8 @@
     "sources": [
       "https://www.hassan.senate.gov/",
       "https://ballotpedia.org/Maggie_Hassan",
-      "https://rrhelections.com/index.php/2025/07/29/rrh-elections-july-2025-senate-rankings/"
+      "https://rrhelections.com/index.php/2025/07/29/rrh-elections-july-2025-senate-rankings/",
+      "https://www.govtrack.us/congress/members/maggie_hassan/412680/report-card/2024"
     ]
   },
   "billsSigned": ["S.128: Opioid Response Enhancement Act"],
@@ -2677,6 +2753,7 @@
   "slug": "andrew-kim",
   "photo": "https://www.congress.gov/img/member/677d84cbfdb6cf36bbb649a1_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Andrew_Kim",
+  "govtrackLink": "https://www.govtrack.us/congress/members/andrew_kim/412838/report-card/2024",
   "termStart": "2024-12-09",
   "termEnd": "2031-01-03",
   "contact": {
@@ -2702,7 +2779,8 @@
     "sources": [
       "https://www.kim.senate.gov/",
       "https://ballotpedia.org/Andrew_Kim",
-      "https://newjerseyglobe.com/fr/kim-in-pole-position-to-be-new-jerseys-next-u-s-senator-fdu-poll-finds/"
+      "https://newjerseyglobe.com/fr/kim-in-pole-position-to-be-new-jerseys-next-u-s-senator-fdu-poll-finds/",
+      "https://www.govtrack.us/congress/members/andrew_kim/412838/report-card/2024"
     ]
   },
   "billsSigned": [],
@@ -2723,6 +2801,7 @@
   "slug": "cory-booker",
   "photo": "https://www.congress.gov/img/member/b001288_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Cory_Booker",
+  "govtrackLink": "https://www.govtrack.us/congress/members/cory_booker/412598/report-card/2024",
   "termStart": "2013-10-31",
   "termEnd": "2027-01-03",
   "contact": {
@@ -2748,7 +2827,8 @@
     "sources": [
       "https://www.booker.senate.gov/",
       "https://ballotpedia.org/Cory_Booker",
-      "https://rrhelections.com/index.php/2025/07/29/rrh-elections-july-2025-senate-rankings/"
+      "https://rrhelections.com/index.php/2025/07/29/rrh-elections-july-2025-senate-rankings/",
+      "https://www.govtrack.us/congress/members/cory_booker/412598/report-card/2024"
     ]
   },
   "billsSigned": ["S.597: Police Accountability and Community Safety Act"],
@@ -2769,6 +2849,7 @@
   "slug": "ben-ray-lujan",
   "photo": "https://www.congress.gov/img/member/l000570_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Ben_Ray_Luján",
+  "govtrackLink": "https://www.govtrack.us/congress/members/ben_lujan/412293/report-card/2024",
   "termStart": "2021-01-03",
   "termEnd": "2027-01-03",
   "contact": {
@@ -2794,7 +2875,8 @@
     "sources": [
       "https://www.lujan.senate.gov/",
       "https://ballotpedia.org/Ben_Ray_Luján",
-      "https://pro.morningconsult.com/tags/senator-approval"
+      "https://pro.morningconsult.com/tags/senator-approval",
+      "https://www.govtrack.us/congress/members/ben_lujan/412293/report-card/2024"
     ]
   },
   "billsSigned": ["S.108: Rural Broadband Expansion Act"],
@@ -2807,7 +2889,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2026"
 },
-  {
+{
   "name": "Martin Heinrich",
   "state": "New Mexico",
   "party": "Democratic",
@@ -2815,6 +2897,7 @@
   "slug": "martin-heinrich",
   "photo": "https://www.congress.gov/img/member/h001046_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Martin_Heinrich",
+  "govtrackLink": "https://www.govtrack.us/congress/members/martin_heinrich/412303/report-card/2024",
   "termStart": "2013-01-03",
   "termEnd": "2025-01-03",
   "contact": {
@@ -2840,7 +2923,8 @@
     "sources": [
       "https://www.heinrich.senate.gov/",
       "https://ballotpedia.org/Martin_Heinrich",
-      "https://pro.morningconsult.com/tags/senator-approval"
+      "https://pro.morningconsult.com/tags/senator-approval",
+      "https://www.govtrack.us/congress/members/martin_heinrich/412303/report-card/2024"
     ]
   },
   "billsSigned": ["S.222: Clean Energy Workforce Development Act"],
@@ -2853,7 +2937,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2024"
 },
-  {
+ {
   "name": "Chuck Schumer",
   "state": "New York",
   "party": "Democratic",
@@ -2861,6 +2945,7 @@
   "slug": "chuck-schumer",
   "photo": "https://www.congress.gov/img/member/s000148_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Chuck_Schumer",
+  "govtrackLink": "https://www.govtrack.us/congress/members/chuck_schumer/300087/report-card/2024",
   "termStart": "1999-01-03",
   "termEnd": "2029-01-03",
   "contact": {
@@ -2886,7 +2971,8 @@
     "sources": [
       "https://www.schumer.senate.gov/",
       "https://ballotpedia.org/Chuck_Schumer",
-      "https://pro.morningconsult.com/tags/senator-approval"
+      "https://pro.morningconsult.com/tags/senator-approval",
+      "https://www.govtrack.us/congress/members/chuck_schumer/300087/report-card/2024"
     ]
   },
   "billsSigned": ["S.1: For the People Act", "S.125: Infrastructure Investment and Jobs Act"],
@@ -2899,7 +2985,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2028"
 },
- {
+{
   "name": "Kirsten Gillibrand",
   "state": "New York",
   "party": "Democratic",
@@ -2907,6 +2993,7 @@
   "slug": "kirsten-gillibrand",
   "photo": "https://www.congress.gov/img/member/g000555_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Kirsten_Gillibrand",
+  "govtrackLink": "https://www.govtrack.us/congress/members/kirsten_gillibrand/412223/report-card/2024",
   "termStart": "2009-01-26",
   "termEnd": "2025-01-03",
   "contact": {
@@ -2932,7 +3019,8 @@
     "sources": [
       "https://www.gillibrand.senate.gov/",
       "https://ballotpedia.org/Kirsten_Gillibrand",
-      "https://pro.morningconsult.com/tags/senator-approval"
+      "https://pro.morningconsult.com/tags/senator-approval",
+      "https://www.govtrack.us/congress/members/kirsten_gillibrand/412223/report-card/2024"
     ]
   },
   "billsSigned": ["S.152: Military Justice Improvement and Increasing Prevention Act"],
@@ -2945,7 +3033,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2024"
 },
- {
+{
   "name": "Ted Budd",
   "state": "North Carolina",
   "party": "Republican",
@@ -2953,6 +3041,7 @@
   "slug": "ted-budd",
   "photo": "https://www.congress.gov/img/member/b001305_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Ted_Budd",
+  "govtrackLink": "https://www.govtrack.us/congress/members/ted_budd/412722/report-card/2024",
   "termStart": "2023-01-03",
   "termEnd": "2029-01-03",
   "contact": {
@@ -2978,7 +3067,8 @@
     "sources": [
       "https://www.budd.senate.gov/",
       "https://ballotpedia.org/Ted_Budd",
-      "https://congressratings.com/north-carolina-nc/sen-ted-budd-nc-republican/"
+      "https://congressratings.com/north-carolina-nc/sen-ted-budd-nc-republican/",
+      "https://www.govtrack.us/congress/members/ted_budd/412722/report-card/2024"
     ]
   },
   "billsSigned": ["S.2442: Workforce Development Modernization Act", "S.1398: Promoting Free and Fair Elections Act"],
@@ -2999,6 +3089,7 @@
   "slug": "thom-tillis",
   "photo": "https://www.congress.gov/img/member/t000476_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Thom_Tillis",
+  "govtrackLink": "https://www.govtrack.us/congress/members/thom_tillis/412668/report-card/2024",
   "termStart": "2015-01-03",
   "termEnd": "2027-01-03",
   "contact": {
@@ -3024,7 +3115,8 @@
     "sources": [
       "https://www.tillis.senate.gov/",
       "https://ballotpedia.org/Thom_Tillis",
-      "https://pro.morningconsult.com/tags/senator-approval"
+      "https://pro.morningconsult.com/tags/senator-approval",
+      "https://www.govtrack.us/congress/members/thom_tillis/412668/report-card/2024"
     ]
   },
   "billsSigned": ["S.118: VA Accountability and Transparency Act"],
@@ -3037,7 +3129,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2026"
 },
- {
+{
   "name": "John Hoeven",
   "state": "North Dakota",
   "party": "Republican",
@@ -3045,6 +3137,7 @@
   "slug": "john-hoeven",
   "photo": "https://www.congress.gov/img/member/h001061_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/John_Hoeven",
+  "govtrackLink": "https://www.govtrack.us/congress/members/john_hoeven/412494/report-card/2024",
   "termStart": "2011-01-03",
   "termEnd": "2029-01-03",
   "contact": {
@@ -3070,7 +3163,8 @@
     "sources": [
       "https://www.hoeven.senate.gov/",
       "https://ballotpedia.org/John_Hoeven",
-      "https://pro.morningconsult.com/tags/senator-approval"
+      "https://pro.morningconsult.com/tags/senator-approval",
+      "https://www.govtrack.us/congress/members/john_hoeven/412494/report-card/2024"
     ]
   },
   "billsSigned": ["S.198: Rural Water Infrastructure Act"],
@@ -3083,7 +3177,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2028"
 },
-  {
+ {
   "name": "Kevin Cramer",
   "state": "North Dakota",
   "party": "Republican",
@@ -3091,6 +3185,7 @@
   "slug": "kevin-cramer",
   "photo": "https://www.congress.gov/img/member/c001096_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Kevin_Cramer",
+  "govtrackLink": "https://www.govtrack.us/congress/members/kevin_cramer/412556/report-card/2024",
   "termStart": "2019-01-03",
   "termEnd": "2025-01-03",
   "contact": {
@@ -3116,7 +3211,8 @@
     "sources": [
       "https://www.cramer.senate.gov/",
       "https://ballotpedia.org/Kevin_Cramer",
-      "https://pro.morningconsult.com/tags/senator-approval"
+      "https://pro.morningconsult.com/tags/senator-approval",
+      "https://www.govtrack.us/congress/members/kevin_cramer/412556/report-card/2024"
     ]
   },
   "billsSigned": ["S.174: Federal Permitting Reform Act"],
@@ -3129,7 +3225,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2024"
 },
-  {
+  {{
   "name": "Jon Husted",
   "state": "Ohio",
   "party": "Republican",
@@ -3137,6 +3233,7 @@
   "slug": "jon-husted",
   "photo": "https://www.congress.gov/img/member/67f0316b1b05a5a598f7fdf3_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Jon_Husted",
+  "govtrackLink": "https://www.govtrack.us/congress/members/jon_husted/456882/report-card/2024",
   "termStart": "2025-01-21",
   "termEnd": "2029-01-03",
   "contact": {
@@ -3162,7 +3259,8 @@
     "sources": [
       "https://www.husted.senate.gov/",
       "https://ballotpedia.org/Jon_Husted",
-      "https://www.msn.com/en-us/news/politics/government-shutdown-persists-as-senate-fails-to-reach-agreement-on-healthcare/ar-AA1NHEAz"
+      "https://www.msn.com/en-us/news/politics/government-shutdown-persists-as-senate-fails-to-reach-agreement-on-healthcare/ar-AA1NHEAz",
+      "https://www.govtrack.us/congress/members/jon_husted/456882/report-card/2024"
     ]
   },
   "billsSigned": ["S.J.Res.50: Congressional Disapproval of DOE Rule on Energy Innovation"],
@@ -3175,7 +3273,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2026"
 },
-  {
+ {
   "name": "Bernie Moreno",
   "state": "Ohio",
   "party": "Republican",
@@ -3183,6 +3281,7 @@
   "slug": "bernie-moreno",
   "photo": "https://www.congress.gov/img/member/67c8694e6159152e59828afb_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Bernie_Moreno",
+  "govtrackLink": "https://www.govtrack.us/congress/members/bernie_moreno/456883/report-card/2024",
   "termStart": "2025-01-03",
   "termEnd": "2031-01-03",
   "contact": {
@@ -3208,7 +3307,8 @@
     "sources": [
       "https://www.moreno.senate.gov/",
       "https://ballotpedia.org/Bernie_Moreno",
-      "https://www.realclearpolitics.com/articles/2025/07/29/ohio_senate_moreno_approval_rating_hits_50_percent.html"
+      "https://www.realclearpolitics.com/articles/2025/07/29/ohio_senate_moreno_approval_rating_hits_50_percent.html",
+      "https://www.govtrack.us/congress/members/bernie_moreno/456883/report-card/2024"
     ]
   },
   "billsSigned": ["S.1999: Blockchain Federal Modernization Act"],
@@ -3221,7 +3321,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2030"
 },
-  {
+ {
   "name": "James Lankford",
   "state": "Oklahoma",
   "party": "Republican",
@@ -3229,6 +3329,7 @@
   "slug": "james-lankford",
   "photo": "https://www.congress.gov/img/member/l000575_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/James_Lankford",
+  "govtrackLink": "https://www.govtrack.us/congress/members/james_lankford/412582/report-card/2024",
   "termStart": "2015-01-03",
   "termEnd": "2029-01-03",
   "contact": {
@@ -3254,7 +3355,8 @@
     "sources": [
       "https://www.lankford.senate.gov/",
       "https://ballotpedia.org/James_Lankford",
-      "https://pro.morningconsult.com/tags/senator-approval"
+      "https://pro.morningconsult.com/tags/senator-approval",
+      "https://www.govtrack.us/congress/members/james_lankford/412582/report-card/2024"
     ]
   },
   "billsSigned": ["S.112: Federal Budget Transparency Act"],
@@ -3275,6 +3377,7 @@
   "slug": "markwayne-mullin",
   "photo": "https://www.congress.gov/img/member/m001190_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Markwayne_Mullin",
+  "govtrackLink": "https://www.govtrack.us/congress/members/markwayne_mullin/412560/report-card/2024",
   "termStart": "2023-01-03",
   "termEnd": "2029-01-03",
   "contact": {
@@ -3300,7 +3403,8 @@
     "sources": [
       "https://www.mullin.senate.gov/",
       "https://ballotpedia.org/Markwayne_Mullin",
-      "https://pro.morningconsult.com/tags/senator-approval"
+      "https://pro.morningconsult.com/tags/senator-approval",
+      "https://www.govtrack.us/congress/members/markwayne_mullin/412560/report-card/2024"
     ]
   },
   "billsSigned": ["S.120: Tribal Infrastructure Enhancement Act"],
@@ -3321,6 +3425,7 @@
   "slug": "ron-wyden",
   "photo": "https://www.congress.gov/img/member/w000779_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Ron_Wyden",
+  "govtrackLink": "https://www.govtrack.us/congress/members/ron_wyden/300100/report-card/2024",
   "termStart": "1996-02-05",
   "termEnd": "2029-01-03",
   "contact": {
@@ -3346,7 +3451,8 @@
     "sources": [
       "https://www.wyden.senate.gov/",
       "https://ballotpedia.org/Ron_Wyden",
-      "https://pro.morningconsult.com/tags/senator-approval"
+      "https://pro.morningconsult.com/tags/senator-approval",
+      "https://www.govtrack.us/congress/members/ron_wyden/300100/report-card/2024"
     ]
   },
   "billsSigned": ["S.899: Digital Privacy Protection Act", "S.1442: Wildfire Resilience and Recovery Act"],
@@ -3359,7 +3465,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2028"
 },
-  {
+ {
   "name": "Jeff Merkley",
   "state": "Oregon",
   "party": "Democratic",
@@ -3367,6 +3473,7 @@
   "slug": "jeff-merkley",
   "photo": "https://www.congress.gov/img/member/m001176_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Jeff_Merkley",
+  "govtrackLink": "https://www.govtrack.us/congress/members/jeff_merkley/412325/report-card/2024",
   "termStart": "2009-01-03",
   "termEnd": "2027-01-03",
   "contact": {
@@ -3392,7 +3499,8 @@
     "sources": [
       "https://www.merkley.senate.gov/",
       "https://ballotpedia.org/Jeff_Merkley",
-      "https://pro.morningconsult.com/tags/senator-approval"
+      "https://pro.morningconsult.com/tags/senator-approval",
+      "https://www.govtrack.us/congress/members/jeff_merkley/412325/report-card/2024"
     ]
   },
   "billsSigned": ["S.121: Fair Elections Now Act", "S.1102: Affordable Housing Expansion Act"],
@@ -3413,6 +3521,7 @@
   "slug": "david-mccormick",
   "photo": "https://www.congress.gov/img/member/677d85e0fdb6cf36bbb649aa_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/David_McCormick",
+  "govtrackLink": "https://www.govtrack.us/congress/members/david_mccormick/456884/report-card/2024",
   "termStart": "2025-01-03",
   "termEnd": "2031-01-03",
   "contact": {
@@ -3438,7 +3547,8 @@
     "sources": [
       "https://www.mccormick.senate.gov/",
       "https://ballotpedia.org/David_McCormick",
-      "https://congressratings.com/pennsylvania-pa/sen-dave-mccormick-pa-republican/"
+      "https://congressratings.com/pennsylvania-pa/sen-dave-mccormick-pa-republican/",
+      "https://www.govtrack.us/congress/members/david_mccormick/456884/report-card/2024"
     ]
   },
   "billsSigned": ["S.2861: Protecting the USMCA from Harmful Chinese Investment Act"],
@@ -3451,7 +3561,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2030"
 },
-  {
+{
   "name": "John Fetterman",
   "state": "Pennsylvania",
   "party": "Democratic",
@@ -3459,6 +3569,7 @@
   "slug": "john-fetterman",
   "photo": "https://www.congress.gov/img/member/f000479_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/John_Fetterman",
+  "govtrackLink": "https://www.govtrack.us/congress/members/john_fetterman/456881/report-card/2024",
   "termStart": "2023-01-03",
   "termEnd": "2029-01-03",
   "contact": {
@@ -3484,7 +3595,8 @@
     "sources": [
       "https://www.fetterman.senate.gov/",
       "https://ballotpedia.org/John_Fetterman",
-      "https://www.msn.com/en-us/news/politics/john-fetterman-now-has-higher-approval-rating-with-republicans-than-democrats/ar-AA1NH0Bn"
+      "https://www.msn.com/en-us/news/politics/john-fetterman-now-has-higher-approval-rating-with-republicans-than-democrats/ar-AA1NH0Bn",
+      "https://www.govtrack.us/congress/members/john_fetterman/456881/report-card/2024"
     ]
   },
   "billsSigned": ["S.1313: Veterans Mental Health Expansion Act"],
@@ -3505,6 +3617,7 @@
   "slug": "jack-reed",
   "photo": "https://www.congress.gov/img/member/r000122_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Jack_Reed",
+  "govtrackLink": "https://www.govtrack.us/congress/members/jack_reed/300081/report-card/2024",
   "termStart": "1997-01-03",
   "termEnd": "2027-01-03",
   "contact": {
@@ -3530,7 +3643,8 @@
     "sources": [
       "https://www.reed.senate.gov/",
       "https://ballotpedia.org/Jack_Reed",
-      "https://pro.morningconsult.com/tags/senator-approval"
+      "https://pro.morningconsult.com/tags/senator-approval",
+      "https://www.govtrack.us/congress/members/jack_reed/300081/report-card/2024"
     ]
   },
   "billsSigned": ["S.101: Military Family Support Act", "S.144: Affordable Housing Credit Improvement Act"],
@@ -3551,6 +3665,7 @@
   "slug": "sheldon-whitehouse",
   "photo": "https://www.congress.gov/img/member/w000802_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Sheldon_Whitehouse",
+  "govtrackLink": "https://www.govtrack.us/congress/members/sheldon_whitehouse/412247/report-card/2024",
   "termStart": "2007-01-03",
   "termEnd": "2027-01-03",
   "contact": {
@@ -3576,7 +3691,8 @@
     "sources": [
       "https://www.whitehouse.senate.gov/",
       "https://ballotpedia.org/Sheldon_Whitehouse",
-      "https://pro.morningconsult.com/tags/senator-approval"
+      "https://pro.morningconsult.com/tags/senator-approval",
+      "https://www.govtrack.us/congress/members/sheldon_whitehouse/412247/report-card/2024"
     ]
   },
   "billsSigned": ["S.142: Supreme Court Ethics Act", "S.1189: Climate Corporate Accountability Act"],
@@ -3597,6 +3713,7 @@
   "slug": "lindsey-graham",
   "photo": "https://www.congress.gov/img/member/g000359_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Lindsey_Graham",
+  "govtrackLink": "https://www.govtrack.us/congress/members/lindsey_graham/300047/report-card/2024",
   "termStart": "2003-01-03",
   "termEnd": "2027-01-03",
   "contact": {
@@ -3623,7 +3740,8 @@
       "https://www.lgraham.senate.gov/",
       "https://ballotpedia.org/Lindsey_Graham",
       "https://www.hererockhill.com/graham-approval-rating/",
-      "https://www.newsweek.com/lindsey-graham-annie-andrews-senate-race-2026-2081501"
+      "https://www.newsweek.com/lindsey-graham-annie-andrews-senate-race-2026-2081501",
+      "https://www.govtrack.us/congress/members/lindsey_graham/300047/report-card/2024"
     ]
   },
   "billsSigned": ["S.104: Military Aid Expansion Act"],
@@ -3644,6 +3762,7 @@
   "slug": "tim-scott",
   "photo": "https://www.congress.gov/img/member/s001197_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Tim_Scott",
+  "govtrackLink": "https://www.govtrack.us/congress/members/tim_scott/412471/report-card/2024",
   "termStart": "2013-01-03",
   "termEnd": "2029-01-03",
   "contact": {
@@ -3669,7 +3788,8 @@
     "sources": [
       "https://www.scott.senate.gov/",
       "https://ballotpedia.org/Tim_Scott",
-      "https://pro.morningconsult.com/tags/senator-approval"
+      "https://pro.morningconsult.com/tags/senator-approval",
+      "https://www.govtrack.us/congress/members/tim_scott/412471/report-card/2024"
     ]
   },
   "billsSigned": ["S.134: Police Reform and Accountability Act", "S.1022: Opportunity Zone Expansion Act"],
@@ -3682,7 +3802,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2028"
 },
-  {
+ {
   "name": "Mike Rounds",
   "state": "South Dakota",
   "party": "Republican",
@@ -3690,6 +3810,7 @@
   "slug": "mike-rounds",
   "photo": "https://www.congress.gov/img/member/r000605_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Mike_Rounds",
+  "govtrackLink": "https://www.govtrack.us/congress/members/mike_rounds/412666/report-card/2024",
   "termStart": "2015-01-03",
   "termEnd": "2027-01-03",
   "contact": {
@@ -3715,7 +3836,8 @@
     "sources": [
       "https://www.rounds.senate.gov/",
       "https://ballotpedia.org/Mike_Rounds",
-      "https://pro.morningconsult.com/tags/senator-approval"
+      "https://pro.morningconsult.com/tags/senator-approval",
+      "https://www.govtrack.us/congress/members/mike_rounds/412666/report-card/2024"
     ]
   },
   "billsSigned": ["S.122: Tribal Health Infrastructure Act", "S.1301: Cyber Defense Modernization Act"],
@@ -3728,7 +3850,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2026"
 },
-  {
+ {
   "name": "John Thune",
   "state": "South Dakota",
   "party": "Republican",
@@ -3736,6 +3858,7 @@
   "slug": "john-thune",
   "photo": "https://www.congress.gov/img/member/t000250_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/John_Thune",
+  "govtrackLink": "https://www.govtrack.us/congress/members/john_thune/400546/report-card/2024",
   "termStart": "2005-01-03",
   "termEnd": "2029-01-03",
   "contact": {
@@ -3761,7 +3884,8 @@
     "sources": [
       "https://www.thune.senate.gov/",
       "https://ballotpedia.org/John_Thune",
-      "https://pro.morningconsult.com/tags/senator-approval"
+      "https://pro.morningconsult.com/tags/senator-approval",
+      "https://www.govtrack.us/congress/members/john_thune/400546/report-card/2024"
     ]
   },
   "billsSigned": ["S.140: Rural Broadband Expansion Act", "S.1120: Freight Infrastructure Modernization Act"],
@@ -3782,6 +3906,7 @@
   "slug": "marsha-blackburn",
   "photo": "https://www.congress.gov/img/member/b001243_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Marsha_Blackburn",
+  "govtrackLink": "https://www.govtrack.us/congress/members/marsha_blackburn/400032/report-card/2024",
   "termStart": "2019-01-03",
   "termEnd": "2025-01-03",
   "contact": {
@@ -3807,7 +3932,8 @@
     "sources": [
       "https://www.blackburn.senate.gov/",
       "https://ballotpedia.org/Marsha_Blackburn",
-      "https://pro.morningconsult.com/tags/senator-approval"
+      "https://pro.morningconsult.com/tags/senator-approval",
+      "https://www.govtrack.us/congress/members/marsha_blackburn/400032/report-card/2024"
     ]
   },
   "billsSigned": ["S.1422: Parental Rights and Transparency Act", "S.1998: Big Tech Accountability and Privacy Act"],
@@ -3828,6 +3954,7 @@
   "slug": "bill-hagerty",
   "photo": "https://upload.wikimedia.org/wikipedia/commons/d/de/Bill_Hagerty_senatorial_portrait.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Bill_Hagerty",
+  "govtrackLink": "https://www.govtrack.us/congress/members/bill_hagerty/456870/report-card/2024",
   "termStart": "2021-01-03",
   "termEnd": "2027-01-03",
   "contact": {
@@ -3853,7 +3980,8 @@
     "sources": [
       "https://www.hagerty.senate.gov/",
       "https://ballotpedia.org/Bill_Hagerty",
-      "https://pro.morningconsult.com/tags/senator-approval"
+      "https://pro.morningconsult.com/tags/senator-approval",
+      "https://www.govtrack.us/congress/members/bill_hagerty/456870/report-card/2024"
     ]
   },
   "billsSigned": ["S.1444: American Semiconductor Expansion Act", "S.1312: ESG Mandate Prohibition Act"],
@@ -3866,7 +3994,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2026"
 },
-  {
+{
   "name": "John Cornyn",
   "state": "Texas",
   "party": "Republican",
@@ -3874,6 +4002,7 @@
   "slug": "john-cornyn",
   "photo": "https://www.congress.gov/img/member/c001056_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/John_Cornyn",
+  "govtrackLink": "https://www.govtrack.us/congress/members/john_cornyn/300027/report-card/2024",
   "termStart": "2002-12-02",
   "termEnd": "2027-01-03",
   "contact": {
@@ -3899,7 +4028,8 @@
     "sources": [
       "https://www.cornyn.senate.gov/",
       "https://ballotpedia.org/John_Cornyn",
-      "https://pro.morningconsult.com/tags/senator-approval"
+      "https://pro.morningconsult.com/tags/senator-approval",
+      "https://www.govtrack.us/congress/members/john_cornyn/300027/report-card/2024"
     ]
   },
   "billsSigned": ["S.1221: Border Surveillance Enhancement Act", "S.1310: Judicial Efficiency and Transparency Act"],
@@ -3912,7 +4042,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2026"
 },
-  {
+ {
   "name": "Ted Cruz",
   "state": "Texas",
   "party": "Republican",
@@ -3920,6 +4050,7 @@
   "slug": "ted-cruz",
   "photo": "https://www.congress.gov/img/member/c001098_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Ted_Cruz",
+  "govtrackLink": "https://www.govtrack.us/congress/members/ted_cruz/412573/report-card/2024",
   "termStart": "2013-01-03",
   "termEnd": "2025-01-03",
   "contact": {
@@ -3945,7 +4076,8 @@
     "sources": [
       "https://www.cruz.senate.gov/",
       "https://ballotpedia.org/Ted_Cruz",
-      "https://pro.morningconsult.com/tags/senator-approval"
+      "https://pro.morningconsult.com/tags/senator-approval",
+      "https://www.govtrack.us/congress/members/ted_cruz/412573/report-card/2024"
     ]
   },
   "billsSigned": ["S.1776: Energy Freedom and Deregulation Act", "S.1311: IRS Abolition and Flat Tax Act"],
@@ -3958,7 +4090,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2024"
 },
-  {
+ {
   "name": "John Curtis",
   "state": "Utah",
   "party": "Republican",
@@ -3966,6 +4098,7 @@
   "slug": "john-curtis",
   "photo": "https://www.congress.gov/img/member/677d85e0fdb6cf36bbb649aa_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/John_Curtis",
+  "govtrackLink": "https://www.govtrack.us/congress/members/john_curtis/456885/report-card/2024",
   "termStart": "2025-01-03",
   "termEnd": "2031-01-03",
   "contact": {
@@ -3992,7 +4125,8 @@
       "https://www.curtis.senate.gov/",
       "https://ballotpedia.org/John_Curtis",
       "https://www.deseret.com/politics/2025/01/03/john-curtis-swearing-in-senate/",
-      "https://pro.morningconsult.com/tags/senator-approval"
+      "https://pro.morningconsult.com/tags/senator-approval",
+      "https://www.govtrack.us/congress/members/john_curtis/456885/report-card/2024"
     ]
   },
   "billsSigned": ["S.1440: Fix Our Forests Act"],
@@ -4005,7 +4139,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2030"
 },
- {
+{
   "name": "Mike Lee",
   "state": "Utah",
   "party": "Republican",
@@ -4013,6 +4147,7 @@
   "slug": "mike-lee",
   "photo": "https://www.congress.gov/img/member/l000577_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Mike_Lee",
+  "govtrackLink": "https://www.govtrack.us/congress/members/mike_lee/412495/report-card/2024",
   "termStart": "2011-01-03",
   "termEnd": "2029-01-03",
   "contact": {
@@ -4038,7 +4173,8 @@
     "sources": [
       "https://www.lee.senate.gov/",
       "https://ballotpedia.org/Mike_Lee",
-      "https://pro.morningconsult.com/tags/senator-approval"
+      "https://pro.morningconsult.com/tags/senator-approval",
+      "https://www.govtrack.us/congress/members/mike_lee/412495/report-card/2024"
     ]
   },
   "billsSigned": ["S.1314: Fourth Amendment Restoration Act", "S.1445: Federal Agency Sunset Review Act"],
@@ -4059,6 +4195,7 @@
   "slug": "bernie-sanders",
   "photo": "https://www.congress.gov/img/member/s000033_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Bernie_Sanders",
+  "govtrackLink": "https://www.govtrack.us/congress/members/bernie_sanders/400357/report-card/2024",
   "termStart": "2007-01-03",
   "termEnd": "2025-01-03",
   "contact": {
@@ -4084,7 +4221,8 @@
     "sources": [
       "https://www.sanders.senate.gov/",
       "https://ballotpedia.org/Bernie_Sanders",
-      "https://pro.morningconsult.com/tags/senator-approval"
+      "https://pro.morningconsult.com/tags/senator-approval",
+      "https://www.govtrack.us/congress/members/bernie_sanders/400357/report-card/2024"
     ]
   },
   "billsSigned": ["S.1125: Medicare for All Act", "S.1446: Corporate Accountability and Wealth Tax Act"],
@@ -4097,7 +4235,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2024"
 },
-  {
+ {
   "name": "Peter Welch",
   "state": "Vermont",
   "party": "Democratic",
@@ -4105,6 +4243,7 @@
   "slug": "peter-welch",
   "photo": "https://www.congress.gov/img/member/w000826_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Peter_Welch",
+  "govtrackLink": "https://www.govtrack.us/congress/members/peter_welch/412256/report-card/2024",
   "termStart": "2023-01-03",
   "termEnd": "2029-01-03",
   "contact": {
@@ -4130,7 +4269,8 @@
     "sources": [
       "https://www.welch.senate.gov/",
       "https://ballotpedia.org/Peter_Welch",
-      "https://pro.morningconsult.com/tags/senator-approval"
+      "https://pro.morningconsult.com/tags/senator-approval",
+      "https://www.govtrack.us/congress/members/peter_welch/412256/report-card/2024"
     ]
   },
   "billsSigned": ["S.1447: Rural Broadband and Resilience Act", "S.1315: Dark Money Disclosure Act"],
@@ -4143,7 +4283,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2028"
 },
-  {
+{
   "name": "Mark Warner",
   "state": "Virginia",
   "party": "Democratic",
@@ -4151,6 +4291,7 @@
   "slug": "mark-warner",
   "photo": "https://www.congress.gov/img/member/w000805_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Mark_Warner",
+  "govtrackLink": "https://www.govtrack.us/congress/members/mark_warner/412321/report-card/2024",
   "termStart": "2009-01-03",
   "termEnd": "2027-01-03",
   "contact": {
@@ -4176,7 +4317,8 @@
     "sources": [
       "https://www.warner.senate.gov/",
       "https://ballotpedia.org/Mark_Warner",
-      "https://pro.morningconsult.com/tags/senator-approval"
+      "https://pro.morningconsult.com/tags/senator-approval",
+      "https://www.govtrack.us/congress/members/mark_warner/412321/report-card/2024"
     ]
   },
   "billsSigned": ["S.1448: AI Standards and Safety Act", "S.1302: Federal IT Modernization Act"],
@@ -4189,7 +4331,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2026"
 },
-  {
+ {
   "name": "Tim Kaine",
   "state": "Virginia",
   "party": "Democratic",
@@ -4197,6 +4339,7 @@
   "slug": "tim-kaine",
   "photo": "https://www.congress.gov/img/member/k000384_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Tim_Kaine",
+  "govtrackLink": "https://www.govtrack.us/congress/members/tim_kaine/412582/report-card/2024",
   "termStart": "2013-01-03",
   "termEnd": "2025-01-03",
   "contact": {
@@ -4222,7 +4365,8 @@
     "sources": [
       "https://www.kaine.senate.gov/",
       "https://ballotpedia.org/Tim_Kaine",
-      "https://pro.morningconsult.com/tags/senator-approval"
+      "https://pro.morningconsult.com/tags/senator-approval",
+      "https://www.govtrack.us/congress/members/tim_kaine/412582/report-card/2024"
     ]
   },
   "billsSigned": ["S.1449: War Powers Accountability Act", "S.1316: VA Mental Health Expansion Act"],
@@ -4235,7 +4379,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2024"
 },
-  {
+ {
   "name": "Maria Cantwell",
   "state": "Washington",
   "party": "Democratic",
@@ -4243,6 +4387,7 @@
   "slug": "maria-cantwell",
   "photo": "https://www.congress.gov/img/member/c000127_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Maria_Cantwell",
+  "govtrackLink": "https://www.govtrack.us/congress/members/maria_cantwell/300019/report-card/2024",
   "termStart": "2001-01-03",
   "termEnd": "2029-01-03",
   "contact": {
@@ -4268,7 +4413,8 @@
     "sources": [
       "https://www.cantwell.senate.gov/",
       "https://ballotpedia.org/Maria_Cantwell",
-      "https://pro.morningconsult.com/tags/senator-approval"
+      "https://pro.morningconsult.com/tags/senator-approval",
+      "https://www.govtrack.us/congress/members/maria_cantwell/300019/report-card/2024"
     ]
   },
   "billsSigned": ["S.1450: Broadband Equity and Expansion Act", "S.1317: AI Accountability and Privacy Act"],
@@ -4289,6 +4435,7 @@
   "slug": "patty-murray",
   "photo": "https://www.congress.gov/img/member/m001111_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Patty_Murray",
+  "govtrackLink": "https://www.govtrack.us/congress/members/patty_murray/300076/report-card/2024",
   "termStart": "1993-01-03",
   "termEnd": "2029-01-03",
   "contact": {
@@ -4314,7 +4461,8 @@
     "sources": [
       "https://www.murray.senate.gov/",
       "https://ballotpedia.org/Patty_Murray",
-      "https://pro.morningconsult.com/tags/senator-approval"
+      "https://pro.morningconsult.com/tags/senator-approval",
+      "https://www.govtrack.us/congress/members/patty_murray/300076/report-card/2024"
     ]
   },
   "billsSigned": ["S.1451: Child Care and Workforce Support Act", "S.1318: Reproductive Health Protection Act"],
@@ -4327,7 +4475,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2028"
 },
-  {
+{
   "name": "Jim Justice",
   "state": "West Virginia",
   "party": "Republican",
@@ -4335,6 +4483,7 @@
   "slug": "jim-justice",
   "photo": "https://www.congress.gov/img/member/j000304_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Jim_Justice",
+  "govtrackLink": "https://www.govtrack.us/congress/members/jim_justice/456888/report-card/2024",
   "termStart": "2025-01-03",
   "termEnd": "2031-01-03",
   "contact": {
@@ -4361,7 +4510,8 @@
       "https://www.justice.senate.gov/",
       "https://ballotpedia.org/Jim_Justice",
       "https://wvmetronews.com/2025/08/29/poll-respondents-say-justice-is-best-governor-of-their-lifetime-and-his-popularity-still-holds-up/",
-      "https://www.wvnews.com/news/wvnews/west-virginias-jim-justice-leaves-governors-office-with-high-approval-ranking-him-second-most-popular/article_b372479a-d92d-11ef-9c71-83646e9144ba.html"
+      "https://www.wvnews.com/news/wvnews/west-virginias-jim-justice-leaves-governors-office-with-high-approval-ranking-him-second-most-popular/article_b372479a-d92d-11ef-9c71-83646e9144ba.html",
+      "https://www.govtrack.us/congress/members/jim_justice/456888/report-card/2024"
     ]
   },
   "billsSigned": ["S.1452: Rural Hospital Rescue Act", "S.1319: Domestic Energy Expansion Act"],
@@ -4374,7 +4524,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2030"
 },
-  {
+ {
   "name": "Shelley Moore Capito",
   "state": "West Virginia",
   "party": "Republican",
@@ -4382,6 +4532,7 @@
   "slug": "shelley-moore-capito",
   "photo": "https://www.congress.gov/img/member/c001047_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Shelley_Moore_Capito",
+  "govtrackLink": "https://www.govtrack.us/congress/members/shelley_capito/400064/report-card/2024",
   "termStart": "2015-01-03",
   "termEnd": "2027-01-03",
   "contact": {
@@ -4407,7 +4558,8 @@
     "sources": [
       "https://www.capito.senate.gov/",
       "https://ballotpedia.org/Shelley_Moore_Capito",
-      "https://pro.morningconsult.com/tags/senator-approval"
+      "https://pro.morningconsult.com/tags/senator-approval",
+      "https://www.govtrack.us/congress/members/shelley_capito/400064/report-card/2024"
     ]
   },
   "billsSigned": ["S.1453: Rural Connectivity and Infrastructure Act", "S.1320: Opioid Recovery and Treatment Expansion Act"],
@@ -4428,6 +4580,7 @@
   "slug": "tammy-baldwin",
   "photo": "https://www.congress.gov/img/member/b001230_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Tammy_Baldwin",
+  "govtrackLink": "https://www.govtrack.us/congress/members/tammy_baldwin/400013/report-card/2024",
   "termStart": "2013-01-03",
   "termEnd": "2025-01-03",
   "contact": {
@@ -4453,7 +4606,8 @@
     "sources": [
       "https://www.baldwin.senate.gov/",
       "https://ballotpedia.org/Tammy_Baldwin",
-      "https://pro.morningconsult.com/tags/senator-approval"
+      "https://pro.morningconsult.com/tags/senator-approval",
+      "https://www.govtrack.us/congress/members/tammy_baldwin/400013/report-card/2024"
     ]
   },
   "billsSigned": ["S.1454: Made in America Manufacturing Act", "S.1321: Public Option and Mental Health Parity Act"],
@@ -4466,7 +4620,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2024"
 },
-    {
+ {
   "name": "Ron Johnson",
   "state": "Wisconsin",
   "party": "Republican",
@@ -4474,6 +4628,7 @@
   "slug": "ron-johnson",
   "photo": "https://www.congress.gov/img/member/j000293_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Ron_Johnson",
+  "govtrackLink": "https://www.govtrack.us/congress/members/ron_johnson/412496/report-card/2024",
   "termStart": "2011-01-03",
   "termEnd": "2029-01-03",
   "contact": {
@@ -4499,7 +4654,8 @@
     "sources": [
       "https://www.ronjohnson.senate.gov/",
       "https://ballotpedia.org/Ron_Johnson",
-      "https://pro.morningconsult.com/tags/senator-approval"
+      "https://pro.morningconsult.com/tags/senator-approval",
+      "https://www.govtrack.us/congress/members/ron_johnson/412496/report-card/2024"
     ]
   },
   "billsSigned": ["S.1455: Federal Agency Audit and Accountability Act", "S.1322: Border Surveillance Expansion Act"],
@@ -4512,7 +4668,7 @@
   "pollingDate": "2025-07",
   "electionYear": "2028"
 },
-  {
+ {
   "name": "Cynthia Lummis",
   "state": "Wyoming",
   "party": "Republican",
@@ -4520,6 +4676,7 @@
   "slug": "cynthia-lummis",
   "photo": "https://www.congress.gov/img/member/l000586_200.jpg",
   "ballotpediaLink": "https://ballotpedia.org/Cynthia_Lummis",
+  "govtrackLink": "https://www.govtrack.us/congress/members/cynthia_lummis/412500/report-card/2024",
   "termStart": "2021-01-03",
   "termEnd": "2027-01-03",
   "contact": {
@@ -4545,7 +4702,8 @@
     "sources": [
       "https://www.lummis.senate.gov/",
       "https://ballotpedia.org/Cynthia_Lummis",
-      "https://pro.morningconsult.com/tags/senator-approval"
+      "https://pro.morningconsult.com/tags/senator-approval",
+      "https://www.govtrack.us/congress/members/cynthia_lummis/412500/report-card/2024"
     ]
   },
   "billsSigned": ["S.1456: Crypto Banking Clarity Act", "S.1323: Western Land Sovereignty and Energy Act"],
