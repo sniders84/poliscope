@@ -1,324 +1,244 @@
 [
+   {
+  "name": "Barry Moore",
+  "state": "Alabama",
+  "district": "1",
+  "party": "Republican",
+  "office": "U.S. Representative",
+  "slug": "barry-moore",
+  "photo": "https://www.congress.gov/img/member/m001212_200.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Barry_Moore_(Alabama)",
+  "govtrackLink": "https://www.govtrack.us/congress/members/barry_moore/456800",
+  "termStart": "2025-01-03",
+  "termEnd": "2027-01-03",
+  "contact": {
+    "email": "",
+    "phone": "202-225-4931",
+    "website": "https://barrymoore.house.gov"
+  },
+  "bio": "Barry Moore is the U.S. Representative for Alabama’s 1st congressional district. He previously represented the 2nd district and served in the Alabama House. A veteran and small business owner, Moore is known for his conservative positions and membership in the House Freedom Caucus.",
+  "education": "Auburn University (BS in Agricultural Science)",
+  "endorsements": "House Freedom Fund, National Rifle Association, Alabama Farmers Federation",
+  "platform": "Border security, fiscal responsibility, veterans’ support, and agricultural development.",
+  "platformFollowThrough": {
+    "Border Security": "Supported legislation to increase funding for border enforcement and oppose sanctuary policies.",
+    "Fiscal Responsibility": "Voted against omnibus spending bills and supported balanced budget amendments.",
+    "Veterans’ Support": "Advocated for expanded mental health services and faster claims processing for veterans.",
+    "Agricultural Development": "Introduced bills to reduce regulatory burdens on farmers and expand rural broadband."
+  },
+  "proposals": "Secure the border, cut wasteful spending, support veterans, and empower rural communities.",
+  "engagement": {
+    "executiveOrders2025": 0,
+    "socialMediaSurge": false,
+    "earnedMediaCoverage": true,
+    "sources": [
+      "https://barrymoore.house.gov",
+      "https://ballotpedia.org/Barry_Moore_(Alabama)",
+      "https://www.govtrack.us/congress/members/barry_moore/456800/report-card/2024"
+    ]
+  },
+  "billsPassed": [
     {
-        "name": "Barry Moore",
-        "state": "Alabama",
-        "district": "1",
-        "party": "Republican",
-        "office": "U.S. Representative",
-        "slug": "barry-moore",
-        "photo": "https://www.congress.gov/img/member/m001212_200.jpg",
-        "ballotpediaLink": "https://ballotpedia.org/Barry_Moore_(Alabama)",
-        "govtrackLink": "https://www.govtrack.us/congress/members/barry_moore/456800",
-        "termStart": "2025-01-03",
-        "termEnd": "2027-01-03",
-        "contact": {
-            "email": "",
-            "phone": "202-225-4931",
-            "website": "https://barrymoore.house.gov"
-        },
-        "bio": "Barry Moore is the U.S. Representative for Alabama’s 1st congressional district. He previously represented the 2nd district and served in the Alabama House. A veteran and small business owner, Moore is known for his conservative positions and membership in the House Freedom Caucus.",
-        "education": "Auburn University (BS in Agricultural Science)",
-        "endorsements": "House Freedom Fund, National Rifle Association, Alabama Farmers Federation",
-        "platform": "Border security, fiscal responsibility, veterans’ support, and agricultural development.",
-        "platformFollowThrough": {
-            "Border Security": "Supported legislation to increase funding for border enforcement and oppose sanctuary policies.",
-            "Fiscal Responsibility": "Voted against omnibus spending bills and supported balanced budget amendments.",
-            "Veterans’ Support": "Advocated for expanded mental health services and faster claims processing for veterans.",
-            "Agricultural Development": "Introduced bills to reduce regulatory burdens on farmers and expand rural broadband."
-        },
-        "proposals": "Secure the border, cut wasteful spending, support veterans, and empower rural communities.",
-        "engagement": {
-            "executiveOrders2025": 0,
-            "socialMediaSurge": false,
-            "earnedMediaCoverage": true,
-            "sources": [
-                "https://barrymoore.house.gov",
-                "https://ballotpedia.org/Barry_Moore_(Alabama)",
-                "https://www.govtrack.us/congress/members/barry_moore/456800/report-card/2024"
-            ]
-        },
-        "billsPassed": [
-            {
-                "title": "H.R. 6162 — Postal Facility Naming Act (2024)",
-                "link": "https://www.congress.gov/bill/118th-congress/house-bill/6162"
-            }
-        ],
-        "salary": "$174,000/year",
-        "predecessor": "Jerry Carl (due to redistricting)",
-        "electionYear": "2024",
-        "govtrackStats": {
-            "Bills Cosponsored": "414 — Ranked 3rd in Alabama Delegation, 73rd among House Sophomores, 28th among House Republicans, 150th out of 435 overall",
-            "Bills Introduced": "22 — Ranked 2nd in Alabama Delegation, 80th among House Sophomores, 110th among House Republicans, 172nd out of 441 overall",
-            "Laws Enacted": "1 — Ranked 2nd in Alabama Delegation, 74th among House Sophomores, 97th among House Republicans, 214th out of 441 overall",
-            "Ideology Score": "Ranked 2nd most conservative in Alabama Delegation, 10th among House Sophomores, 10th among House Republicans, 10th out of 441 overall",
-            "Cosponsors": "132 — Ranked 3rd in Alabama Delegation, 88th among House Sophomores, 102nd among House Republicans, 354th out of 441 overall",
-            "Leadership Score": "Ranked 4th in Alabama Delegation, 16th among House Sophomores, 108th among House Republicans, 306th out of 441 overall",
-            "Working with the Senate": "0 companion bills — Ranked bottom across all categories",
-            "Joining Bipartisan Bills": "6% — Ranked 5th in Alabama Delegation, 86th among House Sophomores, 108th among House Republicans, 394th out of 441 overall",
-            "Writing Bipartisan Bills": "11 of 22 — Ranked 1st in Alabama Delegation, 80th among House Sophomores, 97th among House Republicans, 182nd out of 441 overall",
-            "Bills Out of Committee": "2 of 22 — Ranked 2nd in Alabama Delegation, 88th among House Sophomores, 110th among House Republicans, 296th out of 441 overall",
-            "Powerful Cosponsors": "1 bill — Ranked 4th in Alabama Delegation, 86th among House Sophomores, 108th among House Republicans, 384th out of 441 overall",
-            "Committee Positions": "No leadership roles — Ranked bottom across all categories",
-            "Missed Votes": "0.6% — Ranked 1st in Alabama Delegation, 80th among House Sophomores, 97th among House Republicans, 62nd out of 441 overall",
-            "Misconduct": "No known misconduct or allegations"
-        }
+      "title": "H.R. 6162 — Postal Facility Naming Act (2024)",
+      "link": "https://www.congress.gov/bill/118th-congress/house-bill/6162"
+    }
+  ],
+  "salary": "$174,000/year",
+  "predecessor": "Jerry Carl (due to redistricting)",
+  "electionYear": "2024"
+    },
+   {
+  "name": "Shomari Figures",
+  "state": "Alabama",
+  "district": "2",
+  "party": "Democratic",
+  "office": "U.S. Representative",
+  "slug": "shomari-figures",
+  "photo": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Figures_Shomari_119th_Congress_2_%284x5_cropped%29.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Shomari_Figures",
+  "govtrackLink": "https://www.govtrack.us/congress/members/shomari_figures/456971",
+  "termStart": "2025-01-03",
+  "termEnd": "2027-01-03",
+  "contact": {
+    "email": "",
+    "phone": "202-225-4931",
+    "website": "https://figures.house.gov"
+  },
+  "bio": "Shomari Figures is the U.S. Representative for Alabama’s 2nd congressional district. A Mobile native, he previously served in the U.S. Department of Justice and as a senior advisor in the Biden administration. He is the son of longtime Alabama lawmakers Michael and Vivian Figures.",
+  "education": "University of Alabama (BA, 2006; JD, 2010)",
+  "endorsements": "Congressional Black Caucus PAC",
+  "platform": "Voting rights protection, rural healthcare access, infrastructure investment, and economic development.",
+  "platformFollowThrough": {
+    "Voting Rights Protection": "Publicly supported legislation to restore key provisions of the Voting Rights Act.",
+    "Rural Healthcare Access": "Introduced the Rural Hospital Stabilization Act to support underserved medical facilities.",
+    "Infrastructure Investment": "Serves on Transportation & Infrastructure Committee, advocating for broadband and highway modernization.",
+    "Economic Development": "Supports USDA rural business programs and small business loan expansion."
+  },
+  "proposals": "Protect voting rights, stabilize rural hospitals, expand broadband, and grow small businesses.",
+  "engagement": {
+    "executiveOrders2025": 0,
+    "socialMediaSurge": true,
+    "earnedMediaCoverage": true,
+    "sources": [
+      "https://figures.house.gov/about/about-shomari",
+      "https://ballotpedia.org/Shomari_Figures",
+      "https://www.govtrack.us/congress/members/shomari_figures/456971",
+      "https://www.congress.gov/member/shomari-figures/F000481",
+      "https://figures.house.gov/about/committees"
+    ]
+  },
+  "billsPassed": [],
+  "salary": "$174,000/year",
+  "predecessor": "Barry Moore (due to redistricting)",
+  "electionYear": "2024"
     },
     {
-        "name": "Shomari Figures",
-        "state": "Alabama",
-        "district": "2",
-        "party": "Democratic",
-        "office": "U.S. Representative",
-        "slug": "shomari-figures",
-        "photo": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Figures_Shomari_119th_Congress_2_%284x5_cropped%29.jpg",
-        "ballotpediaLink": "https://ballotpedia.org/Shomari_Figures",
-        "govtrackLink": "https://www.govtrack.us/congress/members/shomari_figures/456971",
-        "termStart": "2025-01-03",
-        "termEnd": "2027-01-03",
-        "contact": {
-            "email": "",
-            "phone": "202-225-4931",
-            "website": "https://figures.house.gov"
-        },
-        "bio": "Shomari Figures is the U.S. Representative for Alabama’s 2nd congressional district. A Mobile native, he previously served in the U.S. Department of Justice and as a senior advisor in the Biden administration. He is the son of longtime Alabama lawmakers Michael and Vivian Figures.",
-        "education": "University of Alabama (BA, 2006; JD, 2010)",
-        "endorsements": "Congressional Black Caucus PAC",
-        "platform": "Voting rights protection, rural healthcare access, infrastructure investment, and economic development.",
-        "platformFollowThrough": {
-            "Voting Rights Protection": "Publicly supported legislation to restore key provisions of the Voting Rights Act.",
-            "Rural Healthcare Access": "Introduced the Rural Hospital Stabilization Act to support underserved medical facilities.",
-            "Infrastructure Investment": "Serves on Transportation & Infrastructure Committee, advocating for broadband and highway modernization.",
-            "Economic Development": "Supports USDA rural business programs and small business loan expansion."
-        },
-        "proposals": "Protect voting rights, stabilize rural hospitals, expand broadband, and grow small businesses.",
-        "engagement": {
-            "executiveOrders2025": 0,
-            "socialMediaSurge": true,
-            "earnedMediaCoverage": true,
-            "sources": [
-                "https://figures.house.gov/about/about-shomari",
-                "https://ballotpedia.org/Shomari_Figures",
-                "https://www.govtrack.us/congress/members/shomari_figures/456971",
-                "https://www.congress.gov/member/shomari-figures/F000481",
-                "https://figures.house.gov/about/committees"
-            ]
-        },
-        "billsPassed": [],
-        "salary": "$174,000/year",
-        "predecessor": "Barry Moore (due to redistricting)",
-        "electionYear": "2024",
-        "govtrackStats": {
-            "Bills Cosponsored": "56 — No ranking published",
-            "Bills Introduced": "8 — No ranking published",
-            "Laws Enacted": "0 — No ranking published",
-            "Ideology Score": "Top-left quadrant — among the most liberal members of the House",
-            "Cosponsors": "Data not yet published",
-            "Leadership Score": "Data not yet published",
-            "Working with the Senate": "Data not yet published",
-            "Joining Bipartisan Bills": "12% — No ranking published",
-            "Writing Bipartisan Bills": "3 of 8 — No ranking published",
-            "Bills Out of Committee": "1 of 8 — No ranking published",
-            "Powerful Cosponsors": "Data not yet published",
-            "Committee Positions": "Vice Ranking Member on two subcommittees — Transportation & Infrastructure and Agriculture",
-            "Missed Votes": "5 — No ranking published",
-            "Misconduct": "No known misconduct or allegations"
-        }
+  "name": "Mike Rogers",
+  "state": "Alabama",
+  "district": "3",
+  "party": "Republican",
+  "office": "U.S. Representative",
+  "slug": "mike-rogers",
+  "photo": "https://www.congress.gov/img/member/r000575_200.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Mike_Rogers_(Alabama)",
+  "govtrackLink": "https://www.govtrack.us/congress/members/mike_rogers/400341",
+  "termStart": "2025-01-03",
+  "termEnd": "2027-01-03",
+  "contact": {
+    "email": "",
+    "phone": "202-225-3261",
+    "website": "https://mikerogers.house.gov"
+  },
+  "bio": "Mike Rogers is the U.S. Representative for Alabama’s 3rd congressional district and has served in Congress since 2003. A native of Calhoun County, he previously served in the Alabama House of Representatives. Rogers is known for his leadership on national defense and currently chairs the House Armed Services Committee.",
+  "education": "Jacksonville State University (BA, MPA); Birmingham School of Law (JD)",
+  "endorsements": "National Rifle Association, Alabama Farmers Federation, Club for Growth",
+  "platform": "National defense, border security, veterans’ services, and conservative fiscal policy.",
+  "platformFollowThrough": {
+    "National Defense": "Chairs the House Armed Services Committee and led passage of the FY2026 National Defense Authorization Act.",
+    "Border Security": "Supported legislation to increase border wall funding and restrict asylum loopholes.",
+    "Veterans’ Services": "Advocated for expanded VA access and mental health support for rural veterans.",
+    "Fiscal Policy": "Voted for tax cuts and opposed omnibus spending increases."
+  },
+  "proposals": "Strengthen national defense, secure the border, support veterans, and reduce federal spending.",
+  "engagement": {
+    "executiveOrders2025": 0,
+    "socialMediaSurge": false,
+    "earnedMediaCoverage": true,
+    "sources": [
+      "https://mikerogers.house.gov/about/",
+      "https://ballotpedia.org/Mike_Rogers_(Alabama)",
+      "https://www.govtrack.us/congress/members/mike_rogers/400341/report-card/2024",
+      "https://www.congress.gov/member/mike-rogers/R000575"
+    ]
+  },
+  "billsPassed": [
+    {
+      "title": "H.R.3838 — FY2026 National Defense Authorization Act",
+      "link": "https://www.congress.gov/bill/119th-congress/house-bill/3838"
+    }
+  ],
+  "salary": "$174,000/year",
+  "predecessor": "Bob Riley",
+  "electionYear": "2024"
+    },
+   {
+  "name": "Robert Aderholt",
+  "state": "Alabama",
+  "district": "4",
+  "party": "Republican",
+  "office": "U.S. Representative",
+  "slug": "robert-aderholt",
+  "photo": "https://www.congress.gov/img/member/a000055_200.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Robert_Aderholt",
+  "govtrackLink": "https://www.govtrack.us/congress/members/robert_aderholt/400004",
+  "termStart": "2025-01-03",
+  "termEnd": "2027-01-03",
+  "contact": {
+    "email": "",
+    "phone": "202-225-4876",
+    "website": "https://aderholt.house.gov"
+  },
+  "bio": "Robert Aderholt is the U.S. Representative for Alabama’s 4th congressional district, serving since 1997. A former judge and legal advisor to Governor Fob James, Aderholt is known for his conservative positions on fiscal policy, agriculture, and religious freedom. He is one of the longest-serving members of the Alabama delegation.",
+  "education": "University of Alabama (BA, 1982); Cumberland School of Law (JD, 1987)",
+  "endorsements": "National Right to Life, Alabama Farmers Federation, Family Research Council Action",
+  "platform": "Pro-life legislation, rural development, religious liberty, and conservative budgeting.",
+  "platformFollowThrough": {
+    "Pro-Life Legislation": "Consistently supported bills restricting federal funding for abortion and expanding conscience protections.",
+    "Rural Development": "Advocated for USDA rural broadband and water infrastructure grants.",
+    "Religious Liberty": "Cosponsored legislation to protect religious expression in schools and public spaces.",
+    "Conservative Budgeting": "Opposed omnibus spending bills and supported balanced budget amendments."
+  },
+  "proposals": "Defend life, expand rural infrastructure, protect religious freedom, and reduce federal spending.",
+  "engagement": {
+    "executiveOrders2025": 0,
+    "socialMediaSurge": false,
+    "earnedMediaCoverage": true,
+    "sources": [
+      "https://aderholt.house.gov/about",
+      "https://ballotpedia.org/Robert_Aderholt",
+      "https://www.govtrack.us/congress/members/robert_aderholt/400004/report-card/2024",
+      "https://www.congress.gov/member/robert-aderholt/A000055"
+    ]
+  },
+  "billsPassed": [
+    {
+      "title": "H.R. 3124 — Rural Water Access and Reliability Act (2025)",
+      "link": "https://www.congress.gov/bill/119th-congress/house-bill/3124"
+    }
+  ],
+  "salary": "$174,000/year",
+  "predecessor": "Tom Bevill",
+  "electionYear": "2024"
     },
     {
-        "name": "Mike Rogers",
-        "state": "Alabama",
-        "district": "3",
-        "party": "Republican",
-        "office": "U.S. Representative",
-        "slug": "mike-rogers",
-        "photo": "https://www.congress.gov/img/member/r000575_200.jpg",
-        "ballotpediaLink": "https://ballotpedia.org/Mike_Rogers_(Alabama)",
-        "govtrackLink": "https://www.govtrack.us/congress/members/mike_rogers/400341",
-        "termStart": "2025-01-03",
-        "termEnd": "2027-01-03",
-        "contact": {
-            "email": "",
-            "phone": "202-225-3261",
-            "website": "https://mikerogers.house.gov"
-        },
-        "bio": "Mike Rogers is the U.S. Representative for Alabama’s 3rd congressional district and has served in Congress since 2003. A native of Calhoun County, he previously served in the Alabama House of Representatives. Rogers is known for his leadership on national defense and currently chairs the House Armed Services Committee.",
-        "education": "Jacksonville State University (BA, MPA); Birmingham School of Law (JD)",
-        "endorsements": "National Rifle Association, Alabama Farmers Federation, Club for Growth",
-        "platform": "National defense, border security, veterans’ services, and conservative fiscal policy.",
-        "platformFollowThrough": {
-            "National Defense": "Chairs the House Armed Services Committee and led passage of the FY2026 National Defense Authorization Act.",
-            "Border Security": "Supported legislation to increase border wall funding and restrict asylum loopholes.",
-            "Veterans’ Services": "Advocated for expanded VA access and mental health support for rural veterans.",
-            "Fiscal Policy": "Voted for tax cuts and opposed omnibus spending increases."
-        },
-        "proposals": "Strengthen national defense, secure the border, support veterans, and reduce federal spending.",
-        "engagement": {
-            "executiveOrders2025": 0,
-            "socialMediaSurge": false,
-            "earnedMediaCoverage": true,
-            "sources": [
-                "https://mikerogers.house.gov/about/",
-                "https://ballotpedia.org/Mike_Rogers_(Alabama)",
-                "https://www.govtrack.us/congress/members/mike_rogers/400341/report-card/2024",
-                "https://www.congress.gov/member/mike-rogers/R000575"
-            ]
-        },
-        "billsPassed": [
-            {
-                "title": "H.R.3838 — FY2026 National Defense Authorization Act",
-                "link": "https://www.congress.gov/bill/119th-congress/house-bill/3838"
-            }
-        ],
-        "salary": "$174,000/year",
-        "predecessor": "Bob Riley",
-        "electionYear": "2024",
-        "govtrackStats": {
-            "Bills Cosponsored": "214 — Ranked 1st in Alabama Delegation, 42nd among House Republicans, 88th out of 435 overall",
-            "Bills Introduced": "19 — Ranked 2nd in Alabama Delegation, 65th among House Republicans, 120th out of 435 overall",
-            "Laws Enacted": "2 — Ranked 1st in Alabama Delegation, 40th among House Republicans, 78th out of 435 overall",
-            "Ideology Score": "Ranked 3rd most conservative in Alabama Delegation, 55th among House Republicans, 110th out of 435 overall",
-            "Cosponsors": "142 — Ranked 2nd in Alabama Delegation, 70th among House Republicans, 190th out of 435 overall",
-            "Leadership Score": "Ranked 1st in Alabama Delegation, 22nd among House Republicans, 45th out of 435 overall",
-            "Working with the Senate": "3 companion bills — Ranked 1st in Alabama Delegation, 40th among House Republicans",
-            "Joining Bipartisan Bills": "9% — Ranked 3rd in Alabama Delegation, 88th among House Republicans, 310th out of 435 overall",
-            "Writing Bipartisan Bills": "6 of 19 — Ranked 2nd in Alabama Delegation, 60th among House Republicans",
-            "Bills Out of Committee": "4 of 19 — Ranked 1st in Alabama Delegation, 35th among House Republicans",
-            "Powerful Cosponsors": "3 bills — Ranked 2nd in Alabama Delegation, 50th among House Republicans",
-            "Committee Positions": "Chairman, House Armed Services Committee",
-            "Missed Votes": "0.3% — Ranked 1st in Alabama Delegation, 40th among House Republicans, 55th out of 435 overall",
-            "Misconduct": "No known misconduct or allegations"
-        }
-    },
+  "name": "Dale Strong",
+  "state": "Alabama",
+  "district": "5",
+  "party": "Republican",
+  "office": "U.S. Representative",
+  "slug": "dale-strong",
+  "photo": "https://www.congress.gov/img/member/s001220_200.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Dale_Strong",
+  "govtrackLink": "https://www.govtrack.us/congress/members/dale_strong/456878",
+  "termStart": "2023-01-03",
+  "termEnd": "2027-01-03",
+  "contact": {
+    "email": "",
+    "phone": "202-225-4801",
+    "website": "https://strong.house.gov"
+  },
+  "bio": "Dale Strong is the U.S. Representative for Alabama’s 5th congressional district. A former emergency responder and chairman of the Madison County Commission, Strong is known for his focus on national security, border protection, and conservative values. He was elected in 2022 to succeed Rep. Mo Brooks.",
+  "education": "Athens State University (BS, Business Administration)",
+  "endorsements": "Donald Trump (2024)",
+  "platform": "Border security, national defense, conservative budgeting, and veterans’ services.",
+  "platformFollowThrough": {
+    "Border Security": "Introduced legislation to strengthen border enforcement and restrict asylum loopholes.",
+    "National Defense": "Serves on Armed Services Committee and supported FY2025 NDAA.",
+    "Conservative Budgeting": "Opposed omnibus spending bills and supported rescinding unused COVID relief funds.",
+    "Veterans’ Services": "Advocated for expanded mental health support and rural VA access."
+  },
+  "proposals": "Secure the border, strengthen national defense, reduce federal spending, and support veterans.",
+  "engagement": {
+    "executiveOrders2025": 0,
+    "socialMediaSurge": false,
+    "earnedMediaCoverage": true,
+    "sources": [
+      "https://www.govtrack.us/congress/members/dale_strong/456878",
+      "https://ballotpedia.org/Dale_Strong",
+      "https://strong.house.gov/about",
+      "https://clerk.house.gov/members/S001220",
+      "https://www.congress.gov/member/dale-strong/S001220"
+    ]
+  },
+  "billsPassed": [
     {
-        "name": "Robert Aderholt",
-        "state": "Alabama",
-        "district": "4",
-        "party": "Republican",
-        "office": "U.S. Representative",
-        "slug": "robert-aderholt",
-        "photo": "https://www.congress.gov/img/member/a000055_200.jpg",
-        "ballotpediaLink": "https://ballotpedia.org/Robert_Aderholt",
-        "govtrackLink": "https://www.govtrack.us/congress/members/robert_aderholt/400004",
-        "termStart": "2025-01-03",
-        "termEnd": "2027-01-03",
-        "contact": {
-            "email": "",
-            "phone": "202-225-4876",
-            "website": "https://aderholt.house.gov"
-        },
-        "bio": "Robert Aderholt is the U.S. Representative for Alabama’s 4th congressional district, serving since 1997. A former judge and legal advisor to Governor Fob James, Aderholt is known for his conservative positions on fiscal policy, agriculture, and religious freedom. He is one of the longest-serving members of the Alabama delegation.",
-        "education": "University of Alabama (BA, 1982); Cumberland School of Law (JD, 1987)",
-        "endorsements": "National Right to Life, Alabama Farmers Federation, Family Research Council Action",
-        "platform": "Pro-life legislation, rural development, religious liberty, and conservative budgeting.",
-        "platformFollowThrough": {
-            "Pro-Life Legislation": "Consistently supported bills restricting federal funding for abortion and expanding conscience protections.",
-            "Rural Development": "Advocated for USDA rural broadband and water infrastructure grants.",
-            "Religious Liberty": "Cosponsored legislation to protect religious expression in schools and public spaces.",
-            "Conservative Budgeting": "Opposed omnibus spending bills and supported balanced budget amendments."
-        },
-        "proposals": "Defend life, expand rural infrastructure, protect religious freedom, and reduce federal spending.",
-        "engagement": {
-            "executiveOrders2025": 0,
-            "socialMediaSurge": false,
-            "earnedMediaCoverage": true,
-            "sources": [
-                "https://aderholt.house.gov/about",
-                "https://ballotpedia.org/Robert_Aderholt",
-                "https://www.govtrack.us/congress/members/robert_aderholt/400004/report-card/2024",
-                "https://www.congress.gov/member/robert-aderholt/A000055"
-            ]
-        },
-        "billsPassed": [
-            {
-                "title": "H.R. 3124 — Rural Water Access and Reliability Act (2025)",
-                "link": "https://www.congress.gov/bill/119th-congress/house-bill/3124"
-            }
-        ],
-        "salary": "$174,000/year",
-        "predecessor": "Tom Bevill",
-        "electionYear": "2024",
-        "govtrackStats": {
-            "Bills Cosponsored": "198 — Ranked 3rd in Alabama Delegation, 60th among House Republicans, 120th out of 435 overall",
-            "Bills Introduced": "14 — Ranked 3rd in Alabama Delegation, 75th among House Republicans, 140th out of 435 overall",
-            "Laws Enacted": "1 — Ranked 3rd in Alabama Delegation, 88th among House Republicans, 160th out of 435 overall",
-            "Ideology Score": "Ranked 2nd most conservative in Alabama Delegation, 45th among House Republicans, 90th out of 435 overall",
-            "Cosponsors": "110 — Ranked 3rd in Alabama Delegation, 85th among House Republicans, 200th out of 435 overall",
-            "Leadership Score": "Ranked 3rd in Alabama Delegation, 70th among House Republicans, 150th out of 435 overall",
-            "Working with the Senate": "2 companion bills — Ranked 3rd in Alabama Delegation, 75th among House Republicans",
-            "Joining Bipartisan Bills": "11% — Ranked 2nd in Alabama Delegation, 70th among House Republicans, 280th out of 435 overall",
-            "Writing Bipartisan Bills": "4 of 14 — Ranked 3rd in Alabama Delegation, 80th among House Republicans",
-            "Bills Out of Committee": "2 of 14 — Ranked 3rd in Alabama Delegation, 90th among House Republicans",
-            "Powerful Cosponsors": "2 bills — Ranked 3rd in Alabama Delegation, 85th among House Republicans",
-            "Committee Positions": "Member, House Appropriations Committee",
-            "Missed Votes": "0.6% — Ranked 3rd in Alabama Delegation, 90th among House Republicans, 130th out of 435 overall",
-            "Misconduct": "No known misconduct or allegations"
-        }
-    },
-    {
-        "name": "Dale Strong",
-        "state": "Alabama",
-        "district": "5",
-        "party": "Republican",
-        "office": "U.S. Representative",
-        "slug": "dale-strong",
-        "photo": "https://www.congress.gov/img/member/s001220_200.jpg",
-        "ballotpediaLink": "https://ballotpedia.org/Dale_Strong",
-        "govtrackLink": "https://www.govtrack.us/congress/members/dale_strong/456878",
-        "termStart": "2023-01-03",
-        "termEnd": "2027-01-03",
-        "contact": {
-            "email": "",
-            "phone": "202-225-4801",
-            "website": "https://strong.house.gov"
-        },
-        "bio": "Dale Strong is the U.S. Representative for Alabama’s 5th congressional district. A former emergency responder and chairman of the Madison County Commission, Strong is known for his focus on national security, border protection, and conservative values. He was elected in 2022 to succeed Rep. Mo Brooks.",
-        "education": "Athens State University (BS, Business Administration)",
-        "endorsements": "Donald Trump (2024)",
-        "platform": "Border security, national defense, conservative budgeting, and veterans’ services.",
-        "platformFollowThrough": {
-            "Border Security": "Introduced legislation to strengthen border enforcement and restrict asylum loopholes.",
-            "National Defense": "Serves on Armed Services Committee and supported FY2025 NDAA.",
-            "Conservative Budgeting": "Opposed omnibus spending bills and supported rescinding unused COVID relief funds.",
-            "Veterans’ Services": "Advocated for expanded mental health support and rural VA access."
-        },
-        "proposals": "Secure the border, strengthen national defense, reduce federal spending, and support veterans.",
-        "engagement": {
-            "executiveOrders2025": 0,
-            "socialMediaSurge": false,
-            "earnedMediaCoverage": true,
-            "sources": [
-                "https://www.govtrack.us/congress/members/dale_strong/456878",
-                "https://ballotpedia.org/Dale_Strong",
-                "https://strong.house.gov/about",
-                "https://clerk.house.gov/members/S001220",
-                "https://www.congress.gov/member/dale-strong/S001220"
-            ]
-        },
-        "billsPassed": [
-            {
-                "title": "H.R.708 — SHIELD Against CCP Act",
-                "link": "https://www.congress.gov/bill/119th-congress/house-bill/708"
-            }
-        ],
-        "salary": "$174,000/year",
-        "predecessor": "Mo Brooks",
-        "electionYear": "2022",
-        "govtrackStats": {
-            "Bills Cosponsored": "142 — Ranked 4th in Alabama Delegation, 85th among House Republicans, 160th out of 435 overall",
-            "Bills Introduced": "11 — Ranked 4th in Alabama Delegation, 90th among House Republicans, 170th out of 435 overall",
-            "Laws Enacted": "1 — Ranked 4th in Alabama Delegation, 95th among House Republicans, 180th out of 435 overall",
-            "Ideology Score": "Ranked 4th most conservative in Alabama Delegation, 70th among House Republicans, 140th out of 435 overall",
-            "Cosponsors": "88 — Ranked 4th in Alabama Delegation, 100th among House Republicans, 220th out of 435 overall",
-            "Leadership Score": "Ranked 4th in Alabama Delegation, 110th among House Republicans, 200th out of 435 overall",
-            "Working with the Senate": "1 companion bill — Ranked 4th in Alabama Delegation, 100th among House Republicans",
-            "Joining Bipartisan Bills": "10% — Ranked 4th in Alabama Delegation, 95th among House Republicans, 300th out of 435 overall",
-            "Writing Bipartisan Bills": "3 of 11 — Ranked 4th in Alabama Delegation, 100th among House Republicans",
-            "Bills Out of Committee": "2 of 11 — Ranked 4th in Alabama Delegation, 110th among House Republicans",
-            "Powerful Cosponsors": "1 bill — Ranked 4th in Alabama Delegation, 120th among House Republicans",
-            "Committee Positions": "Member, House Armed Services Committee; Member, House Homeland Security Committee; Member, House Appropriations Committee",
-            "Missed Votes": "0.4% — Ranked 4th in Alabama Delegation, 100th among House Republicans, 150th out of 435 overall",
-            "Misconduct": "No known misconduct or allegations"
-        }
+      "title": "H.R.708 — SHIELD Against CCP Act",
+      "link": "https://www.congress.gov/bill/119th-congress/house-bill/708"
+    }
+  ],
+  "salary": "$174,000/year",
+  "predecessor": "Mo Brooks",
+  "electionYear": "2022"
     },
     {
         "name": "Gary Palmer",
