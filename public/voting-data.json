@@ -37,7 +37,7 @@
     "deadline": ""
   },
   "military": {
-    "url": "https://www.sos.alabama.gov/alabama-votes/voter/absentee-voting/UOCAVA-voters",
+    "url": "https://www.sos.alabama.gov/alabama-votes/voter/military-overseas-voting",
     "icon": "🎖️",
     "description": "Voting info for military and overseas voters",
     "deadline": "Request by: October 29, 2025"
@@ -57,25 +57,25 @@
 },
    "Alaska": {
   "register": {
-    "url": "https://voterregistration.alaska.gov/",
+    "url": "https://www.elections.alaska.gov/voter-information/#Reg",
     "icon": "📝",
     "description": "Register online or update your voter information",
     "deadline": "Deadline: October 6, 2025"
   },
   "id": {
-    "url": "https://www.elections.alaska.gov/Core/voteridrequirements.php",
+    "url": "https://www.elections.alaska.gov/voter-information/#AlaskavoterID",
     "icon": "🪪",
     "description": "Review Alaska's voter ID requirements",
     "deadline": ""
   },
   "absentee": {
-    "url": "https://www.elections.alaska.gov/Core/votingbyabsentee.php",
+    "url": "https://www.elections.alaska.gov/absentee-and-early-voting/",
     "icon": "📬",
     "description": "Request and return absentee ballot by mail or online",
     "deadline": "Request by: October 26, 2025"
   },
   "early": {
-    "url": "https://www.elections.alaska.gov/Core/earlyvoting.php",
+    "url": "https://www.elections.alaska.gov/absentee-and-early-voting/",
     "icon": "⏰",
     "description": "Find early voting locations and hours",
     "deadline": "Starts: October 21, 2025"
@@ -99,13 +99,13 @@
     "deadline": "Request by: October 26, 2025"
   },
   "counties": {
-    "url": "https://www.elections.alaska.gov/Core/contactinformation.php",
+    "url": "https://www.elections.alaska.gov/contact-information/",
     "icon": "🏛️",
     "description": "Contact your regional election office",
     "deadline": ""
   },
   "tools": {
-    "url": "https://www.elections.alaska.gov/",
+    "url": "https://www.elections.alaska.gov/election-information/",
     "icon": "🧰",
     "description": "Explore Alaska's official voting tools and resources",
     "deadline": ""
@@ -119,19 +119,19 @@
     "deadline": "Deadline: October 7, 2025"
   },
   "id": {
-    "url": "https://azsos.gov/elections/voting-election/arizona-voter-id-requirements",
+    "url": "https://azsos.gov/elections/voters/voting-elections",
     "icon": "🪪",
     "description": "Check Arizona's voter ID requirements for in-person voting",
     "deadline": ""
   },
   "absentee": {
-    "url": "https://azsos.gov/votebymail",
+    "url": "https://my.arizona.vote/Early/ApplicationLogin.aspx",
     "icon": "📬",
     "description": "Request and return your early ballot by mail",
     "deadline": "Request by: October 24, 2025"
   },
   "early": {
-    "url": "https://azsos.gov/elections/voting-election/early-voting",
+    "url": "https://azsos.gov/elections/voters/early-voting",
     "icon": "⏰",
     "description": "Find early voting locations and hours in your county",
     "deadline": "Starts: October 9, 2025"
@@ -149,7 +149,7 @@
     "deadline": ""
   },
   "military": {
-    "url": "https://azsos.gov/elections/voting-election/military-and-overseas-voting",
+    "url": "https://app.enhancedvoting.com/ebd/voter/arizona",
     "icon": "🎖️",
     "description": "Voting options for military and overseas voters",
     "deadline": "Request by: October 24, 2025"
@@ -175,7 +175,7 @@
     "deadline": "Deadline: October 7, 2025"
   },
   "id": {
-    "url": "https://www.sos.arkansas.gov/elections/voter-information/voter-id-requirements",
+    "url": "https://www.sos.arkansas.gov/elections/voter-information/voter-registration-information/voting-in-arkansas/",
     "icon": "🪪",
     "description": "Review Arkansas's voter ID requirements for in-person voting",
     "deadline": ""
@@ -187,7 +187,7 @@
     "deadline": "Request by: October 29, 2025"
   },
   "early": {
-    "url": "https://www.sos.arkansas.gov/elections/voter-information/early-voting",
+    "url": "https://www.sos.arkansas.gov/elections/voter-information/voter-registration-information/voting-in-arkansas",
     "icon": "⏰",
     "description": "Find early voting locations and hours in your county",
     "deadline": "Starts: October 21, 2025"
@@ -199,25 +199,25 @@
     "deadline": "Election Day: November 4, 2025"
   },
   "sample": {
-    "url": "https://www.sos.arkansas.gov/elections/sample-ballots",
+    "url": "https://www.sos.arkansas.gov/elections/for-voters",
     "icon": "🧾",
     "description": "View your sample ballot by county and district",
     "deadline": ""
   },
   "military": {
-    "url": "https://www.sos.arkansas.gov/elections/voter-information/military-and-overseas-voting",
+    "url": "https://www.sos.arkansas.gov/elections/military-and-overseas-citizens/",
     "icon": "🎖️",
     "description": "Voting options for military and overseas voters",
     "deadline": "Request by: October 29, 2025"
   },
   "counties": {
-    "url": "https://www.sos.arkansas.gov/elections/election-officials",
+    "url": "https://www.sos.arkansas.gov/elections/elected-officials/",
     "icon": "🏛️",
     "description": "Contact your county clerk for local election info",
     "deadline": ""
   },
   "tools": {
-    "url": "https://www.voterview.ar-nova.org/VoterView",
+    "url": "https://www.sos.arkansas.gov/elections/for-voters",
     "icon": "🧰",
     "description": "Access Arkansas's official voter portal and tools",
     "deadline": ""
@@ -231,19 +231,19 @@
     "deadline": "Deadline: October 21, 2025"
   },
   "id": {
-    "url": "https://www.sos.ca.gov/elections/voter-registration/voter-id",
+    "url": "https://elections.cdn.sos.ca.gov/regulations/hava_id_regs_from_barclays_3_3_06.pdf",
     "icon": "🪪",
     "description": "Review California's voter ID policies — ID not required for most voters",
     "deadline": ""
   },
   "absentee": {
-    "url": "https://www.sos.ca.gov/elections/voting-resources/vote-mail",
+    "url": "https://www.sos.ca.gov/elections/voter-registration/vote-mail",
     "icon": "📬",
     "description": "All registered voters receive a mail-in ballot automatically",
     "deadline": "Return by: November 4, 2025"
   },
   "early": {
-    "url": "https://www.sos.ca.gov/elections/voting-resources/voting-california",
+    "url": "https://caearlyvoting.sos.ca.gov/",
     "icon": "⏰",
     "description": "Find early voting locations and drop boxes in your county",
     "deadline": "Starts: October 26, 2025"
