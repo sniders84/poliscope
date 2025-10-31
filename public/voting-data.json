@@ -1631,7 +1631,7 @@
     "deadline": "Deadline: October 14, 2025"
   },
   "id": {
-    "url": "https://www.nj.gov/state/elections/vote-id.shtml",
+    "url": "https://www.voteriders.org/states/new-jersey/",
     "icon": "🪪",
     "description": "Review New Jersey's voter ID requirements — ID not required for most voters",
     "deadline": ""
@@ -1643,13 +1643,13 @@
     "deadline": "Request by: October 29, 2025"
   },
   "early": {
-    "url": "https://nj.gov/state/elections/vote-early.shtml",
+    "url": "https://www.nj.gov/state/elections/vote-early-voting.shtml",
     "icon": "⏰",
     "description": "Find early voting locations and hours in your county",
     "deadline": "Starts: October 26, 2025"
   },
   "polling": {
-    "url": "https://voter.svrs.nj.gov/polling-place-search",
+    "url": "https://www.nj.gov/state/elections/vote-polling-location.shtml",
     "icon": "📍",
     "description": "Locate your polling place and Election Day hours",
     "deadline": "Election Day: November 4, 2025"
@@ -1661,19 +1661,19 @@
     "deadline": ""
   },
   "military": {
-    "url": "https://www.nj.gov/state/elections/vote-military-overseas.shtml",
+    "url": "https://www.nj.gov/state/elections/vote-military-and-overseas.shtml",
     "icon": "🎖️",
     "description": "Voting options for military and overseas New Jerseyans",
     "deadline": "Request by: October 29, 2025"
   },
   "counties": {
-    "url": "https://www.nj.gov/state/elections/county-eo.shtml",
+    "url": "https://www.nj.gov/state/elections/vote-county-election-officials.shtml",
     "icon": "🏛️",
     "description": "Contact your county election office for local info",
     "deadline": ""
   },
   "tools": {
-    "url": "https://voter.svrs.nj.gov/",
+    "url": "https://www.nj.gov/state/elections/vote.shtml",
     "icon": "🧰",
     "description": "Check registration, ballot status, and voting tools",
     "deadline": ""
@@ -1681,25 +1681,25 @@
 },
    "New Mexico": {
   "register": {
-    "url": "https://portal.sos.state.nm.us/OVR/WebPages/InstructionsStep1.aspx",
+    "url": "https://www.sos.nm.gov/voting-and-elections/voter-information-portal-nmvote-org/voter-registration-information/",
     "icon": "📝",
     "description": "Register to vote or update your registration online",
     "deadline": "Deadline: October 15, 2025"
   },
   "id": {
-    "url": "https://www.sos.state.nm.us/voting-and-elections/voter-information/voter-id-information/",
+    "url": "https://www.sos.nm.gov/voting-and-elections/voting-faqs/voting/",
     "icon": "🪪",
     "description": "Review New Mexico's voter ID requirements — ID not required for most voters",
     "deadline": ""
   },
   "absentee": {
-    "url": "https://www.sos.state.nm.us/voting-and-elections/voter-information/absentee-and-early-voting/",
+    "url": "https://www.sos.nm.gov/voting-and-elections/voter-information-portal-nmvote-org/absentee-and-early-voting/",
     "icon": "📬",
     "description": "Request and return your absentee ballot by mail or drop box",
     "deadline": "Request by: October 29, 2025"
   },
   "early": {
-    "url": "https://www.sos.state.nm.us/voting-and-elections/voter-information/absentee-and-early-voting/",
+    "url": "https://www.sos.nm.gov/voting-and-elections/voter-information-portal-nmvote-org/absentee-and-early-voting/",
     "icon": "⏰",
     "description": "Find early voting locations and hours in your county",
     "deadline": "Starts: October 18, 2025"
@@ -1723,13 +1723,13 @@
     "deadline": "Request by: October 29, 2025"
   },
   "counties": {
-    "url": "https://www.sos.state.nm.us/voting-and-elections/voter-information/county-clerks/",
+    "url": "https://www.sos.nm.gov/voting-and-elections/voter-information-portal-nmvote-org/county-clerk-information/",
     "icon": "🏛️",
     "description": "Contact your county clerk for local election info",
     "deadline": ""
   },
   "tools": {
-    "url": "https://voterportal.servis.sos.state.nm.us/",
+    "url": "https://www.sos.nm.gov/voting-and-elections/voter-information-portal-nmvote-org/",
     "icon": "🧰",
     "description": "Check registration, ballot status, and voting tools",
     "deadline": ""
