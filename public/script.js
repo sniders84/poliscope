@@ -277,7 +277,6 @@ ngaLinks.forEach(link => {
 });
 
 ngaBlock.appendChild(ngaGrid);
-section.appendChild(ngaBlock);
 
       const federalBlock = document.createElement('div');
       federalBlock.className = 'civic-block';
@@ -322,6 +321,7 @@ section.appendChild(ngaBlock);
 
       federalBlock.appendChild(federalGrid);
       section.appendChild(stateBlock);
+      section.appendChild(ngaBlock);
       section.appendChild(federalBlock);
       calendar.appendChild(section);
     })
