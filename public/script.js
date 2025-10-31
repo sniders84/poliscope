@@ -327,6 +327,82 @@ function showOrganizations() {
       console.error(err);
     });
 }
+const federalOfficials = [
+  {
+    name: "Donald J. Trump",
+    state: "United States",
+    party: "Republican",
+    office: "President",
+    slug: "donald-trump",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/5/56/Donald_Trump_official_portrait.jpg",
+    ballotpediaLink: "https://ballotpedia.org/Donald_Trump",
+    govtrackLink: "https://www.govtrack.us/congress/members/donald_trump/456872/report-card/2024",
+    termStart: "2025-01-20",
+    termEnd: "2029-01-20",
+    contact: {
+      email: "",
+      phone: "",
+      website: "https://www.whitehouse.gov/"
+    },
+    bio: "Donald J. Trump is the 47th President of the United States, inaugurated for a second term in 2025.",
+    education: "University of Pennsylvania (BS in Economics, Wharton School)",
+    endorsements: "",
+    platform: "",
+    platformFollowThrough: {},
+    proposals: "",
+    engagement: {
+      executiveOrders2025: 31,
+      socialMediaSurge: true,
+      earnedMediaCoverage: true,
+      sources: [
+        "https://www.whitehouse.gov/",
+        "https://ballotpedia.org/Donald_Trump",
+        "https://www.govtrack.us/congress/members/donald_trump/456872/report-card/2024"
+      ]
+    },
+    billsPassed: [],
+    salary: "$400,000/year",
+    predecessor: "Joe Biden",
+    electionYear: "2024"
+  },
+  {
+    name: "JD Vance",
+    state: "United States",
+    party: "Republican",
+    office: "Vice President",
+    slug: "jd-vance",
+    photo: "https://www.whitehouse.gov/wp-content/uploads/2025/01/jd-vance.jpg",
+    ballotpediaLink: "https://ballotpedia.org/J._D._Vance",
+    govtrackLink: "https://www.govtrack.us/congress/members/james_vance/456873/report-card/2024",
+    termStart: "2025-01-20",
+    termEnd: "2029-01-20",
+    contact: {
+      email: "",
+      phone: "",
+      website: "https://www.whitehouse.gov/administration/jd-vance/"
+    },
+    bio: "JD Vance is the 50th Vice President of the United States, inaugurated in 2025.",
+    education: "Ohio State University (BA), Yale Law School (JD)",
+    endorsements: "",
+    platform: "",
+    platformFollowThrough: {},
+    proposals: "",
+    engagement: {
+      executiveOrders2025: 0,
+      socialMediaSurge: true,
+      earnedMediaCoverage: true,
+      sources: [
+        "https://www.whitehouse.gov/administration/jd-vance/",
+        "https://ballotpedia.org/J._D._Vance",
+        "https://www.govtrack.us/congress/members/james_vance/456873/report-card/2024"
+      ]
+    },
+    billsPassed: [],
+    salary: "$235,100/year",
+    predecessor: "Kamala Harris",
+    electionYear: "2024"
+  }
+];
 function renderOfficials(stateFilter = null, query = '') {
   showTab('my-officials');
   officialsContainer.innerHTML = '';
@@ -350,12 +426,14 @@ if (stateFilter && stateAliases[stateFilter]) {
     .sort((a, b) => parseInt(a.district) - parseInt(b.district));
 console.log("Filtered reps:", filteredReps.map(r => r.name));
 
-  const allOfficials = [
-    ...filteredGovs,
-    ...filteredLtGovs,
-    ...filteredSens,
-    ...filteredReps
-  ].filter(o =>
+ const allOfficials = [
+  ...federalOfficials,
+  ...filteredGovs,
+  ...filteredLtGovs,
+  ...filteredSens,
+  ...filteredReps
+].filter(o =>
+
     o.name.toLowerCase().includes(queryLower) ||
     o.office.toLowerCase().includes(queryLower) ||
     o.state.toLowerCase().includes(queryLower)
