@@ -408,59 +408,56 @@ function openModal(official) {
   const modalContent = document.getElementById('officials-content');
   if (!modal || !modalContent) return;
 
-  const contact = official.contact || {};
-  const bills = official.billsSigned || [];
-  console.log('Bills for', official.name, bills);
+  const { billsSigned, ...cleanOfficial } = official;
+  const contact = cleanOfficial.contact || {};
+  const bills = []; // intentionally empty
 
-  const photoSrc = official.photo && official.photo.trim() !== ''
-    ? official.photo
+  const photoSrc = cleanOfficial.photo && cleanOfficial.photo.trim() !== ''
+    ? cleanOfficial.photo
     : 'assets/default-photo.png';
 
   modalContent.innerHTML = `
     <div class="modal-card">
       <div class="modal-photo">
-        <img src="${photoSrc}" alt="${official.name}" onerror="this.onerror=null;this.src='assets/default-photo.png';" />
+        <img src="${photoSrc}" alt="${cleanOfficial.name}" onerror="this.onerror=null;this.src='assets/default-photo.png';" />
       </div>
       <div class="modal-info">
-        <h2>${official.name}</h2>
-        <p><strong>Office:</strong> ${official.office}</p>
-        ${official.district ? `<p><strong>District:</strong> ${official.district}</p>` : ''}
-        <p><strong>State:</strong> ${official.state}</p>
-        <p><strong>Party:</strong> ${official.party}</p>
-        <p><strong>Term:</strong> ${new Date(official.termStart).getFullYear()}–${new Date(official.termEnd).getFullYear()}</p>
-        ${official.bio ? `<p>${official.bio}</p>` : ''}
-        ${official.education ? `<p><strong>Education:</strong> ${official.education}</p>` : ''}
-        ${official.platform ? `<p><strong>Platform:</strong> ${official.platform}</p>` : ''}
-        ${official.platformFollowThrough
+        <h2>${cleanOfficial.name}</h2>
+        <p><strong>Office:</strong> ${cleanOfficial.office}</p>
+        ${cleanOfficial.district ? `<p><strong>District:</strong> ${cleanOfficial.district}</p>` : ''}
+        <p><strong>State:</strong> ${cleanOfficial.state}</p>
+        <p><strong>Party:</strong> ${cleanOfficial.party}</p>
+        <p><strong>Term:</strong> ${new Date(cleanOfficial.termStart).getFullYear()}–${new Date(cleanOfficial.termEnd).getFullYear()}</p>
+        ${cleanOfficial.bio ? `<p>${cleanOfficial.bio}</p>` : ''}
+        ${cleanOfficial.education ? `<p><strong>Education:</strong> ${cleanOfficial.education}</p>` : ''}
+        ${cleanOfficial.platform ? `<p><strong>Platform:</strong> ${cleanOfficial.platform}</p>` : ''}
+        ${cleanOfficial.platformFollowThrough
         ? `<div class="follow-through"><h3>Platform Follow-Through</h3><ul>${
-        Object.entries(official.platformFollowThrough)
+        Object.entries(cleanOfficial.platformFollowThrough)
         .map(([topic, summary]) => `<li><strong>${topic}:</strong> ${summary}</li>`)
         .join('')
         }</ul></div>`
         : ''}
-        ${official.proposals ? `<p><strong>Proposals:</strong> ${official.proposals}</p>` : ''}
-        ${(official.vetoes && ['Governor', 'President'].includes(official.office))
-        ? `<p><strong>Vetoes:</strong> ${official.vetoes}</p>`
+        ${cleanOfficial.proposals ? `<p><strong>Proposals:</strong> ${cleanOfficial.proposals}</p>` : ''}
+        ${(cleanOfficial.vetoes && ['Governor', 'President'].includes(cleanOfficial.office))
+        ? `<p><strong>Vetoes:</strong> ${cleanOfficial.vetoes}</p>`
         : ''}
-        ${official.salary ? `<p><strong>Salary:</strong> ${official.salary}</p>` : ''}
-        ${official.govtrackStats
+        ${cleanOfficial.salary ? `<p><strong>Salary:</strong> ${cleanOfficial.salary}</p>` : ''}
+        ${cleanOfficial.govtrackStats
         ? `<div class="govtrack-stats"><h3>Congressional Rankings</h3><ul>${
-        Object.entries(official.govtrackStats)
+        Object.entries(cleanOfficial.govtrackStats)
         .map(([label, value]) => `<li><strong>${label.replace(/([A-Z])/g, ' $1')}:</strong> ${value}</li>`)
         .join('')
         }</ul></div>`
         : ''}
-        ${official.website ? `<p><a href="${official.website}" target="_blank">Official Website</a></p>` : ''}
+        ${cleanOfficial.website ? `<p><a href="${cleanOfficial.website}" target="_blank">Official Website</a></p>` : ''}
         ${contact.email ? `<p><strong>Email:</strong> ${contact.email}</p>` : ''}
         ${contact.phone ? `<p><strong>Phone:</strong> ${contact.phone}</p>` : ''}
         ${contact.website ? `<p><a href="${contact.website}" target="_blank">Contact Website</a></p>` : ''}
-        ${official.ballotpediaLink ? `<p><a href="${official.ballotpediaLink}" target="_blank">Ballotpedia Profile</a></p>` : ''}
-${official.govtrackLink
-  ? `<p><a href="${official.govtrackLink}" target="_blank">GovTrack</a></p>`
-  : ''}
-        ${(bills.length > 0 && ['Governor', 'President'].includes(official.office))
-  ? `<h3>Bills Signed</h3><ul>${bills.map(b => `<li><a href="${b.link}" target="_blank">${b.title}</a></li>`).join('')}</ul>`
-  : ''}
+        ${cleanOfficial.ballotpediaLink ? `<p><a href="${cleanOfficial.ballotpediaLink}" target="_blank">Ballotpedia Profile</a></p>` : ''}
+        ${cleanOfficial.govtrackLink
+          ? `<p><a href="${cleanOfficial.govtrackLink}" target="_blank">GovTrack</a></p>`
+          : ''}
       </div>
     </div>
   `;
