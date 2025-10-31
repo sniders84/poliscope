@@ -377,7 +377,7 @@ const federalOfficials = [
     "office": "Vice President",
     "slug": "jd-vance",
     "photo": "https://www.whitehouse.gov/wp-content/uploads/2025/01/jd-vance.jpg",
-    "ballotpediaLink": "https://ballotpedia.org/J._D._Vance",
+    "ballotpediaLink": "https://ballotpedia.org/J.D._Vance",
     "govtrackLink": "https://www.govtrack.us/congress/members/james_david_vance/456876/report-card/2024",
     "termStart": "2025-01-20",
     "termEnd": "2029-01-20",
