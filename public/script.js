@@ -336,7 +336,7 @@ const federalOfficials = [
     "slug": "donald-trump",
     "photo": "https://upload.wikimedia.org/wikipedia/commons/5/56/Donald_Trump_official_portrait.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Donald_Trump",
-    "govtrackLink": "https://www.govtrack.us/congress/members/donald_trump/456872/report-card/2024",
+    "govtrackLink": "https://www.govtrack.us/congress/other-people/donald_trump/412733",
     "termStart": "2025-01-20",
     "termEnd": "2029-01-20",
     "contact": {
@@ -378,7 +378,7 @@ const federalOfficials = [
     "slug": "jd-vance",
     "photo": "https://www.whitehouse.gov/wp-content/uploads/2025/01/jd-vance.jpg",
     "ballotpediaLink": "https://ballotpedia.org/J._D._Vance",
-    "govtrackLink": "https://www.govtrack.us/congress/members/james_vance/456873/report-card/2024",
+    "govtrackLink": "https://www.govtrack.us/congress/members/james_david_vance/456876/report-card/2024",
     "termStart": "2025-01-20",
     "termEnd": "2029-01-20",
     "contact": {
