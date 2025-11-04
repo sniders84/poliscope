@@ -625,3 +625,43 @@ main {
   width: 80%;
   max-width: 600px;
 }
+.poll-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.poll-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 12px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.poll-card:hover {
+  transform: translateY(-3px);
+}
+
+.poll-logo img {
+  width: 100%;
+  max-width: 120px;   /* uniform logo size */
+  height: 80px;       /* fixed height for consistency */
+  object-fit: contain; /* keeps aspect ratio */
+  margin: 0 auto 10px;
+  display: block;
+}
+
+.poll-links a {
+  font-weight: 500;
+  color: #004080;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.poll-links a:hover {
+  text-decoration: underline;
+}
