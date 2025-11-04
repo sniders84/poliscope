@@ -816,6 +816,14 @@ function wireStateDropdown() {
   window.selectedState = selectedState;
   renderOfficials(selectedState, '');
 });
+  function showOrganizations() {
+  showTab('organizations');
+}
+
+function showVoting() {
+  showTab('voting');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   // Elements
   officialsContainer = document.getElementById('officials-container');
