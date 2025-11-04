@@ -336,24 +336,94 @@ function showPolls() {
   pollsContainer.innerHTML = '';
 
   const pollCategories = [
-    { label: 'President', polls: [ { name: 'Presidential Approval & Matchups', url: 'https://www.realclearpolling.com/latest-polls/2025' } ] },
-    { label: 'Vice President', polls: [ { name: 'JD Vance Favorability Analysis', url: 'https://www.realclearpolling.com/stories/analysis/from-controversy-to-popularity-vances-rise-in-favorability' } ] },
-    { label: 'Governor', polls: [ 
-        { name: '2025 Governor Polls Overview', url: 'https://www.realclearpolling.com/latest-polls/2025' },
-        { name: 'Virginia & New Jersey Governor Races', url: 'https://www.realclearpolling.com/polls/governor/general/2025/new-jersey/sherrill-vs-ciattarelli' }
-    ] },
-    { label: 'U.S. Senate', polls: [ 
-        { name: '2026 Senate Polls', url: 'https://www.realclearpolling.com/latest-polls/senate' },
-        { name: 'Senate Forecasts – 270toWin', url: 'https://www.270towin.com/polls/latest-2026-senate-election-polls/' }
-    ] },
-    { label: 'U.S. House', polls: [ 
-        { name: 'Generic Congressional Ballot', url: 'https://www.realclearpolling.com/latest-polls/house' },
-        { name: 'Toss-Up House Races', url: 'https://www.270towin.com/news/2024/11/05/27-house-races-rated-toss-favored-change-parties_1675.html' }
-    ] },
-    { label: 'State Senate', polls: [ { name: 'State Legislative Special Elections', url: 'https://www.270towin.com/content/2025-election-results-special-elections-congress-state-legislatures-georgia-psc' } ] },
-    { label: 'State House', polls: [ { name: 'Virginia House of Delegates', url: 'https://www.270towin.com/content/2025-election-results-virginia-governor-attorney-general-house-of-delegates' } ] }
-  ];
-
+  {
+    label: 'President',
+    polls: [
+      { 
+        name: 'RealClearPolling – 2025 Presidential Polls', 
+        url: 'https://www.realclearpolling.com/latest-polls/2025' 
+      },
+      { 
+        name: '270toWin – 2025 Presidential Polls', 
+        url: 'https://www.270towin.com/uploads/Atlas-US-National%20Poll%20-May-2025.pdf' 
+      }
+    ]
+  },
+  {
+    label: 'Vice President',
+    polls: [
+      { 
+        name: 'RealClearPolling – Vice Presidential Favorability (Harris, Vance, etc.)', 
+        url: 'https://www.realclearpolling.com/stories/analysis/kamala-harris-favorability-down-post-presidential-election' 
+      },
+      { 
+        name: '270toWin – 2025 Vice Presidential Poll Snapshot', 
+        url: 'https://www.270towin.com/uploads/Atlas-US-National%20Poll%20-May-2025.pdf' 
+      }
+    ]
+  },
+  {
+    label: 'Governor',
+    polls: [
+      { 
+        name: 'RealClearPolling – 2025 Governor Polls (Virginia & New Jersey)', 
+        url: 'https://www.realclearpolling.com/latest-polls/governor' 
+      },
+      { 
+        name: '270toWin – 2025 Governor Polls (Virginia & New Jersey)', 
+        url: 'https://www.270towin.com/polls/latest-2026-governor-election-polls/' 
+      }
+    ]
+  },
+  {
+    label: 'U.S. Senate',
+    polls: [
+      { 
+        name: 'RealClearPolling – 2026 Senate Polls', 
+        url: 'https://www.realclearpolling.com/latest-polls/senate' 
+      },
+      { 
+        name: '270toWin – 2026 Senate Polls', 
+        url: 'https://www.270towin.com/polls/latest-2026-senate-election-polls/' 
+      }
+    ]
+  },
+  {
+    label: 'U.S. House',
+    polls: [
+      { 
+        name: 'RealClearPolling – 2026 House Polls (Generic Congressional Vote)', 
+        url: 'https://www.realclearpolling.com/latest-polls/house' 
+      },
+      { 
+        name: '270toWin – 2026 House Polls', 
+        url: 'https://www.270towin.com/polls/latest-2026-house-election-polls/' 
+      }
+    ]
+  },
+  {
+    label: 'State Senate',
+    polls: [
+      { 
+        name: '270toWin – 2025 State Senate & Legislative Special Elections', 
+        url: 'https://www.270towin.com/content/2025-election-results-special-elections-congress-state-legislatures-georgia-psc' 
+      }
+    ]
+  },
+  {
+    label: 'State House',
+    polls: [
+      { 
+        name: '270toWin – 2025 Virginia House of Delegates Elections', 
+        url: 'https://www.270towin.com/content/2025-election-results-virginia-governor-attorney-general-house-of-delegates' 
+      },
+      { 
+        name: '270toWin – 2025 State House Elections Map', 
+        url: 'https://www.270towin.com/2026-state-legislature-elections/state-house' 
+      }
+    ]
+  }
+];
   const suppressedForTerritories = ['State Senate', 'State House'];
   const isTerritory = ['Puerto Rico', 'U.S. Virgin Islands', 'Guam', 'American Samoa', 'Northern Mariana Islands'].includes(selectedState);
 
