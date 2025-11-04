@@ -98,30 +98,33 @@ function showTab(id) {
 
 function showVoting() {
   showTab('voting');
+  function showVoting() {
+  showTab('voting');
   const votingCards = document.getElementById('voting-cards');
-  // add your voting tab logic here
-}
+
   fetch('voting-data.json')
     .then(res => {
       if (!res.ok) throw new Error('Voting data file not found');
       return res.json();
     })
     .then(data => {
-  console.log('Voting data loaded:', data);
-  console.log('Available voting keys:', Object.keys(data));
-  console.log('Trying to match:', window.selectedState);
-  let selectedState = window.selectedState || 'North Carolina';
-  if (selectedState === 'Virgin Islands') selectedState = 'U.S. Virgin Islands';
-  const stateData = data[selectedState] || (selectedState === 'U.S. Virgin Islands' ? data['U.S. Virgin Islands'] : null);
+      console.log('Voting data loaded:', data);
+      console.log('Available voting keys:', Object.keys(data));
+      console.log('Trying to match:', window.selectedState);
+
+      let selectedState = window.selectedState || 'North Carolina';
+      if (selectedState === 'Virgin Islands') selectedState = 'U.S. Virgin Islands';
+      const stateData = data[selectedState] || (selectedState === 'U.S. Virgin Islands' ? data['U.S. Virgin Islands'] : null);
 
       if (!stateData || typeof stateData !== 'object') {
         votingCards.innerHTML = `<p>No voting information available for ${selectedState}.</p>`;
         return;
       }
-console.log("Selected state:", selectedState);
-console.log('Available voting keys:', Object.keys(data));
-console.log('Trying to match:', selectedState);
-console.log('Direct match result:', data[selectedState]);
+
+      console.log("Selected state:", selectedState);
+      console.log('Available voting keys:', Object.keys(data));
+      console.log('Trying to match:', selectedState);
+      console.log('Direct match result:', data[selectedState]);
 
       const labelMap = {
         register: 'Register to Vote',
@@ -135,70 +138,63 @@ console.log('Direct match result:', data[selectedState]);
         tools: 'State Voting Tools'
       };
 
-Object.entries(stateData).forEach(([key, value]) => {
-  if (!value) return; // skip null, undefined, false, 0
+      Object.entries(stateData).forEach(([key, value]) => {
+        if (!value) return;
 
-  let url, icon, description, deadline;
+        let url, icon, description, deadline;
 
-  if (typeof value === 'string') {
-    url = value;
-    icon = '🗳️';
-    description = '';
-    deadline = '';
-  } else if (typeof value === 'object' && value !== null) {
-    ({ url, icon = '🗳️', description = '', deadline = '' } = value);
-  } else {
-    return; // skip anything unexpected
-  }
+        if (typeof value === 'string') {
+          url = value;
+          icon = '🗳️';
+          description = '';
+          deadline = '';
+        } else if (typeof value === 'object' && value !== null) {
+          ({ url, icon = '🗳️', description = '', deadline = '' } = value);
+        } else {
+          return;
+        }
 
-  if (!url) return;
+        if (!url) return;
 
-  const title = labelMap[key] || key;
+        const title = labelMap[key] || key;
 
-  const card = document.createElement('div');
-  card.className = 'voting-card';
+        const card = document.createElement('div');
+        card.className = 'voting-card';
 
-  const link = document.createElement('a');
-  link.href = url;
-  link.target = '_blank';
+        const link = document.createElement('a');
+        link.href = url;
+        link.target = '_blank';
 
-  const iconDiv = document.createElement('div');
-  iconDiv.className = 'card-icon';
-  iconDiv.innerHTML = `<span class="emoji">${icon}</span>`;
+        const iconDiv = document.createElement('div');
+        iconDiv.className = 'card-icon';
+        iconDiv.innerHTML = `<span class="emoji">${icon}</span>`;
 
-  const labelDiv = document.createElement('div');
-  labelDiv.className = 'card-label';
-  labelDiv.textContent = title;
+        const labelDiv = document.createElement('div');
+        labelDiv.className = 'card-label';
+        labelDiv.textContent = title;
 
-  const descDiv = document.createElement('div');
-  descDiv.className = 'card-description';
-  descDiv.textContent = description;
+        const descDiv = document.createElement('div');
+        descDiv.className = 'card-description';
+        descDiv.textContent = description;
 
-  const deadlineDiv = document.createElement('div');
-  deadlineDiv.className = 'card-date';
-  if (deadline) deadlineDiv.textContent = deadline;
+        const deadlineDiv = document.createElement('div');
+        deadlineDiv.className = 'card-date';
+        if (deadline) deadlineDiv.textContent = deadline;
 
-  link.appendChild(iconDiv);
-  link.appendChild(labelDiv);
-  link.appendChild(descDiv);
-  if (deadline) link.appendChild(deadlineDiv);
+        link.appendChild(iconDiv);
+        link.appendChild(labelDiv);
+        link.appendChild(descDiv);
+        if (deadline) link.appendChild(deadlineDiv);
 
-  card.appendChild(link);
-  votingCards.appendChild(card);
-});
+        card.appendChild(link);
+        votingCards.appendChild(card);
+      });
     })
     .catch(err => {
       votingCards.innerHTML = '<p>Error loading voting data.</p>';
       console.error('Voting fetch failed:', err);
     });
 }
-function renderRosterCards(rosterData, chamberLabel, container) {
-  if (Array.isArray(rosterData)) {
-    rosterData.forEach(entry => {
-      const card = document.createElement('div');
-      card.className = 'link-card';
-      card.innerHTML = `
-        <h4>${chamberLabel} – ${entry.party}</h4>
         <p class="card-desc">Click to view ${entry.party} members of the ${chamberLabel}.</p>
         <a href="${entry.url}" target="_blank" class="card-button">Open</a>
       `;
