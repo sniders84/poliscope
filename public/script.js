@@ -853,21 +853,21 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error('Error loading official data:', err);
     });
 
-  // Helper: close the Officials search like a modal
+    // Helper: close the Officials search like a modal
   function closeOfficialsSearch() {
     if (!searchBar) return;
-    // Clear focus and text
     searchBar.blur();
-    searchBar.value = '';
-
-    // Return to Officials tab and repopulate the default list
+    searchBar.value = ''; // always clear text
     showTab('officials');              // ensure this matches your tab key
     renderOfficials(selectedState, ''); // re-render default officials view
   }
 
-  // Click-outside to close search
+  // Click-outside to close search (only when search is focused)
   document.addEventListener('mousedown', event => {
     if (!searchBar) return;
+
+    // Only act if the search bar is currently focused
+    if (document.activeElement !== searchBar) return;
 
     // If a modal is open, ignore
     const modalOpen = modal && modal.style.display === 'block';
@@ -878,4 +878,3 @@ document.addEventListener('DOMContentLoaded', () => {
       closeOfficialsSearch();
     }
   });
-});
