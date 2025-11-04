@@ -426,20 +426,22 @@ function openPollModal(categoryLabel) {
 
   modalContent.innerHTML = `
     <h2>${category.label} Polls</h2>
-    ${category.polls.map(p => `
-      <div class="poll-source">
-        <div class="poll-logo">
-          <img src="${logoMap[p.source] || ''}" alt="${p.source} logo">
+    <div class="poll-grid">
+      ${category.polls.map(p => `
+        <div class="poll-card">
+          <div class="poll-logo">
+            <img src="${logoMap[p.source] || ''}" alt="${p.source} logo">
+          </div>
+          <div class="poll-links">
+            <a href="${p.url}" target="_blank">${p.name}</a>
+          </div>
         </div>
-        <div class="poll-links">
-          <a href="${p.url}" target="_blank">${p.name}</a>
-        </div>
-      </div>
-    `).join('')}
+      `).join('')}
+    </div>
   `;
 
   modal.style.display = 'block';
-
+}
   // Optional: dynamic live poll injection for RCP categories
   const liveEndpoints = {
     'President': 'https://www.realclearpolling.com/latest-polls/2025',
