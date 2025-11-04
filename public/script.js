@@ -854,22 +854,20 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error('Error loading official data:', err);
     });
 
-  // Helper: clear and reset the Officials search
-  function closeOfficialsSearch() {
-    if (!searchBar) return;
-    searchBar.value = '';              // clear text
-    searchBar.blur();                  // remove focus
-    showTab('officials');              // return to Officials tab
-    renderOfficials(selectedState, ''); // re-render default officials view
+ // Helper: clear the Officials search bar
+function closeOfficialsSearch() {
+  if (!searchBar) return;
+  searchBar.value = '';   // clear text
+  searchBar.blur();       // remove focus
+  // Do NOT force showTab('officials') or re-render here
+}
+
+// Click-outside to clear search
+document.addEventListener('mousedown', event => {
+  if (!searchBar) return;
+
+  // If the click is outside the search bar, clear it
+  if (event.target !== searchBar && !searchBar.contains(event.target)) {
+    closeOfficialsSearch();
   }
-
-  // Click-outside to clear search
-  document.addEventListener('mousedown', event => {
-    if (!searchBar) return;
-
-    // If the click is outside the search bar, clear it
-    if (event.target !== searchBar && !searchBar.contains(event.target)) {
-      closeOfficialsSearch();
-    }
-  });
 });
