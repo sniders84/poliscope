@@ -82,7 +82,28 @@
   <button class="tab" onclick="showOrganizations()">Political Groups</button>
   <button class="tab" onclick="showVoting()">Voting</button>
 </nav>
+<!-- Tab content sections -->
+<div id="officials" class="tab-content"></div>
+<div id="civic" class="tab-content"></div>
+<div id="polls" class="tab-content"></div>
+<div id="organizations" class="tab-content" style="display:none;">
+  <h2>Political Groups</h2>
 
+  <!-- Filter buttons -->
+  <div id="group-filters">
+    <button data-filter="All">All</button>
+    <button data-filter="Conservative">Conservative</button>
+    <button data-filter="Progressive">Progressive</button>
+    <button data-filter="Centrist">Centrist</button>
+    <button data-filter="Libertarian">Libertarian</button>
+    <button data-filter="Green">Green</button>
+    <button data-filter="Nonpartisan">Nonpartisan</button>
+  </div>
+
+  <!-- Container for group cards -->
+  <div id="groups-container"></div>
+</div>
+<div id="voting" class="tab-content"></div>
   <main>
     <section id="my-officials" class="tab-content">
       <h2>My Officials</h2>
