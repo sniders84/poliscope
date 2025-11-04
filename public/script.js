@@ -406,19 +406,39 @@ function showPolls() {
 
   window.pollCategories = pollCategories;
 }
+// Map each source to its logo in /assets/
+const logoMap = {
+  RCP: '/assets/rcp.png',
+  '270toWin': '/assets/270towin.png',
+  CNN: '/assets/cnn.png',
+  NYT: '/assets/nyt.png',
+  Politico: '/assets/politico.png'
+};
+
+// Function to open poll modal with logos grouped by source
 function openPollModal(categoryLabel) {
-  const modal = document.getElementById('polls-modal');
-  const modalContent = document.getElementById('polls-content');
-  const category = window.pollCategories.find(c => c.label === categoryLabel);
+  const category = pollCategories.find(c => c.label === categoryLabel);
+  const modal = document.getElementById('pollModal');
+  const modalContent = document.getElementById('pollModalContent');
+
   if (!category) return;
 
   modalContent.innerHTML = `
     <h2>${category.label} Polls</h2>
-    <ul>
-      ${category.polls.map(p => `<li><a href="${p.url}" target="_blank">${p.name}</a></li>`).join('')}
-    </ul>
+    ${category.polls.map(p => `
+      <div class="poll-source">
+        <div class="poll-logo">
+          <img src="${logoMap[p.source] || ''}" alt="${p.source} logo">
+        </div>
+        <div class="poll-links">
+          <a href="${p.url}" target="_blank">${p.name}</a>
+        </div>
+      </div>
+    `).join('')}
   `;
+
   modal.style.display = 'block';
+}
 // Optional: Hook for dynamic poll injection
 if (category.label === 'President') {
   fetch('https://www.realclearpolling.com/latest-polls/2025')
