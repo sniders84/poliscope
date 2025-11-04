@@ -384,15 +384,21 @@ function showPolls() {
   ];
 
   pollCategories.forEach(category => {
-    const card = document.createElement('div');
-    card.className = 'link-card';
-    card.innerHTML = `
-      <h4>${category.label}</h4>
-      <p class="card-desc">Click to view ${category.label} polls.</p>
-      <button class="card-button" onclick="openPollModal('${category.label}')">Open</button>
-    `;
-    pollsContainer.appendChild(card);
-  });
+    const suppressedForTerritories = ['State Senate', 'State House'];
+const isTerritory = ['Puerto Rico', 'U.S. Virgin Islands', 'Guam', 'American Samoa', 'Northern Mariana Islands'].includes(selectedState);
+
+pollCategories.forEach(category => {
+  if (isTerritory && suppressedForTerritories.includes(category.label)) return;
+
+  const card = document.createElement('div');
+  card.className = 'link-card';
+  card.innerHTML = `
+    <h4>${category.label}</h4>
+    <p class="card-desc">Click to view ${category.label} polls.</p>
+    <button class="card-button" onclick="openPollModal('${category.label}')">Open</button>
+  `;
+  pollsContainer.appendChild(card);
+});
 
   window.pollCategories = pollCategories;
 }
@@ -409,6 +415,83 @@ function openPollModal(categoryLabel) {
     </ul>
   `;
   modal.style.display = 'block';
+// Optional: Hook for dynamic poll injection
+if (category.label === 'President') {
+  fetch('https://www.realclearpolling.com/latest-polls/2025')
+    .then(res => res.text())
+    .then(html => {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+      const pollLinks = Array.from(doc.querySelectorAll('a[href*="/polls/"]'));
+
+      const filtered = pollLinks
+        .filter(link => link.textContent.trim().length > 0)
+        .slice(0, 5)
+        .map(link => `<li><a href="https://www.realclearpolling.com${link.getAttribute('href')}" target="_blank">${link.textContent.trim()}</a></li>`);
+
+      if (filtered.length > 0) {
+        modalContent.innerHTML += `<h3>Live Polls</h3><ul>${filtered.join('')}</ul>`;
+      }
+    })
+    .catch(err => console.error('Polling fetch error:', err));
+}
+if (category.label === 'U.S. Senate') {
+  fetch('https://www.realclearpolling.com/latest-polls/senate')
+    .then(res => res.text())
+    .then(html => {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+      const pollLinks = Array.from(doc.querySelectorAll('a[href*="/polls/"]'));
+
+      const filtered = pollLinks
+        .filter(link => link.textContent.trim().length > 0)
+        .slice(0, 5)
+        .map(link => `<li><a href="https://www.realclearpolling.com${link.getAttribute('href')}" target="_blank">${link.textContent.trim()}</a></li>`);
+
+      if (filtered.length > 0) {
+        modalContent.innerHTML += `<h3>Live Senate Polls</h3><ul>${filtered.join('')}</ul>`;
+      }
+    })
+    .catch(err => console.error('Senate polling fetch error:', err));
+}
+if (category.label === 'U.S. House') {
+  fetch('https://www.realclearpolling.com/latest-polls/house')
+    .then(res => res.text())
+    .then(html => {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+      const pollLinks = Array.from(doc.querySelectorAll('a[href*="/polls/"]'));
+
+      const filtered = pollLinks
+        .filter(link => link.textContent.trim().length > 0)
+        .slice(0, 5)
+        .map(link => `<li><a href="https://www.realclearpolling.com${link.getAttribute('href')}" target="_blank">${link.textContent.trim()}</a></li>`);
+
+      if (filtered.length > 0) {
+        modalContent.innerHTML += `<h3>Live House Polls</h3><ul>${filtered.join('')}</ul>`;
+      }
+    })
+    .catch(err => console.error('House polling fetch error:', err));
+}
+if (category.label === 'Governor') {
+  fetch('https://www.realclearpolling.com/latest-polls/governor')
+    .then(res => res.text())
+    .then(html => {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+      const pollLinks = Array.from(doc.querySelectorAll('a[href*="/polls/"]'));
+
+      const filtered = pollLinks
+        .filter(link => link.textContent.trim().length > 0)
+        .slice(0, 5)
+        .map(link => `<li><a href="https://www.realclearpolling.com${link.getAttribute('href')}" target="_blank">${link.textContent.trim()}</a></li>`);
+
+      if (filtered.length > 0) {
+        modalContent.innerHTML += `<h3>Live Governor Polls</h3><ul>${filtered.join('')}</ul>`;
+      }
+    })
+    .catch(err => console.error('Governor polling fetch error:', err));
+}
 
   window.onclick = function(event) {
     if (event.target === modal) {
