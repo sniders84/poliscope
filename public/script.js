@@ -824,7 +824,7 @@ document.addEventListener('DOMContentLoaded', () => {
   modalContent = document.getElementById('modal-content');
   closeModal = document.getElementById('close-modal');
 
-    closeModal.addEventListener('click', closeModalWindow);
+  closeModal.addEventListener('click', closeModalWindow);
   window.addEventListener('click', event => {
     if (event.target === modal) closeModalWindow();
   });
@@ -848,4 +848,20 @@ document.addEventListener('DOMContentLoaded', () => {
     .catch(err => {
       console.error('Error loading official data:', err);
     });
+
+  // 👇 Add this block to handle click-outside for the search bar
+  document.addEventListener('click', event => {
+    const searchInput = document.getElementById('search-bar');
+    if (!searchInput) return;
+
+    // If click is outside the search bar
+    if (event.target !== searchInput && !searchInput.contains(event.target)) {
+      // If the search bar is focused or empty, return to previous tab
+      if (document.activeElement === searchInput || searchInput.value === '') {
+        if (typeof previousTab !== 'undefined') {
+          showTab(previousTab);
+        }
+      }
+    }
+  });
 });
