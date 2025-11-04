@@ -816,7 +816,6 @@ function wireStateDropdown() {
   window.selectedState = selectedState;
   renderOfficials(selectedState, '');
 });
-}
 document.addEventListener('DOMContentLoaded', () => {
   // Elements
   officialsContainer = document.getElementById('officials-container');
@@ -853,12 +852,12 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error('Error loading official data:', err);
     });
 
-    // Helper: close the Officials search like a modal
+  // Helper: close the Officials search like a modal
   function closeOfficialsSearch() {
     if (!searchBar) return;
     searchBar.blur();
     searchBar.value = ''; // always clear text
-    showTab('officials');              // ensure this matches your tab key
+    showTab('officials');               // ensure this matches your tab key
     renderOfficials(selectedState, ''); // re-render default officials view
   }
 
@@ -878,3 +877,4 @@ document.addEventListener('DOMContentLoaded', () => {
       closeOfficialsSearch();
     }
   });
+}); // <-- properly closes DOMContentLoaded
