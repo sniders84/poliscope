@@ -705,3 +705,16 @@ main {
 .poll-links a:hover {
   text-decoration: underline;
 }
+/* Make cards show the hand pointer */
+.link-card,
+.poll-card,
+.civic-card {
+  cursor: pointer;
+}
+.link-card:hover,
+.poll-card:hover,
+.civic-card:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transform: translateY(-2px);
+  transition: all 0.2s ease;
+}
