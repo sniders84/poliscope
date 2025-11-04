@@ -336,57 +336,57 @@ function showPolls() {
   pollsContainer.innerHTML = '';
 
   const pollCategories = [
-    {
-      label: 'President',
-      polls: [
-        { source: 'RCP', name: 'RealClearPolling – 2025 Presidential Polls', url: 'https://www.realclearpolling.com/latest-polls/2025' },
-        { source: '270toWin', name: '270toWin – 2025 Presidential Polls', url: 'https://www.270towin.com/2025-presidential-election-polls/' },
-        { source: 'CNN', name: 'CNN – 2025 Presidential Approval Polling', url: 'https://www.cnn.com/politics/polling' },
-        { source: 'NYT', name: 'NYT/Siena – 2025 Presidential Poll Coverage', url: 'https://www.nytimes.com/news-event/times-siena-poll-coverage' },
-        { source: 'Politico', name: 'Politico – 2025 Presidential Poll Tracker', url: 'https://www.politico.com/news/2025-elections' }
-      ]
-    },
-    {
-      label: 'Vice President',
-      polls: [
-        { source: 'RCP', name: 'RealClearPolling – JD Vance Favorability', url: 'https://www.realclearpolling.com/polls/favorability/j-d-vance' },
-        { source: 'RCP', name: 'RealClearPolling – Political Leaders Favorability Index (includes Vance)', url: 'https://www.realclearpolling.com/polls/favorability/political-leaders' },
-        { source: 'CNN', name: 'CNN – JD Vance Polling & Approval Coverage', url: 'https://www.cnn.com/politics/polling' },
-        { source: 'NYT', name: 'NYT – JD Vance Coverage (poll references included)', url: 'https://www.nytimes.com/topic/jd-vance' },
-        { source: 'Politico', name: 'Politico – JD Vance 2025 Coverage & Poll Mentions', url: 'https://www.politico.com/news/2025/07/01/vance-one-big-beautiful-bill-2028-00436041' }
-      ]
-    },
-    {
-      label: 'Governor',
-      polls: [
-        { source: 'RCP', name: 'RealClearPolling – 2025 Governor Polls (Virginia & New Jersey)', url: 'https://www.realclearpolling.com/latest-polls/governor' },
-        { source: '270toWin', name: '270toWin – 2025 Governor Polls (Virginia & New Jersey)', url: 'https://www.270towin.com/polls/latest-2026-governor-election-polls/' },
-        { source: 'Politico', name: 'Politico – New Jersey Governor Race Polling (Sept 2025)', url: 'https://www.politico.com/newsletters/new-jersey-playbook/2025/09/18/the-newest-polling-on-the-gov-race-00570497' },
-        { source: 'Politico', name: 'Politico – Virginia Governor Race Polling (Oct 2025)', url: 'https://www.politico.com/news/2025/10/23/virginia-elections-poll-00620585' },
-        { source: 'NYT', name: 'NYT – Mikie Sherrill vs. Ciattarelli Coverage (NJ Governor 2025)', url: 'https://www.nytimes.com/topic/mikie-sherrill' }
-      ]
-    },
-    {
-      label: 'U.S. Senate',
-      polls: [
-        { source: 'RCP', name: 'RealClearPolling – 2026 Senate Polls', url: 'https://www.realclearpolling.com/latest-polls/senate' },
-        { source: '270toWin', name: '270toWin – Latest 2026 Senate Election Polls', url: 'https://www.270towin.com/polls/latest-2026-senate-election-polls/' },
-        { source: 'NYT', name: 'NYT – 2026 Senate Race Coverage', url: 'https://www.nytimes.com/topic/senate' },
-        { source: 'CNN', name: 'CNN – 2026 Senate Polling Hub', url: 'https://www.cnn.com/politics/polling' },
-        { source: 'Politico', name: 'Politico – 2026 Senate Battlegrounds', url: 'https://www.politico.com/news/2025/07/13/senate-battleground-2026-midterms-00449589' }
-      ]
-    },
-    {
-      label: 'U.S. House',
-      polls: [
-        { source: 'RCP', name: 'RealClearPolling – 2026 House Polls (Generic Ballot & Key Races)', url: 'https://www.realclearpolling.com/latest-polls/house' },
-        { source: '270toWin', name: '270toWin – Latest 2026 House Election Polls', url: 'https://www.270towin.com/polls/latest-2026-house-election-polls/' },
-        { source: 'NYT', name: 'NYT/Siena – 2025–26 House Poll Coverage', url: 'https://www.nytimes.com/news-event/times-siena-poll-coverage' },
-        { source: 'CNN', name: 'CNN – 2026 House Election Polling Hub', url: 'https://www.cnn.com/politics/polling' },
-        { source: 'Politico', name: 'Politico – 2026 House Targets & Polling', url: 'https://www.politico.com/news/2025/04/08/democrats-top-targets-to-flip-2026-031937' }
-      ]
-    }
-  ];
+  {
+    label: 'President',
+    polls: [
+      { source: 'RCP', name: 'RealClearPolling – Latest 2025 Polls', url: 'https://www.realclearpolling.com/latest-polls/2025' },
+      { source: 'RCP', name: 'RealClearPolling – Latest Polls Hub', url: 'https://www.realclearpolling.com/latest-polls' },
+      { source: '270toWin', name: '270toWin – AtlasIntel US National Poll (May 2025 PDF)', url: 'https://www.270towin.com/uploads/Atlas-US-National%20Poll%20-May-2025.pdf' },
+      { source: 'NYT', name: 'NYT/Siena – Times/Siena Poll Coverage Hub', url: 'https://www.nytimes.com/news-event/times-siena-poll-coverage' },
+      { source: 'Siena', name: 'Siena Research – NYT/Siena National Poll (Sept 2025)', url: 'https://sri.siena.edu/2025/09/30/new-york-times-siena-national-poll/' }
+    ]
+  },
+  {
+    label: 'Vice President',
+    polls: [
+      { source: 'RCP', name: 'RealClearPolling – JD Vance Favorability', url: 'https://www.realclearpolling.com/polls/favorability/j-d-vance' },
+      { source: 'RCP', name: 'RealClearPolling – Political Leaders Favorability Index', url: 'https://www.realclearpolling.com/polls/favorability/political-leaders' },
+      { source: 'Newsweek', name: 'Newsweek – JD Vance vs. Newsom (Blue State Poll, 2028)', url: 'https://www.newsweek.com/jd-vance-gavin-newsom-blue-state-poll-2028-10963679' },
+      { source: 'Politico', name: 'Politico – Vance dodges “premature” 2028 talk', url: 'https://www.politico.com/news/2025/10/29/jd-vance-marco-rubio-2028-00627286' },
+      { source: 'Siena', name: 'Siena Research – NYT/Siena National Poll (Sept 2025)', url: 'https://sri.siena.edu/2025/09/30/new-york-times-siena-national-poll/' }
+    ]
+  },
+  {
+    label: 'Governor',
+    polls: [
+      { source: 'RCP', name: 'RealClearPolling – Latest Polls (Governor filter inside)', url: 'https://www.realclearpolling.com/latest-polls' },
+      { source: '270toWin', name: '270toWin – 2025 Election Results (VA, NJ, NYC)', url: 'https://www.270towin.com/news/2025/11/03/2025-election-results-virginia-new-jersey-governor-nyc-mayor-prop-50-other-key-races_1769.html' },
+      { source: 'Politico', name: 'Politico – Polling Hub', url: 'https://www.politico.com/polling' },
+      { source: 'NYT', name: 'NYT – Mikie Sherrill Coverage (NJ Governor 2025)', url: 'https://www.nytimes.com/topic/mikie-sherrill' },
+      { source: 'CNN', name: 'CNN – Election 2025 Coverage Hub', url: 'https://www.cnn.com/politics/elections' }
+    ]
+  },
+  {
+    label: 'U.S. Senate',
+    polls: [
+      { source: 'RCP', name: 'RealClearPolling – Latest Polls (Senate filter inside)', url: 'https://www.realclearpolling.com/latest-polls' },
+      { source: '270toWin', name: '270toWin – 2026 Senate Elections Overview', url: 'https://www.270towin.com/2026-senate-election' },
+      { source: 'Politico', name: 'Politico – 2026 Senate Battlegrounds', url: 'https://www.politico.com/news/2025/07/13/senate-battleground-2026-midterms-00449589' },
+      { source: 'NYT', name: 'NYT – Senate Coverage Hub', url: 'https://www.nytimes.com/topic/senate' },
+      { source: 'CNN', name: 'CNN – Politics Polling Coverage', url: 'https://www.cnn.com/politics/polling' }
+    ]
+  },
+  {
+    label: 'U.S. House',
+    polls: [
+      { source: 'RCP', name: 'RealClearPolling – Latest Polls (House filter inside)', url: 'https://www.realclearpolling.com/latest-polls' },
+      { source: '270toWin', name: '270toWin – 2026 House Elections Overview', url: 'https://www.270towin.com/2026-house-election' },
+      { source: 'Politico', name: 'Politico – 2026 House Targets', url: 'https://www.politico.com/news/2025/04/08/democrats-top-targets-to-flip-2026-031937' },
+      { source: 'NYT', name: 'NYT/Siena – Times/Siena Poll Coverage Hub', url: 'https://www.nytimes.com/news-event/times-siena-poll-coverage' },
+      { source: 'CNN', name: 'CNN – Politics Polling Coverage', url: 'https://www.cnn.com/politics/polling' }
+    ]
+  }
+];
 
   const suppressedForTerritories = ['State Senate', 'State House'];
   const isTerritory = ['Puerto Rico', 'U.S. Virgin Islands', 'Guam', 'American Samoa', 'Northern Mariana Islands'].includes(selectedState);
