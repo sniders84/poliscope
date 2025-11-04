@@ -339,51 +339,51 @@ function showPolls() {
   {
     label: 'President',
     polls: [
-      { source: 'RCP', name: 'RealClearPolling – Latest 2025 Polls', url: 'https://www.realclearpolling.com/latest-polls/2025' },
-      { source: 'RCP', name: 'RealClearPolling – Latest Polls Hub', url: 'https://www.realclearpolling.com/latest-polls' },
-      { source: '270toWin', name: '270toWin – AtlasIntel US National Poll (May 2025 PDF)', url: 'https://www.270towin.com/uploads/Atlas-US-National%20Poll%20-May-2025.pdf' },
-      { source: 'NYT', name: 'NYT/Siena – Times/Siena Poll Coverage Hub', url: 'https://www.nytimes.com/news-event/times-siena-poll-coverage' },
-      { source: 'Siena', name: 'Siena Research – NYT/Siena National Poll (Sept 2025)', url: 'https://sri.siena.edu/2025/09/30/new-york-times-siena-national-poll/' }
+      { source: 'RCP', name: 'RealClearPolling – Presidential Job Approval', url: 'https://www.realclearpolling.com/' },
+      { source: 'Ballotpedia', name: 'Ballotpedia – Presidential Approval Index (updated daily)', url: 'https://ballotpedia.org/Ballotpedia%27s_Polling_Index:_Presidential_approval_rating' },
+      { source: 'CNN', name: 'CNN – Trump Approval Rating (Nov 2025 poll)', url: 'https://www.cnn.com/2025/11/03/politics/video/ip-dana-bash-david-chalian-poll-president-trump-approval-economy' },
+      { source: 'USA Today', name: 'USA Today – Current Trump Approval Polling (Oct 2025)', url: 'https://www.usatoday.com/story/news/2025/10/22/what-is-president-donald-trump-current-approval-rating-trumps-latest-presidential-poll-numbers-today/86835093007/' },
+      { source: 'AP-NORC', name: 'AP-NORC – Presidential Approval Tracker', url: 'https://apnews.com/projects/polling-tracker/' }
     ]
   },
   {
     label: 'Vice President',
     polls: [
-      { source: 'RCP', name: 'RealClearPolling – JD Vance Favorability', url: 'https://www.realclearpolling.com/polls/favorability/j-d-vance' },
-      { source: 'RCP', name: 'RealClearPolling – Political Leaders Favorability Index', url: 'https://www.realclearpolling.com/polls/favorability/political-leaders' },
-      { source: 'Newsweek', name: 'Newsweek – JD Vance vs. Newsom (Blue State Poll, 2028)', url: 'https://www.newsweek.com/jd-vance-gavin-newsom-blue-state-poll-2028-10963679' },
-      { source: 'Politico', name: 'Politico – Vance dodges “premature” 2028 talk', url: 'https://www.politico.com/news/2025/10/29/jd-vance-marco-rubio-2028-00627286' },
-      { source: 'Siena', name: 'Siena Research – NYT/Siena National Poll (Sept 2025)', url: 'https://sri.siena.edu/2025/09/30/new-york-times-siena-national-poll/' }
+      { source: 'RCP', name: 'RealClearPolling – JD Vance Favorable/Unfavorable', url: 'https://www.realclearpolling.com/polls/favorability/j-d-vance' },
+      { source: 'Newsweek', name: 'Newsweek – JD Vance Approval Rating Trend (Aug 2025)', url: 'https://www.newsweek.com/jd-vance-approval-rating-inauguration-2107645' },
+      { source: 'Washington Monthly', name: 'Washington Monthly – Vance Disapproval Coverage (Mar 2025)', url: 'https://washingtonmonthly.com/2025/03/21/j-d-vance-is-the-most-disliked-new-vice-president-in-history/' },
+      { source: 'MSN', name: 'MSN – JD Vance Most Disliked VP Poll Coverage', url: 'https://www.msn.com/en-us/politics/elections/jd-vance-is-most-disliked-vice-president-in-us-history-according-to-new-poll/ar-AA1BuSiT' },
+      { source: 'Economic Times', name: 'Economic Times – JD Vance Approval Poll (Mar 2025)', url: 'https://economictimes.indiatimes.com/news/international/us/jd-vance-sets-a-dubious-record-heres-what-a-new-poll-says-about-us-vice-president/articleshow/119315706.cms' }
     ]
   },
   {
     label: 'Governor',
     polls: [
-      { source: 'RCP', name: 'RealClearPolling – Latest Polls (Governor filter inside)', url: 'https://www.realclearpolling.com/latest-polls' },
-      { source: '270toWin', name: '270toWin – 2025 Election Results (VA, NJ, NYC)', url: 'https://www.270towin.com/news/2025/11/03/2025-election-results-virginia-new-jersey-governor-nyc-mayor-prop-50-other-key-races_1769.html' },
-      { source: 'Politico', name: 'Politico – Polling Hub', url: 'https://www.politico.com/polling' },
-      { source: 'NYT', name: 'NYT – Mikie Sherrill Coverage (NJ Governor 2025)', url: 'https://www.nytimes.com/topic/mikie-sherrill' },
-      { source: 'CNN', name: 'CNN – Election 2025 Coverage Hub', url: 'https://www.cnn.com/politics/elections' }
+      { source: 'RCP', name: 'RealClearPolling – Latest Governor Polls (2025 races)', url: 'https://www.realclearpolling.com/latest-polls/governor' },
+      { source: '270toWin', name: '270toWin – Latest 2025–26 Governor Polls', url: 'https://www.270toWin.com/polls/latest-2026-governor-election-polls/' },
+      { source: 'Race to the WH', name: 'Race to the WH – 2025–26 Governor Polling Tracker', url: 'https://www.racetothewh.com/governor/26polls' },
+      { source: 'Ballotpedia', name: 'Ballotpedia – 2025 Governor Election Results & Polls', url: 'https://ballotpedia.org/Election_results,_2025:_Governors' },
+      { source: 'Newsweek', name: 'Newsweek – Governor Approval Ratings (Aug 2025)', url: 'https://www.newsweek.com/map-shows-governor-approval-rating-2111902' }
     ]
   },
   {
     label: 'U.S. Senate',
     polls: [
-      { source: 'RCP', name: 'RealClearPolling – Latest Polls (Senate filter inside)', url: 'https://www.realclearpolling.com/latest-polls' },
-      { source: '270toWin', name: '270toWin – 2026 Senate Elections Overview', url: 'https://www.270towin.com/2026-senate-election' },
-      { source: 'Politico', name: 'Politico – 2026 Senate Battlegrounds', url: 'https://www.politico.com/news/2025/07/13/senate-battleground-2026-midterms-00449589' },
-      { source: 'NYT', name: 'NYT – Senate Coverage Hub', url: 'https://www.nytimes.com/topic/senate' },
-      { source: 'CNN', name: 'CNN – Politics Polling Coverage', url: 'https://www.cnn.com/politics/polling' }
+      { source: 'RCP', name: 'RealClearPolling – 2026 Senate Election Polls', url: 'https://www.realclearpolling.com/latest-polls/senate' },
+      { source: '270toWin', name: '270toWin – Latest 2026 Senate Polls', url: 'https://www.270towin.com/polls/latest-2026-senate-election-polls/' },
+      { source: 'Race to the WH', name: 'Race to the WH – 2026 Senate Polling Tracker', url: 'https://www.racetothewh.com/senate/26polls' },
+      { source: 'Cook Political', name: 'Cook Political Report – 2026 Senate Ratings', url: 'https://www.cookpolitical.com/ratings/senate-race-ratings' },
+      { source: 'Sabato', name: 'Sabato’s Crystal Ball – 2026 Senate Elections', url: 'https://centerforpolitics.org/crystalball/2026-senate/' }
     ]
   },
   {
     label: 'U.S. House',
     polls: [
-      { source: 'RCP', name: 'RealClearPolling – Latest Polls (House filter inside)', url: 'https://www.realclearpolling.com/latest-polls' },
-      { source: '270toWin', name: '270toWin – 2026 House Elections Overview', url: 'https://www.270towin.com/2026-house-election' },
-      { source: 'Politico', name: 'Politico – 2026 House Targets', url: 'https://www.politico.com/news/2025/04/08/democrats-top-targets-to-flip-2026-031937' },
-      { source: 'NYT', name: 'NYT/Siena – Times/Siena Poll Coverage Hub', url: 'https://www.nytimes.com/news-event/times-siena-poll-coverage' },
-      { source: 'CNN', name: 'CNN – Politics Polling Coverage', url: 'https://www.cnn.com/politics/polling' }
+      { source: '270toWin', name: '270toWin – Latest 2026 House Polls', url: 'https://www.270towin.com/polls/latest-2026-house-election-polls/' },
+      { source: 'RealClearPolling', name: 'RealClearPolling – Generic Congressional Ballot', url: 'https://www.realclearpolling.com/' },
+      { source: 'Cook Political', name: 'Cook Political Report – 2026 House Ratings', url: 'https://www.cookpolitical.com/ratings/house-race-ratings' },
+      { source: 'Sabato', name: 'Sabato’s Crystal Ball – 2026 House Elections', url: 'https://centerforpolitics.org/crystalball/2026-house/' },
+      { source: 'Factually', name: 'Factually – Current 2026 House Polling Landscape', url: 'https://factually.co/fact-checks/politics/2026-house-elections-polls-a6c243' }
     ]
   }
 ];
