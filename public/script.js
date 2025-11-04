@@ -413,17 +413,23 @@ const logoMap = {
   '270toWin': '/assets/270towin.png',
   CNN: '/assets/cnn.png',
   NYT: '/assets/nyt.png',
-  Politico: '/assets/politico.png'
+  Politico: '/assets/politico.png',
+  Siena: '/assets/siena.png',
+  Newsweek: '/assets/newsweek.png'
 };
 
-// Function to open poll modal with logos grouped by source
+// Open poll modal with grid cards and live RCP injection
 function openPollModal(categoryLabel) {
-  const category = pollCategories.find(c => c.label === categoryLabel);
+  const category = (window.pollCategories || []).find(c => c.label === categoryLabel);
   const modal = document.getElementById('pollModal');
   const modalContent = document.getElementById('pollModalContent');
 
-  if (!category) return;
+  if (!category || !modal || !modalContent) {
+    console.error('openPollModal: missing category or modal elements', { categoryLabel, category, modal, modalContent });
+    return;
+  }
 
+  // Render grid of uniform cards with logos
   modalContent.innerHTML = `
     <h2>${category.label} Polls</h2>
     <div class="poll-grid">
@@ -433,7 +439,7 @@ function openPollModal(categoryLabel) {
             <img src="${logoMap[p.source] || ''}" alt="${p.source} logo">
           </div>
           <div class="poll-links">
-            <a href="${p.url}" target="_blank">${p.name}</a>
+            <a href="${p.url}" target="_blank" rel="noopener">${p.name}</a>
           </div>
         </div>
       `).join('')}
@@ -441,8 +447,8 @@ function openPollModal(categoryLabel) {
   `;
 
   modal.style.display = 'block';
-}
-  // Optional: dynamic live poll injection for RCP categories
+
+  // Live polling injection (kept inside so `category` is defined)
   const liveEndpoints = {
     'President': 'https://www.realclearpolling.com/latest-polls/2025',
     'U.S. Senate': 'https://www.realclearpolling.com/latest-polls/senate',
@@ -450,8 +456,9 @@ function openPollModal(categoryLabel) {
     'Governor': 'https://www.realclearpolling.com/latest-polls/governor'
   };
 
-  if (liveEndpoints[category.label]) {
-    fetch(liveEndpoints[category.label])
+  const endpoint = liveEndpoints[category.label];
+  if (endpoint) {
+    fetch(endpoint)
       .then(res => res.text())
       .then(html => {
         const parser = new DOMParser();
@@ -460,20 +467,22 @@ function openPollModal(categoryLabel) {
         const filtered = pollLinks
           .filter(link => link.textContent.trim().length > 0)
           .slice(0, 5)
-          .map(link => `<li><a href="https://www.realclearpolling.com${link.getAttribute('href')}" target="_blank">${link.textContent.trim()}</a></li>`);
-                if (filtered.length > 0) {
+          .map(link => `<li><a href="https://www.realclearpolling.com${link.getAttribute('href')}" target="_blank" rel="noopener">${link.textContent.trim()}</a></li>`);
+
+        if (filtered.length > 0) {
           modalContent.innerHTML += `<h3>Live ${category.label} Polls</h3><ul>${filtered.join('')}</ul>`;
         }
       })
       .catch(err => console.error(`${category.label} polling fetch error:`, err));
   }
 
-  // Close modal when clicking outside of it
-  window.onclick = function(event) {
-    if (event.target === modal) {
+  // Close modal when clicking outside
+  window.onclick = function(e) {
+    if (e.target === modal) {
       modal.style.display = 'none';
     }
   };
+}
 function showOrganizations() {
   showTab('organizations');
   const section = document.getElementById('organizations');
