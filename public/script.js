@@ -784,9 +784,7 @@ document.addEventListener('DOMContentLoaded', () => {
   modalContent = document.getElementById('modal-content');
   closeModal = document.getElementById('close-modal');
 
-  document.getElementById('polls-tab').addEventListener('click', showPolls);
-
-  closeModal.addEventListener('click', closeModalWindow);
+    closeModal.addEventListener('click', closeModalWindow);
   window.addEventListener('click', event => {
     if (event.target === modal) closeModalWindow();
   });
