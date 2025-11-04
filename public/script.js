@@ -336,69 +336,39 @@ function showPolls() {
   pollsContainer.innerHTML = '';
 
   const pollCategories = [
-    {
-      label: 'President',
-      polls: [
-        { name: 'Presidential Approval & Matchups', url: 'https://www.realclearpolling.com/latest-polls/2025' }
-      ]
-    },
-    {
-      label: 'Vice President',
-      polls: [
-        { name: 'JD Vance Favorability Analysis', url: 'https://www.realclearpolling.com/stories/analysis/from-controversy-to-popularity-vances-rise-in-favorability' }
-      ]
-    },
-    {
-      label: 'Governor',
-      polls: [
+    { label: 'President', polls: [ { name: 'Presidential Approval & Matchups', url: 'https://www.realclearpolling.com/latest-polls/2025' } ] },
+    { label: 'Vice President', polls: [ { name: 'JD Vance Favorability Analysis', url: 'https://www.realclearpolling.com/stories/analysis/from-controversy-to-popularity-vances-rise-in-favorability' } ] },
+    { label: 'Governor', polls: [ 
         { name: '2025 Governor Polls Overview', url: 'https://www.realclearpolling.com/latest-polls/2025' },
         { name: 'Virginia & New Jersey Governor Races', url: 'https://www.realclearpolling.com/polls/governor/general/2025/new-jersey/sherrill-vs-ciattarelli' }
-      ]
-    },
-    {
-      label: 'U.S. Senate',
-      polls: [
+    ] },
+    { label: 'U.S. Senate', polls: [ 
         { name: '2026 Senate Polls', url: 'https://www.realclearpolling.com/latest-polls/senate' },
         { name: 'Senate Forecasts – 270toWin', url: 'https://www.270towin.com/polls/latest-2026-senate-election-polls/' }
-      ]
-    },
-    {
-      label: 'U.S. House',
-      polls: [
+    ] },
+    { label: 'U.S. House', polls: [ 
         { name: 'Generic Congressional Ballot', url: 'https://www.realclearpolling.com/latest-polls/house' },
         { name: 'Toss-Up House Races', url: 'https://www.270towin.com/news/2024/11/05/27-house-races-rated-toss-favored-change-parties_1675.html' }
-      ]
-    },
-    {
-      label: 'State Senate',
-      polls: [
-        { name: 'State Legislative Special Elections', url: 'https://www.270towin.com/content/2025-election-results-special-elections-congress-state-legislatures-georgia-psc' }
-      ]
-    },
-    {
-      label: 'State House',
-      polls: [
-        { name: 'Virginia House of Delegates', url: 'https://www.270towin.com/content/2025-election-results-virginia-governor-attorney-general-house-of-delegates' }
-      ]
-    }
+    ] },
+    { label: 'State Senate', polls: [ { name: 'State Legislative Special Elections', url: 'https://www.270towin.com/content/2025-election-results-special-elections-congress-state-legislatures-georgia-psc' } ] },
+    { label: 'State House', polls: [ { name: 'Virginia House of Delegates', url: 'https://www.270towin.com/content/2025-election-results-virginia-governor-attorney-general-house-of-delegates' } ] }
   ];
 
+  const suppressedForTerritories = ['State Senate', 'State House'];
+  const isTerritory = ['Puerto Rico', 'U.S. Virgin Islands', 'Guam', 'American Samoa', 'Northern Mariana Islands'].includes(selectedState);
+
   pollCategories.forEach(category => {
-    const suppressedForTerritories = ['State Senate', 'State House'];
-const isTerritory = ['Puerto Rico', 'U.S. Virgin Islands', 'Guam', 'American Samoa', 'Northern Mariana Islands'].includes(selectedState);
+    if (isTerritory && suppressedForTerritories.includes(category.label)) return;
 
-pollCategories.forEach(category => {
-  if (isTerritory && suppressedForTerritories.includes(category.label)) return;
-
-  const card = document.createElement('div');
-  card.className = 'link-card';
-  card.innerHTML = `
-    <h4>${category.label}</h4>
-    <p class="card-desc">Click to view ${category.label} polls.</p>
-    <button class="card-button" onclick="openPollModal('${category.label}')">Open</button>
-  `;
-  pollsContainer.appendChild(card);
-});
+    const card = document.createElement('div');
+    card.className = 'link-card';
+    card.innerHTML = `
+      <h4>${category.label}</h4>
+      <p class="card-desc">Click to view ${category.label} polls.</p>
+      <button class="card-button" onclick="openPollModal('${category.label}')">Open</button>
+    `;
+    pollsContainer.appendChild(card);
+  });
 
   window.pollCategories = pollCategories;
 }
