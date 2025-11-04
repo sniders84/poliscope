@@ -330,6 +330,93 @@ ngaBlock.appendChild(ngaGrid);
       console.error(err);
     });
 }
+function showPolls() {
+  showTab('polls');
+  const pollsContainer = document.getElementById('polls-cards');
+  pollsContainer.innerHTML = '';
+
+  const pollCategories = [
+    {
+      label: 'President',
+      polls: [
+        { name: 'Presidential Approval & Matchups', url: 'https://www.realclearpolling.com/latest-polls/2025' }
+      ]
+    },
+    {
+      label: 'Vice President',
+      polls: [
+        { name: 'JD Vance Favorability Analysis', url: 'https://www.realclearpolling.com/stories/analysis/from-controversy-to-popularity-vances-rise-in-favorability' }
+      ]
+    },
+    {
+      label: 'Governor',
+      polls: [
+        { name: '2025 Governor Polls Overview', url: 'https://www.realclearpolling.com/latest-polls/2025' },
+        { name: 'Virginia & New Jersey Governor Races', url: 'https://www.realclearpolling.com/polls/governor/general/2025/new-jersey/sherrill-vs-ciattarelli' }
+      ]
+    },
+    {
+      label: 'U.S. Senate',
+      polls: [
+        { name: '2026 Senate Polls', url: 'https://www.realclearpolling.com/latest-polls/senate' },
+        { name: 'Senate Forecasts – 270toWin', url: 'https://www.270towin.com/polls/latest-2026-senate-election-polls/' }
+      ]
+    },
+    {
+      label: 'U.S. House',
+      polls: [
+        { name: 'Generic Congressional Ballot', url: 'https://www.realclearpolling.com/latest-polls/house' },
+        { name: 'Toss-Up House Races', url: 'https://www.270towin.com/news/2024/11/05/27-house-races-rated-toss-favored-change-parties_1675.html' }
+      ]
+    },
+    {
+      label: 'State Senate',
+      polls: [
+        { name: 'State Legislative Special Elections', url: 'https://www.270towin.com/content/2025-election-results-special-elections-congress-state-legislatures-georgia-psc' }
+      ]
+    },
+    {
+      label: 'State House',
+      polls: [
+        { name: 'Virginia House of Delegates', url: 'https://www.270towin.com/content/2025-election-results-virginia-governor-attorney-general-house-of-delegates' }
+      ]
+    }
+  ];
+
+  pollCategories.forEach(category => {
+    const card = document.createElement('div');
+    card.className = 'link-card';
+    card.innerHTML = `
+      <h4>${category.label}</h4>
+      <p class="card-desc">Click to view ${category.label} polls.</p>
+      <button class="card-button" onclick="openPollModal('${category.label}')">Open</button>
+    `;
+    pollsContainer.appendChild(card);
+  });
+
+  window.pollCategories = pollCategories;
+}
+function openPollModal(categoryLabel) {
+  const modal = document.getElementById('polls-modal');
+  const modalContent = document.getElementById('polls-content');
+  const category = window.pollCategories.find(c => c.label === categoryLabel);
+  if (!category) return;
+
+  modalContent.innerHTML = `
+    <h2>${category.label} Polls</h2>
+    <ul>
+      ${category.polls.map(p => `<li><a href="${p.url}" target="_blank">${p.name}</a></li>`).join('')}
+    </ul>
+  `;
+  modal.style.display = 'block';
+
+  window.onclick = function(event) {
+    if (event.target === modal) {
+      modal.style.display = 'none';
+    }
+  };
+}
+
 function showOrganizations() {
   showTab('organizations');
   const section = document.getElementById('organizations');
