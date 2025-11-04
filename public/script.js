@@ -429,7 +429,6 @@ function showPolls() {
 }
 
   window.pollCategories = pollCategories;
-}
 
 // Map each source to its logo in /assets/
 const logoMap = {
