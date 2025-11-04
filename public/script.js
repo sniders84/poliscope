@@ -474,7 +474,6 @@ function openPollModal(categoryLabel) {
       modal.style.display = 'none';
     }
   };
-}
 function showOrganizations() {
   showTab('organizations');
   const section = document.getElementById('organizations');
