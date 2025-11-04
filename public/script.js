@@ -437,11 +437,14 @@ function showPolls() {
 const logoMap = {
   RCP: '/assets/rcp.png',
   '270toWin': '/assets/270towin.png',
-  CNN: '/assets/cnn.png',
-  NYT: '/assets/nyt.png',
-  Politico: '/assets/politico.png',
-  Siena: '/assets/siena.png',
-  Newsweek: '/assets/newsweek.png'
+  Ballotpedia: '/assets/ballotpedia.png',
+  'Cook Political': '/assets/cookpolitical.png',
+  Sabato: '/assets/sabato.png',
+  'AP-NORC': '/assets/apnorc.png',
+  DDHQ: '/assets/ddhq.png',
+  RaceToWH: '/assets/racetowh.png',
+  Gallup: '/assets/gallup.png',
+  Pew: '/assets/pew.png'
 };
 
 // Open poll modal with grid cards and live RCP injection
