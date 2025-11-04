@@ -905,12 +905,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // --- Political Groups initialization ---
-fetch('political-groups.json')
-  .then(res => res.json())
-  .then(data => {
-    renderGroups(data);
-    wireGroupFilters();
-  })
-  .catch(err => console.error('Error loading political groups:', err));
-
-
+  fetch('political-groups.json')
+    .then(res => res.json())
+    .then(data => {
+      renderGroups(data);
+      wireGroupFilters();
+    })
+    .catch(err => console.error('Error loading political groups:', err));
+});
