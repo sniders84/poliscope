@@ -95,10 +95,11 @@ function showTab(id) {
   const activeTab = document.getElementById(id);
   if (activeTab) activeTab.style.display = 'block';
 }
-
-  function showVoting() {
+function showVoting() {
   showTab('voting');
   const votingCards = document.getElementById('voting-cards');
+  votingCards.innerHTML = '';
+console.log("showVoting() triggered");
 
   fetch('voting-data.json')
     .then(res => {
@@ -106,23 +107,21 @@ function showTab(id) {
       return res.json();
     })
     .then(data => {
-      console.log('Voting data loaded:', data);
-      console.log('Available voting keys:', Object.keys(data));
-      console.log('Trying to match:', window.selectedState);
-
-      let selectedState = window.selectedState || 'North Carolina';
-      if (selectedState === 'Virgin Islands') selectedState = 'U.S. Virgin Islands';
-      const stateData = data[selectedState] || (selectedState === 'U.S. Virgin Islands' ? data['U.S. Virgin Islands'] : null);
+  console.log('Voting data loaded:', data);
+  console.log('Available voting keys:', Object.keys(data));
+  console.log('Trying to match:', window.selectedState);
+  let selectedState = window.selectedState || 'North Carolina';
+  if (selectedState === 'Virgin Islands') selectedState = 'U.S. Virgin Islands';
+  const stateData = data[selectedState] || (selectedState === 'U.S. Virgin Islands' ? data['U.S. Virgin Islands'] : null);
 
       if (!stateData || typeof stateData !== 'object') {
         votingCards.innerHTML = `<p>No voting information available for ${selectedState}.</p>`;
         return;
       }
-
-      console.log("Selected state:", selectedState);
-      console.log('Available voting keys:', Object.keys(data));
-      console.log('Trying to match:', selectedState);
-      console.log('Direct match result:', data[selectedState]);
+console.log("Selected state:", selectedState);
+console.log('Available voting keys:', Object.keys(data));
+console.log('Trying to match:', selectedState);
+console.log('Direct match result:', data[selectedState]);
 
       const labelMap = {
         register: 'Register to Vote',
@@ -136,64 +135,63 @@ function showTab(id) {
         tools: 'State Voting Tools'
       };
 
-      Object.entries(stateData).forEach(([key, value]) => {
-        if (!value) return;
+Object.entries(stateData).forEach(([key, value]) => {
+  if (!value) return; // skip null, undefined, false, 0
 
-        let url, icon, description, deadline;
+  let url, icon, description, deadline;
 
-        if (typeof value === 'string') {
-          url = value;
-          icon = '🗳️';
-          description = '';
-          deadline = '';
-        } else if (typeof value === 'object' && value !== null) {
-          ({ url, icon = '🗳️', description = '', deadline = '' } = value);
-        } else {
-          return;
-        }
+  if (typeof value === 'string') {
+    url = value;
+    icon = '🗳️';
+    description = '';
+    deadline = '';
+  } else if (typeof value === 'object' && value !== null) {
+    ({ url, icon = '🗳️', description = '', deadline = '' } = value);
+  } else {
+    return; // skip anything unexpected
+  }
 
-        if (!url) return;
+  if (!url) return;
 
-        const title = labelMap[key] || key;
+  const title = labelMap[key] || key;
 
-        const card = document.createElement('div');
-        card.className = 'voting-card';
+  const card = document.createElement('div');
+  card.className = 'voting-card';
 
-        const link = document.createElement('a');
-        link.href = url;
-        link.target = '_blank';
+  const link = document.createElement('a');
+  link.href = url;
+  link.target = '_blank';
 
-        const iconDiv = document.createElement('div');
-        iconDiv.className = 'card-icon';
-        iconDiv.innerHTML = `<span class="emoji">${icon}</span>`;
+  const iconDiv = document.createElement('div');
+  iconDiv.className = 'card-icon';
+  iconDiv.innerHTML = `<span class="emoji">${icon}</span>`;
 
-        const labelDiv = document.createElement('div');
-        labelDiv.className = 'card-label';
-        labelDiv.textContent = title;
+  const labelDiv = document.createElement('div');
+  labelDiv.className = 'card-label';
+  labelDiv.textContent = title;
 
-        const descDiv = document.createElement('div');
-        descDiv.className = 'card-description';
-        descDiv.textContent = description;
+  const descDiv = document.createElement('div');
+  descDiv.className = 'card-description';
+  descDiv.textContent = description;
 
-        const deadlineDiv = document.createElement('div');
-        deadlineDiv.className = 'card-date';
-        if (deadline) deadlineDiv.textContent = deadline;
+  const deadlineDiv = document.createElement('div');
+  deadlineDiv.className = 'card-date';
+  if (deadline) deadlineDiv.textContent = deadline;
 
-        link.appendChild(iconDiv);
-        link.appendChild(labelDiv);
-        link.appendChild(descDiv);
-        if (deadline) link.appendChild(deadlineDiv);
+  link.appendChild(iconDiv);
+  link.appendChild(labelDiv);
+  link.appendChild(descDiv);
+  if (deadline) link.appendChild(deadlineDiv);
 
-        card.appendChild(link);
-        votingCards.appendChild(card);
-      });
+  card.appendChild(link);
+  votingCards.appendChild(card);
+});
     })
-       .catch(err => {
+    .catch(err => {
       votingCards.innerHTML = '<p>Error loading voting data.</p>';
       console.error('Voting fetch failed:', err);
     });
 }
-
 function renderRosterCards(rosterData, chamberLabel, container) {
   if (Array.isArray(rosterData)) {
     rosterData.forEach(entry => {
@@ -226,6 +224,7 @@ function renderRosterCards(rosterData, chamberLabel, container) {
     container.appendChild(card);
   }
 }
+
 function showCivic() {
   showTab('civic');
   const calendar = document.getElementById('calendar');
@@ -817,14 +816,7 @@ function wireStateDropdown() {
   window.selectedState = selectedState;
   renderOfficials(selectedState, '');
 });
-  function showOrganizations() {
-  showTab('organizations');
 }
-
-function showVoting() {
-  showTab('voting');
-}
-
 document.addEventListener('DOMContentLoaded', () => {
   // Elements
   officialsContainer = document.getElementById('officials-container');
@@ -861,29 +853,40 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error('Error loading official data:', err);
     });
 
- // Helper: close the Officials search like a modal
-function closeOfficialsSearch() {
-  if (!searchBar) return;
-  searchBar.blur();
-  searchBar.value = ''; // always clear text
-  showTab('officials');               // ensure this matches your tab key
-  renderOfficials(selectedState, ''); // re-render default officials view
-}
+  // Helper: close the Officials search like a modal
+  function closeOfficialsSearch() {
+    if (!searchBar) return;
+    // Clear focus and any text
+    searchBar.blur();
+    // Optional: clear the query — comment out if you want to keep typed text
+    // searchBar.value = '';
 
-// Click-outside to close search (only when search is focused)
-document.addEventListener('mousedown', event => {
-  if (!searchBar) return;
-
-  // Only act if the search bar is currently focused
-  if (document.activeElement !== searchBar) return;
-
-  // If a modal is open, ignore
-  const modalOpen = modal && modal.style.display === 'block';
-  if (modalOpen) return;
-
-  // If the click is outside the search bar, close it
-  if (event.target !== searchBar && !searchBar.contains(event.target)) {
-    closeOfficialsSearch();
+    // Return to Officials tab and repopulate the default list
+    showTab('officials');            // ensure this matches your tab key
+    renderOfficials(selectedState, ''); // re-render default officials view
   }
-}); // closes the mousedown listener
-});   // closes DOMContentLoaded
+
+  // Click-outside to close search (only when search is focused)
+  document.addEventListener('mousedown', event => {
+    if (!searchBar) return;
+
+    const isFocused = document.activeElement === searchBar;
+    if (!isFocused) return; // only act when the user is actually in the search
+
+    // If a modal is open, ignore (let modal logic handle it)
+    const modalOpen = modal && modal.style.display === 'block';
+    if (modalOpen) return;
+
+    // Define the interactive area for the search (input plus any wrapper)
+    const searchWrapper = document.getElementById('officials-search-wrapper') || searchBar;
+
+    // If the click is outside the search area, close the search
+    const clickedOutside =
+      event.target !== searchWrapper &&
+      !searchWrapper.contains(event.target);
+
+    if (clickedOutside) {
+      closeOfficialsSearch();
+    }
+  });
+});
