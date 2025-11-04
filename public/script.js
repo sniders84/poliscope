@@ -430,40 +430,7 @@ function showPolls() {
 }
 
   window.pollCategories = pollCategories;
-function renderGroups(groups) {
-  const container = document.getElementById('groups-container');
-  container.innerHTML = '';
 
-  groups.forEach(group => {
-    const card = document.createElement('div');
-    card.className = 'group-card';
-    card.setAttribute('data-category', group.category);
-
-    card.innerHTML = `
-      <img src="${group.logo}" alt="${group.name} logo">
-      <h4>${group.name}</h4>
-      <p>${group.description}</p>
-      <a href="${group.website}" target="_blank">Visit Website</a>
-    `;
-
-    container.appendChild(card);
-  });
-}
-
-function wireGroupFilters() {
-  const buttons = document.querySelectorAll('#group-filters button');
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const filter = btn.getAttribute('data-filter');
-      const cards = document.querySelectorAll('.group-card');
-
-      cards.forEach(card => {
-        const category = card.getAttribute('data-category');
-        card.style.display = (filter === 'All' || category === filter) ? 'block' : 'none';
-      });
-    });
-  });
-}
 // Map each source to its logo in /assets/
 const logoMap = {
   RCP: '/assets/rcp.png',
@@ -903,13 +870,4 @@ document.addEventListener('DOMContentLoaded', () => {
       closeOfficialsSearch();
     }
   });
-
-  // --- Political Groups initialization ---
-  fetch('political-groups.json')
-    .then(res => res.json())
-    .then(data => {
-      renderGroups(data);
-      wireGroupFilters();
-    })
-    .catch(err => console.error('Error loading political groups:', err));
 });
