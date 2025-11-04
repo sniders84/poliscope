@@ -194,8 +194,7 @@ function showVoting() {
       votingCards.innerHTML = '<p>Error loading voting data.</p>';
       console.error('Voting fetch failed:', err);
     });
-}
-        <p class="card-desc">Click to view ${entry.party} members of the ${chamberLabel}.</p>
+ <p class="card-desc">Click to view ${entry.party} members of the ${chamberLabel}.</p>
         <a href="${entry.url}" target="_blank" class="card-button">Open</a>
       `;
       container.appendChild(card);
