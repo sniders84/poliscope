@@ -96,8 +96,6 @@ function showTab(id) {
   if (activeTab) activeTab.style.display = 'block';
 }
 
-function showVoting() {
-  showTab('voting');
   function showVoting() {
   showTab('voting');
   const votingCards = document.getElementById('voting-cards');
