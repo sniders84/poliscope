@@ -567,7 +567,7 @@ const federalOfficials = [
     "party": "Republican",
     "office": "President",
     "slug": "donald-trump",
-    "photo": "https://upload.wikimedia.org/wikipedia/commons/5/56/Donald_Trump_official_portrait.jpg",
+    "photo": "https://www.whitehouse.gov/wp-content/uploads/2025/01/Donald-J-Trump.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Donald_Trump",
     "govtrackLink": "https://www.govtrack.us/congress/other-people/donald_trump/412733",
     "termStart": "2025-01-20",
