@@ -95,12 +95,12 @@ function showTab(id) {
   const activeTab = document.getElementById(id);
   if (activeTab) activeTab.style.display = 'block';
 }
+
 function showVoting() {
   showTab('voting');
   const votingCards = document.getElementById('voting-cards');
-  votingCards.innerHTML = '';
-console.log("showVoting() triggered");
-
+  // add your voting tab logic here
+}
   fetch('voting-data.json')
     .then(res => {
       if (!res.ok) throw new Error('Voting data file not found');
