@@ -863,29 +863,29 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error('Error loading official data:', err);
     });
 
-  // Helper: close the Officials search like a modal
-  function closeOfficialsSearch() {
-    if (!searchBar) return;
-    searchBar.blur();
-    searchBar.value = ''; // always clear text
-    showTab('officials');               // ensure this matches your tab key
-    renderOfficials(selectedState, ''); // re-render default officials view
+ // Helper: close the Officials search like a modal
+function closeOfficialsSearch() {
+  if (!searchBar) return;
+  searchBar.blur();
+  searchBar.value = ''; // always clear text
+  showTab('officials');               // ensure this matches your tab key
+  renderOfficials(selectedState, ''); // re-render default officials view
+}
+
+// Click-outside to close search (only when search is focused)
+document.addEventListener('mousedown', event => {
+  if (!searchBar) return;
+
+  // Only act if the search bar is currently focused
+  if (document.activeElement !== searchBar) return;
+
+  // If a modal is open, ignore
+  const modalOpen = modal && modal.style.display === 'block';
+  if (modalOpen) return;
+
+  // If the click is outside the search bar, close it
+  if (event.target !== searchBar && !searchBar.contains(event.target)) {
+    closeOfficialsSearch();
   }
-
-    // Click-outside to close search (only when search is focused)
-  document.addEventListener('mousedown', event => {
-    if (!searchBar) return;
-
-    // Only act if the search bar is currently focused
-    if (document.activeElement !== searchBar) return;
-
-    // If a modal is open, ignore
-    const modalOpen = modal && modal.style.display === 'block';
-    if (modalOpen) return;
-
-    // If the click is outside the search bar, close it
-    if (event.target !== searchBar && !searchBar.contains(event.target)) {
-      closeOfficialsSearch();
-    }
-  }); // <-- closes the mousedown listener
-});   // <-- closes DOMContentLoaded
+}); // closes the mousedown listener
+});   // closes DOMContentLoaded
