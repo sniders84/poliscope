@@ -812,11 +812,12 @@ function wireStateDropdown() {
   dropdown.value = selectedState;
 
   dropdown.addEventListener('change', () => {
-  selectedState = dropdown.value;
-  window.selectedState = selectedState;
-  renderOfficials(selectedState, '');
-});
+    selectedState = dropdown.value;
+    window.selectedState = selectedState;
+    renderOfficials(selectedState, '');
+  });
 }
+
 document.addEventListener('DOMContentLoaded', () => {
   // Elements
   officialsContainer = document.getElementById('officials-container');
@@ -853,39 +854,21 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error('Error loading official data:', err);
     });
 
-  // Helper: close the Officials search like a modal
+  // Helper: clear and reset the Officials search
   function closeOfficialsSearch() {
     if (!searchBar) return;
-    // Clear focus and any text
-    searchBar.blur();
-    // Optional: clear the query — comment out if you want to keep typed text
-    // searchBar.value = '';
-
-    // Return to Officials tab and repopulate the default list
-    showTab('officials');            // ensure this matches your tab key
+    searchBar.value = '';              // clear text
+    searchBar.blur();                  // remove focus
+    showTab('officials');              // return to Officials tab
     renderOfficials(selectedState, ''); // re-render default officials view
   }
 
-  // Click-outside to close search (only when search is focused)
+  // Click-outside to clear search
   document.addEventListener('mousedown', event => {
     if (!searchBar) return;
 
-    const isFocused = document.activeElement === searchBar;
-    if (!isFocused) return; // only act when the user is actually in the search
-
-    // If a modal is open, ignore (let modal logic handle it)
-    const modalOpen = modal && modal.style.display === 'block';
-    if (modalOpen) return;
-
-    // Define the interactive area for the search (input plus any wrapper)
-    const searchWrapper = document.getElementById('officials-search-wrapper') || searchBar;
-
-    // If the click is outside the search area, close the search
-    const clickedOutside =
-      event.target !== searchWrapper &&
-      !searchWrapper.contains(event.target);
-
-    if (clickedOutside) {
+    // If the click is outside the search bar, clear it
+    if (event.target !== searchBar && !searchBar.contains(event.target)) {
       closeOfficialsSearch();
     }
   });
