@@ -190,11 +190,20 @@ function showVoting() {
         votingCards.appendChild(card);
       });
     })
-    .catch(err => {
+       .catch(err => {
       votingCards.innerHTML = '<p>Error loading voting data.</p>';
       console.error('Voting fetch failed:', err);
     });
- <p class="card-desc">Click to view ${entry.party} members of the ${chamberLabel}.</p>
+}
+
+function renderRosterCards(rosterData, chamberLabel, container) {
+  if (Array.isArray(rosterData)) {
+    rosterData.forEach(entry => {
+      const card = document.createElement('div');
+      card.className = 'link-card';
+      card.innerHTML = `
+        <h4>${chamberLabel} – ${entry.party}</h4>
+        <p class="card-desc">Click to view ${entry.party} members of the ${chamberLabel}.</p>
         <a href="${entry.url}" target="_blank" class="card-button">Open</a>
       `;
       container.appendChild(card);
@@ -219,7 +228,6 @@ function showVoting() {
     container.appendChild(card);
   }
 }
-
 function showCivic() {
   showTab('civic');
   const calendar = document.getElementById('calendar');
