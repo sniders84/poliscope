@@ -335,8 +335,7 @@ function showPolls() {
   const pollsContainer = document.getElementById('polls-cards');
   pollsContainer.innerHTML = '';
 
-  const pollCategories = [
-  const pollCategories = [
+   const pollCategories = [
   {
     label: 'President',
     polls: [
