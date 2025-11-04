@@ -849,19 +849,20 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error('Error loading official data:', err);
     });
 
-  // 👇 Add this block to handle click-outside for the search bar
+  // 👇 New: click outside the search bar returns to Officials tab
   document.addEventListener('click', event => {
     const searchInput = document.getElementById('search-bar');
+    const modal = document.getElementById('modal');
     if (!searchInput) return;
 
-    // If click is outside the search bar
+    // Don’t interfere if a modal is open
+    const modalOpen = modal && modal.style.display === 'block';
+    if (modalOpen) return;
+
+    // If click is outside the search bar, go back to Officials tab
     if (event.target !== searchInput && !searchInput.contains(event.target)) {
-      // If the search bar is focused or empty, return to previous tab
-      if (document.activeElement === searchInput || searchInput.value === '') {
-        if (typeof previousTab !== 'undefined') {
-          showTab(previousTab);
-        }
-      }
+      searchInput.blur(); // remove focus
+      showTab('officials'); // ensure this matches your Officials tab key
     }
   });
 });
