@@ -4,146 +4,396 @@
     "logo": "assets/turningpoint.png",
     "description": "Youth-focused conservative group promoting free markets and limited government.",
     "website": "https://www.tpusa.com",
-    "platform": "Promotes capitalism, constitutional values, and campus activism."
+    "platform": "Promotes capitalism, constitutional values, and campus activism.",
+    "category": "Conservative"
   },
   {
     "name": "Heritage Action for America",
     "logo": "assets/heritageaction.png",
     "description": "Advocacy arm of The Heritage Foundation, focused on conservative policy.",
     "website": "https://heritageaction.com",
-    "platform": "Advocates for limited government, free enterprise, and traditional values."
+    "platform": "Advocates for limited government, free enterprise, and traditional values.",
+    "category": "Conservative"
   },
   {
     "name": "Young America's Foundation",
     "logo": "assets/yaf.png",
     "description": "Conservative youth outreach and speaker network.",
     "website": "https://www.yaf.org",
-    "platform": "Hosts conferences, speakers, and campus activism for conservative students."
+    "platform": "Hosts conferences, speakers, and campus activism for conservative students.",
+    "category": "Conservative"
   },
   {
     "name": "Tea Party Patriots",
     "logo": "assets/teapartypatriots.png",
     "description": "Grassroots conservative group focused on fiscal responsibility and constitutional government.",
     "website": "https://www.teapartypatriots.org",
-    "platform": "Focuses on limited government, free markets, and personal liberty."
+    "platform": "Focuses on limited government, free markets, and personal liberty.",
+    "category": "Conservative"
   },
   {
     "name": "Moms for Liberty",
     "logo": "assets/momsforliberty.png",
     "description": "Conservative parental rights group focused on education and local governance.",
     "website": "https://www.momsforliberty.org",
-    "platform": "Focuses on school board accountability, curriculum transparency, and civic engagement."
+    "platform": "Focuses on school board accountability, curriculum transparency, and civic engagement.",
+    "category": "Conservative"
   },
+  {
+    "name": "Federalist Society",
+    "logo": "assets/federalistsociety.png",
+    "description": "Legal network shaping conservative jurisprudence.",
+    "website": "https://fedsoc.org",
+    "platform": "Promotes originalism and conservative legal principles.",
+    "category": "Conservative"
+  },
+  {
+    "name": "Club for Growth",
+    "logo": "assets/clubforgrowth.png",
+    "description": "Fiscal conservative PAC focused on tax cuts and deregulation.",
+    "website": "https://www.clubforgrowth.org",
+    "platform": "Supports candidates who back limited government and low taxes.",
+    "category": "Conservative"
+  },
+  {
+    "name": "FreedomWorks",
+    "logo": "assets/freedomworks.png",
+    "description": "Grassroots libertarian-leaning group born from the Tea Party wave.",
+    "website": "https://www.freedomworks.org",
+    "platform": "Advocates for lower taxes, less government, and more freedom.",
+    "category": "Conservative"
+  },
+  {
+    "name": "American Conservative Union",
+    "logo": "assets/acu.png",
+    "description": "Hosts CPAC and promotes conservative policies.",
+    "website": "https://www.conservative.org",
+    "platform": "Supports conservative candidates and policies nationwide.",
+    "category": "Conservative"
+  },
+  {
+    "name": "Eagle Forum",
+    "logo": "assets/eagleforum.png",
+    "description": "Longstanding socially conservative advocacy group.",
+    "website": "https://eagleforum.org",
+    "platform": "Advocates for traditional family values and conservative social policy.",
+    "category": "Conservative"
+  },
+  {
+    "name": "Susan B. Anthony Pro-Life America",
+    "logo": "assets/sba.png",
+    "description": "Anti-abortion advocacy and candidate support.",
+    "website": "https://sbaprolife.org",
+    "platform": "Supports pro-life legislation and candidates.",
+    "category": "Conservative"
+  },
+  {
+    "name": "National Rifle Association",
+    "logo": "assets/nra.png",
+    "description": "Gun rights advocacy organization.",
+    "website": "https://home.nra.org",
+    "platform": "Defends Second Amendment rights and firearm ownership.",
+    "category": "Conservative"
+  },
+  {
+    "name": "Gun Owners of America",
+    "logo": "assets/goa.png",
+    "description": "Gun rights advocacy group.",
+    "website": "https://www.gunowners.org",
+    "platform": "Promotes uncompromising defense of gun rights.",
+    "category": "Conservative"
+  },
+
   {
     "name": "Indivisible",
     "logo": "assets/indivisible.png",
     "description": "National progressive network focused on grassroots organizing and electoral reform.",
     "website": "https://indivisible.org",
-    "platform": "Supports progressive candidates, voting rights, and structural reform."
+    "platform": "Supports progressive candidates, voting rights, and structural reform.",
+    "category": "Progressive"
   },
   {
     "name": "MoveOn",
     "logo": "assets/moveon.png",
     "description": "Progressive advocacy group mobilizing voters and promoting social justice.",
     "website": "https://www.moveon.org",
-    "platform": "Focuses on healthcare, climate, democracy reform, and economic equity."
+    "platform": "Focuses on healthcare, climate, democracy reform, and economic equity.",
+    "category": "Progressive"
   },
   {
     "name": "Sunrise Movement",
     "logo": "assets/sunrise.png",
     "description": "Youth-led climate justice group with electoral and policy campaigns.",
     "website": "https://www.sunrisemovement.org",
-    "platform": "Supports Green New Deal, climate action, and electoral organizing."
+    "platform": "Supports Green New Deal, climate action, and electoral organizing.",
+    "category": "Progressive"
   },
   {
     "name": "Justice Democrats",
     "logo": "assets/justicedemocrats.png",
     "description": "Progressive PAC recruiting and supporting left-wing candidates.",
     "website": "https://www.justicedemocrats.com",
-    "platform": "Supports candidates who reject corporate PAC money and champion progressive policies."
+    "platform": "Supports candidates who reject corporate PAC money and champion progressive policies.",
+    "category": "Progressive"
   },
   {
     "name": "Our Revolution",
     "logo": "assets/ourrevolution.png",
     "description": "Bernie Sanders–aligned group focused on progressive policy and candidate support.",
     "website": "https://ourrevolution.com",
-    "platform": "Advocates for Medicare for All, climate justice, and democratic reform."
+    "platform": "Advocates for Medicare for All, climate justice, and democratic reform.",
+    "category": "Progressive"
   },
   {
     "name": "Working Families Party",
     "logo": "assets/workingfamilies.png",
     "description": "Progressive political party and movement focused on economic and racial justice.",
     "website": "https://workingfamilies.org",
-    "platform": "Supports labor rights, affordable housing, and progressive candidates."
+    "platform": "Supports labor rights, affordable housing, and progressive candidates.",
+    "category": "Progressive"
   },
   {
     "name": "Unity Rising USA",
     "logo": "assets/unityrising.png",
     "description": "Student-led PAC aiming to reorient Democrats toward working-class issues.",
     "website": "https://unityrisingusa.org",
-    "platform": "Focuses on economic populism, youth organizing, and progressive realignment."
+    "platform": "Focuses on economic populism, youth organizing, and progressive realignment.",
+    "category": "Progressive"
   },
+  {
+    "name": "Democratic Socialists of America",
+    "logo": "assets/dsa.png",
+    "description": "Largest socialist organization in the U.S., with campus chapters.",
+    "website": "https://www.dsausa.org",
+    "platform": "Advocates for democratic socialism, labor rights, and social justice.",
+    "category": "Progressive"
+  },
+  {
+    "name": "Young Democratic Socialists of America",
+    "logo": "assets/ydsa.png",
+    "description": "Youth wing of the Democratic Socialists of America.",
+    "website": "https://y.dsausa.org",
+    "platform": "Organizes students and young people for democratic socialism.",
+    "category": "Progressive"
+  },
+  {
+    "name": "March for Our Lives",
+    "logo": "assets/mfol.png",
+    "description": "Youth-led gun violence prevention movement.",
+    "website": "https://marchforourlives.com",
+    "platform": "Advocates for stronger gun laws and safer communities.",
+    "category": "Progressive"
+  },
+  {
+    "name": "Fridays for Future USA",
+    "logo": "assets/fridaysforfuture.png",
+    "description": "Youth climate strike network inspired by Greta Thunberg.",
+    "website": "https://fridaysforfutureusa.org",
+    "platform": "Organizes climate strikes and campaigns for climate justice.",
+    "category": "Progressive"
+  },
+  {
+    "name": "NextGen America",
+    "logo": "assets/nextgen.png",
+    "description": "Youth voter mobilization around climate and equity.",
+    "website": "https://nextgenamerica.org",
+    "platform": "Mobilizes young voters on progressive issues like climate and student debt.",
+    "category": "Progressive"
+  },
+  {
+    "name": "Center for Popular Democracy",
+    "logo": "assets/cpd.png",
+    "description": "Progressive grassroots organizing hub.",
+    "website": "https://www.populardemocracy.org",
+    "platform": "Supports community-based campaigns for racial justice, economic equity, and democracy reform.",
+    "category": "Progressive"
+  },
+  {
+    "name": "People’s Action",
+    "logo": "assets/peoplesaction.png",
+    "description": "National network of community-based progressive groups.",
+    "website": "https://peoplesaction.org",
+    "platform": "Organizes around healthcare, housing, climate, and racial justice.",
+    "category": "Progressive"
+  },
+  {
+    "name": "Color of Change",
+    "logo": "assets/colorofchange.png",
+    "description": "Racial justice advocacy organization.",
+    "website": "https://colorofchange.org",
+    "platform": "Focuses on racial equity, criminal justice reform, and corporate accountability.",
+    "category": "Progressive"
+  },
+  {
+    "name": "Planned Parenthood Action Fund",
+    "logo": "assets/ppaf.png",
+    "description": "Political advocacy arm of Planned Parenthood.",
+    "website": "https://www.plannedparenthoodaction.org",
+    "platform": "Supports reproductive rights, healthcare access, and pro-choice candidates.",
+    "category": "Progressive"
+  },
+  {
+    "name": "NARAL Pro-Choice America",
+    "logo": "assets/naral.png",
+    "description": "Reproductive rights advocacy group.",
+    "website": "https://www.prochoiceamerica.org",
+    "platform": "Advocates for reproductive freedom and abortion access.",
+    "category": "Progressive"
+  },
+  {
+    "name": "National Organization for Women",
+    "logo": "assets/now.png",
+    "description": "Feminist advocacy network.",
+    "website": "https://now.org",
+    "platform": "Promotes women’s rights, gender equality, and social justice.",
+    "category": "Progressive"
+  },
+
   {
     "name": "No Labels",
     "logo": "assets/nolabels.png",
     "description": "Bipartisan group promoting centrist policies and cross-party cooperation.",
     "website": "https://www.nolabels.org",
-    "platform": "Focuses on unity, pragmatic problem-solving, and political reform."
+    "platform": "Focuses on unity, pragmatic problem-solving, and political reform.",
+    "category": "Centrist"
   },
   {
     "name": "BridgeUSA",
     "logo": "assets/bridgeusa.png",
     "description": "Youth-led organization promoting political dialogue across ideological lines.",
     "website": "https://www.bridgeusa.org",
-    "platform": "Fosters civil discourse and depolarization through campus chapters and events."
-  },
-  {
-    "name": "Common Cause",
-    "logo": "assets/commoncause.png",
-    "description": "Nonpartisan watchdog group focused on government accountability and voting rights.",
-    "website": "https://www.commoncause.org",
-    "platform": "Supports voting access, campaign finance reform, and democratic transparency."
-  },
-  {
-    "name": "Green Party of the United States",
-    "logo": "assets/greenparty.png",
-    "description": "National political party focused on environmentalism, social justice, and grassroots democracy.",
-    "website": "https://www.gp.org",
-    "platform": "Supports ecological sustainability, nonviolence, and democratic reform."
-  },
-  {
-    "name": "Young Ecosocialists",
-    "logo": "assets/youngecosocialists.png",
-    "description": "Youth caucus of the Green Party, focused on climate justice and anti-capitalist organizing.",
-    "website": "https://www.yesgp.org/",
-    "platform": "Advocates for ecosocialism, anti-imperialism, and youth-led climate action."
-  },
-  {
-    "name": "Libertarian Party",
-    "logo": "assets/libertarianparty.png",
-    "description": "National party advocating for minimal government, personal liberty, and free markets.",
-    "website": "https://www.lp.org",
-    "platform": "Supports deregulation, non-interventionism, and civil liberties."
-  },
-  {
-    "name": "Students For Liberty",
-    "logo": "assets/studentsforliberty.png",
-    "description": "International libertarian student network promoting free speech and economic freedom.",
-    "website": "https://studentsforliberty.org",
-    "platform": "Empowers student leaders to advance liberty on campus and beyond."
-  },
-  {
-    "name": "Liberty Hangout",
-    "logo": "assets/libertyhangout.png",
-    "description": "Youth-oriented libertarian group with strong constitutionalist messaging.",
-    "website": "https://www.libertyhangout.org",
-    "platform": "Promotes libertarian values, gun rights, and anti-authoritarianism."
+    "platform": "Fosters civil discourse and depolarization through campus chapters and events.",
+    "category": "Centrist"
   },
   {
     "name": "Forward Party",
     "logo": "assets/forwardparty.png",
     "description": "Centrist political movement focused on electoral reform and pragmatic governance.",
     "website": "https://www.forwardparty.com",
-    "platform": "Supports ranked-choice voting, open primaries, and data-driven policy."
+    "platform": "Supports ranked-choice voting, open primaries, and data-driven policy.",
+    "category": "Centrist"
+  },
+  {
+    "name": "RepresentUs",
+    "logo": "assets/representus.png",
+    "description": "Anti-corruption and pro-democracy reform movement.",
+    "website": "https://represent.us",
+    "platform": "Advocates for campaign finance reform, anti-gerrymandering, and transparency.",
+    "category": "Centrist"
+  },
+  {
+    "name": "League of Women Voters",
+    "logo": "assets/lwv.png",
+    "description": "Nonpartisan civic engagement and voter education group.",
+    "website": "https://www.lwv.org",
+    "platform": "Promotes voter registration, education, and fair elections.",
+    "category": "Centrist"
+  },
+
+  {
+    "name": "Libertarian Party",
+    "logo": "assets/libertarianparty.png",
+    "description": "National party advocating for minimal government, personal liberty, and free markets.",
+    "website": "https://www.lp.org",
+    "platform": "Supports deregulation, non-interventionism, and civil liberties.",
+    "category": "Libertarian"
+  },
+  {
+    "name": "Students For Liberty",
+    "logo": "assets/studentsforliberty.png",
+    "description": "International libertarian student network promoting free speech and economic freedom.",
+    "website": "https://studentsforliberty.org",
+    "platform": "Empowers student leaders to advance liberty on campus and beyond.",
+    "category": "Libertarian"
+  },
+  {
+    "name": "Liberty Hangout",
+    "logo": "assets/libertyhangout.png",
+    "description": "Youth-oriented libertarian group with strong constitutionalist messaging.",
+    "website": "https://www.libertyhangout.org",
+    "platform": "Promotes libertarian values, gun rights, and anti-authoritarianism.",
+    "category": "Libertarian"
+  },
+  {
+    "name": "Young Americans for Liberty",
+    "logo": "assets/yal.png",
+    "description": "Campus-based libertarian student network.",
+    "website": "https://yaliberty.org",
+    "platform": "Organizes students for liberty, free markets, and limited government.",
+    "category": "Libertarian"
+  },
+
+  {
+    "name": "Green Party of the United States",
+    "logo": "assets/greenparty.png",
+    "description": "National political party focused on environmentalism, social justice, and grassroots democracy.",
+    "website": "https://www.gp.org",
+    "platform": "Supports ecological sustainability, nonviolence, and democratic reform.",
+    "category": "Green"
+  },
+  {
+    "name": "Young Ecosocialists",
+    "logo": "assets/youngecosocialists.png",
+    "description": "Youth caucus of the Green Party, focused on climate justice and anti-capitalist organizing.",
+    "website": "https://www.yesgp.org",
+    "platform": "Advocates for ecosocialism, anti-imperialism, and youth-led climate action.",
+    "category": "Green"
+  },
+  {
+    "name": "350.org",
+    "logo": "assets/350.png",
+    "description": "Global climate action network.",
+    "website": "https://350.org",
+    "platform": "Campaigns to end fossil fuels and promote renewable energy.",
+    "category": "Green"
+  },
+  {
+    "name": "Sierra Club",
+    "logo": "assets/sierraclub.png",
+    "description": "Environmental advocacy and political action group.",
+    "website": "https://www.sierraclub.org",
+    "platform": "Supports clean energy, conservation, and climate action.",
+    "category": "Green"
+  },
+
+  {
+    "name": "Common Cause",
+    "logo": "assets/commoncause.png",
+    "description": "Nonpartisan watchdog group focused on government accountability and voting rights.",
+    "website": "https://www.commoncause.org",
+    "platform": "Supports voting access, campaign finance reform, and democratic transparency.",
+    "category": "Nonpartisan"
+  },
+  {
+    "name": "American Civil Liberties Union",
+    "logo": "assets/aclu.png",
+    "description": "Civil liberties advocacy organization.",
+    "website": "https://www.aclu.org",
+    "platform": "Defends constitutional rights and civil liberties.",
+    "category": "Nonpartisan"
+  },
+  {
+    "name": "Human Rights Campaign",
+    "logo": "assets/hrc.png",
+    "description": "LGBTQ+ rights advocacy group.",
+    "website": "https://www.hrc.org",
+    "platform": "Advocates for LGBTQ+ equality and anti-discrimination policies.",
+    "category": "Nonpartisan"
+  },
+  {
+    "name": "Giffords",
+    "logo": "assets/giffords.png",
+    "description": "Gun violence prevention organization led by Gabby Giffords.",
+    "website": "https://giffords.org",
+    "platform": "Advocates for stronger gun laws and community safety.",
+    "category": "Nonpartisan"
+  },
+  {
+    "name": "United We Dream",
+    "logo": "assets/unitedwedream.png",
+    "description": "Immigrant youth-led advocacy group.",
+    "website": "https://unitedwedream.org",
+    "platform": "Supports immigrant rights, DACA, and humane immigration reform.",
+    "category": "Nonpartisan"
   }
 ]
