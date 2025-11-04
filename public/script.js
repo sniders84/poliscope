@@ -336,57 +336,57 @@ function showPolls() {
   pollsContainer.innerHTML = '';
 
   const pollCategories = [
-  {
-  label: 'President',
-  polls: [
-    { source: 'RCP', name: 'RealClearPolling – 2025 Presidential Polls', url: 'https://www.realclearpolling.com/latest-polls/2025' },
-    { source: '270toWin', name: '270toWin – 2025 Presidential Polls', url: 'https://www.270towin.com/2025-presidential-election-polls/' },
-    { source: 'CNN', name: 'CNN – 2025 Presidential Approval Polling', url: 'https://www.cnn.com/politics/polling' },
-    { source: 'NYT', name: 'NYT/Siena – 2025 Presidential Poll Coverage', url: 'https://www.nytimes.com/news-event/times-siena-poll-coverage' },
-    { source: 'Politico', name: 'Politico – 2025 Presidential Poll Tracker', url: 'https://www.politico.com/news/2025-elections' }
-  ]
-  },
-  {
-  label: 'Vice President',
-  polls: [
-    { source: 'RCP', name: 'RealClearPolling – JD Vance Favorability', url: 'https://www.realclearpolling.com/polls/favorability/j-d-vance' },
-    { source: 'RCP', name: 'RealClearPolling – Political Leaders Favorability Index (includes Vance)', url: 'https://www.realclearpolling.com/polls/favorability/political-leaders' },
-    { source: 'CNN', name: 'CNN – JD Vance Polling & Approval Coverage', url: 'https://www.cnn.com/politics/polling' },
-    { source: 'NYT', name: 'NYT – JD Vance Coverage (poll references included)', url: 'https://www.nytimes.com/topic/jd-vance' },
-    { source: 'Politico', name: 'Politico – JD Vance 2025 Coverage & Poll Mentions', url: 'https://www.politico.com/news/2025/07/01/vance-one-big-beautiful-bill-2028-00436041' }
-  ]
-  },
-  {
-  label: 'Governor',
-  polls: [
-    { source: 'RCP', name: 'RealClearPolling – 2025 Governor Polls (Virginia & New Jersey)', url: 'https://www.realclearpolling.com/latest-polls/governor' },
-    { source: '270toWin', name: '270toWin – 2025 Governor Polls (Virginia & New Jersey)', url: 'https://www.270towin.com/polls/latest-2026-governor-election-polls/' },
-    { source: 'Politico', name: 'Politico – New Jersey Governor Race Polling (Sept 2025)', url: 'https://www.politico.com/newsletters/new-jersey-playbook/2025/09/18/the-newest-polling-on-the-gov-race-00570497' },
-    { source: 'Politico', name: 'Politico – Virginia Governor Race Polling (Oct 2025)', url: 'https://www.politico.com/news/2025/10/23/virginia-elections-poll-00620585' },
-    { source: 'NYT', name: 'NYT – Mikie Sherrill vs. Ciattarelli Coverage (NJ Governor 2025)', url: 'https://www.nytimes.com/topic/mikie-sherrill' }
-  ]
-},
- {
-  label: 'U.S. Senate',
-  polls: [
-    { source: 'RCP', name: 'RealClearPolling – 2026 Senate Polls', url: 'https://www.realclearpolling.com/latest-polls/senate' },
-    { source: '270toWin', name: '270toWin – Latest 2026 Senate Election Polls', url: 'https://www.270towin.com/polls/latest-2026-senate-election-polls/' },
-    { source: 'NYT', name: 'NYT – 2026 Senate Race Coverage', url: 'https://www.nytimes.com/topic/senate' },
-    { source: 'CNN', name: 'CNN – 2026 Senate Polling Hub', url: 'https://www.cnn.com/politics/polling' },
-    { source: 'Politico', name: 'Politico – 2026 Senate Battlegrounds', url: 'https://www.politico.com/news/2025/07/13/senate-battleground-2026-midterms-00449589' }
-  ]
-},
-  {
-  label: 'U.S. House',
-  polls: [
-    { source: 'RCP', name: 'RealClearPolling – 2026 House Polls (Generic Ballot & Key Races)', url: 'https://www.realclearpolling.com/latest-polls/house' },
-    { source: '270toWin', name: '270toWin – Latest 2026 House Election Polls', url: 'https://www.270towin.com/polls/latest-2026-house-election-polls/' },
-    { source: 'NYT', name: 'NYT/Siena – 2025–26 House Poll Coverage', url: 'https://www.nytimes.com/news-event/times-siena-poll-coverage' },
-    { source: 'CNN', name: 'CNN – 2026 House Election Polling Hub', url: 'https://www.cnn.com/politics/polling' },
-    { source: 'Politico', name: 'Politico – 2026 House Targets & Polling', url: 'https://www.politico.com/news/2025/04/08/democrats-top-targets-to-flip-2026-031937' }
-  ]
-}
-];
+    {
+      label: 'President',
+      polls: [
+        { source: 'RCP', name: 'RealClearPolling – 2025 Presidential Polls', url: 'https://www.realclearpolling.com/latest-polls/2025' },
+        { source: '270toWin', name: '270toWin – 2025 Presidential Polls', url: 'https://www.270towin.com/2025-presidential-election-polls/' },
+        { source: 'CNN', name: 'CNN – 2025 Presidential Approval Polling', url: 'https://www.cnn.com/politics/polling' },
+        { source: 'NYT', name: 'NYT/Siena – 2025 Presidential Poll Coverage', url: 'https://www.nytimes.com/news-event/times-siena-poll-coverage' },
+        { source: 'Politico', name: 'Politico – 2025 Presidential Poll Tracker', url: 'https://www.politico.com/news/2025-elections' }
+      ]
+    },
+    {
+      label: 'Vice President',
+      polls: [
+        { source: 'RCP', name: 'RealClearPolling – JD Vance Favorability', url: 'https://www.realclearpolling.com/polls/favorability/j-d-vance' },
+        { source: 'RCP', name: 'RealClearPolling – Political Leaders Favorability Index (includes Vance)', url: 'https://www.realclearpolling.com/polls/favorability/political-leaders' },
+        { source: 'CNN', name: 'CNN – JD Vance Polling & Approval Coverage', url: 'https://www.cnn.com/politics/polling' },
+        { source: 'NYT', name: 'NYT – JD Vance Coverage (poll references included)', url: 'https://www.nytimes.com/topic/jd-vance' },
+        { source: 'Politico', name: 'Politico – JD Vance 2025 Coverage & Poll Mentions', url: 'https://www.politico.com/news/2025/07/01/vance-one-big-beautiful-bill-2028-00436041' }
+      ]
+    },
+    {
+      label: 'Governor',
+      polls: [
+        { source: 'RCP', name: 'RealClearPolling – 2025 Governor Polls (Virginia & New Jersey)', url: 'https://www.realclearpolling.com/latest-polls/governor' },
+        { source: '270toWin', name: '270toWin – 2025 Governor Polls (Virginia & New Jersey)', url: 'https://www.270towin.com/polls/latest-2026-governor-election-polls/' },
+        { source: 'Politico', name: 'Politico – New Jersey Governor Race Polling (Sept 2025)', url: 'https://www.politico.com/newsletters/new-jersey-playbook/2025/09/18/the-newest-polling-on-the-gov-race-00570497' },
+        { source: 'Politico', name: 'Politico – Virginia Governor Race Polling (Oct 2025)', url: 'https://www.politico.com/news/2025/10/23/virginia-elections-poll-00620585' },
+        { source: 'NYT', name: 'NYT – Mikie Sherrill vs. Ciattarelli Coverage (NJ Governor 2025)', url: 'https://www.nytimes.com/topic/mikie-sherrill' }
+      ]
+    },
+    {
+      label: 'U.S. Senate',
+      polls: [
+        { source: 'RCP', name: 'RealClearPolling – 2026 Senate Polls', url: 'https://www.realclearpolling.com/latest-polls/senate' },
+        { source: '270toWin', name: '270toWin – Latest 2026 Senate Election Polls', url: 'https://www.270towin.com/polls/latest-2026-senate-election-polls/' },
+        { source: 'NYT', name: 'NYT – 2026 Senate Race Coverage', url: 'https://www.nytimes.com/topic/senate' },
+        { source: 'CNN', name: 'CNN – 2026 Senate Polling Hub', url: 'https://www.cnn.com/politics/polling' },
+        { source: 'Politico', name: 'Politico – 2026 Senate Battlegrounds', url: 'https://www.politico.com/news/2025/07/13/senate-battleground-2026-midterms-00449589' }
+      ]
+    },
+    {
+      label: 'U.S. House',
+      polls: [
+        { source: 'RCP', name: 'RealClearPolling – 2026 House Polls (Generic Ballot & Key Races)', url: 'https://www.realclearpolling.com/latest-polls/house' },
+        { source: '270toWin', name: '270toWin – Latest 2026 House Election Polls', url: 'https://www.270towin.com/polls/latest-2026-house-election-polls/' },
+        { source: 'NYT', name: 'NYT/Siena – 2025–26 House Poll Coverage', url: 'https://www.nytimes.com/news-event/times-siena-poll-coverage' },
+        { source: 'CNN', name: 'CNN – 2026 House Election Polling Hub', url: 'https://www.cnn.com/politics/polling' },
+        { source: 'Politico', name: 'Politico – 2026 House Targets & Polling', url: 'https://www.politico.com/news/2025/04/08/democrats-top-targets-to-flip-2026-031937' }
+      ]
+    }
+  ];
 
   const suppressedForTerritories = ['State Senate', 'State House'];
   const isTerritory = ['Puerto Rico', 'U.S. Virgin Islands', 'Guam', 'American Samoa', 'Northern Mariana Islands'].includes(selectedState);
@@ -406,6 +406,7 @@ function showPolls() {
 
   window.pollCategories = pollCategories;
 }
+
 // Map each source to its logo in /assets/
 const logoMap = {
   RCP: '/assets/rcp.png',
@@ -438,92 +439,40 @@ function openPollModal(categoryLabel) {
   `;
 
   modal.style.display = 'block';
-}
-// Optional: Hook for dynamic poll injection
-if (category.label === 'President') {
-  fetch('https://www.realclearpolling.com/latest-polls/2025')
-    .then(res => res.text())
-    .then(html => {
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(html, 'text/html');
-      const pollLinks = Array.from(doc.querySelectorAll('a[href*="/polls/"]'));
 
-      const filtered = pollLinks
-        .filter(link => link.textContent.trim().length > 0)
-        .slice(0, 5)
-        .map(link => `<li><a href="https://www.realclearpolling.com${link.getAttribute('href')}" target="_blank">${link.textContent.trim()}</a></li>`);
+  // Optional: dynamic live poll injection for RCP categories
+  const liveEndpoints = {
+    'President': 'https://www.realclearpolling.com/latest-polls/2025',
+    'U.S. Senate': 'https://www.realclearpolling.com/latest-polls/senate',
+    'U.S. House': 'https://www.realclearpolling.com/latest-polls/house',
+    'Governor': 'https://www.realclearpolling.com/latest-polls/governor'
+  };
 
-      if (filtered.length > 0) {
-        modalContent.innerHTML += `<h3>Live Polls</h3><ul>${filtered.join('')}</ul>`;
-      }
-    })
-    .catch(err => console.error('Polling fetch error:', err));
-}
-if (category.label === 'U.S. Senate') {
-  fetch('https://www.realclearpolling.com/latest-polls/senate')
-    .then(res => res.text())
-    .then(html => {
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(html, 'text/html');
-      const pollLinks = Array.from(doc.querySelectorAll('a[href*="/polls/"]'));
+  if (liveEndpoints[category.label]) {
+    fetch(liveEndpoints[category.label])
+      .then(res => res.text())
+      .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const pollLinks = Array.from(doc.querySelectorAll('a[href*="/polls/"]'));
+        const filtered = pollLinks
+          .filter(link => link.textContent.trim().length > 0)
+          .slice(0, 5)
+          .map(link => `<li><a href="https://www.realclearpolling.com${link.getAttribute('href')}" target="_blank">${link.textContent.trim()}</a></li>`);
+                if (filtered.length > 0) {
+          modalContent.innerHTML += `<h3>Live ${category.label} Polls</h3><ul>${filtered.join('')}</ul>`;
+        }
+      })
+      .catch(err => console.error(`${category.label} polling fetch error:`, err));
+  }
 
-      const filtered = pollLinks
-        .filter(link => link.textContent.trim().length > 0)
-        .slice(0, 5)
-        .map(link => `<li><a href="https://www.realclearpolling.com${link.getAttribute('href')}" target="_blank">${link.textContent.trim()}</a></li>`);
-
-      if (filtered.length > 0) {
-        modalContent.innerHTML += `<h3>Live Senate Polls</h3><ul>${filtered.join('')}</ul>`;
-      }
-    })
-    .catch(err => console.error('Senate polling fetch error:', err));
-}
-if (category.label === 'U.S. House') {
-  fetch('https://www.realclearpolling.com/latest-polls/house')
-    .then(res => res.text())
-    .then(html => {
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(html, 'text/html');
-      const pollLinks = Array.from(doc.querySelectorAll('a[href*="/polls/"]'));
-
-      const filtered = pollLinks
-        .filter(link => link.textContent.trim().length > 0)
-        .slice(0, 5)
-        .map(link => `<li><a href="https://www.realclearpolling.com${link.getAttribute('href')}" target="_blank">${link.textContent.trim()}</a></li>`);
-
-      if (filtered.length > 0) {
-        modalContent.innerHTML += `<h3>Live House Polls</h3><ul>${filtered.join('')}</ul>`;
-      }
-    })
-    .catch(err => console.error('House polling fetch error:', err));
-}
-if (category.label === 'Governor') {
-  fetch('https://www.realclearpolling.com/latest-polls/governor')
-    .then(res => res.text())
-    .then(html => {
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(html, 'text/html');
-      const pollLinks = Array.from(doc.querySelectorAll('a[href*="/polls/"]'));
-
-      const filtered = pollLinks
-        .filter(link => link.textContent.trim().length > 0)
-        .slice(0, 5)
-        .map(link => `<li><a href="https://www.realclearpolling.com${link.getAttribute('href')}" target="_blank">${link.textContent.trim()}</a></li>`);
-
-      if (filtered.length > 0) {
-        modalContent.innerHTML += `<h3>Live Governor Polls</h3><ul>${filtered.join('')}</ul>`;
-      }
-    })
-    .catch(err => console.error('Governor polling fetch error:', err));
-}
-
+  // Close modal when clicking outside of it
   window.onclick = function(event) {
     if (event.target === modal) {
       modal.style.display = 'none';
     }
   };
 }
-
 function showOrganizations() {
   showTab('organizations');
   const section = document.getElementById('organizations');
