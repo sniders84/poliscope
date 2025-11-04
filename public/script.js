@@ -9,6 +9,84 @@ let modal = null;
 let modalContent = null;
 let closeModal = null;
 
+const pollCategories = [
+  {
+    label: 'President',
+    polls: [
+      { source: 'Ballotpedia', name: 'Ballotpedia – Presidential Approval Index', url: 'https://ballotpedia.org/Ballotpedia%27s_Polling_Index:_Presidential_approval_rating' },
+      { source: 'RCP', name: 'RCP – Presidential Job Approval', url: 'https://www.realclearpolling.com/polls/approval/donald-trump/approval-rating' },
+      { source: '270toWin', name: '270toWin – 2028 Republican Primary Polls', url: 'https://www.270towin.com/2028-republican-nomination/' },
+      { source: '270toWin', name: '270toWin – 2028 Democratic Primary Polls', url: 'https://www.270towin.com/2028-democratic-nomination/' },
+      { source: 'Cook Political', name: 'Cook Political Report – Presidential Ratings', url: 'https://www.cookpolitical.com/' },
+      { source: 'Sabato', name: 'Sabato’s Crystal Ball – Presidential Elections', url: 'https://centerforpolitics.org/crystalball/' },
+      { source: 'AP-NORC', name: 'AP-NORC – Presidential Approval Tracker', url: 'https://apnews.com/projects/polling-tracker/' },
+      { source: 'DDHQ', name: 'Decision Desk HQ – Presidential Poll Averages', url: 'https://decisiondeskhq.com/polls/averages/' },
+      { source: 'Gallup', name: 'Gallup – Presidential Approval Ratings', url: 'https://news.gallup.com/poll/203198/presidential-approval-center.aspx' },
+      { source: 'Pew', name: 'Pew Research – Presidential Approval Surveys', url: 'https://www.pewresearch.org/politics/' }
+    ]
+  },
+  {
+    label: 'Vice President',
+    polls: [
+      { source: 'RCP', name: 'RCP – JD Vance Favorability', url: 'https://www.realclearpolling.com/polls/favorability/j-d-vance' },
+      { source: 'DDHQ', name: 'Decision Desk HQ – JD Vance Favorability Average', url: 'https://decisiondeskhq.com/polls/averages/' },
+      { source: 'Ballotpedia', name: 'Ballotpedia – JD Vance Profile', url: 'https://ballotpedia.org/J.D._Vance' },
+      { source: 'Cook Political', name: 'Cook Political Report – VP Coverage', url: 'https://www.cookpolitical.com/' },
+      { source: 'Sabato', name: 'Sabato’s Crystal Ball – VP Coverage', url: 'https://centerforpolitics.org/crystalball/' },
+      { source: 'AP-NORC', name: 'AP-NORC – VP Favorability Tracker', url: 'https://apnews.com/projects/polling-tracker/' },
+      { source: 'RaceToWH', name: 'Race to the WH – VP Polling Tracker', url: 'https://www.racetothewh.com/' },
+      { source: 'Gallup', name: 'Gallup – VP Favorability Surveys', url: 'https://news.gallup.com/poll/' },
+      { source: 'Pew', name: 'Pew Research – VP Favorability Surveys', url: 'https://www.pewresearch.org/politics/' },
+      { source: 'Newsweek', name: 'Newsweek – JD Vance Approval Coverage', url: 'https://www.newsweek.com/jd-vance-approval-rating-inauguration-2107645' }
+    ]
+  },
+  {
+    label: 'Governor',
+    polls: [
+      { source: 'Ballotpedia', name: 'Ballotpedia – 2025 Governor Elections', url: 'https://ballotpedia.org/Gubernatorial_elections,_2025' },
+      { source: 'RCP', name: 'RCP – Governor Polls', url: 'https://www.realclearpolling.com/latest-polls/governor' },
+      { source: '270toWin', name: '270toWin – 2025–26 Governor Polls', url: 'https://www.270towin.com/polls/latest-2026-governor-election-polls/' },
+      { source: 'Cook Political', name: 'Cook Political Report – Governor Ratings', url: 'https://www.cookpolitical.com/ratings/governor-race-ratings' },
+      { source: 'Sabato', name: 'Sabato’s Crystal Ball – 2026 Governor Elections', url: 'https://centerforpolitics.org/crystalball/2026-governor/' },
+      { source: 'AP-NORC', name: 'AP-NORC – Governor Approval Tracker', url: 'https://apnews.com/projects/polling-tracker/' },
+      { source: 'DDHQ', name: 'Decision Desk HQ – Governor Poll Averages', url: 'https://decisiondeskhq.com/polls/averages/' },
+      { source: 'RaceToWH', name: 'Race to the WH – Governor Polling Tracker', url: 'https://www.racetothewh.com/governor/26polls' },
+      { source: 'Gallup', name: 'Gallup – Governor Approval Ratings', url: 'https://news.gallup.com/poll/' },
+      { source: 'Pew', name: 'Pew Research – Governor Approval Surveys', url: 'https://www.pewresearch.org/politics/' }
+    ]
+  },
+  {
+    label: 'U.S. Senate',
+    polls: [
+      { source: 'Ballotpedia', name: 'Ballotpedia – 2026 Senate Elections', url: 'https://ballotpedia.org/United_States_Senate_elections,_2026' },
+      { source: 'RCP', name: 'RCP – 2026 Senate Polls', url: 'https://www.realclearpolling.com/latest-polls/senate' },
+      { source: '270toWin', name: '270toWin – Latest 2026 Senate Polls', url: 'https://www.270towin.com/polls/latest-2026-senate-election-polls/' },
+      { source: 'Cook Political', name: 'Cook Political Report – 2026 Senate Ratings', url: 'https://www.cookpolitical.com/ratings/senate-race-ratings' },
+      { source: 'Sabato', name: 'Sabato’s Crystal Ball – 2026 Senate Elections', url: 'https://centerforpolitics.org/crystalball/2026-senate/' },
+      { source: 'AP-NORC', name: 'AP-NORC – Senate Approval Tracker', url: 'https://apnews.com/projects/polling-tracker/' },
+      { source: 'DDHQ', name: 'Decision Desk HQ – Senate Poll Averages', url: 'https://decisiondeskhq.com/polls/averages/' },
+      { source: 'RaceToWH', name: 'Race to the WH – Senate Polling Tracker', url: 'https://www.racetothewh.com/senate/26polls' },
+      { source: 'Gallup', name: 'Gallup – Senate Approval Ratings', url: 'https://news.gallup.com/poll/' },
+      { source: 'Pew', name: 'Pew Research – Senate Approval Surveys', url: 'https://www.pewresearch.org/politics/' }
+    ]
+  },
+  {
+    label: 'U.S. House',
+    polls: [
+      { source: 'Ballotpedia', name: 'Ballotpedia – 2026 House Elections', url: 'https://ballotpedia.org/United_States_House_of_Representatives_elections,_2026' },
+      { source: 'RCP', name: 'RCP – Generic Congressional Ballot', url: 'https://www.realclearpolling.com/polls/state-of-the-union/generic-congressional-vote' },
+      { source: '270toWin', name: '270toWin – Latest 2026 House Polls', url: 'https://www.270towin.com/polls/latest-2026-house-election-polls/' },
+      { source: 'Cook Political', name: 'Cook Political Report – 2026 House Ratings', url: 'https://www.cookpolitical.com/ratings/house-race-ratings' },
+      { source: 'Sabato', name: 'Sabato’s Crystal Ball – 2026 House Elections', url: 'https://centerforpolitics.org/crystalball/2026-house/' },
+            { source: 'AP-NORC', name: 'AP-NORC – Congressional Approval Tracker', url: 'https://apnews.com/projects/polling-tracker/' },
+      { source: 'DDHQ', name: 'Decision Desk HQ – Generic Ballot Average', url: 'https://polls.decisiondeskhq.com/averages/generic-ballot/national/lv-rv-adults' },
+      { source: 'RaceToWH', name: 'Race to the WH – House Polling Tracker', url: 'https://www.racetothewh.com/house/26polls' },
+      { source: 'Gallup', name: 'Gallup – Congressional Approval Ratings', url: 'https://news.gallup.com/poll/' },
+      { source: 'Pew', name: 'Pew Research – Congressional Approval Surveys', url: 'https://www.pewresearch.org/politics/' }
+    ]
+  }
+];
+
 function showTab(id) {
   document.querySelectorAll('.tab-content').forEach(tab => {
     tab.style.display = 'none';
@@ -161,12 +239,8 @@ function showCivic() {
   fetch('/state-links.json')
     .then(res => res.json())
     .then(stateLinks => {
-      console.log("Selected state:", selectedState);
-console.log("Resolved links:", stateLinks[selectedState]);
-console.log("Available keys:", Object.keys(stateLinks));
-
-    const normalizedState = selectedState === "Virgin Islands" ? "U.S. Virgin Islands" : selectedState;
-    const links = stateLinks[normalizedState] || {};
+      const normalizedState = selectedState === "Virgin Islands" ? "U.S. Virgin Islands" : selectedState;
+      const links = stateLinks[normalizedState] || {};
 
       const labelMap = {
         bills: 'Bills',
@@ -174,110 +248,109 @@ console.log("Available keys:", Object.keys(stateLinks));
         houseRoster: 'State House',
         local: 'Local Government'
       };
-console.log("Selected state:", selectedState);
-console.log("Available keys:", Object.keys(stateLinks));
-console.log("Resolved links:", stateLinks[selectedState]);
 
       const grid = document.createElement('div');
       grid.className = 'link-grid';
 
-Object.entries(links).forEach(([label, value]) => {
-  if (label === 'federalRaces' || value === null || value === undefined) return;
+      Object.entries(links).forEach(([label, value]) => {
+        if (label === 'federalRaces' || value === null || value === undefined) return;
+        const displayLabel = labelMap[label] || label;
 
-  const displayLabel = labelMap[label] || label;
+        if (Array.isArray(value)) {
+          value.forEach(entry => {
+            if (!entry || !entry.url) return;
+            const card = document.createElement('div');
+            card.className = 'link-card';
+            card.setAttribute('onclick', `window.open('${entry.url}', '_blank')`);
+            card.innerHTML = `
+              <h4>${displayLabel} – ${entry.party}</h4>
+              <p class="card-desc">Click to view ${entry.party} members of the ${displayLabel}.</p>
+            `;
+            grid.appendChild(card);
+          });
+        } else if (typeof value === 'object' && value !== null && value.url) {
+          const card = document.createElement('div');
+          card.className = 'link-card';
+          card.setAttribute('onclick', `window.open('${value.url}', '_blank')`);
+          card.innerHTML = `
+            <h4>${displayLabel}</h4>
+            <p class="card-desc">Click to view ${displayLabel} information for ${selectedState}.</p>
+          `;
+          grid.appendChild(card);
+        } else if (typeof value === 'string') {
+          const card = document.createElement('div');
+          card.className = 'link-card';
+          card.setAttribute('onclick', `window.open('${value}', '_blank')`);
+          card.innerHTML = `
+            <h4>${displayLabel}</h4>
+            <p class="card-desc">Click to view ${displayLabel} information for ${selectedState}.</p>
+          `;
+          grid.appendChild(card);
+        }
+      });
 
-  if (Array.isArray(value)) {
-    value.forEach(entry => {
-      if (!entry || !entry.url) return;
-      const card = document.createElement('div');
-      card.className = 'link-card';
-      card.innerHTML = `
-        <h4>${displayLabel} – ${entry.party}</h4>
-        <p class="card-desc">Click to view ${entry.party} members of the ${displayLabel}.</p>
-        <a href="${entry.url}" target="_blank" class="card-button">Open</a>
-      `;
-      grid.appendChild(card);
-    });
-  } else if (typeof value === 'object' && value !== null && value.url) {
-    const card = document.createElement('div');
-    card.className = 'link-card';
-    card.innerHTML = `
-      <h4>${displayLabel}</h4>
-      <p class="card-desc">Click to view ${displayLabel} information for ${selectedState}.</p>
-      <a href="${value.url}" target="_blank" class="card-button">Open</a>
-    `;
-    grid.appendChild(card);
-  } else if (typeof value === 'string') {
-    const card = document.createElement('div');
-    card.className = 'link-card';
-    card.innerHTML = `
-      <h4>${displayLabel}</h4>
-      <p class="card-desc">Click to view ${displayLabel} information for ${selectedState}.</p>
-      <a href="${value}" target="_blank" class="card-button">Open</a>
-    `;
-    grid.appendChild(card);
-  }
-});
-if (grid.children.length === 0) {
-  const msg = document.createElement('p');
-  msg.textContent = `No state-level links available for ${selectedState}.`;
-  stateBlock.appendChild(msg);
-}
+      if (grid.children.length === 0) {
+        const msg = document.createElement('p');
+        msg.textContent = `No state-level links available for ${selectedState}.`;
+        stateBlock.appendChild(msg);
+      }
       stateBlock.appendChild(grid);
 
+      // NGA block
       const ngaBlock = document.createElement('div');
-ngaBlock.className = 'civic-block';
-ngaBlock.innerHTML = '<h2>National Governor\'s Association</h2>';
+      ngaBlock.className = 'civic-block';
+      ngaBlock.innerHTML = '<h2>National Governor\'s Association</h2>';
 
-const ngaLinks = [
-  {
-    label: 'NGA Leadership',
-    url: 'https://www.nga.org/governors/ngaleadership/',
-    desc: 'Meet the current leadership of the National Governors Association.'
-  },
-  {
-    label: 'Council of Governors',
-    url: 'https://www.nga.org/cog/',
-    desc: 'Explore the bipartisan Council of Governors and its national security role.'
-  },
-  {
-    label: 'Gubernatorial Elections',
-    url: 'https://www.nga.org/governors/elections/',
-    desc: 'Track upcoming and recent gubernatorial elections across the United States.'
-  },
-  {
-    label: 'Education, Workforce and Community Investment Task Force',
-    url: 'https://www.nga.org/advocacy/nga-committees/education-workforce-community-investment-task-force/',
-    desc: 'See how governors are shaping education and workforce development policy.'
-  },
-  {
-    label: 'Economic Development and Revitalization Task Force',
-    url: 'https://www.nga.org/advocacy/nga-committees/economic-development-and-revitalization-task-force/',
-    desc: 'Review strategies for economic growth and revitalization led by governors.'
-  },
-  {
-    label: 'Public Health and Emergency Management Task Force',
-    url: 'https://www.nga.org/advocacy/nga-committees/public-health-and-emergency-management-task-force/',
-    desc: 'Understand how governors coordinate public health and emergency response.'
-  }
-];
+      const ngaLinks = [
+        {
+          label: 'NGA Leadership',
+          url: 'https://www.nga.org/governors/ngaleadership/',
+          desc: 'Meet the current leadership of the National Governors Association.'
+        },
+        {
+          label: 'Council of Governors',
+          url: 'https://www.nga.org/cog/',
+          desc: 'Explore the bipartisan Council of Governors and its national security role.'
+        },
+        {
+          label: 'Gubernatorial Elections',
+          url: 'https://www.nga.org/governors/elections/',
+          desc: 'Track upcoming and recent gubernatorial elections across the United States.'
+        },
+        {
+          label: 'Education, Workforce and Community Investment Task Force',
+          url: 'https://www.nga.org/advocacy/nga-committees/education-workforce-community-investment-task-force/',
+          desc: 'See how governors are shaping education and workforce development policy.'
+        },
+        {
+          label: 'Economic Development and Revitalization Task Force',
+          url: 'https://www.nga.org/advocacy/nga-committees/economic-development-and-revitalization-task-force/',
+          desc: 'Review strategies for economic growth and revitalization led by governors.'
+        },
+        {
+          label: 'Public Health and Emergency Management Task Force',
+          url: 'https://www.nga.org/advocacy/nga-committees/public-health-and-emergency-management-task-force/',
+          desc: 'Understand how governors coordinate public health and emergency response.'
+        }
+      ];
 
-const ngaGrid = document.createElement('div');
-ngaGrid.className = 'link-grid';
+      const ngaGrid = document.createElement('div');
+      ngaGrid.className = 'link-grid';
 
-ngaLinks.forEach(link => {
-  const card = document.createElement('div');
-  card.className = 'link-card';
-  card.innerHTML = `
-    <h4>${link.label}</h4>
-    <p class="card-desc">${link.desc}</p>
-    <a href="${link.url}" target="_blank" class="card-button">Open</a>
-  `;
-  ngaGrid.appendChild(card);
-});
+      ngaLinks.forEach(link => {
+        const card = document.createElement('div');
+        card.className = 'link-card';
+        card.setAttribute('onclick', `window.open('${link.url}', '_blank')`);
+        card.innerHTML = `
+          <h4>${link.label}</h4>
+          <p class="card-desc">${link.desc}</p>
+        `;
+        ngaGrid.appendChild(card);
+      });
 
-ngaBlock.appendChild(ngaGrid);
+      ngaBlock.appendChild(ngaGrid);
 
+      // Federal block
       const federalBlock = document.createElement('div');
       federalBlock.className = 'civic-block';
       federalBlock.innerHTML = '<h2>Federal Oversight & Transparency</h2>';
@@ -311,15 +384,17 @@ ngaBlock.appendChild(ngaGrid);
       federalLinks.forEach(link => {
         const card = document.createElement('div');
         card.className = 'link-card';
+        card.setAttribute('onclick', `window.open('${link.url}', '_blank')`);
         card.innerHTML = `
           <h4>${link.label}</h4>
           <p class="card-desc">${link.desc}</p>
-          <a href="${link.url}" target="_blank" class="card-button">Open</a>
         `;
         federalGrid.appendChild(card);
       });
 
       federalBlock.appendChild(federalGrid);
+
+      // Append all blocks
       section.appendChild(stateBlock);
       section.appendChild(ngaBlock);
       section.appendChild(federalBlock);
@@ -330,88 +405,11 @@ ngaBlock.appendChild(ngaGrid);
       console.error(err);
     });
 }
+
 function showPolls() {
   showTab('polls');
   const pollsContainer = document.getElementById('polls-cards');
   pollsContainer.innerHTML = '';
-
-  const pollCategories = [
-  {
-    label: 'President',
-    polls: [
-      { source: 'Ballotpedia', name: 'Ballotpedia – Presidential Approval Index', url: 'https://ballotpedia.org/Ballotpedia%27s_Polling_Index:_Presidential_approval_rating' },
-      { source: 'RCP', name: 'RCP – Presidential Job Approval', url: 'https://www.realclearpolling.com/polls/approval/donald-trump/approval-rating' },
-      { source: '270toWin', name: '270toWin – 2028 Republican Primary Polls', url: 'https://www.270towin.com/2028-republican-nomination/' },
-      { source: '270toWin', name: '270toWin – 2028 Democratic Primary Polls', url: 'https://www.270towin.com/2028-democratic-nomination/' },
-      { source: 'Cook Political', name: 'Cook Political Report – Presidential Ratings', url: 'https://www.cookpolitical.com/' },
-      { source: 'Sabato', name: 'Sabato’s Crystal Ball – Presidential Elections', url: 'https://centerforpolitics.org/crystalball/' },
-      { source: 'AP-NORC', name: 'AP-NORC – Presidential Approval Tracker', url: 'https://apnews.com/projects/polling-tracker/' },
-      { source: 'DDHQ', name: 'Decision Desk HQ – Presidential Poll Averages', url: 'https://decisiondeskhq.com/polls/averages/' },
-      { source: 'Gallup', name: 'Gallup – Presidential Approval Ratings', url: 'https://news.gallup.com/poll/203198/presidential-approval-center.aspx' },
-      { source: 'Pew', name: 'Pew Research – Presidential Approval Surveys', url: 'https://www.pewresearch.org/politics/' }
-    ]
-  },
-  {
-    label: 'Vice President',
-    polls: [
-      { source: 'RCP', name: 'RCP – JD Vance Favorability', url: 'https://www.realclearpolling.com/polls/favorability/j-d-vance' },
-      { source: 'DDHQ', name: 'Decision Desk HQ – JD Vance Favorability Average', url: 'https://decisiondeskhq.com/polls/averages/' },
-      { source: 'Ballotpedia', name: 'Ballotpedia – JD Vance Profile', url: 'https://ballotpedia.org/J.D._Vance' },
-      { source: 'Cook Political', name: 'Cook Political Report – VP Coverage', url: 'https://www.cookpolitical.com/' },
-      { source: 'Sabato', name: 'Sabato’s Crystal Ball – VP Coverage', url: 'https://centerforpolitics.org/crystalball/' },
-      { source: 'AP-NORC', name: 'AP-NORC – VP Favorability Tracker', url: 'https://apnews.com/projects/polling-tracker/' },
-      { source: 'RaceToWH', name: 'Race to the WH – VP Polling Tracker', url: 'https://www.racetothewh.com/' },
-      { source: 'Gallup', name: 'Gallup – VP Favorability Surveys', url: 'https://news.gallup.com/poll/' },
-      { source: 'Pew', name: 'Pew Research – VP Favorability Surveys', url: 'https://www.pewresearch.org/politics/' },
-      { source: 'Newsweek', name: 'Newsweek – JD Vance Approval Coverage', url: 'https://www.newsweek.com/jd-vance-approval-rating-inauguration-2107645' }
-    ]
-  },
-  {
-    label: 'Governor',
-    polls: [
-      { source: 'Ballotpedia', name: 'Ballotpedia – 2025 Governor Elections', url: 'https://ballotpedia.org/Gubernatorial_elections,_2025' },
-      { source: 'RCP', name: 'RCP – Governor Polls', url: 'https://www.realclearpolling.com/latest-polls/governor' },
-      { source: '270toWin', name: '270toWin – 2025–26 Governor Polls', url: 'https://www.270towin.com/polls/latest-2026-governor-election-polls/' },
-      { source: 'Cook Political', name: 'Cook Political Report – Governor Ratings', url: 'https://www.cookpolitical.com/ratings/governor-race-ratings' },
-      { source: 'Sabato', name: 'Sabato’s Crystal Ball – 2026 Governor Elections', url: 'https://centerforpolitics.org/crystalball/2026-governor/' },
-      { source: 'AP-NORC', name: 'AP-NORC – Governor Approval Tracker', url: 'https://apnews.com/projects/polling-tracker/' },
-      { source: 'DDHQ', name: 'Decision Desk HQ – Governor Poll Averages', url: 'https://decisiondeskhq.com/polls/averages/' },
-      { source: 'RaceToWH', name: 'Race to the WH – Governor Polling Tracker', url: 'https://www.racetothewh.com/governor/26polls' },
-      { source: 'Gallup', name: 'Gallup – Governor Approval Ratings', url: 'https://news.gallup.com/poll/' },
-      { source: 'Pew', name: 'Pew Research – Governor Approval Surveys', url: 'https://www.pewresearch.org/politics/' }
-    ]
-  },
-  {
-    label: 'U.S. Senate',
-    polls: [
-      { source: 'Ballotpedia', name: 'Ballotpedia – 2026 Senate Elections', url: 'https://ballotpedia.org/United_States_Senate_elections,_2026' },
-      { source: 'RCP', name: 'RCP – 2026 Senate Polls', url: 'https://www.realclearpolling.com/latest-polls/senate' },
-      { source: '270toWin', name: '270toWin – Latest 2026 Senate Polls', url: 'https://www.270towin.com/polls/latest-2026-senate-election-polls/' },
-      { source: 'Cook Political', name: 'Cook Political Report – 2026 Senate Ratings', url: 'https://www.cookpolitical.com/ratings/senate-race-ratings' },
-      { source: 'Sabato', name: 'Sabato’s Crystal Ball – 2026 Senate Elections', url: 'https://centerforpolitics.org/crystalball/2026-senate/' },
-      { source: 'AP-NORC', name: 'AP-NORC – Senate Approval Tracker', url: 'https://apnews.com/projects/polling-tracker/' },
-      { source: 'DDHQ', name: 'Decision Desk HQ – Senate Poll Averages', url: 'https://decisiondeskhq.com/polls/averages/' },
-      { source: 'RaceToWH', name: 'Race to the WH – Senate Polling Tracker', url: 'https://www.racetothewh.com/senate/26polls' },
-      { source: 'Gallup', name: 'Gallup – Senate Approval Ratings', url: 'https://news.gallup.com/poll/' },
-      { source: 'Pew', name: 'Pew Research – Senate Approval Surveys', url: 'https://www.pewresearch.org/politics/' }
-    ]
-  },
-  {
-    label: 'U.S. House',
-    polls: [
-      { source: 'Ballotpedia', name: 'Ballotpedia – 2026 House Elections', url: 'https://ballotpedia.org/United_States_House_of_Representatives_elections,_2026' },
-      { source: 'RCP', name: 'RCP – Generic Congressional Ballot', url: 'https://www.realclearpolling.com/polls/state-of-the-union/generic-congressional-vote' },
-      { source: '270toWin', name: '270toWin – Latest 2026 House Polls', url: 'https://www.270towin.com/polls/latest-2026-house-election-polls/' },
-      { source: 'Cook Political', name: 'Cook Political Report – 2026 House Ratings', url: 'https://www.cookpolitical.com/ratings/house-race-ratings' },
-      { source: 'Sabato', name: 'Sabato’s Crystal Ball – 2026 House Elections', url: 'https://centerforpolitics.org/crystalball/2026-house/' },
-            { source: 'AP-NORC', name: 'AP-NORC – Congressional Approval Tracker', url: 'https://apnews.com/projects/polling-tracker/' },
-      { source: 'DDHQ', name: 'Decision Desk HQ – Generic Ballot Average', url: 'https://polls.decisiondeskhq.com/averages/generic-ballot/national/lv-rv-adults' },
-      { source: 'RaceToWH', name: 'Race to the WH – House Polling Tracker', url: 'https://www.racetothewh.com/house/26polls' },
-      { source: 'Gallup', name: 'Gallup – Congressional Approval Ratings', url: 'https://news.gallup.com/poll/' },
-      { source: 'Pew', name: 'Pew Research – Congressional Approval Surveys', url: 'https://www.pewresearch.org/politics/' }
-    ]
-  }
-];
 
   const suppressedForTerritories = ['State Senate', 'State House'];
   const isTerritory = ['Puerto Rico', 'U.S. Virgin Islands', 'Guam', 'American Samoa', 'Northern Mariana Islands'].includes(selectedState);
@@ -421,13 +419,14 @@ function showPolls() {
 
     const card = document.createElement('div');
     card.className = 'link-card';
+    card.setAttribute('onclick', `openPollModal('${category.label}')`);
     card.innerHTML = `
       <h4>${category.label}</h4>
       <p class="card-desc">Click to view ${category.label} polls.</p>
-      <button class="card-button" onclick="openPollModal('${category.label}')">Open</button>
     `;
     pollsContainer.appendChild(card);
   });
+}
 
   window.pollCategories = pollCategories;
 }
