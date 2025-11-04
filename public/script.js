@@ -335,15 +335,20 @@ function showPolls() {
   const pollsContainer = document.getElementById('polls-cards');
   pollsContainer.innerHTML = '';
 
-   const pollCategories = [
+  const pollCategories = [
   {
     label: 'President',
     polls: [
       { source: 'Ballotpedia', name: 'Ballotpedia – Presidential Approval Index', url: 'https://ballotpedia.org/Ballotpedia%27s_Polling_Index:_Presidential_approval_rating' },
       { source: 'RCP', name: 'RCP – Presidential Job Approval', url: 'https://www.realclearpolling.com/polls/approval/donald-trump/approval-rating' },
-      { source: '270toWin', name: '270toWin – Presidential Polls', url: 'https://www.270towin.com/polls/president' },
+      { source: '270toWin', name: '270toWin – 2028 Republican Primary Polls', url: 'https://www.270towin.com/2028-republican-nomination/' },
+      { source: '270toWin', name: '270toWin – 2028 Democratic Primary Polls', url: 'https://www.270towin.com/2028-democratic-nomination/' },
+      { source: 'Cook Political', name: 'Cook Political Report – Presidential Ratings', url: 'https://www.cookpolitical.com/' },
+      { source: 'Sabato', name: 'Sabato’s Crystal Ball – Presidential Elections', url: 'https://centerforpolitics.org/crystalball/' },
       { source: 'AP-NORC', name: 'AP-NORC – Presidential Approval Tracker', url: 'https://apnews.com/projects/polling-tracker/' },
-      { source: 'Gallup', name: 'Gallup – Presidential Approval Ratings', url: 'https://news.gallup.com/poll/203198/presidential-approval-center.aspx' }
+      { source: 'DDHQ', name: 'Decision Desk HQ – Presidential Poll Averages', url: 'https://decisiondeskhq.com/polls/averages/' },
+      { source: 'Gallup', name: 'Gallup – Presidential Approval Ratings', url: 'https://news.gallup.com/poll/203198/presidential-approval-center.aspx' },
+      { source: 'Pew', name: 'Pew Research – Presidential Approval Surveys', url: 'https://www.pewresearch.org/politics/' }
     ]
   },
   {
@@ -351,9 +356,14 @@ function showPolls() {
     polls: [
       { source: 'RCP', name: 'RCP – JD Vance Favorability', url: 'https://www.realclearpolling.com/polls/favorability/j-d-vance' },
       { source: 'DDHQ', name: 'Decision Desk HQ – JD Vance Favorability Average', url: 'https://decisiondeskhq.com/polls/averages/' },
-      { source: 'Ballotpedia', name: 'Ballotpedia – VP Coverage (poll references)', url: 'https://ballotpedia.org/J._D._Vance' },
-      { source: 'AP-NORC', name: 'AP-NORC – Polling Tracker (VP Favorability)', url: 'https://apnews.com/projects/polling-tracker/' },
-      { source: 'Gallup', name: 'Gallup – Vice President Favorability Surveys', url: 'https://news.gallup.com/poll/' }
+      { source: 'Ballotpedia', name: 'Ballotpedia – JD Vance Profile', url: 'https://ballotpedia.org/J.D._Vance' },
+      { source: 'Cook Political', name: 'Cook Political Report – VP Coverage', url: 'https://www.cookpolitical.com/' },
+      { source: 'Sabato', name: 'Sabato’s Crystal Ball – VP Coverage', url: 'https://centerforpolitics.org/crystalball/' },
+      { source: 'AP-NORC', name: 'AP-NORC – VP Favorability Tracker', url: 'https://apnews.com/projects/polling-tracker/' },
+      { source: 'RaceToWH', name: 'Race to the WH – VP Polling Tracker', url: 'https://www.racetothewh.com/' },
+      { source: 'Gallup', name: 'Gallup – VP Favorability Surveys', url: 'https://news.gallup.com/poll/' },
+      { source: 'Pew', name: 'Pew Research – VP Favorability Surveys', url: 'https://www.pewresearch.org/politics/' },
+      { source: 'Newsweek', name: 'Newsweek – JD Vance Approval Coverage', url: 'https://www.newsweek.com/jd-vance-approval-rating-inauguration-2107645' }
     ]
   },
   {
@@ -361,9 +371,14 @@ function showPolls() {
     polls: [
       { source: 'Ballotpedia', name: 'Ballotpedia – 2025 Governor Elections', url: 'https://ballotpedia.org/Gubernatorial_elections,_2025' },
       { source: 'RCP', name: 'RCP – Governor Polls', url: 'https://www.realclearpolling.com/latest-polls/governor' },
-      { source: '270toWin', name: '270toWin – Governor Polls', url: 'https://www.270towin.com/polls/governor' },
+      { source: '270toWin', name: '270toWin – 2025–26 Governor Polls', url: 'https://www.270towin.com/polls/latest-2026-governor-election-polls/' },
       { source: 'Cook Political', name: 'Cook Political Report – Governor Ratings', url: 'https://www.cookpolitical.com/ratings/governor-race-ratings' },
-      { source: 'Sabato', name: 'Sabato’s Crystal Ball – Governor Elections', url: 'https://centerforpolitics.org/crystalball/' }
+      { source: 'Sabato', name: 'Sabato’s Crystal Ball – 2026 Governor Elections', url: 'https://centerforpolitics.org/crystalball/2026-governor/' },
+      { source: 'AP-NORC', name: 'AP-NORC – Governor Approval Tracker', url: 'https://apnews.com/projects/polling-tracker/' },
+      { source: 'DDHQ', name: 'Decision Desk HQ – Governor Poll Averages', url: 'https://decisiondeskhq.com/polls/averages/' },
+      { source: 'RaceToWH', name: 'Race to the WH – Governor Polling Tracker', url: 'https://www.racetothewh.com/governor/26polls' },
+      { source: 'Gallup', name: 'Gallup – Governor Approval Ratings', url: 'https://news.gallup.com/poll/' },
+      { source: 'Pew', name: 'Pew Research – Governor Approval Surveys', url: 'https://www.pewresearch.org/politics/' }
     ]
   },
   {
@@ -373,17 +388,27 @@ function showPolls() {
       { source: 'RCP', name: 'RCP – 2026 Senate Polls', url: 'https://www.realclearpolling.com/latest-polls/senate' },
       { source: '270toWin', name: '270toWin – Latest 2026 Senate Polls', url: 'https://www.270towin.com/polls/latest-2026-senate-election-polls/' },
       { source: 'Cook Political', name: 'Cook Political Report – 2026 Senate Ratings', url: 'https://www.cookpolitical.com/ratings/senate-race-ratings' },
-      { source: 'Sabato', name: 'Sabato’s Crystal Ball – 2026 Senate Elections', url: 'https://centerforpolitics.org/crystalball/2026-senate/' }
+      { source: 'Sabato', name: 'Sabato’s Crystal Ball – 2026 Senate Elections', url: 'https://centerforpolitics.org/crystalball/2026-senate/' },
+      { source: 'AP-NORC', name: 'AP-NORC – Senate Approval Tracker', url: 'https://apnews.com/projects/polling-tracker/' },
+      { source: 'DDHQ', name: 'Decision Desk HQ – Senate Poll Averages', url: 'https://decisiondeskhq.com/polls/averages/' },
+      { source: 'RaceToWH', name: 'Race to the WH – Senate Polling Tracker', url: 'https://www.racetothewh.com/senate/26polls' },
+      { source: 'Gallup', name: 'Gallup – Senate Approval Ratings', url: 'https://news.gallup.com/poll/' },
+      { source: 'Pew', name: 'Pew Research – Senate Approval Surveys', url: 'https://www.pewresearch.org/politics/' }
     ]
   },
   {
     label: 'U.S. House',
     polls: [
-      { source: 'Ballotpedia', name: 'Ballotpedia – Generic Congressional Vote Index', url: 'https://ballotpedia.org/Ballotpedia%27s_Polling_Index:_Generic_congressional_vote' },
-      { source: 'RCP', name: 'RCP – Generic Congressional Ballot (2026)', url: 'https://www.realclearpolling.com/polls/state-of-the-union/generic-congressional-vote' },
+      { source: 'Ballotpedia', name: 'Ballotpedia – 2026 House Elections', url: 'https://ballotpedia.org/United_States_House_of_Representatives_elections,_2026' },
+      { source: 'RCP', name: 'RCP – Generic Congressional Ballot', url: 'https://www.realclearpolling.com/polls/state-of-the-union/generic-congressional-vote' },
       { source: '270toWin', name: '270toWin – Latest 2026 House Polls', url: 'https://www.270towin.com/polls/latest-2026-house-election-polls/' },
-      { source: 'Cook Political', name: 'Cook Political Report – 2026 House Ratings', url: 'https://www.cookpolitical.com/ratings/house-race-ratings?mod=article_inline' },
-      { source: 'Sabato', name: 'Sabato’s Crystal Ball – 2026 House Elections', url: 'https://centerforpolitics.org/crystalball/2026-house/' }
+      { source: 'Cook Political', name: 'Cook Political Report – 2026 House Ratings', url: 'https://www.cookpolitical.com/ratings/house-race-ratings' },
+      { source: 'Sabato', name: 'Sabato’s Crystal Ball – 2026 House Elections', url: 'https://centerforpolitics.org/crystalball/2026-house/' },
+            { source: 'AP-NORC', name: 'AP-NORC – Congressional Approval Tracker', url: 'https://apnews.com/projects/polling-tracker/' },
+      { source: 'DDHQ', name: 'Decision Desk HQ – Generic Ballot Average', url: 'https://polls.decisiondeskhq.com/averages/generic-ballot/national/lv-rv-adults' },
+      { source: 'RaceToWH', name: 'Race to the WH – House Polling Tracker', url: 'https://www.racetothewh.com/house/26polls' },
+      { source: 'Gallup', name: 'Gallup – Congressional Approval Ratings', url: 'https://news.gallup.com/poll/' },
+      { source: 'Pew', name: 'Pew Research – Congressional Approval Surveys', url: 'https://www.pewresearch.org/politics/' }
     ]
   }
 ];
