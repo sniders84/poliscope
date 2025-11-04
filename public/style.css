@@ -585,3 +585,23 @@ main {
   color: #0066cc;
   text-decoration: underline;
 }
+.poll-source {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.poll-logo img {
+  height: 24px;
+  margin-right: 10px;
+}
+
+.poll-links a {
+  font-weight: 500;
+  color: #004080;
+  text-decoration: none;
+}
+
+.poll-links a:hover {
+  text-decoration: underline;
+}
