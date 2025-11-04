@@ -905,7 +905,12 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // --- Political Groups initialization ---
-  renderGroups(politicalGroups);   // render cards from your JSON array
-  wireGroupFilters();              // enable category filter buttons
-});
+fetch('political-groups.json')
+  .then(res => res.json())
+  .then(data => {
+    renderGroups(data);
+    wireGroupFilters();
+  })
+  .catch(err => console.error('Error loading political groups:', err));
+
 
