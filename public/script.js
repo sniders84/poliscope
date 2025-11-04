@@ -818,20 +818,24 @@ function wireStateDropdown() {
 });
 }
 document.addEventListener('DOMContentLoaded', () => {
+  // Elements
   officialsContainer = document.getElementById('officials-container');
-  searchBar = document.getElementById('search-bar');
+  searchBar = document.getElementById('search-bar'); // input element for Officials search
   modal = document.getElementById('modal');
   modalContent = document.getElementById('modal-content');
   closeModal = document.getElementById('close-modal');
 
+  // Modal wiring
   closeModal.addEventListener('click', closeModalWindow);
   window.addEventListener('click', event => {
     if (event.target === modal) closeModalWindow();
   });
 
+  // Core wiring
   wireSearchBar();
   wireStateDropdown();
 
+  // Load officials data
   Promise.all([
     fetch('/governors.json').then(res => res.json()),
     fetch('/ltgovernors.json').then(res => res.json()),
@@ -849,20 +853,40 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error('Error loading official data:', err);
     });
 
-  // 👇 New: click outside the search bar returns to Officials tab
-  document.addEventListener('click', event => {
-    const searchInput = document.getElementById('search-bar');
-    const modal = document.getElementById('modal');
-    if (!searchInput) return;
+  // Helper: close the Officials search like a modal
+  function closeOfficialsSearch() {
+    if (!searchBar) return;
+    // Clear focus and any text
+    searchBar.blur();
+    // Optional: clear the query — comment out if you want to keep typed text
+    // searchBar.value = '';
 
-    // Don’t interfere if a modal is open
+    // Return to Officials tab and repopulate the default list
+    showTab('officials');            // ensure this matches your tab key
+    renderOfficials(selectedState, ''); // re-render default officials view
+  }
+
+  // Click-outside to close search (only when search is focused)
+  document.addEventListener('mousedown', event => {
+    if (!searchBar) return;
+
+    const isFocused = document.activeElement === searchBar;
+    if (!isFocused) return; // only act when the user is actually in the search
+
+    // If a modal is open, ignore (let modal logic handle it)
     const modalOpen = modal && modal.style.display === 'block';
     if (modalOpen) return;
 
-    // If click is outside the search bar, go back to Officials tab
-    if (event.target !== searchInput && !searchInput.contains(event.target)) {
-      searchInput.blur(); // remove focus
-      showTab('officials'); // ensure this matches your Officials tab key
+    // Define the interactive area for the search (input plus any wrapper)
+    const searchWrapper = document.getElementById('officials-search-wrapper') || searchBar;
+
+    // If the click is outside the search area, close the search
+    const clickedOutside =
+      event.target !== searchWrapper &&
+      !searchWrapper.contains(event.target);
+
+    if (clickedOutside) {
+      closeOfficialsSearch();
     }
   });
 });
