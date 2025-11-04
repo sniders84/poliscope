@@ -861,7 +861,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderOfficials(selectedState, ''); // re-render default officials view
   }
 
-  // Click-outside to close search (only when search is focused)
+    // Click-outside to close search (only when search is focused)
   document.addEventListener('mousedown', event => {
     if (!searchBar) return;
 
@@ -876,5 +876,5 @@ document.addEventListener('DOMContentLoaded', () => {
     if (event.target !== searchBar && !searchBar.contains(event.target)) {
       closeOfficialsSearch();
     }
-  });
-}); // <-- properly closes DOMContentLoaded
+  }); // <-- closes the mousedown listener
+});   // <-- closes DOMContentLoaded
