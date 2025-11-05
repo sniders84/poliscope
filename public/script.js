@@ -817,6 +817,94 @@ function wireStateDropdown() {
     renderOfficials(selectedState, '');
   });
 }
+// --- Existing helpers ---
+function renderOfficials(state, query) {
+  // your existing officials rendering logic
+}
+
+// --- New reusable list renderer ---
+function renderOfficialsList(data, title) {
+  modalContent.innerHTML = `
+    <h2>${title}</h2>
+    <div class="officials-grid"></div>
+  `;
+
+  const grid = modalContent.querySelector('.officials-grid');
+
+  data.forEach(person => {
+    const card = document.createElement('div');
+    card.className = 'official-card';
+
+    card.innerHTML = `
+      <img src="${person.photo}" alt="${person.name}" class="official-photo"/>
+      <h3>${person.name}</h3>
+      <p><strong>Office:</strong> ${person.office}</p>
+      <p><strong>Party:</strong> ${person.party || 'N/A'}</p>
+      <p><strong>State:</strong> ${person.state || 'United States'}</p>
+      <p><strong>Term:</strong> ${person.termStart || ''} – ${person.termEnd || 'Present'}</p>
+    `;
+
+    card.addEventListener('click', () => {
+      renderOfficialDetail(person);
+    });
+
+    grid.appendChild(card);
+  });
+
+  modal.style.display = 'block';
+}
+
+// --- Continue with other helpers like renderOfficialDetail() ---
+
+document.addEventListener('DOMContentLoaded', () => {
+  // your initialization wiring
+});
+// --- Existing helpers ---
+function renderOfficials(state, query) {
+  // your existing officials rendering logic
+}
+
+function renderGroups(groups) {
+  // your existing groups rendering logic
+}
+
+// --- New Civic Intelligence helpers ---
+function renderOfficialsList(data, title) {
+  // ...the list rendering code we added earlier...
+}
+
+function renderOfficialDetail(person) {
+  modalContent.innerHTML = `
+    <button id="back-to-list">← Back</button>
+    <h2>${person.name}</h2>
+    <img src="${person.photo}" alt="${person.name}" class="official-photo-large"/>
+    <p><strong>Office:</strong> ${person.office}</p>
+    <p><strong>Party:</strong> ${person.party || 'N/A'}</p>
+    <p><strong>State:</strong> ${person.state || 'United States'}</p>
+    <p><strong>Term:</strong> ${person.termStart || ''} – ${person.termEnd || 'Present'}</p>
+    <p><strong>Education:</strong> ${person.education || 'N/A'}</p>
+    <p><strong>Bio:</strong> ${person.bio || ''}</p>
+    <p><strong>Predecessor:</strong> ${person.predecessor || 'N/A'}</p>
+    <p><strong>Salary:</strong> ${person.salary || 'N/A'}</p>
+    <p><a href="${person.contact?.website || '#'}" target="_blank">Official Website</a></p>
+    ${person.ballotpediaLink ? `<p><a href="${person.ballotpediaLink}" target="_blank">Ballotpedia</a></p>` : ''}
+    ${person.govtrackLink ? `<p><a href="${person.govtrackLink}" target="_blank">GovTrack</a></p>` : ''}
+  `;
+
+  // Wire back button
+  document.getElementById('back-to-list').addEventListener('click', () => {
+    if (person.office.includes('Justice')) {
+      showSCOTUS();
+    } else {
+      showCabinet();
+    }
+  });
+}
+
+// --- DOMContentLoaded initializer ---
+document.addEventListener('DOMContentLoaded', () => {
+  // all your setup wiring, fetches, event listeners, etc.
+});
 
 document.addEventListener('DOMContentLoaded', () => {
   // Elements
