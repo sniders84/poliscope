@@ -233,15 +233,24 @@ function renderRosterCards(rosterData, chamberLabel, container) {
 }
 // === HELPER: render a single Cabinet member card ===
 function renderCabinetMember(member) {
+  const photoSrc = member.photo && member.photo.trim() !== ''
+    ? member.photo
+    : 'assets/default-photo.png';
+
   return `
-    <div class="card">
-      <div class="card-front">
-        <div class="images">
-          <img src="${member.photo}" alt="${member.name}" class="portrait" />
-          <img src="${member.seal}" alt="${member.office} seal" class="seal" />
+    <div class="official-card">
+      <div class="party-stripe"></div>
+      <div class="card-body">
+        <div class="photo-wrapper">
+          <img src="${photoSrc}" alt="${member.name}"
+               onerror="this.onerror=null;this.src='assets/default-photo.png';" />
         </div>
-        <h3>${member.name}</h3>
-        <p>${member.office}</p>
+        <div class="official-info">
+          <h3>${member.name || 'Unknown'}</h3>
+          <p><strong>Position:</strong> ${member.office || 'N/A'}</p>
+          <p><strong>Department:</strong> ${member.department || ''}</p>
+          <p><strong>Party:</strong> ${member.party || 'N/A'}</p>
+        </div>
       </div>
     </div>
   `;
