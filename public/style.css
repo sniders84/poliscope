@@ -718,3 +718,83 @@ main {
   transform: translateY(-2px);
   transition: all 0.2s ease;
 }
+/* Modal overlay */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  overflow: auto;
+  background: rgba(0,0,0,0.6);
+}
+
+/* Modal content box */
+.modal-content {
+  background: #fff;
+  margin: 5% auto;
+  padding: 1.5em 2em;
+  border-radius: 6px;
+  width: 80%;
+  max-width: 900px;
+  position: relative;
+}
+
+/* Close button */
+.close-button {
+  position: absolute;
+  top: 15px; right: 20px;
+  font-size: 1.5em;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* Officials grid */
+.officials-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  margin-top: 1em;
+}
+
+.official-card {
+  border: 1px solid #ccc;
+  padding: 0.75em;
+  width: 180px;
+  text-align: center;
+  cursor: pointer;
+  background: #fff;
+  transition: transform 0.2s;
+}
+
+.official-card:hover {
+  transform: scale(1.05);
+}
+
+/* Photos */
+.official-photo {
+  max-width: 100%;
+  height: 120px;
+  object-fit: cover;
+  margin-bottom: 0.5em;
+}
+
+.official-photo-large {
+  max-width: 200px;
+  display: block;
+  margin: 0 auto 1em auto;
+}
+
+/* Back button */
+#back-to-list {
+  background: #eee;
+  border: 1px solid #ccc;
+  padding: 0.4em 0.8em;
+  margin-bottom: 1em;
+  cursor: pointer;
+}
+
+#back-to-list:hover {
+  background: #ddd;
+}
