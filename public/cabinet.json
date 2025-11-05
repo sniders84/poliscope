@@ -7,39 +7,16 @@
     "slug": "jd-vance",
     "photo": "https://www.whitehouse.gov/wp-content/uploads/2025/01/jd-vance.jpg",
     "ballotpediaLink": "https://ballotpedia.org/J.D._Vance",
-    "govtrackLink": "https://www.govtrack.us/congress/members/james_david_vance/456876/report-card/2024",
+    "govtrackLink": "https://www.govtrack.us/congress/members/james_david_vance/456876",
     "termStart": "2025-01-20",
     "termEnd": "2029-01-20",
     "contact": {
-      "email": "",
-      "phone": "",
       "website": "https://www.whitehouse.gov/administration/jd-vance/"
     },
     "bio": "JD Vance is the 50th Vice President of the United States, inaugurated in 2025. A former U.S. Senator from Ohio and author of 'Hillbilly Elegy,' Vance is known for his populist conservatism and advocacy for working-class Americans.",
     "education": "Ohio State University (BA), Yale Law School (JD)",
-    "endorsements": "Heritage Foundation, American Principles Project, Susan B. Anthony Pro-Life America",
-    "platform": "Working-class revival, tech accountability, cultural conservatism, and border enforcement.",
-    "platformFollowThrough": {
-      "Working-Class Revival": "Promoted trade reform and domestic manufacturing incentives during Senate tenure.",
-      "Tech Accountability": "Supported antitrust scrutiny of Big Tech and online censorship reform.",
-      "Cultural Conservatism": "Opposed federal funding for DEI and gender ideology in schools.",
-      "Border Enforcement": "Advocated for Title 42 reinstatement and increased ICE funding."
-    },
-    "proposals": "Break up tech monopolies, expand vocational training, and restrict foreign land ownership.",
-    "engagement": {
-      "executiveOrders2025": 0,
-      "socialMediaSurge": true,
-      "earnedMediaCoverage": true,
-      "sources": [
-        "https://www.whitehouse.gov/administration/jd-vance/",
-        "https://ballotpedia.org/J._D._Vance",
-        "https://www.govtrack.us/congress/members/james_vance/456873/report-card/2024"
-      ]
-    },
-    "billsPassed": [],
     "salary": "$235,100/year",
-    "predecessor": "Kamala Harris",
-    "electionYear": "2024"
+    "predecessor": "Kamala Harris"
   },
   {
     "name": "Marco Rubio",
@@ -186,7 +163,7 @@
     "salary": "$235,600/year",
     "predecessor": "Marcia Fudge"
   },
-   {
+  {
     "name": "Sean Duffy",
     "state": "United States",
     "party": "Republican",
@@ -314,7 +291,7 @@
     "salary": "$235,600/year",
     "predecessor": "Alejandro Mayorkas"
   },
-  {
+   {
     "name": "Mark Meadows",
     "state": "United States",
     "party": "Republican",
@@ -333,21 +310,21 @@
     "predecessor": "Jeff Zients"
   },
   {
-  "name": "Karoline Leavitt",
-  "state": "United States",
-  "party": "Republican",
-  "office": "White House Press Secretary",
-  "slug": "karoline-leavitt",
-  "photo": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Karoline_Leavitt.jpg",
-  "ballotpediaLink": "https://ballotpedia.org/Karoline_Leavitt",
-  "termStart": "2025-01-20",
-  "termEnd": "",
-  "contact": {
-    "website": "https://www.whitehouse.gov/briefing-room/press-briefings/"
-  },
-  "bio": "Karoline Leavitt is the White House Press Secretary under President Donald Trump. At age 27, she became the youngest person to hold the position. A former Trump campaign spokesperson and congressional candidate from New Hampshire, Leavitt manages the White House press office and serves as the administration’s chief spokesperson to the media and public.",
-  "education": "Saint Anselm College (BA in Politics and Communications)",
-  "salary": "$235,600/year",
-  "predecessor": "Karine Jean-Pierre"
-}
+    "name": "Karoline Leavitt",
+    "state": "United States",
+    "party": "Republican",
+    "office": "White House Press Secretary",
+    "slug": "karoline-leavitt",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Karoline_Leavitt.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/Karoline_Leavitt",
+    "termStart": "2025-01-20",
+    "termEnd": "",
+    "contact": {
+      "website": "https://www.whitehouse.gov/briefing-room/press-briefings/"
+    },
+    "bio": "Karoline Leavitt is the White House Press Secretary under President Donald Trump. At age 27, she became the youngest person to hold the position. A former Trump campaign spokesperson and congressional candidate from New Hampshire, Leavitt manages the White House press office and serves as the administration’s chief spokesperson to the media and public.",
+    "education": "Saint Anselm College (BA in Politics and Communications)",
+    "salary": "$235,600/year",
+    "predecessor": "Karine Jean-Pierre"
+  }
 ]
