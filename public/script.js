@@ -233,7 +233,7 @@ function showCivic() {
   const section = document.createElement('div');
   section.className = 'civic-section';
 
-  // --- State block (unchanged) ---
+  // --- State block ---
   const stateBlock = document.createElement('div');
   stateBlock.className = 'civic-block';
   stateBlock.innerHTML = '<h2>State Legislative Links</h2>';
@@ -255,7 +255,7 @@ function showCivic() {
       grid.className = 'link-grid';
 
       Object.entries(links).forEach(([label, value]) => {
-        if (label === 'federalRaces' || value === null || value === undefined) return;
+        if (label === 'federalRaces' || value == null) return;
         const displayLabel = labelMap[label] || label;
 
         if (Array.isArray(value)) {
@@ -270,7 +270,7 @@ function showCivic() {
             `;
             grid.appendChild(card);
           });
-        } else if (typeof value === 'object' && value !== null && value.url) {
+        } else if (typeof value === 'object' && value.url) {
           const card = document.createElement('div');
           card.className = 'link-card';
           card.setAttribute('onclick', `window.open('${value.url}', '_blank')`);
@@ -298,7 +298,7 @@ function showCivic() {
       }
       stateBlock.appendChild(grid);
 
-      // --- NGA block (unchanged) ---
+      // --- NGA block ---
       const ngaBlock = document.createElement('div');
       ngaBlock.className = 'civic-block';
       ngaBlock.innerHTML = '<h2>National Governor\'s Association</h2>';
@@ -354,7 +354,7 @@ function showCivic() {
         federalGrid.appendChild(card);
       });
 
-      // ✅ Cabinet card
+      // Cabinet card
       const cabinetCard = document.createElement('div');
       cabinetCard.className = 'link-card';
       cabinetCard.setAttribute('onclick', 'showCabinet()');
@@ -377,6 +377,7 @@ function showCivic() {
       console.error(err);
     });
 }
+
 function showCabinet() {
   const list = document.getElementById('cabinetList');
   const gridView = document.getElementById('cabinetGridView');
