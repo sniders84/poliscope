@@ -407,27 +407,44 @@ function showCivic() {
     });
 }
 function showCabinet() {
+  // 1) Fetch and verify array
   fetch('/cabinet.json')
-    .then(response => response.json())
+    .then(r => r.json())
     .then(data => {
+      console.log('Cabinet length:', Array.isArray(data) ? data.length : 'not-array');
+      console.log('First member sample:', data && data[0]);
+
+      // 2) Resolve target container
       const list = document.getElementById('cabinetList');
+      if (!list) {
+        console.error('cabinetList container not found in DOM.');
+        return;
+      }
+
+      // 3) Clear and render all members
       list.innerHTML = '';
+      if (!Array.isArray(data) || data.length === 0) {
+        list.innerHTML = '<p>No cabinet members found.</p>';
+      } else {
+        data.forEach((member, idx) => {
+          const card = document.createElement('div');
+          card.className = 'official-card';
+          card.innerHTML = `
+            <img src="${member.photo || ''}" alt="${member.name || ''}" class="official-photo" />
+            <h3>${member.name || ''}</h3>
+            <p>${member.office || ''}</p>
+          `;
+          card.onclick = () => showCabinetMember(member);
+          list.appendChild(card);
+        });
+      }
 
-      data.forEach(member => {
-        const card = document.createElement('div');
-        card.className = 'official-card';
-        card.innerHTML = `
-          <img src="${member.photo}" alt="${member.name}" class="official-photo" />
-          <h3>${member.name}</h3>
-          <p>${member.office}</p>
-        `;
-        card.onclick = () => showCabinetMember(member);
-        list.appendChild(card);
-      });
-
+      // 4) Open modal AFTER list is populated
       openModal('cabinetModal');
     })
-    .catch(err => console.error('Error loading Cabinet data:', err));
+    .catch(err => {
+      console.error('Error loading Cabinet data:', err);
+    });
 }
 
 function showCabinetMember(member) {
