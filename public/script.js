@@ -871,9 +871,6 @@ function closeModalWindow(id) {
   }
   modal.style.display = 'none';
 }
-Window() {
-  modal.style.display = 'none';
-}
 
 function wireSearchBar() {
   searchBar.addEventListener('input', () => {
