@@ -117,9 +117,9 @@
       "Integrity": "Stood up DOJ ethics review unit to enhance oversight.",
       "Border": "Prioritized prosecution of transnational smuggling networks.",
       "Crime": "Expanded task forces targeting cyber fraud and organized theft."
- }
+    }
   },
-  {
+    {
     "name": "Doug Burgum",
     "state": "United States",
     "party": "Republican",
@@ -239,7 +239,7 @@
       "Environmental Health": "Launched initiative linking pollution reduction to chronic disease prevention."
     }
   },
-    {
+  {
     "name": "Scott Turner",
     "state": "United States",
     "party": "Republican",
@@ -251,7 +251,7 @@
     "termStart": "2025-02-05",
     "termEnd": "",
     "contact": { "website": "https://www.hud.gov/" },
-    "bio": "Scott Turner is the 19th HUD Secretary. A former Texas legislator and executive director of the White House Opportunity and Revitalization Council, he’s focused on neighborhood revitalization, permitting reform to boost housing supply, and public‑private partnerships that unlock investment in distressed communities.",
+       "bio": "Scott Turner is the 19th HUD Secretary. A former Texas legislator and executive director of the White House Opportunity and Revitalization Council, he’s focused on neighborhood revitalization, affordable housing supply, and public‑private partnerships that unlock investment in distressed communities.",
     "education": "University of North Carolina (BA)",
     "salary": "$250,600/year",
     "predecessor": "Marcia Fudge",
@@ -383,7 +383,6 @@
       "Cyber": "Coordinated cyber resilience exercises with critical‑infrastructure partners."
     }
   },
-    [
   {
     "name": "Lee Zeldin",
     "state": "United States",
@@ -513,7 +512,7 @@
     "photo": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Susie_Wiles.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Susie_Wiles",
     "govtrackLink": "",
-    "termStart": "2025-01-20",
+        "termStart": "2025-01-20",
     "termEnd": "",
     "contact": { "website": "https://www.whitehouse.gov/" },
     "bio": "Susie Wiles is the White House Chief of Staff. A veteran campaign strategist, she coordinates West Wing operations, aligns agency priorities, and manages legislative outreach to support the administration’s agenda.",
@@ -544,7 +543,7 @@
     "education": "Saint Anselm College (BA)",
     "salary": "$250,600/year",
     "predecessor": "Karine Jean-Pierre",
-    "seal": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Seal_of_the_Executive_Office_of_the_President_of_the_United_States.svg/600px-Seal_of_the_Executive_Office_of_the_United_States.svg.png",
+    "seal": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Seal_of_the_Executive_Office_of_the_President_of_the_United_States.svg/600px-Seal_of_the_Executive_Office_of_the_President_of_the_United_States.svg.png",
     "platform": "Transparent briefings, rapid response, disciplined messaging.",
     "platformFollowThrough": {
       "Briefings": "Instituted regular on‑camera briefings with supporting fact sheets.",
