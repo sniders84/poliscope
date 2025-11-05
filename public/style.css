@@ -1042,3 +1042,18 @@ main {
   width: 320px;  /* 4x bigger than the ~80px you had */
   height: auto;
 }
+/* Card grid view */
+.official-card .seal-wrapper {
+  text-align: center;
+  margin-top: 10px;
+}
+.official-card .seal {
+  width: 60px;   /* small badge under info */
+  height: auto;
+}
+
+/* Modal detail view */
+.detail-header .seal {
+  width: 320px;  /* 4x bigger than before */
+  height: auto;
+}
