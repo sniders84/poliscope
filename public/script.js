@@ -384,6 +384,8 @@ function showCabinet() {
   const list = document.getElementById('cabinetList');
   const gridView = document.getElementById('cabinetGridView');
   const detailView = document.getElementById('cabinetDetailView');
+
+  // Always start in grid mode
   gridView.style.display = 'block';
   detailView.style.display = 'none';
   list.innerHTML = '';
@@ -417,6 +419,7 @@ function showCabinet() {
           </div>
         `;
 
+        // Only when you click a card do we show details
         card.onclick = () => showCabinetMember(member);
         list.appendChild(card);
       });
