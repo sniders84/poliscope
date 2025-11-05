@@ -817,105 +817,16 @@ function wireStateDropdown() {
     renderOfficials(selectedState, '');
   });
 }
-// --- Existing helpers ---
-function renderOfficials(state, query) {
-  // your existing officials rendering logic
-}
 
-function renderGroups(groups) {
-  // your existing groups rendering logic
-}
-
-// --- New Civic Intelligence helpers ---
-function renderOfficialsList(data, title) {
-  modalContent.innerHTML = `
-    <h2>${title}</h2>
-    <div class="officials-grid"></div>
-  `;
-
-  const grid = modalContent.querySelector('.officials-grid');
-
-  data.forEach(person => {
-    const card = document.createElement('div');
-    card.className = 'official-card';
-
-    card.innerHTML = `
-      <img src="${person.photo}" alt="${person.name}" class="official-photo"/>
-      <h3>${person.name}</h3>
-      <p><strong>Office:</strong> ${person.office}</p>
-      <p><strong>Party:</strong> ${person.party || 'N/A'}</p>
-      <p><strong>State:</strong> ${person.state || 'United States'}</p>
-      <p><strong>Term:</strong> ${person.termStart || ''} – ${person.termEnd || 'Present'}</p>
-    `;
-
-    card.addEventListener('click', () => {
-      renderOfficialDetail(person);
-    });
-
-    grid.appendChild(card);
-  });
-
-  modal.style.display = 'block';
-}
-
-function renderOfficialDetail(person) {
-  modalContent.innerHTML = `
-    <button id="back-to-list">← Back</button>
-    <h2>${person.name}</h2>
-    <img src="${person.photo}" alt="${person.name}" class="official-photo-large"/>
-    <p><strong>Office:</strong> ${person.office}</p>
-    <p><strong>Party:</strong> ${person.party || 'N/A'}</p>
-    <p><strong>State:</strong> ${person.state || 'United States'}</p>
-    <p><strong>Term:</strong> ${person.termStart || ''} – ${person.termEnd || 'Present'}</p>
-    <p><strong>Education:</strong> ${person.education || 'N/A'}</p>
-    <p><strong>Bio:</strong> ${person.bio || ''}</p>
-    <p><strong>Predecessor:</strong> ${person.predecessor || 'N/A'}</p>
-    <p><strong>Salary:</strong> ${person.salary || 'N/A'}</p>
-    <p><a href="${person.contact?.website || '#'}" target="_blank">Official Website</a></p>
-    ${person.ballotpediaLink ? `<p><a href="${person.ballotpediaLink}" target="_blank">Ballotpedia</a></p>` : ''}
-    ${person.govtrackLink ? `<p><a href="${person.govtrackLink}" target="_blank">GovTrack</a></p>` : ''}
-  `;
-
-  // Wire back button
-  document.getElementById('back-to-list').addEventListener('click', () => {
-    if (person.office.includes('Justice')) {
-      showSCOTUS();
-    } else {
-      showCabinet();
-    }
-  });
-}
-
-// --- Global functions for Cabinet and SCOTUS ---
-function showCabinet() {
-  fetch('/cabinet.json')
-    .then(res => res.json())
-    .then(data => {
-      renderOfficialsList(data, "President’s Cabinet");
-    })
-    .catch(err => console.error('Error loading cabinet data:', err));
-}
-
-function showSCOTUS() {
-  fetch('/scotus.json')
-    .then(res => res.json())
-    .then(data => {
-      renderOfficialsList(data, "Supreme Court Justices");
-    })
-    .catch(err => console.error('Error loading SCOTUS data:', err));
-}
-
-// --- DOMContentLoaded initializer ---
 document.addEventListener('DOMContentLoaded', () => {
   // Elements
   officialsContainer = document.getElementById('officials-container');
   searchBar = document.getElementById('search-bar'); // input element for Officials search
-
-  // Modal wiring for officials / civic intelligence
-  modal = document.getElementById('officials-modal');
-  modalContent = document.getElementById('officials-content');
+  modal = document.getElementById('modal');
+  modalContent = document.getElementById('modal-content');
   closeModal = document.getElementById('close-modal');
 
+  // Modal wiring
   closeModal.addEventListener('click', closeModalWindow);
   window.addEventListener('click', event => {
     if (event.target === modal) closeModalWindow();
