@@ -1,3 +1,4 @@
+// === GLOBAL STATE ===
 let selectedState = 'North Carolina';
 let governors = [];
 let ltGovernors = [];
@@ -5,11 +6,13 @@ let senators = [];
 let houseReps = [];
 let officialsContainer = null;
 let searchBar = null;
-let modal = null;
-let modalContent = null;
-let closeModal = null;
 
-// Global poll categories data (final, corrected)
+// Modal refs (Officials modal)
+let officialsModal = null;
+let officialsModalContent = null;
+let officialsModalCloseBtn = null;
+
+// === POLL CATEGORIES (final) ===
 const pollCategories = [
   {
     label: 'President',
@@ -88,6 +91,7 @@ const pollCategories = [
   }
 ];
 
+// Simple tab switcher
 function showTab(id) {
   document.querySelectorAll('.tab-content').forEach(tab => {
     tab.style.display = 'none';
@@ -95,11 +99,12 @@ function showTab(id) {
   const activeTab = document.getElementById(id);
   if (activeTab) activeTab.style.display = 'block';
 }
+// === VOTING TAB ===
 function showVoting() {
   showTab('voting');
   const votingCards = document.getElementById('voting-cards');
   votingCards.innerHTML = '';
-console.log("showVoting() triggered");
+  console.log("showVoting() triggered");
 
   fetch('voting-data.json')
     .then(res => {
@@ -107,21 +112,21 @@ console.log("showVoting() triggered");
       return res.json();
     })
     .then(data => {
-  console.log('Voting data loaded:', data);
-  console.log('Available voting keys:', Object.keys(data));
-  console.log('Trying to match:', window.selectedState);
-  let selectedState = window.selectedState || 'North Carolina';
-  if (selectedState === 'Virgin Islands') selectedState = 'U.S. Virgin Islands';
-  const stateData = data[selectedState] || (selectedState === 'U.S. Virgin Islands' ? data['U.S. Virgin Islands'] : null);
+      console.log('Voting data loaded:', data);
+      console.log('Available voting keys:', Object.keys(data));
+      console.log('Trying to match:', window.selectedState);
+
+      let stateName = window.selectedState || 'North Carolina';
+      if (stateName === 'Virgin Islands') stateName = 'U.S. Virgin Islands';
+      const stateData = data[stateName] || null;
 
       if (!stateData || typeof stateData !== 'object') {
-        votingCards.innerHTML = `<p>No voting information available for ${selectedState}.</p>`;
+        votingCards.innerHTML = `<p>No voting information available for ${stateName}.</p>`;
         return;
       }
-console.log("Selected state:", selectedState);
-console.log('Available voting keys:', Object.keys(data));
-console.log('Trying to match:', selectedState);
-console.log('Direct match result:', data[selectedState]);
+
+      console.log("Selected state:", stateName);
+      console.log('Direct match result:', data[stateName]);
 
       const labelMap = {
         register: 'Register to Vote',
@@ -135,63 +140,65 @@ console.log('Direct match result:', data[selectedState]);
         tools: 'State Voting Tools'
       };
 
-Object.entries(stateData).forEach(([key, value]) => {
-  if (!value) return; // skip null, undefined, false, 0
+      Object.entries(stateData).forEach(([key, value]) => {
+        if (!value) return;
 
-  let url, icon, description, deadline;
+        let url, icon, description, deadline;
 
-  if (typeof value === 'string') {
-    url = value;
-    icon = '🗳️';
-    description = '';
-    deadline = '';
-  } else if (typeof value === 'object' && value !== null) {
-    ({ url, icon = '🗳️', description = '', deadline = '' } = value);
-  } else {
-    return; // skip anything unexpected
-  }
+        if (typeof value === 'string') {
+          url = value;
+          icon = '🗳️';
+          description = '';
+          deadline = '';
+        } else if (typeof value === 'object' && value !== null) {
+          ({ url, icon = '🗳️', description = '', deadline = '' } = value);
+        } else {
+          return;
+        }
 
-  if (!url) return;
+        if (!url) return;
 
-  const title = labelMap[key] || key;
+        const title = labelMap[key] || key;
 
-  const card = document.createElement('div');
-  card.className = 'voting-card';
+        const card = document.createElement('div');
+        card.className = 'voting-card';
 
-  const link = document.createElement('a');
-  link.href = url;
-  link.target = '_blank';
+        const link = document.createElement('a');
+        link.href = url;
+        link.target = '_blank';
 
-  const iconDiv = document.createElement('div');
-  iconDiv.className = 'card-icon';
-  iconDiv.innerHTML = `<span class="emoji">${icon}</span>`;
+        const iconDiv = document.createElement('div');
+        iconDiv.className = 'card-icon';
+        iconDiv.innerHTML = `<span class="emoji">${icon}</span>`;
 
-  const labelDiv = document.createElement('div');
-  labelDiv.className = 'card-label';
-  labelDiv.textContent = title;
+        const labelDiv = document.createElement('div');
+        labelDiv.className = 'card-label';
+        labelDiv.textContent = title;
 
-  const descDiv = document.createElement('div');
-  descDiv.className = 'card-description';
-  descDiv.textContent = description;
+        const descDiv = document.createElement('div');
+        descDiv.className = 'card-description';
+        descDiv.textContent = description;
 
-  const deadlineDiv = document.createElement('div');
-  deadlineDiv.className = 'card-date';
-  if (deadline) deadlineDiv.textContent = deadline;
+        const deadlineDiv = document.createElement('div');
+        deadlineDiv.className = 'card-date';
+        if (deadline) deadlineDiv.textContent = deadline;
 
-  link.appendChild(iconDiv);
-  link.appendChild(labelDiv);
-  link.appendChild(descDiv);
-  if (deadline) link.appendChild(deadlineDiv);
+        link.appendChild(iconDiv);
+        link.appendChild(labelDiv);
+        link.appendChild(descDiv);
+        if (deadline) link.appendChild(deadlineDiv);
 
-  card.appendChild(link);
-  votingCards.appendChild(card);
-});
+        card.appendChild(link);
+        votingCards.appendChild(card);
+      });
     })
     .catch(err => {
       votingCards.innerHTML = '<p>Error loading voting data.</p>';
       console.error('Voting fetch failed:', err);
     });
 }
+
+// === HELPER: render roster cards (if needed) ===
 function renderRosterCards(rosterData, chamberLabel, container) {
   if (Array.isArray(rosterData)) {
     rosterData.forEach(entry => {
@@ -224,7 +231,7 @@ function renderRosterCards(rosterData, chamberLabel, container) {
     container.appendChild(card);
   }
 }
-
+// === CIVIC TAB ===
 function showCivic() {
   showTab('civic');
   const calendar = document.getElementById('calendar');
@@ -377,13 +384,17 @@ function showCivic() {
       console.error(err);
     });
 }
-
-// === CABINET — COMPLETE BLOCK ===
-
+// === CABINET MODAL LOGIC ===
 function showCabinet() {
   const list = document.getElementById('cabinetList');
   const gridView = document.getElementById('cabinetGridView');
   const detailView = document.getElementById('cabinetDetailView');
+  const modal = document.getElementById('cabinetModal');
+
+  if (!list || !gridView || !detailView || !modal) {
+    console.error('Cabinet modal elements missing.');
+    return;
+  }
 
   // Always start in grid mode
   gridView.style.display = 'block';
@@ -396,7 +407,7 @@ function showCabinet() {
       if (!Array.isArray(members)) {
         console.error('cabinet.json is not an array');
         list.innerHTML = '<p>Invalid Cabinet data format.</p>';
-        openModal('cabinetModal');
+        modal.style.display = 'block';
         return;
       }
 
@@ -424,12 +435,20 @@ function showCabinet() {
         list.appendChild(card);
       });
 
-      openModal('cabinetModal');
+      modal.style.display = 'block';
+
+      // click-outside close (scoped to this modal)
+      window.addEventListener('click', function cabinetClickOutside(e) {
+        if (e.target === modal) {
+          modal.style.display = 'none';
+          window.removeEventListener('click', cabinetClickOutside);
+        }
+      });
     })
     .catch(err => {
       console.error('Error loading cabinet.json:', err);
       list.innerHTML = '<p>Error loading Cabinet data.</p>';
-      openModal('cabinetModal');
+      modal.style.display = 'block';
     });
 }
 
@@ -438,20 +457,19 @@ function showCabinetMember(member) {
   const detailView = document.getElementById('cabinetDetailView');
   const detail = document.getElementById('cabinetMemberDetail');
 
+  if (!gridView || !detailView || !detail) return;
+
   gridView.style.display = 'none';
   detailView.style.display = 'block';
 
-  // Handle empty termStart / termEnd
-  let termStartYear = '';
-  let termEndYear = 'Present';
-  if (member.termStart) {
-    const ts = new Date(member.termStart);
-    if (!isNaN(ts)) termStartYear = ts.getFullYear();
-  }
-  if (member.termEnd && member.termEnd.trim() !== '') {
-    const te = new Date(member.termEnd);
-    if (!isNaN(te)) termEndYear = te.getFullYear();
-  }
+  // Handle empty termStart / termEnd safely
+  const parseYear = d => {
+    if (!d || d.trim() === '') return '';
+    const dt = new Date(d);
+    return isNaN(dt) ? '' : dt.getFullYear();
+  };
+  const termStartYear = parseYear(member.termStart);
+  const termEndYear = parseYear(member.termEnd) || 'Present';
 
   detail.innerHTML = `
     <h2>${member.name || 'Unknown'}</h2>
@@ -472,10 +490,11 @@ function showCabinetMember(member) {
 function backToCabinetGrid() {
   const gridView = document.getElementById('cabinetGridView');
   const detailView = document.getElementById('cabinetDetailView');
+  if (!gridView || !detailView) return;
   gridView.style.display = 'block';
   detailView.style.display = 'none';
 }
-
+// === POLLS TAB ===
 function showPolls() {
   showTab('polls');
   const pollsContainer = document.getElementById('polls-cards');
@@ -497,10 +516,9 @@ function showPolls() {
     pollsContainer.appendChild(card);
   });
 }
+window.pollCategories = pollCategories;
 
-  window.pollCategories = pollCategories;
-
-// Map each source to its logo in /assets/
+// Source logos
 const logoMap = {
   RCP: '/assets/rcp.png',
   '270toWin': '/assets/270towin.png',
@@ -514,7 +532,7 @@ const logoMap = {
   Pew: '/assets/pew.png'
 };
 
-// Open poll modal with grid cards and live RCP injection
+// Poll modal
 function openPollModal(categoryLabel) {
   const category = (window.pollCategories || []).find(c => c.label === categoryLabel);
   const modal = document.getElementById('pollModal');
@@ -572,13 +590,16 @@ function openPollModal(categoryLabel) {
       .catch(err => console.error(`${category.label} polling fetch error:`, err));
   }
 
-  // Close modal when clicking outside
-  window.onclick = function(e) {
+  // Close poll modal when clicking outside (scoped, safe)
+  const clickOutsideHandler = function(e) {
     if (e.target === modal) {
       modal.style.display = 'none';
+      window.removeEventListener('click', clickOutsideHandler);
     }
   };
+  window.addEventListener('click', clickOutsideHandler);
 }
+// === ORGANIZATIONS TAB ===
 function showOrganizations() {
   showTab('organizations');
   const section = document.getElementById('organizations');
@@ -617,7 +638,6 @@ function showOrganizations() {
           <p><strong>Platform:</strong> ${group.platform}</p>
           <a href="${group.website}" target="_blank">Visit Website</a>
         `;
-
         card.appendChild(logoWrapper);
         card.appendChild(infoWrapper);
         grid.appendChild(card);
@@ -630,6 +650,8 @@ function showOrganizations() {
       console.error(err);
     });
 }
+
+// === FEDERAL OFFICIALS DATA (inline) ===
 const federalOfficials = [
   {
     "name": "Donald J. Trump",
@@ -716,19 +738,23 @@ const federalOfficials = [
     "electionYear": "2024"
   }
 ];
-
+// === OFFICIALS RENDERING ===
 function renderOfficials(stateFilter = null, query = '') {
   showTab('my-officials');
+  if (!officialsContainer) {
+    officialsContainer = document.getElementById('officials-container');
+  }
+  if (!officialsContainer) return;
   officialsContainer.innerHTML = '';
-  const stateAliases = {
-  "Virgin Islands": "U.S. Virgin Islands",
-  "Northern Mariana Islands": "Northern Mariana Islands",
-  "Puerto Rico": "Puerto Rico"
-};
 
-if (stateFilter && stateAliases[stateFilter]) {
-  stateFilter = stateAliases[stateFilter];
-}
+  const stateAliases = {
+    "Virgin Islands": "U.S. Virgin Islands",
+    "Northern Mariana Islands": "Northern Mariana Islands",
+    "Puerto Rico": "Puerto Rico"
+  };
+  if (stateFilter && stateAliases[stateFilter]) {
+    stateFilter = stateAliases[stateFilter];
+  }
 
   const queryLower = query.toLowerCase();
   const filterByState = query === '';
@@ -736,21 +762,21 @@ if (stateFilter && stateAliases[stateFilter]) {
   const filteredGovs = governors.filter(o => !filterByState || o.state === stateFilter);
   const filteredLtGovs = ltGovernors.filter(o => !filterByState || o.state === stateFilter);
   const filteredSens = senators.filter(o => !filterByState || o.state === stateFilter);
-  const filteredReps = houseReps.filter(o => !filterByState || o.state === stateFilter)
+  const filteredReps = houseReps
+    .filter(o => !filterByState || o.state === stateFilter)
     .sort((a, b) => parseInt(a.district) - parseInt(b.district));
-console.log("Filtered reps:", filteredReps.map(r => r.name));
+  console.log("Filtered reps:", filteredReps.map(r => r.name));
 
- const allOfficials = [
-  ...federalOfficials,
-  ...filteredGovs,
-  ...filteredLtGovs,
-  ...filteredSens,
-  ...filteredReps
-].filter(o =>
-
-    o.name.toLowerCase().includes(queryLower) ||
-    o.office.toLowerCase().includes(queryLower) ||
-    o.state.toLowerCase().includes(queryLower)
+  const allOfficials = [
+    ...federalOfficials,
+    ...filteredGovs,
+    ...filteredLtGovs,
+    ...filteredSens,
+    ...filteredReps
+  ].filter(o =>
+    (o.name || '').toLowerCase().includes(queryLower) ||
+    (o.office || '').toLowerCase().includes(queryLower) ||
+    (o.state || '').toLowerCase().includes(queryLower)
   );
 
   const partyMap = {
@@ -766,6 +792,12 @@ console.log("Filtered reps:", filteredReps.map(r => r.name));
     progressive: 'progressive'
   };
 
+  const safeYear = d => {
+    if (!d || (typeof d === 'string' && d.trim() === '')) return '';
+    const dt = new Date(d);
+    return isNaN(dt) ? '' : dt.getFullYear();
+  };
+
   allOfficials.forEach(o => {
     const rawParty = (o.party || '').toLowerCase().trim();
     const normalizedParty = partyMap[rawParty] || rawParty.replace(/\s+/g, '') || 'independent';
@@ -775,6 +807,10 @@ console.log("Filtered reps:", filteredReps.map(r => r.name));
       ? `<p class="district-display"><strong>District:</strong> ${o.district}</p>`
       : '';
 
+    const startYear = safeYear(o.termStart);
+    const endYear = safeYear(o.termEnd) || 'Present';
+    const termDisplay = (startYear || endYear) ? `${startYear}–${endYear}` : 'Present';
+
     const card = document.createElement('div');
     card.className = `official-card ${normalizedParty}`;
     card.innerHTML = `
@@ -783,102 +819,121 @@ console.log("Filtered reps:", filteredReps.map(r => r.name));
         <img src="${photoSrc}" alt="${o.name}" onerror="this.onerror=null;this.src='assets/default-photo.png';" />
       </div>
       <div class="official-info">
-        <h3>${o.name}</h3>
-        <p><strong>Position:</strong> ${o.office}</p>
+        <h3>${o.name || 'Unknown'}</h3>
+        <p><strong>Position:</strong> ${o.office || 'N/A'}</p>
         ${districtDisplay}
-        <p><strong>State:</strong> ${o.state}</p>
-        <p><strong>Term:</strong> ${new Date(o.termStart).getFullYear()}–${new Date(o.termEnd).getFullYear()}</p>
-        <p><strong>Party:</strong> ${o.party}</p>
+        <p><strong>State:</strong> ${o.state || 'United States'}</p>
+        <p><strong>Term:</strong> ${termDisplay}</p>
+        <p><strong>Party:</strong> ${o.party || 'N/A'}</p>
       </div>
     `;
-    card.addEventListener('click', () => openModal(o));
+    card.addEventListener('click', () => openOfficialModal(o));
     officialsContainer.appendChild(card);
   });
 }
-function openModal(official) {
+
+// === OFFICIALS MODAL ===
+function openOfficialModal(official) {
   const modal = document.getElementById('officials-modal');
   const modalContent = document.getElementById('officials-content');
   if (!modal || !modalContent) return;
 
   const { billsSigned, ...cleanOfficial } = official;
   const contact = cleanOfficial.contact || {};
-  const bills = []; // intentionally empty
 
   const photoSrc = cleanOfficial.photo && cleanOfficial.photo.trim() !== ''
     ? cleanOfficial.photo
     : 'assets/default-photo.png';
 
+  const safeYear = d => {
+    if (!d || (typeof d === 'string' && d.trim() === '')) return '';
+    const dt = new Date(d);
+    return isNaN(dt) ? '' : dt.getFullYear();
+  };
+  const startYear = safeYear(cleanOfficial.termStart);
+  const endYear = safeYear(cleanOfficial.termEnd) || 'Present';
+  const termDisplay = (startYear || endYear) ? `${startYear}–${endYear}` : 'Present';
+
   modalContent.innerHTML = `
     <div class="modal-card">
       <div class="modal-photo">
-        <img src="${photoSrc}" alt="${cleanOfficial.name}" onerror="this.onerror=null;this.src='assets/default-photo.png';" />
+        <img src="${photoSrc}" alt="${cleanOfficial.name || ''}" onerror="this.onerror=null;this.src='assets/default-photo.png';" />
       </div>
       <div class="modal-info">
-        <h2>${cleanOfficial.name}</h2>
-        <p><strong>Office:</strong> ${cleanOfficial.office}</p>
+        <h2>${cleanOfficial.name || 'Unknown'}</h2>
+        <p><strong>Office:</strong> ${cleanOfficial.office || 'N/A'}</p>
         ${cleanOfficial.district ? `<p><strong>District:</strong> ${cleanOfficial.district}</p>` : ''}
-        <p><strong>State:</strong> ${cleanOfficial.state}</p>
-        <p><strong>Party:</strong> ${cleanOfficial.party}</p>
-        <p><strong>Term:</strong> ${new Date(cleanOfficial.termStart).getFullYear()}–${new Date(cleanOfficial.termEnd).getFullYear()}</p>
+        <p><strong>State:</strong> ${cleanOfficial.state || 'United States'}</p>
+        <p><strong>Party:</strong> ${cleanOfficial.party || 'N/A'}</p>
+        <p><strong>Term:</strong> ${termDisplay}</p>
         ${cleanOfficial.bio ? `<p>${cleanOfficial.bio}</p>` : ''}
         ${cleanOfficial.education ? `<p><strong>Education:</strong> ${cleanOfficial.education}</p>` : ''}
         ${cleanOfficial.platform ? `<p><strong>Platform:</strong> ${cleanOfficial.platform}</p>` : ''}
         ${cleanOfficial.platformFollowThrough
-        ? `<div class="follow-through"><h3>Platform Follow-Through</h3><ul>${
-        Object.entries(cleanOfficial.platformFollowThrough)
-        .map(([topic, summary]) => `<li><strong>${topic}:</strong> ${summary}</li>`)
-        .join('')
-        }</ul></div>`
-        : ''}
+          ? `<div class="follow-through"><h3>Platform Follow-Through</h3><ul>${
+              Object.entries(cleanOfficial.platformFollowThrough)
+                .map(([topic, summary]) => `<li><strong>${topic}:</strong> ${summary}</li>`)
+                .join('')
+            }</ul></div>`
+          : ''}
         ${cleanOfficial.proposals ? `<p><strong>Proposals:</strong> ${cleanOfficial.proposals}</p>` : ''}
         ${(cleanOfficial.vetoes && ['Governor', 'President'].includes(cleanOfficial.office))
-        ? `<p><strong>Vetoes:</strong> ${cleanOfficial.vetoes}</p>`
-        : ''}
+          ? `<p><strong>Vetoes:</strong> ${cleanOfficial.vetoes}</p>`
+          : ''}
         ${cleanOfficial.salary ? `<p><strong>Salary:</strong> ${cleanOfficial.salary}</p>` : ''}
         ${cleanOfficial.govtrackStats
-        ? `<div class="govtrack-stats"><h3>Congressional Rankings</h3><ul>${
-        Object.entries(cleanOfficial.govtrackStats)
-        .map(([label, value]) => `<li><strong>${label.replace(/([A-Z])/g, ' $1')}:</strong> ${value}</li>`)
-        .join('')
-        }</ul></div>`
-        : ''}
+          ? `<div class="govtrack-stats"><h3>Congressional Rankings</h3><ul>${
+              Object.entries(cleanOfficial.govtrackStats)
+                .map(([label, value]) => `<li><strong>${label.replace(/([A-Z])/g, ' $1')}:</strong> ${value}</li>`)
+                .join('')
+            }</ul></div>`
+          : ''}
         ${cleanOfficial.website ? `<p><a href="${cleanOfficial.website}" target="_blank">Official Website</a></p>` : ''}
         ${contact.email ? `<p><strong>Email:</strong> ${contact.email}</p>` : ''}
         ${contact.phone ? `<p><strong>Phone:</strong> ${contact.phone}</p>` : ''}
         ${contact.website ? `<p><a href="${contact.website}" target="_blank">Contact Website</a></p>` : ''}
         ${cleanOfficial.ballotpediaLink ? `<p><a href="${cleanOfficial.ballotpediaLink}" target="_blank">Ballotpedia Profile</a></p>` : ''}
-        ${cleanOfficial.govtrackLink
-          ? `<p><a href="${cleanOfficial.govtrackLink}" target="_blank">GovTrack</a></p>`
-          : ''}
+        ${cleanOfficial.govtrackLink ? `<p><a href="${cleanOfficial.govtrackLink}" target="_blank">GovTrack</a></p>` : ''}
       </div>
     </div>
   `;
 
   modal.style.display = 'block';
 
-  // Enable click-outside-to-close
-  window.onclick = function(event) {
+  // Click-outside-to-close (scoped handler)
+  const clickOutsideHandler = function(event) {
     if (event.target === modal) {
       modal.style.display = 'none';
+      window.removeEventListener('click', clickOutsideHandler);
     }
   };
+  window.addEventListener('click', clickOutsideHandler);
 }
-function closeModalWindow(id) {
-  const modal = document.getElementById(id);
-  if (!modal) {
+
+// Safe close function that accepts optional id (defaults to officials modal)
+function closeModalWindow(id = 'officials-modal') {
+  const el = document.getElementById(id);
+  if (!el) {
     console.warn(`closeModalWindow: no element found with id "${id}"`);
     return;
   }
-  modal.style.display = 'none';
+  el.style.display = 'none';
 }
 
+// === SEARCH BAR WIRING ===
 function wireSearchBar() {
+  if (!searchBar) {
+    searchBar = document.getElementById('search-bar');
+  }
+  if (!searchBar) return;
+
   searchBar.addEventListener('input', () => {
     const query = searchBar.value.trim();
     renderOfficials(null, query);
   });
 }
 
+// === STATE DROPDOWN WIRING ===
 function wireStateDropdown() {
   const dropdown = document.getElementById('state-dropdown');
   if (!dropdown) return;
@@ -892,19 +947,22 @@ function wireStateDropdown() {
   });
 }
 
+// === DOM READY: load datasets and wire UI ===
 document.addEventListener('DOMContentLoaded', () => {
   // Elements
   officialsContainer = document.getElementById('officials-container');
-  searchBar = document.getElementById('search-bar'); // input element for Officials search
-  modal = document.getElementById('modal');
-  modalContent = document.getElementById('modal-content');
-  closeModal = document.getElementById('close-modal');
+  searchBar = document.getElementById('search-bar');
 
-  // Modal wiring
-  closeModal.addEventListener('click', closeModalWindow);
-  window.addEventListener('click', event => {
-    if (event.target === modal) closeModalWindow();
-  });
+  // Officials modal refs (match your HTML ids)
+  officialsModal = document.getElementById('officials-modal');
+  officialsModalContent = document.getElementById('officials-content');
+  officialsModalCloseBtn = document.getElementById('officials-close');
+
+  // Modal wiring (safe)
+  if (officialsModalCloseBtn) {
+    officialsModalCloseBtn.addEventListener('click', () => closeModalWindow('officials-modal'));
+  }
+  // Avoid global window.onclick overrides here; handled per modal open.
 
   // Core wiring
   wireSearchBar();
@@ -931,15 +989,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // Helper: clear the Officials search bar (no tab switch, no re-render)
   function closeOfficialsSearch() {
     if (!searchBar) return;
-    searchBar.value = '';   // clear text
-    searchBar.blur();       // remove focus
+    searchBar.value = '';
+    searchBar.blur();
   }
 
   // Click-outside to clear search
   document.addEventListener('mousedown', event => {
     if (!searchBar) return;
-
-    // If the click is outside the search bar, clear it
     if (event.target !== searchBar && !searchBar.contains(event.target)) {
       closeOfficialsSearch();
     }
