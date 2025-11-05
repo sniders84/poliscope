@@ -378,6 +378,8 @@ function showCivic() {
     });
 }
 
+// === CABINET — COMPLETE BLOCK ===
+
 function showCabinet() {
   const list = document.getElementById('cabinetList');
   const gridView = document.getElementById('cabinetGridView');
@@ -389,7 +391,68 @@ function showCabinet() {
   fetch('/cabinet.json')
     .then(res => res.json())
     .then(data => {
-      data.forEach(member =>
+      data.forEach(member => {
+        const card = document.createElement('div');
+        card.className = 'official-card';
+        const photoSrc =
+          member.photo && member.photo.trim() !== ''
+            ? member.photo
+            : 'assets/default-photo.png';
+
+        card.innerHTML = `
+          <div class="photo-wrapper">
+            <img src="${photoSrc}" alt="${member.name}"
+                 onerror="this.onerror=null;this.src='assets/default-photo.png';" />
+          </div>
+          <div class="official-info">
+            <h3>${member.name}</h3>
+            <p><strong>Office:</strong> ${member.office}</p>
+          </div>
+        `;
+
+        card.onclick = () => showCabinetMember(member);
+        list.appendChild(card);
+      });
+
+      openModal('cabinetModal');
+    })
+    .catch(err => {
+      console.error('Error loading cabinet.json:', err);
+      list.innerHTML = '<p>Error loading Cabinet data.</p>';
+      openModal('cabinetModal');
+    });
+}
+
+function showCabinetMember(member) {
+  const gridView = document.getElementById('cabinetGridView');
+  const detailView = document.getElementById('cabinetDetailView');
+  const detail = document.getElementById('cabinetMemberDetail');
+
+  gridView.style.display = 'none';
+  detailView.style.display = 'block';
+
+  const termStartYear = member.termStart ? new Date(member.termStart).getFullYear() : '';
+  const termEndYear = member.termEnd ? new Date(member.termEnd).getFullYear() : 'Present';
+
+  detail.innerHTML = `
+    <h2>${member.name}</h2>
+    <p><strong>Office:</strong> ${member.office || ''}</p>
+    ${member.state ? `<p><strong>State:</strong> ${member.state}</p>` : ''}
+    ${member.party ? `<p><strong>Party:</strong> ${member.party}</p>` : ''}
+    ${(termStartYear || termEndYear) ? `<p><strong>Term:</strong> ${termStartYear}–${termEndYear}</p>` : ''}
+    ${member.bio ? `<p><strong>Bio:</strong> ${member.bio}</p>` : ''}
+    ${member.education ? `<p><strong>Education:</strong> ${member.education}</p>` : ''}
+    ${member.ballotpediaLink ? `<p><a href="${member.ballotpediaLink}" target="_blank">Ballotpedia</a></p>` : ''}
+    ${member.govtrackLink ? `<p><a href="${member.govtrackLink}" target="_blank">GovTrack</a></p>` : ''}
+  `;
+}
+
+function backToCabinetGrid() {
+  const gridView = document.getElementById('cabinetGridView');
+  const detailView = document.getElementById('cabinetDetailView');
+  gridView.style.display = 'block';
+  detailView.style.display = 'none';
+}
 function showPolls() {
   showTab('polls');
   const pollsContainer = document.getElementById('polls-cards');
