@@ -391,22 +391,25 @@ function showCabinet() {
   fetch('/cabinet.json')
     .then(res => res.json())
     .then(data => {
-      data.forEach(member => {
+      // Ensure we always have an array
+      const members = Array.isArray(data) ? data : (data.members || []);
+
+      members.forEach(member => {
         const card = document.createElement('div');
         card.className = 'official-card';
-        const photoSrc =
-          member.photo && member.photo.trim() !== ''
-            ? member.photo
-            : 'assets/default-photo.png';
+
+        const photoSrc = member.photo && member.photo.trim() !== ''
+          ? member.photo
+          : 'assets/default-photo.png';
 
         card.innerHTML = `
           <div class="photo-wrapper">
-            <img src="${photoSrc}" alt="${member.name}"
+            <img src="${photoSrc}" alt="${member.name || ''}"
                  onerror="this.onerror=null;this.src='assets/default-photo.png';" />
           </div>
           <div class="official-info">
-            <h3>${member.name}</h3>
-            <p><strong>Office:</strong> ${member.office}</p>
+            <h3>${member.name || 'Unknown'}</h3>
+            <p><strong>Office:</strong> ${member.office || 'N/A'}</p>
           </div>
         `;
 
@@ -435,8 +438,8 @@ function showCabinetMember(member) {
   const termEndYear = member.termEnd ? new Date(member.termEnd).getFullYear() : 'Present';
 
   detail.innerHTML = `
-    <h2>${member.name}</h2>
-    <p><strong>Office:</strong> ${member.office || ''}</p>
+    <h2>${member.name || 'Unknown'}</h2>
+    <p><strong>Office:</strong> ${member.office || 'N/A'}</p>
     ${member.state ? `<p><strong>State:</strong> ${member.state}</p>` : ''}
     ${member.party ? `<p><strong>Party:</strong> ${member.party}</p>` : ''}
     ${(termStartYear || termEndYear) ? `<p><strong>Term:</strong> ${termStartYear}–${termEndYear}</p>` : ''}
