@@ -407,49 +407,102 @@ function showCivic() {
     });
 }
 function showCabinet() {
-  fetch('/cabinet.json')
-    .then(r => r.json())
-    .then(data => {
-      const list = document.getElementById('cabinetList');
-      list.innerHTML = '';
+  const list = document.getElementById('cabinetList');
+  if (!list) {
+    console.error('cabinetList container not found in DOM.');
+    return;
+  }
 
-      data.forEach(member => {
-        const card = document.createElement('div');
-        card.className = 'official-card';
-        card.innerHTML = `
-          <div class="photo-wrapper">
-            <img src="${member.photo || 'assets/default-photo.png'}" 
-                 alt="${member.name}" 
-                 onerror="this.onerror=null;this.src='assets/default-photo.png';" />
-          </div>
-          <div class="official-info">
-            <h3>${member.name}</h3>
-            <p><strong>Office:</strong> ${member.office}</p>
-          </div>
-        `;
-        card.onclick = () => showCabinetMember(member);
-        list.appendChild(card);
-      });
+  const candidates = [
+    'cabinet.json',            // relative to index.html
+    '/cabinet.json',           // site root
+    '/public/cabinet.json'     // explicit public path
+  ];
 
+  // Try each candidate until one succeeds
+  (async () => {
+    let data = null, used = null, lastErr = null;
+
+    for (const url of candidates) {
+      try {
+        const res = await fetch(url, { cache: 'no-store' });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const json = await res.json();
+        if (Array.isArray(json) && json.length > 0) {
+          data = json;
+          used = url;
+          break;
+        } else {
+          throw new Error('JSON loaded but not a non-empty array');
+        }
+      } catch (e) {
+        lastErr = e;
+        console.warn(`Fetch failed for "${url}": ${e.message}`);
+      }
+    }
+
+    if (!data) {
+      console.error('All cabinet.json path attempts failed.', lastErr);
+      list.innerHTML = `
+        <div class="notice">
+          <p>Unable to load Cabinet data. Checked:</p>
+          <ul>
+            <li>cabinet.json</li>
+            <li>/cabinet.json</li>
+            <li>/public/cabinet.json</li>
+          </ul>
+        </div>
+      `;
       openModal('cabinetModal');
-    })
-    .catch(err => console.error('Error loading Cabinet data:', err));
-}
+      return;
+    }
 
+    console.log(`Cabinet data loaded from: ${used}`);
+    list.innerHTML = '';
+
+    data.forEach(member => {
+      const card = document.createElement('div');
+      card.className = 'official-card';
+      const photoSrc = (member.photo && member.photo.trim() !== '')
+        ? member.photo
+        : 'assets/default-photo.png';
+
+      card.innerHTML = `
+        <div class="photo-wrapper">
+          <img src="${photoSrc}" alt="${member.name}"
+               onerror="this.onerror=null;this.src='assets/default-photo.png';" />
+        </div>
+        <div class="official-info">
+          <h3>${member.name || ''}</h3>
+          <p><strong>Office:</strong> ${member.office || ''}</p>
+        </div>
+      `;
+      card.onclick = () => showCabinetMember(member);
+      list.appendChild(card);
+    });
+
+    openModal('cabinetModal');
+  })();
+}
 
 function showCabinetMember(member) {
   const detail = document.getElementById('cabinetMemberDetail');
+  if (!detail) {
+    console.error('cabinetMemberDetail container not found.');
+    return;
+  }
+
   const termStartYear = member.termStart ? new Date(member.termStart).getFullYear() : '';
   const termEndYear = member.termEnd ? new Date(member.termEnd).getFullYear() : 'Present';
 
   detail.innerHTML = `
-    <h2>${member.name}</h2>
-    <p><strong>Office:</strong> ${member.office}</p>
+    <h2>${member.name || ''}</h2>
+    <p><strong>Office:</strong> ${member.office || ''}</p>
     <p><strong>State:</strong> ${member.state || ''}</p>
     <p><strong>Party:</strong> ${member.party || ''}</p>
     <p><strong>Term:</strong> ${termStartYear}–${termEndYear}</p>
-    <p><strong>Bio:</strong> ${member.bio || ''}</p>
-    <p><strong>Education:</strong> ${member.education || ''}</p>
+    ${member.bio ? `<p><strong>Bio:</strong> ${member.bio}</p>` : ''}
+    ${member.education ? `<p><strong>Education:</strong> ${member.education}</p>` : ''}
     ${member.ballotpediaLink ? `<a href="${member.ballotpediaLink}" target="_blank">Ballotpedia</a>` : ''}
     ${member.govtrackLink ? `<br><a href="${member.govtrackLink}" target="_blank">GovTrack</a>` : ''}
   `;
