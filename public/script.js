@@ -407,23 +407,50 @@ function showCivic() {
     });
 }
 function showCabinet() {
-  const list = document.getElementById('cabinetList');
-  list.innerHTML = '<p>TEST ENTRY</p>';
-  openModal('cabinetModal');
+  fetch('/cabinet.json')
+    .then(r => r.json())
+    .then(data => {
+      const list = document.getElementById('cabinetList');
+      list.innerHTML = '';
+
+      data.forEach(member => {
+        const card = document.createElement('div');
+        card.className = 'official-card';
+        card.innerHTML = `
+          <div class="photo-wrapper">
+            <img src="${member.photo || 'assets/default-photo.png'}" 
+                 alt="${member.name}" 
+                 onerror="this.onerror=null;this.src='assets/default-photo.png';" />
+          </div>
+          <div class="official-info">
+            <h3>${member.name}</h3>
+            <p><strong>Office:</strong> ${member.office}</p>
+          </div>
+        `;
+        card.onclick = () => showCabinetMember(member);
+        list.appendChild(card);
+      });
+
+      openModal('cabinetModal');
+    })
+    .catch(err => console.error('Error loading Cabinet data:', err));
 }
 
 
 function showCabinetMember(member) {
   const detail = document.getElementById('cabinetMemberDetail');
+  const termStartYear = member.termStart ? new Date(member.termStart).getFullYear() : '';
+  const termEndYear = member.termEnd ? new Date(member.termEnd).getFullYear() : 'Present';
+
   detail.innerHTML = `
     <h2>${member.name}</h2>
-    <p><strong>Office:</strong> ${member.office || ''}</p>
+    <p><strong>Office:</strong> ${member.office}</p>
     <p><strong>State:</strong> ${member.state || ''}</p>
     <p><strong>Party:</strong> ${member.party || ''}</p>
-    <p><strong>Term:</strong> ${member.termStart || ''} – ${member.termEnd || 'Present'}</p>
+    <p><strong>Term:</strong> ${termStartYear}–${termEndYear}</p>
     <p><strong>Bio:</strong> ${member.bio || ''}</p>
     <p><strong>Education:</strong> ${member.education || ''}</p>
-    <a href="${member.ballotpediaLink}" target="_blank">Ballotpedia</a>
+    ${member.ballotpediaLink ? `<a href="${member.ballotpediaLink}" target="_blank">Ballotpedia</a>` : ''}
     ${member.govtrackLink ? `<br><a href="${member.govtrackLink}" target="_blank">GovTrack</a>` : ''}
   `;
   openModal('cabinetMemberModal');
