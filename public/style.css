@@ -741,3 +741,26 @@ main {
 .group-card:hover {
   transform: scale(1.05);
 }
+.civic-card {
+  width: 250px;          /* same width as other civic cards */
+  padding: 1em;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+  transition: transform 0.2s;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0.5em;
+}
+
+.civic-card img {
+  width: 100px;          /* same image size as other civic cards */
+  height: auto;
+  margin-bottom: 0.5em;
+}
+
+.civic-card:hover {
+  transform: scale(1.05);
+}
