@@ -406,6 +406,9 @@ function showCivic() {
       console.error(err);
     });
 }
+// === CABINET — COMPLETE DROP-IN BLOCK ===
+
+// Open Cabinet modal and populate grid from cabinet.json
 function showCabinet() {
   const list = document.getElementById('cabinetList');
   if (!list) {
@@ -413,78 +416,62 @@ function showCabinet() {
     return;
   }
 
-  const candidates = [
-    'cabinet.json',            // relative to index.html
-    '/cabinet.json',           // site root
-    '/public/cabinet.json'     // explicit public path
-  ];
+  // Clear previous entries
+  list.innerHTML = '';
 
-  // Try each candidate until one succeeds
-  (async () => {
-    let data = null, used = null, lastErr = null;
-
-    for (const url of candidates) {
-      try {
-        const res = await fetch(url, { cache: 'no-store' });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const json = await res.json();
-        if (Array.isArray(json) && json.length > 0) {
-          data = json;
-          used = url;
-          break;
-        } else {
-          throw new Error('JSON loaded but not a non-empty array');
-        }
-      } catch (e) {
-        lastErr = e;
-        console.warn(`Fetch failed for "${url}": ${e.message}`);
+  // Fetch cabinet.json — no cache to avoid stale results
+  fetch('/cabinet.json', { cache: 'no-store' })
+    .then(res => {
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return res.json();
+    })
+    .then(data => {
+      if (!Array.isArray(data) || data.length === 0) {
+        list.innerHTML = '<p>No Cabinet members found.</p>';
+        openModal('cabinetModal');
+        return;
       }
-    }
 
-    if (!data) {
-      console.error('All cabinet.json path attempts failed.', lastErr);
+      // Render each Cabinet member as a card
+      data.forEach(member => {
+        const card = document.createElement('div');
+        card.className = 'official-card';
+
+        const photoSrc =
+          member.photo && member.photo.trim() !== ''
+            ? member.photo
+            : 'assets/default-photo.png';
+
+        card.innerHTML = `
+          <div class="photo-wrapper">
+            <img src="${photoSrc}" alt="${member.name || ''}"
+                 onerror="this.onerror=null;this.src='assets/default-photo.png';" />
+          </div>
+          <div class="official-info">
+            <h3>${member.name || ''}</h3>
+            <p><strong>Office:</strong> ${member.office || ''}</p>
+          </div>
+        `;
+
+        card.onclick = () => showCabinetMember(member);
+        list.appendChild(card);
+      });
+
+      // Open the modal after population
+      openModal('cabinetModal');
+    })
+    .catch(err => {
+      console.error('Error loading cabinet.json:', err);
       list.innerHTML = `
         <div class="notice">
-          <p>Unable to load Cabinet data. Checked:</p>
-          <ul>
-            <li>cabinet.json</li>
-            <li>/cabinet.json</li>
-            <li>/public/cabinet.json</li>
-          </ul>
+          <p>Unable to load Cabinet data (${err.message}).</p>
         </div>
       `;
       openModal('cabinetModal');
-      return;
-    }
-
-    console.log(`Cabinet data loaded from: ${used}`);
-    list.innerHTML = '';
-
-    data.forEach(member => {
-      const card = document.createElement('div');
-      card.className = 'official-card';
-      const photoSrc = (member.photo && member.photo.trim() !== '')
-        ? member.photo
-        : 'assets/default-photo.png';
-
-      card.innerHTML = `
-        <div class="photo-wrapper">
-          <img src="${photoSrc}" alt="${member.name}"
-               onerror="this.onerror=null;this.src='assets/default-photo.png';" />
-        </div>
-        <div class="official-info">
-          <h3>${member.name || ''}</h3>
-          <p><strong>Office:</strong> ${member.office || ''}</p>
-        </div>
-      `;
-      card.onclick = () => showCabinetMember(member);
-      list.appendChild(card);
     });
-
-    openModal('cabinetModal');
-  })();
 }
 
+// Open detail modal for a specific Cabinet member
 function showCabinetMember(member) {
   const detail = document.getElementById('cabinetMemberDetail');
   if (!detail) {
@@ -498,14 +485,15 @@ function showCabinetMember(member) {
   detail.innerHTML = `
     <h2>${member.name || ''}</h2>
     <p><strong>Office:</strong> ${member.office || ''}</p>
-    <p><strong>State:</strong> ${member.state || ''}</p>
-    <p><strong>Party:</strong> ${member.party || ''}</p>
-    <p><strong>Term:</strong> ${termStartYear}–${termEndYear}</p>
+    ${member.state ? `<p><strong>State:</strong> ${member.state}</p>` : ''}
+    ${member.party ? `<p><strong>Party:</strong> ${member.party}</p>` : ''}
+    ${(termStartYear || termEndYear) ? `<p><strong>Term:</strong> ${termStartYear}–${termEndYear}</p>` : ''}
     ${member.bio ? `<p><strong>Bio:</strong> ${member.bio}</p>` : ''}
     ${member.education ? `<p><strong>Education:</strong> ${member.education}</p>` : ''}
-    ${member.ballotpediaLink ? `<a href="${member.ballotpediaLink}" target="_blank">Ballotpedia</a>` : ''}
-    ${member.govtrackLink ? `<br><a href="${member.govtrackLink}" target="_blank">GovTrack</a>` : ''}
+    ${member.ballotpediaLink ? `<p><a href="${member.ballotpediaLink}" target="_blank">Ballotpedia</a></p>` : ''}
+    ${member.govtrackLink ? `<p><a href="${member.govtrackLink}" target="_blank">GovTrack</a></p>` : ''}
   `;
+
   openModal('cabinetMemberModal');
 }
 
