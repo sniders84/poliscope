@@ -863,7 +863,15 @@ function openModal(official) {
     }
   };
 }
-function closeModalWindow() {
+function closeModalWindow(id) {
+  const modal = document.getElementById(id);
+  if (!modal) {
+    console.warn(`closeModalWindow: no element found with id "${id}"`);
+    return;
+  }
+  modal.style.display = 'none';
+}
+Window() {
   modal.style.display = 'none';
 }
 
