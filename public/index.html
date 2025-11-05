@@ -4073,13 +4073,24 @@
     <!-- Poll content will be injected here -->
   </div>
 </div>
-       <div id="cabinetModal" class="modal">
+       <!-- Cabinet Modal -->
+<div id="cabinetModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModalWindow('cabinetModal')">&times;</span>
-    …
+
+    <!-- Grid view -->
+    <div id="cabinetGridView">
+      <div id="cabinetList" class="officials-grid"></div>
+    </div>
+
+    <!-- Detail view -->
+    <div id="cabinetDetailView" style="display:none;">
+      <button onclick="backToCabinetGrid()">Back</button>
+      <div id="cabinetMemberDetail"></div>
+    </div>
   </div>
 </div>
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
