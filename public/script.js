@@ -910,11 +910,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // Elements
   officialsContainer = document.getElementById('officials-container');
   searchBar = document.getElementById('search-bar'); // input element for Officials search
-  modal = document.getElementById('modal');
-  modalContent = document.getElementById('modal-content');
+
+  // Modal wiring for officials / civic intelligence
+  modal = document.getElementById('officials-modal');
+  modalContent = document.getElementById('officials-content');
   closeModal = document.getElementById('close-modal');
 
-  // Modal wiring
   closeModal.addEventListener('click', closeModalWindow);
   window.addEventListener('click', event => {
     if (event.target === modal) closeModalWindow();
