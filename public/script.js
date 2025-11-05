@@ -434,9 +434,10 @@ function showCabinetMember(member) {
   const detail = document.getElementById('cabinetMemberDetail');
   detail.innerHTML = `
     <h2>${member.name}</h2>
-    <p><strong>Office:</strong> ${member.office}</p>
-    <p><strong>Took Office:</strong> ${member.termStart}</p>
-    <p><strong>Predecessor:</strong> ${member.predecessor || ''}</p>
+    <p><strong>Office:</strong> ${member.office || ''}</p>
+    <p><strong>State:</strong> ${member.state || ''}</p>
+    <p><strong>Party:</strong> ${member.party || ''}</p>
+    <p><strong>Term:</strong> ${member.termStart || ''} – ${member.termEnd || 'Present'}</p>
     <p><strong>Bio:</strong> ${member.bio || ''}</p>
     <p><strong>Education:</strong> ${member.education || ''}</p>
     <a href="${member.ballotpediaLink}" target="_blank">Ballotpedia</a>
