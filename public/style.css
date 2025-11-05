@@ -1237,3 +1237,48 @@ main {
   object-position: center;
   background: transparent; /* no white box bleeding */
 }
+.official-card {
+  display: flex;
+  flex-direction: row;   /* stripe on the left, body on the right */
+  height: 300px;         /* uniform card height */
+  overflow: hidden;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* Party stripe column */
+.official-card .party-stripe {
+  width: 6px;
+  flex-shrink: 0;
+}
+
+/* Main card body */
+.official-card .card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Photo area */
+.official-card .photo-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #f5f5f5;
+}
+
+.official-card .photo-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;   /* fit inside box, no bleed */
+  object-position: center;
+}
+
+/* Info block at bottom */
+.official-card .official-info {
+  padding: 10px;
+  background: #fff;
+}
