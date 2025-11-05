@@ -484,6 +484,7 @@ function showCabinet() {
           <div class="photo-wrapper">
             <img src="${photoSrc}" alt="${member.name || ''}"
                  onerror="this.onerror=null;this.src='assets/default-photo.png';" />
+            ${member.seal ? `<img src="${member.seal}" alt="${member.office} seal" class="seal" />` : ''}
           </div>
           <div class="official-info">
             <h3>${member.name || 'Unknown'}</h3>
@@ -533,6 +534,11 @@ function showCabinetMember(member) {
   const termEndYear = parseYear(member.termEnd) || 'Present';
 
   detail.innerHTML = `
+    <div class="detail-header">
+      <img src="${member.photo}" alt="${member.name || ''}" class="portrait"
+           onerror="this.onerror=null;this.src='assets/default-photo.png';" />
+      ${member.seal ? `<img src="${member.seal}" alt="${member.office} seal" class="seal" />` : ''}
+    </div>
     <h2>${member.name || 'Unknown'}</h2>
     <p><strong>Office:</strong> ${member.office || 'N/A'}</p>
     ${member.state ? `<p><strong>State:</strong> ${member.state}</p>` : ''}
@@ -555,6 +561,7 @@ function backToCabinetGrid() {
   gridView.style.display = 'block';
   detailView.style.display = 'none';
 }
+
 // === POLLS TAB ===
 function showPolls() {
   showTab('polls');
