@@ -1433,3 +1433,18 @@ main {
   object-fit: contain;         /* keep whole portrait visible */
   object-position: center;     /* center it nicely */
 }
+.official-card .photo-wrapper {
+  height: 140px;              /* fixed height for consistency */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #f5f5f5;
+}
+
+.official-card .photo-wrapper img {
+  width: auto;
+  height: 70%;                /* scale image down to ~2/3 size */
+  object-fit: contain;        /* keep proportions, no cropping */
+  object-position: center;
+}
