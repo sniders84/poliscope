@@ -1018,3 +1018,27 @@ main {
   width: 120px;  /* larger so it stands out next to the portrait */
   height: auto;
 }
+/* Card grid view */
+.official-card .seal-wrapper {
+  text-align: center;
+  margin-top: 10px;
+}
+.official-card .seal {
+  width: 60px;   /* small, fits neatly under info */
+  height: auto;
+}
+
+/* Modal detail view */
+.detail-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.detail-header .portrait {
+  width: 150px;
+  height: auto;
+}
+.detail-header .seal {
+  width: 320px;  /* 4x bigger than the ~80px you had */
+  height: auto;
+}
