@@ -1004,3 +1004,17 @@ main {
   width: 80px;
   height: auto;
 }
+/* Card grid view */
+.photo-wrapper .seal {
+  width: 30px;   /* smaller so it doesn’t cover the portrait */
+  height: auto;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+/* Modal detail view */
+.detail-header .seal {
+  width: 120px;  /* larger so it stands out next to the portrait */
+  height: auto;
+}
