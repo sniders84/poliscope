@@ -89,23 +89,10 @@
       <div id="officials-container" class="grid"></div>
     </section>
 
-    <<section id="civic" class="tab-content" style="display: none;">
-  <h2>Civic Intelligence Dashboard</h2>
-  <div id="calendar"></div>
-
-  <h3>Federal Oversight & Transparency</h3>
-  <div class="civic-cards">
-    <!-- Existing civic cards go here -->
-
-    <div class="civic-card" onclick="showCabinet()">
-  <img src="/assets/cabinet.png" alt="President’s Cabinet" />
-  <h3>President’s Cabinet</h3>
-</div>
-
-<div class="civic-card" onclick="showSCOTUS()">
-  <img src="/assets/scotus.png" alt="Supreme Court" />
-  <h3>Supreme Court Justices</h3>
-</div>
+    <section id="civic" class="tab-content" style="display: none;">
+      <h2>Civic Intelligence Dashboard</h2>
+      <div id="calendar"></div>
+    </section>
 
     <section id="polls" class="tab-content" style="display: none;">
   <h2>Polling Dashboard</h2>
@@ -4076,21 +4063,16 @@
         </section> <!-- End of voting section -->
  </main>
 
- <!-- Officials / Civic Intelligence Modal -->
-<div id="officials-modal" class="modal">
-  <div class="modal-content" id="officials-content">
-    <!-- Dynamic officials, cabinet, and SCOTUS content will be injected here -->
-  </div>
+ <div id="officials-modal" class="modal">
+  <div class="modal-content" id="officials-content"></div>
   <button id="close-modal" class="close-button">&times;</button>
 </div>
-
 <!-- Poll Modal -->
 <div id="pollModal" class="modal">
   <div class="modal-content" id="pollModalContent">
     <!-- Poll content will be injected here -->
   </div>
 </div>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
