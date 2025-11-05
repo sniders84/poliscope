@@ -482,16 +482,15 @@ function showCabinet() {
           : 'assets/default-photo.png';
 
         card.innerHTML = `
-          <div class="photo-wrapper">
-            <img src="${photoSrc}" alt="${member.name || ''}"
-                 onerror="this.onerror=null;this.src='assets/default-photo.png';" />
-            ${member.seal ? `<img src="${member.seal}" alt="${member.office} seal" class="seal" />` : ''}
-          </div>
-          <div class="official-info">
-            <h3>${member.name || 'Unknown'}</h3>
-            <p><strong>Office:</strong> ${member.office || 'N/A'}</p>
-          </div>
-        `;
+  <div class="photo-wrapper">
+    <img src="${photoSrc}" alt="${member.name || ''}"
+         onerror="this.onerror=null;this.src='assets/default-photo.png';" />
+  </div>
+  <div class="official-info">
+    <h3>${member.name || 'Unknown'}</h3>
+    <p><strong>Office:</strong> ${member.office || 'N/A'}</p>
+  </div>
+`;
 
         // Only when you click a card do we show details
         card.onclick = () => showCabinetMember(member);
