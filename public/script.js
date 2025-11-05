@@ -262,6 +262,22 @@ fetch('cabinet.json')
   .then(res => res.json())
   .then(data => renderCabinetGrid(data));
 
+// === DETAIL: show a single Cabinet member in the modal ===
+function showCabinetMemberDetail(member) {
+  const detail = document.getElementById('cabinetMemberDetail');
+  detail.innerHTML = `
+    <div class="detail-header">
+      <img src="${member.photo}" alt="${member.name}" class="portrait" />
+      <img src="${member.seal}" alt="${member.office} seal" class="seal" />
+    </div>
+    <h2>${member.name}</h2>
+    <h4>${member.office}</h4>
+    <p>${member.bio}</p>
+  `;
+  document.getElementById('cabinetGridView').style.display = 'none';
+  document.getElementById('cabinetDetailView').style.display = 'block';
+}
+
 // === CIVIC TAB ===
 function showCivic() {
   showTab('civic');
