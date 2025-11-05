@@ -1061,3 +1061,7 @@ main {
   width: 320px;  /* large seal in modal */
   height: auto;
 }
+.detail-header .seal {
+  width: 320px;  /* 4x larger */
+  height: auto;
+}
