@@ -881,7 +881,7 @@ function renderOfficials(stateFilter = null, query = '') {
 
     const card = document.createElement('div');
     card.className = `official-card ${normalizedParty}`;
-   card.innerHTML = `
+  card.innerHTML = `
   <div class="party-stripe"></div>
   <div class="card-body">
     <div class="photo-wrapper">
