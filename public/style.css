@@ -798,3 +798,12 @@ main {
 #back-to-list:hover {
   background: #ddd;
 }
+/* Smaller card images for Cabinet / SCOTUS cards */
+.civic-card img {
+  width: 60px;       /* much smaller than the 120px officials */
+  height: auto;
+  margin-bottom: 0.5em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
