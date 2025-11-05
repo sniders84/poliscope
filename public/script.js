@@ -390,9 +390,13 @@ function showCabinet() {
 
   fetch('/cabinet.json')
     .then(res => res.json())
-    .then(data => {
-      // Ensure we always have an array
-      const members = Array.isArray(data) ? data : (data.members || []);
+    .then(members => {
+      if (!Array.isArray(members)) {
+        console.error('cabinet.json is not an array');
+        list.innerHTML = '<p>Invalid Cabinet data format.</p>';
+        openModal('cabinetModal');
+        return;
+      }
 
       members.forEach(member => {
         const card = document.createElement('div');
@@ -434,8 +438,17 @@ function showCabinetMember(member) {
   gridView.style.display = 'none';
   detailView.style.display = 'block';
 
-  const termStartYear = member.termStart ? new Date(member.termStart).getFullYear() : '';
-  const termEndYear = member.termEnd ? new Date(member.termEnd).getFullYear() : 'Present';
+  // Handle empty termStart / termEnd
+  let termStartYear = '';
+  let termEndYear = 'Present';
+  if (member.termStart) {
+    const ts = new Date(member.termStart);
+    if (!isNaN(ts)) termStartYear = ts.getFullYear();
+  }
+  if (member.termEnd && member.termEnd.trim() !== '') {
+    const te = new Date(member.termEnd);
+    if (!isNaN(te)) termEndYear = te.getFullYear();
+  }
 
   detail.innerHTML = `
     <h2>${member.name || 'Unknown'}</h2>
@@ -445,6 +458,9 @@ function showCabinetMember(member) {
     ${(termStartYear || termEndYear) ? `<p><strong>Term:</strong> ${termStartYear}–${termEndYear}</p>` : ''}
     ${member.bio ? `<p><strong>Bio:</strong> ${member.bio}</p>` : ''}
     ${member.education ? `<p><strong>Education:</strong> ${member.education}</p>` : ''}
+    ${member.salary ? `<p><strong>Salary:</strong> ${member.salary}</p>` : ''}
+    ${member.predecessor ? `<p><strong>Predecessor:</strong> ${member.predecessor}</p>` : ''}
+    ${member.contact && member.contact.website ? `<p><a href="${member.contact.website}" target="_blank">Official Website</a></p>` : ''}
     ${member.ballotpediaLink ? `<p><a href="${member.ballotpediaLink}" target="_blank">Ballotpedia</a></p>` : ''}
     ${member.govtrackLink ? `<p><a href="${member.govtrackLink}" target="_blank">GovTrack</a></p>` : ''}
   `;
@@ -456,6 +472,7 @@ function backToCabinetGrid() {
   gridView.style.display = 'block';
   detailView.style.display = 'none';
 }
+
 function showPolls() {
   showTab('polls');
   const pollsContainer = document.getElementById('polls-cards');
