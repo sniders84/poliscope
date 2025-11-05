@@ -427,23 +427,24 @@ function showCabinet() {
 
       openModal('cabinetModal');
     })
-    .catch(err => {
-      console.error('Error loading Cabinet data:', err);
-    });
+    .catch(err => console.error('Error loading Cabinet data:', err));
 }
+
 function showCabinetMember(member) {
   const detail = document.getElementById('cabinetMemberDetail');
   detail.innerHTML = `
     <h2>${member.name}</h2>
     <p><strong>Office:</strong> ${member.office}</p>
-    <p><strong>Constituting Instrument:</strong> ${member.instrument || ''}</p>
     <p><strong>Took Office:</strong> ${member.termStart}</p>
+    <p><strong>Predecessor:</strong> ${member.predecessor || ''}</p>
     <p><strong>Bio:</strong> ${member.bio || ''}</p>
     <p><strong>Education:</strong> ${member.education || ''}</p>
-    <a href="${member.link || '#'}" target="_blank">More Info</a>
+    <a href="${member.ballotpediaLink}" target="_blank">Ballotpedia</a>
+    ${member.govtrackLink ? `<br><a href="${member.govtrackLink}" target="_blank">GovTrack</a>` : ''}
   `;
   openModal('cabinetMemberModal');
 }
+
 function showPolls() {
   showTab('polls');
   const pollsContainer = document.getElementById('polls-cards');
