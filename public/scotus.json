@@ -11,9 +11,7 @@
     "education": "Harvard University (BA, JD)",
     "ballotpediaLink": "https://ballotpedia.org/John_Roberts",
     "govtrackLink": "",
-    "contact": {
-      "website": "https://www.supremecourt.gov/about/biographies.aspx"
-    },
+    "contact": { "website": "https://www.supremecourt.gov/about/biographies.aspx" },
     "keyVotes": [
       {
         "vote": "Majority",
@@ -43,9 +41,7 @@
     "education": "College of the Holy Cross (BA), Yale Law School (JD)",
     "ballotpediaLink": "https://ballotpedia.org/Clarence_Thomas",
     "govtrackLink": "",
-    "contact": {
-      "website": "https://www.supremecourt.gov/about/biographies.aspx"
-    },
+    "contact": { "website": "https://www.supremecourt.gov/about/biographies.aspx" },
     "keyVotes": [
       {
         "vote": "Majority",
@@ -68,9 +64,7 @@
     "education": "Princeton University (BA), Yale Law School (JD)",
     "ballotpediaLink": "https://ballotpedia.org/Samuel_Alito",
     "govtrackLink": "",
-    "contact": {
-      "website": "https://www.supremecourt.gov/about/biographies.aspx"
-    },
+    "contact": { "website": "https://www.supremecourt.gov/about/biographies.aspx" },
     "keyVotes": [
       {
         "vote": "Majority",
@@ -93,9 +87,7 @@
     "education": "Princeton University (BA), Yale Law School (JD)",
     "ballotpediaLink": "https://ballotpedia.org/Sonia_Sotomayor",
     "govtrackLink": "",
-    "contact": {
-      "website": "https://www.supremecourt.gov/about/biographies.aspx"
-    },
+    "contact": { "website": "https://www.supremecourt.gov/about/biographies.aspx" },
     "keyVotes": [
       {
         "vote": "Dissent",
@@ -118,9 +110,7 @@
     "education": "Princeton University (BA), Harvard Law School (JD)",
     "ballotpediaLink": "https://ballotpedia.org/Elena_Kagan",
     "govtrackLink": "",
-    "contact": {
-      "website": "https://www.supremecourt.gov/about/biographies.aspx"
-    },
+    "contact": { "website": "https://www.supremecourt.gov/about/biographies.aspx" },
     "keyVotes": [
       {
         "vote": "Dissent",
@@ -143,9 +133,7 @@
     "education": "Columbia University (BA), Harvard Law School (JD)",
     "ballotpediaLink": "https://ballotpedia.org/Neil_Gorsuch",
     "govtrackLink": "",
-    "contact": {
-      "website": "https://www.supremecourt.gov/about/biographies.aspx"
-    },
+    "contact": { "website": "https://www.supremecourt.gov/about/biographies.aspx" },
     "keyVotes": [
       {
         "vote": "Majority",
@@ -168,9 +156,7 @@
     "education": "Yale University (BA, JD)",
     "ballotpediaLink": "https://ballotpedia.org/Brett_Kavanaugh",
     "govtrackLink": "",
-    "contact": {
-      "website": "https://www.supremecourt.gov/about/biographies.aspx"
-    },
+    "contact": { "website": "https://www.supremecourt.gov/about/biographies.aspx" },
     "keyVotes": [
       {
         "vote": "Majority",
@@ -186,4 +172,52 @@
     "office": "Associate Justice, U.S. Supreme Court",
     "party": "Republican",
     "state": "Federal",
-    "termStart": "2020-10-
+    "termStart": "2020-10-27",
+    "termEnd": "",
+    "photo": "https://ballotpedia.org/images/thumb/2/2f/Amy_Coney_Barrett.jpg/440px-Amy_Coney_Barrett.jpg",
+    "bio": "Appointed by President Donald Trump. Former professor at Notre Dame Law School.",
+    "education": "Rhodes College (BA), Notre Dame Law School (JD)",
+    "ballotpediaLink": "https://ballotpedia.org/Amy_Coney_Barrett",
+    "govtrackLink": "",
+    "contact": { "website": "https://www.supremecourt.gov/about/biographies.aspx" },
+    "keyVotes": [
+      {
+        "vote": "Majority",
+        "title": "Dobbs v. Jackson Women's Health Organization",
+        "link": "https://www.oyez.org/cases/2021/19-1392",
+        "result": "Overturned Roe v. Wade",
+        "date": "2022-06-24"
+      }
+    ]
+  },
+  {
+    "name": "Justice Ketanji Brown Jackson",
+    "office": "Associate Justice, U.S. Supreme Court",
+    "party": "Independent",
+    "state": "Federal",
+    "termStart": "2022-06-30",
+    "termEnd": "",
+    "photo": "https://ballotpedia.org/images/thumb/3/3f/Ketanji_Brown_Jackson_2022.jpg/440px-Ketanji_Brown_Jackson_2022.jpg",
+    "bio": "Appointed by President Joe Biden. First Black woman to serve on the Supreme Court.",
+    "education": "Harvard University (BA, JD)",
+    "ballotpediaLink": "https://ballotpedia.org/Ketanji_Brown_Jackson",
+    "govtrackLink": "",
+    "contact": { "website": "https://www.supremecourt.gov/about/biographies.aspx" },
+    "keyVotes": [
+      {
+        "vote": "Dissent",
+        "title": "Students for Fair Admissions v. Harvard",
+        "link": "https://www.oyez.org/cases/2022/20-1199",
+        "result": "Affirmative action struck down",
+        "date": "2023-06-29"
+      },
+      {
+        "vote": "Dissent",
+        "title": "Moore v. Harper",
+        "link": "https://www.oyez.org/cases/2022/21-1271",
+        "result": "Independent state legislature theory rejected",
+        "date": "2023-06-27"
+      }
+    ]
+  }
+]
