@@ -232,6 +232,7 @@ function renderRosterCards(rosterData, chamberLabel, container) {
   }
 }
 // === HELPER: render a single Cabinet member card ===
+
 function renderCabinetMember(member) {
   const photoSrc = member.photo && member.photo.trim() !== ''
     ? member.photo
