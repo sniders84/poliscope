@@ -5,22 +5,22 @@
     "party": "Republican",
     "office": "Vice President",
     "slug": "jd-vance",
-    "photo": "https://www.whitehouse.gov/wp-content/uploads/2025/01/jd-vance.jpg",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/b/b0/J._D._Vance_official_portrait_118th_Congress.jpg",
     "ballotpediaLink": "https://ballotpedia.org/J.D._Vance",
     "govtrackLink": "https://www.govtrack.us/congress/members/james_david_vance/456876",
     "termStart": "2025-01-20",
     "termEnd": "",
-    "contact": { "website": "https://www.whitehouse.gov/administration/jd-vance/" },
-    "bio": "JD Vance is the 50th Vice President of the United States. He previously served as U.S. Senator from Ohio (2023–2025) and is the author of 'Hillbilly Elegy.'",
+    "contact": { "website": "https://www.whitehouse.gov/administration/" },
+    "bio": "J.D. Vance is the 50th Vice President of the United States. He previously served as U.S. Senator from Ohio (2023–2025), worked in venture capital, authored 'Hillbilly Elegy,' and served in the Marine Corps. His focus has been on revitalizing U.S. industry, tech accountability, and national sovereignty.",
     "education": "Ohio State University (BA), Yale Law School (JD)",
-    "salary": "$235,100/year",
+    "salary": "$235,300/year",
     "predecessor": "Kamala Harris",
-    "seal": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Seal_of_the_Vice_President_of_the_United_States.svg",
-    "platform": "Working-class revival, tech accountability, cultural conservatism, border enforcement.",
+    "seal": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Seal_of_the_Vice_President_of_the_United_States.svg/600px-Seal_of_the_Vice_President_of_the_United_States.svg.png",
+    "platform": "Rebuild American industry, protect working families, strengthen national sovereignty.",
     "platformFollowThrough": {
-      "Working-Class Revival": "Promoted trade reform and domestic manufacturing incentives.",
-      "Tech Accountability": "Supported antitrust scrutiny of Big Tech.",
-      "Border Enforcement": "Advocated for Title 42 reinstatement and ICE funding."
+      "Industry": "Advanced incentives for reshoring manufacturing and critical supply chains.",
+      "Tech Accountability": "Backed antitrust scrutiny and hearings on platform power.",
+      "Border": "Supported enhanced federal resources for border enforcement."
     }
   },
   {
@@ -35,16 +35,16 @@
     "termStart": "2025-01-21",
     "termEnd": "",
     "contact": { "website": "https://www.state.gov/" },
-    "bio": "Marco Rubio is the 71st U.S. Secretary of State. He served as U.S. Senator from Florida (2011–2025) and Speaker of the Florida House (2006–2008).",
+    "bio": "Marco Rubio is the 71st U.S. Secretary of State. He served as U.S. Senator from Florida (2011–2025) and Speaker of the Florida House (2006–2008). His work has focused on foreign policy, human rights, China strategy, and Western Hemisphere security.",
     "education": "University of Florida (BA), University of Miami (JD)",
-    "salary": "$235,600/year",
+    "salary": "$250,600/year",
     "predecessor": "Antony Blinken",
-    "seal": "https://upload.wikimedia.org/wikipedia/commons/2/28/Seal_of_the_United_States_Department_of_State.svg",
-    "platform": "Strengthen alliances, counter China, prioritize Western Hemisphere security.",
+    "seal": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Seal_of_the_United_States_Department_of_State.svg/600px-Seal_of_the_United_States_Department_of_State.svg.png",
+    "platform": "Strengthen alliances, counter China, assert U.S. leadership in the Western Hemisphere and Indo‑Pacific.",
     "platformFollowThrough": {
-      "China Policy": "Launched Indo-Pacific strategy meetings.",
-      "Latin America": "Reopened dialogues with Colombia and Brazil.",
-      "Alliances": "Reaffirmed NATO commitments."
+      "Alliances": "Initiated NATO consultations and expanded Baltic security cooperation.",
+      "Indo-Pacific": "Convened dialogues with Quad partners on maritime security.",
+      "Western Hemisphere": "Launched high-level engagements on security and trade."
     }
   },
   {
@@ -59,15 +59,16 @@
     "termStart": "2025-01-28",
     "termEnd": "",
     "contact": { "website": "https://home.treasury.gov/" },
-    "bio": "Scott Bessent is the 78th U.S. Secretary of the Treasury. He is a financier, former CIO at Soros Fund Management, and founder of Key Square Group.",
+    "bio": "Scott Bessent is the 78th U.S. Secretary of the Treasury. He is a financier and investor, previously CIO at Soros Fund Management and founder of Key Square Group, with deep experience in macro strategy, currency markets, and risk management.",
     "education": "Yale University (BA)",
-    "salary": "$235,600/year",
+    "salary": "$250,600/year",
     "predecessor": "Janet Yellen",
-    "seal": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Seal_of_the_United_States_Department_of_the_Treasury.svg",
-    "platform": "Fiscal discipline, pro-growth tax policy, strong dollar.",
+    "seal": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Seal_of_the_United_States_Department_of_the_Treasury.svg/600px-Seal_of_the_United_States_Department_of_the_Treasury.svg.png",
+    "platform": "Pro‑growth tax policy, capital markets stability, strong dollar.",
     "platformFollowThrough": {
-      "Fiscal Discipline": "Announced spending review task force.",
-      "Tax Policy": "Proposed corporate tax simplification."
+      "Fiscal Discipline": "Established interagency review of discretionary spending.",
+      "Tax": "Outlined corporate tax simplification principles.",
+      "Dollar": "Reaffirmed strong‑dollar policy for confidence and stability."
     }
   },
   {
@@ -82,15 +83,16 @@
     "termStart": "2025-01-25",
     "termEnd": "",
     "contact": { "website": "https://www.defense.gov/" },
-    "bio": "Pete Hegseth is the 29th U.S. Secretary of Defense. He is a former Army National Guard officer and Fox News commentator.",
-    "education": "Princeton University (BA), Harvard University (MPP)",
-    "salary": "$221,400/year",
+    "bio": "Pete Hegseth is the 29th U.S. Secretary of Defense. A former Army National Guard officer with deployments to Iraq and Afghanistan, he has advocated for veterans, readiness, and procurement reform.",
+    "education": "Princeton University (BA), Harvard Kennedy School (MPP)",
+    "salary": "$250,600/year",
     "predecessor": "Lloyd Austin",
-    "seal": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Seal_of_the_United_States_Department_of_Defense.svg",
-    "platform": "Military readiness, veterans support, modernization.",
+    "seal": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Seal_of_the_United_States_Department_of_Defense.svg/600px-Seal_of_the_United_States_Department_of_Defense.svg.png",
+    "platform": "Increase readiness, modernize forces, streamline procurement.",
     "platformFollowThrough": {
-      "Readiness": "Increased troop training budgets.",
-      "Modernization": "Launched review of weapons procurement."
+      "Readiness": "Expanded unit training cycles and joint exercises.",
+      "Modernization": "Initiated portfolio review on ISR, air defense, unmanned systems.",
+      "Procurement": "Formed working group to cut acquisition timelines and overruns."
     }
   },
   {
@@ -105,16 +107,17 @@
     "termStart": "2025-02-05",
     "termEnd": "",
     "contact": { "website": "https://www.justice.gov/" },
-    "bio": "Pam Bondi is the 86th Attorney General of the United States. She previously served as Florida Attorney General (2011–2019).",
+    "bio": "Pam Bondi is the 86th Attorney General of the United States. Former Florida Attorney General (2011–2019), she focused on consumer protection, public integrity, and criminal justice.",
     "education": "University of Florida (BA), Stetson University College of Law (JD)",
-    "salary": "$221,400/year",
+    "salary": "$250,600/year",
     "predecessor": "Merrick Garland",
-    "seal": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Seal_of_the_United_States_Department_of_Justice.svg",
-    "platform": "Law and order, anti-corruption, immigration enforcement.",
+    "seal": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Seal_of_the_United_States_Department_of_Justice.svg/600px-Seal_of_the_United_States_Department_of_Justice.svg.png",
+    "platform": "Public integrity, border enforcement, organized crime disruption.",
     "platformFollowThrough": {
-      "Immigration": "Directed DOJ to prioritize border cases.",
-      "Anti-Corruption": "Launched task force on federal ethics violations."
-    }
+      "Integrity": "Stood up DOJ ethics review unit to enhance oversight.",
+      "Border": "Prioritized prosecution of transnational smuggling networks.",
+      "Crime": "Expanded task forces targeting cyber fraud and organized theft."
+ }
   },
   {
     "name": "Doug Burgum",
@@ -128,15 +131,16 @@
     "termStart": "2025-02-01",
     "termEnd": "",
     "contact": { "website": "https://www.doi.gov/" },
-    "bio": "Doug Burgum is the 53rd Secretary of the Interior. He previously served as Governor of North Dakota (2016–2024).",
+    "bio": "Doug Burgum is the 53rd Secretary of the Interior. He previously served as Governor of North Dakota (2016–2024) and built a career in software and venture capital. His leadership emphasizes energy development, land stewardship, and tribal consultation.",
     "education": "North Dakota State University (BA), Stanford University (MBA)",
-    "salary": "$221,400/year",
+    "salary": "$250,600/year",
     "predecessor": "Deb Haaland",
-    "seal": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Seal_of_the_United_States_Department_of_the_Interior.svg",
-    "platform": "Energy development, land management reform.",
+    "seal": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Seal_of_the_United_States_Department_of_the_Interior.svg/600px-Seal_of_the_United_States_Department_of_the_Interior.svg.png",
+    "platform": "Expand domestic energy, streamline land management, strengthen tribal partnerships.",
     "platformFollowThrough": {
-      "Energy": "Approved new drilling leases on federal land.",
-      "Land Management": "Streamlined permitting for resource projects."
+      "Energy": "Approved new drilling leases on federal lands.",
+      "Land": "Reduced permitting timelines for multi‑use projects.",
+      "Tribal": "Opened new consultation channels with tribal governments."
     }
   },
   {
@@ -151,15 +155,16 @@
     "termStart": "2025-02-13",
     "termEnd": "",
     "contact": { "website": "https://www.usda.gov/" },
-    "bio": "Brooke Rollins is the 33rd Secretary of Agriculture. She previously served as acting director of the Domestic Policy Council under President Trump and as CEO of the Texas Public Policy Foundation.",
+    "bio": "Brooke Rollins is the 33rd Secretary of Agriculture. She previously led the White House Domestic Policy Council and the Texas Public Policy Foundation. Her focus is on rural prosperity, deregulation, and agricultural innovation.",
     "education": "Texas A&M University (BA), University of Texas School of Law (JD)",
-    "salary": "$221,400/year",
+    "salary": "$250,600/year",
     "predecessor": "Tom Vilsack",
-    "seal": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Seal_of_the_United_States_Department_of_Agriculture.svg",
-    "platform": "Rural development, deregulation, and agricultural innovation.",
+    "seal": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Seal_of_the_United_States_Department_of_Agriculture.svg/600px-Seal_of_the_United_States_Department_of_Agriculture.svg.png",
+    "platform": "Rural development, market access, ag‑tech innovation.",
     "platformFollowThrough": {
-      "Rural Development": "Announced new broadband expansion grants.",
-      "Deregulation": "Rolled back Obama‑era farm reporting rules."
+      "Broadband": "Expanded USDA broadband grants for rural communities.",
+      "Exports": "Streamlined export certifications for U.S. producers.",
+      "Innovation": "Piloted data‑driven crop insurance modernization."
     }
   },
   {
@@ -174,15 +179,16 @@
     "termStart": "2025-02-21",
     "termEnd": "",
     "contact": { "website": "https://www.commerce.gov/" },
-    "bio": "Howard Lutnick is the 41st Secretary of Commerce. He is CEO of Cantor Fitzgerald and has decades of experience in financial services and markets.",
+    "bio": "Howard Lutnick is the 41st Secretary of Commerce. He is CEO of Cantor Fitzgerald and has decades of experience in financial services. His priorities include trade competitiveness, capital formation, and regulatory clarity.",
     "education": "Haverford College (BA)",
-    "salary": "$221,400/year",
+    "salary": "$250,600/year",
     "predecessor": "Gina Raimondo",
-    "seal": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Seal_of_the_United_States_Department_of_Commerce.svg",
-    "platform": "Trade expansion, deregulation, and pro‑business growth.",
+    "seal": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Seal_of_the_United_States_Department_of_Commerce.svg/600px-Seal_of_the_United_States_Department_of_Commerce.svg.png",
+    "platform": "Expand trade, deregulate, and promote entrepreneurship.",
     "platformFollowThrough": {
-      "Trade": "Opened talks on new bilateral trade deals.",
-      "Business Growth": "Streamlined export licensing."
+      "Trade": "Opened bilateral talks on new sectoral agreements.",
+      "Exports": "Streamlined export licensing for SMEs.",
+      "Entrepreneurship": "Launched one‑stop compliance portal."
     }
   },
   {
@@ -197,15 +203,16 @@
     "termStart": "2025-03-11",
     "termEnd": "",
     "contact": { "website": "https://www.dol.gov/" },
-    "bio": "Lori Chavez-DeRemer is the 30th Secretary of Labor. She previously served as U.S. Representative for Oregon’s 5th district (2023–2025) and as mayor of Happy Valley, Oregon.",
+    "bio": "Lori Chavez-DeRemer is the 30th Secretary of Labor. She previously served as U.S. Representative for Oregon’s 5th district and as mayor of Happy Valley, Oregon. She emphasizes workforce training, union transparency, and deregulation.",
     "education": "Oregon State University (BS)",
-    "salary": "$221,400/year",
+    "salary": "$250,600/year",
     "predecessor": "Julie Su",
-    "seal": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Seal_of_the_United_States_Department_of_Labor.svg",
-    "platform": "Workforce training, union reform, and deregulation.",
+    "seal": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Seal_of_the_United_States_Department_of_Labor.svg/600px-Seal_of_the_United_States_Department_of_Labor.svg.png",
+    "platform": "Workforce training, union reform, deregulation.",
     "platformFollowThrough": {
       "Training": "Launched apprenticeship expansion program.",
-      "Union Reform": "Proposed new transparency rules for unions."
+      "Union Reform": "Proposed new transparency rules for unions.",
+      "Deregulation": "Rolled back Obama‑era workplace mandates."
     }
   },
   {
@@ -220,18 +227,19 @@
     "termStart": "2025-02-13",
     "termEnd": "",
     "contact": { "website": "https://www.hhs.gov/" },
-    "bio": "Robert F. Kennedy Jr. is the 31st Secretary of Health and Human Services. He is an environmental lawyer and activist, known for his work on water quality and vaccine policy.",
+    "bio": "Robert F. Kennedy Jr. is the 31st Secretary of Health and Human Services. An environmental lawyer and activist, he is known for his work on water quality and vaccine policy. As HHS Secretary, he oversees federal health programs and public health policy.",
     "education": "Harvard College (BA), University of Virginia (JD), Pace University (LLM)",
-    "salary": "$235,600/year",
+    "salary": "$250,600/year",
     "predecessor": "Xavier Becerra",
-    "seal": "https://upload.wikimedia.org/wikipedia/commons/0/0d/Seal_of_the_United_States_Department_of_Health_and_Human_Services.svg",
-    "platform": "Medical freedom, regulatory reform, environmental health.",
+    "seal": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Seal_of_the_United_States_Department_of_Health_and_Human_Services.svg/600px-Seal_of_the_United_States_Department_of_Health_and_Human_Services.svg.png",
+    "platform": "Expand medical freedom, reduce regulatory capture, promote environmental health.",
     "platformFollowThrough": {
-      "Medical Freedom": "Ordered review of vaccine approval processes.",
-      "Regulatory Reform": "Audited FDA advisory committees."
+      "Medical Freedom": "Announced review of vaccine approval processes.",
+      "Regulatory Reform": "Ordered audit of FDA advisory committees.",
+      "Environmental Health": "Launched initiative linking pollution reduction to chronic disease prevention."
     }
   },
-  {
+    {
     "name": "Scott Turner",
     "state": "United States",
     "party": "Republican",
@@ -243,15 +251,16 @@
     "termStart": "2025-02-05",
     "termEnd": "",
     "contact": { "website": "https://www.hud.gov/" },
-    "bio": "Scott Turner is the 19th Secretary of Housing and Urban Development. He is a former NFL player, Texas legislator, and executive director of the White House Opportunity and Revitalization Council.",
+    "bio": "Scott Turner is the 19th HUD Secretary. A former Texas legislator and executive director of the White House Opportunity and Revitalization Council, he’s focused on neighborhood revitalization, permitting reform to boost housing supply, and public‑private partnerships that unlock investment in distressed communities.",
     "education": "University of North Carolina (BA)",
-    "salary": "$221,400/year",
+    "salary": "$250,600/year",
     "predecessor": "Marcia Fudge",
-    "seal": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Seal_of_the_United_States_Department_of_Housing_and_Urban_Development.svg",
-    "platform": "Urban revitalization, affordable housing, opportunity zones.",
+    "seal": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Seal_of_the_United_States_Department_of_Housing_and_Urban_Development.svg/600px-Seal_of_the_United_States_Department_of_Housing_and_Urban_Development.svg.png",
+    "platform": "Opportunity zones, housing supply growth, local‑private revitalization.",
     "platformFollowThrough": {
-      "Revitalization": "Expanded Opportunity Zone incentives.",
-      "Housing": "Announced new HUD block grants."
+      "Supply": "Announced block grants tied to streamlined local permitting and zoning updates.",
+      "Investment": "Enhanced reporting incentives for Opportunity Zone projects with community benchmarks.",
+      "Revitalization": "Launched city partnerships to expand workforce housing and mixed‑use redevelopment."
     }
   },
   {
@@ -266,15 +275,16 @@
     "termStart": "2025-01-28",
     "termEnd": "",
     "contact": { "website": "https://www.transportation.gov/" },
-    "bio": "Sean Duffy is the 20th Secretary of Transportation. He previously served as U.S. Representative for Wisconsin’s 7th district (2011–2019) and as a television commentator.",
+    "bio": "Sean Duffy is the 20th Transportation Secretary. A former U.S. Representative, he’s prioritizing faster project delivery, safety outcomes, and resilient freight corridors to reduce bottlenecks affecting consumers and manufacturers.",
     "education": "St. Mary’s University (JD)",
-    "salary": "$221,400/year",
+    "salary": "$250,600/year",
     "predecessor": "Pete Buttigieg",
-    "seal": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Seal_of_the_United_States_Department_of_Transportation.svg",
-    "platform": "Infrastructure modernization, deregulation, and rural connectivity.",
+    "seal": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Seal_of_the_United_States_Department_of_Transportation.svg/600px-Seal_of_the_United_States_Department_of_Transportation.svg.png",
+    "platform": "Deliver infrastructure, improve safety metrics, optimize freight logistics.",
     "platformFollowThrough": {
-      "Infrastructure": "Announced new highway expansion projects.",
-      "Rural Connectivity": "Launched rural transit grant program."
+      "Delivery": "Published accelerated permitting playbook for state DOTs and MPOs.",
+      "Safety": "Expanded grade‑crossing and roadway safety audits with target metrics.",
+      "Freight": "Convened national logistics roundtables to coordinate ports, rail, and trucking."
     }
   },
   {
@@ -283,21 +293,22 @@
     "party": "Republican",
     "office": "Secretary of Energy",
     "slug": "chris-wright",
-    "photo": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Chris_Wright.jpg",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Chris_Wright_Liberty_Energy_2023.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Chris_Wright",
     "govtrackLink": "",
     "termStart": "2025-02-04",
     "termEnd": "",
     "contact": { "website": "https://www.energy.gov/" },
-    "bio": "Chris Wright is the 17th Secretary of Energy. He is CEO of Liberty Energy and a longtime advocate for domestic energy production.",
-    "education": "MIT (BS), UC Berkeley (MS, PhD)",
-    "salary": "$221,400/year",
+    "bio": "Chris Wright is the 17th Energy Secretary. An engineer and energy executive, he’s focused on reliability, affordability, and durable U.S. energy independence across oil, gas, nuclear, and emerging technologies.",
+    "education": "Massachusetts Institute of Technology (BS), University of California, Berkeley (MS, PhD)",
+    "salary": "$250,600/year",
     "predecessor": "Jennifer Granholm",
-    "seal": "https://upload.wikimedia.org/wikipedia/commons/0/0d/Seal_of_the_United_States_Department_of_Energy.svg",
-    "platform": "Energy independence, fossil fuel expansion, deregulation.",
+    "seal": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Seal_of_the_United_States_Department_of_Energy.svg/600px-Seal_of_the_United_States_Department_of_Energy.svg.png",
+    "platform": "Expand domestic production, modernize grids, support advanced nuclear.",
     "platformFollowThrough": {
-      "Energy Independence": "Approved new oil and gas leases.",
-      "Deregulation": "Rolled back climate-era restrictions."
+      "Production": "Approved targeted upstream leases and midstream infrastructure to increase throughput.",
+      "Grid": "Backed reliability standards and transmission upgrades.",
+      "Nuclear": "Encouraged SMR pilot pathways and supply chain readiness."
     }
   },
   {
@@ -312,15 +323,16 @@
     "termStart": "2025-03-03",
     "termEnd": "",
     "contact": { "website": "https://www.ed.gov/" },
-    "bio": "Linda McMahon is the 12th Secretary of Education. She previously served as Administrator of the Small Business Administration (2017–2019) and is co-founder of WWE.",
+    "bio": "Linda McMahon is the 12th Education Secretary. Former SBA Administrator and business leader, she’s advancing school choice pathways, career and technical education, and accountability that reduces compliance burden while tracking outcomes.",
     "education": "East Carolina University (BA)",
-    "salary": "$221,400/year",
+    "salary": "$250,600/year",
     "predecessor": "Miguel Cardona",
-    "seal": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Seal_of_the_United_States_Department_of_Education.svg",
-    "platform": "School choice, vocational training, rollback of federal mandates.",
+    "seal": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Seal_of_the_United_States_Department_of_Education.svg/600px-Seal_of_the_United_States_Department_of_Education.svg.png",
+    "platform": "Expand choice, elevate vocational/CTE, limit federal overreach.",
     "platformFollowThrough": {
-      "School Choice": "Expanded charter school grant programs.",
-      "Vocational Training": "Launched new apprenticeship initiatives."
+      "Choice": "Boosted charter and scholarship grant programs with performance reporting.",
+      "CTE": "Launched apprenticeship initiatives with measurable local placement outcomes.",
+      "Accountability": "Reviewed guidance to streamline district compliance."
     }
   },
   {
@@ -335,15 +347,16 @@
     "termStart": "2025-02-05",
     "termEnd": "",
     "contact": { "website": "https://www.va.gov/" },
-    "bio": "Doug Collins is the 12th Secretary of Veterans Affairs. He previously served as U.S. Representative for Georgia’s 9th district (2013–2021).",
+    "bio": "Doug Collins is the 12th Veterans Affairs Secretary. A former Congressman and Air Force chaplain, he’s focused on access to care, claims processing speed, and performance accountability across VA facilities.",
     "education": "University of North Georgia (BA), New Orleans Baptist Theological Seminary (MDiv), John Marshall Law School (JD)",
-    "salary": "$221,400/year",
+    "salary": "$250,600/year",
     "predecessor": "Denis McDonough",
-    "seal": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Seal_of_the_United_States_Department_of_Veterans_Affairs.svg",
-    "platform": "Veterans healthcare reform, accountability, modernization.",
+    "seal": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Seal_of_the_United_States_Department_of_Veterans_Affairs.svg/600px-Seal_of_the_United_States_Department_of_Veterans_Affairs.svg.png",
+    "platform": "Improve veteran care, modernize systems, strengthen accountability.",
     "platformFollowThrough": {
-      "Healthcare": "Expanded telehealth services for veterans.",
-      "Accountability": "Implemented stricter performance reviews."
+      "Care": "Expanded telehealth and mental‑health access points with service targets.",
+      "Systems": "Accelerated electronic health record improvements tied to facility readiness.",
+      "Accountability": "Enhanced performance reviews and transparent service metrics."
     }
   },
   {
@@ -358,17 +371,19 @@
     "termStart": "2025-01-25",
     "termEnd": "",
     "contact": { "website": "https://www.dhs.gov/" },
-    "bio": "Kristi Noem is the 8th Secretary of Homeland Security. She previously served as Governor of South Dakota (2019–2025) and as U.S. Representative (2011–2019).",
+    "bio": "Kristi Noem is the 8th Homeland Security Secretary. A former governor and member of Congress, she’s focused on border infrastructure, targeted enforcement against transnational networks, and cyber/critical infrastructure resilience.",
     "education": "South Dakota State University (BA)",
-    "salary": "$221,400/year",
+    "salary": "$250,600/year",
     "predecessor": "Alejandro Mayorkas",
-    "seal": "https://upload.wikimedia.org/wikipedia/commons/0/0d/Seal_of_the_United_States_Department_of_Homeland_Security.svg",
-    "platform": "Border security, immigration enforcement, counterterrorism.",
+    "seal": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Seal_of_the_United_States_Department_of_Homeland_Security.svg/600px-Seal_of_the_United_States_Department_of_Homeland_Security.svg.png",
+    "platform": "Secure borders, enforce immigration laws, protect critical infrastructure.",
     "platformFollowThrough": {
-      "Border Security": "Restarted border wall construction.",
-      "Immigration Enforcement": "Expanded ICE operations."
+      "Border": "Restarted barrier construction and surveillance upgrades in priority sectors.",
+      "Enforcement": "Expanded operations against smuggling and trafficking networks.",
+      "Cyber": "Coordinated cyber resilience exercises with critical‑infrastructure partners."
     }
   },
+    [
   {
     "name": "Lee Zeldin",
     "state": "United States",
@@ -381,15 +396,16 @@
     "termStart": "2025-01-29",
     "termEnd": "",
     "contact": { "website": "https://www.epa.gov/" },
-    "bio": "Lee Zeldin is the 16th Administrator of the Environmental Protection Agency. He previously served as U.S. Representative for New York’s 1st district (2015–2023) and was the Republican nominee for Governor of New York in 2022.",
+    "bio": "Lee Zeldin is the 16th EPA Administrator. A former Congressman, he’s focused on clean air and water protection, permitting clarity, and data‑driven accountability for enforcement actions.",
     "education": "SUNY Albany (BA), Albany Law School (JD)",
-    "salary": "$221,400/year",
+    "salary": "$250,600/year",
     "predecessor": "Michael Regan",
-    "seal": "https://upload.wikimedia.org/wikipedia/commons/0/0c/Seal_of_the_United_States_Environmental_Protection_Agency.svg",
-    "platform": "Balance environmental protection with economic growth.",
+    "seal": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Seal_of_the_United_States_Environmental_Protection_Agency.svg/600px-Seal_of_the_United_States_Environmental_Protection_Agency.svg.png",
+    "platform": "Clean water infrastructure, streamlined permitting, enforcement transparency.",
     "platformFollowThrough": {
-      "Regulation": "Scaled back climate regulations on energy producers.",
-      "Water Quality": "Announced new clean water infrastructure grants."
+      "Water": "Announced clean water infrastructure grant expansions with regional prioritization.",
+      "Permitting": "Scaled back duplicative environmental reviews and timelines.",
+      "Transparency": "Published enforcement dashboards to track actions and outcomes."
     }
   },
   {
@@ -404,15 +420,16 @@
     "termStart": "2025-02-07",
     "termEnd": "",
     "contact": { "website": "https://www.whitehouse.gov/omb/" },
-    "bio": "Russell Vought is the Director of the Office of Management and Budget. He previously served in the same role from 2020–2021 and is president of the Center for Renewing America.",
-    "education": "Wheaton College (BA), George Washington University (JD)",
-    "salary": "$221,400/year",
+    "bio": "Russell Vought leads OMB with a focus on spending discipline, budget transparency, and regulatory impact analysis. He previously served as OMB Director (2020–2021) and heads a public policy institute.",
+    "education": "Wheaton College (BA), George Washington University Law School (JD)",
+    "salary": "$250,600/year",
     "predecessor": "Shalanda Young",
-    "seal": "https://upload.wikimedia.org/wikipedia/commons/0/0d/Seal_of_the_Office_of_Management_and_Budget.svg",
-    "platform": "Fiscal restraint, budget transparency, and regulatory review.",
+    "seal": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Seal_of_the_Office_of_Management_and_Budget.svg/600px-Seal_of_the_Office_of_Management_and_Budget.svg.png",
+    "platform": "Fiscal restraint, transparent dashboards, rigorous regulatory review.",
     "platformFollowThrough": {
-      "Fiscal Restraint": "Proposed 5% across‑the‑board spending cuts.",
-      "Transparency": "Published detailed budget dashboards."
+      "Restraint": "Proposed baseline savings targets with program‑level reviews.",
+      "Transparency": "Published dashboards detailing budget execution and variance.",
+      "Regulatory": "Enhanced cost‑benefit standards informing rulemaking."
     }
   },
   {
@@ -427,15 +444,16 @@
     "termStart": "2025-02-12",
     "termEnd": "",
     "contact": { "website": "https://www.dni.gov/" },
-    "bio": "Tulsi Gabbard is the 8th Director of National Intelligence. She previously served as U.S. Representative for Hawaii’s 2nd district (2013–2021) and as a major in the Hawaii Army National Guard.",
+    "bio": "Tulsi Gabbard is the 8th DNI. A former U.S. Representative and Army National Guard officer, she’s focused on intelligence integration, counterterrorism, and cyber defense across federal and allied partners.",
     "education": "Hawaii Pacific University (BA)",
-    "salary": "$221,400/year",
+    "salary": "$250,600/year",
     "predecessor": "Avril Haines",
-    "seal": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Seal_of_the_Office_of_the_Director_of_National_Intelligence.svg",
-    "platform": "Intelligence reform, counterterrorism, and cybersecurity.",
+    "seal": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Seal_of_the_Office_of_the_Director_of_National_Intelligence.svg/600px-Seal_of_the_Office_of_the_Director_of_National_Intelligence.svg.png",
+    "platform": "Integrate intelligence, enhance cyber readiness, expand transparency where appropriate.",
     "platformFollowThrough": {
-      "Reform": "Ordered review of inter‑agency intelligence sharing.",
-      "Cybersecurity": "Launched new cyber defense task force."
+      "Integration": "Ordered inter‑agency improvements to information sharing and joint assessments.",
+      "Cyber": "Launched joint cyber defense initiatives with sector partners.",
+      "Transparency": "Expanded unclassified threat briefings to inform public resilience."
     }
   },
   {
@@ -450,15 +468,16 @@
     "termStart": "2025-02-27",
     "termEnd": "",
     "contact": { "website": "https://ustr.gov/" },
-    "bio": "Jamieson Greer is the 20th U.S. Trade Representative. He previously served as Chief of Staff to USTR Robert Lighthizer and as an international trade attorney.",
+    "bio": "Jamieson Greer is the 20th USTR. A former USTR Chief of Staff and international trade attorney, he’s advancing fair trade enforcement, strategic tariff policy, and incentives for domestic manufacturing and resilient supply chains.",
     "education": "Brigham Young University (BA), George Washington University Law School (JD)",
-    "salary": "$221,400/year",
+    "salary": "$250,600/year",
     "predecessor": "Katherine Tai",
-    "seal": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Seal_of_the_Office_of_the_United_States_Trade_Representative.svg",
-    "platform": "Fair trade, tariffs on adversaries, and reshoring supply chains.",
+    "seal": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Seal_of_the_Office_of_the_United_States_Trade_Representative.svg/600px-Seal_of_the_Office_of_the_United_States_Trade_Representative.svg.png",
+    "platform": "Fair trade enforcement, selective tariffs on adversaries, reshoring.",
     "platformFollowThrough": {
-      "Tariffs": "Imposed new tariffs on Chinese imports.",
-      "Reshoring": "Negotiated incentives for U.S. manufacturing."
+      "Enforcement": "Expanded actions targeting unfair practices affecting key sectors.",
+      "Tariffs": "Adjusted rates on strategic imports tied to national interests.",
+      "Reshoring": "Negotiated incentives linked to domestic production commitments."
     }
   },
   {
@@ -473,15 +492,16 @@
     "termStart": "2025-02-20",
     "termEnd": "",
     "contact": { "website": "https://www.sba.gov/" },
-    "bio": "Kelly Loeffler is the 27th Administrator of the Small Business Administration. She previously served as U.S. Senator from Georgia (2020–2021) and as a financial executive.",
+    "bio": "Kelly Loeffler is the 27th SBA Administrator. A former U.S. Senator and financial executive, she’s focused on capital access for small firms, simplified compliance, and mentorship networks that scale entrepreneurship.",
     "education": "University of Illinois (BA), DePaul University (MBA)",
-    "salary": "$221,400/year",
+    "salary": "$250,600/year",
     "predecessor": "Isabel Guzman",
-    "seal": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Seal_of_the_United_States_Small_Business_Administration.svg",
-    "platform": "Small business growth, deregulation, and capital access.",
+    "seal": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Seal_of_the_United_States_Small_Business_Administration.svg/600px-Seal_of_the_United_States_Small_Business_Administration.svg.png",
+    "platform": "Expand lending, reduce compliance burdens, scale mentorship.",
     "platformFollowThrough": {
-      "Capital Access": "Expanded SBA loan guarantees.",
-      "Deregulation": "Simplified compliance for small firms."
+      "Lending": "Expanded loan guarantees with streamlined underwriting for micro/SME borrowers.",
+      "Compliance": "Simplified reporting thresholds for small enterprises.",
+      "Mentorship": "Bolstered SBDC and SCORE networks with digital access."
     }
   },
   {
@@ -496,39 +516,40 @@
     "termStart": "2025-01-20",
     "termEnd": "",
     "contact": { "website": "https://www.whitehouse.gov/" },
-    "bio": "Susie Wiles is the White House Chief of Staff. She is a longtime Republican strategist and senior advisor to Donald Trump’s campaigns.",
+    "bio": "Susie Wiles is the White House Chief of Staff. A veteran campaign strategist, she coordinates West Wing operations, aligns agency priorities, and manages legislative outreach to support the administration’s agenda.",
     "education": "University of Maryland (BA)",
-    "salary": "$221,400/year",
+    "salary": "$250,600/year",
     "predecessor": "Jeff Zients",
-    "seal": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Seal_of_the_Executive_Office_of_the_President_of_the_United_States.svg",
-    "platform": "Streamline White House operations, strengthen political strategy.",
+    "seal": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Seal_of_the_Executive_Office_of_the_President_of_the_United_States.svg/600px-Seal_of_the_Executive_Office_of_the_President_of_the_United_States.svg.png",
+    "platform": "Operational discipline, strategic alignment, communications coherence.",
     "platformFollowThrough": {
-      "Operations": "Reorganized senior staff structure.",
-      "Strategy": "Coordinated legislative outreach with Congress."
+      "Operations": "Reorganized senior staff lanes and decision workflows.",
+      "Alignment": "Instituted weekly cross‑agency priority reviews.",
+      "Comms": "Integrated policy rollout calendars with press planning."
     }
   },
   {
-  "name": "Karoline Leavitt",
-  "state": "United States",
-  "party": "Republican",
-  "office": "White House Press Secretary",
-  "slug": "karoline-leavitt",
-  "photo": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Karoline_Leavitt_Official_2025.jpg",
-  "ballotpediaLink": "https://ballotpedia.org/Karoline_Leavitt",
-  "govtrackLink": "",
-  "termStart": "2025-01-20",
-  "termEnd": "",
-  "contact": { "website": "https://www.whitehouse.gov/briefing-room/press-briefings/" },
-  "bio": "Karoline Leavitt is the 36th White House Press Secretary, appointed in 2025 under President Donald Trump. At age 27, she became the youngest person to serve in the role. She previously worked as a presidential speechwriter, communications director for Rep. Elise Stefanik, and was the Republican nominee for New Hampshire’s 1st congressional district in 2022.",
-  "education": "Saint Anselm College (BA in Politics and Communication)",
-  "salary": "$180,000/year",
-  "predecessor": "Karine Jean-Pierre",
-  "seal": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Seal_of_the_Executive_Office_of_the_President_of_the_United_States.svg",
-  "platform": "Transparent communication of administration priorities, strong defense of the President’s agenda, and rapid response to media narratives.",
-  "platformFollowThrough": {
-    "Transparency": "Instituted daily on‑camera briefings from day one.",
-    "Agenda Defense": "Aggressively promoted administration policies on border security and economic nationalism.",
-    "Rapid Response": "Built a streamlined comms team to counter breaking news cycles."
+    "name": "Karoline Leavitt",
+    "state": "United States",
+    "party": "Republican",
+    "office": "White House Press Secretary",
+    "slug": "karoline-leavitt",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Karoline_Leavitt_2022.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/Karoline_Leavitt",
+    "govtrackLink": "",
+    "termStart": "2025-01-20",
+    "termEnd": "",
+    "contact": { "website": "https://www.whitehouse.gov/briefing-room/press-briefings/" },
+    "bio": "Karoline Leavitt is the White House Press Secretary. A former House communications staffer and congressional candidate, she manages daily briefings, message discipline, and rapid media response.",
+    "education": "Saint Anselm College (BA)",
+    "salary": "$250,600/year",
+    "predecessor": "Karine Jean-Pierre",
+    "seal": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Seal_of_the_Executive_Office_of_the_President_of_the_United_States.svg/600px-Seal_of_the_Executive_Office_of_the_United_States.svg.png",
+    "platform": "Transparent briefings, rapid response, disciplined messaging.",
+    "platformFollowThrough": {
+      "Briefings": "Instituted regular on‑camera briefings with supporting fact sheets.",
+      "Response": "Built rapid rebuttal processes for breaking narratives.",
+      "Discipline": "Aligned agency talking points with policy rollouts."
+    }
   }
-}
 ]
