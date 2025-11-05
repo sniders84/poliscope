@@ -1,0 +1,311 @@
+[
+  {
+    "name": "Marco Rubio",
+    "state": "United States",
+    "party": "Republican",
+    "office": "Secretary of State",
+    "slug": "marco-rubio",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/5/5b/Marco_Rubio_official_photo.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/Marco_Rubio",
+    "govtrackLink": "https://www.govtrack.us/congress/members/marco_rubio/412491",
+    "termStart": "2025-01-20",
+    "termEnd": "",
+    "contact": {
+      "website": "https://www.state.gov/"
+    },
+    "bio": "Marco Rubio is the 71st U.S. Secretary of State. He previously served as a U.S. Senator from Florida, where he focused on foreign policy, national security, and economic issues. As Secretary of State, Rubio oversees U.S. diplomacy, international negotiations, and foreign relations.",
+    "education": "University of Florida (BA), University of Miami (JD)",
+    "salary": "$235,600/year",
+    "predecessor": "Antony Blinken"
+  },
+  {
+    "name": "Scott Bessent",
+    "state": "United States",
+    "party": "Republican",
+    "office": "Secretary of the Treasury",
+    "slug": "scott-bessent",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Scott_Bessent.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/Scott_Bessent",
+    "termStart": "2025-01-20",
+    "termEnd": "",
+    "contact": {
+      "website": "https://home.treasury.gov/"
+    },
+    "bio": "Scott Bessent is the 78th U.S. Secretary of the Treasury. A hedge fund manager and economist, he previously served as Chief Investment Officer at Soros Fund Management. As Treasury Secretary, he directs fiscal policy, debt management, and financial regulation.",
+    "education": "Yale University (BA in Economics)",
+    "salary": "$235,600/year",
+    "predecessor": "Janet Yellen"
+  },
+  {
+    "name": "Pete Hegseth",
+    "state": "United States",
+    "party": "Republican",
+    "office": "Secretary of Defense",
+    "slug": "pete-hegseth",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Pete_Hegseth.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/Pete_Hegseth",
+    "termStart": "2025-01-20",
+    "termEnd": "",
+    "contact": {
+      "website": "https://www.defense.gov/"
+    },
+    "bio": "Pete Hegseth is the 29th U.S. Secretary of Defense. A former Army National Guard officer and television host, Hegseth served in Iraq and Afghanistan. As Defense Secretary, he oversees the Department of Defense, military readiness, and national security strategy.",
+    "education": "Princeton University (BA), Harvard Kennedy School (MPP)",
+    "salary": "$235,600/year",
+    "predecessor": "Lloyd Austin"
+  },
+  {
+    "name": "Pam Bondi",
+    "state": "United States",
+    "party": "Republican",
+    "office": "Attorney General",
+    "slug": "pam-bondi",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Pam_Bondi.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/Pam_Bondi",
+    "termStart": "2025-01-20",
+    "termEnd": "",
+    "contact": {
+      "website": "https://www.justice.gov/"
+    },
+    "bio": "Pam Bondi is the 86th Attorney General of the United States. She previously served as Florida’s Attorney General from 2011 to 2019. As the nation’s top law enforcement officer, she oversees the Department of Justice, federal prosecutions, and civil rights enforcement.",
+    "education": "University of Florida (BA), Stetson University College of Law (JD)",
+    "salary": "$235,600/year",
+    "predecessor": "Merrick Garland"
+  },
+  {
+    "name": "Doug Burgum",
+    "state": "United States",
+    "party": "Republican",
+    "office": "Secretary of the Interior",
+    "slug": "doug-burgum",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Doug_Burgum.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/Doug_Burgum",
+    "termStart": "2025-01-20",
+    "termEnd": "",
+    "contact": {
+      "website": "https://www.doi.gov/"
+    },
+    "bio": "Doug Burgum is the 55th Secretary of the Interior. He previously served as Governor of North Dakota. As Interior Secretary, Burgum manages federal lands, natural resources, and relations with Native American tribes.",
+    "education": "North Dakota State University (BS), Stanford University (MBA)",
+    "salary": "$235,600/year",
+    "predecessor": "Deb Haaland"
+  },
+  {
+    "name": "Brooke Rollins",
+    "state": "United States",
+    "party": "Republican",
+    "office": "Secretary of Agriculture",
+    "slug": "brooke-rollins",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Brooke_Rollins.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/Brooke_Rollins",
+    "termStart": "2025-01-20",
+    "termEnd": "",
+    "contact": {
+      "website": "https://www.usda.gov/"
+    },
+    "bio": "Brooke Rollins is the 33rd Secretary of Agriculture. She previously served as a White House domestic policy adviser and CEO of the Texas Public Policy Foundation. As Agriculture Secretary, she oversees farming policy, food safety, and rural development.",
+    "education": "Texas A&M University (BA), University of Texas School of Law (JD)",
+    "salary": "$235,600/year",
+    "predecessor": "Tom Vilsack"
+  },
+  {
+    "name": "Howard Lutnick",
+    "state": "United States",
+    "party": "Republican",
+    "office": "Secretary of Commerce",
+    "slug": "howard-lutnick",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Howard_Lutnick.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/Howard_Lutnick",
+    "termStart": "2025-01-20",
+    "termEnd": "",
+    "contact": {
+      "website": "https://www.commerce.gov/"
+    },
+    "bio": "Howard Lutnick is the 41st Secretary of Commerce. A businessman and CEO of Cantor Fitzgerald, Lutnick brings private sector experience to the role. As Commerce Secretary, he manages trade, economic development, and technology policy.",
+    "education": "Haverford College (BA in Economics)",
+    "salary": "$235,600/year",
+    "predecessor": "Gina Raimondo"
+  },
+  {
+    "name": "Scott Turner",
+    "state": "United States",
+    "party": "Republican",
+    "office": "Secretary of Housing and Urban Development",
+    "slug": "scott-turner",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Scott_Turner.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/Scott_Turner",
+    "termStart": "2025-01-20",
+    "termEnd": "",
+    "contact": {
+      "website": "https://www.hud.gov/"
+    },
+    "bio": "Scott Turner is the 19th Secretary of Housing and Urban Development. A former NFL player and Texas legislator, Turner previously led the White House Opportunity and Revitalization Council. As HUD Secretary, he oversees housing policy, urban development, and fair housing enforcement.",
+    "education": "University of Illinois (BA)",
+    "salary": "$235,600/year",
+    "predecessor": "Marcia Fudge"
+  },
+   {
+    "name": "Sean Duffy",
+    "state": "United States",
+    "party": "Republican",
+    "office": "Secretary of Transportation",
+    "slug": "sean-duffy",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Sean_Duffy.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/Sean_Duffy",
+    "govtrackLink": "https://www.govtrack.us/congress/members/sean_duffy/412488",
+    "termStart": "2025-01-20",
+    "termEnd": "",
+    "contact": {
+      "website": "https://www.transportation.gov/"
+    },
+    "bio": "Sean Duffy is the 19th Secretary of Transportation. He previously served as a U.S. Representative from Wisconsin and as a television personality. As Transportation Secretary, he oversees federal highways, aviation, rail, and maritime systems.",
+    "education": "St. Mary’s University (JD)",
+    "salary": "$235,600/year",
+    "predecessor": "Pete Buttigieg"
+  },
+  {
+    "name": "Patrick Morrisey",
+    "state": "United States",
+    "party": "Republican",
+    "office": "Secretary of Labor",
+    "slug": "patrick-morrisey",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Patrick_Morrisey.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/Patrick_Morrisey",
+    "termStart": "2025-01-20",
+    "termEnd": "",
+    "contact": {
+      "website": "https://www.dol.gov/"
+    },
+    "bio": "Patrick Morrisey is the 30th Secretary of Labor. He previously served as Attorney General of West Virginia. As Labor Secretary, he manages workplace safety, wage standards, and workforce development programs.",
+    "education": "Rutgers University (BA), Rutgers School of Law (JD)",
+    "salary": "$235,600/year",
+    "predecessor": "Julie Su"
+  },
+  {
+    "name": "Ben Carson",
+    "state": "United States",
+    "party": "Republican",
+    "office": "Secretary of Health and Human Services",
+    "slug": "ben-carson",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Ben_Carson_by_Gage_Skidmore.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/Ben_Carson",
+    "termStart": "2025-01-20",
+    "termEnd": "",
+    "contact": {
+      "website": "https://www.hhs.gov/"
+    },
+    "bio": "Ben Carson is the 27th Secretary of Health and Human Services. A retired neurosurgeon and former HUD Secretary, Carson oversees public health, Medicare, Medicaid, and medical research programs.",
+    "education": "Yale University (BA), University of Michigan Medical School (MD)",
+    "salary": "$235,600/year",
+    "predecessor": "Xavier Becerra"
+  },
+  {
+    "name": "Betsy DeVos",
+    "state": "United States",
+    "party": "Republican",
+    "office": "Secretary of Education",
+    "slug": "betsy-devos",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Betsy_DeVos_official_portrait.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/Betsy_DeVos",
+    "termStart": "2025-01-20",
+    "termEnd": "",
+    "contact": {
+      "website": "https://www.ed.gov/"
+    },
+    "bio": "Betsy DeVos is the 12th Secretary of Education. She previously served in the same role from 2017 to 2021. As Education Secretary, she oversees federal education policy, student aid, and K-12 initiatives.",
+    "education": "Calvin College (BA in Business Economics)",
+    "salary": "$235,600/year",
+    "predecessor": "Miguel Cardona"
+  },
+  {
+    "name": "Harold Hamm",
+    "state": "United States",
+    "party": "Republican",
+    "office": "Secretary of Energy",
+    "slug": "harold-hamm",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Harold_Hamm.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/Harold_Hamm",
+    "termStart": "2025-01-20",
+    "termEnd": "",
+    "contact": {
+      "website": "https://www.energy.gov/"
+    },
+    "bio": "Harold Hamm is the 16th Secretary of Energy. A billionaire oil executive and founder of Continental Resources, Hamm oversees U.S. energy policy, nuclear security, and renewable energy programs.",
+    "education": "High school graduate, self-made entrepreneur",
+    "salary": "$235,600/year",
+    "predecessor": "Jennifer Granholm"
+  },
+  {
+    "name": "Ronny Jackson",
+    "state": "United States",
+    "party": "Republican",
+    "office": "Secretary of Veterans Affairs",
+    "slug": "ronny-jackson",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Ronny_Jackson.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/Ronny_Jackson",
+    "govtrackLink": "https://www.govtrack.us/congress/members/ronny_jackson/456870",
+    "termStart": "2025-01-20",
+    "termEnd": "",
+    "contact": {
+      "website": "https://www.va.gov/"
+    },
+    "bio": "Ronny Jackson is the 12th Secretary of Veterans Affairs. A retired Navy rear admiral and former White House physician, Jackson also served as a U.S. Representative from Texas. He oversees veterans’ healthcare, benefits, and services.",
+    "education": "Texas A&M University (BS), University of Texas Medical Branch (MD)",
+    "salary": "$235,600/year",
+    "predecessor": "Denis McDonough"
+  },
+  {
+    "name": "Chad Wolf",
+    "state": "United States",
+    "party": "Republican",
+    "office": "Secretary of Homeland Security",
+    "slug": "chad-wolf",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Chad_Wolf.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/Chad_Wolf",
+    "termStart": "2025-01-20",
+    "termEnd": "",
+    "contact": {
+      "website": "https://www.dhs.gov/"
+    },
+    "bio": "Chad Wolf is the 8th Secretary of Homeland Security. He previously served as Acting Secretary of Homeland Security from 2019 to 2021. Wolf oversees border security, immigration enforcement, and counterterrorism operations.",
+    "education": "Southern Methodist University (BA), Southern Methodist University (MA)",
+    "salary": "$235,600/year",
+    "predecessor": "Alejandro Mayorkas"
+  },
+  {
+    "name": "Mark Meadows",
+    "state": "United States",
+    "party": "Republican",
+    "office": "White House Chief of Staff",
+    "slug": "mark-meadows",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Mark_Meadows.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/Mark_Meadows",
+    "termStart": "2025-01-20",
+    "termEnd": "",
+    "contact": {
+      "website": "https://www.whitehouse.gov/"
+    },
+    "bio": "Mark Meadows is the White House Chief of Staff under President Donald Trump. He previously served as Chief of Staff from 2020 to 2021 and as a U.S. Representative from North Carolina. As Chief of Staff, he manages White House operations, staff coordination, and the President’s schedule.",
+    "education": "University of South Florida (BA)",
+    "salary": "$235,600/year",
+    "predecessor": "Jeff Zients"
+  },
+  {
+  "name": "Karoline Leavitt",
+  "state": "United States",
+  "party": "Republican",
+  "office": "White House Press Secretary",
+  "slug": "karoline-leavitt",
+  "photo": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Karoline_Leavitt.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Karoline_Leavitt",
+  "termStart": "2025-01-20",
+  "termEnd": "",
+  "contact": {
+    "website": "https://www.whitehouse.gov/briefing-room/press-briefings/"
+  },
+  "bio": "Karoline Leavitt is the White House Press Secretary under President Donald Trump. At age 27, she became the youngest person to hold the position. A former Trump campaign spokesperson and congressional candidate from New Hampshire, Leavitt manages the White House press office and serves as the administration’s chief spokesperson to the media and public.",
+  "education": "Saint Anselm College (BA in Politics and Communications)",
+  "salary": "$235,600/year",
+  "predecessor": "Karine Jean-Pierre"
+}
+]
