@@ -822,7 +822,11 @@ function renderOfficials(state, query) {
   // your existing officials rendering logic
 }
 
-// --- New reusable list renderer ---
+function renderGroups(groups) {
+  // your existing groups rendering logic
+}
+
+// --- New Civic Intelligence helpers ---
 function renderOfficialsList(data, title) {
   modalContent.innerHTML = `
     <h2>${title}</h2>
@@ -854,25 +858,6 @@ function renderOfficialsList(data, title) {
   modal.style.display = 'block';
 }
 
-// --- Continue with other helpers like renderOfficialDetail() ---
-
-document.addEventListener('DOMContentLoaded', () => {
-  // your initialization wiring
-});
-// --- Existing helpers ---
-function renderOfficials(state, query) {
-  // your existing officials rendering logic
-}
-
-function renderGroups(groups) {
-  // your existing groups rendering logic
-}
-
-// --- New Civic Intelligence helpers ---
-function renderOfficialsList(data, title) {
-  // ...the list rendering code we added earlier...
-}
-
 function renderOfficialDetail(person) {
   modalContent.innerHTML = `
     <button id="back-to-list">← Back</button>
@@ -901,11 +886,26 @@ function renderOfficialDetail(person) {
   });
 }
 
-// --- DOMContentLoaded initializer ---
-document.addEventListener('DOMContentLoaded', () => {
-  // all your setup wiring, fetches, event listeners, etc.
-});
+// --- Global functions for Cabinet and SCOTUS ---
+function showCabinet() {
+  fetch('/cabinet.json')
+    .then(res => res.json())
+    .then(data => {
+      renderOfficialsList(data, "President’s Cabinet");
+    })
+    .catch(err => console.error('Error loading cabinet data:', err));
+}
 
+function showSCOTUS() {
+  fetch('/scotus.json')
+    .then(res => res.json())
+    .then(data => {
+      renderOfficialsList(data, "Supreme Court Justices");
+    })
+    .catch(err => console.error('Error loading SCOTUS data:', err));
+}
+
+// --- DOMContentLoaded initializer ---
 document.addEventListener('DOMContentLoaded', () => {
   // Elements
   officialsContainer = document.getElementById('officials-container');
