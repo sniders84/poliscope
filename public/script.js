@@ -231,6 +231,37 @@ function renderRosterCards(rosterData, chamberLabel, container) {
     container.appendChild(card);
   }
 }
+// === HELPER: render a single Cabinet member card ===
+function renderCabinetMember(member) {
+  return `
+    <div class="card">
+      <div class="card-front">
+        <div class="images">
+          <img src="${member.photo}" alt="${member.name}" class="portrait" />
+          <img src="${member.seal}" alt="${member.office} seal" class="seal" />
+        </div>
+        <h3>${member.name}</h3>
+        <p>${member.office}</p>
+      </div>
+    </div>
+  `;
+}
+
+// === RENDER: populate the Cabinet grid ===
+function renderCabinetGrid(cabinetData) {
+  const container = document.getElementById('cabinetList');
+  container.innerHTML = ''; // clear any old content
+  cabinetData.forEach(member => {
+    const cardWrapper = document.createElement('div');
+    cardWrapper.className = 'official-card';
+    cardWrapper.innerHTML = renderCabinetMember(member);
+    container.appendChild(cardWrapper);
+  });
+}
+fetch('cabinet.json')
+  .then(res => res.json())
+  .then(data => renderCabinetGrid(data));
+
 // === CIVIC TAB ===
 function showCivic() {
   showTab('civic');
