@@ -406,7 +406,31 @@ function showCivic() {
       console.error(err);
     });
 }
+function showCabinet() {
+  fetch('/cabinet.json')
+    .then(response => response.json())
+    .then(data => {
+      const list = document.getElementById('cabinetList');
+      list.innerHTML = '';
 
+      data.forEach(member => {
+        const card = document.createElement('div');
+        card.className = 'official-card';
+        card.innerHTML = `
+          <img src="${member.photo}" alt="${member.name}" class="official-photo" />
+          <h3>${member.name}</h3>
+          <p>${member.office}</p>
+        `;
+        card.onclick = () => showCabinetMember(member);
+        list.appendChild(card);
+      });
+
+      openModal('cabinetModal');
+    })
+    .catch(err => {
+      console.error('Error loading Cabinet data:', err);
+    });
+}
 function showPolls() {
   showTab('polls');
   const pollsContainer = document.getElementById('polls-cards');
