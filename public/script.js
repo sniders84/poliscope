@@ -881,20 +881,23 @@ function renderOfficials(stateFilter = null, query = '') {
 
     const card = document.createElement('div');
     card.className = `official-card ${normalizedParty}`;
-    card.innerHTML = `
-      <div class="party-stripe"></div>
-      <div class="photo-wrapper">
-        <img src="${photoSrc}" alt="${o.name}" onerror="this.onerror=null;this.src='assets/default-photo.png';" />
-      </div>
-      <div class="official-info">
-        <h3>${o.name || 'Unknown'}</h3>
-        <p><strong>Position:</strong> ${o.office || 'N/A'}</p>
-        ${districtDisplay}
-        <p><strong>State:</strong> ${o.state || 'United States'}</p>
-        <p><strong>Term:</strong> ${termDisplay}</p>
-        <p><strong>Party:</strong> ${o.party || 'N/A'}</p>
-      </div>
-    `;
+   card.innerHTML = `
+  <div class="party-stripe"></div>
+  <div class="card-body">
+    <div class="photo-wrapper">
+      <img src="${photoSrc}" alt="${o.name}"
+           onerror="this.onerror=null;this.src='assets/default-photo.png';" />
+    </div>
+    <div class="official-info">
+      <h3>${o.name || 'Unknown'}</h3>
+      <p><strong>Position:</strong> ${o.office || 'N/A'}</p>
+      ${districtDisplay}
+      <p><strong>State:</strong> ${o.state || 'United States'}</p>
+      <p><strong>Term:</strong> ${termDisplay}</p>
+      <p><strong>Party:</strong> ${o.party || 'N/A'}</p>
+    </div>
+  </div>
+`;
     card.addEventListener('click', () => openOfficialModal(o));
     officialsContainer.appendChild(card);
   });
