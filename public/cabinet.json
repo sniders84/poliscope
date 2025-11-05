@@ -1,5 +1,47 @@
 [
   {
+    "name": "JD Vance",
+    "state": "United States",
+    "party": "Republican",
+    "office": "Vice President",
+    "slug": "jd-vance",
+    "photo": "https://www.whitehouse.gov/wp-content/uploads/2025/01/jd-vance.jpg",
+    "ballotpediaLink": "https://ballotpedia.org/J.D._Vance",
+    "govtrackLink": "https://www.govtrack.us/congress/members/james_david_vance/456876/report-card/2024",
+    "termStart": "2025-01-20",
+    "termEnd": "2029-01-20",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "website": "https://www.whitehouse.gov/administration/jd-vance/"
+    },
+    "bio": "JD Vance is the 50th Vice President of the United States, inaugurated in 2025. A former U.S. Senator from Ohio and author of 'Hillbilly Elegy,' Vance is known for his populist conservatism and advocacy for working-class Americans.",
+    "education": "Ohio State University (BA), Yale Law School (JD)",
+    "endorsements": "Heritage Foundation, American Principles Project, Susan B. Anthony Pro-Life America",
+    "platform": "Working-class revival, tech accountability, cultural conservatism, and border enforcement.",
+    "platformFollowThrough": {
+      "Working-Class Revival": "Promoted trade reform and domestic manufacturing incentives during Senate tenure.",
+      "Tech Accountability": "Supported antitrust scrutiny of Big Tech and online censorship reform.",
+      "Cultural Conservatism": "Opposed federal funding for DEI and gender ideology in schools.",
+      "Border Enforcement": "Advocated for Title 42 reinstatement and increased ICE funding."
+    },
+    "proposals": "Break up tech monopolies, expand vocational training, and restrict foreign land ownership.",
+    "engagement": {
+      "executiveOrders2025": 0,
+      "socialMediaSurge": true,
+      "earnedMediaCoverage": true,
+      "sources": [
+        "https://www.whitehouse.gov/administration/jd-vance/",
+        "https://ballotpedia.org/J._D._Vance",
+        "https://www.govtrack.us/congress/members/james_vance/456873/report-card/2024"
+      ]
+    },
+    "billsPassed": [],
+    "salary": "$235,100/year",
+    "predecessor": "Kamala Harris",
+    "electionYear": "2024"
+  },
+  {
     "name": "Marco Rubio",
     "state": "United States",
     "party": "Republican",
