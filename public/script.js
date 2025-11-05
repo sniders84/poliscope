@@ -260,15 +260,17 @@ function renderCabinetGrid(cabinetData) {
 }
 function showCabinetMemberDetail(member) {
   const detail = document.getElementById('cabinetMemberDetail');
-  detail.innerHTML = `
-    <div class="detail-header">
-      <img src="${member.photo}" alt="${member.name}" class="portrait" />
-      <img src="${member.seal}" alt="${member.office} seal" class="seal" />
-    </div>
-    <h2>${member.name}</h2>
-    <h4>${member.office}</h4>
-    <p>${member.bio}</p>
-  `;
+  card.innerHTML = `
+  <div class="photo-wrapper">
+    <img src="${photoSrc}" alt="${member.name || ''}"
+         onerror="this.onerror=null;this.src='assets/default-photo.png';" />
+  </div>
+  <div class="official-info">
+    <h3>${member.name || 'Unknown'}</h3>
+    <p><strong>Office:</strong> ${member.office || 'N/A'}</p>
+  </div>
+  ${member.seal ? `<div class="seal-wrapper"><img src="${member.seal}" alt="${member.office} seal" class="seal" /></div>` : ''}
+`;
   document.getElementById('cabinetGridView').style.display = 'none';
   document.getElementById('cabinetDetailView').style.display = 'block';
 }
