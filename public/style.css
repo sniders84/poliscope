@@ -718,3 +718,26 @@ main {
   transform: translateY(-2px);
   transition: all 0.2s ease;
 }
+.group-card {
+  width: 150px;
+  padding: 1em;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+  transition: transform 0.2s;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0.5em;
+}
+
+.group-card img {
+  width: 60px;   /* keeps the PNG small */
+  height: auto;
+  margin-bottom: 0.5em;
+}
+
+.group-card:hover {
+  transform: scale(1.05);
+}
