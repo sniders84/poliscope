@@ -330,21 +330,9 @@ main {
   cursor: pointer; /* whole card clickable */
 }
 
-/* Hover effect same as officials */
 .organization-card:hover {
-  transform: scale(1.03);
+  transform: scale(1.03); /* same hover as officials */
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-/* Anchor fills card, no visible link text */
-.organization-card a {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  text-decoration: none; /* remove underline */
-  color: inherit;        /* inherit card text color */
-  height: 100%;
-  width: 100%;
 }
 
 .logo-wrapper {
@@ -378,11 +366,6 @@ main {
   margin: 0.4rem 0;
   font-size: 0.9rem;
   color: #555;
-}
-
-/* Remove explicit link styling inside info */
-.info-wrapper a {
-  display: none; /* hide "Visit Website" text */
 }
 
 /* Voting Cards — square grid layout */
