@@ -643,24 +643,18 @@ main {
   transform: translateY(-2px);
   transition: all 0.2s ease;
 }
-/* Cabinet Grid — enforce uniform portrait framing */
-#cabinetList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  justify-content: center;
-  padding: 1rem;
-}
-
+/* Cabinet Cards — strict portrait frame */
 #cabinetList .official-card {
   width: 240px;
-  height: 360px;
+  height: 320px;              /* consistent card size */
   border: 1px solid #ccc;
   border-radius: 6px;
   background: #fff;
   overflow: hidden;
-  cursor: pointer;
+  display: flex;
+  flex-direction: column;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
 }
 
 #cabinetList .official-card:hover {
@@ -668,30 +662,20 @@ main {
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-/* Portrait wrapper — fixed frame */
+/* Portrait wrapper — fixed aspect ratio */
 #cabinetList .photo-wrapper {
   width: 100%;
-  height: 200px;              /* exact same as officials */
+  aspect-ratio: 3 / 4;         /* lock portrait ratio */
   overflow: hidden;
   background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-/* Image forced to fill frame like a photo */
 #cabinetList .photo-wrapper img {
   width: 100%;
   height: 100%;
-  object-fit: cover;          /* crop to frame */
-  object-position: center top;/* align consistently */
-  border-radius: 0;           /* no odd rounding */
-}
-
-#cabinetList .official-info {
-  padding: 10px;
-  background: #fff;
-  text-align: center;
+  object-fit: cover;           /* crop to frame */
+  object-position: center top; /* align consistently */
+  display: block;
 }
 
 /* Back button */
