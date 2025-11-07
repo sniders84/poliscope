@@ -365,7 +365,7 @@ main {
   text-decoration: none;
 }
 
-/* Voting Cards — balanced vertical alignment */
+/* Voting Cards — center icons and lift text from bottom */
 #voting-cards,
 .voting-grid {
   display: grid;
@@ -384,7 +384,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 220px;              /* tightened height */
+  height: 260px;              /* increased height to balance vertical space */
 }
 
 .voting-card:hover {
@@ -401,11 +401,13 @@ main {
   height: 100%;
   width: 100%;
   text-align: center;
-  gap: 0.4rem;                /* even spacing between items */
+  padding-top: 10px;          /* add top breathing room */
+  padding-bottom: 18px;       /* add bottom breathing room */
+  gap: 0.5rem;                /* even spacing between items */
 }
 
 .voting-card .card-icon {
-  font-size: 2.2rem;
+  font-size: 2.4rem;          /* slightly larger icon for center presence */
 }
 
 .voting-card .card-label {
@@ -419,8 +421,10 @@ main {
 }
 
 .voting-card .card-date {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: #888;
+  margin-top: 0;              /* remove auto push to bottom */
+  margin-bottom: 4px;         /* slight lift from bottom edge */
 }
 
 /* 🔧 Refined Voting Card Layout — Center Icon and Label */
