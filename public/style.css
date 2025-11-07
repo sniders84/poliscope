@@ -86,9 +86,9 @@ main {
 /* Official Card — applies to ALL officials (Congress, Governors, Cabinet, etc.) */
 .official-card {
   display: flex;
-  flex-direction: row;   /* stripe on the left, body on the right */
-  width: 240px;          /* uniform width */
-  height: 320px;         /* uniform height */
+  flex-direction: column;   /* stack photo, info, seal vertically */
+  width: 220px;             /* uniform width */
+  height: 320px;            /* uniform height */
   border: 1px solid #ccc;
   border-radius: 6px;
   overflow: hidden;
@@ -100,17 +100,13 @@ main {
   transform: scale(1.03);
 }
 
-/* Party stripe is a dedicated column */
+/* Party stripe always visible on the left edge */
 .official-card .party-stripe {
-  width: 8px;            /* slightly thicker for visibility */
-  flex-shrink: 0;
-}
-
-.official-card .card-body {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
 }
 
 .official-card .photo-wrapper {
