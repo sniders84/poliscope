@@ -643,7 +643,7 @@ main {
   transform: translateY(-2px);
   transition: all 0.2s ease;
 }
-/* Cabinet Grid — match officials formatting */
+/* Cabinet Grid — enforce uniform portrait framing */
 #cabinetList {
   display: flex;
   flex-wrap: wrap;
@@ -668,22 +668,24 @@ main {
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-/* Portrait wrapper — same as officials */
+/* Portrait wrapper — fixed frame */
 #cabinetList .photo-wrapper {
   width: 100%;
-  height: 200px;              /* fixed uniform height */
+  height: 200px;              /* exact same as officials */
+  overflow: hidden;
+  background: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  background: #fff;
 }
 
+/* Image forced to fill frame like a photo */
 #cabinetList .photo-wrapper img {
-  width: 100%;                /* fill wrapper width */
-  height: 100%;               /* fill wrapper height */
-  object-fit: cover;          /* crop consistently */
-  object-position: center top;/* align like officials */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* crop to frame */
+  object-position: center top;/* align consistently */
+  border-radius: 0;           /* no odd rounding */
 }
 
 #cabinetList .official-info {
@@ -691,81 +693,6 @@ main {
   background: #fff;
   text-align: center;
 }
-
-/* Cabinet member cards */
-#cabinetList .official-card {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-#cabinetList .official-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-#cabinetList .photo-wrapper {
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #f8f8f8;
-}
-
-#cabinetList .photo-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-#cabinetList .official-info {
-  padding: 0.75rem;
-  text-align: center;
-}
-
-#cabinetList .official-info h3 {
-  margin: 0.25rem 0;
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-#cabinetList .official-info p {
-  margin: 0.25rem 0;
-  font-size: 0.85rem;
-  color: #555;
-}
-
-/* Cabinet detail view */
-#cabinetDetailView {
-  padding: 1rem;
-}
-
-#cabinetDetailView h2 {
-  margin-top: 0;
-  font-size: 1.4rem;
-  font-weight: 700;
-}
-
-#cabinetDetailView p {
-  margin: 0.5rem 0;
-  font-size: 0.95rem;
-  line-height: 1.4;
-}
-
-#cabinetDetailView a {
-  color: #0066cc;
-  text-decoration: none;
-}
-
-#cabinetDetailView a:hover {
-  text-decoration: underline;
-}
-
 /* Back button */
 #cabinetDetailView button {
   display: inline-block;
