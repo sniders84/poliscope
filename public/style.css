@@ -84,26 +84,25 @@ main {
   justify-content: center;
 }
 
-/* Official Card — applies to ALL officials (Congress, Governors, Cabinet, etc.) */
+/* Official Card */
 .official-card {
   position: relative;
   display: flex;
-  flex-direction: column;      /* stack photo, info, seal vertically */
-  width: 220px;                /* uniform width */
-  height: 320px;               /* uniform height */
+  flex-direction: column;
+  width: 220px;
+  height: 320px;
   border: 1px solid #ccc;
   border-radius: 6px;
   overflow: hidden;
   background: #fff;
   transition: transform 0.2s ease;
-  margin: 12px;                /* spacing between cards */
+  margin: 12px;
 }
 
 .official-card:hover {
   transform: scale(1.03);
 }
 
-/* Party stripe always visible */
 .official-card .party-stripe {
   position: absolute;
   top: 0;
@@ -112,21 +111,19 @@ main {
   height: 100%;
 }
 
-/* Card body holds photo, info, seal */
 .official-card .card-body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;   /* center contents horizontally */
+  align-items: center;
   justify-content: flex-start;
-  padding-left: 6px;     /* offset so stripe isn’t covered */
+  padding-left: 6px;
   box-sizing: border-box;
 }
 
-/* Photo area */
 .official-card .photo-wrapper {
   width: 100%;
-  height: 140px;              /* fixed height */
+  height: 140px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -137,11 +134,10 @@ main {
 .official-card .photo-wrapper img {
   width: 90px;
   height: 120px;
-  object-fit: contain;   /* back to original */
+  object-fit: contain;
   object-position: center;
 }
 
-/* Info block */
 .official-card .official-info {
   padding: 10px;
   background: #fff;
@@ -159,7 +155,6 @@ main {
   margin: 0.2rem 0;
 }
 
-/* Seal placement under info block */
 .official-card .seal-wrapper {
   width: 60px;
   height: 60px;
@@ -167,27 +162,26 @@ main {
   align-items: center;
   justify-content: center;
   margin-top: 8px;
-  flex-shrink: 0;        /* prevent collapse */
-  overflow: hidden;      /* trims excess padding */
+  flex-shrink: 0;
+  overflow: hidden;
 }
 
 .official-card .seal {
   width: 100%;
   height: 100%;
-  object-fit: contain;   /* scales circle to fit box */
+  object-fit: contain;
   display: block;
 }
 
 /* Cabinet List Grid */
 #cabinetList {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); /* match card width */
-  gap: 24px;               /* more breathing room between cards */
-  padding: 1rem;           /* space around the grid */
-  justify-items: center;   /* center cards in their grid cells */
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 24px;
+  padding: 1rem;
+  justify-items: center;
 }
 
-/* Cabinet hover effect */
 #cabinetList .official-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
@@ -202,6 +196,7 @@ main {
 .constitution .party-stripe { background: #8e44ad; }
 .workingfamilies .party-stripe { background: #34495e; }
 .progressive .party-stripe { background: #e67e22; }
+
 /* Modal */
 .modal {
   display: none;
@@ -234,17 +229,15 @@ main {
   cursor: pointer;
 }
 
-/* Modal Header Layout */
 .detail-header {
   display: flex;
-  flex-direction: row;       /* photo and seal side by side */
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 20px;                 /* spacing between photo and seal */
+  gap: 20px;
   padding: 20px;
 }
 
-/* Portrait inside modal */
 .detail-header .photo-wrapper {
   width: 160px;
   height: 200px;
@@ -258,20 +251,18 @@ main {
 .detail-header .photo-wrapper img {
   width: 100%;
   height: 100%;
-  object-fit: contain;       /* keep proportions, no cropping */
+  object-fit: contain;
   object-position: center;
 }
 
-/* Seal inside modal */
 .detail-header .seal {
-  width: 200px;              /* balanced size next to portrait */
+  width: 200px;
   height: 200px;
   object-fit: contain;
   display: block;
-  background: #fff;          /* optional: fills transparent padding */
+  background: #fff;
 }
 
-/* Modal Body Info */
 .detail-body {
   margin-top: 20px;
   text-align: center;
@@ -304,7 +295,6 @@ main {
   font-style: italic;
   color: #888;
 }
-
 /* Civic Intelligence */
 .civic-section {
   display: flex;
@@ -340,25 +330,23 @@ main {
   transform: scale(1.03);
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
+
 /* Voting Cards */
 .voting-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
-  padding: 2rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 .voting-card {
   background: #fff;
   border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 1rem;
-  transition: box-shadow 0.2s ease;
-}
-
-.voting-card:hover {
-  box-shadow: 0 0 0 2px crimson;
+  border-radius: 6px;
+  padding: 0.8rem;
+  transition:
+      box-shadow: 0 0 0 2px crimson;
 }
 
 .voting-card a {
@@ -366,27 +354,27 @@ main {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 1em;
-  min-height: 180px;
+  padding: 0.8em;
+  min-height: 160px;
   text-decoration: none;
   color: inherit;
 }
 
 .voting-card .card-icon {
-  font-size: 7em;
+  font-size: 5em;
   line-height: 1;
   margin-bottom: 0.3em;
 }
 
 .voting-card .card-label {
-  font-size: 1.2em;
+  font-size: 1.1em;
   font-weight: 600;
   margin-bottom: 0.2em;
 }
 
 .voting-card .card-description,
 .voting-card .card-date {
-  font-size: 0.9em;
+  font-size: 0.85em;
   margin: 0.1em 0;
   line-height: 1.2;
 }
@@ -418,7 +406,7 @@ main {
   width: 100%;
   max-width: 120px;
   height: 80px;
-  object-fit: contain;   /* keeps aspect ratio */
+  object-fit: contain;
   margin: 0 auto 10px;
   display: block;
 }
@@ -431,5 +419,72 @@ main {
 }
 
 .poll-links a:hover {
+  text-decoration: underline;
+}
+
+/* Political Groups Grid */
+.groups-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.group-card {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.group-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+/* Logo stretched across top */
+.group-card .logo-wrapper {
+  width: 100%;
+  height: 120px;              /* uniform logo height */
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.group-card .logo-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Info under logo */
+.group-card .info {
+  padding: 10px;
+}
+
+.group-card .info h3 {
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.group-card .info p {
+  font-size: 0.85rem;
+  margin-bottom: 0.4rem;
+  color: #555;
+}
+
+.group-card .info a {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #2e74b5;
+  text-decoration: none;
+}
+
+.group-card .info a:hover {
   text-decoration: underline;
 }
