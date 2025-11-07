@@ -335,7 +335,7 @@ main {
 .voting-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, 220px); /* fixed square columns */
-  gap: 14px;
+  gap: 12px;
   justify-content: center;                         /* center the grid */
   padding: 1rem;
 }
@@ -369,8 +369,7 @@ main {
 }
 
 .voting-card .card-icon {
-  font-size: 2.8em;
-  line-height: 1;
+  font-size: 2.5em;              /* scaled down */
 }
 
 .voting-card .card-label {
@@ -431,7 +430,7 @@ main {
 .groups-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, 220px); /* fixed square columns */
-  gap: 14px;
+  gap: 12px;
   justify-content: center;                         /* center the grid */
   margin-top: 20px;
 }
