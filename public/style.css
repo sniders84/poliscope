@@ -365,7 +365,17 @@ main {
   text-decoration: none;
 }
 
-/* Voting Cards — force icon lower, balance text */
+/* Voting Cards — square grid layout */
+#voting-cards,
+.voting-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* smaller min width */
+  gap: 1rem;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  justify-content: center;   /* center grid in container */
+}
+
 .voting-card {
   background: #fff;
   border: 1px solid #ddd;
@@ -375,7 +385,8 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 300px;              /* taller to allow icon centering */
+  width: 180px;              /* fixed width */
+  height: 180px;             /* fixed height — makes them squares */
 }
 
 .voting-card:hover {
@@ -386,38 +397,32 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* stack from top, but we’ll push icon down */
+  justify-content: center;   /* center stack vertically */
   text-decoration: none;
   color: inherit;
   height: 100%;
   width: 100%;
   text-align: center;
-  position: relative;
+  gap: 0.5rem;                /* keep spacing consistent */
 }
 
 .voting-card .card-icon {
-  font-size: 2.6rem;
-  margin-top: 60px;           /* push icon down toward center */
-  margin-bottom: 0.6rem;
+  font-size: 2.2rem;
 }
 
 .voting-card .card-label {
   font-weight: bold;
-  font-size: 1.1rem;
-  margin-bottom: 0.3rem;
+  font-size: 1rem;
 }
 
 .voting-card .card-description {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: #555;
-  margin-bottom: 0.4rem;
 }
 
 .voting-card .card-date {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: #888;
-  margin-top: auto;           /* anchor date lower */
-  margin-bottom: 10px;        /* lift text off bottom edge */
 }
 
 /* 🔧 Stretch emoji like PNGs across top of card */
