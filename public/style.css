@@ -86,8 +86,9 @@ main {
 /* Official Card — applies to ALL officials (Congress, Governors, Cabinet, etc.) */
 .official-card {
   display: flex;
-  flex-direction: row;   /* stripe on the left, body on the right */
-  height: 280px;         /* uniform card height */
+  flex-direction: column;   /* stack photo, info, seal vertically */
+  width: 240px;             /* uniform width */
+  height: 320px;            /* uniform height */
   border: 1px solid #ccc;
   border-radius: 6px;
   overflow: hidden;
@@ -101,19 +102,15 @@ main {
 
 .official-card .party-stripe {
   width: 6px;
-  flex-shrink: 0;
-}
-
-.official-card .card-body {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
 .official-card .photo-wrapper {
   width: 100%;
-  height: 120px;              /* fixed height */
+  height: 140px;              /* fixed height */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -122,9 +119,9 @@ main {
 }
 
 .official-card .photo-wrapper img {
-  width: 90px;                /* fixed width */
-  height: 120px;              /* fixed height */
-  object-fit: contain;        /* keep proportions */
+  width: 90px;
+  height: 120px;
+  object-fit: contain;
   object-position: center;
 }
 
@@ -147,11 +144,11 @@ main {
 /* Seal placement under info block */
 .official-card .seal-wrapper {
   text-align: center;
-  margin-top: 8px;        /* small gap below info */
+  margin-top: 8px;
 }
 
 .official-card .seal {
-  width: 60px;            /* compact size fits neatly */
+  width: 60px;
   height: auto;
   display: inline-block;
 }
