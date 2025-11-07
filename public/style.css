@@ -83,7 +83,7 @@ main {
   gap: 1.5rem;
   justify-content: center;
 }
-/* Official Card — unified look */
+/* Official Card — unified for ALL officials (including Cabinet) */
 .official-card {
   display: flex;
   flex-direction: row;   /* stripe on the left, body on the right */
@@ -130,19 +130,19 @@ main {
 /* Photo wrapper — seamless white background */
 .official-card .photo-wrapper {
   width: 100%;
-  height: 180px;
+  height: 200px;              /* consistent portrait box */
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: #fff; /* white, matches card */
+  background: #fff;           /* match card background */
 }
 
 .official-card .photo-wrapper img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: top center;
+  object-fit: cover;          /* crop + zoom to fill */
+  object-position: center top;/* keep faces toward top */
   background: transparent;
 }
 
@@ -169,6 +169,7 @@ main {
   color: #555;
   margin: 0.2rem 0;
 }
+
 /* Cabinet Grid — unified with officials */
 #cabinetList {
   display: flex;
@@ -196,19 +197,19 @@ main {
 
 #cabinetList .photo-wrapper {
   width: 100%;
-  height: 180px;
+  height: 200px;              /* match all officials */
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: #fff; /* seamless white */
+  background: #fff;           /* seamless white */
 }
 
 #cabinetList .photo-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top center;
+  object-position: center top;
 }
 
 #cabinetList .official-info {
@@ -312,6 +313,7 @@ main {
   color: #888;
   margin-top: auto;
 }
+
 /* Political Groups Grid (unchanged) */
 .groups-grid {
   display: grid;
@@ -375,42 +377,4 @@ main {
 
 .group-card .info a:hover {
   text-decoration: underline;
-}
-/* === FINAL OVERRIDE: Official & Cabinet Portraits === */
-.official-card .photo-wrapper,
-#cabinetList .official-card .photo-wrapper {
-  width: 100%;
-  height: 180px;              /* uniform photo area */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background: #fff;           /* seamless with card */
-}
-
-.official-card .photo-wrapper img,
-#cabinetList .official-card .photo-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;          /* crop + zoom to fill */
-  object-position: center top;/* keep faces toward top */
-}
-/* === FINAL UNIVERSAL PORTRAIT RULE === */
-.official-card .photo-wrapper,
-#cabinetList .official-card .photo-wrapper {
-  width: 100%;
-  height: 200px;              /* consistent portrait box */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background: #fff;           /* seamless with card */
-}
-
-.official-card .photo-wrapper img,
-#cabinetList .official-card .photo-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;          /* zoom + crop to fill */
-  object-position: center top;/* keep faces toward top */
 }
