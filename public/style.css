@@ -127,8 +127,8 @@ main {
   justify-content: space-between;
 }
 
-/* === Official & Cabinet Portraits — Framed Uniformly === */
-.official-card .photo-wrapper,
+/* === Official & Cabinet Portraits — Framed Uniformly (GRID ONLY) === */
+.grid .official-card .photo-wrapper,
 #cabinetList .official-card .photo-wrapper {
   width: 100%;
   height: 200px;              /* fixed frame height */
@@ -139,7 +139,7 @@ main {
   background: #fff;           /* seamless with card */
 }
 
-.official-card .photo-wrapper img,
+.grid .official-card .photo-wrapper img,
 #cabinetList .official-card .photo-wrapper img {
   width: auto;                /* keep natural width */
   height: 100%;               /* scale to frame height */
@@ -147,6 +147,7 @@ main {
   object-position: center top;/* keep faces toward top */
   background: transparent;
 }
+
 /* Info block */
 .official-card .official-info {
   padding: 10px;
