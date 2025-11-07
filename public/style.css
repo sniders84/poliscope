@@ -176,9 +176,10 @@ main {
 /* Cabinet List Grid */
 #cabinetList {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 1rem;
-  padding: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); /* match card width */
+  gap: 24px;               /* more breathing room between cards */
+  padding: 1rem;           /* space around the grid */
+  justify-items: center;   /* center cards in their grid cells */
 }
 
 /* Cabinet hover effect */
