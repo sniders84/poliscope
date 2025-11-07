@@ -22,71 +22,34 @@ header {
   justify-content: space-between;
 }
 
-.header-left {
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
+.header-left { display: flex; align-items: center; height: 100%; }
+.logo { height: 144px; width: auto; object-fit: contain; }
 
-.logo {
-  height: 144px;
-  width: auto;
-  object-fit: contain;
-}
-
-/* Search Controls */
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-#search-bar,
-#state-dropdown {
-  padding: 0.5rem;
-  font-size: 1rem;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+.header-right { display: flex; align-items: center; gap: 1rem; }
+#search-bar, #state-dropdown {
+  padding: 0.5rem; font-size: 1rem;
+  border-radius: 4px; border: 1px solid #ccc;
 }
 
 /* Tabs BELOW Header */
-nav {
-  display: flex;
-  justify-content: center;
-  background: #e0e0e0;
-  padding: 0.5rem;
-}
-
+nav { display: flex; justify-content: center; background: #e0e0e0; padding: 0.5rem; }
 nav .tab {
-  margin: 0 1rem;
-  padding: 0.5rem 1rem;
-  background: #d0d0d0;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  border-radius: 4px;
+  margin: 0 1rem; padding: 0.5rem 1rem;
+  background: #d0d0d0; border: none; cursor: pointer;
+  font-weight: bold; border-radius: 4px;
 }
-
-nav .tab:hover {
-  background: #c0c0c0;
-}
+nav .tab:hover { background: #c0c0c0; }
 
 /* Main Content */
-main {
-  padding: 2rem;
-}
+main { padding: 2rem; }
 
 /* Officials Grid */
-.grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  justify-content: center;
-}
-/* Official Card — unified for ALL officials (including Cabinet) */
+.grid { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; }
+
+/* Official Card — unified look */
 .official-card {
   display: flex;
-  flex-direction: row;   /* stripe on the left, body on the right */
+  flex-direction: row;
   width: 240px;
   height: 360px;
   border: 1px solid #ccc;
@@ -97,21 +60,12 @@ main {
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
-.official-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
+.official-card:hover { transform: scale(1.03); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
 
 /* Party stripe */
-.official-card .party-stripe {
-  width: 6px;
-  flex-shrink: 0;
-}
-
+.official-card .party-stripe { width: 6px; flex-shrink: 0; }
 .republican .party-stripe { background: #c0392b; }
-.democrat .party-stripe,
-.democratic .party-stripe { background: #2e74b5; }
+.democrat .party-stripe, .democratic .party-stripe { background: #2e74b5; }
 .independent .party-stripe { background: #7f8c8d; }
 .green .party-stripe { background: #27ae60; }
 .libertarian .party-stripe { background: #f1c40f; }
@@ -121,10 +75,7 @@ main {
 
 /* Card body */
 .official-card .card-body {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex: 1; display: flex; flex-direction: column; justify-content: space-between;
 }
 
 /* === Official & Cabinet Portraits — Framed Uniformly (GRID ONLY) === */
@@ -138,182 +89,129 @@ main {
   overflow: hidden;
   background: #fff;           /* seamless with card */
 }
-
 .grid .official-card .photo-wrapper img,
 #cabinetList .official-card .photo-wrapper img {
-  width: auto;                /* keep natural width */
-  height: 100%;               /* scale to frame height */
-  object-fit: cover;          /* crop edges if too wide */
-  object-position: center top;/* keep faces toward top */
+  width: auto;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
   background: transparent;
 }
 
 /* Info block */
 .official-card .official-info {
-  padding: 10px;
-  background: #fff;
-  text-align: center;
+  padding: 10px; background: #fff; text-align: center;
 }
-
-.official-card .official-info h3 {
-  font-size: 1.1rem;
-  margin-bottom: 0.3rem;
-}
-
-.official-card .official-info p {
-  font-size: 0.9rem;
-  margin: 0.2rem 0;
-}
-
-.district-display {
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: #555;
-  margin: 0.2rem 0;
-}
+.official-card .official-info h3 { font-size: 1.1rem; margin-bottom: 0.3rem; }
+.official-card .official-info p { font-size: 0.9rem; margin: 0.2rem 0; }
+.district-display { font-size: 0.9rem; font-weight: 500; color: #555; margin: 0.2rem 0; }
 
 /* Cabinet Grid — unified with officials */
 #cabinetList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  justify-content: center;
-  padding: 1rem;
+  display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; padding: 1rem;
 }
-
 #cabinetList .official-card {
-  width: 240px;
-  height: 360px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  background: #fff;
-  overflow: hidden;
-  cursor: pointer;
+  width: 240px; height: 360px;
+  border: 1px solid #ccc; border-radius: 6px; background: #fff;
+  overflow: hidden; cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+#cabinetList .official-card:hover { transform: scale(1.03); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+#cabinetList .official-info { padding: 10px; background: #fff; text-align: center; }
 
-#cabinetList .official-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-#cabinetList .photo-wrapper {
-  width: 100%;
-  height: 200px;              /* match all officials */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background: #fff;           /* seamless white */
-}
-
-#cabinetList .photo-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-}
-
-#cabinetList .official-info {
-  padding: 10px;
-  background: #fff;
-  text-align: center;
-}
 /* Modal */
 .modal {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
+  display: none; position: fixed; top: 0; left: 0;
   width: 100%; height: 100%;
   background: rgba(0,0,0,0.6);
-  justify-content: center;
-  align-items: center;
+  justify-content: center; align-items: center;
   z-index: 1000;
 }
-
 .modal-content {
   background: #fff;
-  padding: 2rem;
-  max-width: 700px;
-  max-height: 90vh;
+  padding: 1.5rem;
+  max-width: 600px;  /* scaled down */
+  max-height: 80vh;  /* scaled down */
   overflow-y: auto;
   border-radius: 8px;
   position: relative;
 }
-
 #close-modal {
-  position: absolute;
-  top: 1rem;
-  right: 1.5rem;
-  font-size: 1.5rem;
-  cursor: pointer;
+  position: absolute; top: 1rem; right: 1.5rem;
+  font-size: 1.5rem; cursor: pointer;
 }
+
+/* Modal detail header */
+.detail-header { display: flex; align-items: flex-start; gap: 20px; }
+.detail-header .portrait {
+  width: 140px; height: 180px;
+  object-fit: cover; object-position: top center;
+  border-radius: 4px;
+}
+.detail-header .seal { width: 80px; height: auto; }
 
 /* Civic Intelligence */
 .civic-section { display: flex; flex-direction: column; gap: 2rem; }
 .civic-block h2 { margin-bottom: 0.5rem; color: #b30000; }
 .link-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
-.link-card { background: #fff; border: 1px solid #ccc; border-left: 6px solid #b30000; padding: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s ease; }
+.link-card {
+  background: #fff; border: 1px solid #ccc; border-left: 6px solid #b30000;
+  padding: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  display: flex; flex-direction: column; justify-content: space-between;
+  transition: transform 0.2s ease;
+}
 .link-card:hover { transform: scale(1.03); }
 
 /* Organizations */
 .organization-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; padding: 1rem; }
-.organization-card { background: #fff; border: 1px solid #ccc; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: flex; flex-direction: column; }
-.logo-wrapper { width: 100%; height: 120px; background: #f9f9f9; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.organization-card {
+  background: #fff; border: 1px solid #ccc; border-radius: 8px;
+  overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  display: flex; flex-direction: column;
+}
+.logo-wrapper {
+  width: 100%; height: 120px; background: #f9f9f9;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
 .logo-wrapper img { max-height: 100%; max-width: 100%; object-fit: contain; }
 
 /* Voting Cards (unchanged) */
-#voting-cards,
-.voting-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
-  padding: 2rem;
-  margin-top: 2rem;
+#voting-cards, .voting-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem; padding: 2rem; margin-top: 2rem;
 }
-
 .voting-card {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 1rem;
-  transition: box-shadow 0.2s ease;
+  background: #fff; border: 1px solid #ddd; border-radius: 8px;
+  padding: 1rem; transition: box-shadow 0.2s ease;
 }
-
-.voting-card:hover {
-  box-shadow: 0 0 0 2px crimson;
-}
-
+.voting-card:hover { box-shadow: 0 0 0 2px crimson; }
 .voting-card a {
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  color: inherit;
-  height: 100%;
-  width: 100%;
+  display: flex; flex-direction: column;
+  text-decoration: none; color: inherit;
+  height: 100%; width: 100%;
+}
+.voting-card .card-icon { 
+  font-size: 2.6rem; 
+  margin-bottom: 0.5rem; 
 }
 
-.voting-card .card-icon {
-  font-size: 2.6rem;
-  margin-bottom: 0.5rem;
+.voting-card .card-label { 
+  font-weight: bold; 
+  font-size: 1.2rem; 
+  margin-bottom: 0.25rem; 
 }
 
-.voting-card .card-label {
-  font-weight: bold;
-  font-size: 1.2rem;
-  margin-bottom: 0.25rem;
+.voting-card .card-description { 
+  font-size: 0.95rem; 
+  color: #555; 
+  margin-bottom: 0.5rem; 
 }
 
-.voting-card .card-description {
-  font-size: 0.95rem;
-  color: #555;
-  margin-bottom: 0.5rem;
-}
-
-.voting-card .card-date {
-  font-size: 0.85rem;
-  color: #888;
-  margin-top: auto;
+.voting-card .card-date { 
+  font-size: 0.85rem; 
+  color: #888; 
+  margin-top: auto; 
 }
 
 /* Political Groups Grid (unchanged) */
