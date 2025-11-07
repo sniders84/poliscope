@@ -85,11 +85,11 @@ main {
 }
 /* Official Card — applies to ALL officials (Congress, Governors, Cabinet, etc.) */
 .official-card {
-  position: relative;          /* allow stripe to sit on the left */
+  position: relative;
   display: flex;
-  flex-direction: column;      /* stack photo, info, seal vertically */
-  width: 220px;                /* uniform width */
-  height: 320px;               /* uniform height */
+  flex-direction: column;   /* stack photo, info, seal vertically */
+  width: 220px;             /* uniform width */
+  height: 320px;            /* uniform height */
   border: 1px solid #ccc;
   border-radius: 6px;
   overflow: hidden;
@@ -97,11 +97,6 @@ main {
   transition: transform 0.2s ease;
 }
 
-.official-card:hover {
-  transform: scale(1.03);
-}
-
-/* Party stripe always visible */
 .official-card .party-stripe {
   position: absolute;
   top: 0;
@@ -116,7 +111,6 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
   background: #f5f5f5;
 }
 
@@ -124,35 +118,23 @@ main {
   width: 90px;
   height: 120px;
   object-fit: contain;
-  object-position: center;
 }
 
 .official-card .official-info {
   padding: 10px;
-  background: #fff;
   text-align: center;
-  flex-grow: 0;                /* don’t stretch */
-}
-
-.official-card .official-info h3 {
-  font-size: 1.1rem;
-  margin-bottom: 0.3rem;
-}
-
-.official-card .official-info p {
-  font-size: 0.9rem;
-  margin: 0.2rem 0;
+  flex-grow: 0;   /* don’t stretch */
 }
 
 /* Seal placement under info block */
 .official-card .seal-wrapper {
   text-align: center;
   margin-top: 8px;
-  flex-grow: 0;                /* keep it visible */
+  flex-grow: 0;   /* keep it visible */
 }
 
 .official-card .seal {
-  width: 60px;                 /* compact size */
+  width: 60px;    /* smaller size for cards */
   height: auto;
   display: inline-block;
 }
