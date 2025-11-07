@@ -1252,3 +1252,16 @@ main {
   padding: 10px;
   text-align: center;
 }
+/* Cabinet / Officials Modal — enlarge seals */
+.modal .seal-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.modal .seal-wrapper img {
+  width: 300px;   /* triple the typical ~100px size */
+  height: auto;   /* keep aspect ratio */
+  object-fit: contain;
+}
