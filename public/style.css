@@ -365,13 +365,13 @@ main {
   text-decoration: none;
 }
 
-/* Voting Cards — tightened layout */
+/* Voting Cards — balanced vertical alignment */
 #voting-cards,
 .voting-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* slightly narrower min */
-  gap: 1rem;              /* less gap between cards */
-  padding: 1.5rem;        /* less outer padding */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  padding: 1.5rem;
   margin-top: 1.5rem;
 }
 
@@ -379,12 +379,12 @@ main {
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
-  padding: 0.75rem;       /* reduced inner padding */
+  padding: 0.75rem;
   transition: box-shadow 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 220px;          /* fixed, reduced height */
+  height: 220px;              /* tightened height */
 }
 
 .voting-card:hover {
@@ -394,36 +394,33 @@ main {
 .voting-card a {
   display: flex;
   flex-direction: column;
-  align-items: center;    /* center horizontally */
-  justify-content: center;/* center vertically */
+  align-items: center;        /* center horizontally */
+  justify-content: center;    /* center vertically */
   text-decoration: none;
   color: inherit;
   height: 100%;
   width: 100%;
   text-align: center;
+  gap: 0.4rem;                /* even spacing between items */
 }
 
 .voting-card .card-icon {
-  font-size: 2.2rem;      /* slightly smaller icon */
-  margin-bottom: 0.4rem;
+  font-size: 2.2rem;
 }
 
 .voting-card .card-label {
   font-weight: bold;
   font-size: 1.1rem;
-  margin-bottom: 0.2rem;
 }
 
 .voting-card .card-description {
   font-size: 0.9rem;
   color: #555;
-  margin-bottom: 0.4rem;
 }
 
 .voting-card .card-date {
   font-size: 0.8rem;
   color: #888;
-  margin-top: auto;
 }
 
 /* 🔧 Refined Voting Card Layout — Center Icon and Label */
