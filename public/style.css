@@ -425,21 +425,24 @@ main {
   color: #888;
 }
 
-/* 🔧 Stretch emoji like PNGs across top of card */
+/* 🔧 Emoji icons sized to fit card square */
 .voting-card .card-icon {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100px;
+  height: 100px;              /* fixed container height */
   margin-bottom: 0.5em;
+  overflow: hidden;           /* prevent overflow */
 }
 
 .voting-card .card-icon .emoji {
-  font-size: 6rem;
+  font-size: 3.5rem;          /* reduced size to fit */
   line-height: 1;
   display: inline-block;
+  max-height: 100%;           /* never exceed container */
 }
+
 .modal-photo img {
   width: 160px;
   height: auto;
