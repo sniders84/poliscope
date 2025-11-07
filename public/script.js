@@ -7,6 +7,23 @@ let houseReps = [];
 let officialsContainer = null;
 let searchBar = null;
 
+// === DATA LOADING ===
+// (example: after you fetch or import both JSON files)
+Promise.all([
+  fetch('officials.json').then(res => res.json()),
+  fetch('cabinet.json').then(res => res.json())
+]).then(([officialsData, cabinetData]) => {
+  // Merge them into one master array
+  const allOfficials = [...officialsData, ...cabinetData];
+
+  // Now render and wire up search using allOfficials
+  renderOfficials(allOfficials, 'officialsList');
+
+  searchBar.addEventListener('input', e => {
+    searchOfficials(e.target.value, allOfficials);
+  });
+});
+
 // Modal refs (Officials modal)
 let officialsModal = null;
 let officialsModalContent = null;
