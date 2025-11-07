@@ -144,6 +144,18 @@ main {
   margin: 0.2rem 0;
 }
 
+/* Seal placement under info block */
+.official-card .seal-wrapper {
+  text-align: center;
+  margin-top: 8px;        /* small gap below info */
+}
+
+.official-card .seal {
+  width: 60px;            /* compact size fits neatly */
+  height: auto;
+  display: inline-block;
+}
+
 /* Cabinet List Grid */
 #cabinetList {
   display: grid;
