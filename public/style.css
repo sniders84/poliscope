@@ -334,9 +334,9 @@ main {
 /* Voting Cards Grid */
 .voting-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 220px); /* fixed square width */
-  gap: 12px;
-  justify-content: center;
+  grid-template-columns: repeat(auto-fill, 220px); /* fixed square columns */
+  gap: 14px;
+  justify-content: center;                         /* center the grid */
   padding: 1rem;
 }
 
@@ -369,7 +369,7 @@ main {
 }
 
 .voting-card .card-icon {
-  font-size: 2.8em;              /* scaled way down */
+  font-size: 2.8em;
   line-height: 1;
 }
 
@@ -430,9 +430,10 @@ main {
 /* Political Groups Grid */
 .groups-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 220px); /* fixed square width */
-  gap: 12px;
-  justify-content: center;
+  grid-template-columns: repeat(auto-fill, 220px); /* fixed square columns */
+  gap: 14px;
+  justify-content: center;                         /* center the grid */
+  margin-top: 20px;
 }
 
 .group-card {
@@ -444,7 +445,6 @@ main {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  text-align: center;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -477,6 +477,7 @@ main {
   flex-direction: column;
   justify-content: center;
   gap: 4px;
+  text-align: center;
 }
 
 .group-card .info h3 {
@@ -494,4 +495,8 @@ main {
   font-weight: 600;
   color: #2e74b5;
   text-decoration: none;
+}
+
+.group-card .info a:hover {
+  text-decoration: underline;
 }
