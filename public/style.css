@@ -83,20 +83,27 @@ main {
   gap: 1.5rem;
   justify-content: center;
 }
+
 /* Official Card — applies to ALL officials (Congress, Governors, Cabinet, etc.) */
 .official-card {
-  position: relative;
+  position: relative;          /* allow stripe to sit on the left */
   display: flex;
-  flex-direction: column;   /* stack photo, info, seal vertically */
-  width: 220px;             /* uniform width */
-  height: 320px;            /* uniform height */
+  flex-direction: column;      /* stack photo, info, seal vertically */
+  width: 220px;                /* uniform width */
+  height: 320px;               /* uniform height */
   border: 1px solid #ccc;
   border-radius: 6px;
   overflow: hidden;
   background: #fff;
   transition: transform 0.2s ease;
+  margin: 8px;                 /* spacing in grid */
 }
 
+.official-card:hover {
+  transform: scale(1.03);
+}
+
+/* Party stripe always visible */
 .official-card .party-stripe {
   position: absolute;
   top: 0;
@@ -105,12 +112,25 @@ main {
   height: 100%;
 }
 
+/* Card body holds photo, info, seal */
+.official-card .card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* center contents horizontally */
+  justify-content: flex-start;
+  padding-left: 6px;     /* offset so stripe isn’t covered */
+  box-sizing: border-box;
+}
+
+/* Photo area */
 .official-card .photo-wrapper {
   width: 100%;
-  height: 140px;
+  height: 140px;              /* fixed height */
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   background: #f5f5f5;
 }
 
@@ -118,23 +138,37 @@ main {
   width: 90px;
   height: 120px;
   object-fit: contain;
+  object-position: center;
 }
 
+/* Info block */
 .official-card .official-info {
   padding: 10px;
+  background: #fff;
   text-align: center;
-  flex-grow: 0;   /* don’t stretch */
+  flex-grow: 0;
+}
+
+.official-card .official-info h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+.official-card .official-info p {
+  font-size: 0.9rem;
+  margin: 0.2rem 0;
 }
 
 /* Seal placement under info block */
 .official-card .seal-wrapper {
   text-align: center;
   margin-top: 8px;
-  flex-grow: 0;   /* keep it visible */
+  flex-shrink: 0;        /* prevent collapse */
+  min-height: 40px;      /* reserve space so it always shows */
 }
 
 .official-card .seal {
-  width: 60px;    /* smaller size for cards */
+  width: 60px;           /* compact size for cards */
   height: auto;
   display: inline-block;
 }
