@@ -333,54 +333,19 @@ main {
 
 /* Voting Cards Grid */
 .voting-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 220px); /* fixed square columns */
-  gap: 12px;
-  justify-content: center;                         /* center the grid */
-  padding: 1rem;
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)) !important;
+  gap: 14px !important;
+  justify-content: center !important;
 }
 
 .voting-card {
-  width: 220px;
-  height: 220px;                 /* enforce square */
+  width: 220px !important;
+  height: 220px !important;
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 6px;
   overflow: hidden;
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
-}
-
-.voting-card:hover {
-  box-shadow: 0 0 0 2px crimson;
-  transform: translateY(-2px);
-}
-
-.voting-card a {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;       /* center content in square */
-  gap: 6px;
-  text-align: center;
-  padding: 8px;
-  height: 100%;
-  color: inherit;
-  text-decoration: none;
-}
-
-.voting-card .card-icon {
-  font-size: 2.5em;              /* scaled down */
-}
-
-.voting-card .card-label {
-  font-size: 0.9em;
-  font-weight: 700;
-}
-
-.voting-card .card-description,
-.voting-card .card-date {
-  font-size: 0.75em;
-  color: #555;
 }
 
 /* Polls Grid */
@@ -428,105 +393,19 @@ main {
 
 /* Political Groups Grid */
 .groups-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 220px); /* fixed square columns */
-  gap: 12px;
-  justify-content: center;                         /* center the grid */
-  margin-top: 20px;
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)) !important;
+  gap: 14px !important;
+  justify-content: center !important;
 }
 
 .group-card {
-  width: 220px;
-  height: 220px;                 /* enforce square */
+  width: 220px !important;
+  height: 220px !important;
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 6px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
-.group-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-}
-
-/* Logo across top */
-.group-card .logo-wrapper {
-  width: 100%;
-  height: 90px;                  /* compact logo band */
-  background: #f5f5f5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.group-card .logo-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-/* Info below logo */
-.group-card .info {
-  flex: 1;
-  padding: 6px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 4px;
-  text-align: center;
-}
-
-.group-card .info h3 {
-  font-size: 0.9rem;
-  font-weight: 700;
-}
-
-.group-card .info p {
-  font-size: 0.75rem;
-  color: #555;
-}
-
-.group-card .info a {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #2e74b5;
-  text-decoration: none;
-}
-
-.group-card .info a:hover {
-  text-decoration: underline;
-}
-/* VOTING OVERRIDE — FORCE TRUE GRID + SMALL SQUARES */
-.voting-grid {
-  display: grid !important;
-  grid-template-columns: repeat(auto-fill, 220px) !important;
-  gap: 12px !important;
-  justify-content: center !important;
-  align-items: start !important;
-}
-
-.voting-card {
-  width: 220px !important;
-  height: 220px !important;
-  overflow: hidden !important;
-  border-radius: 6px !important;
-}
-
-.voting-card a {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 6px !important;
-  height: 100% !important;
-  padding: 8px !important;
-  text-decoration: none !important;
-}
-
-.voting-card .card-icon { font-size: 2.6em !important; line-height: 1 !important; }
-.voting-card .card-label { font-size: 0.9em !important; font-weight: 700 !important; }
-.voting-card .card-description,
-.voting-card .card-date { font-size: 0.75em !important; color: #555 !important; }
