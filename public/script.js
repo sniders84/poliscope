@@ -255,8 +255,12 @@ function renderCabinetMember(member) {
     ? member.photo
     : 'assets/default-photo.png';
 
+  const sealSrc = member.seal && member.seal.trim() !== ''
+    ? member.seal
+    : 'assets/default-seal.png';
+
   return `
-    <div class="official-card">
+    <div class="official-card ${member.party?.toLowerCase() || ''}">
       <div class="party-stripe"></div>
       <div class="card-body">
         <div class="photo-wrapper">
@@ -268,6 +272,11 @@ function renderCabinetMember(member) {
           <p><strong>Position:</strong> ${member.office || 'N/A'}</p>
           <p><strong>Department:</strong> ${member.department || ''}</p>
           <p><strong>Party:</strong> ${member.party || 'N/A'}</p>
+        </div>
+        <div class="seal-wrapper">
+          <img src="${sealSrc}" alt="${member.department || 'Seal'}"
+               onerror="this.onerror=null;this.src='assets/default-seal.png';"
+               class="seal" />
         </div>
       </div>
     </div>
