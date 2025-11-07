@@ -310,10 +310,10 @@ main {
   align-self: flex-start;
 }
 
-/* Political Groups / Organizations Grid */
+/* Organizations / Political Groups Grid */
 .organization-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* tighter squares */
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1.2rem;
   padding: 1rem;
   justify-content: center;
@@ -330,18 +330,19 @@ main {
   cursor: pointer; /* whole card clickable */
 }
 
+/* Hover effect same as officials */
 .organization-card:hover {
-  transform: scale(1.03); /* same hover as officials */
+  transform: scale(1.03);
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-/* Anchor fills card, hides link styles */
+/* Anchor fills card, no visible link text */
 .organization-card a {
   display: flex;
   flex-direction: column;
   flex: 1;
-  text-decoration: none; /* no underline */
-  color: inherit;        /* no blue link */
+  text-decoration: none; /* remove underline */
+  color: inherit;        /* inherit card text color */
   height: 100%;
   width: 100%;
 }
@@ -377,6 +378,11 @@ main {
   margin: 0.4rem 0;
   font-size: 0.9rem;
   color: #555;
+}
+
+/* Remove explicit link styling inside info */
+.info-wrapper a {
+  display: none; /* hide "Visit Website" text */
 }
 
 /* Voting Cards — square grid layout */
