@@ -275,16 +275,34 @@ main {
 .detail-body {
   margin-top: 20px;
   text-align: center;
+  line-height: 1.4;
 }
 
 .detail-body h3 {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
+  font-weight: 700;
   margin-bottom: 0.5rem;
+  color: #222;
 }
 
-.detail-body p {
+.detail-body .office-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: #444;
+}
+
+.detail-body .department {
   font-size: 1rem;
-  margin: 0.3rem 0;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+  color: #666;
+}
+
+.detail-body .party {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: #888;
 }
 
 /* Civic Intelligence */
