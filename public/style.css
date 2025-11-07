@@ -240,7 +240,6 @@ main {
   flex-direction: row;       /* photo and seal side by side */
   align-items: center;
   justify-content: center;
-  text-align: center;
   gap: 20px;                 /* spacing between photo and seal */
   padding: 20px;
 }
@@ -270,6 +269,22 @@ main {
   object-fit: contain;
   display: block;
   background: #fff;          /* optional: fills transparent padding */
+}
+
+/* Modal Body Info */
+.detail-body {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.detail-body h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.detail-body p {
+  font-size: 1rem;
+  margin: 0.3rem 0;
 }
 
 /* Civic Intelligence */
