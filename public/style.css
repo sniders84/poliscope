@@ -127,25 +127,26 @@ main {
   justify-content: space-between;
 }
 
-/* Photo wrapper — seamless white background */
-.official-card .photo-wrapper {
+/* === Official & Cabinet Portraits — Framed Uniformly === */
+.official-card .photo-wrapper,
+#cabinetList .official-card .photo-wrapper {
   width: 100%;
-  height: 200px;              /* consistent portrait box */
+  height: 200px;              /* fixed frame height */
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: #fff;           /* match card background */
+  background: #fff;           /* seamless with card */
 }
 
-.official-card .photo-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;          /* crop + zoom to fill */
+.official-card .photo-wrapper img,
+#cabinetList .official-card .photo-wrapper img {
+  width: auto;                /* keep natural width */
+  height: 100%;               /* scale to frame height */
+  object-fit: cover;          /* crop edges if too wide */
   object-position: center top;/* keep faces toward top */
   background: transparent;
 }
-
 /* Info block */
 .official-card .official-info {
   padding: 10px;
