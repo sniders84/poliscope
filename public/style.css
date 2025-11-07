@@ -643,7 +643,7 @@ main {
   transform: translateY(-2px);
   transition: all 0.2s ease;
 }
-/* Cabinet Grid — unified with officials */
+/* Cabinet Grid — match officials formatting */
 #cabinetList {
   display: flex;
   flex-wrap: wrap;
@@ -668,21 +668,22 @@ main {
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
+/* Portrait wrapper — same as officials */
 #cabinetList .photo-wrapper {
   width: 100%;
-  height: 200px;              /* match all officials */
+  height: 200px;              /* fixed uniform height */
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: #fff;           /* seamless white */
+  background: #fff;
 }
 
 #cabinetList .photo-wrapper img {
-  width: auto;                /* framed, not stretched */
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
+  width: 100%;                /* fill wrapper width */
+  height: 100%;               /* fill wrapper height */
+  object-fit: cover;          /* crop consistently */
+  object-position: center top;/* align like officials */
 }
 
 #cabinetList .official-info {
