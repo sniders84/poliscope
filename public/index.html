@@ -104,10 +104,25 @@
   <div id="polls-content" class="modal-content"></div>
 </div>
 
-    <section id="organizations" class="tab-content" style="display: none;">
-      <h2>Political Organizations</h2>
-      <div id="organizations"></div>
-    </section>
+  <section id="organizations" class="tab-content" style="display: none;">
+  <h2>Political Organizations</h2>
+  <div class="organization-grid">
+
+    <!-- Each organization card is now a full anchor -->
+    <a href="YOUR_ORGANIZATION_URL" target="_blank" class="organization-card">
+      <div class="logo-wrapper">
+        <img src="YOUR_LOGO_PATH" alt="Organization Logo">
+      </div>
+      <div class="info-wrapper">
+        <h3>Organization Name</h3>
+        <p>Organization description goes here.</p>
+      </div>
+    </a>
+
+    <!-- Repeat more <a class="organization-card"> blocks for each org -->
+
+  </div>
+</section>
 
     <section id="voting" class="tab-content" style="display: none;">
       <h2>Voting & Registration</h2>
