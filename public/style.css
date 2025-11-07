@@ -395,3 +395,22 @@ main {
   object-fit: cover;          /* crop + zoom to fill */
   object-position: center top;/* keep faces toward top */
 }
+/* === FINAL UNIVERSAL PORTRAIT RULE === */
+.official-card .photo-wrapper,
+#cabinetList .official-card .photo-wrapper {
+  width: 100%;
+  height: 200px;              /* consistent portrait box */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #fff;           /* seamless with card */
+}
+
+.official-card .photo-wrapper img,
+#cabinetList .official-card .photo-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* zoom + crop to fill */
+  object-position: center top;/* keep faces toward top */
+}
