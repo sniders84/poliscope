@@ -365,7 +365,7 @@ main {
   text-decoration: none;
 }
 
-/* Voting Cards — icon centered vertically, text lifted */
+/* Voting Cards — force icon lower, balance text */
 .voting-card {
   background: #fff;
   border: 1px solid #ddd;
@@ -375,7 +375,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 280px;              /* taller to allow true centering */
+  height: 300px;              /* taller to allow icon centering */
 }
 
 .voting-card:hover {
@@ -386,66 +386,40 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around; /* distribute icon + text evenly */
+  justify-content: flex-start; /* stack from top, but we’ll push icon down */
   text-decoration: none;
   color: inherit;
   height: 100%;
   width: 100%;
   text-align: center;
+  position: relative;
 }
 
 .voting-card .card-icon {
   font-size: 2.6rem;
-  margin-top: 20px;           /* push icon down toward center */
+  margin-top: 60px;           /* push icon down toward center */
+  margin-bottom: 0.6rem;
 }
 
 .voting-card .card-label {
   font-weight: bold;
   font-size: 1.1rem;
-  margin-top: 0.5rem;
+  margin-bottom: 0.3rem;
 }
 
 .voting-card .card-description {
   font-size: 0.9rem;
   color: #555;
-  margin-top: 0.3rem;
+  margin-bottom: 0.4rem;
 }
 
 .voting-card .card-date {
   font-size: 0.85rem;
   color: #888;
-  margin-top: 0.5rem;
-  margin-bottom: 12px;        /* lift text off bottom edge */
+  margin-top: auto;           /* anchor date lower */
+  margin-bottom: 10px;        /* lift text off bottom edge */
 }
 
-/* 🔧 TRIPLE the emoji size — no extra spacing */
-.voting-card .card-icon {
-  font-size: 9em; /* TRIPLE the size of 3em baseline */
-  line-height: 1;
-  margin-bottom: 0.2em;
-}
-
-.voting-card a {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 1em;
-  min-height: 200px;
-}
-
-.voting-card .card-label {
-  font-size: 1.2em;
-  font-weight: 600;
-  margin-bottom: 0.2em;
-}
-
-.voting-card .card-description,
-.voting-card .card-date {
-  font-size: 0.9em;
-  margin: 0.1em 0;
-  line-height: 1.2;
-}
 /* 🔧 Stretch emoji like PNGs across top of card */
 .voting-card .card-icon {
   width: 100%;
