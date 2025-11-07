@@ -168,9 +168,11 @@ main {
 }
 
 .official-card .seal {
-  width: 60px;           /* compact size for cards */
-  height: auto;
-  display: inline-block;
+  width: 60px;
+  height: 60px;          /* force square box */
+  object-fit: contain;   /* keep proportions */
+  background: #fff;      /* optional, fills transparent padding */
+  border-radius: 50%;    /* optional, keeps circular look */
 }
 
 /* Cabinet List Grid */
