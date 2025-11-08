@@ -497,3 +497,12 @@ main {
 .poll-links a:hover {
   text-decoration: underline;
 }
+/* Officials Modal — uniform portrait sizing */
+#officials-modal .modal-photo img {
+  width: 180px;
+  height: 280px;
+  object-fit: contain;
+  object-position: top center;
+  background: #fff;
+  border-radius: 4px;
+}
