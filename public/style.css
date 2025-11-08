@@ -1,136 +1,493 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Inter', sans-serif; background: #f9f9fb; color: #1a1a1a; line-height: 1.6; }
+/* Global Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f9f9fb;
+  color: #1a1a1a;
+  line-height: 1.6;
+}
+
+/* Header Layout */
 header {
-  background: linear-gradient(135deg, #1a5fa3, #0d3b66);
-  color: white;
-  padding: 2rem 1rem;
-  text-align: center;
+  background: linear-gradient(to right, #2e74b5, #ccc, #fff, #ccc, #c0392b);
+  color: #fff;
+  height: 160px;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
 }
 
-.logo-img {
-  height: 80px;
-  border-radius: 16px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-  margin-bottom: 1rem;
+header:hover {
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
 }
 
-header h1 { font-size: 2.4rem; margin: 0.5rem 0; }
-header p { opacity: 0.9; font-size: 1.1rem; }
-
-.tabs {
+.header-left {
   display: flex;
-  background: white;
-  border-bottom: 1px solid #eee;
-  overflow-x: auto;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  align-items: center;
+  height: 100%;
 }
 
-.tabs button {
-  flex: 1;
-  padding: 1rem;
-  border: none;
-  background: none;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-  min-width: 120px;
+.logo {
+  height: 144px;
+  width: auto;
+  object-fit: contain;
 }
 
-.tabs button:hover { background: #f0f7ff; }
-.tabs button.active { color: #1a5fa3; border-bottom: 3px solid #1a5fa3; }
-
-.controls {
-  padding: 1rem;
-  background: white;
+/* Search Controls */
+.header-right {
   display: flex;
+  align-items: center;
   gap: 1rem;
-  flex-wrap: wrap;
+}
+
+#search-bar,
+#state-dropdown {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: rgba(255,255,255,0.9);
+  transition: all 0.2s ease;
+}
+
+#search-bar:focus,
+#state-dropdown:focus {
+  border-color: #2e74b5;
+  box-shadow: 0 0 0 2px rgba(46,116,181,0.2);
+}
+
+/* Tabs BELOW Header */
+nav {
+  display: flex;
+  justify-content: center;
+  background: #e0e0e0;
+  padding: 0.5rem;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-#state-dropdown, #search-bar {
-  padding: 0.75rem 1rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 1rem;
-  flex: 1;
-  min-width: 200px;
-}
-
-.tab-content { display: none; padding: 1.5rem; }
-.tab-content.active { display: block; }
-
-/* CARDS */
-.official-card, .voting-card, .poll-card, .civic-card, .org-card {
-  background: white;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-  transition: all 0.3s;
+nav .tab {
+  margin: 0 1rem;
+  padding: 0.5rem 1rem;
+  background: #d0d0d0;
+  border: none;
   cursor: pointer;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: all 0.2s ease;
 }
 
-.official-card:hover, .voting-card:hover, .civic-card:hover, .org-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+nav .tab:hover {
+  background: #c0c0c0;
+  transform: translateY(-2px);
 }
 
-.card-body { padding: 1.2rem; display: flex; gap: 1rem; align-items: center; }
-.photo-wrapper { width: 70px; height: 70px; border-radius: 50%; overflow: hidden; border: 3px solid #eee; }
-.photo-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+/* Main Content */
+main {
+  padding: 2rem;
+}
 
-.official-info h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
-.official-info p { font-size: 0.9rem; color: #444; margin: 0.25rem 0; }
-
-/* GRIDS */
-#officials-container, #voting-cards, #polls-cards .poll-grid, #civic-container .civic-grid, #orgs-container .org-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+/* Officials Grid */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
   gap: 1.5rem;
-  margin-top: 1rem;
+  justify-content: center;
 }
 
-.voting-card a, .civic-card a { display: block; padding: 1.5rem; text-decoration: none; color: inherit; }
-.card-icon { font-size: 2.8rem; text-align: center; margin-bottom: 0.75rem; }
-.card-label { font-weight: 700; font-size: 1.15rem; }
-.card-description { font-size: 0.95rem; color: #555; margin: 0.5rem 0; }
-.card-date { color: #d32f2f; font-weight: 600; }
+/* Official Cards (shared) */
+.official-card {
+  display: flex;
+  flex-direction: row;
+  width: 280px;
+  height: 280px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #fff;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
-/* MODAL */
+.official-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Party Stripe */
+.official-card[data-party="Democratic"] .party-stripe { background: #2e74b5; }
+.official-card[data-party="Republican"] .party-stripe { background: #c0392b; }
+.official-card[data-party="Independent"] .party-stripe { background: #999; }
+
+.official-card .party-stripe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  z-index: 2;
+}
+
+.official-card .card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.official-card .photo-wrapper {
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  overflow: hidden;
+}
+
+.official-card .photo-wrapper img {
+  width: 90px;
+  height: 140px;
+  object-fit: contain;
+  object-position: center;
+  background: transparent;
+  transition: transform 0.3s ease;
+}
+
+.official-card:hover .photo-wrapper img {
+  transform: scale(1.05);
+}
+
+.official-card .official-info {
+  padding: 10px;
+  text-align: center;
+}
+
+/* Cabinet Grid Container */
+#cabinetList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+  justify-content: center;
+  padding: 1rem;
+}
+
+/* Modal */
 .modal {
   display: none;
   position: fixed;
-  z-index: 1000;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(0,0,0,0.6);
-  overflow: auto;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: opacity 0.3s ease;
 }
 
 .modal-content {
-  background: white;
-  margin: 5% auto;
-  padding: 2rem;
-  width: 90%;
-  max-width: 800px;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  background: #fff;
+  padding: 1.5rem;
+  max-width: 700px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 8px;
   position: relative;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  animation: fadeIn 0.3s ease;
 }
 
-.close {
+.modal-content h2 {
+  margin-bottom: 1rem;
+}
+
+.modal-content p, .modal-content ul {
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.modal-content ul {
+  padding-left: 1.2rem;
+}
+
+#close-modal {
   position: absolute;
   top: 1rem;
   right: 1.5rem;
-  font-size: 2rem;
-  font-weight: bold;
+  font-size: 1.5rem;
   cursor: pointer;
-  color: #aaa;
+  transition: color 0.2s ease;
 }
 
-.close:hover { color: #000; }
+#close-modal:hover {
+  color: #c0392b;
+}
+
+/* Seal Wrapper */
+.modal-content .seal-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.modal-content .seal-wrapper img {
+  width: 300px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Detail Header */
+.detail-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.detail-header .seal {
+  width: 80px;
+  height: auto;
+}
+
+/* Back Button */
+#cabinetDetailView button {
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #f5f5f5;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+#cabinetDetailView button:hover {
+  background: #e0e0e0;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Civic Intelligence */
+.civic-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.civic-block h2 {
+  margin-bottom: 0.5rem;
+  color: #b30000;
+}
+
+.link-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.link-card {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-left: 6px solid #b30000;
+  padding: 1rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.link-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.link-card h4 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.card-desc {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 0.75rem;
+}
+
+.card-button {
+  display: inline-block;
+  background: #b30000;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  align-self: flex-start;
+  transition: background 0.2s ease;
+}
+
+.card-button:hover {
+  background: #900000;
+}
+
+/* Voting Cards */
+#voting-cards, .voting-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  justify-content: center;
+}
+
+.voting-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.75rem;
+  transition: box-shadow 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 180px;
+}
+
+.voting-card:hover {
+  box-shadow: 0 0 0 2px crimson;
+}
+
+.voting-card a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.voting-card .card-icon {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  margin-bottom: 0.5em;
+  overflow: hidden;
+}
+
+.voting-card .card-icon .emoji {
+  font-size: 3.5rem;
+  line-height: 1;
+  display: inline-block;
+  max-height: 100%;
+  transition: transform 0.2s ease;
+}
+
+.voting-card:hover .emoji {
+  transform: scale(1.1);
+}
+
+.voting-card .card-label {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.voting-card .card-description {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.voting-card .card-date {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* Polls Grid */
+#polls-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.poll-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.poll-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 12px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.poll-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.poll-logo img {
+  width: 100%;
+  max-width: 120px;
+  height: 80px;
+  object-fit: contain;
+  margin: 0 auto 10px;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.poll-card:hover img {
+  transform: scale(1.05);
+}
+
+.poll-links a {
+  font-weight: 500;
+  color: #004080;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.poll-links a:hover {
+  color: #002040;
+  text-decoration: underline;
+}
+
+/* Officials Modal */
+#officials-modal .modal-photo img {
+  width: 180px;
+  height: 280px;
+  object-fit: contain;
+  object-position: top center;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
