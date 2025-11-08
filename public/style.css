@@ -514,48 +514,48 @@ main {
 /* Political Groups Grid Container */
 #political-groups-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
   justify-content: center;
-  padding: 1rem;
+  padding: 2rem;
 }
 
 /* Political Group Card */
 .group-card {
-  width: 80px;
-  height: 80px;
+  width: 300px;
+  height: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   background: #fff;
   border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 4px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease;
   cursor: pointer;
   text-align: center;
 }
 
 .group-card:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 /* Logo inside card */
 .group-logo {
   width: 100%;
-  height: 40px;
+  height: 120px;
   object-fit: contain;
   object-position: center;
-  margin-bottom: 2px;
+  margin-bottom: 12px;
 }
 
 /* Label text */
 .group-info {
-  font-size: 0.55rem;
+  font-size: 1rem;
   font-weight: bold;
   color: #333;
   text-align: center;
-  line-height: 1.1;
+  line-height: 1.2;
 }
