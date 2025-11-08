@@ -435,3 +435,73 @@ header {
 .logo-img:hover {
   transform: scale(1.05);
 }
+/* BIG LOGO - TIKTOK/INSTAGRAM STYLE */
+.logo-img {
+  height: 80px !important;
+  width: auto;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+}
+
+.logo-img:hover {
+  transform: scale(1.08);
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin: 0.5rem 0;
+}
+
+/* CARD GRIDS */
+.official-grid, .poll-grid, .org-grid, .civic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.voting-card, .civic-card, .org-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.voting-card:hover, .civic-card:hover, .org-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+.voting-card a, .civic-card a {
+  display: block;
+  padding: 1.8rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.card-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.card-label {
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+}
+
+.card-description {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 0.75rem;
+}
+
+.card-date {
+  font-size: 0.9rem;
+  color: #d32f2f;
+  font-weight: 600;
+}
