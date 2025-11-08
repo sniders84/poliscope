@@ -619,4 +619,97 @@ document.body.classList.toggle('light-mode');
   background: rgba(255,255,255,0.2);
   transform: rotate(90deg);
 }
+/* ============================================================
+   FINAL PATCH: FROSTED MODALS + GRID CONTENT INSIDE
+   ============================================================ */
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(15,23,42,0.7);
+  backdrop-filter: blur(8px);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  position: relative;
+  background: rgba(30,41,59,0.9);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  max-width: 90%;
+  max-height: 90%;
+  overflow-y: auto;
+  animation: fadeIn 0.4s ease;
+  padding: 2rem;
+}
+
+/* Semi-transparent inner layer */
+.modal-body {
+  background: rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 0 12px rgba(255,255,255,0.05);
+}
+
+/* Ensure any dynamically loaded cards grid nicely */
+.modal-body .officials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  justify-items: center;
+}
+
+/* Inside modal photos */
+.modal-body img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto 0.75rem auto;
+}
+
+/* Readable modal text */
+.modal-body h3,
+.modal-body h4,
+.modal-body h5 {
+  color: var(--accent-light);
+  margin-bottom: 0.4rem;
+}
+
+.modal-body p {
+  color: var(--muted-light);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Close button restyle */
+.modal-content .close {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background: rgba(255,255,255,0.1);
+  color: var(--accent-light);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.modal-content .close:hover {
+  background: rgba(255,255,255,0.2);
+  transform: rotate(90deg);
+}
 
