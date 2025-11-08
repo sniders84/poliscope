@@ -2,46 +2,132 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Electorate</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" href="assets/favicon.ico">
+  <link rel="icon" href="favicon.ico" onerror="this.href='data:,';" />
 </head>
 <body>
   <header>
-    <div class="header-content">
-      <img src="assets/electorate-logo.png" alt="Electorate" class="logo-img">
-      <h1>Electorate</h1>
-      <p>Know your leaders. Track your vote. Own your future.</p>
+    <div class="header-left">
+      <img src="assets/electorate-logo.png" alt="Electorate" class="logo" />
+    </div>
+    <div class="header-right">
+      <input type="text" id="search-bar" placeholder="Search officials..." />
+      <label for="state-dropdown">State:</label>
+      <select id="state-dropdown">
+        <option value="Alabama">Alabama</option>
+        <option value="Alaska">Alaska</option>
+        <option value="American Samoa">American Samoa</option>
+        <option value="Arizona">Arizona</option>
+        <option value="Arkansas">Arkansas</option>
+        <option value="California">California</option>
+        <option value="Colorado">Colorado</option>
+        <option value="Connecticut">Connecticut</option>
+        <option value="Delaware">Delaware</option>
+        <option value="District of Columbia">District of Columbia</option>
+        <option value="Florida">Florida</option>
+        <option value="Georgia">Georgia</option>
+        <option value="Guam">Guam</option>
+        <option value="Hawaii">Hawaii</option>
+        <option value="Idaho">Idaho</option>
+        <option value="Illinois">Illinois</option>
+        <option value="Indiana">Indiana</option>
+        <option value="Iowa">Iowa</option>
+        <option value="Kansas">Kansas</option>
+        <option value="Kentucky">Kentucky</option>
+        <option value="Louisiana">Louisiana</option>
+        <option value="Maine">Maine</option>
+        <option value="Maryland">Maryland</option>
+        <option value="Massachusetts">Massachusetts</option>
+        <option value="Michigan">Michigan</option>
+        <option value="Minnesota">Minnesota</option>
+        <option value="Mississippi">Mississippi</option>
+        <option value="Missouri">Missouri</option>
+        <option value="Montana">Montana</option>
+        <option value="Nebraska">Nebraska</option>
+        <option value="Nevada">Nevada</option>
+        <option value="New Hampshire">New Hampshire</option>
+        <option value="New Jersey">New Jersey</option>
+        <option value="New Mexico">New Mexico</option>
+        <option value="New York">New York</option>
+        <option value="North Carolina" selected>North Carolina</option>
+        <option value="North Dakota">North Dakota</option>
+        <option value="Northern Mariana Islands">Northern Mariana Islands</option>
+        <option value="Ohio">Ohio</option>
+        <option value="Oklahoma">Oklahoma</option>
+        <option value="Oregon">Oregon</option>
+        <option value="Pennsylvania">Pennsylvania</option>
+        <option value="Puerto Rico">Puerto Rico</option>
+        <option value="Rhode Island">Rhode Island</option>
+        <option value="South Carolina">South Carolina</option>
+        <option value="South Dakota">South Dakota</option>
+        <option value="Tennessee">Tennessee</option>
+        <option value="Texas">Texas</option>
+        <option value="Utah">Utah</option>
+        <option value="Vermont">Vermont</option>
+        <option value="Virgin Islands">U.S. Virgin Islands</option>
+        <option value="Virginia">Virginia</option>
+        <option value="Washington">Washington</option>
+        <option value="West Virginia">West Virginia</option>
+        <option value="Wisconsin">Wisconsin</option>
+        <option value="Wyoming">Wyoming</option>
+      </select>
     </div>
   </header>
 
-  <nav class="tabs">
-    <button onclick="showTab('my-officials')" class="active">My Officials</button>
-    <button onclick="showVoting()">Voting</button>
-    <button onclick="showPolls()">Polls</button>
-    <button onclick="showCivic()">Civic Intelligence</button>
-    <button onclick="showOrganizations()">Organizations</button>
+  <nav>
+    <button class="tab" onclick="showTab('my-officials')">My Officials</button>
+    <button class="tab" onclick="showCivic()">Civic Intelligence</button>
+    <button class="tab" onclick="showPolls()">Polls</button>
+    <button class="tab" onclick="showOrganizations()">Political Groups</button>
+    <button class="tab" onclick="showVoting()">Voting</button>
   </nav>
 
-  <div class="controls">
-    <select id="state-dropdown"></select>
-    <input type="text" id="search-bar" placeholder="Search officials..." />
-  </div>
+  <main>
+    <section id="my-officials" class="tab-content">
+      <h2>My Officials</h2>
+      <div id="officials-container" class="grid"></div>
+    </section>
 
-  <!-- YOUR ORIGINAL TABS (unchanged structure) -->
-  <div id="my-officials" class="tab-content" style="display: block;">
-    <div id="officials-container"></div>
-  </div>
-  <div id="voting" class="tab-content"><div id="voting-cards"></div></div>
-  <div id="polls" class="tab-content"><div id="polls-cards"></div></div>
-  <div id="civic" class="tab-content"><div id="civic-container"></div></div>
-  <div id="organizations" class="tab-content"><div id="orgs-container"></div></div>
+    <section id="civic" class="tab-content" style="display: none;">
+      <h2>Civic Intelligence Dashboard</h2>
+      <div id="civic-container"></div>
+    </section>
 
+    <section id="polls" class="tab-content" style="display: none;">
+      <h2>Polling Dashboard</h2>
+      <div id="polls-cards"></div>
+    </section>
+
+    <section id="organizations" class="tab-content" style="display: none;">
+      <h2>Political Organizations</h2>
+      <div id="orgs-container"></div>
+    </section>
+
+    <section id="voting" class="tab-content" style="display: none;">
+      <h2>Voting & Registration</h2>
+      <div id="voting-cards"></div>
+    </section>
+  </main>
+
+  <!-- Modals -->
   <div id="officials-modal" class="modal">
+    <div class="modal-content" id="officials-content"></div>
+    <button id="close-modal" class="close-button">&times;</button>
+  </div>
+
+  <div id="pollModal" class="modal">
+    <div class="modal-content" id="pollModalContent"></div>
+  </div>
+
+  <div id="cabinetModal" class="modal">
     <div class="modal-content">
-      <span class="close" onclick="closeModalWindow('officials-modal')">&times;</span>
+      <span class="close" onclick="closeModalWindow('cabinetModal')">&times;</span>
+      <div id="cabinetGridView"><div id="cabinetList" class="grid"></div></div>
+      <div id="cabinetDetailView" style="display:none;">
+        <button onclick="backToCabinetGrid()">Back</button>
+        <div id="cabinetMemberDetail"></div>
+      </div>
     </div>
   </div>
 
