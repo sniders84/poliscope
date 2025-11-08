@@ -36,11 +36,11 @@ header {
 .official-card {
   display: flex;
   flex-direction: row;
-  width: 240px;
-  height: 260px;
-  ...
+  height: 280px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
 }
-
 
 .official-card .party-stripe {
   width: 6px;
@@ -796,7 +796,7 @@ main {
 }
 
 .photo-wrapper .seal {
-  width: 150px;
+  width: 50px;
   height: auto;
   position: absolute;
   top: 5px;
@@ -1251,76 +1251,4 @@ main {
 #cabinetList .official-info {
   padding: 10px;
   text-align: center;
-}
-/* Cabinet / Officials Modal — enlarge seals */
-.modal .seal-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 1rem 0;
-}
-
-.modal .seal-wrapper img {
-  width: 300px;   /* triple the typical ~100px size */
-  height: auto;   /* keep aspect ratio */
-  object-fit: contain;
-}
-/* 🔱 Enlarge Cabinet seals inside modals */
-.modal .seal-wrapper img {
-  width: 300px !important;   /* triple the typical ~100px size */
-  height: auto !important;   /* preserve aspect ratio */
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-}
-.modal-content img[src*="seal"] {
-  width: 300px !important;
-  height: auto !important;
-  object-fit: contain;
-  display: block;
-  margin: 1rem auto;
-}
-/* 🔱 Triple-size Cabinet seals inside modals */
-.modal-content .seal-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 1rem 0;
-}
-
-.modal-content .seal-wrapper img {
-  width: 300px !important;
-  height: auto !important;
-  object-fit: contain;
-  display: block;
-}
-.official-card[data-party="Democratic"] .party-stripe {
-  background: #2e74b5;
-}
-
-.official-card[data-party="Republican"] .party-stripe {
-  background: #c0392b;
-}
-
-.official-card[data-party="Independent"] .party-stripe {
-  background: #999;
-}
-.official-card[data-party="Libertarian"] .party-stripe {
-  background: #e6c300;
-}
-
-.official-card[data-party="Green"] .party-stripe {
-  background: #3b9d3b;
-}
-
-.official-card[data-party="Constitution"] .party-stripe {
-  background: #6b4c9a;
-}
-
-.official-card[data-party="WorkingFamilies"] .party-stripe {
-  background: #d63384;
-}
-
-.official-card[data-party="Progressive"] .party-stripe {
-  background: #ff6600;
 }
