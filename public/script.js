@@ -28,7 +28,16 @@ Promise.all([
     ...cabinet
   ];
   console.log('Loaded officials:', allOfficials);
-  // TODO: Call renderOfficials(allOfficials) or other init functions here
+
+  // Now render and wire up search using allOfficials
+  renderOfficials(allOfficials, 'officialsList');
+
+  searchBar = document.getElementById('search-bar');
+  if (searchBar) {
+    searchBar.addEventListener('input', e => {
+      searchOfficials(e.target.value, allOfficials);
+    });
+  }
 })
 .catch(error => {
   console.error('Error loading officials data:', error);
