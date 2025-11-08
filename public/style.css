@@ -1265,3 +1265,11 @@ main {
   height: auto;   /* keep aspect ratio */
   object-fit: contain;
 }
+/* 🔱 Enlarge Cabinet seals inside modals */
+.modal .seal-wrapper img {
+  width: 300px !important;   /* triple the typical ~100px size */
+  height: auto !important;   /* preserve aspect ratio */
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
