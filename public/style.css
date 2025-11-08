@@ -102,7 +102,7 @@ main {
   transform: scale(1.03);
 }
 
-/* Party Stripe — dynamic color */
+/* Party Stripe — dynamic color via data-party */
 .official-card[data-party="Democratic"] .party-stripe {
   background: #2e74b5;
 }
