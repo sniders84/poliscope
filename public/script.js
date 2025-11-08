@@ -28,7 +28,7 @@ Promise.all([
     ...cabinet
   ];
   console.log('Loaded officials:', allOfficials);
-  // Proceed with rendering or filtering
+  // TODO: Call renderOfficials(allOfficials) or other init functions here
 })
 .catch(error => {
   console.error('Error loading officials data:', error);
