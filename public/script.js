@@ -9,19 +9,34 @@ let searchBar = null;
 
 // === DATA LOADING ===
 // (example: after you fetch or import both JSON files)
+let allOfficials = [];
+
 Promise.all([
-  fetch('officials.json').then(res => res.json()),
-  fetch('cabinet.json').then(res => res.json())
-]).then(([officialsData, cabinetData]) => {
-  // Merge them into one master array
-  const allOfficials = [...officialsData, ...cabinetData];
+  fetch('cabinet.json').then(res => res.json()),
+  fetch('governors.json').then(res => res.json()),
+  fetch('ltgovernors.json').then(res => res.json()),
+  fetch('senators.json').then(res => res.json()),
+  fetch('housereps.json').then(res => res.json())
+])
+.then(([cabinet, governors, ltgovernors, senators, housereps]) => {
+  allOfficials = [
+    ...cabinet,
+    ...governors,
+    ...ltgovernors,
+    ...senators,
+    ...housereps
+  ];
+  console.log('Loaded officials:', allOfficials.length);
+  renderOfficials(allOfficials, 'officials-container');
 
-  // Now render and wire up search using allOfficials
-  renderOfficials(allOfficials, 'officialsList');
-
-  searchBar.addEventListener('input', e => {
-    searchOfficials(e.target.value, allOfficials);
-  });
+  if (searchBar) {
+    searchBar.addEventListener('input', e => {
+      searchOfficials(e.target.value, allOfficials);
+    });
+  }
+})
+.catch(err => {
+  console.error('Error loading officials:', err);
 });
 
 // Modal refs (Officials modal)
@@ -976,6 +991,11 @@ function renderOfficials(data, containerId) {
     container.appendChild(card);
   });
 }
+function filterByState(stateName) {
+  const filtered = allOfficials.filter(o => o.state === stateName);
+  console.log('Filtered officials for:', stateName, 'Count:', filtered.length);
+  renderOfficials(filtered, 'officials-container');
+}
 
 // === SEARCH BAR WIRING ===
 function wireSearchBar() {
@@ -1058,3 +1078,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+function filterByState(stateName) {
+  const filtered = allOfficials.filter(o => o.state === stateName);
+  console.log('Filtered officials for:', stateName, 'Count:', filtered.length);
+  renderOfficials(filtered, 'officials-container');
+}
