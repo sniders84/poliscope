@@ -842,6 +842,54 @@ const federalOfficials = [
     "electionYear": "2024"
   }
 ];
+function openOfficialModal(official) {
+  const modal = document.getElementById('officials-modal');
+  const modalContent = document.getElementById('officials-content');
+  if (!modal || !modalContent) return;
+
+  const photoSrc = official.photo && official.photo.trim() !== ''
+    ? official.photo
+    : 'assets/default-photo.png';
+
+  const safeYear = d => {
+    if (!d || (typeof d === 'string' && d.trim() === '')) return '';
+    const dt = new Date(d);
+    return isNaN(dt) ? '' : dt.getFullYear();
+  };
+  const startYear = safeYear(official.termStart);
+  const endYear = safeYear(official.termEnd) || 'Present';
+  const termDisplay = (startYear || endYear) ? `${startYear}–${endYear}` : 'Present';
+
+  modalContent.innerHTML = `
+    <div class="modal-card">
+      <div class="modal-photo">
+        <img src="${photoSrc}" alt="${official.name || ''}" onerror="this.onerror=null;this.src='assets/default-photo.png';" />
+      </div>
+      <div class="modal-info">
+        <h2>${official.name || 'Unknown'}</h2>
+        <p><strong>Office:</strong> ${official.office || 'N/A'}</p>
+        ${official.district ? `<p><strong>District:</strong> ${official.district}</p>` : ''}
+        <p><strong>State:</strong> ${official.state || 'United States'}</p>
+        <p><strong>Party:</strong> ${official.party || 'N/A'}</p>
+        <p><strong>Term:</strong> ${termDisplay}</p>
+        ${official.website ? `<p><a href="${official.website}" target="_blank">Official Website</a></p>` : ''}
+        ${official.contact?.email ? `<p><strong>Email:</strong> ${official.contact.email}</p>` : ''}
+        ${official.contact?.phone ? `<p><strong>Phone:</strong> ${official.contact.phone}</p>` : ''}
+      </div>
+    </div>
+  `;
+
+  modal.style.display = 'block';
+
+  const clickOutsideHandler = function(event) {
+    if (event.target === modal) {
+      modal.style.display = 'none';
+      window.removeEventListener('click', clickOutsideHandler);
+    }
+  };
+  window.addEventListener('click', clickOutsideHandler);
+}
+
 // === OFFICIALS RENDERING ===
 function renderOfficials(stateFilter = null, query = '') {
   showTab('my-officials');
