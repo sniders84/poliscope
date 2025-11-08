@@ -872,9 +872,35 @@ function openOfficialModal(official) {
         <p><strong>State:</strong> ${official.state || 'United States'}</p>
         <p><strong>Party:</strong> ${official.party || 'N/A'}</p>
         <p><strong>Term:</strong> ${termDisplay}</p>
+        ${official.bio ? `<p><strong>Bio:</strong> ${official.bio}</p>` : ''}
+        ${official.education ? `<p><strong>Education:</strong> ${official.education}</p>` : ''}
+        ${official.platform ? `<p><strong>Platform:</strong> ${official.platform}</p>` : ''}
+        ${official.platformFollowThrough
+          ? `<div class="follow-through"><h3>Platform Follow-Through</h3><ul>${
+              Object.entries(official.platformFollowThrough)
+                .map(([topic, summary]) => `<li><strong>${topic}:</strong> ${summary}</li>`)
+                .join('')
+            }</ul></div>`
+          : ''}
+        ${official.proposals ? `<p><strong>Proposals:</strong> ${official.proposals}</p>` : ''}
+        ${official.vetoes && ['Governor', 'President'].includes(official.office)
+          ? `<p><strong>Vetoes:</strong> ${official.vetoes}</p>` : ''}
+        ${official.salary ? `<p><strong>Salary:</strong> ${official.salary}</p>` : ''}
+        ${official.committees ? `<p><strong>Committees:</strong> ${official.committees}</p>` : ''}
+        ${official.roles ? `<p><strong>Roles:</strong> ${official.roles}</p>` : ''}
+        ${official.govtrackStats
+          ? `<div class="govtrack-stats"><h3>Congressional Rankings</h3><ul>${
+              Object.entries(official.govtrackStats)
+                .map(([label, value]) => `<li><strong>${label.replace(/([A-Z])/g, ' $1')}:</strong> ${value}</li>`)
+                .join('')
+            }</ul></div>`
+          : ''}
         ${official.website ? `<p><a href="${official.website}" target="_blank">Official Website</a></p>` : ''}
         ${official.contact?.email ? `<p><strong>Email:</strong> ${official.contact.email}</p>` : ''}
         ${official.contact?.phone ? `<p><strong>Phone:</strong> ${official.contact.phone}</p>` : ''}
+        ${official.contact?.website ? `<p><a href="${official.contact.website}" target="_blank">Contact Website</a></p>` : ''}
+        ${official.ballotpediaLink ? `<p><a href="${official.ballotpediaLink}" target="_blank">Ballotpedia Profile</a></p>` : ''}
+        ${official.govtrackLink ? `<p><a href="${official.govtrackLink}" target="_blank">GovTrack</a></p>` : ''}
       </div>
     </div>
   `;
