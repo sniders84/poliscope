@@ -11,9 +11,7 @@
 <body>
   <header>
     <div class="header-content">
-      <div class="logo">
-        <img src="assets/electorate-logo.png" alt="Electorate" class="logo-img">
-      </div>
+      <img src="assets/electorate-logo.png" alt="Electorate" class="logo-img">
       <h1>Electorate</h1>
       <p>Know your leaders. Track your vote. Own your future.</p>
     </div>
@@ -32,32 +30,15 @@
     <input type="text" id="search-bar" placeholder="Search officials..." />
   </div>
 
-  <!-- MY OFFICIALS -->
+  <!-- YOUR ORIGINAL TABS (unchanged structure) -->
   <div id="my-officials" class="tab-content" style="display: block;">
     <div id="officials-container"></div>
   </div>
+  <div id="voting" class="tab-content"><div id="voting-cards"></div></div>
+  <div id="polls" class="tab-content"><div id="polls-cards"></div></div>
+  <div id="civic" class="tab-content"><div id="civic-container"></div></div>
+  <div id="organizations" class="tab-content"><div id="orgs-container"></div></div>
 
-  <!-- VOTING -->
-  <div id="voting" class="tab-content">
-    <div id="voting-cards"></div>
-  </div>
-
-  <!-- POLLS -->
-  <div id="polls" class="tab-content">
-    <div id="polls-cards"></div>
-  </div>
-
-  <!-- CIVIC INTELLIGENCE -->
-  <div id="civic" class="tab-content">
-    <div id="civic-container"></div>
-  </div>
-
-  <!-- ORGANIZATIONS -->
-  <div id="organizations" class="tab-content">
-    <div id="orgs-container"></div>
-  </div>
-
-  <!-- MODAL -->
   <div id="officials-modal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModalWindow('officials-modal')">&times;</span>
