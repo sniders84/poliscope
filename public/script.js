@@ -1,5 +1,6 @@
 // === GLOBAL STATE ===
 let selectedState = 'North Carolina';
+let allOfficials = [];
 let governors = [];
 let ltGovernors = [];
 let senators = [];
@@ -18,7 +19,7 @@ Promise.all([
   fetch('cabinet.json').then(r => r.json())
 ])
 .then(([federal, governors, ltgovs, senators, reps, scotus, cabinet]) => {
-  const allOfficials = [
+  allOfficials = [
     ...federal,
     ...governors,
     ...ltgovs,
@@ -990,7 +991,7 @@ function renderOfficials(stateFilter = null, query = '') {
     .sort((a, b) => parseInt(a.district) - parseInt(b.district));
   console.log("Filtered reps:", filteredReps.map(r => r.name));
 
-  const allOfficials = [
+allOfficials = [
     ...federalOfficials,
     ...filteredGovs,
     ...filteredLtGovs,
