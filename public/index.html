@@ -12,7 +12,11 @@
   <header>
     <div class="header-content">
       <div class="logo">
-        <img src="assets/electorate-logo.png" alt="Electorate" class="logo-img">
+     <img src="assets/electorate-logo.png" 
+     alt="Electorate" 
+     class="logo-img"
+     onerror="this.src='assets/electorate-logo.jpg'; this.onerror=null;"
+     onload="console.log('Electorate logo loaded')">
         <h1>Electorate</h1>
       </div>
       <p>Know your leaders. Track your vote. Own your future.</p>
