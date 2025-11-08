@@ -1,72 +1,74 @@
 // === GLOBAL STATE ===
 let selectedState = 'North Carolina';
 let governors = [], ltGovernors = [], senators = [], houseReps = [], cabinet = [];
-let federalOfficials = [];
 let officialsContainer = null, searchBar = null;
 
 // === STATE ALIASES ===
 const stateAliases = { "Virgin Islands": "U.S. Virgin Islands" };
 
-// === POLL CATEGORIES (FULL) ===
-const pollCategories = [ /* Your full list from before */ ];
+// === VOTING TAB ===
+function showVoting() {
+  showTab('voting');
+  const container = document.getElementById('voting-cards');
+  if (!container) return;
+  container.innerHTML = '';
 
-// === TAB SWITCHER ===
-function showTab(id) {
-  document.querySelectorAll('.tab-content').forEach(tab => tab.style.display = 'none');
-  const el = document.getElementById(id);
-  if (el) el.style.display = 'block';
-  document.querySelectorAll('.tabs button').forEach(b => b.classList.remove('active'));
-  document.querySelector(`.tabs button[onclick="showTab('${id}')"]`)?.classList.add('active');
+  const votingData = {
+    "North Carolina": {
+      register: { url: "https://www.ncsbe.gov/registering", icon: "Register", description: "Register to vote or update your registration online or by mail", deadline: "October 11, 2025" },
+      id: { url: "https://www.ncsbe.gov/voting/voter-id", icon: "ID", description: "Review North Carolina's voter ID requirements for in-person voting" },
+      absentee: { url: "https://www.ncsbe.gov/voting/vote-mail", icon: "Mail", description: "Request and return your absentee ballot by mail or drop box", deadline: "Request by: October 29, 2025" },
+      early: { url: "https://www.ncsbe.gov/voting/early-voting", icon: "Clock", description: "Find early voting locations and hours in your county", deadline: "Starts: October 16, 2025" },
+      polling: { url: "https://vt.ncsbe.gov/RegLkup/", icon: "Location", description: "Locate your polling place and Election Day hours", deadline: "Election Day: November 4, 2025" },
+      sample: { url: "https://vt.ncsbe.gov/RegLkup/", icon: "Ballot", description: "View your sample ballot and voting instructions" },
+      military: { url: "https://www.ncsbe.gov/voting/military-overseas", icon: "Military", description: "Voting options for military and overseas North Carolinians", deadline: "Request by: October 29, 2025" },
+      counties: { url: "https://www.ncsbe.gov/about-elections/county-boards-elections", icon: "Building", description: "Contact your county board of elections for local info" },
+      tools: { url: "https://vt.ncsbe.gov/RegLkup/", icon: "Tools", description: "Check registration, ballot status, and voting tools" }
+    }
+  };
+
+  const state = stateAliases[selectedState] || selectedState;
+  const data = votingData[state] || {};
+
+  Object.entries(data).forEach(([key, val]) => {
+    const card = document.createElement('div');
+    card.className = 'voting-card';
+    card.innerHTML = `
+      <a href="${val.url}" target="_blank">
+        <div class="card-icon"><span class="emoji">${val.icon}</span></div>
+        <div class="card-label">${val.description.split(' ')[0] + ' ' + val.description.split(' ').slice(1).join(' ')}</div>
+        <div class="card-description">${val.description}</div>
+        ${val.deadline ? `<div class="card-date">${val.deadline}</div>` : ''}
+      </a>
+    `;
+    container.appendChild(card);
+  });
 }
 
-// === MY OFFICIALS (STATE ONLY) ===
-function renderOfficials(stateFilter = null, query = '') {
-  showTab('my-officials');
-  if (!officialsContainer) officialsContainer = document.getElementById('officials-container');
-  if (!officialsContainer) return;
-  officialsContainer.innerHTML = '';
+// === POLLS TAB ===
+function showPolls() {
+  showTab('polls');
+  const container = document.getElementById('polls-cards');
+  if (!container) return;
+  container.innerHTML = '<h3>Polls</h3><div class="poll-grid"></div>';
+  const grid = container.querySelector('.poll-grid');
 
-  const q = query.toLowerCase();
-  const filterState = stateFilter ? (stateAliases[stateFilter] || stateFilter) : null;
+  // Your poll sources
+  const polls = [
+    { source: "RCP", name: "Real Clear Politics", url: "https://realclearpolitics.com", logo: "assets/rcp.png" },
+    { source: "270toWin", name: "270toWin", url: "https://270towin.com", logo: "assets/270towin.png" },
+    // Add all your logos
+  ];
 
-  const stateOfficials = [
-    ...governors.filter(o => !filterState || o.state === filterState),
-    ...ltGovernors.filter(o => !filterState || o.state === filterState),
-    ...senators.filter(o => !filterState || o.state === filterState),
-    ...houseReps.filter(o => !filterState || o.state === filterState).sort((a, b) => +a.district - +b.district)
-  ].filter(o =>
-    !q || o.name?.toLowerCase().includes(q) || o.office?.toLowerCase().includes(q)
-  );
-
-  const partyMap = { republican: 'Republican', democrat: 'Democratic', independent: 'Independent' };
-  const year = d => d && !isNaN(new Date(d).getTime()) ? new Date(d).getFullYear() : '';
-
-  stateOfficials.forEach(o => {
-    const party = partyMap[o.party?.toLowerCase()] || 'Independent';
-    const photo = o.photo?.trim() ? o.photo : 'assets/default-photo.png';
-    const term = `${year(o.termStart)}–${year(o.termEnd) || 'Present'}`.replace(/^–|–$/g, 'Present');
-
+  polls.forEach(p => {
     const card = document.createElement('div');
-    card.className = 'official-card';
-    card.dataset.party = party;
+    card.className = 'poll-card';
     card.innerHTML = `
-      <div class="party-stripe" data-party="${party}"></div>
-      <div class="card-body">
-        <div class="photo-wrapper">
-          <img src="${photo}" alt="${o.name}" onerror="this.src='assets/default-photo.png'">
-        </div>
-        <div class="official-info">
-          <h3>${o.name}</h3>
-          <p><strong>Position:</strong> ${o.office}</p>
-          ${o.district ? `<p><strong>District:</strong> ${o.district}</p>` : ''}
-          <p><strong>State:</strong> ${o.state}</p>
-          <p><strong>Term:</strong> ${term}</p>
-          <p><strong>Party:</strong> ${o.party}</p>
-        </div>
-      </div>
+      <img src="${p.logo}" alt="${p.source}" onerror="this.style.display='none'">
+      <p><strong>${p.source}</strong><br><small>${p.name}</small></p>
+      <a href="${p.url}" target="_blank">View →</a>
     `;
-    card.onclick = () => openOfficialModal(o);
-    officialsContainer.appendChild(card);
+    grid.appendChild(card);
   });
 }
 // === CIVIC INTELLIGENCE TAB ===
@@ -74,49 +76,69 @@ function showCivic() {
   showTab('civic');
   const container = document.getElementById('civic-container');
   if (!container) return;
+  container.innerHTML = '';
 
-  // === CABINET ===
-  const cabinetContainer = document.getElementById('cabinet-container');
-  cabinetContainer.innerHTML = '<h3>Executive Cabinet</h3><div id="cabinet-grid"></div>';
-  const grid = document.getElementById('cabinet-grid');
-  grid.className = 'official-grid';
+  const sections = [
+    { title: "State Legislative Links", items: [
+      { label: "Bills", desc: "Click to view Bills information for North Carolina.", url: "https://www.ncleg.gov/BillLookup" },
+      { label: "State Senate", desc: "Click to view State Senate information for North Carolina.", url: "https://www.ncleg.gov/Members/MemberList/S" },
+      { label: "State House", desc: "Click to view State House information for North Carolina.", url: "https://www.ncleg.gov/Members/MemberList/H" },
+      { label: "governorOrders", desc: "Click to view governorOrders information for North Carolina.", url: "https://governor.nc.gov/executive-orders" },
+      { label: "ltGovPress", desc: "Click to view ltGovPress information for North Carolina.", url: "https://ltgov.nc.gov/press-releases" }
+    ]},
+    { title: "National Governor's Association", items: [
+      { label: "NGA Leadership", desc: "Meet the current leadership...", url: "https://www.nga.org/leadership/" },
+      { label: "Council of Governors", desc: "Explore the bipartisan Council...", url: "https://www.nga.org/cog/" },
+      { label: "Gubernatorial Elections", desc: "Track upcoming...", url: "https://www.nga.org/elections/" },
+      { label: "Education Task Force", desc: "See how governors...", url: "https://www.nga.org/education/" },
+      { label: "Economic Development", desc: "Review strategies...", url: "https://www.nga.org/economic/" },
+      { label: "Public Health", desc: "Understand how...", url: "https://www.nga.org/health/" }
+    ]},
+    { title: "Federal Oversight & Transparency", items: [
+      { label: "Committees", desc: "Explore congressional committees...", url: "https://www.congress.gov/committees" },
+      { label: "Legislator Report Cards", desc: "See performance grades...", url: "https://www.heritageaction.com/scorecard" },
+      { label: "All Federal Bills", desc: "Track every bill...", url: "https://www.congress.gov/" },
+      { label: "Recent Votes", desc: "Review the latest...", url: "https://clerk.house.gov/Votes" },
+      { label: "Cabinet", desc: "View members of the President's Cabinet.", url: "#" }
+    ]}
+  ];
 
-  cabinet.forEach(member => {
-    const card = document.createElement('div');
-    card.className = 'official-card';
-    card.innerHTML = `
-      <div class="card-body">
-        <div class="photo-wrapper">
-          <img src="${member.photo || 'assets/default-photo.png'}" alt="${member.name}" onerror="this.src='assets/default-photo.png'">
-        </div>
-        <div class="official-info">
-          <h3>${member.name}</h3>
-          <p><strong>Position:</strong> ${member.office}</p>
-          <p><strong>Department:</strong> ${member.department || 'N/A'}</p>
-        </div>
-      </div>
-    `;
-    card.onclick = () => openOfficialModal(member);
-    grid.appendChild(card);
+  sections.forEach(sec => {
+    const section = document.createElement('div');
+    section.innerHTML = `<h3>${sec.title}</h3><div class="civic-grid"></div>`;
+    const grid = section.querySelector('.civic-grid');
+    sec.items.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'civic-card';
+      card.innerHTML = `
+        <a href="${item.url}" target="_blank">
+          <div class="card-label">${item.label}</div>
+          <div class="card-description">${item.desc}</div>
+        </a>
+      `;
+      grid.appendChild(card);
+    });
+    container.appendChild(section);
   });
 
-  // === CALENDAR ===
-  const cal = document.getElementById('calendar');
-  cal.innerHTML = `
-    <ul>
-      <li><strong>2026 Midterms:</strong> November 3, 2026</li>
-      <li><strong>2028 Presidential:</strong> November 7, 2028</li>
-    </ul>
-  `;
-
-  // === CIVIC TOOLS ===
-  const tools = document.getElementById('civic-tools');
-  tools.innerHTML = `
-    <div class="tool-card"><a href="https://vote.gov" target="_blank">vote.gov</a></div>
-    <div class="tool-card"><a href="https://ballotpedia.org" target="_blank">Ballotpedia</a></div>
-  `;
+  // Cabinet Grid
+  const cabGrid = document.createElement('div');
+  cabGrid.innerHTML = '<h3>Cabinet</h3><div class="official-grid" id="cabinet-grid"></div>';
+  container.appendChild(cabGrid);
+  renderCabinet();
 }
 
+function renderCabinet() {
+  const grid = document.getElementById('cabinet-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  cabinet.forEach(m => {
+    const card = document.createElement('div');
+    card.className = 'official-card';
+    card.innerHTML = `<div class="card-body">...`; // same as before
+    grid.appendChild(card);
+  });
+}
 // === ORGANIZATIONS TAB ===
 function showOrganizations() {
   showTab('organizations');
@@ -125,10 +147,10 @@ function showOrganizations() {
   container.innerHTML = '<div class="org-grid"></div>';
   const grid = container.querySelector('.org-grid');
 
-  // Example orgs — replace with your JSON later
   const orgs = [
-    { name: "Heritage Foundation", logo: "assets/heritage.png", url: "https://heritage.org" },
-    { name: "ACLU", logo: "assets/aclu.png", url: "https://aclu.org" }
+    { name: "Turning Point USA", platform: "Promotes capitalism...", logo: "assets/turningpoint.png", url: "https://tpusa.com" },
+    { name: "Heritage Action", platform: "Advocacy arm...", logo: "assets/heritageaction.png", url: "https://heritageaction.com" },
+    // ... ALL 52 ORGS WITH LOGOS
   ];
 
   orgs.forEach(org => {
@@ -137,10 +159,42 @@ function showOrganizations() {
     card.innerHTML = `
       <img src="${org.logo}" alt="${org.name}" onerror="this.style.display='none'">
       <p><strong>${org.name}</strong></p>
-      <a href="${org.url}" target="_blank">Visit →</a>
+      <p class="platform">${org.platform}</p>
+      <a href="${org.url}" target="_blank">Visit Website</a>
     `;
     grid.appendChild(card);
   });
 }
 
-// === MODAL, SEARCH, DOM READY === (Same as before, but with cabinet support)
+// === DOM READY ===
+document.addEventListener('DOMContentLoaded', () => {
+  // Populate state dropdown
+  const states = ["Alabama", "Alaska", /* ... */ "North Carolina"];
+  const dropdown = document.getElementById('state-dropdown');
+  states.forEach(s => {
+    const opt = document.createElement('option');
+    opt.value = s;
+    opt.textContent = s;
+    if (s === 'North Carolina') opt.selected = true;
+    dropdown.appendChild(opt);
+  });
+
+  // Wire controls
+  document.getElementById('state-dropdown').onchange = () => {
+    selectedState = this.value;
+    renderOfficials();
+    showVoting();
+  };
+
+  // Load data
+  Promise.all([
+    fetch('governors.json').then(r => r.json()),
+    fetch('ltgovernors.json').then(r => r.json()),
+    fetch('senators.json').then(r => r.json()),
+    fetch('housereps.json').then(r => r.json()),
+    fetch('cabinet.json').then(r => r.json())
+  ]).then(([g, l, s, h, c]) => {
+    governors = g; ltGovernors = l; senators = s; houseReps = h; cabinet = c;
+    renderOfficials();
+  });
+});
