@@ -620,7 +620,7 @@ document.body.classList.toggle('light-mode');
   transform: rotate(90deg);
 }
 /* ============================================================
-   FINAL PATCH: FROSTED MODALS + GRID CONTENT INSIDE
+   UNIVERSAL FROSTED MODAL SYSTEM (Applies to ALL Modals)
    ============================================================ */
 
 .modal {
@@ -648,8 +648,8 @@ document.body.classList.toggle('light-mode');
   padding: 2rem;
 }
 
-/* Semi-transparent inner layer */
-.modal-body {
+/* Semi-transparent “frosted” area for all modal inner content */
+.modal-content > div {
   background: rgba(255,255,255,0.08);
   border-radius: 10px;
   padding: 1.5rem;
@@ -657,41 +657,53 @@ document.body.classList.toggle('light-mode');
   box-shadow: inset 0 0 12px rgba(255,255,255,0.05);
 }
 
-/* Ensure any dynamically loaded cards grid nicely */
-.modal-body .officials-grid {
+/* Grids inside modals */
+.modal-content .officials-grid,
+.modal-content .organization-grid,
+.modal-content .polls-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.25rem;
   justify-items: center;
 }
 
-/* Inside modal photos */
-.modal-body img {
+/* Consistent modal images (officials, orgs, polls, etc.) */
+.modal-content img {
+  display: block;
   width: 180px;
   height: 180px;
   object-fit: cover;
   object-position: center;
   border-radius: 8px;
-  display: block;
   margin: 0 auto 0.75rem auto;
 }
 
-/* Readable modal text */
-.modal-body h3,
-.modal-body h4,
-.modal-body h5 {
-  color: var(--accent-light);
-  margin-bottom: 0.4rem;
+/* Poll and source logos are smaller */
+.modal-content img.poll-logo,
+.modal-content img.source-logo {
+  max-width: 120px;
+  max-height: 120px;
+  object-fit: contain;
 }
 
-.modal-body p {
+/* Text inside modals */
+.modal-content h2,
+.modal-content h3,
+.modal-content h4,
+.modal-content h5 {
+  color: var(--accent-light);
+  margin-bottom: 0.6rem;
+}
+
+.modal-content p {
   color: var(--muted-light);
   font-size: 0.95rem;
   line-height: 1.6;
 }
 
-/* Close button restyle */
-.modal-content .close {
+/* Close button improvements */
+.modal-content .close,
+.modal-content #close-modal {
   position: absolute;
   top: 1rem;
   right: 1.5rem;
@@ -708,8 +720,8 @@ document.body.classList.toggle('light-mode');
   transition: all 0.3s ease;
 }
 
-.modal-content .close:hover {
+.modal-content .close:hover,
+.modal-content #close-modal:hover {
   background: rgba(255,255,255,0.2);
   transform: rotate(90deg);
 }
-
