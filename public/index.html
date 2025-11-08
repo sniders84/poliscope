@@ -9,7 +9,7 @@
 <body>
   <header>
     <div class="header-left">
-      <img src="assets/electorate-logo.png" alt="Electorate Logo" class="logo" />
+      <img src="assets/electorate-logo.png" alt="Logo" class="logo" />
     </div>
     <div class="header-right">
       <input type="text" id="search-bar" placeholder="Search officials..." />
@@ -91,17 +91,17 @@
 
     <section id="civic" class="tab-content" style="display: none;">
       <h2>Civic Intelligence Dashboard</h2>
-      <div id="civic-container"></div>
+      <div id="calendar"></div>
     </section>
 
     <section id="polls" class="tab-content" style="display: none;">
       <h2>Polling Dashboard</h2>
-      <div id="polls-cards"></div>
+      <div id="polls-cards" class="grid"></div>
     </section>
 
     <section id="organizations" class="tab-content" style="display: none;">
       <h2>Political Organizations</h2>
-      <div id="orgs-container"></div>
+      <div class="organization-grid"></div>
     </section>
 
     <section id="voting" class="tab-content" style="display: none;">
@@ -110,18 +110,15 @@
     </section>
   </main>
 
-  <!-- Officials Modal -->
   <div id="officials-modal" class="modal">
     <div class="modal-content" id="officials-content"></div>
     <button id="close-modal" class="close-button">&times;</button>
   </div>
 
-  <!-- Poll Modal -->
   <div id="pollModal" class="modal">
     <div class="modal-content" id="pollModalContent"></div>
   </div>
 
-  <!-- Cabinet Modal -->
   <div id="cabinetModal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModalWindow('cabinetModal')">&times;</span>
