@@ -361,3 +361,36 @@ header {
     width: 100%;
   }
 }
+/* BRAND COLORS */
+:root {
+  --primary: #1a5fa3;
+  --primary-dark: #0d3b66;
+  --accent: #d32f2f;
+  --text: #1a1a1a;
+  --light: #f8f9fa;
+}
+
+/* LOGO */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo-img {
+  height: 48px;
+  width: auto;
+}
+
+header {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+}
+
+/* TAB LABELS */
+.tabs button {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.tabs button[onclick="showCivic()"]::after { content: " Intelligence"; }
+.tabs button[onclick="showOrganizations()"]::after { content: "anizations"; }
