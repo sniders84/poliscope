@@ -1143,6 +1143,25 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 function renderOfficials(data, containerId) {
   console.log('renderOfficials called with:', data);
+
+  const container = document.getElementById(containerId);
+  if (!container) {
+    console.warn('Container not found:', containerId);
+    return;
+  }
+
+  container.innerHTML = ''; // Clear previous content
+
+  data.forEach(official => {
+    const card = document.createElement('div');
+    card.className = 'official-card';
+    card.innerHTML = `
+      <h3>${official.name}</h3>
+      <p>${official.office || ''}</p>
+      <p>${official.state || ''}</p>
+    `;
+    container.appendChild(card);
+  });
 }
 
 function showCivic() {
