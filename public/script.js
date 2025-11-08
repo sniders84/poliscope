@@ -8,24 +8,24 @@ let officialsContainer = null;
 let searchBar = null;
 
 // === DATA LOADING ===
-// (example: after you fetch or import both JSON files)
 Promise.all([
-  Promise.all([
   fetch('federalOfficials.json').then(r => r.json()),
   fetch('governors.json').then(r => r.json()),
   fetch('ltgovernors.json').then(r => r.json()),
   fetch('senators.json').then(r => r.json()),
   fetch('housereps.json').then(r => r.json()),
-  fetch('scotus.json').then(r => r.json())
+  fetch('scotus.json').then(r => r.json()),
+  fetch('cabinet.json').then(r => r.json())
 ])
-.then(([federal, governors, ltgovs, senators, reps, scotus]) => {
+.then(([federal, governors, ltgovs, senators, reps, scotus, cabinet]) => {
   const allOfficials = [
     ...federal,
     ...governors,
     ...ltgovs,
     ...senators,
     ...reps,
-    ...scotus
+    ...scotus,
+    ...cabinet
   ];
   console.log('Loaded officials:', allOfficials);
   // Proceed with rendering or filtering
@@ -33,11 +33,6 @@ Promise.all([
 .catch(error => {
   console.error('Error loading officials data:', error);
 });
-
-  fetch('cabinet.json').then(res => res.json())
-]).then(([officialsData, cabinetData]) => {
-  // Merge them into one master array
-  const allOfficials = [...officialsData, ...cabinetData];
 
   // Now render and wire up search using allOfficials
   renderOfficials(allOfficials, 'officialsList');
