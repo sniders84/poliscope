@@ -83,7 +83,6 @@ main {
   gap: 1.5rem;
   justify-content: center;
 }
-
 /* Applies to ALL official cards (President, VP, Congress, Governors, etc.) */
 .official-card {
   display: flex;
@@ -224,7 +223,6 @@ main {
   background: #fff;
   border-radius: 4px;
 }
-
 /* Modal */
 .modal {
   display: none;
@@ -321,7 +319,6 @@ main {
   from { opacity: 0; transform: translateY(-10px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-
 /* Civic Intelligence */
 .civic-section {
   display: flex;
@@ -500,7 +497,6 @@ main {
 .poll-links a:hover {
   text-decoration: underline;
 }
-
 /* Officials Modal — uniform portrait sizing */
 #officials-modal .modal-photo img {
   width: 180px;
@@ -509,53 +505,4 @@ main {
   object-position: top center;
   background: #fff;
   border-radius: 4px;
-}
-
-/* Political Groups Grid Container */
-#political-groups-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
-  justify-content: center;
-  padding: 2rem;
-}
-
-/* Political Group Card */
-.group-card {
-  width: 300px;
-  height: 300px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 16px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
-  cursor: pointer;
-  text-align: center;
-}
-
-.group-card:hover {
-  transform: scale(1.03);
-}
-
-/* Logo inside card */
-.group-logo {
-  width: 100%;
-  height: 120px;
-  object-fit: contain;
-  object-position: center;
-  margin-bottom: 12px;
-}
-
-/* Label text */
-.group-info {
-  font-size: 1rem;
-  font-weight: bold;
-  color: #333;
-  text-align: center;
-  line-height: 1.2;
 }
