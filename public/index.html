@@ -12,7 +12,7 @@
   <header>
     <div class="header-content">
       <div class="logo">
-        <img src="assets/logo.png" alt="Electorate" class="logo-img">
+        <img src="assets/electorate-logo.png" alt="Electorate" class="logo-img">
         <h1>Electorate</h1>
       </div>
       <p>Know your leaders. Track your vote. Own your future.</p>
@@ -23,12 +23,13 @@
     <button onclick="showTab('my-officials')" class="active">My Officials</button>
     <button onclick="showVoting()">Voting</button>
     <button onclick="showPolls()">Polls</button>
-    <button onclick="showCivic()">Civic</button>
-    <button onclick="showOrganizations()">Orgs</button>
+    <button onclick="showCivic()">Civic Intelligence</button>
+    <button onclick="showOrganizations()">Organizations</button>
   </nav>
 
   <div class="controls">
     <select id="state-dropdown">
+      <!-- All 50 states + territories (same as before) -->
       <option value="Alabama">Alabama</option>
       <option value="Alaska">Alaska</option>
       <option value="Arizona">Arizona</option>
@@ -104,21 +105,27 @@
     <div id="polls-cards"></div>
   </div>
 
-  <!-- CIVIC -->
+  <!-- CIVIC INTELLIGENCE -->
   <div id="civic" class="tab-content">
-    <div id="calendar"></div>
+    <div id="civic-container">
+      <h2>Cabinet & Federal Departments</h2>
+      <div id="cabinet-container"></div>
+      <h2 style="margin-top: 3rem;">Election Calendar</h2>
+      <div id="calendar"></div>
+      <h2 style="margin-top: 3rem;">Civic Tools</h2>
+      <div id="civic-tools"></div>
+    </div>
   </div>
 
   <!-- ORGANIZATIONS -->
   <div id="organizations" class="tab-content">
-    <p>Coming soon: Voter guides, PACs, think tanks, and advocacy groups.</p>
+    <div id="orgs-container"></div>
   </div>
 
   <!-- MODAL -->
   <div id="officials-modal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModalWindow('officials-modal')">&times;</span>
-      <!-- Dynamic content -->
     </div>
   </div>
 
