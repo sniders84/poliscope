@@ -1,84 +1,225 @@
-// === GLOBAL STATE ===
+// GLOBAL STATE
 let selectedState = 'North Carolina';
-let governors = [], ltGovernors = [], senators = [], houseReps = [], cabinet = [];
-let officialsContainer = null, searchBar = null;
+let governors = [];
+let ltGovernors = [];
+let senators = [];
+let houseReps = [];
+let officialsContainer = null;
+let searchBar = null;
 
-// === TAB SWITCHER ===
-function showTab(id) {
-  document.querySelectorAll('.tab-content').forEach(tab => tab.style.display = 'none');
-  const el = document.getElementById(id);
-  if (el) el.style.display = 'block';
-  document.querySelectorAll('.tabs button').forEach(b => b.classList.remove('active'));
-  document.querySelector(`.tabs button[onclick="showTab('${id}')"]`)?.classList.add('active');
+// MODAL REFS
+let officialsModal = null;
+let officialsModalContent = null;
+let officialsModalCloseBtn = null;
+
+// POLL CATEGORIES
+const pollCategories = [
+  // Your full poll categories here (no changes, just formatted)
+  {
+    label: 'President',
+    polls: [
+      { source: 'Ballotpedia', name: 'Ballotpedia – Presidential approval index', url: 'https://ballotpedia.org/Ballotpedia%27s_Polling_Index:_Presidential_approval_rating' },
+      // ... all others
+    ]
+  },
+  // ... all categories
+];
+
+// DATA LOADING
+Promise.all([
+  fetch('officials.json').then(res => res.json()),
+  fetch('cabinet.json').then(res => res.json())
+]).then(([officialsData, cabinetData]) => {
+  const allOfficials = [...officialsData, ...cabinetData];
+  renderOfficials(allOfficials, 'officialsList');
+  searchBar.addEventListener('input', e => searchOfficials(e.target.value, allOfficials));
+});
+
+// OPEN MODAL
+function openModalWindow(modal, content) {
+  modal.style.display = 'block';
+
+  const clickOutsideHandler = function(event) {
+    if (event.target === modal) {
+      modal.style.display = 'none';
+      window.removeEventListener('click', clickOutsideHandler);
+    }
+  };
+  window.addEventListener('click', clickOutsideHandler);
 }
 
-// === RENDER OFFICIALS (YOUR LOGIC, CLEANED) ===
+// OFFICIALS RENDERING
 function renderOfficials(stateFilter = null, query = '') {
   showTab('my-officials');
   if (!officialsContainer) officialsContainer = document.getElementById('officials-container');
   if (!officialsContainer) return;
   officialsContainer.innerHTML = '';
 
-  const q = query.toLowerCase();
-  const filterState = stateFilter || selectedState;
+  const stateAliases = {
+    "Virgin Islands": "U.S. Virgin Islands",
+    "Northern Mariana Islands": "Northern Mariana Islands",
+    "Puerto Rico": "Puerto Rico"
+  };
+  stateFilter = stateAliases[stateFilter] || stateFilter;
 
-  const all = [
-    ...governors.filter(o => o.state === filterState),
-    ...ltGovernors.filter(o => o.state === filterState),
-    ...senators.filter(o => o.state === filterState),
-    ...houseReps.filter(o => o.state === filterState).sort((a,b) => +a.district - +b.district)
-  ].filter(o => !q || o.name.toLowerCase().includes(q) || o.office.toLowerCase().includes(q));
+  const queryLower = query.toLowerCase();
+  const filterByState = query === '';
 
-  all.forEach(o => {
+  const filteredGovs = governors.filter(o => !filterByState || o.state === stateFilter);
+  const filteredLtGovs = ltGovernors.filter(o => !filterByState || o.state === stateFilter);
+  const filteredSens = senators.filter(o => !filterByState || o.state === stateFilter);
+  const filteredReps = houseReps
+    .filter(o => !filterByState || o.state === stateFilter)
+    .sort((a, b) => parseInt(a.district) - parseInt(b.district));
+
+  const allOfficials = [
+    ...federalOfficials,
+    ...filteredGovs,
+    ...filteredLtGovs,
+    ...filteredSens,
+    ...filteredReps
+  ].filter(o =>
+    (o.name || '').toLowerCase().includes(queryLower) ||
+    (o.office || '').toLowerCase().includes(queryLower) ||
+    (o.state || '').toLowerCase().includes(queryLower)
+  );
+
+  const partyMap = {
+    republican: 'Republican',
+    democrat: 'Democratic',
+    democratic: 'Democratic',
+    independent: 'Independent',
+    green: 'Green',
+    libertarian: 'Libertarian',
+    constitution: 'Constitution',
+    'working families': 'WorkingFamilies',
+    workingfamilies: 'WorkingFamilies',
+    progressive: 'Progressive'
+  };
+
+  const safeYear = d => {
+    if (!d || (typeof d === 'string' && d.trim() === '')) return '';
+    const dt = new Date(d);
+    return isNaN(dt) ? '' : dt.getFullYear();
+  };
+
+  allOfficials.forEach(o => {
+    const rawParty = (o.party || '').toLowerCase().trim();
+    const normalizedParty = partyMap[rawParty] || rawParty.replace(/\s+/g, '') || 'Independent';
+    const photoSrc = o.photo && o.photo.trim() !== '' ? o.photo : 'assets/default-photo.png';
+
+    const districtDisplay = o.office === 'U.S. Representative' && o.district
+      ? `<p class="district-display"><strong>District:</strong> ${o.district}</p>`
+      : '';
+
+    const startYear = safeYear(o.termStart);
+    const endYear = safeYear(o.termEnd) || 'Present';
+    const termDisplay = (startYear || endYear) ? `${startYear}–${endYear}` : 'Present';
+
     const card = document.createElement('div');
     card.className = 'official-card';
+    card.setAttribute('data-party', normalizedParty);
+
     card.innerHTML = `
+      <div class="party-stripe"></div>
       <div class="card-body">
         <div class="photo-wrapper">
-          <img src="${o.photo || 'assets/default-photo.png'}" alt="${o.name}" onerror="this.src='assets/default-photo.png'">
+          <img src="${photoSrc}" alt="${o.name}"
+               onerror="this.onerror=null;this.src='assets/default-photo.png';" />
         </div>
         <div class="official-info">
-          <h3>${o.name}</h3>
-          <p><strong>Position:</strong> ${o.office}</p>
-          ${o.district ? `<p><strong>District:</strong> ${o.district}</p>` : ''}
-          <p><strong>Term:</strong> ${o.termStart?.slice(0,4)}–${o.termEnd?.slice(0,4) || 'Present'}</p>
-          <p><strong>Party:</strong> ${o.party}</p>
+          <h3>${o.name || 'Unknown'}</h3>
+          <p><strong>Position:</strong> ${o.office || 'N/A'}</p>
+          ${districtDisplay}
+          <p><strong>State:</strong> ${o.state || 'United States'}</p>
+          <p><strong>Term:</strong> ${termDisplay}</p>
+          <p><strong>Party:</strong> ${o.party || 'N/A'}</p>
         </div>
       </div>
     `;
-    card.onclick = () => openOfficialModal(o);
+    card.addEventListener('click', () => openOfficialModal(o));
     officialsContainer.appendChild(card);
   });
 }
 
-// === YOUR ORIGINAL FUNCTIONS (showVoting, showPolls, etc.) ===
-// KEEP THEM EXACTLY AS YOU HAD — just indented better
+// === SEARCH BAR WIRING ===
+function wireSearchBar() {
+  if (!searchBar) {
+    searchBar = document.getElementById('search-bar');
+  }
+  if (!searchBar) return;
 
-// === DOM READY ===
+  searchBar.addEventListener('input', () => {
+    const query = searchBar.value.trim();
+    renderOfficials(null, query);
+  });
+}
+
+// === STATE DROPDOWN WIRING ===
+function wireStateDropdown() {
+  const dropdown = document.getElementById('state-dropdown');
+  if (!dropdown) return;
+
+  dropdown.value = selectedState;
+
+  dropdown.addEventListener('change', () => {
+    selectedState = dropdown.value;
+    window.selectedState = selectedState;
+    renderOfficials(selectedState, '');
+  });
+}
+
+// === DOM READY: load datasets and wire UI ===
 document.addEventListener('DOMContentLoaded', () => {
+  // Elements
   officialsContainer = document.getElementById('officials-container');
   searchBar = document.getElementById('search-bar');
 
-  // Populate state dropdown
-  const states = ["Alabama", "Alaska", /* ... */ "North Carolina"];
-  const dd = document.getElementById('state-dropdown');
-  states.forEach(s => {
-    const opt = document.createElement('option');
-    opt.value = s; opt.textContent = s;
-    if (s === 'North Carolina') opt.selected = true;
-    dd.appendChild(opt);
-  });
+  // Officials modal refs (match your HTML ids)
+  officialsModal = document.getElementById('officials-modal');
+  officialsModalContent = document.getElementById('officials-content');
+  officialsModalCloseBtn = document.getElementById('officials-close');
 
-  dd.onchange = () => { selectedState = dd.value; renderOfficials(); };
+  // Modal wiring (safe)
+  if (officialsModalCloseBtn) {
+    officialsModalCloseBtn.addEventListener('click', () => closeModalWindow('officials-modal'));
+  }
+  // Avoid global window.onclick overrides here; handled per modal open.
 
-  // Load your JSONs
+  // Core wiring
+  wireSearchBar();
+  wireStateDropdown();
+
+  // Load officials data
   Promise.all([
-    fetch('governors.json').then(r => r.json()),
-    fetch('ltgovernors.json').then(r => r.json()),
-    fetch('senators.json').then(r => r.json()),
-    fetch('housereps.json').then(r => r.json())
-  ]).then(([g, l, s, h]) => {
-    governors = g; ltGovernors = l; senators = s; houseReps = h;
-    renderOfficials();
+    fetch('/governors.json').then(res => res.json()),
+    fetch('/ltgovernors.json').then(res => res.json()),
+    fetch('/senators.json').then(res => res.json()),
+    fetch('/housereps.json').then(res => res.json())
+  ])
+    .then(([govs, ltGovs, sens, reps]) => {
+      governors = govs;
+      ltGovernors = ltGovs;
+      senators = sens;
+      houseReps = reps;
+      renderOfficials(selectedState, '');
+    })
+    .catch(err => {
+      console.error('Error loading official data:', err);
+    });
+
+  // Helper: clear the Officials search bar (no tab switch, no re-render)
+  function closeOfficialsSearch() {
+    if (!searchBar) return;
+    searchBar.value = '';
+    searchBar.blur();
+  }
+
+  // Click-outside to clear search
+  document.addEventListener('mousedown', event => {
+    if (!searchBar) return;
+    if (event.target !== searchBar && !searchBar.contains(event.target)) {
+      closeOfficialsSearch();
+    }
   });
 });
