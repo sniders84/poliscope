@@ -1,6 +1,6 @@
 /* Global Reset */
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Inter', sans-serif; background: #f9f9fb; color: #1a1a1a; line-height: 1.6; }
+body { font-family: Arial, sans-serif; background: #f4f4f4; color: #333; line-height: 1.6; }
 
 /* Header */
 header {
@@ -19,11 +19,15 @@ header {
 #search-bar, #state-dropdown {
   padding: 0.5rem 1rem;
   font-size: 1rem;
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid #ccc;
-  background: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.95);
+  transition: all 0.2s;
 }
-#search-bar:focus, #state-dropdown:focus { border-color: #2e74b5; box-shadow: 0 0 0 2px rgba(46,116,181,0.2); }
+#search-bar:focus, #state-dropdown:focus {
+  border-color: #2e74b5;
+  box-shadow: 0 0 0 2px rgba(46,116,181,0.2);
+}
 
 /* Tabs */
 nav {
@@ -41,9 +45,10 @@ nav .tab {
   cursor: pointer;
   font-weight: bold;
   border-radius: 4px;
-  transition: all 0.2s ease;
+  transition: all 0.2s;
 }
 nav .tab:hover { background: #c0c0c0; transform: translateY(-2px); }
+nav .tab.active { background: #b0b0b0; }
 
 /* Main */
 main { padding: 2rem; }
@@ -72,35 +77,23 @@ main { padding: 2rem; }
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.official-card:hover { transform: scale(1.03); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-
+.official-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
 .official-card[data-party="Democratic"] .party-stripe { background: #2e74b5; }
 .official-card[data-party="Republican"] .party-stripe { background: #c0392b; }
 .official-card[data-party="Independent"] .party-stripe { background: #999; }
-
 .official-card .party-stripe {
-  position: absolute;
-  top: 0; left: 0;
-  width: 6px; height: 100%;
-  z-index: 2;
+  position: absolute; top: 0; left: 0; width: 6px; height: 100%; z-index: 2;
 }
 .official-card .card-body { flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
 .official-card .photo-wrapper {
-  height: 140px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #fff;
-  overflow: hidden;
+  height: 140px; display: flex; align-items: center; justify-content: center; background: #fff; overflow: hidden;
 }
 .official-card .photo-wrapper img {
-  width: 90px; height: 140px;
-  object-fit: contain;
-  object-position: center;
-  background: transparent;
-  transition: transform 0.3s ease;
+  width: 90px; height: 140px; object-fit: contain; object-position: center; background: transparent;
 }
-.official-card:hover .photo-wrapper img { transform: scale(1.05); }
 .official-card .official-info { padding: 10px; text-align: center; }
 
 /* Voting Cards */
@@ -125,19 +118,10 @@ main { padding: 2rem; }
 }
 .voting-card:hover { box-shadow: 0 0 0 2px crimson; }
 .voting-card a {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  color: inherit;
-  height: 100%;
-  width: 100%;
-  text-align: center;
-  gap: 0.5rem;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-decoration: none; color: inherit; height: 100%; width: 100%; text-align: center; gap: 0.5rem;
 }
-.voting-card .card-icon .emoji { font-size: 3.5rem; transition: transform 0.2s ease; }
-.voting-card:hover .emoji { transform: scale(1.1); }
+.voting-card .card-icon .emoji { font-size: 3.5rem; }
 
 /* Polls & Orgs */
 #polls-cards, #orgs-container {
@@ -157,64 +141,19 @@ main { padding: 2rem; }
 }
 .poll-card:hover, .org-card:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
 .poll-logo img, .org-card img {
-  width: 100%;
-  max-width: 120px;
-  height: 80px;
-  object-fit: contain;
-  margin: 0 auto 10px;
-  display: block;
+  width: 100%; max-width: 120px; height: 80px; object-fit: contain; margin: 0 auto 10px; display: block;
 }
-
-/* Civic */
-#civic-container .link-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1rem;
-}
-.link-card {
-  background: #fff;
-  border: 1px solid #ccc;
-  border-left: 6px solid #b30000;
-  padding: 1rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.2s ease;
-  cursor: pointer;
-  border-radius: 6px;
-}
-.link-card:hover { transform: scale(1.03); }
 
 /* Modal */
 .modal {
   display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.6);
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 1000;
 }
 .modal-content {
-  background: #fff;
-  padding: 1.5rem;
-  max-width: 700px;
-  max-height: 90vh;
-  overflow-y: auto;
-  border-radius: 8px;
-  position: relative;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  animation: fadeIn 0.3s ease;
+  background: #fff; padding: 1.5rem; max-width: 700px; max-height: 90vh; overflow-y: auto;
+  border-radius: 8px; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 #close-modal {
-  position: absolute;
-  top: 1rem; right: 1.5rem;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+  position: absolute; top: 1rem; right: 1.5rem; font-size: 1.5rem; cursor: pointer;
 }
