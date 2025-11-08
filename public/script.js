@@ -313,18 +313,52 @@ fetch('cabinet.json')
   .then(res => res.json())
   .then(data => renderCabinetGrid(data));
 
-// === DETAIL: show a single Cabinet member in the modal ===
 function showCabinetMemberDetail(member) {
   const detail = document.getElementById('cabinetMemberDetail');
+
+  const photoSrc = member.photo && member.photo.trim() !== ''
+    ? member.photo
+    : 'assets/default-photo.png';
+
+  const safeYear = d => {
+    if (!d || (typeof d === 'string' && d.trim() === '')) return '';
+    const dt = new Date(d);
+    return isNaN(dt) ? '' : dt.getFullYear();
+  };
+  const startYear = safeYear(member.termStart);
+  const endYear = safeYear(member.termEnd) || 'Present';
+  const termDisplay = (startYear || endYear) ? `${startYear}–${endYear}` : 'Present';
+
   detail.innerHTML = `
     <div class="detail-header">
-      <img src="${member.photo}" alt="${member.name}" class="portrait" />
+      <img src="${photoSrc}" alt="${member.name}" class="portrait" />
       <img src="${member.seal}" alt="${member.office} seal" class="seal" />
     </div>
     <h2>${member.name}</h2>
     <h4>${member.office}</h4>
-    <p>${member.bio}</p>
+    <p><strong>Department:</strong> ${member.department || 'N/A'}</p>
+    <p><strong>Party:</strong> ${member.party || 'N/A'}</p>
+    <p><strong>Term:</strong> ${termDisplay}</p>
+    ${member.bio ? `<p><strong>Bio:</strong> ${member.bio}</p>` : ''}
+    ${member.education ? `<p><strong>Education:</strong> ${member.education}</p>` : ''}
+    ${member.platform ? `<p><strong>Platform:</strong> ${member.platform}</p>` : ''}
+    ${member.platformFollowThrough
+      ? `<div class="follow-through"><h3>Platform Follow-Through</h3><ul>${
+          Object.entries(member.platformFollowThrough)
+            .map(([topic, summary]) => `<li><strong>${topic}:</strong> ${summary}</li>`)
+            .join('')
+        }</ul></div>`
+      : ''}
+    ${member.proposals ? `<p><strong>Proposals:</strong> ${member.proposals}</p>` : ''}
+    ${member.salary ? `<p><strong>Salary:</strong> ${member.salary}</p>` : ''}
+    ${member.roles ? `<p><strong>Roles:</strong> ${member.roles}</p>` : ''}
+    ${member.contact?.email ? `<p><strong>Email:</strong> ${member.contact.email}</p>` : ''}
+    ${member.contact?.phone ? `<p><strong>Phone:</strong> ${member.contact.phone}</p>` : ''}
+    ${member.contact?.website ? `<p><a href="${member.contact.website}" target="_blank">Contact Website</a></p>` : ''}
+    ${member.website ? `<p><a href="${member.website}" target="_blank">Official Website</a></p>` : ''}
+    ${member.ballotpediaLink ? `<p><a href="${member.ballotpediaLink}" target="_blank">Ballotpedia Profile</a></p>` : ''}
   `;
+
   document.getElementById('cabinetGridView').style.display = 'none';
   document.getElementById('cabinetDetailView').style.display = 'block';
 }
