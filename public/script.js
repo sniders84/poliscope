@@ -358,7 +358,6 @@ function showCabinetMemberDetail(member) {
   document.getElementById('cabinetDetailView').style.display = 'block';
 }
 
-
 // === CIVIC TAB ===
 function showCivic() {
   showTab('civic');
