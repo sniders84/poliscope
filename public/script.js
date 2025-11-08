@@ -102,31 +102,69 @@ function showTab(id) {
 }
 
 // === RENDER OFFICIALS (FEDERAL + STATE) ===
-function renderOfficials(stateFilter = selectedState, query = '') {
-  showTab('my-officials');
-  if (!officialsContainer) officialsContainer = document.getElementById('officials-container');
-  if (!officialsContainer) return;
-  officialsContainer.innerHTML = '';
+function renderOfficials(data, containerId) {
+  console.log('renderOfficials called with:', data);
 
-  const queryLower = query.toLowerCase();
-  const filterByState = query === '';
+  const container = document.getElementById(containerId);
+  if (!container) {
+    console.warn('Container not found:', containerId);
+    return;
+  }
 
-  const stateGovs = governors.filter(o => !filterByState || o.state === stateFilter);
-  const stateLtGovs = ltGovernors.filter(o => !filterByState || o.state === stateFilter);
-  const stateSens = senators.filter(o => !filterByState || o.state === stateFilter);
-  const stateReps = houseReps
-    .filter(o => !filterByState || o.state === stateFilter)
-    .sort((a, b) => parseInt(a.district) - parseInt(b.district));
+  container.innerHTML = ''; // Clear previous content
 
-  const stateOfficials = [...stateGovs, ...stateLtGovs, ...stateSens, ...stateReps];
+  data.forEach(official => {
+    const card = document.createElement('div');
+    card.className = 'official-card';
+    card.setAttribute('data-party', official.party || '');
 
-  const federalOfficials = allOfficials.filter(o => o.state === 'United States' || o.office === 'President' || o.office === 'Vice President');
+    card.innerHTML = `
+      <div class="party-stripe"></div>
+      <div class="card-body">
+        <div class="photo-wrapper">
+          <img src="${official.photo || ''}" alt="${official.name}" />
+        </div>
+        <div class="official-info">
+          <h3>${official.name}</h3>
+          <p>${official.office || ''}</p>
+          <p>${official.state || ''}</p>
+        </div>
+      </div>
+    `;
 
-  const displayOfficials = [...federalOfficials, ...stateOfficials].filter(o =>
-    !queryLower ||
-    (o.name || '').toLowerCase().includes(queryLower) ||
-    (o.office || '').toLowerCase().includes(queryLower)
-  );
+    // ✅ THIS IS THE LINE YOU ASKED ABOUT
+    card.addEventListener('click', () => openOfficialModal(official));
+
+    container.appendChild(card);
+  });
+}
+
+  function openOfficialModal(official) {
+  const modal = document.getElementById('officials-modal');
+  const content = document.getElementById('officials-content');
+
+  if (!modal || !content) return;
+
+  content.innerHTML = `
+    <div class="detail-header">
+      <div class="modal-photo">
+        <img src="${official.photo || ''}" alt="${official.name}" />
+      </div>
+      <div>
+        <h2>${official.name}</h2>
+        <p><strong>Office:</strong> ${official.office || '—'}</p>
+        <p><strong>State:</strong> ${official.state || '—'}</p>
+        <p><strong>Party:</strong> ${official.party || '—'}</p>
+      </div>
+    </div>
+  `;
+
+  modal.style.display = 'flex';
+}
+
+document.getElementById('close-modal')?.addEventListener('click', () => {
+  document.getElementById('officials-modal').style.display = 'none';
+});
 
   const partyMap = {
     republican: 'Republican', democrat: 'Democratic', democratic: 'Democratic',
