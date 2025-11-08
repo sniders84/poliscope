@@ -294,21 +294,7 @@ function renderCabinetGrid(cabinetData) {
     container.appendChild(cardWrapper);
   });
 }
-function showCabinetMemberDetail(member) {
-  const detail = document.getElementById('cabinetMemberDetail');
-  detail.innerHTML = `
-  <div class="detail-header">
-    <img src="${member.photo}" alt="${member.name || ''}" class="portrait"
-         onerror="this.onerror=null;this.src='assets/default-photo.png';" />
-    ${member.seal ? `<img src="${member.seal}" alt="${member.office} seal" class="seal" />` : ''}
-  </div>
-  <h2>${member.name || 'Unknown'}</h2>
-  ...
-`;
 
-  document.getElementById('cabinetGridView').style.display = 'none';
-  document.getElementById('cabinetDetailView').style.display = 'block';
-}
 fetch('cabinet.json')
   .then(res => res.json())
   .then(data => renderCabinetGrid(data));
@@ -320,11 +306,16 @@ function showCabinetMemberDetail(member) {
     ? member.photo
     : 'assets/default-photo.png';
 
+  const sealSrc = member.seal && member.seal.trim() !== ''
+    ? member.seal
+    : '';
+
   const safeYear = d => {
     if (!d || (typeof d === 'string' && d.trim() === '')) return '';
     const dt = new Date(d);
     return isNaN(dt) ? '' : dt.getFullYear();
   };
+
   const startYear = safeYear(member.termStart);
   const endYear = safeYear(member.termEnd) || 'Present';
   const termDisplay = (startYear || endYear) ? `${startYear}–${endYear}` : 'Present';
@@ -332,13 +323,15 @@ function showCabinetMemberDetail(member) {
   detail.innerHTML = `
     <div class="detail-header">
       <img src="${photoSrc}" alt="${member.name}" class="portrait" />
-      <img src="${member.seal}" alt="${member.office} seal" class="seal" />
+      ${sealSrc ? `<img src="${sealSrc}" alt="${member.office} seal" class="seal" />` : ''}
     </div>
     <h2>${member.name}</h2>
     <h4>${member.office}</h4>
+    <p><strong>State:</strong> ${member.state || 'United States'}</p>
     <p><strong>Department:</strong> ${member.department || 'N/A'}</p>
     <p><strong>Party:</strong> ${member.party || 'N/A'}</p>
     <p><strong>Term:</strong> ${termDisplay}</p>
+    ${member.predecessor ? `<p><strong>Predecessor:</strong> ${member.predecessor}</p>` : ''}
     ${member.bio ? `<p><strong>Bio:</strong> ${member.bio}</p>` : ''}
     ${member.education ? `<p><strong>Education:</strong> ${member.education}</p>` : ''}
     ${member.platform ? `<p><strong>Platform:</strong> ${member.platform}</p>` : ''}
@@ -357,6 +350,7 @@ function showCabinetMemberDetail(member) {
     ${member.contact?.website ? `<p><a href="${member.contact.website}" target="_blank">Contact Website</a></p>` : ''}
     ${member.website ? `<p><a href="${member.website}" target="_blank">Official Website</a></p>` : ''}
     ${member.ballotpediaLink ? `<p><a href="${member.ballotpediaLink}" target="_blank">Ballotpedia Profile</a></p>` : ''}
+    ${member.govtrackLink ? `<p><a href="${member.govtrackLink}" target="_blank">GovTrack</a></p>` : ''}
   `;
 
   document.getElementById('cabinetGridView').style.display = 'none';
