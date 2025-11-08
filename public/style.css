@@ -1,8 +1,18 @@
 /* Global Reset */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: Arial, sans-serif; background: #f4f4f4; color: #333; line-height: 1.6; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-/* Header */
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header Layout */
 header {
   background: linear-gradient(to right, #2e74b5, #ccc, #fff, #ccc, #c0392b);
   color: #fff;
@@ -11,32 +21,64 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s ease;
 }
-.header-left { display: flex; align-items: center; height: 100%; }
-.logo { height: 144px; width: auto; object-fit: contain; }
-.header-right { display: flex; align-items: center; gap: 1rem; }
-#search-bar, #state-dropdown {
+
+header:hover {
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.logo {
+  height: 144px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Search Controls */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+#search-bar,
+#state-dropdown {
   padding: 0.5rem 1rem;
   font-size: 1rem;
-  border-radius: 6px;
+  border-radius: 4px;
   border: 1px solid #ccc;
-  background: rgba(255,255,255,0.95);
-  transition: all 0.2s;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
-#search-bar:focus, #state-dropdown:focus {
+
+#search-bar:focus,
+#state-dropdown:focus {
   border-color: #2e74b5;
   box-shadow: 0 0 0 2px rgba(46,116,181,0.2);
 }
 
-/* Tabs */
+/* Tabs BELOW Header */
 nav {
   display: flex;
   justify-content: center;
   background: #e0e0e0;
   padding: 0.5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  transition: background 0.3s ease;
 }
+
+nav:hover {
+  background: #d5d5d5;
+}
+
 nav .tab {
   margin: 0 1rem;
   padding: 0.5rem 1rem;
@@ -45,17 +87,25 @@ nav .tab {
   cursor: pointer;
   font-weight: bold;
   border-radius: 4px;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
 }
-nav .tab:hover { background: #c0c0c0; transform: translateY(-2px); }
-nav .tab.active { background: #b0b0b0; }
 
-/* Main */
-main { padding: 2rem; }
-.tab-content { display: none; }
-.tab-content.active { display: block; }
+nav .tab:hover {
+  background: #c0c0c0;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
 
-/* Grid */
+nav .tab.active {
+  background: #b0b0b0;
+}
+
+/* Main Content */
+main {
+  padding: 2rem;
+}
+
+/* Officials Grid */
 .grid {
   display: flex;
   flex-wrap: wrap;
@@ -77,33 +127,280 @@ main { padding: 2rem; }
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
 .official-card:hover {
   transform: scale(1.03);
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
-.official-card[data-party="Democratic"] .party-stripe { background: #2e74b5; }
-.official-card[data-party="Republican"] .party-stripe { background: #c0392b; }
-.official-card[data-party="Independent"] .party-stripe { background: #999; }
-.official-card .party-stripe {
-  position: absolute; top: 0; left: 0; width: 6px; height: 100%; z-index: 2;
-}
-.official-card .card-body { flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
-.official-card .photo-wrapper {
-  height: 140px; display: flex; align-items: center; justify-content: center; background: #fff; overflow: hidden;
-}
-.official-card .photo-wrapper img {
-  width: 90px; height: 140px; object-fit: contain; object-position: center; background: transparent;
-}
-.official-card .official-info { padding: 10px; text-align: center; }
 
-/* Voting Cards */
-#voting-cards {
+.official-card[data-party="Democratic"] .party-stripe {
+  background: #2e74b5;
+}
+
+.official-card[data-party="Republican"] .party-stripe {
+  background: #c0392b;
+}
+
+.official-card[data-party="Independent"] .party-stripe {
+  background: #999;
+}
+
+.official-card .party-stripe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  z-index: 2;
+  transition: width 0.2s ease;
+}
+
+.official-card:hover .party-stripe {
+  width: 8px;
+}
+
+.official-card .card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.official-card .photo-wrapper {
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  overflow: hidden;
+}
+
+.official-card .photo-wrapper img {
+  width: 90px;
+  height: 140px;
+  object-fit: contain;
+  object-position: center;
+  background: transparent;
+  transition: transform 0.3s ease;
+}
+
+.official-card:hover .photo-wrapper img {
+  transform: scale(1.05);
+}
+
+.official-card .official-info {
+  padding: 10px;
+  text-align: center;
+}
+
+/* Cabinet Grid */
+#cabinetList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+  justify-content: center;
+  padding: 1rem;
+}
+
+#cabinetList .official-card {
+  width: auto;
+  height: 280px;
+}
+
+#cabinetList .official-card .photo-wrapper {
+  height: 180px;
+}
+
+#cabinetList .official-card .photo-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 1.5rem;
+  max-width: 700px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content h2 {
+  margin-bottom: 1rem;
+}
+
+.modal-content p,
+.modal-content ul {
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.modal-content ul {
+  padding-left: 1.2rem;
+}
+
+#close-modal {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+#close-modal:hover {
+  color: #c0392b;
+}
+
+/* Cabinet / Officials Modal — triple-size seals */
+.modal-content .seal-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.modal-content .seal-wrapper img {
+  width: 300px !important;
+  height: auto !important;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Modal detail header */
+.detail-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.detail-header .seal {
+  width: 80px;
+  height: auto;
+}
+
+/* Back button */
+#cabinetDetailView button {
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #f5f5f5;
+  cursor: pointer;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+#cabinetDetailView button:hover {
+  background: #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Simple fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Civic Intelligence */
+.civic-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.civic-block h2 {
+  margin-bottom: 0.5rem;
+  color: #b30000;
+}
+
+.link-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.link-card {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-left: 6px solid #b30000;
+  padding: 1rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.link-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.link-card h4 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.card-desc {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 0.75rem;
+}
+
+.card-button {
+  display: inline-block;
+  background: #b30000;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  align-self: flex-start;
+  transition: background 0.2s ease;
+}
+
+.card-button:hover {
+  background: #900000;
+}
+
+/* Voting Cards — square grid layout */
+#voting-cards,
+.voting-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 1rem;
   padding: 1.5rem;
+  margin-top: 1.5rem;
   justify-content: center;
 }
+
 .voting-card {
   background: #fff;
   border: 1px solid #ddd;
@@ -116,21 +413,77 @@ main { padding: 2rem; }
   width: 180px;
   height: 180px;
 }
-.voting-card:hover { box-shadow: 0 0 0 2px crimson; }
-.voting-card a {
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  text-decoration: none; color: inherit; height: 100%; width: 100%; text-align: center; gap: 0.5rem;
-}
-.voting-card .card-icon .emoji { font-size: 3.5rem; }
 
-/* Polls & Orgs */
-#polls-cards, #orgs-container {
+.voting-card:hover {
+  box-shadow: 0 0 0 2px crimson;
+}
+
+.voting-card a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.voting-card .card-icon {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  margin-bottom: 0.5em;
+  overflow: hidden;
+}
+
+.voting-card .card-icon .emoji {
+  font-size: 3.5rem;
+  line-height: 1;
+  display: inline-block;
+  max-height: 100%;
+  transition: transform 0.2s ease;
+}
+
+.voting-card:hover .emoji {
+  transform: scale(1.05);
+}
+
+.voting-card .card-label {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.voting-card .card-description {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.voting-card .card-date {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* Polls Grid */
+#polls-cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5rem;
-  padding: 1rem;
+  gap: 20px;
+  padding: 20px;
 }
-.poll-card, .org-card {
+
+.poll-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.poll-card {
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 6px;
@@ -139,21 +492,46 @@ main { padding: 2rem; }
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   transition: transform 0.2s ease;
 }
-.poll-card:hover, .org-card:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-.poll-logo img, .org-card img {
-  width: 100%; max-width: 120px; height: 80px; object-fit: contain; margin: 0 auto 10px; display: block;
+
+.poll-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-/* Modal */
-.modal {
-  display: none;
-  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 1000;
+.poll-logo img {
+  width: 100%;
+  max-width: 120px;
+  height: 80px;
+  object-fit: contain;
+  margin: 0 auto 10px;
+  display: block;
+  transition: transform 0.2s ease;
 }
-.modal-content {
-  background: #fff; padding: 1.5rem; max-width: 700px; max-height: 90vh; overflow-y: auto;
-  border-radius: 8px; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+
+.poll-card:hover img {
+  transform: scale(1.05);
 }
-#close-modal {
-  position: absolute; top: 1rem; right: 1.5rem; font-size: 1.5rem; cursor: pointer;
+
+.poll-links a {
+  font-weight: 500;
+  color: #004080;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.poll-links a:hover {
+  color: #002040;
+  text-decoration: underline;
+}
+
+/* Officials Modal — uniform portrait sizing */
+#officials-modal .modal-photo img {
+  width: 180px;
+  height: 280px;
+  object-fit: contain;
+  object-position: top center;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
