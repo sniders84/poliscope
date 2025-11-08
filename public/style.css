@@ -87,7 +87,7 @@ main {
 .official-card {
   display: flex;
   flex-direction: row;
-  width: 320px;
+  width: 280px;
   height: 280px;
   border: 1px solid #ccc;
   border-radius: 6px;
@@ -151,6 +151,16 @@ main {
 .official-card .official-info {
   padding: 10px;
   text-align: center;
+}
+
+/* Modal Portraits — double card size for non-cabinet officials */
+.detail-header .portrait {
+  width: 180px;
+  height: 280px;
+  object-fit: contain;
+  object-position: top center;
+  background: #fff;
+  border-radius: 4px;
 }
 
 /* Cabinet Grid Container */
