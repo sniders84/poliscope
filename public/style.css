@@ -511,10 +511,19 @@ main {
   border-radius: 4px;
 }
 
-/* ✅ Political Groups — restored original layout */
+/* Political Groups Grid Container */
+#political-groups-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 10px;
+  justify-content: center;
+  padding: 1rem;
+}
+
+/* Political Group Card */
 .group-card {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -522,7 +531,7 @@ main {
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 4px;
-  padding: 6px;
+  padding: 4px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease;
   cursor: pointer;
@@ -533,16 +542,18 @@ main {
   transform: scale(1.05);
 }
 
+/* Logo inside card */
 .group-logo {
   width: 100%;
-  height: 50px;
+  height: 40px;
   object-fit: contain;
   object-position: center;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 
+/* Label text */
 .group-info {
-  font-size: 0.6rem;
+  font-size: 0.55rem;
   font-weight: bold;
   color: #333;
   text-align: center;
