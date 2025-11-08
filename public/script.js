@@ -1,6 +1,5 @@
 // === GLOBAL STATE ===
 let selectedState = 'North Carolina';
-let allOfficials = [];
 let governors = [];
 let ltGovernors = [];
 let senators = [];
@@ -9,39 +8,20 @@ let officialsContainer = null;
 let searchBar = null;
 
 // === DATA LOADING ===
+// (example: after you fetch or import both JSON files)
 Promise.all([
-  fetch('federalOfficials.json').then(r => r.json()),
-  fetch('governors.json').then(r => r.json()),
-  fetch('ltgovernors.json').then(r => r.json()),
-  fetch('senators.json').then(r => r.json()),
-  fetch('housereps.json').then(r => r.json()),
-  fetch('scotus.json').then(r => r.json()),
-  fetch('cabinet.json').then(r => r.json())
-])
-.then(([federal, governors, ltgovs, senators, reps, scotus, cabinet]) => {
-  allOfficials = [
-    ...federal,
-    ...governors,
-    ...ltgovs,
-    ...senators,
-    ...reps,
-    ...scotus,
-    ...cabinet
-  ];
-     console.log('Loaded officials:', allOfficials);
+  fetch('officials.json').then(res => res.json()),
+  fetch('cabinet.json').then(res => res.json())
+]).then(([officialsData, cabinetData]) => {
+  // Merge them into one master array
+  const allOfficials = [...officialsData, ...cabinetData];
 
   // Now render and wire up search using allOfficials
-renderOfficials(allOfficials, 'officials-container');
+  renderOfficials(allOfficials, 'officialsList');
 
-  searchBar = document.getElementById('search-bar');
-  if (searchBar) {
-    searchBar.addEventListener('input', e => {
-      searchOfficials(e.target.value, allOfficials);
-    });
-  }
-})
-.catch(error => {
-  console.error('Error loading officials data:', error);
+  searchBar.addEventListener('input', e => {
+    searchOfficials(e.target.value, allOfficials);
+  });
 });
 
 // Modal refs (Officials modal)
@@ -991,7 +971,7 @@ function renderOfficials(stateFilter = null, query = '') {
     .sort((a, b) => parseInt(a.district) - parseInt(b.district));
   console.log("Filtered reps:", filteredReps.map(r => r.name));
 
-allOfficials = [
+  const allOfficials = [
     ...federalOfficials,
     ...filteredGovs,
     ...filteredLtGovs,
@@ -1142,41 +1122,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
-function renderOfficials(data, containerId) {
-  console.log('renderOfficials called with:', data);
-
-  const container = document.getElementById(containerId);
-  if (!container) {
-    console.warn('Container not found:', containerId);
-    return;
-  }
-
-  container.innerHTML = ''; // Clear previous content
-
-  data.forEach(official => {
-    const card = document.createElement('div');
-    card.className = 'official-card';
-    card.innerHTML = `
-      <h3>${official.name}</h3>
-      <p>${official.office || ''}</p>
-      <p>${official.state || ''}</p>
-    `;
-    container.appendChild(card);
-  });
-}
-
-function showCivic() {
-  console.log('showCivic triggered');
-}
-
-function showPolls() {
-  console.log('showPolls triggered');
-}
-
-function showOrganizations() {
-  console.log('showOrganizations triggered');
-}
-
-function showVoting() {
-  console.log('showVoting triggered');
-}
