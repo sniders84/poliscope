@@ -9,7 +9,7 @@
 <body>
   <header>
     <div class="header-left">
-      <img src="assets/electorate-logo.png" alt="Electorate" class="logo" />
+      <img src="assets/electorate-logo.png" alt="Electorate Logo" class="logo" />
     </div>
     <div class="header-right">
       <input type="text" id="search-bar" placeholder="Search officials..." />
@@ -110,20 +110,24 @@
     </section>
   </main>
 
-  <!-- Modals -->
+  <!-- Officials Modal -->
   <div id="officials-modal" class="modal">
     <div class="modal-content" id="officials-content"></div>
     <button id="close-modal" class="close-button">&times;</button>
   </div>
 
+  <!-- Poll Modal -->
   <div id="pollModal" class="modal">
     <div class="modal-content" id="pollModalContent"></div>
   </div>
 
+  <!-- Cabinet Modal -->
   <div id="cabinetModal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModalWindow('cabinetModal')">&times;</span>
-      <div id="cabinetGridView"><div id="cabinetList" class="grid"></div></div>
+      <div id="cabinetGridView">
+        <div id="cabinetList" class="grid"></div>
+      </div>
       <div id="cabinetDetailView" style="display:none;">
         <button onclick="backToCabinetGrid()">Back</button>
         <div id="cabinetMemberDetail"></div>
