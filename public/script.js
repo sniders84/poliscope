@@ -324,7 +324,6 @@ function showCabinetMemberDetail(member) {
     <h4>${member.office}</h4>
     <p><strong>Slug:</strong> ${member.slug || 'N/A'}</p>
     <p><strong>State:</strong> ${member.state || 'United States'}</p>
-    <p><strong>Department:</strong> ${member.department || 'N/A'}</p>
     <p><strong>Party:</strong> ${member.party || 'N/A'}</p>
     <p><strong>Term:</strong> ${termDisplay}</p>
     ${member.predecessor ? `<p><strong>Predecessor:</strong> ${member.predecessor}</p>` : ''}
@@ -344,8 +343,6 @@ function showCabinetMemberDetail(member) {
     ` : ''}
     ${member.proposals ? `<p><strong>Proposals:</strong> ${member.proposals}</p>` : ''}
     ${member.roles ? `<p><strong>Roles:</strong> ${member.roles}</p>` : ''}
-    ${member.contact?.email ? `<p><strong>Email:</strong> ${member.contact.email}</p>` : ''}
-    ${member.contact?.phone ? `<p><strong>Phone:</strong> ${member.contact.phone}</p>` : ''}
     ${member.contact?.website ? `<p><a href="${member.contact.website}" target="_blank">Contact Website</a></p>` : ''}
     ${member.website ? `<p><a href="${member.website}" target="_blank">Official Website</a></p>` : ''}
     ${member.ballotpediaLink ? `<p><a href="${member.ballotpediaLink}" target="_blank">Ballotpedia Profile</a></p>` : ''}
