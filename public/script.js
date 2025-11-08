@@ -943,101 +943,37 @@ function openOfficialModal(official) {
 }
 
 // === OFFICIALS RENDERING ===
-function renderOfficials(stateFilter = null, query = '') {
-  showTab('my-officials');
-  if (!officialsContainer) {
-    officialsContainer = document.getElementById('officials-container');
-  }
-  if (!officialsContainer) return;
-  officialsContainer.innerHTML = '';
+function renderOfficials(data, containerId) {
+  console.log('renderOfficials called with:', data);
 
-  const stateAliases = {
-    "Virgin Islands": "U.S. Virgin Islands",
-    "Northern Mariana Islands": "Northern Mariana Islands",
-    "Puerto Rico": "Puerto Rico"
-  };
-  if (stateFilter && stateAliases[stateFilter]) {
-    stateFilter = stateAliases[stateFilter];
+  const container = document.getElementById(containerId);
+  if (!container) {
+    console.warn('Container not found:', containerId);
+    return;
   }
 
-  const queryLower = query.toLowerCase();
-  const filterByState = query === '';
+  container.innerHTML = ''; // Clear previous content
 
-  const filteredGovs = governors.filter(o => !filterByState || o.state === stateFilter);
-  const filteredLtGovs = ltGovernors.filter(o => !filterByState || o.state === stateFilter);
-  const filteredSens = senators.filter(o => !filterByState || o.state === stateFilter);
-  const filteredReps = houseReps
-    .filter(o => !filterByState || o.state === stateFilter)
-    .sort((a, b) => parseInt(a.district) - parseInt(b.district));
-  console.log("Filtered reps:", filteredReps.map(r => r.name));
-
-  const allOfficials = [
-    ...federalOfficials,
-    ...filteredGovs,
-    ...filteredLtGovs,
-    ...filteredSens,
-    ...filteredReps
-  ].filter(o =>
-    (o.name || '').toLowerCase().includes(queryLower) ||
-    (o.office || '').toLowerCase().includes(queryLower) ||
-    (o.state || '').toLowerCase().includes(queryLower)
-  );
-
-  const partyMap = {
-    republican: 'Republican',
-    democrat: 'Democratic',
-    democratic: 'Democratic',
-    independent: 'Independent',
-    green: 'Green',
-    libertarian: 'Libertarian',
-    constitution: 'Constitution',
-    'working families': 'WorkingFamilies',
-    workingfamilies: 'WorkingFamilies',
-    progressive: 'Progressive'
-  };
-
-  const safeYear = d => {
-    if (!d || (typeof d === 'string' && d.trim() === '')) return '';
-    const dt = new Date(d);
-    return isNaN(dt) ? '' : dt.getFullYear();
-  };
-
-  allOfficials.forEach(o => {
-    const rawParty = (o.party || '').toLowerCase().trim();
-    const normalizedParty = partyMap[rawParty] || rawParty.replace(/\s+/g, '') || 'Independent';
-    const photoSrc = o.photo && o.photo.trim() !== '' ? o.photo : 'assets/default-photo.png';
-
-    const districtDisplay = o.office === 'U.S. Representative' && o.district
-      ? `<p class="district-display"><strong>District:</strong> ${o.district}</p>`
-      : '';
-
-    const startYear = safeYear(o.termStart);
-    const endYear = safeYear(o.termEnd) || 'Present';
-    const termDisplay = (startYear || endYear) ? `${startYear}–${endYear}` : 'Present';
-
+  data.forEach(official => {
     const card = document.createElement('div');
     card.className = 'official-card';
-    card.setAttribute('data-party', normalizedParty);
+    card.setAttribute('data-party', official.party || '');
 
     card.innerHTML = `
       <div class="party-stripe"></div>
       <div class="card-body">
         <div class="photo-wrapper">
-          <img src="${photoSrc}" alt="${o.name}"
-               onerror="this.onerror=null;this.src='assets/default-photo.png';" />
+          <img src="${official.photo || ''}" alt="${official.name}" />
         </div>
         <div class="official-info">
-          <h3>${o.name || 'Unknown'}</h3>
-          <p><strong>Position:</strong> ${o.office || 'N/A'}</p>
-          ${districtDisplay}
-          <p><strong>State:</strong> ${o.state || 'United States'}</p>
-          <p><strong>Term:</strong> ${termDisplay}</p>
-          <p><strong>Party:</strong> ${o.party || 'N/A'}</p>
+          <h3>${official.name}</h3>
+          <p>${official.office || ''}</p>
+          <p>${official.state || ''}</p>
         </div>
       </div>
     `;
-    card.addEventListener('click', () => openOfficialModal(o));
-    officialsContainer.appendChild(card);
+
+    container.appendChild(card);
   });
 }
 
