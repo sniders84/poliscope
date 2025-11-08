@@ -394,3 +394,33 @@ header {
 
 .tabs button[onclick="showCivic()"]::after { content: " Intelligence"; }
 .tabs button[onclick="showOrganizations()"]::after { content: "anizations"; }
+/* CIVIC INTELLIGENCE */
+#cabinet-grid, .org-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.tool-card {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  text-align: center;
+  margin: 0.5rem;
+  display: inline-block;
+}
+
+.org-card {
+  background: white;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  text-align: center;
+}
+
+.org-card img {
+  height: 60px;
+  margin-bottom: 0.75rem;
+}
