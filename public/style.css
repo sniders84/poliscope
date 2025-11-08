@@ -513,17 +513,17 @@ main {
 
 /* ✅ Political Groups — restored original layout */
 .group-card {
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   background: #fff;
   border: 1px solid #ccc;
-  border-radius: 6px;
-  padding: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease;
   cursor: pointer;
   text-align: center;
@@ -535,14 +535,14 @@ main {
 
 .group-logo {
   width: 100%;
-  height: 60px;
+  height: 50px;
   object-fit: contain;
   object-position: center;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .group-info {
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   font-weight: bold;
   color: #333;
   text-align: center;
