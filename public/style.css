@@ -506,3 +506,54 @@ main {
   background: #fff;
   border-radius: 4px;
 }
+/* Political Groups Cards — match official card sizing */
+.group-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.group-card {
+  width: 280px;
+  height: 280px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.group-card:hover {
+  transform: scale(1.03);
+}
+
+.group-card .card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.group-card .card-label {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+.group-card .card-description {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 0.75rem;
+}
+
+.group-card a {
+  text-decoration: none;
+  color: #0066cc;
+  font-weight: bold;
+}
