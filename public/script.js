@@ -302,23 +302,18 @@ fetch('cabinet.json')
 function showCabinetMemberDetail(member) {
   const detail = document.getElementById('cabinetMemberDetail');
 
-  const photoSrc = member.photo && member.photo.trim() !== ''
-    ? member.photo
-    : 'assets/default-photo.png';
-
-  const sealSrc = member.seal && member.seal.trim() !== ''
-    ? member.seal
-    : '';
+  const photoSrc = member.photo?.trim() || 'assets/default-photo.png';
+  const sealSrc = member.seal?.trim() || '';
 
   const safeYear = d => {
-    if (!d || (typeof d === 'string' && d.trim() === '')) return '';
+    if (!d || typeof d !== 'string') return '';
     const dt = new Date(d);
     return isNaN(dt) ? '' : dt.getFullYear();
   };
 
   const startYear = safeYear(member.termStart);
-  const endYear = safeYear(member.termEnd) || 'Present';
-  const termDisplay = (startYear || endYear) ? `${startYear}–${endYear}` : 'Present';
+  const endYear = safeYear(member.termEnd);
+  const termDisplay = startYear || endYear ? `${startYear || 'Unknown'}–${endYear || 'Present'}` : 'Present';
 
   detail.innerHTML = `
     <div class="detail-header">
@@ -337,13 +332,16 @@ function showCabinetMemberDetail(member) {
     ${member.education ? `<p><strong>Education:</strong> ${member.education}</p>` : ''}
     ${member.salary ? `<p><strong>Salary:</strong> ${member.salary}</p>` : ''}
     ${member.platform ? `<p><strong>Platform:</strong> ${member.platform}</p>` : ''}
-    ${member.platformFollowThrough
-      ? `<div class="follow-through"><h3>Platform Follow-Through</h3><ul>${
-          Object.entries(member.platformFollowThrough)
+    ${member.platformFollowThrough ? `
+      <div class="follow-through">
+        <h3>Platform Follow-Through</h3>
+        <ul>
+          ${Object.entries(member.platformFollowThrough)
             .map(([topic, summary]) => `<li><strong>${topic}:</strong> ${summary}</li>`)
-            .join('')
-        }</ul></div>`
-      : ''}
+            .join('')}
+        </ul>
+      </div>
+    ` : ''}
     ${member.proposals ? `<p><strong>Proposals:</strong> ${member.proposals}</p>` : ''}
     ${member.roles ? `<p><strong>Roles:</strong> ${member.roles}</p>` : ''}
     ${member.contact?.email ? `<p><strong>Email:</strong> ${member.contact.email}</p>` : ''}
