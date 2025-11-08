@@ -27,7 +27,7 @@ Promise.all([
     ...scotus,
     ...cabinet
   ];
-   console.log('Loaded officials:', allOfficials);
+     console.log('Loaded officials:', allOfficials);
 
   // Now render and wire up search using allOfficials
   renderOfficials(allOfficials, 'officialsList');
@@ -38,14 +38,9 @@ Promise.all([
       searchOfficials(e.target.value, allOfficials);
     });
   }
-}); // ← this closes the .then() block correctly
-
-  // Now render and wire up search using allOfficials
-  renderOfficials(allOfficials, 'officialsList');
-
-  searchBar.addEventListener('input', e => {
-    searchOfficials(e.target.value, allOfficials);
-  });
+})
+.catch(error => {
+  console.error('Error loading officials data:', error);
 });
 
 // Modal refs (Officials modal)
