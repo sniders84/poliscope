@@ -31,7 +31,7 @@ Promise.all([
      console.log('Loaded officials:', allOfficials);
 
   // Now render and wire up search using allOfficials
-  renderOfficials(allOfficials, 'officialsList');
+renderOfficials(allOfficials, 'officials-container');
 
   searchBar = document.getElementById('search-bar');
   if (searchBar) {
