@@ -1280,3 +1280,17 @@ main {
   display: block;
   margin: 1rem auto;
 }
+/* 🔱 Triple-size Cabinet seals inside modals */
+.modal-content .seal-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.modal-content .seal-wrapper img {
+  width: 300px !important;
+  height: auto !important;
+  object-fit: contain;
+  display: block;
+}
