@@ -343,6 +343,8 @@ function showCabinetMemberDetail(member) {
     ` : ''}
     ${member.proposals ? `<p><strong>Proposals:</strong> ${member.proposals}</p>` : ''}
     ${member.roles ? `<p><strong>Roles:</strong> ${member.roles}</p>` : ''}
+    ${member.contact?.email ? `<p><strong>Email:</strong> ${member.contact.email}</p>` : ''}
+    ${member.contact?.phone ? `<p><strong>Phone:</strong> ${member.contact.phone}</p>` : ''}
     ${member.contact?.website ? `<p><a href="${member.contact.website}" target="_blank">Contact Website</a></p>` : ''}
     ${member.website ? `<p><a href="${member.website}" target="_blank">Official Website</a></p>` : ''}
     ${member.ballotpediaLink ? `<p><a href="${member.ballotpediaLink}" target="_blank">Ballotpedia Profile</a></p>` : ''}
