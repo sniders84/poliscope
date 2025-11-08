@@ -1273,3 +1273,10 @@ main {
   display: block;
   margin: 0 auto;
 }
+.modal-content img[src*="seal"] {
+  width: 300px !important;
+  height: auto !important;
+  object-fit: contain;
+  display: block;
+  margin: 1rem auto;
+}
