@@ -36,11 +36,11 @@ header {
 .official-card {
   display: flex;
   flex-direction: row;
-  height: 280px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  overflow: hidden;
+  width: 240px;
+  height: 260px;
+  ...
 }
+
 
 .official-card .party-stripe {
   width: 6px;
@@ -1293,4 +1293,34 @@ main {
   height: auto !important;
   object-fit: contain;
   display: block;
+}
+.official-card[data-party="Democratic"] .party-stripe {
+  background: #2e74b5;
+}
+
+.official-card[data-party="Republican"] .party-stripe {
+  background: #c0392b;
+}
+
+.official-card[data-party="Independent"] .party-stripe {
+  background: #999;
+}
+.official-card[data-party="Libertarian"] .party-stripe {
+  background: #e6c300;
+}
+
+.official-card[data-party="Green"] .party-stripe {
+  background: #3b9d3b;
+}
+
+.official-card[data-party="Constitution"] .party-stripe {
+  background: #6b4c9a;
+}
+
+.official-card[data-party="WorkingFamilies"] .party-stripe {
+  background: #d63384;
+}
+
+.official-card[data-party="Progressive"] .party-stripe {
+  background: #ff6600;
 }
