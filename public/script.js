@@ -9,6 +9,32 @@ let allOfficials = [];
 let officialsContainer = null;
 let searchBar = null;
 
+function showTab(tabId) {
+  const tabs = document.querySelectorAll('.tab-content');
+  tabs.forEach(tab => tab.style.display = 'none');
+
+  const activeTab = document.getElementById(tabId);
+  if (activeTab) {
+    activeTab.style.display = 'block';
+  }
+}
+
+function showCivic() {
+  showTab('civic');
+}
+
+function showPolls() {
+  showTab('polls');
+}
+
+function showOrganizations() {
+  showTab('organizations');
+}
+
+function showVoting() {
+  showTab('voting');
+}
+
 // === MODAL REFS ===
 let officialsModal = null;
 let officialsModalContent = null;
