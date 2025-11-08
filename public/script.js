@@ -1149,3 +1149,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+function renderOfficials(data, containerId) {
+  console.log('renderOfficials called with:', data);
+}
+
+function showCivic() {
+  console.log('showCivic triggered');
+}
+
+function showPolls() {
+  console.log('showPolls triggered');
+}
+
+function showOrganizations() {
+  console.log('showOrganizations triggered');
+}
+
+function showVoting() {
+  console.log('showVoting triggered');
+}
