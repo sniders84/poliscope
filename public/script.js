@@ -327,6 +327,7 @@ function showCabinetMemberDetail(member) {
     </div>
     <h2>${member.name}</h2>
     <h4>${member.office}</h4>
+    <p><strong>Slug:</strong> ${member.slug || 'N/A'}</p>
     <p><strong>State:</strong> ${member.state || 'United States'}</p>
     <p><strong>Department:</strong> ${member.department || 'N/A'}</p>
     <p><strong>Party:</strong> ${member.party || 'N/A'}</p>
@@ -356,6 +357,7 @@ function showCabinetMemberDetail(member) {
   document.getElementById('cabinetGridView').style.display = 'none';
   document.getElementById('cabinetDetailView').style.display = 'block';
 }
+
 
 // === CIVIC TAB ===
 function showCivic() {
