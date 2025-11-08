@@ -153,16 +153,6 @@ main {
   text-align: center;
 }
 
-/* Modal Portraits — double card size for non-cabinet officials */
-.detail-header .portrait {
-  width: 180px;
-  height: 280px;
-  object-fit: contain;
-  object-position: top center;
-  background: #fff;
-  border-radius: 4px;
-}
-
 /* Cabinet Grid Container */
 #cabinetList {
   display: grid;
