@@ -334,6 +334,7 @@ function showCabinetMemberDetail(member) {
     ${member.predecessor ? `<p><strong>Predecessor:</strong> ${member.predecessor}</p>` : ''}
     ${member.bio ? `<p><strong>Bio:</strong> ${member.bio}</p>` : ''}
     ${member.education ? `<p><strong>Education:</strong> ${member.education}</p>` : ''}
+    ${member.salary ? `<p><strong>Salary:</strong> ${member.salary}</p>` : ''}
     ${member.platform ? `<p><strong>Platform:</strong> ${member.platform}</p>` : ''}
     ${member.platformFollowThrough
       ? `<div class="follow-through"><h3>Platform Follow-Through</h3><ul>${
@@ -343,7 +344,6 @@ function showCabinetMemberDetail(member) {
         }</ul></div>`
       : ''}
     ${member.proposals ? `<p><strong>Proposals:</strong> ${member.proposals}</p>` : ''}
-    ${member.salary ? `<p><strong>Salary:</strong> ${member.salary}</p>` : ''}
     ${member.roles ? `<p><strong>Roles:</strong> ${member.roles}</p>` : ''}
     ${member.contact?.email ? `<p><strong>Email:</strong> ${member.contact.email}</p>` : ''}
     ${member.contact?.phone ? `<p><strong>Phone:</strong> ${member.contact.phone}</p>` : ''}
