@@ -3,15 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>USA Political Dashboard</title>
+  <title>Electorate</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
 </head>
 <body>
   <header>
     <div class="header-content">
-      <h1>USA Political Dashboard</h1>
-      <p>Real-time officials, voting, polls, and civic intelligence</p>
+      <div class="logo">
+        <img src="assets/logo.png" alt="Electorate" class="logo-img">
+        <h1>Electorate</h1>
+      </div>
+      <p>Know your leaders. Track your vote. Own your future.</p>
     </div>
   </header>
 
@@ -19,8 +23,8 @@
     <button onclick="showTab('my-officials')" class="active">My Officials</button>
     <button onclick="showVoting()">Voting</button>
     <button onclick="showPolls()">Polls</button>
-    <button onclick="showCivic()">Civic Intelligence</button>
-    <button onclick="showOrganizations()">Organizations</button>
+    <button onclick="showCivic()">Civic</button>
+    <button onclick="showOrganizations()">Orgs</button>
   </nav>
 
   <div class="controls">
@@ -100,7 +104,7 @@
     <div id="polls-cards"></div>
   </div>
 
-  <!-- CIVIC INTELLIGENCE -->
+  <!-- CIVIC -->
   <div id="civic" class="tab-content">
     <div id="calendar"></div>
   </div>
