@@ -784,39 +784,39 @@ function showStartupHub() {
   const hubContainer = document.getElementById('hub-cards');
   hubContainer.innerHTML = '';
 
-  // Example card data - each object has a title, description, image, and link
+  // Example card data - live placeholder images
   const hubItems = [
     {
       title: "Global Politics",
       desc: "Up-to-the-minute world political news",
-      img: "assets/news-politics.jpg",
+      img: "https://source.unsplash.com/200x120/?politics,government",
       url: "https://www.politico.com/"
     },
     {
       title: "Finance & Markets",
       desc: "Stock market updates, economy, and finance news",
-      img: "assets/news-finance.jpg",
+      img: "https://source.unsplash.com/200x120/?finance,stock,market",
       url: "https://www.bloomberg.com/"
     },
     {
       title: "Tech & Innovation",
       desc: "Latest tech news and breakthroughs",
-      img: "assets/news-tech.jpg",
+      img: "https://source.unsplash.com/200x120/?technology,innovation",
       url: "https://www.theverge.com/"
     },
     {
       title: "World News",
       desc: "Global headlines and international updates",
-      img: "assets/news-world.jpg",
+      img: "https://source.unsplash.com/200x120/?world,news",
       url: "https://www.bbc.com/news"
     },
     {
       title: "Quizzes & Polls",
       desc: "Interactive quizzes and polling data",
-      img: "assets/news-quizzes.jpg",
+      img: "https://source.unsplash.com/200x120/?quiz,polls",
       url: "https://www.pewresearch.org/"
     }
-    // add more items here
+    // add more items here with same format
   ];
 
   hubItems.forEach(item => {
@@ -831,6 +831,7 @@ function showStartupHub() {
     hubContainer.appendChild(card);
   });
 }
+
 // === FEDERAL OFFICIALS DATA (inline) ===
 const federalOfficials = [
   {
