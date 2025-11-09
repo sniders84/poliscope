@@ -1127,3 +1127,46 @@ a, button, .tab, .card-button,
   margin: 4px 0;
   font-size: 1rem;
 }
+/* Poll modal grid */
+.poll-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* responsive columns */
+  gap: 16px; /* space between cards */
+  padding: 12px;
+  justify-items: center; /* center each card in its grid column */
+  align-items: start; /* align cards at the top for uniform rows */
+}
+
+/* Poll card styling */
+.poll-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #1e1e2f;
+  color: #f0f0f0;
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+  max-width: 260px; /* consistent “playing card” width */
+  box-sizing: border-box;
+}
+
+.poll-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+}
+
+.poll-card img {
+  max-width: 80px;
+  max-height: 80px;
+  margin-bottom: 8px;
+}
+
+.poll-card h4 {
+  margin: 4px 0;
+  font-size: 1rem;
+}
