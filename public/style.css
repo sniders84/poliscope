@@ -602,3 +602,64 @@ a, button, .tab, .card, .organization-card, .voting-card,
 .official-card.house-rep .official-photo img {
   object-position: 20% center; /* slightly higher crop if heads get cut off */
 }
+/* -------------------------
+   Official Cards - Full Fix
+---------------------------*/
+
+/* Card container */
+.official-card {
+  width: 160px;                 /* match your original card width */
+  height: 250px;                /* match original height */
+  background-color: #1a1a1a;   /* example theme color, replace with your app color */
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  color: #ffffff;               /* text color to match theme */
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+/* Photo container */
+.official-card .official-photo {
+  width: 100%;
+  flex: 0 0 auto;             /* prevents image from stretching */
+  margin-bottom: 8px;          /* space between photo and text */
+}
+
+/* Image styling - ensure full head visible */
+.official-card .official-photo img {
+  width: 100%;
+  max-height: 140px;           /* adjust based on your card size */
+  object-fit: contain;          /* fit entire image without cropping */
+  object-position: top center;  /* keeps heads near top */
+  display: block;
+  background-color: transparent; /* avoids white box */
+  border-radius: 5px;           /* optional rounded corners on photo */
+}
+
+/* Info section */
+.official-card .official-info {
+  text-align: center;
+  flex: 1 1 auto;              /* fills remaining space */
+}
+
+/* Text styling */
+.official-card .official-info h3 {
+  margin: 4px 0 2px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.official-card .official-info p {
+  margin: 2px 0;
+  font-size: 14px;
+}
+
+/* Optional tweaks for Lt. Governors and House Reps if heads still need slight adjustment */
+.official-card.lt-governor .official-photo img,
+.official-card.house-rep .official-photo img {
+  object-position: 15% center;  /* slightly higher crop if needed */
+}
