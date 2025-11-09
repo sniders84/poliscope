@@ -382,48 +382,38 @@ function showCivic() {
       };
 
       const grid = document.createElement('div');
-      grid.className = 'grid';
+      grid.className = 'grid'; // use same grid as all other sections
 
       Object.entries(links).forEach(([label, value]) => {
         if (label === 'federalRaces' || !value) return;
         const displayLabel = labelMap[label] || label;
 
+        const createCard = (title, desc, url) => {
+          const card = document.createElement('div');
+          card.className = 'card link-card'; // exact same classes as other cards
+          card.setAttribute('onclick', `window.open('${url}', '_blank')`);
+          card.innerHTML = `<h4>${title}</h4><p class="card-desc">${desc}</p>`;
+          grid.appendChild(card);
+        };
+
         if (Array.isArray(value)) {
           value.forEach(entry => {
-            if (!entry || !entry.url) return;
-            const card = document.createElement('div');
-            card.className = 'card link-card';
-            card.setAttribute('onclick', `window.open('${entry.url}', '_blank')`);
-            card.innerHTML = `<h4>${displayLabel} – ${entry.party}</h4><p class="card-desc">Click to view ${entry.party} members of the ${displayLabel}.</p>`;
-            grid.appendChild(card);
+            if (entry && entry.url) createCard(`${displayLabel} – ${entry.party}`, `Click to view ${entry.party} members of the ${displayLabel}.`, entry.url);
           });
         } else if (typeof value === 'object' && value.url) {
-          const card = document.createElement('div');
-          card.className = 'card link-card';
-          card.setAttribute('onclick', `window.open('${value.url}', '_blank')`);
-          card.innerHTML = `<h4>${displayLabel}</h4><p class="card-desc">Click to view ${displayLabel} information for ${selectedState}.</p>`;
-          grid.appendChild(card);
+          createCard(displayLabel, `Click to view ${displayLabel} information for ${selectedState}.`, value.url);
         } else if (typeof value === 'string') {
-          const card = document.createElement('div');
-          card.className = 'card link-card';
-          card.setAttribute('onclick', `window.open('${value}', '_blank')`);
-          card.innerHTML = `<h4>${displayLabel}</h4><p class="card-desc">Click to view ${displayLabel} information for ${selectedState}.</p>`;
-          grid.appendChild(card);
+          createCard(displayLabel, `Click to view ${displayLabel} information for ${selectedState}.`, value);
         }
       });
 
-      if (grid.children.length === 0) {
-        const msg = document.createElement('p');
-        msg.textContent = `No state-level links available for ${selectedState}.`;
-        stateBlock.appendChild(msg);
-      }
       stateBlock.appendChild(grid);
       section.appendChild(stateBlock);
 
       // --- NGA ---
       const ngaBlock = document.createElement('div');
       ngaBlock.className = 'civic-block';
-      ngaBlock.innerHTML = '<h2>National Governor\'s Association</h2>';
+      ngaBlock.innerHTML = '<h2>National Governors Association</h2>';
 
       const ngaLinks = [
         { label: 'NGA Leadership', url: 'https://www.nga.org/governors/ngaleadership/', desc: 'Meet the current leadership of the National Governors Association.' },
@@ -438,7 +428,7 @@ function showCivic() {
       ngaGrid.className = 'grid';
       ngaLinks.forEach(link => {
         const card = document.createElement('div');
-        card.className = 'card link-card';
+        card.className = 'card link-card'; // exact same classes
         card.setAttribute('onclick', `window.open('${link.url}', '_blank')`);
         card.innerHTML = `<h4>${link.label}</h4><p class="card-desc">${link.desc}</p>`;
         ngaGrid.appendChild(card);
@@ -462,7 +452,7 @@ function showCivic() {
       federalGrid.className = 'grid';
       federalLinks.forEach(link => {
         const card = document.createElement('div');
-        card.className = 'card link-card';
+        card.className = 'card link-card'; // exact same classes
         card.setAttribute('onclick', `window.open('${link.url}', '_blank')`);
         card.innerHTML = `<h4>${link.label}</h4><p class="card-desc">${link.desc}</p>`;
         federalGrid.appendChild(card);
@@ -488,7 +478,7 @@ function showPolls() {
     if (isTerritory && suppressedForTerritories.includes(category.label)) return;
 
     const card = document.createElement('div');
-    card.className = 'card link-card';
+    card.className = 'card link-card'; // exact same classes as all other cards
     card.setAttribute('onclick', `openPollModal('${category.label}')`);
     card.innerHTML = `<h4>${category.label}</h4><p class="card-desc">Click to view ${category.label} polls.</p>`;
     pollsContainer.appendChild(card);
