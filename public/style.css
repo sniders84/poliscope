@@ -45,6 +45,21 @@ body {
   transition: background 0.4s ease, color 0.4s ease;
 }
 
+h2 {
+  font-size: 1.8rem;
+  color: var(--accent-light);
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.4rem;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* ============================================================
    HEADER
    ============================================================ */
@@ -141,21 +156,6 @@ main {
   animation: fadeIn 0.4s ease;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-h2 {
-  font-size: 1.8rem;
-  color: var(--accent-light);
-  border-bottom: 2px solid var(--accent);
-  padding-bottom: 0.4rem;
-  margin-bottom: 1.5rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
 /* ============================================================
    GRID LAYOUTS
    ============================================================ */
@@ -195,26 +195,6 @@ h2 {
 }
 
 /* ============================================================
-   PARTY STRIPES
-   ============================================================ */
-.party-stripe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 8px;
-  height: 100%;
-  border-radius: 0 4px 4px 0;
-}
-.republican .party-stripe { background: #ef4444; }
-.democrat .party-stripe,
-.democratic .party-stripe { background: #3b82f6; }
-.independent .party-stripe { background: #9ca3af; }
-.green .party-stripe { background: #22c55e; }
-.libertarian .party-stripe { background: #eab308; }
-.constitution .party-stripe { background: #8b5cf6; }
-.progressive .party-stripe { background: #f97316; }
-
-/* ============================================================
    OFFICIAL CARDS
    ============================================================ */
 .official-card {
@@ -244,21 +224,6 @@ h2 {
   height: 100%;
   object-fit: cover;
   border-radius: 8px;
-}
-
-.official-info {
-  padding: 0.75rem 1rem;
-}
-
-.official-info h3 {
-  font-size: 1.1rem;
-  margin-bottom: 0.3rem;
-  color: var(--text);
-}
-
-.official-info p {
-  font-size: 0.9rem;
-  color: var(--muted-light);
 }
 
 /* ============================================================
@@ -297,487 +262,11 @@ h2 {
 .organization-card {
   text-align: center;
   overflow: hidden;
-}
-
-.logo-wrapper {
-  width: 100%;
-  height: 120px;
-  background: rgba(255,255,255,0.05);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.logo-wrapper img {
-  max-height: 100%;
-  max-width: 100%;
-  object-fit: contain;
-}
-
-.info-wrapper {
-  padding: 1rem;
-}
-
-.info-wrapper h3 {
-  color: var(--accent-light);
-  font-size: 1.1rem;
-  margin-bottom: 0.4rem;
-}
-
-/* ============================================================
-   VOTING CARDS
-   ============================================================ */
-#voting-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1rem;
-  padding: 1.5rem;
-  justify-content: center;
-}
-
-.voting-card {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 180px;
-  height: 180px;
-  text-align: center;
-  padding: 0.75rem;
-  transition: all 0.3s ease;
-}
-
-.voting-card:hover {
-  background: rgba(37,99,235,0.15);
-  box-shadow: 0 0 15px var(--accent-glow);
-}
-
-.voting-card .card-icon {
-  font-size: 3.5rem;
-  filter: drop-shadow(0 0 6px rgba(255,255,255,0.3));
-  margin-bottom: 0.5rem;
-}
-
-.voting-card .card-label {
-  font-weight: bold;
-  color: var(--text);
-  margin-bottom: 0.2rem;
-}
-
-.voting-card .card-description {
-  font-size: 0.85rem;
-  color: var(--muted-light);
-}
-
-.voting-card .card-date {
-  font-size: 0.8rem;
-  color: var(--muted);
-}
-
-/* ============================================================
-   MODALS
-   ============================================================ */
-.modal {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.6);
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.modal-content {
-  background: var(--card-bg);
-  padding: 2rem;
-  border-radius: 12px;
-  max-width: 700px;
-  max-height: 90vh;
-  overflow-y: auto;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-  color: var(--text);
-  animation: fadeIn 0.3s ease;
-}
-
-#close-modal {
-  position: absolute;
-  top: 1rem;
-  right: 1.5rem;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: var(--accent-light);
-}
-
-/* ============================================================
-   CIVIC SECTION
-   ============================================================ */
-.civic-section {
+  width: 230px;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-}
-
-.civic-block h2 {
-  color: #f87171;
-}
-
-/* ============================================================
-   ANIMATIONS
-   ============================================================ */
-button, .tab, .card-button, a {
-  transition: all 0.25s ease;
-}
-document.body.classList.toggle('light-mode');
-/* ============================================================
-   PATCH: VISUAL REFINEMENTS AND LAYOUT CORRECTIONS
-   ============================================================ */
-
-/* ---- 1. Fix card photo centering ---- */
-.photo-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background: rgba(255,255,255,0.05);
-  border-radius: 8px;
-}
-
-.photo-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center; /* ensures true center alignment */
-}
-
-/* ---- 2. Modal layout and image consistency ---- */
-.modal-content {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  background: rgba(30,41,59,0.95); /* semi-transparent glass effect */
-  backdrop-filter: blur(10px);
-  gap: 1.5rem;
-}
-
-/* Ensure modal photo sizing and alignment */
-.modal-content img {
-  flex-shrink: 0;
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-right: 1.5rem;
-  margin-bottom: 0.5rem;
-  align-self: flex-start;
-}
-
-/* Adjust modal text area for readability */
-.modal-content p,
-.modal-content h3,
-.modal-content h4,
-.modal-content h5 {
-  color: var(--text);
-  line-height: 1.5;
-}
-
-/* ---- 3. Civic Intelligence Dashboard card tightening ---- */
-.civic-section .link-card,
-.civic-section .organization-card,
-.civic-section .official-card {
-  width: 180px;
-  height: auto;
-  padding: 0.75rem;
-}
-
-.civic-section .grid,
-.civic-section .organization-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 1rem;
-  justify-items: center;
-}
-
-/* ---- 4. Polls tab logo resizing ---- */
-.modal-content img.poll-logo,
-.poll-logo {
-  max-width: 120px;
-  max-height: 120px;
-  object-fit: contain;
-}
-
-/* ---- 5. Equal sizing for political group cards ---- */
-.organization-card {
-  width: 220px;
-  height: 220px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.organization-card .logo-wrapper {
-  height: 100px;
-}
-
-.organization-card .info-wrapper {
-  flex-grow: 1;
-  padding: 0.75rem;
-}
-
-/* ---- 6. Voting card resizing & cleanup ---- */
-#voting-cards {
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
-}
-
-.voting-card {
-  width: 220px;
-  height: 200px;
-  padding: 1rem;
-  overflow: hidden;
-}
-
-/* Hide deadlines or extra small text lines in voting cards */
-.voting-card .card-date {
-  display: none !important;
-}
-
-/* Prevent text clipping */
-.voting-card .card-label,
-.voting-card .card-description {
-  white-space: normal;
-  word-wrap: break-word;
-  overflow: visible;
-}
-/* ============================================================
-   PATCH ADD-ON: FROSTED MODAL TEXT BACKGROUNDS
-   ============================================================ */
-
-.modal-content {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 1.5rem;
-  padding: 2rem;
-  background: rgba(30,41,59,0.9); /* transparent dark */
-  backdrop-filter: blur(12px);
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.1);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-}
-
-/* Keep photo clean and fixed on left */
-.modal-content img {
-  flex-shrink: 0;
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-top: 0.5rem;
-}
-
-/* Create a frosted panel for all text */
-.modal-text {
-  flex: 1;
-  background: rgba(255,255,255,0.08);
-  border-radius: 10px;
-  padding: 1rem 1.5rem;
-  color: var(--text);
-  backdrop-filter: blur(8px);
-  box-shadow: inset 0 0 8px rgba(255,255,255,0.05);
-}
-
-/* Give each heading clear contrast */
-.modal-text h2,
-.modal-text h3,
-.modal-text h4 {
-  color: var(--accent-light);
-  margin-bottom: 0.6rem;
-}
-
-.modal-text p {
-  color: var(--muted-light);
-  margin-bottom: 0.8rem;
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
-
-/* Adjust modal close button to match new look */
-#close-modal {
-  color: var(--accent-light);
-  background: rgba(255,255,255,0.1);
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.3s ease;
-}
-
-#close-modal:hover {
-  background: rgba(255,255,255,0.2);
-  transform: rotate(90deg);
-}
-/* ============================================================
-   UNIVERSAL FROSTED MODAL SYSTEM (Applies to ALL Modals)
-   ============================================================ */
-
-.modal {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(15,23,42,0.7);
-  backdrop-filter: blur(8px);
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.modal-content {
-  position: relative;
-  background: rgba(30,41,59,0.9);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 14px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-  max-width: 90%;
-  max-height: 90%;
-  overflow-y: auto;
-  animation: fadeIn 0.4s ease;
-  padding: 2rem;
-}
-
-/* Semi-transparent “frosted” area for all modal inner content */
-.modal-content > div {
-  background: rgba(255,255,255,0.08);
-  border-radius: 10px;
-  padding: 1.5rem;
-  backdrop-filter: blur(10px);
-  box-shadow: inset 0 0 12px rgba(255,255,255,0.05);
-}
-
-/* Grids inside modals */
-.modal-content .officials-grid,
-.modal-content .organization-grid,
-.modal-content .polls-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.25rem;
-  justify-items: center;
-}
-
-/* Consistent modal images (officials, orgs, polls, etc.) */
-.modal-content img {
-  display: block;
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 8px;
-  margin: 0 auto 0.75rem auto;
-}
-
-/* Poll and source logos are smaller */
-.modal-content img.poll-logo,
-.modal-content img.source-logo {
-  max-width: 120px;
-  max-height: 120px;
-  object-fit: contain;
-}
-
-/* Text inside modals */
-.modal-content h2,
-.modal-content h3,
-.modal-content h4,
-.modal-content h5 {
-  color: var(--accent-light);
-  margin-bottom: 0.6rem;
-}
-
-.modal-content p {
-  color: var(--muted-light);
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
-
-/* Close button improvements */
-.modal-content .close,
-.modal-content #close-modal {
-  position: absolute;
-  top: 1rem;
-  right: 1.5rem;
-  font-size: 1.5rem;
-  cursor: pointer;
-  background: rgba(255,255,255,0.1);
-  color: var(--accent-light);
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.3s ease;
-}
-
-.modal-content .close:hover,
-.modal-content #close-modal:hover {
-  background: rgba(255,255,255,0.2);
-  transform: rotate(90deg);
-}
-/* ============================================================
-   FINAL POLISH PATCH — REFINEMENTS AND INTERACTIONS
-   ============================================================ */
-
-/* 1️⃣ Ensure all official photos (cards + modals) are fully visible and never cropped */
-.photo-wrapper img,
-.modal-content img {
-  width: 100%;
-  height: auto;
-  max-height: 220px;
-  object-fit: contain;      /* prevent cropping */
-  object-position: center;  /* always centered */
-  border-radius: 8px;
-}
-
-/* 2️⃣ Reduce modal width by half for better readability */
-.modal-content {
-  max-width: 45% !important;
-  margin: 0 auto;
-}
-
-/* 3️⃣ Civic Intelligence dashboard cards — strict grid layout */
-.civic-section .grid,
-#civicGrid,
-#civicCards,
-#civic-section,
-.civic-section {
-  display: grid !important;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1.25rem;
-  justify-items: center;
-}
-
-/* 4️⃣ Shrink poll logos and standardize structure in modals */
-.modal-content img.poll-logo,
-.polls-grid img,
-.polls-grid .organization-card img {
-  max-width: 90px !important;
-  max-height: 90px !important;
-  object-fit: contain;
-  margin-bottom: 0.5rem;
-}
-
-/* Make poll cards consistent with political group style */
-.polls-grid .organization-card,
-.modal-content .polls-grid .organization-card {
-  width: 220px;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: flex-start;
-  text-align: center;
+  align-items: center;
   padding: 1rem;
   border-radius: 10px;
   background: rgba(255,255,255,0.07);
@@ -785,36 +274,9 @@ document.body.classList.toggle('light-mode');
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.polls-grid .organization-card:hover {
-  transform: translateY(-4px);
+.organization-card:hover {
+  transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-}
-
-/* Ensure poll card links are consistent */
-.polls-grid .organization-card a {
-  display: inline-block;
-  color: var(--accent-light);
-  text-decoration: none;
-  font-weight: 600;
-  margin-top: 0.5rem;
-  transition: color 0.2s ease;
-}
-.polls-grid .organization-card a:hover {
-  color: var(--accent);
-  text-decoration: underline;
-}
-
-/* 5️⃣ Political groups cards — fix cut-off text and add click-through styling */
-.organization-card {
-  width: 230px;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  text-align: center;
-  padding: 1rem;
-  overflow: visible;
 }
 
 .organization-card .info-wrapper {
@@ -835,388 +297,188 @@ document.body.classList.toggle('light-mode');
   line-height: 1.4;
 }
 
-/* Make the entire political group card clickable like a button */
-.organization-card a,
-.organization-card {
-  cursor: pointer;
+.organization-card a {
+  color: var(--accent-light);
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 0.5rem;
 }
 
-.organization-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+.organization-card a:hover {
+  color: var(--accent);
+  text-decoration: underline;
 }
 
-/* 6️⃣ Universal cursor styling — show pointer on all interactive items */
-a, button, .tab, .card-button,
-.link-card, .organization-card, .voting-card,
-.polls-grid .organization-card, .official-card {
-  cursor: pointer !important;
+/* ============================================================
+   VOTING CARDS
+   ============================================================ */
+#voting-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem;
+  justify-content: center;
 }
-/* Photo container */
-.official-card .photo-wrapper {
-  width: 100%;
-  height: 160px;          /* adjust based on card size */
+
+.voting-card {
+  width: 220px;
+  height: 200px;
+  padding: 1rem;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.voting-card .card-label,
+.voting-card .card-description {
+  white-space: normal;
+  word-wrap: break-word;
+  overflow: visible;
+}
+
+.voting-card .card-date {
+  display: none !important;
+}
+/* ============================================================
+   MODALS
+   ============================================================ */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15,23,42,0.7);
+  backdrop-filter: blur(8px);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  position: relative;
+  background: rgba(30,41,59,0.9);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  max-width: 90%;
+  max-height: 90%;
+  overflow-y: auto;
+  animation: fadeIn 0.4s ease;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modal-content > div {
+  background: rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 0 12px rgba(255,255,255,0.05);
+}
+
+.modal-content img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
+  margin: 0 auto 0.75rem auto;
+}
+
+.modal-content img.poll-logo,
+.modal-content img.source-logo {
+  max-width: 120px;
+  max-height: 120px;
+  object-fit: contain;
+}
+
+.modal-text {
+  flex: 1;
+  background: rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  color: var(--text);
+  backdrop-filter: blur(8px);
+  box-shadow: inset 0 0 8px rgba(255,255,255,0.05);
+}
+
+.modal-text h2,
+.modal-text h3,
+.modal-text h4 {
+  color: var(--accent-light);
+  margin-bottom: 0.6rem;
+}
+
+.modal-text p {
+  color: var(--muted-light);
+  margin-bottom: 0.8rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+#close-modal,
+.modal-content .close {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background: rgba(255,255,255,0.1);
+  color: var(--accent-light);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
   display: flex;
   justify-content: center;
-  align-items: center;     /* vertical centering so head is not cut off */
+  align-items: center;
+  transition: all 0.3s ease;
 }
 
-/* Photo image */
-.official-card .photo-wrapper img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;     /* fits entire image without cropping */
-  object-position: center center;
-  display: block;
-  background-color: transparent; /* avoids white boxes */
+#close-modal:hover,
+.modal-content .close:hover {
+  background: rgba(255,255,255,0.2);
+  transform: rotate(90deg);
 }
-/* Two-column layout for State Legislative links */
-#state-legislative .grid {
+
+/* ============================================================
+   CIVIC SECTION
+   ============================================================ */
+.civic-section {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.25rem;
+  justify-items: center;
 }
 
-/* Two-column layout for National Governors Association section */
-#nga-section .grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+.civic-block h2 {
+  color: #f87171;
 }
 
-/* Two-column layout for Federal Oversight & Transparency section */
-#federal-oversight .grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+.civic-section .link-card,
+.civic-section .organization-card,
+.civic-section .official-card {
+  width: 180px;
+  height: auto;
+  padding: 0.75rem;
 }
 
-/* Responsive: switch to one column on narrow screens */
-@media (max-width: 768px) {
-  #state-legislative .grid,
-  #nga-section .grid,
-  #federal-oversight .grid {
-    grid-template-columns: 1fr; /* single column for mobile */
-    gap: 12px; /* optional, slightly smaller spacing */
-  }
-}
-/* Grid layout for all three sections */
-#state-legislative .grid,
-#nga-section .grid,
-#federal-oversight .grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* two columns on desktop */
-  gap: 16px; /* spacing between cards */
-}
-/* Polls modal: grid layout for source cards */
-#polls-content {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* flexible columns */
-  gap: 16px; /* spacing between cards */
-  padding: 16px; /* optional padding inside modal */
-}
-
-/* Optional: make the source cards look nicer */
-.source-card {
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  text-align: center;
-}
-/* 1️⃣ Two-column layout for the three sections */
-#state-legislative .grid,
-#nga-section .grid,
-#federal-oversight .grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* two columns */
-  gap: 16px;
-}
-
-/* 2️⃣ Grid layout for Polls modal source cards */
-#polls-content {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
-  padding: 16px;
-}
-
-/* Optional styling for cards */
-.card,
-#polls-content .source-card {
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  text-align: center;
-}
-
-/* 3️⃣ Responsive: one column on narrow screens */
-@media (max-width: 768px) {
-  #state-legislative .grid,
-  #nga-section .grid,
-  #federal-oversight .grid,
-  #polls-content {
-    grid-template-columns: 1fr; /* single column for mobile */
-    gap: 12px;
-  }
-}
-/* Startup Hub grid */
-#hub-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 16px;
-}
-
-/* Hub card style: matches all other cards in your app */
-#hub-cards .hub-card {
-  background-color: #1f1f1f; /* dark format */
-  border: 2px solid #333;
-  border-radius: 8px;
-  padding: 12px;
-  transition: border-color 0.2s ease, transform 0.2s ease;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-#hub-cards .hub-card:hover {
-  border-color: #007bff; /* blue outline hover effect */
-  transform: translateY(-2px);
-}
-
-/* Hub card image */
-#hub-cards .hub-card img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 6px;
-  margin-bottom: 8px;
-}
-
-/* Hub card content */
-#hub-cards .hub-card h4 {
-  margin: 4px 0;
-  font-size: 1rem;
-  color: #fff;
-}
-
-#hub-cards .hub-card p {
-  font-size: 0.875rem;
-  color: #ccc;
-}
-/* ------------------ Startup Hub / Home Hub Cards ------------------ */
-#hub-cards {
+/* ============================================================
+   POLL MODAL & POLL GRID
+   ============================================================ */
+.poll-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 16px;
-}
-
-.hub-card {
-  background-color: #1e1e2f;
-  color: #f0f0f0;
-  border: 2px solid transparent;
-  border-radius: 10px;
   padding: 12px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
-  text-align: center;
-  cursor: pointer;
-  transition: border 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
-}
-
-.hub-card img {
-  max-width: 100%;
-  border-radius: 6px;
-  margin-bottom: 8px;
-  object-fit: cover;
-  height: 140px;
-}
-
-.hub-card h4 {
-  margin: 6px 0 4px;
-  font-size: 1.1rem;
-}
-
-.hub-card p {
-  font-size: 0.9rem;
-  line-height: 1.3;
-  color: #ccc;
-}
-
-.hub-card:hover {
-  border-color: transparent;
-  box-shadow: 0 0 0 2px #007bff, 0 2px 4px rgba(0,0,0,0.5);
-  transform: translateY(-2px);
-}
-
-/* ------------------ Social Trends Section ------------------ */
-#social-feed {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 12px;
   justify-items: center;
   align-items: start;
 }
 
-.social-card {
-  background-color: #1e1e2f;
-  color: #f0f0f0;
-  border: 2px solid transparent;
-  border-radius: 10px;
-  padding: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
-  text-align: center;
-  transition: border 0.25s ease, transform 0.2s ease;
-  width: 100%;
-  max-width: 340px;  /* uniform card width */
-  box-sizing: border-box;
-}
-
-.social-card:hover {
-  border: 2px solid #007bff;
-  transform: translateY(-2px);
-}
-
-.social-card h3 {
-  color: #f0f0f0;
-  margin-bottom: 8px;
-  font-size: 1rem;
-  text-align: center;
-}
-
-/* iframe takes full width, but we **set explicit height in JS** */
-.social-card iframe {
-  width: 100%;
-  border: none;
-}
-.poll-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 12px;
-  padding: 12px;
-}
-
-.poll-card {
-  display: block;
-  background-color: #1e1e2f;
-  color: #f0f0f0;
-  border-radius: 10px;
-  padding: 12px;
-  text-align: center;
-  text-decoration: none;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.poll-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.6);
-}
-
-.poll-card img {
-  max-width: 80px;
-  max-height: 80px;
-  margin-bottom: 8px;
-}
-
-.poll-card h4 {
-  margin: 4px 0;
-  font-size: 1rem;
-}
-/* Poll modal grid */
-.poll-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* responsive columns */
-  gap: 16px; /* space between cards */
-  padding: 12px;
-  justify-items: center; /* center each card in its grid column */
-  align-items: start; /* align cards at the top for uniform rows */
-}
-
-/* Poll card styling */
-.poll-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #1e1e2f;
-  color: #f0f0f0;
-  border-radius: 10px;
-  padding: 12px;
-  text-align: center;
-  text-decoration: none;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  width: 100%;
-  max-width: 260px; /* consistent “playing card” width */
-  box-sizing: border-box;
-}
-
-.poll-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.6);
-}
-
-.poll-card img {
-  max-width: 80px;
-  max-height: 80px;
-  margin-bottom: 8px;
-}
-
-.poll-card h4 {
-  margin: 4px 0;
-  font-size: 1rem;
-}
-.poll-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
-  margin-top: 12px;
-}
-
-.poll-card {
-  background-color: #1e1e2f;
-  border: 2px solid transparent;
-  border-radius: 10px;
-  padding: 12px;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
-  transition: border 0.25s ease, transform 0.2s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-  color: #f0f0f0;
-}
-
-.poll-card img {
-  max-width: 80px;
-  margin-bottom: 8px;
-}
-
-.poll-card h4 {
-  font-size: 1rem;
-  margin: 0;
-}
-
-.poll-card:hover {
-  border-color: #007bff;
-  transform: translateY(-2px);
-}
-/* Modal content grid */
-.poll-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
-  margin-top: 16px;
-  justify-items: center;
-  align-items: start;
-}
-
-/* Individual poll card */
 .poll-card {
   display: flex;
   flex-direction: column;
@@ -1237,6 +499,18 @@ a, button, .tab, .card-button,
 .poll-card:hover {
   border-color: #007bff;
   transform: translateY(-2px);
+  box-shadow: 0 0 0 2px #007bff, 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.poll-card img {
+  max-width: 80px;
+  max-height: 80px;
+  margin-bottom: 8px;
+}
+
+.poll-card h4 {
+  font-size: 1rem;
+  margin: 0;
 }
 
 .poll-logo img {
@@ -1255,39 +529,108 @@ a, button, .tab, .card-button,
 .poll-links a:hover {
   text-decoration: underline;
 }
-/* Poll Modal Grid Styling */
+
 #pollModalContent {
   max-width: 900px;
   margin: 0 auto;
   padding: 24px;
 }
 
-.poll-grid {
+/* ============================================================
+   HUB / SOCIAL / STARTUP GRID SECTIONS
+   ============================================================ */
+#hub-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 16px;
-  margin-top: 16px;
 }
 
-.poll-card {
+.hub-card {
   background-color: #1e1e2f;
   color: #f0f0f0;
-  border-radius: 8px;
+  border: 2px solid transparent;
+  border-radius: 10px;
   padding: 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
   text-align: center;
+  cursor: pointer;
+  transition: border 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
 }
 
-.poll-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 0 2px #007bff, 0 2px 4px rgba(0,0,0,0.5);
-}
-
-.poll-card img {
-  max-width: 80px;
+.hub-card img {
+  max-width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 6px;
   margin-bottom: 8px;
+}
+
+.hub-card h4 {
+  margin: 6px 0 4px;
+  font-size: 1.1rem;
+}
+
+.hub-card p {
+  font-size: 0.9rem;
+  line-height: 1.3;
+  color: #ccc;
+}
+
+.hub-card:hover {
+  border-color: transparent;
+  box-shadow: 0 0 0 2px #007bff, 0 2px 4px rgba(0,0,0,0.5);
+  transform: translateY(-2px);
+}
+
+#social-feed {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 12px;
+  justify-items: center;
+  align-items: start;
+}
+
+.social-card {
+  background-color: #1e1e2f;
+  color: #f0f0f0;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  text-align: center;
+  transition: border 0.25s ease, transform 0.2s ease;
+  width: 100%;
+  max-width: 340px;
+  box-sizing: border-box;
+}
+
+.social-card h3 {
+  color: #f0f0f0;
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+.social-card iframe {
+  width: 100%;
+  border: none;
+}
+
+/* ============================================================
+   RESPONSIVE GRID FIXES
+   ============================================================ */
+@media (max-width: 768px) {
+  #state-legislative .grid,
+  #nga-section .grid,
+  #federal-oversight .grid,
+  #polls-content,
+  .civic-section,
+  #hub-cards,
+  #social-feed,
+  .poll-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
 }
