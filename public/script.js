@@ -930,7 +930,10 @@ function renderOfficials(stateFilter = null, query = '') {
   allOfficials.forEach(o => {
     const rawParty = (o.party || '').toLowerCase().trim();
     const normalizedParty = partyMap[rawParty] || rawParty.replace(/\s+/g, '') || 'independent';
-    const photoSrc = o.photo && o.photo.trim() !== '' ? o.photo : 'assets/default-photo.png';
+if (o.office === 'Lieutenant Governor') card.classList.add('lt-governor');
+if (o.office === 'U.S. Representative') card.classList.add('house-rep');
+
+const photoSrc = o.photo && o.photo.trim() !== '' ? o.photo : 'assets/default-photo.png';
 
     const districtDisplay = o.office === 'U.S. Representative' && o.district
       ? `<p class="district-display"><strong>District:</strong> ${o.district}</p>`
