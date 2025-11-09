@@ -363,7 +363,7 @@ function showCivic() {
   const section = document.createElement('div');
   section.className = 'civic-section';
 
-  // --- State Legislative Links Block ---
+  // --- State Legislative Links ---
   const stateBlock = document.createElement('div');
   stateBlock.className = 'civic-block';
   stateBlock.innerHTML = '<h2>State Legislative Links</h2>';
@@ -382,41 +382,32 @@ function showCivic() {
       };
 
       const grid = document.createElement('div');
-      grid.className = 'grid'; // Use the standard grid class for 2-column layout
+      grid.className = 'grid';
 
       Object.entries(links).forEach(([label, value]) => {
-        if (label === 'federalRaces' || value == null) return;
+        if (label === 'federalRaces' || !value) return;
         const displayLabel = labelMap[label] || label;
 
         if (Array.isArray(value)) {
           value.forEach(entry => {
             if (!entry || !entry.url) return;
             const card = document.createElement('div');
-            card.className = 'card'; // standard card class
+            card.className = 'card link-card';
             card.setAttribute('onclick', `window.open('${entry.url}', '_blank')`);
-            card.innerHTML = `
-              <h4>${displayLabel} – ${entry.party}</h4>
-              <p class="card-desc">Click to view ${entry.party} members of the ${displayLabel}.</p>
-            `;
+            card.innerHTML = `<h4>${displayLabel} – ${entry.party}</h4><p class="card-desc">Click to view ${entry.party} members of the ${displayLabel}.</p>`;
             grid.appendChild(card);
           });
         } else if (typeof value === 'object' && value.url) {
           const card = document.createElement('div');
-          card.className = 'card';
+          card.className = 'card link-card';
           card.setAttribute('onclick', `window.open('${value.url}', '_blank')`);
-          card.innerHTML = `
-            <h4>${displayLabel}</h4>
-            <p class="card-desc">Click to view ${displayLabel} information for ${selectedState}.</p>
-          `;
+          card.innerHTML = `<h4>${displayLabel}</h4><p class="card-desc">Click to view ${displayLabel} information for ${selectedState}.</p>`;
           grid.appendChild(card);
         } else if (typeof value === 'string') {
           const card = document.createElement('div');
-          card.className = 'card';
+          card.className = 'card link-card';
           card.setAttribute('onclick', `window.open('${value}', '_blank')`);
-          card.innerHTML = `
-            <h4>${displayLabel}</h4>
-            <p class="card-desc">Click to view ${displayLabel} information for ${selectedState}.</p>
-          `;
+          card.innerHTML = `<h4>${displayLabel}</h4><p class="card-desc">Click to view ${displayLabel} information for ${selectedState}.</p>`;
           grid.appendChild(card);
         }
       });
@@ -425,75 +416,86 @@ function showCivic() {
         const msg = document.createElement('p');
         msg.textContent = `No state-level links available for ${selectedState}.`;
         stateBlock.appendChild(msg);
-      } else {
-        stateBlock.appendChild(grid);
       }
-
+      stateBlock.appendChild(grid);
       section.appendChild(stateBlock);
-    });
 
-  // --- National Governors Association Block ---
-  const ngaBlock = document.createElement('div');
-  ngaBlock.className = 'civic-block';
-  ngaBlock.innerHTML = '<h2>National Governors Association</h2>';
+      // --- NGA ---
+      const ngaBlock = document.createElement('div');
+      ngaBlock.className = 'civic-block';
+      ngaBlock.innerHTML = '<h2>National Governor\'s Association</h2>';
 
-  const ngaLinks = [
-    { label: 'NGA Leadership', url: 'https://www.nga.org/governors/ngaleadership/', desc: 'Meet the current leadership of the National Governors Association.' },
-    { label: 'Council of Governors', url: 'https://www.nga.org/cog/', desc: 'Explore the bipartisan Council of Governors and its national security role.' },
-    { label: 'Gubernatorial Elections', url: 'https://www.nga.org/governors/elections/', desc: 'Track upcoming and recent gubernatorial elections across the United States.' },
-    { label: 'Education, Workforce and Community Investment Task Force', url: 'https://www.nga.org/advocacy/nga-committees/education-workforce-community-investment-task-force/', desc: 'See how governors are shaping education and workforce development policy.' },
-    { label: 'Economic Development and Revitalization Task Force', url: 'https://www.nga.org/advocacy/nga-committees/economic-development-and-revitalization-task-force/', desc: 'Review strategies for economic growth and revitalization led by governors.' },
-    { label: 'Public Health and Emergency Management Task Force', url: 'https://www.nga.org/advocacy/nga-committees/public-health-and-emergency-management-task-force/', desc: 'Understand how governors coordinate public health and emergency response.' }
-  ];
+      const ngaLinks = [
+        { label: 'NGA Leadership', url: 'https://www.nga.org/governors/ngaleadership/', desc: 'Meet the current leadership of the National Governors Association.' },
+        { label: 'Council of Governors', url: 'https://www.nga.org/cog/', desc: 'Explore the bipartisan Council of Governors and its national security role.' },
+        { label: 'Gubernatorial Elections', url: 'https://www.nga.org/governors/elections/', desc: 'Track upcoming and recent gubernatorial elections across the United States.' },
+        { label: 'Education, Workforce and Community Investment Task Force', url: 'https://www.nga.org/advocacy/nga-committees/education-workforce-community-investment-task-force/', desc: 'See how governors are shaping education and workforce development policy.' },
+        { label: 'Economic Development and Revitalization Task Force', url: 'https://www.nga.org/advocacy/nga-committees/economic-development-and-revitalization-task-force/', desc: 'Review strategies for economic growth and revitalization led by governors.' },
+        { label: 'Public Health and Emergency Management Task Force', url: 'https://www.nga.org/advocacy/nga-committees/public-health-and-emergency-management-task-force/', desc: 'Understand how governors coordinate public health and emergency response.' }
+      ];
 
-  const ngaGrid = document.createElement('div');
-  ngaGrid.className = 'grid';
+      const ngaGrid = document.createElement('div');
+      ngaGrid.className = 'grid';
+      ngaLinks.forEach(link => {
+        const card = document.createElement('div');
+        card.className = 'card link-card';
+        card.setAttribute('onclick', `window.open('${link.url}', '_blank')`);
+        card.innerHTML = `<h4>${link.label}</h4><p class="card-desc">${link.desc}</p>`;
+        ngaGrid.appendChild(card);
+      });
+      ngaBlock.appendChild(ngaGrid);
+      section.appendChild(ngaBlock);
 
-  ngaLinks.forEach(link => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.setAttribute('onclick', `window.open('${link.url}', '_blank')`);
-    card.innerHTML = `
-      <h4>${link.label}</h4>
-      <p class="card-desc">${link.desc}</p>
-    `;
-    ngaGrid.appendChild(card);
-  });
+      // --- Federal Oversight ---
+      const federalBlock = document.createElement('div');
+      federalBlock.className = 'civic-block';
+      federalBlock.innerHTML = '<h2>Federal Oversight & Transparency</h2>';
 
-  ngaBlock.appendChild(ngaGrid);
-  section.appendChild(ngaBlock);
+      const federalLinks = [
+        { label: 'Committees', url: 'https://www.govtrack.us/congress/committees', desc: 'Explore congressional committees and their membership.' },
+        { label: 'Legislator Report Cards', url: 'https://www.govtrack.us/congress/members/report-cards/2024', desc: 'See performance grades for federal legislators.' },
+        { label: 'All Federal Bills', url: 'https://www.govtrack.us/congress/bills/', desc: 'Track every bill introduced in Congress.' },
+        { label: 'Recent Votes', url: 'https://www.govtrack.us/congress/votes', desc: 'Review the latest recorded votes in Congress.' }
+      ];
 
-  // --- Federal Oversight & Transparency Block ---
-  const federalBlock = document.createElement('div');
-  federalBlock.className = 'civic-block';
-  federalBlock.innerHTML = '<h2>Federal Oversight & Transparency</h2>';
+      const federalGrid = document.createElement('div');
+      federalGrid.className = 'grid';
+      federalLinks.forEach(link => {
+        const card = document.createElement('div');
+        card.className = 'card link-card';
+        card.setAttribute('onclick', `window.open('${link.url}', '_blank')`);
+        card.innerHTML = `<h4>${link.label}</h4><p class="card-desc">${link.desc}</p>`;
+        federalGrid.appendChild(card);
+      });
+      federalBlock.appendChild(federalGrid);
+      section.appendChild(federalBlock);
 
-  const federalLinks = [
-    { label: 'Committees', url: 'https://www.govtrack.us/congress/committees', desc: 'Explore congressional committees and their membership.' },
-    { label: 'Legislator Report Cards', url: 'https://www.govtrack.us/congress/members/report-cards/2024', desc: 'See performance grades for federal legislators.' },
-    { label: 'All Federal Bills', url: 'https://www.govtrack.us/congress/bills/', desc: 'Track every bill introduced in Congress.' },
-    { label: 'Recent Votes', url: 'https://www.govtrack.us/congress/votes', desc: 'Review the latest recorded votes in Congress.' }
-  ];
-
-  const federalGrid = document.createElement('div');
-  federalGrid.className = 'grid';
-
-  federalLinks.forEach(link => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.setAttribute('onclick', `window.open('${link.url}', '_blank')`);
-    card.innerHTML = `
-      <h4>${link.label}</h4>
-      <p class="card-desc">${link.desc}</p>
-    `;
-    federalGrid.appendChild(card);
-  });
-
-  federalBlock.appendChild(federalGrid);
-  section.appendChild(federalBlock);
-
-  calendar.appendChild(section);
+      calendar.appendChild(section);
+    })
+    .catch(err => console.error('Error loading civic links:', err));
 }
+
+// === POLLS TAB ===
+function showPolls() {
+  showTab('polls');
+  const pollsContainer = document.getElementById('polls-cards');
+  pollsContainer.innerHTML = '';
+
+  const suppressedForTerritories = ['State Senate', 'State House'];
+  const isTerritory = ['Puerto Rico', 'U.S. Virgin Islands', 'Guam', 'American Samoa', 'Northern Mariana Islands'].includes(selectedState);
+
+  pollCategories.forEach(category => {
+    if (isTerritory && suppressedForTerritories.includes(category.label)) return;
+
+    const card = document.createElement('div');
+    card.className = 'card link-card';
+    card.setAttribute('onclick', `openPollModal('${category.label}')`);
+    card.innerHTML = `<h4>${category.label}</h4><p class="card-desc">Click to view ${category.label} polls.</p>`;
+    pollsContainer.appendChild(card);
+  });
+}
+window.pollCategories = pollCategories;
+
       // Cabinet card
       const cabinetCard = document.createElement('div');
       cabinetCard.className = 'link-card';
