@@ -930,10 +930,7 @@ function renderOfficials(stateFilter = null, query = '') {
   allOfficials.forEach(o => {
     const rawParty = (o.party || '').toLowerCase().trim();
     const normalizedParty = partyMap[rawParty] || rawParty.replace(/\s+/g, '') || 'independent';
-if (o.office === 'Lieutenant Governor') card.classList.add('lt-governor');
-if (o.office === 'U.S. Representative') card.classList.add('house-rep');
-
-const photoSrc = o.photo && o.photo.trim() !== '' ? o.photo : 'assets/default-photo.png';
+    const photoSrc = o.photo && o.photo.trim() !== '' ? o.photo : 'assets/default-photo.png';
 
     const districtDisplay = o.office === 'U.S. Representative' && o.district
       ? `<p class="district-display"><strong>District:</strong> ${o.district}</p>`
@@ -943,14 +940,9 @@ const photoSrc = o.photo && o.photo.trim() !== '' ? o.photo : 'assets/default-ph
     const endYear = safeYear(o.termEnd) || 'Present';
     const termDisplay = (startYear || endYear) ? `${startYear}–${endYear}` : 'Present';
 
-const card = document.createElement('div');
-card.className = `official-card ${normalizedParty}`;
-
-// Add these lines here, AFTER card exists
-if (o.office === 'Lieutenant Governor') card.classList.add('lt-governor');
-if (o.office === 'U.S. Representative') card.classList.add('house-rep');
-
-card.innerHTML = `
+    const card = document.createElement('div');
+    card.className = `official-card ${normalizedParty}`;
+  card.innerHTML = `
   <div class="party-stripe"></div>
   <div class="card-body">
     <div class="photo-wrapper">
@@ -967,9 +959,8 @@ card.innerHTML = `
     </div>
   </div>
 `;
-
-card.addEventListener('click', () => openOfficialModal(o));
-officialsContainer.appendChild(card);
+    card.addEventListener('click', () => openOfficialModal(o));
+    officialsContainer.appendChild(card);
   });
 }
 
