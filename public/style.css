@@ -663,3 +663,20 @@ a, button, .tab, .card, .organization-card, .voting-card,
 .official-card.house-rep .official-photo img {
   object-position: 15% center;  /* slightly higher crop if needed */
 }
+/* Official card photo handling */
+.official-card .photo-wrapper {
+  width: 100%;
+  height: 180px; /* adjust based on your card design */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* keeps heads near top */
+}
+
+.official-card .photo-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        /* fills container while maintaining aspect ratio */
+  object-position: top center; /* keeps heads visible near top */
+  display: block;
+}
