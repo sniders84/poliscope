@@ -363,7 +363,7 @@ function showCivic() {
   const section = document.createElement('div');
   section.className = 'civic-section';
 
-  // --- State Legislative Links ---
+  // --- State block ---
   const stateBlock = document.createElement('div');
   stateBlock.className = 'civic-block';
   stateBlock.innerHTML = '<h2>State Legislative Links</h2>';
@@ -382,38 +382,56 @@ function showCivic() {
       };
 
       const grid = document.createElement('div');
-      grid.className = 'grid'; // use same grid as all other sections
+      grid.className = 'link-grid';
 
       Object.entries(links).forEach(([label, value]) => {
-        if (label === 'federalRaces' || !value) return;
+        if (label === 'federalRaces' || value == null) return;
         const displayLabel = labelMap[label] || label;
-
-        const createCard = (title, desc, url) => {
-          const card = document.createElement('div');
-          card.className = 'card link-card'; // exact same classes as other cards
-          card.setAttribute('onclick', `window.open('${url}', '_blank')`);
-          card.innerHTML = `<h4>${title}</h4><p class="card-desc">${desc}</p>`;
-          grid.appendChild(card);
-        };
 
         if (Array.isArray(value)) {
           value.forEach(entry => {
-            if (entry && entry.url) createCard(`${displayLabel} – ${entry.party}`, `Click to view ${entry.party} members of the ${displayLabel}.`, entry.url);
+            if (!entry || !entry.url) return;
+            const card = document.createElement('div');
+            card.className = 'link-card';
+            card.setAttribute('onclick', `window.open('${entry.url}', '_blank')`);
+            card.innerHTML = `
+              <h4>${displayLabel} – ${entry.party}</h4>
+              <p class="card-desc">Click to view ${entry.party} members of the ${displayLabel}.</p>
+            `;
+            grid.appendChild(card);
           });
         } else if (typeof value === 'object' && value.url) {
-          createCard(displayLabel, `Click to view ${displayLabel} information for ${selectedState}.`, value.url);
+          const card = document.createElement('div');
+          card.className = 'link-card';
+          card.setAttribute('onclick', `window.open('${value.url}', '_blank')`);
+          card.innerHTML = `
+            <h4>${displayLabel}</h4>
+            <p class="card-desc">Click to view ${displayLabel} information for ${selectedState}.</p>
+          `;
+          grid.appendChild(card);
         } else if (typeof value === 'string') {
-          createCard(displayLabel, `Click to view ${displayLabel} information for ${selectedState}.`, value);
+          const card = document.createElement('div');
+          card.className = 'link-card';
+          card.setAttribute('onclick', `window.open('${value}', '_blank')`);
+          card.innerHTML = `
+            <h4>${displayLabel}</h4>
+            <p class="card-desc">Click to view ${displayLabel} information for ${selectedState}.</p>
+          `;
+          grid.appendChild(card);
         }
       });
 
+      if (grid.children.length === 0) {
+        const msg = document.createElement('p');
+        msg.textContent = `No state-level links available for ${selectedState}.`;
+        stateBlock.appendChild(msg);
+      }
       stateBlock.appendChild(grid);
-      section.appendChild(stateBlock);
 
-      // --- NGA ---
+      // --- NGA block ---
       const ngaBlock = document.createElement('div');
       ngaBlock.className = 'civic-block';
-      ngaBlock.innerHTML = '<h2>National Governors Association</h2>';
+      ngaBlock.innerHTML = '<h2>National Governor\'s Association</h2>';
 
       const ngaLinks = [
         { label: 'NGA Leadership', url: 'https://www.nga.org/governors/ngaleadership/', desc: 'Meet the current leadership of the National Governors Association.' },
@@ -425,21 +443,28 @@ function showCivic() {
       ];
 
       const ngaGrid = document.createElement('div');
-      ngaGrid.className = 'grid';
+      ngaGrid.className = 'link-grid';
+
       ngaLinks.forEach(link => {
         const card = document.createElement('div');
-        card.className = 'card link-card'; // exact same classes
+        card.className = 'link-card';
         card.setAttribute('onclick', `window.open('${link.url}', '_blank')`);
-        card.innerHTML = `<h4>${link.label}</h4><p class="card-desc">${link.desc}</p>`;
+        card.innerHTML = `
+          <h4>${link.label}</h4>
+          <p class="card-desc">${link.desc}</p>
+        `;
         ngaGrid.appendChild(card);
       });
-      ngaBlock.appendChild(ngaGrid);
-      section.appendChild(ngaBlock);
 
-      // --- Federal Oversight ---
+      ngaBlock.appendChild(ngaGrid);
+
+      // --- Federal block ---
       const federalBlock = document.createElement('div');
       federalBlock.className = 'civic-block';
       federalBlock.innerHTML = '<h2>Federal Oversight & Transparency</h2>';
+
+      const federalGrid = document.createElement('div');
+      federalGrid.className = 'link-grid';
 
       const federalLinks = [
         { label: 'Committees', url: 'https://www.govtrack.us/congress/committees', desc: 'Explore congressional committees and their membership.' },
@@ -448,43 +473,16 @@ function showCivic() {
         { label: 'Recent Votes', url: 'https://www.govtrack.us/congress/votes', desc: 'Review the latest recorded votes in Congress.' }
       ];
 
-      const federalGrid = document.createElement('div');
-      federalGrid.className = 'grid';
       federalLinks.forEach(link => {
         const card = document.createElement('div');
-        card.className = 'card link-card'; // exact same classes
+        card.className = 'link-card';
         card.setAttribute('onclick', `window.open('${link.url}', '_blank')`);
-        card.innerHTML = `<h4>${link.label}</h4><p class="card-desc">${link.desc}</p>`;
+        card.innerHTML = `
+          <h4>${link.label}</h4>
+          <p class="card-desc">${link.desc}</p>
+        `;
         federalGrid.appendChild(card);
       });
-      federalBlock.appendChild(federalGrid);
-      section.appendChild(federalBlock);
-
-      calendar.appendChild(section);
-    })
-    .catch(err => console.error('Error loading civic links:', err));
-}
-
-// === POLLS TAB ===
-function showPolls() {
-  showTab('polls');
-  const pollsContainer = document.getElementById('polls-cards');
-  pollsContainer.innerHTML = '';
-
-  const suppressedForTerritories = ['State Senate', 'State House'];
-  const isTerritory = ['Puerto Rico', 'U.S. Virgin Islands', 'Guam', 'American Samoa', 'Northern Mariana Islands'].includes(selectedState);
-
-  pollCategories.forEach(category => {
-    if (isTerritory && suppressedForTerritories.includes(category.label)) return;
-
-    const card = document.createElement('div');
-    card.className = 'card link-card'; // exact same classes as all other cards
-    card.setAttribute('onclick', `openPollModal('${category.label}')`);
-    card.innerHTML = `<h4>${category.label}</h4><p class="card-desc">Click to view ${category.label} polls.</p>`;
-    pollsContainer.appendChild(card);
-  });
-}
-window.pollCategories = pollCategories;
 
       // Cabinet card
       const cabinetCard = document.createElement('div');
@@ -679,7 +677,7 @@ function openPollModal(categoryLabel) {
     <h2>${category.label} Polls</h2>
     <div class="poll-grid">
       ${category.polls.map(p => `
-        <div class="poll-source-card">
+        <div class="poll-card">
           <div class="poll-logo">
             <img src="${logoMap[p.source] || ''}" alt="${p.source} logo">
           </div>
@@ -730,7 +728,6 @@ function openPollModal(categoryLabel) {
   };
   window.addEventListener('click', clickOutsideHandler);
 }
-
 // === ORGANIZATIONS TAB ===
 function showOrganizations() {
   showTab('organizations');
