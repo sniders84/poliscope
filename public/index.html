@@ -188,22 +188,22 @@
 
   </div>
 
-  <!-- ALL organization cards go here initially, hidden from the grid -->
-  <div id="all-org-cards" style="display:none;">
-    <a href="URL1" target="_blank" class="organization-card" data-party="republican">
-      <div class="logo-wrapper"><img src="LOGO1.png" alt="Org 1"></div>
-      <div class="info-wrapper"><h3>Org 1</h3><p>Description 1</p></div>
-    </a>
-
-    <a href="URL2" target="_blank" class="organization-card" data-party="democrat">
-      <div class="logo-wrapper"><img src="LOGO2.png" alt="Org 2"></div>
-      <div class="info-wrapper"><h3>Org 2</h3><p>Description 2</p></div>
-    </a>
-
-    <!-- Repeat all cards with proper data-party attributes -->
+ <section id="organizations">
+  <div class="party-section" data-party="republican">
+    <h2>Republican</h2>
+    <div class="organization-grid"></div>
   </div>
-
+  <div class="party-section" data-party="democrat">
+    <h2>Democrat</h2>
+    <div class="organization-grid"></div>
+  </div>
+  <div class="party-section" data-party="independent">
+    <h2>Independent</h2>
+    <div class="organization-grid"></div>
+  </div>
+  <!-- Add more parties if needed -->
 </section>
+
 
     <section id="voting" class="tab-content" style="display: none;">
       <h2>Voting & Registration</h2>
