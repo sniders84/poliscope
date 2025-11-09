@@ -676,13 +676,9 @@ function openPollModal(categoryLabel) {
     <h2>${category.label} Polls</h2>
     <div class="poll-grid">
       ${category.polls.map(p => `
-        <a href="${p.url}" target="_blank" rel="noopener" class="poll-card">
-          <div class="poll-logo">
-            <img src="${logoMap[p.source] || ''}" alt="${p.source} logo">
-          </div>
-          <div class="poll-links">
-            ${p.name}
-          </div>
+        <a href="${p.url}" target="_blank" class="poll-card">
+          <img src="${logoMap[p.source] || ''}" alt="${p.source} logo">
+          <h4>${p.name}</h4>
         </a>
       `).join('')}
     </div>
