@@ -873,7 +873,7 @@ function loadSocialTrends() {
   `;
   socialFeed.appendChild(hochulReel);
 
-  // Third Facebook Post
+  // Donald Trump- Christianity Crisis
   const thirdPost = document.createElement('div');
   thirdPost.className = 'social-card';
   thirdPost.innerHTML = `
@@ -888,7 +888,7 @@ function loadSocialTrends() {
   `;
   socialFeed.appendChild(thirdPost);
 
-  // Fourth Facebook Post
+  // Chuck Schumer-Extending ACA premium tax credits
   const fourthPost = document.createElement('div');
   fourthPost.className = 'social-card';
   fourthPost.innerHTML = `
