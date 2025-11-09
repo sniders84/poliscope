@@ -429,356 +429,426 @@ button, .tab, .card-button, a {
 }
 document.body.classList.toggle('light-mode');
 /* ============================================================
-   CLEAN CONSOLIDATED POLISCOPE PATCH
+   PATCH: VISUAL REFINEMENTS AND LAYOUT CORRECTIONS
    ============================================================ */
 
-/* --- Modals --- */
+/* ---- 1. Fix card photo centering ---- */
+.photo-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: rgba(255,255,255,0.05);
+  border-radius: 8px;
+}
+
+.photo-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center; /* ensures true center alignment */
+}
+
+/* ---- 2. Modal layout and image consistency ---- */
 .modal-content {
-  width: 35% !important;
-  max-width: 600px;
-  background: rgba(30, 41, 59, 0.92);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  background: rgba(30,41,59,0.95); /* semi-transparent glass effect */
+  backdrop-filter: blur(10px);
+  gap: 1.5rem;
+}
+
+/* Ensure modal photo sizing and alignment */
+.modal-content img {
+  flex-shrink: 0;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 1.5rem;
+  margin-bottom: 0.5rem;
+  align-self: flex-start;
+}
+
+/* Adjust modal text area for readability */
+.modal-content p,
+.modal-content h3,
+.modal-content h4,
+.modal-content h5 {
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* ---- 3. Civic Intelligence Dashboard card tightening ---- */
+.civic-section .link-card,
+.civic-section .organization-card,
+.civic-section .official-card {
+  width: 180px;
+  height: auto;
+  padding: 0.75rem;
+}
+
+.civic-section .grid,
+.civic-section .organization-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  justify-items: center;
+}
+
+/* ---- 4. Polls tab logo resizing ---- */
+.modal-content img.poll-logo,
+.poll-logo {
+  max-width: 120px;
+  max-height: 120px;
+  object-fit: contain;
+}
+
+/* ---- 5. Equal sizing for political group cards ---- */
+.organization-card {
+  width: 220px;
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.organization-card .logo-wrapper {
+  height: 100px;
+}
+
+.organization-card .info-wrapper {
+  flex-grow: 1;
+  padding: 0.75rem;
+}
+
+/* ---- 6. Voting card resizing & cleanup ---- */
+#voting-cards {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.voting-card {
+  width: 220px;
+  height: 200px;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+/* Hide deadlines or extra small text lines in voting cards */
+.voting-card .card-date {
+  display: none !important;
+}
+
+/* Prevent text clipping */
+.voting-card .card-label,
+.voting-card .card-description {
+  white-space: normal;
+  word-wrap: break-word;
+  overflow: visible;
+}
+/* ============================================================
+   PATCH ADD-ON: FROSTED MODAL TEXT BACKGROUNDS
+   ============================================================ */
+
+.modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 2rem;
+  background: rgba(30,41,59,0.9); /* transparent dark */
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+/* Keep photo clean and fixed on left */
+.modal-content img {
+  flex-shrink: 0;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-top: 0.5rem;
+}
+
+/* Create a frosted panel for all text */
+.modal-text {
+  flex: 1;
+  background: rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  color: var(--text);
+  backdrop-filter: blur(8px);
+  box-shadow: inset 0 0 8px rgba(255,255,255,0.05);
+}
+
+/* Give each heading clear contrast */
+.modal-text h2,
+.modal-text h3,
+.modal-text h4 {
+  color: var(--accent-light);
+  margin-bottom: 0.6rem;
+}
+
+.modal-text p {
+  color: var(--muted-light);
+  margin-bottom: 0.8rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Adjust modal close button to match new look */
+#close-modal {
+  color: var(--accent-light);
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+#close-modal:hover {
+  background: rgba(255,255,255,0.2);
+  transform: rotate(90deg);
+}
+/* ============================================================
+   UNIVERSAL FROSTED MODAL SYSTEM (Applies to ALL Modals)
+   ============================================================ */
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(15,23,42,0.7);
+  backdrop-filter: blur(8px);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  position: relative;
+  background: rgba(30,41,59,0.9);
   border: 1px solid rgba(255,255,255,0.15);
   border-radius: 14px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  max-width: 90%;
+  max-height: 90%;
   overflow-y: auto;
+  animation: fadeIn 0.4s ease;
   padding: 2rem;
-  margin: 0 auto;
-  backdrop-filter: blur(10px);
-  animation: fadeIn 0.35s ease;
 }
 
-/* --- Official photos (cards + modals) --- */
+/* Semi-transparent “frosted” area for all modal inner content */
+.modal-content > div {
+  background: rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 0 12px rgba(255,255,255,0.05);
+}
+
+/* Grids inside modals */
+.modal-content .officials-grid,
+.modal-content .organization-grid,
+.modal-content .polls-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  justify-items: center;
+}
+
+/* Consistent modal images (officials, orgs, polls, etc.) */
+.modal-content img {
+  display: block;
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
+  margin: 0 auto 0.75rem auto;
+}
+
+/* Poll and source logos are smaller */
+.modal-content img.poll-logo,
+.modal-content img.source-logo {
+  max-width: 120px;
+  max-height: 120px;
+  object-fit: contain;
+}
+
+/* Text inside modals */
+.modal-content h2,
+.modal-content h3,
+.modal-content h4,
+.modal-content h5 {
+  color: var(--accent-light);
+  margin-bottom: 0.6rem;
+}
+
+.modal-content p {
+  color: var(--muted-light);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Close button improvements */
+.modal-content .close,
+.modal-content #close-modal {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background: rgba(255,255,255,0.1);
+  color: var(--accent-light);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.modal-content .close:hover,
+.modal-content #close-modal:hover {
+  background: rgba(255,255,255,0.2);
+  transform: rotate(90deg);
+}
+/* ============================================================
+   FINAL POLISH PATCH — REFINEMENTS AND INTERACTIONS
+   ============================================================ */
+
+/* 1️⃣ Ensure all official photos (cards + modals) are fully visible and never cropped */
 .photo-wrapper img,
-.official-card img,
-#ltGovernorsList .official-card img,
-#houseRepsList .official-card img,
 .modal-content img {
   width: 100%;
   height: auto;
-  max-height: 260px;
-  object-fit: contain !important;      /* never crop */
-  object-position: center center !important;
-  display: block;
+  max-height: 220px;
+  object-fit: contain;      /* prevent cropping */
+  object-position: center;  /* always centered */
+  border-radius: 8px;
+}
+
+/* 2️⃣ Reduce modal width by half for better readability */
+.modal-content {
+  max-width: 45% !important;
   margin: 0 auto;
-  border-radius: 10px;
-  background: rgba(255,255,255,0.05);
 }
 
-/* --- Civic Intelligence layout --- */
-#civic-section {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-}
-
-#civic-section .civic-category {
-  width: 100%;
-}
-
-#civic-section .civic-category h2,
-#civic-section .civic-category h3 {
-  text-align: left;
-  color: var(--accent-light);
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-}
-
-#civic-section .civic-category .civic-grid {
+/* 3️⃣ Civic Intelligence dashboard cards — strict grid layout */
+.civic-section .grid,
+#civicGrid,
+#civicCards,
+#civic-section,
+.civic-section {
   display: grid !important;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 1.25rem;
   justify-items: center;
-  width: 100%;
 }
 
-/* --- Polls section --- */
-#polls-section .polls-grid,
-.modal-content .polls-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1.25rem;
-  justify-items: center;
-}
-
-#polls-section .polls-grid img,
-.modal-content .polls-grid img {
-  max-width: 80px;
-  max-height: 80px;
+/* 4️⃣ Shrink poll logos and standardize structure in modals */
+.modal-content img.poll-logo,
+.polls-grid img,
+.polls-grid .organization-card img {
+  max-width: 90px !important;
+  max-height: 90px !important;
   object-fit: contain;
-  object-position: center;
   margin-bottom: 0.5rem;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-#polls-section .polls-grid img:hover,
-.modal-content .polls-grid img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 10px rgba(255,255,255,0.2);
-}
-
-/* --- Electorate logo --- */
-header .header-left img,
-header img[src*="electorate-logo"] {
-  max-height: 140px;
-  width: 60%;
-  object-fit: contain;
-  object-position: left center;
-  display: block;
-  margin-left: 0;
-  margin-right: auto;
-}
-
-/* --- Universal click feedback --- */
-a, button, .tab, .card, .organization-card, .voting-card,
-.official-card, .polls-grid img {
-  cursor: pointer !important;
-}
-
-/* --- Fade animation --- */
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
-}
-/* ============================================================
-   FIX: Lt. Governors & House Reps photo centering / cropping
-   ============================================================ */
-
-#ltGovernorsList .photo-wrapper,
-#houseRepsList .photo-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 180px;
-  height: 180px;
-  background: rgba(255,255,255,0.05);
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-/* Force all their photos to be centered, never cropped */
-#ltGovernorsList .photo-wrapper img,
-#houseRepsList .photo-wrapper img {
-  width: 100%;
+/* Make poll cards consistent with political group style */
+.polls-grid .organization-card,
+.modal-content .polls-grid .organization-card {
+  width: 220px;
   height: auto;
-  max-height: 180px;
-  object-fit: contain !important;     /* show entire head & shoulders */
-  object-position: center center !important;
-  display: block;
-  margin: 0 auto;
-  background-color: rgba(255,255,255,0.03);
-}
-/* Official Cards - Fixed Size and Photo Handling */
-.official-card {
-  width: 160px;           /* fixed card width */
-  height: 220px;          /* fixed card height */
-  border-radius: 10px;    /* optional card rounding */
-  overflow: hidden;       /* hide excess image */
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #f9f9f9; /* optional background */
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-/* Photo container inside card */
-.official-card .official-photo {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-/* Image styling to center head and crop properly */
-.official-card .official-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;         /* fill container while keeping aspect ratio */
-  object-position: top center; /* prioritize head visibility */
-  display: block;
-}
-
-/* Optional: tweak vertical crop for Lt. Governors and House Reps if needed */
-.official-card.lt-governor .official-photo img,
-.official-card.house-rep .official-photo img {
-  object-position: 20% center; /* slightly higher crop if heads get cut off */
-}
-/* -------------------------
-   Official Cards - Full Fix
----------------------------*/
-
-/* Card container */
-.official-card {
-  width: 160px;                 /* match your original card width */
-  height: 250px;                /* match original height */
-  background-color: #1a1a1a;   /* example theme color, replace with your app color */
+  justify-content: flex-start;
+  text-align: center;
+  padding: 1rem;
   border-radius: 10px;
-  overflow: hidden;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.polls-grid .organization-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* Ensure poll card links are consistent */
+.polls-grid .organization-card a {
+  display: inline-block;
+  color: var(--accent-light);
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  transition: color 0.2s ease;
+}
+.polls-grid .organization-card a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+/* 5️⃣ Political groups cards — fix cut-off text and add click-through styling */
+.organization-card {
+  width: 230px;
+  height: auto;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  color: #ffffff;               /* text color to match theme */
-  padding: 8px;
-  box-sizing: border-box;
-}
-
-/* Photo container */
-.official-card .official-photo {
-  width: 100%;
-  flex: 0 0 auto;             /* prevents image from stretching */
-  margin-bottom: 8px;          /* space between photo and text */
-}
-
-/* Image styling - ensure full head visible */
-.official-card .official-photo img {
-  width: 100%;
-  max-height: 140px;           /* adjust based on your card size */
-  object-fit: contain;          /* fit entire image without cropping */
-  object-position: top center;  /* keeps heads near top */
-  display: block;
-  background-color: transparent; /* avoids white box */
-  border-radius: 5px;           /* optional rounded corners on photo */
-}
-
-/* Info section */
-.official-card .official-info {
   text-align: center;
-  flex: 1 1 auto;              /* fills remaining space */
+  padding: 1rem;
+  overflow: visible;
 }
 
-/* Text styling */
-.official-card .official-info h3 {
-  margin: 4px 0 2px;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.official-card .official-info p {
-  margin: 2px 0;
-  font-size: 14px;
-}
-
-/* Optional tweaks for Lt. Governors and House Reps if heads still need slight adjustment */
-.official-card.lt-governor .official-photo img,
-.official-card.house-rep .official-photo img {
-  object-position: 15% center;  /* slightly higher crop if needed */
-}
-/* Official card photo handling */
-.official-card .photo-wrapper {
-  width: 100%;
-  height: 180px; /* adjust based on your card design */
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start; /* keeps heads near top */
-}
-
-.official-card .photo-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;        /* fills container while maintaining aspect ratio */
-  object-position: top center; /* keeps heads visible near top */
-  display: block;
-}
-/* Base photo handling for all officials */
-.official-card .photo-wrapper {
-  width: 100%;
-  height: 180px; /* adjust to your card design */
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start; /* heads near top */
-}
-
-.official-card .photo-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;         /* fills container */
-  object-position: top center; /* heads visible near top */
-  display: block;
-}
-
-/* Slightly higher crop for Lt. Governors */
-.official-card.lt-governor .photo-wrapper img {
-  object-position: 10% center;
-}
-
-/* Slightly higher crop for U.S. Representatives */
-.official-card.house-rep .photo-wrapper img {
-  object-position: 15% center;
-}
-/* Official card photo handling */
-.official-card .photo-wrapper {
-  width: 100%;
-  height: 140px; /* slightly shorter to leave room for text */
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start; /* keeps heads near top */
-}
-
-.official-card .photo-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;          /* fills container while keeping aspect ratio */
-  object-position: top center; /* heads visible near top */
-  display: block;
-}
-
-/* Slight adjustment for Lt. Governors */
-.official-card.lt-governor .photo-wrapper img {
-  object-position: 10% center;
-}
-
-/* Slight adjustment for U.S. Representatives */
-.official-card.house-rep .photo-wrapper img {
-  object-position: 15% center;
-}
-
-/* Make sure the info section can grow to show all text */
-.official-card .official-info {
-  flex: 1 1 auto;
-  padding: 8px 4px; /* optional, adjust spacing */
-  box-sizing: border-box;
-  text-align: center;
-}
-/* Make card body a flex column so photo and text stack */
-.official-card .card-body {
+.organization-card .info-wrapper {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  justify-content: flex-start;
 }
 
-/* Limit photo height and keep head visible */
-.official-card .photo-wrapper {
-  flex: 0 0 140px; /* fixed height for photo */
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start; /* heads near top */
+.organization-card .info-wrapper h3 {
+  margin-bottom: 0.4rem;
+  color: var(--accent-light);
 }
 
-.official-card .photo-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-  display: block;
+.organization-card .info-wrapper p {
+  font-size: 0.9rem;
+  color: var(--muted-light);
+  line-height: 1.4;
 }
 
-/* Adjust photo for Lt. Governors and House Reps */
-.official-card.lt-governor .photo-wrapper img {
-  object-position: 10% center;
-}
-.official-card.house-rep .photo-wrapper img {
-  object-position: 15% center;
+/* Make the entire political group card clickable like a button */
+.organization-card a,
+.organization-card {
+  cursor: pointer;
 }
 
-/* Allow text to fill remaining space */
-.official-card .official-info {
-  flex: 1 1 auto;
-  padding: 6px 4px;
-  box-sizing: border-box;
-  text-align: center;
-  overflow-wrap: break-word; /* prevents long text from overflowing */
+.organization-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* 6️⃣ Universal cursor styling — show pointer on all interactive items */
+a, button, .tab, .card-button,
+.link-card, .organization-card, .voting-card,
+.polls-grid .organization-card, .official-card {
+  cursor: pointer !important;
 }
