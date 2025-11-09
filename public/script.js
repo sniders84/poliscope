@@ -10,7 +10,18 @@ let searchBar = null;
 // === DATA LOADING ===
 // (example: after you fetch or import both JSON files)
 Promise.all([
-  fetch('officials.json').then(res => res.json()),
+  fetch('federalOfficials.json')
+  fetch('senators.json')
+  fetch('governors.json')
+  fetch('cabinet.json')
+  fetch('housereps.json')
+  fetch('ltgovernors.json')
+  fetch('scotus.json')
+  fetch('political-groups.json')
+  fetch('state-links.json')
+  fetch('voting-data.json')
+
+.then(res => res.json()),
   fetch('cabinet.json').then(res => res.json())
 ]).then(([officialsData, cabinetData]) => {
   // Merge them into one master array
