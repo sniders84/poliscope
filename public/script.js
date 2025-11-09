@@ -8,32 +8,46 @@ let officialsContainer = null;
 let searchBar = null;
 
 // === DATA LOADING ===
-// (example: after you fetch or import both JSON files)
+// Load all major JSON datasets at once
 Promise.all([
-  fetch('federalOfficials.json')
-  fetch('senators.json')
-  fetch('governors.json')
-  fetch('cabinet.json')
-  fetch('housereps.json')
-  fetch('ltgovernors.json')
-  fetch('scotus.json')
-  fetch('political-groups.json')
-  fetch('state-links.json')
-  fetch('voting-data.json')
+  fetch('federalOfficials.json').then(res => res.json()),
+  fetch('senators.json').then(res => res.json()),
+  fetch('governors.json').then(res => res.json()),
+  fetch('cabinet.json').then(res => res.json()),
+  fetch('housereps.json').then(res => res.json()),
+  fetch('ltgovernors.json').then(res => res.json()),
+  fetch('scotus.json').then(res => res.json()),
+  fetch('political-groups.json').then(res => res.json()),
+  fetch('state-links.json').then(res => res.json()),
+  fetch('voting-data.json').then(res => res.json())
+])
+.then(([federal, sens, govs, cabinet, reps, ltGovs, scotus, groups, links, voting]) => {
+  // Keep global arrays filled
+  governors = govs;
+  ltGovernors = ltGovs;
+  senators = sens;
+  houseReps = reps;
 
-.then(res => res.json()),
-  fetch('cabinet.json').then(res => res.json())
-]).then(([officialsData, cabinetData]) => {
-  // Merge them into one master array
-  const allOfficials = [...officialsData, ...cabinetData];
+  // Merge major federal data sources
+  const allOfficials = [
+    ...federal,
+    ...cabinet,
+    ...sens,
+    ...reps,
+    ...govs,
+    ...ltGovs,
+    ...scotus
+  ];
 
-  // Now render and wire up search using allOfficials
-  renderOfficials(allOfficials, 'officialsList');
+  renderOfficials(selectedState, '');
 
-  searchBar.addEventListener('input', e => {
-    searchOfficials(e.target.value, allOfficials);
-  });
-});
+  if (searchBar) {
+    searchBar.addEventListener('input', e => {
+      renderOfficials(selectedState, e.target.value);
+    });
+  }
+})
+.catch(err => console.error('Error loading data files:', err));
 
 // Modal refs (Officials modal)
 let officialsModal = null;
