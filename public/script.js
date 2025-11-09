@@ -840,7 +840,7 @@ function loadSocialTrends() {
   const socialFeed = document.getElementById('social-feed');
   if (!socialFeed) return;
 
-  // Clear any previous content
+  // Clear previous content
   socialFeed.innerHTML = '';
 
   // Gavin Newsom Facebook Post
@@ -873,10 +873,10 @@ function loadSocialTrends() {
   `;
   socialFeed.appendChild(hochulReel);
 
-  // New Facebook Post
-  const newPost = document.createElement('div');
-  newPost.className = 'social-card';
-  newPost.innerHTML = `
+  // Third Facebook Post
+  const thirdPost = document.createElement('div');
+  thirdPost.className = 'social-card';
+  thirdPost.innerHTML = `
     <h3>New Facebook Post</h3>
     <iframe 
       src="https://www.facebook.com/plugins/video.php?height=315&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1252240603298809%2F&show_text=true&width=560&t=0" 
@@ -886,7 +886,22 @@ function loadSocialTrends() {
       allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
     </iframe>
   `;
-  socialFeed.appendChild(newPost);
+  socialFeed.appendChild(thirdPost);
+
+  // Fourth Facebook Post
+  const fourthPost = document.createElement('div');
+  fourthPost.className = 'social-card';
+  fourthPost.innerHTML = `
+    <h3>Another Facebook Reel</h3>
+    <iframe 
+      src="https://www.facebook.com/plugins/video.php?height=591&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F3151059001745750%2F&show_text=true&width=267&t=0" 
+      width="267" height="591" 
+      style="border:none;overflow:hidden" 
+      scrolling="no" frameborder="0" allowfullscreen="true" 
+      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+    </iframe>
+  `;
+  socialFeed.appendChild(fourthPost);
 }
 
 // === FEDERAL OFFICIALS DATA (inline) ===
