@@ -1083,42 +1083,43 @@ a, button, .tab, .card-button,
   font-size: 1rem;
   text-align: center;
 }
-/* === Social Trends Cards Styling (Full Post View) === */
+/* Social Trends Cards Grid */
 #social-feed {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 16px;
   margin-top: 12px;
   justify-items: center;
 }
 
+/* Social Card Styling */
 .social-card {
   background-color: #1e1e2f; /* dark theme */
   color: #f0f0f0;
   border: 2px solid transparent;
   border-radius: 10px;
-  padding: 12px;
+  padding: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.5);
   text-align: center;
   transition: border 0.25s ease, transform 0.2s ease;
-  width: 100%; /* full width of grid column */
-  max-width: 560px; /* matches Facebook embed width */
+  width: 100%;
+  max-width: 320px; /* max width like a playing card */
 }
 
+/* Card title */
 .social-card h3 {
-  margin: 6px 0 12px;
-  font-size: 1.05rem;
+  margin: 6px 0 8px;
+  font-size: 1rem;
 }
 
-/* Force iframe to full card width and enough height to show full post */
+/* Iframe sizing per card type */
 .social-card iframe {
-  width: 100% !important; /* fill card width */
-  height: 600px;           /* enough to show likes/comments fully */
+  width: 100% !important; /* fill card */
   border-radius: 6px;
   border: none;
 }
 
-/* Hover effect to match hub cards */
+/* Hover effect */
 .social-card:hover {
   border-color: transparent;
   box-shadow: 0 0 0 2px #007bff, 0 2px 4px rgba(0,0,0,0.5);
