@@ -835,51 +835,27 @@ function showStartupHub() {
   loadSocialTrends();
 }
 
-// === SOCIAL TRENDS SECTION ===
 function loadSocialTrends() {
   const socialFeed = document.getElementById('social-feed');
   if (!socialFeed) return;
 
   socialFeed.innerHTML = `
-    <div class="social-card">
-      <h3>Elon Musk on X</h3>
-      <blockquote class="twitter-tweet">
-        <a href="https://twitter.com/elonmusk/status/1848000000000000000"></a>
-      </blockquote>
-    </div>
-
-    <div class="social-card">
-      <h3>White House on Facebook</h3>
+    <div class="hub-card" style="padding:0;">
       <iframe 
-        src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FWhiteHouse%2Fposts%2Fpfbid02SOMEPOSTID&show_text=true&width=500" 
-        width="500" height="400" style="border:none;overflow:hidden" 
-        scrolling="no" frameborder="0" allowfullscreen="true" 
+        src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4184264178567898%2F&show_text=true&width=267&t=0" 
+        width="100%" 
+        height="400" 
+        style="border:none;overflow:hidden" 
+        scrolling="no" 
+        frameborder="0" 
+        allowfullscreen="true" 
         allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
       </iframe>
     </div>
-
-    <div class="social-card">
-      <h3>BBC News on Instagram</h3>
-      <blockquote 
-        class="instagram-media" 
-        data-instgrm-permalink="https://www.instagram.com/p/C9EXAMPLE/" 
-        data-instgrm-version="14">
-      </blockquote>
-    </div>
   `;
 
-  // Load embed scripts
-  if (typeof twttr === 'undefined') {
-    const twitterScript = document.createElement('script');
-    twitterScript.src = "https://platform.twitter.com/widgets.js";
-    document.body.appendChild(twitterScript);
-  }
-
-  if (!document.querySelector('script[src*="instagram.com/embed.js"]')) {
-    const instaScript = document.createElement('script');
-    instaScript.src = "https://www.instagram.com/embed.js";
-    document.body.appendChild(instaScript);
-  }
+  // Make sure the social trends section only shows on the Home Hub
+  document.getElementById('social-trends').style.display = 'block';
 }
 
 // === FEDERAL OFFICIALS DATA (inline) ===
