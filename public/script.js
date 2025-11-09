@@ -661,7 +661,6 @@ const logoMap = {
   Pew: '/assets/pew.png'
 };
 
-// Poll modal
 function openPollModal(categoryLabel) {
   const category = (window.pollCategories || []).find(c => c.label === categoryLabel);
   const modal = document.getElementById('pollModal');
@@ -672,26 +671,24 @@ function openPollModal(categoryLabel) {
     return;
   }
 
-  // Render grid of uniform cards with logos
+  // Render grid of clickable cards
   modalContent.innerHTML = `
     <h2>${category.label} Polls</h2>
     <div class="poll-grid">
       ${category.polls.map(p => `
-        <div class="poll-card">
+        <a href="${p.url}" target="_blank" rel="noopener" class="poll-card">
           <div class="poll-logo">
             <img src="${logoMap[p.source] || ''}" alt="${p.source} logo">
           </div>
-          <div class="poll-links">
-            <a href="${p.url}" target="_blank" rel="noopener">${p.name}</a>
-          </div>
-        </div>
+          <h4 class="poll-name">${p.name}</h4>
+        </a>
       `).join('')}
     </div>
   `;
 
   modal.style.display = 'block';
 
-  // Live polling injection (kept inside so `category` is defined)
+  // Optional: live polling injection
   const liveEndpoints = {
     'President': 'https://www.realclearpolling.com/latest-polls/2025',
     'U.S. Senate': 'https://www.realclearpolling.com/latest-polls/senate',
@@ -719,7 +716,7 @@ function openPollModal(categoryLabel) {
       .catch(err => console.error(`${category.label} polling fetch error:`, err));
   }
 
-  // Close poll modal when clicking outside (scoped, safe)
+  // Close modal when clicking outside
   const clickOutsideHandler = function(e) {
     if (e.target === modal) {
       modal.style.display = 'none';
@@ -728,6 +725,7 @@ function openPollModal(categoryLabel) {
   };
   window.addEventListener('click', clickOutsideHandler);
 }
+
 // === ORGANIZATIONS TAB ===
 function showOrganizations() {
   showTab('organizations');
