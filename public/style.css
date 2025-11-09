@@ -1045,3 +1045,37 @@ a, button, .tab, .card-button,
   border-color: #1e90ff; /* blue outline */
   transform: translateY(-2px);
 }
+/* --- Civic Intelligence Dashboard grids --- */
+.civic-section .grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* two columns on desktop */
+  gap: 16px; /* spacing between cards */
+}
+
+/* Responsive: single column on narrow screens */
+@media (max-width: 768px) {
+  .civic-section .grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+/* Ensure cards in Civic match the main card style */
+.civic-section .card {
+  background-color: #1a1a1a; /* same dark background as other cards */
+  color: #ffffff;
+  padding: 12px;
+  border: 1px solid #333; /* base border color */
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  text-align: left;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+/* Hover effect: blue border only, not the whole card */
+.civic-section .card:hover {
+  border-color: #007bff; /* your standard hover blue */
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+  background-color: #1a1a1a; /* ensure background stays dark */
+}
