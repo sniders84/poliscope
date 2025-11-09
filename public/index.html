@@ -158,45 +158,51 @@
 
  <section id="organizations" class="tab-content" style="display: none;">
   <h2>Political Organizations</h2>
-  
+
   <div class="political-groups">
 
-    <div class="party-section">
+    <div class="party-section" data-party="republican">
       <h3>Republican / Conservative</h3>
-      <div class="organization-grid">
-        <!-- Republican cards -->
-      </div>
+      <div class="organization-grid"></div>
     </div>
 
-    <div class="party-section">
+    <div class="party-section" data-party="democrat">
       <h3>Democrat / Liberal</h3>
-      <div class="organization-grid">
-        <!-- Democrat cards -->
-      </div>
+      <div class="organization-grid"></div>
     </div>
 
-    <div class="party-section">
+    <div class="party-section" data-party="libertarian">
       <h3>Libertarian</h3>
-      <div class="organization-grid">
-        <!-- Libertarian cards -->
-      </div>
+      <div class="organization-grid"></div>
     </div>
 
-    <div class="party-section">
+    <div class="party-section" data-party="moderate">
       <h3>Moderate / Independent</h3>
-      <div class="organization-grid">
-        <!-- Moderate/Independent cards -->
-      </div>
+      <div class="organization-grid"></div>
     </div>
 
-    <div class="party-section">
+    <div class="party-section" data-party="socialist">
       <h3>Socialist / Progressive</h3>
-      <div class="organization-grid">
-        <!-- Socialist/Progressive cards -->
-      </div>
+      <div class="organization-grid"></div>
     </div>
 
   </div>
+
+  <!-- ALL organization cards go here initially, hidden from the grid -->
+  <div id="all-org-cards" style="display:none;">
+    <a href="URL1" target="_blank" class="organization-card" data-party="republican">
+      <div class="logo-wrapper"><img src="LOGO1.png" alt="Org 1"></div>
+      <div class="info-wrapper"><h3>Org 1</h3><p>Description 1</p></div>
+    </a>
+
+    <a href="URL2" target="_blank" class="organization-card" data-party="democrat">
+      <div class="logo-wrapper"><img src="LOGO2.png" alt="Org 2"></div>
+      <div class="info-wrapper"><h3>Org 2</h3><p>Description 2</p></div>
+    </a>
+
+    <!-- Repeat all cards with proper data-party attributes -->
+  </div>
+
 </section>
 
     <section id="voting" class="tab-content" style="display: none;">
