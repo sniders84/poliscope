@@ -785,39 +785,40 @@ function showStartupHub() {
   hubContainer.innerHTML = '';
 
   // Example card data - live placeholder images
- const hubItems = [
-  {
-    title: "Global Politics",
-    desc: "Up-to-the-minute world political news",
-    img: "../assets/news-politics.jpg",
-    url: "https://www.politico.com/"
-  },
-  {
-    title: "Finance & Markets",
-    desc: "Stock market updates, economy, and finance news",
-    img: "../assets/news-finance.jpg",
-    url: "https://www.bloomberg.com/"
-  },
-  {
-    title: "Tech & Innovation",
-    desc: "Latest tech news and breakthroughs",
-    img: "../assets/news-tech.jpg",
-    url: "https://www.theverge.com/"
-  },
-  {
-    title: "World News",
-    desc: "Global headlines and international updates",
-    img: "../assets/news-world.jpg",
-    url: "https://www.bbc.com/news"
-  },
-  {
-    title: "Quizzes & Polls",
-    desc: "Interactive quizzes and polling data",
-    img: "../assets/news-quizzes.jpg",
-    url: "https://www.pewresearch.org/"
-  }
-];
+  const hubItems = [
+    {
+      title: "Global Politics",
+      desc: "Up-to-the-minute world political news",
+      img: "../assets/news-politics.jpg",
+      url: "https://www.politico.com/"
+    },
+    {
+      title: "Finance & Markets",
+      desc: "Stock market updates, economy, and finance news",
+      img: "../assets/news-finance.jpg",
+      url: "https://www.bloomberg.com/"
+    },
+    {
+      title: "Tech & Innovation",
+      desc: "Latest tech news and breakthroughs",
+      img: "../assets/news-tech.jpg",
+      url: "https://www.theverge.com/"
+    },
+    {
+      title: "World News",
+      desc: "Global headlines and international updates",
+      img: "../assets/news-world.jpg",
+      url: "https://www.bbc.com/news"
+    },
+    {
+      title: "Quizzes & Polls",
+      desc: "Interactive quizzes and polling data",
+      img: "../assets/news-quizzes.jpg",
+      url: "https://www.pewresearch.org/"
+    }
+  ];
 
+  // Build Hub Cards
   hubItems.forEach(item => {
     const card = document.createElement('div');
     card.className = 'hub-card';
@@ -829,6 +830,56 @@ function showStartupHub() {
     `;
     hubContainer.appendChild(card);
   });
+
+  // Load social trends after hub cards render
+  loadSocialTrends();
+}
+
+// === SOCIAL TRENDS SECTION ===
+function loadSocialTrends() {
+  const socialFeed = document.getElementById('social-feed');
+  if (!socialFeed) return;
+
+  socialFeed.innerHTML = `
+    <div class="social-card">
+      <h3>Elon Musk on X</h3>
+      <blockquote class="twitter-tweet">
+        <a href="https://twitter.com/elonmusk/status/1848000000000000000"></a>
+      </blockquote>
+    </div>
+
+    <div class="social-card">
+      <h3>White House on Facebook</h3>
+      <iframe 
+        src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FWhiteHouse%2Fposts%2Fpfbid02SOMEPOSTID&show_text=true&width=500" 
+        width="500" height="400" style="border:none;overflow:hidden" 
+        scrolling="no" frameborder="0" allowfullscreen="true" 
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+      </iframe>
+    </div>
+
+    <div class="social-card">
+      <h3>BBC News on Instagram</h3>
+      <blockquote 
+        class="instagram-media" 
+        data-instgrm-permalink="https://www.instagram.com/p/C9EXAMPLE/" 
+        data-instgrm-version="14">
+      </blockquote>
+    </div>
+  `;
+
+  // Load embed scripts
+  if (typeof twttr === 'undefined') {
+    const twitterScript = document.createElement('script');
+    twitterScript.src = "https://platform.twitter.com/widgets.js";
+    document.body.appendChild(twitterScript);
+  }
+
+  if (!document.querySelector('script[src*="instagram.com/embed.js"]')) {
+    const instaScript = document.createElement('script');
+    instaScript.src = "https://www.instagram.com/embed.js";
+    document.body.appendChild(instaScript);
+  }
 }
 
 // === FEDERAL OFFICIALS DATA (inline) ===
