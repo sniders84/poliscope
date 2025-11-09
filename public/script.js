@@ -840,35 +840,46 @@ function loadSocialTrends() {
   const socialFeed = document.getElementById('social-feed');
   if (!socialFeed) return;
 
-  socialFeed.innerHTML = `
-    <div class="social-card">
-      <h3>Gavin Newsom Facebook Post</h3>
-      <iframe 
-        src="https://www.facebook.com/plugins/video.php?height=591&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4184264178567898%2F&show_text=true&width=400&t=0" 
-        width="400" height="640" style="border:none;overflow:hidden" 
-        scrolling="no" frameborder="0" allowfullscreen="true" 
-        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-      </iframe>
-    </div>
+  // Clear previous content
+  socialFeed.innerHTML = '';
 
-    <div class="social-card">
-      <h3>Kathy Hochul Facebook Reel (CNN)</h3>
-      <iframe 
-        src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1608390750526549%2F&show_text=true&width=400&t=0" 
-        width="400" height="400" style="border:none;overflow:hidden" 
-        scrolling="no" frameborder="0" allowfullscreen="true" 
-        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-      </iframe>
-    </div>
-  `;
+  // Array of social posts
+  const socialPosts = [
+    {
+      title: "Gavin Newsom on Facebook",
+      type: "facebook",
+      embed: `<iframe 
+                src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4184264178567898%2F&show_text=true&width=500" 
+                width="100%" height="550" 
+                style="border:none;overflow:hidden" 
+                scrolling="no" frameborder="0" allowfullscreen="true" 
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+              </iframe>`
+    },
+    {
+      title: "Kathy Hochul Reel on CNN",
+      type: "facebook",
+      embed: `<iframe 
+                src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1608390750526549%2F&show_text=true&width=500&t=0" 
+                width="100%" height="550" 
+                style="border:none;overflow:hidden" 
+                scrolling="no" frameborder="0" allowfullscreen="true" 
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+              </iframe>`
+    }
+    // You can add more posts here in the same format
+  ];
 
-  // Load Facebook SDK if not already loaded
-  if (!document.querySelector('script[src*="facebook.com/plugins"]')) {
-    const fbScript = document.createElement('script');
-    fbScript.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v16.0";
-    fbScript.async = true;
-    document.body.appendChild(fbScript);
-  }
+  // Render each post
+  socialPosts.forEach(post => {
+    const card = document.createElement('div');
+    card.className = 'social-card';
+    card.innerHTML = `
+      <h3>${post.title}</h3>
+      ${post.embed}
+    `;
+    socialFeed.appendChild(card);
+  });
 }
 
 // === FEDERAL OFFICIALS DATA (inline) ===
