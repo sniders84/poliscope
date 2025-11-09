@@ -1160,18 +1160,15 @@ document.addEventListener('DOMContentLoaded', () => {
   officialsContainer = document.getElementById('officials-container');
   searchBar = document.getElementById('search-bar');
 
-  // Officials modal refs (match your HTML ids)
+  // Officials modal refs
   officialsModal = document.getElementById('officials-modal');
   officialsModalContent = document.getElementById('officials-content');
   officialsModalCloseBtn = document.getElementById('officials-close');
 
-  // Modal wiring (safe)
   if (officialsModalCloseBtn) {
     officialsModalCloseBtn.addEventListener('click', () => closeModalWindow('officials-modal'));
   }
-  // Avoid global window.onclick overrides here; handled per modal open.
 
-  // Core wiring
   wireSearchBar();
   wireStateDropdown();
 
@@ -1189,22 +1186,34 @@ document.addEventListener('DOMContentLoaded', () => {
       houseReps = reps;
       renderOfficials(selectedState, '');
     })
-    .catch(err => {
-      console.error('Error loading official data:', err);
-    });
+    .catch(err => console.error('Error loading official data:', err));
 
-  // Helper: clear the Officials search bar (no tab switch, no re-render)
+  // Helper: clear the Officials search bar
   function closeOfficialsSearch() {
     if (!searchBar) return;
     searchBar.value = '';
     searchBar.blur();
   }
 
-  // Click-outside to clear search
   document.addEventListener('mousedown', event => {
     if (!searchBar) return;
     if (event.target !== searchBar && !searchBar.contains(event.target)) {
       closeOfficialsSearch();
     }
   });
+
+  // --- ADD THIS: move organization cards into party sections ---
+  const allCards = document.querySelectorAll("#all-org-cards .organization-card");
+
+  allCards.forEach(card => {
+    const party = card.dataset.party.toLowerCase();
+    const targetGrid = document.querySelector(`#organizations .party-section[data-party="${party}"] .organization-grid`);
+    if (targetGrid) {
+      targetGrid.appendChild(card);
+    }
+  });
+
+  // Optionally remove the hidden container
+  const hiddenContainer = document.getElementById("all-org-cards");
+  if (hiddenContainer) hiddenContainer.remove();
 });
