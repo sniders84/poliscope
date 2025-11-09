@@ -1093,3 +1093,37 @@ a, button, .tab, .card-button,
   width: 100%;
   border: none;
 }
+.poll-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  padding: 12px;
+}
+
+.poll-card {
+  display: block;
+  background-color: #1e1e2f;
+  color: #f0f0f0;
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.poll-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+}
+
+.poll-card img {
+  max-width: 80px;
+  max-height: 80px;
+  margin-bottom: 8px;
+}
+
+.poll-card h4 {
+  margin: 4px 0;
+  font-size: 1rem;
+}
