@@ -840,39 +840,38 @@ function loadSocialTrends() {
   const socialFeed = document.getElementById('social-feed');
   if (!socialFeed) return;
 
+  // Clear any previous content
   socialFeed.innerHTML = '';
 
-  const socialPosts = [
-    {
-      title: "Gavin Newsom on Facebook",
-      type: "facebook",
-      embed: `<iframe 
-                src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4184264178567898%2F&show_text=true&width=500" 
-                width="100%" height="700"   <!-- increased height -->
-                style="border:none;overflow:hidden" 
-                scrolling="no" frameborder="0" allowfullscreen="true" 
-                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-              </iframe>`
-    },
-    {
-      title: "Kathy Hochul Reel on CNN",
-      type: "facebook",
-      embed: `<iframe 
-                src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1608390750526549%2F&show_text=true&width=500&t=0" 
-                width="100%" height="550"   <!-- reel height -->
-                style="border:none;overflow:hidden" 
-                scrolling="no" frameborder="0" allowfullscreen="true" 
-                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-              </iframe>`
-    }
-  ];
+  // Gavin Newsom Facebook Post
+  const newsomPost = document.createElement('div');
+  newsomPost.className = 'social-card';
+  newsomPost.innerHTML = `
+    <h3>Gavin Newsom on Facebook</h3>
+    <iframe 
+      src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4184264178567898%2F&show_text=true&width=500" 
+      width="500" height="800" 
+      style="border:none;overflow:hidden" 
+      scrolling="no" frameborder="0" allowfullscreen="true" 
+      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+    </iframe>
+  `;
+  socialFeed.appendChild(newsomPost);
 
-  socialPosts.forEach(post => {
-    const card = document.createElement('div');
-    card.className = 'social-card';
-    card.innerHTML = `<h3>${post.title}</h3>${post.embed}`;
-    socialFeed.appendChild(card);
-  });
+  // Kathy Hochul Facebook Reel
+  const hochulReel = document.createElement('div');
+  hochulReel.className = 'social-card';
+  hochulReel.innerHTML = `
+    <h3>Kathy Hochul on CNN (Facebook Reel)</h3>
+    <iframe 
+      src="https://www.facebook.com/plugins/video.php?height=429&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1608390750526549%2F&show_text=true&width=560&t=0" 
+      width="560" height="500" 
+      style="border:none;overflow:hidden" 
+      scrolling="no" frameborder="0" allowfullscreen="true" 
+      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+    </iframe>
+  `;
+  socialFeed.appendChild(hochulReel);
 }
 
 // === FEDERAL OFFICIALS DATA (inline) ===
