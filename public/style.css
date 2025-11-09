@@ -1255,3 +1255,39 @@ a, button, .tab, .card-button,
 .poll-links a:hover {
   text-decoration: underline;
 }
+/* Poll Modal Grid Styling */
+#pollModalContent {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.poll-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.poll-card {
+  background-color: #1e1e2f;
+  color: #f0f0f0;
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.poll-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 2px #007bff, 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.poll-card img {
+  max-width: 80px;
+  margin-bottom: 8px;
+}
