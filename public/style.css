@@ -707,3 +707,38 @@ a, button, .tab, .card, .organization-card, .voting-card,
 .official-card.house-rep .photo-wrapper img {
   object-position: 15% center;
 }
+/* Official card photo handling */
+.official-card .photo-wrapper {
+  width: 100%;
+  height: 140px; /* slightly shorter to leave room for text */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* keeps heads near top */
+}
+
+.official-card .photo-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* fills container while keeping aspect ratio */
+  object-position: top center; /* heads visible near top */
+  display: block;
+}
+
+/* Slight adjustment for Lt. Governors */
+.official-card.lt-governor .photo-wrapper img {
+  object-position: 10% center;
+}
+
+/* Slight adjustment for U.S. Representatives */
+.official-card.house-rep .photo-wrapper img {
+  object-position: 15% center;
+}
+
+/* Make sure the info section can grow to show all text */
+.official-card .official-info {
+  flex: 1 1 auto;
+  padding: 8px 4px; /* optional, adjust spacing */
+  box-sizing: border-box;
+  text-align: center;
+}
