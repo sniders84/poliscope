@@ -1156,24 +1156,26 @@ function wireStateDropdown() {
 
 // === DOM READY: load datasets and wire UI ===
 document.addEventListener('DOMContentLoaded', () => {
-  // --- Elements ---
+  // Elements
   officialsContainer = document.getElementById('officials-container');
   searchBar = document.getElementById('search-bar');
 
-  // Officials modal references
+  // Officials modal refs (match your HTML ids)
   officialsModal = document.getElementById('officials-modal');
   officialsModalContent = document.getElementById('officials-content');
   officialsModalCloseBtn = document.getElementById('officials-close');
 
+  // Modal wiring (safe)
   if (officialsModalCloseBtn) {
     officialsModalCloseBtn.addEventListener('click', () => closeModalWindow('officials-modal'));
   }
+  // Avoid global window.onclick overrides here; handled per modal open.
 
-  // --- Wire search bar and state dropdown ---
+  // Core wiring
   wireSearchBar();
   wireStateDropdown();
 
-  // --- Load officials JSON datasets ---
+  // Load officials data
   Promise.all([
     fetch('/governors.json').then(res => res.json()),
     fetch('/ltgovernors.json').then(res => res.json()),
@@ -1185,38 +1187,24 @@ document.addEventListener('DOMContentLoaded', () => {
       ltGovernors = ltGovs;
       senators = sens;
       houseReps = reps;
-
       renderOfficials(selectedState, '');
     })
-    .catch(err => console.error('Error loading official data:', err));
+    .catch(err => {
+      console.error('Error loading official data:', err);
+    });
 
-  // --- Helper: clear Officials search bar if clicked outside ---
+  // Helper: clear the Officials search bar (no tab switch, no re-render)
   function closeOfficialsSearch() {
     if (!searchBar) return;
     searchBar.value = '';
     searchBar.blur();
   }
 
+  // Click-outside to clear search
   document.addEventListener('mousedown', event => {
     if (!searchBar) return;
     if (event.target !== searchBar && !searchBar.contains(event.target)) {
       closeOfficialsSearch();
     }
   });
-
-  // --- Move political organization cards into party sections ---
-  const allOrgCards = document.querySelectorAll('#all-org-cards .organization-card');
-  allOrgCards.forEach(card => {
-    const party = (card.dataset.party || '').toLowerCase();
-    const targetGrid = document.querySelector(`#organizations .party-section[data-party="${party}"] .organization-grid`);
-    if (targetGrid) {
-      targetGrid.appendChild(card);
-    } else {
-      console.warn(`No party section found for "${party}"`);
-    }
-  });
-
-  // --- Remove hidden staging container after organizing cards ---
-  const hiddenContainer = document.getElementById('all-org-cards');
-  if (hiddenContainer) hiddenContainer.remove();
 });
