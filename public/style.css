@@ -1083,16 +1083,17 @@ a, button, .tab, .card-button,
   font-size: 1rem;
   text-align: center;
 }
-/* === Social Trends Cards Styling === */
+/* === Social Trends Cards Styling (Full Post View) === */
 #social-feed {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
   gap: 16px;
   margin-top: 12px;
+  justify-items: center;
 }
 
 .social-card {
-  background-color: #1e1e2f; /* same dark theme as hub cards */
+  background-color: #1e1e2f; /* dark theme */
   color: #f0f0f0;
   border: 2px solid transparent;
   border-radius: 10px;
@@ -1100,6 +1101,8 @@ a, button, .tab, .card-button,
   box-shadow: 0 2px 4px rgba(0,0,0,0.5);
   text-align: center;
   transition: border 0.25s ease, transform 0.2s ease;
+  width: 100%; /* full width of grid column */
+  max-width: 560px; /* matches Facebook embed width */
 }
 
 .social-card h3 {
@@ -1107,11 +1110,12 @@ a, button, .tab, .card-button,
   font-size: 1.05rem;
 }
 
-/* Make iframes responsive and fit inside the card */
+/* Force iframe to full card width and enough height to show full post */
 .social-card iframe {
-  max-width: 100%;
-  height: auto; /* height will adjust to maintain aspect ratio */
+  width: 100% !important; /* fill card width */
+  height: 600px;           /* enough to show likes/comments fully */
   border-radius: 6px;
+  border: none;
 }
 
 /* Hover effect to match hub cards */
@@ -1120,4 +1124,3 @@ a, button, .tab, .card-button,
   box-shadow: 0 0 0 2px #007bff, 0 2px 4px rgba(0,0,0,0.5);
   transform: translateY(-2px);
 }
-
