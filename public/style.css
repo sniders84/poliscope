@@ -540,3 +540,31 @@ a, button, .tab, .card, .organization-card, .voting-card,
   from { opacity: 0; transform: scale(0.9); }
   to { opacity: 1; transform: scale(1); }
 }
+/* ============================================================
+   FIX: Lt. Governors & House Reps photo centering / cropping
+   ============================================================ */
+
+#ltGovernorsList .photo-wrapper,
+#houseRepsList .photo-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 180px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Force all their photos to be centered, never cropped */
+#ltGovernorsList .photo-wrapper img,
+#houseRepsList .photo-wrapper img {
+  width: 100%;
+  height: auto;
+  max-height: 180px;
+  object-fit: contain !important;     /* show entire head & shoulders */
+  object-position: center center !important;
+  display: block;
+  margin: 0 auto;
+  background-color: rgba(255,255,255,0.03);
+}
