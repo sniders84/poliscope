@@ -909,3 +909,20 @@ a, button, .tab, .card-button,
   grid-template-columns: repeat(2, 1fr); /* two columns on desktop */
   gap: 16px; /* spacing between cards */
 }
+/* Polls modal: grid layout for source cards */
+#polls-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* flexible columns */
+  gap: 16px; /* spacing between cards */
+  padding: 16px; /* optional padding inside modal */
+}
+
+/* Optional: make the source cards look nicer */
+.source-card {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  text-align: center;
+}
