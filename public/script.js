@@ -819,14 +819,75 @@ function showStartupHub() {
     // add more items here
   ];
 
-  hubItems.forEach(item => {
+async function showStartupHub() {
+  showTab('startup-hub');
+  const hubContainer = document.getElementById('hub-cards');
+  hubContainer.innerHTML = '';
+
+  // --- 1️⃣ Live news feeds ---
+  const feeds = [
+    { title: "World News", url: "https://feeds.bbci.co.uk/news/world/rss.xml" },
+    { title: "Politics", url: "https://feeds.bbci.co.uk/news/politics/rss.xml" },
+    { title: "Finance", url: "https://www.bloomberg.com/feed/podcast/etf" },
+    { title: "Technology", url: "https://www.theverge.com/rss/index.xml" },
+    { title: "Science", url: "https://www.sciencemag.org/rss/news_current.xml" }
+  ];
+
+  for (const feed of feeds) {
+    try {
+      const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feed.url)}`);
+      const data = await response.json();
+
+      if (!data.items) continue;
+
+      data.items.slice(0, 3).forEach(item => { // first 3 per feed
+        const card = document.createElement('div');
+        card.className = 'hub-card';
+        card.setAttribute('onclick', `window.open('${item.link}', '_blank')`);
+
+        const imgUrl = item.thumbnail || item.enclosure?.link || 'assets/news-placeholder.jpg';
+
+        card.innerHTML = `
+          <img src="${imgUrl}" alt="${item.title}" />
+          <h4>${item.title}</h4>
+          <p>${item.description.replace(/(<([^>]+)>)/gi, "").substring(0, 100)}...</p>
+        `;
+        hubContainer.appendChild(card);
+      });
+    } catch (err) {
+      console.error(`Failed to fetch feed ${feed.title}:`, err);
+    }
+  }
+
+  // --- 2️⃣ Add Polls as cards ---
+  (window.pollCategories || []).forEach(category => {
     const card = document.createElement('div');
     card.className = 'hub-card';
-    card.setAttribute('onclick', `window.open('${item.url}', '_blank')`);
+    card.setAttribute('onclick', `openPollModal('${category.label}')`);
+
     card.innerHTML = `
-      <img src="${item.img}" alt="${item.title}" />
-      <h4>${item.title}</h4>
-      <p>${item.desc}</p>
+      <img src="assets/poll-placeholder.png" alt="${category.label}" />
+      <h4>${category.label} Polls</h4>
+      <p>Click to view ${category.label} polls and averages.</p>
+    `;
+    hubContainer.appendChild(card);
+  });
+
+  // --- 3️⃣ Optional: Quizzes or other interactive cards ---
+  const quizzes = [
+    { title: 'Political Knowledge Quiz', url: 'https://www.sporcle.com/games/category/politics', img: 'assets/quiz-placeholder.png' },
+    { title: 'World Geography Quiz', url: 'https://www.sporcle.com/games/category/geography', img: 'assets/quiz-placeholder.png' }
+  ];
+
+  quizzes.forEach(q => {
+    const card = document.createElement('div');
+    card.className = 'hub-card';
+    card.setAttribute('onclick', `window.open('${q.url}', '_blank')`);
+
+    card.innerHTML = `
+      <img src="${q.img}" alt="${q.title}" />
+      <h4>${q.title}</h4>
+      <p>Test your knowledge with this interactive quiz.</p>
     `;
     hubContainer.appendChild(card);
   });
