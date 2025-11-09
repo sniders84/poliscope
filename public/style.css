@@ -680,3 +680,30 @@ a, button, .tab, .card, .organization-card, .voting-card,
   object-position: top center; /* keeps heads visible near top */
   display: block;
 }
+/* Base photo handling for all officials */
+.official-card .photo-wrapper {
+  width: 100%;
+  height: 180px; /* adjust to your card design */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* heads near top */
+}
+
+.official-card .photo-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;         /* fills container */
+  object-position: top center; /* heads visible near top */
+  display: block;
+}
+
+/* Slightly higher crop for Lt. Governors */
+.official-card.lt-governor .photo-wrapper img {
+  object-position: 10% center;
+}
+
+/* Slightly higher crop for U.S. Representatives */
+.official-card.house-rep .photo-wrapper img {
+  object-position: 15% center;
+}
