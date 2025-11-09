@@ -1009,7 +1009,7 @@ a, button, .tab, .card-button,
   font-size: 0.875rem;
   color: #ccc;
 }
-/* Startup Hub / Home Hub cards - match all other cards */
+/* ------------------ Startup Hub / Home Hub Cards ------------------ */
 #hub-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -1017,9 +1017,9 @@ a, button, .tab, .card-button,
 }
 
 .hub-card {
-  background-color: #1e1e2f; /* same dark theme as other cards */
-  color: #f0f0f0; /* text color */
-  border: 2px solid transparent; /* border for hover effect */
+  background-color: #1e1e2f;
+  color: #f0f0f0;
+  border: 2px solid transparent;
   border-radius: 10px;
   padding: 12px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.5);
@@ -1047,31 +1047,40 @@ a, button, .tab, .card-button,
   color: #ccc;
 }
 
-/* Hover effect - blue border outline like other cards */
 .hub-card:hover {
-  border-color: transparent; /* keep base border invisible */
-  box-shadow: 0 0 0 2px #007bff, 0 2px 4px rgba(0,0,0,0.5); /* blue outline + shadow */
+  border-color: transparent;
+  box-shadow: 0 0 0 2px #007bff, 0 2px 4px rgba(0,0,0,0.5);
   transform: translateY(-2px);
 }
+
+/* ------------------ Social Trends Section ------------------ */
 #social-trends {
   margin-top: 32px;
 }
 
 #social-feed {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+  justify-items: center;
+  align-items: start;
 }
 
 .social-card {
   background-color: #1e1e2f;
+  color: #f0f0f0;
   border: 2px solid transparent;
   border-radius: 10px;
   padding: 10px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  text-align: center;
   transition: border 0.25s ease, transform 0.2s ease;
+  width: 100%;
+  max-width: 320px; /* uniform “playing card” width */
+  box-sizing: border-box;
 }
 
+/* Hover effect */
 .social-card:hover {
   border: 2px solid #007bff;
   transform: translateY(-2px);
@@ -1083,35 +1092,18 @@ a, button, .tab, .card-button,
   font-size: 1rem;
   text-align: center;
 }
-/* Social Trends Cards Grid */
-#social-feed {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 12px; /* slightly more breathing room between cards */
-  margin-top: 12px;
-  justify-items: center; /* center cards in each column */
-  align-items: start; /* align cards at top for uniform rows */
-}
 
-/* Social Card Styling */
-.social-card {
-  background-color: #1e1e2f; /* dark theme */
-  color: #f0f0f0;
-  border: 2px solid transparent;
-  border-radius: 10px;
-  padding: 8px; /* balanced padding */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
-  text-align: center;
-  transition: border 0.25s ease, transform 0.2s ease;
-  width: 100%;
-  max-width: 320px; /* keeps all cards same “playing card” width */
-  box-sizing: border-box; /* ensures padding is included in width */
-}
-
-/* Optional: make iframes inside cards responsive */
+/* ------------------ Social Card Iframe Styling ------------------ */
+/* Make all embeds fully visible and scale nicely */
 .social-card iframe {
   width: 100%;
-  height: auto;
-  max-height: 450px; /* prevent cards from getting too tall */
+  height: auto;       /* let content dictate height */
+  aspect-ratio: auto; /* allow natural aspect ratio */
   border: none;
+  display: block;
+}
+
+/* Optional: give a bit of spacing below iframe for likes/comments */
+.social-card iframe + p {
+  margin-top: 6px;
 }
