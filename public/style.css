@@ -1170,3 +1170,39 @@ a, button, .tab, .card-button,
   margin: 4px 0;
   font-size: 1rem;
 }
+.poll-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.poll-card {
+  background-color: #1e1e2f;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  transition: border 0.25s ease, transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #f0f0f0;
+}
+
+.poll-card img {
+  max-width: 80px;
+  margin-bottom: 8px;
+}
+
+.poll-card h4 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.poll-card:hover {
+  border-color: #007bff;
+  transform: translateY(-2px);
+}
