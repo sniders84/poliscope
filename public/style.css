@@ -1124,6 +1124,7 @@ a, button, .tab, .card-button,
 
 /* Hover effect - blue border like other cards */
 .hub-card:hover {
-  border: 2px solid #007bff; /* same blue outline as other cards */
+  border-color: transparent; /* keep border itself invisible */
+  box-shadow: 0 0 0 2px #007bff, 0 2px 4px rgba(0,0,0,0.5); /* blue outline + existing shadow */
   transform: translateY(-2px);
 }
