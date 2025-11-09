@@ -1094,16 +1094,9 @@ a, button, .tab, .card-button,
 }
 
 /* ------------------ Social Card Iframe Styling ------------------ */
-/* Make all embeds fully visible and scale nicely */
 .social-card iframe {
   width: 100%;
-  height: auto;       /* let content dictate height */
-  aspect-ratio: auto; /* allow natural aspect ratio */
+  height: 500px;       /* enough height to show full Facebook posts/reels */
   border: none;
   display: block;
-}
-
-/* Optional: give a bit of spacing below iframe for likes/comments */
-.social-card iframe + p {
-  margin-top: 6px;
 }
