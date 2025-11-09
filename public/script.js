@@ -840,68 +840,51 @@ function loadSocialTrends() {
   const socialFeed = document.getElementById('social-feed');
   if (!socialFeed) return;
 
-  // Clear previous content
-  socialFeed.innerHTML = '';
+  socialFeed.innerHTML = `
+    <!-- Gavin Newsom Facebook -->
+    <div class="social-card">
+      <h3>Gavin Newsom Facebook</h3>
+      <iframe 
+        src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4184264178567898%2F&show_text=true&width=267&t=0" 
+        width="267" height="591" style="border:none;overflow:hidden" 
+        scrolling="no" frameborder="0" allowfullscreen="true" 
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+      </iframe>
+    </div>
 
-  // Gavin Newsom Facebook Post
-  const newsomPost = document.createElement('div');
-  newsomPost.className = 'social-card';
-  newsomPost.innerHTML = `
-    <h3>Gavin Newsom on Facebook</h3>
-    <iframe 
-      src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4184264178567898%2F&show_text=true&width=500" 
-      width="500" height="800" 
-      style="border:none;overflow:hidden" 
-      scrolling="no" frameborder="0" allowfullscreen="true" 
-      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-    </iframe>
-  `;
-  socialFeed.appendChild(newsomPost);
+    <!-- Kathy Hochul Facebook -->
+    <div class="social-card">
+      <h3>Kathy Hochul Facebook</h3>
+      <iframe 
+        src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1608390750526549%2F&show_text=true&width=560&t=0" 
+        width="560" height="429" style="border:none;overflow:hidden" 
+        scrolling="no" frameborder="0" allowfullscreen="true" 
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+      </iframe>
+    </div>
 
-  // Kathy Hochul Facebook Reel
-  const hochulReel = document.createElement('div');
-  hochulReel.className = 'social-card';
-  hochulReel.innerHTML = `
-    <h3>Kathy Hochul on CNN (Facebook Reel)</h3>
-    <iframe 
-      src="https://www.facebook.com/plugins/video.php?height=429&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1608390750526549%2F&show_text=true&width=560&t=0" 
-      width="560" height="500" 
-      style="border:none;overflow:hidden" 
-      scrolling="no" frameborder="0" allowfullscreen="true" 
-      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-    </iframe>
-  `;
-  socialFeed.appendChild(hochulReel);
+    <!-- Donald Trump Facebook -->
+    <div class="social-card">
+      <h3>Donald Trump Facebook</h3>
+      <iframe 
+        src="https://www.facebook.com/plugins/video.php?height=315&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1252240603298809%2F&show_text=true&width=560&t=0" 
+        width="560" height="430" style="border:none;overflow:hidden" 
+        scrolling="no" frameborder="0" allowfullscreen="true" 
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+      </iframe>
+    </div>
 
-  // Donald Trump- Christianity Crisis
-  const thirdPost = document.createElement('div');
-  thirdPost.className = 'social-card';
-  thirdPost.innerHTML = `
-    <h3>New Facebook Post</h3>
-    <iframe 
-      src="https://www.facebook.com/plugins/video.php?height=315&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1252240603298809%2F&show_text=true&width=560&t=0" 
-      width="560" height="430" 
-      style="border:none;overflow:hidden" 
-      scrolling="no" frameborder="0" allowfullscreen="true" 
-      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-    </iframe>
+    <!-- Chuck Schumer Facebook -->
+    <div class="social-card">
+      <h3>Chuck Schumer Facebook</h3>
+      <iframe 
+        src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F3151059001745750%2F&show_text=true&width=267&t=0" 
+        width="267" height="591" style="border:none;overflow:hidden" 
+        scrolling="no" frameborder="0" allowfullscreen="true" 
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+      </iframe>
+    </div>
   `;
-  socialFeed.appendChild(thirdPost);
-
-  // Chuck Schumer-Extending ACA premium tax credits
-  const fourthPost = document.createElement('div');
-  fourthPost.className = 'social-card';
-  fourthPost.innerHTML = `
-    <h3>Another Facebook Reel</h3>
-    <iframe 
-      src="https://www.facebook.com/plugins/video.php?height=591&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F3151059001745750%2F&show_text=true&width=267&t=0" 
-      width="267" height="591" 
-      style="border:none;overflow:hidden" 
-      scrolling="no" frameborder="0" allowfullscreen="true" 
-      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-    </iframe>
-  `;
-  socialFeed.appendChild(fourthPost);
 }
 
 // === FEDERAL OFFICIALS DATA (inline) ===
