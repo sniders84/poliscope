@@ -842,9 +842,9 @@ function loadSocialTrends() {
   socialFeed.innerHTML = `
     <div class="hub-card" style="padding: 10px; max-width: 400px; margin: auto;">
       <iframe 
-        src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4184264178567898%2F&show_text=true&width=400&t=0" 
+        src="https://www.facebook.com/plugins/video.php?height=600&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4184264178567898%2F&show_text=true&width=400&t=0" 
         width="100%" 
-        height="400" 
+        height="600" 
         style="border:none;overflow:hidden" 
         scrolling="no" 
         frameborder="0" 
