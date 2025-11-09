@@ -156,54 +156,25 @@
   <div id="polls-content" class="modal-content"></div>
 </div>
 
- <section id="organizations" class="tab-content" style="display: none;">
+  <section id="organizations" class="tab-content" style="display: none;">
   <h2>Political Organizations</h2>
+  <div class="organization-grid">
 
-  <div class="political-groups">
+    <!-- Each organization card is now a full anchor -->
+    <a href="YOUR_ORGANIZATION_URL" target="_blank" class="organization-card">
+      <div class="logo-wrapper">
+        <img src="YOUR_LOGO_PATH" alt="Organization Logo">
+      </div>
+      <div class="info-wrapper">
+        <h3>Organization Name</h3>
+        <p>Organization description goes here.</p>
+      </div>
+    </a>
 
-    <div class="party-section" data-party="republican">
-      <h3>Republican / Conservative</h3>
-      <div class="organization-grid"></div>
-    </div>
-
-    <div class="party-section" data-party="democrat">
-      <h3>Democrat / Liberal</h3>
-      <div class="organization-grid"></div>
-    </div>
-
-    <div class="party-section" data-party="libertarian">
-      <h3>Libertarian</h3>
-      <div class="organization-grid"></div>
-    </div>
-
-    <div class="party-section" data-party="moderate">
-      <h3>Moderate / Independent</h3>
-      <div class="organization-grid"></div>
-    </div>
-
-    <div class="party-section" data-party="socialist">
-      <h3>Socialist / Progressive</h3>
-      <div class="organization-grid"></div>
-    </div>
+    <!-- Repeat more <a class="organization-card"> blocks for each org -->
 
   </div>
-
- <section id="organizations">
-  <div class="party-section" data-party="republican">
-    <h2>Republican</h2>
-    <div class="organization-grid"></div>
-  </div>
-  <div class="party-section" data-party="democrat">
-    <h2>Democrat</h2>
-    <div class="organization-grid"></div>
-  </div>
-  <div class="party-section" data-party="independent">
-    <h2>Independent</h2>
-    <div class="organization-grid"></div>
-  </div>
-  <!-- Add more parties if needed -->
 </section>
-
 
     <section id="voting" class="tab-content" style="display: none;">
       <h2>Voting & Registration</h2>
