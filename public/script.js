@@ -779,7 +779,58 @@ function showOrganizations() {
       console.error(err);
     });
 }
+function showStartupHub() {
+  showTab('startup-hub');
+  const hubContainer = document.getElementById('hub-cards');
+  hubContainer.innerHTML = '';
 
+  // Example card data - each object has a title, description, image, and link
+  const hubItems = [
+    {
+      title: "Global Politics",
+      desc: "Up-to-the-minute world political news",
+      img: "assets/news-politics.jpg",
+      url: "https://www.politico.com/"
+    },
+    {
+      title: "Finance & Markets",
+      desc: "Stock market updates, economy, and finance news",
+      img: "assets/news-finance.jpg",
+      url: "https://www.bloomberg.com/"
+    },
+    {
+      title: "Tech & Innovation",
+      desc: "Latest tech news and breakthroughs",
+      img: "assets/news-tech.jpg",
+      url: "https://www.theverge.com/"
+    },
+    {
+      title: "World News",
+      desc: "Global headlines and international updates",
+      img: "assets/news-world.jpg",
+      url: "https://www.bbc.com/news"
+    },
+    {
+      title: "Quizzes & Polls",
+      desc: "Interactive quizzes and polling data",
+      img: "assets/news-quizzes.jpg",
+      url: "https://www.pewresearch.org/"
+    }
+    // add more items here
+  ];
+
+  hubItems.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'hub-card';
+    card.setAttribute('onclick', `window.open('${item.url}', '_blank')`);
+    card.innerHTML = `
+      <img src="${item.img}" alt="${item.title}" />
+      <h4>${item.title}</h4>
+      <p>${item.desc}</p>
+    `;
+    hubContainer.appendChild(card);
+  });
+}
 // === FEDERAL OFFICIALS DATA (inline) ===
 const federalOfficials = [
   {
