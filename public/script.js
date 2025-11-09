@@ -840,17 +840,15 @@ function loadSocialTrends() {
   const socialFeed = document.getElementById('social-feed');
   if (!socialFeed) return;
 
-  // Clear previous content
   socialFeed.innerHTML = '';
 
-  // Array of social posts
   const socialPosts = [
     {
       title: "Gavin Newsom on Facebook",
       type: "facebook",
       embed: `<iframe 
                 src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4184264178567898%2F&show_text=true&width=500" 
-                width="100%" height="550" 
+                width="100%" height="700"   <!-- increased height -->
                 style="border:none;overflow:hidden" 
                 scrolling="no" frameborder="0" allowfullscreen="true" 
                 allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
@@ -861,23 +859,18 @@ function loadSocialTrends() {
       type: "facebook",
       embed: `<iframe 
                 src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1608390750526549%2F&show_text=true&width=500&t=0" 
-                width="100%" height="550" 
+                width="100%" height="550"   <!-- reel height -->
                 style="border:none;overflow:hidden" 
                 scrolling="no" frameborder="0" allowfullscreen="true" 
                 allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
               </iframe>`
     }
-    // You can add more posts here in the same format
   ];
 
-  // Render each post
   socialPosts.forEach(post => {
     const card = document.createElement('div');
     card.className = 'social-card';
-    card.innerHTML = `
-      <h3>${post.title}</h3>
-      ${post.embed}
-    `;
+    card.innerHTML = `<h3>${post.title}</h3>${post.embed}`;
     socialFeed.appendChild(card);
   });
 }
