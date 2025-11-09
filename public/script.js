@@ -852,7 +852,7 @@ function loadSocialTrends() {
     </div>
 
     <div class="social-card">
-      <h3>Gavin Newsom Facebook Reel</h3>
+      <h3>Kathy Hochul Facebook Reel (CNN)</h3>
       <iframe 
         src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1608390750526549%2F&show_text=true&width=400&t=0" 
         width="400" height="400" style="border:none;overflow:hidden" 
@@ -862,7 +862,7 @@ function loadSocialTrends() {
     </div>
   `;
 
-  // Load embed scripts if not already loaded
+  // Load Facebook SDK if not already loaded
   if (!document.querySelector('script[src*="facebook.com/plugins"]')) {
     const fbScript = document.createElement('script');
     fbScript.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v16.0";
