@@ -926,3 +926,41 @@ a, button, .tab, .card-button,
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   text-align: center;
 }
+/* 1️⃣ Two-column layout for the three sections */
+#state-legislative .grid,
+#nga-section .grid,
+#federal-oversight .grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* two columns */
+  gap: 16px;
+}
+
+/* 2️⃣ Grid layout for Polls modal source cards */
+#polls-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  padding: 16px;
+}
+
+/* Optional styling for cards */
+.card,
+#polls-content .source-card {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+/* 3️⃣ Responsive: one column on narrow screens */
+@media (max-width: 768px) {
+  #state-legislative .grid,
+  #nga-section .grid,
+  #federal-oversight .grid,
+  #polls-content {
+    grid-template-columns: 1fr; /* single column for mobile */
+    gap: 12px;
+  }
+}
