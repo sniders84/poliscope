@@ -852,20 +852,22 @@ a, button, .tab, .card-button,
 .polls-grid .organization-card, .official-card {
   cursor: pointer !important;
 }
-/* Clean photo fix */
+/* Photo container */
 .official-card .photo-wrapper {
   width: 100%;
-  height: 140px; /* adjust to fit your layout */
+  height: 160px;          /* adjust based on card size */
   overflow: hidden;
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* heads stay near top */
+  align-items: center;     /* vertical centering so head is not cut off */
 }
 
+/* Photo image */
 .official-card .photo-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;          /* fills container while preserving aspect ratio */
-  object-position: top center; /* keeps heads visible */
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;     /* fits entire image without cropping */
+  object-position: center center;
   display: block;
+  background-color: transparent; /* avoids white boxes */
 }
