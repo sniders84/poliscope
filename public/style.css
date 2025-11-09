@@ -742,3 +742,43 @@ a, button, .tab, .card, .organization-card, .voting-card,
   box-sizing: border-box;
   text-align: center;
 }
+/* Make card body a flex column so photo and text stack */
+.official-card .card-body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Limit photo height and keep head visible */
+.official-card .photo-wrapper {
+  flex: 0 0 140px; /* fixed height for photo */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* heads near top */
+}
+
+.official-card .photo-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+/* Adjust photo for Lt. Governors and House Reps */
+.official-card.lt-governor .photo-wrapper img {
+  object-position: 10% center;
+}
+.official-card.house-rep .photo-wrapper img {
+  object-position: 15% center;
+}
+
+/* Allow text to fill remaining space */
+.official-card .official-info {
+  flex: 1 1 auto;
+  padding: 6px 4px;
+  box-sizing: border-box;
+  text-align: center;
+  overflow-wrap: break-word; /* prevents long text from overflowing */
+}
