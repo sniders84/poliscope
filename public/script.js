@@ -1156,11 +1156,11 @@ function wireStateDropdown() {
 
 // === DOM READY: load datasets and wire UI ===
 document.addEventListener('DOMContentLoaded', () => {
-  // Elements
+  // --- Elements ---
   officialsContainer = document.getElementById('officials-container');
   searchBar = document.getElementById('search-bar');
 
-  // Officials modal refs
+  // Officials modal references
   officialsModal = document.getElementById('officials-modal');
   officialsModalContent = document.getElementById('officials-content');
   officialsModalCloseBtn = document.getElementById('officials-close');
@@ -1169,10 +1169,11 @@ document.addEventListener('DOMContentLoaded', () => {
     officialsModalCloseBtn.addEventListener('click', () => closeModalWindow('officials-modal'));
   }
 
+  // --- Wire search bar and state dropdown ---
   wireSearchBar();
   wireStateDropdown();
 
-  // Load officials data
+  // --- Load officials JSON datasets ---
   Promise.all([
     fetch('/governors.json').then(res => res.json()),
     fetch('/ltgovernors.json').then(res => res.json()),
@@ -1184,11 +1185,12 @@ document.addEventListener('DOMContentLoaded', () => {
       ltGovernors = ltGovs;
       senators = sens;
       houseReps = reps;
+
       renderOfficials(selectedState, '');
     })
     .catch(err => console.error('Error loading official data:', err));
 
-  // Helper: clear the Officials search bar
+  // --- Helper: clear Officials search bar if clicked outside ---
   function closeOfficialsSearch() {
     if (!searchBar) return;
     searchBar.value = '';
@@ -1202,18 +1204,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // --- ADD THIS: move organization cards into party sections ---
-  const allCards = document.querySelectorAll("#all-org-cards .organization-card");
-
-  allCards.forEach(card => {
-    const party = card.dataset.party.toLowerCase();
+  // --- Move political organization cards into party sections ---
+  const allOrgCards = document.querySelectorAll('#all-org-cards .organization-card');
+  allOrgCards.forEach(card => {
+    const party = (card.dataset.party || '').toLowerCase();
     const targetGrid = document.querySelector(`#organizations .party-section[data-party="${party}"] .organization-grid`);
     if (targetGrid) {
       targetGrid.appendChild(card);
+    } else {
+      console.warn(`No party section found for "${party}"`);
     }
   });
 
-  // Optionally remove the hidden container
-  const hiddenContainer = document.getElementById("all-org-cards");
+  // --- Remove hidden staging container after organizing cards ---
+  const hiddenContainer = document.getElementById('all-org-cards');
   if (hiddenContainer) hiddenContainer.remove();
 });
