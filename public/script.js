@@ -671,16 +671,14 @@ function openPollModal(categoryLabel) {
     return;
   }
 
-  // Render grid of clickable cards
+  // Render header and grid of uniform cards
   modalContent.innerHTML = `
     <h2>${category.label} Polls</h2>
     <div class="poll-grid">
       ${category.polls.map(p => `
-        <a href="${p.url}" target="_blank" rel="noopener" class="poll-card">
-          <div class="poll-logo">
-            <img src="${logoMap[p.source] || ''}" alt="${p.source} logo">
-          </div>
-          <h4 class="poll-name">${p.name}</h4>
+        <a href="${p.url}" target="_blank" class="poll-card">
+          <img src="${logoMap[p.source] || ''}" alt="${p.source} logo">
+          <h4>${p.name}</h4>
         </a>
       `).join('')}
     </div>
@@ -688,7 +686,7 @@ function openPollModal(categoryLabel) {
 
   modal.style.display = 'block';
 
-  // Optional: live polling injection
+  // Live polling injection (optional)
   const liveEndpoints = {
     'President': 'https://www.realclearpolling.com/latest-polls/2025',
     'U.S. Senate': 'https://www.realclearpolling.com/latest-polls/senate',
