@@ -964,3 +964,54 @@ a, button, .tab, .card-button,
     gap: 12px;
   }
 }
+/* Two-column layout for dynamically generated Civic Intelligence cards */
+.civic-block .link-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* two columns on desktop */
+  gap: 16px; /* spacing between cards */
+}
+
+/* Make link cards look consistent */
+.civic-block .link-card {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  text-align: center;
+  cursor: pointer;
+}
+
+/* Responsive: single column on narrow screens */
+@media (max-width: 768px) {
+  .civic-block .link-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+/* Polls modal grid */
+#polls-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* two columns on desktop */
+  gap: 16px;
+  padding: 16px;
+}
+
+/* Poll source card styling */
+#polls-content .poll-source-card {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  text-align: center;
+  cursor: pointer;
+}
+
+/* Responsive: single column on smaller screens */
+@media (max-width: 768px) {
+  #polls-content {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
