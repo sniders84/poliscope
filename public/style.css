@@ -901,3 +901,31 @@ a, button, .tab, .card-button,
     gap: 12px; /* optional, slightly smaller spacing */
   }
 }
+/* Grid layout for all three sections */
+#state-legislative .grid,
+#nga-section .grid,
+#federal-oversight .grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* two columns on desktop */
+  gap: 16px; /* spacing between cards */
+}
+
+/* Responsive: switch to one column on mobile */
+@media (max-width: 768px) {
+  #state-legislative .grid,
+  #nga-section .grid,
+  #federal-oversight .grid {
+    grid-template-columns: 1fr; /* single column on smaller screens */
+    gap: 12px; /* slightly smaller spacing */
+  }
+}
+
+/* Optional: make cards look nice */
+.card {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  text-align: center;
+}
