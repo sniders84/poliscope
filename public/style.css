@@ -634,3 +634,193 @@ main {
     gap: 12px;
   }
 }
+/* Card photos */
+.official-card .photo-wrapper {
+  width: 120px;        /* adjust as needed */
+  height: 120px;
+  overflow: hidden;
+  border-radius: 50%;  /* circle photos, optional */
+  flex-shrink: 0;
+}
+
+.official-card .photo-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* ensures no stretching, fully fills the container */
+  display: block;
+}
+#officials-modal {
+  display: none;              /* hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+#officials-modal .modal-card {
+  background: #fff;
+  max-width: 800px;          /* prevents doubling across large screens */
+  width: 90%;                /* responsive */
+  margin: 60px auto;         /* centered */
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  display: flex;
+  flex-wrap: wrap;           /* allows photo + info to stack on smaller screens */
+}
+
+.modal-photo {
+  flex: 0 0 150px;           /* fixed width for photo */
+  height: 150px;
+  overflow: hidden;
+  margin: 20px;
+  border-radius: 50%;
+}
+
+.modal-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.modal-info {
+  flex: 1;
+  padding: 20px;
+  min-width: 200px;          /* prevents collapsing on small screens */
+}
+/* === OFFICIAL CARDS === */
+.official-card {
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  margin: 10px 0;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.official-card .party-stripe {
+  width: 6px;
+  background-color: #ccc; /* you can dynamically color via JS */
+}
+
+.official-card .card-body {
+  display: flex;
+  flex-direction: row;
+  padding: 10px 15px;
+  gap: 15px;
+  align-items: center;
+}
+
+.official-card .photo-wrapper {
+  width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.official-card .photo-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.official-card .official-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* === OFFICIAL MODAL === */
+#officials-modal {
+  display: none;               /* hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+#officials-modal .modal-card {
+  background: #fff;
+  max-width: 800px;           /* prevents over-expanding */
+  width: 90%;                 /* responsive */
+  margin: 60px auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  display: flex;
+  flex-wrap: wrap;            /* stack on small screens */
+  overflow: hidden;
+}
+
+.modal-photo {
+  flex: 0 0 150px;
+  height: 150px;
+  overflow: hidden;
+  margin: 20px;
+  border-radius: 50%;
+}
+
+.modal-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.modal-info {
+  flex: 1;
+  padding: 20px;
+  min-width: 200px;
+}
+
+/* Optional: adjust text and lists inside modal */
+.modal-info h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.5em;
+}
+
+.modal-info p, .modal-info li {
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.modal-info ul {
+  padding-left: 20px;
+  margin-top: 5px;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 600px) {
+  .official-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .official-card .card-body {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #officials-modal .modal-card {
+    flex-direction: column;
+    width: 95%;
+  }
+
+  .modal-photo {
+    margin: 20px auto 10px auto;
+  }
+}
