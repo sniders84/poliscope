@@ -824,3 +824,21 @@ main {
     margin: 20px auto 10px auto;
   }
 }
+// === SAFEGUARD: Ensure official photos stay centered and consistent ===
+function fixOfficialPhotos() {
+  const images = document.querySelectorAll('.official-card .photo-wrapper img');
+  images.forEach(img => {
+    img.style.objectFit = 'cover';
+    img.style.objectPosition = 'center center';
+    img.style.width = '100%';
+    img.style.height = '100%';
+    img.style.display = 'block';
+  });
+}
+
+// Run this every time officials are rendered
+const originalRenderOfficials = renderOfficials;
+renderOfficials = function (...args) {
+  originalRenderOfficials.apply(this, args);
+  requestAnimationFrame(fixOfficialPhotos);
+};
