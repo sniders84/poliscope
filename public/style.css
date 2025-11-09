@@ -1053,4 +1053,34 @@ a, button, .tab, .card-button,
   box-shadow: 0 0 0 2px #007bff, 0 2px 4px rgba(0,0,0,0.5); /* blue outline + shadow */
   transform: translateY(-2px);
 }
+#social-trends {
+  margin-top: 32px;
+}
+
+#social-feed {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.social-card {
+  background-color: #1e1e2f;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  transition: border 0.25s ease, transform 0.2s ease;
+}
+
+.social-card:hover {
+  border: 2px solid #007bff;
+  transform: translateY(-2px);
+}
+
+.social-card h3 {
+  color: #f0f0f0;
+  margin-bottom: 8px;
+  font-size: 1rem;
+  text-align: center;
+}
 
