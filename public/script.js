@@ -677,7 +677,7 @@ function openPollModal(categoryLabel) {
     <h2>${category.label} Polls</h2>
     <div class="poll-grid">
       ${category.polls.map(p => `
-        <div class="poll-card">
+        <div class="poll-source-card">
           <div class="poll-logo">
             <img src="${logoMap[p.source] || ''}" alt="${p.source} logo">
           </div>
@@ -728,6 +728,7 @@ function openPollModal(categoryLabel) {
   };
   window.addEventListener('click', clickOutsideHandler);
 }
+
 // === ORGANIZATIONS TAB ===
 function showOrganizations() {
   showTab('organizations');
