@@ -835,27 +835,40 @@ function showStartupHub() {
   loadSocialTrends();
 }
 
+// === SOCIAL TRENDS SECTION ===
 function loadSocialTrends() {
   const socialFeed = document.getElementById('social-feed');
   if (!socialFeed) return;
 
   socialFeed.innerHTML = `
-    <div class="hub-card" style="padding: 10px; max-width: 400px; margin: auto;">
+    <div class="social-card">
+      <h3>Gavin Newsom Facebook Post</h3>
       <iframe 
-        src="https://www.facebook.com/plugins/video.php?height=600&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4184264178567898%2F&show_text=true&width=400&t=0" 
-        width="100%" 
-        height="600" 
-        style="border:none;overflow:hidden" 
-        scrolling="no" 
-        frameborder="0" 
-        allowfullscreen="true" 
+        src="https://www.facebook.com/plugins/video.php?height=591&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4184264178567898%2F&show_text=true&width=400&t=0" 
+        width="400" height="640" style="border:none;overflow:hidden" 
+        scrolling="no" frameborder="0" allowfullscreen="true" 
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+      </iframe>
+    </div>
+
+    <div class="social-card">
+      <h3>Gavin Newsom Facebook Reel</h3>
+      <iframe 
+        src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1608390750526549%2F&show_text=true&width=400&t=0" 
+        width="400" height="400" style="border:none;overflow:hidden" 
+        scrolling="no" frameborder="0" allowfullscreen="true" 
         allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
       </iframe>
     </div>
   `;
 
-  // Only show this section on the Home Hub
-  document.getElementById('social-trends').style.display = 'block';
+  // Load embed scripts if not already loaded
+  if (!document.querySelector('script[src*="facebook.com/plugins"]')) {
+    const fbScript = document.createElement('script');
+    fbScript.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v16.0";
+    fbScript.async = true;
+    document.body.appendChild(fbScript);
+  }
 }
 
 // === FEDERAL OFFICIALS DATA (inline) ===
