@@ -872,6 +872,21 @@ function loadSocialTrends() {
     </iframe>
   `;
   socialFeed.appendChild(hochulReel);
+
+  // New Facebook Post
+  const newPost = document.createElement('div');
+  newPost.className = 'social-card';
+  newPost.innerHTML = `
+    <h3>New Facebook Post</h3>
+    <iframe 
+      src="https://www.facebook.com/plugins/video.php?height=315&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1252240603298809%2F&show_text=true&width=560&t=0" 
+      width="560" height="430" 
+      style="border:none;overflow:hidden" 
+      scrolling="no" frameborder="0" allowfullscreen="true" 
+      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+    </iframe>
+  `;
+  socialFeed.appendChild(newPost);
 }
 
 // === FEDERAL OFFICIALS DATA (inline) ===
