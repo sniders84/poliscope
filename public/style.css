@@ -1087,9 +1087,10 @@ a, button, .tab, .card-button,
 #social-feed {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 8px; /* tighter spacing between cards */
+  gap: 12px; /* slightly more breathing room between cards */
   margin-top: 12px;
-  justify-items: center;
+  justify-items: center; /* center cards in each column */
+  align-items: start; /* align cards at top for uniform rows */
 }
 
 /* Social Card Styling */
@@ -1098,10 +1099,19 @@ a, button, .tab, .card-button,
   color: #f0f0f0;
   border: 2px solid transparent;
   border-radius: 10px;
-  padding: 6px; /* slightly smaller padding */
+  padding: 8px; /* balanced padding */
   box-shadow: 0 2px 4px rgba(0,0,0,0.5);
   text-align: center;
   transition: border 0.25s ease, transform 0.2s ease;
   width: 100%;
-  max-width: 320px; /* playing card width */
+  max-width: 320px; /* keeps all cards same “playing card” width */
+  box-sizing: border-box; /* ensures padding is included in width */
+}
+
+/* Optional: make iframes inside cards responsive */
+.social-card iframe {
+  width: 100%;
+  height: auto;
+  max-height: 450px; /* prevent cards from getting too tall */
+  border: none;
 }
