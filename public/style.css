@@ -871,3 +871,33 @@ a, button, .tab, .card-button,
   display: block;
   background-color: transparent; /* avoids white boxes */
 }
+/* Two-column layout for State Legislative links */
+#state-legislative .grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+/* Two-column layout for National Governors Association section */
+#nga-section .grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+/* Two-column layout for Federal Oversight & Transparency section */
+#federal-oversight .grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+/* Responsive: switch to one column on narrow screens */
+@media (max-width: 768px) {
+  #state-legislative .grid,
+  #nga-section .grid,
+  #federal-oversight .grid {
+    grid-template-columns: 1fr; /* single column for mobile */
+    gap: 12px; /* optional, slightly smaller spacing */
+  }
+}
