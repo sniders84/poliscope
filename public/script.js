@@ -1157,36 +1157,40 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
- // === Load officials data with smooth fade-in ===
-Promise.all([
-  fetch('/governors.json').then(res => res.json()),
-  fetch('/ltgovernors.json').then(res => res.json()),
-  fetch('/senators.json').then(res => res.json()),
-  fetch('/housereps.json').then(res => res.json())
-])
-  .then(([govs, ltGovs, sens, reps]) => {
-    governors = govs;
-    ltGovernors = ltGovs;
-    senators = sens;
-    houseReps = reps;
+document.addEventListener('DOMContentLoaded', () => {
 
-    // Render officials
-    renderOfficials(selectedState, '');
+  // === Load officials data with smooth fade-in ===
+  Promise.all([
+    fetch('/governors.json').then(res => res.json()),
+    fetch('/ltgovernors.json').then(res => res.json()),
+    fetch('/senators.json').then(res => res.json()),
+    fetch('/housereps.json').then(res => res.json())
+  ])
+    .then(([govs, ltGovs, sens, reps]) => {
+      governors = govs;
+      ltGovernors = ltGovs;
+      senators = sens;
+      houseReps = reps;
 
-    // Fade out loading overlay
-    if (loadingOverlay) {
-      loadingOverlay.style.transition = 'opacity 0.5s ease';
-      loadingOverlay.style.opacity = '0';
-      setTimeout(() => loadingOverlay.remove(), 500);
-    }
+      // Render officials
+      renderOfficials(selectedState, '');
 
-    // Load social trends after official data is loaded
-    if (typeof loadSocialTrends === 'function') {
-      console.log("🎬 loadSocialTrends is running...");
-      loadSocialTrends();
-    }
-  })
-  .catch(err => {
-    console.error('Error loading official data:', err);
-    if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
-  });
+      // Fade out loading overlay
+      if (loadingOverlay) {
+        loadingOverlay.style.transition = 'opacity 0.5s ease';
+        loadingOverlay.style.opacity = '0';
+        setTimeout(() => loadingOverlay.remove(), 500);
+      }
+
+      // Load social trends after official data is loaded
+      if (typeof loadSocialTrends === 'function') {
+        console.log("🎬 loadSocialTrends is running...");
+        loadSocialTrends();
+      }
+    })
+    .catch(err => {
+      console.error('Error loading official data:', err);
+      if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
+    });
+
+}); // <- This closes the DOMContentLoaded listener
