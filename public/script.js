@@ -811,37 +811,50 @@ function loadSocialTrends() {
   const socialFeed = document.getElementById('social-feed');
   if (!socialFeed) return;
 
-  const socialPosts = [
-    "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4184264178567898%2F&show_text=true&width=267&t=0",
-    "https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1608390750526549%2F&show_text=true&width=560&t=0",
-    "https://www.facebook.com/plugins/video.php?height=315&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1252240603298809%2F&show_text=true&width=560&t=0",
-    "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F3151059001745750%2F&show_text=true&width=267&t=0"
-  ];
-
-  let html = '<div class="scroll-row">';
-
-  socialPosts.forEach(url => {
-    const params = new URL(url).searchParams;
-    const height = parseInt(params.get('height')) || 0;
-    const width = parseInt(params.get('width')) || 1; // prevent division by 0
-
-    // Determine aspect ratio
-    const aspectRatio = height / width;
-    const type = aspectRatio > 1 ? 'tall' : 'wide';
-
-    html += `
-      <div class="social-card ${type}" style="--aspect-ratio:${aspectRatio}">
-        <iframe 
-          src="${url}" 
-          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-          allowfullscreen>
-        </iframe>
+  socialFeed.innerHTML = `
+    <!-- 🌐 Social Trends Horizontal Scroll Row -->
+    <div class="scroll-row">
+      <!-- Gavin Newsom Facebook -->
+      <div class="social-card">
+        <div class="iframe-wrapper">
+          <iframe 
+            src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4184264178567898%2F&show_text=true&width=267&t=0" 
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+          </iframe>
+        </div>
       </div>
-    `;
-  });
 
-  html += '</div>';
-  socialFeed.innerHTML = html;
+      <!-- Kathy Hochul Facebook -->
+      <div class="social-card">
+        <div class="iframe-wrapper">
+          <iframe 
+            src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1608390750526549%2F&show_text=true&width=560&t=0" 
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Donald Trump Facebook -->
+      <div class="social-card">
+        <div class="iframe-wrapper">
+          <iframe 
+            src="https://www.facebook.com/plugins/video.php?height=315&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1252240603298809%2F&show_text=true&width=560&t=0" 
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Chuck Schumer Facebook -->
+      <div class="social-card">
+        <div class="iframe-wrapper">
+          <iframe 
+            src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F3151059001745750%2F&show_text=true&width=267&t=0" 
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  `;
 }
 
 // === FEDERAL OFFICIALS DATA (inline) ===
