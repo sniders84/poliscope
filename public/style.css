@@ -1291,25 +1291,23 @@ a, button, .tab, .card-button,
   max-width: 80px;
   margin-bottom: 8px;
 }
-/* ---------- Social trends horizontal row ---------- */
-/* Insert near other social / hub styles or at the end of style.css */
+/* ---------- Social Trends Horizontal Scroll Row ---------- */
 .scroll-row {
   display: flex;
+  overflow-x: auto;
   gap: 1rem;
   padding: 0.5rem 0;
-  overflow-x: auto;
   -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
   scroll-behavior: smooth;
 }
 
-/* Make sure children don't shrink oddly */
 .scroll-row > * {
   flex: 0 0 auto;
 }
 
-/* WebKit scrollbar (Chrome, Safari) */
+/* WebKit scrollbar */
 .scroll-row::-webkit-scrollbar {
-  height: 8px;
+  height: 6px;
 }
 .scroll-row::-webkit-scrollbar-track {
   background: transparent;
@@ -1319,144 +1317,45 @@ a, button, .tab, .card-button,
   border-radius: 999px;
 }
 
-/* Firefox */
+/* Firefox scrollbar */
 .scroll-row {
   scrollbar-width: thin;
   scrollbar-color: rgba(0,0,0,0.25) transparent;
 }
 
-/* Consistent card sizing inside scroll rows (adjust width/height to taste) */
-.social-card, .news-card {
-  width: 320px;            /* fixed card width keeps uniformity */
-  min-height: 180px;
-  border-radius: 10px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  background: #fff;
-  padding: 0.5rem;
-  box-sizing: border-box;
-  overflow: hidden;
-}
-
-/* Make embedded iframes behave */
-.social-card iframe, .news-card iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-  display: block;
-}
-
-/* Optional: small visual treatment for section headers and "See All" link */
-.social-trend-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 0.5rem;
-}
-.social-trend-header h3 {
-  margin: 0;
-  font-size: 1.05rem;
-}
-.see-all-btn {
-  background: none;
-  border: none;
-  color: var(--primary-color, #0b66ff);
-  cursor: pointer;
-  text-decoration: underline;
-  font-size: 0.95rem;
-}
-/* Larger social post cards — full native embed look */
+/* ---------- Social Card Base ---------- */
 .social-card {
   flex: 0 0 auto;
-  width: 640px;           /* double the previous 320px */
-  min-height: 700px;      /* more vertical room for Facebook/Twitter embeds */
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  width: 340px;               /* base width for vertical posts/reels */
+  min-height: 560px;          /* base height for vertical posts/reels */
   background: #fff;
-  overflow: hidden;
-  padding: 0;             /* remove padding so iframe touches edges */
-  box-sizing: border-box;
-}
-
-/* Embedded social clips fill the whole card */
-.social-card iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-  display: block;
-}
-.social-card iframe {
-  width: 100% !important;
-  height: 100% !important;
-}
-.scroll-row {
-  display: flex;
-  overflow-x: auto;
-  gap: 1rem;
-  padding: 0.5rem 0;
-}
-
-.social-card {
-  flex: 0 0 auto;
   border-radius: 12px;
-  overflow: hidden;
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  background: #fff;
+  overflow: hidden;
+  padding: 0;                 /* iframe touches edges */
+  box-sizing: border-box;
 }
 
-/* Adaptive sizing */
+/* Modifiers for different aspect ratios */
 .social-card.tall {
-  width: 320px;
-  height: 560px;
+  width: 340px;
+  height: 560px;              /* vertical reels/posts */
 }
 
 .social-card.wide {
   width: 560px;
-  height: 430px;
+  height: 430px;              /* landscape posts/videos */
 }
 
-/* Force iframe to fill card */
+/* ---------- Embedded Iframes ---------- */
 .social-card iframe {
+  display: block;
   width: 100%;
   height: 100%;
   border: none;
+  aspect-ratio: 9 / 16;       /* default vertical */
 }
 
-/* Optional: hide nonfunctional overlay buttons */
-.social-card iframe::-internal-media-controls-overlay-cast-button,
-.social-card iframe::-webkit-media-controls-enclosure {
-  display: none !important;
-}
-.social-card {
-  flex: 0 0 auto;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  background: #fff;
-  width: 320px; /* base width */
-}
-
-.social-card iframe {
-  width: 100%;
-  aspect-ratio: 9 / 16; /* keeps reels tall, posts will auto-letterbox */
-  border: none;
-}
 .social-card.wide iframe {
-  aspect-ratio: 4 / 3;
-}
-.social-card {
-  flex: 0 0 auto;
-  width: 340px;
-  background: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-}
-
-.social-card iframe {
-  display: block;
-  width: 100% !important;
-  height: auto !important;
-  aspect-ratio: 9 / 16;
-  border: none;
+  aspect-ratio: 4 / 3;        /* landscape */
 }
