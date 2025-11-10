@@ -1,3 +1,19 @@
+// === Safe event listener helper ===
+function safeListen(selector, event, callback) {
+  const el = document.querySelector(selector);
+  if (el) {
+    el.addEventListener(event, callback);
+  }
+}
+
+// === Tab buttons / navigation ===
+safeListen('#homehub-tab', 'click', showStartupHub);
+safeListen('#officials-tab', 'click', () => renderOfficials(selectedState, ''));
+safeListen('#civic-tab', 'click', showCivic);
+safeListen('#polls-tab', 'click', showPolls);
+safeListen('#organizations-tab', 'click', showOrganizations);
+safeListen('#voting-tab', 'click', showVoting);
+
 // === GLOBAL STATE ===
 let selectedState = 'North Carolina';
 let governors = [];
