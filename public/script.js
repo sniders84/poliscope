@@ -807,52 +807,54 @@ function showStartupHub() {
   loadSocialTrends();
 }
 
+// === SOCIAL TRENDS SECTION ===
 function loadSocialTrends() {
   const socialFeed = document.getElementById('social-feed');
   if (!socialFeed) return;
 
   socialFeed.innerHTML = `
-    <!-- 🌐 Social Trends Horizontal Scroll Row -->
-    <div class="scroll-row">
-      <!-- Gavin Newsom Facebook -->
-      <div class="social-card">
-        <div class="iframe-wrapper">
-          <iframe 
-            src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4184264178567898%2F&show_text=true&width=267&t=0" 
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-          </iframe>
-        </div>
-      </div>
+    <!-- Gavin Newsom Facebook -->
+    <div class="social-card">
+      <h3>Gavin Newsom Facebook</h3>
+      <iframe 
+        src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4184264178567898%2F&show_text=true&width=267&t=0" 
+        width="267" height="591" style="border:none;overflow:hidden" 
+        scrolling="no" frameborder="0" allowfullscreen="true" 
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+      </iframe>
+    </div>
 
-      <!-- Kathy Hochul Facebook -->
-      <div class="social-card">
-        <div class="iframe-wrapper">
-          <iframe 
-            src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1608390750526549%2F&show_text=true&width=560&t=0" 
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-          </iframe>
-        </div>
-      </div>
+    <!-- Kathy Hochul Facebook -->
+    <div class="social-card">
+      <h3>Kathy Hochul Facebook</h3>
+      <iframe 
+        src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1608390750526549%2F&show_text=true&width=560&t=0" 
+        width="560" height="429" style="border:none;overflow:hidden" 
+        scrolling="no" frameborder="0" allowfullscreen="true" 
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+      </iframe>
+    </div>
 
-      <!-- Donald Trump Facebook -->
-      <div class="social-card">
-        <div class="iframe-wrapper">
-          <iframe 
-            src="https://www.facebook.com/plugins/video.php?height=315&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1252240603298809%2F&show_text=true&width=560&t=0" 
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-          </iframe>
-        </div>
-      </div>
+    <!-- Donald Trump Facebook -->
+    <div class="social-card">
+      <h3>Donald Trump Facebook</h3>
+      <iframe 
+        src="https://www.facebook.com/plugins/video.php?height=315&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1252240603298809%2F&show_text=true&width=560&t=0" 
+        width="560" height="430" style="border:none;overflow:hidden" 
+        scrolling="no" frameborder="0" allowfullscreen="true" 
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+      </iframe>
+    </div>
 
-      <!-- Chuck Schumer Facebook -->
-      <div class="social-card">
-        <div class="iframe-wrapper">
-          <iframe 
-            src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F3151059001745750%2F&show_text=true&width=267&t=0" 
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-          </iframe>
-        </div>
-      </div>
+    <!-- Chuck Schumer Facebook -->
+    <div class="social-card">
+      <h3>Chuck Schumer Facebook</h3>
+      <iframe 
+        src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F3151059001745750%2F&show_text=true&width=267&t=0" 
+        width="267" height="591" style="border:none;overflow:hidden" 
+        scrolling="no" frameborder="0" allowfullscreen="true" 
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+      </iframe>
     </div>
   `;
 }
