@@ -811,42 +811,41 @@ function loadSocialTrends() {
   const socialFeed = document.getElementById('social-feed');
   if (!socialFeed) return;
 
-  socialFeed.innerHTML = `
-    <!-- 🌐 Social Trends Horizontal Scroll Row -->
-    <div class="scroll-row">
-      <!-- Gavin Newsom Facebook (tall vertical reel) -->
-      <div class="social-card tall">
-        <iframe 
-          src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4184264178567898%2F&show_text=true&width=267&t=0" 
-          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-        </iframe>
-      </div>
+  // Array of posts/reels
+  const socialPosts = [
+    {
+      url: "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4184264178567898%2F&show_text=true&width=267&t=0",
+      type: "tall"
+    },
+    {
+      url: "https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1608390750526549%2F&show_text=true&width=560&t=0",
+      type: "wide"
+    },
+    {
+      url: "https://www.facebook.com/plugins/video.php?height=315&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1252240603298809%2F&show_text=true&width=560&t=0",
+      type: "wide"
+    },
+    {
+      url: "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F3151059001745750%2F&show_text=true&width=267&t=0",
+      type: "tall"
+    }
+  ];
 
-      <!-- Kathy Hochul Facebook (wide landscape post/video) -->
-      <div class="social-card wide">
+  let html = '<div class="scroll-row">';
+  socialPosts.forEach(post => {
+    html += `
+      <div class="social-card ${post.type}">
         <iframe 
-          src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1608390750526549%2F&show_text=true&width=560&t=0" 
-          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+          src="${post.url}" 
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+          allowfullscreen>
         </iframe>
       </div>
+    `;
+  });
+  html += '</div>';
 
-      <!-- Donald Trump Facebook (wide landscape post/video) -->
-      <div class="social-card wide">
-        <iframe 
-          src="https://www.facebook.com/plugins/video.php?height=315&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1252240603298809%2F&show_text=true&width=560&t=0" 
-          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-        </iframe>
-      </div>
-
-      <!-- Chuck Schumer Facebook (tall vertical reel) -->
-      <div class="social-card tall">
-        <iframe 
-          src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F3151059001745750%2F&show_text=true&width=267&t=0" 
-          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-        </iframe>
-      </div>
-    </div>
-  `;
+  socialFeed.innerHTML = html;
 }
 
 // === FEDERAL OFFICIALS DATA (inline) ===
