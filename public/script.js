@@ -1202,6 +1202,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
   const socialFeed = document.getElementById('social-feed');
   if (socialFeed) {
+    console.log("🎬 loadSocialTrends is running...");
     loadSocialTrends();
   }
 });
