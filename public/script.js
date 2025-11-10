@@ -811,40 +811,36 @@ function loadSocialTrends() {
   const socialFeed = document.getElementById('social-feed');
   if (!socialFeed) return;
 
-  // Array of posts/reels
   const socialPosts = [
-    {
-      url: "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4184264178567898%2F&show_text=true&width=267&t=0",
-      type: "tall"
-    },
-    {
-      url: "https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1608390750526549%2F&show_text=true&width=560&t=0",
-      type: "wide"
-    },
-    {
-      url: "https://www.facebook.com/plugins/video.php?height=315&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1252240603298809%2F&show_text=true&width=560&t=0",
-      type: "wide"
-    },
-    {
-      url: "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F3151059001745750%2F&show_text=true&width=267&t=0",
-      type: "tall"
-    }
+    "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4184264178567898%2F&show_text=true&width=267&t=0",
+    "https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1608390750526549%2F&show_text=true&width=560&t=0",
+    "https://www.facebook.com/plugins/video.php?height=315&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1252240603298809%2F&show_text=true&width=560&t=0",
+    "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F3151059001745750%2F&show_text=true&width=267&t=0"
   ];
 
   let html = '<div class="scroll-row">';
-  socialPosts.forEach(post => {
+
+  socialPosts.forEach(url => {
+    // Parse height and width from URL
+    const params = new URL(url).searchParams;
+    const height = parseInt(params.get('height')) || 0;
+    const width = parseInt(params.get('width')) || 0;
+
+    // Determine type based on aspect ratio
+    const type = (height / width) > 1 ? 'tall' : 'wide';
+
     html += `
-      <div class="social-card ${post.type}">
+      <div class="social-card ${type}">
         <iframe 
-          src="${post.url}" 
+          src="${url}" 
           allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
           allowfullscreen>
         </iframe>
       </div>
     `;
   });
-  html += '</div>';
 
+  html += '</div>';
   socialFeed.innerHTML = html;
 }
 
