@@ -1158,7 +1158,7 @@ function wireStateDropdown() {
   });
 }
 
-// === DOM READY: load datasets and wire UI ===
+// === DOM READY: load datasets, wire UI, and load social trends ===
 document.addEventListener('DOMContentLoaded', () => {
   // Elements
   const officialsContainer = document.getElementById('officials-container');
@@ -1178,31 +1178,6 @@ document.addEventListener('DOMContentLoaded', () => {
   wireSearchBar();
   wireStateDropdown();
 
-  // Load officials data
-  Promise.all([
-    fetch('/governors.json').then(res => res.json()),
-    fetch('/ltgovernors.json').then(res => res.json()),
-    fetch('/senators.json').then(res => res.json()),
-    fetch('/housereps.json').then(res => res.json())
-  ])
-    .then(([govs, ltGovs, sens, reps]) => {
-      governors = govs;
-      ltGovernors = ltGovs;
-      senators = sens;
-      houseReps = reps;
-      renderOfficials(selectedState, '');
-    })
-    .catch(err => {
-      console.error('Error loading official data:', err);
-    });
-
-  // Load Social Trends
-  const socialFeed = document.getElementById('social-feed');
-  if (socialFeed) {
-    console.log("🎬 loadSocialTrends is running...");
-    loadSocialTrends();
-  }
-
   // Helper: clear the Officials search bar
   function closeOfficialsSearch() {
     if (!searchBar) return;
@@ -1217,4 +1192,31 @@ document.addEventListener('DOMContentLoaded', () => {
       closeOfficialsSearch();
     }
   });
+
+  // === Load officials data, then render, then load social trends ===
+  Promise.all([
+    fetch('/governors.json').then(res => res.json()),
+    fetch('/ltgovernors.json').then(res => res.json()),
+    fetch('/senators.json').then(res => res.json()),
+    fetch('/housereps.json').then(res => res.json())
+  ])
+    .then(([govs, ltGovs, sens, reps]) => {
+      governors = govs;
+      ltGovernors = ltGovs;
+      senators = sens;
+      houseReps = reps;
+
+      // Render officials for the selected state
+      renderOfficials(selectedState, '');
+
+      // Only after officials are rendered, load social trends
+      const socialFeed = document.getElementById('social-feed');
+      if (socialFeed && typeof loadSocialTrends === 'function') {
+        console.log("🎬 loadSocialTrends is running...");
+        loadSocialTrends();
+      }
+    })
+    .catch(err => {
+      console.error('Error loading official data:', err);
+    });
 });
