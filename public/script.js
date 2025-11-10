@@ -803,24 +803,54 @@ function showStartupHub() {
     hubContainer.appendChild(card);
   });
 
-  // === SOCIAL TRENDS SECTION ===
+  // Load social trends after hub cards render
+  loadSocialTrends();
+}
+
+// === SOCIAL TRENDS SECTION ===
 function loadSocialTrends() {
-  const facebookPostsGrid = document.querySelector('#facebook-posts .social-feed-grid');
+  const socialFeed = document.getElementById('social-feed');
+  if (!socialFeed) return;
 
-  if (!facebookPostsGrid) {
-    console.warn("Facebook posts grid not found. Skipping social trends.");
-    return;
-  }
-
-  // Clear existing content
-  facebookPostsGrid.innerHTML = '';
-
-  // Example post
-  facebookPostsGrid.innerHTML = `
+  socialFeed.innerHTML = `
+    <!-- Gavin Newsom Facebook -->
     <div class="social-card">
       <h3>Gavin Newsom Facebook</h3>
       <iframe 
         src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4184264178567898%2F&show_text=true&width=267&t=0" 
+        width="267" height="591" style="border:none;overflow:hidden" 
+        scrolling="no" frameborder="0" allowfullscreen="true" 
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+      </iframe>
+    </div>
+
+    <!-- Kathy Hochul Facebook -->
+    <div class="social-card">
+      <h3>Kathy Hochul Facebook</h3>
+      <iframe 
+        src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1608390750526549%2F&show_text=true&width=560&t=0" 
+        width="560" height="429" style="border:none;overflow:hidden" 
+        scrolling="no" frameborder="0" allowfullscreen="true" 
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+      </iframe>
+    </div>
+
+    <!-- Donald Trump Facebook -->
+    <div class="social-card">
+      <h3>Donald Trump Facebook</h3>
+      <iframe 
+        src="https://www.facebook.com/plugins/video.php?height=315&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1252240603298809%2F&show_text=true&width=560&t=0" 
+        width="560" height="430" style="border:none;overflow:hidden" 
+        scrolling="no" frameborder="0" allowfullscreen="true" 
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+      </iframe>
+    </div>
+
+    <!-- Chuck Schumer Facebook -->
+    <div class="social-card">
+      <h3>Chuck Schumer Facebook</h3>
+      <iframe 
+        src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F3151059001745750%2F&show_text=true&width=267&t=0" 
         width="267" height="591" style="border:none;overflow:hidden" 
         scrolling="no" frameborder="0" allowfullscreen="true" 
         allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
@@ -1157,8 +1187,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-document.addEventListener('DOMContentLoaded', () => {
-
   // === Load officials data with smooth fade-in ===
   Promise.all([
     fetch('/governors.json').then(res => res.json()),
@@ -1182,8 +1210,9 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => loadingOverlay.remove(), 500);
       }
 
-      // Load social trends after official data is loaded
-      if (typeof loadSocialTrends === 'function') {
+      // Load social trends
+      const socialFeed = document.getElementById('social-feed');
+      if (socialFeed && typeof loadSocialTrends === 'function') {
         console.log("🎬 loadSocialTrends is running...");
         loadSocialTrends();
       }
@@ -1192,5 +1221,4 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error('Error loading official data:', err);
       if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
     });
-
-}); // <- This closes the DOMContentLoaded listener
+});
