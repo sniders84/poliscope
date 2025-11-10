@@ -1441,3 +1441,6 @@ a, button, .tab, .card-button,
   aspect-ratio: 9 / 16; /* keeps reels tall, posts will auto-letterbox */
   border: none;
 }
+.social-card.wide iframe {
+  aspect-ratio: 4 / 3;
+}
