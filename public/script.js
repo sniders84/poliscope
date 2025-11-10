@@ -1196,6 +1196,14 @@ document.addEventListener('DOMContentLoaded', () => {
     .catch(err => {
       console.error('Error loading official data:', err);
     });
+  
+  // === Load Social Trends once the page and DOM are ready ===
+document.addEventListener('DOMContentLoaded', () => {
+  const socialFeed = document.getElementById('social-feed');
+  if (socialFeed) {
+    loadSocialTrends();
+  }
+});
 
   // Helper: clear the Officials search bar (no tab switch, no re-render)
   function closeOfficialsSearch() {
