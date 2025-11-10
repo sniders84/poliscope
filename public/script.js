@@ -6,14 +6,6 @@ function safeListen(selector, event, callback) {
   }
 }
 
-// === Tab buttons / navigation ===
-safeListen('#homehub-tab', 'click', showStartupHub);
-safeListen('#officials-tab', 'click', () => renderOfficials(selectedState, ''));
-safeListen('#civic-tab', 'click', showCivic);
-safeListen('#polls-tab', 'click', showPolls);
-safeListen('#organizations-tab', 'click', showOrganizations);
-safeListen('#voting-tab', 'click', showVoting);
-
 // === GLOBAL STATE ===
 let selectedState = 'North Carolina';
 let governors = [];
@@ -1182,6 +1174,27 @@ function wireStateDropdown() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  const officialsContainer = document.getElementById('officials-container');
+  const searchBar = document.getElementById('search-bar');
+  const loadingOverlay = document.getElementById('loading-overlay');
+
+  const officialsModal = document.getElementById('officials-modal');
+  const officialsModalContent = document.getElementById('officials-content');
+  const officialsModalCloseBtn = document.getElementById('officials-close');
+
+  if (officialsModalCloseBtn) {
+    officialsModalCloseBtn.addEventListener('click', () => closeModalWindow('officials-modal'));
+  }
+
+  // === Tab buttons / navigation (safe) ===
+  safeListen('#homehub-tab', 'click', showStartupHub);
+  safeListen('#officials-tab', 'click', () => renderOfficials(selectedState, ''));
+  safeListen('#civic-tab', 'click', showCivic);
+  safeListen('#polls-tab', 'click', showPolls);
+  safeListen('#organizations-tab', 'click', showOrganizations);
+  safeListen('#voting-tab', 'click', showVoting);
+});
+('DOMContentLoaded', () => {
   const officialsContainer = document.getElementById('officials-container');
   const searchBar = document.getElementById('search-bar');
   const loadingOverlay = document.getElementById('loading-overlay');
