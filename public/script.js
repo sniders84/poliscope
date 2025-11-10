@@ -1218,11 +1218,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // Load social trends
-      const socialFeed = document.getElementById('social-feed');
-      if (socialFeed && typeof loadSocialTrends === 'function') {
-        console.log("🎬 loadSocialTrends is running...");
-        loadSocialTrends();
-      }
+// Load social trends after official data is loaded
+if (typeof loadSocialTrends === 'function') {
+  console.log("🎬 loadSocialTrends is running...");
+  loadSocialTrends();
+}
     })
     .catch(err => {
       console.error('Error loading official data:', err);
