@@ -1326,14 +1326,35 @@ a, button, .tab, .card-button,
 /* ---------- Social Card Base ---------- */
 .social-card {
   flex: 0 0 auto;
-  width: 340px;               /* base width for vertical posts/reels */
+  width: 340px; /* base width */
+  max-height: 800px; /* prevent huge cards */
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
   overflow: hidden;
-  padding: 0;                 /* iframe touches edges */
+  padding: 0;
   box-sizing: border-box;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Use inline CSS variable to maintain aspect ratio */
+.social-card iframe {
+  width: 100%;
+  height: auto;
+  aspect-ratio: var(--aspect-ratio);
+  border: none;
+  display: block;
+}
+
+/* Optional: modifiers for known orientation (still respected if aspect ratio provided) */
+.social-card.tall {
+  width: 340px;
+}
+
+.social-card.wide {
+  width: 560px;
 }
 
 /* Hover effect consistent with other hub cards */
