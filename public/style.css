@@ -1291,12 +1291,77 @@ a, button, .tab, .card-button,
   max-width: 80px;
   margin-bottom: 8px;
 }
+/* ---------- Social trends horizontal row ---------- */
+/* Insert near other social / hub styles or at the end of style.css */
 .scroll-row {
   display: flex;
-  overflow-x: auto;
   gap: 1rem;
   padding: 0.5rem 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+  scroll-behavior: smooth;
 }
+
+/* Make sure children don't shrink oddly */
+.scroll-row > * {
+  flex: 0 0 auto;
+}
+
+/* WebKit scrollbar (Chrome, Safari) */
 .scroll-row::-webkit-scrollbar {
-  height: 6px;
+  height: 8px;
+}
+.scroll-row::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scroll-row::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.25);
+  border-radius: 999px;
+}
+
+/* Firefox */
+.scroll-row {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0,0,0,0.25) transparent;
+}
+
+/* Consistent card sizing inside scroll rows (adjust width/height to taste) */
+.social-card, .news-card {
+  width: 320px;            /* fixed card width keeps uniformity */
+  min-height: 180px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  background: #fff;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Make embedded iframes behave */
+.social-card iframe, .news-card iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* Optional: small visual treatment for section headers and "See All" link */
+.social-trend-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+.social-trend-header h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+.see-all-btn {
+  background: none;
+  border: none;
+  color: var(--primary-color, #0b66ff);
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 0.95rem;
 }
