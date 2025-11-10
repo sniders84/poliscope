@@ -1389,3 +1389,41 @@ a, button, .tab, .card-button,
   width: 100% !important;
   height: 100% !important;
 }
+.scroll-row {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding: 0.5rem 0;
+}
+
+.social-card {
+  flex: 0 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  background: #fff;
+}
+
+/* Adaptive sizing */
+.social-card.tall {
+  width: 320px;
+  height: 560px;
+}
+
+.social-card.wide {
+  width: 560px;
+  height: 430px;
+}
+
+/* Force iframe to fill card */
+.social-card iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Optional: hide nonfunctional overlay buttons */
+.social-card iframe::-internal-media-controls-overlay-cast-button,
+.social-card iframe::-webkit-media-controls-enclosure {
+  display: none !important;
+}
