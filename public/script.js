@@ -809,7 +809,13 @@ function showStartupHub() {
 
 // === SOCIAL TRENDS SECTION ===
 function loadSocialTrends() {
-  const socialFeed = document.getElementById('social-feed');
+const facebookPostsGrid = document.querySelector('#facebook-posts .social-feed-grid');
+const facebookReelsGrid = document.querySelector('#facebook-reels .social-feed-grid');
+const instagramPostsGrid = document.querySelector('#instagram-posts .social-feed-grid');
+const instagramMediaGrid = document.querySelector('#instagram-media .social-feed-grid');
+const xPostsGrid = document.querySelector('#x-posts .social-feed-grid');
+const xMediaGrid = document.querySelector('#x-media .social-feed-grid');
+
   if (!socialFeed) return;
 
   socialFeed.innerHTML = `
@@ -1211,7 +1217,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // Load social trends
-      const socialFeed = document.getElementById('social-feed');
+const facebookPostsGrid = document.querySelector('#facebook-posts .social-feed-grid');
+const facebookReelsGrid = document.querySelector('#facebook-reels .social-feed-grid');
+const instagramPostsGrid = document.querySelector('#instagram-posts .social-feed-grid');
+const instagramMediaGrid = document.querySelector('#instagram-media .social-feed-grid');
+const xPostsGrid = document.querySelector('#x-posts .social-feed-grid');
+const xMediaGrid = document.querySelector('#x-media .social-feed-grid');
+
       if (socialFeed && typeof loadSocialTrends === 'function') {
         console.log("🎬 loadSocialTrends is running...");
         loadSocialTrends();
