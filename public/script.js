@@ -1158,34 +1158,28 @@ function wireStateDropdown() {
   });
 }
 
-// === DOM READY: load datasets, wire UI, and load social trends ===
 document.addEventListener('DOMContentLoaded', () => {
-  // Elements
   const officialsContainer = document.getElementById('officials-container');
   const searchBar = document.getElementById('search-bar');
+  const loadingOverlay = document.getElementById('loading-overlay');
 
-  // Officials modal refs
   const officialsModal = document.getElementById('officials-modal');
   const officialsModalContent = document.getElementById('officials-content');
   const officialsModalCloseBtn = document.getElementById('officials-close');
 
-  // Modal wiring
   if (officialsModalCloseBtn) {
     officialsModalCloseBtn.addEventListener('click', () => closeModalWindow('officials-modal'));
   }
 
-  // Core wiring
   wireSearchBar();
   wireStateDropdown();
 
-  // Helper: clear the Officials search bar
   function closeOfficialsSearch() {
     if (!searchBar) return;
     searchBar.value = '';
     searchBar.blur();
   }
 
-  // Click-outside to clear search
   document.addEventListener('mousedown', event => {
     if (!searchBar) return;
     if (event.target !== searchBar && !searchBar.contains(event.target)) {
@@ -1193,7 +1187,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // === Load officials data, then render, then load social trends ===
+  // === Load officials data with smooth fade-in ===
   Promise.all([
     fetch('/governors.json').then(res => res.json()),
     fetch('/ltgovernors.json').then(res => res.json()),
@@ -1206,10 +1200,17 @@ document.addEventListener('DOMContentLoaded', () => {
       senators = sens;
       houseReps = reps;
 
-      // Render officials for the selected state
+      // Render officials
       renderOfficials(selectedState, '');
 
-      // Only after officials are rendered, load social trends
+      // Fade out loading overlay
+      if (loadingOverlay) {
+        loadingOverlay.style.transition = 'opacity 0.5s ease';
+        loadingOverlay.style.opacity = '0';
+        setTimeout(() => loadingOverlay.remove(), 500);
+      }
+
+      // Load social trends
       const socialFeed = document.getElementById('social-feed');
       if (socialFeed && typeof loadSocialTrends === 'function') {
         console.log("🎬 loadSocialTrends is running...");
@@ -1218,5 +1219,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .catch(err => {
       console.error('Error loading official data:', err);
+      if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
     });
 });
