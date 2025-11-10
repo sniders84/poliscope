@@ -1427,3 +1427,17 @@ a, button, .tab, .card-button,
 .social-card iframe::-webkit-media-controls-enclosure {
   display: none !important;
 }
+.social-card {
+  flex: 0 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  background: #fff;
+  width: 320px; /* base width */
+}
+
+.social-card iframe {
+  width: 100%;
+  aspect-ratio: 9 / 16; /* keeps reels tall, posts will auto-letterbox */
+  border: none;
+}
