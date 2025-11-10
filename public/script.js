@@ -821,16 +821,16 @@ function loadSocialTrends() {
   let html = '<div class="scroll-row">';
 
   socialPosts.forEach(url => {
-    // Parse height and width from URL
     const params = new URL(url).searchParams;
     const height = parseInt(params.get('height')) || 0;
-    const width = parseInt(params.get('width')) || 0;
+    const width = parseInt(params.get('width')) || 1; // prevent division by 0
 
-    // Determine type based on aspect ratio
-    const type = (height / width) > 1 ? 'tall' : 'wide';
+    // Determine aspect ratio
+    const aspectRatio = height / width;
+    const type = aspectRatio > 1 ? 'tall' : 'wide';
 
     html += `
-      <div class="social-card ${type}">
+      <div class="social-card ${type}" style="--aspect-ratio:${aspectRatio}">
         <iframe 
           src="${url}" 
           allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
