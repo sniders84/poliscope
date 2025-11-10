@@ -821,48 +821,58 @@ function loadSocialTrends() {
   if (!socialFeed) return;
 
   socialFeed.innerHTML = `
-    <h3>Facebook Posts</h3>
-    <div class="social-card">
-      <h4>Gavin Newsom Facebook</h4>
-      <iframe 
-        src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4184264178567898%2F&show_text=true&width=267&t=0" 
-        width="267" height="591" style="border:none;overflow:hidden" 
-        scrolling="no" frameborder="0" allowfullscreen="true" 
-        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-      </iframe>
-    </div>
-    <div class="social-card">
-      <h4>Kathy Hochul Facebook</h4>
-      <iframe 
-        src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1608390750526549%2F&show_text=true&width=560&t=0" 
-        width="560" height="429" style="border:none;overflow:hidden" 
-        scrolling="no" frameborder="0" allowfullscreen="true" 
-        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-      </iframe>
-    </div>
-
-    <h3>Facebook Reels</h3>
-    <div class="social-card">
-      <h4>Donald Trump Facebook</h4>
-      <iframe 
-        src="https://www.facebook.com/plugins/video.php?height=315&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1252240603298809%2F&show_text=true&width=560&t=0" 
-        width="560" height="430" style="border:none;overflow:hidden" 
-        scrolling="no" frameborder="0" allowfullscreen="true" 
-        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-      </iframe>
+    <!-- Facebook Section -->
+    <div class="social-section">
+      <h3>
+        <img src="assets/facebook-logo.png" alt="Facebook" class="social-logo">
+        Facebook
+      </h3>
+      <div class="social-card">
+        <h4>Gavin Newsom</h4>
+        <iframe 
+          src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4184264178567898%2F&show_text=true&width=267&t=0" 
+          width="267" height="591" style="border:none;overflow:hidden" 
+          scrolling="no" frameborder="0" allowfullscreen="true" 
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+        </iframe>
+      </div>
+      <div class="social-card">
+        <h4>Kathy Hochul</h4>
+        <iframe 
+          src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1608390750526549%2F&show_text=true&width=560&t=0" 
+          width="560" height="429" style="border:none;overflow:hidden" 
+          scrolling="no" frameborder="0" allowfullscreen="true" 
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+        </iframe>
+      </div>
     </div>
 
-    <h3>Instagram Posts</h3>
-    <p>(No posts yet)</p>
+    <!-- Instagram Section -->
+    <div class="social-section">
+      <h3>
+        <img src="assets/instagram-logo.png" alt="Instagram" class="social-logo">
+        Instagram
+      </h3>
+      <p>(No posts yet)</p>
+    </div>
 
-    <h3>Instagram Media</h3>
-    <p>(No media yet)</p>
+    <!-- X Section -->
+    <div class="social-section">
+      <h3>
+        <img src="assets/x-logo.png" alt="X" class="social-logo">
+        X
+      </h3>
+      <p>(No posts yet)</p>
+    </div>
 
-    <h3>X Posts</h3>
-    <p>(No posts yet)</p>
-
-    <h3>X Media</h3>
-    <p>(No media yet)</p>
+    <!-- TikTok Section -->
+    <div class="social-section">
+      <h3>
+        <img src="assets/tiktok-logo.png" alt="TikTok" class="social-logo">
+        TikTok
+      </h3>
+      <p>(No posts yet)</p>
+    </div>
   `;
 
   console.log("🎬 Social trends loaded into grids");
