@@ -1,11 +1,3 @@
-// === Safe event listener helper ===
-function safeListen(selector, event, callback) {
-  const el = document.querySelector(selector);
-  if (el) {
-    el.addEventListener(event, callback);
-  }
-}
-
 // === GLOBAL STATE ===
 let selectedState = 'North Carolina';
 let governors = [];
@@ -14,6 +6,25 @@ let senators = [];
 let houseReps = [];
 let officialsContainer = null;
 let searchBar = null;
+
+// === Tab buttons / navigation ===
+const homeHubTab = document.getElementById('homehub-tab');
+if (homeHubTab) homeHubTab.addEventListener('click', showStartupHub);
+
+const officialsTab = document.getElementById('officials-tab');
+if (officialsTab) officialsTab.addEventListener('click', () => renderOfficials(selectedState, ''));
+
+const civicTab = document.getElementById('civic-tab');
+if (civicTab) civicTab.addEventListener('click', showCivic);
+
+const pollsTab = document.getElementById('polls-tab');
+if (pollsTab) pollsTab.addEventListener('click', showPolls);
+
+const organizationsTab = document.getElementById('organizations-tab');
+if (organizationsTab) organizationsTab.addEventListener('click', showOrganizations);
+
+const votingTab = document.getElementById('voting-tab');
+if (votingTab) votingTab.addEventListener('click', showVoting);
 
 // === DATA LOADING ===
 // Load all major JSON datasets at once
