@@ -1291,3 +1291,12 @@ a, button, .tab, .card-button,
   max-width: 80px;
   margin-bottom: 8px;
 }
+.scroll-row {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding: 0.5rem 0;
+}
+.scroll-row::-webkit-scrollbar {
+  height: 6px;
+}
