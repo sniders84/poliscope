@@ -1291,3 +1291,31 @@ a, button, .tab, .card-button,
   max-width: 80px;
   margin-bottom: 8px;
 }
+#trending-now {
+  margin: 40px 0;
+}
+
+.social-section {
+  margin-bottom: 32px;
+}
+
+.social-section h3 {
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.social-feed-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.social-feed-grid video,
+.social-feed-grid img {
+  width: 100%;
+  height: 200px;       /* keeps uniform size */
+  object-fit: cover;
+  border-radius: 8px;
+  background: #f0f0f0;
+}
