@@ -1196,7 +1196,8 @@ document.addEventListener('DOMContentLoaded', () => {
     .catch(err => {
       console.error('Error loading official data:', err);
     });
-  
+  console.log("✅ loadSocialTrends function:", typeof loadSocialTrends);
+
   // === Load Social Trends once the page and DOM are ready ===
 document.addEventListener('DOMContentLoaded', () => {
   const socialFeed = document.getElementById('social-feed');
