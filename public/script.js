@@ -815,43 +815,39 @@ function loadSocialTrends() {
   socialFeed.innerHTML = `
     <div class="scroll-row">
 
-      <!-- Gavin Newsom Facebook -->
-      <div class="social-card">
+      <!-- Gavin Newsom Reel (tall) -->
+      <div class="social-card tall">
         <iframe 
-          src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4184264178567898%2F&show_text=false&width=640&t=0"
-          allowfullscreen="true"
+          src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4184264178567898%2F&show_text=true"
           allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-          scrolling="no" frameborder="0">
+          scrolling="no" frameborder="0" allowfullscreen="true">
         </iframe>
       </div>
 
-      <!-- Kathy Hochul Facebook -->
-      <div class="social-card">
+      <!-- Kathy Hochul Reel (tall) -->
+      <div class="social-card tall">
         <iframe 
-          src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1608390750526549%2F&show_text=false&width=640&t=0"
-          allowfullscreen="true"
+          src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1608390750526549%2F&show_text=true"
           allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-          scrolling="no" frameborder="0">
+          scrolling="no" frameborder="0" allowfullscreen="true">
         </iframe>
       </div>
 
-      <!-- Donald Trump Facebook -->
-      <div class="social-card">
+      <!-- Donald Trump Post (wide) -->
+      <div class="social-card wide">
         <iframe 
-          src="https://www.facebook.com/plugins/video.php?height=315&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1252240603298809%2F&show_text=false&width=640&t=0"
-          allowfullscreen="true"
+          src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FDonaldTrump%2Fposts%2Fpfbid02A9WWtN28EMzA1ZqZz3LXG4f5Z3sE2cPjsDq6WBVG2G4TnBRHZMRJ6UwTxFRTjzjl&show_text=true"
           allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-          scrolling="no" frameborder="0">
+          scrolling="no" frameborder="0" allowfullscreen="true">
         </iframe>
       </div>
 
-      <!-- Chuck Schumer Facebook -->
-      <div class="social-card">
+      <!-- Chuck Schumer Post (wide) -->
+      <div class="social-card wide">
         <iframe 
-          src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F3151059001745750%2F&show_text=false&width=640&t=0"
-          allowfullscreen="true"
+          src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fchuckschumer%2Fposts%2Fpfbid02CdTqxqP2v2vXkHjGnJoZ9q1fDxuwiQv3h9pKRC3piXQkDgegeFKyMCDQcpwN7Jq9l&show_text=true"
           allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-          scrolling="no" frameborder="0">
+          scrolling="no" frameborder="0" allowfullscreen="true">
         </iframe>
       </div>
 
