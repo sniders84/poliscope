@@ -806,68 +806,27 @@ function showStartupHub() {
   // === SOCIAL TRENDS SECTION ===
 function loadSocialTrends() {
   const facebookPostsGrid = document.querySelector('#facebook-posts .social-feed-grid');
-  const facebookReelsGrid = document.querySelector('#facebook-reels .social-feed-grid');
-  const instagramPostsGrid = document.querySelector('#instagram-posts .social-feed-grid');
-  const instagramMediaGrid = document.querySelector('#instagram-media .social-feed-grid');
-  const xPostsGrid = document.querySelector('#x-posts .social-feed-grid');
-  const xMediaGrid = document.querySelector('#x-media .social-feed-grid');
 
-  if (!facebookPostsGrid || !facebookReelsGrid || !instagramPostsGrid || !instagramMediaGrid || !xPostsGrid || !xMediaGrid) {
-    console.warn("One or more social grids not found. Skipping loadSocialTrends.");
+  if (!facebookPostsGrid) {
+    console.warn("Facebook posts grid not found. Skipping social trends.");
     return;
   }
 
-  // Clear existing content (optional)
+  // Clear existing content
   facebookPostsGrid.innerHTML = '';
-  facebookReelsGrid.innerHTML = '';
-  instagramPostsGrid.innerHTML = '';
-  instagramMediaGrid.innerHTML = '';
-  xPostsGrid.innerHTML = '';
-  xMediaGrid.innerHTML = '';
 
-  // Example: append posts to the correct grids
-  // Facebook Posts
+  // Example post
   facebookPostsGrid.innerHTML = `
     <div class="social-card">
       <h3>Gavin Newsom Facebook</h3>
-      <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4184264178567898%2F&show_text=true&width=267&t=0" 
+      <iframe 
+        src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4184264178567898%2F&show_text=true&width=267&t=0" 
         width="267" height="591" style="border:none;overflow:hidden" 
         scrolling="no" frameborder="0" allowfullscreen="true" 
         allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
       </iframe>
     </div>
   `;
-
-  facebookPostsGrid.innerHTML += `
-    <div class="social-card">
-      <h3>Kathy Hochul Facebook</h3>
-      <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1608390750526549%2F&show_text=true&width=560&t=0" 
-        width="560" height="429" style="border:none;overflow:hidden" 
-        scrolling="no" frameborder="0" allowfullscreen="true" 
-        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-      </iframe>
-    </div>
-  `;
-
-  // Facebook Reels
-  facebookReelsGrid.innerHTML = `
-    <div class="social-card">
-      <h3>Donald Trump Facebook</h3>
-      <iframe src="https://www.facebook.com/plugins/video.php?height=315&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1252240603298809%2F&show_text=true&width=560&t=0" 
-        width="560" height="430" style="border:none;overflow:hidden" 
-        scrolling="no" frameborder="0" allowfullscreen="true" 
-        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-      </iframe>
-    </div>
-  `;
-
-  // Instagram, X, and other grids: leave empty for now or populate similarly
-  instagramPostsGrid.innerHTML = '';
-  instagramMediaGrid.innerHTML = '';
-  xPostsGrid.innerHTML = '';
-  xMediaGrid.innerHTML = '';
-
-  console.log("🎬 Social trends loaded into grids");
 }
 
 // === FEDERAL OFFICIALS DATA (inline) ===
