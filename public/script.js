@@ -832,57 +832,46 @@ function loadSocialTrends() {
   if (!socialFeed) return;
 
   socialFeed.innerHTML = `
-    <!-- Facebook Section -->
-    <div class="social-section">
-      <h3>
-        <img src="assets/facebook-logo.png" alt="Facebook" class="social-logo">
-        Facebook
-      </h3>
-      <div class="social-card">
-        <h4>Gavin Newsom</h4>
-        <iframe 
-          src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4184264178567898%2F&show_text=true&width=267&t=0" 
-          width="267" height="591" style="border:none;overflow:hidden" 
-          scrolling="no" frameborder="0" allowfullscreen="true" 
-          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-        </iframe>
-      </div>
-      <div class="social-card">
-        <h4>Kathy Hochul</h4>
-        <iframe 
-          src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1608390750526549%2F&show_text=true&width=560&t=0" 
-          width="560" height="429" style="border:none;overflow:hidden" 
-          scrolling="no" frameborder="0" allowfullscreen="true" 
-          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-        </iframe>
-      </div>
+    <div class="social-card">
+      <img src="assets/facebook-logo.png" alt="Facebook" class="social-logo">
+      <h3>Facebook</h3>
+      <iframe 
+        src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4184264178567898%2F&show_text=true&width=267&t=0" 
+        width="267" height="591" style="border:none;overflow:hidden" 
+        scrolling="no" frameborder="0" allowfullscreen="true" 
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+      </iframe>
     </div>
 
-    <!-- Instagram Section -->
-    <div class="social-section">
-      <h3>
-        <img src="assets/instagram-logo.png" alt="Instagram" class="social-logo">
-        Instagram
-      </h3>
-      <p>(No posts yet)</p>
+    <div class="social-card">
+      <img src="assets/instagram-logo.png" alt="Instagram" class="social-logo">
+      <h3>Instagram</h3>
+      <iframe 
+        src="https://www.instagram.com/p/CG0UU3hF5KZ/embed" 
+        width="320" height="400" style="border:none;overflow:hidden" 
+        scrolling="no" frameborder="0" allowfullscreen="true" 
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+      </iframe>
     </div>
 
-    <!-- X Section -->
-    <div class="social-section">
-      <h3>
-        <img src="assets/x-logo.png" alt="X" class="social-logo">
-        X
-      </h3>
-      <p>(No posts yet)</p>
+    <div class="social-card">
+      <img src="assets/x-logo.png" alt="X (Twitter)" class="social-logo">
+      <h3>X</h3>
+      <iframe 
+        src="https://twitframe.com/show?url=https://twitter.com/TwitterDev/status/1625679402228474880" 
+        width="320" height="400" style="border:none;overflow:hidden" 
+        scrolling="no" frameborder="0" allowfullscreen="true">
+      </iframe>
     </div>
 
-    <!-- TikTok Section -->
-    <div class="social-section">
-      <h3>
-        <img src="assets/tiktok-logo.png" alt="TikTok" class="social-logo">
-        TikTok
-      </h3>
-      <p>(No posts yet)</p>
+    <div class="social-card">
+      <img src="assets/tiktok-logo.png" alt="TikTok" class="social-logo">
+      <h3>TikTok</h3>
+      <iframe 
+        src="https://www.tiktok.com/embed/v2/7151234567890123456" 
+        width="320" height="400" style="border:none;overflow:hidden" 
+        scrolling="no" frameborder="0" allowfullscreen="true">
+      </iframe>
     </div>
   `;
 
