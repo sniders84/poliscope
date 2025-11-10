@@ -1444,3 +1444,19 @@ a, button, .tab, .card-button,
 .social-card.wide iframe {
   aspect-ratio: 4 / 3;
 }
+.social-card {
+  flex: 0 0 auto;
+  width: 340px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.social-card iframe {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 9 / 16;
+  border: none;
+}
