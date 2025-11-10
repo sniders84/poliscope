@@ -1161,19 +1161,18 @@ function wireStateDropdown() {
 // === DOM READY: load datasets and wire UI ===
 document.addEventListener('DOMContentLoaded', () => {
   // Elements
-  officialsContainer = document.getElementById('officials-container');
-  searchBar = document.getElementById('search-bar');
+  const officialsContainer = document.getElementById('officials-container');
+  const searchBar = document.getElementById('search-bar');
 
-  // Officials modal refs (match your HTML ids)
-  officialsModal = document.getElementById('officials-modal');
-  officialsModalContent = document.getElementById('officials-content');
-  officialsModalCloseBtn = document.getElementById('officials-close');
+  // Officials modal refs
+  const officialsModal = document.getElementById('officials-modal');
+  const officialsModalContent = document.getElementById('officials-content');
+  const officialsModalCloseBtn = document.getElementById('officials-close');
 
-  // Modal wiring (safe)
+  // Modal wiring
   if (officialsModalCloseBtn) {
     officialsModalCloseBtn.addEventListener('click', () => closeModalWindow('officials-modal'));
   }
-  // Avoid global window.onclick overrides here; handled per modal open.
 
   // Core wiring
   wireSearchBar();
@@ -1196,18 +1195,15 @@ document.addEventListener('DOMContentLoaded', () => {
     .catch(err => {
       console.error('Error loading official data:', err);
     });
-  console.log("✅ loadSocialTrends function:", typeof loadSocialTrends);
 
-  // === Load Social Trends once the page and DOM are ready ===
-document.addEventListener('DOMContentLoaded', () => {
+  // Load Social Trends
   const socialFeed = document.getElementById('social-feed');
   if (socialFeed) {
     console.log("🎬 loadSocialTrends is running...");
     loadSocialTrends();
   }
-});
 
-  // Helper: clear the Officials search bar (no tab switch, no re-render)
+  // Helper: clear the Officials search bar
   function closeOfficialsSearch() {
     if (!searchBar) return;
     searchBar.value = '';
