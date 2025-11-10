@@ -1385,3 +1385,7 @@ a, button, .tab, .card-button,
   border: none;
   display: block;
 }
+.social-card iframe {
+  width: 100% !important;
+  height: 100% !important;
+}
