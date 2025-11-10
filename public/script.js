@@ -807,48 +807,46 @@ function showStartupHub() {
   loadSocialTrends();
 }
 
-// === SOCIAL TRENDS SECTION ===
 function loadSocialTrends() {
   const socialFeed = document.getElementById('social-feed');
   if (!socialFeed) return;
 
-  // Clear any existing content
-  socialFeed.innerHTML = '';
+  socialFeed.innerHTML = `
+    <!-- 🌐 Social Trends Horizontal Scroll Row -->
+    <div class="scroll-row">
+      <!-- Gavin Newsom Facebook (tall vertical reel) -->
+      <div class="social-card tall">
+        <iframe 
+          src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4184264178567898%2F&show_text=true&width=267&t=0" 
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+        </iframe>
+      </div>
 
-  // List of social posts (just the iframe src)
-  const socialPosts = [
-    {
-      src: "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4184264178567898%2F&show_text=true&width=267&t=0"
-    },
-    {
-      src: "https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1608390750526549%2F&show_text=true&width=560&t=0"
-    },
-    {
-      src: "https://www.facebook.com/plugins/video.php?height=315&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1252240603298809%2F&show_text=true&width=560&t=0"
-    },
-    {
-      src: "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F3151059001745750%2F&show_text=true&width=267&t=0"
-    }
-  ];
+      <!-- Kathy Hochul Facebook (wide landscape post/video) -->
+      <div class="social-card wide">
+        <iframe 
+          src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1608390750526549%2F&show_text=true&width=560&t=0" 
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+        </iframe>
+      </div>
 
-  // Build hub cards for each post
-  socialPosts.forEach(post => {
-    const card = document.createElement('div');
-    card.className = 'hub-card'; // uses existing hover, spacing, shadows, colors
+      <!-- Donald Trump Facebook (wide landscape post/video) -->
+      <div class="social-card wide">
+        <iframe 
+          src="https://www.facebook.com/plugins/video.php?height=315&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1252240603298809%2F&show_text=true&width=560&t=0" 
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+        </iframe>
+      </div>
 
-    // Embed the iframe directly inside
-    const iframe = document.createElement('iframe');
-    iframe.src = post.src;
-    iframe.width = "100%";
-    iframe.height = "100%";
-    iframe.style.border = "none";
-    iframe.style.display = "block";
-    iframe.allow = "autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share";
-    iframe.allowFullscreen = true;
-
-    card.appendChild(iframe);
-    socialFeed.appendChild(card);
-  });
+      <!-- Chuck Schumer Facebook (tall vertical reel) -->
+      <div class="social-card tall">
+        <iframe 
+          src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F3151059001745750%2F&show_text=true&width=267&t=0" 
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+        </iframe>
+      </div>
+    </div>
+  `;
 }
 
 // === FEDERAL OFFICIALS DATA (inline) ===
