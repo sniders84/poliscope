@@ -1157,45 +1157,36 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // === Load officials data with smooth fade-in ===
-  Promise.all([
-    fetch('/governors.json').then(res => res.json()),
-    fetch('/ltgovernors.json').then(res => res.json()),
-    fetch('/senators.json').then(res => res.json()),
-    fetch('/housereps.json').then(res => res.json())
-  ])
-    .then(([govs, ltGovs, sens, reps]) => {
-      governors = govs;
-      ltGovernors = ltGovs;
-      senators = sens;
-      houseReps = reps;
+ // === Load officials data with smooth fade-in ===
+Promise.all([
+  fetch('/governors.json').then(res => res.json()),
+  fetch('/ltgovernors.json').then(res => res.json()),
+  fetch('/senators.json').then(res => res.json()),
+  fetch('/housereps.json').then(res => res.json())
+])
+  .then(([govs, ltGovs, sens, reps]) => {
+    governors = govs;
+    ltGovernors = ltGovs;
+    senators = sens;
+    houseReps = reps;
 
-      // Render officials
-      renderOfficials(selectedState, '');
+    // Render officials
+    renderOfficials(selectedState, '');
 
-      // Fade out loading overlay
-      if (loadingOverlay) {
-        loadingOverlay.style.transition = 'opacity 0.5s ease';
-        loadingOverlay.style.opacity = '0';
-        setTimeout(() => loadingOverlay.remove(), 500);
-      }
+    // Fade out loading overlay
+    if (loadingOverlay) {
+      loadingOverlay.style.transition = 'opacity 0.5s ease';
+      loadingOverlay.style.opacity = '0';
+      setTimeout(() => loadingOverlay.remove(), 500);
+    }
 
-      // Load social trends
-const facebookPostsGrid = document.querySelector('#facebook-posts .social-feed-grid');
-const facebookReelsGrid = document.querySelector('#facebook-reels .social-feed-grid');
-const instagramPostsGrid = document.querySelector('#instagram-posts .social-feed-grid');
-const instagramMediaGrid = document.querySelector('#instagram-media .social-feed-grid');
-const xPostsGrid = document.querySelector('#x-posts .social-feed-grid');
-const xMediaGrid = document.querySelector('#x-media .social-feed-grid');
-
-     // Load social trends after official data is loaded
-if (typeof loadSocialTrends === 'function') {
-  console.log("🎬 loadSocialTrends is running...");
-  loadSocialTrends();
-}
-    })
-    .catch(err => {
-      console.error('Error loading official data:', err);
-      if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
-    });
-});
+    // Load social trends after official data is loaded
+    if (typeof loadSocialTrends === 'function') {
+      console.log("🎬 loadSocialTrends is running...");
+      loadSocialTrends();
+    }
+  })
+  .catch(err => {
+    console.error('Error loading official data:', err);
+    if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
+  });
