@@ -1365,3 +1365,23 @@ a, button, .tab, .card-button,
   text-decoration: underline;
   font-size: 0.95rem;
 }
+/* Larger social post cards — full native embed look */
+.social-card {
+  flex: 0 0 auto;
+  width: 640px;           /* double the previous 320px */
+  min-height: 700px;      /* more vertical room for Facebook/Twitter embeds */
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  background: #fff;
+  overflow: hidden;
+  padding: 0;             /* remove padding so iframe touches edges */
+  box-sizing: border-box;
+}
+
+/* Embedded social clips fill the whole card */
+.social-card iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
