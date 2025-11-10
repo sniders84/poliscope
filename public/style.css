@@ -1327,35 +1327,43 @@ a, button, .tab, .card-button,
 .social-card {
   flex: 0 0 auto;
   width: 340px;               /* base width for vertical posts/reels */
-  min-height: 560px;          /* base height for vertical posts/reels */
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
   overflow: hidden;
   padding: 0;                 /* iframe touches edges */
   box-sizing: border-box;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover effect consistent with other hub cards */
+.social-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
 /* Modifiers for different aspect ratios */
 .social-card.tall {
   width: 340px;
-  height: 560px;              /* vertical reels/posts */
 }
 
 .social-card.wide {
   width: 560px;
-  height: 430px;              /* landscape posts/videos */
 }
 
 /* ---------- Embedded Iframes ---------- */
 .social-card iframe {
   display: block;
   width: 100%;
-  height: 100%;
+  height: auto;               /* height follows content naturally */
   border: none;
-  aspect-ratio: 9 / 16;       /* default vertical */
+}
+
+/* Aspect ratio hints for social posts/videos */
+.social-card.tall iframe {
+  aspect-ratio: 9 / 16;       /* vertical reels/posts */
 }
 
 .social-card.wide iframe {
-  aspect-ratio: 4 / 3;        /* landscape */
+  aspect-ratio: 4 / 3;        /* landscape posts/videos */
 }
