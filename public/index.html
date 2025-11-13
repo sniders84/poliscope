@@ -157,10 +157,12 @@
 
 <script>
 function showStartupHub() {
+  showTab('startup-hub');
   const hubContainer = document.getElementById('hub-cards');
   if (!hubContainer) return;
   hubContainer.innerHTML = '';
 
+  // Top cards that scroll to matching sections
   const hubItems = [
     { title: "National Broadcasting Networks", id: "national-networks" },
     { title: "Newspaper Media", id: "newspaper-media" },
@@ -182,7 +184,7 @@ function showStartupHub() {
   });
 }
 
-// Optional: if your tabs use a function to hide/show sections
+// Tab visibility helper
 function showTab(tabId) {
   document.querySelectorAll('.tab-content').forEach(tab => {
     tab.style.display = 'none';
