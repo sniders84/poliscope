@@ -752,6 +752,8 @@ function showOrganizations() {
     });
 }
 function showStartupHub() {
+  showTab('startup-hub'); // makes sure only the Home Hub tab is visible
+
   const hubContainer = document.getElementById('hub-cards');
   if (!hubContainer) return;
   hubContainer.innerHTML = '';
@@ -776,6 +778,7 @@ function showStartupHub() {
     hubContainer.appendChild(card);
   });
 }
+
 
 // === SOCIAL TRENDS SECTION ===
 function loadSocialTrends() {
