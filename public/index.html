@@ -123,114 +123,80 @@
     </div>
   </div>
 
-  <script>
-    function scrollToCategory(sectionId) {
-      const section = document.getElementById(sectionId);
-      if (section) {
-        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }
-  </script>
-
   <!-- Category Sections -->
-<section id="national-networks" class="category-section">
-  <h2>National Broadcasting Networks</h2>
-  <div class="card-grid">
-    <div class="info-card">
-      <div class="card-header"><h3>NBC News</h3></div>
-      <div class="card-media">
-        <iframe src="https://www.facebook.com/plugins/video.php?href=..." allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+  <section id="national-networks" class="category-section">
+    <h2>National Broadcasting Networks</h2>
+    <div class="card-grid">
+      <div class="info-card" onclick="window.open('https://www.nbcnews.com/', '_blank')">
+        <div class="card-header"><h3>NBC News</h3></div>
+        <div class="card-media">
+          <iframe src="https://www.facebook.com/plugins/video.php?href=..." allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+        </div>
+        <p class="card-desc">National TV news coverage from NBC.</p>
       </div>
-      <p class="card-desc">National TV news coverage from NBC.</p>
+      <!-- Add other network cards here -->
     </div>
-    <div class="info-card">
-      <div class="card-header"><h3>ABC News</h3></div>
-      <div class="card-media">
-        <iframe src="https://www.facebook.com/plugins/video.php?href=..." allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+  </section>
+
+  <section id="newspaper-media" class="category-section">
+    <h2>Newspaper Media</h2>
+    <div class="card-grid">
+      <div class="info-card" onclick="window.open('https://www.washingtonpost.com/', '_blank')">
+        <div class="card-header"><h3>The Washington Post</h3></div>
+        <div class="card-media">
+          <iframe src="https://www.facebook.com/plugins/video.php?href=..." allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+        </div>
+        <p class="card-desc">Top stories and political analysis from WaPo.</p>
       </div>
-      <p class="card-desc">National TV news coverage from ABC.</p>
+      <!-- Add NYT card here -->
     </div>
-  </div>
+  </section>
+
+  <section id="global-news" class="category-section">
+    <h2>Global Politics & World News</h2>
+    <div class="card-grid">
+      <div class="info-card" onclick="window.open('https://www.politico.com/', '_blank')">
+        <div class="card-header"><h3>Politico</h3></div>
+        <div class="card-media">
+          <iframe src="https://www.facebook.com/plugins/video.php?href=..." allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+        </div>
+        <p class="card-desc">Breaking global politics coverage.</p>
+      </div>
+      <!-- Add other global news cards here -->
+    </div>
+  </section>
+
+  <section id="finance-markets" class="category-section">
+    <h2>Finance & Markets</h2>
+    <div class="card-grid">
+      <!-- Finance cards go here -->
+    </div>
+  </section>
+
+  <section id="tech-innovation" class="category-section">
+    <h2>Tech & Innovation</h2>
+    <div class="card-grid">
+      <!-- Tech cards go here -->
+    </div>
+  </section>
+
+  <section id="popular-podcasts" class="category-section">
+    <h2>Popular Podcasts</h2>
+    <div class="card-grid">
+      <!-- Podcast cards go here -->
+    </div>
+  </section>
 </section>
 
-<section id="newspaper-media" class="category-section">
-  <h2>Newspaper Media</h2>
-  <div class="card-grid">
-    <div class="info-card">
-      <div class="card-header"><h3>The Washington Post</h3></div>
-      <div class="card-media">
-        <iframe src="https://www.facebook.com/plugins/video.php?href=..." allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-      </div>
-      <p class="card-desc">Top stories and political analysis from WaPo.</p>
-    </div>
-    <div class="info-card">
-      <div class="card-header"><h3>New York Times</h3></div>
-      <div class="card-media">
-        <iframe src="https://www.facebook.com/plugins/video.php?href=..." allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-      </div>
-      <p class="card-desc">Breaking news and opinion from NYT.</p>
-    </div>
-  </div>
-</section>
-
-<section id="global-news" class="category-section">
-  <h2>Global Politics & World News</h2>
-  <div class="card-grid">
-    <div class="info-card">
-      <div class="card-header"><h3>Politico</h3></div>
-      <div class="card-media">
-        <iframe src="https://www.facebook.com/plugins/video.php?href=..." allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-      </div>
-      <p class="card-desc">Breaking global politics coverage.</p>
-    </div>
-    <div class="info-card">
-      <div class="card-header"><h3>Reuters</h3></div>
-      <div class="card-media">
-        <iframe src="https://www.facebook.com/plugins/video.php?href=..." allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-      </div>
-      <p class="card-desc">Trusted international reporting and updates.</p>
-    </div>
-  </div>
-</section>
-
-<section id="finance-markets" class="category-section">
-  <h2>Finance & Markets</h2>
-  <div class="card-grid">
-    <div class="info-card">
-      <div class="card-header"><h3>Bloomberg</h3></div>
-      <div class="card-media">
-        <iframe src="https://www.facebook.com/plugins/video.php?href=..." allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-      </div>
-      <p class="card-desc">Market news and economic trends.</p>
-    </div>
-  </div>
-</section>
-
-<section id="tech-innovation" class="category-section">
-  <h2>Tech & Innovation</h2>
-  <div class="card-grid">
-    <div class="info-card">
-      <div class="card-header"><h3>The Verge</h3></div>
-      <div class="card-media">
-        <iframe src="https://www.facebook.com/plugins/video.php?href=..." allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-      </div>
-      <p class="card-desc">Latest technology news and breakthroughs.</p>
-    </div>
-  </div>
-</section>
-
-<section id="popular-podcasts" class="category-section">
-  <h2>Popular Podcasts</h2>
-  <div class="card-grid">
-    <div class="info-card">
-      <div class="card-header"><h3>The Daily</h3></div>
-      <div class="card-media">
-        <iframe src="https://www.facebook.com/plugins/video.php?href=..." allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-      </div>
-      <p class="card-desc">Top political podcast from The New York Times.</p>
-    </div>
-  </div>
-</section>
+<!-- Scroll helper -->
+<script>
+  function scrollToCategory(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+</script>
 
   <!-- 🌍 Social Trends Section (only for Home Hub) -->
   <section id="social-trends">
