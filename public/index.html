@@ -90,7 +90,7 @@
 <section id="startup-hub" class="tab-content" style="display: none;">
   <h2>Home Hub</h2>
 
- <!-- 🌐 Category Cards at Top of Home Hub -->
+<!-- 🌐 Category Cards at Top of Home Hub -->
 <div id="hub-cards" class="grid">
   <div class="hub-card" onclick="scrollToCategory('national-networks')">
     <h3>National Broadcasting Networks</h3>
@@ -122,6 +122,15 @@
     <p>Top shows across the political spectrum and commentary</p>
   </div>
 </div>
+
+<script>
+  function scrollToCategory(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+</script>
 
   <!-- 🌍 Social Trends Section (only for Home Hub) -->
   <section id="social-trends">
