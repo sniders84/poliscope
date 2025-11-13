@@ -1087,23 +1087,23 @@ function renderOfficials(stateFilter = null, query = '') {
 
     const card = document.createElement('div');
     card.className = `official-card ${normalizedParty}`;
-  card.innerHTML = `
-  <div class="party-stripe"></div>
-  <div class="card-body">
-    <div class="photo-wrapper">
-      <img src="${photoSrc}" alt="${o.name}"
-           onerror="this.onerror=null;this.src='assets/default-photo.png';" />
-    </div>
-    <div class="official-info">
-      <h3>${o.name || 'Unknown'}</h3>
-      <p><strong>Position:</strong> ${o.office || 'N/A'}</p>
-      ${districtDisplay}
-      <p><strong>State:</strong> ${o.state || 'United States'}</p>
-      <p><strong>Term:</strong> ${termDisplay}</p>
-      <p><strong>Party:</strong> ${o.party || 'N/A'}</p>
-    </div>
-  </div>
-`;
+    card.innerHTML = `
+      <div class="party-stripe"></div>
+      <div class="card-body">
+        <div class="photo-wrapper">
+          <img src="${photoSrc}" alt="${o.name}"
+               onerror="this.onerror=null;this.src='assets/default-photo.png';" />
+        </div>
+        <div class="official-info">
+          <h3>${o.name || 'Unknown'}</h3>
+          <p><strong>Position:</strong> ${o.office || 'N/A'}</p>
+          ${districtDisplay}
+          <p><strong>State:</strong> ${o.state || 'United States'}</p>
+          <p><strong>Term:</strong> ${termDisplay}</p>
+          <p><strong>Party:</strong> ${o.party || 'N/A'}</p>
+        </div>
+      </div>
+    `;
     card.addEventListener('click', () => openOfficialModal(o));
     officialsContainer.appendChild(card);
   });
@@ -1177,7 +1177,7 @@ function openOfficialModal(official) {
 
   modal.style.display = 'block';
 
-  // Click-outside-to-close (scoped handler)
+  // Click-outside-to-close
   const clickOutsideHandler = function(event) {
     if (event.target === modal) {
       modal.style.display = 'none';
@@ -1187,7 +1187,7 @@ function openOfficialModal(official) {
   window.addEventListener('click', clickOutsideHandler);
 }
 
-// Safe close function that accepts optional id (defaults to officials modal)
+// === SAFE CLOSE MODAL ===
 function closeModalWindow(id = 'officials-modal') {
   const el = document.getElementById(id);
   if (!el) {
@@ -1196,6 +1196,64 @@ function closeModalWindow(id = 'officials-modal') {
   }
   el.style.display = 'none';
 }
+
+// === OFFICIALS TAB INITIALIZATION ===
+document.addEventListener('DOMContentLoaded', () => {
+  const officialsContainer = document.getElementById('officials-container');
+  const searchBar = document.getElementById('search-bar');
+  const loadingOverlay = document.getElementById('loading-overlay');
+  const officialsModalCloseBtn = document.getElementById('officials-close');
+
+  if (officialsModalCloseBtn) {
+    officialsModalCloseBtn.addEventListener('click', () => closeModalWindow('officials-modal'));
+  }
+
+  wireSearchBar();
+  wireStateDropdown();
+
+  document.addEventListener('mousedown', event => {
+    if (!searchBar) return;
+    if (event.target !== searchBar && !searchBar.contains(event.target)) {
+      searchBar.value = '';
+      searchBar.blur();
+    }
+  });
+
+  Promise.all([
+    fetch('/governors.json').then(res => res.json()),
+    fetch('/ltgovernors.json').then(res => res.json()),
+    fetch('/senators.json').then(res => res.json()),
+    fetch('/housereps.json').then(res => res.json())
+  ])
+    .then(([govs, ltGovs, sens, reps]) => {
+      governors = govs;
+      ltGovernors = ltGovs;
+      senators = sens;
+      houseReps = reps;
+
+      if (typeof renderOfficials === 'function') {
+        renderOfficials(selectedState, '');
+      }
+
+      if (loadingOverlay) {
+        loadingOverlay.style.transition = 'opacity 0.5s ease';
+        loadingOverlay.style.opacity = '0';
+        setTimeout(() => {
+          if (loadingOverlay.parentNode) loadingOverlay.parentNode.removeChild(loadingOverlay);
+        }, 500);
+      }
+    })
+    .catch(err => {
+      console.error('Error loading official data:', err);
+      if (loadingOverlay) {
+        loadingOverlay.style.transition = 'opacity 0.5s ease';
+        loadingOverlay.style.opacity = '0';
+        setTimeout(() => {
+          if (loadingOverlay.parentNode) loadingOverlay.parentNode.removeChild(loadingOverlay);
+        }, 500);
+      }
+    });
+});
 
 // === SEARCH BAR WIRING ===
 function wireSearchBar() {
