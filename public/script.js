@@ -790,15 +790,17 @@ async function fetchRSSFeed(url) {
     const xml = parser.parseFromString(data.contents, "application/xml");
 
     const items = Array.from(xml.querySelectorAll("item")).slice(0, 5); // Top 5 stories
-    return items.map(item => ({
-      title: item.querySelector("title")?.textContent || "Untitled",
-      link: item.querySelector("link")?.textContent || "#",
-      description: item.querySelector("description")?.textContent.replace(/<[^>]+>/g, "") || "",
-      // Optional image placeholder (replace or parse actual if available)
-      image: "https://via.placeholder.com/150",
-      name: item.querySelector("title")?.textContent || "Untitled",
-      titleText: "NBC News Story"
-    }));
+    return items.map(item => {
+      const media = item.querySelector("media\\:content, enclosure");
+      const imageUrl = media ? media.getAttribute("url") : "assets/nbc.png"; // fallback to NBC logo
+
+      return {
+        title: item.querySelector("title")?.textContent || "Untitled",
+        link: item.querySelector("link")?.textContent || "#",
+        description: item.querySelector("description")?.textContent.replace(/<[^>]+>/g, "") || "",
+        image: imageUrl
+      };
+    });
   } catch (err) {
     console.error("RSS fetch failed:", err);
     return [];
@@ -808,16 +810,16 @@ async function fetchRSSFeed(url) {
 // === Step 1: Create a single NBC card ===
 function createNBCCard(cardData) {
   const card = document.createElement('div');
-  card.classList.add('official-card'); // uses your existing card styles
+  card.classList.add('official-card'); // reuse existing styling
 
   card.innerHTML = `
     <div class="card-image">
-      <img src="${cardData.image}" alt="${cardData.name}">
+      <img src="${cardData.image}" alt="${cardData.title}">
     </div>
     <div class="card-info">
-      <h3 class="card-name">${cardData.name}</h3>
-      <p class="card-title">${cardData.titleText || ""}</p>
-      <a href="${cardData.link}" target="_blank" class="card-link">Learn More</a>
+      <h3 class="card-name">${cardData.title}</h3>
+      <p class="card-description">${cardData.description}</p>
+      <a href="${cardData.link}" target="_blank" class="card-link">Read Full Story</a>
     </div>
   `;
 
@@ -830,6 +832,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (nbcCard) {
     nbcCard.addEventListener("click", async () => {
       await loadNBCNewsCarousel();
+      openCarouselModal('network-carousel');
     });
   }
 
@@ -866,7 +869,6 @@ async function loadNBCNewsCarousel() {
   // Make carousel visible
   document.getElementById("network-carousel").style.display = "block";
 }
-
 // === SOCIAL TRENDS SECTION ===
 function loadSocialTrends() {
   const socialFeed = document.getElementById('social-feed');
