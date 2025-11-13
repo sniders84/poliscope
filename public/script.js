@@ -778,6 +778,48 @@ function showStartupHub() {
     hubContainer.appendChild(card);
   });
 }
+// === LIVE NEWS FETCH: NBC News RSS ===
+
+// Function to fetch and parse RSS feeds to JSON-like structure
+async function fetchRSSFeed(url) {
+  try {
+    const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
+    const data = await response.json();
+
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(data.contents, "application/xml");
+
+    const items = Array.from(xml.querySelectorAll("item")).slice(0, 5); // Top 5 stories
+    return items.map(item => ({
+      title: item.querySelector("title")?.textContent || "Untitled",
+      link: item.querySelector("link")?.textContent || "#",
+      description: item.querySelector("description")?.textContent.replace(/<[^>]+>/g, "") || "",
+    }));
+  } catch (err) {
+    console.error("RSS fetch failed:", err);
+    return [];
+  }
+}
+
+// Function to populate NBC carousel dynamically
+async function loadNBCNewsCarousel() {
+  const feedUrl = "https://feeds.nbcnews.com/nbcnews/public/news";
+  const stories = await fetchRSSFeed(feedUrl);
+
+  const carousel = document.getElementById("carousel-content");
+  if (!carousel) return;
+
+  carousel.innerHTML = stories
+    .map(
+      story => `
+      <div class="carousel-item">
+        <h4>${story.title}</h4>
+        <p>${story.description}</p>
+        <a href="${story.link}" target="_blank" class="see-all">Read Full Story</a>
+      </div>`
+    )
+    .join("");
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   const navButtons = document.querySelectorAll('#hub-nav button');
