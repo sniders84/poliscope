@@ -779,6 +779,15 @@ function showStartupHub() {
   });
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+  const navButtons = document.querySelectorAll('#hub-nav button');
+  navButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const section = document.getElementById(btn.dataset.target);
+      if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+});
 
 // === SOCIAL TRENDS SECTION ===
 function loadSocialTrends() {
