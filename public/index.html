@@ -91,86 +91,146 @@
   <h2>Home Hub</h2>
 
   <!-- 🌐 Category Cards at Top of Home Hub -->
-  <div id="hub-cards" class="grid">
-    <div class="hub-card" onclick="scrollToCategory('national-broadcasting-networks')">
-      <h3>National Broadcasting Networks</h3>
-      <p>Major U.S. TV news outlets like NBC, ABC, CBS, FOX, and CNN</p>
-    </div>
+  <div id="hub-cards" class="grid"></div>
 
-    <div class="hub-card" onclick="scrollToCategory('newspaper-media')">
-      <h3>Newspaper Media</h3>
-      <p>Leading publications like The Washington Post and NYT</p>
-    </div>
-
-    <div class="hub-card" onclick="scrollToCategory('global-politics-world-news')">
-      <h3>Global Politics & World News</h3>
-      <p>International affairs from Politico, Reuters, and BBC</p>
-    </div>
-
-    <div class="hub-card" onclick="scrollToCategory('finance-markets')">
-      <h3>Finance & Markets</h3>
-      <p>Economic trends, business news, and stock insights</p>
-    </div>
-
-    <div class="hub-card" onclick="scrollToCategory('tech-innovation')">
-      <h3>Tech & Innovation</h3>
-      <p>Emerging tech, AI developments, and innovation coverage</p>
-    </div>
-
-    <div class="hub-card" onclick="scrollToCategory('popular-podcasts')">
-      <h3>Popular Podcasts</h3>
-      <p>Top shows across the political spectrum and commentary</p>
-    </div>
-  </div>
-
-  <!-- Category Sections -->
-  <section id="national-broadcasting-networks" class="category-section">
+  <!-- Sections -->
+  <section id="national-networks" class="category-section">
     <h2>National Broadcasting Networks</h2>
-    <!-- Cards for NBC, ABC, CBS, FOX, CNN go here -->
+    <div class="card-grid">
+      <div class="info-card">
+        <div class="card-header"><h3>NBC News</h3></div>
+        <p class="card-desc">National TV news coverage from NBC.</p>
+      </div>
+      <div class="info-card">
+        <div class="card-header"><h3>ABC News</h3></div>
+        <p class="card-desc">Coverage from ABC News.</p>
+      </div>
+      <div class="info-card">
+        <div class="card-header"><h3>CBS News</h3></div>
+        <p class="card-desc">CBS News broadcasts and updates.</p>
+      </div>
+      <div class="info-card">
+        <div class="card-header"><h3>FOX News</h3></div>
+        <p class="card-desc">Latest stories from FOX News.</p>
+      </div>
+      <div class="info-card">
+        <div class="card-header"><h3>CNN</h3></div>
+        <p class="card-desc">Breaking news and political analysis from CNN.</p>
+      </div>
+    </div>
   </section>
 
   <section id="newspaper-media" class="category-section">
     <h2>Newspaper Media</h2>
-    <!-- Cards for WaPo, NYT go here -->
+    <div class="card-grid">
+      <div class="info-card">
+        <div class="card-header"><h3>The Washington Post</h3></div>
+        <p class="card-desc">Top stories and political analysis from WaPo.</p>
+      </div>
+      <div class="info-card">
+        <div class="card-header"><h3>The New York Times</h3></div>
+        <p class="card-desc">Latest coverage from The New York Times.</p>
+      </div>
+    </div>
   </section>
 
-  <section id="global-politics-world-news" class="category-section">
+  <section id="global-news" class="category-section">
     <h2>Global Politics & World News</h2>
-    <!-- Cards for Politico, Reuters, BBC go here -->
+    <div class="card-grid">
+      <div class="info-card">
+        <div class="card-header"><h3>Politico</h3></div>
+        <p class="card-desc">Breaking global politics coverage.</p>
+      </div>
+      <div class="info-card">
+        <div class="card-header"><h3>Reuters</h3></div>
+        <p class="card-desc">Trusted reporting on international affairs.</p>
+      </div>
+      <div class="info-card">
+        <div class="card-header"><h3>BBC News</h3></div>
+        <p class="card-desc">Global headlines and analysis from BBC.</p>
+      </div>
+    </div>
   </section>
 
   <section id="finance-markets" class="category-section">
     <h2>Finance & Markets</h2>
-    <!-- Cards for Bloomberg, WSJ go here -->
+    <div class="card-grid">
+      <div class="info-card">
+        <div class="card-header"><h3>Bloomberg</h3></div>
+        <p class="card-desc">Business, markets, and finance news.</p>
+      </div>
+      <div class="info-card">
+        <div class="card-header"><h3>Wall Street Journal</h3></div>
+        <p class="card-desc">Financial reporting and stock market coverage.</p>
+      </div>
+    </div>
   </section>
 
   <section id="tech-innovation" class="category-section">
     <h2>Tech & Innovation</h2>
-    <!-- Cards for The Verge, Wired, TechCrunch go here -->
+    <div class="card-grid">
+      <div class="info-card">
+        <div class="card-header"><h3>The Verge</h3></div>
+        <p class="card-desc">Tech news, gadgets, and emerging innovations.</p>
+      </div>
+      <div class="info-card">
+        <div class="card-header"><h3>Wired</h3></div>
+        <p class="card-desc">Tech culture and innovation coverage.</p>
+      </div>
+      <div class="info-card">
+        <div class="card-header"><h3>TechCrunch</h3></div>
+        <p class="card-desc">Startups, venture capital, and tech news.</p>
+      </div>
+    </div>
   </section>
 
   <section id="popular-podcasts" class="category-section">
     <h2>Popular Podcasts</h2>
-    <!-- Cards for Pod Save America, The Daily, NPR Politics go here -->
-  </section>
-
-  <!-- 🌍 Social Trends Section (only for Home Hub) -->
-  <section id="social-trends">
-    <h2>Trending Now</h2>
-    <div id="social-feed" class="grid">
-      <!-- Embedded social posts will be injected here -->
+    <div class="card-grid">
+      <div class="info-card">
+        <div class="card-header"><h3>Pod Save America</h3></div>
+        <p class="card-desc">Political commentary from Pod Save America.</p>
+      </div>
+      <div class="info-card">
+        <div class="card-header"><h3>The Daily (NYT)</h3></div>
+        <p class="card-desc">News analysis and storytelling from The Daily.</p>
+      </div>
+      <div class="info-card">
+        <div class="card-header"><h3>NPR Politics</h3></div>
+        <p class="card-desc">Political coverage and analysis from NPR.</p>
+      </div>
     </div>
   </section>
-
-  <script>
-    function scrollToCategory(sectionId) {
-      const section = document.getElementById(sectionId);
-      if (section) {
-        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }
-  </script>
 </section>
+
+<script>
+function showStartupHub() {
+  showTab('startup-hub');
+  const hubContainer = document.getElementById('hub-cards');
+  if (!hubContainer) return;
+  hubContainer.innerHTML = '';
+
+  const hubItems = [
+    { title: "National Broadcasting Networks", id: "national-networks" },
+    { title: "Newspaper Media", id: "newspaper-media" },
+    { title: "Global Politics & World News", id: "global-news" },
+    { title: "Finance & Markets", id: "finance-markets" },
+    { title: "Tech & Innovation", id: "tech-innovation" },
+    { title: "Popular Podcasts", id: "popular-podcasts" }
+  ];
+
+  hubItems.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'hub-card';
+    card.innerHTML = `<h3>${item.title}</h3>`;
+    card.addEventListener('click', () => {
+      const section = document.getElementById(item.id);
+      if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    hubContainer.appendChild(card);
+  });
+}
+</script>
 
     <section id="my-officials" class="tab-content" style="position: relative;">
   <h2>My Officials</h2>
