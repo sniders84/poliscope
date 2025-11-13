@@ -1163,7 +1163,77 @@ function initHubNav() {
     });
   });
 }
+// --- National Networks Carousel Logic ---
+document.addEventListener('DOMContentLoaded', () => {
+  const cards = document.querySelectorAll('#national-networks .info-card');
+  const carouselContainer = document.getElementById('network-carousel');
+  const carouselContent = document.querySelector('.carousel-content');
+  const seeAllLink = document.getElementById('see-all-link');
 
+  const demoData = {
+    nbc: {
+      url: "https://www.nbcnews.com",
+      items: [
+        "NBC: Election coverage and latest updates",
+        "NBC: Supreme Court rulings and impact",
+        "NBC: Global economic shifts analysis",
+        "NBC: Investigative report on tech policies"
+      ]
+    },
+    abc: {
+      url: "https://abcnews.go.com",
+      items: [
+        "ABC: Latest headlines across the U.S.",
+        "ABC: 2024 campaign fact checks",
+        "ABC: Global conflicts timeline",
+        "ABC: Business and economy updates"
+      ]
+    },
+    cbs: {
+      url: "https://www.cbsnews.com",
+      items: [
+        "CBS: Capitol Hill roundup",
+        "CBS: International report insights",
+        "CBS: CBS Evening News summaries",
+        "CBS: Market watch and analysis"
+      ]
+    },
+    fox: {
+      url: "https://www.foxnews.com",
+      items: [
+        "FOX: Political briefings and debates",
+        "FOX: Business trends and outlook",
+        "FOX: National alerts and updates",
+        "FOX: Tech and science stories"
+      ]
+    },
+    cnn: {
+      url: "https://www.cnn.com",
+      items: [
+        "CNN: World events and perspectives",
+        "CNN: Election updates",
+        "CNN: Spotlight interviews",
+        "CNN: International news digest"
+      ]
+    }
+  };
+
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      const source = card.dataset.source;
+      const data = demoData[source];
+      if (!data) return;
+
+      carouselContent.innerHTML = data.items
+        .map(item => `<div class="carousel-item">${item}</div>`)
+        .join("");
+
+      seeAllLink.href = data.url;
+      carouselContainer.style.display = 'flex';
+      carouselContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+});
 document.addEventListener('DOMContentLoaded', () => {
   initHubNav();
 });
