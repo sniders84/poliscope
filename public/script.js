@@ -1299,10 +1299,11 @@ document.addEventListener('DOMContentLoaded', () => {
     card.addEventListener('click', () => {
       const source = card.dataset.source;
 
-     // --- NBC Live RSS Carousel ---
+    // --- NBC Live RSS Carousel ---
 if (source === 'nbc') {
   carouselContent.innerHTML = ''; // clear previous items
- https://feeds.nbcnews.com/nbcnews/public/news
+
+  const rssUrl = 'https://feeds.nbcnews.com/nbcnews/public/news';
   const corsProxy = 'https://corsproxy.io/?' + encodeURIComponent(rssUrl);
 
   fetch(corsProxy)
@@ -1338,23 +1339,20 @@ if (source === 'nbc') {
   return; // exit early since NBC is handled
 }
 
-      // --- Static demo for other networks ---
-      const data = demoData[source];
-      if (!data) return;
+// --- Static demo for other networks ---
+const data = demoData[source];
+if (!data) return;
 
-      carouselContent.innerHTML = data.items
-        .map(item => `<div class="carousel-item"><a href="${item.link}" target="_blank">${item.title}</a></div>`)
-        .join("");
+carouselContent.innerHTML = data.items
+  .map(item => `<div class="carousel-item"><a href="${item.link}" target="_blank">${item.title}</a></div>`)
+  .join("");
 
-      seeAllLink.href = data.url;
-      carouselContainer.style.display = 'flex';
+seeAllLink.href = data.url;
+carouselContainer.style.display = 'flex';
 
-      // Smooth scroll adjustment
-      const offset = carouselContainer.getBoundingClientRect().top + window.scrollY - 120;
-      window.scrollTo({ top: offset, behavior: 'smooth' });
-    });
-  });
-});
+// Smooth scroll adjustment
+const offset = carouselContainer.getBoundingClientRect().top + window.scrollY - 120;
+window.scrollTo({ top: offset, behavior: 'smooth' });
 
 // Initialize sticky hub nav
 document.addEventListener('DOMContentLoaded', () => {
