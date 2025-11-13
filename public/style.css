@@ -1381,3 +1381,55 @@ a, button, .tab, .card-button,
   gap: 12px;
   margin-top: 16px;
 }
+/* Card and carousel styling for Home Hub */
+#national-networks .info-card {
+  background: #2b2b2b;
+  border-radius: 10px;
+  padding: 15px;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+#national-networks .info-card:hover {
+  background-color: #0044cc;
+  transform: translateY(-4px);
+}
+.card-logo {
+  width: 80px;
+  height: auto;
+  margin-bottom: 10px;
+}
+.carousel-container {
+  margin-top: 20px;
+  padding: 15px;
+  background: #1f1f1f;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.carousel-content {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 10px;
+}
+.carousel-item {
+  background: #333;
+  padding: 10px;
+  border-radius: 8px;
+  min-width: 250px;
+  flex: 0 0 auto;
+  color: #fff;
+}
+.see-all-link {
+  color: #0066ff;
+  text-align: right;
+  font-weight: bold;
+  text-decoration: none;
+  display: block;
+}
+.see-all-link:hover {
+  text-decoration: underline;
+}
