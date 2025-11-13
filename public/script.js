@@ -778,29 +778,23 @@ function showStartupHub() {
     hubContainer.appendChild(card);
   });
 }
-// === LIVE NEWS FETCH: NBC News RSS ===
-
-// Function to fetch and parse RSS feeds to JSON-like structure
+// === LIVE NEWS FETCH: NBC News RSS (CORS-safe) ===
 async function fetchRSSFeed(url) {
   try {
-    const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
-    const data = await response.json();
+    const corsProxy = "https://corsproxy.io/?"+encodeURIComponent(url);
+    const response = await fetch(corsProxy);
+    const text = await response.text();
 
     const parser = new DOMParser();
-    const xml = parser.parseFromString(data.contents, "application/xml");
+    const xml = parser.parseFromString(text, "application/xml");
 
-    const items = Array.from(xml.querySelectorAll("item")).slice(0, 5); // Top 5 stories
-    return items.map(item => {
-      const media = item.querySelector("media\\:content, enclosure");
-      const imageUrl = media ? media.getAttribute("url") : "assets/nbc.png"; // fallback to NBC logo
-
-      return {
-        title: item.querySelector("title")?.textContent || "Untitled",
-        link: item.querySelector("link")?.textContent || "#",
-        description: item.querySelector("description")?.textContent.replace(/<[^>]+>/g, "") || "",
-        image: imageUrl
-      };
-    });
+    const items = Array.from(xml.querySelectorAll("item")).slice(0, 5); // top 5
+    return items.map(item => ({
+      title: item.querySelector("title")?.textContent || "Untitled",
+      link: item.querySelector("link")?.textContent || "#",
+      description: item.querySelector("description")?.textContent.replace(/<[^>]+>/g, "") || "",
+      image: "assets/nbc.png" // fallback to logo for now
+    }));
   } catch (err) {
     console.error("RSS fetch failed:", err);
     return [];
