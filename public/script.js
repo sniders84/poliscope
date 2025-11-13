@@ -1302,7 +1302,7 @@ document.addEventListener('DOMContentLoaded', () => {
      // --- NBC Live RSS Carousel ---
 if (source === 'nbc') {
   carouselContent.innerHTML = ''; // clear previous items
-  const rssUrl = 'https://www.nbcnews.com/id/3032091/device/rss/rss.xml';
+ https://feeds.nbcnews.com/nbcnews/public/news
   const corsProxy = 'https://corsproxy.io/?' + encodeURIComponent(rssUrl);
 
   fetch(corsProxy)
