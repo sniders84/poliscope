@@ -92,32 +92,32 @@
 
   <!-- 🌐 Category Cards at Top of Home Hub -->
   <div id="hub-cards" class="grid">
-    <div class="hub-card" onclick="scrollToCategory('national-networks')">
+    <div class="hub-card" data-target="national-networks">
       <h3>National Broadcasting Networks</h3>
       <p>Major U.S. TV news outlets like NBC, ABC, CBS, FOX, and CNN</p>
     </div>
 
-    <div class="hub-card" onclick="scrollToCategory('newspaper-media')">
+    <div class="hub-card" data-target="newspaper-media">
       <h3>Newspaper Media</h3>
       <p>Leading publications like The Washington Post and NYT</p>
     </div>
 
-    <div class="hub-card" onclick="scrollToCategory('global-news')">
+    <div class="hub-card" data-target="global-news">
       <h3>Global Politics & World News</h3>
       <p>International affairs from Politico, Reuters, and BBC</p>
     </div>
 
-    <div class="hub-card" onclick="scrollToCategory('finance-markets')">
+    <div class="hub-card" data-target="finance-markets">
       <h3>Finance & Markets</h3>
       <p>Economic trends, business news, and stock insights</p>
     </div>
 
-    <div class="hub-card" onclick="scrollToCategory('tech-innovation')">
+    <div class="hub-card" data-target="tech-innovation">
       <h3>Tech & Innovation</h3>
       <p>Emerging tech, AI developments, and innovation coverage</p>
     </div>
 
-    <div class="hub-card" onclick="scrollToCategory('popular-podcasts')">
+    <div class="hub-card" data-target="popular-podcasts">
       <h3>Popular Podcasts</h3>
       <p>Top shows across the political spectrum and commentary</p>
     </div>
@@ -127,7 +127,6 @@
   <section id="national-networks" class="category-section">
     <h2>National Broadcasting Networks</h2>
     <div class="card-grid">
-      <!-- NBC News -->
       <div class="info-card">
         <div class="card-header"><h3>NBC News</h3></div>
         <div class="card-media">
@@ -135,7 +134,6 @@
         </div>
         <p class="card-desc">National TV news coverage from NBC.</p>
       </div>
-      <!-- ABC News -->
       <div class="info-card">
         <div class="card-header"><h3>ABC News</h3></div>
         <div class="card-media">
@@ -143,7 +141,6 @@
         </div>
         <p class="card-desc">Coverage from ABC News.</p>
       </div>
-      <!-- CBS News -->
       <div class="info-card">
         <div class="card-header"><h3>CBS News</h3></div>
         <div class="card-media">
@@ -151,7 +148,6 @@
         </div>
         <p class="card-desc">CBS News broadcasts and updates.</p>
       </div>
-      <!-- FOX News -->
       <div class="info-card">
         <div class="card-header"><h3>FOX News</h3></div>
         <div class="card-media">
@@ -159,7 +155,6 @@
         </div>
         <p class="card-desc">Latest stories from FOX News.</p>
       </div>
-      <!-- CNN -->
       <div class="info-card">
         <div class="card-header"><h3>CNN</h3></div>
         <div class="card-media">
@@ -220,7 +215,6 @@
   <section id="finance-markets" class="category-section">
     <h2>Finance & Markets</h2>
     <div class="card-grid">
-      <!-- Bloomberg -->
       <div class="info-card">
         <div class="card-header"><h3>Bloomberg</h3></div>
         <div class="card-media">
@@ -228,7 +222,6 @@
         </div>
         <p class="card-desc">Business, markets, and finance news.</p>
       </div>
-      <!-- Wall Street Journal -->
       <div class="info-card">
         <div class="card-header"><h3>Wall Street Journal</h3></div>
         <div class="card-media">
@@ -242,7 +235,6 @@
   <section id="tech-innovation" class="category-section">
     <h2>Tech & Innovation</h2>
     <div class="card-grid">
-      <!-- The Verge -->
       <div class="info-card">
         <div class="card-header"><h3>The Verge</h3></div>
         <div class="card-media">
@@ -250,7 +242,6 @@
         </div>
         <p class="card-desc">Tech news, gadgets, and emerging innovations.</p>
       </div>
-      <!-- Wired -->
       <div class="info-card">
         <div class="card-header"><h3>Wired</h3></div>
         <div class="card-media">
@@ -258,7 +249,6 @@
         </div>
         <p class="card-desc">Tech culture and innovation coverage.</p>
       </div>
-      <!-- TechCrunch -->
       <div class="info-card">
         <div class="card-header"><h3>TechCrunch</h3></div>
         <div class="card-media">
@@ -272,37 +262,55 @@
   <section id="popular-podcasts" class="category-section">
     <h2>Popular Podcasts</h2>
     <div class="card-grid">
-      <!-- Podcasts cards go here -->
+      <div class="info-card">
+        <div class="card-header"><h3>Pod Save America</h3></div>
+        <div class="card-media">
+          <iframe src="https://www.facebook.com/plugins/video.php?href=..." allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+        </div>
+        <p class="card-desc">Political commentary from Pod Save America.</p>
+      </div>
+      <div class="info-card">
+        <div class="card-header"><h3>The Daily (NYT)</h3></div>
+        <div class="card-media">
+          <iframe src="https://www.facebook.com/plugins/video.php?href=..." allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+        </div>
+        <p class="card-desc">News analysis and storytelling from The Daily.</p>
+      </div>
+      <div class="info-card">
+        <div class="card-header"><h3>NPR Politics</h3></div>
+        <div class="card-media">
+          <iframe src="https://www.facebook.com/plugins/video.php?href=..." allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+        </div>
+        <p class="card-desc">Political coverage and analysis from NPR.</p>
+      </div>
     </div>
   </section>
 
-  <!-- 🌍 Social Trends Section (only for Home Hub) -->
+  <!-- 🌍 Social Trends Section -->
   <section id="social-trends">
     <h2>Trending Now</h2>
     <div id="social-feed" class="grid">
-      <!-- Embedded social posts will be injected here -->
+      <!-- Embedded social posts injected here -->
     </div>
   </section>
-
 </section>
 
 <script>
-  function scrollToCategory(sectionId) {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
+  // Make top cards scroll to sections
+  document.addEventListener('DOMContentLoaded', () => {
+    const hubCards = document.querySelectorAll('#hub-cards .hub-card');
+    hubCards.forEach(card => {
+      card.addEventListener('click', e => {
+        const targetId = card.getAttribute('data-target');
+        const section = document.getElementById(targetId);
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          e.preventDefault();
+        }
+      });
+    });
+  });
 </script>
-
-    <!-- 🌍 Social Trends Section (only for Home Hub) -->
-  <section id="social-trends">
-    <h2>Trending Now</h2>
-    <div id="social-feed" class="grid">
-      <!-- Embedded social posts will be injected here -->
-    </div>
-  </section>
-</section>
 
     <section id="my-officials" class="tab-content" style="position: relative;">
   <h2>My Officials</h2>
