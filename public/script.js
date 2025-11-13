@@ -1274,44 +1274,44 @@ document.addEventListener('DOMContentLoaded', () => {
     card.addEventListener('click', () => {
       const source = card.dataset.source;
 
-      // --- Live NBC RSS ---
-      if (source === 'nbc') {
-        carouselContent.innerHTML = ''; // clear previous items
-        const rssUrl = 'https://www.nbcnews.com/id/3032091/device/rss/rss.xml';
-        const corsProxy = 'https://api.allorigins.win/get?url=' + encodeURIComponent(rssUrl);
+     // --- NBC Live RSS Carousel ---
+if (source === 'nbc') {
+  carouselContent.innerHTML = ''; // clear previous items
+  const rssUrl = 'https://www.nbcnews.com/id/3032091/device/rss/rss.xml';
+  const corsProxy = 'https://corsproxy.io/?' + encodeURIComponent(rssUrl);
 
-        fetch(corsProxy)
-          .then(response => response.json())
-          .then(data => {
-            const parser = new DOMParser();
-            const xmlDoc = parser.parseFromString(data.contents, "text/xml");
-            const items = xmlDoc.querySelectorAll('item');
+  fetch(corsProxy)
+    .then(response => response.text())
+    .then(str => {
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(str, "text/xml");
+      const items = xmlDoc.querySelectorAll('item');
 
-            items.forEach((item, idx) => {
-              if (idx >= 5) return; // top 5 only
-              const title = item.querySelector('title').textContent;
-              const link = item.querySelector('link').textContent;
-              const slide = document.createElement('div');
-              slide.className = 'carousel-item';
-              slide.innerHTML = `<a href="${link}" target="_blank">${title}</a>`;
-              carouselContent.appendChild(slide);
-            });
+      items.forEach((item, idx) => {
+        if (idx >= 5) return; // top 5 only
+        const title = item.querySelector('title')?.textContent || "No title";
+        const link = item.querySelector('link')?.textContent || "#";
+        const slide = document.createElement('div');
+        slide.className = 'carousel-item';
+        slide.innerHTML = `<a href="${link}" target="_blank">${title}</a>`;
+        carouselContent.appendChild(slide);
+      });
 
-            seeAllLink.href = 'https://www.nbcnews.com/';
-            carouselContainer.style.display = 'flex';
+      seeAllLink.href = 'https://www.nbcnews.com/';
+      carouselContainer.style.display = 'flex';
 
-            // Smooth scroll adjustment
-            const offset = carouselContainer.getBoundingClientRect().top + window.scrollY - 120;
-            window.scrollTo({ top: offset, behavior: 'smooth' });
-          })
-          .catch(err => {
-            console.error("Failed to fetch NBC RSS feed:", err);
-            carouselContent.innerHTML = '<p>Failed to load live stories.</p>';
-            carouselContainer.style.display = 'flex';
-          });
+      // Smooth scroll adjustment
+      const offset = carouselContainer.getBoundingClientRect().top + window.scrollY - 120;
+      window.scrollTo({ top: offset, behavior: 'smooth' });
+    })
+    .catch(err => {
+      console.error("NBC RSS fetch failed:", err);
+      carouselContent.innerHTML = '<p>Failed to load live stories.</p>';
+      carouselContainer.style.display = 'flex';
+    });
 
-        return;
-      }
+  return; // exit early since NBC is handled
+}
 
       // --- Static demo for other networks ---
       const data = demoData[source];
