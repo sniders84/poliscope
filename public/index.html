@@ -86,119 +86,18 @@
 
   <main>
     
- <!-- Startup Hub Tab -->
+   <!-- Startup Hub Tab -->
 <section id="startup-hub" class="tab-content" style="display: none;">
   <h2>Home Hub</h2>
 
-  <!-- 🌐 Category Cards at Top of Home Hub -->
-  <div id="hub-cards" class="grid">
-    <div class="hub-card" onclick="scrollToCategory('national-networks')">
-      <h3>National Broadcasting Networks</h3>
-      <p>Major U.S. TV news outlets like NBC, ABC, CBS, FOX, and CNN</p>
-    </div>
+  <!-- Hub cards -->
+  <div id="hub-cards" class="grid"></div>
 
-    <div class="hub-card" onclick="scrollToCategory('newspaper-media')">
-      <h3>Newspaper Media</h3>
-      <p>Leading publications like The Washington Post and NYT</p>
-    </div>
-
-    <div class="hub-card" onclick="scrollToCategory('global-news')">
-      <h3>Global Politics & World News</h3>
-      <p>International affairs from Reuters, Politico, and BBC</p>
-    </div>
-
-    <div class="hub-card" onclick="scrollToCategory('finance-markets')">
-      <h3>Finance & Markets</h3>
-      <p>Economic trends, business news, and stock insights</p>
-    </div>
-
-    <div class="hub-card" onclick="scrollToCategory('tech-innovation')">
-      <h3>Tech & Innovation</h3>
-      <p>Emerging tech, AI developments, and innovation coverage</p>
-    </div>
-
-    <div class="hub-card" onclick="scrollToCategory('popular-podcasts')">
-      <h3>Popular Podcasts</h3>
-      <p>Top shows across the political spectrum and commentary</p>
-    </div>
-  </div>
-
-  <!-- 🌍 Global Politics Section -->
-  <section id="global-politics" class="category-section">
-    <h2 class="category-title">Global Politics</h2>
-
-    <div class="card-grid">
-      <!-- Politico -->
-      <div class="info-card">
-        <div class="card-header">
-          <h3>Politico</h3>
-        </div>
-        <div class="card-media">
-          <iframe
-            src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fpolitico%2Fvideos%2F10153146951263478%2F&show_text=false"
-            allowfullscreen
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-          </iframe>
-        </div>
-        <p class="card-desc">
-          Breaking stories and analysis from around the globe — politics, elections, and policy updates.
-        </p>
-      </div>
-
-      <!-- Reuters -->
-      <div class="info-card">
-        <div class="card-header">
-          <h3>Reuters</h3>
-        </div>
-        <div class="card-media">
-          <iframe
-            src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freuters%2Fvideos%2F10155338887624765%2F&show_text=false"
-            allowfullscreen
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-          </iframe>
-        </div>
-        <p class="card-desc">
-          Trusted global reporting with a focus on diplomacy, governance, and economic developments.
-        </p>
-      </div>
-
-      <!-- BBC News -->
-      <div class="info-card">
-        <div class="card-header">
-          <h3>BBC News</h3>
-        </div>
-        <div class="card-media">
-          <iframe
-            src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FBBCNews%2Fvideos%2F10153938398272217%2F&show_text=false"
-            allowfullscreen
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-          </iframe>
-        </div>
-        <p class="card-desc">
-          In-depth global political coverage, offering multiple perspectives on international events.
-        </p>
-      </div>
-
-      <!-- World Politics Review -->
-      <div class="info-card">
-        <div class="card-header">
-          <h3>World Politics Review</h3>
-        </div>
-        <div class="card-media">
-          <iframe
-            src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FWorldPoliticsReview%2Fvideos%2F10154289306159720%2F&show_text=false"
-            allowfullscreen
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-          </iframe>
-        </div>
-        <p class="card-desc">
-          Analytical takes on geopolitical trends and international leadership challenges.
-        </p>
-      </div>
-    </div>
-
-    <div class="view-more-wrapper">
-      <button class="view-more-btn">View More</button>
+  <!-- 🌍 Social Trends Section (only for Home Hub) -->
+  <section id="social-trends">
+    <h2>Trending Now</h2>
+    <div id="social-feed" class="grid">
+      <!-- Embedded social posts will be injected here -->
     </div>
   </section>
 </section>
