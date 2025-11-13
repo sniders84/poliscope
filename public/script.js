@@ -858,6 +858,12 @@ function loadSocialTrends() {
     </div>
   `;
 }
+function scrollToCategory(sectionId) {
+  const section = document.getElementById(sectionId);
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
 
 // === FEDERAL OFFICIALS DATA (inline) ===
 const federalOfficials = [
