@@ -802,56 +802,45 @@ async function fetchRSSFeed(url) {
   }
 }
 
-// === Step 1: Create a single NBC card (entirely clickable, logo on top) ===
+// === Step 1: Create a single NBC card (styled like other cards) ===
 function createNBCCard(cardData) {
   const wrapper = document.createElement('div');
   wrapper.classList.add('carousel-item');
 
-  // Wrap entire card in <a> to make it fully clickable
+  // Entire card clickable
   const cardLink = document.createElement('a');
   cardLink.href = cardData.link;
   cardLink.target = "_blank";
-  cardLink.classList.add('official-card', 'nbc-card'); // add nbc-card class for custom styling
-  cardLink.style.display = "flex";
+  cardLink.classList.add('official-card'); // reuses existing styling
   cardLink.style.flexDirection = "column"; // logo on top, headline below
   cardLink.style.textDecoration = "none";
   cardLink.style.color = "inherit";
-  cardLink.style.padding = "10px";
   cardLink.style.alignItems = "center";
-  cardLink.style.justifyContent = "flex-start";
-  cardLink.style.width = "180px";
-  cardLink.style.minHeight = "180px";
+  cardLink.style.padding = "10px";
+  cardLink.style.maxWidth = "220px"; // card width
+  cardLink.style.background = "#2a2a2a"; // dark gray background
+  cardLink.style.border = "1px solid #1e1e1e";
+  cardLink.style.borderRadius = "10px";
+  cardLink.style.boxShadow = "0 3px 8px rgba(0,0,0,0.15)";
+  cardLink.style.transition = "transform 0.2s";
+
+  cardLink.onmouseover = () => cardLink.style.transform = "scale(1.03)";
+  cardLink.onmouseout = () => cardLink.style.transform = "scale(1)";
 
   cardLink.innerHTML = `
-    <img src="${cardData.image}" alt="${cardData.title}" style="width:80px; height:80px; object-fit:contain; margin-bottom:8px;" />
-    <h3 style="font-size:14px; font-weight:600; text-align:center; line-height:1.3;">${cardData.title}</h3>
+    <div class="card-image" style="width:100px; height:100px; margin-bottom:10px;">
+      <img src="${cardData.image}" alt="${cardData.title}" style="width:100%; height:100%; object-fit:contain;" />
+    </div>
+    <div class="card-info" style="text-align:center;">
+      <h3 class="card-name" style="font-size:1rem; margin:0 0 5px 0;">${cardData.title}</h3>
+    </div>
   `;
 
   wrapper.appendChild(cardLink);
   return wrapper;
 }
 
-// Attach NBC click handler to load carousel dynamically
-document.addEventListener("DOMContentLoaded", () => {
-  const nbcCard = document.getElementById("nbc-card");
-  if (nbcCard) {
-    nbcCard.addEventListener("click", async () => {
-      await loadNBCNewsCarousel();
-      openCarouselModal('network-carousel'); // call your modal logic
-    });
-  }
-
-  // Hub nav scroll logic
-  const navButtons = document.querySelectorAll('#hub-nav button');
-  navButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const section = document.getElementById(btn.dataset.target);
-      if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  });
-});
-
-// === Step 2: Populate NBC carousel dynamically ===
+// === Step 2: Populate NBC carousel dynamically (no duplicates) ===
 async function loadNBCNewsCarousel() {
   const feedUrl = "https://feeds.nbcnews.com/nbcnews/public/news";
   const stories = await fetchRSSFeed(feedUrl);
@@ -863,27 +852,15 @@ async function loadNBCNewsCarousel() {
   carousel.innerHTML = "";
 
   // Add cards to carousel
-  stories.slice(0, 5).forEach(story => {
-    // Attempt to extract image from description; fallback to NBC logo
-    let imgSrc = "assets/nbc.png";
-    const imgMatch = story.description.match(/<img.*?src=["'](.*?)["']/);
-    if (imgMatch && imgMatch[1]) {
-      imgSrc = imgMatch[1];
-    }
-
-    const card = createNBCCard({
-      title: story.title,
-      link: story.link,
-      image: imgSrc,
-      description: story.description.replace(/<[^>]+>/g, "") // strip HTML
-    });
-
+  stories.forEach(story => {
+    const card = createNBCCard(story);
     carousel.appendChild(card);
   });
 
-  // Make carousel visible
-  document.getElementById("network-carousel").style.display = "block";
+  // Show the carousel
+  document.getElementById("network-carousel").style.display = "flex";
 }
+
 // === SOCIAL TRENDS SECTION ===
 function loadSocialTrends() {
   const socialFeed = document.getElementById('social-feed');
