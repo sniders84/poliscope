@@ -868,8 +868,21 @@ async function loadNBCNewsCarousel() {
   carousel.innerHTML = "";
 
   // Add cards to carousel
-  stories.forEach(story => {
-    const card = createNBCCard(story); // already includes wrapper
+  stories.slice(0, 5).forEach(story => {
+    // Attempt to extract image from description; fallback to NBC logo
+    let imgSrc = "assets/nbc.png";
+    const imgMatch = story.description.match(/<img.*?src=["'](.*?)["']/);
+    if (imgMatch && imgMatch[1]) {
+      imgSrc = imgMatch[1];
+    }
+
+    const card = createNBCCard({
+      title: story.title,
+      link: story.link,
+      image: imgSrc,
+      description: story.description.replace(/<[^>]+>/g, "") // strip HTML
+    });
+
     carousel.appendChild(card);
   });
 
