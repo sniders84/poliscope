@@ -801,6 +801,17 @@ async function fetchRSSFeed(url) {
   }
 }
 
+// Attach NBC click handler to load carousel dynamically
+document.addEventListener("DOMContentLoaded", () => {
+  const nbcCard = document.getElementById("nbc-card");
+  if (nbcCard) {
+    nbcCard.addEventListener("click", async () => {
+      await loadNBCNewsCarousel();
+      openCarouselModal(); // assumes your modal logic function
+    });
+  }
+});
+
 // Function to populate NBC carousel dynamically
 async function loadNBCNewsCarousel() {
   const feedUrl = "https://feeds.nbcnews.com/nbcnews/public/news";
