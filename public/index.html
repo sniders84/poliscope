@@ -90,129 +90,87 @@
 <section id="startup-hub" class="tab-content" style="display: none;">
   <h2>Home Hub</h2>
 
- <!-- 🌐 Category Cards at Top of Home Hub -->
-<div id="hub-cards" class="grid">
-  <div class="hub-card" onclick="scrollToCategory('national-broadcasting-networks')">
-    <h3>National Broadcasting Networks</h3>
-    <p>Major U.S. TV news outlets like NBC, ABC, CBS, FOX, and CNN</p>
+  <!-- 🌐 Category Cards at Top of Home Hub -->
+  <div id="hub-cards" class="grid">
+    <div class="hub-card" onclick="scrollToCategory('national-broadcasting-networks')">
+      <h3>National Broadcasting Networks</h3>
+      <p>Major U.S. TV news outlets like NBC, ABC, CBS, FOX, and CNN</p>
+    </div>
+
+    <div class="hub-card" onclick="scrollToCategory('newspaper-media')">
+      <h3>Newspaper Media</h3>
+      <p>Leading publications like The Washington Post and NYT</p>
+    </div>
+
+    <div class="hub-card" onclick="scrollToCategory('global-politics-world-news')">
+      <h3>Global Politics & World News</h3>
+      <p>International affairs from Politico, Reuters, and BBC</p>
+    </div>
+
+    <div class="hub-card" onclick="scrollToCategory('finance-markets')">
+      <h3>Finance & Markets</h3>
+      <p>Economic trends, business news, and stock insights</p>
+    </div>
+
+    <div class="hub-card" onclick="scrollToCategory('tech-innovation')">
+      <h3>Tech & Innovation</h3>
+      <p>Emerging tech, AI developments, and innovation coverage</p>
+    </div>
+
+    <div class="hub-card" onclick="scrollToCategory('popular-podcasts')">
+      <h3>Popular Podcasts</h3>
+      <p>Top shows across the political spectrum and commentary</p>
+    </div>
   </div>
 
-  <div class="hub-card" onclick="scrollToCategory('newspaper-media')">
-    <h3>Newspaper Media</h3>
-    <p>Leading publications like The Washington Post and NYT</p>
-  </div>
-
-  <div class="hub-card" onclick="scrollToCategory('global-politics-world-news')">
-    <h3>Global Politics & World News</h3>
-    <p>International affairs from Politico, Reuters, and BBC</p>
-  </div>
-
-  <div class="hub-card" onclick="scrollToCategory('finance-markets')">
-    <h3>Finance & Markets</h3>
-    <p>Economic trends, business news, and stock insights</p>
-  </div>
-
-  <div class="hub-card" onclick="scrollToCategory('tech-innovation')">
-    <h3>Tech & Innovation</h3>
-    <p>Emerging tech, AI developments, and innovation coverage</p>
-  </div>
-
-  <div class="hub-card" onclick="scrollToCategory('popular-podcasts')">
-    <h3>Popular Podcasts</h3>
-    <p>Top shows across the political spectrum and commentary</p>
-  </div>
-</div>
-
-<script>
-function scrollToCategory(sectionId) {
-  const section = document.getElementById(sectionId);
-  if (section) {
-    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-}
-</script>
-
-  <!-- 🌍 Category Sections -->
+  <!-- Category Sections -->
   <section id="national-broadcasting-networks" class="category-section">
     <h2>National Broadcasting Networks</h2>
-    <div class="card-grid">
-      <!-- NBC, ABC, CBS, FOX, CNN cards go here -->
-    </div>
+    <!-- Cards for NBC, ABC, CBS, FOX, CNN go here -->
   </section>
 
   <section id="newspaper-media" class="category-section">
     <h2>Newspaper Media</h2>
-    <div class="card-grid">
-      <!-- Washington Post, NYT cards go here -->
-    </div>
+    <!-- Cards for WaPo, NYT go here -->
   </section>
 
   <section id="global-politics-world-news" class="category-section">
     <h2>Global Politics & World News</h2>
-    <div class="card-grid">
-      <!-- Politico, Reuters, BBC cards go here -->
-    </div>
+    <!-- Cards for Politico, Reuters, BBC go here -->
   </section>
 
   <section id="finance-markets" class="category-section">
     <h2>Finance & Markets</h2>
-    <div class="card-grid">
-      <!-- Bloomberg, WSJ cards go here -->
-    </div>
+    <!-- Cards for Bloomberg, WSJ go here -->
   </section>
 
   <section id="tech-innovation" class="category-section">
     <h2>Tech & Innovation</h2>
-    <div class="card-grid">
-      <!-- The Verge, Wired, TechCrunch cards go here -->
-    </div>
+    <!-- Cards for The Verge, Wired, TechCrunch go here -->
   </section>
 
   <section id="popular-podcasts" class="category-section">
     <h2>Popular Podcasts</h2>
-    <div class="card-grid">
-      <!-- Pod Save America, The Daily, NPR Politics cards go here -->
+    <!-- Cards for Pod Save America, The Daily, NPR Politics go here -->
+  </section>
+
+  <!-- 🌍 Social Trends Section (only for Home Hub) -->
+  <section id="social-trends">
+    <h2>Trending Now</h2>
+    <div id="social-feed" class="grid">
+      <!-- Embedded social posts will be injected here -->
     </div>
   </section>
 
-  <!-- 🌍 Social Trends Section -->
-  <section id="social-trends">
-    <h2>Trending Now</h2>
-    <div id="social-feed" class="grid"></div>
-  </section>
-</section>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const hubCards = document.querySelectorAll('#hub-cards .hub-card');
-  hubCards.forEach(card => {
-    card.addEventListener('click', e => {
-      const targetId = card.getAttribute('data-target');
-      const section = document.getElementById(targetId);
+  <script>
+    function scrollToCategory(sectionId) {
+      const section = document.getElementById(sectionId);
       if (section) {
         section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        e.preventDefault();
       }
-    });
-  });
-});
-</script>
-
-  // Make top cards scroll to sections
-  document.addEventListener('DOMContentLoaded', () => {
-    const hubCards = document.querySelectorAll('#hub-cards .hub-card');
-    hubCards.forEach(card => {
-      card.addEventListener('click', e => {
-        const targetId = card.getAttribute('data-target');
-        const section = document.getElementById(targetId);
-        if (section) {
-          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          e.preventDefault();
-        }
-      });
-    });
-  });
-</script>
+    }
+  </script>
+</section>
 
     <section id="my-officials" class="tab-content" style="position: relative;">
   <h2>My Officials</h2>
