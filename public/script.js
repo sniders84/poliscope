@@ -794,11 +794,34 @@ async function fetchRSSFeed(url) {
       title: item.querySelector("title")?.textContent || "Untitled",
       link: item.querySelector("link")?.textContent || "#",
       description: item.querySelector("description")?.textContent.replace(/<[^>]+>/g, "") || "",
+      // Optional image placeholder (replace or parse actual if available)
+      image: "https://via.placeholder.com/150",
+      name: item.querySelector("title")?.textContent || "Untitled",
+      titleText: "NBC News Story"
     }));
   } catch (err) {
     console.error("RSS fetch failed:", err);
     return [];
   }
+}
+
+// === Step 1: Create a single NBC card ===
+function createNBCCard(cardData) {
+  const card = document.createElement('div');
+  card.classList.add('official-card'); // uses your existing card styles
+
+  card.innerHTML = `
+    <div class="card-image">
+      <img src="${cardData.image}" alt="${cardData.name}">
+    </div>
+    <div class="card-info">
+      <h3 class="card-name">${cardData.name}</h3>
+      <p class="card-title">${cardData.titleText || ""}</p>
+      <a href="${cardData.link}" target="_blank" class="card-link">Learn More</a>
+    </div>
+  `;
+
+  return card;
 }
 
 // Attach NBC click handler to load carousel dynamically
@@ -810,29 +833,8 @@ document.addEventListener("DOMContentLoaded", () => {
       openCarouselModal(); // assumes your modal logic function
     });
   }
-});
 
-// Function to populate NBC carousel dynamically
-async function loadNBCNewsCarousel() {
-  const feedUrl = "https://feeds.nbcnews.com/nbcnews/public/news";
-  const stories = await fetchRSSFeed(feedUrl);
-
-  const carousel = document.getElementById("carousel-content");
-  if (!carousel) return;
-
-  carousel.innerHTML = stories
-    .map(
-      story => `
-      <div class="carousel-item">
-        <h4>${story.title}</h4>
-        <p>${story.description}</p>
-        <a href="${story.link}" target="_blank" class="see-all">Read Full Story</a>
-      </div>`
-    )
-    .join("");
-}
-
-document.addEventListener('DOMContentLoaded', () => {
+  // Hub nav scroll logic
   const navButtons = document.querySelectorAll('#hub-nav button');
   navButtons.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -842,6 +844,29 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// === Step 2: Populate NBC carousel dynamically ===
+async function loadNBCNewsCarousel() {
+  const feedUrl = "https://feeds.nbcnews.com/nbcnews/public/news";
+  const stories = await fetchRSSFeed(feedUrl);
+
+  const carousel = document.querySelector("#network-carousel .carousel-content");
+  if (!carousel) return;
+
+  // Clear existing content
+  carousel.innerHTML = "";
+
+  // Add cards to carousel
+  stories.forEach(story => {
+    const card = createNBCCard(story);
+    const wrapper = document.createElement("div");
+    wrapper.classList.add("carousel-item");
+    wrapper.appendChild(card);
+    carousel.appendChild(wrapper);
+  });
+
+  // Make carousel visible
+  document.getElementById("network-carousel").style.display = "block";
+}
 // === SOCIAL TRENDS SECTION ===
 function loadSocialTrends() {
   const socialFeed = document.getElementById('social-feed');
