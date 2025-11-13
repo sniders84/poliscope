@@ -100,12 +100,12 @@
     <button type="button" data-target="popular-podcasts">Popular Podcasts</button>
   </div>
 
-  <!-- Sections -->
 <!-- National Broadcasting Networks -->
 <section id="national-networks" class="category-section">
   <h2>National Broadcasting Networks</h2>
+  
   <div class="card-grid">
-    <!-- NBC Card (will be replaced by RSS feed carousel) -->
+    <!-- NBC Card (will be replaced dynamically with RSS feed) -->
     <div class="info-card" id="nbc-card" data-source="nbc">
       <img src="assets/logos/nbc.png" alt="NBC News Logo" class="card-logo" />
       <h3>NBC News</h3>
@@ -118,16 +118,19 @@
       <h3>ABC News</h3>
       <p>Coverage from ABC News.</p>
     </div>
+
     <div class="info-card" data-source="cbs">
       <img src="assets/logos/cbs.png" alt="CBS News Logo" class="card-logo" />
       <h3>CBS News</h3>
       <p>CBS News broadcasts and updates.</p>
     </div>
+
     <div class="info-card" data-source="fox">
       <img src="assets/logos/fox.png" alt="Fox News Logo" class="card-logo" />
       <h3>FOX News</h3>
       <p>Latest stories from FOX News.</p>
     </div>
+
     <div class="info-card" data-source="cnn">
       <img src="assets/logos/cnn.png" alt="CNN Logo" class="card-logo" />
       <h3>CNN</h3>
@@ -135,11 +138,9 @@
     </div>
   </div>
 
-  <!-- Carousel for NBC RSS feed -->
+  <!-- Inline Carousel Container (for NBC only, hidden initially) -->
   <div id="network-carousel" class="carousel-container" style="display: none;">
-    <div class="carousel-content">
-      <!-- JS will populate feed items here -->
-    </div>
+    <div class="carousel-content"></div>
     <a href="#" id="see-all-link" target="_blank" class="see-all-link">See All →</a>
   </div>
 </section>
