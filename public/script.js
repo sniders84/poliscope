@@ -779,9 +779,10 @@ function showStartupHub() {
   });
 }
 // === LIVE NEWS FETCH: NBC News RSS (CORS-safe) ===
+// === LIVE NEWS FETCH: NBC News RSS (CORS-safe) ===
 async function fetchRSSFeed(url) {
   try {
-    const corsProxy = "https://corsproxy.io/?"+encodeURIComponent(url);
+    const corsProxy = "https://corsproxy.io/?" + encodeURIComponent(url);
     const response = await fetch(corsProxy);
     const text = await response.text();
 
