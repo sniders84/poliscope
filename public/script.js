@@ -308,6 +308,16 @@ function renderCabinetMember(member) {
   `;
 }
 
+// === HELPER: scroll to category section smoothly ===
+function scrollToCategory(categoryId) {
+  const section = document.getElementById(categoryId);
+  if (section) {
+    section.scrollIntoView({ behavior: "smooth", block: "start" });
+  } else {
+    console.warn("Category section not found:", categoryId);
+  }
+}
+
 // === RENDER: populate the Cabinet grid ===
 function renderCabinetGrid(cabinetData) {
   const container = document.getElementById('cabinetList');
