@@ -807,7 +807,7 @@ async function fetchRSSFeed(url) {
   }
 }
 
-// === Step 1: Create a single NBC card (entirely clickable) ===
+// === Step 1: Create a single NBC card (entirely clickable, logo on top) ===
 function createNBCCard(cardData) {
   const wrapper = document.createElement('div');
   wrapper.classList.add('carousel-item');
@@ -816,22 +816,20 @@ function createNBCCard(cardData) {
   const cardLink = document.createElement('a');
   cardLink.href = cardData.link;
   cardLink.target = "_blank";
-  cardLink.classList.add('official-card'); // reuse existing card styles
-  cardLink.style.display = "flex";          // flex container
-  cardLink.style.flexDirection = "row";     // image left, text right
-  cardLink.style.textDecoration = "none";   // remove underline
-  cardLink.style.color = "inherit";         // maintain text color
-  cardLink.style.padding = "10px";          // optional padding
-  cardLink.style.gap = "12px";              // spacing between image and text
+  cardLink.classList.add('official-card', 'nbc-card'); // add nbc-card class for custom styling
+  cardLink.style.display = "flex";
+  cardLink.style.flexDirection = "column"; // logo on top, headline below
+  cardLink.style.textDecoration = "none";
+  cardLink.style.color = "inherit";
+  cardLink.style.padding = "10px";
+  cardLink.style.alignItems = "center";
+  cardLink.style.justifyContent = "flex-start";
+  cardLink.style.width = "180px";
+  cardLink.style.minHeight = "180px";
 
   cardLink.innerHTML = `
-    <div class="card-image" style="flex-shrink:0; max-width:150px;">
-      <img src="${cardData.image}" alt="${cardData.title}" style="width:100%; height:auto; object-fit:cover;" />
-    </div>
-    <div class="card-info" style="flex:1;">
-      <h3 class="card-name" style="margin:0 0 4px 0; font-size:1rem;">${cardData.title}</h3>
-      <p class="card-description" style="margin:0; font-size:0.875rem; line-height:1.2;">${cardData.description}</p>
-    </div>
+    <img src="${cardData.image}" alt="${cardData.title}" style="width:80px; height:80px; object-fit:contain; margin-bottom:8px;" />
+    <h3 style="font-size:14px; font-weight:600; text-align:center; line-height:1.3;">${cardData.title}</h3>
   `;
 
   wrapper.appendChild(cardLink);
