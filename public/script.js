@@ -1199,10 +1199,12 @@ function closeModalWindow(id = 'officials-modal') {
 
 // === OFFICIALS TAB INITIALIZATION ===
 document.addEventListener('DOMContentLoaded', () => {
-  const officialsContainer = document.getElementById('officials-container');
-  const searchBar = document.getElementById('search-bar');
+  officialsContainer = document.getElementById('officials-container');
+  searchBar = document.getElementById('search-bar');
   const loadingOverlay = document.getElementById('loading-overlay');
-  const officialsModalCloseBtn = document.getElementById('officials-close');
+  officialsModal = document.getElementById('officials-modal');
+  officialsModalContent = document.getElementById('officials-content');
+  officialsModalCloseBtn = document.getElementById('officials-close');
 
   if (officialsModalCloseBtn) {
     officialsModalCloseBtn.addEventListener('click', () => closeModalWindow('officials-modal'));
@@ -1211,6 +1213,7 @@ document.addEventListener('DOMContentLoaded', () => {
   wireSearchBar();
   wireStateDropdown();
 
+  // === CLOSE SEARCH BAR WHEN CLICKING OUTSIDE ===
   document.addEventListener('mousedown', event => {
     if (!searchBar) return;
     if (event.target !== searchBar && !searchBar.contains(event.target)) {
@@ -1219,6 +1222,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // === LOAD OFFICIAL DATASETS ===
   Promise.all([
     fetch('/governors.json').then(res => res.json()),
     fetch('/ltgovernors.json').then(res => res.json()),
@@ -1238,22 +1242,29 @@ document.addEventListener('DOMContentLoaded', () => {
       if (loadingOverlay) {
         loadingOverlay.style.transition = 'opacity 0.5s ease';
         loadingOverlay.style.opacity = '0';
-        setTimeout(() => {
-          if (loadingOverlay.parentNode) loadingOverlay.parentNode.removeChild(loadingOverlay);
-        }, 500);
+        setTimeout(() => loadingOverlay.remove(), 500);
       }
     })
     .catch(err => {
       console.error('Error loading official data:', err);
       if (loadingOverlay) {
-        loadingOverlay.style.transition = 'opacity 0.5s ease';
-        loadingOverlay.style.opacity = '0';
-        setTimeout(() => {
-          if (loadingOverlay.parentNode) loadingOverlay.parentNode.removeChild(loadingOverlay);
-        }, 500);
+        loadingOverlay.textContent = 'Failed to load data.';
       }
     });
 });
+
+// === STATE DROPDOWN WIRING ===
+function wireStateDropdown() {
+  const dropdown = document.getElementById('state-dropdown');
+  if (!dropdown) return;
+
+  dropdown.value = selectedState;
+
+  dropdown.addEventListener('change', () => {
+    selectedState = dropdown.value;
+    renderOfficials(selectedState, '');
+  });
+}
 
 // === SEARCH BAR WIRING ===
 function wireSearchBar() {
@@ -1267,13 +1278,13 @@ function wireSearchBar() {
     renderOfficials(null, query);
   });
 }
-// ==== HOME HUB NAV ====
 
+// ==== HOME HUB NAV ====
 function showStartupHub() {
   showTab('startup-hub');
 }
 
-// Initialize sticky nav
+// === STICKY HUB NAV INITIALIZATION ===
 function initHubNav() {
   const navButtons = document.querySelectorAll('#hub-nav button');
 
@@ -1284,13 +1295,12 @@ function initHubNav() {
     });
   });
 
-  // Optional: highlight active section on scroll
   const sections = Array.from(navButtons).map(btn =>
     document.getElementById(btn.dataset.target)
   );
 
   window.addEventListener('scroll', () => {
-    const scrollPos = window.scrollY + 60; // adjust for sticky nav height
+    const scrollPos = window.scrollY + 60;
     sections.forEach((sec, idx) => {
       if (sec.offsetTop <= scrollPos && sec.offsetTop + sec.offsetHeight > scrollPos) {
         navButtons.forEach(b => b.classList.remove('active'));
@@ -1299,6 +1309,7 @@ function initHubNav() {
     });
   });
 }
+
 // --- National Networks Carousel Logic ---
 document.addEventListener('DOMContentLoaded', () => {
   const cards = document.querySelectorAll('#national-networks .info-card');
