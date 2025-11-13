@@ -807,23 +807,35 @@ async function fetchRSSFeed(url) {
   }
 }
 
-// === Step 1: Create a single NBC card ===
+// === Step 1: Create a single NBC card (entirely clickable) ===
 function createNBCCard(cardData) {
-  const card = document.createElement('div');
-  card.classList.add('official-card'); // reuse existing styling
+  const wrapper = document.createElement('div');
+  wrapper.classList.add('carousel-item');
 
-  card.innerHTML = `
-    <div class="card-image">
-      <img src="${cardData.image}" alt="${cardData.title}">
+  // Wrap entire card in <a> to make it fully clickable
+  const cardLink = document.createElement('a');
+  cardLink.href = cardData.link;
+  cardLink.target = "_blank";
+  cardLink.classList.add('official-card'); // reuse existing card styles
+  cardLink.style.display = "flex";          // flex container
+  cardLink.style.flexDirection = "row";     // image left, text right
+  cardLink.style.textDecoration = "none";   // remove underline
+  cardLink.style.color = "inherit";         // maintain text color
+  cardLink.style.padding = "10px";          // optional padding
+  cardLink.style.gap = "12px";              // spacing between image and text
+
+  cardLink.innerHTML = `
+    <div class="card-image" style="flex-shrink:0; max-width:150px;">
+      <img src="${cardData.image}" alt="${cardData.title}" style="width:100%; height:auto; object-fit:cover;" />
     </div>
-    <div class="card-info">
-      <h3 class="card-name">${cardData.title}</h3>
-      <p class="card-description">${cardData.description}</p>
-      <a href="${cardData.link}" target="_blank" class="card-link">Read Full Story</a>
+    <div class="card-info" style="flex:1;">
+      <h3 class="card-name" style="margin:0 0 4px 0; font-size:1rem;">${cardData.title}</h3>
+      <p class="card-description" style="margin:0; font-size:0.875rem; line-height:1.2;">${cardData.description}</p>
     </div>
   `;
 
-  return card;
+  wrapper.appendChild(cardLink);
+  return wrapper;
 }
 
 // Attach NBC click handler to load carousel dynamically
@@ -832,7 +844,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (nbcCard) {
     nbcCard.addEventListener("click", async () => {
       await loadNBCNewsCarousel();
-      openCarouselModal('network-carousel');
+      openCarouselModal('network-carousel'); // call your modal logic
     });
   }
 
@@ -854,16 +866,13 @@ async function loadNBCNewsCarousel() {
   const carousel = document.querySelector("#network-carousel .carousel-content");
   if (!carousel) return;
 
-  // Clear existing content
+  // Clear existing content to prevent duplicates
   carousel.innerHTML = "";
 
   // Add cards to carousel
   stories.forEach(story => {
-    const card = createNBCCard(story);
-    const wrapper = document.createElement("div");
-    wrapper.classList.add("carousel-item");
-    wrapper.appendChild(card);
-    carousel.appendChild(wrapper);
+    const card = createNBCCard(story); // already includes wrapper
+    carousel.appendChild(card);
   });
 
   // Make carousel visible
