@@ -752,12 +752,10 @@ function showOrganizations() {
     });
 }
 function showStartupHub() {
-  showTab('startup-hub');
   const hubContainer = document.getElementById('hub-cards');
   if (!hubContainer) return;
   hubContainer.innerHTML = '';
 
-  // Hub cards linked to sections
   const hubItems = [
     { title: "National Broadcasting Networks", id: "national-networks" },
     { title: "Newspaper Media", id: "newspaper-media" },
@@ -767,25 +765,16 @@ function showStartupHub() {
     { title: "Popular Podcasts", id: "popular-podcasts" }
   ];
 
-  // Build Hub Cards
   hubItems.forEach(item => {
     const card = document.createElement('div');
     card.className = 'hub-card';
-    card.innerHTML = `
-      <h3>${item.title}</h3>
-    `;
+    card.innerHTML = `<h3>${item.title}</h3>`;
     card.addEventListener('click', () => {
       const section = document.getElementById(item.id);
-      if (section) {
-        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
     hubContainer.appendChild(card);
   });
-}
-
-  // Load social trends after hub cards render
-  loadSocialTrends();
 }
 
 // === SOCIAL TRENDS SECTION ===
