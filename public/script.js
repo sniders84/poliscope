@@ -830,7 +830,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (nbcCard) {
     nbcCard.addEventListener("click", async () => {
       await loadNBCNewsCarousel();
-      openCarouselModal(); // assumes your modal logic function
     });
   }
 
@@ -867,6 +866,7 @@ async function loadNBCNewsCarousel() {
   // Make carousel visible
   document.getElementById("network-carousel").style.display = "block";
 }
+
 // === SOCIAL TRENDS SECTION ===
 function loadSocialTrends() {
   const socialFeed = document.getElementById('social-feed');
