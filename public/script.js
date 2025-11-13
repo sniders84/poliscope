@@ -754,54 +754,35 @@ function showOrganizations() {
 function showStartupHub() {
   showTab('startup-hub');
   const hubContainer = document.getElementById('hub-cards');
+  if (!hubContainer) return;
   hubContainer.innerHTML = '';
 
-  // Example card data - live placeholder images
+  // Hub cards linked to sections
   const hubItems = [
-    {
-      title: "Global Politics",
-      desc: "Up-to-the-minute world political news",
-      img: "../assets/news-politics.jpg",
-      url: "https://www.politico.com/"
-    },
-    {
-      title: "Finance & Markets",
-      desc: "Stock market updates, economy, and finance news",
-      img: "../assets/news-finance.jpg",
-      url: "https://www.bloomberg.com/"
-    },
-    {
-      title: "Tech & Innovation",
-      desc: "Latest tech news and breakthroughs",
-      img: "../assets/news-tech.jpg",
-      url: "https://www.theverge.com/"
-    },
-    {
-      title: "World News",
-      desc: "Global headlines and international updates",
-      img: "../assets/news-world.jpg",
-      url: "https://www.bbc.com/news"
-    },
-    {
-      title: "Quizzes & Polls",
-      desc: "Interactive quizzes and polling data",
-      img: "../assets/news-quizzes.jpg",
-      url: "https://www.pewresearch.org/"
-    }
+    { title: "National Broadcasting Networks", id: "national-networks" },
+    { title: "Newspaper Media", id: "newspaper-media" },
+    { title: "Global Politics & World News", id: "global-news" },
+    { title: "Finance & Markets", id: "finance-markets" },
+    { title: "Tech & Innovation", id: "tech-innovation" },
+    { title: "Popular Podcasts", id: "popular-podcasts" }
   ];
 
   // Build Hub Cards
   hubItems.forEach(item => {
     const card = document.createElement('div');
     card.className = 'hub-card';
-    card.setAttribute('onclick', `window.open('${item.url}', '_blank')`);
     card.innerHTML = `
-      <img src="${item.img}" alt="${item.title}" />
-      <h4>${item.title}</h4>
-      <p>${item.desc}</p>
+      <h3>${item.title}</h3>
     `;
+    card.addEventListener('click', () => {
+      const section = document.getElementById(item.id);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
     hubContainer.appendChild(card);
   });
+}
 
   // Load social trends after hub cards render
   loadSocialTrends();
