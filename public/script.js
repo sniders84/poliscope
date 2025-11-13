@@ -1339,101 +1339,56 @@ if (source === 'nbc') {
   return; // exit early since NBC is handled
 }
 
-// --- Static demo for other networks ---
-const data = demoData[source];
-if (!data) return;
+// --- NBC Live RSS Carousel ---
+if (source === 'nbc') {
+  carouselContent.innerHTML = ''; // clear previous items
+  const rssUrl = 'https://feeds.nbcnews.com/nbcnews/public/news';
+  const corsProxy = 'https://corsproxy.io/?' + encodeURIComponent(rssUrl);
 
-carouselContent.innerHTML = data.items
-  .map(item => `<div class="carousel-item"><a href="${item.link}" target="_blank">${item.title}</a></div>`)
-  .join("");
+  fetch(corsProxy)
+    .then(response => response.text())
+    .then(str => {
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(str, "text/xml");
+      const items = xmlDoc.querySelectorAll('item');
 
-seeAllLink.href = data.url;
-carouselContainer.style.display = 'flex';
+      items.forEach((item, idx) => {
+        if (idx >= 5) return; // top 5 only
+        const title = item.querySelector('title')?.textContent || "No title";
+        const link = item.querySelector('link')?.textContent || "#";
+        const slide = document.createElement('div');
+        slide.className = 'carousel-item';
+        slide.innerHTML = `<a href="${link}" target="_blank">${title}</a>`;
+        carouselContent.appendChild(slide);
+      });
 
-// Smooth scroll adjustment
-const offset = carouselContainer.getBoundingClientRect().top + window.scrollY - 120;
-window.scrollTo({ top: offset, behavior: 'smooth' });
+      seeAllLink.href = 'https://www.nbcnews.com/';
+      carouselContainer.style.display = 'flex';
 
-// Initialize sticky hub nav
-document.addEventListener('DOMContentLoaded', () => {
-  initHubNav();
-});
-
-// === STATE DROPDOWN WIRING ===
-function wireStateDropdown() {
-  const dropdown = document.getElementById('state-dropdown');
-  if (!dropdown) return;
-
-  dropdown.value = selectedState;
-
-  dropdown.addEventListener('change', () => {
-    selectedState = dropdown.value;
-    window.selectedState = selectedState;
-    renderOfficials(selectedState, '');
-  });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  const officialsContainer = document.getElementById('officials-container');
-  const searchBar = document.getElementById('search-bar');
-  const loadingOverlay = document.getElementById('loading-overlay');
-
-  const officialsModal = document.getElementById('officials-modal');
-  const officialsModalContent = document.getElementById('officials-content');
-  const officialsModalCloseBtn = document.getElementById('officials-close');
-
-  if (officialsModalCloseBtn) {
-    officialsModalCloseBtn.addEventListener('click', () => closeModalWindow('officials-modal'));
-  }
-
-  wireSearchBar();
-  wireStateDropdown();
-
-  function closeOfficialsSearch() {
-    if (!searchBar) return;
-    searchBar.value = '';
-    searchBar.blur();
-  }
-
-  document.addEventListener('mousedown', event => {
-    if (!searchBar) return;
-    if (event.target !== searchBar && !searchBar.contains(event.target)) {
-      closeOfficialsSearch();
-    }
-  });
-
-  // === Load officials data with smooth fade-in ===
-  Promise.all([
-    fetch('/governors.json').then(res => res.json()),
-    fetch('/ltgovernors.json').then(res => res.json()),
-    fetch('/senators.json').then(res => res.json()),
-    fetch('/housereps.json').then(res => res.json())
-  ])
-    .then(([govs, ltGovs, sens, reps]) => {
-      governors = govs;
-      ltGovernors = ltGovs;
-      senators = sens;
-      houseReps = reps;
-
-      // Render officials
-      renderOfficials(selectedState, '');
-
-      // Fade out loading overlay
-      if (loadingOverlay) {
-        loadingOverlay.style.transition = 'opacity 0.5s ease';
-        loadingOverlay.style.opacity = '0';
-        setTimeout(() => loadingOverlay.remove(), 500);
-      }
-
-      // Load social trends
-      const socialFeed = document.getElementById('social-feed');
-      if (socialFeed && typeof loadSocialTrends === 'function') {
-        console.log("🎬 loadSocialTrends is running...");
-        loadSocialTrends();
-      }
+      // Smooth scroll adjustment
+      const offset = carouselContainer.getBoundingClientRect().top + window.scrollY - 120;
+      window.scrollTo({ top: offset, behavior: 'smooth' });
     })
     .catch(err => {
-      console.error('Error loading official data:', err);
-      if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
+      console.error("NBC RSS fetch failed:", err);
+      carouselContent.innerHTML = '<p>Failed to load live stories.</p>';
+      carouselContainer.style.display = 'flex';
     });
-});
+
+  return; // exit early since NBC is handled
+}
+
+// --- Static demo for other networks ---
+const data = demoData[source];
+if (data) {
+  carouselContent.innerHTML = data.items
+    .map(item => `<div class="carousel-item"><a href="${item.link}" target="_blank">${item.title}</a></div>`)
+    .join("");
+
+  seeAllLink.href = data.url;
+  carouselContainer.style.display = 'flex';
+
+  // Smooth scroll adjustment
+  const offset = carouselContainer.getBoundingClientRect().top + window.scrollY - 120;
+  window.scrollTo({ top: offset, behavior: 'smooth' });
+}
