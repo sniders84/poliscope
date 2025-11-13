@@ -1131,7 +1131,42 @@ function wireSearchBar() {
     renderOfficials(null, query);
   });
 }
+// ==== HOME HUB NAV ====
 
+function showStartupHub() {
+  showTab('startup-hub');
+}
+
+// Initialize sticky nav
+function initHubNav() {
+  const navButtons = document.querySelectorAll('#hub-nav button');
+
+  navButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const section = document.getElementById(btn.dataset.target);
+      if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // Optional: highlight active section on scroll
+  const sections = Array.from(navButtons).map(btn =>
+    document.getElementById(btn.dataset.target)
+  );
+
+  window.addEventListener('scroll', () => {
+    const scrollPos = window.scrollY + 60; // adjust for sticky nav height
+    sections.forEach((sec, idx) => {
+      if (sec.offsetTop <= scrollPos && sec.offsetTop + sec.offsetHeight > scrollPos) {
+        navButtons.forEach(b => b.classList.remove('active'));
+        navButtons[idx].classList.add('active');
+      }
+    });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initHubNav();
+});
 // === STATE DROPDOWN WIRING ===
 function wireStateDropdown() {
   const dropdown = document.getElementById('state-dropdown');
