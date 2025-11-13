@@ -192,9 +192,43 @@
   background-color: #0066ff; /* blue hover */
   color: #fff;
 }
+
+/* Category Sections */
+.category-section {
+  padding: 20px 0;
+  border-bottom: 1px solid #444;
+}
+
+.card-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+
+.info-card {
+  background-color: #333;
+  padding: 14px;
+  border-radius: 8px;
+  color: #fff;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.info-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Social feed placeholder */
+#social-feed {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
 </style>
 
 <script>
+// Show Home Hub tab
 function showStartupHub() {
   showTab('startup-hub');
 }
@@ -210,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// Optional: if your tabs use a function to hide/show sections
+// Generic tab switcher
 function showTab(tabId) {
   document.querySelectorAll('.tab-content').forEach(tab => {
     tab.style.display = 'none';
