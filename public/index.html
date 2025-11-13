@@ -101,18 +101,18 @@
   </div>
 
   <!-- Sections -->
- <!-- National Broadcasting Networks -->
+<!-- National Broadcasting Networks -->
 <section id="national-networks" class="category-section">
   <h2>National Broadcasting Networks</h2>
   <div class="card-grid">
-    <!-- NBC Card (active) -->
-   <div class="info-card" id="nbc-card" data-source="nbc">
-  <img src="assets/logos/nbc.png" alt="NBC News Logo" class="card-logo" />
-  <h3>NBC News</h3>
-  <p>National TV news coverage from NBC.</p>
-</div>
+    <!-- NBC Card (will be replaced by RSS feed carousel) -->
+    <div class="info-card" id="nbc-card" data-source="nbc">
+      <img src="assets/logos/nbc.png" alt="NBC News Logo" class="card-logo" />
+      <h3>NBC News</h3>
+      <p>National TV news coverage from NBC.</p>
+    </div>
 
-    <!-- Other networks (placeholders for now, no live fetch) -->
+    <!-- Other networks (static placeholders) -->
     <div class="info-card" data-source="abc">
       <img src="assets/logos/abc.png" alt="ABC News Logo" class="card-logo" />
       <h3>ABC News</h3>
@@ -135,94 +135,14 @@
     </div>
   </div>
 
-  <!-- Inline Carousel Container (for NBC only) -->
+  <!-- Carousel for NBC RSS feed -->
   <div id="network-carousel" class="carousel-container" style="display: none;">
-    <div class="carousel-content"></div>
+    <div class="carousel-content">
+      <!-- JS will populate feed items here -->
+    </div>
     <a href="#" id="see-all-link" target="_blank" class="see-all-link">See All →</a>
   </div>
 </section>
-
-  <section id="newspaper-media" class="category-section">
-    <h2>Newspaper Media</h2>
-    <div class="card-grid" id="newspapers-container">
-      <div class="info-card" onclick="window.open('https://www.washingtonpost.com','_blank')">
-        <h3>The Washington Post</h3>
-        <p>Top stories and political analysis from WaPo.</p>
-      </div>
-      <div class="info-card" onclick="window.open('https://www.nytimes.com','_blank')">
-        <h3>The New York Times</h3>
-        <p>Latest coverage from The New York Times.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="global-news" class="category-section">
-    <h2>Global Politics & World News</h2>
-    <div class="card-grid" id="global-container">
-      <div class="info-card" onclick="window.open('https://www.politico.com','_blank')">
-        <h3>Politico</h3>
-        <p>Breaking global politics coverage.</p>
-      </div>
-      <div class="info-card" onclick="window.open('https://www.reuters.com','_blank')">
-        <h3>Reuters</h3>
-        <p>Trusted reporting on international affairs.</p>
-      </div>
-      <div class="info-card" onclick="window.open('https://www.bbc.com/news','_blank')">
-        <h3>BBC News</h3>
-        <p>Global headlines and analysis from BBC.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="finance-markets" class="category-section">
-    <h2>Finance & Markets</h2>
-    <div class="card-grid" id="finance-container">
-      <div class="info-card" onclick="window.open('https://www.bloomberg.com','_blank')">
-        <h3>Bloomberg</h3>
-        <p>Business, markets, and finance news.</p>
-      </div>
-      <div class="info-card" onclick="window.open('https://www.wsj.com','_blank')">
-        <h3>Wall Street Journal</h3>
-        <p>Financial reporting and stock market coverage.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="tech-innovation" class="category-section">
-    <h2>Tech & Innovation</h2>
-    <div class="card-grid" id="tech-container">
-      <div class="info-card" onclick="window.open('https://www.theverge.com','_blank')">
-        <h3>The Verge</h3>
-        <p>Tech news, gadgets, and emerging innovations.</p>
-      </div>
-      <div class="info-card" onclick="window.open('https://www.wired.com','_blank')">
-        <h3>Wired</h3>
-        <p>Tech culture and innovation coverage.</p>
-      </div>
-      <div class="info-card" onclick="window.open('https://techcrunch.com','_blank')">
-        <h3>TechCrunch</h3>
-        <p>Startups, venture capital, and tech news.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="popular-podcasts" class="category-section">
-    <h2>Popular Podcasts</h2>
-    <div class="card-grid" id="podcasts-container">
-      <div class="info-card" onclick="window.open('https://crooked.com/podcast-series/pod-save-america/','_blank')">
-        <h3>Pod Save America</h3>
-        <p>Political commentary from Pod Save America.</p>
-      </div>
-      <div class="info-card" onclick="window.open('https://www.nytimes.com/column/the-daily','_blank')">
-        <h3>The Daily (NYT)</h3>
-        <p>News analysis and storytelling from The Daily.</p>
-      </div>
-      <div class="info-card" onclick="window.open('https://www.npr.org/sections/politics/','_blank')">
-        <h3>NPR Politics</h3>
-        <p>Political coverage and analysis from NPR.</p>
-      </div>
-    </div>
-  </section>
 
   <!-- 🌍 Social Trends Section (kept but empty for now) -->
   <section id="social-trends">
