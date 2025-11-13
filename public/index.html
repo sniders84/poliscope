@@ -105,11 +105,14 @@
 <section id="national-networks" class="category-section">
   <h2>National Broadcasting Networks</h2>
   <div class="card-grid">
+    <!-- NBC Card (active) -->
     <div class="info-card" id="nbc-card" data-source="nbc">
-  <img src="assets/logos/nbc.png" alt="NBC News Logo" class="card-logo" />
-  <h3>NBC News</h3>
-  <p>National TV news coverage from NBC.</p>
-</div>
+      <img src="assets/logos/nbc.png" alt="NBC News Logo" class="card-logo" />
+      <h3>NBC News</h3>
+      <p>National TV news coverage from NBC.</p>
+    </div>
+
+    <!-- Other networks (placeholders for now, no live fetch) -->
     <div class="info-card" data-source="abc">
       <img src="assets/logos/abc.png" alt="ABC News Logo" class="card-logo" />
       <h3>ABC News</h3>
@@ -132,7 +135,7 @@
     </div>
   </div>
 
-  <!-- Inline Carousel Container -->
+  <!-- Inline Carousel Container (for NBC only) -->
   <div id="network-carousel" class="carousel-container" style="display: none;">
     <div class="carousel-content"></div>
     <a href="#" id="see-all-link" target="_blank" class="see-all-link">See All →</a>
