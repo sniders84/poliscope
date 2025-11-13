@@ -90,18 +90,15 @@
 <section id="startup-hub" class="tab-content" style="display: none;">
   <h2>Home Hub</h2>
 
-  <!-- Sticky Section Navigation -->
-<div id="hub-nav" class="hub-nav">
-  <button data-target="national-networks">National Broadcasting Networks</button>
-  <button data-target="newspaper-media">Newspaper Media</button>
-  <button data-target="global-news">Global Politics & World News</button>
-  <button data-target="finance-markets">Finance & Markets</button>
-  <button data-target="tech-innovation">Tech & Innovation</button>
-  <button data-target="popular-podcasts">Popular Podcasts</button>
-</div>
-
-  <!-- 🌐 Category Cards at Top of Home Hub -->
-  <div id="hub-cards" class="grid"></div>
+  <!-- 🌐 Sticky Section Navigation (matches site style) -->
+  <div id="hub-nav" class="hub-nav">
+    <button data-target="national-networks">National Broadcasting Networks</button>
+    <button data-target="newspaper-media">Newspaper Media</button>
+    <button data-target="global-news">Global Politics & World News</button>
+    <button data-target="finance-markets">Finance & Markets</button>
+    <button data-target="tech-innovation">Tech & Innovation</button>
+    <button data-target="popular-podcasts">Popular Podcasts</button>
+  </div>
 
   <!-- Sections -->
   <section id="national-networks" class="category-section">
@@ -165,36 +162,55 @@
   </section>
 </section>
 
+<style>
+/* Sticky Home Hub nav styling - match site theme */
+#hub-nav {
+  position: sticky;
+  top: 0;
+  background-color: #2b2b2b; /* dark grey background */
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #444;
+  z-index: 1000;
+  overflow-x: auto;
+}
+
+#hub-nav button {
+  padding: 8px 12px;
+  border: none;
+  background-color: #3c3c3c;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+#hub-nav button:hover {
+  background-color: #0066ff; /* blue hover */
+  color: #fff;
+}
+</style>
+
 <script>
 function showStartupHub() {
   showTab('startup-hub');
-  const hubContainer = document.getElementById('hub-cards');
-  if (!hubContainer) return;
-  hubContainer.innerHTML = '';
-
-  // Top cards that scroll to matching sections
-  const hubItems = [
-    { title: "National Broadcasting Networks", id: "national-networks" },
-    { title: "Newspaper Media", id: "newspaper-media" },
-    { title: "Global Politics & World News", id: "global-news" },
-    { title: "Finance & Markets", id: "finance-markets" },
-    { title: "Tech & Innovation", id: "tech-innovation" },
-    { title: "Popular Podcasts", id: "popular-podcasts" }
-  ];
-
-  hubItems.forEach(item => {
-    const card = document.createElement('div');
-    card.className = 'hub-card';
-    card.innerHTML = `<h3>${item.title}</h3>`;
-    card.addEventListener('click', () => {
-      const section = document.getElementById(item.id);
-      if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-    hubContainer.appendChild(card);
-  });
 }
 
-// Tab visibility helper
+// Sticky nav buttons scroll to sections
+document.addEventListener('DOMContentLoaded', () => {
+  const navButtons = document.querySelectorAll('#hub-nav button');
+  navButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const section = document.getElementById(btn.dataset.target);
+      if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+});
+
+// Optional: if your tabs use a function to hide/show sections
 function showTab(tabId) {
   document.querySelectorAll('.tab-content').forEach(tab => {
     tab.style.display = 'none';
