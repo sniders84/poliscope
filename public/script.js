@@ -1224,13 +1224,24 @@ document.addEventListener('DOMContentLoaded', () => {
   const seeAllLink = document.getElementById('see-all-link');
 
   const demoData = {
+    nbc: {
+      url: "https://www.nbcnews.com",
+      items: [
+        "NBC: Election coverage and latest updates",
+        "NBC: Supreme Court rulings and impact",
+        "NBC: Global economic shifts analysis",
+        "NBC: Investigative report on tech policies",
+        "NBC: Breaking headlines and stories"
+      ]
+    },
     abc: {
       url: "https://abcnews.go.com",
       items: [
         "ABC: Latest headlines across the U.S.",
         "ABC: 2024 campaign fact checks",
         "ABC: Global conflicts timeline",
-        "ABC: Business and economy updates"
+        "ABC: Business and economy updates",
+        "ABC: Health and science news"
       ]
     },
     cbs: {
@@ -1239,7 +1250,8 @@ document.addEventListener('DOMContentLoaded', () => {
         "CBS: Capitol Hill roundup",
         "CBS: International report insights",
         "CBS: CBS Evening News summaries",
-        "CBS: Market watch and analysis"
+        "CBS: Market watch and analysis",
+        "CBS: Investigative stories"
       ]
     },
     fox: {
@@ -1248,7 +1260,8 @@ document.addEventListener('DOMContentLoaded', () => {
         "FOX: Political briefings and debates",
         "FOX: Business trends and outlook",
         "FOX: National alerts and updates",
-        "FOX: Tech and science stories"
+        "FOX: Tech and science stories",
+        "FOX: Opinion highlights"
       ]
     },
     cnn: {
@@ -1257,7 +1270,8 @@ document.addEventListener('DOMContentLoaded', () => {
         "CNN: World events and perspectives",
         "CNN: Election updates",
         "CNN: Spotlight interviews",
-        "CNN: International news digest"
+        "CNN: International news digest",
+        "CNN: Breaking headlines"
       ]
     }
   };
@@ -1265,47 +1279,6 @@ document.addEventListener('DOMContentLoaded', () => {
   cards.forEach(card => {
     card.addEventListener('click', () => {
       const source = card.dataset.source;
-
-      // --- Live NBC RSS ---
-      if (source === 'nbc') {
-        carouselContent.innerHTML = ''; // clear previous items
-        const rssUrl = 'https://www.nbcnews.com/id/3032091/device/rss/rss.xml';
-        const corsProxy = 'https://api.allorigins.win/get?url=' + encodeURIComponent(rssUrl);
-
-        fetch(corsProxy)
-          .then(response => response.json())
-          .then(data => {
-            const parser = new DOMParser();
-            const xmlDoc = parser.parseFromString(data.contents, "text/xml");
-            const items = xmlDoc.querySelectorAll('item');
-
-            items.forEach((item, idx) => {
-              if (idx >= 5) return; // top 5 only
-              const title = item.querySelector('title').textContent;
-              const link = item.querySelector('link').textContent;
-              const slide = document.createElement('div');
-              slide.className = 'carousel-item';
-              slide.innerHTML = `<a href="${link}" target="_blank">${title}</a>`;
-              carouselContent.appendChild(slide);
-            });
-
-            seeAllLink.href = 'https://www.nbcnews.com/';
-            carouselContainer.style.display = 'flex';
-
-            // Smooth scroll adjustment
-            const offset = carouselContainer.getBoundingClientRect().top + window.scrollY - 120;
-            window.scrollTo({ top: offset, behavior: 'smooth' });
-          })
-          .catch(err => {
-            console.error("Failed to fetch NBC RSS feed:", err);
-            carouselContent.innerHTML = '<p>Failed to load live stories.</p>';
-            carouselContainer.style.display = 'flex';
-          });
-
-        return;
-      }
-
-      // --- Static demo for other networks ---
       const data = demoData[source];
       if (!data) return;
 
@@ -1316,7 +1289,7 @@ document.addEventListener('DOMContentLoaded', () => {
       seeAllLink.href = data.url;
       carouselContainer.style.display = 'flex';
 
-      // Smooth scroll adjustment
+      // Smooth scroll adjustment to stop slightly above the carousel
       const offset = carouselContainer.getBoundingClientRect().top + window.scrollY - 120;
       window.scrollTo({ top: offset, behavior: 'smooth' });
     });
