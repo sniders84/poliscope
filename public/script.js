@@ -317,6 +317,18 @@ function scrollToCategory(categoryId) {
     console.warn("Category section not found:", categoryId);
   }
 }
+// Existing helpers, e.g., showTab(), renderOfficials(), etc.
+
+// ---------- STEP 1: Home Hub Cards ----------
+function showStartupHub() {
+  // ...function code you pasted...
+}
+
+function scrollToCategory(sectionId) {
+  // ...function code you pasted...
+}
+
+// Other existing functions...
 
 // === RENDER: populate the Cabinet grid ===
 function renderCabinetGrid(cabinetData) {
