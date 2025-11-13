@@ -308,28 +308,6 @@ function renderCabinetMember(member) {
   `;
 }
 
-// === HELPER: scroll to category section smoothly ===
-function scrollToCategory(categoryId) {
-  const section = document.getElementById(categoryId);
-  if (section) {
-    section.scrollIntoView({ behavior: "smooth", block: "start" });
-  } else {
-    console.warn("Category section not found:", categoryId);
-  }
-}
-// Existing helpers, e.g., showTab(), renderOfficials(), etc.
-
-// ---------- STEP 1: Home Hub Cards ----------
-function showStartupHub() {
-  // ...function code you pasted...
-}
-
-function scrollToCategory(sectionId) {
-  // ...function code you pasted...
-}
-
-// Other existing functions...
-
 // === RENDER: populate the Cabinet grid ===
 function renderCabinetGrid(cabinetData) {
   const container = document.getElementById('cabinetList');
@@ -773,49 +751,57 @@ function showOrganizations() {
       console.error(err);
     });
 }
-<!-- Startup Hub Tab -->
-<section id="startup-hub" class="tab-content" style="display: none;">
-  <h2>Home Hub</h2>
+function showStartupHub() {
+  showTab('startup-hub');
+  const hubContainer = document.getElementById('hub-cards');
+  hubContainer.innerHTML = '';
 
-  <!-- Top Category Cards -->
-  <div id="hub-cards" class="grid"></div>
+  // Example card data - live placeholder images
+  const hubItems = [
+    {
+      title: "Global Politics",
+      desc: "Up-to-the-minute world political news",
+      img: "../assets/news-politics.jpg",
+      url: "https://www.politico.com/"
+    },
+    {
+      title: "Finance & Markets",
+      desc: "Stock market updates, economy, and finance news",
+      img: "../assets/news-finance.jpg",
+      url: "https://www.bloomberg.com/"
+    },
+    {
+      title: "Tech & Innovation",
+      desc: "Latest tech news and breakthroughs",
+      img: "../assets/news-tech.jpg",
+      url: "https://www.theverge.com/"
+    },
+    {
+      title: "World News",
+      desc: "Global headlines and international updates",
+      img: "../assets/news-world.jpg",
+      url: "https://www.bbc.com/news"
+    },
+    {
+      title: "Quizzes & Polls",
+      desc: "Interactive quizzes and polling data",
+      img: "../assets/news-quizzes.jpg",
+      url: "https://www.pewresearch.org/"
+    }
+  ];
 
-  <!-- Category Sections -->
-  <section id="global-politics" class="hub-category">
-    <h3>Global Politics</h3>
-    <div class="category-grid">
-      <!-- Embedded content will go here -->
-    </div>
-  </section>
-
-  <section id="finance-markets" class="hub-category">
-    <h3>Finance & Markets</h3>
-    <div class="category-grid">
-      <!-- Embedded content will go here -->
-    </div>
-  </section>
-
-  <section id="tech-innovation" class="hub-category">
-    <h3>Tech & Innovation</h3>
-    <div class="category-grid">
-      <!-- Embedded content will go here -->
-    </div>
-  </section>
-
-  <section id="world-news" class="hub-category">
-    <h3>World News</h3>
-    <div class="category-grid">
-      <!-- Embedded content will go here -->
-    </div>
-  </section>
-
-  <section id="quizzes-polls" class="hub-category">
-    <h3>Quizzes & Polls</h3>
-    <div class="category-grid">
-      <!-- Embedded content will go here -->
-    </div>
-  </section>
-</section>
+  // Build Hub Cards
+  hubItems.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'hub-card';
+    card.setAttribute('onclick', `window.open('${item.url}', '_blank')`);
+    card.innerHTML = `
+      <img src="${item.img}" alt="${item.title}" />
+      <h4>${item.title}</h4>
+      <p>${item.desc}</p>
+    `;
+    hubContainer.appendChild(card);
+  });
 
   // Load social trends after hub cards render
   loadSocialTrends();
