@@ -86,172 +86,237 @@
 
   <main>
     
-<!-- Startup Hub Tab -->
+<!-- Startup Hub Tab (REPLACE THE WHOLE SECTION BELOW IN YOUR HTML) -->
 <section id="startup-hub" class="tab-content" style="display: none;">
   <h2>Home Hub</h2>
 
   <!-- 🌐 Sticky Section Navigation (matches site style) -->
-  <div id="hub-nav" class="hub-nav">
-    <button data-target="national-networks">National Broadcasting Networks</button>
-    <button data-target="newspaper-media">Newspaper Media</button>
-    <button data-target="global-news">Global Politics & World News</button>
-    <button data-target="finance-markets">Finance & Markets</button>
-    <button data-target="tech-innovation">Tech & Innovation</button>
-    <button data-target="popular-podcasts">Popular Podcasts</button>
+  <div id="hub-nav" class="hub-nav" role="navigation" aria-label="Home Hub navigation">
+    <button type="button" data-target="national-networks">National Broadcasting Networks</button>
+    <button type="button" data-target="newspaper-media">Newspaper Media</button>
+    <button type="button" data-target="global-news">Global Politics & World News</button>
+    <button type="button" data-target="finance-markets">Finance & Markets</button>
+    <button type="button" data-target="tech-innovation">Tech & Innovation</button>
+    <button type="button" data-target="popular-podcasts">Popular Podcasts</button>
   </div>
 
   <!-- Sections -->
   <section id="national-networks" class="category-section">
     <h2>National Broadcasting Networks</h2>
-    <div class="card-grid">
-      <div class="info-card"><h3>NBC News</h3><p>National TV news coverage from NBC.</p></div>
-      <div class="info-card"><h3>ABC News</h3><p>Coverage from ABC News.</p></div>
-      <div class="info-card"><h3>CBS News</h3><p>CBS News broadcasts and updates.</p></div>
-      <div class="info-card"><h3>FOX News</h3><p>Latest stories from FOX News.</p></div>
-      <div class="info-card"><h3>CNN</h3><p>Breaking news and political analysis from CNN.</p></div>
+    <div class="card-grid" id="networks-container">
+      <div class="info-card" onclick="window.open('https://www.nbcnews.com','_blank')">
+        <h3>NBC News</h3>
+        <p>National TV news coverage from NBC.</p>
+      </div>
+      <div class="info-card" onclick="window.open('https://abcnews.go.com','_blank')">
+        <h3>ABC News</h3>
+        <p>Coverage from ABC News.</p>
+      </div>
+      <div class="info-card" onclick="window.open('https://www.cbsnews.com','_blank')">
+        <h3>CBS News</h3>
+        <p>CBS News broadcasts and updates.</p>
+      </div>
+      <div class="info-card" onclick="window.open('https://www.foxnews.com','_blank')">
+        <h3>FOX News</h3>
+        <p>Latest stories from FOX News.</p>
+      </div>
+      <div class="info-card" onclick="window.open('https://www.cnn.com','_blank')">
+        <h3>CNN</h3>
+        <p>Breaking news and political analysis from CNN.</p>
+      </div>
     </div>
   </section>
 
   <section id="newspaper-media" class="category-section">
     <h2>Newspaper Media</h2>
-    <div class="card-grid">
-      <div class="info-card"><h3>The Washington Post</h3><p>Top stories and political analysis from WaPo.</p></div>
-      <div class="info-card"><h3>The New York Times</h3><p>Latest coverage from The New York Times.</p></div>
+    <div class="card-grid" id="newspapers-container">
+      <div class="info-card" onclick="window.open('https://www.washingtonpost.com','_blank')">
+        <h3>The Washington Post</h3>
+        <p>Top stories and political analysis from WaPo.</p>
+      </div>
+      <div class="info-card" onclick="window.open('https://www.nytimes.com','_blank')">
+        <h3>The New York Times</h3>
+        <p>Latest coverage from The New York Times.</p>
+      </div>
     </div>
   </section>
 
   <section id="global-news" class="category-section">
     <h2>Global Politics & World News</h2>
-    <div class="card-grid">
-      <div class="info-card"><h3>Politico</h3><p>Breaking global politics coverage.</p></div>
-      <div class="info-card"><h3>Reuters</h3><p>Trusted reporting on international affairs.</p></div>
-      <div class="info-card"><h3>BBC News</h3><p>Global headlines and analysis from BBC.</p></div>
+    <div class="card-grid" id="global-container">
+      <div class="info-card" onclick="window.open('https://www.politico.com','_blank')">
+        <h3>Politico</h3>
+        <p>Breaking global politics coverage.</p>
+      </div>
+      <div class="info-card" onclick="window.open('https://www.reuters.com','_blank')">
+        <h3>Reuters</h3>
+        <p>Trusted reporting on international affairs.</p>
+      </div>
+      <div class="info-card" onclick="window.open('https://www.bbc.com/news','_blank')">
+        <h3>BBC News</h3>
+        <p>Global headlines and analysis from BBC.</p>
+      </div>
     </div>
   </section>
 
   <section id="finance-markets" class="category-section">
     <h2>Finance & Markets</h2>
-    <div class="card-grid">
-      <div class="info-card"><h3>Bloomberg</h3><p>Business, markets, and finance news.</p></div>
-      <div class="info-card"><h3>Wall Street Journal</h3><p>Financial reporting and stock market coverage.</p></div>
+    <div class="card-grid" id="finance-container">
+      <div class="info-card" onclick="window.open('https://www.bloomberg.com','_blank')">
+        <h3>Bloomberg</h3>
+        <p>Business, markets, and finance news.</p>
+      </div>
+      <div class="info-card" onclick="window.open('https://www.wsj.com','_blank')">
+        <h3>Wall Street Journal</h3>
+        <p>Financial reporting and stock market coverage.</p>
+      </div>
     </div>
   </section>
 
   <section id="tech-innovation" class="category-section">
     <h2>Tech & Innovation</h2>
-    <div class="card-grid">
-      <div class="info-card"><h3>The Verge</h3><p>Tech news, gadgets, and emerging innovations.</p></div>
-      <div class="info-card"><h3>Wired</h3><p>Tech culture and innovation coverage.</p></div>
-      <div class="info-card"><h3>TechCrunch</h3><p>Startups, venture capital, and tech news.</p></div>
+    <div class="card-grid" id="tech-container">
+      <div class="info-card" onclick="window.open('https://www.theverge.com','_blank')">
+        <h3>The Verge</h3>
+        <p>Tech news, gadgets, and emerging innovations.</p>
+      </div>
+      <div class="info-card" onclick="window.open('https://www.wired.com','_blank')">
+        <h3>Wired</h3>
+        <p>Tech culture and innovation coverage.</p>
+      </div>
+      <div class="info-card" onclick="window.open('https://techcrunch.com','_blank')">
+        <h3>TechCrunch</h3>
+        <p>Startups, venture capital, and tech news.</p>
+      </div>
     </div>
   </section>
 
   <section id="popular-podcasts" class="category-section">
     <h2>Popular Podcasts</h2>
-    <div class="card-grid">
-      <div class="info-card"><h3>Pod Save America</h3><p>Political commentary from Pod Save America.</p></div>
-      <div class="info-card"><h3>The Daily (NYT)</h3><p>News analysis and storytelling from The Daily.</p></div>
-      <div class="info-card"><h3>NPR Politics</h3><p>Political coverage and analysis from NPR.</p></div>
+    <div class="card-grid" id="podcasts-container">
+      <div class="info-card" onclick="window.open('https://crooked.com/podcast-series/pod-save-america/','_blank')">
+        <h3>Pod Save America</h3>
+        <p>Political commentary from Pod Save America.</p>
+      </div>
+      <div class="info-card" onclick="window.open('https://www.nytimes.com/column/the-daily','_blank')">
+        <h3>The Daily (NYT)</h3>
+        <p>News analysis and storytelling from The Daily.</p>
+      </div>
+      <div class="info-card" onclick="window.open('https://www.npr.org/sections/politics/','_blank')">
+        <h3>NPR Politics</h3>
+        <p>Political coverage and analysis from NPR.</p>
+      </div>
     </div>
   </section>
 
-  <!-- 🌍 Social Trends Section -->
+  <!-- 🌍 Social Trends Section (kept but empty for now) -->
   <section id="social-trends">
     <h2>Trending Now</h2>
     <div id="social-feed" class="grid"></div>
   </section>
 </section>
 
+<!-- Inline styles only for the hub nav to match site theme (keep these or move to your css file) -->
 <style>
-/* Sticky Home Hub nav styling - match site theme */
-#hub-nav {
-  position: sticky;
-  top: 0;
-  background-color: #2b2b2b; /* dark grey background */
-  display: flex;
-  gap: 10px;
-  padding: 10px;
-  border-bottom: 1px solid #444;
-  z-index: 1000;
-  overflow-x: auto;
-}
+  /* Sticky Home Hub nav styling - match site theme */
+  #hub-nav {
+    position: sticky;
+    top: 0;
+    background-color: #2b2b2b; /* dark grey background */
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #444;
+    z-index: 1000;
+    overflow-x: auto;
+    align-items: center;
+  }
 
-#hub-nav button {
-  padding: 8px 12px;
-  border: none;
-  background-color: #3c3c3c;
-  color: #fff;
-  cursor: pointer;
-  border-radius: 6px;
-  white-space: nowrap;
-  flex-shrink: 0;
-  transition: background-color 0.2s, color 0.2s;
-}
+  #hub-nav button {
+    padding: 8px 12px;
+    border: none;
+    background-color: #3c3c3c;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 6px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: background-color 0.18s, color 0.18s, transform 0.12s;
+    font-weight: 600;
+  }
 
-#hub-nav button:hover {
-  background-color: #0066ff; /* blue hover */
-  color: #fff;
-}
+  #hub-nav button:hover,
+  #hub-nav button.active {
+    background-color: #0066ff; /* blue hover */
+    color: #fff;
+    transform: translateY(-1px);
+  }
 
-/* Category Sections */
-.category-section {
-  padding: 20px 0;
-  border-bottom: 1px solid #444;
-}
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+    margin: 12px 0 28px 0;
+  }
 
-.card-grid {
-  display: grid;
-  gap: 12px;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-}
-
-.info-card {
-  background-color: #333;
-  padding: 14px;
-  border-radius: 8px;
-  color: #fff;
-  transition: transform 0.2s, box-shadow 0.2s;
-  cursor: pointer;
-}
-
-.info-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-
-/* Social feed placeholder */
-#social-feed {
-  display: grid;
-  gap: 12px;
-  margin-top: 16px;
-}
+  .info-card {
+    padding: 12px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .info-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  }
+  .info-card h3 { margin: 0 0 6px 0; }
+  .info-card p { margin: 0; color: #444; font-size: 0.95rem; }
 </style>
 
+<!-- Minimal JS to initialize the sticky nav behaviour (place this inline with the section as a single step) -->
 <script>
-// Show Home Hub tab
-function showStartupHub() {
-  showTab('startup-hub');
-}
+  (function () {
+    // initHubNav: add click handlers and active-class on scroll
+    function initHubNav() {
+      const nav = document.getElementById('hub-nav');
+      if (!nav) return;
+      const buttons = Array.from(nav.querySelectorAll('button[data-target]'));
+      const sections = buttons
+        .map(b => document.getElementById(b.dataset.target))
+        .filter(Boolean);
 
-// Sticky nav buttons scroll to sections
-document.addEventListener('DOMContentLoaded', () => {
-  const navButtons = document.querySelectorAll('#hub-nav button');
-  navButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const section = document.getElementById(btn.dataset.target);
-      if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  });
-});
+      // Click -> smooth scroll to section
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const target = document.getElementById(btn.dataset.target);
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
 
-// Generic tab switcher
-function showTab(tabId) {
-  document.querySelectorAll('.tab-content').forEach(tab => {
-    tab.style.display = 'none';
-  });
-  const tab = document.getElementById(tabId);
-  if (tab) tab.style.display = 'block';
-}
+      // Highlight nav button for the section in view (optional)
+      window.addEventListener('scroll', () => {
+        const offset = window.scrollY + 80; // adjust to taste for sticky nav height
+        for (let i = 0; i < sections.length; i++) {
+          const s = sections[i];
+          if (!s) continue;
+          if (s.offsetTop <= offset && s.offsetTop + s.offsetHeight > offset) {
+            buttons.forEach(b => b.classList.remove('active'));
+            if (buttons[i]) buttons[i].classList.add('active');
+            break;
+          }
+        }
+      }, { passive: true });
+    }
+
+    // Run on DOM ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initHubNav);
+    } else {
+      initHubNav();
+    }
+  })();
 </script>
 
     <section id="my-officials" class="tab-content" style="position: relative;">
