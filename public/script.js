@@ -1230,7 +1230,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       seeAllLink.href = data.url;
       carouselContainer.style.display = 'flex';
-      carouselContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+// Smooth scroll adjustment to stop slightly above the carousel
+const offset = carouselContainer.getBoundingClientRect().top + window.scrollY - 120;
+window.scrollTo({ top: offset, behavior: 'smooth' });
+
     });
   });
 });
