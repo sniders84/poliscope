@@ -388,15 +388,19 @@ h2 {
 }
 
 .modal-content {
-  background: var(--card-bg);
-  padding: 2rem;
-  border-radius: 12px;
-  max-width: 700px;
-  max-height: 90vh;
-  overflow-y: auto;
+  position: relative;
+  background: rgba(30,41,59,0.9);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 14px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-  color: var(--text);
-  animation: fadeIn 0.3s ease;
+  max-width: 90%;
+  max-height: 90%;
+  overflow-y: auto;
+  animation: fadeIn 0.4s ease;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #close-modal {
@@ -447,16 +451,6 @@ button, .tab, .card-button, a {
   height: 100%;
   object-fit: cover;
   object-position: center; /* ensures true center alignment */
-}
-
-/* ---- 2. Modal layout and image consistency ---- */
-.modal-content {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  background: rgba(30,41,59,0.95); /* semi-transparent glass effect */
-  backdrop-filter: blur(10px);
-  gap: 1.5rem;
 }
 
 /* Ensure modal photo sizing and alignment */
@@ -548,24 +542,6 @@ button, .tab, .card-button, a {
   word-wrap: break-word;
   overflow: visible;
 }
-/* ============================================================
-   PATCH ADD-ON: FROSTED MODAL TEXT BACKGROUNDS
-   ============================================================ */
-
-.modal-content {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 1.5rem;
-  padding: 2rem;
-  background: rgba(30,41,59,0.9); /* transparent dark */
-  backdrop-filter: blur(12px);
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.1);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-}
-
 /* Keep photo clean and fixed on left */
 .modal-content img {
   flex-shrink: 0;
@@ -633,19 +609,6 @@ button, .tab, .card-button, a {
   justify-content: center;
   align-items: center;
   z-index: 1000;
-}
-
-.modal-content {
-  position: relative;
-  background: rgba(30,41,59,0.9);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 14px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-  max-width: 90%;
-  max-height: 90%;
-  overflow-y: auto;
-  animation: fadeIn 0.4s ease;
-  padding: 2rem;
 }
 
 /* Semi-transparent “frosted” area for all modal inner content */
@@ -738,12 +701,6 @@ button, .tab, .card-button, a {
   object-fit: contain;      /* prevent cropping */
   object-position: center;  /* always centered */
   border-radius: 8px;
-}
-
-/* 2️⃣ Reduce modal width by half for better readability */
-.modal-content {
-  max-width: 45% !important;
-  margin: 0 auto;
 }
 
 /* 3️⃣ Civic Intelligence dashboard cards — strict grid layout */
