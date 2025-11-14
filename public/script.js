@@ -778,23 +778,26 @@ function showStartupHub() {
     hubContainer.appendChild(card);
   });
 }
+// === LIVE NEWS FETCH: NBC News RSS ===
 
-// === LIVE NEWS FETCH: NBC News RSS (CORS-safe) ===
+// Function to fetch and parse RSS feeds to JSON-like structure
 async function fetchRSSFeed(url) {
   try {
-    const corsProxy = "https://corsproxy.io/?" + encodeURIComponent(url);
-    const response = await fetch(corsProxy);
-    const text = await response.text();
+    const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
+    const data = await response.json();
 
     const parser = new DOMParser();
-    const xml = parser.parseFromString(text, "application/xml");
+    const xml = parser.parseFromString(data.contents, "application/xml");
 
-    const items = Array.from(xml.querySelectorAll("item")).slice(0, 5); // top 5
+    const items = Array.from(xml.querySelectorAll("item")).slice(0, 5); // Top 5 stories
     return items.map(item => ({
       title: item.querySelector("title")?.textContent || "Untitled",
       link: item.querySelector("link")?.textContent || "#",
       description: item.querySelector("description")?.textContent.replace(/<[^>]+>/g, "") || "",
-      image: "assets/nbc.png" // fallback to logo for now
+      // Optional image placeholder (replace or parse actual if available)
+      image: "https://via.placeholder.com/150",
+      name: item.querySelector("title")?.textContent || "Untitled",
+      titleText: "NBC News Story"
     }));
   } catch (err) {
     console.error("RSS fetch failed:", err);
@@ -802,135 +805,68 @@ async function fetchRSSFeed(url) {
   }
 }
 
-// === Step 1: Create a single NBC card (styled like other cards) ===
+// === Step 1: Create a single NBC card ===
 function createNBCCard(cardData) {
-  const wrapper = document.createElement('div');
-  wrapper.classList.add('carousel-item');
+  const card = document.createElement('div');
+  card.classList.add('official-card'); // uses your existing card styles
 
-  // Fallback link (styled like a clean card)
-  const a = document.createElement("a");
-  a.href = cardData.link;
-  a.target = "_blank";
-  a.classList.add("news-fallback-link", "nbc-card"); // CSS targeting
-  a.style.display = "block";
-  a.style.background = "#1f2937";
-  a.style.padding = "12px";
-  a.style.borderRadius = "12px";
-  a.style.textAlign = "center";
-  a.style.minHeight = "140px";
-  a.style.boxShadow = "0 4px 12px rgba(0,0,0,0.3)";
-  a.style.transition = "transform 0.2s ease, box-shadow 0.2s ease";
-  a.style.color = "#ffffff"; // white
-  a.style.fontWeight = "700"; // bold
-  a.style.textDecoration = "none"; // remove underline
+  card.innerHTML = `
+    <div class="card-image">
+      <img src="${cardData.image}" alt="${cardData.name}">
+    </div>
+    <div class="card-info">
+      <h3 class="card-name">${cardData.name}</h3>
+      <p class="card-title">${cardData.titleText || ""}</p>
+      <a href="${cardData.link}" target="_blank" class="card-link">Learn More</a>
+    </div>
+  `;
 
-  // Headline
-  const title = document.createElement("h3");
-  title.textContent = cardData.title;
-  title.style.margin = "0";
-  a.appendChild(title);
-
-  // ==== Time Ago Utility ====
-  function timeAgo(date) {
-    const seconds = Math.floor((Date.now() - new Date(date)) / 1000);
-
-    const intervals = {
-      year: 31536000,
-      month: 2592000,
-      day: 86400,
-      hour: 3600,
-      minute: 60
-    };
-
-    for (let unit in intervals) {
-      const value = Math.floor(seconds / intervals[unit]);
-      if (value >= 1) return `${value} ${unit}${value > 1 ? "s" : ""} ago`;
-    }
-
-    return "Just now";
-  }
-
-  // ==== Timestamp on card ====
-  if (cardData.pubDate) {
-    const ts = document.createElement("div");
-    ts.classList.add("timestamp");
-    ts.textContent = timeAgo(cardData.pubDate);
-    a.appendChild(ts);
-  }
-
-  wrapper.appendChild(a);
-  return wrapper;
+  return card;
 }
 
-  // Hover effect
-  a.addEventListener('mouseover', () => {
-    a.style.transform = "translateY(-3px)";
-    a.style.boxShadow = "0 6px 14px rgba(0,0,0,0.4)";
-    a.style.background = "rgba(0, 40, 80, 0.8)";
-  });
-  a.addEventListener('mouseout', () => {
-    a.style.transform = "translateY(0)";
-    a.style.boxShadow = "0 4px 12px rgba(0,0,0,0.3)";
-    a.style.background = "#1f2937";
-  });
+// Attach NBC click handler to load carousel dynamically
+document.addEventListener("DOMContentLoaded", () => {
+  const nbcCard = document.getElementById("nbc-card");
+  if (nbcCard) {
+    nbcCard.addEventListener("click", async () => {
+      await loadNBCNewsCarousel();
+      openCarouselModal(); // assumes your modal logic function
+    });
+  }
 
-  wrapper.appendChild(a);
-  return wrapper;
-}
-// === Step 2: Populate NBC carousel dynamically (no duplicates) ===
+  // Hub nav scroll logic
+  const navButtons = document.querySelectorAll('#hub-nav button');
+  navButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const section = document.getElementById(btn.dataset.target);
+      if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+});
+
+// === Step 2: Populate NBC carousel dynamically ===
 async function loadNBCNewsCarousel() {
-  // Replace this array with your manual JSON or feed later
-  const stories = [
-    { title: "Republicans seek an alternative to Obamacare", link: "https://www.nbcnews.com/now/video/republicans-seek-an-alternative-to-obamacare-252007493796", image: "/assets/nbc.png" },
-    { title: "Global markets see major fluctuations", link: "#", image: "/assets/nbc.png" },
-    { title: "Local coverage highlights community events", link: "#", image: "/assets/nbc.png" },
-    { title: "Tech news roundup", link: "#", image: "/assets/nbc.png" },
-    { title: "Sports update: playoffs recap", link: "#", image: "/assets/nbc.png" }
-  ];
+  const feedUrl = "https://feeds.nbcnews.com/nbcnews/public/news";
+  const stories = await fetchRSSFeed(feedUrl);
 
   const carousel = document.querySelector("#network-carousel .carousel-content");
   if (!carousel) return;
 
-  // Clear existing content to prevent duplicates
+  // Clear existing content
   carousel.innerHTML = "";
 
   // Add cards to carousel
   stories.forEach(story => {
     const card = createNBCCard(story);
-    carousel.appendChild(card);
+    const wrapper = document.createElement("div");
+    wrapper.classList.add("carousel-item");
+    wrapper.appendChild(card);
+    carousel.appendChild(wrapper);
   });
 
   // Make carousel visible
-  document.getElementById("network-carousel").style.display = "flex";
-
-  // Apply enforced styles as a fallback
-  enforceNBCCardStyles();
+  document.getElementById("network-carousel").style.display = "block";
 }
-
-// === JS fallback to enforce NBC card styles ===
-function enforceNBCCardStyles() {
-  document.querySelectorAll('#network-carousel .carousel-item a.news-fallback-link').forEach(a => {
-    try {
-      a.style.setProperty('color', '#ffffff', 'important');
-      a.style.setProperty('font-weight', '700', 'important');
-      a.style.setProperty('text-decoration', 'none', 'important');
-      a.style.setProperty('background', '#1f2937', 'important');
-      a.style.setProperty('padding', '12px', 'important');
-      a.style.setProperty('border-radius', '12px', 'important');
-      a.style.setProperty('text-align', 'center', 'important');
-
-      // Ensure the headline inside each card is white + bold
-      a.querySelectorAll('h3').forEach(h => {
-        h.style.setProperty('color', '#ffffff', 'important');
-        h.style.setProperty('font-weight', '700', 'important');
-        h.style.setProperty('text-decoration', 'none', 'important');
-      });
-    } catch (e) {
-      console.warn('enforceNBCCardStyles error', e);
-    }
-  });
-}
-
 // === SOCIAL TRENDS SECTION ===
 function loadSocialTrends() {
   const socialFeed = document.getElementById('social-feed');
@@ -1151,23 +1087,23 @@ function renderOfficials(stateFilter = null, query = '') {
 
     const card = document.createElement('div');
     card.className = `official-card ${normalizedParty}`;
-    card.innerHTML = `
-      <div class="party-stripe"></div>
-      <div class="card-body">
-        <div class="photo-wrapper">
-          <img src="${photoSrc}" alt="${o.name}"
-               onerror="this.onerror=null;this.src='assets/default-photo.png';" />
-        </div>
-        <div class="official-info">
-          <h3>${o.name || 'Unknown'}</h3>
-          <p><strong>Position:</strong> ${o.office || 'N/A'}</p>
-          ${districtDisplay}
-          <p><strong>State:</strong> ${o.state || 'United States'}</p>
-          <p><strong>Term:</strong> ${termDisplay}</p>
-          <p><strong>Party:</strong> ${o.party || 'N/A'}</p>
-        </div>
-      </div>
-    `;
+  card.innerHTML = `
+  <div class="party-stripe"></div>
+  <div class="card-body">
+    <div class="photo-wrapper">
+      <img src="${photoSrc}" alt="${o.name}"
+           onerror="this.onerror=null;this.src='assets/default-photo.png';" />
+    </div>
+    <div class="official-info">
+      <h3>${o.name || 'Unknown'}</h3>
+      <p><strong>Position:</strong> ${o.office || 'N/A'}</p>
+      ${districtDisplay}
+      <p><strong>State:</strong> ${o.state || 'United States'}</p>
+      <p><strong>Term:</strong> ${termDisplay}</p>
+      <p><strong>Party:</strong> ${o.party || 'N/A'}</p>
+    </div>
+  </div>
+`;
     card.addEventListener('click', () => openOfficialModal(o));
     officialsContainer.appendChild(card);
   });
@@ -1241,7 +1177,7 @@ function openOfficialModal(official) {
 
   modal.style.display = 'block';
 
-  // Click-outside-to-close
+  // Click-outside-to-close (scoped handler)
   const clickOutsideHandler = function(event) {
     if (event.target === modal) {
       modal.style.display = 'none';
@@ -1251,7 +1187,7 @@ function openOfficialModal(official) {
   window.addEventListener('click', clickOutsideHandler);
 }
 
-// === SAFE CLOSE MODAL ===
+// Safe close function that accepts optional id (defaults to officials modal)
 function closeModalWindow(id = 'officials-modal') {
   const el = document.getElementById(id);
   if (!el) {
@@ -1259,75 +1195,6 @@ function closeModalWindow(id = 'officials-modal') {
     return;
   }
   el.style.display = 'none';
-}
-
-// === OFFICIALS TAB INITIALIZATION ===
-document.addEventListener('DOMContentLoaded', () => {
-  officialsContainer = document.getElementById('officials-container');
-  searchBar = document.getElementById('search-bar');
-  const loadingOverlay = document.getElementById('loading-overlay');
-  officialsModal = document.getElementById('officials-modal');
-  officialsModalContent = document.getElementById('officials-content');
-  officialsModalCloseBtn = document.getElementById('officials-close');
-
-  if (officialsModalCloseBtn) {
-    officialsModalCloseBtn.addEventListener('click', () => closeModalWindow('officials-modal'));
-  }
-
-  wireSearchBar();
-  wireStateDropdown();
-
-  // === CLOSE SEARCH BAR WHEN CLICKING OUTSIDE ===
-  document.addEventListener('mousedown', event => {
-    if (!searchBar) return;
-    if (event.target !== searchBar && !searchBar.contains(event.target)) {
-      searchBar.value = '';
-      searchBar.blur();
-    }
-  });
-
-  // === LOAD OFFICIAL DATASETS ===
-  Promise.all([
-    fetch('/governors.json').then(res => res.json()),
-    fetch('/ltgovernors.json').then(res => res.json()),
-    fetch('/senators.json').then(res => res.json()),
-    fetch('/housereps.json').then(res => res.json())
-  ])
-    .then(([govs, ltGovs, sens, reps]) => {
-      governors = govs;
-      ltGovernors = ltGovs;
-      senators = sens;
-      houseReps = reps;
-
-      if (typeof renderOfficials === 'function') {
-        renderOfficials(selectedState, '');
-      }
-
-      if (loadingOverlay) {
-        loadingOverlay.style.transition = 'opacity 0.5s ease';
-        loadingOverlay.style.opacity = '0';
-        setTimeout(() => loadingOverlay.remove(), 500);
-      }
-    })
-    .catch(err => {
-      console.error('Error loading official data:', err);
-      if (loadingOverlay) {
-        loadingOverlay.textContent = 'Failed to load data.';
-      }
-    });
-});
-
-// === STATE DROPDOWN WIRING ===
-function wireStateDropdown() {
-  const dropdown = document.getElementById('state-dropdown');
-  if (!dropdown) return;
-
-  dropdown.value = selectedState;
-
-  dropdown.addEventListener('change', () => {
-    selectedState = dropdown.value;
-    renderOfficials(selectedState, '');
-  });
 }
 
 // === SEARCH BAR WIRING ===
@@ -1342,13 +1209,13 @@ function wireSearchBar() {
     renderOfficials(null, query);
   });
 }
-
 // ==== HOME HUB NAV ====
+
 function showStartupHub() {
   showTab('startup-hub');
 }
 
-// === STICKY HUB NAV INITIALIZATION ===
+// Initialize sticky nav
 function initHubNav() {
   const navButtons = document.querySelectorAll('#hub-nav button');
 
@@ -1359,12 +1226,13 @@ function initHubNav() {
     });
   });
 
+  // Optional: highlight active section on scroll
   const sections = Array.from(navButtons).map(btn =>
     document.getElementById(btn.dataset.target)
   );
 
   window.addEventListener('scroll', () => {
-    const scrollPos = window.scrollY + 60;
+    const scrollPos = window.scrollY + 60; // adjust for sticky nav height
     sections.forEach((sec, idx) => {
       if (sec.offsetTop <= scrollPos && sec.offsetTop + sec.offsetHeight > scrollPos) {
         navButtons.forEach(b => b.classList.remove('active'));
@@ -1373,7 +1241,6 @@ function initHubNav() {
     });
   });
 }
-
 // --- National Networks Carousel Logic ---
 document.addEventListener('DOMContentLoaded', () => {
   const cards = document.querySelectorAll('#national-networks .info-card');
@@ -1432,60 +1299,143 @@ document.addEventListener('DOMContentLoaded', () => {
     card.addEventListener('click', () => {
       const source = card.dataset.source;
 
-      // --- NBC Live RSS Carousel ---
-      if (source === 'nbc') {
-        carouselContent.innerHTML = ''; // clear previous items
-        const rssUrl = 'https://feeds.nbcnews.com/nbcnews/public/news';
-        const corsProxy = 'https://corsproxy.io/?' + encodeURIComponent(rssUrl);
+     // --- NBC Live RSS Carousel ---
+if (source === 'nbc') {
+  carouselContent.innerHTML = ''; // clear previous items
+  const rssUrl = 'https://www.nbcnews.com/id/3032091/device/rss/rss.xml';
+  const corsProxy = 'https://corsproxy.io/?' + encodeURIComponent(rssUrl);
 
-        fetch(corsProxy)
-          .then(response => response.text())
-          .then(str => {
-            const parser = new DOMParser();
-            const xmlDoc = parser.parseFromString(str, "text/xml");
-            const items = xmlDoc.querySelectorAll('item');
+  fetch(corsProxy)
+    .then(response => response.text())
+    .then(str => {
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(str, "text/xml");
+      const items = xmlDoc.querySelectorAll('item');
 
-            items.forEach((item, idx) => {
-              if (idx >= 5) return; // top 5 only
-              const title = item.querySelector('title')?.textContent || "No title";
-              const link = item.querySelector('link')?.textContent || "#";
-              const slide = document.createElement('div');
-              slide.className = 'carousel-item';
-              slide.innerHTML = `<a href="${link}" target="_blank">${title}</a>`;
-              carouselContent.appendChild(slide);
-            });
+      items.forEach((item, idx) => {
+        if (idx >= 5) return; // top 5 only
+        const title = item.querySelector('title')?.textContent || "No title";
+        const link = item.querySelector('link')?.textContent || "#";
+        const slide = document.createElement('div');
+        slide.className = 'carousel-item';
+        slide.innerHTML = `<a href="${link}" target="_blank">${title}</a>`;
+        carouselContent.appendChild(slide);
+      });
 
-            seeAllLink.href = 'https://www.nbcnews.com/';
-            carouselContainer.style.display = 'flex';
+      seeAllLink.href = 'https://www.nbcnews.com/';
+      carouselContainer.style.display = 'flex';
 
-            // Smooth scroll adjustment
-            const offset = carouselContainer.getBoundingClientRect().top + window.scrollY - 120;
-            window.scrollTo({ top: offset, behavior: 'smooth' });
-          })
-          .catch(err => {
-            console.error("NBC RSS fetch failed:", err);
-            carouselContent.innerHTML = '<p>Failed to load live stories.</p>';
-            carouselContainer.style.display = 'flex';
-          });
+      // Smooth scroll adjustment
+      const offset = carouselContainer.getBoundingClientRect().top + window.scrollY - 120;
+      window.scrollTo({ top: offset, behavior: 'smooth' });
+    })
+    .catch(err => {
+      console.error("NBC RSS fetch failed:", err);
+      carouselContent.innerHTML = '<p>Failed to load live stories.</p>';
+      carouselContainer.style.display = 'flex';
+    });
 
-        return; // exit early since NBC is handled
-      }
+  return; // exit early since NBC is handled
+}
 
       // --- Static demo for other networks ---
       const data = demoData[source];
-      if (data) {
-        carouselContent.innerHTML = data.items
-          .map(item => `<div class="carousel-item"><a href="${item.link}" target="_blank">${item.title}</a></div>`)
-          .join("");
+      if (!data) return;
 
-        seeAllLink.href = data.url;
-        carouselContainer.style.display = 'flex';
+      carouselContent.innerHTML = data.items
+        .map(item => `<div class="carousel-item"><a href="${item.link}" target="_blank">${item.title}</a></div>`)
+        .join("");
 
-        // Smooth scroll adjustment
-        const offset = carouselContainer.getBoundingClientRect().top + window.scrollY - 120;
-        window.scrollTo({ top: offset, behavior: 'smooth' });
-      }
+      seeAllLink.href = data.url;
+      carouselContainer.style.display = 'flex';
 
+      // Smooth scroll adjustment
+      const offset = carouselContainer.getBoundingClientRect().top + window.scrollY - 120;
+      window.scrollTo({ top: offset, behavior: 'smooth' });
     });
   });
+});
+
+// Initialize sticky hub nav
+document.addEventListener('DOMContentLoaded', () => {
+  initHubNav();
+});
+
+// === STATE DROPDOWN WIRING ===
+function wireStateDropdown() {
+  const dropdown = document.getElementById('state-dropdown');
+  if (!dropdown) return;
+
+  dropdown.value = selectedState;
+
+  dropdown.addEventListener('change', () => {
+    selectedState = dropdown.value;
+    window.selectedState = selectedState;
+    renderOfficials(selectedState, '');
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const officialsContainer = document.getElementById('officials-container');
+  const searchBar = document.getElementById('search-bar');
+  const loadingOverlay = document.getElementById('loading-overlay');
+
+  const officialsModal = document.getElementById('officials-modal');
+  const officialsModalContent = document.getElementById('officials-content');
+  const officialsModalCloseBtn = document.getElementById('officials-close');
+
+  if (officialsModalCloseBtn) {
+    officialsModalCloseBtn.addEventListener('click', () => closeModalWindow('officials-modal'));
+  }
+
+  wireSearchBar();
+  wireStateDropdown();
+
+  function closeOfficialsSearch() {
+    if (!searchBar) return;
+    searchBar.value = '';
+    searchBar.blur();
+  }
+
+  document.addEventListener('mousedown', event => {
+    if (!searchBar) return;
+    if (event.target !== searchBar && !searchBar.contains(event.target)) {
+      closeOfficialsSearch();
+    }
+  });
+
+  // === Load officials data with smooth fade-in ===
+  Promise.all([
+    fetch('/governors.json').then(res => res.json()),
+    fetch('/ltgovernors.json').then(res => res.json()),
+    fetch('/senators.json').then(res => res.json()),
+    fetch('/housereps.json').then(res => res.json())
+  ])
+    .then(([govs, ltGovs, sens, reps]) => {
+      governors = govs;
+      ltGovernors = ltGovs;
+      senators = sens;
+      houseReps = reps;
+
+      // Render officials
+      renderOfficials(selectedState, '');
+
+      // Fade out loading overlay
+      if (loadingOverlay) {
+        loadingOverlay.style.transition = 'opacity 0.5s ease';
+        loadingOverlay.style.opacity = '0';
+        setTimeout(() => loadingOverlay.remove(), 500);
+      }
+
+      // Load social trends
+      const socialFeed = document.getElementById('social-feed');
+      if (socialFeed && typeof loadSocialTrends === 'function') {
+        console.log("🎬 loadSocialTrends is running...");
+        loadSocialTrends();
+      }
+    })
+    .catch(err => {
+      console.error('Error loading official data:', err);
+      if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
+    });
 });
