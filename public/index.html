@@ -100,36 +100,36 @@
     <button type="button" data-target="popular-podcasts">Popular Podcasts</button>
   </div>
 
-<!-- Sections -->
-<!-- National Broadcasting Networks -->
+  <!-- Sections -->
+ <!-- National Broadcasting Networks -->
 <section id="national-networks" class="category-section">
   <h2>National Broadcasting Networks</h2>
   <div class="card-grid">
-    <!-- NBC Card (will be replaced by RSS feed carousel) -->
-    <div class="info-card" id="nbc-card" data-source="nbc">
-      <img src="/assets/nbc.png" alt="NBC News Logo" class="card-logo" />
-      <h3>NBC News</h3>
-      <p>National TV news coverage from NBC.</p>
-    </div>
+    <!-- NBC Card (active) -->
+   <div class="info-card" id="nbc-card" data-source="nbc">
+  <img src="assets/logos/nbc.png" alt="NBC News Logo" class="card-logo" />
+  <h3>NBC News</h3>
+  <p>National TV news coverage from NBC.</p>
+</div>
 
-    <!-- Other networks (static placeholders) -->
+    <!-- Other networks (placeholders for now, no live fetch) -->
     <div class="info-card" data-source="abc">
-      <img src="/assets/abc.png" alt="ABC News Logo" class="card-logo" />
+      <img src="assets/logos/abc.png" alt="ABC News Logo" class="card-logo" />
       <h3>ABC News</h3>
       <p>Coverage from ABC News.</p>
     </div>
     <div class="info-card" data-source="cbs">
-      <img src="/assets/cbs.png" alt="CBS News Logo" class="card-logo" />
+      <img src="assets/logos/cbs.png" alt="CBS News Logo" class="card-logo" />
       <h3>CBS News</h3>
       <p>CBS News broadcasts and updates.</p>
     </div>
     <div class="info-card" data-source="fox">
-      <img src="/assets/fox.png" alt="FOX News Logo" class="card-logo" />
+      <img src="assets/logos/fox.png" alt="Fox News Logo" class="card-logo" />
       <h3>FOX News</h3>
       <p>Latest stories from FOX News.</p>
     </div>
     <div class="info-card" data-source="cnn">
-      <img src="/assets/cnn.png" alt="CNN Logo" class="card-logo" />
+      <img src="assets/logos/cnn.png" alt="CNN Logo" class="card-logo" />
       <h3>CNN</h3>
       <p>Breaking news and political analysis from CNN.</p>
     </div>
@@ -141,6 +141,88 @@
     <a href="#" id="see-all-link" target="_blank" class="see-all-link">See All →</a>
   </div>
 </section>
+
+  <section id="newspaper-media" class="category-section">
+    <h2>Newspaper Media</h2>
+    <div class="card-grid" id="newspapers-container">
+      <div class="info-card" onclick="window.open('https://www.washingtonpost.com','_blank')">
+        <h3>The Washington Post</h3>
+        <p>Top stories and political analysis from WaPo.</p>
+      </div>
+      <div class="info-card" onclick="window.open('https://www.nytimes.com','_blank')">
+        <h3>The New York Times</h3>
+        <p>Latest coverage from The New York Times.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="global-news" class="category-section">
+    <h2>Global Politics & World News</h2>
+    <div class="card-grid" id="global-container">
+      <div class="info-card" onclick="window.open('https://www.politico.com','_blank')">
+        <h3>Politico</h3>
+        <p>Breaking global politics coverage.</p>
+      </div>
+      <div class="info-card" onclick="window.open('https://www.reuters.com','_blank')">
+        <h3>Reuters</h3>
+        <p>Trusted reporting on international affairs.</p>
+      </div>
+      <div class="info-card" onclick="window.open('https://www.bbc.com/news','_blank')">
+        <h3>BBC News</h3>
+        <p>Global headlines and analysis from BBC.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="finance-markets" class="category-section">
+    <h2>Finance & Markets</h2>
+    <div class="card-grid" id="finance-container">
+      <div class="info-card" onclick="window.open('https://www.bloomberg.com','_blank')">
+        <h3>Bloomberg</h3>
+        <p>Business, markets, and finance news.</p>
+      </div>
+      <div class="info-card" onclick="window.open('https://www.wsj.com','_blank')">
+        <h3>Wall Street Journal</h3>
+        <p>Financial reporting and stock market coverage.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="tech-innovation" class="category-section">
+    <h2>Tech & Innovation</h2>
+    <div class="card-grid" id="tech-container">
+      <div class="info-card" onclick="window.open('https://www.theverge.com','_blank')">
+        <h3>The Verge</h3>
+        <p>Tech news, gadgets, and emerging innovations.</p>
+      </div>
+      <div class="info-card" onclick="window.open('https://www.wired.com','_blank')">
+        <h3>Wired</h3>
+        <p>Tech culture and innovation coverage.</p>
+      </div>
+      <div class="info-card" onclick="window.open('https://techcrunch.com','_blank')">
+        <h3>TechCrunch</h3>
+        <p>Startups, venture capital, and tech news.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="popular-podcasts" class="category-section">
+    <h2>Popular Podcasts</h2>
+    <div class="card-grid" id="podcasts-container">
+      <div class="info-card" onclick="window.open('https://crooked.com/podcast-series/pod-save-america/','_blank')">
+        <h3>Pod Save America</h3>
+        <p>Political commentary from Pod Save America.</p>
+      </div>
+      <div class="info-card" onclick="window.open('https://www.nytimes.com/column/the-daily','_blank')">
+        <h3>The Daily (NYT)</h3>
+        <p>News analysis and storytelling from The Daily.</p>
+      </div>
+      <div class="info-card" onclick="window.open('https://www.npr.org/sections/politics/','_blank')">
+        <h3>NPR Politics</h3>
+        <p>Political coverage and analysis from NPR.</p>
+      </div>
+    </div>
+  </section>
 
   <!-- 🌍 Social Trends Section (kept but empty for now) -->
   <section id="social-trends">
@@ -169,6 +251,10 @@
       <a id="carousel-see-all" href="#" target="_blank" class="see-all-link">See All</a>
     </div>
   </div>
+
+  <!-- Your scripts at the bottom -->
+  <script src="script.js"></script>
+</body>
 
 <!-- Inline styles only for the hub nav to match site theme (keep these or move to your css file) -->
 <style>
@@ -4347,75 +4433,6 @@
     </div>
   </div>
 </div>
-<style>
-/* === FORCE NBC CARD STYLES (place this block LAST in your HTML, before </body>) === */
-
-/* Make the entire card headline white, bold, no underline */
-#network-carousel .carousel-item a.nbc-card h3,
-#network-carousel .carousel-item a.nbc-card .card-name,
-#network-carousel .carousel-item a.nbc-card .card-title {
-  color: #ffffff !important;
-  font-weight: 700 !important;
-  text-decoration: none !important;
-  margin: 0 !important;
-  line-height: 1.2 !important;
-}
-
-/* Remove any underlines / borders on the anchor itself */
-#network-carousel .carousel-item a.nbc-card,
-#network-carousel .carousel-item a.nbc-card:visited,
-#network-carousel .carousel-item a.nbc-card:hover,
-#network-carousel .carousel-item a.nbc-card:active {
-  text-decoration: none !important;
-  outline: none !important;
-  border: none !important;
-  color: #ffffff !important;
-}
-
-/* Ensure h3 wraps fully and shows multi-line headline */
-#network-carousel .carousel-item a.nbc-card h3,
-#network-carousel .carousel-item a.nbc-card .card-name {
-  display: block !important;
-  white-space: normal !important;
-  overflow: visible !important;
-  max-height: none !important;
-}
-
-/* Keep card background and sizing consistent with other cards */
-#network-carousel .carousel-item a.nbc-card.official-card,
-#network-carousel .carousel-item a.nbc-card {
-  background: #1f2937 !important; /* dark gray background */
-  box-shadow: 0 6px 18px rgba(0,0,0,0.15) !important;
-  border-radius: 12px !important;
-  padding: 12px !important;
-  width: 180px !important;
-  min-height: 120px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: flex-start !important;
-  gap: 8px !important;
-}
-
-/* Small logo sizing at top */
-#network-carousel .carousel-item a.nbc-card img {
-  width: 72px !important;
-  height: 72px !important;
-  object-fit: contain !important;
-  margin-bottom: 6px !important;
-}
-
-/* Prevent child <a> underlines if any inner link exists */
-#network-carousel .carousel-item a.nbc-card a {
-  text-decoration: none !important;
-  color: inherit !important;
-}
-
-/* Force clickable area to fill whole card */
-#network-carousel .carousel-item {
-  display: inline-block !important;
-}
-</style>
 
 <script src="script.js"></script>
 </body>
