@@ -1455,4 +1455,6 @@ if (demoData[source]) {
   const offset = carouselContainer.getBoundingClientRect().top + window.scrollY - 120;
   window.scrollTo({ top: offset, behavior: 'smooth' });
 }
-});
+
+// --- Ensure DOMContentLoaded wrapper is closed ---
+}); // End of document.addEventListener("DOMContentLoaded", () => { ... })
