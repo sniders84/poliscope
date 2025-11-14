@@ -1563,3 +1563,33 @@ a, button, .tab, .card-button,
   box-shadow: 0 6px 14px rgba(0,0,0,0.4);
   background: rgba(0, 40, 80, 0.8);
 }
+/* === FORCE NBC CARD LINK STYLES === */
+#network-carousel .carousel-item a.nbc-card,
+#network-carousel .carousel-item a.nbc-card:visited,
+#network-carousel .carousel-item a.nbc-card:hover,
+#network-carousel .carousel-item a.nbc-card:active {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+}
+
+/* Headline text */
+#network-carousel .carousel-item a.nbc-card h3 {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+}
+
+/* Timestamp text */
+#network-carousel .carousel-item a.nbc-card .timestamp {
+  color: #cccccc !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  margin-top: 6px;
+}
+
+/* Remove underline from ANY child link NBC might inject */
+#network-carousel .carousel-item a.nbc-card * {
+  text-decoration: none !important;
+  color: inherit !important;
+}
