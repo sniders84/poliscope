@@ -135,12 +135,72 @@
     </div>
   </div>
 
-  <!-- Inline Carousel Container (for NBC only) -->
-  <div id="network-carousel" class="carousel-container" style="display: none;">
-    <div class="carousel-content"></div>
-    <a href="#" id="see-all-link" target="_blank" class="see-all-link">See All →</a>
-  </div>
-</section>
+// === Step 1: Create a single NBC card (fallback link styled as a card) ===
+function createNBCCard(cardData) {
+  const wrapper = document.createElement('div');
+  wrapper.classList.add('carousel-item');
+
+  // Fallback link (styled like a clean card)
+  const a = document.createElement("a");
+  a.href = cardData.link;
+  a.target = "_blank";
+  a.classList.add("news-fallback-link");
+  a.textContent = cardData.title;
+
+  // Enforce styling for white bold headline, no underline
+  a.style.color = "#ffffff";
+  a.style.fontWeight = "700";
+  a.style.textDecoration = "none";
+  a.style.display = "block";
+  a.style.background = "#1f2937";
+  a.style.padding = "12px";
+  a.style.borderRadius = "12px";
+  a.style.textAlign = "center";
+  a.style.minHeight = "140px";
+  a.style.boxShadow = "0 4px 12px rgba(0,0,0,0.3)";
+  a.style.transition = "transform 0.2s ease, box-shadow 0.2s ease";
+
+  a.addEventListener('mouseover', () => {
+    a.style.transform = "translateY(-3px)";
+    a.style.boxShadow = "0 6px 14px rgba(0,0,0,0.4)";
+    a.style.background = "rgba(0, 40, 80, 0.8)";
+  });
+  a.addEventListener('mouseout', () => {
+    a.style.transform = "translateY(0)";
+    a.style.boxShadow = "0 4px 12px rgba(0,0,0,0.3)";
+    a.style.background = "#1f2937";
+  });
+
+  wrapper.appendChild(a);
+  return wrapper;
+}
+
+// === Step 2: Populate NBC carousel dynamically (no duplicates) ===
+async function loadNBCNewsCarousel() {
+  const feedUrl = "https://feeds.nbcnews.com/nbcnews/public/news";
+  const stories = await fetchRSSFeed(feedUrl);
+
+  const carousel = document.querySelector("#network-carousel .carousel-content");
+  if (!carousel) return;
+
+  // Clear existing content to prevent duplicates
+  carousel.innerHTML = "";
+
+  // Add cards to carousel
+  stories.forEach(story => {
+    const card = createNBCCard(story);
+    carousel.appendChild(card);
+  });
+
+  // Show the carousel
+  const container = document.getElementById("network-carousel");
+  if (container) container.style.display = "flex";
+}
+
+// === Auto-load NBC carousel on page load ===
+document.addEventListener("DOMContentLoaded", async () => {
+  await loadNBCNewsCarousel();
+});
 
   <!-- 🌍 Social Trends Section (kept but empty for now) -->
   <section id="social-trends">
