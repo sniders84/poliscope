@@ -1213,7 +1213,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Other existing functions and variables above ---
 
 const rssFeeds = {
-  msnbc: 'https://feeds.nbcnews.com/feeds/msnbc',
+  msnbc: 'https://www.nbcnews.com/rss',
   abc: 'http://feeds.abcnews.com/abcnews/usheadlines',
   cbs: 'https://www.cbsnews.com/latest/rss/main',
   fox: 'https://feeds.foxnews.com/foxnews/latest',
