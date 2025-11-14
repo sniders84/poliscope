@@ -100,17 +100,40 @@
     <button data-target="popular-podcasts">Popular Podcasts</button>
   </div>
 
-  <!-- Sections -->
-  <section id="national-networks" class="category-section">
-    <h2>National Broadcasting Networks</h2>
-    <div class="card-grid">
-      <div class="info-card"><h3>NBC News</h3><p>National TV news coverage from NBC.</p></div>
-      <div class="info-card"><h3>ABC News</h3><p>Coverage from ABC News.</p></div>
-      <div class="info-card"><h3>CBS News</h3><p>CBS News broadcasts and updates.</p></div>
-      <div class="info-card"><h3>FOX News</h3><p>Latest stories from FOX News.</p></div>
-      <div class="info-card"><h3>CNN</h3><p>Breaking news and political analysis from CNN.</p></div>
+ <!-- Sections -->
+<section id="national-networks" class="category-section">
+  <h2>National Broadcasting Networks</h2>
+  <div class="card-grid" id="network-cards">
+    <div class="info-card" data-network="msnbc">
+      <img src="public/assets/msnbc.png" alt="MSNBC Logo" class="network-logo">
+      <h3>MSNBC</h3>
+      <p>A counter to FOX News coverage.</p>
     </div>
-  </section>
+    <div class="info-card" data-network="abc">
+      <img src="public/assets/abc.png" alt="ABC News Logo" class="network-logo">
+      <h3>ABC News</h3>
+      <p>National news coverage from ABC.</p>
+    </div>
+    <div class="info-card" data-network="cbs">
+      <img src="public/assets/cbs.png" alt="CBS News Logo" class="network-logo">
+      <h3>CBS News</h3>
+      <p>CBS News broadcasts and updates.</p>
+    </div>
+    <div class="info-card" data-network="fox">
+      <img src="public/assets/fox.png" alt="FOX News Logo" class="network-logo">
+      <h3>FOX News</h3>
+      <p>Latest stories from FOX News.</p>
+    </div>
+    <div class="info-card" data-network="cnn">
+      <img src="public/assets/cnn.png" alt="CNN Logo" class="network-logo">
+      <h3>CNN</h3>
+      <p>Breaking news and political analysis from CNN.</p>
+    </div>
+  </div>
+
+  <!-- Row for top stories -->
+  <div class="card-grid" id="network-stories"></div>
+</section>
 
   <section id="newspaper-media" class="category-section">
     <h2>Newspaper Media</h2>
