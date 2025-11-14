@@ -1480,3 +1480,19 @@ a, button, .tab, .card-button,
 .nbc-card:hover {
   transform: translateY(-3px);
 }
+.nbc-card h3 {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+}
+
+.nbc-card {
+  text-decoration: none !important;
+}
+
+.nbc-card a,
+.nbc-card a:visited,
+.nbc-card a:hover {
+  text-decoration: none !important;
+  color: inherit !important;
+}
