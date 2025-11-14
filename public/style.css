@@ -1442,3 +1442,57 @@ a, button, .tab, .card-button,
 .see-more:hover {
   text-decoration: underline;
 }
+/* === Official Cards Styling (for top stories) === */
+.official-card {
+  display: flex;
+  flex-direction: column; /* Column layout for story title */
+  justify-content: center;
+  align-items: flex-start;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  padding: 16px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  width: 220px; /* Adjust width to match official cards */
+  min-height: 100px; /* Optional: keep uniform card heights */
+}
+
+.official-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.official-card h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  color: #333;
+}
+
+/* See More link styling */
+.official-card.see-more {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: #007BFF;
+  text-decoration: underline;
+  background: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.official-card.see-more:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Optional: make the story cards row appear below network cards nicely */
+#network-stories {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
