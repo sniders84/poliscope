@@ -1239,77 +1239,77 @@ async function renderNetworkStories(network) {
   if (!feedUrl) return;
 
   const stories = await fetchRss(feedUrl);
-  const container = document.getElementById('network-stories');
-  container.innerHTML = ''; // clear previous stories
+  const container = document.getElementById("network-stories");
+  container.innerHTML = ""; // clear previous stories
 
+  // --- Create each shrunken story card ---
   stories.forEach(item => {
-    const card = document.createElement('div');
-    card.className = 'official-card';
+    const card = document.createElement("div");
+    card.className = "story-card"; // <-- NEW small-format card
     card.innerHTML = `<h4>${item.title}</h4>`;
-    card.onclick = () => window.open(item.link, '_blank');
+    card.onclick = () => window.open(item.link, "_blank");
     container.appendChild(card);
   });
 
-  // Append "See More" next to last story
-  if (stories.length > 0) {
-    const seeMore = document.createElement('div');
-    seeMore.className = 'see-more';
-    seeMore.innerText = 'See More';
-    seeMore.onclick = () => {
-      // Proper site URL for MSNBC, others open homepage
-      const urlMap = {
-        msnbc: 'https://www.msnbc.com',
-        abc: 'https://abcnews.go.com',
-        cbs: 'https://www.cbsnews.com',
-        fox: 'https://www.foxnews.com',
-        cnn: 'https://edition.cnn.com'
-      };
-      window.open(urlMap[network] || feedUrl, '_blank');
-    };
-    container.appendChild(seeMore);
-  }
+  // --- Proper "See More" link (NOT inside a card) ---
+  const seeMore = document.createElement("div");
+  seeMore.className = "see-more-link";
+  seeMore.innerText = "See More";
+
+  const siteMap = {
+    msnbc: "https://www.msnbc.com",
+    abc: "https://abcnews.go.com",
+    cbs: "https://www.cbsnews.com",
+    fox: "https://www.foxnews.com",
+    cnn: "https://www.cnn.com"
+  };
+
+  seeMore.onclick = () => {
+    window.open(siteMap[network] || siteMap["msnbc"], "_blank");
+  };
+
+  container.appendChild(seeMore);
 }
 
 // Add click listeners to network cards
-document.querySelectorAll('#network-cards .info-card').forEach(card => {
-  card.addEventListener('click', () => {
+document.querySelectorAll("#network-cards .info-card").forEach(card => {
+  card.addEventListener("click", () => {
     const network = card.dataset.network;
     renderNetworkStories(network);
   });
 });
 
-  // === Load officials data with smooth fade-in ===
-  Promise.all([
-    fetch('/governors.json').then(res => res.json()),
-    fetch('/ltgovernors.json').then(res => res.json()),
-    fetch('/senators.json').then(res => res.json()),
-    fetch('/housereps.json').then(res => res.json())
-  ])
-    .then(([govs, ltGovs, sens, reps]) => {
-      governors = govs;
-      ltGovernors = ltGovs;
-      senators = sens;
-      houseReps = reps;
+// === Load officials data with smooth fade-in ===
+Promise.all([
+  fetch("/governors.json").then(res => res.json()),
+  fetch("/ltgovernors.json").then(res => res.json()),
+  fetch("/senators.json").then(res => res.json()),
+  fetch("/housereps.json").then(res => res.json())
+])
+  .then(([govs, ltGovs, sens, reps]) => {
+    governors = govs;
+    ltGovernors = ltGovs;
+    senators = sens;
+    houseReps = reps;
 
-      // Render officials
-      renderOfficials(selectedState, '');
+    // Render officials
+    renderOfficials(selectedState, "");
 
-      // Fade out loading overlay
-      if (loadingOverlay) {
-        loadingOverlay.style.transition = 'opacity 0.5s ease';
-        loadingOverlay.style.opacity = '0';
-        setTimeout(() => loadingOverlay.remove(), 500);
-      }
+    // Fade out loading overlay
+    if (loadingOverlay) {
+      loadingOverlay.style.transition = "opacity 0.5s ease";
+      loadingOverlay.style.opacity = "0";
+      setTimeout(() => loadingOverlay.remove(), 500);
+    }
 
-      // Load social trends
-      const socialFeed = document.getElementById('social-feed');
-      if (socialFeed && typeof loadSocialTrends === 'function') {
-        console.log("🎬 loadSocialTrends is running...");
-        loadSocialTrends();
-      }
-    })
-    .catch(err => {
-      console.error('Error loading official data:', err);
-      if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
-    });
-});
+    // Load social trends
+    const socialFeed = document.getElementById("social-feed");
+    if (socialFeed && typeof loadSocialTrends === "function") {
+      console.log("🎬 loadSocialTrends is running...");
+      loadSocialTrends();
+    }
+  })
+  .catch(err => {
+    console.error("Error loading official data:", err);
+    if (loadingOverlay) loadingOverlay.textContent = "Failed to load data.";
+  });
