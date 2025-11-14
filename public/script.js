@@ -1212,13 +1212,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Other existing functions and variables above ---
 
-
 const rssFeeds = {
-  msnbc: 'https://www.msnbc.com/feeds/latest', // working MSNBC RSS
-  abc: 'http://feeds.abcnews.com/abcnews/usheadlines',
-  cbs: 'https://www.cbsnews.com/latest/rss/main',
-  fox: 'https://feeds.foxnews.com/foxnews/latest',
-  cnn: 'http://rss.cnn.com/rss/cnn_topstories.rss'
+  msnbc: {
+    feed: 'https://feeds.nbcnews.com/feeds/msnbc',
+    site: 'https://www.msnbc.com'
+  },
+  abc: {
+    feed: 'http://feeds.abcnews.com/abcnews/usheadlines',
+    site: 'https://abcnews.go.com'
+  },
+  cbs: {
+    feed: 'https://www.cbsnews.com/latest/rss/main',
+    site: 'https://www.cbsnews.com'
+  },
+  fox: {
+    feed: 'https://feeds.foxnews.com/foxnews/latest',
+    site: 'https://www.foxnews.com'
+  },
+  cnn: {
+    feed: 'http://rss.cnn.com/rss/cnn_topstories.rss',
+    site: 'https://www.cnn.com'
+  }
 };
 
 // Utility to fetch RSS via rss2json
@@ -1304,56 +1318,4 @@ document.querySelectorAll('#network-cards .info-card').forEach(card => {
       console.error('Error loading official data:', err);
       if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
     });
-});
-
-// Utility function to fetch RSS via rss2json
-async function fetchRss(feedUrl) {
-  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
-  try {
-    const response = await fetch(apiUrl);
-    const data = await response.json();
-    return data.items.slice(0, 5); // top 5 stories
-  } catch (err) {
-    console.error('RSS fetch error:', err);
-    return [];
-  }
-}
-
-// Render top stories under the network cards
-async function renderNetworkStories(network) {
-  const feedUrl = rssFeeds[network];
-  if (!feedUrl) return;
-
-  const stories = await fetchRss(feedUrl);
-  const container = document.getElementById('network-stories');
-  container.innerHTML = ''; // clear previous stories
-
-  stories.forEach(item => {
-    const card = document.createElement('div');
-    card.className = 'official-card'; // match your official cards style
-    card.innerHTML = `<h4>${item.title}</h4>`;
-    card.onclick = () => window.open(item.link, '_blank');
-    container.appendChild(card);
-  });
-
-  // Add "See More" link at the end
-  const seeMore = document.createElement('div');
-  seeMore.className = 'see-more';
-  seeMore.innerText = 'See More';
-  seeMore.onclick = () => {
-    let url = feedUrl;
-    if (url.includes('rss')) {
-      url = url.replace('rss',''); // crude fix to get website
-    }
-    window.open(url, '_blank');
-  };
-  container.appendChild(seeMore);
-}
-
-// Add click listeners to network cards
-document.querySelectorAll('#network-cards .info-card').forEach(card => {
-  card.addEventListener('click', () => {
-    const network = card.dataset.network;
-    renderNetworkStories(network);
-  });
 });
