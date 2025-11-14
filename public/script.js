@@ -1217,7 +1217,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Place the code you provided here
 
 const rssFeeds = {
-  msnbc: 'https://www.nbcnews.com/id/3032091/device/rss/rss.xml'
+  msnbc: 'https://feeds.nbcnews.com/feeds/msnbc',
   abc: 'http://feeds.abcnews.com/abcnews/usheadlines',
   cbs: 'https://www.cbsnews.com/latest/rss/main',
   fox: 'https://feeds.foxnews.com/foxnews/latest',
