@@ -1257,27 +1257,24 @@ async function renderNetworkStories(network) {
   seeMore.innerText = "See More";
 
   const siteMap = {
-    msnbc: "https://www.msnbc.com",
-    abc: "https://abcnews.go.com",
-    cbs: "https://www.cbsnews.com",
-    fox: "https://www.foxnews.com",
-    cnn: "https://www.cnn.com"
-  };
+  msnbc: "https://www.msnbc.com",
+  abc: "https://abcnews.go.com",
+  cbs: "https://www.cbsnews.com",
+  fox: "https://www.foxnews.com",
+  cnn: "https://www.cnn.com"
+};
 
-  seeMore.onclick = () => {
-    window.open(siteMap[network] || siteMap["msnbc"], "_blank");
-  };
+seeMore.onclick = () => {
+  window.open(siteMap[network] || siteMap["msnbc"], "_blank");
+};
 
-  container.appendChild(seeMore);
-}
+container.appendChild(seeMore);
+} // <-- closes renderNetworkStories()
 
-// Add click listeners to network cards
-document.querySelectorAll("#network-cards .info-card").forEach(card => {
-  card.addEventListener("click", () => {
-    const network = card.dataset.network;
-    renderNetworkStories(network);
-  });
-});
+}); // <-- THIS closes your DOMContentLoaded or wrapper function
+// ==================================================================
+// EVERYTHING BELOW THIS WAS BROKEN BECAUSE THIS WAS MISSING ↑
+// ==================================================================
 
 // === Load officials data with smooth fade-in ===
 Promise.all([
