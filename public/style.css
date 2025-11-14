@@ -1442,38 +1442,38 @@ a, button, .tab, .card-button,
 .see-more:hover {
   text-decoration: underline;
 }
-/* === Official Cards Styling (for top stories) === */
+/* === Official Cards Styling for Top Stories (Shrunk Version) === */
 .official-card {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Column layout for story title */
   justify-content: center;
   align-items: flex-start;
-  background: #2c2c2c; /* dark grey */
+  background: #2b2b2b; /* Dark grey background */
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  margin: 10px;
-  padding: 12px; /* slightly smaller padding to shrink height */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  margin: 8px;
+  padding: 12px;
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
-  width: 220px;
-  min-height: 50px; /* 50% reduction */
+  width: 220px; /* Keep width consistent */
+  min-height: 50px; /* Shrunk height */
 }
 
 .official-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  background: #1a73e8; /* blue hue hover */
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  background: #1e3a8a; /* Blue hue on hover */
 }
 
 .official-card h4 {
-  font-size: 16px;
+  font-size: 14px; /* Smaller font to fit smaller cards */
   font-weight: 600;
   margin: 0;
-  color: #fff;
+  color: #fff; /* White text on dark background */
 }
 
-/* See More link styling (not its own card, appended next to last story) */
-.see-more {
+/* See More link styling (appears next to last card) */
+.see-more-link {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -1481,25 +1481,23 @@ a, button, .tab, .card-button,
   font-weight: 500;
   color: #007BFF;
   text-decoration: underline;
+  margin-left: 8px;
   cursor: pointer;
-  margin: 10px 0 0 10px;
 }
 
-.see-more:hover {
+.see-more-link:hover {
   color: #0056b3;
+  text-decoration: underline;
 }
 
-/* Story cards row layout */
+/* Row for top stories under network cards */
 #network-stories {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 20px;
+  margin-top: 12px;
 }
 
-/* Network logos inside cards */
-.network-logo {
-  width: 50px;
-  height: 50px;
-  object-fit: contain;
-  margin-bottom: 8px;
+.cards-row {
+  display: flex;
+  flex-wrap: wrap;
 }
