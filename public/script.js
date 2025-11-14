@@ -273,8 +273,8 @@ function renderRosterCards(rosterData, chamberLabel, container) {
     container.appendChild(card);
   }
 }
-
 // === HELPER: render a single Cabinet member card ===
+
 function renderCabinetMember(member) {
   const photoSrc = member.photo && member.photo.trim() !== ''
     ? member.photo
@@ -289,7 +289,7 @@ function renderCabinetMember(member) {
       <div class="party-stripe"></div>
       <div class="card-body">
         <div class="photo-wrapper">
-          <img src="${photoSrc}" alt="${member.name || 'Unknown'}"
+          <img src="${photoSrc}" alt="${member.name}"
                onerror="this.onerror=null;this.src='assets/default-photo.png';" />
         </div>
         <div class="official-info">
@@ -311,7 +311,7 @@ function renderCabinetMember(member) {
 // === RENDER: populate the Cabinet grid ===
 function renderCabinetGrid(cabinetData) {
   const container = document.getElementById('cabinetList');
-  container.innerHTML = ''; // clear old content
+  container.innerHTML = ''; // clear any old content
   cabinetData.forEach(member => {
     const cardWrapper = document.createElement('div');
     cardWrapper.className = 'official-card';
@@ -319,118 +319,39 @@ function renderCabinetGrid(cabinetData) {
     container.appendChild(cardWrapper);
   });
 }
-
-// === CABINET MODAL LOGIC ===
-function showCabinet() {
-  const list = document.getElementById('cabinetList');
-  const gridView = document.getElementById('cabinetGridView');
-  const detailView = document.getElementById('cabinetDetailView');
-  const modal = document.getElementById('cabinetModal');
-
-  if (!list || !gridView || !detailView || !modal) {
-    console.error('Cabinet modal elements missing.');
-    return;
-  }
-
-  gridView.style.display = 'block';
-  detailView.style.display = 'none';
-  list.innerHTML = '';
-
-  fetch('/cabinet.json')
-    .then(res => res.json())
-    .then(members => {
-      if (!Array.isArray(members)) {
-        console.error('cabinet.json is not an array');
-        list.innerHTML = '<p>Invalid Cabinet data format.</p>';
-        modal.style.display = 'block';
-        return;
-      }
-
-      members.forEach(member => {
-        const card = document.createElement('div');
-        card.className = 'official-card';
-
-        const photoSrc = member.photo && member.photo.trim() !== ''
-          ? member.photo
-          : 'assets/default-photo.png';
-
-        card.innerHTML = `
-          <div class="photo-wrapper">
-            <img src="${photoSrc}" alt="${member.name || ''}"
-                 onerror="this.onerror=null;this.src='assets/default-photo.png';" />
-          </div>
-          <div class="official-info">
-            <h3>${member.name || 'Unknown'}</h3>
-            <p><strong>Office:</strong> ${member.office || 'N/A'}</p>
-          </div>
-        `;
-
-        card.onclick = () => showCabinetMember(member);
-        list.appendChild(card);
-      });
-
-      modal.style.display = 'block';
-
-      window.addEventListener('click', function cabinetClickOutside(e) {
-        if (e.target === modal) {
-          modal.style.display = 'none';
-          window.removeEventListener('click', cabinetClickOutside);
-        }
-      });
-    })
-    .catch(err => {
-      console.error('Error loading cabinet.json:', err);
-      list.innerHTML = '<p>Error loading Cabinet data.</p>';
-      modal.style.display = 'block';
-    });
-}
-
-function showCabinetMember(member) {
-  const gridView = document.getElementById('cabinetGridView');
-  const detailView = document.getElementById('cabinetDetailView');
+function showCabinetMemberDetail(member) {
   const detail = document.getElementById('cabinetMemberDetail');
+  detail.innerHTML = `
+  <div class="detail-header">
+    <img src="${member.photo}" alt="${member.name || ''}" class="portrait"
+         onerror="this.onerror=null;this.src='assets/default-photo.png';" />
+    ${member.seal ? `<img src="${member.seal}" alt="${member.office} seal" class="seal" />` : ''}
+  </div>
+  <h2>${member.name || 'Unknown'}</h2>
+  ...
+`;
 
-  if (!gridView || !detailView || !detail) return;
+  document.getElementById('cabinetGridView').style.display = 'none';
+  document.getElementById('cabinetDetailView').style.display = 'block';
+}
+fetch('cabinet.json')
+  .then(res => res.json())
+  .then(data => renderCabinetGrid(data));
 
-  gridView.style.display = 'none';
-  detailView.style.display = 'block';
-
-  const parseYear = d => {
-    if (!d || d.trim() === '') return '';
-    const dt = new Date(d);
-    return isNaN(dt) ? '' : dt.getFullYear();
-  };
-
-  const termStartYear = parseYear(member.termStart);
-  const termEndYear = parseYear(member.termEnd) || 'Present';
-
+// === DETAIL: show a single Cabinet member in the modal ===
+function showCabinetMemberDetail(member) {
+  const detail = document.getElementById('cabinetMemberDetail');
   detail.innerHTML = `
     <div class="detail-header">
-      <img src="${member.photo}" alt="${member.name || ''}" class="portrait"
-           onerror="this.onerror=null;this.src='assets/default-photo.png';" />
-      ${member.seal ? `<img src="${member.seal}" alt="${member.office} seal" class="seal" />` : ''}
+      <img src="${member.photo}" alt="${member.name}" class="portrait" />
+      <img src="${member.seal}" alt="${member.office} seal" class="seal" />
     </div>
-    <h2>${member.name || 'Unknown'}</h2>
-    <p><strong>Office:</strong> ${member.office || 'N/A'}</p>
-    ${member.state ? `<p><strong>State:</strong> ${member.state}</p>` : ''}
-    ${member.party ? `<p><strong>Party:</strong> ${member.party}</p>` : ''}
-    ${(termStartYear || termEndYear) ? `<p><strong>Term:</strong> ${termStartYear}–${termEndYear}</p>` : ''}
-    ${member.bio ? `<p><strong>Bio:</strong> ${member.bio}</p>` : ''}
-    ${member.education ? `<p><strong>Education:</strong> ${member.education}</p>` : ''}
-    ${member.salary ? `<p><strong>Salary:</strong> ${member.salary}</p>` : ''}
-    ${member.predecessor ? `<p><strong>Predecessor:</strong> ${member.predecessor}</p>` : ''}
-    ${member.contact && member.contact.website ? `<p><a href="${member.contact.website}" target="_blank">Official Website</a></p>` : ''}
-    ${member.ballotpediaLink ? `<p><a href="${member.ballotpediaLink}" target="_blank">Ballotpedia</a></p>` : ''}
-    ${member.govtrackLink ? `<p><a href="${member.govtrackLink}" target="_blank">GovTrack</a></p>` : ''}
+    <h2>${member.name}</h2>
+    <h4>${member.office}</h4>
+    <p>${member.bio}</p>
   `;
-}
-
-function backToCabinetGrid() {
-  const gridView = document.getElementById('cabinetGridView');
-  const detailView = document.getElementById('cabinetDetailView');
-  if (!gridView || !detailView) return;
-  gridView.style.display = 'block';
-  detailView.style.display = 'none';
+  document.getElementById('cabinetGridView').style.display = 'none';
+  document.getElementById('cabinetDetailView').style.display = 'block';
 }
 
 // === CIVIC TAB ===
@@ -507,7 +428,78 @@ function showCivic() {
       }
       stateBlock.appendChild(grid);
 
+      // --- NGA block ---
+      const ngaBlock = document.createElement('div');
+      ngaBlock.className = 'civic-block';
+      ngaBlock.innerHTML = '<h2>National Governor\'s Association</h2>';
+
+      const ngaLinks = [
+        { label: 'NGA Leadership', url: 'https://www.nga.org/governors/ngaleadership/', desc: 'Meet the current leadership of the National Governors Association.' },
+        { label: 'Council of Governors', url: 'https://www.nga.org/cog/', desc: 'Explore the bipartisan Council of Governors and its national security role.' },
+        { label: 'Gubernatorial Elections', url: 'https://www.nga.org/governors/elections/', desc: 'Track upcoming and recent gubernatorial elections across the United States.' },
+        { label: 'Education, Workforce and Community Investment Task Force', url: 'https://www.nga.org/advocacy/nga-committees/education-workforce-community-investment-task-force/', desc: 'See how governors are shaping education and workforce development policy.' },
+        { label: 'Economic Development and Revitalization Task Force', url: 'https://www.nga.org/advocacy/nga-committees/economic-development-and-revitalization-task-force/', desc: 'Review strategies for economic growth and revitalization led by governors.' },
+        { label: 'Public Health and Emergency Management Task Force', url: 'https://www.nga.org/advocacy/nga-committees/public-health-and-emergency-management-task-force/', desc: 'Understand how governors coordinate public health and emergency response.' }
+      ];
+
+      const ngaGrid = document.createElement('div');
+      ngaGrid.className = 'link-grid';
+
+      ngaLinks.forEach(link => {
+        const card = document.createElement('div');
+        card.className = 'link-card';
+        card.setAttribute('onclick', `window.open('${link.url}', '_blank')`);
+        card.innerHTML = `
+          <h4>${link.label}</h4>
+          <p class="card-desc">${link.desc}</p>
+        `;
+        ngaGrid.appendChild(card);
+      });
+
+      ngaBlock.appendChild(ngaGrid);
+
+      // --- Federal block ---
+      const federalBlock = document.createElement('div');
+      federalBlock.className = 'civic-block';
+      federalBlock.innerHTML = '<h2>Federal Oversight & Transparency</h2>';
+
+      const federalGrid = document.createElement('div');
+      federalGrid.className = 'link-grid';
+
+      const federalLinks = [
+        { label: 'Committees', url: 'https://www.govtrack.us/congress/committees', desc: 'Explore congressional committees and their membership.' },
+        { label: 'Legislator Report Cards', url: 'https://www.govtrack.us/congress/members/report-cards/2024', desc: 'See performance grades for federal legislators.' },
+        { label: 'All Federal Bills', url: 'https://www.govtrack.us/congress/bills/', desc: 'Track every bill introduced in Congress.' },
+        { label: 'Recent Votes', url: 'https://www.govtrack.us/congress/votes', desc: 'Review the latest recorded votes in Congress.' }
+      ];
+
+      federalLinks.forEach(link => {
+        const card = document.createElement('div');
+        card.className = 'link-card';
+        card.setAttribute('onclick', `window.open('${link.url}', '_blank')`);
+        card.innerHTML = `
+          <h4>${link.label}</h4>
+          <p class="card-desc">${link.desc}</p>
+        `;
+        federalGrid.appendChild(card);
+      });
+
+      // Cabinet card
+      const cabinetCard = document.createElement('div');
+      cabinetCard.className = 'link-card';
+      cabinetCard.setAttribute('onclick', 'showCabinet()');
+      cabinetCard.innerHTML = `
+        <h4>Cabinet</h4>
+        <p class="card-desc">View members of the President's Cabinet.</p>
+      `;
+      federalGrid.appendChild(cabinetCard);
+
+      federalBlock.appendChild(federalGrid);
+
+      // Append all blocks
       section.appendChild(stateBlock);
+      section.appendChild(ngaBlock);
+      section.appendChild(federalBlock);
       calendar.appendChild(section);
     })
     .catch(err => {
@@ -515,19 +507,132 @@ function showCivic() {
       console.error(err);
     });
 }
+// === CABINET MODAL LOGIC ===
+function showCabinet() {
+  const list = document.getElementById('cabinetList');
+  const gridView = document.getElementById('cabinetGridView');
+  const detailView = document.getElementById('cabinetDetailView');
+  const modal = document.getElementById('cabinetModal');
+
+  if (!list || !gridView || !detailView || !modal) {
+    console.error('Cabinet modal elements missing.');
+    return;
+  }
+
+  // Always start in grid mode
+  gridView.style.display = 'block';
+  detailView.style.display = 'none';
+  list.innerHTML = '';
+
+  fetch('/cabinet.json')
+    .then(res => res.json())
+    .then(members => {
+      if (!Array.isArray(members)) {
+        console.error('cabinet.json is not an array');
+        list.innerHTML = '<p>Invalid Cabinet data format.</p>';
+        modal.style.display = 'block';
+        return;
+      }
+
+      members.forEach(member => {
+        const card = document.createElement('div');
+        card.className = 'official-card';
+
+        const photoSrc = member.photo && member.photo.trim() !== ''
+          ? member.photo
+          : 'assets/default-photo.png';
+
+        card.innerHTML = `
+  <div class="photo-wrapper">
+    <img src="${photoSrc}" alt="${member.name || ''}"
+         onerror="this.onerror=null;this.src='assets/default-photo.png';" />
+  </div>
+  <div class="official-info">
+    <h3>${member.name || 'Unknown'}</h3>
+    <p><strong>Office:</strong> ${member.office || 'N/A'}</p>
+  </div>
+`;
+
+        // Only when you click a card do we show details
+        card.onclick = () => showCabinetMember(member);
+        list.appendChild(card);
+      });
+
+      modal.style.display = 'block';
+
+      // click-outside close (scoped to this modal)
+      window.addEventListener('click', function cabinetClickOutside(e) {
+        if (e.target === modal) {
+          modal.style.display = 'none';
+          window.removeEventListener('click', cabinetClickOutside);
+        }
+      });
+    })
+    .catch(err => {
+      console.error('Error loading cabinet.json:', err);
+      list.innerHTML = '<p>Error loading Cabinet data.</p>';
+      modal.style.display = 'block';
+    });
+}
+
+function showCabinetMember(member) {
+  const gridView = document.getElementById('cabinetGridView');
+  const detailView = document.getElementById('cabinetDetailView');
+  const detail = document.getElementById('cabinetMemberDetail');
+
+  if (!gridView || !detailView || !detail) return;
+
+  gridView.style.display = 'none';
+  detailView.style.display = 'block';
+
+  // Handle empty termStart / termEnd safely
+  const parseYear = d => {
+    if (!d || d.trim() === '') return '';
+    const dt = new Date(d);
+    return isNaN(dt) ? '' : dt.getFullYear();
+  };
+  const termStartYear = parseYear(member.termStart);
+  const termEndYear = parseYear(member.termEnd) || 'Present';
+
+  detail.innerHTML = `
+    <div class="detail-header">
+      <img src="${member.photo}" alt="${member.name || ''}" class="portrait"
+           onerror="this.onerror=null;this.src='assets/default-photo.png';" />
+      ${member.seal ? `<img src="${member.seal}" alt="${member.office} seal" class="seal" />` : ''}
+    </div>
+    <h2>${member.name || 'Unknown'}</h2>
+    <p><strong>Office:</strong> ${member.office || 'N/A'}</p>
+    ${member.state ? `<p><strong>State:</strong> ${member.state}</p>` : ''}
+    ${member.party ? `<p><strong>Party:</strong> ${member.party}</p>` : ''}
+    ${(termStartYear || termEndYear) ? `<p><strong>Term:</strong> ${termStartYear}–${termEndYear}</p>` : ''}
+    ${member.bio ? `<p><strong>Bio:</strong> ${member.bio}</p>` : ''}
+    ${member.education ? `<p><strong>Education:</strong> ${member.education}</p>` : ''}
+    ${member.salary ? `<p><strong>Salary:</strong> ${member.salary}</p>` : ''}
+    ${member.predecessor ? `<p><strong>Predecessor:</strong> ${member.predecessor}</p>` : ''}
+    ${member.contact && member.contact.website ? `<p><a href="${member.contact.website}" target="_blank">Official Website</a></p>` : ''}
+    ${member.ballotpediaLink ? `<p><a href="${member.ballotpediaLink}" target="_blank">Ballotpedia</a></p>` : ''}
+    ${member.govtrackLink ? `<p><a href="${member.govtrackLink}" target="_blank">GovTrack</a></p>` : ''}
+  `;
+}
+
+function backToCabinetGrid() {
+  const gridView = document.getElementById('cabinetGridView');
+  const detailView = document.getElementById('cabinetDetailView');
+  if (!gridView || !detailView) return;
+  gridView.style.display = 'block';
+  detailView.style.display = 'none';
+}
 
 // === POLLS TAB ===
 function showPolls() {
   showTab('polls');
   const pollsContainer = document.getElementById('polls-cards');
-  if (!pollsContainer) return;
   pollsContainer.innerHTML = '';
 
   const suppressedForTerritories = ['State Senate', 'State House'];
-  const territories = ['Puerto Rico', 'U.S. Virgin Islands', 'Guam', 'American Samoa', 'Northern Mariana Islands'];
-  const isTerritory = territories.includes(selectedState);
+  const isTerritory = ['Puerto Rico', 'U.S. Virgin Islands', 'Guam', 'American Samoa', 'Northern Mariana Islands'].includes(selectedState);
 
-  (window.pollCategories || []).forEach(category => {
+  pollCategories.forEach(category => {
     if (isTerritory && suppressedForTerritories.includes(category.label)) return;
 
     const card = document.createElement('div');
@@ -540,6 +645,7 @@ function showPolls() {
     pollsContainer.appendChild(card);
   });
 }
+window.pollCategories = pollCategories;
 
 // Source logos
 const logoMap = {
@@ -565,6 +671,7 @@ function openPollModal(categoryLabel) {
     return;
   }
 
+  // Render header and poll cards in a grid
   modalContent.innerHTML = `
     <h2>${category.label} Polls</h2>
     <div class="poll-grid">
@@ -573,7 +680,9 @@ function openPollModal(categoryLabel) {
           <div class="poll-logo">
             <img src="${logoMap[p.source] || ''}" alt="${p.source} logo">
           </div>
-          <div class="poll-links">${p.name}</div>
+          <div class="poll-links">
+            ${p.name}
+          </div>
         </a>
       `).join('')}
     </div>
@@ -595,7 +704,6 @@ function openPollModal(categoryLabel) {
 function showOrganizations() {
   showTab('organizations');
   const section = document.getElementById('organizations');
-  if (!section) return;
   section.innerHTML = '';
 
   fetch('/political-groups.json')
@@ -617,7 +725,9 @@ function showOrganizations() {
         img.style.width = '100%';
         img.style.height = '100%';
         img.style.objectFit = 'contain';
-        img.onerror = () => { img.src = 'assets/default-logo.png'; };
+        img.onerror = () => {
+          img.src = 'assets/default-logo.png';
+        };
 
         logoWrapper.appendChild(img);
 
@@ -629,7 +739,6 @@ function showOrganizations() {
           <p><strong>Platform:</strong> ${group.platform}</p>
           <a href="${group.website}" target="_blank">Visit Website</a>
         `;
-
         card.appendChild(logoWrapper);
         card.appendChild(infoWrapper);
         grid.appendChild(card);
@@ -642,10 +751,9 @@ function showOrganizations() {
       console.error(err);
     });
 }
-
-// === STARTUP HUB TAB ===
 function showStartupHub() {
-  showTab('startup-hub');
+  showTab('startup-hub'); // makes sure only the Home Hub tab is visible
+
   const hubContainer = document.getElementById('hub-cards');
   if (!hubContainer) return;
   hubContainer.innerHTML = '';
@@ -671,7 +779,7 @@ function showStartupHub() {
   });
 }
 
-// === LIVE NEWS: NBC RSS ===
+// === LIVE NEWS FETCH: NBC News RSS (CORS-safe) ===
 async function fetchRSSFeed(url) {
   try {
     const corsProxy = "https://corsproxy.io/?" + encodeURIComponent(url);
@@ -681,12 +789,12 @@ async function fetchRSSFeed(url) {
     const parser = new DOMParser();
     const xml = parser.parseFromString(text, "application/xml");
 
-    const items = Array.from(xml.querySelectorAll("item")).slice(0, 5);
+    const items = Array.from(xml.querySelectorAll("item")).slice(0, 5); // top 5
     return items.map(item => ({
       title: item.querySelector("title")?.textContent || "Untitled",
       link: item.querySelector("link")?.textContent || "#",
       description: item.querySelector("description")?.textContent.replace(/<[^>]+>/g, "") || "",
-      image: "assets/nbc.png"
+      image: "assets/nbc.png" // fallback to logo for now
     }));
   } catch (err) {
     console.error("RSS fetch failed:", err);
@@ -694,16 +802,20 @@ async function fetchRSSFeed(url) {
   }
 }
 
+// === Step 1: Create a single NBC card (styled like other cards) ===
 function createNBCCard(cardData) {
   const wrapper = document.createElement('div');
   wrapper.classList.add('carousel-item');
 
+  // Entire card clickable
   const cardLink = document.createElement('a');
   cardLink.href = cardData.link;
   cardLink.target = "_blank";
-  cardLink.classList.add('news-fallback-link');
+  cardLink.classList.add('news-fallback-link'); // uses existing CSS
   cardLink.style.textDecoration = "none";
   cardLink.style.color = "inherit";
+
+  // Inner HTML: logo on top, headline below
   cardLink.innerHTML = `
     <img src="${cardData.image}" alt="${cardData.title}" class="card-logo">
     <h3>${cardData.title}</h3>
@@ -713,7 +825,9 @@ function createNBCCard(cardData) {
   return wrapper;
 }
 
+// === Step 2: Populate NBC carousel dynamically (no duplicates) ===
 async function loadNBCNewsCarousel() {
+  // Replace this array with your manual JSON or feed later
   const stories = [
     { title: "Republicans seek an alternative to Obamacare", link: "https://www.nbcnews.com/now/video/republicans-seek-an-alternative-to-obamacare-252007493796", image: "/assets/nbc.png" },
     { title: "Global markets see major fluctuations", link: "#", image: "/assets/nbc.png" },
@@ -724,14 +838,24 @@ async function loadNBCNewsCarousel() {
 
   const carousel = document.querySelector("#network-carousel .carousel-content");
   if (!carousel) return;
+
+  // Clear existing content to prevent duplicates
   carousel.innerHTML = "";
 
-  stories.forEach(story => carousel.appendChild(createNBCCard(story)));
+  // Add cards to carousel
+  stories.forEach(story => {
+    const card = createNBCCard(story);
+    carousel.appendChild(card);
+  });
+
+  // Make carousel visible
   document.getElementById("network-carousel").style.display = "flex";
 
+  // Apply enforced styles as a fallback
   enforceNBCCardStyles();
 }
 
+// === JS fallback to enforce NBC card styles ===
 function enforceNBCCardStyles() {
   document.querySelectorAll('#network-carousel .carousel-item a.news-fallback-link').forEach(a => {
     try {
@@ -743,44 +867,74 @@ function enforceNBCCardStyles() {
       a.style.setProperty('border-radius', '12px', 'important');
       a.style.setProperty('text-align', 'center', 'important');
 
+      // Ensure the headline inside each card is white + bold
       a.querySelectorAll('h3').forEach(h => {
         h.style.setProperty('color', '#ffffff', 'important');
         h.style.setProperty('font-weight', '700', 'important');
         h.style.setProperty('text-decoration', 'none', 'important');
       });
-    } catch (e) { console.warn('enforceNBCCardStyles error', e); }
+    } catch (e) {
+      console.warn('enforceNBCCardStyles error', e);
+    }
   });
 }
 
-// === SOCIAL TRENDS ===
+// === SOCIAL TRENDS SECTION ===
 function loadSocialTrends() {
   const socialFeed = document.getElementById('social-feed');
   if (!socialFeed) return;
 
   socialFeed.innerHTML = `
-    <!-- Social Cards -->
+    <!-- Gavin Newsom Facebook -->
     <div class="social-card">
       <h3>Gavin Newsom Facebook</h3>
-      <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4184264178567898%2F&show_text=true&width=267&t=0" width="267" height="591" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+      <iframe 
+        src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4184264178567898%2F&show_text=true&width=267&t=0" 
+        width="267" height="591" style="border:none;overflow:hidden" 
+        scrolling="no" frameborder="0" allowfullscreen="true" 
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+      </iframe>
     </div>
+
+    <!-- Kathy Hochul Facebook -->
     <div class="social-card">
       <h3>Kathy Hochul Facebook</h3>
-      <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1608390750526549%2F&show_text=true&width=560&t=0" width="560" height="429" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+      <iframe 
+        src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1608390750526549%2F&show_text=true&width=560&t=0" 
+        width="560" height="429" style="border:none;overflow:hidden" 
+        scrolling="no" frameborder="0" allowfullscreen="true" 
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+      </iframe>
     </div>
+
+    <!-- Donald Trump Facebook -->
     <div class="social-card">
       <h3>Donald Trump Facebook</h3>
-      <iframe src="https://www.facebook.com/plugins/video.php?height=315&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1252240603298809%2F&show_text=true&width=560&t=0" width="560" height="430" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+      <iframe 
+        src="https://www.facebook.com/plugins/video.php?height=315&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1252240603298809%2F&show_text=true&width=560&t=0" 
+        width="560" height="430" style="border:none;overflow:hidden" 
+        scrolling="no" frameborder="0" allowfullscreen="true" 
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+      </iframe>
     </div>
+
+    <!-- Chuck Schumer Facebook -->
     <div class="social-card">
       <h3>Chuck Schumer Facebook</h3>
-      <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F3151059001745750%2F&show_text=true&width=267&t=0" width="267" height="591" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+      <iframe 
+        src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F3151059001745750%2F&show_text=true&width=267&t=0" 
+        width="267" height="591" style="border:none;overflow:hidden" 
+        scrolling="no" frameborder="0" allowfullscreen="true" 
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+      </iframe>
     </div>
   `;
 }
-
 function scrollToCategory(sectionId) {
   const section = document.getElementById(sectionId);
-  if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 }
 
 // === FEDERAL OFFICIALS DATA (inline) ===
@@ -833,7 +987,7 @@ const federalOfficials = [
     "party": "Republican",
     "office": "Vice President",
     "slug": "jd-vance",
-    "photo": "https://upload.wikimedia.org/wikipedia/commons/8/89/JD_Vance_official_portrait.jpg",
+    "photo": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEhUTExMVFhUXGBgXFxcYGBcXFxcVGBUXFxcYFRcYHSggGBolHRcYITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGhAQGi0lHyUtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAP8AxQMBIgACEQEDEQH/xAAbAAABBQEBAAAAAAAAAAAAAAAEAAIDBQYBB//EAEQQAAEDAQUEBgcGBAUEAwAAAAEAAhEDBAUhMUESUWFxBhMigZGhMkJSscHR8AcUI3KS4VNigvEVM0NjorLC4vIkRFT/xAAZAQACAwEAAAAAAAAAAAAAAAABAgADBAX/xAAmEQACAgICAwEBAAEFAAAAAAAAAQIRAyESMQQTUUEiYQUUMkJx/9oADAMBAAIRAxEAPwDzC8qrXuLmAtDsSNx1jggLrbJLcM4xwHeUQQh7Jg5wWkp/DcXBcJDanWbJD2xgZVTfd30qEMBLqmZOgHLepLkvUUKVTGXGA1vdnyQt73mK7QXMioMCRkRxCgGUlpwcCimtJyxJQ1vHZlafozc1Rz6dQhuyIJxB03BElaM9a6RfLhhI7Q45IawWV21iJbMd5Wu6QXEykXOL/TJLW7sJKzLi5usGRhO7IrLNUzTF2gmvd8FuyZJzBEQprVQq0yGkDZcDG7HMK/uhnWtHWgFw1Ul53eauAOA8uCWrJbRQVwZaP9psxz14Kws7Yq0/yfFCW6nDw0E4U2iBmTuR1kpua9r3wAGgY5zyCog/6TLZ/wDFoff7cGfnb71JbQQaszg5vwXbQaVYtBqhsGdBMHifgrdtw9a1xFX0jMluAjjOKmf+noGF8Vsgo2p0BO+8u4JW27alGA5pjeMQe9DMdK1xkmtGSUWnsK+8lcNQodzgmdfuTCj69QnuQ9V5OC7UqqF1pQGQi/iVG6tBTKlYqA1CckjobYQLVmhHyd6a9rtAojUqcu9LSDbJRkuoF1ocNUk9goGKhYO2pnLlCkXOaG4kmAtBWjgPbPJSlMawh7p0w8E4lFAZHXbLVadELXsVQXOhoDiccDA3IFolD2VvbI3KURM0N+X6yu0h7CCDNNw9zhxCqTRZsudOMANHPMqOuyWplhptcQHuLRlKqzR0XYpfTQdE6wgie1x1HBacNEE78SstTuZ7CHMqCBjljCMs4c973Pd2GAiOMS49w96zXRa0mQ2y0MYS5vpkAbWjRE4b96oKteoT2WDHV0EnuMx49yvLDdbrRU2WiCZkn1WznxcTqea3N1dCKTWwHGTnOR48DxVfKKLVCUjzSyGoROzBE4ZAkCYjISJgjUI5t5GAWE0X6PbIa7CW7bdWkEHeJO6R6W7oFTcI2sPqETR6CUmiH9oDLfwxU5pk9TMJd/TWoGbFaHNycwwSCMzTccxGOOMesiHVrPV7VMxPLPWfoc1rq3Qiyx6Kx3SPoV1E1aJ7OG00mIEjEE5RnKTkr0F43Wyqt+1TPaBg5HQqOjWlW92AVbM+m8F2x2g4drZwiJGAOXuWaqzTfDTIWqE+S2ZJwp6LQOEYqJ9EHLFB1LQ4jIpjK53FMKHVaEDFwBQdZ7W4gynPEjJDvpTvlAiGPvCcMVC7tGJ+SIFg2hJBTKNiIMnJAI4WUakDvSUdWnJzXENkBnFXfRi62ve1/WtkGdj1u9UTgj7krtp1W1H5Nk+WC1srRp+kVkpUQ6qKe095jHFoMZwsY0K2tl/1Xh4dBY/1T6u6DvVa0YIojOUFK+yOY4FwgOaHDiCirjsTKh2X1RTM4SDj35Lf2q46JpM2wX9W3CM3ADLBG6BR5nRxCZZGgF7TkRIwnEIq0Vw6o4taGt0aNAPioXiHYITVxDB1ItblvNzwWmMBgrwUwKEHHaO07jJBDfAieaz9jsobJAxhaq0t2KbeDR4nAfE96wNmv/w0fQ+6w2kah9JxIH5QYC09mZChueyGnZqYIgloJ78cUVSEaqiS2asb0WNFgU+yIQ9KqN6kFYRmigsAtmeCp75og0nB3rAjyV7VpziqS/6Rc3Z5qut2O3qjzm43OoPnNj3bJH8u0AcPrNV172Hqq72hpLZluGhxHvjuXbPWcLQ+k/1ThO/KefyVhab1h0OpB5AAmRuAV/Nx6MXDk6ZTMoOmcgfBTOpxx7ij6t4xnQHiPmuC9J/+uI/MFPdL4g+iP1lJaJ0DvBQ7bhm2e5XlS8h/+fzQ1S8f9geKHul/gnoiVNW0u0a4HSMAO7VBVa1XitC22Sf8nzTX2n/Y80Pc7/CehfTNgP1B8EloH1xrS80k3tkD0R+lG4JtT0VIp7xsLqcNOoDgeBC6RiB4wCfTC6Wwk1Eh04LSW3pPU2m9SYY1oABHpYYkhZmuMFJROARINrVtqoXbIbJmBljuTq7cJULxDkSBIhQAbYq/ZB3fBby5rL96fRw/D9N3Jrj2fELz+wUy2QRh7jxXpH2b1/wwAcAXCNzpc4+Ic3z3LDlVSNuPcbLnpZXIG0CezoMZ4QszQvy0kAspOjSSGyN8E4d8Lf1KbXZjBOp3dTGOJ5x74lUWr2aFF1ozvRu+alZ4D2uEzEiBxXekd4V6LnBkxmCBPMEK8sjWOqBzchhz4jepWBjnEO1J8eCUcw1LpLWbBqh9MYHa2XOGImezl35K9s1rdWxLg5pAII15K+qXQ08uIB+CEq2anSaQwRywx5DBF0LTPKOkjCy2PLR2nNhvEkDx/dUVusQLiSDMCcdYAIw5L0m87HTdNc5s2nfpaAPNef16FIzD3qyMlHsonFvor23eD/7FP/w1o1/5FPbRpg41HLlZrdKp78U3sh8K/XP6RmxN4/qKY6zs3PP9RTnNH8QnuTcv9XyR9kPgOE/ow02j1X/qKjcQcg79RT6sfxD4IKpVAMYu5b9EVKL/AAjjNfo+rH83iUkSLTgBIEaRqkjcQVILuinQc78Zz27oy7zmvQbZZWdWHNYHuY3sTyXmNDAyrOvfdSo/rGuLYwaAcgN+9aqKLArZVc5xc7MnFR01JaXlxJOZMnmo2JgDqowK5ZT2U525T2Wzxi7AblG0gxi5OkD1qRMRvzWguK5HVIccG5TvjcFVV6siBgFfdCrfBNJ2Rxbz1CzvOm6Rv/2E44+cu/hcW67Wii5jBGE8SRjil9md4tDnUnAg7TXA6YjZM7jl4q2qNkLE3T+DeDmGQ0h0bp9JuKryL9KoPTR65eFvAc0BB3je3ZgmG+bjGQ4cVmbHeW2+HTgTjvj6CV6WO0OqEtc1rBESNqQ7MDHBZpdmqEtUNo9Oq9Jwa6k3DBrmyZAEdoHLJW92XvWrdmpTbTpkztBxL94wjA96iu24nEf6JOZ2gRjGcgFF3hYagybRMDDZc6OHqQo0y1RZdXZfBINN57TcJ9oaFR26sHLM3U94e+nUaWuHaGO1gRiJ3ZKG13uWAkZZzz05odlcmA9KbSWWQhrgHvqlv9IxOXKO9YF1sqgkzSx0grR3nUD3yQDg3PiATyzQfVt9kK/12jK8hnfvVQRPVmJ34zv4pgtTxs/5ZjHXHmtEaLPZCY6zN9kKetE9jM8LycBEMznXwPBRvvJ5Bwbnx8Ar99jZ7IUTrGzcEfWgc2UVS8XGcG4+Sa22tcTttOWGzoVdPsjNwQNe72nIKcETkyW77fSDe0GzOqSrHXfxSQeNfQ+wtGhR2U581I1MotO04DgtxjJ3FNZTc7Id6s7uul1Q5Yb9B81qLvuimwiRtEanTkNEJSoaMbMiKGxBcMYUJeSTK2PSWwhzA8D0cDyWNiCVizTk2dzwcWNQ5Ls6F2y1Sxwc3MEEJuq4wYqk3s9PsFpFSm141H91mek1IsqMqNwO/iMQndDrdBdSJz7TfiPirPpJZtqkTqCD8FqT5RODnx+rI0VxtgAFZuMnHWHQJBnuVndV9BxcHmd+G4D9lD0UuvrKFdrwNguZsnc4B0+Rb4qvfYqlB7mubEzsknA4b9dD+6qlFMWMmjbWGxipiKjmzjv8ZyU9GKeD6pcdNJ+oWHu/pC4S2o4ggmcvLemW7pBtwSTDZI0k4xJ+s1XwLfYqNNed7N23ObmQAQNwJjHz7lmL2vMO7DeGH5SZM9/n4VTbVUqOlreR0GEK7s3RsssNWuQXP22GdSwEh0cO3P8AQrIY90VTnqylc4kknVcJUoozB0OSRsyvKSAOTXu4Ig0E00ilCCuKhejXU+CjdR4KEAXuUUEourT4KA+CgbBXpKR5dokgEVKkTy+slpLpuH1qggHTU89w4LNPrErbXBbetpCfSbgfgfBWe23SHn4jxx5MsqVMAQBAU9MKNqexRlKJazAQQcjgvPr1sppvI3YfLyXoTis70osUgPHI/AqqcbRv8PJxnx+mTbmunNNmFyo6MSqEm9I6spxgrk6CKFoNNweM2kEfJb+pamPohxPZc3zIy5rzumA4aq4u9pA5TA0HJa8OGS7ON53lY51w2z0PoRYy+73vYJPXVCB7TWtYwgE8Wkjiuv2KtNwIBGoIxB4jQov7Jau1d5Zq2o8H+qH/APcrW9Lh2yX0+zU13O4O+aGSO9GXHPVM80q3SwkgA+R8JTGdG6QMkE8NFp33e9r9ksO1PoxjPy4rTXT0XydVxPsaf1b+WSrVstfFdmZuLoz1hBI2aY4RPBo+Ku+lzm0rFVEQNjYAH8xDRHjPctc6kGheYfapeWLKA0/EfzMtYPDaPeFfihsz5Jto83s14OpyILm4kCcRy4LjukJ1pu8QmtpypBZmuGIxGqsnivoSGSuyE9ID7DvEJC//AOR3iEPUu6Tg8+Ca27NznfpWaUZx7NMXjfQT/jk+o/yTHX1/I/xCiFgPtO/SozYD7Tv0pLkPUCV18D2H+IUL7zHsO8lx13n2j+lMNhPtH9KlslRHf4gPYf4hJR/dD7R/SUlLZOMScKz6PW/q6wn0XYO+BVTKkbklTo6ripKmemqSmqfo5b+tpCfSbgfgUdbrV1VNz4mMhxWmO+jizjwbTLKMJVXeVtpbLmF0yIMYx3rOWi+n1wDMN3CY/dVtprk4BWRxfSt5qeiO0loOGPP5IN7dTiUW1qZWYI4qyMFHoTJmnkdydk9hb2Rh+6tA+GkDVVVCuYAcMYwjL9lPZ6hJxTFZ6X9jNT8O0M/mY7yLfgE7pt0rrEup2Z+xTY803Pb6b3gAuh3qNExhiSDoq/7KWuJtLWu2Tstg7gdoEjiMFN03sApRstwcAYEDFp2Scd8hLFL2bJNvhoq7qtVobFQ2io1rCXAl5IB5E4zxkFeldD+ltO2NLT2are4VGj12fEfBedUbA6vUoWWCGvPadhDgAXEDUGBuyXo7OjVJrWin+G9hlr25gjXjuhHNxqv0XByu/wALS8Kwa0vcYa0FxO4AST4BeDX1bHV6tSq7N7ieQya3uAA7l6X9pF8bNl6oH8So7YMSOy0Bz3CdD2R3ncvLAUuJassm9gzaaRwlS1n7InHuBJ8kK+o9x9EBvHF3lgPNWCDGBE7OqgcpGuwQaCmd6x24Hjkh61ocM24b5RlELlYAZ66b1RLBF9F0c0l2Vv33+XzCa+1cPMLl43bHab3tB9yrDZ3RMGOf7LNLG4umaYzUlaLD7zwPiElXsslQ5AlJLxY1oIaE8poXZQOqi26NW7qqwn0Xdk/A+K195vaWmnPac1zgOAzPmvOnugLWWKv2G1nYvDOrPIYg8JkLR4+3Rzv9QiklIz1kOyXM3Q4cjh7wuxJTbS6HNqaB2y78rjn3GEXTp4rYcojLUO94mEZUVdVEO54/XgowEu0pqT8VAugoEPSfsif/APIqt3sJ/S5vzR/Te8GOr7LpLWt2TsiYcc/ePBZr7NbeKVoqVDk2jVd+lu3/ANiVSq6o4EmSe07iTifNSK/qxckv5ovrsqRXs9QerUae4nZP/EleoPdr9TovJ7GSC3gZ8F6bbLYKdM1Heixjqh5NEqvMtofx3pnlf2j3h1lsLAezRaKY/Me08+JA/pWXlOr1y9znu9Jzi4/mcZPmVGCrUqVAbtj5TajcFHUpkYtwPkUy2vwDd+fIfNQgK96loiSEPUK7abSabAQJe7BoQCWr6jWj6xSBMTGJ8uCqrvoOB26jpPkN8Ka0XqMm4ngiQfWpk6wq8scQS3Fk4HTDBPfSfUBL3Q3cMu86qwsb9mi0QHMDcOMEg+az59ouwumVlmZUMwPNJOtDiXEsZsjcks3Re3YKcMF0BGXvZOreRppy0QbSkZ2IyTVoZUbtENGZIA5nBX150jSe8D0XAQNzgI81WXLS27TTGgO0f6RPvAV7fgmfJavGWmzl/wCoTuSiZ1tUODqZwJBwPJWVnfLQd4B8gq+rS2hLYncfeDoVLdlaWNnTA9xIWm9nO/Auqgbbm08x7v3R7kHa2S2dxHy+KIBtMLrwlRMwn1AoQP6P1tk1eNGuPGz1Arq7HzsneAsrZqpa15GjT4QQfKVe9GassbOMD3JolczUMGIWl+0u39XZTTGdVzWf0t7bvPZHes1QpbTmtGpA8YHxUP2k3j1lpFMHCm3/AJPO0f8AjsJJq5IbE6TMmSuArkrgRGJgddEBUJ2pOvkNPriiKz8m78+ShtQ7bVAkfVy6FFs7dZxiQwQI3nP64o2qQxpKrbDaWsYXOMbRJ54x7ggFImqUCfTdA0aPgAiG0Q1vowPZ9Z35joOCAp257j+HTge0QZPgFPTtjgTtHaPstHvOilko7WoF47U8GjAdyCZay0howDfV5I2pXqEZNHfPuVBaG1NoyJO8ZHks/kLSovwVbssaltBJJEzjjKSq4qeyfBJZtmr+D0G/bLtsnVvu1WSIiQt80SDOqx18WXq3EfUaJsi/S7w8muLDOjFmLSaxEggtbGYMiZHcmXpadpxAke/wU1j2vu1NrMC4uPdtGSToFVV6rGmGGY9KocidYC14lUUc7yJOWR2NJeMoPAgtPccih7trHae0iMZVhZXEicY3nXkFXXgNioHDAOEFO/pSvhcsMhdqUpBG8FCWSrIRjSmAA2dEEKINhxHGfHH65KcoEB6I9IbwfcrXos/COSq2YOVj0cwTREn0b+4wDXpzoS4/0Db+Cw142s1ar6h9ZxPdOA8IC01W3dVSqP8AW2HMb+Z42MO5xPcsYHIPskOiWU4HUqNpXK27vPy+uKA5CHy6VPUjM6KCk31jgEHb7YHYNM8vmoEivW2SCBkFHYqbAGl0vdA2WjGB7u8oJzS5wZnjkFf2ansjQJVtjPSOdbUIyYwfzY/Ieaj2Qf8AWng2GjyEjxRpaDn8P7plfqwJIB0GGu4IilTaLPTntOEcXEk+KZVpmew47OnAbkTUse1iaTPEg+SkbTnMOHLJZvIWvw0YXsry1/tFcRzqfBySy0zTyRuaaq+kFk2mbYGLc+StGKC3vIYQMzgOZWpq9FEJuD5IzluqkAUGeq0B5yyzBOgnEoFlmHONdByCs32aOyDhm5xzcdSeHBCVawyGDR3TxK0IzNtuxzQf2QN90+xO4oh9ojh5nuCT6e03tA9/xR7QOtlZYLQrenXWbsphWtnrIRehpIPqO7QO8R8veU8FCPfhyx8M0QCiLQypmFY3AcSOJ95VbUKNuNw2njj+/wAU8RJ9Fh0gtEBjObvgPeVTh6ffVeap4QPKfeUEHoN7DFaDeuUVR8iZOPLLRD7ckN8eXin1HJRgesAdSe+fembHgpSETdd2utFTq25Zvd7I+e4JW0tsdJvSGdHbnrVnufTYSJichxxPctrY+h2terHBsf8AU75K2sFlNKmKVCGAYBzsv3PFC2zo3aKpl9qAGga1w8TIJ8gsjzSlpaRr9MY7eyq6R2Sx0qfV03O65xEdokxPaJGQETjyWeFEAzuy4Dh81px0JOJFYA5T1ck8yXyqa+bmfZS0Oc1zXYgjDKJkHLNXYprq7ZTlg+0qQI9U9WhJJ60CTlOXBWdapDSRxQAsjP4gQ8h6RMH6Q/dT/GHikpvujP4gSWU0m7ah7a4fFO6xB26pHgtUOzJPoqryqYRMTpqf2VY7Pd5u/ZPtTpcS4468OCb1zWDHDcNT3K8qJqVIDHLicSiKFE1HBjYl2AnedT9aKu23OxIMaAZnmdFf9FaU1C/AbA0y2nSAJ1wnxSzlxi2NCPKSQXdHQuiz/N2qh3yWt7mg+8o629C6Dh+FtUzvkub3hx9xCuKbyrKnWgLn85fTdxj8MMOhdduT2OG4yD7lX2m5bRSHapGBq3tCNMl6S2vnimmp/dOvIkhHhizyNzvFT3VUiq7jB8o+C9qsVzUXUw6rSpvc8Sdpod2dB2pjevLL2qUXV3uo02U2TstDREtBMO5nNbcWTlujHkhWjNW20y9x3k++Aom1FcG7KR9Xwc75rjropkYFw5H5pwKikFaZM/2TBVKuXXGzIPcCNTB+CiNwH+KP0f8AkldjpoZc121LRUDGTE9p2jRr38F6dYLrZQYGMEDN2rnHe45lUdyWyz2djWNbUwzPZOJzJxxVrXv2iYAeRza74D4rJk5yfRqxuEV2WTy52Ahm4kEn9IIjvKT7I6O1aXTuAY33godlei4A9dIiRDmjPfqFV3r0po0pbSG2/c0iJ02nH+6pUW30XckW7adNgl1Zx37TgPcAsL0hte3XcWONRg9CTIGGMHdOvDVVslxlwxJk9+OHBSjBa8WHi7MmXPyVIHq7RBLo5BUVedoxMSVeWh2BWfqVcTzPvRzfguJ0d7XFJRmqUlRRdy/yejUqqEvOrExnkOHFRWG07TQfoFA31aoyzKvgUTX4CV9lkE4nQa8+CbToOcNoksB01je4jEoX7xtHH6Ay8kQ60nVWCVQ591A+s7xn3q2uWu2iwtcXEl04AREYDNVdO1qcVwZ7kJQjJUGM3F2a+x3ox2AcJ44I4XgGgyVhknAxgSDwKpl4/wAZas/1G4p3/SymERRvJry0NOLiAObjA+HivNevqszh3DIxxWi6HXiyraaLNkhwdtR+QF0+Solhaey5ZE1o9Sv219XQqkYbNN8dzDC8TdWI7l650srj7nX/ACHzw+K8Z6yCtuPoyT7DKdrlSG1QROSrarNQuF8tVglFzUrQZ0XDaNFWUa8tjckauKlkosjaE19WQYVYXldFTBAlFjTdLQU2s0EDhpvGoQlCp2eS5baxDQ4aEHu1UCT+i4D1TlwO7kuVK/7/ADUNeuAAN4BaeII/ZNtBxkahQgy3VIHmqVlOVY1agd6eAGGG9QUKUmAMFnyPY6dELLKTqkrWzUQAQc+C6qycmK67Vsug5HyKV9g7U6dmOUGT4oEZIy1VNukCc2mD8Cjjl+GvyIf9gBh+u8KWu5Qg6+Hd/dIulXWZaHNcp2VEMCk1+IUTI0WQtJUrLSSq8VME9tROmLRYUXieWJO8rlC8DQrtrNElsjuIIKHpOACjtFZpwKj6AuzTWzpuK9B9IgguEeYWecqnAOBG9HGslgNJEwfsmNEnt3IerWGv7gprLUMMU3JAofRqQ5T1DrvQjqjSZTmVREKJkokDk+m5QFMJhSyUHUTBO4p7mS0t8EAysiGVEbJQqIlkatXTU7E7k2g6HHQFDWipnu3byg3SJQPVxKeyq4ZEqDrOCXW8FQ3Y9BQtL95SQvW8F1KSgt2S6x2Y0Ij5eaZUK7KrTp2dGS5JoDc8+GCQqK1stnpvGLe0OYkcU83fT3HxKtTvZhkuLoqesSLlai76Z08yoH2FnFMk2I2kCdaEhUKkNkGhKhfSjijslokFQ6JzVAHwnisVE0Sh9UZKZ1MoZ1WU02h0RJ8SjyRKDK4Om4aSDv0Q5OQIb+nLnhj5oZziczKSVyslE8CThyIw8ARimvYRnI8lGEiVAjhVO9OFYqJJC2GiXrVJTtEIZKUeTBQe61iEFVqFxTEkJSbIlR0Li61cShEkkkoQ/9k=",
     "ballotpediaLink": "https://ballotpedia.org/J.D._Vance",
     "govtrackLink": "https://www.govtrack.us/congress/members/james_david_vance/456876/report-card/2024",
     "termStart": "2025-01-20",
@@ -870,18 +1024,12 @@ const federalOfficials = [
     "electionYear": "2024"
   }
 ];
-
-// === SAFE DATE UTIL ===
-const safeYear = d => {
-  if (!d || (typeof d === 'string' && d.trim() === '')) return '';
-  const dt = new Date(d);
-  return isNaN(dt) ? '' : dt.getFullYear();
-};
-
 // === OFFICIALS RENDERING ===
 function renderOfficials(stateFilter = null, query = '') {
   showTab('my-officials');
-  if (!officialsContainer) officialsContainer = document.getElementById('officials-container');
+  if (!officialsContainer) {
+    officialsContainer = document.getElementById('officials-container');
+  }
   if (!officialsContainer) return;
   officialsContainer.innerHTML = '';
 
@@ -890,27 +1038,20 @@ function renderOfficials(stateFilter = null, query = '') {
     "Northern Mariana Islands": "Northern Mariana Islands",
     "Puerto Rico": "Puerto Rico"
   };
-  if (stateFilter && stateAliases[stateFilter]) stateFilter = stateAliases[stateFilter];
+  if (stateFilter && stateAliases[stateFilter]) {
+    stateFilter = stateAliases[stateFilter];
+  }
 
   const queryLower = query.toLowerCase();
+  const filterByState = query === '';
 
-  // Filter helpers
-  const filterBy = o => {
-    const matchesQuery =
-      !queryLower ||
-      (o.name || '').toLowerCase().includes(queryLower) ||
-      (o.office || '').toLowerCase().includes(queryLower) ||
-      (o.state || '').toLowerCase().includes(queryLower);
-    const matchesState = !stateFilter || o.state === stateFilter;
-    return matchesQuery && matchesState;
-  };
-
-  const filteredGovs = governors.filter(filterBy);
-  const filteredLtGovs = ltGovernors.filter(filterBy);
-  const filteredSens = senators.filter(filterBy);
+  const filteredGovs = governors.filter(o => !filterByState || o.state === stateFilter);
+  const filteredLtGovs = ltGovernors.filter(o => !filterByState || o.state === stateFilter);
+  const filteredSens = senators.filter(o => !filterByState || o.state === stateFilter);
   const filteredReps = houseReps
-    .filter(filterBy)
+    .filter(o => !filterByState || o.state === stateFilter)
     .sort((a, b) => parseInt(a.district) - parseInt(b.district));
+  console.log("Filtered reps:", filteredReps.map(r => r.name));
 
   const allOfficials = [
     ...federalOfficials,
@@ -918,7 +1059,11 @@ function renderOfficials(stateFilter = null, query = '') {
     ...filteredLtGovs,
     ...filteredSens,
     ...filteredReps
-  ];
+  ].filter(o =>
+    (o.name || '').toLowerCase().includes(queryLower) ||
+    (o.office || '').toLowerCase().includes(queryLower) ||
+    (o.state || '').toLowerCase().includes(queryLower)
+  );
 
   const partyMap = {
     republican: 'republican',
@@ -931,6 +1076,12 @@ function renderOfficials(stateFilter = null, query = '') {
     'working families': 'workingfamilies',
     workingfamilies: 'workingfamilies',
     progressive: 'progressive'
+  };
+
+  const safeYear = d => {
+    if (!d || (typeof d === 'string' && d.trim() === '')) return '';
+    const dt = new Date(d);
+    return isNaN(dt) ? '' : dt.getFullYear();
   };
 
   allOfficials.forEach(o => {
@@ -983,6 +1134,11 @@ function openOfficialModal(official) {
     ? cleanOfficial.photo
     : 'assets/default-photo.png';
 
+  const safeYear = d => {
+    if (!d || (typeof d === 'string' && d.trim() === '')) return '';
+    const dt = new Date(d);
+    return isNaN(dt) ? '' : dt.getFullYear();
+  };
   const startYear = safeYear(cleanOfficial.termStart);
   const endYear = safeYear(cleanOfficial.termEnd) || 'Present';
   const termDisplay = (startYear || endYear) ? `${startYear}–${endYear}` : 'Present';
@@ -1014,6 +1170,13 @@ function openOfficialModal(official) {
           ? `<p><strong>Vetoes:</strong> ${cleanOfficial.vetoes}</p>`
           : ''}
         ${cleanOfficial.salary ? `<p><strong>Salary:</strong> ${cleanOfficial.salary}</p>` : ''}
+        ${cleanOfficial.govtrackStats
+          ? `<div class="govtrack-stats"><h3>Congressional Rankings</h3><ul>${
+              Object.entries(cleanOfficial.govtrackStats)
+                .map(([label, value]) => `<li><strong>${label.replace(/([A-Z])/g, ' $1')}:</strong> ${value}</li>`)
+                .join('')
+            }</ul></div>`
+          : ''}
         ${cleanOfficial.website ? `<p><a href="${cleanOfficial.website}" target="_blank">Official Website</a></p>` : ''}
         ${contact.email ? `<p><strong>Email:</strong> ${contact.email}</p>` : ''}
         ${contact.phone ? `<p><strong>Phone:</strong> ${contact.phone}</p>` : ''}
@@ -1027,7 +1190,7 @@ function openOfficialModal(official) {
   modal.style.display = 'block';
 
   // Click-outside-to-close
-  const clickOutsideHandler = event => {
+  const clickOutsideHandler = function(event) {
     if (event.target === modal) {
       modal.style.display = 'none';
       window.removeEventListener('click', clickOutsideHandler);
@@ -1062,7 +1225,7 @@ document.addEventListener('DOMContentLoaded', () => {
   wireSearchBar();
   wireStateDropdown();
 
-  // CLOSE SEARCH BAR WHEN CLICKING OUTSIDE
+  // === CLOSE SEARCH BAR WHEN CLICKING OUTSIDE ===
   document.addEventListener('mousedown', event => {
     if (!searchBar) return;
     if (event.target !== searchBar && !searchBar.contains(event.target)) {
@@ -1071,7 +1234,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // LOAD OFFICIAL DATASETS
+  // === LOAD OFFICIAL DATASETS ===
   Promise.all([
     fetch('/governors.json').then(res => res.json()),
     fetch('/ltgovernors.json').then(res => res.json()),
@@ -1117,7 +1280,9 @@ function wireStateDropdown() {
 
 // === SEARCH BAR WIRING ===
 function wireSearchBar() {
-  if (!searchBar) searchBar = document.getElementById('search-bar');
+  if (!searchBar) {
+    searchBar = document.getElementById('search-bar');
+  }
   if (!searchBar) return;
 
   searchBar.addEventListener('input', () => {
@@ -1134,21 +1299,21 @@ function showStartupHub() {
 // === STICKY HUB NAV INITIALIZATION ===
 function initHubNav() {
   const navButtons = document.querySelectorAll('#hub-nav button');
-  const sections = Array.from(navButtons).map(btn =>
-    document.getElementById(btn.dataset.target)
-  );
 
-  navButtons.forEach((btn, idx) => {
+  navButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-      const section = sections[idx];
+      const section = document.getElementById(btn.dataset.target);
       if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
 
+  const sections = Array.from(navButtons).map(btn =>
+    document.getElementById(btn.dataset.target)
+  );
+
   window.addEventListener('scroll', () => {
     const scrollPos = window.scrollY + 60;
     sections.forEach((sec, idx) => {
-      if (!sec) return;
       if (sec.offsetTop <= scrollPos && sec.offsetTop + sec.offsetHeight > scrollPos) {
         navButtons.forEach(b => b.classList.remove('active'));
         navButtons[idx].classList.add('active');
@@ -1161,13 +1326,14 @@ function initHubNav() {
 document.addEventListener('DOMContentLoaded', () => {
   const cards = document.querySelectorAll('#national-networks .info-card');
   const carouselContainer = document.getElementById('network-carousel');
-  const carouselContent = carouselContainer?.querySelector('.carousel-content');
+  const carouselContent = document.querySelector('.carousel-content');
   const seeAllLink = document.getElementById('see-all-link');
 
-  if (!carouselContainer || !carouselContent || !seeAllLink) return;
-
   const demoData = {
-    nbc: { url: "https://www.nbcnews.com", items: [] }, // live RSS handled separately
+    nbc: {
+      url: "https://www.nbcnews.com",
+      items: [] // live RSS will populate
+    },
     abc: {
       url: "https://abcnews.go.com",
       items: [
@@ -1216,36 +1382,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // --- NBC Live RSS Carousel ---
       if (source === 'nbc') {
-        carouselContent.innerHTML = "";
+        carouselContent.innerHTML = ''; // clear previous items
         const rssUrl = 'https://feeds.nbcnews.com/nbcnews/public/news';
         const corsProxy = 'https://corsproxy.io/?' + encodeURIComponent(rssUrl);
 
         fetch(corsProxy)
-          .then(res => res.text())
+          .then(response => response.text())
           .then(str => {
             const parser = new DOMParser();
             const xmlDoc = parser.parseFromString(str, "text/xml");
-            const items = Array.from(xmlDoc.querySelectorAll('item')).slice(0, 5);
+            const items = xmlDoc.querySelectorAll('item');
 
-            items.forEach(item => {
+            items.forEach((item, idx) => {
+              if (idx >= 5) return; // top 5 only
               const title = item.querySelector('title')?.textContent || "No title";
               const link = item.querySelector('link')?.textContent || "#";
-
-              const cardWrapper = document.createElement('div');
-              cardWrapper.className = 'carousel-item';
-
-              const cardLink = document.createElement('a');
-              cardLink.href = link;
-              cardLink.target = "_blank";
-              cardLink.className = 'news-fallback-link';
-              cardLink.textContent = title;
-
-              cardWrapper.appendChild(cardLink);
-              carouselContent.appendChild(cardWrapper);
+              const slide = document.createElement('div');
+              slide.className = 'carousel-item';
+              slide.innerHTML = `<a href="${link}" target="_blank">${title}</a>`;
+              carouselContent.appendChild(slide);
             });
 
             seeAllLink.href = 'https://www.nbcnews.com/';
             carouselContainer.style.display = 'flex';
+
+            // Smooth scroll adjustment
             const offset = carouselContainer.getBoundingClientRect().top + window.scrollY - 120;
             window.scrollTo({ top: offset, behavior: 'smooth' });
           })
@@ -1255,21 +1416,24 @@ document.addEventListener('DOMContentLoaded', () => {
             carouselContainer.style.display = 'flex';
           });
 
-        return; // NBC handled
+        return; // exit early since NBC is handled
       }
 
       // --- Static demo for other networks ---
-      if (demoData[source]) {
-        const data = demoData[source];
+      const data = demoData[source];
+      if (data) {
         carouselContent.innerHTML = data.items
-          .map(item => `<div class="carousel-item"><a href="${item.link}" target="_blank" class="news-fallback-link">${item.title}</a></div>`)
+          .map(item => `<div class="carousel-item"><a href="${item.link}" target="_blank">${item.title}</a></div>`)
           .join("");
+
         seeAllLink.href = data.url;
         carouselContainer.style.display = 'flex';
 
+        // Smooth scroll adjustment
         const offset = carouselContainer.getBoundingClientRect().top + window.scrollY - 120;
         window.scrollTo({ top: offset, behavior: 'smooth' });
       }
+
     });
   });
 });
