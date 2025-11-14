@@ -807,24 +807,55 @@ function createNBCCard(cardData) {
   const wrapper = document.createElement('div');
   wrapper.classList.add('carousel-item');
 
-  // Entire card clickable
-  const cardLink = document.createElement('a');
-  cardLink.href = cardData.link;
-  cardLink.target = "_blank";
-  cardLink.classList.add('news-fallback-link'); // uses existing CSS
-  cardLink.style.textDecoration = "none";
-  cardLink.style.color = "inherit";
+  // Fallback link (styled like a clean card)
+  const a = document.createElement("a");
+  a.href = cardData.link;
+  a.target = "_blank";
+  a.classList.add("news-fallback-link", "nbc-card"); // added class for CSS targeting
+  a.style.display = "block";
+  a.style.background = "#1f2937";
+  a.style.padding = "12px";
+  a.style.borderRadius = "12px";
+  a.style.textAlign = "center";
+  a.style.minHeight = "140px";
+  a.style.boxShadow = "0 4px 12px rgba(0,0,0,0.3)";
+  a.style.transition = "transform 0.2s ease, box-shadow 0.2s ease";
+  a.style.color = "#ffffff"; // white
+  a.style.fontWeight = "700"; // bold
+  a.style.textDecoration = "none"; // no underline
 
-  // Inner HTML: logo on top, headline below
-  cardLink.innerHTML = `
-    <img src="${cardData.image}" alt="${cardData.title}" class="card-logo">
-    <h3>${cardData.title}</h3>
-  `;
+  // Headline
+  const title = document.createElement("h3");
+  title.textContent = cardData.title;
+  title.style.margin = "0";
+  a.appendChild(title);
 
-  wrapper.appendChild(cardLink);
+  // Timestamp (if available)
+  if (cardData.pubDate) {
+    const ts = document.createElement("div");
+    const date = new Date(cardData.pubDate);
+    ts.textContent = `Posted: ${date.toLocaleString()}`;
+    ts.style.fontSize = "0.85rem";
+    ts.style.color = "#ccc";
+    ts.style.marginTop = "6px";
+    a.appendChild(ts);
+  }
+
+  // Hover effect
+  a.addEventListener('mouseover', () => {
+    a.style.transform = "translateY(-3px)";
+    a.style.boxShadow = "0 6px 14px rgba(0,0,0,0.4)";
+    a.style.background = "rgba(0, 40, 80, 0.8)";
+  });
+  a.addEventListener('mouseout', () => {
+    a.style.transform = "translateY(0)";
+    a.style.boxShadow = "0 4px 12px rgba(0,0,0,0.3)";
+    a.style.background = "#1f2937";
+  });
+
+  wrapper.appendChild(a);
   return wrapper;
 }
-
 // === Step 2: Populate NBC carousel dynamically (no duplicates) ===
 async function loadNBCNewsCarousel() {
   // Replace this array with your manual JSON or feed later
