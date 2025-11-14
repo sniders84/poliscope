@@ -1305,14 +1305,6 @@ document.querySelectorAll('#network-cards .info-card').forEach(card => {
       if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
     });
 });
-// RSS feed URLs
-const rssFeeds = {
-  msnbc: 'https://www.nbcnews.com/id/3032091/device/rss/rss.xml'
-  abc: 'http://feeds.abcnews.com/abcnews/usheadlines',
-  cbs: 'https://www.cbsnews.com/latest/rss/main',
-  fox: 'https://feeds.foxnews.com/foxnews/latest',
-  cnn: 'http://rss.cnn.com/rss/cnn_topstories.rss'
-};
 
 // Utility function to fetch RSS via rss2json
 async function fetchRss(feedUrl) {
