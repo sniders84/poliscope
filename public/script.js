@@ -860,6 +860,36 @@ async function loadNBCNewsCarousel() {
   // Show the carousel
   document.getElementById("network-carousel").style.display = "flex";
 }
+// === JS fallback to enforce NBC card styles (call after loadNBCNewsCarousel()) ===
+function enforceNBCCardStyles() {
+  document.querySelectorAll('#network-carousel .carousel-item a.nbc-card').forEach(a => {
+    try {
+      a.style.setProperty('color', '#ffffff', 'important');
+      a.style.setProperty('font-weight', '700', 'important');
+      a.style.setProperty('text-decoration', 'none', 'important');
+      a.style.setProperty('background', '#1f2937', 'important');
+      a.style.setProperty('padding', '12px', 'important');
+      a.style.setProperty('border-radius', '12px', 'important');
+      a.querySelectorAll('h3, .card-name, .card-title').forEach(h => {
+        h.style.setProperty('color', '#ffffff', 'important');
+        h.style.setProperty('font-weight', '700', 'important');
+        h.style.setProperty('text-decoration', 'none', 'important');
+      });
+    } catch (e) {
+      // swallow; best-effort
+      console.warn('enforceNBCCardStyles error', e);
+    }
+  });
+}
+
+// call this at the end of the function that builds the NBC cards:
+async function loadNBCNewsCarousel() {
+  // ... your existing code that fetches and appends cards ...
+  document.getElementById("network-carousel").style.display = "block";
+
+  // enforce styles as a fallback
+  enforceNBCCardStyles();
+}
 
 // === SOCIAL TRENDS SECTION ===
 function loadSocialTrends() {
