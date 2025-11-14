@@ -1210,6 +1210,66 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // --- Other existing functions and variables above ---
+
+
+// ------------------ NETWORK RSS CARDS ------------------
+// Place the code you provided here
+
+const rssFeeds = {
+  msnbc: 'https://feeds.nbcnews.com/feeds/msnbc',
+  abc: 'http://feeds.abcnews.com/abcnews/usheadlines',
+  cbs: 'https://www.cbsnews.com/latest/rss/main',
+  fox: 'https://feeds.foxnews.com/foxnews/latest',
+  cnn: 'http://rss.cnn.com/rss/cnn_topstories.rss'
+};
+
+// Utility function to fetch RSS via rss2json
+async function fetchRss(feedUrl) {
+  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
+  try {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+    return data.items.slice(0, 5); // top 5 stories
+  } catch (err) {
+    console.error('RSS fetch error:', err);
+    return [];
+  }
+}
+
+// Render top stories
+async function renderNetworkStories(network) {
+  const feedUrl = rssFeeds[network];
+  if (!feedUrl) return;
+
+  const stories = await fetchRss(feedUrl);
+  const container = document.getElementById('network-stories');
+  container.innerHTML = ''; // clear previous stories
+
+  stories.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'story-card';
+    card.innerHTML = `<h4>${item.title}</h4>`;
+    card.onclick = () => window.open(item.link, '_blank');
+    container.appendChild(card);
+  });
+
+  // Add "See More" link
+  const seeMore = document.createElement('div');
+  seeMore.className = 'see-more';
+  seeMore.innerText = 'See More';
+  seeMore.onclick = () => window.open(feedUrl.replace('rss',''), '_blank');
+  container.appendChild(seeMore);
+}
+
+// Add click listeners to network cards
+document.querySelectorAll('#network-cards .info-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const network = card.dataset.network;
+    renderNetworkStories(network);
+  });
+});
+
   // === Load officials data with smooth fade-in ===
   Promise.all([
     fetch('/governors.json').then(res => res.json()),
