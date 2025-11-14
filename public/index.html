@@ -4347,6 +4347,75 @@
     </div>
   </div>
 </div>
+<style>
+/* === FORCE NBC CARD STYLES (place this block LAST in your HTML, before </body>) === */
+
+/* Make the entire card headline white, bold, no underline */
+#network-carousel .carousel-item a.nbc-card h3,
+#network-carousel .carousel-item a.nbc-card .card-name,
+#network-carousel .carousel-item a.nbc-card .card-title {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  margin: 0 !important;
+  line-height: 1.2 !important;
+}
+
+/* Remove any underlines / borders on the anchor itself */
+#network-carousel .carousel-item a.nbc-card,
+#network-carousel .carousel-item a.nbc-card:visited,
+#network-carousel .carousel-item a.nbc-card:hover,
+#network-carousel .carousel-item a.nbc-card:active {
+  text-decoration: none !important;
+  outline: none !important;
+  border: none !important;
+  color: #ffffff !important;
+}
+
+/* Ensure h3 wraps fully and shows multi-line headline */
+#network-carousel .carousel-item a.nbc-card h3,
+#network-carousel .carousel-item a.nbc-card .card-name {
+  display: block !important;
+  white-space: normal !important;
+  overflow: visible !important;
+  max-height: none !important;
+}
+
+/* Keep card background and sizing consistent with other cards */
+#network-carousel .carousel-item a.nbc-card.official-card,
+#network-carousel .carousel-item a.nbc-card {
+  background: #1f2937 !important; /* dark gray background */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15) !important;
+  border-radius: 12px !important;
+  padding: 12px !important;
+  width: 180px !important;
+  min-height: 120px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 8px !important;
+}
+
+/* Small logo sizing at top */
+#network-carousel .carousel-item a.nbc-card img {
+  width: 72px !important;
+  height: 72px !important;
+  object-fit: contain !important;
+  margin-bottom: 6px !important;
+}
+
+/* Prevent child <a> underlines if any inner link exists */
+#network-carousel .carousel-item a.nbc-card a {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+/* Force clickable area to fill whole card */
+#network-carousel .carousel-item {
+  display: inline-block !important;
+}
+</style>
 
 <script src="script.js"></script>
 </body>
