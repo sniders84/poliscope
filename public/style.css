@@ -1423,3 +1423,22 @@ a, button, .tab, .card-button,
   color: blue;
   cursor: pointer;
 }
+.network-logo {
+  width: 80px;   /* adjust as needed */
+  height: auto;
+  display: block;
+  margin: 0 auto 10px auto;
+}
+#network-stories .official-card {
+  cursor: pointer;
+}
+.see-more {
+  text-align: right;
+  margin-top: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #007bff;
+}
+.see-more:hover {
+  text-decoration: underline;
+}
