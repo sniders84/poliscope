@@ -1496,3 +1496,18 @@ a, button, .tab, .card-button,
   text-decoration: none !important;
   color: inherit !important;
 }
+/* FORCE white bold headline text on NBC cards */
+#network-carousel .carousel-item a.nbc-card h3 {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+}
+
+/* Remove underlines from the card link in all states */
+#network-carousel .carousel-item a.nbc-card,
+#network-carousel .carousel-item a.nbc-card:visited,
+#network-carousel .carousel-item a.nbc-card:hover,
+#network-carousel .carousel-item a.nbc-card:active {
+  text-decoration: none !important;
+  color: #ffffff !important; /* ensures white even if inherited is broken */
+}
