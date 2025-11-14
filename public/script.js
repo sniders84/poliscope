@@ -1220,16 +1220,22 @@ const rssFeeds = {
   cnn: 'http://rss.cnn.com/rss/cnn_topstories.rss'
 };
 
-// Fetch top 5 stories via rss2json
+// Utility function to fetch RSS via rss2json
 async function fetchRss(feedUrl) {
   const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
   try {
     const response = await fetch(apiUrl);
     const data = await response.json();
-    return data.items.slice(0, 5);
+
+    if (data && data.items) {
+      return data.items.slice(0, 5); // top 5 stories
+    } else {
+      console.error('RSS feed error: No items found in feed.');
+      return []; // Return empty if no items
+    }
   } catch (err) {
     console.error('RSS fetch error:', err);
-    return [];
+    return []; // Return empty if fetch fails
   }
 }
 
