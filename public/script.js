@@ -811,7 +811,7 @@ function createNBCCard(cardData) {
   const a = document.createElement("a");
   a.href = cardData.link;
   a.target = "_blank";
-  a.classList.add("news-fallback-link", "nbc-card"); // added class for CSS targeting
+  a.classList.add("news-fallback-link", "nbc-card"); // CSS targeting
   a.style.display = "block";
   a.style.background = "#1f2937";
   a.style.padding = "12px";
@@ -822,7 +822,7 @@ function createNBCCard(cardData) {
   a.style.transition = "transform 0.2s ease, box-shadow 0.2s ease";
   a.style.color = "#ffffff"; // white
   a.style.fontWeight = "700"; // bold
-  a.style.textDecoration = "none"; // no underline
+  a.style.textDecoration = "none"; // remove underline
 
   // Headline
   const title = document.createElement("h3");
@@ -830,16 +830,37 @@ function createNBCCard(cardData) {
   title.style.margin = "0";
   a.appendChild(title);
 
-  // Timestamp (if available)
+  // ==== Time Ago Utility ====
+  function timeAgo(date) {
+    const seconds = Math.floor((Date.now() - new Date(date)) / 1000);
+
+    const intervals = {
+      year: 31536000,
+      month: 2592000,
+      day: 86400,
+      hour: 3600,
+      minute: 60
+    };
+
+    for (let unit in intervals) {
+      const value = Math.floor(seconds / intervals[unit]);
+      if (value >= 1) return `${value} ${unit}${value > 1 ? "s" : ""} ago`;
+    }
+
+    return "Just now";
+  }
+
+  // ==== Timestamp on card ====
   if (cardData.pubDate) {
     const ts = document.createElement("div");
-    const date = new Date(cardData.pubDate);
-    ts.textContent = `Posted: ${date.toLocaleString()}`;
-    ts.style.fontSize = "0.85rem";
-    ts.style.color = "#ccc";
-    ts.style.marginTop = "6px";
+    ts.classList.add("timestamp");
+    ts.textContent = timeAgo(cardData.pubDate);
     a.appendChild(ts);
   }
+
+  wrapper.appendChild(a);
+  return wrapper;
+}
 
   // Hover effect
   a.addEventListener('mouseover', () => {
