@@ -1531,3 +1531,35 @@ a, button, .tab, .card-button,
   box-shadow: 0 6px 14px rgba(0,0,0,0.4);
   background: rgba(0, 40, 80, 0.8);
 }
+/* NBC fallback links styling */
+#network-carousel .carousel-item a.nbc-card {
+  display: block;
+  background: #1f2937;
+  padding: 12px;
+  border-radius: 12px;
+  text-align: center;
+  min-height: 140px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+#network-carousel .carousel-item a.nbc-card h3 {
+  margin: 0;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+#network-carousel .carousel-item a.nbc-card .timestamp {
+  font-size: 0.85rem;
+  color: #ccc;
+  margin-top: 6px;
+}
+
+#network-carousel .carousel-item a.nbc-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.4);
+  background: rgba(0, 40, 80, 0.8);
+}
