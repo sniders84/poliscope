@@ -4355,5 +4355,174 @@ function showTab(tabId) {
 </div>
 
 <script src="script.js"></script>
+        <script src="script.js"></script>
+<!-- <-- Paste the recovery script block BELOW this line --> 
+<script>
+  /* recovery script - paste this inline immediately after your script.js include */
+  (function () {
+    // Safe helpers: do not override existing working functions
+    function safeShowTab(id) {
+      if (typeof window.showTab === 'function') {
+        try { window.showTab(id); return; } catch(e) { /* fall through */ }
+      }
+      // fallback simple toggle
+      document.querySelectorAll('.tab-content').forEach(t => t.style.display = 'none');
+      const el = document.getElementById(id);
+      if (el) el.style.display = 'block';
+      // update tab-button active classes if present
+      document.querySelectorAll('.tab-button, .tab').forEach(btn => {
+        if (btn.dataset && btn.dataset.tab === id) btn.classList.add('active');
+        else btn.classList.remove('active');
+      });
+    }
+
+    // Provide global tab functions if missing (these are safe wrappers)
+    if (typeof window.showStartupHub !== 'function') {
+      window.showStartupHub = function () { safeShowTab('startup-hub'); };
+    }
+    if (typeof window.showCivic !== 'function') {
+      window.showCivic = function () { safeShowTab('civic'); };
+    }
+    if (typeof window.showPolls !== 'function') {
+      window.showPolls = function () { safeShowTab('polls'); };
+    }
+    if (typeof window.showOrganizations !== 'function') {
+      window.showOrganizations = function () { safeShowTab('organizations'); };
+    }
+    if (typeof window.showVoting !== 'function') {
+      window.showVoting = function () { safeShowTab('voting'); };
+    }
+
+    // Minimal renderOfficials fallback so the "My Officials" button doesn't crash.
+    if (typeof window.renderOfficials !== 'function') {
+      window.renderOfficials = function (state, q) {
+        console.warn('renderOfficials fallback called — original function missing or script truncated.');
+        const container = document.getElementById('officials-container');
+        if (!container) return;
+        container.innerHTML = '<div style="color:#fff;padding:16px;background:#222;border-radius:8px;">Officials temporarily unavailable — script failed to load entirely. Check console.</div>';
+        safeShowTab('my-officials');
+      };
+    }
+
+    // Fallback rssFeeds and fetchRss if main script is truncated
+    if (typeof window.rssFeeds !== 'object') {
+      window.rssFeeds = {
+        msnbc: { feed: 'https://feeds.nbcnews.com/feeds/msnbc', site: 'https://www.msnbc.com' },
+        abc:   { feed: 'http://feeds.abcnews.com/abcnews/usheadlines', site: 'https://abcnews.go.com' },
+        cbs:   { feed: 'https://www.cbsnews.com/latest/rss/main', site: 'https://www.cbsnews.com' },
+        fox:   { feed: 'https://feeds.foxnews.com/foxnews/latest', site: 'https://www.foxnews.com' },
+        cnn:   { feed: 'http://rss.cnn.com/rss/cnn_topstories.rss', site: 'https://www.cnn.com' }
+      };
+    }
+
+    if (typeof window.fetchRss !== 'function') {
+      window.fetchRss = async function (url) {
+        // simple safe fetch via rss2json (best-effort). If the main site already defines fetchRss, we'll use that.
+        try {
+          const api = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(url);
+          const res = await fetch(api);
+          if (!res.ok) return [];
+          const data = await res.json();
+          return (data.items && Array.isArray(data.items)) ? data.items.slice(0,5) : [];
+        } catch (e) {
+          console.warn('fetchRss fallback failed', e);
+          return [];
+        }
+      };
+    }
+
+    // Define a safe renderNetworkStories if main is missing — but prefer existing one
+    if (typeof window.renderNetworkStories !== 'function') {
+      window.renderNetworkStories = async function (networkKey) {
+        console.warn('renderNetworkStories fallback — using minimal renderer for', networkKey);
+        // support either rssFeeds being {key: url} or {key: {feed,site}}
+        const info = (window.rssFeeds && window.rssFeeds[networkKey]) || null;
+        const feedUrl = info ? (typeof info === 'string' ? info : (info.feed || info)) : null;
+        const siteUrl = info ? (typeof info === 'object' ? (info.site || '') : '') : '';
+        const container = document.getElementById('network-stories');
+        if (!container) return;
+        container.innerHTML = '';
+        if (!feedUrl) {
+          container.innerHTML = '<div style="color:#fff;padding:12px">No feed configured.</div>';
+          return;
+        }
+        const stories = await window.fetchRss(feedUrl) || [];
+        stories.forEach(item => {
+          const c = document.createElement('div');
+          c.className = 'story-card'; // your CSS should style .story-card
+          const title = item.title || item.title_text || item.titleText || 'Untitled';
+          c.innerHTML = `<h4>${title}</h4>`;
+          c.onclick = () => { if (item.link) window.open(item.link, '_blank'); };
+          container.appendChild(c);
+        });
+        if (stories.length > 0) {
+          const see = document.createElement('div');
+          see.className = 'see-more-link' in document.createElement('div') ? 'see-more-link' : 'see-more';
+          see.innerText = 'See More';
+          see.style.cursor = 'pointer';
+          see.onclick = () => {
+            if (siteUrl) window.open(siteUrl, '_blank');
+            else window.open(feedUrl, '_blank');
+          };
+          container.appendChild(see);
+        }
+      };
+    }
+
+    // Re-wire network card click handlers (safe — idempotent)
+    try {
+      document.querySelectorAll('#network-cards .info-card').forEach(card => {
+        card.removeEventListener('click', card.__recoveryBound); // remove prior bound if any
+        const bound = () => {
+          const network = card.dataset ? card.dataset.network : null;
+          if (!network) return;
+          // If main script defines renderNetworkStories, prefer it; otherwise our fallback runs
+          if (typeof window.renderNetworkStories === 'function') {
+            try { window.renderNetworkStories(network); }
+            catch(e) { console.error('renderNetworkStories threw', e); }
+          }
+        };
+        card.addEventListener('click', bound);
+        card.__recoveryBound = bound;
+      });
+    } catch (e) {
+      console.warn('Failed to wire network cards in recovery script', e);
+    }
+
+    // Re-wire nav <button class="tab"> elements to call safe wrappers if HTML onclick attributes are not working
+    try {
+      document.querySelectorAll('nav button.tab, nav .tab-button, button.tab').forEach(btn => {
+        // skip if it already has an onclick handler
+        if (btn.dataset.recoveryBound) return;
+        const text = (btn.innerText || '').toLowerCase();
+        let handler = null;
+        // check for data-tab attr first
+        if (btn.dataset && btn.dataset.tab) {
+          handler = () => safeShowTab(btn.dataset.tab);
+        } else if (text.includes('home') || text.includes('hub')) {
+          handler = () => window.showStartupHub();
+        } else if (text.includes('official')) {
+          handler = () => window.renderOfficials(window.selectedState || 'North Carolina', '');
+        } else if (text.includes('civic')) {
+          handler = () => window.showCivic();
+        } else if (text.includes('poll')) {
+          handler = () => window.showPolls();
+        } else if (text.includes('group') || text.includes('political')) {
+          handler = () => window.showOrganizations();
+        } else if (text.includes('vot')) {
+          handler = () => window.showVoting();
+        }
+        if (handler) {
+          btn.addEventListener('click', handler);
+          btn.dataset.recoveryBound = '1';
+        }
+      });
+    } catch (e) {
+      console.warn('Failed to attach nav handlers in recovery script', e);
+    }
+
+    console.log('Recovery script loaded — temporary fallbacks installed.');
+  })();
+</script>
 </body>
 </html>
