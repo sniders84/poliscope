@@ -1213,73 +1213,61 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Other existing functions and variables above ---
 
 const rssFeeds = {
-  msnbc: msnbc: 'https://www.nbcnews.com/feeds/rss',
+  msnbc: 'https://feeds.nbcnews.com/feeds/msnbc',
   abc: 'http://feeds.abcnews.com/abcnews/usheadlines',
   cbs: 'https://www.cbsnews.com/latest/rss/main',
   fox: 'https://feeds.foxnews.com/foxnews/latest',
   cnn: 'http://rss.cnn.com/rss/cnn_topstories.rss'
 };
 
-// Utility function to fetch RSS via rss2json
+// Fetch top 5 stories via rss2json
 async function fetchRss(feedUrl) {
   const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
   try {
     const response = await fetch(apiUrl);
     const data = await response.json();
-
-    // Check if the response is valid
-    if (data && data.items && Array.isArray(data.items)) {
-      return data.items.slice(0, 5); // Fetch the top 5 stories
-    } else {
-      console.error('Invalid RSS data received or no items found.');
-      return []; // Return empty array if invalid data or empty feed
-    }
+    return data.items.slice(0, 5);
   } catch (err) {
     console.error('RSS fetch error:', err);
-    return []; // Return empty array if fetch fails
+    return [];
   }
 }
 
 // Render network stories
 async function renderNetworkStories(network) {
-  const feedUrl = rssFeeds[network]; // Get the correct feed URL for the selected network
-  if (!feedUrl) {
-    console.error('No feed URL for network:', network);
-    return;
-  }
+  const feedUrl = rssFeeds[network];
+  if (!feedUrl) return;
 
-  const stories = await fetchRss(feedUrl); // Fetch stories using the updated fetchRss function
+  const stories = await fetchRss(feedUrl);
   const container = document.getElementById('network-stories');
-  container.innerHTML = ''; // Clear previous stories
+  container.innerHTML = ''; // clear previous stories
 
-  // Check if we have valid stories
-  if (stories.length === 0) {
-    container.innerHTML = '<p>No stories available at this time.</p>';
-  } else {
-    stories.forEach(item => {
-      const card = document.createElement('div');
-      card.className = 'official-card'; // Use the official card style
-      card.innerHTML = `<h4>${item.title}</h4>`;
-      card.onclick = () => window.open(item.link, '_blank');
-      container.appendChild(card);
-    });
-  }
+  stories.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'official-card';
+    card.innerHTML = `<h4>${item.title}</h4>`;
+    card.onclick = () => window.open(item.link, '_blank');
+    container.appendChild(card);
+  });
 
-  // Add "See More" link
-  const seeMore = document.createElement('div');
-  seeMore.className = 'see-more-link';
-  seeMore.innerText = 'See More';
-  seeMore.onclick = () => {
-    const siteMap = {
-      msnbc: 'https://www.msnbc.com',
-      abc: 'https://abcnews.go.com',
-      cbs: 'https://www.cbsnews.com',
-      fox: 'https://www.foxnews.com',
-      cnn: 'https://www.cnn.com'
+  // Append "See More" next to last story
+  if (stories.length > 0) {
+    const seeMore = document.createElement('div');
+    seeMore.className = 'see-more';
+    seeMore.innerText = 'See More';
+    seeMore.onclick = () => {
+      // Proper site URL for MSNBC, others open homepage
+      const urlMap = {
+        msnbc: 'https://www.msnbc.com',
+        abc: 'https://abcnews.go.com',
+        cbs: 'https://www.cbsnews.com',
+        fox: 'https://www.foxnews.com',
+        cnn: 'https://edition.cnn.com'
+      };
+      window.open(urlMap[network] || feedUrl, '_blank');
     };
-    window.open(siteMap[network] || siteMap['msnbc'], '_blank');
-  };
-  container.appendChild(seeMore);
+    container.appendChild(seeMore);
+  }
 }
 
 // Add click listeners to network cards
