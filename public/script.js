@@ -1319,3 +1319,62 @@ document.querySelectorAll('#network-cards .info-card').forEach(card => {
       if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
     });
 });
+/* === Official Cards Styling for Top Stories (Shrunk Version) === */
+.official-card {
+  display: flex;
+  flex-direction: column; /* Column layout for story title */
+  justify-content: center;
+  align-items: flex-start;
+  background: #2b2b2b; /* Dark grey background */
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  margin: 8px;
+  padding: 12px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  width: 220px; /* Keep width consistent */
+  min-height: 50px; /* Shrunk height */
+}
+
+.official-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  background: #1e3a8a; /* Blue hue on hover */
+}
+
+.official-card h4 {
+  font-size: 14px; /* Smaller font to fit smaller cards */
+  font-weight: 600;
+  margin: 0;
+  color: #fff; /* White text on dark background */
+}
+
+/* See More link styling (appears next to last card) */
+.see-more-link {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: #007BFF;
+  text-decoration: underline;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.see-more-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Row for top stories under network cards */
+#network-stories {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.cards-row {
+  display: flex;
+  flex-wrap: wrap;
+}
