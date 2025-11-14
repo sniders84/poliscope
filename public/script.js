@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", () => {
 // === GLOBAL STATE ===
 let selectedState = 'North Carolina';
 let governors = [];
@@ -1439,3 +1440,4 @@ document.addEventListener('DOMContentLoaded', () => {
       if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
     });
 });
+}); // end of DOMContentLoaded
