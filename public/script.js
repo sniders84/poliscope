@@ -1213,9 +1213,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Other existing functions and variables above ---
 
 
-// ------------------ NETWORK RSS CARDS ------------------
-// Place the code you provided here
-
+// --- RSS Feeds ---
 const rssFeeds = {
   msnbc: 'https://feeds.nbcnews.com/feeds/msnbc',
   abc: 'http://feeds.abcnews.com/abcnews/usheadlines',
@@ -1242,21 +1240,24 @@ async function renderNetworkStories(network) {
   const feedUrl = rssFeeds[network];
   if (!feedUrl) return;
 
-  const stories = await fetchRss(feedUrl);
   const container = document.getElementById('network-stories');
   container.innerHTML = ''; // clear previous stories
 
+  const stories = await fetchRss(feedUrl);
+
   stories.forEach(item => {
     const card = document.createElement('div');
-    card.className = 'story-card';
-    card.innerHTML = `<h4>${item.title}</h4>`;
+    card.className = 'official-card'; // match official card style
+    card.innerHTML = `
+      <h4>${item.title}</h4>
+    `;
     card.onclick = () => window.open(item.link, '_blank');
     container.appendChild(card);
   });
 
   // Add "See More" link
   const seeMore = document.createElement('div');
-  seeMore.className = 'see-more';
+  seeMore.className = 'official-card see-more';
   seeMore.innerText = 'See More';
   seeMore.onclick = () => window.open(feedUrl.replace('rss',''), '_blank');
   container.appendChild(seeMore);
