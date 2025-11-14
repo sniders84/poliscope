@@ -1,3 +1,22 @@
+// === Expose tab & hub functions globally so HTML onclicks work ===
+function showTab(tabName) {
+  const tabs = document.querySelectorAll(".tab-content");
+  tabs.forEach(tab => {
+    tab.style.display = (tab.id === tabName) ? "block" : "none";
+  });
+
+  const tabButtons = document.querySelectorAll(".tab-button");
+  tabButtons.forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.tab === tabName);
+  });
+}
+
+// If you have a startup or hub overlay, hide it immediately
+document.addEventListener("DOMContentLoaded", () => {
+  const overlays = document.querySelectorAll(".overlay, .hub-overlay, .startup-overlay");
+  overlays.forEach(overlay => overlay.style.display = "none");
+});
+
 document.addEventListener("DOMContentLoaded", () => {
 // === GLOBAL STATE ===
 let selectedState = 'North Carolina';
