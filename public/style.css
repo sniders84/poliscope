@@ -427,7 +427,7 @@ h2 {
 button, .tab, .card-button, a {
   transition: all 0.25s ease;
 }
-document.body.classList.toggle('light-mode');
+
 /* ============================================================
    PATCH: VISUAL REFINEMENTS AND LAYOUT CORRECTIONS
    ============================================================ */
