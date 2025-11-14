@@ -1446,56 +1446,47 @@ a, button, .tab, .card-button,
 .official-card {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: flex-start;
-  background: #2b2b2b; /* Dark grey background */
+  background: #2c2c2c; /* dark grey */
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   margin: 10px;
-  padding: 16px;
+  padding: 12px; /* slightly smaller padding to shrink height */
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  width: 220px; /* Match original official card width */
-  min-height: 100px;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  width: 220px;
+  min-height: 50px; /* 50% reduction */
 }
 
 .official-card:hover {
-  background: #1e3a8a; /* Blue hue on hover */
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  background: #1a73e8; /* blue hue hover */
 }
 
 .official-card h4 {
   font-size: 16px;
   font-weight: 600;
   margin: 0;
-  color: #ffffff; /* White text for contrast */
+  color: #fff;
 }
 
-.official-card p {
-  font-size: 14px;
-  color: #cccccc; /* Light grey for description */
-  margin-top: 4px;
-}
-
-/* See More link styling */
-.official-card.see-more {
+/* See More link styling (not its own card, appended next to last story) */
+.see-more {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   font-size: 14px;
   font-weight: 500;
-  color: #60a5fa; /* Light blue */
+  color: #007BFF;
   text-decoration: underline;
-  background: none;
-  box-shadow: none;
   cursor: pointer;
-  margin-top: 8px;
+  margin: 10px 0 0 10px;
 }
 
-.official-card.see-more:hover {
-  color: #2563eb; /* Darker blue on hover */
-  text-decoration: underline;
+.see-more:hover {
+  color: #0056b3;
 }
 
 /* Story cards row layout */
@@ -1503,4 +1494,12 @@ a, button, .tab, .card-button,
   display: flex;
   flex-wrap: wrap;
   margin-top: 20px;
+}
+
+/* Network logos inside cards */
+.network-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  margin-bottom: 8px;
 }
