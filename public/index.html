@@ -1,5 +1,279 @@
-<!-- My Officials Tab -->
-<section id="my-officials" class="tab-content" style="position: relative;">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Your Officials</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" onerror="this.href='data:,';" />
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <img src="assets/electorate-logo.png" alt="Logo" class="logo" />
+    </div>
+    <div class="header-right">
+      <input type="text" id="search-bar" placeholder="Search officials..." />
+      <label for="state-dropdown">State:</label>
+      <select id="state-dropdown">
+        <option value="Alabama">Alabama</option>
+        <option value="Alaska">Alaska</option>
+        <option value="American Samoa">American Samoa</option>
+        <option value="Arizona">Arizona</option>
+        <option value="Arkansas">Arkansas</option>
+        <option value="California">California</option>
+        <option value="Colorado">Colorado</option>
+        <option value="Connecticut">Connecticut</option>
+        <option value="Delaware">Delaware</option>
+        <option value="District of Columbia">District of Columbia</option>
+        <option value="Florida">Florida</option>
+        <option value="Georgia">Georgia</option>
+        <option value="Guam">Guam</option>
+        <option value="Hawaii">Hawaii</option>
+        <option value="Idaho">Idaho</option>
+        <option value="Illinois">Illinois</option>
+        <option value="Indiana">Indiana</option>
+        <option value="Iowa">Iowa</option>
+        <option value="Kansas">Kansas</option>
+        <option value="Kentucky">Kentucky</option>
+        <option value="Louisiana">Louisiana</option>
+        <option value="Maine">Maine</option>
+        <option value="Maryland">Maryland</option>
+        <option value="Massachusetts">Massachusetts</option>
+        <option value="Michigan">Michigan</option>
+        <option value="Minnesota">Minnesota</option>
+        <option value="Mississippi">Mississippi</option>
+        <option value="Missouri">Missouri</option>
+        <option value="Montana">Montana</option>
+        <option value="Nebraska">Nebraska</option>
+        <option value="Nevada">Nevada</option>
+        <option value="New Hampshire">New Hampshire</option>
+        <option value="New Jersey">New Jersey</option>
+        <option value="New Mexico">New Mexico</option>
+        <option value="New York">New York</option>
+        <option value="North Carolina">North Carolina</option>
+        <option value="North Dakota">North Dakota</option>
+        <option value="Northern Mariana Islands">Northern Mariana Islands</option>
+        <option value="Ohio">Ohio</option>
+        <option value="Oklahoma">Oklahoma</option>
+        <option value="Oregon">Oregon</option>
+        <option value="Pennsylvania">Pennsylvania</option>
+        <option value="Puerto Rico">Puerto Rico</option>
+        <option value="Rhode Island">Rhode Island</option>
+        <option value="South Carolina">South Carolina</option>
+        <option value="South Dakota">South Dakota</option>
+        <option value="Tennessee">Tennessee</option>
+        <option value="Texas">Texas</option>
+        <option value="Utah">Utah</option>
+        <option value="Vermont">Vermont</option>
+        <option value="Virgin Islands">U.S. Virgin Islands</option>
+        <option value="Virginia">Virginia</option>
+        <option value="Washington">Washington</option>
+        <option value="West Virginia">West Virginia</option>
+        <option value="Wisconsin">Wisconsin</option>
+        <option value="Wyoming">Wyoming</option>
+      </select>
+    </div>
+  </header>
+
+ <nav>
+  <button class="tab" onclick="showStartupHub()">Home Hub</button>
+  <button class="tab" onclick="renderOfficials(selectedState, '')">My Officials</button>
+  <button class="tab" onclick="showCivic()">Civic Intelligence</button>
+  <button class="tab" onclick="showPolls()">Polls</button>
+  <button class="tab" onclick="showOrganizations()">Political Groups</button>
+  <button class="tab" onclick="showVoting()">Voting</button>
+</nav>
+
+  <main>
+    
+<!-- Startup Hub Tab (REPLACE THE WHOLE SECTION BELOW IN YOUR HTML) -->
+<section id="startup-hub" class="tab-content" style="display: none;">
+  <h2>Home Hub</h2>
+
+  <!-- 🌐 Sticky Section Navigation (matches site style) -->
+  <div id="hub-nav" class="hub-nav" role="navigation" aria-label="Home Hub navigation">
+    <button type="button" data-target="national-networks">National Broadcasting Networks</button>
+    <button type="button" data-target="newspaper-media">Newspaper Media</button>
+    <button type="button" data-target="global-news">Global Politics & World News</button>
+    <button type="button" data-target="finance-markets">Finance & Markets</button>
+    <button type="button" data-target="tech-innovation">Tech & Innovation</button>
+    <button type="button" data-target="popular-podcasts">Popular Podcasts</button>
+  </div>
+
+<!-- Sections -->
+<!-- National Broadcasting Networks -->
+<section id="national-networks" class="category-section">
+  <h2>National Broadcasting Networks</h2>
+  <div class="card-grid">
+    <!-- NBC Card (will be replaced by RSS feed carousel) -->
+    <div class="info-card" id="nbc-card" data-source="nbc">
+      <img src="/assets/nbc.png" alt="NBC News Logo" class="card-logo" />
+      <h3>NBC News</h3>
+      <p>National TV news coverage from NBC.</p>
+    </div>
+
+    <!-- Other networks (static placeholders) -->
+    <div class="info-card" data-source="abc">
+      <img src="/assets/abc.png" alt="ABC News Logo" class="card-logo" />
+      <h3>ABC News</h3>
+      <p>Coverage from ABC News.</p>
+    </div>
+    <div class="info-card" data-source="cbs">
+      <img src="/assets/cbs.png" alt="CBS News Logo" class="card-logo" />
+      <h3>CBS News</h3>
+      <p>CBS News broadcasts and updates.</p>
+    </div>
+    <div class="info-card" data-source="fox">
+      <img src="/assets/fox.png" alt="FOX News Logo" class="card-logo" />
+      <h3>FOX News</h3>
+      <p>Latest stories from FOX News.</p>
+    </div>
+    <div class="info-card" data-source="cnn">
+      <img src="/assets/cnn.png" alt="CNN Logo" class="card-logo" />
+      <h3>CNN</h3>
+      <p>Breaking news and political analysis from CNN.</p>
+    </div>
+  </div>
+
+  <!-- Inline Carousel Container (for NBC only) -->
+  <div id="network-carousel" class="carousel-container" style="display: none;">
+    <div class="carousel-content"></div>
+    <a href="#" id="see-all-link" target="_blank" class="see-all-link">See All →</a>
+  </div>
+</section>
+
+  <!-- 🌍 Social Trends Section (kept but empty for now) -->
+  <section id="social-trends">
+    <h2>Trending Now</h2>
+    <div id="social-feed" class="grid"></div>
+  </section>
+</section>
+
+    <body>
+  <!-- Your header/nav here -->
+
+  <!-- Tabs -->
+  <section id="startup-hub" class="tab-content" style="display: none;">
+    <!-- Home Hub content -->
+  </section>
+
+  <section id="other-tab" class="tab-content" style="display: none;">
+    <!-- Other tab content -->
+  </section>
+
+  <!-- Carousel Modal - put it here at the end of the body -->
+  <div id="carousel-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeCarouselModal()">&times;</span>
+      <div id="carousel-content" class="carousel"></div>
+      <a id="carousel-see-all" href="#" target="_blank" class="see-all-link">See All</a>
+    </div>
+  </div>
+
+<!-- Inline styles only for the hub nav to match site theme (keep these or move to your css file) -->
+<style>
+  /* Sticky Home Hub nav styling - match site theme */
+  #hub-nav {
+    position: sticky;
+    top: 0;
+    background-color: #2b2b2b; /* dark grey background */
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #444;
+    z-index: 1000;
+    overflow-x: auto;
+    align-items: center;
+  }
+
+  #hub-nav button {
+    padding: 8px 12px;
+    border: none;
+    background-color: #3c3c3c;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 6px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: background-color 0.18s, color 0.18s, transform 0.12s;
+    font-weight: 600;
+  }
+
+  #hub-nav button:hover,
+  #hub-nav button.active {
+    background-color: #0066ff; /* blue hover */
+    color: #fff;
+    transform: translateY(-1px);
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+    margin: 12px 0 28px 0;
+  }
+
+  .info-card {
+    padding: 12px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .info-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  }
+  .info-card h3 { margin: 0 0 6px 0; }
+  .info-card p { margin: 0; color: #444; font-size: 0.95rem; }
+</style>
+
+<!-- Minimal JS to initialize the sticky nav behaviour (place this inline with the section as a single step) -->
+<script>
+  (function () {
+    // initHubNav: add click handlers and active-class on scroll
+    function initHubNav() {
+      const nav = document.getElementById('hub-nav');
+      if (!nav) return;
+      const buttons = Array.from(nav.querySelectorAll('button[data-target]'));
+      const sections = buttons
+        .map(b => document.getElementById(b.dataset.target))
+        .filter(Boolean);
+
+      // Click -> smooth scroll to section
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const target = document.getElementById(btn.dataset.target);
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      // Highlight nav button for the section in view (optional)
+      window.addEventListener('scroll', () => {
+        const offset = window.scrollY + 80; // adjust to taste for sticky nav height
+        for (let i = 0; i < sections.length; i++) {
+          const s = sections[i];
+          if (!s) continue;
+          if (s.offsetTop <= offset && s.offsetTop + s.offsetHeight > offset) {
+            buttons.forEach(b => b.classList.remove('active'));
+            if (buttons[i]) buttons[i].classList.add('active');
+            break;
+          }
+        }
+      }, { passive: true });
+    }
+
+    // Run on DOM ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initHubNav);
+    } else {
+      initHubNav();
+    }
+  })();
+</script>
+
+    <section id="my-officials" class="tab-content" style="position: relative;">
   <h2>My Officials</h2>
 
   <!-- Loading overlay -->
@@ -23,14 +297,12 @@
   <div id="officials-container" class="grid"></div>
 </section>
 
-<!-- Civic Intelligence Dashboard -->
-<section id="civic" class="tab-content" style="display: none;">
-  <h2>Civic Intelligence Dashboard</h2>
-  <div id="calendar"></div>
-</section>
+    <section id="civic" class="tab-content" style="display: none;">
+      <h2>Civic Intelligence Dashboard</h2>
+      <div id="calendar"></div>
+    </section>
 
-<!-- Polls Dashboard -->
-<section id="polls" class="tab-content" style="display: none;">
+    <section id="polls" class="tab-content" style="display: none;">
   <h2>Polling Dashboard</h2>
   <div id="polls-cards" class="grid"></div>
 </section>
@@ -43,6 +315,7 @@
     <div class="card">Link 2</div>
     <div class="card">Link 3</div>
     <div class="card">Link 4</div>
+    <!-- add more cards as needed -->
   </div>
 </section>
 
@@ -67,16 +340,17 @@
     <div class="card">Oversight 4</div>
   </div>
 </section>
-
+    
 <!-- Modal for Polls -->
 <div id="polls-modal" class="modal">
   <div id="polls-content" class="modal-content"></div>
 </div>
 
-<!-- Political Organizations Tab -->
-<section id="organizations" class="tab-content" style="display: none;">
+  <section id="organizations" class="tab-content" style="display: none;">
   <h2>Political Organizations</h2>
   <div class="organization-grid">
+
+    <!-- Each organization card is now a full anchor -->
     <a href="YOUR_ORGANIZATION_URL" target="_blank" class="organization-card">
       <div class="logo-wrapper">
         <img src="YOUR_LOGO_PATH" alt="Organization Logo">
@@ -86,30 +360,32 @@
         <p>Organization description goes here.</p>
       </div>
     </a>
-    <!-- Add more organization cards here -->
+
+    <!-- Repeat more <a class="organization-card"> blocks for each org -->
+
   </div>
 </section>
 
-<!-- Voting & Registration Tab -->
-<section id="voting" class="tab-content" style="display: none;">
-  <h2>Voting & Registration</h2>
-  <div id="voting-cards">
-    <!-- Alabama Voting Cards -->
-    <div class="voting-card">
-      <a href="https://www.sos.alabama.gov/alabama-votes/voter/register-to-vote" target="_blank">
-        <div class="card-icon">📝</div>
-        <div class="card-label">Register to Vote</div>
-        <div class="card-description">Register online or check your status</div>
-        <div class="card-date">Deadline: October 21, 2025</div>
-      </a>
-    </div>
-    <div class="voting-card">
-      <a href="https://www.sos.alabama.gov/alabama-votes/voter/voter-id" target="_blank">
-        <div class="card-icon">🪪</div>
-        <div class="card-label">Voter ID Requirements</div>
-        <div class="card-description">Photo ID required for voting</div>
-      </a>
-    </div>
+    <section id="voting" class="tab-content" style="display: none;">
+      <h2>Voting & Registration</h2>
+      <div id="voting-cards">
+        <section id="voting-cards">
+           <!-- Alabama -->
+          <div class="voting-card">
+            <a href="https://www.sos.alabama.gov/alabama-votes/voter/register-to-vote" target="_blank">
+              <div class="card-icon">📝</div>
+              <div class="card-label">Register to Vote</div>
+              <div class="card-description">Register online or check your status</div>
+              <div class="card-date">Deadline: October 21, 2025</div>
+            </a>
+          </div>
+          <div class="voting-card">
+            <a href="https://www.sos.alabama.gov/alabama-votes/voter/voter-id" target="_blank">
+              <div class="card-icon">🪪</div>
+              <div class="card-label">Voter ID Requirements</div>
+              <div class="card-description">Photo ID required for voting</div>
+            </a>
+          </div>
           <div class="voting-card">
             <a href="https://www.sos.alabama.gov/alabama-votes/voter/absentee-voting" target="_blank">
               <div class="card-icon">📬</div>
@@ -4042,20 +4318,19 @@
             </a>
           </div>
         </section> <!-- End of voting section -->
-</main>
+ </main>
 
-<!-- Modals -->
-<div id="officials-modal" class="modal">
+ <div id="officials-modal" class="modal">
   <div class="modal-content" id="officials-content"></div>
   <button id="close-modal" class="close-button">&times;</button>
 </div>
-
+<!-- Poll Modal -->
 <div id="pollModal" class="modal">
   <div class="modal-content" id="pollModalContent">
     <!-- Poll content will be injected here -->
   </div>
 </div>
-
+       <!-- Cabinet Modal -->
 <div id="cabinetModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModalWindow('cabinetModal')">&times;</span>
@@ -4072,9 +4347,10 @@
     </div>
   </div>
 </div>
-
-<!-- === FORCE NBC CARD STYLES (place this block LAST in your HTML, before </body>) === -->
 <style>
+/* === FORCE NBC CARD STYLES (place this block LAST in your HTML, before </body>) === */
+
+/* Make the entire card headline white, bold, no underline */
 #network-carousel .carousel-item a.nbc-card h3,
 #network-carousel .carousel-item a.nbc-card .card-name,
 #network-carousel .carousel-item a.nbc-card .card-title {
@@ -4085,6 +4361,7 @@
   line-height: 1.2 !important;
 }
 
+/* Remove any underlines / borders on the anchor itself */
 #network-carousel .carousel-item a.nbc-card,
 #network-carousel .carousel-item a.nbc-card:visited,
 #network-carousel .carousel-item a.nbc-card:hover,
@@ -4095,6 +4372,7 @@
   color: #ffffff !important;
 }
 
+/* Ensure h3 wraps fully and shows multi-line headline */
 #network-carousel .carousel-item a.nbc-card h3,
 #network-carousel .carousel-item a.nbc-card .card-name {
   display: block !important;
@@ -4103,9 +4381,10 @@
   max-height: none !important;
 }
 
+/* Keep card background and sizing consistent with other cards */
 #network-carousel .carousel-item a.nbc-card.official-card,
 #network-carousel .carousel-item a.nbc-card {
-  background: #1f2937 !important;
+  background: #1f2937 !important; /* dark gray background */
   box-shadow: 0 6px 18px rgba(0,0,0,0.15) !important;
   border-radius: 12px !important;
   padding: 12px !important;
@@ -4118,6 +4397,7 @@
   gap: 8px !important;
 }
 
+/* Small logo sizing at top */
 #network-carousel .carousel-item a.nbc-card img {
   width: 72px !important;
   height: 72px !important;
@@ -4125,15 +4405,18 @@
   margin-bottom: 6px !important;
 }
 
+/* Prevent child <a> underlines if any inner link exists */
 #network-carousel .carousel-item a.nbc-card a {
   text-decoration: none !important;
   color: inherit !important;
 }
 
+/* Force clickable area to fill whole card */
 #network-carousel .carousel-item {
   display: inline-block !important;
 }
 </style>
 
-<!-- Main JS -->
 <script src="script.js"></script>
+</body>
+</html>
