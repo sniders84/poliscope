@@ -1213,16 +1213,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Other existing functions and variables above ---
 
 
-// --- RSS Feeds ---
 const rssFeeds = {
-  msnbc: 'https://feeds.nbcnews.com/feeds/msnbc',
+  msnbc: 'https://www.msnbc.com/feeds/latest', // working MSNBC RSS
   abc: 'http://feeds.abcnews.com/abcnews/usheadlines',
   cbs: 'https://www.cbsnews.com/latest/rss/main',
   fox: 'https://feeds.foxnews.com/foxnews/latest',
   cnn: 'http://rss.cnn.com/rss/cnn_topstories.rss'
 };
 
-// Utility function to fetch RSS via rss2json
+// Utility to fetch RSS via rss2json
 async function fetchRss(feedUrl) {
   const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
   try {
@@ -1240,26 +1239,26 @@ async function renderNetworkStories(network) {
   const feedUrl = rssFeeds[network];
   if (!feedUrl) return;
 
+  const stories = await fetchRss(feedUrl);
   const container = document.getElementById('network-stories');
   container.innerHTML = ''; // clear previous stories
 
-  const stories = await fetchRss(feedUrl);
-
   stories.forEach(item => {
     const card = document.createElement('div');
-    card.className = 'official-card'; // match official card style
-    card.innerHTML = `
-      <h4>${item.title}</h4>
-    `;
+    card.className = 'official-card';
+    card.innerHTML = `<h4>${item.title}</h4>`;
     card.onclick = () => window.open(item.link, '_blank');
     container.appendChild(card);
   });
 
-  // Add "See More" link
+  // Add "See More" link for all networks
   const seeMore = document.createElement('div');
   seeMore.className = 'official-card see-more';
   seeMore.innerText = 'See More';
-  seeMore.onclick = () => window.open(feedUrl.replace('rss',''), '_blank');
+  seeMore.onclick = () => {
+    const url = feedUrl.replace('/feeds/latest',''); // link to main site
+    window.open(url, '_blank');
+  };
   container.appendChild(seeMore);
 }
 
