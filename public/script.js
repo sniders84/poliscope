@@ -802,41 +802,19 @@ async function fetchRSSFeed(url) {
   }
 }
 
-// === Step 1: Create a single NBC card (styled like other cards) ===
+// === Step 1: Create a single NBC card (fallback link styled as a card) ===
 function createNBCCard(cardData) {
   const wrapper = document.createElement('div');
   wrapper.classList.add('carousel-item');
 
-  // Entire card clickable
-  const cardLink = document.createElement('a');
-  cardLink.href = cardData.link;
-  cardLink.target = "_blank";
-  cardLink.classList.add('official-card'); // reuses existing styling
-  cardLink.style.flexDirection = "column"; // logo on top, headline below
-  cardLink.style.textDecoration = "none";
-  cardLink.style.color = "inherit";
-  cardLink.style.alignItems = "center";
-  cardLink.style.padding = "10px";
-  cardLink.style.maxWidth = "220px"; // card width
-  cardLink.style.background = "#2a2a2a"; // dark gray background
-  cardLink.style.border = "1px solid #1e1e1e";
-  cardLink.style.borderRadius = "10px";
-  cardLink.style.boxShadow = "0 3px 8px rgba(0,0,0,0.15)";
-  cardLink.style.transition = "transform 0.2s";
+  // Fallback link (styled like a clean card)
+  const a = document.createElement("a");
+  a.href = cardData.link;
+  a.target = "_blank";
+  a.classList.add("news-fallback-link");
+  a.textContent = cardData.title;
 
-  cardLink.onmouseover = () => cardLink.style.transform = "scale(1.03)";
-  cardLink.onmouseout = () => cardLink.style.transform = "scale(1)";
-
-  cardLink.innerHTML = `
-    <div class="card-image" style="width:100px; height:100px; margin-bottom:10px;">
-      <img src="${cardData.image}" alt="${cardData.title}" style="width:100%; height:100%; object-fit:contain;" />
-    </div>
-    <div class="card-info" style="text-align:center;">
-      <h3 class="card-name" style="font-size:1rem; margin:0 0 5px 0;">${cardData.title}</h3>
-    </div>
-  `;
-
-  wrapper.appendChild(cardLink);
+  wrapper.appendChild(a);
   return wrapper;
 }
 
