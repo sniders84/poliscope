@@ -1445,30 +1445,37 @@ a, button, .tab, .card-button,
 /* === Official Cards Styling (for top stories) === */
 .official-card {
   display: flex;
-  flex-direction: column; /* Column layout for story title */
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: flex-start;
-  background: #fff;
+  background: #2b2b2b; /* Dark grey background */
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   margin: 10px;
   padding: 16px;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  width: 220px; /* Adjust width to match official cards */
-  min-height: 100px; /* Optional: keep uniform card heights */
+  transition: all 0.2s ease-in-out;
+  width: 220px; /* Match original official card width */
+  min-height: 100px;
 }
 
 .official-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  background: #1e3a8a; /* Blue hue on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
 }
 
 .official-card h4 {
   font-size: 16px;
   font-weight: 600;
   margin: 0;
-  color: #333;
+  color: #ffffff; /* White text for contrast */
+}
+
+.official-card p {
+  font-size: 14px;
+  color: #cccccc; /* Light grey for description */
+  margin-top: 4px;
 }
 
 /* See More link styling */
@@ -1478,19 +1485,20 @@ a, button, .tab, .card-button,
   align-items: center;
   font-size: 14px;
   font-weight: 500;
-  color: #007BFF;
+  color: #60a5fa; /* Light blue */
   text-decoration: underline;
   background: none;
   box-shadow: none;
   cursor: pointer;
+  margin-top: 8px;
 }
 
 .official-card.see-more:hover {
-  color: #0056b3;
+  color: #2563eb; /* Darker blue on hover */
   text-decoration: underline;
 }
 
-/* Optional: make the story cards row appear below network cards nicely */
+/* Story cards row layout */
 #network-stories {
   display: flex;
   flex-wrap: wrap;
