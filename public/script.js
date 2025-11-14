@@ -1292,11 +1292,15 @@ Promise.all([
     // Render officials
     renderOfficials(selectedState, "");
 
-    // Fade out loading overlay
+    // Fade out loading overlay and remove completely
     if (loadingOverlay) {
       loadingOverlay.style.transition = "opacity 0.5s ease";
       loadingOverlay.style.opacity = "0";
-      setTimeout(() => loadingOverlay.remove(), 500);
+      setTimeout(() => {
+        if (loadingOverlay.parentNode) {
+          loadingOverlay.parentNode.removeChild(loadingOverlay);
+        }
+      }, 500);
     }
 
     // Load social trends
