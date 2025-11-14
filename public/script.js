@@ -778,7 +778,7 @@ function showStartupHub() {
     hubContainer.appendChild(card);
   });
 }
-// === LIVE NEWS FETCH: NBC News RSS (CORS-safe) ===
+
 // === LIVE NEWS FETCH: NBC News RSS (CORS-safe) ===
 async function fetchRSSFeed(url) {
   try {
@@ -802,26 +802,39 @@ async function fetchRSSFeed(url) {
   }
 }
 
-// === Step 1: Create a single NBC card (fallback link styled as a card) ===
+// === Step 1: Create a single NBC card (styled like other cards) ===
 function createNBCCard(cardData) {
   const wrapper = document.createElement('div');
   wrapper.classList.add('carousel-item');
 
-  // Fallback link (styled like a clean card)
-  const a = document.createElement("a");
-  a.href = cardData.link;
-  a.target = "_blank";
-  a.classList.add("news-fallback-link");
-  a.textContent = cardData.title;
+  // Entire card clickable
+  const cardLink = document.createElement('a');
+  cardLink.href = cardData.link;
+  cardLink.target = "_blank";
+  cardLink.classList.add('news-fallback-link'); // uses existing CSS
+  cardLink.style.textDecoration = "none";
+  cardLink.style.color = "inherit";
 
-  wrapper.appendChild(a);
+  // Inner HTML: logo on top, headline below
+  cardLink.innerHTML = `
+    <img src="${cardData.image}" alt="${cardData.title}" class="card-logo">
+    <h3>${cardData.title}</h3>
+  `;
+
+  wrapper.appendChild(cardLink);
   return wrapper;
 }
 
 // === Step 2: Populate NBC carousel dynamically (no duplicates) ===
 async function loadNBCNewsCarousel() {
-  const feedUrl = "https://feeds.nbcnews.com/nbcnews/public/news";
-  const stories = await fetchRSSFeed(feedUrl);
+  // Replace this array with your manual JSON or feed later
+  const stories = [
+    { title: "Republicans seek an alternative to Obamacare", link: "https://www.nbcnews.com/now/video/republicans-seek-an-alternative-to-obamacare-252007493796", image: "/assets/nbc.png" },
+    { title: "Global markets see major fluctuations", link: "#", image: "/assets/nbc.png" },
+    { title: "Local coverage highlights community events", link: "#", image: "/assets/nbc.png" },
+    { title: "Tech news roundup", link: "#", image: "/assets/nbc.png" },
+    { title: "Sports update: playoffs recap", link: "#", image: "/assets/nbc.png" }
+  ];
 
   const carousel = document.querySelector("#network-carousel .carousel-content");
   if (!carousel) return;
@@ -835,12 +848,16 @@ async function loadNBCNewsCarousel() {
     carousel.appendChild(card);
   });
 
-  // Show the carousel
+  // Make carousel visible
   document.getElementById("network-carousel").style.display = "flex";
+
+  // Apply enforced styles as a fallback
+  enforceNBCCardStyles();
 }
-// === JS fallback to enforce NBC card styles (call after loadNBCNewsCarousel()) ===
+
+// === JS fallback to enforce NBC card styles ===
 function enforceNBCCardStyles() {
-  document.querySelectorAll('#network-carousel .carousel-item a.nbc-card').forEach(a => {
+  document.querySelectorAll('#network-carousel .carousel-item a.news-fallback-link').forEach(a => {
     try {
       a.style.setProperty('color', '#ffffff', 'important');
       a.style.setProperty('font-weight', '700', 'important');
@@ -848,25 +865,18 @@ function enforceNBCCardStyles() {
       a.style.setProperty('background', '#1f2937', 'important');
       a.style.setProperty('padding', '12px', 'important');
       a.style.setProperty('border-radius', '12px', 'important');
-      a.querySelectorAll('h3, .card-name, .card-title').forEach(h => {
+      a.style.setProperty('text-align', 'center', 'important');
+
+      // Ensure the headline inside each card is white + bold
+      a.querySelectorAll('h3').forEach(h => {
         h.style.setProperty('color', '#ffffff', 'important');
         h.style.setProperty('font-weight', '700', 'important');
         h.style.setProperty('text-decoration', 'none', 'important');
       });
     } catch (e) {
-      // swallow; best-effort
       console.warn('enforceNBCCardStyles error', e);
     }
   });
-}
-
-// call this at the end of the function that builds the NBC cards:
-async function loadNBCNewsCarousel() {
-  // ... your existing code that fetches and appends cards ...
-  document.getElementById("network-carousel").style.display = "block";
-
-  // enforce styles as a fallback
-  enforceNBCCardStyles();
 }
 
 // === SOCIAL TRENDS SECTION ===
