@@ -1227,53 +1227,59 @@ async function fetchRss(feedUrl) {
     const response = await fetch(apiUrl);
     const data = await response.json();
 
-    if (data && data.items) {
-      return data.items.slice(0, 5); // top 5 stories
+    // Check if the response is valid
+    if (data && data.items && Array.isArray(data.items)) {
+      return data.items.slice(0, 5); // Fetch the top 5 stories
     } else {
-      console.error('RSS feed error: No items found in feed.');
-      return []; // Return empty if no items
+      console.error('Invalid RSS data received or no items found.');
+      return []; // Return empty array if invalid data or empty feed
     }
   } catch (err) {
     console.error('RSS fetch error:', err);
-    return []; // Return empty if fetch fails
+    return []; // Return empty array if fetch fails
   }
 }
 
 // Render network stories
 async function renderNetworkStories(network) {
-  const feedUrl = rssFeeds[network];
-  if (!feedUrl) return;
-
-  const stories = await fetchRss(feedUrl);
-  const container = document.getElementById('network-stories');
-  container.innerHTML = ''; // clear previous stories
-
-  stories.forEach(item => {
-    const card = document.createElement('div');
-    card.className = 'official-card';
-    card.innerHTML = `<h4>${item.title}</h4>`;
-    card.onclick = () => window.open(item.link, '_blank');
-    container.appendChild(card);
-  });
-
-  // Append "See More" next to last story
-  if (stories.length > 0) {
-    const seeMore = document.createElement('div');
-    seeMore.className = 'see-more';
-    seeMore.innerText = 'See More';
-    seeMore.onclick = () => {
-      // Proper site URL for MSNBC, others open homepage
-      const urlMap = {
-        msnbc: 'https://www.msnbc.com',
-        abc: 'https://abcnews.go.com',
-        cbs: 'https://www.cbsnews.com',
-        fox: 'https://www.foxnews.com',
-        cnn: 'https://edition.cnn.com'
-      };
-      window.open(urlMap[network] || feedUrl, '_blank');
-    };
-    container.appendChild(seeMore);
+  const feedUrl = rssFeeds[network]; // Get the correct feed URL for the selected network
+  if (!feedUrl) {
+    console.error('No feed URL for network:', network);
+    return;
   }
+
+  const stories = await fetchRss(feedUrl); // Fetch stories using the updated fetchRss function
+  const container = document.getElementById('network-stories');
+  container.innerHTML = ''; // Clear previous stories
+
+  // Check if we have valid stories
+  if (stories.length === 0) {
+    container.innerHTML = '<p>No stories available at this time.</p>';
+  } else {
+    stories.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'official-card'; // Use the official card style
+      card.innerHTML = `<h4>${item.title}</h4>`;
+      card.onclick = () => window.open(item.link, '_blank');
+      container.appendChild(card);
+    });
+  }
+
+  // Add "See More" link
+  const seeMore = document.createElement('div');
+  seeMore.className = 'see-more-link';
+  seeMore.innerText = 'See More';
+  seeMore.onclick = () => {
+    const siteMap = {
+      msnbc: 'https://www.msnbc.com',
+      abc: 'https://abcnews.go.com',
+      cbs: 'https://www.cbsnews.com',
+      fox: 'https://www.foxnews.com',
+      cnn: 'https://www.cnn.com'
+    };
+    window.open(siteMap[network] || siteMap['msnbc'], '_blank');
+  };
+  container.appendChild(seeMore);
 }
 
 // Add click listeners to network cards
