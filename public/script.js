@@ -1286,64 +1286,92 @@ const newspaperFeeds = {
   usatoday: 'https://rssfeeds.usatoday.com/usatoday-NewsTopStories'
 };
 
-// Fetch top 5 stories via rss2json
 async function fetchNewspaperRss(feedUrl) {
   const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
   try {
     const response = await fetch(apiUrl);
     const data = await response.json();
-    return data.items?.slice(0, 5) || []; // top 5 stories safely
+    return data.items?.slice(0, 5) || [];
   } catch (err) {
     console.error('RSS fetch error:', err);
     return [];
   }
 }
 
-// Render newspaper stories
 async function renderNewspaperStories(newspaper) {
   const feedUrl = newspaperFeeds[newspaper];
-  if (!feedUrl) return;
-
   const container = document.getElementById('newspaper-stories');
-  container.innerHTML = ''; // clear previous stories
+  container.innerHTML = '';
 
-  const stories = await fetchNewspaperRss(feedUrl);
-
-  stories.forEach(item => {
-    const card = document.createElement('div');
-    card.className = 'official-card'; // same style as top stories
-    card.innerHTML = `<h4>${item.title}</h4>`;
-    card.onclick = () => window.open(item.link, '_blank');
-    container.appendChild(card);
-  });
-
-  // "See More" link next to last card
-  if (stories.length > 0) {
+  if (!feedUrl) {
+    // fallback: just show See More
     const seeMore = document.createElement('div');
     seeMore.className = 'see-more-link';
     seeMore.innerText = 'See More';
     seeMore.onclick = () => {
-      const homepageMap = {
+      const map = {
         nyt: 'https://www.nytimes.com',
         washingtonpost: 'https://www.washingtonpost.com',
         chicagotribune: 'https://www.chicagotribune.com',
         latimes: 'https://www.latimes.com',
         usatoday: 'https://www.usatoday.com'
       };
-      window.open(homepageMap[newspaper], '_blank');
+      window.open(map[newspaper], '_blank');
     };
     container.appendChild(seeMore);
+    return;
   }
+
+  const stories = await fetchNewspaperRss(feedUrl);
+  if (stories.length === 0) {
+    // If feed returns no stories, fallback to link only
+    const seeMore = document.createElement('div');
+    seeMore.className = 'see-more-link';
+    seeMore.innerText = 'See More';
+    seeMore.onclick = () => {
+      const map = {
+        nyt: 'https://www.nytimes.com',
+        washingtonpost: 'https://www.washingtonpost.com',
+        chicagotribune: 'https://www.chicagotribune.com',
+        latimes: 'https://www.latimes.com',
+        usatoday: 'https://www.usatoday.com'
+      };
+      window.open(map[newspaper], '_blank');
+    };
+    container.appendChild(seeMore);
+    return;
+  }
+
+  stories.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'official-card';
+    card.innerHTML = `<h4>${item.title}</h4>`;
+    card.onclick = () => window.open(item.link, '_blank');
+    container.appendChild(card);
+  });
+
+  const seeMore = document.createElement('div');
+  seeMore.className = 'see-more-link';
+  seeMore.innerText = 'See More';
+  seeMore.onclick = () => {
+    const map = {
+      nyt: 'https://www.nytimes.com',
+      washingtonpost: 'https://www.washingtonpost.com',
+      chicagotribune: 'https://www.chicagotribune.com',
+      latimes: 'https://www.latimes.com',
+      usatoday: 'https://www.usatoday.com'
+    };
+    window.open(map[newspaper], '_blank');
+  };
+  container.appendChild(seeMore);
 }
 
-// Add click listeners to newspaper cards
 document.querySelectorAll('#newspaper-cards .info-card').forEach(card => {
   card.addEventListener('click', () => {
     const newspaper = card.dataset.newspaper;
     renderNewspaperStories(newspaper);
   });
 });
-
   // === Load officials data with smooth fade-in ===
   Promise.all([
     fetch('/governors.json').then(res => res.json()),
