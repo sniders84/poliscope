@@ -1212,71 +1212,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Other existing functions and variables above ---
 
-const rssFeeds = {
-  msnbc: 'https://www.nbcnews.com/rss',
-  abc: 'http://feeds.abcnews.com/abcnews/usheadlines',
-  cbs: 'https://www.cbsnews.com/latest/rss/main',
-  fox: 'https://feeds.foxnews.com/foxnews/latest',
-  cnn: 'http://rss.cnn.com/rss/cnn_topstories.rss'
+// === Newspaper Media RSS Feeds ===
+const newspaperFeeds = {
+  nyt: 'https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml',
+  washingtonpost: 'http://feeds.washingtonpost.com/rss/national',
+  chicagotribune: 'https://www.chicagotribune.com/feed',
+  latimes: 'https://www.latimes.com/local/rss2.0.xml',
+  usatoday: 'https://www.usatoday.com/rss/news/'
 };
 
-// Fetch top 5 stories via rss2json
-async function fetchRss(feedUrl) {
-  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
-  try {
-    const response = await fetch(apiUrl);
-    const data = await response.json();
-    return data.items.slice(0, 5);
-  } catch (err) {
-    console.error('RSS fetch error:', err);
-    return [];
-  }
-}
-
-// Render network stories
-async function renderNetworkStories(network) {
-  const feedUrl = rssFeeds[network];
-  if (!feedUrl) return;
-
-  const stories = await fetchRss(feedUrl);
-  const container = document.getElementById('network-stories');
-  container.innerHTML = ''; // clear previous stories
-
-  stories.forEach(item => {
-    const card = document.createElement('div');
-    card.className = 'official-card';
-    card.innerHTML = `<h4>${item.title}</h4>`;
-    card.onclick = () => window.open(item.link, '_blank');
-    container.appendChild(card);
-  });
-
-  // Append "See More" next to last story
-  if (stories.length > 0) {
-    const seeMore = document.createElement('div');
-    seeMore.className = 'see-more';
-    seeMore.innerText = 'See More';
-    seeMore.onclick = () => {
-      // Proper site URL for MSNBC, others open homepage
-      const urlMap = {
-        msnbc: 'https://www.msnbc.com',
-        abc: 'https://abcnews.go.com',
-        cbs: 'https://www.cbsnews.com',
-        fox: 'https://www.foxnews.com',
-        cnn: 'https://edition.cnn.com'
-      };
-      window.open(urlMap[network] || feedUrl, '_blank');
-    };
-    container.appendChild(seeMore);
-  }
-}
-
-// Add click listeners to network cards
-document.querySelectorAll('#network-cards .info-card').forEach(card => {
-  card.addEventListener('click', () => {
-    const network = card.dataset.network;
-    renderNetworkStories(network);
-  });
-});
 // Fetch top 5 stories via rss2json
 async function fetchNewspaperRss(feedUrl) {
   const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
@@ -1296,13 +1240,13 @@ async function renderNewspaperStories(newspaper) {
   if (!feedUrl) return;
 
   const container = document.getElementById('newspaper-stories');
-  container.innerHTML = ''; 
+  container.innerHTML = '';
 
   const stories = await fetchNewspaperRss(feedUrl);
 
   stories.forEach(item => {
     const card = document.createElement('div');
-    card.className = 'official-card'; 
+    card.className = 'official-card';
     card.innerHTML = `<h4>${item.title}</h4>`;
     card.onclick = () => window.open(item.link, '_blank');
     container.appendChild(card);
