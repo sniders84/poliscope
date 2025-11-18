@@ -1276,12 +1276,12 @@ document.querySelectorAll('#network-cards .info-card').forEach(card => {
     renderNetworkStories(network);
   });
 });
-// === Global Politics & World News RSS Feeds (with revised Reuters) ===
+// === Global Politics & World News RSS Feeds (AP instead of Reuters) ===
 const worldNewsFeeds = {
   nyt: 'https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml',
   washingtonpost: 'https://feeds.washingtonpost.com/rss/national',
   politico: 'https://www.politico.com/rss/politicopicks.xml',
-  reuters: 'http://feeds.reuters.com/Reuters/worldNews',  // revised / fallback Reuters feed
+  ap: 'https://apnews.com/apf-topnews.rss',  // AP feed
   bbc: 'http://feeds.bbci.co.uk/news/world/rss.xml',
   aljazeera: 'https://www.aljazeera.com/xml/rss/all.xml'
 };
@@ -1324,7 +1324,7 @@ async function renderWorldNewsStories(source) {
         nyt: 'https://www.nytimes.com',
         washingtonpost: 'https://www.washingtonpost.com',
         politico: 'https://www.politico.com',
-        reuters: 'https://www.reuters.com',
+        ap: 'https://apnews.com',
         bbc: 'https://www.bbc.com/news',
         aljazeera: 'https://www.aljazeera.com'
       };
@@ -1340,6 +1340,7 @@ document.querySelectorAll('#world-news-cards .info-card').forEach(card => {
     renderWorldNewsStories(source);
   });
 });
+
   // === Load officials data with smooth fade-in ===
   Promise.all([
     fetch('/governors.json').then(res => res.json()),
