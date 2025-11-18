@@ -1855,3 +1855,54 @@ a, button, .tab, .card-button,
     padding: 8px;
   }
 }
+/* ===================== */
+/* NEWS CARD LOGO & TITLE UNIFORMITY */
+/* ===================== */
+.news-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #2d2d2d; /* dark gray */
+  color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  min-width: 200px;   /* uniform width */
+  max-width: 200px;
+  padding: 12px;
+  text-align: center;
+  flex-shrink: 0; /* prevents shrinking in carousel */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.news-card:hover {
+  background-color: #2b6cb0; /* blue hover */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+/* logo bar */
+.news-logo-bar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+  min-height: 50px;  /* all logos same vertical space */
+}
+
+.news-logo {
+  max-height: 50px;  /* uniform logo height */
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* headline */
+.news-title {
+  font-size: 0.9rem;
+  line-height: 1.3;
+  word-wrap: break-word;
+  max-height: 3.9em; /* roughly 3 lines of text */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+}
