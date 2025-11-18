@@ -1276,14 +1276,17 @@ document.querySelectorAll('#network-cards .info-card').forEach(card => {
     renderNetworkStories(network);
   });
 });
-// === WORLD NEWS: Google News carousel (REPLACE existing world-news block) ===
+// === WORLD NEWS: Google News carousel (FULL REPLACEMENT BLOCK) ===
 document.addEventListener('DOMContentLoaded', () => {
-  const GOOGLE_NEWS_RSS = 'https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx1YlY4U0FtVnVHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US%3Aen';
-  const MAX_CARDS = 25;
-  const RSS2JSON = url => `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`;
+  const GOOGLE_NEWS_RSS =
+    'https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx1YlY4U0FtVnVHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US:en';
 
-  // Map known hostnames / publishers -> filenames you already have in /assets/
-  const LOGO_MAP = {
+  const MAX_CARDS = 25;
+  const RSS2JSON = url =>
+    `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`;
+
+  // Known sources mapped to your assets folder
+  const SOURCE_LOGOS = {
     'aljazeera.com': 'aljazeera.png',
     'apnews.com': 'ap.png',
     'politico.com': 'politico.png',
@@ -1301,235 +1304,143 @@ document.addEventListener('DOMContentLoaded', () => {
     'msnbc.com': 'msnbc.png',
     'nbcnews.com': 'nbc.png',
     'latimes.com': 'latimes.png',
-    'chicagotribune.com': 'chicagotribune.png',
-    'usatoday.com': 'usatoday.png',
-    // fallback: many publishers might match domain part only
+    'chicagotribune.com': 'chicagotribune.png'
   };
 
-  const DEFAULT_LOGO = '/assets/default-photo.png'; // you have this in assets list
+  const DEFAULT_LOGO = 'default-photo.png';
 
-  // Safe hostname extractor
+  // Extract hostname
   function hostnameFromUrl(link) {
     try {
-      const u = new URL(link);
-      return u.hostname.replace(/^www\./i, '').toLowerCase();
+      return new URL(link).hostname.replace(/^www\./, '').toLowerCase();
     } catch {
       return '';
     }
   }
 
-  // Try to pick a logo filename for an item
-  function pickLogoFilename(item) {
-    // 1) data from item.source or item.author
-    const possible = [
-      (item.source && (item.source.name || item.source)) || '',
-      item.author || '',
-      // fallback to hostname
-      hostnameFromUrl(item.link) || ''
-    ].map(s => (s || '').toString().toLowerCase());
+  // Determine appropriate logo
+  function getLogoForStory(link) {
+    const host = hostnameFromUrl(link);
+    if (!host) return DEFAULT_LOGO;
 
-    // Try exact hostname matches first
-    for (const p of possible) {
-      if (!p) continue;
-      // if it contains a known hostname key
-      for (const key of Object.keys(LOGO_MAP)) {
-        if (p.includes(key) || p === key) {
-          return LOGO_MAP[key];
-        }
-      }
+    // Exact match
+    if (SOURCE_LOGOS[host]) return SOURCE_LOGOS[host];
+
+    // Try root match (subdomains)
+    const parts = host.split('.');
+    for (let i = 0; i < parts.length - 1; i++) {
+      const root = parts.slice(i).join('.');
+      if (SOURCE_LOGOS[root]) return SOURCE_LOGOS[root];
     }
 
-    // If hostname exists, try to match its root (e.g. "cnn.com" from "edition.cnn.com")
-    const host = hostnameFromUrl(item.link);
-    if (host) {
-      const parts = host.split('.');
-      // try decreasing specificity: example edition.cnn.com -> cnn.com
-      for (let i = 0; i <= parts.length - 2; i++) {
-        const candidate = parts.slice(i).join('.');
-        if (LOGO_MAP[candidate]) return LOGO_MAP[candidate];
-      }
-    }
+    // Fallback: keyword matching
+    const lower = host.toLowerCase();
+    if (lower.includes('aljazeera')) return 'aljazeera.png';
+    if (lower.includes('apnews')) return 'ap.png';
+    if (lower.includes('politico')) return 'politico.png';
+    if (lower.includes('reuters')) return 'reuters.png';
+    if (lower.includes('usatoday')) return 'usatoday.png';
+    if (lower.includes('nytimes')) return 'nyt.png';
+    if (lower.includes('guardian')) return 'guardian.png';
+    if (lower.includes('washingtonpost')) return 'washingtonpost.png';
+    if (lower.includes('bbc')) return 'bbc.png';
+    if (lower.includes('cnn')) return 'cnn.png';
+    if (lower.includes('foxnews')) return 'fox.png';
 
-    // final fallback: try to infer from link includes common substrings
-    if (item.link) {
-      if (item.link.includes('aljazeera')) return 'aljazeera.png';
-      if (item.link.includes('apnews')) return 'ap.png';
-      if (item.link.includes('politico')) return 'politico.png';
-      if (item.link.includes('reuters')) return 'reuters.png';
-      if (item.link.includes('dw.com') || item.link.includes('deutsche')) return 'dw.png';
-      if (item.link.includes('usatoday')) return 'usatoday.png';
-      if (item.link.includes('nytimes')) return 'nyt.png';
-      if (item.link.includes('guardian')) return 'guardian.png';
-      if (item.link.includes('washingtonpost')) return 'washingtonpost.png';
-      if (item.link.includes('bbc')) return 'bbc.png';
-      if (item.link.includes('cnn')) return 'cnn.png';
-      if (item.link.includes('foxnews')) return 'fox.png';
-    }
-
-    return null; // signal to use default or no image
+    return DEFAULT_LOGO;
   }
 
-  // Fetch RSS via rss2json and return items array (up to MAX_CARDS)
+  // Fetch RSS via rss2json
   async function fetchGoogleNewsItems() {
     try {
       const res = await fetch(RSS2JSON(GOOGLE_NEWS_RSS));
-      if (!res.ok) throw new Error(`rss2json status ${res.status}`);
       const data = await res.json();
-      // data.items is expected; defensive checks
-      const items = data && (data.items || data.feed?.entries || []);
-      if (!Array.isArray(items)) return [];
-      return items.slice(0, MAX_CARDS);
-    } catch (err) {
-      console.error('World news RSS fetch failed:', err);
+      if (!data.items) return [];
+      return data.items.slice(0, MAX_CARDS);
+    } catch (e) {
+      console.error('World News RSS error:', e);
       return [];
     }
   }
 
-  // Render the carousel (clear and rebuild)
+  // Render horizontally scrollable carousel
   async function renderWorldNewsCarousel() {
     const row = document.getElementById('world-news-cards');
-    if (!row) {
-      console.warn('renderWorldNewsCarousel: #world-news-cards not found');
-      return;
-    }
-    row.innerHTML = ''; // clear existing
+    if (!row) return;
+
+    row.innerHTML = '';
     row.style.display = 'flex';
-    row.style.gap = '12px';
-    row.style.padding = '8px 12px';
-    row.style.alignItems = 'flex-start';
+    row.style.flexDirection = 'row';
+    row.style.overflowX = 'auto';
+    row.style.gap = '14px';
+    row.style.padding = '10px';
 
     const stories = await fetchGoogleNewsItems();
 
-    // Build up to MAX_CARDS
     stories.forEach(item => {
       const card = document.createElement('div');
-      card.className = 'news-card'; // styling assumed in your CSS (dark grey + blue hover)
+      card.className = 'news-card';
 
-      // logo selection
-      const logoFile = pickLogoFilename(item);
-      const logoPath = logoFile ? `/assets/${logoFile}` : DEFAULT_LOGO;
-
-      // Title safe and wrapped
-      const safeTitle = (item.title || '').replace(/<[^>]+>/g, '').trim();
+      const title = (item.title || '').replace(/<[^>]+>/g, '');
+      const link = item.link || '#';
+      const logo = getLogoForStory(link);
 
       card.innerHTML = `
         <div class="news-logo-bar">
-          <img src="${logoPath}" alt="" class="news-logo" onerror="this.onerror=null;this.src='${DEFAULT_LOGO}';" />
+          <img src="assets/${logo}" class="news-logo" onerror="this.src='assets/${DEFAULT_LOGO}'" />
         </div>
         <div class="news-body">
-          <h4 class="news-title" title="${safeTitle}">${safeTitle}</h4>
+          <h4 class="news-title">${title}</h4>
         </div>
       `;
 
-      // click opens link
       card.addEventListener('click', () => {
-        const target = item.link || item.url || item.guid || '';
-        if (target) window.open(target, '_blank');
+        window.open(link, '_blank');
       });
 
       row.appendChild(card);
     });
 
-    // Add an inline See More element (not a card) positioned below-right.
-    // We'll place it in #world-news-seeall (create if missing)
+    // "See More" link BELOW the row, right-aligned
     let seeWrap = document.getElementById('world-news-seeall-wrap');
     if (!seeWrap) {
       seeWrap = document.createElement('div');
       seeWrap.id = 'world-news-seeall-wrap';
-      // place it after the row in DOM for layout; try to append to the row's parent
-      const parent = row.parentElement || document.body;
-      parent.appendChild(seeWrap);
-      // Basic layout
+      row.parentElement.appendChild(seeWrap);
       seeWrap.style.display = 'flex';
-      seeWrap.style.justifyContent = 'flex-end'; // user requested right
+      seeWrap.style.justifyContent = 'flex-end';
       seeWrap.style.width = '100%';
-      seeWrap.style.padding = '8px 16px 0 16px';
+      seeWrap.style.padding = '5px 12px';
     }
 
-    seeWrap.innerHTML = ''; // reset
-    const seeMore = document.createElement('a');
-    seeMore.id = 'world-news-seeall';
-    seeMore.textContent = 'See More on Google News';
-    seeMore.href = 'https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx1YlY4U0FtVnVHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US%3Aen';
-    seeMore.target = '_blank';
-    seeMore.rel = 'noopener';
-    seeMore.style.color = '#0ea5e9'; // visible blue
-    seeMore.style.fontWeight = '600';
-    seeMore.style.textDecoration = 'underline';
-    seeMore.style.cursor = 'pointer';
-    seeWrap.appendChild(seeMore);
+    seeWrap.innerHTML = `
+      <a 
+        href="https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx1YlY4U0FtVnVHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US:en"
+        target="_blank"
+        style="color:#0ea5e9; font-weight:600; text-decoration:underline;"
+      >
+        See More on Google News
+      </a>
+    `;
   }
 
-  // Wire arrows (centered under the carousel)
+  // Arrow navigation
   function wireWorldNewsArrows() {
     const row = document.getElementById('world-news-cards');
     const prev = document.getElementById('world-news-prev');
     const next = document.getElementById('world-news-next');
 
-    if (!row || !prev || !next) {
-      console.warn('Carousel arrows or row missing');
-      return;
-    }
+    if (!row || !prev || !next) return;
 
-    // Scroll amount: show ~2 cards width per click (responsive)
-    function scrollAmount() {
-      return Math.max(row.clientWidth * 0.6, 300);
-    }
+    const SCROLL = () => Math.max(row.clientWidth * 0.6, 300);
 
-    prev.addEventListener('click', () => {
-      row.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
-    });
-
-    next.addEventListener('click', () => {
-      row.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
-    });
+    prev.onclick = () => row.scrollBy({ left: -SCROLL(), behavior: 'smooth' });
+    next.onclick = () => row.scrollBy({ left: SCROLL(), behavior: 'smooth' });
   }
 
-  // Kick it off
-  (async function initWorldNews() {
+  // INIT
+  (async () => {
     await renderWorldNewsCarousel();
     wireWorldNewsArrows();
-    // Optional: re-render on window resize to ensure layout remains good
-    window.addEventListener('resize', () => {
-      // small debounce
-      clearTimeout(window.__wn_resize);
-      window.__wn_resize = setTimeout(() => renderWorldNewsCarousel(), 300);
-    });
   })();
-});
-
-  // === Load officials data with smooth fade-in ===
-  Promise.all([
-    fetch('/governors.json').then(res => res.json()),
-    fetch('/ltgovernors.json').then(res => res.json()),
-    fetch('/senators.json').then(res => res.json()),
-    fetch('/housereps.json').then(res => res.json())
-  ])
-    .then(([govs, ltGovs, sens, reps]) => {
-      governors = govs;
-      ltGovernors = ltGovs;
-      senators = sens;
-      houseReps = reps;
-
-      // Render officials
-      renderOfficials(selectedState, '');
-
-      // Fade out loading overlay
-      if (loadingOverlay) {
-        loadingOverlay.style.transition = 'opacity 0.5s ease';
-        loadingOverlay.style.opacity = '0';
-        setTimeout(() => loadingOverlay.remove(), 500);
-      }
-
-      // Load social trends
-      const socialFeed = document.getElementById('social-feed');
-      if (socialFeed && typeof loadSocialTrends === 'function') {
-        console.log("🎬 loadSocialTrends is running...");
-        loadSocialTrends();
-      }
-    })
-    .catch(err => {
-      console.error('Error loading official data:', err);
-      if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
-    });
 });
