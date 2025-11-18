@@ -1278,15 +1278,13 @@ document.querySelectorAll('#network-cards .info-card').forEach(card => {
 });
 // === WORLD NEWS: feeds + resilient fetch + renderer ===
 const worldNewsFeeds = {
-  nyt: 'https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml',
-  washingtonpost: 'https://feeds.washingtonpost.com/rss/national',
-  politico: 'https://www.politico.com/rss/politicopicks.xml', // old working feed
-  apnews: 'https://apnews.com/apf-topnews?format=rss',
-  bbc: 'http://feeds.bbci.co.uk/news/world/rss.xml',
-  aljazeera: 'https://www.aljazeera.com/xml/rss/all.xml'
+  politico: 'https://www.politico.com/rss/politicopicks.xml',
+  apnews: 'https://apnews.com/hub/ap-top-news?format=rss',
+  dw: 'https://rss.dw.com/xml/rss-en-top',
+  aljazeera: 'https://www.aljazeera.com/xml/rss/all.xml',
+  globalissues: 'https://www.globalissues.org/feed'
 };
 
-// Fetch top 5 items safely
 async function fetchWorldRss(feedUrl) {
   try {
     const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
@@ -1299,7 +1297,6 @@ async function fetchWorldRss(feedUrl) {
   }
 }
 
-// Render stories under the world-news section
 async function renderWorldNewsStories(sourceKey) {
   const feedUrl = worldNewsFeeds[sourceKey];
   const container = document.getElementById('world-news-stories');
@@ -1308,25 +1305,21 @@ async function renderWorldNewsStories(sourceKey) {
   container.style.display = 'flex';
   container.style.flexWrap = 'wrap';
   container.style.gap = '8px';
-  container.style.alignItems = 'flex-start';
   container.innerHTML = '';
 
   if (!feedUrl) {
     const link = document.createElement('div');
     link.className = 'see-more-link';
     link.innerText = 'See More';
-    link.style.color = '#007bff';
-    link.style.cursor = 'pointer';
     link.onclick = () => {
       const map = {
-        nyt: 'https://www.nytimes.com',
-        washingtonpost: 'https://www.washingtonpost.com',
         politico: 'https://www.politico.com',
         apnews: 'https://apnews.com',
-        bbc: 'https://www.bbc.com/news',
-        aljazeera: 'https://www.aljazeera.com'
+        dw: 'https://www.dw.com',
+        aljazeera: 'https://www.aljazeera.com',
+        globalissues: 'https://www.globalissues.org'
       };
-      window.open(map[sourceKey] || map['nyt'], '_blank');
+      window.open(map[sourceKey] || map['politico'], '_blank');
     };
     container.appendChild(link);
     return;
@@ -1338,18 +1331,15 @@ async function renderWorldNewsStories(sourceKey) {
     const link = document.createElement('div');
     link.className = 'see-more-link';
     link.innerText = 'See More';
-    link.style.color = '#007bff';
-    link.style.cursor = 'pointer';
     link.onclick = () => {
       const map = {
-        nyt: 'https://www.nytimes.com',
-        washingtonpost: 'https://www.washingtonpost.com',
         politico: 'https://www.politico.com',
         apnews: 'https://apnews.com',
-        bbc: 'https://www.bbc.com/news',
-        aljazeera: 'https://www.aljazeera.com'
+        dw: 'https://www.dw.com',
+        aljazeera: 'https://www.aljazeera.com',
+        globalissues: 'https://www.globalissues.org'
       };
-      window.open(map[sourceKey] || map['nyt'], '_blank');
+      window.open(map[sourceKey] || map['politico'], '_blank');
     };
     container.appendChild(link);
     return;
@@ -1358,36 +1348,32 @@ async function renderWorldNewsStories(sourceKey) {
   stories.forEach(item => {
     const card = document.createElement('div');
     card.className = 'official-card';
-    card.innerHTML = `<h4 style="margin:0;line-height:1.15;">${item.title || 'Untitled'}</h4>`;
+    const title = item.title || 'Untitled';
+    card.innerHTML = `<h4 style="margin:0;line-height:1.15;">${title}</h4>`;
+    card.onclick = () => window.open(item.link, '_blank');
     card.style.minHeight = '56px';
     card.style.padding = '8px 12px';
     card.style.width = 'calc(20% - 12px)';
     card.style.boxSizing = 'border-box';
-    card.onclick = () => window.open(item.link || item.url, '_blank');
     container.appendChild(card);
   });
 
-  // Add See More
   const seeMore = document.createElement('div');
   seeMore.className = 'see-more-link';
   seeMore.innerText = 'See More';
-  seeMore.style.color = '#007bff';
-  seeMore.style.cursor = 'pointer';
   seeMore.onclick = () => {
     const map = {
-      nyt: 'https://www.nytimes.com',
-      washingtonpost: 'https://www.washingtonpost.com',
       politico: 'https://www.politico.com',
       apnews: 'https://apnews.com',
-      bbc: 'https://www.bbc.com/news',
-      aljazeera: 'https://www.aljazeera.com'
+      dw: 'https://www.dw.com',
+      aljazeera: 'https://www.aljazeera.com',
+      globalissues: 'https://www.globalissues.org'
     };
-    window.open(map[sourceKey] || map['nyt'], '_blank');
+    window.open(map[sourceKey] || map['politico'], '_blank');
   };
   container.appendChild(seeMore);
 }
 
-// Wire cards
 (function wireWorldNewsCards() {
   const container = document.getElementById('world-news-cards');
   if (!container) return;
