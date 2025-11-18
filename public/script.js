@@ -1280,10 +1280,10 @@ document.querySelectorAll('#network-cards .info-card').forEach(card => {
 // === Newspaper Media RSS Feeds ===
 const newspaperFeeds = {
   nyt: 'https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml',
-  washingtonpost: 'http://feeds.washingtonpost.com/rss/national',
-  chicagotribune: 'http://www.chicagotribune.com/arcio/rss/category/news/',
+  washingtonpost: 'https://feeds.washingtonpost.com/rss/national',
+  chicagotribune: 'https://www.chicagotribune.com/feed/',
   latimes: 'https://www.latimes.com/local/rss2.0.xml',
-  bostonglobe: 'https://www.bostonglobe.com/feeds/bostonglobe/rss/'
+  usatoday: 'https://www.usatoday.com/rss/',
 };
 
 // Fetch top 5 stories via rss2json
