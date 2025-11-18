@@ -1486,3 +1486,30 @@ a, button, .tab, .card-button,
 
   color: white;
 }
+.see-more-link {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: #007BFF; /* blue like network cards */
+  text-decoration: underline;
+  margin-top: 8px;
+  cursor: pointer;
+}
+.see-more-link {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: #007BFF; /* blue like network cards */
+  text-decoration: underline;
+  margin-top: 8px;
+  cursor: pointer;
+}
+
+.see-more-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
