@@ -1720,3 +1720,18 @@ a, button, .tab, .card-button,
   transform: translateY(-4px);
   box-shadow: 0 8px 20px rgba(0,123,255,0.5); /* blue hover shadow */
 }
+.official-card.news-card {
+  background-color: #fff;
+  color: #000;
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.official-card.news-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,123,255,0.3); /* subtle blue hover */
+}
