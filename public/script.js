@@ -1277,13 +1277,13 @@ document.querySelectorAll('#network-cards .info-card').forEach(card => {
     renderNetworkStories(network);
   });
 });
-// === Newspaper Media RSS Feeds ===
+// === Newspaper Media RSS Feeds (revised) ===
 const newspaperFeeds = {
   nyt: 'https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml',
   washingtonpost: 'http://feeds.washingtonpost.com/rss/national',
-  chicagotribune: 'https://www.chicagotribune.com/feed',  // OK but may be limited
-  latimes: 'https://www.latimes.com/world-nation/rss2.0.xml',  // more reliable section feed :contentReference[oaicite:3]{index=3}
-  usatoday: 'https://rssfeeds.usatoday.com/UsatodaycomNationTopNews'  // alternate top news feed
+  chicagotribune: 'https://www.chicagotribune.com/feed',
+  latimes: 'https://www.latimes.com/world-nation/rss2.0.xml',
+  usatoday: 'https://rssfeeds.usatoday.com/UsatodaycomNationTopNews'
 };
 
 // Fetch top 5 stories via rss2json
@@ -1313,25 +1313,26 @@ async function renderNewspaperStories(newspaper) {
     const card = document.createElement('div');
     card.className = 'official-card';
     card.innerHTML = `<h4>${item.title}</h4>`;
-    card.addEventListener('click', () => window.open(item.link, '_blank')); // fix for clickable cards
+    card.addEventListener('click', () => window.open(item.link, '_blank'));
     container.appendChild(card);
   });
 
-  // See More link
-  const seeMore = document.createElement('div');
-  seeMore.className = 'see-more-link'; // make sure CSS matches network cards
-  seeMore.innerText = 'See More';
-  seeMore.addEventListener('click', () => {
-    const homepageMap = {
-      nyt: 'https://www.nytimes.com',
-      washingtonpost: 'https://www.washingtonpost.com',
-      chicagotribune: 'https://www.chicagotribune.com',
-      latimes: 'https://www.latimes.com',
-      usatoday: 'https://www.usatoday.com'
-    };
-    window.open(homepageMap[newspaper], '_blank');
-  });
-  container.appendChild(seeMore);
+  if (stories.length) {
+    const seeMore = document.createElement('div');
+    seeMore.className = 'see-more-link';
+    seeMore.innerText = 'See More';
+    seeMore.addEventListener('click', () => {
+      const homepageMap = {
+        nyt: 'https://www.nytimes.com',
+        washingtonpost: 'https://www.washingtonpost.com',
+        chicagotribune: 'https://www.chicagotribune.com',
+        latimes: 'https://www.latimes.com',
+        usatoday: 'https://www.usatoday.com'
+      };
+      window.open(homepageMap[newspaper], '_blank');
+    });
+    container.appendChild(seeMore);
+  }
 }
 
 // Add click listeners to newspaper cards
