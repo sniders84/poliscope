@@ -1279,57 +1279,47 @@ document.querySelectorAll('#network-cards .info-card').forEach(card => {
 // === WORLD NEWS: feeds + resilient fetch + renderer (REPLACE existing world-news block) ===
 const worldNewsFeeds = {
   nyt: 'https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml',
-  washingtonpost: 'https://feeds.washingtonpost.com/rss/national',
-  politico: 'https://www.politico.com/rss/politicopicks.xml',         // working feed you wanted kept
+  washingtonpost: 'http://feeds.washingtonpost.com/rss/national',
+  politico: 'https://www.politico.com/rss/politicopicks.xml',  // the working feed you said to keep
   apnews: [
-    'https://apnews.com/hub/ap-top-news?format=rss',                // fallback 1
-    'https://apnews.com/apf-topnews?format=rss'                    // fallback 2 (older variants)
+    'https://apnews.com/hub/ap-top-news?format=rss',           // fallback 1
+    'https://apnews.com/apf-topnews?format=rss'                // fallback 2
   ],
   bbc: 'http://feeds.bbci.co.uk/news/world/rss.xml',
   aljazeera: 'https://www.aljazeera.com/xml/rss/all.xml'
 };
 
-// Try a single feed URL or an array of fallbacks (returns items or empty array)
+// Try a single feed URL or an array of fallbacks
 async function fetchWorldRssWithFallbacks(feedOrArray) {
   const feedList = Array.isArray(feedOrArray) ? feedOrArray : [feedOrArray];
   for (let feedUrl of feedList) {
     try {
       const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
       const res = await fetch(apiUrl);
-      if (!res.ok) {
-        console.warn('rss2json returned non-ok for', feedUrl, res.status);
-        continue;
-      }
+      if (!res.ok) continue;
       const data = await res.json();
-      const items = data?.items || data?.feed?.entries || [];
-      if (items && items.length > 0) return items.slice(0, 5);
-      // empty -> try next fallback
+      const items = data?.items || [];
+      if (items.length > 0) return items.slice(0, 5);
     } catch (err) {
-      console.warn('RSS fetch failed for', feedUrl, err);
       // try next fallback
     }
   }
-  return []; // all fallbacks failed
+  return [];
 }
 
-// Render world news stories under the cards row
+// Render world news stories
 async function renderWorldNewsStories(sourceKey) {
   const feedSpec = worldNewsFeeds[sourceKey];
   const container = document.getElementById('world-news-stories');
-  if (!container) {
-    console.warn('renderWorldNewsStories: #world-news-stories not found');
-    return;
-  }
+  if (!container) return;
 
-  // ensure proper row layout of container
   container.style.display = 'flex';
   container.style.flexWrap = 'wrap';
   container.style.gap = '8px';
   container.style.alignItems = 'flex-start';
-  container.innerHTML = ''; // clear previous
+  container.innerHTML = '';
 
   if (!feedSpec) {
-    // just a See More link if no feed
     const link = document.createElement('div');
     link.className = 'see-more-link';
     link.innerText = 'See More';
@@ -1351,7 +1341,6 @@ async function renderWorldNewsStories(sourceKey) {
   const stories = await fetchWorldRssWithFallbacks(feedSpec);
 
   if (!stories || stories.length === 0) {
-    // fallback to See More if feed returned nothing
     const link = document.createElement('div');
     link.className = 'see-more-link';
     link.innerText = 'See More';
@@ -1370,26 +1359,19 @@ async function renderWorldNewsStories(sourceKey) {
     return;
   }
 
-  // Create story cards using your official-card style but shrunk to fit text
   stories.forEach(item => {
     const card = document.createElement('div');
     card.className = 'official-card';
-    // safe title and click target
-    const title = item.title || item.title_rendered || item.feedTitle || 'Untitled';
+    const title = item.title || 'Untitled';
     card.innerHTML = `<h4 style="margin:0;line-height:1.15;">${title}</h4>`;
-    card.onclick = () => {
-      const link = item.link || item.url || item.guid || item.link?.href;
-      if (link) window.open(link, '_blank');
-    };
-    // ensure card size fits text (snug)
+    card.onclick = () => window.open(item.link, '_blank');
     card.style.minHeight = '56px';
     card.style.padding = '8px 12px';
-    card.style.width = 'calc(20% - 12px)'; // responsive 5-per-row-ish; adjust as needed
+    card.style.width = 'calc(20% - 12px)';
     card.style.boxSizing = 'border-box';
     container.appendChild(card);
   });
 
-  // Add inline See More element (not a big card) appended after items
   const seeMore = document.createElement('div');
   seeMore.className = 'see-more-link';
   seeMore.innerText = 'See More';
@@ -1408,26 +1390,26 @@ async function renderWorldNewsStories(sourceKey) {
   container.appendChild(seeMore);
 }
 
-// Attach listeners to cards (compatible with different data- attribute names)
+// Attach listeners to world news cards
 (function wireWorldNewsCards() {
   const container = document.getElementById('world-news-cards');
-  if (!container) {
-    console.warn('wireWorldNewsCards: #world-news-cards not found');
-    return;
-  }
+  if (!container) return;
+
   container.querySelectorAll('.info-card').forEach(card => {
     card.addEventListener('click', () => {
-      // support data-news, data-source, data-newspaper
-      const key = card.dataset.news || card.dataset.source || card.dataset.newspaper || card.dataset.newssource;
-      if (!key) {
-        console.warn('info-card clicked but no data-* attribute found', card);
-        return;
-      }
+      const key =
+        card.dataset.news ||
+        card.dataset.source ||
+        card.dataset.newspaper ||
+        card.dataset.newssource;
+
+      if (!key) return;
+
       renderWorldNewsStories(key);
     });
   });
 
-  // === Load officials data with smooth fade-in ===
+  // === Load officials data ===
   Promise.all([
     fetch('/governors.json').then(res => res.json()),
     fetch('/ltgovernors.json').then(res => res.json()),
@@ -1440,17 +1422,14 @@ async function renderWorldNewsStories(sourceKey) {
       senators = sens;
       houseReps = reps;
 
-      // Render officials
       renderOfficials(selectedState, '');
 
-      // Fade out loading overlay
       if (loadingOverlay) {
         loadingOverlay.style.transition = 'opacity 0.5s ease';
         loadingOverlay.style.opacity = '0';
         setTimeout(() => loadingOverlay.remove(), 500);
       }
 
-      // Load social trends
       const socialFeed = document.getElementById('social-feed');
       if (socialFeed && typeof loadSocialTrends === 'function') {
         console.log("🎬 loadSocialTrends is running...");
@@ -1461,4 +1440,4 @@ async function renderWorldNewsStories(sourceKey) {
       console.error('Error loading official data:', err);
       if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
     });
-});
+})();
