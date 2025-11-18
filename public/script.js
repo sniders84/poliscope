@@ -1276,106 +1276,92 @@ document.querySelectorAll('#network-cards .info-card').forEach(card => {
     renderNetworkStories(network);
   });
 });
-// === WORLD NEWS: Google News + individual sources ===
-const worldNewsFeeds = {
-  guardian: 'https://www.theguardian.com/world/rss',
-  apnews: 'https://apnews.com/hub/ap-top-news?format=rss',
-  politico: 'https://www.politico.com/rss/politicopicks.xml',
-  reuters: 'https://www.reutersagency.com/feed/?best-topics=world&post_type=best',
-  google: 'https://news.google.com/rss/search?q=world+politics+OR+global+politics+OR+international&hl=en-US&gl=US&ceid=US:en',
-  dw: 'https://rss.dw.com/xml/rss-en-all',
-  aljazeera: 'https://www.aljazeera.com/xml/rss/all.xml'
+// === WORLD NEWS: Google News as universal source ===
+const worldNewsSources = {
+  guardian: { query: 'site:theguardian.com', siteUrl: 'https://www.theguardian.com/international' },
+  politico: { query: 'site:politico.com', siteUrl: 'https://www.politico.com' },
+  apnews: { query: 'site:apnews.com', siteUrl: 'https://apnews.com' },
+  dw: { query: 'site:dw.com', siteUrl: 'https://www.dw.com/en/top-stories/s-9097' },
+  aljazeera: { query: 'site:aljazeera.com', siteUrl: 'https://www.aljazeera.com' }
 };
 
-// Fetch top 25 stories for a feed
-async function fetchWorldNewsRss(feedUrl) {
+// Fetch top stories from Google News for a specific source
+async function fetchGoogleNews(sourceKey) {
+  const source = worldNewsSources[sourceKey];
+  if (!source) return [];
+
+  const rssUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(source.query)}&hl=en-US&gl=US&ceid=US:en`;
   try {
-    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
-    const response = await fetch(apiUrl);
-    const data = await response.json();
+    const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`);
+    if (!res.ok) return [];
+    const data = await res.json();
     return data.items?.slice(0, 25) || [];
   } catch (err) {
-    console.error('RSS fetch error:', err);
+    console.error('Google News fetch failed:', err);
     return [];
   }
 }
 
-// Render stories under the cards
+// Render 25 story cards under selected source
 async function renderWorldNewsStories(sourceKey) {
-  const feedUrl = worldNewsFeeds[sourceKey];
   const container = document.getElementById('world-news-stories');
   container.innerHTML = ''; // clear previous stories
-  container.style.display = 'flex';
-  container.style.flexWrap = 'wrap';
-  container.style.gap = '8px';
 
-  if (!feedUrl) {
-    // Fallback: See All link only
-    const seeMore = document.createElement('div');
-    seeMore.className = 'see-more-link';
-    seeMore.innerText = 'See All';
-    seeMore.onclick = () => {
-      const map = {
-        guardian: 'https://www.theguardian.com/world',
-        apnews: 'https://apnews.com/',
-        politico: 'https://www.politico.com/',
-        reuters: 'https://www.reuters.com/',
-        google: 'https://news.google.com/',
-        dw: 'https://www.dw.com/en/top-stories/s-9097',
-        aljazeera: 'https://www.aljazeera.com/'
-      };
-      window.open(map[sourceKey], '_blank');
-    };
-    container.appendChild(seeMore);
-    return;
-  }
-
-  const stories = await fetchWorldNewsRss(feedUrl);
+  const stories = await fetchGoogleNews(sourceKey);
 
   stories.forEach(item => {
     const card = document.createElement('div');
     card.className = 'official-card';
-    card.style.minHeight = '80px';
-    card.style.padding = '8px 12px';
     card.style.width = 'calc(20% - 12px)';
+    card.style.minHeight = '100px';
+    card.style.padding = '8px';
     card.style.boxSizing = 'border-box';
-    card.innerHTML = `<h4 style="margin:0;line-height:1.2;">${item.title || 'Untitled'}</h4>`;
-    card.onclick = () => window.open(item.link, '_blank');
+    card.style.cursor = 'pointer';
+
+    // Card content: logo + title
+    const logo = document.createElement('img');
+    logo.src = `/assets/${sourceKey}.png`;
+    logo.className = 'card-logo';
+    logo.style.width = '100%';
+    logo.style.height = 'auto';
+    logo.style.marginBottom = '6px';
+
+    const title = document.createElement('h4');
+    title.innerText = item.title || 'Untitled';
+    title.style.margin = '0';
+    title.style.lineHeight = '1.2';
+    title.style.fontSize = '14px';
+
+    card.appendChild(logo);
+    card.appendChild(title);
+
+    card.onclick = () => {
+      if (item.link) window.open(item.link, '_blank');
+    };
+
     container.appendChild(card);
   });
 
-  // Add See All link at end
+  // Add "See More" card at end
   const seeMore = document.createElement('div');
   seeMore.className = 'see-more-link';
   seeMore.innerText = 'See All';
-  seeMore.style.alignSelf = 'center';
+  seeMore.style.cursor = 'pointer';
+  seeMore.style.marginTop = '8px';
   seeMore.onclick = () => {
-    const map = {
-      guardian: 'https://www.theguardian.com/world',
-      apnews: 'https://apnews.com/',
-      politico: 'https://www.politico.com/',
-      reuters: 'https://www.reuters.com/',
-      google: 'https://news.google.com/',
-      dw: 'https://www.dw.com/en/top-stories/s-9097',
-      aljazeera: 'https://www.aljazeera.com/'
-    };
-    window.open(map[sourceKey], '_blank');
+    window.open(worldNewsSources[sourceKey].siteUrl, '_blank');
   };
   container.appendChild(seeMore);
 }
 
-// Wire click listeners to source cards
-(function wireWorldNewsCards() {
-  const container = document.getElementById('world-news-cards');
-  if (!container) return;
-
-  container.querySelectorAll('.info-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const key = card.dataset.source;
-      if (key) renderWorldNewsStories(key);
-    });
+// Wire source cards to render stories
+document.querySelectorAll('#world-news-cards .info-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const key = card.dataset.source;
+    if (!key) return;
+    renderWorldNewsStories(key);
   });
-})();
+});
 
   // === Load officials data with smooth fade-in ===
   Promise.all([
