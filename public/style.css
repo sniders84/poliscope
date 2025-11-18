@@ -1513,3 +1513,11 @@ a, button, .tab, .card-button,
   color: #0056b3;
   text-decoration: underline;
 }
+/* Logos inside info-cards for uniform size and spacing */
+.info-card .network-logo {
+  width: 80%;           /* Stretch across top of card */
+  max-height: 40%;      /* Covers ~30-40% of card height */
+  object-fit: contain;  /* Maintain aspect ratio */
+  display: block;
+  margin: 0 auto 8px auto; /* Center horizontally and add bottom spacing */
+}
