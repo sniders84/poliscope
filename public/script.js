@@ -1313,15 +1313,15 @@ async function renderNewspaperStories(newspaper) {
     const card = document.createElement('div');
     card.className = 'official-card';
     card.innerHTML = `<h4>${item.title}</h4>`;
-    card.onclick = () => window.open(item.link, '_blank');
+    card.addEventListener('click', () => window.open(item.link, '_blank')); // fix for clickable cards
     container.appendChild(card);
   });
 
   // See More link
   const seeMore = document.createElement('div');
-  seeMore.className = 'see-more-link';
+  seeMore.className = 'see-more-link'; // make sure CSS matches network cards
   seeMore.innerText = 'See More';
-  seeMore.onclick = () => {
+  seeMore.addEventListener('click', () => {
     const homepageMap = {
       nyt: 'https://www.nytimes.com',
       washingtonpost: 'https://www.washingtonpost.com',
@@ -1330,7 +1330,7 @@ async function renderNewspaperStories(newspaper) {
       usatoday: 'https://www.usatoday.com'
     };
     window.open(homepageMap[newspaper], '_blank');
-  };
+  });
   container.appendChild(seeMore);
 }
 
@@ -1341,6 +1341,7 @@ document.querySelectorAll('#newspaper-cards .info-card').forEach(card => {
     renderNewspaperStories(newspaper);
   });
 });
+
   // === Load officials data with smooth fade-in ===
   Promise.all([
     fetch('/governors.json').then(res => res.json()),
