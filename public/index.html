@@ -136,14 +136,30 @@
   <div class="card-grid" id="network-stories"></div>
 </section>
 
-<section id="world-news" class="category-section">
+<!-- === GLOBAL POLITICS & WORLD NEWS Section === -->
+<section id="global-politics-world-news">
   <h2>Global Politics & World News</h2>
-  <div id="world-news-carousel-container" class="carousel-container">
-    <div id="world-news-cards" class="carousel-row"></div>
-    <div class="carousel-nav">
-      <button id="world-news-prev" class="carousel-btn">&larr;</button>
-      <button id="world-news-next" class="carousel-btn">&rarr;</button>
+
+  <!-- Carousel container -->
+  <div class="carousel-wrapper" style="position:relative; display:flex; align-items:center; gap:8px;">
+    
+    <!-- Left arrow -->
+    <button id="world-news-prev" 
+            style="position:absolute; left:0; z-index:10; background:#2e2e2e; color:#fff; border:none; padding:8px; cursor:pointer;">
+      &#8592;
+    </button>
+
+    <!-- Carousel cards row -->
+    <div id="world-news-cards" 
+         style="display:flex; overflow-x:auto; gap:12px; padding:8px 40px;">
+      <!-- Cards populated dynamically by JS -->
     </div>
+
+    <!-- Right arrow -->
+    <button id="world-news-next" 
+            style="position:absolute; right:0; z-index:10; background:#2e2e2e; color:#fff; border:none; padding:8px; cursor:pointer;">
+      &#8594;
+    </button>
   </div>
 </section>
 
