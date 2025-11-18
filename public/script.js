@@ -760,7 +760,6 @@ function showStartupHub() {
 
   const hubItems = [
     { title: "National Broadcasting Networks", id: "national-networks" },
-    { title: "Newspaper Media", id: "newspaper-media" },
     { title: "Global Politics & World News", id: "global-news" },
     { title: "Finance & Markets", id: "finance-markets" },
     { title: "Tech & Innovation", id: "tech-innovation" },
