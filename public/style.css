@@ -1650,3 +1650,26 @@ a, button, .tab, .card-button,
   text-align: center;
   margin: 4px 0 0 0;
 }
+/* === WORLD NEWS CAROUSEL ROW === */
+#world-news-cards {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scroll-behavior: smooth;
+  padding: 10px 0;
+
+  /* Prevent vertical stacking */
+  white-space: nowrap;
+
+  /* Hide scrollbar (optional) */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#world-news-cards::-webkit-scrollbar {
+  display: none;
+}
