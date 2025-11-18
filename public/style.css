@@ -1544,3 +1544,102 @@ s */
   padding-top: 8px;      /* ensure space at top */
   padding-bottom: 12px;
 }
+/* === Unified Card Styling for All Sections === */
+.info-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background: #2b2b2b;             /* dark grey */
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  margin: 10px;
+  padding: 12px;
+  cursor: pointer;
+  width: 220px;                     /* consistent width */
+  height: 180px;                    /* consistent height for all cards */
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.info-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  background: #1e3a8a;              /* blue hover */
+}
+
+.info-card img {
+  width: 100%;
+  height: 30%;                       /* logo takes ~30% of card height */
+  object-fit: contain;
+  margin-bottom: 8px;
+}
+
+.info-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  margin: 4px 0 2px 0;
+}
+
+.info-card p {
+  font-size: 14px;
+  color: #ccc;
+  margin: 0;
+}
+
+/* Container for dynamically loaded stories under a card */
+#network-stories, #newspaper-stories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+/* Stories under each card (shrunken version) */
+.official-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background: #2b2b2b;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  margin: 6px;
+  padding: 8px;
+  cursor: pointer;
+  width: 200px;
+  min-height: 60px;                  /* shrunk height */
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.official-card h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+}
+
+.official-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+  background: #1e3a8a;
+}
+
+/* See More link next to last story card */
+.see-more-link {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: #007BFF;
+  text-decoration: underline;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.see-more-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
