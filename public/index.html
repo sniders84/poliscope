@@ -136,14 +136,33 @@
   <!-- Row for top stories -->
   <div class="card-grid" id="network-stories"></div>
   
-  <section id="global-news" class="category-section">
-    <h2>Global Politics & World News</h2>
-    <div class="card-grid">
-      <div class="info-card"><h3>Politico</h3><p>Breaking global politics coverage.</p></div>
-      <div class="info-card"><h3>Reuters</h3><p>Trusted reporting on international affairs.</p></div>
-      <div class="info-card"><h3>BBC News</h3><p>Global headlines and analysis from BBC.</p></div>
+  <section id="world-news" class="category-section">
+  <h2>Global Politics & World News</h2>
+  <div class="card-grid" id="world-news-cards">
+    <div class="info-card" data-source="politico">
+      <img src="/assets/politico.png" alt="Politico Logo" class="network-logo">
+      <h3>Politico</h3>
+      <p>Top political news and analysis.</p>
     </div>
-  </section>
+    <div class="info-card" data-source="reuters">
+      <img src="/assets/reuters.png" alt="Reuters Logo" class="network-logo">
+      <h3>Reuters</h3>
+      <p>Breaking world news and global analysis.</p>
+    </div>
+    <div class="info-card" data-source="bbc">
+      <img src="/assets/bbc.png" alt="BBC News Logo" class="network-logo">
+      <h3>BBC News</h3>
+      <p>International coverage of major events.</p>
+    </div>
+    <div class="info-card" data-source="aljazeera">
+      <img src="/assets/aljazeera.png" alt="Al Jazeera Logo" class="network-logo">
+      <h3>Al Jazeera</h3>
+      <p>Global news and politics from the Middle East.</p>
+    </div>
+  </div>
+
+  <div class="card-grid" id="world-news-stories"></div>
+</section>
 
   <section id="finance-markets" class="category-section">
     <h2>Finance & Markets</h2>
