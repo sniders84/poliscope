@@ -1278,14 +1278,14 @@ document.querySelectorAll('#network-cards .info-card').forEach(card => {
 });
 // === WORLD NEWS / GLOBAL POLITICS: feeds + renderer ===
 const worldNewsFeeds = {
+  politico: 'https://www.politico.com/rss/politicopicks.xml',
   guardian: 'https://www.theguardian.com/world/rss',
+  googlenews: 'https://news.google.com/rss',
   dw: 'https://rss.dw.com/xml/rss-en-top',
-  aljazeera: 'https://www.aljazeera.com/xml/rss/all.xml',
-  googlenews: 'https://news.google.com/rss'
-  // apnews will only have "See All"
+  aljazeera: 'https://www.aljazeera.com/xml/rss/all.xml'
+  // reuters and apnews will only show "See All"
 };
 
-// Generic fetch
 async function fetchWorldRss(feedUrl) {
   try {
     const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
@@ -1308,36 +1308,31 @@ async function renderWorldNewsStories(sourceKey) {
   container.style.gap = '8px';
   container.innerHTML = '';
 
+  const seeAllMap = {
+    politico: 'https://www.politico.com',
+    reuters: 'https://www.reuters.com',
+    guardian: 'https://www.theguardian.com/world',
+    apnews: 'https://apnews.com',
+    googlenews: 'https://news.google.com',
+    dw: 'https://www.dw.com/en/top-stories/s-9097',
+    aljazeera: 'https://www.aljazeera.com'
+  };
+
   if (!feedUrl) {
-    // Only See All for AP
     const link = document.createElement('div');
     link.className = 'see-more-link';
     link.innerText = 'See All';
-    link.onclick = () => {
-      const map = {
-        apnews: 'https://apnews.com'
-      };
-      window.open(map[sourceKey] || 'https://apnews.com', '_blank');
-    };
+    link.onclick = () => window.open(seeAllMap[sourceKey], '_blank');
     container.appendChild(link);
     return;
   }
 
   const stories = await fetchWorldRss(feedUrl);
-
   if (!stories || stories.length === 0) {
     const link = document.createElement('div');
     link.className = 'see-more-link';
     link.innerText = 'See More';
-    link.onclick = () => {
-      const map = {
-        guardian: 'https://www.theguardian.com/world',
-        dw: 'https://www.dw.com/en/top-stories/s-9097',
-        aljazeera: 'https://www.aljazeera.com',
-        googlenews: 'https://news.google.com'
-      };
-      window.open(map[sourceKey] || map['guardian'], '_blank');
-    };
+    link.onclick = () => window.open(seeAllMap[sourceKey], '_blank');
     container.appendChild(link);
     return;
   }
@@ -1345,7 +1340,7 @@ async function renderWorldNewsStories(sourceKey) {
   stories.forEach(item => {
     const card = document.createElement('div');
     card.className = 'official-card';
-    card.innerHTML = `<h4 style="margin:0; line-height:1.15;">${item.title || 'Untitled'}</h4>`;
+    card.innerHTML = `<h4 style="margin:0;line-height:1.15;">${item.title || 'Untitled'}</h4>`;
     card.onclick = () => window.open(item.link, '_blank');
     card.style.minHeight = '56px';
     card.style.padding = '8px 12px';
@@ -1357,19 +1352,11 @@ async function renderWorldNewsStories(sourceKey) {
   const seeMore = document.createElement('div');
   seeMore.className = 'see-more-link';
   seeMore.innerText = 'See More';
-  seeMore.onclick = () => {
-    const map = {
-      guardian: 'https://www.theguardian.com/world',
-      dw: 'https://www.dw.com/en/top-stories/s-9097',
-      aljazeera: 'https://www.aljazeera.com',
-      googlenews: 'https://news.google.com'
-    };
-    window.open(map[sourceKey] || map['guardian'], '_blank');
-  };
+  seeMore.onclick = () => window.open(seeAllMap[sourceKey], '_blank');
   container.appendChild(seeMore);
 }
 
-// Attach listeners
+// Wire the cards
 (function wireWorldNews() {
   const container = document.getElementById('world-news-cards');
   if (!container) return;
