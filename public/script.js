@@ -1281,9 +1281,9 @@ document.querySelectorAll('#network-cards .info-card').forEach(card => {
 const newspaperFeeds = {
   nyt: 'https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml',
   washingtonpost: 'http://feeds.washingtonpost.com/rss/national',
-  chicagotribune: 'https://www.chicagotribune.com/feed',
-  latimes: 'https://www.latimes.com/local/rss2.0.xml',
-  usatoday: 'https://www.usatoday.com/rss/news/'
+  chicagotribune: 'https://www.chicagotribune.com/feed',  // OK but may be limited
+  latimes: 'https://www.latimes.com/world-nation/rss2.0.xml',  // more reliable section feed :contentReference[oaicite:3]{index=3}
+  usatoday: 'https://rssfeeds.usatoday.com/UsatodaycomNationTopNews'  // alternate top news feed
 };
 
 // Fetch top 5 stories via rss2json
