@@ -1276,40 +1276,32 @@ document.querySelectorAll('#network-cards .info-card').forEach(card => {
     renderNetworkStories(network);
   });
 });
-// === WORLD NEWS: feeds + resilient fetch + renderer (REPLACE existing world-news block) ===
+// === WORLD NEWS: feeds + resilient fetch + renderer ===
 const worldNewsFeeds = {
   nyt: 'https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml',
-  washingtonpost: 'http://feeds.washingtonpost.com/rss/national',
-  politico: 'https://www.politico.com/rss/politicopicks.xml',  // the working feed you said to keep
-  apnews: [
-    'https://apnews.com/hub/ap-top-news?format=rss',           // fallback 1
-    'https://apnews.com/apf-topnews?format=rss'                // fallback 2
-  ],
+  washingtonpost: 'https://feeds.washingtonpost.com/rss/national',
+  politico: 'https://www.politico.com/rss/politicopicks.xml', // old working feed
+  apnews: 'https://apnews.com/apf-topnews?format=rss',
   bbc: 'http://feeds.bbci.co.uk/news/world/rss.xml',
   aljazeera: 'https://www.aljazeera.com/xml/rss/all.xml'
 };
 
-// Try a single feed URL or an array of fallbacks
-async function fetchWorldRssWithFallbacks(feedOrArray) {
-  const feedList = Array.isArray(feedOrArray) ? feedOrArray : [feedOrArray];
-  for (let feedUrl of feedList) {
-    try {
-      const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
-      const res = await fetch(apiUrl);
-      if (!res.ok) continue;
-      const data = await res.json();
-      const items = data?.items || [];
-      if (items.length > 0) return items.slice(0, 5);
-    } catch (err) {
-      // try next fallback
-    }
+// Fetch top 5 items safely
+async function fetchWorldRss(feedUrl) {
+  try {
+    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
+    const res = await fetch(apiUrl);
+    const data = await res.json();
+    return data.items?.slice(0, 5) || [];
+  } catch (err) {
+    console.error('RSS fetch error:', err);
+    return [];
   }
-  return [];
 }
 
-// Render world news stories
+// Render stories under the world-news section
 async function renderWorldNewsStories(sourceKey) {
-  const feedSpec = worldNewsFeeds[sourceKey];
+  const feedUrl = worldNewsFeeds[sourceKey];
   const container = document.getElementById('world-news-stories');
   if (!container) return;
 
@@ -1319,10 +1311,12 @@ async function renderWorldNewsStories(sourceKey) {
   container.style.alignItems = 'flex-start';
   container.innerHTML = '';
 
-  if (!feedSpec) {
+  if (!feedUrl) {
     const link = document.createElement('div');
     link.className = 'see-more-link';
     link.innerText = 'See More';
+    link.style.color = '#007bff';
+    link.style.cursor = 'pointer';
     link.onclick = () => {
       const map = {
         nyt: 'https://www.nytimes.com',
@@ -1338,12 +1332,14 @@ async function renderWorldNewsStories(sourceKey) {
     return;
   }
 
-  const stories = await fetchWorldRssWithFallbacks(feedSpec);
+  const stories = await fetchWorldRss(feedUrl);
 
   if (!stories || stories.length === 0) {
     const link = document.createElement('div');
     link.className = 'see-more-link';
     link.innerText = 'See More';
+    link.style.color = '#007bff';
+    link.style.cursor = 'pointer';
     link.onclick = () => {
       const map = {
         nyt: 'https://www.nytimes.com',
@@ -1362,20 +1358,21 @@ async function renderWorldNewsStories(sourceKey) {
   stories.forEach(item => {
     const card = document.createElement('div');
     card.className = 'official-card';
-    const title = item.title || 'Untitled';
-    card.innerHTML = `<h4 style="margin:0;line-height:1.15;">${title}</h4>`;
-    card.onclick = () => window.open(item.link, '_blank');
+    card.innerHTML = `<h4 style="margin:0;line-height:1.15;">${item.title || 'Untitled'}</h4>`;
     card.style.minHeight = '56px';
     card.style.padding = '8px 12px';
     card.style.width = 'calc(20% - 12px)';
     card.style.boxSizing = 'border-box';
+    card.onclick = () => window.open(item.link || item.url, '_blank');
     container.appendChild(card);
   });
 
+  // Add See More
   const seeMore = document.createElement('div');
   seeMore.className = 'see-more-link';
   seeMore.innerText = 'See More';
-  seeMore.style.alignSelf = 'center';
+  seeMore.style.color = '#007bff';
+  seeMore.style.cursor = 'pointer';
   seeMore.onclick = () => {
     const map = {
       nyt: 'https://www.nytimes.com',
@@ -1390,7 +1387,7 @@ async function renderWorldNewsStories(sourceKey) {
   container.appendChild(seeMore);
 }
 
-// Attach listeners to world news cards
+// Wire cards
 (function wireWorldNewsCards() {
   const container = document.getElementById('world-news-cards');
   if (!container) return;
@@ -1402,12 +1399,11 @@ async function renderWorldNewsStories(sourceKey) {
         card.dataset.source ||
         card.dataset.newspaper ||
         card.dataset.newssource;
-
       if (!key) return;
-
       renderWorldNewsStories(key);
     });
   });
+})();
 
   // === Load officials data ===
   Promise.all([
