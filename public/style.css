@@ -1673,3 +1673,22 @@ a, button, .tab, .card-button,
 #world-news-cards::-webkit-scrollbar {
   display: none;
 }
+/* === NEWS CARDS (Google News Carousel) === */
+.news-card {
+  flex: 0 0 280px;              /* FIXED WIDTH — cannot shrink, cannot grow */
+  min-width: 280px;
+  max-width: 280px;
+
+  background: #222;             /* dark grey */
+  color: #fff;                  /* white text */
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-4px);
+  background: #024ea2;          /* blue hover */
+}
