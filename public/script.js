@@ -1276,171 +1276,128 @@ document.querySelectorAll('#network-cards .info-card').forEach(card => {
     renderNetworkStories(network);
   });
 });
-// === WORLD NEWS: Google News carousel (FULL REPLACEMENT BLOCK) ===
-document.addEventListener('DOMContentLoaded', () => {
-  const GOOGLE_NEWS_RSS =
-    'https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx1YlY4U0FtVnVHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US:en';
+// === GLOBAL POLITICS & WORLD NEWS: Google News RSS feed ===
+const worldNewsFeedUrl = 'https://news.google.com/rss/search?q=world+politics&hl=en-US&gl=US&ceid=US:en';
 
-  const MAX_CARDS = 25;
-  const RSS2JSON = url =>
-    `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`;
+// Correct "See All" Google News topic link
+const GOOGLE_NEWS_WORLD =
+  "https://news.google.com/topics/CAAqJAgKIh5DQkFTRUFvS0wyMHZNRFZ4ZERBU0FtbGtHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US:en";
 
-  // Known sources mapped to your assets folder
-  const SOURCE_LOGOS = {
-    'aljazeera.com': 'aljazeera.png',
-    'apnews.com': 'ap.png',
-    'politico.com': 'politico.png',
-    'reuters.com': 'reuters.png',
-    'dw.com': 'dw.png',
-    'usatoday.com': 'usatoday.png',
-    'nytimes.com': 'nyt.png',
-    'theguardian.com': 'guardian.png',
-    'guardian.co.uk': 'guardian.png',
-    'washingtonpost.com': 'washingtonpost.png',
-    'bbc.co.uk': 'bbc.png',
-    'bbc.com': 'bbc.png',
-    'cnn.com': 'cnn.png',
-    'foxnews.com': 'fox.png',
-    'msnbc.com': 'msnbc.png',
-    'nbcnews.com': 'nbc.png',
-    'latimes.com': 'latimes.png',
-    'chicagotribune.com': 'chicagotribune.png'
-  };
+const maxCards = 25;
 
-  const DEFAULT_LOGO = 'default-photo.png';
+// Helper to extract favicon from story source
+function getFaviconUrl(link) {
+  try {
+    const url = new URL(link);
+    return `${url.origin}/favicon.ico`;
+  } catch {
+    return ''; // fallback empty
+  }
+}
 
-  // Extract hostname
-  function hostnameFromUrl(link) {
-    try {
-      return new URL(link).hostname.replace(/^www\./, '').toLowerCase();
-    } catch {
-      return '';
-    }
+// Fetch RSS via rss2json
+async function fetchGoogleNewsRss(feedUrl) {
+  try {
+    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
+    const res = await fetch(apiUrl);
+    const data = await res.json();
+    return data.items?.slice(0, maxCards) || [];
+  } catch (err) {
+    console.error('RSS fetch error:', err);
+    return [];
+  }
+}
+
+// Render the carousel cards
+async function renderWorldNewsCarousel() {
+  const container = document.getElementById('world-news-cards');
+  container.innerHTML = ''; // clear previous
+
+  const stories = await fetchGoogleNewsRss(worldNewsFeedUrl);
+  if (!stories || stories.length === 0) {
+    const link = document.createElement('div');
+    link.className = 'see-more-link';
+    link.innerText = 'See All on Google News';
+    link.onclick = () => window.open('https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRFZ4ZERFU0FtbGtLQUFQAQ?hl=en-US&gl=US&ceid=US:en', '_blank');
+    container.appendChild(link);
+    return;
   }
 
-  // Determine appropriate logo
-  function getLogoForStory(link) {
-    const host = hostnameFromUrl(link);
-    if (!host) return DEFAULT_LOGO;
+  stories.forEach(item => {
+  const card = document.createElement('div');
+  card.className = 'news-card';
 
-    // Exact match
-    if (SOURCE_LOGOS[host]) return SOURCE_LOGOS[host];
+  const favicon = getFaviconUrl(item.link);
 
-    // Try root match (subdomains)
-    const parts = host.split('.');
-    for (let i = 0; i < parts.length - 1; i++) {
-      const root = parts.slice(i).join('.');
-      if (SOURCE_LOGOS[root]) return SOURCE_LOGOS[root];
-    }
+  card.innerHTML = `
+    <div class="news-logo-bar">
+      ${favicon ? `<img src="${favicon}" class="news-logo" alt="">` : ''}
+    </div>
+    <h4 class="news-title">${item.title}</h4>
+  `;
 
-    // Fallback: keyword matching
-    const lower = host.toLowerCase();
-    if (lower.includes('aljazeera')) return 'aljazeera.png';
-    if (lower.includes('apnews')) return 'ap.png';
-    if (lower.includes('politico')) return 'politico.png';
-    if (lower.includes('reuters')) return 'reuters.png';
-    if (lower.includes('usatoday')) return 'usatoday.png';
-    if (lower.includes('nytimes')) return 'nyt.png';
-    if (lower.includes('guardian')) return 'guardian.png';
-    if (lower.includes('washingtonpost')) return 'washingtonpost.png';
-    if (lower.includes('bbc')) return 'bbc.png';
-    if (lower.includes('cnn')) return 'cnn.png';
-    if (lower.includes('foxnews')) return 'fox.png';
+  card.onclick = () => window.open(item.link, '_blank');
+  container.appendChild(card);
+});
 
-    return DEFAULT_LOGO;
-  }
+  // Add See All card
+  const seeAll = document.createElement('div');
+  seeAll.className = 'official-card see-more-link';
+  seeAll.innerText = 'See All on Google News';
+  seeAll.onclick = () => window.open('https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRFZ4ZERFU0FtbGtLQUFQAQ?hl=en-US&gl=US&ceid=US:en', '_blank');
+  container.appendChild(seeAll);
+}
 
-  // Fetch RSS via rss2json
-  async function fetchGoogleNewsItems() {
-    try {
-      const res = await fetch(RSS2JSON(GOOGLE_NEWS_RSS));
-      const data = await res.json();
-      if (!data.items) return [];
-      return data.items.slice(0, MAX_CARDS);
-    } catch (e) {
-      console.error('World News RSS error:', e);
-      return [];
-    }
-  }
+// Simple horizontal carousel navigation
+function wireWorldNewsCarousel() {
+  const row = document.getElementById('world-news-cards');
+  const prevBtn = document.getElementById('world-news-prev');
+  const nextBtn = document.getElementById('world-news-next');
 
-  // Render horizontally scrollable carousel
-  async function renderWorldNewsCarousel() {
-    const row = document.getElementById('world-news-cards');
-    if (!row) return;
+  prevBtn.addEventListener('click', () => {
+    row.scrollBy({ left: -300, behavior: 'smooth' });
+  });
+  nextBtn.addEventListener('click', () => {
+    row.scrollBy({ left: 300, behavior: 'smooth' });
+  });
+}
 
-    row.innerHTML = '';
-    row.style.display = 'flex';
-    row.style.flexDirection = 'row';
-    row.style.overflowX = 'auto';
-    row.style.gap = '14px';
-    row.style.padding = '10px';
+// Initialize
+renderWorldNewsCarousel();
+wireWorldNewsCarousel();
 
-    const stories = await fetchGoogleNewsItems();
+  // === Load officials data with smooth fade-in ===
+  Promise.all([
+    fetch('/governors.json').then(res => res.json()),
+    fetch('/ltgovernors.json').then(res => res.json()),
+    fetch('/senators.json').then(res => res.json()),
+    fetch('/housereps.json').then(res => res.json())
+  ])
+    .then(([govs, ltGovs, sens, reps]) => {
+      governors = govs;
+      ltGovernors = ltGovs;
+      senators = sens;
+      houseReps = reps;
 
-    stories.forEach(item => {
-      const card = document.createElement('div');
-      card.className = 'news-card';
+      // Render officials
+      renderOfficials(selectedState, '');
 
-      const title = (item.title || '').replace(/<[^>]+>/g, '');
-      const link = item.link || '#';
-      const logo = getLogoForStory(link);
+      // Fade out loading overlay
+      if (loadingOverlay) {
+        loadingOverlay.style.transition = 'opacity 0.5s ease';
+        loadingOverlay.style.opacity = '0';
+        setTimeout(() => loadingOverlay.remove(), 500);
+      }
 
-      card.innerHTML = `
-        <div class="news-logo-bar">
-          <img src="assets/${logo}" class="news-logo" onerror="this.src='assets/${DEFAULT_LOGO}'" />
-        </div>
-        <div class="news-body">
-          <h4 class="news-title">${title}</h4>
-        </div>
-      `;
-
-      card.addEventListener('click', () => {
-        window.open(link, '_blank');
-      });
-
-      row.appendChild(card);
+      // Load social trends
+      const socialFeed = document.getElementById('social-feed');
+      if (socialFeed && typeof loadSocialTrends === 'function') {
+        console.log("🎬 loadSocialTrends is running...");
+        loadSocialTrends();
+      }
+    })
+    .catch(err => {
+      console.error('Error loading official data:', err);
+      if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
     });
-
-    // "See More" link BELOW the row, right-aligned
-    let seeWrap = document.getElementById('world-news-seeall-wrap');
-    if (!seeWrap) {
-      seeWrap = document.createElement('div');
-      seeWrap.id = 'world-news-seeall-wrap';
-      row.parentElement.appendChild(seeWrap);
-      seeWrap.style.display = 'flex';
-      seeWrap.style.justifyContent = 'flex-end';
-      seeWrap.style.width = '100%';
-      seeWrap.style.padding = '5px 12px';
-    }
-
-    seeWrap.innerHTML = `
-      <a 
-        href="https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx1YlY4U0FtVnVHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US:en"
-        target="_blank"
-        style="color:#0ea5e9; font-weight:600; text-decoration:underline;"
-      >
-        See More on Google News
-      </a>
-    `;
-  }
-
-  // Arrow navigation
-  function wireWorldNewsArrows() {
-    const row = document.getElementById('world-news-cards');
-    const prev = document.getElementById('world-news-prev');
-    const next = document.getElementById('world-news-next');
-
-    if (!row || !prev || !next) return;
-
-    const SCROLL = () => Math.max(row.clientWidth * 0.6, 300);
-
-    prev.onclick = () => row.scrollBy({ left: -SCROLL(), behavior: 'smooth' });
-    next.onclick = () => row.scrollBy({ left: SCROLL(), behavior: 'smooth' });
-  }
-
-  // INIT
-  (async () => {
-    await renderWorldNewsCarousel();
-    wireWorldNewsArrows();
-  })();
 });
