@@ -136,42 +136,34 @@
   <div class="card-grid" id="network-stories"></div>
 </section>
 
- <section id="world-news" class="category-section">
+<section id="world-news" class="category-section">
   <h2>Global Politics & World News</h2>
   <div id="world-news-cards" class="card-grid">
-    <!-- Cards for sources -->
+    <!-- Individual source cards -->
     <div class="info-card" data-source="guardian">
-      <img src="/assets/guardian.png" alt="The Guardian Logo">
+      <img src="/assets/guardian.png" alt="The Guardian Logo" class="card-logo">
       <h3>The Guardian</h3>
     </div>
-    <div class="info-card" data-source="apnews">
-      <img src="/assets/ap.png" alt="Associated Press Logo">
-      <h3>Associated Press</h3>
-    </div>
     <div class="info-card" data-source="politico">
-      <img src="/assets/politico.png" alt="Politico Logo">
+      <img src="/assets/politico.png" alt="Politico Logo" class="card-logo">
       <h3>Politico</h3>
     </div>
-    <div class="info-card" data-source="reuters">
-      <img src="/assets/reuters.png" alt="Reuters Logo">
-      <h3>Reuters</h3>
-    </div>
-    <div class="info-card" data-source="google">
-      <img src="/assets/google-news.png" alt="Google News Logo">
-      <h3>Google News</h3>
+    <div class="info-card" data-source="apnews">
+      <img src="/assets/apnews.png" alt="Associated Press Logo" class="card-logo">
+      <h3>Associated Press</h3>
     </div>
     <div class="info-card" data-source="dw">
-      <img src="/assets/dw.png" alt="Deutsche Welle Logo">
+      <img src="/assets/dw.png" alt="Deutsche Welle Logo" class="card-logo">
       <h3>Deutsche Welle</h3>
     </div>
     <div class="info-card" data-source="aljazeera">
-      <img src="/assets/aljazeera.png" alt="Al Jazeera Logo">
+      <img src="/assets/aljazeera.png" alt="Al Jazeera Logo" class="card-logo">
       <h3>Al Jazeera</h3>
     </div>
   </div>
-
-  <!-- Container where stories will render -->
-  <div id="world-news-stories" class="stories-grid"></div>
+  <div id="world-news-stories" class="stories-carousel">
+    <!-- Google News stories will populate here -->
+  </div>
 </section>
 
   <section id="finance-markets" class="category-section">
