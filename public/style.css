@@ -1486,3 +1486,10 @@ a, button, .tab, .card-button,
 
   color: white;
 }
+/* Logos inside newspaper cards */
+#newspaper-cards .network-logo {
+  width: 100%;        /* stretch across full width of card */
+  height: 35%;        /* cover ~30-40% of card height */
+  object-fit: contain; /* maintain aspect ratio */
+  margin-bottom: 8px;  /* space between logo and title */
+}
