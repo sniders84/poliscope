@@ -1319,16 +1319,18 @@ async function renderWorldNewsCarousel() {
   }
 
   stories.forEach(item => {
-    const card = document.createElement('div');
-    card.className = 'official-card';
-    const favicon = getFaviconUrl(item.link);
-    card.innerHTML = `
-      <img src="${favicon}" alt="source logo" class="story-logo" onerror="this.style.display='none'"/>
-      <h4 style="margin:0;line-height:1.2;">${item.title}</h4>
-    `;
-    card.onclick = () => window.open(item.link, '_blank');
-    container.appendChild(card);
-  });
+  const card = document.createElement('div');
+  card.className = 'official-card news-card';
+  
+  // Use the story origin favicon
+  const favicon = getFaviconUrl(item.link);
+  card.innerHTML = `
+    ${favicon ? `<img src="${favicon}" class="story-logo" alt="source logo" onerror="this.style.display='none'"/>` : ''}
+    <h4 style="margin:0;line-height:1.2;">${item.title}</h4>
+  `;
+  card.onclick = () => window.open(item.link, '_blank');
+  container.appendChild(card);
+});
 
   // Add See All card
   const seeAll = document.createElement('div');
