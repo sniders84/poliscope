@@ -1277,6 +1277,60 @@ document.querySelectorAll('#network-cards .info-card').forEach(card => {
     renderNetworkStories(network);
   });
 });
+/* === Newspaper RSS Feeds === */
+const newspaperFeeds = {
+  nyt: "https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml",
+  washingtonpost: "https://feeds.washingtonpost.com/rss/politics",
+  chicagotribune: "https://www.chicagotribune.com/arcio/rss/category/news/",
+  latimes: "https://www.latimes.com/world-nation/rss2.0.xml",
+  bostonglobe: "https://rsshub.app/bostonglobe"
+};
+
+/* === Render Newspaper Stories (same format as network stories) === */
+async function renderNewspaperStories(paper) {
+  const feedUrl = newspaperFeeds[paper];
+  if (!feedUrl) return;
+
+  const stories = await fetchRss(feedUrl);
+  const container = document.getElementById("newspaper-stories");
+  container.innerHTML = ""; // clear previous
+
+  stories.forEach(item => {
+    const card = document.createElement("div");
+    card.className = "official-card"; // uses SAME styling as networks
+    card.innerHTML = `<h4>${item.title}</h4>`;
+    card.onclick = () => window.open(item.link, "_blank");
+    container.appendChild(card);
+  });
+
+  // See More link
+  if (stories.length > 0) {
+    const seeMore = document.createElement("div");
+    seeMore.className = "see-more-link";
+    seeMore.innerText = "See More";
+
+    const seeMoreMap = {
+      nyt: "https://www.nytimes.com",
+      washingtonpost: "https://www.washingtonpost.com",
+      chicagotribune: "https://www.chicagotribune.com",
+      latimes: "https://www.latimes.com",
+      bostonglobe: "https://www.bostonglobe.com"
+    };
+
+    seeMore.onclick = () =>
+      window.open(seeMoreMap[paper] || seeMoreMap.nyt, "_blank");
+
+    container.appendChild(seeMore);
+  }
+}
+
+/* === Add click listeners to newspaper cards === */
+document.querySelectorAll("#newspaper-cards .info-card").forEach(card => {
+  card.addEventListener("click", () => {
+    const paper = card.dataset.paper;
+    renderNewspaperStories(paper);
+  });
+});
 
   // === Load officials data with smooth fade-in ===
   Promise.all([
