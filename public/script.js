@@ -1283,7 +1283,7 @@ const newspaperFeeds = {
   washingtonpost: 'http://feeds.washingtonpost.com/rss/national',
   chicagotribune: 'https://www.chicagotribune.com/arcio/rss/category/news/',
   latimes: 'https://www.latimes.com/local/rss2.0.xml',
-  usatoday: 'https://rssfeeds.usatoday.com/usatoday-NewsTopStories'
+  theguardian: 'https://www.theguardian.com/world/rss' // replacing Boston Globe
 };
 
 // Fetch top 5 stories via rss2json
@@ -1292,7 +1292,7 @@ async function fetchNewspaperRss(feedUrl) {
   try {
     const response = await fetch(apiUrl);
     const data = await response.json();
-    return data.items?.slice(0, 5) || [];
+    return data.items?.slice(0, 5) || []; // top 5 stories safely
   } catch (err) {
     console.error('RSS fetch error:', err);
     return [];
@@ -1327,7 +1327,7 @@ async function renderNewspaperStories(newspaper) {
         washingtonpost: 'https://www.washingtonpost.com',
         chicagotribune: 'https://www.chicagotribune.com',
         latimes: 'https://www.latimes.com',
-        usatoday: 'https://www.usatoday.com'
+        theguardian: 'https://www.theguardian.com'
       };
       window.open(homepageMap[newspaper], '_blank');
     };
@@ -1342,7 +1342,6 @@ document.querySelectorAll('#newspaper-cards .info-card').forEach(card => {
     renderNewspaperStories(newspaper);
   });
 });
-
   // === Load officials data with smooth fade-in ===
   Promise.all([
     fetch('/governors.json').then(res => res.json()),
