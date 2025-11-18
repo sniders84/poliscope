@@ -1692,3 +1692,21 @@ a, button, .tab, .card-button,
   transform: translateY(-4px);
   background: #024ea2;          /* blue hover */
 }
+/* === GOOGLE NEWS FAVICON BAR === */
+.news-logo-bar {
+  width: 100%;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  background: #111;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.news-logo {
+  height: 32px;
+  width: 32px;
+  object-fit: contain;
+}
