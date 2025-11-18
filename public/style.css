@@ -1516,3 +1516,17 @@ a, button, .tab, .card-button,
   margin-top: 16px;
   gap: 12px;
 }
+/* Universal card logos for all sections */
+.info-card img {
+  width: 100%;           /* full width of the card */
+  height: 80px;          /* fixed height for uniformity */
+  object-fit: contain;   /* preserve aspect ratio */
+  display: block;
+  margin-bottom: 8px;    /* spacing between logo and text */
+}
+
+/* Optional: adjust card padding to accommodate logo */
+.info-card {
+  padding-top: 8px;      /* ensure space at top */
+  padding-bottom: 12px;
+}
