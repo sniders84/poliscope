@@ -1493,7 +1493,21 @@ a, button, .tab, .card-button,
   object-fit: contain; /* maintain aspect ratio */
   margin-bottom: 8px;  /* space between logo and title */
 }
-/* Newspaper card logos */
+/* Newspaper /* === Card Logos Styling (Uniform Size) === */
+.info-card img {
+  width: 100%;           /* full width of the card */
+  height: 80px;          /* fixed height for all logos */
+  object-fit: contain;   /* maintain aspect ratio */
+  display: block;
+  margin-bottom: 8px;    /* space between logo and text */
+}
+
+/* Adjust card padding to fit logos without breaking card layout */
+.info-card {
+  padding-top: 8px;
+  padding-bottom: 12px;
+}
+s */
 .info-card img {
   width: 100%;       /* stretch across full card width */
   height: 35%;       /* about 35% of card height */
