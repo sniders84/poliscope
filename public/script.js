@@ -1278,6 +1278,11 @@ document.querySelectorAll('#network-cards .info-card').forEach(card => {
 });
 // === GLOBAL POLITICS & WORLD NEWS: Google News RSS feed ===
 const worldNewsFeedUrl = 'https://news.google.com/rss/search?q=world+politics&hl=en-US&gl=US&ceid=US:en';
+
+// Correct "See All" Google News topic link
+const GOOGLE_NEWS_WORLD =
+  "https://news.google.com/topics/CAAqJAgKIh5DQkFTRUFvS0wyMHZNRFZ4ZERBU0FtbGtHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US:en";
+
 const maxCards = 25;
 
 // Helper to extract favicon from story source
