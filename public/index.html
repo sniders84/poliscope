@@ -137,44 +137,48 @@
   <div class="card-grid" id="network-stories"></div>
   
 <section id="world-news" class="category-section">
-  <h2>Global Politics & World News</h2>
+  <h2>World News</h2>
+  <div id="world-news-cards" class="card-grid">
 
-  <!-- News cards row -->
-  <div class="card-grid" id="world-news-cards">
-    <div class="info-card" data-news="nyt">
-      <img src="/assets/nyt.png" alt="New York Times Logo" class="network-logo">
-      <h3>The New York Times</h3>
-      <p>National and international coverage from NYT.</p>
+    <div class="info-card" data-source="nyt">
+      <img src="images/nyt.png" alt="New York Times Logo" class="card-logo">
+      <h3>New York Times</h3>
+      <p>Latest global reporting and world analysis.</p>
     </div>
-    <div class="info-card" data-news="washingtonpost">
-      <img src="/assets/washingtonpost.png" alt="Washington Post Logo" class="network-logo">
-      <h3>The Washington Post</h3>
-      <p>US national news and political analysis from WaPo.</p>
+
+    <div class="info-card" data-source="washingtonpost">
+      <img src="images/washingtonpost.png" alt="Washington Post Logo" class="card-logo">
+      <h3>Washington Post</h3>
+      <p>International coverage and breaking world news.</p>
     </div>
-    <div class="info-card" data-news="politico">
-      <img src="/assets/politico.png" alt="Politico Logo" class="network-logo">
+
+    <div class="info-card" data-source="politico">
+      <img src="images/politico.png" alt="Politico Logo" class="card-logo">
       <h3>Politico</h3>
-      <p>Political news and analysis from Politico.</p>
+      <p>Global political developments and updates.</p>
     </div>
-    <div class="info-card" data-news="ap">
-      <img src="/assets/ap.png" alt="Associated Press Logo" class="network-logo">
+
+    <div class="info-card" data-source="apnews">
+      <img src="images/apnews.png" alt="AP News Logo" class="card-logo">
       <h3>Associated Press</h3>
-      <p>Top international and US news from AP.</p>
+      <p>Worldwide coverage from AP reporters.</p>
     </div>
-    <div class="info-card" data-news="bbc">
-      <img src="/assets/bbc.png" alt="BBC News Logo" class="network-logo">
+
+    <div class="info-card" data-source="bbc">
+      <img src="images/bbc.png" alt="BBC Logo" class="card-logo">
       <h3>BBC News</h3>
-      <p>Global news coverage from BBC.</p>
+      <p>Reliable global news and world reporting.</p>
     </div>
-    <div class="info-card" data-news="aljazeera">
-      <img src="/assets/aljazeera.png" alt="Al Jazeera Logo" class="network-logo">
+
+    <div class="info-card" data-source="aljazeera">
+      <img src="images/aljazeera.png" alt="Al Jazeera Logo" class="card-logo">
       <h3>Al Jazeera</h3>
-      <p>International news and political coverage from Al Jazeera.</p>
+      <p>International news and in-depth coverage.</p>
     </div>
+
   </div>
 
-  <!-- Row for top stories under each news card -->
-  <div class="card-grid" id="world-news-stories"></div>
+  <div id="world-news-stories" class="stories-container"></div>
 </section>
 
   <section id="finance-markets" class="category-section">
