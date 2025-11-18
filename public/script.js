@@ -760,7 +760,6 @@ function showStartupHub() {
 
   const hubItems = [
     { title: "National Broadcasting Networks", id: "national-networks" },
-    { title: "Newspaper Media", id: "newspaper-media" },
     { title: "Global Politics & World News", id: "global-news" },
     { title: "Finance & Markets", id: "finance-markets" },
     { title: "Tech & Innovation", id: "tech-innovation" },
@@ -1277,72 +1276,6 @@ document.querySelectorAll('#network-cards .info-card').forEach(card => {
     renderNetworkStories(network);
   });
 });
-// === Newspaper Media RSS Feeds (revised) ===
-const newspaperFeeds = {
-  nyt: 'https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml',
-  washingtonpost: 'http://feeds.washingtonpost.com/rss/national',
-  chicagotribune: 'https://www.chicagotribune.com/feed',
-  latimes: 'https://www.latimes.com/world-nation/rss2.0.xml',  // more reliable section feed
-  usatoday: 'https://rssfeeds.usatoday.com/UsatodaycomNationTopNews'  // FeedSpot suggested
-};
-
-// Fetch top 5 stories via rss2json
-async function fetchNewspaperRss(feedUrl) {
-  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
-  try {
-    const response = await fetch(apiUrl);
-    const data = await response.json();
-    return data.items?.slice(0, 5) || [];
-  } catch (err) {
-    console.error('RSS fetch error:', err);
-    return [];
-  }
-}
-
-// Render newspaper stories
-async function renderNewspaperStories(newspaper) {
-  const feedUrl = newspaperFeeds[newspaper];
-  const container = document.getElementById('newspaper-stories');
-  container.innerHTML = '';
-
-  if (!feedUrl) return;
-
-  const stories = await fetchNewspaperRss(feedUrl);
-
-  stories.forEach(item => {
-    const card = document.createElement('div');
-    card.className = 'official-card';
-    card.innerHTML = `<h4>${item.title}</h4>`;
-    card.addEventListener('click', () => window.open(item.link, '_blank'));
-    container.appendChild(card);
-  });
-
-  if (stories.length) {
-    const seeMore = document.createElement('div');
-    seeMore.className = 'see-more-link';
-    seeMore.innerText = 'See More';
-    seeMore.addEventListener('click', () => {
-      const homepageMap = {
-        nyt: 'https://www.nytimes.com',
-        washingtonpost: 'https://www.washingtonpost.com',
-        chicagotribune: 'https://www.chicagotribune.com',
-        latimes: 'https://www.latimes.com',
-        usatoday: 'https://www.usatoday.com'
-      };
-      window.open(homepageMap[newspaper], '_blank');
-    });
-    container.appendChild(seeMore);
-  }
-}
-
-// Add click listeners to newspaper cards
-document.querySelectorAll('#newspaper-cards .info-card').forEach(card => {
-  card.addEventListener('click', () => {
-    const newspaper = card.dataset.newspaper;
-    renderNewspaperStories(newspaper);
-  });
-});
-
   // === Load officials data with smooth fade-in ===
   Promise.all([
     fetch('/governors.json').then(res => res.json()),
