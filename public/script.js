@@ -1280,10 +1280,10 @@ document.querySelectorAll('#network-cards .info-card').forEach(card => {
 // === Newspaper Media RSS Feeds ===
 const newspaperFeeds = {
   nyt: 'https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml',
-  washingtonpost: 'https://feeds.washingtonpost.com/rss/national',
-  chicagotribune: 'https://www.chicagotribune.com/feed/',
+  washingtonpost: 'http://feeds.washingtonpost.com/rss/national',
+  chicagotribune: 'https://www.chicagotribune.com/arcio/rss/category/news/',
   latimes: 'https://www.latimes.com/local/rss2.0.xml',
-  usatoday: 'https://www.usatoday.com/rss/',
+  usatoday: 'https://rssfeeds.usatoday.com/usatoday-NewsTopStories'
 };
 
 // Fetch top 5 stories via rss2json
@@ -1292,7 +1292,7 @@ async function fetchNewspaperRss(feedUrl) {
   try {
     const response = await fetch(apiUrl);
     const data = await response.json();
-    return data.items?.slice(0, 5) || []; // top 5 stories safely
+    return data.items?.slice(0, 5) || [];
   } catch (err) {
     console.error('RSS fetch error:', err);
     return [];
@@ -1327,7 +1327,7 @@ async function renderNewspaperStories(newspaper) {
         washingtonpost: 'https://www.washingtonpost.com',
         chicagotribune: 'https://www.chicagotribune.com',
         latimes: 'https://www.latimes.com',
-        bostonglobe: 'https://www.bostonglobe.com'
+        usatoday: 'https://www.usatoday.com'
       };
       window.open(homepageMap[newspaper], '_blank');
     };
