@@ -1212,37 +1212,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Other existing functions and variables above ---
 
-// === Newspaper Media RSS Feeds ===
-const newspaperFeeds = {
-  nyt: 'https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml',
-  washingtonpost: 'http://feeds.washingtonpost.com/rss/national',
-  chicagotribune: 'https://www.chicagotribune.com/feed',
-  latimes: 'https://www.latimes.com/local/rss2.0.xml',
-  usatoday: 'https://www.usatoday.com/rss/news/'
+const rssFeeds = {
+  msnbc: 'https://www.nbcnews.com/rss',
+  abc: 'http://feeds.abcnews.com/abcnews/usheadlines',
+  cbs: 'https://www.cbsnews.com/latest/rss/main',
+  fox: 'https://feeds.foxnews.com/foxnews/latest',
+  cnn: 'http://rss.cnn.com/rss/cnn_topstories.rss'
 };
 
 // Fetch top 5 stories via rss2json
-async function fetchNewspaperRss(feedUrl) {
+async function fetchRss(feedUrl) {
   const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
   try {
     const response = await fetch(apiUrl);
     const data = await response.json();
-    return data.items?.slice(0, 5) || [];
+    return data.items.slice(0, 5);
   } catch (err) {
     console.error('RSS fetch error:', err);
     return [];
   }
 }
 
-// Render newspaper stories
-async function renderNewspaperStories(newspaper) {
-  const feedUrl = newspaperFeeds[newspaper];
+// Render network stories
+async function renderNetworkStories(network) {
+  const feedUrl = rssFeeds[network];
   if (!feedUrl) return;
 
-  const container = document.getElementById('newspaper-stories');
-  container.innerHTML = '';
-
-  const stories = await fetchNewspaperRss(feedUrl);
+  const stories = await fetchRss(feedUrl);
+  const container = document.getElementById('network-stories');
+  container.innerHTML = ''; // clear previous stories
 
   stories.forEach(item => {
     const card = document.createElement('div');
@@ -1252,31 +1250,34 @@ async function renderNewspaperStories(newspaper) {
     container.appendChild(card);
   });
 
+  // Append "See More" next to last story
   if (stories.length > 0) {
     const seeMore = document.createElement('div');
-    seeMore.className = 'see-more-link';
+    seeMore.className = 'see-more';
     seeMore.innerText = 'See More';
     seeMore.onclick = () => {
-      const homepageMap = {
-        nyt: 'https://www.nytimes.com',
-        washingtonpost: 'https://www.washingtonpost.com',
-        chicagotribune: 'https://www.chicagotribune.com',
-        latimes: 'https://www.latimes.com',
-        usatoday: 'https://www.usatoday.com'
+      // Proper site URL for MSNBC, others open homepage
+      const urlMap = {
+        msnbc: 'https://www.msnbc.com',
+        abc: 'https://abcnews.go.com',
+        cbs: 'https://www.cbsnews.com',
+        fox: 'https://www.foxnews.com',
+        cnn: 'https://edition.cnn.com'
       };
-      window.open(homepageMap[newspaper], '_blank');
+      window.open(urlMap[network] || feedUrl, '_blank');
     };
     container.appendChild(seeMore);
   }
 }
 
-// Add click listeners to newspaper cards
-document.querySelectorAll('#newspaper-cards .info-card').forEach(card => {
+// Add click listeners to network cards
+document.querySelectorAll('#network-cards .info-card').forEach(card => {
   card.addEventListener('click', () => {
-    const newspaper = card.dataset.newspaper;
-    renderNewspaperStories(newspaper);
+    const network = card.dataset.network;
+    renderNetworkStories(network);
   });
 });
+
   // === Load officials data with smooth fade-in ===
   Promise.all([
     fetch('/governors.json').then(res => res.json()),
