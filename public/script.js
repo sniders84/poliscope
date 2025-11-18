@@ -1276,95 +1276,227 @@ document.querySelectorAll('#network-cards .info-card').forEach(card => {
     renderNetworkStories(network);
   });
 });
-// === GLOBAL POLITICS & WORLD NEWS: Google News RSS feed ===
-const worldNewsFeedUrl = 'https://news.google.com/rss/search?q=world+politics&hl=en-US&gl=US&ceid=US:en';
+// === WORLD NEWS: Google News carousel (REPLACE existing world-news block) ===
+document.addEventListener('DOMContentLoaded', () => {
+  const GOOGLE_NEWS_RSS = 'https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx1YlY4U0FtVnVHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US%3Aen';
+  const MAX_CARDS = 25;
+  const RSS2JSON = url => `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`;
 
-// Correct "See All" Google News topic link
-const GOOGLE_NEWS_WORLD =
-  "https://news.google.com/topics/CAAqJAgKIh5DQkFTRUFvS0wyMHZNRFZ4ZERBU0FtbGtHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US:en";
+  // Map known hostnames / publishers -> filenames you already have in /assets/
+  const LOGO_MAP = {
+    'aljazeera.com': 'aljazeera.png',
+    'apnews.com': 'ap.png',
+    'politico.com': 'politico.png',
+    'reuters.com': 'reuters.png',
+    'dw.com': 'dw.png',
+    'usatoday.com': 'usatoday.png',
+    'nytimes.com': 'nyt.png',
+    'theguardian.com': 'guardian.png',
+    'guardian.co.uk': 'guardian.png',
+    'washingtonpost.com': 'washingtonpost.png',
+    'bbc.co.uk': 'bbc.png',
+    'bbc.com': 'bbc.png',
+    'cnn.com': 'cnn.png',
+    'foxnews.com': 'fox.png',
+    'msnbc.com': 'msnbc.png',
+    'nbcnews.com': 'nbc.png',
+    'latimes.com': 'latimes.png',
+    'chicagotribune.com': 'chicagotribune.png',
+    'usatoday.com': 'usatoday.png',
+    // fallback: many publishers might match domain part only
+  };
 
-const maxCards = 25;
+  const DEFAULT_LOGO = '/assets/default-photo.png'; // you have this in assets list
 
-// Helper to extract favicon from story source
-function getFaviconUrl(link) {
-  try {
-    const url = new URL(link);
-    return `${url.origin}/favicon.ico`;
-  } catch {
-    return ''; // fallback empty
-  }
-}
-
-// Fetch RSS via rss2json
-async function fetchGoogleNewsRss(feedUrl) {
-  try {
-    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
-    const res = await fetch(apiUrl);
-    const data = await res.json();
-    return data.items?.slice(0, maxCards) || [];
-  } catch (err) {
-    console.error('RSS fetch error:', err);
-    return [];
-  }
-}
-
-// Render the carousel cards
-async function renderWorldNewsCarousel() {
-  const container = document.getElementById('world-news-cards');
-  container.innerHTML = ''; // clear previous
-
-  const stories = await fetchGoogleNewsRss(worldNewsFeedUrl);
-  if (!stories || stories.length === 0) {
-    const link = document.createElement('div');
-    link.className = 'see-more-link';
-    link.innerText = 'See All on Google News';
-    link.onclick = () => window.open('https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRFZ4ZERFU0FtbGtLQUFQAQ?hl=en-US&gl=US&ceid=US:en', '_blank');
-    container.appendChild(link);
-    return;
+  // Safe hostname extractor
+  function hostnameFromUrl(link) {
+    try {
+      const u = new URL(link);
+      return u.hostname.replace(/^www\./i, '').toLowerCase();
+    } catch {
+      return '';
+    }
   }
 
-  stories.forEach(item => {
-  const card = document.createElement('div');
-  card.className = 'news-card';
+  // Try to pick a logo filename for an item
+  function pickLogoFilename(item) {
+    // 1) data from item.source or item.author
+    const possible = [
+      (item.source && (item.source.name || item.source)) || '',
+      item.author || '',
+      // fallback to hostname
+      hostnameFromUrl(item.link) || ''
+    ].map(s => (s || '').toString().toLowerCase());
 
-  const favicon = getFaviconUrl(item.link);
+    // Try exact hostname matches first
+    for (const p of possible) {
+      if (!p) continue;
+      // if it contains a known hostname key
+      for (const key of Object.keys(LOGO_MAP)) {
+        if (p.includes(key) || p === key) {
+          return LOGO_MAP[key];
+        }
+      }
+    }
 
-  card.innerHTML = `
-    <div class="news-logo-bar">
-      ${favicon ? `<img src="${favicon}" class="news-logo" alt="">` : ''}
-    </div>
-    <h4 class="news-title">${item.title}</h4>
-  `;
+    // If hostname exists, try to match its root (e.g. "cnn.com" from "edition.cnn.com")
+    const host = hostnameFromUrl(item.link);
+    if (host) {
+      const parts = host.split('.');
+      // try decreasing specificity: example edition.cnn.com -> cnn.com
+      for (let i = 0; i <= parts.length - 2; i++) {
+        const candidate = parts.slice(i).join('.');
+        if (LOGO_MAP[candidate]) return LOGO_MAP[candidate];
+      }
+    }
 
-  card.onclick = () => window.open(item.link, '_blank');
-  container.appendChild(card);
+    // final fallback: try to infer from link includes common substrings
+    if (item.link) {
+      if (item.link.includes('aljazeera')) return 'aljazeera.png';
+      if (item.link.includes('apnews')) return 'ap.png';
+      if (item.link.includes('politico')) return 'politico.png';
+      if (item.link.includes('reuters')) return 'reuters.png';
+      if (item.link.includes('dw.com') || item.link.includes('deutsche')) return 'dw.png';
+      if (item.link.includes('usatoday')) return 'usatoday.png';
+      if (item.link.includes('nytimes')) return 'nyt.png';
+      if (item.link.includes('guardian')) return 'guardian.png';
+      if (item.link.includes('washingtonpost')) return 'washingtonpost.png';
+      if (item.link.includes('bbc')) return 'bbc.png';
+      if (item.link.includes('cnn')) return 'cnn.png';
+      if (item.link.includes('foxnews')) return 'fox.png';
+    }
+
+    return null; // signal to use default or no image
+  }
+
+  // Fetch RSS via rss2json and return items array (up to MAX_CARDS)
+  async function fetchGoogleNewsItems() {
+    try {
+      const res = await fetch(RSS2JSON(GOOGLE_NEWS_RSS));
+      if (!res.ok) throw new Error(`rss2json status ${res.status}`);
+      const data = await res.json();
+      // data.items is expected; defensive checks
+      const items = data && (data.items || data.feed?.entries || []);
+      if (!Array.isArray(items)) return [];
+      return items.slice(0, MAX_CARDS);
+    } catch (err) {
+      console.error('World news RSS fetch failed:', err);
+      return [];
+    }
+  }
+
+  // Render the carousel (clear and rebuild)
+  async function renderWorldNewsCarousel() {
+    const row = document.getElementById('world-news-cards');
+    if (!row) {
+      console.warn('renderWorldNewsCarousel: #world-news-cards not found');
+      return;
+    }
+    row.innerHTML = ''; // clear existing
+    row.style.display = 'flex';
+    row.style.gap = '12px';
+    row.style.padding = '8px 12px';
+    row.style.alignItems = 'flex-start';
+
+    const stories = await fetchGoogleNewsItems();
+
+    // Build up to MAX_CARDS
+    stories.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'news-card'; // styling assumed in your CSS (dark grey + blue hover)
+
+      // logo selection
+      const logoFile = pickLogoFilename(item);
+      const logoPath = logoFile ? `/assets/${logoFile}` : DEFAULT_LOGO;
+
+      // Title safe and wrapped
+      const safeTitle = (item.title || '').replace(/<[^>]+>/g, '').trim();
+
+      card.innerHTML = `
+        <div class="news-logo-bar">
+          <img src="${logoPath}" alt="" class="news-logo" onerror="this.onerror=null;this.src='${DEFAULT_LOGO}';" />
+        </div>
+        <div class="news-body">
+          <h4 class="news-title" title="${safeTitle}">${safeTitle}</h4>
+        </div>
+      `;
+
+      // click opens link
+      card.addEventListener('click', () => {
+        const target = item.link || item.url || item.guid || '';
+        if (target) window.open(target, '_blank');
+      });
+
+      row.appendChild(card);
+    });
+
+    // Add an inline See More element (not a card) positioned below-right.
+    // We'll place it in #world-news-seeall (create if missing)
+    let seeWrap = document.getElementById('world-news-seeall-wrap');
+    if (!seeWrap) {
+      seeWrap = document.createElement('div');
+      seeWrap.id = 'world-news-seeall-wrap';
+      // place it after the row in DOM for layout; try to append to the row's parent
+      const parent = row.parentElement || document.body;
+      parent.appendChild(seeWrap);
+      // Basic layout
+      seeWrap.style.display = 'flex';
+      seeWrap.style.justifyContent = 'flex-end'; // user requested right
+      seeWrap.style.width = '100%';
+      seeWrap.style.padding = '8px 16px 0 16px';
+    }
+
+    seeWrap.innerHTML = ''; // reset
+    const seeMore = document.createElement('a');
+    seeMore.id = 'world-news-seeall';
+    seeMore.textContent = 'See More on Google News';
+    seeMore.href = 'https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx1YlY4U0FtVnVHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US%3Aen';
+    seeMore.target = '_blank';
+    seeMore.rel = 'noopener';
+    seeMore.style.color = '#0ea5e9'; // visible blue
+    seeMore.style.fontWeight = '600';
+    seeMore.style.textDecoration = 'underline';
+    seeMore.style.cursor = 'pointer';
+    seeWrap.appendChild(seeMore);
+  }
+
+  // Wire arrows (centered under the carousel)
+  function wireWorldNewsArrows() {
+    const row = document.getElementById('world-news-cards');
+    const prev = document.getElementById('world-news-prev');
+    const next = document.getElementById('world-news-next');
+
+    if (!row || !prev || !next) {
+      console.warn('Carousel arrows or row missing');
+      return;
+    }
+
+    // Scroll amount: show ~2 cards width per click (responsive)
+    function scrollAmount() {
+      return Math.max(row.clientWidth * 0.6, 300);
+    }
+
+    prev.addEventListener('click', () => {
+      row.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+    });
+
+    next.addEventListener('click', () => {
+      row.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
+    });
+  }
+
+  // Kick it off
+  (async function initWorldNews() {
+    await renderWorldNewsCarousel();
+    wireWorldNewsArrows();
+    // Optional: re-render on window resize to ensure layout remains good
+    window.addEventListener('resize', () => {
+      // small debounce
+      clearTimeout(window.__wn_resize);
+      window.__wn_resize = setTimeout(() => renderWorldNewsCarousel(), 300);
+    });
+  })();
 });
-
-  // Add See All card
-  const seeAll = document.createElement('div');
-  seeAll.className = 'official-card see-more-link';
-  seeAll.innerText = 'See All on Google News';
-  seeAll.onclick = () => window.open('https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRFZ4ZERFU0FtbGtLQUFQAQ?hl=en-US&gl=US&ceid=US:en', '_blank');
-  container.appendChild(seeAll);
-}
-
-// Simple horizontal carousel navigation
-function wireWorldNewsCarousel() {
-  const row = document.getElementById('world-news-cards');
-  const prevBtn = document.getElementById('world-news-prev');
-  const nextBtn = document.getElementById('world-news-next');
-
-  prevBtn.addEventListener('click', () => {
-    row.scrollBy({ left: -300, behavior: 'smooth' });
-  });
-  nextBtn.addEventListener('click', () => {
-    row.scrollBy({ left: 300, behavior: 'smooth' });
-  });
-}
-
-// Initialize
-renderWorldNewsCarousel();
-wireWorldNewsCarousel();
 
   // === Load officials data with smooth fade-in ===
   Promise.all([
