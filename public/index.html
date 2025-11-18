@@ -135,40 +135,24 @@
 
   <!-- Row for top stories -->
   <div class="card-grid" id="network-stories"></div>
-  
-<section id="world-news" class="category-section">
-  <h2>World News</h2>
-  <div id="world-news-cards" class="card-grid">
-    <div class="info-card" data-source="politico">
-      <img src="logos/politico.png" alt="Politico Logo" class="card-logo">
-      <h3>Politico</h3>
-      <p>Political analysis and breaking news.</p>
-    </div>
-    <div class="info-card" data-source="apnews">
-      <img src="logos/ap.png" alt="Associated Press Logo" class="card-logo">
-      <h3>Associated Press</h3>
-      <p>Top world and national news from AP.</p>
-    </div>
-    <div class="info-card" data-source="dw">
-      <img src="logos/dw.png" alt="Deutsche Welle Logo" class="card-logo">
-      <h3>Deutsche Welle</h3>
-      <p>Global news and in-depth analysis.</p>
-    </div>
-    <div class="info-card" data-source="aljazeera">
-      <img src="logos/aljazeera.png" alt="Al Jazeera Logo" class="card-logo">
-      <h3>Al Jazeera</h3>
-      <p>International news coverage and reports.</p>
-    </div>
-    <div class="info-card" data-source="globalissues">
-      <img src="logos/globalissues.png" alt="Global Issues Logo" class="card-logo">
-      <h3>Global Issues</h3>
-      <p>World news, analysis, and global reporting.</p>
-    </div>
-  </div>
-
-  <!-- Container for the top stories under the cards -->
-  <div id="world-news-stories" class="card-grid" style="margin-top:12px;"></div>
 </section>
+
+  <section id="newspaper-media" class="category-section">
+    <h2>Newspaper Media</h2>
+    <div class="card-grid">
+      <div class="info-card"><h3>The Washington Post</h3><p>Top stories and political analysis from WaPo.</p></div>
+      <div class="info-card"><h3>The New York Times</h3><p>Latest coverage from The New York Times.</p></div>
+    </div>
+  </section>
+
+  <section id="global-news" class="category-section">
+    <h2>Global Politics & World News</h2>
+    <div class="card-grid">
+      <div class="info-card"><h3>Politico</h3><p>Breaking global politics coverage.</p></div>
+      <div class="info-card"><h3>Reuters</h3><p>Trusted reporting on international affairs.</p></div>
+      <div class="info-card"><h3>BBC News</h3><p>Global headlines and analysis from BBC.</p></div>
+    </div>
+  </section>
 
   <section id="finance-markets" class="category-section">
     <h2>Finance & Markets</h2>
@@ -371,6 +355,22 @@ function showTab(tabId) {
   <section id="organizations" class="tab-content" style="display: none;">
   <h2>Political Organizations</h2>
   <div class="organization-grid">
+
+    <!-- Each organization card is now a full anchor -->
+    <a href="YOUR_ORGANIZATION_URL" target="_blank" class="organization-card">
+      <div class="logo-wrapper">
+        <img src="YOUR_LOGO_PATH" alt="Organization Logo">
+      </div>
+      <div class="info-wrapper">
+        <h3>Organization Name</h3>
+        <p>Organization description goes here.</p>
+      </div>
+    </a>
+
+    <!-- Repeat more <a class="organization-card"> blocks for each org -->
+
+  </div>
+</section>
 
     <section id="voting" class="tab-content" style="display: none;">
       <h2>Voting & Registration</h2>
