@@ -1609,3 +1609,44 @@ a, button, .tab, .card-button,
   padding: 6px 8px;
   font-weight: 600;
 }
+/* Uniform Network Cards & Logos */
+#network-cards .info-card,
+#world-news-cards .info-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 180px;       /* adjust for uniform width */
+  height: 180px;      /* adjust for uniform height */
+  padding: 12px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+#network-cards .info-card img,
+#world-news-cards .info-card img {
+  max-width: 100%;
+  max-height: 40%;    /* logo takes up 30–40% of the card height */
+  object-fit: contain; /* preserve aspect ratio */
+  margin-bottom: 8px;
+}
+
+#network-cards .info-card:hover,
+#world-news-cards .info-card:hover {
+  transform: translateY(-4px);
+}
+
+#network-cards .info-card h3,
+#world-news-cards .info-card h3 {
+  font-size: 1rem;
+  text-align: center;
+  margin: 0;
+}
+
+#network-cards .info-card p,
+#world-news-cards .info-card p {
+  font-size: 0.875rem;
+  text-align: center;
+  margin: 4px 0 0 0;
+}
