@@ -1650,3 +1650,91 @@ a, button, .tab, .card-button,
   text-align: center;
   margin: 4px 0 0 0;
 }
+/* === World News / Global Politics & World News Cards === */
+#world-news .card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: flex-start;
+}
+
+#world-news .info-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 160px; /* same as other network cards */
+  padding: 12px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#world-news .info-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+#world-news .info-card img.card-logo {
+  width: 100%;      /* stretch across the top */
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 8px;
+}
+
+#world-news-stories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+#world-news-stories .official-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 160px;  /* match network cards */
+  min-height: 120px;
+  padding: 8px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#world-news-stories .official-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+#world-news-stories .official-card img.card-logo {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 6px;
+}
+
+#world-news-stories .official-card h4 {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+#world-news-stories .see-more-link {
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  color: #1a73e8;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: color 0.2s ease;
+}
+
+#world-news-stories .see-more-link:hover {
+  color: #0c47b7;
+}
