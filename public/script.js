@@ -1281,9 +1281,9 @@ document.querySelectorAll('#network-cards .info-card').forEach(card => {
 const newspaperFeeds = {
   nyt: 'https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml',
   washingtonpost: 'http://feeds.washingtonpost.com/rss/national',
-  chicagotribune: 'https://www.chicagotribune.com/arcio/rss/category/news/',
+  chicagotribune: 'http://www.chicagotribune.com/arcio/rss/category/news/',
   latimes: 'https://www.latimes.com/local/rss2.0.xml',
-  bostonglobe: 'https://www.bostonglobe.com/boston/news/rss.xml'
+  bostonglobe: 'https://www.bostonglobe.com/feeds/bostonglobe/rss/'
 };
 
 // Fetch top 5 stories via rss2json
@@ -1292,44 +1292,44 @@ async function fetchNewspaperRss(feedUrl) {
   try {
     const response = await fetch(apiUrl);
     const data = await response.json();
-    return data.items ? data.items.slice(0, 5) : [];
+    return data.items?.slice(0, 5) || []; // top 5 stories safely
   } catch (err) {
-    console.error('Newspaper RSS fetch error:', err);
+    console.error('RSS fetch error:', err);
     return [];
   }
 }
 
-// Render top stories for selected newspaper
+// Render newspaper stories
 async function renderNewspaperStories(newspaper) {
   const feedUrl = newspaperFeeds[newspaper];
   if (!feedUrl) return;
 
-  const stories = await fetchNewspaperRss(feedUrl);
   const container = document.getElementById('newspaper-stories');
   container.innerHTML = ''; // clear previous stories
 
+  const stories = await fetchNewspaperRss(feedUrl);
+
   stories.forEach(item => {
     const card = document.createElement('div');
-    card.className = 'official-card'; // uses the same style as your network top stories
+    card.className = 'official-card';  // same style as top stories
     card.innerHTML = `<h4>${item.title}</h4>`;
     card.onclick = () => window.open(item.link, '_blank');
     container.appendChild(card);
   });
 
-  // Add "See More" link next to the last story
   if (stories.length > 0) {
     const seeMore = document.createElement('div');
     seeMore.className = 'see-more-link';
     seeMore.innerText = 'See More';
     seeMore.onclick = () => {
-      const siteMap = {
+      const homepageMap = {
         nyt: 'https://www.nytimes.com',
         washingtonpost: 'https://www.washingtonpost.com',
         chicagotribune: 'https://www.chicagotribune.com',
         latimes: 'https://www.latimes.com',
         bostonglobe: 'https://www.bostonglobe.com'
       };
-      window.open(siteMap[newspaper] || feedUrl, '_blank');
+      window.open(homepageMap[newspaper], '_blank');
     };
     container.appendChild(seeMore);
   }
@@ -1342,6 +1342,7 @@ document.querySelectorAll('#newspaper-cards .info-card').forEach(card => {
     renderNewspaperStories(newspaper);
   });
 });
+
   // === Load officials data with smooth fade-in ===
   Promise.all([
     fetch('/governors.json').then(res => res.json()),
