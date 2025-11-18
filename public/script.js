@@ -1276,6 +1276,70 @@ document.querySelectorAll('#network-cards .info-card').forEach(card => {
     renderNetworkStories(network);
   });
 });
+  // === Global Politics & World News RSS Feeds ===
+const worldNewsFeeds = {
+  politico: 'https://www.politico.com/rss/politics08.xml',
+  reuters: 'http://feeds.reuters.com/Reuters/worldNews',
+  bbc: 'http://feeds.bbci.co.uk/news/world/rss.xml',
+  aljazeera: 'https://www.aljazeera.com/xml/rss/all.xml'
+};
+
+// Fetch top 5 stories via rss2json
+async function fetchWorldNewsRss(feedUrl) {
+  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
+  try {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+    return data.items?.slice(0, 5) || [];
+  } catch (err) {
+    console.error('World News RSS fetch error:', err);
+    return [];
+  }
+}
+
+// Render world news stories
+async function renderWorldNewsStories(source) {
+  const feedUrl = worldNewsFeeds[source];
+  if (!feedUrl) return;
+
+  const container = document.getElementById('world-news-stories');
+  container.innerHTML = ''; // clear previous stories
+
+  const stories = await fetchWorldNewsRss(feedUrl);
+
+  stories.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'official-card'; // same style as top stories
+    card.innerHTML = `<h4>${item.title}</h4>`;
+    card.onclick = () => window.open(item.link, '_blank');
+    container.appendChild(card);
+  });
+
+  // Append "See More" next to last story
+  if (stories.length > 0) {
+    const seeMore = document.createElement('div');
+    seeMore.className = 'see-more-link';
+    seeMore.innerText = 'See More';
+    seeMore.onclick = () => {
+      const homepageMap = {
+        politico: 'https://www.politico.com',
+        reuters: 'https://www.reuters.com',
+        bbc: 'https://www.bbc.com/news',
+        aljazeera: 'https://www.aljazeera.com'
+      };
+      window.open(homepageMap[source], '_blank');
+    };
+    container.appendChild(seeMore);
+  }
+}
+
+// Add click listeners to world news cards
+document.querySelectorAll('#world-news-cards .info-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const source = card.dataset.source;
+    renderWorldNewsStories(source);
+  });
+});
   // === Load officials data with smooth fade-in ===
   Promise.all([
     fetch('/governors.json').then(res => res.json()),
