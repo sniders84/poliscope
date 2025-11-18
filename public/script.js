@@ -1282,8 +1282,8 @@ const newspaperFeeds = {
   nyt: 'https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml',
   washingtonpost: 'http://feeds.washingtonpost.com/rss/national',
   chicagotribune: 'https://www.chicagotribune.com/feed',
-  latimes: 'https://www.latimes.com/world-nation/rss2.0.xml',
-  usatoday: 'https://rssfeeds.usatoday.com/UsatodaycomNationTopNews'
+  latimes: 'https://www.latimes.com/world-nation/rss2.0.xml',  // more reliable section feed
+  usatoday: 'https://rssfeeds.usatoday.com/UsatodaycomNationTopNews'  // FeedSpot suggested
 };
 
 // Fetch top 5 stories via rss2json
