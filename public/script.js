@@ -1317,29 +1317,48 @@ async function renderWorldNewsCarousel() {
     container.appendChild(link);
     return;
   }
+/* === World News: inject source logos === */
+(function addWorldNewsLogos() {
+  const sourceLogos = {
+    "BBC News": "/assets/bbc.png",
+    "CNN": "/assets/cnn.png",
+    "Reuters": "/assets/reuters.png",
+    "The Guardian": "/assets/guardian.png",
+    "Al Jazeera English": "/assets/aljazeera.png",
+    "ABC News": "/assets/abc.png",
+    "CBS News": "/assets/cbs.png",
+    "FOX News": "/assets/fox.png",
+    "MSNBC": "/assets/msnbc.png",
+    "New York Times": "/assets/nytimes.png",
+    "Bloomberg": "/assets/bloomberg.png"
+    // extend as needed
+  };
+
+  const container = document.getElementById('world-news-cards');
+  if (!container) return;
+
+  container.querySelectorAll('.info-card').forEach(card => {
+    // Skip if logo already exists
+    if (card.querySelector('.logo-strip')) return;
+
+    // Try to infer source name from text
+    const sourceEl = card.querySelector('.source');
+    const sourceName = sourceEl ? sourceEl.textContent.trim() : null;
+    const logoPath = sourceLogos[sourceName];
+    if (!logoPath) return;
+
+    const strip = document.createElement('div');
+    strip.className = 'logo-strip';
+    strip.innerHTML = `<img src="${logoPath}" alt="${sourceName} Logo">`;
+    card.insertBefore(strip, card.firstChild);
+  });
+})();
 
   stories.forEach(item => {
   const card = document.createElement('div');
   card.className = 'official-card news-card';
   
-  // Use the story origin favicon
-  const favicon = getFaviconUrl(item.link);
-  card.innerHTML = `
-    ${favicon ? `<img src="${favicon}" class="story-logo" alt="source logo" onerror="this.style.display='none'"/>` : ''}
-    <h4 style="margin:0;line-height:1.2;">${item.title}</h4>
-  `;
-  card.onclick = () => window.open(item.link, '_blank');
-  container.appendChild(card);
-});
-
-  // Add See All card
-  const seeAll = document.createElement('div');
-  seeAll.className = 'official-card see-more-link';
-  seeAll.innerText = 'See All on Google News';
-  seeAll.onclick = () => window.open('https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRFZ4ZERFU0FtbGtLQUFQAQ?hl=en-US&gl=US&ceid=US:en', '_blank');
-  container.appendChild(seeAll);
-}
-
+ 
 // Simple horizontal carousel navigation
 function wireWorldNewsCarousel() {
   const row = document.getElementById('world-news-cards');
