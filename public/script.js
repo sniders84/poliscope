@@ -1280,14 +1280,12 @@ document.querySelectorAll('#network-cards .info-card').forEach(card => {
 const worldNewsFeedUrl = "https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx1YlY4U0FtVnVHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US:en";
 const maxCards = 25;
 
-// Fetch RSS via rss2json
 async function fetchGoogleNewsRss(feedUrl) {
   try {
     const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
     const res = await fetch(apiUrl);
     if (!res.ok) throw new Error(`RSS HTTP ${res.status}`);
     const data = await res.json();
-    // rss2json returns items with title, link, description
     return Array.isArray(data.items) ? data.items.slice(0, maxCards) : [];
   } catch (err) {
     console.error('RSS fetch error:', err);
@@ -1295,21 +1293,17 @@ async function fetchGoogleNewsRss(feedUrl) {
   }
 }
 
-// Render the carousel cards (with unified hover via .news-card)
 async function renderWorldNewsCarousel() {
   const container = document.getElementById('world-news-cards');
   if (!container) return;
   container.innerHTML = '';
 
   const stories = await fetchGoogleNewsRss(worldNewsFeedUrl);
-  if (!stories || stories.length === 0) {
-    // Minimal empty-state (no extra card)
-    return;
-  }
+  if (!stories || stories.length === 0) return;
 
   stories.forEach((item) => {
     const card = document.createElement('div');
-    card.className = 'news-card info-card'; // ensures blue hover effect
+    card.className = 'news-card info-card';
     card.innerHTML = `
       <h4>${item.title}</h4>
       <p>${item.description ? item.description.replace(/<[^>]*>/g, '').substring(0, 140) + '…' : ''}</p>
@@ -1318,7 +1312,6 @@ async function renderWorldNewsCarousel() {
     container.appendChild(card);
   });
 
-  // Append "See All on Google News" link at the end (not a card)
   const seeAll = document.createElement('button');
   seeAll.className = 'see-more-link';
   seeAll.textContent = 'See All on Google News';
@@ -1326,7 +1319,6 @@ async function renderWorldNewsCarousel() {
   container.appendChild(seeAll);
 }
 
-// Simple horizontal carousel navigation
 function wireWorldNewsCarousel() {
   const row = document.getElementById('world-news-cards');
   const prevBtn = document.getElementById('world-news-prev');
@@ -1345,11 +1337,10 @@ function wireWorldNewsCarousel() {
   }
 }
 
-// Initialize World News (after DOM is ready)
+// === Initialize after DOM ready ===
 document.addEventListener('DOMContentLoaded', () => {
   renderWorldNewsCarousel();
   wireWorldNewsCarousel();
-});
 
   // === Load officials data with smooth fade-in ===
   Promise.all([
@@ -1364,27 +1355,24 @@ document.addEventListener('DOMContentLoaded', () => {
       senators = sens;
       houseReps = reps;
 
-      // Render officials
       renderOfficials(selectedState, '');
 
-      // Fade out loading overlay
       if (loadingOverlay) {
         loadingOverlay.style.transition = 'opacity 0.5s ease';
         loadingOverlay.style.opacity = '0';
         setTimeout(() => loadingOverlay.remove(), 500);
       }
 
-      // Load social trends
       const socialFeed = document.getElementById('social-feed');
       if (socialFeed && typeof loadSocialTrends === 'function') {
         console.log("🎬 loadSocialTrends is running...");
         loadSocialTrends();
       }
     })
- .catch(err => {
-   console.error('Error loading official data:', err);
-   if (loadingOverlay) {
-     loadingOverlay.textContent = 'Failed to load data.';
-   }
- });
+    .catch(err => {
+      console.error('Error loading official data:', err);
+      if (loadingOverlay) {
+        loadingOverlay.textContent = 'Failed to load data.';
+      }
+    });
 });
