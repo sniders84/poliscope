@@ -1381,7 +1381,10 @@ document.addEventListener('DOMContentLoaded', () => {
         loadSocialTrends();
       }
     })
-    .catch(err => {
-      console.error('Error loading official data:', err);
-      if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
-    });
+ .catch(err => {
+   console.error('Error loading official data:', err);
+   if (loadingOverlay) {
+     loadingOverlay.textContent = 'Failed to load data.';
+   }
+ });
+});
