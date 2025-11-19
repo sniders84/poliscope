@@ -1358,6 +1358,15 @@ function wireWorldNewsCarousel() {
 renderWorldNewsCarousel();
 wireWorldNewsCarousel();
 
+  // Cleanup: remove inline styles that force white tiles
+(function fixWorldNewsCards() {
+  const container = document.getElementById('world-news-cards');
+  if (!container) return;
+  container.querySelectorAll('.info-card, .official-card, .official-card.news-card').forEach(card => {
+    card.removeAttribute('style'); // strip inline background or borders
+  });
+})();
+
   // === Load officials data with smooth fade-in ===
   Promise.all([
     fetch('/governors.json').then(res => res.json()),
