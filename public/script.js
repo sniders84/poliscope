@@ -762,7 +762,7 @@ function showStartupHub() {
     { title: "National Broadcasting Networks", id: "national-networks" },
     { title: "Global Politics & World News", id: "global-news" },
     { title: "Finance & Markets", id: "finance-markets" },
-    { title: "Tech & Innovation", id: "tech-innovation" },
+    { title: "Economy", id: "economy" },
     { title: "Popular Podcasts", id: "popular-podcasts" }
   ];
 
