@@ -1160,36 +1160,23 @@ document.addEventListener('DOMContentLoaded', () => {
   initHubNav();
 });
 document.addEventListener('DOMContentLoaded', () => {
-  const overlay = document.getElementById('network-overlay');
-  const modal = document.getElementById('network-modal');
-  const modalContent = document.getElementById('modal-content');
-  const closeBtn = document.getElementById('modal-close');
-
-  const networkFeeds = {
-    msnbc: "<h2>MSNBC Live Feed</h2><p>Embed or RSS feed goes here.</p>",
-    abc: "<h2>ABC News Live Feed</h2><p>Embed or RSS feed goes here.</p>",
-    cbs: "<h2>CBS News Live Feed</h2><p>Embed or RSS feed goes here.</p>",
-    fox: "<h2>FOX News Live Feed</h2><p>Embed or RSS feed goes here.</p>",
-    cnn: "<h2>CNN Live Feed</h2><p>Embed or RSS feed goes here.</p>"
-  };
-
   document.querySelectorAll('.info-card[data-network]').forEach(card => {
-    card.addEventListener('click', () => {
-      const network = card.getAttribute('data-network');
-      modalContent.innerHTML = networkFeeds[network] || "<p>No content available.</p>";
-      overlay.style.display = 'block';
-      modal.style.display = 'block';
-    });
-  });
+    const network = card.getAttribute('data-network');
+    const target = document.getElementById(`${network}-content`);
 
-  closeBtn.addEventListener('click', () => {
-    overlay.style.display = 'none';
-    modal.style.display = 'none';
-  });
+    if (target) {
+      card.addEventListener('click', () => {
+        // Collapse other open blocks
+        document.querySelectorAll('.network-content.active').forEach(openBlock => {
+          if (openBlock !== target) {
+            openBlock.classList.remove('active');
+          }
+        });
 
-  overlay.addEventListener('click', () => {
-    overlay.style.display = 'none';
-    modal.style.display = 'none';
+        // Toggle the clicked one
+        target.classList.toggle('active');
+      });
+    }
   });
 });
 
