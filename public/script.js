@@ -1152,16 +1152,16 @@ function initHubNav() {
     document.getElementById(btn.dataset.target)
   );
 
-  window.addEventListener('scroll', () => {
-    const scrollPos = window.scrollY + 60; // adjust for sticky nav height
-    sections.forEach((sec, idx) => {
-      if (sec.offsetTop <= scrollPos && sec.offsetTop + sec.offsetHeight > scrollPos) {
-        navButtons.forEach(b => b.classList.remove('active'));
-        navButtons[idx].classList.add('active');
-      }
-    });
+ window.addEventListener('scroll', () => {
+  const scrollPos = window.scrollY + 60; // adjust for sticky nav height
+  sections.forEach((sec, idx) => {
+    if (!sec) return; // ✅ guard against null
+    if (sec.offsetTop <= scrollPos && sec.offsetTop + sec.offsetHeight > scrollPos) {
+      navButtons.forEach(b => b.classList.remove('active'));
+      navButtons[idx].classList.add('active');
+    }
   });
-}
+});
 
 document.addEventListener('DOMContentLoaded', () => {
   initHubNav();
