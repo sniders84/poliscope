@@ -1,176 +1,88 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Your Officials</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="favicon.ico" onerror="this.href='data:,';" />
-</head>
-<body>
-  <header>
-    <div class="header-left">
-      <img src="assets/electorate-logo.png" alt="Logo" class="logo" />
-    </div>
-    <div class="header-right">
-      <input type="text" id="search-bar" placeholder="Search officials..." />
-      <label for="state-dropdown">State:</label>
-      <select id="state-dropdown">
-        <option value="Alabama">Alabama</option>
-        <option value="Alaska">Alaska</option>
-        <option value="American Samoa">American Samoa</option>
-        <option value="Arizona">Arizona</option>
-        <option value="Arkansas">Arkansas</option>
-        <option value="California">California</option>
-        <option value="Colorado">Colorado</option>
-        <option value="Connecticut">Connecticut</option>
-        <option value="Delaware">Delaware</option>
-        <option value="District of Columbia">District of Columbia</option>
-        <option value="Florida">Florida</option>
-        <option value="Georgia">Georgia</option>
-        <option value="Guam">Guam</option>
-        <option value="Hawaii">Hawaii</option>
-        <option value="Idaho">Idaho</option>
-        <option value="Illinois">Illinois</option>
-        <option value="Indiana">Indiana</option>
-        <option value="Iowa">Iowa</option>
-        <option value="Kansas">Kansas</option>
-        <option value="Kentucky">Kentucky</option>
-        <option value="Louisiana">Louisiana</option>
-        <option value="Maine">Maine</option>
-        <option value="Maryland">Maryland</option>
-        <option value="Massachusetts">Massachusetts</option>
-        <option value="Michigan">Michigan</option>
-        <option value="Minnesota">Minnesota</option>
-        <option value="Mississippi">Mississippi</option>
-        <option value="Missouri">Missouri</option>
-        <option value="Montana">Montana</option>
-        <option value="Nebraska">Nebraska</option>
-        <option value="Nevada">Nevada</option>
-        <option value="New Hampshire">New Hampshire</option>
-        <option value="New Jersey">New Jersey</option>
-        <option value="New Mexico">New Mexico</option>
-        <option value="New York">New York</option>
-        <option value="North Carolina">North Carolina</option>
-        <option value="North Dakota">North Dakota</option>
-        <option value="Northern Mariana Islands">Northern Mariana Islands</option>
-        <option value="Ohio">Ohio</option>
-        <option value="Oklahoma">Oklahoma</option>
-        <option value="Oregon">Oregon</option>
-        <option value="Pennsylvania">Pennsylvania</option>
-        <option value="Puerto Rico">Puerto Rico</option>
-        <option value="Rhode Island">Rhode Island</option>
-        <option value="South Carolina">South Carolina</option>
-        <option value="South Dakota">South Dakota</option>
-        <option value="Tennessee">Tennessee</option>
-        <option value="Texas">Texas</option>
-        <option value="Utah">Utah</option>
-        <option value="Vermont">Vermont</option>
-        <option value="Virgin Islands">U.S. Virgin Islands</option>
-        <option value="Virginia">Virginia</option>
-        <option value="Washington">Washington</option>
-        <option value="West Virginia">West Virginia</option>
-        <option value="Wisconsin">Wisconsin</option>
-        <option value="Wyoming">Wyoming</option>
-      </select>
-    </div>
-  </header>
+<main>
+  <!-- Startup Hub Tab -->
+  <section id="startup-hub" class="tab-content" style="display: none;">
+    <h2>Home Hub</h2>
 
-   <!-- 🟢 Live News Now Section -->
-<section id="live-news-now" class="content-section">
-  <h2>Live News Now</h2>
-  <div class="video-wrapper">
-    <iframe 
-      scrolling="no" 
-      frameborder="0" 
-      allow="autoplay; fullscreen" 
-      src="https://w3.mp.lura.live/player/3.12.16/v3/anvload.html?key=eyJtIjoiRVBGT1giLCJ2IjoiYWRzdHczZzBQajI4UDJBVyIsImF1dG9wbGF5Ijp0cnVlLCJ0cmFja1RpbWVQZXJpb2QiOjEsIndpZHRoIjoiMTAwJSIsImFudmFjayI6IjdiNFdKbDM1emFIUndXemhrVWV3V1pKaUQzSk9tQWpHIiwic2hhcmVMaW5rIjoiaHR0cHM6Ly93d3cubGl2ZW5vd2ZveC5jb20iLCJwbHVnaW5zIjp7ImN1c3RvbUNvbXNjb3JlUGx1Z2luIjp7InB1Ymxpc2hlclNlY3JldCI6Ik5Fa0NJOGZLSG4xeldGTjRhT3A5Ylhud1p0NWo4aUhKIiwiYzMiOiJMaXZlTm93IiwiYzYiOiJGVFMiLCJzY3JpcHQiOiJodHRwczovL3N0YXRpYy5mb3h0di5jb20vc3RhdGljL29yaW9uL3NjcmlwdHMvY29yZS91dGlscy9jb21zY29yZS9OYXRpdmVDb21zY29yZVBsdWdpbi5qcyIsInNkayI6Imh0dHBzOi8vc3RhdGljLmZveHR2LmNvbS9zdGF0aWMvb3Jpb24vc2NyaXB0cy9jb3JlL3V0aWxzL2NvbXNjb3JlL2NvbXNjb3JlLmpzIiwiY2xpZW50SWQiOiI2MDQyOTAxIiwibnNfc3Rfc3QiOiJMTkZYIiwidGl0bGUiOiIiLCJuc19zdF9jaSI6ImFkc3R3M2cwUGoyOFAyQVciLCJjNCI6bnVsbCwic2V0R2VucmVOYW1lIjoiTmV3cyIsImFwcE5hbWUiOiJGT1ggTGl2ZU5PVyBOZXdzIEFwcCJ9LCJkZnAiOnsiY2xpZW50U2lkZSI6eyJhZFRhZ1VybCI6Imh0dHBzOi8vcHViYWRzLmcuZG91YmxlY2xpY2submV0L2dhbXBhZC9saXZlL2Fkcz9pdT0vNTU1NTU1NTUvTElWRU5PV0ZPWCZkZXNjcmlwdGlvbl91cmw9W3BsYWNlaG9sZGVyXSZlbnY9dnAmaW1wbD1zJmNvcnJlbGF0b3I9JnRmY2Q9MCZucGE9MCZnZGZwX3JlcT0xJm91dHB1dD12YXN0JnN6PTEwMDF4MTAwMSZ1bnZpZXdlZF9wb3NpdGlvbl9zdGFydD0xIiwia2V5VmFsdWVzIjp7InB0eXBlIjoidmlkZW8tbGl2ZSIsInVzX3ByaXZhY3kiOiIxWU5OIn19LCJzZXJ2ZXJTaWRlIjp7InVzX3ByaXZhY3kiOiIxWU5OIiwicGFsX25vbmNlIjoiQVF6ekJHUUVKLWZPRjBPcWRpSkRyTThqZjJCTFJveTFyQkU4dEg5MlpXVjdiajV3VzhZcXEzalFnNmJqVm1BekRycGxONHJHSHpMb0RDVE1JV1lSUG5hb19DZVMxQU41ZmpVZkVNNllnb3NicVZBTkg5S25tN3RHTUxYbXlac2JqVmNUdlg5Q2JnVXRfS3FuVW55ZERFc0dtYUlZTVhFd0VUUzBzQ0NVeTNHLWo0OEo0V0V6YTFiRXZGLXdFQlBmZ1NJR1hMeHlnUUJHSndpaFNqeEt6elE3Y0ZwUEc2eDlaSm82Z1gzZUdiYUpoNVBNbTR2TUlveUFPdDE3d19wZmltSVk2VUpCdFZtX1FLWU1ucVk0NElnUGRtQ2ltYkRwRDRRc1JjYmdhaFlqckdVSUxjcXhBcmNUNzBRSVBSUEYtQVIycHlVTXFfSEd6a3RsbHhVbWFhVmJ2VWZIajNWUU81dU5SdjBydnlvbnRod0piNEVfTmtnUldhRlJEX0N0Y0lhZTNTVE1kY2FxNFpGc3dTSmpKR1UwOENzZDZkeDJSU1VZTGtJX0l4RE1CYUNKS2kzMlJMNXRLekViSWk1UjB0VHk1OU93RU1ZSmtZc2ZEZ0txM0ZsYzhMVEhRVTdDdDZFNDhTeHR6bWdiRk80Sk9yeWNOWFZMelJjMjFUcVU0MnBiRjljUXhsSkJMMk4yQmwyY2RiM1p1cldDdkllOVBVcXhGN0tGWkFVaktkaGZGRnZaaEZ6OEpwQVZPcG4tbWNKS0Z2SnAxRTBEeEx6c1dVOEt5SENFMkdBN0NmXzNpWmlyaG1ZZ2hmWGJnQ3JSaXFfcnFqdmcwVUg3d19ZeUE3WUFONzFPRzcySkFUSFk5bWJSX0J2S2Y3SWlKUjJ0dGJwVkY0VDQ4Zm50eEwxVVhQNUJzRmlXYjlEUy1FY3ZONGZoWDdvM25OZXVEUDV2SFd4OFFDN2kySUpkMVYyWHo3bDhvTEtYTGRUczA5dHhTNnhyMlRkbng4UW9QbU8tYTZnaGpFNGI4Zm9fdXpQdUdTVXFNN3dLdnZQZVVCMGJ0dVJTZGs0RzExYkdkTWJoNHRqUWswUmZaMzdNUEljQS0tMkF5bTl1YXJiMDAyc180OThKc0cxeHJPOHY3NVRhSEZCNkIxV3Y4aTQ4YXRKMlZoY2R1bHZpNWdaSkJNZmFvRVRoakp5TXN0RFJQT29mVGllbEZnY0ZmSlhvWm93bjJxWVVtU2xDNjk4TU0wQ2xGN243UHN3X2E5b2t5czk3TU5pM1pMUHZMWXdGVkRFM1lIeG56ZUlPbGlHU0VqWk5oTk1BeDY0VkFMVDBBZEJlSC16X1VHX3Fta29QUEhpVHI3MU5vbzEza05HdlVjbmMtb2MySTZFUDBhYzlqcXBNSnRCSXo0QS4ifX0sInBhbCI6eyJwcGlkIjoiMDI1ODNjMzEtODg4YS00MjQzLWE4MDUtNTgzYTllOWQxYjFkIiwibm9uY2VQZXJpb2QiOjMwMCwibm9u
+    <!-- 🟢 Live News Now Section -->
+    <section id="live-news-now" class="content-section">
+      <h2>Live News Now</h2>
+      <div class="video-wrapper">
+        <iframe 
+          src="https://w3.mp.lura.live/player/3.12.16/v3/anvload.html?key=..." 
+          width="640" height="360" 
+          frameborder="0" 
+          allow="autoplay; fullscreen">
+        </iframe>
+      </div>
+    </section>
 
- <nav>
-  <button class="tab" onclick="showStartupHub()">Home Hub</button>
-  <button class="tab" onclick="renderOfficials(selectedState, '')">My Officials</button>
-  <button class="tab" onclick="showCivic()">Civic Intelligence</button>
-  <button class="tab" onclick="showPolls()">Polls</button>
-  <button class="tab" onclick="showOrganizations()">Political Groups</button>
-  <button class="tab" onclick="showVoting()">Voting</button>
-</nav>
+    <!-- National Networks section -->
+    <section id="national-networks" class="category-section">
+      <h2>National Broadcasting Networks</h2>
+      <div class="card-grid" id="network-cards">
+        <div class="info-card" data-network="msnbc">
+          <img src="/assets/msnbc.png" alt="MSNBC Logo" class="network-logo">
+          <h3>MSNBC</h3>
+          <p>A counter to FOX News coverage.</p>
+        </div>
+        <div class="info-card" data-network="abc">
+          <img src="/assets/abc.png" alt="ABC News Logo" class="network-logo">
+          <h3>ABC News</h3>
+          <p>National news coverage from ABC.</p>
+        </div>
+        <div class="info-card" data-network="cbs">
+          <img src="/assets/cbs.png" alt="CBS News Logo" class="network-logo">
+          <h3>CBS News</h3>
+          <p>CBS News broadcasts and updates.</p>
+        </div>
+        <div class="info-card" data-network="fox">
+          <img src="/assets/fox.png" alt="FOX News Logo" class="network-logo">
+          <h3>FOX News</h3>
+          <p>Latest stories from FOX News.</p>
+        </div>
+        <div class="info-card" data-network="cnn">
+          <img src="/assets/cnn.png" alt="CNN Logo" class="network-logo">
+          <h3>CNN</h3>
+          <p>Breaking news and political analysis from CNN.</p>
+        </div>
+      </div>
+      <div class="card-grid" id="network-stories"></div>
+    </section>
 
-  <main>
-    
-<!-- Startup Hub Tab -->
-<section id="startup-hub" class="tab-content" style="display: none;">
-  <h2>Home Hub</h2>
+    <section id="world-news">
+      <h2>Global Politics & World News</h2>
+      <rssapp-carousel id="91yINq5LiI3EE02z"></rssapp-carousel>
+      <script src="https://widget.rss.app/v1/carousel.js" type="text/javascript" async></script>
+    </section>
 
-<!-- Sections -->
+    <section id="finance-markets">
+      <h2>Finance & Markets</h2>
+      <rssapp-carousel id="yKzUurqBBwmJD8fu"></rssapp-carousel>
+      <script src="https://widget.rss.app/v1/carousel.js" type="text/javascript" async></script>
+    </section>
 
-       <section id="national-networks" class="category-section">
-  <h2>National Broadcasting Networks</h2>
+    <section id="economy">
+      <h2>Economy</h2>
+      <rssapp-carousel id="vXg6Ae2ZfZ1aKPhG"></rssapp-carousel>
+      <script src="https://widget.rss.app/v1/carousel.js" type="text/javascript" async></script>
+    </section>
 
-  <!-- Network cards row -->
-  <div class="card-grid" id="network-cards">
-    <div class="info-card" data-network="msnbc">
-      <img src="/assets/msnbc.png" alt="MSNBC Logo" class="network-logo">
-      <h3>MSNBC</h3>
-      <p>A counter to FOX News coverage.</p>
-    </div>
-    <div class="info-card" data-network="abc">
-      <img src="/assets/abc.png" alt="ABC News Logo" class="network-logo">
-      <h3>ABC News</h3>
-      <p>National news coverage from ABC.</p>
-    </div>
-    <div class="info-card" data-network="cbs">
-      <img src="/assets/cbs.png" alt="CBS News Logo" class="network-logo">
-      <h3>CBS News</h3>
-      <p>CBS News broadcasts and updates.</p>
-    </div>
-    <div class="info-card" data-network="fox">
-      <img src="/assets/fox.png" alt="FOX News Logo" class="network-logo">
-      <h3>FOX News</h3>
-      <p>Latest stories from FOX News.</p>
-    </div>
-    <div class="info-card" data-network="cnn">
-      <img src="/assets/cnn.png" alt="CNN Logo" class="network-logo">
-      <h3>CNN</h3>
-      <p>Breaking news and political analysis from CNN.</p>
-    </div>
-  </div>
+    <section id="popular-podcasts" class="category-section">
+      <h2>Popular Podcasts</h2>
+      <div class="card-grid">
+        <div class="info-card"><h3>Pod Save America</h3><p>Political commentary from Pod Save America.</p></div>
+        <div class="info-card"><h3>The Daily (NYT)</h3><p>News analysis and storytelling from The Daily.</p></div>
+        <div class="info-card"><h3>NPR Politics</h3><p>Political coverage and analysis from NPR.</p></div>
+      </div>
+    </section>
 
-  <!-- Row for top stories -->
-  <div class="card-grid" id="network-stories"></div>
-</section>
-
-<section id="world-news">
-  <h2>Global Politics & World News</h2>
-  <rssapp-carousel id="91yINq5LiI3EE02z"></rssapp-carousel>
-  <script src="https://widget.rss.app/v1/carousel.js" type="text/javascript" async></script>
-</section>
-
- <section id="finance-markets">
-  <h2>Finance & Markets</h2>
-  <rssapp-carousel id="yKzUurqBBwmJD8fu"></rssapp-carousel>
-  <script src="https://widget.rss.app/v1/carousel.js" type="text/javascript" async></script>
-</section>
-
-  <section id="economy">
-  <h2>Economy</h2>
-  <rssapp-carousel id="vXg6Ae2ZfZ1aKPhG"></rssapp-carousel>
-  <script src="https://widget.rss.app/v1/carousel.js" type="text/javascript" async></script>
-</section>
-
-  <section id="popular-podcasts" class="category-section">
-    <h2>Popular Podcasts</h2>
-    <div class="card-grid">
-      <div class="info-card"><h3>Pod Save America</h3><p>Political commentary from Pod Save America.</p></div>
-      <div class="info-card"><h3>The Daily (NYT)</h3><p>News analysis and storytelling from The Daily.</p></div>
-      <div class="info-card"><h3>NPR Politics</h3><p>Political coverage and analysis from NPR.</p></div>
-    </div>
+    <!-- 🌍 Social Trends Section -->
+    <section id="social-trends">
+      <h2>Trending Now</h2>
+      <div id="social-feed" class="grid"></div>
+    </section>
   </section>
-
-  <!-- 🌍 Social Trends Section -->
-  <section id="social-trends">
-    <h2>Trending Now</h2>
-    <div id="social-feed" class="grid"></div>
-  </section>
-</section>
+</main>
 
 <style>
 /* Sticky Home Hub nav styling - match site theme */
