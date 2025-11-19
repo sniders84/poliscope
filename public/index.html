@@ -90,15 +90,6 @@
 <section id="startup-hub" class="tab-content" style="display: none;">
   <h2>Home Hub</h2>
 
-  <!-- 🌐 Sticky Section Navigation (matches site style) -->
-  <div id="hub-nav" class="hub-nav">
-    <button data-target="national-networks">National Broadcasting Networks</button>
-    <button data-target="global-news">Global Politics & World News</button>
-    <button data-target="finance-markets">Finance & Markets</button>
-    <button data-target="economy">Economy</button>
-    <button data-target="popular-podcasts">Popular Podcasts</button>
-  </div>
-
 <!-- Sections -->
 <section id="national-networks" class="category-section">
   <h2>National Broadcasting Networks</h2>
@@ -136,6 +127,21 @@
   <div class="card-grid" id="network-stories"></div>
 </section>
 
+  <section id="live-news-now">
+  <h2>Live News Now</h2>
+  <iframe 
+    scrolling="no" 
+    frameborder="0" 
+    allowfullscreen 
+    webkitallowfullscreen 
+    mozallowfullscreen 
+    allow="autoplay; fullscreen" 
+    src="https://w3.mp.lura.live/player/3.12.16/v3/anvload.html?key=...your full key here..."  
+    width="640" 
+    height="360">
+  </iframe>
+</section>
+
 <section id="world-news">
   <h2>Global Politics & World News</h2>
   <rssapp-carousel id="91yINq5LiI3EE02z"></rssapp-carousel>
@@ -162,13 +168,6 @@
       <div class="info-card"><h3>NPR Politics</h3><p>Political coverage and analysis from NPR.</p></div>
     </div>
   </section>
-
-  <!-- 🌍 Social Trends Section -->
-  <section id="social-trends">
-    <h2>Trending Now</h2>
-    <div id="social-feed" class="grid"></div>
-  </section>
-</section>
 
 <style>
 /* Sticky Home Hub nav styling - match site theme */
