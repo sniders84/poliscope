@@ -1735,36 +1735,53 @@ a, button, .tab, .card-button,
   transform: translateY(-4px);
   box-shadow: 0 8px 20px rgba(0,123,255,0.3); /* subtle blue hover */
 }
-/* === UNIVERSAL CARD STYLING FOR ALL GENERATED CARDS === */
-.card,
-.official-card,
-.news-card,
-.global-card {
-  background: #333;            /* Dark gray background */
-  color: #fff;
-  border-radius: 12px;
-  padding: 15px;
-  margin: 10px 0;
-  box-shadow: 0 0 6px rgba(0,0,0,0.25);
-  transition: box-shadow 0.25s ease, transform 0.25s ease;
-  text-align: center;          /* Centers ALL text content */
+/* Officials’ cards — dark gray + blue hover */
+.official-card {
+    background: #222 !important;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* center everything horizontally */
+    text-align: center;  /* center text */
+    transition: background 0.25s ease, transform 0.2s ease;
 }
 
-/* Ensures images inside any card are centered */
-.card img,
-.official-card img,
-.news-card img,
-.global-card img {
-  display: block;
-  margin: 0 auto;              /* Centers image horizontally */
-  border-radius: 8px;
+.official-card:hover {
+    background: #0056b3 !important;
+    transform: scale(1.02);
 }
 
-/* === BLUE HOVER EFFECT === */
-.card:hover,
-.official-card:hover,
-.news-card:hover,
-.global-card:hover {
-  box-shadow: 0 0 12px rgba(0,150,255,0.8);  /* blue glow */
-  transform: translateY(-2px);
+/* Ensure official images are centered */
+.official-card img {
+    margin: 0 auto;
+    display: block;
+    border-radius: 8px;
+}
+.news-card {
+    background: #222 !important;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.news-card:hover {
+    background: #0056b3 !important;
+    transform: scale(1.02);
+}
+.world-news-card,
+.global-politics-card {
+    background: #222 !important;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.world-news-card:hover,
+.global-politics-card:hover {
+    background: #0056b3 !important;
+    transform: scale(1.02);
 }
