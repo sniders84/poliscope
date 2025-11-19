@@ -1735,34 +1735,36 @@ a, button, .tab, .card-button,
   transform: translateY(-4px);
   box-shadow: 0 8px 20px rgba(0,123,255,0.3); /* subtle blue hover */
 }
-/* ================================================================= */
-/* UNIVERSAL CARD STYLING OVERRIDE – MAKES ALL CARDS LOOK IDENTICAL  */
-/* ================================================================= */
-
+/* === UNIVERSAL CARD STYLING FOR ALL GENERATED CARDS === */
+.card,
 .official-card,
 .news-card,
-.politics-card,
-.source-card,
-.result-card,
-.card,
-[class*="card"] {
-  background-color: #2d2d2d !important;  /* dark grey */
-  color: #ffffff !important;
-  border-radius: 12px !important;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.25) !important;
-  cursor: pointer !important;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease !important;
+.global-card {
+  background: #333;            /* Dark gray background */
+  color: #fff;
+  border-radius: 12px;
+  padding: 15px;
+  margin: 10px 0;
+  box-shadow: 0 0 6px rgba(0,0,0,0.25);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+  text-align: center;          /* Centers ALL text content */
 }
 
-/* HOVER — universal blue hover */
+/* Ensures images inside any card are centered */
+.card img,
+.official-card img,
+.news-card img,
+.global-card img {
+  display: block;
+  margin: 0 auto;              /* Centers image horizontally */
+  border-radius: 8px;
+}
+
+/* === BLUE HOVER EFFECT === */
+.card:hover,
 .official-card:hover,
 .news-card:hover,
-.politics-card:hover,
-.source-card:hover,
-.result-card:hover,
-.card:hover,
-[class*="card"]:hover {
-  background-color: #2b6cb0 !important;  /* blue hover */
-  transform: translateY(-2px) !important;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.35) !important;
+.global-card:hover {
+  box-shadow: 0 0 12px rgba(0,150,255,0.8);  /* blue glow */
+  transform: translateY(-2px);
 }
