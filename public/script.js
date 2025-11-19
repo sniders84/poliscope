@@ -1307,6 +1307,12 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('click', (event) => {
   const container = document.getElementById('network-stories');
   if (!container) return;
+// Fade out loading overlay
+if (loadingOverlay) {
+  loadingOverlay.style.transition = 'opacity 0.5s ease';
+  loadingOverlay.style.opacity = '0';
+  setTimeout(() => loadingOverlay.remove(), 500);
+}
 
   // If the click is outside the network-stories container, collapse/hide its children
   if (!container.contains(event.target)) {
