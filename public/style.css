@@ -1716,3 +1716,10 @@ rssapp-carousel {
   transform: scale(0.6);   /* shrink to 60% */
   transform-origin: top center;
 }
+/* Finance & Markets carousel sizing */
+#finance-markets rssapp-carousel {
+  max-width: 600px;        /* constrain width */
+  margin: 0 auto;          /* center it */
+  transform: scale(0.6);   /* shrink to 60% size */
+  transform-origin: top center;
+}
