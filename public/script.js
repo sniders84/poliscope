@@ -27,12 +27,6 @@ Promise.all([
   ltGovernors = ltGovs;
   senators = sens;
   houseReps = reps;
-  federalOfficials = federal;
-  cabinetMembers = cabinet;
-  supremeCourt = scotus;
-  politicalGroups = groups;
-  stateLinks = links;
-  votingData = voting;
 
   // Merge major federal data sources
   const allOfficials = [
@@ -45,29 +39,15 @@ Promise.all([
     ...scotus
   ];
 
-  // Render officials for the selected state
   renderOfficials(selectedState, '');
 
-  // Wire search bar
   if (searchBar) {
     searchBar.addEventListener('input', e => {
       renderOfficials(selectedState, e.target.value);
     });
   }
-
-  // Fade out loading overlay once data is ready
-  if (loadingOverlay) {
-    loadingOverlay.style.transition = 'opacity 0.5s ease';
-    loadingOverlay.style.opacity = '0';
-    setTimeout(() => loadingOverlay.remove(), 500);
-  }
 })
-.catch(err => {
-  console.error('Error loading official data:', err);
-  if (loadingOverlay) {
-    loadingOverlay.textContent = 'Failed to load data.';
-  }
-});
+.catch(err => console.error('Error loading data files:', err));
 
 // Modal refs (Officials modal)
 let officialsModal = null;
@@ -1167,28 +1147,25 @@ function initHubNav() {
     });
   });
 
-// Optional: highlight active section on scroll
-const sections = Array.from(navButtons).map(btn =>
-  document.getElementById(btn.dataset.target)
-);
+  // Optional: highlight active section on scroll
+  const sections = Array.from(navButtons).map(btn =>
+    document.getElementById(btn.dataset.target)
+  );
 
-window.addEventListener('scroll', () => {
-  const scrollPos = window.scrollY + 60; // adjust for sticky nav height
-  sections.forEach((sec, idx) => {
-    if (sec) { // ✅ guard against null
+  window.addEventListener('scroll', () => {
+    const scrollPos = window.scrollY + 60; // adjust for sticky nav height
+    sections.forEach((sec, idx) => {
       if (sec.offsetTop <= scrollPos && sec.offsetTop + sec.offsetHeight > scrollPos) {
         navButtons.forEach(b => b.classList.remove('active'));
         navButtons[idx].classList.add('active');
       }
-    }
+    });
   });
-});
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   initHubNav();
 });
-
 // === STATE DROPDOWN WIRING ===
 function wireStateDropdown() {
   const dropdown = document.getElementById('state-dropdown');
@@ -1203,9 +1180,115 @@ function wireStateDropdown() {
   });
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+  const officialsContainer = document.getElementById('officials-container');
+  const searchBar = document.getElementById('search-bar');
+  const loadingOverlay = document.getElementById('loading-overlay');
+
+  const officialsModal = document.getElementById('officials-modal');
+  const officialsModalContent = document.getElementById('officials-content');
+  const officialsModalCloseBtn = document.getElementById('officials-close');
+
+  if (officialsModalCloseBtn) {
+    officialsModalCloseBtn.addEventListener('click', () => closeModalWindow('officials-modal'));
+  }
+
+  wireSearchBar();
+  wireStateDropdown();
+
+  function closeOfficialsSearch() {
+    if (!searchBar) return;
+    searchBar.value = '';
+    searchBar.blur();
+  }
+
+  document.addEventListener('mousedown', event => {
+    if (!searchBar) return;
+    if (event.target !== searchBar && !searchBar.contains(event.target)) {
+      closeOfficialsSearch();
+    }
+  });
+
+  // --- Other existing functions and variables above ---
+
+const rssFeeds = {
+  msnbc: 'https://www.nbcnews.com/rss',
+  abc: 'http://feeds.abcnews.com/abcnews/usheadlines',
+  cbs: 'https://www.cbsnews.com/latest/rss/main',
+  fox: 'https://feeds.foxnews.com/foxnews/latest',
+  cnn: 'http://rss.cnn.com/rss/cnn_topstories.rss'
+};
+
+// Fetch top 5 stories via rss2json
+async function fetchRss(feedUrl) {
+  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
+  try {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+    return data.items.slice(0, 5);
+  } catch (err) {
+    console.error('RSS fetch error:', err);
+    return [];
+  }
+}
+
+// Render network stories
+async function renderNetworkStories(network) {
+  const feedUrl = rssFeeds[network];
+  if (!feedUrl) return;
+
+  const stories = await fetchRss(feedUrl);
+  const container = document.getElementById('network-stories');
+  container.innerHTML = ''; // clear previous stories
+
+  stories.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'official-card';
+    card.innerHTML = `<h4>${item.title}</h4>`;
+    card.onclick = () => window.open(item.link, '_blank');
+    container.appendChild(card);
+  });
+
+  // Append "See More" next to last story
+  if (stories.length > 0) {
+    const seeMore = document.createElement('div');
+    seeMore.className = 'see-more';
+    seeMore.innerText = 'See More';
+    seeMore.onclick = () => {
+      // Proper site URL for MSNBC, others open homepage
+      const urlMap = {
+        msnbc: 'https://www.msnbc.com',
+        abc: 'https://abcnews.go.com',
+        cbs: 'https://www.cbsnews.com',
+        fox: 'https://www.foxnews.com',
+        cnn: 'https://edition.cnn.com'
+      };
+      window.open(urlMap[network] || feedUrl, '_blank');
+    };
+    container.appendChild(seeMore);
+  }
+}
+
+// Add click listeners to network cards
+document.querySelectorAll('#network-cards .info-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const network = card.dataset.network;
+    renderNetworkStories(network);
+  });
+});
 // === GLOBAL POLITICS & WORLD NEWS: Google News RSS feed ===
 const worldNewsFeedUrl = 'https://news.google.com/rss/search?q=world+politics&hl=en-US&gl=US&ceid=US:en';
 const maxCards = 25;
+
+// Helper to extract favicon from story source
+function getFaviconUrl(link) {
+  try {
+    const url = new URL(link);
+    return `${url.origin}/favicon.ico`;
+  } catch {
+    return ''; // fallback empty
+  }
+}
 
 // Fetch RSS via rss2json
 async function fetchGoogleNewsRss(feedUrl) {
@@ -1223,46 +1306,38 @@ async function fetchGoogleNewsRss(feedUrl) {
 // Render the carousel cards
 async function renderWorldNewsCarousel() {
   const container = document.getElementById('world-news-cards');
-  if (!container) return;
-
   container.innerHTML = ''; // clear previous
 
   const stories = await fetchGoogleNewsRss(worldNewsFeedUrl);
-
-  // If no stories, show the See All link (you already have the hyperlink below in HTML)
   if (!stories || stories.length === 0) {
     const link = document.createElement('div');
     link.className = 'see-more-link';
     link.innerText = 'See All on Google News';
-    link.onclick = () => window.open('https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRFZxYUdjU0FtVnVLQUFQAQ?hl=en-US&gl=US&ceid=US:en', '_blank');
+    link.onclick = () => window.open('https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRFZ4ZERFU0FtbGtLQUFQAQ?hl=en-US&gl=US&ceid=US:en', '_blank');
     container.appendChild(link);
     return;
   }
 
-  // Build cards
   stories.forEach(item => {
-    const card = document.createElement('div');
-    card.className = 'info-card'; // keep consistent with Networks styling
+  const card = document.createElement('div');
+  card.className = 'official-card news-card';
+  
+  // Use the story origin favicon
+  const favicon = getFaviconUrl(item.link);
+  card.innerHTML = `
+    ${favicon ? `<img src="${favicon}" class="story-logo" alt="source logo" onerror="this.style.display='none'"/>` : ''}
+    <h4 style="margin:0;line-height:1.2;">${item.title}</h4>
+  `;
+  card.onclick = () => window.open(item.link, '_blank');
+  container.appendChild(card);
+});
 
-    // Optional: include source element so logo injector can read it
-    const sourceName = item?.author || item?.source || '';
-    card.innerHTML = `
-      <h3>${item.title}</h3>
-      <p>${item.description ? item.description.substring(0, 140) + '…' : ''}</p>
-      ${sourceName ? `<small class="source">${sourceName}</small>` : ''}
-    `;
-    card.addEventListener('click', () => window.open(item.link, '_blank'));
-
-    container.appendChild(card);
-  });
-
-  // Cleanup: remove inline styles that might force white tiles
-  container.querySelectorAll('.info-card').forEach(card => {
-    card.removeAttribute('style');
-  });
-
-  // Inject source logos after cards exist
-  addWorldNewsLogos();
+  // Add See All card
+  const seeAll = document.createElement('div');
+  seeAll.className = 'official-card see-more-link';
+  seeAll.innerText = 'See All on Google News';
+  seeAll.onclick = () => window.open('https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRFZ4ZERFU0FtbGtLQUFQAQ?hl=en-US&gl=US&ceid=US:en', '_blank');
+  container.appendChild(seeAll);
 }
 
 // Simple horizontal carousel navigation
@@ -1270,8 +1345,6 @@ function wireWorldNewsCarousel() {
   const row = document.getElementById('world-news-cards');
   const prevBtn = document.getElementById('world-news-prev');
   const nextBtn = document.getElementById('world-news-next');
-
-  if (!row || !prevBtn || !nextBtn) return;
 
   prevBtn.addEventListener('click', () => {
     row.scrollBy({ left: -300, behavior: 'smooth' });
@@ -1281,60 +1354,42 @@ function wireWorldNewsCarousel() {
   });
 }
 
-// Inject logos per source (called after world news cards are rendered)
-function addWorldNewsLogos() {
-  const sourceLogos = {
-    "BBC News": "/assets/bbc.png",
-    "CNN": "/assets/cnn.png",
-    "Reuters": "/assets/reuters.png",
-    "The Guardian": "/assets/guardian.png",
-    "Al Jazeera English": "/assets/aljazeera.png",
-    "ABC News": "/assets/abc.png",
-    "CBS News": "/assets/cbs.png",
-    "FOX News": "/assets/fox.png",
-    "MSNBC": "/assets/msnbc.png",
-    "New York Times": "/assets/nytimes.png",
-    "Bloomberg": "/assets/bloomberg.png"
-    // extend as needed
-  };
+// Initialize
+renderWorldNewsCarousel();
+wireWorldNewsCarousel();
 
-  const container = document.getElementById('world-news-cards');
-  if (!container) return;
+  // === Load officials data with smooth fade-in ===
+  Promise.all([
+    fetch('/governors.json').then(res => res.json()),
+    fetch('/ltgovernors.json').then(res => res.json()),
+    fetch('/senators.json').then(res => res.json()),
+    fetch('/housereps.json').then(res => res.json())
+  ])
+    .then(([govs, ltGovs, sens, reps]) => {
+      governors = govs;
+      ltGovernors = ltGovs;
+      senators = sens;
+      houseReps = reps;
 
-  container.querySelectorAll('.info-card').forEach(card => {
-    // Skip if logo already exists
-    if (card.querySelector('.logo-strip')) return;
+      // Render officials
+      renderOfficials(selectedState, '');
 
-    // Try to infer source name from a <small class="source"> element
-    const sourceEl = card.querySelector('.source');
-    const sourceName = sourceEl ? sourceEl.textContent.trim() : '';
+      // Fade out loading overlay
+      if (loadingOverlay) {
+        loadingOverlay.style.transition = 'opacity 0.5s ease';
+        loadingOverlay.style.opacity = '0';
+        setTimeout(() => loadingOverlay.remove(), 500);
+      }
 
-    const logoPath = sourceLogos[sourceName];
-    if (!logoPath) return;
-
-    const strip = document.createElement('div');
-    strip.className = 'logo-strip';
-    strip.innerHTML = `<img src="${logoPath}" alt="${sourceName} Logo">`;
-    card.insertBefore(strip, card.firstChild);
-  });
-}
-
-// Initialize world news on DOM ready
-document.addEventListener('DOMContentLoaded', () => {
-  renderWorldNewsCarousel();
-  wireWorldNewsCarousel();
-});
-
-// === Collapse Network stories when clicking outside ===
-// If you expand story cards or render them on click, this hides them when clicking anywhere outside the container.
-document.addEventListener('click', (event) => {
-  const container = document.getElementById('network-stories');
-  if (!container) return;
-
-  // If the click is outside the network-stories container, collapse/hide its children
-  if (!container.contains(event.target)) {
-    container.querySelectorAll('.info-card, .official-card').forEach(card => {
-      card.style.display = 'none'; // or card.classList.remove('expanded'); if you use a class toggle
+      // Load social trends
+      const socialFeed = document.getElementById('social-feed');
+      if (socialFeed && typeof loadSocialTrends === 'function') {
+        console.log("🎬 loadSocialTrends is running...");
+        loadSocialTrends();
+      }
+    })
+    .catch(err => {
+      console.error('Error loading official data:', err);
+      if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
     });
-  }
 });
