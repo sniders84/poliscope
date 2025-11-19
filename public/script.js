@@ -1277,7 +1277,7 @@ document.querySelectorAll('#network-cards .info-card').forEach(card => {
   });
 });
 // === GLOBAL POLITICS & WORLD NEWS: Google News RSS feed ===
-const worldNewsFeedUrl = 'https://news.google.com/rss/search?q=world+politics&hl=en-US&gl=US&ceid=US:en';
+const worldNewsFeedUrl = "https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx1YlY4U0FtVnVHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US:en";
 const maxCards = 25;
 
 // Helper to extract favicon from story source
@@ -1306,38 +1306,32 @@ async function fetchGoogleNewsRss(feedUrl) {
 // Render the carousel cards
 async function renderWorldNewsCarousel() {
   const container = document.getElementById('world-news-cards');
-  container.innerHTML = ''; // clear previous
+  container.innerHTML = '';
 
   const stories = await fetchGoogleNewsRss(worldNewsFeedUrl);
   if (!stories || stories.length === 0) {
-    const link = document.createElement('div');
-    link.className = 'see-more-link';
-    link.innerText = 'See All on Google News';
-    link.onclick = () => window.open('https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRFZ4ZERFU0FtbGtLQUFQAQ?hl=en-US&gl=US&ceid=US:en', '_blank');
-    container.appendChild(link);
-    return;
+    return; // no fallback card
   }
 
-  stories.forEach(item => {
-  const card = document.createElement('div');
-  card.className = 'official-card news-card';
-  
-  // Use the story origin favicon
-  const favicon = getFaviconUrl(item.link);
-  card.innerHTML = `
-    ${favicon ? `<img src="${favicon}" class="story-logo" alt="source logo" onerror="this.style.display='none'"/>` : ''}
-    <h4 style="margin:0;line-height:1.2;">${item.title}</h4>
-  `;
-  card.onclick = () => window.open(item.link, '_blank');
-  container.appendChild(card);
-});
+  stories.forEach((item, idx) => {
+    const card = document.createElement('div');
+    card.className = 'news-card';
+    card.innerHTML = `
+      <h4>${item.title}</h4>
+      <p>${item.description ? item.description.substring(0, 140) + '…' : ''}</p>
+    `;
+    card.onclick = () => window.open(item.link, '_blank');
+    container.appendChild(card);
 
-  // Add See All card
-  const seeAll = document.createElement('div');
-  seeAll.className = 'official-card see-more-link';
-  seeAll.innerText = 'See All on Google News';
-  seeAll.onclick = () => window.open('https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRFZ4ZERFU0FtbGtLQUFQAQ?hl=en-US&gl=US&ceid=US:en', '_blank');
-  container.appendChild(seeAll);
+    // Append "See All" link after the last card
+    if (idx === stories.length - 1) {
+      const seeAll = document.createElement('div');
+      seeAll.className = 'see-more-link';
+      seeAll.innerText = 'See All on Google News';
+      seeAll.onclick = () => window.open(worldNewsFeedUrl, '_blank');
+      container.appendChild(seeAll);
+    }
+  });
 }
 
 // Simple horizontal carousel navigation
