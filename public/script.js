@@ -1152,6 +1152,17 @@ function initHubNav() {
     document.getElementById(btn.dataset.target)
   );
 
+  window.addEventListener('scroll', () => {
+    const scrollPos = window.scrollY + 60; // adjust for sticky nav height
+    sections.forEach((sec, idx) => {
+      if (sec.offsetTop <= scrollPos && sec.offsetTop + sec.offsetHeight > scrollPos) {
+        navButtons.forEach(b => b.classList.remove('active'));
+        navButtons[idx].classList.add('active');
+      }
+    });
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initHubNav();
 });
@@ -1265,114 +1276,120 @@ document.querySelectorAll('#network-cards .info-card').forEach(card => {
     renderNetworkStories(network);
   });
 });
-// === World News feed config ===
-const worldNewsFeedUrl = "https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx1YlY4U0FtVnVHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US:en";
+// === GLOBAL POLITICS & WORLD NEWS: Google News RSS feed ===
+const worldNewsFeedUrl = 'https://news.google.com/rss/search?q=world+politics&hl=en-US&gl=US&ceid=US:en';
 const maxCards = 25;
 
+// Helper to extract favicon from story source
+function getFaviconUrl(link) {
+  try {
+    const url = new URL(link);
+    return `${url.origin}/favicon.ico`;
+  } catch {
+    return ''; // fallback empty
+  }
+}
+
+// Fetch RSS via rss2json
 async function fetchGoogleNewsRss(feedUrl) {
   try {
     const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
     const res = await fetch(apiUrl);
-    if (!res.ok) throw new Error(`RSS HTTP ${res.status}`);
     const data = await res.json();
-    return Array.isArray(data.items) ? data.items.slice(0, maxCards) : [];
+    return data.items?.slice(0, maxCards) || [];
   } catch (err) {
     console.error('RSS fetch error:', err);
     return [];
   }
 }
 
+// Render the carousel cards
 async function renderWorldNewsCarousel() {
   const container = document.getElementById('world-news-cards');
-  if (!container) return;
-  container.innerHTML = '';
+  container.innerHTML = ''; // clear previous
 
   const stories = await fetchGoogleNewsRss(worldNewsFeedUrl);
-  if (!stories || stories.length === 0) return;
+  if (!stories || stories.length === 0) {
+    const link = document.createElement('div');
+    link.className = 'see-more-link';
+    link.innerText = 'See All on Google News';
+    link.onclick = () => window.open('https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRFZ4ZERFU0FtbGtLQUFQAQ?hl=en-US&gl=US&ceid=US:en', '_blank');
+    container.appendChild(link);
+    return;
+  }
 
-  stories.forEach((item) => {
-    const card = document.createElement('div');
-    card.className = 'news-card info-card';
-    card.innerHTML = `
-      <h4>${item.title}</h4>
-      <p>${item.description ? item.description.replace(/<[^>]*>/g, '').substring(0, 140) + '…' : ''}</p>
-    `;
-    card.addEventListener('click', () => window.open(item.link, '_blank'));
-    container.appendChild(card);
-  });
+  stories.forEach(item => {
+  const card = document.createElement('div');
+  card.className = 'official-card news-card';
+  
+  // Use the story origin favicon
+  const favicon = getFaviconUrl(item.link);
+  card.innerHTML = `
+    ${favicon ? `<img src="${favicon}" class="story-logo" alt="source logo" onerror="this.style.display='none'"/>` : ''}
+    <h4 style="margin:0;line-height:1.2;">${item.title}</h4>
+  `;
+  card.onclick = () => window.open(item.link, '_blank');
+  container.appendChild(card);
+});
 
-  const seeAll = document.createElement('button');
-  seeAll.className = 'see-more-link';
-  seeAll.textContent = 'See All on Google News';
-  seeAll.addEventListener('click', () => window.open(worldNewsFeedUrl, '_blank'));
+  // Add See All card
+  const seeAll = document.createElement('div');
+  seeAll.className = 'official-card see-more-link';
+  seeAll.innerText = 'See All on Google News';
+  seeAll.onclick = () => window.open('https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRFZ4ZERFU0FtbGtLQUFQAQ?hl=en-US&gl=US&ceid=US:en', '_blank');
   container.appendChild(seeAll);
 }
 
+// Simple horizontal carousel navigation
 function wireWorldNewsCarousel() {
   const row = document.getElementById('world-news-cards');
   const prevBtn = document.getElementById('world-news-prev');
   const nextBtn = document.getElementById('world-news-next');
-  if (!row) return;
 
-  if (prevBtn) {
-    prevBtn.addEventListener('click', () => {
-      row.scrollBy({ left: -300, behavior: 'smooth' });
-    });
-  }
-  if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
-      row.scrollBy({ left: 300, behavior: 'smooth' });
-    });
-  }
+  prevBtn.addEventListener('click', () => {
+    row.scrollBy({ left: -300, behavior: 'smooth' });
+  });
+  nextBtn.addEventListener('click', () => {
+    row.scrollBy({ left: 300, behavior: 'smooth' });
+  });
 }
 
-// === Initialize after DOM ready ===
-document.addEventListener('DOMContentLoaded', () => {
-  renderWorldNewsCarousel();
-  wireWorldNewsCarousel();
+// Initialize
+renderWorldNewsCarousel();
+wireWorldNewsCarousel();
 
- // Scroll highlight
-window.addEventListener('scroll', () => {
-  const scrollPos = window.scrollY + 60; // adjust for sticky nav height
-  sections.forEach((sec, idx) => {
-    if (!sec) return; // guard against null
-    if (sec.offsetTop <= scrollPos && sec.offsetTop + sec.offsetHeight > scrollPos) {
-      navButtons.forEach(b => b.classList.remove('active'));
-      navButtons[idx].classList.add('active');
-    }
-  });
+  // === Load officials data with smooth fade-in ===
+  Promise.all([
+    fetch('/governors.json').then(res => res.json()),
+    fetch('/ltgovernors.json').then(res => res.json()),
+    fetch('/senators.json').then(res => res.json()),
+    fetch('/housereps.json').then(res => res.json())
+  ])
+    .then(([govs, ltGovs, sens, reps]) => {
+      governors = govs;
+      ltGovernors = ltGovs;
+      senators = sens;
+      houseReps = reps;
+
+      // Render officials
+      renderOfficials(selectedState, '');
+
+      // Fade out loading overlay
+      if (loadingOverlay) {
+        loadingOverlay.style.transition = 'opacity 0.5s ease';
+        loadingOverlay.style.opacity = '0';
+        setTimeout(() => loadingOverlay.remove(), 500);
+      }
+
+      // Load social trends
+      const socialFeed = document.getElementById('social-feed');
+      if (socialFeed && typeof loadSocialTrends === 'function') {
+        console.log("🎬 loadSocialTrends is running...");
+        loadSocialTrends();
+      }
+    })
+    .catch(err => {
+      console.error('Error loading official data:', err);
+      if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
+    });
 });
-
-// === Load officials data with smooth fade-in ===
-Promise.all([
-  fetch('/governors.json').then(res => res.json()),
-  fetch('/ltgovernors.json').then(res => res.json()),
-  fetch('/senators.json').then(res => res.json()),
-  fetch('/housereps.json').then(res => res.json())
-])
-  .then(([govs, ltGovs, sens, reps]) => {
-    governors = govs;
-    ltGovernors = ltGovs;
-    senators = sens;
-    houseReps = reps;
-
-    renderOfficials(selectedState, '');
-
-    if (loadingOverlay) {
-      loadingOverlay.style.transition = 'opacity 0.5s ease';
-      loadingOverlay.style.opacity = '0';
-      setTimeout(() => loadingOverlay.remove(), 500);
-    }
-
-    const socialFeed = document.getElementById('social-feed');
-    if (socialFeed && typeof loadSocialTrends === 'function') {
-      console.log("🎬 loadSocialTrends is running...");
-      loadSocialTrends();
-    }
-  })
-  .catch(err => {
-    console.error('Error loading official data:', err);
-    if (loadingOverlay) {
-      loadingOverlay.textContent = 'Failed to load data.';
-    }
-  });
