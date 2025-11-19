@@ -1723,3 +1723,10 @@ rssapp-carousel {
   transform: scale(0.6);   /* shrink to 60% size */
   transform-origin: top center;
 }
+/* Economy carousel sizing */
+#economy rssapp-carousel {
+  max-width: 600px;        /* constrain width */
+  margin: 0 auto;          /* center it */
+  transform: scale(0.6);   /* shrink to 60% size */
+  transform-origin: top center;
+}
