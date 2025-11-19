@@ -1723,3 +1723,18 @@ a, button, .tab, .card-button,
   transform: scale(0.8);   /* shrink to 80% */
   transform-origin: top center;
 }
+/* Constrain the widget */
+.rssapp-wrapper {
+  width: 100%;          /* fit section width */
+  max-width: 600px;     /* shrink overall width */
+  margin: 0 auto;       /* center it */
+  overflow: hidden;     /* hide overflow */
+}
+
+/* Scale the widget down */
+.rssapp-wrapper rssapp-imageboard {
+  display: block;
+  transform: scale(0.5);        /* shrink to 50% size */
+  transform-origin: top center; /* anchor scaling */
+  width: 200%;                  /* compensate for shrink so it fills wrapper */
+}
