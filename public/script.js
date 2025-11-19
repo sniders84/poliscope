@@ -133,7 +133,7 @@ const pollCategories = [
   }
 ];
 
-// Simple tab switcher
+// === Simple tab switcher ===
 function showTab(id) {
   document.querySelectorAll('.tab-content').forEach(tab => {
     tab.style.display = 'none';
@@ -141,7 +141,24 @@ function showTab(id) {
   const activeTab = document.getElementById(id);
   if (activeTab) activeTab.style.display = 'block';
 }
-// === VOTING TAB ===
+
+// === TAB SWITCHING HELPERS ===
+function showStartupHub() {
+  showTab('startup-hub');
+}
+
+function showCivic() {
+  showTab('civic-intelligence');
+}
+
+function showPolls() {
+  showTab('polls');
+}
+
+function showOrganizations() {
+  showTab('political-groups');
+}
+
 function showVoting() {
   showTab('voting');
   const votingCards = document.getElementById('voting-cards');
