@@ -27,7 +27,29 @@ Promise.all([
   ltGovernors = ltGovs;
   senators = sens;
   houseReps = reps;
+  federalOfficials = federal;
+  cabinetMembers = cabinet;
+  supremeCourt = scotus;
+  politicalGroups = groups;
+  stateLinks = links;
+  votingData = voting;
 
+  // Render officials for the selected state
+  renderOfficials(selectedState, '');
+
+  // Fade out loading overlay once data is ready
+  if (loadingOverlay) {
+    loadingOverlay.style.transition = 'opacity 0.5s ease';
+    loadingOverlay.style.opacity = '0';
+    setTimeout(() => loadingOverlay.remove(), 500);
+  }
+})
+.catch(err => {
+  console.error('Error loading official data:', err);
+  if (loadingOverlay) {
+    loadingOverlay.textContent = 'Failed to load data.';
+  }
+});
   // Merge major federal data sources
   const allOfficials = [
     ...federal,
@@ -1310,12 +1332,6 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('click', (event) => {
   const container = document.getElementById('network-stories');
   if (!container) return;
-// Fade out loading overlay
-if (loadingOverlay) {
-  loadingOverlay.style.transition = 'opacity 0.5s ease';
-  loadingOverlay.style.opacity = '0';
-  setTimeout(() => loadingOverlay.remove(), 500);
-}
 
   // If the click is outside the network-stories container, collapse/hide its children
   if (!container.contains(event.target)) {
