@@ -1147,25 +1147,28 @@ function initHubNav() {
     });
   });
 
-  // Optional: highlight active section on scroll
-  const sections = Array.from(navButtons).map(btn =>
-    document.getElementById(btn.dataset.target)
-  );
+// Optional: highlight active section on scroll
+const sections = Array.from(navButtons).map(btn =>
+  document.getElementById(btn.dataset.target)
+);
 
-  window.addEventListener('scroll', () => {
-    const scrollPos = window.scrollY + 60; // adjust for sticky nav height
-    sections.forEach((sec, idx) => {
+window.addEventListener('scroll', () => {
+  const scrollPos = window.scrollY + 60; // adjust for sticky nav height
+  sections.forEach((sec, idx) => {
+    if (sec) { // ✅ guard against null
       if (sec.offsetTop <= scrollPos && sec.offsetTop + sec.offsetHeight > scrollPos) {
         navButtons.forEach(b => b.classList.remove('active'));
         navButtons[idx].classList.add('active');
       }
-    });
+    }
   });
+});
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   initHubNav();
 });
+
 // === STATE DROPDOWN WIRING ===
 function wireStateDropdown() {
   const dropdown = document.getElementById('state-dropdown');
