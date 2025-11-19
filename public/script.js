@@ -1154,11 +1154,6 @@ function showStartupHub() {
   showTab('startup-hub');
 }
 
-// 🚫 Sticky nav removed — no initHubNav, no scroll listeners
-
-document.addEventListener('DOMContentLoaded', () => {
-  initHubNav();
-});
 // === STATE DROPDOWN WIRING ===
 function wireStateDropdown() {
   const dropdown = document.getElementById('state-dropdown');
