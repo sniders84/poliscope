@@ -1159,6 +1159,24 @@ function showStartupHub() {
 document.addEventListener('DOMContentLoaded', () => {
   initHubNav();
 });
+document.querySelectorAll('.info-card[data-network]').forEach(card => {
+  const network = card.getAttribute('data-network');
+  const target = document.getElementById(`${network}-content`);
+
+  if (target) {
+    card.addEventListener('click', () => {
+      // Collapse other open blocks
+      document.querySelectorAll('.network-content.active').forEach(openBlock => {
+        if (openBlock !== target) {
+          openBlock.classList.remove('active');
+        }
+      });
+
+      // Toggle the clicked one
+      target.classList.toggle('active');
+    });
+  }
+});
 // === STATE DROPDOWN WIRING ===
 function wireStateDropdown() {
   const dropdown = document.getElementById('state-dropdown');
