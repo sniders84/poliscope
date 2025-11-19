@@ -1079,11 +1079,6 @@ function wireSearchBar() {
     renderOfficials(null, query);
   });
 }
-// ==== HOME HUB NAV ====
-
-function showStartupHub() {
-  showTab('startup-hub');
-}
 
 // Initialize sticky nav
 function initHubNav() {
