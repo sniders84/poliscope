@@ -1710,31 +1710,9 @@ a, button, .tab, .card-button,
   box-shadow: 0 0 0 2px #007bff, 0 2px 6px rgba(0,0,0,0.5);
   transform: translateY(-3px);
 }
-/* Shrink the RSS.app widget */
-.rssapp-wrapper {
-  max-width: 600px;   /* adjust width */
-  max-height: 400px;  /* adjust height */
-  overflow: hidden;   /* hides overflow if widget tries to expand */
-  margin: 0 auto;     /* center it */
-}
-
-/* Optional: scale it down further */
-.rssapp-wrapper rssapp-imageboard {
-  transform: scale(0.8);   /* shrink to 80% */
+rssapp-carousel {
+  max-width: 600px;        /* shrink width */
+  margin: 0 auto;          /* center it */
+  transform: scale(0.6);   /* shrink to 60% */
   transform-origin: top center;
-}
-/* Constrain the widget */
-.rssapp-wrapper {
-  width: 100%;          /* fit section width */
-  max-width: 600px;     /* shrink overall width */
-  margin: 0 auto;       /* center it */
-  overflow: hidden;     /* hide overflow */
-}
-
-/* Scale the widget down */
-.rssapp-wrapper rssapp-imageboard {
-  display: block;
-  transform: scale(0.5);        /* shrink to 50% size */
-  transform-origin: top center; /* anchor scaling */
-  width: 200%;                  /* compensate for shrink so it fills wrapper */
 }
