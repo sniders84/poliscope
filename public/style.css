@@ -1735,3 +1735,69 @@ a, button, .tab, .card-button,
   transform: translateY(-4px);
   box-shadow: 0 8px 20px rgba(0,123,255,0.3); /* subtle blue hover */
 }
+/* My Officials card styling */
+.official-card {
+  background-color: #1e1e2f;   /* dark gray */
+  border: 2px solid transparent;
+  border-radius: 10px;
+  text-align: center;          /* center text */
+  color: #f0f0f0;
+  transition: border 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+.official-card:hover {
+  border-color: #007bff;       /* blue hover */
+  box-shadow: 0 0 0 2px #007bff, 0 2px 6px rgba(0,0,0,0.5);
+  transform: translateY(-3px);
+}
+
+/* Photo wrapper cleanup */
+.official-card .photo-wrapper {
+  background: transparent !important; /* remove ugly gray */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 180px;
+}
+
+.official-card .photo-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;         /* no cropping */
+  object-position: center;
+}
+/* National Broadcasting Networks cards */
+#network-cards .info-card,
+#network-stories .info-card {
+  background-color: #1e1e2f;   /* dark gray */
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  color: #f0f0f0;
+  transition: border 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+#network-cards .info-card:hover,
+#network-stories .info-card:hover {
+  border-color: #007bff;       /* blue hover */
+  box-shadow: 0 0 0 2px #007bff, 0 2px 6px rgba(0,0,0,0.5);
+  transform: translateY(-3px);
+}
+/* Global Politics & World News cards */
+#world-news-cards .info-card {
+  background-color: #1e1e2f;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  color: #f0f0f0;
+  transition: border 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+#world-news-cards .info-card:hover {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px #007bff, 0 2px 6px rgba(0,0,0,0.5);
+  transform: translateY(-3px);
+}
