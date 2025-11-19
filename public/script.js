@@ -1278,11 +1278,6 @@ document.querySelectorAll('#network-cards .info-card').forEach(card => {
 });
 // === GLOBAL POLITICS & WORLD NEWS: Google News RSS feed ===
 const worldNewsFeedUrl = 'https://news.google.com/rss/search?q=world+politics&hl=en-US&gl=US&ceid=US:en';
-
-// Correct "See All" Google News topic link
-const GOOGLE_NEWS_WORLD =
-  "https://news.google.com/topics/CAAqJAgKIh5DQkFTRUFvS0wyMHZNRFZ4ZERBU0FtbGtHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US:en";
-
 const maxCards = 25;
 
 // Helper to extract favicon from story source
@@ -1325,17 +1320,14 @@ async function renderWorldNewsCarousel() {
 
   stories.forEach(item => {
   const card = document.createElement('div');
-  card.className = 'news-card';
-
+  card.className = 'official-card news-card';
+  
+  // Use the story origin favicon
   const favicon = getFaviconUrl(item.link);
-
   card.innerHTML = `
-    <div class="news-logo-bar">
-      ${favicon ? `<img src="${favicon}" class="news-logo" alt="">` : ''}
-    </div>
-    <h4 class="news-title">${item.title}</h4>
+    ${favicon ? `<img src="${favicon}" class="story-logo" alt="source logo" onerror="this.style.display='none'"/>` : ''}
+    <h4 style="margin:0;line-height:1.2;">${item.title}</h4>
   `;
-
   card.onclick = () => window.open(item.link, '_blank');
   container.appendChild(card);
 });
