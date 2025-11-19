@@ -1730,3 +1730,14 @@ rssapp-carousel {
   transform: scale(0.6);   /* shrink to 60% size */
   transform-origin: top center;
 }
+#live-news-now {
+  max-width: 800px;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+#live-news-now iframe {
+  width: 100%;
+  height: 450px;
+  border: none;
+}
