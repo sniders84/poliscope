@@ -374,41 +374,6 @@ h2 {
 }
 
 /* ============================================================
-   MODALS
-   ============================================================ */
-.modal {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.6);
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.modal-content {
-  background: var(--card-bg);
-  padding: 2rem;
-  border-radius: 12px;
-  max-width: 700px;
-  max-height: 90vh;
-  overflow-y: auto;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-  color: var(--text);
-  animation: fadeIn 0.3s ease;
-}
-
-#close-modal {
-  position: absolute;
-  top: 1rem;
-  right: 1.5rem;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: var(--accent-light);
-}
-
-/* ============================================================
    CIVIC SECTION
    ============================================================ */
 .civic-section {
@@ -427,7 +392,6 @@ h2 {
 button, .tab, .card-button, a {
   transition: all 0.25s ease;
 }
-document.body.classList.toggle('light-mode');
 /* ============================================================
    PATCH: VISUAL REFINEMENTS AND LAYOUT CORRECTIONS
    ============================================================ */
@@ -447,37 +411,6 @@ document.body.classList.toggle('light-mode');
   height: 100%;
   object-fit: cover;
   object-position: center; /* ensures true center alignment */
-}
-
-/* ---- 2. Modal layout and image consistency ---- */
-.modal-content {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  background: rgba(30,41,59,0.95); /* semi-transparent glass effect */
-  backdrop-filter: blur(10px);
-  gap: 1.5rem;
-}
-
-/* Ensure modal photo sizing and alignment */
-.modal-content img {
-  flex-shrink: 0;
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-right: 1.5rem;
-  margin-bottom: 0.5rem;
-  align-self: flex-start;
-}
-
-/* Adjust modal text area for readability */
-.modal-content p,
-.modal-content h3,
-.modal-content h4,
-.modal-content h5 {
-  color: var(--text);
-  line-height: 1.5;
 }
 
 /* ---- 3. Civic Intelligence Dashboard card tightening ---- */
@@ -548,203 +481,7 @@ document.body.classList.toggle('light-mode');
   word-wrap: break-word;
   overflow: visible;
 }
-/* ============================================================
-   PATCH ADD-ON: FROSTED MODAL TEXT BACKGROUNDS
-   ============================================================ */
 
-.modal-content {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 1.5rem;
-  padding: 2rem;
-  background: rgba(30,41,59,0.9); /* transparent dark */
-  backdrop-filter: blur(12px);
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.1);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-}
-
-/* Keep photo clean and fixed on left */
-.modal-content img {
-  flex-shrink: 0;
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-top: 0.5rem;
-}
-
-/* Create a frosted panel for all text */
-.modal-text {
-  flex: 1;
-  background: rgba(255,255,255,0.08);
-  border-radius: 10px;
-  padding: 1rem 1.5rem;
-  color: var(--text);
-  backdrop-filter: blur(8px);
-  box-shadow: inset 0 0 8px rgba(255,255,255,0.05);
-}
-
-/* Give each heading clear contrast */
-.modal-text h2,
-.modal-text h3,
-.modal-text h4 {
-  color: var(--accent-light);
-  margin-bottom: 0.6rem;
-}
-
-.modal-text p {
-  color: var(--muted-light);
-  margin-bottom: 0.8rem;
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
-
-/* Adjust modal close button to match new look */
-#close-modal {
-  color: var(--accent-light);
-  background: rgba(255,255,255,0.1);
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.3s ease;
-}
-
-#close-modal:hover {
-  background: rgba(255,255,255,0.2);
-  transform: rotate(90deg);
-}
-/* ============================================================
-   UNIVERSAL FROSTED MODAL SYSTEM (Applies to ALL Modals)
-   ============================================================ */
-
-.modal {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(15,23,42,0.7);
-  backdrop-filter: blur(8px);
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.modal-content {
-  position: relative;
-  background: rgba(30,41,59,0.9);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 14px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-  max-width: 90%;
-  max-height: 90%;
-  overflow-y: auto;
-  animation: fadeIn 0.4s ease;
-  padding: 2rem;
-}
-
-/* Semi-transparent “frosted” area for all modal inner content */
-.modal-content > div {
-  background: rgba(255,255,255,0.08);
-  border-radius: 10px;
-  padding: 1.5rem;
-  backdrop-filter: blur(10px);
-  box-shadow: inset 0 0 12px rgba(255,255,255,0.05);
-}
-
-/* Grids inside modals */
-.modal-content .officials-grid,
-.modal-content .organization-grid,
-.modal-content .polls-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.25rem;
-  justify-items: center;
-}
-
-/* Consistent modal images (officials, orgs, polls, etc.) */
-.modal-content img {
-  display: block;
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 8px;
-  margin: 0 auto 0.75rem auto;
-}
-
-/* Poll and source logos are smaller */
-.modal-content img.poll-logo,
-.modal-content img.source-logo {
-  max-width: 120px;
-  max-height: 120px;
-  object-fit: contain;
-}
-
-/* Text inside modals */
-.modal-content h2,
-.modal-content h3,
-.modal-content h4,
-.modal-content h5 {
-  color: var(--accent-light);
-  margin-bottom: 0.6rem;
-}
-
-.modal-content p {
-  color: var(--muted-light);
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
-
-/* Close button improvements */
-.modal-content .close,
-.modal-content #close-modal {
-  position: absolute;
-  top: 1rem;
-  right: 1.5rem;
-  font-size: 1.5rem;
-  cursor: pointer;
-  background: rgba(255,255,255,0.1);
-  color: var(--accent-light);
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.3s ease;
-}
-
-.modal-content .close:hover,
-.modal-content #close-modal:hover {
-  background: rgba(255,255,255,0.2);
-  transform: rotate(90deg);
-}
-/* ============================================================
-   FINAL POLISH PATCH — REFINEMENTS AND INTERACTIONS
-   ============================================================ */
-
-/* 1️⃣ Ensure all official photos (cards + modals) are fully visible and never cropped */
-.photo-wrapper img,
-.modal-content img {
-  width: 100%;
-  height: auto;
-  max-height: 220px;
-  object-fit: contain;      /* prevent cropping */
-  object-position: center;  /* always centered */
-  border-radius: 8px;
-}
-
-/* 2️⃣ Reduce modal width by half for better readability */
-.modal-content {
-  max-width: 45% !important;
-  margin: 0 auto;
-}
 
 /* 3️⃣ Civic Intelligence dashboard cards — strict grid layout */
 .civic-section .grid,
@@ -1521,14 +1258,6 @@ a, button, .tab, .card-button,
   display: block;
   margin: 0 auto 8px auto; /* Center horizontally and add bottom spacing */
 }
-/* ===== world-news layout & logo sizing fixes ===== */
-/* Ensure all card-grid sections use horizontal rows */
-.card-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-items: flex-start;
-}
 
 /* Ensure each info-card looks like the network blueprint */
 .info-card {
@@ -1800,4 +1529,121 @@ a, button, .tab, .card-button,
   border-color: #007bff;
   box-shadow: 0 0 0 2px #007bff, 0 2px 6px rgba(0,0,0,0.5);
   transform: translateY(-3px);
+}
+/* Universal frosted modal system (final canonical version) */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(15,23,42,0.7);
+  backdrop-filter: blur(8px);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  position: relative;
+  background: rgba(30,41,59,0.9);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  max-width: 900px;          /* wide enough for grids, readable */
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: fadeIn 0.4s ease;
+  padding: 2rem;
+}
+
+/* Inner frosted panel */
+.modal-content > div {
+  background: rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 0 12px rgba(255,255,255,0.05);
+}
+
+/* Consistent modal images */
+.modal-content img {
+  display: block;
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
+  margin: 0 auto 0.75rem auto;
+}
+
+.modal-content img.poll-logo,
+.modal-content img.source-logo {
+  max-width: 120px;
+  max-height: 120px;
+  object-fit: contain;
+}
+
+.modal-content h2,
+.modal-content h3,
+.modal-content h4,
+.modal-content h5 {
+  color: var(--accent-light);
+  margin-bottom: 0.6rem;
+}
+
+.modal-content p {
+  color: var(--muted-light);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Close button */
+.modal-content .close,
+#close-modal {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background: rgba(255,255,255,0.1);
+  color: var(--accent-light);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.modal-content .close:hover,
+#close-modal:hover {
+  background: rgba(255,255,255,0.2);
+  transform: rotate(90deg);
+}
+/* Official cards: preserve full headshot, no cropping */
+.official-card .photo-wrapper {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.official-card .photo-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  display: block;
+  background-color: transparent;
+}
+
+/* Modal images: square, neat tiles */
+.modal-content img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  object-position: center;
 }
