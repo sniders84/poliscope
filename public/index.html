@@ -92,63 +92,68 @@
   
 <!-- Sections -->
 
-       <section id="national-networks" class="category-section">
+      <section id="national-networks" class="category-section">
   <h2>National Broadcasting Networks</h2>
 
   <!-- Network cards row -->
   <div class="card-grid" id="network-cards">
     <!-- LiveNOW from FOX Card -->
-<div class="network-card">
-  <a href="https://www.livenowfox.com/live" target="_blank" rel="noopener noreferrer">
-    <img src="/assets/livenowfox.png" alt="LiveNOW FOX Logo" class="network-logo">
-    <h3>LiveNOW from FOX</h3>
-  </a>
-</div>
-    <!-- MSNBC Card -->
-<div class="info-card" data-network="msnbc">
-  <img src="/assets/msnbc.png" alt="MSNBC Logo" class="network-logo">
-  <h3>MSNBC</h3>
-  <p>A counter to FOX News coverage.</p>
-</div>
+    <div class="network-card">
+      <a href="https://www.livenowfox.com/live" target="_blank" rel="noopener noreferrer">
+        <img src="/assets/livenowfox.png" alt="LiveNOW FOX Logo" class="network-logo">
+        <h3>LiveNOW from FOX</h3>
+      </a>
+    </div>
 
-<!-- ABC Card -->
-<div class="info-card" data-network="abc">
-  <img src="/assets/abc.png" alt="ABC News Logo" class="network-logo">
-  <h3>ABC News</h3>
-  <p>National news coverage from ABC.</p>
-</div>
+    <!-- Info cards grouped in a container -->
+    <div class="info-card-container">
+      <!-- MSNBC Card -->
+      <div class="info-card" data-network="msnbc">
+        <img src="/assets/msnbc.png" alt="MSNBC Logo" class="network-logo">
+        <h3>MSNBC</h3>
+        <p>A counter to FOX News coverage.</p>
+      </div>
 
-<!-- CBS Card -->
-<div class="info-card" data-network="cbs">
-  <img src="/assets/cbs.png" alt="CBS News Logo" class="network-logo">
-  <h3>CBS News</h3>
-  <p>CBS News broadcasts and updates.</p>
-</div>
+      <!-- ABC Card -->
+      <div class="info-card" data-network="abc">
+        <img src="/assets/abc.png" alt="ABC News Logo" class="network-logo">
+        <h3>ABC News</h3>
+        <p>National news coverage from ABC.</p>
+      </div>
 
-<!-- FOX Card -->
-<div class="info-card" data-network="fox">
-  <img src="/assets/fox.png" alt="FOX News Logo" class="network-logo">
-  <h3>FOX News</h3>
-  <p>Latest stories from FOX News.</p>
-</div>
+      <!-- CBS Card -->
+      <div class="info-card" data-network="cbs">
+        <img src="/assets/cbs.png" alt="CBS News Logo" class="network-logo">
+        <h3>CBS News</h3>
+        <p>CBS News broadcasts and updates.</p>
+      </div>
 
-<!-- CNN Card -->
-<div class="info-card" data-network="cnn">
-  <img src="/assets/cnn.png" alt="CNN Logo" class="network-logo">
-  <h3>CNN</h3>
-  <p>Breaking news and political analysis from CNN.</p>
-</div>
+      <!-- FOX Card -->
+      <div class="info-card" data-network="fox">
+        <img src="/assets/fox.png" alt="FOX News Logo" class="network-logo">
+        <h3>FOX News</h3>
+        <p>Latest stories from FOX News.</p>
+      </div>
 
-<!-- Modal Overlay -->
-<div id="network-overlay" class="network-overlay"></div>
-
-<!-- Modal Container -->
-<div id="network-modal" class="network-modal">
-  <span id="modal-close" class="modal-close">&times;</span>
-  <div id="modal-content" class="modal-content">
-    <!-- Dynamic content will be injected here -->
+      <!-- CNN Card -->
+      <div class="info-card" data-network="cnn">
+        <img src="/assets/cnn.png" alt="CNN Logo" class="network-logo">
+        <h3>CNN</h3>
+        <p>Breaking news and political analysis from CNN.</p>
+      </div>
+    </div>
   </div>
-</div>
+
+  <!-- Modal Overlay -->
+  <div id="network-overlay" class="network-overlay"></div>
+
+  <!-- Modal Container -->
+  <div id="network-modal" class="network-modal">
+    <span id="modal-close" class="modal-close">&times;</span>
+    <div id="modal-content" class="modal-content">
+      <!-- Dynamic content will be injected here -->
+    </div>
+  </div>
 
   <!-- Row for top stories -->
   <div class="card-grid" id="network-stories"></div>
