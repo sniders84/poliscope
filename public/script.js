@@ -1385,4 +1385,3 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error('Error loading official data:', err);
       if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
     });
-});
