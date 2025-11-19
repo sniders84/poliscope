@@ -1735,3 +1735,34 @@ a, button, .tab, .card-button,
   transform: translateY(-4px);
   box-shadow: 0 8px 20px rgba(0,123,255,0.3); /* subtle blue hover */
 }
+/* ================================================================= */
+/* UNIVERSAL CARD STYLING OVERRIDE – MAKES ALL CARDS LOOK IDENTICAL  */
+/* ================================================================= */
+
+.official-card,
+.news-card,
+.politics-card,
+.source-card,
+.result-card,
+.card,
+[class*="card"] {
+  background-color: #2d2d2d !important;  /* dark grey */
+  color: #ffffff !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25) !important;
+  cursor: pointer !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease !important;
+}
+
+/* HOVER — universal blue hover */
+.official-card:hover,
+.news-card:hover,
+.politics-card:hover,
+.source-card:hover,
+.result-card:hover,
+.card:hover,
+[class*="card"]:hover {
+  background-color: #2b6cb0 !important;  /* blue hover */
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.35) !important;
+}
