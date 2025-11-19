@@ -1154,14 +1154,13 @@ function initHubNav() {
 
   window.addEventListener('scroll', () => {
     const scrollPos = window.scrollY + 60; // adjust for sticky nav height
-    sections.forEach((sec, idx) => {
-      if (sec.offsetTop <= scrollPos && sec.offsetTop + sec.offsetHeight > scrollPos) {
-        navButtons.forEach(b => b.classList.remove('active'));
-        navButtons[idx].classList.add('active');
-      }
-    });
-  });
-}
+sections.forEach((sec, idx) => {
+  if (!sec) return; // skip if null
+  if (sec.offsetTop <= scrollPos && sec.offsetTop + sec.offsetHeight > scrollPos) {
+    navButtons.forEach(b => b.classList.remove('active'));
+    navButtons[idx].classList.add('active');
+  }
+});
 
 document.addEventListener('DOMContentLoaded', () => {
   initHubNav();
@@ -1277,7 +1276,7 @@ document.querySelectorAll('#network-cards .info-card').forEach(card => {
   });
 });
 // === GLOBAL POLITICS & WORLD NEWS: Google News RSS feed ===
-const worldNewsFeedUrl = "https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx1YlY4U0FtVnVHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US:en";
+const worldNewsFeedUrl = "https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx1YlY4U0FtVnVHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US:en";
 const maxCards = 25;
 
 // Helper to extract favicon from story source
