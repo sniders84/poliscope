@@ -1727,3 +1727,19 @@ a, button, .tab, .card-button,
   object-fit: contain;
   display: block;
 }
+/* Unified card hover effect */
+.info-card,
+.official-card,
+.organization-card,
+.voting-card {
+  transition: border 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+.info-card:hover,
+.official-card:hover,
+.organization-card:hover,
+.voting-card:hover {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px #007bff, 0 2px 6px rgba(0,0,0,0.5);
+  transform: translateY(-3px);
+}
