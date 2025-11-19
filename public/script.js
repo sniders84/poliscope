@@ -1386,16 +1386,6 @@ wireWorldNewsCarousel();
   });
 })();
     
-/* Collapse Network cards when clicking outside */
-document.addEventListener('click', (event) => {
-  const networkCards = document.querySelectorAll('#network-stories .info-card');
-  networkCards.forEach(card => {
-    if (!card.contains(event.target)) {
-      card.style.display = 'none'; // hide card if click outside
-    }
-  });
-});
-
   // === Load officials data with smooth fade-in ===
   Promise.all([
     fetch('/governors.json').then(res => res.json()),
@@ -1430,4 +1420,13 @@ document.addEventListener('click', (event) => {
       console.error('Error loading official data:', err);
       if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
     });
+});
+/* Collapse Network cards when clicking outside */
+document.addEventListener('click', (event) => {
+  const networkCards = document.querySelectorAll('#network-stories .info-card');
+  networkCards.forEach(card => {
+    if (!card.contains(event.target)) {
+      card.style.display = 'none'; // hide card if click outside
+    }
+  });
 });
