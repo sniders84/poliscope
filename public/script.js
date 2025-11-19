@@ -34,8 +34,26 @@ Promise.all([
   stateLinks = links;
   votingData = voting;
 
+  // Merge major federal data sources
+  const allOfficials = [
+    ...federal,
+    ...cabinet,
+    ...sens,
+    ...reps,
+    ...govs,
+    ...ltGovs,
+    ...scotus
+  ];
+
   // Render officials for the selected state
   renderOfficials(selectedState, '');
+
+  // Wire search bar
+  if (searchBar) {
+    searchBar.addEventListener('input', e => {
+      renderOfficials(selectedState, e.target.value);
+    });
+  }
 
   // Fade out loading overlay once data is ready
   if (loadingOverlay) {
@@ -50,26 +68,6 @@ Promise.all([
     loadingOverlay.textContent = 'Failed to load data.';
   }
 });
-  // Merge major federal data sources
-  const allOfficials = [
-    ...federal,
-    ...cabinet,
-    ...sens,
-    ...reps,
-    ...govs,
-    ...ltGovs,
-    ...scotus
-  ];
-
-  renderOfficials(selectedState, '');
-
-  if (searchBar) {
-    searchBar.addEventListener('input', e => {
-      renderOfficials(selectedState, e.target.value);
-    });
-  }
-})
-.catch(err => console.error('Error loading data files:', err));
 
 // Modal refs (Officials modal)
 let officialsModal = null;
