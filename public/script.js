@@ -1385,6 +1385,16 @@ wireWorldNewsCarousel();
     card.removeAttribute('style'); // strip inline background or borders
   });
 })();
+    
+/* Collapse Network cards when clicking outside */
+document.addEventListener('click', (event) => {
+  const networkCards = document.querySelectorAll('#network-stories .info-card');
+  networkCards.forEach(card => {
+    if (!card.contains(event.target)) {
+      card.style.display = 'none'; // hide card if click outside
+    }
+  });
+});
 
   // === Load officials data with smooth fade-in ===
   Promise.all([
