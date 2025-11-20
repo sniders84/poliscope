@@ -1164,7 +1164,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const feedTitle = document.getElementById('feed-title');
   const feedStories = document.getElementById('feed-stories');
 
-  // Network -> RSS feed map (MSNBC via NBC News public feed)
+  // Network -> RSS feed map
   const rssFeeds = {
     msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',
     abc: 'https://abcnews.go.com/abcnews/topstories',
@@ -1173,44 +1173,11 @@ document.addEventListener('DOMContentLoaded', () => {
     cnn: 'http://rss.cnn.com/rss/cnn_topstories.rss'
   };
 
-  // Date helpers
+  // Parse date safely
   function parseItemDate(item) {
-    const raw =
-      item.pubDate ||
-      item.isoDate ||
-      item.date ||
-      item.updated ||
-      item.published ||
-      null;
-
-    if (!raw) return null;
-    const d = new Date(raw);
-    return isNaN(d.getTime()) ? null : d;
-  }
-
-  const nyFormatter = new Intl.DateTimeFormat('en-US', {
-    timeZone: 'America/New_York',
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit'
-  });
-
-  function formatAbsoluteNY(d) {
-    // Absolute timestamp in America/New_York
-    return nyFormatter.format(d);
-  }
-
-  function formatRelative(d) {
-    const diffMs = Date.now() - d.getTime();
-    const mins = Math.floor(diffMs / 60000);
-    if (mins < 1) return 'just now';
-    if (mins < 60) return `${mins} min ago`;
-    const hours = Math.floor(mins / 60);
-    if (hours < 24) return `${hours} hr ago`;
-    const days = Math.floor(hours / 24);
-    return `${days} day${days > 1 ? 's' : ''} ago`;
+    const raw = item.pubDate || item.isoDate || item.date || item.updated || item.published;
+    const d = raw ? new Date(raw) : null;
+    return isNaN(d?.getTime()) ? null : d;
   }
 
   async function loadFeed(network) {
@@ -1222,18 +1189,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const response = await fetch(
         `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`
       );
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const data = await response.json();
-
-      // If the service returns an error message, show it
-      if (data.status === 'error') {
-        feedStories.innerHTML = `<p style="color:#fff;">${data.message || 'Feed error.'}</p>`;
-        return;
-      }
 
       const items = Array.isArray(data.items) ? data.items.slice() : [];
 
-      // Normalize dates, drop undated, sort newest-first
+      // Normalize dates and sort newest-first
       const normalized = items
         .map(item => ({ item, date: parseItemDate(item) }))
         .filter(x => x.date)
@@ -1246,18 +1206,15 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Render top 10 items (freshest first)
+      // Render top 10 items
       normalized.slice(0, 10).forEach(({ item, date }) => {
-        const absNY = formatAbsoluteNY(date);
-        const rel = formatRelative(date);
-
         const story = document.createElement('div');
         story.className = 'story-card';
         story.innerHTML = `
           <a href="${item.link}" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none;">
             <h4 style="margin-bottom:0.35rem;">${item.title}</h4>
             <p style="font-size:0.85rem; color:#ccc; margin:0;">
-              ${absNY} • ${rel} (ET)
+              ${date.toLocaleString()}
             </p>
           </a>
         `;
