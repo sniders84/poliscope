@@ -2104,145 +2104,14 @@ section.tab-content > h2 {
   color: #fff;
   margin: 0 0 1rem 0;
 }
-/* Civic Intelligence sections grid layout */
-#state-legislative .grid,
-#nga-section .grid,
-#federal-oversight .grid {
+/* Civic Intelligence grids */
+#civic .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 1rem;
 }
 
-#state-legislative .card,
-#nga-section .card,
-#federal-oversight .card {
-  background: #222;
-  color: #fff;
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-}
-
-/* Mobile breakpoint: collapse to single column */
-@media (max-width: 600px) {
-  #state-legislative .grid,
-  #nga-section .grid,
-  #federal-oversight .grid {
-    grid-template-columns: 1fr;
-  }
-}
-/* Civic Intelligence sections: force vertical stack + grid cards */
-#state-legislative,
-#nga-section,
-#federal-oversight {
-  display: block !important;   /* stop flex row */
-  width: 100% !important;
-  margin-bottom: 2rem;
-}
-
-#state-legislative .grid,
-#nga-section .grid,
-#federal-oversight .grid {
-  display: grid !important;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1rem;
-}
-
-#state-legislative .card,
-#nga-section .card,
-#federal-oversight .card {
-  background: #222;
-  color: #fff;
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-}
-
-/* Mobile breakpoint: collapse to single column */
-@media (max-width: 600px) {
-  #state-legislative .grid,
-  #nga-section .grid,
-  #federal-oversight .grid {
-    grid-template-columns: 1fr;
-  }
-}
-/* Force Civic Intelligence sections to stack vertically */
-#state-legislative,
-#nga-section,
-#federal-oversight {
-  flex: 0 0 100% !important;   /* occupy full row in flex parent */
-  max-width: 100% !important;
-  display: block !important;
-  margin-bottom: 2rem;
-}
-
-/* Grid layout inside each section */
-#state-legislative .grid,
-#nga-section .grid,
-#federal-oversight .grid {
-  display: grid !important;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1rem;
-}
-
-/* Mobile breakpoint: collapse to single column */
-@media (max-width: 600px) {
-  #state-legislative .grid,
-  #nga-section .grid,
-  #federal-oversight .grid {
-    grid-template-columns: 1fr;
-  }
-}
-/* Civic Intelligence sections stack vertically */
-#state-legislative,
-#nga-section,
-#federal-oversight {
-  flex: 0 0 100%;   /* occupy full width in flex parent */
-  max-width: 100%;
-  display: block;
-  margin-bottom: 2rem;
-}
-
-/* Grid layout for cards inside each section */
-#state-legislative .grid,
-#nga-section .grid,
-#federal-oversight .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1rem;
-}
-
-/* Card styling */
-#state-legislative .card,
-#nga-section .card,
-#federal-oversight .card {
-  background: #222;
-  color: #fff;
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-}
-
-/* Mobile breakpoint: collapse to single column */
-@media (max-width: 600px) {
-  #state-legislative .grid,
-  #nga-section .grid,
-  #federal-oversight .grid {
-    grid-template-columns: 1fr;
-  }
-}
-/* Only affect Civic Intelligence sections */
-#state-legislative .grid,
-#nga-section .grid,
-#federal-oversight .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1rem;
-}
-
-#state-legislative .card,
-#nga-section .card,
-#federal-oversight .card {
+#civic .card {
   background: #222;
   color: #fff;
   padding: 1rem;
@@ -2252,9 +2121,7 @@ section.tab-content > h2 {
 
 /* Mobile breakpoint */
 @media (max-width: 600px) {
-  #state-legislative .grid,
-  #nga-section .grid,
-  #federal-oversight .grid {
+  #civic .grid {
     grid-template-columns: 1fr;
   }
 }
