@@ -1164,7 +1164,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const feedTitle = document.getElementById('feed-title');
   const feedStories = document.getElementById('feed-stories');
 
-  // Network -> RSS feed map (updated MSNBC)
+  // Network -> RSS feed map (MSNBC via NBC News public feed)
   const rssFeeds = {
     msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',
     abc: 'https://abcnews.go.com/abcnews/topstories',
@@ -1173,35 +1173,37 @@ document.addEventListener('DOMContentLoaded', () => {
     cnn: 'http://rss.cnn.com/rss/cnn_topstories.rss'
   };
 
-  // Config: show only items newer than this many hours (set to 48 for testing)
-  const FRESHNESS_HOURS = 24;
-
-  // Helpers
+  // Date helpers
   function parseItemDate(item) {
-    // Try multiple fields; rss2json often provides pubDate, some services provide isoDate
     const raw =
       item.pubDate ||
       item.isoDate ||
       item.date ||
       item.updated ||
-      item.published;
+      item.published ||
+      null;
 
-    const d = raw ? new Date(raw) : null;
-    return isNaN(d?.getTime()) ? null : d;
+    if (!raw) return null;
+    const d = new Date(raw);
+    return isNaN(d.getTime()) ? null : d;
   }
 
-  function formatAbsolute(d) {
-    // Local time, concise
-    return d.toLocaleDateString([], {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit'
-    }) + ' ' + d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  const nyFormatter = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'America/New_York',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+
+  function formatAbsoluteNY(d) {
+    // Absolute timestamp in America/New_York
+    return nyFormatter.format(d);
   }
 
   function formatRelative(d) {
-    const now = new Date();
-    const diffMs = now - d;
+    const diffMs = Date.now() - d.getTime();
     const mins = Math.floor(diffMs / 60000);
     if (mins < 1) return 'just now';
     if (mins < 60) return `${mins} min ago`;
@@ -1211,44 +1213,42 @@ document.addEventListener('DOMContentLoaded', () => {
     return `${days} day${days > 1 ? 's' : ''} ago`;
   }
 
-  function isFresh(d) {
-    const hours = (Date.now() - d.getTime()) / 3600000;
-    return hours <= FRESHNESS_HOURS;
-  }
-
   async function loadFeed(network) {
     const url = rssFeeds[network];
     feedTitle.textContent = `${network.toUpperCase()} Stories`;
     feedStories.innerHTML = '<p style="color:#fff;">Loading...</p>';
 
     try {
-      // Convert RSS XML to JSON via rss2json
       const response = await fetch(
         `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`
       );
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const data = await response.json();
 
-      // Guard: items present?
+      // If the service returns an error message, show it
+      if (data.status === 'error') {
+        feedStories.innerHTML = `<p style="color:#fff;">${data.message || 'Feed error.'}</p>`;
+        return;
+      }
+
       const items = Array.isArray(data.items) ? data.items.slice() : [];
-      // Normalize dates, drop undated, sort newest first, filter by freshness window
+
+      // Normalize dates, drop undated, sort newest-first
       const normalized = items
         .map(item => ({ item, date: parseItemDate(item) }))
-        .filter(x => x.date) // keep only items with valid dates
-        .sort((a, b) => b.date.getTime() - a.date.getTime())
-        .filter(x => isFresh(x.date));
+        .filter(x => x.date)
+        .sort((a, b) => b.date.getTime() - a.date.getTime());
 
       feedStories.innerHTML = '';
 
       if (normalized.length === 0) {
-        feedStories.innerHTML =
-          '<p style="color:#fff;">No fresh stories available in the last 24 hours.</p>';
+        feedStories.innerHTML = '<p style="color:#fff;">No stories available.</p>';
         return;
       }
 
-      // Render top 8 fresh items
-      normalized.slice(0, 8).forEach(({ item, date }) => {
-        const abs = formatAbsolute(date);
+      // Render top 10 items (freshest first)
+      normalized.slice(0, 10).forEach(({ item, date }) => {
+        const absNY = formatAbsoluteNY(date);
         const rel = formatRelative(date);
 
         const story = document.createElement('div');
@@ -1257,7 +1257,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <a href="${item.link}" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none;">
             <h4 style="margin-bottom:0.35rem;">${item.title}</h4>
             <p style="font-size:0.85rem; color:#ccc; margin:0;">
-              ${abs} • ${rel}
+              ${absNY} • ${rel} (ET)
             </p>
           </a>
         `;
@@ -1265,8 +1265,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     } catch (err) {
       console.error(err);
-      feedStories.innerHTML =
-        '<p style="color:#fff;">Error loading feed or parsing dates.</p>';
+      feedStories.innerHTML = '<p style="color:#fff;">Error loading feed.</p>';
     }
   }
 
