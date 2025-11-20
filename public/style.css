@@ -2070,3 +2070,18 @@ rssapp-carousel {
   min-width: 0;        /* prevent overflow */
   height: 100%;        /* keep cards aligned */
 }
+/* Network cards container */
+#network-cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;          /* prevent wrapping */
+  justify-content: space-around; /* spread cards evenly */
+  align-items: stretch;
+  gap: 1rem;
+}
+
+/* Each card */
+#network-cards .card {
+  flex: 1 1 0;                /* equal width for all cards */
+  min-width: 0;               /* prevent overflow */
+}
