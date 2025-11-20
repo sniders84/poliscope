@@ -1164,49 +1164,53 @@ document.addEventListener('DOMContentLoaded', () => {
   const feedTitle = document.getElementById('feed-title');
   const feedStories = document.getElementById('feed-stories');
 
-  // Bing News API endpoint + key
-  const BING_ENDPOINT = "https://api.bing.microsoft.com/v7.0/news/search";
-  const BING_KEY = "YOUR_API_KEY_HERE"; // replace with your Bing News Search API key
-
-  // Map each network to its domain filter
-  const newsSources = {
-    msnbc: "nbcnews.com",
-    abc: "abcnews.go.com",
-    cbs: "cbsnews.com",
-    fox: "foxnews.com",
-    cnn: "cnn.com"
+  // Official RSS feeds per network
+  const rssFeeds = {
+    msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',   // NBC/MSNBC general news
+    abc:   'https://abcnews.go.com/abcnews/topstories',       // ABC Top Stories
+    cbs:   'https://www.cbsnews.com/latest/rss/main',         // CBS Latest
+    fox:   'https://feeds.foxnews.com/foxnews/latest',        // FOX News Latest
+    cnn:   'http://rss.cnn.com/rss/cnn_topstories.rss'        // CNN Top Stories
   };
 
+  function parseItemDate(item) {
+    const raw = item.pubDate || item.isoDate || item.date || item.updated || item.published;
+    const d = raw ? new Date(raw) : null;
+    return isNaN(d?.getTime()) ? null : d;
+  }
+
   async function loadFeed(network) {
+    const url = rssFeeds[network];
     feedTitle.textContent = `${network.toUpperCase()} Stories`;
     feedStories.innerHTML = '<p style="color:#fff;">Loading...</p>';
 
     try {
-      const domain = newsSources[network];
-      const url = `${BING_ENDPOINT}?q=site:${domain}&count=10&sortBy=Date`;
-
-      const response = await fetch(url, {
-        headers: { "Ocp-Apim-Subscription-Key": BING_KEY }
-      });
-
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      // Use rss2json proxy to bypass CORS
+      const response = await fetch(
+        `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`
+      );
       const data = await response.json();
 
-      feedStories.innerHTML = "";
+      const items = Array.isArray(data.items) ? data.items.slice() : [];
 
-      if (!data.value || data.value.length === 0) {
+      const normalized = items
+        .map(item => ({ item, date: parseItemDate(item) }))
+        .filter(x => x.date)
+        .sort((a, b) => b.date.getTime() - a.date.getTime());
+
+      feedStories.innerHTML = '';
+
+      if (normalized.length === 0) {
         feedStories.innerHTML = '<p style="color:#fff;">No stories available.</p>';
         return;
       }
 
-      // Render top 10 items, newest first
-      data.value.forEach(item => {
-        const date = new Date(item.datePublished);
-        const story = document.createElement("div");
-        story.className = "story-card";
+      normalized.slice(0, 10).forEach(({ item, date }) => {
+        const story = document.createElement('div');
+        story.className = 'story-card';
         story.innerHTML = `
-          <a href="${item.url}" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none;">
-            <h4 style="margin-bottom:0.35rem;">${item.name}</h4>
+          <a href="${item.link}" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none;">
+            <h4 style="margin-bottom:0.35rem;">${item.title}</h4>
             <p style="font-size:0.85rem; color:#ccc; margin:0;">
               ${date.toLocaleString("en-US", { timeZone: "America/New_York" })} ET
             </p>
@@ -1216,14 +1220,13 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     } catch (err) {
       console.error(err);
-      feedStories.innerHTML = '<p style="color:#fff;">Error loading Bing News feed.</p>';
+      feedStories.innerHTML = '<p style="color:#fff;">Error loading feed.</p>';
     }
   }
 
-  // Attach click handlers to cards
-  document.querySelectorAll(".info-card[data-network]").forEach(card => {
-    card.addEventListener("click", () => {
-      const network = card.getAttribute("data-network");
+  document.querySelectorAll('.info-card[data-network]').forEach(card => {
+    card.addEventListener('click', () => {
+      const network = card.getAttribute('data-network');
       loadFeed(network);
     });
   });
@@ -1274,12 +1277,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Other existing functions and variables above ---
 
+// Official RSS feeds per network
 const rssFeeds = {
-  msnbc: 'https://www.nbcnews.com/rss',
-  abc: 'http://feeds.abcnews.com/abcnews/usheadlines',
-  cbs: 'https://www.cbsnews.com/latest/rss/main',
-  fox: 'https://feeds.foxnews.com/foxnews/latest',
-  cnn: 'http://rss.cnn.com/rss/cnn_topstories.rss'
+  msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',   // NBC/MSNBC general news
+  abc:   'https://abcnews.go.com/abcnews/topstories',       // ABC Top Stories
+  cbs:   'https://www.cbsnews.com/latest/rss/main',         // CBS Latest
+  fox:   'https://feeds.foxnews.com/foxnews/latest',        // FOX News Latest
+  cnn:   'http://rss.cnn.com/rss/cnn_topstories.rss'        // CNN Top Stories
 };
 
 // Fetch top 5 stories via rss2json
