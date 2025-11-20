@@ -39,7 +39,7 @@ Promise.all([
     ...scotus
   ];
 
-  renderOfficials(selectedState, '');
+showStartupHub();
 
   if (searchBar) {
     searchBar.addEventListener('input', e => {
