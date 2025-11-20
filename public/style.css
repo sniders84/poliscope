@@ -2006,3 +2006,25 @@ rssapp-carousel {
 .network-content.active {
   display: block;
 }
+.network-content {
+  display: none;
+  background-color: #222;
+  padding: 1rem;
+  margin: 0.5rem auto;
+  border-radius: 6px;
+  max-width: 1000px; /* keeps it neat */
+}
+
+.network-content.active {
+  display: block;
+}
+
+/* Story cards inside collapse */
+.story-card {
+  flex: 0 1 200px;
+  background-color: #333;
+  color: #fff;
+  padding: 0.75rem;
+  border-radius: 4px;
+  text-align: center;
+}
