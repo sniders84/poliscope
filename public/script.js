@@ -1164,104 +1164,66 @@ document.addEventListener('DOMContentLoaded', () => {
   const feedTitle = document.getElementById('feed-title');
   const feedStories = document.getElementById('feed-stories');
 
-  // Google News publisher feeds (scoped to recent items with when:12h)
-  const rssFeeds = {
-    msnbc: 'https://news.google.com/rss/search?q=source:MSNBC+OR+source:NBC+News+when:12h&hl=en-US&gl=US&ceid=US:en',
-    abc:   'https://news.google.com/rss/search?q=source:ABC+News+when:12h&hl=en-US&gl=US&ceid=US:en',
-    cbs:   'https://news.google.com/rss/search?q=source:CBS+News+when:12h&hl=en-US&gl=US&ceid=US:en',
-    fox:   'https://news.google.com/rss/search?q=source:Fox+News+when:12h&hl=en-US&gl=US&ceid=US:en',
-    cnn:   'https://news.google.com/rss/search?q=source:CNN+when:12h&hl=en-US&gl=US&ceid=US:en'
+  // Bing News API endpoint + key
+  const BING_ENDPOINT = "https://api.bing.microsoft.com/v7.0/news/search";
+  const BING_KEY = "YOUR_API_KEY_HERE"; // replace with your Bing News Search API key
+
+  // Map each network to its domain filter
+  const newsSources = {
+    msnbc: "nbcnews.com",
+    abc: "abcnews.go.com",
+    cbs: "cbsnews.com",
+    fox: "foxnews.com",
+    cnn: "cnn.com"
   };
-
-  // Expected publisher names in <source> for filtering
-  const publisherMatch = {
-    msnbc: ['MSNBC', 'NBC News'],
-    abc: ['ABC News'],
-    cbs: ['CBS News'],
-    fox: ['Fox News'],
-    cnn: ['CNN']
-  };
-
-  // Format timestamps in Eastern Time (America/New_York)
-  const etFormatter = new Intl.DateTimeFormat('en-US', {
-    timeZone: 'America/New_York',
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit'
-  });
-
-  function formatET(date) {
-    return etFormatter.format(date) + ' ET';
-  }
 
   async function loadFeed(network) {
-    const url = rssFeeds[network];
     feedTitle.textContent = `${network.toUpperCase()} Stories`;
     feedStories.innerHTML = '<p style="color:#fff;">Loading...</p>';
 
     try {
-      // Fetch RSS XML directly (no JSON converter)
-      const res = await fetch(url);
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const xmlText = await res.text();
+      const domain = newsSources[network];
+      const url = `${BING_ENDPOINT}?q=site:${domain}&count=10&sortBy=Date`;
 
-      // Parse XML
-      const parser = new DOMParser();
-      const xml = parser.parseFromString(xmlText, 'application/xml');
-
-      // Guard for parse errors
-      const parseError = xml.querySelector('parsererror');
-      if (parseError) throw new Error('RSS XML parse error');
-
-      const items = Array.from(xml.querySelectorAll('item')).map(item => {
-        const title = item.querySelector('title')?.textContent?.trim() || '';
-        const link = item.querySelector('link')?.textContent?.trim() || '';
-        const pubDateText = item.querySelector('pubDate')?.textContent?.trim() || '';
-        const source = item.querySelector('source')?.textContent?.trim() || '';
-
-        // pubDate is RFC822 in GMT from Google News; Date will parse to local internally.
-        const date = pubDateText ? new Date(pubDateText) : null;
-        return { title, link, date, source };
+      const response = await fetch(url, {
+        headers: { "Ocp-Apim-Subscription-Key": BING_KEY }
       });
 
-      // Filter to expected publisher source names to avoid "articles about the network"
-      const allowed = publisherMatch[network];
-      const filtered = items.filter(i => i.date && allowed.some(name => i.source.includes(name)));
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const data = await response.json();
 
-      // Sort newest -> oldest by date
-      const sorted = filtered.sort((a, b) => b.date.getTime() - a.date.getTime());
+      feedStories.innerHTML = "";
 
-      feedStories.innerHTML = '';
-
-      if (sorted.length === 0) {
-        feedStories.innerHTML = '<p style="color:#fff;">No recent stories found.</p>';
+      if (!data.value || data.value.length === 0) {
+        feedStories.innerHTML = '<p style="color:#fff;">No stories available.</p>';
         return;
       }
 
-      // Render top 10
-      sorted.slice(0, 10).forEach(i => {
-        const story = document.createElement('div');
-        story.className = 'story-card';
+      // Render top 10 items, newest first
+      data.value.forEach(item => {
+        const date = new Date(item.datePublished);
+        const story = document.createElement("div");
+        story.className = "story-card";
         story.innerHTML = `
-          <a href="${i.link}" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none;">
-            <h4 style="margin-bottom:0.35rem;">${i.title}</h4>
-            <p style="font-size:0.85rem; color:#ccc; margin:0;">${formatET(i.date)}</p>
+          <a href="${item.url}" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none;">
+            <h4 style="margin-bottom:0.35rem;">${item.name}</h4>
+            <p style="font-size:0.85rem; color:#ccc; margin:0;">
+              ${date.toLocaleString("en-US", { timeZone: "America/New_York" })} ET
+            </p>
           </a>
         `;
         feedStories.appendChild(story);
       });
     } catch (err) {
       console.error(err);
-      feedStories.innerHTML = '<p style="color:#fff;">Error loading Google News feed.</p>';
+      feedStories.innerHTML = '<p style="color:#fff;">Error loading Bing News feed.</p>';
     }
   }
 
-  // Click handlers
-  document.querySelectorAll('.info-card[data-network]').forEach(card => {
-    card.addEventListener('click', () => {
-      const network = card.getAttribute('data-network');
+  // Attach click handlers to cards
+  document.querySelectorAll(".info-card[data-network]").forEach(card => {
+    card.addEventListener("click", () => {
+      const network = card.getAttribute("data-network");
       loadFeed(network);
     });
   });
