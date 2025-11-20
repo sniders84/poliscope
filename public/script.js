@@ -1164,19 +1164,36 @@ document.addEventListener('DOMContentLoaded', () => {
   const feedTitle = document.getElementById('feed-title');
   const feedStories = document.getElementById('feed-stories');
 
-  // Google News publisher feeds
+  // Google News publisher feeds (scoped to recent items with when:12h)
   const rssFeeds = {
-    msnbc: 'https://news.google.com/rss/search?q=source:MSNBC&hl=en-US&gl=US&ceid=US:en',
-    abc: 'https://news.google.com/rss/search?q=source:ABC+News&hl=en-US&gl=US&ceid=US:en',
-    cbs: 'https://news.google.com/rss/search?q=source:CBS+News&hl=en-US&gl=US&ceid=US:en',
-    fox: 'https://news.google.com/rss/search?q=source:Fox+News&hl=en-US&gl=US&ceid=US:en',
-    cnn: 'https://news.google.com/rss/search?q=source:CNN&hl=en-US&gl=US&ceid=US:en'
+    msnbc: 'https://news.google.com/rss/search?q=source:MSNBC+OR+source:NBC+News+when:12h&hl=en-US&gl=US&ceid=US:en',
+    abc:   'https://news.google.com/rss/search?q=source:ABC+News+when:12h&hl=en-US&gl=US&ceid=US:en',
+    cbs:   'https://news.google.com/rss/search?q=source:CBS+News+when:12h&hl=en-US&gl=US&ceid=US:en',
+    fox:   'https://news.google.com/rss/search?q=source:Fox+News+when:12h&hl=en-US&gl=US&ceid=US:en',
+    cnn:   'https://news.google.com/rss/search?q=source:CNN+when:12h&hl=en-US&gl=US&ceid=US:en'
   };
 
-  function parseItemDate(item) {
-    const raw = item.pubDate || item.isoDate;
-    const d = raw ? new Date(raw) : null;
-    return isNaN(d?.getTime()) ? null : d;
+  // Expected publisher names in <source> for filtering
+  const publisherMatch = {
+    msnbc: ['MSNBC', 'NBC News'],
+    abc: ['ABC News'],
+    cbs: ['CBS News'],
+    fox: ['Fox News'],
+    cnn: ['CNN']
+  };
+
+  // Format timestamps in Eastern Time (America/New_York)
+  const etFormatter = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'America/New_York',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+
+  function formatET(date) {
+    return etFormatter.format(date) + ' ET';
   }
 
   async function loadFeed(network) {
@@ -1185,44 +1202,63 @@ document.addEventListener('DOMContentLoaded', () => {
     feedStories.innerHTML = '<p style="color:#fff;">Loading...</p>';
 
     try {
-      const response = await fetch(
-        `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`
-      );
-      const data = await response.json();
+      // Fetch RSS XML directly (no JSON converter)
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const xmlText = await res.text();
 
-      const items = Array.isArray(data.items) ? data.items.slice() : [];
+      // Parse XML
+      const parser = new DOMParser();
+      const xml = parser.parseFromString(xmlText, 'application/xml');
 
-      const normalized = items
-        .map(item => ({ item, date: parseItemDate(item) }))
-        .filter(x => x.date)
-        .sort((a, b) => b.date.getTime() - a.date.getTime());
+      // Guard for parse errors
+      const parseError = xml.querySelector('parsererror');
+      if (parseError) throw new Error('RSS XML parse error');
+
+      const items = Array.from(xml.querySelectorAll('item')).map(item => {
+        const title = item.querySelector('title')?.textContent?.trim() || '';
+        const link = item.querySelector('link')?.textContent?.trim() || '';
+        const pubDateText = item.querySelector('pubDate')?.textContent?.trim() || '';
+        const source = item.querySelector('source')?.textContent?.trim() || '';
+
+        // pubDate is RFC822 in GMT from Google News; Date will parse to local internally.
+        const date = pubDateText ? new Date(pubDateText) : null;
+        return { title, link, date, source };
+      });
+
+      // Filter to expected publisher source names to avoid "articles about the network"
+      const allowed = publisherMatch[network];
+      const filtered = items.filter(i => i.date && allowed.some(name => i.source.includes(name)));
+
+      // Sort newest -> oldest by date
+      const sorted = filtered.sort((a, b) => b.date.getTime() - a.date.getTime());
 
       feedStories.innerHTML = '';
 
-      if (normalized.length === 0) {
-        feedStories.innerHTML = '<p style="color:#fff;">No stories available.</p>';
+      if (sorted.length === 0) {
+        feedStories.innerHTML = '<p style="color:#fff;">No recent stories found.</p>';
         return;
       }
 
-      normalized.slice(0, 10).forEach(({ item, date }) => {
+      // Render top 10
+      sorted.slice(0, 10).forEach(i => {
         const story = document.createElement('div');
         story.className = 'story-card';
         story.innerHTML = `
-          <a href="${item.link}" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none;">
-            <h4 style="margin-bottom:0.35rem;">${item.title}</h4>
-            <p style="font-size:0.85rem; color:#ccc; margin:0;">
-              ${date.toLocaleString()}
-            </p>
+          <a href="${i.link}" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none;">
+            <h4 style="margin-bottom:0.35rem;">${i.title}</h4>
+            <p style="font-size:0.85rem; color:#ccc; margin:0;">${formatET(i.date)}</p>
           </a>
         `;
         feedStories.appendChild(story);
       });
     } catch (err) {
       console.error(err);
-      feedStories.innerHTML = '<p style="color:#fff;">Error loading feed.</p>';
+      feedStories.innerHTML = '<p style="color:#fff;">Error loading Google News feed.</p>';
     }
   }
 
+  // Click handlers
   document.querySelectorAll('.info-card[data-network]').forEach(card => {
     card.addEventListener('click', () => {
       const network = card.getAttribute('data-network');
