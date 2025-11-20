@@ -1159,18 +1159,21 @@ function showStartupHub() {
 document.addEventListener('DOMContentLoaded', () => {
   initHubNav();
 });
+// main.js
+
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.info-card[data-network]').forEach(card => {
     const network = card.getAttribute('data-network');
     const target = document.getElementById(`${network}-content`);
-    if (!target) return;
 
-    card.addEventListener('click', () => {
-      document.querySelectorAll('.network-content.active').forEach(openBlock => {
-        if (openBlock !== target) openBlock.classList.remove('active');
+    if (target) {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('.network-content.active').forEach(openBlock => {
+          if (openBlock !== target) openBlock.classList.remove('active');
+        });
+        target.classList.toggle('active');
       });
-      target.classList.toggle('active');
-    });
+    }
   });
 });
 
