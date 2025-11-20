@@ -1164,18 +1164,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const feedTitle = document.getElementById('feed-title');
   const feedStories = document.getElementById('feed-stories');
 
-  // Network -> RSS feed map
- const rssFeeds = {
-  msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',
-  abc: 'https://abcnews.go.com/abcnews/topstories',
-  cbs: 'https://www.cbsnews.com/latest/rss/main',
-  fox: 'https://feeds.foxnews.com/foxnews/latest',
-  cnn: 'http://rss.cnn.com/rss/cnn_topstories.rss'
-};
+  // Google News RSS feeds per network
+  const rssFeeds = {
+    msnbc: 'https://news.google.com/rss/search?q=MSNBC&hl=en-US&gl=US&ceid=US:en',
+    abc: 'https://news.google.com/rss/search?q=ABC+News&hl=en-US&gl=US&ceid=US:en',
+    cbs: 'https://news.google.com/rss/search?q=CBS+News&hl=en-US&gl=US&ceid=US:en',
+    fox: 'https://news.google.com/rss/search?q=FOX+News&hl=en-US&gl=US&ceid=US:en',
+    cnn: 'https://news.google.com/rss/search?q=CNN&hl=en-US&gl=US&ceid=US:en'
+  };
 
-  // Parse date safely
   function parseItemDate(item) {
-    const raw = item.pubDate || item.isoDate || item.date || item.updated || item.published;
+    const raw = item.pubDate || item.isoDate;
     const d = raw ? new Date(raw) : null;
     return isNaN(d?.getTime()) ? null : d;
   }
@@ -1193,7 +1192,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const items = Array.isArray(data.items) ? data.items.slice() : [];
 
-      // Normalize dates and sort newest-first
       const normalized = items
         .map(item => ({ item, date: parseItemDate(item) }))
         .filter(x => x.date)
@@ -1206,7 +1204,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Render top 10 items
       normalized.slice(0, 10).forEach(({ item, date }) => {
         const story = document.createElement('div');
         story.className = 'story-card';
@@ -1226,7 +1223,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Click handlers
   document.querySelectorAll('.info-card[data-network]').forEach(card => {
     card.addEventListener('click', () => {
       const network = card.getAttribute('data-network');
