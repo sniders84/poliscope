@@ -1164,7 +1164,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const feedTitle = document.getElementById('feed-title');
   const feedStories = document.getElementById('feed-stories');
 
-  // Map each network to its RSS feed URL
+  // Network -> RSS feed map (updated MSNBC)
   const rssFeeds = {
     msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',
     abc: 'https://abcnews.go.com/abcnews/topstories',
@@ -1173,49 +1173,104 @@ document.addEventListener('DOMContentLoaded', () => {
     cnn: 'http://rss.cnn.com/rss/cnn_topstories.rss'
   };
 
-  // Function to fetch and parse RSS feed
+  // Config: show only items newer than this many hours (set to 48 for testing)
+  const FRESHNESS_HOURS = 24;
+
+  // Helpers
+  function parseItemDate(item) {
+    // Try multiple fields; rss2json often provides pubDate, some services provide isoDate
+    const raw =
+      item.pubDate ||
+      item.isoDate ||
+      item.date ||
+      item.updated ||
+      item.published;
+
+    const d = raw ? new Date(raw) : null;
+    return isNaN(d?.getTime()) ? null : d;
+  }
+
+  function formatAbsolute(d) {
+    // Local time, concise
+    return d.toLocaleDateString([], {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    }) + ' ' + d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  }
+
+  function formatRelative(d) {
+    const now = new Date();
+    const diffMs = now - d;
+    const mins = Math.floor(diffMs / 60000);
+    if (mins < 1) return 'just now';
+    if (mins < 60) return `${mins} min ago`;
+    const hours = Math.floor(mins / 60);
+    if (hours < 24) return `${hours} hr ago`;
+    const days = Math.floor(hours / 24);
+    return `${days} day${days > 1 ? 's' : ''} ago`;
+  }
+
+  function isFresh(d) {
+    const hours = (Date.now() - d.getTime()) / 3600000;
+    return hours <= FRESHNESS_HOURS;
+  }
+
   async function loadFeed(network) {
     const url = rssFeeds[network];
     feedTitle.textContent = `${network.toUpperCase()} Stories`;
     feedStories.innerHTML = '<p style="color:#fff;">Loading...</p>';
 
     try {
+      // Convert RSS XML to JSON via rss2json
       const response = await fetch(
         `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`
       );
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const data = await response.json();
 
-      feedStories.innerHTML = ''; // clear loading
+      // Guard: items present?
+      const items = Array.isArray(data.items) ? data.items.slice() : [];
+      // Normalize dates, drop undated, sort newest first, filter by freshness window
+      const normalized = items
+        .map(item => ({ item, date: parseItemDate(item) }))
+        .filter(x => x.date) // keep only items with valid dates
+        .sort((a, b) => b.date.getTime() - a.date.getTime())
+        .filter(x => isFresh(x.date));
 
-      if (data.items && data.items.length > 0) {
-        data.items.slice(0, 6).forEach(item => {
-          const story = document.createElement('div');
-          story.className = 'story-card';
+      feedStories.innerHTML = '';
 
-          // Format timestamp
-          const date = item.pubDate ? new Date(item.pubDate) : null;
-          const formattedDate = date
-            ? `${date.toLocaleDateString()} ${date.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})}`
-            : '';
-
-          story.innerHTML = `
-            <a href="${item.link}" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none;">
-              <h4>${item.title}</h4>
-              <p style="font-size:0.85rem; color:#ccc;">${formattedDate}</p>
-            </a>
-          `;
-          feedStories.appendChild(story);
-        });
-      } else {
-        feedStories.innerHTML = '<p style="color:#fff;">No stories available.</p>';
+      if (normalized.length === 0) {
+        feedStories.innerHTML =
+          '<p style="color:#fff;">No fresh stories available in the last 24 hours.</p>';
+        return;
       }
+
+      // Render top 8 fresh items
+      normalized.slice(0, 8).forEach(({ item, date }) => {
+        const abs = formatAbsolute(date);
+        const rel = formatRelative(date);
+
+        const story = document.createElement('div');
+        story.className = 'story-card';
+        story.innerHTML = `
+          <a href="${item.link}" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none;">
+            <h4 style="margin-bottom:0.35rem;">${item.title}</h4>
+            <p style="font-size:0.85rem; color:#ccc; margin:0;">
+              ${abs} • ${rel}
+            </p>
+          </a>
+        `;
+        feedStories.appendChild(story);
+      });
     } catch (err) {
       console.error(err);
-      feedStories.innerHTML = '<p style="color:#fff;">Error loading feed.</p>';
+      feedStories.innerHTML =
+        '<p style="color:#fff;">Error loading feed or parsing dates.</p>';
     }
   }
 
-  // Attach click handlers to cards
+  // Click handlers
   document.querySelectorAll('.info-card[data-network]').forEach(card => {
     card.addEventListener('click', () => {
       const network = card.getAttribute('data-network');
