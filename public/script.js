@@ -1165,15 +1165,16 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.info-card[data-network]').forEach(card => {
     const network = card.getAttribute('data-network');
     const target = document.getElementById(`${network}-content`);
+    if (!target) return;
 
-    if (target) {
-      card.addEventListener('click', () => {
-        document.querySelectorAll('.network-content.active').forEach(openBlock => {
-          if (openBlock !== target) openBlock.classList.remove('active');
-        });
-        target.classList.toggle('active');
+    card.addEventListener('click', () => {
+      document.querySelectorAll('.network-content.active').forEach(openBlock => {
+        if (openBlock !== target) openBlock.classList.remove('active');
       });
-    }
+      target.classList.toggle('active');
+      // Optional: scroll the opened block into view for UX
+      // target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
   });
 });
 
