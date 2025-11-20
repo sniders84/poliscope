@@ -1159,29 +1159,60 @@ function showStartupHub() {
 document.addEventListener('DOMContentLoaded', () => {
   initHubNav();
 });
+
 document.addEventListener('DOMContentLoaded', () => {
   const feedTitle = document.getElementById('feed-title');
   const feedStories = document.getElementById('feed-stories');
 
+  // Map each network to its RSS feed URL
+  const rssFeeds = {
+    msnbc: 'https://feeds.nbcnews.com/msnbc/top-stories',
+    abc: 'https://abcnews.go.com/abcnews/topstories',
+    cbs: 'https://www.cbsnews.com/latest/rss/main',
+    fox: 'https://feeds.foxnews.com/foxnews/latest',
+    cnn: 'http://rss.cnn.com/rss/cnn_topstories.rss'
+  };
+
+  // Function to fetch and parse RSS feed
+  async function loadFeed(network) {
+    const url = rssFeeds[network];
+    feedTitle.textContent = `${network.toUpperCase()} Stories`;
+    feedStories.innerHTML = '<p style="color:#fff;">Loading...</p>';
+
+    try {
+      const response = await fetch(
+        `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`
+      );
+      const data = await response.json();
+
+      feedStories.innerHTML = ''; // clear loading
+
+      if (data.items && data.items.length > 0) {
+        data.items.slice(0, 6).forEach(item => {
+          const story = document.createElement('div');
+          story.className = 'story-card';
+          story.innerHTML = `
+            <a href="${item.link}" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none;">
+              <h4>${item.title}</h4>
+              <p>${item.pubDate ? new Date(item.pubDate).toLocaleDateString() : ''}</p>
+            </a>
+          `;
+          feedStories.appendChild(story);
+        });
+      } else {
+        feedStories.innerHTML = '<p style="color:#fff;">No stories available.</p>';
+      }
+    } catch (err) {
+      console.error(err);
+      feedStories.innerHTML = '<p style="color:#fff;">Error loading feed.</p>';
+    }
+  }
+
+  // Attach click handlers to cards
   document.querySelectorAll('.info-card[data-network]').forEach(card => {
     card.addEventListener('click', () => {
       const network = card.getAttribute('data-network');
-
-      // Update feed title
-      feedTitle.textContent = `${network.toUpperCase()} Stories`;
-
-      // Clear old stories
-      feedStories.innerHTML = '';
-
-      // Example: populate with placeholder story cards
-      for (let i = 1; i <= 5; i++) {
-        const story = document.createElement('div');
-        story.className = 'story-card';
-        story.textContent = `${network.toUpperCase()} Story ${i}`;
-        feedStories.appendChild(story);
-      }
-
-      // Later: replace with actual RSS feed parsing logic
+      loadFeed(network);
     });
   });
 });
