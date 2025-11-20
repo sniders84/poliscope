@@ -1165,13 +1165,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const feedStories = document.getElementById('feed-stories');
 
   // Network -> RSS feed map
-  const rssFeeds = {
-    msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',
-    abc: 'https://abcnews.go.com/abcnews/topstories',
-    cbs: 'https://www.cbsnews.com/latest/rss/main',
-    fox: 'https://feeds.foxnews.com/foxnews/latest',
-    cnn: 'http://rss.cnn.com/rss/cnn_topstories.rss'
-  };
+ const rssFeeds = {
+  msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',
+  abc: 'https://abcnews.go.com/abcnews/topstories',
+  cbs: 'https://www.cbsnews.com/latest/rss/main',
+  fox: 'https://feeds.foxnews.com/foxnews/latest',
+  cnn: 'http://rss.cnn.com/rss/cnn_topstories.rss'
+};
 
   // Parse date safely
   function parseItemDate(item) {
