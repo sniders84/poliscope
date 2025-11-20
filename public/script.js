@@ -1159,6 +1159,8 @@ function showStartupHub() {
 document.addEventListener('DOMContentLoaded', () => {
   initHubNav();
 });
+// main.js
+
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.info-card[data-network]').forEach(card => {
     const network = card.getAttribute('data-network');
@@ -1166,14 +1168,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (target) {
       card.addEventListener('click', () => {
-        // Collapse other open blocks
         document.querySelectorAll('.network-content.active').forEach(openBlock => {
-          if (openBlock !== target) {
-            openBlock.classList.remove('active');
-          }
+          if (openBlock !== target) openBlock.classList.remove('active');
         });
-
-        // Toggle the clicked one
         target.classList.toggle('active');
       });
     }
