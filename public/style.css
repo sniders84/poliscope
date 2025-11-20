@@ -2058,3 +2058,18 @@ rssapp-carousel {
   border-radius: 4px;
   text-align: center;
 }
+/* Network cards container */
+#network-cards {
+  display: flex;
+  flex-wrap: nowrap;       /* keep all cards on one row */
+  justify-content: space-between; /* spread them evenly */
+  align-items: stretch;
+  gap: 1rem;               /* spacing between cards */
+  overflow-x: auto;        /* allow horizontal scroll if too many cards */
+}
+
+/* Each card */
+#network-cards .card {
+  flex: 1 1 0;             /* equal width cards */
+  min-width: 200px;        /* prevent cards from shrinking too small */
+}
