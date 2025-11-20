@@ -39,17 +39,14 @@ Promise.all([
     ...scotus
   ];
 
-  // Default startup tab → Home Hub
-  showStartupHub();
+  renderOfficials(selectedState, '');
 
-  // Keep search bar wired to officials tab
   if (searchBar) {
     searchBar.addEventListener('input', e => {
       renderOfficials(selectedState, e.target.value);
     });
   }
 })
-
 .catch(err => console.error('Error loading data files:', err));
 
 // Modal refs (Officials modal)
@@ -1157,6 +1154,12 @@ function showStartupHub() {
   showTab('startup-hub');
 }
 
+// 🚫 Sticky nav removed — no initHubNav, no scroll listeners
+
+document.addEventListener('DOMContentLoaded', () => {
+  initHubNav();
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   const feedTitle = document.getElementById('feed-title');
   const feedStories = document.getElementById('feed-stories');
@@ -1372,9 +1375,8 @@ async function fetchGoogleNewsRss(feedUrl) {
       senators = sens;
       houseReps = reps;
 
-     // Render officials
-// renderOfficials(selectedState, '');
-showStartupHub();
+      // Render officials
+      renderOfficials(selectedState, '');
 
       // Fade out loading overlay
       if (loadingOverlay) {
