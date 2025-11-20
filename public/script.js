@@ -1168,12 +1168,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!target) return;
 
     card.addEventListener('click', () => {
+      // Collapse any other open rows
       document.querySelectorAll('.network-content.active').forEach(openBlock => {
         if (openBlock !== target) openBlock.classList.remove('active');
       });
+      // Toggle this one
       target.classList.toggle('active');
-      // Optional: scroll the opened block into view for UX
-      // target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
 });
