@@ -1378,8 +1378,9 @@ async function fetchGoogleNewsRss(feedUrl) {
       senators = sens;
       houseReps = reps;
 
-      // Render officials
-      renderOfficials(selectedState, '');
+     // Render officials
+// renderOfficials(selectedState, '');
+showStartupHub();
 
       // Fade out loading overlay
       if (loadingOverlay) {
