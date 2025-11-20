@@ -39,14 +39,17 @@ Promise.all([
     ...scotus
   ];
 
-showStartupHub();
+  // Default startup tab → Home Hub
+  showStartupHub();
 
+  // Keep search bar wired to officials tab
   if (searchBar) {
     searchBar.addEventListener('input', e => {
       renderOfficials(selectedState, e.target.value);
     });
   }
 })
+
 .catch(err => console.error('Error loading data files:', err));
 
 // Modal refs (Officials modal)
