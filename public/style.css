@@ -1994,32 +1994,28 @@ rssapp-carousel {
   color: inherit;
   text-decoration: none;
 }
+/* Collapse sections: hidden by default, full-width when active */
 .network-content {
   display: none;
   background-color: #222;
   padding: 1rem;
-  margin: 0.5rem auto;
+  margin: 0.5rem 0;       /* sits neatly below the card row */
   border-radius: 6px;
-  max-width: 800px;   /* keeps it neat */
+  width: 100%;            /* full width under the cards */
 }
-
-.network-content.active {
-  display: block;
-}
-.network-content {
-  display: none;
-  background-color: #222;
-  padding: 1rem;
-  margin: 0.5rem auto;
-  border-radius: 6px;
-  max-width: 1000px; /* keeps it neat */
-}
-
 .network-content.active {
   display: block;
 }
 
-/* Story cards inside collapse */
+/* Stories inside each collapse should line up in a row */
+.network-content .card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: flex-start;
+}
+
+/* Story card styling */
 .story-card {
   flex: 0 1 200px;
   background-color: #333;
@@ -2028,6 +2024,7 @@ rssapp-carousel {
   border-radius: 4px;
   text-align: center;
 }
+
 /* Card row */
 #network-cards.card-grid {
   display: flex;
@@ -2048,103 +2045,17 @@ rssapp-carousel {
   text-align: center;
   transition: background-color 0.3s ease;
 }
-.info-card:hover { background-color: #1e3a5f; }
-.info-card a { display: block; color: inherit; text-decoration: none; }
-.network-logo { display: block; width: 60px; height: auto; margin: 0 auto 0.5rem; }
-
-/* Collapse sections: full-width below the row */
-#network-content-wrapper { width: 100%; margin-top: 0.5rem; }
-
-/* Critical: ensure these are NOT flex children of the card row */
-.network-content {
-  display: none;
-  background-color: #222;
-  padding: 1rem;
-  border-radius: 6px;
-  max-width: 1100px;
-  margin: 0.5rem auto 0;  /* center and keep below row */
+.info-card:hover {
+  background-color: #1e3a5f;
 }
-.network-content.active { display: block; }
-
-/* Stories inside each collapse should line up in a row */
-.network-content .card-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: flex-start;
+.info-card a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
 }
-.story-card {
-  flex: 0 1 200px;
-  background-color: #333;
-  color: #fff;
-  padding: 0.75rem;
-  border-radius: 4px;
-  text-align: center;
-}
-.network-block {
-  flex: 0 1 200px;
-}
-
-.news-card {
-  background-color: #2b2b2b;
-  color: #fff;
-  padding: 1rem;
-  border-radius: 6px;
-  text-align: center;
-  transition: background-color 0.3s ease;
-}
-.news-card:hover { background-color: #1e3a5f; }
-
-.network-content {
-  display: none;
-  margin-top: 0.5rem;
-}
-.network-content.active { display: block; }
-
-.network-content .card-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: flex-start;
-}
-.story-card {
-  flex: 0 1 200px;
-  background-color: #333;
-  color: #fff;
-  padding: 0.75rem;
-  border-radius: 4px;
-  text-align: center;
-}
-.info-card {
-  flex: 0 1 200px;
-  background-color: #2b2b2b;
-  color: #fff;
-  padding: 1rem;
-  border-radius: 6px;
-  text-align: center;
-  transition: background-color 0.3s ease;
-}
-.info-card:hover { background-color: #1e3a5f; }
-
-.network-content {
-  display: none;
-  width: 100%;
-  margin: 0.5rem 0;
-}
-.network-content.active { display: block; }
-
-.network-content .card-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: flex-start;
-}
-
-.story-card {
-  flex: 0 1 200px;
-  background-color: #333;
-  color: #fff;
-  padding: 0.75rem;
-  border-radius: 4px;
-  text-align: center;
+.network-logo {
+  display: block;
+  width: 60px;
+  height: auto;
+  margin: 0 auto 0.5rem;
 }
