@@ -2102,3 +2102,15 @@ rssapp-carousel {
   flex: 0 0 20%;
   box-sizing: border-box;
 }
+#network-cards {
+  display: flex;
+  flex-wrap: nowrap;       /* keep all six in one row */
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+#network-cards .info-card {
+  flex: 1 1 0;
+  min-width: 0;
+  box-sizing: border-box;
+}
