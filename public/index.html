@@ -95,79 +95,88 @@
    <section id="national-networks" class="category-section">
   <h2>National Broadcasting Networks</h2>
 
-  <!-- Network cards row -->
+  <!-- Network cards row (only cards live here) -->
   <div class="card-grid" id="network-cards">
     <!-- LiveNOW from FOX Card -->
-<div class="info-card">
-  <a href="https://www.livenowfox.com/live" target="_blank" rel="noopener noreferrer">
-    <img src="/assets/livenowfox.png" alt="LiveNOW FOX Logo" class="network-logo">
-    <h3>LiveNOW from FOX</h3>
-    <p>Raw &amp; Unfiltered News 24/7 Live News Stream.</p>
-  </a>
-</div>
+    <div class="info-card">
+      <a href="https://www.livenowfox.com/live" target="_blank" rel="noopener noreferrer">
+        <img src="/assets/livenowfox.png" alt="LiveNOW FOX Logo" class="network-logo">
+        <h3>LiveNOW from FOX</h3>
+        <p>Raw &amp; Unfiltered News 24/7 Live News Stream.</p>
+      </a>
+    </div>
 
-  <!-- MSNBC Card -->
-<div class="news-card info-card" data-network="msnbc">
-  <img src="/assets/msnbc.png" alt="MSNBC Logo" class="network-logo">
-  <h3>MSNBC</h3>
-  <p>A counter to FOX News coverage.</p>
-</div>
-<div id="msnbc-content" class="network-content">
-  <div class="card-grid">
-    <!-- MSNBC story cards go here -->
+    <!-- MSNBC Card -->
+    <div class="info-card" data-network="msnbc">
+      <img src="/assets/msnbc.png" alt="MSNBC Logo" class="network-logo">
+      <h3>MSNBC</h3>
+      <p>A counter to FOX News coverage.</p>
+    </div>
+
+    <!-- ABC Card -->
+    <div class="info-card" data-network="abc">
+      <img src="/assets/abc.png" alt="ABC News Logo" class="network-logo">
+      <h3>ABC News</h3>
+      <p>National news coverage from ABC.</p>
+    </div>
+
+    <!-- CBS Card -->
+    <div class="info-card" data-network="cbs">
+      <img src="/assets/cbs.png" alt="CBS News Logo" class="network-logo">
+      <h3>CBS News</h3>
+      <p>CBS News broadcasts and updates.</p>
+    </div>
+
+    <!-- FOX Card -->
+    <div class="info-card" data-network="fox">
+      <img src="/assets/fox.png" alt="FOX News Logo" class="network-logo">
+      <h3>FOX News</h3>
+      <p>Latest stories from FOX News.</p>
+    </div>
+
+    <!-- CNN Card -->
+    <div class="info-card" data-network="cnn">
+      <img src="/assets/cnn.png" alt="CNN Logo" class="network-logo">
+      <h3>CNN</h3>
+      <p>Breaking news and political analysis from CNN.</p>
+    </div>
   </div>
-</div>
 
-<!-- ABC Card -->
-<div class="news-card info-card" data-network="abc">
-  <img src="/assets/abc.png" alt="ABC News Logo" class="network-logo">
-  <h3>ABC News</h3>
-  <p>National news coverage from ABC.</p>
-</div>
-<div id="abc-content" class="network-content">
-  <div class="card-grid">
-    <!-- ABC story cards go here -->
+  <!-- Collapse sections live OUTSIDE the card row -->
+  <div id="network-content-wrapper">
+    <div id="msnbc-content" class="network-content">
+      <div class="card-grid">
+        <!-- MSNBC story cards go here -->
+      </div>
+    </div>
+
+    <div id="abc-content" class="network-content">
+      <div class="card-grid">
+        <!-- ABC story cards go here -->
+      </div>
+    </div>
+
+    <div id="cbs-content" class="network-content">
+      <div class="card-grid">
+        <!-- CBS story cards go here -->
+      </div>
+    </div>
+
+    <div id="fox-content" class="network-content">
+      <div class="card-grid">
+        <!-- FOX story cards go here -->
+      </div>
+    </div>
+
+    <div id="cnn-content" class="network-content">
+      <div class="card-grid">
+        <!-- CNN story cards go here -->
+      </div>
+    </div>
   </div>
-</div>
 
-<!-- CBS Card -->
-<div class="news-card info-card" data-network="cbs">
-  <img src="/assets/cbs.png" alt="CBS News Logo" class="network-logo">
-  <h3>CBS News</h3>
-  <p>CBS News broadcasts and updates.</p>
-</div>
-<div id="cbs-content" class="network-content">
-  <div class="card-grid">
-    <!-- CBS story cards go here -->
-  </div>
-</div>
-
-<!-- FOX Card -->
-<div class="news-card info-card" data-network="fox">
-  <img src="/assets/fox.png" alt="FOX News Logo" class="network-logo">
-  <h3>FOX News</h3>
-  <p>Latest stories from FOX News.</p>
-</div>
-<div id="fox-content" class="network-content">
-  <div class="card-grid">
-    <!-- FOX story cards go here -->
-  </div>
-</div>
-
-<!-- CNN Card -->
-<div class="news-card info-card" data-network="cnn">
-  <img src="/assets/cnn.png" alt="CNN Logo" class="network-logo">
-  <h3>CNN</h3>
-  <p>Breaking news and political analysis from CNN.</p>
-</div>
-<div id="cnn-content" class="network-content">
-  <div class="card-grid">
-    <!-- CNN story cards go here -->
-  </div>
-</div>
-
-<!-- Row for top stories -->
-<div class="card-grid" id="network-stories"></div>
+  <!-- Optional: a separate grid for top stories, if you use it elsewhere -->
+  <div class="card-grid" id="network-stories"></div>
 </section>
 
 <section id="world-news">
