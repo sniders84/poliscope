@@ -89,61 +89,58 @@
 <!-- Startup Hub Tab -->
 <section id="startup-hub" class="tab-content" style="display: none;">
   <h2>Home Hub</h2>
-  
-<!-- Sections -->
 
-   <section id="national-networks" class="category-section">
-  <h2>National Broadcasting Networks</h2>
+  <!-- National Broadcasting Networks -->
+  <div id="national-networks" class="category-section">
+    <h2>National Broadcasting Networks</h2>
+    <div class="card-grid" id="network-cards">
 
-  <!-- Network cards row -->
-  <div class="card-grid" id="network-cards">
+      <!-- LiveNOW from FOX Card -->
+      <div class="info-card" data-network="livenowfox">
+        <a href="https://www.livenowfox.com/live" target="_blank" rel="noopener noreferrer">
+          <img src="/assets/livenowfox.png" alt="LiveNOW FOX Logo" class="network-logo">
+          <h3>LiveNOW from FOX</h3>
+          <p>Raw &amp; Unfiltered News 24/7 Live News Stream.</p>
+        </a>
+      </div>
 
-    <!-- LiveNOW from FOX Card -->
-    <div class="info-card" data-network="livenowfox">
-      <a href="https://www.livenowfox.com/live" target="_blank" rel="noopener noreferrer">
-        <img src="/assets/livenowfox.png" alt="LiveNOW FOX Logo" class="network-logo">
-        <h3>LiveNOW from FOX</h3>
-        <p>Raw &amp; Unfiltered News 24/7 Live News Stream.</p>
-      </a>
+      <!-- MSNBC -->
+      <div class="info-card" data-network="msnbc">
+        <img src="/assets/msnbc.png" alt="MSNBC Logo" class="network-logo">
+        <h3>MSNBC</h3>
+        <p>A counter to FOX News coverage.</p>
+      </div>
+
+      <!-- ABC -->
+      <div class="info-card" data-network="abc">
+        <img src="/assets/abc.png" alt="ABC News Logo" class="network-logo">
+        <h3>ABC News</h3>
+        <p>National news coverage from ABC.</p>
+      </div>
+
+      <!-- CBS -->
+      <div class="info-card" data-network="cbs">
+        <img src="/assets/cbs.png" alt="CBS News Logo" class="network-logo">
+        <h3>CBS News</h3>
+        <p>CBS News broadcasts and updates.</p>
+      </div>
+
+      <!-- FOX News -->
+      <div class="info-card" data-network="fox">
+        <img src="/assets/fox.png" alt="FOX News Logo" class="network-logo">
+        <h3>FOX News</h3>
+        <p>Latest stories from FOX News.</p>
+      </div>
+
+      <!-- CNN -->
+      <div class="info-card" data-network="cnn">
+        <img src="/assets/cnn.png" alt="CNN Logo" class="network-logo">
+        <h3>CNN</h3>
+        <p>Breaking news and political analysis from CNN.</p>
+      </div>
+
     </div>
-
-    <!-- MSNBC -->
-    <div class="info-card" data-network="msnbc">
-      <img src="/assets/msnbc.png" alt="MSNBC Logo" class="network-logo">
-      <h3>MSNBC</h3>
-      <p>A counter to FOX News coverage.</p>
-    </div>
-
-    <!-- ABC -->
-    <div class="info-card" data-network="abc">
-      <img src="/assets/abc.png" alt="ABC News Logo" class="network-logo">
-      <h3>ABC News</h3>
-      <p>National news coverage from ABC.</p>
-    </div>
-
-    <!-- CBS -->
-    <div class="info-card" data-network="cbs">
-      <img src="/assets/cbs.png" alt="CBS News Logo" class="network-logo">
-      <h3>CBS News</h3>
-      <p>CBS News broadcasts and updates.</p>
-    </div>
-
-    <!-- FOX News -->
-    <div class="info-card" data-network="fox">
-      <img src="/assets/fox.png" alt="FOX News Logo" class="network-logo">
-      <h3>FOX News</h3>
-      <p>Latest stories from FOX News.</p>
-    </div>
-
-    <!-- CNN -->
-    <div class="info-card" data-network="cnn">
-      <img src="/assets/cnn.png" alt="CNN Logo" class="network-logo">
-      <h3>CNN</h3>
-      <p>Breaking news and political analysis from CNN.</p>
-    </div>
-
   </div>
-</section>
 
   <!-- Single feed viewer -->
   <div id="feed-viewer" class="feed-viewer">
@@ -152,40 +149,43 @@
       <!-- RSS feed stories will populate here -->
     </div>
   </div>
-</section>
 
-<section id="world-news">
-  <h2>Global Politics & World News</h2>
-  <rssapp-carousel id="91yINq5LiI3EE02z"></rssapp-carousel>
-  <script src="https://widget.rss.app/v1/carousel.js" type="text/javascript" async></script>
-</section>
+  <!-- Global Politics & World News -->
+  <div id="world-news" class="hub-section">
+    <h2>Global Politics &amp; World News</h2>
+    <rssapp-carousel id="91yINq5LiI3EE02z"></rssapp-carousel>
+    <script src="https://widget.rss.app/v1/carousel.js" type="text/javascript" async></script>
+  </div>
 
- <section id="finance-markets">
-  <h2>Finance & Markets</h2>
-  <rssapp-carousel id="yKzUurqBBwmJD8fu"></rssapp-carousel>
-  <script src="https://widget.rss.app/v1/carousel.js" type="text/javascript" async></script>
-</section>
+  <!-- Finance & Markets -->
+  <div id="finance-markets" class="hub-section">
+    <h2>Finance &amp; Markets</h2>
+    <rssapp-carousel id="yKzUurqBBwmJD8fu"></rssapp-carousel>
+    <script src="https://widget.rss.app/v1/carousel.js" type="text/javascript" async></script>
+  </div>
 
-  <section id="economy">
-  <h2>Economy</h2>
-  <rssapp-carousel id="vXg6Ae2ZfZ1aKPhG"></rssapp-carousel>
-  <script src="https://widget.rss.app/v1/carousel.js" type="text/javascript" async></script>
-</section>
+  <!-- Economy -->
+  <div id="economy" class="hub-section">
+    <h2>Economy</h2>
+    <rssapp-carousel id="vXg6Ae2ZfZ1aKPhG"></rssapp-carousel>
+    <script src="https://widget.rss.app/v1/carousel.js" type="text/javascript" async></script>
+  </div>
 
-  <section id="popular-podcasts" class="category-section">
+  <!-- Popular Podcasts -->
+  <div id="popular-podcasts" class="category-section">
     <h2>Popular Podcasts</h2>
     <div class="card-grid">
       <div class="info-card"><h3>Pod Save America</h3><p>Political commentary from Pod Save America.</p></div>
       <div class="info-card"><h3>The Daily (NYT)</h3><p>News analysis and storytelling from The Daily.</p></div>
       <div class="info-card"><h3>NPR Politics</h3><p>Political coverage and analysis from NPR.</p></div>
     </div>
-  </section>
+  </div>
 
   <!-- 🌍 Social Trends Section -->
-  <section id="social-trends">
+  <div id="social-trends" class="hub-section">
     <h2>Trending Now</h2>
     <div id="social-feed" class="grid"></div>
-  </section>
+  </div>
 </section>
 
 <style>
