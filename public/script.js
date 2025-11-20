@@ -1173,12 +1173,6 @@ document.addEventListener('DOMContentLoaded', () => {
     cnn:   'http://rss.cnn.com/rss/cnn_topstories.rss'        // CNN Top Stories
   };
 
-  function parseItemDate(item) {
-    const raw = item.pubDate || item.isoDate || item.date || item.updated || item.published;
-    const d = raw ? new Date(raw) : null;
-    return isNaN(d?.getTime()) ? null : d;
-  }
-
   async function loadFeed(network) {
     const url = rssFeeds[network];
     feedTitle.textContent = `${network.toUpperCase()} Stories`;
@@ -1193,8 +1187,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const items = Array.isArray(data.items) ? data.items.slice() : [];
 
+      // Just sort by pubDate if available, but don’t display it
       const normalized = items
-        .map(item => ({ item, date: parseItemDate(item) }))
+        .map(item => ({ item, date: item.pubDate ? new Date(item.pubDate) : null }))
         .filter(x => x.date)
         .sort((a, b) => b.date.getTime() - a.date.getTime());
 
@@ -1205,15 +1200,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      normalized.slice(0, 10).forEach(({ item, date }) => {
+      normalized.slice(0, 10).forEach(({ item }) => {
         const story = document.createElement('div');
         story.className = 'story-card';
         story.innerHTML = `
           <a href="${item.link}" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none;">
             <h4 style="margin-bottom:0.35rem;">${item.title}</h4>
-            <p style="font-size:0.85rem; color:#ccc; margin:0;">
-              ${date.toLocaleString("en-US", { timeZone: "America/New_York" })} ET
-            </p>
           </a>
         `;
         feedStories.appendChild(story);
