@@ -2085,3 +2085,6 @@ rssapp-carousel {
   flex: 1 1 0;                /* equal width for all cards */
   min-width: 0;               /* prevent overflow */
 }
+#network-cards .card {
+  width: 20%;   /* 5 cards = 20% each */
+}
