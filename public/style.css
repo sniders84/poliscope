@@ -1833,3 +1833,24 @@ rssapp-carousel {
 .network-content.active {
   display: block;
 }
+.network-card,
+.info-card {
+  flex: 0 1 200px;          /* same width as info cards */
+  background-color: #2b2b2b; /* dark gray background */
+  color: #fff;
+  padding: 1rem;
+  border-radius: 6px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.network-card:hover,
+.info-card:hover {
+  background-color: #1e3a5f; /* blue hover */
+}
+
+.network-logo {
+  width: 60px;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
