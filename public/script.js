@@ -1159,21 +1159,30 @@ function showStartupHub() {
 document.addEventListener('DOMContentLoaded', () => {
   initHubNav();
 });
-// main.js
-
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.info-card[data-network]').forEach(card => {
-    const network = card.getAttribute('data-network');
-    const target = document.getElementById(`${network}-content`);
+  const feedTitle = document.getElementById('feed-title');
+  const feedStories = document.getElementById('feed-stories');
 
-    if (target) {
-      card.addEventListener('click', () => {
-        document.querySelectorAll('.network-content.active').forEach(openBlock => {
-          if (openBlock !== target) openBlock.classList.remove('active');
-        });
-        target.classList.toggle('active');
-      });
-    }
+  document.querySelectorAll('.info-card[data-network]').forEach(card => {
+    card.addEventListener('click', () => {
+      const network = card.getAttribute('data-network');
+
+      // Update feed title
+      feedTitle.textContent = `${network.toUpperCase()} Stories`;
+
+      // Clear old stories
+      feedStories.innerHTML = '';
+
+      // Example: populate with placeholder story cards
+      for (let i = 1; i <= 5; i++) {
+        const story = document.createElement('div');
+        story.className = 'story-card';
+        story.textContent = `${network.toUpperCase()} Story ${i}`;
+        feedStories.appendChild(story);
+      }
+
+      // Later: replace with actual RSS feed parsing logic
+    });
   });
 });
 
