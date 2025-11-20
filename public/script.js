@@ -1165,13 +1165,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const feedStories = document.getElementById('feed-stories');
 
   // Map each network to its RSS feed URL
- const rssFeeds = {
-  msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',
-  abc: 'https://abcnews.go.com/abcnews/topstories',
-  cbs: 'https://www.cbsnews.com/latest/rss/main',
-  fox: 'https://feeds.foxnews.com/foxnews/latest',
-  cnn: 'http://rss.cnn.com/rss/cnn_topstories.rss'
-};
+  const rssFeeds = {
+    msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',
+    abc: 'https://abcnews.go.com/abcnews/topstories',
+    cbs: 'https://www.cbsnews.com/latest/rss/main',
+    fox: 'https://feeds.foxnews.com/foxnews/latest',
+    cnn: 'http://rss.cnn.com/rss/cnn_topstories.rss'
+  };
 
   // Function to fetch and parse RSS feed
   async function loadFeed(network) {
@@ -1191,10 +1191,17 @@ document.addEventListener('DOMContentLoaded', () => {
         data.items.slice(0, 6).forEach(item => {
           const story = document.createElement('div');
           story.className = 'story-card';
+
+          // Format timestamp
+          const date = item.pubDate ? new Date(item.pubDate) : null;
+          const formattedDate = date
+            ? `${date.toLocaleDateString()} ${date.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})}`
+            : '';
+
           story.innerHTML = `
             <a href="${item.link}" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none;">
               <h4>${item.title}</h4>
-              <p>${item.pubDate ? new Date(item.pubDate).toLocaleDateString() : ''}</p>
+              <p style="font-size:0.85rem; color:#ccc;">${formattedDate}</p>
             </a>
           `;
           feedStories.appendChild(story);
