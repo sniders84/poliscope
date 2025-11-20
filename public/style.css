@@ -2071,3 +2071,36 @@ rssapp-carousel {
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.4);
 }
+/* Ensure sections stack top-to-bottom */
+section.tab-content {
+  display: block;
+  width: 100%;
+  margin: 0 0 2rem 0;
+}
+
+/* Force grid layout inside each section */
+section.tab-content > .grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) !important;
+  gap: 1rem !important;
+  align-items: start;
+}
+
+/* Reset common overrides on cards (flex, floats, widths) */
+section.tab-content > .grid > .card {
+  float: none !important;
+  display: block !important;
+  width: auto !important;
+  max-width: 100% !important;
+  background: #222;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+/* Optional: headings spacing */
+section.tab-content > h2 {
+  color: #fff;
+  margin: 0 0 1rem 0;
+}
