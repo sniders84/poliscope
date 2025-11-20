@@ -1164,13 +1164,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const feedTitle = document.getElementById('feed-title');
   const feedStories = document.getElementById('feed-stories');
 
-  // Google News RSS feeds per network
+  // Google News publisher feeds
   const rssFeeds = {
-    msnbc: 'https://news.google.com/rss/search?q=MSNBC&hl=en-US&gl=US&ceid=US:en',
-    abc: 'https://news.google.com/rss/search?q=ABC+News&hl=en-US&gl=US&ceid=US:en',
-    cbs: 'https://news.google.com/rss/search?q=CBS+News&hl=en-US&gl=US&ceid=US:en',
-    fox: 'https://news.google.com/rss/search?q=FOX+News&hl=en-US&gl=US&ceid=US:en',
-    cnn: 'https://news.google.com/rss/search?q=CNN&hl=en-US&gl=US&ceid=US:en'
+    msnbc: 'https://news.google.com/rss/search?q=source:MSNBC&hl=en-US&gl=US&ceid=US:en',
+    abc: 'https://news.google.com/rss/search?q=source:ABC+News&hl=en-US&gl=US&ceid=US:en',
+    cbs: 'https://news.google.com/rss/search?q=source:CBS+News&hl=en-US&gl=US&ceid=US:en',
+    fox: 'https://news.google.com/rss/search?q=source:Fox+News&hl=en-US&gl=US&ceid=US:en',
+    cnn: 'https://news.google.com/rss/search?q=source:CNN&hl=en-US&gl=US&ceid=US:en'
   };
 
   function parseItemDate(item) {
