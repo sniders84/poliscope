@@ -2088,3 +2088,17 @@ rssapp-carousel {
 #network-cards .card {
   width: 20%;   /* 5 cards = 20% each */
 }
+/* Network cards container */
+#network-cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;   /* no wrapping */
+  width: 100%;
+}
+
+/* Each card: exactly 20% of the row */
+#network-cards .card {
+  width: 20%;
+  flex: 0 0 20%;
+  box-sizing: border-box;
+}
