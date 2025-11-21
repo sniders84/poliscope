@@ -1179,43 +1179,20 @@ const rssFeeds = {
   abc:   'https://abcnews.go.com/abcnews/topstories',
   cbs:   'https://www.cbsnews.com/latest/rss/main',
   fox:   'https://feeds.foxnews.com/foxnews/latest',
-  cnn:   'https://rss.cnn.com/rss/cnn_topstories.rss' // HTTPS fixes mixed content
+  cnn:   'https://rss.cnn.com/rss/cnn_topstories.rss' // HTTPS + rss2json
 };
 
-// ----- Freshness filter (skip CNN) -----
+// ----- Freshness filter (48h) -----
 function filterFreshStories(items, network) {
-  if (network === 'cnn') return items; // don’t filter CNN
-  const cutoff = Date.now() - (48 * 60 * 60 * 1000); // 48 hours
+  const cutoff = Date.now() - (48 * 60 * 60 * 1000);
   return items.filter(item => {
     const t = item.pubDate ? Date.parse(item.pubDate) : NaN;
     return t && t >= cutoff;
   });
 }
 
-// --- Direct XML fetch for CNN ---
-async function fetchCnnRss(feedUrl) {
-  try {
-    const res = await fetch(feedUrl);
-    const text = await res.text();
-    const parser = new DOMParser();
-    const xml = parser.parseFromString(text, "application/xml");
-    const items = Array.from(xml.querySelectorAll("item")).map(item => ({
-      title: item.querySelector("title")?.textContent || "",
-      link: item.querySelector("link")?.textContent || "",
-      pubDate: item.querySelector("pubDate")?.textContent || ""
-    }));
-    return items;
-  } catch (err) {
-    console.error("CNN RSS fetch error:", err);
-    return [];
-  }
-}
-
-// --- Fetch RSS via rss2json (default) ---
+// --- Fetch RSS via rss2json ---
 async function fetchRss(feedUrl, network) {
-  if (network === 'cnn') {
-    return await fetchCnnRss(feedUrl);
-  }
   const apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(feedUrl);
   const res = await fetch(apiUrl);
   const data = await res.json();
