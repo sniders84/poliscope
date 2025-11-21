@@ -1250,21 +1250,21 @@ async function renderNetworkStories(network) {
   if (!url) return;
 
   const items = await fetchRss(url, network);
-networkStoriesContainer.innerHTML = '';
-items.slice(0, 10).forEach(item => {
-  const card = document.createElement('div');
-  card.className = 'official-card';
-  card.innerHTML = '<h4>' + item.title + '</h4>';
-  card.onclick = () => window.open(item.link, '_blank');
-  networkStoriesContainer.appendChild(card);
-});
+  networkStoriesContainer.innerHTML = '';
+  items.slice(0, 10).forEach(item => {   // <-- bumped to 10
+    const card = document.createElement('div');
+    card.className = 'official-card';
+    card.innerHTML = '<h4>' + item.title + '</h4>';
+    card.onclick = () => window.open(item.link, '_blank');
+    networkStoriesContainer.appendChild(card);
+  });
 
   if (items.length > 0) {
     const seeMore = document.createElement('div');
     seeMore.className = 'see-more';
     seeMore.textContent = 'See More';
     const urlMap = {
-      msnbc: 'https://www.msnbc.com',
+      nbcnews: 'https://www.nbcnews.com',
       abc: 'https://abcnews.go.com',
       cbs: 'https://www.cbsnews.com',
       fox: 'https://www.foxnews.com',
