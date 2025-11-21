@@ -33,44 +33,88 @@
   <main>
     
     <!-- Startup Hub Tab -->
-    <section id="startup-hub" class="tab-content" style="display: none;">
-      <h2>Home Hub</h2>
+<section id="startup-hub" class="tab-content" style="display: none;">
+  <h2>Home Hub</h2>
 
-      <!-- National Broadcasting Networks -->
-      <div id="national-networks" class="category-section">
-        <h2>National Broadcasting Networks</h2>
-        <div class="card-grid" id="network-cards">
-          <!-- your network cards here -->
-        </div>
+  <!-- National Broadcasting Networks -->
+  <div id="national-networks" class="category-section">
+    <h2>National Broadcasting Networks</h2>
+    <div class="card-grid" id="network-cards">
+
+      <!-- LiveNOW from FOX Card -->
+      <div class="info-card" data-network="livenowfox">
+        <a href="https://www.livenowfox.com/live" target="_blank" rel="noopener noreferrer">
+          <img src="/assets/livenowfox.png" alt="LiveNOW FOX Logo" class="network-logo">
+          <h3>LiveNOW from FOX</h3>
+          <p>Raw &amp; Unfiltered News 24/7 Live News Stream.</p>
+        </a>
       </div>
 
-      <!-- Single feed viewer -->
-      <div id="feed-viewer" class="feed-viewer">
-        <h3 id="feed-title">Select a network to view stories</h3>
-        <div class="story-grid" id="feed-stories"></div>
+      <!-- NBC News -->
+      <div class="info-card" data-network="nbcnews">
+        <img src="/assets/nbcnews.png" alt="NBC News Logo" class="network-logo">
+        <h3>NBC News</h3>
+        <p>Breaking news and in‑depth reporting from NBC News.</p>
       </div>
 
-      <!-- Global Politics & World News -->
-      <div id="world-news" class="hub-section">
-        <h2>Global Politics &amp; World News</h2>
-        <rssapp-carousel id="91yINq5LiI3EE02z"></rssapp-carousel>
-        <script src="https://widget.rss.app/v1/carousel.js" type="text/javascript" async></script>
+      <!-- ABC -->
+      <div class="info-card" data-network="abc">
+        <img src="/assets/abc.png" alt="ABC News Logo" class="network-logo">
+        <h3>ABC News</h3>
+        <p>National news coverage from ABC.</p>
       </div>
 
-      <!-- Finance & Markets -->
-      <div id="finance-markets" class="hub-section">
-        <h2>Finance &amp; Markets</h2>
-        <rssapp-carousel id="yKzUurqBBwmJD8fu"></rssapp-carousel>
-        <script src="https://widget.rss.app/v1/carousel.js" type="text/javascript" async></script>
+      <!-- CBS -->
+      <div class="info-card" data-network="cbs">
+        <img src="/assets/cbs.png" alt="CBS News Logo" class="network-logo">
+        <h3>CBS News</h3>
+        <p>CBS News broadcasts and updates.</p>
       </div>
 
-      <!-- Economy -->
-      <div id="economy" class="hub-section">
-        <h2>Economy</h2>
-        <rssapp-carousel id="vXg6Ae2ZfZ1aKPhG"></rssapp-carousel>
-        <script src="https://widget.rss.app/v1/carousel.js" type="text/javascript" async></script>
+      <!-- FOX News -->
+      <div class="info-card" data-network="fox">
+        <img src="/assets/fox.png" alt="FOX News Logo" class="network-logo">
+        <h3>FOX News</h3>
+        <p>Latest stories from FOX News.</p>
       </div>
-    </section> <!-- ✅ closes startup-hub -->
+
+      <!-- NewsNation -->
+      <div class="info-card" data-network="newsnation">
+        <img src="/assets/newsnation.png" alt="NewsNation Logo" class="network-logo">
+        <h3>NewsNation</h3>
+        <p>Unbiased reporting and national news coverage from NewsNation.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Single feed viewer -->
+  <div id="feed-viewer" class="feed-viewer">
+    <h3 id="feed-title">Select a network to view stories</h3>
+    <div class="story-grid" id="feed-stories"></div>
+  </div>
+
+  <!-- Global Politics & World News -->
+  <div id="world-news" class="hub-section">
+    <h2>Global Politics &amp; World News</h2>
+    <rssapp-carousel id="91yINq5LiI3EE02z"></rssapp-carousel>
+    <script src="https://widget.rss.app/v1/carousel.js" type="text/javascript" async></script>
+  </div>
+
+  <!-- Finance & Markets -->
+  <div id="finance-markets" class="hub-section">
+    <h2>Finance &amp; Markets</h2>
+    <rssapp-carousel id="yKzUurqBBwmJD8fu"></rssapp-carousel>
+    <script src="https://widget.rss.app/v1/carousel.js" type="text/javascript" async></script>
+  </div>
+
+  <!-- Economy -->
+  <div id="economy" class="hub-section">
+    <h2>Economy</h2>
+    <rssapp-carousel id="vXg6Ae2ZfZ1aKPhG"></rssapp-carousel>
+    <script src="https://widget.rss.app/v1/carousel.js" type="text/javascript" async></script>
+  </div>
+</section> <!-- ✅ this was the missing piece -->
 
 <!-- 🎬 Podcasts & Shows Tab -->
 <section id="podcasts-shows" class="tab-content" style="display: none;">
