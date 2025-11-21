@@ -1175,11 +1175,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ----- RSS feeds -----
 const rssFeeds = {
-  msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',
-  abc:   'https://abcnews.go.com/abcnews/topstories',
-  cbs:   'https://www.cbsnews.com/latest/rss/main',
-  fox:   'https://feeds.foxnews.com/foxnews/latest',
-  newsnation: 'https://www.newsnationnow.com/feed/' // NewsNation RSS
+  nbcnews: 'https://feeds.nbcnews.com/nbcnews/public/news',
+  abc:     'https://abcnews.go.com/abcnews/topstories',
+  cbs:     'https://www.cbsnews.com/latest/rss/main',
+  fox:     'https://feeds.foxnews.com/foxnews/latest',
+  newsnation: 'https://www.newsnationnow.com/feed/'
+};
+
+// --- See More mapping ---
+const urlMap = {
+  nbcnews: 'https://www.nbcnews.com',
+  abc: 'https://abcnews.go.com',
+  cbs: 'https://www.cbsnews.com',
+  fox: 'https://www.foxnews.com',
+  newsnation: 'https://www.newsnationnow.com'
 };
 
 // ----- Freshness filter (48h for all) -----
