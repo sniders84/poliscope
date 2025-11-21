@@ -1164,73 +1164,73 @@ document.addEventListener('DOMContentLoaded', () => {
   const feedTitle = document.getElementById('feed-title');
   const feedStories = document.getElementById('feed-stories');
 
- // Official RSS feeds per network
-const rssFeeds = {
-  msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',   // NBC/MSNBC general news
-  abc:   'https://abcnews.go.com/abcnews/topstories',       // ABC Top Stories
-  cbs:   'https://www.cbsnews.com/latest/rss/main',         // CBS Latest
-  fox:   'https://feeds.foxnews.com/foxnews/latest',        // FOX News Latest
-  cnn:   'http://rss.cnn.com/rss/cnn_topstories.rss'        // CNN Top Stories
-};
+  // Official RSS feeds per network
+  const rssFeeds = {
+    msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',
+    abc:   'https://abcnews.go.com/abcnews/topstories',
+    cbs:   'https://www.cbsnews.com/latest/rss/main',
+    fox:   'https://feeds.foxnews.com/foxnews/latest',
+    cnn:   'http://rss.cnn.com/rss/cnn_topstories.rss'
+  };
 
-// Freshness filter: only keep items published in last 48 hours
-function filterFreshStories(items) {
-  const cutoff = Date.now() - (48 * 60 * 60 * 1000); // 48 hours
-  return items.filter(item => {
-    const pubDate = item.pubDate ? new Date(item.pubDate).getTime() : null;
-    return pubDate && pubDate >= cutoff;
-  });
-}
-
-async function loadFeed(network) {
-  const url = rssFeeds[network];
-  feedTitle.textContent = `${network.toUpperCase()} Stories`;
-  feedStories.innerHTML = '<p style="color:#fff;">Loading...</p>';
-
-  try {
-    const response = await fetch(
-      `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`
-    );
-    const data = await response.json();
-
-    let items = Array.isArray(data.items) ? data.items.slice() : [];
-    items = filterFreshStories(items);
-
-    const normalized = items
-      .map(item => ({ item, date: item.pubDate ? new Date(item.pubDate) : null }))
-      .filter(x => x.date)
-      .sort((a, b) => b.date.getTime() - a.date.getTime());
-
-    feedStories.innerHTML = '';
-
-    if (normalized.length === 0) {
-      feedStories.innerHTML = '<p style="color:#fff;">No fresh stories available.</p>';
-      return;
-    }
-
-    normalized.slice(0, 10).forEach(({ item }) => {
-      const story = document.createElement('div');
-      story.className = 'story-card';
-      story.innerHTML = `
-        <a href="${item.link}" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none;">
-          <h4 style="margin-bottom:0.35rem;">${item.title}</h4>
-        </a>
-      `;
-      feedStories.appendChild(story);
+  // Freshness filter
+  function filterFreshStories(items) {
+    const cutoff = Date.now() - (48 * 60 * 60 * 1000);
+    return items.filter(item => {
+      const pubDate = item.pubDate ? new Date(item.pubDate).getTime() : null;
+      return pubDate && pubDate >= cutoff;
     });
-  } catch (err) {
-    console.error(err);
-    feedStories.innerHTML = '<p style="color:#fff;">Error loading feed.</p>';
   }
-}
 
-// Wire up card clicks
-document.querySelectorAll('.info-card[data-network]').forEach(card => {
-  card.addEventListener('click', () => {
-    const network = card.getAttribute('data-network');
-    loadFeed(network);
+  // Load feed into #feed-stories
+  async function loadFeed(network) { … }  // keep your existing implementation
+
+  // Render network stories into #network-stories
+  async function renderNetworkStories(network) { … }  // keep your existing implementation
+
+  // Wire up card clicks for both viewers
+  document.querySelectorAll('.info-card[data-network]').forEach(card => {
+    card.addEventListener('click', () => {
+      const network = card.dataset.network;
+      loadFeed(network);              // populates the single feed viewer
+      renderNetworkStories(network);  // populates the network-stories grid
+    });
   });
-});
+
+  // === Load officials data with smooth fade-in ===
+  Promise.all([
+    fetch('/governors.json').then(res => res.json()),
+    fetch('/ltgovernors.json').then(res => res.json()),
+    fetch('/senators.json').then(res => res.json()),
+    fetch('/housereps.json').then(res => res.json())
+  ])
+    .then(([govs, ltGovs, sens, reps]) => {
+      governors = govs;
+      ltGovernors = ltGovs;
+      senators = sens;
+      houseReps = reps;
+
+      if (typeof renderOfficials === 'function') {
+        renderOfficials(selectedState, '');
+      }
+
+      if (loadingOverlay) {
+        loadingOverlay.style.transition = 'opacity 0.5s ease';
+        loadingOverlay.style.opacity = '0';
+        setTimeout(() => loadingOverlay.remove(), 500);
+      }
+
+      const socialFeed = document.getElementById('social-feed');
+      if (socialFeed && typeof loadSocialTrends === 'function') {
+        console.log("🎬 loadSocialTrends is running...");
+        loadSocialTrends();
+      }
+    })
+    .catch(err => {
+      console.error('Error loading official data:', err);
+      if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
+    });
+}); // <-- closes DOMContentLoaded exactly once
 
 // === STATE DROPDOWN WIRING ===
 function wireStateDropdown() {
@@ -1275,133 +1275,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // --- Other existing functions and variables above ---
-
-// Official RSS feeds per network
-const rssFeeds = {
-  msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',   // NBC/MSNBC general news
-  abc:   'https://abcnews.go.com/abcnews/topstories',       // ABC Top Stories
-  cbs:   'https://www.cbsnews.com/latest/rss/main',         // CBS Latest
-  fox:   'https://feeds.foxnews.com/foxnews/latest',        // FOX News Latest
-  cnn:   'http://rss.cnn.com/rss/cnn_topstories.rss'        // CNN Top Stories
-};
-
-// Fetch top 5 stories via rss2json
-async function fetchRss(feedUrl) {
-  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
-  try {
-    const response = await fetch(apiUrl);
-    const data = await response.json();
-    return data.items.slice(0, 5);
-  } catch (err) {
-    console.error('RSS fetch error:', err);
-    return [];
-  }
-}
-
-// Render network stories
-async function renderNetworkStories(network) {
-  const feedUrl = rssFeeds[network];
-  if (!feedUrl) return;
-
-  const stories = await fetchRss(feedUrl);
-  const container = document.getElementById('network-stories');
-  container.innerHTML = ''; // clear previous stories
-
-  stories.forEach(item => {
-    const card = document.createElement('div');
-    card.className = 'official-card';
-    card.innerHTML = `<h4>${item.title}</h4>`;
-    card.onclick = () => window.open(item.link, '_blank');
-    container.appendChild(card);
-  });
-
-  // Append "See More" next to last story
-  if (stories.length > 0) {
-    const seeMore = document.createElement('div');
-    seeMore.className = 'see-more';
-    seeMore.innerText = 'See More';
-    seeMore.onclick = () => {
-      // Proper site URL for MSNBC, others open homepage
-      const urlMap = {
-        msnbc: 'https://www.msnbc.com',
-        abc: 'https://abcnews.go.com',
-        cbs: 'https://www.cbsnews.com',
-        fox: 'https://www.foxnews.com',
-        cnn: 'https://edition.cnn.com'
-      };
-      window.open(urlMap[network] || feedUrl, '_blank');
-    };
-    container.appendChild(seeMore);
-  }
-}
-
-// Add click listeners to network cards
-document.querySelectorAll('#network-cards .info-card').forEach(card => {
-  card.addEventListener('click', () => {
-    const network = card.dataset.network;
-    renderNetworkStories(network);
-  });
-});
-// === GLOBAL POLITICS & WORLD NEWS: Google News RSS feed ===
-const worldNewsFeedUrl = 'https://news.google.com/rss/search?q=world+politics&hl=en-US&gl=US&ceid=US:en';
-const maxCards = 25;
-
-// Helper to extract favicon from story source
-function getFaviconUrl(link) {
-  try {
-    const url = new URL(link);
-    return `${url.origin}/favicon.ico`;
-  } catch {
-    return ''; // fallback empty
-  }
-}
-
-// Fetch RSS via rss2json
-async function fetchGoogleNewsRss(feedUrl) {
-  try {
-    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
-    const res = await fetch(apiUrl);
-    const data = await res.json();
-    return data.items?.slice(0, maxCards) || [];
-  } catch (err) {
-    console.error('RSS fetch error:', err);
-    return [];
-  }
-}
-
-  // === Load officials data with smooth fade-in ===
-Promise.all([
-  fetch('/governors.json').then(res => res.json()),
-  fetch('/ltgovernors.json').then(res => res.json()),
-  fetch('/senators.json').then(res => res.json()),
-  fetch('/housereps.json').then(res => res.json())
-])
-  .then(([govs, ltGovs, sens, reps]) => {
-    governors = govs;
-    ltGovernors = ltGovs;
-    senators = sens;
-    houseReps = reps;
-
-    // Render officials
-    renderOfficials(selectedState, '');
-
-    // Fade out loading overlay
-    if (loadingOverlay) {
-      loadingOverlay.style.transition = 'opacity 0.5s ease';
-      loadingOverlay.style.opacity = '0';
-      setTimeout(() => loadingOverlay.remove(), 500);
-    }
-
-    // Load social trends
-    const socialFeed = document.getElementById('social-feed');
-    if (socialFeed && typeof loadSocialTrends === 'function') {
-      console.log("🎬 loadSocialTrends is running...");
-      loadSocialTrends();
-    }
-  })
-  .catch(err => {
-    console.error('Error loading official data:', err);
-    if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
-  });
-}); // <-- closes the DOMContentLoaded wrapper exactly once
