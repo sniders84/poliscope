@@ -1175,21 +1175,105 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ----- RSS feeds -----
 const rssFeeds = {
-  nbcnews: 'https://feeds.nbcnews.com/nbcnews/public/news',
-  abc:     'https://abcnews.go.com/abcnews/topstories',
-  cbs:     'https://www.cbsnews.com/latest/rss/main',
-  fox:     'https://feeds.foxnews.com/foxnews/latest',
-  newsnation: 'https://www.newsnationnow.com/feed/'
+  msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',
+  abc:   'https://abcnews.go.com/abcnews/topstories',
+  cbs:   'https://www.cbsnews.com/latest/rss/main',
+  fox:   'https://feeds.foxnews.com/foxnews/latest',
+  newsnation: 'https://www.newsnationnow.com/feed/' // NewsNation RSS
 };
 
-// --- See More mapping ---
-const urlMap = {
-  nbcnews: 'https://www.nbcnews.com',
-  abc: 'https://abcnews.go.com',
-  cbs: 'https://www.cbsnews.com',
-  fox: 'https://www.foxnews.com',
-  newsnation: 'https://www.newsnationnow.com'
-};
+// ----- Freshness filter (48h for all) -----
+function filterFreshStories(items, network) {
+  const cutoff = Date.now() - (48 * 60 * 60 * 1000);
+  return items.filter(item => {
+    const t = item.pubDate ? Date.parse(item.pubDate) : NaN;
+    return t && t >= cutoff;
+  });
+}
+
+// --- Fetch RSS via rss2json ---
+async function fetchRss(feedUrl, network) {
+  const apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(feedUrl);
+  const res = await fetch(apiUrl);
+  const data = await res.json();
+  const items = Array.isArray(data.items) ? data.items.slice() : [];
+  return filterFreshStories(items, network);
+}
+
+// --- Single feed viewer (#feed-stories) ---
+async function loadFeed(network) {
+  const url = rssFeeds[network];
+  if (!url || !feedTitle || !feedStories) return;
+
+  feedTitle.textContent = network.toUpperCase() + ' Stories';
+  feedStories.innerHTML = '<p style="color:#fff;">Loading...</p>';
+
+  try {
+    const items = await fetchRss(url, network);
+    items.sort((a, b) => Date.parse(b.pubDate || 0) - Date.parse(a.pubDate || 0));
+
+    if (!items.length) {
+      feedStories.innerHTML = '<p style="color:#fff;">No fresh stories available.</p>';
+      return;
+    }
+
+    feedStories.innerHTML = '';
+    items.slice(0, 10).forEach(item => {
+      const story = document.createElement('div');
+      story.className = 'story-card';
+      story.innerHTML =
+        '<a href="' + item.link + '" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none;">' +
+        '<h4 style="margin-bottom:0.35rem;">' + item.title + '</h4>' +
+        '</a>';
+      feedStories.appendChild(story);
+    });
+  } catch (err) {
+    console.error('Feed error:', err);
+    feedStories.innerHTML = '<p style="color:#fff;">Error loading feed.</p>';
+  }
+}
+
+// --- Grid render (#network-stories) ---
+async function renderNetworkStories(network) {
+  if (!networkStoriesContainer) return;
+
+  const url = rssFeeds[network];
+  if (!url) return;
+
+  const items = await fetchRss(url, network);
+  networkStoriesContainer.innerHTML = '';
+  items.slice(0, 5).forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'official-card';
+    card.innerHTML = '<h4>' + item.title + '</h4>';
+    card.onclick = () => window.open(item.link, '_blank');
+    networkStoriesContainer.appendChild(card);
+  });
+
+  if (items.length > 0) {
+    const seeMore = document.createElement('div');
+    seeMore.className = 'see-more';
+    seeMore.textContent = 'See More';
+    const urlMap = {
+      msnbc: 'https://www.msnbc.com',
+      abc: 'https://abcnews.go.com',
+      cbs: 'https://www.cbsnews.com',
+      fox: 'https://www.foxnews.com',
+      newsnation: 'https://www.newsnationnow.com'
+    };
+    seeMore.onclick = () => window.open(urlMap[network] || url, '_blank');
+    networkStoriesContainer.appendChild(seeMore);
+  }
+}
+
+// --- Wire card clicks once ---
+document.querySelectorAll('.info-card[data-network]').forEach(card => {
+  card.addEventListener('click', () => {
+    const network = card.getAttribute('data-network');
+    loadFeed(network);
+    renderNetworkStories(network);
+  });
+});
 
   // --- Load officials data with smooth fade-in ---
   Promise.all([
