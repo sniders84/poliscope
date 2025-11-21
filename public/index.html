@@ -174,21 +174,60 @@
     <script src="https://widget.rss.app/v1/carousel.js" type="text/javascript" async></script>
   </div>
 
-  <!-- Popular Podcasts -->
-  <div id="popular-podcasts" class="category-section">
-    <h2>Popular Podcasts</h2>
-    <div class="card-grid">
-      <div class="info-card"><h3>Pod Save America</h3><p>Political commentary from Pod Save America.</p></div>
-      <div class="info-card"><h3>The Daily (NYT)</h3><p>News analysis and storytelling from The Daily.</p></div>
-      <div class="info-card"><h3>NPR Politics</h3><p>Political coverage and analysis from NPR.</p></div>
+<!-- 🎬 Podcasts & Shows Tab -->
+<div id="podcasts-shows" class="tab-content hidden">
+  <!-- Search Bar -->
+  <input type="text" id="show-search" placeholder="Search shows and podcasts...">
+
+  <!-- Favorites Section -->
+  <div id="favorites-section">
+    <h2>Your Favorites</h2>
+    <div class="favorites-grid"></div>
+  </div>
+
+  <!-- Video Section -->
+  <h2>Video Shows</h2>
+  <div class="video-grid">
+    <div class="media-card" onclick="window.open('https://www.pbs.org/newshour','_blank')">
+      <img src="/assets/pbs.png" alt="PBS NewsHour Logo">
+      <h3>PBS NewsHour</h3>
+      <p>In‑depth reporting and interviews.</p>
+      <button onclick="event.stopPropagation(); addToFavorites(this.parentElement)">⭐ Favorite</button>
+    </div>
+
+    <div class="media-card" onclick="window.open('https://www.newsnationnow.com','_blank')">
+      <img src="/assets/newsnation.png" alt="NewsNation Logo">
+      <h3>NewsNation Prime</h3>
+      <p>Balanced nightly newscast with national coverage.</p>
+      <button onclick="event.stopPropagation(); addToFavorites(this.parentElement)">⭐ Favorite</button>
     </div>
   </div>
 
-  <!-- 🌍 Social Trends Section -->
-  <div id="social-trends" class="hub-section">
-    <h2>Trending Now</h2>
-    <div id="social-feed" class="grid"></div>
+  <!-- Audio Section -->
+  <h2>Podcasts</h2>
+  <div class="audio-grid">
+    <div class="media-card" onclick="window.open('https://crooked.com/podcast-series/pod-save-america','_blank')">
+      <img src="/assets/podsave.png" alt="Pod Save America Logo">
+      <h3>Pod Save America</h3>
+      <p>Political commentary from former Obama staffers.</p>
+      <button onclick="event.stopPropagation(); addToFavorites(this.parentElement)">⭐ Favorite</button>
+    </div>
+
+    <div class="media-card" onclick="window.open('https://www.nytimes.com/the-daily','_blank')">
+      <img src="/assets/daily.png" alt="The Daily Logo">
+      <h3>The Daily (NYT)</h3>
+      <p>News analysis and storytelling from The New York Times.</p>
+      <button onclick="event.stopPropagation(); addToFavorites(this.parentElement)">⭐ Favorite</button>
+    </div>
+
+    <div class="media-card" onclick="window.open('https://www.npr.org/podcasts/510310/politics-podcast','_blank')">
+      <img src="/assets/npr.png" alt="NPR Politics Logo">
+      <h3>NPR Politics Podcast</h3>
+      <p>Roundtable political coverage and analysis from NPR.</p>
+      <button onclick="event.stopPropagation(); addToFavorites(this.parentElement)">⭐ Favorite</button>
+    </div>
   </div>
+</div>
 </section>
 
 <style>
