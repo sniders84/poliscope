@@ -147,10 +147,53 @@ function showStartupHub() {
   showTab('startup-hub');
 }
 
-// NEW: Podcasts & Shows tab
+// Podcasts & Shows tab
 function showPodcastsShows() {
   showTab('podcasts-shows');
 }
+
+// === Podcasts & Shows Search ===
+document.addEventListener('DOMContentLoaded', () => {
+  const searchInput = document.getElementById('show-search');
+  if (searchInput) {
+    searchInput.addEventListener('input', function(e) {
+      const term = e.target.value.toLowerCase();
+      document.querySelectorAll('#podcasts-shows .media-card').forEach(card => {
+        const text = card.innerText.toLowerCase();
+        card.style.display = text.includes(term) ? '' : 'none';
+      });
+    });
+  }
+});
+
+// === Podcasts & Shows Favorites ===
+
+// Save a card to favorites
+function addToFavorites(cardElement) {
+  // Serialize the card's HTML
+  const cardHtml = cardElement.outerHTML;
+  let favs = JSON.parse(localStorage.getItem('favorites')) || [];
+
+  // Avoid duplicates
+  if (!favs.includes(cardHtml)) {
+    favs.push(cardHtml);
+    localStorage.setItem('favorites', JSON.stringify(favs));
+  }
+
+  renderFavorites();
+}
+
+// Render favorites section
+function renderFavorites() {
+  const favs = JSON.parse(localStorage.getItem('favorites')) || [];
+  const container = document.querySelector('#favorites-section .favorites-grid');
+  if (!container) return;
+
+  container.innerHTML = favs.join('');
+}
+
+// Initialize favorites on page load
+document.addEventListener('DOMContentLoaded', renderFavorites);
 
 function showCivic() {
   showTab('civic-intelligence');
@@ -785,8 +828,7 @@ function showStartupHub() {
     { title: "Global Politics & World News", id: "global-news" },
     { title: "Finance & Markets", id: "finance-markets" },
     { title: "Economy", id: "economy" },
-    { title: "Popular Podcasts", id: "popular-podcasts" }
-  ];
+    ];
 
   hubItems.forEach(item => {
     const card = document.createElement('div');
@@ -810,57 +852,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// === SOCIAL TRENDS SECTION ===
-function loadSocialTrends() {
-  const socialFeed = document.getElementById('social-feed');
-  if (!socialFeed) return;
-
-  socialFeed.innerHTML = `
-    <!-- Gavin Newsom Facebook -->
-    <div class="social-card">
-      <h3>Gavin Newsom Facebook</h3>
-      <iframe 
-        src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4184264178567898%2F&show_text=true&width=267&t=0" 
-        width="267" height="591" style="border:none;overflow:hidden" 
-        scrolling="no" frameborder="0" allowfullscreen="true" 
-        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-      </iframe>
-    </div>
-
-    <!-- Kathy Hochul Facebook -->
-    <div class="social-card">
-      <h3>Kathy Hochul Facebook</h3>
-      <iframe 
-        src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1608390750526549%2F&show_text=true&width=560&t=0" 
-        width="560" height="429" style="border:none;overflow:hidden" 
-        scrolling="no" frameborder="0" allowfullscreen="true" 
-        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-      </iframe>
-    </div>
-
-    <!-- Donald Trump Facebook -->
-    <div class="social-card">
-      <h3>Donald Trump Facebook</h3>
-      <iframe 
-        src="https://www.facebook.com/plugins/video.php?height=315&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1252240603298809%2F&show_text=true&width=560&t=0" 
-        width="560" height="430" style="border:none;overflow:hidden" 
-        scrolling="no" frameborder="0" allowfullscreen="true" 
-        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-      </iframe>
-    </div>
-
-    <!-- Chuck Schumer Facebook -->
-    <div class="social-card">
-      <h3>Chuck Schumer Facebook</h3>
-      <iframe 
-        src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F3151059001745750%2F&show_text=true&width=267&t=0" 
-        width="267" height="591" style="border:none;overflow:hidden" 
-        scrolling="no" frameborder="0" allowfullscreen="true" 
-        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-      </iframe>
-    </div>
-  `;
-}
 function scrollToCategory(sectionId) {
   const section = document.getElementById(sectionId);
   if (section) {
