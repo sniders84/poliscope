@@ -1165,62 +1165,73 @@ document.addEventListener('DOMContentLoaded', () => {
   const feedStories = document.getElementById('feed-stories');
 
   // Official RSS feeds per network
-  const rssFeeds = {
-    msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',   // NBC/MSNBC general news
-    abc:   'https://abcnews.go.com/abcnews/topstories',       // ABC Top Stories
-    cbs:   'https://www.cbsnews.com/latest/rss/main',         // CBS Latest
-    fox:   'https://feeds.foxnews.com/foxnews/latest',        // FOX News Latest
-    cnn:   'http://rss.cnn.com/rss/cnn_topstories.rss'        // CNN Top Stories
-  };
+const rssFeeds = {
+  msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',   // NBC/MSNBC general news
+  abc:   'https://abcnews.go.com/abcnews/topstories',       // ABC Top Stories
+  cbs:   'https://www.cbsnews.com/latest/rss/main',         // CBS Latest
+  fox:   'https://feeds.foxnews.com/foxnews/latest',        // FOX News Latest
+  cnn:   'http://rss.cnn.com/rss/cnn_topstories.rss'        // CNN Top Stories
+};
 
-  async function loadFeed(network) {
-    const url = rssFeeds[network];
-    feedTitle.textContent = `${network.toUpperCase()} Stories`;
-    feedStories.innerHTML = '<p style="color:#fff;">Loading...</p>';
+// Freshness filter: only keep items published in last 48 hours
+function filterFreshStories(items) {
+  const cutoff = Date.now() - (48 * 60 * 60 * 1000); // 48 hours
+  return items.filter(item => {
+    const pubDate = item.pubDate ? new Date(item.pubDate).getTime() : null;
+    return pubDate && pubDate >= cutoff;
+  });
+}
 
-    try {
-      // Use rss2json proxy to bypass CORS
-      const response = await fetch(
-        `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`
-      );
-      const data = await response.json();
+async function loadFeed(network) {
+  const url = rssFeeds[network];
+  feedTitle.textContent = `${network.toUpperCase()} Stories`;
+  feedStories.innerHTML = '<p style="color:#fff;">Loading...</p>';
 
-      const items = Array.isArray(data.items) ? data.items.slice() : [];
+  try {
+    // Use rss2json proxy to bypass CORS
+    const response = await fetch(
+      `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`
+    );
+    const data = await response.json();
 
-      // Just sort by pubDate if available, but don’t display it
-      const normalized = items
-        .map(item => ({ item, date: item.pubDate ? new Date(item.pubDate) : null }))
-        .filter(x => x.date)
-        .sort((a, b) => b.date.getTime() - a.date.getTime());
+    let items = Array.isArray(data.items) ? data.items.slice() : [];
 
-      feedStories.innerHTML = '';
+    // Apply freshness filter
+    items = filterFreshStories(items);
 
-      if (normalized.length === 0) {
-        feedStories.innerHTML = '<p style="color:#fff;">No stories available.</p>';
-        return;
-      }
+    // Normalize and sort by pubDate
+    const normalized = items
+      .map(item => ({ item, date: item.pubDate ? new Date(item.pubDate) : null }))
+      .filter(x => x.date)
+      .sort((a, b) => b.date.getTime() - a.date.getTime());
 
-      normalized.slice(0, 10).forEach(({ item }) => {
-        const story = document.createElement('div');
-        story.className = 'story-card';
-        story.innerHTML = `
-          <a href="${item.link}" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none;">
-            <h4 style="margin-bottom:0.35rem;">${item.title}</h4>
-          </a>
-        `;
-        feedStories.appendChild(story);
-      });
-    } catch (err) {
-      console.error(err);
-      feedStories.innerHTML = '<p style="color:#fff;">Error loading feed.</p>';
+    feedStories.innerHTML = '';
+
+    if (normalized.length === 0) {
+      feedStories.innerHTML = '<p style="color:#fff;">No fresh stories available.</p>';
+      return;
     }
-  }
 
-  document.querySelectorAll('.info-card[data-network]').forEach(card => {
-    card.addEventListener('click', () => {
-      const network = card.getAttribute('data-network');
-      loadFeed(network);
+    normalized.slice(0, 10).forEach(({ item }) => {
+      const story = document.createElement('div');
+      story.className = 'story-card';
+      story.innerHTML = `
+        <a href="${item.link}" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none;">
+          <h4 style="margin-bottom:0.35rem;">${item.title}</h4>
+        </a>
+      `;
+      feedStories.appendChild(story);
     });
+  } catch (err) {
+    console.error(err);
+    feedStories.innerHTML = '<p style="color:#fff;">Error loading feed.</p>';
+  }
+}
+
+document.querySelectorAll('.info-card[data-network]').forEach(card => {
+  card.addEventListener('click', () => {
+    const network = card.getAttribute('data-network');
+    loadFeed(network);
   });
 });
 
