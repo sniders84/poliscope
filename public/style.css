@@ -2185,3 +2185,54 @@ rssapp-carousel {
   object-fit: contain;       /* show full portrait without cropping */
   margin: 0 auto;            /* center inside modal */
 }
+/* === Podcasts & Shows Tab Styling === */
+#podcasts-shows {
+  padding: 1rem;
+  color: #fff;
+}
+
+#podcasts-shows h2 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.4rem;
+  border-bottom: 2px solid #444;
+  padding-bottom: 0.25rem;
+}
+
+.video-grid,
+.audio-grid,
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.media-card {
+  background: #222;
+  border-radius: 8px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.media-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.media-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.media-card h3 {
+  margin: 0.25rem 0;
+  font-size: 1.1rem;
+}
+
+.media-card p {
+  font-size: 0.9rem;
+  color: #ccc;
+}
