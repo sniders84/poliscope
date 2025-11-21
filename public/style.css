@@ -2114,3 +2114,11 @@ rssapp-carousel {
   min-width: 0;
   box-sizing: border-box;
 }
+/* Officials modal portraits */
+.modal .official-photo {
+  display: block;
+  max-width: 100%;
+  height: auto;              /* keep aspect ratio */
+  object-fit: contain;       /* show full portrait without cropping */
+  margin: 0 auto;            /* center inside modal */
+}
