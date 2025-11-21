@@ -168,28 +168,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // === Podcasts & Shows Favorites ===
 
-// Save a card to favorites
+// Save or remove a card from favorites (toggle)
 function addToFavorites(cardElement) {
-  // Serialize the card's HTML
-  const cardHtml = cardElement.outerHTML;
-  let favs = JSON.parse(localStorage.getItem('favorites')) || [];
+  const favoritesGrid = document.querySelector('#favorites-section .favorites-grid');
+  const title = cardElement.querySelector('h3').textContent;
 
-  // Avoid duplicates
-  if (!favs.includes(cardHtml)) {
-    favs.push(cardHtml);
-    localStorage.setItem('favorites', JSON.stringify(favs));
+  // Check if already in favorites
+  const existing = [...favoritesGrid.querySelectorAll('.media-card')]
+    .find(c => c.querySelector('h3').textContent === title);
+
+  if (existing) {
+    // If exists, remove it (toggle off)
+    favoritesGrid.removeChild(existing);
+  } else {
+    // Clone and add to favorites
+    const clone = cardElement.cloneNode(true);
+
+    // Replace the button with a "Remove" button
+    const btn = clone.querySelector('button');
+    btn.textContent = "❌ Remove";
+    btn.onclick = (e) => {
+      e.stopPropagation();
+      favoritesGrid.removeChild(clone);
+    };
+
+    favoritesGrid.appendChild(clone);
   }
-
-  renderFavorites();
 }
 
 // Render favorites section
 function renderFavorites() {
-  const favs = JSON.parse(localStorage.getItem('favorites')) || [];
   const container = document.querySelector('#favorites-section .favorites-grid');
   if (!container) return;
-
-  container.innerHTML = favs.join('');
+  // This leaves whatever is in the DOM; extend here if you want persistence
 }
 
 // Initialize favorites on page load
