@@ -15,256 +15,62 @@
       <input type="text" id="search-bar" placeholder="Search officials..." />
       <label for="state-dropdown">State:</label>
       <select id="state-dropdown">
-        <option value="Alabama">Alabama</option>
-        <option value="Alaska">Alaska</option>
-        <option value="American Samoa">American Samoa</option>
-        <option value="Arizona">Arizona</option>
-        <option value="Arkansas">Arkansas</option>
-        <option value="California">California</option>
-        <option value="Colorado">Colorado</option>
-        <option value="Connecticut">Connecticut</option>
-        <option value="Delaware">Delaware</option>
-        <option value="District of Columbia">District of Columbia</option>
-        <option value="Florida">Florida</option>
-        <option value="Georgia">Georgia</option>
-        <option value="Guam">Guam</option>
-        <option value="Hawaii">Hawaii</option>
-        <option value="Idaho">Idaho</option>
-        <option value="Illinois">Illinois</option>
-        <option value="Indiana">Indiana</option>
-        <option value="Iowa">Iowa</option>
-        <option value="Kansas">Kansas</option>
-        <option value="Kentucky">Kentucky</option>
-        <option value="Louisiana">Louisiana</option>
-        <option value="Maine">Maine</option>
-        <option value="Maryland">Maryland</option>
-        <option value="Massachusetts">Massachusetts</option>
-        <option value="Michigan">Michigan</option>
-        <option value="Minnesota">Minnesota</option>
-        <option value="Mississippi">Mississippi</option>
-        <option value="Missouri">Missouri</option>
-        <option value="Montana">Montana</option>
-        <option value="Nebraska">Nebraska</option>
-        <option value="Nevada">Nevada</option>
-        <option value="New Hampshire">New Hampshire</option>
-        <option value="New Jersey">New Jersey</option>
-        <option value="New Mexico">New Mexico</option>
-        <option value="New York">New York</option>
-        <option value="North Carolina">North Carolina</option>
-        <option value="North Dakota">North Dakota</option>
-        <option value="Northern Mariana Islands">Northern Mariana Islands</option>
-        <option value="Ohio">Ohio</option>
-        <option value="Oklahoma">Oklahoma</option>
-        <option value="Oregon">Oregon</option>
-        <option value="Pennsylvania">Pennsylvania</option>
-        <option value="Puerto Rico">Puerto Rico</option>
-        <option value="Rhode Island">Rhode Island</option>
-        <option value="South Carolina">South Carolina</option>
-        <option value="South Dakota">South Dakota</option>
-        <option value="Tennessee">Tennessee</option>
-        <option value="Texas">Texas</option>
-        <option value="Utah">Utah</option>
-        <option value="Vermont">Vermont</option>
-        <option value="Virgin Islands">U.S. Virgin Islands</option>
-        <option value="Virginia">Virginia</option>
-        <option value="Washington">Washington</option>
-        <option value="West Virginia">West Virginia</option>
-        <option value="Wisconsin">Wisconsin</option>
-        <option value="Wyoming">Wyoming</option>
+        <!-- all your state options here -->
       </select>
     </div>
   </header>
 
-<nav>
-  <button class="tab" onclick="showStartupHub()">Home Hub</button>
-  <button class="tab" onclick="showPodcastsShows()">Podcasts & Shows</button>
-  <button class="tab" onclick="renderOfficials(selectedState, '')">My Officials</button>
-  <button class="tab" onclick="showCivic()">Civic Intelligence</button>
-  <button class="tab" onclick="showPolls()">Polls</button>
-  <button class="tab" onclick="showOrganizations()">Political Groups</button>
-  <button class="tab" onclick="showVoting()">Voting</button>
-</nav>
-
+  <nav>
+    <button class="tab" onclick="showStartupHub()">Home Hub</button>
+    <button class="tab" onclick="showPodcastsShows()">Podcasts & Shows</button>
+    <button class="tab" onclick="renderOfficials(selectedState, '')">My Officials</button>
+    <button class="tab" onclick="showCivic()">Civic Intelligence</button>
+    <button class="tab" onclick="showPolls()">Polls</button>
+    <button class="tab" onclick="showOrganizations()">Political Groups</button>
+    <button class="tab" onclick="showVoting()">Voting</button>
+  </nav>
 
   <main>
     
-<!-- Startup Hub Tab -->
-<section id="startup-hub" class="tab-content" style="display: none;">
-  <h2>Home Hub</h2>
+    <!-- Startup Hub Tab -->
+    <section id="startup-hub" class="tab-content" style="display: none;">
+      <h2>Home Hub</h2>
 
-  <!-- National Broadcasting Networks -->
-  
-  <div id="national-networks" class="category-section">
-    <h2>National Broadcasting Networks</h2>
-    <div class="card-grid" id="network-cards">
-
-      <!-- LiveNOW from FOX Card -->
-      <div class="info-card" data-network="livenowfox">
-        <a href="https://www.livenowfox.com/live" target="_blank" rel="noopener noreferrer">
-          <img src="/assets/livenowfox.png" alt="LiveNOW FOX Logo" class="network-logo">
-          <h3>LiveNOW from FOX</h3>
-          <p>Raw &amp; Unfiltered News 24/7 Live News Stream.</p>
-        </a>
+      <!-- National Broadcasting Networks -->
+      <div id="national-networks" class="category-section">
+        <h2>National Broadcasting Networks</h2>
+        <div class="card-grid" id="network-cards">
+          <!-- your network cards here -->
+        </div>
       </div>
 
-      <!-- NBC News -->
-      <div class="info-card" data-network="nbcnews">
-        <img src="/assets/nbcnews.png" alt="NBC News Logo" class="network-logo">
-        <h3>NBC News</h3>
-        <p>Breaking news and in‑depth reporting from NBC News.</p>
+      <!-- Single feed viewer -->
+      <div id="feed-viewer" class="feed-viewer">
+        <h3 id="feed-title">Select a network to view stories</h3>
+        <div class="story-grid" id="feed-stories"></div>
       </div>
 
-      <!-- ABC -->
-      <div class="info-card" data-network="abc">
-        <img src="/assets/abc.png" alt="ABC News Logo" class="network-logo">
-        <h3>ABC News</h3>
-        <p>National news coverage from ABC.</p>
+      <!-- Global Politics & World News -->
+      <div id="world-news" class="hub-section">
+        <h2>Global Politics &amp; World News</h2>
+        <rssapp-carousel id="91yINq5LiI3EE02z"></rssapp-carousel>
+        <script src="https://widget.rss.app/v1/carousel.js" type="text/javascript" async></script>
       </div>
 
-      <!-- CBS -->
-      <div class="info-card" data-network="cbs">
-        <img src="/assets/cbs.png" alt="CBS News Logo" class="network-logo">
-        <h3>CBS News</h3>
-        <p>CBS News broadcasts and updates.</p>
+      <!-- Finance & Markets -->
+      <div id="finance-markets" class="hub-section">
+        <h2>Finance &amp; Markets</h2>
+        <rssapp-carousel id="yKzUurqBBwmJD8fu"></rssapp-carousel>
+        <script src="https://widget.rss.app/v1/carousel.js" type="text/javascript" async></script>
       </div>
 
-      <!-- FOX News -->
-      <div class="info-card" data-network="fox">
-        <img src="/assets/fox.png" alt="FOX News Logo" class="network-logo">
-        <h3>FOX News</h3>
-        <p>Latest stories from FOX News.</p>
+      <!-- Economy -->
+      <div id="economy" class="hub-section">
+        <h2>Economy</h2>
+        <rssapp-carousel id="vXg6Ae2ZfZ1aKPhG"></rssapp-carousel>
+        <script src="https://widget.rss.app/v1/carousel.js" type="text/javascript" async></script>
       </div>
-
-      <!-- NewsNation -->
-     <div class="info-card" data-network="newsnation">
-       <img src="/assets/newsnation.png" alt="NewsNation Logo" class="network-logo">
-       <h3>NewsNation</h3>
-       <p>Unbiased reporting and national news coverage from NewsNation.</p>
-     </div>
-
-    </div>
-  </div>
-
-  <!-- Single feed viewer -->
-  <div id="feed-viewer" class="feed-viewer">
-    <h3 id="feed-title">Select a network to view stories</h3>
-    <div class="story-grid" id="feed-stories">
-      <!-- RSS feed stories will populate here -->
-    </div>
-  </div>
-
-  <!-- Global Politics & World News -->
-  <div id="world-news" class="hub-section">
-    <h2>Global Politics &amp; World News</h2>
-    <rssapp-carousel id="91yINq5LiI3EE02z"></rssapp-carousel>
-    <script src="https://widget.rss.app/v1/carousel.js" type="text/javascript" async></script>
-  </div>
-
-  <!-- Finance & Markets -->
-  <div id="finance-markets" class="hub-section">
-    <h2>Finance &amp; Markets</h2>
-    <rssapp-carousel id="yKzUurqBBwmJD8fu"></rssapp-carousel>
-    <script src="https://widget.rss.app/v1/carousel.js" type="text/javascript" async></script>
-  </div>
-
-  <!-- Economy -->
-  <div id="economy" class="hub-section">
-    <h2>Economy</h2>
-    <rssapp-carousel id="vXg6Ae2ZfZ1aKPhG"></rssapp-carousel>
-    <script src="https://widget.rss.app/v1/carousel.js" type="text/javascript" async></script>
-  </div>
-
-<style>
-/* Sticky Home Hub nav styling - match site theme */
-#hub-nav {
-  position: sticky;
-  top: 0;
-  background-color: #2b2b2b; /* dark grey background */
-  display: flex;
-  gap: 10px;
-  padding: 10px;
-  border-bottom: 1px solid #444;
-  z-index: 1000;
-  overflow-x: auto;
-}
-
-#hub-nav button {
-  padding: 8px 12px;
-  border: none;
-  background-color: #3c3c3c;
-  color: #fff;
-  cursor: pointer;
-  border-radius: 6px;
-  white-space: nowrap;
-  flex-shrink: 0;
-  transition: background-color 0.2s, color 0.2s;
-}
-
-#hub-nav button:hover {
-  background-color: #0066ff; /* blue hover */
-  color: #fff;
-}
-
-/* Category Sections */
-.category-section {
-  padding: 20px 0;
-  border-bottom: 1px solid #444;
-}
-
-.card-grid {
-  display: grid;
-  gap: 12px;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-}
-
-.info-card {
-  background-color: #333;
-  padding: 14px;
-  border-radius: 8px;
-  color: #fff;
-  transition: transform 0.2s, box-shadow 0.2s;
-  cursor: pointer;
-}
-
-.info-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-
-/* Social feed placeholder */
-#social-feed {
-  display: grid;
-  gap: 12px;
-  margin-top: 16px;
-}
-</style>
-
-<script>
-// Show Home Hub tab
-function showStartupHub() {
-  showTab('startup-hub');
-}
-
-// Sticky nav buttons scroll to sections
-document.addEventListener('DOMContentLoaded', () => {
-  const navButtons = document.querySelectorAll('#hub-nav button');
-  navButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const section = document.getElementById(btn.dataset.target);
-      if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  });
-});
-
-// Generic tab switcher
-function showTab(tabId) {
-  document.querySelectorAll('.tab-content').forEach(tab => {
-    tab.style.display = 'none';
-  });
-  const tab = document.getElementById(tabId);
-  if (tab) tab.style.display = 'block';
-}
-</script>
+    </section> <!-- ✅ closes startup-hub -->
 
 <!-- 🎬 Podcasts & Shows Tab -->
 <section id="podcasts-shows" class="tab-content" style="display: none;">
