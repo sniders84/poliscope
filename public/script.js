@@ -147,6 +147,11 @@ function showStartupHub() {
   showTab('startup-hub');
 }
 
+// NEW: Podcasts & Shows tab
+function showPodcastsShows() {
+  showTab('podcasts-shows');
+}
+
 function showCivic() {
   showTab('civic-intelligence');
 }
