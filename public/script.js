@@ -1173,24 +1173,27 @@ document.addEventListener('DOMContentLoaded', () => {
   const officialsModalCloseBtn = document.getElementById('officials-close');
   let loadingOverlay = document.getElementById('loading-overlay');
 
-  // --- RSS feeds ---
-  const rssFeeds = {
-    msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',
-    abc:   'https://abcnews.go.com/abcnews/topstories',
-    cbs:   'https://www.cbsnews.com/latest/rss/main',
-    fox:   'https://feeds.foxnews.com/foxnews/latest',
-    cnn:   'http://rss.cnn.com/rss/cnn_topstories.rss'
+ // ----- RSS feeds -----
+const rssFeeds = {
+  msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',
+  abc:   'https://abcnews.go.com/abcnews/topstories',
+  cbs:   'https://www.cbsnews.com/latest/rss/main',
+  fox:   'https://feeds.foxnews.com/foxnews/latest',
+  // swap out the broken Top Stories feed for CNN World
+  cnn:   'http://rss.cnn.com/rss/cnn_world.rss'
+};
 
-  };
+// ----- Freshness filter (skip CNN) -----
+function filterFreshStories(items, network) {
+  // CNN feeds often have stale or missing pubDate values — keep all items
+  if (network === 'cnn') return items;
 
-  // --- Freshness filter (48h) ---
-  function filterFreshStories(items) {
-   const cutoff = Date.now() - (7 * 24 * 60 * 60 * 1000);
-    return items.filter(item => {
-      const t = item.pubDate ? Date.parse(item.pubDate) : NaN;
-      return t && t >= cutoff;
-    });
-  }
+  const cutoff = Date.now() - (48 * 60 * 60 * 1000); // 48 hours
+  return items.filter(item => {
+    const t = item.pubDate ? Date.parse(item.pubDate) : NaN;
+    return t && t >= cutoff;
+  });
+}
 
   // --- Fetch RSS via rss2json ---
   async function fetchRss(feedUrl) {
