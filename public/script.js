@@ -168,39 +168,61 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // === Podcasts & Shows Favorites ===
 
-// Save or remove a card from favorites (toggle)
+// Save or remove a card from favorites (toggle + persist)
 function addToFavorites(cardElement) {
-  const favoritesGrid = document.querySelector('#favorites-section .favorites-grid');
   const title = cardElement.querySelector('h3').textContent;
+  let favs = JSON.parse(localStorage.getItem('favorites')) || [];
 
   // Check if already in favorites
-  const existing = [...favoritesGrid.querySelectorAll('.media-card')]
-    .find(c => c.querySelector('h3').textContent === title);
+  const existingIndex = favs.findIndex(f => f.title === title);
 
-  if (existing) {
-    // If exists, remove it (toggle off)
-    favoritesGrid.removeChild(existing);
+  if (existingIndex !== -1) {
+    // Remove if exists
+    favs.splice(existingIndex, 1);
   } else {
-    // Clone and add to favorites
-    const clone = cardElement.cloneNode(true);
-
-    // Replace the button with a "Remove" button
-    const btn = clone.querySelector('button');
-    btn.textContent = "❌ Remove";
-    btn.onclick = (e) => {
-      e.stopPropagation();
-      favoritesGrid.removeChild(clone);
-    };
-
-    favoritesGrid.appendChild(clone);
+    // Add new favorite
+    favs.push({
+      title: title,
+      html: cardElement.outerHTML
+    });
   }
+
+  localStorage.setItem('favorites', JSON.stringify(favs));
+  renderFavorites();
 }
 
 // Render favorites section
 function renderFavorites() {
+  const favs = JSON.parse(localStorage.getItem('favorites')) || [];
   const container = document.querySelector('#favorites-section .favorites-grid');
   if (!container) return;
-  // This leaves whatever is in the DOM; extend here if you want persistence
+
+  container.innerHTML = '';
+
+  favs.forEach(fav => {
+    // Rebuild card from stored HTML
+    const wrapper = document.createElement('div');
+    wrapper.innerHTML = fav.html;
+    const card = wrapper.firstElementChild;
+
+    // Update button to remove
+    const btn = card.querySelector('button');
+    btn.textContent = "❌ Remove";
+    btn.onclick = (e) => {
+      e.stopPropagation();
+      removeFavorite(fav.title);
+    };
+
+    container.appendChild(card);
+  });
+}
+
+// Remove favorite by title
+function removeFavorite(title) {
+  let favs = JSON.parse(localStorage.getItem('favorites')) || [];
+  favs = favs.filter(f => f.title !== title);
+  localStorage.setItem('favorites', JSON.stringify(favs));
+  renderFavorites();
 }
 
 // Initialize favorites on page load
