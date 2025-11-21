@@ -1179,7 +1179,8 @@ document.addEventListener('DOMContentLoaded', () => {
     abc:   'https://abcnews.go.com/abcnews/topstories',
     cbs:   'https://www.cbsnews.com/latest/rss/main',
     fox:   'https://feeds.foxnews.com/foxnews/latest',
-    cnn:   'http://rss.cnn.com/rss/cnn_topstories.rss'
+    cnn:   'http://rss.cnn.com/rss/cnn_us.rss'
+
   };
 
   // --- Freshness filter (48h) ---
