@@ -283,6 +283,40 @@ function showTab(tabId) {
 }
 </script>
 
+<!-- Podcasts & Shows Tab -->
+<div id="podcasts-shows" class="tab-content hidden">
+  <!-- Search Bar -->
+  <input type="text" id="show-search" placeholder="Search shows and podcasts...">
+
+  <!-- Favorites Section -->
+  <div id="favorites-section">
+    <h2>Your Favorites</h2>
+    <div class="favorites-grid"></div>
+  </div>
+
+  <!-- Video Section -->
+  <h2>Video Shows</h2>
+  <div class="video-grid">
+    <!-- Example card -->
+    <div class="media-card" onclick="window.open('https://www.pbs.org/newshour','_blank')">
+      <img src="/assets/pbs.png" alt="PBS NewsHour Logo">
+      <h3>PBS NewsHour</h3>
+      <p>In‑depth reporting and interviews.</p>
+    </div>
+  </div>
+
+  <!-- Audio Section -->
+  <h2>Podcasts</h2>
+  <div class="audio-grid">
+    <!-- Example card -->
+    <div class="media-card" onclick="window.open('https://www.npr.org/podcasts/510310/politics-podcast','_blank')">
+      <img src="/assets/npr.png" alt="NPR Politics Logo">
+      <h3>NPR Politics Podcast</h3>
+      <p>Roundtable on U.S. political news.</p>
+    </div>
+  </div>
+</div>
+    
     <section id="my-officials" class="tab-content" style="position: relative;">
   <h2>My Officials</h2>
 
