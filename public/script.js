@@ -1164,7 +1164,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const feedTitle = document.getElementById('feed-title');
   const feedStories = document.getElementById('feed-stories');
 
-  // Official RSS feeds per network
+ // Official RSS feeds per network
 const rssFeeds = {
   msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',   // NBC/MSNBC general news
   abc:   'https://abcnews.go.com/abcnews/topstories',       // ABC Top Stories
@@ -1172,6 +1172,10 @@ const rssFeeds = {
   fox:   'https://feeds.foxnews.com/foxnews/latest',        // FOX News Latest
   cnn:   'http://rss.cnn.com/rss/cnn_topstories.rss'        // CNN Top Stories
 };
+
+// Grab DOM references
+const feedTitle = document.getElementById('feed-title');
+const feedStories = document.getElementById('feed-stories');
 
 // Freshness filter: only keep items published in last 48 hours
 function filterFreshStories(items) {
@@ -1188,18 +1192,14 @@ async function loadFeed(network) {
   feedStories.innerHTML = '<p style="color:#fff;">Loading...</p>';
 
   try {
-    // Use rss2json proxy to bypass CORS
     const response = await fetch(
       `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`
     );
     const data = await response.json();
 
     let items = Array.isArray(data.items) ? data.items.slice() : [];
-
-    // Apply freshness filter
     items = filterFreshStories(items);
 
-    // Normalize and sort by pubDate
     const normalized = items
       .map(item => ({ item, date: item.pubDate ? new Date(item.pubDate) : null }))
       .filter(x => x.date)
@@ -1228,6 +1228,7 @@ async function loadFeed(network) {
   }
 }
 
+// Wire up card clicks
 document.querySelectorAll('.info-card[data-network]').forEach(card => {
   card.addEventListener('click', () => {
     const network = card.getAttribute('data-network');
