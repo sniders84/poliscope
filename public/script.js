@@ -1185,7 +1185,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Freshness filter (48h) ---
   function filterFreshStories(items) {
-    const cutoff = Date.now() - (48 * 60 * 60 * 1000);
+   const cutoff = Date.now() - (7 * 24 * 60 * 60 * 1000);
     return items.filter(item => {
       const t = item.pubDate ? Date.parse(item.pubDate) : NaN;
       return t && t >= cutoff;
