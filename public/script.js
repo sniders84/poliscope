@@ -1173,10 +1173,6 @@ const rssFeeds = {
   cnn:   'http://rss.cnn.com/rss/cnn_topstories.rss'        // CNN Top Stories
 };
 
-// Grab DOM references
-const feedTitle = document.getElementById('feed-title');
-const feedStories = document.getElementById('feed-stories');
-
 // Freshness filter: only keep items published in last 48 hours
 function filterFreshStories(items) {
   const cutoff = Date.now() - (48 * 60 * 60 * 1000); // 48 hours
