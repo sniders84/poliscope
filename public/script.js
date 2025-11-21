@@ -1179,7 +1179,7 @@ const rssFeeds = {
   abc:   'https://abcnews.go.com/abcnews/topstories',
   cbs:   'https://www.cbsnews.com/latest/rss/main',
   fox:   'https://feeds.foxnews.com/foxnews/latest',
-  cnn:   'https://rss.cnn.com/rss/cnn_topstories.rss' // HTTPS + rss2json
+  cnn:   'https://rss.cnn.com/rss/cnn_us.rss' // swap Top Stories for US feed
 };
 
 // ----- Freshness filter (48h) -----
