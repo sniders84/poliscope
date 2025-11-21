@@ -1182,20 +1182,88 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Load feed into #feed-stories
-  async function loadFeed(network) { … }  // keep your existing implementation
+// Load feed into #feed-stories
+async function loadFeed(network) {
+  const url = rssFeeds[network];
+  if (!url) return;
 
-  // Render network stories into #network-stories
-  async function renderNetworkStories(network) { … }  // keep your existing implementation
+  feedTitle.textContent = `${network.toUpperCase()} Stories`;
+  feedStories.innerHTML = '<p style="color:#fff;">Loading...</p>';
 
-  // Wire up card clicks for both viewers
-  document.querySelectorAll('.info-card[data-network]').forEach(card => {
-    card.addEventListener('click', () => {
-      const network = card.dataset.network;
-      loadFeed(network);              // populates the single feed viewer
-      renderNetworkStories(network);  // populates the network-stories grid
+  try {
+    const response = await fetch(
+      `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`
+    );
+    const data = await response.json();
+    let items = Array.isArray(data.items) ? data.items.slice() : [];
+
+    // freshness filter
+    items = filterFreshStories(items);
+
+    feedStories.innerHTML = '';
+    if (!items.length) {
+      feedStories.innerHTML = '<p style="color:#fff;">No fresh stories available.</p>';
+      return;
+    }
+
+    items.slice(0, 10).forEach(item => {
+      const story = document.createElement('div');
+      story.className = 'story-card';
+      story.innerHTML = `
+        <a href="${item.link}" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none;">
+          <h4 style="margin-bottom:0.35rem;">${item.title}</h4>
+        </a>
+      `;
+      feedStories.appendChild(story);
     });
+  } catch (err) {
+    console.error(err);
+    feedStories.innerHTML = '<p style="color:#fff;">Error loading feed.</p>';
+  }
+}
+
+// Render network stories into #network-stories
+async function renderNetworkStories(network) {
+  const url = rssFeeds[network];
+  if (!url) return;
+
+  const items = await fetchRss(url);
+  const container = document.getElementById('network-stories');
+  if (!container) return;
+
+  container.innerHTML = '';
+  items.slice(0, 5).forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'official-card';
+    card.innerHTML = `<h4>${item.title}</h4>`;
+    card.onclick = () => window.open(item.link, '_blank');
+    container.appendChild(card);
   });
+
+  if (items.length > 0) {
+    const seeMore = document.createElement('div');
+    seeMore.className = 'see-more';
+    seeMore.innerText = 'See More';
+    const urlMap = {
+      msnbc: 'https://www.msnbc.com',
+      abc: 'https://abcnews.go.com',
+      cbs: 'https://www.cbsnews.com',
+      fox: 'https://www.foxnews.com',
+      cnn: 'https://edition.cnn.com'
+    };
+    seeMore.onclick = () => window.open(urlMap[network] || url, '_blank');
+    container.appendChild(seeMore);
+  }
+}
+
+// Wire up card clicks for both viewers
+document.querySelectorAll('.info-card[data-network]').forEach(card => {
+  card.addEventListener('click', () => {
+    const network = card.dataset.network;
+    loadFeed(network);              // single feed viewer
+    renderNetworkStories(network);  // grid renderer
+  });
+});
 
   // === Load officials data with smooth fade-in ===
   Promise.all([
