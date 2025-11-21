@@ -1157,180 +1157,183 @@ function showStartupHub() {
 // 🚫 Sticky nav removed — no initHubNav, no scroll listeners
 
 document.addEventListener('DOMContentLoaded', () => {
-  initHubNav();
-});
+  // --- Init ---
+  if (typeof initHubNav === 'function') {
+    initHubNav();
+  }
 
-// ----- DOM refs -----
-const feedTitle = document.getElementById('feed-title');
-const feedStories = document.getElementById('feed-stories');
+  // --- DOM refs ---
+  const feedTitle = document.getElementById('feed-title');
+  const feedStories = document.getElementById('feed-stories');
+  const networkStoriesContainer = document.getElementById('network-stories');
+  const officialsContainer = document.getElementById('officials-container');
+  const searchBar = document.getElementById('search-bar');
+  const officialsModal = document.getElementById('officials-modal');
+  const officialsModalContent = document.getElementById('officials-content');
+  const officialsModalCloseBtn = document.getElementById('officials-close');
+  let loadingOverlay = document.getElementById('loading-overlay');
 
-// ----- RSS feeds -----
-const rssFeeds = {
-  msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',
-  abc:   'https://abcnews.go.com/abcnews/topstories',
-  cbs:   'https://www.cbsnews.com/latest/rss/main',
-  fox:   'https://feeds.foxnews.com/foxnews/latest',
-  cnn:   'http://rss.cnn.com/rss/cnn_topstories.rss'
-};
+  // --- RSS feeds ---
+  const rssFeeds = {
+    msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',
+    abc:   'https://abcnews.go.com/abcnews/topstories',
+    cbs:   'https://www.cbsnews.com/latest/rss/main',
+    fox:   'https://feeds.foxnews.com/foxnews/latest',
+    cnn:   'http://rss.cnn.com/rss/cnn_topstories.rss'
+  };
 
-// ----- Freshness filter (48h) -----
-function filterFreshStories(items) {
-  var cutoff = Date.now() - (48 * 60 * 60 * 1000);
-  return items.filter(function(item) {
-    var t = item.pubDate ? Date.parse(item.pubDate) : NaN;
-    return t && t >= cutoff;
-  });
-}
-
-// ----- Fetch RSS via rss2json -----
-async function fetchRss(feedUrl) {
-  var apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(feedUrl);
-  var res = await fetch(apiUrl);
-  var data = await res.json();
-  var items = Array.isArray(data.items) ? data.items.slice() : [];
-  return filterFreshStories(items);
-}
-
-// ----- Single feed viewer (#feed-stories) -----
-async function loadFeed(network) {
-  var url = rssFeeds[network];
-  if (!url || !feedTitle || !feedStories) return;
-
-  feedTitle.textContent = network.toUpperCase() + ' Stories';
-  feedStories.innerHTML = '<p style="color:#fff;">Loading...</p>';
-
-  try {
-    var items = await fetchRss(url);
-    items.sort(function(a, b) {
-      return Date.parse(b.pubDate || 0) - Date.parse(a.pubDate || 0);
+  // --- Freshness filter (48h) ---
+  function filterFreshStories(items) {
+    const cutoff = Date.now() - (48 * 60 * 60 * 1000);
+    return items.filter(item => {
+      const t = item.pubDate ? Date.parse(item.pubDate) : NaN;
+      return t && t >= cutoff;
     });
+  }
 
-    if (!items.length) {
-      feedStories.innerHTML = '<p style="color:#fff;">No fresh stories available.</p>';
-      return;
+  // --- Fetch RSS via rss2json ---
+  async function fetchRss(feedUrl) {
+    const apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(feedUrl);
+    const res = await fetch(apiUrl);
+    const data = await res.json();
+    const items = Array.isArray(data.items) ? data.items.slice() : [];
+    return filterFreshStories(items);
+  }
+
+  // --- Single feed viewer (#feed-stories) ---
+  async function loadFeed(network) {
+    const url = rssFeeds[network];
+    if (!url || !feedTitle || !feedStories) return;
+
+    feedTitle.textContent = network.toUpperCase() + ' Stories';
+    feedStories.innerHTML = '<p style="color:#fff;">Loading...</p>';
+
+    try {
+      const items = await fetchRss(url);
+      items.sort((a, b) => Date.parse(b.pubDate || 0) - Date.parse(a.pubDate || 0));
+
+      if (!items.length) {
+        feedStories.innerHTML = '<p style="color:#fff;">No fresh stories available.</p>';
+        return;
+      }
+
+      feedStories.innerHTML = '';
+      items.slice(0, 10).forEach(item => {
+        const story = document.createElement('div');
+        story.className = 'story-card';
+        story.innerHTML =
+          '<a href="' + item.link + '" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none;">' +
+          '<h4 style="margin-bottom:0.35rem;">' + item.title + '</h4>' +
+          '</a>';
+        feedStories.appendChild(story);
+      });
+    } catch (err) {
+      console.error('Feed error:', err);
+      feedStories.innerHTML = '<p style="color:#fff;">Error loading feed.</p>';
     }
+  }
 
-    feedStories.innerHTML = '';
-    items.slice(0, 10).forEach(function(item) {
-      var story = document.createElement('div');
-      story.className = 'story-card';
-      story.innerHTML =
-        '<a href="' + item.link + '" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none;">' +
-        '<h4 style="margin-bottom:0.35rem;">' + item.title + '</h4>' +
-        '</a>';
-      feedStories.appendChild(story);
+  // --- Grid render (#network-stories) ---
+  async function renderNetworkStories(network) {
+    if (!networkStoriesContainer) return;
+
+    const url = rssFeeds[network];
+    if (!url) return;
+
+    const items = await fetchRss(url);
+    networkStoriesContainer.innerHTML = '';
+    items.slice(0, 5).forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'official-card';
+      card.innerHTML = '<h4>' + item.title + '</h4>';
+      card.onclick = () => window.open(item.link, '_blank');
+      networkStoriesContainer.appendChild(card);
     });
-  } catch (err) {
-    console.error('Feed error:', err);
-    feedStories.innerHTML = '<p style="color:#fff;">Error loading feed.</p>';
+
+    if (items.length > 0) {
+      const seeMore = document.createElement('div');
+      seeMore.className = 'see-more';
+      seeMore.textContent = 'See More';
+      const urlMap = {
+        msnbc: 'https://www.msnbc.com',
+        abc: 'https://abcnews.go.com',
+        cbs: 'https://www.cbsnews.com',
+        fox: 'https://www.foxnews.com',
+        cnn: 'https://edition.cnn.com'
+      };
+      seeMore.onclick = () => window.open(urlMap[network] || url, '_blank');
+      networkStoriesContainer.appendChild(seeMore);
+    }
   }
-}
 
-// ----- Optional: grid render (#network-stories) -----
-async function renderNetworkStories(network) {
-  var container = document.getElementById('network-stories');
-  if (!container) return;
-
-  var url = rssFeeds[network];
-  if (!url) return;
-
-  var items = await fetchRss(url);
-  container.innerHTML = '';
-  items.slice(0, 5).forEach(function(item) {
-    var card = document.createElement('div');
-    card.className = 'official-card';
-    card.innerHTML = '<h4>' + item.title + '</h4>';
-    card.onclick = function() { window.open(item.link, '_blank'); };
-    container.appendChild(card);
+  // --- Wire card clicks once ---
+  document.querySelectorAll('.info-card[data-network]').forEach(card => {
+    card.addEventListener('click', () => {
+      const network = card.getAttribute('data-network');
+      loadFeed(network);
+      renderNetworkStories(network);
+    });
   });
 
-  if (items.length > 0) {
-    var seeMore = document.createElement('div');
-    seeMore.className = 'see-more';
-    seeMore.textContent = 'See More';
-    var urlMap = {
-      msnbc: 'https://www.msnbc.com',
-      abc: 'https://abcnews.go.com',
-      cbs: 'https://www.cbsnews.com',
-      fox: 'https://www.foxnews.com',
-      cnn: 'https://edition.cnn.com'
-    };
-    seeMore.onclick = function() { window.open(urlMap[network] || url, '_blank'); };
-    container.appendChild(seeMore);
-  }
-}
-
-// ----- Wire card clicks once -----
-document.querySelectorAll('.info-card[data-network]').forEach(function(card) {
-  card.addEventListener('click', function() {
-    var network = card.getAttribute('data-network');
-    loadFeed(network);
-    renderNetworkStories(network);
-  });
-});
-  // === Load officials data with smooth fade-in ===
+  // --- Load officials data with smooth fade-in ---
   Promise.all([
     fetch('/governors.json').then(res => res.json()),
     fetch('/ltgovernors.json').then(res => res.json()),
     fetch('/senators.json').then(res => res.json()),
     fetch('/housereps.json').then(res => res.json())
   ])
-    .then(([govs, ltGovs, sens, reps]) => {
-      governors = govs;
-      ltGovernors = ltGovs;
-      senators = sens;
-      houseReps = reps;
+  .then(([govs, ltGovs, sens, reps]) => {
+    window.governors = govs;
+    window.ltGovernors = ltGovs;
+    window.senators = sens;
+    window.houseReps = reps;
 
-      if (typeof renderOfficials === 'function') {
-        renderOfficials(selectedState, '');
-      }
+    if (typeof window.renderOfficials === 'function') {
+      window.renderOfficials(window.selectedState || '', '');
+    }
 
-      if (loadingOverlay) {
-        loadingOverlay.style.transition = 'opacity 0.5s ease';
-        loadingOverlay.style.opacity = '0';
-        setTimeout(() => loadingOverlay.remove(), 500);
-      }
+    if (loadingOverlay) {
+      loadingOverlay.style.transition = 'opacity 0.5s ease';
+      loadingOverlay.style.opacity = '0';
+      setTimeout(() => loadingOverlay.remove(), 500);
+    }
 
-      const socialFeed = document.getElementById('social-feed');
-      if (socialFeed && typeof loadSocialTrends === 'function') {
-        console.log("🎬 loadSocialTrends is running...");
-        loadSocialTrends();
-      }
-    })
-    .catch(err => {
-      console.error('Error loading official data:', err);
-      if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
-    });
-}); // <-- closes DOMContentLoaded exactly once
-
-// === STATE DROPDOWN WIRING ===
-function wireStateDropdown() {
-  const dropdown = document.getElementById('state-dropdown');
-  if (!dropdown) return;
-
-  dropdown.value = selectedState;
-
-  dropdown.addEventListener('change', () => {
-    selectedState = dropdown.value;
-    window.selectedState = selectedState;
-    renderOfficials(selectedState, '');
+    const socialFeed = document.getElementById('social-feed');
+    if (socialFeed && typeof window.loadSocialTrends === 'function') {
+      window.loadSocialTrends();
+    }
+  })
+  .catch(err => {
+    console.error('Error loading official data:', err);
+    if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
   });
-}
 
-document.addEventListener('DOMContentLoaded', () => {
-  const officialsContainer = document.getElementById('officials-container');
-  const searchBar = document.getElementById('search-bar');
-  const loadingOverlay = document.getElementById('loading-overlay');
+  // --- STATE DROPDOWN WIRING ---
+  function wireStateDropdown() {
+    const dropdown = document.getElementById('state-dropdown');
+    if (!dropdown) return;
 
-  const officialsModal = document.getElementById('officials-modal');
-  const officialsModalContent = document.getElementById('officials-content');
-  const officialsModalCloseBtn = document.getElementById('officials-close');
+    const initial = typeof window.selectedState === 'string' ? window.selectedState : '';
+    dropdown.value = initial;
 
-  if (officialsModalCloseBtn) {
-    officialsModalCloseBtn.addEventListener('click', () => closeModalWindow('officials-modal'));
+    dropdown.addEventListener('change', () => {
+      const val = dropdown.value;
+      window.selectedState = val;
+      if (typeof window.renderOfficials === 'function') {
+        window.renderOfficials(val, '');
+      }
+    });
   }
 
-  wireSearchBar();
+  // --- Modal close wiring (defensive) ---
+  if (officialsModalCloseBtn && typeof window.closeModalWindow === 'function') {
+    officialsModalCloseBtn.addEventListener('click', () => window.closeModalWindow('officials-modal'));
+  }
+
+  // --- Search wiring (defensive) ---
+  if (typeof window.wireSearchBar === 'function') {
+    window.wireSearchBar();
+  }
   wireStateDropdown();
 
   function closeOfficialsSearch() {
@@ -1345,4 +1348,4 @@ document.addEventListener('DOMContentLoaded', () => {
       closeOfficialsSearch();
     }
   });
-
+}); // closes DOMContentLoaded exactly once
