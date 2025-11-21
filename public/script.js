@@ -1160,111 +1160,114 @@ document.addEventListener('DOMContentLoaded', () => {
   initHubNav();
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-  const feedTitle = document.getElementById('feed-title');
-  const feedStories = document.getElementById('feed-stories');
+// ----- DOM refs -----
+const feedTitle = document.getElementById('feed-title');
+const feedStories = document.getElementById('feed-stories');
 
-  // Official RSS feeds per network
-  const rssFeeds = {
-    msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',
-    abc:   'https://abcnews.go.com/abcnews/topstories',
-    cbs:   'https://www.cbsnews.com/latest/rss/main',
-    fox:   'https://feeds.foxnews.com/foxnews/latest',
-    cnn:   'http://rss.cnn.com/rss/cnn_topstories.rss'
-  };
+// ----- RSS feeds -----
+const rssFeeds = {
+  msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',
+  abc:   'https://abcnews.go.com/abcnews/topstories',
+  cbs:   'https://www.cbsnews.com/latest/rss/main',
+  fox:   'https://feeds.foxnews.com/foxnews/latest',
+  cnn:   'http://rss.cnn.com/rss/cnn_topstories.rss'
+};
 
-  // Freshness filter
-  function filterFreshStories(items) {
-    const cutoff = Date.now() - (48 * 60 * 60 * 1000);
-    return items.filter(item => {
-      const pubDate = item.pubDate ? new Date(item.pubDate).getTime() : null;
-      return pubDate && pubDate >= cutoff;
-    });
-  }
+// ----- Freshness filter (48h) -----
+function filterFreshStories(items) {
+  var cutoff = Date.now() - (48 * 60 * 60 * 1000);
+  return items.filter(function(item) {
+    var t = item.pubDate ? Date.parse(item.pubDate) : NaN;
+    return t && t >= cutoff;
+  });
+}
 
-// Load feed into #feed-stories
+// ----- Fetch RSS via rss2json -----
+async function fetchRss(feedUrl) {
+  var apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(feedUrl);
+  var res = await fetch(apiUrl);
+  var data = await res.json();
+  var items = Array.isArray(data.items) ? data.items.slice() : [];
+  return filterFreshStories(items);
+}
+
+// ----- Single feed viewer (#feed-stories) -----
 async function loadFeed(network) {
-  const url = rssFeeds[network];
-  if (!url) return;
+  var url = rssFeeds[network];
+  if (!url || !feedTitle || !feedStories) return;
 
-  feedTitle.textContent = `${network.toUpperCase()} Stories`;
+  feedTitle.textContent = network.toUpperCase() + ' Stories';
   feedStories.innerHTML = '<p style="color:#fff;">Loading...</p>';
 
   try {
-    const response = await fetch(
-      `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`
-    );
-    const data = await response.json();
-    let items = Array.isArray(data.items) ? data.items.slice() : [];
+    var items = await fetchRss(url);
+    items.sort(function(a, b) {
+      return Date.parse(b.pubDate || 0) - Date.parse(a.pubDate || 0);
+    });
 
-    // freshness filter
-    items = filterFreshStories(items);
-
-    feedStories.innerHTML = '';
     if (!items.length) {
       feedStories.innerHTML = '<p style="color:#fff;">No fresh stories available.</p>';
       return;
     }
 
-    items.slice(0, 10).forEach(item => {
-      const story = document.createElement('div');
+    feedStories.innerHTML = '';
+    items.slice(0, 10).forEach(function(item) {
+      var story = document.createElement('div');
       story.className = 'story-card';
-      story.innerHTML = `
-        <a href="${item.link}" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none;">
-          <h4 style="margin-bottom:0.35rem;">${item.title}</h4>
-        </a>
-      `;
+      story.innerHTML =
+        '<a href="' + item.link + '" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none;">' +
+        '<h4 style="margin-bottom:0.35rem;">' + item.title + '</h4>' +
+        '</a>';
       feedStories.appendChild(story);
     });
   } catch (err) {
-    console.error(err);
+    console.error('Feed error:', err);
     feedStories.innerHTML = '<p style="color:#fff;">Error loading feed.</p>';
   }
 }
 
-// Render network stories into #network-stories
+// ----- Optional: grid render (#network-stories) -----
 async function renderNetworkStories(network) {
-  const url = rssFeeds[network];
-  if (!url) return;
-
-  const items = await fetchRss(url);
-  const container = document.getElementById('network-stories');
+  var container = document.getElementById('network-stories');
   if (!container) return;
 
+  var url = rssFeeds[network];
+  if (!url) return;
+
+  var items = await fetchRss(url);
   container.innerHTML = '';
-  items.slice(0, 5).forEach(item => {
-    const card = document.createElement('div');
+  items.slice(0, 5).forEach(function(item) {
+    var card = document.createElement('div');
     card.className = 'official-card';
-    card.innerHTML = `<h4>${item.title}</h4>`;
-    card.onclick = () => window.open(item.link, '_blank');
+    card.innerHTML = '<h4>' + item.title + '</h4>';
+    card.onclick = function() { window.open(item.link, '_blank'); };
     container.appendChild(card);
   });
 
   if (items.length > 0) {
-    const seeMore = document.createElement('div');
+    var seeMore = document.createElement('div');
     seeMore.className = 'see-more';
-    seeMore.innerText = 'See More';
-    const urlMap = {
+    seeMore.textContent = 'See More';
+    var urlMap = {
       msnbc: 'https://www.msnbc.com',
       abc: 'https://abcnews.go.com',
       cbs: 'https://www.cbsnews.com',
       fox: 'https://www.foxnews.com',
       cnn: 'https://edition.cnn.com'
     };
-    seeMore.onclick = () => window.open(urlMap[network] || url, '_blank');
+    seeMore.onclick = function() { window.open(urlMap[network] || url, '_blank'); };
     container.appendChild(seeMore);
   }
 }
 
-// Wire up card clicks for both viewers
-document.querySelectorAll('.info-card[data-network]').forEach(card => {
-  card.addEventListener('click', () => {
-    const network = card.dataset.network;
-    loadFeed(network);              // single feed viewer
-    renderNetworkStories(network);  // grid renderer
+// ----- Wire card clicks once -----
+document.querySelectorAll('.info-card[data-network]').forEach(function(card) {
+  card.addEventListener('click', function() {
+    var network = card.getAttribute('data-network');
+    loadFeed(network);
+    renderNetworkStories(network);
   });
 });
-
   // === Load officials data with smooth fade-in ===
   Promise.all([
     fetch('/governors.json').then(res => res.json()),
