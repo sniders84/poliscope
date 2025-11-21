@@ -1179,16 +1179,12 @@ const rssFeeds = {
   abc:   'https://abcnews.go.com/abcnews/topstories',
   cbs:   'https://www.cbsnews.com/latest/rss/main',
   fox:   'https://feeds.foxnews.com/foxnews/latest',
-  cnn:   'https://rss.cnn.com/rss/cnn_us.rss' // use CNN US feed (rss2json parses this better)
+  newsnation: 'https://www.newsnationnow.com/feed/' // NewsNation RSS
 };
 
-// ----- Freshness filter (skip CNN) -----
+// ----- Freshness filter (48h for all) -----
 function filterFreshStories(items, network) {
-  if (network === 'cnn') {
-    // CNN feeds often have weird/missing pubDate, so keep all items
-    return items;
-  }
-  const cutoff = Date.now() - (48 * 60 * 60 * 1000); // 48 hours
+  const cutoff = Date.now() - (48 * 60 * 60 * 1000);
   return items.filter(item => {
     const t = item.pubDate ? Date.parse(item.pubDate) : NaN;
     return t && t >= cutoff;
@@ -1263,7 +1259,7 @@ async function renderNetworkStories(network) {
       abc: 'https://abcnews.go.com',
       cbs: 'https://www.cbsnews.com',
       fox: 'https://www.foxnews.com',
-      cnn: 'https://edition.cnn.com'
+      newsnation: 'https://www.newsnationnow.com'
     };
     seeMore.onclick = () => window.open(urlMap[network] || url, '_blank');
     networkStoriesContainer.appendChild(seeMore);
