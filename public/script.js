@@ -1179,12 +1179,16 @@ const rssFeeds = {
   abc:   'https://abcnews.go.com/abcnews/topstories',
   cbs:   'https://www.cbsnews.com/latest/rss/main',
   fox:   'https://feeds.foxnews.com/foxnews/latest',
-  cnn:   'https://rss.cnn.com/rss/cnn_us.rss' // swap Top Stories for US feed
+  cnn:   'https://rss.cnn.com/rss/cnn_us.rss' // use CNN US feed (rss2json parses this better)
 };
 
-// ----- Freshness filter (48h) -----
+// ----- Freshness filter (skip CNN) -----
 function filterFreshStories(items, network) {
-  const cutoff = Date.now() - (48 * 60 * 60 * 1000);
+  if (network === 'cnn') {
+    // CNN feeds often have weird/missing pubDate, so keep all items
+    return items;
+  }
+  const cutoff = Date.now() - (48 * 60 * 60 * 1000); // 48 hours
   return items.filter(item => {
     const t = item.pubDate ? Date.parse(item.pubDate) : NaN;
     return t && t >= cutoff;
