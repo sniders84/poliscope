@@ -26,7 +26,7 @@ const stateMap = {
   PR: "Puerto Rico", VI: "U.S. Virgin Islands"
 };
 
-// --- STATE DROPDOWN WIRING ---
+// --- STATE DROPDOWN WIRING (Fixed) ---
 function wireStateDropdown() {
   const dropdown = document.getElementById('state-dropdown');
   if (!dropdown) return;
@@ -90,15 +90,26 @@ function wireStateDropdown() {
     VI: "U.S. Virgin Islands"
   };
 
+  // Initialize dropdown to current selected state
   const initial = typeof window.selectedState === 'string' ? window.selectedState : '';
-  dropdown.value = Object.keys(stateMap).find(key => stateMap[key] === initial) || '';
+  const initialAbbr = Object.keys(stateMap).find(key => stateMap[key] === initial);
+  dropdown.value = initialAbbr || '';
 
   dropdown.addEventListener('change', () => {
-    const val = dropdown.value;
-    const fullState = stateMap[val] || val;
+    const abbr = dropdown.value;
+    const fullState = stateMap[abbr] || abbr;
     window.selectedState = fullState;
+
     if (typeof window.renderOfficials === 'function') {
       window.renderOfficials(fullState, '');
+    }
+
+    if (typeof window.showVoting === 'function') {
+      window.showVoting();
+    }
+
+    if (typeof window.showCivic === 'function') {
+      window.showCivic();
     }
   });
 }
