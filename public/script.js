@@ -148,112 +148,27 @@ function showStartupHub() {
 }
 
 <script>
-// === Podcasts & Shows Tab ===
+// --- Stabilize global handlers (stubs, no-op except tab switching) ---
+function showStartupHub() {}
+function renderOfficials() {}
+function showCivic() {}
+function showPolls() {}
+function showOrganizations() {}
+function showVoting() {}
+
+// Podcasts & Shows tab handler
 function showPodcastsShows() {
-  showTab('podcasts-shows');
-}
-
-// === Load & Render Media from JSON ===
-async function loadMedia() {
-  try {
-    const shows = await fetch('/shows.json').then(res => res.json());
-    const podcasts = await fetch('/podcasts.json').then(res => res.json());
-
-    renderMedia(shows, document.querySelector('.video-grid'));
-    renderMedia(podcasts, document.querySelector('.audio-grid'));
-    console.log('Media loaded: shows + podcasts');
-  } catch (err) {
-    console.error('Error loading media JSON:', err);
-  }
-}
-
-function renderMedia(items, container) {
-  if (!container) return;
-  container.innerHTML = '';
-  items.forEach(item => {
-    const card = document.createElement('div');
-    card.className = 'media-card';
-    card.setAttribute('data-url', item.official_url);
-    card.onclick = () => window.open(item.official_url, '_blank');
-
-    card.innerHTML = `
-      <img src="/assets/${item.logo}" alt="${item.title} Logo">
-      <h3>${item.title}</h3>
-      <p>${item.descriptor}</p>
-      <button onclick="event.stopPropagation(); addToFavorites(this.parentElement)">⭐ Favorite</button>
-    `;
-    container.appendChild(card);
-  });
-}
-
-// === Podcasts & Shows Search ===
-document.addEventListener('DOMContentLoaded', () => {
-  const searchInput = document.getElementById('show-search');
-  if (searchInput) {
-    searchInput.addEventListener('input', function(e) {
-      const term = e.target.value.toLowerCase();
-      document.querySelectorAll('#podcasts-shows .media-card').forEach(card => {
-        const text = card.innerText.toLowerCase();
-        card.style.display = text.includes(term) ? '' : 'none';
-      });
-    });
-  }
-
-  // Load media after DOM is ready
-  loadMedia();
-  renderFavorites();
-});
-
-// === Podcasts & Shows Favorites ===
-function addToFavorites(cardElement) {
-  const title = cardElement.querySelector('h3').textContent;
-  const url = cardElement.getAttribute('data-url');
-  const logo = cardElement.querySelector('img').getAttribute('src');
-  const descriptor = cardElement.querySelector('p').textContent;
-
-  let favs = JSON.parse(localStorage.getItem('favorites')) || [];
-  const existingIndex = favs.findIndex(f => f.title === title);
-
-  if (existingIndex !== -1) {
-    favs.splice(existingIndex, 1);
+  if (typeof showTab === 'function') {
+    showTab('podcasts-shows');
   } else {
-    favs.push({ title, url, logo, descriptor });
+    console.warn('showTab not available yet.');
   }
-
-  localStorage.setItem('favorites', JSON.stringify(favs));
-  renderFavorites();
 }
 
-function renderFavorites() {
-  const favs = JSON.parse(localStorage.getItem('favorites')) || [];
-  const container = document.querySelector('#favorites-section .favorites-grid');
-  if (!container) return;
-
-  container.innerHTML = '';
-
-  favs.forEach(fav => {
-    const card = document.createElement('div');
-    card.className = 'media-card';
-    card.setAttribute('data-url', fav.url);
-    card.onclick = () => window.open(fav.url, '_blank');
-
-    card.innerHTML = `
-      <img src="${fav.logo}" alt="${fav.title} Logo">
-      <h3>${fav.title}</h3>
-      <p>${fav.descriptor}</p>
-      <button onclick="event.stopPropagation(); removeFavorite('${fav.title}')">❌ Remove</button>
-    `;
-
-    container.appendChild(card);
-  });
-}
-
-function removeFavorite(title) {
-  let favs = JSON.parse(localStorage.getItem('favorites')) || [];
-  favs = favs.filter(f => f.title !== title);
-  localStorage.setItem('favorites', JSON.stringify(favs));
-  renderFavorites();
-}
+// --- Do NOT fetch or render yet. We first confirm JSON paths in the next step. ---
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('Stubs loaded. No rendering yet.');
+});
 </script>
 
 function showCivic() {
