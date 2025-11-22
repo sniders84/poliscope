@@ -164,8 +164,8 @@ function showPodcastsShows() {
 // === Load & Render Media from JSON ===
 async function loadMedia() {
   try {
-    const shows = await fetch('shows.json').then(res => res.json());
-    const podcasts = await fetch('podcasts.json').then(res => res.json());
+    const shows = await fetch('public/shows.json').then(res => res.json());
+    const podcasts = await fetch('public/podcasts.json').then(res => res.json());
 
     renderMedia(shows, document.querySelector('.video-grid'));
     renderMedia(podcasts, document.querySelector('.audio-grid'));
