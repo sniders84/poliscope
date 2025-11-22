@@ -153,34 +153,39 @@ function showPodcastsShows() {
   showTab('podcasts-shows');
 }
 
-// === Load & Render Media from JSON ===
+// === Load & Render Media from JSON (paths: /shows.json and /podcasts.json) ===
 async function loadMedia() {
-  const shows = await fetch('/data/shows.json').then(res => res.json());
-  const podcasts = await fetch('/data/podcasts.json').then(res => res.json());
+  try {
+    const shows = await fetch('/shows.json').then(res => res.json());
+    const podcasts = await fetch('/podcasts.json').then(res => res.json());
 
-  renderMedia(shows, document.querySelector('.video-grid'));
-  renderMedia(podcasts, document.querySelector('.audio-grid'));
+    renderMedia(shows, document.querySelector('.video-grid'));
+    renderMedia(podcasts, document.querySelector('.audio-grid'));
+    console.log('Media loaded: shows + podcasts');
+  } catch (err) {
+    console.error('Error loading media JSON:', err);
+  }
 }
 
 function renderMedia(items, container) {
+  if (!container) return;
   container.innerHTML = '';
   items.forEach(item => {
     const card = document.createElement('div');
     card.className = 'media-card';
-    card.setAttribute('data-url', item.official_url);
     card.onclick = () => window.open(item.official_url, '_blank');
 
     card.innerHTML = `
       <img src="/assets/${item.logo}" alt="${item.title} Logo">
       <h3>${item.title}</h3>
       <p>${item.descriptor}</p>
-      <button onclick="event.stopPropagation(); addToFavorites(this.parentElement)">⭐ Favorite</button>
+      <button onclick="event.stopPropagation();">⭐ Favorite</button>
     `;
     container.appendChild(card);
   });
 }
 
-// === Podcasts & Shows Search ===
+// === Podcasts & Shows Search (unchanged) ===
 document.addEventListener('DOMContentLoaded', () => {
   const searchInput = document.getElementById('show-search');
   if (searchInput) {
@@ -193,65 +198,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Load media once DOM is ready
+  // Load media after DOM is ready
   loadMedia();
-  renderFavorites();
 });
-
-// === Podcasts & Shows Favorites ===
-function addToFavorites(cardElement) {
-  const title = cardElement.querySelector('h3').textContent;
-  const url = cardElement.getAttribute('data-url');
-  const logo = cardElement.querySelector('img').getAttribute('src');
-  const descriptor = cardElement.querySelector('p').textContent;
-
-  let favs = JSON.parse(localStorage.getItem('favorites')) || [];
-  const existingIndex = favs.findIndex(f => f.title === title);
-
-  if (existingIndex !== -1) {
-    favs.splice(existingIndex, 1);
-  } else {
-    favs.push({ title, url, logo, descriptor });
-  }
-
-  localStorage.setItem('favorites', JSON.stringify(favs));
-  renderFavorites();
-}
-
-function renderFavorites() {
-  const favs = JSON.parse(localStorage.getItem('favorites')) || [];
-  const container = document.querySelector('#favorites-section .favorites-grid');
-  if (!container) return;
-
-  container.innerHTML = '';
-
-  favs.forEach(fav => {
-    const card = document.createElement('div');
-    card.className = 'media-card';
-    card.setAttribute('data-url', fav.url);
-    card.onclick = () => window.open(fav.url, '_blank');
-
-    card.innerHTML = `
-      <img src="${fav.logo}" alt="${fav.title} Logo">
-      <h3>${fav.title}</h3>
-      <p>${fav.descriptor}</p>
-      <button onclick="event.stopPropagation(); removeFavorite('${fav.title}')">❌ Remove</button>
-    `;
-
-    container.appendChild(card);
-  });
-}
-
-function removeFavorite(title) {
-  let favs = JSON.parse(localStorage.getItem('favorites')) || [];
-  favs = favs.filter(f => f.title !== title);
-  localStorage.setItem('favorites', JSON.stringify(favs));
-  renderFavorites();
-}
 </script>
-
-// Initialize favorites on page load
-document.addEventListener('DOMContentLoaded', renderFavorites);
 
 function showCivic() {
   showTab('civic-intelligence');
