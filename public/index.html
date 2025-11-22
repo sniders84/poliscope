@@ -77,6 +77,7 @@
 
  <nav>
   <button class="tab" onclick="showStartupHub()">Home Hub</button>
+  <button class="tab" onclick="showPodcastsShows()">Podcasts & Shows</button>
   <button class="tab" onclick="renderOfficials(selectedState, '')">My Officials</button>
   <button class="tab" onclick="showCivic()">Civic Intelligence</button>
   <button class="tab" onclick="showPolls()">Polls</button>
@@ -280,6 +281,16 @@ function showTab(tabId) {
   if (tab) tab.style.display = 'block';
 }
 </script>
+    
+<section id="podcasts-shows" class="tab-content" style="display: none;">
+  <h2>Podcasts & Shows</h2>
+
+  <!-- Search bar for this tab (styled like the top search bars) -->
+  <input type="text" id="podcasts-search-bar" class="search-bar" placeholder="Search podcasts or shows..." />
+
+  <!-- Container for cards -->
+  <div id="podcasts-cards" class="grid"></div>
+</section>
 
     <section id="my-officials" class="tab-content" style="position: relative;">
   <h2>My Officials</h2>
