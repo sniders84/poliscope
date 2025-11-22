@@ -1,35 +1,34 @@
-// === FAVORITES STORAGE & HELPERS ===
+// === FAVORITES STORAGE & HELPERS (FINAL & CORRECT) ===
 window.favorites = {
   podcasts: [],
   shows: []
 };
 
-// Check if an item is favorited (matches by title)
-function isFavorite(type, item) {
-  return window.favorites[type]?.some(f => f.title === item.title);
+// Check if title is favorited
+function isFavorite(type, title) {
+  return window.favorites[type]?.includes(title);
 }
 
-// Toggle favorite state
-function toggleFavorite(type, item) {
+// Toggle favorite on/off
+function toggleFavorite(type, title) {
   if (!window.favorites[type]) window.favorites[type] = [];
 
-  const index = window.favorites[type].findIndex(f => f.title === item.title);
+  const index = window.favorites[type].indexOf(title);
 
   if (index > -1) {
-    // Remove favorite
+    // remove
     window.favorites[type].splice(index, 1);
   } else {
-    // Add favorite
-    window.favorites[type].push(item);
+    // add
+    window.favorites[type].push(title);
   }
 
-  // Re-render tab if user is currently on it
-  const tab = document.getElementById('podcasts-shows');
-  if (tab && tab.style.display !== 'none') {
+  // Re-render Podcasts & Shows if visible
+  const tab = document.getElementById("podcasts-shows");
+  if (tab && tab.style.display !== "none") {
     showPodcastsShows();
   }
 }
-
 // === GLOBAL STATE ===
 let selectedState = 'North Carolina';
 let governors = [];
