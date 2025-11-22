@@ -1,5 +1,6 @@
 // === GLOBAL STATE ===
-let selectedState = 'North Carolina';
+// === Global current state variable ===
+let currentState = ''; 
 let governors = [];
 let ltGovernors = [];
 let senators = [];
@@ -247,29 +248,33 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- Officials Search ---
-  const searchInput = document.getElementById('search-bar');
-  const stateDropdown = document.getElementById('state-dropdown');
+const searchInput = document.getElementById('search-bar');
+const stateDropdown = document.getElementById('state-dropdown');
 
-  if (searchInput && stateDropdown) {
-    const filterOfficials = () => {
-      const term = searchInput.value.toLowerCase();
-      const state = stateDropdown.value;
+if (searchInput && stateDropdown) {
+  const filterOfficials = () => {
+    const term = searchInput.value.toLowerCase();
+    const state = window.selectedState || ''; // <-- use global state
 
-      document.querySelectorAll('.official-card').forEach(card => {
-        const name = card.querySelector('h3')?.textContent.toLowerCase() || '';
-        const cardState = card.dataset.state || '';
+    document.querySelectorAll('.official-card').forEach(card => {
+      const name = card.querySelector('h3')?.textContent.toLowerCase() || '';
+      const cardState = card.dataset.state || '';
 
-        const matchesName = name.includes(term);
-        const matchesState = state === '' || cardState === state;
+      const matchesName = name.includes(term);
+      const matchesState = state === '' || cardState === state;
 
-        card.style.display = matchesName && matchesState ? '' : 'none';
-      });
-    };
+      card.style.display = matchesName && matchesState ? '' : 'none';
+    });
+  };
 
-    searchInput.addEventListener('input', filterOfficials);
-    stateDropdown.addEventListener('change', filterOfficials);
-  }
-});
+  searchInput.addEventListener('input', filterOfficials);
+
+  // Also run the filter when state changes globally
+  stateDropdown.addEventListener('change', () => {
+    window.selectedState = stateDropdown.value; // update global
+    filterOfficials(); // re-run filter on name+state
+  });
+}
 
 // === Favorites System ===
 function addToFavorites(cardElement) {
@@ -353,8 +358,11 @@ function showVoting() {
       console.log('Available voting keys:', Object.keys(data));
       console.log('Trying to match:', window.selectedState);
 
-      let stateName = window.selectedState || 'North Carolina';
+      // Use global selectedState with proper normalization
+      let stateName = window.selectedState || '';
+      if (!stateName) stateName = 'North Carolina'; // fallback
       if (stateName === 'Virgin Islands') stateName = 'U.S. Virgin Islands';
+
       const stateData = data[stateName] || null;
 
       if (!stateData || typeof stateData !== 'object') {
@@ -363,7 +371,7 @@ function showVoting() {
       }
 
       console.log("Selected state:", stateName);
-      console.log('Direct match result:', data[stateName]);
+      console.log('Direct match result:', stateData);
 
       const labelMap = {
         register: 'Register to Vote',
@@ -566,7 +574,10 @@ function showCivic() {
   fetch('/state-links.json')
     .then(res => res.json())
     .then(stateLinks => {
-      const normalizedState = selectedState === "Virgin Islands" ? "U.S. Virgin Islands" : selectedState;
+      let normalizedState = window.selectedState || '';
+      if (!normalizedState) normalizedState = 'North Carolina'; // fallback
+      if (normalizedState === "Virgin Islands") normalizedState = "U.S. Virgin Islands";
+
       const links = stateLinks[normalizedState] || {};
 
       const labelMap = {
@@ -601,7 +612,7 @@ function showCivic() {
           card.setAttribute('onclick', `window.open('${value.url}', '_blank')`);
           card.innerHTML = `
             <h4>${displayLabel}</h4>
-            <p class="card-desc">Click to view ${displayLabel} information for ${selectedState}.</p>
+            <p class="card-desc">Click to view ${displayLabel} information for ${normalizedState}.</p>
           `;
           grid.appendChild(card);
         } else if (typeof value === 'string') {
@@ -610,7 +621,7 @@ function showCivic() {
           card.setAttribute('onclick', `window.open('${value}', '_blank')`);
           card.innerHTML = `
             <h4>${displayLabel}</h4>
-            <p class="card-desc">Click to view ${displayLabel} information for ${selectedState}.</p>
+            <p class="card-desc">Click to view ${displayLabel} information for ${normalizedState}.</p>
           `;
           grid.appendChild(card);
         }
@@ -618,7 +629,7 @@ function showCivic() {
 
       if (grid.children.length === 0) {
         const msg = document.createElement('p');
-        msg.textContent = `No state-level links available for ${selectedState}.`;
+        msg.textContent = `No state-level links available for ${normalizedState}.`;
         stateBlock.appendChild(msg);
       }
       stateBlock.appendChild(grid);
@@ -702,6 +713,7 @@ function showCivic() {
       console.error(err);
     });
 }
+
 // === CABINET MODAL LOGIC ===
 function showCabinet() {
   const list = document.getElementById('cabinetList');
@@ -714,7 +726,6 @@ function showCabinet() {
     return;
   }
 
-  // Always start in grid mode
   gridView.style.display = 'block';
   detailView.style.display = 'none';
   list.innerHTML = '';
@@ -738,24 +749,22 @@ function showCabinet() {
           : 'assets/default-photo.png';
 
         card.innerHTML = `
-  <div class="photo-wrapper">
-    <img src="${photoSrc}" alt="${member.name || ''}"
-         onerror="this.onerror=null;this.src='assets/default-photo.png';" />
-  </div>
-  <div class="official-info">
-    <h3>${member.name || 'Unknown'}</h3>
-    <p><strong>Office:</strong> ${member.office || 'N/A'}</p>
-  </div>
-`;
+          <div class="photo-wrapper">
+            <img src="${photoSrc}" alt="${member.name || ''}"
+                 onerror="this.onerror=null;this.src='assets/default-photo.png';" />
+          </div>
+          <div class="official-info">
+            <h3>${member.name || 'Unknown'}</h3>
+            <p><strong>Office:</strong> ${member.office || 'N/A'}</p>
+          </div>
+        `;
 
-        // Only when you click a card do we show details
         card.onclick = () => showCabinetMember(member);
         list.appendChild(card);
       });
 
       modal.style.display = 'block';
 
-      // click-outside close (scoped to this modal)
       window.addEventListener('click', function cabinetClickOutside(e) {
         if (e.target === modal) {
           modal.style.display = 'none';
@@ -780,7 +789,6 @@ function showCabinetMember(member) {
   gridView.style.display = 'none';
   detailView.style.display = 'block';
 
-  // Handle empty termStart / termEnd safely
   const parseYear = d => {
     if (!d || d.trim() === '') return '';
     const dt = new Date(d);
@@ -1077,6 +1085,8 @@ const federalOfficials = [
   }
 ];
 // === OFFICIALS RENDERING ===
+let officialsContainer = null;
+
 function renderOfficials(stateFilter = null, query = '') {
   showTab('my-officials');
   if (!officialsContainer) {
@@ -1085,25 +1095,25 @@ function renderOfficials(stateFilter = null, query = '') {
   if (!officialsContainer) return;
   officialsContainer.innerHTML = '';
 
-  const stateAliases = {
-    "Virgin Islands": "U.S. Virgin Islands",
-    "Northern Mariana Islands": "Northern Mariana Islands",
-    "Puerto Rico": "Puerto Rico"
-  };
-  if (stateFilter && stateAliases[stateFilter]) {
-    stateFilter = stateAliases[stateFilter];
-  }
+  const normalizedState = (() => {
+    const state = stateFilter || window.selectedState || '';
+    const stateAliases = {
+      "Virgin Islands": "U.S. Virgin Islands",
+      "Northern Mariana Islands": "Northern Mariana Islands",
+      "Puerto Rico": "Puerto Rico"
+    };
+    return stateAliases[state] || state;
+  })();
 
   const queryLower = query.toLowerCase();
-  const filterByState = query === '';
 
-  const filteredGovs = governors.filter(o => !filterByState || o.state === stateFilter);
-  const filteredLtGovs = ltGovernors.filter(o => !filterByState || o.state === stateFilter);
-  const filteredSens = senators.filter(o => !filterByState || o.state === stateFilter);
+  // Filter officials by state first
+  const filteredGovs = governors.filter(o => !normalizedState || o.state === normalizedState);
+  const filteredLtGovs = ltGovernors.filter(o => !normalizedState || o.state === normalizedState);
+  const filteredSens = senators.filter(o => !normalizedState || o.state === normalizedState);
   const filteredReps = houseReps
-    .filter(o => !filterByState || o.state === stateFilter)
+    .filter(o => !normalizedState || o.state === normalizedState)
     .sort((a, b) => parseInt(a.district) - parseInt(b.district));
-  console.log("Filtered reps:", filteredReps.map(r => r.name));
 
   const allOfficials = [
     ...federalOfficials,
@@ -1136,6 +1146,11 @@ function renderOfficials(stateFilter = null, query = '') {
     return isNaN(dt) ? '' : dt.getFullYear();
   };
 
+  if (allOfficials.length === 0) {
+    officialsContainer.innerHTML = `<p>No officials found for ${normalizedState}${query ? ` matching "${query}"` : ''}.</p>`;
+    return;
+  }
+
   allOfficials.forEach(o => {
     const rawParty = (o.party || '').toLowerCase().trim();
     const normalizedParty = partyMap[rawParty] || rawParty.replace(/\s+/g, '') || 'independent';
@@ -1151,23 +1166,23 @@ function renderOfficials(stateFilter = null, query = '') {
 
     const card = document.createElement('div');
     card.className = `official-card ${normalizedParty}`;
-  card.innerHTML = `
-  <div class="party-stripe"></div>
-  <div class="card-body">
-    <div class="photo-wrapper">
-      <img src="${photoSrc}" alt="${o.name}"
-           onerror="this.onerror=null;this.src='assets/default-photo.png';" />
-    </div>
-    <div class="official-info">
-      <h3>${o.name || 'Unknown'}</h3>
-      <p><strong>Position:</strong> ${o.office || 'N/A'}</p>
-      ${districtDisplay}
-      <p><strong>State:</strong> ${o.state || 'United States'}</p>
-      <p><strong>Term:</strong> ${termDisplay}</p>
-      <p><strong>Party:</strong> ${o.party || 'N/A'}</p>
-    </div>
-  </div>
-`;
+    card.innerHTML = `
+      <div class="party-stripe"></div>
+      <div class="card-body">
+        <div class="photo-wrapper">
+          <img src="${photoSrc}" alt="${o.name || 'Unknown'}"
+               onerror="this.onerror=null;this.src='assets/default-photo.png';" />
+        </div>
+        <div class="official-info">
+          <h3>${o.name || 'Unknown'}</h3>
+          <p><strong>Position:</strong> ${o.office || 'N/A'}</p>
+          ${districtDisplay}
+          <p><strong>State:</strong> ${o.state || 'United States'}</p>
+          <p><strong>Term:</strong> ${termDisplay}</p>
+          <p><strong>Party:</strong> ${o.party || 'N/A'}</p>
+        </div>
+      </div>
+    `;
     card.addEventListener('click', () => openOfficialModal(o));
     officialsContainer.appendChild(card);
   });
@@ -1219,8 +1234,7 @@ function openOfficialModal(official) {
           : ''}
         ${cleanOfficial.proposals ? `<p><strong>Proposals:</strong> ${cleanOfficial.proposals}</p>` : ''}
         ${(cleanOfficial.vetoes && ['Governor', 'President'].includes(cleanOfficial.office))
-          ? `<p><strong>Vetoes:</strong> ${cleanOfficial.vetoes}</p>`
-          : ''}
+          ? `<p><strong>Vetoes:</strong> ${cleanOfficial.vetoes}</p>` : ''}
         ${cleanOfficial.salary ? `<p><strong>Salary:</strong> ${cleanOfficial.salary}</p>` : ''}
         ${cleanOfficial.govtrackStats
           ? `<div class="govtrack-stats"><h3>Congressional Rankings</h3><ul>${
@@ -1241,7 +1255,6 @@ function openOfficialModal(official) {
 
   modal.style.display = 'block';
 
-  // Click-outside-to-close (scoped handler)
   const clickOutsideHandler = function(event) {
     if (event.target === modal) {
       modal.style.display = 'none';
@@ -1251,13 +1264,10 @@ function openOfficialModal(official) {
   window.addEventListener('click', clickOutsideHandler);
 }
 
-// Safe close function that accepts optional id (defaults to officials modal)
+// Safe close function
 function closeModalWindow(id = 'officials-modal') {
   const el = document.getElementById(id);
-  if (!el) {
-    console.warn(`closeModalWindow: no element found with id "${id}"`);
-    return;
-  }
+  if (!el) return;
   el.style.display = 'none';
 }
 
@@ -1443,22 +1453,38 @@ document.querySelectorAll('.info-card[data-network]').forEach(card => {
     if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
   });
 
-  // --- STATE DROPDOWN WIRING ---
-  function wireStateDropdown() {
-    const dropdown = document.getElementById('state-dropdown');
-    if (!dropdown) return;
+ function wireStateDropdown() {
+  const dropdown = document.getElementById('state-dropdown');
+  if (!dropdown) return;
 
-    const initial = typeof window.selectedState === 'string' ? window.selectedState : '';
-    dropdown.value = initial;
+  // Set initial value
+  const initial = typeof window.selectedState === 'string' ? window.selectedState : '';
+  dropdown.value = initial;
 
-    dropdown.addEventListener('change', () => {
-      const val = dropdown.value;
-      window.selectedState = val;
-      if (typeof window.renderOfficials === 'function') {
-        window.renderOfficials(val, '');
-      }
-    });
-  }
+  dropdown.addEventListener('change', () => {
+    window.selectedState = dropdown.value; // global state
+
+    // Update My Officials
+    if (typeof window.renderOfficials === 'function') {
+      window.renderOfficials();
+    }
+
+    // Update Civic Intelligence
+    if (typeof window.renderCivicIntelligence === 'function') {
+      window.renderCivicIntelligence();
+    }
+
+    // Update Voting tab
+    if (typeof window.renderVotingInfo === 'function') {
+      window.renderVotingInfo();
+    }
+
+    // Re-run search filter on My Officials
+    const searchEvent = new Event('input'); 
+    const searchInput = document.getElementById('search-bar');
+    if (searchInput) searchInput.dispatchEvent(searchEvent);
+  });
+}
 
   // --- Modal close wiring (defensive) ---
   if (officialsModalCloseBtn && typeof window.closeModalWindow === 'function') {
