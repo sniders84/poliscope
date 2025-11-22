@@ -7,6 +7,23 @@ let houseReps = [];
 let officialsContainer = null;
 let searchBar = null;
 
+// --- STATE DROPDOWN WIRING ---
+function wireStateDropdown() {
+  const dropdown = document.getElementById('state-dropdown');
+  if (!dropdown) return;
+
+  const initial = typeof window.selectedState === 'string' ? window.selectedState : '';
+  dropdown.value = initial;
+
+  dropdown.addEventListener('change', () => {
+    const val = dropdown.value;
+    window.selectedState = val;
+    if (typeof window.renderOfficials === 'function') {
+      window.renderOfficials(val, '');
+    }
+  });
+}
+
 // === DATA LOADING ===
 // Load all major JSON datasets at once
 Promise.all([
