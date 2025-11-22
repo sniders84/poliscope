@@ -147,110 +147,86 @@ function showStartupHub() {
   showTab('startup-hub');
 }
 
-<script>
-// --- Global handler stubs to stop ReferenceErrors ---
-function showStartupHub() {}
-function renderOfficials() {}
-function showCivic() {}
-function showPolls() {}
-function showOrganizations() {}
-function showVoting() {}
-
-// --- Podcasts & Shows tab handler (kept functional) ---
+// Podcasts & Shows tab
 function showPodcastsShows() {
-  if (typeof showTab === 'function') {
-    showTab('podcasts-shows');
-  } else {
-    console.warn('showTab not available yet.');
-  }
+  showTab('podcasts-shows');
 }
 
-// --- No rendering yet. We will probe JSON safely next. ---
+// === Podcasts & Shows Search ===
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('Stubs active. No rendering yet.');
-});
-</script>
-<script>
-// Probe JSON paths and render only if responses are valid JSON
-document.addEventListener('DOMContentLoaded', async () => {
-  const videoGrid = document.querySelector('.video-grid');
-  const audioGrid = document.querySelector('.audio-grid');
-
-  async function getRaw(path, label) {
-    try {
-      const res = await fetch(path, { cache: 'no-store' });
-      const text = await res.text();
-      console.log(`${label} status:`, res.status);
-      console.log(`${label} head:`, text.slice(0, 120));
-      return { ok: res.ok, text };
-    } catch (e) {
-      console.error(`${label} fetch error:`, e);
-      return { ok: false, text: '' };
-    }
-  }
-
-  // Use root paths since files are in /public/
-  const showsRaw = await getRaw('/shows.json', 'shows.json');
-  const podsRaw  = await getRaw('/podcasts.json', 'podcasts.json');
-
-  function safeParse(raw, label) {
-    const head = raw.text.trim().charAt(0);
-    if (!raw.ok) {
-      console.warn(`${label} not OK. Skipping parse.`);
-      return null;
-    }
-    if (head !== '[' && head !== '{') {
-      console.warn(`${label} does not look like JSON (starts with '${head}'). Skipping parse.`);
-      return null;
-    }
-    try {
-      return JSON.parse(raw.text);
-    } catch (e) {
-      console.error(`${label} JSON.parse failed:`, e);
-      return null;
-    }
-  }
-
-  const shows    = safeParse(showsRaw, 'shows.json');
-  const podcasts = safeParse(podsRaw, 'podcasts.json');
-
-  function renderFew(items, container, label) {
-    if (!container) return;
-    container.innerHTML = '';
-    if (!Array.isArray(items) || items.length === 0) {
-      console.warn(`${label} has no items to render.`);
-      return;
-    }
-    items.slice(0, 3).forEach((item, idx) => {
-      const title = item.title || `Untitled ${idx + 1}`;
-      const url = item.official_url || '#';
-      const descriptor = item.descriptor || '';
-      // If your JSON already stores full paths, use item.logo directly; otherwise prefix /assets/
-      const logo = item.logo && item.logo.startsWith('/')
-        ? item.logo
-        : `/assets/${item.logo || 'placeholder.png'}`;
-
-      const card = document.createElement('div');
-      card.className = 'media-card';
-      card.setAttribute('data-url', url);
-      card.onclick = () => { if (url && url !== '#') window.open(url, '_blank'); };
-
-      card.innerHTML = `
-        <img src="${logo}" alt="${title} Logo">
-        <h3>${title}</h3>
-        <p>${descriptor}</p>
-        <button onclick="event.stopPropagation();">⭐ Favorite</button>
-      `;
-      container.appendChild(card);
+  const searchInput = document.getElementById('show-search');
+  if (searchInput) {
+    searchInput.addEventListener('input', function(e) {
+      const term = e.target.value.toLowerCase();
+      document.querySelectorAll('#podcasts-shows .media-card').forEach(card => {
+        const text = card.innerText.toLowerCase();
+        card.style.display = text.includes(term) ? '' : 'none';
+      });
     });
-    console.log(`${label} rendered (first 3).`);
+  }
+});
+
+// === Podcasts & Shows Favorites ===
+
+// Save or remove a card from favorites (toggle + persist)
+function addToFavorites(cardElement) {
+  const title = cardElement.querySelector('h3').textContent;
+  let favs = JSON.parse(localStorage.getItem('favorites')) || [];
+
+  // Check if already in favorites
+  const existingIndex = favs.findIndex(f => f.title === title);
+
+  if (existingIndex !== -1) {
+    // Remove if exists
+    favs.splice(existingIndex, 1);
+  } else {
+    // Add new favorite
+    favs.push({
+      title: title,
+      html: cardElement.outerHTML
+    });
   }
 
-  if (shows)    renderFew(shows, videoGrid, 'shows.json');
-  if (podcasts) renderFew(podcasts, audioGrid, 'podcasts.json');
-});
-</script>
+  localStorage.setItem('favorites', JSON.stringify(favs));
+  renderFavorites();
+}
 
+// Render favorites section
+function renderFavorites() {
+  const favs = JSON.parse(localStorage.getItem('favorites')) || [];
+  const container = document.querySelector('#favorites-section .favorites-grid');
+  if (!container) return;
+
+  container.innerHTML = '';
+
+  favs.forEach(fav => {
+    // Rebuild card from stored HTML
+    const wrapper = document.createElement('div');
+    wrapper.innerHTML = fav.html;
+    const card = wrapper.firstElementChild;
+
+    // Update button to remove
+    const btn = card.querySelector('button');
+    btn.textContent = "❌ Remove";
+    btn.onclick = (e) => {
+      e.stopPropagation();
+      removeFavorite(fav.title);
+    };
+
+    container.appendChild(card);
+  });
+}
+
+// Remove favorite by title
+function removeFavorite(title) {
+  let favs = JSON.parse(localStorage.getItem('favorites')) || [];
+  favs = favs.filter(f => f.title !== title);
+  localStorage.setItem('favorites', JSON.stringify(favs));
+  renderFavorites();
+}
+
+// Initialize favorites on page load
+document.addEventListener('DOMContentLoaded', renderFavorites);
 
 function showCivic() {
   showTab('civic-intelligence');
