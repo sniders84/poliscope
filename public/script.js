@@ -1150,7 +1150,9 @@ function renderOfficials(stateFilter = null, query = '') {
     const termDisplay = (startYear || endYear) ? `${startYear}–${endYear}` : 'Present';
 
     const card = document.createElement('div');
-    card.className = `official-card ${normalizedParty}`;
+card.className = `official-card ${normalizedParty}`;
+card.dataset.state = o.state;   // <<< ADD THIS LINE
+
   card.innerHTML = `
   <div class="party-stripe"></div>
   <div class="card-body">
