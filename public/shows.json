@@ -12,7 +12,7 @@
         "category": "Centrist/Independent",
         "source": "CBS News",
         "official_url": "https://www.cbsnews.com/evening-news/",
-        "logo_slug": "cbsevening.png",
+        "logo_slug": "cbsevening.jpeg",
         "descriptor": "CBS’s nightly broadcast. Balanced coverage of politics, culture, and world events."
     },
     {
@@ -20,7 +20,7 @@
         "category": "Centrist/Independent",
         "source": "NBC News",
         "official_url": "https://www.nbcnews.com/nightly-news",
-        "logo_slug": "nbcnightly.png",
+        "logo_slug": "nbcnightly.jpeg",
         "descriptor": "NBC’s evening newscast. Trusted reporting on national and international developments."
     },
     {
@@ -28,15 +28,15 @@
         "category": "Centrist/Independent",
         "source": "PBS",
         "official_url": "https://www.pbs.org/newshour",
-        "logo_slug": "pbs.png",
+        "logo_slug": "pbs.webp",
         "descriptor": "PBS’s in‑depth nightly news program. Long‑form reporting and analysis on politics and civic issues."
     },
     {
         "title": "CNN News Central",
         "category": "Centrist/Independent",
         "source": "CNN",
-        "official_url": "https://www.cnn.com/shows/news-central",
-        "logo_slug": "cnn.png",
+        "official_url": "https://www.cnn.com/shows/cnn-news-central",
+        "logo_slug": "cnnnewscentral.webp",
         "descriptor": "CNN’s flagship daytime news block. Breaking news and analysis from correspondents worldwide."
     },
     {
@@ -44,15 +44,15 @@
         "category": "Conservative",
         "source": "Fox News",
         "official_url": "https://www.foxnews.com/shows/special-report",
-        "logo_slug": "foxspecial.png",
+        "logo_slug": "foxsnewspecialreport.webp",
         "descriptor": "Fox News’ evening political program. Conservative analysis of Washington and global affairs."
     },
     {
         "title": "MSNBC All In with Chris Hayes",
         "category": "Progressive",
         "source": "MSNBC",
-        "official_url": "https://www.msnbc.com/all-in",
-        "logo_slug": "allin.png",
+        "official_url": "https://www.ms.now/all",
+        "logo_slug": "allin.jpeg",
         "descriptor": "Progressive nightly program hosted by Chris Hayes. Deep dives into politics, policy, and activism."
     },
     {
@@ -60,15 +60,15 @@
         "category": "Progressive",
         "source": "MSNBC",
         "official_url": "https://www.msnbc.com/rachel-maddow-show",
-        "logo_slug": "maddow.png",
+        "logo_slug": "maddow.jpeg",
         "descriptor": "Rachel Maddow’s progressive analysis. Investigative reporting and commentary on politics and culture."
     },
     {
         "title": "NewsNation Prime",
         "category": "Centrist/Independent",
         "source": "NewsNation",
-        "official_url": "https://www.newsnationnow.com/shows/prime/",
-        "logo_slug": "newsnation.png",
+        "official_url": "https://www.newsnationnow.com/prime/",
+        "logo_slug": "newsnationprime.webp",
         "descriptor": "NewsNation’s nightly broadcast. Marketed as unbiased coverage of national and global events."
     },
     {
@@ -83,8 +83,8 @@
         "title": "C-SPAN Washington Journal",
         "category": "Centrist/Independent",
         "source": "C-SPAN",
-        "official_url": "https://www.c-span.org/washingtonjournal/",
-        "logo_slug": "cspanwj.png",
+        "official_url": "https://www.c-span.org/series/?washingtonJournal",
+        "logo_slug": "cspanwj.webp",
         "descriptor": "C-SPAN’s morning call-in program. Citizens engage directly with policymakers and journalists on current issues."
     },
     {
@@ -100,7 +100,7 @@
         "category": "Global/Economics",
         "source": "BBC",
         "official_url": "https://www.bbc.co.uk/programmes/n13xtmd5",
-        "logo_slug": "bbcamerica.png",
+        "logo_slug": "bbcworld.png",
         "descriptor": "BBC’s nightly broadcast tailored for U.S. audiences. Global headlines with international context and analysis."
     },
     {
@@ -108,55 +108,47 @@
         "category": "Global/Economics",
         "source": "Deutsche Welle",
         "official_url": "https://www.dw.com/en/tv/dw-news/s-3232",
-        "logo_slug": "dw.png",
+        "logo_slug": "dwnews.jpeg",
         "descriptor": "Germany’s international broadcaster. Global news and European perspectives on politics, economics, and culture."
     },
     {
         "title": "Al Jazeera English News",
         "category": "Global/Economics",
         "source": "Al Jazeera",
-        "official_url": "https://www.aljazeera.com/program/news/",
-        "logo_slug": "aljazeera.png",
+        "official_url": "https://www.aljazeera.com/live",
+        "logo_slug": "aljazeeralive.jpeg",
         "descriptor": "Al Jazeera’s English-language news program. Global coverage with a focus on the Middle East and developing world."
     },
     {
-        "title": "Sky News Tonight",
+        "title": "Sky News Live",
         "category": "Global/Economics",
         "source": "Sky News",
-        "official_url": "https://news.sky.com/",
-        "logo_slug": "skynews.png",
+        "official_url": "https://news.sky.com/watch-live",
+        "logo_slug": "skynewslive.png",
         "descriptor": "UK-based nightly news program. International headlines and analysis from Sky’s global correspondents."
     },
     {
-        "title": "France 24 The News",
+        "title": "France 24",
         "category": "Global/Economics",
         "source": "France 24",
-        "official_url": "https://www.france24.com/en/tv-shows/the-news",
+        "official_url": "https://www.france24.com/en/tv-shows/",
         "logo_slug": "france24.png",
         "descriptor": "France 24’s English-language newscast. European and global perspectives on politics, economics, and culture."
     },
-    {
-        "title": "RT International News",
-        "category": "Global/Economics",
-        "source": "RT",
-        "official_url": "https://www.rt.com/shows/news/",
-        "logo_slug": "rt.png",
-        "descriptor": "Russian state-backed broadcaster. International news coverage with a perspective aligned to Russian foreign policy."
-    },
-    {
+       {
         "title": "NHK World Newsline",
         "category": "Global/Economics",
         "source": "NHK World Japan",
         "official_url": "https://www3.nhk.or.jp/nhkworld/en/news/programs/",
-        "logo_slug": "nhk.png",
+        "logo_slug": "nhkworld.png",
         "descriptor": "Japan’s international broadcaster. Newsline delivers Asian and global headlines with Japanese perspectives."
     },
     {
         "title": "CTV National News",
         "category": "Global/Economics",
         "source": "CTV News Canada",
-        "official_url": "https://www.ctvnews.ca/national-news",
-        "logo_slug": "ctv.png",
+        "official_url": "https://www.ctvnews.ca/video/",
+        "logo_slug": "ctvnews.png",
         "descriptor": "Canada’s nightly national newscast. Coverage of Canadian politics and global events from a Canadian lens."
     },
     {
@@ -164,7 +156,7 @@
         "category": "Conservative",
         "source": "Fox News",
         "official_url": "https://www.foxnews.com/shows/hannity",
-        "logo_slug": "hannity.png",
+        "logo_slug": "hannity.jpeg",
         "descriptor": "Sean Hannity’s primetime conservative program. Commentary and interviews focused on Republican politics and cultural debates."
     },
     {
@@ -172,7 +164,7 @@
         "category": "Conservative",
         "source": "Fox News",
         "official_url": "https://www.foxnews.com/shows/ingraham-angle",
-        "logo_slug": "ingraham.png",
+        "logo_slug": "ingraham.webp",
         "descriptor": "Laura Ingraham’s nightly conservative show. Strong opinions on politics, culture, and media narratives."
     },
     {
