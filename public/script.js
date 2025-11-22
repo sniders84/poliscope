@@ -16,15 +16,16 @@ function toggleFavorite(type, item) {
   const index = window.favorites[type].findIndex(f => f.title === item.title);
 
   if (index > -1) {
-    // Remove from favorites
+    // Remove favorite
     window.favorites[type].splice(index, 1);
   } else {
-    // Add to favorites
+    // Add favorite
     window.favorites[type].push(item);
   }
 
-  // Re-render tab so the star updates
-  if (document.getElementById('podcasts-shows')?.style.display !== 'none') {
+  // Re-render tab if user is currently on it
+  const tab = document.getElementById('podcasts-shows');
+  if (tab && tab.style.display !== 'none') {
     showPodcastsShows();
   }
 }
