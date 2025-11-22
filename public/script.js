@@ -147,25 +147,163 @@ function showStartupHub() {
   showTab('startup-hub');
 }
 
-<!-- 🎬 Podcasts & Shows Tab -->
-<section id="podcasts-shows" class="tab-content" style="display: none;">
-  <!-- Search Bar -->
-  <input type="text" id="show-search" placeholder="Search shows and podcasts...">
+// === Show Podcasts & Shows Tab ===
+function showPodcastsShows() {
+  showTab('podcasts-shows');
+  loadShowsAndPodcasts(); // Load JSON content only when tab opens
+}
 
-  <!-- Favorites Section -->
-  <div id="favorites-section">
-    <h2>Your Favorites</h2>
-    <div class="favorites-grid"></div>
-  </div>
+// === Load Shows & Podcasts ===
+async function loadShowsAndPodcasts() {
+  try {
+    const showsRes = await fetch("/shows.json");
+    const podcastsRes = await fetch("/podcasts.json");
 
-  <!-- Just Shows Section -->
-  <h2>Just Shows</h2>
-  <div class="video-grid"></div>
+    const shows = await showsRes.json();
+    const podcasts = await podcastsRes.json();
 
-  <!-- Podcasts Section -->
-  <h2>Podcasts</h2>
-  <div class="audio-grid"></div>
-</section>
+    renderShows(shows);
+    renderPodcasts(podcasts);
+
+  } catch (err) {
+    console.error("Error loading shows/podcasts:", err);
+  }
+}
+
+// === Render Shows ===
+function renderShows(showList) {
+  const container = document.querySelector("#podcasts-shows .video-grid");
+  if (!container) return;
+  container.innerHTML = "";
+
+  showList.forEach(item => {
+    const card = document.createElement("div");
+    card.className = "media-card";
+    card.onclick = () => window.open(item.official_url, "_blank");
+
+    const img = document.createElement("img");
+    img.src = `/assets/${item.logo_slug}`;
+    img.alt = `${item.title} Logo`;
+
+    const h3 = document.createElement("h3");
+    h3.textContent = item.title;
+
+    const p = document.createElement("p");
+    p.textContent = item.descriptor;
+
+    const btn = document.createElement("button");
+    btn.textContent = "⭐ Favorite";
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      addToFavorites(card);
+    });
+
+    card.append(img, h3, p, btn);
+    container.appendChild(card);
+  });
+}
+
+// === Render Podcasts ===
+function renderPodcasts(podcastList) {
+  const container = document.querySelector("#podcasts-shows .audio-grid");
+  if (!container) return;
+  container.innerHTML = "";
+
+  podcastList.forEach(item => {
+    const card = document.createElement("div");
+    card.className = "media-card";
+    card.onclick = () => window.open(item.official_url, "_blank");
+
+    const img = document.createElement("img");
+    img.src = `/assets/${item.logo_slug}`;
+    img.alt = `${item.title} Logo`;
+
+    const h3 = document.createElement("h3");
+    h3.textContent = item.title;
+
+    const p = document.createElement("p");
+    p.textContent = item.descriptor;
+
+    const btn = document.createElement("button");
+    btn.textContent = "⭐ Favorite";
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      addToFavorites(card);
+    });
+
+    card.append(img, h3, p, btn);
+    container.appendChild(card);
+  });
+}
+
+// === Search Bar for dynamic cards ===
+document.addEventListener('DOMContentLoaded', () => {
+  const searchInput = document.getElementById('show-search');
+  const container = document.getElementById('podcasts-shows');
+
+  if (searchInput && container) {
+    searchInput.addEventListener('input', function(e) {
+      const term = e.target.value.toLowerCase();
+      container.querySelectorAll('.media-card').forEach(card => {
+        const text = card.innerText.toLowerCase();
+        card.style.display = text.includes(term) ? '' : 'none';
+      });
+    });
+  }
+});
+
+// === Favorites System (unchanged from your existing code) ===
+function addToFavorites(cardElement) {
+  const title = cardElement.querySelector('h3').textContent;
+  let favs = JSON.parse(localStorage.getItem('favorites')) || [];
+
+  const existingIndex = favs.findIndex(f => f.title === title);
+
+  if (existingIndex !== -1) {
+    favs.splice(existingIndex, 1);
+  } else {
+    favs.push({
+      title: title,
+      html: cardElement.outerHTML
+    });
+  }
+
+  localStorage.setItem('favorites', JSON.stringify(favs));
+  renderFavorites();
+}
+
+function renderFavorites() {
+  const favs = JSON.parse(localStorage.getItem('favorites')) || [];
+  const container = document.querySelector('#favorites-section .favorites-grid');
+  if (!container) return;
+
+  container.innerHTML = '';
+
+  favs.forEach(fav => {
+    const wrapper = document.createElement('div');
+    wrapper.innerHTML = fav.html;
+    const card = wrapper.firstElementChild;
+
+    const btn = card.querySelector('button');
+    btn.textContent = "❌ Remove";
+    btn.onclick = (e) => {
+      e.stopPropagation();
+      removeFavorite(fav.title);
+    };
+
+    container.appendChild(card);
+  });
+}
+
+function removeFavorite(title) {
+  let favs = JSON.parse(localStorage.getItem('favorites')) || [];
+  favs = favs.filter(f => f.title !== title);
+  localStorage.setItem('favorites', JSON.stringify(favs));
+  renderFavorites();
+}
+
+// Initialize favorites on page load
+document.addEventListener('DOMContentLoaded', renderFavorites);
 
 function showCivic() {
   showTab('civic-intelligence');
