@@ -146,63 +146,127 @@ function showStartupHub() {
   showTab('startup-hub');
 }
 
-// === Podcasts & Shows Tab ===
 function showPodcastsShows() {
-  showTab('podcasts-shows'); // hides all other tabs
+  showTab('podcasts-shows'); // hide all other tabs
 
   const container = document.getElementById('podcasts-cards');
   container.innerHTML = '';
 
-  // Example data — replace with your actual podcasts/shows JSON or API
-  const podcasts = [
-    { title: 'Political Roundup', url: '#', desc: 'Weekly political analysis.' },
-    { title: 'Elections Explained', url: '#', desc: 'Deep dive into elections and campaigns.' },
-    { title: 'Civic Chat', url: '#', desc: 'Interviews with civic leaders.' },
-    { title: 'Policy Talk', url: '#', desc: 'Discussing policies shaping the nation.' }
-  ];
+  // Load Podcasts
+  fetch('/podcasts.json')
+    .then(res => res.json())
+    .then(podcasts => {
+      const podcastSection = document.createElement('div');
+      podcastSection.className = 'podcast-show-section';
+      const podcastTitle = document.createElement('h3');
+      podcastTitle.textContent = 'Podcasts';
+      podcastSection.appendChild(podcastTitle);
 
-  // Render cards
-  podcasts.forEach(podcast => {
-    const card = document.createElement('div');
-    card.className = 'official-card'; // matches your other cards for consistent styling
-    card.innerHTML = `
-      <h3>${podcast.title}</h3>
-      <p>${podcast.desc}</p>
-    `;
-    card.addEventListener('click', () => {
-      window.open(podcast.url, '_blank');
+      const podcastGrid = document.createElement('div');
+      podcastGrid.className = 'podcast-show-grid';
+
+      podcasts.forEach(podcast => {
+        const card = document.createElement('div');
+        card.className = 'podcast-show-card';
+        card.innerHTML = `
+          <div class="logo-wrapper">
+            <img src="assets/logos/${podcast.logo_slug}" alt="${podcast.title}" />
+          </div>
+          <div class="card-content">
+            <h4>${podcast.title}</h4>
+            <p class="category">${podcast.category} – ${podcast.source}</p>
+            <p class="descriptor">${podcast.descriptor}</p>
+            <div class="card-actions">
+              <button class="favorite-btn">★</button>
+              <button class="unfavorite-btn">☆</button>
+            </div>
+          </div>
+        `;
+        // Open official link
+        card.querySelector('.logo-wrapper').addEventListener('click', () => {
+          window.open(podcast.official_url, '_blank');
+        });
+
+        // Favorite logic
+        const favBtn = card.querySelector('.favorite-btn');
+        const unfavBtn = card.querySelector('.unfavorite-btn');
+
+        favBtn.addEventListener('click', () => addToFavorites(podcast));
+        unfavBtn.addEventListener('click', () => removeFromFavorites(podcast));
+
+        podcastGrid.appendChild(card);
+      });
+
+      podcastSection.appendChild(podcastGrid);
+      container.appendChild(podcastSection);
+    })
+    .catch(err => {
+      console.error('Error loading podcasts.json:', err);
+      container.innerHTML += '<p>Error loading podcasts.</p>';
     });
-    container.appendChild(card);
-  });
 
-  // Tab-specific search bar (modern, sleek, dark gray with blue hover)
+  // Load Shows
+  fetch('/shows.json')
+    .then(res => res.json())
+    .then(shows => {
+      const showsSection = document.createElement('div');
+      showsSection.className = 'podcast-show-section';
+      const showsTitle = document.createElement('h3');
+      showsTitle.textContent = 'Shows';
+      showsSection.appendChild(showsTitle);
+
+      const showsGrid = document.createElement('div');
+      showsGrid.className = 'podcast-show-grid';
+
+      shows.forEach(show => {
+        const card = document.createElement('div');
+        card.className = 'podcast-show-card';
+        card.innerHTML = `
+          <div class="logo-wrapper">
+            <img src="assets/logos/${show.logo_slug}" alt="${show.title}" />
+          </div>
+          <div class="card-content">
+            <h4>${show.title}</h4>
+            <p class="category">${show.category} – ${show.source}</p>
+            <p class="descriptor">${show.descriptor}</p>
+            <div class="card-actions">
+              <button class="favorite-btn">★</button>
+              <button class="unfavorite-btn">☆</button>
+            </div>
+          </div>
+        `;
+        // Open official link
+        card.querySelector('.logo-wrapper').addEventListener('click', () => {
+          window.open(show.official_url, '_blank');
+        });
+
+        // Favorite logic
+        const favBtn = card.querySelector('.favorite-btn');
+        const unfavBtn = card.querySelector('.unfavorite-btn');
+
+        favBtn.addEventListener('click', () => addToFavorites(show));
+        unfavBtn.addEventListener('click', () => removeFromFavorites(show));
+
+        showsGrid.appendChild(card);
+      });
+
+      showsSection.appendChild(showsGrid);
+      container.appendChild(showsSection);
+    })
+    .catch(err => {
+      console.error('Error loading shows.json:', err);
+      container.innerHTML += '<p>Error loading shows.</p>';
+    });
+
+  // Tab-specific search
   const searchInput = document.getElementById('podcasts-search-bar');
   if (searchInput) {
-    searchInput.style.background = '#333';       // dark gray background
-    searchInput.style.color = '#fff';            // white text
-    searchInput.style.border = '1px solid #555'; // subtle border
-    searchInput.style.padding = '8px 12px';
-    searchInput.style.borderRadius = '6px';
-    searchInput.style.width = '100%';
-    searchInput.style.maxWidth = '400px';
-    searchInput.style.marginBottom = '16px';
-    searchInput.style.transition = 'border-color 0.2s, box-shadow 0.2s';
-
-    searchInput.addEventListener('focus', () => {
-      searchInput.style.borderColor = '#1e90ff'; // blue hover/focus
-      searchInput.style.boxShadow = '0 0 5px #1e90ff';
-    });
-    searchInput.addEventListener('blur', () => {
-      searchInput.style.borderColor = '#555';
-      searchInput.style.boxShadow = 'none';
-    });
-
-    // Filter cards on input
     searchInput.addEventListener('input', () => {
       const term = searchInput.value.toLowerCase();
-      container.querySelectorAll('.official-card').forEach(card => {
-        const text = card.querySelector('h3')?.textContent.toLowerCase() || '';
-        card.style.display = text.includes(term) ? '' : 'none';
+      container.querySelectorAll('.podcast-show-card').forEach(card => {
+        const text = card.querySelector('h4')?.textContent.toLowerCase() || '';
+        const descriptor = card.querySelector('.descriptor')?.textContent.toLowerCase() || '';
+        card.style.display = (text.includes(term) || descriptor.includes(term)) ? '' : 'none';
       });
     });
   }
