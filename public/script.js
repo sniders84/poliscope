@@ -146,8 +146,9 @@ function showStartupHub() {
   showTab('startup-hub');
 }
 
+// === Podcasts & Shows Tab ===
 function showPodcastsShows() {
-  showTab('podcasts-shows'); // this handles hiding all other tabs
+  showTab('podcasts-shows'); // hides all other tabs
 
   const container = document.getElementById('podcasts-cards');
   container.innerHTML = '';
@@ -160,9 +161,10 @@ function showPodcastsShows() {
     { title: 'Policy Talk', url: '#', desc: 'Discussing policies shaping the nation.' }
   ];
 
+  // Render cards
   podcasts.forEach(podcast => {
     const card = document.createElement('div');
-    card.className = 'card';
+    card.className = 'official-card'; // matches your other cards for consistent styling
     card.innerHTML = `
       <h3>${podcast.title}</h3>
       <p>${podcast.desc}</p>
@@ -173,12 +175,32 @@ function showPodcastsShows() {
     container.appendChild(card);
   });
 
-  // Wire the tab-specific search bar
+  // Tab-specific search bar (modern, sleek, dark gray with blue hover)
   const searchInput = document.getElementById('podcasts-search-bar');
   if (searchInput) {
+    searchInput.style.background = '#333';       // dark gray background
+    searchInput.style.color = '#fff';            // white text
+    searchInput.style.border = '1px solid #555'; // subtle border
+    searchInput.style.padding = '8px 12px';
+    searchInput.style.borderRadius = '6px';
+    searchInput.style.width = '100%';
+    searchInput.style.maxWidth = '400px';
+    searchInput.style.marginBottom = '16px';
+    searchInput.style.transition = 'border-color 0.2s, box-shadow 0.2s';
+
+    searchInput.addEventListener('focus', () => {
+      searchInput.style.borderColor = '#1e90ff'; // blue hover/focus
+      searchInput.style.boxShadow = '0 0 5px #1e90ff';
+    });
+    searchInput.addEventListener('blur', () => {
+      searchInput.style.borderColor = '#555';
+      searchInput.style.boxShadow = 'none';
+    });
+
+    // Filter cards on input
     searchInput.addEventListener('input', () => {
       const term = searchInput.value.toLowerCase();
-      container.querySelectorAll('.card').forEach(card => {
+      container.querySelectorAll('.official-card').forEach(card => {
         const text = card.querySelector('h3')?.textContent.toLowerCase() || '';
         card.style.display = text.includes(term) ? '' : 'none';
       });
