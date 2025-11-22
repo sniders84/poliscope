@@ -28,7 +28,7 @@
         "category": "Centrist/Independent",
         "source": "PBS",
         "official_url": "https://www.pbs.org/newshour",
-        "logo_slug": "pbs.webp.webp",
+        "logo_slug": "pbsnewshour.webp",
         "descriptor": "PBS’s in‑depth nightly news program. Long‑form reporting and analysis on politics and civic issues."
     },
     {
@@ -36,7 +36,7 @@
         "category": "Centrist/Independent",
         "source": "CNN",
         "official_url": "https://www.cnn.com/shows/cnn-news-central",
-        "logo_slug": "cnnnewscentral.webp",
+        "logo_slug": "cnnnewscentral.jpeg",
         "descriptor": "CNN’s flagship daytime news block. Breaking news and analysis from correspondents worldwide."
     },
     {
@@ -92,7 +92,7 @@
         "category": "Centrist/Independent",
         "source": "C-SPAN",
         "official_url": "https://www.c-span.org/",
-        "logo_slug": "cspan.png",
+        "logo_slug": "cspan.jpeg",
         "descriptor": "Unfiltered coverage of congressional hearings, press conferences, and civic events. A transparency-first approach."
     },
     {
