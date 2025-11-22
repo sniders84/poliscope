@@ -150,7 +150,7 @@ function showStartupHub() {
 // === Show Podcasts & Shows Tab ===
 function showPodcastsShows() {
   showTab('podcasts-shows');
-  loadShowsAndPodcasts(); // Load JSON content only when tab opens
+  loadShowsAndPodcasts(); // Load JSON content when tab opens
 }
 
 // === Load Shows & Podcasts ===
@@ -193,6 +193,7 @@ function renderShows(showList) {
 
     const btn = document.createElement("button");
     btn.textContent = "⭐ Favorite";
+    btn.className = "favorite-btn";
     btn.addEventListener("click", (e) => {
       e.stopPropagation();
       addToFavorites(card);
@@ -226,6 +227,7 @@ function renderPodcasts(podcastList) {
 
     const btn = document.createElement("button");
     btn.textContent = "⭐ Favorite";
+    btn.className = "favorite-btn";
     btn.addEventListener("click", (e) => {
       e.stopPropagation();
       addToFavorites(card);
@@ -236,7 +238,7 @@ function renderPodcasts(podcastList) {
   });
 }
 
-// === Search Bar for dynamic cards ===
+// === Search Bar ===
 document.addEventListener('DOMContentLoaded', () => {
   const searchInput = document.getElementById('show-search');
   const container = document.getElementById('podcasts-shows');
@@ -252,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// === Favorites System (unchanged from your existing code) ===
+// === Favorites System ===
 function addToFavorites(cardElement) {
   const title = cardElement.querySelector('h3').textContent;
   let favs = JSON.parse(localStorage.getItem('favorites')) || [];
@@ -286,6 +288,7 @@ function renderFavorites() {
 
     const btn = card.querySelector('button');
     btn.textContent = "❌ Remove";
+    btn.className = "remove-btn";
     btn.onclick = (e) => {
       e.stopPropagation();
       removeFavorite(fav.title);
