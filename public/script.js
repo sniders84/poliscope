@@ -39,17 +39,7 @@ Promise.all([
     ...scotus
   ];
 
-  renderOfficials(selectedState, '');
-
-  if (searchBar) {
-    searchBar.addEventListener('input', e => {
-      renderOfficials(selectedState, e.target.value);
-    });
-  }
-})
-.catch(err => console.error('Error loading data files:', err));
-
-// Modal refs (Officials modal)
+ // Modal refs (Officials modal)
 let officialsModal = null;
 let officialsModalContent = null;
 let officialsModalCloseBtn = null;
@@ -246,29 +236,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- Officials Search ---
-  const searchInput = document.getElementById('search-bar');
-  const stateDropdown = document.getElementById('state-dropdown');
+ const officialsDropdown = document.getElementById('officials-state-dropdown');
+const officialsSearch = document.getElementById('officials-search-bar');
 
-  if (searchInput && stateDropdown) {
-    const filterOfficials = () => {
-      const term = searchInput.value.toLowerCase();
-      const state = stateDropdown.value;
+if (officialsDropdown) {
+  officialsDropdown.addEventListener('change', () => {
+    const selectedState = officialsDropdown.value;
+    window.selectedState = selectedState;
+    renderOfficials(selectedState, officialsSearch?.value || '');
+  });
+}
 
-      document.querySelectorAll('.official-card').forEach(card => {
-        const name = card.querySelector('h3')?.textContent.toLowerCase() || '';
-        const cardState = card.dataset.state || '';
-
-        const matchesName = name.includes(term);
-        const matchesState = state === '' || cardState === state;
-
-        card.style.display = matchesName && matchesState ? '' : 'none';
-      });
-    };
-
-    searchInput.addEventListener('input', filterOfficials);
-  }
-});
+if (officialsSearch) {
+  officialsSearch.addEventListener('input', () => {
+    renderOfficials(window.selectedState || '', officialsSearch.value);
+  });
+}
 
 // === Favorites System ===
 function addToFavorites(cardElement) {
@@ -1440,22 +1423,3 @@ document.querySelectorAll('.info-card[data-network]').forEach(card => {
   if (officialsModalCloseBtn && typeof window.closeModalWindow === 'function') {
     officialsModalCloseBtn.addEventListener('click', () => window.closeModalWindow('officials-modal'));
   }
-
-  // --- Search wiring (defensive) ---
-  if (typeof window.wireSearchBar === 'function') {
-    window.wireSearchBar();
-  }
-
-  function closeOfficialsSearch() {
-    if (!searchBar) return;
-    searchBar.value = '';
-    searchBar.blur();
-  }
-
-  document.addEventListener('mousedown', event => {
-    if (!searchBar) return;
-    if (event.target !== searchBar && !searchBar.contains(event.target)) {
-      closeOfficialsSearch();
-    }
-  });
-}); // closes DOMContentLoaded exactly once
