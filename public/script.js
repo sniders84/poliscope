@@ -39,7 +39,17 @@ Promise.all([
     ...scotus
   ];
 
- // Modal refs (Officials modal)
+  renderOfficials(selectedState, '');
+
+  if (searchBar) {
+    searchBar.addEventListener('input', e => {
+      renderOfficials(selectedState, e.target.value);
+    });
+  }
+})
+.catch(err => console.error('Error loading data files:', err));
+
+// Modal refs (Officials modal)
 let officialsModal = null;
 let officialsModalContent = null;
 let officialsModalCloseBtn = null;
@@ -137,176 +147,6 @@ function showStartupHub() {
   showTab('startup-hub');
 }
 
-// === Show Podcasts & Shows Tab ===
-function showPodcastsShows() {
-  showTab('podcasts-shows');
-  loadShowsAndPodcasts(); // Load JSON content when tab opens
-}
-
-// === Load Shows & Podcasts ===
-async function loadShowsAndPodcasts() {
-  try {
-    const showsRes = await fetch("/shows.json");
-    const podcastsRes = await fetch("/podcasts.json");
-
-    const shows = await showsRes.json();
-    const podcasts = await podcastsRes.json();
-
-    renderShows(shows);
-    renderPodcasts(podcasts);
-
-  } catch (err) {
-    console.error("Error loading shows/podcasts:", err);
-  }
-}
-
-function renderShows(showList) {
-  const container = document.querySelector("#podcasts-shows .video-grid");
-  if (!container) return;
-  container.innerHTML = "";
-
-  showList.forEach(item => {
-    const card = document.createElement("div");
-    card.className = "media-card";
-    card.onclick = () => window.open(item.official_url, "_blank");
-
-    card.innerHTML = `
-      <div class="logo-container">
-        <img src="/assets/${item.logo_slug}" alt="${item.title} Logo">
-      </div>
-      <h3>${item.title}</h3>
-      <p>${item.descriptor}</p>
-      <button class="favorite-btn" onclick="event.stopPropagation(); addToFavorites(this.parentElement)">⭐ Favorite</button>
-    `;
-
-    container.appendChild(card);
-  });
-}
-
-function renderPodcasts(podcastList) {
-  const container = document.querySelector("#podcasts-shows .audio-grid");
-  if (!container) return;
-  container.innerHTML = "";
-
-  podcastList.forEach(item => {
-    const card = document.createElement("div");
-    card.className = "media-card";
-    card.onclick = () => window.open(item.official_url, "_blank");
-
-    const logoWrapper = document.createElement("div");
-    logoWrapper.className = "logo-container";
-
-    const img = document.createElement("img");
-    img.src = `/assets/${item.logo_slug}`;
-    img.alt = `${item.title} Logo`;
-
-    logoWrapper.appendChild(img);
-
-    const h3 = document.createElement("h3");
-    h3.textContent = item.title;
-
-    const p = document.createElement("p");
-    p.textContent = item.descriptor;
-
-    const btn = document.createElement("button");
-    btn.textContent = "⭐ Favorite";
-    btn.className = "favorite-btn";
-    btn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      addToFavorites(card);
-    });
-
-    card.append(logoWrapper, h3, p, btn);
-    container.appendChild(card);
-  });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  // --- Podcasts & Shows Search ---
-  const showSearch = document.getElementById('show-search');
-  const showContainer = document.getElementById('podcasts-shows');
-
-  if (showSearch && showContainer) {
-    showSearch.addEventListener('input', function(e) {
-      const term = e.target.value.toLowerCase();
-      showContainer.querySelectorAll('.media-card').forEach(card => {
-        const text = card.innerText.toLowerCase();
-        card.style.display = text.includes(term) ? '' : 'none';
-      });
-    });
-  }
-
- const officialsDropdown = document.getElementById('officials-state-dropdown');
-const officialsSearch = document.getElementById('officials-search-bar');
-
-if (officialsDropdown) {
-  officialsDropdown.addEventListener('change', () => {
-    const selectedState = officialsDropdown.value;
-    window.selectedState = selectedState;
-    renderOfficials(selectedState, officialsSearch?.value || '');
-  });
-}
-
-if (officialsSearch) {
-  officialsSearch.addEventListener('input', () => {
-    renderOfficials(window.selectedState || '', officialsSearch.value);
-  });
-}
-
-// === Favorites System ===
-function addToFavorites(cardElement) {
-  const title = cardElement.querySelector('h3').textContent;
-  let favs = JSON.parse(localStorage.getItem('favorites')) || [];
-
-  const existingIndex = favs.findIndex(f => f.title === title);
-
-  if (existingIndex !== -1) {
-    favs.splice(existingIndex, 1);
-  } else {
-    favs.push({
-      title: title,
-      html: cardElement.outerHTML
-    });
-  }
-
-  localStorage.setItem('favorites', JSON.stringify(favs));
-  renderFavorites();
-}
-
-function renderFavorites() {
-  const favs = JSON.parse(localStorage.getItem('favorites')) || [];
-  const container = document.querySelector('#favorites-section .favorites-grid');
-  if (!container) return;
-
-  container.innerHTML = '';
-
-  favs.forEach(fav => {
-    const wrapper = document.createElement('div');
-    wrapper.innerHTML = fav.html;
-    const card = wrapper.firstElementChild;
-
-    const btn = card.querySelector('button');
-    btn.textContent = "❌ Remove";
-    btn.className = "remove-btn";
-    btn.onclick = (e) => {
-      e.stopPropagation();
-      removeFavorite(fav.title);
-    };
-
-    container.appendChild(card);
-  });
-}
-
-function removeFavorite(title) {
-  let favs = JSON.parse(localStorage.getItem('favorites')) || [];
-  favs = favs.filter(f => f.title !== title);
-  localStorage.setItem('favorites', JSON.stringify(favs));
-  renderFavorites();
-}
-
-// Initialize favorites on page load
-document.addEventListener('DOMContentLoaded', renderFavorites);
-
 function showCivic() {
   showTab('civic-intelligence');
 }
@@ -319,118 +159,102 @@ function showOrganizations() {
   showTab('political-groups');
 }
 
-// === VOTING TAB ===
 function showVoting() {
   showTab('voting');
-
   const votingCards = document.getElementById('voting-cards');
-  if (!votingCards) return;
   votingCards.innerHTML = '';
+  console.log("showVoting() triggered");
 
-  const votingDropdown = document.getElementById('voting-state-dropdown');
-  if (!votingDropdown) return;
+  fetch('voting-data.json')
+    .then(res => {
+      if (!res.ok) throw new Error('Voting data file not found');
+      return res.json();
+    })
+    .then(data => {
+      console.log('Voting data loaded:', data);
+      console.log('Available voting keys:', Object.keys(data));
+      console.log('Trying to match:', window.selectedState);
 
-  const votingSearch = document.getElementById('voting-search-bar');
+      let stateName = window.selectedState || 'North Carolina';
+      if (stateName === 'Virgin Islands') stateName = 'U.S. Virgin Islands';
+      const stateData = data[stateName] || null;
 
-  // Function to render cards for a given state and search term
-  const renderStateVoting = (stateName, searchTerm = '') => {
-    votingCards.innerHTML = '';
-    if (!stateName) return;
+      if (!stateData || typeof stateData !== 'object') {
+        votingCards.innerHTML = `<p>No voting information available for ${stateName}.</p>`;
+        return;
+      }
 
-    fetch('voting-data.json')
-      .then(res => res.json())
-      .then(data => {
-        if (stateName === 'Virgin Islands') stateName = 'U.S. Virgin Islands';
-        const stateData = data[stateName] || null;
+      console.log("Selected state:", stateName);
+      console.log('Direct match result:', data[stateName]);
 
-        if (!stateData || typeof stateData !== 'object') {
-          votingCards.innerHTML = `<p>No voting information available for ${stateName}.</p>`;
+      const labelMap = {
+        register: 'Register to Vote',
+        id: 'Voter ID Requirements',
+        absentee: 'Absentee Voting',
+        early: 'Early Voting',
+        polling: 'Find Your Polling Place',
+        sample: 'View Sample Ballot',
+        military: 'Military & Overseas Voting',
+        counties: 'County Election Contacts',
+        tools: 'State Voting Tools'
+      };
+
+      Object.entries(stateData).forEach(([key, value]) => {
+        if (!value) return;
+
+        let url, icon, description, deadline;
+
+        if (typeof value === 'string') {
+          url = value;
+          icon = '🗳️';
+          description = '';
+          deadline = '';
+        } else if (typeof value === 'object' && value !== null) {
+          ({ url, icon = '🗳️', description = '', deadline = '' } = value);
+        } else {
           return;
         }
 
-        const labelMap = {
-          register: 'Register to Vote',
-          id: 'Voter ID Requirements',
-          absentee: 'Absentee Voting',
-          early: 'Early Voting',
-          polling: 'Find Your Polling Place',
-          sample: 'View Sample Ballot',
-          military: 'Military & Overseas Voting',
-          counties: 'County Election Contacts',
-          tools: 'State Voting Tools'
-        };
+        if (!url) return;
 
-        Object.entries(stateData).forEach(([key, value]) => {
-          if (!value) return;
+        const title = labelMap[key] || key;
 
-          let url, icon, description, deadline;
-          if (typeof value === 'string') {
-            url = value;
-            icon = '🗳️';
-            description = '';
-            deadline = '';
-          } else if (typeof value === 'object' && value !== null) {
-            ({ url, icon = '🗳️', description = '', deadline = '' } = value);
-          } else {
-            return;
-          }
+        const card = document.createElement('div');
+        card.className = 'voting-card';
 
-          if (!url) return;
+        const link = document.createElement('a');
+        link.href = url;
+        link.target = '_blank';
 
-          const title = labelMap[key] || key;
-          if (searchTerm && !title.toLowerCase().includes(searchTerm.toLowerCase())) return;
+        const iconDiv = document.createElement('div');
+        iconDiv.className = 'card-icon';
+        iconDiv.innerHTML = `<span class="emoji">${icon}</span>`;
 
-          const card = document.createElement('div');
-          card.className = 'voting-card';
+        const labelDiv = document.createElement('div');
+        labelDiv.className = 'card-label';
+        labelDiv.textContent = title;
 
-          const link = document.createElement('a');
-          link.href = url;
-          link.target = '_blank';
+        const descDiv = document.createElement('div');
+        descDiv.className = 'card-description';
+        descDiv.textContent = description;
 
-          const iconDiv = document.createElement('div');
-          iconDiv.className = 'card-icon';
-          iconDiv.innerHTML = `<span class="emoji">${icon}</span>`;
+        const deadlineDiv = document.createElement('div');
+        deadlineDiv.className = 'card-date';
+        if (deadline) deadlineDiv.textContent = deadline;
 
-          const labelDiv = document.createElement('div');
-          labelDiv.className = 'card-label';
-          labelDiv.textContent = title;
+        link.appendChild(iconDiv);
+        link.appendChild(labelDiv);
+        link.appendChild(descDiv);
+        if (deadline) link.appendChild(deadlineDiv);
 
-          const descDiv = document.createElement('div');
-          descDiv.className = 'card-description';
-          descDiv.textContent = description;
-
-          const deadlineDiv = document.createElement('div');
-          deadlineDiv.className = 'card-date';
-          if (deadline) deadlineDiv.textContent = deadline;
-
-          link.appendChild(iconDiv);
-          link.appendChild(labelDiv);
-          link.appendChild(descDiv);
-          if (deadline) link.appendChild(deadlineDiv);
-
-          card.appendChild(link);
-          votingCards.appendChild(card);
-        });
-      })
-      .catch(err => {
-        votingCards.innerHTML = '<p>Error loading voting data.</p>';
-        console.error('Voting fetch failed:', err);
+        card.appendChild(link);
+        votingCards.appendChild(card);
       });
-  };
-
-  // --- Dropdown event ---
-  votingDropdown.addEventListener('change', () => {
-    const state = votingDropdown.value;
-    renderStateVoting(state, votingSearch?.value || '');
-  });
-
-  // --- Search bar event ---
-  if (votingSearch) {
-    votingSearch.addEventListener('input', () => {
-      const state = votingDropdown.value;
-      renderStateVoting(state, votingSearch.value);
+    })
+    .catch(err => {
+      votingCards.innerHTML = '<p>Error loading voting data.</p>';
+      console.error('Voting fetch failed:', err);
     });
-  }
 }
 
 // === HELPER: render roster cards (if needed) ===
@@ -550,153 +374,273 @@ function showCabinetMemberDetail(member) {
 // === CIVIC TAB ===
 function showCivic() {
   showTab('civic');
-
   const calendar = document.getElementById('calendar');
-  if (!calendar) return;
   calendar.innerHTML = '';
 
   const section = document.createElement('div');
   section.className = 'civic-section';
 
-  // --- Always-populated NGA block ---
-  const ngaBlock = document.createElement('div');
-  ngaBlock.className = 'civic-block';
-  ngaBlock.innerHTML = '<h2>National Governor\'s Association</h2>';
-
-  const ngaLinks = [
-    { label: 'NGA Leadership', url: 'https://www.nga.org/governors/ngaleadership/', desc: 'Meet the current leadership of the National Governors Association.' },
-    { label: 'Council of Governors', url: 'https://www.nga.org/cog/', desc: 'Explore the bipartisan Council of Governors and its national security role.' },
-    { label: 'Gubernatorial Elections', url: 'https://www.nga.org/governors/elections/', desc: 'Track upcoming and recent gubernatorial elections across the United States.' },
-    { label: 'Education, Workforce and Community Investment Task Force', url: 'https://www.nga.org/advocacy/nga-committees/education-workforce-community-investment-task-force/', desc: 'See how governors are shaping education and workforce development policy.' },
-    { label: 'Economic Development and Revitalization Task Force', url: 'https://www.nga.org/advocacy/nga-committees/economic-development-and-revitalization-task-force/', desc: 'Review strategies for economic growth and revitalization led by governors.' },
-    { label: 'Public Health and Emergency Management Task Force', url: 'https://www.nga.org/advocacy/nga-committees/public-health-and-emergency-management-task-force/', desc: 'Understand how governors coordinate public health and emergency response.' }
-  ];
-
-  const ngaGrid = document.createElement('div');
-  ngaGrid.className = 'link-grid';
-  ngaLinks.forEach(link => {
-    const card = document.createElement('div');
-    card.className = 'link-card';
-    card.setAttribute('onclick', `window.open('${link.url}', '_blank')`);
-    card.innerHTML = `<h4>${link.label}</h4><p class="card-desc">${link.desc}</p>`;
-    ngaGrid.appendChild(card);
-  });
-  ngaBlock.appendChild(ngaGrid);
-
-  // --- Always-populated Federal Oversight block ---
-  const federalBlock = document.createElement('div');
-  federalBlock.className = 'civic-block';
-  federalBlock.innerHTML = '<h2>Federal Oversight & Transparency</h2>';
-
-  const federalLinks = [
-    { label: 'Committees', url: 'https://www.govtrack.us/congress/committees', desc: 'Explore congressional committees and their membership.' },
-    { label: 'Legislator Report Cards', url: 'https://www.govtrack.us/congress/members/report-cards/2024', desc: 'See performance grades for federal legislators.' },
-    { label: 'All Federal Bills', url: 'https://www.govtrack.us/congress/bills/', desc: 'Track every bill introduced in Congress.' },
-    { label: 'Recent Votes', url: 'https://www.govtrack.us/congress/votes', desc: 'Review the latest recorded votes in Congress.' }
-  ];
-
-  const federalGrid = document.createElement('div');
-  federalGrid.className = 'link-grid';
-  federalLinks.forEach(link => {
-    const card = document.createElement('div');
-    card.className = 'link-card';
-    card.setAttribute('onclick', `window.open('${link.url}', '_blank')`);
-    card.innerHTML = `<h4>${link.label}</h4><p class="card-desc">${link.desc}</p>`;
-    federalGrid.appendChild(card);
-  });
-
-  // Cabinet card
-  const cabinetCard = document.createElement('div');
-  cabinetCard.className = 'link-card';
-  cabinetCard.setAttribute('onclick', 'showCabinet()');
-  cabinetCard.innerHTML = `<h4>Cabinet</h4><p class="card-desc">View members of the President's Cabinet.</p>`;
-  federalGrid.appendChild(cabinetCard);
-
-  federalBlock.appendChild(federalGrid);
-
-  // --- State-specific section ---
+  // --- State block ---
   const stateBlock = document.createElement('div');
   stateBlock.className = 'civic-block';
-  stateBlock.innerHTML = '<h2>State Legislative Links</h2><div id="state-links-container"></div>';
+  stateBlock.innerHTML = '<h2>State Legislative Links</h2>';
 
-  section.appendChild(stateBlock);
-  section.appendChild(ngaBlock);
-  section.appendChild(federalBlock);
-  calendar.appendChild(section);
+  fetch('/state-links.json')
+    .then(res => res.json())
+    .then(stateLinks => {
+      const normalizedState = selectedState === "Virgin Islands" ? "U.S. Virgin Islands" : selectedState;
+      const links = stateLinks[normalizedState] || {};
 
-  // --- Per-tab state dropdown & search ---
-  const civicDropdown = document.getElementById('civic-state-dropdown');
-  if (!civicDropdown) return;
+      const labelMap = {
+        bills: 'Bills',
+        senateRoster: 'State Senate',
+        houseRoster: 'State House',
+        local: 'Local Government'
+      };
 
-  // Add per-tab search bar dynamically
-  const civicSearch = document.createElement('input');
-  civicSearch.id = 'civic-search-bar';
-  civicSearch.placeholder = 'Search state links...';
-  civicSearch.className = 'search-bar';
-  civicDropdown.insertAdjacentElement('afterend', civicSearch);
+      const grid = document.createElement('div');
+      grid.className = 'link-grid';
 
-  const stateLinksContainer = document.getElementById('state-links-container');
+      Object.entries(links).forEach(([label, value]) => {
+        if (label === 'federalRaces' || value == null) return;
+        const displayLabel = labelMap[label] || label;
 
-  function loadCivicStateLinks(state, query = '') {
-    if (!state) {
-      stateLinksContainer.innerHTML = '<p>Please select a state.</p>';
-      return;
-    }
-
-    fetch('/state-links.json')
-      .then(res => res.json())
-      .then(stateLinks => {
-        const links = stateLinks[state] || {};
-        const labelMap = { bills: 'Bills', senateRoster: 'State Senate', houseRoster: 'State House', local: 'Local Government' };
-        const grid = document.createElement('div');
-        grid.className = 'link-grid';
-
-        Object.entries(links).forEach(([label, value]) => {
-          if (!value || label === 'federalRaces') return;
-          const displayLabel = labelMap[label] || label;
-
-          const valuesArray = Array.isArray(value) ? value : [value];
-          valuesArray.forEach(entry => {
-            if (!entry) return;
-
-            const entryUrl = entry.url || entry;
-            const entryParty = entry.party || '';
-            const entryName = entry.party ? `${displayLabel} – ${entryParty}` : displayLabel;
-
-            if (!entryUrl) return;
-            if (query && !entryName.toLowerCase().includes(query.toLowerCase())) return;
-
+        if (Array.isArray(value)) {
+          value.forEach(entry => {
+            if (!entry || !entry.url) return;
             const card = document.createElement('div');
             card.className = 'link-card';
-            card.setAttribute('onclick', `window.open('${entryUrl}', '_blank')`);
-            card.innerHTML = `<h4>${entryName}</h4><p class="card-desc">Click to view ${displayLabel} information for ${state}.</p>`;
+            card.setAttribute('onclick', `window.open('${entry.url}', '_blank')`);
+            card.innerHTML = `
+              <h4>${displayLabel} – ${entry.party}</h4>
+              <p class="card-desc">Click to view ${entry.party} members of the ${displayLabel}.</p>
+            `;
             grid.appendChild(card);
           });
-        });
-
-        stateLinksContainer.innerHTML = '';
-        if (grid.children.length === 0) {
-          stateLinksContainer.innerHTML = `<p>No state-level links found for ${state}.</p>`;
-        } else {
-          stateLinksContainer.appendChild(grid);
+        } else if (typeof value === 'object' && value.url) {
+          const card = document.createElement('div');
+          card.className = 'link-card';
+          card.setAttribute('onclick', `window.open('${value.url}', '_blank')`);
+          card.innerHTML = `
+            <h4>${displayLabel}</h4>
+            <p class="card-desc">Click to view ${displayLabel} information for ${selectedState}.</p>
+          `;
+          grid.appendChild(card);
+        } else if (typeof value === 'string') {
+          const card = document.createElement('div');
+          card.className = 'link-card';
+          card.setAttribute('onclick', `window.open('${value}', '_blank')`);
+          card.innerHTML = `
+            <h4>${displayLabel}</h4>
+            <p class="card-desc">Click to view ${displayLabel} information for ${selectedState}.</p>
+          `;
+          grid.appendChild(card);
         }
-      })
-      .catch(err => {
-        console.error('Error loading state links:', err);
-        stateLinksContainer.innerHTML = '<p>Error loading state links.</p>';
       });
+
+      if (grid.children.length === 0) {
+        const msg = document.createElement('p');
+        msg.textContent = `No state-level links available for ${selectedState}.`;
+        stateBlock.appendChild(msg);
+      }
+      stateBlock.appendChild(grid);
+
+      // --- NGA block ---
+      const ngaBlock = document.createElement('div');
+      ngaBlock.className = 'civic-block';
+      ngaBlock.innerHTML = '<h2>National Governor\'s Association</h2>';
+
+      const ngaLinks = [
+        { label: 'NGA Leadership', url: 'https://www.nga.org/governors/ngaleadership/', desc: 'Meet the current leadership of the National Governors Association.' },
+        { label: 'Council of Governors', url: 'https://www.nga.org/cog/', desc: 'Explore the bipartisan Council of Governors and its national security role.' },
+        { label: 'Gubernatorial Elections', url: 'https://www.nga.org/governors/elections/', desc: 'Track upcoming and recent gubernatorial elections across the United States.' },
+        { label: 'Education, Workforce and Community Investment Task Force', url: 'https://www.nga.org/advocacy/nga-committees/education-workforce-community-investment-task-force/', desc: 'See how governors are shaping education and workforce development policy.' },
+        { label: 'Economic Development and Revitalization Task Force', url: 'https://www.nga.org/advocacy/nga-committees/economic-development-and-revitalization-task-force/', desc: 'Review strategies for economic growth and revitalization led by governors.' },
+        { label: 'Public Health and Emergency Management Task Force', url: 'https://www.nga.org/advocacy/nga-committees/public-health-and-emergency-management-task-force/', desc: 'Understand how governors coordinate public health and emergency response.' }
+      ];
+
+      const ngaGrid = document.createElement('div');
+      ngaGrid.className = 'link-grid';
+
+      ngaLinks.forEach(link => {
+        const card = document.createElement('div');
+        card.className = 'link-card';
+        card.setAttribute('onclick', `window.open('${link.url}', '_blank')`);
+        card.innerHTML = `
+          <h4>${link.label}</h4>
+          <p class="card-desc">${link.desc}</p>
+        `;
+        ngaGrid.appendChild(card);
+      });
+
+      ngaBlock.appendChild(ngaGrid);
+
+      // --- Federal block ---
+      const federalBlock = document.createElement('div');
+      federalBlock.className = 'civic-block';
+      federalBlock.innerHTML = '<h2>Federal Oversight & Transparency</h2>';
+
+      const federalGrid = document.createElement('div');
+      federalGrid.className = 'link-grid';
+
+      const federalLinks = [
+        { label: 'Committees', url: 'https://www.govtrack.us/congress/committees', desc: 'Explore congressional committees and their membership.' },
+        { label: 'Legislator Report Cards', url: 'https://www.govtrack.us/congress/members/report-cards/2024', desc: 'See performance grades for federal legislators.' },
+        { label: 'All Federal Bills', url: 'https://www.govtrack.us/congress/bills/', desc: 'Track every bill introduced in Congress.' },
+        { label: 'Recent Votes', url: 'https://www.govtrack.us/congress/votes', desc: 'Review the latest recorded votes in Congress.' }
+      ];
+
+      federalLinks.forEach(link => {
+        const card = document.createElement('div');
+        card.className = 'link-card';
+        card.setAttribute('onclick', `window.open('${link.url}', '_blank')`);
+        card.innerHTML = `
+          <h4>${link.label}</h4>
+          <p class="card-desc">${link.desc}</p>
+        `;
+        federalGrid.appendChild(card);
+      });
+
+      // Cabinet card
+      const cabinetCard = document.createElement('div');
+      cabinetCard.className = 'link-card';
+      cabinetCard.setAttribute('onclick', 'showCabinet()');
+      cabinetCard.innerHTML = `
+        <h4>Cabinet</h4>
+        <p class="card-desc">View members of the President's Cabinet.</p>
+      `;
+      federalGrid.appendChild(cabinetCard);
+
+      federalBlock.appendChild(federalGrid);
+
+      // Append all blocks
+      section.appendChild(stateBlock);
+      section.appendChild(ngaBlock);
+      section.appendChild(federalBlock);
+      calendar.appendChild(section);
+    })
+    .catch(err => {
+      calendar.innerHTML = '<p>Error loading civic links.</p>';
+      console.error(err);
+    });
+}
+// === CABINET MODAL LOGIC ===
+function showCabinet() {
+  const list = document.getElementById('cabinetList');
+  const gridView = document.getElementById('cabinetGridView');
+  const detailView = document.getElementById('cabinetDetailView');
+  const modal = document.getElementById('cabinetModal');
+
+  if (!list || !gridView || !detailView || !modal) {
+    console.error('Cabinet modal elements missing.');
+    return;
   }
 
-  civicDropdown.addEventListener('change', () => {
-    loadCivicStateLinks(civicDropdown.value, civicSearch.value);
-  });
+  // Always start in grid mode
+  gridView.style.display = 'block';
+  detailView.style.display = 'none';
+  list.innerHTML = '';
 
-  civicSearch.addEventListener('input', () => {
-    loadCivicStateLinks(civicDropdown.value, civicSearch.value);
-  });
+  fetch('/cabinet.json')
+    .then(res => res.json())
+    .then(members => {
+      if (!Array.isArray(members)) {
+        console.error('cabinet.json is not an array');
+        list.innerHTML = '<p>Invalid Cabinet data format.</p>';
+        modal.style.display = 'block';
+        return;
+      }
+
+      members.forEach(member => {
+        const card = document.createElement('div');
+        card.className = 'official-card';
+
+        const photoSrc = member.photo && member.photo.trim() !== ''
+          ? member.photo
+          : 'assets/default-photo.png';
+
+        card.innerHTML = `
+  <div class="photo-wrapper">
+    <img src="${photoSrc}" alt="${member.name || ''}"
+         onerror="this.onerror=null;this.src='assets/default-photo.png';" />
+  </div>
+  <div class="official-info">
+    <h3>${member.name || 'Unknown'}</h3>
+    <p><strong>Office:</strong> ${member.office || 'N/A'}</p>
+  </div>
+`;
+
+        // Only when you click a card do we show details
+        card.onclick = () => showCabinetMember(member);
+        list.appendChild(card);
+      });
+
+      modal.style.display = 'block';
+
+      // click-outside close (scoped to this modal)
+      window.addEventListener('click', function cabinetClickOutside(e) {
+        if (e.target === modal) {
+          modal.style.display = 'none';
+          window.removeEventListener('click', cabinetClickOutside);
+        }
+      });
+    })
+    .catch(err => {
+      console.error('Error loading cabinet.json:', err);
+      list.innerHTML = '<p>Error loading Cabinet data.</p>';
+      modal.style.display = 'block';
+    });
 }
 
-  // === POLLS TAB ===
+function showCabinetMember(member) {
+  const gridView = document.getElementById('cabinetGridView');
+  const detailView = document.getElementById('cabinetDetailView');
+  const detail = document.getElementById('cabinetMemberDetail');
+
+  if (!gridView || !detailView || !detail) return;
+
+  gridView.style.display = 'none';
+  detailView.style.display = 'block';
+
+  // Handle empty termStart / termEnd safely
+  const parseYear = d => {
+    if (!d || d.trim() === '') return '';
+    const dt = new Date(d);
+    return isNaN(dt) ? '' : dt.getFullYear();
+  };
+  const termStartYear = parseYear(member.termStart);
+  const termEndYear = parseYear(member.termEnd) || 'Present';
+
+  detail.innerHTML = `
+    <div class="detail-header">
+      <img src="${member.photo}" alt="${member.name || ''}" class="portrait"
+           onerror="this.onerror=null;this.src='assets/default-photo.png';" />
+      ${member.seal ? `<img src="${member.seal}" alt="${member.office} seal" class="seal" />` : ''}
+    </div>
+    <h2>${member.name || 'Unknown'}</h2>
+    <p><strong>Office:</strong> ${member.office || 'N/A'}</p>
+    ${member.state ? `<p><strong>State:</strong> ${member.state}</p>` : ''}
+    ${member.party ? `<p><strong>Party:</strong> ${member.party}</p>` : ''}
+    ${(termStartYear || termEndYear) ? `<p><strong>Term:</strong> ${termStartYear}–${termEndYear}</p>` : ''}
+    ${member.bio ? `<p><strong>Bio:</strong> ${member.bio}</p>` : ''}
+    ${member.education ? `<p><strong>Education:</strong> ${member.education}</p>` : ''}
+    ${member.salary ? `<p><strong>Salary:</strong> ${member.salary}</p>` : ''}
+    ${member.predecessor ? `<p><strong>Predecessor:</strong> ${member.predecessor}</p>` : ''}
+    ${member.contact && member.contact.website ? `<p><a href="${member.contact.website}" target="_blank">Official Website</a></p>` : ''}
+    ${member.ballotpediaLink ? `<p><a href="${member.ballotpediaLink}" target="_blank">Ballotpedia</a></p>` : ''}
+    ${member.govtrackLink ? `<p><a href="${member.govtrackLink}" target="_blank">GovTrack</a></p>` : ''}
+  `;
+}
+
+function backToCabinetGrid() {
+  const gridView = document.getElementById('cabinetGridView');
+  const detailView = document.getElementById('cabinetDetailView');
+  if (!gridView || !detailView) return;
+  gridView.style.display = 'block';
+  detailView.style.display = 'none';
+}
+
+// === POLLS TAB ===
 function showPolls() {
   showTab('polls');
   const pollsContainer = document.getElementById('polls-cards');
@@ -836,7 +780,8 @@ function showStartupHub() {
     { title: "Global Politics & World News", id: "global-news" },
     { title: "Finance & Markets", id: "finance-markets" },
     { title: "Economy", id: "economy" },
-    ];
+    { title: "Popular Podcasts", id: "popular-podcasts" }
+  ];
 
   hubItems.forEach(item => {
     const card = document.createElement('div');
@@ -860,6 +805,57 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// === SOCIAL TRENDS SECTION ===
+function loadSocialTrends() {
+  const socialFeed = document.getElementById('social-feed');
+  if (!socialFeed) return;
+
+  socialFeed.innerHTML = `
+    <!-- Gavin Newsom Facebook -->
+    <div class="social-card">
+      <h3>Gavin Newsom Facebook</h3>
+      <iframe 
+        src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4184264178567898%2F&show_text=true&width=267&t=0" 
+        width="267" height="591" style="border:none;overflow:hidden" 
+        scrolling="no" frameborder="0" allowfullscreen="true" 
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+      </iframe>
+    </div>
+
+    <!-- Kathy Hochul Facebook -->
+    <div class="social-card">
+      <h3>Kathy Hochul Facebook</h3>
+      <iframe 
+        src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1608390750526549%2F&show_text=true&width=560&t=0" 
+        width="560" height="429" style="border:none;overflow:hidden" 
+        scrolling="no" frameborder="0" allowfullscreen="true" 
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+      </iframe>
+    </div>
+
+    <!-- Donald Trump Facebook -->
+    <div class="social-card">
+      <h3>Donald Trump Facebook</h3>
+      <iframe 
+        src="https://www.facebook.com/plugins/video.php?height=315&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1252240603298809%2F&show_text=true&width=560&t=0" 
+        width="560" height="430" style="border:none;overflow:hidden" 
+        scrolling="no" frameborder="0" allowfullscreen="true" 
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+      </iframe>
+    </div>
+
+    <!-- Chuck Schumer Facebook -->
+    <div class="social-card">
+      <h3>Chuck Schumer Facebook</h3>
+      <iframe 
+        src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F3151059001745750%2F&show_text=true&width=267&t=0" 
+        width="267" height="591" style="border:none;overflow:hidden" 
+        scrolling="no" frameborder="0" allowfullscreen="true" 
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+      </iframe>
+    </div>
+  `;
+}
 function scrollToCategory(sectionId) {
   const section = document.getElementById(sectionId);
   if (section) {
@@ -1028,9 +1024,7 @@ function renderOfficials(stateFilter = null, query = '') {
     const termDisplay = (startYear || endYear) ? `${startYear}–${endYear}` : 'Present';
 
     const card = document.createElement('div');
-card.className = `official-card ${normalizedParty}`;
-card.dataset.state = o.state;   // <<< ADD THIS LINE
-
+    card.className = `official-card ${normalizedParty}`;
   card.innerHTML = `
   <div class="party-stripe"></div>
   <div class="card-body">
@@ -1141,6 +1135,18 @@ function closeModalWindow(id = 'officials-modal') {
   el.style.display = 'none';
 }
 
+// === SEARCH BAR WIRING ===
+function wireSearchBar() {
+  if (!searchBar) {
+    searchBar = document.getElementById('search-bar');
+  }
+  if (!searchBar) return;
+
+  searchBar.addEventListener('input', () => {
+    const query = searchBar.value.trim();
+    renderOfficials(null, query);
+  });
+}
 // ==== HOME HUB NAV ====
 
 // Simple startup hub loader
@@ -1151,173 +1157,243 @@ function showStartupHub() {
 // 🚫 Sticky nav removed — no initHubNav, no scroll listeners
 
 document.addEventListener('DOMContentLoaded', () => {
-  // --- Init ---
-  if (typeof initHubNav === 'function') {
-    initHubNav();
-  }
+  initHubNav();
+});
 
-  // --- DOM refs ---
+document.addEventListener('DOMContentLoaded', () => {
   const feedTitle = document.getElementById('feed-title');
   const feedStories = document.getElementById('feed-stories');
-  const networkStoriesContainer = document.getElementById('network-stories');
-  const officialsContainer = document.getElementById('officials-container');
-  const searchBar = document.getElementById('search-bar');
-  const officialsModal = document.getElementById('officials-modal');
-  const officialsModalContent = document.getElementById('officials-content');
-  const officialsModalCloseBtn = document.getElementById('officials-close');
-  let loadingOverlay = document.getElementById('loading-overlay');
 
-// ----- RSS feeds -----
-const rssFeeds = {
-  nbcnews: 'https://feeds.nbcnews.com/nbcnews/public/news',
-  abc:     'https://abcnews.go.com/abcnews/topstories',
-  cbs:     'https://www.cbsnews.com/latest/rss/main',
-  fox:     'https://feeds.foxnews.com/foxnews/latest',
-  newsnation: 'https://www.newsnationnow.com/feed/'
-};
+  // Official RSS feeds per network
+  const rssFeeds = {
+    msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',   // NBC/MSNBC general news
+    abc:   'https://abcnews.go.com/abcnews/topstories',       // ABC Top Stories
+    cbs:   'https://www.cbsnews.com/latest/rss/main',         // CBS Latest
+    fox:   'https://feeds.foxnews.com/foxnews/latest',        // FOX News Latest
+    cnn:   'http://rss.cnn.com/rss/cnn_topstories.rss'        // CNN Top Stories
+  };
 
-// --- See More mapping ---
-const urlMap = {
-  nbcnews: 'https://www.nbcnews.com',
-  abc: 'https://abcnews.go.com',
-  cbs: 'https://www.cbsnews.com',
-  fox: 'https://www.foxnews.com',
-  newsnation: 'https://www.newsnationnow.com'
-};
+  async function loadFeed(network) {
+    const url = rssFeeds[network];
+    feedTitle.textContent = `${network.toUpperCase()} Stories`;
+    feedStories.innerHTML = '<p style="color:#fff;">Loading...</p>';
 
-// ----- Freshness filter (48h for all) -----
-function filterFreshStories(items, network) {
-  const cutoff = Date.now() - (48 * 60 * 60 * 1000);
-  return items.filter(item => {
-    const t = item.pubDate ? Date.parse(item.pubDate) : NaN;
-    return t && t >= cutoff;
-  });
-}
+    try {
+      // Use rss2json proxy to bypass CORS
+      const response = await fetch(
+        `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`
+      );
+      const data = await response.json();
 
-// --- Fetch RSS via rss2json ---
-async function fetchRss(feedUrl, network) {
-  const apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(feedUrl);
-  const res = await fetch(apiUrl);
-  const data = await res.json();
-  const items = Array.isArray(data.items) ? data.items.slice() : [];
-  return filterFreshStories(items, network);
-}
+      const items = Array.isArray(data.items) ? data.items.slice() : [];
 
-// --- Single feed viewer (#feed-stories) ---
-async function loadFeed(network) {
-  const url = rssFeeds[network];
-  if (!url || !feedTitle || !feedStories) return;
+      // Just sort by pubDate if available, but don’t display it
+      const normalized = items
+        .map(item => ({ item, date: item.pubDate ? new Date(item.pubDate) : null }))
+        .filter(x => x.date)
+        .sort((a, b) => b.date.getTime() - a.date.getTime());
 
-  feedTitle.textContent = network.toUpperCase() + ' Stories';
-  feedStories.innerHTML = '<p style="color:#fff;">Loading...</p>';
+      feedStories.innerHTML = '';
 
-  try {
-    const items = await fetchRss(url, network);
-    items.sort((a, b) => Date.parse(b.pubDate || 0) - Date.parse(a.pubDate || 0));
+      if (normalized.length === 0) {
+        feedStories.innerHTML = '<p style="color:#fff;">No stories available.</p>';
+        return;
+      }
 
-    if (!items.length) {
-      feedStories.innerHTML = '<p style="color:#fff;">No fresh stories available.</p>';
-      return;
+      normalized.slice(0, 10).forEach(({ item }) => {
+        const story = document.createElement('div');
+        story.className = 'story-card';
+        story.innerHTML = `
+          <a href="${item.link}" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none;">
+            <h4 style="margin-bottom:0.35rem;">${item.title}</h4>
+          </a>
+        `;
+        feedStories.appendChild(story);
+      });
+    } catch (err) {
+      console.error(err);
+      feedStories.innerHTML = '<p style="color:#fff;">Error loading feed.</p>';
     }
+  }
 
-    feedStories.innerHTML = '';
-    items.slice(0, 10).forEach(item => {
-      const story = document.createElement('div');
-      story.className = 'story-card';
-      story.innerHTML =
-        '<a href="' + item.link + '" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none;">' +
-        '<h4 style="margin-bottom:0.35rem;">' + item.title + '</h4>' +
-        '</a>';
-      feedStories.appendChild(story);
+  document.querySelectorAll('.info-card[data-network]').forEach(card => {
+    card.addEventListener('click', () => {
+      const network = card.getAttribute('data-network');
+      loadFeed(network);
     });
-  } catch (err) {
-    console.error('Feed error:', err);
-    feedStories.innerHTML = '<p style="color:#fff;">Error loading feed.</p>';
-  }
-}
-
-// --- Grid render (#network-stories) ---
-async function renderNetworkStories(network) {
-  if (!networkStoriesContainer) return;
-
-  const url = rssFeeds[network];
-  if (!url) return;
-
-  const items = await fetchRss(url, network);
-  networkStoriesContainer.innerHTML = '';
-  items.slice(0, 10).forEach(item => {   // <-- bumped to 10
-    const card = document.createElement('div');
-    card.className = 'official-card';
-    card.innerHTML = '<h4>' + item.title + '</h4>';
-    card.onclick = () => window.open(item.link, '_blank');
-    networkStoriesContainer.appendChild(card);
-  });
-
-  if (items.length > 0) {
-    const seeMore = document.createElement('div');
-    seeMore.className = 'see-more';
-    seeMore.textContent = 'See More';
-    const urlMap = {
-      nbcnews: 'https://www.nbcnews.com',
-      abc: 'https://abcnews.go.com',
-      cbs: 'https://www.cbsnews.com',
-      fox: 'https://www.foxnews.com',
-      newsnation: 'https://www.newsnationnow.com'
-    };
-    seeMore.onclick = () => window.open(urlMap[network] || url, '_blank');
-    networkStoriesContainer.appendChild(seeMore);
-  }
-}
-
-// --- Wire card clicks once ---
-document.querySelectorAll('.info-card[data-network]').forEach(card => {
-  card.addEventListener('click', () => {
-    const network = card.getAttribute('data-network');
-    loadFeed(network);
-    renderNetworkStories(network);
   });
 });
 
-  // --- Load officials data with smooth fade-in ---
+// === STATE DROPDOWN WIRING ===
+function wireStateDropdown() {
+  const dropdown = document.getElementById('state-dropdown');
+  if (!dropdown) return;
+
+  dropdown.value = selectedState;
+
+  dropdown.addEventListener('change', () => {
+    selectedState = dropdown.value;
+    window.selectedState = selectedState;
+    renderOfficials(selectedState, '');
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const officialsContainer = document.getElementById('officials-container');
+  const searchBar = document.getElementById('search-bar');
+  const loadingOverlay = document.getElementById('loading-overlay');
+
+  const officialsModal = document.getElementById('officials-modal');
+  const officialsModalContent = document.getElementById('officials-content');
+  const officialsModalCloseBtn = document.getElementById('officials-close');
+
+  if (officialsModalCloseBtn) {
+    officialsModalCloseBtn.addEventListener('click', () => closeModalWindow('officials-modal'));
+  }
+
+  wireSearchBar();
+  wireStateDropdown();
+
+  function closeOfficialsSearch() {
+    if (!searchBar) return;
+    searchBar.value = '';
+    searchBar.blur();
+  }
+
+  document.addEventListener('mousedown', event => {
+    if (!searchBar) return;
+    if (event.target !== searchBar && !searchBar.contains(event.target)) {
+      closeOfficialsSearch();
+    }
+  });
+
+  // --- Other existing functions and variables above ---
+
+// Official RSS feeds per network
+const rssFeeds = {
+  msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',   // NBC/MSNBC general news
+  abc:   'https://abcnews.go.com/abcnews/topstories',       // ABC Top Stories
+  cbs:   'https://www.cbsnews.com/latest/rss/main',         // CBS Latest
+  fox:   'https://feeds.foxnews.com/foxnews/latest',        // FOX News Latest
+  cnn:   'http://rss.cnn.com/rss/cnn_topstories.rss'        // CNN Top Stories
+};
+
+// Fetch top 5 stories via rss2json
+async function fetchRss(feedUrl) {
+  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
+  try {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+    return data.items.slice(0, 5);
+  } catch (err) {
+    console.error('RSS fetch error:', err);
+    return [];
+  }
+}
+
+// Render network stories
+async function renderNetworkStories(network) {
+  const feedUrl = rssFeeds[network];
+  if (!feedUrl) return;
+
+  const stories = await fetchRss(feedUrl);
+  const container = document.getElementById('network-stories');
+  container.innerHTML = ''; // clear previous stories
+
+  stories.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'official-card';
+    card.innerHTML = `<h4>${item.title}</h4>`;
+    card.onclick = () => window.open(item.link, '_blank');
+    container.appendChild(card);
+  });
+
+  // Append "See More" next to last story
+  if (stories.length > 0) {
+    const seeMore = document.createElement('div');
+    seeMore.className = 'see-more';
+    seeMore.innerText = 'See More';
+    seeMore.onclick = () => {
+      // Proper site URL for MSNBC, others open homepage
+      const urlMap = {
+        msnbc: 'https://www.msnbc.com',
+        abc: 'https://abcnews.go.com',
+        cbs: 'https://www.cbsnews.com',
+        fox: 'https://www.foxnews.com',
+        cnn: 'https://edition.cnn.com'
+      };
+      window.open(urlMap[network] || feedUrl, '_blank');
+    };
+    container.appendChild(seeMore);
+  }
+}
+
+// Add click listeners to network cards
+document.querySelectorAll('#network-cards .info-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const network = card.dataset.network;
+    renderNetworkStories(network);
+  });
+});
+// === GLOBAL POLITICS & WORLD NEWS: Google News RSS feed ===
+const worldNewsFeedUrl = 'https://news.google.com/rss/search?q=world+politics&hl=en-US&gl=US&ceid=US:en';
+const maxCards = 25;
+
+// Helper to extract favicon from story source
+function getFaviconUrl(link) {
+  try {
+    const url = new URL(link);
+    return `${url.origin}/favicon.ico`;
+  } catch {
+    return ''; // fallback empty
+  }
+}
+
+// Fetch RSS via rss2json
+async function fetchGoogleNewsRss(feedUrl) {
+  try {
+    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
+    const res = await fetch(apiUrl);
+    const data = await res.json();
+    return data.items?.slice(0, maxCards) || [];
+  } catch (err) {
+    console.error('RSS fetch error:', err);
+    return [];
+  }
+}
+
+  // === Load officials data with smooth fade-in ===
   Promise.all([
     fetch('/governors.json').then(res => res.json()),
     fetch('/ltgovernors.json').then(res => res.json()),
     fetch('/senators.json').then(res => res.json()),
     fetch('/housereps.json').then(res => res.json())
   ])
-  .then(([govs, ltGovs, sens, reps]) => {
-    window.governors = govs;
-    window.ltGovernors = ltGovs;
-    window.senators = sens;
-    window.houseReps = reps;
+    .then(([govs, ltGovs, sens, reps]) => {
+      governors = govs;
+      ltGovernors = ltGovs;
+      senators = sens;
+      houseReps = reps;
 
-     if (loadingOverlay) {
-      loadingOverlay.style.transition = 'opacity 0.5s ease';
-      loadingOverlay.style.opacity = '0';
-      setTimeout(() => loadingOverlay.remove(), 500);
-    }
+      // Render officials
+      renderOfficials(selectedState, '');
 
-    const socialFeed = document.getElementById('social-feed');
-    if (socialFeed && typeof window.loadSocialTrends === 'function') {
-      window.loadSocialTrends();
-    }
-  })
-  .catch(err => {
-    console.error('Error loading official data:', err);
-    if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
-  });
+      // Fade out loading overlay
+      if (loadingOverlay) {
+        loadingOverlay.style.transition = 'opacity 0.5s ease';
+        loadingOverlay.style.opacity = '0';
+        setTimeout(() => loadingOverlay.remove(), 500);
+      }
 
-  if (typeof window.renderOfficials === 'function') {
-    window.renderOfficials(fullState, '');
-  }
-  if (typeof window.showVoting === 'function') {
-    window.showVoting(fullState);
-  }
-  if (typeof window.showCivicIntelligence === 'function') {
-    window.showCivicIntelligence(fullState);
-  }
+      // Load social trends
+      const socialFeed = document.getElementById('social-feed');
+      if (socialFeed && typeof loadSocialTrends === 'function') {
+        console.log("🎬 loadSocialTrends is running...");
+        loadSocialTrends();
+      }
+    })
+    .catch(err => {
+      console.error('Error loading official data:', err);
+      if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
+    });
 });
-  // --- Modal close wiring (defensive) ---
-  if (officialsModalCloseBtn && typeof window.closeModalWindow === 'function') {
-    officialsModalCloseBtn.addEventListener('click', () => window.closeModalWindow('officials-modal'));
-  }
