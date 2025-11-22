@@ -152,81 +152,76 @@ function showPodcastsShows() {
   showTab('podcasts-shows');
 }
 
-// === Podcasts & Shows Search ===
-document.addEventListener('DOMContentLoaded', () => {
-  const searchInput = document.getElementById('show-search');
-  if (searchInput) {
-    searchInput.addEventListener('input', function(e) {
-      const term = e.target.value.toLowerCase();
-      document.querySelectorAll('#podcasts-shows .media-card').forEach(card => {
-        const text = card.innerText.toLowerCase();
-        card.style.display = text.includes(term) ? '' : 'none';
-      });
-    });
+// === Load Shows & Podcasts ===
+
+async function loadShowsAndPodcasts() {
+  try {
+    // Fetch JSON files from root (Vercel serves /public/ at the root path)
+    const showsRes = await fetch("/shows.json");
+    const podcastsRes = await fetch("/podcasts.json");
+
+    const shows = await showsRes.json();
+    const podcasts = await podcastsRes.json();
+
+    renderShows(shows);
+    renderPodcasts(podcasts);
+
+  } catch (err) {
+    console.error("Error loading shows/podcasts:", err);
   }
-});
-
-// === Podcasts & Shows Favorites ===
-
-// Save or remove a card from favorites (toggle + persist)
-function addToFavorites(cardElement) {
-  const title = cardElement.querySelector('h3').textContent;
-  let favs = JSON.parse(localStorage.getItem('favorites')) || [];
-
-  // Check if already in favorites
-  const existingIndex = favs.findIndex(f => f.title === title);
-
-  if (existingIndex !== -1) {
-    // Remove if exists
-    favs.splice(existingIndex, 1);
-  } else {
-    // Add new favorite
-    favs.push({
-      title: title,
-      html: cardElement.outerHTML
-    });
-  }
-
-  localStorage.setItem('favorites', JSON.stringify(favs));
-  renderFavorites();
 }
 
-// Render favorites section
-function renderFavorites() {
-  const favs = JSON.parse(localStorage.getItem('favorites')) || [];
-  const container = document.querySelector('#favorites-section .favorites-grid');
+// === Render Shows ===
+function renderShows(showList) {
+  const container = document.querySelector("#podcasts-shows .video-grid");
   if (!container) return;
 
-  container.innerHTML = '';
+  container.innerHTML = ""; // Clear old static HTML
 
-  favs.forEach(fav => {
-    // Rebuild card from stored HTML
-    const wrapper = document.createElement('div');
-    wrapper.innerHTML = fav.html;
-    const card = wrapper.firstElementChild;
+  showList.forEach(item => {
+    const card = document.createElement("div");
+    card.className = "media-card";
+    card.onclick = () => window.open(item.official_url, "_blank");
 
-    // Update button to remove
-    const btn = card.querySelector('button');
-    btn.textContent = "❌ Remove";
-    btn.onclick = (e) => {
-      e.stopPropagation();
-      removeFavorite(fav.title);
-    };
+    card.innerHTML = `
+      <img src="/assets/${item.logo_slug}" alt="${item.title} Logo">
+      <h3>${item.title}</h3>
+      <p>${item.descriptor}</p>
+      <button onclick="event.stopPropagation(); addToFavorites(this.parentElement)">⭐ Favorite</button>
+    `;
 
     container.appendChild(card);
   });
 }
 
-// Remove favorite by title
-function removeFavorite(title) {
-  let favs = JSON.parse(localStorage.getItem('favorites')) || [];
-  favs = favs.filter(f => f.title !== title);
-  localStorage.setItem('favorites', JSON.stringify(favs));
-  renderFavorites();
+// === Render Podcasts ===
+function renderPodcasts(podcastList) {
+  const container = document.querySelector("#podcasts-shows .audio-grid");
+  if (!container) return;
+
+  container.innerHTML = ""; // Clear old static HTML
+
+  podcastList.forEach(item => {
+    const card = document.createElement("div");
+    card.className = "media-card";
+    card.onclick = () => window.open(item.official_url, "_blank");
+
+    card.innerHTML = `
+      <img src="/assets/${item.logo_slug}" alt="${item.title} Logo">
+      <h3>${item.title}</h3>
+      <p>${item.descriptor}</p>
+      <button onclick="event.stopPropagation(); addToFavorites(this.parentElement)">⭐ Favorite</button>
+    `;
+
+    container.appendChild(card);
+  });
 }
 
-// Initialize favorites on page load
-document.addEventListener('DOMContentLoaded', renderFavorites);
+// === Override tab to load dynamic content ===
+function showPodcastsShows() {
+  showTab('podcasts-shows');
+  loadShowsAndPodcasts(); // Load JSON content only when tab opens
+}
 
 function showCivic() {
   showTab('civic-intelligence');
