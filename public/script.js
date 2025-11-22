@@ -1,3 +1,24 @@
+// === FAVORITES STORAGE & HELPERS ===
+window.favorites = { podcasts: [], shows: [] };
+
+function isFavorite(type, title) {
+  return window.favorites[type]?.includes(title);
+}
+
+function toggleFavorite(type, title) {
+  if (!window.favorites[type]) window.favorites[type] = [];
+  const index = window.favorites[type].indexOf(title);
+  if (index > -1) {
+    window.favorites[type].splice(index, 1);
+  } else {
+    window.favorites[type].push(title);
+  }
+  // Optionally re-render the Podcasts & Shows tab if it's visible
+  if (document.getElementById('podcasts-shows')?.style.display !== 'none') {
+    showPodcastsShows();
+  }
+}
+
 // === GLOBAL STATE ===
 let selectedState = 'North Carolina';
 let governors = [];
@@ -48,6 +69,20 @@ Promise.all([
   }
 })
 .catch(err => console.error('Error loading data files:', err));
+
+// === PODCASTS & SHOWS DATA ===
+let podcastsData = [];
+let showsData = [];
+
+Promise.all([
+  fetch('podcasts.json').then(res => res.json()),
+  fetch('shows.json').then(res => res.json())
+])
+.then(([podcasts, shows]) => {
+  podcastsData = podcasts;
+  showsData = shows;
+})
+.catch(err => console.error('Error loading podcasts or shows JSON:', err));
 
 // Modal refs (Officials modal)
 let officialsModal = null;
@@ -170,7 +205,7 @@ function showPodcastsShows() {
         card.className = 'podcast-show-card';
         card.innerHTML = `
           <div class="logo-wrapper">
-            <img src="assets/logos/${podcast.logo_slug}" alt="${podcast.title}" />
+            <img src="assets/${podcast.logo_slug}" alt="${podcast.title}" />
           </div>
           <div class="card-content">
             <h4>${podcast.title}</h4>
@@ -223,7 +258,7 @@ function showPodcastsShows() {
         card.className = 'podcast-show-card';
         card.innerHTML = `
           <div class="logo-wrapper">
-            <img src="assets/logos/${show.logo_slug}" alt="${show.title}" />
+            <img src="assets/${show.logo_slug}" alt="${show.title}" />
           </div>
           <div class="card-content">
             <h4>${show.title}</h4>
