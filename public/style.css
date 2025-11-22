@@ -2900,3 +2900,20 @@ rssapp-carousel {
   box-shadow: 0 4px 15px rgba(0, 123, 255, 0.7);
   transform: scale(1.02);
 }
+/* Logo container at top of card */
+.logo-container {
+  width: 100%;         /* full card width */
+  height: 100px;       /* uniform height for all logos */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;    /* crop anything exceeding container */
+  margin-bottom: 8px;
+}
+
+/* Make logo stretch full width, uniform height, maintain aspect ratio */
+.logo-container img {
+  width: 100%;         /* fill width of container */
+  height: 100%;        /* fill height of container */
+  object-fit: contain; /* maintain aspect ratio, centered */
+}
