@@ -184,10 +184,8 @@ function renderShows(showList) {
       <div class="logo-container">
         <img src="/assets/${item.logo_slug}" alt="${item.title} Logo">
       </div>
-      <div style="flex-grow:1;">
-        <h3>${item.title}</h3>
-        <p>${item.descriptor}</p>
-      </div>
+      <h3>${item.title}</h3>
+      <p>${item.descriptor}</p>
       <button class="favorite-btn" onclick="event.stopPropagation(); addToFavorites(this.parentElement)">⭐ Favorite</button>
     `;
 
