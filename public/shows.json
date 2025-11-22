@@ -28,7 +28,7 @@
         "category": "Centrist/Independent",
         "source": "PBS",
         "official_url": "https://www.pbs.org/newshour",
-        "logo_slug": "pbs.webp",
+        "logo_slug": "pbs.webp.webp",
         "descriptor": "PBS’s in‑depth nightly news program. Long‑form reporting and analysis on politics and civic issues."
     },
     {
@@ -44,7 +44,7 @@
         "category": "Conservative",
         "source": "Fox News",
         "official_url": "https://www.foxnews.com/shows/special-report",
-        "logo_slug": "foxsnewspecialreport.webp",
+        "logo_slug": "foxnewspecialreport.webp",
         "descriptor": "Fox News’ evening political program. Conservative analysis of Washington and global affairs."
     },
     {
@@ -76,7 +76,7 @@
         "category": "Global/Economics",
         "source": "Bloomberg",
         "official_url": "https://www.bloomberg.com/shows/balance-of-power",
-        "logo_slug": "balance.png",
+        "logo_slug": "bloombergbalance.jpeg",
         "descriptor": "Bloomberg’s daily program on politics and economics. Focused on the intersection of markets and governance."
     },
     {
