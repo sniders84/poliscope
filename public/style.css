@@ -2303,3 +2303,105 @@ rssapp-carousel {
   background-color: #FF7875;
   transform: scale(1.05);
 }
+/* === Podcasts & Shows Cards === */
+.media-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #2C2C2C; /* dark grey */
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  padding: 16px;
+  margin: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.2s ease;
+  color: #fff; /* ensures text shows on dark background */
+}
+
+.media-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.6); /* blue glow on hover */
+  background: #333333;
+}
+
+.media-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.media-card:hover img {
+  transform: scale(1.05);
+}
+
+/* === Buttons === */
+.favorite-btn {
+  border: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  background-color: #FFD700;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  margin-top: 10px;
+}
+
+.favorite-btn:hover {
+  background-color: #FFC107;
+  transform: scale(1.05);
+}
+
+.remove-btn {
+  border: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  background-color: #FF4D4F;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  margin-top: 10px;
+}
+
+.remove-btn:hover {
+  background-color: #FF7875;
+  transform: scale(1.05);
+}
+
+/* === Favorites Grid & Layout === */
+.favorites-grid, .video-grid, .audio-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+/* === Search Input Styling === */
+#show-search {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background: #1E1E1E;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+#show-search::placeholder {
+  color: #aaa;
+}
+
+#show-search:focus {
+  box-shadow: 0 4px 20px rgba(0, 123, 255, 0.7);
+  transform: scale(1.02);
+}
