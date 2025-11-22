@@ -1,5 +1,4 @@
 // === GLOBAL STATE ===
-// === Global current state variable ===
 let currentState = ''; 
 let governors = [];
 let ltGovernors = [];
@@ -23,14 +22,13 @@ Promise.all([
   fetch('voting-data.json').then(res => res.json())
 ])
 .then(([federal, sens, govs, cabinet, reps, ltGovs, scotus, groups, links, voting]) => {
-  // Keep global arrays filled
   governors = govs;
   ltGovernors = ltGovs;
   senators = sens;
   houseReps = reps;
 
-  // Merge major federal data sources
-  const allOfficials = [
+  // Keep all federal officials accessible globally if needed
+  window.allOfficialsData = [
     ...federal,
     ...cabinet,
     ...sens,
@@ -40,17 +38,23 @@ Promise.all([
     ...scotus
   ];
 
-  renderOfficials(selectedState, '');
+  // Ensure the dropdown-selected state is applied
+  const initialState = window.selectedState || '';
+  currentState = initialState;
 
+  renderOfficials(currentState, '');
+
+  // Wire up search bar dynamically
+  searchBar = document.getElementById('search-bar');
   if (searchBar) {
     searchBar.addEventListener('input', e => {
-      renderOfficials(selectedState, e.target.value);
+      renderOfficials(currentState, e.target.value);
     });
   }
 })
 .catch(err => console.error('Error loading data files:', err));
 
-// Modal refs (Officials modal)
+// === Modal refs (Officials modal) ===
 let officialsModal = null;
 let officialsModalContent = null;
 let officialsModalCloseBtn = null;
@@ -345,6 +349,7 @@ function showOrganizations() {
 function showVoting() {
   showTab('voting');
   const votingCards = document.getElementById('voting-cards');
+  if (!votingCards) return;
   votingCards.innerHTML = '';
   console.log("showVoting() triggered");
 
@@ -356,17 +361,20 @@ function showVoting() {
     .then(data => {
       console.log('Voting data loaded:', data);
       console.log('Available voting keys:', Object.keys(data));
-      console.log('Trying to match:', window.selectedState);
 
-      // Use global selectedState with proper normalization
-      let stateName = window.selectedState || '';
-      if (!stateName) stateName = 'North Carolina'; // fallback
-      if (stateName === 'Virgin Islands') stateName = 'U.S. Virgin Islands';
+      // Use currentState / selectedState with proper normalization
+      let stateName = currentState || window.selectedState || '';
+      const stateAliases = {
+        "Virgin Islands": "U.S. Virgin Islands",
+        "Northern Mariana Islands": "Northern Mariana Islands",
+        "Puerto Rico": "Puerto Rico"
+      };
+      if (stateAliases[stateName]) stateName = stateAliases[stateName];
 
       const stateData = data[stateName] || null;
 
       if (!stateData || typeof stateData !== 'object') {
-        votingCards.innerHTML = `<p>No voting information available for ${stateName}.</p>`;
+        votingCards.innerHTML = `<p>No voting information available for ${stateName || 'this state'}.</p>`;
         return;
       }
 
@@ -561,6 +569,7 @@ function showCabinetMemberDetail(member) {
 function showCivic() {
   showTab('civic');
   const calendar = document.getElementById('calendar');
+  if (!calendar) return;
   calendar.innerHTML = '';
 
   const section = document.createElement('div');
@@ -571,15 +580,22 @@ function showCivic() {
   stateBlock.className = 'civic-block';
   stateBlock.innerHTML = '<h2>State Legislative Links</h2>';
 
-  fetch('/state-links.json')
+  fetch('state-links.json')
     .then(res => res.json())
     .then(stateLinks => {
-      let normalizedState = window.selectedState || '';
-      if (!normalizedState) normalizedState = 'North Carolina'; // fallback
-      if (normalizedState === "Virgin Islands") normalizedState = "U.S. Virgin Islands";
+      // Use currentState first, then selectedState
+      let stateName = currentState || window.selectedState || '';
+      if (!stateName) stateName = 'North Carolina'; // fallback
 
-      const links = stateLinks[normalizedState] || {};
+      // Normalize territories
+      const stateAliases = {
+        "Virgin Islands": "U.S. Virgin Islands",
+        "Northern Mariana Islands": "Northern Mariana Islands",
+        "Puerto Rico": "Puerto Rico"
+      };
+      if (stateAliases[stateName]) stateName = stateAliases[stateName];
 
+      const links = stateLinks[stateName] || {};
       const labelMap = {
         bills: 'Bills',
         senateRoster: 'State Senate',
@@ -591,7 +607,7 @@ function showCivic() {
       grid.className = 'link-grid';
 
       Object.entries(links).forEach(([label, value]) => {
-        if (label === 'federalRaces' || value == null) return;
+        if (label === 'federalRaces' || !value) return;
         const displayLabel = labelMap[label] || label;
 
         if (Array.isArray(value)) {
@@ -599,40 +615,41 @@ function showCivic() {
             if (!entry || !entry.url) return;
             const card = document.createElement('div');
             card.className = 'link-card';
-            card.setAttribute('onclick', `window.open('${entry.url}', '_blank')`);
+            card.onclick = () => window.open(entry.url, '_blank');
             card.innerHTML = `
-              <h4>${displayLabel} – ${entry.party}</h4>
-              <p class="card-desc">Click to view ${entry.party} members of the ${displayLabel}.</p>
+              <h4>${displayLabel} – ${entry.party || ''}</h4>
+              <p class="card-desc">Click to view ${entry.party || ''} members of the ${displayLabel}.</p>
             `;
             grid.appendChild(card);
           });
         } else if (typeof value === 'object' && value.url) {
           const card = document.createElement('div');
           card.className = 'link-card';
-          card.setAttribute('onclick', `window.open('${value.url}', '_blank')`);
+          card.onclick = () => window.open(value.url, '_blank');
           card.innerHTML = `
             <h4>${displayLabel}</h4>
-            <p class="card-desc">Click to view ${displayLabel} information for ${normalizedState}.</p>
+            <p class="card-desc">Click to view ${displayLabel} information for ${stateName}.</p>
           `;
           grid.appendChild(card);
         } else if (typeof value === 'string') {
           const card = document.createElement('div');
           card.className = 'link-card';
-          card.setAttribute('onclick', `window.open('${value}', '_blank')`);
+          card.onclick = () => window.open(value, '_blank');
           card.innerHTML = `
             <h4>${displayLabel}</h4>
-            <p class="card-desc">Click to view ${displayLabel} information for ${normalizedState}.</p>
+            <p class="card-desc">Click to view ${displayLabel} information for ${stateName}.</p>
           `;
           grid.appendChild(card);
         }
       });
 
-      if (grid.children.length === 0) {
+      if (!grid.children.length) {
         const msg = document.createElement('p');
-        msg.textContent = `No state-level links available for ${normalizedState}.`;
+        msg.textContent = `No state-level links available for ${stateName}.`;
         stateBlock.appendChild(msg);
+      } else {
+        stateBlock.appendChild(grid);
       }
-      stateBlock.appendChild(grid);
 
       // --- NGA block ---
       const ngaBlock = document.createElement('div');
@@ -650,27 +667,22 @@ function showCivic() {
 
       const ngaGrid = document.createElement('div');
       ngaGrid.className = 'link-grid';
-
       ngaLinks.forEach(link => {
         const card = document.createElement('div');
         card.className = 'link-card';
-        card.setAttribute('onclick', `window.open('${link.url}', '_blank')`);
+        card.onclick = () => window.open(link.url, '_blank');
         card.innerHTML = `
           <h4>${link.label}</h4>
           <p class="card-desc">${link.desc}</p>
         `;
         ngaGrid.appendChild(card);
       });
-
       ngaBlock.appendChild(ngaGrid);
 
       // --- Federal block ---
       const federalBlock = document.createElement('div');
       federalBlock.className = 'civic-block';
       federalBlock.innerHTML = '<h2>Federal Oversight & Transparency</h2>';
-
-      const federalGrid = document.createElement('div');
-      federalGrid.className = 'link-grid';
 
       const federalLinks = [
         { label: 'Committees', url: 'https://www.govtrack.us/congress/committees', desc: 'Explore congressional committees and their membership.' },
@@ -679,10 +691,12 @@ function showCivic() {
         { label: 'Recent Votes', url: 'https://www.govtrack.us/congress/votes', desc: 'Review the latest recorded votes in Congress.' }
       ];
 
+      const federalGrid = document.createElement('div');
+      federalGrid.className = 'link-grid';
       federalLinks.forEach(link => {
         const card = document.createElement('div');
         card.className = 'link-card';
-        card.setAttribute('onclick', `window.open('${link.url}', '_blank')`);
+        card.onclick = () => window.open(link.url, '_blank');
         card.innerHTML = `
           <h4>${link.label}</h4>
           <p class="card-desc">${link.desc}</p>
@@ -693,7 +707,7 @@ function showCivic() {
       // Cabinet card
       const cabinetCard = document.createElement('div');
       cabinetCard.className = 'link-card';
-      cabinetCard.setAttribute('onclick', 'showCabinet()');
+      cabinetCard.onclick = () => showCabinet();
       cabinetCard.innerHTML = `
         <h4>Cabinet</h4>
         <p class="card-desc">View members of the President's Cabinet.</p>
@@ -702,7 +716,7 @@ function showCivic() {
 
       federalBlock.appendChild(federalGrid);
 
-      // Append all blocks
+      // Append all blocks to the section
       section.appendChild(stateBlock);
       section.appendChild(ngaBlock);
       section.appendChild(federalBlock);
@@ -710,7 +724,7 @@ function showCivic() {
     })
     .catch(err => {
       calendar.innerHTML = '<p>Error loading civic links.</p>';
-      console.error(err);
+      console.error('Error fetching state-links.json:', err);
     });
 }
 
@@ -1458,31 +1472,34 @@ document.querySelectorAll('.info-card[data-network]').forEach(card => {
   if (!dropdown) return;
 
   // Set initial value
-  const initial = typeof window.selectedState === 'string' ? window.selectedState : '';
-  dropdown.value = initial;
+  dropdown.value = currentState || window.selectedState || '';
 
   dropdown.addEventListener('change', () => {
-    window.selectedState = dropdown.value; // global state
+    const newState = dropdown.value;
+    window.selectedState = newState; // keep global for other tabs
+    currentState = newState;          // our internal global for current state
 
-    // Update My Officials
+    // Refresh My Officials
     if (typeof window.renderOfficials === 'function') {
-      window.renderOfficials();
+      window.renderOfficials(currentState);
     }
 
-    // Update Civic Intelligence
-    if (typeof window.renderCivicIntelligence === 'function') {
-      window.renderCivicIntelligence();
+    // Refresh Civic Intelligence
+    if (typeof window.showCivic === 'function') {
+      window.showCivic();
     }
 
-    // Update Voting tab
-    if (typeof window.renderVotingInfo === 'function') {
-      window.renderVotingInfo();
+    // Refresh Voting tab
+    if (typeof window.showVoting === 'function') {
+      window.showVoting();
     }
 
     // Re-run search filter on My Officials
-    const searchEvent = new Event('input'); 
     const searchInput = document.getElementById('search-bar');
-    if (searchInput) searchInput.dispatchEvent(searchEvent);
+    if (searchInput) {
+      const event = new Event('input', { bubbles: true });
+      searchInput.dispatchEvent(event);
+    }
   });
 }
 
@@ -1495,8 +1512,8 @@ document.querySelectorAll('.info-card[data-network]').forEach(card => {
   if (typeof window.wireSearchBar === 'function') {
     window.wireSearchBar();
   }
-  wireStateDropdown();
 
+  // --- Clear search if clicking outside ---
   function closeOfficialsSearch() {
     if (!searchBar) return;
     searchBar.value = '';
@@ -1509,4 +1526,4 @@ document.querySelectorAll('.info-card[data-network]').forEach(card => {
       closeOfficialsSearch();
     }
   });
-}); // closes DOMContentLoaded exactly once
+}
