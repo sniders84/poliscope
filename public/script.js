@@ -148,7 +148,7 @@ function showStartupHub() {
 }
 
 <script>
-// --- Stabilize global handlers (stubs, no-op except tab switching) ---
+// --- Global handler stubs to stop ReferenceErrors ---
 function showStartupHub() {}
 function renderOfficials() {}
 function showCivic() {}
@@ -156,7 +156,7 @@ function showPolls() {}
 function showOrganizations() {}
 function showVoting() {}
 
-// Podcasts & Shows tab handler
+// --- Podcasts & Shows tab handler (kept functional) ---
 function showPodcastsShows() {
   if (typeof showTab === 'function') {
     showTab('podcasts-shows');
@@ -165,9 +165,9 @@ function showPodcastsShows() {
   }
 }
 
-// --- Do NOT fetch or render yet. We first confirm JSON paths in the next step. ---
+// --- No rendering yet. We will probe JSON safely next. ---
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('Stubs loaded. No rendering yet.');
+  console.log('Stubs active. No rendering yet.');
 });
 </script>
 
