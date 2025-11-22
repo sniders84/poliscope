@@ -147,9 +147,43 @@ function showStartupHub() {
   showTab('startup-hub');
 }
 
-// Podcasts & Shows tab
+<script>
+// === Podcasts & Shows Tab ===
 function showPodcastsShows() {
   showTab('podcasts-shows');
+}
+
+// === Load & Render Media from JSON ===
+async function loadMedia() {
+  try {
+    const shows = await fetch('shows.json').then(res => res.json());
+    const podcasts = await fetch('podcasts.json').then(res => res.json());
+
+    renderMedia(shows, document.querySelector('.video-grid'));
+    renderMedia(podcasts, document.querySelector('.audio-grid'));
+    console.log('Media loaded: shows + podcasts');
+  } catch (err) {
+    console.error('Error loading media JSON:', err);
+  }
+}
+
+function renderMedia(items, container) {
+  if (!container) return;
+  container.innerHTML = '';
+  items.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'media-card';
+    card.setAttribute('data-url', item.official_url);
+    card.onclick = () => window.open(item.official_url, '_blank');
+
+    card.innerHTML = `
+      <img src="/assets/${item.logo}" alt="${item.title} Logo">
+      <h3>${item.title}</h3>
+      <p>${item.descriptor}</p>
+      <button onclick="event.stopPropagation(); addToFavorites(this.parentElement)">⭐ Favorite</button>
+    `;
+    container.appendChild(card);
+  });
 }
 
 // === Podcasts & Shows Search ===
@@ -164,34 +198,32 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  // Load media after DOM is ready
+  loadMedia();
+  renderFavorites();
 });
 
 // === Podcasts & Shows Favorites ===
-
-// Save or remove a card from favorites (toggle + persist)
 function addToFavorites(cardElement) {
   const title = cardElement.querySelector('h3').textContent;
-  let favs = JSON.parse(localStorage.getItem('favorites')) || [];
+  const url = cardElement.getAttribute('data-url');
+  const logo = cardElement.querySelector('img').getAttribute('src');
+  const descriptor = cardElement.querySelector('p').textContent;
 
-  // Check if already in favorites
+  let favs = JSON.parse(localStorage.getItem('favorites')) || [];
   const existingIndex = favs.findIndex(f => f.title === title);
 
   if (existingIndex !== -1) {
-    // Remove if exists
     favs.splice(existingIndex, 1);
   } else {
-    // Add new favorite
-    favs.push({
-      title: title,
-      html: cardElement.outerHTML
-    });
+    favs.push({ title, url, logo, descriptor });
   }
 
   localStorage.setItem('favorites', JSON.stringify(favs));
   renderFavorites();
 }
 
-// Render favorites section
 function renderFavorites() {
   const favs = JSON.parse(localStorage.getItem('favorites')) || [];
   const container = document.querySelector('#favorites-section .favorites-grid');
@@ -200,33 +232,29 @@ function renderFavorites() {
   container.innerHTML = '';
 
   favs.forEach(fav => {
-    // Rebuild card from stored HTML
-    const wrapper = document.createElement('div');
-    wrapper.innerHTML = fav.html;
-    const card = wrapper.firstElementChild;
+    const card = document.createElement('div');
+    card.className = 'media-card';
+    card.setAttribute('data-url', fav.url);
+    card.onclick = () => window.open(fav.url, '_blank');
 
-    // Update button to remove
-    const btn = card.querySelector('button');
-    btn.textContent = "❌ Remove";
-    btn.onclick = (e) => {
-      e.stopPropagation();
-      removeFavorite(fav.title);
-    };
+    card.innerHTML = `
+      <img src="${fav.logo}" alt="${fav.title} Logo">
+      <h3>${fav.title}</h3>
+      <p>${fav.descriptor}</p>
+      <button onclick="event.stopPropagation(); removeFavorite('${fav.title}')">❌ Remove</button>
+    `;
 
     container.appendChild(card);
   });
 }
 
-// Remove favorite by title
 function removeFavorite(title) {
   let favs = JSON.parse(localStorage.getItem('favorites')) || [];
   favs = favs.filter(f => f.title !== title);
   localStorage.setItem('favorites', JSON.stringify(favs));
   renderFavorites();
 }
-
-// Initialize favorites on page load
-document.addEventListener('DOMContentLoaded', renderFavorites);
+</script>
 
 function showCivic() {
   showTab('civic-intelligence');
