@@ -2526,3 +2526,126 @@ rssapp-carousel {
   box-shadow: 0 4px 15px rgba(0, 123, 255, 0.7);
   transform: scale(1.02);
 }
+/* === Container Grid === */
+.favorites-grid, .video-grid, .audio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* slightly wider for text */
+  gap: 12px;
+  justify-items: center;
+}
+
+/* === Media Cards === */
+.media-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* keeps button at bottom */
+  align-items: center;
+  background: #2C2C2C;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+  padding: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.2s ease;
+  width: 150px;
+  height: 240px; /* slightly taller */
+  text-align: center;
+  color: #fff;
+}
+
+.media-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.6);
+  background: #333;
+}
+
+/* === Card Images === */
+.media-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  transition: transform 0.3s ease;
+}
+
+.media-card:hover img {
+  transform: scale(1.05);
+}
+
+/* === Card Text === */
+.media-card h3 {
+  font-size: 14px;
+  margin: 4px 0;
+  line-height: 1.2;
+  word-wrap: break-word;
+}
+
+.media-card p {
+  font-size: 12px;
+  color: #ccc;
+  margin: 2px 0 6px 0;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* allows 4 lines now */
+  -webkit-box-orient: vertical;
+}
+
+/* === Buttons === */
+.favorite-btn, .remove-btn {
+  border: none;
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.favorite-btn {
+  background-color: #FFD700;
+  color: #000;
+}
+
+.favorite-btn:hover {
+  background-color: #FFC107;
+  transform: scale(1.05);
+}
+
+.remove-btn {
+  background-color: #FF4D4F;
+  color: #fff;
+}
+
+.remove-btn:hover {
+  background-color: #FF7875;
+  transform: scale(1.05);
+}
+
+/* === Search Input Styling === */
+#show-search {
+  width: 100%;
+  max-width: 420px;
+  padding: 10px 16px;
+  margin-bottom: 16px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: #1E1E1E;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+#show-search::placeholder {
+  color: #aaa;
+}
+
+#show-search:focus {
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.7);
+  transform: scale(1.02);
+}
