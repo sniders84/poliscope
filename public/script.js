@@ -142,9 +142,48 @@ function showTab(id) {
   if (activeTab) activeTab.style.display = 'block';
 }
 
-// === TAB SWITCHING HELPERS ===
 function showStartupHub() {
   showTab('startup-hub');
+}
+
+function showPodcastsShows() {
+  showTab('podcasts-shows'); // this handles hiding all other tabs
+
+  const container = document.getElementById('podcasts-cards');
+  container.innerHTML = '';
+
+  // Example data — replace with your actual podcasts/shows JSON or API
+  const podcasts = [
+    { title: 'Political Roundup', url: '#', desc: 'Weekly political analysis.' },
+    { title: 'Elections Explained', url: '#', desc: 'Deep dive into elections and campaigns.' },
+    { title: 'Civic Chat', url: '#', desc: 'Interviews with civic leaders.' },
+    { title: 'Policy Talk', url: '#', desc: 'Discussing policies shaping the nation.' }
+  ];
+
+  podcasts.forEach(podcast => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <h3>${podcast.title}</h3>
+      <p>${podcast.desc}</p>
+    `;
+    card.addEventListener('click', () => {
+      window.open(podcast.url, '_blank');
+    });
+    container.appendChild(card);
+  });
+
+  // Wire the tab-specific search bar
+  const searchInput = document.getElementById('podcasts-search-bar');
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      const term = searchInput.value.toLowerCase();
+      container.querySelectorAll('.card').forEach(card => {
+        const text = card.querySelector('h3')?.textContent.toLowerCase() || '';
+        card.style.display = text.includes(term) ? '' : 'none';
+      });
+    });
+  }
 }
 
 function showCivic() {
