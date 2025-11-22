@@ -1370,18 +1370,6 @@ function closeModalWindow(id = 'officials-modal') {
   el.style.display = 'none';
 }
 
-// === SEARCH BAR WIRING ===
-function wireSearchBar() {
-  if (!searchBar) {
-    searchBar = document.getElementById('search-bar');
-  }
-  if (!searchBar) return;
-
-  searchBar.addEventListener('input', () => {
-    const query = searchBar.value.trim();
-    renderOfficials(null, query);
-  });
-}
 // ==== HOME HUB NAV ====
 
 // Simple startup hub loader
@@ -1554,21 +1542,37 @@ document.querySelectorAll('.info-card[data-network]').forEach(card => {
 
   // --- STATE DROPDOWN WIRING ---
   function wireStateDropdown() {
-    const dropdown = document.getElementById('state-dropdown');
-    if (!dropdown) return;
+  const dropdown = document.getElementById('state-dropdown');
+  if (!dropdown) return;
 
-    const initial = typeof window.selectedState === 'string' ? window.selectedState : '';
-    dropdown.value = initial;
+  // Set initial value based on selectedState
+  const initialAbbr = Object.keys(stateAbbrToName).find(
+    abbr => stateAbbrToName[abbr] === window.selectedState
+  ) || '';
+  dropdown.value = initialAbbr;
 
-    dropdown.addEventListener('change', () => {
-      const val = dropdown.value;
-      window.selectedState = val;
-      if (typeof window.renderOfficials === 'function') {
-        window.renderOfficials(val, '');
-      }
-    });
+ dropdown.addEventListener('change', () => {
+  const abbr = dropdown.value;                    
+  const fullState = stateAbbrToName[abbr] || abbr; 
+  window.selectedState = fullState;
+
+  // --- DEBUG LOGS ---
+  console.log("Dropdown triggered state:", fullState);
+  console.log("Governors:", governors.map(o => o.state));
+  console.log("Lt. Governors:", ltGovernors.map(o => o.state));
+  console.log("Senators:", senators.map(o => o.state));
+  console.log("House Reps:", houseReps.map(o => o.state));
+
+  if (typeof window.renderOfficials === 'function') {
+    window.renderOfficials(fullState, '');
   }
-
+  if (typeof window.showVoting === 'function') {
+    window.showVoting(fullState);
+  }
+  if (typeof window.showCivicIntelligence === 'function') {
+    window.showCivicIntelligence(fullState);
+  }
+});
   // --- Modal close wiring (defensive) ---
   if (officialsModalCloseBtn && typeof window.closeModalWindow === 'function') {
     officialsModalCloseBtn.addEventListener('click', () => window.closeModalWindow('officials-modal'));
