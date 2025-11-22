@@ -7,6 +7,64 @@ let houseReps = [];
 let officialsContainer = null;
 let searchBar = null;
 
+const stateAbbrToName = {
+  "AL": "Alabama",
+  "AK": "Alaska",
+  "AZ": "Arizona",
+  "AR": "Arkansas",
+  "CA": "California",
+  "CO": "Colorado",
+  "CT": "Connecticut",
+  "DE": "Delaware",
+  "DC": "District of Columbia",
+  "FL": "Florida",
+  "GA": "Georgia",
+  "HI": "Hawaii",
+  "ID": "Idaho",
+  "IL": "Illinois",
+  "IN": "Indiana",
+  "IA": "Iowa",
+  "KS": "Kansas",
+  "KY": "Kentucky",
+  "LA": "Louisiana",
+  "ME": "Maine",
+  "MD": "Maryland",
+  "MA": "Massachusetts",
+  "MI": "Michigan",
+  "MN": "Minnesota",
+  "MS": "Mississippi",
+  "MO": "Missouri",
+  "MT": "Montana",
+  "NE": "Nebraska",
+  "NV": "Nevada",
+  "NH": "New Hampshire",
+  "NJ": "New Jersey",
+  "NM": "New Mexico",
+  "NY": "New York",
+  "NC": "North Carolina",
+  "ND": "North Dakota",
+  "OH": "Ohio",
+  "OK": "Oklahoma",
+  "OR": "Oregon",
+  "PA": "Pennsylvania",
+  "RI": "Rhode Island",
+  "SC": "South Carolina",
+  "SD": "South Dakota",
+  "TN": "Tennessee",
+  "TX": "Texas",
+  "UT": "Utah",
+  "VT": "Vermont",
+  "VA": "Virginia",
+  "WA": "Washington",
+  "WV": "West Virginia",
+  "WI": "Wisconsin",
+  "WY": "Wyoming",
+  "PR": "Puerto Rico",
+  "VI": "U.S. Virgin Islands",
+  "MP": "Northern Mariana Islands",
+  "GU": "Guam"
+};
+
 // --- STATE CODE TO FULL NAME MAP ---
 const stateMap = {
   AL: "Alabama", AK: "Alaska", AZ: "Arizona", AR: "Arkansas",
@@ -26,90 +84,32 @@ const stateMap = {
   PR: "Puerto Rico", VI: "U.S. Virgin Islands"
 };
 
-// --- STATE DROPDOWN WIRING (Fixed) ---
+// --- STATE DROPDOWN WIRING ---
 function wireStateDropdown() {
   const dropdown = document.getElementById('state-dropdown');
   if (!dropdown) return;
 
-  const stateMap = {
-    AL: "Alabama",
-    AK: "Alaska",
-    AZ: "Arizona",
-    AR: "Arkansas",
-    CA: "California",
-    CO: "Colorado",
-    CT: "Connecticut",
-    DE: "Delaware",
-    FL: "Florida",
-    GA: "Georgia",
-    HI: "Hawaii",
-    ID: "Idaho",
-    IL: "Illinois",
-    IN: "Indiana",
-    IA: "Iowa",
-    KS: "Kansas",
-    KY: "Kentucky",
-    LA: "Louisiana",
-    ME: "Maine",
-    MD: "Maryland",
-    MA: "Massachusetts",
-    MI: "Michigan",
-    MN: "Minnesota",
-    MS: "Mississippi",
-    MO: "Missouri",
-    MT: "Montana",
-    NE: "Nebraska",
-    NV: "Nevada",
-    NH: "New Hampshire",
-    NJ: "New Jersey",
-    NM: "New Mexico",
-    NY: "New York",
-    NC: "North Carolina",
-    ND: "North Dakota",
-    OH: "Ohio",
-    OK: "Oklahoma",
-    OR: "Oregon",
-    PA: "Pennsylvania",
-    RI: "Rhode Island",
-    SC: "South Carolina",
-    SD: "South Dakota",
-    TN: "Tennessee",
-    TX: "Texas",
-    UT: "Utah",
-    VT: "Vermont",
-    VA: "Virginia",
-    WA: "Washington",
-    WV: "West Virginia",
-    WI: "Wisconsin",
-    WY: "Wyoming",
-    DC: "District of Columbia",
-    AS: "American Samoa",
-    GU: "Guam",
-    MP: "Northern Mariana Islands",
-    PR: "Puerto Rico",
-    VI: "U.S. Virgin Islands"
-  };
-
-  // Initialize dropdown to current selected state
+  // Set initial value
   const initial = typeof window.selectedState === 'string' ? window.selectedState : '';
-  const initialAbbr = Object.keys(stateMap).find(key => stateMap[key] === initial);
-  dropdown.value = initialAbbr || '';
+  dropdown.value = Object.keys(stateAbbrToName).find(
+    abbr => stateAbbrToName[abbr] === initial
+  ) || '';
 
   dropdown.addEventListener('change', () => {
-    const abbr = dropdown.value;
-    const fullState = stateMap[abbr] || abbr;
+    const abbr = dropdown.value;                  // e.g., "AL"
+    const fullState = stateAbbrToName[abbr] || abbr; // Convert to full name
     window.selectedState = fullState;
 
     if (typeof window.renderOfficials === 'function') {
       window.renderOfficials(fullState, '');
     }
 
+    // If you have voting or civic intelligence tabs, trigger them here too
     if (typeof window.showVoting === 'function') {
-      window.showVoting();
+      window.showVoting(fullState);
     }
-
-    if (typeof window.showCivic === 'function') {
-      window.showCivic();
+    if (typeof window.showCivicIntelligence === 'function') {
+      window.showCivicIntelligence(fullState);
     }
   });
 }
