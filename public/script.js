@@ -181,25 +181,15 @@ function renderShows(showList) {
     card.className = "media-card";
     card.onclick = () => window.open(item.official_url, "_blank");
 
-    const img = document.createElement("img");
-    img.src = `/assets/${item.logo_slug}`;
-    img.alt = `${item.title} Logo`;
+    card.innerHTML = `
+      <img src="/assets/${item.logo_slug}" alt="${item.title} Logo">
+      <div style="flex-grow:1;">
+        <h3>${item.title}</h3>
+        <p>${item.descriptor}</p>
+      </div>
+      <button class="favorite-btn" onclick="event.stopPropagation(); addToFavorites(this.parentElement)">⭐ Favorite</button>
+    `;
 
-    const h3 = document.createElement("h3");
-    h3.textContent = item.title;
-
-    const p = document.createElement("p");
-    p.textContent = item.descriptor;
-
-    const btn = document.createElement("button");
-    btn.textContent = "⭐ Favorite";
-    btn.className = "favorite-btn";
-    btn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      addToFavorites(card);
-    });
-
-    card.append(img, h3, p, btn);
     container.appendChild(card);
   });
 }
