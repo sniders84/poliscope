@@ -177,7 +177,7 @@ function renderMedia(items, container) {
     card.onclick = () => window.open(item.official_url, '_blank');
 
     card.innerHTML = `
-      <img src="/assets/${item.logo}" alt="${item.title} Logo">
+      <img src="assets/${item.logo_slug}" alt="${item.title} Logo">
       <h3>${item.title}</h3>
       <p>${item.descriptor}</p>
       <button onclick="event.stopPropagation(); addToFavorites(this.parentElement)">⭐ Favorite</button>
