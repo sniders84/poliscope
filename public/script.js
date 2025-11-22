@@ -1,19 +1,29 @@
 // === FAVORITES STORAGE & HELPERS ===
-window.favorites = { podcasts: [], shows: [] };
+window.favorites = {
+  podcasts: [],
+  shows: []
+};
 
-function isFavorite(type, title) {
-  return window.favorites[type]?.includes(title);
+// Check if an item is favorited (matches by title)
+function isFavorite(type, item) {
+  return window.favorites[type]?.some(f => f.title === item.title);
 }
 
-function toggleFavorite(type, title) {
+// Toggle favorite state
+function toggleFavorite(type, item) {
   if (!window.favorites[type]) window.favorites[type] = [];
-  const index = window.favorites[type].indexOf(title);
+
+  const index = window.favorites[type].findIndex(f => f.title === item.title);
+
   if (index > -1) {
+    // Remove from favorites
     window.favorites[type].splice(index, 1);
   } else {
-    window.favorites[type].push(title);
+    // Add to favorites
+    window.favorites[type].push(item);
   }
-  // Optionally re-render the Podcasts & Shows tab if it's visible
+
+  // Re-render tab so the star updates
   if (document.getElementById('podcasts-shows')?.style.display !== 'none') {
     showPodcastsShows();
   }
