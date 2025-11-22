@@ -147,81 +147,25 @@ function showStartupHub() {
   showTab('startup-hub');
 }
 
-// Podcasts & Shows tab
-function showPodcastsShows() {
-  showTab('podcasts-shows');
-}
+<!-- 🎬 Podcasts & Shows Tab -->
+<section id="podcasts-shows" class="tab-content" style="display: none;">
+  <!-- Search Bar -->
+  <input type="text" id="show-search" placeholder="Search shows and podcasts...">
 
-// === Load Shows & Podcasts ===
+  <!-- Favorites Section -->
+  <div id="favorites-section">
+    <h2>Your Favorites</h2>
+    <div class="favorites-grid"></div>
+  </div>
 
-async function loadShowsAndPodcasts() {
-  try {
-    // Fetch JSON files from root (Vercel serves /public/ at the root path)
-    const showsRes = await fetch("/shows.json");
-    const podcastsRes = await fetch("/podcasts.json");
+  <!-- Just Shows Section -->
+  <h2>Just Shows</h2>
+  <div class="video-grid"></div>
 
-    const shows = await showsRes.json();
-    const podcasts = await podcastsRes.json();
-
-    renderShows(shows);
-    renderPodcasts(podcasts);
-
-  } catch (err) {
-    console.error("Error loading shows/podcasts:", err);
-  }
-}
-
-// === Render Shows ===
-function renderShows(showList) {
-  const container = document.querySelector("#podcasts-shows .video-grid");
-  if (!container) return;
-
-  container.innerHTML = ""; // Clear old static HTML
-
-  showList.forEach(item => {
-    const card = document.createElement("div");
-    card.className = "media-card";
-    card.onclick = () => window.open(item.official_url, "_blank");
-
-    card.innerHTML = `
-      <img src="/assets/${item.logo_slug}" alt="${item.title} Logo">
-      <h3>${item.title}</h3>
-      <p>${item.descriptor}</p>
-      <button onclick="event.stopPropagation(); addToFavorites(this.parentElement)">⭐ Favorite</button>
-    `;
-
-    container.appendChild(card);
-  });
-}
-
-// === Render Podcasts ===
-function renderPodcasts(podcastList) {
-  const container = document.querySelector("#podcasts-shows .audio-grid");
-  if (!container) return;
-
-  container.innerHTML = ""; // Clear old static HTML
-
-  podcastList.forEach(item => {
-    const card = document.createElement("div");
-    card.className = "media-card";
-    card.onclick = () => window.open(item.official_url, "_blank");
-
-    card.innerHTML = `
-      <img src="/assets/${item.logo_slug}" alt="${item.title} Logo">
-      <h3>${item.title}</h3>
-      <p>${item.descriptor}</p>
-      <button onclick="event.stopPropagation(); addToFavorites(this.parentElement)">⭐ Favorite</button>
-    `;
-
-    container.appendChild(card);
-  });
-}
-
-// === Override tab to load dynamic content ===
-function showPodcastsShows() {
-  showTab('podcasts-shows');
-  loadShowsAndPodcasts(); // Load JSON content only when tab opens
-}
+  <!-- Podcasts Section -->
+  <h2>Podcasts</h2>
+  <div class="audio-grid"></div>
+</section>
 
 function showCivic() {
   showTab('civic-intelligence');
