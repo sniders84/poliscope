@@ -231,19 +231,43 @@ function renderPodcasts(podcastList) {
   });
 }
 
-// === Search Bar ===
 document.addEventListener('DOMContentLoaded', () => {
-  const searchInput = document.getElementById('show-search');
-  const container = document.getElementById('podcasts-shows');
+  // --- Podcasts & Shows Search ---
+  const showSearch = document.getElementById('show-search');
+  const showContainer = document.getElementById('podcasts-shows');
 
-  if (searchInput && container) {
-    searchInput.addEventListener('input', function(e) {
+  if (showSearch && showContainer) {
+    showSearch.addEventListener('input', function(e) {
       const term = e.target.value.toLowerCase();
-      container.querySelectorAll('.media-card').forEach(card => {
+      showContainer.querySelectorAll('.media-card').forEach(card => {
         const text = card.innerText.toLowerCase();
         card.style.display = text.includes(term) ? '' : 'none';
       });
     });
+  }
+
+  // --- Officials Search ---
+  const searchInput = document.getElementById('search-bar');
+  const stateDropdown = document.getElementById('state-dropdown');
+
+  if (searchInput && stateDropdown) {
+    const filterOfficials = () => {
+      const term = searchInput.value.toLowerCase();
+      const state = stateDropdown.value;
+
+      document.querySelectorAll('.official-card').forEach(card => {
+        const name = card.querySelector('h3')?.textContent.toLowerCase() || '';
+        const cardState = card.dataset.state || '';
+
+        const matchesName = name.includes(term);
+        const matchesState = state === '' || cardState === state;
+
+        card.style.display = matchesName && matchesState ? '' : 'none';
+      });
+    };
+
+    searchInput.addEventListener('input', filterOfficials);
+    stateDropdown.addEventListener('change', filterOfficials);
   }
 });
 
