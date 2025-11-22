@@ -170,7 +170,6 @@ async function loadShowsAndPodcasts() {
   }
 }
 
-// === Render Shows ===
 function renderShows(showList) {
   const container = document.querySelector("#podcasts-shows .video-grid");
   if (!container) return;
@@ -182,7 +181,9 @@ function renderShows(showList) {
     card.onclick = () => window.open(item.official_url, "_blank");
 
     card.innerHTML = `
-      <img src="/assets/${item.logo_slug}" alt="${item.title} Logo">
+      <div class="logo-container">
+        <img src="/assets/${item.logo_slug}" alt="${item.title} Logo">
+      </div>
       <div style="flex-grow:1;">
         <h3>${item.title}</h3>
         <p>${item.descriptor}</p>
@@ -194,7 +195,6 @@ function renderShows(showList) {
   });
 }
 
-// === Render Podcasts ===
 function renderPodcasts(podcastList) {
   const container = document.querySelector("#podcasts-shows .audio-grid");
   if (!container) return;
@@ -205,9 +205,14 @@ function renderPodcasts(podcastList) {
     card.className = "media-card";
     card.onclick = () => window.open(item.official_url, "_blank");
 
+    const logoWrapper = document.createElement("div");
+    logoWrapper.className = "logo-container";
+
     const img = document.createElement("img");
     img.src = `/assets/${item.logo_slug}`;
     img.alt = `${item.title} Logo`;
+
+    logoWrapper.appendChild(img);
 
     const h3 = document.createElement("h3");
     h3.textContent = item.title;
@@ -223,7 +228,7 @@ function renderPodcasts(podcastList) {
       addToFavorites(card);
     });
 
-    card.append(img, h3, p, btn);
+    card.append(logoWrapper, h3, p, btn);
     container.appendChild(card);
   });
 }
