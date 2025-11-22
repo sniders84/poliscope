@@ -7,6 +7,25 @@ let houseReps = [];
 let officialsContainer = null;
 let searchBar = null;
 
+// --- STATE CODE TO FULL NAME MAP ---
+const stateMap = {
+  AL: "Alabama", AK: "Alaska", AZ: "Arizona", AR: "Arkansas",
+  CA: "California", CO: "Colorado", CT: "Connecticut", DE: "Delaware",
+  FL: "Florida", GA: "Georgia", HI: "Hawaii", ID: "Idaho",
+  IL: "Illinois", IN: "Indiana", IA: "Iowa", KS: "Kansas",
+  KY: "Kentucky", LA: "Louisiana", ME: "Maine", MD: "Maryland",
+  MA: "Massachusetts", MI: "Michigan", MN: "Minnesota", MS: "Mississippi",
+  MO: "Missouri", MT: "Montana", NE: "Nebraska", NV: "Nevada",
+  NH: "New Hampshire", NJ: "New Jersey", NM: "New Mexico", NY: "New York",
+  NC: "North Carolina", ND: "North Dakota", OH: "Ohio", OK: "Oklahoma",
+  OR: "Oregon", PA: "Pennsylvania", RI: "Rhode Island", SC: "South Carolina",
+  SD: "South Dakota", TN: "Tennessee", TX: "Texas", UT: "Utah",
+  VT: "Vermont", VA: "Virginia", WA: "Washington", WV: "West Virginia",
+  WI: "Wisconsin", WY: "Wyoming", DC: "District of Columbia",
+  AS: "American Samoa", GU: "Guam", MP: "Northern Mariana Islands",
+  PR: "Puerto Rico", VI: "U.S. Virgin Islands"
+};
+
 // --- STATE DROPDOWN WIRING ---
 function wireStateDropdown() {
   const dropdown = document.getElementById('state-dropdown');
@@ -17,9 +36,10 @@ function wireStateDropdown() {
 
   dropdown.addEventListener('change', () => {
     const val = dropdown.value;
-    window.selectedState = val;
+    const fullState = stateMap[val] || val; // convert code to full state name
+    window.selectedState = fullState;
     if (typeof window.renderOfficials === 'function') {
-      window.renderOfficials(val, '');
+      window.renderOfficials(fullState, '');
     }
   });
 }
