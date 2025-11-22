@@ -148,6 +148,14 @@ function showStartupHub() {
 }
 
 <script>
+// --- Stub missing tab functions so buttons stop throwing errors ---
+function showStartupHub() {}
+function renderOfficials() {}
+function showCivic() {}
+function showPolls() {}
+function showOrganizations() {}
+function showVoting() {}
+
 // === Podcasts & Shows Tab ===
 function showPodcastsShows() {
   showTab('podcasts-shows');
