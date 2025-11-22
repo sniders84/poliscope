@@ -7,43 +7,6 @@ let houseReps = [];
 let officialsContainer = null;
 let searchBar = null;
 
-// --- STATE DROPDOWN WIRING ---
-function wireStateDropdown() {
-  const dropdown = document.getElementById('state-dropdown');
-  if (!dropdown) return;
-
-  // Set initial value to whatever is in window.selectedState
-  dropdown.value = window.selectedState || '';
-
-  dropdown.addEventListener('change', () => {
-    const fullState = dropdown.value; // full state name directly
-    window.selectedState = fullState;
-
-    // Update officials tab
-    if (typeof window.renderOfficials === 'function') {
-      window.renderOfficials(fullState, '');
-    }
-
-    // Update voting tab
-    if (typeof window.showVoting === 'function') {
-      window.showVoting(fullState);
-    }
-
-    // Update civic intelligence tab
-    if (typeof window.showCivicIntelligence === 'function') {
-      window.showCivicIntelligence(fullState);
-    }
-
-    // Debugging logs (optional)
-    console.log("Dropdown triggered state:", fullState);
-    console.log("Governors:", governors.map(o => o.state));
-    console.log("Lt. Governors:", ltGovernors.map(o => o.state));
-    console.log("Senators:", senators.map(o => o.state));
-    console.log("House Reps:", houseReps.map(o => o.state));
-  });
-}
-
-
 // === DATA LOADING ===
 // Load all major JSON datasets at once
 Promise.all([
@@ -304,7 +267,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     searchInput.addEventListener('input', filterOfficials);
-    stateDropdown.addEventListener('change', filterOfficials);
   }
 });
 
@@ -388,10 +350,8 @@ function showVoting() {
     .then(data => {
       console.log('Voting data loaded:', data);
       console.log('Available voting keys:', Object.keys(data));
-      console.log('Trying to match:', window.selectedState);
-
-      let stateName = window.selectedState || 'North Carolina';
-      if (stateName === 'Virgin Islands') stateName = 'U.S. Virgin Islands';
+    
+          if (stateName === 'Virgin Islands') stateName = 'U.S. Virgin Islands';
       const stateData = data[stateName] || null;
 
       if (!stateData || typeof stateData !== 'object') {
@@ -1450,11 +1410,7 @@ document.querySelectorAll('.info-card[data-network]').forEach(card => {
     window.senators = sens;
     window.houseReps = reps;
 
-    if (typeof window.renderOfficials === 'function') {
-      window.renderOfficials(window.selectedState || '', '');
-    }
-
-    if (loadingOverlay) {
+     if (loadingOverlay) {
       loadingOverlay.style.transition = 'opacity 0.5s ease';
       loadingOverlay.style.opacity = '0';
       setTimeout(() => loadingOverlay.remove(), 500);
@@ -1469,24 +1425,6 @@ document.querySelectorAll('.info-card[data-network]').forEach(card => {
     console.error('Error loading official data:', err);
     if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
   });
-
-  // Set initial value based on selectedState
-  const initialAbbr = Object.keys(stateAbbrToName).find(
-    abbr => stateAbbrToName[abbr] === window.selectedState
-  ) || '';
-  dropdown.value = initialAbbr;
-
- dropdown.addEventListener('change', () => {
-  const abbr = dropdown.value;                    
-  const fullState = stateAbbrToName[abbr] || abbr; 
-  window.selectedState = fullState;
-
-  // --- DEBUG LOGS ---
-  console.log("Dropdown triggered state:", fullState);
-  console.log("Governors:", governors.map(o => o.state));
-  console.log("Lt. Governors:", ltGovernors.map(o => o.state));
-  console.log("Senators:", senators.map(o => o.state));
-  console.log("House Reps:", houseReps.map(o => o.state));
 
   if (typeof window.renderOfficials === 'function') {
     window.renderOfficials(fullState, '');
@@ -1507,7 +1445,6 @@ document.querySelectorAll('.info-card[data-network]').forEach(card => {
   if (typeof window.wireSearchBar === 'function') {
     window.wireSearchBar();
   }
-  wireStateDropdown();
 
   function closeOfficialsSearch() {
     if (!searchBar) return;
