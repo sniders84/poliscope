@@ -319,100 +319,118 @@ function showOrganizations() {
   showTab('political-groups');
 }
 
+// === VOTING TAB ===
 function showVoting() {
   showTab('voting');
+
   const votingCards = document.getElementById('voting-cards');
+  if (!votingCards) return;
   votingCards.innerHTML = '';
-  console.log("showVoting() triggered");
 
-  fetch('voting-data.json')
-    .then(res => {
-      if (!res.ok) throw new Error('Voting data file not found');
-      return res.json();
-    })
-    .then(data => {
-      console.log('Voting data loaded:', data);
-      console.log('Available voting keys:', Object.keys(data));
-    
-          if (stateName === 'Virgin Islands') stateName = 'U.S. Virgin Islands';
-      const stateData = data[stateName] || null;
+  const votingDropdown = document.getElementById('voting-state-dropdown');
+  if (!votingDropdown) return;
 
-      if (!stateData || typeof stateData !== 'object') {
-        votingCards.innerHTML = `<p>No voting information available for ${stateName}.</p>`;
-        return;
-      }
+  const votingSearch = document.getElementById('voting-search-bar');
 
-      console.log("Selected state:", stateName);
-      console.log('Direct match result:', data[stateName]);
+  // Function to render cards for a given state and search term
+  const renderStateVoting = (stateName, searchTerm = '') => {
+    votingCards.innerHTML = '';
+    if (!stateName) return;
 
-      const labelMap = {
-        register: 'Register to Vote',
-        id: 'Voter ID Requirements',
-        absentee: 'Absentee Voting',
-        early: 'Early Voting',
-        polling: 'Find Your Polling Place',
-        sample: 'View Sample Ballot',
-        military: 'Military & Overseas Voting',
-        counties: 'County Election Contacts',
-        tools: 'State Voting Tools'
-      };
+    fetch('voting-data.json')
+      .then(res => res.json())
+      .then(data => {
+        if (stateName === 'Virgin Islands') stateName = 'U.S. Virgin Islands';
+        const stateData = data[stateName] || null;
 
-      Object.entries(stateData).forEach(([key, value]) => {
-        if (!value) return;
-
-        let url, icon, description, deadline;
-
-        if (typeof value === 'string') {
-          url = value;
-          icon = '🗳️';
-          description = '';
-          deadline = '';
-        } else if (typeof value === 'object' && value !== null) {
-          ({ url, icon = '🗳️', description = '', deadline = '' } = value);
-        } else {
+        if (!stateData || typeof stateData !== 'object') {
+          votingCards.innerHTML = `<p>No voting information available for ${stateName}.</p>`;
           return;
         }
 
-        if (!url) return;
+        const labelMap = {
+          register: 'Register to Vote',
+          id: 'Voter ID Requirements',
+          absentee: 'Absentee Voting',
+          early: 'Early Voting',
+          polling: 'Find Your Polling Place',
+          sample: 'View Sample Ballot',
+          military: 'Military & Overseas Voting',
+          counties: 'County Election Contacts',
+          tools: 'State Voting Tools'
+        };
 
-        const title = labelMap[key] || key;
+        Object.entries(stateData).forEach(([key, value]) => {
+          if (!value) return;
 
-        const card = document.createElement('div');
-        card.className = 'voting-card';
+          let url, icon, description, deadline;
+          if (typeof value === 'string') {
+            url = value;
+            icon = '🗳️';
+            description = '';
+            deadline = '';
+          } else if (typeof value === 'object' && value !== null) {
+            ({ url, icon = '🗳️', description = '', deadline = '' } = value);
+          } else {
+            return;
+          }
 
-        const link = document.createElement('a');
-        link.href = url;
-        link.target = '_blank';
+          if (!url) return;
 
-        const iconDiv = document.createElement('div');
-        iconDiv.className = 'card-icon';
-        iconDiv.innerHTML = `<span class="emoji">${icon}</span>`;
+          const title = labelMap[key] || key;
+          if (searchTerm && !title.toLowerCase().includes(searchTerm.toLowerCase())) return;
 
-        const labelDiv = document.createElement('div');
-        labelDiv.className = 'card-label';
-        labelDiv.textContent = title;
+          const card = document.createElement('div');
+          card.className = 'voting-card';
 
-        const descDiv = document.createElement('div');
-        descDiv.className = 'card-description';
-        descDiv.textContent = description;
+          const link = document.createElement('a');
+          link.href = url;
+          link.target = '_blank';
 
-        const deadlineDiv = document.createElement('div');
-        deadlineDiv.className = 'card-date';
-        if (deadline) deadlineDiv.textContent = deadline;
+          const iconDiv = document.createElement('div');
+          iconDiv.className = 'card-icon';
+          iconDiv.innerHTML = `<span class="emoji">${icon}</span>`;
 
-        link.appendChild(iconDiv);
-        link.appendChild(labelDiv);
-        link.appendChild(descDiv);
-        if (deadline) link.appendChild(deadlineDiv);
+          const labelDiv = document.createElement('div');
+          labelDiv.className = 'card-label';
+          labelDiv.textContent = title;
 
-        card.appendChild(link);
-        votingCards.appendChild(card);
+          const descDiv = document.createElement('div');
+          descDiv.className = 'card-description';
+          descDiv.textContent = description;
+
+          const deadlineDiv = document.createElement('div');
+          deadlineDiv.className = 'card-date';
+          if (deadline) deadlineDiv.textContent = deadline;
+
+          link.appendChild(iconDiv);
+          link.appendChild(labelDiv);
+          link.appendChild(descDiv);
+          if (deadline) link.appendChild(deadlineDiv);
+
+          card.appendChild(link);
+          votingCards.appendChild(card);
+        });
+      })
+      .catch(err => {
+        votingCards.innerHTML = '<p>Error loading voting data.</p>';
+        console.error('Voting fetch failed:', err);
       });
-    })
-    .catch(err => {
-      votingCards.innerHTML = '<p>Error loading voting data.</p>';
-      console.error('Voting fetch failed:', err);
+  };
+
+  // --- Dropdown event ---
+  votingDropdown.addEventListener('change', () => {
+    const state = votingDropdown.value;
+    renderStateVoting(state, votingSearch?.value || '');
+  });
+
+  // --- Search bar event ---
+  if (votingSearch) {
+    votingSearch.addEventListener('input', () => {
+      const state = votingDropdown.value;
+      renderStateVoting(state, votingSearch.value);
     });
+  }
 }
 
 // === HELPER: render roster cards (if needed) ===
@@ -606,73 +624,79 @@ function showCivic() {
   section.appendChild(federalBlock);
   calendar.appendChild(section);
 
-  // --- Wire state dropdown ---
+  // --- Per-tab state dropdown & search ---
   const civicDropdown = document.getElementById('civic-state-dropdown');
-  if (civicDropdown) {
-    civicDropdown.addEventListener('change', () => {
-      const state = civicDropdown.value;
-      const container = document.getElementById('state-links-container');
-      if (!container) return;
-      container.innerHTML = '';
+  if (!civicDropdown) return;
 
-      if (!state) return;
+  // Add per-tab search bar dynamically
+  const civicSearch = document.createElement('input');
+  civicSearch.id = 'civic-search-bar';
+  civicSearch.placeholder = 'Search state links...';
+  civicSearch.className = 'search-bar';
+  civicDropdown.insertAdjacentElement('afterend', civicSearch);
 
-      fetch('/state-links.json')
-        .then(res => res.json())
-        .then(stateLinks => {
-          const links = stateLinks[state] || {};
-          const labelMap = { bills: 'Bills', senateRoster: 'State Senate', houseRoster: 'State House', local: 'Local Government' };
-          const grid = document.createElement('div');
-          grid.className = 'link-grid';
+  const stateLinksContainer = document.getElementById('state-links-container');
 
-          Object.entries(links).forEach(([label, value]) => {
-            if (label === 'federalRaces' || value == null) return;
-            const displayLabel = labelMap[label] || label;
+  function loadCivicStateLinks(state, query = '') {
+    if (!state) {
+      stateLinksContainer.innerHTML = '<p>Please select a state.</p>';
+      return;
+    }
 
-            if (Array.isArray(value)) {
-              value.forEach(entry => {
-                if (!entry || !entry.url) return;
-                const card = document.createElement('div');
-                card.className = 'link-card';
-                card.setAttribute('onclick', `window.open('${entry.url}', '_blank')`);
-                card.innerHTML = `<h4>${displayLabel} – ${entry.party}</h4>
-                                  <p class="card-desc">Click to view ${entry.party} members of the ${displayLabel}.</p>`;
-                grid.appendChild(card);
-              });
-            } else if (typeof value === 'object' && value.url) {
-              const card = document.createElement('div');
-              card.className = 'link-card';
-              card.setAttribute('onclick', `window.open('${value.url}', '_blank')`);
-              card.innerHTML = `<h4>${displayLabel}</h4>
-                                <p class="card-desc">Click to view ${displayLabel} information for ${state}.</p>`;
-              grid.appendChild(card);
-            } else if (typeof value === 'string') {
-              const card = document.createElement('div');
-              card.className = 'link-card';
-              card.setAttribute('onclick', `window.open('${value}', '_blank')`);
-              card.innerHTML = `<h4>${displayLabel}</h4>
-                                <p class="card-desc">Click to view ${displayLabel} information for ${state}.</p>`;
-              grid.appendChild(card);
-            }
+    fetch('/state-links.json')
+      .then(res => res.json())
+      .then(stateLinks => {
+        const links = stateLinks[state] || {};
+        const labelMap = { bills: 'Bills', senateRoster: 'State Senate', houseRoster: 'State House', local: 'Local Government' };
+        const grid = document.createElement('div');
+        grid.className = 'link-grid';
+
+        Object.entries(links).forEach(([label, value]) => {
+          if (!value || label === 'federalRaces') return;
+          const displayLabel = labelMap[label] || label;
+
+          const valuesArray = Array.isArray(value) ? value : [value];
+          valuesArray.forEach(entry => {
+            if (!entry) return;
+
+            const entryUrl = entry.url || entry;
+            const entryParty = entry.party || '';
+            const entryName = entry.party ? `${displayLabel} – ${entryParty}` : displayLabel;
+
+            if (!entryUrl) return;
+            if (query && !entryName.toLowerCase().includes(query.toLowerCase())) return;
+
+            const card = document.createElement('div');
+            card.className = 'link-card';
+            card.setAttribute('onclick', `window.open('${entryUrl}', '_blank')`);
+            card.innerHTML = `<h4>${entryName}</h4><p class="card-desc">Click to view ${displayLabel} information for ${state}.</p>`;
+            grid.appendChild(card);
           });
-
-          if (grid.children.length === 0) {
-            const msg = document.createElement('p');
-            msg.textContent = `No state-level links available for ${state}.`;
-            container.appendChild(msg);
-          } else {
-            container.appendChild(grid);
-          }
-        })
-        .catch(err => {
-          container.innerHTML = '<p>Error loading state links.</p>';
-          console.error(err);
         });
-    });
+
+        stateLinksContainer.innerHTML = '';
+        if (grid.children.length === 0) {
+          stateLinksContainer.innerHTML = `<p>No state-level links found for ${state}.</p>`;
+        } else {
+          stateLinksContainer.appendChild(grid);
+        }
+      })
+      .catch(err => {
+        console.error('Error loading state links:', err);
+        stateLinksContainer.innerHTML = '<p>Error loading state links.</p>';
+      });
   }
+
+  civicDropdown.addEventListener('change', () => {
+    loadCivicStateLinks(civicDropdown.value, civicSearch.value);
+  });
+
+  civicSearch.addEventListener('input', () => {
+    loadCivicStateLinks(civicDropdown.value, civicSearch.value);
+  });
 }
 
-// === POLLS TAB ===
+  // === POLLS TAB ===
 function showPolls() {
   showTab('polls');
   const pollsContainer = document.getElementById('polls-cards');
