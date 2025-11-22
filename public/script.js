@@ -7,112 +7,42 @@ let houseReps = [];
 let officialsContainer = null;
 let searchBar = null;
 
-const stateAbbrToName = {
-  "AL": "Alabama",
-  "AK": "Alaska",
-  "AZ": "Arizona",
-  "AR": "Arkansas",
-  "CA": "California",
-  "CO": "Colorado",
-  "CT": "Connecticut",
-  "DE": "Delaware",
-  "DC": "District of Columbia",
-  "FL": "Florida",
-  "GA": "Georgia",
-  "HI": "Hawaii",
-  "ID": "Idaho",
-  "IL": "Illinois",
-  "IN": "Indiana",
-  "IA": "Iowa",
-  "KS": "Kansas",
-  "KY": "Kentucky",
-  "LA": "Louisiana",
-  "ME": "Maine",
-  "MD": "Maryland",
-  "MA": "Massachusetts",
-  "MI": "Michigan",
-  "MN": "Minnesota",
-  "MS": "Mississippi",
-  "MO": "Missouri",
-  "MT": "Montana",
-  "NE": "Nebraska",
-  "NV": "Nevada",
-  "NH": "New Hampshire",
-  "NJ": "New Jersey",
-  "NM": "New Mexico",
-  "NY": "New York",
-  "NC": "North Carolina",
-  "ND": "North Dakota",
-  "OH": "Ohio",
-  "OK": "Oklahoma",
-  "OR": "Oregon",
-  "PA": "Pennsylvania",
-  "RI": "Rhode Island",
-  "SC": "South Carolina",
-  "SD": "South Dakota",
-  "TN": "Tennessee",
-  "TX": "Texas",
-  "UT": "Utah",
-  "VT": "Vermont",
-  "VA": "Virginia",
-  "WA": "Washington",
-  "WV": "West Virginia",
-  "WI": "Wisconsin",
-  "WY": "Wyoming",
-  "PR": "Puerto Rico",
-  "VI": "U.S. Virgin Islands",
-  "MP": "Northern Mariana Islands",
-  "GU": "Guam"
-};
-
-// --- STATE CODE TO FULL NAME MAP ---
-const stateMap = {
-  AL: "Alabama", AK: "Alaska", AZ: "Arizona", AR: "Arkansas",
-  CA: "California", CO: "Colorado", CT: "Connecticut", DE: "Delaware",
-  FL: "Florida", GA: "Georgia", HI: "Hawaii", ID: "Idaho",
-  IL: "Illinois", IN: "Indiana", IA: "Iowa", KS: "Kansas",
-  KY: "Kentucky", LA: "Louisiana", ME: "Maine", MD: "Maryland",
-  MA: "Massachusetts", MI: "Michigan", MN: "Minnesota", MS: "Mississippi",
-  MO: "Missouri", MT: "Montana", NE: "Nebraska", NV: "Nevada",
-  NH: "New Hampshire", NJ: "New Jersey", NM: "New Mexico", NY: "New York",
-  NC: "North Carolina", ND: "North Dakota", OH: "Ohio", OK: "Oklahoma",
-  OR: "Oregon", PA: "Pennsylvania", RI: "Rhode Island", SC: "South Carolina",
-  SD: "South Dakota", TN: "Tennessee", TX: "Texas", UT: "Utah",
-  VT: "Vermont", VA: "Virginia", WA: "Washington", WV: "West Virginia",
-  WI: "Wisconsin", WY: "Wyoming", DC: "District of Columbia",
-  AS: "American Samoa", GU: "Guam", MP: "Northern Mariana Islands",
-  PR: "Puerto Rico", VI: "U.S. Virgin Islands"
-};
-
 // --- STATE DROPDOWN WIRING ---
 function wireStateDropdown() {
   const dropdown = document.getElementById('state-dropdown');
   if (!dropdown) return;
 
-  // Set initial value
-  const initial = typeof window.selectedState === 'string' ? window.selectedState : '';
-  dropdown.value = Object.keys(stateAbbrToName).find(
-    abbr => stateAbbrToName[abbr] === initial
-  ) || '';
+  // Set initial value to whatever is in window.selectedState
+  dropdown.value = window.selectedState || '';
 
   dropdown.addEventListener('change', () => {
-    const abbr = dropdown.value;                  // e.g., "AL"
-    const fullState = stateAbbrToName[abbr] || abbr; // Convert to full name
+    const fullState = dropdown.value; // full state name directly
     window.selectedState = fullState;
 
+    // Update officials tab
     if (typeof window.renderOfficials === 'function') {
       window.renderOfficials(fullState, '');
     }
 
-    // If you have voting or civic intelligence tabs, trigger them here too
+    // Update voting tab
     if (typeof window.showVoting === 'function') {
       window.showVoting(fullState);
     }
+
+    // Update civic intelligence tab
     if (typeof window.showCivicIntelligence === 'function') {
       window.showCivicIntelligence(fullState);
     }
+
+    // Debugging logs (optional)
+    console.log("Dropdown triggered state:", fullState);
+    console.log("Governors:", governors.map(o => o.state));
+    console.log("Lt. Governors:", ltGovernors.map(o => o.state));
+    console.log("Senators:", senators.map(o => o.state));
+    console.log("House Reps:", houseReps.map(o => o.state));
   });
 }
+
 
 // === DATA LOADING ===
 // Load all major JSON datasets at once
@@ -1539,11 +1469,6 @@ document.querySelectorAll('.info-card[data-network]').forEach(card => {
     console.error('Error loading official data:', err);
     if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
   });
-
-  // --- STATE DROPDOWN WIRING ---
-  function wireStateDropdown() {
-  const dropdown = document.getElementById('state-dropdown');
-  if (!dropdown) return;
 
   // Set initial value based on selectedState
   const initialAbbr = Object.keys(stateAbbrToName).find(
