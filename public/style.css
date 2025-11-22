@@ -2236,36 +2236,70 @@ rssapp-carousel {
   font-size: 0.9rem;
   color: #ccc;
 }
-/* === Favorites Buttons Styling === */
-.media-card button {
-  border: none;
-  padding: 8px 12px;
-  border-radius: 20px;
-  font-size: 14px;
+/* === Media Cards === */
+.media-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 12px;
+  margin: 10px;
   cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Favorite (Add) */
-.media-card button:contains("⭐ Favorite"),
-.media-card button:contains("⭐ Favorite")::after {
-  background-color: #FFD700; /* Gold */
-  color: #000;
+.media-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
 }
 
-.media-card button:contains("⭐ Favorite"):hover {
-  background-color: #FFC107; /* Brighter gold */
+.media-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.media-card:hover img {
   transform: scale(1.05);
 }
 
-/* Remove Favorite */
-.media-card button:contains("❌ Remove") {
-  background-color: #FF4D4F; /* Red */
-  color: #fff;
+/* === Buttons === */
+.favorite-btn {
+  border: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  background-color: #FFD700;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  margin-top: 6px;
 }
 
-.media-card button:contains("❌ Remove"):hover {
-  background-color: #FF7875; /* Lighter red */
+.favorite-btn:hover {
+  background-color: #FFC107;
+  transform: scale(1.05);
+}
+
+.remove-btn {
+  border: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  background-color: #FF4D4F;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  margin-top: 6px;
+}
+
+.remove-btn:hover {
+  background-color: #FF7875;
   transform: scale(1.05);
 }
