@@ -212,9 +212,8 @@ function showPodcastsShows() {
             <p class="category">${podcast.category} – ${podcast.source}</p>
             <p class="descriptor">${podcast.descriptor}</p>
             <div class="card-actions">
-              <button class="favorite-btn">★</button>
-              <button class="unfavorite-btn">☆</button>
-            </div>
+            <button class="favorite-btn">★</button>
+          </div>
           </div>
         `;
         // Open official link
@@ -264,11 +263,10 @@ function showPodcastsShows() {
             <h4>${show.title}</h4>
             <p class="category">${show.category} – ${show.source}</p>
             <p class="descriptor">${show.descriptor}</p>
-            <div class="card-actions">
-              <button class="favorite-btn">★</button>
-              <button class="unfavorite-btn">☆</button>
-            </div>
-          </div>
+           <div class="card-actions">
+           <button class="favorite-btn">★</button>
+           </div>
+           </div>
         `;
         // Open official link
         card.querySelector('.logo-wrapper').addEventListener('click', () => {
