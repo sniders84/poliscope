@@ -285,8 +285,27 @@ function showTab(tabId) {
 <section id="podcasts-shows" class="tab-content" style="display: none;">
   <h2>Podcasts & Shows</h2>
 
-  <!-- Search bar for this tab (styled like the top search bars) -->
-  <input type="text" id="podcasts-search-bar" class="search-bar" placeholder="Search podcasts or shows..." />
+  <!-- Search bar for this tab (modern, sleek styling like top search bars) -->
+  <input 
+    type="text" 
+    id="podcasts-search-bar" 
+    class="search-bar" 
+    placeholder="Search podcasts or shows..."
+    style="
+      width: 100%;
+      max-width: 400px;
+      padding: 10px 15px;
+      margin: 10px 0 20px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      background-color: #2b2b2b;
+      color: #fff;
+      font-size: 1rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    "
+    onfocus="this.style.borderColor='#1e90ff'; this.style.boxShadow='0 0 5px #1e90ff';"
+    onblur="this.style.borderColor='#ccc'; this.style.boxShadow='none';"
+  />
 
   <!-- Container for cards -->
   <div id="podcasts-cards" class="grid"></div>
