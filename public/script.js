@@ -565,12 +565,22 @@ function showCabinetMemberDetail(member) {
   document.getElementById('cabinetDetailView').style.display = 'block';
 }
 
-// === CIVIC TAB ===
+// === CIVIC TAB & CABINET LOGIC ===
 function showCivic() {
   showTab('civic');
   const calendar = document.getElementById('calendar');
   if (!calendar) return;
   calendar.innerHTML = '';
+
+  const escapeHTML = str =>
+    str
+      ? str
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;')
+      : '';
 
   const section = document.createElement('div');
   section.className = 'civic-section';
@@ -583,15 +593,13 @@ function showCivic() {
   fetch('state-links.json')
     .then(res => res.json())
     .then(stateLinks => {
-      // Use currentState first, then selectedState
       let stateName = currentState || window.selectedState || '';
-      if (!stateName) stateName = 'North Carolina'; // fallback
+      if (!stateName) stateName = 'North Carolina';
 
-      // Normalize territories
       const stateAliases = {
-        "Virgin Islands": "U.S. Virgin Islands",
-        "Northern Mariana Islands": "Northern Mariana Islands",
-        "Puerto Rico": "Puerto Rico"
+        'Virgin Islands': 'U.S. Virgin Islands',
+        'Northern Mariana Islands': 'Northern Mariana Islands',
+        'Puerto Rico': 'Puerto Rico',
       };
       if (stateAliases[stateName]) stateName = stateAliases[stateName];
 
@@ -600,11 +608,23 @@ function showCivic() {
         bills: 'Bills',
         senateRoster: 'State Senate',
         houseRoster: 'State House',
-        local: 'Local Government'
+        local: 'Local Government',
       };
 
       const grid = document.createElement('div');
       grid.className = 'link-grid';
+
+      const createCard = (title, desc, url, clickHandler) => {
+        const card = document.createElement('div');
+        card.className = 'link-card';
+        if (clickHandler) card.onclick = clickHandler;
+        else if (url) card.onclick = () => window.open(url, '_blank');
+        card.innerHTML = `
+          <h4>${escapeHTML(title)}</h4>
+          <p class="card-desc">${escapeHTML(desc)}</p>
+        `;
+        grid.appendChild(card);
+      };
 
       Object.entries(links).forEach(([label, value]) => {
         if (label === 'federalRaces' || !value) return;
@@ -613,33 +633,24 @@ function showCivic() {
         if (Array.isArray(value)) {
           value.forEach(entry => {
             if (!entry || !entry.url) return;
-            const card = document.createElement('div');
-            card.className = 'link-card';
-            card.onclick = () => window.open(entry.url, '_blank');
-            card.innerHTML = `
-              <h4>${displayLabel} – ${entry.party || ''}</h4>
-              <p class="card-desc">Click to view ${entry.party || ''} members of the ${displayLabel}.</p>
-            `;
-            grid.appendChild(card);
+            createCard(
+              `${displayLabel} – ${entry.party || ''}`,
+              `Click to view ${entry.party || ''} members of the ${displayLabel}.`,
+              entry.url
+            );
           });
         } else if (typeof value === 'object' && value.url) {
-          const card = document.createElement('div');
-          card.className = 'link-card';
-          card.onclick = () => window.open(value.url, '_blank');
-          card.innerHTML = `
-            <h4>${displayLabel}</h4>
-            <p class="card-desc">Click to view ${displayLabel} information for ${stateName}.</p>
-          `;
-          grid.appendChild(card);
+          createCard(
+            displayLabel,
+            `Click to view ${displayLabel} information for ${stateName}.`,
+            value.url
+          );
         } else if (typeof value === 'string') {
-          const card = document.createElement('div');
-          card.className = 'link-card';
-          card.onclick = () => window.open(value, '_blank');
-          card.innerHTML = `
-            <h4>${displayLabel}</h4>
-            <p class="card-desc">Click to view ${displayLabel} information for ${stateName}.</p>
-          `;
-          grid.appendChild(card);
+          createCard(
+            displayLabel,
+            `Click to view ${displayLabel} information for ${stateName}.`,
+            value
+          );
         }
       });
 
@@ -667,16 +678,7 @@ function showCivic() {
 
       const ngaGrid = document.createElement('div');
       ngaGrid.className = 'link-grid';
-      ngaLinks.forEach(link => {
-        const card = document.createElement('div');
-        card.className = 'link-card';
-        card.onclick = () => window.open(link.url, '_blank');
-        card.innerHTML = `
-          <h4>${link.label}</h4>
-          <p class="card-desc">${link.desc}</p>
-        `;
-        ngaGrid.appendChild(card);
-      });
+      ngaLinks.forEach(link => createCard(link.label, link.desc, link.url));
       ngaBlock.appendChild(ngaGrid);
 
       // --- Federal block ---
@@ -693,30 +695,14 @@ function showCivic() {
 
       const federalGrid = document.createElement('div');
       federalGrid.className = 'link-grid';
-      federalLinks.forEach(link => {
-        const card = document.createElement('div');
-        card.className = 'link-card';
-        card.onclick = () => window.open(link.url, '_blank');
-        card.innerHTML = `
-          <h4>${link.label}</h4>
-          <p class="card-desc">${link.desc}</p>
-        `;
-        federalGrid.appendChild(card);
-      });
+      federalLinks.forEach(link => createCard(link.label, link.desc, link.url));
 
       // Cabinet card
-      const cabinetCard = document.createElement('div');
-      cabinetCard.className = 'link-card';
-      cabinetCard.onclick = () => showCabinet();
-      cabinetCard.innerHTML = `
-        <h4>Cabinet</h4>
-        <p class="card-desc">View members of the President's Cabinet.</p>
-      `;
-      federalGrid.appendChild(cabinetCard);
+      createCard('Cabinet', "View members of the President's Cabinet.", null, () => showCabinet());
 
       federalBlock.appendChild(federalGrid);
 
-      // Append all blocks to the section
+      // Append all blocks
       section.appendChild(stateBlock);
       section.appendChild(ngaBlock);
       section.appendChild(federalBlock);
@@ -744,6 +730,16 @@ function showCabinet() {
   detailView.style.display = 'none';
   list.innerHTML = '';
 
+  const escapeHTML = str =>
+    str
+      ? str
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;')
+      : '';
+
   fetch('/cabinet.json')
     .then(res => res.json())
     .then(members => {
@@ -757,19 +753,16 @@ function showCabinet() {
       members.forEach(member => {
         const card = document.createElement('div');
         card.className = 'official-card';
-
-        const photoSrc = member.photo && member.photo.trim() !== ''
-          ? member.photo
-          : 'assets/default-photo.png';
+        const photoSrc = member.photo && member.photo.trim() !== '' ? member.photo : 'assets/default-photo.png';
 
         card.innerHTML = `
           <div class="photo-wrapper">
-            <img src="${photoSrc}" alt="${member.name || ''}"
+            <img src="${escapeHTML(photoSrc)}" alt="${escapeHTML(member.name)}"
                  onerror="this.onerror=null;this.src='assets/default-photo.png';" />
           </div>
           <div class="official-info">
-            <h3>${member.name || 'Unknown'}</h3>
-            <p><strong>Office:</strong> ${member.office || 'N/A'}</p>
+            <h3>${escapeHTML(member.name || 'Unknown')}</h3>
+            <p><strong>Office:</strong> ${escapeHTML(member.office || 'N/A')}</p>
           </div>
         `;
 
@@ -797,8 +790,17 @@ function showCabinetMember(member) {
   const gridView = document.getElementById('cabinetGridView');
   const detailView = document.getElementById('cabinetDetailView');
   const detail = document.getElementById('cabinetMemberDetail');
-
   if (!gridView || !detailView || !detail) return;
+
+  const escapeHTML = str =>
+    str
+      ? str
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;')
+      : '';
 
   gridView.style.display = 'none';
   detailView.style.display = 'block';
@@ -808,27 +810,28 @@ function showCabinetMember(member) {
     const dt = new Date(d);
     return isNaN(dt) ? '' : dt.getFullYear();
   };
+
   const termStartYear = parseYear(member.termStart);
   const termEndYear = parseYear(member.termEnd) || 'Present';
 
   detail.innerHTML = `
     <div class="detail-header">
-      <img src="${member.photo}" alt="${member.name || ''}" class="portrait"
+      <img src="${escapeHTML(member.photo || 'assets/default-photo.png')}" alt="${escapeHTML(member.name || '')}" class="portrait"
            onerror="this.onerror=null;this.src='assets/default-photo.png';" />
-      ${member.seal ? `<img src="${member.seal}" alt="${member.office} seal" class="seal" />` : ''}
+      ${member.seal ? `<img src="${escapeHTML(member.seal)}" alt="${escapeHTML(member.office)} seal" class="seal" />` : ''}
     </div>
-    <h2>${member.name || 'Unknown'}</h2>
-    <p><strong>Office:</strong> ${member.office || 'N/A'}</p>
-    ${member.state ? `<p><strong>State:</strong> ${member.state}</p>` : ''}
-    ${member.party ? `<p><strong>Party:</strong> ${member.party}</p>` : ''}
-    ${(termStartYear || termEndYear) ? `<p><strong>Term:</strong> ${termStartYear}–${termEndYear}</p>` : ''}
-    ${member.bio ? `<p><strong>Bio:</strong> ${member.bio}</p>` : ''}
-    ${member.education ? `<p><strong>Education:</strong> ${member.education}</p>` : ''}
-    ${member.salary ? `<p><strong>Salary:</strong> ${member.salary}</p>` : ''}
-    ${member.predecessor ? `<p><strong>Predecessor:</strong> ${member.predecessor}</p>` : ''}
-    ${member.contact && member.contact.website ? `<p><a href="${member.contact.website}" target="_blank">Official Website</a></p>` : ''}
-    ${member.ballotpediaLink ? `<p><a href="${member.ballotpediaLink}" target="_blank">Ballotpedia</a></p>` : ''}
-    ${member.govtrackLink ? `<p><a href="${member.govtrackLink}" target="_blank">GovTrack</a></p>` : ''}
+    <h2>${escapeHTML(member.name || 'Unknown')}</h2>
+    <p><strong>Office:</strong> ${escapeHTML(member.office || 'N/A')}</p>
+    ${member.state ? `<p><strong>State:</strong> ${escapeHTML(member.state)}</p>` : ''}
+    ${member.party ? `<p><strong>Party:</strong> ${escapeHTML(member.party)}</p>` : ''}
+    ${(termStartYear || termEndYear) ? `<p><strong>Term:</strong> ${escapeHTML(termStartYear)}–${escapeHTML(termEndYear)}</p>` : ''}
+    ${member.bio ? `<p><strong>Bio:</strong> ${escapeHTML(member.bio)}</p>` : ''}
+    ${member.education ? `<p><strong>Education:</strong> ${escapeHTML(member.education)}</p>` : ''}
+    ${member.salary ? `<p><strong>Salary:</strong> ${escapeHTML(member.salary)}</p>` : ''}
+    ${member.predecessor ? `<p><strong>Predecessor:</strong> ${escapeHTML(member.predecessor)}</p>` : ''}
+    ${member.contact && member.contact.website ? `<p><a href="${escapeHTML(member.contact.website)}" target="_blank">Official Website</a></p>` : ''}
+    ${member.ballotpediaLink ? `<p><a href="${escapeHTML(member.ballotpediaLink)}" target="_blank">Ballotpedia</a></p>` : ''}
+    ${member.govtrackLink ? `<p><a href="${escapeHTML(member.govtrackLink)}" target="_blank">GovTrack</a></p>` : ''}
   `;
 }
 
