@@ -1,37 +1,115 @@
-// === FAVORITES STORAGE & HELPERS (FINAL & PERSISTENT) ===
-window.favorites = JSON.parse(localStorage.getItem('favorites')) || {
-  podcasts: [],
-  shows: []
-};
+// === PODCASTS & SHOWS FAVORITES LOGIC ===
+document.addEventListener('DOMContentLoaded', function() {
 
-// Check if title is favorited
-function isFavorite(type, title) {
-  return window.favorites[type]?.includes(title);
-}
+  // Array to hold favorites
+  let favorites = [];
 
-// Toggle favorite on/off
-function toggleFavorite(type, title) {
-  if (!window.favorites[type]) window.favorites[type] = [];
+  // Example data for Podcasts & Shows (replace with your actual data source)
+  const podcastsData = [
+    {
+      id: 'p1',
+      title: 'The History Hour',
+      category: 'History',
+      descriptor: 'Exploring major historical events.',
+      logo: 'https://via.placeholder.com/140x140?text=History+Hour'
+    },
+    {
+      id: 'p2',
+      title: 'Science Today',
+      category: 'Science',
+      descriptor: 'Latest discoveries in science.',
+      logo: 'https://via.placeholder.com/140x140?text=Science+Today'
+    },
+    // add more cards here...
+  ];
 
-  const index = window.favorites[type].indexOf(title);
+  // Containers
+  const container = document.getElementById('podcasts-cards');
 
-  if (index > -1) {
-    // remove
-    window.favorites[type].splice(index, 1);
-  } else {
-    // add
-    window.favorites[type].push(title);
+  // Helper: Render Favorites Section
+  function renderFavorites() {
+    // Remove old favorites section if exists
+    const oldFavSection = document.getElementById('favorites-section');
+    if (oldFavSection) oldFavSection.remove();
+
+    if (favorites.length === 0) return; // no favorites to render
+
+    const favSection = document.createElement('div');
+    favSection.id = 'favorites-section';
+    favSection.innerHTML = `<h3>Favorites</h3><div class="favorites-grid"></div>`;
+    container.prepend(favSection); // always on top
+
+    const favGrid = favSection.querySelector('.favorites-grid');
+
+    favorites.forEach(card => {
+      const cardDiv = document.createElement('div');
+      cardDiv.className = 'favorite-card';
+      cardDiv.innerHTML = `
+        <div class="logo-wrapper">
+          <img src="${card.logo}" alt="${card.title}">
+        </div>
+        <div class="card-content">
+          <h4>${card.title}</h4>
+          <div class="category">${card.category}</div>
+          <div class="descriptor">${card.descriptor}</div>
+        </div>
+        <div class="remove-favorite">✖</div>
+      `;
+
+      // Remove button event
+      const removeBtn = cardDiv.querySelector('.remove-favorite');
+      removeBtn.addEventListener('click', (e) => {
+        e.stopPropagation(); // prevent triggering other events
+        favorites = favorites.filter(f => f.id !== card.id);
+        renderFavorites();
+      });
+
+      favGrid.appendChild(cardDiv);
+    });
   }
 
-  // Save the updated favorites to localStorage
-  localStorage.setItem('favorites', JSON.stringify(window.favorites));
+  // Helper: Render Podcast Cards
+  function renderCards() {
+    // Clear current cards
+    container.innerHTML = '';
 
-  // Re-render Podcasts & Shows if visible
-  const tab = document.getElementById("podcasts-shows");
-  if (tab && tab.style.display !== "none") {
-    showPodcastsShows();
+    // First render favorites if any
+    renderFavorites();
+
+    // Render all podcast cards
+    podcastsData.forEach(card => {
+      const cardDiv = document.createElement('div');
+      cardDiv.className = 'podcast-show-card';
+      cardDiv.innerHTML = `
+        <div class="logo-wrapper">
+          <img src="${card.logo}" alt="${card.title}">
+        </div>
+        <div class="card-content">
+          <h4>${card.title}</h4>
+          <div class="category">${card.category}</div>
+          <div class="descriptor">${card.descriptor}</div>
+        </div>
+        <button class="fav-star">★</button>
+      `;
+
+      // Favorite button event
+      const favBtn = cardDiv.querySelector('.fav-star');
+      favBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        // Only add if not already in favorites
+        if (!favorites.find(f => f.id === card.id)) {
+          favorites.push(card);
+          renderFavorites();
+        }
+      });
+
+      container.appendChild(cardDiv);
+    });
   }
-}
+
+  // Initial render
+  renderCards();
+});
 
 // === GLOBAL STATE ===
 let selectedState = 'North Carolina';
