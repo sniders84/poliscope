@@ -1291,18 +1291,19 @@ document.addEventListener('DOMContentLoaded', () => {
   if (homeHub) homeHub.classList.add('active');
 });
 
-// === FEED STORIES ===
+// Shared RSS feeds for networks (single source of truth)
+const rssFeeds = {
+  msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',
+  abc:   'https://abcnews.go.com/abcnews/topstories',
+  cbs:   'https://www.cbsnews.com/latest/rss/main',
+  fox:   'https://feeds.foxnews.com/foxnews/latest',
+  cnn:   'http://rss.cnn.com/rss/cnn_topstories.rss'
+};
+
+// === FEED STORIES (card click loads top stories) ===
 document.addEventListener('DOMContentLoaded', () => {
   const feedTitle = document.getElementById('feed-title');
   const feedStories = document.getElementById('feed-stories');
-
-  const rssFeeds = {
-    msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',
-    abc:   'https://abcnews.go.com/abcnews/topstories',
-    cbs:   'https://www.cbsnews.com/latest/rss/main',
-    fox:   'https://feeds.foxnews.com/foxnews/latest',
-    cnn:   'http://rss.cnn.com/rss/cnn_topstories.rss'
-  };
 
   async function loadFeed(network) {
     const url = rssFeeds[network];
@@ -1358,6 +1359,7 @@ function wireStateDropdown() {
   if (!dropdown) return;
 
   dropdown.value = selectedState;
+
   dropdown.addEventListener('change', () => {
     selectedState = dropdown.value;
     window.selectedState = selectedState;
@@ -1365,8 +1367,8 @@ function wireStateDropdown() {
   });
 }
 
+// === Officials modal wiring and search ===
 document.addEventListener('DOMContentLoaded', () => {
-  const officialsContainer = document.getElementById('officials-container');
   const searchBar = document.getElementById('search-bar');
   const officialsModalCloseBtn = document.getElementById('officials-close');
 
@@ -1416,7 +1418,62 @@ async function fetchGoogleNewsRss(feedUrl) {
   }
 }
 
-// === Load officials data ===
+// === Network stories (cards under National Networks) ===
+async function fetchRss(feedUrl) {
+  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
+  try {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+    return data.items.slice(0, 5);
+  } catch (err) {
+    console.error('RSS fetch error:', err);
+    return [];
+  }
+}
+
+async function renderNetworkStories(network) {
+  const feedUrl = rssFeeds[network];
+  if (!feedUrl) return;
+
+  const stories = await fetchRss(feedUrl);
+  const container = document.getElementById('network-stories');
+  if (!container) return;
+  container.innerHTML = '';
+
+  stories.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'official-card';
+    card.innerHTML = `<h4>${item.title}</h4>`;
+    card.onclick = () => window.open(item.link, '_blank');
+    container.appendChild(card);
+  });
+
+  if (stories.length > 0) {
+    const seeMore = document.createElement('div');
+    seeMore.className = 'see-more';
+    seeMore.innerText = 'See More';
+    seeMore.onclick = () => {
+      const urlMap = {
+        msnbc: 'https://www.msnbc.com',
+        abc: 'https://abcnews.go.com',
+        cbs: 'https://www.cbsnews.com',
+        fox: 'https://www.foxnews.com',
+        cnn: 'https://edition.cnn.com'
+      };
+      window.open(urlMap[network] || feedUrl, '_blank');
+    };
+    container.appendChild(seeMore);
+  }
+}
+
+document.querySelectorAll('#network-cards .info-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const network = card.dataset.network;
+    renderNetworkStories(network);
+  });
+});
+
+// === Load officials data (no overlay) ===
 Promise.all([
   fetch('/governors.json').then(res => res.json()),
   fetch('/ltgovernors.json').then(res => res.json()),
@@ -1433,7 +1490,7 @@ Promise.all([
 
     const socialFeed = document.getElementById('social-feed');
     if (socialFeed && typeof loadSocialTrends === 'function') {
-      console.log("🎬 loadSocialTrends is running...");
+      console.log('🎬 loadSocialTrends is running...');
       loadSocialTrends();
     }
   })
