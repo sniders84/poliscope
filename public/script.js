@@ -1552,14 +1552,7 @@ async function fetchGoogleNewsRss(feedUrl) {
         setTimeout(() => loadingOverlay.remove(), 500);
       }
 
-      // Load social trends
-      const socialFeed = document.getElementById('social-feed');
-      if (socialFeed && typeof loadSocialTrends === 'function') {
-        console.log("🎬 loadSocialTrends is running...");
-        loadSocialTrends();
-      }
-    })
-    .catch(err => {
+      .catch(err => {
       console.error('Error loading official data:', err);
       if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
     });
