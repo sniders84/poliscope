@@ -30,6 +30,16 @@ function removeFavorite(type, title) {
   }
 }
 
+// Toggle favorite (new)
+function toggleFavorite(type, title) {
+  if (isFavorite(type, title)) {
+    removeFavorite(type, title);
+  } else {
+    addFavorite(type, title);
+  }
+  renderFavoritesSection();
+}
+
 // Check if favorite
 function isFavorite(type, title) {
   return window.favorites[type]?.includes(title);
@@ -52,13 +62,8 @@ function initMainFavoriteButtons() {
     btn.textContent = isFavorite(type, title) ? "Remove Favorite" : "Add Favorite";
 
     btn.addEventListener("click", () => {
-      if (isFavorite(type, title)) {
-        removeFavorite(type, title);
-      } else {
-        addFavorite(type, title);
-      }
+      toggleFavorite(type, title);
       updateMainButton(type, title);
-      renderFavoritesSection();
     });
   });
 }
@@ -82,7 +87,9 @@ function renderFavoritesSection() {
       removeBtn.innerHTML = '✕';
       removeBtn.className = 'remove-favorite';
       removeBtn.title = "Remove from favorites";
-      removeBtn.addEventListener('click', () => removeFavorite(type, title));
+      removeBtn.addEventListener('click', () => {
+        removeFavorite(type, title);
+      });
 
       card.appendChild(removeBtn);
       container.appendChild(card);
@@ -149,17 +156,31 @@ Promise.all([
 let podcastsData = [];
 let showsData = [];
 
-Promise.all([
-  fetch('/podcasts.json').then(res => res.json()),
-  fetch('/shows.json').then(res => res.json())
-])
-.then(([podcasts, shows]) => {
-  podcastsData = podcasts;
-  showsData = shows;
-})
-.catch(err => console.error('Error loading podcasts or shows JSON:', err));
-console.log('podcastsData length:', podcastsData.length);
-console.log('showsData length:', showsData.length);
+// Load JSON data
+async function loadPodcastsAndShows() {
+  try {
+    const [podcastsRes, showsRes] = await Promise.all([
+      fetch('/podcasts.json'),
+      fetch('/shows.json')
+    ]);
+
+    podcastsData = await podcastsRes.json();
+    showsData = await showsRes.json();
+
+    console.log('podcastsData length:', podcastsData.length);
+    console.log('showsData length:', showsData.length);
+
+    // After data loads, refresh the Podcasts & Shows tab if it's visible
+    if (document.getElementById('podcasts-shows').style.display !== 'none') {
+      showPodcastsShows();
+    }
+  } catch (err) {
+    console.error('Error loading podcasts or shows JSON:', err);
+  }
+}
+
+// Initial load
+loadPodcastsAndShows();
 
 // Modal refs (Officials modal)
 let officialsModal = null;
@@ -271,30 +292,49 @@ function showPodcastsShows() {
   }
   container.innerHTML = '';
 
-  // helper to create a section (Podcasts, Shows, Favorites)
+  // Helper: toggle favorite
+  function toggleFavorite(type, title) {
+    if (isFavorite(type, title)) {
+      removeFavorite(type, title);
+    } else {
+      addFavorite(type, title);
+    }
+    renderFavoritesSection();
+  }
+
+  // Helper: escape HTML
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function escapeAttr(str) {
+    return escapeHtml(str).replace(/\s+/g, ' ');
+  }
+
+  // Helper: render a section (Favorites / Podcasts / Shows)
   const renderSection = (titleText, items, type) => {
     const section = document.createElement('div');
     section.className = 'podcast-show-section';
 
-    // COLLAPSIBLE HEADER
     const header = document.createElement('div');
     header.className = 'section-header open';
-
     const title = document.createElement('h3');
     title.textContent = titleText;
-
     const arrow = document.createElement('span');
     arrow.className = 'section-arrow';
     arrow.textContent = '▶';
-
     header.appendChild(title);
     header.appendChild(arrow);
     section.appendChild(header);
 
-    // SECTION BODY (the part that collapses)
     const body = document.createElement('div');
     body.className = 'section-body open';
-
     const grid = document.createElement('div');
     grid.className = 'podcast-show-grid';
 
@@ -303,12 +343,10 @@ function showPodcastsShows() {
       msg.textContent = `No ${titleText.toLowerCase()} available.`;
       grid.appendChild(msg);
     } else {
-      // Render every single item
       items.forEach(item => {
         try {
           const card = document.createElement('div');
           card.className = 'podcast-show-card';
-
           const logoPath = item.logo_slug ? `assets/${item.logo_slug}` : 'assets/default-logo.png';
 
           card.innerHTML = `
@@ -333,20 +371,15 @@ function showPodcastsShows() {
             });
           }
 
-          // Favorite toggle
+          // Favorite button click
           const favBtn = card.querySelector('.fav-toggle');
           if (favBtn) {
-            favBtn.addEventListener('click', (e) => {
+            favBtn.addEventListener('click', e => {
               e.stopPropagation();
               toggleFavorite(favBtn.dataset.type, favBtn.dataset.title);
 
-              // If in favorites section, remove card immediately
-              if (type === 'favorites') {
-                card.remove();
-              } else {
-                // Update favorites section
-                showPodcastsShows();
-              }
+              // update card text immediately
+              favBtn.textContent = isFavorite(favBtn.dataset.type, favBtn.dataset.title) ? '★' : '☆';
             });
           }
 
@@ -360,47 +393,25 @@ function showPodcastsShows() {
     body.appendChild(grid);
     section.appendChild(body);
 
-    // CLICK HANDLER FOR COLLAPSE/EXPAND
+    // Collapse/expand
     header.addEventListener('click', () => {
       const isOpen = body.classList.contains('open');
-      if (isOpen) {
-        body.classList.remove('open');
-        body.classList.add('closed');
-        header.classList.remove('open');
-      } else {
-        body.classList.remove('closed');
-        body.classList.add('open');
-        header.classList.add('open');
-      }
+      body.classList.toggle('open', !isOpen);
+      body.classList.toggle('closed', isOpen);
+      header.classList.toggle('open', !isOpen);
     });
 
     return section;
   };
 
-  // small helpers (local)
-  function escapeHtml(str) {
-    if (!str) return '';
-    return String(str)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#39;');
-  }
-  function escapeAttr(str) {
-    return escapeHtml(str).replace(/\s+/g, ' ');
-  }
-
-  // FAVORITES SECTION
+  // Prepare Favorites items
   const favoriteItems = [];
-
   if (Array.isArray(window.favorites.podcasts)) {
     window.favorites.podcasts.forEach(title => {
       const item = podcastsData.find(p => p.title === title);
       if (item) favoriteItems.push({ ...item, type: 'podcasts' });
     });
   }
-
   if (Array.isArray(window.favorites.shows)) {
     window.favorites.shows.forEach(title => {
       const item = showsData.find(s => s.title === title);
@@ -408,15 +419,12 @@ function showPodcastsShows() {
     });
   }
 
-  // render favorites section first
-  const favSection = renderSection('Favorites', favoriteItems, 'favorites');
-  container.appendChild(favSection);
-
-  // render Podcasts and Shows sections
+  // Append sections
+  container.appendChild(renderSection('Favorites', favoriteItems, 'favorites'));
   container.appendChild(renderSection('Podcasts', podcastsData || [], 'podcasts'));
   container.appendChild(renderSection('Shows', showsData || [], 'shows'));
 
-  // wire search after DOM is built
+  // Search bar functionality
   const tabSearch = document.getElementById('podcasts-search-bar');
   if (tabSearch) {
     tabSearch.value = tabSearch.value || '';
