@@ -1524,38 +1524,29 @@ async function fetchGoogleNewsRss(feedUrl) {
   }
 }
 
-  // === Load officials data with smooth fade-in ===
-  Promise.all([
-    fetch('/governors.json').then(res => res.json()),
-    fetch('/ltgovernors.json').then(res => res.json()),
-    fetch('/senators.json').then(res => res.json()),
-    fetch('/housereps.json').then(res => res.json())
-  ])
-    .then(([govs, ltGovs, sens, reps]) => {
-      governors = govs;
-      ltGovernors = ltGovs;
-      senators = sens;
-      houseReps = reps;
+ // === Load officials data ===
+Promise.all([
+  fetch('/governors.json').then(res => res.json()),
+  fetch('/ltgovernors.json').then(res => res.json()),
+  fetch('/senators.json').then(res => res.json()),
+  fetch('/housereps.json').then(res => res.json())
+])
+  .then(([govs, ltGovs, sens, reps]) => {
+    governors = govs;
+    ltGovernors = ltGovs;
+    senators = sens;
+    houseReps = reps;
 
-      // Render officials
-      renderOfficials(selectedState, '');
+    // Render officials
+    renderOfficials(selectedState, '');
 
-      // Fade out loading overlay
-      if (loadingOverlay) {
-        loadingOverlay.style.transition = 'opacity 0.5s ease';
-        loadingOverlay.style.opacity = '0';
-        setTimeout(() => loadingOverlay.remove(), 500);
-      }
-
-      // Load social trends
-      const socialFeed = document.getElementById('social-feed');
-      if (socialFeed && typeof loadSocialTrends === 'function') {
-        console.log("🎬 loadSocialTrends is running...");
-        loadSocialTrends();
-      }
-    })
-    .catch(err => {
-      console.error('Error loading official data:', err);
-      if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
-    });
-});
+    // Load social trends
+    const socialFeed = document.getElementById('social-feed');
+    if (socialFeed && typeof loadSocialTrends === 'function') {
+      console.log("🎬 loadSocialTrends is running...");
+      loadSocialTrends();
+    }
+  })
+  .catch(err => {
+    console.error('Error loading official data:', err);
+  });
