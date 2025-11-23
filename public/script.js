@@ -1314,6 +1314,18 @@ function wireSearchBar() {
     renderOfficials(null, query);
   });
 }
+// ==== HOME HUB NAV ====
+
+// Simple startup hub loader
+function showStartupHub() {
+  showTab('startup-hub');
+}
+
+// 🚫 Sticky nav removed — no initHubNav, no scroll listeners
+
+document.addEventListener('DOMContentLoaded', () => {
+  initHubNav();
+});
 
 document.addEventListener('DOMContentLoaded', () => {
   const feedTitle = document.getElementById('feed-title');
@@ -1540,7 +1552,14 @@ async function fetchGoogleNewsRss(feedUrl) {
         setTimeout(() => loadingOverlay.remove(), 500);
       }
 
-      .catch(err => {
+      // Load social trends
+      const socialFeed = document.getElementById('social-feed');
+      if (socialFeed && typeof loadSocialTrends === 'function') {
+        console.log("🎬 loadSocialTrends is running...");
+        loadSocialTrends();
+      }
+    })
+    .catch(err => {
       console.error('Error loading official data:', err);
       if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
     });
