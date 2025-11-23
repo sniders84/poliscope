@@ -313,6 +313,25 @@ function showTab(tabId) {
 
     <section id="my-officials" class="tab-content" style="position: relative;">
   <h2>My Officials</h2>
+
+  <!-- Loading overlay -->
+  <div id="loading-overlay" style="
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.8);
+      font-size: 1.5rem;
+      font-weight: bold;
+      z-index: 1000;
+    ">
+    Loading officials...
+  </div>
+
   <div id="officials-container" class="grid"></div>
 </section>
 
