@@ -234,58 +234,56 @@ body.className = "section-body open";
   const grid = document.createElement('div');
   grid.className = 'podcast-show-grid';
 
-  if (!Array.isArray(items) || items.length === 0) {
-    const msg = document.createElement('p');
-    msg.textContent = `No ${titleText.toLowerCase()} available.`;
-    grid.appendChild(msg);
-  } else {
-    items.forEach(item => {
-      try {
-        const card = document.createElement('div');
-        card.className = 'podcast-show-card';
+if (!Array.isArray(items) || items.length === 0) {
+  const msg = document.createElement('p');
+  msg.textContent = `No ${titleText.toLowerCase()} available.`;
+  grid.appendChild(msg);
+} else {
+  // Render every single item, no slicing
+  items.forEach(item => {
+    try {
+      const card = document.createElement('div');
+      card.className = 'podcast-show-card';
 
-        const logoPath = item.logo_slug ? `assets/${item.logo_slug}` : 'assets/default-logo.png';
+      const logoPath = item.logo_slug ? `assets/${item.logo_slug}` : 'assets/default-logo.png';
 
-        // Use "Remove" button for Favorites section
-        const favButtonLabel = (titleText === 'Favorites') ? 'Remove' : (isFavorite(item.type || type, item.title) ? '★' : '☆');
-
-        card.innerHTML = `
-          <div class="logo-wrapper" role="button" title="Open ${item.title}">
-            <img src="${logoPath}" alt="${item.title} logo" onerror="this.onerror=null;this.src='assets/default-logo.png';" />
+      card.innerHTML = `
+        <div class="logo-wrapper" role="button" title="Open ${item.title}">
+          <img src="${logoPath}" alt="${item.title} logo" onerror="this.onerror=null;this.src='assets/default-logo.png';" />
+        </div>
+        <div class="card-content">
+          <h4 class="card-title">${escapeHtml(item.title)}</h4>
+          <p class="category">${escapeHtml(item.category || '')} – ${escapeHtml(item.source || '')}</p>
+          <p class="descriptor">${escapeHtml(item.descriptor || '')}</p>
+          <div class="card-actions">
+            <button class="fav-toggle" data-type="${type}" data-title="${escapeAttr(item.title)}" aria-label="favorite">${isFavorite(type, item.title) ? '★' : '☆'}</button>
           </div>
-          <div class="card-content">
-            <h4 class="card-title">${escapeHtml(item.title)}</h4>
-            <p class="category">${escapeHtml(item.category || '')} – ${escapeHtml(item.source || '')}</p>
-            <p class="descriptor">${escapeHtml(item.descriptor || '')}</p>
-            <div class="card-actions">
-              <button class="fav-toggle" data-type="${item.type || type}" data-title="${escapeAttr(item.title)}" aria-label="favorite">${favButtonLabel}</button>
-            </div>
-          </div>
-        `;
+        </div>
+      `;
 
-        const logoBtn = card.querySelector('.logo-wrapper');
-        if (logoBtn) {
-          logoBtn.addEventListener('click', () => {
-            if (item.official_url) window.open(item.official_url, '_blank');
-          });
-        }
-
-        const favBtn = card.querySelector('.fav-toggle');
-        if (favBtn) {
-          favBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const t = favBtn.getAttribute('data-type');
-            const title = favBtn.getAttribute('data-title');
-            toggleFavorite(t, title);
-          });
-        }
-
-        grid.appendChild(card);
-      } catch (err) {
-        console.error('Error rendering item', item, err);
+      // Logo click
+      const logoBtn = card.querySelector('.logo-wrapper');
+      if (logoBtn) {
+        logoBtn.addEventListener('click', () => {
+          if (item.official_url) window.open(item.official_url, '_blank');
+        });
       }
-    });
-  }
+
+      // Favorite toggle
+      const favBtn = card.querySelector('.fav-toggle');
+      if (favBtn) {
+        favBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          toggleFavorite(favBtn.dataset.type, favBtn.dataset.title);
+        });
+      }
+
+      grid.appendChild(card);
+    } catch (err) {
+      console.error('Error rendering item', item, err);
+    }
+  });
+}
 
   body.appendChild(grid);
 section.appendChild(body);
