@@ -10,7 +10,7 @@ function isFavorite(type, title) {
 }
 
 // Toggle favorite on/off
-function toggleFavorite(type, title) {
+function toggleFavorite(type, title, button) {
   if (!window.favorites[type]) window.favorites[type] = [];
 
   const index = window.favorites[type].indexOf(title);
@@ -27,25 +27,41 @@ function toggleFavorite(type, title) {
   localStorage.setItem('favorites', JSON.stringify(window.favorites));
 
   // Update the button text immediately
-  updateFavoriteButton(type, title);
+  updateFavoriteButton(type, title, button);
+
+  // Optionally refresh favorites section if you have one
+  if (typeof renderFavoritesSection === "function") renderFavoritesSection();
 }
 
 // Update favorite button text dynamically
-function updateFavoriteButton(type, title) {
-  const btn = document.querySelector(`button[data-type="${type}"][data-title="${CSS.escape(title)}"]`);
+function updateFavoriteButton(type, title, button) {
+  // If button passed explicitly, use it; otherwise, query DOM
+  const btn = button || document.querySelector(`button[data-type="${type}"][data-title="${CSS.escape(title)}"]`);
   if (!btn) return;
 
   if (isFavorite(type, title)) {
     btn.textContent = "Remove Favorite";
+    btn.classList.add("favorited");
   } else {
     btn.textContent = "Add Favorite";
+    btn.classList.remove("favorited");
   }
 }
 
-// When rendering cards (example inside showPodcastsShows), make buttons like:
-// <button data-type="podcasts" data-title="Podcast Name" onclick="toggleFavorite('podcasts', 'Podcast Name')">
-//    Add Favorite
-// </button>
+// Initialize all favorite buttons on page load
+function initFavoriteButtons() {
+  document.querySelectorAll('button[data-type][data-title]').forEach(btn => {
+    const type = btn.dataset.type;
+    const title = btn.dataset.title;
+    // Set initial button text
+    updateFavoriteButton(type, title, btn);
+    // Attach click handler
+    btn.addEventListener("click", () => toggleFavorite(type, title, btn));
+  });
+}
+
+// Call this on page load
+initFavoriteButtons();
 
 // === GLOBAL STATE ===
 let selectedState = 'North Carolina';
@@ -1285,12 +1301,6 @@ function wireSearchBar() {
 function showStartupHub() {
   showTab('startup-hub');
 }
-
-// 🚫 Sticky nav removed — no initHubNav, no scroll listeners
-
-document.addEventListener('DOMContentLoaded', () => {
-  initHubNav();
-});
 
 document.addEventListener('DOMContentLoaded', () => {
   const feedTitle = document.getElementById('feed-title');
