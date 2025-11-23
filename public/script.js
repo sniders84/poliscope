@@ -1530,7 +1530,6 @@ Promise.all([
   fetch('/housereps.json').then(res => res.json())
 ])
 .then(([govs, ltGovs, sens, reps]) => {
-  // Fill global arrays
   governors = govs;
   ltGovernors = ltGovs;
   senators = sens;
@@ -1548,10 +1547,9 @@ Promise.all([
     console.log("🎬 loadSocialTrends is running...");
     loadSocialTrends();
   }
-})
+}) // <-- this closes the .then block
 .catch(err => {
   console.error('Error loading official data:', err);
-  // Only update overlay if it still exists
   if (typeof loadingOverlay !== 'undefined' && loadingOverlay) {
     loadingOverlay.textContent = 'Failed to load data.';
   }
