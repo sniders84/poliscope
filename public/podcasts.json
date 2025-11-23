@@ -4,7 +4,7 @@
   "category": "Centrist/Independent",
   "source": "New York Times",
   "official_url": "https://www.nytimes.com/column/the-daily",
-  "logo_slug": "thedaily.png",
+  "logo_slug": "thedaily.jpeg",
   "descriptor": "NYT’s flagship daily briefing. Sharp reporting and context on politics, culture, and global affairs."
 },
 {
@@ -12,7 +12,7 @@
   "category": "Centrist/Independent",
   "source": "NPR",
   "official_url": "https://www.npr.org/podcasts/510318/up-first",
-  "logo_slug": "upfirst.png",
+  "logo_slug": "upfirst.jpeg",
   "descriptor": "NPR’s quick morning digest. Ten minutes of top stories with clear context to start your day informed."
 },
 {
@@ -20,7 +20,7 @@
   "category": "Global/Economics",
   "source": "Wall Street Journal",
   "official_url": "https://www.wsj.com/podcasts/the-journal",
-  "logo_slug": "thejournal.png",
+  "logo_slug": "thejournal.jpeg",
   "descriptor": "WSJ reporters explain business and policy stories shaping markets, politics, and everyday life."
 },
 {
@@ -28,7 +28,7 @@
   "category": "Global/Economics",
   "source": "BBC World Service",
   "official_url": "https://www.bbc.co.uk/programmes/p002vsn1",
-  "logo_slug": "bbcglobal.png",
+  "logo_slug": "bbcglobal.webp",
   "descriptor": "Twice‑daily roundup of world events from BBC reporters. International headlines with a global perspective."
 },
 {
@@ -36,15 +36,15 @@
   "category": "Global/Economics",
   "source": "Reuters",
   "official_url": "https://www.reuters.com/world/podcasts/world-news/",
-  "logo_slug": "reuters.png",
+  "logo_slug": "reutersworld.jpeg",
   "descriptor": "Concise updates from Reuters journalists. Global headlines and market shifts in under ten minutes."
 },
 {
   "title": "Marketplace",
   "category": "Global/Economics",
   "source": "American Public Media",
-  "official_url": "https://www.marketplace.org/podcasts/marketplace/",
-  "logo_slug": "marketplace.png",
+  "official_url": "https://www.marketplace.org/shows",
+  "logo_slug": "marketplace.jpeg",
   "descriptor": "Accessible economic reporting that connects markets and policy to everyday decisions and household finance."
 },
 {
@@ -68,7 +68,7 @@
   "category": "Civic Culture",
   "source": "Hidden Brain Media",
   "official_url": "https://hiddenbrain.org/podcast/",
-  "logo_slug": "hiddenbrain.png",
+  "logo_slug": "hiddenbrain.jpeg",
   "descriptor": "Psychology and society revealed. Unconscious patterns that shape politics, relationships, and choices."
 },
 {
@@ -76,7 +76,7 @@
   "category": "Civic Culture",
   "source": "WNYC Studios",
   "official_url": "https://www.wnycstudios.org/podcasts/otm",
-  "logo_slug": "onthemedia.png",
+  "logo_slug": "onthemedia.webp",
   "descriptor": "Media accountability in a democracy. Investigates how news is produced, framed, and weaponized."
 },
   {
@@ -84,7 +84,7 @@
   "category": "Progressive",
   "source": "Crooked Media",
   "official_url": "https://crooked.com/podcast-series/pod-save-america/",
-  "logo_slug": "podsaveamerica.png",
+  "logo_slug": "podsave.jpeg",
   "descriptor": "Former Obama staffers break down politics with humor and urgency. A progressive lens on campaigns, policy fights, and civic activism."
 },
 {
@@ -92,7 +92,7 @@
   "category": "Progressive",
   "source": "Slate",
   "official_url": "https://slate.com/podcasts/political-gabfest",
-  "logo_slug": "gabfest.png",
+  "logo_slug": "politicalgab.jpeg",
   "descriptor": "Slate’s roundtable of progressive journalists debating the week’s biggest political stories with wit and insight."
 },
 {
@@ -100,7 +100,7 @@
   "category": "Progressive",
   "source": "New York Times",
   "official_url": "https://www.nytimes.com/column/ezra-klein-podcast",
-  "logo_slug": "ezraklein.png",
+  "logo_slug": "ezraklein.jpeg",
   "descriptor": "Progressive ideas and policy deep dives. Klein interviews thinkers shaping politics, economics, and society."
 },
 {
@@ -108,7 +108,7 @@
   "category": "Centrist/Independent",
   "source": "CAFE",
   "official_url": "https://cafe.com/stay-tuned/",
-  "logo_slug": "preet.png",
+  "logo_slug": "staytuned.jpeg",
   "descriptor": "Former U.S. Attorney Preet Bharara explores law, justice, and politics with expert guests and sharp analysis."
 },
 {
@@ -116,7 +116,7 @@
   "category": "Progressive",
   "source": "The Intercept",
   "official_url": "https://theintercept.com/podcasts/intercepted/",
-  "logo_slug": "intercepted.png",
+  "logo_slug": "intercept.webp",
   "descriptor": "Investigative journalism from The Intercept. Progressive critiques of power, secrecy, and corruption."
 },
 {
@@ -124,15 +124,15 @@
   "category": "Progressive",
   "source": "Crooked Media",
   "official_url": "https://crooked.com/podcast-series/strict-scrutiny/",
-  "logo_slug": "strictscrutiny.png",
+  "logo_slug": "strictscrutiny.jpeg",
   "descriptor": "Three law professors dissect Supreme Court cases and constitutional battles from a progressive legal perspective."
 },
 {
   "title": "Jacobin Radio",
   "category": "Socialist/Green",
   "source": "Jacobin",
-  "official_url": "https://jacobin.com/podcasts",
-  "logo_slug": "jacobin.png",
+  "official_url": "https://jacobin.com/author/jacobin-radio",
+  "logo_slug": "jacobin.jpeg",
   "descriptor": "Socialist perspectives on politics, labor, and global justice. Engaging interviews and analysis from the democratic socialist movement."
 },
 {
@@ -140,7 +140,7 @@
   "category": "Socialist/Green",
   "source": "Bad Faith",
   "official_url": "https://www.patreon.com/badfaithpodcast",
-  "logo_slug": "badfaith.png",
+  "logo_slug": "badfaith.jpeg",
   "descriptor": "Leftist critique hosted by Briahna Joy Gray. Sharp debates on progressive politics, media narratives, and movement strategy."
 },
 {
@@ -148,7 +148,7 @@
   "category": "Conservative",
   "source": "Daily Wire",
   "official_url": "https://www.dailywire.com/show/the-ben-shapiro-show",
-  "logo_slug": "benshapiro.png",
+  "logo_slug": "benshapiro.webp",
   "descriptor": "Fast‑paced conservative commentary. Shapiro dissects headlines, debates progressive narratives, and champions free markets and traditional values."
 },
 {
@@ -156,7 +156,7 @@
   "category": "Conservative",
   "source": "Verdict",
   "official_url": "https://www.verdictpodcast.com/",
-  "logo_slug": "verdict.png",
+  "logo_slug": "verdict.webp",
   "descriptor": "Senator Ted Cruz offers conservative legal and political analysis, breaking down court cases and policy battles."
 },
   {
@@ -164,7 +164,7 @@
   "category": "Conservative",
   "source": "SiriusXM / Independent",
   "official_url": "https://www.megynkelly.com/podcasts/",
-  "logo_slug": "megynkelly.png",
+  "logo_slug": "megynkelly.webp",
   "descriptor": "Megyn Kelly delivers sharp interviews and commentary from a right‑leaning perspective, tackling politics, culture, and media."
 },
 {
@@ -172,15 +172,15 @@
   "category": "Conservative",
   "source": "Dan Bongino",
   "official_url": "https://bongino.com/podcasts/",
-  "logo_slug": "bongino.png",
+  "logo_slug": "danbongino.webp",
   "descriptor": "Former Secret Service agent Dan Bongino offers fiery conservative takes on politics, media, and national security."
 },
 {
   "title": "The Daily Signal Podcast",
   "category": "Conservative",
   "source": "Heritage Foundation",
-  "official_url": "https://www.heritage.org/podcast",
-  "logo_slug": "dailysignal.png",
+  "official_url": "https://www.dailysignal.com/podcasts/",
+  "logo_slug": "dailysignal.jpeg",
   "descriptor": "Heritage Foundation’s daily conservative podcast. Policy analysis and interviews with lawmakers and thought leaders."
 },
 {
@@ -188,30 +188,30 @@
   "category": "Centrist/Independent",
   "source": "The Dispatch",
   "official_url": "https://thedispatch.com/podcast/dispatch-podcast/",
-  "logo_slug": "dispatch.png",
+  "logo_slug": "thedispatch.webp",
   "descriptor": "Center‑right analysis from The Dispatch team. Balanced conversations on politics, policy, and conservative ideas."
 },
 {
   "title": "The Bulwark Podcast",
   "category": "Centrist/Independent",
   "source": "The Bulwark",
-  "official_url": "https://www.thebulwark.com/podcast/the-bulwark-podcast/",
-  "logo_slug": "bulwark.png",
+  "official_url": "https://www.thebulwark.com/watch",
+  "logo_slug": "thebulwark.jpeg",
   "descriptor": "Center‑right voices opposing populism. Daily interviews and commentary on democracy, conservatism, and civic life."
 },
 {
   "title": "Breaking Points",
   "category": "Centrist/Independent",
   "source": "Independent",
-  "official_url": "https://breakingpoints.com/",
-  "logo_slug": "breakingpoints.png",
+  "official_url": "https://podcasts.apple.com/us/podcast/breaking-points-with-krystal-and-saagar/id1570045623",
+  "logo_slug": "breakingpoints.jpeg",
   "descriptor": "Independent voices Krystal and Sagar deliver unfiltered analysis from left and right perspectives, challenging mainstream narratives."
 },
 {
   "title": "The Fifth Column",
   "category": "Centrist/Independent",
   "source": "Nebulous",
-  "official_url": "https://fifthcolumnpodcast.com/",
+  "official_url": "https://www.wethefifth.com/podcast",
   "logo_slug": "fifthcolumn.png",
   "descriptor": "Journalists debate politics, media, and culture with wit and skepticism. Independent voices challenging orthodoxy."
 },
@@ -219,15 +219,15 @@
   "title": "Plain English",
   "category": "Civic Culture",
   "source": "The Ringer",
-  "official_url": "https://www.theringer.com/plain-english",
-  "logo_slug": "plainenglish.png",
+  "official_url": "https://www.theringer.com/podcasts/plain-english-with-derek-thompson",
+  "logo_slug": "plainenglish.webp",
   "descriptor": "Derek Thompson explains complex issues in plain language. Civic culture podcast bridging economics, politics, and society."
 },
 {
   "title": "The Realignment",
   "category": "Centrist/Independent",
   "source": "The Realignment",
-  "official_url": "https://realignment.libsyn.com/",
+  "official_url": "https://the-realignment.simplecast.com/",
   "logo_slug": "realignment.png",
   "descriptor": "Explores how institutions and politics are shifting. Interviews with leaders shaping America’s future."
 },
@@ -235,8 +235,8 @@
   "title": "Reason Roundtable",
   "category": "Libertarian",
   "source": "Reason",
-  "official_url": "https://reason.com/podcasts/reason-roundtable/",
-  "logo_slug": "reason.png",
+  "official_url": "https://reason.com/podcasts/",
+  "logo_slug": "reason.jpeg",
   "descriptor": "Libertarian commentary from Reason editors. Weekly debates on policy, freedom, and government overreach."
 },
   {
@@ -244,7 +244,7 @@
   "category": "Libertarian",
   "source": "Cato Institute",
   "official_url": "https://www.cato.org/multimedia/cato-daily-podcast",
-  "logo_slug": "cato.png",
+  "logo_slug": "cato.jpeg",
   "descriptor": "Cato Institute’s daily libertarian podcast. Policy analysis focused on liberty, markets, and limited government."
 },
 {
@@ -252,15 +252,15 @@
   "category": "Global/Economics",
   "source": "The Economist",
   "official_url": "https://www.economist.com/podcasts",
-  "logo_slug": "economist.png",
+  "logo_slug": "economist.webp",
   "descriptor": "Global affairs from The Economist. Daily briefings and deep dives into politics, economics, and culture."
 },
 {
   "title": "Foreign Policy Playlist",
   "category": "Global/Economics",
   "source": "Foreign Policy",
-  "official_url": "https://foreignpolicy.com/podcasts/playlist/",
-  "logo_slug": "foreignpolicy.png",
+  "official_url": "https://foreignpolicy.com/podcasts/",
+  "logo_slug": "foreignpolicy.webp",
   "descriptor": "Curated global affairs podcast. Foreign Policy editors highlight the best conversations on world politics."
 },
 {
@@ -268,7 +268,7 @@
   "category": "Global/Economics",
   "source": "War on the Rocks",
   "official_url": "https://warontherocks.com/podcasts/",
-  "logo_slug": "warontherocks.png",
+  "logo_slug": "warontherocks.jpeg",
   "descriptor": "National security and military affairs. Experts discuss defense strategy, foreign policy, and geopolitics."
 },
 {
@@ -276,15 +276,15 @@
   "category": "Global/Economics",
   "source": "Council on Foreign Relations",
   "official_url": "https://www.cfr.org/podcasts/world-next-week",
-  "logo_slug": "cfr.png",
+  "logo_slug": "theworld.jpeg",
   "descriptor": "CFR’s weekly briefing on global events. Previews international developments shaping politics and policy."
 },
 {
   "title": "Lawfare Podcast",
   "category": "Centrist/Independent",
   "source": "Lawfare",
-  "official_url": "https://www.lawfaremedia.org/podcasts/lawfare",
-  "logo_slug": "lawfare.png",
+  "official_url": "https://www.lawfaremedia.org/podcasts-multimedia/podcast",
+  "logo_slug": "lawfare.jpeg",
   "descriptor": "Legal and national security analysis. Experts dissect surveillance, cybersecurity, and constitutional issues."
 },
 {
