@@ -1,4 +1,4 @@
-// === FAVORITES STORAGE & HELPERS ===
+// === FAVORITES STORAGE ===
 window.favorites = JSON.parse(localStorage.getItem('favorites')) || {
   podcasts: [],
   shows: []
@@ -9,7 +9,12 @@ function saveFavorites() {
   localStorage.setItem('favorites', JSON.stringify(window.favorites));
 }
 
-// Add to favorites
+// Check if favorite
+function isFavorite(type, title) {
+  return window.favorites[type]?.includes(title);
+}
+
+// Add favorite
 function addFavorite(type, title) {
   if (!window.favorites[type]) window.favorites[type] = [];
   if (!window.favorites[type].includes(title)) {
@@ -18,99 +23,102 @@ function addFavorite(type, title) {
   }
 }
 
-// Remove from favorites
+// Remove favorite
 function removeFavorite(type, title) {
   if (!window.favorites[type]) return;
   const index = window.favorites[type].indexOf(title);
   if (index > -1) {
     window.favorites[type].splice(index, 1);
     saveFavorites();
-    renderFavoritesSection();
-    updateAllFavButtons(type, title);
   }
 }
 
-// Toggle favorite globally
+// Toggle favorite from main card
 function toggleFavorite(type, title) {
   if (isFavorite(type, title)) {
     removeFavorite(type, title);
   } else {
     addFavorite(type, title);
   }
+  renderFavoritesSection();
+  updateAllMainStars();
 }
 
-// Check if favorite
-function isFavorite(type, title) {
-  return window.favorites[type]?.includes(title);
-}
-
-// Update all buttons for a given item (cards in Podcasts/Shows tab)
-function updateAllFavButtons(type, title) {
-  document.querySelectorAll(`button[data-type="${type}"][data-title="${CSS.escape(title)}"]`).forEach(btn => {
+// Update star on all main cards
+function updateAllMainStars() {
+  document.querySelectorAll('button.fav-star[data-type][data-title]').forEach(btn => {
+    const type = btn.dataset.type;
+    const title = btn.dataset.title;
     btn.textContent = isFavorite(type, title) ? '★' : '☆';
   });
 }
 
-// --- FAVORITES SECTION RENDER ---
+// --- RENDER FAVORITES SECTION ---
 function renderFavoritesSection() {
   const container = document.getElementById('favorites-section');
   if (!container) return;
   container.innerHTML = '';
 
-  Object.entries(window.favorites).forEach(([type, titles]) => {
-    titles.forEach(title => {
+  ['podcasts', 'shows'].forEach(type => {
+    window.favorites[type].forEach(title => {
+      // Find the original item in data
+      const item = type === 'podcasts' 
+        ? podcastsData.find(p => p.title === title)
+        : showsData.find(s => s.title === title);
+      if (!item) return;
+
       const card = document.createElement('div');
       card.className = 'favorite-card';
       card.dataset.type = type;
       card.dataset.title = title;
 
-      const titleSpan = document.createElement('span');
-      titleSpan.textContent = title;
-      card.appendChild(titleSpan);
+      card.innerHTML = `
+        <div class="logo-wrapper">
+          <img src="${item.logo_slug ? `assets/${item.logo_slug}` : 'assets/default-logo.png'}" 
+               alt="${item.title} logo" 
+               onerror="this.onerror=null;this.src='assets/default-logo.png';"/>
+        </div>
+        <div class="card-content">
+          <h4 class="card-title">${item.title}</h4>
+          <p class="category">${item.category || ''} – ${item.source || ''}</p>
+          <p class="descriptor">${item.descriptor || ''}</p>
+          <div class="card-actions">
+            <span class="remove-favorite">✕ Remove</span>
+          </div>
+        </div>
+      `;
 
-      const removeBtn = document.createElement('span');
-      removeBtn.className = 'remove-favorite';
-      removeBtn.textContent = '✕';
-      removeBtn.title = 'Remove from favorites';
-      removeBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        removeFavorite(type, title); // REMOVE FROM FAVORITES
+      // Remove on click
+      const removeBtn = card.querySelector('.remove-favorite');
+      removeBtn.addEventListener('click', () => {
+        removeFavorite(type, title);
+        renderFavoritesSection();
+        updateAllMainStars();
       });
 
-      card.appendChild(removeBtn);
       container.appendChild(card);
     });
   });
-
-  updateAllFavButtonsForAll();
 }
 
-// Update all fav buttons for entire page
-function updateAllFavButtonsForAll() {
-  document.querySelectorAll('button[data-type][data-title]').forEach(btn => {
-    const type = btn.dataset.type;
-    const title = btn.dataset.title;
-    btn.textContent = isFavorite(type, title) ? '★' : '☆';
-  });
-}
-
-// --- INITIALIZE FAVORITE BUTTONS ON PAGE ---
-function initFavoriteButtons() {
-  document.querySelectorAll('button[data-type][data-title]').forEach(btn => {
+// --- INITIALIZE FAVORITE STARS ON MAIN CARDS ---
+function initFavoriteStars() {
+  document.querySelectorAll('button.fav-star[data-type][data-title]').forEach(btn => {
     const type = btn.dataset.type;
     const title = btn.dataset.title;
 
+    btn.style.fontSize = '2em'; // make it big
     btn.textContent = isFavorite(type, title) ? '★' : '☆';
+
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       toggleFavorite(type, title);
-      renderFavoritesSection();
     });
   });
 }
 
-// Run on page load
-initFavoriteButtons();
+// Call these on page load / tab render
+initFavoriteStars();
 renderFavoritesSection();
 
 // === GLOBAL STATE ===
