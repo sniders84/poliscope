@@ -2820,3 +2820,7 @@ rssapp-carousel {
 .section-body {
   overflow: visible;   /* allow hover effects to extend outside */
 }
+#popular-podcasts,
+#social-trends {
+  display: none !important;
+}
