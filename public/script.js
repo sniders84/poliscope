@@ -1522,28 +1522,32 @@ async function fetchGoogleNewsRss(feedUrl) {
   }
 }
 
-  // === Load officials data with smooth fade-in ===
-  Promise.all([
-    fetch('/governors.json').then(res => res.json()),
-    fetch('/ltgovernors.json').then(res => res.json()),
-    fetch('/senators.json').then(res => res.json()),
-    fetch('/housereps.json').then(res => res.json())
-  ])
-    .then(([govs, ltGovs, sens, reps]) => {
-      governors = govs;
-      ltGovernors = ltGovs;
-      senators = sens;
-      houseReps = reps;
+ // === Load officials data with smooth fade-in ===
+Promise.all([
+  fetch('/governors.json').then(res => res.json()),
+  fetch('/ltgovernors.json').then(res => res.json()),
+  fetch('/senators.json').then(res => res.json()),
+  fetch('/housereps.json').then(res => res.json())
+])
+.then(([govs, ltGovs, sens, reps]) => {
+  // Fill global arrays
+  governors = govs;
+  ltGovernors = ltGovs;
+  senators = sens;
+  houseReps = reps;
 
-     // Render officials
-renderOfficials(selectedState, '');
+  // Pre-render officials so search wiring works
+  renderOfficials(selectedState, '');
 
-// Load social trends
-const socialFeed = document.getElementById('social-feed');
-if (socialFeed && typeof loadSocialTrends === 'function') {
-  console.log("🎬 loadSocialTrends is running...");
-  loadSocialTrends();
-}
+  // Show Home Hub tab by default
+  showStartupHub();
+
+  // Load social trends if available
+  const socialFeed = document.getElementById('social-feed');
+  if (socialFeed && typeof loadSocialTrends === 'function') {
+    console.log("🎬 loadSocialTrends is running...");
+    loadSocialTrends();
+  }
 })
 .catch(err => {
   console.error('Error loading official data:', err);
