@@ -2303,20 +2303,129 @@ rssapp-carousel {
   background-color: #FF7875;
   transform: scale(1.05);
 }
-/* === MEDIA CARDS === */
+/* === Podcasts & Shows Cards === */
 .media-card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* keeps buttons at bottom */
   align-items: center;
-  background: #2C2C2C;
+  background: #2C2C2C; /* dark grey */
   border-radius: 12px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
-  padding: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  padding: 16px;
+  margin: 12px;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.2s ease;
-  width: 180px;
-  height: 300px; /* slightly taller for buttons */
+  color: #fff; /* ensures text shows on dark background */
+}
+
+.media-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.6); /* blue glow on hover */
+  background: #333333;
+}
+
+.media-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.media-card:hover img {
+  transform: scale(1.05);
+}
+
+/* === Buttons === */
+.favorite-btn {
+  border: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  background-color: #FFD700;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  margin-top: 10px;
+}
+
+.favorite-btn:hover {
+  background-color: #FFC107;
+  transform: scale(1.05);
+}
+
+.remove-btn {
+  border: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  background-color: #FF4D4F;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  margin-top: 10px;
+}
+
+.remove-btn:hover {
+  background-color: #FF7875;
+  transform: scale(1.05);
+}
+
+/* === Favorites Grid & Layout === */
+.favorites-grid, .video-grid, .audio-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+/* === Search Input Styling === */
+#show-search {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background: #1E1E1E;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+#show-search::placeholder {
+  color: #aaa;
+}
+
+#show-search:focus {
+  box-shadow: 0 4px 20px rgba(0, 123, 255, 0.7);
+  transform: scale(1.02);
+}
+/* === Container Grid === */
+.favorites-grid, .video-grid, .audio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* compact cards */
+  gap: 12px;
+  justify-items: center;
+}
+
+/* === Media Cards === */
+.media-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #2C2C2C;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+  padding: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.2s ease;
+  width: 140px;
+  height: 220px;
   text-align: center;
   color: #fff;
 }
@@ -2327,46 +2436,151 @@ rssapp-carousel {
   background: #333;
 }
 
-/* === CARD IMAGES / LOGOS === */
-.logo-container, .logo-wrapper {
-  width: 100%;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
+/* === Card Images === */
+.media-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 8px;
   margin-bottom: 8px;
-  background-color: #1a1a1a;
-}
-
-.logo-container img, .logo-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* maintain aspect ratio */
   transition: transform 0.3s ease;
 }
 
-.media-card:hover img,
-.logo-wrapper img:hover,
-.logo-container img:hover {
+.media-card:hover img {
   transform: scale(1.05);
 }
 
-/* === CARD TEXT === */
-.media-card h3,
-.favorite-card h4,
-.card-content h4 {
+/* === Card Text === */
+.media-card h3 {
+  font-size: 14px;
+  margin: 4px 0;
+  line-height: 1.2;
+}
+
+.media-card p {
+  font-size: 12px;
+  color: #ccc;
+  margin: 2px 0;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* max 3 lines */
+  -webkit-box-orient: vertical;
+}
+
+/* === Buttons === */
+.favorite-btn, .remove-btn {
+  border: none;
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.favorite-btn {
+  background-color: #FFD700;
+  color: #000;
+}
+
+.favorite-btn:hover {
+  background-color: #FFC107;
+  transform: scale(1.05);
+}
+
+.remove-btn {
+  background-color: #FF4D4F;
+  color: #fff;
+}
+
+.remove-btn:hover {
+  background-color: #FF7875;
+  transform: scale(1.05);
+}
+
+/* === Search Input === */
+#show-search {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 16px;
+  margin-bottom: 16px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: #1E1E1E;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+#show-search::placeholder {
+  color: #aaa;
+}
+
+#show-search:focus {
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.7);
+  transform: scale(1.02);
+}
+/* === Container Grid === */
+.favorites-grid, .video-grid, .audio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* slightly wider for text */
+  gap: 12px;
+  justify-items: center;
+}
+
+/* === Media Cards === */
+.media-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* keeps button at bottom */
+  align-items: center;
+  background: #2C2C2C;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+  padding: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.2s ease;
+  width: 150px;
+  height: 240px; /* slightly taller */
+  text-align: center;
+  color: #fff;
+}
+
+.media-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.6);
+  background: #333;
+}
+
+/* === Card Images === */
+.media-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  transition: transform 0.3s ease;
+}
+
+.media-card:hover img {
+  transform: scale(1.05);
+}
+
+/* === Card Text === */
+.media-card h3 {
   font-size: 14px;
   margin: 4px 0;
   line-height: 1.2;
   word-wrap: break-word;
 }
 
-.media-card p,
-.favorite-card .category,
-.favorite-card .descriptor,
-.card-content .category,
-.card-content .descriptor {
+.media-card p {
   font-size: 12px;
   color: #ccc;
   margin: 2px 0 6px 0;
@@ -2374,14 +2588,12 @@ rssapp-carousel {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 4; /* max 4 lines */
+  -webkit-line-clamp: 4; /* allows 4 lines now */
   -webkit-box-orient: vertical;
 }
 
-/* === BUTTONS === */
-.favorite-btn,
-.remove-btn,
-button.fav-star {
+/* === Buttons === */
+.favorite-btn, .remove-btn {
   border: none;
   padding: 4px 10px;
   border-radius: 16px;
@@ -2413,98 +2625,8 @@ button.fav-star {
   transform: scale(1.05);
 }
 
-button.fav-star {
-  font-size: 2em;
-  background: none;
-  color: black;
-  cursor: pointer;
-  transition: color 0.2s;
-}
-
-button.fav-star:hover {
-  color: gold;
-}
-
-/* === FAVORITES CARD === */
-.favorite-card {
-  position: relative;
-  display: inline-block;
-  margin: 5px;
-  background-color: #2c2c2c;
-  border-radius: 12px;
-  overflow: hidden;
-  color: #fff;
-  width: 220px;
-  cursor: pointer;
-}
-
-.favorite-card .remove-favorite {
-  display: none;
-  color: red;
-  font-weight: bold;
-  cursor: pointer;
-  position: absolute;
-  top: 5px;
-  right: 5px;
-}
-
-.favorite-card:hover .remove-favorite {
-  display: inline-block;
-}
-
-/* === GRIDS === */
-.favorites-grid,
-.video-grid,
-.audio-grid,
-.podcast-show-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 12px;
-  justify-items: center;
-}
-
-/* === COLLAPSIBLE SECTIONS === */
-.section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  padding: 10px 0;
-  user-select: none;
-}
-
-.section-header h3 {
-  margin: 0;
-  font-size: 1.4rem;
-}
-
-.section-arrow {
-  transition: transform 0.25s ease;
-  font-size: 1.4rem;
-}
-
-.section-header.open .section-arrow {
-  transform: rotate(90deg);
-}
-
-.section-body {
-  overflow: hidden;
-  transition: max-height 0.5s ease;
-  max-height: 0;
-}
-
-.section-body.open {
-  max-height: 10000px;
-}
-
-.section-body.closed {
-  max-height: 0;
-}
-
-/* === SEARCH INPUT === */
-#show-search,
-#search-bar,
-#state-dropdown {
+/* === Search Input Styling === */
+#show-search {
   width: 100%;
   max-width: 420px;
   padding: 10px 16px;
@@ -2519,14 +2641,466 @@ button.fav-star:hover {
   transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
-#show-search::placeholder,
+#show-search::placeholder {
+  color: #aaa;
+}
+
+#show-search:focus {
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.7);
+  transform: scale(1.02);
+}
+/* === Container Grid === */
+.favorites-grid, .video-grid, .audio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* wider cards */
+  gap: 12px;
+  justify-items: center;
+}
+
+/* === Media Cards === */
+.media-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* button stays at bottom */
+  align-items: center;
+  background: #2C2C2C;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+  padding: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.2s ease;
+  width: 180px; /* increased width */
+  height: 240px; /* keeps height the same */
+  text-align: center;
+  color: #fff;
+}
+
+.media-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.6);
+  background: #333;
+}
+
+/* === Card Images === */
+.media-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  transition: transform 0.3s ease;
+}
+
+.media-card:hover img {
+  transform: scale(1.05);
+}
+
+/* === Card Text === */
+.media-card h3 {
+  font-size: 14px;
+  margin: 4px 0;
+  line-height: 1.2;
+  word-wrap: break-word;
+}
+
+.media-card p {
+  font-size: 12px;
+  color: #ccc;
+  margin: 2px 0 6px 0;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* 4 lines max */
+  -webkit-box-orient: vertical;
+}
+
+/* === Buttons === */
+.favorite-btn, .remove-btn {
+  border: none;
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.favorite-btn {
+  background-color: #FFD700;
+  color: #000;
+}
+
+.favorite-btn:hover {
+  background-color: #FFC107;
+  transform: scale(1.05);
+}
+
+.remove-btn {
+  background-color: #FF4D4F;
+  color: #fff;
+}
+
+.remove-btn:hover {
+  background-color: #FF7875;
+  transform: scale(1.05);
+}
+
+/* === Search Input Styling === */
+#show-search {
+  width: 100%;
+  max-width: 420px;
+  padding: 10px 16px;
+  margin-bottom: 16px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: #1E1E1E;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+#show-search::placeholder {
+  color: #aaa;
+}
+
+#show-search:focus {
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.7);
+  transform: scale(1.02);
+}
+/* === Container Grids === */
+.favorites-grid,
+.video-grid,
+.audio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+  justify-items: center;
+}
+
+/* === Media Cards === */
+.media-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* button stays at bottom */
+  align-items: center;
+  background: #2C2C2C;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+  padding: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.2s ease;
+  width: 180px;    /* uniform width */
+  height: 240px;   /* uniform height */
+  text-align: center;
+  color: #fff;
+}
+
+.media-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.6);
+  background: #333;
+}
+
+/* === Logo Container & Images === */
+.logo-container {
+  width: 100%;          /* full card width */
+  height: 80px;         /* uniform logo height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.logo-container img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;   /* keeps aspect ratio */
+}
+
+/* === Card Text === */
+.media-card h3 {
+  font-size: 14px;
+  margin: 4px 0;
+  line-height: 1.2;
+  word-wrap: break-word;
+}
+
+.media-card p {
+  font-size: 12px;
+  color: #ccc;
+  margin: 2px 0 6px 0;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* max 4 lines of description */
+  -webkit-box-orient: vertical;
+}
+
+/* === Buttons === */
+.favorite-btn,
+.remove-btn {
+  border: none;
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.favorite-btn {
+  background-color: #FFD700;
+  color: #000;
+}
+
+.favorite-btn:hover {
+  background-color: #FFC107;
+  transform: scale(1.05);
+}
+
+.remove-btn {
+  background-color: #FF4D4F;
+  color: #fff;
+}
+
+.remove-btn:hover {
+  background-color: #FF7875;
+  transform: scale(1.05);
+}
+
+/* === Search Input Styling === */
+#show-search {
+  width: 100%;
+  max-width: 420px;
+  padding: 10px 16px;
+  margin-bottom: 16px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: #1E1E1E;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+#show-search::placeholder {
+  color: #aaa;
+}
+
+#show-search:focus {
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.7);
+  transform: scale(1.02);
+}
+/* Logo container at top of card */
+.logo-container {
+  width: 100%;         /* full card width */
+  height: 100px;       /* uniform height for all logos */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;    /* crop anything exceeding container */
+  margin-bottom: 8px;
+}
+
+/* Make logo stretch full width, uniform height, maintain aspect ratio */
+.logo-container img {
+  width: 100%;         /* fill width of container */
+  height: 100%;        /* fill height of container */
+  object-fit: contain; /* maintain aspect ratio, centered */
+}
+/* Logo container at top of card */
+.logo-container {
+  width: 100%;         /* full card width */
+  height: 100px;       /* uniform height for all logos */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;    /* crop anything exceeding container */
+  margin-bottom: 8px;
+}
+
+/* Make logo stretch full width, uniform height, maintain aspect ratio */
+.logo-container img {
+  width: 100%;         /* fill width of container */
+  height: 100%;        /* fill height of container */
+  object-fit: contain; /* maintain aspect ratio, centered */
+}
+.media-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background: #2C2C2C;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+  padding: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.2s ease;
+  width: 180px;   
+  height: 300px;  /* increased from 240px to 300px */
+  text-align: center;
+  color: #fff;
+}
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.search-wrapper {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+#search-bar {
+  padding: 8px 12px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  width: 220px;
+  background-color: #1E1E1E;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
 #search-bar::placeholder {
   color: #aaa;
 }
 
-#show-search:focus,
-#search-bar:focus,
+#search-bar:focus {
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.7);
+  transform: scale(1.02);
+}
+
+#state-dropdown {
+  padding: 8px 12px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background-color: #1E1E1E;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
 #state-dropdown:focus {
   box-shadow: 0 4px 15px rgba(0, 123, 255, 0.7);
   transform: scale(1.02);
+}
+/* === Podcasts & Shows Tab === */
+.podcast-show-section {
+  margin-bottom: 40px;
+}
+
+.podcast-show-section h3 {
+  color: #fff;
+  margin-bottom: 16px;
+  font-size: 1.5rem;
+}
+
+.podcast-show-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.podcast-show-card {
+  background-color: #2c2c2c; /* Dark grey */
+  border-radius: 12px;
+  overflow: hidden;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.podcast-show-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.6); /* Blue glow */
+  border: 2px solid #007bff;
+}
+
+.logo-wrapper {
+  width: 100%;
+  height: 140px; /* Fixed logo height */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1a1a1a;
+}
+
+.logo-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Stretch and crop nicely */
+}
+
+.card-content {
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card-content h4 {
+  margin: 0 0 4px 0;
+  font-size: 1.1rem;
+  line-height: 1.2;
+}
+
+.card-content .category {
+  font-size: 0.85rem;
+  color: #bbb;
+  margin-bottom: 8px;
+}
+
+.card-content .descriptor {
+  font-size: 0.9rem;
+  flex: 1;
+  margin-bottom: 12px;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.card-actions button {
+  background: transparent;
+  border: 1px solid #007bff;
+  color: #007bff;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.card-actions button:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Make sure the section scrolls nicely if many cards */
+#podcasts-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
