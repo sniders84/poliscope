@@ -782,6 +782,46 @@ a, button, .tab, .card-button,
   transform: translateY(-2px);
 }
 
+/* ------------------ Social Trends Section ------------------ */
+#social-feed {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 12px;
+  justify-items: center;
+  align-items: start;
+}
+
+.social-card {
+  background-color: #1e1e2f;
+  color: #f0f0f0;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  text-align: center;
+  transition: border 0.25s ease, transform 0.2s ease;
+  width: 100%;
+  max-width: 340px;  /* uniform card width */
+  box-sizing: border-box;
+}
+
+.social-card:hover {
+  border: 2px solid #007bff;
+  transform: translateY(-2px);
+}
+
+.social-card h3 {
+  color: #f0f0f0;
+  margin-bottom: 8px;
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* iframe takes full width, but we **set explicit height in JS** */
+.social-card iframe {
+  width: 100%;
+  border: none;
+}
 .poll-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -1007,6 +1047,12 @@ a, button, .tab, .card-button,
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
+/* Social feed placeholder */
+#social-feed {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
 .network-logo {
   width: 80px;
   height: auto;
