@@ -1,32 +1,32 @@
-// === FAVORITES STORAGE & HELPERS (FINAL & CORRECT) ===
+// === FAVORITES STORAGE & HELPERS ===
 window.favorites = {
   podcasts: [],
   shows: []
 };
 
-// Check if title is favorited
-function isFavorite(type, title) {
-  return window.favorites[type]?.includes(title);
+// Check if an item is favorited (matches by title)
+function isFavorite(type, item) {
+  return window.favorites[type]?.some(f => f.title === item.title);
 }
 
-// Toggle favorite on/off
-function toggleFavorite(type, title) {
+// Toggle favorite state
+function toggleFavorite(type, item) {
   if (!window.favorites[type]) window.favorites[type] = [];
 
-  const index = window.favorites[type].indexOf(title);
+  const index = window.favorites[type].findIndex(f => f.title === item.title);
 
   if (index > -1) {
-    // remove
+    // Remove from favorites
     window.favorites[type].splice(index, 1);
   } else {
-    // add
-    window.favorites[type].push(title);
+    // Add to favorites
+    window.favorites[type].push(item);
   }
 
-  // Re-render Podcasts & Shows if visible
-  const tab = document.getElementById("podcasts-shows");
-  if (tab && tab.style.display !== "none") {
-    showPodcastsShows();
+  // Re-render cards + favorites
+  if (document.getElementById('podcasts-shows')?.style.display !== 'none') {
+    showPodcastsShows();   // refresh main grid
+    renderFavorites();     // refresh favorites section
   }
 }
 // === GLOBAL STATE ===
