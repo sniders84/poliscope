@@ -207,14 +207,13 @@ function showTab(id) {
   if (activeTab) activeTab.style.display = 'block';
 }
 
+// === Tab functions ===
 function showStartupHub() {
   showTab('startup-hub');
 }
 
 function showPodcastsShows() {
   console.log('showPodcastsShows() start');
-
-  // ensure the tab is visible
   showTab('podcasts-shows');
 
   const container = document.getElementById('podcasts-cards');
@@ -256,7 +255,6 @@ function showPodcastsShows() {
       msg.textContent = `No ${titleText.toLowerCase()} available.`;
       grid.appendChild(msg);
     } else {
-      // Render all items
       items.forEach(item => {
         try {
           const card = document.createElement('div');
@@ -278,7 +276,6 @@ function showPodcastsShows() {
             </div>
           `;
 
-          // Logo click
           const logoBtn = card.querySelector('.logo-wrapper');
           if (logoBtn) {
             logoBtn.addEventListener('click', () => {
@@ -286,10 +283,8 @@ function showPodcastsShows() {
             });
           }
 
-          // Favorite toggle
           const favBtn = card.querySelector('.favorite-btn');
           if (favBtn) {
-            // initialize state
             const isFav = isFavorite(item.type || type, item.title);
             updateFavoriteButton(favBtn, isFav);
 
@@ -310,7 +305,6 @@ function showPodcastsShows() {
     body.appendChild(grid);
     section.appendChild(body);
 
-    // COLLAPSE/EXPAND
     header.addEventListener('click', () => {
       const isOpen = body.classList.contains("open");
       if (isOpen) {
@@ -336,11 +330,7 @@ function showPodcastsShows() {
       .replace(/"/g, '&quot;')
       .replace(/'/g, '&#39;');
   }
-  function escapeAttr(str) {
-    return escapeHtml(str).replace(/\s+/g, ' ');
-  }
 
-  // FAVORITES SECTION
   const favoriteItems = [];
 
   if (Array.isArray(window.favorites.podcasts)) {
@@ -357,12 +347,10 @@ function showPodcastsShows() {
     });
   }
 
-  // APPEND SECTIONS
   container.appendChild(renderSection('Favorites', favoriteItems, 'favorites'));
   container.appendChild(renderSection('Podcasts', podcastsData || [], 'podcasts'));
   container.appendChild(renderSection('Shows', showsData || [], 'shows'));
 
-  // SEARCH
   const tabSearch = document.getElementById('podcasts-search-bar');
   if (tabSearch) {
     tabSearch.value = tabSearch.value || '';
@@ -406,10 +394,6 @@ function showVoting() {
       return res.json();
     })
     .then(data => {
-      console.log('Voting data loaded:', data);
-      console.log('Available voting keys:', Object.keys(data));
-      console.log('Trying to match:', window.selectedState);
-
       let stateName = window.selectedState || 'North Carolina';
       if (stateName === 'Virgin Islands') stateName = 'U.S. Virgin Islands';
       const stateData = data[stateName] || null;
@@ -418,9 +402,6 @@ function showVoting() {
         votingCards.innerHTML = `<p>No voting information available for ${stateName}.</p>`;
         return;
       }
-
-      console.log("Selected state:", stateName);
-      console.log('Direct match result:', data[stateName]);
 
       const labelMap = {
         register: 'Register to Vote',
@@ -491,6 +472,21 @@ function showVoting() {
       console.error('Voting fetch failed:', err);
     });
 }
+
+// === Active tab highlight logic ===
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('nav .tab');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
+
+  // Optional: set Home Hub active on load
+  const homeHub = document.querySelector('nav .tab');
+  if (homeHub) homeHub.classList.add('active');
+});
 
 // === HELPER: render roster cards (if needed) ===
 function renderRosterCards(rosterData, chamberLabel, container) {
