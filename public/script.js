@@ -1460,32 +1460,17 @@ document.addEventListener('DOMContentLoaded', () => {
   wireSearchBar();
   wireStateDropdown();
 
-  function closeOfficialsSearch() {
-    if (!searchBar) return;
-    searchBar.value = '';
-    searchBar.blur();
-  }
-
-  document.addEventListener('mousedown', event => {
-    if (!searchBar) return;
-    if (event.target !== searchBar && !searchBar.contains(event.target)) {
-      closeOfficialsSearch();
-    }
-  });
-
-  // --- Other existing functions and variables above ---
-
-// Official RSS feeds per network
+  // Official RSS feeds per network
 const rssFeeds = {
-  msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',   // NBC/MSNBC general news
-  abc:   'https://abcnews.go.com/abcnews/topstories',       // ABC Top Stories
-  cbs:   'https://www.cbsnews.com/latest/rss/main',         // CBS Latest
-  fox:   'https://feeds.foxnews.com/foxnews/latest',        // FOX News Latest
-  cnn:   'http://rss.cnn.com/rss/cnn_topstories.rss'        // CNN Top Stories
+  msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',
+  abc:   'https://abcnews.go.com/abcnews/topstories',
+  cbs:   'https://www.cbsnews.com/latest/rss/main',
+  fox:   'https://feeds.foxnews.com/foxnews/latest',
+  cnn:   'http://rss.cnn.com/rss/cnn_topstories.rss'
 };
 
 // Fetch top 5 stories via rss2json
-n fetchRss(feedUrl) {
+async function fetchRss(feedUrl) {
   const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
   try {
     const response = await fetch(apiUrl);
@@ -1498,7 +1483,7 @@ n fetchRss(feedUrl) {
 }
 
 // Render network stories
-n renderNetworkStories(network) {
+async function renderNetworkStories(network) {
   const feedUrl = rssFeeds[network];
   if (!feedUrl) return;
 
@@ -1513,6 +1498,7 @@ n renderNetworkStories(network) {
     card.onclick = () => window.open(item.link, '_blank');
     container.appendChild(card);
   });
+}
 
   // Append "See More" next to last story
   if (stories.length > 0) {
