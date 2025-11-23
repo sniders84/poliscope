@@ -1,67 +1,115 @@
-// === FAVORITES STORAGE & HELPERS (FINAL & PERSISTENT) ===
+// === FAVORITES STORAGE & HELPERS ===
 window.favorites = JSON.parse(localStorage.getItem('favorites')) || {
   podcasts: [],
   shows: []
 };
 
-// Check if item is favorited
+// Add to favorites
+function addFavorite(type, title) {
+  if (!window.favorites[type]) window.favorites[type] = [];
+  if (!window.favorites[type].includes(title)) {
+    window.favorites[type].push(title);
+    saveFavorites();
+  }
+}
+
+// Remove from favorites
+function removeFavorite(type, title) {
+  if (!window.favorites[type]) return;
+  const index = window.favorites[type].indexOf(title);
+  if (index > -1) {
+    window.favorites[type].splice(index, 1);
+    saveFavorites();
+    renderFavoritesSection(); // immediately remove from favorites display
+  }
+}
+
+// Save to localStorage
+function saveFavorites() {
+  localStorage.setItem('favorites', JSON.stringify(window.favorites));
+}
+
+// Check if favorite
 function isFavorite(type, title) {
   return window.favorites[type]?.includes(title);
 }
 
-// Toggle favorite on/off
-function toggleFavorite(type, title, button) {
-  if (!window.favorites[type]) window.favorites[type] = [];
-
-  const index = window.favorites[type].indexOf(title);
-
-  if (index > -1) {
-    // Remove from favorites
-    window.favorites[type].splice(index, 1);
-  } else {
-    // Add to favorites
-    window.favorites[type].push(title);
-  }
-
-  // Save to localStorage
-  localStorage.setItem('favorites', JSON.stringify(window.favorites));
-
-  // Update the button text immediately
-  updateFavoriteButton(type, title, button);
-
-  // Optionally refresh favorites section if you have one
-  if (typeof renderFavoritesSection === "function") renderFavoritesSection();
-}
-
-// Update favorite button text dynamically
-function updateFavoriteButton(type, title, button) {
-  // If button passed explicitly, use it; otherwise, query DOM
-  const btn = button || document.querySelector(`button[data-type="${type}"][data-title="${CSS.escape(title)}"]`);
-  if (!btn) return;
-
-  if (isFavorite(type, title)) {
-    btn.textContent = "Remove Favorite";
-    btn.classList.add("favorited");
-  } else {
-    btn.textContent = "Add Favorite";
-    btn.classList.remove("favorited");
-  }
-}
-
-// Initialize all favorite buttons on page load
-function initFavoriteButtons() {
+// --- FAVORITE BUTTONS FOR MAIN CARDS ---
+function initMainFavoriteButtons() {
   document.querySelectorAll('button[data-type][data-title]').forEach(btn => {
     const type = btn.dataset.type;
     const title = btn.dataset.title;
-    // Set initial button text
-    updateFavoriteButton(type, title, btn);
-    // Attach click handler
-    btn.addEventListener("click", () => toggleFavorite(type, title, btn));
+
+    btn.textContent = isFavorite(type, title) ? "Remove Favorite" : "Add Favorite";
+
+    btn.addEventListener("click", () => {
+      if (isFavorite(type, title)) {
+        removeFavorite(type, title);
+        btn.textContent = "Add Favorite";
+      } else {
+        addFavorite(type, title);
+        btn.textContent = "Remove Favorite";
+      }
+      renderFavoritesSection();
+    });
   });
 }
 
-// Call this on page load
-initFavoriteButtons();
+// --- FAVORITES SECTION RENDER ---
+function renderFavoritesSection() {
+  const container = document.getElementById('favorites-section'); // change to your container
+  if (!container) return;
+  container.innerHTML = '';
+
+  // Loop through types
+  Object.keys(window.favorites).forEach(type => {
+    window.favorites[type].forEach(title => {
+      const card = document.createElement('div');
+      card.classList.add('favorite-card');
+      card.textContent = title;
+
+      // Create remove icon
+      const removeBtn = document.createElement('span');
+      removeBtn.innerHTML = '✕'; // sleek remove symbol
+      removeBtn.classList.add('remove-favorite');
+      removeBtn.title = "Remove from favorites";
+
+      removeBtn.addEventListener("click", () => removeFavorite(type, title));
+
+      card.appendChild(removeBtn);
+      container.appendChild(card);
+    });
+  });
+}
+
+// --- CSS for hover remove (add to your CSS) ---
+/*
+.favorite-card {
+  position: relative;
+  padding: 10px;
+  margin: 5px 0;
+  background: #f0f0f0;
+  border-radius: 8px;
+}
+
+.remove-favorite {
+  position: absolute;
+  top: 5px;
+  right: 8px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s;
+  font-weight: bold;
+}
+
+.favorite-card:hover .remove-favorite {
+  opacity: 1;
+}
+*/
+
+// --- INITIALIZE ---
+initMainFavoriteButtons();
+renderFavoritesSection();
 
 // === GLOBAL STATE ===
 let selectedState = 'North Carolina';
