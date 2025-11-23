@@ -3145,3 +3145,34 @@ rssapp-carousel {
 .section-body.closed {
   max-height: 0;
 }
+button.fav-star {
+  font-size: 2em;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: black;
+}
+
+button.fav-star:hover {
+  color: gold;
+}
+
+.favorite-card {
+  position: relative;
+  display: inline-block;
+  margin: 5px;
+}
+
+.favorite-card:hover .remove-favorite {
+  display: block;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: red;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.remove-favorite {
+  display: none;
+}
