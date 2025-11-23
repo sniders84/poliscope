@@ -4,14 +4,17 @@ window.favorites = JSON.parse(localStorage.getItem('favorites')) || {
   shows: []
 };
 
+// Save to localStorage
 function saveFavorites() {
   localStorage.setItem('favorites', JSON.stringify(window.favorites));
 }
 
+// Check if favorite
 function isFavorite(type, title) {
   return window.favorites[type]?.includes(title);
 }
 
+// Add favorite
 function addFavorite(type, title) {
   if (!window.favorites[type]) window.favorites[type] = [];
   if (!window.favorites[type].includes(title)) {
@@ -20,6 +23,7 @@ function addFavorite(type, title) {
   }
 }
 
+// Remove favorite
 function removeFavorite(type, title) {
   if (!window.favorites[type]) return;
   const index = window.favorites[type].indexOf(title);
@@ -29,7 +33,28 @@ function removeFavorite(type, title) {
   }
 }
 
-// === FAVORITES SECTION RENDER ===
+// Toggle favorite from main card
+function toggleFavorite(type, title) {
+  if (isFavorite(type, title)) {
+    removeFavorite(type, title);
+  } else {
+    addFavorite(type, title);
+  }
+  updateAllStars();
+  renderFavoritesSection();
+}
+
+// Update all star buttons in main grid
+function updateAllStars() {
+  document.querySelectorAll('button.fav-star[data-type][data-title]').forEach(btn => {
+    const type = btn.dataset.type;
+    const title = btn.dataset.title;
+    btn.textContent = isFavorite(type, title) ? '★' : '☆';
+    btn.style.color = isFavorite(type, title) ? 'gold' : 'black';
+  });
+}
+
+// Render Favorites Section
 function renderFavoritesSection() {
   const container = document.getElementById('favorites-section');
   if (!container) return;
@@ -50,7 +75,7 @@ function renderFavoritesSection() {
       card.innerHTML = `
         <div class="logo-wrapper">
           <img src="${item.logo_slug ? `assets/${item.logo_slug}` : 'assets/default-logo.png'}" 
-               alt="${item.title} logo" 
+               alt="${item.title} logo"
                onerror="this.onerror=null;this.src='assets/default-logo.png';"/>
         </div>
         <div class="card-content">
@@ -63,13 +88,13 @@ function renderFavoritesSection() {
         </div>
       `;
 
-      // Remove button click
+      // Remove handler
       const removeBtn = card.querySelector('.remove-favorite');
       removeBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         removeFavorite(type, title);
         renderFavoritesSection();
-        updateAllMainStars();
+        updateAllStars();
       });
 
       container.appendChild(card);
@@ -77,41 +102,22 @@ function renderFavoritesSection() {
   });
 }
 
-// === MAIN GRID FAVORITE STARS ===
-function updateAllMainStars() {
-  document.querySelectorAll('button.fav-star[data-type][data-title]').forEach(btn => {
-    const type = btn.dataset.type;
-    const title = btn.dataset.title;
-    btn.textContent = isFavorite(type, title) ? '★' : '☆';
-    btn.style.color = isFavorite(type, title) ? 'gold' : 'black';
-  });
-}
-
+// Initialize main grid stars
 function initFavoriteStars() {
   document.querySelectorAll('button.fav-star[data-type][data-title]').forEach(btn => {
     const type = btn.dataset.type;
     const title = btn.dataset.title;
 
-    // initialize star display
+    btn.style.fontSize = '2em';
     btn.textContent = isFavorite(type, title) ? '★' : '☆';
     btn.style.color = isFavorite(type, title) ? 'gold' : 'black';
 
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
-      if (isFavorite(type, title)) {
-        removeFavorite(type, title);
-      } else {
-        addFavorite(type, title);
-      }
-      updateAllMainStars();
-      renderFavoritesSection();
+      toggleFavorite(type, title);
     });
   });
 }
-
-// === INITIALIZE ON PAGE LOAD / TAB RENDER ===
-initFavoriteStars();
-renderFavoritesSection();
 
 // === GLOBAL STATE ===
 let selectedState = 'North Carolina';
@@ -300,27 +306,14 @@ function showPodcastsShows() {
 
   function escapeHtml(str) {
     if (!str) return '';
-    return String(str)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#39;');
+    return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+                     .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
   }
-
   function escapeAttr(str) {
     return escapeHtml(str).replace(/\s+/g, ' ');
   }
 
-  // update a star button
-  function updateFavoriteStar(btn, type, title) {
-    if (!btn) return;
-    btn.textContent = isFavorite(type, title) ? '★' : '☆';
-    btn.style.color = isFavorite(type, title) ? 'gold' : 'black';
-  }
-
-  // render section
-  function renderSection(titleText, items, type) {
+  const renderSection = (titleText, items, type) => {
     const section = document.createElement('div');
     section.className = 'podcast-show-section';
 
@@ -347,51 +340,40 @@ function showPodcastsShows() {
     } else {
       items.forEach(item => {
         const card = document.createElement('div');
-        card.className = type === 'favorites' ? 'favorite-card' : 'podcast-show-card';
+        card.className = 'podcast-show-card';
+
         const logoPath = item.logo_slug ? `assets/${item.logo_slug}` : 'assets/default-logo.png';
 
         card.innerHTML = `
-          <div class="logo-wrapper" title="Open ${item.title}">
-            <img src="${logoPath}" alt="${item.title} logo" onerror="this.onerror=null;this.src='assets/default-logo.png';"/>
+          <div class="logo-wrapper" role="button" title="Open ${item.title}">
+            <img src="${logoPath}" alt="${item.title} logo"
+                 onerror="this.onerror=null;this.src='assets/default-logo.png';"/>
           </div>
           <div class="card-content">
             <h4 class="card-title">${escapeHtml(item.title)}</h4>
             <p class="category">${escapeHtml(item.category || '')} – ${escapeHtml(item.source || '')}</p>
             <p class="descriptor">${escapeHtml(item.descriptor || '')}</p>
             <div class="card-actions">
-              ${type === 'favorites' ? '<span class="remove-favorite">✕ Remove</span>' :
-                `<button class="fav-star" data-type="${type}" data-title="${escapeAttr(item.title)}" style="font-size:2em;">${isFavorite(type, item.title) ? '★' : '☆'}</button>`}
+              <button class="fav-star" data-type="${type}" data-title="${escapeAttr(item.title)}">☆</button>
             </div>
           </div>
         `;
 
-        // logo click opens official url if available
+        // logo click
         const logoBtn = card.querySelector('.logo-wrapper');
-        if (logoBtn && item.official_url) {
-          logoBtn.addEventListener('click', () => window.open(item.official_url, '_blank'));
-        }
+        logoBtn?.addEventListener('click', () => {
+          if (item.official_url) window.open(item.official_url, '_blank');
+        });
 
-        // main star button
-        const favBtn = card.querySelector('.fav-star');
-        if (favBtn) {
-          favBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            toggleFavorite(type, item.title); // add/remove
-            updateFavoriteStar(favBtn, type, item.title);
-            renderFavoritesSection(); // immediately update favorites section
-          });
-        }
-
-        // remove button in favorites
-        const removeBtn = card.querySelector('.remove-favorite');
-        if (removeBtn) {
-          removeBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            removeFavorite(item.type, item.title);
-            renderFavoritesSection();
-            updateAllMainStars();
-          });
-        }
+        // star button click
+        const favBtn = card.querySelector('button.fav-star');
+        favBtn.style.fontSize = '2em';
+        updateStarBtn(favBtn, type, item.title);
+        favBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          toggleFavorite(type, item.title);
+          updateStarBtn(favBtn, type, item.title);
+        });
 
         grid.appendChild(card);
       });
@@ -400,47 +382,54 @@ function showPodcastsShows() {
     body.appendChild(grid);
     section.appendChild(body);
 
-    // collapse/expand
     header.addEventListener('click', () => {
-      const isOpen = body.classList.contains('open');
-      body.classList.toggle('open', !isOpen);
-      body.classList.toggle('closed', isOpen);
-      header.classList.toggle('open', !isOpen);
+      body.classList.toggle('open');
+      body.classList.toggle('closed');
+      header.classList.toggle('open');
     });
 
     return section;
+  };
+
+  function updateStarBtn(btn, type, title) {
+    btn.textContent = isFavorite(type, title) ? '★' : '☆';
+    btn.style.color = isFavorite(type, title) ? 'gold' : 'black';
   }
 
-  // gather favorites
-  const favoriteItems = [];
-  ['podcasts', 'shows'].forEach(type => {
-    window.favorites[type].forEach(title => {
-      const arr = type === 'podcasts' ? podcastsData : showsData;
-      const item = arr.find(i => i.title === title);
-      if (item) favoriteItems.push({ ...item, type });
-    });
+  // FAVORITES SECTION
+  const favItems = [];
+  window.favorites.podcasts.forEach(title => {
+    const item = podcastsData.find(p => p.title === title);
+    if (item) favItems.push({ ...item, type: 'podcasts' });
   });
+  window.favorites.shows.forEach(title => {
+    const item = showsData.find(s => s.title === title);
+    if (item) favItems.push({ ...item, type: 'shows' });
+  });
+  container.appendChild(renderSection('Favorites', favItems, 'favorites'));
 
-  container.appendChild(renderSection('Favorites', favoriteItems, 'favorites'));
-  container.appendChild(renderSection('Podcasts', podcastsData || [], 'podcasts'));
-  container.appendChild(renderSection('Shows', showsData || [], 'shows'));
+  container.appendChild(renderSection('Podcasts', podcastsData, 'podcasts'));
+  container.appendChild(renderSection('Shows', showsData, 'shows'));
 
   // search bar
   const tabSearch = document.getElementById('podcasts-search-bar');
   if (tabSearch) {
     tabSearch.value = tabSearch.value || '';
-    tabSearch.removeEventListener('input', tabSearch._podcastHandler || (() => {}));
+    tabSearch.removeEventListener('input', tabSearch._podHandler || (() => {}));
     const handler = () => {
       const term = tabSearch.value.toLowerCase().trim();
-      container.querySelectorAll('.podcast-show-card, .favorite-card').forEach(card => {
-        const title = (card.querySelector('.card-title')?.textContent || '').toLowerCase();
-        const desc = (card.querySelector('.descriptor')?.textContent || '').toLowerCase();
+      container.querySelectorAll('.podcast-show-card').forEach(card => {
+        const title = card.querySelector('.card-title')?.textContent.toLowerCase() || '';
+        const desc = card.querySelector('.descriptor')?.textContent.toLowerCase() || '';
         card.style.display = (title.includes(term) || desc.includes(term)) ? '' : 'none';
       });
     };
     tabSearch.addEventListener('input', handler);
-    tabSearch._podcastHandler = handler;
+    tabSearch._podHandler = handler;
   }
+
+  initFavoriteStars();
+  renderFavoritesSection();
 }
 
 // === HELPER: render roster cards (if needed) ===
