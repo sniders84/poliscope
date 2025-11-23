@@ -1314,18 +1314,6 @@ function wireSearchBar() {
     renderOfficials(null, query);
   });
 }
-// ==== HOME HUB NAV ====
-
-// Simple startup hub loader
-function showStartupHub() {
-  showTab('startup-hub');
-}
-
-// 🚫 Sticky nav removed — no initHubNav, no scroll listeners
-
-document.addEventListener('DOMContentLoaded', () => {
-  initHubNav();
-});
 
 document.addEventListener('DOMContentLoaded', () => {
   const feedTitle = document.getElementById('feed-title');
