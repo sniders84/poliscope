@@ -207,10 +207,6 @@ function showTab(id) {
   if (activeTab) activeTab.style.display = 'block';
 }
 
-function showStartupHub() {
-  showTab('startup-hub');
-}
-
 function showPodcastsShows() {
   console.log('showPodcastsShows() start');
 
@@ -1003,6 +999,9 @@ function showOrganizations() {
       console.error(err);
     });
 }
+// ==== HOME HUB ====
+
+// Show Home Hub tab and render cards
 function showStartupHub() {
   showTab('startup-hub'); // makes sure only the Home Hub tab is visible
 
@@ -1010,7 +1009,6 @@ function showStartupHub() {
   if (!hubContainer) return;
   hubContainer.innerHTML = '';
 
-  // Removed "Popular Podcasts" and "Trending Now"
   const hubItems = [
     { title: "National Broadcasting Networks", id: "national-networks" },
     { title: "Global Politics & World News", id: "global-news" },
@@ -1314,18 +1312,6 @@ function wireSearchBar() {
     renderOfficials(null, query);
   });
 }
-// ==== HOME HUB NAV ====
-
-// Simple startup hub loader
-function showStartupHub() {
-  showTab('startup-hub');
-}
-
-// 🚫 Sticky nav removed — no initHubNav, no scroll listeners
-
-document.addEventListener('DOMContentLoaded', () => {
-  initHubNav();
-});
 
 document.addEventListener('DOMContentLoaded', () => {
   const feedTitle = document.getElementById('feed-title');
