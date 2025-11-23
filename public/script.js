@@ -97,6 +97,8 @@ Promise.all([
   showsData = shows;
 })
 .catch(err => console.error('Error loading podcasts or shows JSON:', err));
+console.log('podcastsData length:', podcastsData.length);
+console.log('showsData length:', showsData.length);
 
 // Modal refs (Officials modal)
 let officialsModal = null;
@@ -208,76 +210,107 @@ function showPodcastsShows() {
   }
   container.innerHTML = '';
 
-  // helper to create a section (Podcasts, Shows, Favorites)
- const renderSection = (titleText, items, type) => {
-  const section = document.createElement('div');
-  section.className = 'podcast-show-section';
+  // helper to create a section
+  const renderSection = (titleText, items, type) => {
+    const section = document.createElement('div');
+    section.className = 'podcast-show-section';
 
-  const title = document.createElement('h3');
-  title.textContent = titleText;
-  section.appendChild(title);
+    // COLLAPSIBLE HEADER
+    const header = document.createElement('div');
+    header.className = "section-header open";
 
-  const grid = document.createElement('div');
-  grid.className = 'podcast-show-grid';
+    const title = document.createElement('h3');
+    title.textContent = titleText;
 
-  if (!Array.isArray(items) || items.length === 0) {
-    const msg = document.createElement('p');
-    msg.textContent = `No ${titleText.toLowerCase()} available.`;
-    grid.appendChild(msg);
-  } else {
-    items.forEach(item => {
-      try {
-        const card = document.createElement('div');
-        card.className = 'podcast-show-card';
+    const arrow = document.createElement('span');
+    arrow.className = "section-arrow";
+    arrow.textContent = "▶";
 
-        const logoPath = item.logo_slug ? `assets/${item.logo_slug}` : 'assets/default-logo.png';
+    header.appendChild(title);
+    header.appendChild(arrow);
+    section.appendChild(header);
 
-        // Use "Remove" button for Favorites section
-        const favButtonLabel = (titleText === 'Favorites') ? 'Remove' : (isFavorite(item.type || type, item.title) ? '★' : '☆');
+    // SECTION BODY
+    const body = document.createElement('div');
+    body.className = "section-body open";
 
-        card.innerHTML = `
-          <div class="logo-wrapper" role="button" title="Open ${item.title}">
-            <img src="${logoPath}" alt="${item.title} logo" onerror="this.onerror=null;this.src='assets/default-logo.png';" />
-          </div>
-          <div class="card-content">
-            <h4 class="card-title">${escapeHtml(item.title)}</h4>
-            <p class="category">${escapeHtml(item.category || '')} – ${escapeHtml(item.source || '')}</p>
-            <p class="descriptor">${escapeHtml(item.descriptor || '')}</p>
-            <div class="card-actions">
-              <button class="fav-toggle" data-type="${item.type || type}" data-title="${escapeAttr(item.title)}" aria-label="favorite">${favButtonLabel}</button>
+    const grid = document.createElement('div');
+    grid.className = 'podcast-show-grid';
+
+    if (!Array.isArray(items) || items.length === 0) {
+      const msg = document.createElement('p');
+      msg.textContent = `No ${titleText.toLowerCase()} available.`;
+      grid.appendChild(msg);
+    } else {
+      // Render all items
+      items.forEach(item => {
+        try {
+          const card = document.createElement('div');
+          card.className = 'podcast-show-card';
+
+          const logoPath = item.logo_slug ? `assets/${item.logo_slug}` : 'assets/default-logo.png';
+
+          card.innerHTML = `
+            <div class="logo-wrapper" role="button" title="Open ${item.title}">
+              <img src="${logoPath}" alt="${item.title} logo" onerror="this.onerror=null;this.src='assets/default-logo.png';" />
             </div>
-          </div>
-        `;
+            <div class="card-content">
+              <h4 class="card-title">${escapeHtml(item.title)}</h4>
+              <p class="category">${escapeHtml(item.category || '')} – ${escapeHtml(item.source || '')}</p>
+              <p class="descriptor">${escapeHtml(item.descriptor || '')}</p>
+              <div class="card-actions">
+                <button class="fav-toggle" data-type="${item.type || type}" data-title="${escapeAttr(item.title)}" aria-label="favorite">
+                  ${isFavorite(item.type || type, item.title) ? '★' : '☆'}
+                </button>
+              </div>
+            </div>
+          `;
 
-        const logoBtn = card.querySelector('.logo-wrapper');
-        if (logoBtn) {
-          logoBtn.addEventListener('click', () => {
-            if (item.official_url) window.open(item.official_url, '_blank');
-          });
+          // Logo click
+          const logoBtn = card.querySelector('.logo-wrapper');
+          if (logoBtn) {
+            logoBtn.addEventListener('click', () => {
+              if (item.official_url) window.open(item.official_url, '_blank');
+            });
+          }
+
+          // Favorite toggle
+          const favBtn = card.querySelector('.fav-toggle');
+          if (favBtn) {
+            favBtn.addEventListener('click', (e) => {
+              e.stopPropagation();
+              toggleFavorite(item.type || type, item.title);
+              showPodcastsShows(); // refresh
+            });
+          }
+
+          grid.appendChild(card);
+        } catch (err) {
+          console.error('Error rendering item', item, err);
         }
+      });
+    }
 
-        const favBtn = card.querySelector('.fav-toggle');
-        if (favBtn) {
-          favBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const t = favBtn.getAttribute('data-type');
-            const title = favBtn.getAttribute('data-title');
-            toggleFavorite(t, title);
-          });
-        }
+    body.appendChild(grid);
+    section.appendChild(body);
 
-        grid.appendChild(card);
-      } catch (err) {
-        console.error('Error rendering item', item, err);
+    // COLLAPSE/EXPAND
+    header.addEventListener('click', () => {
+      const isOpen = body.classList.contains("open");
+      if (isOpen) {
+        body.classList.remove("open");
+        body.classList.add("closed");
+        header.classList.remove("open");
+      } else {
+        body.classList.remove("closed");
+        body.classList.add("open");
+        header.classList.add("open");
       }
     });
-  }
 
-  section.appendChild(grid);
-  return section;
-};
+    return section;
+  };
 
-  // small helpers (local)
   function escapeHtml(str) {
     if (!str) return '';
     return String(str)
@@ -291,69 +324,46 @@ function showPodcastsShows() {
     return escapeHtml(str).replace(/\s+/g, ' ');
   }
 
-  // Load podcasts and shows in parallel
-  const podcastsPromise = fetch('/podcasts.json').then(r => {
-    if (!r.ok) throw new Error('podcasts.json not found');
-    return r.json();
-  });
+  // FAVORITES SECTION
+  const favoriteItems = [];
 
-  const showsPromise = fetch('/shows.json').then(r => {
-    if (!r.ok) throw new Error('shows.json not found');
-    return r.json();
-  });
-
-  Promise.all([podcastsPromise, showsPromise])
-    .then(([podcasts, shows]) => {
-      // FAVORITES SECTION
-      const favoriteItems = [];
-
-      // collect favorited podcasts
-      if (Array.isArray(window.favorites.podcasts)) {
-        window.favorites.podcasts.forEach(title => {
-          const item = podcasts.find(p => p.title === title);
-          if (item) favoriteItems.push({ ...item, type: 'podcasts' });
-        });
-      }
-
-      // collect favorited shows
-      if (Array.isArray(window.favorites.shows)) {
-        window.favorites.shows.forEach(title => {
-          const item = shows.find(s => s.title === title);
-          if (item) favoriteItems.push({ ...item, type: 'shows' });
-        });
-      }
-
-      // render favorites section (always visible)
-      const favSection = renderSection('Favorites', favoriteItems, 'favorites');
-      container.appendChild(favSection);
-
-      // render normal sections
-      container.appendChild(renderSection('Podcasts', podcasts || [], 'podcasts'));
-      container.appendChild(renderSection('Shows', shows || [], 'shows'));
-
-      // wire search after DOM is built
-      const tabSearch = document.getElementById('podcasts-search-bar');
-      if (tabSearch) {
-        tabSearch.value = tabSearch.value || '';
-        tabSearch.removeEventListener('input', tabSearch._podcastHandler || (() => {}));
-        const handler = () => {
-          const term = tabSearch.value.toLowerCase().trim();
-          container.querySelectorAll('.podcast-show-card').forEach(card => {
-            const title = (card.querySelector('.card-title')?.textContent || '').toLowerCase();
-            const desc = (card.querySelector('.descriptor')?.textContent || '').toLowerCase();
-            card.style.display = (title.includes(term) || desc.includes(term)) ? '' : 'none';
-          });
-        };
-        tabSearch.addEventListener('input', handler);
-        tabSearch._podcastHandler = handler;
-      }
-
-      console.log('showPodcastsShows() finished rendering');
-    })
-    .catch(err => {
-      console.error('Error loading podcasts/shows JSON', err);
-      container.innerHTML = '<p>Error loading podcasts or shows.</p>';
+  if (Array.isArray(window.favorites.podcasts)) {
+    window.favorites.podcasts.forEach(title => {
+      const item = podcastsData.find(p => p.title === title);
+      if (item) favoriteItems.push({ ...item, type: 'podcasts' });
     });
+  }
+
+  if (Array.isArray(window.favorites.shows)) {
+    window.favorites.shows.forEach(title => {
+      const item = showsData.find(s => s.title === title);
+      if (item) favoriteItems.push({ ...item, type: 'shows' });
+    });
+  }
+
+  // APPEND SECTIONS
+  container.appendChild(renderSection('Favorites', favoriteItems, 'favorites'));
+  container.appendChild(renderSection('Podcasts', podcastsData || [], 'podcasts'));
+  container.appendChild(renderSection('Shows', showsData || [], 'shows'));
+
+  // SEARCH
+  const tabSearch = document.getElementById('podcasts-search-bar');
+  if (tabSearch) {
+    tabSearch.value = tabSearch.value || '';
+    tabSearch.removeEventListener('input', tabSearch._podcastHandler || (() => {}));
+    const handler = () => {
+      const term = tabSearch.value.toLowerCase().trim();
+      container.querySelectorAll('.podcast-show-card').forEach(card => {
+        const title = (card.querySelector('.card-title')?.textContent || '').toLowerCase();
+        const desc = (card.querySelector('.descriptor')?.textContent || '').toLowerCase();
+        card.style.display = (title.includes(term) || desc.includes(term)) ? '' : 'none';
+      });
+    };
+    tabSearch.addEventListener('input', handler);
+    tabSearch._podcastHandler = handler;
+  }
+
+  console.log('showPodcastsShows() finished rendering');
 }
 
 function showCivic() {
