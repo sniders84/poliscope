@@ -1321,6 +1321,7 @@ function showStartupHub() {
   showTab('startup-hub');
 }
 
+<script>
 document.addEventListener('DOMContentLoaded', () => {
   const tabs = document.querySelectorAll('nav .tab');
   tabs.forEach(tab => {
@@ -1329,6 +1330,8 @@ document.addEventListener('DOMContentLoaded', () => {
       tab.classList.add('active');
     });
   });
+});
+</script>
 
   // Optional: set Home Hub active on load
   const homeHub = document.querySelector('nav .tab');
