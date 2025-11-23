@@ -2808,3 +2808,15 @@ rssapp-carousel {
   background-color: #FF4D4F;
   color: #fff;
 }
+/* Prevent hover glow from being cut off */
+.podcast-show-grid {
+  overflow: visible;   /* let shadows show outside the grid */
+}
+
+.podcast-show-card {
+  margin-top: 6px;     /* small spacing so glow isn't flush against header */
+  position: relative;  /* ensures box-shadow renders fully */
+}
+.section-body {
+  overflow: visible;   /* allow hover effects to extend outside */
+}
