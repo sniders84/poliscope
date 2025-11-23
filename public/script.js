@@ -57,6 +57,7 @@ let officialsContainer = null;
 let searchBar = null;
 
 // === DATA LOADING ===
+// Load all major JSON datasets at once
 Promise.all([
   fetch('federalOfficials.json').then(res => res.json()),
   fetch('senators.json').then(res => res.json()),
@@ -70,19 +71,25 @@ Promise.all([
   fetch('voting-data.json').then(res => res.json())
 ])
 .then(([federal, sens, govs, cabinet, reps, ltGovs, scotus, groups, links, voting]) => {
-  // Fill globals
+  // Keep global arrays filled
   governors = govs;
   ltGovernors = ltGovs;
   senators = sens;
   houseReps = reps;
 
-  // Keep officials data pre‑rendered in memory
+  // Merge major federal data sources
+  const allOfficials = [
+    ...federal,
+    ...cabinet,
+    ...sens,
+    ...reps,
+    ...govs,
+    ...ltGovs,
+    ...scotus
+  ];
+
   renderOfficials(selectedState, '');
 
-  // But show Home Hub tab to the user
-  showStartupHub();
-
-  // Wire search bar
   if (searchBar) {
     searchBar.addEventListener('input', e => {
       renderOfficials(selectedState, e.target.value);
@@ -1522,35 +1529,38 @@ async function fetchGoogleNewsRss(feedUrl) {
   }
 }
 
- // === Load officials data with smooth fade-in ===
-Promise.all([
-  fetch('/governors.json').then(res => res.json()),
-  fetch('/ltgovernors.json').then(res => res.json()),
-  fetch('/senators.json').then(res => res.json()),
-  fetch('/housereps.json').then(res => res.json())
-])
-.then(([govs, ltGovs, sens, reps]) => {
-  governors = govs;
-  ltGovernors = ltGovs;
-  senators = sens;
-  houseReps = reps;
+  // === Load officials data with smooth fade-in ===
+  Promise.all([
+    fetch('/governors.json').then(res => res.json()),
+    fetch('/ltgovernors.json').then(res => res.json()),
+    fetch('/senators.json').then(res => res.json()),
+    fetch('/housereps.json').then(res => res.json())
+  ])
+    .then(([govs, ltGovs, sens, reps]) => {
+      governors = govs;
+      ltGovernors = ltGovs;
+      senators = sens;
+      houseReps = reps;
 
-  // Pre-render officials so search wiring works
-  renderOfficials(selectedState, '');
+      // Render officials
+      renderOfficials(selectedState, '');
 
-  // Show Home Hub tab by default
-  showStartupHub();
+      // Fade out loading overlay
+      if (loadingOverlay) {
+        loadingOverlay.style.transition = 'opacity 0.5s ease';
+        loadingOverlay.style.opacity = '0';
+        setTimeout(() => loadingOverlay.remove(), 500);
+      }
 
-  // Load social trends if available
-  const socialFeed = document.getElementById('social-feed');
-  if (socialFeed && typeof loadSocialTrends === 'function') {
-    console.log("🎬 loadSocialTrends is running...");
-    loadSocialTrends();
-  }
-}) // <-- this closes the .then block
-.catch(err => {
-  console.error('Error loading official data:', err);
-  if (typeof loadingOverlay !== 'undefined' && loadingOverlay) {
-    loadingOverlay.textContent = 'Failed to load data.';
-  }
+      // Load social trends
+      const socialFeed = document.getElementById('social-feed');
+      if (socialFeed && typeof loadSocialTrends === 'function') {
+        console.log("🎬 loadSocialTrends is running...");
+        loadSocialTrends();
+      }
+    })
+    .catch(err => {
+      console.error('Error loading official data:', err);
+      if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
+    });
 });
