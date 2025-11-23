@@ -1,254 +1,341 @@
-// === FAVORITES STORAGE & HELPERS (TITLE-ONLY MODE, FINAL) ===
+// === FAVORITES STORAGE & HELPERS (FINAL & CORRECT) ===
 window.favorites = {
   podcasts: [],
   shows: []
 };
 
+// Check if title is favorited
 function isFavorite(type, title) {
   return window.favorites[type]?.includes(title);
 }
 
+// Toggle favorite on/off
 function toggleFavorite(type, title) {
   if (!window.favorites[type]) window.favorites[type] = [];
 
   const index = window.favorites[type].indexOf(title);
+
   if (index > -1) {
+    // remove
     window.favorites[type].splice(index, 1);
   } else {
+    // add
     window.favorites[type].push(title);
   }
 
-  // Refresh UI if podcasts/shows tab is visible
-  const tab = document.getElementById('podcasts-shows');
-  if (tab && tab.style.display !== 'none') {
-    renderPodcastsShows();
+  // Re-render Podcasts & Shows if visible
+  const tab = document.getElementById("podcasts-shows");
+  if (tab && tab.style.display !== "none") {
+    showPodcastsShows();
   }
 }
-
 // === GLOBAL STATE ===
-window.favorites = { podcasts: [], shows: [] };
-
 let selectedState = 'North Carolina';
 let governors = [];
 let ltGovernors = [];
 let senators = [];
 let houseReps = [];
-let federalOfficials = [];
-let podcastsData = [];
-let showsData = [];
 let officialsContainer = null;
 let searchBar = null;
+
+// === DATA LOADING ===
+// Load all major JSON datasets at once
+Promise.all([
+  fetch('federalOfficials.json').then(res => res.json()),
+  fetch('senators.json').then(res => res.json()),
+  fetch('governors.json').then(res => res.json()),
+  fetch('cabinet.json').then(res => res.json()),
+  fetch('housereps.json').then(res => res.json()),
+  fetch('ltgovernors.json').then(res => res.json()),
+  fetch('scotus.json').then(res => res.json()),
+  fetch('political-groups.json').then(res => res.json()),
+  fetch('state-links.json').then(res => res.json()),
+  fetch('voting-data.json').then(res => res.json())
+])
+.then(([federal, sens, govs, cabinet, reps, ltGovs, scotus, groups, links, voting]) => {
+  // Keep global arrays filled
+  governors = govs;
+  ltGovernors = ltGovs;
+  senators = sens;
+  houseReps = reps;
+
+  // Merge major federal data sources
+  const allOfficials = [
+    ...federal,
+    ...cabinet,
+    ...sens,
+    ...reps,
+    ...govs,
+    ...ltGovs,
+    ...scotus
+  ];
+
+  renderOfficials(selectedState, '');
+
+  if (searchBar) {
+    searchBar.addEventListener('input', e => {
+      renderOfficials(selectedState, e.target.value);
+    });
+  }
+})
+.catch(err => console.error('Error loading data files:', err));
+
+// === PODCASTS & SHOWS DATA ===
+let podcastsData = [];
+let showsData = [];
+
+Promise.all([
+  fetch('podcasts.json').then(res => res.json()),
+  fetch('shows.json').then(res => res.json())
+])
+.then(([podcasts, shows]) => {
+  podcastsData = podcasts;
+  showsData = shows;
+})
+.catch(err => console.error('Error loading podcasts or shows JSON:', err));
+
+// Modal refs (Officials modal)
 let officialsModal = null;
 let officialsModalContent = null;
 let officialsModalCloseBtn = null;
 
-// === FAVORITES HELPERS ===
-function isFavorite(type, title) {
-    return window.favorites[type]?.includes(title);
-}
+// === POLL CATEGORIES (final) ===
+const pollCategories = [
+  {
+    label: 'President',
+    polls: [
+      { source: 'Ballotpedia', name: 'Ballotpedia – Presidential approval index', url: 'https://ballotpedia.org/Ballotpedia%27s_Polling_Index:_Presidential_approval_rating' },
+      { source: 'RCP', name: 'RCP – Presidential job approval', url: 'https://www.realclearpolling.com/polls/approval/donald-trump/approval-rating' },
+      { source: '270toWin', name: '270toWin – 2028 Republican primary polls', url: 'https://www.270towin.com/2028-republican-nomination/' },
+      { source: '270toWin', name: '270toWin – 2028 Democratic primary polls', url: 'https://www.270towin.com/2028-democratic-nomination/' },
+      { source: 'Cook Political', name: 'Cook Political Report – Presidential coverage', url: 'https://www.cookpolitical.com/' },
+      { source: 'Sabato', name: 'Sabato’s Crystal Ball – Presidential elections', url: 'https://centerforpolitics.org/crystalball/' },
+      { source: 'AP-NORC', name: 'AP-NORC – Polling tracker (approval and key issues)', url: 'https://apnews.com/projects/polling-tracker/' },
+      { source: 'DDHQ', name: 'Decision Desk HQ – Polls averages hub', url: 'https://decisiondeskhq.com/polls/averages/' },
+      { source: 'Gallup', name: 'Gallup – Presidential job approval topic', url: 'https://news.gallup.com/topic/presidential-job-approval.aspx' },
+      { source: 'American Presidency Project', name: 'UCSB – Presidential job approval (Gallup historical)', url: 'https://www.presidency.ucsb.edu/statistics/data/presidential-job-approval-all-data' }
+    ]
+  },
+  {
+    label: 'Vice President',
+    polls: [
+      { source: 'RCP', name: 'RCP – JD Vance favorability', url: 'https://www.realclearpolling.com/polls/favorability/j-d-vance' },
+      { source: 'DDHQ', name: 'Decision Desk HQ – Polls averages hub', url: 'https://decisiondeskhq.com/polls/averages/' },
+      { source: 'Ballotpedia', name: 'Ballotpedia – Vice presidential candidates', url: 'https://ballotpedia.org/Vice_presidential_candidates,_2024' },
+      { source: 'Cook Political', name: 'Cook Political Report – Vice presidential coverage', url: 'https://www.cookpolitical.com/' },
+      { source: 'Sabato', name: 'Sabato’s Crystal Ball – Vice presidential coverage', url: 'https://centerforpolitics.org/crystalball/' },
+      { source: 'RaceToWH', name: 'Race to the WH – GOP VP primary tracker', url: 'https://www.racetothewh.com/2024/rep' },
+      { source: 'RaceToWH', name: 'Race to the WH – Democratic VP primary tracker', url: 'https://www.racetothewh.com/2024/dem' },
+      { source: 'AP-NORC', name: 'AP-NORC – Polling tracker (issues/approval context)', url: 'https://apnews.com/projects/polling-tracker/' },
+      { source: 'NBC Tracker', name: 'NBC – Presidential candidates tracker context', url: 'https://www.nbcnews.com/politics/2024-elections/presidential-candidates-tracker' },
+      { source: 'ABC Explainer', name: 'ABC News – How primaries work explainer', url: 'https://abcnews.go.com/Politics/2024-republican-democratic-presidential-primaries-caucuses-work/story?id=106765290' }
+    ]
+  },
+  {
+    label: 'Governor',
+    polls: [
+      { source: 'Ballotpedia', name: 'Ballotpedia – 2025 governor elections', url: 'https://ballotpedia.org/Gubernatorial_elections,_2025' },
+      { source: 'RCP', name: 'RCP – Governor polls', url: 'https://www.realclearpolling.com/latest-polls/governor' },
+      { source: 'DDHQ', name: 'DDHQ – Virginia governor general ballot test average', url: 'https://polls.decisiondeskhq.com/averages/general-ballot-test/2025-virginia-governor/virginia/lv-rv-adults' },
+      { source: '270toWin', name: '270toWin – Latest 2026 governor polls', url: 'https://www.270towin.com/polls/latest-2026-governor-election-polls/' },
+      { source: 'Cook Political', name: 'Cook Political Report – Governor ratings', url: 'https://www.cookpolitical.com/ratings/governor-race-ratings' },
+      { source: 'Sabato', name: 'Sabato’s Crystal Ball – 2026 governor elections', url: 'https://centerforpolitics.org/crystalball/2026-governor/' },
+      { source: 'AP-NORC', name: 'AP-NORC – Polling tracker (issues/approval context)', url: 'https://apnews.com/projects/polling-tracker/' },
+      { source: 'Decision Night', name: 'DDHQ – Election night results hub', url: 'https://election-night.decisiondeskhq.com/date/2025-11-04' },
+      { source: 'DDHQ Results', name: 'DDHQ – 2025 Virginia results hub', url: 'https://decisiondeskhq.com/results/2025/General/Virginia/' },
+      { source: 'The 19th', name: 'The 19th – Virginia governor overview', url: 'https://19thnews.org/2025/06/virginia-elections-spanberger-earle-sears-primary-governor/' }
+    ]
+  },
+  {
+    label: 'U.S. Senate',
+    polls: [
+      { source: 'Ballotpedia', name: 'Ballotpedia – 2026 Senate elections', url: 'https://ballotpedia.org/United_States_Senate_elections,_2026' },
+      { source: 'RCP', name: 'RCP – Latest Senate polls', url: 'https://www.realclearpolling.com/latest-polls/senate' },
+      { source: '270toWin', name: '270toWin – Latest 2026 Senate polls', url: 'https://www.270towin.com/polls/latest-2026-senate-election-polls/' },
+      { source: 'Cook Political', name: 'Cook Political Report – 2026 Senate ratings', url: 'https://www.cookpolitical.com/ratings/senate-race-ratings' },
+      { source: 'Sabato', name: 'Sabato’s Crystal Ball – 2026 Senate elections', url: 'https://centerforpolitics.org/crystalball/2026-senate/' },
+      { source: 'DDHQ', name: 'Decision Desk HQ – Polls averages hub', url: 'https://decisiondeskhq.com/polls/averages/' },
+      { source: 'Ballotpedia', name: 'Ballotpedia – Senate battleground overview', url: 'https://ballotpedia.org/United_States_Senate_elections,_2026#Battlegrounds' },
+      { source: 'RCP', name: 'RCP – Senate race list', url: 'https://www.realclearpolitics.com/epolls/latest-polls/senate/' },
+      { source: '270toWin', name: '270toWin – Senate map/race ratings', url: 'https://www.270towin.com/2026-senate' },
+      { source: 'Center for Politics', name: 'Sabato – Crystal Ball archive (Senate)', url: 'https://centerforpolitics.org/crystalball/category/senate/' }
+    ]
+  },
+  {
+    label: 'U.S. House',
+    polls: [
+      { source: 'Ballotpedia', name: 'Ballotpedia – 2026 House elections', url: 'https://ballotpedia.org/United_States_House_of_Representatives_elections,_2026' },
+      { source: 'RCP', name: 'RCP – Generic congressional ballot', url: 'https://www.realclearpolling.com/polls/state-of-the-union/generic-congressional-vote' },
+      { source: '270toWin', name: '270toWin – Latest 2026 House polls', url: 'https://www.270towin.com/polls/latest-2026-house-election-polls/' },
+      { source: 'Cook Political', name: 'Cook Political Report – 2026 House ratings', url: 'https://www.cookpolitical.com/ratings/house-race-ratings' },
+      { source: 'Sabato', name: 'Sabato’s Crystal Ball – 2026 House elections', url: 'https://centerforpolitics.org/crystalball/2026-house/' },
+      { source: 'DDHQ', name: 'Decision Desk HQ – Polls averages hub', url: 'https://decisiondeskhq.com/polls/averages/' },
+      { source: 'RCP', name: 'RCP – Latest House polls list', url: 'https://www.realclearpolling.com/latest-polls/house' },
+      { source: 'Ballotpedia', name: 'Ballotpedia – House battleground overview', url: 'https://ballotpedia.org/United_States_House_of_Representatives_elections,_2026#Battlegrounds' },
+      { source: '270toWin', name: '270toWin – House ratings overview', url: 'https://www.270towin.com/2026-house-elections' },
+      { source: 'Center for Politics', name: 'Sabato – Crystal Ball archive (House)', url: 'https://centerforpolitics.org/crystalball/category/house/' }
+    ]
+  }
+];
 
-function toggleFavorite(type, title) {
-    if (!window.favorites[type]) window.favorites[type] = [];
-    const index = window.favorites[type].indexOf(title);
-    if (index > -1) window.favorites[type].splice(index, 1);
-    else window.favorites[type].push(title);
-
-    // Refresh Podcasts & Shows UI if visible
-    const tab = document.getElementById('podcasts-shows');
-    if (tab && tab.style.display !== 'none') {
-        showPodcastsShows();
-    }
-}
-
-// === DATA LOADING ===
-Promise.all([
-    fetch('federalOfficials.json').then(r => r.json()),
-    fetch('senators.json').then(r => r.json()),
-    fetch('governors.json').then(r => r.json()),
-    fetch('cabinet.json').then(r => r.json()),
-    fetch('housereps.json').then(r => r.json()),
-    fetch('ltgovernors.json').then(r => r.json()),
-    fetch('scotus.json').then(r => r.json()),
-    fetch('political-groups.json').then(r => r.json()),
-    fetch('state-links.json').then(r => r.json()),
-    fetch('voting-data.json').then(r => r.json())
-])
-.then(([federal, sens, govs, cabinet, reps, ltGovs, scotus, groups, links, voting]) => {
-    federalOfficials = federal;
-    governors = govs;
-    ltGovernors = ltGovs;
-    senators = sens;
-    houseReps = reps;
-
-    const allOfficials = [...federal, ...cabinet, ...sens, ...reps, ...govs, ...ltGovs, ...scotus];
-    if (typeof renderOfficials === 'function') {
-        renderOfficials(selectedState, '', allOfficials);
-        if (searchBar) {
-            searchBar.addEventListener('input', e => {
-                renderOfficials(selectedState, e.target.value, allOfficials);
-            });
-        }
-    }
-})
-.catch(err => console.error('Error loading data files:', err));
-
-Promise.all([
-    fetch('podcasts.json').then(r => r.json()),
-    fetch('shows.json').then(r => r.json())
-])
-.then(([podcasts, shows]) => {
-    podcastsData = podcasts;
-    showsData = shows;
-})
-.catch(err => console.error('Error loading podcasts/shows JSON:', err));
-
-// === SIMPLE TAB SWITCHER ===
+// === Simple tab switcher ===
 function showTab(id) {
-    document.querySelectorAll('.tab-content').forEach(tab => tab.style.display = 'none');
-    const active = document.getElementById(id);
-    if (active) active.style.display = 'block';
+  document.querySelectorAll('.tab-content').forEach(tab => {
+    tab.style.display = 'none';
+  });
+  const activeTab = document.getElementById(id);
+  if (activeTab) activeTab.style.display = 'block';
 }
 
-function showStartupHub() { showTab('startup-hub'); }
+function showStartupHub() {
+  showTab('startup-hub');
+}
 
-// === PODCASTS & SHOWS RENDERING ===
+// === PODCASTS & SHOWS RENDERING (replace your existing showPodcastsShows) ===
 function showPodcastsShows() {
-    showTab('podcasts-shows');
+  console.log('showPodcastsShows() start');
 
-    const container = document.getElementById('podcasts-cards');
-    if (!container) return;
-    container.innerHTML = '';
+  // ensure the tab is visible
+  showTab('podcasts-shows');
 
-    // ===== FAVORITES SECTION =====
-    const favoritesSection = document.getElementById('favorites-section');
-    const favoritesList = document.getElementById('favorites-list');
-    if (favoritesSection && favoritesList) {
-        function renderFavoritesSection() {
-            favoritesList.innerHTML = '';
-            const favPods = window.favorites.podcasts || [];
-            const favShows = window.favorites.shows || [];
+  const container = document.getElementById('podcasts-cards');
+  if (!container) {
+    console.error('podcasts-cards container not found');
+    return;
+  }
+  container.innerHTML = '';
 
-            if (favPods.length === 0 && favShows.length === 0) {
-                favoritesSection.style.display = 'none';
-                return;
-            }
+  // helper to create a section (Podcasts or Shows)
+  const renderSection = (titleText, items, type) => {
+    const section = document.createElement('div');
+    section.className = 'podcast-show-section';
 
-            favoritesSection.style.display = '';
-            favPods.forEach(title => {
-                const div = document.createElement('div');
-                div.className = 'favorite-card';
-                div.innerHTML = `<p>${title}</p><button class="favorite-btn" data-type="podcasts" data-title="${title}">★</button>`;
-                favoritesList.appendChild(div);
+    const title = document.createElement('h3');
+    title.textContent = titleText;
+    section.appendChild(title);
+
+    const grid = document.createElement('div');
+    grid.className = 'podcast-show-grid';
+
+    if (!Array.isArray(items) || items.length === 0) {
+      const msg = document.createElement('p');
+      msg.textContent = `No ${titleText.toLowerCase()} available.`;
+      grid.appendChild(msg);
+    } else {
+      items.forEach(item => {
+        try {
+          const card = document.createElement('div');
+          card.className = 'podcast-show-card';
+
+          // logo path (user said logos live in public/assets/)
+          const logoPath = item.logo_slug ? `assets/${item.logo_slug}` : 'assets/default-logo.png';
+
+          card.innerHTML = `
+            <div class="logo-wrapper" role="button" title="Open ${item.title}">
+              <img src="${logoPath}" alt="${item.title} logo" onerror="this.onerror=null;this.src='assets/default-logo.png';" />
+            </div>
+            <div class="card-content">
+              <h4 class="card-title">${escapeHtml(item.title)}</h4>
+              <p class="category">${escapeHtml(item.category || '')} – ${escapeHtml(item.source || '')}</p>
+              <p class="descriptor">${escapeHtml(item.descriptor || '')}</p>
+              <div class="card-actions">
+                <button class="fav-toggle" data-type="${type}" data-title="${escapeAttr(item.title)}" aria-label="favorite">${isFavorite(type, item.title) ? '★' : '☆'}</button>
+              </div>
+            </div>
+          `;
+
+          // logo click -> open official URL
+          const logoBtn = card.querySelector('.logo-wrapper');
+          if (logoBtn) {
+            logoBtn.addEventListener('click', () => {
+              if (item.official_url) window.open(item.official_url, '_blank');
             });
-            favShows.forEach(title => {
-                const div = document.createElement('div');
-                div.className = 'favorite-card';
-                div.innerHTML = `<p>${title}</p><button class="favorite-btn" data-type="shows" data-title="${title}">★</button>`;
-                favoritesList.appendChild(div);
-            });
+          }
 
-            favoritesList.querySelectorAll(".favorite-btn").forEach(btn => {
-                btn.addEventListener("click", () => {
-                    toggleFavorite(btn.dataset.type, btn.dataset.title);
-                    renderFavoritesSection();
-                });
+          // favorite toggle
+          const favBtn = card.querySelector('.fav-toggle');
+          if (favBtn) {
+            favBtn.addEventListener('click', (e) => {
+              e.stopPropagation();
+              const t = favBtn.getAttribute('data-type');
+              const title = favBtn.getAttribute('data-title');
+              // toggleFavorite expects (type, title)
+              toggleFavorite(t, title);
             });
+          }
+
+          grid.appendChild(card);
+        } catch (err) {
+          console.error('Error rendering item', item, err);
         }
-        renderFavoritesSection();
+      });
     }
 
-    // ===== PODCASTS =====
-    if (podcastsData.length) {
-        const podcastSection = document.createElement('div');
-        podcastSection.className = 'podcast-show-section';
-        podcastSection.innerHTML = `<h3>Podcasts</h3>`;
-        const grid = document.createElement('div');
-        grid.className = 'podcast-show-grid';
+    section.appendChild(grid);
+    return section;
+  };
 
-        podcastsData.forEach(item => {
-            const isFav = isFavorite('podcasts', item.title);
-            const card = document.createElement('div');
-            card.className = 'podcast-show-card';
-            card.innerHTML = `
-                <div class="logo-wrapper"><img src="assets/logos/${item.logo_slug}" alt="${item.title}"></div>
-                <div class="card-content">
-                    <h4>${item.title}</h4>
-                    <p class="category">${item.category} – ${item.source}</p>
-                    <p class="descriptor">${item.descriptor}</p>
-                    <div class="card-actions">
-                        <button class="favorite-btn">${isFav ? '★' : '☆'}</button>
-                    </div>
-                </div>
-            `;
+  // small helpers (local)
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+  function escapeAttr(str) {
+    return escapeHtml(str).replace(/\s+/g, ' ');
+  }
 
-            card.querySelector('.logo-wrapper').addEventListener('click', () => {
-                window.open(item.official_url, '_blank');
-            });
+  // Load podcasts then shows (parallelish)
+  const podcastsPromise = fetch('/podcasts.json').then(r => {
+    if (!r.ok) throw new Error('podcasts.json not found');
+    return r.json();
+  });
 
-            card.querySelector('.favorite-btn').addEventListener('click', () => {
-                toggleFavorite('podcasts', item.title);
-                showPodcastsShows();
-            });
+  const showsPromise = fetch('/shows.json').then(r => {
+    if (!r.ok) throw new Error('shows.json not found');
+    return r.json();
+  });
 
-            grid.appendChild(card);
-        });
+  Promise.all([podcastsPromise, showsPromise])
+    .then(([podcasts, shows]) => {
+      console.log('podcasts loaded:', Array.isArray(podcasts) ? podcasts.length : podcasts);
+      console.log('shows loaded:', Array.isArray(shows) ? shows.length : shows);
 
-        podcastSection.appendChild(grid);
-        container.appendChild(podcastSection);
-    }
+      // Podcasts section
+      const podcastSection = renderSection('Podcasts', podcasts || [], 'podcasts');
+      container.appendChild(podcastSection);
 
-    // ===== SHOWS =====
-    if (showsData.length) {
-        const showsSection = document.createElement('div');
-        showsSection.className = 'podcast-show-section';
-        showsSection.innerHTML = `<h3>Shows</h3>`;
-        const grid = document.createElement('div');
-        grid.className = 'podcast-show-grid';
+      // Shows section
+      const showsSection = renderSection('Shows', shows || [], 'shows');
+      container.appendChild(showsSection);
 
-        showsData.forEach(item => {
-            const isFav = isFavorite('shows', item.title);
-            const card = document.createElement('div');
-            card.className = 'podcast-show-card';
-            card.innerHTML = `
-                <div class="logo-wrapper"><img src="assets/logos/${item.logo_slug}" alt="${item.title}"></div>
-                <div class="card-content">
-                    <h4>${item.title}</h4>
-                    <p class="category">${item.category} – ${item.source}</p>
-                    <p class="descriptor">${item.descriptor}</p>
-                    <div class="card-actions">
-                        <button class="favorite-btn">${isFav ? '★' : '☆'}</button>
-                    </div>
-                </div>
-            `;
+      // wire the tab-specific search AFTER DOM is built
+      const tabSearch = document.getElementById('podcasts-search-bar');
+      if (tabSearch) {
+        tabSearch.value = tabSearch.value || '';
+        tabSearch.removeEventListener('input', tabSearch._podcastHandler || (() => {}));
+        const handler = () => {
+          const term = tabSearch.value.toLowerCase().trim();
+          container.querySelectorAll('.podcast-show-card').forEach(card => {
+            const title = (card.querySelector('.card-title')?.textContent || '').toLowerCase();
+            const desc = (card.querySelector('.descriptor')?.textContent || '').toLowerCase();
+            card.style.display = (title.includes(term) || desc.includes(term)) ? '' : 'none';
+          });
+        };
+        tabSearch.addEventListener('input', handler);
+        tabSearch._podcastHandler = handler;
+      }
 
-            card.querySelector('.logo-wrapper').addEventListener('click', () => {
-                window.open(item.official_url, '_blank');
-            });
-
-            card.querySelector('.favorite-btn').addEventListener('click', () => {
-                toggleFavorite('shows', item.title);
-                showPodcastsShows();
-            });
-
-            grid.appendChild(card);
-        });
-
-        showsSection.appendChild(grid);
-        container.appendChild(showsSection);
-    }
-
-    // ===== SEARCH FILTER =====
-    const searchInput = document.getElementById('podcasts-search-bar');
-    if (searchInput) {
-        searchInput.addEventListener('input', () => {
-            const term = searchInput.value.toLowerCase();
-            document.querySelectorAll('.podcast-show-card').forEach(card => {
-                const text = card.querySelector('h4')?.textContent.toLowerCase() || '';
-                const desc = card.querySelector('.descriptor')?.textContent.toLowerCase() || '';
-                card.style.display = (text.includes(term) || desc.includes(term)) ? '' : 'none';
-            });
-        });
-    }
+      console.log('showPodcastsShows() finished rendering');
+    })
+    .catch(err => {
+      console.error('Error loading podcasts/shows JSON', err);
+      container.innerHTML = '<p>Error loading podcasts or shows.</p>';
+    });
 }
 
 function showCivic() {
