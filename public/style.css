@@ -3176,3 +3176,17 @@ button.fav-star:hover {
 .remove-favorite {
   display: none;
 }
+button.fav-star {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.favorite-card .remove-favorite {
+  color: red;
+  font-weight: bold;
+  cursor: pointer;
+  display: none;
+}
+.favorite-card:hover .remove-favorite {
+  display: inline-block;
+}
