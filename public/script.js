@@ -88,8 +88,10 @@ Promise.all([
     ...scotus
   ];
 
-  renderOfficials(selectedState, '');
+  // Show Home Hub by default instead of My Officials
+  showStartupHub();
 
+  // Wire search bar to officials if needed
   if (searchBar) {
     searchBar.addEventListener('input', e => {
       renderOfficials(selectedState, e.target.value);
