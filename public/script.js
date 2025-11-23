@@ -311,7 +311,6 @@ function showStartupHub() {
 function showPodcastsShows() {
   console.log('showPodcastsShows() start');
 
-  // ensure the tab is visible
   showTab('podcasts-shows');
 
   const container = document.getElementById('podcasts-cards');
@@ -335,7 +334,7 @@ function showPodcastsShows() {
     return escapeHtml(str).replace(/\s+/g, ' ');
   }
 
-  // helper to update the star button
+  // update favorite star button
   function updateFavoriteStar(btn, type, title) {
     if (!btn) return;
     btn.textContent = isFavorite(type, title) ? '★' : '☆';
@@ -401,13 +400,8 @@ function showPodcastsShows() {
         if (favBtn) {
           favBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            if (isFavorite(type, item.title)) {
-              removeFavorite(type, item.title);
-            } else {
-              addFavorite(type, item.title);
-            }
+            toggleFavorite(type, item.title);
             updateFavoriteStar(favBtn, type, item.title);
-            renderFavoritesSection();
           });
         }
 
@@ -432,18 +426,13 @@ function showPodcastsShows() {
   // FAVORITES SECTION
   const favoriteItems = [];
 
-  if (Array.isArray(window.favorites.podcasts)) {
-    window.favorites.podcasts.forEach(title => {
-      const item = podcastsData.find(p => p.title === title);
-      if (item) favoriteItems.push({ ...item, type: 'podcasts' });
+  ['podcasts', 'shows'].forEach(type => {
+    window.favorites[type].forEach(title => {
+      const dataArray = type === 'podcasts' ? podcastsData : showsData;
+      const item = dataArray.find(i => i.title === title);
+      if (item) favoriteItems.push({ ...item, type });
     });
-  }
-  if (Array.isArray(window.favorites.shows)) {
-    window.favorites.shows.forEach(title => {
-      const item = showsData.find(s => s.title === title);
-      if (item) favoriteItems.push({ ...item, type: 'shows' });
-    });
-  }
+  });
 
   const favSection = renderSection('Favorites', favoriteItems, 'favorites');
   container.appendChild(favSection);
