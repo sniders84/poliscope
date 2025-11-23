@@ -2788,3 +2788,27 @@ rssapp-carousel {
 .section-body.closed {
   max-height: 0;
 }
+/* Default favorite button */
+.favorite-btn {
+  border: none;
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  background-color: #FFD700;
+  color: #000;
+}
+
+/* When hovering the card, flip button to "Remove" */
+.media-card:hover .favorite-btn {
+  background-color: #FF4D4F;
+  color: #fff;
+}
+
+.media-card:hover .favorite-btn::before {
+  content: "✖ Remove";
+}
