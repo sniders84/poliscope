@@ -4,6 +4,11 @@ window.favorites = JSON.parse(localStorage.getItem('favorites')) || {
   shows: []
 };
 
+// Save to localStorage
+function saveFavorites() {
+  localStorage.setItem('favorites', JSON.stringify(window.favorites));
+}
+
 // Add to favorites
 function addFavorite(type, title) {
   if (!window.favorites[type]) window.favorites[type] = [];
@@ -20,18 +25,21 @@ function removeFavorite(type, title) {
   if (index > -1) {
     window.favorites[type].splice(index, 1);
     saveFavorites();
-    renderFavoritesSection(); // immediately remove from favorites display
+    renderFavoritesSection(); // immediately update favorites display
+    updateMainButton(type, title); // update main card button text if visible
   }
-}
-
-// Save to localStorage
-function saveFavorites() {
-  localStorage.setItem('favorites', JSON.stringify(window.favorites));
 }
 
 // Check if favorite
 function isFavorite(type, title) {
   return window.favorites[type]?.includes(title);
+}
+
+// Update main card button text dynamically
+function updateMainButton(type, title) {
+  const btn = document.querySelector(`button[data-type="${type}"][data-title="${CSS.escape(title)}"]`);
+  if (!btn) return;
+  btn.textContent = isFavorite(type, title) ? "Remove Favorite" : "Add Favorite";
 }
 
 // --- FAVORITE BUTTONS FOR MAIN CARDS ---
@@ -40,16 +48,16 @@ function initMainFavoriteButtons() {
     const type = btn.dataset.type;
     const title = btn.dataset.title;
 
+    // Set initial text
     btn.textContent = isFavorite(type, title) ? "Remove Favorite" : "Add Favorite";
 
     btn.addEventListener("click", () => {
       if (isFavorite(type, title)) {
         removeFavorite(type, title);
-        btn.textContent = "Add Favorite";
       } else {
         addFavorite(type, title);
-        btn.textContent = "Remove Favorite";
       }
+      updateMainButton(type, title);
       renderFavoritesSection();
     });
   });
@@ -57,55 +65,30 @@ function initMainFavoriteButtons() {
 
 // --- FAVORITES SECTION RENDER ---
 function renderFavoritesSection() {
-  const container = document.getElementById('favorites-section'); // change to your container
+  const container = document.getElementById('favorites-section'); // your favorites container
   if (!container) return;
   container.innerHTML = '';
 
-  // Loop through types
-  Object.keys(window.favorites).forEach(type => {
-    window.favorites[type].forEach(title => {
+  Object.entries(window.favorites).forEach(([type, titles]) => {
+    titles.forEach(title => {
       const card = document.createElement('div');
-      card.classList.add('favorite-card');
+      card.className = 'favorite-card';
       card.textContent = title;
+      card.dataset.type = type;
+      card.dataset.title = title;
 
-      // Create remove icon
+      // Remove button
       const removeBtn = document.createElement('span');
-      removeBtn.innerHTML = '✕'; // sleek remove symbol
-      removeBtn.classList.add('remove-favorite');
+      removeBtn.innerHTML = '✕';
+      removeBtn.className = 'remove-favorite';
       removeBtn.title = "Remove from favorites";
-
-      removeBtn.addEventListener("click", () => removeFavorite(type, title));
+      removeBtn.addEventListener('click', () => removeFavorite(type, title));
 
       card.appendChild(removeBtn);
       container.appendChild(card);
     });
   });
 }
-
-// --- CSS for hover remove (add to your CSS) ---
-/*
-.favorite-card {
-  position: relative;
-  padding: 10px;
-  margin: 5px 0;
-  background: #f0f0f0;
-  border-radius: 8px;
-}
-
-.remove-favorite {
-  position: absolute;
-  top: 5px;
-  right: 8px;
-  cursor: pointer;
-  opacity: 0;
-  transition: opacity 0.2s;
-  font-weight: bold;
-}
-
-.favorite-card:hover .remove-favorite {
-  opacity: 1;
-}
-*/
 
 // --- INITIALIZE ---
 initMainFavoriteButtons();
