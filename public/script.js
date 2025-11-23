@@ -205,72 +205,73 @@ function showPodcastsShows() {
   container.innerHTML = '';
 
   // helper to create a section (Podcasts, Shows, Favorites)
-  const renderSection = (titleText, items, type) => {
-    const section = document.createElement('div');
-    section.className = 'podcast-show-section';
+ const renderSection = (titleText, items, type) => {
+  const section = document.createElement('div');
+  section.className = 'podcast-show-section';
 
-    const title = document.createElement('h3');
-    title.textContent = titleText;
-    section.appendChild(title);
+  const title = document.createElement('h3');
+  title.textContent = titleText;
+  section.appendChild(title);
 
-    const grid = document.createElement('div');
-    grid.className = 'podcast-show-grid';
+  const grid = document.createElement('div');
+  grid.className = 'podcast-show-grid';
 
-    if (!Array.isArray(items) || items.length === 0) {
-      const msg = document.createElement('p');
-      msg.textContent = `No ${titleText.toLowerCase()} available.`;
-      grid.appendChild(msg);
-    } else {
-      items.forEach(item => {
-        try {
-          const card = document.createElement('div');
-          card.className = 'podcast-show-card';
+  if (!Array.isArray(items) || items.length === 0) {
+    const msg = document.createElement('p');
+    msg.textContent = `No ${titleText.toLowerCase()} available.`;
+    grid.appendChild(msg);
+  } else {
+    items.forEach(item => {
+      try {
+        const card = document.createElement('div');
+        card.className = 'podcast-show-card';
 
-          const logoPath = item.logo_slug ? `assets/${item.logo_slug}` : 'assets/default-logo.png';
+        const logoPath = item.logo_slug ? `assets/${item.logo_slug}` : 'assets/default-logo.png';
 
-          card.innerHTML = `
-            <div class="logo-wrapper" role="button" title="Open ${item.title}">
-              <img src="${logoPath}" alt="${item.title} logo" onerror="this.onerror=null;this.src='assets/default-logo.png';" />
+        // Use "Remove" button for Favorites section
+        const favButtonLabel = (titleText === 'Favorites') ? 'Remove' : (isFavorite(item.type || type, item.title) ? '★' : '☆');
+
+        card.innerHTML = `
+          <div class="logo-wrapper" role="button" title="Open ${item.title}">
+            <img src="${logoPath}" alt="${item.title} logo" onerror="this.onerror=null;this.src='assets/default-logo.png';" />
+          </div>
+          <div class="card-content">
+            <h4 class="card-title">${escapeHtml(item.title)}</h4>
+            <p class="category">${escapeHtml(item.category || '')} – ${escapeHtml(item.source || '')}</p>
+            <p class="descriptor">${escapeHtml(item.descriptor || '')}</p>
+            <div class="card-actions">
+              <button class="fav-toggle" data-type="${item.type || type}" data-title="${escapeAttr(item.title)}" aria-label="favorite">${favButtonLabel}</button>
             </div>
-            <div class="card-content">
-              <h4 class="card-title">${escapeHtml(item.title)}</h4>
-              <p class="category">${escapeHtml(item.category || '')} – ${escapeHtml(item.source || '')}</p>
-              <p class="descriptor">${escapeHtml(item.descriptor || '')}</p>
-              <div class="card-actions">
-                <button class="fav-toggle" data-type="${type}" data-title="${escapeAttr(item.title)}" aria-label="favorite">${isFavorite(type, item.title) ? '★' : '☆'}</button>
-              </div>
-            </div>
-          `;
+          </div>
+        `;
 
-          // logo click -> open official URL
-          const logoBtn = card.querySelector('.logo-wrapper');
-          if (logoBtn) {
-            logoBtn.addEventListener('click', () => {
-              if (item.official_url) window.open(item.official_url, '_blank');
-            });
-          }
-
-          // favorite toggle
-          const favBtn = card.querySelector('.fav-toggle');
-          if (favBtn) {
-            favBtn.addEventListener('click', (e) => {
-              e.stopPropagation();
-              const t = favBtn.getAttribute('data-type');
-              const title = favBtn.getAttribute('data-title');
-              toggleFavorite(t, title);
-            });
-          }
-
-          grid.appendChild(card);
-        } catch (err) {
-          console.error('Error rendering item', item, err);
+        const logoBtn = card.querySelector('.logo-wrapper');
+        if (logoBtn) {
+          logoBtn.addEventListener('click', () => {
+            if (item.official_url) window.open(item.official_url, '_blank');
+          });
         }
-      });
-    }
 
-    section.appendChild(grid);
-    return section;
-  };
+        const favBtn = card.querySelector('.fav-toggle');
+        if (favBtn) {
+          favBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const t = favBtn.getAttribute('data-type');
+            const title = favBtn.getAttribute('data-title');
+            toggleFavorite(t, title);
+          });
+        }
+
+        grid.appendChild(card);
+      } catch (err) {
+        console.error('Error rendering item', item, err);
+      }
+    });
+  }
+
+  section.appendChild(grid);
+  return section;
+};
 
   // small helpers (local)
   function escapeHtml(str) {
