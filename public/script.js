@@ -312,17 +312,7 @@ function showPodcastsShows() {
   }
   container.innerHTML = '';
 
-  // Helper: toggle favorite
-  function toggleFavorite(type, title) {
-    if (isFavorite(type, title)) {
-      removeFavorite(type, title);
-    } else {
-      addFavorite(type, title);
-    }
-    renderFavoritesSection();
-  }
-
-  // Helper: escape HTML
+  // local helpers
   function escapeHtml(str) {
     if (!str) return '';
     return String(str)
@@ -332,12 +322,18 @@ function showPodcastsShows() {
       .replace(/"/g, '&quot;')
       .replace(/'/g, '&#39;');
   }
-
   function escapeAttr(str) {
     return escapeHtml(str).replace(/\s+/g, ' ');
   }
 
-  // Helper: render a section (Favorites / Podcasts / Shows)
+  // helper to update the star button
+  function updateFavoriteStar(btn, type, title) {
+    if (!btn) return;
+    btn.textContent = isFavorite(type, title) ? '★' : '☆';
+    btn.style.color = isFavorite(type, title) ? 'gold' : 'black';
+  }
+
+  // render a section (Favorites, Podcasts, Shows)
   const renderSection = (titleText, items, type) => {
     const section = document.createElement('div');
     section.className = 'podcast-show-section';
@@ -364,56 +360,56 @@ function showPodcastsShows() {
       grid.appendChild(msg);
     } else {
       items.forEach(item => {
-        try {
-          const card = document.createElement('div');
-          card.className = 'podcast-show-card';
-          const logoPath = item.logo_slug ? `assets/${item.logo_slug}` : 'assets/default-logo.png';
+        const card = document.createElement('div');
+        card.className = 'podcast-show-card';
 
-          card.innerHTML = `
-            <div class="logo-wrapper" role="button" title="Open ${item.title}">
-              <img src="${logoPath}" alt="${item.title} logo" onerror="this.onerror=null;this.src='assets/default-logo.png';" />
+        const logoPath = item.logo_slug ? `assets/${item.logo_slug}` : 'assets/default-logo.png';
+
+        card.innerHTML = `
+          <div class="logo-wrapper" role="button" title="Open ${item.title}">
+            <img src="${logoPath}" alt="${item.title} logo" onerror="this.onerror=null;this.src='assets/default-logo.png';" />
+          </div>
+          <div class="card-content">
+            <h4 class="card-title">${escapeHtml(item.title)}</h4>
+            <p class="category">${escapeHtml(item.category || '')} – ${escapeHtml(item.source || '')}</p>
+            <p class="descriptor">${escapeHtml(item.descriptor || '')}</p>
+            <div class="card-actions">
+              <button class="fav-star" data-type="${type}" data-title="${escapeAttr(item.title)}" style="font-size:2em;">${isFavorite(type, item.title) ? '★' : '☆'}</button>
             </div>
-            <div class="card-content">
-              <h4 class="card-title">${escapeHtml(item.title)}</h4>
-              <p class="category">${escapeHtml(item.category || '')} – ${escapeHtml(item.source || '')}</p>
-              <p class="descriptor">${escapeHtml(item.descriptor || '')}</p>
-              <div class="card-actions">
-                <button class="fav-toggle" data-type="${type}" data-title="${escapeAttr(item.title)}" aria-label="favorite">${isFavorite(type, item.title) ? '★' : '☆'}</button>
-              </div>
-            </div>
-          `;
+          </div>
+        `;
 
-          // Logo click
-          const logoBtn = card.querySelector('.logo-wrapper');
-          if (logoBtn) {
-            logoBtn.addEventListener('click', () => {
-              if (item.official_url) window.open(item.official_url, '_blank');
-            });
-          }
-
-          // Favorite button click
-          const favBtn = card.querySelector('.fav-toggle');
-          if (favBtn) {
-            favBtn.addEventListener('click', e => {
-              e.stopPropagation();
-              toggleFavorite(favBtn.dataset.type, favBtn.dataset.title);
-
-              // update card text immediately
-              favBtn.textContent = isFavorite(favBtn.dataset.type, favBtn.dataset.title) ? '★' : '☆';
-            });
-          }
-
-          grid.appendChild(card);
-        } catch (err) {
-          console.error('Error rendering item', item, err);
+        // logo click
+        const logoBtn = card.querySelector('.logo-wrapper');
+        if (logoBtn) {
+          logoBtn.addEventListener('click', () => {
+            if (item.official_url) window.open(item.official_url, '_blank');
+          });
         }
+
+        // favorite star click
+        const favBtn = card.querySelector('.fav-star');
+        if (favBtn) {
+          favBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (isFavorite(type, item.title)) {
+              removeFavorite(type, item.title);
+            } else {
+              addFavorite(type, item.title);
+            }
+            updateFavoriteStar(favBtn, type, item.title);
+            renderFavoritesSection();
+          });
+        }
+
+        grid.appendChild(card);
       });
     }
 
     body.appendChild(grid);
     section.appendChild(body);
 
-    // Collapse/expand
+    // collapse/expand
     header.addEventListener('click', () => {
       const isOpen = body.classList.contains('open');
       body.classList.toggle('open', !isOpen);
@@ -424,8 +420,9 @@ function showPodcastsShows() {
     return section;
   };
 
-  // Prepare Favorites items
+  // FAVORITES SECTION
   const favoriteItems = [];
+
   if (Array.isArray(window.favorites.podcasts)) {
     window.favorites.podcasts.forEach(title => {
       const item = podcastsData.find(p => p.title === title);
@@ -439,12 +436,12 @@ function showPodcastsShows() {
     });
   }
 
-  // Append sections
-  container.appendChild(renderSection('Favorites', favoriteItems, 'favorites'));
+  const favSection = renderSection('Favorites', favoriteItems, 'favorites');
+  container.appendChild(favSection);
   container.appendChild(renderSection('Podcasts', podcastsData || [], 'podcasts'));
   container.appendChild(renderSection('Shows', showsData || [], 'shows'));
 
-  // Search bar functionality
+  // search bar
   const tabSearch = document.getElementById('podcasts-search-bar');
   if (tabSearch) {
     tabSearch.value = tabSearch.value || '';
