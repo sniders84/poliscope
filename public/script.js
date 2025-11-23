@@ -1321,10 +1321,18 @@ function showStartupHub() {
   showTab('startup-hub');
 }
 
-// 🚫 Sticky nav removed — no initHubNav, no scroll listeners
-
 document.addEventListener('DOMContentLoaded', () => {
-  initHubNav();
+  const tabs = document.querySelectorAll('nav .tab');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
+
+  // Optional: set Home Hub active on load
+  const homeHub = document.querySelector('nav .tab');
+  if (homeHub) homeHub.classList.add('active');
 });
 
 document.addEventListener('DOMContentLoaded', () => {
