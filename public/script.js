@@ -191,85 +191,88 @@ function showStartupHub() {
   showTab('startup-hub');
 }
 
-// === PODCASTS & SHOWS RENDERING (replace your existing showPodcastsShows) ===
+// === PODCASTS & SHOWS RENDERING (FINAL WORKING VERSION) ===
 function showPodcastsShows() {
   showTab('podcasts-shows');
 
   const container = document.getElementById('podcasts-cards');
   container.innerHTML = '';
 
+  // ====== FAVORITES SECTION ======
   const favoritesSection = document.getElementById('favorites-section');
-  const favoritesGrid = document.getElementById('favorites-grid');
+  const favoritesList = document.getElementById('favorites-list');
 
-  // ---- RENDER FAVORITES FIRST ----
-  const favPods = window.favorites.podcasts || [];
-  const favShows = window.favorites.shows || [];
+  function renderFavoritesSection() {
+    favoritesList.innerHTML = '';
 
-  favoritesGrid.innerHTML = '';
+    const favPods = window.favorites.podcasts || [];
+    const favShows = window.favorites.shows || [];
 
-  if (favPods.length === 0 && favShows.length === 0) {
-    favoritesSection.style.display = 'none';
-  } else {
+    if (favPods.length === 0 && favShows.length === 0) {
+      favoritesSection.style.display = 'none';
+      return;
+    }
+
     favoritesSection.style.display = '';
-    const allFavs = [...favPods.map(f => ({ ...f, type: 'podcasts' })),
-                     ...favShows.map(f => ({ ...f, type: 'shows' }))];
 
-    allFavs.forEach(item => {
-      const card = document.createElement('div');
-      card.className = 'podcast-show-card';
-      card.innerHTML = `
-        <div class="logo-wrapper">
-          <img src="assets/logos/${item.logo_slug}" alt="${item.title}" />
-        </div>
-        <div class="card-content">
-          <h4>${item.title}</h4>
-          <p class="category">${item.category} – ${item.source}</p>
-          <p class="descriptor">${item.descriptor}</p>
-          <div class="card-actions">
-            <button class="favorite-btn">★</button>
-          </div>
-        </div>
+    // Render Podcast Favorites
+    favPods.forEach(title => {
+      const div = document.createElement("div");
+      div.className = "favorite-card";
+      div.innerHTML = `
+        <p>${title}</p>
+        <button class="favorite-btn" data-type="podcasts" data-title="${title}">★</button>
       `;
+      favoritesList.appendChild(div);
+    });
 
-      card.querySelector('.logo-wrapper').addEventListener('click', () => {
-        window.open(item.official_url, '_blank');
+    // Render Show Favorites
+    favShows.forEach(title => {
+      const div = document.createElement("div");
+      div.className = "favorite-card";
+      div.innerHTML = `
+        <p>${title}</p>
+        <button class="favorite-btn" data-type="shows" data-title="${title}">★</button>
+      `;
+      favoritesList.appendChild(div);
+    });
+
+    // Add unfavorite behavior
+    favoritesList.querySelectorAll(".favorite-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        toggleFavorite(btn.dataset.type, btn.dataset.title);
       });
-
-      const favBtn = card.querySelector('.favorite-btn');
-      favBtn.addEventListener('click', () => {
-        toggleFavorite(item.type, item);
-      });
-
-      favoritesGrid.appendChild(card);
     });
   }
 
-  // ---- NOW RENDER PODCASTS ----
+  // Initial render
+  renderFavoritesSection();
+
+
+  // ====== PODCASTS ======
   fetch('/podcasts.json')
     .then(res => res.json())
     .then(podcasts => {
       const podcastSection = document.createElement('div');
       podcastSection.className = 'podcast-show-section';
-      const podcastTitle = document.createElement('h3');
-      podcastTitle.textContent = 'Podcasts';
-      podcastSection.appendChild(podcastTitle);
+      podcastSection.innerHTML = `<h3>Podcasts</h3>`;
 
-      const podcastGrid = document.createElement('div');
-      podcastGrid.className = 'podcast-show-grid';
+      const grid = document.createElement('div');
+      grid.className = 'podcast-show-grid';
 
-      podcasts.forEach(podcast => {
-        const isFav = isFavorite('podcasts', podcast);
+      podcasts.forEach(item => {
+        const isFav = isFavorite('podcasts', item.title);
 
         const card = document.createElement('div');
         card.className = 'podcast-show-card';
         card.innerHTML = `
           <div class="logo-wrapper">
-            <img src="assets/logos/${podcast.logo_slug}" alt="${podcast.title}" />
+            <img src="assets/logos/${item.logo_slug}" alt="${item.title}">
           </div>
           <div class="card-content">
-            <h4>${podcast.title}</h4>
-            <p class="category">${podcast.category} – ${podcast.source}</p>
-            <p class="descriptor">${podcast.descriptor}</p>
+            <h4>${item.title}</h4>
+            <p class="category">${item.category} – ${item.source}</p>
+            <p class="descriptor">${item.descriptor}</p>
             <div class="card-actions">
               <button class="favorite-btn">${isFav ? '★' : '☆'}</button>
             </div>
@@ -277,47 +280,48 @@ function showPodcastsShows() {
         `;
 
         card.querySelector('.logo-wrapper').addEventListener('click', () => {
-          window.open(podcast.official_url, '_blank');
+          window.open(item.official_url, '_blank');
         });
 
         const favBtn = card.querySelector('.favorite-btn');
         favBtn.addEventListener('click', () => {
-          toggleFavorite('podcasts', podcast);
+          toggleFavorite('podcasts', item.title);
+          renderFavoritesSection();
+          showPodcastsShows();
         });
 
-        podcastGrid.appendChild(card);
+        grid.appendChild(card);
       });
 
-      podcastSection.appendChild(podcastGrid);
+      podcastSection.appendChild(grid);
       container.appendChild(podcastSection);
     });
 
-  // ---- RENDER SHOWS ----
+
+  // ====== SHOWS ======
   fetch('/shows.json')
     .then(res => res.json())
     .then(shows => {
       const showsSection = document.createElement('div');
       showsSection.className = 'podcast-show-section';
-      const showsTitle = document.createElement('h3');
-      showsTitle.textContent = 'Shows';
-      showsSection.appendChild(showsTitle);
+      showsSection.innerHTML = `<h3>Shows</h3>`;
 
-      const showsGrid = document.createElement('div');
-      showsGrid.className = 'podcast-show-grid';
+      const grid = document.createElement('div');
+      grid.className = 'podcast-show-grid';
 
-      shows.forEach(show => {
-        const isFav = isFavorite('shows', show);
+      shows.forEach(item => {
+        const isFav = isFavorite('shows', item.title);
 
         const card = document.createElement('div');
         card.className = 'podcast-show-card';
         card.innerHTML = `
           <div class="logo-wrapper">
-            <img src="assets/logos/${show.logo_slug}" alt="${show.title}" />
+            <img src="assets/logos/${item.logo_slug}" alt="${item.title}">
           </div>
           <div class="card-content">
-            <h4>${show.title}</h4>
-            <p class="category">${show.category} – ${show.source}</p>
-            <p class="descriptor">${show.descriptor}</p>
+            <h4>${item.title}</h4>
+            <p class="category">${item.category} – ${item.source}</p>
+            <p class="descriptor">${item.descriptor}</p>
             <div class="card-actions">
               <button class="favorite-btn">${isFav ? '★' : '☆'}</button>
             </div>
@@ -325,20 +329,23 @@ function showPodcastsShows() {
         `;
 
         card.querySelector('.logo-wrapper').addEventListener('click', () => {
-          window.open(show.official_url, '_blank');
+          window.open(item.official_url, '_blank');
         });
 
         const favBtn = card.querySelector('.favorite-btn');
         favBtn.addEventListener('click', () => {
-          toggleFavorite('shows', show);
+          toggleFavorite('shows', item.title);
+          renderFavoritesSection();
+          showPodcastsShows();
         });
 
-        showsGrid.appendChild(card);
+        grid.appendChild(card);
       });
 
-      showsSection.appendChild(showsGrid);
+      showsSection.appendChild(grid);
       container.appendChild(showsSection);
     });
+}
 
   // ---- SEARCH FILTERING ----
   const searchInput = document.getElementById('podcasts-search-bar');
