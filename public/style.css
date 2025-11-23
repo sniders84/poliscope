@@ -2286,134 +2286,7 @@ rssapp-carousel {
   transform: scale(1.05);
 }
 
-.remove-btn {
-  border: none;
-  padding: 8px 14px;
-  border-radius: 20px;
-  background-color: #FF4D4F;
-  color: #fff;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  margin-top: 6px;
-}
-
-.remove-btn:hover {
-  background-color: #FF7875;
-  transform: scale(1.05);
-}
-/* === Podcasts & Shows Cards === */
-.media-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: #2C2C2C; /* dark grey */
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  padding: 16px;
-  margin: 12px;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.2s ease;
-  color: #fff; /* ensures text shows on dark background */
-}
-
-.media-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.6); /* blue glow on hover */
-  background: #333333;
-}
-
-.media-card img {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-  border-radius: 12px;
-  transition: transform 0.3s ease;
-}
-
-.media-card:hover img {
-  transform: scale(1.05);
-}
-
-/* === Buttons === */
-.favorite-btn {
-  border: none;
-  padding: 8px 14px;
-  border-radius: 20px;
-  background-color: #FFD700;
-  color: #000;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-  margin-top: 10px;
-}
-
-.favorite-btn:hover {
-  background-color: #FFC107;
-  transform: scale(1.05);
-}
-
-.remove-btn {
-  border: none;
-  padding: 8px 14px;
-  border-radius: 20px;
-  background-color: #FF4D4F;
-  color: #fff;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-  margin-top: 10px;
-}
-
-.remove-btn:hover {
-  background-color: #FF7875;
-  transform: scale(1.05);
-}
-
-/* === Favorites Grid & Layout === */
-.favorites-grid, .video-grid, .audio-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  gap: 12px;
-}
-
-/* === Search Input Styling === */
-#show-search {
-  width: 100%;
-  max-width: 400px;
-  padding: 12px 16px;
-  margin-bottom: 20px;
-  border-radius: 25px;
-  border: none;
-  outline: none;
-  font-size: 16px;
-  background: #1E1E1E;
-  color: #fff;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
-}
-
-#show-search::placeholder {
-  color: #aaa;
-}
-
-#show-search:focus {
-  box-shadow: 0 4px 20px rgba(0, 123, 255, 0.7);
-  transform: scale(1.02);
-}
-/* === Container Grid === */
-.favorites-grid, .video-grid, .audio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* compact cards */
-  gap: 12px;
-  justify-items: center;
-}
-
-/* === Media Cards === */
+/* === Media Cards (Corrected) === */
 .media-card {
   display: flex;
   flex-direction: column;
@@ -2425,7 +2298,8 @@ rssapp-carousel {
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.2s ease;
   width: 140px;
-  height: 220px;
+  min-height: 220px;   /* baseline height */
+  height: auto;        /* allow content to grow */
   text-align: center;
   color: #fff;
 }
@@ -2505,129 +2379,6 @@ rssapp-carousel {
 /* === Search Input === */
 #show-search {
   width: 100%;
-  max-width: 400px;
-  padding: 10px 16px;
-  margin-bottom: 16px;
-  border-radius: 25px;
-  border: none;
-  outline: none;
-  font-size: 14px;
-  background: #1E1E1E;
-  color: #fff;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
-}
-
-#show-search::placeholder {
-  color: #aaa;
-}
-
-#show-search:focus {
-  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.7);
-  transform: scale(1.02);
-}
-/* === Container Grid === */
-.favorites-grid, .video-grid, .audio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* slightly wider for text */
-  gap: 12px;
-  justify-items: center;
-}
-
-/* === Media Cards === */
-.media-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* keeps button at bottom */
-  align-items: center;
-  background: #2C2C2C;
-  border-radius: 8px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
-  padding: 12px;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.2s ease;
-  width: 150px;
-  height: 240px; /* slightly taller */
-  text-align: center;
-  color: #fff;
-}
-
-.media-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.6);
-  background: #333;
-}
-
-/* === Card Images === */
-.media-card img {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-  border-radius: 8px;
-  margin-bottom: 6px;
-  transition: transform 0.3s ease;
-}
-
-.media-card:hover img {
-  transform: scale(1.05);
-}
-
-/* === Card Text === */
-.media-card h3 {
-  font-size: 14px;
-  margin: 4px 0;
-  line-height: 1.2;
-  word-wrap: break-word;
-}
-
-.media-card p {
-  font-size: 12px;
-  color: #ccc;
-  margin: 2px 0 6px 0;
-  line-height: 1.2;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 4; /* allows 4 lines now */
-  -webkit-box-orient: vertical;
-}
-
-/* === Buttons === */
-.favorite-btn, .remove-btn {
-  border: none;
-  padding: 4px 10px;
-  border-radius: 16px;
-  font-size: 12px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 4px;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-}
-
-.favorite-btn {
-  background-color: #FFD700;
-  color: #000;
-}
-
-.favorite-btn:hover {
-  background-color: #FFC107;
-  transform: scale(1.05);
-}
-
-.remove-btn {
-  background-color: #FF4D4F;
-  color: #fff;
-}
-
-.remove-btn:hover {
-  background-color: #FF7875;
-  transform: scale(1.05);
-}
-
-/* === Search Input Styling === */
-#show-search {
-  width: 100%;
   max-width: 420px;
   padding: 10px 16px;
   margin-bottom: 16px;
@@ -2649,15 +2400,18 @@ rssapp-carousel {
   box-shadow: 0 4px 15px rgba(0, 123, 255, 0.7);
   transform: scale(1.02);
 }
+
 /* === Container Grid === */
-.favorites-grid, .video-grid, .audio-grid {
+.favorites-grid,
+.video-grid,
+.audio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* wider cards */
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 12px;
   justify-items: center;
 }
 
-/* === Media Cards === */
+/* === Media Cards (Corrected) === */
 .media-card {
   display: flex;
   flex-direction: column;
@@ -2669,8 +2423,9 @@ rssapp-carousel {
   padding: 12px;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.2s ease;
-  width: 180px; /* increased width */
-  height: 240px; /* keeps height the same */
+  width: 180px;        /* card width */
+  min-height: 240px;   /* baseline height */
+  height: auto;        /* allow content to grow */
   text-align: center;
   color: #fff;
 }
@@ -2715,74 +2470,7 @@ rssapp-carousel {
   -webkit-box-orient: vertical;
 }
 
-/* === Buttons === */
-.favorite-btn, .remove-btn {
-  border: none;
-  padding: 4px 10px;
-  border-radius: 16px;
-  font-size: 12px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 4px;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-}
-
-.favorite-btn {
-  background-color: #FFD700;
-  color: #000;
-}
-
-.favorite-btn:hover {
-  background-color: #FFC107;
-  transform: scale(1.05);
-}
-
-.remove-btn {
-  background-color: #FF4D4F;
-  color: #fff;
-}
-
-.remove-btn:hover {
-  background-color: #FF7875;
-  transform: scale(1.05);
-}
-
-/* === Search Input Styling === */
-#show-search {
-  width: 100%;
-  max-width: 420px;
-  padding: 10px 16px;
-  margin-bottom: 16px;
-  border-radius: 25px;
-  border: none;
-  outline: none;
-  font-size: 14px;
-  background: #1E1E1E;
-  color: #fff;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
-}
-
-#show-search::placeholder {
-  color: #aaa;
-}
-
-#show-search:focus {
-  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.7);
-  transform: scale(1.02);
-}
-/* === Container Grids === */
-.favorites-grid,
-.video-grid,
-.audio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 12px;
-  justify-items: center;
-}
-
-/* === Media Cards === */
+/* === Media Cards (Corrected) === */
 .media-card {
   display: flex;
   flex-direction: column;
@@ -2794,8 +2482,9 @@ rssapp-carousel {
   padding: 12px;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.2s ease;
-  width: 180px;    /* uniform width */
-  height: 240px;   /* uniform height */
+  width: 180px;        /* uniform width */
+  min-height: 240px;   /* baseline height */
+  height: auto;        /* allow content to grow */
   text-align: center;
   color: #fff;
 }
@@ -2808,18 +2497,19 @@ rssapp-carousel {
 
 /* === Logo Container & Images === */
 .logo-container {
-  width: 100%;          /* full card width */
-  height: 80px;         /* uniform logo height */
+  width: 100%;         /* full card width */
+  height: 100px;       /* uniform logo height */
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;    /* crop anything exceeding container */
   margin-bottom: 8px;
 }
 
 .logo-container img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;   /* keeps aspect ratio */
+  width: 100%;         /* fill width of container */
+  height: 100%;        /* fill height of container */
+  object-fit: contain; /* maintain aspect ratio, centered */
 }
 
 /* === Card Text === */
@@ -2900,56 +2590,8 @@ rssapp-carousel {
   box-shadow: 0 4px 15px rgba(0, 123, 255, 0.7);
   transform: scale(1.02);
 }
-/* Logo container at top of card */
-.logo-container {
-  width: 100%;         /* full card width */
-  height: 100px;       /* uniform height for all logos */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;    /* crop anything exceeding container */
-  margin-bottom: 8px;
-}
 
-/* Make logo stretch full width, uniform height, maintain aspect ratio */
-.logo-container img {
-  width: 100%;         /* fill width of container */
-  height: 100%;        /* fill height of container */
-  object-fit: contain; /* maintain aspect ratio, centered */
-}
-/* Logo container at top of card */
-.logo-container {
-  width: 100%;         /* full card width */
-  height: 100px;       /* uniform height for all logos */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;    /* crop anything exceeding container */
-  margin-bottom: 8px;
-}
-
-/* Make logo stretch full width, uniform height, maintain aspect ratio */
-.logo-container img {
-  width: 100%;         /* fill width of container */
-  height: 100%;        /* fill height of container */
-  object-fit: contain; /* maintain aspect ratio, centered */
-}
-.media-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  background: #2C2C2C;
-  border-radius: 8px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
-  padding: 12px;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.2s ease;
-  width: 180px;   
-  height: 300px;  /* increased from 240px to 300px */
-  text-align: center;
-  color: #fff;
-}
+/* === Header & Search Controls === */
 .header-right {
   display: flex;
   align-items: center;
@@ -3001,6 +2643,7 @@ rssapp-carousel {
   box-shadow: 0 4px 15px rgba(0, 123, 255, 0.7);
   transform: scale(1.02);
 }
+
 /* === Podcasts & Shows Tab === */
 .podcast-show-section {
   margin-bottom: 40px;
@@ -3104,8 +2747,8 @@ rssapp-carousel {
   flex-direction: column;
   gap: 32px;
 }
-/* --- COLLAPSIBLE SECTIONS --- */
 
+/* --- COLLAPSIBLE SECTIONS --- */
 .section-header {
   display: flex;
   justify-content: space-between;
@@ -3138,7 +2781,7 @@ rssapp-carousel {
 
 /* Default open state */
 .section-body.open {
-  max-height: 2000px; /* enough to reveal all cards */
+  max-height: none; /* allow full expansion */
 }
 
 /* Collapsed */
