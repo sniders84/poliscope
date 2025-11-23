@@ -30,11 +30,6 @@ function removeFavorite(type, title) {
   }
 }
 
-// Check if favorite
-function isFavorite(type, title) {
-  return window.favorites[type]?.includes(title);
-}
-
 // Toggle favorite globally
 function toggleFavorite(type, title) {
   if (isFavorite(type, title)) {
@@ -42,7 +37,11 @@ function toggleFavorite(type, title) {
   } else {
     addFavorite(type, title);
   }
-  renderFavoritesSection();
+}
+
+// Check if favorite
+function isFavorite(type, title) {
+  return window.favorites[type]?.includes(title);
 }
 
 // Update all buttons for a given item (cards in Podcasts/Shows tab)
@@ -73,11 +72,25 @@ function renderFavoritesSection() {
       removeBtn.className = 'remove-favorite';
       removeBtn.textContent = '✕';
       removeBtn.title = 'Remove from favorites';
-      removeBtn.addEventListener('click', () => toggleFavorite(type, title));
+      removeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        removeFavorite(type, title); // REMOVE FROM FAVORITES
+      });
 
       card.appendChild(removeBtn);
       container.appendChild(card);
     });
+  });
+
+  updateAllFavButtonsForAll();
+}
+
+// Update all fav buttons for entire page
+function updateAllFavButtonsForAll() {
+  document.querySelectorAll('button[data-type][data-title]').forEach(btn => {
+    const type = btn.dataset.type;
+    const title = btn.dataset.title;
+    btn.textContent = isFavorite(type, title) ? '★' : '☆';
   });
 }
 
@@ -91,7 +104,7 @@ function initFavoriteButtons() {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       toggleFavorite(type, title);
-      updateAllFavButtons(type, title);
+      renderFavoritesSection();
     });
   });
 }
