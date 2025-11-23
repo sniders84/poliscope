@@ -29,7 +29,17 @@ function removeFavorite(type, title) {
   }
 }
 
-// === FAVORITES SECTION RENDER ===
+// Update all main stars in the grid
+function updateAllMainStars() {
+  document.querySelectorAll('button.fav-star[data-type][data-title]').forEach(btn => {
+    const type = btn.dataset.type;
+    const title = btn.dataset.title;
+    btn.textContent = isFavorite(type, title) ? '★' : '☆';
+    btn.style.color = isFavorite(type, title) ? 'gold' : 'black';
+  });
+}
+
+// Render Favorites section
 function renderFavoritesSection() {
   const container = document.getElementById('favorites-section');
   if (!container) return;
@@ -63,9 +73,8 @@ function renderFavoritesSection() {
         </div>
       `;
 
-      // Remove button click
-      const removeBtn = card.querySelector('.remove-favorite');
-      removeBtn.addEventListener('click', (e) => {
+      // Remove click
+      card.querySelector('.remove-favorite').addEventListener('click', (e) => {
         e.stopPropagation();
         removeFavorite(type, title);
         renderFavoritesSection();
@@ -77,41 +86,137 @@ function renderFavoritesSection() {
   });
 }
 
-// === MAIN GRID FAVORITE STARS ===
-function updateAllMainStars() {
-  document.querySelectorAll('button.fav-star[data-type][data-title]').forEach(btn => {
-    const type = btn.dataset.type;
-    const title = btn.dataset.title;
-    btn.textContent = isFavorite(type, title) ? '★' : '☆';
-    btn.style.color = isFavorite(type, title) ? 'gold' : 'black';
-  });
-}
+// === SHOW PODCASTS/SHOWS GRID FUNCTION ===
+function showPodcastsShows() {
+  showTab('podcasts-shows');
 
-function initFavoriteStars() {
-  document.querySelectorAll('button.fav-star[data-type][data-title]').forEach(btn => {
-    const type = btn.dataset.type;
-    const title = btn.dataset.title;
+  const container = document.getElementById('podcasts-cards');
+  if (!container) return;
+  container.innerHTML = '';
 
-    // initialize star display
-    btn.textContent = isFavorite(type, title) ? '★' : '☆';
-    btn.style.color = isFavorite(type, title) ? 'gold' : 'black';
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
 
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (isFavorite(type, title)) {
-        removeFavorite(type, title);
-      } else {
-        addFavorite(type, title);
-      }
-      updateAllMainStars();
-      renderFavoritesSection();
+  function escapeAttr(str) {
+    return escapeHtml(str).replace(/\s+/g, ' ');
+  }
+
+  const renderSection = (titleText, items, type) => {
+    const section = document.createElement('div');
+    section.className = 'podcast-show-section';
+
+    const header = document.createElement('div');
+    header.className = 'section-header open';
+    const title = document.createElement('h3');
+    title.textContent = titleText;
+    const arrow = document.createElement('span');
+    arrow.className = 'section-arrow';
+    arrow.textContent = '▶';
+    header.appendChild(title);
+    header.appendChild(arrow);
+    section.appendChild(header);
+
+    const body = document.createElement('div');
+    body.className = 'section-body open';
+    const grid = document.createElement('div');
+    grid.className = 'podcast-show-grid';
+
+    if (!Array.isArray(items) || items.length === 0) {
+      const msg = document.createElement('p');
+      msg.textContent = `No ${titleText.toLowerCase()} available.`;
+      grid.appendChild(msg);
+    } else {
+      items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'podcast-show-card';
+
+        const logoPath = item.logo_slug ? `assets/${item.logo_slug}` : 'assets/default-logo.png';
+
+        card.innerHTML = `
+          <div class="logo-wrapper" role="button" title="Open ${item.title}">
+            <img src="${logoPath}" alt="${item.title} logo" onerror="this.onerror=null;this.src='assets/default-logo.png';" />
+          </div>
+          <div class="card-content">
+            <h4 class="card-title">${escapeHtml(item.title)}</h4>
+            <p class="category">${escapeHtml(item.category || '')} – ${escapeHtml(item.source || '')}</p>
+            <p class="descriptor">${escapeHtml(item.descriptor || '')}</p>
+            <div class="card-actions">
+              <button class="fav-star" data-type="${type}" data-title="${escapeAttr(item.title)}" style="font-size:2em;">
+                ${isFavorite(type, item.title) ? '★' : '☆'}
+              </button>
+            </div>
+          </div>
+        `;
+
+        // logo click
+        const logoBtn = card.querySelector('.logo-wrapper');
+        if (logoBtn) {
+          logoBtn.addEventListener('click', () => {
+            if (item.official_url) window.open(item.official_url, '_blank');
+          });
+        }
+
+        // favorite star click
+        const favBtn = card.querySelector('.fav-star');
+        favBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (isFavorite(type, item.title)) {
+            removeFavorite(type, item.title);
+          } else {
+            addFavorite(type, item.title);
+          }
+          updateAllMainStars();
+          renderFavoritesSection();
+        });
+
+        grid.appendChild(card);
+      });
+    }
+
+    body.appendChild(grid);
+    section.appendChild(body);
+
+    // collapse/expand
+    header.addEventListener('click', () => {
+      const isOpen = body.classList.contains('open');
+      body.classList.toggle('open', !isOpen);
+      body.classList.toggle('closed', isOpen);
+      header.classList.toggle('open', !isOpen);
     });
-  });
+
+    return section;
+  };
+
+  // FAVORITES ITEMS
+  const favoriteItems = [];
+  if (Array.isArray(window.favorites.podcasts)) {
+    window.favorites.podcasts.forEach(title => {
+      const item = podcastsData.find(p => p.title === title);
+      if (item) favoriteItems.push({ ...item, type: 'podcasts' });
+    });
+  }
+  if (Array.isArray(window.favorites.shows)) {
+    window.favorites.shows.forEach(title => {
+      const item = showsData.find(s => s.title === title);
+      if (item) favoriteItems.push({ ...item, type: 'shows' });
+    });
+  }
+
+  container.appendChild(renderSection('Favorites', favoriteItems, 'favorites'));
+  container.appendChild(renderSection('Podcasts', podcastsData || [], 'podcasts'));
+  container.appendChild(renderSection('Shows', showsData || [], 'shows'));
 }
 
-// === INITIALIZE ON PAGE LOAD / TAB RENDER ===
-initFavoriteStars();
+// initialize everything
 renderFavoritesSection();
+showPodcastsShows();
 
 // === GLOBAL STATE ===
 let selectedState = 'North Carolina';
