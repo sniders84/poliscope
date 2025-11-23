@@ -210,29 +210,29 @@ function showPodcastsShows() {
   }
   container.innerHTML = '';
 
-  // helper to create a section
+  // helper to create a section (Podcasts, Shows, Favorites)
   const renderSection = (titleText, items, type) => {
     const section = document.createElement('div');
     section.className = 'podcast-show-section';
 
     // COLLAPSIBLE HEADER
     const header = document.createElement('div');
-    header.className = "section-header open";
+    header.className = 'section-header open';
 
     const title = document.createElement('h3');
     title.textContent = titleText;
 
     const arrow = document.createElement('span');
-    arrow.className = "section-arrow";
-    arrow.textContent = "▶";
+    arrow.className = 'section-arrow';
+    arrow.textContent = '▶';
 
     header.appendChild(title);
     header.appendChild(arrow);
     section.appendChild(header);
 
-    // SECTION BODY
+    // SECTION BODY (the part that collapses)
     const body = document.createElement('div');
-    body.className = "section-body open";
+    body.className = 'section-body open';
 
     const grid = document.createElement('div');
     grid.className = 'podcast-show-grid';
@@ -242,7 +242,7 @@ function showPodcastsShows() {
       msg.textContent = `No ${titleText.toLowerCase()} available.`;
       grid.appendChild(msg);
     } else {
-      // Render all items
+      // Render every single item
       items.forEach(item => {
         try {
           const card = document.createElement('div');
@@ -259,9 +259,7 @@ function showPodcastsShows() {
               <p class="category">${escapeHtml(item.category || '')} – ${escapeHtml(item.source || '')}</p>
               <p class="descriptor">${escapeHtml(item.descriptor || '')}</p>
               <div class="card-actions">
-                <button class="fav-toggle" data-type="${item.type || type}" data-title="${escapeAttr(item.title)}" aria-label="favorite">
-                  ${isFavorite(item.type || type, item.title) ? '★' : '☆'}
-                </button>
+                <button class="fav-toggle" data-type="${type}" data-title="${escapeAttr(item.title)}" aria-label="favorite">${isFavorite(type, item.title) ? '★' : '☆'}</button>
               </div>
             </div>
           `;
@@ -279,8 +277,15 @@ function showPodcastsShows() {
           if (favBtn) {
             favBtn.addEventListener('click', (e) => {
               e.stopPropagation();
-              toggleFavorite(item.type || type, item.title);
-              showPodcastsShows(); // refresh
+              toggleFavorite(favBtn.dataset.type, favBtn.dataset.title);
+
+              // If in favorites section, remove card immediately
+              if (type === 'favorites') {
+                card.remove();
+              } else {
+                // Update favorites section
+                showPodcastsShows();
+              }
             });
           }
 
@@ -294,23 +299,24 @@ function showPodcastsShows() {
     body.appendChild(grid);
     section.appendChild(body);
 
-    // COLLAPSE/EXPAND
+    // CLICK HANDLER FOR COLLAPSE/EXPAND
     header.addEventListener('click', () => {
-      const isOpen = body.classList.contains("open");
+      const isOpen = body.classList.contains('open');
       if (isOpen) {
-        body.classList.remove("open");
-        body.classList.add("closed");
-        header.classList.remove("open");
+        body.classList.remove('open');
+        body.classList.add('closed');
+        header.classList.remove('open');
       } else {
-        body.classList.remove("closed");
-        body.classList.add("open");
-        header.classList.add("open");
+        body.classList.remove('closed');
+        body.classList.add('open');
+        header.classList.add('open');
       }
     });
 
     return section;
   };
 
+  // small helpers (local)
   function escapeHtml(str) {
     if (!str) return '';
     return String(str)
@@ -341,12 +347,15 @@ function showPodcastsShows() {
     });
   }
 
-  // APPEND SECTIONS
-  container.appendChild(renderSection('Favorites', favoriteItems, 'favorites'));
+  // render favorites section first
+  const favSection = renderSection('Favorites', favoriteItems, 'favorites');
+  container.appendChild(favSection);
+
+  // render Podcasts and Shows sections
   container.appendChild(renderSection('Podcasts', podcastsData || [], 'podcasts'));
   container.appendChild(renderSection('Shows', showsData || [], 'shows'));
 
-  // SEARCH
+  // wire search after DOM is built
   const tabSearch = document.getElementById('podcasts-search-bar');
   if (tabSearch) {
     tabSearch.value = tabSearch.value || '';
@@ -364,116 +373,6 @@ function showPodcastsShows() {
   }
 
   console.log('showPodcastsShows() finished rendering');
-}
-
-function showCivic() {
-  showTab('civic-intelligence');
-}
-
-function showPolls() {
-  showTab('polls');
-}
-
-function showOrganizations() {
-  showTab('political-groups');
-}
-
-function showVoting() {
-  showTab('voting');
-  const votingCards = document.getElementById('voting-cards');
-  votingCards.innerHTML = '';
-  console.log("showVoting() triggered");
-
-  fetch('voting-data.json')
-    .then(res => {
-      if (!res.ok) throw new Error('Voting data file not found');
-      return res.json();
-    })
-    .then(data => {
-      console.log('Voting data loaded:', data);
-      console.log('Available voting keys:', Object.keys(data));
-      console.log('Trying to match:', window.selectedState);
-
-      let stateName = window.selectedState || 'North Carolina';
-      if (stateName === 'Virgin Islands') stateName = 'U.S. Virgin Islands';
-      const stateData = data[stateName] || null;
-
-      if (!stateData || typeof stateData !== 'object') {
-        votingCards.innerHTML = `<p>No voting information available for ${stateName}.</p>`;
-        return;
-      }
-
-      console.log("Selected state:", stateName);
-      console.log('Direct match result:', data[stateName]);
-
-      const labelMap = {
-        register: 'Register to Vote',
-        id: 'Voter ID Requirements',
-        absentee: 'Absentee Voting',
-        early: 'Early Voting',
-        polling: 'Find Your Polling Place',
-        sample: 'View Sample Ballot',
-        military: 'Military & Overseas Voting',
-        counties: 'County Election Contacts',
-        tools: 'State Voting Tools'
-      };
-
-      Object.entries(stateData).forEach(([key, value]) => {
-        if (!value) return;
-
-        let url, icon, description, deadline;
-
-        if (typeof value === 'string') {
-          url = value;
-          icon = '🗳️';
-          description = '';
-          deadline = '';
-        } else if (typeof value === 'object' && value !== null) {
-          ({ url, icon = '🗳️', description = '', deadline = '' } = value);
-        } else {
-          return;
-        }
-
-        if (!url) return;
-
-        const title = labelMap[key] || key;
-
-        const card = document.createElement('div');
-        card.className = 'voting-card';
-
-        const link = document.createElement('a');
-        link.href = url;
-        link.target = '_blank';
-
-        const iconDiv = document.createElement('div');
-        iconDiv.className = 'card-icon';
-        iconDiv.innerHTML = `<span class="emoji">${icon}</span>`;
-
-        const labelDiv = document.createElement('div');
-        labelDiv.className = 'card-label';
-        labelDiv.textContent = title;
-
-        const descDiv = document.createElement('div');
-        descDiv.className = 'card-description';
-        descDiv.textContent = description;
-
-        const deadlineDiv = document.createElement('div');
-        deadlineDiv.className = 'card-date';
-        if (deadline) deadlineDiv.textContent = deadline;
-
-        link.appendChild(iconDiv);
-        link.appendChild(labelDiv);
-        link.appendChild(descDiv);
-        if (deadline) link.appendChild(deadlineDiv);
-
-        card.appendChild(link);
-        votingCards.appendChild(card);
-      });
-    })
-    .catch(err => {
-      votingCards.innerHTML = '<p>Error loading voting data.</p>';
-      console.error('Voting fetch failed:', err);
-    });
 }
 
 // === HELPER: render roster cards (if needed) ===
