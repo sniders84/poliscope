@@ -208,7 +208,7 @@ function showPodcastsShows() {
   }
   container.innerHTML = '';
 
-  // helper to create a section (Podcasts, Shows, Favorites)
+  // helper to create a section
   const renderSection = (titleText, items, type) => {
     const section = document.createElement('div');
     section.className = 'podcast-show-section';
@@ -222,13 +222,13 @@ function showPodcastsShows() {
 
     const arrow = document.createElement('span');
     arrow.className = "section-arrow";
-    arrow.textContent = "▶"; // arrow icon
+    arrow.textContent = "▶";
 
     header.appendChild(title);
     header.appendChild(arrow);
     section.appendChild(header);
 
-    // SECTION BODY (the part that collapses)
+    // SECTION BODY
     const body = document.createElement('div');
     body.className = "section-body open";
 
@@ -240,7 +240,7 @@ function showPodcastsShows() {
       msg.textContent = `No ${titleText.toLowerCase()} available.`;
       grid.appendChild(msg);
     } else {
-      // Render every single item
+      // Render all items
       items.forEach(item => {
         try {
           const card = document.createElement('div');
@@ -257,7 +257,7 @@ function showPodcastsShows() {
               <p class="category">${escapeHtml(item.category || '')} – ${escapeHtml(item.source || '')}</p>
               <p class="descriptor">${escapeHtml(item.descriptor || '')}</p>
               <div class="card-actions">
-                <button class="fav-toggle" data-type="${type}" data-title="${escapeAttr(item.title)}" aria-label="favorite">
+                <button class="fav-toggle" data-type="${item.type || type}" data-title="${escapeAttr(item.title)}" aria-label="favorite">
                   ${isFavorite(item.type || type, item.title) ? '★' : '☆'}
                 </button>
               </div>
@@ -278,8 +278,7 @@ function showPodcastsShows() {
             favBtn.addEventListener('click', (e) => {
               e.stopPropagation();
               toggleFavorite(item.type || type, item.title);
-              // update favorites section if it exists
-              showPodcastsShows();
+              showPodcastsShows(); // refresh
             });
           }
 
@@ -293,7 +292,7 @@ function showPodcastsShows() {
     body.appendChild(grid);
     section.appendChild(body);
 
-    // CLICK HANDLER FOR COLLAPSE/EXPAND
+    // COLLAPSE/EXPAND
     header.addEventListener('click', () => {
       const isOpen = body.classList.contains("open");
       if (isOpen) {
@@ -310,7 +309,6 @@ function showPodcastsShows() {
     return section;
   };
 
-  // small helpers
   function escapeHtml(str) {
     if (!str) return '';
     return String(str)
@@ -341,12 +339,12 @@ function showPodcastsShows() {
     });
   }
 
-  // Append favorites, podcasts, shows
+  // APPEND SECTIONS
   container.appendChild(renderSection('Favorites', favoriteItems, 'favorites'));
   container.appendChild(renderSection('Podcasts', podcastsData || [], 'podcasts'));
   container.appendChild(renderSection('Shows', showsData || [], 'shows'));
 
-  // Search filter
+  // SEARCH
   const tabSearch = document.getElementById('podcasts-search-bar');
   if (tabSearch) {
     tabSearch.value = tabSearch.value || '';
