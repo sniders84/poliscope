@@ -92,6 +92,7 @@
   <h2>Home Hub</h2>
 
   <!-- National Broadcasting Networks -->
+  
   <div id="national-networks" class="category-section">
     <h2>National Broadcasting Networks</h2>
     <div class="card-grid" id="network-cards">
@@ -171,6 +172,22 @@
     <rssapp-carousel id="vXg6Ae2ZfZ1aKPhG"></rssapp-carousel>
     <script src="https://widget.rss.app/v1/carousel.js" type="text/javascript" async></script>
   </div>
+
+  <!-- Popular Podcasts -->
+  <div id="popular-podcasts" class="category-section">
+    <h2>Popular Podcasts</h2>
+    <div class="card-grid">
+      <div class="info-card"><h3>Pod Save America</h3><p>Political commentary from Pod Save America.</p></div>
+      <div class="info-card"><h3>The Daily (NYT)</h3><p>News analysis and storytelling from The Daily.</p></div>
+      <div class="info-card"><h3>NPR Politics</h3><p>Political coverage and analysis from NPR.</p></div>
+    </div>
+  </div>
+
+  <!-- 🌍 Social Trends Section -->
+  <div id="social-trends" class="hub-section">
+    <h2>Trending Now</h2>
+    <div id="social-feed" class="grid"></div>
+  </div>
 </section>
 
 <style>
@@ -229,6 +246,13 @@
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
+
+/* Social feed placeholder */
+#social-feed {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
 </style>
 
 <script>
@@ -247,7 +271,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
-</script>
 
 // Generic tab switcher
 function showTab(tabId) {
