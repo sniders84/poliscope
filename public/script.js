@@ -31,6 +31,20 @@ function toggleFavorite(type, title) {
   if (tab && tab.style.display !== "none") {
     showPodcastsShows();
   }
+
+  // Return true if now favorited, false if removed
+  return index === -1;
+}
+
+// Utility: update button text + style
+function updateFavoriteButton(btn, isFavorited) {
+  if (isFavorited) {
+    btn.textContent = '✖ Remove';
+    btn.classList.add('is-remove');
+  } else {
+    btn.textContent = '☆ Favorite';
+    btn.classList.remove('is-remove');
+  }
 }
 
 // === GLOBAL STATE ===
@@ -259,9 +273,7 @@ function showPodcastsShows() {
               <p class="category">${escapeHtml(item.category || '')} – ${escapeHtml(item.source || '')}</p>
               <p class="descriptor">${escapeHtml(item.descriptor || '')}</p>
               <div class="card-actions">
-                <button class="fav-toggle" data-type="${item.type || type}" data-title="${escapeAttr(item.title)}" aria-label="favorite">
-                  ${isFavorite(item.type || type, item.title) ? '★' : '☆'}
-                </button>
+                <button class="favorite-btn" aria-label="favorite"></button>
               </div>
             </div>
           `;
@@ -275,12 +287,16 @@ function showPodcastsShows() {
           }
 
           // Favorite toggle
-          const favBtn = card.querySelector('.fav-toggle');
+          const favBtn = card.querySelector('.favorite-btn');
           if (favBtn) {
+            // initialize state
+            const isFav = isFavorite(item.type || type, item.title);
+            updateFavoriteButton(favBtn, isFav);
+
             favBtn.addEventListener('click', (e) => {
               e.stopPropagation();
-              toggleFavorite(item.type || type, item.title);
-              showPodcastsShows(); // refresh
+              const nowFav = toggleFavorite(item.type || type, item.title);
+              updateFavoriteButton(favBtn, nowFav);
             });
           }
 
