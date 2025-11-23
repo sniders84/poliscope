@@ -3031,13 +3031,13 @@ rssapp-carousel {
 
 .podcast-show-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.6); /* Blue glow */
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.6);
   border: 2px solid #007bff;
 }
 
 .logo-wrapper {
   width: 100%;
-  height: 140px; /* Fixed logo height */
+  height: 140px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -3048,7 +3048,7 @@ rssapp-carousel {
 .logo-wrapper img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Stretch and crop nicely */
+  object-fit: cover;
 }
 
 .card-content {
@@ -3104,8 +3104,8 @@ rssapp-carousel {
   flex-direction: column;
   gap: 32px;
 }
-/* --- COLLAPSIBLE SECTIONS --- */
 
+/* --- COLLAPSIBLE SECTIONS --- */
 .section-header {
   display: flex;
   justify-content: space-between;
@@ -3125,7 +3125,6 @@ rssapp-carousel {
   font-size: 1.4rem;
 }
 
-/* Rotated (open) */
 .section-header.open .section-arrow {
   transform: rotate(90deg);
 }
@@ -3133,12 +3132,13 @@ rssapp-carousel {
 /* Collapsed body container */
 .section-body {
   overflow: hidden;
-  transition: max-height 0.30s ease;
+  transition: max-height 0.5s ease;
+  max-height: 0;
 }
 
-/* Default open state */
+/* Default open state (fully expanded) */
 .section-body.open {
-  max-height: 2000px; /* enough to reveal all cards */
+  max-height: 10000px; /* very large to ensure all cards show */
 }
 
 /* Collapsed */
