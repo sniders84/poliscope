@@ -87,22 +87,6 @@ Promise.all([
 })
 .catch(err => console.error('Error loading data files:', err));
 
-// === PODCASTS & SHOWS DATA ===
-let podcastsData = [];
-let showsData = [];
-
-Promise.all([
-  fetch('podcasts.json').then(res => res.json()),
-  fetch('shows.json').then(res => res.json())
-])
-.then(([podcasts, shows]) => {
-  podcastsData = podcasts;
-  showsData = shows;
-})
-.catch(err => console.error('Error loading podcasts or shows JSON:', err));
-console.log('podcastsData length:', podcastsData.length);
-console.log('showsData length:', showsData.length);
-
 // Modal refs (Officials modal)
 let officialsModal = null;
 let officialsModalContent = null;
