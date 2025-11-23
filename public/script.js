@@ -25,12 +25,17 @@ function removeFavorite(type, title) {
   if (index > -1) {
     window.favorites[type].splice(index, 1);
     saveFavorites();
-    renderFavoritesSection(); // immediately update favorites display
-    updateMainButton(type, title); // update main card button text if visible
+    renderFavoritesSection();
+    updateAllFavButtons(type, title);
   }
 }
 
-// Toggle favorite (new)
+// Check if favorite
+function isFavorite(type, title) {
+  return window.favorites[type]?.includes(title);
+}
+
+// Toggle favorite globally
 function toggleFavorite(type, title) {
   if (isFavorite(type, title)) {
     removeFavorite(type, title);
@@ -40,37 +45,16 @@ function toggleFavorite(type, title) {
   renderFavoritesSection();
 }
 
-// Check if favorite
-function isFavorite(type, title) {
-  return window.favorites[type]?.includes(title);
-}
-
-// Update main card button text dynamically
-function updateMainButton(type, title) {
-  const btn = document.querySelector(`button[data-type="${type}"][data-title="${CSS.escape(title)}"]`);
-  if (!btn) return;
-  btn.textContent = isFavorite(type, title) ? "Remove Favorite" : "Add Favorite";
-}
-
-// --- FAVORITE BUTTONS FOR MAIN CARDS ---
-function initMainFavoriteButtons() {
-  document.querySelectorAll('button[data-type][data-title]').forEach(btn => {
-    const type = btn.dataset.type;
-    const title = btn.dataset.title;
-
-    // Set initial text
-    btn.textContent = isFavorite(type, title) ? "Remove Favorite" : "Add Favorite";
-
-    btn.addEventListener("click", () => {
-      toggleFavorite(type, title);
-      updateMainButton(type, title);
-    });
+// Update all buttons for a given item (cards in Podcasts/Shows tab)
+function updateAllFavButtons(type, title) {
+  document.querySelectorAll(`button[data-type="${type}"][data-title="${CSS.escape(title)}"]`).forEach(btn => {
+    btn.textContent = isFavorite(type, title) ? '★' : '☆';
   });
 }
 
 // --- FAVORITES SECTION RENDER ---
 function renderFavoritesSection() {
-  const container = document.getElementById('favorites-section'); // your favorites container
+  const container = document.getElementById('favorites-section');
   if (!container) return;
   container.innerHTML = '';
 
@@ -78,18 +62,18 @@ function renderFavoritesSection() {
     titles.forEach(title => {
       const card = document.createElement('div');
       card.className = 'favorite-card';
-      card.textContent = title;
       card.dataset.type = type;
       card.dataset.title = title;
 
-      // Remove button
+      const titleSpan = document.createElement('span');
+      titleSpan.textContent = title;
+      card.appendChild(titleSpan);
+
       const removeBtn = document.createElement('span');
-      removeBtn.innerHTML = '✕';
       removeBtn.className = 'remove-favorite';
-      removeBtn.title = "Remove from favorites";
-      removeBtn.addEventListener('click', () => {
-        removeFavorite(type, title);
-      });
+      removeBtn.textContent = '✕';
+      removeBtn.title = 'Remove from favorites';
+      removeBtn.addEventListener('click', () => toggleFavorite(type, title));
 
       card.appendChild(removeBtn);
       container.appendChild(card);
@@ -97,8 +81,23 @@ function renderFavoritesSection() {
   });
 }
 
-// --- INITIALIZE ---
-initMainFavoriteButtons();
+// --- INITIALIZE FAVORITE BUTTONS ON PAGE ---
+function initFavoriteButtons() {
+  document.querySelectorAll('button[data-type][data-title]').forEach(btn => {
+    const type = btn.dataset.type;
+    const title = btn.dataset.title;
+
+    btn.textContent = isFavorite(type, title) ? '★' : '☆';
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleFavorite(type, title);
+      updateAllFavButtons(type, title);
+    });
+  });
+}
+
+// Run on page load
+initFavoriteButtons();
 renderFavoritesSection();
 
 // === GLOBAL STATE ===
