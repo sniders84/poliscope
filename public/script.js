@@ -89,8 +89,8 @@ let podcastsData = [];
 let showsData = [];
 
 Promise.all([
-  fetch('podcasts.json').then(res => res.json()),
-  fetch('shows.json').then(res => res.json())
+  fetch('/podcasts.json').then(res => res.json()),
+  fetch('/shows.json').then(res => res.json())
 ])
 .then(([podcasts, shows]) => {
   podcastsData = podcasts;
