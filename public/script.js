@@ -1,11 +1,11 @@
-// === FAVORITES STORAGE & FETCH DATA ===
+// === FAVORITES STORAGE & HELPERS (single canonical block) ===
 window.favorites = JSON.parse(localStorage.getItem('favorites')) || {
   podcasts: [],
   shows: []
 };
 
 function isFavorite(type, title) {
-  return window.favorites[type]?.includes(title);
+  return !!(window.favorites[type] && window.favorites[type].includes(title));
 }
 
 function toggleFavorite(type, title) {
@@ -17,23 +17,38 @@ function toggleFavorite(type, title) {
     window.favorites[type].push(title);
   }
   localStorage.setItem('favorites', JSON.stringify(window.favorites));
+
+  // refresh the podcasts tab UI if visible
+  const tab = document.getElementById('podcasts-shows');
+  if (tab && tab.style.display !== 'none' && typeof showPodcastsShows === 'function') {
+    showPodcastsShows();
+  }
 }
 
-// === FETCH DATA AND THEN RENDER ===
+// === PODCASTS & SHOWS DATA & FAVORITES INTEGRATION ===
+// keep only ONE copy of this entire block in the file
+
 let podcastsData = [];
 let showsData = [];
 
 Promise.all([
-  fetch('podcasts.json').then(r => r.json()),
-  fetch('shows.json').then(r => r.json())
+  fetch('podcasts.json').then(res => res.json()),
+  fetch('shows.json').then(res => res.json())
 ])
 .then(([podcasts, shows]) => {
-  podcastsData = podcasts;
-  showsData = shows;
+  podcastsData = Array.isArray(podcasts) ? podcasts : [];
+  showsData = Array.isArray(shows) ? shows : [];
 })
-.catch(err => console.error('Error loading JSON:', err))
+.catch(err => {
+  console.error('Error loading podcasts or shows JSON:', err);
+})
 .finally(() => {
-  showPodcastsShows(); // render after data is ready
+  // safe call — only renders if function exists
+  if (typeof showPodcastsShows === 'function') {
+    showPodcastsShows();
+  } else {
+    console.warn('showPodcastsShows not defined yet — will render when available.');
+  }
 });
 
 // === GLOBAL STATE ===
@@ -1475,10 +1490,33 @@ async function fetchRss(feedUrl) {
   try {
     const response = await fetch(apiUrl);
     const data = await response.json();
-    return data.items.slice(0, 5);
+    return (data.items || []).slice(0, 5);
   } catch (err) {
     console.error('RSS fetch error:', err);
     return [];
+  }
+}
+
+// Render network stories
+async function renderNetworkStories(network) {
+  const feedUrl = rssFeeds[network];
+  if (!feedUrl) return;
+
+  try {
+    const stories = await fetchRss(feedUrl);
+    const container = document.getElementById('network-stories');
+    if (!container) return;
+    container.innerHTML = ''; // clear previous stories
+
+    stories.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'official-card';
+      card.innerHTML = `<h4>${item.title}</h4>`;
+      card.onclick = () => window.open(item.link, '_blank');
+      container.appendChild(card);
+    });
+  } catch (err) {
+    console.error('renderNetworkStories error', err);
   }
 }
 
