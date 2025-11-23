@@ -4,7 +4,7 @@ window.favorites = JSON.parse(localStorage.getItem('favorites')) || {
   shows: []
 };
 
-// Check if title is favorited
+// Check if item is favorited
 function isFavorite(type, title) {
   return window.favorites[type]?.includes(title);
 }
@@ -16,22 +16,36 @@ function toggleFavorite(type, title) {
   const index = window.favorites[type].indexOf(title);
 
   if (index > -1) {
-    // remove
+    // Remove from favorites
     window.favorites[type].splice(index, 1);
   } else {
-    // add
+    // Add to favorites
     window.favorites[type].push(title);
   }
 
-  // Save the updated favorites to localStorage
+  // Save to localStorage
   localStorage.setItem('favorites', JSON.stringify(window.favorites));
 
-  // Re-render Podcasts & Shows if visible
-  const tab = document.getElementById("podcasts-shows");
-  if (tab && tab.style.display !== "none") {
-    showPodcastsShows();
+  // Update the button text immediately
+  updateFavoriteButton(type, title);
+}
+
+// Update favorite button text dynamically
+function updateFavoriteButton(type, title) {
+  const btn = document.querySelector(`button[data-type="${type}"][data-title="${CSS.escape(title)}"]`);
+  if (!btn) return;
+
+  if (isFavorite(type, title)) {
+    btn.textContent = "Remove Favorite";
+  } else {
+    btn.textContent = "Add Favorite";
   }
 }
+
+// When rendering cards (example inside showPodcastsShows), make buttons like:
+// <button data-type="podcasts" data-title="Podcast Name" onclick="toggleFavorite('podcasts', 'Podcast Name')">
+//    Add Favorite
+// </button>
 
 // === GLOBAL STATE ===
 let selectedState = 'North Carolina';
