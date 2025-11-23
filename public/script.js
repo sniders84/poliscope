@@ -57,7 +57,6 @@ let officialsContainer = null;
 let searchBar = null;
 
 // === DATA LOADING ===
-// Load all major JSON datasets at once
 Promise.all([
   fetch('federalOfficials.json').then(res => res.json()),
   fetch('senators.json').then(res => res.json()),
@@ -71,27 +70,19 @@ Promise.all([
   fetch('voting-data.json').then(res => res.json())
 ])
 .then(([federal, sens, govs, cabinet, reps, ltGovs, scotus, groups, links, voting]) => {
-  // Keep global arrays filled
+  // Fill globals
   governors = govs;
   ltGovernors = ltGovs;
   senators = sens;
   houseReps = reps;
 
-  // Merge major federal data sources
-  const allOfficials = [
-    ...federal,
-    ...cabinet,
-    ...sens,
-    ...reps,
-    ...govs,
-    ...ltGovs,
-    ...scotus
-  ];
+  // Keep officials data pre‑rendered in memory
+  renderOfficials(selectedState, '');
 
-  // Show Home Hub by default instead of My Officials
+  // But show Home Hub tab to the user
   showStartupHub();
 
-  // Wire search bar to officials if needed
+  // Wire search bar
   if (searchBar) {
     searchBar.addEventListener('input', e => {
       renderOfficials(selectedState, e.target.value);
