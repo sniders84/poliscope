@@ -1,4 +1,4 @@
-// === FAVORITES STORAGE ===
+// === FAVORITES STORAGE & LIVE HANDLING ===
 window.favorites = JSON.parse(localStorage.getItem('favorites')) || {
   podcasts: [],
   shows: []
@@ -40,12 +40,12 @@ function toggleFavorite(type, title) {
   } else {
     addFavorite(type, title);
   }
+  updateAllStars();
   renderFavoritesSection();
-  updateAllMainStars();
 }
 
-// Update star on all main cards
-function updateAllMainStars() {
+// Update all main card stars
+function updateAllStars() {
   document.querySelectorAll('button.fav-star[data-type][data-title]').forEach(btn => {
     const type = btn.dataset.type;
     const title = btn.dataset.title;
@@ -54,7 +54,7 @@ function updateAllMainStars() {
   });
 }
 
-// --- RENDER FAVORITES SECTION ---
+// --- FAVORITES SECTION RENDER ---
 function renderFavoritesSection() {
   const container = document.getElementById('favorites-section');
   if (!container) return;
@@ -62,10 +62,8 @@ function renderFavoritesSection() {
 
   ['podcasts', 'shows'].forEach(type => {
     window.favorites[type].forEach(title => {
-      // Find the original item in data
-      const item = type === 'podcasts' 
-        ? podcastsData.find(p => p.title === title)
-        : showsData.find(s => s.title === title);
+      const dataArray = type === 'podcasts' ? podcastsData : showsData;
+      const item = dataArray.find(i => i.title === title);
       if (!item) return;
 
       const card = document.createElement('div');
@@ -75,8 +73,8 @@ function renderFavoritesSection() {
 
       card.innerHTML = `
         <div class="logo-wrapper">
-          <img src="${item.logo_slug ? `assets/${item.logo_slug}` : 'assets/default-logo.png'}" 
-               alt="${item.title} logo" 
+          <img src="${item.logo_slug ? `assets/${item.logo_slug}` : 'assets/default-logo.png'}"
+               alt="${item.title} logo"
                onerror="this.onerror=null;this.src='assets/default-logo.png';"/>
         </div>
         <div class="card-content">
@@ -89,13 +87,21 @@ function renderFavoritesSection() {
         </div>
       `;
 
-      // Remove favorite button
       const removeBtn = card.querySelector('.remove-favorite');
-      removeBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
+
+      // Show REMOVE button on hover
+      card.addEventListener('mouseenter', () => {
+        removeBtn.style.display = 'inline-block';
+      });
+      card.addEventListener('mouseleave', () => {
+        removeBtn.style.display = 'none';
+      });
+
+      // Click REMOVE
+      removeBtn.addEventListener('click', () => {
         removeFavorite(type, title);
         renderFavoritesSection();
-        updateAllMainStars();
+        updateAllStars();
       });
 
       container.appendChild(card);
@@ -109,7 +115,7 @@ function initFavoriteStars() {
     const type = btn.dataset.type;
     const title = btn.dataset.title;
 
-    btn.style.fontSize = '2em'; // make star big
+    btn.style.fontSize = '2em';
     btn.textContent = isFavorite(type, title) ? '★' : '☆';
     btn.style.color = isFavorite(type, title) ? 'gold' : 'black';
 
@@ -120,7 +126,7 @@ function initFavoriteStars() {
   });
 }
 
-// --- INITIALIZE ON PAGE LOAD OR TAB SWITCH ---
+// Initialize
 initFavoriteStars();
 renderFavoritesSection();
 
