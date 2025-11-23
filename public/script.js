@@ -1,55 +1,37 @@
-// === FAVORITES STORAGE & HELPERS (single canonical block) ===
+// === FAVORITES STORAGE & HELPERS (FINAL & PERSISTENT) ===
 window.favorites = JSON.parse(localStorage.getItem('favorites')) || {
   podcasts: [],
   shows: []
 };
 
+// Check if title is favorited
 function isFavorite(type, title) {
-  return !!(window.favorites[type] && window.favorites[type].includes(title));
+  return window.favorites[type]?.includes(title);
 }
 
+// Toggle favorite on/off
 function toggleFavorite(type, title) {
   if (!window.favorites[type]) window.favorites[type] = [];
-  const idx = window.favorites[type].indexOf(title);
-  if (idx > -1) {
-    window.favorites[type].splice(idx, 1);
+
+  const index = window.favorites[type].indexOf(title);
+
+  if (index > -1) {
+    // remove
+    window.favorites[type].splice(index, 1);
   } else {
+    // add
     window.favorites[type].push(title);
   }
+
+  // Save the updated favorites to localStorage
   localStorage.setItem('favorites', JSON.stringify(window.favorites));
 
-  // refresh the podcasts tab UI if visible
-  const tab = document.getElementById('podcasts-shows');
-  if (tab && tab.style.display !== 'none' && typeof showPodcastsShows === 'function') {
+  // Re-render Podcasts & Shows if visible
+  const tab = document.getElementById("podcasts-shows");
+  if (tab && tab.style.display !== "none") {
     showPodcastsShows();
   }
 }
-
-// === PODCASTS & SHOWS DATA & FAVORITES INTEGRATION ===
-// keep only ONE copy of this entire block in the file
-
-let podcastsData = [];
-let showsData = [];
-
-Promise.all([
-  fetch('podcasts.json').then(res => res.json()),
-  fetch('shows.json').then(res => res.json())
-])
-.then(([podcasts, shows]) => {
-  podcastsData = Array.isArray(podcasts) ? podcasts : [];
-  showsData = Array.isArray(shows) ? shows : [];
-})
-.catch(err => {
-  console.error('Error loading podcasts or shows JSON:', err);
-})
-.finally(() => {
-  // safe call — only renders if function exists
-  if (typeof showPodcastsShows === 'function') {
-    showPodcastsShows();
-  } else {
-    console.warn('showPodcastsShows not defined yet — will render when available.');
-  }
-});
 
 // === GLOBAL STATE ===
 let selectedState = 'North Carolina';
@@ -101,6 +83,22 @@ Promise.all([
   }
 })
 .catch(err => console.error('Error loading data files:', err));
+
+// === PODCASTS & SHOWS DATA ===
+let podcastsData = [];
+let showsData = [];
+
+Promise.all([
+  fetch('podcasts.json').then(res => res.json()),
+  fetch('shows.json').then(res => res.json())
+])
+.then(([podcasts, shows]) => {
+  podcastsData = podcasts;
+  showsData = shows;
+})
+.catch(err => console.error('Error loading podcasts or shows JSON:', err));
+console.log('podcastsData length:', podcastsData.length);
+console.log('showsData length:', showsData.length);
 
 // Modal refs (Officials modal)
 let officialsModal = null;
@@ -1475,13 +1473,28 @@ document.addEventListener('DOMContentLoaded', () => {
   wireSearchBar();
   wireStateDropdown();
 
-  // Official RSS feeds per network
+  function closeOfficialsSearch() {
+    if (!searchBar) return;
+    searchBar.value = '';
+    searchBar.blur();
+  }
+
+  document.addEventListener('mousedown', event => {
+    if (!searchBar) return;
+    if (event.target !== searchBar && !searchBar.contains(event.target)) {
+      closeOfficialsSearch();
+    }
+  });
+
+  // --- Other existing functions and variables above ---
+
+// Official RSS feeds per network
 const rssFeeds = {
-  msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',
-  abc:   'https://abcnews.go.com/abcnews/topstories',
-  cbs:   'https://www.cbsnews.com/latest/rss/main',
-  fox:   'https://feeds.foxnews.com/foxnews/latest',
-  cnn:   'http://rss.cnn.com/rss/cnn_topstories.rss'
+  msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',   // NBC/MSNBC general news
+  abc:   'https://abcnews.go.com/abcnews/topstories',       // ABC Top Stories
+  cbs:   'https://www.cbsnews.com/latest/rss/main',         // CBS Latest
+  fox:   'https://feeds.foxnews.com/foxnews/latest',        // FOX News Latest
+  cnn:   'http://rss.cnn.com/rss/cnn_topstories.rss'        // CNN Top Stories
 };
 
 // Fetch top 5 stories via rss2json
@@ -1490,33 +1503,10 @@ async function fetchRss(feedUrl) {
   try {
     const response = await fetch(apiUrl);
     const data = await response.json();
-    return (data.items || []).slice(0, 5);
+    return data.items.slice(0, 5);
   } catch (err) {
     console.error('RSS fetch error:', err);
     return [];
-  }
-}
-
-// Render network stories
-async function renderNetworkStories(network) {
-  const feedUrl = rssFeeds[network];
-  if (!feedUrl) return;
-
-  try {
-    const stories = await fetchRss(feedUrl);
-    const container = document.getElementById('network-stories');
-    if (!container) return;
-    container.innerHTML = ''; // clear previous stories
-
-    stories.forEach(item => {
-      const card = document.createElement('div');
-      card.className = 'official-card';
-      card.innerHTML = `<h4>${item.title}</h4>`;
-      card.onclick = () => window.open(item.link, '_blank');
-      container.appendChild(card);
-    });
-  } catch (err) {
-    console.error('renderNetworkStories error', err);
   }
 }
 
@@ -1536,7 +1526,6 @@ async function renderNetworkStories(network) {
     card.onclick = () => window.open(item.link, '_blank');
     container.appendChild(card);
   });
-}
 
   // Append "See More" next to last story
   if (stories.length > 0) {
