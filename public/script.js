@@ -1,114 +1,39 @@
-// === PODCASTS & SHOWS FAVORITES LOGIC ===
-document.addEventListener('DOMContentLoaded', function() {
+// === FAVORITES STORAGE & FETCH DATA ===
+window.favorites = JSON.parse(localStorage.getItem('favorites')) || {
+  podcasts: [],
+  shows: []
+};
 
-  // Array to hold favorites
-  let favorites = [];
+function isFavorite(type, title) {
+  return window.favorites[type]?.includes(title);
+}
 
-  // Example data for Podcasts & Shows (replace with your actual data source)
-  const podcastsData = [
-    {
-      id: 'p1',
-      title: 'The History Hour',
-      category: 'History',
-      descriptor: 'Exploring major historical events.',
-      logo: 'https://via.placeholder.com/140x140?text=History+Hour'
-    },
-    {
-      id: 'p2',
-      title: 'Science Today',
-      category: 'Science',
-      descriptor: 'Latest discoveries in science.',
-      logo: 'https://via.placeholder.com/140x140?text=Science+Today'
-    },
-    // add more cards here...
-  ];
-
-  // Containers
-  const container = document.getElementById('podcasts-cards');
-
-  // Helper: Render Favorites Section
-  function renderFavorites() {
-    // Remove old favorites section if exists
-    const oldFavSection = document.getElementById('favorites-section');
-    if (oldFavSection) oldFavSection.remove();
-
-    if (favorites.length === 0) return; // no favorites to render
-
-    const favSection = document.createElement('div');
-    favSection.id = 'favorites-section';
-    favSection.innerHTML = `<h3>Favorites</h3><div class="favorites-grid"></div>`;
-    container.prepend(favSection); // always on top
-
-    const favGrid = favSection.querySelector('.favorites-grid');
-
-    favorites.forEach(card => {
-      const cardDiv = document.createElement('div');
-      cardDiv.className = 'favorite-card';
-      cardDiv.innerHTML = `
-        <div class="logo-wrapper">
-          <img src="${card.logo}" alt="${card.title}">
-        </div>
-        <div class="card-content">
-          <h4>${card.title}</h4>
-          <div class="category">${card.category}</div>
-          <div class="descriptor">${card.descriptor}</div>
-        </div>
-        <div class="remove-favorite">✖</div>
-      `;
-
-      // Remove button event
-      const removeBtn = cardDiv.querySelector('.remove-favorite');
-      removeBtn.addEventListener('click', (e) => {
-        e.stopPropagation(); // prevent triggering other events
-        favorites = favorites.filter(f => f.id !== card.id);
-        renderFavorites();
-      });
-
-      favGrid.appendChild(cardDiv);
-    });
+function toggleFavorite(type, title) {
+  if (!window.favorites[type]) window.favorites[type] = [];
+  const idx = window.favorites[type].indexOf(title);
+  if (idx > -1) {
+    window.favorites[type].splice(idx, 1);
+  } else {
+    window.favorites[type].push(title);
   }
+  localStorage.setItem('favorites', JSON.stringify(window.favorites));
+}
 
-  // Helper: Render Podcast Cards
-  function renderCards() {
-    // Clear current cards
-    container.innerHTML = '';
+// === FETCH DATA AND THEN RENDER ===
+let podcastsData = [];
+let showsData = [];
 
-    // First render favorites if any
-    renderFavorites();
-
-    // Render all podcast cards
-    podcastsData.forEach(card => {
-      const cardDiv = document.createElement('div');
-      cardDiv.className = 'podcast-show-card';
-      cardDiv.innerHTML = `
-        <div class="logo-wrapper">
-          <img src="${card.logo}" alt="${card.title}">
-        </div>
-        <div class="card-content">
-          <h4>${card.title}</h4>
-          <div class="category">${card.category}</div>
-          <div class="descriptor">${card.descriptor}</div>
-        </div>
-        <button class="fav-star">★</button>
-      `;
-
-      // Favorite button event
-      const favBtn = cardDiv.querySelector('.fav-star');
-      favBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        // Only add if not already in favorites
-        if (!favorites.find(f => f.id === card.id)) {
-          favorites.push(card);
-          renderFavorites();
-        }
-      });
-
-      container.appendChild(cardDiv);
-    });
-  }
-
-  // Initial render
-  renderCards();
+Promise.all([
+  fetch('podcasts.json').then(r => r.json()),
+  fetch('shows.json').then(r => r.json())
+])
+.then(([podcasts, shows]) => {
+  podcastsData = podcasts;
+  showsData = shows;
+})
+.catch(err => console.error('Error loading JSON:', err))
+.finally(() => {
+  showPodcastsShows(); // render after data is ready
 });
 
 // === GLOBAL STATE ===
@@ -1576,7 +1501,7 @@ const rssFeeds = {
 };
 
 // Fetch top 5 stories via rss2json
-async function fetchRss(feedUrl) {
+n fetchRss(feedUrl) {
   const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
   try {
     const response = await fetch(apiUrl);
@@ -1589,7 +1514,7 @@ async function fetchRss(feedUrl) {
 }
 
 // Render network stories
-async function renderNetworkStories(network) {
+n renderNetworkStories(network) {
   const feedUrl = rssFeeds[network];
   if (!feedUrl) return;
 
