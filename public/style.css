@@ -3104,3 +3104,44 @@ rssapp-carousel {
   flex-direction: column;
   gap: 32px;
 }
+/* --- COLLAPSIBLE SECTIONS --- */
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px 0;
+  user-select: none;
+}
+
+.section-header h3 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.section-arrow {
+  transition: transform 0.25s ease;
+  font-size: 1.4rem;
+}
+
+/* Rotated (open) */
+.section-header.open .section-arrow {
+  transform: rotate(90deg);
+}
+
+/* Collapsed body container */
+.section-body {
+  overflow: hidden;
+  transition: max-height 0.30s ease;
+}
+
+/* Default open state */
+.section-body.open {
+  max-height: 2000px; /* enough to reveal all cards */
+}
+
+/* Collapsed */
+.section-body.closed {
+  max-height: 0;
+}
