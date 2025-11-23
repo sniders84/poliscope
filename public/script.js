@@ -212,10 +212,24 @@ function showPodcastsShows() {
  const renderSection = (titleText, items, type) => {
   const section = document.createElement('div');
   section.className = 'podcast-show-section';
+// COLLAPSIBLE HEADER
+const header = document.createElement('div');
+header.className = "section-header open";
 
-  const title = document.createElement('h3');
-  title.textContent = titleText;
-  section.appendChild(title);
+const title = document.createElement('h3');
+title.textContent = titleText;
+
+const arrow = document.createElement('span');
+arrow.className = "section-arrow";
+arrow.textContent = "▶";   // arrow icon
+
+header.appendChild(title);
+header.appendChild(arrow);
+section.appendChild(header);
+
+// SECTION BODY (the part that collapses)
+const body = document.createElement('div');
+body.className = "section-body open";
 
   const grid = document.createElement('div');
   grid.className = 'podcast-show-grid';
@@ -273,8 +287,25 @@ function showPodcastsShows() {
     });
   }
 
-  section.appendChild(grid);
-  return section;
+  body.appendChild(grid);
+section.appendChild(body);
+
+// CLICK HANDLER FOR COLLAPSE/EXPAND
+header.addEventListener('click', () => {
+  const isOpen = body.classList.contains("open");
+
+  if (isOpen) {
+    body.classList.remove("open");
+    body.classList.add("closed");
+    header.classList.remove("open");
+  } else {
+    body.classList.remove("closed");
+    body.classList.add("open");
+    header.classList.add("open");
+  }
+});
+
+return section;
 };
 
   // small helpers (local)
