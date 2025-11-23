@@ -1,5 +1,5 @@
-// === FAVORITES STORAGE & HELPERS (FINAL & CORRECT) ===
-window.favorites = {
+// === FAVORITES STORAGE & HELPERS (FINAL & PERSISTENT) ===
+window.favorites = JSON.parse(localStorage.getItem('favorites')) || {
   podcasts: [],
   shows: []
 };
@@ -23,12 +23,16 @@ function toggleFavorite(type, title) {
     window.favorites[type].push(title);
   }
 
+  // Save the updated favorites to localStorage
+  localStorage.setItem('favorites', JSON.stringify(window.favorites));
+
   // Re-render Podcasts & Shows if visible
   const tab = document.getElementById("podcasts-shows");
   if (tab && tab.style.display !== "none") {
     showPodcastsShows();
   }
 }
+
 // === GLOBAL STATE ===
 let selectedState = 'North Carolina';
 let governors = [];
