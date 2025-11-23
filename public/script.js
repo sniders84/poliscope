@@ -207,13 +207,14 @@ function showTab(id) {
   if (activeTab) activeTab.style.display = 'block';
 }
 
-// === Tab functions ===
 function showStartupHub() {
   showTab('startup-hub');
 }
 
 function showPodcastsShows() {
   console.log('showPodcastsShows() start');
+
+  // ensure the tab is visible
   showTab('podcasts-shows');
 
   const container = document.getElementById('podcasts-cards');
@@ -228,152 +229,159 @@ function showPodcastsShows() {
     const section = document.createElement('div');
     section.className = 'podcast-show-section';
 
-    // COLLAPSIBLE HEADER + renderSection helper inside showPodcastsShows
-const renderSection = (titleText, items, type) => {
-  const section = document.createElement('div');
-  section.className = 'podcast-show-section';
+    // COLLAPSIBLE HEADER
+    const header = document.createElement('div');
+    header.className = "section-header open";
 
-  // Header
-  const header = document.createElement('div');
-  header.className = "section-header open";
+    const title = document.createElement('h3');
+    title.textContent = titleText;
 
-  const title = document.createElement('h3');
-  title.textContent = titleText;
+    const arrow = document.createElement('span');
+    arrow.className = "section-arrow";
+    arrow.textContent = "▶";
 
-  const arrow = document.createElement('span');
-  arrow.className = "section-arrow";
-  arrow.textContent = "▶";
+    header.appendChild(title);
+    header.appendChild(arrow);
+    section.appendChild(header);
 
-  header.appendChild(title);
-  header.appendChild(arrow);
-  section.appendChild(header);
+    // SECTION BODY
+    const body = document.createElement('div');
+    body.className = "section-body open";
 
-  // Body
-  const body = document.createElement('div');
-  body.className = "section-body open";
+    const grid = document.createElement('div');
+    grid.className = 'podcast-show-grid';
 
-  const grid = document.createElement('div');
-  grid.className = 'podcast-show-grid';
+    if (!Array.isArray(items) || items.length === 0) {
+      const msg = document.createElement('p');
+      msg.textContent = `No ${titleText.toLowerCase()} available.`;
+      grid.appendChild(msg);
+    } else {
+      // Render all items
+      items.forEach(item => {
+        try {
+          const card = document.createElement('div');
+          card.className = 'podcast-show-card';
 
-  if (!Array.isArray(items) || items.length === 0) {
-    const msg = document.createElement('p');
-    msg.textContent = `No ${titleText.toLowerCase()} available.`;
-    grid.appendChild(msg);
-  } else {
-    items.forEach(item => {
-      try {
-        const card = document.createElement('div');
-        card.className = 'podcast-show-card';
+          const logoPath = item.logo_slug ? `assets/${item.logo_slug}` : 'assets/default-logo.png';
 
-        const logoPath = item.logo_slug ? `assets/${item.logo_slug}` : 'assets/default-logo.png';
-
-        card.innerHTML = `
-          <div class="logo-wrapper" role="button" title="Open ${item.title}">
-            <img src="${logoPath}" alt="${item.title} logo"
-                 onerror="this.onerror=null;this.src='assets/default-logo.png';" />
-          </div>
-          <div class="card-content">
-            <h4 class="card-title">${escapeHtml(item.title)}</h4>
-            <p class="category">${escapeHtml(item.category || '')} – ${escapeHtml(item.source || '')}</p>
-            <p class="descriptor">${escapeHtml(item.descriptor || '')}</p>
-            <div class="card-actions">
-              <button class="favorite-btn" aria-label="favorite"></button>
+          card.innerHTML = `
+            <div class="logo-wrapper" role="button" title="Open ${item.title}">
+              <img src="${logoPath}" alt="${item.title} logo" onerror="this.onerror=null;this.src='assets/default-logo.png';" />
             </div>
-          </div>
-        `;
+            <div class="card-content">
+              <h4 class="card-title">${escapeHtml(item.title)}</h4>
+              <p class="category">${escapeHtml(item.category || '')} – ${escapeHtml(item.source || '')}</p>
+              <p class="descriptor">${escapeHtml(item.descriptor || '')}</p>
+              <div class="card-actions">
+                <button class="favorite-btn" aria-label="favorite"></button>
+              </div>
+            </div>
+          `;
 
-        const logoBtn = card.querySelector('.logo-wrapper');
-        if (logoBtn && item.official_url) {
-          logoBtn.addEventListener('click', () => window.open(item.official_url, '_blank'));
+          // Logo click
+          const logoBtn = card.querySelector('.logo-wrapper');
+          if (logoBtn) {
+            logoBtn.addEventListener('click', () => {
+              if (item.official_url) window.open(item.official_url, '_blank');
+            });
+          }
+
+          // Favorite toggle
+          const favBtn = card.querySelector('.favorite-btn');
+          if (favBtn) {
+            // initialize state
+            const isFav = isFavorite(item.type || type, item.title);
+            updateFavoriteButton(favBtn, isFav);
+
+            favBtn.addEventListener('click', (e) => {
+              e.stopPropagation();
+              const nowFav = toggleFavorite(item.type || type, item.title);
+              updateFavoriteButton(favBtn, nowFav);
+            });
+          }
+
+          grid.appendChild(card);
+        } catch (err) {
+          console.error('Error rendering item', item, err);
         }
+      });
+    }
 
-        const favBtn = card.querySelector('.favorite-btn');
-        if (favBtn) {
-          const isFav = isFavorite(item.type || type, item.title);
-          updateFavoriteButton(favBtn, isFav);
+    body.appendChild(grid);
+    section.appendChild(body);
 
-          favBtn.addEventListener('click', e => {
-            e.stopPropagation();
-            const nowFav = toggleFavorite(item.type || type, item.title);
-            updateFavoriteButton(favBtn, nowFav);
-          });
-        }
-
-        grid.appendChild(card);
-      } catch (err) {
-        console.error('Error rendering item', item, err);
+    // COLLAPSE/EXPAND
+    header.addEventListener('click', () => {
+      const isOpen = body.classList.contains("open");
+      if (isOpen) {
+        body.classList.remove("open");
+        body.classList.add("closed");
+        header.classList.remove("open");
+      } else {
+        body.classList.remove("closed");
+        body.classList.add("open");
+        header.classList.add("open");
       }
+    });
+
+    return section;
+  };
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+  function escapeAttr(str) {
+    return escapeHtml(str).replace(/\s+/g, ' ');
+  }
+
+  // FAVORITES SECTION
+  const favoriteItems = [];
+
+  if (Array.isArray(window.favorites.podcasts)) {
+    window.favorites.podcasts.forEach(title => {
+      const item = podcastsData.find(p => p.title === title);
+      if (item) favoriteItems.push({ ...item, type: 'podcasts' });
     });
   }
 
-  body.appendChild(grid);
-  section.appendChild(body);
-
-  header.addEventListener('click', () => {
-    const isOpen = body.classList.contains("open");
-    if (isOpen) {
-      body.classList.remove("open");
-      body.classList.add("closed");
-      header.classList.remove("open");
-    } else {
-      body.classList.remove("closed");
-      body.classList.add("open");
-      header.classList.add("open");
-    }
-  });
-
-  return section;
-};
-
-function escapeHtml(str) {
-  if (!str) return '';
-  return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
-}
-
-// Favorites rendering inside showPodcastsShows
-const favoriteItems = [];
-if (Array.isArray(window.favorites.podcasts)) {
-  window.favorites.podcasts.forEach(title => {
-    const item = podcastsData.find(p => p.title === title);
-    if (item) favoriteItems.push({ ...item, type: 'podcasts' });
-  });
-}
-if (Array.isArray(window.favorites.shows)) {
-  window.favorites.shows.forEach(title => {
-    const item = showsData.find(s => s.title === title);
-    if (item) favoriteItems.push({ ...item, type: 'shows' });
-  });
-}
-
-container.appendChild(renderSection('Favorites', favoriteItems, 'favorites'));
-container.appendChild(renderSection('Podcasts', podcastsData || [], 'podcasts'));
-container.appendChild(renderSection('Shows', showsData || [], 'shows'));
-
-const tabSearch = document.getElementById('podcasts-search-bar');
-if (tabSearch) {
-  tabSearch.value = tabSearch.value || '';
-  tabSearch.removeEventListener('input', tabSearch._podcastHandler || (() => {}));
-  const handler = () => {
-    const term = tabSearch.value.toLowerCase().trim();
-    container.querySelectorAll('.podcast-show-card').forEach(card => {
-      const title = (card.querySelector('.card-title')?.textContent || '').toLowerCase();
-      const desc = (card.querySelector('.descriptor')?.textContent || '').toLowerCase();
-      card.style.display = (title.includes(term) || desc.includes(term)) ? '' : 'none';
+  if (Array.isArray(window.favorites.shows)) {
+    window.favorites.shows.forEach(title => {
+      const item = showsData.find(s => s.title === title);
+      if (item) favoriteItems.push({ ...item, type: 'shows' });
     });
-  };
-  tabSearch.addEventListener('input', handler);
-  tabSearch._podcastHandler = handler;
+  }
+
+  // APPEND SECTIONS
+  container.appendChild(renderSection('Favorites', favoriteItems, 'favorites'));
+  container.appendChild(renderSection('Podcasts', podcastsData || [], 'podcasts'));
+  container.appendChild(renderSection('Shows', showsData || [], 'shows'));
+
+  // SEARCH
+  const tabSearch = document.getElementById('podcasts-search-bar');
+  if (tabSearch) {
+    tabSearch.value = tabSearch.value || '';
+    tabSearch.removeEventListener('input', tabSearch._podcastHandler || (() => {}));
+    const handler = () => {
+      const term = tabSearch.value.toLowerCase().trim();
+      container.querySelectorAll('.podcast-show-card').forEach(card => {
+        const title = (card.querySelector('.card-title')?.textContent || '').toLowerCase();
+        const desc = (card.querySelector('.descriptor')?.textContent || '').toLowerCase();
+        card.style.display = (title.includes(term) || desc.includes(term)) ? '' : 'none';
+      });
+    };
+    tabSearch.addEventListener('input', handler);
+    tabSearch._podcastHandler = handler;
+  }
+
+  console.log('showPodcastsShows() finished rendering');
 }
 
-console.log('showPodcastsShows() finished rendering');
-}
-
-// === Other tab functions ===
 function showCivic() {
   showTab('civic-intelligence');
 }
@@ -383,7 +391,7 @@ function showPolls() {
 }
 
 function showOrganizations() {
-  showTab('organizations'); // fixed to match your HTML section id
+  showTab('political-groups');
 }
 
 function showVoting() {
@@ -398,6 +406,10 @@ function showVoting() {
       return res.json();
     })
     .then(data => {
+      console.log('Voting data loaded:', data);
+      console.log('Available voting keys:', Object.keys(data));
+      console.log('Trying to match:', window.selectedState);
+
       let stateName = window.selectedState || 'North Carolina';
       if (stateName === 'Virgin Islands') stateName = 'U.S. Virgin Islands';
       const stateData = data[stateName] || null;
@@ -406,6 +418,9 @@ function showVoting() {
         votingCards.innerHTML = `<p>No voting information available for ${stateName}.</p>`;
         return;
       }
+
+      console.log("Selected state:", stateName);
+      console.log('Direct match result:', data[stateName]);
 
       const labelMap = {
         register: 'Register to Vote',
@@ -423,6 +438,7 @@ function showVoting() {
         if (!value) return;
 
         let url, icon, description, deadline;
+
         if (typeof value === 'string') {
           url = value;
           icon = '🗳️';
@@ -435,6 +451,7 @@ function showVoting() {
         }
 
         if (!url) return;
+
         const title = labelMap[key] || key;
 
         const card = document.createElement('div');
@@ -475,21 +492,6 @@ function showVoting() {
     });
 }
 
-// === Active tab highlight logic ===
-document.addEventListener('DOMContentLoaded', () => {
-  const tabs = document.querySelectorAll('nav .tab');
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-    });
-  });
-
-  // Optional: set Home Hub active on load
-  const homeHub = document.querySelector('nav .tab');
-  if (homeHub) homeHub.classList.add('active');
-});
-
 // === HELPER: render roster cards (if needed) ===
 function renderRosterCards(rosterData, chamberLabel, container) {
   if (Array.isArray(rosterData)) {
@@ -523,8 +525,8 @@ function renderRosterCards(rosterData, chamberLabel, container) {
     container.appendChild(card);
   }
 }
-
 // === HELPER: render a single Cabinet member card ===
+
 function renderCabinetMember(member) {
   const photoSrc = member.photo && member.photo.trim() !== ''
     ? member.photo
@@ -569,32 +571,44 @@ function renderCabinetGrid(cabinetData) {
     container.appendChild(cardWrapper);
   });
 }
+function showCabinetMemberDetail(member) {
+  const detail = document.getElementById('cabinetMemberDetail');
+  detail.innerHTML = `
+  <div class="detail-header">
+    <img src="${member.photo}" alt="${member.name || ''}" class="portrait"
+         onerror="this.onerror=null;this.src='assets/default-photo.png';" />
+    ${member.seal ? `<img src="${member.seal}" alt="${member.office} seal" class="seal" />` : ''}
+  </div>
+  <h2>${member.name || 'Unknown'}</h2>
+  ...
+`;
+
+  document.getElementById('cabinetGridView').style.display = 'none';
+  document.getElementById('cabinetDetailView').style.display = 'block';
+}
+fetch('cabinet.json')
+  .then(res => res.json())
+  .then(data => renderCabinetGrid(data));
 
 // === DETAIL: show a single Cabinet member in the modal ===
 function showCabinetMemberDetail(member) {
   const detail = document.getElementById('cabinetMemberDetail');
   detail.innerHTML = `
     <div class="detail-header">
-      <img src="${member.photo}" alt="${member.name || ''}" class="portrait"
-           onerror="this.onerror=null;this.src='assets/default-photo.png';" />
-      ${member.seal ? `<img src="${member.seal}" alt="${member.office} seal" class="seal" />` : ''}
+      <img src="${member.photo}" alt="${member.name}" class="portrait" />
+      <img src="${member.seal}" alt="${member.office} seal" class="seal" />
     </div>
-    <h2>${member.name || 'Unknown'}</h2>
-    <h4>${member.office || ''}</h4>
-    <p>${member.bio || ''}</p>
+    <h2>${member.name}</h2>
+    <h4>${member.office}</h4>
+    <p>${member.bio}</p>
   `;
   document.getElementById('cabinetGridView').style.display = 'none';
   document.getElementById('cabinetDetailView').style.display = 'block';
 }
 
-// Load Cabinet data
-fetch('cabinet.json')
-  .then(res => res.json())
-  .then(data => renderCabinetGrid(data));
-
 // === CIVIC TAB ===
 function showCivic() {
-  showTab('civic-intelligence'); // fixed to match your HTML section id
+  showTab('civic');
   const calendar = document.getElementById('calendar');
   calendar.innerHTML = '';
 
@@ -665,10 +679,8 @@ function showCivic() {
         stateBlock.appendChild(msg);
       }
       stateBlock.appendChild(grid);
-    });
-}
 
-          // --- NGA block ---
+      // --- NGA block ---
       const ngaBlock = document.createElement('div');
       ngaBlock.className = 'civic-block';
       ngaBlock.innerHTML = '<h2>National Governor\'s Association</h2>';
@@ -746,8 +758,7 @@ function showCivic() {
       calendar.innerHTML = '<p>Error loading civic links.</p>';
       console.error(err);
     });
-} // <-- closes showCivic cleanly, only once
-
+}
 // === CABINET MODAL LOGIC ===
 function showCabinet() {
   const list = document.getElementById('cabinetList');
@@ -784,23 +795,24 @@ function showCabinet() {
           : 'assets/default-photo.png';
 
         card.innerHTML = `
-          <div class="photo-wrapper">
-            <img src="${photoSrc}" alt="${member.name || ''}"
-                 onerror="this.onerror=null;this.src='assets/default-photo.png';" />
-          </div>
-          <div class="official-info">
-            <h3>${member.name || 'Unknown'}</h3>
-            <p><strong>Office:</strong> ${member.office || 'N/A'}</p>
-          </div>
-        `;
+  <div class="photo-wrapper">
+    <img src="${photoSrc}" alt="${member.name || ''}"
+         onerror="this.onerror=null;this.src='assets/default-photo.png';" />
+  </div>
+  <div class="official-info">
+    <h3>${member.name || 'Unknown'}</h3>
+    <p><strong>Office:</strong> ${member.office || 'N/A'}</p>
+  </div>
+`;
 
+        // Only when you click a card do we show details
         card.onclick = () => showCabinetMember(member);
         list.appendChild(card);
       });
 
       modal.style.display = 'block';
 
-      // click-outside close
+      // click-outside close (scoped to this modal)
       window.addEventListener('click', function cabinetClickOutside(e) {
         if (e.target === modal) {
           modal.style.display = 'none';
@@ -825,6 +837,7 @@ function showCabinetMember(member) {
   gridView.style.display = 'none';
   detailView.style.display = 'block';
 
+  // Handle empty termStart / termEnd safely
   const parseYear = d => {
     if (!d || d.trim() === '') return '';
     const dt = new Date(d);
@@ -845,7 +858,7 @@ function showCabinetMember(member) {
     ${member.party ? `<p><strong>Party:</strong> ${member.party}</p>` : ''}
     ${(termStartYear || termEndYear) ? `<p><strong>Term:</strong> ${termStartYear}–${termEndYear}</p>` : ''}
     ${member.bio ? `<p><strong>Bio:</strong> ${member.bio}</p>` : ''}
-        ${member.education ? `<p><strong>Education:</strong> ${member.education}</p>` : ''}
+    ${member.education ? `<p><strong>Education:</strong> ${member.education}</p>` : ''}
     ${member.salary ? `<p><strong>Salary:</strong> ${member.salary}</p>` : ''}
     ${member.predecessor ? `<p><strong>Predecessor:</strong> ${member.predecessor}</p>` : ''}
     ${member.contact && member.contact.website ? `<p><a href="${member.contact.website}" target="_blank">Official Website</a></p>` : ''}
@@ -910,6 +923,7 @@ function openPollModal(categoryLabel) {
     return;
   }
 
+  // Render header and poll cards in a grid
   modalContent.innerHTML = `
     <h2>${category.label} Polls</h2>
     <div class="poll-grid">
@@ -928,6 +942,7 @@ function openPollModal(categoryLabel) {
 
   modal.style.display = 'block';
 
+  // Close modal when clicking outside
   const clickOutsideHandler = function(e) {
     if (e.target === modal) {
       modal.style.display = 'none';
@@ -988,18 +1003,17 @@ function showOrganizations() {
       console.error(err);
     });
 }
-
-// === STARTUP HUB TAB ===
 function showStartupHub() {
-  showTab('startup-hub');
+  showTab('startup-hub'); // makes sure only the Home Hub tab is visible
 
   const hubContainer = document.getElementById('hub-cards');
   if (!hubContainer) return;
   hubContainer.innerHTML = '';
 
+  // Removed "Popular Podcasts" and "Trending Now"
   const hubItems = [
     { title: "National Broadcasting Networks", id: "national-networks" },
-    { title: "Global Politics & World News", id: "world-news" }, // fixed to match HTML id
+    { title: "Global Politics & World News", id: "global-news" },
     { title: "Finance & Markets", id: "finance-markets" },
     { title: "Economy", id: "economy" }
   ];
@@ -1130,6 +1144,7 @@ function renderOfficials(stateFilter = null, query = '') {
   const filteredReps = houseReps
     .filter(o => !filterByState || o.state === stateFilter)
     .sort((a, b) => parseInt(a.district) - parseInt(b.district));
+  console.log("Filtered reps:", filteredReps.map(r => r.name));
 
   const allOfficials = [
     ...federalOfficials,
@@ -1177,23 +1192,23 @@ function renderOfficials(stateFilter = null, query = '') {
 
     const card = document.createElement('div');
     card.className = `official-card ${normalizedParty}`;
-    card.innerHTML = `
-      <div class="party-stripe"></div>
-      <div class="card-body">
-        <div class="photo-wrapper">
-          <img src="${photoSrc}" alt="${o.name}"
-               onerror="this.onerror=null;this.src='assets/default-photo.png';" />
-        </div>
-        <div class="official-info">
-          <h3>${o.name || 'Unknown'}</h3>
-          <p><strong>Position:</strong> ${o.office || 'N/A'}</p>
-          ${districtDisplay}
-          <p><strong>State:</strong> ${o.state || 'United States'}</p>
-          <p><strong>Term:</strong> ${termDisplay}</p>
-          <p><strong>Party:</strong> ${o.party || 'N/A'}</p>
-        </div>
-      </div>
-    `;
+  card.innerHTML = `
+  <div class="party-stripe"></div>
+  <div class="card-body">
+    <div class="photo-wrapper">
+      <img src="${photoSrc}" alt="${o.name}"
+           onerror="this.onerror=null;this.src='assets/default-photo.png';" />
+    </div>
+    <div class="official-info">
+      <h3>${o.name || 'Unknown'}</h3>
+      <p><strong>Position:</strong> ${o.office || 'N/A'}</p>
+      ${districtDisplay}
+      <p><strong>State:</strong> ${o.state || 'United States'}</p>
+      <p><strong>Term:</strong> ${termDisplay}</p>
+      <p><strong>Party:</strong> ${o.party || 'N/A'}</p>
+    </div>
+  </div>
+`;
     card.addEventListener('click', () => openOfficialModal(o));
     officialsContainer.appendChild(card);
   });
@@ -1267,6 +1282,7 @@ function openOfficialModal(official) {
 
   modal.style.display = 'block';
 
+  // Click-outside-to-close (scoped handler)
   const clickOutsideHandler = function(event) {
     if (event.target === modal) {
       modal.style.display = 'none';
@@ -1276,8 +1292,28 @@ function openOfficialModal(official) {
   window.addEventListener('click', clickOutsideHandler);
 }
 
+// Safe close function that accepts optional id (defaults to officials modal)
 function closeModalWindow(id = 'officials-modal') {
+  const el = document.getElementById(id);
+  if (!el) {
+    console.warn(`closeModalWindow: no element found with id "${id}"`);
+    return;
+  }
+  el.style.display = 'none';
+}
 
+// === SEARCH BAR WIRING ===
+function wireSearchBar() {
+  if (!searchBar) {
+    searchBar = document.getElementById('search-bar');
+  }
+  if (!searchBar) return;
+
+  searchBar.addEventListener('input', () => {
+    const query = searchBar.value.trim();
+    renderOfficials(null, query);
+  });
+}
 // ==== HOME HUB NAV ====
 
 // Simple startup hub loader
@@ -1285,25 +1321,24 @@ function showStartupHub() {
   showTab('startup-hub');
 }
 
-// Optional: set Home Hub active on load
+// 🚫 Sticky nav removed — no initHubNav, no scroll listeners
+
 document.addEventListener('DOMContentLoaded', () => {
-  const homeHub = document.querySelector('nav .tab');
-  if (homeHub) homeHub.classList.add('active');
+  initHubNav();
 });
 
-// Shared RSS feeds for networks (single source of truth)
-const rssFeeds = {
-  msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',
-  abc:   'https://abcnews.go.com/abcnews/topstories',
-  cbs:   'https://www.cbsnews.com/latest/rss/main',
-  fox:   'https://feeds.foxnews.com/foxnews/latest',
-  cnn:   'http://rss.cnn.com/rss/cnn_topstories.rss'
-};
-
-// === FEED STORIES (card click loads top stories) ===
 document.addEventListener('DOMContentLoaded', () => {
   const feedTitle = document.getElementById('feed-title');
   const feedStories = document.getElementById('feed-stories');
+
+  // Official RSS feeds per network
+  const rssFeeds = {
+    msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',   // NBC/MSNBC general news
+    abc:   'https://abcnews.go.com/abcnews/topstories',       // ABC Top Stories
+    cbs:   'https://www.cbsnews.com/latest/rss/main',         // CBS Latest
+    fox:   'https://feeds.foxnews.com/foxnews/latest',        // FOX News Latest
+    cnn:   'http://rss.cnn.com/rss/cnn_topstories.rss'        // CNN Top Stories
+  };
 
   async function loadFeed(network) {
     const url = rssFeeds[network];
@@ -1311,12 +1346,15 @@ document.addEventListener('DOMContentLoaded', () => {
     feedStories.innerHTML = '<p style="color:#fff;">Loading...</p>';
 
     try {
+      // Use rss2json proxy to bypass CORS
       const response = await fetch(
         `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`
       );
       const data = await response.json();
+
       const items = Array.isArray(data.items) ? data.items.slice() : [];
 
+      // Just sort by pubDate if available, but don’t display it
       const normalized = items
         .map(item => ({ item, date: item.pubDate ? new Date(item.pubDate) : null }))
         .filter(x => x.date)
@@ -1367,9 +1405,13 @@ function wireStateDropdown() {
   });
 }
 
-// === Officials modal wiring and search ===
 document.addEventListener('DOMContentLoaded', () => {
+  const officialsContainer = document.getElementById('officials-container');
   const searchBar = document.getElementById('search-bar');
+  const loadingOverlay = document.getElementById('loading-overlay');
+
+  const officialsModal = document.getElementById('officials-modal');
+  const officialsModalContent = document.getElementById('officials-content');
   const officialsModalCloseBtn = document.getElementById('officials-close');
 
   if (officialsModalCloseBtn) {
@@ -1391,34 +1433,19 @@ document.addEventListener('DOMContentLoaded', () => {
       closeOfficialsSearch();
     }
   });
-});
 
-// === GLOBAL POLITICS & WORLD NEWS ===
-const worldNewsFeedUrl = 'https://news.google.com/rss/search?q=world+politics&hl=en-US&gl=US&ceid=US:en';
-const maxCards = 25;
+  // --- Other existing functions and variables above ---
 
-function getFaviconUrl(link) {
-  try {
-    const url = new URL(link);
-    return `${url.origin}/favicon.ico`;
-  } catch {
-    return '';
-  }
-}
+// Official RSS feeds per network
+const rssFeeds = {
+  msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',   // NBC/MSNBC general news
+  abc:   'https://abcnews.go.com/abcnews/topstories',       // ABC Top Stories
+  cbs:   'https://www.cbsnews.com/latest/rss/main',         // CBS Latest
+  fox:   'https://feeds.foxnews.com/foxnews/latest',        // FOX News Latest
+  cnn:   'http://rss.cnn.com/rss/cnn_topstories.rss'        // CNN Top Stories
+};
 
-async function fetchGoogleNewsRss(feedUrl) {
-  try {
-    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
-    const res = await fetch(apiUrl);
-    const data = await res.json();
-    return data.items?.slice(0, maxCards) || [];
-  } catch (err) {
-    console.error('RSS fetch error:', err);
-    return [];
-  }
-}
-
-// === Network stories (cards under National Networks) ===
+// Fetch top 5 stories via rss2json
 async function fetchRss(feedUrl) {
   const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
   try {
@@ -1431,14 +1458,14 @@ async function fetchRss(feedUrl) {
   }
 }
 
+// Render network stories
 async function renderNetworkStories(network) {
   const feedUrl = rssFeeds[network];
   if (!feedUrl) return;
 
   const stories = await fetchRss(feedUrl);
   const container = document.getElementById('network-stories');
-  if (!container) return;
-  container.innerHTML = '';
+  container.innerHTML = ''; // clear previous stories
 
   stories.forEach(item => {
     const card = document.createElement('div');
@@ -1448,11 +1475,13 @@ async function renderNetworkStories(network) {
     container.appendChild(card);
   });
 
+  // Append "See More" next to last story
   if (stories.length > 0) {
     const seeMore = document.createElement('div');
     seeMore.className = 'see-more';
     seeMore.innerText = 'See More';
     seeMore.onclick = () => {
+      // Proper site URL for MSNBC, others open homepage
       const urlMap = {
         msnbc: 'https://www.msnbc.com',
         abc: 'https://abcnews.go.com',
@@ -1466,34 +1495,72 @@ async function renderNetworkStories(network) {
   }
 }
 
+// Add click listeners to network cards
 document.querySelectorAll('#network-cards .info-card').forEach(card => {
   card.addEventListener('click', () => {
     const network = card.dataset.network;
     renderNetworkStories(network);
   });
 });
+// === GLOBAL POLITICS & WORLD NEWS: Google News RSS feed ===
+const worldNewsFeedUrl = 'https://news.google.com/rss/search?q=world+politics&hl=en-US&gl=US&ceid=US:en';
+const maxCards = 25;
 
-// === Load officials data (no overlay) ===
-Promise.all([
-  fetch('/governors.json').then(res => res.json()),
-  fetch('/ltgovernors.json').then(res => res.json()),
-  fetch('/senators.json').then(res => res.json()),
-  fetch('/housereps.json').then(res => res.json())
-])
-  .then(([govs, ltGovs, sens, reps]) => {
-    governors = govs;
-    ltGovernors = ltGovs;
-    senators = sens;
-    houseReps = reps;
+// Helper to extract favicon from story source
+function getFaviconUrl(link) {
+  try {
+    const url = new URL(link);
+    return `${url.origin}/favicon.ico`;
+  } catch {
+    return ''; // fallback empty
+  }
+}
 
-    renderOfficials(selectedState, '');
+// Fetch RSS via rss2json
+async function fetchGoogleNewsRss(feedUrl) {
+  try {
+    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
+    const res = await fetch(apiUrl);
+    const data = await res.json();
+    return data.items?.slice(0, maxCards) || [];
+  } catch (err) {
+    console.error('RSS fetch error:', err);
+    return [];
+  }
+}
 
-    const socialFeed = document.getElementById('social-feed');
-    if (socialFeed && typeof loadSocialTrends === 'function') {
-      console.log('🎬 loadSocialTrends is running...');
-      loadSocialTrends();
-    }
-  })
-  .catch(err => {
-    console.error('Error loading official data:', err);
-  });
+  // === Load officials data with smooth fade-in ===
+  Promise.all([
+    fetch('/governors.json').then(res => res.json()),
+    fetch('/ltgovernors.json').then(res => res.json()),
+    fetch('/senators.json').then(res => res.json()),
+    fetch('/housereps.json').then(res => res.json())
+  ])
+    .then(([govs, ltGovs, sens, reps]) => {
+      governors = govs;
+      ltGovernors = ltGovs;
+      senators = sens;
+      houseReps = reps;
+
+      // Render officials
+      renderOfficials(selectedState, '');
+
+      // Fade out loading overlay
+      if (loadingOverlay) {
+        loadingOverlay.style.transition = 'opacity 0.5s ease';
+        loadingOverlay.style.opacity = '0';
+        setTimeout(() => loadingOverlay.remove(), 500);
+      }
+
+      // Load social trends
+      const socialFeed = document.getElementById('social-feed');
+      if (socialFeed && typeof loadSocialTrends === 'function') {
+        console.log("🎬 loadSocialTrends is running...");
+        loadSocialTrends();
+      }
+    })
+    .catch(err => {
+      console.error('Error loading official data:', err);
+      if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
+    });
+});
