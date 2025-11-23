@@ -85,6 +85,23 @@
   <button class="tab" onclick="showVoting()">Voting</button>
 </nav>
 
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('nav .tab');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
+
+  // Optional: set the first tab active on load
+  if (tabs.length > 0) {
+    tabs[0].classList.add('active');
+  }
+});
+</script>
+
   <main>
     
 <!-- Startup Hub Tab -->
