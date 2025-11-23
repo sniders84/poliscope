@@ -50,6 +50,7 @@ function updateAllMainStars() {
     const type = btn.dataset.type;
     const title = btn.dataset.title;
     btn.textContent = isFavorite(type, title) ? '★' : '☆';
+    btn.style.color = isFavorite(type, title) ? 'gold' : 'black';
   });
 }
 
@@ -83,14 +84,15 @@ function renderFavoritesSection() {
           <p class="category">${item.category || ''} – ${item.source || ''}</p>
           <p class="descriptor">${item.descriptor || ''}</p>
           <div class="card-actions">
-            <span class="remove-favorite">✕ Remove</span>
+            <span class="remove-favorite">✕ REMOVE</span>
           </div>
         </div>
       `;
 
-      // Remove on click
+      // Remove favorite button
       const removeBtn = card.querySelector('.remove-favorite');
-      removeBtn.addEventListener('click', () => {
+      removeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
         removeFavorite(type, title);
         renderFavoritesSection();
         updateAllMainStars();
@@ -107,8 +109,9 @@ function initFavoriteStars() {
     const type = btn.dataset.type;
     const title = btn.dataset.title;
 
-    btn.style.fontSize = '2em'; // make it big
+    btn.style.fontSize = '2em'; // make star big
     btn.textContent = isFavorite(type, title) ? '★' : '☆';
+    btn.style.color = isFavorite(type, title) ? 'gold' : 'black';
 
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -117,7 +120,7 @@ function initFavoriteStars() {
   });
 }
 
-// Call these on page load / tab render
+// --- INITIALIZE ON PAGE LOAD OR TAB SWITCH ---
 initFavoriteStars();
 renderFavoritesSection();
 
