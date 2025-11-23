@@ -306,10 +306,12 @@ function showTab(tabId) {
     onfocus="this.style.borderColor='#1e90ff'; this.style.boxShadow='0 0 5px #1e90ff';"
     onblur="this.style.borderColor='#ccc'; this.style.boxShadow='none';"
   />
-<div id="favorites-section" class="podcast-show-section" style="display:none;">
-  <h3>Your Favorites</h3>
-  <div id="favorites-grid" class="podcast-show-grid"></div>
+<!-- FAVORITES SECTION (initially empty, filled by JS) -->
+<div id="favorites-section" style="margin-top: 15px;">
+    <h3>Your Favorites</h3>
+    <div id="favorites-list"></div>
 </div>
+
   <!-- Container for cards -->
   <div id="podcasts-cards" class="grid"></div>
 </section>
