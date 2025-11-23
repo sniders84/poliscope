@@ -5,6 +5,62 @@
   <title>Your Officials</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.ico" onerror="this.href='data:,';" />
+
+  <!-- Styles specific to hub nav and cards -->
+  <style>
+    #hub-nav {
+      position: sticky;
+      top: 0;
+      background-color: #2b2b2b;
+      display: flex;
+      gap: 10px;
+      padding: 10px;
+      border-bottom: 1px solid #444;
+      z-index: 1000;
+      overflow-x: auto;
+    }
+    #hub-nav button {
+      padding: 8px 12px;
+      border: none;
+      background-color: #3c3c3c;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: background-color 0.2s, color 0.2s;
+    }
+    #hub-nav button:hover {
+      background-color: #0066ff;
+      color: #fff;
+    }
+    .category-section {
+      padding: 20px 0;
+      border-bottom: 1px solid #444;
+    }
+    .card-grid {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+    .info-card {
+      background-color: #333;
+      padding: 14px;
+      border-radius: 8px;
+      color: #fff;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+    .info-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    #social-feed {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -37,13 +93,12 @@
 
   <main>
     <!-- Startup Hub Tab -->
-    <section id="startup-hub" class="tab-content" style="display: none;">
+    <section id="startup-hub" class="tab-content" style="display:none;">
       <h2>Home Hub</h2>
-
-      <!-- National Broadcasting Networks -->
       <div id="national-networks" class="category-section">
         <h2>National Broadcasting Networks</h2>
         <div class="card-grid" id="network-cards">
+          <!-- Cards -->
           <div class="info-card" data-network="livenowfox">
             <a href="https://www.livenowfox.com/live" target="_blank" rel="noopener noreferrer">
               <img src="assets/livenowfox.png" alt="LiveNOW FOX Logo" class="network-logo">
@@ -56,237 +111,117 @@
             <h3>MSNBC</h3>
             <p>A counter to FOX News coverage.</p>
           </div>
-          <div class="info-card" data-network="abc">
-            <img src="assets/abc.png" alt="ABC News Logo" class="network-logo">
-            <h3>ABC News</h3>
-            <p>National news coverage from ABC.</p>
-          </div>
-          <div class="info-card" data-network="cbs">
-            <img src="assets/cbs.png" alt="CBS News Logo" class="network-logo">
-            <h3>CBS News</h3>
-            <p>CBS News broadcasts and updates.</p>
-          </div>
-          <div class="info-card" data-network="fox">
-            <img src="assets/fox.png" alt="FOX News Logo" class="network-logo">
-            <h3>FOX News</h3>
-            <p>Latest stories from FOX News.</p>
-          </div>
-          <div class="info-card" data-network="cnn">
-            <img src="assets/cnn.png" alt="CNN Logo" class="network-logo">
-            <h3>CNN</h3>
-            <p>Breaking news and political analysis from CNN.</p>
-          </div>
+          <!-- … other networks … -->
         </div>
       </div>
 
-      <!-- Single feed viewer -->
       <div id="feed-viewer" class="feed-viewer">
         <h3 id="feed-title">Select a network to view stories</h3>
         <div class="story-grid" id="feed-stories"></div>
       </div>
 
-      <!-- Global Politics & World News -->
       <div id="world-news" class="hub-section">
         <h2>Global Politics &amp; World News</h2>
         <rssapp-carousel id="91yINq5LiI3EE02z"></rssapp-carousel>
       </div>
 
-      <!-- Finance & Markets -->
       <div id="finance-markets" class="hub-section">
         <h2>Finance &amp; Markets</h2>
         <rssapp-carousel id="yKzUurqBBwmJD8fu"></rssapp-carousel>
       </div>
 
-      <!-- Economy -->
       <div id="economy" class="hub-section">
         <h2>Economy</h2>
         <rssapp-carousel id="vXg6Ae2ZfZ1aKPhG"></rssapp-carousel>
       </div>
 
-      <!-- Popular Podcasts -->
       <div id="popular-podcasts" class="category-section">
         <h2>Popular Podcasts</h2>
         <div class="card-grid">
-          <div class="info-card"><h3>Pod Save America</h3><p>Political commentary from Pod Save America.</p></div>
-          <div class="info-card"><h3>The Daily (NYT)</h3><p>News analysis and storytelling from The Daily.</p></div>
-          <div class="info-card"><h3>NPR Politics</h3><p>Political coverage and analysis from NPR.</p></div>
+          <div class="info-card"><h3>Pod Save America</h3><p>Political commentary.</p></div>
+          <div class="info-card"><h3>The Daily (NYT)</h3><p>News analysis.</p></div>
+          <div class="info-card"><h3>NPR Politics</h3><p>Coverage from NPR.</p></div>
         </div>
       </div>
 
-      <!-- 🌍 Social Trends Section -->
       <div id="social-trends" class="hub-section">
         <h2>Trending Now</h2>
         <div id="social-feed" class="grid"></div>
       </div>
     </section>
+
+    <section id="podcasts-shows" class="tab-content" style="display:none;">
+      <h2>Podcasts & Shows</h2>
+      <input type="text" id="podcasts-search-bar" class="search-bar"
+             placeholder="Search podcasts or shows..." />
+      <div id="podcasts-cards" class="grid"></div>
+    </section>
+
+    <section id="my-officials" class="tab-content" style="display:none;">
+      <h2>My Officials</h2>
+      <div id="officials-container" class="grid"></div>
+    </section>
+
+    <section id="civic-intelligence" class="tab-content" style="display:none;">
+      <h2>Civic Intelligence Dashboard</h2>
+      <div id="calendar"></div>
+    </section>
+
+    <section id="polls" class="tab-content" style="display:none;">
+      <h2>Polling Dashboard</h2>
+      <div id="polls-cards" class="grid"></div>
+    </section>
+
+    <section id="state-legislative" class="tab-content" style="display:none;">
+      <h2>State Legislative Links</h2>
+      <div class="grid"><div class="card">Link 1</div><div class="card">Link 2</div></div>
+    </section>
+
+    <section id="nga-section" class="tab-content" style="display:none;">
+      <h2>Governors</h2>
+      <div class="grid"><div class="card">NG link 1</div><div class="card">NG link 2</div></div>
+    </section>
+
+    <section id="federal-oversight" class="tab-content" style="display:none;">
+      <h2>Federal Oversight & Transparency</h2>
+      <div class="grid"><div class="card">Oversight 1</div><div class="card">Oversight 2</div></div>
+    </section>
+
+    <section id="organizations" class="tab-content" style="display:none;">
+      <h2>Political Organizations</h2>
+      <div class="organization-grid"></div>
+    </section>
+
+    <section id="voting" class="tab-content" style="display:none;">
+      <h2>Voting & Registration</h2>
+      <div id="voting-cards"></div>
+    </section>
   </main>
-
- <!-- Block 2 content -->
-
-<!-- Styles specific to hub nav and cards -->
-<style>
-  /* Sticky Home Hub nav styling - match site theme */
-  #hub-nav {
-    position: sticky;
-    top: 0;
-    background-color: #2b2b2b;
-    display: flex;
-    gap: 10px;
-    padding: 10px;
-    border-bottom: 1px solid #444;
-    z-index: 1000;
-    overflow-x: auto;
-  }
-
-  #hub-nav button {
-    padding: 8px 12px;
-    border: none;
-    background-color: #3c3c3c;
-    color: #fff;
-    cursor: pointer;
-    border-radius: 6px;
-    white-space: nowrap;
-    flex-shrink: 0;
-    transition: background-color 0.2s, color 0.2s;
-  }
-
-  #hub-nav button:hover {
-    background-color: #0066ff;
-    color: #fff;
-  }
-
-  .category-section {
-    padding: 20px 0;
-    border-bottom: 1px solid #444;
-  }
-
-  .card-grid {
-    display: grid;
-    gap: 12px;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  }
-
-  .info-card {
-    background-color: #333;
-    padding: 14px;
-    border-radius: 8px;
-    color: #fff;
-    transition: transform 0.2s, box-shadow 0.2s;
-    cursor: pointer;
-  }
-
-  .info-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  }
-
-  #social-feed {
-    display: grid;
-    gap: 12px;
-    margin-top: 16px;
-  }
-</style>
-
-<main>
-  <section id="podcasts-shows" class="tab-content" style="display: none;">
-    <h2>Podcasts & Shows</h2>
-    <input 
-      type="text" 
-      id="podcasts-search-bar" 
-      class="search-bar" 
-      placeholder="Search podcasts or shows..."
-      style="width:100%;max-width:400px;padding:10px 15px;margin:10px 0 20px 0;
-             border-radius:8px;border:1px solid #ccc;background-color:#2b2b2b;
-             color:#fff;font-size:1rem;transition:border-color 0.2s, box-shadow 0.2s;"
-      onfocus="this.style.borderColor='#1e90ff'; this.style.boxShadow='0 0 5px #1e90ff';"
-      onblur="this.style.borderColor='#ccc'; this.style.boxShadow='none';"
-    />
-    <div id="podcasts-cards" class="grid"></div>
-  </section>
-
-  <section id="my-officials" class="tab-content" style="position: relative; display:none;">
-    <h2>My Officials</h2>
-    <div id="officials-container" class="grid"></div>
-  </section>
-
-  <section id="civic-intelligence" class="tab-content" style="display: none;">
-    <h2>Civic Intelligence Dashboard</h2>
-    <div id="calendar"></div>
-  </section>
-
-  <section id="polls" class="tab-content" style="display: none;">
-    <h2>Polling Dashboard</h2>
-    <div id="polls-cards" class="grid"></div>
-  </section>
-
-  <section id="state-legislative" class="tab-content" style="display:none;">
-    <h2>State Legislative Links</h2>
-    <div class="grid">
-      <div class="card">Link 1</div>
-      <div class="card">Link 2</div>
-      <div class="card">Link 3</div>
-      <div class="card">Link 4</div>
-    </div>
-  </section>
-
-  <section id="nga-section" class="tab-content" style="display:none;">
-    <h2>Governors</h2>
-    <div class="grid">
-      <div class="card">NG link 1</div>
-      <div class="card">NG link 2</div>
-      <div class="card">NG link 3</div>
-      <div class="card">NG link 4</div>
-    </div>
-  </section>
-
-  <section id="federal-oversight" class="tab-content" style="display:none;">
-    <h2>Federal Oversight & Transparency</h2>
-    <div class="grid">
-      <div class="card">Oversight 1</div>
-      <div class="card">Oversight 2</div>
-      <div class="card">Oversight 3</div>
-      <div class="card">Oversight 4</div>
-    </div>
-  </section>
-
-  <div id="polls-modal" class="modal">
-    <div id="polls-content" class="modal-content"></div>
+  <!-- Modals -->
+  <div id="officials-modal" class="modal">
+    <div class="modal-content" id="officials-content"></div>
+    <button id="close-modal" class="close-button">&times;</button>
   </div>
 
-  <section id="organizations" class="tab-content" style="display: none;">
-    <h2>Political Organizations</h2>
-    <div class="organization-grid"></div>
-  </section>
+  <div id="pollModal" class="modal">
+    <div class="modal-content" id="pollModalContent"></div>
+  </div>
 
-  <section id="voting" class="tab-content" style="display: none;">
-    <h2>Voting & Registration</h2>
-    <div id="voting-cards"></div>
-  </section>
-</main>
-
-<div id="officials-modal" class="modal">
-  <div class="modal-content" id="officials-content"></div>
-  <button id="close-modal" class="close-button">&times;</button>
-</div>
-
-<div id="pollModal" class="modal">
-  <div class="modal-content" id="pollModalContent"></div>
-</div>
-
-<div id="cabinetModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModalWindow('cabinetModal')">&times;</span>
-    <div id="cabinetGridView">
-      <div id="cabinetList" class="officials-grid"></div>
-    </div>
-    <div id="cabinetDetailView" style="display:none;">
-      <button onclick="backToCabinetGrid()">Back</button>
-      <div id="cabinetMemberDetail"></div>
+  <div id="cabinetModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModalWindow('cabinetModal')">&times;</span>
+      <div id="cabinetGridView">
+        <div id="cabinetList" class="officials-grid"></div>
+      </div>
+      <div id="cabinetDetailView" style="display:none;">
+        <button onclick="backToCabinetGrid()">Back</button>
+        <div id="cabinetMemberDetail"></div>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- Load external script once, at the very end -->
-<script src="script.js"></script>
+  <!-- Scripts: load once, at the end -->
+  <script src="https://widget.rss.app/v1/carousel.js" async></script>
+  <script src="script.js"></script>
 </body>
 </html>
