@@ -309,18 +309,12 @@ function showStartupHub() {
 }
 
 function showPodcastsShows() {
-  console.log('showPodcastsShows() start');
-
   showTab('podcasts-shows');
 
   const container = document.getElementById('podcasts-cards');
-  if (!container) {
-    console.error('podcasts-cards container not found');
-    return;
-  }
+  if (!container) return;
   container.innerHTML = '';
 
-  // local helpers
   function escapeHtml(str) {
     if (!str) return '';
     return String(str)
@@ -330,19 +324,20 @@ function showPodcastsShows() {
       .replace(/"/g, '&quot;')
       .replace(/'/g, '&#39;');
   }
+
   function escapeAttr(str) {
     return escapeHtml(str).replace(/\s+/g, ' ');
   }
 
-  // update favorite star button
+  // update a star button
   function updateFavoriteStar(btn, type, title) {
     if (!btn) return;
     btn.textContent = isFavorite(type, title) ? '★' : '☆';
     btn.style.color = isFavorite(type, title) ? 'gold' : 'black';
   }
 
-  // render a section (Favorites, Podcasts, Shows)
-  const renderSection = (titleText, items, type) => {
+  // render section
+  function renderSection(titleText, items, type) {
     const section = document.createElement('div');
     section.className = 'podcast-show-section';
 
@@ -362,46 +357,56 @@ function showPodcastsShows() {
     const grid = document.createElement('div');
     grid.className = 'podcast-show-grid';
 
-    if (!Array.isArray(items) || items.length === 0) {
+    if (!items.length) {
       const msg = document.createElement('p');
       msg.textContent = `No ${titleText.toLowerCase()} available.`;
       grid.appendChild(msg);
     } else {
       items.forEach(item => {
         const card = document.createElement('div');
-        card.className = 'podcast-show-card';
-
+        card.className = type === 'favorites' ? 'favorite-card' : 'podcast-show-card';
         const logoPath = item.logo_slug ? `assets/${item.logo_slug}` : 'assets/default-logo.png';
 
         card.innerHTML = `
-          <div class="logo-wrapper" role="button" title="Open ${item.title}">
-            <img src="${logoPath}" alt="${item.title} logo" onerror="this.onerror=null;this.src='assets/default-logo.png';" />
+          <div class="logo-wrapper" title="Open ${item.title}">
+            <img src="${logoPath}" alt="${item.title} logo" onerror="this.onerror=null;this.src='assets/default-logo.png';"/>
           </div>
           <div class="card-content">
             <h4 class="card-title">${escapeHtml(item.title)}</h4>
             <p class="category">${escapeHtml(item.category || '')} – ${escapeHtml(item.source || '')}</p>
             <p class="descriptor">${escapeHtml(item.descriptor || '')}</p>
             <div class="card-actions">
-              <button class="fav-star" data-type="${type}" data-title="${escapeAttr(item.title)}" style="font-size:2em;">${isFavorite(type, item.title) ? '★' : '☆'}</button>
+              ${type === 'favorites' ? '<span class="remove-favorite">✕ Remove</span>' :
+                `<button class="fav-star" data-type="${type}" data-title="${escapeAttr(item.title)}" style="font-size:2em;">${isFavorite(type, item.title) ? '★' : '☆'}</button>`}
             </div>
           </div>
         `;
 
-        // logo click
+        // logo click opens official url if available
         const logoBtn = card.querySelector('.logo-wrapper');
-        if (logoBtn) {
-          logoBtn.addEventListener('click', () => {
-            if (item.official_url) window.open(item.official_url, '_blank');
-          });
+        if (logoBtn && item.official_url) {
+          logoBtn.addEventListener('click', () => window.open(item.official_url, '_blank'));
         }
 
-        // favorite star click
+        // main star button
         const favBtn = card.querySelector('.fav-star');
         if (favBtn) {
           favBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            toggleFavorite(type, item.title);
+            toggleFavorite(type, item.title); // add/remove
             updateFavoriteStar(favBtn, type, item.title);
+            renderFavoritesSection(); // immediately update favorites section
+          });
+        }
+
+        // remove button in favorites
+        const removeBtn = card.querySelector('.remove-favorite');
+        if (removeBtn) {
+          removeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            removeFavorite(item.type, item.title);
+            renderFavoritesSection();
+            updateAllMainStars();
           });
         }
 
@@ -421,21 +426,19 @@ function showPodcastsShows() {
     });
 
     return section;
-  };
+  }
 
-  // FAVORITES SECTION
+  // gather favorites
   const favoriteItems = [];
-
   ['podcasts', 'shows'].forEach(type => {
     window.favorites[type].forEach(title => {
-      const dataArray = type === 'podcasts' ? podcastsData : showsData;
-      const item = dataArray.find(i => i.title === title);
+      const arr = type === 'podcasts' ? podcastsData : showsData;
+      const item = arr.find(i => i.title === title);
       if (item) favoriteItems.push({ ...item, type });
     });
   });
 
-  const favSection = renderSection('Favorites', favoriteItems, 'favorites');
-  container.appendChild(favSection);
+  container.appendChild(renderSection('Favorites', favoriteItems, 'favorites'));
   container.appendChild(renderSection('Podcasts', podcastsData || [], 'podcasts'));
   container.appendChild(renderSection('Shows', showsData || [], 'shows'));
 
@@ -446,7 +449,7 @@ function showPodcastsShows() {
     tabSearch.removeEventListener('input', tabSearch._podcastHandler || (() => {}));
     const handler = () => {
       const term = tabSearch.value.toLowerCase().trim();
-      container.querySelectorAll('.podcast-show-card').forEach(card => {
+      container.querySelectorAll('.podcast-show-card, .favorite-card').forEach(card => {
         const title = (card.querySelector('.card-title')?.textContent || '').toLowerCase();
         const desc = (card.querySelector('.descriptor')?.textContent || '').toLowerCase();
         card.style.display = (title.includes(term) || desc.includes(term)) ? '' : 'none';
@@ -455,8 +458,6 @@ function showPodcastsShows() {
     tabSearch.addEventListener('input', handler);
     tabSearch._podcastHandler = handler;
   }
-
-  console.log('showPodcastsShows() finished rendering');
 }
 
 // === HELPER: render roster cards (if needed) ===
