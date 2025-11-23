@@ -191,7 +191,6 @@ function showStartupHub() {
   showTab('startup-hub');
 }
 
-// === PODCASTS & SHOWS RENDERING (replace your existing showPodcastsShows) ===
 function showPodcastsShows() {
   console.log('showPodcastsShows() start');
 
@@ -205,7 +204,7 @@ function showPodcastsShows() {
   }
   container.innerHTML = '';
 
-  // helper to create a section (Podcasts or Shows)
+  // helper to create a section (Podcasts, Shows, Favorites)
   const renderSection = (titleText, items, type) => {
     const section = document.createElement('div');
     section.className = 'podcast-show-section';
@@ -227,7 +226,6 @@ function showPodcastsShows() {
           const card = document.createElement('div');
           card.className = 'podcast-show-card';
 
-          // logo path (user said logos live in public/assets/)
           const logoPath = item.logo_slug ? `assets/${item.logo_slug}` : 'assets/default-logo.png';
 
           card.innerHTML = `
@@ -259,7 +257,6 @@ function showPodcastsShows() {
               e.stopPropagation();
               const t = favBtn.getAttribute('data-type');
               const title = favBtn.getAttribute('data-title');
-              // toggleFavorite expects (type, title)
               toggleFavorite(t, title);
             });
           }
@@ -289,7 +286,7 @@ function showPodcastsShows() {
     return escapeHtml(str).replace(/\s+/g, ' ');
   }
 
-  // Load podcasts then shows (parallelish)
+  // Load podcasts and shows in parallel
   const podcastsPromise = fetch('/podcasts.json').then(r => {
     if (!r.ok) throw new Error('podcasts.json not found');
     return r.json();
@@ -302,18 +299,34 @@ function showPodcastsShows() {
 
   Promise.all([podcastsPromise, showsPromise])
     .then(([podcasts, shows]) => {
-      console.log('podcasts loaded:', Array.isArray(podcasts) ? podcasts.length : podcasts);
-      console.log('shows loaded:', Array.isArray(shows) ? shows.length : shows);
+      // FAVORITES SECTION
+      const favoriteItems = [];
 
-      // Podcasts section
-      const podcastSection = renderSection('Podcasts', podcasts || [], 'podcasts');
-      container.appendChild(podcastSection);
+      // collect favorited podcasts
+      if (Array.isArray(window.favorites.podcasts)) {
+        window.favorites.podcasts.forEach(title => {
+          const item = podcasts.find(p => p.title === title);
+          if (item) favoriteItems.push({ ...item, type: 'podcasts' });
+        });
+      }
 
-      // Shows section
-      const showsSection = renderSection('Shows', shows || [], 'shows');
-      container.appendChild(showsSection);
+      // collect favorited shows
+      if (Array.isArray(window.favorites.shows)) {
+        window.favorites.shows.forEach(title => {
+          const item = shows.find(s => s.title === title);
+          if (item) favoriteItems.push({ ...item, type: 'shows' });
+        });
+      }
 
-      // wire the tab-specific search AFTER DOM is built
+      // render favorites section (always visible)
+      const favSection = renderSection('Favorites', favoriteItems, 'favorites');
+      container.appendChild(favSection);
+
+      // render normal sections
+      container.appendChild(renderSection('Podcasts', podcasts || [], 'podcasts'));
+      container.appendChild(renderSection('Shows', shows || [], 'shows'));
+
+      // wire search after DOM is built
       const tabSearch = document.getElementById('podcasts-search-bar');
       if (tabSearch) {
         tabSearch.value = tabSearch.value || '';
