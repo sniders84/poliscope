@@ -300,7 +300,7 @@
   "category": "Global/Economics",
   "source": "Bloomberg",
   "official_url": "https://www.bloomberg.com/oddlots",
-  "logo_slug": "oddlots.png",
+  "logo_slug": "oddlots.webp",
   "descriptor": "Bloomberg reporters explore quirky corners of finance. Conversations on markets, economics, and policy."
 },
 {
@@ -308,7 +308,7 @@
   "category": "Civic Culture",
   "source": "This American Life",
   "official_url": "https://www.thisamericanlife.org/podcast",
-  "logo_slug": "thisamericanlife.png",
+  "logo_slug": "thisamericanlife.webp",
   "descriptor": "Award‑winning storytelling that captures everyday lives and civic themes. A cultural lens on politics and society."
 },
 {
@@ -316,7 +316,7 @@
   "category": "Centrist/Independent",
   "source": "Spotify",
   "official_url": "https://open.spotify.com/show/4rOoJ6Egrf8K2IrywzwOMk",
-  "logo_slug": "joerogan.png",
+  "logo_slug": "joerogan.jpeg",
   "descriptor": "Long‑form conversations with guests across politics, science, and culture. A mix of perspectives outside the mainstream."
 },
   {
@@ -324,7 +324,7 @@
   "category": "Progressive",
   "source": "Crooked Media",
   "official_url": "https://crooked.com/podcast-series/lovett-or-leave-it/",
-  "logo_slug": "lovett.png",
+  "logo_slug": "lovettorleaveit.jpeg",
   "descriptor": "Jon Lovett hosts a comedic progressive roundtable. Politics, pop culture, and activism with sharp humor and audience energy."
 },
 {
@@ -332,7 +332,7 @@
   "category": "Progressive",
   "source": "Independent",
   "official_url": "https://majorityreportradio.com/",
-  "logo_slug": "majorityreport.png",
+  "logo_slug": "themajorityreport.png",
   "descriptor": "Progressive talk show dissecting news, policy, and media narratives. Veteran commentator Sam Seder leads sharp debates and interviews."
 },
 {
@@ -340,7 +340,7 @@
   "category": "Progressive",
   "source": "TYT Network",
   "official_url": "https://tyt.com/podcasts",
-  "logo_slug": "tyt.png",
+  "logo_slug": "tyt.jpeg",
   "descriptor": "Progressive commentary from The Young Turks. Bold takes on politics, activism, and media accountability."
 },
 {
@@ -348,39 +348,39 @@
   "category": "Socialist/Green",
   "source": "Independent",
   "official_url": "https://www.patreon.com/chapotraphouse",
-  "logo_slug": "chapo.png",
+  "logo_slug": "chapotraphouse.jpeg",
   "descriptor": "Socialist comedy and critique. Irreverent takes on politics, culture, and capitalism from a leftist perspective."
 },
 {
   "title": "The Katie Halper Show",
   "category": "Progressive",
   "source": "Independent",
-  "official_url": "https://www.patreon.com/thekatiehalpershow",
-  "logo_slug": "halper.png",
+  "official_url": "https://open.spotify.com/show/34zl4NCGsp1mafNZezzxXf?flow_ctx=338b6b5f-2f84-48a7-aa96-cb6900d207f1:1763966521&creation_point=https://open.spotify.com/show/2togMvVQ0F4mXQmbwuFs4K?sp_cid=8cb619857aaffd4a5c9f05d9fa4a63dc&device=desktop#method=google&id_token=eyJraWQiOiJzMEh3WFQtY0NQRTJMQXBfR1RJcEtRVUxIdmNlSEhQRTlVWmZUZ3p1Z0NrIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJodHRwczpcL1wvc3BvdGlmeS5jb20iLCJzdWIiOiIzMXQ0ZDRsamthc2o2NjJzZ3QzYW12bTV6ejNhIiwiaXNzIjoiaHR0cHM6XC9cL2FjY291bnRzLnNwb3RpZnkuY29tIiwiZXhwIjoxNzYzOTQ1MjI2LCJpYXQiOjE3NjM5NDQ5MjYsImlkcF9pbmZvIjp7Imdvb2dsZSI6e319fQ.Z932X4kNEaSU4pzTjUzIYukwl8yy4TNkWzOQCM8cLuQ32zg7528cC_i7IZkgFKeHMT_FOD4mV5qO3feiwk-nUZgKN3-wMRyNHCebCJy21Od1r_XEA1IUz-1y0p8_s4JOvJA0Z70QPAs2wR9lVhCSZHIGLYbAY0CaVeD91DUh9yONoSeITce9dpsTIkWPiq6NAnC_WReoWLGwKbjRPgi-0m8DdoIhoivpZF1pDiHo_hVPkZbVYP6FvZxB5WIUiH7FA8bJC77AowVzcLsaAHqM81IF1lVH4c8tm637iUIp1Nwiv4RROWqlbgVhXb8ZBlSJ34DlL7XuyMJzt5MEbzG_Eg",
+  "logo_slug": "katiehalper.webp",
   "descriptor": "Progressive interviews and commentary. Katie Halper spotlights activists, journalists, and thinkers on the left."
 },
 {
   "title": "The Nation Podcasts",
   "category": "Progressive",
   "source": "The Nation",
-  "official_url": "https://www.thenation.com/podcasts/",
-  "logo_slug": "nation.png",
+  "official_url": "https://open.spotify.com/show/4tix8wSD01BcLlbJoepzpm",
+  "logo_slug": "thenation.jpeg",
   "descriptor": "Progressive journalism from The Nation. Weekly analysis of politics, policy, and social movements."
 },
 {
   "title": "Democracy Now!",
   "category": "Socialist/Green",
   "source": "Independent",
-  "official_url": "https://www.democracynow.org/podcast",
-  "logo_slug": "democracynow.png",
+  "official_url": "https://www.democracynow.org/shows",
+  "logo_slug": "democracynow.jpeg",
   "descriptor": "Independent daily news hour. Progressive reporting on global justice, activism, and grassroots movements."
 },
 {
   "title": "The Real News Podcast",
   "category": "Socialist/Green",
   "source": "The Real News Network",
-  "official_url": "https://therealnews.com/podcasts",
-  "logo_slug": "realnews.png",
+  "official_url": "https://therealnews.com/our-shows-podcasts",
+  "logo_slug": "realnews.jpeg",
   "descriptor": "Grassroots left analysis. Covers labor, climate, and social justice issues with activist voices."
 },
 {
@@ -388,23 +388,23 @@
   "category": "Conservative",
   "source": "Blaze Media",
   "official_url": "https://www.glennbeck.com/st/podcast",
-  "logo_slug": "glennbeck.png",
+  "logo_slug": "glennbeck.jpeg",
   "descriptor": "Conservative talk radio veteran Glenn Beck delivers commentary on politics, culture, and faith."
 },
 {
   "title": "The Charlie Kirk Show",
   "category": "Conservative",
   "source": "Turning Point USA",
-  "official_url": "https://www.charliekirk.com/podcast",
-  "logo_slug": "charliekirk.png",
+  "official_url": "https://thecharliekirkshow.com/podcasts/the-charlie-kirk-show",
+  "logo_slug": "charliekirk.jpeg",
   "descriptor": "Young conservative activist Charlie Kirk offers commentary on politics, culture, and grassroots organizing."
 },
   {
   "title": "Candace Owens Podcast",
   "category": "Conservative",
-  "source": "Daily Wire",
-  "official_url": "https://www.dailywire.com/show/candace",
-  "logo_slug": "candace.png",
+  "source": "Youtube",
+  "official_url": "https://www.youtube.com/@realcandaceo",
+  "logo_slug": "candace.jpeg",
   "descriptor": "Candace Owens delivers conservative cultural and political commentary with a focus on free speech and values."
 },
 {
@@ -412,15 +412,15 @@
   "category": "Conservative",
   "source": "Daily Wire",
   "official_url": "https://www.dailywire.com/show/the-matt-walsh-show",
-  "logo_slug": "mattwalsh.png",
+  "logo_slug": "mattwalsh.webp",
   "descriptor": "Daily Wire host Matt Walsh offers conservative takes on culture wars, politics, and family values."
 },
 {
   "title": "Mark Levin Podcast",
   "category": "Conservative",
   "source": "Westwood One",
-  "official_url": "https://www.marklevinshow.com/podcast/",
-  "logo_slug": "marklevin.png",
+  "official_url": "https://www.marklevinshow.com/audio-rewind/",
+  "logo_slug": "marklevin.webp",
   "descriptor": "Conservative legal and political commentary from radio host Mark Levin. Focused on constitutional issues and liberty."
 },
 {
@@ -428,23 +428,23 @@
   "category": "Conservative",
   "source": "PragerU",
   "official_url": "https://www.prageru.com/podcasts/",
-  "logo_slug": "prageru.png",
+  "logo_slug": "prageru.jpeg",
   "descriptor": "PragerU’s conservative podcast. Short episodes promoting free markets, limited government, and traditional values."
 },
 {
   "title": "Heritage Explains",
   "category": "Conservative",
   "source": "Heritage Foundation",
-  "official_url": "https://www.heritage.org/podcast/heritage-explains",
-  "logo_slug": "heritage.png",
+  "official_url": "https://www.heritage.org/heritage-explains",
+  "logo_slug": "heritageexplains.jpeg",
   "descriptor": "Heritage Foundation podcast. Explains conservative policy positions on economics, law, and culture."
 },
 {
   "title": "Federalist Radio Hour",
   "category": "Conservative",
   "source": "The Federalist",
-  "official_url": "https://thefederalist.com/podcasts/",
-  "logo_slug": "federalist.png",
+  "official_url": "https://www.podchaser.com/podcasts/federalist-radio-hour-155339",
+  "logo_slug": "federalistradiohour.jpeg",
   "descriptor": "The Federalist’s daily conservative podcast. Interviews and commentary on politics, media, and culture."
 },
 {
