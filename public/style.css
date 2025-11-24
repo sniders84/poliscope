@@ -2889,3 +2889,27 @@ nav .tab.active {
     line-height: 1.4;
   }
 }
+/* Officials card layout */
+.official-card {
+  display: flex;
+  flex-direction: column;   /* stack photo above text */
+  align-items: center;      /* center horizontally */
+  justify-content: center;  /* center vertically if needed */
+  text-align: center;       /* center text inside */
+  padding: 16px;
+}
+
+/* Officials card image */
+.official-card img {
+  display: block;
+  margin: 0 auto 12px auto; /* center image with spacing below */
+  max-width: 120px;         /* adjust size as needed */
+  height: auto;
+}
+
+/* Officials card text */
+.official-card h3,
+.official-card p {
+  margin: 4px 0;
+  text-align: center;
+}
