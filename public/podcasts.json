@@ -448,27 +448,27 @@
   "descriptor": "The Federalist’s daily conservative podcast. Interviews and commentary on politics, media, and culture."
 },
 {
-  "title": "No Labels Podcast",
+  "title": "No Labels Talks Podcast",
   "category": "Centrist/Independent",
   "source": "No Labels",
-  "official_url": "https://www.nolabels.org/podcast",
-  "logo_slug": "nolabels.png",
+  "official_url": "https://nolabels.substack.com/s/no-labels-talks",
+  "logo_slug": "nolabelstalks.jpeg",
   "descriptor": "Bipartisan reform voices from No Labels. Conversations on bridging divides and fixing government dysfunction."
 },
 {
   "title": "Forward Party Podcast",
   "category": "Centrist/Independent",
   "source": "Forward Party",
-  "official_url": "https://www.forwardparty.com/podcast",
-  "logo_slug": "forward.png",
+  "official_url": "https://www.andrewyang.com/podcast",
+  "logo_slug": "forwardpartypodcast.jpeg",
   "descriptor": "Andrew Yang’s Forward Party explores electoral reform, democracy innovation, and bridging divides in American politics."
 },
 {
   "title": "BridgeUSA Podcast",
   "category": "Centrist/Independent",
   "source": "BridgeUSA",
-  "official_url": "https://www.bridgeusa.org/podcast",
-  "logo_slug": "bridgeusa.png",
+  "official_url": "https://bridgeusa.org/in-the-news/",
+  "logo_slug": "bridgeusapodcast.png",
   "descriptor": "Youth‑led movement podcast fostering dialogue across political divides. Students discuss civic engagement and reform."
 },
 {
@@ -476,14 +476,14 @@
   "category": "Centrist/Independent",
   "source": "RepresentUs",
   "official_url": "https://represent.us/podcast",
-  "logo_slug": "representus.png",
+  "logo_slug": "representus.jpeg",
   "descriptor": "Anti‑corruption advocacy podcast. Highlights grassroots campaigns to fix broken politics and strengthen democracy."
 },
   {
-  "title": "Beg to Differ",
+  "title": "Bulwark Podcasts",
   "category": "Centrist/Independent",
   "source": "The Bulwark",
-  "official_url": "https://www.thebulwark.com/podcast/beg-to-differ/",
+  "official_url": "https://www.thebulwark.com/listen",
   "logo_slug": "begtodiffer.png",
   "descriptor": "Center‑right roundtable hosted by Mona Charen. Civil debates on policy, conservatism, and democracy."
 },
@@ -492,7 +492,7 @@
   "category": "Centrist/Independent",
   "source": "The Lincoln Project",
   "official_url": "https://lincolnproject.us/podcasts/",
-  "logo_slug": "lincolnproject.png",
+  "logo_slug": "lincolnproject.jpeg",
   "descriptor": "Anti‑Trump conservative voices discuss democracy, campaigns, and the future of American politics."
 },
 {
@@ -500,23 +500,23 @@
   "category": "Centrist/Independent",
   "source": "Politico",
   "official_url": "https://www.politico.com/podcasts/playbook-daily-briefing",
-  "logo_slug": "politico.png",
+  "logo_slug": "politicoplaybook.jpeg",
   "descriptor": "Politico’s daily briefing podcast. Quick updates on Washington politics, campaigns, and policy developments."
 },
 {
-  "title": "Axios Today",
+  "title": "Axios 1 Big Thing",
   "category": "Centrist/Independent",
   "source": "Axios",
-  "official_url": "https://www.axios.com/podcasts/axios-today",
-  "logo_slug": "axios.png",
+  "official_url": "https://www.pushkin.fm/podcasts/axios-today#episodes",
+  "logo_slug": "1bigthing.webp",
   "descriptor": "Axios reporters deliver concise morning updates. Politics, business, and tech explained in under 10 minutes."
 },
 {
   "title": "Mises Institute Podcast",
   "category": "Libertarian",
   "source": "Mises Institute",
-  "official_url": "https://mises.org/library/mises-podcasts",
-  "logo_slug": "mises.png",
+  "official_url": "https://mises.org/podcasts",
+  "logo_slug": "misesinstitute.jpeg",
   "descriptor": "Libertarian economics and philosophy from the Mises Institute. Explores free markets and Austrian theory."
 },
 {
@@ -524,23 +524,23 @@
   "category": "Libertarian",
   "source": "Tom Woods",
   "official_url": "https://tomwoods.com/podcasts/",
-  "logo_slug": "tomwoods.png",
+  "logo_slug": "tomwoodsshow.jpeg",
   "descriptor": "Libertarian commentary from Tom Woods. Daily discussions on economics, history, and limited government."
 },
 {
-  "title": "Green Party Podcast",
+  "title": "Green Socialist Notes Podcast",
   "category": "Socialist/Green",
   "source": "Green Party US",
-  "official_url": "https://www.gp.org/podcast",
-  "logo_slug": "greenparty.png",
+  "official_url": "https://greensocialist.net/pod/",
+  "logo_slug": "greensocialist.jpeg",
   "descriptor": "Environmental and social justice perspectives from the Green Party. Focused on grassroots activism and climate policy."
 },
 {
   "title": "Ecosocialist Horizons Podcast",
   "category": "Socialist/Green",
   "source": "Ecosocialist Horizons",
-  "official_url": "https://ecosocialisthorizons.com/podcast/",
-  "logo_slug": "ecosocialist.png",
+  "official_url": "https://www.podchaser.com/podcasts/ecosocialist-horizons-3998254/episodes/recent",
+  "logo_slug": "ecosocialist.webp",
   "descriptor": "Explores ecosocialist theory and practice. Conversations on climate justice, socialism, and global solidarity."
 },
 {
@@ -548,22 +548,22 @@
   "category": "Socialist/Green",
   "source": "Jacobin",
   "official_url": "https://thedigradio.com/",
-  "logo_slug": "thedig.png",
+  "logo_slug": "thedig.jpeg",
   "descriptor": "Jacobin’s deep‑dive interviews. Socialist analysis of politics, movements, and ideas shaping the left."
 },
 {
-  "title": "Socialist Alternative Podcast",
+  "title": "Revolutionary Ideas Podcast",
   "category": "Socialist/Green",
   "source": "Socialist Alternative",
-  "official_url": "https://www.socialistalternative.org/podcast/",
-  "logo_slug": "socialistalt.png",
+  "official_url": "https://open.spotify.com/show/5FhTqNhHspPxln4ovQbpVK",
+  "logo_slug": "revolutionaryideas.png",
   "descriptor": "Activist voices from Socialist Alternative. Covers organizing, labor struggles, and socialist strategy."
 },
   {
-  "title": "Working Families Party Podcast",
+  "title": "Working Families Party Media",
   "category": "Socialist/Green",
   "source": "Working Families Party",
-  "official_url": "https://workingfamilies.org/podcast/",
+  "official_url": "https://workingfamilies.org/media-center/",
   "logo_slug": "wfp.png",
   "descriptor": "Progressive labor‑focused podcast. Highlights campaigns and organizing from the Working Families Party."
 },
