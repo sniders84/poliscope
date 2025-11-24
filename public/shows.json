@@ -172,7 +172,7 @@
         "category": "Conservative",
         "source": "Fox News",
         "official_url": "https://www.foxnews.com/shows/jesse-watters-primetime",
-        "logo_slug": "watters.png",
+        "logo_slug": "jessewatters.webp",
         "descriptor": "Jesse Watters hosts Fox’s primetime program. Conservative commentary on politics, media, and cultural issues."
     },
     {
@@ -180,7 +180,7 @@
         "category": "Progressive",
         "source": "MSNBC",
         "official_url": "https://www.msnbc.com/the-last-word",
-        "logo_slug": "lastword.png",
+        "logo_slug": "lastword.webp",
         "descriptor": "Lawrence O’Donnell’s progressive nightly program. Commentary and analysis on politics, law, and democracy."
     },
     {
@@ -188,7 +188,7 @@
         "category": "Progressive",
         "source": "MSNBC",
         "official_url": "https://www.msnbc.com/deadline-white-house",
-        "logo_slug": "deadline.png",
+        "logo_slug": "deadlinewhitehouse.webp",
         "descriptor": "Nicolle Wallace hosts progressive analysis of Washington politics. Interviews and commentary on campaigns and governance."
     },
     {
@@ -196,7 +196,7 @@
         "category": "Centrist/Independent",
         "source": "CNN",
         "official_url": "https://www.cnn.com/shows/ac-360",
-        "logo_slug": "ac360.png",
+        "logo_slug": "anderson.jpeg",
         "descriptor": "Anderson Cooper’s nightly program. Balanced reporting and interviews on politics, culture, and global events."
     },
     {
@@ -204,7 +204,7 @@
         "category": "Centrist/Independent",
         "source": "CNN",
         "official_url": "https://www.cnn.com/shows/erin-burnett-outfront",
-        "logo_slug": "outfront.png",
+        "logo_slug": "erinburnett.jpeg",
         "descriptor": "Erin Burnett’s evening show. Breaking news and analysis on politics, business, and international affairs."
     },
     {
@@ -212,7 +212,7 @@
         "category": "Centrist/Independent",
         "source": "CNN",
         "official_url": "https://www.cnn.com/shows/situation-room",
-        "logo_slug": "situation.png",
+        "logo_slug": "situationroom.jpeg",
         "descriptor": "Wolf Blitzer’s long‑running CNN program. Coverage of breaking news and Washington politics."
     },
     {
@@ -220,7 +220,7 @@
         "category": "Centrist/Independent",
         "source": "CNN",
         "official_url": "https://www.cnn.com/shows/the-lead",
-        "logo_slug": "lead.png",
+        "logo_slug": "thelead.jpeg",
         "descriptor": "Jake Tapper’s afternoon program. Political analysis and reporting on national and global events."
     },
     {
@@ -228,7 +228,7 @@
         "category": "Centrist/Independent",
         "source": "CNN",
         "official_url": "https://www.cnn.com/shows/state-of-the-union",
-        "logo_slug": "sotu.png",
+        "logo_slug": "stateoftheunion.jpeg",
         "descriptor": "Sunday morning political program hosted by Dana Bash. Interviews with lawmakers and analysis of policy debates."
     },
     {
@@ -236,7 +236,7 @@
         "category": "Progressive",
         "source": "MSNBC",
         "official_url": "https://www.msnbc.com/morning-joe",
-        "logo_slug": "morningjoe.png",
+        "logo_slug": "morningjoe.jpeg",
         "descriptor": "Morning roundtable hosted by Joe Scarborough, Mika Brzezinski, and Willie Geist. Progressive analysis of politics and culture."
     },
     {
@@ -244,7 +244,7 @@
         "category": "Progressive",
         "source": "MSNBC",
         "official_url": "https://www.msnbc.com/politicsnation",
-        "logo_slug": "politicsnation.png",
+        "logo_slug": "politicsnation.jpeg",
         "descriptor": "Rev. Al Sharpton’s weekly program. Progressive commentary on civil rights, politics, and social justice."
     },
     {
@@ -252,7 +252,7 @@
         "category": "Progressive",
         "source": "MSNBC",
         "official_url": "https://www.msnbc.com/the-beat-with-ari-melber",
-        "logo_slug": "beat.png",
+        "logo_slug": "thebeat.jpeg",
         "descriptor": "Ari Melber blends law and politics. Progressive analysis with cultural references and sharp interviews."
     },
     {
@@ -268,7 +268,7 @@
         "category": "Conservative",
         "source": "Fox News",
         "official_url": "https://www.foxnews.com/shows/outnumbered",
-        "logo_slug": "outnumbered.png",
+        "logo_slug": "outnumbered.jpeg",
         "descriptor": "Panel show featuring four women and one man. Conservative commentary on politics and culture."
     },
     {
@@ -276,7 +276,7 @@
         "category": "Conservative",
         "source": "Fox News",
         "official_url": "https://www.foxnews.com/shows/the-five",
-        "logo_slug": "thefive.png",
+        "logo_slug": "thefive.jpeg",
         "descriptor": "Roundtable of Fox hosts debating politics and culture. Conservative perspectives with lively discussion."
     },
     {
@@ -284,7 +284,7 @@
         "category": "Conservative",
         "source": "Fox News",
         "official_url": "https://www.foxnews.com/shows/gutfeld",
-        "logo_slug": "gutfeld.png",
+        "logo_slug": "gutfeld.webp",
         "descriptor": "Greg Gutfeld’s late‑night conservative comedy show. Satirical takes on politics, media, and culture."
     },
     {
@@ -292,7 +292,7 @@
         "category": "Centrist/Independent",
         "source": "CNN",
         "official_url": "https://www.cnn.com/shows/cnn-newsroom",
-        "logo_slug": "cnnnewsroom.png",
+        "logo_slug": "newsroom.jpeg",
         "descriptor": "CNN’s rolling news coverage. Anchors deliver breaking news and analysis throughout the day."
     },
     {
@@ -300,23 +300,15 @@
         "category": "Centrist/Independent",
         "source": "CNN",
         "official_url": "https://www.cnn.com/shows/inside-politics",
-        "logo_slug": "insidepolitics.png",
+        "logo_slug": "insidepolitics.jpeg",
         "descriptor": "CNN’s political analysis program. Reporters and analysts break down Washington’s latest developments."
     },
-    {
-        "title": "CNN Reliable Sources",
-        "category": "Centrist/Independent",
-        "source": "CNN",
-        "official_url": "https://www.cnn.com/shows/reliable-sources",
-        "logo_slug": "reliable.png",
-        "descriptor": "Media analysis program. Examines how journalism and news coverage shape politics and public opinion."
-    },
-    {
+       {
         "title": "Meet the Press",
         "category": "Centrist/Independent",
         "source": "NBC News",
         "official_url": "https://www.nbcnews.com/meet-the-press",
-        "logo_slug": "meetthepress.png",
+        "logo_slug": "meetthepress.jpeg",
         "descriptor": "NBC’s long‑running Sunday political program. Interviews with policymakers and analysis of Washington’s biggest debates."
     },
     {
@@ -324,7 +316,7 @@
         "category": "Centrist/Independent",
         "source": "CBS News",
         "official_url": "https://www.cbsnews.com/face-the-nation/",
-        "logo_slug": "facethenation.png",
+        "logo_slug": "facethenation.jpeg",
         "descriptor": "CBS’s Sunday morning political show. Conversations with lawmakers and experts on policy and governance."
     },
     {
@@ -332,7 +324,7 @@
         "category": "Centrist/Independent",
         "source": "ABC News",
         "official_url": "https://abcnews.go.com/ThisWeek",
-        "logo_slug": "thisweek.png",
+        "logo_slug": "thisweek.jpeg",
         "descriptor": "ABC’s Sunday political program. George Stephanopoulos interviews leaders and analyzes campaigns and policy."
     },
     {
@@ -340,55 +332,23 @@
         "category": "Conservative",
         "source": "Fox News",
         "official_url": "https://www.foxnews.com/shows/fox-news-sunday",
-        "logo_slug": "foxsunday.png",
+        "logo_slug": "foxnewssunday.webp",
         "descriptor": "Fox News’ Sunday morning program. Conservative analysis and interviews with politicians and policymakers."
-    },
-    {
-        "title": "State of the Union (CNN Sunday)",
-        "category": "Centrist/Independent",
-        "source": "CNN",
-        "official_url": "https://www.cnn.com/shows/state-of-the-union",
-        "logo_slug": "cnnsotu.png",
-        "descriptor": "CNN’s Sunday political program hosted by Dana Bash. Interviews with lawmakers and analysis of policy debates."
-    },
-    {
-        "title": "Inside Politics Sunday",
-        "category": "Centrist/Independent",
-        "source": "CNN",
-        "official_url": "https://www.cnn.com/shows/inside-politics-sunday",
-        "logo_slug": "insidepoliticssunday.png",
-        "descriptor": "CNN’s Sunday edition of Inside Politics. Reporters and analysts break down Washington’s latest developments."
-    },
-    {
-        "title": "The McLaughlin Group",
-        "category": "Conservative",
-        "source": "The McLaughlin Group",
-        "official_url": "https://mclaughlin.com/",
-        "logo_slug": "mclaughlin.png",
-        "descriptor": "Classic roundtable revived. Conservative‑leaning panel debates politics, policy, and culture with sharp exchanges."
     },
     {
         "title": "Washington Week",
         "category": "Centrist/Independent",
         "source": "PBS",
-        "official_url": "https://www.pbs.org/weta/washingtonweek/",
-        "logo_slug": "washingtonweek.png",
+        "official_url": "https://www.pbs.org/weta/washingtonweek/episodes",
+        "logo_slug": "washingtonweek.jpeg",
         "descriptor": "PBS’s weekly political roundtable. Journalists discuss the week’s top stories with depth and civility."
-    },
-    {
-        "title": "Matter of Fact with Soledad O’Brien",
-        "category": "Centrist/Independent",
-        "source": "Hearst Television",
-        "official_url": "https://matteroffact.tv/",
-        "logo_slug": "matteroffact.png",
-        "descriptor": "Soledad O’Brien hosts a weekly civic program. Focused on underreported stories and diverse perspectives."
     },
     {
         "title": "Full Measure with Sharyl Attkisson",
         "category": "Conservative",
         "source": "Sinclair Broadcast Group",
         "official_url": "https://fullmeasure.news/",
-        "logo_slug": "fullmeasure.png",
+        "logo_slug": "fullmeasure.webp",
         "descriptor": "Investigative program hosted by Sharyl Attkisson. Conservative‑leaning reporting on government accountability and media bias."
     },
     {
@@ -396,7 +356,7 @@
         "category": "Civic Culture",
         "source": "PBS",
         "official_url": "https://www.pbs.org/wgbh/frontline/",
-        "logo_slug": "frontline.png",
+        "logo_slug": "frontline.jpeg",
         "descriptor": "PBS’s investigative documentary series. In‑depth reporting on politics, social issues, and global events."
     },
     {
@@ -404,7 +364,7 @@
         "category": "Civic Culture",
         "source": "CBS News",
         "official_url": "https://www.cbsnews.com/60-minutes/",
-        "logo_slug": "60minutes.png",
+        "logo_slug": "60minutes.jpeg",
         "descriptor": "CBS’s iconic newsmagazine. Long‑form investigative stories and interviews on politics, culture, and global affairs."
     },
     {
@@ -420,23 +380,15 @@
         "category": "Civic Culture",
         "source": "ABC News",
         "official_url": "https://abcnews.go.com/2020",
-        "logo_slug": "2020.png",
+        "logo_slug": "2020.jpeg",
         "descriptor": "ABC’s newsmagazine. Investigative features and cultural reporting on politics, society, and human interest stories."
-    },
-    {
-        "title": "VICE News Tonight",
-        "category": "Progressive",
-        "source": "VICE News",
-        "official_url": "https://www.vice.com/en/topic/vice-news-tonight",
-        "logo_slug": "vicenews.png",
-        "descriptor": "VICE’s nightly news program. Progressive‑leaning coverage of politics, activism, and global issues."
     },
     {
         "title": "Democracy Now! Daily Show",
         "category": "Socialist/Green",
         "source": "Democracy Now!",
         "official_url": "https://www.democracynow.org/",
-        "logo_slug": "democracynowshow.png",
+        "logo_slug": "democracynowdaily.jpeg",
         "descriptor": "Independent progressive news hour. Daily coverage of activism, global justice, and grassroots movements."
     },
     {
@@ -444,7 +396,7 @@
         "category": "Progressive",
         "source": "HBO",
         "official_url": "https://www.hbo.com/real-time-with-bill-maher",
-        "logo_slug": "maher.png",
+        "logo_slug": "realtime.jpeg",
         "descriptor": "Bill Maher’s weekly talk show. Progressive commentary mixed with comedy and panel debates on politics and culture."
     },
     {
@@ -452,7 +404,7 @@
         "category": "Progressive",
         "source": "Comedy Central",
         "official_url": "https://www.cc.com/shows/the-daily-show",
-        "logo_slug": "dailyshow.png",
+        "logo_slug": "thedailyshow.jpeg",
         "descriptor": "Comedy Central’s satirical news program. Progressive humor and commentary on politics, media, and culture."
     },
     {
@@ -460,63 +412,31 @@
         "category": "Progressive",
         "source": "HBO",
         "official_url": "https://www.hbo.com/last-week-tonight-with-john-oliver",
-        "logo_slug": "oliver.png",
+        "logo_slug": "lastweek.webp",
         "descriptor": "John Oliver’s satirical weekly program. Progressive analysis of politics and culture with deep investigative humor."
-    },
-    {
-        "title": "Full Frontal with Samantha Bee",
-        "category": "Progressive",
-        "source": "TBS",
-        "official_url": "https://www.tbs.com/shows/full-frontal-with-samantha-bee",
-        "logo_slug": "samanthabee.png",
-        "descriptor": "Samantha Bee’s satirical news show. Progressive comedy and commentary on politics, activism, and civic issues."
     },
     {
         "title": "Amanpour & Company",
         "category": "Centrist/Independent",
         "source": "PBS / CNN",
         "official_url": "https://www.pbs.org/show/amanpour-co/",
-        "logo_slug": "amanpour.png",
+        "logo_slug": "amanpour.jpeg",
         "descriptor": "Christiane Amanpour hosts global interviews and analysis. Conversations with leaders, thinkers, and journalists worldwide."
-    },
-    {
-        "title": "Charlie Rose (Archive)",
-        "category": "Centrist/Independent",
-        "source": "PBS",
-        "official_url": "https://charlierose.com/",
-        "logo_slug": "charlierose.png",
-        "descriptor": "Archived interviews with global leaders, artists, and thinkers. Long‑form conversations on politics and culture."
-    },
-    {
-        "title": "Hardball (Archive)",
-        "category": "Progressive",
-        "source": "MSNBC",
-        "official_url": "https://www.msnbc.com/hardball",
-        "logo_slug": "hardball.png",
-        "descriptor": "Chris Matthews’ progressive political talk show. Archived episodes analyzing campaigns, policy, and Washington drama."
-    },
-    {
-        "title": "Crossfire (Archive)",
-        "category": "Centrist/Independent",
-        "source": "CNN",
-        "official_url": "https://www.cnn.com/shows/crossfire",
-        "logo_slug": "crossfire.png",
-        "descriptor": "Classic CNN debate program. Left and right commentators clash over politics and policy in spirited exchanges."
     },
     {
         "title": "Nightline",
         "category": "Centrist/Independent",
         "source": "ABC News",
         "official_url": "https://abcnews.go.com/Nightline",
-        "logo_slug": "nightline.png",
+        "logo_slug": "nightline.jpeg",
         "descriptor": "ABC’s late‑night news program. In‑depth reporting and interviews on politics, culture, and human interest stories."
     },
     {
         "title": "NewsHour Weekend",
         "category": "Centrist/Independent",
         "source": "PBS",
-        "official_url": "https://www.pbs.org/newshour/weekend",
-        "logo_slug": "newshourweekend.png",
+        "official_url": "https://www.pbs.org/newshour/video",
+        "logo_slug": "newshourweekend.jpeg",
         "descriptor": "PBS’s weekend edition of NewsHour. Focused on civic issues, politics, and international reporting."
     },
     {
@@ -524,87 +444,31 @@
         "category": "Civic Culture",
         "source": "CBS",
         "official_url": "https://www.insideedition.com/",
-        "logo_slug": "insideedition.png",
+        "logo_slug": "insideedition.jpeg",
         "descriptor": "CBS’s newsmagazine program. Human interest stories, investigative reports, and civic culture coverage."
-    },
-    {
-        "title": "The O’Reilly Factor (Archive)",
-        "category": "Conservative",
-        "source": "Fox News",
-        "official_url": "https://www.foxnews.com/shows/the-oreilly-factor",
-        "logo_slug": "oreilly.png",
-        "descriptor": "Bill O’Reilly’s conservative primetime program. Archived episodes of commentary and interviews on politics and culture."
-    },
-    {
-        "title": "Lou Dobbs Tonight (Archive)",
-        "category": "Conservative",
-        "source": "Fox Business",
-        "official_url": "https://www.foxbusiness.com/shows/lou-dobbs-tonight",
-        "logo_slug": "loudobbs.png",
-        "descriptor": "Lou Dobbs’ conservative business and politics program. Archived episodes focused on economics and immigration policy."
-    },
-    {
-        "title": "The McNeil/Lehrer Report (Archive)",
-        "category": "Centrist/Independent",
-        "source": "PBS",
-        "official_url": "https://www.pbs.org/newshour/",
-        "logo_slug": "mcneillehrer.png",
-        "descriptor": "Historic PBS program that evolved into NewsHour. Balanced reporting and analysis on politics and civic issues."
-    },
-    {
-        "title": "Washington Week with Robert Costa (Archive)",
-        "category": "Centrist/Independent",
-        "source": "PBS",
-        "official_url": "https://www.pbs.org/weta/washingtonweek/",
-        "logo_slug": "washingtonweekcosta.png",
-        "descriptor": "Archived episodes hosted by Robert Costa. Balanced roundtable discussions on politics and policy."
-    },
-    {
-        "title": "Inside Washington (Archive)",
-        "category": "Centrist/Independent",
-        "source": "WJLA / PBS",
-        "official_url": "https://www.pbs.org/programs/inside-washington/",
-        "logo_slug": "insidewashington.png",
-        "descriptor": "Classic Washington panel show. Journalists debated politics and policy with civility and insight."
-    },
-    {
-        "title": "The McLaughlin Group (Revival)",
-        "category": "Conservative",
-        "source": "WJLA",
-        "official_url": "https://mclaughlin.com/",
-        "logo_slug": "mclaughlinrevival.png",
-        "descriptor": "Revived conservative roundtable. Panelists debate politics, policy, and culture with sharp exchanges."
-    },
-    {
-        "title": "Politicking with Larry King (Archive)",
-        "category": "Centrist/Independent",
-        "source": "RT America",
-        "official_url": "https://www.rt.com/shows/politicking/",
-        "logo_slug": "larryking.png",
-        "descriptor": "Larry King’s interview program. Conversations with politicians and public figures across the spectrum."
     },
     {
         "title": "The Young Turks (Video Show)",
         "category": "Progressive",
         "source": "TYT Network",
-        "official_url": "https://tyt.com/shows/the-young-turks",
-        "logo_slug": "tytshow.png",
+        "official_url": "https://www.youtube.com/@TheYoungTurks/videos",
+        "logo_slug": "tytshow.jpeg",
         "descriptor": "Progressive digital video show. Bold commentary on politics, activism, and media accountability."
     },
     {
         "title": "The Rubin Report",
         "category": "Libertarian",
         "source": "Dave Rubin",
-        "official_url": "https://rubinreport.com/",
-        "logo_slug": "rubin.png",
+        "official_url": "https://rubinreport.locals.com/landing/video",
+        "logo_slug": "rubin.jpeg",
         "descriptor": "Dave Rubin hosts libertarian‑leaning interviews. Conversations on free speech, politics, and culture."
     },
     {
         "title": "Breaking Points",
         "category": "Centrist/Independent",
         "source": "Independent",
-        "official_url": "https://breakingpoints.com/",
-        "logo_slug": "breakingpoints.png",
+        "official_url": "https://www.youtube.com/@breakingpoints/videos",
+        "logo_slug": "breakingpointsshow.jpeg",
         "descriptor": "Independent news show hosted by Krystal Ball and Saagar Enjeti. Balanced populist perspectives from left and right."
     },
     {
@@ -612,15 +476,15 @@
         "category": "Progressive",
         "source": "Kyle Kulinski",
         "official_url": "https://www.youtube.com/user/SecularTalk",
-        "logo_slug": "seculartalk.png",
+        "logo_slug": "seculartalk.jpeg",
         "descriptor": "Kyle Kulinski’s progressive commentary show. Covers politics, media, and activism with a leftist lens."
     },
     {
         "title": "Timcast IRL",
         "category": "Conservative",
         "source": "Tim Pool",
-        "official_url": "https://www.timcast.com/",
-        "logo_slug": "timcast.png",
+        "official_url": "https://www.youtube.com/@TimcastIRL",
+        "logo_slug": "timcast.jpeg",
         "descriptor": "Tim Pool’s nightly livestream. Conservative‑leaning analysis of politics, media, and culture."
     },
     {
@@ -628,38 +492,22 @@
         "category": "Centrist/Independent",
         "source": "The Hill",
         "official_url": "https://thehill.com/hilltv/rising/",
-        "logo_slug": "rising.png",
+        "logo_slug": "rising.webp",
         "descriptor": "The Hill’s independent morning show. Hosts debate politics and policy from populist left and right perspectives."
     },
     {
         "title": "The Laura Flanders Show",
         "category": "Socialist/Green",
         "source": "Independent",
-        "official_url": "https://lauraflanders.org/shows/",
-        "logo_slug": "lauraflanders.png",
+        "official_url": "https://www.youtube.com/channel/UCFLRxVeYcB1H7DbuYZQG-lg",
+        "logo_slug": "lauraflanders.jpeg",
         "descriptor": "Laura Flanders spotlights grassroots movements. Progressive and socialist perspectives on activism, culture, and democracy."
-    },
-    {
-        "title": "The Nation Show",
-        "category": "Progressive",
-        "source": "The Nation",
-        "official_url": "https://www.thenation.com/podcasts/",
-        "logo_slug": "nationshow.png",
-        "descriptor": "Video programming from The Nation magazine. Progressive journalism on politics, policy, and social justice."
-    },
-    {
-        "title": "Jacobin Show",
-        "category": "Socialist/Green",
-        "source": "Jacobin",
-        "official_url": "https://jacobin.com/shows",
-        "logo_slug": "jacobinshow.png",
-        "descriptor": "Jacobin’s weekly video program. Socialist analysis of politics, economics, and movements shaping the left."
     },
     {
         "title": "The Real News Network",
         "category": "Socialist/Green",
         "source": "TRNN",
-        "official_url": "https://therealnews.com/shows",
+        "official_url": "https://therealnews.com/our-shows-podcasts",
         "logo_slug": "realnewsnetwork.png",
         "descriptor": "Independent progressive video journalism. Covers labor, climate, and social justice issues with activist voices."
     },
@@ -667,8 +515,8 @@
         "title": "The Majority Report (Video)",
         "category": "Progressive",
         "source": "Sam Seder",
-        "official_url": "https://majorityreportradio.com/",
-        "logo_slug": "majorityreportshow.png",
+        "official_url": "https://www.youtube.com/user/SamSeder",
+        "logo_slug": "majorityreportshow.jpeg",
         "descriptor": "Video edition of Sam Seder’s progressive talk show. Commentary and interviews on politics and media."
     },
     {
