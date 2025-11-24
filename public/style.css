@@ -2864,3 +2864,28 @@ nav .tab.active {
   color: #fff;
   box-shadow: 0 0 10px rgba(0, 102, 255, 0.6);
 }
+/* Mobile-first adjustments */
+@media (max-width: 768px) {
+  nav .tab {
+    flex: 1 1 auto;
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  .card-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .official-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  body {
+    font-size: 1rem; /* scales with device */
+    line-height: 1.4;
+  }
+}
