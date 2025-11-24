@@ -523,40 +523,40 @@
         "title": "The Glenn Beck Program (Video)",
         "category": "Conservative",
         "source": "Blaze Media",
-        "official_url": "https://www.glennbeck.com/st/podcast",
-        "logo_slug": "glennbeckshow.png",
+        "official_url": "https://www.glennbeck.com/st/watch-glenn",
+        "logo_slug": "glennbeckprogram.webp",
         "descriptor": "Video edition of Glenn Beck’s conservative talk program. Commentary on politics, culture, and faith."
     },
     {
-        "title": "The Charlie Kirk Show (Video)",
+        "title": "Turning Point USA",
         "category": "Conservative",
         "source": "Turning Point USA",
-        "official_url": "https://www.charliekirk.com/podcast",
-        "logo_slug": "charliekirkshow.png",
+        "official_url": "https://tpusa.com/shows/",
+        "logo_slug": "turningpointusa.webp",
         "descriptor": "Video edition of Charlie Kirk’s conservative program. Commentary on politics, culture, and grassroots organizing."
     },
     {
         "title": "PragerU Live",
         "category": "Conservative",
         "source": "PragerU",
-        "official_url": "https://www.prageru.com/live/",
-        "logo_slug": "pragerulive.png",
+        "official_url": "https://www.prageru.com/shows",
+        "logo_slug": "pragerushows.jpeg",
         "descriptor": "PragerU’s live video programming. Conservative commentary on culture, economics, and politics."
     },
     {
         "title": "The Young Americans for Liberty Show",
         "category": "Libertarian",
         "source": "YAL",
-        "official_url": "https://yaliberty.org/",
-        "logo_slug": "yal.png",
+        "official_url": "https://www.facebook.com/yaliberty",
+        "logo_slug": "yalvideo.png",
         "descriptor": "Libertarian youth movement show. Focused on activism, free markets, and limited government."
     },
     {
         "title": "Reason TV",
         "category": "Libertarian",
         "source": "Reason Foundation",
-        "official_url": "https://reason.com/video/",
-        "logo_slug": "reason.png",
+        "official_url": "https://www.youtube.com/reasontv",
+        "logo_slug": "reasontv.jpeg",
         "descriptor": "Reason magazine’s video channel. Libertarian analysis of politics, economics, and culture."
     },
     {
@@ -564,7 +564,7 @@
         "category": "Centrist/Independent",
         "source": "The Atlantic",
         "official_url": "https://www.theatlantic.com/live/",
-        "logo_slug": "atlanticlive.png",
+        "logo_slug": "atlanticlive.jpeg",
         "descriptor": "The Atlantic’s live event programming. Conversations with writers, thinkers, and leaders on politics and culture."
     },
     {
@@ -572,7 +572,7 @@
         "category": "Centrist/Independent",
         "source": "Brookings Institution",
         "official_url": "https://www.brookings.edu/events/",
-        "logo_slug": "brookings_events.png",
+        "logo_slug": "brookings.webp",
         "descriptor": "Brookings Institution’s public events. Policy discussions with scholars and policymakers on pressing civic issues."
     },
     {
@@ -580,7 +580,7 @@
         "category": "Conservative",
         "source": "Heritage Foundation",
         "official_url": "https://www.heritage.org/events",
-        "logo_slug": "heritagelive.png",
+        "logo_slug": "heritagefoundationlive.jpeg",
         "descriptor": "Heritage Foundation’s live programming. Conservative policy forums and discussions on law, economics, and culture."
     },
     {
@@ -588,7 +588,7 @@
         "category": "Libertarian",
         "source": "Cato Institute",
         "official_url": "https://www.cato.org/events",
-        "logo_slug": "catoevents.png",
+        "logo_slug": "catoevents.jpeg",
         "descriptor": "Cato Institute’s public events. Libertarian analysis of policy, economics, and governance."
     },
     {
@@ -596,7 +596,7 @@
         "category": "Conservative",
         "source": "American Enterprise Institute",
         "official_url": "https://www.aei.org/events/",
-        "logo_slug": "aeilive.png",
+        "logo_slug": "aeievents.jpeg",
         "descriptor": "AEI’s live programming. Conservative scholars discuss economics, foreign policy, and governance."
     },
     {
@@ -604,7 +604,7 @@
         "category": "Progressive",
         "source": "Center for American Progress",
         "official_url": "https://www.americanprogress.org/events/",
-        "logo_slug": "capevents.png",
+        "logo_slug": "capevents.webp",
         "descriptor": "CAP’s public events. Progressive policy forums on economics, healthcare, climate, and democracy reform."
     },
     {
@@ -612,7 +612,7 @@
         "category": "Global/Economics",
         "source": "Council on Foreign Relations",
         "official_url": "https://www.cfr.org/events",
-        "logo_slug": "cfrevents.png",
+        "logo_slug": "cfr.png",
         "descriptor": "CFR’s public events. Global analysis on foreign policy, economics, and international relations."
     },
     {
@@ -620,7 +620,7 @@
         "category": "Centrist/Independent",
         "source": "Carnegie Endowment for International Peace",
         "official_url": "https://carnegieendowment.org/events/",
-        "logo_slug": "carnegieevents.png",
+        "logo_slug": "carnegieevents.jpeg",
         "descriptor": "Carnegie Endowment’s public events. Global think tank perspectives on democracy, security, and international affairs."
     },
     {
@@ -628,7 +628,7 @@
         "category": "Centrist/Independent",
         "source": "Wilson Center",
         "official_url": "https://www.wilsoncenter.org/events",
-        "logo_slug": "wilsonevents.png",
+        "logo_slug": "wilsoncenter.jpeg",
         "descriptor": "Wilson Center’s public events. Scholars explore international affairs, democracy, and global governance."
     },
     {
@@ -636,7 +636,7 @@
         "category": "Civic Culture",
         "source": "Aspen Institute",
         "official_url": "https://www.aspenideas.org/",
-        "logo_slug": "aspenideas.png",
+        "logo_slug": "aspenfestival.jpeg",
         "descriptor": "Aspen Institute’s flagship civic event. Leaders and thinkers discuss democracy, culture, and social innovation."
     }
 ]
