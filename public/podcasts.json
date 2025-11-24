@@ -579,80 +579,56 @@
   "title": "Students for Liberty Podcast",
   "category": "Libertarian",
   "source": "Students for Liberty",
-  "official_url": "https://studentsforliberty.org/podcast/",
-  "logo_slug": "sfl.png",
+  "official_url": "https://www.youtube.com/@StudentsForLibertySFL/podcasts",
+  "logo_slug": "studentsforliberty.jpeg",
   "descriptor": "Youth‑driven libertarian podcast. Students discuss freedom, economics, and activism across campuses worldwide."
 },
 {
   "title": "DSA Podcast",
   "category": "Socialist/Green",
   "source": "Democratic Socialists of America",
-  "official_url": "https://www.dsausa.org/podcast/",
-  "logo_slug": "dsa.png",
+  "official_url": "https://open.spotify.com/show/5SytEMGxzLk56p5aCMZ2Lg",
+  "logo_slug": "dsa.jpeg",
   "descriptor": "Democratic Socialists of America podcast. Covers organizing, campaigns, and socialist perspectives on U.S. politics."
 },
 {
-  "title": "Young Democratic Socialists Podcast",
+  "title": "Left on Red",
   "category": "Socialist/Green",
   "source": "YDSA",
-  "official_url": "https://ydsa.org/podcast/",
-  "logo_slug": "ydsa.png",
+  "official_url": "https://podcasts.apple.com/se/podcast/left-on-red/id1675598831",
+  "logo_slug": "leftonred.jpeg",
   "descriptor": "Youth wing of DSA. Young activists discuss socialism, organizing, and building movements for justice."
-},
-{
-  "title": "The Weeds",
-  "category": "Progressive",
-  "source": "Vox",
-  "official_url": "https://www.vox.com/the-weeds",
-  "logo_slug": "weeds.png",
-  "descriptor": "Policy deep dives from Vox. Progressive analysis of healthcare, economics, and political reform."
-},
-{
-  "title": "FiveThirtyEight Politics Podcast",
-  "category": "Centrist/Independent",
-  "source": "FiveThirtyEight",
-  "official_url": "https://fivethirtyeight.com/tag/politics-podcast/",
-  "logo_slug": "fivethirtyeight.png",
-  "descriptor": "Data‑driven political analysis. FiveThirtyEight editors discuss polls, elections, and trends shaping U.S. politics."
 },
 {
   "title": "Left, Right & Center",
   "category": "Centrist/Independent",
   "source": "KCRW",
-  "official_url": "https://www.kcrw.com/culture/shows/left-right-center",
-  "logo_slug": "lrc.png",
+  "official_url": "https://www.kcrw.com/shows/left-right-center/all-episodes",
+  "logo_slug": "leftrightandcenter.png",
   "descriptor": "Weekly debate show featuring voices from across the political spectrum. Civil discourse on current events."
 },
 {
-  "title": "The Axe Files",
+  "title": "CNN Political Briefing",
   "category": "Centrist/Independent",
-  "source": "CNN / David Axelrod",
-  "official_url": "https://www.cnn.com/audio/podcasts/axe-files",
-  "logo_slug": "axefiles.png",
+  "source": "CNN",
+  "official_url": "https://www.cnn.com/audio/podcasts/political-briefing",
+  "logo_slug": "cnnpoliticalbrief.png",
   "descriptor": "David Axelrod interviews political leaders and thinkers. In‑depth conversations on campaigns, policy, and civic life."
 },
-{
-  "title": "Common Sense with Dan Carlin",
-  "category": "Centrist/Independent",
-  "source": "Dan Carlin",
-  "official_url": "https://www.dancarlin.com/common-sense-home-landing-page/",
-  "logo_slug": "commonsense.png",
-  "descriptor": "Independent political commentary from Dan Carlin. Sharp takes on democracy, media, and global affairs."
-},
-  {
-  "title": "The Michael Steele Podcast",
-  "category": "Centrist/Independent",
-  "source": "The Root / Independent",
-  "official_url": "https://www.msnbc.com/podcasts/michael-steele-podcast",
-  "logo_slug": "michaelsteele.png",
-  "descriptor": "Former RNC Chair Michael Steele hosts candid conversations with guests across the political spectrum."
+ {
+  "title": "The Tucker Carlson Show",
+  "category": "Conservative/Independent",
+  "source": "Independent Media",
+  "official_url": "https://www.tuckercarlson.com",
+  "logo_slug": "tuckercarlson.jpeg",
+  "descriptor": "Political commentator Tucker Carlson hosts interviews and monologues on current events and cultural issues."
 },
 {
   "title": "The Hugh Hewitt Show",
   "category": "Conservative",
   "source": "Salem Media",
-  "official_url": "https://hughhewitt.com/podcast/",
-  "logo_slug": "hughhewitt.png",
+  "official_url": "https://hughhewitt.com/hugh-hewitt-show-podcast",
+  "logo_slug": "hughhewitt.jpeg",
   "descriptor": "Conservative talk radio veteran Hugh Hewitt offers interviews and commentary on politics, law, and culture."
 },
 {
@@ -667,8 +643,8 @@
   "title": "The Bully Pulpit",
   "category": "Centrist/Independent",
   "source": "USC Center for the Political Future",
-  "official_url": "https://centerforpoliticalfuture.usc.edu/podcast/",
-  "logo_slug": "bullypulpit.png",
+  "official_url": "https://open.spotify.com/show/6RznYY7HuiqGkazvhnvcSe",
+  "logo_slug": "bullypulpit.jpeg",
   "descriptor": "USC’s Center for the Political Future hosts bipartisan conversations on democracy, campaigns, and civic life."
 },
 {
@@ -683,16 +659,16 @@
   "title": "The Political Scene",
   "category": "Progressive",
   "source": "The New Yorker",
-  "official_url": "https://www.newyorker.com/podcasts/politics-and-more",
-  "logo_slug": "newyorker.png",
+  "official_url": "https://www.newyorker.com/podcast/political-scene",
+  "logo_slug": "politicalscene.webp",
   "descriptor": "The New Yorker’s political writers discuss the week’s big stories with a progressive cultural lens."
 },
 {
-  "title": "The Slate Daily Feed",
+  "title": "Slate Podcasts",
   "category": "Progressive",
   "source": "Slate",
-  "official_url": "https://slate.com/podcasts/the-slate-daily-feed",
-  "logo_slug": "slatedaily.png",
+  "official_url": "https://slate.com/podcasts/archive",
+  "logo_slug": "slate.png",
   "descriptor": "Slate’s daily podcast feed featuring progressive commentary and reporting across politics, culture, and society."
 },
 {
@@ -700,39 +676,31 @@
   "category": "Centrist/Independent",
   "source": "The Atlantic",
   "official_url": "https://www.theatlantic.com/podcasts/",
-  "logo_slug": "atlantic.png",
+  "logo_slug": "theatlantic.jpeg",
   "descriptor": "The Atlantic’s editors and writers explore politics, culture, and ideas shaping the world today."
-},
-{
-  "title": "The Brookings Cafeteria",
-  "category": "Centrist/Independent",
-  "source": "Brookings Institution",
-  "official_url": "https://www.brookings.edu/podcast-episode/the-brookings-cafeteria/",
-  "logo_slug": "brookings.png",
-  "descriptor": "Brookings scholars discuss policy research and ideas. A centrist think‑tank perspective on economics and governance."
 },
 {
   "title": "The Hoover Institution Podcasts",
   "category": "Conservative",
   "source": "Hoover Institution",
-  "official_url": "https://www.hoover.org/publications/podcasts",
-  "logo_slug": "hoover.png",
+  "official_url": "https://www.hoover.org/research/type/podcasts",
+  "logo_slug": "hoover.jpeg",
   "descriptor": "Hoover Institution fellows provide conservative analysis on economics, foreign policy, and political reform."
 },
   {
-  "title": "The Center for American Progress Podcast",
+  "title": "The Tent Podcast",
   "category": "Progressive",
   "source": "Center for American Progress",
-  "official_url": "https://www.americanprogress.org/podcasts/",
-  "logo_slug": "cap.png",
+  "official_url": "https://www.americanprogressaction.org/series/the-tent-podcast/",
+  "logo_slug": "thetent.webp",
   "descriptor": "Policy experts from CAP discuss progressive solutions on economics, healthcare, climate, and democracy reform."
 },
 {
-  "title": "The American Enterprise Institute Podcast",
+  "title": "The American Enterprise Institute Podcasts",
   "category": "Conservative",
   "source": "AEI",
   "official_url": "https://www.aei.org/podcasts/",
-  "logo_slug": "aei.png",
+  "logo_slug": "aeipodcast.png",
   "descriptor": "AEI scholars provide conservative analysis on economics, foreign policy, and governance."
 },
 {
@@ -747,7 +715,7 @@
   "title": "The RAND Corporation Podcasts",
   "category": "Centrist/Independent",
   "source": "RAND Corporation",
-  "official_url": "https://www.rand.org/multimedia/podcasts.html",
+  "official_url": "https://www.rand.org/pubs/podcasts.html",
   "logo_slug": "rand.png",
   "descriptor": "RAND researchers discuss policy studies on defense, healthcare, education, and global security."
 },
@@ -756,23 +724,15 @@
   "category": "Global/Economics",
   "source": "Council on Foreign Relations",
   "official_url": "https://www.cfr.org/podcasts",
-  "logo_slug": "cfrpodcasts.png",
+  "logo_slug": "council.png",
   "descriptor": "CFR experts provide global analysis on foreign policy, economics, and international relations."
-},
-{
-  "title": "Brookings Events Podcast",
-  "category": "Centrist/Independent",
-  "source": "Brookings Institution",
-  "official_url": "https://www.brookings.edu/podcast-episode/brookings-events-podcast/",
-  "logo_slug": "brookings_events.png",
-  "descriptor": "Brookings Institution event recordings. Policy discussions with scholars and policymakers on pressing issues."
 },
 {
   "title": "The Heritage Foundation Podcasts",
   "category": "Conservative",
   "source": "Heritage Foundation",
-  "official_url": "https://www.heritage.org/podcast",
-  "logo_slug": "heritagepodcasts.png",
+  "official_url": "https://www.heritage.org/podcasts",
+  "logo_slug": "heritagefoundation.jpeg",
   "descriptor": "Heritage Foundation podcasts covering conservative perspectives on law, economics, and culture."
 },
 {
@@ -780,7 +740,7 @@
   "category": "Global/Economics",
   "source": "CSIS",
   "official_url": "https://www.csis.org/podcasts",
-  "logo_slug": "csis.png",
+  "logo_slug": "csis.jpeg",
   "descriptor": "CSIS experts discuss global security, economics, and foreign policy challenges."
 },
 {
@@ -788,7 +748,7 @@
   "category": "Centrist/Independent",
   "source": "Wilson Center",
   "official_url": "https://www.wilsoncenter.org/podcasts",
-  "logo_slug": "wilson.png",
+  "logo_slug": "wilsoncenter.jpeg",
   "descriptor": "Wilson Center scholars explore international affairs, democracy, and global governance."
 },
 {
@@ -796,7 +756,7 @@
   "category": "Centrist/Independent",
   "source": "Aspen Institute",
   "official_url": "https://www.aspeninstitute.org/podcasts/",
-  "logo_slug": "aspen.png",
+  "logo_slug": "aspen.jpeg",
   "descriptor": "Aspen Institute convenes leaders and thinkers to discuss civic culture, democracy, and social innovation."
 }
 ]
