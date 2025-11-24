@@ -2913,3 +2913,27 @@ nav .tab.active {
   margin: 4px 0;
   text-align: center;
 }
+/* Officials card layout */
+.official-card {
+  display: flex;
+  flex-direction: column;   /* stack photo above text */
+  align-items: center;      /* center photo horizontally */
+  padding: 16px;
+  text-align: center;       /* center text inside */
+}
+
+/* Officials card image */
+.official-card img {
+  display: block;
+  margin: 0 auto 12px auto; /* center image with spacing below */
+  max-width: 120px;         /* constrain image size */
+  height: auto;
+}
+
+/* Officials card text */
+.official-card h3,
+.official-card p {
+  margin: 4px 0;
+  width: 100%;              /* allow text to span full card width */
+  text-align: center;       /* keep text centered */
+}
