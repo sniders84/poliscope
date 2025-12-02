@@ -322,58 +322,30 @@
         <div id="social-feed" class="grid"></div>
       </div>
     </section>
-    
-   <section id="podcasts-shows" class="tab-content" style="display: none;">
-  <h2>Podcasts & Shows</h2>
-
-  <!-- Search bar -->
-  <input 
-    type="text" 
-    id="podcasts-search-bar" 
-    class="search-bar" 
-    placeholder="Search podcasts or shows..."
-    style="
-      width: 100%;
-      max-width: 400px;
-      padding: 10px 15px;
-      margin: 10px 0 20px 0;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      background-color: #2b2b2b;
-      color: #fff;
-      font-size: 1rem;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    "
-    onfocus="this.style.borderColor='#1e90ff'; this.style.boxShadow='0 0 5px #1e90ff';"
-    onblur="this.style.borderColor='#ccc'; this.style.boxShadow='none';"
-  />
-
-  <!-- Favorites (appears ONCE) -->
-  <div id="favorites-section" class="category-section">
-    <h3>Favorites</h3>
-    <div id="favorites-cards" class="grid"></div>
-  </div>
-
-  <!-- Collapsible Podcasts -->
-  <div class="collapsible">
-    <button class="collapsible-toggle" data-target="podcasts-list" onclick="toggleSection('podcasts-list')">
-      Podcasts ▼
-    </button>
-    <div id="podcasts-list" class="collapsible-content" style="display: none;">
+    <section id="podcasts-shows" class="tab-content" style="display: none;">
+      <h2>Podcasts & Shows</h2>
+      <input 
+        type="text" 
+        id="podcasts-search-bar" 
+        class="search-bar" 
+        placeholder="Search podcasts or shows..."
+        style="
+          width: 100%;
+          max-width: 400px;
+          padding: 10px 15px;
+          margin: 10px 0 20px 0;
+          border-radius: 8px;
+          border: 1px solid #ccc;
+          background-color: #2b2b2b;
+          color: #fff;
+          font-size: 1rem;
+          transition: border-color 0.2s, box-shadow 0.2s;
+        "
+        onfocus="this.style.borderColor='#1e90ff'; this.style.boxShadow='0 0 5px #1e90ff';"
+        onblur="this.style.borderColor='#ccc'; this.style.boxShadow='none';"
+      />
       <div id="podcasts-cards" class="grid"></div>
-    </div>
-  </div>
-
-  <!-- Collapsible Shows -->
-  <div class="collapsible">
-    <button class="collapsible-toggle" data-target="shows-list" onclick="toggleSection('shows-list')">
-      Shows ▼
-    </button>
-    <div id="shows-list" class="collapsible-content" style="display: none;">
-      <div id="shows-cards" class="grid"></div>
-    </div>
-  </div>
-</section>
+    </section>
 
     <section id="my-officials" class="tab-content" style="display: none; position: relative;">
       <h2>My Officials</h2>
@@ -481,35 +453,129 @@
       </div>
     </div>
   </div>
-<script>
-  // === Generic tab switcher ===
-  function showTab(tabId) {
-    document.querySelectorAll('.tab-content').forEach(tab => {
-      tab.style.display = 'none';
+  <script>
+    // Show Home Hub tab
+    function showStartupHub() {
+      showTab('startup-hub');
+    }
+
+    // Other tab helpers (placeholders to match your button handlers)
+    function showPodcastsShows() { showTab('podcasts-shows'); }
+    function showCivic() { showTab('civic'); }
+    function showPolls() { showTab('polls'); }
+    function showOrganizations() { showTab('organizations'); }
+    function showVoting() { showTab('voting'); }
+
+    // Generic tab switcher
+    function showTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.style.display = 'none';
+      });
+      const tab = document.getElementById(tabId);
+      if (tab) tab.style.display = 'block';
+    }
+
+    // Sticky nav buttons scroll to sections
+    document.addEventListener('DOMContentLoaded', () => {
+      const navButtons = document.querySelectorAll('#hub-nav button');
+      navButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const section = document.getElementById(btn.dataset?.target);
+          if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      // Force Home Hub tab to show on page load (prevents any flash)
+      showStartupHub();
     });
-    const tab = document.getElementById(tabId);
-    if (tab) tab.style.display = 'block';
-  }
 
-  // === Carousel controls ===
-  function setupControls(containerId) {
-    const track = document.querySelector(`#${containerId} .carousel-track`);
-    const prevBtn = document.querySelector(`.carousel-controls .prev[data-target="${containerId}"]`);
-    const nextBtn = document.querySelector(`.carousel-controls .next[data-target="${containerId}"]`);
+    // --- Carousel Feed Logic (image-enforced, 25 items, rotating track + arrows) ---
+    const feeds = {
+      world: [
+        "http://feeds.bbci.co.uk/news/world/rss.xml",
+        "http://feeds.reuters.com/Reuters/worldNews",
+        "https://www.aljazeera.com/xml/rss/all.xml"
+      ],
+      finance: [
+        "https://www.cnbc.com/id/100003114/device/rss/rss.html",
+        "https://www.marketwatch.com/rss/topstories",
+        "https://feeds.finance.yahoo.com/rss/2.0/headline?s=^DJI"
+      ],
+      economy: [
+        "https://www.cnbc.com/id/20910258/device/rss/rss.html",
+        "https://www.marketwatch.com/rss/economy",
+        "https://feeds.bloomberg.com/economics/news.rss"
+      ]
+    };
 
-    let position = 0;
-    const step = 310; // card width + gap
+    async function loadFeed(url) {
+      try {
+        const response = await fetch(
+          `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`
+        );
+        const data = await response.json();
+        return data.items || [];
+      } catch {
+        return [];
+      }
+    }
 
-    // Auto-scroll (5 seconds)
-    setInterval(() => {
-      if (!track) return;
-      position++;
-      if (position >= track.children.length) position = 0;
-      track.style.transform = `translateX(-${position * step}px)`;
-    }, 5000);
+    function extractImage(item) {
+      if (item.thumbnail) return item.thumbnail;
+      if (item.enclosure && item.enclosure.link) return item.enclosure.link;
+      const match = item.content?.match(/<img[^>]+src="([^">]+)"/i);
+      if (match && match[1]) return match[1];
+      return "";
+    }
 
-    // Manual controls
-    if (prevBtn && nextBtn && track) {
+    async function loadSection(section, containerId) {
+      const container = document.getElementById(containerId);
+      const track = document.createElement("div");
+      track.className = "carousel-track";
+      container.appendChild(track);
+
+      let allItems = [];
+      for (const url of feeds[section]) {
+        const items = await loadFeed(url);
+        allItems = allItems.concat(items);
+      }
+
+      const withImages = allItems
+        .map(item => ({ item, img: extractImage(item) }))
+        .filter(({ img }) => !!img)
+        .slice(0, 25); // enforce cap of 25 with images
+
+      withImages.forEach(({ item, img }) => {
+        const card = document.createElement("a");
+        card.className = "hub-card carousel-card";
+        card.href = item.link;
+        card.target = "_blank";
+        card.rel = "noopener noreferrer";
+        card.innerHTML = `
+          <img src="${img}" alt="" class="carousel-img">
+          <h3>${item.title}</h3>
+          <p>${new Date(item.pubDate).toLocaleDateString()}</p>
+        `;
+        track.appendChild(card);
+      });
+    }
+
+    function setupControls(containerId) {
+      const track = document.querySelector(`#${containerId} .carousel-track`);
+      const prevBtn = document.querySelector(`.carousel-controls .prev[data-target="${containerId}"]`);
+      const nextBtn = document.querySelector(`.carousel-controls .next[data-target="${containerId}"]`);
+
+      let position = 0;
+      const step = 310; // card width + ~gap
+
+      // Auto-scroll (5 seconds)
+      setInterval(() => {
+        position++;
+        if (position >= track.children.length) position = 0;
+        track.style.transform = `translateX(-${position * step}px)`;
+      }, 5000);
+
+      // Manual controls
       prevBtn.addEventListener("click", () => {
         position = Math.max(0, position - 1);
         track.style.transform = `translateX(-${position * step}px)`;
@@ -520,19 +586,11 @@
         track.style.transform = `translateX(-${position * step}px)`;
       });
     }
-  }
+  </script>
+  <script src="script.js"></script>
 
-  // === Carousel feed loader (stub, replace with your real feed logic) ===
-  async function loadSection(section, containerId) {
-    const container = document.getElementById(containerId);
-    if (!container) return;
-    const track = document.createElement("div");
-    track.className = "carousel-track";
-    container.appendChild(track);
-    // TODO: wire in your feed logic here
-  }
-
-  // === Initialize carousels ===
+<script>
+  // Initialize carousels: load feeds then wire controls
   (async () => {
     await loadSection("world", "world-news-carousel");
     await loadSection("finance", "finance-carousel");
@@ -542,74 +600,12 @@
     setupControls("finance-carousel");
     setupControls("economy-carousel");
   })();
+</script>
 
-  // === Collapsible toggle with arrow flip + lazy-load ===
-  function toggleSection(id) {
-    const section = document.getElementById(id);
-    if (!section) return;
-
-    const isHidden = section.style.display === "none";
-    section.style.display = isHidden ? "block" : "none";
-
-    const btn = document.querySelector(`.collapsible-toggle[data-target="${id}"]`);
-    if (btn) {
-      btn.textContent = btn.textContent.replace(isHidden ? "▼" : "▲", isHidden ? "▲" : "▼");
-    }
-
-    if (isHidden && !section.dataset.loaded) {
-      if (id === "podcasts-list") {
-        loadJSONInto("/podcasts.json", "podcasts-cards");
-      } else if (id === "shows-list") {
-        loadJSONInto("/shows.json", "shows-cards");
-      }
-      section.dataset.loaded = "true";
-    }
-  }
-
-  // === Generic JSON loader ===
-  async function loadJSONInto(file, containerId) {
-    try {
-      const response = await fetch(file, { headers: { "Accept": "application/json" } });
-      if (!response.ok) throw new Error(`Failed to fetch ${file}: ${response.status}`);
-      const contentType = response.headers.get("content-type") || "";
-      if (!contentType.includes("application/json")) throw new Error(`Unexpected content-type for ${file}: ${contentType}`);
-
-      const data = await response.json();
-
-      const container = document.getElementById(containerId);
-      if (!container) return;
-      container.innerHTML = "";
-
-      data.forEach(item => {
-        const card = document.createElement("div");
-        card.className = "card";
-        card.innerHTML = `
-          <h4>${item.title || item.name || "Untitled"}</h4>
-          <p>${item.description || ""}</p>
-        `;
-        container.appendChild(card);
-      });
-    } catch (err) {
-      console.error(err);
-      const container = document.getElementById(containerId);
-      if (container) {
-        container.innerHTML = `<div class="error">Unable to load ${file}. Check path and server.</div>`;
-      }
-    }
-  }
-
-  // === Nav button helpers ===
-  function showStartupHub() { showTab('startup-hub'); }
-  function showPodcastsShows() { showTab('podcasts-shows'); }
-  function renderOfficials() { showTab('my-officials'); }
-  function showCivic() { showTab('civic'); }
-  function showPolls() { showTab('polls'); }
-  function showOrganizations() { showTab('organizations'); }
-  function showVoting() { showTab('voting'); }
-
-  // === Ensure Home Hub is selected on DOM ready ===
+<script>
+  // Force Home Hub tab to show on page load and highlight its button
   document.addEventListener("DOMContentLoaded", () => {
-    showStartupHub();
+    showStartupHub(); // Home Hub loads first and button is highlighted
   });
 </script>
 
