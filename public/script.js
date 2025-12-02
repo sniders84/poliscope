@@ -212,7 +212,7 @@ function showTab(id) {
     btn.classList.remove('active');
   });
 
-  // Highlight the clicked button
+  // Highlight the clicked button (requires data-tab on each nav button)
   const clickedBtn = document.querySelector(`nav .tab[data-tab="${id}"]`);
   if (clickedBtn) clickedBtn.classList.add('active');
 }
@@ -299,7 +299,6 @@ function showPodcastsShows() {
           // Favorite toggle
           const favBtn = card.querySelector('.favorite-btn');
           if (favBtn) {
-            // initialize state
             const isFav = isFavorite(item.type || type, item.title);
             updateFavoriteButton(favBtn, isFav);
 
@@ -394,17 +393,20 @@ function showPodcastsShows() {
   console.log('showPodcastsShows() finished rendering');
 }
 
-// NEW helper for renamed tab
+// Helper for renamed tab
 function showLegislation() {
   showTab('legislation');
 }
 
-// NEW helper for new tab
+// TEMPORARY alias to reconnect any existing calls that still use showCivic()
+function showCivic() {
+  showTab('legislation');
+}
+
+// Helper for new tab
 function showCivicIntelligence() {
   showTab('civic-intelligence');
 }
-
-// REMOVED showPolls (we replaced it)
 
 function showOrganizations() {
   showTab('political-groups');
@@ -438,9 +440,6 @@ function showVoting() {
         votingCards.innerHTML = `<p>No voting information available for ${stateName}.</p>`;
         return;
       }
-
-      console.log("Selected state:", stateName);
-      console.log('Direct match result:', data[stateName]);
 
       const labelMap = {
         register: 'Register to Vote',
