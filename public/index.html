@@ -439,8 +439,8 @@ const feeds = {
   ],
   economy: [
     "https://blogs.worldbank.org/feed",
-    "https://www.imf.org/external/rss/feeds.aspx?category=Economy",
-    "https://www.oecd.org/newsroom/rss.xml"
+    "https://tradingeconomics.com/rss",
+    "https://feeds.npr.org/1017/rss.xml"
   ]
 };
 
@@ -461,38 +461,35 @@ async function loadSection(section, containerId) {
   const container = document.getElementById(containerId);
   let allItems = [];
 
-  // Pull items from all feeds in this section
   for (const url of feeds[section]) {
     const items = await loadFeed(url);
     allItems = allItems.concat(items);
   }
 
-  // Limit to 25 cards max
   allItems.slice(0,25).forEach(item => {
-    const card = document.createElement("div");
-    card.className = "hub-card"; // use your site’s card class
+    const card = document.createElement("a");
+    card.className = "hub-card carousel-card"; // use your site’s card class
+    card.href = item.link;
+    card.target = "_blank";
     card.innerHTML = `
       <h3>${item.title}</h3>
       <p>${new Date(item.pubDate).toLocaleDateString()}</p>
-      <a href="${item.link}" target="_blank">Read more</a>
     `;
     container.appendChild(card);
   });
 }
 
-// Auto-scroll
 function autoScroll(containerId) {
   const container = document.getElementById(containerId);
   setInterval(() => {
     if (container.scrollLeft + container.clientWidth >= container.scrollWidth) {
       container.scrollLeft = 0;
     } else {
-      container.scrollLeft += 2; // adjust speed here
+      container.scrollLeft += 1; // half speed
     }
   }, 30);
 }
 
-// Initialize
 (async () => {
   await loadSection("world", "world-news-carousel");
   await loadSection("finance", "finance-carousel");
