@@ -466,14 +466,12 @@ async function loadSection(section, containerId) {
     allItems = allItems.concat(items);
   }
 
-  // Limit to 25 cards max
   allItems.slice(0,25).forEach(item => {
     const card = document.createElement("a");
-    card.className = "hub-card carousel-card"; // match your site’s card style
+    card.className = "hub-card carousel-card";
     card.href = item.link;
     card.target = "_blank";
 
-    // Use thumbnail if available
     const image = item.thumbnail || item.enclosure?.link || "";
     card.innerHTML = `
       ${image ? `<img src="${image}" alt="" class="carousel-img">` : ""}
@@ -505,6 +503,5 @@ function autoScroll(containerId) {
   autoScroll("economy-carousel");
 })();
 </script>
-
 
 </html>
