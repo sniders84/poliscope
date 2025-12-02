@@ -3206,3 +3206,20 @@ nav .tab.active {
 .ci-grid .card:hover {
   background-color: #0066ff; /* blue hover effect */
 }
+/* ---- CIVIC TAB FIX ---- */
+
+#civic .ci-section {
+  display: block !important;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+#civic .ci-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+#civic .ci-grid .card {
+  display: block;
+}
