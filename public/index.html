@@ -481,38 +481,57 @@
       </div>
     </div>
   </div>
-  <script>
-       function setupControls(containerId) {
-      const track = document.querySelector(`#${containerId} .carousel-track`);
-      const prevBtn = document.querySelector(`.carousel-controls .prev[data-target="${containerId}"]`);
-      const nextBtn = document.querySelector(`.carousel-controls .next[data-target="${containerId}"]`);
-
-      let position = 0;
-      const step = 310; // card width + gap
-
-      // Auto-scroll (5 seconds)
-      setInterval(() => {
-        position++;
-        if (position >= track.children.length) position = 0;
-        track.style.transform = `translateX(-${position * step}px)`;
-      }, 5000);
-
-      // Manual controls
-      if (prevBtn && nextBtn) {
-        prevBtn.addEventListener("click", () => {
-          position = Math.max(0, position - 1);
-          track.style.transform = `translateX(-${position * step}px)`;
-        });
-
-        nextBtn.addEventListener("click", () => {
-          position = Math.min(track.children.length - 1, position + 1);
-          track.style.transform = `translateX(-${position * step}px)`;
-        });
-      }
-    }
-</script>
-
 <script>
+  // === Generic tab switcher ===
+  function showTab(tabId) {
+    document.querySelectorAll('.tab-content').forEach(tab => {
+      tab.style.display = 'none';
+    });
+    const tab = document.getElementById(tabId);
+    if (tab) tab.style.display = 'block';
+  }
+
+  // === Carousel controls ===
+  function setupControls(containerId) {
+    const track = document.querySelector(`#${containerId} .carousel-track`);
+    const prevBtn = document.querySelector(`.carousel-controls .prev[data-target="${containerId}"]`);
+    const nextBtn = document.querySelector(`.carousel-controls .next[data-target="${containerId}"]`);
+
+    let position = 0;
+    const step = 310; // card width + gap
+
+    // Auto-scroll (5 seconds)
+    setInterval(() => {
+      if (!track) return;
+      position++;
+      if (position >= track.children.length) position = 0;
+      track.style.transform = `translateX(-${position * step}px)`;
+    }, 5000);
+
+    // Manual controls
+    if (prevBtn && nextBtn && track) {
+      prevBtn.addEventListener("click", () => {
+        position = Math.max(0, position - 1);
+        track.style.transform = `translateX(-${position * step}px)`;
+      });
+
+      nextBtn.addEventListener("click", () => {
+        position = Math.min(track.children.length - 1, position + 1);
+        track.style.transform = `translateX(-${position * step}px)`;
+      });
+    }
+  }
+
+  // === Carousel feed loader (stub, replace with your real feed logic) ===
+  async function loadSection(section, containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    const track = document.createElement("div");
+    track.className = "carousel-track";
+    container.appendChild(track);
+    // TODO: wire in your feed logic here
+  }
+
   // === Initialize carousels ===
   (async () => {
     await loadSection("world", "world-news-carousel");
