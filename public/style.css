@@ -3052,3 +3052,30 @@ nav .tab.active {
   background-color: #0066cc; /* blue hover */
   transform: scale(1.1);
 }
+/* Base tab styling */
+nav .tab {
+  padding: 12px 20px;              /* bigger click area */
+  margin-right: 12px;              /* spacing between tabs */
+  border: none;
+  border-radius: 8px;              /* rounded corners */
+  background-color: #3c3c3c;
+  color: #eee;
+  font-size: 1rem;                 /* larger font */
+  font-family: "Segoe UI", Arial, sans-serif;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+/* Hover state */
+nav .tab:hover {
+  background-color: #0066ff;
+  color: #fff;
+}
+
+/* Active tab highlight */
+nav .tab.active {
+  background-color: #1a3d66;       /* deep blue for active */
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 0 0 6px rgba(0,0,0,0.4);
+}
