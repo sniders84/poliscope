@@ -441,7 +441,7 @@ async function loadFeed(url, containerId) {
 
     data.items.slice(0,6).forEach(item => {
       const card = document.createElement("div");
-      card.className = "carousel-card";
+      card.className = "hub-card"; // use your site’s card class
       card.innerHTML = `
         <h3>${item.title}</h3>
         <p>${new Date(item.pubDate).toLocaleDateString()}</p>
@@ -454,10 +454,10 @@ async function loadFeed(url, containerId) {
   }
 }
 
-// Load feeds
 loadFeed(feeds.world, "world-news-carousel");
 loadFeed(feeds.finance, "finance-carousel");
 loadFeed(feeds.economy, "economy-carousel");
 </script>
+
 </body>
 </html>
