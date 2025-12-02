@@ -589,18 +589,25 @@
   </script>
   <script src="script.js"></script>
 
-  <script>
-    // Initialize carousels: load feeds then wire controls
-    (async () => {
-      await loadSection("world", "world-news-carousel");
-      await loadSection("finance", "finance-carousel");
-      await loadSection("economy", "economy-carousel");
+<script>
+  // Initialize carousels: load feeds then wire controls
+  (async () => {
+    await loadSection("world", "world-news-carousel");
+    await loadSection("finance", "finance-carousel");
+    await loadSection("economy", "economy-carousel");
 
-      setupControls("world-news-carousel");
-      setupControls("finance-carousel");
-      setupControls("economy-carousel");
-    })();
-  </script>
+    setupControls("world-news-carousel");
+    setupControls("finance-carousel");
+    setupControls("economy-carousel");
+  })();
+</script>
+
+<script>
+  // Force Home Hub tab to show on page load and highlight its button
+  document.addEventListener("DOMContentLoaded", () => {
+    showStartupHub(); // Home Hub loads first and button is highlighted
+  });
+</script>
 
 </body>
 </html>
