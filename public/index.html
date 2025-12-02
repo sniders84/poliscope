@@ -368,15 +368,38 @@
       <div id="officials-container" class="grid"></div>
     </section>
 
-    <section id="civic" class="tab-content" style="display: none;">
-      <h2>Civic Intelligence Dashboard</h2>
-      <div id="calendar"></div>
-    </section>
+<section id="legislation" class="tab-content" style="display: none;">
+  <h2>Legislation</h2>
+  <!-- existing content stays here -->
+</section>
 
-    <section id="polls" class="tab-content" style="display: none;">
-      <h2>Polling Dashboard</h2>
-      <div id="polls-cards" class="grid"></div>
-    </section>
+    <section id="civic-intelligence" class="tab-content" style="display: none;">
+  <h2>Civic Intelligence</h2>
+
+  <!-- Civic Learning Hub -->
+  <div class="collapsible">
+    <button class="collapsible-toggle" data-target="learning-list" onclick="toggleSection('learning-list')">
+      Civic Learning Hub ▼
+    </button>
+    <div id="learning-list" class="collapsible-content" style="display: none;">
+      <div id="learning-cards" class="grid">
+        <!-- Placeholder: content will be added later -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Fact Check & Myth Busting -->
+  <div class="collapsible">
+    <button class="collapsible-toggle" data-target="factcheck-list" onclick="toggleSection('factcheck-list')">
+      Fact Check & Myth Busting ▼
+    </button>
+    <div id="factcheck-list" class="collapsible-content" style="display: none;">
+      <div id="factcheck-cards" class="grid">
+        <!-- Placeholder: content will be added later -->
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- State Legislative Links -->
     <section id="state-legislative" class="tab-content" style="display: none;">
@@ -430,17 +453,7 @@
     <button id="close-modal" class="close-button">&times;</button>
   </div>
 
-  <!-- Poll Modal -->
-  <div id="pollModal" class="modal">
-    <div class="modal-content" id="pollModalContent"></div>
-  </div>
-
-  <!-- Modal for Polls -->
-  <div id="polls-modal" class="modal">
-    <div id="polls-content" class="modal-content"></div>
-  </div>
-
-  <!-- Cabinet Modal -->
+   <!-- Cabinet Modal -->
   <div id="cabinetModal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModalWindow('cabinetModal')">&times;</span>
