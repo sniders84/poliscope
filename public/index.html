@@ -432,12 +432,12 @@
     let position = 0;
     const step = 310; // card width + ~gap
 
-    // Auto-scroll
-    setInterval(() => {
-      position++;
-      if (position >= track.children.length) position = 0;
-      track.style.transform = `translateX(-${position * step}px)`;
-    }, 3000);
+   // Auto-scroll
+setInterval(() => {
+  position++;
+  if (position >= track.children.length) position = 0;
+  track.style.transform = `translateX(-${position * step}px)`;
+}, 5000); // rotate every 5s instead of 3s
 
     // Manual controls
     prevBtn.addEventListener("click", () => {
