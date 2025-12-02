@@ -424,5 +424,40 @@ function showTab(tabId) {
 </div>
 
 <script src="script.js"></script>
+<script>
+const feeds = {
+  world: "http://feeds.reuters.com/Reuters/worldNews",
+  finance: "https://www.marketwatch.com/rss/topstories",
+  economy: "https://www.economist.com/economics/rss.xml"
+};
+
+async function loadFeed(url, containerId) {
+  try {
+    const response = await fetch(
+      `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`
+    );
+    const data = await response.json();
+    const container = document.getElementById(containerId);
+
+    data.items.slice(0,6).forEach(item => {
+      const card = document.createElement("div");
+      card.className = "carousel-card";
+      card.innerHTML = `
+        <h3>${item.title}</h3>
+        <p>${new Date(item.pubDate).toLocaleDateString()}</p>
+        <a href="${item.link}" target="_blank">Read more</a>
+      `;
+      container.appendChild(card);
+    });
+  } catch (err) {
+    console.error("Feed error:", err);
+  }
+}
+
+// Load feeds
+loadFeed(feeds.world, "world-news-carousel");
+loadFeed(feeds.finance, "finance-carousel");
+loadFeed(feeds.economy, "economy-carousel");
+</script>
 </body>
 </html>
