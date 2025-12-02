@@ -3264,3 +3264,32 @@ nav .tab.active {
   padding: 15px;
   cursor: pointer;
 }
+/* Stack all three Civic blocks vertically */
+.civic-section {
+  display: block; /* make sure the wrapper is block */
+  margin: 0; 
+  padding: 0;
+}
+
+/* Each block inside the section is a block and spaced */
+.civic-block {
+  display: block; /* force vertical stacking */
+  margin-bottom: 30px; /* space between sections */
+}
+
+/* Cards inside each block: normal left-to-right grid */
+.link-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 15px; /* spacing between cards */
+  grid-auto-flow: row; /* left to right */
+}
+
+/* Optional: card styling */
+.link-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 15px;
+  cursor: pointer;
+}
