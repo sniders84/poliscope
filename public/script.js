@@ -624,20 +624,36 @@ function showCivic() {
   const calendar = document.getElementById('calendar');
   calendar.innerHTML = '';
 
+  // Create container section
   const section = document.createElement('div');
   section.className = 'civic-section';
+  calendar.appendChild(section);
 
-  // --- State block ---
-  const stateBlock = document.createElement('div');
-  stateBlock.className = 'civic-block';
-  stateBlock.innerHTML = '<h2>State Legislative Links</h2>';
+  // Helper to create each block
+  function createBlock(title) {
+    const block = document.createElement('div');
+    block.className = 'civic-block';
+    block.style.marginBottom = '40px'; // space between sections
+    const heading = document.createElement('h2');
+    heading.textContent = title;
+    block.appendChild(heading);
+
+    const grid = document.createElement('div');
+    grid.className = 'link-grid'; // cards flow left-to-right in rows
+    block.appendChild(grid);
+
+    section.appendChild(block);
+    return grid;
+  }
+
+  // --- STATE LEGISLATIVE LINKS ---
+  const stateGrid = createBlock('State Legislative Links');
 
   fetch('/state-links.json')
     .then(res => res.json())
     .then(stateLinks => {
       const normalizedState = selectedState === "Virgin Islands" ? "U.S. Virgin Islands" : selectedState;
       const links = stateLinks[normalizedState] || {};
-
       const labelMap = {
         bills: 'Bills',
         senateRoster: 'State Senate',
@@ -645,11 +661,8 @@ function showCivic() {
         local: 'Local Government'
       };
 
-      const grid = document.createElement('div');
-      grid.className = 'link-grid';
-
       Object.entries(links).forEach(([label, value]) => {
-        if (label === 'federalRaces' || value == null) return;
+        if (label === 'federalRaces' || !value) return;
         const displayLabel = labelMap[label] || label;
 
         if (Array.isArray(value)) {
@@ -662,9 +675,9 @@ function showCivic() {
               <h4>${displayLabel} – ${entry.party}</h4>
               <p class="card-desc">Click to view ${entry.party} members of the ${displayLabel}.</p>
             `;
-            grid.appendChild(card);
+            stateGrid.appendChild(card);
           });
-        } else if (typeof value === 'object' && value.url) {
+        } else if (value.url) {
           const card = document.createElement('div');
           card.className = 'link-card';
           card.setAttribute('onclick', `window.open('${value.url}', '_blank')`);
@@ -672,7 +685,7 @@ function showCivic() {
             <h4>${displayLabel}</h4>
             <p class="card-desc">Click to view ${displayLabel} information for ${selectedState}.</p>
           `;
-          grid.appendChild(card);
+          stateGrid.appendChild(card);
         } else if (typeof value === 'string') {
           const card = document.createElement('div');
           card.className = 'link-card';
@@ -681,287 +694,61 @@ function showCivic() {
             <h4>${displayLabel}</h4>
             <p class="card-desc">Click to view ${displayLabel} information for ${selectedState}.</p>
           `;
-          grid.appendChild(card);
+          stateGrid.appendChild(card);
         }
       });
 
-      if (grid.children.length === 0) {
-        const msg = document.createElement('p');
-        msg.textContent = `No state-level links available for ${selectedState}.`;
-        stateBlock.appendChild(msg);
+      if (stateGrid.children.length === 0) {
+        stateGrid.innerHTML = `<p>No state-level links available for ${selectedState}.</p>`;
       }
-      stateBlock.appendChild(grid);
-
-      // --- NGA block ---
-      const ngaBlock = document.createElement('div');
-      ngaBlock.className = 'civic-block';
-      ngaBlock.innerHTML = '<h2>National Governor\'s Association</h2>';
-
-      const ngaLinks = [
-        { label: 'NGA Leadership', url: 'https://www.nga.org/governors/ngaleadership/', desc: 'Meet the current leadership of the National Governors Association.' },
-        { label: 'Council of Governors', url: 'https://www.nga.org/cog/', desc: 'Explore the bipartisan Council of Governors and its national security role.' },
-        { label: 'Gubernatorial Elections', url: 'https://www.nga.org/governors/elections/', desc: 'Track upcoming and recent gubernatorial elections across the United States.' },
-        { label: 'Education, Workforce and Community Investment Task Force', url: 'https://www.nga.org/advocacy/nga-committees/education-workforce-community-investment-task-force/', desc: 'See how governors are shaping education and workforce development policy.' },
-        { label: 'Economic Development and Revitalization Task Force', url: 'https://www.nga.org/advocacy/nga-committees/economic-development-and-revitalization-task-force/', desc: 'Review strategies for economic growth and revitalization led by governors.' },
-        { label: 'Public Health and Emergency Management Task Force', url: 'https://www.nga.org/advocacy/nga-committees/public-health-and-emergency-management-task-force/', desc: 'Understand how governors coordinate public health and emergency response.' }
-      ];
-
-      const ngaGrid = document.createElement('div');
-      ngaGrid.className = 'link-grid';
-
-      ngaLinks.forEach(link => {
-        const card = document.createElement('div');
-        card.className = 'link-card';
-        card.setAttribute('onclick', `window.open('${link.url}', '_blank')`);
-        card.innerHTML = `
-          <h4>${link.label}</h4>
-          <p class="card-desc">${link.desc}</p>
-        `;
-        ngaGrid.appendChild(card);
-      });
-
-      ngaBlock.appendChild(ngaGrid);
-
-      // --- Federal block ---
-      const federalBlock = document.createElement('div');
-      federalBlock.className = 'civic-block';
-      federalBlock.innerHTML = '<h2>Federal Oversight & Transparency</h2>';
-
-      const federalGrid = document.createElement('div');
-      federalGrid.className = 'link-grid';
-
-      const federalLinks = [
-        { label: 'Committees', url: 'https://www.govtrack.us/congress/committees', desc: 'Explore congressional committees and their membership.' },
-        { label: 'Legislator Report Cards', url: 'https://www.govtrack.us/congress/members/report-cards/2024', desc: 'See performance grades for federal legislators.' },
-        { label: 'All Federal Bills', url: 'https://www.govtrack.us/congress/bills/', desc: 'Track every bill introduced in Congress.' },
-        { label: 'Recent Votes', url: 'https://www.govtrack.us/congress/votes', desc: 'Review the latest recorded votes in Congress.' }
-      ];
-
-      federalLinks.forEach(link => {
-        const card = document.createElement('div');
-        card.className = 'link-card';
-        card.setAttribute('onclick', `window.open('${link.url}', '_blank')`);
-        card.innerHTML = `
-          <h4>${link.label}</h4>
-          <p class="card-desc">${link.desc}</p>
-        `;
-        federalGrid.appendChild(card);
-      });
-
-      // Cabinet card
-      const cabinetCard = document.createElement('div');
-      cabinetCard.className = 'link-card';
-      cabinetCard.setAttribute('onclick', 'showCabinet()');
-      cabinetCard.innerHTML = `
-        <h4>Cabinet</h4>
-        <p class="card-desc">View members of the President's Cabinet.</p>
-      `;
-      federalGrid.appendChild(cabinetCard);
-
-      federalBlock.appendChild(federalGrid);
-
-      // Append all blocks
-      section.appendChild(stateBlock);
-      section.appendChild(ngaBlock);
-      section.appendChild(federalBlock);
-      calendar.appendChild(section);
     })
     .catch(err => {
-      calendar.innerHTML = '<p>Error loading civic links.</p>';
+      stateGrid.innerHTML = '<p>Error loading state links.</p>';
       console.error(err);
     });
-}
-// === CABINET MODAL LOGIC ===
-function showCabinet() {
-  const list = document.getElementById('cabinetList');
-  const gridView = document.getElementById('cabinetGridView');
-  const detailView = document.getElementById('cabinetDetailView');
-  const modal = document.getElementById('cabinetModal');
 
-  if (!list || !gridView || !detailView || !modal) {
-    console.error('Cabinet modal elements missing.');
-    return;
-  }
+  // --- NATIONAL GOVERNORS ASSOCIATION ---
+  const ngaGrid = createBlock("National Governor's Association");
+  const ngaLinks = [
+    { label: 'NGA Leadership', url: 'https://www.nga.org/governors/ngaleadership/', desc: 'Meet the current leadership of the National Governors Association.' },
+    { label: 'Council of Governors', url: 'https://www.nga.org/cog/', desc: 'Explore the bipartisan Council of Governors and its national security role.' },
+    { label: 'Gubernatorial Elections', url: 'https://www.nga.org/governors/elections/', desc: 'Track upcoming and recent gubernatorial elections across the United States.' },
+    { label: 'Education, Workforce and Community Investment Task Force', url: 'https://www.nga.org/advocacy/nga-committees/education-workforce-community-investment-task-force/', desc: 'See how governors are shaping education and workforce development policy.' },
+    { label: 'Economic Development and Revitalization Task Force', url: 'https://www.nga.org/advocacy/nga-committees/economic-development-and-revitalization-task-force/', desc: 'Review strategies for economic growth and revitalization led by governors.' },
+    { label: 'Public Health and Emergency Management Task Force', url: 'https://www.nga.org/advocacy/nga-committees/public-health-and-emergency-management-task-force/', desc: 'Understand how governors coordinate public health and emergency response.' }
+  ];
 
-  // Always start in grid mode
-  gridView.style.display = 'block';
-  detailView.style.display = 'none';
-  list.innerHTML = '';
-
-  fetch('/cabinet.json')
-    .then(res => res.json())
-    .then(members => {
-      if (!Array.isArray(members)) {
-        console.error('cabinet.json is not an array');
-        list.innerHTML = '<p>Invalid Cabinet data format.</p>';
-        modal.style.display = 'block';
-        return;
-      }
-
-      members.forEach(member => {
-        const card = document.createElement('div');
-        card.className = 'official-card';
-
-        const photoSrc = member.photo && member.photo.trim() !== ''
-          ? member.photo
-          : 'assets/default-photo.png';
-
-        card.innerHTML = `
-  <div class="photo-wrapper">
-    <img src="${photoSrc}" alt="${member.name || ''}"
-         onerror="this.onerror=null;this.src='assets/default-photo.png';" />
-  </div>
-  <div class="official-info">
-    <h3>${member.name || 'Unknown'}</h3>
-    <p><strong>Office:</strong> ${member.office || 'N/A'}</p>
-  </div>
-`;
-
-        // Only when you click a card do we show details
-        card.onclick = () => showCabinetMember(member);
-        list.appendChild(card);
-      });
-
-      modal.style.display = 'block';
-
-      // click-outside close (scoped to this modal)
-      window.addEventListener('click', function cabinetClickOutside(e) {
-        if (e.target === modal) {
-          modal.style.display = 'none';
-          window.removeEventListener('click', cabinetClickOutside);
-        }
-      });
-    })
-    .catch(err => {
-      console.error('Error loading cabinet.json:', err);
-      list.innerHTML = '<p>Error loading Cabinet data.</p>';
-      modal.style.display = 'block';
-    });
-}
-
-function showCabinetMember(member) {
-  const gridView = document.getElementById('cabinetGridView');
-  const detailView = document.getElementById('cabinetDetailView');
-  const detail = document.getElementById('cabinetMemberDetail');
-
-  if (!gridView || !detailView || !detail) return;
-
-  gridView.style.display = 'none';
-  detailView.style.display = 'block';
-
-  // Handle empty termStart / termEnd safely
-  const parseYear = d => {
-    if (!d || d.trim() === '') return '';
-    const dt = new Date(d);
-    return isNaN(dt) ? '' : dt.getFullYear();
-  };
-  const termStartYear = parseYear(member.termStart);
-  const termEndYear = parseYear(member.termEnd) || 'Present';
-
-  detail.innerHTML = `
-    <div class="detail-header">
-      <img src="${member.photo}" alt="${member.name || ''}" class="portrait"
-           onerror="this.onerror=null;this.src='assets/default-photo.png';" />
-      ${member.seal ? `<img src="${member.seal}" alt="${member.office} seal" class="seal" />` : ''}
-    </div>
-    <h2>${member.name || 'Unknown'}</h2>
-    <p><strong>Office:</strong> ${member.office || 'N/A'}</p>
-    ${member.state ? `<p><strong>State:</strong> ${member.state}</p>` : ''}
-    ${member.party ? `<p><strong>Party:</strong> ${member.party}</p>` : ''}
-    ${(termStartYear || termEndYear) ? `<p><strong>Term:</strong> ${termStartYear}–${termEndYear}</p>` : ''}
-    ${member.bio ? `<p><strong>Bio:</strong> ${member.bio}</p>` : ''}
-    ${member.education ? `<p><strong>Education:</strong> ${member.education}</p>` : ''}
-    ${member.salary ? `<p><strong>Salary:</strong> ${member.salary}</p>` : ''}
-    ${member.predecessor ? `<p><strong>Predecessor:</strong> ${member.predecessor}</p>` : ''}
-    ${member.contact && member.contact.website ? `<p><a href="${member.contact.website}" target="_blank">Official Website</a></p>` : ''}
-    ${member.ballotpediaLink ? `<p><a href="${member.ballotpediaLink}" target="_blank">Ballotpedia</a></p>` : ''}
-    ${member.govtrackLink ? `<p><a href="${member.govtrackLink}" target="_blank">GovTrack</a></p>` : ''}
-  `;
-}
-
-function backToCabinetGrid() {
-  const gridView = document.getElementById('cabinetGridView');
-  const detailView = document.getElementById('cabinetDetailView');
-  if (!gridView || !detailView) return;
-  gridView.style.display = 'block';
-  detailView.style.display = 'none';
-}
-
-// === POLLS TAB ===
-function showPolls() {
-  showTab('polls');
-  const pollsContainer = document.getElementById('polls-cards');
-  pollsContainer.innerHTML = '';
-
-  const suppressedForTerritories = ['State Senate', 'State House'];
-  const isTerritory = ['Puerto Rico', 'U.S. Virgin Islands', 'Guam', 'American Samoa', 'Northern Mariana Islands'].includes(selectedState);
-
-  pollCategories.forEach(category => {
-    if (isTerritory && suppressedForTerritories.includes(category.label)) return;
-
+  ngaLinks.forEach(link => {
     const card = document.createElement('div');
     card.className = 'link-card';
-    card.setAttribute('onclick', `openPollModal('${category.label}')`);
-    card.innerHTML = `
-      <h4>${category.label}</h4>
-      <p class="card-desc">Click to view ${category.label} polls.</p>
-    `;
-    pollsContainer.appendChild(card);
+    card.setAttribute('onclick', `window.open('${link.url}', '_blank')`);
+    card.innerHTML = `<h4>${link.label}</h4><p class="card-desc">${link.desc}</p>`;
+    ngaGrid.appendChild(card);
   });
-}
-window.pollCategories = pollCategories;
 
-// Source logos
-const logoMap = {
-  RCP: '/assets/rcp.png',
-  '270toWin': '/assets/270towin.png',
-  Ballotpedia: '/assets/ballotpedia.png',
-  'Cook Political': '/assets/cookpolitical.png',
-  Sabato: '/assets/sabato.png',
-  'AP-NORC': '/assets/apnorc.png',
-  DDHQ: '/assets/ddhq.png',
-  RaceToWH: '/assets/racetowh.png',
-  Gallup: '/assets/gallup.png',
-  Pew: '/assets/pew.png'
-};
+  // --- FEDERAL OVERSIGHT & TRANSPARENCY ---
+  const federalGrid = createBlock('Federal Oversight & Transparency');
+  const federalLinks = [
+    { label: 'Committees', url: 'https://www.govtrack.us/congress/committees', desc: 'Explore congressional committees and their membership.' },
+    { label: 'Legislator Report Cards', url: 'https://www.govtrack.us/congress/members/report-cards/2024', desc: 'See performance grades for federal legislators.' },
+    { label: 'All Federal Bills', url: 'https://www.govtrack.us/congress/bills/', desc: 'Track every bill introduced in Congress.' },
+    { label: 'Recent Votes', url: 'https://www.govtrack.us/congress/votes', desc: 'Review the latest recorded votes in Congress.' }
+  ];
 
-function openPollModal(categoryLabel) {
-  const category = (window.pollCategories || []).find(c => c.label === categoryLabel);
-  const modal = document.getElementById('pollModal');
-  const modalContent = document.getElementById('pollModalContent');
+  federalLinks.forEach(link => {
+    const card = document.createElement('div');
+    card.className = 'link-card';
+    card.setAttribute('onclick', `window.open('${link.url}', '_blank')`);
+    card.innerHTML = `<h4>${link.label}</h4><p class="card-desc">${link.desc}</p>`;
+    federalGrid.appendChild(card);
+  });
 
-  if (!category || !modal || !modalContent) {
-    console.error('openPollModal: missing category or modal elements', { categoryLabel, category, modal, modalContent });
-    return;
-  }
-
-  // Render header and poll cards in a grid
-  modalContent.innerHTML = `
-    <h2>${category.label} Polls</h2>
-    <div class="poll-grid">
-      ${category.polls.map(p => `
-        <a href="${p.url}" target="_blank" rel="noopener" class="poll-card">
-          <div class="poll-logo">
-            <img src="${logoMap[p.source] || ''}" alt="${p.source} logo">
-          </div>
-          <div class="poll-links">
-            ${p.name}
-          </div>
-        </a>
-      `).join('')}
-    </div>
-  `;
-
-  modal.style.display = 'block';
-
-  // Close modal when clicking outside
-  const clickOutsideHandler = function(e) {
-    if (e.target === modal) {
-      modal.style.display = 'none';
-      window.removeEventListener('click', clickOutsideHandler);
-    }
-  };
-  window.addEventListener('click', clickOutsideHandler);
+  // Cabinet card
+  const cabinetCard = document.createElement('div');
+  cabinetCard.className = 'link-card';
+  cabinetCard.setAttribute('onclick', 'showCabinet()');
+  cabinetCard.innerHTML = `<h4>Cabinet</h4><p class="card-desc">View members of the President's Cabinet.</p>`;
+  federalGrid.appendChild(cabinetCard);
 }
 
 // === ORGANIZATIONS TAB ===
