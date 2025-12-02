@@ -603,17 +603,19 @@
         track.style.transform = `translateX(-${position * step}px)`;
       }, 5000);
 
-     <script>
+  <script>
   // === Manual controls for carousels ===
-  prevBtn.addEventListener("click", () => {
-    position = Math.max(0, position - 1);
-    track.style.transform = `translateX(-${position * step}px)`;
-  });
+  if (typeof prevBtn !== "undefined" && typeof nextBtn !== "undefined") {
+    prevBtn.addEventListener("click", () => {
+      position = Math.max(0, position - 1);
+      track.style.transform = `translateX(-${position * step}px)`;
+    });
 
-  nextBtn.addEventListener("click", () => {
-    position = Math.min(track.children.length - 1, position + 1);
-    track.style.transform = `translateX(-${position * step}px)`;
-  });
+    nextBtn.addEventListener("click", () => {
+      position = Math.min(track.children.length - 1, position + 1);
+      track.style.transform = `translateX(-${position * step}px)`;
+    });
+  }
 
   // === Initialize carousels: load feeds then wire controls ===
   (async () => {
@@ -626,11 +628,6 @@
     setupControls("economy-carousel");
   })();
 
-  // === Default active tab on page load ===
-  document.addEventListener("DOMContentLoaded", () => {
-    showStartupHub(); // Home Hub loads first and button is highlighted
-  });
-
   // === Collapsible toggle with arrow flip + lazy-load ===
   function toggleSection(id) {
     const section = document.getElementById(id);
@@ -639,13 +636,11 @@
     const isHidden = section.style.display === "none";
     section.style.display = isHidden ? "block" : "none";
 
-    // Flip arrow on the corresponding button
     const btn = document.querySelector(`.collapsible-toggle[data-target="${id}"]`);
     if (btn) {
       btn.textContent = btn.textContent.replace(isHidden ? "▼" : "▲", isHidden ? "▲" : "▼");
     }
 
-    // Lazy-load JSON on first expand
     if (isHidden && !section.dataset.loaded) {
       if (id === "podcasts-list") {
         loadJSONInto("podcasts.json", "podcasts-cards");
@@ -656,30 +651,51 @@
     }
   }
 
-  // === Generic JSON loader ===
+  // === Generic JSON loader (handles HTML error responses safely) ===
   async function loadJSONInto(file, containerId) {
     try {
-      const response = await fetch(`/poliscope/public/${file}`);
-      if (!response.ok) throw new Error(`Failed to fetch ${file}`);
+      const response = await fetch(`/poliscope/public/${file}`, { headers: { "Accept": "application/json" } });
+      if (!response.ok) throw new Error(`Failed to fetch ${file}: ${response.status}`);
+      const contentType = response.headers.get("content-type") || "";
+      if (!contentType.includes("application/json")) throw new Error(`Unexpected content-type for ${file}: ${contentType}`);
+
       const data = await response.json();
 
       const container = document.getElementById(containerId);
+      if (!container) return;
       container.innerHTML = "";
 
-      // Render each item as a simple card — adapt to your schema
       data.forEach(item => {
         const card = document.createElement("div");
         card.className = "card";
         card.innerHTML = `
-          <h4>${item.title || item.name}</h4>
+          <h4>${item.title || item.name || "Untitled"}</h4>
           <p>${item.description || ""}</p>
         `;
         container.appendChild(card);
       });
     } catch (err) {
       console.error(err);
+      const container = document.getElementById(containerId);
+      if (container) {
+        container.innerHTML = `<div class="error">Unable to load ${file}. Check path and server.</div>`;
+      }
     }
   }
+
+  // === Minimal stubs for missing nav functions (prevent onclick errors) ===
+  // Replace with your real implementations if you have them in script.js
+  function showStartupHub() { showTab('startup-hub'); }
+  function showPodcastsShows() { showTab('podcasts-shows'); }
+  function renderOfficials() { showTab('my-officials'); }
+  function showCivic() { showTab('civic'); }
+  function showOrganizations() { showTab('organizations'); }
+  function showVoting() { showTab('voting'); }
+
+  // === Ensure Home Hub is selected on DOM ready ===
+  document.addEventListener("DOMContentLoaded", () => {
+    showStartupHub();
+  });
 </script>
 
 </body>
