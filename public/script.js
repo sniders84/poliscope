@@ -321,18 +321,20 @@ function showPodcastsShows() {
     section.appendChild(body);
 
     // COLLAPSE/EXPAND
-    header.addEventListener('click', () => {
-      const isOpen = body.classList.contains("open");
-      if (isOpen) {
-        body.classList.remove("open");
-        body.classList.add("closed");
-        header.classList.remove("open");
-      } else {
-        body.classList.remove("closed");
-        body.classList.add("open");
-        header.classList.add("open");
-      }
-    });
+header.addEventListener('click', () => {
+  const isOpen = body.classList.contains("open");
+  if (isOpen) {
+    body.classList.remove("open");
+    body.classList.add("closed");
+    header.classList.remove("open");
+    arrow.textContent = "▶"; // collapsed arrow
+  } else {
+    body.classList.remove("closed");
+    body.classList.add("open");
+    header.classList.add("open");
+    arrow.textContent = "▼"; // expanded arrow
+  }
+});
 
     return section;
   };
