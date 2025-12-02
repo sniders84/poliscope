@@ -614,7 +614,6 @@
         track.style.transform = `translateX(-${position * step}px)`;
       });
     }
-  </script>
   <script>
   // Initialize carousels: load feeds then wire controls
   (async () => {
@@ -648,32 +647,40 @@
       btn.textContent = btn.textContent.replace(isHidden ? "▼" : "▲", isHidden ? "▲" : "▼");
     }
 
-    // Lazy-load content on first expand
+    // Lazy-load JSON on first expand
     if (isHidden && !section.dataset.loaded) {
       if (id === "podcasts-list") {
-        loadPodcastsInto("podcasts-cards");
+        loadJSONInto("podcasts.json", "podcasts-cards");
       } else if (id === "shows-list") {
-        loadShowsInto("shows-cards");
+        loadJSONInto("shows.json", "shows-cards");
       }
       section.dataset.loaded = "true";
     }
   }
 
-  // === Data loaders (adapt to your existing renderers) ===
-  function loadPodcastsInto(containerId) {
-    const el = document.getElementById(containerId);
-    if (!el) return;
-    el.innerHTML = "";
-    // Example: call your existing podcast renderer here
-    // renderPodcasts(el);
-  }
+  // === Generic JSON loader ===
+  async function loadJSONInto(file, containerId) {
+    try {
+      const response = await fetch(`/poliscope/public/${file}`);
+      if (!response.ok) throw new Error(`Failed to fetch ${file}`);
+      const data = await response.json();
 
-  function loadShowsInto(containerId) {
-    const el = document.getElementById(containerId);
-    if (!el) return;
-    el.innerHTML = "";
-    // Example: call your existing shows renderer here
-    // renderShows(el);
+      const container = document.getElementById(containerId);
+      container.innerHTML = "";
+
+      // Render each item as a simple card — adapt as needed
+      data.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <h4>${item.title || item.name}</h4>
+          <p>${item.description || ""}</p>
+        `;
+        container.appendChild(card);
+      });
+    } catch (err) {
+      console.error(err);
+    }
   }
 </script>
 
