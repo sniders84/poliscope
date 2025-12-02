@@ -3206,108 +3206,89 @@ nav .tab.active {
 .ci-grid .card:hover {
   background-color: #0066ff; /* blue hover effect */
 }
-/* Force Civic Intelligence sections to stack vertically */
-#civic .ci-section {
-  width: 100%;
-  display: block !important;
-  margin-bottom: 40px;
+.ci-section {
+  margin-bottom: 2rem;
 }
 
-/* Grid layout for the cards inside each section */
-#civic .ci-grid {
-  display: grid !important;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
+.ci-section h3 {
+  margin-bottom: 1rem;
+  color: #fff;
 }
-/* Stack the three Civic blocks vertically with spacing */
-.civic-section {
+
+.ci-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.ci-grid .card {
+  background-color: #2b2b2b; /* dark gray */
+  border-radius: 6px;
+  padding: 16px;
+  color: #fff;
+  transition: background-color 0.2s;
+}
+
+.ci-grid .card:hover {
+  background-color: #0066ff; /* blue hover effect */
+}
+/* Make each section stack vertically */
+.ci-section {
+  display: block;       /* ensures full width */
+  margin-bottom: 2rem;  /* spacing between sections */
+}
+
+/* Headings spacing */
+.ci-section h3 {
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+/* Grid layout for cards */
+.ci-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* multiple cards per row */
+  gap: 1rem; /* spacing between cards */
+}
+
+/* Card styling */
+.ci-grid .card {
+  background-color: #2b2b2b; /* dark gray */
+  border-radius: 6px;
+  padding: 16px;
+  color: #fff;
+  transition: background-color 0.2s;
+}
+
+.ci-grid .card:hover {
+  background-color: #0066ff; /* blue hover effect */
+}
+/* --- CIVIC INTELLIGENCE LAYOUT FIX --- */
+
+#civic {
   display: flex;
   flex-direction: column;
-  gap: 30px; /* space between State, NGA, Federal blocks */
+  gap: 30px; /* space between sections */
 }
 
-/* Make the cards inside each block a grid */
-.link-grid {
+/* Make each section take full width and stack naturally */
+.ci-section {
+  width: 100%;
+  display: block;
+}
+
+/* Make the cards inside each section appear in a grid */
+.ci-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 15px; /* space between cards */
-}
-
-/* Optional: style the cards to look nice */
-.link-card {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  padding: 15px;
-  cursor: pointer;
-}
-/* Make sure blocks stack vertically */
-.civic-section {
-  display: flex;
-  flex-direction: column; /* stack State, NGA, Federal blocks */
-  gap: 30px; /* spacing between sections */
-}
-
-/* Make each block’s cards a left-to-right grid */
-.link-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 15px; /* spacing between cards */
-  grid-auto-flow: row; /* <-- left to right, then wrap to next row */
-}
-
-/* Optional: card styling */
-.link-card {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  padding: 15px;
-  cursor: pointer;
-}
-/* Stack all three Civic blocks vertically */
-.civic-section {
-  display: block; /* make sure the wrapper is block */
-  margin: 0; 
-  padding: 0;
-}
-
-/* Each block inside the section is a block and spaced */
-.civic-block {
-  display: block; /* force vertical stacking */
-  margin-bottom: 30px; /* space between sections */
-}
-
-/* Cards inside each block: normal left-to-right grid */
-.link-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 15px; /* spacing between cards */
-  grid-auto-flow: row; /* left to right */
-}
-
-/* Optional: card styling */
-.link-card {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  padding: 15px;
-  cursor: pointer;
-}
-.civic-block {
-  display: block;           
-  margin-bottom: 40px;      
-}
-
-.link-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
   gap: 15px;
 }
 
-.link-card {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  padding: 15px;
-  cursor: pointer;
+/* Card styling (clean, consistent) */
+.ci-grid .card {
+  background: #2b2b2b;
+  padding: 12px;
+  border-radius: 8px;
+  color: #fff;
+  border: 1px solid #444;
 }
