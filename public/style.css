@@ -3206,20 +3206,16 @@ nav .tab.active {
 .ci-grid .card:hover {
   background-color: #0066ff; /* blue hover effect */
 }
-/* ---- CIVIC TAB FIX ---- */
-
+/* Force Civic Intelligence sections to stack vertically */
 #civic .ci-section {
-  display: block !important;
   width: 100%;
-  margin-bottom: 20px;
+  display: block !important;
+  margin-bottom: 40px;
 }
 
+/* Grid layout for the cards inside each section */
 #civic .ci-grid {
   display: grid !important;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 12px;
-}
-
-#civic .ci-grid .card {
-  display: block;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
 }
