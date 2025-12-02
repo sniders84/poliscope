@@ -3219,3 +3219,25 @@ nav .tab.active {
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
 }
+/* Stack the three Civic blocks vertically with spacing */
+.civic-section {
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* space between State, NGA, Federal blocks */
+}
+
+/* Make the cards inside each block a grid */
+.link-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 15px; /* space between cards */
+}
+
+/* Optional: style the cards to look nice */
+.link-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 15px;
+  cursor: pointer;
+}
