@@ -603,19 +603,19 @@
         track.style.transform = `translateX(-${position * step}px)`;
       }, 5000);
 
-      // Manual controls
-      prevBtn.addEventListener("click", () => {
-        position = Math.max(0, position - 1);
-        track.style.transform = `translateX(-${position * step}px)`;
-      });
+     <script>
+  // === Manual controls for carousels ===
+  prevBtn.addEventListener("click", () => {
+    position = Math.max(0, position - 1);
+    track.style.transform = `translateX(-${position * step}px)`;
+  });
 
-      nextBtn.addEventListener("click", () => {
-        position = Math.min(track.children.length - 1, position + 1);
-        track.style.transform = `translateX(-${position * step}px)`;
-      });
-    }
-  <script>
-  // Initialize carousels: load feeds then wire controls
+  nextBtn.addEventListener("click", () => {
+    position = Math.min(track.children.length - 1, position + 1);
+    track.style.transform = `translateX(-${position * step}px)`;
+  });
+
+  // === Initialize carousels: load feeds then wire controls ===
   (async () => {
     await loadSection("world", "world-news-carousel");
     await loadSection("finance", "finance-carousel");
@@ -625,10 +625,8 @@
     setupControls("finance-carousel");
     setupControls("economy-carousel");
   })();
-</script>
 
-<script>
-  // Force Home Hub tab to show on page load and highlight its button
+  // === Default active tab on page load ===
   document.addEventListener("DOMContentLoaded", () => {
     showStartupHub(); // Home Hub loads first and button is highlighted
   });
@@ -668,7 +666,7 @@
       const container = document.getElementById(containerId);
       container.innerHTML = "";
 
-      // Render each item as a simple card — adapt as needed
+      // Render each item as a simple card — adapt to your schema
       data.forEach(item => {
         const card = document.createElement("div");
         card.className = "card";
