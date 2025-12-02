@@ -3053,8 +3053,8 @@ nav .tab.active {
   transform: scale(1.1);
 }
 nav .tab {
-  padding: 12px 20px;              /* bigger click area */
-  margin-right: 12px;              /* spacing between tabs */
+  padding: 12px 20px;
+  margin-right: 12px;
   border: none;
   border-radius: 8px;
   background-color: #3c3c3c;
@@ -3071,7 +3071,7 @@ nav .tab:hover {
 }
 
 nav .tab.active {
-  background-color: #1a3d66;       /* deep blue for active */
+  background-color: #1a3d66;
   color: #fff;
   font-weight: bold;
   box-shadow: 0 0 6px rgba(0,0,0,0.4);
