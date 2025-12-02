@@ -3263,3 +3263,32 @@ nav .tab.active {
 .ci-grid .card:hover {
   background-color: #0066ff; /* blue hover effect */
 }
+/* --- CIVIC INTELLIGENCE LAYOUT FIX --- */
+
+#civic {
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* space between sections */
+}
+
+/* Make each section take full width and stack naturally */
+.ci-section {
+  width: 100%;
+  display: block;
+}
+
+/* Make the cards inside each section appear in a grid */
+.ci-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+/* Card styling (clean, consistent) */
+.ci-grid .card {
+  background: #2b2b2b;
+  padding: 12px;
+  border-radius: 8px;
+  color: #fff;
+  border: 1px solid #444;
+}
