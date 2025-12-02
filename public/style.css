@@ -3293,3 +3293,21 @@ nav .tab.active {
   padding: 15px;
   cursor: pointer;
 }
+.civic-block {
+  display: block;           
+  margin-bottom: 40px;      
+}
+
+.link-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
+  gap: 15px;
+}
+
+.link-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 15px;
+  cursor: pointer;
+}
