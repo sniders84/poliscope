@@ -451,16 +451,18 @@ async function loadFeed(url) {
     );
     const data = await response.json();
     return data.items || [];
-  } catch (err) {
-    console.error("Feed error:", err);
+  } catch {
     return [];
   }
 }
 
 async function loadSection(section, containerId) {
   const container = document.getElementById(containerId);
-  let allItems = [];
+  const track = document.createElement("div");
+  track.className = "carousel-track";
+  container.appendChild(track);
 
+  let allItems = [];
   for (const url of feeds[section]) {
     const items = await loadFeed(url);
     allItems = allItems.concat(items);
@@ -478,29 +480,22 @@ async function loadSection(section, containerId) {
       <h3>${item.title}</h3>
       <p>${new Date(item.pubDate).toLocaleDateString()}</p>
     `;
-    container.appendChild(card);
+    track.appendChild(card);
   });
-}
 
-function autoScroll(containerId) {
-  const container = document.getElementById(containerId);
+  // Auto-rotate
+  let position = 0;
   setInterval(() => {
-    if (container.scrollLeft + container.clientWidth >= container.scrollWidth) {
-      container.scrollLeft = 0;
-    } else {
-      container.scrollLeft += 1; // half speed
-    }
-  }, 30);
+    position += 1;
+    if (position >= track.children.length) position = 0;
+    track.style.transform = `translateX(-${position * 310}px)`; // 300px card + 10px gap
+  }, 3000); // rotate every 3s
 }
 
 (async () => {
   await loadSection("world", "world-news-carousel");
   await loadSection("finance", "finance-carousel");
   await loadSection("economy", "economy-carousel");
-
-  autoScroll("world-news-carousel");
-  autoScroll("finance-carousel");
-  autoScroll("economy-carousel");
 })();
 </script>
 
