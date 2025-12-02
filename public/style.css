@@ -3153,3 +3153,30 @@ nav .tab.active {
   border-radius: 6px;
   margin-top: 8px;
 }
+.section-body.open {
+  display: block;
+}
+
+.section-body.closed {
+  display: none;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  background-color: #3c3c3c;
+  color: #fff;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.section-header.open {
+  background-color: #0066ff;
+}
+
+.section-arrow {
+  margin-left: auto;
+  font-size: 1.2rem;
+}
