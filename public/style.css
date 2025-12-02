@@ -3096,3 +3096,30 @@ nav .tab.active {
     text-align: center;
   }
 }
+.collapsible {
+  margin: 1rem 0;
+}
+
+.collapsible-toggle {
+  width: 100%;
+  text-align: left;
+  padding: 12px 16px;
+  background-color: #3c3c3c;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.collapsible-toggle:hover {
+  background-color: #0066ff;
+}
+
+.collapsible-content {
+  padding: 10px;
+  background-color: #2b2b2b;
+  border-radius: 6px;
+  margin-top: 8px;
+}
