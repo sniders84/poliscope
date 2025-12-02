@@ -215,16 +215,15 @@
     </div>
   </header>
 
- <nav id="hub-nav">
-  <button class="tab" data-tab="startup-hub" onclick="showTab('startup-hub')">Home Hub</button>
-  <button class="tab" data-tab="podcasts-shows" onclick="showTab('podcasts-shows')">Podcasts & Shows</button>
-  <button class="tab" data-tab="my-officials" onclick="showOfficials()">My Officials</button>
-  <button class="tab" data-tab="civic" onclick="showTab('civic')">Civic Intelligence</button>
-  <button class="tab" data-tab="polls" onclick="showTab('polls')">Polls</button>
-  <button class="tab" data-tab="organizations" onclick="showTab('organizations')">Political Groups</button>
-  <button class="tab" data-tab="voting" onclick="showTab('voting')">Voting</button>
-</nav>
-
+  <nav id="hub-nav">
+    <button class="tab" onclick="showStartupHub()">Home Hub</button>
+    <button class="tab" onclick="showPodcastsShows()">Podcasts & Shows</button>
+    <button class="tab" onclick="renderOfficials(selectedState, '')">My Officials</button>
+    <button class="tab" onclick="showCivic()">Civic Intelligence</button>
+    <button class="tab" onclick="showPolls()">Polls</button>
+    <button class="tab" onclick="showOrganizations()">Political Groups</button>
+    <button class="tab" onclick="showVoting()">Voting</button>
+  </nav>
   <main>
     <!-- Startup Hub Tab -->
     <section id="startup-hub" class="tab-content" style="display: none;">
@@ -605,10 +604,9 @@
 
 <script>
   // Force Home Hub tab to show on page load and highlight its button
- document.addEventListener("DOMContentLoaded", () => {
-  showTab('startup-hub'); // Home Hub loads first and button is highlighted
-});
-
+  document.addEventListener("DOMContentLoaded", () => {
+    showStartupHub(); // Home Hub loads first and button is highlighted
+  });
 </script>
 
 </body>
