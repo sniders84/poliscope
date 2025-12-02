@@ -426,7 +426,6 @@ function showTab(tabId) {
 <script src="script.js"></script>
           
 <script>
-// Multiple feeds per section
 const feeds = {
   world: [
     "http://feeds.bbci.co.uk/news/world/rss.xml",
@@ -445,59 +444,64 @@ const feeds = {
   ]
 };
 
-// Fetch + render cards
-async function loadFeed(url, containerId) {
+async function loadFeed(url) {
   try {
     const response = await fetch(
       `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`
     );
     const data = await response.json();
-    const container = document.getElementById(containerId);
-
-    data.items.slice(0,4).forEach(item => {
-      const card = document.createElement("div");
-      card.className = "hub-card"; // use your site’s card class for styling
-      card.innerHTML = `
-        <h3>${item.title}</h3>
-        <p>${new Date(item.pubDate).toLocaleDateString()}</p>
-        <a href="${item.link}" target="_blank">Read more</a>
-      `;
-      container.appendChild(card);
-    });
+    return data.items || [];
   } catch (err) {
     console.error("Feed error:", err);
+    return [];
   }
 }
 
-// Load all feeds into each section
-async function loadAllFeeds() {
-  for (const [section, urls] of Object.entries(feeds)) {
-    const containerId = section + "-carousel";
-    for (const url of urls) {
-      await loadFeed(url, containerId);
-    }
+async function loadSection(section, containerId) {
+  const container = document.getElementById(containerId);
+  let allItems = [];
+
+  // Pull items from all feeds in this section
+  for (const url of feeds[section]) {
+    const items = await loadFeed(url);
+    allItems = allItems.concat(items);
   }
+
+  // Limit to 25 cards max
+  allItems.slice(0,25).forEach(item => {
+    const card = document.createElement("div");
+    card.className = "hub-card"; // use your site’s card class
+    card.innerHTML = `
+      <h3>${item.title}</h3>
+      <p>${new Date(item.pubDate).toLocaleDateString()}</p>
+      <a href="${item.link}" target="_blank">Read more</a>
+    `;
+    container.appendChild(card);
+  });
 }
 
-// Auto-scroll function
+// Auto-scroll
 function autoScroll(containerId) {
   const container = document.getElementById(containerId);
-  let scrollAmount = 0;
   setInterval(() => {
     if (container.scrollLeft + container.clientWidth >= container.scrollWidth) {
-      container.scrollLeft = 0; // reset to start
+      container.scrollLeft = 0;
     } else {
-      container.scrollLeft += 2; // scroll speed
+      container.scrollLeft += 2; // adjust speed here
     }
-  }, 30); // interval in ms
+  }, 30);
 }
 
 // Initialize
-loadAllFeeds().then(() => {
+(async () => {
+  await loadSection("world", "world-news-carousel");
+  await loadSection("finance", "finance-carousel");
+  await loadSection("economy", "economy-carousel");
+
   autoScroll("world-news-carousel");
   autoScroll("finance-carousel");
   autoScroll("economy-carousel");
-});
+})();
 </script>
 
 </body>
