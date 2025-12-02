@@ -429,20 +429,19 @@ function showTab(tabId) {
 const feeds = {
   world: [
     "http://feeds.bbci.co.uk/news/world/rss.xml",
-    "https://rss.nytimes.com/services/xml/rss/nyt/World.xml",
-    "http://feeds.reuters.com/Reuters/worldNews"
+    "http://feeds.reuters.com/Reuters/worldNews",
+    "https://www.aljazeera.com/xml/rss/all.xml"
   ],
   finance: [
+    "https://www.cnbc.com/id/100003114/device/rss/rss.html",
     "https://www.marketwatch.com/rss/topstories",
-    "https://feeds.finance.yahoo.com/rss/2.0/headline?s=^DJI",
-    "https://www.investing.com/rss/news_25.rss"
+    "https://feeds.finance.yahoo.com/rss/2.0/headline?s=^DJI"
   ],
- economy: [
-  "https://www.federalreserve.gov/feeds/feeds.htm",
-  "https://www.stlouisfed.org/rss",
-  "https://www.cnbc.com/id/20910258/device/rss/rss.html",
-  "https://www.marketwatch.com/rss/economy"
-]
+  economy: [
+    "https://www.cnbc.com/id/20910258/device/rss/rss.html",
+    "https://www.marketwatch.com/rss/economy",
+    "https://feeds.bloomberg.com/economics/news.rss"
+  ]
 };
 
 async function loadFeed(url) {
