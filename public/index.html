@@ -472,7 +472,11 @@ async function loadSection(section, containerId) {
     card.className = "hub-card carousel-card"; // match your site’s card style
     card.href = item.link;
     card.target = "_blank";
+
+    // Use thumbnail if available
+    const image = item.thumbnail || item.enclosure?.link || "";
     card.innerHTML = `
+      ${image ? `<img src="${image}" alt="" class="carousel-img">` : ""}
       <h3>${item.title}</h3>
       <p>${new Date(item.pubDate).toLocaleDateString()}</p>
     `;
@@ -501,5 +505,6 @@ function autoScroll(containerId) {
   autoScroll("economy-carousel");
 })();
 </script>
+
 
 </html>
