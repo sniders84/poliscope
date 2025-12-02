@@ -466,9 +466,10 @@ async function loadSection(section, containerId) {
     allItems = allItems.concat(items);
   }
 
+  // Limit to 25 cards max
   allItems.slice(0,25).forEach(item => {
     const card = document.createElement("a");
-    card.className = "hub-card carousel-card"; // use your site’s card class
+    card.className = "hub-card carousel-card"; // match your site’s card style
     card.href = item.link;
     card.target = "_blank";
     card.innerHTML = `
@@ -501,5 +502,4 @@ function autoScroll(containerId) {
 })();
 </script>
 
-</body>
 </html>
