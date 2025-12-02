@@ -456,6 +456,18 @@ async function loadFeed(url) {
   }
 }
 
+function extractImage(item) {
+  // Try multiple fields for maximum coverage
+  if (item.thumbnail) return item.thumbnail;
+  if (item.enclosure && item.enclosure.link) return item.enclosure.link;
+
+  // Sometimes images are embedded in content
+  const match = item.content?.match(/<img[^>]+src="([^">]+)"/i);
+  if (match && match[1]) return match[1];
+
+  return ""; // fallback: no image
+}
+
 async function loadSection(section, containerId) {
   const container = document.getElementById(containerId);
   const track = document.createElement("div");
@@ -474,7 +486,7 @@ async function loadSection(section, containerId) {
     card.href = item.link;
     card.target = "_blank";
 
-    const image = item.thumbnail || item.enclosure?.link || "";
+    const image = extractImage(item);
     card.innerHTML = `
       ${image ? `<img src="${image}" alt="" class="carousel-img">` : ""}
       <h3>${item.title}</h3>
@@ -488,8 +500,8 @@ async function loadSection(section, containerId) {
   setInterval(() => {
     position += 1;
     if (position >= track.children.length) position = 0;
-    track.style.transform = `translateX(-${position * 310}px)`; // 300px card + 10px gap
-  }, 3000); // rotate every 3s
+    track.style.transform = `translateX(-${position * 310}px)`; // 300px card + gap
+  }, 3000);
 }
 
 (async () => {
