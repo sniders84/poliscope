@@ -212,7 +212,7 @@ function showTab(id) {
     btn.classList.remove('active');
   });
 
-  // Highlight the clicked button (requires data-tab on each nav button)
+  // Highlight the clicked button
   const clickedBtn = document.querySelector(`nav .tab[data-tab="${id}"]`);
   if (clickedBtn) clickedBtn.classList.add('active');
 }
@@ -299,6 +299,7 @@ function showPodcastsShows() {
           // Favorite toggle
           const favBtn = card.querySelector('.favorite-btn');
           if (favBtn) {
+            // initialize state
             const isFav = isFavorite(item.type || type, item.title);
             updateFavoriteButton(favBtn, isFav);
 
@@ -320,20 +321,20 @@ function showPodcastsShows() {
     section.appendChild(body);
 
     // COLLAPSE/EXPAND
-    header.addEventListener('click', () => {
-      const isOpen = body.classList.contains("open");
-      if (isOpen) {
-        body.classList.remove("open");
-        body.classList.add("closed");
-        header.classList.remove("open");
-        arrow.textContent = "▶"; // collapsed arrow
-      } else {
-        body.classList.remove("closed");
-        body.classList.add("open");
-        header.classList.add("open");
-        arrow.textContent = "▼"; // expanded arrow
-      }
-    });
+header.addEventListener('click', () => {
+  const isOpen = body.classList.contains("open");
+  if (isOpen) {
+    body.classList.remove("open");
+    body.classList.add("closed");
+    header.classList.remove("open");
+    arrow.textContent = "▶"; // collapsed arrow
+  } else {
+    body.classList.remove("closed");
+    body.classList.add("open");
+    header.classList.add("open");
+    arrow.textContent = "▼"; // expanded arrow
+  }
+});
 
     return section;
   };
@@ -393,19 +394,12 @@ function showPodcastsShows() {
   console.log('showPodcastsShows() finished rendering');
 }
 
-// Helper for renamed tab
-function showLegislation() {
-  showTab('legislation');
-}
-
-// TEMPORARY alias to reconnect any existing calls that still use showCivic()
 function showCivic() {
-  showTab('legislation');
+  showTab('civic-intelligence');
 }
 
-// Helper for new tab
-function showCivicIntelligence() {
-  showTab('civic-intelligence');
+function showPolls() {
+  showTab('polls');
 }
 
 function showOrganizations() {
@@ -415,10 +409,6 @@ function showOrganizations() {
 function showVoting() {
   showTab('voting');
   const votingCards = document.getElementById('voting-cards');
-  if (!votingCards) {
-    console.error('voting-cards container not found');
-    return;
-  }
   votingCards.innerHTML = '';
   console.log("showVoting() triggered");
 
@@ -440,6 +430,9 @@ function showVoting() {
         votingCards.innerHTML = `<p>No voting information available for ${stateName}.</p>`;
         return;
       }
+
+      console.log("Selected state:", stateName);
+      console.log('Direct match result:', data[stateName]);
 
       const labelMap = {
         register: 'Register to Vote',
@@ -498,7 +491,7 @@ function showVoting() {
 
         link.appendChild(iconDiv);
         link.appendChild(labelDiv);
-        if (description) link.appendChild(descDiv);
+        link.appendChild(descDiv);
         if (deadline) link.appendChild(deadlineDiv);
 
         card.appendChild(link);
