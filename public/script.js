@@ -196,13 +196,26 @@ const pollCategories = [
   }
 ];
 
-// === Simple tab switcher ===
+// === Enhanced tab switcher with active highlight ===
 function showTab(id) {
+  // Hide all tab content
   document.querySelectorAll('.tab-content').forEach(tab => {
     tab.style.display = 'none';
   });
+
+  // Show selected tab
   const activeTab = document.getElementById(id);
   if (activeTab) activeTab.style.display = 'block';
+
+  // Reset all tab buttons
+  document.querySelectorAll('nav .tab').forEach(btn => {
+    btn.classList.remove('active');
+  });
+
+  // Highlight the clicked button
+  const clickedBtn = Array.from(document.querySelectorAll('nav .tab'))
+    .find(btn => btn.getAttribute('onclick')?.includes(id));
+  if (clickedBtn) clickedBtn.classList.add('active');
 }
 
 function showStartupHub() {
