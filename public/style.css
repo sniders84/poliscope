@@ -2981,3 +2981,43 @@ nav .tab.active {
     max-width: 95%;         /* keep text comfortably readable on phones */
   }
 }
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding: 0.5rem;
+  scroll-snap-type: x mandatory;
+}
+
+.carousel-card {
+  flex: 0 0 auto;
+  width: 280px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  background: #fff;
+  scroll-snap-align: start;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.carousel-card:hover {
+  transform: translateY(-4px);
+}
+
+.carousel-card h3 {
+  font-size: 1rem;
+  margin: 0 0 0.5rem;
+}
+
+.carousel-card p {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0 0 0.5rem;
+}
+
+.carousel-card a {
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: bold;
+}
