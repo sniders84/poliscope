@@ -213,8 +213,7 @@ function showTab(id) {
   });
 
   // Highlight the clicked button
-  const clickedBtn = Array.from(document.querySelectorAll('nav .tab'))
-    .find(btn => btn.getAttribute('onclick')?.includes(id));
+  const clickedBtn = document.querySelector(`nav .tab[data-tab="${id}"]`);
   if (clickedBtn) clickedBtn.classList.add('active');
 }
 
