@@ -3021,3 +3021,32 @@ nav .tab.active {
   text-decoration: none;
   font-weight: bold;
 }
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding: 0.5rem;
+  scroll-snap-type: x mandatory;
+}
+
+.carousel-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 250px;
+  height: 250px; /* square shape */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.carousel-card:hover {
+  transform: translateY(-4px);
+  background-color: #e6f0ff; /* light blue hover effect */
+  border-color: #0066cc;     /* blue border on hover */
+}
