@@ -426,6 +426,7 @@ function showTab(tabId) {
 <script src="script.js"></script>
           
 <script>
+// Image-friendly feeds only
 const feeds = {
   world: [
     "http://feeds.bbci.co.uk/news/world/rss.xml",
@@ -456,54 +457,61 @@ async function loadFeed(url) {
   }
 }
 
+// Extract image from multiple fields; return empty string if none
 function extractImage(item) {
-  // Try multiple fields for maximum coverage
   if (item.thumbnail) return item.thumbnail;
   if (item.enclosure && item.enclosure.link) return item.enclosure.link;
-
-  // Sometimes images are embedded in content
   const match = item.content?.match(/<img[^>]+src="([^">]+)"/i);
   if (match && match[1]) return match[1];
-
-  return ""; // fallback: no image
+  return "";
 }
 
 async function loadSection(section, containerId) {
   const container = document.getElementById(containerId);
+
+  // Build track for rotating carousel
   const track = document.createElement("div");
   track.className = "carousel-track";
   container.appendChild(track);
 
+  // Merge items across feeds
   let allItems = [];
   for (const url of feeds[section]) {
     const items = await loadFeed(url);
     allItems = allItems.concat(items);
   }
 
-  allItems.slice(0,25).forEach(item => {
+  // Strict filter: only keep items with an image
+  const withImages = allItems
+    .map(item => ({ item, img: extractImage(item) }))
+    .filter(({ img }) => !!img)
+    .slice(0, 25); // cap to 25
+
+  // Render cards
+  withImages.forEach(({ item, img }) => {
     const card = document.createElement("a");
     card.className = "hub-card carousel-card";
     card.href = item.link;
     card.target = "_blank";
-
-    const image = extractImage(item);
     card.innerHTML = `
-      ${image ? `<img src="${image}" alt="" class="carousel-img">` : ""}
+      <img src="${img}" alt="" class="carousel-img">
       <h3>${item.title}</h3>
       <p>${new Date(item.pubDate).toLocaleDateString()}</p>
     `;
     track.appendChild(card);
   });
 
-  // Auto-rotate
+  // Auto-rotate (slide by one card)
   let position = 0;
+  const step = 310; // 300px card + ~10px gap
   setInterval(() => {
     position += 1;
     if (position >= track.children.length) position = 0;
-    track.style.transform = `translateX(-${position * 310}px)`; // 300px card + gap
-  }, 3000);
+    track.style.transform = `translateX(-${position * step}px)`;
+  }, 3000); // every 3s
 }
 
+// Initialize
 (async () => {
   await loadSection("world", "world-news-carousel");
   await loadSection("finance", "finance-carousel");
