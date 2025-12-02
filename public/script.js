@@ -321,20 +321,20 @@ function showPodcastsShows() {
     section.appendChild(body);
 
     // COLLAPSE/EXPAND
-header.addEventListener('click', () => {
-  const isOpen = body.classList.contains("open");
-  if (isOpen) {
-    body.classList.remove("open");
-    body.classList.add("closed");
-    header.classList.remove("open");
-    arrow.textContent = "▶"; // collapsed arrow
-  } else {
-    body.classList.remove("closed");
-    body.classList.add("open");
-    header.classList.add("open");
-    arrow.textContent = "▼"; // expanded arrow
-  }
-});
+    header.addEventListener('click', () => {
+      const isOpen = body.classList.contains("open");
+      if (isOpen) {
+        body.classList.remove("open");
+        body.classList.add("closed");
+        header.classList.remove("open");
+        arrow.textContent = "▶"; // collapsed arrow
+      } else {
+        body.classList.remove("closed");
+        body.classList.add("open");
+        header.classList.add("open");
+        arrow.textContent = "▼"; // expanded arrow
+      }
+    });
 
     return section;
   };
@@ -394,13 +394,17 @@ header.addEventListener('click', () => {
   console.log('showPodcastsShows() finished rendering');
 }
 
-function showCivic() {
+// NEW helper for renamed tab
+function showLegislation() {
+  showTab('legislation');
+}
+
+// NEW helper for new tab
+function showCivicIntelligence() {
   showTab('civic-intelligence');
 }
 
-function showPolls() {
-  showTab('polls');
-}
+// REMOVED showPolls (we replaced it)
 
 function showOrganizations() {
   showTab('political-groups');
@@ -409,6 +413,10 @@ function showOrganizations() {
 function showVoting() {
   showTab('voting');
   const votingCards = document.getElementById('voting-cards');
+  if (!votingCards) {
+    console.error('voting-cards container not found');
+    return;
+  }
   votingCards.innerHTML = '';
   console.log("showVoting() triggered");
 
@@ -491,7 +499,7 @@ function showVoting() {
 
         link.appendChild(iconDiv);
         link.appendChild(labelDiv);
-        link.appendChild(descDiv);
+        if (description) link.appendChild(descDiv);
         if (deadline) link.appendChild(deadlineDiv);
 
         card.appendChild(link);
