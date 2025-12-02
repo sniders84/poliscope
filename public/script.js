@@ -88,8 +88,6 @@ Promise.all([
     ...scotus
   ];
 
-  renderOfficials(selectedState, '');
-
   if (searchBar) {
     searchBar.addEventListener('input', e => {
       renderOfficials(selectedState, e.target.value);
@@ -1541,9 +1539,6 @@ async function fetchGoogleNewsRss(feedUrl) {
       ltGovernors = ltGovs;
       senators = sens;
       houseReps = reps;
-
-      // Render officials
-      renderOfficials(selectedState, '');
 
       // Fade out loading overlay
       if (loadingOverlay) {
