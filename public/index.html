@@ -334,7 +334,7 @@
     showTab('startup-hub');
   }
 
-  // Sticky nav buttons scroll to sections
+  // Sticky nav buttons scroll to sections + default Home Hub on load
   document.addEventListener('DOMContentLoaded', () => {
     const navButtons = document.querySelectorAll('#hub-nav button');
     navButtons.forEach(btn => {
@@ -343,6 +343,9 @@
         if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
+
+    // Force Home Hub tab to show on page load
+    showStartupHub();
   });
 
   // Generic tab switcher
@@ -354,7 +357,7 @@
     if (tab) tab.style.display = 'block';
   }
 
-  // --- Carousel Feed Logic (image-enforced, 25 items, rotating track + arrows) ---
+  // --- Carousel Feed Logic (image-enforced, rotating track + arrows) ---
   const feeds = {
     world: [
       "http://feeds.bbci.co.uk/news/world/rss.xml",
@@ -408,13 +411,14 @@
     const withImages = allItems
       .map(item => ({ item, img: extractImage(item) }))
       .filter(({ img }) => !!img)
-      .slice(0, 25);
+      .slice(0, 25); // cap at 25, may render fewer based on image availability
 
     withImages.forEach(({ item, img }) => {
       const card = document.createElement("a");
       card.className = "hub-card carousel-card";
       card.href = item.link;
       card.target = "_blank";
+      card.rel = "noopener noreferrer";
       card.innerHTML = `
         <img src="${img}" alt="" class="carousel-img">
         <h3>${item.title}</h3>
@@ -432,12 +436,12 @@
     let position = 0;
     const step = 310; // card width + ~gap
 
-   // Auto-scroll
-setInterval(() => {
-  position++;
-  if (position >= track.children.length) position = 0;
-  track.style.transform = `translateX(-${position * step}px)`;
-}, 5000); // rotate every 5s instead of 3s
+    // Auto-scroll (5 seconds)
+    setInterval(() => {
+      position++;
+      if (position >= track.children.length) position = 0;
+      track.style.transform = `translateX(-${position * step}px)`;
+    }, 5000);
 
     // Manual controls
     prevBtn.addEventListener("click", () => {
@@ -477,8 +481,9 @@ setInterval(() => {
   <div id="podcasts-cards" class="grid"></div>
 </section>
 
-<section id="my-officials" class="tab-content" style="position: relative;">
+<section id="my-officials" class="tab-content" style="display: none; position: relative;">
   <h2>My Officials</h2>
+  <!-- Loading overlay -->
   <div id="loading-overlay" style="
       position: absolute;
       top: 0;
@@ -509,18 +514,19 @@ setInterval(() => {
 </section>
 
 <!-- State Legislative Links -->
-<section id="state-legislative" class="tab-content">
+<section id="state-legislative" class="tab-content" style="display: none;">
   <h2>State Legislative Links</h2>
   <div class="grid">
     <div class="card">Link 1</div>
     <div class="card">Link 2</div>
     <div class="card">Link 3</div>
     <div class="card">Link 4</div>
+    <!-- add more cards as needed -->
   </div>
 </section>
 
 <!-- National Governors Association -->
-<section id="nga-section" class="tab-content">
+<section id="nga-section" class="tab-content" style="display: none;">
   <h2>Governors</h2>
   <div class="grid">
     <div class="card">NG link 1</div>
@@ -531,7 +537,7 @@ setInterval(() => {
 </section>
 
 <!-- Federal Oversight & Transparency -->
-<section id="federal-oversight" class="tab-content">
+<section id="federal-oversight" class="tab-content" style="display: none;">
   <h2>Federal Oversight & Transparency</h2>
   <div class="grid">
     <div class="card">Oversight 1</div>
@@ -567,16 +573,22 @@ setInterval(() => {
 
 <!-- Poll Modal -->
 <div id="pollModal" class="modal">
-  <div class="modal-content" id="pollModalContent"></div>
+  <div class="modal-content" id="pollModalContent">
+    <!-- Poll content will be injected here -->
+  </div>
 </div>
 
 <!-- Cabinet Modal -->
 <div id="cabinetModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModalWindow('cabinetModal')">&times;</span>
+
+    <!-- Grid view -->
     <div id="cabinetGridView">
       <div id="cabinetList" class="officials-grid"></div>
     </div>
+
+    <!-- Detail view -->
     <div id="cabinetDetailView" style="display:none;">
       <button onclick="backToCabinetGrid()">Back</button>
       <div id="cabinetMemberDetail"></div>
@@ -596,9 +608,6 @@ setInterval(() => {
     setupControls("world-news-carousel");
     setupControls("finance-carousel");
     setupControls("economy-carousel");
-
-    // Force Home Hub tab to show on page load
-    showStartupHub();
   })();
 </script>
 
