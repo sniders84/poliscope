@@ -631,6 +631,13 @@
   document.addEventListener("DOMContentLoaded", () => {
     showStartupHub(); // Home Hub loads first and button is highlighted
   });
+
+  // Collapsible toggle for Podcasts & Shows sections
+  function toggleSection(id) {
+    const section = document.getElementById(id);
+    if (!section) return;
+    section.style.display = (section.style.display === "none") ? "block" : "none";
+  }
 </script>
 
 </body>
