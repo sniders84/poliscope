@@ -323,7 +323,7 @@
       </div>
     </section>
     
-    <section id="podcasts-shows" class="tab-content" style="display: none;">
+   <section id="podcasts-shows" class="tab-content" style="display: none;">
   <h2>Podcasts & Shows</h2>
 
   <!-- Search bar -->
@@ -348,7 +348,7 @@
     onblur="this.style.borderColor='#ccc'; this.style.boxShadow='none';"
   />
 
-  <!-- Favorites section -->
+  <!-- Favorites (appears ONCE) -->
   <div id="favorites-section" class="category-section">
     <h3>Favorites</h3>
     <div id="favorites-cards" class="grid"></div>
@@ -356,7 +356,9 @@
 
   <!-- Collapsible Podcasts -->
   <div class="collapsible">
-    <button class="collapsible-toggle" onclick="toggleSection('podcasts-list')">Podcasts ▼</button>
+    <button class="collapsible-toggle" data-target="podcasts-list" onclick="toggleSection('podcasts-list')">
+      Podcasts ▼
+    </button>
     <div id="podcasts-list" class="collapsible-content" style="display: none;">
       <div id="podcasts-cards" class="grid"></div>
     </div>
@@ -364,7 +366,9 @@
 
   <!-- Collapsible Shows -->
   <div class="collapsible">
-    <button class="collapsible-toggle" onclick="toggleSection('shows-list')">Shows ▼</button>
+    <button class="collapsible-toggle" data-target="shows-list" onclick="toggleSection('shows-list')">
+      Shows ▼
+    </button>
     <div id="shows-list" class="collapsible-content" style="display: none;">
       <div id="shows-cards" class="grid"></div>
     </div>
@@ -611,9 +615,7 @@
       });
     }
   </script>
-  <script src="script.js"></script>
-
-<script>
+  <script>
   // Initialize carousels: load feeds then wire controls
   (async () => {
     await loadSection("world", "world-news-carousel");
@@ -632,11 +634,46 @@
     showStartupHub(); // Home Hub loads first and button is highlighted
   });
 
-  // Collapsible toggle for Podcasts & Shows sections
+  // === Collapsible toggle with arrow flip + lazy-load ===
   function toggleSection(id) {
     const section = document.getElementById(id);
     if (!section) return;
-    section.style.display = (section.style.display === "none") ? "block" : "none";
+
+    const isHidden = section.style.display === "none";
+    section.style.display = isHidden ? "block" : "none";
+
+    // Flip arrow on the corresponding button
+    const btn = document.querySelector(`.collapsible-toggle[data-target="${id}"]`);
+    if (btn) {
+      btn.textContent = btn.textContent.replace(isHidden ? "▼" : "▲", isHidden ? "▲" : "▼");
+    }
+
+    // Lazy-load content on first expand
+    if (isHidden && !section.dataset.loaded) {
+      if (id === "podcasts-list") {
+        loadPodcastsInto("podcasts-cards");
+      } else if (id === "shows-list") {
+        loadShowsInto("shows-cards");
+      }
+      section.dataset.loaded = "true";
+    }
+  }
+
+  // === Data loaders (adapt to your existing renderers) ===
+  function loadPodcastsInto(containerId) {
+    const el = document.getElementById(containerId);
+    if (!el) return;
+    el.innerHTML = "";
+    // Example: call your existing podcast renderer here
+    // renderPodcasts(el);
+  }
+
+  function loadShowsInto(containerId) {
+    const el = document.getElementById(containerId);
+    if (!el) return;
+    el.innerHTML = "";
+    // Example: call your existing shows renderer here
+    // renderShows(el);
   }
 </script>
 
