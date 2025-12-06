@@ -583,21 +583,7 @@ function renderCabinetGrid(cabinetData) {
     container.appendChild(cardWrapper);
   });
 }
-function showCabinetMemberDetail(member) {
-  const detail = document.getElementById('cabinetMemberDetail');
-  detail.innerHTML = `
-  <div class="detail-header">
-    <img src="${member.photo}" alt="${member.name || ''}" class="portrait"
-         onerror="this.onerror=null;this.src='assets/default-photo.png';" />
-    ${member.seal ? `<img src="${member.seal}" alt="${member.office} seal" class="seal" />` : ''}
-  </div>
-  <h2>${member.name || 'Unknown'}</h2>
-  ...
-`;
 
-  document.getElementById('cabinetGridView').style.display = 'none';
-  document.getElementById('cabinetDetailView').style.display = 'block';
-}
 fetch('cabinet.json')
   .then(res => res.json())
   .then(data => renderCabinetGrid(data));
