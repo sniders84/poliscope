@@ -3541,3 +3541,11 @@ nav .tab.active {
   background-color: inherit;            /* no fill change */
   color: inherit;                       /* keep text color */
 }
+/* === Officials Tab Hover: Outline Only === */
+#officials .official-card:hover {
+  background: inherit !important;       /* cancel the blue fill */
+  border-color: var(--accent-light) !important;
+  box-shadow: 0 0 8px var(--accent-glow) !important;
+  transform: translateY(-4px);
+  color: inherit !important;
+}
