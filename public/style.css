@@ -4175,3 +4175,40 @@ nav .tab.active {
   word-wrap: break-word;
   font-size: 0.9rem;
 }
+/* Cabinet Modal Grid */
+#cabinetList.officials-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+  justify-items: center;
+  align-items: start;
+  padding: 1rem;
+}
+
+/* Cabinet Modal Official Cards */
+#cabinetList .official-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 1rem;
+
+  width: 220px;
+  height: auto !important;   /* allow card to grow naturally */
+  box-sizing: border-box;
+}
+
+/* Portraits: show entire image, centered */
+#cabinetList .official-card img {
+  width: 100% !important;
+  height: auto !important;        /* remove fixed crop */
+  max-height: none !important;    /* no artificial cap */
+  object-fit: contain !important; /* show full portrait */
+  object-position: center !important;
+  display: block;
+  margin: 0 auto 0.75rem auto;
+}
