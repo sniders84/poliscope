@@ -593,7 +593,9 @@ function showCabinetMemberDetail(member) {
   const detail = document.getElementById('cabinetMemberDetail');
   detail.innerHTML = `
     <div class="detail-header">
-      <img src="${member.photo}" alt="${member.name || ''}" class="portrait"
+      <img src="${member.photo || 'assets/default-photo.png'}" 
+           alt="${member.name || ''}" 
+           class="portrait"
            onerror="this.onerror=null;this.src='assets/default-photo.png';" />
       ${member.seal ? `<img src="${member.seal}" alt="${member.office} seal" class="seal" />` : ''}
     </div>
