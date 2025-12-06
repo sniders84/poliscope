@@ -890,6 +890,95 @@ function backToCabinetGrid() {
   detailView.style.display = 'none';
 }
 
+function openCivicsQuizModal() {
+  document.getElementById('civicsQuizModal').style.display = 'block';
+  initCivicsQuiz();
+}
+
+function closeModalWindow(id) {
+  document.getElementById(id).style.display = 'none';
+}
+// === Daily Civics Quiz Engine ===
+let quizQuestions = [];
+let currentQuestion = 0;
+let score = 0;
+
+// Initialize quiz
+function initCivicsQuiz() {
+  // Reset state
+  currentQuestion = 0;
+  score = 0;
+
+  // For now, seed with a few sample questions
+  const allQuestions = [
+    {
+      q: "What is the supreme law of the land?",
+      options: ["Declaration of Independence", "Bill of Rights", "Constitution", "Articles of Confederation"],
+      answer: 2
+    },
+    {
+      q: "How many amendments does the U.S. Constitution have?",
+      options: ["10", "27", "50", "7"],
+      answer: 1
+    },
+    {
+      q: "What is the economic system of the United States?",
+      options: ["Socialism", "Capitalism", "Communism", "Feudalism"],
+      answer: 1
+    }
+  ];
+
+  // Pick 20 random questions (for now we only have 3)
+  quizQuestions = allQuestions.sort(() => 0.5 - Math.random()).slice(0, 20);
+
+  renderQuestion();
+}
+function renderQuestion() {
+  const q = quizQuestions[currentQuestion];
+  document.getElementById("quiz-progress").textContent =
+    `Question ${currentQuestion + 1} of ${quizQuestions.length}`;
+
+  document.getElementById("quiz-question").innerHTML = `<h3>${q.q}</h3>`;
+  document.getElementById("quiz-options").innerHTML = q.options.map((opt,i) =>
+    `<label><input type="radio" name="opt" value="${i}"> ${opt}</label><br>`
+  ).join("");
+
+  document.getElementById("quiz-feedback").textContent = "";
+  document.getElementById("quiz-submit").style.display = "inline-block";
+  document.getElementById("quiz-next").style.display = "none";
+}
+document.getElementById("quiz-submit").onclick = () => {
+  const selected = document.querySelector('input[name="opt"]:checked');
+  if (!selected) {
+    alert("Pick an answer!");
+    return;
+  }
+  const q = quizQuestions[currentQuestion];
+  if (parseInt(selected.value) === q.answer) {
+    score++;
+    document.getElementById("quiz-feedback").textContent = "✅ Correct!";
+  } else {
+    document.getElementById("quiz-feedback").textContent = "❌ Incorrect.";
+  }
+  document.getElementById("quiz-submit").style.display = "none";
+  document.getElementById("quiz-next").style.display = "inline-block";
+};
+
+document.getElementById("quiz-next").onclick = () => {
+  currentQuestion++;
+  if (currentQuestion < quizQuestions.length) {
+    renderQuestion();
+  } else {
+    document.getElementById("quiz-question").innerHTML = "";
+    document.getElementById("quiz-options").innerHTML = "";
+    document.getElementById("quiz-progress").textContent = "";
+    document.getElementById("quiz-feedback").textContent = "";
+    document.getElementById("quiz-score").textContent =
+      `Final Score: ${score}/${quizQuestions.length} — ${score >= 12 ? "Pass ✅" : "Try Again ❌"}`;
+    document.getElementById("quiz-next").style.display = "none";
+  }
+};
+
 // === POLLS TAB ===
 function showPolls() {
   showTab('polls');
