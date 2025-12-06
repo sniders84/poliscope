@@ -4285,3 +4285,27 @@ nav .tab.active {
   display: block;
   margin: 0 auto 0.75rem auto;
 }
+/* Cabinet Member Detail Layout */
+#cabinetMemberDetail {
+  display: flex;
+  flex-direction: row;       /* side-by-side layout */
+  align-items: flex-start;   /* align tops */
+  gap: 20px;                 /* spacing between portrait and seal */
+  justify-content: center;   /* center the whole block */
+  flex-wrap: wrap;           /* allow wrapping on narrow screens */
+}
+
+/* Portrait styling */
+#cabinetMemberDetail .portrait {
+  max-width: 200px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* Seal styling */
+#cabinetMemberDetail .seal {
+  max-width: 120px;
+  height: auto;
+  object-fit: contain;
+}
