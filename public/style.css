@@ -4212,3 +4212,32 @@ nav .tab.active {
   display: block;
   margin: 0 auto 0.75rem auto;
 }
+/* Cabinet Modal Overrides */
+#cabinetList .official-card {
+  width: 220px;
+  height: auto;              /* let card grow naturally */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Override photo wrapper just for Cabinet */
+#cabinetList .official-card .photo-wrapper {
+  width: 100% !important;
+  height: auto !important;   /* remove fixed 180px */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Portraits: show entire image, centered */
+#cabinetList .official-card .photo-wrapper img {
+  width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important;   /* show full portrait */
+  object-position: center center !important;
+  max-height: 320px;                /* cap so very tall images don’t blow out */
+}
