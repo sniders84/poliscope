@@ -3458,3 +3458,14 @@ nav .tab.active {
     grid-template-columns: 1fr;
   }
 }
+/* === Civic Intelligence section stacking fix === */
+#civic .civic-section {
+  display: block !important;   /* override accidental grid/flex */
+  width: 100%;
+}
+
+#civic .civic-block {
+  display: block;
+  width: 100%;
+  margin-bottom: 2rem;         /* spacing between blocks */
+}
