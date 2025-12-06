@@ -4510,3 +4510,33 @@ nav .tab.active {
   align-items: flex-start;
   text-align: left;
 }
+#cabinetMemberDetail .detail-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr; /* left fixed, right flexible */
+  gap: 24px;
+  align-items: start;
+}
+
+#cabinetMemberDetail .detail-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#cabinetMemberDetail .detail-left .portrait {
+  max-width: 220px;
+  height: auto;
+  margin-bottom: 12px;
+}
+
+#cabinetMemberDetail .detail-left .seal {
+  max-width: 140px;
+  height: auto;
+}
+
+#cabinetMemberDetail .detail-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
