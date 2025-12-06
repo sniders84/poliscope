@@ -7247,7 +7247,7 @@
   },
   {
     "q": "Which economic indicator measures the total value of goods and services produced?",
-   : ["GDP", "Inflation rate", "Unemployment rate", "Trade deficit"],
+    "options": ["GDP", "Inflation rate", "Unemployment rate", "Trade deficit"],
     "answer": 0,
     "type": "multiple-choice",
     "difficulty": "moderate",
