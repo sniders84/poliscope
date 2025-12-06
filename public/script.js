@@ -974,12 +974,18 @@ document.getElementById("quiz-submit").onclick = () => {
     return;
   }
   const q = quizQuestions[currentQuestion];
-  if (parseInt(selected.value) === q.answer) {
+  const selectedIndex = parseInt(selected.value, 10);
+  const correctText = q.options[q.answer];
+
+  if (selectedIndex === q.answer) {
     score++;
-    document.getElementById("quiz-feedback").textContent = "✅ Correct!";
+    document.getElementById("quiz-feedback").innerHTML =
+      `✅ Correct — ${correctText}.<br><small>${q.explanation}</small>`;
   } else {
-    document.getElementById("quiz-feedback").textContent = "❌ Incorrect.";
+    document.getElementById("quiz-feedback").innerHTML =
+      `❌ Incorrect. Correct answer: ${correctText}.<br><small>${q.explanation}</small>`;
   }
+
   document.getElementById("quiz-submit").style.display = "none";
   document.getElementById("quiz-next").style.display = "inline-block";
 };
