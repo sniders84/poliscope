@@ -3526,3 +3526,18 @@ nav .tab.active {
   background-color: inherit;             /* keep original background */
   color: inherit;                        /* keep text color */
 }
+/* === Officials Tab Card Hover: Blue Outline === */
+#officials .official-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  border: 1px solid var(--card-border); /* default subtle border */
+  background-color: var(--card-bg);     /* keep dark background */
+  color: var(--text);                   /* keep text color */
+}
+
+#officials .official-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-light);    /* bright blue outline */
+  box-shadow: 0 0 8px var(--accent-glow); /* subtle blue glow */
+  background-color: inherit;            /* no fill change */
+  color: inherit;                       /* keep text color */
+}
