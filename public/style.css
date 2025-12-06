@@ -4066,3 +4066,64 @@ nav .tab.active {
   font-size: 0.9rem;
   text-align: center;    /* center text under portrait */
 }
+/* === Cabinet Modal: Grid & Card Reset for Full Portraits === */
+#cabinetList.officials-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+  justify-items: center;
+  align-items: start;
+  padding: 1rem;
+}
+
+/* Reset any previous fixed heights that cause clipping */
+#cabinetList .official-card,
+#cabinetList .official-card img {
+  height: auto !important;
+}
+
+/* Compact, centered cards with natural height */
+#cabinetList .official-card {
+  width: 220px;
+  padding: 1rem;
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;     /* center contents horizontally */
+  gap: 0.5rem;
+  overflow: hidden;        /* prevents bleed if content overflows */
+}
+
+/* Image: show entire portrait, centered, no cropping */
+#cabinetList .official-card img {
+  width: 100%;
+  max-height: 300px;       /* cap so very tall images don’t blow out the card */
+  object-fit: contain !important;  /* show full portrait */
+  object-position: center !important;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Text: centered underneath portrait */
+#cabinetList .official-card h3,
+#cabinetList .official-card p {
+  margin: 0;
+  text-align: center;
+  line-height: 1.35;
+  max-width: 95%;
+  word-wrap: break-word;
+}
+
+/* Optional: consistent typography sizing for compact cards */
+#cabinetList .official-card h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+#cabinetList .official-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted, inherit);
+}
