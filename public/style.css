@@ -3828,3 +3828,50 @@ nav .tab.active {
   transform: translateY(-4px);
   color: var(--text) !important;
 }
+/* === Cabinet Modal: Grid Layout === */
+#civic #cabinet-modal .card-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* 3–4 per row */
+  gap: 20px;
+  justify-items: center;
+  align-items: start;
+  padding: 1rem;
+}
+
+/* === Cabinet Modal Official Cards === */
+#civic #cabinet-modal .official-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  padding: 0.75rem;
+
+  width: 180px;   /* smaller footprint */
+  height: 320px;  /* compact height */
+  box-sizing: border-box;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+/* Image consistency */
+#civic #cabinet-modal .official-card img {
+  width: 100%;
+  height: 160px;        /* smaller image box */
+  object-fit: cover;    /* crop without distortion */
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+/* Text consistency */
+#civic #cabinet-modal .official-card h3,
+#civic #cabinet-modal .official-card p {
+  margin: 0.25rem 0;
+  line-height: 1.3;
+  max-width: 95%;
+  word-wrap: break-word;
+  font-size: 0.9rem;    /* slightly smaller text */
+}
