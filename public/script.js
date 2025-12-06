@@ -1333,12 +1333,6 @@ function showStartupHub() {
   showTab('startup-hub');
 }
 
-// 🚫 Sticky nav removed — no initHubNav, no scroll listeners
-
-document.addEventListener('DOMContentLoaded', () => {
-  initHubNav();
-});
-
 document.addEventListener('DOMContentLoaded', () => {
   const feedTitle = document.getElementById('feed-title');
   const feedStories = document.getElementById('feed-stories');
