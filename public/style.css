@@ -3389,3 +3389,13 @@ nav .tab.active {
   background-color: var(--accent-light);
   color: #fff;
 }
+#civic .ci-grid {
+  display: grid !important;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+@media (min-width: 1600px) {
+  #civic .ci-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
