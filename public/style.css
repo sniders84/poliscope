@@ -3292,3 +3292,44 @@ nav .tab.active {
   color: #fff;
   border: 1px solid #444;
 }
+/* Civic Intelligence tab layout */
+#civic {
+  display: block; /* no flex here, just normal block flow */
+}
+
+/* Each section stacks vertically */
+.ci-section {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+/* Section headings */
+.ci-section h3 {
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+/* Grid layout for cards: force 5 columns, auto-wrap */
+.ci-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* fixed 5 per row */
+  gap: 15px;
+}
+
+/* If you want 6 per row instead, swap the line above for: */
+/* grid-template-columns: repeat(6, 1fr); */
+
+/* Card styling */
+.ci-grid .card {
+  background: #2b2b2b;
+  padding: 12px;
+  border-radius: 8px;
+  color: #fff;
+  border: 1px solid #444;
+  text-align: center;
+  transition: background-color 0.2s;
+}
+
+.ci-grid .card:hover {
+  background-color: #0066ff;
+}
