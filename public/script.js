@@ -619,6 +619,7 @@ function showCabinetMemberDetail(member) {
 
   document.getElementById('cabinetGridView').style.display = 'none';
   document.getElementById('cabinetDetailView').style.display = 'block';
+}
 
 // === CIVIC TAB ===
 function showCivic() {
@@ -861,12 +862,11 @@ function showCabinetMember(member) {
   const termEndYear = parseYear(member.termEnd) || 'Present';
 
   detail.innerHTML = `
-  <div class="detail-header">
-    <img src="${member.photo}" alt="${member.name || ''}" class="portrait"
-         onerror="this.onerror=null;this.src='assets/default-photo.png';" />
-    ${member.seal ? `<img src="${member.seal}" alt="${member.office} seal" class="seal" />` : ''}
-  </div>
-  <div class="info">
+    <div class="detail-header">
+      <img src="${member.photo}" alt="${member.name || ''}" class="portrait"
+           onerror="this.onerror=null;this.src='assets/default-photo.png';" />
+      ${member.seal ? `<img src="${member.seal}" alt="${member.office} seal" class="seal" />` : ''}
+    </div>
     <h2>${member.name || 'Unknown'}</h2>
     <p><strong>Office:</strong> ${member.office || 'N/A'}</p>
     ${member.state ? `<p><strong>State:</strong> ${member.state}</p>` : ''}
@@ -879,8 +879,8 @@ function showCabinetMember(member) {
     ${member.contact && member.contact.website ? `<p><a href="${member.contact.website}" target="_blank">Official Website</a></p>` : ''}
     ${member.ballotpediaLink ? `<p><a href="${member.ballotpediaLink}" target="_blank">Ballotpedia</a></p>` : ''}
     ${member.govtrackLink ? `<p><a href="${member.govtrackLink}" target="_blank">GovTrack</a></p>` : ''}
-  </div>
-`;
+  `;
+}
 
 function backToCabinetGrid() {
   const gridView = document.getElementById('cabinetGridView');
