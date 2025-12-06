@@ -4309,3 +4309,44 @@ nav .tab.active {
   height: auto;
   object-fit: contain;
 }
+/* Cabinet Member Detail: two-column layout */
+#cabinetMemberDetail {
+  display: grid;
+  grid-template-columns: 240px 1fr; /* left column fixed, right column flexible */
+  gap: 24px;
+  align-items: start;
+}
+
+/* Left column: portrait + seal stacked */
+#cabinetMemberDetail .portrait {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin-bottom: 12px;
+}
+
+#cabinetMemberDetail .seal {
+  width: 100%;
+  max-width: 120px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto; /* center under portrait */
+}
+
+/* Right column: info block */
+#cabinetMemberDetail .info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+#cabinetMemberDetail .info h2,
+#cabinetMemberDetail .info h3,
+#cabinetMemberDetail .info p {
+  margin: 0 0 0.5rem 0;
+  line-height: 1.4;
+}
