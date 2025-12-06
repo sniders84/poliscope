@@ -3924,3 +3924,51 @@ nav .tab.active {
   word-wrap: break-word;
   font-size: 0.85rem;
 }
+/* === Cabinet Modal Grid Layout === */
+#cabinetList.officials-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* 3–4 per row */
+  gap: 24px;               /* spacing between cards */
+  justify-items: center;
+  align-items: start;
+  padding: 1rem;
+}
+
+/* Cabinet Modal Official Cards */
+#cabinetList .official-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 1rem;
+
+  width: 200px;            /* wider footprint */
+  height: auto;            /* let card height expand naturally */
+  box-sizing: border-box;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+/* Image consistency: full portraits */
+#cabinetList .official-card img {
+  width: 100%;
+  height: auto;            /* no fixed crop */
+  max-height: 280px;       /* cap height so portraits don’t blow out */
+  object-fit: contain;     /* show full portrait without cutting */
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+}
+
+/* Text consistency */
+#cabinetList .official-card h3,
+#cabinetList .official-card p {
+  margin: 0.25rem 0;
+  line-height: 1.3;
+  max-width: 95%;
+  word-wrap: break-word;
+  font-size: 0.9rem;
+}
