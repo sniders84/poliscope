@@ -3549,3 +3549,11 @@ nav .tab.active {
   transform: translateY(-4px);
   color: inherit !important;
 }
+/* === Officials Tab Hover: Outline Only === */
+#officials .official-card:hover {
+  background: var(--card-bg) !important;   /* keep original background */
+  border-color: var(--accent-light) !important;
+  box-shadow: 0 0 8px var(--accent-glow) !important;
+  transform: translateY(-4px);
+  color: var(--text) !important;
+}
