@@ -898,8 +898,10 @@ function openCivicsQuizModal() {
 function closeModalWindow(id) {
   document.getElementById(id).style.display = 'none';
 }
+
 // === Daily Civics Quiz Engine ===
 let quizQuestions = [];
+let allQuestions = [];
 let currentQuestion = 0;
 let score = 0;
 
@@ -909,30 +911,47 @@ function initCivicsQuiz() {
   currentQuestion = 0;
   score = 0;
 
-  // For now, seed with a few sample questions
-  const allQuestions = [
-    {
-      q: "What is the supreme law of the land?",
-      options: ["Declaration of Independence", "Bill of Rights", "Constitution", "Articles of Confederation"],
-      answer: 2
-    },
-    {
-      q: "How many amendments does the U.S. Constitution have?",
-      options: ["10", "27", "50", "7"],
-      answer: 1
-    },
-    {
-      q: "What is the economic system of the United States?",
-      options: ["Socialism", "Capitalism", "Communism", "Feudalism"],
-      answer: 1
-    }
-  ];
+  // Load questions from civics-questions.json
+  fetch('civics-questions.json')
+    .then(res => res.json())
+    .then(data => {
+      allQuestions = data;
 
-  // Pick 20 random questions (for now we only have 3)
-  quizQuestions = allQuestions.sort(() => 0.5 - Math.random()).slice(0, 20);
+      // 🔹 Console sanity check
+      console.log("Loaded questions:", allQuestions.length);
+      console.log("First question:", allQuestions[0].q);
+      console.log("Last question:", allQuestions[allQuestions.length - 1].q);
 
-  renderQuestion();
+      // 🔹 Daily randomizer
+      quizQuestions = getDailyQuestions();
+
+      // 🔹 Print today’s set to console for verification
+      console.log("Today's 20 questions:");
+      quizQuestions.forEach((q, i) => console.log(`${i + 1}. ${q.q}`));
+
+      renderQuestion();
+    })
+    .catch(err => {
+      console.error("Error loading civics-questions.json:", err);
+      document.getElementById("quiz-question").textContent = "Failed to load questions.";
+    });
 }
+
+// Daily reset logic
+function getDailyQuestions() {
+  const today = new Date().toDateString();
+  const saved = localStorage.getItem("civicsQuizDate");
+
+  if (saved === today) {
+    return JSON.parse(localStorage.getItem("civicsQuizQuestions"));
+  } else {
+    const newSet = allQuestions.sort(() => 0.5 - Math.random()).slice(0, 20);
+    localStorage.setItem("civicsQuizDate", today);
+    localStorage.setItem("civicsQuizQuestions", JSON.stringify(newSet));
+    return newSet;
+  }
+}
+
 function renderQuestion() {
   const q = quizQuestions[currentQuestion];
   document.getElementById("quiz-progress").textContent =
@@ -947,6 +966,7 @@ function renderQuestion() {
   document.getElementById("quiz-submit").style.display = "inline-block";
   document.getElementById("quiz-next").style.display = "none";
 }
+
 document.getElementById("quiz-submit").onclick = () => {
   const selected = document.querySelector('input[name="opt"]:checked');
   if (!selected) {
