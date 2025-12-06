@@ -3995,3 +3995,26 @@ nav .tab.active {
   border-radius: 6px;
   margin-bottom: 0.75rem;
 }
+/* === Cabinet Modal Official Cards: Taller Portraits === */
+#cabinetList .official-card {
+  width: 220px;            /* slightly wider footprint */
+  height: 400px;           /* taller card to fit full portrait */
+  padding: 1rem;
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  background-color: var(--card-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* Image consistency: full portraits */
+#cabinetList .official-card img {
+  width: 100%;
+  height: 260px;           /* taller image box */
+  object-fit: contain;     /* show entire portrait */
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+}
