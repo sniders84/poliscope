@@ -4474,7 +4474,7 @@ nav .tab.active {
 }
 #cabinetMemberDetail {
   display: grid;
-  grid-template-columns: 240px 1fr;
+  grid-template-columns: 240px 1fr; /* left fixed, right flexible */
   gap: 24px;
   align-items: start;
 }
