@@ -3469,3 +3469,39 @@ nav .tab.active {
   width: 100%;
   margin-bottom: 2rem;         /* spacing between blocks */
 }
+/* === Universal Hover Effect === */
+#civic .card,
+#civic .link-card,
+#civic .organization-card,
+#civic .official-card,
+#civic .voting-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+#civic .card:hover,
+#civic .link-card:hover,
+#civic .organization-card:hover,
+#civic .official-card:hover,
+#civic .voting-card:hover {
+  transform: translateY(-4px);
+  background-color: var(--accent-light); /* bright blue */
+  color: #fff;
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+/* === Section Headers === */
+#civic h2,
+#civic h3 {
+  color: var(--accent-light);       /* bright blue */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Optional hover/interaction for headers */
+#civic h2:hover,
+#civic h3:hover {
+  color: var(--accent);             /* deeper blue on hover */
+  cursor: pointer;
+}
