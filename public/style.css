@@ -3927,3 +3927,118 @@ nav .tab.active {
     grid-template-columns: 1fr;
   }
 }
+/* === Cabinet Grid Cards === */
+#cabinetList.officials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+  justify-items: center;
+  align-items: start;
+  padding: 1rem;
+}
+
+#cabinetList .official-card {
+  width: 220px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+#cabinetList .official-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-light);
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+#cabinetList .official-card .photo-wrapper {
+  width: 100%;
+  height: 240px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+#cabinetList .official-card .photo-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;   /* show full portrait */
+  object-position: center;
+  border-radius: 6px;
+}
+
+#cabinetList .official-card .official-info {
+  margin-top: 0.75rem;
+}
+#cabinetList .official-card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0.25rem 0;
+}
+#cabinetList .official-card p {
+  font-size: 0.9rem;
+  color: var(--muted-light);
+  margin: 0.25rem 0;
+  line-height: 1.35;
+}
+
+/* === Cabinet Detail View === */
+#cabinetMemberDetail {
+  display: grid;
+  grid-template-columns: 240px 1fr; /* left fixed, right flexible */
+  gap: 24px;
+  align-items: start;
+  padding: 1rem;
+}
+
+#cabinetMemberDetail .detail-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#cabinetMemberDetail .detail-header .portrait {
+  max-width: 220px;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 12px;
+  border-radius: 8px;
+}
+
+#cabinetMemberDetail .detail-header .seal {
+  max-width: 140px;
+  height: auto;
+  object-fit: contain;
+}
+
+#cabinetMemberDetail .info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+#cabinetMemberDetail .info h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent-light);
+}
+
+#cabinetMemberDetail .info p {
+  margin: 0 0 0.4rem 0;
+  line-height: 1.5;
+  color: var(--muted-light);
+}
+
+/* Responsive: stack on mobile */
+@media (max-width: 768px) {
+  #cabinetMemberDetail {
+    grid-template-columns: 1fr;
+  }
+}
