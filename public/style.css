@@ -3627,3 +3627,59 @@ nav .tab.active {
     grid-template-columns: 1fr;
   }
 }
+/* === Officials Grid: Wider Cards === */
+#officials .link-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr); /* 4 cards per row for more width */
+  gap: 24px;
+  justify-items: stretch;
+}
+
+/* Officials card formatting */
+.official-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 1.25rem;
+  min-width: 220px;   /* ensure wider base */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Image consistency */
+.official-card img {
+  width: 100%;
+  height: 260px;       /* taller image box */
+  object-fit: cover;   /* crop without distortion */
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+}
+
+/* Text consistency */
+.official-card h3,
+.official-card p {
+  margin: 0.35rem 0;
+  line-height: 1.4;
+  word-wrap: break-word;
+  max-width: 95%;      /* allow more width for text */
+}
+
+/* Responsive collapse */
+@media (max-width: 1200px) {
+  #officials .link-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  #officials .link-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  #officials .link-grid {
+    grid-template-columns: 1fr;
+  }
+}
