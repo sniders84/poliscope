@@ -4350,3 +4350,54 @@ nav .tab.active {
   margin: 0 0 0.5rem 0;
   line-height: 1.4;
 }
+/* Cabinet Member Detail: two-column layout */
+#cabinetMemberDetail {
+  display: grid;
+  grid-template-columns: 240px 1fr; /* left column fixed, right column flexible */
+  gap: 24px;
+  align-items: start;
+  padding: 1rem;
+}
+
+/* Left column: portrait + seal stacked */
+#cabinetMemberDetail .portrait {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin-bottom: 12px;
+}
+
+#cabinetMemberDetail .seal {
+  width: 100%;
+  max-width: 120px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Right column: name + info block stacked */
+#cabinetMemberDetail .info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+  gap: 0.5rem;
+}
+
+#cabinetMemberDetail .info h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  color: var(--accent-light);
+}
+
+#cabinetMemberDetail .info p {
+  font-size: 1rem;
+  color: var(--text);
+  margin: 0;
+  line-height: 1.4;
+}
