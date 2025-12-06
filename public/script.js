@@ -607,13 +607,26 @@ function showCabinetMemberDetail(member) {
   const detail = document.getElementById('cabinetMemberDetail');
   detail.innerHTML = `
     <div class="detail-header">
-      <img src="${member.photo}" alt="${member.name}" class="portrait" />
-      <img src="${member.seal}" alt="${member.office} seal" class="seal" />
+      <img src="${member.photo}" alt="${member.name || ''}" class="portrait"
+           onerror="this.onerror=null;this.src='assets/default-photo.png';" />
+      ${member.seal ? `<img src="${member.seal}" alt="${member.office} seal" class="seal" />` : ''}
     </div>
-    <h2>${member.name}</h2>
-    <h4>${member.office}</h4>
-    <p>${member.bio}</p>
+    <div class="info">
+      <h2>${member.name || 'Unknown'}</h2>
+      <p><strong>Office:</strong> ${member.office || ''}</p>
+      <p><strong>State:</strong> ${member.state || ''}</p>
+      <p><strong>Party:</strong> ${member.party || ''}</p>
+      <p><strong>Term:</strong> ${member.term || ''}</p>
+      <p><strong>Bio:</strong> ${member.bio || ''}</p>
+      <p><strong>Education:</strong> ${member.education || ''}</p>
+      <p><strong>Salary:</strong> ${member.salary || ''}</p>
+      <p><strong>Predecessor:</strong> ${member.predecessor || ''}</p>
+      ${member.links?.map(link =>
+        `<p><a href="${link.url}" target="_blank">${link.label}</a></p>`
+      ).join('') || ''}
+    </div>
   `;
+
   document.getElementById('cabinetGridView').style.display = 'none';
   document.getElementById('cabinetDetailView').style.display = 'block';
 }
