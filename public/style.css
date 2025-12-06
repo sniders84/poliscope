@@ -3420,3 +3420,22 @@ nav .tab.active {
     grid-template-columns: 1fr;
   }
 }
+/* === Civic Intelligence tab layout override === */
+#civic .grid {
+  display: grid !important;   /* override global flex */
+  grid-template-columns: repeat(5, 1fr); /* 5 cards per row */
+  gap: 16px;
+}
+
+#civic .civic-block {
+  display: block;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+/* Responsive: collapse to 1 column on narrow screens */
+@media (max-width: 768px) {
+  #civic .grid {
+    grid-template-columns: 1fr;
+  }
+}
