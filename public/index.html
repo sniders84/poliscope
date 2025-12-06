@@ -407,6 +407,36 @@
     <div id="polls-content" class="modal-content"></div>
   </div>
 
+  <!-- === Civics Quiz Modal === -->
+<div id="civicsQuizModal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span class="close" onclick="closeModalWindow('civicsQuizModal')">&times;</span>
+    <div id="civics-quiz">
+      <h2>Daily Civics Test</h2>
+      <p>Answer 20 random questions. Pass with 12 correct.</p>
+
+      <div id="quiz-progress"></div>
+      <div id="quiz-question"></div>
+      <div id="quiz-options"></div>
+
+      <div id="quiz-controls">
+        <button id="quiz-submit">Submit</button>
+        <button id="quiz-next" style="display:none;">Next</button>
+      </div>
+
+      <div id="quiz-feedback"></div>
+      <div id="quiz-score"></div>
+    </div>
+  </div>
+</div>
+
+<!-- === Launcher (add to both civic tab containers) === -->
+<div id="daily-civics-test-launcher">
+  <h3>Daily Civics Test</h3>
+  <p>Practice 20 random questions from the USCIS Civics Test (2025). Pass with 12 correct.</p>
+  <button onclick="openCivicsQuizModal()">Start today’s test</button>
+</div>
+
   <!-- Cabinet Modal -->
   <div id="cabinetModal" class="modal">
     <div class="modal-content">
