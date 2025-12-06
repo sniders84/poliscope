@@ -4472,3 +4472,22 @@ nav .tab.active {
     gap: 16px;
   }
 }
+#cabinetMemberDetail {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+#cabinetMemberDetail .detail-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#cabinetMemberDetail .info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
