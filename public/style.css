@@ -3505,3 +3505,24 @@ nav .tab.active {
   color: var(--accent);             /* deeper blue on hover */
   cursor: pointer;
 }
+/* === Civic Intelligence Card Hover: Blue Outline === */
+#civic .card,
+#civic .link-card,
+#civic .organization-card,
+#civic .official-card,
+#civic .voting-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  border: 1px solid var(--card-border); /* default subtle border */
+}
+
+#civic .card:hover,
+#civic .link-card:hover,
+#civic .organization-card:hover,
+#civic .official-card:hover,
+#civic .voting-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-light);     /* bright blue outline */
+  box-shadow: 0 0 8px var(--accent-glow); /* subtle blue glow */
+  background-color: inherit;             /* keep original background */
+  color: inherit;                        /* keep text color */
+}
