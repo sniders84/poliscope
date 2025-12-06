@@ -4241,3 +4241,47 @@ nav .tab.active {
   object-position: center center !important;
   max-height: 320px;                /* cap so very tall images don’t blow out */
 }
+/* Cabinet Modal: fix portrait cropping and center content */
+#cabinetList.officials-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  align-items: start;
+  padding: 1rem;
+}
+
+#cabinetList .official-card {
+  width: 220px;
+  height: auto;              /* allow card to grow naturally */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+/* Override photo wrapper just for Cabinet */
+#cabinetList .official-card .photo-wrapper {
+  width: 100% !important;
+  height: auto !important;   /* remove fixed 180px */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Portraits: show entire image, centered */
+#cabinetList .official-card .photo-wrapper img {
+  width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important;   /* show full portrait */
+  object-position: center center !important;
+  max-height: 320px;                /* cap so very tall images don’t blow out */
+  display: block;
+  margin: 0 auto 0.75rem auto;
+}
