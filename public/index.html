@@ -559,7 +559,6 @@ async function loadFeed(url) {
   container.appendChild(track);
 
   const sources = [...feeds[section]];
-  const failovers = [...backups[section]];
   const perSourceItems = [];
 
   // Pull items per source; if a source fails (or has no images), use a backup.
