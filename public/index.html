@@ -498,48 +498,27 @@
       showStartupHub();
     });
 
-   // --- Carousel Feed Logic (audited, image-enforced, 50 items, failover) ---
+  // --- Carousel Feed Logic (audited, thumbnails-only, 50 items) ---
 const feeds = {
   world: [
-    // Primary set (rss2json-compatible and image-rich)
-    "https://feeds.bbci.co.uk/news/world/rss.xml",
-    "https://feeds.npr.org/1004/rss.xml",
-    "https://www.aljazeera.com/xml/rss/all.xml"
+    "https://feeds.bbci.co.uk/news/world/rss.xml",     // BBC World (media:content)
+    "https://www.aljazeera.com/xml/rss/all.xml",       // Al Jazeera (enclosure)
+    "https://feeds.skynews.com/feeds/rss/world.xml"    // Sky News World (media:content)
   ],
   finance: [
-    // Avoid sources that threw 422/500; these return images reliably via rss2json
-    "https://www.investing.com/rss/news.rss",
-    "https://www.investing.com/rss/news_301.rss",   // stocks/markets
-    "https://feeds.finance.yahoo.com/rss/2.0/headline?s=^DJI"
+    "https://www.investing.com/rss/news.rss",          // Investing.com (thumbnail)
+    "https://www.investing.com/rss/news_301.rss",      // Investing.com Stocks/Markets (thumbnail)
+    "https://feeds.finance.yahoo.com/rss/2.0/headline?s=^DJI" // Yahoo Finance DJI (enclosure)
   ],
   economy: [
-    // Authoritative + image-bearing in rss2json
-    "https://www.investing.com/rss/news_25.rss",    // macro/economy
-    "https://feeds.npr.org/1017/rss.xml",           // NPR economy
-    "https://blogs.worldbank.org/rss"               // World Bank blogs with enclosures
+    "https://blogs.worldbank.org/rss",                 // World Bank Blogs (enclosure)
+    "https://www.imf.org/en/Blogs/Articles/RSS",       // IMF Blog (media/enclosure)
+    "https://www.brookings.edu/topic/economics/feed/"  // Brookings – Economics (media:content)
   ]
 };
 
-const backups = {
-  world: [
-    "https://rss.nytimes.com/services/xml/rss/nyt/World.xml",
-    "https://www.dw.com/en/top-stories/s-9097?maca=en-rss-en-all-1296-xml-rss",
-    "https://feeds.skynews.com/feeds/rss/world.xml"
-  ],
-  finance: [
-    "https://www.investing.com/rss/news_274.rss",   // economic indicators
-    "https://www.investing.com/rss/news_3.rss",     // commodities
-    "https://www.investing.com/rss/news_5.rss"      // indices
-  ],
-  economy: [
-    "https://www.oecd.org/newsroom/rss.xml",
-    "https://www.imf.org/en/News/rss",
-    "https://www.weforum.org/agenda/feed"           // WEF agenda; includes images
-  ]
-};
-
-// Fetch helper with enforced count=50 and thumbnail requirement.
-// If a feed errors (422/500) or returns items without images, we return [].
+// Fetch via rss2json with count=50, and STRICTLY require native image fields.
+// No content-scrape fallback; only pass items with item.thumbnail OR enclosure.link.
 async function loadFeed(url) {
   const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}&count=50`;
   try {
@@ -547,12 +526,7 @@ async function loadFeed(url) {
     if (!res.ok) return [];
     const data = await res.json();
     const items = Array.isArray(data.items) ? data.items : [];
-    // Only keep items that have a usable image field
-    return items.filter(item =>
-      item.thumbnail ||
-      (item.enclosure && item.enclosure.link) ||
-      (item.content && /<img[^>]+src="([^">]+)"/i.test(item.content))
-    );
+    return items.filter(item => item.thumbnail || (item.enclosure && item.enclosure.link));
   } catch {
     return [];
   }
@@ -600,16 +574,14 @@ async function loadFeed(url) {
       url = backupUrl;
     }
 
-    const mapped = items.map(item => {
-      let img = "";
-      if (item.thumbnail) img = item.thumbnail;
-      else if (item.enclosure && item.enclosure.link) img = item.enclosure.link;
-      else {
-        const m = item.content?.match(/<img[^>]+src="([^">]+)"/i);
-        if (m && m[1]) img = m[1];
-      }
-      return { item, img, source: url };
-    });
+ // Map to { item, img, source } — STRICT: thumbnails or enclosures only
+const mapped = items.map(item => {
+  let img = "";
+  if (item.thumbnail) img = item.thumbnail;
+  else if (item.enclosure && item.enclosure.link) img = item.enclosure.link;
+  // DO NOT parse content HTML for images; enforce native fields only
+  return { item, img, source: url };
+});
 
     perSourceItems.push(mapped.filter(x => !!x.img));
   }
