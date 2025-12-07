@@ -552,7 +552,8 @@ async function loadFeed(url) {
   return "assets/default-thumb.png"; // fallback image
 }
 
- async function loadSection(section, containerId) {
+ <script>
+async function loadSection(section, containerId) {
   const container = document.getElementById(containerId);
   const track = document.createElement("div");
   track.className = "carousel-track";
@@ -563,13 +564,16 @@ async function loadFeed(url) {
 
   // Pull items per source; only keep those with usable images
   for (let i = 0; i < sources.length; i++) {
-    let url = sources[i];
-    let items = await loadFeed(url);
+    const url = sources[i];
+    const items = await loadFeed(url);
 
     const mapped = items.map(item => {
       let img = "";
-      if (item.thumbnail) img = item.thumbnail;
-      else if (item.enclosure && item.enclosure.link) img = item.enclosure.link;
+      if (item.thumbnail) {
+        img = item.thumbnail;
+      } else if (item.enclosure && item.enclosure.link) {
+        img = item.enclosure.link;
+      }
       return { item, img, source: url };
     });
 
@@ -612,3 +616,4 @@ async function loadFeed(url) {
     track.appendChild(card);
   });
 }
+</script>
