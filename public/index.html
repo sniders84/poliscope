@@ -498,24 +498,65 @@
       showStartupHub();
     });
 
-    // --- Carousel Feed Logic (image-enforced, 25 items, rotating track + arrows) ---
+   // --- Carousel Feed Logic (audited, image-enforced, 50 items, failover) ---
 const feeds = {
   world: [
+    // Primary set (rss2json-compatible and image-rich)
     "https://feeds.bbci.co.uk/news/world/rss.xml",
     "https://feeds.npr.org/1004/rss.xml",
     "https://www.aljazeera.com/xml/rss/all.xml"
   ],
   finance: [
+    // Avoid sources that threw 422/500; these return images reliably via rss2json
     "https://www.investing.com/rss/news.rss",
-    "https://feeds.finance.yahoo.com/rss/2.0/headline?s=^DJI",
-    "https://www.ft.com/?format=rss"
+    "https://www.investing.com/rss/news_301.rss",   // stocks/markets
+    "https://feeds.finance.yahoo.com/rss/2.0/headline?s=^DJI"
   ],
   economy: [
-    "https://www.investing.com/rss/news_25.rss",
-    "https://feeds.npr.org/1017/rss.xml",
-    "https://blogs.worldbank.org/rss"
+    // Authoritative + image-bearing in rss2json
+    "https://www.investing.com/rss/news_25.rss",    // macro/economy
+    "https://feeds.npr.org/1017/rss.xml",           // NPR economy
+    "https://blogs.worldbank.org/rss"               // World Bank blogs with enclosures
   ]
 };
+
+const backups = {
+  world: [
+    "https://rss.nytimes.com/services/xml/rss/nyt/World.xml",
+    "https://www.dw.com/en/top-stories/s-9097?maca=en-rss-en-all-1296-xml-rss",
+    "https://feeds.skynews.com/feeds/rss/world.xml"
+  ],
+  finance: [
+    "https://www.investing.com/rss/news_274.rss",   // economic indicators
+    "https://www.investing.com/rss/news_3.rss",     // commodities
+    "https://www.investing.com/rss/news_5.rss"      // indices
+  ],
+  economy: [
+    "https://www.oecd.org/newsroom/rss.xml",
+    "https://www.imf.org/en/News/rss",
+    "https://www.weforum.org/agenda/feed"           // WEF agenda; includes images
+  ]
+};
+
+// Fetch helper with enforced count=50 and thumbnail requirement.
+// If a feed errors (422/500) or returns items without images, we return [].
+async function loadFeed(url) {
+  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}&count=50`;
+  try {
+    const res = await fetch(apiUrl);
+    if (!res.ok) return [];
+    const data = await res.json();
+    const items = Array.isArray(data.items) ? data.items : [];
+    // Only keep items that have a usable image field
+    return items.filter(item =>
+      item.thumbnail ||
+      (item.enclosure && item.enclosure.link) ||
+      (item.content && /<img[^>]+src="([^">]+)"/i.test(item.content))
+    );
+  } catch {
+    return [];
+  }
+}
 
     async function loadFeed(url) {
       try {
@@ -543,23 +584,33 @@ const feeds = {
   track.className = "carousel-track";
   container.appendChild(track);
 
-  // Fetch items per source and keep them separated to enforce distribution
+  const sources = [...feeds[section]];
+  const failovers = [...backups[section]];
   const perSourceItems = [];
-  for (const url of feeds[section]) {
-    const items = await loadFeed(url);
-    // Map to { item, img, source }
+
+  // Pull items per source; if a source fails (or has no images), use a backup.
+  for (let i = 0; i < sources.length; i++) {
+    let url = sources[i];
+    let items = await loadFeed(url);
+
+    if (!items.length && failovers.length) {
+      // swap in backup and retry once
+      const backupUrl = failovers.shift();
+      items = await loadFeed(backupUrl);
+      url = backupUrl;
+    }
+
     const mapped = items.map(item => {
-      // Strict image extraction
       let img = "";
       if (item.thumbnail) img = item.thumbnail;
       else if (item.enclosure && item.enclosure.link) img = item.enclosure.link;
       else {
-        const match = item.content?.match(/<img[^>]+src="([^">]+)"/i);
-        if (match && match[1]) img = match[1];
+        const m = item.content?.match(/<img[^>]+src="([^">]+)"/i);
+        if (m && m[1]) img = m[1];
       }
       return { item, img, source: url };
     });
-    // Only keep items with usable images
+
     perSourceItems.push(mapped.filter(x => !!x.img));
   }
 
@@ -569,7 +620,6 @@ const feeds = {
   let added = 0;
   let index = 0;
 
-  // Continue while we can still pull at least one item from any source
   while (added < maxCards) {
     let progressed = false;
     for (let s = 0; s < perSourceItems.length; s++) {
@@ -581,11 +631,11 @@ const feeds = {
         if (added >= maxCards) break;
       }
     }
-    if (!progressed) break; // all sources exhausted
+    if (!progressed) break;
     index++;
   }
 
-  // Build cards
+  // Build cards (guaranteed all have images)
   result.forEach(({ item, img }) => {
     const card = document.createElement("a");
     card.className = "hub-card carousel-card";
