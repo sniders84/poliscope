@@ -4298,3 +4298,29 @@ nav .tab.active {
   font-weight: 600;
   margin-bottom: 0.75rem;
 }
+/* Feedback text */
+#quiz-feedback {
+  margin-top: 1rem;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: #f9f9f9; /* default bright white */
+}
+
+/* Correct answer feedback */
+#quiz-feedback.correct {
+  color: #4caf50; /* bright green */
+  font-weight: 600;
+}
+
+/* Incorrect answer feedback */
+#quiz-feedback.incorrect {
+  color: #ff5252; /* bright red */
+  font-weight: 600;
+}
+
+/* Explanation text inside feedback */
+#quiz-feedback small {
+  display: block;
+  margin-top: 0.3rem;
+  color: #ddd; /* lighter gray for readability */
+}
