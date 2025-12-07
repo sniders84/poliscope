@@ -8446,6 +8446,7 @@ nav .tab.active {
   flex-direction: column;
   justify-content: space-between;
   min-height: 220px;           /* enforce same height */
+  max-width: 400px;            /* enforce same width */
 }
 
 #quiz-launchers div:hover {
@@ -8456,16 +8457,16 @@ nav .tab.active {
 #quiz-launchers h3 {
   margin-top: 0;
   margin-bottom: 0.5rem;
-  color: #ffffff;              /* white headings */
+  color: #ffffff;
 }
 
 #quiz-launchers p {
   margin-bottom: 1rem;
-  color: #ddd;                 /* lighter gray text */
+  color: #ddd;
 }
 
 #quiz-launchers button {
-  background: linear-gradient(90deg, #2042ff, #6a5af9); /* same gradient for both */
+  background: linear-gradient(90deg, #2042ff, #6a5af9);
   color: #fff;
   border: none;
   border-radius: 8px;
