@@ -502,33 +502,22 @@
   // --- Carousel Feed Logic (image-enforced, 25 items, rotating track + arrows) ---
   const feeds = {
     world: [
-      // BBC World News (free, with images)
       "https://feeds.bbci.co.uk/news/world/rss.xml",
-      // Al Jazeera English (free, with images)
       "https://www.aljazeera.com/xml/rss/all.xml",
-      // NPR World News (free, with images)
       "https://feeds.npr.org/1004/rss.xml"
     ],
     finance: [
-      // CNBC Top News (business/markets, free, with images)
       "https://www.cnbc.com/id/100003114/device/rss/rss.xml",
-      // Yahoo Finance Headlines (free, with images)
       "https://feeds.finance.yahoo.com/rss/2.0/headline?s=^DJI",
-      // Investing.com News (free, with images)
       "https://www.investing.com/rss/news.rss"
     ],
     economy: [
-      // CNBC Economy Feed (free, with images)
       "https://www.cnbc.com/id/20910258/device/rss/rss.xml",
-      // NPR Economy (free, with images)
       "https://feeds.npr.org/1017/rss.xml",
-      // Investing.com Economy (macro news, free, with images)
       "https://www.investing.com/rss/news_25.rss"
     ]
   };
 
- <script>
-  // --- Carousel Feed Logic (image-enforced, 25 items, rotating track + arrows) ---
   async function loadFeed(url) {
     try {
       const response = await fetch(
@@ -547,7 +536,7 @@
     if (item.enclosure && item.enclosure.link) return item.enclosure.link;
     const match = item.content?.match(/<img[^>]+src="([^">]+)"/i);
     if (match && match[1]) return match[1];
-    return "assets/default-thumb.png"; // fallback image so no blanks
+    return "assets/default-thumb.png"; // fallback so no blanks
   }
 
   async function loadSection(section, containerId) {
@@ -565,7 +554,7 @@
     const withImages = allItems
       .map(item => ({ item, img: extractImage(item) }))
       .filter(({ img }) => !!img)
-      .slice(0, 25); // enforce cap of 25 with images
+      .slice(0, 25);
 
     withImages.forEach(({ item, img }) => {
       const card = document.createElement("a");
@@ -584,24 +573,18 @@
 
   function setupControls(containerId) {
     const track = document.querySelector(`#${containerId} .carousel-track`);
-    const prevBtn = document.querySelector(
-      `.carousel-controls .prev[data-target="${containerId}"]`
-    );
-    const nextBtn = document.querySelector(
-      `.carousel-controls .next[data-target="${containerId}"]`
-    );
+    const prevBtn = document.querySelector(`.carousel-controls .prev[data-target="${containerId}"]`);
+    const nextBtn = document.querySelector(`.carousel-controls .next[data-target="${containerId}"]`);
 
     let position = 0;
-    const step = 310; // card width + ~gap
+    const step = 310;
 
-    // Auto-scroll (5 seconds)
     setInterval(() => {
       position++;
       if (position >= track.children.length) position = 0;
       track.style.transform = `translateX(-${position * step}px)`;
     }, 5000);
 
-    // Manual controls
     prevBtn.addEventListener("click", () => {
       position = Math.max(0, position - 1);
       track.style.transform = `translateX(-${position * step}px)`;
@@ -612,12 +595,9 @@
       track.style.transform = `translateX(-${position * step}px)`;
     });
   }
-</script>
-<script src="script.js"></script>
 
-<script>
-  // Initialize carousels: load feeds then wire controls
-  (async () => {
+  // Initialize carousels after DOM is ready
+  document.addEventListener("DOMContentLoaded", async () => {
     await loadSection("world", "world-news-carousel");
     await loadSection("finance", "finance-carousel");
     await loadSection("economy", "economy-carousel");
@@ -625,15 +605,11 @@
     setupControls("world-news-carousel");
     setupControls("finance-carousel");
     setupControls("economy-carousel");
-  })();
-</script>
 
-<script>
-  // Force Home Hub tab to show on page load and highlight its button
-  document.addEventListener("DOMContentLoaded", () => {
     showStartupHub(); // Home Hub loads first and button is highlighted
   });
 </script>
 
+<script src="script.js" defer></script>
 </body>
 </html>
