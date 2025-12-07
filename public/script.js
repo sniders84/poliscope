@@ -621,6 +621,21 @@ function showCabinetMemberDetail(member) {
   document.getElementById('cabinetDetailView').style.display = 'block';
 }
 
+// === QUIZZES TAB ===
+function showQuizzes() {
+  showTab('quizzes'); // switch to the quizzes tab
+
+  const quizLaunchers = document.getElementById('quiz-launchers');
+  if (!quizLaunchers) {
+    console.error("Quiz launchers container not found.");
+    return;
+  }
+
+  // You already hard-coded the quiz cards in HTML,
+  // so here we just make sure the tab shows them.
+  quizLaunchers.style.display = 'flex';
+}
+
 // === CIVIC TAB ===
 function showCivic() {
   showTab('civic');
