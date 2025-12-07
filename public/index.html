@@ -499,21 +499,21 @@
     });
 
     // --- Carousel Feed Logic (image-enforced, 25 items, rotating track + arrows) ---
- const feeds = {
+const feeds = {
   world: [
-    "https://www.aljazeera.com/xml/rss/all.xml",            // Al Jazeera English (images)
-    "https://www.dw.com/en/top-stories/s-9097/rss",         // Deutsche Welle World (images)
-    "https://feeds.npr.org/1004/rss.xml"                    // NPR World (media:content thumbnails)
+    "https://www.rferl.org/rss",                          // Radio Free Europe / Radio Liberty (images)
+    "https://www.voanews.com/rss",                        // Voice of America World (images)
+    "https://www.un.org/press/en/rss.xml"                 // United Nations News (images in enclosures)
   ],
   finance: [
-    "https://www.nasdaq.com/feed/rssoutbound?category=Markets", // Nasdaq Markets (images/enclosures)
-    "https://www.cnbc.com/id/10001147/device/rss/rss.xml",      // CNBC Markets (image fields)
-    "https://www.reutersagency.com/feed/?best-topics=business-finance" // Reuters Business/Finance (image enclosures)
+    "https://www.fool.com/feeds/index.aspx"               // Motley Fool Markets (images)
+    ,"https://www.kiplinger.com/feeds/rss/all"            // Kiplinger Finance (images)
+    ,"https://www.seekingalpha.com/feed.xml"              // Seeking Alpha (markets, images)
   ],
   economy: [
-    "https://www.eia.gov/tools/rssfeeds/todayinenergy.xml", // U.S. Energy Information Admin (image‑heavy)
-    "https://fredblog.stlouisfed.org/feed/",                // St. Louis Fed FRED Blog (images in posts)
-    "https://www.census.gov/newsroom/stories.rss"           // U.S. Census Bureau Stories (images)
+    "https://www.brookings.edu/feed/",                    // Brookings Institution Economy (images)
+    "https://www.piie.com/rss.xml",                       // Peterson Institute for International Economics (images)
+    "https://www.whitehouse.gov/cea/feed/"                // Council of Economic Advisers (images/enclosures)
   ]
 };
 
