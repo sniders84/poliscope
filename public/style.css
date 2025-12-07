@@ -8645,3 +8645,36 @@ nav .tab.active {
   transform: translateY(-2px);
   background: linear-gradient(90deg, #6a5af9, #2042ff);
 }
+/* Make the civic tab a flex column */
+#civic {
+  display: flex;
+  flex-direction: column;
+  min-height: 80vh;          /* ensures enough vertical space */
+  justify-content: flex-end; /* pushes content to bottom */
+  align-items: center;       /* centers horizontally */
+  box-sizing: border-box;
+  padding-bottom: 30px;      /* breathing room at bottom */
+}
+
+/* Row of launchers side-by-side */
+#quiz-launchers {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Cards already styled with fixed width/height */
+.quiz-card {
+  width: 300px;
+  height: 220px;
+  background-color: #2b2b2b;
+  color: #f0f0f0;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
