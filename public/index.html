@@ -528,16 +528,33 @@
   };
 
   async function loadFeed(url) {
-    try {
-      const response = await fetch(
-        `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`
-      );
-      const data = await response.json();
-      return data.items || [];
-    } catch {
-      return [];
-    }
+  try {
+    const res = await fetch(url);
+    const text = await res.text();
+    const doc = new DOMParser().parseFromString(text, "application/xml");
+
+    const items = Array.from(doc.querySelectorAll("item")).map(node => {
+      const get = sel => node.querySelector(sel)?.textContent?.trim() || "";
+      const enclosure = node.querySelector("enclosure[url]")?.getAttribute("url") || "";
+      const mediaContent = node.querySelector("media\\:content[url]")?.getAttribute("url") || "";
+      const mediaThumb = node.querySelector("media\\:thumbnail[url]")?.getAttribute("url") || "";
+
+      return {
+        title: get("title"),
+        link: get("link"),
+        pubDate: get("pubDate"),
+        enclosure: { link: enclosure || mediaContent || mediaThumb },
+        description: get("description"),
+        content: get("content\\:encoded")
+      };
+    });
+
+    return items;
+  } catch (err) {
+    console.error("Feed load failed:", err);
+    return [];
   }
+}
 
   function extractImage(item) {
     if (item.thumbnail) return item.thumbnail;
