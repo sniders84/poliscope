@@ -954,14 +954,22 @@ function getDailyQuestions() {
 
 function renderQuestion() {
   const q = quizQuestions[currentQuestion];
+
+  // Update progress text
   document.getElementById("quiz-progress").textContent =
     `Question ${currentQuestion + 1} of ${quizQuestions.length}`;
 
+  // Update progress bar fill
+  document.getElementById("quiz-progress-fill").style.width =
+    `${((currentQuestion + 1) / quizQuestions.length) * 100}%`;
+
+  // Render question and options
   document.getElementById("quiz-question").innerHTML = `<h3>${q.q}</h3>`;
   document.getElementById("quiz-options").innerHTML = q.options.map((opt,i) =>
     `<label><input type="radio" name="opt" value="${i}"> ${opt}</label><br>`
   ).join("");
 
+  // Reset feedback and controls
   document.getElementById("quiz-feedback").textContent = "";
   document.getElementById("quiz-submit").style.display = "inline-block";
   document.getElementById("quiz-next").style.display = "none";
@@ -995,12 +1003,17 @@ document.getElementById("quiz-next").onclick = () => {
   if (currentQuestion < quizQuestions.length) {
     renderQuestion();
   } else {
+    // Clear quiz UI
     document.getElementById("quiz-question").innerHTML = "";
     document.getElementById("quiz-options").innerHTML = "";
     document.getElementById("quiz-progress").textContent = "";
+    document.getElementById("quiz-progress-fill").style.width = "100%"; // fill bar at end
     document.getElementById("quiz-feedback").textContent = "";
+
+    // Show final score
     document.getElementById("quiz-score").textContent =
       `Final Score: ${score}/${quizQuestions.length} — ${score >= 12 ? "Pass ✅" : "Try Again ❌"}`;
+
     document.getElementById("quiz-next").style.display = "none";
   }
 };
