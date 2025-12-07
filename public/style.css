@@ -4285,3 +4285,16 @@ nav .tab.active {
   background: #2042ff; /* bright blue fill */
   transition: width 0.4s ease;
 }
+/* Tagline under quiz title */
+#civics-quiz p {
+  color: #f9f9f9;   /* bright white for readability */
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Progress text (e.g., "Question 1 of 20") */
+#quiz-progress {
+  color: #f9f9f9;   /* bright white */
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
