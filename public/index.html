@@ -372,17 +372,19 @@
   <h2>Civic Intelligence Dashboard</h2>
   <div id="calendar"></div>
 
-  <div id="daily-civics-test-launcher">
-    <h3>Daily Civics Test</h3>
-    <p>Test your United States government, economics, and history knowledge.</p>
-    <button onclick="openCivicsQuizModal()">Start today’s test</button>
-  </div>
+  <!-- Wrap both launchers in one flex container -->
+  <div id="quiz-launchers" style="display:flex; gap:20px; margin-top:20px;">
+    <div id="daily-civics-test-launcher" style="flex:1;">
+      <h3>Daily Civics Test</h3>
+      <p>Test your United States government, economics, and history knowledge.</p>
+      <button onclick="openCivicsQuizModal()">Start today’s test</button>
+    </div>
 
-  <!-- Political Typology Quiz launcher (placed next to civics launcher) -->
-  <div id="political-typology-launcher">
-    <h3>Political Typology Quiz</h3>
-    <p>See where you align across the political spectrum.</p>
-    <button onclick="openTypologyQuizModal()">Start the typology quiz</button>
+    <div id="political-typology-launcher" style="flex:1;">
+      <h3>Political Typology Quiz</h3>
+      <p>See where you align across the political spectrum.</p>
+      <button onclick="openTypologyQuizModal()">Start the typology quiz</button>
+    </div>
   </div>
 </section>
 
