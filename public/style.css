@@ -4324,3 +4324,62 @@ nav .tab.active {
   margin-top: 0.3rem;
   color: #ddd; /* lighter gray for readability */
 }
+/* === Quiz animations === */
+
+/* Fade-in + slight rise for question text */
+@keyframes quizFadeInUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Option cards slide + fade-in */
+@keyframes quizOptionIn {
+  from { opacity: 0; transform: translateX(8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Feedback fade-in */
+@keyframes quizFeedbackIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Modal content gentle pop */
+@keyframes modalPop {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Apply modal pop when civics modal opens */
+#civicsQuizModal .modal-content {
+  animation: modalPop 220ms ease-out;
+}
+
+/* Question fade-in utility */
+.quiz-animate-question h3 {
+  animation: quizFadeInUp 240ms ease-out both;
+}
+
+/* Options container animates its children (stagger effect via nth-child) */
+.quiz-animate-options label {
+  animation: quizOptionIn 220ms ease-out both;
+}
+.quiz-animate-options label:nth-child(1) { animation-delay: 40ms; }
+.quiz-animate-options label:nth-child(2) { animation-delay: 80ms; }
+.quiz-animate-options label:nth-child(3) { animation-delay: 120ms; }
+.quiz-animate-options label:nth-child(4) { animation-delay: 160ms; }
+.quiz-animate-options label:nth-child(5) { animation-delay: 200ms; }
+
+/* Feedback fade-in */
+.quiz-animate-feedback {
+  animation: quizFeedbackIn 200ms ease-out both;
+}
+
+/* Micro-interaction for buttons */
+#quiz-controls button {
+  transition: transform 120ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+#quiz-controls button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+}
