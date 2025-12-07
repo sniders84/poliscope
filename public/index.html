@@ -510,13 +510,11 @@ const feeds = {
     "https://www.cnbc.com/id/10001147/device/rss/rss.xml",// CNBC Markets
     "https://www.reuters.com/rssFeed/businessNews"        // Reuters Business & Finance
   ],
-  economy: [
-    "https://fredblog.stlouisfed.org/feed/",                // St. Louis Fed FRED Blog (JSON parses, images in posts)
-    "https://www.piie.com/rss.xml",                         // Peterson Institute for International Economics (respected, parses cleanly)
-    "https://www.brookings.edu/feed/",                      // Brookings Institution Economy (respected, parses, images included)
-    "https://www.imf.org/external/rss/rss.aspx?category=Publications", // IMF publications (global economy, parses)
-    "https://www.oecd.org/economy/publications/rss.xml"     // OECD Economy publications (respected, parses)
-  ]
+ economy: [
+  "https://www.economist.com/finance-and-economics/rss.xml",   // The Economist Finance & Economics
+  "https://www.imf.org/external/rss/rss.aspx?category=Publications", // IMF Publications
+  "https://www.oecd.org/economy/publications/rss.xml"          // OECD Economy Publications
+]
 };
     async function loadFeed(url) {
       try {
@@ -573,53 +571,116 @@ const feeds = {
   });
 }
 
-    function setupControls(containerId) {
-      const track = document.querySelector(`#${containerId} .carousel-track`);
-      const prevBtn = document.querySelector(`.carousel-controls .prev[data-target="${containerId}"]`);
-      const nextBtn = document.querySelector(`.carousel-controls .next[data-target="${containerId}"]`);
+   <script>
+// Updated loadSection with fallback image
+async function loadSection(section, containerId) {
+  const container = document.getElementById(containerId);
+  const track = document.createElement("div");
+  track.className = "carousel-track";
+  container.appendChild(track);
 
-      let position = 0;
-      const step = 310; // card width + ~gap
+  let allItems = [];
+  for (const url of feeds[section]) {
+    const items = await loadFeed(url);
+    allItems = allItems.concat(items);
+  }
 
-      // Auto-scroll (5 seconds)
-      setInterval(() => {
-        position++;
-        if (position >= track.children.length) position = 0;
-        track.style.transform = `translateX(-${position * step}px)`;
-      }, 5000);
+  const withImages = allItems
+    .map(item => ({
+      item,
+      img: extractImage(item) || "assets/default-thumb.png"
+    }))
+    .slice(0, 25);
 
-      // Manual controls
-      prevBtn.addEventListener("click", () => {
-        position = Math.max(0, position - 1);
-        track.style.transform = `translateX(-${position * step}px)`;
-      });
+  withImages.forEach(({ item, img }) => {
+    const card = document.createElement("a");
+    card.className = "hub-card carousel-card";
+    card.href = item.link;
+    card.target = "_blank";
+    card.rel = "noopener noreferrer";
+    card.innerHTML = `
+      <img src="${img}" alt="" class="carousel-img">
+      <h3>${item.title}</h3>
+      <p>${new Date(item.pubDate).toLocaleDateString()}</p>
+    `;
+    track.appendChild(card);
+  });
+}
 
-      nextBtn.addEventListener("click", () => {
-        position = Math.min(track.children.length - 1, position + 1);
-        track.style.transform = `translateX(-${position * step}px)`;
-      });
-    }
-  </script>
-  <script src="script.js"></script>
+// Updated setupControls with null checks
+function setupControls(containerId) {
+  const track = document.querySelector(`#${containerId} .carousel-track`);
+  const prevBtn = document.querySelector(`.carousel-controls .prev[data-target="${containerId}"]`);
+  const nextBtn = document.querySelector(`.carousel-controls .next[data-target="${containerId}"]`);
+
+  if (!track) return;
+
+  let position = 0;
+  const step = 310; // card width + gap
+
+  // Auto-scroll
+  setInterval(() => {
+    if (track.children.length === 0) return;
+    position++;
+    if (position >= track.children.length) position = 0;
+    track.style.transform = `translateX(-${position * step}px)`;
+  }, 5000);
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      position = Math.max(0, position - 1);
+      track.style.transform = `translateX(-${position * step}px)`;
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      position = Math.min(track.children.length - 1, position + 1);
+      track.style.transform = `translateX(-${position * step}px)`;
+    });
+  }
+}
+
+// Feeds object with respected sources
+const feeds = {
+  world: [
+    "https://feeds.bbci.co.uk/news/world/rss.xml",
+    "http://rss.cnn.com/rss/edition_world.rss",
+    "https://feeds.washingtonpost.com/rss/world"
+  ],
+  finance: [
+    "https://www.marketwatch.com/rss/topstories",
+    "https://www.cnbc.com/id/10001147/device/rss/rss.xml",
+    "https://www.reuters.com/rssFeed/businessNews"
+  ],
+  economy: [
+    "https://www.economist.com/finance-and-economics/rss.xml",
+    "https://www.imf.org/external/rss/rss.aspx?category=Publications",
+    "https://www.oecd.org/economy/publications/rss.xml"
+  ]
+};
+</script>
+
+<script src="script.js"></script>
 
 <script>
-  // Initialize carousels: load feeds then wire controls
-  (async () => {
-    await loadSection("world", "world-news-carousel");
-    await loadSection("finance", "finance-carousel");
-    await loadSection("economy", "economy-carousel");
+// Initialize carousels
+(async () => {
+  await loadSection("world", "world-news-carousel");
+  await loadSection("finance", "finance-carousel");
+  await loadSection("economy", "economy-carousel");
 
-    setupControls("world-news-carousel");
-    setupControls("finance-carousel");
-    setupControls("economy-carousel");
-  })();
+  setupControls("world-news-carousel");
+  setupControls("finance-carousel");
+  setupControls("economy-carousel");
+})();
 </script>
 
 <script>
-  // Force Home Hub tab to show on page load and highlight its button
-  document.addEventListener("DOMContentLoaded", () => {
-    showStartupHub(); // Home Hub loads first and button is highlighted
-  });
+// Force Home Hub tab to show on page load
+document.addEventListener("DOMContentLoaded", () => {
+  showStartupHub();
+});
 </script>
 
 </body>
