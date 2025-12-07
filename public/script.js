@@ -890,6 +890,8 @@ function backToCabinetGrid() {
   detailView.style.display = 'none';
 }
 
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>
 function openCivicsQuizModal() {
   document.getElementById('civicsQuizModal').style.display = 'block';
   initCivicsQuiz();
@@ -916,19 +918,7 @@ function initCivicsQuiz() {
     .then(res => res.json())
     .then(data => {
       allQuestions = data;
-
-      // 🔹 Console sanity check
-      console.log("Loaded questions:", allQuestions.length);
-      console.log("First question:", allQuestions[0].q);
-      console.log("Last question:", allQuestions[allQuestions.length - 1].q);
-
-      // 🔹 Daily randomizer
       quizQuestions = getDailyQuestions();
-
-      // 🔹 Print today’s set to console for verification
-      console.log("Today's 20 questions:");
-      quizQuestions.forEach((q, i) => console.log(`${i + 1}. ${q.q}`));
-
       renderQuestion();
     })
     .catch(err => {
@@ -995,15 +985,87 @@ document.getElementById("quiz-next").onclick = () => {
   if (currentQuestion < quizQuestions.length) {
     renderQuestion();
   } else {
-    document.getElementById("quiz-question").innerHTML = "";
-    document.getElementById("quiz-options").innerHTML = "";
-    document.getElementById("quiz-progress").textContent = "";
-    document.getElementById("quiz-feedback").textContent = "";
-    document.getElementById("quiz-score").textContent =
-      `Final Score: ${score}/${quizQuestions.length} — ${score >= 12 ? "Pass ✅" : "Try Again ❌"}`;
-    document.getElementById("quiz-next").style.display = "none";
+    showResults();
   }
 };
+
+// === Results Screen ===
+function showResults() {
+  // Hide quiz interface
+  document.getElementById("quiz-question").style.display = "none";
+  document.getElementById("quiz-options").style.display = "none";
+  document.getElementById("quiz-progress").style.display = "none";
+  document.getElementById("quiz-feedback").style.display = "none";
+  document.getElementById("quiz-score").style.display = "none";
+  document.getElementById("quiz-controls").style.display = "none";
+
+  // Show results block
+  const results = document.getElementById("quiz-results");
+  results.style.display = "block";
+
+  // Animated score counter
+  let count = 0;
+  const target = score;
+  const total = quizQuestions.length;
+  const scoreEl = document.getElementById("results-score");
+  const interval = setInterval(() => {
+    scoreEl.textContent = `You scored ${count} out of ${total}`;
+    if (count >= target) clearInterval(interval);
+    count++;
+  }, 50);
+
+  // Category breakdown
+  const breakdown = {};
+  quizQuestions.forEach(q => {
+    breakdown[q.category] = (breakdown[q.category] || 0) + 1;
+  });
+  const breakdownDiv = document.getElementById("results-breakdown");
+  breakdownDiv.innerHTML = "";
+  for (const [cat, count] of Object.entries(breakdown)) {
+    const p = document.createElement("p");
+    p.textContent = `${cat}: ${count} questions`;
+    breakdownDiv.appendChild(p);
+  }
+
+  // Confetti celebration
+  launchConfetti();
+}
+
+// === Confetti Launcher ===
+function launchConfetti() {
+  const duration = 2 * 1000;
+  const end = Date.now() + duration;
+
+  (function frame() {
+    confetti({
+      particleCount: 5,
+      angle: 60,
+      spread: 55,
+      origin: { x: 0 }
+    });
+    confetti({
+      particleCount: 5,
+      angle: 120,
+      spread: 55,
+      origin: { x: 1 }
+    });
+
+    if (Date.now() < end) {
+      requestAnimationFrame(frame);
+    }
+  })();
+}
+
+// Restart button
+document.getElementById("results-restart").onclick = () => {
+  initCivicsQuiz();
+  document.getElementById("quiz-results").style.display = "none";
+  document.getElementById("quiz-question").style.display = "block";
+  document.getElementById("quiz-options").style.display = "block";
+  document.getElementById("quiz-progress").style.display = "block";
+  document.getElementById("quiz-controls").style.display = "block";
+};
+</script>
 
 // === POLLS TAB ===
 function showPolls() {
