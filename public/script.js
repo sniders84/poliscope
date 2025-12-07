@@ -890,8 +890,6 @@ function backToCabinetGrid() {
   detailView.style.display = 'none';
 }
 
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-<script>
 function openCivicsQuizModal() {
   document.getElementById('civicsQuizModal').style.display = 'block';
   initCivicsQuiz();
@@ -918,7 +916,19 @@ function initCivicsQuiz() {
     .then(res => res.json())
     .then(data => {
       allQuestions = data;
+
+      // 🔹 Console sanity check
+      console.log("Loaded questions:", allQuestions.length);
+      console.log("First question:", allQuestions[0].q);
+      console.log("Last question:", allQuestions[allQuestions.length - 1].q);
+
+      // 🔹 Daily randomizer
       quizQuestions = getDailyQuestions();
+
+      // 🔹 Print today’s set to console for verification
+      console.log("Today's 20 questions:");
+      quizQuestions.forEach((q, i) => console.log(`${i + 1}. ${q.q}`));
+
       renderQuestion();
     })
     .catch(err => {
@@ -985,87 +995,15 @@ document.getElementById("quiz-next").onclick = () => {
   if (currentQuestion < quizQuestions.length) {
     renderQuestion();
   } else {
-    showResults();
+    document.getElementById("quiz-question").innerHTML = "";
+    document.getElementById("quiz-options").innerHTML = "";
+    document.getElementById("quiz-progress").textContent = "";
+    document.getElementById("quiz-feedback").textContent = "";
+    document.getElementById("quiz-score").textContent =
+      `Final Score: ${score}/${quizQuestions.length} — ${score >= 12 ? "Pass ✅" : "Try Again ❌"}`;
+    document.getElementById("quiz-next").style.display = "none";
   }
 };
-
-// === Results Screen ===
-function showResults() {
-  // Hide quiz interface
-  document.getElementById("quiz-question").style.display = "none";
-  document.getElementById("quiz-options").style.display = "none";
-  document.getElementById("quiz-progress").style.display = "none";
-  document.getElementById("quiz-feedback").style.display = "none";
-  document.getElementById("quiz-score").style.display = "none";
-  document.getElementById("quiz-controls").style.display = "none";
-
-  // Show results block
-  const results = document.getElementById("quiz-results");
-  results.style.display = "block";
-
-  // Animated score counter
-  let count = 0;
-  const target = score;
-  const total = quizQuestions.length;
-  const scoreEl = document.getElementById("results-score");
-  const interval = setInterval(() => {
-    scoreEl.textContent = `You scored ${count} out of ${total}`;
-    if (count >= target) clearInterval(interval);
-    count++;
-  }, 50);
-
-  // Category breakdown
-  const breakdown = {};
-  quizQuestions.forEach(q => {
-    breakdown[q.category] = (breakdown[q.category] || 0) + 1;
-  });
-  const breakdownDiv = document.getElementById("results-breakdown");
-  breakdownDiv.innerHTML = "";
-  for (const [cat, count] of Object.entries(breakdown)) {
-    const p = document.createElement("p");
-    p.textContent = `${cat}: ${count} questions`;
-    breakdownDiv.appendChild(p);
-  }
-
-  // Confetti celebration
-  launchConfetti();
-}
-
-// === Confetti Launcher ===
-function launchConfetti() {
-  const duration = 2 * 1000;
-  const end = Date.now() + duration;
-
-  (function frame() {
-    confetti({
-      particleCount: 5,
-      angle: 60,
-      spread: 55,
-      origin: { x: 0 }
-    });
-    confetti({
-      particleCount: 5,
-      angle: 120,
-      spread: 55,
-      origin: { x: 1 }
-    });
-
-    if (Date.now() < end) {
-      requestAnimationFrame(frame);
-    }
-  })();
-}
-
-// Restart button
-document.getElementById("results-restart").onclick = () => {
-  initCivicsQuiz();
-  document.getElementById("quiz-results").style.display = "none";
-  document.getElementById("quiz-question").style.display = "block";
-  document.getElementById("quiz-options").style.display = "block";
-  document.getElementById("quiz-progress").style.display = "block";
-  document.getElementById("quiz-controls").style.display = "block";
-};
-</script>
 
 // === POLLS TAB ===
 function showPolls() {
@@ -1747,130 +1685,3 @@ async function fetchGoogleNewsRss(feedUrl) {
       if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
     });
 });
-<script>
-  (function () {
-    const openBtn = document.getElementById('open-quiz-modal');
-    const modal = document.getElementById('quiz-modal');
-    const closeBtn = document.getElementById('quiz-modal-close');
-
-    if (openBtn && modal && closeBtn) {
-      openBtn.addEventListener('click', () => {
-        modal.style.display = 'grid';
-        modal.setAttribute('aria-hidden', 'false');
-      });
-
-      closeBtn.addEventListener('click', () => {
-        modal.style.display = 'none';
-        modal.setAttribute('aria-hidden', 'true');
-      });
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.style.display !== 'none') {
-          modal.style.display = 'none';
-          modal.setAttribute('aria-hidden', 'true');
-        }
-      });
-    }
-  })();
-</script>
-<script>
-(async function() {
-  const response = await fetch('civics-questions.json');
-  const questions = await response.json();
-
-  let currentIndex = 0;
-  const total = 20;
-  const quizSet = questions.sort(() => 0.5 - Math.random()).slice(0, total);
-
-  function renderQuestion(index) {
-    const q = quizSet[index];
-
-    // Tab card
-    document.getElementById('quiz-question-text').textContent = q.q;
-    document.getElementById('quiz-badge-category').textContent = q.category;
-    document.getElementById('quiz-badge-difficulty').textContent = q.difficulty;
-    document.getElementById('quiz-progress-label').textContent = `Question ${index+1} of ${total}`;
-    document.getElementById('quiz-progress-fill').style.width = `${((index+1)/total)*100}%`;
-
-    const optionsContainer = document.getElementById('quiz-options');
-    optionsContainer.innerHTML = '';
-    q.options.forEach((opt, i) => {
-      const btn = document.createElement('button');
-      btn.className = 'option';
-      btn.textContent = opt;
-      btn.onclick = () => checkAnswer(i, q, false);
-      optionsContainer.appendChild(btn);
-    });
-
-    // Modal
-    document.getElementById('modal-question-text').textContent = q.q;
-    document.getElementById('modal-badge-category').textContent = q.category;
-    document.getElementById('modal-badge-difficulty').textContent = q.difficulty;
-    document.getElementById('modal-progress').textContent = `${index+1}/${total}`;
-
-    const modalOptions = document.getElementById('modal-options');
-    modalOptions.innerHTML = '';
-    q.options.forEach((opt, i) => {
-      const btn = document.createElement('button');
-      btn.className = 'option';
-      btn.textContent = opt;
-      btn.onclick = () => checkAnswer(i, q, true);
-      modalOptions.appendChild(btn);
-    });
-
-    document.getElementById('modal-explanation').style.display = 'none';
-  }
-
-  function checkAnswer(selectedIndex, q, inModal) {
-    const correct = selectedIndex === q.answer;
-
-    if (inModal) {
-      const explanation = document.getElementById('modal-explanation');
-      document.getElementById('modal-explanation-text').textContent = q.explanation;
-      explanation.style.display = 'block';
-    }
-
-    const container = inModal ? document.getElementById('modal-options') : document.getElementById('quiz-options');
-    [...container.children].forEach((btn, i) => {
-      btn.disabled = true;
-      if (i === q.answer) btn.classList.add('selected'); // style as correct
-      if (i === selectedIndex && i !== q.answer) btn.classList.add('wrong'); // style as incorrect
-    });
-  }
-
-  document.getElementById('modal-next-btn').addEventListener('click', () => {
-    if (currentIndex < total - 1) {
-      currentIndex++;
-      renderQuestion(currentIndex);
-    }
-  });
-
-  renderQuestion(currentIndex);
-})();
-</script>
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-<script>
-function launchConfetti() {
-  const duration = 2 * 1000;
-  const end = Date.now() + duration;
-
-  (function frame() {
-    confetti({
-      particleCount: 5,
-      angle: 60,
-      spread: 55,
-      origin: { x: 0 }
-    });
-    confetti({
-      particleCount: 5,
-      angle: 120,
-      spread: 55,
-      origin: { x: 1 }
-    });
-
-    if (Date.now() < end) {
-      requestAnimationFrame(frame);
-    }
-  })();
-}
-</script>
