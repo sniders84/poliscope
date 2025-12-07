@@ -499,24 +499,32 @@
     });
 
     // --- Carousel Feed Logic (image-enforced, 25 items, rotating track + arrows) ---
-  const feeds = {
+ const feeds = {
   world: [
-    "https://feeds.bbci.co.uk/news/world/rss.xml",
+    // Reuters World (media:content thumbnails)
+    "https://feeds.reuters.com/reuters/worldNews",
+    // Al Jazeera English (image-rich, consistent enclosures)
     "https://www.aljazeera.com/xml/rss/all.xml",
-    "https://feeds.npr.org/1004/rss.xml"
+    // The Guardian World (media:thumbnail / media:content)
+    "https://www.theguardian.com/world/rss"
   ],
   finance: [
+    // Investing.com Markets (reliable thumbnails)
+    "https://www.investing.com/rss/news.rss",
+    // CNBC Markets (media content present)
     "https://www.cnbc.com/id/10001147/device/rss/rss.xml",
-    "https://feeds.finance.yahoo.com/rss/2.0/headline?s=^DJI",
-    "https://www.investing.com/rss/news.rss"
+    // Yahoo Finance Headlines (includes images frequently)
+    "https://feeds.finance.yahoo.com/rss/2.0/headline?s=^DJI"
   ],
   economy: [
+    // Investing.com Macro/Economy (thumbnails)
+    "https://www.investing.com/rss/news_25.rss",
+    // CNBC Economy (media content present)
     "https://www.cnbc.com/id/20910258/device/rss/rss.xml",
-    "https://feeds.npr.org/1017/rss.xml",
-    "https://www.investing.com/rss/news_25.rss"
+    // The Guardian Economics (media thumbnails)
+    "https://www.theguardian.com/business/economics/rss"
   ]
 };
-
     async function loadFeed(url) {
       try {
         const response = await fetch(
@@ -537,37 +545,69 @@
   return "assets/default-thumb.png"; // fallback image
 }
 
-    async function loadSection(section, containerId) {
-      const container = document.getElementById(containerId);
-      const track = document.createElement("div");
-      track.className = "carousel-track";
-      container.appendChild(track);
+   async function loadSection(section, containerId) {
+  const container = document.getElementById(containerId);
+  const track = document.createElement("div");
+  track.className = "carousel-track";
+  container.appendChild(track);
 
-      let allItems = [];
-      for (const url of feeds[section]) {
-        const items = await loadFeed(url);
-        allItems = allItems.concat(items);
+  // Fetch items per source and keep them separated to enforce distribution
+  const perSourceItems = [];
+  for (const url of feeds[section]) {
+    const items = await loadFeed(url);
+    // Map to { item, img, source }
+    const mapped = items.map(item => {
+      // Strict image extraction
+      let img = "";
+      if (item.thumbnail) img = item.thumbnail;
+      else if (item.enclosure && item.enclosure.link) img = item.enclosure.link;
+      else {
+        const match = item.content?.match(/<img[^>]+src="([^">]+)"/i);
+        if (match && match[1]) img = match[1];
       }
+      return { item, img, source: url };
+    });
+    // Only keep items with usable images
+    perSourceItems.push(mapped.filter(x => !!x.img));
+  }
 
-      const withImages = allItems
-        .map(item => ({ item, img: extractImage(item) }))
-        .filter(({ img }) => !!img)
-        .slice(0, 50); // enforce cap of 50 with images
+  // Round-robin across sources to guarantee visible diversity
+  const maxCards = 50;
+  const result = [];
+  let added = 0;
+  let index = 0;
 
-      withImages.forEach(({ item, img }) => {
-        const card = document.createElement("a");
-        card.className = "hub-card carousel-card";
-        card.href = item.link;
-        card.target = "_blank";
-        card.rel = "noopener noreferrer";
-        card.innerHTML = `
-          <img src="${img}" alt="" class="carousel-img">
-          <h3>${item.title}</h3>
-          <p>${new Date(item.pubDate).toLocaleDateString()}</p>
-        `;
-        track.appendChild(card);
-      });
+  // Continue while we can still pull at least one item from any source
+  while (added < maxCards) {
+    let progressed = false;
+    for (let s = 0; s < perSourceItems.length; s++) {
+      const sourceList = perSourceItems[s];
+      if (index < sourceList.length) {
+        result.push(sourceList[index]);
+        added++;
+        progressed = true;
+        if (added >= maxCards) break;
+      }
     }
+    if (!progressed) break; // all sources exhausted
+    index++;
+  }
+
+  // Build cards
+  result.forEach(({ item, img }) => {
+    const card = document.createElement("a");
+    card.className = "hub-card carousel-card";
+    card.href = item.link;
+    card.target = "_blank";
+    card.rel = "noopener noreferrer";
+    card.innerHTML = `
+      <img src="${img}" alt="" class="carousel-img">
+      <h3>${item.title}</h3>
+      <p>${new Date(item.pubDate).toLocaleDateString()}</p>
+    `;
+    track.appendChild(card);
+  });
+}
 
     function setupControls(containerId) {
       const track = document.querySelector(`#${containerId} .carousel-track`);
