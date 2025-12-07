@@ -454,15 +454,16 @@
 
       <div id="quiz-feedback"></div>
       <div id="quiz-score"></div>
+
+      <!-- Results screen (hidden until quiz ends) -->
+      <div id="quiz-results" class="results-screen" style="display:none">
+        <h2>Your Results</h2>
+        <p id="results-score"></p>
+        <div id="results-breakdown"></div>
+        <button id="results-restart" class="primary-btn">Restart Quiz</button>
+      </div>
     </div>
   </div>
-</div>
-
-<!-- === Launcher (add to both civic tab containers) === -->
-<div id="daily-civics-test-launcher">
-  <h3>Daily Civics Test</h3>
-  <p>Practice 20 random questions from the USCIS Civics Test (2025). Pass with 12 correct.</p>
-  <button onclick="openCivicsQuizModal()">Start today’s test</button>
 </div>
 
   <!-- Cabinet Modal -->
