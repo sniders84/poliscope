@@ -4042,3 +4042,151 @@ nav .tab.active {
     grid-template-columns: 1fr;
   }
 }
+/* === Civics Quiz Modal Modernized Look === */
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 90%;
+  padding: 2rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  animation: fadeIn 0.3s ease;
+}
+
+.close {
+  float: right;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #666;
+}
+.close:hover {
+  color: #000;
+}
+
+/* Quiz header */
+#civics-quiz h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #2042ff;
+}
+#civics-quiz p {
+  margin-bottom: 1.5rem;
+  color: #555;
+}
+
+/* Progress */
+#quiz-progress {
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+/* Question */
+#quiz-question h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: #222;
+}
+
+/* Options */
+#quiz-options label {
+  display: block;
+  background: #f7f7f7;
+  padding: 0.6rem 0.8rem;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+#quiz-options input[type="radio"] {
+  margin-right: 0.5rem;
+}
+#quiz-options label:hover {
+  background: #e9f0ff;
+}
+
+/* Controls */
+#quiz-controls {
+  margin-top: 1rem;
+}
+#quiz-controls button {
+  background: linear-gradient(90deg, #2042ff, #6a5af9);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  margin-right: 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+#quiz-controls button:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(90deg, #6a5af9, #2042ff);
+}
+
+/* Feedback */
+#quiz-feedback {
+  margin-top: 1rem;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+#quiz-feedback small {
+  display: block;
+  margin-top: 0.3rem;
+  color: #666;
+}
+
+/* Final Score */
+#quiz-score {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2042ff;
+}
+
+/* Launcher card */
+#daily-civics-test-launcher {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-top: 1rem;
+}
+#daily-civics-test-launcher h3 {
+  margin-bottom: 0.5rem;
+  color: #2042ff;
+}
+#daily-civics-test-launcher p {
+  margin-bottom: 1rem;
+  color: #555;
+}
+#daily-civics-test-launcher button {
+  background: linear-gradient(90deg, #ff6b6b, #f65fb9);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+#daily-civics-test-launcher button:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(90deg, #f65fb9, #ff6b6b);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
