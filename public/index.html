@@ -499,32 +499,24 @@
     });
 
     // --- Carousel Feed Logic (image-enforced, 25 items, rotating track + arrows) ---
- const feeds = {
+const feeds = {
   world: [
-    // Reuters World (media:content thumbnails)
     "https://feeds.reuters.com/reuters/worldNews",
-    // Al Jazeera English (image-rich, consistent enclosures)
     "https://www.aljazeera.com/xml/rss/all.xml",
-    // The Guardian World (media:thumbnail / media:content)
     "https://www.theguardian.com/world/rss"
   ],
   finance: [
-    // Investing.com Markets (reliable thumbnails)
     "https://www.investing.com/rss/news.rss",
-    // CNBC Markets (media content present)
-    "https://www.cnbc.com/id/10001147/device/rss/rss.xml",
-    // Yahoo Finance Headlines (includes images frequently)
+    "https://feeds.content.dowjones.io/public/rss/mw_markets",
     "https://feeds.finance.yahoo.com/rss/2.0/headline?s=^DJI"
   ],
   economy: [
-    // Investing.com Macro/Economy (thumbnails)
-    "https://www.investing.com/rss/news_25.rss",
-    // CNBC Economy (media content present)
-    "https://www.cnbc.com/id/20910258/device/rss/rss.xml",
-    // The Guardian Economics (media thumbnails)
-    "https://www.theguardian.com/business/economics/rss"
+    "https://www.imf.org/en/News/rss",
+    "https://www.oecd.org/newsroom/rss.xml",
+    "https://blogs.worldbank.org/rss"
   ]
 };
+
     async function loadFeed(url) {
       try {
         const response = await fetch(
