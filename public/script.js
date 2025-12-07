@@ -985,14 +985,18 @@ document.getElementById("quiz-submit").onclick = () => {
   const selectedIndex = parseInt(selected.value, 10);
   const correctText = q.options[q.answer];
 
-  if (selectedIndex === q.answer) {
-    score++;
-    document.getElementById("quiz-feedback").innerHTML =
-      `✅ Correct — ${correctText}.<br><small>${q.explanation}</small>`;
-  } else {
-    document.getElementById("quiz-feedback").innerHTML =
-      `❌ Incorrect. Correct answer: ${correctText}.<br><small>${q.explanation}</small>`;
-  }
+ if (selectedIndex === q.answer) {
+  score++;
+  const feedbackEl = document.getElementById("quiz-feedback");
+  feedbackEl.className = "correct";
+  feedbackEl.innerHTML =
+    `✅ Correct — ${correctText}.<br><small>${q.explanation}</small>`;
+} else {
+  const feedbackEl = document.getElementById("quiz-feedback");
+  feedbackEl.className = "incorrect";
+  feedbackEl.innerHTML =
+    `❌ Incorrect. Correct answer: ${correctText}.<br><small>${q.explanation}</small>`;
+}
 
   document.getElementById("quiz-submit").style.display = "none";
   document.getElementById("quiz-next").style.display = "inline-block";
