@@ -4270,3 +4270,18 @@ nav .tab.active {
 #daily-civics-test-launcher p {
   color: #ddd; /* lighter gray for readability */
 }
+#quiz-progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #444; /* dark gray track */
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+#quiz-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: #2042ff; /* bright blue fill */
+  transition: width 0.4s ease;
+}
