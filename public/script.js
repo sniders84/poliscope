@@ -956,21 +956,36 @@ function renderQuestion() {
   const q = quizQuestions[currentQuestion];
 
   // Update progress text
-  document.getElementById("quiz-progress").textContent =
-    `Question ${currentQuestion + 1} of ${quizQuestions.length}`;
+  const progressEl = document.getElementById("quiz-progress");
+  progressEl.textContent = `Question ${currentQuestion + 1} of ${quizQuestions.length}`;
+  progressEl.style.color = "#f9f9f9"; // brighten progress text
 
   // Update progress bar fill
-  document.getElementById("quiz-progress-fill").style.width =
-    `${((currentQuestion + 1) / quizQuestions.length) * 100}%`;
+  const fill = document.getElementById("quiz-progress-fill");
+  if (fill) {
+    fill.style.width = `${((currentQuestion + 1) / quizQuestions.length) * 100}%`;
+  }
 
-  // Render question and options
-  document.getElementById("quiz-question").innerHTML = `<h3>${q.q}</h3>`;
-  document.getElementById("quiz-options").innerHTML = q.options.map((opt,i) =>
+  // Render question with animation
+  const questionEl = document.getElementById("quiz-question");
+  questionEl.innerHTML = `<h3>${q.q}</h3>`;
+  questionEl.classList.remove("quiz-animate-question");
+  void questionEl.offsetWidth; // reflow to restart animation
+  questionEl.classList.add("quiz-animate-question");
+
+  // Render options with staggered animation
+  const optionsEl = document.getElementById("quiz-options");
+  optionsEl.innerHTML = q.options.map((opt,i) =>
     `<label><input type="radio" name="opt" value="${i}"> ${opt}</label><br>`
   ).join("");
+  optionsEl.classList.remove("quiz-animate-options");
+  void optionsEl.offsetWidth;
+  optionsEl.classList.add("quiz-animate-options");
 
   // Reset feedback and controls
-  document.getElementById("quiz-feedback").textContent = "";
+  const feedbackEl = document.getElementById("quiz-feedback");
+  feedbackEl.textContent = "";
+  feedbackEl.className = "";
   document.getElementById("quiz-submit").style.display = "inline-block";
   document.getElementById("quiz-next").style.display = "none";
 }
@@ -984,19 +999,18 @@ document.getElementById("quiz-submit").onclick = () => {
   const q = quizQuestions[currentQuestion];
   const selectedIndex = parseInt(selected.value, 10);
   const correctText = q.options[q.answer];
+  const feedbackEl = document.getElementById("quiz-feedback");
 
- if (selectedIndex === q.answer) {
-  score++;
-  const feedbackEl = document.getElementById("quiz-feedback");
-  feedbackEl.className = "correct";
-  feedbackEl.innerHTML =
-    `✅ Correct — ${correctText}.<br><small>${q.explanation}</small>`;
-} else {
-  const feedbackEl = document.getElementById("quiz-feedback");
-  feedbackEl.className = "incorrect";
-  feedbackEl.innerHTML =
-    `❌ Incorrect. Correct answer: ${correctText}.<br><small>${q.explanation}</small>`;
-}
+  if (selectedIndex === q.answer) {
+    score++;
+    feedbackEl.className = "correct quiz-animate-feedback";
+    feedbackEl.innerHTML =
+      `✅ Correct — ${correctText}.<br><small>${q.explanation}</small>`;
+  } else {
+    feedbackEl.className = "incorrect quiz-animate-feedback";
+    feedbackEl.innerHTML =
+      `❌ Incorrect. Correct answer: ${correctText}.<br><small>${q.explanation}</small>`;
+  }
 
   document.getElementById("quiz-submit").style.display = "none";
   document.getElementById("quiz-next").style.display = "inline-block";
@@ -1011,7 +1025,7 @@ document.getElementById("quiz-next").onclick = () => {
     document.getElementById("quiz-question").innerHTML = "";
     document.getElementById("quiz-options").innerHTML = "";
     document.getElementById("quiz-progress").textContent = "";
-    document.getElementById("quiz-progress-fill").style.width = "100%"; // fill bar at end
+    document.getElementById("quiz-progress-fill").style.width = "100%";
     document.getElementById("quiz-feedback").textContent = "";
 
     // Show final score
