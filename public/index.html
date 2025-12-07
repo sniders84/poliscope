@@ -500,22 +500,22 @@
 
     // --- Carousel Feed Logic (image-enforced, 25 items, rotating track + arrows) ---
     const feeds = {
-      world: [
-        "http://feeds.bbci.co.uk/news/world/rss.xml",
-        "http://feeds.reuters.com/Reuters/worldNews",
-        "https://www.aljazeera.com/xml/rss/all.xml"
-      ],
-      finance: [
-        "https://www.cnbc.com/id/100003114/device/rss/rss.html",
-        "https://www.marketwatch.com/rss/topstories",
-        "https://feeds.finance.yahoo.com/rss/2.0/headline?s=^DJI"
-      ],
-      economy: [
-        "https://www.cnbc.com/id/20910258/device/rss/rss.html",
-        "https://www.marketwatch.com/rss/economy",
-        "https://feeds.bloomberg.com/economics/news.rss"
-      ]
-    };
+  world: [
+    "https://feeds.bbci.co.uk/news/world/rss.xml",
+    "https://www.aljazeera.com/xml/rss/all.xml",
+    "https://feeds.npr.org/1004/rss.xml"
+  ],
+  finance: [
+    "https://www.cnbc.com/id/100003114/device/rss/rss.xml",
+    "https://feeds.finance.yahoo.com/rss/2.0/headline?s=^DJI",
+    "https://www.investing.com/rss/news.rss"
+  ],
+  economy: [
+    "https://www.cnbc.com/id/20910258/device/rss/rss.xml",
+    "https://feeds.npr.org/1017/rss.xml",
+    "https://www.investing.com/rss/news_25.rss"
+  ]
+};
 
     async function loadFeed(url) {
       try {
