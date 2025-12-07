@@ -498,7 +498,7 @@
       showStartupHub();
     });
 
-    <script>
+   <script>
   // --- Carousel Feed Logic (image-enforced, 25 items, rotating track + arrows) ---
   const feeds = {
     world: [
@@ -605,10 +605,7 @@
       track.style.transform = `translateX(-${position * step}px)`;
     });
   }
-</script>
-<script src="script.js"></script>
 
-<script>
   // Initialize carousels: load feeds then wire controls
   (async () => {
     await loadSection("world", "world-news-carousel");
@@ -619,9 +616,7 @@
     setupControls("finance-carousel");
     setupControls("economy-carousel");
   })();
-</script>
 
-<script>
   // Force Home Hub tab to show on page load and highlight its button
   document.addEventListener("DOMContentLoaded", () => {
     showStartupHub(); // Home Hub loads first and button is highlighted
