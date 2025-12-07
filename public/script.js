@@ -639,19 +639,16 @@ function showQuizzes() {
 // === CIVIC TAB ===
 function showCivic() {
   showTab('civic');
-
   const calendar = document.getElementById('calendar');
   if (!calendar) {
     console.error("Calendar element not found in Civic tab.");
-    return; // stop here if the element is missing
+    return;
   }
-
   calendar.innerHTML = '';
 
   const section = document.createElement('div');
   section.className = 'civic-section';
-
-  // … keep the rest of your existing block logic here …
+  // … rest of your existing logic …
 }
   // --- State block ---
   const stateBlock = document.createElement('div');
