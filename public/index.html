@@ -552,7 +552,7 @@
       const withImages = allItems
         .map(item => ({ item, img: extractImage(item) }))
         .filter(({ img }) => !!img)
-        .slice(0, 25); // enforce cap of 25 with images
+        .slice(0, 50); // enforce cap of 50 with images
 
       withImages.forEach(({ item, img }) => {
         const card = document.createElement("a");
