@@ -562,7 +562,6 @@ async function loadSection(section, containerId) {
   const sources = [...feeds[section]];
   const perSourceItems = [];
 
-  // Pull items per source; only keep those with usable images
   for (let i = 0; i < sources.length; i++) {
     const url = sources[i];
     const items = await loadFeed(url);
@@ -580,7 +579,6 @@ async function loadSection(section, containerId) {
     perSourceItems.push(mapped.filter(x => !!x.img));
   }
 
-  // Round-robin across sources to guarantee diversity
   const maxCards = 50;
   const result = [];
   let added = 0;
@@ -601,7 +599,6 @@ async function loadSection(section, containerId) {
     index++;
   }
 
-  // Build cards
   result.forEach(({ item, img }) => {
     const card = document.createElement("a");
     card.className = "hub-card carousel-card";
