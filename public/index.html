@@ -420,17 +420,29 @@
     <span class="close" onclick="closeModalWindow('civicsQuizModal')">&times;</span>
     <div id="civics-quiz">
       <h2>Daily Civics Test</h2>
-      <p>Answer 20 random questions. Pass with 12 correct.</p>
+      <p>Test your United States government, economics, and history knowledge.</p>
 
+      <!-- Progress bar -->
+      <div id="quiz-progress-bar">
+        <div id="quiz-progress-fill"></div>
+      </div>
+
+      <!-- Progress text -->
       <div id="quiz-progress"></div>
+
+      <!-- Question -->
       <div id="quiz-question"></div>
+
+      <!-- Options -->
       <div id="quiz-options"></div>
 
+      <!-- Controls -->
       <div id="quiz-controls">
         <button id="quiz-submit">Submit</button>
         <button id="quiz-next" style="display:none;">Next</button>
       </div>
 
+      <!-- Feedback + Score -->
       <div id="quiz-feedback"></div>
       <div id="quiz-score"></div>
     </div>
