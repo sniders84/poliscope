@@ -538,36 +538,39 @@ const feeds = {
     }
 
     async function loadSection(section, containerId) {
-      const container = document.getElementById(containerId);
-      const track = document.createElement("div");
-      track.className = "carousel-track";
-      container.appendChild(track);
+  const container = document.getElementById(containerId);
+  const track = document.createElement("div");
+  track.className = "carousel-track";
+  container.appendChild(track);
 
-      let allItems = [];
-      for (const url of feeds[section]) {
-        const items = await loadFeed(url);
-        allItems = allItems.concat(items);
-      }
+  let allItems = [];
+  for (const url of feeds[section]) {
+    const items = await loadFeed(url);
+    allItems = allItems.concat(items);
+  }
 
-      const withImages = allItems
-        .map(item => ({ item, img: extractImage(item) }))
-        .filter(({ img }) => !!img)
-        .slice(0, 25); // enforce cap of 25 with images
+  // Map items with fallback image, no filter
+  const withImages = allItems
+    .map(item => ({
+      item,
+      img: extractImage(item) || "assets/default-thumb.png"
+    }))
+    .slice(0, 25); // enforce cap of 25 cards
 
-      withImages.forEach(({ item, img }) => {
-        const card = document.createElement("a");
-        card.className = "hub-card carousel-card";
-        card.href = item.link;
-        card.target = "_blank";
-        card.rel = "noopener noreferrer";
-        card.innerHTML = `
-          <img src="${img}" alt="" class="carousel-img">
-          <h3>${item.title}</h3>
-          <p>${new Date(item.pubDate).toLocaleDateString()}</p>
-        `;
-        track.appendChild(card);
-      });
-    }
+  withImages.forEach(({ item, img }) => {
+    const card = document.createElement("a");
+    card.className = "hub-card carousel-card";
+    card.href = item.link;
+    card.target = "_blank";
+    card.rel = "noopener noreferrer";
+    card.innerHTML = `
+      <img src="${img}" alt="" class="carousel-img">
+      <h3>${item.title}</h3>
+      <p>${new Date(item.pubDate).toLocaleDateString()}</p>
+    `;
+    track.appendChild(card);
+  });
+}
 
     function setupControls(containerId) {
       const track = document.querySelector(`#${containerId} .carousel-track`);
