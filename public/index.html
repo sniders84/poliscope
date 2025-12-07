@@ -501,19 +501,19 @@
     // --- Carousel Feed Logic (image-enforced, 25 items, rotating track + arrows) ---
    const feeds = {
   world: [
-    "https://www.npr.org/rss/rss.php?id=1004",             // NPR World News
-    "https://www.dw.com/en/top-stories/s-9097/rss",       // Deutsche Welle World
-    "https://www.theguardian.com/world/rss"               // The Guardian World
+    "https://www.dw.com/en/top-stories/s-9097/rss",               // Deutsche Welle World (images)
+    "https://www.aljazeera.com/xml/rss/all.xml",                  // Al Jazeera English (images)
+    "https://feeds.npr.org/1004/rss.xml"                          // NPR World (media:content)
   ],
   finance: [
-    "https://www.ft.com/rss/home",                        // Financial Times
-    "https://www.investing.com/rss/news_25.rss",          // Investing.com Economy/Markets
-    "https://www.bloomberg.com/feed/podcast/etf-report.xml" // Bloomberg ETF/Markets
+    "https://www.investing.com/rss/news_3.rss",                   // Investing.com Stock Markets (thumbnails)
+    "https://www.investing.com/rss/news_5.rss",                   // Investing.com Commodities (thumbnails)
+    "https://www.nasdaq.com/feed/rssoutbound?category=Markets"    // Nasdaq Markets (images/enclosures)
   ],
   economy: [
-    "https://www.federalreserve.gov/feeds/press_all.xml", // Federal Reserve Board Press Releases
-    "https://www.stlouisfed.org/rss/publications",        // St. Louis Fed Economic Publications
-    "https://www.kansascityfed.org/about-us/rss/research" // Kansas City Fed Research & Economic Bulletin
+    "https://www.eia.gov/tools/rssfeeds/todayinenergy.xml",       // EIA Today in Energy (images)
+    "https://fredblog.stlouisfed.org/feed/",                      // FRED Blog (St. Louis Fed) (images)
+    "https://www.census.gov/newsroom/stories.rss"                 // U.S. Census Bureau Stories (images)
   ]
 };
 
