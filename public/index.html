@@ -511,12 +511,13 @@ const feeds = {
     "https://www.reuters.com/rssFeed/businessNews"        // Reuters Business & Finance
   ],
   economy: [
-    "https://www.federalreserve.gov/feeds/press_all.xml", // Federal Reserve Board Press Releases
-    "https://www.stlouisfed.org/rss/publications",        // St. Louis Fed Economic Publications
-    "https://www.kansascityfed.org/about-us/rss/research" // Kansas City Fed Research & Economic Bulletin
+    "https://fredblog.stlouisfed.org/feed/",                // St. Louis Fed FRED Blog (JSON parses, images in posts)
+    "https://www.piie.com/rss.xml",                         // Peterson Institute for International Economics (respected, parses cleanly)
+    "https://www.brookings.edu/feed/",                      // Brookings Institution Economy (respected, parses, images included)
+    "https://www.imf.org/external/rss/rss.aspx?category=Publications", // IMF publications (global economy, parses)
+    "https://www.oecd.org/economy/publications/rss.xml"     // OECD Economy publications (respected, parses)
   ]
 };
-
     async function loadFeed(url) {
       try {
         const response = await fetch(
