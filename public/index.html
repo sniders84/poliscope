@@ -498,7 +498,7 @@
       showStartupHub();
     });
 
-    <script>
+  <script>
 // --- Carousel Feed Logic ---
 const feeds = {
   world: [
@@ -535,7 +535,7 @@ function extractImage(item) {
   if (item.enclosure && item.enclosure.link) return item.enclosure.link;
   const match = item.content?.match(/<img[^>]+src="([^">]+)"/i);
   if (match && match[1]) return match[1];
-  return "";
+  return "assets/default-thumb.png"; // fallback
 }
 
 async function loadSection(section, containerId) {
@@ -550,12 +550,10 @@ async function loadSection(section, containerId) {
     allItems = allItems.concat(items);
   }
 
-  const withImages = allItems
-    .map(item => ({
-      item,
-      img: extractImage(item) || "assets/default-thumb.png"
-    }))
-    .slice(0, 25);
+  const withImages = allItems.slice(0, 25).map(item => ({
+    item,
+    img: extractImage(item)
+  }));
 
   withImages.forEach(({ item, img }) => {
     const card = document.createElement("a");
