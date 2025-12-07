@@ -1685,3 +1685,104 @@ async function fetchGoogleNewsRss(feedUrl) {
       if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
     });
 });
+<script>
+  (function () {
+    const openBtn = document.getElementById('open-quiz-modal');
+    const modal = document.getElementById('quiz-modal');
+    const closeBtn = document.getElementById('quiz-modal-close');
+
+    if (openBtn && modal && closeBtn) {
+      openBtn.addEventListener('click', () => {
+        modal.style.display = 'grid';
+        modal.setAttribute('aria-hidden', 'false');
+      });
+
+      closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+        modal.setAttribute('aria-hidden', 'true');
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.style.display !== 'none') {
+          modal.style.display = 'none';
+          modal.setAttribute('aria-hidden', 'true');
+        }
+      });
+    }
+  })();
+</script>
+<script>
+(async function() {
+  const response = await fetch('civics-questions.json');
+  const questions = await response.json();
+
+  let currentIndex = 0;
+  const total = 20;
+  const quizSet = questions.sort(() => 0.5 - Math.random()).slice(0, total);
+
+  function renderQuestion(index) {
+    const q = quizSet[index];
+
+    // Tab card
+    document.getElementById('quiz-question-text').textContent = q.q;
+    document.getElementById('quiz-badge-category').textContent = q.category;
+    document.getElementById('quiz-badge-difficulty').textContent = q.difficulty;
+    document.getElementById('quiz-progress-label').textContent = `Question ${index+1} of ${total}`;
+    document.getElementById('quiz-progress-fill').style.width = `${((index+1)/total)*100}%`;
+
+    const optionsContainer = document.getElementById('quiz-options');
+    optionsContainer.innerHTML = '';
+    q.options.forEach((opt, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'option';
+      btn.textContent = opt;
+      btn.onclick = () => checkAnswer(i, q, false);
+      optionsContainer.appendChild(btn);
+    });
+
+    // Modal
+    document.getElementById('modal-question-text').textContent = q.q;
+    document.getElementById('modal-badge-category').textContent = q.category;
+    document.getElementById('modal-badge-difficulty').textContent = q.difficulty;
+    document.getElementById('modal-progress').textContent = `${index+1}/${total}`;
+
+    const modalOptions = document.getElementById('modal-options');
+    modalOptions.innerHTML = '';
+    q.options.forEach((opt, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'option';
+      btn.textContent = opt;
+      btn.onclick = () => checkAnswer(i, q, true);
+      modalOptions.appendChild(btn);
+    });
+
+    document.getElementById('modal-explanation').style.display = 'none';
+  }
+
+  function checkAnswer(selectedIndex, q, inModal) {
+    const correct = selectedIndex === q.answer;
+
+    if (inModal) {
+      const explanation = document.getElementById('modal-explanation');
+      document.getElementById('modal-explanation-text').textContent = q.explanation;
+      explanation.style.display = 'block';
+    }
+
+    const container = inModal ? document.getElementById('modal-options') : document.getElementById('quiz-options');
+    [...container.children].forEach((btn, i) => {
+      btn.disabled = true;
+      if (i === q.answer) btn.classList.add('selected'); // style as correct
+      if (i === selectedIndex && i !== q.answer) btn.classList.add('wrong'); // style as incorrect
+    });
+  }
+
+  document.getElementById('modal-next-btn').addEventListener('click', () => {
+    if (currentIndex < total - 1) {
+      currentIndex++;
+      renderQuestion(currentIndex);
+    }
+  });
+
+  renderQuestion(currentIndex);
+})();
+</script>
