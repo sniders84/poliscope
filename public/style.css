@@ -4382,4 +4382,4388 @@ nav .tab.active {
 #quiz-controls button:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+}/* ============================================================
+   MODERN CIVIC DASHBOARD THEME — 2025 EDITION (Dark + Light)
+   ============================================================ */
+
+/* Root Theme Variables */
+:root {
+  --bg: #0f172a;
+  --text: #e2e8f0;
+  --card-bg: rgba(255,255,255,0.07);
+  --card-border: rgba(255,255,255,0.1);
+  --accent: #2563eb;
+  --accent-light: #3b82f6;
+  --accent-glow: rgba(37,99,235,0.5);
+  --muted: #94a3b8;
+  --muted-light: #cbd5e1;
+}
+
+/* Light Mode Overrides */
+body.light-mode {
+  --bg: #f9fafb;
+  --text: #1e293b;
+  --card-bg: #ffffff;
+  --card-border: #e5e7eb;
+  --accent: #2563eb;
+  --accent-light: #3b82f6;
+  --accent-glow: rgba(37,99,235,0.3);
+  --muted: #6b7280;
+  --muted-light: #9ca3af;
+}
+
+/* ============================================================
+   BASE STYLES
+   ============================================================ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+header {
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  color: #fff;
+  height: 140px;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: background 0.4s ease;
+}
+
+.logo {
+  height: 120px;
+  width: auto;
+  object-fit: contain;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+#search-bar,
+#state-dropdown {
+  background: var(--card-bg);
+  color: var(--text);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+#search-bar:focus,
+#state-dropdown:focus {
+  border-color: var(--accent-light);
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+nav {
+  display: flex;
+  justify-content: center;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--card-border);
+  padding: 0.75rem;
+  gap: 1rem;
+  transition: background 0.3s ease;
+}
+
+body.light-mode nav {
+  background: #f1f5f9;
+  backdrop-filter: none;
+}
+
+nav .tab {
+  padding: 0.5rem 1.25rem;
+  background: transparent;
+  color: var(--muted-light);
+  border: 1px solid transparent;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+nav .tab:hover {
+  color: var(--text);
+  border-color: var(--accent-light);
+  background: rgba(59,130,246,0.15);
+}
+/* ============================================================
+   MAIN CONTENT
+   ============================================================ */
+main {
+  padding: 2rem;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+  font-size: 1.8rem;
+  color: var(--accent-light);
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.4rem;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ============================================================
+   GRID LAYOUTS
+   ============================================================ */
+.grid,
+.organization-grid,
+.voting-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+/* ============================================================
+   UNIVERSAL CARD STYLE
+   ============================================================ */
+.official-card,
+.link-card,
+.organization-card,
+.voting-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  color: var(--text);
+}
+
+.official-card:hover,
+.link-card:hover,
+.organization-card:hover,
+.voting-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: var(--accent-light);
+  box-shadow: 0 10px 25px var(--accent-glow);
+}
+
+/* ============================================================
+   PARTY STRIPES
+   ============================================================ */
+.party-stripe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 100%;
+  border-radius: 0 4px 4px 0;
+}
+.republican .party-stripe { background: #ef4444; }
+.democrat .party-stripe,
+.democratic .party-stripe { background: #3b82f6; }
+.independent .party-stripe { background: #9ca3af; }
+.green .party-stripe { background: #22c55e; }
+.libertarian .party-stripe { background: #eab308; }
+.constitution .party-stripe { background: #8b5cf6; }
+.progressive .party-stripe { background: #f97316; }
+
+/* ============================================================
+   OFFICIAL CARDS
+   ============================================================ */
+.official-card {
+  width: 240px;
+  height: 360px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1rem;
+  text-align: center;
+}
+
+.photo-wrapper {
+  width: 180px;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255,255,255,0.05);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.photo-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.official-info {
+  padding: 0.75rem 1rem;
+}
+
+.official-info h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+  color: var(--text);
+}
+
+.official-info p {
+  font-size: 0.9rem;
+  color: var(--muted-light);
+}
+
+/* ============================================================
+   LINK / CIVIC CARDS
+   ============================================================ */
+.link-card h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent-light);
+}
+
+.card-desc {
+  font-size: 0.9rem;
+  color: var(--muted-light);
+  margin-bottom: 0.75rem;
+}
+
+.card-button {
+  display: inline-block;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.card-button:hover {
+  background: linear-gradient(90deg, #1d4ed8, #0284c7);
+}
+
+/* ============================================================
+   ORGANIZATION CARDS
+   ============================================================ */
+.organization-card {
+  text-align: center;
+  overflow: hidden;
+}
+
+.logo-wrapper {
+  width: 100%;
+  height: 120px;
+  background: rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-wrapper img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.info-wrapper {
+  padding: 1rem;
+}
+
+.info-wrapper h3 {
+  color: var(--accent-light);
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+}
+
+/* ============================================================
+   VOTING CARDS
+   ============================================================ */
+#voting-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  padding: 1.5rem;
+  justify-content: center;
+}
+
+.voting-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 180px;
+  text-align: center;
+  padding: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.voting-card:hover {
+  background: rgba(37,99,235,0.15);
+  box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.voting-card .card-icon {
+  font-size: 3.5rem;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.3));
+  margin-bottom: 0.5rem;
+}
+
+.voting-card .card-label {
+  font-weight: bold;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+}
+
+.voting-card .card-description {
+  font-size: 0.85rem;
+  color: var(--muted-light);
+}
+
+.voting-card .card-date {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* ============================================================
+   CIVIC SECTION
+   ============================================================ */
+.civic-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.civic-block h2 {
+  color: #f87171;
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+button, .tab, .card-button, a {
+  transition: all 0.25s ease;
+}
+/* ============================================================
+   PATCH: VISUAL REFINEMENTS AND LAYOUT CORRECTIONS
+   ============================================================ */
+
+/* ---- 1. Fix card photo centering ---- */
+.photo-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: rgba(255,255,255,0.05);
+  border-radius: 8px;
+}
+
+.photo-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center; /* ensures true center alignment */
+}
+
+/* ---- 3. Civic Intelligence Dashboard card tightening ---- */
+.civic-section .link-card,
+.civic-section .organization-card,
+.civic-section .official-card {
+  width: 180px;
+  height: auto;
+  padding: 0.75rem;
+}
+
+.civic-section .grid,
+.civic-section .organization-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  justify-items: center;
+}
+
+/* ---- 4. Polls tab logo resizing ---- */
+.modal-content img.poll-logo,
+.poll-logo {
+  max-width: 120px;
+  max-height: 120px;
+  object-fit: contain;
+}
+
+/* ---- 5. Equal sizing for political group cards ---- */
+.organization-card {
+  width: 220px;
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.organization-card .logo-wrapper {
+  height: 100px;
+}
+
+.organization-card .info-wrapper {
+  flex-grow: 1;
+  padding: 0.75rem;
+}
+
+/* ---- 6. Voting card resizing & cleanup ---- */
+#voting-cards {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.voting-card {
+  width: 220px;
+  height: 200px;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+/* Hide deadlines or extra small text lines in voting cards */
+.voting-card .card-date {
+  display: none !important;
+}
+
+/* Prevent text clipping */
+.voting-card .card-label,
+.voting-card .card-description {
+  white-space: normal;
+  word-wrap: break-word;
+  overflow: visible;
+}
+
+
+/* 3️⃣ Civic Intelligence dashboard cards — strict grid layout */
+.civic-section .grid,
+#civicGrid,
+#civicCards,
+#civic-section,
+.civic-section {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.25rem;
+  justify-items: center;
+}
+
+/* 4️⃣ Shrink poll logos and standardize structure in modals */
+.modal-content img.poll-logo,
+.polls-grid img,
+.polls-grid .organization-card img {
+  max-width: 90px !important;
+  max-height: 90px !important;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+}
+
+/* Make poll cards consistent with political group style */
+.polls-grid .organization-card,
+.modal-content .polls-grid .organization-card {
+  width: 220px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.polls-grid .organization-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* Ensure poll card links are consistent */
+.polls-grid .organization-card a {
+  display: inline-block;
+  color: var(--accent-light);
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  transition: color 0.2s ease;
+}
+.polls-grid .organization-card a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+/* 5️⃣ Political groups cards — fix cut-off text and add click-through styling */
+.organization-card {
+  width: 230px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+  overflow: visible;
+}
+
+.organization-card .info-wrapper {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.organization-card .info-wrapper h3 {
+  margin-bottom: 0.4rem;
+  color: var(--accent-light);
+}
+
+.organization-card .info-wrapper p {
+  font-size: 0.9rem;
+  color: var(--muted-light);
+  line-height: 1.4;
+}
+
+/* Make the entire political group card clickable like a button */
+.organization-card a,
+.organization-card {
+  cursor: pointer;
+}
+
+.organization-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* 6️⃣ Universal cursor styling — show pointer on all interactive items */
+a, button, .tab, .card-button,
+.link-card, .organization-card, .voting-card,
+.polls-grid .organization-card, .official-card {
+  cursor: pointer !important;
+}
+/* Photo container */
+.official-card .photo-wrapper {
+  width: 100%;
+  height: 160px;          /* adjust based on card size */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;     /* vertical centering so head is not cut off */
+}
+
+/* Photo image */
+.official-card .photo-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;     /* fits entire image without cropping */
+  object-position: center center;
+  display: block;
+  background-color: transparent; /* avoids white boxes */
+}
+/* Two-column layout for State Legislative links */
+#state-legislative .grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+/* Two-column layout for National Governors Association section */
+#nga-section .grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+/* Two-column layout for Federal Oversight & Transparency section */
+#federal-oversight .grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+/* Responsive: switch to one column on narrow screens */
+@media (max-width: 768px) {
+  #state-legislative .grid,
+  #nga-section .grid,
+  #federal-oversight .grid {
+    grid-template-columns: 1fr; /* single column for mobile */
+    gap: 12px; /* optional, slightly smaller spacing */
+  }
+}
+/* Grid layout for all three sections */
+#state-legislative .grid,
+#nga-section .grid,
+#federal-oversight .grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* two columns on desktop */
+  gap: 16px; /* spacing between cards */
+}
+/* Polls modal: grid layout for source cards */
+#polls-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* flexible columns */
+  gap: 16px; /* spacing between cards */
+  padding: 16px; /* optional padding inside modal */
+}
+
+/* Optional: make the source cards look nicer */
+.source-card {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  text-align: center;
+}
+/* 1️⃣ Two-column layout for the three sections */
+#state-legislative .grid,
+#nga-section .grid,
+#federal-oversight .grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* two columns */
+  gap: 16px;
+}
+
+/* 2️⃣ Grid layout for Polls modal source cards */
+#polls-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  padding: 16px;
+}
+
+/* Optional styling for cards */
+.card,
+#polls-content .source-card {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+/* 3️⃣ Responsive: one column on narrow screens */
+@media (max-width: 768px) {
+  #state-legislative .grid,
+  #nga-section .grid,
+  #federal-oversight .grid,
+  #polls-content {
+    grid-template-columns: 1fr; /* single column for mobile */
+    gap: 12px;
+  }
+}
+/* Startup Hub grid */
+#hub-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+/* Hub card style: matches all other cards in your app */
+#hub-cards .hub-card {
+  background-color: #1f1f1f; /* dark format */
+  border: 2px solid #333;
+  border-radius: 8px;
+  padding: 12px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+#hub-cards .hub-card:hover {
+  border-color: #007bff; /* blue outline hover effect */
+  transform: translateY(-2px);
+}
+
+/* Hub card image */
+#hub-cards .hub-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+/* Hub card content */
+#hub-cards .hub-card h4 {
+  margin: 4px 0;
+  font-size: 1rem;
+  color: #fff;
+}
+
+#hub-cards .hub-card p {
+  font-size: 0.875rem;
+  color: #ccc;
+}
+/* ------------------ Startup Hub / Home Hub Cards ------------------ */
+#hub-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.hub-card {
+  background-color: #1e1e2f;
+  color: #f0f0f0;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  text-align: center;
+  cursor: pointer;
+  transition: border 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+.hub-card img {
+  max-width: 100%;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  object-fit: cover;
+  height: 140px;
+}
+
+.hub-card h4 {
+  margin: 6px 0 4px;
+  font-size: 1.1rem;
+}
+
+.hub-card p {
+  font-size: 0.9rem;
+  line-height: 1.3;
+  color: #ccc;
+}
+
+.hub-card:hover {
+  border-color: transparent;
+  box-shadow: 0 0 0 2px #007bff, 0 2px 4px rgba(0,0,0,0.5);
+  transform: translateY(-2px);
+}
+
+/* ------------------ Social Trends Section ------------------ */
+#social-feed {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 12px;
+  justify-items: center;
+  align-items: start;
+}
+
+.social-card {
+  background-color: #1e1e2f;
+  color: #f0f0f0;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  text-align: center;
+  transition: border 0.25s ease, transform 0.2s ease;
+  width: 100%;
+  max-width: 340px;  /* uniform card width */
+  box-sizing: border-box;
+}
+
+.social-card:hover {
+  border: 2px solid #007bff;
+  transform: translateY(-2px);
+}
+
+.social-card h3 {
+  color: #f0f0f0;
+  margin-bottom: 8px;
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* iframe takes full width, but we **set explicit height in JS** */
+.social-card iframe {
+  width: 100%;
+  border: none;
+}
+.poll-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  padding: 12px;
+}
+
+.poll-card {
+  display: block;
+  background-color: #1e1e2f;
+  color: #f0f0f0;
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.poll-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+}
+
+.poll-card img {
+  max-width: 80px;
+  max-height: 80px;
+  margin-bottom: 8px;
+}
+
+.poll-card h4 {
+  margin: 4px 0;
+  font-size: 1rem;
+}
+/* Poll modal grid */
+.poll-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* responsive columns */
+  gap: 16px; /* space between cards */
+  padding: 12px;
+  justify-items: center; /* center each card in its grid column */
+  align-items: start; /* align cards at the top for uniform rows */
+}
+
+/* Poll card styling */
+.poll-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #1e1e2f;
+  color: #f0f0f0;
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+  max-width: 260px; /* consistent “playing card” width */
+  box-sizing: border-box;
+}
+
+.poll-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+}
+
+.poll-card img {
+  max-width: 80px;
+  max-height: 80px;
+  margin-bottom: 8px;
+}
+
+.poll-card h4 {
+  margin: 4px 0;
+  font-size: 1rem;
+}
+.poll-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.poll-card {
+  background-color: #1e1e2f;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  transition: border 0.25s ease, transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #f0f0f0;
+}
+
+.poll-card img {
+  max-width: 80px;
+  margin-bottom: 8px;
+}
+
+.poll-card h4 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.poll-card:hover {
+  border-color: #007bff;
+  transform: translateY(-2px);
+}
+/* Modal content grid */
+.poll-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+  justify-items: center;
+  align-items: start;
+}
+
+/* Individual poll card */
+.poll-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #f0f0f0;
+  width: 100%;
+  max-width: 220px;
+  background-color: #1e1e2f;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  transition: border 0.25s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.poll-card:hover {
+  border-color: #007bff;
+  transform: translateY(-2px);
+}
+
+.poll-logo img {
+  max-width: 100px;
+  max-height: 60px;
+  margin-bottom: 8px;
+}
+
+.poll-links a {
+  color: #f0f0f0;
+  text-decoration: none;
+  font-weight: 500;
+  text-align: center;
+}
+
+.poll-links a:hover {
+  text-decoration: underline;
+}
+/* Poll Modal Grid Styling */
+#pollModalContent {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.poll-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.poll-card {
+  background-color: #1e1e2f;
+  color: #f0f0f0;
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.poll-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 2px #007bff, 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.poll-card img {
+  max-width: 80px;
+  margin-bottom: 8px;
+}
+
+/* Category Sections */
+.category-section {
+  padding: 20px 0;
+  border-bottom: 1px solid #444;
+}
+
+.card-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+
+.info-card {
+  background-color: #333;
+  padding: 14px;
+  border-radius: 8px;
+  color: #fff;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.info-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Social feed placeholder */
+#social-feed {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+.network-logo {
+  width: 80px;
+  height: auto;
+  margin: 10px auto 5px auto;
+  display: block;
+}
+
+.info-card {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.info-card:hover {
+  transform: scale(1.03);
+}
+
+#network-stories .story-card {
+  cursor: pointer;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 10px;
+  margin: 5px;
+  flex: 1 1 calc(20% - 10px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#network-stories .story-card h4 {
+  font-size: 14px;
+  margin: 0;
+  line-height: 1.2;
+}
+
+#network-stories .see-more {
+  text-align: right;
+  margin-top: 5px;
+  font-size: 12px;
+  color: blue;
+  cursor: pointer;
+}
+.network-logo {
+  width: 80px;   /* adjust as needed */
+  height: auto;
+  display: block;
+  margin: 0 auto 10px auto;
+}
+#network-stories .official-card {
+  cursor: pointer;
+}
+.see-more {
+  text-align: right;
+  margin-top: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #007bff;
+}
+.see-more:hover {
+  text-decoration: underline;
+}
+/* === Story Cards Under Network Selection (Proper Shrink) === */
+.story-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background: #2b2b2b;
+  border-radius: 10px;
+  padding: 8px 10px;
+  margin: 6px;
+  width: 220px;
+
+  /* 🔥 Force smaller height */
+  min-height: 45px; 
+  max-height: 75px;
+
+  /* 🔥 Prevent tall growth */
+  overflow: hidden;
+
+  /* Hover effect */
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.story-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+  background: #1e3a8a;
+}
+
+.story-card h4 {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+
+  /* 🔥 Prevent tall titles from stretching the card */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  color: white;
+}
+.see-more-link {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: #007BFF; /* blue like network cards */
+  text-decoration: underline;
+  margin-top: 8px;
+  cursor: pointer;
+}
+.see-more-link {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: #007BFF; /* blue like network cards */
+  text-decoration: underline;
+  margin-top: 8px;
+  cursor: pointer;
+}
+
+.see-more-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+/* Logos inside info-cards for uniform size and spacing */
+.info-card .network-logo {
+  width: 80%;           /* Stretch across top of card */
+  max-height: 40%;      /* Covers ~30-40% of card height */
+  object-fit: contain;  /* Maintain aspect ratio */
+  display: block;
+  margin: 0 auto 8px auto; /* Center horizontally and add bottom spacing */
+}
+
+/* Ensure each info-card looks like the network blueprint */
+.info-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: #2b2b2b; /* dark grey as requested */
+  border-radius: 12px;
+  padding: 12px;
+  width: 220px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+/* Logo: cover roughly 30-40% of card height, exactly same for all */
+.network-logo,
+.card-logo,
+.info-card img {
+  width: 100%;
+  height: 36%; /* roughly 30-40% of the card */
+  object-fit: contain;
+  display: block;
+  margin-bottom: 8px;
+  background: transparent;
+}
+
+/* Title */
+.info-card h3 {
+  margin: 4px 0 6px 0;
+  font-size: 16px;
+  color: #fff;
+}
+
+/* Description */
+.info-card p {
+  margin: 0;
+  font-size: 13px;
+  color: #ddd;
+  text-align: center;
+}
+
+/* Official story cards (under the row) */
+#world-news-stories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+/* small, snug story cards */
+.official-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background: #2b2b2b;
+  border-radius: 10px;
+  padding: 8px 10px;
+  min-height: 56px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: transform .12s, background .12s;
+}
+
+/* Blue hover for all official-card and info-card (consistent) */
+.official-card:hover,
+.info-card:hover {
+  transform: translateY(-3px);
+  background: #1e3a8a; /* blue hue */
+}
+
+/* See More link */
+.see-more-link {
+  color: #007bff;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 6px 8px;
+  font-weight: 600;
+}
+/* Uniform Network Cards & Logos */
+#network-cards .info-card,
+#world-news-cards .info-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 180px;       /* adjust for uniform width */
+  height: 180px;      /* adjust for uniform height */
+  padding: 12px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+#network-cards .info-card img,
+#world-news-cards .info-card img {
+  max-width: 100%;
+  max-height: 40%;    /* logo takes up 30–40% of the card height */
+  object-fit: contain; /* preserve aspect ratio */
+  margin-bottom: 8px;
+}
+
+#network-cards .info-card:hover,
+#world-news-cards .info-card:hover {
+  transform: translateY(-4px);
+}
+
+#network-cards .info-card h3,
+#world-news-cards .info-card h3 {
+  font-size: 1rem;
+  text-align: center;
+  margin: 0;
+}
+
+#network-cards .info-card p,
+#world-news-cards .info-card p {
+  font-size: 0.875rem;
+  text-align: center;
+  margin: 4px 0 0 0;
+}
+.carousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-row {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 8px;
+}
+
+.official-card {
+  min-width: 200px;
+  max-width: 220px;
+  flex: 0 0 auto;
+  padding: 8px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.official-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.story-logo {
+  max-height: 40px;
+  margin-bottom: 8px;
+}
+
+.carousel-nav {
+  text-align: center;
+  margin-top: 4px;
+}
+
+.carousel-btn {
+  cursor: pointer;
+  padding: 6px 12px;
+  margin: 0 4px;
+  border: none;
+  border-radius: 4px;
+  background: #0077cc;
+  color: #fff;
+  font-size: 16px;
+}
+
+.carousel-btn:hover {
+  background: #005fa3;
+}
+.official-card.official {
+  background-color: #2b2b2b; /* dark grey */
+  color: #fff;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.official-card.official:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,123,255,0.5); /* blue hover shadow */
+}
+.official-card.news-card {
+  background-color: #fff;
+  color: #000;
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.official-card.news-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,123,255,0.3); /* subtle blue hover */
+}
+/* My Officials card styling */
+.official-card {
+  background-color: #1e1e2f;   /* dark gray */
+  border: 2px solid transparent;
+  border-radius: 10px;
+  text-align: center;          /* center text */
+  color: #f0f0f0;
+  transition: border 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+.official-card:hover {
+  border-color: #007bff;       /* blue hover */
+  box-shadow: 0 0 0 2px #007bff, 0 2px 6px rgba(0,0,0,0.5);
+  transform: translateY(-3px);
+}
+
+/* Photo wrapper cleanup */
+.official-card .photo-wrapper {
+  background: transparent !important; /* remove ugly gray */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 180px;
+}
+
+.official-card .photo-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;         /* no cropping */
+  object-position: center;
+}
+/* National Broadcasting Networks cards */
+#network-cards .info-card,
+#network-stories .info-card {
+  background-color: #1e1e2f;   /* dark gray */
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  color: #f0f0f0;
+  transition: border 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+#network-cards .info-card:hover,
+#network-stories .info-card:hover {
+  border-color: #007bff;       /* blue hover */
+  box-shadow: 0 0 0 2px #007bff, 0 2px 6px rgba(0,0,0,0.5);
+  transform: translateY(-3px);
+}
+/* Global Politics & World News cards */
+#world-news-cards .info-card {
+  background-color: #1e1e2f;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  color: #f0f0f0;
+  transition: border 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+#world-news-cards .info-card:hover {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px #007bff, 0 2px 6px rgba(0,0,0,0.5);
+  transform: translateY(-3px);
+}
+/* Universal frosted modal system (final canonical version) */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(15,23,42,0.7);
+  backdrop-filter: blur(8px);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  position: relative;
+  background: rgba(30,41,59,0.9);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  max-width: 900px;          /* wide enough for grids, readable */
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: fadeIn 0.4s ease;
+  padding: 2rem;
+}
+
+/* Inner frosted panel */
+.modal-content > div {
+  background: rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 0 12px rgba(255,255,255,0.05);
+}
+
+/* Consistent modal images */
+.modal-content img {
+  display: block;
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
+  margin: 0 auto 0.75rem auto;
+}
+
+.modal-content img.poll-logo,
+.modal-content img.source-logo {
+  max-width: 120px;
+  max-height: 120px;
+  object-fit: contain;
+}
+
+.modal-content h2,
+.modal-content h3,
+.modal-content h4,
+.modal-content h5 {
+  color: var(--accent-light);
+  margin-bottom: 0.6rem;
+}
+
+.modal-content p {
+  color: var(--muted-light);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Close button */
+.modal-content .close,
+#close-modal {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background: rgba(255,255,255,0.1);
+  color: var(--accent-light);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.modal-content .close:hover,
+#close-modal:hover {
+  background: rgba(255,255,255,0.2);
+  transform: rotate(90deg);
+}
+/* Official cards: preserve full headshot, no cropping */
+.official-card .photo-wrapper {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.official-card .photo-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  display: block;
+  background-color: transparent;
+}
+
+/* Modal images: square, neat tiles */
+.modal-content img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  object-position: center;
+}
+/* Officials card styling */
+.official-card .photo-wrapper {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.official-card .photo-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;       /* preserve full portrait */
+  object-position: center center;
+  display: block;
+  background-color: transparent;
+}
+
+/* Universal frosted modal system */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(15,23,42,0.7);
+  backdrop-filter: blur(8px);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  position: relative;
+  background: rgba(30,41,59,0.9);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: fadeIn 0.4s ease;
+  padding: 2rem;
+}
+
+/* Consistent modal images */
+.modal-content img {
+  display: block;
+  max-width: 100%;          /* allow natural scaling */
+  height: auto;             /* keep aspect ratio */
+  object-fit: contain;      /* match card behavior */
+  object-position: center;
+  border-radius: 8px;
+  margin: 0 auto 1rem auto; /* center horizontally */
+}
+
+/* Special cases: logos inside modals */
+.modal-content img.poll-logo,
+.modal-content img.source-logo {
+  max-width: 120px;
+  max-height: 120px;
+  object-fit: contain;
+}
+/* Global Politics & World News cards */
+#world-news-cards .info-card {
+  background-color: #1e1e2f;   /* dark gray */
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  color: #f0f0f0;
+  transition: border 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+#world-news-cards .info-card:hover {
+  border-color: #007bff;       /* blue hover */
+  box-shadow: 0 0 0 2px #007bff, 0 2px 6px rgba(0,0,0,0.5);
+  transform: translateY(-3px);
+}
+/* World News: match National Broadcasting Networks card style */
+#world-news-cards .info-card,
+#world-news-cards .official-card,
+#world-news-cards .official-card.news-card {
+  background-color: #1e1e2f !important;  /* dark gray */
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  color: #f0f0f0;
+  transition: border 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+#world-news-cards .info-card:hover,
+#world-news-cards .official-card:hover,
+#world-news-cards .official-card.news-card:hover {
+  border-color: #007bff;                  /* blue hover */
+  box-shadow: 0 0 0 2px #007bff, 0 2px 6px rgba(0,0,0,0.5);
+  transform: translateY(-3px);
+}
+
+/* Ensure logos/images don’t force white tiles */
+#world-news-cards .info-card img,
+#world-news-cards .official-card img {
+  display: block;
+  max-width: 100%;
+  border-radius: 6px;
+  object-fit: cover;
+}
+/* Unified card hover effect */
+.info-card,
+.official-card,
+.organization-card,
+.voting-card,
+.news-card {
+  transition: border 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+.info-card:hover,
+.official-card:hover,
+.organization-card:hover,
+.voting-card:hover,
+.news-card:hover {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px #007bff, 0 2px 6px rgba(0,0,0,0.5);
+  transform: translateY(-3px);
+}
+rssapp-carousel {
+  max-width: 600px;        /* shrink width */
+  margin: 0 auto;          /* center it */
+  transform: scale(0.6);   /* shrink to 60% */
+  transform-origin: top center;
+}
+/* Finance & Markets carousel sizing */
+#finance-markets rssapp-carousel {
+  max-width: 600px;        /* constrain width */
+  margin: 0 auto;          /* center it */
+  transform: scale(0.6);   /* shrink to 60% size */
+  transform-origin: top center;
+}
+/* Economy carousel sizing */
+#economy rssapp-carousel {
+  max-width: 600px;        /* constrain width */
+  margin: 0 auto;          /* center it */
+  transform: scale(0.6);   /* shrink to 60% size */
+  transform-origin: top center;
+}
+/* Base card styling */
+.info-card {
+  background-color: #2b2b2b; /* dark gray background */
+  color: #fff;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.info-card:hover {
+  background-color: #1e3a5f; /* blue hover effect */
+}
+
+.network-logo {
+  width: 60px;
+  height: auto;
+  vertical-align: middle;
+  margin-right: 0.75rem;
+}
+
+.info-card h3 {
+  display: inline-block;
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.info-card p {
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+/* Collapsible content styling */
+.network-content {
+  display: none;
+  background-color: #222; /* slightly darker gray */
+  padding: 1rem;
+  margin: 0.5rem 0 1rem;
+  border-radius: 6px;
+}
+
+.network-content.active {
+  display: block;
+}
+/* Cards */
+.info-card {
+  background-color: #2b2b2b; /* dark gray */
+  color: #fff;
+  padding: 1rem;
+  margin: 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  width: 180px;
+  text-align: center;
+}
+
+.info-card:hover {
+  background-color: #1e3a5f; /* blue hover */
+}
+
+.network-logo {
+  width: 60px;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+
+/* Modal overlay */
+.network-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.7);
+  z-index: 999;
+}
+
+/* Modal container */
+.network-modal {
+  display: none;
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 800px;
+  background-color: #222;
+  padding: 2rem;
+  border-radius: 8px;
+  z-index: 1000;
+  color: #fff;
+}
+
+/* Modal content */
+.modal-content {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+/* Close button */
+.modal-close {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+}
+.info-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.info-card {
+  flex: 0 1 200px;
+  background-color: #2b2b2b;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 6px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.info-card:hover {
+  background-color: #1e3a5f;
+}
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;        /* allow wrapping to next line */
+  justify-content: center; /* center cards horizontally */
+  gap: 1rem;              /* spacing between cards */
+}
+
+.network-card,
+.info-card {
+  flex: 0 1 200px;        /* each card ~200px wide */
+  background-color: #2b2b2b;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 6px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.network-card:hover,
+.info-card:hover {
+  background-color: #1e3a5f; /* blue hover */
+}
+
+.network-logo {
+  width: 60px;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+.network-content {
+  display: none;
+  background-color: #222;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  border-radius: 6px;
+}
+
+.network-content.active {
+  display: block;
+}
+.network-card,
+.info-card {
+  flex: 0 1 200px;          /* same width as info cards */
+  background-color: #2b2b2b; /* dark gray background */
+  color: #fff;
+  padding: 1rem;
+  border-radius: 6px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.network-card:hover,
+.info-card:hover {
+  background-color: #1e3a5f; /* blue hover */
+}
+
+.network-logo {
+  width: 60px;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Shared card styling */
+.network-card,
+.info-card {
+  flex: 0 1 200px;          /* same width */
+  background-color: #2b2b2b; /* dark gray background */
+  color: #fff;
+  padding: 1rem;
+  border-radius: 6px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+/* Make sure anchor inside network-card fills the card */
+.network-card a {
+  display: block;           /* anchor behaves like a block */
+  color: inherit;           /* text color matches card */
+  text-decoration: none;    /* remove underline */
+}
+
+.network-card:hover,
+.info-card:hover {
+  background-color: #1e3a5f; /* blue hover */
+}
+
+.network-logo {
+  width: 60px;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+/* Grid layout */
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+/* Shared card styling */
+.news-card {
+  box-sizing: border-box;
+  flex: 0 1 200px;
+  background-color: #2b2b2b;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 6px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+/* Ensure LiveNOW anchor doesn't break sizing */
+.news-card__link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Hover */
+.news-card:hover {
+  background-color: #1e3a5f;
+}
+
+/* Logo uniformity */
+.network-logo {
+  display: block;
+  width: 60px;
+  height: auto;
+  margin: 0 auto 0.5rem auto;
+}
+
+/* Collapse content */
+.network-content {
+  display: none;
+  background-color: #222;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  border-radius: 6px;
+  flex: 1 1 100%; /* span full row */
+}
+.network-content.active { display: block; }
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.news-card,
+.info-card {
+  flex: 0 1 200px;          /* identical width */
+  background-color: #2b2b2b; /* same dark gray background */
+  color: #fff;
+  padding: 1rem;
+  border-radius: 6px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.news-card:hover,
+.info-card:hover {
+  background-color: #1e3a5f; /* same hover */
+}
+
+.news-card a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.network-logo {
+  display: block;
+  width: 60px;
+  height: auto;
+  margin: 0 auto 0.5rem auto;
+}
+.info-card {
+  flex: 0 1 200px;
+  background-color: #2b2b2b;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 6px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.info-card:hover {
+  background-color: #1e3a5f;
+}
+
+.info-card a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+.network-content {
+  display: none;
+  background-color: #222;
+  padding: 1rem;
+  margin: 0.5rem auto;
+  border-radius: 6px;
+  max-width: 800px;   /* keeps it neat */
+}
+
+.network-content.active {
+  display: block;
+}
+/* Card row */
+#network-cards.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+/* Uniform card styling */
+.info-card {
+  box-sizing: border-box;
+  flex: 0 1 200px;
+  background-color: #2b2b2b;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 6px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+.info-card:hover { background-color: #1e3a5f; }
+.network-logo { display: block; width: 60px; height: auto; margin: 0 auto 0.5rem; }
+
+/* Feed viewer */
+.feed-viewer {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: #222;
+  border-radius: 6px;
+  width: 100%;
+}
+#feed-title {
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+/* Story cards row */
+.story-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: flex-start;
+}
+.story-card {
+  flex: 0 1 200px;
+  background-color: #333;
+  color: #fff;
+  padding: 0.75rem;
+  border-radius: 4px;
+  text-align: center;
+}
+/* Network cards container */
+#network-cards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 equal columns for 5 networks */
+  gap: 1rem;
+}
+
+/* Each card */
+#network-cards .card {
+  min-width: 0;        /* prevent overflow */
+  height: 100%;        /* keep cards aligned */
+}
+/* Network cards container */
+#network-cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;          /* prevent wrapping */
+  justify-content: space-around; /* spread cards evenly */
+  align-items: stretch;
+  gap: 1rem;
+}
+
+/* Each card */
+#network-cards .card {
+  flex: 1 1 0;                /* equal width for all cards */
+  min-width: 0;               /* prevent overflow */
+}
+#network-cards .card {
+  width: 20%;   /* 5 cards = 20% each */
+}
+/* Network cards container */
+#network-cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;   /* no wrapping */
+  width: 100%;
+}
+
+/* Each card: exactly 20% of the row */
+#network-cards .card {
+  width: 20%;
+  flex: 0 0 20%;
+  box-sizing: border-box;
+}
+#network-cards {
+  display: flex;
+  flex-wrap: nowrap;       /* keep all six in one row */
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+#network-cards .info-card {
+  flex: 1 1 0;
+  min-width: 0;
+  box-sizing: border-box;
+}
+/* Officials modal portraits */
+.modal .official-photo {
+  display: block;
+  max-width: 100%;
+  height: auto;              /* keep aspect ratio */
+  object-fit: contain;       /* show full portrait without cropping */
+  margin: 0 auto;            /* center inside modal */
+}
+/* === Podcasts & Shows Tab Styling === */
+#podcasts-shows {
+  padding: 1rem;
+  color: #fff;
+}
+
+#podcasts-shows h2 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.4rem;
+  border-bottom: 2px solid #444;
+  padding-bottom: 0.25rem;
+}
+
+.video-grid,
+.audio-grid,
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.media-card {
+  background: #222;
+  border-radius: 8px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.media-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.media-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.media-card h3 {
+  margin: 0.25rem 0;
+  font-size: 1.1rem;
+}
+
+.media-card p {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+/* === Media Cards === */
+.media-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 12px;
+  margin: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.media-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+.media-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.media-card:hover img {
+  transform: scale(1.05);
+}
+
+/* === Buttons === */
+.favorite-btn {
+  border: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  background-color: #FFD700;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  margin-top: 6px;
+}
+
+.favorite-btn:hover {
+  background-color: #FFC107;
+  transform: scale(1.05);
+}
+
+/* === Media Cards (Corrected) === */
+.media-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #2C2C2C;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+  padding: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.2s ease;
+  width: 140px;
+  min-height: 220px;   /* baseline height */
+  height: auto;        /* allow content to grow */
+  text-align: center;
+  color: #fff;
+}
+
+.media-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.6);
+  background: #333;
+}
+
+/* === Card Images === */
+.media-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  transition: transform 0.3s ease;
+}
+
+.media-card:hover img {
+  transform: scale(1.05);
+}
+
+/* === Card Text === */
+.media-card h3 {
+  font-size: 14px;
+  margin: 4px 0;
+  line-height: 1.2;
+}
+
+.media-card p {
+  font-size: 12px;
+  color: #ccc;
+  margin: 2px 0;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* max 3 lines */
+  -webkit-box-orient: vertical;
+}
+
+/* === Buttons === */
+.favorite-btn, .remove-btn {
+  border: none;
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.favorite-btn {
+  background-color: #FFD700;
+  color: #000;
+}
+
+.favorite-btn:hover {
+  background-color: #FFC107;
+  transform: scale(1.05);
+}
+
+.remove-btn {
+  background-color: #FF4D4F;
+  color: #fff;
+}
+
+.remove-btn:hover {
+  background-color: #FF7875;
+  transform: scale(1.05);
+}
+
+/* === Search Input === */
+#show-search {
+  width: 100%;
+  max-width: 420px;
+  padding: 10px 16px;
+  margin-bottom: 16px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: #1E1E1E;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+#show-search::placeholder {
+  color: #aaa;
+}
+
+#show-search:focus {
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.7);
+  transform: scale(1.02);
+}
+
+/* === Container Grid === */
+.favorites-grid,
+.video-grid,
+.audio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+  justify-items: center;
+}
+
+/* === Media Cards (Corrected) === */
+.media-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* button stays at bottom */
+  align-items: center;
+  background: #2C2C2C;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+  padding: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.2s ease;
+  width: 180px;        /* card width */
+  min-height: 240px;   /* baseline height */
+  height: auto;        /* allow content to grow */
+  text-align: center;
+  color: #fff;
+}
+
+.media-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.6);
+  background: #333;
+}
+
+/* === Card Images === */
+.media-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  transition: transform 0.3s ease;
+}
+
+.media-card:hover img {
+  transform: scale(1.05);
+}
+
+/* === Card Text === */
+.media-card h3 {
+  font-size: 14px;
+  margin: 4px 0;
+  line-height: 1.2;
+  word-wrap: break-word;
+}
+
+.media-card p {
+  font-size: 12px;
+  color: #ccc;
+  margin: 2px 0 6px 0;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* 4 lines max */
+  -webkit-box-orient: vertical;
+}
+
+/* === Media Cards (Corrected) === */
+.media-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* button stays at bottom */
+  align-items: center;
+  background: #2C2C2C;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+  padding: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.2s ease;
+  width: 180px;        /* uniform width */
+  min-height: 240px;   /* baseline height */
+  height: auto;        /* allow content to grow */
+  text-align: center;
+  color: #fff;
+}
+
+.media-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.6);
+  background: #333;
+}
+
+/* === Logo Container & Images === */
+.logo-container {
+  width: 100%;         /* full card width */
+  height: 100px;       /* uniform logo height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;    /* crop anything exceeding container */
+  margin-bottom: 8px;
+}
+
+.logo-container img {
+  width: 100%;         /* fill width of container */
+  height: 100%;        /* fill height of container */
+  object-fit: contain; /* maintain aspect ratio, centered */
+}
+
+/* === Card Text === */
+.media-card h3 {
+  font-size: 14px;
+  margin: 4px 0;
+  line-height: 1.2;
+  word-wrap: break-word;
+}
+
+.media-card p {
+  font-size: 12px;
+  color: #ccc;
+  margin: 2px 0 6px 0;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* max 4 lines of description */
+  -webkit-box-orient: vertical;
+}
+
+/* === Buttons === */
+.favorite-btn,
+.remove-btn {
+  border: none;
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.favorite-btn {
+  background-color: #FFD700;
+  color: #000;
+}
+
+.favorite-btn:hover {
+  background-color: #FFC107;
+  transform: scale(1.05);
+}
+
+.remove-btn {
+  background-color: #FF4D4F;
+  color: #fff;
+}
+
+.remove-btn:hover {
+  background-color: #FF7875;
+  transform: scale(1.05);
+}
+
+/* === Search Input Styling === */
+#show-search {
+  width: 100%;
+  max-width: 420px;
+  padding: 10px 16px;
+  margin-bottom: 16px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: #1E1E1E;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+#show-search::placeholder {
+  color: #aaa;
+}
+
+#show-search:focus {
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.7);
+  transform: scale(1.02);
+}
+
+/* === Header & Search Controls === */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.search-wrapper {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+#search-bar {
+  padding: 8px 12px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  width: 220px;
+  background-color: #1E1E1E;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+#search-bar::placeholder {
+  color: #aaa;
+}
+
+#search-bar:focus {
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.7);
+  transform: scale(1.02);
+}
+
+#state-dropdown {
+  padding: 8px 12px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background-color: #1E1E1E;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+#state-dropdown:focus {
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.7);
+  transform: scale(1.02);
+}
+
+/* === Podcasts & Shows Tab === */
+.podcast-show-section {
+  margin-bottom: 40px;
+}
+
+.podcast-show-section h3 {
+  color: #fff;
+  margin-bottom: 16px;
+  font-size: 1.5rem;
+}
+
+.podcast-show-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.podcast-show-card {
+  background-color: #2c2c2c; /* Dark grey */
+  border-radius: 12px;
+  overflow: hidden;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.podcast-show-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.6); /* Blue glow */
+  border: 2px solid #007bff;
+}
+
+.logo-wrapper {
+  width: 100%;
+  height: 140px; /* Fixed logo height */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1a1a1a;
+}
+
+.logo-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Stretch and crop nicely */
+}
+
+.card-content {
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card-content h4 {
+  margin: 0 0 4px 0;
+  font-size: 1.1rem;
+  line-height: 1.2;
+}
+
+.card-content .category {
+  font-size: 0.85rem;
+  color: #bbb;
+  margin-bottom: 8px;
+}
+
+.card-content .descriptor {
+  font-size: 0.9rem;
+  flex: 1;
+  margin-bottom: 12px;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.card-actions button {
+  background: transparent;
+  border: 1px solid #007bff;
+  color: #007bff;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.card-actions button:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Make sure the section scrolls nicely if many cards */
+#podcasts-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* --- COLLAPSIBLE SECTIONS --- */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px 0;
+  user-select: none;
+}
+
+.section-header h3 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.section-arrow {
+  transition: transform 0.25s ease;
+  font-size: 1.4rem;
+}
+
+/* Rotated (open) */
+.section-header.open .section-arrow {
+  transform: rotate(90deg);
+}
+
+/* Collapsed body container */
+.section-body {
+  overflow: hidden;
+  transition: max-height 0.30s ease;
+}
+
+/* Default open state */
+.section-body.open {
+  max-height: none; /* allow full expansion */
+}
+
+/* Collapsed */
+.section-body.closed {
+  max-height: 0;
+}
+/* Default favorite button */
+.favorite-btn {
+  border: none;
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  background-color: #FFD700;
+  color: #000;
+}
+
+/* When item is favorited, show remove styling */
+.favorite-btn.is-remove {
+  background-color: #FF4D4F;
+  color: #fff;
+}
+/* Prevent hover glow from being cut off */
+.podcast-show-grid {
+  overflow: visible;   /* let shadows show outside the grid */
+}
+
+.podcast-show-card {
+  margin-top: 6px;     /* small spacing so glow isn't flush against header */
+  position: relative;  /* ensures box-shadow renders fully */
+}
+.section-body {
+  overflow: visible;   /* allow hover effects to extend outside */
+}
+#popular-podcasts,
+#social-trends {
+  display: none !important;
+}
+/* Modern tab bar */
+nav {
+  position: sticky;
+  top: 0;
+  background: linear-gradient(90deg, #1f1f1f, #2b2b2b);
+  display: flex;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #333;
+  z-index: 1000;
+  overflow-x: auto;
+  backdrop-filter: blur(6px); /* frosted glass effect */
+}
+
+/* Tab buttons */
+nav .tab {
+  padding: 10px 18px;
+  border: none;
+  background: #2d2d2d;
+  color: #eee;
+  cursor: pointer;
+  border-radius: 20px; /* pill-shaped */
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+nav .tab:hover {
+  background: #0066ff;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 102, 255, 0.4);
+}
+
+nav .tab.active {
+  background: #0066ff;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(0, 102, 255, 0.6);
+}
+/* Mobile-first adjustments */
+@media (max-width: 768px) {
+  nav .tab {
+    flex: 1 1 auto;
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  .card-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .official-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  body {
+    font-size: 1rem; /* scales with device */
+    line-height: 1.4;
+  }
+}
+/* Officials card layout */
+.official-card {
+  display: flex;
+  flex-direction: column;   /* stack photo above text */
+  align-items: center;      /* center horizontally */
+  justify-content: center;  /* center vertically if needed */
+  text-align: center;       /* center text inside */
+  padding: 16px;
+}
+
+/* Officials card image */
+.official-card img {
+  display: block;
+  margin: 0 auto 12px auto; /* center image with spacing below */
+  max-width: 120px;         /* adjust size as needed */
+  height: auto;
+}
+
+/* Officials card text */
+.official-card h3,
+.official-card p {
+  margin: 4px 0;
+  text-align: center;
+}
+/* Officials card layout */
+.official-card {
+  display: flex;
+  flex-direction: column;   /* stack photo above text */
+  align-items: center;      /* center photo horizontally */
+  padding: 16px;
+  text-align: center;       /* center text inside */
+}
+
+/* Officials card image */
+.official-card img {
+  display: block;
+  margin: 0 auto 12px auto; /* center image with spacing below */
+  max-width: 120px;         /* constrain image size */
+  height: auto;
+}
+
+/* Officials card text */
+.official-card h3,
+.official-card p {
+  margin: 4px 0;
+  width: 100%;              /* allow text to span full card width */
+  text-align: center;       /* keep text centered */
+}
+/* Officials modal content */
+.official-modal {
+  font-size: 1rem;          /* base size for desktop */
+  line-height: 1.5;         /* improve readability */
+  text-align: center;       /* keep text centered */
+  padding: 16px;
+}
+
+/* Scale up on smaller screens */
+@media (max-width: 768px) {
+  .official-modal {
+    font-size: 1.1rem;      /* slightly larger on tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .official-modal {
+    font-size: 1.2rem;      /* larger on phones */
+  }
+}
+/* Officials modal content */
+.official-modal {
+  font-size: 1rem;          /* base size for desktop */
+  line-height: 1.5;
+  text-align: center;
+  padding: 16px;
+  max-width: 600px;         /* keep modal content balanced on large screens */
+  margin: 0 auto;           /* center modal content horizontally */
+}
+
+/* Scale up on smaller screens */
+@media (max-width: 768px) {
+  .official-modal {
+    font-size: 1.1rem;
+    max-width: 90%;         /* allow more breathing room on tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .official-modal {
+    font-size: 1.2rem;
+    max-width: 95%;         /* keep text comfortably readable on phones */
+  }
+}
+.carousel {
+  width: 100%;
+  overflow: hidden;          /* only show a few cards at a time */
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+  gap: 1rem;
+}
+
+.carousel-card {
+  flex: 0 0 300px;           /* fixed width */
+  height: 300px;             /* fixed height for square */
+  border: 1px solid #333;
+  border-radius: 8px;
+  background: #222;          /* dark gray background */
+  color: #fff;               /* white text */
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  overflow: hidden;
+}
+
+.carousel-card:hover {
+  background-color: #1a3d66; /* deep blue hover */
+  border-color: #0066cc;     /* bright blue border */
+  transform: translateY(-4px);
+}
+
+.carousel-img {
+  width: 100%;
+  height: 180px;             /* large image area */
+  object-fit: cover;
+  border-bottom: 1px solid #444;
+}
+
+.carousel-card h3 {
+  font-size: 1.1rem;
+  margin: 0.5rem;
+  line-height: 1.3;
+}
+
+.carousel-card p {
+  font-size: 0.85rem;
+  color: #ccc;
+  margin: 0 0.5rem 0.5rem;
+}
+.carousel-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.carousel-btn {
+  background: #222;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.carousel-btn:hover {
+  background-color: #0066cc; /* blue hover */
+  transform: scale(1.1);
+}
+nav .tab {
+  padding: 12px 20px;
+  margin-right: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #3c3c3c;
+  color: #eee;
+  font-size: 1rem;
+  font-family: "Segoe UI", Arial, sans-serif;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+nav .tab:hover {
+  background-color: #0066ff;
+  color: #fff;
+}
+
+nav .tab.active {
+  background-color: #1a3d66;
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 0 0 6px rgba(0,0,0,0.4);
+}
+
+/* Make nav scrollable on small screens */
+#hub-nav {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* smooth iOS scrolling */
+}
+
+/* Stack tabs vertically on very narrow screens */
+@media (max-width: 480px) {
+  #hub-nav {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  #hub-nav .tab {
+    margin-right: 0;
+    margin-bottom: 8px;
+    width: 100%;
+    text-align: center;
+  }
+}
+.collapsible {
+  margin: 1rem 0;
+}
+
+.collapsible-toggle {
+  width: 100%;
+  text-align: left;
+  padding: 12px 16px;
+  background-color: #3c3c3c;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.collapsible-toggle:hover {
+  background-color: #0066ff;
+}
+
+.collapsible-content {
+  padding: 10px;
+  background-color: #2b2b2b;
+  border-radius: 6px;
+  margin-top: 8px;
+}
+/* Collapsible container spacing */
+.collapsible {
+  margin: 1rem 0;
+}
+
+/* Toggle button styling */
+.collapsible-toggle {
+  width: 100%;
+  text-align: left;
+  padding: 12px 16px;
+  background-color: #3c3c3c;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.collapsible-toggle:hover {
+  background-color: #0066ff;
+}
+
+/* Collapsible content styling */
+.collapsible-content {
+  padding: 10px;
+  background-color: #2b2b2b;
+  border-radius: 6px;
+  margin-top: 8px;
+}
+.section-body.open {
+  display: block;
+}
+
+.section-body.closed {
+  display: none;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  background-color: #3c3c3c;
+  color: #fff;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.section-header.open {
+  background-color: #0066ff;
+}
+
+.section-arrow {
+  margin-left: auto;
+  font-size: 1.2rem;
+}
+.ci-section {
+  margin-bottom: 2rem;
+}
+
+.ci-section h3 {
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.ci-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.ci-grid .card {
+  background-color: #2b2b2b; /* dark gray */
+  border-radius: 6px;
+  padding: 16px;
+  color: #fff;
+  transition: background-color 0.2s;
+}
+
+.ci-grid .card:hover {
+  background-color: #0066ff; /* blue hover effect */
+}
+.ci-section {
+  margin-bottom: 2rem;
+}
+
+.ci-section h3 {
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.ci-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.ci-grid .card {
+  background-color: #2b2b2b; /* dark gray */
+  border-radius: 6px;
+  padding: 16px;
+  color: #fff;
+  transition: background-color 0.2s;
+}
+
+.ci-grid .card:hover {
+  background-color: #0066ff; /* blue hover effect */
+}
+/* Make each section stack vertically */
+.ci-section {
+  display: block;       /* ensures full width */
+  margin-bottom: 2rem;  /* spacing between sections */
+}
+
+/* Headings spacing */
+.ci-section h3 {
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+/* Grid layout for cards */
+.ci-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* multiple cards per row */
+  gap: 1rem; /* spacing between cards */
+}
+
+/* Card styling */
+.ci-grid .card {
+  background-color: #2b2b2b; /* dark gray */
+  border-radius: 6px;
+  padding: 16px;
+  color: #fff;
+  transition: background-color 0.2s;
+}
+
+.ci-grid .card:hover {
+  background-color: #0066ff; /* blue hover effect */
+}
+/* --- CIVIC INTELLIGENCE LAYOUT FIX --- */
+
+#civic {
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* space between sections */
+}
+
+/* Make each section take full width and stack naturally */
+.ci-section {
+  width: 100%;
+  display: block;
+}
+
+/* Make the cards inside each section appear in a grid */
+.ci-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+/* Card styling (clean, consistent) */
+.ci-grid .card {
+  background: #2b2b2b;
+  padding: 12px;
+  border-radius: 8px;
+  color: #fff;
+  border: 1px solid #444;
+}
+/* Civic Intelligence tab layout */
+#civic {
+  display: block; /* no flex here, just normal block flow */
+}
+
+/* Each section stacks vertically */
+.ci-section {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+/* Section headings */
+.ci-section h3 {
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+/* Grid layout for cards: force 5 columns, auto-wrap */
+.ci-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* fixed 5 per row */
+  gap: 15px;
+}
+
+/* If you want 6 per row instead, swap the line above for: */
+/* grid-template-columns: repeat(6, 1fr); */
+
+/* Card styling */
+.ci-grid .card {
+  background: #2b2b2b;
+  padding: 12px;
+  border-radius: 8px;
+  color: #fff;
+  border: 1px solid #444;
+  text-align: center;
+  transition: background-color 0.2s;
+}
+
+.ci-grid .card:hover {
+  background-color: #0066ff;
+}
+/* === Civic Intelligence Tab Layout Fix === */
+
+/* Force vertical stacking of subsections */
+#civic .ci-section {
+  display: block;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+/* Headings inside sections */
+#civic .ci-section h3 {
+  margin-bottom: 1rem;
+  color: var(--accent-light);
+}
+
+/* Strict grid for cards: 5 per row on desktop */
+#civic .ci-grid,
+#civic .grid {
+  display: grid !important; /* override global flex */
+  grid-template-columns: repeat(5, 1fr); /* fixed 5 columns */
+  gap: 16px;
+  justify-items: stretch;
+}
+
+/* Optional: bump to 6 per row if you prefer */
+@media (min-width: 1600px) {
+  #civic .ci-grid,
+  #civic .grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+/* Responsive: collapse to 1 column on narrow screens */
+@media (max-width: 768px) {
+  #civic .ci-grid,
+  #civic .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Card styling inside Civic Intelligence */
+#civic .card,
+#civic .link-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 12px;
+  color: var(--text);
+  transition: background-color 0.2s ease;
+}
+
+#civic .card:hover,
+#civic .link-card:hover {
+  background-color: var(--accent-light);
+  color: #fff;
+}
+#civic .ci-grid {
+  display: grid !important;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+@media (min-width: 1600px) {
+  #civic .ci-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+/* Civic Intelligence tab layout override */
+#civic .grid {
+  display: grid !important; /* override global flex */
+  grid-template-columns: repeat(5, 1fr); /* 5 cards per row */
+  gap: 16px;
+  justify-items: stretch;
+}
+
+/* Sections stack vertically */
+#civic .civic-block {
+  display: block;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+/* Responsive: collapse to 1 column on narrow screens */
+@media (max-width: 768px) {
+  #civic .grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* === Civic Intelligence tab layout override === */
+#civic .grid {
+  display: grid !important;   /* override global flex */
+  grid-template-columns: repeat(5, 1fr); /* 5 cards per row */
+  gap: 16px;
+}
+
+#civic .civic-block {
+  display: block;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+/* Responsive: collapse to 1 column on narrow screens */
+@media (max-width: 768px) {
+  #civic .grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* === Civic Intelligence tab layout override === */
+#civic .link-grid {
+  display: grid !important;   /* override global flex */
+  grid-template-columns: repeat(5, 1fr); /* 5 cards per row */
+  gap: 16px;
+}
+
+#civic .civic-block {
+  display: block;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+/* Responsive: collapse to 1 column on narrow screens */
+@media (max-width: 768px) {
+  #civic .link-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* === Civic Intelligence section stacking fix === */
+#civic .civic-section {
+  display: block !important;   /* override accidental grid/flex */
+  width: 100%;
+}
+
+#civic .civic-block {
+  display: block;
+  width: 100%;
+  margin-bottom: 2rem;         /* spacing between blocks */
+}
+/* === Universal Hover Effect === */
+#civic .card,
+#civic .link-card,
+#civic .organization-card,
+#civic .official-card,
+#civic .voting-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+#civic .card:hover,
+#civic .link-card:hover,
+#civic .organization-card:hover,
+#civic .official-card:hover,
+#civic .voting-card:hover {
+  transform: translateY(-4px);
+  background-color: var(--accent-light); /* bright blue */
+  color: #fff;
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+/* === Section Headers === */
+#civic h2,
+#civic h3 {
+  color: var(--accent-light);       /* bright blue */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Optional hover/interaction for headers */
+#civic h2:hover,
+#civic h3:hover {
+  color: var(--accent);             /* deeper blue on hover */
+  cursor: pointer;
+}
+/* === Civic Intelligence Card Hover: Blue Outline === */
+#civic .card,
+#civic .link-card,
+#civic .organization-card,
+#civic .official-card,
+#civic .voting-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  border: 1px solid var(--card-border); /* default subtle border */
+}
+
+#civic .card:hover,
+#civic .link-card:hover,
+#civic .organization-card:hover,
+#civic .official-card:hover,
+#civic .voting-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-light);     /* bright blue outline */
+  box-shadow: 0 0 8px var(--accent-glow); /* subtle blue glow */
+  background-color: inherit;             /* keep original background */
+  color: inherit;                        /* keep text color */
+}
+/* === Officials Tab Card Hover: Blue Outline === */
+#officials .official-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  border: 1px solid var(--card-border); /* default subtle border */
+  background-color: var(--card-bg);     /* keep dark background */
+  color: var(--text);                   /* keep text color */
+}
+
+#officials .official-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-light);    /* bright blue outline */
+  box-shadow: 0 0 8px var(--accent-glow); /* subtle blue glow */
+  background-color: inherit;            /* no fill change */
+  color: inherit;                       /* keep text color */
+}
+/* === Officials Tab Hover: Outline Only === */
+#officials .official-card:hover {
+  background: inherit !important;       /* cancel the blue fill */
+  border-color: var(--accent-light) !important;
+  box-shadow: 0 0 8px var(--accent-glow) !important;
+  transform: translateY(-4px);
+  color: inherit !important;
+}
+/* === Officials Tab Hover: Outline Only === */
+#officials .official-card:hover {
+  background: var(--card-bg) !important;   /* keep original background */
+  border-color: var(--accent-light) !important;
+  box-shadow: 0 0 8px var(--accent-glow) !important;
+  transform: translateY(-4px);
+  color: var(--text) !important;
+}
+/* === Officials Card Hover: Outline Only === */
+.official-card {
+  border: 1px solid var(--card-border);
+  background-color: var(--card-bg);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.official-card:hover {
+  background-color: var(--card-bg) !important;   /* cancel blue fill */
+  border-color: var(--accent-light) !important;  /* bright blue outline */
+  box-shadow: 0 0 8px var(--accent-glow) !important; /* subtle glow */
+  transform: translateY(-4px);
+  color: var(--text) !important;
+}
+/* === Officials Card Formatting === */
+.official-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Image consistency */
+.official-card img {
+  width: 100%;
+  height: 240px;              /* fixed height for uniform cropping */
+  object-fit: cover;          /* crop without distortion */
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+}
+
+/* Text consistency */
+.official-card h3,
+.official-card p {
+  margin: 0.25rem 0;
+  line-height: 1.4;
+  word-wrap: break-word;
+  max-width: 90%;
+}
+
+/* Officials grid: 5 cards per row */
+#officials .link-grid {
+  display: grid !important;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  justify-items: center;
+}
+
+/* Responsive collapse */
+@media (max-width: 1024px) {
+  #officials .link-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  #officials .link-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  #officials .link-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* === Officials Grid: Wider Cards === */
+#officials .link-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr); /* 4 cards per row for more width */
+  gap: 24px;
+  justify-items: stretch;
+}
+
+/* Officials card formatting */
+.official-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 1.25rem;
+  min-width: 220px;   /* ensure wider base */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Image consistency */
+.official-card img {
+  width: 100%;
+  height: 260px;       /* taller image box */
+  object-fit: cover;   /* crop without distortion */
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+}
+
+/* Text consistency */
+.official-card h3,
+.official-card p {
+  margin: 0.35rem 0;
+  line-height: 1.4;
+  word-wrap: break-word;
+  max-width: 95%;      /* allow more width for text */
+}
+
+/* Responsive collapse */
+@media (max-width: 1200px) {
+  #officials .link-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  #officials .link-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  #officials .link-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* === Officials Card Uniform Dimensions === */
+.official-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 1.25rem;
+  width: 260px;          /* fixed width for consistency */
+  height: 420px;         /* fixed height to fit all info */
+  box-sizing: border-box;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Image consistency */
+.official-card img {
+  width: 100%;
+  height: 240px;         /* fixed image height */
+  object-fit: cover;     /* crop without distortion */
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+}
+
+/* Text consistency */
+.official-card h3,
+.official-card p {
+  margin: 0.35rem 0;
+  line-height: 1.4;
+  word-wrap: break-word;
+  max-width: 95%;
+}
+
+/* Officials grid: auto-fit cards neatly */
+#officials .link-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  justify-items: center;
+}
+/* === Voting Tab: Uniform card sizing + outline hover === */
+#voting .voting-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 1.25rem;
+
+  width: 260px;        /* match Officials */
+  height: 420px;       /* match Officials */
+  box-sizing: border-box;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+#voting .voting-card img {
+  width: 100%;
+  height: 240px;       /* consistent image window */
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+}
+
+#voting .voting-card h3,
+#voting .voting-card p {
+  margin: 0.35rem 0;
+  line-height: 1.4;
+  max-width: 95%;
+  word-wrap: break-word;
+}
+
+/* Grid: auto-fit to match card width */
+#voting .link-grid,
+#voting .card-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  justify-items: center;
+}
+
+/* Hover: outline-only */
+#voting .voting-card:hover {
+  background-color: var(--card-bg) !important;
+  border-color: var(--accent-light) !important;
+  box-shadow: 0 0 8px var(--accent-glow) !important;
+  transform: translateY(-4px);
+  color: var(--text) !important;
+}
+/* === Organizations Tab: Uniform card sizing + outline hover === */
+#organizations .organization-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 1.25rem;
+
+  width: 260px;        /* match Officials */
+  height: 420px;       /* match Officials */
+  box-sizing: border-box;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+#organizations .organization-card img {
+  width: 100%;
+  height: 240px;       /* consistent image window */
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+}
+
+#organizations .organization-card h3,
+#organizations .organization-card p {
+  margin: 0.35rem 0;
+  line-height: 1.4;
+  max-width: 95%;
+  word-wrap: break-word;
+}
+
+/* Grid: auto-fit to match card width */
+#organizations .link-grid,
+#organizations .card-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  justify-items: center;
+}
+
+/* Hover: outline-only */
+#organizations .organization-card:hover {
+  background-color: var(--card-bg) !important;
+  border-color: var(--accent-light) !important;
+  box-shadow: 0 0 8px var(--accent-glow) !important;
+  transform: translateY(-4px);
+  color: var(--text) !important;
+}
+/* === Cabinet Grid === */
+#cabinetList.officials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+  justify-items: center;
+  align-items: start;
+  padding: 1rem;
+}
+
+#cabinetList .official-card {
+  width: 220px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+#cabinetList .official-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+#cabinetList .official-card img {
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: contain;   /* full portrait, no cropping */
+  object-position: center;
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+}
+
+#cabinetList .official-card h3,
+#cabinetList .official-card p {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+  line-height: 1.35;
+  text-align: center;
+}
+
+/* === Cabinet Detail View === */
+#cabinetMemberDetail {
+  display: grid;
+  grid-template-columns: 240px 1fr; /* left = portrait+seal, right = info */
+  gap: 24px;
+  align-items: start;
+}
+
+#cabinetMemberDetail .detail-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#cabinetMemberDetail .detail-header .portrait {
+  max-width: 220px;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 12px;
+}
+
+#cabinetMemberDetail .detail-header .seal {
+  max-width: 140px;
+  height: auto;
+  object-fit: contain;
+}
+
+#cabinetMemberDetail .info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+#cabinetMemberDetail .info h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent-light);
+}
+
+#cabinetMemberDetail .info p {
+  margin: 0 0 0.4rem 0;
+  line-height: 1.5;
+  color: var(--muted-light);
+}
+
+/* Responsive: stack on mobile */
+@media (max-width: 768px) {
+  #cabinetMemberDetail {
+    grid-template-columns: 1fr;
+  }
+}
+/* === Cabinet Grid Cards === */
+#cabinetList.officials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+  justify-items: center;
+  align-items: start;
+  padding: 1rem;
+}
+
+#cabinetList .official-card {
+  width: 220px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+#cabinetList .official-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-light);
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+#cabinetList .official-card .photo-wrapper {
+  width: 100%;
+  height: 240px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+#cabinetList .official-card .photo-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;   /* show full portrait */
+  object-position: center;
+  border-radius: 6px;
+}
+
+#cabinetList .official-card .official-info {
+  margin-top: 0.75rem;
+}
+#cabinetList .official-card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0.25rem 0;
+}
+#cabinetList .official-card p {
+  font-size: 0.9rem;
+  color: var(--muted-light);
+  margin: 0.25rem 0;
+  line-height: 1.35;
+}
+
+/* === Cabinet Detail View === */
+#cabinetMemberDetail {
+  display: grid;
+  grid-template-columns: 240px 1fr; /* left fixed, right flexible */
+  gap: 24px;
+  align-items: start;
+  padding: 1rem;
+}
+
+#cabinetMemberDetail .detail-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#cabinetMemberDetail .detail-header .portrait {
+  max-width: 220px;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 12px;
+  border-radius: 8px;
+}
+
+#cabinetMemberDetail .detail-header .seal {
+  max-width: 140px;
+  height: auto;
+  object-fit: contain;
+}
+
+#cabinetMemberDetail .info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+#cabinetMemberDetail .info h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent-light);
+}
+
+#cabinetMemberDetail .info p {
+  margin: 0 0 0.4rem 0;
+  line-height: 1.5;
+  color: var(--muted-light);
+}
+
+/* Responsive: stack on mobile */
+@media (max-width: 768px) {
+  #cabinetMemberDetail {
+    grid-template-columns: 1fr;
+  }
+}
+/* === Civics Quiz Modal Modernized Look === */
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 90%;
+  padding: 2rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  animation: fadeIn 0.3s ease;
+}
+
+.close {
+  float: right;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #666;
+}
+.close:hover {
+  color: #000;
+}
+
+/* Quiz header */
+#civics-quiz h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #2042ff;
+}
+#civics-quiz p {
+  margin-bottom: 1.5rem;
+  color: #555;
+}
+
+/* Progress */
+#quiz-progress {
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+/* Question */
+#quiz-question h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: #222;
+}
+
+/* Options */
+#quiz-options label {
+  display: block;
+  background: #f7f7f7;
+  padding: 0.6rem 0.8rem;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+#quiz-options input[type="radio"] {
+  margin-right: 0.5rem;
+}
+#quiz-options label:hover {
+  background: #e9f0ff;
+}
+
+/* Controls */
+#quiz-controls {
+  margin-top: 1rem;
+}
+#quiz-controls button {
+  background: linear-gradient(90deg, #2042ff, #6a5af9);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  margin-right: 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+#quiz-controls button:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(90deg, #6a5af9, #2042ff);
+}
+
+/* Feedback */
+#quiz-feedback {
+  margin-top: 1rem;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+#quiz-feedback small {
+  display: block;
+  margin-top: 0.3rem;
+  color: #666;
+}
+
+/* Final Score */
+#quiz-score {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2042ff;
+}
+
+/* Launcher card */
+#daily-civics-test-launcher {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-top: 1rem;
+}
+#daily-civics-test-launcher h3 {
+  margin-bottom: 0.5rem;
+  color: #2042ff;
+}
+#daily-civics-test-launcher p {
+  margin-bottom: 1rem;
+  color: #555;
+}
+#daily-civics-test-launcher button {
+  background: linear-gradient(90deg, #ff6b6b, #f65fb9);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+#daily-civics-test-launcher button:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(90deg, #f65fb9, #ff6b6b);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.modal-content {
+  background: #2b2b2b; /* dark gray */
+  color: #f0f0f0;
+}
+
+#quiz-options label {
+  background: #3a3a3a;
+  color: #f0f0f0;
+}
+#quiz-options label:hover {
+  background: #2042ff; /* blue hover */
+  color: #fff;
+}
+
+#quiz-controls button {
+  background: #3a3a3a;
+  color: #f0f0f0;
+}
+#quiz-controls button:hover {
+  background: #2042ff;
+  color: #fff;
+}
+#daily-civics-test-launcher {
+  background: #2b2b2b;
+  color: #f0f0f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  max-width: 400px;   /* smaller block */
+  margin: 2rem auto;  /* center horizontally */
+}
+#daily-civics-test-launcher {
+  background: #2b2b2b;
+  color: #f0f0f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  max-width: 400px;
+  margin: 2rem auto;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#daily-civics-test-launcher:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.6);
+}
+/* Modal content */
+.modal-content {
+  background: #2b2b2b;
+  color: #f9f9f9; /* brighter text */
+}
+
+/* Quiz question text */
+#quiz-question h3 {
+  color: #ffffff; /* pure white for clarity */
+}
+
+/* Options */
+#quiz-options label {
+  background: #3a3a3a;
+  color: #f9f9f9;
+}
+#quiz-options label:hover {
+  background: #2042ff;
+  color: #fff;
+}
+
+/* Feedback + score */
+#quiz-feedback {
+  color: #f9f9f9;
+}
+#quiz-score {
+  color: #1e90ff; /* bright blue for emphasis */
+}
+#daily-civics-test-launcher h3 {
+  color: #ffffff;
+}
+#daily-civics-test-launcher p {
+  color: #ddd; /* lighter gray for readability */
+}
+#quiz-progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #444; /* dark gray track */
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+#quiz-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: #2042ff; /* bright blue fill */
+  transition: width 0.4s ease;
+}
+/* Tagline under quiz title */
+#civics-quiz p {
+  color: #f9f9f9;   /* bright white for readability */
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Progress text (e.g., "Question 1 of 20") */
+#quiz-progress {
+  color: #f9f9f9;   /* bright white */
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+/* Feedback text */
+#quiz-feedback {
+  margin-top: 1rem;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: #f9f9f9; /* default bright white */
+}
+
+/* Correct answer feedback */
+#quiz-feedback.correct {
+  color: #4caf50; /* bright green */
+  font-weight: 600;
+}
+
+/* Incorrect answer feedback */
+#quiz-feedback.incorrect {
+  color: #ff5252; /* bright red */
+  font-weight: 600;
+}
+
+/* Explanation text inside feedback */
+#quiz-feedback small {
+  display: block;
+  margin-top: 0.3rem;
+  color: #ddd; /* lighter gray for readability */
+}
+/* === Quiz animations === */
+
+/* Fade-in + slight rise for question text */
+@keyframes quizFadeInUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Option cards slide + fade-in */
+@keyframes quizOptionIn {
+  from { opacity: 0; transform: translateX(8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Feedback fade-in */
+@keyframes quizFeedbackIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Modal content gentle pop */
+@keyframes modalPop {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Apply modal pop when civics modal opens */
+#civicsQuizModal .modal-content {
+  animation: modalPop 220ms ease-out;
+}
+
+/* Question fade-in utility */
+.quiz-animate-question h3 {
+  animation: quizFadeInUp 240ms ease-out both;
+}
+
+/* Options container animates its children (stagger effect via nth-child) */
+.quiz-animate-options label {
+  animation: quizOptionIn 220ms ease-out both;
+}
+.quiz-animate-options label:nth-child(1) { animation-delay: 40ms; }
+.quiz-animate-options label:nth-child(2) { animation-delay: 80ms; }
+.quiz-animate-options label:nth-child(3) { animation-delay: 120ms; }
+.quiz-animate-options label:nth-child(4) { animation-delay: 160ms; }
+.quiz-animate-options label:nth-child(5) { animation-delay: 200ms; }
+
+/* Feedback fade-in */
+.quiz-animate-feedback {
+  animation: quizFeedbackIn 200ms ease-out both;
+}
+
+/* Micro-interaction for buttons */
+#quiz-controls button {
+  transition: transform 120ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+#quiz-controls button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.35);
 }
