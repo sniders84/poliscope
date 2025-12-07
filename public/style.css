@@ -8678,3 +8678,17 @@ nav .tab.active {
   flex-direction: column;
   justify-content: space-between;
 }
+/* Civic tab flows normally */
+#civic {
+  display: block;            /* no flex forcing */
+  padding-bottom: 30px;      /* breathing room */
+}
+
+/* Centered row of launchers */
+#quiz-launchers {
+  display: flex;
+  justify-content: center;   /* center horizontally */
+  gap: 20px;                 /* spacing between cards */
+  margin-top: 30px;          /* space above row */
+  margin-bottom: 30px;       /* space below row so next section isn’t covered */
+}
