@@ -8568,3 +8568,80 @@ nav .tab.active {
   width: 300px;               /* fixed width (already set) */
   height: 220px;              /* fixed height (already set) */
 }
+/* Make the civic tab a flex column with a spacer that pushes the row down */
+#civic {
+  display: flex;
+  flex-direction: column;
+  min-height: 80vh;         /* enough height to show bottom anchoring */
+  box-sizing: border-box;
+  position: relative;
+}
+
+.civic-spacer {
+  flex: 1 1 auto;           /* takes remaining space above the row */
+}
+
+/* Bottom row centered */
+#quiz-launchers {
+  align-self: center;        /* center the row horizontally within the tab */
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;       /* lift off the bottom a bit */
+  max-width: 700px;          /* keeps row tight */
+  width: 100%;
+}
+
+/* Uniform card sizing (already agreed dimensions) */
+#quiz-launchers .quiz-card {
+  box-sizing: border-box;
+  width: 300px;
+  height: 220px;
+  background-color: #2b2b2b;
+  color: #f0f0f0;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0;
+}
+
+/* Neutralize legacy layout rules that could shove cards around */
+#daily-civics-test-launcher,
+#political-typology-launcher {
+  position: static !important;
+  float: none !important;
+  align-self: auto !important;
+}
+
+/* Button + text (unchanged) */
+#quiz-launchers .quiz-card h3 {
+  margin: 0 0 8px 0;
+  color: #ffffff;
+}
+
+#quiz-launchers .quiz-card p {
+  margin: 0 0 12px 0;
+  color: #ddd;
+  font-size: 0.9rem;
+}
+
+#quiz-launchers .quiz-card button {
+  background: linear-gradient(90deg, #2042ff, #6a5af9);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+#quiz-launchers .quiz-card button:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(90deg, #6a5af9, #2042ff);
+}
