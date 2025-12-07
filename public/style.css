@@ -8944,3 +8944,47 @@ nav .tab.active {
 #quiz-launchers button:hover {
   background-color: #0066cc;
 }
+#quiz-launchers {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+#quiz-launchers div {
+  flex: 1;
+  background-color: #2b2b2b;
+  padding: 15px;
+  border-radius: 8px;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 200px;   /* enforce same height */
+}
+
+#quiz-launchers div:hover {
+  transform: translateY(-3px);
+}
+
+#quiz-launchers h3 {
+  margin-top: 0;
+  color: #1e90ff;
+}
+#quiz-launchers button {
+  background-color: #1e90ff;   /* same blue */
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;          /* consistent padding */
+  font-size: 1rem;             /* consistent font size */
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+#quiz-launchers button:hover {
+  background-color: #0066cc;
+  transform: scale(1.05);
+}
