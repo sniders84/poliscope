@@ -372,11 +372,17 @@
   <h2>Civic Intelligence Dashboard</h2>
   <div id="calendar"></div>
 
-  <!-- Place the launcher here so it only shows in this tab -->
   <div id="daily-civics-test-launcher">
     <h3>Daily Civics Test</h3>
     <p>Test your United States government, economics, and history knowledge.</p>
     <button onclick="openCivicsQuizModal()">Start today’s test</button>
+  </div>
+
+  <!-- Political Typology Quiz launcher (placed next to civics launcher) -->
+  <div id="political-typology-launcher">
+    <h3>Political Typology Quiz</h3>
+    <p>See where you align across the political spectrum.</p>
+    <button onclick="openTypologyQuizModal()">Start the typology quiz</button>
   </div>
 </section>
 
@@ -445,6 +451,41 @@
       <!-- Feedback + Score -->
       <div id="quiz-feedback"></div>
       <div id="quiz-score"></div>
+    </div>
+  </div>
+</div>
+
+    <!-- Political Typology Quiz Modal -->
+<div id="typologyQuizModal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span class="close" onclick="closeModalWindow('typologyQuizModal')">&times;</span>
+    <div id="typology-quiz">
+      <h2>Political Typology Quiz</h2>
+      <p>Discover where you sit on the political spectrum.</p>
+
+      <!-- Progress bar -->
+      <div id="typology-progress-bar">
+        <div id="typology-progress-fill"></div>
+      </div>
+
+      <!-- Progress text -->
+      <div id="typology-progress"></div>
+
+      <!-- Question -->
+      <div id="typology-question"></div>
+
+      <!-- Options -->
+      <div id="typology-options"></div>
+
+      <!-- Controls -->
+      <div id="typology-controls">
+        <button id="typology-submit">Submit</button>
+        <button id="typology-next" style="display:none;">Next</button>
+      </div>
+
+      <!-- Feedback + Result -->
+      <div id="typology-feedback"></div>
+      <div id="typology-result"></div>
     </div>
   </div>
 </div>
