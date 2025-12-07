@@ -552,7 +552,7 @@ async function loadFeed(url) {
   return "assets/default-thumb.png"; // fallback image
 }
 
-  async function loadSection(section, containerId) {
+ async function loadSection(section, containerId) {
   const container = document.getElementById(containerId);
   const track = document.createElement("div");
   track.className = "carousel-track";
@@ -612,104 +612,3 @@ async function loadFeed(url) {
     track.appendChild(card);
   });
 }
-
- // Map to { item, img, source } — STRICT: thumbnails or enclosures only
-const mapped = items.map(item => {
-  let img = "";
-  if (item.thumbnail) img = item.thumbnail;
-  else if (item.enclosure && item.enclosure.link) img = item.enclosure.link;
-  // DO NOT parse content HTML for images; enforce native fields only
-  return { item, img, source: url };
-});
-
-    perSourceItems.push(mapped.filter(x => !!x.img));
-  }
-
-  // Round-robin across sources to guarantee visible diversity
-  const maxCards = 50;
-  const result = [];
-  let added = 0;
-  let index = 0;
-
-  while (added < maxCards) {
-    let progressed = false;
-    for (let s = 0; s < perSourceItems.length; s++) {
-      const sourceList = perSourceItems[s];
-      if (index < sourceList.length) {
-        result.push(sourceList[index]);
-        added++;
-        progressed = true;
-        if (added >= maxCards) break;
-      }
-    }
-    if (!progressed) break;
-    index++;
-  }
-
-  // Build cards (guaranteed all have images)
-  result.forEach(({ item, img }) => {
-    const card = document.createElement("a");
-    card.className = "hub-card carousel-card";
-    card.href = item.link;
-    card.target = "_blank";
-    card.rel = "noopener noreferrer";
-    card.innerHTML = `
-      <img src="${img}" alt="" class="carousel-img">
-      <h3>${item.title}</h3>
-      <p>${new Date(item.pubDate).toLocaleDateString()}</p>
-    `;
-    track.appendChild(card);
-  });
-}
-
-    function setupControls(containerId) {
-      const track = document.querySelector(`#${containerId} .carousel-track`);
-      const prevBtn = document.querySelector(`.carousel-controls .prev[data-target="${containerId}"]`);
-      const nextBtn = document.querySelector(`.carousel-controls .next[data-target="${containerId}"]`);
-
-      let position = 0;
-      const step = 310; // card width + ~gap
-
-      // Auto-scroll (5 seconds)
-      setInterval(() => {
-        position++;
-        if (position >= track.children.length) position = 0;
-        track.style.transform = `translateX(-${position * step}px)`;
-      }, 5000);
-
-      // Manual controls
-      prevBtn.addEventListener("click", () => {
-        position = Math.max(0, position - 1);
-        track.style.transform = `translateX(-${position * step}px)`;
-      });
-
-      nextBtn.addEventListener("click", () => {
-        position = Math.min(track.children.length - 1, position + 1);
-        track.style.transform = `translateX(-${position * step}px)`;
-      });
-    }
-  </script>
-  <script src="script.js"></script>
-
-<script>
-  // Initialize carousels: load feeds then wire controls
-  (async () => {
-    await loadSection("world", "world-news-carousel");
-    await loadSection("finance", "finance-carousel");
-    await loadSection("economy", "economy-carousel");
-
-    setupControls("world-news-carousel");
-    setupControls("finance-carousel");
-    setupControls("economy-carousel");
-  })();
-</script>
-
-<script>
-  // Force Home Hub tab to show on page load and highlight its button
-  document.addEventListener("DOMContentLoaded", () => {
-    showStartupHub(); // Home Hub loads first and button is highlighted
-  });
-</script>
-
-</body>
-</html>
