@@ -8544,3 +8544,27 @@ nav .tab.active {
   gap: 20px;
   justify-content: center;     /* center the row */
 }
+/* Make the civic tab a positioning context */
+#civic {
+  position: relative;
+  min-height: 70vh;           /* enough height to place bottom row cleanly */
+}
+
+/* Bottom-centered launcher row */
+#quiz-launchers {
+  position: absolute;
+  bottom: 24px;               /* lift slightly off the bottom edge */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Ensure cards don’t add margins that shift layout */
+#quiz-launchers .quiz-card {
+  margin: 0 !important;
+  width: 300px;               /* fixed width (already set) */
+  height: 220px;              /* fixed height (already set) */
+}
