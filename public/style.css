@@ -4221,3 +4221,52 @@ nav .tab.active {
   max-width: 400px;   /* smaller block */
   margin: 2rem auto;  /* center horizontally */
 }
+#daily-civics-test-launcher {
+  background: #2b2b2b;
+  color: #f0f0f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  max-width: 400px;
+  margin: 2rem auto;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#daily-civics-test-launcher:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.6);
+}
+/* Modal content */
+.modal-content {
+  background: #2b2b2b;
+  color: #f9f9f9; /* brighter text */
+}
+
+/* Quiz question text */
+#quiz-question h3 {
+  color: #ffffff; /* pure white for clarity */
+}
+
+/* Options */
+#quiz-options label {
+  background: #3a3a3a;
+  color: #f9f9f9;
+}
+#quiz-options label:hover {
+  background: #2042ff;
+  color: #fff;
+}
+
+/* Feedback + score */
+#quiz-feedback {
+  color: #f9f9f9;
+}
+#quiz-score {
+  color: #1e90ff; /* bright blue for emphasis */
+}
+#daily-civics-test-launcher h3 {
+  color: #ffffff;
+}
+#daily-civics-test-launcher p {
+  color: #ddd; /* lighter gray for readability */
+}
