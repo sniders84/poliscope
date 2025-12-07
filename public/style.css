@@ -8528,3 +8528,19 @@ nav .tab.active {
   transform: translateY(-2px);
   background: linear-gradient(90deg, #6a5af9, #2042ff);
 }
+/* Position quiz launchers at bottom of civic tab */
+#civic {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;   /* push content to bottom */
+  align-items: center;         /* center horizontally */
+  min-height: 100%;            /* ensure full tab height */
+  padding-bottom: 30px;        /* breathing room at bottom */
+  box-sizing: border-box;
+}
+
+#quiz-launchers {
+  display: flex;
+  gap: 20px;
+  justify-content: center;     /* center the row */
+}
