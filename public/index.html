@@ -530,12 +530,12 @@
     }
 
     function extractImage(item) {
-      if (item.thumbnail) return item.thumbnail;
-      if (item.enclosure && item.enclosure.link) return item.enclosure.link;
-      const match = item.content?.match(/<img[^>]+src="([^">]+)"/i);
-      if (match && match[1]) return match[1];
-      return "";
-    }
+  if (item.thumbnail) return item.thumbnail;
+  if (item.enclosure && item.enclosure.link) return item.enclosure.link;
+  const match = item.content?.match(/<img[^>]+src="([^">]+)"/i);
+  if (match && match[1]) return match[1];
+  return "assets/default-thumb.png"; // fallback image
+}
 
     async function loadSection(section, containerId) {
       const container = document.getElementById(containerId);
