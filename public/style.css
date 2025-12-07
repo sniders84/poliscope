@@ -8426,17 +8426,19 @@ nav .tab.active {
     grid-template-columns: 1fr;
   }
 }
-/* === Quiz Launchers (Civics + Typology) === */
+/* Force Civics + Typology cards to same size */
 #quiz-launchers {
   display: flex;
   gap: 20px;
   margin-top: 20px;
+  justify-content: center; /* center them horizontally */
 }
 
 #quiz-launchers div {
-  flex: 1;
-  background-color: #2b2b2b;   /* dark gray background */
-  color: #f0f0f0;              /* light text */
+  width: 300px;              /* fixed width */
+  height: 220px;             /* fixed height */
+  background-color: #2b2b2b;
+  color: #f0f0f0;
   border-radius: 12px;
   padding: 1.5rem;
   text-align: center;
@@ -8444,9 +8446,7 @@ nav .tab.active {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  min-height: 220px;           /* enforce same height */
-  max-width: 400px;            /* enforce same width */
+  justify-content: space-between; /* space out content evenly */
 }
 
 #quiz-launchers div:hover {
@@ -8463,6 +8463,7 @@ nav .tab.active {
 #quiz-launchers p {
   margin-bottom: 1rem;
   color: #ddd;
+  font-size: 0.9rem;
 }
 
 #quiz-launchers button {
