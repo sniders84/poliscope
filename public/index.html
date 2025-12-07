@@ -371,34 +371,6 @@
   <section id="civic" class="tab-content" style="display: none;">
   <h2>Civic Intelligence Dashboard</h2>
   <div id="calendar"></div>
-
-  <!-- Civic Quiz Section -->
-  <div id="civic-quiz-section" class="quiz-container">
-    <div class="quiz-header">
-      <h2>Civic Intelligence Quiz</h2>
-      <div class="quiz-progress">
-        <span id="quiz-progress-label">Question 1 of 20</span>
-        <div class="progress-bar">
-          <div id="quiz-progress-fill" class="progress-fill" style="width:0%"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="quiz-card">
-      <div class="quiz-question">
-        <h3 id="quiz-question-text">Loading question…</h3>
-        <span id="quiz-badge-category" class="badge category">Category</span>
-        <span id="quiz-badge-difficulty" class="badge difficulty">Difficulty</span>
-      </div>
-      <div id="quiz-options" class="quiz-options">
-        <!-- Buttons injected by JS -->
-      </div>
-
-      <div class="quiz-actions">
-        <button id="open-quiz-modal" class="primary-btn">Open Full Quiz</button>
-      </div>
-    </div>
-  </div>
 </section>
 
     <section id="polls" class="tab-content" style="display: none;">
@@ -454,16 +426,15 @@
 
       <div id="quiz-feedback"></div>
       <div id="quiz-score"></div>
-
-      <!-- Results screen (hidden until quiz ends) -->
-      <div id="quiz-results" class="results-screen" style="display:none">
-        <h2>Your Results</h2>
-        <p id="results-score"></p>
-        <div id="results-breakdown"></div>
-        <button id="results-restart" class="primary-btn">Restart Quiz</button>
-      </div>
     </div>
   </div>
+</div>
+
+<!-- === Launcher (add to both civic tab containers) === -->
+<div id="daily-civics-test-launcher">
+  <h3>Daily Civics Test</h3>
+  <p>Practice 20 random questions from the USCIS Civics Test (2025). Pass with 12 correct.</p>
+  <button onclick="openCivicsQuizModal()">Start today’s test</button>
 </div>
 
   <!-- Cabinet Modal -->
@@ -634,37 +605,6 @@
     showStartupHub(); // Home Hub loads first and button is highlighted
   });
 </script>
-  <!-- Quiz Modal -->
-<div id="quiz-modal" class="quiz-modal" aria-hidden="true" style="display:none">
-  <div class="modal-header">
-    <h2>🛡 Civic Intelligence Quiz</h2>
-    <button id="quiz-modal-close" class="close-btn" aria-label="Close">&times;</button>
-  </div>
-
-  <div class="modal-body">
-    <div class="quiz-question">
-      <h3 id="modal-question-text">Loading question…</h3>
-      <div class="badge-row">
-        <span id="modal-badge-category" class="badge category">Category</span>
-        <span id="modal-badge-difficulty" class="badge difficulty">Difficulty</span>
-      </div>
-    </div>
-
-    <div id="modal-options" class="quiz-options">
-      <!-- Options injected by JS -->
-    </div>
-
-    <div id="modal-explanation" class="explanation-card" style="display:none">
-      <strong>Explanation:</strong>
-      <p id="modal-explanation-text"></p>
-    </div>
-  </div>
-
-  <div class="modal-footer">
-    <div class="progress-circle" id="modal-progress">0/20</div>
-    <button id="modal-next-btn" class="next-btn">Next Question →</button>
-  </div>
-</div>
 
 </body>
 </html>
