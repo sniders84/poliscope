@@ -498,105 +498,115 @@
       showStartupHub();
     });
 
-    // --- Carousel Feed Logic (image-enforced, 25 items, rotating track + arrows) ---
-    const feeds = {
-      world: [
-        "http://feeds.bbci.co.uk/news/world/rss.xml",
-        "http://feeds.reuters.com/Reuters/worldNews",
-        "https://www.aljazeera.com/xml/rss/all.xml"
-      ],
-      finance: [
-        "https://www.cnbc.com/id/100003114/device/rss/rss.html",
-        "https://www.marketwatch.com/rss/topstories",
-        "https://feeds.finance.yahoo.com/rss/2.0/headline?s=^DJI"
-      ],
-      economy: [
-        "https://www.cnbc.com/id/20910258/device/rss/rss.html",
-        "https://www.marketwatch.com/rss/economy",
-        "https://feeds.bloomberg.com/economics/news.rss"
-      ]
-    };
+   <script>
+  // --- Carousel Feed Logic (image-enforced, 25 items, rotating track + arrows) ---
+  const feeds = {
+    world: [
+      // BBC World News (free, with images)
+      "https://feeds.bbci.co.uk/news/world/rss.xml",
+      // Al Jazeera English (free, with images)
+      "https://www.aljazeera.com/xml/rss/all.xml",
+      // NPR World News (free, with images)
+      "https://feeds.npr.org/1004/rss.xml"
+    ],
+    finance: [
+      // CNBC Top News (business/markets, free, with images)
+      "https://www.cnbc.com/id/100003114/device/rss/rss.xml",
+      // Yahoo Finance Headlines (free, with images)
+      "https://feeds.finance.yahoo.com/rss/2.0/headline?s=^DJI",
+      // Investing.com News (free, with images)
+      "https://www.investing.com/rss/news.rss"
+    ],
+    economy: [
+      // CNBC Economy Feed (free, with images)
+      "https://www.cnbc.com/id/20910258/device/rss/rss.xml",
+      // NPR Economy (free, with images)
+      "https://feeds.npr.org/1017/rss.xml",
+      // Investing.com Economy (macro news, free, with images)
+      "https://www.investing.com/rss/news_25.rss"
+    ]
+  };
 
-    async function loadFeed(url) {
-      try {
-        const response = await fetch(
-          `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`
-        );
-        const data = await response.json();
-        return data.items || [];
-      } catch {
-        return [];
-      }
+  async function loadFeed(url) {
+    try {
+      const response = await fetch(
+        `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`
+      );
+      const data = await response.json();
+      return data.items || [];
+    } catch {
+      return [];
+    }
+  }
+
+  function extractImage(item) {
+    if (item.thumbnail) return item.thumbnail;
+    if (item.enclosure && item.enclosure.link) return item.enclosure.link;
+    const match = item.content?.match(/<img[^>]+src="([^">]+)"/i);
+    if (match && match[1]) return match[1];
+    return "";
+  }
+
+  async function loadSection(section, containerId) {
+    const container = document.getElementById(containerId);
+    const track = document.createElement("div");
+    track.className = "carousel-track";
+    container.appendChild(track);
+
+    let allItems = [];
+    for (const url of feeds[section]) {
+      const items = await loadFeed(url);
+      allItems = allItems.concat(items);
     }
 
-    function extractImage(item) {
-      if (item.thumbnail) return item.thumbnail;
-      if (item.enclosure && item.enclosure.link) return item.enclosure.link;
-      const match = item.content?.match(/<img[^>]+src="([^">]+)"/i);
-      if (match && match[1]) return match[1];
-      return "";
-    }
+    const withImages = allItems
+      .map(item => ({ item, img: extractImage(item) }))
+      .filter(({ img }) => !!img)
+      .slice(0, 25); // enforce cap of 25 with images
 
-    async function loadSection(section, containerId) {
-      const container = document.getElementById(containerId);
-      const track = document.createElement("div");
-      track.className = "carousel-track";
-      container.appendChild(track);
+    withImages.forEach(({ item, img }) => {
+      const card = document.createElement("a");
+      card.className = "hub-card carousel-card";
+      card.href = item.link;
+      card.target = "_blank";
+      card.rel = "noopener noreferrer";
+      card.innerHTML = `
+        <img src="${img}" alt="" class="carousel-img">
+        <h3>${item.title}</h3>
+        <p>${new Date(item.pubDate).toLocaleDateString()}</p>
+      `;
+      track.appendChild(card);
+    });
+  }
 
-      let allItems = [];
-      for (const url of feeds[section]) {
-        const items = await loadFeed(url);
-        allItems = allItems.concat(items);
-      }
+  function setupControls(containerId) {
+    const track = document.querySelector(`#${containerId} .carousel-track`);
+    const prevBtn = document.querySelector(`.carousel-controls .prev[data-target="${containerId}"]`);
+    const nextBtn = document.querySelector(`.carousel-controls .next[data-target="${containerId}"]`);
 
-      const withImages = allItems
-        .map(item => ({ item, img: extractImage(item) }))
-        .filter(({ img }) => !!img)
-        .slice(0, 25); // enforce cap of 25 with images
+    let position = 0;
+    const step = 310; // card width + ~gap
 
-      withImages.forEach(({ item, img }) => {
-        const card = document.createElement("a");
-        card.className = "hub-card carousel-card";
-        card.href = item.link;
-        card.target = "_blank";
-        card.rel = "noopener noreferrer";
-        card.innerHTML = `
-          <img src="${img}" alt="" class="carousel-img">
-          <h3>${item.title}</h3>
-          <p>${new Date(item.pubDate).toLocaleDateString()}</p>
-        `;
-        track.appendChild(card);
-      });
-    }
+    // Auto-scroll (5 seconds)
+    setInterval(() => {
+      position++;
+      if (position >= track.children.length) position = 0;
+      track.style.transform = `translateX(-${position * step}px)`;
+    }, 5000);
 
-    function setupControls(containerId) {
-      const track = document.querySelector(`#${containerId} .carousel-track`);
-      const prevBtn = document.querySelector(`.carousel-controls .prev[data-target="${containerId}"]`);
-      const nextBtn = document.querySelector(`.carousel-controls .next[data-target="${containerId}"]`);
+    // Manual controls
+    prevBtn.addEventListener("click", () => {
+      position = Math.max(0, position - 1);
+      track.style.transform = `translateX(-${position * step}px)`;
+    });
 
-      let position = 0;
-      const step = 310; // card width + ~gap
-
-      // Auto-scroll (5 seconds)
-      setInterval(() => {
-        position++;
-        if (position >= track.children.length) position = 0;
-        track.style.transform = `translateX(-${position * step}px)`;
-      }, 5000);
-
-      // Manual controls
-      prevBtn.addEventListener("click", () => {
-        position = Math.max(0, position - 1);
-        track.style.transform = `translateX(-${position * step}px)`;
-      });
-
-      nextBtn.addEventListener("click", () => {
-        position = Math.min(track.children.length - 1, position + 1);
-        track.style.transform = `translateX(-${position * step}px)`;
-      });
-    }
-  </script>
-  <script src="script.js"></script>
+    nextBtn.addEventListener("click", () => {
+      position = Math.min(track.children.length - 1, position + 1);
+      track.style.transform = `translateX(-${position * step}px)`;
+    });
+  }
+</script>
+<script src="script.js"></script>
 
 <script>
   // Initialize carousels: load feeds then wire controls
