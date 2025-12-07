@@ -4190,3 +4190,34 @@ nav .tab.active {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+.modal-content {
+  background: #2b2b2b; /* dark gray */
+  color: #f0f0f0;
+}
+
+#quiz-options label {
+  background: #3a3a3a;
+  color: #f0f0f0;
+}
+#quiz-options label:hover {
+  background: #2042ff; /* blue hover */
+  color: #fff;
+}
+
+#quiz-controls button {
+  background: #3a3a3a;
+  color: #f0f0f0;
+}
+#quiz-controls button:hover {
+  background: #2042ff;
+  color: #fff;
+}
+#daily-civics-test-launcher {
+  background: #2b2b2b;
+  color: #f0f0f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  max-width: 400px;   /* smaller block */
+  margin: 2rem auto;  /* center horizontally */
+}
