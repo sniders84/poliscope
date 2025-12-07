@@ -499,21 +499,21 @@
     });
 
     // --- Carousel Feed Logic (image-enforced, 25 items, rotating track + arrows) ---
-   const feeds = {
+ const feeds = {
   world: [
-    "https://www.dw.com/en/top-stories/s-9097/rss",               // Deutsche Welle World (images)
-    "https://www.aljazeera.com/xml/rss/all.xml",                  // Al Jazeera English (images)
-    "https://feeds.npr.org/1004/rss.xml"                          // NPR World (media:content)
+    "https://www.aljazeera.com/xml/rss/all.xml",            // Al Jazeera English (images)
+    "https://www.dw.com/en/top-stories/s-9097/rss",         // Deutsche Welle World (images)
+    "https://feeds.npr.org/1004/rss.xml"                    // NPR World (media:content thumbnails)
   ],
   finance: [
-    "https://www.investing.com/rss/news_3.rss",                   // Investing.com Stock Markets (thumbnails)
-    "https://www.investing.com/rss/news_5.rss",                   // Investing.com Commodities (thumbnails)
-    "https://www.nasdaq.com/feed/rssoutbound?category=Markets"    // Nasdaq Markets (images/enclosures)
+    "https://www.nasdaq.com/feed/rssoutbound?category=Markets", // Nasdaq Markets (images/enclosures)
+    "https://www.cnbc.com/id/10001147/device/rss/rss.xml",      // CNBC Markets (image fields)
+    "https://www.reutersagency.com/feed/?best-topics=business-finance" // Reuters Business/Finance (image enclosures)
   ],
   economy: [
-    "https://www.eia.gov/tools/rssfeeds/todayinenergy.xml",       // EIA Today in Energy (images)
-    "https://fredblog.stlouisfed.org/feed/",                      // FRED Blog (St. Louis Fed) (images)
-    "https://www.census.gov/newsroom/stories.rss"                 // U.S. Census Bureau Stories (images)
+    "https://www.eia.gov/tools/rssfeeds/todayinenergy.xml", // U.S. Energy Information Admin (image‑heavy)
+    "https://fredblog.stlouisfed.org/feed/",                // St. Louis Fed FRED Blog (images in posts)
+    "https://www.census.gov/newsroom/stories.rss"           // U.S. Census Bureau Stories (images)
   ]
 };
 
