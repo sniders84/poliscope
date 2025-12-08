@@ -997,11 +997,16 @@ function openCivicsQuizModal() {
   modal.style.display = 'block';
   initCivicsQuiz(); // kick off the quiz engine
 }
+
 // === Daily Civics Quiz Engine ===
 let quizQuestions = [];
 let allQuestions = [];
 let currentQuestion = 0;
 let score = 0;
+
+// Randomizer tracking
+let civicsPool = [];
+let civicsIndex = 0;
 
 function initCivicsQuiz() {
   currentQuestion = 0;
@@ -1030,12 +1035,24 @@ function getDailyQuestions() {
   if (saved === today) {
     return JSON.parse(localStorage.getItem("civicsQuizQuestions"));
   } else {
-    const newSet = allQuestions.sort(() => 0.5 - Math.random()).slice(0, 20);
+    // If pool is empty or exhausted, reshuffle the full set
+    if (civicsPool.length === 0 || civicsIndex + 20 > civicsPool.length) {
+      civicsPool = allQuestions.slice().sort(() => 0.5 - Math.random());
+      civicsIndex = 0;
+    }
+
+    // Take the next 20 questions sequentially from the shuffled pool
+    const newSet = civicsPool.slice(civicsIndex, civicsIndex + 20);
+    civicsIndex += 20;
+
+    // Save today's set so it stays consistent if user refreshes
     localStorage.setItem("civicsQuizDate", today);
     localStorage.setItem("civicsQuizQuestions", JSON.stringify(newSet));
+
     return newSet;
   }
 }
+
 function renderQuestion() {
   const q = quizQuestions[currentQuestion];
 
@@ -1054,6 +1071,7 @@ function renderQuestion() {
   document.getElementById("quiz-submit").style.display = "inline-block";
   document.getElementById("quiz-next").style.display = "none";
 }
+
 document.getElementById("quiz-submit").onclick = () => {
   const selected = document.querySelector('input[name="opt"]:checked');
   if (!selected) {
@@ -1093,6 +1111,7 @@ document.getElementById("quiz-next").onclick = () => {
     document.getElementById("quiz-next").style.display = "none";
   }
 };
+
 // === Political Typology Quiz Logic (schema uses "q") ===
 
 function openTypologyQuizModal() {
