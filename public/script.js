@@ -961,27 +961,60 @@ function getDailyQuestions() {
 function renderQuestion() {
   const q = quizQuestions[currentQuestion];
 
-  // Progress
   document.getElementById("quiz-progress").textContent =
     `Question ${currentQuestion + 1} of ${quizQuestions.length}`;
   document.getElementById("quiz-progress-fill").style.width =
     `${((currentQuestion + 1) / quizQuestions.length) * 100}%`;
 
-  // Question
   document.getElementById("quiz-question").innerHTML = `<h3>${q.q}</h3>`;
 
-  // Options
   document.getElementById("quiz-options").innerHTML = q.options.map((opt,i) =>
     `<label><input type="radio" name="opt" value="${i}"> ${opt}</label><br>`
   ).join("");
 
-  // Reset feedback/controls
   document.getElementById("quiz-feedback").textContent = "";
   document.getElementById("quiz-submit").style.display = "inline-block";
   document.getElementById("quiz-next").style.display = "none";
 }
-document.getElementById("quiz-submit").onclick = () => { … }
-document.getElementById("quiz-next").onclick = () => { … }
+document.getElementById("quiz-submit").onclick = () => {
+  const selected = document.querySelector('input[name="opt"]:checked');
+  if (!selected) {
+    alert("Pick an answer!");
+    return;
+  }
+  const q = quizQuestions[currentQuestion];
+  const selectedIndex = parseInt(selected.value, 10);
+  const correctText = q.options[q.answer];
+  const feedbackEl = document.getElementById("quiz-feedback");
+
+  if (selectedIndex === q.answer) {
+    score++;
+    feedbackEl.className = "correct";
+    feedbackEl.innerHTML = `✅ Correct — ${correctText}<br><small>${q.explanation}</small>`;
+  } else {
+    feedbackEl.className = "incorrect";
+    feedbackEl.innerHTML = `❌ Incorrect. Correct answer: ${correctText}<br><small>${q.explanation}</small>`;
+  }
+
+  document.getElementById("quiz-submit").style.display = "none";
+  document.getElementById("quiz-next").style.display = "inline-block";
+};
+
+document.getElementById("quiz-next").onclick = () => {
+  currentQuestion++;
+  if (currentQuestion < quizQuestions.length) {
+    renderQuestion();
+  } else {
+    document.getElementById("quiz-question").innerHTML = "";
+    document.getElementById("quiz-options").innerHTML = "";
+    document.getElementById("quiz-progress").textContent = "";
+    document.getElementById("quiz-progress-fill").style.width = "100%";
+    document.getElementById("quiz-feedback").textContent = "";
+    document.getElementById("quiz-score").textContent =
+      `Final Score: ${score}/${quizQuestions.length} — ${score >= 12 ? "Pass ✅" : "Try Again ❌"}`;
+    document.getElementById("quiz-next").style.display = "none";
+  }
+};
 // === POLLS TAB ===
 function showPolls() {
   showTab('polls');
