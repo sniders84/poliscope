@@ -909,6 +909,16 @@ function backToCabinetGrid() {
   gridView.style.display = 'block';
   detailView.style.display = 'none';
 }
+// === CIVICS QUIZ MODAL OPEN ===
+function openCivicsQuizModal() {
+  const modal = document.getElementById('civicsQuizModal');
+  if (!modal) {
+    console.error("Civics quiz modal not found.");
+    return;
+  }
+  modal.style.display = 'block';
+  initCivicsQuiz(); // kick off the quiz engine
+}
 
 // === POLLS TAB ===
 function showPolls() {
