@@ -1032,6 +1032,7 @@ function openTypologyQuizModal() {
   modal.style.display = 'block';
   initTypologyQuiz();
 }
+
 let typologyQuestions = [];
 let currentTypologyQuestion = 0;
 let scoreMap = {};
@@ -1040,11 +1041,11 @@ function initTypologyQuiz() {
   currentTypologyQuestion = 0;
   scoreMap = { progressive:0, liberal:0, conservative:0, libertarian:0, socialist:0, populist:0, centrist:0 };
 
-  fetch('typology-questions.json') // ✅ correct relative path
+  fetch('typology-questions.json') // adjust path if needed
     .then(res => res.json())
     .then(data => {
       typologyQuestions = data;
-      console.log("Loaded typology questions:", typologyQuestions); // debug
+      console.log("Loaded typology questions:", typologyQuestions);
       renderTypologyQuestion();
     })
     .catch(err => {
@@ -1066,16 +1067,6 @@ function renderTypologyQuestion() {
   const q = typologyQuestions[currentTypologyQuestion];
   console.log("Rendering question:", q);
 
-  document.getElementById("typology-progress").textContent =
-    `Question ${currentTypologyQuestion + 1} of ${typologyQuestions.length}`;
-  document.getElementById("typology-progress-fill").style.width =
-    `${((currentTypologyQuestion + 1) / typologyQuestions.length) * 100}%`;
-
-  document.getElementById("typology-question").innerHTML = `<h3>${q.q}</h3>`;
-  document.getElementById("typology-options").innerHTML = q.options.map((opt,i) =>
-    `<label><input type="radio" name="typologyOpt" value="${i}"> ${opt}</label><br>`
-  ).join("");
-}
   // Progress text + bar
   document.getElementById("typology-progress").textContent =
     `Question ${currentTypologyQuestion + 1} of ${typologyQuestions.length}`;
