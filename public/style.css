@@ -8807,3 +8807,58 @@ nav .tab.active {
   text-align: center;
   animation: fadeIn 0.6s ease-in-out;
 }
+.quiz-controls {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.quiz-btn {
+  background: #1976d2;       /* modern blue */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 6px;
+  border-radius: 6px;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.quiz-btn:hover {
+  background: #1565c0;       /* darker blue on hover */
+  transform: translateY(-2px);
+}
+#typology-result {
+  display: none; /* hidden until populated */
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 12px;
+  background: #2c2c2c;       /* dark gray background */
+  color: #f1f1f1;            /* light text for contrast */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  text-align: center;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+#typology-result h2 {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+  font-weight: 700;
+  color: #fff;
+}
+
+#typology-result p {
+  font-size: 1.1em;
+  color: #ddd;
+  line-height: 1.5;
+}
+.typology-badge {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 15px;
+  font-size: 1.1em;
+}
