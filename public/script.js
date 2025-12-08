@@ -834,7 +834,6 @@ function showCivic() {
       calendar.innerHTML = '<p>Error loading civic links.</p>';
       console.error(err);
     });
-}
 
 }// === CABINET MODAL LOGIC ===
 function showCabinet() {
