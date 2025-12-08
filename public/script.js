@@ -1108,18 +1108,41 @@ let scoreMap = {};
 
 function initTypologyQuiz() {
   currentTypologyQuestion = 0;
-  scoreMap = { progressive:0, liberal:0, conservative:0, libertarian:0, socialist:0, populist:0, centrist:0 };
+  scoreMap = {
+    progressive: 0,
+    liberal: 0,
+    conservative: 0,
+    libertarian: 0,
+    socialist: 0,
+    populist: 0,
+    centrist: 0
+  };
 
-  fetch('typology-questions.json') // adjust path if needed
-    .then(res => res.json())
+  fetch('typology-questions.json')
+    .then(res => {
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return res.json();
+    })
     .then(data => {
+      if (!Array.isArray(data) || data.length === 0) {
+        throw new Error("No questions found in typology-questions.json");
+      }
       typologyQuestions = data;
       console.log("Loaded typology questions:", typologyQuestions);
-      renderTypologyQuestion();
+
+      // Only render if the DOM elements exist
+      if (document.getElementById("typology-question")) {
+        renderTypologyQuestion();
+      } else {
+        console.error("Typology quiz DOM elements not found.");
+      }
     })
     .catch(err => {
       console.error("Error loading typology-questions.json:", err);
-      document.getElementById("typology-question").textContent = "Failed to load questions.";
+      const questionEl = document.getElementById("typology-question");
+      if (questionEl) {
+        questionEl.textContent = "Failed to load questions.";
+      }
     });
 }
 
