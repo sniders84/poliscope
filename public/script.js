@@ -1015,6 +1015,100 @@ document.getElementById("quiz-next").onclick = () => {
     document.getElementById("quiz-next").style.display = "none";
   }
 };
+function openTypologyQuizModal() {
+  const modal = document.getElementById('typologyQuizModal');
+  if (!modal) {
+    console.error("Typology quiz modal not found.");
+    return;
+  }
+  modal.style.display = 'block';
+  initTypologyQuiz();
+}
+let typologyQuestions = [];
+let currentTypologyQuestion = 0;
+let scoreMap = {};
+
+function initTypologyQuiz() {
+  currentTypologyQuestion = 0;
+  scoreMap = { progressive:0, liberal:0, conservative:0, libertarian:0, socialist:0, populist:0, centrist:0 };
+
+  fetch('typology-questions.json')
+    .then(res => res.json())
+    .then(data => {
+      typologyQuestions = data;
+      renderTypologyQuestion();
+    })
+    .catch(err => {
+      console.error("Error loading typology-questions.json:", err);
+      document.getElementById("typology-question").textContent = "Failed to load questions.";
+    });
+}
+function renderTypologyQuestion() {
+  const q = typologyQuestions[currentTypologyQuestion];
+  document.getElementById("typology-progress").textContent =
+    `Question ${currentTypologyQuestion + 1} of ${typologyQuestions.length}`;
+  document.getElementById("typology-question").innerHTML = `<h3>${q.q}</h3>`;
+  document.getElementById("typology-options").innerHTML = q.options.map((opt,i) =>
+    `<label><input type="radio" name="typologyOpt" value="${i}"> ${opt}</label><br>`
+  ).join("");
+
+  document.getElementById("typology-feedback").textContent = "";
+  document.getElementById("typology-submit").style.display = "inline-block";
+  document.getElementById("typology-next").style.display = "none";
+}
+document.getElementById("typology-submit").onclick = () => {
+  const selected = document.querySelector('input[name="typologyOpt"]:checked');
+  if (!selected) {
+    alert("Pick an answer!");
+    return;
+  }
+  const q = typologyQuestions[currentTypologyQuestion];
+  const selectedIndex = parseInt(selected.value, 10);
+
+  // Apply weights
+  for (const [label, weight] of Object.entries(q.weights)) {
+    if (selectedIndex === 0) scoreMap[label] += weight;       // Strongly Agree
+    else if (selectedIndex === 1) scoreMap[label] += weight/2; // Agree
+    else if (selectedIndex === 2) scoreMap[label] += 0;        // Neutral
+    else if (selectedIndex === 3) scoreMap[label] -= weight/2; // Disagree
+    else if (selectedIndex === 4) scoreMap[label] -= weight;   // Strongly Disagree
+  }
+
+  document.getElementById("typology-submit").style.display = "none";
+  document.getElementById("typology-next").style.display = "inline-block";
+};
+
+document.getElementById("typology-next").onclick = () => {
+  currentTypologyQuestion++;
+  if (currentTypologyQuestion < typologyQuestions.length) {
+    renderTypologyQuestion();
+  } else {
+    showTypologyResult();
+  }
+};
+function showTypologyResult() {
+  const topLabel = Object.keys(scoreMap).reduce((a,b) => scoreMap[a] > scoreMap[b] ? a : b);
+  const descriptions = {
+    progressive: "You believe government should actively reshape society to ensure fairness and equality.",
+    liberal: "You value individual rights, pluralism, and moderate government intervention.",
+    conservative: "You emphasize tradition, limited government, and free markets.",
+    libertarian: "You prize freedom above all — both economic and personal.",
+    socialist: "You believe collective action and redistribution are essential to justice.",
+    populist: "You emphasize cultural identity, patriotism, and government protectionism.",
+    centrist: "You balance positions across the spectrum, preferring compromise and pragmatism."
+  };
+
+  document.getElementById("typology-question").innerHTML = "";
+  document.getElementById("typology-options").innerHTML = "";
+  document.getElementById("typology-progress").textContent = "";
+  document.getElementById("typology-feedback").textContent = "";
+  document.getElementById("typology-submit").style.display = "none";
+  document.getElementById("typology-next").style.display = "none";
+
+  document.getElementById("typology-result").innerHTML =
+    `<h2>Your Typology: ${topLabel}</h2><p>${descriptions[topLabel]}</p>`;
+}
+
 // === POLLS TAB ===
 function showPolls() {
   showTab('polls');
