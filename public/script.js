@@ -394,6 +394,11 @@ header.addEventListener('click', () => {
   console.log('showPodcastsShows() finished rendering');
 }
 
+function renderOfficials(state, filter) {
+  console.log("renderOfficials called with", state, filter);
+  // TODO: implement actual rendering
+}
+
 function showQuizzes() {
   showTab('quizzes');
 }
