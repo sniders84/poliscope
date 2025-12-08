@@ -394,6 +394,10 @@ header.addEventListener('click', () => {
   console.log('showPodcastsShows() finished rendering');
 }
 
+function showQuizzes() {
+  showTab('quizzes');
+}
+
 function showPolls() {
   showTab('polls');
 }
