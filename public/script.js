@@ -794,6 +794,86 @@ function showCivic() {
       calendar.innerHTML = '<p>Error loading civic links.</p>';
       console.error(err);
     });
+}// === CABINET MODAL LOGIC ===
+function showCabinet() {
+  const list = document.getElementById('cabinetList');
+  const gridView = document.getElementById('cabinetGridView');
+  const detailView = document.getElementById('cabinetDetailView');
+  const modal = document.getElementById('cabinetModal');
+
+  if (!list || !gridView || !detailView || !modal) {
+    console.error('Cabinet modal elements missing.');
+    return;
+  }
+
+  gridView.style.display = 'block';
+  detailView.style.display = 'none';
+  list.innerHTML = '';
+
+  fetch('cabinet.json')
+    .then(res => res.json())
+    .then(members => {
+      if (!Array.isArray(members)) {
+        list.innerHTML = '<p>Invalid Cabinet data format.</p>';
+        modal.style.display = 'block';
+        return;
+      }
+
+      members.forEach(member => {
+        const card = document.createElement('div');
+        card.className = 'official-card';
+
+        const photoSrc = member.photo && member.photo.trim() !== ''
+          ? member.photo
+          : 'assets/default-photo.png';
+
+        card.innerHTML = `
+          <div class="photo-wrapper">
+            <img src="${photoSrc}" alt="${member.name || ''}"
+                 onerror="this.onerror=null;this.src='assets/default-photo.png';" />
+          </div>
+          <div class="official-info">
+            <h3>${member.name || 'Unknown'}</h3>
+            <p><strong>Office:</strong> ${member.office || 'N/A'}</p>
+          </div>
+        `;
+
+        card.onclick = () => showCabinetMember(member);
+        list.appendChild(card);
+      });
+
+      modal.style.display = 'block';
+    })
+    .catch(err => {
+      list.innerHTML = '<p>Error loading Cabinet data.</p>';
+      modal.style.display = 'block';
+    });
+}
+
+function showCabinetMember(member) {
+  const gridView = document.getElementById('cabinetGridView');
+  const detailView = document.getElementById('cabinetDetailView');
+  const detail = document.getElementById('cabinetMemberDetail');
+
+  if (!gridView || !detailView || !detail) return;
+
+  gridView.style.display = 'none';
+  detailView.style.display = 'block';
+
+  detail.innerHTML = `
+    <h2>${member.name || 'Unknown'}</h2>
+    <p><strong>Office:</strong> ${member.office || 'N/A'}</p>
+    ${member.party ? `<p><strong>Party:</strong> ${member.party}</p>` : ''}
+    ${member.state ? `<p><strong>State:</strong> ${member.state}</p>` : ''}
+  `;
+}
+
+function backToCabinetGrid() {
+  const gridView = document.getElementById('cabinetGridView');
+  const detailView = document.getElementById('cabinetDetailView');
+  if (!gridView || !detailView) return;
+  gridView.style.display = 'block';
+  detailView.style.display = 'none';
 }
 
 // === POLLS TAB ===
