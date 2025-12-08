@@ -1113,7 +1113,7 @@ let typologyQuestions = [];
 let currentTypologyQuestion = 0;
 let scoreMap = {};
 
-// === Balanced Randomizer ===
+// === Balanced Randomizer (unchanged) ===
 function getBalancedTypologyQuestions(allQuestionsByCategory) {
   const balancedSet = [];
   const perCategory = {
@@ -1127,13 +1127,49 @@ function getBalancedTypologyQuestions(allQuestionsByCategory) {
   Object.keys(perCategory).forEach(category => {
     const pool = allQuestionsByCategory[category] || [];
     const count = perCategory[category];
+    if (!Array.isArray(pool) || pool.length === 0) {
+      console.warn(`[Typology] Category "${category}" missing or empty.`);
+      return;
+    }
     const shuffled = pool.slice().sort(() => 0.5 - Math.random());
-    balancedSet.push(...shuffled.slice(0, count));
+    balancedSet.push(...shuffled.slice(0, Math.min(count, shuffled.length)));
   });
 
   return balancedSet.sort(() => 0.5 - Math.random());
 }
 
+// === Data normalization helpers ===
+function isCategorizedObject(data) {
+  const keys = Object.keys(data || {});
+  const expected = ["Economy", "SocialIssues", "ForeignPolicy", "Governance", "EnergyEnvironment"];
+  return keys.length > 0 && expected.every(k => k in data);
+}
+
+function normalizeTypologyData(data) {
+  // If already categorized, return as-is
+  if (data && typeof data === "object" && !Array.isArray(data) && isCategorizedObject(data)) {
+    return data;
+  }
+  // If flat array, bucket by an optional "category" field, else put everything under SocialIssues
+  if (Array.isArray(data)) {
+    const buckets = {
+      Economy: [],
+      SocialIssues: [],
+      ForeignPolicy: [],
+      Governance: [],
+      EnergyEnvironment: []
+    };
+    data.forEach(item => {
+      const cat = (item.category || "").trim();
+      if (cat && buckets[cat]) buckets[cat].push(item);
+      else buckets.SocialIssues.push(item); // default bucket for legacy items
+    });
+    return buckets;
+  }
+  throw new Error("Invalid typology data structure");
+}
+
+// === Updated initTypologyQuiz (complete replacement) ===
 function initTypologyQuiz() {
   currentTypologyQuestion = 0;
   scoreMap = {
@@ -1151,15 +1187,15 @@ function initTypologyQuiz() {
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       return res.json();
     })
-    .then(data => {
-      // IMPORTANT: data is now an object keyed by category
-      if (typeof data !== "object" || Object.keys(data).length === 0) {
-        throw new Error("No questions found in typology-questions.json");
+    .then(rawData => {
+      const categorized = normalizeTypologyData(rawData);
+      typologyQuestions = getBalancedTypologyQuestions(categorized);
+
+      if (!Array.isArray(typologyQuestions) || typologyQuestions.length === 0) {
+        throw new Error("Balanced selection produced no questions");
       }
 
-      typologyQuestions = getBalancedTypologyQuestions(data);
       console.log("Loaded balanced typology questions:", typologyQuestions);
-
       renderTypologyQuestion();
     })
     .catch(err => {
@@ -1170,7 +1206,6 @@ function initTypologyQuiz() {
       }
     });
 }
-
 // === POLLS TAB ===
 function showPolls() {
   showTab('polls');
