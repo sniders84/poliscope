@@ -764,11 +764,7 @@ ngaBlock.className = 'civic-block';
 ngaBlock.innerHTML = '<h2>National Governor\'s Association</h2>';
 
 const ngaLinks = [
-  {
-    label: 'NGA Members',
-    url: 'https://www.nga.org/governors/',
-    desc: 'Explore the full roster of U.S. governors through the National Governors Association. This members section provides direct access to profiles of each state’s executive leader, offering insights into their priorities, initiatives, and leadership roles within the NGA. It’s a comprehensive directory designed to keep you connected to the current governors shaping policy across the nation.'
-  },
+  {label: 'NGA Members', url: 'https://www.nga.org/governors/',desc: 'Explore the full roster of U.S. governors through the National Governors Association.'},
   { label: 'NGA Leadership', url: 'https://www.nga.org/governors/ngaleadership/', desc: 'Meet the current leadership of the National Governors Association.' },
   { label: 'Council of Governors', url: 'https://www.nga.org/cog/', desc: 'Explore the bipartisan Council of Governors and its national security role.' },
   { label: 'Gubernatorial Elections', url: 'https://www.nga.org/governors/elections/', desc: 'Track upcoming and recent gubernatorial elections across the United States.' },
