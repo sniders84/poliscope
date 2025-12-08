@@ -919,7 +919,69 @@ function openCivicsQuizModal() {
   modal.style.display = 'block';
   initCivicsQuiz(); // kick off the quiz engine
 }
+// === Daily Civics Quiz Engine ===
+let quizQuestions = [];
+let allQuestions = [];
+let currentQuestion = 0;
+let score = 0;
 
+function initCivicsQuiz() {
+  currentQuestion = 0;
+  score = 0;
+
+  fetch('civics-questions.json')
+    .then(res => res.json())
+    .then(data => {
+      allQuestions = data;
+
+      // Pick today's set of 20 questions
+      quizQuestions = getDailyQuestions();
+
+      renderQuestion();
+    })
+    .catch(err => {
+      console.error("Error loading civics-questions.json:", err);
+      document.getElementById("quiz-question").textContent = "Failed to load questions.";
+    });
+}
+
+function getDailyQuestions() {
+  const today = new Date().toDateString();
+  const saved = localStorage.getItem("civicsQuizDate");
+
+  if (saved === today) {
+    return JSON.parse(localStorage.getItem("civicsQuizQuestions"));
+  } else {
+    const newSet = allQuestions.sort(() => 0.5 - Math.random()).slice(0, 20);
+    localStorage.setItem("civicsQuizDate", today);
+    localStorage.setItem("civicsQuizQuestions", JSON.stringify(newSet));
+    return newSet;
+  }
+}
+function renderQuestion() {
+  const q = quizQuestions[currentQuestion];
+
+  // Progress
+  document.getElementById("quiz-progress").textContent =
+    `Question ${currentQuestion + 1} of ${quizQuestions.length}`;
+  document.getElementById("quiz-progress-fill").style.width =
+    `${((currentQuestion + 1) / quizQuestions.length) * 100}%`;
+
+  // Question
+  document.getElementById("quiz-question").innerHTML = `<h3>${q.q}</h3>`;
+
+  // Options
+  document.getElementById("quiz-options").innerHTML = q.options.map((opt,i) =>
+    `<label><input type="radio" name="opt" value="${i}"> ${opt}</label><br>`
+  ).join("");
+
+  // Reset feedback/controls
+  document.getElementById("quiz-feedback").textContent = "";
+  document.getElementById("quiz-submit").style.display = "inline-block";
+  document.getElementById("quiz-next").style.display = "none";
+}
+document.getElementById("quiz-submit").onclick = () => { … }
+document.getElementById("quiz-next").onclick = () => { … }
 // === POLLS TAB ===
 function showPolls() {
   showTab('polls');
@@ -1600,3 +1662,42 @@ async function fetchGoogleNewsRss(feedUrl) {
       if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
     });
 });
+document.getElementById("quiz-submit").onclick = () => {
+  const selected = document.querySelector('input[name="opt"]:checked');
+  if (!selected) {
+    alert("Pick an answer!");
+    return;
+  }
+  const q = quizQuestions[currentQuestion];
+  const selectedIndex = parseInt(selected.value, 10);
+  const correctText = q.options[q.answer];
+  const feedbackEl = document.getElementById("quiz-feedback");
+
+  if (selectedIndex === q.answer) {
+    score++;
+    feedbackEl.className = "correct";
+    feedbackEl.innerHTML = `✅ Correct — ${correctText}<br><small>${q.explanation}</small>`;
+  } else {
+    feedbackEl.className = "incorrect";
+    feedbackEl.innerHTML = `❌ Incorrect. Correct answer: ${correctText}<br><small>${q.explanation}</small>`;
+  }
+
+  document.getElementById("quiz-submit").style.display = "none";
+  document.getElementById("quiz-next").style.display = "inline-block";
+};
+
+document.getElementById("quiz-next").onclick = () => {
+  currentQuestion++;
+  if (currentQuestion < quizQuestions.length) {
+    renderQuestion();
+  } else {
+    document.getElementById("quiz-question").innerHTML = "";
+    document.getElementById("quiz-options").innerHTML = "";
+    document.getElementById("quiz-progress").textContent = "";
+    document.getElementById("quiz-progress-fill").style.width = "100%";
+    document.getElementById("quiz-feedback").textContent = "";
+    document.getElementById("quiz-score").textContent =
+      `Final Score: ${score}/${quizQuestions.length} — ${score >= 12 ? "Pass ✅" : "Try Again ❌"}`;
+    document.getElementById("quiz-next").style.display = "none";
+  }
+};
