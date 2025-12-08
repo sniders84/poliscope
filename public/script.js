@@ -1032,11 +1032,11 @@ function initTypologyQuiz() {
   currentTypologyQuestion = 0;
   scoreMap = { progressive:0, liberal:0, conservative:0, libertarian:0, socialist:0, populist:0, centrist:0 };
 
-  fetch('poliscope/public/typology-questions.json')
+  fetch('public/typology-questions.json') // ✅ correct relative path
     .then(res => res.json())
     .then(data => {
       typologyQuestions = data;
-      console.log("Loaded typology questions:", typologyQuestions); // debug check
+      console.log("Loaded typology questions:", typologyQuestions); // debug
       renderTypologyQuestion();
     })
     .catch(err => {
@@ -1046,7 +1046,19 @@ function initTypologyQuiz() {
 }
 
 function renderTypologyQuestion() {
+  // Debug: confirm function is firing and what data we have
+  console.log("renderTypologyQuestion called");
+  console.log("Current index:", currentTypologyQuestion);
+  console.log("Questions array:", typologyQuestions);
+
+  if (!typologyQuestions || typologyQuestions.length === 0) {
+    console.error("No typology questions loaded.");
+    document.getElementById("typology-question").textContent = "No questions available.";
+    return;
+  }
+
   const q = typologyQuestions[currentTypologyQuestion];
+  console.log("Rendering question object:", q);
 
   // Progress text + bar
   document.getElementById("typology-progress").textContent =
