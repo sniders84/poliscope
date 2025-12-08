@@ -1045,17 +1045,28 @@ function initTypologyQuiz() {
 }
 function renderTypologyQuestion() {
   const q = typologyQuestions[currentTypologyQuestion];
+
+  // Progress text + bar
   document.getElementById("typology-progress").textContent =
     `Question ${currentTypologyQuestion + 1} of ${typologyQuestions.length}`;
+  document.getElementById("typology-progress-fill").style.width =
+    `${((currentTypologyQuestion + 1) / typologyQuestions.length) * 100}%`;
+
+  // Question
   document.getElementById("typology-question").innerHTML = `<h3>${q.q}</h3>`;
+
+  // Options
   document.getElementById("typology-options").innerHTML = q.options.map((opt,i) =>
     `<label><input type="radio" name="typologyOpt" value="${i}"> ${opt}</label><br>`
   ).join("");
 
+  // Reset feedback/controls
   document.getElementById("typology-feedback").textContent = "";
   document.getElementById("typology-submit").style.display = "inline-block";
   document.getElementById("typology-next").style.display = "none";
 }
+
+// === Submit button handler ===
 document.getElementById("typology-submit").onclick = () => {
   const selected = document.querySelector('input[name="typologyOpt"]:checked');
   if (!selected) {
@@ -1067,7 +1078,7 @@ document.getElementById("typology-submit").onclick = () => {
 
   // Apply weights
   for (const [label, weight] of Object.entries(q.weights)) {
-    if (selectedIndex === 0) scoreMap[label] += weight;       // Strongly Agree
+    if (selectedIndex === 0) scoreMap[label] += weight;        // Strongly Agree
     else if (selectedIndex === 1) scoreMap[label] += weight/2; // Agree
     else if (selectedIndex === 2) scoreMap[label] += 0;        // Neutral
     else if (selectedIndex === 3) scoreMap[label] -= weight/2; // Disagree
@@ -1078,6 +1089,7 @@ document.getElementById("typology-submit").onclick = () => {
   document.getElementById("typology-next").style.display = "inline-block";
 };
 
+// === Next button handler ===
 document.getElementById("typology-next").onclick = () => {
   currentTypologyQuestion++;
   if (currentTypologyQuestion < typologyQuestions.length) {
@@ -1086,6 +1098,8 @@ document.getElementById("typology-next").onclick = () => {
     showTypologyResult();
   }
 };
+
+// === Results renderer ===
 function showTypologyResult() {
   const topLabel = Object.keys(scoreMap).reduce((a,b) => scoreMap[a] > scoreMap[b] ? a : b);
   const descriptions = {
@@ -1098,13 +1112,16 @@ function showTypologyResult() {
     centrist: "You balance positions across the spectrum, preferring compromise and pragmatism."
   };
 
+  // Clear quiz UI
   document.getElementById("typology-question").innerHTML = "";
   document.getElementById("typology-options").innerHTML = "";
   document.getElementById("typology-progress").textContent = "";
+  document.getElementById("typology-progress-fill").style.width = "100%";
   document.getElementById("typology-feedback").textContent = "";
   document.getElementById("typology-submit").style.display = "none";
   document.getElementById("typology-next").style.display = "none";
 
+  // Show result
   document.getElementById("typology-result").innerHTML =
     `<h2>Your Typology: ${topLabel}</h2><p>${descriptions[topLabel]}</p>`;
 }
