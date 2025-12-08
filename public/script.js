@@ -299,7 +299,6 @@ function showPodcastsShows() {
           // Favorite toggle
           const favBtn = card.querySelector('.favorite-btn');
           if (favBtn) {
-            // initialize state
             const isFav = isFavorite(item.type || type, item.title);
             updateFavoriteButton(favBtn, isFav);
 
@@ -321,20 +320,20 @@ function showPodcastsShows() {
     section.appendChild(body);
 
     // COLLAPSE/EXPAND
-header.addEventListener('click', () => {
-  const isOpen = body.classList.contains("open");
-  if (isOpen) {
-    body.classList.remove("open");
-    body.classList.add("closed");
-    header.classList.remove("open");
-    arrow.textContent = "▶"; // collapsed arrow
-  } else {
-    body.classList.remove("closed");
-    body.classList.add("open");
-    header.classList.add("open");
-    arrow.textContent = "▼"; // expanded arrow
-  }
-});
+    header.addEventListener('click', () => {
+      const isOpen = body.classList.contains("open");
+      if (isOpen) {
+        body.classList.remove("open");
+        body.classList.add("closed");
+        header.classList.remove("open");
+        arrow.textContent = "▶";
+      } else {
+        body.classList.remove("closed");
+        body.classList.add("open");
+        header.classList.add("open");
+        arrow.textContent = "▼";
+      }
+    });
 
     return section;
   };
@@ -394,6 +393,7 @@ header.addEventListener('click', () => {
   console.log('showPodcastsShows() finished rendering');
 }
 
+// === Stubbed tab helpers to prevent ReferenceErrors ===
 function renderOfficials(state, filter) {
   console.log("renderOfficials called with", state, filter);
   // TODO: implement actual rendering
@@ -508,7 +508,6 @@ function showVoting() {
       console.error('Voting fetch failed:', err);
     });
 }
-
 // === HELPER: render roster cards (if needed) ===
 function renderRosterCards(rosterData, chamberLabel, container) {
   if (Array.isArray(rosterData)) {
