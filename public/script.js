@@ -795,7 +795,7 @@ ngaBlock.appendChild(ngaGrid);
       nlgaBlock.innerHTML = '<h2>National Lt. Governor\'s Association</h2>';
 
       const nlgaLinks = [
-        { label: 'Members', url: 'https://nlga.us/our-members/', desc: 'Browse the full roster of NLGA members across states and territories.' },
+        { label: 'NLGA Members', url: 'https://nlga.us/our-members/', desc: 'Browse the full roster of NLGA members across states and territories.' },
         { label: 'NLGA Officers & Executive Committee', url: 'https://nlga.us/about-nlga/officers-exec-committee-operational-committees/', desc: 'Meet the officers and Executive Committee guiding NLGA’s priorities and governance.' },
         { label: 'Meetings', url: 'https://nlga.us/nlga-meetings/', desc: 'Learn about NLGA’s annual, spring, and winter meetings where members convene.' },
         { label: 'State Strategies Committee on Aerospace', url: 'https://nlga.us/strategies/nlga-aerospace-committee/', desc: 'Explore NLGA’s bipartisan Aerospace Committee advancing state strategies in aviation and defense.' },
