@@ -1032,7 +1032,7 @@ function initTypologyQuiz() {
   currentTypologyQuestion = 0;
   scoreMap = { progressive:0, liberal:0, conservative:0, libertarian:0, socialist:0, populist:0, centrist:0 };
 
-  fetch('/typology-questions.json') // ✅ correct relative path
+  fetch('typology-questions.json') // ✅ correct relative path
     .then(res => res.json())
     .then(data => {
       typologyQuestions = data;
