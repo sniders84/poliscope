@@ -1340,30 +1340,6 @@ function showTypologyResult() {
   }
 }
 
-// === POLLS TAB ===
-function showPolls() {
-  showTab('polls');
-  const pollsContainer = document.getElementById('polls-cards');
-  pollsContainer.innerHTML = '';
-
-  const suppressedForTerritories = ['State Senate', 'State House'];
-  const isTerritory = ['Puerto Rico', 'U.S. Virgin Islands', 'Guam', 'American Samoa', 'Northern Mariana Islands'].includes(selectedState);
-
-  pollCategories.forEach(category => {
-    if (isTerritory && suppressedForTerritories.includes(category.label)) return;
-
-    const card = document.createElement('div');
-    card.className = 'link-card';
-    card.setAttribute('onclick', `openPollModal('${category.label}')`);
-    card.innerHTML = `
-      <h4>${category.label}</h4>
-      <p class="card-desc">Click to view ${category.label} polls.</p>
-    `;
-    pollsContainer.appendChild(card);
-  });
-}
-window.pollCategories = pollCategories;
-
 // Source logos
 const logoMap = {
   RCP: '/assets/rcp.png',
