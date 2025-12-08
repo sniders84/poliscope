@@ -1090,7 +1090,6 @@ function renderTypologyQuestion() {
   // Reset feedback/controls
   document.getElementById("typology-feedback").textContent = "";
   document.getElementById("typology-submit").style.display = "inline-block";
-  document.getElementById("typology-next").style.display = "none";
 }
 
 // === Submit button handler ===
