@@ -8750,3 +8750,50 @@ nav .tab.active {
   height: 0;
   margin-top: 32px;
 }
+/* Typology Result Card */
+#typology-result {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 12px;
+  background: #f9f9f9;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+#typology-result h2 {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+#typology-result p {
+  font-size: 1.1em;
+  color: #444;
+  line-height: 1.5;
+}
+
+/* Badge styling */
+.typology-badge {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+/* Color themes per typology */
+.badge-progressive { background: #d32f2f; }   /* Crimson red */
+.badge-liberal { background: #1976d2; }       /* Blue */
+.badge-conservative { background: #388e3c; }  /* Green */
+.badge-libertarian { background: #fbc02d; }   /* Gold */
+.badge-socialist { background: #9c27b0; }     /* Purple */
+.badge-populist { background: #ff5722; }      /* Orange */
+.badge-centrist { background: #607d8b; }      /* Gray */
+
+/* Smooth fade-in */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
