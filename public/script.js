@@ -1092,6 +1092,8 @@ document.getElementById("quiz-next").onclick = () => {
     document.getElementById("quiz-next").style.display = "none";
   }
 };
+// === Political Typology Quiz Logic (updated) ===
+
 function openTypologyQuizModal() {
   const modal = document.getElementById('typologyQuizModal');
   if (!modal) {
@@ -1099,7 +1101,11 @@ function openTypologyQuizModal() {
     return;
   }
   modal.style.display = 'block';
-  initTypologyQuiz();
+
+  // Delay init slightly so DOM is ready
+  setTimeout(() => {
+    initTypologyQuiz();
+  }, 50);
 }
 
 let typologyQuestions = [];
@@ -1130,12 +1136,7 @@ function initTypologyQuiz() {
       typologyQuestions = data;
       console.log("Loaded typology questions:", typologyQuestions);
 
-      // Only render if the DOM elements exist
-      if (document.getElementById("typology-question")) {
-        renderTypologyQuestion();
-      } else {
-        console.error("Typology quiz DOM elements not found.");
-      }
+      renderTypologyQuestion();
     })
     .catch(err => {
       console.error("Error loading typology-questions.json:", err);
@@ -1147,36 +1148,50 @@ function initTypologyQuiz() {
 }
 
 function renderTypologyQuestion() {
-  console.log("renderTypologyQuestion called");
-  console.log("Current index:", currentTypologyQuestion);
-  console.log("Questions array length:", typologyQuestions.length);
-
   if (!typologyQuestions || typologyQuestions.length === 0) {
-    document.getElementById("typology-question").textContent = "No questions loaded.";
+    const qEl = document.getElementById("typology-question");
+    if (qEl) qEl.textContent = "No questions loaded.";
     return;
   }
 
   const q = typologyQuestions[currentTypologyQuestion];
-  console.log("Rendering question:", q);
 
   // Progress text + bar
-  document.getElementById("typology-progress").textContent =
-    `Question ${currentTypologyQuestion + 1} of ${typologyQuestions.length}`;
-  document.getElementById("typology-progress-fill").style.width =
-    `${((currentTypologyQuestion + 1) / typologyQuestions.length) * 100}%`;
+  const progressText = document.getElementById("typology-progress");
+  if (progressText) {
+    progressText.textContent =
+      `Question ${currentTypologyQuestion + 1} of ${typologyQuestions.length}`;
+  }
+
+  const progressFill = document.getElementById("typology-progress-fill");
+  if (progressFill) {
+    progressFill.style.width =
+      `${((currentTypologyQuestion + 1) / typologyQuestions.length) * 100}%`;
+  }
 
   // Question
-  document.getElementById("typology-question").innerHTML = `<h3>${q.q}</h3>`;
+  const questionEl = document.getElementById("typology-question");
+  if (questionEl) {
+    questionEl.innerHTML = `<h3>${q.question}</h3>`;
+  }
 
   // Options
-  document.getElementById("typology-options").innerHTML = q.options.map((opt,i) =>
-    `<label><input type="radio" name="typologyOpt" value="${i}"> ${opt}</label><br>`
-  ).join("");
+  const optionsEl = document.getElementById("typology-options");
+  if (optionsEl) {
+    optionsEl.innerHTML = q.options.map((opt, i) =>
+      `<label><input type="radio" name="typologyOpt" value="${i}"> ${opt}</label><br>`
+    ).join("");
+  }
 
   // Reset feedback/controls
-  document.getElementById("typology-feedback").textContent = "";
-  document.getElementById("typology-submit").style.display = "inline-block";
-  document.getElementById("typology-next").style.display = "none";
+  const feedbackEl = document.getElementById("typology-feedback");
+  if (feedbackEl) feedbackEl.textContent = "";
+
+  const submitBtn = document.getElementById("typology-submit");
+  if (submitBtn) submitBtn.style.display = "inline-block";
+
+  const nextBtn = document.getElementById("typology-next");
+  if (nextBtn) nextBtn.style.display = "none";
 }
 
 // === Submit button handler ===
@@ -1209,7 +1224,9 @@ document.getElementById("typology-submit").onclick = () => {
 
 // === Results renderer ===
 function showTypologyResult() {
-  const topLabel = Object.keys(scoreMap).reduce((a, b) => scoreMap[a] > scoreMap[b] ? a : b);
+  const topLabel = Object.keys(scoreMap).reduce((a, b) =>
+    scoreMap[a] > scoreMap[b] ? a : b
+  );
 
   const emojiMap = {
     progressive: "🔥",
@@ -1222,40 +1239,56 @@ function showTypologyResult() {
   };
 
   const descriptions = {
-    progressive: "You believe government should actively reshape society to ensure fairness and equality. Progressives emphasize social justice, environmental protection, and systemic reform, often supporting bold policies to reduce inequality.",
-    liberal: "You value individual rights, pluralism, and moderate government intervention. Liberals tend to support civil liberties, democratic institutions, and a balance between free markets and social programs.",
-    conservative: "You emphasize tradition, limited government, and free markets. Conservatives often prioritize cultural continuity, fiscal restraint, and policies that preserve established institutions.",
-    libertarian: "You prize freedom above all — both economic and personal. Libertarians advocate minimal government, strong property rights, and maximum individual autonomy in social and economic life.",
-    socialist: "You believe collective action and redistribution are essential to justice. Socialists emphasize worker rights, public ownership of key industries, and reducing wealth disparities through systemic change.",
-    populist: "You emphasize cultural identity, patriotism, and government protectionism. Populists often frame politics as a struggle between ordinary people and elites, advocating strong national sovereignty.",
-    centrist: "You balance positions across the spectrum, preferring compromise and pragmatism. Centrists value stability, incremental reform, and coalition‑building to bridge divides."
+    progressive: "You believe government should actively reshape society to ensure fairness and equality...",
+    liberal: "You value individual rights, pluralism, and moderate government intervention...",
+    conservative: "You emphasize tradition, limited government, and free markets...",
+    libertarian: "You prize freedom above all — both economic and personal...",
+    socialist: "You believe collective action and redistribution are essential to justice...",
+    populist: "You emphasize cultural identity, patriotism, and government protectionism...",
+    centrist: "You balance positions across the spectrum, preferring compromise and pragmatism..."
   };
 
   // Clear quiz UI
-  document.getElementById("typology-question").innerHTML = "";
-  document.getElementById("typology-options").innerHTML = "";
-  document.getElementById("typology-progress").textContent = "";
-  document.getElementById("typology-progress-fill").style.width = "100%";
-  document.getElementById("typology-feedback").textContent = "";
-  document.getElementById("typology-submit").style.display = "none";
+  const qEl = document.getElementById("typology-question");
+  if (qEl) qEl.innerHTML = "";
+
+  const optionsEl = document.getElementById("typology-options");
+  if (optionsEl) optionsEl.innerHTML = "";
+
+  const progressText = document.getElementById("typology-progress");
+  if (progressText) progressText.textContent = "";
+
+  const progressFill = document.getElementById("typology-progress-fill");
+  if (progressFill) progressFill.style.width = "100%";
+
+  const feedbackEl = document.getElementById("typology-feedback");
+  if (feedbackEl) feedbackEl.textContent = "";
+
+  const submitBtn = document.getElementById("typology-submit");
+  if (submitBtn) submitBtn.style.display = "none";
 
   // Show result
   const resultBox = document.getElementById("typology-result");
-  resultBox.style.display = "block";
-  resultBox.innerHTML =
-    `<div class="typology-badge badge-${topLabel}">${emojiMap[topLabel]} ${topLabel.toUpperCase()}</div>
-     <h2>Your Typology: ${topLabel}</h2>
-     <p>${descriptions[topLabel]}</p>
-     <div class="quiz-controls">
-       <button id="typology-restart" class="quiz-btn">Restart Quiz</button>
-     </div>`;
+  if (resultBox) {
+    resultBox.style.display = "block";
+    resultBox.innerHTML =
+      `<div class="typology-badge badge-${topLabel}">${emojiMap[topLabel]} ${topLabel.toUpperCase()}</div>
+       <h2>Your Typology: ${topLabel}</h2>
+       <p>${descriptions[topLabel]}</p>
+       <div class="quiz-controls">
+         <button id="typology-restart" class="quiz-btn">Restart Quiz</button>
+       </div>`;
 
-  // Attach restart handler
-  document.getElementById("typology-restart").onclick = () => {
-    resultBox.style.display = "none";
-    resultBox.innerHTML = "";
-    initTypologyQuiz();
-  };
+    // Attach restart handler
+    const restartBtn = document.getElementById("typology-restart");
+    if (restartBtn) {
+      restartBtn.onclick = () => {
+        resultBox.style.display = "none";
+        resultBox.innerHTML = "";
+        initTypologyQuiz();
+      };
+    }
+  }
 }
 
 // === POLLS TAB ===
