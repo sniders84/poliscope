@@ -1122,15 +1122,28 @@ document.getElementById("typology-next").onclick = () => {
 
 // === Results renderer ===
 function showTypologyResult() {
-  const topLabel = Object.keys(scoreMap).reduce((a,b) => scoreMap[a] > scoreMap[b] ? a : b);
+  const topLabel = Object.keys(scoreMap).reduce((a, b) => scoreMap[a] > scoreMap[b] ? a : b);
+
+  // Emoji map for badges
+  const emojiMap = {
+    progressive: "🔥",
+    liberal: "📘",
+    conservative: "🛡️",
+    libertarian: "🗽",
+    socialist: "✊",
+    populist: "🇺🇸",
+    centrist: "⚖️"
+  };
+
+  // Expanded descriptions
   const descriptions = {
-    progressive: "You believe government should actively reshape society to ensure fairness and equality.",
-    liberal: "You value individual rights, pluralism, and moderate government intervention.",
-    conservative: "You emphasize tradition, limited government, and free markets.",
-    libertarian: "You prize freedom above all — both economic and personal.",
-    socialist: "You believe collective action and redistribution are essential to justice.",
-    populist: "You emphasize cultural identity, patriotism, and government protectionism.",
-    centrist: "You balance positions across the spectrum, preferring compromise and pragmatism."
+    progressive: "You believe government should actively reshape society to ensure fairness and equality. Progressives emphasize social justice, environmental protection, and systemic reform, often supporting bold policies to reduce inequality.",
+    liberal: "You value individual rights, pluralism, and moderate government intervention. Liberals tend to support civil liberties, democratic institutions, and a balance between free markets and social programs.",
+    conservative: "You emphasize tradition, limited government, and free markets. Conservatives often prioritize cultural continuity, fiscal restraint, and policies that preserve established institutions.",
+    libertarian: "You prize freedom above all — both economic and personal. Libertarians advocate minimal government, strong property rights, and maximum individual autonomy in social and economic life.",
+    socialist: "You believe collective action and redistribution are essential to justice. Socialists emphasize worker rights, public ownership of key industries, and reducing wealth disparities through systemic change.",
+    populist: "You emphasize cultural identity, patriotism, and government protectionism. Populists often frame politics as a struggle between ordinary people and elites, advocating strong national sovereignty.",
+    centrist: "You balance positions across the spectrum, preferring compromise and pragmatism. Centrists value stability, incremental reform, and coalition‑building to bridge divides."
   };
 
   // Clear quiz UI
@@ -1142,11 +1155,16 @@ function showTypologyResult() {
   document.getElementById("typology-submit").style.display = "none";
   document.getElementById("typology-next").style.display = "none";
 
-  // Show result
-  document.getElementById("typology-result").innerHTML =
-  `<div class="typology-badge badge-${topLabel}">${topLabel.toUpperCase()}</div>
-   <h2>Your Typology: ${topLabel}</h2>
-   <p>${descriptions[topLabel]}</p>`;
+  // Show result box only when ready
+  const resultBox = document.getElementById("typology-result");
+  resultBox.style.display = "block";
+  resultBox.innerHTML =
+    `<div class="typology-badge badge-${topLabel}">${emojiMap[topLabel]} ${topLabel.toUpperCase()}</div>
+     <h2>Your Typology: ${topLabel}</h2>
+     <p>${descriptions[topLabel]}</p>
+     <div class="quiz-controls">
+       <button class="quiz-btn" onclick="initTypologyQuiz()">Restart Quiz</button>
+     </div>`;
 }
 
 // === POLLS TAB ===
