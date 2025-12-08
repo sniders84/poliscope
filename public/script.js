@@ -778,21 +778,6 @@ function showCivic() {
         federalGrid.appendChild(card);
       });
 
-      federalBlock.appendChild(federalGrid);
-
-      // Append all blocks to section
-      section.appendChild(stateBlock);
-      section.appendChild(ngaBlock);
-      section.appendChild(federalBlock);
-      calendar.appendChild(section);
-    })
-    .catch(err => {
-      console.error("Error loading state-links.json", err);
-      const msg = document.createElement('p');
-      msg.textContent = "Failed to load state links.";
-      calendar.appendChild(msg);
-    });
-}
       // Cabinet card
       const cabinetCard = document.createElement('div');
       cabinetCard.className = 'link-card';
@@ -932,6 +917,204 @@ function backToCabinetGrid() {
   gridView.style.display = 'block';
   detailView.style.display = 'none';
 }
+// === CIVICS QUIZ MODAL OPEN ===
+function openCivicsQuizModal() {
+  const modal = document.getElementById('civicsQuizModal');
+  if (!modal) {
+    console.error("Civics quiz modal not found.");
+    return;
+  }
+  modal.style.display = 'block';
+  initCivicsQuiz(); // kick off the quiz engine
+}
+// === Daily Civics Quiz Engine ===
+let quizQuestions = [];
+let allQuestions = [];
+let currentQuestion = 0;
+let score = 0;
+
+function initCivicsQuiz() {
+  currentQuestion = 0;
+  score = 0;
+
+  fetch('civics-questions.json')
+    .then(res => res.json())
+    .then(data => {
+      allQuestions = data;
+
+      // Pick today's set of 20 questions
+      quizQuestions = getDailyQuestions();
+
+      renderQuestion();
+    })
+    .catch(err => {
+      console.error("Error loading civics-questions.json:", err);
+      document.getElementById("quiz-question").textContent = "Failed to load questions.";
+    });
+}
+
+function getDailyQuestions() {
+  const today = new Date().toDateString();
+  const saved = localStorage.getItem("civicsQuizDate");
+
+  if (saved === today) {
+    return JSON.parse(localStorage.getItem("civicsQuizQuestions"));
+  } else {
+    const newSet = allQuestions.sort(() => 0.5 - Math.random()).slice(0, 20);
+    localStorage.setItem("civicsQuizDate", today);
+    localStorage.setItem("civicsQuizQuestions", JSON.stringify(newSet));
+    return newSet;
+  }
+}
+function renderQuestion() {
+  const q = quizQuestions[currentQuestion];
+
+  document.getElementById("quiz-progress").textContent =
+    `Question ${currentQuestion + 1} of ${quizQuestions.length}`;
+  document.getElementById("quiz-progress-fill").style.width =
+    `${((currentQuestion + 1) / quizQuestions.length) * 100}%`;
+
+  document.getElementById("quiz-question").innerHTML = `<h3>${q.q}</h3>`;
+
+  document.getElementById("quiz-options").innerHTML = q.options.map((opt,i) =>
+    `<label><input type="radio" name="opt" value="${i}"> ${opt}</label><br>`
+  ).join("");
+
+  document.getElementById("quiz-feedback").textContent = "";
+  document.getElementById("quiz-submit").style.display = "inline-block";
+  document.getElementById("quiz-next").style.display = "none";
+}
+document.getElementById("quiz-submit").onclick = () => {
+  const selected = document.querySelector('input[name="opt"]:checked');
+  if (!selected) {
+    alert("Pick an answer!");
+    return;
+  }
+  const q = quizQuestions[currentQuestion];
+  const selectedIndex = parseInt(selected.value, 10);
+  const correctText = q.options[q.answer];
+  const feedbackEl = document.getElementById("quiz-feedback");
+
+  if (selectedIndex === q.answer) {
+    score++;
+    feedbackEl.className = "correct";
+    feedbackEl.innerHTML = `✅ Correct — ${correctText}<br><small>${q.explanation}</small>`;
+  } else {
+    feedbackEl.className = "incorrect";
+    feedbackEl.innerHTML = `❌ Incorrect. Correct answer: ${correctText}<br><small>${q.explanation}</small>`;
+  }
+
+  document.getElementById("quiz-submit").style.display = "none";
+  document.getElementById("quiz-next").style.display = "inline-block";
+};
+
+document.getElementById("quiz-next").onclick = () => {
+  currentQuestion++;
+  if (currentQuestion < quizQuestions.length) {
+    renderQuestion();
+  } else {
+    document.getElementById("quiz-question").innerHTML = "";
+    document.getElementById("quiz-options").innerHTML = "";
+    document.getElementById("quiz-progress").textContent = "";
+    document.getElementById("quiz-progress-fill").style.width = "100%";
+    document.getElementById("quiz-feedback").textContent = "";
+    document.getElementById("quiz-score").textContent =
+      `Final Score: ${score}/${quizQuestions.length} — ${score >= 12 ? "Pass ✅" : "Try Again ❌"}`;
+    document.getElementById("quiz-next").style.display = "none";
+  }
+};
+function openTypologyQuizModal() {
+  const modal = document.getElementById('typologyQuizModal');
+  if (!modal) {
+    console.error("Typology quiz modal not found.");
+    return;
+  }
+  modal.style.display = 'block';
+  initTypologyQuiz();
+}
+
+let typologyQuestions = [];
+let currentTypologyQuestion = 0;
+let scoreMap = {};
+
+function initTypologyQuiz() {
+  currentTypologyQuestion = 0;
+  scoreMap = { progressive:0, liberal:0, conservative:0, libertarian:0, socialist:0, populist:0, centrist:0 };
+
+  fetch('typology-questions.json') // adjust path if needed
+    .then(res => res.json())
+    .then(data => {
+      typologyQuestions = data;
+      console.log("Loaded typology questions:", typologyQuestions);
+      renderTypologyQuestion();
+    })
+    .catch(err => {
+      console.error("Error loading typology-questions.json:", err);
+      document.getElementById("typology-question").textContent = "Failed to load questions.";
+    });
+}
+
+function renderTypologyQuestion() {
+  console.log("renderTypologyQuestion called");
+  console.log("Current index:", currentTypologyQuestion);
+  console.log("Questions array length:", typologyQuestions.length);
+
+  if (!typologyQuestions || typologyQuestions.length === 0) {
+    document.getElementById("typology-question").textContent = "No questions loaded.";
+    return;
+  }
+
+  const q = typologyQuestions[currentTypologyQuestion];
+  console.log("Rendering question:", q);
+
+  // Progress text + bar
+  document.getElementById("typology-progress").textContent =
+    `Question ${currentTypologyQuestion + 1} of ${typologyQuestions.length}`;
+  document.getElementById("typology-progress-fill").style.width =
+    `${((currentTypologyQuestion + 1) / typologyQuestions.length) * 100}%`;
+
+  // Question
+  document.getElementById("typology-question").innerHTML = `<h3>${q.q}</h3>`;
+
+  // Options
+  document.getElementById("typology-options").innerHTML = q.options.map((opt,i) =>
+    `<label><input type="radio" name="typologyOpt" value="${i}"> ${opt}</label><br>`
+  ).join("");
+
+  // Reset feedback/controls
+  document.getElementById("typology-feedback").textContent = "";
+  document.getElementById("typology-submit").style.display = "inline-block";
+  document.getElementById("typology-next").style.display = "none";
+}
+
+// === Submit button handler ===
+document.getElementById("typology-submit").onclick = () => {
+  const selected = document.querySelector('input[name="typologyOpt"]:checked');
+  if (!selected) {
+    alert("Pick an answer!");
+    return;
+  }
+
+  const q = typologyQuestions[currentTypologyQuestion];
+  const selectedIndex = parseInt(selected.value, 10);
+
+  // Apply weights
+  for (const [label, weight] of Object.entries(q.weights)) {
+    if (selectedIndex === 0) scoreMap[label] += weight;
+    else if (selectedIndex === 1) scoreMap[label] += weight / 2;
+    else if (selectedIndex === 2) scoreMap[label] += 0;
+    else if (selectedIndex === 3) scoreMap[label] -= weight / 2;
+    else if (selectedIndex === 4) scoreMap[label] -= weight;
+  }
+
+  currentTypologyQuestion++;
+  if (currentTypologyQuestion < typologyQuestions.length) {
+    renderTypologyQuestion();
+  } else {
+    showTypologyResult();
+  }
+};
+
 // === Results renderer ===
 function showTypologyResult() {
   const topLabel = Object.keys(scoreMap).reduce((a, b) => scoreMap[a] > scoreMap[b] ? a : b);
@@ -957,19 +1140,12 @@ function showTypologyResult() {
   };
 
   // Clear quiz UI
-  const qEl = document.getElementById("typology-question");
-  const optsEl = document.getElementById("typology-options");
-  const progEl = document.getElementById("typology-progress");
-  const progFillEl = document.getElementById("typology-progress-fill");
-  const fbEl = document.getElementById("typology-feedback");
-  const submitBtn = document.getElementById("typology-submit");
-
-  if (qEl) qEl.innerHTML = "";
-  if (optsEl) optsEl.innerHTML = "";
-  if (progEl) progEl.textContent = "";
-  if (progFillEl) progFillEl.style.width = "100%";
-  if (fbEl) fbEl.textContent = "";
-  if (submitBtn) submitBtn.style.display = "none";
+  document.getElementById("typology-question").innerHTML = "";
+  document.getElementById("typology-options").innerHTML = "";
+  document.getElementById("typology-progress").textContent = "";
+  document.getElementById("typology-progress-fill").style.width = "100%";
+  document.getElementById("typology-feedback").textContent = "";
+  document.getElementById("typology-submit").style.display = "none";
 
   // Show result
   const resultBox = document.getElementById("typology-result");
@@ -983,29 +1159,9 @@ function showTypologyResult() {
      </div>`;
 
   // Attach restart handler
-  const restartBtn = document.getElementById("typology-restart");
-  restartBtn.onclick = () => {
+  document.getElementById("typology-restart").onclick = () => {
     resultBox.style.display = "none";
     resultBox.innerHTML = "";
-
-    currentTypologyQuestion = 0;
-    scoreMap = {
-      progressive: 0,
-      liberal: 0,
-      conservative: 0,
-      libertarian: 0,
-      socialist: 0,
-      populist: 0,
-      centrist: 0
-    };
-
-    if (submitBtn) submitBtn.style.display = "inline-block";
-    if (qEl) qEl.innerHTML = "";
-    if (optsEl) optsEl.innerHTML = "";
-    if (fbEl) fbEl.textContent = "";
-    if (progEl) progEl.textContent = "";
-    if (progFillEl) progFillEl.style.width = "0%";
-
     initTypologyQuiz();
   };
 }
