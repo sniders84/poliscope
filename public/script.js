@@ -1094,24 +1094,19 @@ document.getElementById("typology-submit").onclick = () => {
     alert("Pick an answer!");
     return;
   }
+
   const q = typologyQuestions[currentTypologyQuestion];
   const selectedIndex = parseInt(selected.value, 10);
 
   // Apply weights
   for (const [label, weight] of Object.entries(q.weights)) {
-    if (selectedIndex === 0) scoreMap[label] += weight;        // Strongly Agree
-    else if (selectedIndex === 1) scoreMap[label] += weight/2; // Agree
-    else if (selectedIndex === 2) scoreMap[label] += 0;        // Neutral
-    else if (selectedIndex === 3) scoreMap[label] -= weight/2; // Disagree
-    else if (selectedIndex === 4) scoreMap[label] -= weight;   // Strongly Disagree
+    if (selectedIndex === 0) scoreMap[label] += weight;
+    else if (selectedIndex === 1) scoreMap[label] += weight / 2;
+    else if (selectedIndex === 2) scoreMap[label] += 0;
+    else if (selectedIndex === 3) scoreMap[label] -= weight / 2;
+    else if (selectedIndex === 4) scoreMap[label] -= weight;
   }
 
-  document.getElementById("typology-submit").style.display = "none";
-  document.getElementById("typology-next").style.display = "inline-block";
-};
-
-// === Next button handler ===
-document.getElementById("typology-next").onclick = () => {
   currentTypologyQuestion++;
   if (currentTypologyQuestion < typologyQuestions.length) {
     renderTypologyQuestion();
@@ -1124,7 +1119,6 @@ document.getElementById("typology-next").onclick = () => {
 function showTypologyResult() {
   const topLabel = Object.keys(scoreMap).reduce((a, b) => scoreMap[a] > scoreMap[b] ? a : b);
 
-  // Emoji map for badges
   const emojiMap = {
     progressive: "🔥",
     liberal: "📘",
@@ -1135,7 +1129,6 @@ function showTypologyResult() {
     centrist: "⚖️"
   };
 
-  // Expanded descriptions
   const descriptions = {
     progressive: "You believe government should actively reshape society to ensure fairness and equality. Progressives emphasize social justice, environmental protection, and systemic reform, often supporting bold policies to reduce inequality.",
     liberal: "You value individual rights, pluralism, and moderate government intervention. Liberals tend to support civil liberties, democratic institutions, and a balance between free markets and social programs.",
@@ -1153,9 +1146,8 @@ function showTypologyResult() {
   document.getElementById("typology-progress-fill").style.width = "100%";
   document.getElementById("typology-feedback").textContent = "";
   document.getElementById("typology-submit").style.display = "none";
-  document.getElementById("typology-next").style.display = "none";
 
-  // Show result box only when ready
+  // Show result
   const resultBox = document.getElementById("typology-result");
   resultBox.style.display = "block";
   resultBox.innerHTML =
@@ -1167,17 +1159,13 @@ function showTypologyResult() {
      </div>`;
 
   // Attach restart handler
-  const restartBtn = document.getElementById("typology-restart");
-  if (restartBtn) {
-    restartBtn.onclick = () => {
-      // Hide results box
-      resultBox.style.display = "none";
-      resultBox.innerHTML = "";
-      // Restart quiz
-      initTypologyQuiz();
-    };
-  }
+  document.getElementById("typology-restart").onclick = () => {
+    resultBox.style.display = "none";
+    resultBox.innerHTML = "";
+    initTypologyQuiz();
+  };
 }
+
 // === POLLS TAB ===
 function showPolls() {
   showTab('polls');
