@@ -1012,6 +1012,17 @@ function initCivicsQuiz() {
   currentQuestion = 0;
   score = 0;
 
+  // 🔑 Clear any previous results
+  const scoreBox = document.getElementById("quiz-score");
+  if (scoreBox) {
+    scoreBox.textContent = "";
+  }
+  const feedbackEl = document.getElementById("quiz-feedback");
+  if (feedbackEl) {
+    feedbackEl.textContent = "";
+    feedbackEl.className = "";
+  }
+
   fetch('civics-questions.json')
     .then(res => res.json())
     .then(data => {
