@@ -1163,10 +1163,21 @@ function showTypologyResult() {
      <h2>Your Typology: ${topLabel}</h2>
      <p>${descriptions[topLabel]}</p>
      <div class="quiz-controls">
-       <button class="quiz-btn" onclick="initTypologyQuiz()">Restart Quiz</button>
+       <button id="typology-restart" class="quiz-btn">Restart Quiz</button>
      </div>`;
-}
 
+  // Attach restart handler
+  const restartBtn = document.getElementById("typology-restart");
+  if (restartBtn) {
+    restartBtn.onclick = () => {
+      // Hide results box
+      resultBox.style.display = "none";
+      resultBox.innerHTML = "";
+      // Restart quiz
+      initTypologyQuiz();
+    };
+  }
+}
 // === POLLS TAB ===
 function showPolls() {
   showTab('polls');
