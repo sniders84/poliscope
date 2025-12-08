@@ -994,8 +994,9 @@ function openCivicsQuizModal() {
     return;
   }
   modal.style.display = 'block';
-  initCivicsQuiz(); // kick off the quiz engine
+  setTimeout(() => initCivicsQuiz(), 50); // small delay so DOM is ready
 }
+
 // === Daily Civics Quiz Engine ===
 let quizQuestions = [];
 let allQuestions = [];
@@ -1010,15 +1011,13 @@ function initCivicsQuiz() {
     .then(res => res.json())
     .then(data => {
       allQuestions = data;
-
-      // Pick today's set of 20 questions
       quizQuestions = getDailyQuestions();
-
-      renderQuestion();
+      renderCivicsQuestion();
     })
     .catch(err => {
       console.error("Error loading civics-questions.json:", err);
-      document.getElementById("quiz-question").textContent = "Failed to load questions.";
+      const qEl = document.getElementById("quiz-question");
+      if (qEl) qEl.textContent = "Failed to load questions.";
     });
 }
 
@@ -1035,30 +1034,44 @@ function getDailyQuestions() {
     return newSet;
   }
 }
-function renderQuestion() {
+
+function renderCivicsQuestion() {
+  if (!quizQuestions || quizQuestions.length === 0) {
+    const qEl = document.getElementById("quiz-question");
+    if (qEl) qEl.textContent = "No questions loaded.";
+    return;
+  }
+
   const q = quizQuestions[currentQuestion];
 
+  // Progress
   document.getElementById("quiz-progress").textContent =
     `Question ${currentQuestion + 1} of ${quizQuestions.length}`;
   document.getElementById("quiz-progress-fill").style.width =
     `${((currentQuestion + 1) / quizQuestions.length) * 100}%`;
 
+  // Question
   document.getElementById("quiz-question").innerHTML = `<h3>${q.q}</h3>`;
 
+  // Options
   document.getElementById("quiz-options").innerHTML = q.options.map((opt,i) =>
-    `<label><input type="radio" name="opt" value="${i}"> ${opt}</label><br>`
+    `<label><input type="radio" name="civicsOpt" value="${i}"> ${opt}</label><br>`
   ).join("");
 
+  // Reset feedback/controls
   document.getElementById("quiz-feedback").textContent = "";
   document.getElementById("quiz-submit").style.display = "inline-block";
   document.getElementById("quiz-next").style.display = "none";
 }
+
+// === Submit button handler ===
 document.getElementById("quiz-submit").onclick = () => {
-  const selected = document.querySelector('input[name="opt"]:checked');
+  const selected = document.querySelector('input[name="civicsOpt"]:checked');
   if (!selected) {
     alert("Pick an answer!");
     return;
   }
+
   const q = quizQuestions[currentQuestion];
   const selectedIndex = parseInt(selected.value, 10);
   const correctText = q.options[q.answer];
@@ -1067,31 +1080,55 @@ document.getElementById("quiz-submit").onclick = () => {
   if (selectedIndex === q.answer) {
     score++;
     feedbackEl.className = "correct";
-    feedbackEl.innerHTML = `✅ Correct — ${correctText}<br><small>${q.explanation}</small>`;
+    feedbackEl.innerHTML = `✅ Correct — ${correctText}<br><small>${q.explanation || ""}</small>`;
   } else {
     feedbackEl.className = "incorrect";
-    feedbackEl.innerHTML = `❌ Incorrect. Correct answer: ${correctText}<br><small>${q.explanation}</small>`;
+    feedbackEl.innerHTML = `❌ Incorrect. Correct answer: ${correctText}<br><small>${q.explanation || ""}</small>`;
   }
 
   document.getElementById("quiz-submit").style.display = "none";
   document.getElementById("quiz-next").style.display = "inline-block";
 };
 
+// === Next button handler ===
 document.getElementById("quiz-next").onclick = () => {
   currentQuestion++;
   if (currentQuestion < quizQuestions.length) {
-    renderQuestion();
+    renderCivicsQuestion();
   } else {
-    document.getElementById("quiz-question").innerHTML = "";
-    document.getElementById("quiz-options").innerHTML = "";
-    document.getElementById("quiz-progress").textContent = "";
-    document.getElementById("quiz-progress-fill").style.width = "100%";
-    document.getElementById("quiz-feedback").textContent = "";
-    document.getElementById("quiz-score").textContent =
-      `Final Score: ${score}/${quizQuestions.length} — ${score >= 12 ? "Pass ✅" : "Try Again ❌"}`;
-    document.getElementById("quiz-next").style.display = "none";
+    showCivicsResult();
   }
 };
+
+// === Results renderer ===
+function showCivicsResult() {
+  document.getElementById("quiz-question").innerHTML = "";
+  document.getElementById("quiz-options").innerHTML = "";
+  document.getElementById("quiz-progress").textContent = "";
+  document.getElementById("quiz-progress-fill").style.width = "100%";
+  document.getElementById("quiz-feedback").textContent = "";
+  document.getElementById("quiz-submit").style.display = "none";
+  document.getElementById("quiz-next").style.display = "none";
+
+  const scoreBox = document.getElementById("quiz-score");
+  scoreBox.style.display = "block";
+  scoreBox.innerHTML =
+    `<h2>Your Score: ${score}/${quizQuestions.length}</h2>
+     <p>${score >= 12 ? "Pass ✅" : "Try Again ❌"}</p>
+     <div class="quiz-controls">
+       <button id="quiz-restart" class="quiz-btn">Restart Quiz</button>
+     </div>`;
+
+  const restartBtn = document.getElementById("quiz-restart");
+  if (restartBtn) {
+    restartBtn.onclick = () => {
+      scoreBox.style.display = "none";
+      scoreBox.innerHTML = "";
+      initCivicsQuiz();
+    };
+  }
+}
+
 // === Political Typology Quiz Logic (schema uses "q") ===
 
 function openTypologyQuizModal() {
