@@ -1144,7 +1144,9 @@ function showTypologyResult() {
 
   // Show result
   document.getElementById("typology-result").innerHTML =
-    `<h2>Your Typology: ${topLabel}</h2><p>${descriptions[topLabel]}</p>`;
+  `<div class="typology-badge badge-${topLabel}">${topLabel.toUpperCase()}</div>
+   <h2>Your Typology: ${topLabel}</h2>
+   <p>${descriptions[topLabel]}</p>`;
 }
 
 // === POLLS TAB ===
