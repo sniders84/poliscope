@@ -8862,3 +8862,25 @@ nav .tab.active {
   margin-bottom: 15px;
   font-size: 1.1em;
 }
+.quiz-controls {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.quiz-btn {
+  background: #1976d2;       /* modern blue */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 6px;
+  border-radius: 6px;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.quiz-btn:hover {
+  background: #1565c0;       /* darker blue on hover */
+  transform: translateY(-2px);
+}
