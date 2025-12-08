@@ -8,5 +8,191 @@
     "q": "Business regulation usually does more harm than good.",
     "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
     "weights": { "conservative": 2, "libertarian": 2, "progressive": -1, "socialist": -2 }
+  },
+  {
+    "q": "Immigration strengthens the country by bringing in new ideas and workers.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "progressive": 2, "liberal": 2, "socialist": 1, "populist": -2, "conservative": -1 }
+  },
+  {
+    "q": "Religion should play a major role in guiding laws and policies.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "conservative": 2, "populist": 2, "libertarian": -2, "progressive": -1 }
+  },
+  {
+    "q": "The U.S. should prioritize diplomacy over military strength in foreign policy.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "progressive": 2, "liberal": 1, "socialist": 1, "conservative": -1, "populist": -2 }
+  },
+  {
+    "q": "Wealth should be heavily taxed to reduce inequality.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "socialist": 2, "progressive": 1, "liberal": 1, "conservative": -2, "libertarian": -2 }
+  },
+  {
+    "q": "Patriotism should be emphasized in schools.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "conservative": 2, "populist": 2, "progressive": -1, "liberal": -1 }
+  },
+  {
+    "q": "Abortion should be legal in most cases.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "progressive": 2, "liberal": 2, "socialist": 1, "conservative": -2, "populist": -1 }
+  },
+  {
+    "q": "Government should stay out of people’s personal lives (marriage, lifestyle, etc.).",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "libertarian": 2, "liberal": 1, "progressive": 1, "conservative": -1, "populist": -1 }
+  },
+  {
+    "q": "The U.S. should protect domestic industries with tariffs and trade restrictions.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "populist": 2, "conservative": 1, "liberal": -1, "progressive": -1, "libertarian": -2 }
+  },
+  {
+    "q": "Climate change requires immediate government action, even if it disrupts the economy.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "progressive": 2, "socialist": 2, "liberal": 1, "conservative": -2, "libertarian": -1 }
+  },
+  {
+    "q": "Gun ownership is a fundamental right that should not be restricted.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "conservative": 2, "libertarian": 2, "populist": 1, "progressive": -2, "socialist": -2 }
+  },
+  {
+    "q": "Student loan debt should be forgiven to promote economic opportunity.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "progressive": 2, "socialist": 2, "liberal": 1, "conservative": -1, "libertarian": -2 }
+  },
+  {
+    "q": "Police departments should be reformed to reduce systemic bias.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "progressive": 2, "socialist": 1, "liberal": 1, "conservative": -2, "populist": -1 }
+  },
+  {
+    "q": "The U.S. should reduce military spending and redirect funds to domestic needs.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "socialist": 2, "progressive": 1, "liberal": 1, "conservative": -2, "populist": -1 }
+  },
+  [
+  {
+    "q": "Corporations should be allowed to donate unlimited money to political campaigns.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "libertarian": 2, "conservative": 1, "progressive": -2, "socialist": -2 }
+  },
+  {
+    "q": "Marijuana should be legalized nationwide.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "libertarian": 2, "progressive": 1, "liberal": 1, "conservative": -2, "populist": -1 }
+  },
+  {
+    "q": "Affirmative action is necessary to address racial inequality.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "progressive": 2, "socialist": 1, "liberal": 1, "conservative": -2, "libertarian": -1 }
+  },
+  {
+    "q": "Government surveillance is justified to protect national security.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "conservative": 2, "populist": 2, "liberal": -1, "progressive": -2, "libertarian": -2 }
+  },
+  {
+    "q": "The minimum wage should be raised significantly.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "socialist": 2, "progressive": 2, "liberal": 1, "conservative": -2, "libertarian": -2 }
+  },
+  {
+    "q": "The U.S. should accept more refugees fleeing conflict.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "progressive": 2, "liberal": 2, "socialist": 1, "conservative": -2, "populist": -1 }
+  },
+  {
+    "q": "Government should invest heavily in renewable energy.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "progressive": 2, "socialist": 2, "liberal": 1, "conservative": -2, "libertarian": -1 }
+  },
+  {
+    "q": "Parents should have the right to use school vouchers for private education.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "conservative": 2, "libertarian": 1, "progressive": -1, "socialist": -2 }
+  },
+  {
+    "q": "The death penalty should be abolished.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "progressive": 2, "liberal": 1, "socialist": 2, "conservative": -2, "populist": -1 }
+  },
+   {
+    "q": "The federal government should guarantee paid family and medical leave.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "progressive": 2, "socialist": 2, "liberal": 1, "conservative": -1, "libertarian": -2 }
+  },
+  {
+    "q": "Voter ID laws are necessary to protect election integrity.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "conservative": 2, "populist": 2, "progressive": -2, "liberal": -1, "socialist": -1 }
+  },
+  {
+    "q": "The U.S. should expand nuclear energy as part of its energy strategy.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "conservative": 1, "libertarian": 1, "progressive": -1, "socialist": -2 }
+  },
+  {
+    "q": "Social media companies should be held legally responsible for misinformation on their platforms.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "progressive": 2, "liberal": 1, "socialist": 1, "conservative": -1, "libertarian": -2 }
+  },
+  {
+    "q": "The U.S. should adopt stricter gun control laws, including assault weapon bans.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "progressive": 2, "liberal": 2, "socialist": 1, "conservative": -2, "libertarian": -2 }
+  },
+  {
+    "q": "Government should provide universal childcare to support working families.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "socialist": 2, "progressive": 2, "liberal": 1, "conservative": -1, "libertarian": -2 }
+  },
+  {
+    "q": "The U.S. should reduce its involvement in international organizations like the UN.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "populist": 2, "conservative": 1, "progressive": -1, "liberal": -2 }
+  },
+  {
+    "q": "Government should regulate tech monopolies more aggressively to protect consumers.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "progressive": 2, "socialist": 1, "liberal": 1, "conservative": -1, "libertarian": -2 }
+  },
+  {
+    "q": "The U.S. should expand public housing programs to address homelessness.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "socialist": 2, "progressive": 2, "liberal": 1, "conservative": -2, "libertarian": -2 }
+  },
+  {
+    "q": "Government should prioritize rural infrastructure investment over urban development.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "populist": 2, "conservative": 1, "progressive": -1, "liberal": -1 }
+  },
+  {
+    "q": "The U.S. should expand access to mail-in voting nationwide.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "progressive": 2, "liberal": 2, "socialist": 1, "conservative": -2, "populist": -1 }
+  },
+  {
+    "q": "Government should ban private prisons.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "socialist": 2, "progressive": 2, "liberal": 1, "conservative": -2, "libertarian": -1 }
+  },
+  {
+    "q": "The U.S. should expand fossil fuel drilling to achieve energy independence.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "conservative": 2, "populist": 2, "progressive": -2, "socialist": -2 }
+  },
+  {
+    "q": "Government should provide reparations to descendants of enslaved people.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "socialist": 2, "progressive": 2, "liberal": 1, "conservative": -2, "populist": -2 }
+  },
+  {
+    "q": "The U.S. should expand charter schools as an alternative to public education.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "conservative": 2, "libertarian": 1, "progressive": -1, "socialist": -2 }
   }
 ]
