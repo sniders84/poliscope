@@ -394,10 +394,6 @@ header.addEventListener('click', () => {
   console.log('showPodcastsShows() finished rendering');
 }
 
-function showCivic() {
-  showTab('civic-intelligence');
-}
-
 function showPolls() {
   showTab('polls');
 }
