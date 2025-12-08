@@ -635,6 +635,7 @@ function showQuizzes() {
 // === CIVIC TAB ===
 function showCivic() {
   showTab('civic');
+
   const calendar = document.getElementById('calendar');
   if (!calendar) {
     console.error("Calendar element not found in Civic tab.");
@@ -644,17 +645,19 @@ function showCivic() {
 
   const section = document.createElement('div');
   section.className = 'civic-section';
-  // … rest of your existing logic …
-}
+
   // --- State block ---
   const stateBlock = document.createElement('div');
   stateBlock.className = 'civic-block';
   stateBlock.innerHTML = '<h2>State Legislative Links</h2>';
 
-  fetch('/state-links.json')
-    .then(res => res.json())
+  fetch('state-links.json')
+    .then(res => {
+      if (!res.ok) throw new Error('Failed to load state-links.json');
+      return res.json();
+    })
     .then(stateLinks => {
-      const normalizedState = selectedState === "Virgin Islands" ? "U.S. Virgin Islands" : selectedState;
+      const normalizedState = selectedState === 'Virgin Islands' ? 'U.S. Virgin Islands' : selectedState;
       const links = stateLinks[normalizedState] || {};
 
       const labelMap = {
@@ -766,6 +769,32 @@ function showCivic() {
         `;
         federalGrid.appendChild(card);
       });
+
+      // Cabinet card
+      const cabinetCard = document.createElement('div');
+      cabinetCard.className = 'link-card';
+      cabinetCard.setAttribute('onclick', 'showCabinet()');
+      cabinetCard.innerHTML = `
+        <h4>Cabinet</h4>
+        <p class="card-desc">View members of the President's Cabinet.</p>
+      `;
+      federalGrid.appendChild(cabinetCard);
+
+      federalBlock.appendChild(federalGrid);
+
+      // Append all blocks to the section
+      section.appendChild(stateBlock);
+      section.appendChild(ngaBlock);
+      section.appendChild(federalBlock);
+
+      // Render into the calendar container
+      calendar.appendChild(section);
+    })
+    .catch(err => {
+      calendar.innerHTML = '<p>Error loading civic links.</p>';
+      console.error(err);
+    });
+}
 
       // Cabinet card
       const cabinetCard = document.createElement('div');
