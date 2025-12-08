@@ -1164,12 +1164,18 @@ function showTypologyResult() {
      </div>`;
 
   // Attach restart handler
-  document.getElementById("typology-restart").onclick = () => {
-    resultBox.style.display = "none";
-    resultBox.innerHTML = "";
-    initTypologyQuiz();
-  };
-}
+document.getElementById("typology-restart").onclick = () => {
+  const resultBox = document.getElementById("typology-result");
+  resultBox.style.display = "none";   // hide results section
+  resultBox.innerHTML = "";           // clear its contents
+
+  // Reset quiz state
+  currentTypologyQuestion = 0;
+  scoreMap = { progressive:0, liberal:0, conservative:0, libertarian:0, socialist:0, populist:0, centrist:0 };
+
+  // Restart quiz
+  initTypologyQuiz();
+};
 
 // === POLLS TAB ===
 function showPolls() {
