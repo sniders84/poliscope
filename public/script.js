@@ -791,7 +791,7 @@ function showCivic() {
       const federalGrid = document.createElement('div');
       federalGrid.className = 'link-grid';
 
-            const federalLinks = [
+      const federalLinks = [
         { label: 'Committees', url: 'https://www.govtrack.us/congress/committees', desc: 'Explore congressional committees and their membership.' },
         { label: 'Legislator Report Cards', url: 'https://www.govtrack.us/congress/members/report-cards/2024', desc: 'See performance grades for federal legislators.' },
         { label: 'All Federal Bills', url: 'https://www.govtrack.us/congress/bills/', desc: 'Track every bill introduced in Congress.' },
