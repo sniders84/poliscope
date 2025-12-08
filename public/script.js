@@ -752,34 +752,6 @@ function showCivic() {
 
       ngaBlock.appendChild(ngaGrid);
 
-      // --- NLGA block ---
-      const nlgaBlock = document.createElement('div');
-      nlgaBlock.className = 'civic-block';
-      nlgaBlock.innerHTML = '<h2>National Lt. Governor\'s Association</h2>';
-
-      const nlgaLinks = [
-        { label: 'NLGA Leadership', url: 'https://nlga.us/leadership/', desc: 'Meet the current leadership of the National Lt. Governor\'s Association.' },
-        { label: 'Policy & Initiatives', url: 'https://nlga.us/policy/', desc: 'Explore NLGA policy initiatives and issue advocacy.' },
-        { label: 'Annual Meeting', url: 'https://nlga.us/meetings/', desc: 'Track upcoming and past NLGA meetings and conferences.' },
-        { label: 'Membership Directory', url: 'https://nlga.us/members/', desc: 'View the directory of current Lt. Governors across the United States.' }
-      ];
-
-      const nlgaGrid = document.createElement('div');
-      nlgaGrid.className = 'link-grid';
-
-      nlgaLinks.forEach(link => {
-        const card = document.createElement('div');
-        card.className = 'link-card';
-        card.setAttribute('onclick', `window.open('${link.url}', '_blank')`);
-        card.innerHTML = `
-          <h4>${link.label}</h4>
-          <p class="card-desc">${link.desc}</p>
-        `;
-        nlgaGrid.appendChild(card);
-      });
-
-      nlgaBlock.appendChild(nlgaGrid);
-
       // --- Federal block ---
       const federalBlock = document.createElement('div');
       federalBlock.className = 'civic-block';
@@ -821,7 +793,6 @@ function showCivic() {
       // Append all blocks to the section
       section.appendChild(stateBlock);
       section.appendChild(ngaBlock);
-      section.appendChild(nlgaBlock);
       section.appendChild(federalBlock);
 
       // Render into the calendar container
@@ -831,8 +802,6 @@ function showCivic() {
       calendar.innerHTML = '<p>Error loading civic links.</p>';
       console.error(err);
     });
-}
-
 }// === CABINET MODAL LOGIC ===
 function showCabinet() {
   const list = document.getElementById('cabinetList');
