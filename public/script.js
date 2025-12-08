@@ -986,220 +986,112 @@ function backToCabinetGrid() {
   gridView.style.display = 'block';
   detailView.style.display = 'none';
 }
-// === CIVICS QUIZ: Modal + Engine (submit-only flow) ===
-
-(function() {
-  // Internal state
-  let quizQuestions = [];
-  let allQuestions = [];
-  let currentQuestion = 0;
-  let score = 0;
-  let handlersBound = false;
-
-  // Open modal and initialize
-  window.openCivicsQuizModal = function openCivicsQuizModal() {
-    const modal = document.getElementById('civicsQuizModal');
-    if (!modal) {
-      console.error("Civics quiz modal not found.");
-      return;
-    }
-    modal.style.display = 'block';
-
-    // Bind handlers once, after modal is in DOM
-    if (!handlersBound) {
-      const submitBtn = document.getElementById("quiz-submit");
-      if (submitBtn) {
-        submitBtn.addEventListener('click', onCivicsSubmit);
-      } else {
-        console.error("Submit button #quiz-submit not found.");
-      }
-
-      // If a legacy next button exists, hide it and unbind any handlers
-      const nextBtn = document.getElementById("quiz-next");
-      if (nextBtn) {
-        nextBtn.style.display = "none";
-        nextBtn.replaceWith(nextBtn.cloneNode(true)); // strip any previous listeners
-      }
-
-      handlersBound = true;
-    }
-
-    // Small delay to ensure layout is settled
-    setTimeout(initCivicsQuiz, 50);
-  };
-
-  function initCivicsQuiz() {
-    currentQuestion = 0;
-    score = 0;
-
-    // Clear UI
-    safeSetHTML("quiz-score", "");
-    safeSetText("quiz-feedback", "");
-    safeShow("quiz-submit");
-
-    fetch('civics-questions.json')
-      .then(res => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return res.json();
-      })
-      .then(data => {
-        if (!Array.isArray(data) || data.length === 0) {
-          throw new Error("No civics questions found.");
-        }
-        allQuestions = data;
-        quizQuestions = getDailyQuestions();
-        renderCivicsQuestion();
-      })
-      .catch(err => {
-        console.error("Error loading civics-questions.json:", err);
-        safeSetText("quiz-question", "Failed to load questions.");
-      });
+// === CIVICS QUIZ MODAL OPEN ===
+function openCivicsQuizModal() {
+  const modal = document.getElementById('civicsQuizModal');
+  if (!modal) {
+    console.error("Civics quiz modal not found.");
+    return;
   }
+  modal.style.display = 'block';
+  initCivicsQuiz(); // kick off the quiz engine
+}
+// === Daily Civics Quiz Engine ===
+let quizQuestions = [];
+let allQuestions = [];
+let currentQuestion = 0;
+let score = 0;
 
-  function getDailyQuestions() {
-    const today = new Date().toDateString();
-    const saved = localStorage.getItem("civicsQuizDate");
+function initCivicsQuiz() {
+  currentQuestion = 0;
+  score = 0;
 
-    if (saved === today) {
-      const cached = localStorage.getItem("civicsQuizQuestions");
-      try {
-        const parsed = JSON.parse(cached || "[]");
-        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
-      } catch {}
-    }
-    const newSet = allQuestions.slice().sort(() => 0.5 - Math.random()).slice(0, 20);
+  fetch('civics-questions.json')
+    .then(res => res.json())
+    .then(data => {
+      allQuestions = data;
+
+      // Pick today's set of 20 questions
+      quizQuestions = getDailyQuestions();
+
+      renderQuestion();
+    })
+    .catch(err => {
+      console.error("Error loading civics-questions.json:", err);
+      document.getElementById("quiz-question").textContent = "Failed to load questions.";
+    });
+}
+
+function getDailyQuestions() {
+  const today = new Date().toDateString();
+  const saved = localStorage.getItem("civicsQuizDate");
+
+  if (saved === today) {
+    return JSON.parse(localStorage.getItem("civicsQuizQuestions"));
+  } else {
+    const newSet = allQuestions.sort(() => 0.5 - Math.random()).slice(0, 20);
     localStorage.setItem("civicsQuizDate", today);
     localStorage.setItem("civicsQuizQuestions", JSON.stringify(newSet));
     return newSet;
   }
+}
+function renderQuestion() {
+  const q = quizQuestions[currentQuestion];
 
-  function renderCivicsQuestion() {
-    if (!quizQuestions || quizQuestions.length === 0) {
-      safeSetText("quiz-question", "No questions loaded.");
-      return;
-    }
+  document.getElementById("quiz-progress").textContent =
+    `Question ${currentQuestion + 1} of ${quizQuestions.length}`;
+  document.getElementById("quiz-progress-fill").style.width =
+    `${((currentQuestion + 1) / quizQuestions.length) * 100}%`;
 
-    const q = quizQuestions[currentQuestion];
-    if (!q || !q.q || !Array.isArray(q.options)) {
-      safeSetText("quiz-question", "Invalid question format.");
-      return;
-    }
+  document.getElementById("quiz-question").innerHTML = `<h3>${q.q}</h3>`;
 
-    // Progress
-    safeSetText("quiz-progress", `Question ${currentQuestion + 1} of ${quizQuestions.length}`);
-    safeSetWidth("quiz-progress-fill", `${((currentQuestion + 1) / quizQuestions.length) * 100}%`);
+  document.getElementById("quiz-options").innerHTML = q.options.map((opt,i) =>
+    `<label><input type="radio" name="opt" value="${i}"> ${opt}</label><br>`
+  ).join("");
 
-    // Question
-    safeSetHTML("quiz-question", `<h3>${q.q}</h3>`);
+  document.getElementById("quiz-feedback").textContent = "";
+  document.getElementById("quiz-submit").style.display = "inline-block";
+  document.getElementById("quiz-next").style.display = "none";
+}
+document.getElementById("quiz-submit").onclick = () => {
+  const selected = document.querySelector('input[name="opt"]:checked');
+  if (!selected) {
+    alert("Pick an answer!");
+    return;
+  }
+  const q = quizQuestions[currentQuestion];
+  const selectedIndex = parseInt(selected.value, 10);
+  const correctText = q.options[q.answer];
+  const feedbackEl = document.getElementById("quiz-feedback");
 
-    // Options (name must match submit handler)
-    const optionsHTML = q.options.map((opt, i) =>
-      `<label><input type="radio" name="civicsOpt" value="${i}"> ${opt}</label><br>`
-    ).join("");
-    safeSetHTML("quiz-options", optionsHTML);
-
-    // Reset feedback and show submit
-    safeSetText("quiz-feedback", "");
-    safeShow("quiz-submit");
+  if (selectedIndex === q.answer) {
+    score++;
+    feedbackEl.className = "correct";
+    feedbackEl.innerHTML = `✅ Correct — ${correctText}<br><small>${q.explanation}</small>`;
+  } else {
+    feedbackEl.className = "incorrect";
+    feedbackEl.innerHTML = `❌ Incorrect. Correct answer: ${correctText}<br><small>${q.explanation}</small>`;
   }
 
-  function onCivicsSubmit(evt) {
-    console.log("[CIVICS] Submit clicked"); // sanity log
-    evt.preventDefault();
+  document.getElementById("quiz-submit").style.display = "none";
+  document.getElementById("quiz-next").style.display = "inline-block";
+};
 
-    const selected = document.querySelector('input[name="civicsOpt"]:checked');
-    if (!selected) {
-      alert("Pick an answer!");
-      return;
-    }
-
-    const q = quizQuestions[currentQuestion];
-    if (!q) {
-      console.error("Question state invalid at index", currentQuestion);
-      return;
-    }
-
-    const selectedIndex = parseInt(selected.value, 10);
-    const correctText = q.options[q.answer];
-    const explanation = q.explanation || "";
-
-    if (selectedIndex === q.answer) {
-      score++;
-      setFeedback(true, `✅ Correct — ${correctText}`, explanation);
-    } else {
-      setFeedback(false, `❌ Incorrect. Correct answer: ${correctText}`, explanation);
-    }
-
-    // Auto-advance after short delay so feedback is visible
-    setTimeout(() => {
-      currentQuestion++;
-      if (currentQuestion < quizQuestions.length) {
-        renderCivicsQuestion();
-      } else {
-        showCivicsResult();
-      }
-    }, 800);
+document.getElementById("quiz-next").onclick = () => {
+  currentQuestion++;
+  if (currentQuestion < quizQuestions.length) {
+    renderQuestion();
+  } else {
+    document.getElementById("quiz-question").innerHTML = "";
+    document.getElementById("quiz-options").innerHTML = "";
+    document.getElementById("quiz-progress").textContent = "";
+    document.getElementById("quiz-progress-fill").style.width = "100%";
+    document.getElementById("quiz-feedback").textContent = "";
+    document.getElementById("quiz-score").textContent =
+      `Final Score: ${score}/${quizQuestions.length} — ${score >= 12 ? "Pass ✅" : "Try Again ❌"}`;
+    document.getElementById("quiz-next").style.display = "none";
   }
-
-  function setFeedback(isCorrect, headline, details) {
-    const el = document.getElementById("quiz-feedback");
-    if (!el) return;
-    el.className = isCorrect ? "correct" : "incorrect";
-    el.innerHTML = `${headline}${details ? `<br><small>${details}</small>` : ""}`;
-  }
-
-  function showCivicsResult() {
-    safeSetHTML("quiz-question", "");
-    safeSetHTML("quiz-options", "");
-    safeSetText("quiz-progress", "");
-    safeSetWidth("quiz-progress-fill", "100%");
-    safeSetText("quiz-feedback", "");
-    safeHide("quiz-submit");
-
-    const scoreBox = document.getElementById("quiz-score");
-    if (scoreBox) {
-      scoreBox.style.display = "block";
-      scoreBox.innerHTML =
-        `<h2>Your Score: ${score}/${quizQuestions.length}</h2>
-         <p>${score >= 12 ? "Pass ✅" : "Try Again ❌"}</p>
-         <div class="quiz-controls">
-           <button id="quiz-restart" class="quiz-btn">Restart Quiz</button>
-         </div>`;
-
-      const restartBtn = document.getElementById("quiz-restart");
-      if (restartBtn) {
-        restartBtn.addEventListener('click', () => {
-          scoreBox.style.display = "none";
-          scoreBox.innerHTML = "";
-          initCivicsQuiz();
-        }, { once: true });
-      }
-    }
-  }
-
-  // === Safe DOM helpers ===
-  function safeSetText(id, text) {
-    const el = document.getElementById(id);
-    if (el) el.textContent = text;
-  }
-  function safeSetHTML(id, html) {
-    const el = document.getElementById(id);
-    if (el) el.innerHTML = html;
-  }
-  function safeSetWidth(id, w) {
-    const el = document.getElementById(id);
-    if (el && el.style) el.style.width = w;
-  }
-  function safeShow(id) {
-    const el = document.getElementById(id);
-    if (el) el.style.display = "inline-block";
-  }
-  function safeHide(id) {
-    const el = document.getElementById(id);
-    if (el) el.style.display = "none";
-  }
-})();
-
+};
 // === Political Typology Quiz Logic (schema uses "q") ===
 
 function openTypologyQuizModal() {
