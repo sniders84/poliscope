@@ -1187,15 +1187,23 @@ function initTypologyQuiz() {
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       return res.json();
     })
-    .then(rawData => {
-      const categorized = normalizeTypologyData(rawData);
-      typologyQuestions = getBalancedTypologyQuestions(categorized);
-
-      if (!Array.isArray(typologyQuestions) || typologyQuestions.length === 0) {
-        throw new Error("Balanced selection produced no questions");
+    .then(data => {
+      // If data is an array, just use it directly
+      if (Array.isArray(data)) {
+        typologyQuestions = data;
+      }
+      // If data is an object with categories, balance it
+      else if (typeof data === "object" && data !== null) {
+        typologyQuestions = getBalancedTypologyQuestions(data);
+      } else {
+        throw new Error("Invalid typology-questions.json format");
       }
 
-      console.log("Loaded balanced typology questions:", typologyQuestions);
+      if (!typologyQuestions || typologyQuestions.length === 0) {
+        throw new Error("No questions available after processing");
+      }
+
+      console.log("Loaded typology questions:", typologyQuestions);
       renderTypologyQuestion();
     })
     .catch(err => {
