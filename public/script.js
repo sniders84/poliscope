@@ -436,44 +436,50 @@ function showPolls() {
       });
 
       section.appendChild(grid);
-
-      // 🔑 Real chart element (not a placeholder)
-      const chartCanvas = document.createElement('canvas');
-      chartCanvas.id = `poll-chart-${category.label.replace(/\s+/g, '-').toLowerCase()}`;
-      section.appendChild(chartCanvas);
-
       pollsContainer.appendChild(section);
-
-      // Render a simple working chart (dummy data for now)
-      if (window.Chart) {
-        new Chart(chartCanvas, {
-          type: 'bar',
-          data: {
-            labels: ['Candidate A', 'Candidate B'],
-            datasets: [{
-              label: 'Polling %',
-              data: [45, 40],
-              backgroundColor: ['#1e90ff', '#ff4136']
-            }]
-          },
-          options: {
-            responsive: true,
-            plugins: {
-              legend: { display: false }
-            }
-          }
-        });
-      }
     });
   }
 
-  // Elections section stays ready for Step 4
+  // === Elections Section ===
   const electionsContainer = document.getElementById('elections-cards');
   if (electionsContainer) {
-    electionsContainer.innerHTML = `
+    electionsContainer.innerHTML = ''; // clear previous
+
+    // --- Upcoming Elections ---
+    const upcomingBlock = document.createElement('div');
+    upcomingBlock.className = 'elections-block';
+    upcomingBlock.innerHTML = `
       <h3>Upcoming Elections</h3>
-      <p>Election dates, results, and rankings will appear here once integrated.</p>
+      <ul>
+        <li><a href="https://ballotpedia.org/Elections_calendar" target="_blank">Ballotpedia – Full Elections Calendar</a></li>
+        <li><a href="https://www.fec.gov/resources/cms-content/documents/fec-election-dates-2025.pdf" target="_blank">FEC – Federal Election Dates</a></li>
+      </ul>
     `;
+    electionsContainer.appendChild(upcomingBlock);
+
+    // --- Recent Results ---
+    const resultsBlock = document.createElement('div');
+    resultsBlock.className = 'elections-block';
+    resultsBlock.innerHTML = `
+      <h3>Recent Results</h3>
+      <ul>
+        <li><a href="https://decisiondeskhq.com/results/" target="_blank">Decision Desk HQ – Results Hub</a></li>
+        <li><a href="https://apnews.com/hub/election-results" target="_blank">Associated Press – Election Results</a></li>
+      </ul>
+    `;
+    electionsContainer.appendChild(resultsBlock);
+
+    // --- Competitive Races ---
+    const competitiveBlock = document.createElement('div');
+    competitiveBlock.className = 'elections-block';
+    competitiveBlock.innerHTML = `
+      <h3>Most Competitive Races</h3>
+      <ul>
+        <li><a href="https://www.cookpolitical.com/ratings" target="_blank">Cook Political Report – Race Ratings</a></li>
+        <li><a href="https://centerforpolitics.org/crystalball/" target="_blank">Sabato’s Crystal Ball – Battleground Analysis</a></li>
+      </ul>
+    `;
+    electionsContainer.appendChild(competitiveBlock);
   }
 }
 
