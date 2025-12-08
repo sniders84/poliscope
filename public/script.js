@@ -857,14 +857,48 @@ function showCabinetMember(member) {
 
   if (!gridView || !detailView || !detail) return;
 
+  // Hide grid, show detail
   gridView.style.display = 'none';
   detailView.style.display = 'block';
 
+  // Safe fallbacks for portrait and seal
+  const photoSrc = member.photo && member.photo.trim() !== ''
+    ? member.photo
+    : 'assets/default-photo.png';
+
+  const sealSrc = member.seal && member.seal.trim() !== ''
+    ? member.seal
+    : 'assets/default-seal.png';
+
+  // Handle term dates
+  const parseYear = d => {
+    if (!d || d.trim() === '') return '';
+    const dt = new Date(d);
+    return isNaN(dt) ? '' : dt.getFullYear();
+  };
+  const termStartYear = parseYear(member.termStart);
+  const termEndYear = parseYear(member.termEnd) || 'Present';
+
+  // Build detail HTML
   detail.innerHTML = `
+    <div class="detail-header">
+      <img src="${photoSrc}" alt="${member.name || ''}" class="portrait"
+           onerror="this.onerror=null;this.src='assets/default-photo.png';" />
+      <img src="${sealSrc}" alt="${member.office || 'Seal'}" class="seal"
+           onerror="this.onerror=null;this.src='assets/default-seal.png';" />
+    </div>
     <h2>${member.name || 'Unknown'}</h2>
     <p><strong>Office:</strong> ${member.office || 'N/A'}</p>
-    ${member.party ? `<p><strong>Party:</strong> ${member.party}</p>` : ''}
     ${member.state ? `<p><strong>State:</strong> ${member.state}</p>` : ''}
+    ${member.party ? `<p><strong>Party:</strong> ${member.party}</p>` : ''}
+    ${(termStartYear || termEndYear) ? `<p><strong>Term:</strong> ${termStartYear}–${termEndYear}</p>` : ''}
+    ${member.bio ? `<p><strong>Bio:</strong> ${member.bio}</p>` : ''}
+    ${member.education ? `<p><strong>Education:</strong> ${member.education}</p>` : ''}
+    ${member.salary ? `<p><strong>Salary:</strong> ${member.salary}</p>` : ''}
+    ${member.predecessor ? `<p><strong>Predecessor:</strong> ${member.predecessor}</p>` : ''}
+    ${member.contact && member.contact.website ? `<p><a href="${member.contact.website}" target="_blank">Official Website</a></p>` : ''}
+    ${member.ballotpediaLink ? `<p><a href="${member.ballotpediaLink}" target="_blank">Ballotpedia</a></p>` : ''}
+    ${member.govtrackLink ? `<p><a href="${member.govtrackLink}" target="_blank">GovTrack</a></p>` : ''}
   `;
 }
 
