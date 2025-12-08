@@ -752,6 +752,37 @@ function showCivic() {
 
       ngaBlock.appendChild(ngaGrid);
 
+      // --- NLGA block ---
+      const nlgaBlock = document.createElement('div');
+      nlgaBlock.className = 'civic-block';
+      nlgaBlock.innerHTML = '<h2>National Lt. Governor\'s Association</h2>';
+
+      const nlgaLinks = [
+        { label: 'Members', url: 'https://nlga.us/our-members/', desc: 'Browse the full roster of NLGA members across states and territories.' },
+        { label: 'NLGA Officers & Executive Committee', url: 'https://nlga.us/about-nlga/officers-exec-committee-operational-committees/', desc: 'Meet the officers and Executive Committee guiding NLGA’s priorities and governance.' },
+        { label: 'Meetings', url: 'https://nlga.us/nlga-meetings/', desc: 'Learn about NLGA’s annual, spring, and winter meetings where members convene.' },
+        { label: 'State Strategies Committee on Aerospace', url: 'https://nlga.us/strategies/nlga-aerospace-committee/', desc: 'Explore NLGA’s bipartisan Aerospace Committee advancing state strategies in aviation and defense.' },
+        { label: 'Current NLGA Resolutions', url: 'https://nlga.us/strategies/nlga-consensus-resolutions/', desc: 'Review NLGA’s consensus resolutions reflecting bipartisan agreement on key policy issues.' },
+        { label: 'State Strategies in STEM', url: 'https://nlga.us/state-strategies-in-stem/', desc: 'See how NLGA promotes STEM education and scholarships to strengthen workforce development.' },
+        { label: 'Methods of Election', url: 'https://nlga.us/research/methods-of-election/', desc: 'Understand the different methods states use to elect lieutenant governors.' }
+      ];
+
+      const nlgaGrid = document.createElement('div');
+      nlgaGrid.className = 'link-grid';
+
+      nlgaLinks.forEach(link => {
+        const card = document.createElement('div');
+        card.className = 'link-card';
+        card.setAttribute('onclick', `window.open('${link.url}', '_blank')`);
+        card.innerHTML = `
+          <h4>${link.label}</h4>
+          <p class="card-desc">${link.desc}</p>
+        `;
+        nlgaGrid.appendChild(card);
+      });
+
+      nlgaBlock.appendChild(nlgaGrid);
+
       // --- Federal block ---
       const federalBlock = document.createElement('div');
       federalBlock.className = 'civic-block';
@@ -760,7 +791,7 @@ function showCivic() {
       const federalGrid = document.createElement('div');
       federalGrid.className = 'link-grid';
 
-      const federalLinks = [
+            const federalLinks = [
         { label: 'Committees', url: 'https://www.govtrack.us/congress/committees', desc: 'Explore congressional committees and their membership.' },
         { label: 'Legislator Report Cards', url: 'https://www.govtrack.us/congress/members/report-cards/2024', desc: 'See performance grades for federal legislators.' },
         { label: 'All Federal Bills', url: 'https://www.govtrack.us/congress/bills/', desc: 'Track every bill introduced in Congress.' },
@@ -778,6 +809,32 @@ function showCivic() {
         federalGrid.appendChild(card);
       });
 
+      // Cabinet card
+      const cabinetCard = document.createElement('div');
+      cabinetCard.className = 'link-card';
+      cabinetCard.setAttribute('onclick', 'showCabinet()');
+      cabinetCard.innerHTML = `
+        <h4>Cabinet</h4>
+        <p class="card-desc">View members of the President's Cabinet.</p>
+      `;
+      federalGrid.appendChild(cabinetCard);
+
+      federalBlock.appendChild(federalGrid);
+
+      // Append all blocks to the section in order
+      section.appendChild(stateBlock);
+      section.appendChild(ngaBlock);
+      section.appendChild(nlgaBlock);
+      section.appendChild(federalBlock);
+
+      // Render into the calendar container
+      calendar.appendChild(section);
+    })
+    .catch(err => {
+      calendar.innerHTML = '<p>Error loading civic links.</p>';
+      console.error(err);
+    });
+}
       // Cabinet card
       const cabinetCard = document.createElement('div');
       cabinetCard.className = 'link-card';
