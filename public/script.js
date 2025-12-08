@@ -467,28 +467,14 @@ function showPolls() {
     });
   }
 
- // === Elections Section ===
-const electionsContainer = document.getElementById('elections-cards');
-if (electionsContainer) {
-  electionsContainer.innerHTML = ''; // clear previous
-
-  // --- Upcoming Elections ---
-  const upcomingBlock = document.createElement('div');
-  upcomingBlock.className = 'elections-block';
-  upcomingBlock.innerHTML = `<h3>Upcoming Elections</h3><div id="upcoming-elections-list"></div>`;
-  electionsContainer.appendChild(upcomingBlock);
-
-  // --- Recent Results ---
-  const resultsBlock = document.createElement('div');
-  resultsBlock.className = 'elections-block';
-  resultsBlock.innerHTML = `<h3>Recent Results</h3><div id="recent-results-list"></div>`;
-  electionsContainer.appendChild(resultsBlock);
-
-  // --- Competitive Races ---
-  const competitiveBlock = document.createElement('div');
-  competitiveBlock.className = 'elections-block';
-  competitiveBlock.innerHTML = `<h3>Most Competitive Races</h3><div id="competitive-races-list"></div>`;
-  electionsContainer.appendChild(competitiveBlock);
+  // Elections section stays ready for Step 4
+  const electionsContainer = document.getElementById('elections-cards');
+  if (electionsContainer) {
+    electionsContainer.innerHTML = `
+      <h3>Upcoming Elections</h3>
+      <p>Election dates, results, and rankings will appear here once integrated.</p>
+    `;
+  }
 }
 
 // Political Organizations tab
