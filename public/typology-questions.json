@@ -1,37 +1,17 @@
 {
   "Economy": [
-    {
-      "q": "The minimum wage should be raised significantly.",
-      "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
-      "weights": { "socialist": 2, "progressive": 2, "liberal": 1, "conservative": -2, "libertarian": -2 }
-    }
+    { "q": "Raise minimum wage?", "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"], "weights": { "progressive": 2 } }
   ],
   "SocialIssues": [
-    {
-      "q": "Abortion should be legal in most cases.",
-      "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
-      "weights": { "progressive": 2, "liberal": 2, "socialist": 1, "conservative": -2, "populist": -1 }
-    }
+    { "q": "Legalize abortion?", "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"], "weights": { "liberal": 2 } }
   ],
   "ForeignPolicy": [
-    {
-      "q": "The U.S. should prioritize diplomacy over military strength in foreign policy.",
-      "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
-      "weights": { "progressive": 2, "liberal": 1, "socialist": 1, "conservative": -1, "populist": -2 }
-    }
+    { "q": "Prioritize diplomacy?", "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"], "weights": { "progressive": 2 } }
   ],
   "Governance": [
-    {
-      "q": "Corporations should be allowed to donate unlimited money to political campaigns.",
-      "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
-      "weights": { "libertarian": 2, "conservative": 1, "progressive": -2, "socialist": -2 }
-    }
+    { "q": "Allow unlimited corporate donations?", "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"], "weights": { "libertarian": 2 } }
   ],
   "EnergyEnvironment": [
-    {
-      "q": "Government should invest heavily in renewable energy.",
-      "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
-      "weights": { "progressive": 2, "socialist": 2, "liberal": 1, "conservative": -2, "libertarian": -1 }
-    }
+    { "q": "Invest in renewable energy?", "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"], "weights": { "socialist": 2 } }
   ]
 }
