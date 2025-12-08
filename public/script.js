@@ -1032,7 +1032,7 @@ function initTypologyQuiz() {
   currentTypologyQuestion = 0;
   scoreMap = { progressive:0, liberal:0, conservative:0, libertarian:0, socialist:0, populist:0, centrist:0 };
 
-  fetch('public/typology-questions.json') // ✅ correct relative path
+  fetch('/typology-questions.json') // ✅ correct relative path
     .then(res => res.json())
     .then(data => {
       typologyQuestions = data;
@@ -1046,20 +1046,28 @@ function initTypologyQuiz() {
 }
 
 function renderTypologyQuestion() {
-  // Debug: confirm function is firing and what data we have
   console.log("renderTypologyQuestion called");
   console.log("Current index:", currentTypologyQuestion);
-  console.log("Questions array:", typologyQuestions);
+  console.log("Questions array length:", typologyQuestions.length);
 
   if (!typologyQuestions || typologyQuestions.length === 0) {
-    console.error("No typology questions loaded.");
-    document.getElementById("typology-question").textContent = "No questions available.";
+    document.getElementById("typology-question").textContent = "No questions loaded.";
     return;
   }
 
   const q = typologyQuestions[currentTypologyQuestion];
-  console.log("Rendering question object:", q);
+  console.log("Rendering question:", q);
 
+  document.getElementById("typology-progress").textContent =
+    `Question ${currentTypologyQuestion + 1} of ${typologyQuestions.length}`;
+  document.getElementById("typology-progress-fill").style.width =
+    `${((currentTypologyQuestion + 1) / typologyQuestions.length) * 100}%`;
+
+  document.getElementById("typology-question").innerHTML = `<h3>${q.q}</h3>`;
+  document.getElementById("typology-options").innerHTML = q.options.map((opt,i) =>
+    `<label><input type="radio" name="typologyOpt" value="${i}"> ${opt}</label><br>`
+  ).join("");
+}
   // Progress text + bar
   document.getElementById("typology-progress").textContent =
     `Question ${currentTypologyQuestion + 1} of ${typologyQuestions.length}`;
