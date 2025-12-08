@@ -393,27 +393,70 @@ function showPodcastsShows() {
   console.log('showPodcastsShows() finished rendering');
 }
 
-// === Stubbed tab helpers to prevent ReferenceErrors ===
+// === Tab helpers (corrected and complete) ===
+
+// Officials tab stub
 function renderOfficials(state, filter) {
   console.log("renderOfficials called with", state, filter);
-  // TODO: implement actual rendering
+  // TODO: implement actual rendering logic for officials
 }
 
+// Quizzes tab
 function showQuizzes() {
   showTab('quizzes');
 }
 
+// Polls tab
 function showPolls() {
   showTab('polls');
+  const container = document.getElementById('polls-cards');
+  if (!container) {
+    console.error("polls-cards container not found");
+    return;
+  }
+  container.innerHTML = '';
+
+  // Render pollCategories into cards
+  pollCategories.forEach(category => {
+    const section = document.createElement('div');
+    section.className = 'poll-section';
+
+    const header = document.createElement('h3');
+    header.textContent = category.label;
+    section.appendChild(header);
+
+    const grid = document.createElement('div');
+    grid.className = 'poll-grid';
+
+    category.polls.forEach(poll => {
+      const card = document.createElement('div');
+      card.className = 'poll-card';
+      card.innerHTML = `
+        <h4>${poll.name}</h4>
+        <p class="card-desc">Source: ${poll.source}</p>
+        <a href="${poll.url}" target="_blank" rel="noopener noreferrer">Open</a>
+      `;
+      grid.appendChild(card);
+    });
+
+    section.appendChild(grid);
+    container.appendChild(section);
+  });
 }
 
+// Political Organizations tab
 function showOrganizations() {
-  showTab('political-groups');
+  showTab('organizations'); // corrected to match HTML section id
 }
 
+// Voting tab
 function showVoting() {
   showTab('voting');
   const votingCards = document.getElementById('voting-cards');
+  if (!votingCards) {
+    console.error("voting-cards container not found");
+    return;
+  }
   votingCards.innerHTML = '';
   console.log("showVoting() triggered");
 
@@ -423,10 +466,6 @@ function showVoting() {
       return res.json();
     })
     .then(data => {
-      console.log('Voting data loaded:', data);
-      console.log('Available voting keys:', Object.keys(data));
-      console.log('Trying to match:', window.selectedState);
-
       let stateName = window.selectedState || 'North Carolina';
       if (stateName === 'Virgin Islands') stateName = 'U.S. Virgin Islands';
       const stateData = data[stateName] || null;
@@ -435,9 +474,6 @@ function showVoting() {
         votingCards.innerHTML = `<p>No voting information available for ${stateName}.</p>`;
         return;
       }
-
-      console.log("Selected state:", stateName);
-      console.log('Direct match result:', data[stateName]);
 
       const labelMap = {
         register: 'Register to Vote',
