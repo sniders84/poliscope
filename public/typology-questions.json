@@ -1,17 +1,12 @@
-{
-  "Economy": [
-    { "q": "Raise minimum wage?", "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"], "weights": { "progressive": 2 } }
-  ],
-  "SocialIssues": [
-    { "q": "Legalize abortion?", "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"], "weights": { "liberal": 2 } }
-  ],
-  "ForeignPolicy": [
-    { "q": "Prioritize diplomacy?", "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"], "weights": { "progressive": 2 } }
-  ],
-  "Governance": [
-    { "q": "Allow unlimited corporate donations?", "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"], "weights": { "libertarian": 2 } }
-  ],
-  "EnergyEnvironment": [
-    { "q": "Invest in renewable energy?", "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"], "weights": { "socialist": 2 } }
-  ]
-}
+[
+  {
+    "q": "Government should ensure healthcare for all, even if it means higher taxes.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "progressive": 2, "liberal": 1, "socialist": 2, "conservative": -1, "libertarian": -2 }
+  },
+  {
+    "q": "Business regulation usually does more harm than good.",
+    "options": ["Strongly Agree","Agree","Neutral","Disagree","Strongly Disagree"],
+    "weights": { "conservative": 2, "libertarian": 2, "progressive": -1, "socialist": -2 }
+  }
+]
