@@ -1,0 +1,52 @@
+[
+  {
+    "q": "Government should ensure healthcare for all, even if it means higher taxes.",
+    "options": ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
+    "weights": { "progressive": 2, "liberal": 1, "socialist": 2, "conservative": -1, "libertarian": -2 }
+  },
+  {
+    "q": "Business regulation usually does more harm than good.",
+    "options": ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
+    "weights": { "conservative": 2, "libertarian": 2, "progressive": -1, "socialist": -2 }
+  },
+  {
+    "q": "Immigration strengthens the country by bringing in new ideas and workers.",
+    "options": ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
+    "weights": { "progressive": 2, "liberal": 2, "socialist": 1, "populist": -2, "conservative": -1 }
+  },
+  {
+    "q": "Religion should play a major role in guiding laws and policies.",
+    "options": ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
+    "weights": { "conservative": 2, "populist": 2, "libertarian": -2, "progressive": -1 }
+  },
+  {
+    "q": "The U.S. should prioritize diplomacy over military strength in foreign policy.",
+    "options": ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
+    "weights": { "progressive": 2, "liberal": 1, "socialist": 1, "conservative": -1, "populist": -2 }
+  },
+  {
+    "q": "Wealth should be heavily taxed to reduce inequality.",
+    "options": ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
+    "weights": { "socialist": 2, "progressive": 1, "liberal": 1, "conservative": -2, "libertarian": -2 }
+  },
+  {
+    "q": "Patriotism should be emphasized in schools.",
+    "options": ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
+    "weights": { "conservative": 2, "populist": 2, "progressive": -1, "liberal": -1 }
+  },
+  {
+    "q": "Abortion should be legal in most cases.",
+    "options": ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
+    "weights": { "progressive": 2, "liberal": 2, "socialist": 1, "conservative": -2, "populist": -1 }
+  },
+  {
+    "q": "Government should stay out of people’s personal lives (marriage, lifestyle, etc.).",
+    "options": ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
+    "weights": { "libertarian": 2, "liberal": 1, "progressive": 1, "conservative": -1, "populist": -1 }
+  },
+  {
+    "q": "The U.S. should protect domestic industries with tariffs and trade restrictions.",
+    "options": ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
+    "weights": { "populist": 2, "conservative": 1, "liberal": -1, "progressive": -1, "libertarian": -2 }
+  }
+]
