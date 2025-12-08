@@ -1041,12 +1041,18 @@ function initTypologyQuiz() {
   currentTypologyQuestion = 0;
   scoreMap = { progressive:0, liberal:0, conservative:0, libertarian:0, socialist:0, populist:0, centrist:0 };
 
-  fetch('typology-questions.json') // adjust path if needed
+  fetch('typology-questions.json')
     .then(res => res.json())
     .then(data => {
       typologyQuestions = data;
       console.log("Loaded typology questions:", typologyQuestions);
-      renderTypologyQuestion();
+
+      // ✅ Only render after questions are loaded
+      if (typologyQuestions && typologyQuestions.length > 0) {
+        renderTypologyQuestion();
+      } else {
+        document.getElementById("typology-question").textContent = "No questions found.";
+      }
     })
     .catch(err => {
       console.error("Error loading typology-questions.json:", err);
