@@ -821,9 +821,10 @@ function showCivic() {
 
       federalBlock.appendChild(federalGrid);
 
-      // Append all blocks to the section
+          // Append all blocks to the section in correct order
       section.appendChild(stateBlock);
       section.appendChild(ngaBlock);
+      section.appendChild(nlgaBlock);   // <-- add NLGA here
       section.appendChild(federalBlock);
 
       // Render into the calendar container
@@ -833,6 +834,8 @@ function showCivic() {
       calendar.innerHTML = '<p>Error loading civic links.</p>';
       console.error(err);
     });
+}
+
 }// === CABINET MODAL LOGIC ===
 function showCabinet() {
   const list = document.getElementById('cabinetList');
