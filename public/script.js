@@ -1092,7 +1092,7 @@ document.getElementById("quiz-next").onclick = () => {
     document.getElementById("quiz-next").style.display = "none";
   }
 };
-// === Political Typology Quiz Logic (updated) ===
+// === Political Typology Quiz Logic (schema uses "q") ===
 
 function openTypologyQuizModal() {
   const modal = document.getElementById('typologyQuizModal');
@@ -1169,10 +1169,10 @@ function renderTypologyQuestion() {
       `${((currentTypologyQuestion + 1) / typologyQuestions.length) * 100}%`;
   }
 
-  // Question
+  // Question (use q.q from schema)
   const questionEl = document.getElementById("typology-question");
   if (questionEl) {
-    questionEl.innerHTML = `<h3>${q.question}</h3>`;
+    questionEl.innerHTML = `<h3>${q.q}</h3>`;
   }
 
   // Options
@@ -1205,7 +1205,7 @@ document.getElementById("typology-submit").onclick = () => {
   const q = typologyQuestions[currentTypologyQuestion];
   const selectedIndex = parseInt(selected.value, 10);
 
-  // Apply weights
+  // Apply weights from schema
   for (const [label, weight] of Object.entries(q.weights)) {
     if (selectedIndex === 0) scoreMap[label] += weight;
     else if (selectedIndex === 1) scoreMap[label] += weight / 2;
