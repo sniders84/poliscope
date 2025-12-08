@@ -1037,29 +1037,60 @@ let typologyQuestions = [];
 let currentTypologyQuestion = 0;
 let scoreMap = {};
 
+// === Initialize Typology Quiz ===
 function initTypologyQuiz() {
-  currentTypologyQuestion = 0;
-  scoreMap = { progressive:0, liberal:0, conservative:0, libertarian:0, socialist:0, populist:0, centrist:0 };
+  // Defensive UI reset
+  const resultBox = document.getElementById("typology-result");
+  const submitBtn = document.getElementById("typology-submit");
+  const qEl = document.getElementById("typology-question");
+  const optsEl = document.getElementById("typology-options");
+  const fbEl = document.getElementById("typology-feedback");
+  const progEl = document.getElementById("typology-progress");
+  const progFillEl = document.getElementById("typology-progress-fill");
 
-  fetch('typology-questions.json')
+  if (resultBox) {
+    resultBox.style.display = "none";
+    resultBox.innerHTML = "";
+  }
+  if (submitBtn) submitBtn.style.display = "inline-block";
+  if (qEl) qEl.innerHTML = "";
+  if (optsEl) optsEl.innerHTML = "";
+  if (fbEl) fbEl.textContent = "";
+  if (progEl) progEl.textContent = "";
+  if (progFillEl) progFillEl.style.width = "0%";
+
+  // Reset state
+  currentTypologyQuestion = 0;
+  scoreMap = {
+    progressive: 0,
+    liberal: 0,
+    conservative: 0,
+    libertarian: 0,
+    socialist: 0,
+    populist: 0,
+    centrist: 0
+  };
+
+  // Load questions
+  fetch("typology-questions.json")
     .then(res => res.json())
     .then(data => {
       typologyQuestions = data;
       console.log("Loaded typology questions:", typologyQuestions);
 
-      // ✅ Only render after questions are loaded
       if (typologyQuestions && typologyQuestions.length > 0) {
         renderTypologyQuestion();
       } else {
-        document.getElementById("typology-question").textContent = "No questions found.";
+        if (qEl) qEl.textContent = "No questions found.";
       }
     })
     .catch(err => {
       console.error("Error loading typology-questions.json:", err);
-      document.getElementById("typology-question").textContent = "Failed to load questions.";
+      if (qEl) qEl.textContent = "Failed to load questions.";
     });
 }
 
+// === Render a question ===
 function renderTypologyQuestion() {
   console.log("renderTypologyQuestion called");
   console.log("Current index:", currentTypologyQuestion);
@@ -1083,7 +1114,7 @@ function renderTypologyQuestion() {
   document.getElementById("typology-question").innerHTML = `<h3>${q.q}</h3>`;
 
   // Options
-  document.getElementById("typology-options").innerHTML = q.options.map((opt,i) =>
+  document.getElementById("typology-options").innerHTML = q.options.map((opt, i) =>
     `<label><input type="radio" name="typologyOpt" value="${i}"> ${opt}</label><br>`
   ).join("");
 
@@ -1163,20 +1194,81 @@ function showTypologyResult() {
        <button id="typology-restart" class="quiz-btn">Restart Quiz</button>
      </div>`;
 
-  // Attach restart handler
-document.getElementById("typology-restart").onclick = () => {
+  // === Results renderer ===
+function showTypologyResult() {
+  const topLabel = Object.keys(scoreMap).reduce((a, b) => scoreMap[a] > scoreMap[b] ? a : b);
+
+  const emojiMap = {
+    progressive: "🔥",
+    liberal: "📘",
+    conservative: "🛡️",
+    libertarian: "🗽",
+    socialist: "✊",
+    populist: "🇺🇸",
+    centrist: "⚖️"
+  };
+
+  const descriptions = {
+    progressive: "You believe government should actively reshape society to ensure fairness and equality. Progressives emphasize social justice, environmental protection, and systemic reform, often supporting bold policies to reduce inequality.",
+    liberal: "You value individual rights, pluralism, and moderate government intervention. Liberals tend to support civil liberties, democratic institutions, and a balance between free markets and social programs.",
+    conservative: "You emphasize tradition, limited government, and free markets. Conservatives often prioritize cultural continuity, fiscal restraint, and policies that preserve established institutions.",
+    libertarian: "You prize freedom above all — both economic and personal. Libertarians advocate minimal government, strong property rights, and maximum individual autonomy in social and economic life.",
+    socialist: "You believe collective action and redistribution are essential to justice. Socialists emphasize worker rights, public ownership of key industries, and reducing wealth disparities through systemic change.",
+    populist: "You emphasize cultural identity, patriotism, and government protectionism. Populists often frame politics as a struggle between ordinary people and elites, advocating strong national sovereignty.",
+    centrist: "You balance positions across the spectrum, preferring compromise and pragmatism. Centrists value stability, incremental reform, and coalition‑building to bridge divides."
+  };
+
+  // Clear quiz UI
+  const qEl = document.getElementById("typology-question");
+  const optsEl = document.getElementById("typology-options");
+  const progEl = document.getElementById("typology-progress");
+  const progFillEl = document.getElementById("typology-progress-fill");
+  const fbEl = document.getElementById("typology-feedback");
+  const submitBtn = document.getElementById("typology-submit");
+
+  if (qEl) qEl.innerHTML = "";
+  if (optsEl) optsEl.innerHTML = "";
+  if (progEl) progEl.textContent = "";
+  if (progFillEl) progFillEl.style.width = "100%";
+  if (fbEl) fbEl.textContent = "";
+  if (submitBtn) submitBtn.style.display = "none";
+
+  // Show result
   const resultBox = document.getElementById("typology-result");
-  resultBox.style.display = "none";   // hide results section
-  resultBox.innerHTML = "";           // clear its contents
+  resultBox.style.display = "block";
+  resultBox.innerHTML =
+    `<div class="typology-badge badge-${topLabel}">${emojiMap[topLabel]} ${topLabel.toUpperCase()}</div>
+     <h2>Your Typology: ${topLabel}</h2>
+     <p>${descriptions[topLabel]}</p>
+     <div class="quiz-controls">
+       <button id="typology-restart" class="quiz-btn">Restart Quiz</button>
+     </div>`;
 
-  // Reset quiz state
-  currentTypologyQuestion = 0;
-  scoreMap = { progressive:0, liberal:0, conservative:0, libertarian:0, socialist:0, populist:0, centrist:0 };
+  // Attach restart handler (safe reset + re-init)
+  const restartBtn = document.getElementById("typology-restart");
+  restartBtn.onclick = () => {
+    // Hide and clear results
+    resultBox.style.display = "none";
+    resultBox.innerHTML = "";
 
-  // Restart quiz
-  initTypologyQuiz();
-};
+    // Reset state
+    currentTypologyQuestion = 0;
+    scoreMap = { progressive:0, liberal:0, conservative:0, libertarian:0, socialist:0, populist:0, centrist:0 };
 
+    // Restore quiz controls visibility
+    if (submitBtn) submitBtn.style.display = "inline-block";
+
+    // Clear any selection/feedback
+    if (qEl) qEl.innerHTML = "";
+    if (optsEl) optsEl.innerHTML = "";
+    if (fbEl) fbEl.textContent = "";
+    if (progEl) progEl.textContent = "";
+    if (progFillEl) progFillEl.style.width = "0%";
+
+    // Re-init (fetch + render first question after load)
+    initTypologyQuiz();
+  };
+}
 // === POLLS TAB ===
 function showPolls() {
   showTab('polls');
