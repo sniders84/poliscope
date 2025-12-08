@@ -1036,34 +1036,24 @@ function getDailyQuestions() {
 }
 
 function renderCivicsQuestion() {
-  if (!quizQuestions || quizQuestions.length === 0) {
-    const qEl = document.getElementById("quiz-question");
-    if (qEl) qEl.textContent = "No questions loaded.";
-    return;
-  }
-
   const q = quizQuestions[currentQuestion];
 
-  // Progress
   document.getElementById("quiz-progress").textContent =
     `Question ${currentQuestion + 1} of ${quizQuestions.length}`;
   document.getElementById("quiz-progress-fill").style.width =
     `${((currentQuestion + 1) / quizQuestions.length) * 100}%`;
 
-  // Question
   document.getElementById("quiz-question").innerHTML = `<h3>${q.q}</h3>`;
 
-  // Options
+  // IMPORTANT: name must match submit handler
   document.getElementById("quiz-options").innerHTML = q.options.map((opt,i) =>
     `<label><input type="radio" name="civicsOpt" value="${i}"> ${opt}</label><br>`
   ).join("");
 
-  // Reset feedback
   document.getElementById("quiz-feedback").textContent = "";
   document.getElementById("quiz-submit").style.display = "inline-block";
 }
 
-// === Submit button handler ===
 document.getElementById("quiz-submit").onclick = () => {
   const selected = document.querySelector('input[name="civicsOpt"]:checked');
   if (!selected) {
@@ -1085,7 +1075,7 @@ document.getElementById("quiz-submit").onclick = () => {
     feedbackEl.innerHTML = `❌ Incorrect. Correct answer: ${correctText}<br><small>${q.explanation || ""}</small>`;
   }
 
-  // Immediately advance after short delay
+  // Auto‑advance after short delay
   setTimeout(() => {
     currentQuestion++;
     if (currentQuestion < quizQuestions.length) {
@@ -1093,7 +1083,7 @@ document.getElementById("quiz-submit").onclick = () => {
     } else {
       showCivicsResult();
     }
-  }, 1000); // 1s pause so user sees feedback
+  }, 1000);
 };
 
 // === Results renderer ===
