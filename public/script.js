@@ -778,6 +778,21 @@ function showCivic() {
         federalGrid.appendChild(card);
       });
 
+      federalBlock.appendChild(federalGrid);
+
+      // Append all blocks to section
+      section.appendChild(stateBlock);
+      section.appendChild(ngaBlock);
+      section.appendChild(federalBlock);
+      calendar.appendChild(section);
+    })
+    .catch(err => {
+      console.error("Error loading state-links.json", err);
+      const msg = document.createElement('p');
+      msg.textContent = "Failed to load state links.";
+      calendar.appendChild(msg);
+    });
+}
       // Cabinet card
       const cabinetCard = document.createElement('div');
       cabinetCard.className = 'link-card';
