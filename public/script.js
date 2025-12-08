@@ -821,32 +821,6 @@ function showCivic() {
 
       federalBlock.appendChild(federalGrid);
 
-      // Append all blocks to the section in order
-      section.appendChild(stateBlock);
-      section.appendChild(ngaBlock);
-      section.appendChild(nlgaBlock);
-      section.appendChild(federalBlock);
-
-      // Render into the calendar container
-      calendar.appendChild(section);
-    })
-    .catch(err => {
-      calendar.innerHTML = '<p>Error loading civic links.</p>';
-      console.error(err);
-    });
-}
-      // Cabinet card
-      const cabinetCard = document.createElement('div');
-      cabinetCard.className = 'link-card';
-      cabinetCard.setAttribute('onclick', 'showCabinet()');
-      cabinetCard.innerHTML = `
-        <h4>Cabinet</h4>
-        <p class="card-desc">View members of the President's Cabinet.</p>
-      `;
-      federalGrid.appendChild(cabinetCard);
-
-      federalBlock.appendChild(federalGrid);
-
       // Append all blocks to the section
       section.appendChild(stateBlock);
       section.appendChild(ngaBlock);
