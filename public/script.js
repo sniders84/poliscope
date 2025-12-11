@@ -907,11 +907,13 @@ function renderCivicsQuestion() {
 }
 
 // === Evaluate selection ===
+// === Evaluate selection with explanations and multi-select support ===
 function checkCivicsAnswer() {
   const q = civicsQuestions[currentQuestionIndex];
   const feedback = document.getElementById('quiz-feedback');
   const nextBtn = document.getElementById('quiz-next');
 
+  // Scope to civics modal options
   const optionsRoot = document.querySelector('#civicsQuizModal #quiz-options');
   const selected = Array.from(optionsRoot.querySelectorAll('input[name="civics-choice"]'))
     .filter(el => el.checked)
