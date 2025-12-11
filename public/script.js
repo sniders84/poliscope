@@ -859,7 +859,9 @@ function checkCivicsAnswer() {
   const feedback = document.getElementById('quiz-feedback');
   const nextBtn = document.getElementById('quiz-next');
 
-  const selected = Array.from(document.querySelectorAll('input[name="civics-choice"]'))
+  // Scope selection to the civics modal to avoid collisions with other modals
+  const optionsRoot = document.querySelector('#civicsQuizModal #quiz-options');
+  const selected = Array.from(optionsRoot.querySelectorAll('input[name="civics-choice"]'))
     .filter(el => el.checked)
     .map(el => el.value);
 
