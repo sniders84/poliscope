@@ -758,52 +758,159 @@ function openUSCISTestModal(version = "2008") {
     });
 }
 
+// === Render a teaching-first civics question (MC + multi-select with explanations) ===
 function renderCivicsQuestion() {
   if (!Array.isArray(civicsQuestions) || civicsQuestions.length === 0) return;
 
   const q = civicsQuestions[currentQuestionIndex];
-  document.getElementById('quiz-question').textContent = q.question;
-
+  const questionEl = document.getElementById('quiz-question');
   const optionsDiv = document.getElementById('quiz-options');
-  optionsDiv.innerHTML = '';
+  const feedback = document.getElementById('quiz-feedback');
+  const nextBtn = document.getElementById('quiz-next');
 
-  // Render each possible answer as a button
-  q.answers.forEach((opt) => {
-    const btn = document.createElement('button');
-    btn.className = 'quiz-option';
-    btn.textContent = opt;
-    btn.addEventListener('click', () => checkCivicsAnswer(opt, q));
-    optionsDiv.appendChild(btn);
+  questionEl.textContent = q.question;
+  optionsDiv.innerHTML = '';
+  feedback.textContent = '';
+  nextBtn.style.display = 'none';
+
+  // 1) Build choices
+  // If q.choices exists, use it. Otherwise, build choices from q.answers (corrects) + simple distractors.
+  // Distractor strategy: include a few generic civics terms that are plausible but wrong (safe baseline).
+  // You can later provide explicit q.choices in JSON for tighter control.
+  const genericDistractors = [
+    "The Declaration of Independence",
+    "The Articles of Confederation",
+    "The Bill of Rights",
+    "State constitution",
+    "Governor",
+    "The Supreme Court",
+    "Congress",
+    "The Cabinet",
+    "Vice President",
+    "John Adams"
+  ];
+
+  let choices = Array.isArray(q.choices) && q.choices.length
+    ? [...q.choices]
+    : [...q.answers];
+
+  // Ensure we have at least 4 options for single-answer questions
+  if (q.type === "open-response" && choices.length < 4) {
+    // Add unique distractors not already present
+    for (const d of genericDistractors) {
+      if (choices.length >= 4) break;
+      if (!choices.includes(d) && !q.answers.includes(d)) {
+        choices.push(d);
+      }
+    }
+  }
+
+  // Shuffle choices for fairness
+  choices = shuffleArray(choices);
+
+  // 2) Render inputs: radio for single-answer, checkbox for multi-answer
+  const isMulti = q.type === "multi-select";
+  choices.forEach((opt, idx) => {
+    const id = `opt-${currentQuestionIndex}-${idx}`;
+    const wrapper = document.createElement('div');
+    wrapper.className = 'quiz-choice';
+
+    const input = document.createElement('input');
+    input.type = isMulti ? 'checkbox' : 'radio';
+    input.name = 'civics-choice';
+    input.id = id;
+    input.value = opt;
+
+    const label = document.createElement('label');
+    label.setAttribute('for', id);
+    label.textContent = opt;
+
+    wrapper.appendChild(input);
+    wrapper.appendChild(label);
+    optionsDiv.appendChild(wrapper);
   });
 
+  // 3) Add a Submit button (per-question)
+  const submitBtn = document.createElement('button');
+  submitBtn.className = 'card-button';
+  submitBtn.textContent = 'Submit';
+  submitBtn.onclick = () => evaluateCivicsSelection(q, choices, isMulti);
+  optionsDiv.appendChild(submitBtn);
+
+  // Progress
   const progress = ((currentQuestionIndex + 1) / civicsQuestions.length) * 100;
   document.getElementById('quiz-progress-fill').style.width = `${progress}%`;
   document.getElementById('quiz-progress').textContent =
     `Question ${currentQuestionIndex + 1} of ${civicsQuestions.length}`;
 }
 
-function checkCivicsAnswer(selectedText, q) {
+// === Evaluate selection with explanations and multi-select support ===
+function evaluateCivicsSelection(q, choices, isMulti) {
   const feedback = document.getElementById('quiz-feedback');
+  const nextBtn = document.getElementById('quiz-next');
 
-  let isCorrect = false;
-  if (q.type === "open-response") {
-    // only one correct answer
-    isCorrect = selectedText === q.answers[0];
-  } else if (q.type === "multi-select") {
-    // any listed answer is acceptable
-    isCorrect = q.answers.includes(selectedText);
+  // Collect selected values
+  const selected = Array.from(document.querySelectorAll('input[name="civics-choice"]'))
+    .filter(el => el.checked)
+    .map(el => el.value);
+
+  if (selected.length === 0) {
+    feedback.textContent = "Please select at least one option.";
+    feedback.style.color = "orange";
+    return;
   }
 
+  // Determine correctness:
+  // - For single-answer: correct if exactly one selected and it matches the sole correct answer.
+  // - For multi-select: correct if the set of selected equals the set of q.answers (no extras, none missing).
+  let isCorrect = false;
+  if (!isMulti) {
+    isCorrect = (selected.length === 1) && (selected[0] === q.answers[0]);
+  } else {
+    const selectedSet = new Set(selected);
+    const correctSet = new Set(q.answers);
+    if (selectedSet.size === correctSet.size) {
+      isCorrect = [...selectedSet].every(v => correctSet.has(v));
+    } else {
+      isCorrect = false;
+    }
+  }
+
+  // Teach-first feedback
   if (isCorrect) {
     civicsScore++;
-    feedback.textContent = "Correct!";
     feedback.style.color = "limegreen";
+    feedback.textContent = "Correct.";
   } else {
-    feedback.textContent = `Incorrect. Acceptable answers: ${q.answers.join(", ")}`;
     feedback.style.color = "red";
+    const correctList = q.answers.join(", ");
+    // Show which selections were incorrect or missing
+    const incorrectSelections = selected.filter(s => !q.answers.includes(s));
+    const missingSelections = q.answers.filter(a => !selected.includes(a));
+
+    let detail = `Incorrect. Acceptable answers: ${correctList}.`;
+    if (incorrectSelections.length) {
+      detail += ` Your incorrect selections: ${incorrectSelections.join(", ")}.`;
+    }
+    if (missingSelections.length) {
+      detail += ` Missing required selections: ${missingSelections.join(", ")}.`;
+    }
+    feedback.textContent = detail;
   }
 
-  const nextBtn = document.getElementById('quiz-next');
+  // Explanation support: if q.explanation exists, show it
+  if (q.explanation) {
+    const expl = document.createElement('div');
+    expl.className = 'quiz-explanation';
+    expl.textContent = q.explanation;
+    // Avoid duplicate explanation nodes on repeated submits
+    const optionsDiv = document.getElementById('quiz-options');
+    const existing = optionsDiv.querySelector('.quiz-explanation');
+    if (existing) existing.remove();
+    optionsDiv.appendChild(expl);
+  }
+
+  // Show Next button
   nextBtn.style.display = 'inline-block';
   nextBtn.onclick = () => {
     currentQuestionIndex++;
@@ -819,6 +926,16 @@ function checkCivicsAnswer(selectedText, q) {
       nextBtn.style.display = 'none';
     }
   };
+}
+
+// === Utility: Fisher–Yates shuffle ===
+function shuffleArray(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
 }
 
 // === Helper: render multilingual link row (expanded) ===
