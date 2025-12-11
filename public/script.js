@@ -350,9 +350,11 @@ function showQuizzes() {
 function showPolls() {
   showTab('polls');
 
+  // === Polls Section (President only) ===
   const pollsContainer = document.getElementById('polls-cards');
   if (pollsContainer) {
     pollsContainer.innerHTML = '';
+
     pollCategories.forEach(category => {
       const section = document.createElement('div');
       section.className = 'poll-section';
@@ -380,7 +382,7 @@ function showPolls() {
     });
   }
 
-  // === Elections Section ===
+  // === Elections Section (Ballotpedia-driven) ===
   const electionsContainer = document.getElementById('elections-cards');
   if (electionsContainer) {
     electionsContainer.innerHTML = '';
@@ -392,7 +394,7 @@ function showPolls() {
       <h3>Upcoming Elections</h3>
       <ul>
         <li><a href="https://ballotpedia.org/Elections_calendar" target="_blank">Ballotpedia – Full Elections Calendar</a></li>
-        <li><a href="https://www.fec.gov/resources/cms-content/documents/fec-election-dates-2025.pdf" target="_blank">FEC – Federal Election Dates</a></li>
+        <li><a href="https://ballotpedia.org/State_elections,_2025" target="_blank">Ballotpedia – State Elections 2025</a></li>
       </ul>
     `;
     electionsContainer.appendChild(upcomingBlock);
@@ -403,8 +405,8 @@ function showPolls() {
     resultsBlock.innerHTML = `
       <h3>Recent Results</h3>
       <ul>
-        <li><a href="https://decisiondeskhq.com/results/" target="_blank">Decision Desk HQ – Results Hub</a></li>
-        <li><a href="https://apnews.com/hub/election-results" target="_blank">Associated Press – Election Results</a></li>
+        <li><a href="https://ballotpedia.org/Election_results,_2025" target="_blank">Ballotpedia – 2025 Election Results</a></li>
+        <li><a href="https://ballotpedia.org/Election_results,_2024" target="_blank">Ballotpedia – 2024 Election Results</a></li>
       </ul>
     `;
     electionsContainer.appendChild(resultsBlock);
@@ -415,8 +417,9 @@ function showPolls() {
     competitiveBlock.innerHTML = `
       <h3>Most Competitive Races</h3>
       <ul>
-        <li><a href="https://www.cookpolitical.com/ratings" target="_blank">Cook Political Report – Race Ratings</a></li>
-        <li><a href="https://centerforpolitics.org/crystalball/" target="_blank">Sabato’s Crystal Ball – Battleground Analysis</a></li>
+        <li><a href="https://ballotpedia.org/United_States_Senate_elections,_2026#Battlegrounds" target="_blank">Ballotpedia – 2026 Senate Battlegrounds</a></li>
+        <li><a href="https://ballotpedia.org/United_States_House_of_Representatives_elections,_2026#Battlegrounds" target="_blank">Ballotpedia – 2026 House Battlegrounds</a></li>
+        <li><a href="https://ballotpedia.org/Gubernatorial_elections,_2025" target="_blank">Ballotpedia – 2025 Governor Elections</a></li>
       </ul>
     `;
     electionsContainer.appendChild(competitiveBlock);
