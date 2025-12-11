@@ -8598,3 +8598,27 @@ nav .tab.active {
   border-bottom: 2px solid var(--card-border); /* optional divider line */
   padding-bottom: 20px;
 }
+/* === FINAL Polls Grid Override === */
+.poll-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)) !important;
+  gap: 20px !important;
+  margin-top: 20px;
+  margin-bottom: 40px; /* separation from elections */
+}
+
+.poll-card {
+  background-color: var(--card-bg);
+  color: var(--text);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.poll-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 2px var(--accent-light), 0 2px 6px rgba(0,0,0,0.5);
+}
