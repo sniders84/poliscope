@@ -333,35 +333,52 @@ const pollCategories = [
     polls: [
       { name: "Ballotpedia – Presidential Approval Index", source: "Ballotpedia", url: "https://ballotpedia.org/Ballotpedia%27s_Polling_Index:_Presidential_approval_rating" },
       { name: "Rasmussen – Daily Tracking Poll", source: "Rasmussen", url: "https://www.rasmussenreports.com/public_content/current_events/politics/daily_presidential_tracking_poll" },
-      { name: "AP-NORC – Polling Tracker", source: "AP-NORC", url: "https://apnews.com/projects/polling-tracker/" }
+      { name: "AP-NORC – Polling Tracker", source: "AP-NORC", url: "https://apnews.com/projects/polling-tracker/" },
+      { name: "Reuters/Ipsos – Latest Approval Polls", source: "Reuters/Ipsos", url: "https://www.reuters.com" }
     ]
   },
   {
     label: "Governor",
     polls: [
-      { name: "270toWin – Governor Polls", source: "270toWin", url: "https://www.270towin.com/polls/latest-2026-governor-election-polls/index.php" }
+      { name: "270toWin – Governor Polls", source: "270toWin", url: "https://www.270towin.com/polls/latest-2026-governor-election-polls/" },
+      { name: "RealClearPolling – Governor Polls", source: "RCP", url: "https://www.realclearpolling.com/latest-polls/governor" },
+      { name: "Race to the WH – Governor Polls", source: "Race to the WH", url: "https://www.racetothewh.com/governor/26polls" },
+      { name: "Emerson College – State Polls", source: "Emerson", url: "https://www.emersonpolling.com" }
     ]
   },
   {
     label: "Senate",
     polls: [
-      { name: "270toWin – Senate Polls", source: "270toWin", url: "https://www.270towin.com/polls/latest-2026-senate-election-polls/" }
+      { name: "270toWin – Senate Polls", source: "270toWin", url: "https://www.270toWin.com/polls/latest-2026-senate-election-polls/" },
+      { name: "RealClearPolling – Senate Polls", source: "RCP", url: "https://www.realclearpolling.com/latest-polls/senate" },
+      { name: "Race to the WH – Senate Polls", source: "Race to the WH", url: "https://www.racetothewh.com/senate/26polls" },
+      { name: "Cook Political Report – Senate Ratings", source: "Cook Political", url: "https://www.cookpolitical.com/ratings/senate-race-ratings" }
     ]
   },
   {
     label: "House",
     polls: [
-      { name: "RealClearPolling – House Polls", source: "RCP", url: "https://www.realclearpolling.com/latest-polls/house" }
+      { name: "270toWin – House Polls", source: "270toWin", url: "https://www.270toWin.com/polls/latest-2026-house-election-polls/index.php" },
+      { name: "RealClearPolling – House Polls", source: "RCP", url: "https://www.realclearpolling.com/latest-polls/house" },
+      { name: "Race to the WH – House Polls", source: "Race to the WH", url: "https://www.racetothewh.com/house/polls/24" },
+      { name: "Sabato’s Crystal Ball – House Ratings", source: "Sabato", url: "https://centerforpolitics.org/crystalball/2026-house/" }
     ]
   },
-  {
-    label: "Mayor",
-    polls: [
-      { name: "Ballotpedia – Municipal Elections", source: "Ballotpedia", url: "https://ballotpedia.org/Municipal_elections" },
-      { name: "RealClearPolling – Mayoral Polls", source: "RCP", url: "https://www.realclearpolling.com/latest-polls" },
-      { name: "Race to the WH – Mayoral Forecasts", source: "Race to the WH", url: "https://www.racetothewh.com/" }
-    ]
-  }
+{
+  label: "Mayor",
+  polls: [
+    { 
+      name: "Ballotpedia – Local Elections Lookup", 
+      source: "Ballotpedia", 
+      url: "https://ballotpedia.org/Sample_Ballot_Lookup" 
+    },
+    { 
+      name: "Ballotpedia – How to Find Local Elections", 
+      source: "Ballotpedia", 
+      url: "https://ballotpedia.org/How_to_find_information_about_local_elections" 
+    }
+  ]
+}
 ];
 
 // === Polls tab ===
