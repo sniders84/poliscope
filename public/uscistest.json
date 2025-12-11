@@ -1,0 +1,20 @@
+[
+  {
+    "id": "q1",
+    "question": "Name one branch of the U.S. government.",
+    "answers": ["Legislative", "Executive", "Judicial"],
+    "type": "multi-select"
+  },
+  {
+    "id": "q2",
+    "question": "Who is the President of the United States?",
+    "answers": ["Donald Trump"],
+    "type": "open-response"
+  },
+  {
+    "id": "q3",
+    "question": "What is one responsibility that is only for U.S. citizens?",
+    "answers": ["Serve on a jury", "Vote in a federal election"],
+    "type": "multi-select"
+  }
+]
