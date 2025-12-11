@@ -767,11 +767,12 @@ function renderCivicsQuestion() {
   const optionsDiv = document.getElementById('quiz-options');
   optionsDiv.innerHTML = '';
 
-  q.answers.forEach((opt, idx) => {
+  // Render each possible answer as a button
+  q.answers.forEach((opt) => {
     const btn = document.createElement('button');
     btn.className = 'quiz-option';
     btn.textContent = opt;
-    btn.addEventListener('click', () => checkCivicsAnswer(idx));
+    btn.addEventListener('click', () => checkCivicsAnswer(opt, q));
     optionsDiv.appendChild(btn);
   });
 
@@ -781,16 +782,24 @@ function renderCivicsQuestion() {
     `Question ${currentQuestionIndex + 1} of ${civicsQuestions.length}`;
 }
 
-function checkCivicsAnswer(selectedIndex) {
-  const q = civicsQuestions[currentQuestionIndex];
+function checkCivicsAnswer(selectedText, q) {
   const feedback = document.getElementById('quiz-feedback');
 
-  if (selectedIndex === q.answer) {
+  let isCorrect = false;
+  if (q.type === "open-response") {
+    // only one correct answer
+    isCorrect = selectedText === q.answers[0];
+  } else if (q.type === "multi-select") {
+    // any listed answer is acceptable
+    isCorrect = q.answers.includes(selectedText);
+  }
+
+  if (isCorrect) {
     civicsScore++;
     feedback.textContent = "Correct!";
     feedback.style.color = "limegreen";
   } else {
-    feedback.textContent = `Incorrect. Correct answer: ${q.answers[q.answer]}`;
+    feedback.textContent = `Incorrect. Acceptable answers: ${q.answers.join(", ")}`;
     feedback.style.color = "red";
   }
 
