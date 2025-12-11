@@ -543,8 +543,7 @@ function showCitizenship() {
 
     container.innerHTML = '';
 
-    const wrapper = document.createElement
-        const wrapper = document.createElement('div');
+    const wrapper = document.createElement('div');
     wrapper.className = 'resource-section';
 
     const header = document.createElement('h3');
