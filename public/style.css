@@ -8488,72 +8488,6 @@ nav .tab.active {
   background: #1565c0;       /* darker blue on hover */
   transform: translateY(-2px);
 }
-/* Elections Section Styling */
-.elections-block {
-  background-color: #333;       /* same dark background as poll cards */
-  padding: 16px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  color: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-}
-
-.elections-block h3 {
-  margin-top: 0;
-  margin-bottom: 12px;
-  font-size: 1.2rem;
-  color: #1e90ff;               /* bright blue headings for clarity */
-}
-
-.elections-block ul {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-}
-
-.elections-block li {
-  margin-bottom: 8px;
-}
-
-.elections-block a {
-  color: #fff;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.elections-block a:hover {
-  color: #1e90ff;               /* hover matches your site’s blue accent */
-}
-
-/* === FINAL Polls Grid Override === */
-.poll-grid {
-  display: grid !important;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)) !important;
-  gap: 20px !important;
-  margin-top: 20px;   /* spacing above polls grid */
-  margin-bottom: 40px; /* spacing below polls grid to separate from elections */
-}
-
-.poll-card {
-  background-color: var(--card-bg);
-  color: var(--text);
-  border: 1px solid var(--card-border);
-  border-radius: 10px;
-  padding: 16px;
-  text-align: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.poll-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 0 2px var(--accent-light), 0 2px 6px rgba(0,0,0,0.5);
-}
-
-.poll-card h4 {
-  font-size: 1rem;
-  margin: 0.5rem 0;
-}
 /* === Elections Section Styling === */
 .elections-block {
   background-color: var(--card-bg);
@@ -8562,6 +8496,7 @@ nav .tab.active {
   padding: 16px;
   margin-bottom: 20px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  color: var(--text);
 }
 
 .elections-block h3 {
@@ -8593,12 +8528,14 @@ nav .tab.active {
   color: var(--accent-light);
   text-decoration: underline;
 }
+
 #polls-cards {
   margin-bottom: 40px; /* pushes elections down */
   border-bottom: 2px solid var(--card-border); /* optional divider line */
   padding-bottom: 20px;
 }
-/* === FINAL Polls Grid Override === */
+
+/* === Polls Grid === */
 .poll-grid {
   display: grid !important;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)) !important;
@@ -8607,130 +8544,35 @@ nav .tab.active {
   margin-bottom: 40px; /* separation from elections */
 }
 
-.poll-card {
-  background-color: var(--card-bg);
-  color: var(--text);
-  border: 1px solid var(--card-border);
-  border-radius: 10px;
-  padding: 16px;
-  text-align: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.poll-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 0 2px var(--accent-light), 0 2px 6px rgba(0,0,0,0.5);
-}
-.poll-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 10px;
-  padding: 16px;
-  text-align: center;
-  color: var(--text);
-  text-decoration: none;   /* remove underline */
-  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  cursor: pointer;
-}
-.poll-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 0 2px var(--accent-light), 0 2px 6px rgba(0,0,0,0.5);
-}
-/* === Ballotpedia Lookup Bar Styling === */
-.lookup-controls {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 12px;
-}
-
-#ballot-lookup {
-  flex: 1;
-  padding: 12px 14px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-#ballot-lookup:focus {
-  outline: none;
-  border-color: #007bff; /* blue accent */
-  box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
-}
-
-#ballot-lookup-btn {
-  padding: 12px 18px;
-  background: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-#ballot-lookup-btn:hover {
-  background: #0056b3; /* darker blue on hover */
-}
-
-.lookup-tip {
-  margin-top: 8px;
-  font-size: 0.9rem;
-  color: #666;
-}
-/* === Poll Card Logo Styling === */
+/* === Poll Card Styling === */
 .poll-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   padding: 12px;
-  border: 1px solid #ddd;
+  border: 2px solid #2c2c2c;   /* dark gray border */
   border-radius: 8px;
-  background: #fff;
-  transition: box-shadow 0.2s ease;
+  background: #2c2c2c;         /* dark gray background */
+  color: #fff;                 /* white text for contrast */
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
 }
 
 .poll-card:hover {
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-}
-
-.poll-logo {
-  width: 100%;
-  margin-bottom: 10px;
-}
-
-.poll-logo img {
-  width: 100%;          /* stretch across full card width */
-  height: 60px;         /* fixed height for consistency */
-  object-fit: contain;  /* keep aspect ratio, no distortion */
-  display: block;
-}
-/* === Poll Card Styling with Dark Gray Background & Blue Hover === */
-.poll-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 12px;
-  border-radius: 8px;
-  background: #2c2c2c;        /* dark gray background */
-  color: #fff;                /* white text for contrast */
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-}
-
-.poll-card:hover {
-  background: #1e3a8a;        /* blue hover effect */
+  border-color: #1e90ff;       /* blue outline on hover */
   transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  box-shadow: 0 0 10px rgba(30,144,255,0.6); /* subtle blue glow */
 }
 
+.poll-card h4 {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+
+/* === Poll Card Logo Styling === */
 .poll-logo {
   width: 100%;
   margin-bottom: 10px;
@@ -8741,9 +8583,10 @@ nav .tab.active {
   height: 60px;         /* fixed height for consistency */
   object-fit: contain;  /* keep aspect ratio, no distortion */
   display: block;
-  background: #fff;     /* optional: white background behind logos */
+  background: #fff;     /* white background behind logos */
   border-radius: 6px 6px 0 0;
 }
+
 /* === Poll Section Headers === */
 .poll-section h3 {
   font-size: 1.6rem;          /* larger text */
@@ -8754,37 +8597,4 @@ nav .tab.active {
   margin-bottom: 12px;
   border-bottom: 2px solid #1e90ff; /* underline accent */
   padding-bottom: 4px;
-}
-/* === Poll Card Styling with Outline Hover === */
-.poll-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 12px;
-  border: 2px solid #2c2c2c;   /* dark gray border */
-  border-radius: 8px;
-  background: #2c2c2c;         /* dark gray background stays constant */
-  color: #fff;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-
-.poll-card:hover {
-  border-color: #1e90ff;       /* blue outline on hover */
-  transform: translateY(-3px);
-  box-shadow: 0 0 10px rgba(30,144,255,0.6); /* subtle blue glow */
-}
-
-.poll-logo {
-  width: 100%;
-  margin-bottom: 10px;
-}
-
-.poll-logo img {
-  width: 100%;
-  height: 60px;
-  object-fit: contain;
-  display: block;
-  background: #fff;
-  border-radius: 6px 6px 0 0;
 }
