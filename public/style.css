@@ -8884,3 +8884,39 @@ nav .tab.active {
   background: #1565c0;       /* darker blue on hover */
   transform: translateY(-2px);
 }
+/* Elections Section Styling */
+.elections-block {
+  background-color: #333;       /* same dark background as poll cards */
+  padding: 16px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.elections-block h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+  color: #1e90ff;               /* bright blue headings for clarity */
+}
+
+.elections-block ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.elections-block li {
+  margin-bottom: 8px;
+}
+
+.elections-block a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.elections-block a:hover {
+  color: #1e90ff;               /* hover matches your site’s blue accent */
+}
