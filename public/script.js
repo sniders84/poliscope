@@ -722,13 +722,13 @@ function showCitizenship() {
   });
 }
 
-// === USCIS Civics Test Launcher & Quiz Logic ===
+// === Civics Quiz Logic (Daily + Practice Tests) ===
 let civicsQuestions = [];
 let currentQuestionIndex = 0;
 let civicsScore = 0;
 
-// === USCIS / Daily Civics Quiz Launcher ===
-function openUSCISTestModal(version = "daily") {
+// === Daily Civics Quiz Launcher ===
+function openDailyQuizModal() {
   const modal = document.getElementById('civicsQuizModal');
   if (!modal) {
     console.error("Civics Quiz Modal not found.");
@@ -744,39 +744,92 @@ function openUSCISTestModal(version = "daily") {
   document.getElementById('quiz-feedback').textContent = '';
   document.getElementById('quiz-score').textContent = '';
 
-  // Update modal title/description dynamically
-  const titleEl = document.getElementById('quiz-title');
-  const descEl = document.getElementById('quiz-desc');
-  if (version === "2008") {
-    titleEl.textContent = "USCIS 2008 Test";
-    descEl.textContent = "Official 2008 Naturalization Civics Test — 100 questions.";
-  } else if (version === "2025") {
-    titleEl.textContent = "USCIS 2025 Test";
-    descEl.textContent = "New 2025 Naturalization Civics Test — based on 2020 version, 128 questions.";
-  } else {
-    titleEl.textContent = "Daily Civics Quiz";
-    descEl.textContent = "Test your United States government, economics, and history knowledge.";
-  }
+  // Title/description
+  document.getElementById('quiz-title').textContent = "Daily Civics Quiz";
+  document.getElementById('quiz-desc').textContent =
+    "Test your United States government, economics, and history knowledge.";
 
-  // Pick file based on version
-  let file;
-  if (version === "2008") file = "uscistest2008.json";
-  else if (version === "2025") file = "uscistest2025.json";
-  else file = "dailyquiz.json"; // adjust if you have a daily quiz dataset
-
-  fetch(file)
+  fetch("dailyquiz.json")
     .then(res => res.json())
     .then(data => {
       civicsQuestions = data;
       renderCivicsQuestion();
     })
     .catch(err => {
-      console.error("Error loading quiz JSON:", err);
+      console.error("Error loading daily quiz:", err);
+      document.getElementById('quiz-question').textContent = "Error loading quiz questions.";
+    });
+}
+
+// === USCIS 2008 Practice Test Launcher ===
+function openPractice2008Modal() {
+  const modal = document.getElementById('civicsQuizModal');
+  if (!modal) {
+    console.error("Civics Quiz Modal not found.");
+    return;
+  }
+  modal.style.display = 'block';
+
+  // Reset quiz state
+  currentQuestionIndex = 0;
+  civicsScore = 0;
+  document.getElementById('quiz-progress-fill').style.width = '0%';
+  document.getElementById('quiz-progress').textContent = '';
+  document.getElementById('quiz-feedback').textContent = '';
+  document.getElementById('quiz-score').textContent = '';
+
+  // Title/description
+  document.getElementById('quiz-title').textContent = "Practice Test (2008)";
+  document.getElementById('quiz-desc').textContent =
+    "Official 2008 Naturalization Civics Practice Test — 100 questions.";
+
+  fetch("uscistest2008.json")
+    .then(res => res.json())
+    .then(data => {
+      civicsQuestions = data;
+      renderCivicsQuestion();
+    })
+    .catch(err => {
+      console.error("Error loading 2008 test:", err);
       document.getElementById('quiz-question').textContent = "Error loading test questions.";
     });
 }
 
-// === Render a teaching-first civics question (MC + multi-select with explanations) ===
+// === USCIS 2025 Practice Test Launcher ===
+function openPractice2025Modal() {
+  const modal = document.getElementById('civicsQuizModal');
+  if (!modal) {
+    console.error("Civics Quiz Modal not found.");
+    return;
+  }
+  modal.style.display = 'block';
+
+  // Reset quiz state
+  currentQuestionIndex = 0;
+  civicsScore = 0;
+  document.getElementById('quiz-progress-fill').style.width = '0%';
+  document.getElementById('quiz-progress').textContent = '';
+  document.getElementById('quiz-feedback').textContent = '';
+  document.getElementById('quiz-score').textContent = '';
+
+  // Title/description
+  document.getElementById('quiz-title').textContent = "Practice Test (2025)";
+  document.getElementById('quiz-desc').textContent =
+    "New 2025 Naturalization Civics Practice Test — 128 questions.";
+
+  fetch("uscistest2025.json")
+    .then(res => res.json())
+    .then(data => {
+      civicsQuestions = data;
+      renderCivicsQuestion();
+    })
+    .catch(err => {
+      console.error("Error loading 2025 test:", err);
+      document.getElementById('quiz-question').textContent = "Error loading test questions.";
+    });
+}
+
+// === Render a civics question ===
 function renderCivicsQuestion() {
   if (!Array.isArray(civicsQuestions) || civicsQuestions.length === 0) return;
 
@@ -791,71 +844,48 @@ function renderCivicsQuestion() {
   feedback.textContent = '';
   nextBtn.style.display = 'none';
 
-  // Build choices
-  const genericDistractors = [
-    "The Declaration of Independence",
-    "The Articles of Confederation",
-    "The Bill of Rights",
-    "State constitution",
-    "Governor",
-    "The Supreme Court",
-    "Congress",
-    "The Cabinet",
-    "Vice President",
-    "John Adams"
-  ];
-
   let choices = Array.isArray(q.choices) && q.choices.length
     ? [...q.choices]
     : [...q.answers];
 
-  if (q.type === "open-response" && choices.length < 4) {
-    for (const d of genericDistractors) {
-      if (choices.length >= 4) break;
-      if (!choices.includes(d) && !q.answers.includes(d)) {
-        choices.push(d);
-      }
-    }
-  }
-
   choices = shuffleArray(choices);
 
-const isMulti = q.type === "multi-select";
-choices.forEach((opt, idx) => {
-  const id = `opt-${currentQuestionIndex}-${idx}`;
-  const wrapper = document.createElement('div');
-  wrapper.className = 'quiz-choice';
+  const isMulti = q.type === "multi-select";
+  choices.forEach((opt, idx) => {
+    const id = `opt-${currentQuestionIndex}-${idx}`;
+    const wrapper = document.createElement('div');
+    wrapper.className = 'quiz-choice';
 
-  const input = document.createElement('input');
-  input.type = isMulti ? 'checkbox' : 'radio';
-  input.name = 'civics-choice';
-  input.id = id;
-  input.value = opt;
+    const input = document.createElement('input');
+    input.type = isMulti ? 'checkbox' : 'radio';
+    input.name = 'civics-choice';
+    input.id = id;
+    input.value = opt;
 
-  const label = document.createElement('label');
-  label.setAttribute('for', id);
-  label.textContent = opt;
+    const label = document.createElement('label');
+    label.setAttribute('for', id);
+    label.textContent = opt;
 
-  wrapper.appendChild(input);
-  wrapper.appendChild(label);
-  optionsDiv.appendChild(wrapper);
-});
+    wrapper.appendChild(input);
+    wrapper.appendChild(label);
+    optionsDiv.appendChild(wrapper);
+  });
 
-// Progress bar
-const progress = ((currentQuestionIndex + 1) / civicsQuestions.length) * 100;
-document.getElementById('quiz-progress-fill').style.width = `${progress}%`;
-document.getElementById('quiz-progress').textContent =
-  `Question ${currentQuestionIndex + 1} of ${civicsQuestions.length}`;
+  // Progress bar
+  const progress = ((currentQuestionIndex + 1) / civicsQuestions.length) * 100;
+  document.getElementById('quiz-progress-fill').style.width = `${progress}%`;
+  document.getElementById('quiz-progress').textContent =
+    `Question ${currentQuestionIndex + 1} of ${civicsQuestions.length}`;
 }
 
-// === Evaluate selection with explanations and multi-select support ===
-// Called by the bottom-center Submit button
+// === Evaluate selection ===
 function checkCivicsAnswer() {
   const q = civicsQuestions[currentQuestionIndex];
   const feedback = document.getElementById('quiz-feedback');
   const nextBtn = document.getElementById('quiz-next');
 
-  const selected = Array.from(document.querySelectorAll('input[name="civics-choice"]'))
+  const optionsRoot = document.querySelector('#civicsQuizModal #quiz-options');
+  const selected = Array.from(optionsRoot.querySelectorAll('input[name="civics-choice"]'))
     .filter(el => el.checked)
     .map(el => el.value);
 
@@ -880,22 +910,7 @@ function checkCivicsAnswer() {
     feedback.textContent = "Correct!";
   } else {
     feedback.style.color = "red";
-    const incorrectSelections = selected.filter(s => !q.answers.includes(s));
-    const missingSelections = q.answers.filter(a => !selected.includes(a));
-
-    let detail = `Incorrect. Correct answers: ${q.answers.join(", ")}.`;
-    if (incorrectSelections.length) {
-      detail += ` You chose incorrectly: ${incorrectSelections.join(", ")}.`;
-    }
-    if (missingSelections.length) {
-      detail += ` You missed: ${missingSelections.join(", ")}.`;
-    }
-    feedback.textContent = detail;
-  }
-
-  // Explanation support
-  if (q.explanation) {
-    feedback.textContent += ` ${q.explanation}`;
+    feedback.textContent = `Incorrect. Correct answers: ${q.answers.join(", ")}`;
   }
 
   nextBtn.style.display = 'inline-block';
@@ -915,7 +930,7 @@ function checkCivicsAnswer() {
   };
 }
 
-// === Utility: Fisher–Yates shuffle ===
+// === Utility: shuffle ===
 function shuffleArray(arr) {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
@@ -925,62 +940,6 @@ function shuffleArray(arr) {
   return a;
 }
 
-// === Audit quiz data: add distractors, enforce difficulty ===
-function auditQuizData(data) {
-  const genericDistractors = [
-    "Bill of Rights","Articles of Confederation","Declaration of Independence",
-    "State constitution","Governor","Vice President","Supreme Court",
-    "Congress","Cabinet","John Adams","Checks and balances","Separation of powers",
-    "Green Party","Libertarian Party","Federal Reserve","Senate","House of Commons","Prime Minister"
-  ];
-
-  function randomTwoDigitUnder30() {
-    return Math.floor(Math.random() * 21) + 10; // 10–30
-  }
-
-  return data.map(q => {
-    if (q.id === "q7") {
-      q.choices = [q.answers[0]];
-      while (q.choices.length < 4) {
-        const distractor = randomTwoDigitUnder30().toString();
-        if (!q.choices.includes(distractor)) q.choices.push(distractor);
-      }
-    } else if (q.id === "q43") {
-      q.answers = q.answers.filter(a => a !== "Democrat" && a !== "Republican");
-      q.choices = [...q.answers, "Green Party", "Libertarian Party"];
-    } else if (q.type === "open-response") {
-      q.choices = [q.answers[0]];
-      while (q.choices.length < 4) {
-        const d = genericDistractors[Math.floor(Math.random() * genericDistractors.length)];
-        if (!q.choices.includes(d)) q.choices.push(d);
-      }
-    } else if (q.type === "multi-select") {
-      q.choices = [...q.answers];
-      while (q.choices.length < 5) {
-        const d = genericDistractors[Math.floor(Math.random() * genericDistractors.length)];
-        if (!q.choices.includes(d)) q.choices.push(d);
-      }
-    }
-    return q;
-  });
-}
-
-// === Helper: render multilingual link row (expanded) ===
-function renderLangRow(item) {
-  const links = [];
-  if (item.urlEn) links.push(`<span class="lang-link"><a href="${item.urlEn}" target="_blank" rel="noopener noreferrer">English</a></span>`);
-  if (item.urlEs) links.push(`<span class="lang-link"><a href="${item.urlEs}" target="_blank" rel="noopener noreferrer">Español</a></span>`);
-  if (item.urlZh) links.push(`<span class="lang-link"><a href="${item.urlZh}" target="_blank" rel="noopener noreferrer">中文</a></span>`);
-  if (item.urlAr) links.push(`<span class="lang-link"><a href="${item.urlAr}" target="_blank" rel="noopener noreferrer">العربية</a></span>`);
-
-  if (Array.isArray(item.langLinks)) {
-    item.langLinks.forEach(l => {
-      links.push(`<span class="lang-link"><a href="${l.url}" target="_blank" rel="noopener noreferrer">${l.label}</a></span>`);
-    });
-  }
-
-  return links.length ? `<div class="lang-row">${links.join(' • ')}</div>` : '';
-}
 document.addEventListener('DOMContentLoaded', () => {
   const submitBtn = document.getElementById('quiz-submit');
   if (submitBtn) {
