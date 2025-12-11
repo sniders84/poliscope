@@ -513,6 +513,63 @@ const citizenshipSections = [
     ]
   },
   {
+    label: "Immigration pathways",
+    targetId: "immigration-cards",
+    items: [
+      {
+        title: "Family-based visas",
+        desc: "Immediate relatives, family preference categories, petitions, and visa bulletin basics.",
+        urlEn: "https://www.uscis.gov/family",
+        urlEs: "https://www.uscis.gov/es/family",
+        langLinks: [
+          { label: "USCIS Multilingual Resource Center (all languages)", url: "https://www.uscis.gov/tools/multilingual-resource-center" }
+        ]
+      },
+      {
+        title: "Employment-based visas",
+        desc: "Work categories, labor certification, petitions, and typical processing steps.",
+        urlEn: "https://www.uscis.gov/working-in-the-united-states",
+        urlEs: "https://www.uscis.gov/es/working-in-the-united-states",
+        langLinks: [
+          { label: "USCIS Multilingual Resource Center (all languages)", url: "https://www.uscis.gov/tools/multilingual-resource-center" }
+        ]
+      },
+      {
+        title: "Diversity Visa Lottery (State Dept.)",
+        desc: "Lottery overview, eligibility, application timing, and common pitfalls.",
+        urlEn: "https://travel.state.gov/content/travel/en/us-visas/immigrate/diversity-visa-program-entry.html",
+        langLinks: []
+      }
+    ]
+  },
+  {
+    label: "Asylum & refugees",
+    targetId: "asylum-cards",
+    items: [
+      {
+        title: "Refugees & asylum (overview)",
+        desc: "Eligibility, filing, interviews, and key timelines for asylum and refugee programs.",
+        urlEn: "https://www.uscis.gov/humanitarian/refugees-asylum",
+        urlEs: "https://www.uscis.gov/es/humanitario/refugiados-y-asilo",
+        langLinks: [
+          { label: "USCIS Multilingual Resource Center (all languages)", url: "https://www.uscis.gov/tools/multilingual-resource-center" }
+        ]
+      },
+      {
+        title: "Refugee resettlement (ORR)",
+        desc: "U.S. Refugee Admissions Program overview and resettlement supports.",
+        urlEn: "https://www.acf.hhs.gov/orr",
+        langLinks: []
+      },
+      {
+        title: "Employment rights for refugees and asylees (DOJ)",
+        desc: "Right to work protections and help for discrimination or verification issues.",
+        urlEn: "https://www.justice.gov/crt/page/file/917466/dl",
+        langLinks: []
+      }
+    ]
+  },
+  {
     label: "Study materials",
     targetId: "study-cards",
     items: [
@@ -532,8 +589,78 @@ const citizenshipSections = [
         langLinks: []
       }
     ]
+  },
+  {
+    label: "Legal resources",
+    targetId: "legal-cards",
+    items: [
+      {
+        title: "USCIS official site",
+        desc: "Primary federal source for forms, policies, news, and guidance.",
+        urlEn: "https://www.uscis.gov",
+        urlEs: "https://www.uscis.gov/es",
+        langLinks: [
+          { label: "USCIS Multilingual Resource Center (all languages)", url: "https://www.uscis.gov/tools/multilingual-resource-center" }
+        ]
+      },
+      {
+        title: "Department of Homeland Security (DHS)",
+        desc: "Agency updates, policy info, and language access resources.",
+        urlEn: "https://www.dhs.gov",
+        langLinks: [
+          { label: "DHS language access resources (multilingual)", url: "https://www.dhs.gov/publications-library/collections/multilingual-and-language-access-resources" }
+        ]
+      },
+      {
+        title: "Find local assistance",
+        desc: "Locate USCIS offices and community organizations offering immigration help.",
+        urlEn: "https://www.uscis.gov/about-us/find-a-uscis-office",
+        langLinks: []
+      }
+    ]
+  },
+  {
+    label: "News & policy updates",
+    targetId: "news-cards",
+    items: [
+      {
+        title: "USCIS newsroom",
+        desc: "Policy changes, press releases, and official announcements.",
+        urlEn: "https://www.uscis.gov/newsroom",
+        langLinks: []
+      },
+      {
+        title: "Federal Register (immigration rules & notices)",
+        desc: "Proposed rules, notices, and updates affecting immigration processes.",
+        urlEn: "https://www.federalregister.gov/",
+        langLinks: []
+      }
+    ]
+  },
+  {
+    label: "Rights & responsibilities",
+    targetId: "rights-cards",
+    items: [
+      {
+        title: "New U.S. citizens: rights and responsibilities",
+        desc: "What changes after naturalization and how to exercise your civic rights and duties.",
+        urlEn: "https://www.uscis.gov/citizenship-resource-center/new-us-citizens",
+        langLinks: [
+          { label: "USCIS Multilingual Resource Center (all languages)", url: "https://www.uscis.gov/tools/multilingual-resource-center" }
+        ]
+      },
+      {
+        title: "Know your rights (immigrants, asylum seekers, refugees)",
+        desc: "Civil rights, anti-discrimination protections, and employment rights with multilingual materials.",
+        urlEn: "https://www.justice.gov/crt",
+        langLinks: [
+          { label: "DHS language access resources (multilingual)", url: "https://www.dhs.gov/publications-library/collections/multilingual-and-language-access-resources" },
+          { label: "Community multilingual Know Your Rights materials", url: "https://www.miracoalition.org/know-your-rights-print-materials-in-multiple-language/" },
+          { label: "Multilingual Know Your Rights cards", url: "https://www.nilc.org/resources/know-your-rights-card/" }
+        ]
+      }
+    ]
   }
-  // … keep your other sections (Immigration pathways, Asylum, Legal, etc.) unchanged
 ];
 
 // === Citizenship/Immigration tab renderer ===
