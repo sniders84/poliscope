@@ -727,7 +727,8 @@ let civicsQuestions = [];
 let currentQuestionIndex = 0;
 let civicsScore = 0;
 
-function openUSCISTestModal(version = "2008") {
+// === USCIS / Daily Civics Quiz Launcher ===
+function openUSCISTestModal(version = "daily") {
   const modal = document.getElementById('civicsQuizModal');
   if (!modal) {
     console.error("Civics Quiz Modal not found.");
@@ -743,8 +744,25 @@ function openUSCISTestModal(version = "2008") {
   document.getElementById('quiz-feedback').textContent = '';
   document.getElementById('quiz-score').textContent = '';
 
+  // Update modal title/description dynamically
+  const titleEl = document.getElementById('quiz-title');
+  const descEl = document.getElementById('quiz-desc');
+  if (version === "2008") {
+    titleEl.textContent = "USCIS 2008 Test";
+    descEl.textContent = "Official 2008 Naturalization Civics Test — 100 questions.";
+  } else if (version === "2025") {
+    titleEl.textContent = "USCIS 2025 Test";
+    descEl.textContent = "New 2025 Naturalization Civics Test — based on 2020 version, 128 questions.";
+  } else {
+    titleEl.textContent = "Daily Civics Quiz";
+    descEl.textContent = "Test your United States government, economics, and history knowledge.";
+  }
+
   // Pick file based on version
-  const file = version === "2025" ? "uscistest2025.json" : "uscistest2008.json";
+  let file;
+  if (version === "2008") file = "uscistest2008.json";
+  else if (version === "2025") file = "uscistest2025.json";
+  else file = "dailyquiz.json"; // adjust if you have a daily quiz dataset
 
   fetch(file)
     .then(res => res.json())
@@ -753,7 +771,7 @@ function openUSCISTestModal(version = "2008") {
       renderCivicsQuestion();
     })
     .catch(err => {
-      console.error("Error loading USCIS test JSON:", err);
+      console.error("Error loading quiz JSON:", err);
       document.getElementById('quiz-question').textContent = "Error loading test questions.";
     });
 }
@@ -831,7 +849,7 @@ function renderCivicsQuestion() {
 }
 
 // === Evaluate selection with explanations and multi-select support ===
-// This is called by the bottom-center Submit button in your modal
+// Called by the bottom-center Submit button
 function checkCivicsAnswer() {
   const q = civicsQuestions[currentQuestionIndex];
   const feedback = document.getElementById('quiz-feedback');
