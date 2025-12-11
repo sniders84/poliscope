@@ -354,6 +354,193 @@ function showVoting() {
       console.error('Voting fetch failed:', err);
     });
 }
+// === Citizenship & Immigration data (card descriptors, no logos) ===
+const citizenshipSections = [
+  {
+    label: "Naturalization process",
+    targetId: "citizenship-cards",
+    items: [
+      {
+        title: "Eligibility and application (Form N-400)",
+        desc: "Who qualifies, required documents, fees, timelines, and the application process.",
+        urlEn: "https://www.uscis.gov/n-400",
+        urlEs: "https://www.uscis.gov/es/n-400"
+      },
+      {
+        title: "Interview and oath ceremony",
+        desc: "What to expect in the interview, English/civics components, and the oath of allegiance.",
+        urlEn: "https://www.uscis.gov/citizenship",
+        urlEs: "https://www.uscis.gov/es/citizenship"
+      }
+    ]
+  },
+  {
+    label: "Immigration pathways",
+    targetId: "immigration-cards",
+    items: [
+      {
+        title: "Family-based visas",
+        desc: "Immediate relatives, family preference categories, petitions, and visa bulletin basics.",
+        urlEn: "https://www.uscis.gov/family",
+        urlEs: "https://www.uscis.gov/es/family"
+      },
+      {
+        title: "Employment-based visas",
+        desc: "Work categories, labor certification, petitions, and typical processing steps.",
+        urlEn: "https://www.uscis.gov/working-in-the-united-states",
+        urlEs: "https://www.uscis.gov/es/working-in-the-united-states"
+      },
+      {
+        title: "Diversity Visa Lottery (State Dept.)",
+        desc: "Lottery overview, eligibility, application timing, and common pitfalls.",
+        urlEn: "https://travel.state.gov/content/travel/en/us-visas/immigrate/diversity-visa-program-entry.html"
+      }
+    ]
+  },
+  {
+    label: "Asylum & refugees",
+    targetId: "asylum-cards",
+    items: [
+      {
+        title: "Asylum (affirmative and defensive)",
+        desc: "Eligibility, filing, interviews, work authorization, and important timelines.",
+        urlEn: "https://www.uscis.gov/humanitarian/refugees-and-asylum",
+        urlEs: "https://www.uscis.gov/es/humanitarian/refugees-and-asylum"
+      },
+      {
+        title: "Refugee resettlement",
+        desc: "Overview of the U.S. Refugee Admissions Program and resettlement supports.",
+        urlEn: "https://www.acf.hhs.gov/orr"
+      }
+    ]
+  },
+  {
+    label: "Study materials",
+    targetId: "study-cards",
+    items: [
+      {
+        title: "Civics test study resources",
+        desc: "Official USCIS study guides and practice material in multiple languages.",
+        urlEn: "https://www.uscis.gov/citizenship/test",
+        urlEs: "https://www.uscis.gov/es/citizenship/test",
+        urlZh: "https://www.uscis.gov/zh-hans/citizenship/test",
+        urlAr: "https://www.uscis.gov/ar/citizenship/test"
+      },
+      {
+        title: "Practice the civics test (hybrid mode)",
+        desc: "Use our hybrid quiz with multi-select and open-response answers.",
+        urlEn: "#" // placeholder until we wire quiz engine
+      }
+    ]
+  },
+  {
+    label: "Legal resources",
+    targetId: "legal-cards",
+    items: [
+      {
+        title: "USCIS official site",
+        desc: "Primary federal source for forms, policies, and application guidance.",
+        urlEn: "https://www.uscis.gov",
+        urlEs: "https://www.uscis.gov/es"
+      },
+      {
+        title: "Department of Homeland Security (DHS)",
+        desc: "Agency updates, policy info, and broader immigration enforcement context.",
+        urlEn: "https://www.dhs.gov"
+      },
+      {
+        title: "Find local assistance",
+        desc: "Search for local offices and community organizations offering immigration help.",
+        urlEn: "https://www.uscis.gov/about-us/find-a-uscis-office"
+      }
+    ]
+  },
+  {
+    label: "News & policy updates",
+    targetId: "news-cards",
+    items: [
+      {
+        title: "USCIS newsroom",
+        desc: "Policy changes, press releases, and official announcements.",
+        urlEn: "https://www.uscis.gov/newsroom"
+      },
+      {
+        title: "Federal Register",
+        desc: "Proposed rules and notices affecting immigration processes.",
+        urlEn: "https://www.federalregister.gov/"
+      }
+    ]
+  },
+  {
+    label: "Rights & responsibilities",
+    targetId: "rights-cards",
+    items: [
+      {
+        title: "Rights of immigrants and citizens",
+        desc: "Know your rights, anti-discrimination, and due process basics.",
+        urlEn: "https://www.justice.gov/crt"
+      },
+      {
+        title: "Responsibilities after naturalization",
+        desc: "Taxes, jury duty, civic participation, and keeping documents updated.",
+        urlEn: "https://www.uscis.gov/citizenship"
+      }
+    ]
+  }
+];
+
+// === Citizenship/Immigration tab renderer ===
+function showCitizenship() {
+  showTab('citizenship'); // uses your existing tab switcher
+
+  citizenshipSections.forEach(section => {
+    const container = document.getElementById(section.targetId);
+    if (!container) return;
+
+    container.innerHTML = '';
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'resource-section';
+
+    const header = document.createElement('h3');
+    header.textContent = section.label;
+    wrapper.appendChild(header);
+
+    const grid = document.createElement('div');
+    grid.className = 'resource-grid';
+
+    section.items.forEach(item => {
+      const card = document.createElement('a');
+      card.className = 'resource-card';
+      const url =
+        item.urlEn || item.urlEs || item.urlZh || item.urlAr || item.url;
+      card.href = url || '#';
+      card.target = '_blank';
+      card.rel = 'noopener noreferrer';
+      card.innerHTML = `
+        <h4>${item.title}</h4>
+        <p class="card-desc">${item.desc}</p>
+        ${renderLangRow(item)}
+      `;
+      grid.appendChild(card);
+    });
+
+    wrapper.appendChild(grid);
+    container.appendChild(wrapper);
+  });
+}
+
+// Helper: render multilingual link row if available
+function renderLangRow(item) {
+  const links = [];
+  if (item.urlEn) links.push(`<span class="lang-link"><a href="${item.urlEn}" target="_blank" rel="noopener noreferrer">English</a></span>`);
+  if (item.urlEs) links.push(`<span class="lang-link"><a href="${item.urlEs}" target="_blank" rel="noopener noreferrer">Español</a></span>`);
+  if (item.urlZh) links.push(`<span class="lang-link"><a href="${item.urlZh}" target="_blank" rel="noopener noreferrer">中文</a></span>`);
+  if (item.urlAr) links.push(`<span class="lang-link"><a href="${item.urlAr}" target="_blank" rel="noopener noreferrer">العربية</a></span>`);
+  return links.length
+    ? `<div class="lang-row">${links.join(' • ')}</div>`
+    : '';
+}
 // === HELPER: render roster cards (if needed) ===
 function renderRosterCards(rosterData, chamberLabel, container) {
   if (Array.isArray(rosterData)) {
