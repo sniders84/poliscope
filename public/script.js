@@ -106,6 +106,7 @@ Promise.all([
   showsData = shows;
 })
 .catch(err => console.error('Error loading podcasts or shows JSON:', err));
+
 // === Tab switcher ===
 function showTab(id) {
   document.querySelectorAll('.tab-content').forEach(tab => {
@@ -128,6 +129,135 @@ function showQuizzes() { showTab('quizzes'); }
 function renderOfficials(state, filter) {
   console.log("renderOfficials called with", state, filter);
   // TODO: implement actual rendering logic for officials
+}
+
+// === Podcasts & Shows tab renderer ===
+function showPodcastsShows() {
+  showTab('podcasts-shows');
+
+  const container = document.getElementById('podcasts-cards');
+  if (!container) return;
+  container.innerHTML = '';
+
+  const renderSection = (titleText, items, type) => {
+    const section = document.createElement('div');
+    section.className = 'podcast-show-section';
+
+    const header = document.createElement('div');
+    header.className = "section-header open";
+
+    const title = document.createElement('h3');
+    title.textContent = titleText;
+
+    const arrow = document.createElement('span');
+    arrow.className = "section-arrow";
+    arrow.textContent = "▼";
+
+    header.appendChild(title);
+    header.appendChild(arrow);
+    section.appendChild(header);
+
+    const body = document.createElement('div');
+    body.className = "section-body open";
+
+    const grid = document.createElement('div');
+    grid.className = 'podcast-show-grid';
+
+    if (!Array.isArray(items) || items.length === 0) {
+      const msg = document.createElement('p');
+      msg.textContent = `No ${titleText.toLowerCase()} available.`;
+      grid.appendChild(msg);
+    } else {
+      items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'podcast-show-card';
+
+        const logoPath = item.logo_slug ? `assets/${item.logo_slug}` : 'assets/default-logo.png';
+
+        card.innerHTML = `
+          <div class="logo-wrapper" role="button" title="Open ${item.title}">
+            <img src="${logoPath}" alt="${item.title} logo"
+                 onerror="this.onerror=null;this.src='assets/default-logo.png';" />
+          </div>
+          <div class="card-content">
+            <h4 class="card-title">${item.title}</h4>
+            <p class="category">${item.category || ''} – ${item.source || ''}</p>
+            <p class="descriptor">${item.descriptor || ''}</p>
+            <div class="card-actions">
+              <button class="favorite-btn" aria-label="favorite"></button>
+            </div>
+          </div>
+        `;
+
+        const logoBtn = card.querySelector('.logo-wrapper');
+        if (logoBtn && item.official_url) {
+          logoBtn.addEventListener('click', () => window.open(item.official_url, '_blank'));
+        }
+
+        const favBtn = card.querySelector('.favorite-btn');
+        if (favBtn) {
+          const isFav = isFavorite(item.type || type, item.title);
+          updateFavoriteButton(favBtn, isFav);
+          favBtn.addEventListener('click', e => {
+            e.stopPropagation();
+            const nowFav = toggleFavorite(item.type || type, item.title);
+            updateFavoriteButton(favBtn, nowFav);
+          });
+        }
+
+        grid.appendChild(card);
+      });
+    }
+
+    body.appendChild(grid);
+    section.appendChild(body);
+
+    header.addEventListener('click', () => {
+      const isOpen = body.classList.contains("open");
+      if (isOpen) {
+        body.classList.remove("open");
+        body.classList.add("closed");
+        header.classList.remove("open");
+        arrow.textContent = "▶";
+      } else {
+        body.classList.remove("closed");
+        body.classList.add("open");
+        header.classList.add("open");
+        arrow.textContent = "▼";
+      }
+    });
+
+    return section;
+  };
+
+  // Favorites section
+  const favoriteItems = [];
+  window.favorites.podcasts.forEach(title => {
+    const item = podcastsData.find(p => p.title === title);
+    if (item) favoriteItems.push({ ...item, type: 'podcasts' });
+  });
+  window.favorites.shows.forEach(title => {
+    const item = showsData.find(s => s.title === title);
+    if (item) favoriteItems.push({ ...item, type: 'shows' });
+  });
+
+  container.appendChild(renderSection('Favorites', favoriteItems, 'favorites'));
+  container.appendChild(renderSection('Podcasts', podcastsData || [], 'podcasts'));
+  container.appendChild(renderSection('Shows', showsData || [], 'shows'));
+
+  // Search filter
+  const tabSearch = document.getElementById('podcasts-search-bar');
+  if (tabSearch) {
+    const handler = () => {
+      const term = tabSearch.value.toLowerCase().trim();
+      container.querySelectorAll('.podcast-show-card').forEach(card => {
+        const title = (card.querySelector('.card-title')?.textContent || '').toLowerCase();
+        const desc = (card.querySelector('.descriptor')?.textContent || '').toLowerCase();
+        card.style.display = (title.includes(term) || desc.includes(term)) ? '' : 'none';
+      });
+    };
+    tabSearch.addEventListener('input', handler);
+  }
 }
 
 // === POLL CATEGORIES (authoritative sources) ===
