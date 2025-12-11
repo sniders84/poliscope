@@ -138,8 +138,10 @@ function lookupBallot() {
   if (!value) return;
 
   const encoded = encodeURIComponent(value);
-  window.open(`https://ballotpedia.org/Sample_Ballot_Lookup?address=${encoded}`, '_blank');
+  // Redirect directly to Ballotpedia’s ballot page for that address/ZIP (same tab)
+  window.location.href = `https://ballotpedia.org/Sample_Ballot_Lookup?address=${encoded}`;
 }
+
 // === POLL CATEGORIES (authoritative sources) ===
 const pollCategories = [
   {
@@ -163,7 +165,7 @@ const pollCategories = [
   {
     label: "Senate",
     polls: [
-      { name: "270toWin – Senate Polls", source: "270toWin", url: "https://www.270towin.com/polls/latest-2026-senate-election-polls/" },
+      { name: "270toWin – Senate Polls", source: "270toWin", url: "https://www.270toWin.com/polls/latest-2026-senate-election-polls/" },
       { name: "RealClearPolling – Senate Polls", source: "RCP", url: "https://www.realclearpolling.com/latest-polls/senate" },
       { name: "Race to the WH – Senate Polls", source: "Race to the WH", url: "https://www.racetothewh.com/senate/26polls" },
       { name: "Cook Political Report – Senate Ratings", source: "Cook Political", url: "https://www.cookpolitical.com/ratings/senate-race-ratings" }
@@ -186,6 +188,7 @@ const pollCategories = [
     ]
   }
 ];
+
 // === Polls tab ===
 function showPolls() {
   showTab('polls');
@@ -242,9 +245,20 @@ function showPolls() {
     `;
     electionsContainer.appendChild(lookupBlock);
 
+    // Wire up search + auto-clear on blur
     const lookupBtn = document.getElementById('ballot-lookup-btn');
     if (lookupBtn) {
       lookupBtn.addEventListener('click', lookupBallot);
+    }
+    const lookupInput = document.getElementById('ballot-lookup');
+    if (lookupInput) {
+      lookupInput.addEventListener('blur', () => {
+        lookupInput.value = ''; // clears when clicking outside
+      });
+      // Optional: Enter key submits
+      lookupInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') lookupBallot();
+      });
     }
 
     // --- Upcoming Elections ---
