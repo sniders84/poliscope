@@ -693,10 +693,10 @@ function showCitizenship() {
         card.innerHTML = `
           <h4>Practice the Naturalization Civics Test (2008 version)</h4>
           <p class="card-desc">Official 2008 test — 100 questions, 10 asked, 6 correct to pass.</p>
-          <button class="card-button" onclick="openUSCISTestModal('2008')">Launch 2008 Test</button>
+          <button class="card-button" onclick="openPractice2008Modal()">Launch 2008 Test</button>
           <h4>Practice the Naturalization Civics Test (2025 version)</h4>
           <p class="card-desc">New 2025 test — based on 2020 version, 128 questions.</p>
-          <button class="card-button" onclick="openUSCISTestModal('2025')">Launch 2025 Test</button>
+          <button class="card-button" onclick="openPractice2025Modal()">Launch 2025 Test</button>
         `;
       } else {
         card = document.createElement('a');
@@ -910,7 +910,22 @@ function checkCivicsAnswer() {
     feedback.textContent = "Correct!";
   } else {
     feedback.style.color = "red";
-    feedback.textContent = `Incorrect. Correct answers: ${q.answers.join(", ")}`;
+    const incorrectSelections = selected.filter(s => !q.answers.includes(s));
+    const missingSelections = q.answers.filter(a => !selected.includes(a));
+
+    let detail = `Incorrect. Correct answers: ${q.answers.join(", ")}.`;
+    if (incorrectSelections.length) {
+      detail += ` You chose incorrectly: ${incorrectSelections.join(", ")}.`;
+    }
+    if (missingSelections.length) {
+      detail += ` You missed: ${missingSelections.join(", ")}.`;
+    }
+    feedback.textContent = detail;
+  }
+
+  // Explanation support
+  if (q.explanation) {
+    feedback.textContent += ` ${q.explanation}`;
   }
 
   nextBtn.style.display = 'inline-block';
