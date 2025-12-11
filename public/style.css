@@ -8641,3 +8641,46 @@ nav .tab.active {
   transform: translateY(-2px);
   box-shadow: 0 0 0 2px var(--accent-light), 0 2px 6px rgba(0,0,0,0.5);
 }
+/* === Ballotpedia Lookup Bar Styling === */
+.lookup-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+#ballot-lookup {
+  flex: 1;
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#ballot-lookup:focus {
+  outline: none;
+  border-color: #007bff; /* blue accent */
+  box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+}
+
+#ballot-lookup-btn {
+  padding: 12px 18px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+#ballot-lookup-btn:hover {
+  background: #0056b3; /* darker blue on hover */
+}
+
+.lookup-tip {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #666;
+}
