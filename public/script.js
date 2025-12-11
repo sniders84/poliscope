@@ -663,6 +663,34 @@ const citizenshipSections = [
   }
 ];
 
+// === Helper: render multilingual link row (expanded) ===
+function renderLangRow(item) {
+  const links = [];
+
+  if (item.urlEn) {
+    links.push(`<span class="lang-link"><a href="${item.urlEn}" target="_blank" rel="noopener noreferrer">English</a></span>`);
+  }
+  if (item.urlEs) {
+    links.push(`<span class="lang-link"><a href="${item.urlEs}" target="_blank" rel="noopener noreferrer">Español</a></span>`);
+  }
+  if (item.urlZh) {
+    links.push(`<span class="lang-link"><a href="${item.urlZh}" target="_blank" rel="noopener noreferrer">中文</a></span>`);
+  }
+  if (item.urlAr) {
+    links.push(`<span class="lang-link"><a href="${item.urlAr}" target="_blank" rel="noopener noreferrer">العربية</a></span>`);
+  }
+
+  if (Array.isArray(item.langLinks)) {
+    item.langLinks.forEach(l => {
+      if (l && l.url && l.label) {
+        links.push(`<span class="lang-link"><a href="${l.url}" target="_blank" rel="noopener noreferrer">${l.label}</a></span>`);
+      }
+    });
+  }
+
+  return links.length ? `<div class="lang-row">${links.join(' • ')}</div>` : '';
+}
+
 // === Citizenship/Immigration tab renderer ===
 function showCitizenship() {
   showTab('citizenship');
