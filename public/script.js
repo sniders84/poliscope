@@ -773,10 +773,7 @@ function renderCivicsQuestion() {
   feedback.textContent = '';
   nextBtn.style.display = 'none';
 
-  // 1) Build choices
-  // If q.choices exists, use it. Otherwise, build choices from q.answers (corrects) + simple distractors.
-  // Distractor strategy: include a few generic civics terms that are plausible but wrong (safe baseline).
-  // You can later provide explicit q.choices in JSON for tighter control.
+  // Build choices
   const genericDistractors = [
     "The Declaration of Independence",
     "The Articles of Confederation",
@@ -794,9 +791,7 @@ function renderCivicsQuestion() {
     ? [...q.choices]
     : [...q.answers];
 
-  // Ensure we have at least 4 options for single-answer questions
   if (q.type === "open-response" && choices.length < 4) {
-    // Add unique distractors not already present
     for (const d of genericDistractors) {
       if (choices.length >= 4) break;
       if (!choices.includes(d) && !q.answers.includes(d)) {
@@ -805,10 +800,8 @@ function renderCivicsQuestion() {
     }
   }
 
-  // Shuffle choices for fairness
   choices = shuffleArray(choices);
 
-  // 2) Render inputs: radio for single-answer, checkbox for multi-answer
   const isMulti = q.type === "multi-select";
   choices.forEach((opt, idx) => {
     const id = `opt-${currentQuestionIndex}-${idx}`;
@@ -830,14 +823,7 @@ function renderCivicsQuestion() {
     optionsDiv.appendChild(wrapper);
   });
 
-  // 3) Add a Submit button (per-question)
-  const submitBtn = document.createElement('button');
-  submitBtn.className = 'card-button';
-  submitBtn.textContent = 'Submit';
-  submitBtn.onclick = () => evaluateCivicsSelection(q, choices, isMulti);
-  optionsDiv.appendChild(submitBtn);
-
-  // Progress
+  // Progress bar
   const progress = ((currentQuestionIndex + 1) / civicsQuestions.length) * 100;
   document.getElementById('quiz-progress-fill').style.width = `${progress}%`;
   document.getElementById('quiz-progress').textContent =
@@ -845,11 +831,12 @@ function renderCivicsQuestion() {
 }
 
 // === Evaluate selection with explanations and multi-select support ===
-function evaluateCivicsSelection(q, choices, isMulti) {
+// This is called by the bottom-center Submit button in your modal
+function checkCivicsAnswer() {
+  const q = civicsQuestions[currentQuestionIndex];
   const feedback = document.getElementById('quiz-feedback');
   const nextBtn = document.getElementById('quiz-next');
 
-  // Collect selected values
   const selected = Array.from(document.querySelectorAll('input[name="civics-choice"]'))
     .filter(el => el.checked)
     .map(el => el.value);
@@ -860,57 +847,38 @@ function evaluateCivicsSelection(q, choices, isMulti) {
     return;
   }
 
-  // Determine correctness:
-  // - For single-answer: correct if exactly one selected and it matches the sole correct answer.
-  // - For multi-select: correct if the set of selected equals the set of q.answers (no extras, none missing).
   let isCorrect = false;
-  if (!isMulti) {
+  if (q.type === "open-response") {
     isCorrect = (selected.length === 1) && (selected[0] === q.answers[0]);
   } else {
     const selectedSet = new Set(selected);
     const correctSet = new Set(q.answers);
-    if (selectedSet.size === correctSet.size) {
-      isCorrect = [...selectedSet].every(v => correctSet.has(v));
-    } else {
-      isCorrect = false;
-    }
+    isCorrect = [...correctSet].every(v => selectedSet.has(v)) && selectedSet.size === correctSet.size;
   }
 
-  // Teach-first feedback
   if (isCorrect) {
     civicsScore++;
     feedback.style.color = "limegreen";
     feedback.textContent = "Correct.";
   } else {
     feedback.style.color = "red";
-    const correctList = q.answers.join(", ");
-    // Show which selections were incorrect or missing
     const incorrectSelections = selected.filter(s => !q.answers.includes(s));
     const missingSelections = q.answers.filter(a => !selected.includes(a));
 
-    let detail = `Incorrect. Acceptable answers: ${correctList}.`;
+    let detail = `Incorrect. Correct answers: ${q.answers.join(", ")}.`;
     if (incorrectSelections.length) {
-      detail += ` Your incorrect selections: ${incorrectSelections.join(", ")}.`;
+      detail += ` You chose incorrectly: ${incorrectSelections.join(", ")}.`;
     }
     if (missingSelections.length) {
-      detail += ` Missing required selections: ${missingSelections.join(", ")}.`;
+      detail += ` You missed: ${missingSelections.join(", ")}.`;
     }
     feedback.textContent = detail;
   }
 
-  // Explanation support: if q.explanation exists, show it
   if (q.explanation) {
-    const expl = document.createElement('div');
-    expl.className = 'quiz-explanation';
-    expl.textContent = q.explanation;
-    // Avoid duplicate explanation nodes on repeated submits
-    const optionsDiv = document.getElementById('quiz-options');
-    const existing = optionsDiv.querySelector('.quiz-explanation');
-    if (existing) existing.remove();
-    optionsDiv.appendChild(expl);
+    feedback.textContent += ` ${q.explanation}`;
   }
 
-  // Show Next button
   nextBtn.style.display = 'inline-block';
   nextBtn.onclick = () => {
     currentQuestionIndex++;
@@ -946,7 +914,6 @@ function renderLangRow(item) {
   if (item.urlZh) links.push(`<span class="lang-link"><a href="${item.urlZh}" target="_blank" rel="noopener noreferrer">中文</a></span>`);
   if (item.urlAr) links.push(`<span class="lang-link"><a href="${item.urlAr}" target="_blank" rel="noopener noreferrer">العربية</a></span>`);
 
-  // Additional multilingual hubs that list all available languages
   if (Array.isArray(item.langLinks)) {
     item.langLinks.forEach(l => {
       links.push(`<span class="lang-link"><a href="${l.url}" target="_blank" rel="noopener noreferrer">${l.label}</a></span>`);
