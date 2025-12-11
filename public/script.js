@@ -130,61 +130,42 @@ function renderOfficials(state, filter) {
   // TODO: implement actual rendering logic for officials
 }
 
-// === Ballotpedia lookup handler ===
-function lookupBallot() {
-  const inputEl = document.getElementById('ballot-lookup');
-  if (!inputEl) return;
-  const value = inputEl.value.trim();
-  if (!value) return;
-
-  const encoded = encodeURIComponent(value);
-  // Redirect directly to Ballotpedia’s ballot page for that address/ZIP
-  window.open(`https://ballotpedia.org/Sample_Ballot_Lookup?address=${encoded}`, '_blank');
-}
-
 // === POLL CATEGORIES (authoritative sources) ===
 const pollCategories = [
   {
     label: "President",
     polls: [
-      { name: "Ballotpedia – Presidential Approval Index", source: "Ballotpedia", url: "https://ballotpedia.org/Ballotpedia%27s_Polling_Index:_Presidential_approval_rating" },
-      { name: "Rasmussen – Daily Tracking Poll", source: "Rasmussen", url: "https://www.rasmussenreports.com/public_content/current_events/politics/daily_presidential_tracking_poll" },
-      { name: "AP-NORC – Polling Tracker", source: "AP-NORC", url: "https://apnews.com/projects/polling-tracker/" },
-      { name: "Reuters/Ipsos – Latest Approval Polls", source: "Reuters/Ipsos", url: "https://www.reuters.com" }
+      { name: "Presidential Approval Index", source: "Ballotpedia", url: "https://ballotpedia.org/Ballotpedia%27s_Polling_Index:_Presidential_approval_rating" },
+      { name: "Daily Tracking Poll", source: "Rasmussen", url: "https://www.rasmussenreports.com/public_content/current_events/politics/daily_presidential_tracking_poll" },
+      { name: "Polling Tracker", source: "AP-NORC", url: "https://apnews.com/projects/polling-tracker/" },
+      { name: "Latest Approval Polls", source: "Reuters/Ipsos", url: "https://www.reuters.com" }
     ]
   },
   {
     label: "Governor",
     polls: [
-      { name: "270toWin – Governor Polls", source: "270toWin", url: "https://www.270towin.com/polls/latest-2026-governor-election-polls/" },
-      { name: "RealClearPolling – Governor Polls", source: "RCP", url: "https://www.realclearpolling.com/latest-polls/governor" },
-      { name: "Race to the WH – Governor Polls", source: "Race to the WH", url: "https://www.racetothewh.com/governor/26polls" },
-      { name: "Emerson College – State Polls", source: "Emerson", url: "https://www.emersonpolling.com" }
+      { name: "Governor Polls", source: "270toWin", url: "https://www.270towin.com/polls/latest-2026-governor-election-polls/" },
+      { name: "Governor Polls", source: "RCP", url: "https://www.realclearpolling.com/latest-polls/governor" },
+      { name: "Governor Polls", source: "Race to the WH", url: "https://www.racetothewh.com/governor/26polls" },
+      { name: "State Polls", source: "Emerson College", url: "https://www.emersonpolling.com" }
     ]
   },
   {
     label: "Senate",
     polls: [
-      { name: "270toWin – Senate Polls", source: "270toWin", url: "https://www.270toWin.com/polls/latest-2026-senate-election-polls/" },
-      { name: "RealClearPolling – Senate Polls", source: "RCP", url: "https://www.realclearpolling.com/latest-polls/senate" },
-      { name: "Race to the WH – Senate Polls", source: "Race to the WH", url: "https://www.racetothewh.com/senate/26polls" },
-      { name: "Cook Political Report – Senate Ratings", source: "Cook Political", url: "https://www.cookpolitical.com/ratings/senate-race-ratings" }
+      { name: "Senate Polls", source: "270toWin", url: "https://www.270toWin.com/polls/latest-2026-senate-election-polls/" },
+      { name: "Senate Polls", source: "RCP", url: "https://www.realclearpolling.com/latest-polls/senate" },
+      { name: "Senate Polls", source: "Race to the WH", url: "https://www.racetothewh.com/senate/26polls" },
+      { name: "Senate Ratings", source: "Cook Political Report", url: "https://www.cookpolitical.com/ratings/senate-race-ratings" }
     ]
   },
   {
     label: "House",
     polls: [
-      { name: "270toWin – House Polls", source: "270toWin", url: "https://www.270toWin.com/polls/latest-2026-house-election-polls/index.php" },
-      { name: "RealClearPolling – House Polls", source: "RCP", url: "https://www.realclearpolling.com/latest-polls/house" },
-      { name: "Race to the WH – House Polls", source: "Race to the WH", url: "https://www.racetothewh.com/house/polls/24" },
-      { name: "Sabato’s Crystal Ball – House Ratings", source: "Sabato", url: "https://centerforpolitics.org/crystalball/2026-house/" }
-    ]
-  },
-  {
-    label: "Mayor",
-    polls: [
-      { name: "Ballotpedia – Local Elections Lookup", source: "Ballotpedia", url: "https://ballotpedia.org/Sample_Ballot_Lookup" },
-      { name: "Ballotpedia – How to Find Local Elections", source: "Ballotpedia", url: "https://ballotpedia.org/How_to_find_information_about_local_elections" }
+      { name: "House Polls", source: "270toWin", url: "https://www.270toWin.com/polls/latest-2026-house-election-polls/index.php" },
+      { name: "House Polls", source: "RCP", url: "https://www.realclearpolling.com/latest-polls/house" },
+      { name: "House Polls", source: "Race to the WH", url: "https://www.racetothewh.com/house/polls/24" },
+      { name: "House Ratings", source: "Sabato’s Crystal Ball", url: "https://centerforpolitics.org/crystalball/2026-house/" }
     ]
   }
 ];
@@ -227,38 +208,10 @@ function showPolls() {
     });
   }
 
-  // === Elections Section (Ballotpedia-driven with search bar redirect) ===
+  // === Elections Section ===
   const electionsContainer = document.getElementById('elections-cards');
   if (electionsContainer) {
     electionsContainer.innerHTML = '';
-
-    // --- Lookup bar (address/ZIP) ---
-    const lookupBlock = document.createElement('div');
-    lookupBlock.className = 'elections-block';
-    lookupBlock.innerHTML = `
-      <h3>Find your personalized ballot</h3>
-      <div class="lookup-controls">
-        <input id="ballot-lookup" type="text" placeholder="Enter your address or ZIP" aria-label="Address or ZIP" />
-        <button id="ballot-lookup-btn" type="button">Search</button>
-      </div>
-      <p class="lookup-tip">You’ll be taken to Ballotpedia’s ballot page with offices and measures for your location.</p>
-    `;
-    electionsContainer.appendChild(lookupBlock);
-
-    // Wire up search + auto-clear on blur
-    const lookupBtn = document.getElementById('ballot-lookup-btn');
-    if (lookupBtn) {
-      lookupBtn.addEventListener('click', lookupBallot);
-    }
-    const lookupInput = document.getElementById('ballot-lookup');
-    if (lookupInput) {
-      lookupInput.addEventListener('blur', () => {
-        lookupInput.value = ''; // clears when clicking outside
-      });
-      lookupInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') lookupBallot();
-      });
-    }
 
     // --- Upcoming Elections ---
     const upcomingBlock = document.createElement('div');
@@ -266,7 +219,8 @@ function showPolls() {
     upcomingBlock.innerHTML = `
       <h3>Upcoming Elections</h3>
       <ul>
-        <li><a href="https://ballotpedia.org/Elections_calendar" target="_blank" rel="noopener noreferrer">Ballotpedia – Full Elections Calendar</a></li>
+        <li><a href="https://ballotpedia.org/Sample_Ballot_Lookup" target="_blank" rel="noopener noreferrer">My Election Lookup Tool</a></li>
+        <li><a href="https://ballotpedia.org/Elections_calendar" target="_blank" rel="noopener noreferrer">Full Elections Calendar</a></li>
       </ul>
     `;
     electionsContainer.appendChild(upcomingBlock);
@@ -277,8 +231,8 @@ function showPolls() {
     resultsBlock.innerHTML = `
       <h3>Recent Results</h3>
       <ul>
-        <li><a href="https://ballotpedia.org/Election_results,_2025" target="_blank" rel="noopener noreferrer">Ballotpedia – 2025 Election Results</a></li>
-        <li><a href="https://ballotpedia.org/Election_results,_2024" target="_blank" rel="noopener noreferrer">Ballotpedia – 2024 Election Results</a></li>
+        <li><a href="https://ballotpedia.org/Election_results,_2025" target="_blank" rel="noopener noreferrer">2025 Election Results</a></li>
+        <li><a href="https://ballotpedia.org/Election_results,_2024" target="_blank" rel="noopener noreferrer">2024 Election Results</a></li>
       </ul>
     `;
     electionsContainer.appendChild(resultsBlock);
@@ -289,9 +243,9 @@ function showPolls() {
     competitiveBlock.innerHTML = `
       <h3>Most Competitive Races</h3>
       <ul>
-        <li><a href="https://ballotpedia.org/United_States_Senate_elections,_2026#Battlegrounds" target="_blank" rel="noopener noreferrer">Ballotpedia – 2026 Senate Battlegrounds</a></li>
-        <li><a href="https://ballotpedia.org/United_States_House_of_Representatives_elections,_2026#Battlegrounds" target="_blank" rel="noopener noreferrer">Ballotpedia – 2026 House Battlegrounds</a></li>
-        <li><a href="https://ballotpedia.org/Gubernatorial_elections,_2025" target="_blank" rel="noopener noreferrer">Ballotpedia – 2025 Governor Elections</a></li>
+        <li><a href="https://ballotpedia.org/United_States_Senate_elections,_2026#Battlegrounds" target="_blank" rel="noopener noreferrer">2026 Senate Battlegrounds</a></li>
+        <li><a href="https://ballotpedia.org/United_States_House_of_Representatives_elections,_2026#Battlegrounds" target="_blank" rel="noopener noreferrer">2026 House Battlegrounds</a></li>
+        <li><a href="https://ballotpedia.org/Gubernatorial_elections,_2025" target="_blank" rel="noopener noreferrer">2025 Governor Elections</a></li>
       </ul>
     `;
     electionsContainer.appendChild(competitiveBlock);
