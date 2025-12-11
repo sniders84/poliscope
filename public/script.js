@@ -755,16 +755,12 @@ let civicsQuestions = [];
 let currentQuestionIndex = 0;
 let civicsScore = 0;
 
-// === Daily Civics Quiz Launcher ===
+// === Daily Civics Quiz Launcher (uses name="opt") ===
 function openDailyQuizModal() {
   const modal = document.getElementById('civicsQuizModal');
-  if (!modal) {
-    console.error("Civics Quiz Modal not found.");
-    return;
-  }
+  if (!modal) return;
   modal.style.display = 'block';
 
-  // Reset quiz state
   currentQuestionIndex = 0;
   civicsScore = 0;
   document.getElementById('quiz-progress-fill').style.width = '0%';
@@ -772,16 +768,68 @@ function openDailyQuizModal() {
   document.getElementById('quiz-feedback').textContent = '';
   document.getElementById('quiz-score').textContent = '';
 
-  // Title/description
   document.getElementById('quiz-title').textContent = "Daily Civics Quiz";
   document.getElementById('quiz-desc').textContent =
     "Test your United States government, economics, and history knowledge.";
 
-  fetch("dailyquiz.json")
+  // Load Daily quiz dataset and render using Daily engine
+  fetch('civics-questions.json')
     .then(res => res.json())
     .then(data => {
-      civicsQuestions = data;
-      renderCivicsQuestion();
+      // Daily engine variables
+      window.quizQuestions = data;       // keep Daily’s variables
+      window.currentQuestion = 0;
+      window.score = 0;
+
+      renderQuestion(); // Daily renderer already in your file
+
+      // Wire Daily handlers to this modal instance
+      const submitBtn = document.getElementById('quiz-submit');
+      const nextBtn = document.getElementById('quiz-next');
+
+      // Daily submit: reads inputs with name="opt"
+      submitBtn.onclick = () => {
+        const selected = document.querySelector('input[name="opt"]:checked');
+        if (!selected) {
+          alert("Pick an answer!");
+          return;
+        }
+        const q = quizQuestions[currentQuestion];
+        const selectedIndex = parseInt(selected.value, 10);
+        const correctText = q.options[q.answer];
+        const feedbackEl = document.getElementById("quiz-feedback");
+
+        if (selectedIndex === q.answer) {
+          score++;
+          feedbackEl.className = "correct";
+          feedbackEl.innerHTML = `✅ Correct — ${correctText}<br><small>${q.explanation}</small>`;
+        } else {
+          feedbackEl.className = "incorrect";
+          feedbackEl.innerHTML = `❌ Incorrect. Correct answer: ${correctText}<br><small>${q.explanation}</small>`;
+        }
+
+        submitBtn.style.display = "none";
+        nextBtn.style.display = "inline-block";
+      };
+
+      nextBtn.onclick = () => {
+        currentQuestion++;
+        if (currentQuestion < quizQuestions.length) {
+          renderQuestion();
+          document.getElementById("quiz-feedback").textContent = "";
+          document.getElementById("quiz-submit").style.display = "inline-block";
+          document.getElementById("quiz-next").style.display = "none";
+        } else {
+          document.getElementById("quiz-question").innerHTML = "";
+          document.getElementById("quiz-options").innerHTML = "";
+          document.getElementById("quiz-progress").textContent = "";
+          document.getElementById("quiz-progress-fill").style.width = "100%";
+          document.getElementById("quiz-feedback").textContent = "";
+          document.getElementById("quiz-score").textContent =
+            `Final Score: ${score}/${quizQuestions.length} — ${score >= 12 ? "Pass ✅" : "Try Again ❌"}`;
+          document.getElementById("quiz-next").style.display = "none";
+        }
+      };
     })
     .catch(err => {
       console.error("Error loading daily quiz:", err);
@@ -789,16 +837,12 @@ function openDailyQuizModal() {
     });
 }
 
-// === USCIS 2008 Practice Test Launcher ===
+// === USCIS 2008 Practice Test (uses name="civics-choice") ===
 function openPractice2008Modal() {
   const modal = document.getElementById('civicsQuizModal');
-  if (!modal) {
-    console.error("Civics Quiz Modal not found.");
-    return;
-  }
+  if (!modal) return;
   modal.style.display = 'block';
 
-  // Reset quiz state
   currentQuestionIndex = 0;
   civicsScore = 0;
   document.getElementById('quiz-progress-fill').style.width = '0%';
@@ -806,7 +850,6 @@ function openPractice2008Modal() {
   document.getElementById('quiz-feedback').textContent = '';
   document.getElementById('quiz-score').textContent = '';
 
-  // Title/description
   document.getElementById('quiz-title').textContent = "Practice Test (2008)";
   document.getElementById('quiz-desc').textContent =
     "Official 2008 Naturalization Civics Practice Test — 100 questions.";
@@ -816,6 +859,12 @@ function openPractice2008Modal() {
     .then(data => {
       civicsQuestions = data;
       renderCivicsQuestion();
+
+      // Wire practice submit to checkCivicsAnswer
+      const submitBtn = document.getElementById('quiz-submit');
+      const nextBtn = document.getElementById('quiz-next');
+      submitBtn.onclick = () => checkCivicsAnswer();
+      // next button is set inside checkCivicsAnswer
     })
     .catch(err => {
       console.error("Error loading 2008 test:", err);
@@ -823,16 +872,12 @@ function openPractice2008Modal() {
     });
 }
 
-// === USCIS 2025 Practice Test Launcher ===
+// === USCIS 2025 Practice Test (uses name="civics-choice") ===
 function openPractice2025Modal() {
   const modal = document.getElementById('civicsQuizModal');
-  if (!modal) {
-    console.error("Civics Quiz Modal not found.");
-    return;
-  }
+  if (!modal) return;
   modal.style.display = 'block';
 
-  // Reset quiz state
   currentQuestionIndex = 0;
   civicsScore = 0;
   document.getElementById('quiz-progress-fill').style.width = '0%';
@@ -840,7 +885,6 @@ function openPractice2025Modal() {
   document.getElementById('quiz-feedback').textContent = '';
   document.getElementById('quiz-score').textContent = '';
 
-  // Title/description
   document.getElementById('quiz-title').textContent = "Practice Test (2025)";
   document.getElementById('quiz-desc').textContent =
     "New 2025 Naturalization Civics Practice Test — 128 questions.";
@@ -850,6 +894,12 @@ function openPractice2025Modal() {
     .then(data => {
       civicsQuestions = data;
       renderCivicsQuestion();
+
+      // Wire practice submit to checkCivicsAnswer
+      const submitBtn = document.getElementById('quiz-submit');
+      const nextBtn = document.getElementById('quiz-next');
+      submitBtn.onclick = () => checkCivicsAnswer();
+      // next button is set inside checkCivicsAnswer
     })
     .catch(err => {
       console.error("Error loading 2025 test:", err);
@@ -985,12 +1035,7 @@ function shuffleArray(arr) {
   return a;
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  const submitBtn = document.getElementById('quiz-submit');
-  if (submitBtn) {
-    submitBtn.onclick = () => checkCivicsAnswer();
-  }
-});
+// Submit is wired inside each launcher (Daily or Practice) — no global wiring here.
 
 // === HELPER: render a single Cabinet member card ===
 
