@@ -131,15 +131,10 @@ function renderOfficials(state, filter) {
 }
 
 // === Ballotpedia lookup handler ===
+// (no longer used since we embed the tool directly)
 function lookupBallot() {
-  const inputEl = document.getElementById('ballot-lookup');
-  if (!inputEl) return;
-  const value = inputEl.value.trim();
-  if (!value) return;
-
-  const encoded = encodeURIComponent(value);
-  // Redirect directly to Ballotpedia’s ballot page for that address/ZIP (same tab)
-  window.location.href = `https://ballotpedia.org/Sample_Ballot_Lookup?address=${encoded}`;
+  // kept as a stub in case other code references it
+  console.warn("lookupBallot() is not used — Ballotpedia tool is embedded directly.");
 }
 
 // === POLL CATEGORIES (authoritative sources) ===
@@ -174,7 +169,7 @@ const pollCategories = [
   {
     label: "House",
     polls: [
-      { name: "270toWin – House Polls", source: "270toWin", url: "https://www.270towin.com/polls/latest-2026-house-election-polls/index.php" },
+      { name: "270toWin – House Polls", source: "270toWin", url: "https://www.270toWin.com/polls/latest-2026-house-election-polls/index.php" },
       { name: "RealClearPolling – House Polls", source: "RCP", url: "https://www.realclearpolling.com/latest-polls/house" },
       { name: "Race to the WH – House Polls", source: "Race to the WH", url: "https://www.racetothewh.com/house/polls/24" },
       { name: "Sabato’s Crystal Ball – House Ratings", source: "Sabato", url: "https://centerforpolitics.org/crystalball/2026-house/" }
@@ -227,39 +222,24 @@ function showPolls() {
     });
   }
 
-  // === Elections Section (Ballotpedia-driven) ===
+  // === Elections Section (Ballotpedia-driven, embedded tool) ===
   const electionsContainer = document.getElementById('elections-cards');
   if (electionsContainer) {
     electionsContainer.innerHTML = '';
 
-    // --- Lookup bar (address/ZIP) ---
-    const lookupBlock = document.createElement('div');
-    lookupBlock.className = 'elections-block';
-    lookupBlock.innerHTML = `
+    // --- Embedded Ballotpedia Lookup Tool ---
+    const ballotpediaBlock = document.createElement('div');
+    ballotpediaBlock.className = 'elections-block';
+    ballotpediaBlock.innerHTML = `
       <h3>Find your personalized ballot</h3>
-      <div class="lookup-controls">
-        <input id="ballot-lookup" type="text" placeholder="Enter your address or ZIP" aria-label="Address or ZIP" />
-        <button id="ballot-lookup-btn" type="button">Search</button>
-      </div>
-      <p class="lookup-tip">You’ll be taken to Ballotpedia’s ballot page with offices and measures for your location.</p>
+      <iframe 
+        src="https://ballotpedia.org/Sample_Ballot_Lookup" 
+        title="Ballotpedia Sample Ballot Lookup" 
+        style="width:100%; height:600px; border:1px solid #ccc; border-radius:8px;">
+      </iframe>
+      <p class="lookup-tip">Powered by Ballotpedia — enter your address or ZIP to see your ballot.</p>
     `;
-    electionsContainer.appendChild(lookupBlock);
-
-    // Wire up search + auto-clear on blur
-    const lookupBtn = document.getElementById('ballot-lookup-btn');
-    if (lookupBtn) {
-      lookupBtn.addEventListener('click', lookupBallot);
-    }
-    const lookupInput = document.getElementById('ballot-lookup');
-    if (lookupInput) {
-      lookupInput.addEventListener('blur', () => {
-        lookupInput.value = ''; // clears when clicking outside
-      });
-      // Optional: Enter key submits
-      lookupInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') lookupBallot();
-      });
-    }
+    electionsContainer.appendChild(ballotpediaBlock);
 
     // --- Upcoming Elections ---
     const upcomingBlock = document.createElement('div');
