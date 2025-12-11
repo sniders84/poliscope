@@ -820,32 +820,32 @@ function renderCivicsQuestion() {
 
   choices = shuffleArray(choices);
 
-  const isMulti = q.type === "multi-select";
-  choices.forEach((opt, idx) => {
-    const id = `opt-${currentQuestionIndex}-${idx}`;
-    const wrapper = document.createElement('div');
-    wrapper.className = 'quiz-choice';
+const isMulti = q.type === "multi-select";
+choices.forEach((opt, idx) => {
+  const id = `opt-${currentQuestionIndex}-${idx}`;
+  const wrapper = document.createElement('div');
+  wrapper.className = 'quiz-choice';
 
-    const input = document.createElement('input');
-    input.type = isMulti ? 'checkbox' : 'radio';
-    input.name = 'civics-choice';
-    input.id = id;
-    input.value = opt;
+  const input = document.createElement('input');
+  input.type = isMulti ? 'checkbox' : 'radio';
+  input.name = 'civics-choice';
+  input.id = id;
+  input.value = opt;
 
-    const label = document.createElement('label');
-    label.setAttribute('for', id);
-    label.textContent = opt;
+  const label = document.createElement('label');
+  label.setAttribute('for', id);
+  label.textContent = opt;
 
-    wrapper.appendChild(input);
-    wrapper.appendChild(label);
-    optionsDiv.appendChild(wrapper);
-  });
+  wrapper.appendChild(input);
+  wrapper.appendChild(label);
+  optionsDiv.appendChild(wrapper);
+});
 
-  // Progress bar
-  const progress = ((currentQuestionIndex + 1) / civicsQuestions.length) * 100;
-  document.getElementById('quiz-progress-fill').style.width = `${progress}%`;
-  document.getElementById('quiz-progress').textContent =
-    `Question ${currentQuestionIndex + 1} of ${civicsQuestions.length}`;
+// Progress bar
+const progress = ((currentQuestionIndex + 1) / civicsQuestions.length) * 100;
+document.getElementById('quiz-progress-fill').style.width = `${progress}%`;
+document.getElementById('quiz-progress').textContent =
+  `Question ${currentQuestionIndex + 1} of ${civicsQuestions.length}`;
 }
 
 // === Evaluate selection with explanations and multi-select support ===
@@ -877,7 +877,7 @@ function checkCivicsAnswer() {
   if (isCorrect) {
     civicsScore++;
     feedback.style.color = "limegreen";
-    feedback.textContent = "Correct.";
+    feedback.textContent = "Correct!";
   } else {
     feedback.style.color = "red";
     const incorrectSelections = selected.filter(s => !q.answers.includes(s));
@@ -893,6 +893,7 @@ function checkCivicsAnswer() {
     feedback.textContent = detail;
   }
 
+  // Explanation support
   if (q.explanation) {
     feedback.textContent += ` ${q.explanation}`;
   }
@@ -922,6 +923,46 @@ function shuffleArray(arr) {
     [a[i], a[j]] = [a[j], a[i]];
   }
   return a;
+}
+
+// === Audit quiz data: add distractors, enforce difficulty ===
+function auditQuizData(data) {
+  const genericDistractors = [
+    "Bill of Rights","Articles of Confederation","Declaration of Independence",
+    "State constitution","Governor","Vice President","Supreme Court",
+    "Congress","Cabinet","John Adams","Checks and balances","Separation of powers",
+    "Green Party","Libertarian Party","Federal Reserve","Senate","House of Commons","Prime Minister"
+  ];
+
+  function randomTwoDigitUnder30() {
+    return Math.floor(Math.random() * 21) + 10; // 10–30
+  }
+
+  return data.map(q => {
+    if (q.id === "q7") {
+      q.choices = [q.answers[0]];
+      while (q.choices.length < 4) {
+        const distractor = randomTwoDigitUnder30().toString();
+        if (!q.choices.includes(distractor)) q.choices.push(distractor);
+      }
+    } else if (q.id === "q43") {
+      q.answers = q.answers.filter(a => a !== "Democrat" && a !== "Republican");
+      q.choices = [...q.answers, "Green Party", "Libertarian Party"];
+    } else if (q.type === "open-response") {
+      q.choices = [q.answers[0]];
+      while (q.choices.length < 4) {
+        const d = genericDistractors[Math.floor(Math.random() * genericDistractors.length)];
+        if (!q.choices.includes(d)) q.choices.push(d);
+      }
+    } else if (q.type === "multi-select") {
+      q.choices = [...q.answers];
+      while (q.choices.length < 5) {
+        const d = genericDistractors[Math.floor(Math.random() * genericDistractors.length)];
+        if (!q.choices.includes(d)) q.choices.push(d);
+      }
+    }
+    return q;
+  });
 }
 
 // === Helper: render multilingual link row (expanded) ===
