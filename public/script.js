@@ -346,6 +346,43 @@ function showQuizzes() {
   showTab('quizzes');
 }
 
+const pollCategories = [
+  {
+    label: "President",
+    polls: [
+      { name: "Ballotpedia – Presidential Approval Index", source: "Ballotpedia", url: "https://ballotpedia.org/Ballotpedia%27s_Polling_Index:_Presidential_approval_rating" },
+      { name: "Rasmussen – Daily Tracking Poll", source: "Rasmussen", url: "https://www.rasmussenreports.com/public_content/current_events/politics/daily_presidential_tracking_poll" },
+      { name: "AP-NORC – Polling Tracker", source: "AP-NORC", url: "https://apnews.com/projects/polling-tracker/" }
+    ]
+  },
+  {
+    label: "Governor",
+    polls: [
+      { name: "270toWin – Governor Polls", source: "270toWin", url: "https://www.270towin.com/polls/latest-2026-governor-election-polls/index.php" }
+    ]
+  },
+  {
+    label: "Senate",
+    polls: [
+      { name: "270toWin – Senate Polls", source: "270toWin", url: "https://www.270towin.com/polls/latest-2026-senate-election-polls/" }
+    ]
+  },
+  {
+    label: "House",
+    polls: [
+      { name: "RealClearPolling – House Polls", source: "RCP", url: "https://www.realclearpolling.com/latest-polls/house" }
+    ]
+  },
+  {
+    label: "Mayor",
+    polls: [
+      { name: "Ballotpedia – Municipal Elections", source: "Ballotpedia", url: "https://ballotpedia.org/Municipal_elections" },
+      { name: "RealClearPolling – Mayoral Polls", source: "RCP", url: "https://www.realclearpolling.com/latest-polls" },
+      { name: "Race to the WH – Mayoral Forecasts", source: "Race to the WH", url: "https://www.racetothewh.com/" }
+    ]
+  }
+];
+
 // Polls tab
 function showPolls() {
   showTab('polls');
