@@ -394,7 +394,6 @@ function showPolls() {
       <h3>Upcoming Elections</h3>
       <ul>
         <li><a href="https://ballotpedia.org/Elections_calendar" target="_blank">Ballotpedia – Full Elections Calendar</a></li>
-        <li><a href="https://ballotpedia.org/State_elections,_2025" target="_blank">Ballotpedia – State Elections 2025</a></li>
       </ul>
     `;
     electionsContainer.appendChild(upcomingBlock);
