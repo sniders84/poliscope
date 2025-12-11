@@ -8684,3 +8684,18 @@ nav .tab.active {
   font-size: 0.9rem;
   color: #666;
 }
+/* === Embedded Ballotpedia Lookup Styling === */
+.elections-block iframe {
+  width: 100%;
+  height: 600px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.lookup-tip {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #666;
+  text-align: center;
+}
