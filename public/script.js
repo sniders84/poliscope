@@ -354,7 +354,7 @@ function showVoting() {
       console.error('Voting fetch failed:', err);
     });
 }
-// === Citizenship & Immigration data (corrected links, expanded multilingual) ===
+// === Citizenship & Immigration data (corrected links + expanded multilingual) ===
 const citizenshipSections = [
   {
     label: "Naturalization process",
@@ -366,7 +366,7 @@ const citizenshipSections = [
         urlEn: "https://www.uscis.gov/n-400",
         urlEs: "https://www.uscis.gov/es/n-400",
         langLinks: [
-          { label: "Multilingual resources", url: "https://www.uscis.gov/tools/multilingual-resource-center" }
+          { label: "USCIS Multilingual Resource Center (all languages)", url: "https://www.uscis.gov/tools/multilingual-resource-center" }
         ]
       },
       {
@@ -376,8 +376,8 @@ const citizenshipSections = [
         urlEs: "https://www.uscis.gov/es/citizenship/learn-about-citizenship/the-naturalization-interview-and-test",
         langLinks: [
           { label: "Study for the test (multilingual hub)", url: "https://www.uscis.gov/citizenship/find-study-materials-and-resources/study-for-the-test" },
-          { label: "Citizenship multilingual resources", url: "https://www.uscis.gov/citizenship/find-study-materials-and-resources/citizenship-multilingual-resources" },
-          { label: "USCIS Multilingual Resource Center", url: "https://www.uscis.gov/tools/multilingual-resource-center" }
+          { label: "Citizenship multilingual resources (languages list)", url: "https://www.uscis.gov/citizenship/find-study-materials-and-resources/citizenship-multilingual-resources" },
+          { label: "USCIS Multilingual Resource Center (all languages)", url: "https://www.uscis.gov/tools/multilingual-resource-center" }
         ]
       }
     ]
@@ -392,7 +392,7 @@ const citizenshipSections = [
         urlEn: "https://www.uscis.gov/family",
         urlEs: "https://www.uscis.gov/es/family",
         langLinks: [
-          { label: "USCIS Multilingual Resource Center", url: "https://www.uscis.gov/tools/multilingual-resource-center" }
+          { label: "USCIS Multilingual Resource Center (all languages)", url: "https://www.uscis.gov/tools/multilingual-resource-center" }
         ]
       },
       {
@@ -401,7 +401,7 @@ const citizenshipSections = [
         urlEn: "https://www.uscis.gov/working-in-the-united-states",
         urlEs: "https://www.uscis.gov/es/working-in-the-united-states",
         langLinks: [
-          { label: "USCIS Multilingual Resource Center", url: "https://www.uscis.gov/tools/multilingual-resource-center" }
+          { label: "USCIS Multilingual Resource Center (all languages)", url: "https://www.uscis.gov/tools/multilingual-resource-center" }
         ]
       },
       {
@@ -417,12 +417,12 @@ const citizenshipSections = [
     targetId: "asylum-cards",
     items: [
       {
-        title: "Refugees and asylum (overview)",
+        title: "Refugees & asylum (overview)",
         desc: "Eligibility, filing, interviews, and key timelines for asylum and refugee programs.",
         urlEn: "https://www.uscis.gov/humanitarian/refugees-asylum",
         urlEs: "https://www.uscis.gov/es/humanitario/refugiados-y-asilo",
         langLinks: [
-          { label: "USCIS Multilingual Resource Center", url: "https://www.uscis.gov/tools/multilingual-resource-center" }
+          { label: "USCIS Multilingual Resource Center (all languages)", url: "https://www.uscis.gov/tools/multilingual-resource-center" }
         ]
       },
       {
@@ -433,7 +433,7 @@ const citizenshipSections = [
       },
       {
         title: "Employment rights for refugees and asylees (DOJ)",
-        desc: "Know your right to work and where to get help for discrimination or verification issues.",
+        desc: "Right to work protections and help for discrimination or verification issues.",
         urlEn: "https://www.justice.gov/crt/page/file/917466/dl",
         langLinks: []
       }
@@ -445,16 +445,16 @@ const citizenshipSections = [
     items: [
       {
         title: "Study for the naturalization test",
-        desc: "Official USCIS study guides and practice materials for English and civics (with multilingual options).",
+        desc: "Official USCIS English and civics materials with multilingual options.",
         urlEn: "https://www.uscis.gov/citizenship/find-study-materials-and-resources/study-for-the-test",
         langLinks: [
-          { label: "Citizenship multilingual resources", url: "https://www.uscis.gov/citizenship/find-study-materials-and-resources/citizenship-multilingual-resources" },
-          { label: "USCIS Multilingual Resource Center", url: "https://www.uscis.gov/tools/multilingual-resource-center" }
+          { label: "Citizenship multilingual resources (languages list)", url: "https://www.uscis.gov/citizenship/find-study-materials-and-resources/citizenship-multilingual-resources" },
+          { label: "USCIS Multilingual Resource Center (all languages)", url: "https://www.uscis.gov/tools/multilingual-resource-center" }
         ]
       },
       {
         title: "Practice the civics test (hybrid mode)",
-        desc: "Use our hybrid quiz with multi-select and open-response answers (powered by uscistest.json).",
+        desc: "Use our hybrid quiz with multi-select and open-response answers (uscistest.json).",
         urlEn: "#",
         langLinks: []
       }
@@ -466,11 +466,11 @@ const citizenshipSections = [
     items: [
       {
         title: "USCIS official site",
-        desc: "Primary federal source for forms, policies, news, and application guidance.",
+        desc: "Primary federal source for forms, policies, news, and guidance.",
         urlEn: "https://www.uscis.gov",
         urlEs: "https://www.uscis.gov/es",
         langLinks: [
-          { label: "USCIS Multilingual Resource Center", url: "https://www.uscis.gov/tools/multilingual-resource-center" }
+          { label: "USCIS Multilingual Resource Center (all languages)", url: "https://www.uscis.gov/tools/multilingual-resource-center" }
         ]
       },
       {
@@ -478,12 +478,12 @@ const citizenshipSections = [
         desc: "Agency updates, policy info, and language access resources.",
         urlEn: "https://www.dhs.gov",
         langLinks: [
-          { label: "DHS multilingual and language access resources", url: "https://www.dhs.gov/publications-library/collections/multilingual-and-language-access-resources" }
+          { label: "DHS language access resources (multilingual)", url: "https://www.dhs.gov/publications-library/collections/multilingual-and-language-access-resources" }
         ]
       },
       {
         title: "Find local assistance",
-        desc: "Search for local USCIS offices and community organizations offering immigration help.",
+        desc: "Locate USCIS offices and community organizations offering immigration help.",
         urlEn: "https://www.uscis.gov/about-us/find-a-uscis-office",
         langLinks: []
       }
@@ -501,7 +501,7 @@ const citizenshipSections = [
       },
       {
         title: "Federal Register (immigration rules & notices)",
-        desc: "Proposed rules, notices, and updates that affect immigration processes.",
+        desc: "Proposed rules, notices, and updates affecting immigration processes.",
         urlEn: "https://www.federalregister.gov/",
         langLinks: []
       }
@@ -516,16 +516,16 @@ const citizenshipSections = [
         desc: "What changes after naturalization and how to exercise your civic rights and duties.",
         urlEn: "https://www.uscis.gov/citizenship-resource-center/new-us-citizens",
         langLinks: [
-          { label: "USCIS Multilingual Resource Center", url: "https://www.uscis.gov/tools/multilingual-resource-center" }
+          { label: "USCIS Multilingual Resource Center (all languages)", url: "https://www.uscis.gov/tools/multilingual-resource-center" }
         ]
       },
       {
         title: "Know your rights (immigrants, asylum seekers, refugees)",
-        desc: "Civil rights, anti‑discrimination protections, and employment rights with multilingual materials.",
+        desc: "Civil rights, anti-discrimination protections, and employment rights with multilingual materials.",
         urlEn: "https://www.justice.gov/crt",
         langLinks: [
-          { label: "DOJ Civil Rights Division resources", url: "https://www.justice.gov/crt" },
-          { label: "Multilingual Know Your Rights materials (community)", url: "https://www.miracoalition.org/know-your-rights-print-materials-in-multiple-language/" },
+          { label: "DHS language access resources (multilingual)", url: "https://www.dhs.gov/publications-library/collections/multilingual-and-language-access-resources" },
+          { label: "Community multilingual Know Your Rights materials", url: "https://www.miracoalition.org/know-your-rights-print-materials-in-multiple-language/" },
           { label: "Multilingual Know Your Rights cards", url: "https://www.nilc.org/resources/know-your-rights-card/" }
         ]
       }
@@ -533,7 +533,7 @@ const citizenshipSections = [
   }
 ];
 
-// === Citizenship/Immigration tab renderer (unchanged) ===
+// === Citizenship/Immigration tab renderer ===
 function showCitizenship() {
   showTab('citizenship');
 
@@ -543,7 +543,8 @@ function showCitizenship() {
 
     container.innerHTML = '';
 
-    const wrapper = document.createElement('div');
+    const wrapper = document.createElement
+        const wrapper = document.createElement('div');
     wrapper.className = 'resource-section';
 
     const header = document.createElement('h3');
@@ -556,15 +557,19 @@ function showCitizenship() {
     section.items.forEach(item => {
       const card = document.createElement('a');
       card.className = 'resource-card';
+
+      // Prefer direct language page if present; otherwise fall back to first available
       const url = item.urlEn || item.urlEs || item.urlZh || item.urlAr || item.url;
       card.href = url || '#';
       card.target = '_blank';
       card.rel = 'noopener noreferrer';
+
       card.innerHTML = `
         <h4>${item.title}</h4>
         <p class="card-desc">${item.desc}</p>
         ${renderLangRow(item)}
       `;
+
       grid.appendChild(card);
     });
 
@@ -573,7 +578,7 @@ function showCitizenship() {
   });
 }
 
-// Helper: render multilingual link row (supports dynamic list)
+// === Helper: render multilingual link row (expanded) ===
 function renderLangRow(item) {
   const links = [];
 
@@ -583,7 +588,7 @@ function renderLangRow(item) {
   if (item.urlZh) links.push(`<span class="lang-link"><a href="${item.urlZh}" target="_blank" rel="noopener noreferrer">中文</a></span>`);
   if (item.urlAr) links.push(`<span class="lang-link"><a href="${item.urlAr}" target="_blank" rel="noopener noreferrer">العربية</a></span>`);
 
-  // Additional multilingual links via langLinks array
+  // Additional multilingual hubs that list all available languages
   if (Array.isArray(item.langLinks)) {
     item.langLinks.forEach(l => {
       links.push(`<span class="lang-link"><a href="${l.url}" target="_blank" rel="noopener noreferrer">${l.label}</a></span>`);
@@ -593,50 +598,6 @@ function renderLangRow(item) {
   return links.length ? `<div class="lang-row">${links.join(' • ')}</div>` : '';
 }
 
-// Helper: render multilingual link row if available
-function renderLangRow(item) {
-  const links = [];
-  if (item.urlEn) links.push(`<span class="lang-link"><a href="${item.urlEn}" target="_blank" rel="noopener noreferrer">English</a></span>`);
-  if (item.urlEs) links.push(`<span class="lang-link"><a href="${item.urlEs}" target="_blank" rel="noopener noreferrer">Español</a></span>`);
-  if (item.urlZh) links.push(`<span class="lang-link"><a href="${item.urlZh}" target="_blank" rel="noopener noreferrer">中文</a></span>`);
-  if (item.urlAr) links.push(`<span class="lang-link"><a href="${item.urlAr}" target="_blank" rel="noopener noreferrer">العربية</a></span>`);
-  return links.length
-    ? `<div class="lang-row">${links.join(' • ')}</div>`
-    : '';
-}
-// === HELPER: render roster cards (if needed) ===
-function renderRosterCards(rosterData, chamberLabel, container) {
-  if (Array.isArray(rosterData)) {
-    rosterData.forEach(entry => {
-      const card = document.createElement('div');
-      card.className = 'link-card';
-      card.innerHTML = `
-        <h4>${chamberLabel} – ${entry.party}</h4>
-        <p class="card-desc">Click to view ${entry.party} members of the ${chamberLabel}.</p>
-        <a href="${entry.url}" target="_blank" class="card-button">Open</a>
-      `;
-      container.appendChild(card);
-    });
-  } else if (typeof rosterData === 'object' && rosterData.url) {
-    const card = document.createElement('div');
-    card.className = 'link-card';
-    card.innerHTML = `
-      <h4>${chamberLabel}</h4>
-      <p class="card-desc">Click to view ${chamberLabel} information for ${selectedState}.</p>
-      <a href="${rosterData.url}" target="_blank" class="card-button">Open</a>
-    `;
-    container.appendChild(card);
-  } else if (typeof rosterData === 'string') {
-    const card = document.createElement('div');
-    card.className = 'link-card';
-    card.innerHTML = `
-      <h4>${chamberLabel}</h4>
-      <p class="card-desc">Click to view ${chamberLabel} information for ${selectedState}.</p>
-      <a href="${rosterData}" target="_blank" class="card-button">Open</a>
-    `;
-    container.appendChild(card);
-  }
-}
 // === HELPER: render a single Cabinet member card ===
 
 function renderCabinetMember(member) {
