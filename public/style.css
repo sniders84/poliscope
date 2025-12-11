@@ -8529,15 +8529,17 @@ nav .tab.active {
 .poll-grid {
   display: grid !important;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)) !important;
-  gap: 16px !important;
-  margin-top: 16px;
+  gap: 20px !important;
+  margin-top: 20px;   /* spacing above polls grid */
+  margin-bottom: 40px; /* spacing below polls grid to separate from elections */
 }
 
 .poll-card {
-  background-color: #1e1e2f;
-  color: #f0f0f0;
+  background-color: var(--card-bg);
+  color: var(--text);
+  border: 1px solid var(--card-border);
   border-radius: 10px;
-  padding: 14px;
+  padding: 16px;
   text-align: center;
   box-shadow: 0 2px 6px rgba(0,0,0,0.4);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -8545,26 +8547,54 @@ nav .tab.active {
 
 .poll-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 0 2px #007bff, 0 2px 6px rgba(0,0,0,0.5);
+  box-shadow: 0 0 0 2px var(--accent-light), 0 2px 6px rgba(0,0,0,0.5);
 }
 
 .poll-card h4 {
   font-size: 1rem;
   margin: 0.5rem 0;
 }
-/* === FINAL Polls Grid Override === */
-.poll-grid {
-  display: grid !important;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)) !important;
-  gap: 16px !important;
+/* === Elections Section Styling === */
+.elections-block {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 
-.poll-card {
-  background-color: #1e1e2f;
-  color: #f0f0f0;
-  border-radius: 10px;
-  padding: 14px;
-  text-align: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+.elections-block h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+  color: var(--accent-light);
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 4px;
+}
+
+.elections-block ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.elections-block li {
+  margin-bottom: 8px;
+}
+
+.elections-block a {
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.elections-block a:hover {
+  color: var(--accent-light);
+  text-decoration: underline;
+}
+#polls-cards {
+  margin-bottom: 40px; /* pushes elections down */
+  border-bottom: 2px solid var(--card-border); /* optional divider line */
+  padding-bottom: 20px;
 }
