@@ -369,11 +369,16 @@ function showPolls() {
       category.polls.forEach(poll => {
         const card = document.createElement('div');
         card.className = 'poll-card';
-        card.innerHTML = `
-          <h4>${poll.name}</h4>
-          <p class="card-desc">Source: ${poll.source}</p>
-          <a href="${poll.url}" target="_blank" rel="noopener noreferrer">Open</a>
-        `;
+        const card = document.createElement('a');
+card.className = 'poll-card';
+card.href = poll.url;
+card.target = '_blank';
+card.rel = 'noopener noreferrer';
+card.innerHTML = `
+  <h4>${poll.name}</h4>
+  <p class="card-desc">Source: ${poll.source}</p>
+`;
+grid.appendChild(card);
         grid.appendChild(card);
       });
 
