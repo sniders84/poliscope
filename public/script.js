@@ -684,20 +684,33 @@ function showCitizenship() {
     grid.className = 'resource-grid';
 
     section.items.forEach(item => {
-      const card = document.createElement('a');
-      card.className = 'resource-card';
+      // Special handling for the USCIS civics test card
+      let card;
+      if (item.title.includes("Practice the civics test")) {
+        card = document.createElement('div');
+        card.className = 'resource-card';
+        card.innerHTML = `
+          <h4>${item.title}</h4>
+          <p class="card-desc">${item.desc}</p>
+          ${renderLangRow(item)}
+          <button class="card-button" onclick="openUSCISTestModal()">Launch Test</button>
+        `;
+      } else {
+        card = document.createElement('a');
+        card.className = 'resource-card';
 
-      // Prefer direct language page if present; otherwise fall back to first available
-      const url = item.urlEn || item.urlEs || item.urlZh || item.urlAr || item.url;
-      card.href = url || '#';
-      card.target = '_blank';
-      card.rel = 'noopener noreferrer';
+        // Prefer direct language page if present; otherwise fall back to first available
+        const url = item.urlEn || item.urlEs || item.urlZh || item.urlAr || item.url;
+        card.href = url || '#';
+        card.target = '_blank';
+        card.rel = 'noopener noreferrer';
 
-      card.innerHTML = `
-        <h4>${item.title}</h4>
-        <p class="card-desc">${item.desc}</p>
-        ${renderLangRow(item)}
-      `;
+        card.innerHTML = `
+          <h4>${item.title}</h4>
+          <p class="card-desc">${item.desc}</p>
+          ${renderLangRow(item)}
+        `;
+      }
 
       grid.appendChild(card);
     });
@@ -705,6 +718,96 @@ function showCitizenship() {
     wrapper.appendChild(grid);
     container.appendChild(wrapper);
   });
+}
+
+// === USCIS Civics Test Launcher & Quiz Logic ===
+let civicsQuestions = [];
+let currentQuestionIndex = 0;
+let score = 0;
+
+function openUSCISTestModal() {
+  const modal = document.getElementById('civicsQuizModal');
+  if (!modal) {
+    console.error("Civics Quiz Modal not found.");
+    return;
+  }
+  modal.style.display = 'block';
+
+  // Reset quiz state
+  currentQuestionIndex = 0;
+  score = 0;
+  document.getElementById('quiz-progress-fill').style.width = '0%';
+  document.getElementById('quiz-progress').textContent = '';
+  document.getElementById('quiz-feedback').textContent = '';
+  document.getElementById('quiz-score').textContent = '';
+
+  // Load questions from JSON
+  fetch('uscistest.json')
+    .then(res => res.json())
+    .then(data => {
+      civicsQuestions = data;
+      renderCivicsQuestion();
+    })
+    .catch(err => {
+      console.error("Error loading USCIS test JSON:", err);
+      document.getElementById('quiz-question').textContent = "Error loading test questions.";
+    });
+}
+
+function renderCivicsQuestion() {
+  if (!Array.isArray(civicsQuestions) || civicsQuestions.length === 0) return;
+
+  const q = civicsQuestions[currentQuestionIndex];
+  document.getElementById('quiz-question').textContent = q.question;
+
+  const optionsDiv = document.getElementById('quiz-options');
+  optionsDiv.innerHTML = '';
+
+  q.options.forEach((opt, idx) => {
+    const btn = document.createElement('button');
+    btn.className = 'quiz-option';
+    btn.textContent = opt;
+    btn.addEventListener('click', () => checkCivicsAnswer(idx));
+    optionsDiv.appendChild(btn);
+  });
+
+  // Update progress
+  const progress = ((currentQuestionIndex + 1) / civicsQuestions.length) * 100;
+  document.getElementById('quiz-progress-fill').style.width = `${progress}%`;
+  document.getElementById('quiz-progress').textContent =
+    `Question ${currentQuestionIndex + 1} of ${civicsQuestions.length}`;
+}
+
+function checkCivicsAnswer(selectedIndex) {
+  const q = civicsQuestions[currentQuestionIndex];
+  const feedback = document.getElementById('quiz-feedback');
+
+  if (selectedIndex === q.answer) {
+    score++;
+    feedback.textContent = "Correct!";
+    feedback.style.color = "limegreen";
+  } else {
+    feedback.textContent = `Incorrect. Correct answer: ${q.options[q.answer]}`;
+    feedback.style.color = "red";
+  }
+
+  // Show Next button
+  const nextBtn = document.getElementById('quiz-next');
+  nextBtn.style.display = 'inline-block';
+  nextBtn.onclick = () => {
+    currentQuestionIndex++;
+    if (currentQuestionIndex < civicsQuestions.length) {
+      renderCivicsQuestion();
+      feedback.textContent = '';
+      nextBtn.style.display = 'none';
+    } else {
+      document.getElementById('quiz-question').textContent = "Test complete!";
+      document.getElementById('quiz-options').innerHTML = '';
+      document.getElementById('quiz-score').textContent =
+        `You scored ${score} out of ${civicsQuestions.length}`;
+      nextBtn.style.display = 'none';
+    }
+  };
 }
 
 // === Helper: render multilingual link row (expanded) ===
