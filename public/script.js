@@ -57,7 +57,6 @@ let officialsContainer = null;
 let searchBar = null;
 
 // === DATA LOADING ===
-// Load all major JSON datasets at once
 Promise.all([
   fetch('federalOfficials.json').then(res => res.json()),
   fetch('senators.json').then(res => res.json()),
@@ -71,13 +70,11 @@ Promise.all([
   fetch('voting-data.json').then(res => res.json())
 ])
 .then(([federal, sens, govs, cabinet, reps, ltGovs, scotus, groups, links, voting]) => {
-  // Keep global arrays filled
   governors = govs;
   ltGovernors = ltGovs;
   senators = sens;
   houseReps = reps;
 
-  // Merge major federal data sources
   const allOfficials = [
     ...federal,
     ...cabinet,
@@ -109,212 +106,23 @@ Promise.all([
   showsData = shows;
 })
 .catch(err => console.error('Error loading podcasts or shows JSON:', err));
-console.log('podcastsData length:', podcastsData.length);
-console.log('showsData length:', showsData.length);
-
-// Modal refs (Officials modal)
-let officialsModal = null;
-let officialsModalContent = null;
-let officialsModalCloseBtn = null;
-
-// === Enhanced tab switcher with active highlight ===
+// === Tab switcher ===
 function showTab(id) {
-  // Hide all tab content
   document.querySelectorAll('.tab-content').forEach(tab => {
     tab.style.display = 'none';
   });
-
-  // Show selected tab
   const activeTab = document.getElementById(id);
   if (activeTab) activeTab.style.display = 'block';
 
-  // Reset all tab buttons
   document.querySelectorAll('nav .tab').forEach(btn => {
     btn.classList.remove('active');
   });
-
-  // Highlight the clicked button
   const clickedBtn = document.querySelector(`nav .tab[data-tab="${id}"]`);
   if (clickedBtn) clickedBtn.classList.add('active');
 }
 
-function showStartupHub() {
-  showTab('startup-hub');
-}
-
-function showPodcastsShows() {
-  console.log('showPodcastsShows() start');
-
-  // ensure the tab is visible
-  showTab('podcasts-shows');
-
-  const container = document.getElementById('podcasts-cards');
-  if (!container) {
-    console.error('podcasts-cards container not found');
-    return;
-  }
-  container.innerHTML = '';
-
-  // helper to create a section
-  const renderSection = (titleText, items, type) => {
-    const section = document.createElement('div');
-    section.className = 'podcast-show-section';
-
-    // COLLAPSIBLE HEADER
-    const header = document.createElement('div');
-    header.className = "section-header open";
-
-    const title = document.createElement('h3');
-    title.textContent = titleText;
-
-    const arrow = document.createElement('span');
-    arrow.className = "section-arrow";
-    arrow.textContent = "▶";
-
-    header.appendChild(title);
-    header.appendChild(arrow);
-    section.appendChild(header);
-
-    // SECTION BODY
-    const body = document.createElement('div');
-    body.className = "section-body open";
-
-    const grid = document.createElement('div');
-    grid.className = 'podcast-show-grid';
-
-    if (!Array.isArray(items) || items.length === 0) {
-      const msg = document.createElement('p');
-      msg.textContent = `No ${titleText.toLowerCase()} available.`;
-      grid.appendChild(msg);
-    } else {
-      // Render all items
-      items.forEach(item => {
-        try {
-          const card = document.createElement('div');
-          card.className = 'podcast-show-card';
-
-          const logoPath = item.logo_slug ? `assets/${item.logo_slug}` : 'assets/default-logo.png';
-
-          card.innerHTML = `
-            <div class="logo-wrapper" role="button" title="Open ${item.title}">
-              <img src="${logoPath}" alt="${item.title} logo" onerror="this.onerror=null;this.src='assets/default-logo.png';" />
-            </div>
-            <div class="card-content">
-              <h4 class="card-title">${escapeHtml(item.title)}</h4>
-              <p class="category">${escapeHtml(item.category || '')} – ${escapeHtml(item.source || '')}</p>
-              <p class="descriptor">${escapeHtml(item.descriptor || '')}</p>
-              <div class="card-actions">
-                <button class="favorite-btn" aria-label="favorite"></button>
-              </div>
-            </div>
-          `;
-
-          // Logo click
-          const logoBtn = card.querySelector('.logo-wrapper');
-          if (logoBtn) {
-            logoBtn.addEventListener('click', () => {
-              if (item.official_url) window.open(item.official_url, '_blank');
-            });
-          }
-
-          // Favorite toggle
-          const favBtn = card.querySelector('.favorite-btn');
-          if (favBtn) {
-            const isFav = isFavorite(item.type || type, item.title);
-            updateFavoriteButton(favBtn, isFav);
-
-            favBtn.addEventListener('click', (e) => {
-              e.stopPropagation();
-              const nowFav = toggleFavorite(item.type || type, item.title);
-              updateFavoriteButton(favBtn, nowFav);
-            });
-          }
-
-          grid.appendChild(card);
-        } catch (err) {
-          console.error('Error rendering item', item, err);
-        }
-      });
-    }
-
-    body.appendChild(grid);
-    section.appendChild(body);
-
-    // COLLAPSE/EXPAND
-    header.addEventListener('click', () => {
-      const isOpen = body.classList.contains("open");
-      if (isOpen) {
-        body.classList.remove("open");
-        body.classList.add("closed");
-        header.classList.remove("open");
-        arrow.textContent = "▶";
-      } else {
-        body.classList.remove("closed");
-        body.classList.add("open");
-        header.classList.add("open");
-        arrow.textContent = "▼";
-      }
-    });
-
-    return section;
-  };
-
-  function escapeHtml(str) {
-    if (!str) return '';
-    return String(str)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#39;');
-  }
-  function escapeAttr(str) {
-    return escapeHtml(str).replace(/\s+/g, ' ');
-  }
-
-  // FAVORITES SECTION
-  const favoriteItems = [];
-
-  if (Array.isArray(window.favorites.podcasts)) {
-    window.favorites.podcasts.forEach(title => {
-      const item = podcastsData.find(p => p.title === title);
-      if (item) favoriteItems.push({ ...item, type: 'podcasts' });
-    });
-  }
-
-  if (Array.isArray(window.favorites.shows)) {
-    window.favorites.shows.forEach(title => {
-      const item = showsData.find(s => s.title === title);
-      if (item) favoriteItems.push({ ...item, type: 'shows' });
-    });
-  }
-
-  // APPEND SECTIONS
-  container.appendChild(renderSection('Favorites', favoriteItems, 'favorites'));
-  container.appendChild(renderSection('Podcasts', podcastsData || [], 'podcasts'));
-  container.appendChild(renderSection('Shows', showsData || [], 'shows'));
-
-  // SEARCH
-  const tabSearch = document.getElementById('podcasts-search-bar');
-  if (tabSearch) {
-    tabSearch.value = tabSearch.value || '';
-    tabSearch.removeEventListener('input', tabSearch._podcastHandler || (() => {}));
-    const handler = () => {
-      const term = tabSearch.value.toLowerCase().trim();
-      container.querySelectorAll('.podcast-show-card').forEach(card => {
-        const title = (card.querySelector('.card-title')?.textContent || '').toLowerCase();
-        const desc = (card.querySelector('.descriptor')?.textContent || '').toLowerCase();
-        card.style.display = (title.includes(term) || desc.includes(term)) ? '' : 'none';
-      });
-    };
-    tabSearch.addEventListener('input', handler);
-    tabSearch._podcastHandler = handler;
-  }
-
-  console.log('showPodcastsShows() finished rendering');
-}
-
-// === Tab helpers (corrected and complete) ===
+function showStartupHub() { showTab('startup-hub'); }
+function showQuizzes() { showTab('quizzes'); }
 
 // Officials tab stub
 function renderOfficials(state, filter) {
@@ -322,11 +130,17 @@ function renderOfficials(state, filter) {
   // TODO: implement actual rendering logic for officials
 }
 
-// Quizzes tab
-function showQuizzes() {
-  showTab('quizzes');
-}
+// === Ballotpedia lookup handler ===
+function lookupBallot() {
+  const inputEl = document.getElementById('ballot-lookup');
+  if (!inputEl) return;
+  const value = inputEl.value.trim();
+  if (!value) return;
 
+  const encoded = encodeURIComponent(value);
+  window.open(`https://ballotpedia.org/Sample_Ballot_Lookup?address=${encoded}`, '_blank');
+}
+// === POLL CATEGORIES (authoritative sources) ===
 const pollCategories = [
   {
     label: "President",
@@ -349,7 +163,7 @@ const pollCategories = [
   {
     label: "Senate",
     polls: [
-      { name: "270toWin – Senate Polls", source: "270toWin", url: "https://www.270toWin.com/polls/latest-2026-senate-election-polls/" },
+      { name: "270toWin – Senate Polls", source: "270toWin", url: "https://www.270towin.com/polls/latest-2026-senate-election-polls/" },
       { name: "RealClearPolling – Senate Polls", source: "RCP", url: "https://www.realclearpolling.com/latest-polls/senate" },
       { name: "Race to the WH – Senate Polls", source: "Race to the WH", url: "https://www.racetothewh.com/senate/26polls" },
       { name: "Cook Political Report – Senate Ratings", source: "Cook Political", url: "https://www.cookpolitical.com/ratings/senate-race-ratings" }
@@ -358,29 +172,20 @@ const pollCategories = [
   {
     label: "House",
     polls: [
-      { name: "270toWin – House Polls", source: "270toWin", url: "https://www.270toWin.com/polls/latest-2026-house-election-polls/index.php" },
+      { name: "270toWin – House Polls", source: "270toWin", url: "https://www.270towin.com/polls/latest-2026-house-election-polls/index.php" },
       { name: "RealClearPolling – House Polls", source: "RCP", url: "https://www.realclearpolling.com/latest-polls/house" },
       { name: "Race to the WH – House Polls", source: "Race to the WH", url: "https://www.racetothewh.com/house/polls/24" },
       { name: "Sabato’s Crystal Ball – House Ratings", source: "Sabato", url: "https://centerforpolitics.org/crystalball/2026-house/" }
     ]
   },
-{
-  label: "Mayor",
-  polls: [
-    { 
-      name: "Ballotpedia – Local Elections Lookup", 
-      source: "Ballotpedia", 
-      url: "https://ballotpedia.org/Sample_Ballot_Lookup" 
-    },
-    { 
-      name: "Ballotpedia – How to Find Local Elections", 
-      source: "Ballotpedia", 
-      url: "https://ballotpedia.org/How_to_find_information_about_local_elections" 
-    }
-  ]
-}
+  {
+    label: "Mayor",
+    polls: [
+      { name: "Ballotpedia – Local Elections Lookup", source: "Ballotpedia", url: "https://ballotpedia.org/Sample_Ballot_Lookup" },
+      { name: "Ballotpedia – How to Find Local Elections", source: "Ballotpedia", url: "https://ballotpedia.org/How_to_find_information_about_local_elections" }
+    ]
+  }
 ];
-
 // === Polls tab ===
 function showPolls() {
   showTab('polls');
@@ -424,13 +229,31 @@ function showPolls() {
   if (electionsContainer) {
     electionsContainer.innerHTML = '';
 
+    // --- Lookup bar (address/ZIP) ---
+    const lookupBlock = document.createElement('div');
+    lookupBlock.className = 'elections-block';
+    lookupBlock.innerHTML = `
+      <h3>Find your personalized ballot</h3>
+      <div class="lookup-controls">
+        <input id="ballot-lookup" type="text" placeholder="Enter your address or ZIP" aria-label="Address or ZIP" />
+        <button id="ballot-lookup-btn" type="button">Search</button>
+      </div>
+      <p class="lookup-tip">You’ll be taken to Ballotpedia’s ballot page with offices and measures for your location.</p>
+    `;
+    electionsContainer.appendChild(lookupBlock);
+
+    const lookupBtn = document.getElementById('ballot-lookup-btn');
+    if (lookupBtn) {
+      lookupBtn.addEventListener('click', lookupBallot);
+    }
+
     // --- Upcoming Elections ---
     const upcomingBlock = document.createElement('div');
     upcomingBlock.className = 'elections-block';
     upcomingBlock.innerHTML = `
       <h3>Upcoming Elections</h3>
       <ul>
-        <li><a href="https://ballotpedia.org/Elections_calendar" target="_blank">Ballotpedia – Full Elections Calendar</a></li>
+        <li><a href="https://ballotpedia.org/Elections_calendar" target="_blank" rel="noopener noreferrer">Ballotpedia – Full Elections Calendar</a></li>
       </ul>
     `;
     electionsContainer.appendChild(upcomingBlock);
@@ -441,8 +264,8 @@ function showPolls() {
     resultsBlock.innerHTML = `
       <h3>Recent Results</h3>
       <ul>
-        <li><a href="https://ballotpedia.org/Election_results,_2025" target="_blank">Ballotpedia – 2025 Election Results</a></li>
-        <li><a href="https://ballotpedia.org/Election_results,_2024" target="_blank">Ballotpedia – 2024 Election Results</a></li>
+        <li><a href="https://ballotpedia.org/Election_results,_2025" target="_blank" rel="noopener noreferrer">Ballotpedia – 2025 Election Results</a></li>
+        <li><a href="https://ballotpedia.org/Election_results,_2024" target="_blank" rel="noopener noreferrer">Ballotpedia – 2024 Election Results</a></li>
       </ul>
     `;
     electionsContainer.appendChild(resultsBlock);
@@ -453,9 +276,9 @@ function showPolls() {
     competitiveBlock.innerHTML = `
       <h3>Most Competitive Races</h3>
       <ul>
-        <li><a href="https://ballotpedia.org/United_States_Senate_elections,_2026#Battlegrounds" target="_blank">Ballotpedia – 2026 Senate Battlegrounds</a></li>
-        <li><a href="https://ballotpedia.org/United_States_House_of_Representatives_elections,_2026#Battlegrounds" target="_blank">Ballotpedia – 2026 House Battlegrounds</a></li>
-        <li><a href="https://ballotpedia.org/Gubernatorial_elections,_2025" target="_blank">Ballotpedia – 2025 Governor Elections</a></li>
+        <li><a href="https://ballotpedia.org/United_States_Senate_elections,_2026#Battlegrounds" target="_blank" rel="noopener noreferrer">Ballotpedia – 2026 Senate Battlegrounds</a></li>
+        <li><a href="https://ballotpedia.org/United_States_House_of_Representatives_elections,_2026#Battlegrounds" target="_blank" rel="noopener noreferrer">Ballotpedia – 2026 House Battlegrounds</a></li>
+        <li><a href="https://ballotpedia.org/Gubernatorial_elections,_2025" target="_blank" rel="noopener noreferrer">Ballotpedia – 2025 Governor Elections</a></li>
       </ul>
     `;
     electionsContainer.appendChild(competitiveBlock);
