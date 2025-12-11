@@ -1,1 +1,1026 @@
-
+[
+  {
+    "id": "q1",
+    "question": "What is the supreme law of the land, and why does it hold that status?",
+    "choices": ["The Constitution", "The Declaration of Independence", "The Articles of Confederation", "State constitutions"],
+    "answers": ["The Constitution"],
+    "type": "single",
+    "explanation": "The Constitution establishes the framework of government and overrides conflicting laws at all levels."
+  },
+  {
+    "id": "q2",
+    "question": "How many amendments does the U.S. Constitution currently have?",
+    "choices": ["27", "10", "26", "30"],
+    "answers": ["27"],
+    "type": "single",
+    "explanation": "There are 27 amendments, reflecting changes and expansions of rights since 1791."
+  },
+  {
+    "id": "q3",
+    "question": "Which of the following are branches of the U.S. government?",
+    "choices": ["Legislative", "Executive", "Judicial", "Military"],
+    "answers": ["Legislative", "Executive", "Judicial"],
+    "type": "multi-select",
+    "explanation": "The three branches are legislative (Congress), executive (President), and judicial (courts). The military is under the executive branch."
+  },
+  {
+    "id": "q4",
+    "question": "Who was the first President of the United States?",
+    "choices": ["George Washington", "Thomas Jefferson", "John Adams", "Benjamin Franklin"],
+    "answers": ["George Washington"],
+    "type": "single",
+    "explanation": "George Washington served from 1789 to 1797 and set many precedents for the office."
+  },
+  {
+    "id": "q5",
+    "question": "Name one responsibility that is only for United States citizens.",
+    "choices": ["Serve on a jury", "Pay taxes", "Obey laws", "Attend school"],
+    "answers": ["Serve on a jury"],
+    "type": "single",
+    "explanation": "Serving on a jury is reserved for citizens; other duties apply to residents as well."
+  },
+  {
+    "id": "q6",
+    "question": "Which rights are guaranteed by the First Amendment?",
+    "choices": ["Freedom of speech", "Freedom of religion", "Right to bear arms", "Freedom of the press", "Right to petition"],
+    "answers": ["Freedom of speech", "Freedom of religion", "Freedom of the press", "Right to petition"],
+    "type": "multi-select",
+    "explanation": "The First Amendment protects freedoms of speech, religion, press, assembly, and petition."
+  },
+  {
+    "id": "q7",
+    "question": "What did the Emancipation Proclamation accomplish?",
+    "choices": ["Freed slaves in Confederate states", "Ended slavery nationwide", "Guaranteed voting rights for women", "Created the Bill of Rights"],
+    "answers": ["Freed slaves in Confederate states"],
+    "type": "single",
+    "explanation": "Lincoln’s proclamation freed enslaved people in rebelling states, but slavery ended nationwide only with the 13th Amendment."
+  },
+  {
+    "id": "q8",
+    "question": "Which of the following are powers reserved to the states?",
+    "choices": ["Issuing driver’s licenses", "Declaring war", "Conducting elections", "Printing money"],
+    "answers": ["Issuing driver’s licenses", "Conducting elections"],
+    "type": "multi-select",
+    "explanation": "States regulate licenses and elections; declaring war and printing money are federal powers."
+  },
+  {
+    "id": "q9",
+    "question": "What is one reason colonists fought the British?",
+    "choices": ["High taxes without representation", "Slavery abolition", "Desire to join France", "Opposition to the Bill of Rights"],
+    "answers": ["High taxes without representation"],
+    "type": "single",
+    "explanation": "Colonists resisted taxation without representation and other abuses of power."
+  },
+  {
+    "id": "q10",
+    "question": "Which document announced the colonies’ independence from Britain?",
+    "choices": ["The Declaration of Independence", "The Constitution", "The Federalist Papers", "The Bill of Rights"],
+    "answers": ["The Declaration of Independence"],
+    "type": "single",
+    "explanation": "Adopted July 4, 1776, it declared independence from Britain."
+  },
+  {
+    "id": "q11",
+    "question": "What are two rights of everyone living in the United States?",
+    "choices": ["Freedom of speech", "Freedom of religion", "Right to vote", "Right to bear arms"],
+    "answers": ["Freedom of speech", "Freedom of religion"],
+    "type": "multi-select",
+    "explanation": "These rights apply to all residents, not just citizens."
+  },
+  {
+    "id": "q12",
+    "question": "What does the judicial branch do?",
+    "choices": ["Makes laws", "Enforces laws", "Interprets laws", "Declares war"],
+    "answers": ["Interprets laws"],
+    "type": "single",
+    "explanation": "The judiciary interprets laws and ensures they align with the Constitution."
+  },
+  {
+    "id": "q13",
+    "question": "Who is the Commander in Chief of the military?",
+    "choices": ["The President", "The Secretary of Defense", "Congress", "The Supreme Court"],
+    "answers": ["The President"],
+    "type": "single",
+    "explanation": "The President leads the armed forces as Commander in Chief."
+  },
+  {
+    "id": "q14",
+    "question": "What are the two parts of the U.S. Congress?",
+    "choices": ["Senate", "House of Representatives", "Supreme Court", "Cabinet"],
+    "answers": ["Senate", "House of Representatives"],
+    "type": "multi-select",
+    "explanation": "Congress is bicameral, consisting of the Senate and House."
+  },
+  {
+    "id": "q15",
+    "question": "How many U.S. Senators are there?",
+    "choices": ["50", "100", "435", "200"],
+    "answers": ["100"],
+    "type": "single",
+    "explanation": "Each state elects two senators, totaling 100."
+  },
+  {
+    "id": "q16",
+    "question": "What is one promise you make when you become a U.S. citizen?",
+    "choices": ["Give up loyalty to other countries", "Vote in all elections", "Serve on a jury", "Pay taxes"],
+    "answers": ["Give up loyalty to other countries"],
+    "type": "single",
+    "explanation": "Naturalization requires pledging allegiance to the U.S. above other nations."
+  },
+  {
+    "id": "q17",
+    "question": "What movement tried to end racial discrimination?",
+    "choices": ["Civil Rights Movement", "Women’s Suffrage Movement", "Temperance Movement", "Abolitionist Movement"],
+    "answers": ["Civil Rights Movement"],
+    "type": "single",
+    "explanation": "The Civil Rights Movement fought for equal rights for African Americans."
+  },
+  {
+    "id": "q18",
+    "question": "Which war was fought by the United States in the 1900s?",
+    "choices": ["World War I", "World War II", "Korean War", "Vietnam War", "All of the above"],
+    "answers": ["All of the above"],
+    "type": "single",
+    "explanation": "The U.S. fought in all these wars during the 20th century."
+  },
+  {
+    "id": "q19",
+    "question": "What is one reason immigrants came to America in the 1800s?",
+    "choices": ["Freedom", "Economic opportunity", "Escape persecution", "All of the above"],
+    "answers": ["All of the above"],
+    "type": "single",
+    "explanation": "Immigrants sought freedom, jobs, and safety from persecution."
+  },
+ {
+  "id": "q20",
+  "question": "What is the economic system of the United States?",
+  "choices": ["Capitalist", "Communist", "Socialist", "Feudal"],
+  "answers": ["Capitalist"],
+  "type": "single",
+  "explanation": "The U.S. operates under a capitalist system, where private individuals and businesses drive the economy."
+},
+{
+  "id": "q21",
+  "question": "Who makes federal laws in the United States?",
+  "choices": ["Congress", "The President", "The Supreme Court", "State legislatures"],
+  "answers": ["Congress"],
+  "type": "single",
+  "explanation": "Congress, composed of the Senate and House, drafts and passes federal laws."
+},
+{
+  "id": "q22",
+  "question": "How many voting members are in the House of Representatives?",
+  "choices": ["100", "435", "50", "200"],
+  "answers": ["435"],
+  "type": "single",
+  "explanation": "The House has 435 voting members, apportioned by population among the states."
+},
+{
+  "id": "q23",
+  "question": "What is the length of a U.S. Senator’s term?",
+  "choices": ["2 years", "4 years", "6 years", "8 years"],
+  "answers": ["6 years"],
+  "type": "single",
+  "explanation": "Senators serve six‑year terms, staggered so about one‑third are up for election every two years."
+},
+{
+  "id": "q24",
+  "question": "Which responsibilities are reserved for the federal government?",
+  "choices": ["Declaring war", "Printing money", "Issuing driver’s licenses", "Conducting elections"],
+  "answers": ["Declaring war", "Printing money"],
+  "type": "multi-select",
+  "explanation": "Only the federal government can declare war and print currency; states handle licenses and elections."
+},
+{
+  "id": "q25",
+  "question": "What is the minimum voting age in the United States?",
+  "choices": ["16", "18", "21", "25"],
+  "answers": ["18"],
+  "type": "single",
+  "explanation": "The 26th Amendment lowered the voting age to 18 in 1971."
+},
+{
+  "id": "q26",
+  "question": "Which of the following are Cabinet‑level positions?",
+  "choices": ["Secretary of State", "Secretary of Defense", "Attorney General", "Chief Justice"],
+  "answers": ["Secretary of State", "Secretary of Defense", "Attorney General"],
+  "type": "multi-select",
+  "explanation": "Cabinet members lead executive departments; the Chief Justice leads the Supreme Court, not the Cabinet."
+},
+{
+  "id": "q27",
+  "question": "What does the Bill of Rights guarantee?",
+  "choices": ["Individual freedoms", "Voting rights for women", "Abolition of slavery", "Presidential succession"],
+  "answers": ["Individual freedoms"],
+  "type": "single",
+  "explanation": "The first ten amendments guarantee freedoms like speech, religion, and due process."
+},
+{
+  "id": "q28",
+  "question": "Which states border Canada?",
+  "choices": ["Maine", "Montana", "North Dakota", "California"],
+  "answers": ["Maine", "Montana", "North Dakota"],
+  "type": "multi-select",
+  "explanation": "Several northern states border Canada; California borders Mexico, not Canada."
+},
+{
+  "id": "q29",
+  "question": "What is one power of the states?",
+  "choices": ["Provide schooling and education", "Declare war", "Coin money", "Negotiate treaties"],
+  "answers": ["Provide schooling and education"],
+  "type": "single",
+  "explanation": "States control education, while war, money, and treaties are federal powers."
+},
+{
+  "id": "q30",
+  "question": "Who signs bills into law?",
+  "choices": ["The President", "Congress", "The Supreme Court", "Governors"],
+  "answers": ["The President"],
+  "type": "single",
+  "explanation": "Congress passes bills, but the President signs them into law."
+},
+{
+  "id": "q31",
+  "question": "Which amendments expanded voting rights?",
+  "choices": ["15th", "19th", "24th", "26th"],
+  "answers": ["15th", "19th", "24th", "26th"],
+  "type": "multi-select",
+  "explanation": "These amendments prohibited racial discrimination, enfranchised women, eliminated poll taxes, and lowered the voting age."
+},
+{
+  "id": "q32",
+  "question": "What is the highest court in the United States?",
+  "choices": ["Supreme Court", "Court of Appeals", "District Court", "State Supreme Court"],
+  "answers": ["Supreme Court"],
+  "type": "single",
+  "explanation": "The U.S. Supreme Court is the highest court, with final authority on constitutional matters."
+},
+{
+  "id": "q33",
+  "question": "Who vetoes bills?",
+  "choices": ["The President", "Congress", "The Supreme Court", "Governors"],
+  "answers": ["The President"],
+  "type": "single",
+  "explanation": "The President can veto bills passed by Congress."
+},
+{
+  "id": "q34",
+  "question": "Which of the following are checks on presidential power?",
+  "choices": ["Congress overrides vetoes", "Senate confirms appointments", "Supreme Court declares laws unconstitutional", "President appoints judges"],
+  "answers": ["Congress overrides vetoes", "Senate confirms appointments", "Supreme Court declares laws unconstitutional"],
+  "type": "multi-select",
+  "explanation": "Checks and balances limit presidential power through legislative and judicial oversight."
+},
+{
+  "id": "q35",
+  "question": "What is one responsibility of the judicial branch?",
+  "choices": ["Review laws", "Command the military", "Negotiate treaties", "Collect taxes"],
+  "answers": ["Review laws"],
+  "type": "single",
+  "explanation": "The judiciary reviews laws to ensure they comply with the Constitution."
+},
+{
+  "id": "q36",
+  "question": "Who was President during World War I?",
+  "choices": ["Woodrow Wilson", "Franklin Roosevelt", "Theodore Roosevelt", "Harry Truman"],
+  "answers": ["Woodrow Wilson"],
+  "type": "single",
+  "explanation": "Wilson led the U.S. during World War I and promoted the League of Nations."
+},
+{
+  "id": "q37",
+  "question": "Who was President during the Great Depression and World War II?",
+  "choices": ["Franklin Roosevelt", "Herbert Hoover", "Harry Truman", "Dwight Eisenhower"],
+  "answers": ["Franklin Roosevelt"],
+  "type": "single",
+  "explanation": "FDR served from 1933 to 1945, leading through the Depression and most of WWII."
+},
+{
+  "id": "q38",
+  "question": "What did Martin Luther King, Jr. do?",
+  "choices": ["Fought for civil rights", "Served as President", "Wrote the Constitution", "Led the Revolutionary War"],
+  "answers": ["Fought for civil rights"],
+  "type": "single",
+  "explanation": "King was a leader of the Civil Rights Movement, advocating nonviolent protest."
+},
+{
+  "id": "q39",
+  "question": "Which states border Mexico?",
+  "choices": ["California", "Arizona", "New Mexico", "Texas", "Nevada"],
+  "answers": ["California", "Arizona", "New Mexico", "Texas"],
+  "type": "multi-select",
+  "explanation": "Four states border Mexico; Nevada does not."
+},
+{
+  "id": "q40",
+  "question": "What is one reason the U.S. entered World War II?",
+  "choices": ["Attack on Pearl Harbor", "Desire to expand territory", "To end slavery", "To oppose communism"],
+  "answers": ["Attack on Pearl Harbor"],
+  "type": "single",
+  "explanation": "Japan’s attack on Pearl Harbor in 1941 led the U.S. to enter WWII."
+},
+{
+  "id": "q41",
+  "question": "What is one responsibility unique to U.S. citizens?",
+  "choices": ["Serve on a jury", "Pay taxes", "Obey laws", "Serve in the military"],
+  "answers": ["Serve on a jury"],
+  "type": "single",
+  "explanation": "Serving on a jury is reserved for citizens; taxes and laws apply to all residents."
+},
+{
+  "id": "q42",
+  "question": "Which of the following are freedoms protected by the First Amendment?",
+  "choices": ["Speech", "Religion", "Press", "Assembly", "Bear arms"],
+  "answers": ["Speech", "Religion", "Press", "Assembly"],
+  "type": "multi-select",
+  "explanation": "The First Amendment protects speech, religion, press, assembly, and petition; bearing arms is the Second Amendment."
+},
+{
+  "id": "q43",
+  "question": "What did the Declaration of Independence do?",
+  "choices": ["Announced independence from Britain", "Created the Constitution", "Ended slavery", "Established the Bill of Rights"],
+  "answers": ["Announced independence from Britain"],
+  "type": "single",
+  "explanation": "Adopted July 4, 1776, it declared independence from Britain and listed grievances."
+},
+{
+  "id": "q44",
+  "question": "Which of the following are U.S. territories?",
+  "choices": ["Puerto Rico", "Guam", "Northern Mariana Islands", "Hawaii"],
+  "answers": ["Puerto Rico", "Guam", "Northern Mariana Islands"],
+  "type": "multi-select",
+  "explanation": "Hawaii is a state; the others are U.S. territories."
+},
+{
+  "id": "q45",
+  "question": "Who wrote the Federalist Papers?",
+  "choices": ["Alexander Hamilton", "James Madison", "John Jay", "George Washington"],
+  "answers": ["Alexander Hamilton", "James Madison", "John Jay"],
+  "type": "multi-select",
+  "explanation": "Hamilton, Madison, and Jay wrote the essays to support ratification of the Constitution."
+},
+{
+  "id": "q46",
+  "question": "What is one power of the federal government?",
+  "choices": ["Print money", "Issue driver’s licenses", "Conduct elections", "Establish schools"],
+  "answers": ["Print money"],
+  "type": "single",
+  "explanation": "Only the federal government can print currency; states handle licenses, elections, and schools."
+},
+{
+  "id": "q47",
+  "question": "Who was President during the Cuban Missile Crisis?",
+  "choices": ["John F. Kennedy", "Dwight Eisenhower", "Lyndon Johnson", "Richard Nixon"],
+  "answers": ["John F. Kennedy"],
+  "type": "single",
+  "explanation": "Kennedy faced the 1962 crisis, negotiating with the Soviet Union to avoid nuclear war."
+},
+{
+  "id": "q48",
+  "question": "What is the rule of law?",
+  "choices": ["Everyone must follow the law", "Leaders are above the law", "Only citizens follow the law", "Judges make laws"],
+  "answers": ["Everyone must follow the law"],
+  "type": "single",
+  "explanation": "Rule of law means no one is above the law, including leaders."
+},
+{
+  "id": "q49",
+  "question": "Which of the following are Native American tribes?",
+  "choices": ["Cherokee", "Navajo", "Sioux", "Inuit"],
+  "answers": ["Cherokee", "Navajo", "Sioux"],
+  "type": "multi-select",
+  "explanation": "Cherokee, Navajo, and Sioux are recognized tribes; Inuit are indigenous to Alaska/Canada but not a federally recognized U.S. tribe."
+},
+{
+  "id": "q50",
+  "question": "What is one reason the Constitution was written?",
+  "choices": ["To replace the Articles of Confederation", "To declare independence", "To abolish slavery", "To elect George Washington"],
+  "answers": ["To replace the Articles of Confederation"],
+  "type": "single",
+  "explanation": "The Constitution replaced the weak Articles of Confederation with a stronger federal system."
+},
+{
+  "id": "q51",
+  "question": "Who was President during the Louisiana Purchase?",
+  "choices": ["Thomas Jefferson", "George Washington", "James Madison", "John Adams"],
+  "answers": ["Thomas Jefferson"],
+  "type": "single",
+  "explanation": "Jefferson oversaw the 1803 purchase, doubling the size of the U.S."
+},
+{
+  "id": "q52",
+  "question": "Which of the following are parts of the Executive Branch?",
+  "choices": ["President", "Vice President", "Cabinet", "Congress"],
+  "answers": ["President", "Vice President", "Cabinet"],
+  "type": "multi-select",
+  "explanation": "Congress is legislative; the President, VP, and Cabinet are executive."
+},
+{
+  "id": "q53",
+  "question": "What is one promise you make when you become a U.S. citizen?",
+  "choices": ["Defend the Constitution", "Vote in all elections", "Serve in the military", "Pay taxes"],
+  "answers": ["Defend the Constitution"],
+  "type": "single",
+  "explanation": "Naturalization requires pledging to defend the Constitution and laws of the U.S."
+},
+{
+  "id": "q54",
+  "question": "Who was President during the Mexican-American War?",
+  "choices": ["James K. Polk", "Andrew Jackson", "Abraham Lincoln", "Ulysses S. Grant"],
+  "answers": ["James K. Polk"],
+  "type": "single",
+  "explanation": "Polk led the U.S. during the war from 1846–1848."
+},
+{
+  "id": "q55",
+  "question": "Which of the following are freedoms guaranteed by the Constitution?",
+  "choices": ["Due process", "Equal protection", "Freedom of movement", "Freedom of speech"],
+  "answers": ["Due process", "Equal protection", "Freedom of speech"],
+  "type": "multi-select",
+  "explanation": "The Constitution guarantees due process, equal protection, and speech; freedom of movement is not explicitly guaranteed."
+},
+{
+  "id": "q56",
+  "question": "What is one reason the U.S. entered World War I?",
+  "choices": ["German submarine attacks", "Attack on Pearl Harbor", "To end slavery", "To oppose communism"],
+  "answers": ["German submarine attacks"],
+  "type": "single",
+  "explanation": "Unrestricted submarine warfare and the Zimmermann Telegram pushed the U.S. into WWI."
+},
+{
+  "id": "q57",
+  "question": "Which of the following are responsibilities of Congress?",
+  "choices": ["Declare war", "Approve treaties", "Confirm Supreme Court justices", "Command the military"],
+  "answers": ["Declare war", "Approve treaties"],
+  "type": "multi-select",
+  "explanation": "Congress declares war and approves treaties; the Senate confirms justices; the President commands the military."
+},
+{
+  "id": "q58",
+  "question": "Who was President during the Civil War?",
+  "choices": ["Abraham Lincoln", "Andrew Johnson", "Ulysses S. Grant", "James Buchanan"],
+  "answers": ["Abraham Lincoln"],
+  "type": "single",
+  "explanation": "Lincoln led the nation through the Civil War and issued the Emancipation Proclamation."
+},
+{
+  "id": "q59",
+  "question": "Which of the following are reasons colonists came to America?",
+  "choices": ["Freedom", "Economic opportunity", "Escape persecution", "To join the British army"],
+  "answers": ["Freedom", "Economic opportunity", "Escape persecution"],
+  "type": "multi-select",
+  "explanation": "Colonists sought freedom, jobs, and safety; joining the British army was not a reason."
+},
+{
+  "id": "q60",
+  "question": "What is one responsibility of the President?",
+  "choices": ["Commander in Chief of the military", "Declare war", "Coin money", "Confirm judges"],
+  "answers": ["Commander in Chief of the military"],
+  "type": "single",
+  "explanation": "The President commands the armed forces; declaring war and coining money are congressional powers."
+},
+{
+  "id": "q61",
+  "question": "What is one reason the colonists declared independence from Britain?",
+  "choices": ["Taxation without representation", "Desire to abolish slavery", "To join France", "To oppose the Bill of Rights"],
+  "answers": ["Taxation without representation"],
+  "type": "single",
+  "explanation": "Colonists resisted taxation without representation and other abuses of power by the British crown."
+},
+{
+  "id": "q62",
+  "question": "Which of the following are U.S. national holidays?",
+  "choices": ["Independence Day", "Labor Day", "Thanksgiving", "Election Day"],
+  "answers": ["Independence Day", "Labor Day", "Thanksgiving"],
+  "type": "multi-select",
+  "explanation": "Election Day is not a federal holiday; the others are recognized national holidays."
+},
+{
+  "id": "q63",
+  "question": "Who was President during the Watergate scandal?",
+  "choices": ["Richard Nixon", "Gerald Ford", "Jimmy Carter", "Ronald Reagan"],
+  "answers": ["Richard Nixon"],
+  "type": "single",
+  "explanation": "Nixon resigned in 1974 due to the Watergate scandal; Ford succeeded him."
+},
+{
+  "id": "q64",
+  "question": "Which of the following are responsibilities of the President?",
+  "choices": ["Commander in Chief", "Signs bills into law", "Appoints federal judges", "Declares war"],
+  "answers": ["Commander in Chief", "Signs bills into law", "Appoints federal judges"],
+  "type": "multi-select",
+  "explanation": "Declaring war is a congressional power; the President commands the military, signs bills, and appoints judges."
+},
+{
+  "id": "q65",
+  "question": "What is one right reserved only for U.S. citizens?",
+  "choices": ["Vote in federal elections", "Freedom of speech", "Freedom of religion", "Due process"],
+  "answers": ["Vote in federal elections"],
+  "type": "single",
+  "explanation": "Voting in federal elections is reserved for citizens; other rights apply to all residents."
+},
+{
+  "id": "q66",
+  "question": "Who was President during the Louisiana Purchase?",
+  "choices": ["Thomas Jefferson", "George Washington", "James Madison", "John Adams"],
+  "answers": ["Thomas Jefferson"],
+  "type": "single",
+  "explanation": "Jefferson oversaw the 1803 purchase, doubling the size of the U.S."
+},
+{
+  "id": "q67",
+  "question": "Which of the following are parts of the Constitution?",
+  "choices": ["Preamble", "Articles", "Amendments", "Bill of Rights"],
+  "answers": ["Preamble", "Articles", "Amendments"],
+  "type": "multi-select",
+  "explanation": "The Bill of Rights is the first ten amendments, not a separate structural part."
+},
+{
+  "id": "q68",
+  "question": "What is one power of the Supreme Court?",
+  "choices": ["Judicial review", "Declaring war", "Passing laws", "Appointing Cabinet members"],
+  "answers": ["Judicial review"],
+  "type": "single",
+  "explanation": "The Supreme Court can declare laws unconstitutional through judicial review."
+},
+{
+  "id": "q69",
+  "question": "Which of the following are reasons immigrants came to America?",
+  "choices": ["Freedom", "Economic opportunity", "Escape persecution", "To join the British army"],
+  "answers": ["Freedom", "Economic opportunity", "Escape persecution"],
+  "type": "multi-select",
+  "explanation": "Immigrants sought freedom, jobs, and safety; joining the British army was not a reason."
+},
+{
+  "id": "q70",
+  "question": "Who was President during the Great Depression?",
+  "choices": ["Franklin Roosevelt", "Herbert Hoover", "Harry Truman", "Dwight Eisenhower"],
+  "answers": ["Franklin Roosevelt"],
+  "type": "single",
+  "explanation": "FDR served from 1933 to 1945, leading through the Depression and WWII."
+},
+{
+  "id": "q71",
+  "question": "What is one responsibility of Congress?",
+  "choices": ["Declare war", "Command the military", "Appoint judges", "Sign treaties"],
+  "answers": ["Declare war"],
+  "type": "single",
+  "explanation": "Congress declares war; the President commands the military and appoints judges."
+},
+{
+  "id": "q72",
+  "question": "Which of the following are freedoms guaranteed by the Constitution?",
+  "choices": ["Due process", "Equal protection", "Freedom of speech", "Freedom of movement"],
+  "answers": ["Due process", "Equal protection", "Freedom of speech"],
+  "type": "multi-select",
+  "explanation": "Freedom of movement is not explicitly guaranteed; the others are constitutional rights."
+},
+{
+  "id": "q73",
+  "question": "Who was President during the Korean War?",
+  "choices": ["Harry Truman", "Dwight Eisenhower", "Franklin Roosevelt", "John F. Kennedy"],
+  "answers": ["Harry Truman"],
+  "type": "single",
+  "explanation": "Truman led the U.S. into the Korean War in 1950."
+},
+{
+  "id": "q74",
+  "question": "Which of the following are checks on congressional power?",
+  "choices": ["Presidential veto", "Judicial review", "State legislatures", "Commander in Chief"],
+  "answers": ["Presidential veto", "Judicial review"],
+  "type": "multi-select",
+  "explanation": "The President can veto laws and courts can declare them unconstitutional."
+},
+{
+  "id": "q75",
+  "question": "What is one promise you make when you become a U.S. citizen?",
+  "choices": ["Obey the laws", "Serve on a jury", "Vote in all elections", "Pay taxes"],
+  "answers": ["Obey the laws"],
+  "type": "single",
+  "explanation": "Naturalization requires pledging to obey U.S. laws; voting and jury service are rights, not promises."
+},
+{
+  "id": "q76",
+  "question": "Who was President during the Vietnam War?",
+  "choices": ["Lyndon Johnson", "Richard Nixon", "John F. Kennedy", "Gerald Ford"],
+  "answers": ["Lyndon Johnson", "Richard Nixon"],
+  "type": "multi-select",
+  "explanation": "Johnson escalated U.S. involvement; Nixon later expanded and then withdrew forces."
+},
+{
+  "id": "q77",
+  "question": "Which of the following are responsibilities of the states?",
+  "choices": ["Provide education", "Issue driver’s licenses", "Conduct elections", "Print money"],
+  "answers": ["Provide education", "Issue driver’s licenses", "Conduct elections"],
+  "type": "multi-select",
+  "explanation": "States handle education, licensing, and elections; printing money is federal."
+},
+{
+  "id": "q78",
+  "question": "What is one reason the U.S. entered World War II?",
+  "choices": ["Attack on Pearl Harbor", "German submarine attacks", "Zimmermann Telegram", "To oppose communism"],
+  "answers": ["Attack on Pearl Harbor"],
+  "type": "single",
+  "explanation": "Japan’s attack on Pearl Harbor in 1941 led the U.S. to enter WWII."
+},
+{
+  "id": "q79",
+  "question": "Which of the following are parts of the legislative branch?",
+  "choices": ["Senate", "House of Representatives", "Supreme Court", "President"],
+  "answers": ["Senate", "House of Representatives"],
+  "type": "multi-select",
+  "explanation": "Congress consists of the Senate and House; the Supreme Court and President are separate branches."
+},
+{
+  "id": "q80",
+  "question": "Who was President during the end of World War II?",
+  "choices": ["Harry Truman", "Franklin Roosevelt", "Dwight Eisenhower", "John F. Kennedy"],
+  "answers": ["Harry Truman"],
+  "type": "single",
+  "explanation": "Truman became President in 1945 after FDR’s death and oversaw the end of WWII."
+},
+{
+  "id": "q81",
+  "question": "Which of the following are responsibilities of the Supreme Court?",
+  "choices": ["Interpret laws", "Declare laws unconstitutional", "Command the military", "Approve treaties"],
+  "answers": ["Interpret laws", "Declare laws unconstitutional"],
+  "type": "multi-select",
+  "explanation": "The Supreme Court interprets laws and can strike down unconstitutional ones; military and treaties are executive/legislative powers."
+},
+{
+  "id": "q82",
+  "question": "Who was President during the signing of the Civil Rights Act of 1964?",
+  "choices": ["John F. Kennedy", "Lyndon B. Johnson", "Richard Nixon", "Dwight Eisenhower"],
+  "answers": ["Lyndon B. Johnson"],
+  "type": "single",
+  "explanation": "Johnson signed the Civil Rights Act into law after Kennedy’s assassination."
+},
+{
+  "id": "q83",
+  "question": "Which of the following are reasons the U.S. Constitution has endured?",
+  "choices": ["Ability to amend", "Checks and balances", "Rigid structure", "Separation of powers"],
+  "answers": ["Ability to amend", "Checks and balances", "Separation of powers"],
+  "type": "multi-select",
+  "explanation": "Flexibility through amendments and structural safeguards have allowed the Constitution to endure."
+},
+{
+  "id": "q84",
+  "question": "What is one right guaranteed to everyone in the U.S.?",
+  "choices": ["Freedom of speech", "Right to vote", "Right to bear arms", "Serve on a jury"],
+  "answers": ["Freedom of speech"],
+  "type": "single",
+  "explanation": "Freedom of speech applies to all residents; voting and jury service are reserved for citizens."
+},
+{
+  "id": "q85",
+  "question": "Who was President during the end of the Cold War?",
+  "choices": ["Ronald Reagan", "George H.W. Bush", "Bill Clinton", "Jimmy Carter"],
+  "answers": ["George H.W. Bush"],
+  "type": "single",
+  "explanation": "Bush oversaw the fall of the Berlin Wall and the dissolution of the Soviet Union."
+},
+{
+  "id": "q86",
+  "question": "Which of the following are checks on judicial power?",
+  "choices": ["Congress can impeach judges", "President appoints judges", "Senate confirms judges", "Supreme Court vetoes laws"],
+  "answers": ["Congress can impeach judges", "President appoints judges", "Senate confirms judges"],
+  "type": "multi-select",
+  "explanation": "Judges can be impeached, appointed by the President, and confirmed by the Senate; courts do not veto laws."
+},
+{
+  "id": "q87",
+  "question": "What is one responsibility of the Vice President?",
+  "choices": ["Preside over the Senate", "Command the military", "Declare war", "Sign treaties"],
+  "answers": ["Preside over the Senate"],
+  "type": "single",
+  "explanation": "The Vice President presides over the Senate and casts tie-breaking votes."
+},
+{
+  "id": "q88",
+  "question": "Which of the following are reasons the U.S. entered the Spanish-American War?",
+  "choices": ["Explosion of the USS Maine", "Desire to expand territory", "To oppose communism", "To end slavery"],
+  "answers": ["Explosion of the USS Maine", "Desire to expand territory"],
+  "type": "multi-select",
+  "explanation": "The USS Maine explosion and expansionist goals led to war with Spain in 1898."
+},
+{
+  "id": "q89",
+  "question": "Who was President during the signing of the Constitution?",
+  "choices": ["George Washington", "Thomas Jefferson", "John Adams", "James Madison"],
+  "answers": ["George Washington"],
+  "type": "single",
+  "explanation": "Washington presided over the Constitutional Convention in 1787."
+},
+{
+  "id": "q90",
+  "question": "Which of the following are responsibilities of the federal government?",
+  "choices": ["Print money", "Declare war", "Issue driver’s licenses", "Conduct elections"],
+  "answers": ["Print money", "Declare war"],
+  "type": "multi-select",
+  "explanation": "Printing money and declaring war are federal powers; licenses and elections are state powers."
+},
+{
+  "id": "q91",
+  "question": "What is one reason the U.S. entered the Persian Gulf War?",
+  "choices": ["Iraq invaded Kuwait", "Attack on Pearl Harbor", "To oppose communism", "To end slavery"],
+  "answers": ["Iraq invaded Kuwait"],
+  "type": "single",
+  "explanation": "The U.S. intervened in 1991 after Iraq invaded Kuwait."
+},
+{
+  "id": "q92",
+  "question": "Which of the following are freedoms guaranteed by the Bill of Rights?",
+  "choices": ["Speech", "Religion", "Press", "Assembly", "Bear arms"],
+  "answers": ["Speech", "Religion", "Press", "Assembly", "Bear arms"],
+  "type": "multi-select",
+  "explanation": "The Bill of Rights guarantees these freedoms in the first ten amendments."
+},
+{
+  "id": "q93",
+  "question": "Who was President during the signing of the Emancipation Proclamation?",
+  "choices": ["Abraham Lincoln", "Andrew Johnson", "Ulysses S. Grant", "James Buchanan"],
+  "answers": ["Abraham Lincoln"],
+  "type": "single",
+  "explanation": "Lincoln issued the Emancipation Proclamation in 1863."
+},
+{
+  "id": "q94",
+  "question": "Which of the following are responsibilities of the states?",
+  "choices": ["Provide education", "Issue driver’s licenses", "Conduct elections", "Print money"],
+  "answers": ["Provide education", "Issue driver’s licenses", "Conduct elections"],
+  "type": "multi-select",
+  "explanation": "States handle education, licensing, and elections; printing money is federal."
+},
+{
+  "id": "q95",
+  "question": "What is one reason the U.S. entered the War of 1812?",
+  "choices": ["British impressment of sailors", "Attack on Pearl Harbor", "To oppose communism", "To end slavery"],
+  "answers": ["British impressment of sailors"],
+  "type": "single",
+  "explanation": "British impressment of American sailors and trade restrictions led to war in 1812."
+},
+{
+  "id": "q96",
+  "question": "Which of the following are responsibilities of the President?",
+  "choices": ["Commander in Chief", "Signs bills into law", "Appoints federal judges", "Declares war"],
+  "answers": ["Commander in Chief", "Signs bills into law", "Appoints federal judges"],
+  "type": "multi-select",
+  "explanation": "Declaring war is congressional; the President commands the military, signs bills, and appoints judges."
+},
+{
+  "id": "q97",
+  "question": "Who was President during the signing of the 19th Amendment?",
+  "choices": ["Woodrow Wilson", "Franklin Roosevelt", "Theodore Roosevelt", "Calvin Coolidge"],
+  "answers": ["Woodrow Wilson"],
+  "type": "single",
+  "explanation": "Wilson supported women’s suffrage; the 19th Amendment was ratified in 1920."
+},
+{
+  "id": "q98",
+  "question": "Which of the following are freedoms guaranteed by the Constitution?",
+  "choices": ["Due process", "Equal protection", "Freedom of speech", "Freedom of movement"],
+  "answers": ["Due process", "Equal protection", "Freedom of speech"],
+  "type": "multi-select",
+  "explanation": "Freedom of movement is not explicitly guaranteed; the others are constitutional rights."
+},
+{
+  "id": "q99",
+  "question": "Who was President during the signing of the Social Security Act?",
+  "choices": ["Franklin Roosevelt", "Herbert Hoover", "Harry Truman", "Dwight Eisenhower"],
+  "answers": ["Franklin Roosevelt"],
+  "type": "single",
+  "explanation": "FDR signed the Social Security Act in 1935 as part of the New Deal."
+},
+{
+  "id": "q100",
+  "question": "Which of the following are responsibilities of Congress?",
+  "choices": ["Declare war", "Approve treaties", "Confirm Supreme Court justices", "Command the military"],
+  "answers": ["Declare war", "Approve treaties"],
+  "type": "multi-select",
+  "explanation": "Congress declares war and approves treaties; the Senate confirms justices; the President commands the military."
+},
+{
+  "id": "q101",
+  "question": "Which of the following are responsibilities of the Vice President?",
+  "choices": ["Preside over the Senate", "Break tie votes", "Command the military", "Declare war"],
+  "answers": ["Preside over the Senate", "Break tie votes"],
+  "type": "multi-select",
+  "explanation": "The Vice President presides over the Senate and casts tie-breaking votes; military command and declaring war are not VP powers."
+},
+{
+  "id": "q102",
+  "question": "Who was President during the signing of the Camp David Accords?",
+  "choices": ["Jimmy Carter", "Ronald Reagan", "Richard Nixon", "Gerald Ford"],
+  "answers": ["Jimmy Carter"],
+  "type": "single",
+  "explanation": "Carter brokered peace between Egypt and Israel at Camp David in 1978."
+},
+{
+  "id": "q103",
+  "question": "Which of the following are freedoms guaranteed by the First Amendment?",
+  "choices": ["Speech", "Religion", "Press", "Assembly", "Petition"],
+  "answers": ["Speech", "Religion", "Press", "Assembly", "Petition"],
+  "type": "multi-select",
+  "explanation": "The First Amendment protects these five freedoms."
+},
+{
+  "id": "q104",
+  "question": "What is one responsibility of the President?",
+  "choices": ["Commander in Chief", "Declare war", "Coin money", "Confirm judges"],
+  "answers": ["Commander in Chief"],
+  "type": "single",
+  "explanation": "The President commands the armed forces; declaring war and coining money are congressional powers."
+},
+{
+  "id": "q105",
+  "question": "Who was President during the signing of the Affordable Care Act?",
+  "choices": ["Barack Obama", "George W. Bush", "Donald Trump", "Bill Clinton"],
+  "answers": ["Barack Obama"],
+  "type": "single",
+  "explanation": "Obama signed the ACA into law in 2010."
+},
+{
+  "id": "q106",
+  "question": "Which of the following are responsibilities of Congress?",
+  "choices": ["Declare war", "Approve treaties", "Confirm Supreme Court justices", "Command the military"],
+  "answers": ["Declare war", "Approve treaties"],
+  "type": "multi-select",
+  "explanation": "Congress declares war and approves treaties; the Senate confirms justices; the President commands the military."
+},
+{
+  "id": "q107",
+  "question": "What is one reason the U.S. entered the Korean War?",
+  "choices": ["To stop the spread of communism", "Attack on Pearl Harbor", "Zimmermann Telegram", "To end slavery"],
+  "answers": ["To stop the spread of communism"],
+  "type": "single",
+  "explanation": "The U.S. intervened in Korea to contain communism in 1950."
+},
+{
+  "id": "q108",
+  "question": "Which of the following are responsibilities of the Supreme Court?",
+  "choices": ["Interpret laws", "Declare laws unconstitutional", "Command the military", "Approve treaties"],
+  "answers": ["Interpret laws", "Declare laws unconstitutional"],
+  "type": "multi-select",
+  "explanation": "The Supreme Court interprets laws and can strike down unconstitutional ones."
+},
+{
+  "id": "q109",
+  "question": "Who was President during the signing of the Civil Rights Act of 1968?",
+  "choices": ["Lyndon B. Johnson", "Richard Nixon", "John F. Kennedy", "Gerald Ford"],
+  "answers": ["Lyndon B. Johnson"],
+  "type": "single",
+  "explanation": "Johnson signed the Fair Housing Act in 1968, expanding civil rights protections."
+},
+{
+  "id": "q110",
+  "question": "Which of the following are responsibilities of the states?",
+  "choices": ["Provide education", "Issue driver’s licenses", "Conduct elections", "Print money"],
+  "answers": ["Provide education", "Issue driver’s licenses", "Conduct elections"],
+  "type": "multi-select",
+  "explanation": "States handle education, licensing, and elections; printing money is federal."
+},
+{
+  "id": "q111",
+  "question": "What is one reason the U.S. entered the Vietnam War?",
+  "choices": ["To stop the spread of communism", "Attack on Pearl Harbor", "Zimmermann Telegram", "To end slavery"],
+  "answers": ["To stop the spread of communism"],
+  "type": "single",
+  "explanation": "The U.S. intervened in Vietnam to contain communism during the Cold War."
+},
+{
+  "id": "q112",
+  "question": "Which of the following are freedoms guaranteed by the Bill of Rights?",
+  "choices": ["Speech", "Religion", "Press", "Assembly", "Bear arms"],
+  "answers": ["Speech", "Religion", "Press", "Assembly", "Bear arms"],
+  "type": "multi-select",
+  "explanation": "The Bill of Rights guarantees these freedoms in the first ten amendments."
+},
+{
+  "id": "q113",
+  "question": "Who was President during the signing of the Voting Rights Act of 1965?",
+  "choices": ["Lyndon B. Johnson", "John F. Kennedy", "Richard Nixon", "Gerald Ford"],
+  "answers": ["Lyndon B. Johnson"],
+  "type": "single",
+  "explanation": "Johnson signed the Voting Rights Act to eliminate discriminatory practices in voting."
+},
+{
+  "id": "q114",
+  "question": "Which of the following are responsibilities of the President?",
+  "choices": ["Commander in Chief", "Signs bills into law", "Appoints federal judges", "Declares war"],
+  "answers": ["Commander in Chief", "Signs bills into law", "Appoints federal judges"],
+  "type": "multi-select",
+  "explanation": "Declaring war is congressional; the President commands the military, signs bills, and appoints judges."
+},
+{
+  "id": "q115",
+  "question": "What is one reason the U.S. entered World War I?",
+  "choices": ["German submarine attacks", "Attack on Pearl Harbor", "Zimmermann Telegram", "To oppose communism"],
+  "answers": ["German submarine attacks"],
+  "type": "single",
+  "explanation": "Unrestricted submarine warfare and the Zimmermann Telegram pushed the U.S. into WWI."
+},
+{
+  "id": "q116",
+  "question": "Which of the following are responsibilities of Congress?",
+  "choices": ["Declare war", "Approve treaties", "Confirm Supreme Court justices", "Command the military"],
+  "answers": ["Declare war", "Approve treaties"],
+  "type": "multi-select",
+  "explanation": "Congress declares war and approves treaties; the Senate confirms justices; the President commands the military."
+},
+{
+  "id": "q117",
+  "question": "Who was President during the signing of the 14th Amendment?",
+  "choices": ["Andrew Johnson", "Abraham Lincoln", "Ulysses S. Grant", "James Buchanan"],
+  "answers": ["Andrew Johnson"],
+  "type": "single",
+  "explanation": "Johnson was President when the 14th Amendment was ratified in 1868, granting equal protection."
+},
+{
+  "id": "q118",
+  "question": "Which of the following are freedoms guaranteed by the Constitution?",
+  "choices": ["Due process", "Equal protection", "Freedom of speech", "Freedom of movement"],
+  "answers": ["Due process", "Equal protection", "Freedom of speech"],
+  "type": "multi-select",
+  "explanation": "Freedom of movement is not explicitly guaranteed; the others are constitutional rights."
+},
+{
+  "id": "q119",
+  "question": "Who was President during the signing of the 15th Amendment?",
+  "choices": ["Ulysses S. Grant", "Abraham Lincoln", "Andrew Johnson", "James Garfield"],
+  "answers": ["Ulysses S. Grant"],
+  "type": "single",
+  "explanation": "Grant was President when the 15th Amendment was ratified in 1870, prohibiting racial discrimination in voting."
+},
+{
+  "id": "q120",
+  "question": "Which of the following are responsibilities of the Supreme Court?",
+  "choices": ["Interpret laws", "Declare laws unconstitutional", "Command the military", "Approve treaties"],
+  "answers": ["Interpret laws", "Declare laws unconstitutional"],
+  "type": "multi-select",
+  "explanation": "The Supreme Court interprets laws and can strike down unconstitutional ones."
+},
+{
+  "id": "q121",
+  "question": "Which of the following are responsibilities of the federal government?",
+  "choices": ["Print money", "Declare war", "Issue driver’s licenses", "Conduct elections"],
+  "answers": ["Print money", "Declare war"],
+  "type": "multi-select",
+  "explanation": "Printing money and declaring war are federal powers; licenses and elections are state responsibilities."
+},
+{
+  "id": "q122",
+  "question": "Who was President during the signing of the 13th Amendment?",
+  "choices": ["Abraham Lincoln", "Andrew Johnson", "Ulysses S. Grant", "James Buchanan"],
+  "answers": ["Abraham Lincoln"],
+  "type": "single",
+  "explanation": "Lincoln was President when the 13th Amendment was passed in 1865, abolishing slavery."
+},
+{
+  "id": "q123",
+  "question": "Which of the following are freedoms guaranteed by the Constitution?",
+  "choices": ["Due process", "Equal protection", "Freedom of speech", "Freedom of movement"],
+  "answers": ["Due process", "Equal protection", "Freedom of speech"],
+  "type": "multi-select",
+  "explanation": "Freedom of movement is not explicitly guaranteed; the others are constitutional rights."
+},
+{
+  "id": "q124",
+  "question": "Who was President during the signing of the 26th Amendment?",
+  "choices": ["Richard Nixon", "Lyndon Johnson", "Gerald Ford", "Jimmy Carter"],
+  "answers": ["Richard Nixon"],
+  "type": "single",
+  "explanation": "Nixon was President when the 26th Amendment was ratified in 1971, lowering the voting age to 18."
+},
+{
+  "id": "q125",
+  "question": "Which of the following are responsibilities of Congress?",
+  "choices": ["Declare war", "Approve treaties", "Confirm Supreme Court justices", "Command the military"],
+  "answers": ["Declare war", "Approve treaties"],
+  "type": "multi-select",
+  "explanation": "Congress declares war and approves treaties; the Senate confirms justices; the President commands the military."
+},
+{
+  "id": "q126",
+  "question": "What is one reason the U.S. entered the Gulf War?",
+  "choices": ["Iraq invaded Kuwait", "Attack on Pearl Harbor", "Zimmermann Telegram", "To end slavery"],
+  "answers": ["Iraq invaded Kuwait"],
+  "type": "single",
+  "explanation": "The U.S. intervened in 1991 after Iraq invaded Kuwait."
+},
+{
+  "id": "q127",
+  "question": "Which of the following are responsibilities of the Supreme Court?",
+  "choices": ["Interpret laws", "Declare laws unconstitutional", "Command the military", "Approve treaties"],
+  "answers": ["Interpret laws", "Declare laws unconstitutional"],
+  "type": "multi-select",
+  "explanation": "The Supreme Court interprets laws and can strike down unconstitutional ones."
+},
+{
+  "id": "q128",
+  "question": "Who was President during the signing of the 24th Amendment?",
+  "choices": ["Lyndon B. Johnson", "John F. Kennedy", "Richard Nixon", "Dwight Eisenhower"],
+  "answers": ["Lyndon B. Johnson"],
+  "type": "single",
+  "explanation": "Johnson was President when the 24th Amendment was ratified in 1964, eliminating poll taxes in federal elections."
+}
+]
