@@ -117,21 +117,40 @@ let officialsModal = null;
 let officialsModalContent = null;
 let officialsModalCloseBtn = null;
 
-// === POLL CATEGORIES (focused) ===
+// === POLL CATEGORIES (authoritative sources only) ===
 const pollCategories = [
   {
-    label: 'President',
+    label: "President",
     polls: [
-      { source: 'Ballotpedia', name: 'Ballotpedia – Presidential approval index', url: 'https://ballotpedia.org/Ballotpedia%27s_Polling_Index:_Presidential_approval_rating' },
-      { source: 'RCP', name: 'RCP – Presidential job approval', url: 'https://www.realclearpolling.com/polls/approval/donald-trump/approval-rating' },
-      { source: '270toWin', name: '270toWin – 2028 Republican primary polls', url: 'https://www.270towin.com/2028-republican-nomination/' },
-      { source: '270toWin', name: '270toWin – 2028 Democratic primary polls', url: 'https://www.270towin.com/2028-democratic-nomination/' },
-      { source: 'Cook Political', name: 'Cook Political Report – Presidential coverage', url: 'https://www.cookpolitical.com/' },
-      { source: 'Sabato', name: 'Sabato’s Crystal Ball – Presidential elections', url: 'https://centerforpolitics.org/crystalball/' },
-      { source: 'AP-NORC', name: 'AP-NORC – Polling tracker (approval and key issues)', url: 'https://apnews.com/projects/polling-tracker/' },
-      { source: 'DDHQ', name: 'Decision Desk HQ – Polls averages hub', url: 'https://decisiondeskhq.com/polls/averages/' },
-      { source: 'Gallup', name: 'Gallup – Presidential job approval topic', url: 'https://news.gallup.com/topic/presidential-job-approval.aspx' },
-      { source: 'American Presidency Project', name: 'UCSB – Presidential job approval (Gallup historical)', url: 'https://www.presidency.ucsb.edu/statistics/data/presidential-job-approval-all-data' }
+      { name: "Ballotpedia – Presidential Approval Index", source: "Ballotpedia", url: "https://ballotpedia.org/Ballotpedia%27s_Polling_Index:_Presidential_approval_rating" },
+      { name: "Rasmussen – Daily Tracking Poll", source: "Rasmussen", url: "https://www.rasmussenreports.com/public_content/current_events/politics/daily_presidential_tracking_poll" },
+      { name: "AP-NORC – Polling Tracker", source: "AP-NORC", url: "https://apnews.com/projects/polling-tracker/" }
+    ]
+  },
+  {
+    label: "Governor",
+    polls: [
+      { name: "270toWin – Governor Polls", source: "270toWin", url: "https://www.270toWin.com/polls/latest-2026-governor-election-polls/index.php" }
+    ]
+  },
+  {
+    label: "Senate",
+    polls: [
+      { name: "270toWin – Senate Polls", source: "270toWin", url: "https://www.270toWin.com/polls/latest-2026-senate-election-polls/" }
+    ]
+  },
+  {
+    label: "House",
+    polls: [
+      { name: "RealClearPolling – House Polls", source: "RCP", url: "https://www.realclearpolling.com/latest-polls/house" }
+    ]
+  },
+  {
+    label: "Mayor",
+    polls: [
+      { name: "Ballotpedia – Municipal Elections", source: "Ballotpedia", url: "https://ballotpedia.org/Municipal_elections" },
+      { name: "RealClearPolling – Mayoral Polls", source: "RCP", url: "https://www.realclearpolling.com/latest-polls" },
+      { name: "Race to the WH – Mayoral Forecasts", source: "Race to the WH", url: "https://www.racetothewh.com/" }
     ]
   }
 ];
@@ -383,11 +402,11 @@ const pollCategories = [
   }
 ];
 
-// Polls tab
+// === Polls tab ===
 function showPolls() {
   showTab('polls');
 
-  // === Polls Section (President only) ===
+  // === Polls Section ===
   const pollsContainer = document.getElementById('polls-cards');
   if (pollsContainer) {
     pollsContainer.innerHTML = '';
@@ -404,18 +423,15 @@ function showPolls() {
       grid.className = 'poll-grid';
 
       category.polls.forEach(poll => {
-        const card = document.createElement('div');
+        const card = document.createElement('a'); // full card clickable
         card.className = 'poll-card';
-        const card = document.createElement('a');
-card.className = 'poll-card';
-card.href = poll.url;
-card.target = '_blank';
-card.rel = 'noopener noreferrer';
-card.innerHTML = `
-  <h4>${poll.name}</h4>
-  <p class="card-desc">Source: ${poll.source}</p>
-`;
-grid.appendChild(card);
+        card.href = poll.url;
+        card.target = '_blank';
+        card.rel = 'noopener noreferrer';
+        card.innerHTML = `
+          <h4>${poll.name}</h4>
+          <p class="card-desc">Source: ${poll.source}</p>
+        `;
         grid.appendChild(card);
       });
 
