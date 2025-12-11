@@ -8744,3 +8744,14 @@ nav .tab.active {
   background: #fff;     /* optional: white background behind logos */
   border-radius: 6px 6px 0 0;
 }
+/* === Poll Section Headers === */
+.poll-section h3 {
+  font-size: 1.6rem;          /* larger text */
+  font-weight: 700;           /* bold */
+  text-transform: uppercase;  /* all caps for emphasis */
+  letter-spacing: 1px;        /* subtle spacing */
+  color: #1e90ff;             /* bright blue accent */
+  margin-bottom: 12px;
+  border-bottom: 2px solid #1e90ff; /* underline accent */
+  padding-bottom: 4px;
+}
