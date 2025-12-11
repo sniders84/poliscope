@@ -8920,3 +8920,20 @@ nav .tab.active {
 .elections-block a:hover {
   color: #1e90ff;               /* hover matches your site’s blue accent */
 }
+.poll-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+.poll-card {
+  background-color: #333;
+  padding: 14px;
+  border-radius: 8px;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.poll-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
