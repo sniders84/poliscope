@@ -138,8 +138,7 @@ const pollCategories = [
       { name: "Presidential Approval Index", source: "Ballotpedia", url: "https://ballotpedia.org/Ballotpedia%27s_Polling_Index:_Presidential_approval_rating" },
       { name: "Daily Tracking Poll", source: "Rasmussen", url: "https://www.rasmussenreports.com/public_content/current_events/politics/daily_presidential_tracking_poll" },
       { name: "Polling Tracker", source: "AP-NORC", url: "https://apnews.com/projects/polling-tracker/" },
-      { name: "Latest Approval Polls", source: "Reuters/Ipsos", url: "https://www.reuters.com" }
-    ]
+      { name: "Latest Approval Polls", source: "Reuters/Ipsos", url: "https://www.reuters.com/graphics/USA-BIDEN/POLL/nmopagnqapa/" }
   },
   {
     label: "Governor",
@@ -147,7 +146,6 @@ const pollCategories = [
       { name: "Governor Polls", source: "270toWin", url: "https://www.270towin.com/polls/latest-2026-governor-election-polls/" },
       { name: "Governor Polls", source: "RCP", url: "https://www.realclearpolling.com/latest-polls/governor" },
       { name: "Governor Polls", source: "Race to the WH", url: "https://www.racetothewh.com/governor/26polls" },
-      { name: "State Polls", source: "Emerson College", url: "https://www.emersonpolling.com" }
     ]
   },
   {
@@ -156,7 +154,7 @@ const pollCategories = [
       { name: "Senate Polls", source: "270toWin", url: "https://www.270toWin.com/polls/latest-2026-senate-election-polls/" },
       { name: "Senate Polls", source: "RCP", url: "https://www.realclearpolling.com/latest-polls/senate" },
       { name: "Senate Polls", source: "Race to the WH", url: "https://www.racetothewh.com/senate/26polls" },
-      { name: "Senate Ratings", source: "Cook Political Report", url: "https://www.cookpolitical.com/ratings/senate-race-ratings" }
+      { name: "Senate Polls", source: "Sabato's Crystal Ball", url: "https://centerforpolitics.org/crystalball/2026-senate/"}
     ]
   },
   {
