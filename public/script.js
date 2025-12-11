@@ -940,6 +940,12 @@ function renderLangRow(item) {
 
   return links.length ? `<div class="lang-row">${links.join(' • ')}</div>` : '';
 }
+document.addEventListener('DOMContentLoaded', () => {
+  const submitBtn = document.getElementById('quiz-submit');
+  if (submitBtn) {
+    submitBtn.onclick = () => checkCivicsAnswer();
+  }
+});
 
 // === HELPER: render a single Cabinet member card ===
 
