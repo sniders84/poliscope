@@ -788,29 +788,29 @@ function openDailyQuizModal() {
       const nextBtn = document.getElementById('quiz-next');
 
       // Daily submit: reads inputs with name="opt"
-      submitBtn.onclick = () => {
-        const selected = document.querySelector('input[name="opt"]:checked');
-        if (!selected) {
-          alert("Pick an answer!");
-          return;
-        }
-        const q = quizQuestions[currentQuestion];
-        const selectedIndex = parseInt(selected.value, 10);
-        const correctText = q.options[q.answer];
-        const feedbackEl = document.getElementById("quiz-feedback");
+     submitBtn.onclick = () => {
+  const selected = document.querySelector('input[name="opt"]:checked');
+  if (!selected) {
+    alert("Pick an answer!");
+    return;
+  }
+  const q = quizQuestions[currentQuestion];
+  const selectedIndex = parseInt(selected.value, 10);
+  const correctText = q.answers[0]; // use the first string in answers[]
+  const feedbackEl = document.getElementById("quiz-feedback");
 
-        if (selectedIndex === q.answer) {
-          score++;
-          feedbackEl.className = "correct";
-          feedbackEl.innerHTML = `✅ Correct — ${correctText}<br><small>${q.explanation}</small>`;
-        } else {
-          feedbackEl.className = "incorrect";
-          feedbackEl.innerHTML = `❌ Incorrect. Correct answer: ${correctText}<br><small>${q.explanation}</small>`;
-        }
+  if (q.choices[selectedIndex] === correctText) {
+    score++;
+    feedbackEl.className = "correct";
+    feedbackEl.innerHTML = `✅ Correct — ${correctText}<br><small>${q.explanation}</small>`;
+  } else {
+    feedbackEl.className = "incorrect";
+    feedbackEl.innerHTML = `❌ Incorrect. Correct answer: ${correctText}<br><small>${q.explanation}</small>`;
+  }
 
-        submitBtn.style.display = "none";
-        nextBtn.style.display = "inline-block";
-      };
+  submitBtn.style.display = "none";
+  nextBtn.style.display = "inline-block";
+};
 
       nextBtn.onclick = () => {
         currentQuestion++;
@@ -1532,10 +1532,10 @@ function renderQuestion() {
   document.getElementById("quiz-progress-fill").style.width =
     `${((currentQuestion + 1) / quizQuestions.length) * 100}%`;
 
-  document.getElementById("quiz-question").innerHTML = `<h3>${q.q}</h3>`;
+  document.getElementById("quiz-question").innerHTML = `<h3>${q.question}</h3>`;
 
-  document.getElementById("quiz-options").innerHTML = q.options.map((opt,i) =>
-    `<label><input type="radio" name="opt" value="${i}"> ${opt}</label><br>`
+  document.getElementById("quiz-options").innerHTML = q.choices.map((choice,i) =>
+    `<label><input type="radio" name="opt" value="${i}"> ${choice}</label><br>`
   ).join("");
 
   document.getElementById("quiz-feedback").textContent = "";
@@ -1551,10 +1551,10 @@ document.getElementById("quiz-submit").onclick = () => {
   }
   const q = quizQuestions[currentQuestion];
   const selectedIndex = parseInt(selected.value, 10);
-  const correctText = q.options[q.answer];
+  const correctText = q.answers[0]; // use first string in answers[]
   const feedbackEl = document.getElementById("quiz-feedback");
 
-  if (selectedIndex === q.answer) {
+  if (q.choices[selectedIndex] === correctText) {
     score++;
     feedbackEl.className = "correct";
     feedbackEl.innerHTML = `✅ Correct — ${correctText}<br><small>${q.explanation}</small>`;
