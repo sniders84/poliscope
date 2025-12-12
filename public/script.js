@@ -1472,11 +1472,9 @@ function initCivicsQuiz() {
   currentQuestion = 0;
   score = 0;
 
-  // 🔑 Clear any previous results
+  // Clear previous results
   const scoreBox = document.getElementById("quiz-score");
-  if (scoreBox) {
-    scoreBox.textContent = "";
-  }
+  if (scoreBox) scoreBox.textContent = "";
   const feedbackEl = document.getElementById("quiz-feedback");
   if (feedbackEl) {
     feedbackEl.textContent = "";
@@ -1487,11 +1485,56 @@ function initCivicsQuiz() {
     .then(res => res.json())
     .then(data => {
       allQuestions = data;
-
-      // Pick today's set of 20 questions
       quizQuestions = getDailyQuestions();
 
       renderQuestion();
+
+      // 🔑 Wire handlers AFTER rendering
+      const submitBtn = document.getElementById("quiz-submit");
+      const nextBtn = document.getElementById("quiz-next");
+
+      submitBtn.onclick = () => {
+        const selected = document.querySelector('input[name="opt"]:checked');
+        if (!selected) {
+          alert("Pick an answer!");
+          return;
+        }
+        const q = quizQuestions[currentQuestion];
+        const selectedIndex = parseInt(selected.value, 10);
+        const correctText = q.answers[0];
+        const feedbackEl = document.getElementById("quiz-feedback");
+
+        if (q.choices[selectedIndex] === correctText) {
+          score++;
+          feedbackEl.className = "correct";
+          feedbackEl.innerHTML = `✅ Correct — ${correctText}<br><small>${q.explanation}</small>`;
+        } else {
+          feedbackEl.className = "incorrect";
+          feedbackEl.innerHTML = `❌ Incorrect. Correct answer: ${correctText}<br><small>${q.explanation}</small>`;
+        }
+
+        submitBtn.style.display = "none";
+        nextBtn.style.display = "inline-block";
+      };
+
+      nextBtn.onclick = () => {
+        currentQuestion++;
+        if (currentQuestion < quizQuestions.length) {
+          renderQuestion();
+          document.getElementById("quiz-feedback").textContent = "";
+          submitBtn.style.display = "inline-block";
+          nextBtn.style.display = "none";
+        } else {
+          document.getElementById("quiz-question").innerHTML = "";
+          document.getElementById("quiz-options").innerHTML = "";
+          document.getElementById("quiz-progress").textContent = "";
+          document.getElementById("quiz-progress-fill").style.width = "100%";
+          document.getElementById("quiz-feedback").textContent = "";
+          document.getElementById("quiz-score").textContent =
+            `Final Score: ${score}/${quizQuestions.length} — ${score >= 12 ? "Pass ✅" : "Try Again ❌"}`;
+          nextBtn.style.display = "none";
+        }
+      };
     })
     .catch(err => {
       console.error("Error loading civics-questions.json:", err);
