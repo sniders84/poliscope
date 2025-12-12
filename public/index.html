@@ -744,5 +744,13 @@
 <!-- Load external script with full quiz logic -->
 <script src="script.js"></script>
 
+  <script>
+  async function getSocialLinks(slug) {
+    const res = await fetch('/social-links.json');
+    const data = await res.json();
+    return data[slug] || null;
+  }
+</script>
+
 </body>
 </html>
