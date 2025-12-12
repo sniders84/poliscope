@@ -1,0 +1,97 @@
+{
+  "PresidentAndVicePresident": {
+    "donald-trump": {
+      "facebook": "https://facebook.com/realDonaldTrump",
+      "instagram": "https://instagram.com/realdonaldtrump",
+      "x": "https://x.com/realdonaldtrump",
+      "youtube": "https://youtube.com/@realDonaldTrump",
+      "tiktok": null
+    },
+    "jd-vance": {
+      "facebook": "https://facebook.com/jdvance",
+      "instagram": "https://instagram.com/jdvance",
+      "x": "https://x.com/jdvance",
+      "youtube": null,
+      "tiktok": null
+    }
+  },
+
+  "Governors": {
+    "kay-ivey": {
+      "facebook": "https://facebook.com/GovernorKayIvey",
+      "instagram": "https://instagram.com/governorkayivey",
+      "x": "https://x.com/GovernorKayIvey",
+      "youtube": "https://youtube.com/@GovernorKayIvey",
+      "tiktok": null
+    },
+    "mike-dunleavy": {
+      "facebook": "https://facebook.com/GovDunleavy",
+      "instagram": "https://instagram.com/govdunleavy",
+      "x": "https://x.com/GovDunleavy",
+      "youtube": null,
+      "tiktok": null
+    },
+    "nikolao-pula": {
+      "facebook": "https://facebook.com/GovernorPula",
+      "instagram": "https://instagram.com/governorpula",
+      "x": "https://x.com/GovernorPula",
+      "youtube": null,
+      "tiktok": null
+    },
+    "katie-hobbs": {
+      "facebook": "https://facebook.com/GovernorHobbs",
+      "instagram": "https://instagram.com/governorhobbs",
+      "x": "https://x.com/GovernorHobbs",
+      "youtube": "https://youtube.com/@GovernorHobbs",
+      "tiktok": null
+    },
+    "sarah-huckabee-sanders": {
+      "facebook": "https://facebook.com/SarahHuckabeeSanders",
+      "instagram": "https://instagram.com/sarahhuckabeesanders",
+      "x": "https://x.com/SarahHuckabee",
+      "youtube": "https://youtube.com/@SarahHuckabeeSanders",
+      "tiktok": null
+    },
+    "gavin-newsom": {
+      "facebook": "https://facebook.com/GavinNewsom",
+      "instagram": "https://instagram.com/gavinnewsom",
+      "x": "https://x.com/GavinNewsom",
+      "youtube": "https://youtube.com/@GavinNewsom",
+      "tiktok": "https://tiktok.com/@GavinNewsom"
+    },
+    "jared-polis": {
+      "facebook": "https://facebook.com/JaredPolisCO",
+      "instagram": "https://instagram.com/jaredpolis",
+      "x": "https://x.com/GovofCO",
+      "youtube": "https://youtube.com/@GovPolis",
+      "tiktok": null
+    },
+    "ned-lamont": {
+      "facebook": "https://facebook.com/GovNedLamont",
+      "instagram": "https://instagram.com/govnedlamont",
+      "x": "https://x.com/GovNedLamont",
+      "youtube": "https://youtube.com/@GovNedLamont",
+      "tiktok": null
+    },
+    "matt-meyer": {
+      "facebook": "https://facebook.com/GovMattMeyer",
+      "instagram": "https://instagram.com/govmattmeyer",
+      "x": "https://x.com/GovMattMeyer",
+      "youtube": null,
+      "tiktok": null
+    },
+    "ron-desantis": {
+      "facebook": "https://facebook.com/GovRonDeSantis",
+      "instagram": "https://instagram.com/govrondesantis",
+      "x": "https://x.com/GovRonDeSantis",
+      "youtube": "https://youtube.com/@GovRonDeSantis",
+      "tiktok": null
+    },
+    "brian-kemp": {
+      "facebook": "https://facebook.com/GovKemp",
+      "instagram": "https://instagram.com/govkemp",
+      "x": "https://x.com/GovKemp",
+      "youtube": null,
+      "tiktok": null
+    },
+    
