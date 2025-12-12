@@ -2158,7 +2158,30 @@ function renderOfficials(stateFilter = null, query = '') {
   });
 }
 
-// === OFFICIALS MODAL ===
+// === OFFICIALS MODAL (with per‑modal social links) ===
+async function getSocialLinks() {
+  if (window.__socialLinksCache) return window.__socialLinksCache;
+  const res = await fetch('/social-links.json');
+  window.__socialLinksCache = await res.json();
+  return window.__socialLinksCache;
+}
+
+function injectSocialLinksIntoModal(slug) {
+  getSocialLinks().then(data => {
+    const links = data[slug];
+    const container = document.getElementById(`social-${slug}`);
+    if (!container || !links) return;
+
+    container.innerHTML = '';
+
+    if (links.facebook) container.innerHTML += `<a href="${links.facebook}" target="_blank" rel="noopener noreferrer"><img src="/assets/facebook.svg" alt="Facebook"></a>`;
+    if (links.instagram) container.innerHTML += `<a href="${links.instagram}" target="_blank" rel="noopener noreferrer"><img src="/assets/instagram.svg" alt="Instagram"></a>`;
+    if (links.x) container.innerHTML += `<a href="${links.x}" target="_blank" rel="noopener noreferrer"><img src="/assets/x.svg" alt="X"></a>`;
+    if (links.youtube) container.innerHTML += `<a href="${links.youtube}" target="_blank" rel="noopener noreferrer"><img src="/assets/youtube.svg" alt="YouTube"></a>`;
+    if (links.tiktok) container.innerHTML += `<a href="${links.tiktok}" target="_blank" rel="noopener noreferrer"><img src="/assets/tiktok.svg" alt="TikTok"></a>`;
+  });
+}
+
 function openOfficialModal(official) {
   const modal = document.getElementById('officials-modal');
   const modalContent = document.getElementById('officials-content');
@@ -2179,6 +2202,12 @@ function openOfficialModal(official) {
   const startYear = safeYear(cleanOfficial.termStart);
   const endYear = safeYear(cleanOfficial.termEnd) || 'Present';
   const termDisplay = (startYear || endYear) ? `${startYear}–${endYear}` : 'Present';
+
+  // derive a slug from the official name if not provided
+  const slug = (cleanOfficial.slug || (cleanOfficial.name || '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, ''));
 
   modalContent.innerHTML = `
     <div class="modal-card">
@@ -2220,13 +2249,18 @@ function openOfficialModal(official) {
         ${contact.website ? `<p><a href="${contact.website}" target="_blank">Contact Website</a></p>` : ''}
         ${cleanOfficial.ballotpediaLink ? `<p><a href="${cleanOfficial.ballotpediaLink}" target="_blank">Ballotpedia Profile</a></p>` : ''}
         ${cleanOfficial.govtrackLink ? `<p><a href="${cleanOfficial.govtrackLink}" target="_blank">GovTrack</a></p>` : ''}
+
+        <!-- Social links row injected per modal -->
+        <div class="ps-social-links" id="social-${slug}"></div>
       </div>
     </div>
   `;
 
   modal.style.display = 'block';
 
-  // Click-outside-to-close (scoped handler)
+  // inject social links for this specific official
+  injectSocialLinksIntoModal(slug);
+
   const clickOutsideHandler = function(event) {
     if (event.target === modal) {
       modal.style.display = 'none';
@@ -2236,7 +2270,6 @@ function openOfficialModal(official) {
   window.addEventListener('click', clickOutsideHandler);
 }
 
-// Safe close function that accepts optional id (defaults to officials modal)
 function closeModalWindow(id = 'officials-modal') {
   const el = document.getElementById(id);
   if (!el) {
@@ -2245,7 +2278,6 @@ function closeModalWindow(id = 'officials-modal') {
   }
   el.style.display = 'none';
 }
-
 // === SEARCH BAR WIRING ===
 function wireSearchBar() {
   if (!searchBar) {
