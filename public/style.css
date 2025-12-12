@@ -8730,3 +8730,30 @@ nav .tab.active {
 .lang-link a:hover {
   text-decoration: underline;
 }
+/* Social links container */
+.ps-social-links {
+  display: flex;
+  gap: 10px;              /* space between icons */
+  margin-top: 8px;        /* space above the icon row */
+}
+
+/* Anchor styling */
+.ps-social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+/* Icon sizing */
+.ps-social-links a img {
+  width: 22px;            /* adjust size as needed */
+  height: 22px;
+  vertical-align: middle;
+  transition: transform 0.2s ease;
+}
+
+/* Hover effect */
+.ps-social-links a:hover img {
+  transform: scale(1.1);  /* subtle zoom on hover */
+}
