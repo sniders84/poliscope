@@ -744,12 +744,40 @@
 <!-- Load external script with full quiz logic -->
 <script src="script.js"></script>
 
-  <script>
-  async function getSocialLinks(slug) {
+ <script>
+  async function loadSocialLinks() {
     const res = await fetch('/social-links.json');
-    const data = await res.json();
-    return data[slug] || null;
+    return await res.json();
   }
+
+  async function renderAllSocialLinks() {
+    const data = await loadSocialLinks();
+
+    // Loop through every official in the JSON
+    Object.keys(data).forEach(slug => {
+      const links = data[slug];
+
+      // Find the modal/card element for this official
+      const card = document.getElementById(`official-${slug}`);
+      if (!card) return; // skip if not rendered
+
+      // Create a container for social icons
+      const container = document.createElement('div');
+      container.className = 'ps-social-links';
+
+      // Add icons only for non-null links
+      if (links.facebook) container.innerHTML += `<a href="${links.facebook}" target="_blank">FB</a>`;
+      if (links.instagram) container.innerHTML += `<a href="${links.instagram}" target="_blank">IG</a>`;
+      if (links.x) container.innerHTML += `<a href="${links.x}" target="_blank">X</a>`;
+      if (links.youtube) container.innerHTML += `<a href="${links.youtube}" target="_blank">YT</a>`;
+      if (links.tiktok) container.innerHTML += `<a href="${links.tiktok}" target="_blank">TikTok</a>`;
+
+      // Append to the official’s card
+      card.appendChild(container);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', renderAllSocialLinks);
 </script>
 
 </body>
