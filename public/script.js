@@ -714,40 +714,41 @@ function showCitizenship() {
     section.items.forEach(item => {
       let card;
 
-// Special handling for civics test launchers
-if (item.title.includes("Practice the civics test")) {
-  card = document.createElement('div');
-  card.className = 'resource-card';
-  card.innerHTML = `
-    <h4>Practice the Naturalization Civics Test (2008 version)</h4>
-    <p class="card-desc">Official 2008 test — 100 questions, 10 asked, 6 correct to pass.</p>
-    <button class="card-button" onclick="openPractice2008Modal()">Launch 2008 Test</button>
-    <h4>Practice the Naturalization Civics Test (2025 version)</h4>
-    <p class="card-desc">New 2025 test — based on 2020 version, 128 questions.</p>
-    <button class="card-button" onclick="openPractice2025Modal()">Launch 2025 Test</button>
-  `;
-} else {
-  card = document.createElement('a');
-  card.className = 'resource-card';
+      // Special handling for civics test launchers
+      if (item.title.includes("Practice the civics test")) {
+        card = document.createElement('div');
+        card.className = 'resource-card';
+        card.innerHTML = `
+          <h4>Practice the Naturalization Civics Test (2008 version)</h4>
+          <p class="card-desc">Official 2008 test — 100 questions, 10 asked, 6 correct to pass.</p>
+          <button class="card-button" onclick="openPractice2008Modal()">Launch 2008 Test</button>
+          <h4>Practice the Naturalization Civics Test (2025 version)</h4>
+          <p class="card-desc">New 2025 test — based on 2020 version, 128 questions.</p>
+          <button class="card-button" onclick="openPractice2025Modal()">Launch 2025 Test</button>
+        `;
+      } else {
+        card = document.createElement('a');
+        card.className = 'resource-card';
 
-  const url = item.urlEn || item.urlEs || item.urlZh || item.urlAr || item.url;
-  card.href = url || '#';
-  card.target = '_blank';
-  card.rel = 'noopener noreferrer';
+        const url = item.urlEn || item.urlEs || item.urlZh || item.urlAr || item.url;
+        card.href = url || '#';
+        card.target = '_blank';
+        card.rel = 'noopener noreferrer';
 
-  card.innerHTML = `
-    <h4>${item.title}</h4>
-    <p class="card-desc">${item.desc}</p>
-    ${renderLangRow(item)}
-  `;
+        card.innerHTML = `
+          <h4>${item.title}</h4>
+          <p class="card-desc">${item.desc}</p>
+          ${renderLangRow(item)}
+        `;
+      }
+
+      grid.appendChild(card);
+    });
+
+    wrapper.appendChild(grid);
+    container.appendChild(wrapper);
+  });
 }
-
-grid.appendChild(card);
-});
-
-wrapper.appendChild(grid);
-container.appendChild(wrapper);
-});
 
 // === Civics Quiz Logic (Daily + Practice Tests) ===
 let civicsQuestions = [];
@@ -786,45 +787,30 @@ function openDailyQuizModal() {
       const submitBtn = document.getElementById('quiz-submit');
       const nextBtn = document.getElementById('quiz-next');
 
-      // Daily submit: supports single-answer and multi-select
-      submitBtn.onclick = () => {
-        const q = quizQuestions[currentQuestion];
-        const feedbackEl = document.getElementById("quiz-feedback");
+      // Daily submit: reads inputs with name="opt"
+     submitBtn.onclick = () => {
+  const selected = document.querySelector('input[name="opt"]:checked');
+  if (!selected) {
+    alert("Pick an answer!");
+    return;
+  }
+  const q = quizQuestions[currentQuestion];
+  const selectedIndex = parseInt(selected.value, 10);
+  const correctText = q.answers[0]; // use the first string in answers[]
+  const feedbackEl = document.getElementById("quiz-feedback");
 
-        let selectedIndices = [];
-        if (q.type === "multi-select") {
-          selectedIndices = [...document.querySelectorAll('input[name="opt"]:checked')]
-            .map(el => parseInt(el.value, 10));
-        } else {
-          const selected = document.querySelector('input[name="opt"]:checked');
-          if (!selected) {
-            alert("Pick an answer!");
-            return;
-          }
-          selectedIndices = [parseInt(selected.value, 10)];
-        }
+  if (q.choices[selectedIndex] === correctText) {
+    score++;
+    feedbackEl.className = "correct";
+    feedbackEl.innerHTML = `✅ Correct — ${correctText}<br><small>${q.explanation}</small>`;
+  } else {
+    feedbackEl.className = "incorrect";
+    feedbackEl.innerHTML = `❌ Incorrect. Correct answer: ${correctText}<br><small>${q.explanation}</small>`;
+  }
 
-        // Map indices to choice strings
-        const selectedChoices = selectedIndices.map(i => q.choices[i]);
-        const correctChoices = q.answers; // array of strings in your JSON
-
-        // Exact-match check for multi-select and single-answer
-        const isCorrect =
-          selectedChoices.length === correctChoices.length &&
-          selectedChoices.every(ans => correctChoices.includes(ans));
-
-        if (isCorrect) {
-          score++;
-          feedbackEl.className = "correct";
-          feedbackEl.innerHTML = `✅ Correct — ${correctChoices.join(", ")}<br><small>${q.explanation}</small>`;
-        } else {
-          feedbackEl.className = "incorrect";
-          feedbackEl.innerHTML = `❌ Incorrect. Correct answer${correctChoices.length > 1 ? "s" : ""}: ${correctChoices.join(", ")}<br><small>${q.explanation}</small>`;
-        }
-
-        submitBtn.style.display = "none";
-        nextBtn.style.display = "inline-block";
-      };
+  submitBtn.style.display = "none";
+  nextBtn.style.display = "inline-block";
+};
 
       nextBtn.onclick = () => {
         currentQuestion++;
@@ -876,6 +862,7 @@ function openPractice2008Modal() {
 
       // Wire practice submit to checkCivicsAnswer
       const submitBtn = document.getElementById('quiz-submit');
+      const nextBtn = document.getElementById('quiz-next');
       submitBtn.onclick = () => checkCivicsAnswer();
       // next button is set inside checkCivicsAnswer
     })
@@ -910,6 +897,7 @@ function openPractice2025Modal() {
 
       // Wire practice submit to checkCivicsAnswer
       const submitBtn = document.getElementById('quiz-submit');
+      const nextBtn = document.getElementById('quiz-next');
       submitBtn.onclick = () => checkCivicsAnswer();
       // next button is set inside checkCivicsAnswer
     })
@@ -968,6 +956,7 @@ function renderCivicsQuestion() {
     `Question ${currentQuestionIndex + 1} of ${civicsQuestions.length}`;
 }
 
+// === Evaluate selection ===
 // === Evaluate selection with explanations and multi-select support ===
 function checkCivicsAnswer() {
   const q = civicsQuestions[currentQuestionIndex];
