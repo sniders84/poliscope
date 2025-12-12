@@ -2307,7 +2307,7 @@ document.addEventListener('DOMContentLoaded', () => {
     abc:   'https://abcnews.go.com/abcnews/topstories',       // ABC Top Stories
     cbs:   'https://www.cbsnews.com/latest/rss/main',         // CBS Latest
     fox:   'https://feeds.foxnews.com/foxnews/latest',        // FOX News Latest
-    cnn:   'http://rss.cnn.com/rss/cnn_topstories.rss'        // CNN Top Stories
+    cnn:   'http://rss.cnn.com/rss/cnn_world.rss'             // CNN Top Stories
   };
 
   async function loadFeed(network) {
