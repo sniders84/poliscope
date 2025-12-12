@@ -1042,19 +1042,19 @@
     Object.keys(data).forEach(slug => {
       const links = data[slug];
 
-      const card = document.getElementById(`official-${slug}`);
-      if (!card) return;
+      // Find the existing social container for this official
+      const container = document.getElementById(`social-${slug}`);
+      if (!container || !links) return;
 
-      const container = document.createElement('div');
-      container.className = 'ps-social-links';
+      // Clear any existing content
+      container.innerHTML = '';
 
+      // Add icons only for non-null links
       if (links.facebook) container.innerHTML += `<a href="${links.facebook}" target="_blank" rel="noopener noreferrer"><img src="/assets/facebook.svg" alt="Facebook"></a>`;
       if (links.instagram) container.innerHTML += `<a href="${links.instagram}" target="_blank" rel="noopener noreferrer"><img src="/assets/instagram.svg" alt="Instagram"></a>`;
       if (links.x) container.innerHTML += `<a href="${links.x}" target="_blank" rel="noopener noreferrer"><img src="/assets/x.svg" alt="X"></a>`;
       if (links.youtube) container.innerHTML += `<a href="${links.youtube}" target="_blank" rel="noopener noreferrer"><img src="/assets/youtube.svg" alt="YouTube"></a>`;
       if (links.tiktok) container.innerHTML += `<a href="${links.tiktok}" target="_blank" rel="noopener noreferrer"><img src="/assets/tiktok.svg" alt="TikTok"></a>`;
-
-      card.appendChild(container);
     });
   }
 
