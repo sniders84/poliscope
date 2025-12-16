@@ -1,40 +1,40 @@
 {
-    "donald-trump": {
-      "facebook": "https://www.facebook.com/DonaldTrump",
-      "instagram": "https://www.instagram.com/realdonaldtrump",
-      "x": "https://x.com/realDonaldTrump",
-      "youtube": "https://www.youtube.com/@realDonaldTrump",
-      "tiktok": null
-    },
-    "jd-vance": {
-      "facebook": "https://www.facebook.com/JDVanceForSenate",
-      "instagram": "https://www.instagram.com/jdvance",
-      "x": "https://x.com/JDVance1",
-      "youtube": null,
-      "tiktok": null
-    },
-    "kay-ivey": {
-      "facebook": "https://www.facebook.com/GovernorKayIvey",
-      "instagram": "https://www.instagram.com/governorkayivey",
-      "x": "https://twitter.com/GovernorKayIvey",
-      "youtube": "https://www.youtube.com/@GovernorKayIvey",
-      "tiktok": null
-    },
-    "mike-dunleavy": {
-      "facebook": "https://www.facebook.com/GovDunleavy",
-      "instagram": "https://www.instagram.com/GovDunleavy",
-      "x": "https://twitter.com/GovDunleavy",
-      "youtube": "https://www.youtube.com/@GovDunleavy",
-      "tiktok": null
-    },
-    "nikolao-pula": {
-      "facebook": "https://www.facebook.com/HOPE2024PulaPulu",
-      "instagram": null,
-      "x": null,
-      "youtube": "https://www.youtube.com/@GovernorPula",
-      "tiktok": null
-    },
-        "katie-hobbs": {
+  "donald-trump": {
+    "facebook": "https://www.facebook.com/DonaldTrump",
+    "instagram": "https://www.instagram.com/realdonaldtrump/",
+    "x": "https://x.com/realDonaldTrump",
+    "youtube": null,
+    "tiktok": null
+  },
+  "jd-vance": {
+    "facebook": null,
+    "instagram": "https://www.instagram.com/jdvance/",
+    "x": "https://x.com/jdvance",
+    "youtube": null,
+    "tiktok": null
+  },
+  "kay-ivey": {
+    "facebook": "https://www.facebook.com/GovernorKayIvey",
+    "instagram": "https://www.instagram.com/governorkayivey/",
+    "x": "https://x.com/GovernorKayIvey",
+    "youtube": null,
+    "tiktok": null
+  },
+  "mike-dunleavy": {
+    "facebook": "https://www.facebook.com/GovDunleavy",
+    "instagram": "https://www.instagram.com/GovDunleavy/",
+    "x": "https://x.com/GovDunleavy",
+    "youtube": null,
+    "tiktok": null
+  },
+  "nikolao-pula": {
+    "facebook": null,
+    "instagram": null,
+    "x": null,
+    "youtube": null,
+    "tiktok": null
+  },
+    "katie-hobbs": {
       "facebook": "https://www.facebook.com/GovernorHobbs",
       "instagram": "https://www.instagram.com/governorhobbs",
       "x": "https://twitter.com/GovernorHobbs",
