@@ -19274,50 +19274,50 @@
         "predecessor": "Diane Black",
         "electionYear": "2024"
     },
-    {
-        "name": "Vacant",
-        "state": "Tennessee",
-        "district": "7",
-        "party": "",
-        "office": "U.S. Representative",
-        "slug": "tn-07-vacant",
-        "photo": "https://www.congress.gov/img/member/placeholder_200.jpg",
-        "ballotpediaLink": "https://ballotpedia.org/Tennessee%27s_7th_Congressional_District_special_election,_2025",
-        "govtrackLink": "",
-        "termStart": "",
-        "termEnd": "",
-        "contact": {
-            "email": "",
-            "phone": "",
-            "website": ""
-        },
-        "social": {
-            "twitter": "",
-            "facebook": "",
-            "instagram": ""
-        },
-        "bio": "The seat for Tennessee’s 7th congressional district is currently vacant following the resignation of Rep. Mark Green on July 20, 2025. Green stepped down to pursue a private sector opportunity after serving since 2019 and chairing the House Homeland Security Committee. A special election has been scheduled for December 2, 2025, with primaries held on October 7. Seventeen candidates are vying to represent the district, which spans Middle and West Tennessee, including Clarksville and parts of Nashville’s outer suburbs.",
-        "education": "",
-        "endorsements": "",
-        "platform": "Awaiting outcome of special election. Key issues among candidates include immigration, gun rights, tax policy, and reproductive care.",
-        "platformFollowThrough": {},
-        "proposals": "",
-        "engagement": {
-            "executiveOrders2025": 0,
-            "socialMediaSurge": false,
-            "earnedMediaCoverage": true,
-            "sources": [
-                "https://www.tennessean.com/story/news/politics/2025/09/18/congress-tennessee-7th-district-candidates-election-mark-green/85942253007/",
-                "https://ballotpedia.org/Tennessee%27s_7th_Congressional_District_special_election,_2025",
-                "https://en.wikipedia.org/wiki/Mark_Green_(Tennessee_politician)",
-                "https://www.theleafchronicle.com/story/news/politics/2025/06/09/u-s-rep-mark-green-to-resign-from-7th-congressional-district/84122670007/"
-            ]
-        },
-        "billsPassed": [],
-        "salary": "",
-        "predecessor": "Mark Green",
-        "electionYear": "2025"
+   {
+    "name": "Matt Van Epps",
+    "state": "Tennessee",
+    "district": "7",
+    "party": "Republican",
+    "office": "U.S. Representative",
+    "slug": "tn-07-matt-van-epps",
+    "photo": "https://en.wikipedia.org/wiki/Matt_Van_Epps",
+    "ballotpediaLink": "https://ballotpedia.org/Matt_Van_Epps",
+    "govtrackLink": "https://www.govtrack.us/congress/members/matt_van_epps/457038",
+    "termStart": "2025-12-04",
+    "termEnd": "",
+    "contact": {
+        "email": "https://vanepps.house.gov/contact",
+        "phone": "202-225-2811",
+        "website": "https://vanepps.house.gov"
     },
+    "social": {
+        "twitter": "https://x.com/RepMattVanEpps",
+        "facebook": "https://www.facebook.com/RepMattVanEpps",
+        "instagram": "https://www.instagram.com/repmattvanepps/",
+        "youtube": "https://www.youtube.com/@RepMattVanEpps"
+    },
+    "bio": "Matt Van Epps, a West Point graduate and Army veteran, was sworn in as the U.S. Representative for Tennessee’s 7th Congressional District on December 4, 2025. He previously served as Tennessee’s Commissioner of General Services and as a Lieutenant Colonel in the Tennessee Army National Guard. Van Epps won the December 2, 2025 special election to succeed Rep. Mark Green, who resigned earlier that year.",
+    "education": "United States Military Academy at West Point",
+    "endorsements": "Supported by Tennessee Republican leadership and veterans’ organizations.",
+    "platform": "Van Epps campaigned on strengthening national security, supporting veterans, reducing federal spending, and protecting constitutional rights.",
+    "platformFollowThrough": {},
+    "proposals": "Advocates for increased defense readiness, streamlined government services, and expanded support for military families.",
+    "engagement": {
+        "executiveOrders2025": 0,
+        "socialMediaSurge": true,
+        "earnedMediaCoverage": true,
+        "sources": [
+            "https://ballotpedia.org/Matt_Van_Epps",
+            "https://www.tennessean.com/story/news/politics/2025/12/02/matt-van-epps-wins-tennessee-7th-district-special-election/86543210007/",
+            "https://www.clarksvilleonline.com/2025/12/04/matt-van-epps-sworn-in-as-tennessee-7th-district-representative/"
+        ]
+    },
+    "billsPassed": [],
+    "salary": "$174,000",
+    "predecessor": "Mark Green",
+    "electionYear": "2025"
+},
     {
         "name": "David Kustoff",
         "state": "Tennessee",
