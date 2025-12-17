@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <title>Your Officials</title>
-  <!-- Restore original stylesheet and bust cache -->
-  <link rel="stylesheet" href="style.css?v=2025-12-17-0700" />
+  <!-- Use your main stylesheet and bust cache -->
+  <link rel="stylesheet" href="style.css?v=2025-12-17-0715" />
   <link rel="icon" href="favicon.ico" onerror="this.href='data:,';" />
   <style>
     /* --- Base page styles --- */
@@ -15,21 +15,62 @@
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
     }
 
-    /* --- Header (restored) --- */
-    .header-left .logo {
-      height: 40px;
-    }
-
-    .header-right {
+    /* --- Header layout --- */
+    header {
       display: flex;
+      justify-content: space-between; /* left, center, right */
       align-items: center;
-      gap: 8px;
-      padding: 10px;
-      border-bottom: 1px solid #444;
       background-color: #2b2b2b;
+      border-bottom: 1px solid #444;
+      padding: 10px;
       position: sticky;
       top: 0;
       z-index: 900;
+    }
+
+    /* Left: hamburger */
+    .header-left {
+      flex: 0 0 auto;
+    }
+
+    #hamburger {
+      font-size: 24px;
+      background: none;
+      border: 1px solid #444;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 6px;
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    #hamburger:hover {
+      background-color: #0066cc;
+      transform: scale(1.05);
+    }
+
+    /* Center: logo */
+    .header-center {
+      flex: 1 1 auto;
+      text-align: center;
+    }
+
+    .logo {
+      max-height: 100px;   /* make logo taller */
+      width: auto;
+      max-width: 100%;
+      object-fit: contain;
+    }
+
+    /* Right: search + dropdown */
+    .header-right {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     #search-bar {
@@ -50,324 +91,79 @@
   </style>
 </head>
 
-    /* --- Hamburger toggle + slide-out menu --- */
-    .header-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px;
-      background-color: #2b2b2b;
-      border-bottom: 1px solid #444;
-      position: sticky;
-      top: 0;
-      z-index: 901; /* above header-right */
-    }
-
-    #hamburger {
-      font-size: 24px;
-      background: none;
-      border: 1px solid #444;
-      color: #fff;
-      cursor: pointer;
-      border-radius: 6px;
-      width: 40px;
-      height: 40px;
-      display: grid;
-      place-items: center;
-      transition: background-color 0.2s ease, transform 0.2s ease;
-    }
-
-    #hamburger:hover {
-      background-color: #0066cc; /* crisp blue hover */
-      transform: scale(1.05);
-    }
-
-    /* Hidden by default; slides in from the left */
-    #hamburger-menu {
-      position: fixed;
-      top: 0;
-      left: -260px; /* hidden off-screen */
-      width: 260px;
-      height: 100vh;
-      background-color: #2b2b2b;
-      border-right: 1px solid #444;
-      overflow-y: auto;
-      transition: left 0.3s ease;
-      z-index: 2000;
-      padding-top: 60px; /* space for header area */
-    }
-
-    #hamburger-menu.open {
-      left: 0;
-    }
-
-    #hamburger-menu ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    #hamburger-menu ul li a {
-      display: block;
-      padding: 12px 16px;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 6px;
-      transition: background-color 0.2s ease, color 0.2s ease;
-    }
-
-    #hamburger-menu ul li a:hover {
-      background-color: #0066cc; /* crisp blue hover */
-      color: #fff;
-    }
-
-    #hamburger-menu ul li a.active {
-      background-color: crimson; /* active highlight */
-      color: #fff;
-    }
-
-    /* --- Page content wrapper --- */
-    .page-content {
-      padding: 10px;
-    }
-
-    /* --- Category Sections --- */
-    .category-section {
-      padding: 20px 0;
-      border-bottom: 1px solid #444;
-    }
-
-    .card-grid {
-      display: grid;
-      gap: 12px;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    }
-
-    .info-card {
-      background-color: #333;
-      padding: 14px;
-      border-radius: 8px;
-      color: #fff;
-      transition: transform 0.2s, box-shadow 0.2s;
-      cursor: pointer;
-    }
-
-    .info-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
-
-    /* Social feed placeholder */
-    #social-feed {
-      display: grid;
-      gap: 12px;
-      margin-top: 16px;
-    }
-
-    /* --- Carousel Styles --- */
-    .carousel {
-      width: 100%;
-      overflow: hidden;
-      position: relative;
-      margin-bottom: 0.5rem;
-    }
-
-    .carousel-track {
-      display: flex;
-      transition: transform 0.5s ease;
-      gap: 1rem;
-    }
-
-    .carousel-card {
-      flex: 0 0 300px;
-      height: 300px;
-      border: 1px solid #333;
-      border-radius: 8px;
-      background: #222;
-      color: #fff;
-      text-decoration: none;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
-      overflow: hidden;
-    }
-
-    .carousel-card:hover {
-      background-color: #1a3d66;
-      border-color: #0066cc;
-      transform: translateY(-4px);
-    }
-
-    .carousel-img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-bottom: 1px solid #444;
-    }
-
-    .carousel-card h3 {
-      font-size: 1.1rem;
-      margin: 0.5rem;
-      line-height: 1.3;
-    }
-
-    .carousel-card p {
-      font-size: 0.85rem;
-      color: #ccc;
-      margin: 0 0.5rem 0.5rem;
-    }
-
-    /* --- Arrow Controls --- */
-    .carousel-controls {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    .carousel-btn {
-      background: #222;
-      color: #fff;
-      border: 1px solid #444;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      font-size: 1.2rem;
-      cursor: pointer;
-      transition: background-color 0.2s ease, transform 0.2s ease;
-    }
-
-    .carousel-btn:hover {
-      background-color: #0066cc; /* blue hover */
-      transform: scale(1.1);
-    }
-  </style>
-</head>
 <body>
-  <!-- Header with hamburger -->
-<header>
-  <div class="header-left">
-    <button id="hamburger" aria-label="Open menu">&#9776;</button>
-  </div>
-  <div class="header-center">
-    <img src="assets/electorate-logo.png" alt="Logo" class="logo" />
-  </div>
-  <div class="header-right">
-    <input type="text" id="search-bar" placeholder="Search officials..." />
-    <label for="state-dropdown">State:</label>
-    <select id="state-dropdown">
-      <option value="Alabama">Alabama</option>
-      <option value="Alaska">Alaska</option>
-      <option value="American Samoa">American Samoa</option>
-      <option value="Arizona">Arizona</option>
-      <option value="Arkansas">Arkansas</option>
-      <option value="California">California</option>
-      <option value="Colorado">Colorado</option>
-      <option value="Connecticut">Connecticut</option>
-      <option value="Delaware">Delaware</option>
-      <option value="District of Columbia">District of Columbia</option>
-      <option value="Florida">Florida</option>
-      <option value="Georgia">Georgia</option>
-      <option value="Guam">Guam</option>
-      <option value="Hawaii">Hawaii</option>
-      <option value="Idaho">Idaho</option>
-      <option value="Illinois">Illinois</option>
-      <option value="Indiana">Indiana</option>
-      <option value="Iowa">Iowa</option>
-      <option value="Kansas">Kansas</option>
-      <option value="Kentucky">Kentucky</option>
-      <option value="Louisiana">Louisiana</option>
-      <option value="Maine">Maine</option>
-      <option value="Maryland">Maryland</option>
-      <option value="Massachusetts">Massachusetts</option>
-      <option value="Michigan">Michigan</option>
-      <option value="Minnesota">Minnesota</option>
-      <option value="Mississippi">Mississippi</option>
-      <option value="Missouri">Missouri</option>
-      <option value="Montana">Montana</option>
-      <option value="Nebraska">Nebraska</option>
-      <option value="Nevada">Nevada</option>
-      <option value="New Hampshire">New Hampshire</option>
-      <option value="New Jersey">New Jersey</option>
-      <option value="New Mexico">New Mexico</option>
-      <option value="New York">New York</option>
-      <option value="North Carolina">North Carolina</option>
-      <option value="North Dakota">North Dakota</option>
-      <option value="Northern Mariana Islands">Northern Mariana Islands</option>
-      <option value="Ohio">Ohio</option>
-      <option value="Oklahoma">Oklahoma</option>
-      <option value="Oregon">Oregon</option>
-      <option value="Pennsylvania">Pennsylvania</option>
-      <option value="Puerto Rico">Puerto Rico</option>
-      <option value="Rhode Island">Rhode Island</option>
-      <option value="South Carolina">South Carolina</option>
-      <option value="South Dakota">South Dakota</option>
-      <option value="Tennessee">Tennessee</option>
-      <option value="Texas">Texas</option>
-      <option value="Utah">Utah</option>
-      <option value="Vermont">Vermont</option>
-      <option value="Virgin Islands">U.S. Virgin Islands</option>
-      <option value="Virginia">Virginia</option>
-      <option value="Washington">Washington</option>
-      <option value="West Virginia">West Virginia</option>
-      <option value="Wisconsin">Wisconsin</option>
-      <option value="Wyoming">Wyoming</option>
-    </select>
-  </div>
-</header>
-
-  <!-- Slide-out hamburger menu -->
-  <nav id="hamburger-menu" aria-label="Primary">
-    <ul>
-      <li><a href="#home-hub" onclick="showStartupHub()" class="active">Home Hub</a></li>
-      <li><a href="#podcasts-shows" onclick="showPodcastsShows()">Podcasts & Shows</a></li>
-      <li><a href="#quizzes-learning" onclick="showQuizzes()">Quizzes & Learning</a></li>
-      <li><a href="#civic-intelligence" onclick="showCivic()">Civic Intelligence</a></li>
-      <li><a href="#polls-elections" onclick="showPolls()">Polls & Elections</a></li>
-      <li><a href="#my-officials" onclick="renderOfficials(selectedState, '')">My Officials</a></li>
-      <li><a href="#voting" onclick="showVoting()">Voting</a></li>
-      <li><a href="#citizenship-immigration" onclick="showCitizenship()">Citizenship/Immigration</a></li>
-      <li><a href="#political-groups" onclick="showOrganizations()">Political Groups</a></li>
-    </ul>
-  </nav>
-
-  <!-- Page content -->
-  <div class="page-content">
-    <!-- Your existing content goes here: sections, cards, carousels, etc. -->
-
-    <!-- Example carousel markup (unchanged) -->
-    <div class="carousel">
-      <div class="carousel-track">
-        <!-- cards -->
-      </div>
-
-    <!-- Example category section -->
-    <section class="category-section">
-      <div class="card-grid" id="social-feed">
-        <!-- dynamic cards -->
-      </div>
-    </section>
-  </div>
-
-  <!-- Bottom scripts: hamburger toggle + auto-collapse -->
-  <script>
-    // Hamburger toggle
-    const hamburger = document.getElementById('hamburger');
-    const menu = document.getElementById('hamburger-menu');
-
-    hamburger.addEventListener('click', () => {
-      menu.classList.toggle('open');
-    });
-
-    // Collapse menu after selecting a tab
-    document.querySelectorAll('#hamburger-menu ul li a').forEach(link => {
-      link.addEventListener('click', () => {
-        menu.classList.remove('open');
-      });
-    });
-
-    // If you have existing social-link rendering code, keep it below or elsewhere in your file:
-    // document.addEventListener('DOMContentLoaded', renderAllSocialLinks);
-    
-  </script>
+  <!-- Header -->
+  <header>
+    <div class="header-left">
+      <button id="hamburger" aria-label="Open menu">&#9776;</button>
+    </div>
+    <div class="header-center">
+      <img src="assets/electorate-logo.png" alt="Logo" class="logo" />
+    </div>
+    <div class="header-right">
+      <input type="text" id="search-bar" placeholder="Search officials..." />
+      <label for="state-dropdown">State:</label>
+      <select id="state-dropdown">
+        <option value="Alabama">Alabama</option>
+        <option value="Alaska">Alaska</option>
+        <option value="American Samoa">American Samoa</option>
+        <option value="Arizona">Arizona</option>
+        <option value="Arkansas">Arkansas</option>
+        <option value="California">California</option>
+        <option value="Colorado">Colorado</option>
+        <option value="Connecticut">Connecticut</option>
+        <option value="Delaware">Delaware</option>
+        <option value="District of Columbia">District of Columbia</option>
+        <option value="Florida">Florida</option>
+        <option value="Georgia">Georgia</option>
+        <option value="Guam">Guam</option>
+        <option value="Hawaii">Hawaii</option>
+        <option value="Idaho">Idaho</option>
+        <option value="Illinois">Illinois</option>
+        <option value="Indiana">Indiana</option>
+        <option value="Iowa">Iowa</option>
+        <option value="Kansas">Kansas</option>
+        <option value="Kentucky">Kentucky</option>
+        <option value="Louisiana">Louisiana</option>
+        <option value="Maine">Maine</option>
+        <option value="Maryland">Maryland</option>
+        <option value="Massachusetts">Massachusetts</option>
+        <option value="Michigan">Michigan</option>
+        <option value="Minnesota">Minnesota</option>
+        <option value="Mississippi">Mississippi</option>
+        <option value="Missouri">Missouri</option>
+        <option value="Montana">Montana</option>
+        <option value="Nebraska">Nebraska</option>
+        <option value="Nevada">Nevada</option>
+        <option value="New Hampshire">New Hampshire</option>
+        <option value="New Jersey">New Jersey</option>
+        <option value="New Mexico">New Mexico</option>
+        <option value="New York">New York</option>
+        <option value="North Carolina">North Carolina</option>
+        <option value="North Dakota">North Dakota</option>
+        <option value="Northern Mariana Islands">Northern Mariana Islands</option>
+        <option value="Ohio">Ohio</option>
+        <option value="Oklahoma">Oklahoma</option>
+        <option value="Oregon">Oregon</option>
+        <option value="Pennsylvania">Pennsylvania</option>
+        <option value="Puerto Rico">Puerto Rico</option>
+        <option value="Rhode Island">Rhode Island</option>
+        <option value="South Carolina">South Carolina</option>
+        <option value="South Dakota">South Dakota</option>
+        <option value="Tennessee">Tennessee</option>
+        <option value="Texas">Texas</option>
+        <option value="Utah">Utah</option>
+        <option value="Vermont">Vermont</option>
+        <option value="Virgin Islands">U.S. Virgin Islands</option>
+        <option value="Virginia">Virginia</option>
+        <option value="Washington">Washington</option>
+        <option value="West Virginia">West Virginia</option>
+        <option value="Wisconsin">Wisconsin</option>
+        <option value="Wyoming">Wyoming</option>
+      </select>
+    </div>
+  </header>
+</body>
 
   <main>
     <!-- Startup Hub Tab -->
