@@ -8827,3 +8827,22 @@ header {
   margin-left: 40px;  /* push content to the right */
   margin-right: 40px; /* optional, balance both sides */
 }
+/* === Voting tab fixes === */
+#voting-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* smaller cards */
+  gap: 16px; /* spacing between cards */
+  justify-items: center;
+}
+
+.voting-card {
+  width: 200px;
+  height: auto;
+  padding: 1rem;
+}
+
+/* === Citizenship/Immigration tab fixes === */
+#citizenship-immigration {
+  margin-left: 40px;  /* breathing room on the left */
+  margin-right: 40px; /* optional, balance both sides */
+}
