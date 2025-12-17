@@ -702,7 +702,7 @@
       // Clear any existing content
       container.innerHTML = '';
 
-           // Add icons only for non-null links
+              // Add icons only for non-null links
     if (links.facebook) container.innerHTML += `<a href="${links.facebook}" target="_blank" rel="noopener noreferrer"><img src="/assets/facebook.svg" alt="Facebook"></a>`;
     if (links.instagram) container.innerHTML += `<a href="${links.instagram}" target="_blank" rel="noopener noreferrer"><img src="/assets/instagram.svg" alt="Instagram"></a>`;
     if (links.x) container.innerHTML += `<a href="${links.x}" target="_blank" rel="noopener noreferrer"><img src="/assets/x.svg" alt="X"></a>`;
@@ -711,20 +711,24 @@
   });
 }
 
-document.addEventListener('DOMContentLoaded', renderAllSocialLinks);
+document.addEventListener('DOMContentLoaded', () => {
+  renderAllSocialLinks();
 
-// --- Hamburger toggle + auto-collapse script ---
-const hamburger = document.getElementById('hamburger');
-const menu = document.getElementById('hamburger-menu');
+  // --- Hamburger toggle + auto-collapse script ---
+  const hamburger = document.getElementById('hamburger');
+  const menu = document.getElementById('hamburger-menu');
 
-hamburger.addEventListener('click', () => {
-  menu.classList.toggle('open');
-});
+  if (hamburger && menu) {
+    hamburger.addEventListener('click', () => {
+      menu.classList.toggle('open');
+    });
 
-document.querySelectorAll('#hamburger-menu ul li a').forEach(link => {
-  link.addEventListener('click', () => {
-    menu.classList.remove('open');
-  });
+    document.querySelectorAll('#hamburger-menu ul li a').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('open');
+      });
+    });
+  }
 });
 </script>
 
