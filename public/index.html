@@ -716,7 +716,10 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      renderAllSocialLinks();
+      // Call social links only if the function exists
+      if (typeof renderAllSocialLinks === 'function') {
+        renderAllSocialLinks();
+      }
 
       // --- Hamburger toggle + auto-collapse script ---
       const hamburger = document.getElementById('hamburger');
