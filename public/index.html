@@ -711,26 +711,30 @@
   });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  renderAllSocialLinks();
+  <!-- Load external script with full quiz logic -->
+  <script src="script.js?v=2025-12-17-0715"></script>
 
-  // --- Hamburger toggle + auto-collapse script ---
-  const hamburger = document.getElementById('hamburger');
-  const menu = document.getElementById('hamburger-menu');
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      renderAllSocialLinks();
 
-  if (hamburger && menu) {
-    hamburger.addEventListener('click', () => {
-      menu.classList.toggle('open');
+      // --- Hamburger toggle + auto-collapse script ---
+      const hamburger = document.getElementById('hamburger');
+      const menu = document.getElementById('hamburger-menu');
+
+      if (hamburger && menu) {
+        hamburger.addEventListener('click', () => {
+          menu.classList.toggle('open');
+        });
+
+        document.querySelectorAll('#hamburger-menu ul li a').forEach(link => {
+          link.addEventListener('click', () => {
+            menu.classList.remove('open');
+          });
+        });
+      }
     });
-
-    document.querySelectorAll('#hamburger-menu ul li a').forEach(link => {
-      link.addEventListener('click', () => {
-        menu.classList.remove('open');
-      });
-    });
-  }
-});
-</script>
+  </script>
 
 </body>
 </html>
