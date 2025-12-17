@@ -8757,3 +8757,17 @@ nav .tab.active {
 .ps-social-links a:hover img {
   transform: scale(1.1);  /* subtle zoom on hover */
 }
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background-color: #2b2b2b;
+  border-bottom: 1px solid #444;
+}
+
+.logo {
+  height: 60px;        /* increase vertical size */
+  max-height: 100%;    /* stretch vertically */
+  width: auto;         /* keep aspect ratio */
+}
