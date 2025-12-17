@@ -8811,3 +8811,19 @@ header {
   align-items: center;
   gap: 8px;
 }
+/* Voting tab card grid */
+#voting .card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* smaller cards */
+  gap: 16px; /* spacing between cards */
+}
+
+#voting .info-card {
+  padding: 12px;
+  font-size: 0.9rem;
+}
+/* Citizenship/Immigration section */
+#citizenship-immigration {
+  margin-left: 40px;  /* push content to the right */
+  margin-right: 40px; /* optional, balance both sides */
+}
