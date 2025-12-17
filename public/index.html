@@ -6,37 +6,109 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.ico" onerror="this.href='data:,';" />
   <style>
-    /* Sticky Home Hub nav styling - match site theme */
-    #hub-nav {
-      position: sticky;
+    /* --- Collapsible Sidebar Styles (replaces hub-nav) --- */
+    #sidebar {
+      position: fixed;
       top: 0;
-      background-color: #2b2b2b; /* dark grey background */
+      left: 0;
+      height: 100vh;
+      width: 60px;                  /* collapsed width */
+      background-color: #2b2b2b;     /* match site theme */
+      overflow-x: hidden;
+      transition: width 0.3s ease;
+      z-index: 1000;
+      border-right: 1px solid #444;
+    }
+
+    #sidebar:hover {
+      width: 220px;                  /* expanded width */
+    }
+
+    #sidebar .tab-list {
+      list-style-type: none;
+      padding: 8px 0;
+      margin: 0;
       display: flex;
-      gap: 10px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;                      /* tight vertical spacing */
+    }
+
+    #sidebar .tab-list li a {
+      display: block;
+      padding: 12px 16px;
+      text-decoration: none;
+      color: #fff;
+      width: 100%;
+      border-radius: 6px;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    #sidebar .tab-list li a:hover {
+      background-color: #0066cc;     /* crisp blue hover */
+      color: #fff;
+    }
+
+    #sidebar .tab-list li a.active {
+      background-color: crimson;     /* active highlight */
+      color: #fff;
+    }
+
+    /* --- Main content should not sit under the sidebar --- */
+    body {
+      margin: 0;
+      background-color: #1f1f1f;
+      color: #fff;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    /* Shift header/content to the right so they don’t hide under sidebar */
+    header,
+    .page-content {
+      margin-left: 60px;             /* match collapsed sidebar width */
+      transition: margin-left 0.3s ease;
+    }
+
+    /* Optional: if you want content to shift while hovering sidebar */
+    #sidebar:hover ~ header,
+    #sidebar:hover ~ .page-content {
+      margin-left: 220px;            /* match expanded width */
+    }
+
+    /* --- Header styles remain the same --- */
+    .header-left .logo {
+      height: 40px;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
       padding: 10px;
       border-bottom: 1px solid #444;
-      z-index: 1000;
-      overflow-x: auto;
+      background-color: #2b2b2b;
+      position: sticky;
+      top: 0;
+      z-index: 900; /* below sidebar */
     }
 
-    #hub-nav button {
-      padding: 8px 12px;
-      border: none;
-      background-color: #3c3c3c;
-      color: #fff;
-      cursor: pointer;
+    #search-bar {
+      padding: 8px 10px;
       border-radius: 6px;
-      white-space: nowrap;
-      flex-shrink: 0;
-      transition: background-color 0.2s, color 0.2s;
-    }
-
-    #hub-nav button:hover {
-      background-color: #0066ff; /* blue hover */
+      border: 1px solid #444;
+      background: #1f1f1f;
       color: #fff;
     }
 
-    /* Category Sections */
+    #state-dropdown {
+      padding: 6px 8px;
+      border-radius: 6px;
+      border: 1px solid #444;
+      background: #1f1f1f;
+      color: #fff;
+    }
+
+    /* --- Category Sections --- */
     .category-section {
       padding: 20px 0;
       border-bottom: 1px solid #444;
@@ -69,7 +141,7 @@
       margin-top: 16px;
     }
 
-    /* --- Carousel Styles (final replacement) --- */
+    /* --- Carousel Styles --- */
     .carousel {
       width: 100%;
       overflow: hidden;          /* only show a few cards at a time */
@@ -147,6 +219,21 @@
   </style>
 </head>
 <body>
+  <!-- Collapsible Sidebar -->
+  <div id="sidebar">
+    <ul class="tab-list">
+      <li><a href="#home-hub" onclick="showStartupHub()" class="active">Home Hub</a></li>
+      <li><a href="#podcasts-shows" onclick="showPodcastsShows()">Podcasts & Shows</a></li>
+      <li><a href="#quizzes-learning" onclick="showQuizzes()">Quizzes & Learning</a></li>
+      <li><a href="#civic-intelligence" onclick="showCivic()">Civic Intelligence</a></li>
+      <li><a href="#polls-elections" onclick="showPolls()">Polls & Elections</a></li>
+      <li><a href="#my-officials" onclick="renderOfficials(selectedState, '')">My Officials</a></li>
+      <li><a href="#voting" onclick="showVoting()">Voting</a></li>
+      <li><a href="#citizenship-immigration" onclick="showCitizenship()">Citizenship/Immigration</a></li>
+      <li><a href="#political-groups" onclick="showOrganizations()">Political Groups</a></li>
+    </ul>
+  </div>
+
   <header>
     <div class="header-left">
       <img src="assets/electorate-logo.png" alt="Logo" class="logo" />
@@ -215,17 +302,39 @@
     </div>
   </header>
 
-  <nav id="hub-nav">
-    <button class="tab" onclick="showStartupHub()">Home Hub</button>
-    <button class="tab" onclick="showPodcastsShows()">Podcasts & Shows</button>
-    <button class="tab" onclick="renderOfficials(selectedState, '')">My Officials</button>
-    <button class="tab" onclick="showQuizzes()">Quizzes & Learning</button>
-    <button class="tab" onclick="showCivic()">Civic Intelligence</button>
-    <button class="tab" onclick="showPolls()">Polls & Elections</button>
-    <button class="tab" onclick="showOrganizations()">Political Groups</button>
-    <button class="tab" onclick="showVoting()">Voting</button>
-    <button class="tab" onclick="showCitizenship()">Citizenship/Immigration</button>
-  </nav>
+  <!-- Page content wrapper to respect sidebar offset -->
+  <div class="page-content">
+    <!-- Your existing content goes here: sections, cards, carousels, etc. -->
+
+    <!-- Example carousel markup (unchanged) -->
+    <div class="carousel">
+      <div class="carousel-track">
+        <!-- cards -->
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="prevBtn">&#8592;</button>
+        <button class="carousel-btn" id="nextBtn">&#8594;</button>
+      </div>
+    </div>
+
+    <!-- Example category section -->
+    <section class="category-section">
+      <div class="card-grid" id="social-feed">
+        <!-- dynamic cards -->
+      </div>
+    </section>
+  </div>
+
+  <!-- Optional JS: collapse sidebar back to 60px after a tab click -->
+  <script>
+    document.querySelectorAll('#sidebar .tab-list li a').forEach(link => {
+      link.addEventListener('click', () => {
+        const sidebar = document.getElementById('sidebar');
+        sidebar.style.width = '60px';
+      });
+    });
+  </script>
+
   <main>
     <!-- Startup Hub Tab -->
     <section id="startup-hub" class="tab-content" style="display: none;">
@@ -763,16 +872,24 @@
       // Clear any existing content
       container.innerHTML = '';
 
-      // Add icons only for non-null links
-      if (links.facebook) container.innerHTML += `<a href="${links.facebook}" target="_blank" rel="noopener noreferrer"><img src="/assets/facebook.svg" alt="Facebook"></a>`;
-      if (links.instagram) container.innerHTML += `<a href="${links.instagram}" target="_blank" rel="noopener noreferrer"><img src="/assets/instagram.svg" alt="Instagram"></a>`;
-      if (links.x) container.innerHTML += `<a href="${links.x}" target="_blank" rel="noopener noreferrer"><img src="/assets/x.svg" alt="X"></a>`;
-      if (links.youtube) container.innerHTML += `<a href="${links.youtube}" target="_blank" rel="noopener noreferrer"><img src="/assets/youtube.svg" alt="YouTube"></a>`;
-      if (links.tiktok) container.innerHTML += `<a href="${links.tiktok}" target="_blank" rel="noopener noreferrer"><img src="/assets/tiktok.svg" alt="TikTok"></a>`;
-    });
-  }
+       // Add icons only for non-null links
+    if (links.facebook) container.innerHTML += `<a href="${links.facebook}" target="_blank" rel="noopener noreferrer"><img src="/assets/facebook.svg" alt="Facebook"></a>`;
+    if (links.instagram) container.innerHTML += `<a href="${links.instagram}" target="_blank" rel="noopener noreferrer"><img src="/assets/instagram.svg" alt="Instagram"></a>`;
+    if (links.x) container.innerHTML += `<a href="${links.x}" target="_blank" rel="noopener noreferrer"><img src="/assets/x.svg" alt="X"></a>`;
+    if (links.youtube) container.innerHTML += `<a href="${links.youtube}" target="_blank" rel="noopener noreferrer"><img src="/assets/youtube.svg" alt="YouTube"></a>`;
+    if (links.tiktok) container.innerHTML += `<a href="${links.tiktok}" target="_blank" rel="noopener noreferrer"><img src="/assets/tiktok.svg" alt="TikTok"></a>`;
+  });
+}
 
-  document.addEventListener('DOMContentLoaded', renderAllSocialLinks);
+document.addEventListener('DOMContentLoaded', renderAllSocialLinks);
+
+// --- Sidebar auto-collapse script ---
+document.querySelectorAll('#sidebar .tab-list li a').forEach(link => {
+  link.addEventListener('click', () => {
+    const sidebar = document.getElementById('sidebar');
+    sidebar.style.width = '60px';
+  });
+});
 </script>
 
 </body>
