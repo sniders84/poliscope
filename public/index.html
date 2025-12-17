@@ -6,55 +6,7 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.ico" onerror="this.href='data:,';" />
   <style>
-    /* --- Collapsible Sidebar Styles (replaces hub-nav) --- */
-    #sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100vh;
-      width: 60px;                  /* collapsed width */
-      background-color: #2b2b2b;     /* match site theme */
-      overflow-x: hidden;
-      transition: width 0.3s ease;
-      z-index: 1000;
-      border-right: 1px solid #444;
-    }
-
-    #sidebar:hover {
-      width: 220px;                  /* expanded width */
-    }
-
-    #sidebar .tab-list {
-      list-style-type: none;
-      padding: 8px 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 4px;                      /* tight vertical spacing */
-    }
-
-    #sidebar .tab-list li a {
-      display: block;
-      padding: 12px 16px;
-      text-decoration: none;
-      color: #fff;
-      width: 100%;
-      border-radius: 6px;
-      transition: background-color 0.2s ease, color 0.2s ease;
-    }
-
-    #sidebar .tab-list li a:hover {
-      background-color: #0066cc;     /* crisp blue hover */
-      color: #fff;
-    }
-
-    #sidebar .tab-list li a.active {
-      background-color: crimson;     /* active highlight */
-      color: #fff;
-    }
-
-    /* --- Main content should not sit under the sidebar --- */
+    /* --- Base page styles --- */
     body {
       margin: 0;
       background-color: #1f1f1f;
@@ -62,20 +14,7 @@
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
     }
 
-    /* Shift header/content to the right so they don’t hide under sidebar */
-    header,
-    .page-content {
-      margin-left: 60px;             /* match collapsed sidebar width */
-      transition: margin-left 0.3s ease;
-    }
-
-    /* Optional: if you want content to shift while hovering sidebar */
-    #sidebar:hover ~ header,
-    #sidebar:hover ~ .page-content {
-      margin-left: 220px;            /* match expanded width */
-    }
-
-    /* --- Header styles remain the same --- */
+    /* --- Header (restored) --- */
     .header-left .logo {
       height: 40px;
     }
@@ -89,7 +28,7 @@
       background-color: #2b2b2b;
       position: sticky;
       top: 0;
-      z-index: 900; /* below sidebar */
+      z-index: 900;
     }
 
     #search-bar {
@@ -106,6 +45,87 @@
       border: 1px solid #444;
       background: #1f1f1f;
       color: #fff;
+    }
+
+    /* --- Hamburger toggle + slide-out menu --- */
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      background-color: #2b2b2b;
+      border-bottom: 1px solid #444;
+      position: sticky;
+      top: 0;
+      z-index: 901; /* above header-right */
+    }
+
+    #hamburger {
+      font-size: 24px;
+      background: none;
+      border: 1px solid #444;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 6px;
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    #hamburger:hover {
+      background-color: #0066cc; /* crisp blue hover */
+      transform: scale(1.05);
+    }
+
+    /* Hidden by default; slides in from the left */
+    #hamburger-menu {
+      position: fixed;
+      top: 0;
+      left: -260px; /* hidden off-screen */
+      width: 260px;
+      height: 100vh;
+      background-color: #2b2b2b;
+      border-right: 1px solid #444;
+      overflow-y: auto;
+      transition: left 0.3s ease;
+      z-index: 2000;
+      padding-top: 60px; /* space for header area */
+    }
+
+    #hamburger-menu.open {
+      left: 0;
+    }
+
+    #hamburger-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    #hamburger-menu ul li a {
+      display: block;
+      padding: 12px 16px;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    #hamburger-menu ul li a:hover {
+      background-color: #0066cc; /* crisp blue hover */
+      color: #fff;
+    }
+
+    #hamburger-menu ul li a.active {
+      background-color: crimson; /* active highlight */
+      color: #fff;
+    }
+
+    /* --- Page content wrapper --- */
+    .page-content {
+      padding: 10px;
     }
 
     /* --- Category Sections --- */
@@ -144,7 +164,7 @@
     /* --- Carousel Styles --- */
     .carousel {
       width: 100%;
-      overflow: hidden;          /* only show a few cards at a time */
+      overflow: hidden;
       position: relative;
       margin-bottom: 0.5rem;
     }
@@ -156,26 +176,26 @@
     }
 
     .carousel-card {
-      flex: 0 0 300px;           /* fixed width */
-      height: 300px;             /* fixed height for true square */
+      flex: 0 0 300px;
+      height: 300px;
       border: 1px solid #333;
       border-radius: 8px;
-      background: #222;          /* dark gray base */
-      color: #fff;               /* white text */
+      background: #222;
+      color: #fff;
       text-decoration: none;
       box-shadow: 0 2px 8px rgba(0,0,0,0.4);
       overflow: hidden;
     }
 
     .carousel-card:hover {
-      background-color: #1a3d66; /* deep blue hover */
-      border-color: #0066cc;     /* bright blue border */
+      background-color: #1a3d66;
+      border-color: #0066cc;
       transform: translateY(-4px);
     }
 
     .carousel-img {
       width: 100%;
-      height: 180px;             /* roomy image area */
+      height: 180px;
       object-fit: cover;
       border-bottom: 1px solid #444;
     }
@@ -219,23 +239,10 @@
   </style>
 </head>
 <body>
-  <!-- Collapsible Sidebar -->
-  <div id="sidebar">
-    <ul class="tab-list">
-      <li><a href="#home-hub" onclick="showStartupHub()" class="active">Home Hub</a></li>
-      <li><a href="#podcasts-shows" onclick="showPodcastsShows()">Podcasts & Shows</a></li>
-      <li><a href="#quizzes-learning" onclick="showQuizzes()">Quizzes & Learning</a></li>
-      <li><a href="#civic-intelligence" onclick="showCivic()">Civic Intelligence</a></li>
-      <li><a href="#polls-elections" onclick="showPolls()">Polls & Elections</a></li>
-      <li><a href="#my-officials" onclick="renderOfficials(selectedState, '')">My Officials</a></li>
-      <li><a href="#voting" onclick="showVoting()">Voting</a></li>
-      <li><a href="#citizenship-immigration" onclick="showCitizenship()">Citizenship/Immigration</a></li>
-      <li><a href="#political-groups" onclick="showOrganizations()">Political Groups</a></li>
-    </ul>
-  </div>
-
+  <!-- Header with hamburger -->
   <header>
     <div class="header-left">
+      <button id="hamburger" aria-label="Open menu">&#9776;</button>
       <img src="assets/electorate-logo.png" alt="Logo" class="logo" />
     </div>
     <div class="header-right">
@@ -302,7 +309,22 @@
     </div>
   </header>
 
-  <!-- Page content wrapper to respect sidebar offset -->
+  <!-- Slide-out hamburger menu -->
+  <nav id="hamburger-menu" aria-label="Primary">
+    <ul>
+      <li><a href="#home-hub" onclick="showStartupHub()" class="active">Home Hub</a></li>
+      <li><a href="#podcasts-shows" onclick="showPodcastsShows()">Podcasts & Shows</a></li>
+      <li><a href="#quizzes-learning" onclick="showQuizzes()">Quizzes & Learning</a></li>
+      <li><a href="#civic-intelligence" onclick="showCivic()">Civic Intelligence</a></li>
+      <li><a href="#polls-elections" onclick="showPolls()">Polls & Elections</a></li>
+      <li><a href="#my-officials" onclick="renderOfficials(selectedState, '')">My Officials</a></li>
+      <li><a href="#voting" onclick="showVoting()">Voting</a></li>
+      <li><a href="#citizenship-immigration" onclick="showCitizenship()">Citizenship/Immigration</a></li>
+      <li><a href="#political-groups" onclick="showOrganizations()">Political Groups</a></li>
+    </ul>
+  </nav>
+
+  <!-- Page content -->
   <div class="page-content">
     <!-- Your existing content goes here: sections, cards, carousels, etc. -->
 
@@ -325,14 +347,26 @@
     </section>
   </div>
 
-  <!-- Optional JS: collapse sidebar back to 60px after a tab click -->
+  <!-- Bottom scripts: hamburger toggle + auto-collapse -->
   <script>
-    document.querySelectorAll('#sidebar .tab-list li a').forEach(link => {
+    // Hamburger toggle
+    const hamburger = document.getElementById('hamburger');
+    const menu = document.getElementById('hamburger-menu');
+
+    hamburger.addEventListener('click', () => {
+      menu.classList.toggle('open');
+    });
+
+    // Collapse menu after selecting a tab
+    document.querySelectorAll('#hamburger-menu ul li a').forEach(link => {
       link.addEventListener('click', () => {
-        const sidebar = document.getElementById('sidebar');
-        sidebar.style.width = '60px';
+        menu.classList.remove('open');
       });
     });
+
+    // If you have existing social-link rendering code, keep it below or elsewhere in your file:
+    // document.addEventListener('DOMContentLoaded', renderAllSocialLinks);
+    
   </script>
 
   <main>
@@ -872,7 +906,7 @@
       // Clear any existing content
       container.innerHTML = '';
 
-       // Add icons only for non-null links
+           // Add icons only for non-null links
     if (links.facebook) container.innerHTML += `<a href="${links.facebook}" target="_blank" rel="noopener noreferrer"><img src="/assets/facebook.svg" alt="Facebook"></a>`;
     if (links.instagram) container.innerHTML += `<a href="${links.instagram}" target="_blank" rel="noopener noreferrer"><img src="/assets/instagram.svg" alt="Instagram"></a>`;
     if (links.x) container.innerHTML += `<a href="${links.x}" target="_blank" rel="noopener noreferrer"><img src="/assets/x.svg" alt="X"></a>`;
@@ -883,11 +917,17 @@
 
 document.addEventListener('DOMContentLoaded', renderAllSocialLinks);
 
-// --- Sidebar auto-collapse script ---
-document.querySelectorAll('#sidebar .tab-list li a').forEach(link => {
+// --- Hamburger toggle + auto-collapse script ---
+const hamburger = document.getElementById('hamburger');
+const menu = document.getElementById('hamburger-menu');
+
+hamburger.addEventListener('click', () => {
+  menu.classList.toggle('open');
+});
+
+document.querySelectorAll('#hamburger-menu ul li a').forEach(link => {
   link.addEventListener('click', () => {
-    const sidebar = document.getElementById('sidebar');
-    sidebar.style.width = '60px';
+    menu.classList.remove('open');
   });
 });
 </script>
