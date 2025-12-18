@@ -8838,3 +8838,12 @@ header {
   background-color: crimson;
   color: #fff;
 }
+#hamburger-menu a:hover {
+  background-color: #0066cc;
+  color: #fff;
+}
+
+#hamburger-menu a.active {
+  background-color: crimson;
+  color: #fff;
+}
