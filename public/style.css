@@ -8827,3 +8827,14 @@ header {
   margin-left: 40px;  /* push content to the right */
   margin-right: 40px; /* optional, balance both sides */
 }
+/* Hover effect: blue background */
+#hamburger-menu a:hover {
+  background-color: #0066cc;
+  color: #fff;
+}
+
+/* Active/selected tab: red background */
+#hamburger-menu a.active {
+  background-color: crimson;
+  color: #fff;
+}
