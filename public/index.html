@@ -724,6 +724,30 @@
     if (links.tiktok) container.innerHTML += `<a href="${links.tiktok}" target="_blank" rel="noopener noreferrer"><img src="/assets/tiktok.svg" alt="TikTok"></a>`;
   });
 }
-   
+
+// Hamburger toggle + active tab styling
+const hamburger = document.getElementById('hamburger');
+const menu = document.getElementById('hamburger-menu');
+
+if (hamburger && menu) {
+  hamburger.addEventListener('click', () => {
+    menu.classList.toggle('open');
+  });
+
+  document.querySelectorAll('#hamburger-menu ul li a').forEach(link => {
+    link.addEventListener('click', () => {
+      // Remove active class from all links
+      document.querySelectorAll('#hamburger-menu ul li a')
+        .forEach(l => l.classList.remove('active'));
+
+      // Add active class to the clicked link
+      link.classList.add('active');
+
+      // Close the menu
+      menu.classList.remove('open');
+    });
+  });
+}
+  
 </body>
 </html>
