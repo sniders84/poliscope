@@ -59,7 +59,7 @@
     }
 
     .logo {
-      max-height: 100px;   /* make logo taller */
+      max-height: 100px;
       width: auto;
       max-width: 100%;
       object-fit: contain;
@@ -88,6 +88,36 @@
       background: #1f1f1f;
       color: #fff;
     }
+
+    /* Hamburger menu styles */
+    #hamburger-menu {
+      position: fixed;
+      top: 0;
+      left: -250px; /* hidden by default */
+      width: 250px;
+      height: 100%;
+      background-color: #2b2b2b;
+      overflow-y: auto;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+    #hamburger-menu.open {
+      left: 0; /* slides in */
+    }
+    #hamburger-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    #hamburger-menu li {
+      border-bottom: 1px solid #444;
+    }
+    #hamburger-menu a {
+      display: block;
+      padding: 12px;
+      color: #fff;
+      text-decoration: none;
+    }
   </style>
 </head>
 
@@ -104,66 +134,48 @@
       <input type="text" id="search-bar" placeholder="Search officials..." />
       <label for="state-dropdown">State:</label>
       <select id="state-dropdown">
-        <option value="Alabama">Alabama</option>
-        <option value="Alaska">Alaska</option>
-        <option value="American Samoa">American Samoa</option>
-        <option value="Arizona">Arizona</option>
-        <option value="Arkansas">Arkansas</option>
-        <option value="California">California</option>
-        <option value="Colorado">Colorado</option>
-        <option value="Connecticut">Connecticut</option>
-        <option value="Delaware">Delaware</option>
-        <option value="District of Columbia">District of Columbia</option>
-        <option value="Florida">Florida</option>
-        <option value="Georgia">Georgia</option>
-        <option value="Guam">Guam</option>
-        <option value="Hawaii">Hawaii</option>
-        <option value="Idaho">Idaho</option>
-        <option value="Illinois">Illinois</option>
-        <option value="Indiana">Indiana</option>
-        <option value="Iowa">Iowa</option>
-        <option value="Kansas">Kansas</option>
-        <option value="Kentucky">Kentucky</option>
-        <option value="Louisiana">Louisiana</option>
-        <option value="Maine">Maine</option>
-        <option value="Maryland">Maryland</option>
-        <option value="Massachusetts">Massachusetts</option>
-        <option value="Michigan">Michigan</option>
-        <option value="Minnesota">Minnesota</option>
-        <option value="Mississippi">Mississippi</option>
-        <option value="Missouri">Missouri</option>
-        <option value="Montana">Montana</option>
-        <option value="Nebraska">Nebraska</option>
-        <option value="Nevada">Nevada</option>
-        <option value="New Hampshire">New Hampshire</option>
-        <option value="New Jersey">New Jersey</option>
-        <option value="New Mexico">New Mexico</option>
-        <option value="New York">New York</option>
-        <option value="North Carolina">North Carolina</option>
-        <option value="North Dakota">North Dakota</option>
-        <option value="Northern Mariana Islands">Northern Mariana Islands</option>
-        <option value="Ohio">Ohio</option>
-        <option value="Oklahoma">Oklahoma</option>
-        <option value="Oregon">Oregon</option>
-        <option value="Pennsylvania">Pennsylvania</option>
-        <option value="Puerto Rico">Puerto Rico</option>
-        <option value="Rhode Island">Rhode Island</option>
-        <option value="South Carolina">South Carolina</option>
-        <option value="South Dakota">South Dakota</option>
-        <option value="Tennessee">Tennessee</option>
-        <option value="Texas">Texas</option>
-        <option value="Utah">Utah</option>
-        <option value="Vermont">Vermont</option>
-        <option value="Virgin Islands">U.S. Virgin Islands</option>
-        <option value="Virginia">Virginia</option>
-        <option value="Washington">Washington</option>
-        <option value="West Virginia">West Virginia</option>
-        <option value="Wisconsin">Wisconsin</option>
-        <option value="Wyoming">Wyoming</option>
+        <!-- state options here -->
       </select>
     </div>
   </header>
+
+  <!-- Slide-out hamburger menu -->
+  <nav id="hamburger-menu" aria-label="Primary">
+    <ul>
+      <li><a href="#startup-hub" onclick="showStartupHub()">Home Hub</a></li>
+      <li><a href="#podcasts-shows" onclick="showPodcastsShows()">Podcasts & Shows</a></li>
+      <li><a href="#quizzes" onclick="showTab('quizzes')">Quizzes & Learning</a></li>
+      <li><a href="#civic" onclick="showCivic()">Civic Intelligence</a></li>
+      <li><a href="#polls" onclick="showPolls()">Polls & Elections</a></li>
+      <li><a href="#my-officials" onclick="showTab('my-officials')">My Officials</a></li>
+      <li><a href="#voting" onclick="showVoting()">Voting</a></li>
+      <li><a href="#citizenship" onclick="showTab('citizenship')">Citizenship/Immigration</a></li>
+      <li><a href="#organizations" onclick="showOrganizations()">Political Groups</a></li>
+    </ul>
+  </nav>
+
+  <!-- Load external script -->
+  <script src="script.js?v=2025-12-17-0715"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const hamburger = document.getElementById('hamburger');
+      const menu = document.getElementById('hamburger-menu');
+
+      if (hamburger && menu) {
+        hamburger.addEventListener('click', () => {
+          menu.classList.toggle('open');
+        });
+
+        document.querySelectorAll('#hamburger-menu ul li a').forEach(link => {
+          link.addEventListener('click', () => {
+            menu.classList.remove('open');
+          });
+        });
+      }
+    });
+  </script>
 </body>
+</html>
 
   <main>
     <!-- Startup Hub Tab -->
