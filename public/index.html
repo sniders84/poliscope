@@ -1161,31 +1161,5 @@
   });
 }
 
-  <script src="script.js?v=2025-12-17-0715"></script>
-  
-    document.addEventListener('DOMContentLoaded', () => {
-      // Only call if defined (prevents "not defined" error)
-      if (typeof renderAllSocialLinks === 'function') {
-        renderAllSocialLinks();
-      }
-
-      // --- Hamburger toggle + auto-collapse script ---
-      const hamburger = document.getElementById('hamburger');
-      const menu = document.getElementById('hamburger-menu');
-
-      if (hamburger && menu) {
-        hamburger.addEventListener('click', () => {
-          menu.classList.toggle('open');
-        });
-
-        document.querySelectorAll('#hamburger-menu ul li a').forEach(link => {
-          link.addEventListener('click', () => {
-            menu.classList.remove('open');
-          });
-        });
-      }
-    });
-  </script>
-
 </body>
 </html>
