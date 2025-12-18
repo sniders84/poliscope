@@ -1160,12 +1160,21 @@
     if (links.tiktok) container.innerHTML += `<a href="${links.tiktok}" target="_blank" rel="noopener noreferrer"><img src="/assets/tiktok.svg" alt="TikTok"></a>`;
   });
 }
-  <!-- Load external script ONCE -->
+    <!-- Load external script ONCE -->
   <script src="script.js?v=2025-12-17-0715"></script>
 
-  <!-- Inline script for hamburger menu active state -->
+  <!-- Inline script for hamburger + active tab -->
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Default tab on load
+      showStartupHub();
+
+      // Social links (guarded)
+      if (typeof renderAllSocialLinks === 'function') {
+        renderAllSocialLinks();
+      }
+
+      // Hamburger toggle + active tab styling
       const hamburger = document.getElementById('hamburger');
       const menu = document.getElementById('hamburger-menu');
 
@@ -1188,10 +1197,18 @@
           });
         });
       }
+
+      // State dropdown wiring
+      const stateSelect = document.getElementById('state-dropdown');
+      if (stateSelect) {
+        stateSelect.addEventListener('change', (e) => {
+          window.selectedState = e.target.value;
+          if (typeof renderOfficials === 'function') {
+            renderOfficials(window.selectedState, '');
+          }
+        });
+      }
     });
   </script>
-</body>
-</html>
-
 </body>
 </html>
