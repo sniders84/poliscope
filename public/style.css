@@ -8874,13 +8874,12 @@ html {
   color: #fff !important;  /* Forces white, overrides any blue */
   font-weight: bold !important;
 }
-/* Voting tab cards — tight on all 4 sides, uniform, short, square-ish */
+/* Voting tab cards — forced short height, square-ish, tight on all sides */
 #voting-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px; /* Even spacing between cards */
-  padding: 20px; /* Even outer spacing */
-  justify-items: center; /* Centers cards if needed */
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  padding: 20px;
 }
 
 .voting-card {
@@ -8888,13 +8887,13 @@ html {
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   transition: transform 0.2s ease;
-  width: 250px; /* Fixed width for uniformity */
-  height: 220px; /* Fixed shorter height for square-ish feel */
+  height: 180px; /* Forced short height */
+  width: 260px; /* Fixed width for square-ish */
+  padding: 12px; /* Tight padding on all 4 sides */
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Even vertical spacing inside */
-  align-items: center; /* Even horizontal spacing inside */
-  padding: 14px; /* Tight padding on all 4 sides */
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
@@ -8914,24 +8913,24 @@ html {
 }
 
 .voting-card .card-icon {
-  font-size: 3rem;
-  margin-bottom: 10px;
+  font-size: 2.8rem;
+  margin-bottom: 8px;
 }
 
 .voting-card .card-label {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: bold;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .voting-card .card-description {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: #ddd;
   line-height: 1.3;
   margin: 0;
-  padding: 0 8px; /* Extra tight side spacing for text */
+  padding: 0 6px;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -8939,5 +8938,5 @@ html {
 .voting-card .card-date {
   font-size: 0.85rem;
   color: #1e90ff;
-  margin-top: 8px;
+  margin-top: 6px;
 }
