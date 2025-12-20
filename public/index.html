@@ -807,7 +807,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // State dropdown wiring
+   // State dropdown wiring
   const stateSelect = document.getElementById('state-dropdown');
   if (stateSelect) {
     stateSelect.addEventListener('change', (e) => {
@@ -820,7 +820,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Officials search bar wiring
   wireSearchBar();
+
+  // Network card click wiring
+  const networkCards = document.querySelectorAll('.network-card');
+  networkCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const network = card.getAttribute('data-network');
+      renderNetworkStories(network);
+    });
+  });
 });
+
+// Renderer for network stories
+function renderNetworkStories(network) {
+  const container = document.getElementById('network-cards');
+
+  // Remove any existing story rows
+  const oldStories = document.querySelectorAll('.story-row');
+  oldStories.forEach(el => el.remove());
+
+  // Create a new story row
+  const storyRow = document.createElement('div');
+  storyRow.className = 'story-row';
+  storyRow.style.marginTop = '20px';
+
+  // Placeholder story cards
+  storyRow.innerHTML = `
+    <div class="story-card"><h4>${network} Story 1</h4><p>Placeholder content for ${network}.</p></div>
+    <div class="story-card"><h4>${network} Story 2</h4><p>Placeholder content for ${network}.</p></div>
+    <div class="story-card"><h4>${network} Story 3</h4><p>Placeholder content for ${network}.</p></div>
+  `;
+
+  container.appendChild(storyRow);
+}
 </script>
 </body>
 </html>
