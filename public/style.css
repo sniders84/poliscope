@@ -9034,7 +9034,7 @@ html {
 /* Network cards (Home Hub) */
 .network-card {
   display: inline-block;
-  width: 140px;              /* half the previous width */
+  width: 140px;              /* compact half-size footprint */
   height: 160px;             /* fixed height for uniformity */
   margin: 8px;
   padding: 8px;
@@ -9045,7 +9045,7 @@ html {
   text-align: center;
   vertical-align: top;
   transition: border-color 0.3s ease;
-  box-sizing: border-box;    /* ensures padding doesn’t blow up size */
+  box-sizing: border-box;
 }
 
 .network-card:hover {
@@ -9054,10 +9054,11 @@ html {
 }
 
 .network-card img.network-logo {
-  width: 80px;               /* fixed logo size */
-  height: 80px;              /* fixed logo size */
+  width: 100px;              /* fixed width */
+  height: 100px;             /* fixed height */
   object-fit: contain;       /* keeps aspect ratio inside box */
-  margin-bottom: 6px;
+  display: block;
+  margin: 0 auto 6px auto;   /* center horizontally */
 }
 
 .network-card h3 {
