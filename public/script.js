@@ -386,7 +386,16 @@ function showPolls() {
 
 // Political Organizations tab
 function showOrganizations() {
-  showTab('organizations'); // corrected to match HTML section id
+  showTab('organizations');
+  
+  // Ensure the title is visible (in case it was cleared before)
+  const title = document.querySelector('#organizations h2');
+  if (title) {
+    title.style.display = 'block';
+  }
+  
+  // If you have any code that populates .organization-grid, keep it below
+  // (If there's existing code here to load groups, leave it — this won't hurt it)
 }
 
 // Voting tab
