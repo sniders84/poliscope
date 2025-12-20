@@ -8940,6 +8940,7 @@ html {
   color: #1e90ff;
   margin-top: 6px;
 }
+/* Game cards (Quizzes & Learning Materials) */
 .info-card {
   display: inline-block;
   width: 360px;              /* wider square footprint */
@@ -8989,4 +8990,44 @@ html {
   border-radius: 6px;
   text-decoration: none;
   font-weight: bold;
+}
+
+/* Network cards (Home Hub) */
+.network-card {
+  display: inline-block;
+  width: 280px;              /* slimmer footprint */
+  min-height: auto;          /* no forced height */
+  margin: 15px;
+  padding: 15px;
+  background: #2b2b2b;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  color: #fff;
+  text-align: left;
+  vertical-align: top;
+  transition: border-color 0.3s ease;
+}
+
+.network-card:hover {
+  border-color: #0066cc;     /* outline only */
+  background: #2b2b2b;       /* keep background unchanged */
+}
+
+.network-card img.network-logo {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.network-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+}
+
+.network-card p {
+  font-size: 1rem;
+  line-height: 1.4;
+  margin: 4px 0;
 }
