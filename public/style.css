@@ -8942,21 +8942,28 @@ html {
 }
 .info-card {
   display: inline-block;
-  width: 360px;          /* wider square footprint */
-  min-height: 480px;     /* ensures text has space */
+  width: 360px;              /* wider square footprint */
+  min-height: 480px;         /* ensures text has space */
   margin: 20px;
   padding: 20px;
   background: #2b2b2b;
+  border: 2px solid transparent;  /* neutral border for outline hover */
   border-radius: 12px;
   color: #fff;
   text-align: left;
   vertical-align: top;
+  transition: border-color 0.3s ease;
+}
+
+.info-card:hover {
+  border-color: #0066cc;     /* hover effect only on outline */
+  background: #2b2b2b;       /* keep background unchanged */
 }
 
 .info-card img.card-image {
-  width: 100%;           /* fills card width */
+  width: 100%;               /* fills card width */
   height: auto;
-  max-height: 220px;     /* roughly double your current size */
+  max-height: 220px;         /* roughly double your current size */
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 16px;
