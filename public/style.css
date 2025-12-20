@@ -8866,15 +8866,28 @@ section.tab-content::before {
 html {
   scroll-behavior: smooth;
 }
-/* Consistent styling for all tab titles — force white color and override any blue */
-.tab-content h2 {
+/* Global tab headlines — smaller, tighter, softer white */
+.tab-content h2,
+.tab-content h3,
+#home-hub h2,
+#home-hub h3,
+#civic-intelligence h2,
+#civic-intelligence h3,
+.tab-home h2,
+.tab-home h3,
+.tab-civic h2,
+.tab-civic h3,
+section > h2,
+section > h3 {
   text-align: center !important;
-  font-size: 2.4rem !important;
-  margin: 30px 0 40px 0 !important;
-  color: #fff !important;  /* Forces white, overrides any blue */
-  font-weight: bold !important;
+  font-size: 1.2rem !important;   /* ~19px */
+  line-height: 1.3 !important;    /* tighter vertical rhythm */
+  margin: 0.25rem 0 !important;   /* trim top/bottom spacing */
+  font-weight: 600 !important;    /* bold but not heavy */
+  color: #e0e0e0 !important;      /* softer white */
 }
-/* Voting tab cards — forced short height, square-ish, tight on all sides */
+
+/* Voting tab cards — compact, square-ish */
 #voting-cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -8887,9 +8900,9 @@ html {
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   transition: transform 0.2s ease;
-  height: 180px; /* Forced short height */
-  width: 260px; /* Fixed width for square-ish */
-  padding: 12px; /* Tight padding on all 4 sides */
+  height: 180px;
+  width: 260px;
+  padding: 12px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -8913,18 +8926,18 @@ html {
 }
 
 .voting-card .card-icon {
-  font-size: 2.8rem;
-  margin-bottom: 8px;
+  font-size: 2.2rem; /* slightly smaller */
+  margin-bottom: 6px;
 }
 
 .voting-card .card-label {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: bold;
   margin-bottom: 4px;
 }
 
 .voting-card .card-description {
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   color: #ddd;
   line-height: 1.3;
   margin: 0;
@@ -8936,24 +8949,25 @@ html {
 }
 
 .voting-card .card-date {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: #1e90ff;
   margin-top: 6px;
 }
+
 /* Learning Resources cards (Games + Videos) */
 .card-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;   /* center cards evenly */
-  gap: 20px;                 /* equal spacing between cards */
+  justify-content: center;
+  gap: 20px;
 }
 
 .info-card {
-  background: #2b2b2b;       /* dark gray background */
+  background: #2b2b2b;
   color: #f0f0f0;
   border-radius: 6px;
   padding: 10px;
-  width: 140px;              /* lock card width to thumbnail size */
+  width: 140px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8962,7 +8976,7 @@ html {
 }
 
 .info-card img.card-image {
-  width: 100%;               /* fills card width */
+  width: 100%;
   height: auto;
   border-radius: 4px;
   margin-bottom: 8px;
@@ -8970,21 +8984,21 @@ html {
 
 .info-card h3 {
   margin: 4px 0;
-  font-size: 0.9rem;         /* smaller title */
+  font-size: 0.9rem;
   color: #ffffff;
 }
 
 .info-card p {
   margin: 3px 0;
   line-height: 1.3;
-  font-size: 0.75rem;        /* smaller body text */
+  font-size: 0.75rem;
   color: #dcdcdc;
 }
 
 .info-card .btn {
   margin-top: 6px;
   padding: 6px 10px;
-  font-size: 0.75rem;        /* smaller button text */
+  font-size: 0.75rem;
   background: #444;
   color: #fff;
   border: none;
@@ -8996,59 +9010,9 @@ html {
 .info-card .btn:hover {
   background: #666;
 }
-/* Override tab section headlines */
-.card-grid h3 {
-  font-size: 1.25rem;   /* ~20px */
-  line-height: 1.3;
-  margin-top: 0.25rem;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-}
+
 /* Reduce spacing around tab sections */
 section {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-}
-.card-grid h3 {
-  font-size: 1.25rem !important;
-  margin: 0.25rem 0 !important;
-  line-height: 1.3 !important;
-}
-/* Home Hub tab headline */
-#home-hub h2,
-#home-hub h3 {
-  font-size: 1.25rem !important;   /* ~20px */
-  line-height: 1.3 !important;
-  margin: 0.25rem 0 !important;
-  font-weight: 600 !important;
-}
-
-/* Civic Intelligence tab headline */
-#civic-intelligence h2,
-#civic-intelligence h3 {
-  font-size: 1.25rem !important;
-  line-height: 1.3 !important;
-  margin: 0.25rem 0 !important;
-  font-weight: 600 !important;
-}
-.tab-home h2,
-.tab-home h3,
-.tab-civic h2,
-.tab-civic h3 {
-  font-size: 1.25rem !important;
-  margin: 0.25rem 0 !important;
-}
-/* Global tab headline adjustments */
-section > h2,
-section > h3 {
-  font-size: 1.4rem !important;   /* ~22px instead of 32px+ */
-  line-height: 1.3 !important;    /* tighter vertical rhythm */
-  margin-top: 0.25rem !important; /* trim top spacing */
-  margin-bottom: 0.5rem !important; /* trim bottom spacing */
-  font-weight: 600 !important;    /* keep bold but not heavy */
-  color: #e0e0e0 !important;      /* softer white for less glare */
-}
-section > h2,
-section > h3 {
-  font-size: 1.2rem !important;   /* ~19px */
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
 }
