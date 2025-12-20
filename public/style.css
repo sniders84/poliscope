@@ -8940,443 +8940,55 @@ html {
   color: #1e90ff;
   margin-top: 6px;
 }
-/* Game cards (Quizzes & Learning Materials) */
-.info-card {
-  display: inline-block;
-  width: 360px;              /* wider square footprint */
-  min-height: 480px;         /* ensures text has space */
-  margin: 20px;
-  padding: 20px;
-  background: #2b2b2b;
-  border: 2px solid transparent;  /* neutral border for outline hover */
-  border-radius: 12px;
-  color: #fff;
-  text-align: left;
-  vertical-align: top;
-  transition: border-color 0.3s ease;
+/* Learning Resources cards (Games + Videos) */
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;   /* center cards evenly */
+  gap: 20px;                 /* equal spacing between cards */
 }
 
-.info-card:hover {
-  border-color: #0066cc;     /* hover effect only on outline */
-  background: #2b2b2b;       /* keep background unchanged */
+.info-card {
+  background: #2b2b2b;       /* dark gray background */
+  color: #f0f0f0;
+  border-radius: 6px;
+  padding: 10px;
+  width: 140px;              /* lock card width to thumbnail size */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.4);
 }
 
 .info-card img.card-image {
   width: 100%;               /* fills card width */
   height: auto;
-  max-height: 220px;         /* roughly double your current size */
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 16px;
-}
-
-.info-card h3 {
-  font-size: 1.6rem;
-  margin-bottom: 10px;
-}
-
-.info-card p {
-  font-size: 1.1rem;
-  line-height: 1.5;
-  margin: 6px 0;
-}
-
-.info-card .btn {
-  display: inline-block;
-  margin-top: 12px;
-  padding: 10px 18px;
-  background: crimson;
-  color: #fff;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-/* Network cards (Home Hub) */
-.network-card {
-  display: inline-block;
-  width: 280px;              /* slimmer footprint */
-  min-height: auto;          /* no forced height */
-  margin: 15px;
-  padding: 15px;
-  background: #2b2b2b;
-  border: 2px solid transparent;
-  border-radius: 10px;
-  color: #fff;
-  text-align: left;
-  vertical-align: top;
-  transition: border-color 0.3s ease;
-}
-
-.network-card:hover {
-  border-color: #0066cc;     /* outline only */
-  background: #2b2b2b;       /* keep background unchanged */
-}
-
-.network-card img.network-logo {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  border-radius: 6px;
-  margin-bottom: 12px;
-}
-
-.network-card h3 {
-  font-size: 1.4rem;
+  border-radius: 4px;
   margin-bottom: 8px;
 }
 
-.network-card p {
-  font-size: 1rem;
-  line-height: 1.4;
+.info-card h3 {
   margin: 4px 0;
-}
-/* Network cards (Home Hub) */
-.network-card {
-  display: inline-block;
-  width: 140px;              /* compact half-size footprint */
-  height: 160px;             /* fixed height for uniformity */
-  margin: 8px;
-  padding: 8px;
-  background: #2b2b2b;
-  border: 2px solid transparent;
-  border-radius: 8px;
-  color: #fff;
-  text-align: center;
-  vertical-align: top;
-  transition: border-color 0.3s ease;
-  box-sizing: border-box;
+  font-size: 0.9rem;         /* smaller title */
+  color: #ffffff;
 }
 
-.network-card:hover {
-  border-color: #0066cc;     /* outline only */
-  background: #2b2b2b;       /* keep background unchanged */
-}
-
-.network-card img.network-logo {
-  width: 100px;              /* force uniform width */
-  height: 100px;             /* force uniform height */
-  object-fit: contain;       /* scale logo inside box */
-  display: block;
-  margin: 0 auto 6px auto;   /* center horizontally */
-  background-color: #fff;    /* optional: gives logos a consistent backdrop */
-  border-radius: 4px;
-}
-
-.network-card h3 {
-  font-size: 0.9rem;
-  margin: 4px 0;
-}
-
-.network-card p {
-  font-size: 0.75rem;
-  line-height: 1.2;
-  margin: 0;
-}
-
-/* Story cards (feed results) */
-.story-card {
-  display: inline-block;
-  width: 220px;
-  margin: 10px;
-  padding: 12px;
-  background: #1f1f1f;
-  border-radius: 8px;
-  color: #fff;
-}
-/* Carousel cards */
-.carousel-card {
-  display: inline-block;
-  width: 220px;              /* adjust as needed for carousel layout */
-  height: 260px;             /* fixed height for uniformity */
-  margin: 12px;
-  padding: 12px;
-  background: #2b2b2b;
-  border: 2px solid transparent;  /* neutral border */
-  border-radius: 10px;
-  color: #fff;
-  text-align: center;
-  vertical-align: top;
-  transition: border-color 0.3s ease;
-  box-sizing: border-box;
-}
-
-.carousel-card:hover {
-  border-color: #0066cc;     /* blue outline only */
-  background: #2b2b2b;       /* keep background unchanged */
-}
-
-.carousel-card img {
-  width: 100%;
-  height: 140px;             /* consistent image height */
-  object-fit: cover;         /* fills box without distortion */
-  border-radius: 6px;
-  margin-bottom: 10px;
-}
-
-.carousel-card h3 {
-  font-size: 1rem;
-  margin: 6px 0;
-}
-
-.carousel-card p {
-  font-size: 0.85rem;
+.info-card p {
+  margin: 3px 0;
   line-height: 1.3;
-  margin: 0;
-}
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* wider cards */
-  gap: 24px; /* space between cards */
-}
-
-.info-card {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  height: 100%; /* uniform height */
-}
-
-.info-card img.card-image {
-  width: 100%;
-  max-width: 280px; /* larger thumbnails */
-  height: auto;
-  margin-bottom: 12px;
-  border-radius: 6px;
-}
-
-.info-card h3 {
-  margin: 8px 0;
-  font-size: 1.2rem;
-}
-
-.info-card p {
-  margin: 6px 0;
-  line-height: 1.4; /* breathing room */
-}
-
-.info-card .btn {
-  margin-top: auto; /* pushes button to bottom */
-  padding: 10px 16px;
-  font-size: 0.95rem;
-}
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(225px, 1fr)); /* 1/4 smaller than 300px */
-  gap: 20px; /* balanced spacing between cards */
-}
-
-.info-card {
-  background: #2b2b2b; /* dark gray background to match other cards */
-  color: #f0f0f0;       /* light text for contrast */
-  border-radius: 8px;
-  padding: 14px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  height: 100%; /* uniform height */
-  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-}
-
-.info-card img.card-image {
-  width: 100%;
-  max-width: 220px; /* thumbnails scale down proportionally */
-  height: auto;
-  margin-bottom: 12px;
-  border-radius: 6px;
-}
-
-.info-card h3 {
-  margin: 8px 0;
-  font-size: 1.1rem;
-  color: #ffffff;
-}
-
-.info-card p {
-  margin: 6px 0;
-  line-height: 1.5; /* breathing room */
-  font-size: 0.9rem;
+  font-size: 0.75rem;        /* smaller body text */
   color: #dcdcdc;
 }
 
 .info-card .btn {
-  margin-top: auto;
-  padding: 8px 14px;
-  font-size: 0.9rem;
-  background: #444;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: background 0.2s ease;
-}
-
-.info-card .btn:hover {
-  background: #666;
-}
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); /* same footprint as quiz cards */
-  gap: 24px; /* even spacing between cards */
-}
-
-.info-card {
-  background: #2b2b2b; /* dark gray background to match quiz cards */
-  color: #f0f0f0;
-  border-radius: 8px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* balances text and button */
-  text-align: center;
-  height: 100%; /* uniform height */
-  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-}
-
-.info-card img.card-image {
-  width: 100%;
-  max-width: 200px; /* thumbnail size aligned with quiz cards */
-  height: auto;
-  margin: 0 auto 12px auto;
-  border-radius: 6px;
-}
-
-.info-card h3 {
-  margin: 8px 0;
-  font-size: 1.1rem;
-  color: #ffffff;
-}
-
-.info-card p {
-  margin: 6px 0;
-  line-height: 1.4;
-  font-size: 0.9rem;
-  color: #dcdcdc;
-}
-
-.info-card .btn {
-  margin-top: 12px;
-  padding: 8px 14px;
-  font-size: 0.9rem;
-  background: #444;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: background 0.2s ease;
-}
-
-.info-card .btn:hover {
-  background: #666;
-}
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* half the width */
-  gap: 16px; /* tighter spacing */
-}
-
-.info-card {
-  background: #2b2b2b; /* dark gray background */
-  color: #f0f0f0;
-  border-radius: 6px;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  text-align: center;
-  height: 100%;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.4);
-}
-
-.info-card img.card-image {
-  width: 100%;
-  max-width: 120px; /* smaller thumbnails */
-  height: auto;
-  margin: 0 auto 8px auto;
-  border-radius: 4px;
-}
-
-.info-card h3 {
-  margin: 6px 0;
-  font-size: 0.9rem; /* smaller title */
-  color: #ffffff;
-}
-
-.info-card p {
-  margin: 4px 0;
-  line-height: 1.3;
-  font-size: 0.75rem; /* smaller body text */
-  color: #dcdcdc;
-}
-
-.info-card .btn {
-  margin-top: 8px;
+  margin-top: 6px;
   padding: 6px 10px;
-  font-size: 0.75rem; /* smaller button text */
+  font-size: 0.75rem;        /* smaller button text */
   background: #444;
   color: #fff;
   border: none;
   border-radius: 3px;
-  text-decoration: none;
-  transition: background 0.2s ease;
-}
-
-.info-card .btn:hover {
-  background: #666;
-}
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); /* flexible width */
-  gap: 24px; /* even spacing between cards */
-}
-
-.info-card {
-  background: #2b2b2b; /* dark gray background */
-  color: #f0f0f0;
-  border-radius: 8px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-  height: auto; /* allow card to grow/shrink with content */
-}
-
-.info-card img.card-image {
-  width: 100%;
-  max-width: 220px; /* larger thumbnails but not overwhelming */
-  height: auto;
-  margin: 0 auto 12px auto;
-  border-radius: 6px;
-}
-
-.info-card h3 {
-  margin: 8px 0;
-  font-size: 1rem; /* slightly smaller title */
-  color: #ffffff;
-}
-
-.info-card p {
-  margin: 6px 0;
-  line-height: 1.4; /* breathing room */
-  font-size: 0.85rem; /* smaller text so cards shrink */
-  color: #dcdcdc;
-}
-
-.info-card .btn {
-  margin-top: 12px;
-  padding: 8px 14px;
-  font-size: 0.85rem;
-  background: #444;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
   text-decoration: none;
   transition: background 0.2s ease;
 }
