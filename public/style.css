@@ -9014,3 +9014,27 @@ section {
   margin: 0.25rem 0 !important;
   line-height: 1.3 !important;
 }
+/* Home Hub tab headline */
+#home-hub h2,
+#home-hub h3 {
+  font-size: 1.25rem !important;   /* ~20px */
+  line-height: 1.3 !important;
+  margin: 0.25rem 0 !important;
+  font-weight: 600 !important;
+}
+
+/* Civic Intelligence tab headline */
+#civic-intelligence h2,
+#civic-intelligence h3 {
+  font-size: 1.25rem !important;
+  line-height: 1.3 !important;
+  margin: 0.25rem 0 !important;
+  font-weight: 600 !important;
+}
+.tab-home h2,
+.tab-home h3,
+.tab-civic h2,
+.tab-civic h3 {
+  font-size: 1.25rem !important;
+  margin: 0.25rem 0 !important;
+}
