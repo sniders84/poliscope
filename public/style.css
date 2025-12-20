@@ -8874,3 +8874,55 @@ html {
   color: #fff !important;  /* Forces white, overrides any blue */
   font-weight: bold !important;
 }
+/* Make Voting tab cards smaller and tighter */
+#voting-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Smaller cards */
+  gap: 20px;
+  padding: 20px;
+}
+
+.voting-card {
+  background: #2b2b2b;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease;
+}
+
+.voting-card:hover {
+  transform: translateY(-5px);
+}
+
+.voting-card a {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  text-decoration: none;
+  color: #fff;
+  height: 100%;
+}
+
+.voting-card .card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+.voting-card .card-label {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.voting-card .card-description {
+  font-size: 0.95rem;
+  color: #ccc;
+  margin-bottom: 10px;
+  flex-grow: 1;
+}
+
+.voting-card .card-date {
+  font-size: 0.9rem;
+  color: #1e90ff;
+  font-style: italic;
+}
