@@ -9054,11 +9054,13 @@ html {
 }
 
 .network-card img.network-logo {
-  width: 100px;              /* fixed width */
-  height: 100px;             /* fixed height */
-  object-fit: contain;       /* keeps aspect ratio inside box */
+  width: 100px;              /* force uniform width */
+  height: 100px;             /* force uniform height */
+  object-fit: contain;       /* scale logo inside box */
   display: block;
   margin: 0 auto 6px auto;   /* center horizontally */
+  background-color: #fff;    /* optional: gives logos a consistent backdrop */
+  border-radius: 4px;
 }
 
 .network-card h3 {
