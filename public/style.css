@@ -8874,11 +8874,11 @@ html {
   color: #fff !important;  /* Forces white, overrides any blue */
   font-weight: bold !important;
 }
-/* Make Voting tab cards smaller and tighter */
+/* Make Voting tab cards smaller, tighter, and uniform height */
 #voting-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Smaller cards */
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Slightly wider for balance */
+  gap: 24px;
   padding: 20px;
 }
 
@@ -8888,41 +8888,48 @@ html {
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  height: 180px; /* Fixed uniform height */
+  justify-content: space-between; /* Even internal spacing */
 }
 
 .voting-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
 }
 
 .voting-card a {
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 18px;
   text-decoration: none;
   color: #fff;
   height: 100%;
+  justify-content: flex-start;
 }
 
 .voting-card .card-icon {
-  font-size: 2.5rem;
-  margin-bottom: 12px;
+  font-size: 2.4rem;
+  margin-bottom: 10px;
 }
 
 .voting-card .card-label {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: bold;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .voting-card .card-description {
-  font-size: 0.95rem;
-  color: #ccc;
-  margin-bottom: 10px;
+  font-size: 0.93rem;
+  color: #ddd;
+  margin-bottom: 8px;
   flex-grow: 1;
+  line-height: 1.4;
 }
 
 .voting-card .card-date {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: #1e90ff;
   font-style: italic;
+  margin-top: auto; /* Pushes deadline to bottom if present */
 }
