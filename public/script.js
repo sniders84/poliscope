@@ -384,20 +384,6 @@ function showPolls() {
   }
 }
 
-// Political Organizations tab
-function showOrganizations() {
-  showTab('organizations');
-  
-  // Ensure the title is visible (in case it was cleared before)
-  const title = document.querySelector('#organizations h2');
-  if (title) {
-    title.style.display = 'block';
-  }
-  
-  // If you have any code that populates .organization-grid, keep it below
-  // (If there's existing code here to load groups, leave it — this won't hurt it)
-}
-
 // Voting tab
 function showVoting() {
   showTab('voting');
@@ -1909,21 +1895,28 @@ function openPollModal(categoryLabel) {
 function showOrganizations() {
   showTab('organizations');
   const section = document.getElementById('organizations');
-  section.innerHTML = '';
+  section.innerHTML = '';  // Clears old content
 
+  // ADD THE TITLE BACK FIRST
+  const title = document.createElement('h2');
+  title.textContent = 'Political Groups — Help Make a Difference!';
+  title.style.margin = '20px 0 30px 0';
+  title.style.textAlign = 'center';
+  title.style.fontSize = '2rem';
+  title.style.color = '#fff';
+  section.appendChild(title);
+
+  // Now load the groups as before
   fetch('/political-groups.json')
     .then(res => res.json())
     .then(groups => {
       const grid = document.createElement('div');
       grid.className = 'organization-grid';
-
       groups.forEach(group => {
         const card = document.createElement('div');
         card.className = 'organization-card';
-
         const logoWrapper = document.createElement('div');
         logoWrapper.className = 'logo-wrapper';
-
         const img = document.createElement('img');
         img.src = group.logo;
         img.alt = `${group.name} logo`;
@@ -1933,9 +1926,7 @@ function showOrganizations() {
         img.onerror = () => {
           img.src = 'assets/default-logo.png';
         };
-
         logoWrapper.appendChild(img);
-
         const infoWrapper = document.createElement('div');
         infoWrapper.className = 'info-wrapper';
         infoWrapper.innerHTML = `
@@ -1948,11 +1939,10 @@ function showOrganizations() {
         card.appendChild(infoWrapper);
         grid.appendChild(card);
       });
-
       section.appendChild(grid);
     })
     .catch(err => {
-      section.innerHTML = '<p>Error loading political groups.</p>';
+      section.innerHTML += '<p>Error loading political groups.</p>';  // += so title stays
       console.error(err);
     });
 }
