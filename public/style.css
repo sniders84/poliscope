@@ -9031,7 +9031,56 @@ html {
   line-height: 1.4;
   margin: 4px 0;
 }
+/* Network cards (Home Hub) */
 .network-card {
+  display: inline-block;
+  width: 160px;              /* compact half-size footprint */
+  height: 180px;             /* fixed height for uniformity */
+  margin: 10px;
+  padding: 10px;
+  background: #2b2b2b;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  color: #fff;
+  text-align: center;
+  vertical-align: top;
+  transition: border-color 0.3s ease;
+}
+
+.network-card:hover {
+  border-color: #0066cc;     /* outline only */
+  background: #2b2b2b;       /* keep background unchanged */
+}
+
+.network-card img.network-logo {
+  width: 80px;               /* smaller logo size */
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 8px;
+}
+
+.network-card h3 {
+  font-size: 1rem;
+  margin: 6px 0;
+}
+
+.network-card p {
+  font-size: 0.8rem;
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* Story cards (feed results) */
+.story-card {
+  display: inline-block;
+  width: 220px;
+  margin: 10px;
+  padding: 12px;
+  background: #1f1f1f;
+  border-radius: 8px;
+  color: #fff;
+}
+
   display: inline-block;
   width: 180px;              /* half the previous width */
   min-height: auto;          /* no forced height */
