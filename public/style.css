@@ -8996,18 +8996,21 @@ html {
 .info-card .btn:hover {
   background: #666;
 }
-/* Tab headline adjustments */
-.tab-header h3,
-.tab-header h2,
-.tab-header h1 {
-  font-size: 1.25rem;   /* smaller, more compact */
-  line-height: 1.3;     /* tighter line spacing */
-  margin-top: 0.5rem;   /* reduce top spacing */
-  margin-bottom: 0.75rem; /* reduce bottom spacing */
-  font-weight: 600;     /* keep bold but not heavy */
+/* Override tab section headlines */
+.card-grid h3 {
+  font-size: 1.25rem;   /* ~20px */
+  line-height: 1.3;
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
 }
-
-/* Optional: if your tabs use a wrapper */
-.tab-section {
-  padding-top: 0.5rem;  /* reduce wasted space above */
+/* Reduce spacing around tab sections */
+section {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.card-grid h3 {
+  font-size: 1.25rem !important;
+  margin: 0.25rem 0 !important;
+  line-height: 1.3 !important;
 }
