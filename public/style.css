@@ -8940,3 +8940,46 @@ html {
   color: #1e90ff;
   margin-top: 6px;
 }
+.info-card {
+  display: inline-block;
+  width: 360px;          /* wider square footprint */
+  min-height: 480px;     /* ensures text has space */
+  margin: 20px;
+  padding: 20px;
+  background: #2b2b2b;
+  border-radius: 12px;
+  color: #fff;
+  text-align: left;
+  vertical-align: top;
+}
+
+.info-card img.card-image {
+  width: 100%;           /* fills card width */
+  height: auto;
+  max-height: 220px;     /* roughly double your current size */
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.info-card h3 {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+.info-card p {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin: 6px 0;
+}
+
+.info-card .btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 18px;
+  background: crimson;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+}
