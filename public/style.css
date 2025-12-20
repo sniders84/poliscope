@@ -8849,7 +8849,7 @@ header {
 }
 /* Fix tab scroll position so headings aren't hidden under sticky header */
 .tab-content {
-  scroll-margin-top: 80px;
+  scroll-margin-top: 120px;  /* Increased for better clearance */
 }
 
 /* Optional: Smooth out the scrolling when clicking menu links */
