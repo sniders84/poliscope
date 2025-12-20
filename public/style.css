@@ -8847,3 +8847,12 @@ header {
   background-color: crimson;
   color: #fff;
 }
+/* Fix tab scroll position so headings aren't hidden under sticky header */
+.tab-content {
+  scroll-margin-top: 80px;
+}
+
+/* Optional: Smooth out the scrolling when clicking menu links */
+html {
+  scroll-behavior: smooth;
+}
