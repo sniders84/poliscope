@@ -8866,11 +8866,11 @@ section.tab-content::before {
 html {
   scroll-behavior: smooth;
 }
-/* Consistent styling for all tab titles — bigger and bolder for perfect match */
+/* Consistent styling for all tab titles — force white color and override any blue */
 .tab-content h2 {
-  text-align: center;
-  font-size: 2.4rem !important;  /* Increased size and !important to override any inline styles */
-  margin: 30px 0 40px 0;
-  color: #fff;
-  font-weight: bold;
+  text-align: center !important;
+  font-size: 2.4rem !important;
+  margin: 30px 0 40px 0 !important;
+  color: #fff !important;  /* Forces white, overrides any blue */
+  font-weight: bold !important;
 }
