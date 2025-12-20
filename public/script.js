@@ -1898,13 +1898,9 @@ function showOrganizations() {
   section.innerHTML = '';  // Clears old content
 
   // ADD THE TITLE BACK FIRST
-  const title = document.createElement('h2');
-  title.textContent = 'Political Groups — Help Make a Difference!';
-  title.style.margin = '20px 0 30px 0';
-  title.style.textAlign = 'center';
-  title.style.fontSize = '2rem';
-  title.style.color = '#fff';
-  section.appendChild(title);
+const title = document.createElement('h2');
+title.textContent = 'Political Groups — Help Make a Difference!';
+section.appendChild(title);
 
   // Now load the groups as before
   fetch('/political-groups.json')
