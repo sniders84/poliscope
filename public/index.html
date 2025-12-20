@@ -807,7 +807,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-   // State dropdown wiring
+     // State dropdown wiring
   const stateSelect = document.getElementById('state-dropdown');
   if (stateSelect) {
     stateSelect.addEventListener('change', (e) => {
@@ -821,38 +821,70 @@ document.addEventListener('DOMContentLoaded', () => {
   // Officials search bar wiring
   wireSearchBar();
 
-  // Network card click wiring
-  const networkCards = document.querySelectorAll('.network-card');
-  networkCards.forEach(card => {
+  // RSS feed wiring for network cards
+  const feedTitle = document.getElementById('feed-title');
+  const feedStories = document.getElementById('feed-stories');
+
+  // Official RSS feeds per network
+  const rssFeeds = {
+    msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',   // NBC/MSNBC general news
+    abc:   'https://abcnews.go.com/abcnews/topstories',       // ABC Top Stories
+    cbs:   'https://www.cbsnews.com/latest/rss/main',         // CBS Latest
+    fox:   'https://feeds.foxnews.com/foxnews/latest',        // FOX News Latest
+    newsnation: "https://www.newsnationnow.com/feed/"         // NewsNation Top Stories
+  };
+
+  async function loadFeed(network) {
+    const url = rssFeeds[network];
+    feedTitle.textContent = `${network.toUpperCase()} Stories`;
+    feedStories.innerHTML = '<p style="color:#fff;">Loading...</p>';
+
+    try {
+      // Use rss2json proxy to bypass CORS
+      const response = await fetch(
+        `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`
+      );
+      const data = await response.json();
+
+      const items = Array.isArray(data.items) ? data.items.slice() : [];
+
+      // Sort by pubDate if available
+      const normalized = items
+        .map(item => ({ item, date: item.pubDate ? new Date(item.pubDate) : null }))
+        .filter(x => x.date)
+        .sort((a, b) => b.date.getTime() - a.date.getTime());
+
+      feedStories.innerHTML = '';
+
+      if (normalized.length === 0) {
+        feedStories.innerHTML = '<p style="color:#fff;">No stories available.</p>';
+        return;
+      }
+
+      normalized.slice(0, 10).forEach(({ item }) => {
+        const story = document.createElement('div');
+        story.className = 'story-card';
+        story.innerHTML = `
+          <a href="${item.link}" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none;">
+            <h4 style="margin-bottom:0.35rem;">${item.title}</h4>
+          </a>
+        `;
+        feedStories.appendChild(story);
+      });
+    } catch (err) {
+      console.error(err);
+      feedStories.innerHTML = '<p style="color:#fff;">Error loading feed.</p>';
+    }
+  }
+
+  // ✅ Updated selector for network cards
+  document.querySelectorAll('.network-card[data-network]').forEach(card => {
     card.addEventListener('click', () => {
       const network = card.getAttribute('data-network');
-      renderNetworkStories(network);
+      loadFeed(network);
     });
   });
 });
-
-// Renderer for network stories
-function renderNetworkStories(network) {
-  const container = document.getElementById('network-cards');
-
-  // Remove any existing story rows
-  const oldStories = document.querySelectorAll('.story-row');
-  oldStories.forEach(el => el.remove());
-
-  // Create a new story row
-  const storyRow = document.createElement('div');
-  storyRow.className = 'story-row';
-  storyRow.style.marginTop = '20px';
-
-  // Placeholder story cards
-  storyRow.innerHTML = `
-    <div class="story-card"><h4>${network} Story 1</h4><p>Placeholder content for ${network}.</p></div>
-    <div class="story-card"><h4>${network} Story 2</h4><p>Placeholder content for ${network}.</p></div>
-    <div class="story-card"><h4>${network} Story 3</h4><p>Placeholder content for ${network}.</p></div>
-  `;
-
-  container.appendChild(storyRow);
-}
 </script>
 </body>
 </html>
