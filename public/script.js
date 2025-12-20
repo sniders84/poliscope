@@ -2570,3 +2570,66 @@ document.getElementById("quiz-next").onclick = () => {
     document.getElementById("quiz-next").style.display = "none";
   }
 };
+
+
+// === Citizenship & Immigration tab renderer ===
+function showCitizenship() {
+  showTab('citizenship');
+
+  citizenshipSections.forEach(section => {
+    const container = document.getElementById(section.targetId);
+    if (!container) {
+      console.warn(`Container not found: ${section.targetId}`);
+      return;
+    }
+    container.innerHTML = ''; // Clear any old content
+
+    // Add section header
+    const header = document.createElement('h3');
+    header.textContent = section.label;
+    header.style.marginTop = '40px';
+    header.style.marginBottom = '20px';
+    header.style.color = '#fff';
+    container.appendChild(header);
+
+    // Create grid for cards
+    const grid = document.createElement('div');
+    grid.style.display = 'grid';
+    grid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(300px, 1fr))';
+    grid.style.gap = '20px';
+    grid.style.padding = '0 10px';
+
+    if (section.items.length === 0) {
+      const msg = document.createElement('p');
+      msg.textContent = `No items available for ${section.label}.`;
+      msg.style.color = '#ccc';
+      grid.appendChild(msg);
+    } else {
+      section.items.forEach(item => {
+        const card = document.createElement('div');
+        card.style.background = '#2b2b2b';
+        card.style.padding = '20px';
+        card.style.borderRadius = '10px';
+        card.style.border = '1px solid #444';
+        card.style.boxShadow = '0 2px 8px rgba(0,0,0,0.3)';
+
+        let linksHtml = '<div style="margin-top: 15px; line-height: 1.8;">';
+        if (item.urlEn) linksHtml += `<a href="${item.urlEn}" target="_blank" rel="noopener noreferrer" style="color: #1e90ff; text-decoration: none;">English Version →</a><br>`;
+        if (item.urlEs) linksHtml += `<a href="${item.urlEs}" target="_blank" rel="noopener noreferrer" style="color: #1e90ff; text-decoration: none;">Versión en Español →</a><br>`;
+        item.langLinks?.forEach(lang => {
+          linksHtml += `<a href="${lang.url}" target="_blank" rel="noopener noreferrer" style="color: #aaa; text-decoration: none; font-size: 0.95em;">${lang.label}</a><br>`;
+        });
+        linksHtml += '</div>';
+
+        card.innerHTML = `
+          <h4 style="margin: 0 0 12px 0; color: #fff;">${item.title}</h4>
+          <p style="margin: 0 0 15px 0; color: #ccc; font-size: 0.95em;">${item.desc}</p>
+          ${linksHtml}
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    container.appendChild(grid);
+  });
+}
