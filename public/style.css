@@ -5245,46 +5245,17 @@ section > h3 {
   object-fit: contain;   /* preserve aspect ratio, no cropping */
   display: block;
 }
+/* ============================================================
+   Learning Resources — Game Cards (Canonical Uniform Sizing)
+   ============================================================ */
+
 /* Force all game info-cards to same size */
-#games-section .info-card {
-  width: 220px;       /* match other cards */
-  height: 280px;      /* lock consistent height */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-  box-sizing: border-box;
-}
-
-#games-section .info-card img.card-image {
-  max-width: 100%;
-  max-height: 100px;  /* keep logos contained */
-  object-fit: contain;
-  margin-bottom: 8px;
-}
-/* ============================================================
-   Game Cards — Uniform Logo Sizing
-   ============================================================ */
-
-.info-card img.card-image {
-  width: 100%;            /* stretch to full card width */
-  max-width: 160px;       /* lock consistent logo width */
-  height: 100px;          /* lock consistent logo height */
-  object-fit: contain;    /* preserve aspect ratio, no cropping */
-  display: block;
-  margin: 0 auto 12px auto;
-}
-/* ============================================================
-   Learning Resources — Game Cards (Uniform Sizing)
-   ============================================================ */
-
 #games-section .info-card {
   width: 240px;          /* fixed width for all cards */
   height: 340px;         /* fixed height for all cards */
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* distribute logo, text, button evenly */
+  justify-content: space-between; /* logo, text, button distributed */
   align-items: center;
   text-align: center;
   box-sizing: border-box;
@@ -5294,26 +5265,30 @@ section > h3 {
   transition: transform 0.2s ease, box-shadow 0.25s ease;
 }
 
+/* Uniform logo sizing inside cards */
 #games-section .info-card img.card-image {
-  width: 100%;
-  max-width: 160px;      /* consistent logo width */
+  width: 160px;          /* consistent logo width */
   height: 100px;         /* consistent logo height */
-  object-fit: contain;   /* preserve aspect ratio */
-  margin-bottom: 10px;
+  object-fit: contain;   /* preserve aspect ratio, no cropping */
+  display: block;
+  margin: 0 auto 12px auto;
 }
 
+/* Title styling */
 #games-section .info-card h3 {
   font-size: 1rem;
   margin: 6px 0;
   color: #fff;
 }
 
+/* Descriptor text styling */
 #games-section .info-card p {
   font-size: 0.85rem;
   color: #ddd;
   margin: 2px 0;
 }
 
+/* Play button styling */
 #games-section .info-card a.btn {
   margin-top: auto;      /* push button to bottom */
   background: #007bff;
