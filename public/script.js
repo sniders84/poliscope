@@ -301,16 +301,16 @@ const pollCategories = [
   }
 ];
 
-// FULL REPLACEMENT for showPolls() function
+// FINAL REPLACEMENT for showPolls() function
 function showPolls() {
   showTab('polls');
 
-  // === Polls Section ===
+  // === Polls Section (unchanged except for Approval Polling card) ===
   const pollsContainer = document.getElementById('polls-cards');
   if (pollsContainer) {
     pollsContainer.innerHTML = '';
 
-    // Existing poll categories (President, Governor, Senate, House)
+    // Existing poll categories
     pollCategories.forEach(category => {
       const section = document.createElement('div');
       section.className = 'poll-section';
@@ -340,7 +340,7 @@ function showPolls() {
       pollsContainer.appendChild(section);
     });
 
-    // Political Approval Polling card (iSideWith)
+    // Approval Polling card (iSideWith)
     const approvalSection = document.createElement('div');
     approvalSection.className = 'poll-section';
 
@@ -372,14 +372,16 @@ function showPolls() {
   if (electionsContainer) {
     electionsContainer.innerHTML = '';
 
-    // Main header for the entire elections section
-    const mainHeader = document.createElement('h3');
+    // Single main header for the entire section
+    const mainHeader = document.createElement('h2'); // Use h2 for larger prominence if needed
     mainHeader.textContent = 'Elections - Local, State, Federal';
     mainHeader.style.textAlign = 'center';
     mainHeader.style.margin = '40px 0 30px 0';
-    mainHeader.style.fontSize = '1.4rem';
+    mainHeader.style.fontSize = '1.6rem';
+    mainHeader.style.color = '#fff';
     electionsContainer.appendChild(mainHeader);
 
+    // Helper for simple Ballotpedia cards (no logo)
     const createSimpleCard = (title, links) => {
       const card = document.createElement('div');
       card.className = 'elections-card';
@@ -394,7 +396,7 @@ function showPolls() {
       return card;
     };
 
-    // === First: The three Ballotpedia utility cards ===
+    // Ballotpedia utility cards first
     electionsContainer.appendChild(createSimpleCard('Upcoming Elections', [
       { text: 'My Election Lookup Tool', url: 'https://ballotpedia.org/Sample_Ballot_Lookup' },
       { text: 'Full Elections Calendar', url: 'https://ballotpedia.org/Elections_calendar' }
@@ -411,25 +413,26 @@ function showPolls() {
       { text: '2025 Governor Elections', url: 'https://ballotpedia.org/Gubernatorial_elections,_2025' }
     ]));
 
-    // === Then: The three iSideWith Voter Guide cards (with logos) ===
+    // iSideWith Voter Guide cards (with logo) below
     const createVoterGuideCard = (year) => {
       const card = document.createElement('div');
       card.className = 'elections-card';
 
-      const links = [
-        { text: 'President', url: year === 2028 ? 'https://www.isidewith.com/elections/2028/president' : null },
-        { text: 'Governor', url: `https://www.isidewith.com/elections/${year}/states/governor` },
-        { text: 'Lt. Governor', url: `https://www.isidewith.com/elections/${year}/states/lt-governor` },
-        { text: 'Senate', url: `https://www.isidewith.com/elections/${year}/states/us-senate` },
-        { text: 'House', url: `https://www.isidewith.com/elections/${year}/states/us-house` }
+      const positions = [
+        { name: 'President', path: '/president', availableIn2028Only: true },
+        { name: 'Governor', path: '/states/governor' },
+        { name: 'Lt. Governor', path: '/states/lt-governor' },
+        { name: 'Senate', path: '/states/us-senate' },
+        { name: 'House', path: '/states/us-house' }
       ];
 
       let linksHtml = '<ul>';
-      links.forEach(link => {
-        if (link.url) {
-          linksHtml += `<li><a href="${link.url}" target="_blank" rel="noopener noreferrer">${link.text}</a></li>`;
+      positions.forEach(pos => {
+        if (pos.availableIn2028Only && year !== 2028) {
+          linksHtml += `<li>${pos.name} (No election in ${year})</li>`;
         } else {
-          linksHtml += `<li>${link.text} (No election in ${year})</li>`;
+          const url = `https://www.isidewith.com/elections/${year}${pos.path}`;
+          linksHtml += `<li><a href="${url}" target="_blank" rel="noopener noreferrer">${pos.name}</a></li>`;
         }
       });
       linksHtml += '</ul>';
