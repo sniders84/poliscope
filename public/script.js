@@ -305,7 +305,7 @@ const pollCategories = [
 function showPolls() {
   showTab('polls');
 
-  // === Polls Section ===
+  // === Polls Section (Existing Categories) ===
   const pollsContainer = document.getElementById('polls-cards');
   if (pollsContainer) {
     pollsContainer.innerHTML = '';
@@ -340,47 +340,82 @@ function showPolls() {
     });
   }
 
-  // === Elections Section ===
+  // === iSideWith Section ===
+  const isidewithContainer = document.getElementById('isidewith-polls');
+  if (isidewithContainer) {
+    isidewithContainer.innerHTML = ''; // Clear if needed
+
+    const header = document.createElement('h3');
+    header.textContent = 'iSideWith Quizzes & Polls';
+    isidewithContainer.appendChild(header);
+
+    const grid = document.createElement('div');
+    grid.className = 'poll-grid';
+
+    const isidewithItems = [
+      { name: "Political Quiz", url: "https://www.isidewith.com/quiz", desc: "Match your views with parties & candidates" },
+      { name: "Top Political Issues Polls", url: "https://www.isidewith.com/polls", desc: "Vote on key issues like abortion, guns, taxes" },
+      { name: "2028 Presidential Quiz", url: "https://www.isidewith.com/elections/2028-presidential-quiz", desc: "Who should you vote for in 2028?" },
+      { name: "2028 Presidential Voter Guide", url: "https://www.isidewith.com/elections/2028/president", desc: "Candidate policies & polling" }
+    ];
+
+    isidewithItems.forEach(item => {
+      const card = document.createElement('a');
+      card.className = 'poll-card';
+      card.href = item.url;
+      card.target = '_blank';
+      card.rel = 'noopener noreferrer';
+      card.innerHTML = `
+        <div class="poll-logo"><img src="assets/isidewith.png" alt="iSideWith logo" onerror="this.src='assets/default-logo.png';"></div>
+        <h4>${item.name}</h4>
+        <p class="card-desc">${item.desc} • Source: iSideWith</p>
+      `;
+      grid.appendChild(card);
+    });
+
+    isidewithContainer.appendChild(grid);
+  }
+
+  // === Elections Section (Updated to Compact Cards) ===
   const electionsContainer = document.getElementById('elections-cards');
   if (electionsContainer) {
     electionsContainer.innerHTML = '';
 
-    // --- Upcoming Elections ---
-    const upcomingBlock = document.createElement('div');
-    upcomingBlock.className = 'elections-block';
-    upcomingBlock.innerHTML = `
-      <h3>Upcoming Elections</h3>
-      <ul>
-        <li><a href="https://ballotpedia.org/Sample_Ballot_Lookup" target="_blank" rel="noopener noreferrer">My Election Lookup Tool</a></li>
-        <li><a href="https://ballotpedia.org/Elections_calendar" target="_blank" rel="noopener noreferrer">Full Elections Calendar</a></li>
-      </ul>
-    `;
-    electionsContainer.appendChild(upcomingBlock);
+    const createElectionsCard = (title, links) => {
+      const card = document.createElement('div');
+      card.className = 'elections-card';
 
-    // --- Recent Results ---
-    const resultsBlock = document.createElement('div');
-    resultsBlock.className = 'elections-block';
-    resultsBlock.innerHTML = `
-      <h3>Recent Results</h3>
-      <ul>
-        <li><a href="https://ballotpedia.org/Election_results,_2025" target="_blank" rel="noopener noreferrer">2025 Election Results</a></li>
-        <li><a href="https://ballotpedia.org/Election_results,_2024" target="_blank" rel="noopener noreferrer">2024 Election Results</a></li>
-      </ul>
-    `;
-    electionsContainer.appendChild(resultsBlock);
+      let linksHtml = '<ul>';
+      links.forEach(link => {
+        linksHtml += `<li><a href="${link.url}" target="_blank" rel="noopener noreferrer">${link.text}</a></li>`;
+      });
+      linksHtml += '</ul>';
 
-    // --- Competitive Races ---
-    const competitiveBlock = document.createElement('div');
-    competitiveBlock.className = 'elections-block';
-    competitiveBlock.innerHTML = `
-      <h3>Most Competitive Races</h3>
-      <ul>
-        <li><a href="https://ballotpedia.org/United_States_Senate_elections,_2026#Battlegrounds" target="_blank" rel="noopener noreferrer">2026 Senate Battlegrounds</a></li>
-        <li><a href="https://ballotpedia.org/United_States_House_of_Representatives_elections,_2026#Battlegrounds" target="_blank" rel="noopener noreferrer">2026 House Battlegrounds</a></li>
-        <li><a href="https://ballotpedia.org/Gubernatorial_elections,_2025" target="_blank" rel="noopener noreferrer">2025 Governor Elections</a></li>
-      </ul>
-    `;
-    electionsContainer.appendChild(competitiveBlock);
+      card.innerHTML = `
+        <h3>${title}</h3>
+        ${linksHtml}
+      `;
+      return card;
+    };
+
+    // Upcoming Elections
+    electionsContainer.appendChild(createElectionsCard('Upcoming Elections', [
+      { text: 'My Election Lookup Tool', url: 'https://ballotpedia.org/Sample_Ballot_Lookup' },
+      { text: 'Full Elections Calendar', url: 'https://ballotpedia.org/Elections_calendar' }
+    ]));
+
+    // Recent Results
+    electionsContainer.appendChild(createElectionsCard('Recent Results', [
+      { text: '2025 Election Results', url: 'https://ballotpedia.org/Election_results,_2025' },
+      { text: '2024 Election Results', url: 'https://ballotpedia.org/Election_results,_2024' }
+    ]));
+
+    // Competitive Races
+    electionsContainer.appendChild(createElectionsCard('Most Competitive Races', [
+      { text: '2026 Senate Battlegrounds', url: 'https://ballotpedia.org/United_States_Senate_elections,_2026#Battlegrounds' },
+      { text: '2026 House Battlegrounds', url: 'https://ballotpedia.org/United_States_House_of_Representatives_elections,_2026#Battlegrounds' },
+      { text: '2025 Governor Elections', url: 'https://ballotpedia.org/Gubernatorial_elections,_2025' }
+    ]));
   }
 }
 
