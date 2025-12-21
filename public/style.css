@@ -5266,3 +5266,19 @@ section > h3 {
 #home-hub .network-card h3 {
   margin-top: 8px;
 }
+/* Force all network logos to identical box size */
+#home-hub .network-card img {
+  width: 120px !important;
+  height: 120px !important;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 12px;
+}
+
+/* Catch inline SVGs too */
+#home-hub .network-card svg {
+  width: 120px !important;
+  height: 120px !important;
+  display: block;
+  margin: 0 auto 12px;
+}
