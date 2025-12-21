@@ -301,15 +301,16 @@ const pollCategories = [
   }
 ];
 
-// === Polls tab ===
+// FULL REPLACEMENT for showPolls() function
 function showPolls() {
   showTab('polls');
 
-  // === Polls Section (Existing Categories) ===
+  // === Polls Section ===
   const pollsContainer = document.getElementById('polls-cards');
   if (pollsContainer) {
     pollsContainer.innerHTML = '';
 
+    // Existing categories (unchanged)
     pollCategories.forEach(category => {
       const section = document.createElement('div');
       section.className = 'poll-section';
@@ -322,7 +323,7 @@ function showPolls() {
       grid.className = 'poll-grid';
 
       category.polls.forEach(poll => {
-        const card = document.createElement('a'); // full card clickable
+        const card = document.createElement('a');
         card.className = 'poll-card';
         card.href = poll.url;
         card.target = '_blank';
@@ -338,84 +339,111 @@ function showPolls() {
       section.appendChild(grid);
       pollsContainer.appendChild(section);
     });
+
+    // NEW: Approval Polls section with the single card
+    const approvalSection = document.createElement('div');
+    approvalSection.className = 'poll-section';
+
+    const approvalHeader = document.createElement('h3');
+    approvalHeader.textContent = 'Approval Polls';
+    approvalSection.appendChild(approvalHeader);
+
+    const approvalGrid = document.createElement('div');
+    approvalGrid.className = 'poll-grid';
+
+    const approvalCard = document.createElement('a');
+    approvalCard.className = 'poll-card';
+    approvalCard.href = 'https://ballotpedia.org/Ballotpedia%27s_Polling_Indexes';
+    approvalCard.target = '_blank';
+    approvalCard.rel = 'noopener noreferrer';
+    approvalCard.innerHTML = `
+      <div class="poll-logo"><img src="assets/polls.jpeg" alt="Political Approval Polling"></div>
+      <h4>Political Approval Polling</h4>
+      <p class="card-desc">See how voters rate political leaders with the latest approval polls, trend data, and comparisons across parties, regions, and issues.</p>
+    `;
+    approvalGrid.appendChild(approvalCard);
+
+    approvalSection.appendChild(approvalGrid);
+    pollsContainer.appendChild(approvalSection);
   }
 
-  // === iSideWith Section ===
-  const isidewithContainer = document.getElementById('isidewith-polls');
-  if (isidewithContainer) {
-    isidewithContainer.innerHTML = ''; // Clear if needed
-
-    const header = document.createElement('h3');
-    header.textContent = 'iSideWith Quizzes & Polls';
-    isidewithContainer.appendChild(header);
-
-    const grid = document.createElement('div');
-    grid.className = 'poll-grid';
-
-    const isidewithItems = [
-      { name: "Political Quiz", url: "https://www.isidewith.com/quiz", desc: "Match your views with parties & candidates" },
-      { name: "Top Political Issues Polls", url: "https://www.isidewith.com/polls", desc: "Vote on key issues like abortion, guns, taxes" },
-      { name: "2028 Presidential Quiz", url: "https://www.isidewith.com/elections/2028-presidential-quiz", desc: "Who should you vote for in 2028?" },
-      { name: "2028 Presidential Voter Guide", url: "https://www.isidewith.com/elections/2028/president", desc: "Candidate policies & polling" }
-    ];
-
-    isidewithItems.forEach(item => {
-      const card = document.createElement('a');
-      card.className = 'poll-card';
-      card.href = item.url;
-      card.target = '_blank';
-      card.rel = 'noopener noreferrer';
-      card.innerHTML = `
-        <div class="poll-logo"><img src="assets/isidewith.png" alt="iSideWith logo" onerror="this.src='assets/default-logo.png';"></div>
-        <h4>${item.name}</h4>
-        <p class="card-desc">${item.desc} • Source: iSideWith</p>
-      `;
-      grid.appendChild(card);
-    });
-
-    isidewithContainer.appendChild(grid);
-  }
-
-  // === Elections Section (Updated to Compact Cards) ===
+  // === Elections Section ===
   const electionsContainer = document.getElementById('elections-cards');
   if (electionsContainer) {
     electionsContainer.innerHTML = '';
 
-    const createElectionsCard = (title, links) => {
+    const createElectionsCard = (title, links, withLogo = false) => {
       const card = document.createElement('div');
       card.className = 'elections-card';
 
+      let logoHtml = '';
+      if (withLogo) {
+        logoHtml = `<div class="poll-logo"><img src="assets/elections.jpeg" alt="${title}"></div>`;
+      }
+
       let linksHtml = '<ul>';
       links.forEach(link => {
-        linksHtml += `<li><a href="${link.url}" target="_blank" rel="noopener noreferrer">${link.text}</a></li>`;
+        if (link.url) { // Only add if there's a valid URL
+          linksHtml += `<li><a href="${link.url}" target="_blank" rel="noopener noreferrer">${link.text}</a></li>`;
+        } else {
+          linksHtml += `<li>${link.text} (None in ${title.split(' ')[0]})</li>`;
+        }
       });
       linksHtml += '</ul>';
 
       card.innerHTML = `
+        ${logoHtml}
         <h3>${title}</h3>
         ${linksHtml}
       `;
       return card;
     };
 
-    // Upcoming Elections
+    // Existing Upcoming Elections
     electionsContainer.appendChild(createElectionsCard('Upcoming Elections', [
       { text: 'My Election Lookup Tool', url: 'https://ballotpedia.org/Sample_Ballot_Lookup' },
       { text: 'Full Elections Calendar', url: 'https://ballotpedia.org/Elections_calendar' }
     ]));
 
-    // Recent Results
+    // Existing Recent Results
     electionsContainer.appendChild(createElectionsCard('Recent Results', [
       { text: '2025 Election Results', url: 'https://ballotpedia.org/Election_results,_2025' },
       { text: '2024 Election Results', url: 'https://ballotpedia.org/Election_results,_2024' }
     ]));
 
-    // Competitive Races
+    // Existing Competitive Races
     electionsContainer.appendChild(createElectionsCard('Most Competitive Races', [
       { text: '2026 Senate Battlegrounds', url: 'https://ballotpedia.org/United_States_Senate_elections,_2026#Battlegrounds' },
       { text: '2026 House Battlegrounds', url: 'https://ballotpedia.org/United_States_House_of_Representatives_elections,_2026#Battlegrounds' },
       { text: '2025 Governor Elections', url: 'https://ballotpedia.org/Gubernatorial_elections,_2025' }
     ]));
+
+    // NEW: 2026 Voter Guide
+    electionsContainer.appendChild(createElectionsCard('2026 Voter Guide', [
+      { text: 'President', url: null }, // None
+      { text: 'Governor', url: 'https://ballotpedia.org/State_executive_official_elections,_2026' },
+      { text: 'Lt. Governor', url: 'https://ballotpedia.org/Lieutenant_gubernatorial_elections,_2026' },
+      { text: 'Senate', url: 'https://ballotpedia.org/United_States_Senate_elections,_2026' },
+      { text: 'House', url: 'https://ballotpedia.org/United_States_House_of_Representatives_elections,_2026' }
+    ], true)); // with logo
+
+    // NEW: 2027 Voter Guide
+    electionsContainer.appendChild(createElectionsCard('2027 Voter Guide', [
+      { text: 'President', url: null }, // None
+      { text: 'Governor', url: 'https://ballotpedia.org/Gubernatorial_elections,_2027' },
+      { text: 'Lt. Governor', url: 'https://ballotpedia.org/State_executive_official_elections,_2027' }, // Included in state exec
+      { text: 'Senate', url: null }, // None
+      { text: 'House', url: null } // None
+    ], true)); // with logo
+
+    // NEW: 2028 Voter Guide
+    electionsContainer.appendChild(createElectionsCard('2028 Voter Guide', [
+      { text: 'President', url: 'https://ballotpedia.org/Presidential_election,_2028' },
+      { text: 'Governor', url: 'https://ballotpedia.org/State_executive_official_elections,_2028' },
+      { text: 'Lt. Governor', url: 'https://ballotpedia.org/State_executive_official_elections,_2028' }, // Included
+      { text: 'Senate', url: 'https://ballotpedia.org/United_States_Senate_elections,_2028' },
+      { text: 'House', url: 'https://ballotpedia.org/United_States_House_of_Representatives_elections,_2028' }
+    ], true)); // with logo
   }
 }
 
