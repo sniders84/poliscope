@@ -5380,14 +5380,15 @@ section > h3 {
 #elections-cards {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;              /* spacing between cards */
-  margin-bottom: 40px;    /* spacing before next subsection */
+  justify-content: center;     /* center cards instead of full-width stretch */
+  gap: 20px;                   /* spacing between cards */
+  margin-bottom: 40px;         /* spacing before next subsection */
 }
 
 #polls-cards .info-card,
 #elections-cards .info-card {
-  width: 240px;
-  height: 340px;          /* match game card footprint */
+  width: 240px;                /* shrink cards to fixed width */
+  height: 300px;               /* slightly shorter than quizzes/games */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -5410,53 +5411,29 @@ section > h3 {
 /* Centered, uniform logos */
 #polls-cards .info-card img.card-image,
 #elections-cards .info-card img.card-image {
-  width: 160px;
-  height: 100px;
+  width: 140px;                /* slightly smaller logos */
+  height: 90px;
   object-fit: contain;
   display: block;
   margin: 0 auto 12px auto;
 }
+
 /* ============================================================
-   Polls & Elections — Vertical Layout, Spacing & Hover Fix
+   Polls & Elections — Vertical Layout, Section Headers
    ============================================================ */
 
 #polls .card-section {
-  display: block;              /* stack cards vertically */
+  display: block;              /* stack sections vertically */
   margin-bottom: 40px;         /* spacing between sections */
-}
-
-#polls .info-card {
-  width: 240px;
-  height: 340px;
-  margin: 0 auto 20px auto;    /* center each card, add vertical spacing */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-  background-color: #2b2b2b;
-  border-radius: 10px;
-  padding: 12px;
-  box-sizing: border-box;
-  transition: transform 0.2s ease, box-shadow 0.25s ease;
-}
-
-#polls .info-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-  z-index: 2;
-}
-
-#polls .info-card img.card-image {
-  width: 160px;
-  height: 100px;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto 12px auto;
 }
 
 #polls .section-title {
   margin: 16px 0 12px 0;
   font-size: 1.2rem;
   color: #fff;
+  text-align: center;          /* center headers for clarity */
+}
+
+#polls .info-card {
+  margin: 0 auto 20px auto;    /* center each card, add vertical spacing */
 }
