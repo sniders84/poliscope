@@ -5226,3 +5226,34 @@ section > h3 {
   transform: scale(1.18);
   transform-origin: center center;
 }
+/* ============================================================
+   Home Hub — Network Card Logos (Unified Larger Sizing)
+   ============================================================ */
+
+/* Logo wrapper inside network cards */
+#home-hub .network-card .logo-wrapper {
+  width: 140px;              /* unified larger size */
+  height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 12px;
+  overflow: hidden;
+}
+
+/* Force all logos to scale consistently */
+#home-hub .network-card .logo-wrapper img,
+#home-hub .network-card img.network-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Catch inline SVGs if any */
+#home-hub .network-card svg {
+  width: 140px;
+  height: 140px;
+  display: block;
+  margin: 0 auto 12px;
+}
