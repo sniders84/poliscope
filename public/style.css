@@ -5254,7 +5254,7 @@ section > h3 {
   height: 360px;         /* fixed height for all cards */
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* stack content top-to-bottom */
+  justify-content: flex-start;   /* stack content top-to-bottom */
   align-items: center;
   text-align: center;
   box-sizing: border-box;
@@ -5264,11 +5264,11 @@ section > h3 {
   transition: transform 0.2s ease, box-shadow 0.25s ease;
 }
 
-/* Uniform logo sizing */
+/* Force all logos to same size */
 #games-section .info-card img.card-image {
   width: 160px;          /* consistent logo width */
   height: 100px;         /* consistent logo height */
-  object-fit: contain;   /* preserve aspect ratio */
+  object-fit: contain;   /* preserve aspect ratio, no cropping */
   display: block;
   margin: 0 auto 12px auto;
 }
