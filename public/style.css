@@ -5222,3 +5222,26 @@ section > h3 {
   object-fit: contain;
   display: block;
 }
+/* ============================================================
+   Home Hub — Network Card Logos (Canonical Uniform Sizing)
+   ============================================================ */
+
+/* Wrapper for all network logos */
+#network-cards .logo-wrapper {
+  width: 160px;   /* fixed canvas for all logos */
+  height: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 12px;
+  background: transparent;
+  overflow: hidden;
+}
+
+/* Force all logos to fit inside wrapper */
+#network-cards .logo-wrapper img.network-logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;   /* preserve aspect ratio, no cropping */
+  display: block;
+}
