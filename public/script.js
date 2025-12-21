@@ -1982,9 +1982,38 @@ function showOrganizations() {
   section.innerHTML = '';  // Clears old content
 
   // ADD THE TITLE BACK FIRST
-const title = document.createElement('h2');
-title.textContent = 'Political Groups — Help Make a Difference!';
-section.appendChild(title);
+  const title = document.createElement('h2');
+  title.textContent = 'Political Groups — Help Make a Difference!';
+  section.appendChild(title);
+
+  // ADD FEATURED CARDS (Parties + Ideologies)
+  const featured = document.createElement('div');
+  featured.id = 'featured-political-cards';
+  featured.className = 'card-section';
+
+  // Parties card
+  const partiesCard = document.createElement('div');
+  partiesCard.className = 'info-card';
+  partiesCard.innerHTML = `
+    <img src="assets/political-parties.png" alt="Political Parties" class="card-image" />
+    <h3>Political Parties</h3>
+    <p>Explore the major parties shaping U.S. politics.</p>
+    <a href="https://www.isidewith.com/parties" target="_blank" rel="noopener noreferrer" class="btn">View Parties</a>
+  `;
+  featured.appendChild(partiesCard);
+
+  // Ideologies card
+  const ideologiesCard = document.createElement('div');
+  ideologiesCard.className = 'info-card';
+  ideologiesCard.innerHTML = `
+    <img src="assets/political-ideology.jpeg" alt="Political Ideologies" class="card-image" />
+    <h3>Political Ideologies</h3>
+    <p>Learn about the diverse ideologies influencing policy and debate.</p>
+    <a href="https://www.isidewith.com/ideologies" target="_blank" rel="noopener noreferrer" class="btn">View Ideologies</a>
+  `;
+  featured.appendChild(ideologiesCard);
+
+  section.appendChild(featured);
 
   // Now load the groups as before
   fetch('/political-groups.json')
@@ -2026,6 +2055,7 @@ section.appendChild(title);
       console.error(err);
     });
 }
+
 function showStartupHub() {
   showTab('startup-hub'); // makes sure only the Home Hub tab is visible
 
