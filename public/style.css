@@ -5191,34 +5191,11 @@ section > h3 {
   }
 }
 /* ============================================================
-   Home Hub — Network Card Logos (Uniform Sizing)
+   Home Hub — Network Card Logos (Uniform Sizing + Equalizer)
    ============================================================ */
 
 /* Logo wrapper inside network cards */
-.home-hub .network-card .logo-wrapper {
-  width: 120px;          /* fixed width */
-  height: 120px;         /* fixed height */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto 12px;   /* center horizontally with spacing below */
-  overflow: hidden;
-}
-
-/* Force all logos to scale consistently */
-.home-hub .network-card .logo-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;   /* keep aspect ratio, no distortion */
-}
-/* ============================================================
-   Home Hub — Network card logos: hard uniform sizing
-   ============================================================ */
-
-/* Reserve a fixed logo box at the top of each card */
-#home-hub .network-card .logo-wrapper,
-#home-hub .network-card .card-logo,
-#home-hub .network-card .logo-container {
+#home-hub .network-card .logo-wrapper {
   width: 120px;
   height: 120px;
   display: flex;
@@ -5228,57 +5205,24 @@ section > h3 {
   overflow: hidden;
 }
 
-/* Normalize the image itself (png/jpg/svg) */
-#home-hub .network-card .logo-wrapper img,
-#home-hub .network-card .card-logo img,
-#home-hub .network-card .logo-container img,
-#home-hub .network-card img.logo,
-#home-hub .network-card img[alt*="logo"],
-#home-hub .network-card img[alt*="Logo"] {
-  width: 100% !important;
-  height: 100% !important;
-  max-width: 120px !important;
-  max-height: 120px !important;
+/* Force all logos to scale consistently */
+#home-hub .network-card .logo-wrapper img {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   display: block;
 }
 
-/* If some cards don’t use a wrapper, catch all direct images too */
-#home-hub .network-card img {
-  max-width: 120px !important;
-  max-height: 120px !important;
-  width: 120px !important;
-  height: 120px !important;
-  object-fit: contain;
-  margin: 0 auto 12px;
-  display: block;
-}
-
-/* Optional: ensure the card keeps space for the logo */
-#home-hub .network-card .logo-area {
-  height: 120px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Prevent layout jumps: lock card header spacing */
-#home-hub .network-card h3 {
-  margin-top: 8px;
-}
-/* Force all network logos to identical box size */
-#home-hub .network-card img {
-  width: 120px !important;
-  height: 120px !important;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto 12px;
-}
-
-/* Catch inline SVGs too */
+/* Catch inline SVGs if any */
 #home-hub .network-card svg {
-  width: 120px !important;
-  height: 120px !important;
+  width: 120px;
+  height: 120px;
   display: block;
   margin: 0 auto 12px;
+}
+
+/* Equalizer utility class for undersized PNGs */
+.logo--tight {
+  transform: scale(1.18);
+  transform-origin: center center;
 }
