@@ -343,7 +343,7 @@ function showPolls() {
     approvalSection.className = 'poll-section';
 
     const approvalHeader = document.createElement('h3');
-    approvalHeader.textContent = 'Approval Polls';
+    approvalHeader.textContent = 'APPROVAL POLLS'; // All caps to match other headers
     approvalSection.appendChild(approvalHeader);
 
     const approvalGrid = document.createElement('div');
@@ -365,32 +365,32 @@ function showPolls() {
     pollsContainer.appendChild(approvalSection);
   }
 
-  // === Elections Header moved OUTSIDE the container (higher up) ===
-  const pollsTab = document.getElementById('polls'); // the main polls tab section
+  // === Elections Header – now matching the style of other section headers ===
+  const pollsTab = document.getElementById('polls');
   if (pollsTab) {
-    // Remove any old header if it exists
+    // Remove any old header
     const oldHeader = pollsTab.querySelector('#elections-main-header');
     if (oldHeader) oldHeader.remove();
 
-    // Create and insert the new header right after polls-cards
-    const electionsHeader = document.createElement('h3');
-    electionsHeader.id = 'elections-main-header'; // unique ID to avoid duplicates
-    electionsHeader.textContent = 'Elections - Local, State, Federal';
-    electionsHeader.style.textAlign = 'center';
-    electionsHeader.style.margin = '50px 0 30px 0';
-    electionsHeader.style.fontSize = '1.6rem';
-    electionsHeader.style.color = '#fff';
+    // Create the new header container (matches other .poll-section headers)
+    const electionsSection = document.createElement('div');
+    electionsSection.className = 'poll-section';
+    electionsSection.id = 'elections-main-header';
 
-    // Insert after polls-cards (or at the end if not found)
+    const electionsHeader = document.createElement('h3');
+    electionsHeader.textContent = 'ELECTIONS - LOCAL, STATE, FEDERAL';
+    electionsSection.appendChild(electionsHeader);
+
+    // Insert right after polls-cards
     const pollsCards = document.getElementById('polls-cards');
-    if (pollsCards) {
-      pollsCards.parentNode.insertBefore(electionsHeader, pollsCards.nextSibling);
+    if (pollsCards && pollsCards.nextSibling) {
+      pollsCards.parentNode.insertBefore(electionsSection, pollsCards.nextSibling);
     } else {
-      pollsTab.appendChild(electionsHeader);
+      pollsTab.appendChild(electionsSection);
     }
   }
 
-  // === Elections Cards (now without a header inside) ===
+  // === Elections Cards ===
   const electionsContainer = document.getElementById('elections-cards');
   if (electionsContainer) {
     electionsContainer.innerHTML = '';
