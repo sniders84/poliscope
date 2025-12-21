@@ -5303,7 +5303,7 @@ section > h3 {
   background: #0056b3;
 }
 /* ============================================================
-   Quizzes Section — Spacing & Hover Fix
+   Quizzes Section — Uniform Card Styling
    ============================================================ */
 
 #quiz-launchers {
@@ -5314,12 +5314,16 @@ section > h3 {
 }
 
 #quiz-launchers .quiz-card {
-  width: 240px;
-  min-height: 200px;
+  width: 240px;           /* match game card width */
+  height: 340px;          /* match game card height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
   background-color: #2b2b2b;
   border-radius: 10px;
   padding: 12px;
-  text-align: center;
   box-sizing: border-box;
   transition: transform 0.2s ease, box-shadow 0.25s ease;
 }
@@ -5327,12 +5331,44 @@ section > h3 {
 #quiz-launchers .quiz-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-  z-index: 1;             /* ensures hover shadow doesn’t bleed into Games */
+  z-index: 2;
 }
 
+/* Centered, uniform logos */
 #quiz-launchers .quiz-card img.card-image {
   width: 160px;
   height: 100px;
   object-fit: contain;
-  margin-bottom: 12px;
+  display: block;
+  margin: 0 auto 12px auto; /* center horizontally, add bottom spacing */
+}
+
+/* Title styling */
+#quiz-launchers .quiz-card h3 {
+  font-size: 1rem;
+  margin: 6px 0;
+  color: #fff;
+}
+
+/* Description text */
+#quiz-launchers .quiz-card p {
+  font-size: 0.85rem;
+  color: #ddd;
+  margin: 2px 0;
+}
+
+/* Button styling */
+#quiz-launchers .quiz-card a.btn {
+  margin-top: auto;
+  background: #007bff;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+#quiz-launchers .quiz-card a.btn:hover {
+  background: #0056b3;
 }
