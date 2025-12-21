@@ -5599,3 +5599,65 @@ section > h3 {
   color: #1e90ff;
   text-decoration: underline;
 }
+/* Add/Update these in style.css */
+
+/* Ensure poll-grid wraps horizontally */
+.poll-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+/* Elections cards horizontal wrap */
+#elections-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  padding: 10px;
+}
+
+/* Elections card styling */
+.elections-card {
+  background: #2b2b2b;
+  border-radius: 10px;
+  padding: 20px;
+  width: 280px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: #fff;
+}
+
+.elections-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+}
+
+.elections-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+  color: #1e90ff;
+}
+
+.elections-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.elections-card li {
+  margin-bottom: 10px;
+}
+
+.elections-card a {
+  color: #ddd;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.elections-card a:hover {
+  color: #1e90ff;
+  text-decoration: underline;
+}
