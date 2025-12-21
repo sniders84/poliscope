@@ -5246,13 +5246,12 @@ section > h3 {
   display: block;
 }
 /* ============================================================
-   Learning Resources — Game Cards (Canonical Uniform Sizing)
+   Games Section — Uniform Card Sizing
    ============================================================ */
 
-/* Force all game info-cards to same size */
 #games-section .info-card {
   width: 240px;          /* fixed width for all cards */
-  height: 340px;         /* fixed height for all cards */
+  height: 360px;         /* fixed height for all cards */
   display: flex;
   flex-direction: column;
   justify-content: space-between; /* logo, text, button distributed */
