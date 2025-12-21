@@ -5191,48 +5191,12 @@ section > h3 {
   }
 }
 /* ============================================================
-   Home Hub — Network Card Logos (Uniform Sizing + Equalizer)
+   Home Hub — Network Card Logos (Unified Sizing)
    ============================================================ */
 
 /* Logo wrapper inside network cards */
 #home-hub .network-card .logo-wrapper {
-  width: 120px;
-  height: 120px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto 12px;
-  overflow: hidden;
-}
-
-/* Force all logos to scale consistently */
-#home-hub .network-card .logo-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-}
-
-/* Catch inline SVGs if any */
-#home-hub .network-card svg {
-  width: 120px;
-  height: 120px;
-  display: block;
-  margin: 0 auto 12px;
-}
-
-/* Equalizer utility class for undersized PNGs */
-.logo--tight {
-  transform: scale(1.18);
-  transform-origin: center center;
-}
-/* ============================================================
-   Home Hub — Network Card Logos (Unified Larger Sizing)
-   ============================================================ */
-
-/* Logo wrapper inside network cards */
-#home-hub .network-card .logo-wrapper {
-  width: 140px;              /* unified larger size */
+  width: 140px;   /* unified size for all logos */
   height: 140px;
   display: flex;
   justify-content: center;
