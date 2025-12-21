@@ -5227,3 +5227,9 @@ section > h3 {
   transform: scale(1.08);   /* subtle bump */
   transform-origin: center center;
 }
+/* Fine‑tune ABC and FOX logos — scale down */
+#home-hub .network-card[data-network="abc"] .network-logo,
+#home-hub .network-card[data-network="fox"] .network-logo {
+  transform: scale(0.88);   /* shrink just a bit */
+  transform-origin: center center;
+}
