@@ -5275,3 +5275,56 @@ section > h3 {
   display: block;
   margin: 0 auto 12px auto;
 }
+/* ============================================================
+   Learning Resources — Game Cards (Uniform Sizing)
+   ============================================================ */
+
+#games-section .info-card {
+  width: 240px;          /* fixed width for all cards */
+  height: 340px;         /* fixed height for all cards */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* distribute logo, text, button evenly */
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 12px;
+  background-color: #2b2b2b;
+  border-radius: 10px;
+  transition: transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+#games-section .info-card img.card-image {
+  width: 100%;
+  max-width: 160px;      /* consistent logo width */
+  height: 100px;         /* consistent logo height */
+  object-fit: contain;   /* preserve aspect ratio */
+  margin-bottom: 10px;
+}
+
+#games-section .info-card h3 {
+  font-size: 1rem;
+  margin: 6px 0;
+  color: #fff;
+}
+
+#games-section .info-card p {
+  font-size: 0.85rem;
+  color: #ddd;
+  margin: 2px 0;
+}
+
+#games-section .info-card a.btn {
+  margin-top: auto;      /* push button to bottom */
+  background: #007bff;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+#games-section .info-card a.btn:hover {
+  background: #0056b3;
+}
