@@ -310,7 +310,7 @@ function showPolls() {
   if (pollsContainer) {
     pollsContainer.innerHTML = '';
 
-    // Existing categories (President, Governor, Senate, House)
+    // Existing poll categories (President, Governor, Senate, House)
     pollCategories.forEach(category => {
       const section = document.createElement('div');
       section.className = 'poll-section';
@@ -340,7 +340,7 @@ function showPolls() {
       pollsContainer.appendChild(section);
     });
 
-    // NEW: Political Approval Polling card (from iSideWith)
+    // Political Approval Polling card (iSideWith)
     const approvalSection = document.createElement('div');
     approvalSection.className = 'poll-section';
 
@@ -372,13 +372,46 @@ function showPolls() {
   if (electionsContainer) {
     electionsContainer.innerHTML = '';
 
-    // NEW Header for the iSideWith Voter Guides section
-    const isidewithHeader = document.createElement('h3');
-    isidewithHeader.textContent = 'Elections - Local, State, Federal';
-    isidewithHeader.style.textAlign = 'center';
-    isidewithHeader.style.margin = '30px 0 20px';
-    electionsContainer.appendChild(isidewithHeader);
+    // Main header for the entire elections section
+    const mainHeader = document.createElement('h3');
+    mainHeader.textContent = 'Elections - Local, State, Federal';
+    mainHeader.style.textAlign = 'center';
+    mainHeader.style.margin = '40px 0 30px 0';
+    mainHeader.style.fontSize = '1.4rem';
+    electionsContainer.appendChild(mainHeader);
 
+    const createSimpleCard = (title, links) => {
+      const card = document.createElement('div');
+      card.className = 'elections-card';
+
+      let linksHtml = '<ul>';
+      links.forEach(link => {
+        linksHtml += `<li><a href="${link.url}" target="_blank" rel="noopener noreferrer">${link.text}</a></li>`;
+      });
+      linksHtml += '</ul>';
+
+      card.innerHTML = `<h3>${title}</h3>${linksHtml}`;
+      return card;
+    };
+
+    // === First: The three Ballotpedia utility cards ===
+    electionsContainer.appendChild(createSimpleCard('Upcoming Elections', [
+      { text: 'My Election Lookup Tool', url: 'https://ballotpedia.org/Sample_Ballot_Lookup' },
+      { text: 'Full Elections Calendar', url: 'https://ballotpedia.org/Elections_calendar' }
+    ]));
+
+    electionsContainer.appendChild(createSimpleCard('Recent Results', [
+      { text: '2025 Election Results', url: 'https://ballotpedia.org/Election_results,_2025' },
+      { text: '2024 Election Results', url: 'https://ballotpedia.org/Election_results,_2024' }
+    ]));
+
+    electionsContainer.appendChild(createSimpleCard('Most Competitive Races', [
+      { text: '2026 Senate Battlegrounds', url: 'https://ballotpedia.org/United_States_Senate_elections,_2026#Battlegrounds' },
+      { text: '2026 House Battlegrounds', url: 'https://ballotpedia.org/United_States_House_of_Representatives_elections,_2026#Battlegrounds' },
+      { text: '2025 Governor Elections', url: 'https://ballotpedia.org/Gubernatorial_elections,_2025' }
+    ]));
+
+    // === Then: The three iSideWith Voter Guide cards (with logos) ===
     const createVoterGuideCard = (year) => {
       const card = document.createElement('div');
       card.className = 'elections-card';
@@ -386,7 +419,7 @@ function showPolls() {
       const links = [
         { text: 'President', url: year === 2028 ? 'https://www.isidewith.com/elections/2028/president' : null },
         { text: 'Governor', url: `https://www.isidewith.com/elections/${year}/states/governor` },
-        { text: 'Lt. Governor', url: `https://www.isidewith.com/elections/${year}/states/lt-governor` }, // May redirect or show related
+        { text: 'Lt. Governor', url: `https://www.isidewith.com/elections/${year}/states/lt-governor` },
         { text: 'Senate', url: `https://www.isidewith.com/elections/${year}/states/us-senate` },
         { text: 'House', url: `https://www.isidewith.com/elections/${year}/states/us-house` }
       ];
@@ -409,43 +442,9 @@ function showPolls() {
       return card;
     };
 
-    // Add the three iSideWith voter guide cards
     electionsContainer.appendChild(createVoterGuideCard(2026));
     electionsContainer.appendChild(createVoterGuideCard(2027));
     electionsContainer.appendChild(createVoterGuideCard(2028));
-
-    // Existing cards (Upcoming, Recent, Competitive) - keep them below the new ones if desired
-    // (You can move these appends above if you want them first)
-
-    const createElectionsCard = (title, links) => {
-      const card = document.createElement('div');
-      card.className = 'elections-card';
-
-      let linksHtml = '<ul>';
-      links.forEach(link => {
-        linksHtml += `<li><a href="${link.url}" target="_blank" rel="noopener noreferrer">${link.text}</a></li>`;
-      });
-      linksHtml += '</ul>';
-
-      card.innerHTML = `<h3>${title}</h3>${linksHtml}`;
-      return card;
-    };
-
-    electionsContainer.appendChild(createElectionsCard('Upcoming Elections', [
-      { text: 'My Election Lookup Tool', url: 'https://ballotpedia.org/Sample_Ballot_Lookup' },
-      { text: 'Full Elections Calendar', url: 'https://ballotpedia.org/Elections_calendar' }
-    ]));
-
-    electionsContainer.appendChild(createElectionsCard('Recent Results', [
-      { text: '2025 Election Results', url: 'https://ballotpedia.org/Election_results,_2025' },
-      { text: '2024 Election Results', url: 'https://ballotpedia.org/Election_results,_2024' }
-    ]));
-
-    electionsContainer.appendChild(createElectionsCard('Most Competitive Races', [
-      { text: '2026 Senate Battlegrounds', url: 'https://ballotpedia.org/United_States_Senate_elections,_2026#Battlegrounds' },
-      { text: '2026 House Battlegrounds', url: 'https://ballotpedia.org/United_States_House_of_Representatives_elections,_2026#Battlegrounds' },
-      { text: '2025 Governor Elections', url: 'https://ballotpedia.org/Gubernatorial_elections,_2025' }
-    ]));
   }
 }
 
