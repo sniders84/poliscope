@@ -5191,7 +5191,7 @@ section > h3 {
   }
 }
 /* ============================================================
-   Home Hub — Network Card Logos (Unified Sizing)
+   Home Hub — Network Card Logos (Unified Shrunk Sizing)
    ============================================================ */
 
 /* Logo wrapper inside network cards */
@@ -5205,31 +5205,20 @@ section > h3 {
   overflow: hidden;
 }
 
-/* Force all logos to scale consistently */
+/* Force all logos to scale consistently, slightly shrunk */
 #home-hub .network-card .logo-wrapper img,
 #home-hub .network-card img.network-logo {
-  width: 100%;
-  height: 100%;
+  max-width: 90%;   /* shrink inside wrapper so nothing gets cut off */
+  max-height: 90%;
   object-fit: contain;
   display: block;
+  margin: 0 auto;
 }
 
 /* Catch inline SVGs if any */
 #home-hub .network-card svg {
-  width: 140px;
-  height: 140px;
+  max-width: 90%;
+  max-height: 90%;
   display: block;
-  margin: 0 auto 12px;
-}
-/* Fine‑tune ABC and FOX logos */
-#home-hub .network-card[data-network="abc"] .network-logo,
-#home-hub .network-card[data-network="fox"] .network-logo {
-  transform: scale(1.08);   /* subtle bump */
-  transform-origin: center center;
-}
-/* Fine‑tune ABC and FOX logos — scale down */
-#home-hub .network-card[data-network="abc"] .network-logo,
-#home-hub .network-card[data-network="fox"] .network-logo {
-  transform: scale(0.88);   /* shrink just a bit */
-  transform-origin: center center;
+  margin: 0 auto;
 }
