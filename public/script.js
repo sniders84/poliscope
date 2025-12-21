@@ -365,7 +365,7 @@ function showPolls() {
     pollsContainer.appendChild(approvalSection);
   }
 
-  // === Elections Header (styled like other sections) ===
+  // === Elections Header ===
   const pollsTab = document.getElementById('polls');
   if (pollsTab) {
     const oldHeader = pollsTab.querySelector('#elections-main-header');
@@ -387,15 +387,13 @@ function showPolls() {
     }
   }
 
-  // === Elections Cards – force all 6 cards into the same responsive grid ===
+  // === Elections Cards ===
   const electionsContainer = document.getElementById('elections-cards');
   if (electionsContainer) {
     electionsContainer.innerHTML = '';
+    electionsContainer.className = 'poll-grid'; // Consistent grid wrapping
 
-    // Make sure the container uses the same grid as poll-grid for consistent wrapping
-    electionsContainer.className = 'poll-grid'; // This forces same behavior as other grids
-
-    const createSimpleCard = (title, links) => {
+    const createCardWithLogo = (title, logoSrc, links) => {
       const card = document.createElement('div');
       card.className = 'elections-card';
 
@@ -405,28 +403,34 @@ function showPolls() {
       });
       linksHtml += '</ul>';
 
-      card.innerHTML = `<h3>${title}</h3>${linksHtml}`;
+      card.innerHTML = `
+        <div class="poll-logo"><img src="${logoSrc}" alt="${title}"></div>
+        <h3>${title}</h3>
+        ${linksHtml}
+      `;
       return card;
     };
 
-    // Simple Ballotpedia cards (no logo)
-    electionsContainer.appendChild(createSimpleCard('Upcoming Elections', [
+    // Upcoming Elections – with logo
+    electionsContainer.appendChild(createCardWithLogo('Upcoming Elections', 'assets/ballotpedia-election.png', [
       { text: 'My Election Lookup Tool', url: 'https://ballotpedia.org/Sample_Ballot_Lookup' },
       { text: 'Full Elections Calendar', url: 'https://ballotpedia.org/Elections_calendar' }
     ]));
 
-    electionsContainer.appendChild(createSimpleCard('Recent Results', [
+    // Recent Results – with logo
+    electionsContainer.appendChild(createCardWithLogo('Recent Results', 'assets/ballotpedia-results.png', [
       { text: '2025 Election Results', url: 'https://ballotpedia.org/Election_results,_2025' },
       { text: '2024 Election Results', url: 'https://ballotpedia.org/Election_results,_2024' }
     ]));
 
-    electionsContainer.appendChild(createSimpleCard('Most Competitive Races', [
+    // Most Competitive Races – with logo
+    electionsContainer.appendChild(createCardWithLogo('Most Competitive Races', 'assets/ballotpedia-competitive.jpeg', [
       { text: '2026 Senate Battlegrounds', url: 'https://ballotpedia.org/United_States_Senate_elections,_2026#Battlegrounds' },
       { text: '2026 House Battlegrounds', url: 'https://ballotpedia.org/United_States_House_of_Representatives_elections,_2026#Battlegrounds' },
       { text: '2025 Governor Elections', url: 'https://ballotpedia.org/Gubernatorial_elections,_2025' }
     ]));
 
-    // Voter Guide cards (with logo)
+    // Voter Guide cards (already have logos)
     const createVoterGuideCard = (year) => {
       const card = document.createElement('div');
       card.className = 'elections-card';
