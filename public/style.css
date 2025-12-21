@@ -5819,3 +5819,48 @@ section > h3 {
   transform: translateY(-4px);
   box-shadow: 0 6px 12px rgba(0,0,0,0.3);
 }
+/* ============================================================
+   Community Tab — Grid Layout & Card Styling
+   ============================================================ */
+
+#community-cards {
+  display: grid;                                /* use grid layout */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;                                    /* spacing between cards */
+  justify-items: center;                        /* center each card */
+  margin: 20px auto 40px auto;
+}
+
+#community-cards .info-card {
+  width: 220px;
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  background: #2b2b2b;
+  border-radius: 10px;
+  padding: 12px;
+  box-sizing: border-box;
+  transition: transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+#community-cards .info-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+#community-cards .info-card img.card-image {
+  width: 120px;
+  height: 80px;
+  object-fit: contain;
+  margin: 0 auto 12px auto;
+}
+
+#community h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.4rem;
+  color: #fff;
+}
