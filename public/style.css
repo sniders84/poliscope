@@ -5302,3 +5302,37 @@ section > h3 {
 #games-section .info-card a.btn:hover {
   background: #0056b3;
 }
+/* ============================================================
+   Quizzes Section — Spacing & Hover Fix
+   ============================================================ */
+
+#quiz-launchers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;              /* spacing between quiz cards */
+  margin-bottom: 40px;    /* spacing below quizzes before Games section */
+}
+
+#quiz-launchers .quiz-card {
+  width: 240px;
+  min-height: 200px;
+  background-color: #2b2b2b;
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  box-sizing: border-box;
+  transition: transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+#quiz-launchers .quiz-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+  z-index: 1;             /* ensures hover shadow doesn’t bleed into Games */
+}
+
+#quiz-launchers .quiz-card img.card-image {
+  width: 160px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 12px;
+}
