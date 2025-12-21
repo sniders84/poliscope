@@ -301,6 +301,12 @@ const pollCategories = [
   }
 ];
 
+// === COMMUNITY TAB ===
+function showCommunity() {
+  showTab('community');
+  // No dynamic fetch needed — cards are static HTML
+}
+
 function showPolls() {
   showTab('polls');
 
