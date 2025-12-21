@@ -5785,3 +5785,37 @@ section > h3 {
   color: #fff;
   text-align: center;
 }
+/* Featured Parties + Ideologies row */
+#featured-political-cards {
+  display: flex;
+  justify-content: center;   /* center the two cards */
+  gap: 24px;
+  margin: 20px auto 40px auto;
+}
+
+#featured-political-cards .info-card {
+  width: 220px;
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  background: #2b2b2b;
+  border-radius: 10px;
+  padding: 12px;
+  box-sizing: border-box;
+  transition: transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+#featured-political-cards .info-card img.card-image {
+  width: 120px;
+  height: 80px;
+  object-fit: contain;
+  margin: 0 auto 12px auto;
+}
+
+#featured-political-cards .info-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
