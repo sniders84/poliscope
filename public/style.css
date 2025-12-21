@@ -5661,3 +5661,82 @@ section > h3 {
   color: #1e90ff;
   text-decoration: underline;
 }
+/* Add or update these in your style.css to force grid layout and center logos */
+
+/* Elections section grid - ensures cards wrap horizontally into rows */
+#elections-cards {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  padding: 10px 0;
+}
+
+/* Elections card base styling (compact, centered content) */
+.elections-card {
+  background: #2b2b2b;
+  border-radius: 10px;
+  padding: 20px;
+  width: 280px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.elections-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+}
+
+/* Center the logo specifically for the new voter guide cards */
+.elections-card .poll-logo {
+  margin: 0 auto 16px auto;
+  width: 140px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.elections-card .poll-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.elections-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+  color: #1e90ff;
+}
+
+.elections-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.elections-card li {
+  margin-bottom: 8px;
+}
+
+.elections-card a {
+  color: #ddd;
+  text-decoration: none;
+}
+
+.elections-card a:hover {
+  color: #1e90ff;
+  text-decoration: underline;
+}
+
+/* If non-linked items (e.g., "None") */
+.elections-card li:not(:has(a)) {
+  color: #aaa;
+  font-style: italic;
+}
