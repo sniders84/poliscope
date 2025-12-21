@@ -5372,3 +5372,47 @@ section > h3 {
 #quiz-launchers .quiz-card a.btn:hover {
   background: #0056b3;
 }
+/* ============================================================
+   Polls & Elections Section — Spacing & Hover Fix
+   ============================================================ */
+
+#polls-cards,
+#elections-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;              /* spacing between cards */
+  margin-bottom: 40px;    /* spacing before next subsection */
+}
+
+#polls-cards .info-card,
+#elections-cards .info-card {
+  width: 240px;
+  height: 340px;          /* match game card footprint */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  background-color: #2b2b2b;
+  border-radius: 10px;
+  padding: 12px;
+  box-sizing: border-box;
+  transition: transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+#polls-cards .info-card:hover,
+#elections-cards .info-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+  z-index: 2;
+}
+
+/* Centered, uniform logos */
+#polls-cards .info-card img.card-image,
+#elections-cards .info-card img.card-image {
+  width: 160px;
+  height: 100px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 12px auto;
+}
