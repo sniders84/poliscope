@@ -5864,3 +5864,78 @@ section > h3 {
   font-size: 1.4rem;
   color: #fff;
 }
+/* ============================================================
+   Community Tab — Grid Layout & Featured-size Cards
+   ============================================================ */
+
+#community-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* left-to-right grid */
+  gap: 24px;
+  justify-items: center;
+  margin: 20px auto 40px auto;
+}
+
+#community-cards .info-card {
+  width: 240px;                 /* match featured card footprint */
+  height: 300px;                /* match Parties/Ideologies scale */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  background: #2b2b2b;
+  border-radius: 10px;
+  padding: 12px;
+  box-sizing: border-box;
+  transition: transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+#community-cards .info-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+#community-cards .info-card img.card-image {
+  width: 140px;                 /* consistent logo sizing */
+  height: 90px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 12px auto;
+}
+
+#community-cards .info-card h3 {
+  font-size: 1rem;
+  margin: 6px 0;
+  color: #fff;
+}
+
+#community-cards .info-card p {
+  font-size: 0.85rem;
+  color: #ddd;
+  margin: 2px 0;
+}
+
+#community-cards .info-card .btn {
+  margin-top: auto;
+  background: #007bff;
+  color: #fff;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+#community-cards .info-card .btn:hover {
+  background: #0056b3;
+}
+
+/* Optional: tidy the headline */
+#community h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.4rem;
+  color: #fff;
+}
