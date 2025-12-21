@@ -5263,3 +5263,15 @@ section > h3 {
   object-fit: contain;
   margin-bottom: 8px;
 }
+/* ============================================================
+   Game Cards — Uniform Logo Sizing
+   ============================================================ */
+
+.info-card img.card-image {
+  width: 100%;            /* stretch to full card width */
+  max-width: 160px;       /* lock consistent logo width */
+  height: 100px;          /* lock consistent logo height */
+  object-fit: contain;    /* preserve aspect ratio, no cropping */
+  display: block;
+  margin: 0 auto 12px auto;
+}
