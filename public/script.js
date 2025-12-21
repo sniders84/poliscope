@@ -310,7 +310,7 @@ function showPolls() {
   if (pollsContainer) {
     pollsContainer.innerHTML = '';
 
-    // Existing categories (unchanged)
+    // Existing categories (President, Governor, Senate, House)
     pollCategories.forEach(category => {
       const section = document.createElement('div');
       section.className = 'poll-section';
@@ -340,7 +340,7 @@ function showPolls() {
       pollsContainer.appendChild(section);
     });
 
-    // NEW: Approval Polls section with the single card
+    // NEW: Political Approval Polling card (from iSideWith)
     const approvalSection = document.createElement('div');
     approvalSection.className = 'poll-section';
 
@@ -353,7 +353,7 @@ function showPolls() {
 
     const approvalCard = document.createElement('a');
     approvalCard.className = 'poll-card';
-    approvalCard.href = 'https://ballotpedia.org/Ballotpedia%27s_Polling_Indexes';
+    approvalCard.href = 'https://www.isidewith.com/approval-polling/';
     approvalCard.target = '_blank';
     approvalCard.rel = 'noopener noreferrer';
     approvalCard.innerHTML = `
@@ -372,78 +372,80 @@ function showPolls() {
   if (electionsContainer) {
     electionsContainer.innerHTML = '';
 
-    const createElectionsCard = (title, links, withLogo = false) => {
+    // NEW Header for the iSideWith Voter Guides section
+    const isidewithHeader = document.createElement('h3');
+    isidewithHeader.textContent = 'Elections - Local, State, Federal';
+    isidewithHeader.style.textAlign = 'center';
+    isidewithHeader.style.margin = '30px 0 20px';
+    electionsContainer.appendChild(isidewithHeader);
+
+    const createVoterGuideCard = (year) => {
       const card = document.createElement('div');
       card.className = 'elections-card';
 
-      let logoHtml = '';
-      if (withLogo) {
-        logoHtml = `<div class="poll-logo"><img src="assets/elections.jpeg" alt="${title}"></div>`;
-      }
+      const links = [
+        { text: 'President', url: year === 2028 ? 'https://www.isidewith.com/elections/2028/president' : null },
+        { text: 'Governor', url: `https://www.isidewith.com/elections/${year}/states/governor` },
+        { text: 'Lt. Governor', url: `https://www.isidewith.com/elections/${year}/states/lt-governor` }, // May redirect or show related
+        { text: 'Senate', url: `https://www.isidewith.com/elections/${year}/states/us-senate` },
+        { text: 'House', url: `https://www.isidewith.com/elections/${year}/states/us-house` }
+      ];
 
       let linksHtml = '<ul>';
       links.forEach(link => {
-        if (link.url) { // Only add if there's a valid URL
+        if (link.url) {
           linksHtml += `<li><a href="${link.url}" target="_blank" rel="noopener noreferrer">${link.text}</a></li>`;
         } else {
-          linksHtml += `<li>${link.text} (None in ${title.split(' ')[0]})</li>`;
+          linksHtml += `<li>${link.text} (No election in ${year})</li>`;
         }
       });
       linksHtml += '</ul>';
 
       card.innerHTML = `
-        ${logoHtml}
-        <h3>${title}</h3>
+        <div class="poll-logo"><img src="assets/elections.jpeg" alt="${year} Voter Guide"></div>
+        <h3>${year} Voter Guide</h3>
         ${linksHtml}
       `;
       return card;
     };
 
-    // Existing Upcoming Elections
+    // Add the three iSideWith voter guide cards
+    electionsContainer.appendChild(createVoterGuideCard(2026));
+    electionsContainer.appendChild(createVoterGuideCard(2027));
+    electionsContainer.appendChild(createVoterGuideCard(2028));
+
+    // Existing cards (Upcoming, Recent, Competitive) - keep them below the new ones if desired
+    // (You can move these appends above if you want them first)
+
+    const createElectionsCard = (title, links) => {
+      const card = document.createElement('div');
+      card.className = 'elections-card';
+
+      let linksHtml = '<ul>';
+      links.forEach(link => {
+        linksHtml += `<li><a href="${link.url}" target="_blank" rel="noopener noreferrer">${link.text}</a></li>`;
+      });
+      linksHtml += '</ul>';
+
+      card.innerHTML = `<h3>${title}</h3>${linksHtml}`;
+      return card;
+    };
+
     electionsContainer.appendChild(createElectionsCard('Upcoming Elections', [
       { text: 'My Election Lookup Tool', url: 'https://ballotpedia.org/Sample_Ballot_Lookup' },
       { text: 'Full Elections Calendar', url: 'https://ballotpedia.org/Elections_calendar' }
     ]));
 
-    // Existing Recent Results
     electionsContainer.appendChild(createElectionsCard('Recent Results', [
       { text: '2025 Election Results', url: 'https://ballotpedia.org/Election_results,_2025' },
       { text: '2024 Election Results', url: 'https://ballotpedia.org/Election_results,_2024' }
     ]));
 
-    // Existing Competitive Races
     electionsContainer.appendChild(createElectionsCard('Most Competitive Races', [
       { text: '2026 Senate Battlegrounds', url: 'https://ballotpedia.org/United_States_Senate_elections,_2026#Battlegrounds' },
       { text: '2026 House Battlegrounds', url: 'https://ballotpedia.org/United_States_House_of_Representatives_elections,_2026#Battlegrounds' },
       { text: '2025 Governor Elections', url: 'https://ballotpedia.org/Gubernatorial_elections,_2025' }
     ]));
-
-    // NEW: 2026 Voter Guide
-    electionsContainer.appendChild(createElectionsCard('2026 Voter Guide', [
-      { text: 'President', url: null }, // None
-      { text: 'Governor', url: 'https://ballotpedia.org/State_executive_official_elections,_2026' },
-      { text: 'Lt. Governor', url: 'https://ballotpedia.org/Lieutenant_gubernatorial_elections,_2026' },
-      { text: 'Senate', url: 'https://ballotpedia.org/United_States_Senate_elections,_2026' },
-      { text: 'House', url: 'https://ballotpedia.org/United_States_House_of_Representatives_elections,_2026' }
-    ], true)); // with logo
-
-    // NEW: 2027 Voter Guide
-    electionsContainer.appendChild(createElectionsCard('2027 Voter Guide', [
-      { text: 'President', url: null }, // None
-      { text: 'Governor', url: 'https://ballotpedia.org/Gubernatorial_elections,_2027' },
-      { text: 'Lt. Governor', url: 'https://ballotpedia.org/State_executive_official_elections,_2027' }, // Included in state exec
-      { text: 'Senate', url: null }, // None
-      { text: 'House', url: null } // None
-    ], true)); // with logo
-
-    // NEW: 2028 Voter Guide
-    electionsContainer.appendChild(createElectionsCard('2028 Voter Guide', [
-      { text: 'President', url: 'https://ballotpedia.org/Presidential_election,_2028' },
-      { text: 'Governor', url: 'https://ballotpedia.org/State_executive_official_elections,_2028' },
-      { text: 'Lt. Governor', url: 'https://ballotpedia.org/State_executive_official_elections,_2028' }, // Included
-      { text: 'Senate', url: 'https://ballotpedia.org/United_States_Senate_elections,_2028' },
-      { text: 'House', url: 'https://ballotpedia.org/United_States_House_of_Representatives_elections,_2028' }
-    ], true)); // with logo
   }
 }
 
