@@ -301,11 +301,10 @@ const pollCategories = [
   }
 ];
 
-// FINAL, NO-BS REPLACEMENT for showPolls() function – NO iSideWith Polls header anywhere
 function showPolls() {
   showTab('polls');
 
-  // === Polls Section (keeps everything you had, including Approval card) ===
+  // === Polls Section (unchanged) ===
   const pollsContainer = document.getElementById('polls-cards');
   if (pollsContainer) {
     pollsContainer.innerHTML = '';
@@ -366,21 +365,36 @@ function showPolls() {
     pollsContainer.appendChild(approvalSection);
   }
 
-  // === Elections Section – ONLY ONE HEADER, NO iSideWith bullshit ===
+  // === Elections Header moved OUTSIDE the container (higher up) ===
+  const pollsTab = document.getElementById('polls'); // the main polls tab section
+  if (pollsTab) {
+    // Remove any old header if it exists
+    const oldHeader = pollsTab.querySelector('#elections-main-header');
+    if (oldHeader) oldHeader.remove();
+
+    // Create and insert the new header right after polls-cards
+    const electionsHeader = document.createElement('h3');
+    electionsHeader.id = 'elections-main-header'; // unique ID to avoid duplicates
+    electionsHeader.textContent = 'Elections - Local, State, Federal';
+    electionsHeader.style.textAlign = 'center';
+    electionsHeader.style.margin = '50px 0 30px 0';
+    electionsHeader.style.fontSize = '1.6rem';
+    electionsHeader.style.color = '#fff';
+
+    // Insert after polls-cards (or at the end if not found)
+    const pollsCards = document.getElementById('polls-cards');
+    if (pollsCards) {
+      pollsCards.parentNode.insertBefore(electionsHeader, pollsCards.nextSibling);
+    } else {
+      pollsTab.appendChild(electionsHeader);
+    }
+  }
+
+  // === Elections Cards (now without a header inside) ===
   const electionsContainer = document.getElementById('elections-cards');
   if (electionsContainer) {
     electionsContainer.innerHTML = '';
 
-    // Single fucking header – Elections - Local, State, Federal
-    const mainHeader = document.createElement('h3');
-    mainHeader.textContent = 'Elections - Local, State, Federal';
-    mainHeader.style.textAlign = 'center';
-    mainHeader.style.margin = '40px 0 30px 0';
-    mainHeader.style.fontSize = '1.6rem';
-    mainHeader.style.color = '#fff';
-    electionsContainer.appendChild(mainHeader);
-
-    // Helper for simple cards (no logo)
     const createSimpleCard = (title, links) => {
       const card = document.createElement('div');
       card.className = 'elections-card';
@@ -395,7 +409,6 @@ function showPolls() {
       return card;
     };
 
-    // Ballotpedia cards first
     electionsContainer.appendChild(createSimpleCard('Upcoming Elections', [
       { text: 'My Election Lookup Tool', url: 'https://ballotpedia.org/Sample_Ballot_Lookup' },
       { text: 'Full Elections Calendar', url: 'https://ballotpedia.org/Elections_calendar' }
@@ -412,7 +425,6 @@ function showPolls() {
       { text: '2025 Governor Elections', url: 'https://ballotpedia.org/Gubernatorial_elections,_2025' }
     ]));
 
-    // Voter Guide cards with logos
     const createVoterGuideCard = (year) => {
       const card = document.createElement('div');
       card.className = 'elections-card';
