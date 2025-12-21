@@ -5073,3 +5073,50 @@ section > h3 {
   padding-top: 0.5rem !important;
   padding-bottom: 0.5rem !important;
 }
+/* ============================================================
+   Civic Intelligence Tab Layout — Force Vertical Stacking
+   ============================================================ */
+
+/* Make the tab itself a vertical flow container */
+#civic {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;   /* each section spans full width */
+  width: 100%;
+}
+
+/* Each section stacks naturally */
+#civic .ci-section,
+#civic .civic-block,
+#civic .civic-section {
+  display: block !important;   /* override any accidental grid/flex */
+  width: 100%;
+  margin-bottom: 2rem;         /* spacing between sections */
+}
+
+/* Headings inside sections */
+#civic .ci-section h3,
+#civic h2,
+#civic h3 {
+  margin-bottom: 1rem;
+  color: var(--accent-light);
+}
+
+/* Inner grids for cards stay grid-based, but sections themselves stack */
+#civic .ci-grid,
+#civic .grid,
+#civic .link-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  justify-items: stretch;
+}
+
+/* Responsive collapse */
+@media (max-width: 768px) {
+  #civic .ci-grid,
+  #civic .grid,
+  #civic .link-grid {
+    grid-template-columns: 1fr;
+  }
+}
