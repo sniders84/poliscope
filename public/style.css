@@ -5416,3 +5416,47 @@ section > h3 {
   display: block;
   margin: 0 auto 12px auto;
 }
+/* ============================================================
+   Polls & Elections — Vertical Layout, Spacing & Hover Fix
+   ============================================================ */
+
+#polls .card-section {
+  display: block;              /* stack cards vertically */
+  margin-bottom: 40px;         /* spacing between sections */
+}
+
+#polls .info-card {
+  width: 240px;
+  height: 340px;
+  margin: 0 auto 20px auto;    /* center each card, add vertical spacing */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  background-color: #2b2b2b;
+  border-radius: 10px;
+  padding: 12px;
+  box-sizing: border-box;
+  transition: transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+#polls .info-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+  z-index: 2;
+}
+
+#polls .info-card img.card-image {
+  width: 160px;
+  height: 100px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 12px auto;
+}
+
+#polls .section-title {
+  margin: 16px 0 12px 0;
+  font-size: 1.2rem;
+  color: #fff;
+}
