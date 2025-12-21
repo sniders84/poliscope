@@ -5486,3 +5486,116 @@ section > h3 {
   gap: 20px;
   margin-bottom: 40px;
 }
+/* Add these styles to style.css */
+
+/* Polls & Elections General Styling */
+#polls .card-section {
+  display: block;
+  margin-bottom: 40px;
+}
+
+#polls .section-title,
+#polls h3 {
+  margin: 16px 0 12px 0;
+  font-size: 1.2rem;
+  color: #fff;
+  text-align: center;
+}
+
+/* Poll Grid Styling */
+.poll-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+/* Poll Card Styling (Unified for all polls including iSideWith) */
+.poll-card {
+  background: #2b2b2b;
+  border-radius: 10px;
+  padding: 16px;
+  width: 240px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: #fff;
+  text-decoration: none;
+}
+
+.poll-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+}
+
+.poll-card .poll-logo {
+  margin-bottom: 12px;
+}
+
+.poll-card .poll-logo img {
+  max-width: 140px;
+  max-height: 80px;
+  object-fit: contain;
+}
+
+.poll-card h4 {
+  font-size: 1rem;
+  margin: 8px 0 4px;
+  color: #1e90ff;
+}
+
+.poll-card .card-desc {
+  font-size: 0.85rem;
+  color: #ddd;
+}
+
+/* Elections Cards Styling (Compact Cards) */
+#elections-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+.elections-card {
+  background: #2b2b2b;
+  border-radius: 10px;
+  padding: 16px;
+  width: 280px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: #fff;
+}
+
+.elections-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+}
+
+.elections-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  color: #1e90ff;
+  text-align: center;
+}
+
+.elections-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.elections-card li {
+  margin-bottom: 8px;
+}
+
+.elections-card a {
+  color: #ddd;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.elections-card a:hover {
+  color: #1e90ff;
+  text-decoration: underline;
+}
