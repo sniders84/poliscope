@@ -343,7 +343,7 @@ function showPolls() {
     approvalSection.className = 'poll-section';
 
     const approvalHeader = document.createElement('h3');
-    approvalHeader.textContent = 'APPROVAL POLLS'; // All caps to match other headers
+    approvalHeader.textContent = 'APPROVAL POLLS';
     approvalSection.appendChild(approvalHeader);
 
     const approvalGrid = document.createElement('div');
@@ -365,14 +365,12 @@ function showPolls() {
     pollsContainer.appendChild(approvalSection);
   }
 
-  // === Elections Header – now matching the style of other section headers ===
+  // === Elections Header (styled like other sections) ===
   const pollsTab = document.getElementById('polls');
   if (pollsTab) {
-    // Remove any old header
     const oldHeader = pollsTab.querySelector('#elections-main-header');
     if (oldHeader) oldHeader.remove();
 
-    // Create the new header container (matches other .poll-section headers)
     const electionsSection = document.createElement('div');
     electionsSection.className = 'poll-section';
     electionsSection.id = 'elections-main-header';
@@ -381,7 +379,6 @@ function showPolls() {
     electionsHeader.textContent = 'ELECTIONS - LOCAL, STATE, FEDERAL';
     electionsSection.appendChild(electionsHeader);
 
-    // Insert right after polls-cards
     const pollsCards = document.getElementById('polls-cards');
     if (pollsCards && pollsCards.nextSibling) {
       pollsCards.parentNode.insertBefore(electionsSection, pollsCards.nextSibling);
@@ -390,10 +387,13 @@ function showPolls() {
     }
   }
 
-  // === Elections Cards ===
+  // === Elections Cards – force all 6 cards into the same responsive grid ===
   const electionsContainer = document.getElementById('elections-cards');
   if (electionsContainer) {
     electionsContainer.innerHTML = '';
+
+    // Make sure the container uses the same grid as poll-grid for consistent wrapping
+    electionsContainer.className = 'poll-grid'; // This forces same behavior as other grids
 
     const createSimpleCard = (title, links) => {
       const card = document.createElement('div');
@@ -409,6 +409,7 @@ function showPolls() {
       return card;
     };
 
+    // Simple Ballotpedia cards (no logo)
     electionsContainer.appendChild(createSimpleCard('Upcoming Elections', [
       { text: 'My Election Lookup Tool', url: 'https://ballotpedia.org/Sample_Ballot_Lookup' },
       { text: 'Full Elections Calendar', url: 'https://ballotpedia.org/Elections_calendar' }
@@ -425,6 +426,7 @@ function showPolls() {
       { text: '2025 Governor Elections', url: 'https://ballotpedia.org/Gubernatorial_elections,_2025' }
     ]));
 
+    // Voter Guide cards (with logo)
     const createVoterGuideCard = (year) => {
       const card = document.createElement('div');
       card.className = 'elections-card';
