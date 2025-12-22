@@ -2800,10 +2800,30 @@ function openRatingsModal(slug) {
       }
     });
 
-    // Find rating entry
+    // Expanded categories
+const ratingCategories = [
+  "Honesty","Humility","Transparency","Integrity","Consistency","Accountability","Patience",
+  "Government Experience","Foreign Policy Experience","Vision","Resilience","Commitment","Courage",
+  "Common Sense","Military Experience","Morality","Intelligence","Ability to Inspire","Creativity",
+  "Diplomacy","Emotional intelligence","Determination","Compassion","Confidence","Strategy",
+  "Business Experience","Sense of Humor","Patriotism","Leadership","Communication","Charisma",
+  "Toughness","Ability to Unify","Effectiveness","Health","Fashion Style","Electability"
+];
+
+function openRatingsModal(slug) {
+  Promise.all([
+    fetch('president-ratings.json').then(res => res.json())
+  ]).then(([ratings]) => {
+    const saved = JSON.parse(localStorage.getItem('ratingsData')) || {};
+    ratings.forEach(r => {
+      if (saved[r.slug]) {
+        r.votes = saved[r.slug].votes;
+        r.averageRating = saved[r.slug].averageRating;
+      }
+    });
+
     const ratingEntry = ratings.find(r => r.slug === slug);
     const official = federalOfficials.find(o => o.slug === slug);
-
     if (!official || !ratingEntry) return;
 
     // Populate modal fields
@@ -2813,15 +2833,32 @@ function openRatingsModal(slug) {
 
     // Build category averages + vote counts
     let details = '';
-    for (const category in ratingEntry.votes) {
-      const votes = ratingEntry.votes[category];
+    for (const category of ratingCategories) {
+      const votes = ratingEntry.votes[category] || [];
       const avg = votes.length ? (votes.reduce((a,b)=>a+b,0)/votes.length).toFixed(1) : 'N/A';
-      details += `<p>${category}: ${avg} ★ (${votes.length} votes)</p>`;
+      const color = avg !== 'N/A' ? getRatingColor(avg) : '#ccc';
+      details += `<p style="font-size:18px;">
+        <span class="category-label">${category}:</span>
+        <span style="color:${color}; font-size:22px; font-weight:bold;">${avg} ★</span>
+        (${votes.length} votes)
+      </p>`;
     }
     document.getElementById('ratings-details').innerHTML = details;
 
     // Show modal
     document.getElementById('ratings-modal').style.display = 'block';
+
+    // Build rating form dynamically
+    const form = document.getElementById('rate-form');
+    form.innerHTML = ratingCategories.map(cat => `
+      <p class="rating-row" style="font-size:18px;">
+        <span class="category-label">${cat}:</span>
+        <span class="star-rating" data-category="${cat}"></span>
+      </p>
+    `).join('') + `
+      <button type="submit" id="submit-rating-btn" class="btn-modern">Submit Rating</button>
+    `;
+    initStarRatings();
 
     // Handle rating form submission
     document.getElementById('rate-form').onsubmit = function(e) {
@@ -2833,9 +2870,9 @@ function openRatingsModal(slug) {
 
       const saved = JSON.parse(localStorage.getItem('ratingsData')) || {};
       let ratingEntry = saved[official.slug];
-
       if (!ratingEntry) {
-        ratingEntry = { votes: { Leadership: [], Integrity: [], Communication: [] }, averageRating: 0 };
+        ratingEntry = { votes: {}, averageRating: 0 };
+        ratingCategories.forEach(cat => ratingEntry.votes[cat] = []);
         saved[official.slug] = ratingEntry;
       }
 
@@ -2866,10 +2903,15 @@ function openRatingsModal(slug) {
 
       // Update modal details
       let updatedDetails = '';
-      for (const category in ratingEntry.votes) {
-        const votes = ratingEntry.votes[category];
+      for (const category of ratingCategories) {
+        const votes = ratingEntry.votes[category] || [];
         const avg = votes.length ? (votes.reduce((a,b)=>a+b,0)/votes.length).toFixed(1) : 'N/A';
-        updatedDetails += `<p>${category}: ${avg} ★ (${votes.length} votes)</p>`;
+        const color = avg !== 'N/A' ? getRatingColor(avg) : '#ccc';
+        updatedDetails += `<p style="font-size:18px;">
+          <span class="category-label">${category}:</span>
+          <span style="color:${color}; font-size:22px; font-weight:bold;">${avg} ★</span>
+          (${votes.length} votes)
+        </p>`;
       }
       document.getElementById('ratings-details').innerHTML = updatedDetails;
 
@@ -2878,7 +2920,7 @@ function openRatingsModal(slug) {
         `button[onclick="openRatingsModal('${official.slug}')"]`
       ).previousElementSibling;
       if (badge) {
-        badge.textContent = `${ratingEntry.averageRating.toFixed(1)} ★`;
+        badge.textContent = `${Math.round(ratingEntry.averageRating)} ★`;
         badge.style.color = getRatingColor(ratingEntry.averageRating);
       }
 
@@ -2888,8 +2930,8 @@ function openRatingsModal(slug) {
       // Close rate modal
       closeModal('rate-modal');
     };
-  }); // <-- closes .then
-}     // <-- closes openRatingsModal
+  });
+}
 
 function closeModal(id) {
   document.getElementById(id).style.display = 'none';
@@ -2901,7 +2943,6 @@ document.getElementById('rate-me-btn').onclick = function() {
   document.getElementById('rate-modal').style.display = 'block';
   initStarRatings();
 };
-;
 
 function initStarRatings() {
   const stars = document.querySelectorAll('#rate-modal .star-rating');
@@ -2913,12 +2954,20 @@ function initStarRatings() {
       const star = document.createElement('span');
       star.textContent = '★';
       star.dataset.value = i;
+      star.style.fontSize = '28px';
+      star.style.cursor = 'pointer';
 
       star.addEventListener('click', function () {
-        span.querySelectorAll('span').forEach(s => s.classList.remove('filled'));
+        span.querySelectorAll('span').forEach(s => {
+          s.classList.remove('filled');
+          s.style.color = '';
+        });
         for (let j = 1; j <= i; j++) {
           const s = span.querySelector(`span[data-value="${j}"]`);
-          if (s) s.classList.add('filled');
+          if (s) {
+            s.classList.add('filled');
+            s.style.color = getRatingColor(j);
+          }
         }
         span.dataset.selected = String(i);
       });
@@ -2927,14 +2976,15 @@ function initStarRatings() {
     }
   });
 }
+
 function getRatingColor(avg) {
-  const rounded = Math.round(avg); // round to nearest whole star
+  const rounded = Math.round(avg);
   switch (rounded) {
     case 5: return 'gold';
     case 4: return 'green';
     case 3: return 'yellow';
     case 2: return 'orange';
     case 1: return 'red';
-    default: return '#ccc'; // gray if no rating
+    default: return '#ccc';
   }
 }
