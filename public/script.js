@@ -2771,3 +2771,27 @@ function showRatings() {
       });
     });
 }
+function openRatingsModal(slug) {
+  fetch('president-ratings.json')
+    .then(res => res.json())
+    .then(data => {
+      const official = data.find(o => o.slug === slug);
+      document.getElementById('ratings-modal-title').textContent = official.name;
+      document.getElementById('ratings-modal-photo').src = official.photo;
+
+      // Build category averages + vote counts
+      let details = '';
+      for (const category in official.votes) {
+        const votes = official.votes[category];
+        const avg = votes.length ? (votes.reduce((a,b)=>a+b,0)/votes.length).toFixed(1) : 'N/A';
+        details += `<p>${category}: ${avg} ★ (${votes.length} votes)</p>`;
+      }
+      document.getElementById('ratings-details').innerHTML = details;
+
+      document.getElementById('ratings-modal').style.display = 'block';
+    });
+}
+
+function closeModal(id) {
+  document.getElementById(id).style.display = 'none';
+}
