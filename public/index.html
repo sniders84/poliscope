@@ -869,7 +869,26 @@
   <h2>Citizenship & Immigration — Doing it the Right and Legal Way</h2>
 
   <!-- Naturalization -->
-  <div id="citizenship-cards"></div>
+  <div id="citizenship-cards" class="card-section">
+    <!-- Naturalization Practice Test 2008 -->
+    <div class="info-card">
+      <img src="assets/citizenship-2008.png" alt="2008 Civics Test" class="card-image" />
+      <h3>2008 Civics Practice Test</h3>
+      <p>Study and practice the 100 questions from the 2008 USCIS naturalization test.</p>
+      <button onclick="startQuiz('uscistest2008.json')">Start Test</button>
+    </div>
+
+    <!-- Naturalization Practice Test 2025 -->
+    <div class="info-card">
+      <img src="assets/citizenship-2025.png" alt="2025 Civics Test" class="card-image" />
+      <h3>2025 Civics Practice Test</h3>
+      <p>Prepare with the updated USCIS naturalization test questions for 2025.</p>
+      <button onclick="startQuiz('uscistest2025.json')">Start Test</button>
+    </div>
+  </div>
+
+  <!-- Quiz container -->
+  <div id="quiz-container"></div>
 
   <!-- Immigration Pathways -->
   <div id="immigration-cards"></div>
@@ -889,8 +908,6 @@
   <!-- Rights & Responsibilities -->
   <div id="rights-cards"></div>
 </section>
-
-  </main>
 
  <!-- Officials Modal -->
 <div id="officials-modal" class="modal">
