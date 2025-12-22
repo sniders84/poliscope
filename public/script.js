@@ -2928,11 +2928,13 @@ function initStarRatings() {
   });
 }
 function getRatingColor(avg) {
-  if (avg >= 4.5) return 'gold';
-  if (avg >= 3.9) return 'green';
-  if (avg >= 3.3) return 'lightgreen';
-  if (avg >= 2.7) return 'yellow';
-  if (avg >= 2.1) return 'orange';
-  if (avg >= 1.0) return 'red';
-  return '#ccc'; // default gray if no rating
+  const rounded = Math.round(avg); // round to nearest whole star
+  switch (rounded) {
+    case 5: return 'gold';
+    case 4: return 'green';
+    case 3: return 'yellow';
+    case 2: return 'orange';
+    case 1: return 'red';
+    default: return '#ccc'; // gray if no rating
+  }
 }
