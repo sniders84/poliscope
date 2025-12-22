@@ -569,16 +569,14 @@ function showVoting() {
       console.error('Voting fetch failed:', err);
     });
 }
-// === FULL REPLACEMENT BLOCK: Citizenship & Immigration (restored + updated for 2025) ===
-
-// Citizenship data with restored structure, accurate USCIS links, and both 2008 + 2025 practice tests
+// === Citizenship & Immigration data (corrected links + expanded multilingual) ===
 const citizenshipSections = [
   {
-    label: "Naturalization Process",
+    label: "Naturalization process",
     targetId: "citizenship-cards",
     items: [
       {
-        title: "Eligibility and Application (Form N-400)",
+        title: "Eligibility and application (Form N-400)",
         desc: "Who qualifies, required documents, fees, timelines, and the application process.",
         urlEn: "https://www.uscis.gov/n-400",
         urlEs: "https://www.uscis.gov/es/n-400",
@@ -587,7 +585,7 @@ const citizenshipSections = [
         ]
       },
       {
-        title: "The Naturalization Interview and Test",
+        title: "The naturalization interview and test",
         desc: "What to expect in the interview, English and civics components, and how the test works.",
         urlEn: "https://www.uscis.gov/citizenship/learn-about-citizenship/the-naturalization-interview-and-test",
         urlEs: "https://www.uscis.gov/es/citizenship/learn-about-citizenship/the-naturalization-interview-and-test",
@@ -600,36 +598,173 @@ const citizenshipSections = [
     ]
   },
   {
-    label: "Study Materials & Practice Tests",
-    targetId: "study-cards",
+    label: "Immigration pathways",
+    targetId: "immigration-cards",
     items: [
       {
-        title: "Official USCIS Study Materials",
-        desc: "Official English and civics materials with multilingual options.",
-        urlEn: "https://www.uscis.gov/citizenship/find-study-materials-and-resources/study-for-the-test",
-        urlEs: "https://www.uscis.gov/es/citizenship/find-study-materials-and-resources/study-for-the-test",
+        title: "Family-based visas",
+        desc: "Immediate relatives, family preference categories, petitions, and visa bulletin basics.",
+        urlEn: "https://www.uscis.gov/family",
+        urlEs: "https://www.uscis.gov/es/family",
         langLinks: [
-          { label: "Citizenship multilingual resources", url: "https://www.uscis.gov/citizenship/find-study-materials-and-resources/citizenship-multilingual-resources" },
           { label: "USCIS Multilingual Resource Center (all languages)", url: "https://www.uscis.gov/tools/multilingual-resource-center" }
         ]
       },
       {
-        title: "Practice the Naturalization Civics Test",
-        desc: "Launch interactive practice quizzes for both versions of the test.",
-        urlEn: "#", // placeholder – handled specially in renderer
+        title: "Employment-based visas",
+        desc: "Work categories, labor certification, petitions, and typical processing steps.",
+        urlEn: "https://www.uscis.gov/working-in-the-united-states",
+        urlEs: "https://www.uscis.gov/es/working-in-the-united-states",
+        langLinks: [
+          { label: "USCIS Multilingual Resource Center (all languages)", url: "https://www.uscis.gov/tools/multilingual-resource-center" }
+        ]
+      },
+      {
+        title: "Diversity Visa Lottery (State Dept.)",
+        desc: "Lottery overview, eligibility, application timing, and common pitfalls.",
+        urlEn: "https://travel.state.gov/content/travel/en/us-visas/immigrate/diversity-visa-program-entry.html",
         langLinks: []
+      }
+    ]
+  },
+  {
+    label: "Asylum & refugees",
+    targetId: "asylum-cards",
+    items: [
+      {
+        title: "Refugees & asylum (overview)",
+        desc: "Eligibility, filing, interviews, and key timelines for asylum and refugee programs.",
+        urlEn: "https://www.uscis.gov/humanitarian/refugees-asylum",
+        urlEs: "https://www.uscis.gov/es/humanitario/refugiados-y-asilo",
+        langLinks: [
+          { label: "USCIS Multilingual Resource Center (all languages)", url: "https://www.uscis.gov/tools/multilingual-resource-center" }
+        ]
+      },
+      {
+        title: "Refugee resettlement (ORR)",
+        desc: "U.S. Refugee Admissions Program overview and resettlement supports.",
+        urlEn: "https://www.acf.hhs.gov/orr",
+        langLinks: []
+      },
+      {
+        title: "Employment rights for refugees and asylees (DOJ)",
+        desc: "Right to work protections and help for discrimination or verification issues.",
+        urlEn: "https://www.justice.gov/crt/page/file/917466/dl",
+        langLinks: []
+      }
+    ]
+  },
+  {
+    label: "Study materials",
+    targetId: "study-cards",
+    items: [
+      {
+        title: "Study for the naturalization test",
+        desc: "Official USCIS English and civics materials with multilingual options.",
+        urlEn: "https://www.uscis.gov/citizenship/find-study-materials-and-resources/study-for-the-test",
+        langLinks: [
+          { label: "Citizenship multilingual resources (languages list)", url: "https://www.uscis.gov/citizenship/find-study-materials-and-resources/citizenship-multilingual-resources" },
+          { label: "USCIS Multilingual Resource Center (all languages)", url: "https://www.uscis.gov/tools/multilingual-resource-center" }
+        ]
+      },
+      {
+        title: "Practice the civics test (hybrid mode)",
+        desc: "Use our hybrid quiz with multi-select and open-response answers.",
+        urlEn: "#",
+        langLinks: []
+      }
+    ]
+  },
+  {
+    label: "Legal resources",
+    targetId: "legal-cards",
+    items: [
+      {
+        title: "USCIS official site",
+        desc: "Primary federal source for forms, policies, news, and guidance.",
+        urlEn: "https://www.uscis.gov",
+        urlEs: "https://www.uscis.gov/es",
+        langLinks: [
+          { label: "USCIS Multilingual Resource Center (all languages)", url: "https://www.uscis.gov/tools/multilingual-resource-center" }
+        ]
+      },
+      {
+        title: "Department of Homeland Security (DHS)",
+        desc: "Agency updates, policy info, and language access resources.",
+        urlEn: "https://www.dhs.gov",
+        langLinks: [
+          { label: "DHS language access resources (multilingual)", url: "https://www.dhs.gov/publications-library/collections/multilingual-and-language-access-resources" }
+        ]
+      },
+      {
+        title: "Find local assistance",
+        desc: "Locate USCIS offices and community organizations offering immigration help.",
+        urlEn: "https://www.uscis.gov/about-us/find-a-uscis-office",
+        langLinks: []
+      }
+    ]
+  },
+  {
+    label: "News & policy updates",
+    targetId: "news-cards",
+    items: [
+      {
+        title: "USCIS newsroom",
+        desc: "Policy changes, press releases, and official announcements.",
+        urlEn: "https://www.uscis.gov/newsroom",
+        langLinks: []
+      },
+      {
+        title: "Federal Register (immigration rules & notices)",
+        desc: "Proposed rules, notices, and updates affecting immigration processes.",
+        urlEn: "https://www.federalregister.gov/",
+        langLinks: []
+      }
+    ]
+  },
+  {
+    label: "Rights & responsibilities",
+    targetId: "rights-cards",
+    items: [
+      {
+        title: "New U.S. citizens: rights and responsibilities",
+        desc: "What changes after naturalization and how to exercise your civic rights and duties.",
+        urlEn: "https://www.uscis.gov/citizenship-resource-center/new-us-citizens",
+        langLinks: [
+          { label: "USCIS Multilingual Resource Center (all languages)", url: "https://www.uscis.gov/tools/multilingual-resource-center" }
+        ]
+      },
+      {
+        title: "Know your rights (immigrants, asylum seekers, refugees)",
+        desc: "Civil rights, anti-discrimination protections, and employment rights with multilingual materials.",
+        urlEn: "https://www.justice.gov/crt",
+        langLinks: [
+          { label: "DHS language access resources (multilingual)", url: "https://www.dhs.gov/publications-library/collections/multilingual-and-language-access-resources" },
+          { label: "Community multilingual Know Your Rights materials", url: "https://www.miracoalition.org/know-your-rights-print-materials-in-multiple-language/" },
+          { label: "Multilingual Know Your Rights cards", url: "https://www.nilc.org/resources/know-your-rights-card/" }
+        ]
       }
     ]
   }
 ];
 
-// === Helper: render multilingual link row ===
+// === Helper: render multilingual link row (expanded) ===
 function renderLangRow(item) {
   const links = [];
-  if (item.urlEn) links.push(`<span class="lang-link"><a href="${item.urlEn}" target="_blank" rel="noopener noreferrer">English</a></span>`);
-  if (item.urlEs) links.push(`<span class="lang-link"><a href="${item.urlEs}" target="_blank" rel="noopener noreferrer">Español</a></span>`);
-  if (item.urlZh) links.push(`<span class="lang-link"><a href="${item.urlZh}" target="_blank" rel="noopener noreferrer">中文</a></span>`);
-  if (item.urlAr) links.push(`<span class="lang-link"><a href="${item.urlAr}" target="_blank" rel="noopener noreferrer">العربية</a></span>`);
+
+  if (item.urlEn) {
+    links.push(`<span class="lang-link"><a href="${item.urlEn}" target="_blank" rel="noopener noreferrer">English</a></span>`);
+  }
+  if (item.urlEs) {
+    links.push(`<span class="lang-link"><a href="${item.urlEs}" target="_blank" rel="noopener noreferrer">Español</a></span>`);
+  }
+  if (item.urlZh) {
+    links.push(`<span class="lang-link"><a href="${item.urlZh}" target="_blank" rel="noopener noreferrer">中文</a></span>`);
+  }
+  if (item.urlAr) {
+    links.push(`<span class="lang-link"><a href="${item.urlAr}" target="_blank" rel="noopener noreferrer">العربية</a></span>`);
+  }
+
   if (Array.isArray(item.langLinks)) {
     item.langLinks.forEach(l => {
       if (l && l.url && l.label) {
@@ -637,19 +772,18 @@ function renderLangRow(item) {
       }
     });
   }
+
   return links.length ? `<div class="lang-row">${links.join(' • ')}</div>` : '';
 }
 
-// === Citizenship/Immigration tab renderer (fully restored) ===
+// === Citizenship/Immigration tab renderer ===
 function showCitizenship() {
   showTab('citizenship');
 
   citizenshipSections.forEach(section => {
     const container = document.getElementById(section.targetId);
-    if (!container) {
-      console.warn(`Container not found: ${section.targetId}`);
-      return;
-    }
+    if (!container) return;
+
     container.innerHTML = '';
 
     const wrapper = document.createElement('div');
@@ -665,32 +799,34 @@ function showCitizenship() {
     section.items.forEach(item => {
       let card;
 
-      // Special card for practice tests
-      if (item.title.includes("Practice the Naturalization Civics Test")) {
+      // Special handling for civics test launchers
+      if (item.title.includes("Practice the civics test")) {
         card = document.createElement('div');
         card.className = 'resource-card';
         card.innerHTML = `
           <h4>Practice the Naturalization Civics Test (2008 version)</h4>
           <p class="card-desc">Official 2008 test — 100 questions, 10 asked, 6 correct to pass.</p>
-          <button class="card-button" onclick="openPracticeModal('2008','uscistest2008.json',100)">Launch 2008 Test</button>
+          <button class="card-button" onclick="openPractice2008Modal()">Launch 2008 Test</button>
           <h4>Practice the Naturalization Civics Test (2025 version)</h4>
-          <p class="card-desc">Updated 2025 test — 128 questions, new format.</p>
-          <button class="card-button" onclick="openPracticeModal('2025','uscistest2025.json',128)">Launch 2025 Test</button>
+          <p class="card-desc">New 2025 test — based on 2020 version, 128 questions.</p>
+          <button class="card-button" onclick="openPractice2025Modal()">Launch 2025 Test</button>
         `;
       } else {
-        // Regular link card
         card = document.createElement('a');
         card.className = 'resource-card';
-        const url = item.urlEn || item.urlEs || '#';
-        card.href = url;
+
+        const url = item.urlEn || item.urlEs || item.urlZh || item.urlAr || item.url;
+        card.href = url || '#';
         card.target = '_blank';
         card.rel = 'noopener noreferrer';
+
         card.innerHTML = `
           <h4>${item.title}</h4>
           <p class="card-desc">${item.desc}</p>
           ${renderLangRow(item)}
         `;
       }
+
       grid.appendChild(card);
     });
 
@@ -699,35 +835,327 @@ function showCitizenship() {
   });
 }
 
-// === Unified Practice Test Launcher (keep this exactly as you had it) ===
-function openPracticeModal(version, file, totalQuestions) {
+// === Civics Quiz Logic (Daily + Practice Tests) ===
+let civicsQuestions = [];
+let currentQuestionIndex = 0;
+let civicsScore = 0;
+
+// === Daily Civics Quiz Launcher (uses name="opt") ===
+function openDailyQuizModal() {
   const modal = document.getElementById('civicsQuizModal');
   if (!modal) return;
   modal.style.display = 'block';
+
   currentQuestionIndex = 0;
   civicsScore = 0;
   document.getElementById('quiz-progress-fill').style.width = '0%';
   document.getElementById('quiz-progress').textContent = '';
   document.getElementById('quiz-feedback').textContent = '';
   document.getElementById('quiz-score').textContent = '';
-  document.getElementById('quiz-title').textContent = `Practice Test (${version})`;
-  document.getElementById('quiz-desc').textContent = `Naturalization Civics Practice Test — ${totalQuestions} questions.`;
-  fetch(file)
+
+  document.getElementById('quiz-title').textContent = "Daily Civics Quiz";
+  document.getElementById('quiz-desc').textContent =
+    "Test your United States government, economics, and history knowledge.";
+
+  // Load Daily quiz dataset and render using Daily engine
+  fetch('civics-questions.json')
+    .then(res => res.json())
+    .then(data => {
+      // Daily engine variables
+      window.quizQuestions = data;       // keep Daily’s variables
+      window.currentQuestion = 0;
+      window.score = 0;
+
+      renderQuestion(); // Daily renderer already in your file
+
+      // Wire Daily handlers to this modal instance
+      const submitBtn = document.getElementById('quiz-submit');
+      const nextBtn = document.getElementById('quiz-next');
+
+      // Daily submit: reads inputs with name="opt"
+     submitBtn.onclick = () => {
+  const selected = document.querySelector('input[name="opt"]:checked');
+  if (!selected) {
+    alert("Pick an answer!");
+    return;
+  }
+  const q = quizQuestions[currentQuestion];
+  const selectedIndex = parseInt(selected.value, 10);
+  const correctText = q.answers[0]; // use the first string in answers[]
+  const feedbackEl = document.getElementById("quiz-feedback");
+
+  if (q.choices[selectedIndex] === correctText) {
+    score++;
+    feedbackEl.className = "correct";
+    feedbackEl.innerHTML = `✅ Correct — ${correctText}<br><small>${q.explanation}</small>`;
+  } else {
+    feedbackEl.className = "incorrect";
+    feedbackEl.innerHTML = `❌ Incorrect. Correct answer: ${correctText}<br><small>${q.explanation}</small>`;
+  }
+
+  submitBtn.style.display = "none";
+  nextBtn.style.display = "inline-block";
+};
+
+      nextBtn.onclick = () => {
+        currentQuestion++;
+        if (currentQuestion < quizQuestions.length) {
+          renderQuestion();
+          document.getElementById("quiz-feedback").textContent = "";
+          document.getElementById("quiz-submit").style.display = "inline-block";
+          document.getElementById("quiz-next").style.display = "none";
+        } else {
+          document.getElementById("quiz-question").innerHTML = "";
+          document.getElementById("quiz-options").innerHTML = "";
+          document.getElementById("quiz-progress").textContent = "";
+          document.getElementById("quiz-progress-fill").style.width = "100%";
+          document.getElementById("quiz-feedback").textContent = "";
+          document.getElementById("quiz-score").textContent =
+            `Final Score: ${score}/${quizQuestions.length} — ${score >= 12 ? "Pass ✅" : "Try Again ❌"}`;
+          document.getElementById("quiz-next").style.display = "none";
+        }
+      };
+    })
+    .catch(err => {
+      console.error("Error loading daily quiz:", err);
+      document.getElementById('quiz-question').textContent = "Error loading quiz questions.";
+    });
+}
+
+// === USCIS 2008 Practice Test (uses name="civics-choice") ===
+function openPractice2008Modal() {
+  const modal = document.getElementById('civicsQuizModal');
+  if (!modal) return;
+  modal.style.display = 'block';
+
+  currentQuestionIndex = 0;
+  civicsScore = 0;
+  document.getElementById('quiz-progress-fill').style.width = '0%';
+  document.getElementById('quiz-progress').textContent = '';
+  document.getElementById('quiz-feedback').textContent = '';
+  document.getElementById('quiz-score').textContent = '';
+
+  document.getElementById('quiz-title').textContent = "Practice Test (2008)";
+  document.getElementById('quiz-desc').textContent =
+    "Official 2008 Naturalization Civics Practice Test — 100 questions.";
+
+  fetch("uscistest2008.json")
     .then(res => res.json())
     .then(data => {
       civicsQuestions = data;
       renderCivicsQuestion();
+
+      // Wire practice submit to checkCivicsAnswer
       const submitBtn = document.getElementById('quiz-submit');
+      const nextBtn = document.getElementById('quiz-next');
       submitBtn.onclick = () => checkCivicsAnswer();
+      // next button is set inside checkCivicsAnswer
     })
     .catch(err => {
-      console.error(`Error loading ${version} test:`, err);
+      console.error("Error loading 2008 test:", err);
       document.getElementById('quiz-question').textContent = "Error loading test questions.";
     });
 }
 
-// Keep your existing renderCivicsQuestion(), checkCivicsAnswer(), shuffleArray() functions unchanged
-// (they are already in your script.js and work perfectly)
+// === USCIS 2025 Practice Test (uses name="civics-choice") ===
+function openPractice2025Modal() {
+  const modal = document.getElementById('civicsQuizModal');
+  if (!modal) return;
+  modal.style.display = 'block';
+
+  currentQuestionIndex = 0;
+  civicsScore = 0;
+  document.getElementById('quiz-progress-fill').style.width = '0%';
+  document.getElementById('quiz-progress').textContent = '';
+  document.getElementById('quiz-feedback').textContent = '';
+  document.getElementById('quiz-score').textContent = '';
+
+  document.getElementById('quiz-title').textContent = "Practice Test (2025)";
+  document.getElementById('quiz-desc').textContent =
+    "New 2025 Naturalization Civics Practice Test — 128 questions.";
+
+  fetch("uscistest2025.json")
+    .then(res => res.json())
+    .then(data => {
+      civicsQuestions = data;
+      renderCivicsQuestion();
+
+      // Wire practice submit to checkCivicsAnswer
+      const submitBtn = document.getElementById('quiz-submit');
+      const nextBtn = document.getElementById('quiz-next');
+      submitBtn.onclick = () => checkCivicsAnswer();
+      // next button is set inside checkCivicsAnswer
+    })
+    .catch(err => {
+      console.error("Error loading 2025 test:", err);
+      document.getElementById('quiz-question').textContent = "Error loading test questions.";
+    });
+}
+
+// === Render a civics question ===
+function renderCivicsQuestion() {
+  if (!Array.isArray(civicsQuestions) || civicsQuestions.length === 0) return;
+
+  const q = civicsQuestions[currentQuestionIndex];
+  const questionEl = document.getElementById('quiz-question');
+  const optionsDiv = document.getElementById('quiz-options');
+  const feedback = document.getElementById('quiz-feedback');
+  const nextBtn = document.getElementById('quiz-next');
+
+  questionEl.textContent = q.question;
+  optionsDiv.innerHTML = '';
+  feedback.textContent = '';
+  nextBtn.style.display = 'none';
+
+  let choices = Array.isArray(q.choices) && q.choices.length
+    ? [...q.choices]
+    : [...q.answers];
+
+  choices = shuffleArray(choices);
+
+  const isMulti = q.type === "multi-select";
+  choices.forEach((opt, idx) => {
+    const id = `opt-${currentQuestionIndex}-${idx}`;
+    const wrapper = document.createElement('div');
+    wrapper.className = 'quiz-choice';
+
+    const input = document.createElement('input');
+    input.type = isMulti ? 'checkbox' : 'radio';
+    input.name = 'civics-choice';
+    input.id = id;
+    input.value = opt;
+
+    const label = document.createElement('label');
+    label.setAttribute('for', id);
+    label.textContent = opt;
+
+    wrapper.appendChild(input);
+    wrapper.appendChild(label);
+    optionsDiv.appendChild(wrapper);
+  });
+
+  // Progress bar
+  const progress = ((currentQuestionIndex + 1) / civicsQuestions.length) * 100;
+  document.getElementById('quiz-progress-fill').style.width = `${progress}%`;
+  document.getElementById('quiz-progress').textContent =
+    `Question ${currentQuestionIndex + 1} of ${civicsQuestions.length}`;
+}
+
+// === Evaluate selection ===
+// === Evaluate selection with explanations and multi-select support ===
+function checkCivicsAnswer() {
+  const q = civicsQuestions[currentQuestionIndex];
+  const feedback = document.getElementById('quiz-feedback');
+  const nextBtn = document.getElementById('quiz-next');
+
+  // Scope to civics modal options
+  const optionsRoot = document.querySelector('#civicsQuizModal #quiz-options');
+  const selected = Array.from(optionsRoot.querySelectorAll('input[name="civics-choice"]'))
+    .filter(el => el.checked)
+    .map(el => el.value);
+
+  if (selected.length === 0) {
+    feedback.textContent = "Please select at least one option.";
+    feedback.style.color = "orange";
+    return;
+  }
+
+  let isCorrect = false;
+  if (q.type === "open-response") {
+    isCorrect = (selected.length === 1) && (selected[0] === q.answers[0]);
+  } else {
+    const selectedSet = new Set(selected);
+    const correctSet = new Set(q.answers);
+    isCorrect = [...correctSet].every(v => selectedSet.has(v)) && selectedSet.size === correctSet.size;
+  }
+
+  if (isCorrect) {
+    civicsScore++;
+    feedback.style.color = "limegreen";
+    feedback.textContent = "Correct!";
+  } else {
+    feedback.style.color = "red";
+    const incorrectSelections = selected.filter(s => !q.answers.includes(s));
+    const missingSelections = q.answers.filter(a => !selected.includes(a));
+
+    let detail = `Incorrect. Correct answers: ${q.answers.join(", ")}.`;
+    if (incorrectSelections.length) {
+      detail += ` You chose incorrectly: ${incorrectSelections.join(", ")}.`;
+    }
+    if (missingSelections.length) {
+      detail += ` You missed: ${missingSelections.join(", ")}.`;
+    }
+    feedback.textContent = detail;
+  }
+
+  // Explanation support
+  if (q.explanation) {
+    feedback.textContent += ` ${q.explanation}`;
+  }
+
+  nextBtn.style.display = 'inline-block';
+  nextBtn.onclick = () => {
+    currentQuestionIndex++;
+    if (currentQuestionIndex < civicsQuestions.length) {
+      renderCivicsQuestion();
+      feedback.textContent = '';
+      nextBtn.style.display = 'none';
+    } else {
+      document.getElementById('quiz-question').textContent = "Test complete!";
+      document.getElementById('quiz-options').innerHTML = '';
+      document.getElementById('quiz-score').textContent =
+        `You scored ${civicsScore} out of ${civicsQuestions.length}`;
+      nextBtn.style.display = 'none';
+    }
+  };
+}
+
+// === Utility: shuffle ===
+function shuffleArray(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+// Submit is wired inside each launcher (Daily or Practice) — no global wiring here.
+
+// === HELPER: render a single Cabinet member card ===
+
+function renderCabinetMember(member) {
+  const photoSrc = member.photo && member.photo.trim() !== ''
+    ? member.photo
+    : 'assets/default-photo.png';
+
+  const sealSrc = member.seal && member.seal.trim() !== ''
+    ? member.seal
+    : 'assets/default-seal.png';
+
+  return `
+    <div class="official-card ${member.party?.toLowerCase() || ''}">
+      <div class="party-stripe"></div>
+      <div class="card-body">
+        <div class="photo-wrapper">
+          <img src="${photoSrc}" alt="${member.name}"
+               onerror="this.onerror=null;this.src='assets/default-photo.png';" />
+        </div>
+        <div class="official-info">
+          <h3>${member.name || 'Unknown'}</h3>
+          <p><strong>Position:</strong> ${member.office || 'N/A'}</p>
+          <p><strong>Department:</strong> ${member.department || ''}</p>
+          <p><strong>Party:</strong> ${member.party || 'N/A'}</p>
+        </div>
+        <div class="seal-wrapper">
+          <img src="${sealSrc}" alt="${member.department || 'Seal'}"
+               onerror="this.onerror=null;this.src='assets/default-seal.png';"
+               class="seal" />
+        </div>
+      </div>
+    </div>
+  `;
+}
 
 // === RENDER: populate the Cabinet grid ===
 function renderCabinetGrid(cabinetData) {
