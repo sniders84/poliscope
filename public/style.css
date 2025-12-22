@@ -6096,3 +6096,72 @@ section > h3 {
   background: #1e90ff;   /* same blue hover */
   transition: background 0.2s ease;
 }
+/* Display grid container */
+#ratings-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* Rating display cells */
+.rating-cell {
+  background: #2b2b2b;       /* dark gray background */
+  border-radius: 6px;
+  padding: 8px 10px;
+  text-align: center;
+  border: 2px solid transparent; /* default invisible border */
+  transition: border-color 0.2s ease;
+}
+
+.rating-cell:hover {
+  border-color: #1e90ff;      /* blue outline on hover */
+}
+
+/* Rating form grid */
+#rate-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* Rating form rows */
+.rating-row {
+  background: #2b2b2b;
+  border-radius: 6px;
+  padding: 8px 10px;
+  text-align: center;
+  border: 2px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.rating-row:hover {
+  border-color: #1e90ff;      /* blue outline on hover */
+}
+
+/* Labels, stars, vote counts */
+.category-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.avg-rating {
+  font-size: 18px;
+  font-weight: bold;
+  display: block;
+}
+
+.vote-count {
+  font-size: 13px;
+  color: #aaa;
+}
+
+.star-rating span {
+  font-size: 22px;
+  cursor: pointer;
+  margin: 0 2px;
+}
