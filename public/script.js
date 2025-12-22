@@ -2994,3 +2994,9 @@ function getRatingColor(avg) {
     default: return '#ccc';
   }
 }
+function closeModal(id) {
+  const modal = document.getElementById(id);
+  if (modal) {
+    modal.style.display = 'none';
+  }
+}
