@@ -892,7 +892,7 @@
   <button id="close-modal" class="close-button">&times;</button>
 </div>
 
- <!-- Ratings Modal -->
+<!-- Ratings Modal -->
 <div id="ratings-modal" class="modal" style="display:none;">
   <div class="modal-content">
     <span class="close" onclick="closeModal('ratings-modal')">&times;</span>
@@ -900,15 +900,18 @@
     <img id="ratings-modal-photo" src="" alt="" class="modal-photo" />
     <p id="ratings-modal-position"></p>
     <div id="ratings-details"></div>
-    <button id="rate-me-btn">Rate Me</button>
+    <button id="rate-me-btn" class="btn-modern">Rate Me</button>
   </div>
 </div>
 
- <!-- Rate Me Modal -->
+<!-- Rate Me Modal -->
 <div id="rate-modal" class="modal" style="display:none;">
   <div class="modal-content">
     <span class="close" onclick="closeModal('rate-modal')">&times;</span>
     <h2 id="rate-modal-title"></h2>
+    <form id="rate-form"></form>
+  </div>
+</div>
 
     <form id="rate-form">
       <p>
