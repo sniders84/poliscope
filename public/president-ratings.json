@@ -1,9 +1,6 @@
 [
   {
-    "slug": "donald-trump-president",
-    "name": "Donald Trump",
-    "position": "President of the United States",
-    "photo": "assets/trump.png",
+    "slug": "donald-trump",
     "averageRating": 0,
     "votes": {
       "Leadership": [],
