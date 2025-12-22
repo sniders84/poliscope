@@ -373,24 +373,7 @@
   <!-- Games subsection -->
   <h3>Games</h3>
    <div class="card-grid">
- <div id="games-cards" class="card-section">
-    <!-- Gerrymander-DX -->
-    <div id="gerrymander-card" class="info-card">
-      <img src="assets/gerrymanderdx.png" alt="Gerrymander-DX Logo" class="card-image" />
-      <h3>Gerrymander-DX</h3>
-      <p>Test your strategy skills by manipulating districts in this satirical redistricting game.</p>
-      <a href="https://busalonium.itch.io/gerrymander-dx" target="_blank" rel="noopener noreferrer" class="btn">Play Game</a>
-    </div>
-
-    <!-- The Power Play Chronicles -->
-    <div id="powerplay-card" class="info-card">
-      <img src="assets/powerplay.png" alt="The Power Play Chronicles Logo" class="card-image" />
-      <h3>The Power Play Chronicles</h3>
-      <p>Step into the world of political maneuvering and power struggles in this narrative-driven game.</p>
-      <a href="https://powerplaychron.itch.io/powerplaychronicles" target="_blank" rel="noopener noreferrer" class="btn">Play Game</a>
-    </div>
-     
-<div class="info-card">      
+ <div class="info-card">      
   <img src="assets/thats-your-right.jpeg" alt="That's Your Right Logo" class="card-image" />
   <h3>That’s Your Right</h3>
   <p><strong>Grades:</strong> 6–8, 9–12</p>
@@ -869,26 +852,7 @@
   <h2>Citizenship & Immigration — Doing it the Right and Legal Way</h2>
 
   <!-- Naturalization -->
-  <div id="citizenship-cards" class="card-section">
-    <!-- Naturalization Practice Test 2008 -->
-    <div class="info-card">
-      <img src="assets/citizenship-2008.png" alt="2008 Civics Test" class="card-image" />
-      <h3>2008 Civics Practice Test</h3>
-      <p>Study and practice the 100 questions from the 2008 USCIS naturalization test.</p>
-      <button onclick="startQuiz('uscistest2008.json')">Start Test</button>
-    </div>
-
-    <!-- Naturalization Practice Test 2025 -->
-    <div class="info-card">
-      <img src="assets/citizenship-2025.png" alt="2025 Civics Test" class="card-image" />
-      <h3>2025 Civics Practice Test</h3>
-      <p>Prepare with the updated USCIS naturalization test questions for 2025.</p>
-      <button onclick="startQuiz('uscistest2025.json')">Start Test</button>
-    </div>
-  </div>
-
-  <!-- Quiz container -->
-  <div id="quiz-container"></div>
+  <div id="citizenship-cards"></div>
 
   <!-- Immigration Pathways -->
   <div id="immigration-cards"></div>
@@ -908,6 +872,8 @@
   <!-- Rights & Responsibilities -->
   <div id="rights-cards"></div>
 </section>
+
+  </main>
 
  <!-- Officials Modal -->
 <div id="officials-modal" class="modal">
@@ -1154,70 +1120,59 @@
   });
 }
 
-   <!-- Carousel Controls Setup + Initialization -->
-<script>
-  function setupControls(containerId) {
-    const track = document.querySelector(`#${containerId} .carousel-track`);
-    if (!track) return; // safety check
+    function setupControls(containerId) {
+      const track = document.querySelector(`#${containerId} .carousel-track`);
+      const prevBtn = document.querySelector(`.carousel-controls .prev[data-target="${containerId}"]`);
+      const nextBtn = document.querySelector(`.carousel-controls .next[data-target="${containerId}"]`);
 
-    const prevBtn = document.querySelector(`.carousel-controls .prev[data-target="${containerId}"]`);
-    const nextBtn = document.querySelector(`.carousel-controls .next[data-target="${containerId}"]`);
-    
-    let position = 0;
-    const step = 310; // card width + gap
+      let position = 0;
+      const step = 310; // card width + ~gap
 
-    // Auto-scroll every 5 seconds
-    const autoScroll = setInterval(() => {
-      position++;
-      if (position >= track.children.length) position = 0;
-      track.style.transform = `translateX(-${position * step}px)`;
-    }, 5000);
+      // Auto-scroll (5 seconds)
+      setInterval(() => {
+        position++;
+        if (position >= track.children.length) position = 0;
+        track.style.transform = `translateX(-${position * step}px)`;
+      }, 5000);
 
-    // Manual prev button
-    if (prevBtn) {
+      // Manual controls
       prevBtn.addEventListener("click", () => {
         position = Math.max(0, position - 1);
         track.style.transform = `translateX(-${position * step}px)`;
       });
-    }
 
-    // Manual next button
-    if (nextBtn) {
       nextBtn.addEventListener("click", () => {
         position = Math.min(track.children.length - 1, position + 1);
         track.style.transform = `translateX(-${position * step}px)`;
       });
     }
-  }
-</script>
+  </script>
+  <script src="script.js"></script>
 
-<!-- Initialize carousels: load feeds then wire controls -->
 <script>
+  // Initialize carousels: load feeds then wire controls
   (async () => {
-    try {
-      await loadSection("world", "world-news-carousel");
-      await loadSection("finance", "finance-carousel");
-      await loadSection("economy", "economy-carousel");
+    await loadSection("world", "world-news-carousel");
+    await loadSection("finance", "finance-carousel");
+    await loadSection("economy", "economy-carousel");
 
-      setupControls("world-news-carousel");
-      setupControls("finance-carousel");
-      setupControls("economy-carousel");
-    } catch (err) {
-      console.error("Error initializing carousels:", err);
-    }
+    setupControls("world-news-carousel");
+    setupControls("finance-carousel");
+    setupControls("economy-carousel");
   })();
 </script>
 
-<!-- Force Home Hub tab to show on initial page load -->
 <script>
+  // Force Home Hub tab to show on page load and highlight its button
   document.addEventListener("DOMContentLoaded", () => {
-    showStartupHub(); // Loads Home Hub first and highlights its button
+    showStartupHub(); // Home Hub loads first and button is highlighted
   });
 </script>
 
-<!-- Main application script (loaded only once) -->
+<!-- Load external script with full quiz logic -->
 <script src="script.js"></script>
-    
+
+<script>
   async function loadSocialLinks() {
     const res = await fetch('/social-links.json');
     return await res.json();
