@@ -2838,13 +2838,12 @@ function openRatingsModal(slug) {
     });
 
     const ratingEntry = ratings.find(r => r.slug === slug);
-    const official = federalOfficials.find(o => o.slug === slug);
-    if (!official || !ratingEntry) return;
+    if (!ratingEntry) return;
 
-    // Populate modal fields
-    document.getElementById('ratings-modal-title').textContent = official.name;
-    document.getElementById('ratings-modal-photo').src = official.photo;
-    document.getElementById('ratings-modal-position').textContent = official.office;
+    // Populate modal fields directly from JSON
+    document.getElementById('ratings-modal-title').textContent = ratingEntry.name;
+    document.getElementById('ratings-modal-photo').src = ratingEntry.photo;
+    document.getElementById('ratings-modal-position').textContent = ratingEntry.office;
 
     // Build category averages + vote counts
     let details = '';
@@ -2876,6 +2875,11 @@ function openRatingsModal(slug) {
       <button type="submit" id="submit-rating-btn" class="btn-modern">Submit Rating</button>
     `;
     initStarRatings();
+
+    // Handle rating form submission...
+    // (same logic as before, but use ratingEntry.slug instead of federalOfficials)
+  });
+}
 
     // Handle rating form submission
     document.getElementById('rate-form').onsubmit = function(e) {
