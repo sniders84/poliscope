@@ -2751,6 +2751,17 @@ function showCitizenship() {
 // ==============================
 // Ratings/Rankings — tab renderer
 // ==============================
+// Define rating categories globally
+const ratingCategories = [
+  "Honesty","Humility","Transparency","Integrity","Consistency","Accountability","Patience",
+  "Government Experience","Foreign Policy Experience","Vision","Resilience","Commitment","Courage",
+  "Common Sense","Military Experience","Morality","Intelligence","Ability to Inspire","Creativity",
+  "Diplomacy","Emotional intelligence","Determination","Compassion","Confidence","Strategy",
+  "Business Experience","Sense of Humor","Patriotism","Leadership","Communication","Charisma",
+  "Toughness","Ability to Unify","Effectiveness","Health","Fashion Style","Electability"
+];
+
+// Show Ratings tab
 function showRatings() {
   Promise.all([
     fetch('president-ratings.json').then(res => res.json()),
@@ -2783,30 +2794,25 @@ function showRatings() {
     ratings.forEach(r => {
       const official = federalOfficials.find(o => o.slug === r.slug);
       if (!official) return;
-const card = document.createElement('div');
-card.className = 'info-card';
-const avg = r.averageRating ? r.averageRating.toFixed(1) : '0.0';
-card.innerHTML = `
-  <img src="${official.photo}" alt="${official.name}" class="card-image" />
-  <h3>${official.name}</h3>
-  <p>${official.office}</p>
-  <div class="rating-badge" style="color:${getRatingColor(r.averageRating)}">
-    ${avg} ★
-  </div>
-  <button class="btn-view" onclick="openRatingsModal('${r.slug}')">View Ratings</button>
-`;
-container.appendChild(card);
 
-// Expanded categories
-const ratingCategories = [
-  "Honesty","Humility","Transparency","Integrity","Consistency","Accountability","Patience",
-  "Government Experience","Foreign Policy Experience","Vision","Resilience","Commitment","Courage",
-  "Common Sense","Military Experience","Morality","Intelligence","Ability to Inspire","Creativity",
-  "Diplomacy","Emotional intelligence","Determination","Compassion","Confidence","Strategy",
-  "Business Experience","Sense of Humor","Patriotism","Leadership","Communication","Charisma",
-  "Toughness","Ability to Unify","Effectiveness","Health","Fashion Style","Electability"
-];
+      const card = document.createElement('div');
+      card.className = 'info-card';
+      const avg = r.averageRating ? r.averageRating.toFixed(1) : '0.0';
+      card.innerHTML = `
+        <img src="${official.photo}" alt="${official.name}" class="card-image" />
+        <h3>${official.name}</h3>
+        <p>${official.office}</p>
+        <div class="rating-badge" style="color:${getRatingColor(r.averageRating)}">
+          ${avg} ★
+        </div>
+        <button class="btn-view" onclick="openRatingsModal('${r.slug}')">View Ratings</button>
+      `;
+      container.appendChild(card);
+    });
+  });
+}
 
+// Open Ratings Modal
 function openRatingsModal(slug) {
   Promise.all([
     fetch('president-ratings.json').then(res => res.json()),
