@@ -2981,7 +2981,6 @@ function initStarRatings() {
             s.classList.add('filled');
             s.style.color = getRatingColor(j);
           }
-          }
         }
         span.dataset.selected = String(i);
       });
