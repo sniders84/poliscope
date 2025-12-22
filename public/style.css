@@ -6178,7 +6178,7 @@ section > h3 {
 #ratings-cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* compact footprint */
-  gap: 14px;               /* breathing room between cards */
+  gap: 14px;               /* spacing between cards */
   padding: 14px;
 }
 
@@ -6188,8 +6188,8 @@ section > h3 {
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.25);
   text-align: center;
-  padding: 12px;            /* balanced internal padding */
-  height: 240px;            /* uniform compact height */
+  padding: 14px;            /* balanced internal padding */
+  height: 280px;            /* taller height for breathing room */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -6203,33 +6203,33 @@ section > h3 {
 
 .info-card img.card-image {
   width: 100%;
-  height: 100px;            /* fixed image height */
+  height: 120px;            /* slightly taller image */
   object-fit: cover;        /* crop/scale consistently */
   border-radius: 6px;
-  margin-bottom: 6px;       /* space below image */
+  margin-bottom: 8px;       /* space below image */
 }
 
 .info-card h3 {
   margin: 4px 0;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.2;
 }
 
 .info-card p {
   margin: 0 0 6px;
-  font-size: 12px;
+  font-size: 13px;
   color: #ccc;
 }
 
 .rating-badge {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: bold;
   margin-bottom: 6px;
 }
 
 .info-card .btn-view {
-  font-size: 11px;          /* smaller button text */
-  padding: 6px 10px;        /* compact fit */
+  font-size: 12px;
+  padding: 7px 12px;        /* comfortable button size */
   border-radius: 4px;
   background: #007bff;
   color: #fff;
