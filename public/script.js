@@ -2845,143 +2845,119 @@ async function showRatings() {
 }
 
 // Open Ratings Modal
-function openRatingsModal(slug) {
-  Promise.all([
-    fetch('president-ratings.json').then(res => res.json()),
-    fetch('vicepresident-ratings.json').then(res => res.json()),
-    fetch('governors-ratings.json').then(res => res.json()),
-    fetch('ltgovernors-ratings.json').then(res => res.json()),
-    fetch('senators-ratings.json').then(res => res.json()),
-    fetch('housereps-ratings.json').then(res => res.json())
-  ]).then(([presidents, vps, governors, ltgovs, senators, housereps]) => {
-    let ratings = [
-      ...presidents,
-      ...vps,
-      ...governors,
-      ...ltgovs,
-      ...senators,
-      ...housereps
-    ];
+async function openRatingsModal(slug) {
+  if (!_ratingsBySlug[slug]) {
+    await loadRatingsData();
+    await loadOfficialsData(); // make sure officials lookup is ready
+  }
+  const ratingEntry = _ratingsBySlug[slug];
+  if (!ratingEntry) return;
+
+  // Lookup official info: Trump/Vance hardwired, others from officials JSON
+  const official = hardwiredOfficials[slug] || _officialsBySlug[slug] || ratingEntry;
+
+  // Populate modal fields
+  document.getElementById('ratings-modal-title').textContent = official.name || '';
+  document.getElementById('ratings-modal-photo').src = official.photo || 'assets/placeholder.png';
+  document.getElementById('ratings-modal-position').textContent = official.office || '';
+
+  // Build category averages + vote counts
+  let details = '';
+  for (const category of ratingCategories) {
+    const votes = ratingEntry.votes[category] || [];
+    const avg = votes.length ? (votes.reduce((a,b)=>a+b,0) / votes.length).toFixed(1) : 'N/A';
+    const color = avg !== 'N/A' ? getRatingColor(Number(avg)) : '#ccc';
+    details += `
+      <div class="rating-cell">
+        <span class="category-label">${category}</span>
+        <span class="avg-rating" style="color:${color};">${avg} ★</span>
+        <span class="vote-count">(${votes.length} votes)</span>
+      </div>
+    `;
+  }
+  document.getElementById('ratings-details').innerHTML = details;
+
+  // Show modal
+  document.getElementById('ratings-modal').style.display = 'block';
+
+  // Build rating form dynamically
+  const form = document.getElementById('rate-form');
+  form.innerHTML = ratingCategories.map(cat => `
+    <div class="rating-row">
+      <span class="category-label">${cat}</span>
+      <span class="star-rating" data-category="${cat}"></span>
+    </div>
+  `).join('') + `
+    <button type="submit" id="submit-rating-btn" class="btn-modern">Submit Rating</button>
+  `;
+  initStarRatings();
+
+  // Handle rating form submission
+  form.onsubmit = function(e) {
+    e.preventDefault();
 
     const saved = JSON.parse(localStorage.getItem('ratingsData')) || {};
-    ratings.forEach(r => {
-      if (saved[r.slug]) {
-        r.votes = saved[r.slug].votes;
-        r.averageRating = saved[r.slug].averageRating;
+    let entry = saved[ratingEntry.slug];
+    if (!entry) {
+      entry = { votes: {}, averageRating: 0 };
+      ratingCategories.forEach(cat => entry.votes[cat] = []);
+    }
+
+    // Collect star selections
+    document.querySelectorAll('#rate-modal .star-rating').forEach(span => {
+      const category = span.dataset.category;
+      const selected = parseInt(span.dataset.selected || 0, 10);
+      if (selected > 0) {
+        if (!entry.votes[category]) entry.votes[category] = [];
+        entry.votes[category].push(selected);
       }
     });
 
-    const ratingEntry = ratings.find(r => r.slug === slug);
-    const official = federalOfficials.find(o => o.slug === slug);
-    if (!official || !ratingEntry) return;
-
-    // Populate modal fields
-    document.getElementById('ratings-modal-title').textContent = official.name;
-    document.getElementById('ratings-modal-photo').src = official.photo;
-    document.getElementById('ratings-modal-position').textContent = official.office;
-
-    // Build category averages + vote counts
-    let details = '';
-    for (const category of ratingCategories) {
-      const votes = ratingEntry.votes[category] || [];
-      const avg = votes.length ? (votes.reduce((a,b)=>a+b,0)/votes.length).toFixed(1) : 'N/A';
-      const color = avg !== 'N/A' ? getRatingColor(avg) : '#ccc';
-      details += `
-        <div class="rating-cell">
-          <span class="category-label">${category}</span>
-          <span class="avg-rating" style="color:${color};">${avg} ★</span>
-          <span class="vote-count">(${votes.length} votes)</span>
-        </div>
-      `;
+    // Recalculate average
+    let total = 0, count = 0;
+    for (const category in entry.votes) {
+      const votes = entry.votes[category];
+      total += votes.reduce((a,b)=>a+b,0);
+      count += votes.length;
     }
-    document.getElementById('ratings-details').innerHTML = details;
+    entry.averageRating = count ? total / count : 0;
 
-    // Show modal
-    document.getElementById('ratings-modal').style.display = 'block';
-
-    // Build rating form dynamically
-    const form = document.getElementById('rate-form');
-    form.innerHTML = ratingCategories.map(cat => `
-      <div class="rating-row">
-        <span class="category-label">${cat}</span>
-        <span class="star-rating" data-category="${cat}"></span>
-      </div>
-    `).join('') + `
-      <button type="submit" id="submit-rating-btn" class="btn-modern">Submit Rating</button>
-    `;
-    initStarRatings();
-
-    // Handle rating form submission
-    document.getElementById('rate-form').onsubmit = function(e) {
-      e.preventDefault();
-
-      const officialName = document.getElementById('ratings-modal-title').textContent;
-      const official = federalOfficials.find(o => o.name === officialName);
-      if (!official) return;
-
-      const saved = JSON.parse(localStorage.getItem('ratingsData')) || {};
-      let ratingEntry = saved[official.slug];
-      if (!ratingEntry) {
-        ratingEntry = { votes: {}, averageRating: 0 };
-        ratingCategories.forEach(cat => ratingEntry.votes[cat] = []);
-        saved[official.slug] = ratingEntry;
-      }
-
-      // Collect star selections
-      document.querySelectorAll('#rate-modal .star-rating').forEach(span => {
-        const category = span.dataset.category;
-        const selected = parseInt(span.dataset.selected || 0);
-        if (selected > 0) {
-          ratingEntry.votes[category].push(selected);
-        }
-      });
-
-      // Recalculate average
-      let total = 0, count = 0;
-      for (const category in ratingEntry.votes) {
-        const votes = ratingEntry.votes[category];
-        total += votes.reduce((a,b)=>a+b,0);
-        count += votes.length;
-      }
-      ratingEntry.averageRating = count ? total / count : 0;
-
-      // Save back to localStorage
-      saved[official.slug] = {
-        votes: ratingEntry.votes,
-        averageRating: ratingEntry.averageRating
-      };
-      localStorage.setItem('ratingsData', JSON.stringify(saved));
-
-      // Update modal details
-      let updatedDetails = '';
-      for (const category of ratingCategories) {
-        const votes = ratingEntry.votes[category] || [];
-        const avg = votes.length ? (votes.reduce((a,b)=>a+b,0)/votes.length).toFixed(1) : 'N/A';
-        const color = avg !== 'N/A' ? getRatingColor(avg) : '#ccc';
-        updatedDetails += `<p style="font-size:18px;">
-          <span class="category-label">${category}:</span>
-          <span style="color:${color}; font-size:22px; font-weight:bold;">${avg} ★</span>
-          (${votes.length} votes)
-        </p>`;
-      }
-      document.getElementById('ratings-details').innerHTML = updatedDetails;
-
-      // Update card badge in Ratings tab
-      const badge = document.querySelector(
-        `button[onclick="openRatingsModal('${official.slug}')"]`
-      ).previousElementSibling;
-      if (badge) {
-        badge.textContent = `${Math.round(ratingEntry.averageRating)} ★`;
-        badge.style.color = getRatingColor(ratingEntry.averageRating);
-      }
-
-      // Reset stars
-      initStarRatings();
-
-      // Close rate modal
-      closeModal('rate-modal');
+    // Persist
+    saved[ratingEntry.slug] = {
+      votes: entry.votes,
+      averageRating: entry.averageRating
     };
-  });
+    localStorage.setItem('ratingsData', JSON.stringify(saved));
+
+    // Update cache
+    ratingEntry.votes = entry.votes;
+    ratingEntry.averageRating = entry.averageRating;
+
+    // Update modal details
+    let updated = '';
+    for (const category of ratingCategories) {
+      const votes = entry.votes[category] || [];
+      const avg = votes.length ? (votes.reduce((a,b)=>a+b,0) / votes.length).toFixed(1) : 'N/A';
+      const color = avg !== 'N/A' ? getRatingColor(Number(avg)) : '#ccc';
+      updated += `<p style="font-size:18px;">
+        <span class="category-label">${category}:</span>
+        <span style="color:${color}; font-size:22px; font-weight:bold;">${avg} ★</span>
+        (${votes.length} votes)
+      </p>`;
+    }
+    document.getElementById('ratings-details').innerHTML = updated;
+
+    // Update card badge
+    const btn = document.querySelector(`button[onclick="openRatingsModal('${ratingEntry.slug}')"]`);
+    const badge = btn ? btn.previousElementSibling : null;
+    if (badge) {
+      badge.textContent = `${Math.round(entry.averageRating)} ★`;
+      badge.style.color = getRatingColor(entry.averageRating);
+    }
+
+    initStarRatings();
+    closeModal('rate-modal');
+  };
 }
 
 function initStarRatings() {
