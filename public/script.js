@@ -2837,17 +2837,17 @@ document.getElementById('ratings-details').innerHTML = details;
     // Show modal
     document.getElementById('ratings-modal').style.display = 'block';
 
-    // Build rating form dynamically
-    const form = document.getElementById('rate-form');
-    form.innerHTML = ratingCategories.map(cat => `
+   // Build rating form dynamically
+const form = document.getElementById('rate-form');
+form.innerHTML = ratingCategories.map(cat => `
   <div class="rating-row">
     <span class="category-label">${cat}</span>
     <span class="star-rating" data-category="${cat}"></span>
   </div>
-`).join('');
+`).join('') + `
   <button type="submit" id="submit-rating-btn" class="btn-modern">Submit Rating</button>
 `;
-    initStarRatings();
+initStarRatings();
 
     // Handle rating form submission
     document.getElementById('rate-form').onsubmit = function(e) {
