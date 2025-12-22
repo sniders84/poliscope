@@ -2778,24 +2778,33 @@ function showRatings() {
 }
 
 function openRatingsModal(slug) {
-  fetch('president-ratings.json')
-    .then(res => res.json())
-    .then(data => {
-      const official = data.find(o => o.slug === slug);
-      document.getElementById('ratings-modal-title').textContent = official.name;
-      document.getElementById('ratings-modal-photo').src = official.photo;
+  Promise.all([
+    fetch('president-ratings.json').then(res => res.json())
+  ]).then(([ratings]) => {
+    // Find rating entry
+    const ratingEntry = ratings.find(r => r.slug === slug);
+    // Find official details from your existing dataset
+    const official = federalOfficials.find(o => o.slug === slug);
 
-      // Build category averages + vote counts
-      let details = '';
-      for (const category in official.votes) {
-        const votes = official.votes[category];
-        const avg = votes.length ? (votes.reduce((a,b)=>a+b,0)/votes.length).toFixed(1) : 'N/A';
-        details += `<p>${category}: ${avg} ★ (${votes.length} votes)</p>`;
-      }
-      document.getElementById('ratings-details').innerHTML = details;
+    if (!official || !ratingEntry) return;
 
-      document.getElementById('ratings-modal').style.display = 'block';
-    });
+    // Populate modal fields
+    document.getElementById('ratings-modal-title').textContent = official.name;
+    document.getElementById('ratings-modal-photo').src = official.photo;
+    document.getElementById('ratings-modal-position').textContent = official.office;
+
+    // Build category averages + vote counts
+    let details = '';
+    for (const category in ratingEntry.votes) {
+      const votes = ratingEntry.votes[category];
+      const avg = votes.length ? (votes.reduce((a,b)=>a+b,0)/votes.length).toFixed(1) : 'N/A';
+      details += `<p>${category}: ${avg} ★ (${votes.length} votes)</p>`;
+    }
+    document.getElementById('ratings-details').innerHTML = details;
+
+    // Show modal
+    document.getElementById('ratings-modal').style.display = 'block';
+  });
 }
 
 function closeModal(id) {
