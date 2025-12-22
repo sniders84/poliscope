@@ -2820,17 +2820,19 @@ function openRatingsModal(slug) {
 
     // Build category averages + vote counts
     let details = '';
-    for (const category of ratingCategories) {
-      const votes = ratingEntry.votes[category] || [];
-      const avg = votes.length ? (votes.reduce((a,b)=>a+b,0)/votes.length).toFixed(1) : 'N/A';
-      const color = avg !== 'N/A' ? getRatingColor(avg) : '#ccc';
-      details += `<p style="font-size:18px;">
-        <span class="category-label">${category}:</span>
-        <span style="color:${color}; font-size:22px; font-weight:bold;">${avg} ★</span>
-        (${votes.length} votes)
-      </p>`;
-    }
-    document.getElementById('ratings-details').innerHTML = details;
+for (const category of ratingCategories) {
+  const votes = ratingEntry.votes[category] || [];
+  const avg = votes.length ? (votes.reduce((a,b)=>a+b,0)/votes.length).toFixed(1) : 'N/A';
+  const color = avg !== 'N/A' ? getRatingColor(avg) : '#ccc';
+  details += `
+    <div class="rating-cell">
+      <span class="category-label">${category}</span>
+      <span class="avg-rating" style="color:${color};">${avg} ★</span>
+      <div style="font-size:14px; color:#555;">(${votes.length} votes)</div>
+    </div>
+  `;
+}
+document.getElementById('ratings-details').innerHTML = details;
 
     // Show modal
     document.getElementById('ratings-modal').style.display = 'block';
