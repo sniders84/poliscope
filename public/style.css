@@ -6110,12 +6110,13 @@ section > h3 {
   border-radius: 6px;
   padding: 8px 10px;
   text-align: center;
-  border: 2px solid transparent; /* default invisible border */
+  border: 2px solid transparent; /* invisible border by default */
   transition: border-color 0.2s ease;
 }
 
 .rating-cell:hover {
   border-color: #1e90ff;      /* blue outline on hover */
+  background: #2b2b2b;        /* keep dark background */
 }
 
 /* Rating form grid */
@@ -6138,6 +6139,7 @@ section > h3 {
 
 .rating-row:hover {
   border-color: #1e90ff;      /* blue outline on hover */
+  background: #2b2b2b;        /* keep dark background */
 }
 
 /* Labels, stars, vote counts */
