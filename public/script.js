@@ -2885,3 +2885,73 @@ document.getElementById('rate-me-btn').onclick = function() {
   document.getElementById('rate-modal-title').textContent = `Rate ${title}`;
   document.getElementById('rate-modal').style.display = 'block';
 };
+function initStarRatings() {
+  const stars = document.querySelectorAll('#rate-modal .star-rating');
+  stars.forEach(span => {
+    // wipe any previous stars
+    span.innerHTML = '';
+    span.dataset.selected = ''; // clear previous selection
+
+    // create 5 clickable stars
+    for (let i = 1; i <= 5; i++) {
+      const star = document.createElement('span');
+      star.textContent = '★';
+      star.dataset.value = i;
+      star.className = ''; // ensure clean
+
+      star.addEventListener('click', function () {
+        // clear previous fill
+        span.querySelectorAll('span').forEach(s => s.classList.remove('filled'));
+        // fill up to clicked
+        for (let j = 1; j <= i; j++) {
+          const s = span.querySelector(`span[data-value="${j}"]`);
+          if (s) s.classList.add('filled');
+        }
+        // store selection (1–5)
+        span.dataset.selected = String(i);
+      });
+
+      span.appendChild(star);
+    }
+  });
+}
+
+// Update your existing rate-me button handler to initialize stars when opening
+document.getElementById('rate-me-btn').onclick = function () {
+  const title = document.getElementById('ratings-modal-title').textContent;
+  document.getElementById('rate-modal-title').textContent = `Rate ${title}`;
+
+  // open modal then initialize stars
+  document.getElementById('rate-modal').style.display = 'block';
+  initStarRatings();
+};
+
+function initStarRatings() {
+  const stars = document.querySelectorAll('#rate-modal .star-rating');
+  stars.forEach(span => {
+    // wipe any previous stars
+    span.innerHTML = '';
+    span.dataset.selected = ''; // clear previous selection
+
+    // create 5 clickable stars
+    for (let i = 1; i <= 5; i++) {
+      const star = document.createElement('span');
+      star.textContent = '★';
+      star.dataset.value = i;
+
+      star.addEventListener('click', function () {
+        // clear previous fill
+        span.querySelectorAll('span').forEach(s => s.classList.remove('filled'));
+        // fill up to clicked
+        for (let j = 1; j <= i; j++) {
+          const s = span.querySelector(`span[data-value="${j}"]`);
+          if (s) s.classList.add('filled');
+        }
+        // store selection (1–5)
+        span.dataset.selected = String(i);
+      });
+
+      span.appendChild(star);
+    }
+  });
+}
