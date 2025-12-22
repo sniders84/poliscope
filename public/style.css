@@ -6054,3 +6054,34 @@ section > h3 {
   font-size: 13px;
   color: #aaa;
 }
+/* Grid for rating form */
+#rate-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* Each category row in the form */
+.rating-row {
+  background: #2b2b2b;   /* dark gray like other boxes */
+  border-radius: 6px;
+  padding: 8px 10px;
+  text-align: center;
+}
+
+/* Category label */
+.rating-row .category-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Stars */
+.rating-row .star-rating span {
+  font-size: 22px;
+  cursor: pointer;
+  margin: 0 2px;
+}
