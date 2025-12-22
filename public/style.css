@@ -6167,3 +6167,22 @@ section > h3 {
   cursor: pointer;
   margin: 0 2px;
 }
+#ratings-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px; /* spacing between cards */
+  padding: 20px;
+}
+
+.info-card {
+  background: #1e1e1e; /* dark gray for consistency */
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  text-align: center;
+  padding: 15px;
+  transition: transform 0.2s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-4px);
+}
