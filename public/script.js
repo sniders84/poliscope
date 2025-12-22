@@ -2750,7 +2750,8 @@ function showCitizenship() {
 }
 // ==============================
 // Ratings/Rankings — tab renderer
-// ==============================
+// ===============================
+
 // Define rating categories globally
 const ratingCategories = [
   "Honesty","Humility","Transparency","Integrity","Consistency","Accountability","Patience",
@@ -2761,188 +2762,192 @@ const ratingCategories = [
   "Toughness","Ability to Unify","Effectiveness","Health","Fashion Style","Electability"
 ];
 
+// Files to load for the Ratings & Rankings tab
+const RATINGS_FILES = [
+  'president-ratings.json',
+  'vicepresident-ratings.json',
+  'governors-ratings.json',
+  'ltgovernors-ratings.json',
+  'senators-ratings.json',
+  'housereps-ratings.json'
+];
+
+// In-memory cache
+let _ratingsCache = [];
+let _ratingsBySlug = {};
+
+// Load and index ratings (merge with localStorage)
+async function loadRatingsData() {
+  const arrays = await Promise.all(
+    RATINGS_FILES.map(f => fetch(f).then(res => res.json()))
+  );
+  const ratings = arrays.flat();
+
+  const saved = JSON.parse(localStorage.getItem('ratingsData')) || {};
+  ratings.forEach(r => {
+    if (!r.votes) r.votes = {};
+    if (saved[r.slug]) {
+      r.votes = saved[r.slug].votes || {};
+      r.averageRating = saved[r.slug].averageRating || 0;
+    } else if (typeof r.averageRating !== 'number') {
+      r.averageRating = 0;
+    }
+  });
+
+  _ratingsCache = ratings;
+  _ratingsBySlug = Object.fromEntries(ratings.map(r => [r.slug, r]));
+}
+
 // Show Ratings tab
-function showRatings() {
-  Promise.all([
-    fetch('president-ratings.json').then(res => res.json()),
-    fetch('vicepresident-ratings.json').then(res => res.json()),
-    fetch('governors-ratings.json').then(res => res.json()),
-    fetch('ltgovernors-ratings.json').then(res => res.json()),
-    fetch('senators-ratings.json').then(res => res.json()),
-    fetch('housereps-ratings.json').then(res => res.json())
-  ]).then(([presidents, vps, governors, ltgovs, senators, housereps]) => {
-    let ratings = [
-      ...presidents,
-      ...vps,
-      ...governors,
-      ...ltgovs,
-      ...senators,
-      ...housereps
-    ];
+async function showRatings() {
+  if (!_ratingsCache.length) {
+    await loadRatingsData();
+  }
 
-    const saved = JSON.parse(localStorage.getItem('ratingsData')) || {};
-    ratings.forEach(r => {
-      if (saved[r.slug]) {
-        r.votes = saved[r.slug].votes;
-        r.averageRating = saved[r.slug].averageRating;
-      }
-    });
+  const container = document.getElementById('ratings-cards');
+  if (!container) return;
+  container.innerHTML = '';
 
-    const container = document.getElementById('ratings-cards');
-    container.innerHTML = '';
+  _ratingsCache.forEach(r => {
+    const avgNum = typeof r.averageRating === 'number' ? r.averageRating : 0;
+    const avgText = avgNum.toFixed(1);
 
-    ratings.forEach(r => {
-      // Now we rely on the JSON itself to provide name/office/photo
-      const card = document.createElement('div');
-      card.className = 'info-card';
-      const avg = r.averageRating ? r.averageRating.toFixed(1) : '0.0';
-      card.innerHTML = `
-        <img src="${r.photo}" alt="${r.name}" class="card-image" />
-        <h3>${r.name}</h3>
-        <p>${r.office}</p>
-        <div class="rating-badge" style="color:${getRatingColor(r.averageRating)}">
-          ${avg} ★
-        </div>
-        <button class="btn-view" onclick="openRatingsModal('${r.slug}')">View Ratings</button>
-      `;
-      container.appendChild(card);
-    });
+    const card = document.createElement('div');
+    card.className = 'info-card';
+    card.innerHTML = `
+      <img src="${r.photo || 'assets/placeholder.png'}" alt="${r.name || ''}" class="card-image" />
+      <h3>${r.name || ''}</h3>
+      <p>${r.office || ''}</p>
+      <div class="rating-badge" style="color:${getRatingColor(avgNum)}">
+        ${avgText} ★
+      </div>
+      <button class="btn-view" onclick="openRatingsModal('${r.slug}')">View Ratings</button>
+    `;
+    container.appendChild(card);
   });
 }
 
 // Open Ratings Modal
-function openRatingsModal(slug) {
-  Promise.all([
-    fetch('president-ratings.json').then(res => res.json()),
-    fetch('vicepresident-ratings.json').then(res => res.json()),
-    fetch('governors-ratings.json').then(res => res.json()),
-    fetch('ltgovernors-ratings.json').then(res => res.json()),
-    fetch('senators-ratings.json').then(res => res.json()),
-    fetch('housereps-ratings.json').then(res => res.json())
-  ]).then(([presidents, vps, governors, ltgovs, senators, housereps]) => {
-    let ratings = [
-      ...presidents,
-      ...vps,
-      ...governors,
-      ...ltgovs,
-      ...senators,
-      ...housereps
-    ];
+async function openRatingsModal(slug) {
+  if (!_ratingsBySlug[slug]) {
+    await loadRatingsData(); // safeguard
+  }
+  const ratingEntry = _ratingsBySlug[slug];
+  if (!ratingEntry) return;
+
+  // Populate modal fields directly from JSON
+  const titleEl = document.getElementById('ratings-modal-title');
+  const photoEl = document.getElementById('ratings-modal-photo');
+  const posEl   = document.getElementById('ratings-modal-position');
+  const detailsEl = document.getElementById('ratings-details');
+  const modalEl = document.getElementById('ratings-modal');
+  const formEl  = document.getElementById('rate-form');
+
+  if (!titleEl || !photoEl || !posEl || !detailsEl || !modalEl || !formEl) return;
+
+  titleEl.textContent = ratingEntry.name || '';
+  photoEl.src = ratingEntry.photo || 'assets/placeholder.png';
+  posEl.textContent = ratingEntry.office || '';
+
+  // Build category averages + vote counts
+  let details = '';
+  for (const category of ratingCategories) {
+    const votes = ratingEntry.votes[category] || [];
+    const avg = votes.length ? (votes.reduce((a,b)=>a+b,0) / votes.length).toFixed(1) : 'N/A';
+    const color = avg !== 'N/A' ? getRatingColor(Number(avg)) : '#ccc';
+    details += `
+      <div class="rating-cell">
+        <span class="category-label">${category}</span>
+        <span class="avg-rating" style="color:${color};">${avg} ★</span>
+        <span class="vote-count">(${votes.length} votes)</span>
+      </div>
+    `;
+  }
+  detailsEl.innerHTML = details;
+
+  // Show modal
+  modalEl.style.display = 'block';
+
+  // Build rating form dynamically
+  formEl.innerHTML = ratingCategories.map(cat => `
+    <div class="rating-row">
+      <span class="category-label">${cat}</span>
+      <span class="star-rating" data-category="${cat}"></span>
+    </div>
+  `).join('') + `
+    <button type="submit" id="submit-rating-btn" class="btn-modern">Submit Rating</button>
+  `;
+  initStarRatings();
+
+  // Handle rating form submission
+  formEl.onsubmit = function(e) {
+    e.preventDefault();
 
     const saved = JSON.parse(localStorage.getItem('ratingsData')) || {};
-    ratings.forEach(r => {
-      if (saved[r.slug]) {
-        r.votes = saved[r.slug].votes;
-        r.averageRating = saved[r.slug].averageRating;
+    let entry = saved[ratingEntry.slug];
+    if (!entry) {
+      entry = { votes: {}, averageRating: 0 };
+      ratingCategories.forEach(cat => entry.votes[cat] = []);
+    }
+
+    // Collect star selections
+    document.querySelectorAll('#rate-modal .star-rating').forEach(span => {
+      const category = span.dataset.category;
+      const selected = parseInt(span.dataset.selected || 0, 10);
+      if (selected > 0) {
+        if (!entry.votes[category]) entry.votes[category] = [];
+        entry.votes[category].push(selected);
       }
     });
 
-    const ratingEntry = ratings.find(r => r.slug === slug);
-    if (!ratingEntry) return;
-
-    // Populate modal fields directly from JSON
-    document.getElementById('ratings-modal-title').textContent = ratingEntry.name;
-    document.getElementById('ratings-modal-photo').src = ratingEntry.photo;
-    document.getElementById('ratings-modal-position').textContent = ratingEntry.office;
-
-    // Build category averages + vote counts
-    let details = '';
-    for (const category of ratingCategories) {
-      const votes = ratingEntry.votes[category] || [];
-      const avg = votes.length ? (votes.reduce((a,b)=>a+b,0)/votes.length).toFixed(1) : 'N/A';
-      const color = avg !== 'N/A' ? getRatingColor(avg) : '#ccc';
-      details += `
-        <div class="rating-cell">
-          <span class="category-label">${category}</span>
-          <span class="avg-rating" style="color:${color};">${avg} ★</span>
-          <span class="vote-count">(${votes.length} votes)</span>
-        </div>
-      `;
+    // Recalculate average
+    let total = 0, count = 0;
+    for (const category in entry.votes) {
+      const votes = entry.votes[category];
+      total += votes.reduce((a,b)=>a+b,0);
+      count += votes.length;
     }
-    document.getElementById('ratings-details').innerHTML = details;
+    entry.averageRating = count ? total / count : 0;
 
-    // Show modal
-    document.getElementById('ratings-modal').style.display = 'block';
+    // Persist
+    saved[ratingEntry.slug] = {
+      votes: entry.votes,
+      averageRating: entry.averageRating
+    };
+    localStorage.setItem('ratingsData', JSON.stringify(saved));
 
-    // Build rating form dynamically
-    const form = document.getElementById('rate-form');
-    form.innerHTML = ratingCategories.map(cat => `
-      <div class="rating-row">
-        <span class="category-label">${cat}</span>
-        <span class="star-rating" data-category="${cat}"></span>
-      </div>
-    `).join('') + `
-      <button type="submit" id="submit-rating-btn" class="btn-modern">Submit Rating</button>
-    `;
+    // Update cache
+    ratingEntry.votes = entry.votes;
+    ratingEntry.averageRating = entry.averageRating;
+
+    // Update modal details
+    let updated = '';
+    for (const category of ratingCategories) {
+      const votes = entry.votes[category] || [];
+      const avg = votes.length ? (votes.reduce((a,b)=>a+b,0) / votes.length).toFixed(1) : 'N/A';
+      const color = avg !== 'N/A' ? getRatingColor(Number(avg)) : '#ccc';
+      updated += `<p style="font-size:18px;">
+        <span class="category-label">${category}:</span>
+        <span style="color:${color}; font-size:22px; font-weight:bold;">${avg} ★</span>
+        (${votes.length} votes)
+      </p>`;
+    }
+    detailsEl.innerHTML = updated;
+
+    // Update card badge in Ratings tab
+    const btn = document.querySelector(`button[onclick="openRatingsModal('${ratingEntry.slug}')"]`);
+    const badge = btn ? btn.previousElementSibling : null;
+    if (badge) {
+      badge.textContent = `${Math.round(entry.averageRating)} ★`;
+      badge.style.color = getRatingColor(entry.averageRating);
+    }
+
+    // Reset stars
     initStarRatings();
 
-    // Handle rating form submission
-    form.onsubmit = function(e) {
-      e.preventDefault();
-
-      const saved = JSON.parse(localStorage.getItem('ratingsData')) || {};
-      let entry = saved[ratingEntry.slug];
-      if (!entry) {
-        entry = { votes: {}, averageRating: 0 };
-        ratingCategories.forEach(cat => entry.votes[cat] = []);
-        saved[ratingEntry.slug] = entry;
-      }
-
-      // Collect star selections
-      document.querySelectorAll('#rate-modal .star-rating').forEach(span => {
-        const category = span.dataset.category;
-        const selected = parseInt(span.dataset.selected || 0);
-        if (selected > 0) {
-          entry.votes[category].push(selected);
-        }
-      });
-
-      // Recalculate average
-      let total = 0, count = 0;
-      for (const category in entry.votes) {
-        const votes = entry.votes[category];
-        total += votes.reduce((a,b)=>a+b,0);
-        count += votes.length;
-      }
-      entry.averageRating = count ? total / count : 0;
-
-      // Save back to localStorage
-      saved[ratingEntry.slug] = {
-        votes: entry.votes,
-        averageRating: entry.averageRating
-      };
-      localStorage.setItem('ratingsData', JSON.stringify(saved));
-
-      // Update modal details
-      let updatedDetails = '';
-      for (const category of ratingCategories) {
-        const votes = entry.votes[category] || [];
-        const avg = votes.length ? (votes.reduce((a,b)=>a+b,0)/votes.length).toFixed(1) : 'N/A';
-        const color = avg !== 'N/A' ? getRatingColor(avg) : '#ccc';
-        updatedDetails += `<p style="font-size:18px;">
-          <span class="category-label">${category}:</span>
-          <span style="color:${color}; font-size:22px; font-weight:bold;">${avg} ★</span>
-          (${votes.length} votes)
-        </p>`;
-      }
-      document.getElementById('ratings-details').innerHTML = updatedDetails;
-
-      // Update card badge in Ratings tab
-      const badge = document.querySelector(
-        `button[onclick="openRatingsModal('${ratingEntry.slug}')"]`
-      ).previousElementSibling;
-      if (badge) {
-        badge.textContent = `${Math.round(entry.averageRating)} ★`;
-        badge.style.color = getRatingColor(entry.averageRating);
-      }
-
-      // Reset stars
-      initStarRatings();
-
-      // Close rate modal
-      closeModal('rate-modal');
-    };
-  });
+    // Close rate modal
+    closeModal('rate-modal');
+  };
 }
 
 // Initialize star ratings
@@ -2955,7 +2960,7 @@ function initStarRatings() {
     for (let i = 1; i <= 5; i++) {
       const star = document.createElement('span');
       star.textContent = '★';
-      star.dataset.value = i;
+      star.dataset.value = String(i);
       star.style.fontSize = '28px';
       star.style.cursor = 'pointer';
 
@@ -2980,7 +2985,7 @@ function initStarRatings() {
 }
 
 function getRatingColor(avg) {
-  const rounded = Math.round(avg);
+  const rounded = Math.round(Number(avg) || 0);
   switch (rounded) {
     case 5: return 'gold';
     case 4: return 'green';
@@ -2990,12 +2995,14 @@ function getRatingColor(avg) {
     default: return '#ccc';
   }
 }
+
 function closeModal(id) {
   const modal = document.getElementById(id);
   if (modal) {
     modal.style.display = 'none';
   }
 }
+
 document.getElementById('rate-me-btn').onclick = function() {
   const title = document.getElementById('ratings-modal-title').textContent;
   document.getElementById('rate-modal-title').textContent = `Rate ${title}`;
