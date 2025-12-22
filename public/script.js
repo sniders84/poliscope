@@ -2798,6 +2798,30 @@ async function loadRatingsData() {
   _ratingsBySlug = Object.fromEntries(ratings.map(r => [r.slug, r]));
 }
 
+// Load and index ratings (merge with localStorage)
+async function loadRatingsData() {
+  // ... your existing ratings loader code ...
+}
+
+// >>> PLACE THE OFFICIALS LOADER BLOCK RIGHT HERE <<<
+
+const OFFICIALS_FILES = [
+  'governors.json',
+  'ltgovernors.json',
+  'senators.json',
+  'housereps.json'
+];
+
+let _officialsBySlug = {};
+
+async function loadOfficialsData() {
+  const arrays = await Promise.all(
+    OFFICIALS_FILES.map(f => fetch(f).then(res => res.json()))
+  );
+  const officials = arrays.flat();
+  _officialsBySlug = Object.fromEntries(officials.map(o => [o.slug, o]));
+}
+
 // Hardwired exceptions for President & Vice President
 const hardwiredOfficials = {
   "donald-trump": {
@@ -2816,6 +2840,10 @@ const hardwiredOfficials = {
 async function showRatings() {
   if (!_ratingsCache.length) {
     await loadRatingsData();
+await loadOfficialsData();
+
+const official = hardwiredOfficials[r.slug] || _officialsBySlug[r.slug] || r;
+
   }
 
   const container = document.getElementById('ratings-cards');
@@ -2845,7 +2873,11 @@ async function showRatings() {
 // Open Ratings Modal
 async function openRatingsModal(slug) {
   if (!_ratingsBySlug[slug]) {
-    await loadRatingsData(); // safeguard
+    await loadRatingsData();
+await loadOfficialsData();
+
+const official = hardwiredOfficials[r.slug] || _officialsBySlug[r.slug] || r;
+
   }
   const ratingEntry = _ratingsBySlug[slug];
   if (!ratingEntry) return;
