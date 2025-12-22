@@ -2819,7 +2819,7 @@ function openRatingsModal(slug) {
     document.getElementById('ratings-modal-position').textContent = official.office;
 
     // Build category averages + vote counts
-    let details = '';
+   let details = '';
 for (const category of ratingCategories) {
   const votes = ratingEntry.votes[category] || [];
   const avg = votes.length ? (votes.reduce((a,b)=>a+b,0)/votes.length).toFixed(1) : 'N/A';
@@ -2828,7 +2828,7 @@ for (const category of ratingCategories) {
     <div class="rating-cell">
       <span class="category-label">${category}</span>
       <span class="avg-rating" style="color:${color};">${avg} ★</span>
-      <div style="font-size:14px; color:#555;">(${votes.length} votes)</div>
+      <span class="vote-count">(${votes.length} votes)</span>
     </div>
   `;
 }
