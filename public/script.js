@@ -2846,9 +2846,9 @@ async function showRatings() {
 
 // Open Ratings Modal
 async function openRatingsModal(slug) {
+  // Ensure ratings and officials caches are loaded
   if (!_ratingsBySlug[slug]) {
-    await loadRatingsData();
-    await loadOfficialsData(); // make sure officials lookup is ready
+    await showRatings(); // reload everything if cache is empty
   }
   const ratingEntry = _ratingsBySlug[slug];
   if (!ratingEntry) return;
@@ -2959,7 +2959,6 @@ async function openRatingsModal(slug) {
     closeModal('rate-modal');
   };
 }
-
 function initStarRatings() {
   const stars = document.querySelectorAll('#rate-modal .star-rating');
   stars.forEach(span => {
