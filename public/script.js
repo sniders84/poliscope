@@ -2844,7 +2844,7 @@ document.getElementById('ratings-details').innerHTML = details;
     <span class="category-label">${cat}</span>
     <span class="star-rating" data-category="${cat}"></span>
   </div>
-`).join('') + `
+`).join('');
   <button type="submit" id="submit-rating-btn" class="btn-modern">Submit Rating</button>
 `;
     initStarRatings();
