@@ -2846,9 +2846,9 @@ async function showRatings() {
 
 // Open Ratings Modal
 async function openRatingsModal(slug) {
-  // Ensure ratings and officials caches are loaded
+  // Make sure ratings cache is loaded
   if (!_ratingsBySlug[slug]) {
-    await showRatings(); // reload everything if cache is empty
+    await showRatings(); // reload ratings + officials if cache is empty
   }
   const ratingEntry = _ratingsBySlug[slug];
   if (!ratingEntry) return;
@@ -2948,10 +2948,10 @@ async function openRatingsModal(slug) {
     document.getElementById('ratings-details').innerHTML = updated;
 
     // Update card badge
-    const btn = document.querySelector(`button[onclick="openRatingsModal('${ratingEntry.slug}')"]`);
+    const btn = document.querySelector(\`button[onclick="openRatingsModal('${ratingEntry.slug}')"]\`);
     const badge = btn ? btn.previousElementSibling : null;
     if (badge) {
-      badge.textContent = `${Math.round(entry.averageRating)} ★`;
+      badge.textContent = \`\${Math.round(entry.averageRating)} ★\`;
       badge.style.color = getRatingColor(entry.averageRating);
     }
 
@@ -2959,6 +2959,7 @@ async function openRatingsModal(slug) {
     closeModal('rate-modal');
   };
 }
+
 function initStarRatings() {
   const stars = document.querySelectorAll('#rate-modal .star-rating');
   stars.forEach(span => {
