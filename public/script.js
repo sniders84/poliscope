@@ -2996,3 +2996,9 @@ function closeModal(id) {
     modal.style.display = 'none';
   }
 }
+document.getElementById('rate-me-btn').onclick = function() {
+  const title = document.getElementById('ratings-modal-title').textContent;
+  document.getElementById('rate-modal-title').textContent = `Rate ${title}`;
+  document.getElementById('rate-modal').style.display = 'block';
+  initStarRatings();
+};
