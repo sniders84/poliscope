@@ -2804,9 +2804,59 @@ function openRatingsModal(slug) {
 
     // Show modal
     document.getElementById('ratings-modal').style.display = 'block';
+
+    // Handle rating form submission
+    document.getElementById('rate-form').onsubmit = function(e) {
+      e.preventDefault();
+
+      const formData = new FormData(document.getElementById('rate-form'));
+      for (const [category, value] of formData.entries()) {
+        if (value) {
+          ratingEntry.votes[category].push(parseInt(value));
+        }
+      }
+
+      // Recalculate average
+      let total = 0, count = 0;
+      for (const category in ratingEntry.votes) {
+        const votes = ratingEntry.votes[category];
+        total += votes.reduce((a,b)=>a+b,0);
+        count += votes.length;
+      }
+      ratingEntry.averageRating = count ? total / count : 0;
+
+      // Update modal details
+      let updatedDetails = '';
+      for (const category in ratingEntry.votes) {
+        const votes = ratingEntry.votes[category];
+        const avg = votes.length ? (votes.reduce((a,b)=>a+b,0)/votes.length).toFixed(1) : 'N/A';
+        updatedDetails += `<p>${category}: ${avg} ★ (${votes.length} votes)</p>`;
+      }
+      document.getElementById('ratings-details').innerHTML = updatedDetails;
+
+      // Update card badge in Ratings tab
+      const badge = document.querySelector(
+        `button[onclick="openRatingsModal('${slug}')"]`
+      ).previousElementSibling;
+      if (badge) {
+        badge.textContent = `Avg: ${ratingEntry.averageRating.toFixed(1)} ★`;
+      }
+
+      // Reset form inputs
+      document.getElementById('rate-form').reset();
+
+      // Close rate modal
+      closeModal('rate-modal');
+    };
   });
 }
 
 function closeModal(id) {
   document.getElementById(id).style.display = 'none';
 }
+
+document.getElementById('rate-me-btn').onclick = function() {
+  const title = document.getElementById('ratings-modal-title').textContent;
+  document.getElementById('rate-modal-title').textContent = `Rate ${title}`;
+  document.getElementById('rate-modal').style.display = 'block';
+};
