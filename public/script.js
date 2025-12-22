@@ -2753,12 +2753,12 @@ function showCitizenship() {
 // ==============================
 function showRatings() {
   Promise.all([
-    fetch('/poliscope/public/president-ratings.json').then(res => res.json()),
-    fetch('/poliscope/public/vicepresident-ratings.json').then(res => res.json()),
-    fetch('/poliscope/public/governors-ratings.json').then(res => res.json()),
-    fetch('/poliscope/public/ltgovernors-ratings.json').then(res => res.json()),
-    fetch('/poliscope/public/senators-ratings.json').then(res => res.json()),
-    fetch('/poliscope/public/housereps-ratings.json').then(res => res.json())
+    fetch('president-ratings.json').then(res => res.json()),
+    fetch('vicepresident-ratings.json').then(res => res.json()),
+    fetch('governors-ratings.json').then(res => res.json()),
+    fetch('ltgovernors-ratings.json').then(res => res.json()),
+    fetch('senators-ratings.json').then(res => res.json()),
+    fetch('housereps-ratings.json').then(res => res.json())
   ]).then(([presidents, vps, governors, ltgovs, senators, housereps]) => {
     let ratings = [
       ...presidents,
@@ -2813,12 +2813,12 @@ const ratingCategories = [
 
 function openRatingsModal(slug) {
   Promise.all([
-    fetch('/poliscope/public/president-ratings.json').then(res => res.json()),
-    fetch('/poliscope/public/vicepresident-ratings.json').then(res => res.json()),
-    fetch('/poliscope/public/governors-ratings.json').then(res => res.json()),
-    fetch('/poliscope/public/ltgovernors-ratings.json').then(res => res.json()),
-    fetch('/poliscope/public/senators-ratings.json').then(res => res.json()),
-    fetch('/poliscope/public/housereps-ratings.json').then(res => res.json())
+    fetch('president-ratings.json').then(res => res.json()),
+    fetch('vicepresident-ratings.json').then(res => res.json()),
+    fetch('governors-ratings.json').then(res => res.json()),
+    fetch('ltgovernors-ratings.json').then(res => res.json()),
+    fetch('senators-ratings.json').then(res => res.json()),
+    fetch('housereps-ratings.json').then(res => res.json())
   ]).then(([presidents, vps, governors, ltgovs, senators, housereps]) => {
     let ratings = [
       ...presidents,
