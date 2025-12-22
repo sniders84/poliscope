@@ -2822,59 +2822,72 @@ function openRatingsModal(slug) {
     // Show modal
     document.getElementById('ratings-modal').style.display = 'block';
 
-    // Handle rating form submission
-    document.getElementById('rate-form').onsubmit = function(e) {
-      e.preventDefault();
+   // Handle rating form submission
+document.getElementById('rate-form').onsubmit = function(e) {
+  e.preventDefault();
 
-      const formData = new FormData(document.getElementById('rate-form'));
-      for (const [category, value] of formData.entries()) {
-        if (value) {
-          ratingEntry.votes[category].push(parseInt(value));
-        }
-      }
+  const officialName = document.getElementById('ratings-modal-title').textContent;
+  const official = federalOfficials.find(o => o.name === officialName);
+  if (!official) return;
 
-      // Recalculate average
-      let total = 0, count = 0;
-      for (const category in ratingEntry.votes) {
-        const votes = ratingEntry.votes[category];
-        total += votes.reduce((a,b)=>a+b,0);
-        count += votes.length;
-      }
-      ratingEntry.averageRating = count ? total / count : 0;
+  // Load ratings from localStorage
+  const saved = JSON.parse(localStorage.getItem('ratingsData')) || {};
+  let ratingEntry = saved[official.slug];
 
-      // Update modal details
-      let updatedDetails = '';
-      for (const category in ratingEntry.votes) {
-        const votes = ratingEntry.votes[category];
-        const avg = votes.length ? (votes.reduce((a,b)=>a+b,0)/votes.length).toFixed(1) : 'N/A';
-        updatedDetails += `<p>${category}: ${avg} ★ (${votes.length} votes)</p>`;
-      }
-      document.getElementById('ratings-details').innerHTML = updatedDetails;
+  if (!ratingEntry) {
+    ratingEntry = { votes: { Leadership: [], Integrity: [], Communication: [] }, averageRating: 0 };
+    saved[official.slug] = ratingEntry;
+  }
 
-      // Update card badge in Ratings tab
-      const badge = document.querySelector(
-        `button[onclick="openRatingsModal('${slug}')"]`
-      ).previousElementSibling;
-      if (badge) {
-        badge.textContent = `Avg: ${ratingEntry.averageRating.toFixed(1)} ★`;
-      }
-
-      // Save updated ratings to localStorage
-      const saved = JSON.parse(localStorage.getItem('ratingsData')) || {};
-      saved[ratingEntry.slug] = {
-        votes: ratingEntry.votes,
-        averageRating: ratingEntry.averageRating
-      };
-      localStorage.setItem('ratingsData', JSON.stringify(saved));
-
-      // Reset form inputs
-      document.getElementById('rate-form').reset();
-
-      // Close rate modal
-      closeModal('rate-modal');
-    };
+  // Collect star selections
+  document.querySelectorAll('#rate-modal .star-rating').forEach(span => {
+    const category = span.dataset.category;
+    const selected = parseInt(span.dataset.selected || 0);
+    if (selected > 0) {
+      ratingEntry.votes[category].push(selected);
+    }
   });
-}
+
+  // Recalculate average
+  let total = 0, count = 0;
+  for (const category in ratingEntry.votes) {
+    const votes = ratingEntry.votes[category];
+    total += votes.reduce((a,b)=>a+b,0);
+    count += votes.length;
+  }
+  ratingEntry.averageRating = count ? total / count : 0;
+
+  // Save back to localStorage
+  saved[official.slug] = {
+    votes: ratingEntry.votes,
+    averageRating: ratingEntry.averageRating
+  };
+  localStorage.setItem('ratingsData', JSON.stringify(saved));
+
+  // Update modal details
+  let updatedDetails = '';
+  for (const category in ratingEntry.votes) {
+    const votes = ratingEntry.votes[category];
+    const avg = votes.length ? (votes.reduce((a,b)=>a+b,0)/votes.length).toFixed(1) : 'N/A';
+    updatedDetails += `<p>${category}: ${avg} ★ (${votes.length} votes)</p>`;
+  }
+  document.getElementById('ratings-details').innerHTML = updatedDetails;
+
+  // Update card badge in Ratings tab
+  const badge = document.querySelector(
+    `button[onclick="openRatingsModal('${official.slug}')"]`
+  ).previousElementSibling;
+  if (badge) {
+    badge.textContent = `${ratingEntry.averageRating.toFixed(1)} ★`;
+    badge.style.color = getRatingColor(ratingEntry.averageRating); // use your thresholds
+  }
+
+  // Reset stars
+  initStarRatings();
+
+  // Close rate modal
+  closeModal('rate-modal');
+};
 
 function closeModal(id) {
   document.getElementById(id).style.display = 'none';
@@ -2884,30 +2897,26 @@ document.getElementById('rate-me-btn').onclick = function() {
   const title = document.getElementById('ratings-modal-title').textContent;
   document.getElementById('rate-modal-title').textContent = `Rate ${title}`;
   document.getElementById('rate-modal').style.display = 'block';
+  initStarRatings();
 };
+
 function initStarRatings() {
   const stars = document.querySelectorAll('#rate-modal .star-rating');
   stars.forEach(span => {
-    // wipe any previous stars
     span.innerHTML = '';
-    span.dataset.selected = ''; // clear previous selection
+    span.dataset.selected = '';
 
-    // create 5 clickable stars
     for (let i = 1; i <= 5; i++) {
       const star = document.createElement('span');
       star.textContent = '★';
       star.dataset.value = i;
-      star.className = ''; // ensure clean
 
       star.addEventListener('click', function () {
-        // clear previous fill
         span.querySelectorAll('span').forEach(s => s.classList.remove('filled'));
-        // fill up to clicked
         for (let j = 1; j <= i; j++) {
           const s = span.querySelector(`span[data-value="${j}"]`);
           if (s) s.classList.add('filled');
         }
-        // store selection (1–5)
         span.dataset.selected = String(i);
       });
 
@@ -2915,43 +2924,12 @@ function initStarRatings() {
     }
   });
 }
-
-// Update your existing rate-me button handler to initialize stars when opening
-document.getElementById('rate-me-btn').onclick = function () {
-  const title = document.getElementById('ratings-modal-title').textContent;
-  document.getElementById('rate-modal-title').textContent = `Rate ${title}`;
-
-  // open modal then initialize stars
-  document.getElementById('rate-modal').style.display = 'block';
-  initStarRatings();
-};
-
-function initStarRatings() {
-  const stars = document.querySelectorAll('#rate-modal .star-rating');
-  stars.forEach(span => {
-    // wipe any previous stars
-    span.innerHTML = '';
-    span.dataset.selected = ''; // clear previous selection
-
-    // create 5 clickable stars
-    for (let i = 1; i <= 5; i++) {
-      const star = document.createElement('span');
-      star.textContent = '★';
-      star.dataset.value = i;
-
-      star.addEventListener('click', function () {
-        // clear previous fill
-        span.querySelectorAll('span').forEach(s => s.classList.remove('filled'));
-        // fill up to clicked
-        for (let j = 1; j <= i; j++) {
-          const s = span.querySelector(`span[data-value="${j}"]`);
-          if (s) s.classList.add('filled');
-        }
-        // store selection (1–5)
-        span.dataset.selected = String(i);
-      });
-
-      span.appendChild(star);
-    }
-  });
+function getRatingColor(avg) {
+  if (avg >= 4.5) return 'gold';
+  if (avg >= 3.9) return 'green';
+  if (avg >= 3.3) return 'lightgreen';
+  if (avg >= 2.7) return 'yellow';
+  if (avg >= 2.1) return 'orange';
+  if (avg >= 1.0) return 'red';
+  return '#ccc'; // default gray if no rating
 }
