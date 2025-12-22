@@ -2783,23 +2783,19 @@ function showRatings() {
     ratings.forEach(r => {
       const official = federalOfficials.find(o => o.slug === r.slug);
       if (!official) return;
-
-      const card = document.createElement('div');
-      card.className = 'info-card';
-      const avg = r.averageRating ? r.averageRating.toFixed(1) : '0.0';
-      card.innerHTML = `
-        <img src="${official.photo}" alt="${official.name}" class="card-image" />
-        <h3>${official.name}</h3>
-        <p>${official.office}</p>
-        <div class="rating-badge" style="color:${getRatingColor(r.averageRating)}">
-          ${avg} ★
-        </div>
-        <button class="btn-modern" onclick="openRatingsModal('${r.slug}')">View Ratings</button>
-      `;
-      container.appendChild(card);
-    });
-  });
-}
+const card = document.createElement('div');
+card.className = 'info-card';
+const avg = r.averageRating ? r.averageRating.toFixed(1) : '0.0';
+card.innerHTML = `
+  <img src="${official.photo}" alt="${official.name}" class="card-image" />
+  <h3>${official.name}</h3>
+  <p>${official.office}</p>
+  <div class="rating-badge" style="color:${getRatingColor(r.averageRating)}">
+    ${avg} ★
+  </div>
+  <button class="btn-view" onclick="openRatingsModal('${r.slug}')">View Ratings</button>
+`;
+container.appendChild(card);
 
 // Expanded categories
 const ratingCategories = [
