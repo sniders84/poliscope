@@ -111,6 +111,7 @@
       <li><a href="#civic" onclick="showCivic()">Civic Intelligence</a></li>
       <li><a href="#polls" onclick="showPolls()">Polls & Elections</a></li>
       <li><a href="#my-officials" onclick="renderOfficials(selectedState || 'North Carolina', ''); showTab('my-officials')">My Officials</a></li>
+      <li><a href="#ratings" onclick="showRatings()">Ratings/Rankings</a></li>
       <li><a href="#voting" onclick="showVoting()">Voting</a></li>
       <li><a href="#citizenship" onclick="showCitizenship()">Citizenship/Immigration</a></li>
       <li><a href="#organizations" onclick="showOrganizations()">Political Groups</a></li>
@@ -346,6 +347,14 @@
       </div>
       <div id="officials-container" class="grid"></div>
     </section>
+
+    <!-- Ratings/Rankings Tab -->
+<section id="ratings" class="tab-content" style="display: none;">
+  <h2>Ratings & Rankings</h2>
+  <div id="ratings-cards" class="card-section">
+    <!-- Cards will be populated dynamically from JSON -->
+  </div>
+</section>
 
 <section id="learning-resources" class="tab-content" style="display: none;">
   <h2>Learning Resources</h2>
