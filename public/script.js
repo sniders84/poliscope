@@ -2780,7 +2780,7 @@ function showRatings() {
           <div class="rating-badge" style="color:${getRatingColor(r.averageRating)}">
             ${avg} ★
           </div>
-          <button onclick="openRatingsModal('${r.slug}')">View Ratings</button>
+         <button class="btn-modern" onclick="openRatingsModal('${r.slug}')">View Ratings</button>
         `;
         container.appendChild(card);
       });
