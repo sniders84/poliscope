@@ -2781,6 +2781,15 @@ function openRatingsModal(slug) {
   Promise.all([
     fetch('president-ratings.json').then(res => res.json())
   ]).then(([ratings]) => {
+    // Load any saved ratings from localStorage
+    const saved = JSON.parse(localStorage.getItem('ratingsData')) || {};
+    ratings.forEach(r => {
+      if (saved[r.slug]) {
+        r.votes = saved[r.slug].votes;
+        r.averageRating = saved[r.slug].averageRating;
+      }
+    });
+
     // Find rating entry
     const ratingEntry = ratings.find(r => r.slug === slug);
     // Find official details from your existing dataset
@@ -2841,6 +2850,14 @@ function openRatingsModal(slug) {
       if (badge) {
         badge.textContent = `Avg: ${ratingEntry.averageRating.toFixed(1)} ★`;
       }
+
+      // Save updated ratings to localStorage
+      const saved = JSON.parse(localStorage.getItem('ratingsData')) || {};
+      saved[ratingEntry.slug] = {
+        votes: ratingEntry.votes,
+        averageRating: ratingEntry.averageRating
+      };
+      localStorage.setItem('ratingsData', JSON.stringify(saved));
 
       // Reset form inputs
       document.getElementById('rate-form').reset();
