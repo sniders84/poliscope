@@ -2792,16 +2792,14 @@ function showRatings() {
     container.innerHTML = '';
 
     ratings.forEach(r => {
-      const official = federalOfficials.find(o => o.slug === r.slug);
-      if (!official) return;
-
+      // Now we rely on the JSON itself to provide name/office/photo
       const card = document.createElement('div');
       card.className = 'info-card';
       const avg = r.averageRating ? r.averageRating.toFixed(1) : '0.0';
       card.innerHTML = `
-        <img src="${official.photo}" alt="${official.name}" class="card-image" />
-        <h3>${official.name}</h3>
-        <p>${official.office}</p>
+        <img src="${r.photo}" alt="${r.name}" class="card-image" />
+        <h3>${r.name}</h3>
+        <p>${r.office}</p>
         <div class="rating-badge" style="color:${getRatingColor(r.averageRating)}">
           ${avg} ★
         </div>
