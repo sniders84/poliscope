@@ -2752,39 +2752,53 @@ function showCitizenship() {
 // Ratings/Rankings — tab renderer
 // ==============================
 function showRatings() {
-  fetch('president-ratings.json')
-    .then(res => res.json())
-    .then(ratings => {
-      const saved = JSON.parse(localStorage.getItem('ratingsData')) || {};
-      ratings.forEach(r => {
-        if (saved[r.slug]) {
-          r.votes = saved[r.slug].votes;
-          r.averageRating = saved[r.slug].averageRating;
-        }
-      });
+  Promise.all([
+    fetch('/poliscope/public/president-ratings.json').then(res => res.json()),
+    fetch('/poliscope/public/vicepresident-ratings.json').then(res => res.json()),
+    fetch('/poliscope/public/governors-ratings.json').then(res => res.json()),
+    fetch('/poliscope/public/ltgovernors-ratings.json').then(res => res.json()),
+    fetch('/poliscope/public/senators-ratings.json').then(res => res.json()),
+    fetch('/poliscope/public/housereps-ratings.json').then(res => res.json())
+  ]).then(([presidents, vps, governors, ltgovs, senators, housereps]) => {
+    let ratings = [
+      ...presidents,
+      ...vps,
+      ...governors,
+      ...ltgovs,
+      ...senators,
+      ...housereps
+    ];
 
-      const container = document.getElementById('ratings-cards');
-      container.innerHTML = '';
-
-      ratings.forEach(r => {
-        const official = federalOfficials.find(o => o.slug === r.slug);
-        if (!official) return;
-
-        const card = document.createElement('div');
-        card.className = 'info-card';
-        const avg = r.averageRating ? r.averageRating.toFixed(1) : '0.0';
-        card.innerHTML = `
-          <img src="${official.photo}" alt="${official.name}" class="card-image" />
-          <h3>${official.name}</h3>
-          <p>${official.office}</p>
-          <div class="rating-badge" style="color:${getRatingColor(r.averageRating)}">
-            ${avg} ★
-          </div>
-          <button class="btn-modern" onclick="openRatingsModal('${r.slug}')">View Ratings</button>
-        `;
-        container.appendChild(card);
-      });
+    const saved = JSON.parse(localStorage.getItem('ratingsData')) || {};
+    ratings.forEach(r => {
+      if (saved[r.slug]) {
+        r.votes = saved[r.slug].votes;
+        r.averageRating = saved[r.slug].averageRating;
+      }
     });
+
+    const container = document.getElementById('ratings-cards');
+    container.innerHTML = '';
+
+    ratings.forEach(r => {
+      const official = federalOfficials.find(o => o.slug === r.slug);
+      if (!official) return;
+
+      const card = document.createElement('div');
+      card.className = 'info-card';
+      const avg = r.averageRating ? r.averageRating.toFixed(1) : '0.0';
+      card.innerHTML = `
+        <img src="${official.photo}" alt="${official.name}" class="card-image" />
+        <h3>${official.name}</h3>
+        <p>${official.office}</p>
+        <div class="rating-badge" style="color:${getRatingColor(r.averageRating)}">
+          ${avg} ★
+        </div>
+        <button class="btn-modern" onclick="openRatingsModal('${r.slug}')">View Ratings</button>
+      `;
+      container.appendChild(card);
+    });
+  });
 }
 
 // Expanded categories
@@ -2799,8 +2813,22 @@ const ratingCategories = [
 
 function openRatingsModal(slug) {
   Promise.all([
-    fetch('president-ratings.json').then(res => res.json())
-  ]).then(([ratings]) => {
+    fetch('/poliscope/public/president-ratings.json').then(res => res.json()),
+    fetch('/poliscope/public/vicepresident-ratings.json').then(res => res.json()),
+    fetch('/poliscope/public/governors-ratings.json').then(res => res.json()),
+    fetch('/poliscope/public/ltgovernors-ratings.json').then(res => res.json()),
+    fetch('/poliscope/public/senators-ratings.json').then(res => res.json()),
+    fetch('/poliscope/public/housereps-ratings.json').then(res => res.json())
+  ]).then(([presidents, vps, governors, ltgovs, senators, housereps]) => {
+    let ratings = [
+      ...presidents,
+      ...vps,
+      ...governors,
+      ...ltgovs,
+      ...senators,
+      ...housereps
+    ];
+
     const saved = JSON.parse(localStorage.getItem('ratingsData')) || {};
     ratings.forEach(r => {
       if (saved[r.slug]) {
@@ -2819,35 +2847,35 @@ function openRatingsModal(slug) {
     document.getElementById('ratings-modal-position').textContent = official.office;
 
     // Build category averages + vote counts
-   let details = '';
-for (const category of ratingCategories) {
-  const votes = ratingEntry.votes[category] || [];
-  const avg = votes.length ? (votes.reduce((a,b)=>a+b,0)/votes.length).toFixed(1) : 'N/A';
-  const color = avg !== 'N/A' ? getRatingColor(avg) : '#ccc';
-  details += `
-    <div class="rating-cell">
-      <span class="category-label">${category}</span>
-      <span class="avg-rating" style="color:${color};">${avg} ★</span>
-      <span class="vote-count">(${votes.length} votes)</span>
-    </div>
-  `;
-}
-document.getElementById('ratings-details').innerHTML = details;
+    let details = '';
+    for (const category of ratingCategories) {
+      const votes = ratingEntry.votes[category] || [];
+      const avg = votes.length ? (votes.reduce((a,b)=>a+b,0)/votes.length).toFixed(1) : 'N/A';
+      const color = avg !== 'N/A' ? getRatingColor(avg) : '#ccc';
+      details += `
+        <div class="rating-cell">
+          <span class="category-label">${category}</span>
+          <span class="avg-rating" style="color:${color};">${avg} ★</span>
+          <span class="vote-count">(${votes.length} votes)</span>
+        </div>
+      `;
+    }
+    document.getElementById('ratings-details').innerHTML = details;
 
     // Show modal
     document.getElementById('ratings-modal').style.display = 'block';
 
-   // Build rating form dynamically
-const form = document.getElementById('rate-form');
-form.innerHTML = ratingCategories.map(cat => `
-  <div class="rating-row">
-    <span class="category-label">${cat}</span>
-    <span class="star-rating" data-category="${cat}"></span>
-  </div>
-`).join('') + `
-  <button type="submit" id="submit-rating-btn" class="btn-modern">Submit Rating</button>
-`;
-initStarRatings();
+    // Build rating form dynamically
+    const form = document.getElementById('rate-form');
+    form.innerHTML = ratingCategories.map(cat => `
+      <div class="rating-row">
+        <span class="category-label">${cat}</span>
+        <span class="star-rating" data-category="${cat}"></span>
+      </div>
+    `).join('') + `
+      <button type="submit" id="submit-rating-btn" class="btn-modern">Submit Rating</button>
+    `;
+    initStarRatings();
 
     // Handle rating form submission
     document.getElementById('rate-form').onsubmit = function(e) {
@@ -2921,17 +2949,6 @@ initStarRatings();
     };
   });
 }
-
-function closeModal(id) {
-  document.getElementById(id).style.display = 'none';
-}
-
-document.getElementById('rate-me-btn').onclick = function() {
-  const title = document.getElementById('ratings-modal-title').textContent;
-  document.getElementById('rate-modal-title').textContent = `Rate ${title}`;
-  document.getElementById('rate-modal').style.display = 'block';
-  initStarRatings();
-};
 
 function initStarRatings() {
   const stars = document.querySelectorAll('#rate-modal .star-rating');
