@@ -2748,3 +2748,26 @@ function showCitizenship() {
     container.appendChild(grid);
   });
 }
+// ==============================
+// Ratings/Rankings — tab renderer
+// ==============================
+function showRatings() {
+  fetch('president-ratings.json')
+    .then(res => res.json())
+    .then(data => {
+      const container = document.getElementById('ratings-cards');
+      container.innerHTML = '';
+      data.forEach(off => {
+        const card = document.createElement('div');
+        card.className = 'info-card';
+        card.innerHTML = `
+          <img src="${off.photo}" alt="${off.name}" class="card-image" />
+          <h3>${off.name}</h3>
+          <p>${off.position}</p>
+          <div class="rating-badge">Avg: ${off.averageRating.toFixed(1)} ★</div>
+          <button onclick="openRatingsModal('${off.slug}')">View Ratings</button>
+        `;
+        container.appendChild(card);
+      });
+    });
+}
