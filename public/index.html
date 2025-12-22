@@ -904,16 +904,27 @@
   </div>
 </div>
 
-  <!-- Rate Me Modal -->
+ <!-- Rate Me Modal -->
 <div id="rate-modal" class="modal" style="display:none;">
   <div class="modal-content">
     <span class="close" onclick="closeModal('rate-modal')">&times;</span>
     <h2 id="rate-modal-title"></h2>
+
     <form id="rate-form">
-      <p>Leadership: <input type="number" min="1" max="5" name="Leadership"></p>
-      <p>Integrity: <input type="number" min="1" max="5" name="Integrity"></p>
-      <p>Communication: <input type="number" min="1" max="5" name="Communication"></p>
-      <button type="submit">Submit Rating</button>
+      <p>
+        Leadership:
+        <span class="star-rating" data-category="Leadership">★★★★★</span>
+      </p>
+      <p>
+        Integrity:
+        <span class="star-rating" data-category="Integrity">★★★★★</span>
+      </p>
+      <p>
+        Communication:
+        <span class="star-rating" data-category="Communication">★★★★★</span>
+      </p>
+
+      <button type="submit" id="submit-rating-btn">Submit Rating</button>
     </form>
   </div>
 </div>
