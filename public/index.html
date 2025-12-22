@@ -1154,59 +1154,70 @@
   });
 }
 
-    function setupControls(containerId) {
-      const track = document.querySelector(`#${containerId} .carousel-track`);
-      const prevBtn = document.querySelector(`.carousel-controls .prev[data-target="${containerId}"]`);
-      const nextBtn = document.querySelector(`.carousel-controls .next[data-target="${containerId}"]`);
+   <!-- Carousel Controls Setup + Initialization -->
+<script>
+  function setupControls(containerId) {
+    const track = document.querySelector(`#${containerId} .carousel-track`);
+    if (!track) return; // safety check
 
-      let position = 0;
-      const step = 310; // card width + ~gap
+    const prevBtn = document.querySelector(`.carousel-controls .prev[data-target="${containerId}"]`);
+    const nextBtn = document.querySelector(`.carousel-controls .next[data-target="${containerId}"]`);
+    
+    let position = 0;
+    const step = 310; // card width + gap
 
-      // Auto-scroll (5 seconds)
-      setInterval(() => {
-        position++;
-        if (position >= track.children.length) position = 0;
-        track.style.transform = `translateX(-${position * step}px)`;
-      }, 5000);
+    // Auto-scroll every 5 seconds
+    const autoScroll = setInterval(() => {
+      position++;
+      if (position >= track.children.length) position = 0;
+      track.style.transform = `translateX(-${position * step}px)`;
+    }, 5000);
 
-      // Manual controls
+    // Manual prev button
+    if (prevBtn) {
       prevBtn.addEventListener("click", () => {
         position = Math.max(0, position - 1);
         track.style.transform = `translateX(-${position * step}px)`;
       });
+    }
 
+    // Manual next button
+    if (nextBtn) {
       nextBtn.addEventListener("click", () => {
         position = Math.min(track.children.length - 1, position + 1);
         track.style.transform = `translateX(-${position * step}px)`;
       });
     }
-  </script>
-  <script src="script.js"></script>
+  }
+</script>
 
+<!-- Initialize carousels: load feeds then wire controls -->
 <script>
-  // Initialize carousels: load feeds then wire controls
   (async () => {
-    await loadSection("world", "world-news-carousel");
-    await loadSection("finance", "finance-carousel");
-    await loadSection("economy", "economy-carousel");
+    try {
+      await loadSection("world", "world-news-carousel");
+      await loadSection("finance", "finance-carousel");
+      await loadSection("economy", "economy-carousel");
 
-    setupControls("world-news-carousel");
-    setupControls("finance-carousel");
-    setupControls("economy-carousel");
+      setupControls("world-news-carousel");
+      setupControls("finance-carousel");
+      setupControls("economy-carousel");
+    } catch (err) {
+      console.error("Error initializing carousels:", err);
+    }
   })();
 </script>
 
+<!-- Force Home Hub tab to show on initial page load -->
 <script>
-  // Force Home Hub tab to show on page load and highlight its button
   document.addEventListener("DOMContentLoaded", () => {
-    showStartupHub(); // Home Hub loads first and button is highlighted
+    showStartupHub(); // Loads Home Hub first and highlights its button
   });
 </script>
 
-<!-- Load external script with full quiz logic -->
+<!-- Main application script (loaded only once) -->
 <script src="script.js"></script>
-
-<script>
+    
   async function loadSocialLinks() {
     const res = await fetch('/social-links.json');
     return await res.json();
