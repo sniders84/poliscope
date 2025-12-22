@@ -2755,13 +2755,21 @@ function showRatings() {
   fetch('president-ratings.json')
     .then(res => res.json())
     .then(ratings => {
+      // Merge saved ratings from localStorage
+      const saved = JSON.parse(localStorage.getItem('ratingsData')) || {};
+      ratings.forEach(r => {
+        if (saved[r.slug]) {
+          r.votes = saved[r.slug].votes;
+          r.averageRating = saved[r.slug].averageRating;
+        }
+      });
+
       const container = document.getElementById('ratings-cards');
       container.innerHTML = '';
 
       ratings.forEach(r => {
-        // Look up the official by slug in your existing dataset
         const official = federalOfficials.find(o => o.slug === r.slug);
-        if (!official) return; // skip if not found
+        if (!official) return;
 
         const card = document.createElement('div');
         card.className = 'info-card';
@@ -2769,7 +2777,7 @@ function showRatings() {
           <img src="${official.photo}" alt="${official.name}" class="card-image" />
           <h3>${official.name}</h3>
           <p>${official.office}</p>
-          <div class="rating-badge">Avg: ${r.averageRating.toFixed(1)} ★</div>
+          <div class="rating-badge">Avg: ${r.averageRating ? r.averageRating.toFixed(1) : '0.0'} ★</div>
           <button onclick="openRatingsModal('${r.slug}')">View Ratings</button>
         `;
         container.appendChild(card);
