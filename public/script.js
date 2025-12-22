@@ -2780,27 +2780,14 @@ function showRatings() {
           <div class="rating-badge" style="color:${getRatingColor(r.averageRating)}">
             ${avg} ★
           </div>
-         <button class="btn-modern" onclick="openRatingsModal('${r.slug}')">View Ratings</button>
+          <button class="btn-modern" onclick="openRatingsModal('${r.slug}')">View Ratings</button>
         `;
         container.appendChild(card);
       });
     });
 }
 
-function openRatingsModal(slug) {
-  Promise.all([
-    fetch('president-ratings.json').then(res => res.json())
-  ]).then(([ratings]) => {
-    // Load any saved ratings from localStorage
-    const saved = JSON.parse(localStorage.getItem('ratingsData')) || {};
-    ratings.forEach(r => {
-      if (saved[r.slug]) {
-        r.votes = saved[r.slug].votes;
-        r.averageRating = saved[r.slug].averageRating;
-      }
-    });
-
-    // Expanded categories
+// Expanded categories
 const ratingCategories = [
   "Honesty","Humility","Transparency","Integrity","Consistency","Accountability","Patience",
   "Government Experience","Foreign Policy Experience","Vision","Resilience","Commitment","Courage",
