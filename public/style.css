@@ -6174,212 +6174,39 @@ section > h3 {
   padding: 20px;
 }
 
-.info-card {
-  background: #1e1e1e; /* dark gray for consistency */
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-  text-align: center;
-  padding: 15px;
-  transition: transform 0.2s ease;
-}
-
-.info-card:hover {
-  transform: translateY(-4px);
-}
-#ratings-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 12px; /* tighter spacing between cards */
-  padding: 10px;
-}
-
-.info-card {
-  background: #1e1e1e; /* dark gray for consistency */
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
-  text-align: center;
-  padding: 15px;
-
-  /* Force uniform sizing */
-  height: 320px;              /* lock card height */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.info-card img.card-image {
-  width: 100%;
-  height: 160px;              /* fixed image height */
-  object-fit: cover;          /* crop/scale consistently */
-  border-radius: 6px;
-}
-
-.info-card h3 {
-  margin: 8px 0 4px;
-  font-size: 18px;
-}
-
-.info-card p {
-  margin: 0 0 8px;
-  font-size: 14px;
-  color: #ccc;
-}
-
-.rating-badge {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 8px;
-}
-
-.info-card .btn-modern {
-  margin-top: auto;           /* push button to bottom */
-}
-#ratings-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 10px; /* tighter spacing */
-  padding: 10px;
-}
-
-.info-card {
-  background: #1e1e1e;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
-  text-align: center;
-  padding: 12px;
-  height: 300px; /* uniform height */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.info-card img.card-image {
-  width: 100%;
-  height: 140px; /* fixed image height */
-  object-fit: cover;
-  border-radius: 6px;
-}
-
-.info-card h3 {
-  margin: 6px 0 2px;
-  font-size: 16px;
-}
-
-.info-card p {
-  margin: 0 0 6px;
-  font-size: 13px;
-  color: #ccc;
-}
-
-.rating-badge {
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 6px;
-}
-
-.info-card .btn-view {
-  font-size: 12px;       /* smaller text */
-  padding: 6px 10px;     /* tighter button */
-  border-radius: 4px;
-  background: #007bff;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-}
-
-.info-card .btn-view:hover {
-  background: #0056b3;
-}
 /* Ratings & Rankings grid */
 #ratings-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* smaller footprint */
-  gap: 12px; /* tight spacing */
-  padding: 12px;
-}
-
-/* Ratings card styling */
-.info-card {
-  background: #1e1e1e;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
-  text-align: center;
-  padding: 10px;
-
-  /* Force uniform sizing */
-  height: 220px;              /* about half the size of your officials' cards */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  overflow: hidden;           /* prevents bleed-out */
-}
-
-.info-card img.card-image {
-  width: 100%;
-  height: 100px;              /* fixed image height */
-  object-fit: cover;          /* crop/scale consistently */
-  border-radius: 6px;
-}
-
-.info-card h3 {
-  margin: 6px 0 2px;
-  font-size: 14px;
-  line-height: 1.2;
-}
-
-.info-card p {
-  margin: 0 0 6px;
-  font-size: 12px;
-  color: #ccc;
-}
-
-.rating-badge {
-  font-size: 14px;
-  font-weight: bold;
-  margin-bottom: 6px;
-}
-
-.info-card .btn-view {
-  font-size: 11px;       /* smaller button */
-  padding: 5px 8px;      /* compact fit */
-  border-radius: 4px;
-  background: #007bff;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-}
-
-.info-card .btn-view:hover {
-  background: #0056b3;
-}
-/* Ratings & Rankings grid */
-#ratings-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 14px; /* a touch more breathing room between cards */
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* compact footprint */
+  gap: 14px;               /* breathing room between cards */
   padding: 14px;
 }
 
 /* Ratings card styling */
 .info-card {
-  background: #1e1e1e;
+  background: #1e1e1e;      /* dark gray for consistency */
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.25);
   text-align: center;
-  padding: 12px;              /* slightly more padding inside */
-  height: 240px;              /* same compact size, but a bit taller for breathing room */
+  padding: 12px;            /* balanced internal padding */
+  height: 240px;            /* uniform compact height */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  overflow: hidden;           /* ensures nothing bleeds out */
+  overflow: hidden;         /* prevents bleed-out */
+  transition: transform 0.2s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-4px); /* subtle hover lift */
 }
 
 .info-card img.card-image {
   width: 100%;
-  height: 100px;              /* fixed image height */
-  object-fit: cover;
+  height: 100px;            /* fixed image height */
+  object-fit: cover;        /* crop/scale consistently */
   border-radius: 6px;
-  margin-bottom: 6px;         /* space below image */
+  margin-bottom: 6px;       /* space below image */
 }
 
 .info-card h3 {
@@ -6401,8 +6228,8 @@ section > h3 {
 }
 
 .info-card .btn-view {
-  font-size: 11px;
-  padding: 6px 10px;          /* slightly larger padding for readability */
+  font-size: 11px;          /* smaller button text */
+  padding: 6px 10px;        /* compact fit */
   border-radius: 4px;
   background: #007bff;
   color: #fff;
