@@ -2798,6 +2798,20 @@ async function loadRatingsData() {
   _ratingsBySlug = Object.fromEntries(ratings.map(r => [r.slug, r]));
 }
 
+// Hardwired exceptions for President & Vice President
+const hardwiredOfficials = {
+  "donald-trump": {
+    name: "Donald J. Trump",
+    office: "President",
+    photo: "assets/president/trump.jpg"
+  },
+  "jd-vance": {
+    name: "JD Vance",
+    office: "Vice President",
+    photo: "assets/vicepresident/vance.jpg"
+  }
+};
+
 // Show Ratings tab
 async function showRatings() {
   if (!_ratingsCache.length) {
@@ -2809,15 +2823,16 @@ async function showRatings() {
   container.innerHTML = '';
 
   _ratingsCache.forEach(r => {
+    const official = hardwiredOfficials[r.slug] || r; // Trump/Vance hardwired, others use JSON fields
     const avgNum = typeof r.averageRating === 'number' ? r.averageRating : 0;
     const avgText = avgNum.toFixed(1);
 
     const card = document.createElement('div');
     card.className = 'info-card';
     card.innerHTML = `
-      <img src="${r.photo || 'assets/placeholder.png'}" alt="${r.name || ''}" class="card-image" />
-      <h3>${r.name || ''}</h3>
-      <p>${r.office || ''}</p>
+      <img src="${official.photo || 'assets/placeholder.png'}" alt="${official.name || ''}" class="card-image" />
+      <h3>${official.name || ''}</h3>
+      <p>${official.office || ''}</p>
       <div class="rating-badge" style="color:${getRatingColor(avgNum)}">
         ${avgText} ★
       </div>
@@ -2835,19 +2850,12 @@ async function openRatingsModal(slug) {
   const ratingEntry = _ratingsBySlug[slug];
   if (!ratingEntry) return;
 
-  // Populate modal fields directly from JSON
-  const titleEl = document.getElementById('ratings-modal-title');
-  const photoEl = document.getElementById('ratings-modal-photo');
-  const posEl   = document.getElementById('ratings-modal-position');
-  const detailsEl = document.getElementById('ratings-details');
-  const modalEl = document.getElementById('ratings-modal');
-  const formEl  = document.getElementById('rate-form');
+  const official = hardwiredOfficials[slug] || ratingEntry;
 
-  if (!titleEl || !photoEl || !posEl || !detailsEl || !modalEl || !formEl) return;
-
-  titleEl.textContent = ratingEntry.name || '';
-  photoEl.src = ratingEntry.photo || 'assets/placeholder.png';
-  posEl.textContent = ratingEntry.office || '';
+  // Populate modal fields
+  document.getElementById('ratings-modal-title').textContent = official.name || '';
+  document.getElementById('ratings-modal-photo').src = official.photo || 'assets/placeholder.png';
+  document.getElementById('ratings-modal-position').textContent = official.office || '';
 
   // Build category averages + vote counts
   let details = '';
@@ -2863,13 +2871,14 @@ async function openRatingsModal(slug) {
       </div>
     `;
   }
-  detailsEl.innerHTML = details;
+  document.getElementById('ratings-details').innerHTML = details;
 
   // Show modal
-  modalEl.style.display = 'block';
+  document.getElementById('ratings-modal').style.display = 'block';
 
   // Build rating form dynamically
-  formEl.innerHTML = ratingCategories.map(cat => `
+  const form = document.getElementById('rate-form');
+  form.innerHTML = ratingCategories.map(cat => `
     <div class="rating-row">
       <span class="category-label">${cat}</span>
       <span class="star-rating" data-category="${cat}"></span>
@@ -2880,7 +2889,7 @@ async function openRatingsModal(slug) {
   initStarRatings();
 
   // Handle rating form submission
-  formEl.onsubmit = function(e) {
+  form.onsubmit = function(e) {
     e.preventDefault();
 
     const saved = JSON.parse(localStorage.getItem('ratingsData')) || {};
@@ -2932,9 +2941,9 @@ async function openRatingsModal(slug) {
         (${votes.length} votes)
       </p>`;
     }
-    detailsEl.innerHTML = updated;
+    document.getElementById('ratings-details').innerHTML = updated;
 
-    // Update card badge in Ratings tab
+    // Update card badge
     const btn = document.querySelector(`button[onclick="openRatingsModal('${ratingEntry.slug}')"]`);
     const badge = btn ? btn.previousElementSibling : null;
     if (badge) {
@@ -2942,10 +2951,7 @@ async function openRatingsModal(slug) {
       badge.style.color = getRatingColor(entry.averageRating);
     }
 
-    // Reset stars
     initStarRatings();
-
-    // Close rate modal
     closeModal('rate-modal');
   };
 }
@@ -2974,6 +2980,7 @@ function initStarRatings() {
           if (s) {
             s.classList.add('filled');
             s.style.color = getRatingColor(j);
+          }
           }
         }
         span.dataset.selected = String(i);
