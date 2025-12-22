@@ -6087,12 +6087,12 @@ section > h3 {
 }
 /* Hover highlight for display grid */
 .rating-cell:hover {
-  background: #3a3a3a;   /* slightly lighter gray */
+  background: #1e90ff;   /* same blue hover as cards/modals */
   transition: background 0.2s ease;
 }
 
 /* Hover highlight for rating form grid */
 .rating-row:hover {
-  background: #3a3a3a;   /* same lighter gray */
+  background: #1e90ff;   /* same blue hover */
   transition: background 0.2s ease;
 }
