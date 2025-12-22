@@ -2139,7 +2139,7 @@ const federalOfficials = [
     "party": "Republican",
     "office": "Vice President",
     "slug": "jd-vance",
-    "photo": "https://upload.wikimedia.org/wikipedia/commons/f/f3/January_2025_Official_Vice_Presidential_Portrait_of_JD_Vance.jpg",
+    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-htUM6chbfF88ldyeCNBFsHr-oOK3NgyMpg&s",
     "ballotpediaLink": "https://ballotpedia.org/J.D._Vance",
     "govtrackLink": "https://www.govtrack.us/congress/members/james_david_vance/456876/report-card/2024",
     "termStart": "2025-01-20",
