@@ -2762,54 +2762,86 @@ const ratingCategories = [
 ];
 
 // Show Ratings tab
-function showRatings() {
-  Promise.all([
+async function showRatings() {
+  // Load ratings
+  const [
+    presidents, vps,
+    governorsRatings, ltgovRatings,
+    senatorsRatings, repsRatings,
+    governors, ltgovs,
+    senators, reps
+  ] = await Promise.all([
     fetch('president-ratings.json').then(res => res.json()),
     fetch('vicepresident-ratings.json').then(res => res.json()),
     fetch('governors-ratings.json').then(res => res.json()),
     fetch('ltgovernors-ratings.json').then(res => res.json()),
     fetch('senators-ratings.json').then(res => res.json()),
-    fetch('housereps-ratings.json').then(res => res.json())
-  ]).then(([presidents, vps, governors, ltgovs, senators, housereps]) => {
-    let ratings = [
-      ...presidents,
-      ...vps,
-      ...governors,
-      ...ltgovs,
-      ...senators,
-      ...housereps
-    ];
+    fetch('housereps-ratings.json').then(res => res.json()),
+    fetch('governors.json').then(res => res.json()),
+    fetch('ltgovernors.json').then(res => res.json()),
+    fetch('senators.json').then(res => res.json()),
+    fetch('housereps.json').then(res => res.json())
+  ]);
 
-    const saved = JSON.parse(localStorage.getItem('ratingsData')) || {};
-    ratings.forEach(r => {
-      if (saved[r.slug]) {
-        r.votes = saved[r.slug].votes;
-        r.averageRating = saved[r.slug].averageRating;
-      }
-    });
+  // Build officials lookup
+  const officials = [
+    ...governors,
+    ...ltgovs,
+    ...senators,
+    ...reps
+  ];
+  const officialsBySlug = Object.fromEntries(officials.map(o => [o.slug, o]));
 
-    const container = document.getElementById('ratings-cards');
-    container.innerHTML = '';
+  // Merge all ratings
+  let ratings = [
+    ...presidents,
+    ...vps,
+    ...governorsRatings,
+    ...ltgovRatings,
+    ...senatorsRatings,
+    ...repsRatings
+  ];
 
-    ratings.forEach(r => {
-      const official = federalOfficials.find(o => o.slug === r.slug);
-      if (!official) return;
-
-      const card = document.createElement('div');
-      card.className = 'info-card';
-      const avg = r.averageRating ? r.averageRating.toFixed(1) : '0.0';
-      card.innerHTML = `
-        <img src="${official.photo}" alt="${official.name}" class="card-image" />
-        <h3>${official.name}</h3>
-        <p>${official.office}</p>
-        <div class="rating-badge" style="color:${getRatingColor(r.averageRating)}">
-          ${avg} ★
-        </div>
-        <button class="btn-view" onclick="openRatingsModal('${r.slug}')">View Ratings</button>
-      `;
-      container.appendChild(card);
-    });
+  // Merge saved votes
+  const saved = JSON.parse(localStorage.getItem('ratingsData')) || {};
+  ratings.forEach(r => {
+    if (!r.votes) r.votes = {};
+    if (saved[r.slug]) {
+      r.votes = saved[r.slug].votes || {};
+      r.averageRating = saved[r.slug].averageRating || 0;
+    } else if (typeof r.averageRating !== 'number') {
+      r.averageRating = 0;
+    }
   });
+
+  const container = document.getElementById('ratings-cards');
+  if (!container) return;
+  container.innerHTML = '';
+
+  ratings.forEach(r => {
+    // Hardwired for Trump/Vance, otherwise officials JSON
+    const official = hardwiredOfficials[r.slug] || officialsBySlug[r.slug] || r;
+    const avgNum = typeof r.averageRating === 'number' ? r.averageRating : 0;
+    const avgText = avgNum.toFixed(1);
+
+    const card = document.createElement('div');
+    card.className = 'info-card';
+    card.innerHTML = `
+      <img src="${official.photo || 'assets/placeholder.png'}" alt="${official.name || ''}" class="card-image" />
+      <h3>${official.name || ''}</h3>
+      <p>${official.office || ''}</p>
+      <div class="rating-badge" style="color:${getRatingColor(avgNum)}">
+        ${avgText} ★
+      </div>
+      <button class="btn-view" onclick="openRatingsModal('${r.slug}')">View Ratings</button>
+    `;
+    container.appendChild(card);
+  });
+
+  // Update cache for modal use
+  _ratingsCache = ratings;
+  _ratingsBySlug = Object.fromEntries(ratings.map(r => [r.slug, r]));
+  _officialsBySlug = officialsBySlug;
 }
 
 // Open Ratings Modal
