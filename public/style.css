@@ -5952,3 +5952,11 @@ section > h3 {
 #rate-me-btn:hover {
   background: #0d6efd; /* darker blue hover */
 }
+.star-rating {
+  font-size: 24px;
+  color: #ccc; /* empty */
+  cursor: pointer;
+}
+.star-rating .filled {
+  color: #1e90ff; /* your blue hue */
+}
