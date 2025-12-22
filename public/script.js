@@ -2755,7 +2755,6 @@ function showRatings() {
   fetch('president-ratings.json')
     .then(res => res.json())
     .then(ratings => {
-      // Merge saved ratings from localStorage
       const saved = JSON.parse(localStorage.getItem('ratingsData')) || {};
       ratings.forEach(r => {
         if (saved[r.slug]) {
@@ -2773,11 +2772,14 @@ function showRatings() {
 
         const card = document.createElement('div');
         card.className = 'info-card';
+        const avg = r.averageRating ? r.averageRating.toFixed(1) : '0.0';
         card.innerHTML = `
           <img src="${official.photo}" alt="${official.name}" class="card-image" />
           <h3>${official.name}</h3>
           <p>${official.office}</p>
-          <div class="rating-badge">Avg: ${r.averageRating ? r.averageRating.toFixed(1) : '0.0'} ★</div>
+          <div class="rating-badge" style="color:${getRatingColor(r.averageRating)}">
+            ${avg} ★
+          </div>
           <button onclick="openRatingsModal('${r.slug}')">View Ratings</button>
         `;
         container.appendChild(card);
@@ -2800,7 +2802,6 @@ function openRatingsModal(slug) {
 
     // Find rating entry
     const ratingEntry = ratings.find(r => r.slug === slug);
-    // Find official details from your existing dataset
     const official = federalOfficials.find(o => o.slug === slug);
 
     if (!official || !ratingEntry) return;
@@ -2822,72 +2823,73 @@ function openRatingsModal(slug) {
     // Show modal
     document.getElementById('ratings-modal').style.display = 'block';
 
-   // Handle rating form submission
-document.getElementById('rate-form').onsubmit = function(e) {
-  e.preventDefault();
+    // Handle rating form submission
+    document.getElementById('rate-form').onsubmit = function(e) {
+      e.preventDefault();
 
-  const officialName = document.getElementById('ratings-modal-title').textContent;
-  const official = federalOfficials.find(o => o.name === officialName);
-  if (!official) return;
+      const officialName = document.getElementById('ratings-modal-title').textContent;
+      const official = federalOfficials.find(o => o.name === officialName);
+      if (!official) return;
 
-  // Load ratings from localStorage
-  const saved = JSON.parse(localStorage.getItem('ratingsData')) || {};
-  let ratingEntry = saved[official.slug];
+      const saved = JSON.parse(localStorage.getItem('ratingsData')) || {};
+      let ratingEntry = saved[official.slug];
 
-  if (!ratingEntry) {
-    ratingEntry = { votes: { Leadership: [], Integrity: [], Communication: [] }, averageRating: 0 };
-    saved[official.slug] = ratingEntry;
-  }
+      if (!ratingEntry) {
+        ratingEntry = { votes: { Leadership: [], Integrity: [], Communication: [] }, averageRating: 0 };
+        saved[official.slug] = ratingEntry;
+      }
 
-  // Collect star selections
-  document.querySelectorAll('#rate-modal .star-rating').forEach(span => {
-    const category = span.dataset.category;
-    const selected = parseInt(span.dataset.selected || 0);
-    if (selected > 0) {
-      ratingEntry.votes[category].push(selected);
-    }
-  });
+      // Collect star selections
+      document.querySelectorAll('#rate-modal .star-rating').forEach(span => {
+        const category = span.dataset.category;
+        const selected = parseInt(span.dataset.selected || 0);
+        if (selected > 0) {
+          ratingEntry.votes[category].push(selected);
+        }
+      });
 
-  // Recalculate average
-  let total = 0, count = 0;
-  for (const category in ratingEntry.votes) {
-    const votes = ratingEntry.votes[category];
-    total += votes.reduce((a,b)=>a+b,0);
-    count += votes.length;
-  }
-  ratingEntry.averageRating = count ? total / count : 0;
+      // Recalculate average
+      let total = 0, count = 0;
+      for (const category in ratingEntry.votes) {
+        const votes = ratingEntry.votes[category];
+        total += votes.reduce((a,b)=>a+b,0);
+        count += votes.length;
+      }
+      ratingEntry.averageRating = count ? total / count : 0;
 
-  // Save back to localStorage
-  saved[official.slug] = {
-    votes: ratingEntry.votes,
-    averageRating: ratingEntry.averageRating
-  };
-  localStorage.setItem('ratingsData', JSON.stringify(saved));
+      // Save back to localStorage
+      saved[official.slug] = {
+        votes: ratingEntry.votes,
+        averageRating: ratingEntry.averageRating
+      };
+      localStorage.setItem('ratingsData', JSON.stringify(saved));
 
-  // Update modal details
-  let updatedDetails = '';
-  for (const category in ratingEntry.votes) {
-    const votes = ratingEntry.votes[category];
-    const avg = votes.length ? (votes.reduce((a,b)=>a+b,0)/votes.length).toFixed(1) : 'N/A';
-    updatedDetails += `<p>${category}: ${avg} ★ (${votes.length} votes)</p>`;
-  }
-  document.getElementById('ratings-details').innerHTML = updatedDetails;
+      // Update modal details
+      let updatedDetails = '';
+      for (const category in ratingEntry.votes) {
+        const votes = ratingEntry.votes[category];
+        const avg = votes.length ? (votes.reduce((a,b)=>a+b,0)/votes.length).toFixed(1) : 'N/A';
+        updatedDetails += `<p>${category}: ${avg} ★ (${votes.length} votes)</p>`;
+      }
+      document.getElementById('ratings-details').innerHTML = updatedDetails;
 
-  // Update card badge in Ratings tab
-  const badge = document.querySelector(
-    `button[onclick="openRatingsModal('${official.slug}')"]`
-  ).previousElementSibling;
-  if (badge) {
-    badge.textContent = `${ratingEntry.averageRating.toFixed(1)} ★`;
-    badge.style.color = getRatingColor(ratingEntry.averageRating); // use your thresholds
-  }
+      // Update card badge in Ratings tab
+      const badge = document.querySelector(
+        `button[onclick="openRatingsModal('${official.slug}')"]`
+      ).previousElementSibling;
+      if (badge) {
+        badge.textContent = `${ratingEntry.averageRating.toFixed(1)} ★`;
+        badge.style.color = getRatingColor(ratingEntry.averageRating);
+      }
 
-  // Reset stars
-  initStarRatings();
+      // Reset stars
+      initStarRatings();
 
-  // Close rate modal
-  closeModal('rate-modal');
-};
+      // Close rate modal
+      closeModal('rate-modal');
+    };
+  }); // <-- closes .then
+}     // <-- closes openRatingsModal
 
 function closeModal(id) {
   document.getElementById(id).style.display = 'none';
@@ -2899,6 +2901,7 @@ document.getElementById('rate-me-btn').onclick = function() {
   document.getElementById('rate-modal').style.display = 'block';
   initStarRatings();
 };
+;
 
 function initStarRatings() {
   const stars = document.querySelectorAll('#rate-modal .star-rating');
