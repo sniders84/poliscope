@@ -6177,9 +6177,9 @@ section > h3 {
 /* Ratings & Rankings grid */
 #ratings-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* compact footprint */
-  gap: 14px;               /* spacing between cards */
-  padding: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* compact footprint */
+  gap: 16px;               /* spacing between cards */
+  padding: 16px;
 }
 
 /* Ratings card styling */
@@ -6188,8 +6188,9 @@ section > h3 {
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.25);
   text-align: center;
-  padding: 14px;            /* balanced internal padding */
-  height: 280px;            /* taller height for breathing room */
+  padding: 14px;
+  min-height: 260px;        /* ensures cards don’t shrink too small */
+  max-height: 340px;        /* keeps them from growing too tall */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -6203,10 +6204,10 @@ section > h3 {
 
 .info-card img.card-image {
   width: 100%;
-  height: 120px;            /* slightly taller image */
+  height: 120px;            /* consistent image height */
   object-fit: cover;        /* crop/scale consistently */
   border-radius: 6px;
-  margin-bottom: 8px;       /* space below image */
+  margin-bottom: 8px;
 }
 
 .info-card h3 {
