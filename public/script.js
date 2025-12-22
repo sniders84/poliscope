@@ -2840,13 +2840,13 @@ document.getElementById('ratings-details').innerHTML = details;
     // Build rating form dynamically
     const form = document.getElementById('rate-form');
     form.innerHTML = ratingCategories.map(cat => `
-      <p class="rating-row" style="font-size:18px;">
-        <span class="category-label">${cat}:</span>
-        <span class="star-rating" data-category="${cat}"></span>
-      </p>
-    `).join('') + `
-      <button type="submit" id="submit-rating-btn" class="btn-modern">Submit Rating</button>
-    `;
+  <div class="rating-row">
+    <span class="category-label">${cat}</span>
+    <span class="star-rating" data-category="${cat}"></span>
+  </div>
+`).join('') + `
+  <button type="submit" id="submit-rating-btn" class="btn-modern">Submit Rating</button>
+`;
     initStarRatings();
 
     // Handle rating form submission
