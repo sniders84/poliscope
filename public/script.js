@@ -2754,23 +2754,29 @@ function showCitizenship() {
 function showRatings() {
   fetch('president-ratings.json')
     .then(res => res.json())
-    .then(data => {
+    .then(ratings => {
       const container = document.getElementById('ratings-cards');
       container.innerHTML = '';
-      data.forEach(off => {
+
+      ratings.forEach(r => {
+        // Look up the official by slug in your existing dataset
+        const official = federalOfficials.find(o => o.slug === r.slug);
+        if (!official) return; // skip if not found
+
         const card = document.createElement('div');
         card.className = 'info-card';
         card.innerHTML = `
-          <img src="${off.photo}" alt="${off.name}" class="card-image" />
-          <h3>${off.name}</h3>
-          <p>${off.position}</p>
-          <div class="rating-badge">Avg: ${off.averageRating.toFixed(1)} ★</div>
-          <button onclick="openRatingsModal('${off.slug}')">View Ratings</button>
+          <img src="${official.photo}" alt="${official.name}" class="card-image" />
+          <h3>${official.name}</h3>
+          <p>${official.office}</p>
+          <div class="rating-badge">Avg: ${r.averageRating.toFixed(1)} ★</div>
+          <button onclick="openRatingsModal('${r.slug}')">View Ratings</button>
         `;
         container.appendChild(card);
       });
     });
 }
+
 function openRatingsModal(slug) {
   fetch('president-ratings.json')
     .then(res => res.json())
