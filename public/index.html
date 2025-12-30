@@ -354,10 +354,8 @@
 
   <!-- Filters/Search Bar -->
   <div id="ratings-filters" class="filters-bar">
-    <!-- Search -->
     <input type="text" id="searchInput" placeholder="Search officials..." />
 
-    <!-- Office filter -->
     <select id="officeFilter">
       <option value="">All Offices</option>
       <option value="governors">Governors</option>
@@ -366,13 +364,11 @@
       <option value="housereps">House Reps</option>
     </select>
 
-    <!-- State filter -->
     <select id="stateFilter">
       <option value="">All States</option>
-      <!-- dynamically populate with 2-letter states -->
+      <!-- Populate with your states list if needed -->
     </select>
 
-    <!-- Party filter -->
     <select id="partyFilter">
       <option value="">All Parties</option>
       <option value="Democrat">Democrat</option>
@@ -383,7 +379,7 @@
 
   <!-- Results container -->
   <div id="ratings-cards" class="card-section">
-    <!-- Cards will be populated dynamically -->
+    <!-- Cards will be populated by JS from window.allOfficials -->
   </div>
 </section>
 
