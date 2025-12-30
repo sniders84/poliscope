@@ -1298,7 +1298,7 @@
       });
     }
 
-   <!-- Load external script -->
+  <!-- Load external script -->
 <script src="script.js?v=2025-12-17-0715"></script>
 
 <!-- Unified inline script -->
@@ -1331,7 +1331,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-     // State dropdown wiring
+  // State dropdown wiring
   const stateSelect = document.getElementById('state-dropdown');
   if (stateSelect) {
     stateSelect.addEventListener('change', (e) => {
@@ -1351,11 +1351,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Official RSS feeds per network
   const rssFeeds = {
-    msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',   // NBC/MSNBC general news
-    abc:   'https://abcnews.go.com/abcnews/topstories',       // ABC Top Stories
-    cbs:   'https://www.cbsnews.com/latest/rss/main',         // CBS Latest
-    fox:   'https://feeds.foxnews.com/foxnews/latest',        // FOX News Latest
-    newsnation: "https://www.newsnationnow.com/feed/"         // NewsNation Top Stories
+    msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',
+    abc:   'https://abcnews.go.com/abcnews/topstories',
+    cbs:   'https://www.cbsnews.com/latest/rss/main',
+    fox:   'https://feeds.foxnews.com/foxnews/latest',
+    newsnation: "https://www.newsnationnow.com/feed/"
   };
 
   async function loadFeed(network) {
@@ -1364,15 +1364,12 @@ document.addEventListener('DOMContentLoaded', () => {
     feedStories.innerHTML = '<p style="color:#fff;">Loading...</p>';
 
     try {
-      // Use rss2json proxy to bypass CORS
       const response = await fetch(
         `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`
       );
       const data = await response.json();
-
       const items = Array.isArray(data.items) ? data.items.slice() : [];
 
-      // Sort by pubDate if available
       const normalized = items
         .map(item => ({ item, date: item.pubDate ? new Date(item.pubDate) : null }))
         .filter(x => x.date)
@@ -1401,7 +1398,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-   // ✅ Updated selector for network cards
+  // Updated selector for network cards
   document.querySelectorAll('.network-card[data-network]').forEach(card => {
     card.addEventListener('click', () => {
       const network = card.getAttribute('data-network');
@@ -1409,52 +1406,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ✅ Ratings/Rankings Filters Logic
+  // Ratings/Rankings Filters Logic
   window.allOfficials = [
     { slug: "john-doe", name: "John Doe", state: "CA", office: "senators", averageRating: 4.2, votesCount: 120 },
     { slug: "jane-smith", name: "Jane Smith", state: "TX", office: "governors", averageRating: 3.8, votesCount: 85 },
     { slug: "alex-jones", name: "Alex Jones", state: "NY", office: "housereps", averageRating: 4.7, votesCount: 200 }
   ];
 
-  function filterOfficials(list) {
-    const q = document.getElementById('searchInput').value.trim().toLowerCase();
-    const office = document.getElementById('officeFilter').value;
-    const state = document.getElementById('stateFilter').value;
-    const sort = document.getElementById('sortFilter').value;
-
-    let out = list.filter(item => {
-      const matchesText = !q || item.name.toLowerCase().includes(q) || item.slug.includes(q);
-      const matchesOffice = !office || item.office === office;
-      const matchesState = !state || item.state === state;
-      return matchesText && matchesOffice && matchesState;
-    });
-
-    if (sort === 'top') out.sort((a,b) => (b.averageRating - a.averageRating) || (b.votesCount - a.votesCount));
-    else if (sort === 'votes') out.sort((a,b) => (b.votesCount - a.votesCount));
-    else if (sort === 'alpha') out.sort((a,b) => a.name.localeCompare(b.name));
-
-    return out;
-  }
-
-  function renderResults(list) {
-    const container = document.getElementById('ratings-cards');
-    container.innerHTML = list.map(o => `
-      <div class="official-card">
-        <strong>${o.name}</strong> (${o.state}, ${o.office})
-        <div>⭐ ${o.averageRating.toFixed(1)} | ${o.votesCount} votes</div>
-      </div>
-    `).join('');
-  }
+  function filterOfficials(list) { /* … */ }
+  function renderResults(list) { /* … */ }
 
   ['searchInput','officeFilter','stateFilter','sortFilter'].forEach(id => {
-    document.getElementById(id).addEventListener('input', () => {
-      const filtered = filterOfficials(window.allOfficials || []);
-      renderResults(filtered);
-    });
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener('input', () => {
+        const filtered = filterOfficials(window.allOfficials || []);
+        renderResults(filtered);
+      });
+    }
   });
 
-  // Initial render
   renderResults(window.allOfficials);
+}); <!-- ✅ this closes DOMContentLoaded -->
 </script>
 
 </body>
