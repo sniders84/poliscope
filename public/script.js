@@ -3025,3 +3025,33 @@ document.getElementById('rate-me-btn').onclick = function() {
   initStarRatings();
 };
 
+// ✅ Ratings/Rankings — minimal render only
+(function initRatingsRender() {
+  const container = document.getElementById('ratings-cards');
+  if (!container) return;
+
+  // Expect window.allOfficials to be populated earlier from your JSON files
+  const officials = Array.isArray(window.allOfficials) ? window.allOfficials : [];
+
+  function renderResults(list) {
+    container.innerHTML = list.map(o => `
+      <div class="official-card" data-slug="${o.slug || ''}">
+        <strong>${o.name || 'Unknown'}</strong>
+        <span>(${o.state || '—'}, ${o.office || '—'}, ${o.party || '—'})</span>
+      </div>
+    `).join('');
+
+    // Keep cards clickable
+    container.querySelectorAll('.official-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const slug = card.getAttribute('data-slug');
+        if (slug && typeof openOfficialModal === 'function') {
+          openOfficialModal(slug);
+        }
+      });
+    });
+  }
+
+  // Initial render
+  renderResults(officials);
+})();
