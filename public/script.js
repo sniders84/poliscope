@@ -48,13 +48,26 @@ function updateFavoriteButton(btn, isFavorited) {
 }
 
 // === GLOBAL STATE ===
-let selectedState = 'North Carolina';
+// No let selectedState here — we use window.selectedState from HTML to avoid duplicate declaration
+
+// These will be filled by data loading
 let governors = [];
 let ltGovernors = [];
 let senators = [];
 let houseReps = [];
-let officialsContainer = null;
-let searchBar = null;
+
+// Global array for Ratings tab — will be filled in data loading
+window.allOfficials = [];
+
+// Missing function for search bar wiring
+function wireSearchBar() {
+  const sb = document.getElementById('search-bar');
+  if (sb) {
+    sb.addEventListener('input', (e) => {
+      renderOfficials(window.selectedState, e.target.value);
+    });
+  }
+}
 
 // === DATA LOADING ===
 Promise.all([
@@ -75,7 +88,7 @@ Promise.all([
   senators = sens;
   houseReps = reps;
 
-  const allOfficials = [
+  window.allOfficials = [
     ...federal,
     ...cabinet,
     ...sens,
@@ -85,18 +98,11 @@ Promise.all([
     ...scotus
   ];
 
-  if (searchBar) {
-    searchBar.addEventListener('input', e => {
-      renderOfficials(selectedState, e.target.value);
-    });
-  }
+  wireSearchBar(); // Wire search bar after DOM is ready
 })
 .catch(err => console.error('Error loading data files:', err));
 
 // === PODCASTS & SHOWS DATA ===
-let podcastsData = [];
-let showsData = [];
-
 Promise.all([
   fetch('podcasts.json').then(res => res.json()),
   fetch('shows.json').then(res => res.json())
@@ -125,8 +131,8 @@ function showTab(id) {
 function showStartupHub() { showTab('startup-hub'); }
 function showQuizzes() { showTab('quizzes'); }
 
-// Officials tab stub
-function renderOfficials(state, filter) {
+// Officials tab stub (will be implemented later)
+function renderOfficials(state, filter = '') {
   console.log("renderOfficials called with", state, filter);
   // TODO: implement actual rendering logic for officials
 }
@@ -259,6 +265,35 @@ function showPodcastsShows() {
     tabSearch.addEventListener('input', handler);
   }
 }
+    // Favorites section
+  const favoriteItems = [];
+  window.favorites.podcasts.forEach(title => {
+    const item = podcastsData.find(p => p.title === title);
+    if (item) favoriteItems.push({ ...item, type: 'podcasts' });
+  });
+  window.favorites.shows.forEach(title => {
+    const item = showsData.find(s => s.title === title);
+    if (item) favoriteItems.push({ ...item, type: 'shows' });
+  });
+
+  container.appendChild(renderSection('Favorites', favoriteItems, 'favorites'));
+  container.appendChild(renderSection('Podcasts', podcastsData || [], 'podcasts'));
+  container.appendChild(renderSection('Shows', showsData || [], 'shows'));
+
+  // Search filter
+  const tabSearch = document.getElementById('podcasts-search-bar');
+  if (tabSearch) {
+    const handler = () => {
+      const term = tabSearch.value.toLowerCase().trim();
+      container.querySelectorAll('.podcast-show-card').forEach(card => {
+        const title = (card.querySelector('.card-title')?.textContent || '').toLowerCase();
+        const desc = (card.querySelector('.descriptor')?.textContent || '').toLowerCase();
+        card.style.display = (title.includes(term) || desc.includes(term)) ? '' : 'none';
+      });
+    };
+    tabSearch.addEventListener('input', handler);
+  }
+}
 
 // === POLL CATEGORIES (authoritative sources) ===
 const pollCategories = [
@@ -307,10 +342,10 @@ function showCommunity() {
   // No dynamic fetch needed — cards are static HTML
 }
 
+// === POLLS TAB ===
 function showPolls() {
   showTab('polls');
 
-  // === Polls Section (unchanged) ===
   const pollsContainer = document.getElementById('polls-cards');
   if (pollsContainer) {
     pollsContainer.innerHTML = '';
@@ -366,12 +401,11 @@ function showPolls() {
       <p class="card-desc">See how voters rate political leaders with the latest approval polls, trend data, and comparisons across parties, regions, and issues.</p>
     `;
     approvalGrid.appendChild(approvalCard);
-
     approvalSection.appendChild(approvalGrid);
     pollsContainer.appendChild(approvalSection);
   }
 
-  // === Elections Header ===
+  // Elections Header
   const pollsTab = document.getElementById('polls');
   if (pollsTab) {
     const oldHeader = pollsTab.querySelector('#elections-main-header');
@@ -393,22 +427,20 @@ function showPolls() {
     }
   }
 
-  // === Elections Cards ===
+  // Elections Cards
   const electionsContainer = document.getElementById('elections-cards');
   if (electionsContainer) {
     electionsContainer.innerHTML = '';
-    electionsContainer.className = 'poll-grid'; // Consistent grid wrapping
+    electionsContainer.className = 'poll-grid';
 
     const createCardWithLogo = (title, logoSrc, links) => {
       const card = document.createElement('div');
       card.className = 'elections-card';
-
       let linksHtml = '<ul>';
       links.forEach(link => {
         linksHtml += `<li><a href="${link.url}" target="_blank" rel="noopener noreferrer">${link.text}</a></li>`;
       });
       linksHtml += '</ul>';
-
       card.innerHTML = `
         <div class="poll-logo"><img src="${logoSrc}" alt="${title}"></div>
         <h3>${title}</h3>
@@ -417,71 +449,70 @@ function showPolls() {
       return card;
     };
 
-    // Upcoming Elections – with logo
     electionsContainer.appendChild(createCardWithLogo('Upcoming Elections', 'assets/ballotpedia-election.png', [
       { text: 'My Election Lookup Tool', url: 'https://ballotpedia.org/Sample_Ballot_Lookup' },
       { text: 'Full Elections Calendar', url: 'https://ballotpedia.org/Elections_calendar' }
     ]));
 
-    // Recent Results – with logo
     electionsContainer.appendChild(createCardWithLogo('Recent Results', 'assets/ballotpedia-results.png', [
       { text: '2025 Election Results', url: 'https://ballotpedia.org/Election_results,_2025' },
       { text: '2024 Election Results', url: 'https://ballotpedia.org/Election_results,_2024' }
     ]));
 
-    // Most Competitive Races – with logo
     electionsContainer.appendChild(createCardWithLogo('Most Competitive Races', 'assets/ballotpedia-competitive.jpeg', [
       { text: '2026 Senate Battlegrounds', url: 'https://ballotpedia.org/United_States_Senate_elections,_2026#Battlegrounds' },
       { text: '2026 House Battlegrounds', url: 'https://ballotpedia.org/United_States_House_of_Representatives_elections,_2026#Battlegrounds' },
       { text: '2025 Governor Elections', url: 'https://ballotpedia.org/Gubernatorial_elections,_2025' }
     ]));
-
-    // Voter Guide cards (already have logos)
-    const createVoterGuideCard = (year) => {
-      const card = document.createElement('div');
-      card.className = 'elections-card';
-
-      const positions = [
-        { name: 'President', path: '/president', availableIn2028Only: true },
-        { name: 'Governor', path: '/states/governor' },
-        { name: 'Lt. Governor', path: '/states/lt-governor' },
-        { name: 'Senate', path: '/states/us-senate' },
-        { name: 'House', path: '/states/us-house' }
-      ];
-
-      let linksHtml = '<ul>';
-      positions.forEach(pos => {
-        if (pos.availableIn2028Only && year !== 2028) {
-          linksHtml += `<li>${pos.name} (No election in ${year})</li>`;
-        } else {
-          const url = `https://www.isidewith.com/elections/${year}${pos.path}`;
-          linksHtml += `<li><a href="${url}" target="_blank" rel="noopener noreferrer">${pos.name}</a></li>`;
-        }
-      });
-      linksHtml += '</ul>';
-
-      card.innerHTML = `
-        <div class="poll-logo"><img src="assets/elections.jpeg" alt="${year} Voter Guide"></div>
-        <h3>${year} Voter Guide</h3>
-        ${linksHtml}
-      `;
-      return card;
-    };
-
-    electionsContainer.appendChild(createVoterGuideCard(2026));
-    electionsContainer.appendChild(createVoterGuideCard(2027));
-    electionsContainer.appendChild(createVoterGuideCard(2028));
   }
 }
+      // Voter Guide cards (already have logos)
+  const createVoterGuideCard = (year) => {
+    const card = document.createElement('div');
+    card.className = 'elections-card';
 
-// Voting tab
+    const positions = [
+      { name: 'President', path: '/president', availableIn2028Only: true },
+      { name: 'Governor', path: '/states/governor' },
+      { name: 'Lt. Governor', path: '/states/lt-governor' },
+      { name: 'Senate', path: '/states/us-senate' },
+      { name: 'House', path: '/states/us-house' }
+    ];
+
+    let linksHtml = '<ul>';
+    positions.forEach(pos => {
+      if (pos.availableIn2028Only && year !== 2028) {
+        linksHtml += `<li>${pos.name} (No election in ${year})</li>`;
+      } else {
+        const url = `https://www.isidewith.com/elections/${year}${pos.path}`;
+        linksHtml += `<li><a href="${url}" target="_blank" rel="noopener noreferrer">${pos.name}</a></li>`;
+      }
+    });
+    linksHtml += '</ul>';
+
+    card.innerHTML = `
+      <div class="poll-logo"><img src="assets/elections.jpeg" alt="${year} Voter Guide"></div>
+      <h3>${year} Voter Guide</h3>
+      ${linksHtml}
+    `;
+    return card;
+  };
+
+  electionsContainer.appendChild(createVoterGuideCard(2026));
+  electionsContainer.appendChild(createVoterGuideCard(2027));
+  electionsContainer.appendChild(createVoterGuideCard(2028));
+}
+
+// === Voting tab ===
 function showVoting() {
   showTab('voting');
+
   const votingCards = document.getElementById('voting-cards');
   if (!votingCards) {
     console.error("voting-cards container not found");
     return;
   }
+
   votingCards.innerHTML = '';
   console.log("showVoting() triggered");
 
@@ -493,8 +524,8 @@ function showVoting() {
     .then(data => {
       let stateName = window.selectedState || 'North Carolina';
       if (stateName === 'Virgin Islands') stateName = 'U.S. Virgin Islands';
-      const stateData = data[stateName] || null;
 
+      const stateData = data[stateName] || null;
       if (!stateData || typeof stateData !== 'object') {
         votingCards.innerHTML = `<p>No voting information available for ${stateName}.</p>`;
         return;
@@ -515,13 +546,9 @@ function showVoting() {
       Object.entries(stateData).forEach(([key, value]) => {
         if (!value) return;
 
-        let url, icon, description, deadline;
-
+        let url, icon = '🗳️', description = '', deadline = '';
         if (typeof value === 'string') {
           url = value;
-          icon = '🗳️';
-          description = '';
-          deadline = '';
         } else if (typeof value === 'object' && value !== null) {
           ({ url, icon = '🗳️', description = '', deadline = '' } = value);
         } else {
@@ -538,6 +565,7 @@ function showVoting() {
         const link = document.createElement('a');
         link.href = url;
         link.target = '_blank';
+        link.rel = 'noopener noreferrer';
 
         const iconDiv = document.createElement('div');
         iconDiv.className = 'card-icon';
@@ -569,6 +597,7 @@ function showVoting() {
       console.error('Voting fetch failed:', err);
     });
 }
+
 // === Citizenship & Immigration data (corrected links + expanded multilingual) ===
 const citizenshipSections = [
   {
@@ -751,7 +780,6 @@ const citizenshipSections = [
 // === Helper: render multilingual link row (expanded) ===
 function renderLangRow(item) {
   const links = [];
-
   if (item.urlEn) {
     links.push(`<span class="lang-link"><a href="${item.urlEn}" target="_blank" rel="noopener noreferrer">English</a></span>`);
   }
@@ -764,7 +792,6 @@ function renderLangRow(item) {
   if (item.urlAr) {
     links.push(`<span class="lang-link"><a href="${item.urlAr}" target="_blank" rel="noopener noreferrer">العربية</a></span>`);
   }
-
   if (Array.isArray(item.langLinks)) {
     item.langLinks.forEach(l => {
       if (l && l.url && l.label) {
@@ -772,7 +799,6 @@ function renderLangRow(item) {
       }
     });
   }
-
   return links.length ? `<div class="lang-row">${links.join(' • ')}</div>` : '';
 }
 
@@ -815,8 +841,8 @@ function showCitizenship() {
         card = document.createElement('a');
         card.className = 'resource-card';
 
-        const url = item.urlEn || item.urlEs || item.urlZh || item.urlAr || item.url;
-        card.href = url || '#';
+        const url = item.urlEn || item.urlEs || item.urlZh || item.urlAr || item.url || '#';
+        card.href = url;
         card.target = '_blank';
         card.rel = 'noopener noreferrer';
 
@@ -844,58 +870,55 @@ let civicsScore = 0;
 function openDailyQuizModal() {
   const modal = document.getElementById('civicsQuizModal');
   if (!modal) return;
-  modal.style.display = 'block';
 
+  modal.style.display = 'block';
   currentQuestionIndex = 0;
   civicsScore = 0;
+
   document.getElementById('quiz-progress-fill').style.width = '0%';
   document.getElementById('quiz-progress').textContent = '';
   document.getElementById('quiz-feedback').textContent = '';
   document.getElementById('quiz-score').textContent = '';
-
   document.getElementById('quiz-title').textContent = "Daily Civics Quiz";
   document.getElementById('quiz-desc').textContent =
     "Test your United States government, economics, and history knowledge.";
 
-  // Load Daily quiz dataset and render using Daily engine
   fetch('civics-questions.json')
     .then(res => res.json())
     .then(data => {
-      // Daily engine variables
-      window.quizQuestions = data;       // keep Daily’s variables
+      window.quizQuestions = data;
       window.currentQuestion = 0;
       window.score = 0;
 
-      renderQuestion(); // Daily renderer already in your file
+      renderQuestion(); // Assuming renderQuestion() is defined elsewhere for daily quiz
 
-      // Wire Daily handlers to this modal instance
       const submitBtn = document.getElementById('quiz-submit');
       const nextBtn = document.getElementById('quiz-next');
 
-      // Daily submit: reads inputs with name="opt"
-     submitBtn.onclick = () => {
-  const selected = document.querySelector('input[name="opt"]:checked');
-  if (!selected) {
-    alert("Pick an answer!");
-    return;
-  }
-  const q = quizQuestions[currentQuestion];
-  const selectedIndex = parseInt(selected.value, 10);
-  const correctText = q.answers[0]; // use the first string in answers[]
-  const feedbackEl = document.getElementById("quiz-feedback");
+      submitBtn.onclick = () => {
+        const selected = document.querySelector('input[name="opt"]:checked');
+        if (!selected) {
+          alert("Pick an answer!");
+          return;
+        }
 
-  if (q.choices[selectedIndex] === correctText) {
-    score++;
-    feedbackEl.className = "correct";
-    feedbackEl.innerHTML = `✅ Correct — ${correctText}<br><small>${q.explanation}</small>`;
-  } else {
-    feedbackEl.className = "incorrect";
-    feedbackEl.innerHTML = `❌ Incorrect. Correct answer: ${correctText}<br><small>${q.explanation}</small>`;
-  }
+        const q = quizQuestions[currentQuestion];
+        const selectedIndex = parseInt(selected.value, 10);
+        const correctText = q.answers[0];
+        const feedbackEl = document.getElementById("quiz-feedback");
 
-  submitBtn.style.display = "none";
-  nextBtn.style.display = "inline-block";
-};
+        if (q.choices[selectedIndex] === correctText) {
+          score++;
+          feedbackEl.className = "correct";
+          feedbackEl.innerHTML = `✅ Correct — ${correctText}<br><small>${q.explanation || ''}</small>`;
+        } else {
+          feedbackEl.className = "incorrect";
+          feedbackEl.innerHTML = `❌ Incorrect. Correct answer: ${correctText}<br><small>${q.explanation || ''}</small>`;
+        }
+
+        submitBtn.style.display = "none";
+        nextBtn.style.display = "inline-block";
+      };
 
       nextBtn.onclick = () => {
         currentQuestion++;
@@ -926,15 +949,15 @@ function openDailyQuizModal() {
 function openPractice2008Modal() {
   const modal = document.getElementById('civicsQuizModal');
   if (!modal) return;
-  modal.style.display = 'block';
 
+  modal.style.display = 'block';
   currentQuestionIndex = 0;
   civicsScore = 0;
+
   document.getElementById('quiz-progress-fill').style.width = '0%';
   document.getElementById('quiz-progress').textContent = '';
   document.getElementById('quiz-feedback').textContent = '';
   document.getElementById('quiz-score').textContent = '';
-
   document.getElementById('quiz-title').textContent = "Practice Test (2008)";
   document.getElementById('quiz-desc').textContent =
     "Official 2008 Naturalization Civics Practice Test — 100 questions.";
@@ -945,11 +968,8 @@ function openPractice2008Modal() {
       civicsQuestions = data;
       renderCivicsQuestion();
 
-      // Wire practice submit to checkCivicsAnswer
       const submitBtn = document.getElementById('quiz-submit');
-      const nextBtn = document.getElementById('quiz-next');
       submitBtn.onclick = () => checkCivicsAnswer();
-      // next button is set inside checkCivicsAnswer
     })
     .catch(err => {
       console.error("Error loading 2008 test:", err);
@@ -961,15 +981,15 @@ function openPractice2008Modal() {
 function openPractice2025Modal() {
   const modal = document.getElementById('civicsQuizModal');
   if (!modal) return;
-  modal.style.display = 'block';
 
+  modal.style.display = 'block';
   currentQuestionIndex = 0;
   civicsScore = 0;
+
   document.getElementById('quiz-progress-fill').style.width = '0%';
   document.getElementById('quiz-progress').textContent = '';
   document.getElementById('quiz-feedback').textContent = '';
   document.getElementById('quiz-score').textContent = '';
-
   document.getElementById('quiz-title').textContent = "Practice Test (2025)";
   document.getElementById('quiz-desc').textContent =
     "New 2025 Naturalization Civics Practice Test — 128 questions.";
@@ -980,11 +1000,8 @@ function openPractice2025Modal() {
       civicsQuestions = data;
       renderCivicsQuestion();
 
-      // Wire practice submit to checkCivicsAnswer
       const submitBtn = document.getElementById('quiz-submit');
-      const nextBtn = document.getElementById('quiz-next');
       submitBtn.onclick = () => checkCivicsAnswer();
-      // next button is set inside checkCivicsAnswer
     })
     .catch(err => {
       console.error("Error loading 2025 test:", err);
@@ -1007,13 +1024,11 @@ function renderCivicsQuestion() {
   feedback.textContent = '';
   nextBtn.style.display = 'none';
 
-  let choices = Array.isArray(q.choices) && q.choices.length
-    ? [...q.choices]
-    : [...q.answers];
-
+  let choices = Array.isArray(q.choices) && q.choices.length ? [...q.choices] : [...q.answers];
   choices = shuffleArray(choices);
 
   const isMulti = q.type === "multi-select";
+
   choices.forEach((opt, idx) => {
     const id = `opt-${currentQuestionIndex}-${idx}`;
     const wrapper = document.createElement('div');
@@ -1041,14 +1056,12 @@ function renderCivicsQuestion() {
     `Question ${currentQuestionIndex + 1} of ${civicsQuestions.length}`;
 }
 
-// === Evaluate selection ===
 // === Evaluate selection with explanations and multi-select support ===
 function checkCivicsAnswer() {
   const q = civicsQuestions[currentQuestionIndex];
   const feedback = document.getElementById('quiz-feedback');
   const nextBtn = document.getElementById('quiz-next');
 
-  // Scope to civics modal options
   const optionsRoot = document.querySelector('#civicsQuizModal #quiz-options');
   const selected = Array.from(optionsRoot.querySelectorAll('input[name="civics-choice"]'))
     .filter(el => el.checked)
@@ -1077,7 +1090,6 @@ function checkCivicsAnswer() {
     feedback.style.color = "red";
     const incorrectSelections = selected.filter(s => !q.answers.includes(s));
     const missingSelections = q.answers.filter(a => !selected.includes(a));
-
     let detail = `Incorrect. Correct answers: ${q.answers.join(", ")}.`;
     if (incorrectSelections.length) {
       detail += ` You chose incorrectly: ${incorrectSelections.join(", ")}.`;
@@ -1088,7 +1100,6 @@ function checkCivicsAnswer() {
     feedback.textContent = detail;
   }
 
-  // Explanation support
   if (q.explanation) {
     feedback.textContent += ` ${q.explanation}`;
   }
@@ -1120,19 +1131,14 @@ function shuffleArray(arr) {
   return a;
 }
 
-// Submit is wired inside each launcher (Daily or Practice) — no global wiring here.
-
 // === HELPER: render a single Cabinet member card ===
-
 function renderCabinetMember(member) {
   const photoSrc = member.photo && member.photo.trim() !== ''
     ? member.photo
     : 'assets/default-photo.png';
-
   const sealSrc = member.seal && member.seal.trim() !== ''
     ? member.seal
     : 'assets/default-seal.png';
-
   return `
     <div class="official-card ${member.party?.toLowerCase() || ''}">
       <div class="party-stripe"></div>
@@ -1160,7 +1166,10 @@ function renderCabinetMember(member) {
 // === RENDER: populate the Cabinet grid ===
 function renderCabinetGrid(cabinetData) {
   const container = document.getElementById('cabinetList');
+  if (!container) return;
+
   container.innerHTML = ''; // clear any old content
+
   cabinetData.forEach(member => {
     const cardWrapper = document.createElement('div');
     cardWrapper.className = 'official-card';
@@ -1171,16 +1180,19 @@ function renderCabinetGrid(cabinetData) {
 
 fetch('cabinet.json')
   .then(res => res.json())
-  .then(data => renderCabinetGrid(data));
+  .then(data => renderCabinetGrid(data))
+  .catch(err => console.error('Error loading cabinet data:', err));
 
 // === DETAIL: show a single Cabinet member in the modal ===
 function showCabinetMemberDetail(member) {
   const detail = document.getElementById('cabinetMemberDetail');
+  if (!detail) return;
+
   detail.innerHTML = `
     <div class="detail-layout">
       <div class="detail-left">
-        <img src="${member.photo || 'assets/default-photo.png'}" 
-             alt="${member.name || ''}" 
+        <img src="${member.photo || 'assets/default-photo.png'}"
+             alt="${member.name || ''}"
              class="portrait"
              onerror="this.onerror=null;this.src='assets/default-photo.png';" />
         ${member.seal ? `<img src="${member.seal}" alt="${member.office} seal" class="seal" />` : ''}
@@ -1195,15 +1207,21 @@ function showCabinetMemberDetail(member) {
         <p><strong>Education:</strong> ${member.education || ''}</p>
         <p><strong>Salary:</strong> ${member.salary || ''}</p>
         <p><strong>Predecessor:</strong> ${member.predecessor || ''}</p>
-        ${member.links?.map(link =>
-          `<p><a href="${link.url}" target="_blank">${link.label}</a></p>`
-        ).join('') || ''}
+        ${member.links && Array.isArray(member.links) 
+          ? member.links.map(link => 
+              link && link.url && link.label 
+                ? `<p><a href="${link.url}" target="_blank" rel="noopener noreferrer">${link.label}</a></p>`
+                : ''
+            ).join('')
+          : ''}
       </div>
     </div>
   `;
 
-  document.getElementById('cabinetGridView').style.display = 'none';
-  document.getElementById('cabinetDetailView').style.display = 'block';
+  const gridView = document.getElementById('cabinetGridView');
+  const detailView = document.getElementById('cabinetDetailView');
+  if (gridView) gridView.style.display = 'none';
+  if (detailView) detailView.style.display = 'block';
 }
 
 // === QUIZZES TAB ===
@@ -1230,6 +1248,7 @@ function showCivic() {
     console.error("Calendar element not found in Civic tab.");
     return;
   }
+
   calendar.innerHTML = '';
 
   const section = document.createElement('div');
@@ -1246,7 +1265,7 @@ function showCivic() {
       return res.json();
     })
     .then(stateLinks => {
-      const normalizedState = selectedState === 'Virgin Islands' ? 'U.S. Virgin Islands' : selectedState;
+      const normalizedState = window.selectedState === 'Virgin Islands' ? 'U.S. Virgin Islands' : window.selectedState;
       const links = stateLinks[normalizedState] || {};
 
       const labelMap = {
@@ -1261,6 +1280,7 @@ function showCivic() {
 
       Object.entries(links).forEach(([label, value]) => {
         if (label === 'federalRaces' || value == null) return;
+
         const displayLabel = labelMap[label] || label;
 
         if (Array.isArray(value)) {
@@ -1281,7 +1301,7 @@ function showCivic() {
           card.setAttribute('onclick', `window.open('${value.url}', '_blank')`);
           card.innerHTML = `
             <h4>${displayLabel}</h4>
-            <p class="card-desc">Click to view ${displayLabel} information for ${selectedState}.</p>
+            <p class="card-desc">Click to view ${displayLabel} information for ${window.selectedState}.</p>
           `;
           grid.appendChild(card);
         } else if (typeof value === 'string') {
@@ -1290,7 +1310,7 @@ function showCivic() {
           card.setAttribute('onclick', `window.open('${value}', '_blank')`);
           card.innerHTML = `
             <h4>${displayLabel}</h4>
-            <p class="card-desc">Click to view ${displayLabel} information for ${selectedState}.</p>
+            <p class="card-desc">Click to view ${displayLabel} information for ${window.selectedState}.</p>
           `;
           grid.appendChild(card);
         }
@@ -1298,41 +1318,42 @@ function showCivic() {
 
       if (grid.children.length === 0) {
         const msg = document.createElement('p');
-        msg.textContent = `No state-level links available for ${selectedState}.`;
+        msg.textContent = `No state-level links available for ${window.selectedState}.`;
         stateBlock.appendChild(msg);
       }
+
       stateBlock.appendChild(grid);
 
       // --- NGA block ---
-const ngaBlock = document.createElement('div');
-ngaBlock.className = 'civic-block';
-ngaBlock.innerHTML = '<h2>National Governor\'s Association</h2>';
+      const ngaBlock = document.createElement('div');
+      ngaBlock.className = 'civic-block';
+      ngaBlock.innerHTML = '<h2>National Governor\'s Association</h2>';
 
-const ngaLinks = [
-  {label: 'NGA Members', url: 'https://www.nga.org/governors/',desc: 'Explore the full roster of U.S. governors through the National Governors Association.'},
-  { label: 'NGA Leadership', url: 'https://www.nga.org/governors/ngaleadership/', desc: 'Meet the current leadership of the National Governors Association.' },
-  { label: 'Council of Governors', url: 'https://www.nga.org/cog/', desc: 'Explore the bipartisan Council of Governors and its national security role.' },
-  { label: 'Gubernatorial Elections', url: 'https://www.nga.org/governors/elections/', desc: 'Track upcoming and recent gubernatorial elections across the United States.' },
-  { label: 'Education, Workforce and Community Investment Task Force', url: 'https://www.nga.org/advocacy/nga-committees/education-workforce-community-investment-task-force/', desc: 'See how governors are shaping education and workforce development policy.' },
-  { label: 'Economic Development and Revitalization Task Force', url: 'https://www.nga.org/advocacy/nga-committees/economic-development-and-revitalization-task-force/', desc: 'Review strategies for economic growth and revitalization led by governors.' },
-  { label: 'Public Health and Emergency Management Task Force', url: 'https://www.nga.org/advocacy/nga-committees/public-health-and-emergency-management-task-force/', desc: 'Understand how governors coordinate public health and emergency response.' }
-];
+      const ngaLinks = [
+        {label: 'NGA Members', url: 'https://www.nga.org/governors/', desc: 'Explore the full roster of U.S. governors through the National Governors Association.'},
+        { label: 'NGA Leadership', url: 'https://www.nga.org/governors/ngaleadership/', desc: 'Meet the current leadership of the National Governors Association.' },
+        { label: 'Council of Governors', url: 'https://www.nga.org/cog/', desc: 'Explore the bipartisan Council of Governors and its national security role.' },
+        { label: 'Gubernatorial Elections', url: 'https://www.nga.org/governors/elections/', desc: 'Track upcoming and recent gubernatorial elections across the United States.' },
+        { label: 'Education, Workforce and Community Investment Task Force', url: 'https://www.nga.org/advocacy/nga-committees/education-workforce-community-investment-task-force/', desc: 'See how governors are shaping education and workforce development policy.' },
+        { label: 'Economic Development and Revitalization Task Force', url: 'https://www.nga.org/advocacy/nga-committees/economic-development-and-revitalization-task-force/', desc: 'Review strategies for economic growth and revitalization led by governors.' },
+        { label: 'Public Health and Emergency Management Task Force', url: 'https://www.nga.org/advocacy/nga-committees/public-health-and-emergency-management-task-force/', desc: 'Understand how governors coordinate public health and emergency response.' }
+      ];
 
-const ngaGrid = document.createElement('div');
-ngaGrid.className = 'link-grid';
+      const ngaGrid = document.createElement('div');
+      ngaGrid.className = 'link-grid';
 
-ngaLinks.forEach(link => {
-  const card = document.createElement('div');
-  card.className = 'link-card';
-  card.setAttribute('onclick', `window.open('${link.url}', '_blank')`);
-  card.innerHTML = `
-    <h4>${link.label}</h4>
-    <p class="card-desc">${link.desc}</p>
-  `;
-  ngaGrid.appendChild(card);
-});
+      ngaLinks.forEach(link => {
+        const card = document.createElement('div');
+        card.className = 'link-card';
+        card.setAttribute('onclick', `window.open('${link.url}', '_blank')`);
+        card.innerHTML = `
+          <h4>${link.label}</h4>
+          <p class="card-desc">${link.desc}</p>
+        `;
+        ngaGrid.appendChild(card);
+      });
 
-ngaBlock.appendChild(ngaGrid);
+      ngaBlock.appendChild(ngaGrid);
 
       // --- NLGA block ---
       const nlgaBlock = document.createElement('div');
@@ -1403,10 +1424,10 @@ ngaBlock.appendChild(ngaGrid);
 
       federalBlock.appendChild(federalGrid);
 
-          // Append all blocks to the section in correct order
+      // Append all blocks to the section in correct order
       section.appendChild(stateBlock);
       section.appendChild(ngaBlock);
-      section.appendChild(nlgaBlock);   // <-- add NLGA here
+      section.appendChild(nlgaBlock);
       section.appendChild(federalBlock);
 
       // Render into the calendar container
@@ -1416,8 +1437,9 @@ ngaBlock.appendChild(ngaGrid);
       calendar.innerHTML = '<p>Error loading civic links.</p>';
       console.error(err);
     });
+}
 
-}// === CABINET MODAL LOGIC ===
+// === CABINET MODAL LOGIC ===
 function showCabinet() {
   const list = document.getElementById('cabinetList');
   const gridView = document.getElementById('cabinetGridView');
@@ -1461,7 +1483,7 @@ function showCabinet() {
           </div>
         `;
 
-        card.onclick = () => showCabinetMember(member);
+        card.onclick = () => showCabinetMemberDetail(member);
         list.appendChild(card);
       });
 
@@ -1470,9 +1492,11 @@ function showCabinet() {
     .catch(err => {
       list.innerHTML = '<p>Error loading Cabinet data.</p>';
       modal.style.display = 'block';
+      console.error(err);
     });
 }
 
+// === DETAIL: show a single Cabinet member in the modal ===
 function showCabinetMember(member) {
   const gridView = document.getElementById('cabinetGridView');
   const detailView = document.getElementById('cabinetDetailView');
@@ -1488,7 +1512,6 @@ function showCabinetMember(member) {
   const photoSrc = member.photo && member.photo.trim() !== ''
     ? member.photo
     : 'assets/default-photo.png';
-
   const sealSrc = member.seal && member.seal.trim() !== ''
     ? member.seal
     : 'assets/default-seal.png';
@@ -1507,8 +1530,8 @@ function showCabinetMember(member) {
     <div class="detail-header">
       <img src="${photoSrc}" alt="${member.name || ''}" class="portrait"
            onerror="this.onerror=null;this.src='assets/default-photo.png';" />
-      <img src="${sealSrc}" alt="${member.office || 'Seal'}" class="seal"
-           onerror="this.onerror=null;this.src='assets/default-seal.png';" />
+      ${member.seal ? `<img src="${sealSrc}" alt="${member.office || 'Seal'}" class="seal"
+           onerror="this.onerror=null;this.src='assets/default-seal.png';" />` : ''}
     </div>
     <h2>${member.name || 'Unknown'}</h2>
     <p><strong>Office:</strong> ${member.office || 'N/A'}</p>
@@ -1519,19 +1542,23 @@ function showCabinetMember(member) {
     ${member.education ? `<p><strong>Education:</strong> ${member.education}</p>` : ''}
     ${member.salary ? `<p><strong>Salary:</strong> ${member.salary}</p>` : ''}
     ${member.predecessor ? `<p><strong>Predecessor:</strong> ${member.predecessor}</p>` : ''}
-    ${member.contact && member.contact.website ? `<p><a href="${member.contact.website}" target="_blank">Official Website</a></p>` : ''}
-    ${member.ballotpediaLink ? `<p><a href="${member.ballotpediaLink}" target="_blank">Ballotpedia</a></p>` : ''}
-    ${member.govtrackLink ? `<p><a href="${member.govtrackLink}" target="_blank">GovTrack</a></p>` : ''}
+    ${member.contact && member.contact.website ? `<p><a href="${member.contact.website}" target="_blank" rel="noopener noreferrer">Official Website</a></p>` : ''}
+    ${member.ballotpediaLink ? `<p><a href="${member.ballotpediaLink}" target="_blank" rel="noopener noreferrer">Ballotpedia</a></p>` : ''}
+    ${member.govtrackLink ? `<p><a href="${member.govtrackLink}" target="_blank" rel="noopener noreferrer">GovTrack</a></p>` : ''}
   `;
 }
 
+// === Back to Cabinet Grid ===
 function backToCabinetGrid() {
   const gridView = document.getElementById('cabinetGridView');
   const detailView = document.getElementById('cabinetDetailView');
+
   if (!gridView || !detailView) return;
+
   gridView.style.display = 'block';
   detailView.style.display = 'none';
 }
+
 // === CIVICS QUIZ MODAL OPEN ===
 function openCivicsQuizModal() {
   const modal = document.getElementById('civicsQuizModal');
@@ -1539,6 +1566,7 @@ function openCivicsQuizModal() {
     console.error("Civics quiz modal not found.");
     return;
   }
+
   modal.style.display = 'block';
   initCivicsQuiz(); // kick off the quiz engine
 }
@@ -1560,6 +1588,7 @@ function initCivicsQuiz() {
   // Clear previous results
   const scoreBox = document.getElementById("quiz-score");
   if (scoreBox) scoreBox.textContent = "";
+
   const feedbackEl = document.getElementById("quiz-feedback");
   if (feedbackEl) {
     feedbackEl.textContent = "";
@@ -1571,10 +1600,9 @@ function initCivicsQuiz() {
     .then(data => {
       allQuestions = data;
       quizQuestions = getDailyQuestions();
-
       renderQuestion();
 
-      // 🔑 Wire handlers AFTER rendering
+      // Wire handlers AFTER rendering
       const submitBtn = document.getElementById("quiz-submit");
       const nextBtn = document.getElementById("quiz-next");
 
@@ -1584,6 +1612,7 @@ function initCivicsQuiz() {
           alert("Pick an answer!");
           return;
         }
+
         const q = quizQuestions[currentQuestion];
         const selectedIndex = parseInt(selected.value, 10);
         const correctText = q.answers[0];
@@ -1592,10 +1621,10 @@ function initCivicsQuiz() {
         if (q.choices[selectedIndex] === correctText) {
           score++;
           feedbackEl.className = "correct";
-          feedbackEl.innerHTML = `✅ Correct — ${correctText}<br><small>${q.explanation}</small>`;
+          feedbackEl.innerHTML = `✅ Correct — ${correctText}<br><small>${q.explanation || ''}</small>`;
         } else {
           feedbackEl.className = "incorrect";
-          feedbackEl.innerHTML = `❌ Incorrect. Correct answer: ${correctText}<br><small>${q.explanation}</small>`;
+          feedbackEl.innerHTML = `❌ Incorrect. Correct answer: ${correctText}<br><small>${q.explanation || ''}</small>`;
         }
 
         submitBtn.style.display = "none";
@@ -1630,7 +1659,6 @@ function initCivicsQuiz() {
 function getDailyQuestions() {
   const today = new Date().toDateString();
   const saved = localStorage.getItem("civicsQuizDate");
-
   if (saved === today) {
     return JSON.parse(localStorage.getItem("civicsQuizQuestions"));
   } else {
@@ -1661,8 +1689,7 @@ function renderQuestion() {
     `${((currentQuestion + 1) / quizQuestions.length) * 100}%`;
 
   document.getElementById("quiz-question").innerHTML = `<h3>${q.question}</h3>`;
-
-  document.getElementById("quiz-options").innerHTML = q.choices.map((choice,i) =>
+  document.getElementById("quiz-options").innerHTML = q.choices.map((choice, i) =>
     `<label><input type="radio" name="opt" value="${i}"> ${choice}</label><br>`
   ).join("");
 
@@ -1671,48 +1698,9 @@ function renderQuestion() {
   document.getElementById("quiz-next").style.display = "none";
 }
 
-document.getElementById("quiz-submit").onclick = () => {
-  const selected = document.querySelector('input[name="opt"]:checked');
-  if (!selected) {
-    alert("Pick an answer!");
-    return;
-  }
-  const q = quizQuestions[currentQuestion];
-  const selectedIndex = parseInt(selected.value, 10);
-  const correctText = q.answers[0]; // use first string in answers[]
-  const feedbackEl = document.getElementById("quiz-feedback");
-
-  if (q.choices[selectedIndex] === correctText) {
-    score++;
-    feedbackEl.className = "correct";
-    feedbackEl.innerHTML = `✅ Correct — ${correctText}<br><small>${q.explanation}</small>`;
-  } else {
-    feedbackEl.className = "incorrect";
-    feedbackEl.innerHTML = `❌ Incorrect. Correct answer: ${correctText}<br><small>${q.explanation}</small>`;
-  }
-
-  document.getElementById("quiz-submit").style.display = "none";
-  document.getElementById("quiz-next").style.display = "inline-block";
-};
-
-document.getElementById("quiz-next").onclick = () => {
-  currentQuestion++;
-  if (currentQuestion < quizQuestions.length) {
-    renderQuestion();
-  } else {
-    document.getElementById("quiz-question").innerHTML = "";
-    document.getElementById("quiz-options").innerHTML = "";
-    document.getElementById("quiz-progress").textContent = "";
-    document.getElementById("quiz-progress-fill").style.width = "100%";
-    document.getElementById("quiz-feedback").textContent = "";
-    document.getElementById("quiz-score").textContent =
-      `Final Score: ${score}/${quizQuestions.length} — ${score >= 12 ? "Pass ✅" : "Try Again ❌"}`;
-    document.getElementById("quiz-next").style.display = "none";
-  }
-};
+// Submit is wired inside each launcher (Daily or Practice) — no global wiring here.
 
 // === Political Typology Quiz Logic (schema uses "q") ===
-
 function openTypologyQuizModal() {
   const modal = document.getElementById('typologyQuizModal');
   if (!modal) {
@@ -1759,10 +1747,8 @@ function initTypologyQuiz() {
       if (!Array.isArray(data) || data.length === 0) {
         throw new Error("No questions found in typology-questions.json (expected flat array)");
       }
-
       typologyQuestions = data.slice(); // copy
       console.log("Loaded typology questions:", typologyQuestions);
-
       renderTypologyQuestion();
     })
     .catch(err => {
@@ -1831,6 +1817,7 @@ function renderTypologyQuestion() {
 (function attachTypologySubmit() {
   const submitBtn = document.getElementById("typology-submit");
   if (!submitBtn) return;
+
   submitBtn.onclick = () => {
     const selected = document.querySelector('input[name="typologyOpt"]:checked');
     if (!selected) {
@@ -1843,14 +1830,15 @@ function renderTypologyQuestion() {
 
     // Apply weights from schema (5-point scale)
     for (const [label, weight] of Object.entries(q.weights)) {
-      if (selectedIndex === 0) scoreMap[label] += weight;           // Strongly Agree
-      else if (selectedIndex === 1) scoreMap[label] += weight / 2;  // Agree
-      else if (selectedIndex === 2) scoreMap[label] += 0;           // Neutral
-      else if (selectedIndex === 3) scoreMap[label] -= weight / 2;  // Disagree
-      else if (selectedIndex === 4) scoreMap[label] -= weight;      // Strongly Disagree
+      if (selectedIndex === 0) scoreMap[label] += weight; // Strongly Agree
+      else if (selectedIndex === 1) scoreMap[label] += weight / 2; // Agree
+      else if (selectedIndex === 2) scoreMap[label] += 0; // Neutral
+      else if (selectedIndex === 3) scoreMap[label] -= weight / 2; // Disagree
+      else if (selectedIndex === 4) scoreMap[label] -= weight; // Strongly Disagree
     }
 
     currentTypologyQuestion++;
+
     if (currentTypologyQuestion < typologyQuestions.length) {
       renderTypologyQuestion();
     } else {
@@ -1908,13 +1896,14 @@ function showTypologyResult() {
   const resultBox = document.getElementById("typology-result");
   if (resultBox) {
     resultBox.style.display = "block";
-    resultBox.innerHTML =
-      `<div class="typology-badge badge-${topLabel}">${emojiMap[topLabel]} ${topLabel.toUpperCase()}</div>
-       <h2>Your Typology: ${topLabel}</h2>
-       <p>${descriptions[topLabel]}</p>
-       <div class="quiz-controls">
-         <button id="typology-restart" class="quiz-btn">Restart Quiz</button>
-       </div>`;
+    resultBox.innerHTML = `
+      <div class="typology-badge badge-${topLabel}">${emojiMap[topLabel]} ${topLabel.toUpperCase()}</div>
+      <h2>Your Typology: ${topLabel.charAt(0).toUpperCase() + topLabel.slice(1)}</h2>
+      <p>${descriptions[topLabel]}</p>
+      <div class="quiz-controls">
+        <button id="typology-restart" class="quiz-btn">Restart Quiz</button>
+      </div>
+    `;
 
     // Attach restart handler
     const restartBtn = document.getElementById("typology-restart");
@@ -1984,8 +1973,11 @@ function openPollModal(categoryLabel) {
 // === ORGANIZATIONS TAB ===
 function showOrganizations() {
   showTab('organizations');
+
   const section = document.getElementById('organizations');
-  section.innerHTML = '';  // Clears old content
+  if (!section) return;
+
+  section.innerHTML = ''; // Clears old content
 
   // ADD THE TITLE BACK FIRST
   const title = document.createElement('h2');
@@ -2027,11 +2019,14 @@ function showOrganizations() {
     .then(groups => {
       const grid = document.createElement('div');
       grid.className = 'organization-grid';
+
       groups.forEach(group => {
         const card = document.createElement('div');
         card.className = 'organization-card';
+
         const logoWrapper = document.createElement('div');
         logoWrapper.className = 'logo-wrapper';
+
         const img = document.createElement('img');
         img.src = group.logo;
         img.alt = `${group.name} logo`;
@@ -2041,23 +2036,27 @@ function showOrganizations() {
         img.onerror = () => {
           img.src = 'assets/default-logo.png';
         };
+
         logoWrapper.appendChild(img);
+
         const infoWrapper = document.createElement('div');
         infoWrapper.className = 'info-wrapper';
         infoWrapper.innerHTML = `
           <h3>${group.name}</h3>
           <p>${group.description}</p>
           <p><strong>Platform:</strong> ${group.platform}</p>
-          <a href="${group.website}" target="_blank">Visit Website</a>
+          <a href="${group.website}" target="_blank" rel="noopener noreferrer">Visit Website</a>
         `;
+
         card.appendChild(logoWrapper);
         card.appendChild(infoWrapper);
         grid.appendChild(card);
       });
+
       section.appendChild(grid);
     })
     .catch(err => {
-      section.innerHTML += '<p>Error loading political groups.</p>';  // += so title stays
+      section.innerHTML += '<p>Error loading political groups.</p>'; // += so title stays
       console.error(err);
     });
 }
@@ -2067,6 +2066,7 @@ function showStartupHub() {
 
   const hubContainer = document.getElementById('hub-cards');
   if (!hubContainer) return;
+
   hubContainer.innerHTML = '';
 
   // Removed "Popular Podcasts" and "Trending Now"
@@ -2176,13 +2176,16 @@ const federalOfficials = [
     "electionYear": "2024"
   }
 ];
+
 // === OFFICIALS RENDERING ===
 function renderOfficials(stateFilter = null, query = '') {
   showTab('my-officials');
+
   if (!officialsContainer) {
     officialsContainer = document.getElementById('officials-container');
   }
   if (!officialsContainer) return;
+
   officialsContainer.innerHTML = '';
 
   const stateAliases = {
@@ -2190,6 +2193,7 @@ function renderOfficials(stateFilter = null, query = '') {
     "Northern Mariana Islands": "Northern Mariana Islands",
     "Puerto Rico": "Puerto Rico"
   };
+
   if (stateFilter && stateAliases[stateFilter]) {
     stateFilter = stateAliases[stateFilter];
   }
@@ -2203,6 +2207,7 @@ function renderOfficials(stateFilter = null, query = '') {
   const filteredReps = houseReps
     .filter(o => !filterByState || o.state === stateFilter)
     .sort((a, b) => parseInt(a.district) - parseInt(b.district));
+
   console.log("Filtered reps:", filteredReps.map(r => r.name));
 
   const allOfficials = [
@@ -2240,34 +2245,34 @@ function renderOfficials(stateFilter = null, query = '') {
     const rawParty = (o.party || '').toLowerCase().trim();
     const normalizedParty = partyMap[rawParty] || rawParty.replace(/\s+/g, '') || 'independent';
     const photoSrc = o.photo && o.photo.trim() !== '' ? o.photo : 'assets/default-photo.png';
-
     const districtDisplay = o.office === 'U.S. Representative' && o.district
       ? `<p class="district-display"><strong>District:</strong> ${o.district}</p>`
       : '';
-
     const startYear = safeYear(o.termStart);
     const endYear = safeYear(o.termEnd) || 'Present';
     const termDisplay = (startYear || endYear) ? `${startYear}–${endYear}` : 'Present';
 
     const card = document.createElement('div');
     card.className = `official-card ${normalizedParty}`;
-  card.innerHTML = `
-  <div class="party-stripe"></div>
-  <div class="card-body">
-    <div class="photo-wrapper">
-      <img src="${photoSrc}" alt="${o.name}"
-           onerror="this.onerror=null;this.src='assets/default-photo.png';" />
-    </div>
-    <div class="official-info">
-      <h3>${o.name || 'Unknown'}</h3>
-      <p><strong>Position:</strong> ${o.office || 'N/A'}</p>
-      ${districtDisplay}
-      <p><strong>State:</strong> ${o.state || 'United States'}</p>
-      <p><strong>Term:</strong> ${termDisplay}</p>
-      <p><strong>Party:</strong> ${o.party || 'N/A'}</p>
-    </div>
-  </div>
-`;
+
+    card.innerHTML = `
+      <div class="party-stripe"></div>
+      <div class="card-body">
+        <div class="photo-wrapper">
+          <img src="${photoSrc}" alt="${o.name}"
+               onerror="this.onerror=null;this.src='assets/default-photo.png';" />
+        </div>
+        <div class="official-info">
+          <h3>${o.name || 'Unknown'}</h3>
+          <p><strong>Position:</strong> ${o.office || 'N/A'}</p>
+          ${districtDisplay}
+          <p><strong>State:</strong> ${o.state || 'United States'}</p>
+          <p><strong>Term:</strong> ${termDisplay}</p>
+          <p><strong>Party:</strong> ${o.party || 'N/A'}</p>
+        </div>
+      </div>
+    `;
+
     card.addEventListener('click', () => openOfficialModal(o));
     officialsContainer.appendChild(card);
   });
@@ -2314,6 +2319,7 @@ function openOfficialModal(official) {
     const dt = new Date(d);
     return isNaN(dt) ? '' : dt.getFullYear();
   };
+
   const startYear = safeYear(cleanOfficial.termStart);
   const endYear = safeYear(cleanOfficial.termEnd) || 'Present';
   const termDisplay = (startYear || endYear) ? `${startYear}–${endYear}` : 'Present';
@@ -2358,13 +2364,12 @@ function openOfficialModal(official) {
                 .join('')
             }</ul></div>`
           : ''}
-        ${cleanOfficial.website ? `<p><a href="${cleanOfficial.website}" target="_blank">Official Website</a></p>` : ''}
+        ${cleanOfficial.website ? `<p><a href="${cleanOfficial.website}" target="_blank" rel="noopener noreferrer">Official Website</a></p>` : ''}
         ${contact.email ? `<p><strong>Email:</strong> ${contact.email}</p>` : ''}
         ${contact.phone ? `<p><strong>Phone:</strong> ${contact.phone}</p>` : ''}
-        ${contact.website ? `<p><a href="${contact.website}" target="_blank">Contact Website</a></p>` : ''}
-        ${cleanOfficial.ballotpediaLink ? `<p><a href="${cleanOfficial.ballotpediaLink}" target="_blank">Ballotpedia Profile</a></p>` : ''}
-        ${cleanOfficial.govtrackLink ? `<p><a href="${cleanOfficial.govtrackLink}" target="_blank">GovTrack</a></p>` : ''}
-
+        ${contact.website ? `<p><a href="${contact.website}" target="_blank" rel="noopener noreferrer">Contact Website</a></p>` : ''}
+        ${cleanOfficial.ballotpediaLink ? `<p><a href="${cleanOfficial.ballotpediaLink}" target="_blank" rel="noopener noreferrer">Ballotpedia Profile</a></p>` : ''}
+        ${cleanOfficial.govtrackLink ? `<p><a href="${cleanOfficial.govtrackLink}" target="_blank" rel="noopener noreferrer">GovTrack</a></p>` : ''}
         <!-- Social links row injected per modal -->
         <div class="ps-social-links" id="social-${slug}"></div>
       </div>
@@ -2393,6 +2398,7 @@ function closeModalWindow(id = 'officials-modal') {
   }
   el.style.display = 'none';
 }
+
 // === SEARCH BAR WIRING ===
 function wireSearchBar() {
   if (!searchBar) {
@@ -2405,41 +2411,42 @@ function wireSearchBar() {
     renderOfficials(null, query);
   });
 }
-// ==== HOME HUB NAV ====
 
+// ==== HOME HUB NAV ====
 // Simple startup hub loader
 function showStartupHub() {
   showTab('startup-hub');
 }
 
+// RSS feed wiring (moved to DOMContentLoaded to ensure elements exist)
 document.addEventListener('DOMContentLoaded', () => {
   const feedTitle = document.getElementById('feed-title');
   const feedStories = document.getElementById('feed-stories');
 
   // Official RSS feeds per network
   const rssFeeds = {
-    msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',   // NBC/MSNBC general news
-    abc:   'https://abcnews.go.com/abcnews/topstories',       // ABC Top Stories
-    cbs:   'https://www.cbsnews.com/latest/rss/main',         // CBS Latest
-    fox:   'https://feeds.foxnews.com/foxnews/latest',        // FOX News Latest
-    newsnation: "https://www.newsnationnow.com/feed/"         // NewsNation Top Stories
+    msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news', // NBC/MSNBC general news
+    abc: 'https://abcnews.go.com/abcnews/topstories', // ABC Top Stories
+    cbs: 'https://www.cbsnews.com/latest/rss/main', // CBS Latest
+    fox: 'https://feeds.foxnews.com/foxnews/latest', // FOX News Latest
+    newsnation: "https://www.newsnationnow.com/feed/" // NewsNation Top Stories
   };
 
   async function loadFeed(network) {
     const url = rssFeeds[network];
+    if (!url) return;
+
     feedTitle.textContent = `${network.toUpperCase()} Stories`;
     feedStories.innerHTML = '<p style="color:#fff;">Loading...</p>';
 
     try {
-      // Use rss2json proxy to bypass CORS
       const response = await fetch(
         `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`
       );
       const data = await response.json();
 
-      const items = Array.isArray(data.items) ? data.items.slice() : [];
+      const items = Array.isArray(data.items) ? data.items : [];
 
-      // Just sort by pubDate if available, but don’t display it
       const normalized = items
         .map(item => ({ item, date: item.pubDate ? new Date(item.pubDate) : null }))
         .filter(x => x.date)
@@ -2481,12 +2488,12 @@ function wireStateDropdown() {
   const dropdown = document.getElementById('state-dropdown');
   if (!dropdown) return;
 
-  dropdown.value = selectedState;
+  dropdown.value = window.selectedState || 'North Carolina';
 
   dropdown.addEventListener('change', () => {
-    selectedState = dropdown.value;
-    window.selectedState = selectedState;
-    renderOfficials(selectedState, '');
+    window.selectedState = dropdown.value;
+    localStorage.setItem('selectedState', window.selectedState);
+    renderOfficials(window.selectedState, '');
   });
 }
 
@@ -2494,7 +2501,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const officialsContainer = document.getElementById('officials-container');
   const searchBar = document.getElementById('search-bar');
   const loadingOverlay = document.getElementById('loading-overlay');
-
   const officialsModal = document.getElementById('officials-modal');
   const officialsModalContent = document.getElementById('officials-content');
   const officialsModalCloseBtn = document.getElementById('officials-close');
@@ -2519,101 +2525,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // --- Other existing functions and variables above ---
-
-// Official RSS feeds per network
-const rssFeeds = {
-  msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',   // NBC/MSNBC general news
-  abc:   'https://abcnews.go.com/abcnews/topstories',       // ABC Top Stories
-  cbs:   'https://www.cbsnews.com/latest/rss/main',         // CBS Latest
-  fox:   'https://feeds.foxnews.com/foxnews/latest',        // FOX News Latest
-  cnn:   'http://rss.cnn.com/rss/cnn_topstories.rss'        // CNN Top Stories
-};
-
-// Fetch top 5 stories via rss2json
-async function fetchRss(feedUrl) {
-  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
-  try {
-    const response = await fetch(apiUrl);
-    const data = await response.json();
-    return data.items.slice(0, 5);
-  } catch (err) {
-    console.error('RSS fetch error:', err);
-    return [];
-  }
-}
-
-// Render network stories
-async function renderNetworkStories(network) {
-  const feedUrl = rssFeeds[network];
-  if (!feedUrl) return;
-
-  const stories = await fetchRss(feedUrl);
-  const container = document.getElementById('network-stories');
-  container.innerHTML = ''; // clear previous stories
-
-  stories.forEach(item => {
-    const card = document.createElement('div');
-    card.className = 'official-card';
-    card.innerHTML = `<h4>${item.title}</h4>`;
-    card.onclick = () => window.open(item.link, '_blank');
-    container.appendChild(card);
-  });
-
-  // Append "See More" next to last story
-  if (stories.length > 0) {
-    const seeMore = document.createElement('div');
-    seeMore.className = 'see-more';
-    seeMore.innerText = 'See More';
-    seeMore.onclick = () => {
-      // Proper site URL for MSNBC, others open homepage
-      const urlMap = {
-        msnbc: 'https://www.msnbc.com',
-        abc: 'https://abcnews.go.com',
-        cbs: 'https://www.cbsnews.com',
-        fox: 'https://www.foxnews.com',
-        cnn: 'https://edition.cnn.com'
-      };
-      window.open(urlMap[network] || feedUrl, '_blank');
-    };
-    container.appendChild(seeMore);
-  }
-}
-
-// Add click listeners to network cards
-document.querySelectorAll('#network-cards .info-card').forEach(card => {
-  card.addEventListener('click', () => {
-    const network = card.dataset.network;
-    renderNetworkStories(network);
-  });
-});
-// === GLOBAL POLITICS & WORLD NEWS: Google News RSS feed ===
-const worldNewsFeedUrl = 'https://news.google.com/rss/search?q=world+politics&hl=en-US&gl=US&ceid=US:en';
-const maxCards = 25;
-
-// Helper to extract favicon from story source
-function getFaviconUrl(link) {
-  try {
-    const url = new URL(link);
-    return `${url.origin}/favicon.ico`;
-  } catch {
-    return ''; // fallback empty
-  }
-}
-
-// Fetch RSS via rss2json
-async function fetchGoogleNewsRss(feedUrl) {
-  try {
-    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
-    const res = await fetch(apiUrl);
-    const data = await res.json();
-    return data.items?.slice(0, maxCards) || [];
-  } catch (err) {
-    console.error('RSS fetch error:', err);
-    return [];
-  }
-}
-
   // === Load officials data with smooth fade-in ===
   Promise.all([
     fetch('/governors.json').then(res => res.json()),
@@ -2634,7 +2545,7 @@ async function fetchGoogleNewsRss(feedUrl) {
         setTimeout(() => loadingOverlay.remove(), 500);
       }
 
-      // Load social trends
+      // Load social trends (if function exists)
       const socialFeed = document.getElementById('social-feed');
       if (socialFeed && typeof loadSocialTrends === 'function') {
         console.log("🎬 loadSocialTrends is running...");
@@ -2646,46 +2557,80 @@ async function fetchGoogleNewsRss(feedUrl) {
       if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
     });
 });
-document.getElementById("quiz-submit").onclick = () => {
-  const selected = document.querySelector('input[name="opt"]:checked');
-  if (!selected) {
-    alert("Pick an answer!");
-    return;
+
+// === RSS FEED WIRING FOR NETWORK CARDS ===
+document.addEventListener('DOMContentLoaded', () => {
+  const feedTitle = document.getElementById('feed-title');
+  const feedStories = document.getElementById('feed-stories');
+
+  // Official RSS feeds per network
+  const rssFeeds = {
+    msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news', // NBC/MSNBC general news
+    abc: 'https://abcnews.go.com/abcnews/topstories', // ABC Top Stories
+    cbs: 'https://www.cbsnews.com/latest/rss/main', // CBS Latest
+    fox: 'https://feeds.foxnews.com/foxnews/latest', // FOX News Latest
+    cnn: 'http://rss.cnn.com/rss/cnn_topstories.rss' // CNN Top Stories
+  };
+
+  // Fetch top 5 stories via rss2json
+  async function fetchRss(feedUrl) {
+    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
+    try {
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+      return data.items.slice(0, 5);
+    } catch (err) {
+      console.error('RSS fetch error:', err);
+      return [];
+    }
   }
-  const q = quizQuestions[currentQuestion];
-  const selectedIndex = parseInt(selected.value, 10);
-  const correctText = q.options[q.answer];
-  const feedbackEl = document.getElementById("quiz-feedback");
 
-  if (selectedIndex === q.answer) {
-    score++;
-    feedbackEl.className = "correct";
-    feedbackEl.innerHTML = `✅ Correct — ${correctText}<br><small>${q.explanation}</small>`;
-  } else {
-    feedbackEl.className = "incorrect";
-    feedbackEl.innerHTML = `❌ Incorrect. Correct answer: ${correctText}<br><small>${q.explanation}</small>`;
+  // Render network stories
+  async function renderNetworkStories(network) {
+    const feedUrl = rssFeeds[network];
+    if (!feedUrl) return;
+
+    const stories = await fetchRss(feedUrl);
+    const container = document.getElementById('network-stories');
+    if (!container) return;
+
+    container.innerHTML = ''; // clear previous stories
+
+    stories.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'official-card';
+      card.innerHTML = `<h4>${item.title}</h4>`;
+      card.onclick = () => window.open(item.link, '_blank');
+      container.appendChild(card);
+    });
+
+    // Append "See More" next to last story
+    if (stories.length > 0) {
+      const seeMore = document.createElement('div');
+      seeMore.className = 'see-more';
+      seeMore.innerText = 'See More';
+      seeMore.onclick = () => {
+        const urlMap = {
+          msnbc: 'https://www.msnbc.com',
+          abc: 'https://abcnews.go.com',
+          cbs: 'https://www.cbsnews.com',
+          fox: 'https://www.foxnews.com',
+          cnn: 'https://edition.cnn.com'
+        };
+        window.open(urlMap[network] || feedUrl, '_blank');
+      };
+      container.appendChild(seeMore);
+    }
   }
 
-  document.getElementById("quiz-submit").style.display = "none";
-  document.getElementById("quiz-next").style.display = "inline-block";
-};
-
-document.getElementById("quiz-next").onclick = () => {
-  currentQuestion++;
-  if (currentQuestion < quizQuestions.length) {
-    renderQuestion();
-  } else {
-    document.getElementById("quiz-question").innerHTML = "";
-    document.getElementById("quiz-options").innerHTML = "";
-    document.getElementById("quiz-progress").textContent = "";
-    document.getElementById("quiz-progress-fill").style.width = "100%";
-    document.getElementById("quiz-feedback").textContent = "";
-    document.getElementById("quiz-score").textContent =
-      `Final Score: ${score}/${quizQuestions.length} — ${score >= 12 ? "Pass ✅" : "Try Again ❌"}`;
-    document.getElementById("quiz-next").style.display = "none";
-  }
-};
-
+  // Add click listeners to network cards
+  document.querySelectorAll('#network-cards .info-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const network = card.dataset.network;
+      if (network) renderNetworkStories(network);
+    });
+  });
+});
 
 // === Citizenship & Immigration tab renderer ===
 function showCitizenship() {
@@ -2697,6 +2642,7 @@ function showCitizenship() {
       console.warn(`Container not found: ${section.targetId}`);
       return;
     }
+
     container.innerHTML = ''; // Clear any old content
 
     // Add section header
@@ -2741,6 +2687,7 @@ function showCitizenship() {
           <p style="margin: 0 0 15px 0; color: #ccc; font-size: 0.95em;">${item.desc}</p>
           ${linksHtml}
         `;
+
         grid.appendChild(card);
       });
     }
@@ -2748,6 +2695,7 @@ function showCitizenship() {
     container.appendChild(grid);
   });
 }
+
 // ==============================
 // Ratings/Rankings — tab renderer
 // ==============================
@@ -2763,6 +2711,8 @@ const ratingCategories = [
 
 // Show Ratings tab
 function showRatings() {
+  showTab('ratings');
+
   Promise.all([
     fetch('president-ratings.json').then(res => res.json()),
     fetch('vicepresident-ratings.json').then(res => res.json()),
@@ -2789,26 +2739,35 @@ function showRatings() {
     });
 
     const container = document.getElementById('ratings-cards');
+    if (!container) return;
+
     container.innerHTML = '';
 
     ratings.forEach(r => {
-      const official = federalOfficials.find(o => o.slug === r.slug);
+      // FIXED: Use window.allOfficials instead of federalOfficials
+      const official = window.allOfficials.find(o => o.slug === r.slug);
       if (!official) return;
 
       const card = document.createElement('div');
       card.className = 'info-card';
       const avg = r.averageRating ? r.averageRating.toFixed(1) : '0.0';
+
       card.innerHTML = `
-        <img src="${official.photo}" alt="${official.name}" class="card-image" />
+        <img src="${official.photo}" alt="${official.name}" class="card-image" onerror="this.src='assets/default-photo.png'" />
         <h3>${official.name}</h3>
-        <p>${official.office}</p>
-        <div class="rating-badge" style="color:${getRatingColor(r.averageRating)}">
+        <p>${official.office} • ${official.state || 'Federal'}</p>
+        <div class="rating-badge" style="color:${getRatingColor(r.averageRating || 0)}">
           ${avg} ★
         </div>
-        <button class="btn-view" onclick="openRatingsModal('${r.slug}')">View Ratings</button>
+        <button class="btn-view" onclick="openRatingsModal('${r.slug}')">View / Rate</button>
       `;
+
       container.appendChild(card);
     });
+  }).catch(err => {
+    console.error('Error loading ratings:', err);
+    const container = document.getElementById('ratings-cards');
+    if (container) container.innerHTML = '<p style="color:red;">Error loading ratings.</p>';
   });
 }
 
@@ -2840,7 +2799,8 @@ function openRatingsModal(slug) {
     });
 
     const ratingEntry = ratings.find(r => r.slug === slug);
-    const official = federalOfficials.find(o => o.slug === slug);
+    // FIXED: Use window.allOfficials instead of federalOfficials
+    const official = window.allOfficials.find(o => o.slug === slug);
     if (!official || !ratingEntry) return;
 
     // Populate modal fields
@@ -2884,7 +2844,7 @@ function openRatingsModal(slug) {
       e.preventDefault();
 
       const officialName = document.getElementById('ratings-modal-title').textContent;
-      const official = federalOfficials.find(o => o.name === officialName);
+      const official = window.allOfficials.find(o => o.name === officialName);
       if (!official) return;
 
       const saved = JSON.parse(localStorage.getItem('ratingsData')) || {};
@@ -2996,12 +2956,14 @@ function getRatingColor(avg) {
     default: return '#ccc';
   }
 }
+
 function closeModal(id) {
   const modal = document.getElementById(id);
   if (modal) {
     modal.style.display = 'none';
   }
 }
+
 document.getElementById('rate-me-btn').onclick = function() {
   const title = document.getElementById('ratings-modal-title').textContent;
   document.getElementById('rate-modal-title').textContent = `Rate ${title}`;
