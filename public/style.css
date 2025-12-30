@@ -6339,3 +6339,36 @@ section > h3 {
   box-shadow: 0 0 6px rgba(41,128,185,0.6); /* blue glow */
   outline: none;
 }
+.info-card {
+  border: 3px solid transparent;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 10px;
+  background-color: #2c2c2c; /* ✅ dark gray background */
+  color: #fff;               /* white text for readability */
+  transition: box-shadow 0.2s;
+}
+
+.info-card[data-party="republican"] {
+  border-color: #C0392B; /* crimson red */
+}
+
+.info-card[data-party="democrat"] {
+  border-color: #2980B9; /* deep blue */
+}
+
+.info-card[data-party="independent"] {
+  border-color: #7F8C8D; /* neutral gray */
+}
+
+.info-card[data-party="libertarian"] {
+  border-color: #F1C40F; /* gold */
+}
+
+.info-card[data-party="green"] {
+  border-color: #27AE60; /* green */
+}
+
+.info-card:hover {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
