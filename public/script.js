@@ -2801,6 +2801,7 @@ function showRatings() {
       // ✅ Tag each card with its canonical office key
       card.dataset.office = official.office.toLowerCase();
       card.dataset.state = (official.state || '').toLowerCase();
+      card.dataset.party = (official.party || '').toLowerCase();
 
       card.innerHTML = `
         <img src="${official.photo}" alt="${official.name}" class="card-image" />
@@ -3029,34 +3030,39 @@ document.getElementById('rate-me-btn').onclick = function() {
   initStarRatings();
 };
 
-// ✅ Ratings/Rankings — search + office + state filter
+// ✅ Ratings/Rankings — search + office + state + party filter
 (function initRatingsSearchFilters() {
   const searchEl   = document.getElementById('searchInput');
   const officeSel  = document.getElementById('officeFilter');
   const stateSel   = document.getElementById('stateFilter');
+  const partySel   = document.getElementById('partyFilter');
   const container  = document.getElementById('ratings-cards');
-  if (!searchEl || !officeSel || !stateSel || !container) return;
+  if (!searchEl || !officeSel || !stateSel || !partySel || !container) return;
 
   function applyFilters() {
     const q      = (searchEl.value || '').trim().toLowerCase();
     const office = officeSel.value || '';
     const state  = stateSel.value || '';
+    const party  = partySel.value || '';
 
     container.querySelectorAll('.info-card').forEach(card => {
       const nameEl    = card.querySelector('h3');
       const nameTxt   = nameEl ? nameEl.textContent.toLowerCase() : '';
       const officeKey = (card.dataset.office || '').toLowerCase();
       const stateKey  = (card.dataset.state || '').toLowerCase();
+      const partyKey  = (card.dataset.party || '').toLowerCase();
 
       const matchesText   = !q || nameTxt.includes(q);
       const matchesOffice = !office || officeKey === office;
       const matchesState  = !state || stateKey === state;
+      const matchesParty  = !party || partyKey === party;
 
-      card.style.display = (matchesText && matchesOffice && matchesState) ? '' : 'none';
+      card.style.display = (matchesText && matchesOffice && matchesState && matchesParty) ? '' : 'none';
     });
   }
 
   searchEl.addEventListener('input', applyFilters);
   officeSel.addEventListener('change', applyFilters);
   stateSel.addEventListener('change', applyFilters);
+  partySel.addEventListener('change', applyFilters);
 })();
