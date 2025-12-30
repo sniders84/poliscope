@@ -1355,30 +1355,17 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      normalized.slice(0, 10).forEach(({ item }) => {
-        const story = document.createElement('div');
-        story.className = 'story-card';
-        story.innerHTML = `
-          <a href="${item.link}" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none;">
-            <h4 style="margin-bottom:0.35rem;">${item.title}</h4>
-          </a>
-        `;
-        feedStories.appendChild(story);
-      });
-    } catch (err) {
-      console.error(err);
-      feedStories.innerHTML = '<p style="color:#fff;">Error loading feed.</p>';
-    }
-  }
+     <script>
+  // Make selectedState available to everything
+  window.selectedState = localStorage.getItem('selectedState') || 'North Carolina';
 
-  // ✅ Updated selector for network cards
-  document.querySelectorAll('.network-card[data-network]').forEach(card => {
-    card.addEventListener('click', () => {
-      const network = card.getAttribute('data-network');
-      loadFeed(network);
-    });
+  // Start the app when page loads
+  document.addEventListener('DOMContentLoaded', () => {
+    showStartupHub(); // Show home tab first
   });
-});
 </script>
+
+<!-- Load your main JavaScript file ONCE -->
+<script src="script.js?v=20251229"></script>
 </body>
 </html>
