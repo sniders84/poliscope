@@ -3028,7 +3028,7 @@ document.getElementById('rate-me-btn').onclick = function() {
   initStarRatings();
 };
 
-// ✅ Ratings/Rankings — search + office filter using data-office
+// Ratings/Rankings — search + office filter using data-office
 (function initRatingsSearchAndOfficeFilter() {
   const searchEl   = document.getElementById('searchInput');
   const officeSel  = document.getElementById('officeFilter');
@@ -3042,9 +3042,7 @@ document.getElementById('rate-me-btn').onclick = function() {
     container.querySelectorAll('.info-card').forEach(card => {
       const nameEl   = card.querySelector('h3');
       const nameTxt  = nameEl ? nameEl.textContent.toLowerCase() : '';
-
-      // ✅ Compare dropdown value against the card’s data-office attribute
-      const officeKey = (card.dataset.office || '').toLowerCase();
+      const officeKey= (card.dataset.office || '').toLowerCase();
 
       const matchesText   = !q || nameTxt.includes(q);
       const matchesOffice = !office || officeKey === office;
