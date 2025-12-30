@@ -6073,22 +6073,32 @@ section > h3 {
 
 /* Ratings & Rankings grid container */
 #ratings-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* wider footprint for horizontal cards */
-  gap: 20px;
-  padding: 20px;
+  display: flex;              /* ✅ use flex instead of grid */
+  flex-wrap: wrap;            /* allow multiple cards per row */
+  gap: 16px;                  /* spacing between cards */
+  padding: 16px;
+}
+
+/* Ratings & Rankings container — flex row of cards */
+#ratings-cards {
+  display: flex;              /* lay cards side by side */
+  flex-wrap: wrap;            /* wrap to next line if needed */
+  gap: 16px;                  /* spacing between cards */
+  padding: 16px;
+  justify-content: center;    /* center cards in the row */
 }
 
 /* Ratings card styling — horizontal layout */
 .info-card {
-  display: flex;
+  display: flex;              /* horizontal split inside card */
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+  max-width: 500px;           /* cap width so they don’t stretch too wide */
   border: 3px solid transparent;
   border-radius: 8px;
   padding: 12px;
-  margin: 10px;
-  background-color: #2c2c2c; /* dark gray background */
+  background-color: #2c2c2c;  /* dark gray background */
   color: #fff;
   transition: box-shadow 0.2s;
 }
@@ -6111,7 +6121,7 @@ section > h3 {
 }
 
 .rating-badge {
-  font-size: 24px; /* enlarged score */
+  font-size: 24px;            /* enlarged score */
   font-weight: bold;
   margin: 10px 0;
 }
@@ -6120,7 +6130,7 @@ section > h3 {
   font-size: 12px;
   padding: 7px 12px;
   border-radius: 4px;
-  background: #1e90ff; /* app blue */
+  background: #1e90ff;        /* app blue */
   color: #fff;
   border: none;
   cursor: pointer;
@@ -6128,7 +6138,7 @@ section > h3 {
 }
 
 .info-card .btn-view:hover {
-  background: #0d6efd; /* darker blue hover */
+  background: #0d6efd;        /* darker blue hover */
 }
 
 /* Party outline colors */
@@ -6152,8 +6162,8 @@ section > h3 {
   border-radius: 6px;
   font-size: 14px;
   margin: 6px;
-  background-color: #2c2c2c; /* dark grey background */
-  color: #fff; /* white text */
+  background-color: #2c2c2c;  /* dark grey background */
+  color: #fff;                /* white text */
   transition: background-color 0.2s, box-shadow 0.2s;
 }
 
@@ -6161,7 +6171,7 @@ section > h3 {
 #officeFilter:hover,
 #stateFilter:hover,
 #partyFilter:hover {
-  background-color: #333; /* slightly lighter grey on hover */
+  background-color: #333;     /* slightly lighter grey on hover */
 }
 
 #searchInput:focus,
