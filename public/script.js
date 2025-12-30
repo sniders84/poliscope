@@ -3025,34 +3025,24 @@ document.getElementById('rate-me-btn').onclick = function() {
   initStarRatings();
 };
 
-// ✅ Unified Ratings/Rankings logic — one dataset, one render, one filter
-// Prerequisite: window.allOfficials MUST be populated before this runs.
-// Required keys per official: { slug, name, state, office, party }
+// ✅ Ratings/Rankings — search bar only
+(function initRatingsSearch() {
+  const container = document.getElementById('ratings-cards');
+  const searchEl  = document.getElementById('searchInput');
 
-(function initRatingsRankings() {
-  const $ = id => document.getElementById(id);
+  if (!container || !searchEl) return;
 
-  const container = $('ratings-cards');
-  const searchEl  = $('searchInput');
-  const officeEl  = $('officeFilter');
-  const stateEl   = $('stateFilter');
-  const partyEl   = $('partyFilter');
-
-  // Guard: all elements must exist
-  if (!container || !searchEl || !officeEl || !stateEl || !partyEl) return;
-
-  // Source of truth
   const officials = Array.isArray(window.allOfficials) ? window.allOfficials : [];
 
-  // Shared render: used by initial tab load and after every filter/search update
   function renderResults(list) {
     container.innerHTML = list.map(o => `
       <div class="official-card" data-slug="${o.slug || ''}">
-        <strong>${o.name || 'Unknown'}</strong> (${o.state || '—'}, ${o.office || '—'}, ${o.party || '—'})
+        <strong>${o.name || 'Unknown'}</strong>
+        <span>(${o.state || '—'}, ${o.office || '—'}, ${o.party || '—'})</span>
       </div>
     `).join('');
 
-    // Preserve clickability — reuse existing modal logic
+    // Keep cards clickable
     container.querySelectorAll('.official-card').forEach(card => {
       card.addEventListener('click', () => {
         const slug = card.getAttribute('data-slug');
@@ -3063,31 +3053,17 @@ document.getElementById('rate-me-btn').onclick = function() {
     });
   }
 
-  // Shared filter logic: used by search + selects
-  function applyFilters() {
-    const q      = (searchEl.value || '').trim().toLowerCase();
-    const office = officeEl.value || '';
-    const state  = stateEl.value  || '';
-    const party  = partyEl.value  || '';
-
+  function applySearch() {
+    const q = (searchEl.value || '').trim().toLowerCase();
     const out = officials.filter(o => {
       const name = (o.name || '').toLowerCase();
-      const matchesText   = !q || name.includes(q);
-      const matchesOffice = !office || o.office === office;
-      const matchesState  = !state  || o.state === state;
-      const matchesParty  = !party  || o.party === party;
-      return matchesText && matchesOffice && matchesState && matchesParty;
+      return !q || name.includes(q);
     });
-
     renderResults(out);
   }
 
-  // Wire events once, use same filter function
-  searchEl.addEventListener('input', applyFilters);
-  officeEl.addEventListener('change', applyFilters);
-  stateEl.addEventListener('change', applyFilters);
-  partyEl.addEventListener('change', applyFilters);
+  searchEl.addEventListener('input', applySearch);
 
-  // Initial tab render strictly from your JSON (no demo, no flash)
+  // Initial render
   renderResults(officials);
 })();
