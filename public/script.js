@@ -2798,10 +2798,16 @@ function showRatings() {
       const avg = r.averageRating ? r.averageRating.toFixed(1) : '0.0';
       const card = document.createElement('div');
       card.className = 'info-card';
-      // ✅ Tag each card with its canonical office key
-      card.dataset.office = official.office.toLowerCase();
-      card.dataset.state = (official.state || '').toLowerCase();
-      card.dataset.party = (official.party || '').toLowerCase();
+
+      // ✅ Tag each card with normalized dataset attributes
+      card.dataset.office = (official.office || '').toLowerCase();
+      card.dataset.state  = (official.state || '').toLowerCase();
+
+      // normalize party values
+      let partyKey = (official.party || '').toLowerCase();
+      if (partyKey === 'democratic') partyKey = 'democrat';
+      if (partyKey === 'gop') partyKey = 'republican';
+      card.dataset.party = partyKey;
 
       card.innerHTML = `
         <img src="${official.photo}" alt="${official.name}" class="card-image" />
