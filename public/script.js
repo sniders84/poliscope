@@ -48,13 +48,29 @@ function updateFavoriteButton(btn, isFavorited) {
 }
 
 // === GLOBAL STATE ===
-let selectedState = 'North Carolina';
-let governors = [];
-let ltGovernors = [];
-let senators = [];
-let houseReps = [];
-let officialsContainer = null;
-let searchBar = null;
+// Remove the let selectedState line — we define it in HTML to avoid duplicate declaration
+// let selectedState = 'North Carolina';  <-- DELETE THIS LINE
+
+// These arrays will be filled by data loading — no need to declare with let here
+governors = [];
+ltGovernors = [];
+senators = [];
+houseReps = [];
+officialsContainer = null;
+searchBar = null;
+
+// Global array for Ratings tab
+window.allOfficials = [];
+
+// Function to wire the search bar (was missing)
+function wireSearchBar() {
+  const searchBar = document.getElementById('search-bar');
+  if (searchBar) {
+    searchBar.addEventListener('input', (e) => {
+      renderOfficials(window.selectedState, e.target.value);
+    });
+  }
+}
 
 // === DATA LOADING ===
 Promise.all([
