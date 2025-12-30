@@ -3038,7 +3038,9 @@ function filterOfficials(list) {
   const sort = document.getElementById('sortFilter').value;
 
   let out = list.filter(item => {
-    const matchesText = !q || item.name.toLowerCase().includes(q) || item.slug.includes(q);
+    const matchesText = !q 
+      || (item.name && item.name.toLowerCase().includes(q)) 
+      || (item.slug && item.slug.includes(q));
     const matchesOffice = !office || item.office === office;
     const matchesState = !state || item.state === state;
     return matchesText && matchesOffice && matchesState;
