@@ -75,15 +75,15 @@ Promise.all([
   senators = sens;
   houseReps = reps;
 
-  const allOfficials = [
-    ...federal,
-    ...cabinet,
-    ...sens,
-    ...reps,
-    ...govs,
-    ...ltGovs,
-    ...scotus
-  ];
+  window.allOfficials = [
+  ...federal,
+  ...cabinet,
+  ...sens,
+  ...reps,
+  ...govs,
+  ...ltGovs,
+  ...scotus
+];
 
   if (searchBar) {
     searchBar.addEventListener('input', e => {
