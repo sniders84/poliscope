@@ -348,7 +348,7 @@
       <div id="officials-container" class="grid"></div>
     </section>
 
-    <!-- Ratings/Rankings Tab -->
+   <!-- Ratings/Rankings Tab -->
 <section id="ratings" class="tab-content" style="display: none;">
   <h2>Ratings & Rankings</h2>
 
@@ -372,17 +372,18 @@
       <!-- dynamically populate with 2-letter states -->
     </select>
 
-    <!-- Sort selector -->
-    <select id="sortFilter">
-      <option value="top">Highest Rated</option>
-      <option value="votes">Most Votes</option>
-      <option value="alpha">Alphabetical</option>
+    <!-- Party filter -->
+    <select id="partyFilter">
+      <option value="">All Parties</option>
+      <option value="Democrat">Democrat</option>
+      <option value="Republican">Republican</option>
+      <option value="Independent">Independent</option>
     </select>
   </div>
 
   <!-- Results container -->
   <div id="ratings-cards" class="card-section">
-    <!-- Cards will be populated dynamically from JSON -->
+    <!-- Cards will be populated dynamically -->
   </div>
 </section>
 
