@@ -3027,29 +3027,28 @@ document.getElementById('rate-me-btn').onclick = function() {
 
 // ✅ Ratings/Rankings — search + office filter
 (function initRatingsSearchAndOfficeFilter() {
-  const searchEl  = document.getElementById('searchInput');
-  const officeEl  = document.getElementById('officeFilter');
-  const container = document.getElementById('ratings-cards');
-  if (!searchEl || !officeEl || !container) return;
+  const searchEl   = document.getElementById('searchInput');
+  const officeSel  = document.getElementById('officeFilter');
+  const container  = document.getElementById('ratings-cards');
+  if (!searchEl || !officeSel || !container) return;
 
   function applyFilters() {
     const q      = (searchEl.value || '').trim().toLowerCase();
-    const office = officeEl.value || '';
+    const office = officeSel.value || '';
 
     container.querySelectorAll('.info-card').forEach(card => {
-      const nameEl   = card.querySelector('h3');
-      const officeEl = card.querySelector('p'); // first <p> is office
-      const name     = nameEl ? nameEl.textContent.toLowerCase() : '';
-      const officeTxt= officeEl ? officeEl.textContent : '';
+      const nameEl    = card.querySelector('h3');
+      const officeEl  = card.querySelector('p'); // first <p> is office text
+      const nameTxt   = nameEl ? nameEl.textContent.toLowerCase() : '';
+      const officeTxt = officeEl ? officeEl.textContent.trim() : '';
 
-      const matchesText   = !q || name.includes(q);
+      const matchesText   = !q || nameTxt.includes(q);
       const matchesOffice = !office || officeTxt === office;
 
-      const show = matchesText && matchesOffice;
-      card.style.display = show ? '' : 'none';
+      card.style.display = (matchesText && matchesOffice) ? '' : 'none';
     });
   }
 
   searchEl.addEventListener('input', applyFilters);
-  officeEl.addEventListener('change', applyFilters);
+  officeSel.addEventListener('change', applyFilters);
 })();
