@@ -3025,7 +3025,7 @@ document.getElementById('rate-me-btn').onclick = function() {
   initStarRatings();
 };
 
-// ✅ Ratings/Rankings — search + office filter
+// ✅ Ratings/Rankings — search + office filter aligned to JSON keys
 (function initRatingsSearchAndOfficeFilter() {
   const searchEl   = document.getElementById('searchInput');
   const officeSel  = document.getElementById('officeFilter');
@@ -3040,10 +3040,10 @@ document.getElementById('rate-me-btn').onclick = function() {
       const nameEl    = card.querySelector('h3');
       const officeEl  = card.querySelector('p'); // first <p> is office text
       const nameTxt   = nameEl ? nameEl.textContent.toLowerCase() : '';
-      const officeTxt = officeEl ? officeEl.textContent.trim() : '';
+      const officeTxt = officeEl ? officeEl.textContent.trim().toLowerCase() : '';
 
       const matchesText   = !q || nameTxt.includes(q);
-      const matchesOffice = !office || officeTxt === office;
+      const matchesOffice = !office || officeTxt.includes(office);
 
       card.style.display = (matchesText && matchesOffice) ? '' : 'none';
     });
