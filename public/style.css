@@ -5939,165 +5939,64 @@ section > h3 {
   font-size: 1.4rem;
   color: #fff;
 }
-#rate-me-btn {
-  background: #1e90ff; /* your blue */
+/* Primary Rate Me button */
+#rate-me-btn,
+.btn-modern,
+.btn-rate-me {
+  background: #1e90ff;   /* app blue */
   color: #fff;
   border: none;
-  padding: 10px 18px;
   border-radius: 6px;
-  font-size: 16px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
-#rate-me-btn:hover {
-  background: #0d6efd; /* darker blue hover */
+
+#rate-me-btn {
+  padding: 10px 18px;
+  font-size: 16px;
 }
+
+.btn-modern {
+  padding: 10px 18px;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  margin-top: 8px;
+}
+
+.btn-rate-me {
+  padding: 6px 12px;
+  font-size: 14px;
+}
+
+#rate-me-btn:hover,
+.btn-modern:hover,
+.btn-rate-me:hover {
+  background: #0d6efd;   /* darker blue hover */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+/* Star rating widget */
 .star-rating {
   font-size: 24px;
-  color: #ccc; /* empty */
+  color: #ccc; /* empty stars */
   cursor: pointer;
 }
 .star-rating .filled {
-  color: #1e90ff; /* your blue hue */
-}
-/* Shared button style */
-.btn-modern {
-  background: #1e90ff;   /* your blue */
-  color: #fff;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 6px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background 0.3s ease;
+  color: #1e90ff; /* filled stars in blue */
 }
 
-.btn-modern:hover {
-  background: #0d6efd;   /* darker blue hover */
-}
-.btn-modern {
-  background: #1e90ff;   /* your blue */
-  color: #fff;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 6px;
-  font-size: 16px;
-  font-weight: 600;      /* bold text */
-  cursor: pointer;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15); /* subtle shadow */
-  margin-top: 8px;       /* spacing so it doesn’t crowd other elements */
-}
-
-.btn-modern:hover {
-  background: #0d6efd;   /* darker blue hover */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.25); /* stronger shadow on hover */
-}
-/* Smaller Rate Me button */
-.btn-rate-me {
-  background: #1e90ff;
-  color: #fff;
-  border: none;
-  padding: 6px 12px;       /* smaller padding */
-  border-radius: 6px;
-  font-size: 14px;         /* smaller text */
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.btn-rate-me:hover {
-  background: #0d6efd;
-}
-
-/* Larger rating badge */
+/* Enlarged rating badge for cards */
 .rating-badge {
-  font-size: 32px;         /* twice the size (was ~16px) */
+  font-size: 32px;
   font-weight: bold;
   margin: 8px 0;
   display: inline-block;
 }
-/* Grid container for categories */
-#ratings-details {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 12px;
-  margin-top: 20px;
-}
 
-/* Each category cell */
-.rating-cell {
-  background: #2b2b2b;       /* dark gray to match other boxes */
-  border-radius: 6px;
-  padding: 8px 10px;          /* snug padding */
-  text-align: center;
-  box-shadow: none;           /* remove heavy shadow */
-}
-
-/* Category label */
-.rating-cell .category-label {
-  font-size: 15px;
-  font-weight: 600;
-  color: #fff;
-  display: block;
-  margin-bottom: 4px;
-}
-
-/* Average rating display */
-.rating-cell .avg-rating {
-  font-size: 18px;
-  font-weight: bold;
-  display: block;
-}
-
-/* Vote count */
-.rating-cell .vote-count {
-  font-size: 13px;
-  color: #aaa;
-}
-/* Grid for rating form */
+/* Ratings details grid */
+#ratings-details,
 #rate-form {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 12px;
-  margin-top: 20px;
-}
-
-/* Each category row in the form */
-.rating-row {
-  background: #2b2b2b;   /* dark gray like other boxes */
-  border-radius: 6px;
-  padding: 8px 10px;
-  text-align: center;
-}
-
-/* Category label */
-.rating-row .category-label {
-  font-size: 15px;
-  font-weight: 600;
-  color: #fff;
-  display: block;
-  margin-bottom: 6px;
-}
-
-/* Stars */
-.rating-row .star-rating span {
-  font-size: 22px;
-  cursor: pointer;
-  margin: 0 2px;
-}
-/* Hover highlight for display grid */
-.rating-cell:hover {
-  background: #1e90ff;   /* same blue hover as cards/modals */
-  transition: background 0.2s ease;
-}
-
-/* Hover highlight for rating form grid */
-.rating-row:hover {
-  background: #1e90ff;   /* same blue hover */
-  transition: background 0.2s ease;
-}
-/* Display grid container */
-#ratings-details {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 12px;
@@ -6105,41 +6004,45 @@ section > h3 {
 }
 
 /* Rating display cells */
-.rating-cell {
+.rating-cell,
+.rating-row {
   background: #2b2b2b;       /* dark gray background */
   border-radius: 6px;
   padding: 8px 10px;
   text-align: center;
-  border: 2px solid transparent; /* invisible border by default */
-  transition: border-color 0.2s ease;
-}
-
-.rating-cell:hover {
-  border-color: #1e90ff;      /* blue outline on hover */
-  background: #2b2b2b;        /* keep dark background */
-}
-
-/* Rating form grid */
-#rate-form {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 12px;
-  margin-top: 20px;
-}
-
-/* Rating form rows */
-.rating-row {
-  background: #2b2b2b;
-  border-radius: 6px;
-  padding: 8px 10px;
-  text-align: center;
   border: 2px solid transparent;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, background 0.2s ease;
 }
 
+.rating-cell:hover,
 .rating-row:hover {
   border-color: #1e90ff;      /* blue outline on hover */
-  background: #2b2b2b;        /* keep dark background */
+}
+
+/* Labels and text inside rating cells */
+.category-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.avg-rating {
+  font-size: 18px;
+  font-weight: bold;
+  display: block;
+}
+
+.vote-count {
+  font-size: 13px;
+  color: #aaa;
+}
+
+.rating-row .star-rating span {
+  font-size: 22px;
+  cursor: pointer;
+  margin: 0 2px;
 }
 
 /* Labels, stars, vote counts */
@@ -6167,149 +6070,79 @@ section > h3 {
   cursor: pointer;
   margin: 0 2px;
 }
+
+/* Ratings & Rankings grid container */
 #ratings-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px; /* spacing between cards */
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* wider footprint for horizontal cards */
+  gap: 20px;
   padding: 20px;
 }
 
-/* Ratings & Rankings grid */
-#ratings-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* compact footprint */
-  gap: 16px;               /* spacing between cards */
-  padding: 16px;
-}
-
-/* Ratings card styling */
+/* Ratings card styling — horizontal layout */
 .info-card {
-  background: #1e1e1e;      /* dark gray for consistency */
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
-  text-align: center;
-  padding: 14px;
-  min-height: 280px;        /* ensures enough breathing room */
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* let content stack naturally */
-  overflow: hidden;         /* prevents bleed-out */
-  transition: transform 0.2s ease;
-}
-
-.info-card:hover {
-  transform: translateY(-4px); /* subtle hover lift */
-}
-
-.info-card img.card-image {
-  width: 100%;
-  height: 120px;            /* consistent image height */
-  object-fit: cover;        /* crop/scale consistently */
-  border-radius: 6px;
-  margin-bottom: 10px;
-}
-
-.info-card h3 {
-  margin: 6px 0 4px;
-  font-size: 15px;
-  line-height: 1.2;
-}
-
-.info-card p {
-  margin: 0 0 8px;
-  font-size: 13px;
-  color: #ccc;
-}
-
-.rating-badge {
-  font-size: 15px;
-  font-weight: bold;
-  margin-bottom: 8px;
-}
-
-.info-card .btn-view {
-  margin-top: auto;         /* anchor button at bottom */
-  font-size: 12px;
-  padding: 7px 12px;        /* comfortable button size */
-  border-radius: 4px;
-  background: #007bff;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-}
-
-.info-card .btn-view:hover {
-  background: #0056b3;
-}
-.info-card[data-party="republican"] {
-  border-top: 6px solid #C0392B; /* crimson red */
-}
-.info-card[data-party="democrat"] {
-  border-top: 6px solid #2980B9; /* deep blue */
-}
-.info-card[data-party="independent"] {
-  border-top: 6px solid #7F8C8D; /* neutral gray */
-}
-.info-card[data-party="libertarian"] {
-  border-top: 6px solid #F1C40F; /* gold */
-}
-.info-card[data-party="green"] {
-  border-top: 6px solid #27AE60; /* green */
-}
-#searchInput,
-#officeFilter,
-#stateFilter,
-#partyFilter {
-  padding: 10px 14px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 14px;
-  margin: 6px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-#searchInput:focus,
-#officeFilter:focus,
-#stateFilter:focus,
-#partyFilter:focus {
-  border-color: #2980B9; /* accent color */
-  box-shadow: 0 0 6px rgba(41,128,185,0.4);
-  outline: none;
-}
-.info-card {
+  justify-content: space-between;
+  align-items: center;
   border: 3px solid transparent;
   border-radius: 8px;
   padding: 12px;
   margin: 10px;
-  background-color: #fff;
+  background-color: #2c2c2c; /* dark gray background */
+  color: #fff;
   transition: box-shadow 0.2s;
 }
 
-.info-card[data-party="republican"] {
-  border-color: #C0392B; /* crimson red */
+.card-left {
+  flex: 1;
+  text-align: center;
 }
 
-.info-card[data-party="democrat"] {
-  border-color: #2980B9; /* deep blue */
+.card-left img {
+  width: 80px;
+  height: 80px;
+  border-radius: 6px;
+  margin-bottom: 8px;
 }
 
-.info-card[data-party="independent"] {
-  border-color: #7F8C8D; /* neutral gray */
+.card-right {
+  flex: 1;
+  text-align: center;
 }
 
-.info-card[data-party="libertarian"] {
-  border-color: #F1C40F; /* gold */
+.rating-badge {
+  font-size: 24px; /* enlarged score */
+  font-weight: bold;
+  margin: 10px 0;
 }
 
-.info-card[data-party="green"] {
-  border-color: #27AE60; /* green */
+.info-card .btn-view {
+  font-size: 12px;
+  padding: 7px 12px;
+  border-radius: 4px;
+  background: #1e90ff; /* app blue */
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
+
+.info-card .btn-view:hover {
+  background: #0d6efd; /* darker blue hover */
+}
+
+/* Party outline colors */
+.info-card[data-party="republican"] { border-color: #C0392B; }
+.info-card[data-party="democrat"]   { border-color: #2980B9; }
+.info-card[data-party="independent"]{ border-color: #7F8C8D; }
+.info-card[data-party="libertarian"]{ border-color: #F1C40F; }
+.info-card[data-party="green"]      { border-color: #27AE60; }
 
 .info-card:hover {
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
 }
+
+/* Search bar & filters — dark gray with blue glow */
 #searchInput,
 #officeFilter,
 #stateFilter,
@@ -6339,75 +6172,3 @@ section > h3 {
   box-shadow: 0 0 6px rgba(41,128,185,0.6); /* blue glow */
   outline: none;
 }
-.info-card {
-  border: 3px solid transparent;
-  border-radius: 8px;
-  padding: 12px;
-  margin: 10px;
-  background-color: #2c2c2c; /* ✅ dark gray background */
-  color: #fff;               /* white text for readability */
-  transition: box-shadow 0.2s;
-}
-
-.info-card[data-party="republican"] {
-  border-color: #C0392B; /* crimson red */
-}
-
-.info-card[data-party="democrat"] {
-  border-color: #2980B9; /* deep blue */
-}
-
-.info-card[data-party="independent"] {
-  border-color: #7F8C8D; /* neutral gray */
-}
-
-.info-card[data-party="libertarian"] {
-  border-color: #F1C40F; /* gold */
-}
-
-.info-card[data-party="green"] {
-  border-color: #27AE60; /* green */
-}
-
-.info-card:hover {
-  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-}
-.info-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 3px solid transparent;
-  border-radius: 8px;
-  padding: 12px;
-  margin: 10px;
-  background-color: #2c2c2c; /* dark gray background */
-  color: #fff;
-}
-
-.card-left {
-  flex: 1;
-  text-align: center;
-}
-
-.card-left img {
-  width: 80px;
-  height: 80px;
-  border-radius: 6px;
-  margin-bottom: 8px;
-}
-
-.card-right {
-  flex: 1;
-  text-align: center;
-}
-
-.rating-badge {
-  font-size: 24px; /* enlarged score */
-  font-weight: bold;
-  margin: 10px 0;
-}
-.info-card[data-party="republican"] { border-color: #C0392B; }
-.info-card[data-party="democrat"]   { border-color: #2980B9; }
-.info-card[data-party="independent"]{ border-color: #7F8C8D; }
-.info-card[data-party="libertarian"]{ border-color: #F1C40F; }
-.info-card[data-party="green"]      { border-color: #27AE60; }
