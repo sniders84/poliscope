@@ -3025,39 +3025,43 @@ document.getElementById('rate-me-btn').onclick = function() {
   initStarRatings();
 };
 
-// ✅ Ratings/Rankings — search + filters driven by JSON (no demo data, no DOM attributes)
-(function initRatingsFilters() {
-  const get = id => document.getElementById(id);
+// ✅ Ratings/Rankings — search + filters driven by your JSON (no demo render)
+document.addEventListener('DOMContentLoaded', () => {
+  const $ = id => document.getElementById(id);
 
-  const searchEl = get('searchInput');
-  const officeEl = get('officeFilter');
-  const stateEl  = get('stateFilter');
-  const partyEl  = get('partyFilter');
-  const container = get('ratings-cards');
+  const container = $('ratings-cards');
+  const searchEl  = $('searchInput');
+  const officeEl  = $('officeFilter');
+  const stateEl   = $('stateFilter');
+  const partyEl   = $('partyFilter');
 
-  // Bail if elements aren’t present
+  // Hard guard: if any element is missing, bail
   if (!container || !searchEl || !officeEl || !stateEl || !partyEl) return;
 
-  // Expect your merged officials JSON to be available globally
-  // Each object should have: slug, name, state, office, party
-  const officials = window.allOfficials || [];
+  // Expect your merged dataset to be available:
+  // window.allOfficials = [{ slug, name, state, office, party }, ...]
+  const officials = Array.isArray(window.allOfficials) ? window.allOfficials : [];
 
+  // Render cards from dataset (clickable via slug)
   function renderResults(list) {
     container.innerHTML = list.map(o => `
-      <div class="official-card" data-slug="${o.slug}">
-        <strong>${o.name}</strong> (${o.state}, ${o.office}, ${o.party})
+      <div class="official-card" data-slug="${o.slug || ''}">
+        <strong>${o.name || 'Unknown'}</strong> (${o.state || '—'}, ${o.office || '—'}, ${o.party || '—'})
       </div>
     `).join('');
 
-    // Preserve clickability by re‑attaching your existing modal logic
+    // Reattach click handlers after render
     container.querySelectorAll('.official-card').forEach(card => {
       card.addEventListener('click', () => {
         const slug = card.getAttribute('data-slug');
-        openOfficialModal(slug); // your existing function to open the modal
+        if (slug && typeof openOfficialModal === 'function') {
+          openOfficialModal(slug);
+        }
       });
     });
   }
 
+  // Filters + search
   function applyFilters() {
     const q      = (searchEl.value || '').trim().toLowerCase();
     const office = officeEl.value || '';
@@ -3065,20 +3069,23 @@ document.getElementById('rate-me-btn').onclick = function() {
     const party  = partyEl.value  || '';
 
     const out = officials.filter(o => {
-      const matchesText   = !q || (o.name && o.name.toLowerCase().includes(q));
+      const name = (o.name || '').toLowerCase();
+      const matchesText   = !q || name.includes(q);
       const matchesOffice = !office || o.office === office;
       const matchesState  = !state  || o.state === state;
-      const matchesParty  = !party || o.party === party;
+      const matchesParty  = !party  || o.party === party;
       return matchesText && matchesOffice && matchesState && matchesParty;
     });
 
     renderResults(out);
   }
 
-  // Wire events
+  // Wire events (input for search, change for selects)
   searchEl.addEventListener('input', applyFilters);
-  [officeEl, stateEl, partyEl].forEach(el => el.addEventListener('change', applyFilters));
+  officeEl.addEventListener('change', applyFilters);
+  stateEl.addEventListener('change', applyFilters);
+  partyEl.addEventListener('change', applyFilters);
 
-  // Initial render from JSON
+  // Initial render strictly from your JSON (no flash, no demo)
   renderResults(officials);
-})();
+});
