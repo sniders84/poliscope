@@ -6046,61 +6046,99 @@ section > h3 {
   margin: 0 2px;
 }
 
-/* Ratings & Rankings container — flex row of cards */
+/* Ratings & Rankings container — flex row of uniform cards */
 #ratings-cards {
-  display: flex;              /* lay cards side by side */
-  flex-wrap: wrap;            /* wrap to next line if needed */
-  gap: 16px;                  /* spacing between cards */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
   padding: 16px;
-  justify-content: flex-start; /* align cards left */
+  justify-content: flex-start;
 }
 
-/* Ratings card styling — horizontal uniform layout */
+/* Uniform horizontal card */
 .info-card {
   display: flex;
-  flex-direction: row;        /* force horizontal */
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 420px;           /* consistent width */
-  height: 160px;              /* ✅ fixed card height */
+  max-width: 440px;        /* consistent width */
+  height: 170px;           /* ✅ fixed card height */
   border: 3px solid transparent;
   border-radius: 8px;
   padding: 12px;
-  background-color: #2c2c2c;  /* dark gray background */
+  background-color: #2c2c2c; /* dark gray */
   color: #fff;
   transition: box-shadow 0.2s;
-  overflow: hidden;           /* prevent overflow */
+  overflow: hidden;        /* prevent overflow */
 }
 
+/* Left column: photo + name + office */
 .card-left {
-  flex: 0 0 120px;            /* fixed width for left column */
+  flex: 0 0 160px;         /* fixed left column width */
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.card-left img {
-  width: 80px;                /* ✅ fixed photo width */
-  height: 80px;               /* ✅ fixed photo height */
+.card-left .card-image {
+  width: 80px;             /* ✅ uniform photo size */
+  height: 80px;
   border-radius: 6px;
   margin-bottom: 6px;
-  object-fit: cover;          /* crop/scale to uniform size */
+  object-fit: cover;       /* crop/scale uniformly */
 }
 
+/* Two-line name: first on top, last beneath */
+.name-block {
+  margin: 2px 0;
+  line-height: 1.2;
+}
+
+.name-block .first-name,
+.name-block .last-name {
+  display: block;          /* force each onto its own line */
+  white-space: nowrap;     /* prevent wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis; /* truncate if too long */
+  max-width: 140px;        /* prevent spill */
+}
+
+.name-block .first-name {
+  font-weight: 600;
+}
+
+.name-block .last-name {
+  font-weight: 700;
+}
+
+.office {
+  margin: 2px 0;
+  font-size: 13px;
+  color: #ccc;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 140px;
+}
+
+/* Right column: state/district + rating + button */
 .card-right {
   flex: 1;
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;    /* vertically center text */
+  justify-content: center;  /* vertical alignment */
+  padding: 0 8px;
 }
 
-.card-right h3,
-.card-right p {
+.card-right .meta {
   margin: 2px 0;
   line-height: 1.2;
-  white-space: nowrap;        /* ✅ prevent wrapping */
+  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;    /* truncate long text */
+  text-overflow: ellipsis;
 }
 
 .rating-badge {
@@ -6113,18 +6151,19 @@ section > h3 {
   font-size: 12px;
   padding: 6px 10px;
   border-radius: 4px;
-  background: #1e90ff;        /* app blue */
+  background: #1e90ff;    /* app blue */
   color: #fff;
   border: none;
   cursor: pointer;
   transition: background 0.3s ease;
+  align-self: center;
 }
 
 .info-card .btn-view:hover {
-  background: #0d6efd;        /* darker blue hover */
+  background: #0d6efd;     /* darker blue hover */
 }
 
-/* Party outline colors */
+/* Party outline colors (full card border) */
 .info-card[data-party="republican"] { border-color: #C0392B; }
 .info-card[data-party="democrat"]   { border-color: #2980B9; }
 .info-card[data-party="independent"]{ border-color: #7F8C8D; }
@@ -6133,4 +6172,35 @@ section > h3 {
 
 .info-card:hover {
   box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+/* Search bar & filters — dark gray with blue glow (unchanged) */
+#searchInput,
+#officeFilter,
+#stateFilter,
+#partyFilter {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  margin: 6px;
+  background-color: #2c2c2c;
+  color: #fff;
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+#searchInput:hover,
+#officeFilter:hover,
+#stateFilter:hover,
+#partyFilter:hover {
+  background-color: #333;
+}
+
+#searchInput:focus,
+#officeFilter:focus,
+#stateFilter:focus,
+#partyFilter:focus {
+  background-color: #2c2c2c;
+  box-shadow: 0 0 6px rgba(41,128,185,0.6);
+  outline: none;
 }
