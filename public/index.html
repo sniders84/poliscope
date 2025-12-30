@@ -14,6 +14,7 @@
       color: #fff;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
     }
+
     /* --- Header layout --- */
     header {
       display: flex;
@@ -26,6 +27,7 @@
       top: 0;
       z-index: 900;
     }
+
     /* Left: hamburger */
     .header-left { flex: 0 0 auto; }
     #hamburger {
@@ -42,9 +44,11 @@
       transition: background-color 0.2s ease, transform 0.2s ease;
     }
     #hamburger:hover { background-color: #0066cc; transform: scale(1.05); }
+
     /* Center: logo */
     .header-center { flex: 1 1 auto; text-align: center; }
     .logo { max-height: 100px; width: auto; max-width: 100%; object-fit: contain; }
+
     /* Right: search + dropdown */
     .header-right { flex: 0 0 auto; display: flex; align-items: center; gap: 8px; }
     #search-bar {
@@ -55,6 +59,7 @@
       padding: 6px 8px; border-radius: 6px; border: 1px solid #444;
       background: #1f1f1f; color: #fff;
     }
+
     /* Hamburger menu styles */
     #hamburger-menu {
       position: fixed;
@@ -75,6 +80,7 @@
       display: block; padding: 12px; color: #fff; text-decoration: none;
     }
     #hamburger-menu a:hover { background-color: #0066cc; }
+
     /* Simple carousel track class (used by inline carousel scripts) */
     .carousel { position: relative; overflow: hidden; }
     .carousel-track { display: flex; gap: 12px; transition: transform 0.3s ease; }
@@ -84,6 +90,7 @@
     .carousel-btn { padding: 6px 10px; border-radius: 6px; border: 1px solid #444; background: #1f1f1f; color: #fff; cursor: pointer; }
   </style>
 </head>
+
 <body>
     <!-- Header -->
   <header>
@@ -93,7 +100,7 @@
     <div class="header-center">
       <img src="assets/electorate-logo.png" alt="Logo" class="logo" style="max-height: 200px; height: auto; width: auto;" />
     </div>
-  </header>
+    </header>
 
   <!-- Slide-out hamburger menu -->
   <nav id="hamburger-menu" aria-label="Primary">
@@ -103,7 +110,7 @@
       <li><a href="#learning-resources" onclick="showTab('learning-resources')">Learning Resources</a></li>
       <li><a href="#civic" onclick="showCivic()">Civic Intelligence</a></li>
       <li><a href="#polls" onclick="showPolls()">Polls & Elections</a></li>
-      <li><a href="#my-officials" onclick="renderOfficials(window.selectedState || 'North Carolina', ''); showTab('my-officials')">My Officials</a></li>
+      <li><a href="#my-officials" onclick="renderOfficials(selectedState || 'North Carolina', ''); showTab('my-officials')">My Officials</a></li>
       <li><a href="#ratings" onclick="showTab('ratings'); showRatings();">Ratings/Rankings</a></li>
       <li><a href="#voting" onclick="showVoting()">Voting</a></li>
       <li><a href="#citizenship" onclick="showCitizenship()">Citizenship/Immigration</a></li>
@@ -113,60 +120,67 @@
   </nav>
 
   <main>
-    <!-- Startup Hub Tab -->
+        <!-- Startup Hub Tab -->
     <section id="startup-hub" class="tab-content" style="display: none;">
       <h2>Home Hub</h2>
 
-      <!-- National Broadcasting Networks -->
-      <div id="national-networks" class="category-section">
-        <h2>National Broadcasting Networks</h2>
-        <div class="card-grid" id="network-cards">
-          <div class="network-card" data-network="livenowfox">
-            <a href="https://www.livenowfox.com/live" target="_blank" rel="noopener noreferrer">
-              <div class="logo-wrapper">
-                <img src="/assets/livenowfox.png" alt="LiveNOW FOX Logo" class="network-logo">
-              </div>
-              <h3>LiveNOW from FOX</h3>
-              <p>Raw &amp; Unfiltered News 24/7 Live News Stream.</p>
-            </a>
-          </div>
-          <div class="network-card" data-network="msnbc">
-            <div class="logo-wrapper">
-              <img src="/assets/msnbc.png" alt="MSNBC Logo" class="network-logo">
-            </div>
-            <h3>MSNBC</h3>
-            <p>A counter to FOX News coverage.</p>
-          </div>
-          <div class="network-card" data-network="abc">
-            <div class="logo-wrapper">
-              <img src="/assets/abc.png" alt="ABC News Logo" class="network-logo">
-            </div>
-            <h3>ABC News</h3>
-            <p>National news coverage from ABC.</p>
-          </div>
-          <div class="network-card" data-network="cbs">
-            <div class="logo-wrapper">
-              <img src="/assets/cbs.png" alt="CBS News Logo" class="network-logo">
-            </div>
-            <h3>CBS News</h3>
-            <p>CBS News broadcasts and updates.</p>
-          </div>
-          <div class="network-card" data-network="fox">
-            <div class="logo-wrapper">
-              <img src="/assets/fox.png" alt="FOX News Logo" class="network-logo">
-            </div>
-            <h3>FOX News</h3>
-            <p>Latest stories from FOX News.</p>
-          </div>
-          <div class="network-card" data-network="newsnation">
-            <div class="logo-wrapper">
-              <img src="/assets/newsnation.png" alt="NewsNation Logo" class="network-logo">
-            </div>
-            <h3>NewsNation</h3>
-            <p>Breaking news and analysis from NewsNation.</p>
-          </div>
+    <!-- National Broadcasting Networks -->
+<div id="national-networks" class="category-section">
+  <h2>National Broadcasting Networks</h2>
+  <div class="card-grid" id="network-cards">
+
+    <div class="network-card" data-network="livenowfox">
+      <a href="https://www.livenowfox.com/live" target="_blank" rel="noopener noreferrer">
+        <div class="logo-wrapper">
+          <img src="/assets/livenowfox.png" alt="LiveNOW FOX Logo" class="network-logo">
         </div>
+        <h3>LiveNOW from FOX</h3>
+        <p>Raw &amp; Unfiltered News 24/7 Live News Stream.</p>
+      </a>
+    </div>
+
+    <div class="network-card" data-network="msnbc">
+      <div class="logo-wrapper">
+        <img src="/assets/msnbc.png" alt="MSNBC Logo" class="network-logo">
       </div>
+      <h3>MSNBC</h3>
+      <p>A counter to FOX News coverage.</p>
+    </div>
+
+    <div class="network-card" data-network="abc">
+      <div class="logo-wrapper">
+        <img src="/assets/abc.png" alt="ABC News Logo" class="network-logo">
+      </div>
+      <h3>ABC News</h3>
+      <p>National news coverage from ABC.</p>
+    </div>
+
+    <div class="network-card" data-network="cbs">
+      <div class="logo-wrapper">
+        <img src="/assets/cbs.png" alt="CBS News Logo" class="network-logo">
+      </div>
+      <h3>CBS News</h3>
+      <p>CBS News broadcasts and updates.</p>
+    </div>
+
+    <div class="network-card" data-network="fox">
+      <div class="logo-wrapper">
+        <img src="/assets/fox.png" alt="FOX News Logo" class="network-logo">
+      </div>
+      <h3>FOX News</h3>
+      <p>Latest stories from FOX News.</p>
+    </div>
+
+    <div class="network-card" data-network="newsnation">
+      <div class="logo-wrapper">
+        <img src="/assets/newsnation.png" alt="NewsNation Logo" class="network-logo">
+      </div>
+      <h3>NewsNation</h3>
+      <p>Breaking news and analysis from NewsNation.</p>
+    </div>
+
+  </div>
+</div>
 
       <!-- Single feed viewer -->
       <div id="feed-viewer" class="feed-viewer">
@@ -222,13 +236,12 @@
         <div id="social-feed" class="grid"></div>
       </div>
     </section>
-
     <section id="podcasts-shows" class="tab-content" style="display: none;">
       <h2>Podcasts & Shows</h2>
-      <input
-        type="text"
-        id="podcasts-search-bar"
-        class="search-bar"
+      <input 
+        type="text" 
+        id="podcasts-search-bar" 
+        class="search-bar" 
         placeholder="Search podcasts or shows..."
         style="
           width: 100%;
@@ -250,75 +263,72 @@
 
     <section id="my-officials" class="tab-content" style="display: none; position: relative;">
       <h2>My Officials</h2>
-      <div style="text-align: center; margin: 30px 0; padding: 20px; background: #2b2b2b; border-radius: 12px;">
-        <label for="state-dropdown" style="font-size: 1.4rem; font-weight: bold; color: #fff; margin-right: 20px;">
-          Select your state to view officials:
-        </label>
-        <select id="state-dropdown" style="padding: 12px 16px; font-size: 1.1rem; border-radius: 8px; background: #1f1f1f; color: #fff; border: 1px solid #444; min-width: 320px;">
-          <option value="Alabama">Alabama</option>
-          <option value="Alaska">Alaska</option>
-          <option value="American Samoa">American Samoa</option>
-          <option value="Arizona">Arizona</option>
-          <option value="Arkansas">Arkansas</option>
-          <option value="California">California</option>
-          <option value="Colorado">Colorado</option>
-          <option value="Connecticut">Connecticut</option>
-          <option value="Delaware">Delaware</option>
-          <option value="District of Columbia">District of Columbia</option>
-          <option value="Florida">Florida</option>
-          <option value="Georgia">Georgia</option>
-          <option value="Guam">Guam</option>
-          <option value="Hawaii">Hawaii</option>
-          <option value="Idaho">Idaho</option>
-          <option value="Illinois">Illinois</option>
-          <option value="Indiana">Indiana</option>
-          <option value="Iowa">Iowa</option>
-          <option value="Kansas">Kansas</option>
-          <option value="Kentucky">Kentucky</option>
-          <option value="Louisiana">Louisiana</option>
-          <option value="Maine">Maine</option>
-          <option value="Maryland">Maryland</option>
-          <option value="Massachusetts">Massachusetts</option>
-          <option value="Michigan">Michigan</option>
-          <option value="Minnesota">Minnesota</option>
-          <option value="Mississippi">Mississippi</option>
-          <option value="Missouri">Missouri</option>
-          <option value="Montana">Montana</option>
-          <option value="Nebraska">Nebraska</option>
-          <option value="Nevada">Nevada</option>
-          <option value="New Hampshire">New Hampshire</option>
-          <option value="New Jersey">New Jersey</option>
-          <option value="New Mexico">New Mexico</option>
-          <option value="New York">New York</option>
-          <option value="North Carolina" selected>North Carolina</option>
-          <option value="North Dakota">North Dakota</option>
-          <option value="Northern Mariana Islands">Northern Mariana Islands</option>
-          <option value="Ohio">Ohio</option>
-          <option value="Oklahoma">Oklahoma</option>
-          <option value="Oregon">Oregon</option>
-          <option value="Pennsylvania">Pennsylvania</option>
-          <option value="Puerto Rico">Puerto Rico</option>
-          <option value="Rhode Island">Rhode Island</option>
-          <option value="South Carolina">South Carolina</option>
-          <option value="South Dakota">South Dakota</option>
-          <option value="Tennessee">Tennessee</option>
-          <option value="Texas">Texas</option>
-          <option value="Utah">Utah</option>
-          <option value="Vermont">Vermont</option>
-          <option value="Virgin Islands">U.S. Virgin Islands</option>
-          <option value="Virginia">Virginia</option>
-          <option value="Washington">Washington</option>
-          <option value="West Virginia">West Virginia</option>
-          <option value="Wisconsin">Wisconsin</option>
-          <option value="Wyoming">Wyoming</option>
-        </select>
-
-        <!-- Search bar moved outside the <select> to fix invalid HTML -->
-        <input type="text" id="search-bar"
-               placeholder="Search officials..."
-               style="padding: 12px 16px; font-size: 1.1rem; border-radius: 8px; background: #1f1f1f; color: #fff; border: 1px solid #444; min-width: 320px; margin-left: 20px;" />
-      </div>
-
+        <div style="text-align: center; margin: 30px 0; padding: 20px; background: #2b2b2b; border-radius: 12px;">
+    <label for="state-dropdown" style="font-size: 1.4rem; font-weight: bold; color: #fff; margin-right: 20px;">
+      Select your state to view officials:
+    </label>
+    <select id="state-dropdown" style="padding: 12px 16px; font-size: 1.1rem; border-radius: 8px; background: #1f1f1f; color: #fff; border: 1px solid #444; min-width: 320px;">
+      <option value="Alabama">Alabama</option>
+      <option value="Alaska">Alaska</option>
+      <option value="American Samoa">American Samoa</option>
+      <option value="Arizona">Arizona</option>
+      <option value="Arkansas">Arkansas</option>
+      <option value="California">California</option>
+      <option value="Colorado">Colorado</option>
+      <option value="Connecticut">Connecticut</option>
+      <option value="Delaware">Delaware</option>
+      <option value="District of Columbia">District of Columbia</option>
+      <option value="Florida">Florida</option>
+      <option value="Georgia">Georgia</option>
+      <option value="Guam">Guam</option>
+      <option value="Hawaii">Hawaii</option>
+      <option value="Idaho">Idaho</option>
+      <option value="Illinois">Illinois</option>
+      <option value="Indiana">Indiana</option>
+      <option value="Iowa">Iowa</option>
+      <option value="Kansas">Kansas</option>
+      <option value="Kentucky">Kentucky</option>
+      <option value="Louisiana">Louisiana</option>
+      <option value="Maine">Maine</option>
+      <option value="Maryland">Maryland</option>
+      <option value="Massachusetts">Massachusetts</option>
+      <option value="Michigan">Michigan</option>
+      <option value="Minnesota">Minnesota</option>
+      <option value="Mississippi">Mississippi</option>
+      <option value="Missouri">Missouri</option>
+      <option value="Montana">Montana</option>
+      <option value="Nebraska">Nebraska</option>
+      <option value="Nevada">Nevada</option>
+      <option value="New Hampshire">New Hampshire</option>
+      <option value="New Jersey">New Jersey</option>
+      <option value="New Mexico">New Mexico</option>
+      <option value="New York">New York</option>
+      <option value="North Carolina" selected>North Carolina</option>
+      <option value="North Dakota">North Dakota</option>
+      <option value="Northern Mariana Islands">Northern Mariana Islands</option>
+      <option value="Ohio">Ohio</option>
+      <option value="Oklahoma">Oklahoma</option>
+      <option value="Oregon">Oregon</option>
+      <option value="Pennsylvania">Pennsylvania</option>
+      <option value="Puerto Rico">Puerto Rico</option>
+      <option value="Rhode Island">Rhode Island</option>
+      <option value="South Carolina">South Carolina</option>
+      <option value="South Dakota">South Dakota</option>
+      <option value="Tennessee">Tennessee</option>
+      <option value="Texas">Texas</option>
+      <option value="Utah">Utah</option>
+      <option value="Vermont">Vermont</option>
+      <option value="Virgin Islands">U.S. Virgin Islands</option>
+      <option value="Virginia">Virginia</option>
+      <option value="Washington">Washington</option>
+      <option value="West Virginia">West Virginia</option>
+      <option value="Wisconsin">Wisconsin</option>
+      <option value="Wyoming">Wyoming</option>
+      <input type="text" id="search-bar" 
+       placeholder="Search officials..." 
+       style="padding: 12px 16px; font-size: 1.1rem; border-radius: 8px; background: #1f1f1f; color: #fff; border: 1px solid #444; min-width: 320px; margin-left: 20px;" />
+    </select>
+  </div>
       <div id="loading-overlay" style="
           position: absolute;
           top: 0;
@@ -335,14 +345,13 @@
         ">
         Loading officials...
       </div>
-
       <div id="officials-container" class="grid"></div>
     </section>
 
     <!-- Ratings/Rankings Tab -->
 <section id="ratings" class="tab-content" style="display: none;">
   <h2>Ratings & Rankings</h2>
-  <div id="ratings-cards" class="card-section grid">
+  <div id="ratings-cards" class="card-section">
     <!-- Cards will be populated dynamically from JSON -->
   </div>
 </section>
@@ -351,36 +360,40 @@
   <h2>Learning Resources</h2>
 
   <!-- Quizzes subsection -->
-  <h3>Quizzes</h3>
-  <div id="quiz-launchers" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
-    <div id="civic-knowledge-launcher" class="quiz-card">
-      <img src="assets/isidewith-civic-knowledge.jpeg" alt="Civic Knowledge Quiz" class="card-image" />
-      <h3>Civic Knowledge</h3>
-      <p>Test your knowledge of U.S. government, rights, and processes.</p>
-      <a href="https://www.isidewith.com/knowledge-quiz/" target="_blank" rel="noopener noreferrer" class="btn">Take Quiz</a>
-    </div>
-    <div id="political-quiz-launcher" class="quiz-card">
-      <img src="assets/isidewith.jpeg" alt="Political Quiz" class="card-image" />
-      <h3>Political Quiz</h3>
-      <p>Answer nuanced questions to see where you align across issues.</p>
-      <a href="https://www.isidewith.com/political-quiz" target="_blank" rel="noopener noreferrer" class="btn">Take Quiz</a>
-    </div>
+<h3>Quizzes</h3>
+<div id="quiz-launchers">
+
+  <div id="civic-knowledge-launcher" class="quiz-card">
+    <img src="assets/isidewith-civic-knowledge.jpeg" alt="Civic Knowledge Quiz" class="card-image" />
+    <h3>Civic Knowledge</h3>
+    <p>Test your knowledge of U.S. government, rights, and processes.</p>
+    <a href="https://www.isidewith.com/knowledge-quiz/" target="_blank" rel="noopener noreferrer" class="btn">Take Quiz</a>
   </div>
+
+  <div id="political-quiz-launcher" class="quiz-card">
+    <img src="assets/isidewith.jpeg" alt="Political Quiz" class="card-image" />
+    <h3>Political Quiz</h3>
+    <p>Answer nuanced questions to see where you align across issues.</p>
+    <a href="https://www.isidewith.com/political-quiz" target="_blank" rel="noopener noreferrer" class="btn">Take Quiz</a>
+  </div>
+
+</div>
 
   <!-- Games subsection -->
   <h3>Games</h3>
-  <div class="card-grid">
-    <div class="info-card">
-      <img src="assets/thats-your-right.jpeg" alt="That's Your Right Logo" class="card-image" />
-      <h3>That’s Your Right</h3>
-      <p><strong>Grades:</strong> 6–8, 9–12</p>
-      <p><strong>Topic:</strong> Constitutional Rights</p>
-      <p>Learn about constitutional rights through interactive play.</p>
-      <p><strong>Play time:</strong> 0–15 min.</p>
-      <a href="https://www.annenbergclassroom.org/resource/annenberg-classrooms-thats-right/"
-         target="_blank" rel="noopener noreferrer" class="btn">Play Now</a>
-    </div>
-    <div class="info-card">
+   <div class="card-grid">
+ <div class="info-card">      
+  <img src="assets/thats-your-right.jpeg" alt="That's Your Right Logo" class="card-image" />
+  <h3>That’s Your Right</h3>
+  <p><strong>Grades:</strong> 6–8, 9–12</p>
+  <p><strong>Topic:</strong> Constitutional Rights</p>
+  <p>Learn about constitutional rights through interactive play.</p>
+  <p><strong>Play time:</strong> 0–15 min.</p>
+  <a href="https://www.annenbergclassroom.org/resource/annenberg-classrooms-thats-right/" 
+     target="_blank" rel="noopener noreferrer" class="btn">Play Now</a>
+</div>
+
+    <div class="info-card">      
       <img src="assets/argument-wars.png" alt="Argument Wars" class="card-image" />
       <h3>Argument Wars</h3>
       <p><strong>Grades:</strong> 6–8, 9–12</p>
@@ -389,6 +402,7 @@
       <p><strong>Play time:</strong> 0–15 min.</p>
       <a href="https://www.icivics.org/games/argument-wars" target="_blank" rel="noopener noreferrer" class="btn">Play Now</a>
     </div>
+
     <div class="info-card">
       <img src="assets/branches-of-power.png" alt="Branches of Power" class="card-image" />
       <h3>Branches of Power</h3>
@@ -398,6 +412,7 @@
       <p><strong>Play time:</strong> 15–30 min.</p>
       <a href="https://www.icivics.org/games/branches-power" target="_blank" rel="noopener noreferrer" class="btn">Play Now</a>
     </div>
+
     <div class="info-card">
       <img src="assets/brief-the-chief.png" alt="Brief the Chief" class="card-image" />
       <h3>Brief the Chief</h3>
@@ -407,6 +422,7 @@
       <p><strong>Play time:</strong> 15–30 min.</p>
       <a href="https://www.icivics.org/games/brief-chief" target="_blank" rel="noopener noreferrer" class="btn">Play Now</a>
     </div>
+
     <div class="info-card">
       <img src="assets/cast-your-vote.png" alt="Cast Your Vote" class="card-image" />
       <h3>Cast Your Vote</h3>
@@ -416,6 +432,7 @@
       <p><strong>Play time:</strong> 30+ min.</p>
       <a href="https://www.icivics.org/games/cast-your-vote" target="_blank" rel="noopener noreferrer" class="btn">Play Now</a>
     </div>
+
     <!-- Convene the Council -->
     <div class="info-card">
       <img src="assets/convene-the-council.png" alt="Convene the Council" class="card-image" />
@@ -426,6 +443,7 @@
       <p><strong>Play time:</strong> 15–30 min.</p>
       <a href="https://ed.icivics.org/games/convene-council" target="_blank" rel="noopener noreferrer" class="btn">Play Now</a>
     </div>
+
     <!-- Counties Work -->
     <div class="info-card">
       <img src="assets/counties-work.png" alt="Counties Work" class="card-image" />
@@ -436,6 +454,7 @@
       <p><strong>Play time:</strong> 15–30 min.</p>
       <a href="https://ed.icivics.org/games/counties-work" target="_blank" rel="noopener noreferrer" class="btn">Play Now</a>
     </div>
+
     <!-- Investigation Declaration -->
     <div class="info-card">
       <img src="assets/investigation-declaration.png" alt="Investigation Declaration" class="card-image" />
@@ -446,6 +465,7 @@
       <p><strong>Play time:</strong> 30+ min.</p>
       <a href="https://ed.icivics.org/games/investigation-declaration" target="_blank" rel="noopener noreferrer" class="btn">Play Now</a>
     </div>
+
     <!-- Neighborhood Good -->
     <div class="info-card">
       <img src="assets/neighborhood-good.png" alt="Neighborhood Good" class="card-image" />
@@ -456,6 +476,7 @@
       <p><strong>Play time:</strong> 15–30 min.</p>
       <a href="https://ed.icivics.org/games/neighborhood-good" target="_blank" rel="noopener noreferrer" class="btn">Play Now</a>
     </div>
+
     <!-- Newsfeed Defenders -->
     <div class="info-card">
       <img src="assets/newsfeed-defenders.png" alt="Newsfeed Defenders" class="card-image" />
@@ -466,6 +487,7 @@
       <p><strong>Play time:</strong> 30+ min.</p>
       <a href="https://ed.icivics.org/node/2563177/resource" target="_blank" rel="noopener noreferrer" class="btn">Play Now</a>
     </div>
+
     <!-- People's Pie -->
     <div class="info-card">
       <img src="assets/peoples-pie.png" alt="People's Pie" class="card-image" />
@@ -476,7 +498,8 @@
       <p><strong>Play time:</strong> 15–30 min.</p>
       <a href="https://ed.icivics.org/games/peoples-pie" target="_blank" rel="noopener noreferrer" class="btn">Play Now</a>
     </div>
-    <!-- Uncovering Loyalties -->
+
+        <!-- Uncovering Loyalties -->
     <div class="info-card">
       <img src="assets/uncovering-loyalties.png" alt="Uncovering Loyalties" class="card-image" />
       <h3>Uncovering Loyalties</h3>
@@ -486,6 +509,7 @@
       <p><strong>Play time:</strong> 0–15 min.</p>
       <a href="https://ed.icivics.org/games/uncovering-loyalties" target="_blank" rel="noopener noreferrer" class="btn">Play Now</a>
     </div>
+
     <!-- Win the White House -->
     <div class="info-card">
       <img src="assets/win-the-white-house.png" alt="Win the White House" class="card-image" />
@@ -496,236 +520,251 @@
       <p><strong>Play time:</strong> 30+ min.</p>
       <a href="https://ed.icivics.org/games/win-white-house" target="_blank" rel="noopener noreferrer" class="btn">Play Now</a>
     </div>
-    <!-- Gerrymander-DX -->
-    <div id="gerrymander-card" class="info-card">
-      <img src="assets/gerrymanderdx.png" alt="Gerrymander-DX Logo" class="card-image" />
-      <h3>Gerrymander-DX</h3>
-      <p>Test your strategy skills by manipulating districts in this satirical redistricting game.</p>
-      <a href="https://busalonium.itch.io/gerrymander-dx" target="_blank" rel="noopener noreferrer" class="btn">Play Game</a>
-    </div>
-    <!-- The Power Play Chronicles -->
-    <div id="powerplay-card" class="info-card">
-      <img src="assets/powerplay.png" alt="The Power Play Chronicles Logo" class="card-image" />
-      <h3>The Power Play Chronicles</h3>
-      <p>Step into the world of political maneuvering and power struggles in this narrative-driven game.</p>
-      <a href="https://powerplaychron.itch.io/powerplaychronicles" target="_blank" rel="noopener noreferrer" class="btn">Play Game</a>
-    </div>
+
+     <!-- Gerrymander-DX --> <div id="gerrymander-card" class="info-card"> <img src="assets/gerrymanderdx.png" alt="Gerrymander-DX Logo" class="card-image" /> <h3>Gerrymander-DX</h3> <p>Test your strategy skills by manipulating districts in this satirical redistricting game.</p> <a href="https://busalonium.itch.io/gerrymander-dx" target="_blank" rel="noopener noreferrer" class="btn">Play Game</a> </div> <!-- The Power Play Chronicles --> <div id="powerplay-card" class="info-card"> <img src="assets/powerplay.png" alt="The Power Play Chronicles Logo" class="card-image" /> <h3>The Power Play Chronicles</h3> <p>Step into the world of political maneuvering and power struggles in this narrative-driven game.</p> <a href="https://powerplaychron.itch.io/powerplaychronicles" target="_blank" rel="noopener noreferrer" class="btn">Play Game</a> </div>
   </div> <!-- end of Games card-grid -->
 
-  <!-- Videos subsection -->
-  <h3>Videos</h3>
-  <div class="card-grid">
-    <!-- A Constitution Comes to Life -->
-    <div class="info-card">
-      <img src="assets/constitution-comes-to-life.png" alt="A Constitution Comes to Life" class="card-image" />
-      <h3>A Constitution Comes to Life</h3>
-      <p><strong>Grades:</strong> 6–8, 9–12</p>
-      <p>Explore foundational constitutional principles, the 1787 convention, and the race to ratify.</p>
-      <a href="https://ed.icivics.org/constitution-explained-constitution-comes-to-life?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Watch Playlist</a>
-    </div>
-    <!-- El surgimiento de la Constitución -->
-    <div class="info-card">
-      <img src="assets/el-surgimiento-de-la-constitucion.png" alt="El surgimiento de la Constitución" class="card-image" />
-      <h3>El surgimiento de la Constitución</h3>
-      <p><strong>Grades:</strong> 6–8, 9–12</p>
-      <p>Explora los principios constitucionales fundamentales y la Convención de 1787 en la que todo comenzó.</p>
-      <a href="https://ed.icivics.org/todo-sobre-la-constituci%C3%B3n-el-surgimiento-de-la-constituci%C3%B3n?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Ver Playlist</a>
-    </div>
-    <!-- The Three Branches -->
-    <div class="info-card">
-      <img src="assets/three-branches.png" alt="The Three Branches" class="card-image" />
-      <h3>The Three Branches</h3>
-      <p><strong>Grades:</strong> 6–8, 9–12</p>
-      <p>Learn how power is divided among legislative, executive, and judicial branches in 6 videos.</p>
-      <a href="https://ed.icivics.org/constitution-explained-three-branches?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Watch Playlist</a>
-    </div>
-    <!-- Los tres poderes -->
-    <div class="info-card">
-      <img src="assets/los-tres-poderes.png" alt="Los tres poderes" class="card-image" />
-      <h3>Los tres poderes</h3>
-      <p><strong>Grades:</strong> 6–8, 9–12</p>
-      <p>Descubre cómo se divide el poder del Gobierno de EE. UU. en Legislativo, Ejecutivo y Judicial.</p>
-      <a href="https://ed.icivics.org/todo-sobre-la-constituci%C3%B3n-los-tres-poderes?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Ver Playlist</a>
-    </div>
-    <!-- Articles of the Constitution -->
-    <div class="info-card">
-      <img src="assets/articles-of-the-constitution.png" alt="Articles of the Constitution" class="card-image" />
-      <h3>Articles of the Constitution</h3>
-      <p><strong>Grades:</strong> 6–8, 9–12</p>
-      <p>Breaks down the Constitution Article by Article to help students understand its contents.</p>
-      <a href="https://ed.icivics.org/constitution-explained-articles-of-the-constitution?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Watch Playlist</a>
-    </div>
-    <!-- Los artículos de la Constitución -->
-    <div class="info-card">
-      <img src="assets/los-articulos-de-la-constitucion.png" alt="Los artículos de la Constitución" class="card-image" />
-      <h3>Los artículos de la Constitución</h3>
-      <p><strong>Grades:</strong> 6–8, 9–12</p>
-      <p>Analiza la Constitución artículo por artículo para ayudar a los estudiantes a comprenderla.</p>
-      <a href="https://ed.icivics.org/todo-sobre-la-constituci%C3%B3n-los-art%C3%ADculos-de-la-constituci%C3%B3n?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Ver Playlist</a>
-    </div>
-    <!-- Bill of Rights -->
-    <div class="info-card">
-      <img src="assets/bill-of-rights.png" alt="Bill of Rights" class="card-image" />
-      <h3>Bill of Rights</h3>
-      <p><strong>Grades:</strong> 6–8, 9–12</p>
-      <p>Explore the key freedoms and protections outlined in the first ten amendments.</p>
-      <a href="https://ed.icivics.org/constitution-explained-bill-of-rights?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Watch Playlist</a>
-    </div>
-    <!-- La Declaración de Derechos -->
-    <div class="info-card">
-      <img src="assets/la-declaracion-de-derechos.png" alt="La Declaración de Derechos" class="card-image" />
-      <h3>La Declaración de Derechos</h3>
-      <p><strong>Grades:</strong> 6–8, 9–12</p>
-      <p>Explora las libertades y protecciones de las primeras diez enmiendas.</p>
-      <a href="https://ed.icivics.org/todo-sobre-la-constituci%C3%B3n-la-declaraci%C3%B3n-de-derechos?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Ver Playlist</a>
-    </div>
-    <!-- Freedoms of the First Amendment -->
-    <div class="info-card">
-      <img src="assets/freedoms-of-the-first-amendment.png" alt="Freedoms of the First Amendment" class="card-image" />
-      <h3>Freedoms of the First Amendment</h3>
-      <p><strong>Grades:</strong> 6–8, 9–12</p>
-      <p>Dig deep into the First Amendment and its multiple freedoms.</p>
-      <a href="https://ed.icivics.org/constitution-explained-freedoms-first-amendment?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Watch Playlist</a>
-    </div>
-    <!-- Las libertades de la Primera Enmienda -->
-    <div class="info-card">
-      <img src="assets/las-libertades-de-la-primera-enmienda.png" alt="Las libertades de la Primera Enmienda" class="card-image" />
-      <h3>Las libertades de la Primera Enmienda</h3>
-      <p><strong>Grades:</strong> 6–8, 9–12</p>
-      <p>Explora las libertades incluidas en la Primera Enmienda.</p>
-      <a href="https://ed.icivics.org/todo-sobre-la-constituci%C3%B3n-las-libertades-de-la-primera-enmienda?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Ver Playlist</a>
-    </div>
-    <!-- Expanding Rights -->
-    <div class="info-card">
-      <img src="assets/expanding-rights.png" alt="Expanding Rights" class="card-image" />
-      <h3>Expanding Rights</h3>
-      <p><strong>Grades:</strong> 6–8, 9–12</p>
-      <p>Learn how amendments expanded rights for excluded groups throughout history.</p>
-      <a href="https://ed.icivics.org/constitution-explained-expanding-rights?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Watch Playlist</a>
-    </div>
-    <!-- Derechos en expansión -->
-    <div class="info-card">
-      <img src="assets/derechos-en-expansion.png" alt="Derechos en expansión" class="card-image" />
-      <h3>Derechos en expansión</h3>
-      <p><strong>Grades:</strong> 6–8, 9–12</p>
-      <p>Explora cómo las enmiendas expandieron derechos a grupos previamente excluidos.</p>
-      <a href="https://ed.icivics.org/todo-sobre-la-constituci%C3%B3n-derechos-en-expansi%C3%B3n?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Ver Playlist</a>
-    </div>
-    <!-- Reconstruction Era Amendments -->
-    <div class="info-card">
-      <img src="assets/reconstruction-era-amendments.png" alt="Reconstruction Era Amendments" class="card-image" />
-      <h3>Reconstruction Era Amendments</h3>
-      <p><strong>Grades:</strong> 6–8, 9–12</p>
-      <p>Discover how the Constitution changed following the Civil War.</p>
-      <a href="https://ed.icivics.org/constitution-explained-reconstruction-era-amendments?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Watch Playlist</a>
-    </div>
-    <!-- Enmiendas de la Reconstrucción -->
-    <div class="info-card">
-      <img src="assets/enmiendas-de-la-reconstruccion.png" alt="Enmiendas de la Reconstrucción" class="card-image" />
-      <h3>Enmiendas de la Reconstrucción</h3>
-      <p><strong>Grades:</strong> 6–8, 9–12</p>
-      <p>Explica cómo la Constitución cambió tras la Guerra Civil e introduce las enmiendas de la era de Reconstrucción.</p>
-      <a href="https://ed.icivics.org/todo-sobre-la-constituci%C3%B3n-enmiendas-de-la-reconstrucci%C3%B3n?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Ver Playlist</a>
-    </div>
-    <!-- Your Voice, Your Vote -->
-    <div class="info-card">
-      <img src="assets/your-voice-your-vote.png" alt="Your Voice, Your Vote" class="card-image" />
-      <h3>Your Voice, Your Vote</h3>
-      <p><strong>Grades:</strong> 6–8, 9–12</p>
-      <p>Explore amendments that expanded voting rights for men, women, young people, and D.C. residents.</p>
-      <a href="https://ed.icivics.org/constitution-explained-your-voice-your-vote?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Watch Playlist</a>
-    </div>
-    <!-- Tu voz, tu voto -->
-    <div class="info-card">
-      <img src="assets/tu-voz-tu-voto.png" alt="Tu voz, tu voto" class="card-image" />
-      <h3>Tu voz, tu voto</h3>
-      <p><strong>Grades:</strong> 6–8, 9–12</p>
-      <p>Explora las enmiendas que expandieron el derecho al voto para distintos grupos.</p>
-      <a href="https://ed.icivics.org/todo-sobre-la-constituci%C3%B3n-tu-voz-tu-voto?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Ver Playlist</a>
-    </div>
-    <!-- Progressive Era Amendments -->
-    <div class="info-card">
-      <img src="assets/progressive-era-amendments.png" alt="Progressive Era Amendments" class="card-image" />
-      <h3>Progressive Era Amendments</h3>
-      <p><strong>Grades:</strong> 6–8, 9–12</p>
-      <p>Discover constitutional changes from the Progressive Era that reshaped American life.</p>
-      <a href="https://ed.icivics.org/constitution-explained-progressive-era-amendments?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Watch Playlist</a>
-    </div>
-    <!-- Enmiendas de la era progresista -->
-    <div class="info-card">
-      <img src="assets/enmiendas-de-la-era-progresista.png" alt="Enmiendas de la era progresista" class="card-image" />
-      <h3>Enmiendas de la era progresista</h3>
-      <p><strong>Grades:</strong> 6–8, 9–12</p>
-      <p>Explora los cambios constitucionales de la era progresista que transformaron la vida en EE. UU.</p>
-      <a href="https://ed.icivics.org/todo-sobre-la-constituci%C3%B3n-enmiendas-de-la-era-progresista?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Ver Playlist</a>
-    </div>
-    <!-- Other Amendments -->
-    <div class="info-card">
-      <img src="assets/other-amendments.png" alt="Other Amendments" class="card-image" />
-      <h3>Other Amendments</h3>
-      <p><strong>Grades:</strong> 6–8, 9–12</p>
-      <p>Explore diverse amendments covering income tax, presidential terms, and more.</p>
-      <a href="https://ed.icivics.org/constitution-explained-other-amendments?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Watch Playlist</a>
-    </div>
-    <!-- Otras enmiendas -->
-    <div class="info-card">
-      <img src="assets/otras-enmiendas.png" alt="Otras enmiendas" class="card-image" />
-      <h3>Otras enmiendas</h3>
-      <p><strong>Grades:</strong> 6–8, 9–12</p>
-      <p>Explora una selección diversa de enmiendas constitucionales.</p>
-      <a href="https://ed.icivics.org/todo-sobre-la-constituci%C3%B3n-otras-enmiendas?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Ver Playlist</a>
-    </div>
-    <!-- The Constitution EXPLAINED: Video Series -->
-    <div class="info-card">
-      <img src="assets/constitution-explained-series.png" alt="The Constitution EXPLAINED: Video Series" class="card-image" />
-      <h3>The Constitution EXPLAINED: Video Series</h3>
-      <p><strong>Grades:</strong> 6–8, 9–12</p>
-      <p>A comprehensive series of 35 short videos explaining the text, history, and relevance of the Constitution.</p>
-      <a href="https://ed.icivics.org/constitution-explained-video-series?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Watch Playlist</a>
-    </div>
-    <!-- Todo sobre la Constitución: serie de videos -->
-    <div class="info-card">
-      <img src="assets/todo-sobre-la-constitucion-series.png" alt="Todo sobre la Constitución: serie de videos" class="card-image" />
-      <h3>Todo sobre la Constitución: serie de videos</h3>
-      <p><strong>Grades:</strong> 6–8, 9–12</p>
-      <p>Una serie completa de 35 videos cortos que explican el texto, la historia y la relevancia de la Constitución.</p>
-      <a href="https://ed.icivics.org/todo-sobre-la-constituci%C3%B3n-serie-de-videos?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Ver Playlist</a>
-    </div>
-    <!-- Civic Digital Literacy -->
-    <div class="info-card">
-      <img src="assets/civic-digital-literacy.png" alt="Civic Digital Literacy" class="card-image" />
-      <h3>Civic Digital Literacy</h3>
-      <p><strong>Grades:</strong> 6–8, 9–12</p>
-      <p>Unlock the power of digital literacy with short videos that spark deeper learning and conversation.</p>
-      <a href="https://ed.icivics.org/node/3354518?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Watch Playlist</a>
-    </div>
-    <!-- Changemakers: Women in History -->
-    <div class="info-card">
-      <img src="assets/changemakers-women-in-history.png" alt="Changemakers: Women in History" class="card-image" />
-      <h3>Changemakers: Women in History</h3>
-      <p><strong>Grades:</strong> 6–8, 9–12</p>
-      <p>Meet extraordinary women who broke barriers and helped change the nation.</p>
-      <a href="https://ed.icivics.org/node/3358612?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Watch Playlist</a>
-    </div>
-    <!-- Changemakers: Key Players in the Civil Rights Movement -->
-    <div class="info-card">
-      <img src="assets/changemakers-civil-rights.png" alt="Changemakers: Key Players in the Civil Rights Movement" class="card-image" />
-      <h3>Changemakers: Key Players in the Civil Rights Movement</h3>
-      <p><strong>Grades:</strong> 6–8, 9–12</p>
-      <p>Discover the civil rights activists whose actions changed the nation.</p>
-      <a href="https://ed.icivics.org/node/3358653?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Watch Playlist</a>
-    </div>
-    <!-- Changemakers Video Series -->
-    <div class="info-card">
-      <img src="assets/changemakers-series.png" alt="Changemakers Video Series" class="card-image" />
-      <h3>Changemakers Video Series</h3>
-      <p><strong>Grades:</strong> 6–8, 9–12</p>
-      <p>Meet ordinary people who made extraordinary contributions to our nation.</p>
-      <a href="https://ed.icivics.org/node/3358660?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Watch Playlist</a>
-    </div>
+<!-- Videos subsection -->
+<h3>Videos</h3>
+<div class="card-grid">
+
+  <!-- A Constitution Comes to Life -->
+  <div class="info-card">
+    <img src="assets/constitution-comes-to-life.png" alt="A Constitution Comes to Life" class="card-image" />
+    <h3>A Constitution Comes to Life</h3>
+    <p><strong>Grades:</strong> 6–8, 9–12</p>
+    <p>Explore foundational constitutional principles, the 1787 convention, and the race to ratify.</p>
+    <a href="https://ed.icivics.org/constitution-explained-constitution-comes-to-life?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Watch Playlist</a>
   </div>
+
+  <!-- El surgimiento de la Constitución -->
+  <div class="info-card">
+    <img src="assets/el-surgimiento-de-la-constitucion.png" alt="El surgimiento de la Constitución" class="card-image" />
+    <h3>El surgimiento de la Constitución</h3>
+    <p><strong>Grades:</strong> 6–8, 9–12</p>
+    <p>Explora los principios constitucionales fundamentales y la Convención de 1787 en la que todo comenzó.</p>
+    <a href="https://ed.icivics.org/todo-sobre-la-constituci%C3%B3n-el-surgimiento-de-la-constituci%C3%B3n?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Ver Playlist</a>
+  </div>
+
+  <!-- The Three Branches -->
+  <div class="info-card">
+    <img src="assets/three-branches.png" alt="The Three Branches" class="card-image" />
+    <h3>The Three Branches</h3>
+    <p><strong>Grades:</strong> 6–8, 9–12</p>
+    <p>Learn how power is divided among legislative, executive, and judicial branches in 6 videos.</p>
+    <a href="https://ed.icivics.org/constitution-explained-three-branches?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Watch Playlist</a>
+  </div>
+
+  <!-- Los tres poderes -->
+  <div class="info-card">
+    <img src="assets/los-tres-poderes.png" alt="Los tres poderes" class="card-image" />
+    <h3>Los tres poderes</h3>
+    <p><strong>Grades:</strong> 6–8, 9–12</p>
+    <p>Descubre cómo se divide el poder del Gobierno de EE. UU. en Legislativo, Ejecutivo y Judicial.</p>
+    <a href="https://ed.icivics.org/todo-sobre-la-constituci%C3%B3n-los-tres-poderes?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Ver Playlist</a>
+  </div>
+
+  <!-- Articles of the Constitution -->
+  <div class="info-card">
+    <img src="assets/articles-of-the-constitution.png" alt="Articles of the Constitution" class="card-image" />
+    <h3>Articles of the Constitution</h3>
+    <p><strong>Grades:</strong> 6–8, 9–12</p>
+    <p>Breaks down the Constitution Article by Article to help students understand its contents.</p>
+    <a href="https://ed.icivics.org/constitution-explained-articles-of-the-constitution?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Watch Playlist</a>
+  </div>
+
+  <!-- Los artículos de la Constitución -->
+  <div class="info-card">
+    <img src="assets/los-articulos-de-la-constitucion.png" alt="Los artículos de la Constitución" class="card-image" />
+    <h3>Los artículos de la Constitución</h3>
+    <p><strong>Grades:</strong> 6–8, 9–12</p>
+    <p>Analiza la Constitución artículo por artículo para ayudar a los estudiantes a comprenderla.</p>
+    <a href="https://ed.icivics.org/todo-sobre-la-constituci%C3%B3n-los-art%C3%ADculos-de-la-constituci%C3%B3n?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Ver Playlist</a>
+  </div>
+
+  <!-- Bill of Rights -->
+  <div class="info-card">
+    <img src="assets/bill-of-rights.png" alt="Bill of Rights" class="card-image" />
+    <h3>Bill of Rights</h3>
+    <p><strong>Grades:</strong> 6–8, 9–12</p>
+    <p>Explore the key freedoms and protections outlined in the first ten amendments.</p>
+    <a href="https://ed.icivics.org/constitution-explained-bill-of-rights?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Watch Playlist</a>
+  </div>
+
+  <!-- La Declaración de Derechos -->
+  <div class="info-card">
+    <img src="assets/la-declaracion-de-derechos.png" alt="La Declaración de Derechos" class="card-image" />
+    <h3>La Declaración de Derechos</h3>
+    <p><strong>Grades:</strong> 6–8, 9–12</p>
+    <p>Explora las libertades y protecciones de las primeras diez enmiendas.</p>
+    <a href="https://ed.icivics.org/todo-sobre-la-constituci%C3%B3n-la-declaraci%C3%B3n-de-derechos?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Ver Playlist</a>
+  </div>
+
+  <!-- Freedoms of the First Amendment -->
+  <div class="info-card">
+    <img src="assets/freedoms-of-the-first-amendment.png" alt="Freedoms of the First Amendment" class="card-image" />
+    <h3>Freedoms of the First Amendment</h3>
+    <p><strong>Grades:</strong> 6–8, 9–12</p>
+    <p>Dig deep into the First Amendment and its multiple freedoms.</p>
+    <a href="https://ed.icivics.org/constitution-explained-freedoms-first-amendment?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Watch Playlist</a>
+  </div>
+
+  <!-- Las libertades de la Primera Enmienda -->
+  <div class="info-card">
+    <img src="assets/las-libertades-de-la-primera-enmienda.png" alt="Las libertades de la Primera Enmienda" class="card-image" />
+    <h3>Las libertades de la Primera Enmienda</h3>
+    <p><strong>Grades:</strong> 6–8, 9–12</p>
+    <p>Explora las libertades incluidas en la Primera Enmienda.</p>
+    <a href="https://ed.icivics.org/todo-sobre-la-constituci%C3%B3n-las-libertades-de-la-primera-enmienda?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Ver Playlist</a>
+  </div>
+
+  <!-- Expanding Rights -->
+  <div class="info-card">
+    <img src="assets/expanding-rights.png" alt="Expanding Rights" class="card-image" />
+    <h3>Expanding Rights</h3>
+    <p><strong>Grades:</strong> 6–8, 9–12</p>
+    <p>Learn how amendments expanded rights for excluded groups throughout history.</p>
+    <a href="https://ed.icivics.org/constitution-explained-expanding-rights?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Watch Playlist</a>
+  </div>
+
+  <!-- Derechos en expansión -->
+  <div class="info-card">
+    <img src="assets/derechos-en-expansion.png" alt="Derechos en expansión" class="card-image" />
+    <h3>Derechos en expansión</h3>
+    <p><strong>Grades:</strong> 6–8, 9–12</p>
+    <p>Explora cómo las enmiendas expandieron derechos a grupos previamente excluidos.</p>
+    <a href="https://ed.icivics.org/todo-sobre-la-constituci%C3%B3n-derechos-en-expansi%C3%B3n?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Ver Playlist</a>
+  </div>
+
+  <!-- Reconstruction Era Amendments -->
+  <div class="info-card">
+    <img src="assets/reconstruction-era-amendments.png" alt="Reconstruction Era Amendments" class="card-image" />
+    <h3>Reconstruction Era Amendments</h3>
+    <p><strong>Grades:</strong> 6–8, 9–12</p>
+    <p>Discover how the Constitution changed following the Civil War.</p>
+    <a href="https://ed.icivics.org/constitution-explained-reconstruction-era-amendments?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Watch Playlist</a>
+  </div>
+
+  <!-- Enmiendas de la Reconstrucción -->
+  <div class="info-card">
+    <img src="assets/enmiendas-de-la-reconstruccion.png" alt="Enmiendas de la Reconstrucción" class="card-image" />
+    <h3>Enmiendas de la Reconstrucción</h3>
+    <p><strong>Grades:</strong> 6–8, 9–12</p>
+    <p>Explica cómo la Constitución cambió tras la Guerra Civil e introduce las enmiendas de la era de Reconstrucción.</p>
+    <a href="https://ed.icivics.org/todo-sobre-la-constituci%C3%B3n-enmiendas-de-la-reconstrucci%C3%B3n?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Ver Playlist</a>
+  </div>
+
+  <!-- Your Voice, Your Vote -->
+  <div class="info-card">
+    <img src="assets/your-voice-your-vote.png" alt="Your Voice, Your Vote" class="card-image" />
+    <h3>Your Voice, Your Vote</h3>
+    <p><strong>Grades:</strong> 6–8, 9–12</p>
+    <p>Explore amendments that expanded voting rights for men, women, young people, and D.C. residents.</p>
+    <a href="https://ed.icivics.org/constitution-explained-your-voice-your-vote?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Watch Playlist</a>
+  </div>
+
+  <!-- Tu voz, tu voto -->
+  <div class="info-card">
+    <img src="assets/tu-voz-tu-voto.png" alt="Tu voz, tu voto" class="card-image" />
+    <h3>Tu voz, tu voto</h3>
+    <p><strong>Grades:</strong> 6–8, 9–12</p>
+    <p>Explora las enmiendas que expandieron el derecho al voto para distintos grupos.</p>
+    <a href="https://ed.icivics.org/todo-sobre-la-constituci%C3%B3n-tu-voz-tu-voto?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Ver Playlist</a>
+  </div>
+
+  <!-- Progressive Era Amendments -->
+  <div class="info-card">
+    <img src="assets/progressive-era-amendments.png" alt="Progressive Era Amendments" class="card-image" />
+    <h3>Progressive Era Amendments</h3>
+    <p><strong>Grades:</strong> 6–8, 9–12</p>
+    <p>Discover constitutional changes from the Progressive Era that reshaped American life.</p>
+    <a href="https://ed.icivics.org/constitution-explained-progressive-era-amendments?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Watch Playlist</a>
+  </div>
+
+  <!-- Enmiendas de la era progresista -->
+  <div class="info-card">
+    <img src="assets/enmiendas-de-la-era-progresista.png" alt="Enmiendas de la era progresista" class="card-image" />
+    <h3>Enmiendas de la era progresista</h3>
+    <p><strong>Grades:</strong> 6–8, 9–12</p>
+    <p>Explora los cambios constitucionales de la era progresista que transformaron la vida en EE. UU.</p>
+    <a href="https://ed.icivics.org/todo-sobre-la-constituci%C3%B3n-enmiendas-de-la-era-progresista?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Ver Playlist</a>
+  </div>
+
+  <!-- Other Amendments -->
+  <div class="info-card">
+    <img src="assets/other-amendments.png" alt="Other Amendments" class="card-image" />
+    <h3>Other Amendments</h3>
+    <p><strong>Grades:</strong> 6–8, 9–12</p>
+    <p>Explore diverse amendments covering income tax, presidential terms, and more.</p>
+    <a href="https://ed.icivics.org/constitution-explained-other-amendments?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Watch Playlist</a>
+  </div>
+
+  <!-- Otras enmiendas -->
+  <div class="info-card">
+    <img src="assets/otras-enmiendas.png" alt="Otras enmiendas" class="card-image" />
+    <h3>Otras enmiendas</h3>
+    <p><strong>Grades:</strong> 6–8, 9–12</p>
+    <p>Explora una selección diversa de enmiendas constitucionales.</p>
+    <a href="https://ed.icivics.org/todo-sobre-la-constituci%C3%B3n-otras-enmiendas?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Ver Playlist</a>
+  </div>
+
+  <!-- The Constitution EXPLAINED: Video Series -->
+  <div class="info-card">
+    <img src="assets/constitution-explained-series.png" alt="The Constitution EXPLAINED: Video Series" class="card-image" />
+    <h3>The Constitution EXPLAINED: Video Series</h3>
+    <p><strong>Grades:</strong> 6–8, 9–12</p>
+    <p>A comprehensive series of 35 short videos explaining the text, history, and relevance of the Constitution.</p>
+    <a href="https://ed.icivics.org/constitution-explained-video-series?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Watch Playlist</a>
+  </div>
+
+  <!-- Todo sobre la Constitución: serie de videos -->
+  <div class="info-card">
+    <img src="assets/todo-sobre-la-constitucion-series.png" alt="Todo sobre la Constitución: serie de videos" class="card-image" />
+    <h3>Todo sobre la Constitución: serie de videos</h3>
+    <p><strong>Grades:</strong> 6–8, 9–12</p>
+    <p>Una serie completa de 35 videos cortos que explican el texto, la historia y la relevancia de la Constitución.</p>
+    <a href="https://ed.icivics.org/todo-sobre-la-constituci%C3%B3n-serie-de-videos?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Ver Playlist</a>
+  </div>
+
+  <!-- Civic Digital Literacy -->
+  <div class="info-card">
+    <img src="assets/civic-digital-literacy.png" alt="Civic Digital Literacy" class="card-image" />
+    <h3>Civic Digital Literacy</h3>
+    <p><strong>Grades:</strong> 6–8, 9–12</p>
+    <p>Unlock the power of digital literacy with short videos that spark deeper learning and conversation.</p>
+    <a href="https://ed.icivics.org/node/3354518?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Watch Playlist</a>
+  </div>
+
+  <!-- Changemakers: Women in History -->
+  <div class="info-card">
+    <img src="assets/changemakers-women-in-history.png" alt="Changemakers: Women in History" class="card-image" />
+    <h3>Changemakers: Women in History</h3>
+    <p><strong>Grades:</strong> 6–8, 9–12</p>
+    <p>Meet extraordinary women who broke barriers and helped change the nation.</p>
+    <a href="https://ed.icivics.org/node/3358612?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Watch Playlist</a>
+  </div>
+
+  <!-- Changemakers: Key Players in the Civil Rights Movement -->
+  <div class="info-card">
+    <img src="assets/changemakers-civil-rights.png" alt="Changemakers: Key Players in the Civil Rights Movement" class="card-image" />
+    <h3>Changemakers: Key Players in the Civil Rights Movement</h3>
+    <p><strong>Grades:</strong> 6–8, 9–12</p>
+    <p>Discover the civil rights activists whose actions changed the nation.</p>
+    <a href="https://ed.icivics.org/node/3358653?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Watch Playlist</a>
+  </div>
+
+  <!-- Changemakers Video Series -->
+  <div class="info-card">
+    <img src="assets/changemakers-series.png" alt="Changemakers Video Series" class="card-image" />
+    <h3>Changemakers Video Series</h3>
+    <p><strong>Grades:</strong> 6–8, 9–12</p>
+    <p>Meet ordinary people who made extraordinary contributions to our nation.</p>
+    <a href="https://ed.icivics.org/node/3358660?back-ref-search=&back-ref-filter=content_type%3Avideo_playlist%2Cgrades%3A41571%2Cgrades%3A41572" target="_blank" rel="noopener noreferrer" class="btn">Watch Playlist</a>
+  </div>
+
+</div>
 </section>
-    
+
 <!-- Civic Intelligence Tab -->
 <section id="civic" class="tab-content" style="display: none;">
   <h2>Civic Intelligence Dashboard</h2>
@@ -735,19 +774,22 @@
 <!-- Updated Polls & Elections Section in index.html -->
 <section id="polls" class="tab-content" style="display: none;">
   <h2>Polls & Elections</h2>
+
   <!-- Polls Subsection -->
   <div id="polls-cards" class="card-section">
     <!-- Poll cards will populate here via JS -->
   </div>
-  <!-- Elections Subsection -->
+
+    <!-- Elections Subsection -->
   <div id="elections-cards" class="card-section">
     <!-- Election cards will populate here via JS -->
   </div>
 </section>
-
+    
 <!-- Political Organizations Tab -->
 <section id="organizations" class="tab-content" style="display: none;">
   <h2>Political Groups — Help Make a Difference!</h2>
+
   <!-- Featured Cards -->
   <div id="featured-political-cards" class="card-section">
     <div class="info-card">
@@ -756,6 +798,7 @@
       <p>Explore the major parties shaping U.S. politics.</p>
       <a href="https://www.isidewith.com/parties" target="_blank" rel="noopener noreferrer" class="btn">View Parties</a>
     </div>
+
     <div class="info-card">
       <img src="assets/political-ideology.jpeg" alt="Political Ideologies" class="card-image" />
       <h3>Political Ideologies</h3>
@@ -763,15 +806,17 @@
       <a href="https://www.isidewith.com/ideologies" target="_blank" rel="noopener noreferrer" class="btn">View Ideologies</a>
     </div>
   </div>
+
   <!-- Existing grid -->
   <div class="organization-grid">
-    <!-- Groups will be populated via JS -->
+    <!-- Your existing group cards -->
   </div>
 </section>
 
-<!-- Community Tab -->
+    <!-- Community Tab -->
 <section id="community" class="tab-content" style="display: none;">
   <h2>Community — Stay Informed & Engaged</h2>
+
   <div id="community-cards" class="card-section">
     <!-- News -->
     <div id="news-card" class="info-card">
@@ -780,6 +825,7 @@
       <p>Trending discussions and news curated by popularity and recency.</p>
       <a href="https://www.isidewith.com/discuss/tags/5ncx/?nasort=popular-today" target="_blank" rel="noopener noreferrer" class="btn">View News</a>
     </div>
+
     <!-- Videos -->
     <div id="videos-card" class="info-card">
       <img src="assets/isidewith-videos.jpeg" alt="iSideWith Videos" class="card-image" />
@@ -787,6 +833,7 @@
       <p>Watch political clips, debates, and interviews from the community.</p>
       <a href="https://www.isidewith.com/discuss/tags/5ncm/" target="_blank" rel="noopener noreferrer" class="btn">View Videos</a>
     </div>
+
     <!-- Issues -->
     <div id="issues-card" class="info-card">
       <img src="assets/isidewith-issues.jpeg" alt="iSideWith Issues" class="card-image" />
@@ -794,6 +841,7 @@
       <p>Explore positions and polling across major political issues.</p>
       <a href="https://www.isidewith.com/polls" target="_blank" rel="noopener noreferrer" class="btn">Explore Issues</a>
     </div>
+
     <!-- Discuss -->
     <div id="discuss-card" class="info-card">
       <img src="assets/isidewith-discuss.jpeg" alt="iSideWith Discuss" class="card-image" />
@@ -803,7 +851,7 @@
     </div>
   </div>
 </section>
-
+    
 <!-- Voting Tab -->
 <section id="voting" class="tab-content" style="display: none;">
   <h2>Voting & Registration</h2>
@@ -813,21 +861,29 @@
 <!-- Citizenship/Immigration Tab -->
 <section id="citizenship" class="tab-content" style="display: none;">
   <h2>Citizenship & Immigration — Doing it the Right and Legal Way</h2>
+
   <!-- Naturalization -->
   <div id="citizenship-cards"></div>
+
   <!-- Immigration Pathways -->
   <div id="immigration-cards"></div>
+
   <!-- Asylum & Refugees -->
   <div id="asylum-cards"></div>
+
   <!-- Study Materials -->
   <div id="study-cards"></div>
+
   <!-- Legal Resources -->
   <div id="legal-cards"></div>
+
   <!-- News & Policy Updates -->
   <div id="news-cards"></div>
+
   <!-- Rights & Responsibilities -->
   <div id="rights-cards"></div>
 </section>
+
   </main>
 
  <!-- Officials Modal -->
@@ -857,16 +913,16 @@
     <form id="rate-form"></form>
   </div>
 </div>
+  
+  <!-- Poll Modal -->
+  <div id="pollModal" class="modal">
+    <div class="modal-content" id="pollModalContent"></div>
+  </div>
 
-<!-- Poll Modal -->
-<div id="pollModal" class="modal">
-  <div class="modal-content" id="pollModalContent"></div>
-</div>
-
-<!-- Modal for Polls -->
-<div id="polls-modal" class="modal">
-  <div id="polls-content" class="modal-content"></div>
-</div>
+  <!-- Modal for Polls -->
+  <div id="polls-modal" class="modal">
+    <div id="polls-content" class="modal-content"></div>
+  </div>
 
 <!-- Shared Civics Quiz Modal -->
 <div id="civicsQuizModal" class="modal" style="display:none;">
@@ -875,21 +931,27 @@
     <div id="civics-quiz">
       <h2 id="quiz-title">Daily Civics Quiz</h2>
       <p id="quiz-desc">Test your United States government, economics, and history knowledge.</p>
+
       <!-- Progress bar -->
       <div id="quiz-progress-bar">
         <div id="quiz-progress-fill"></div>
       </div>
+
       <!-- Progress text -->
       <div id="quiz-progress"></div>
+
       <!-- Question -->
       <div id="quiz-question"></div>
+
       <!-- Options -->
       <div id="quiz-options"></div>
+
       <!-- Controls -->
       <div id="quiz-controls" class="quiz-controls">
         <button id="quiz-submit" class="quiz-btn">Submit</button>
         <button id="quiz-next" class="quiz-btn" style="display:none;">Next</button>
       </div>
+
       <!-- Feedback + Result -->
       <div id="quiz-feedback"></div>
       <div id="quiz-score"></div>
@@ -897,27 +959,33 @@
   </div>
 </div>
 
-<!-- Political Typology Quiz Modal -->
+   <!-- Political Typology Quiz Modal -->
 <div id="typologyQuizModal" class="modal" style="display:none;">
   <div class="modal-content">
     <span class="close" onclick="closeModalWindow('typologyQuizModal')">&times;</span>
     <div id="typology-quiz">
       <h2>Political Typology Quiz</h2>
       <p>Discover where you sit on the political spectrum.</p>
+
       <!-- Progress bar -->
       <div id="typology-progress-bar">
         <div id="typology-progress-fill"></div>
       </div>
+
       <!-- Progress text -->
       <div id="typology-progress"></div>
+
       <!-- Question -->
       <div id="typology-question"></div>
+
       <!-- Options -->
       <div id="typology-options"></div>
+
       <!-- Controls -->
       <div id="typology-controls" class="quiz-controls">
         <button id="typology-submit" class="quiz-btn">Submit</button>
       </div>
+
       <!-- Feedback + Result -->
       <div id="typology-feedback"></div>
       <div id="typology-result"></div>
@@ -925,175 +993,198 @@
   </div>
 </div>
 
-<!-- Cabinet Modal -->
-<div id="cabinetModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModalWindow('cabinetModal')">&times;</span>
-    <div id="cabinetGridView">
-      <div id="cabinetList" class="officials-grid"></div>
-    </div>
-    <div id="cabinetDetailView" style="display:none;">
-      <button onclick="backToCabinetGrid()">Back</button>
-      <div id="cabinetMemberDetail"></div>
+  <!-- Cabinet Modal -->
+  <div id="cabinetModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModalWindow('cabinetModal')">&times;</span>
+      <div id="cabinetGridView">
+        <div id="cabinetList" class="officials-grid"></div>
+      </div>
+      <div id="cabinetDetailView" style="display:none;">
+        <button onclick="backToCabinetGrid()">Back</button>
+        <div id="cabinetMemberDetail"></div>
+      </div>
     </div>
   </div>
-</div>
+  <script>
+    // Show Home Hub tab
+    function showStartupHub() {
+      showTab('startup-hub');
+    }
 
-<script>
-  // Generic tab switcher (fallback if script.js doesn't load)
-  function showTab(tabId) {
-    document.querySelectorAll('.tab-content').forEach(tab => {
-      tab.style.display = 'none';
+    // Other tab helpers (placeholders to match your button handlers)
+    function showPodcastsShows() { showTab('podcasts-shows'); }
+    function showCivic() { showTab('civic'); }
+    function showPolls() { showTab('polls'); }
+    function showOrganizations() { showTab('organizations'); }
+    function showVoting() { showTab('voting'); }
+
+    // Generic tab switcher
+    function showTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.style.display = 'none';
+      });
+      const tab = document.getElementById(tabId);
+      if (tab) tab.style.display = 'block';
+    }
+
+    // Sticky nav buttons scroll to sections
+    document.addEventListener('DOMContentLoaded', () => {
+      const navButtons = document.querySelectorAll('#hub-nav button');
+      navButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const section = document.getElementById(btn.dataset?.target);
+          if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      // Force Home Hub tab to show on page load (prevents any flash)
+      showStartupHub();
     });
-    const tab = document.getElementById(tabId);
-    if (tab) tab.style.display = 'block';
-  }
 
-  // Force Home Hub tab to show on page load
-  document.addEventListener('DOMContentLoaded', () => {
-    showStartupHub();
-  });
-</script>
-
-    <!-- Carousel Feed Logic (image-enforced, rotating track + arrows) -->
-<script>
-  const feeds = {
-    world: [
-      "https://feeds.reuters.com/reuters/worldNews",
-      "https://www.aljazeera.com/xml/rss/all.xml",
-      "https://www.theguardian.com/world/rss"
-    ],
-    finance: [
-      "https://www.investing.com/rss/news.rss",
-      "https://www.cnbc.com/id/10001147/device/rss/rss.xml",
-      "https://feeds.finance.yahoo.com/rss/2.0/headline?s=^DJI"
-    ],
-    economy: [
-      "https://www.investing.com/rss/news_25.rss",
-      "https://www.cnbc.com/id/20910258/device/rss/rss.xml",
-      "https://www.theguardian.com/business/economics/rss"
-    ]
-  };
-
-  async function loadFeed(url) {
-    try {
-      const response = await fetch(
-        `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`
-      );
-      if (!response.ok) return [];
-      const data = await response.json();
-      return data.items || [];
-    } catch (err) {
-      console.error('Feed load error:', url, err);
-      return [];
-    }
-  }
-
-  function extractImage(item) {
-    if (item.thumbnail && item.thumbnail.trim()) return item.thumbnail;
-    if (item.enclosure && item.enclosure.link && item.enclosure.type?.includes('image')) return item.enclosure.link;
-    if (item.content) {
-      const match = item.content.match(/<img[^>]+src=["']([^"'>]+)["']/i);
-      if (match && match[1]) return match[1];
-    }
-    return "assets/default-thumb.png"; // fallback
-  }
-
-  async function loadSection(section, containerId) {
-    const container = document.getElementById(containerId);
-    if (!container) return;
-
-    const track = document.createElement("div");
-    track.className = "carousel-track";
-    container.innerHTML = ''; // clear previous
-    container.appendChild(track);
-
-    const perSourceItems = [];
-    for (const url of feeds[section]) {
-      const items = await loadFeed(url);
-      const mapped = items.map(item => ({
-        item,
-        img: extractImage(item),
-        source: url
-      }));
-      perSourceItems.push(mapped.filter(x => x.img && x.img !== "assets/default-thumb.png"));
-    }
-
-    const maxCards = 25;
-    const result = [];
-    let added = 0;
-    let index = 0;
-
-    while (added < maxCards) {
-      let progressed = false;
-      for (let s = 0; s < perSourceItems.length; s++) {
-        const sourceList = perSourceItems[s];
-        if (index < sourceList.length) {
-          result.push(sourceList[index]);
-          added++;
-          progressed = true;
-          if (added >= maxCards) break;
-        }
+    // --- Carousel Feed Logic (image-enforced, 25 items, rotating track + arrows) ---
+ const feeds = {
+  world: [
+    // Reuters World (media:content thumbnails)
+    "https://feeds.reuters.com/reuters/worldNews",
+    // Al Jazeera English (image-rich, consistent enclosures)
+    "https://www.aljazeera.com/xml/rss/all.xml",
+    // The Guardian World (media:thumbnail / media:content)
+    "https://www.theguardian.com/world/rss"
+  ],
+  finance: [
+    // Investing.com Markets (reliable thumbnails)
+    "https://www.investing.com/rss/news.rss",
+    // CNBC Markets (media content present)
+    "https://www.cnbc.com/id/10001147/device/rss/rss.xml",
+    // Yahoo Finance Headlines (includes images frequently)
+    "https://feeds.finance.yahoo.com/rss/2.0/headline?s=^DJI"
+  ],
+  economy: [
+    // Investing.com Macro/Economy (thumbnails)
+    "https://www.investing.com/rss/news_25.rss",
+    // CNBC Economy (media content present)
+    "https://www.cnbc.com/id/20910258/device/rss/rss.xml",
+    // The Guardian Economics (media thumbnails)
+    "https://www.theguardian.com/business/economics/rss"
+  ]
+};
+    async function loadFeed(url) {
+      try {
+        const response = await fetch(
+          `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`
+        );
+        const data = await response.json();
+        return data.items || [];
+      } catch {
+        return [];
       }
-      if (!progressed) break;
-      index++;
     }
 
-    result.forEach(({ item, img }) => {
-      const card = document.createElement("a");
-      card.className = "carousel-card";
-      card.href = item.link || '#';
-      card.target = "_blank";
-      card.rel = "noopener noreferrer";
-      card.innerHTML = `
-        <img src="${img}" alt="${item.title || 'News thumbnail'}" class="carousel-img"
-             onerror="this.src='assets/default-thumb.png';" />
-        <div class="carousel-caption">
-          <h3>${item.title || 'Untitled'}</h3>
-          <p>${item.pubDate ? new Date(item.pubDate).toLocaleDateString() : ''}</p>
-        </div>
-      `;
-      track.appendChild(card);
+    function extractImage(item) {
+  if (item.thumbnail) return item.thumbnail;
+  if (item.enclosure && item.enclosure.link) return item.enclosure.link;
+  const match = item.content?.match(/<img[^>]+src="([^">]+)"/i);
+  if (match && match[1]) return match[1];
+  return "assets/default-thumb.png"; // fallback image
+}
+
+   async function loadSection(section, containerId) {
+  const container = document.getElementById(containerId);
+  const track = document.createElement("div");
+  track.className = "carousel-track";
+  container.appendChild(track);
+
+  // Fetch items per source and keep them separated to enforce distribution
+  const perSourceItems = [];
+  for (const url of feeds[section]) {
+    const items = await loadFeed(url);
+    // Map to { item, img, source }
+    const mapped = items.map(item => {
+      // Strict image extraction
+      let img = "";
+      if (item.thumbnail) img = item.thumbnail;
+      else if (item.enclosure && item.enclosure.link) img = item.enclosure.link;
+      else {
+        const match = item.content?.match(/<img[^>]+src="([^">]+)"/i);
+        if (match && match[1]) img = match[1];
+      }
+      return { item, img, source: url };
     });
+    // Only keep items with usable images
+    perSourceItems.push(mapped.filter(x => !!x.img));
   }
 
-  function setupControls(containerId) {
-    const track = document.querySelector(`#${containerId} .carousel-track`);
-    if (!track || track.children.length === 0) return;
+  // Round-robin across sources to guarantee visible diversity
+  const maxCards = 50;
+  const result = [];
+  let added = 0;
+  let index = 0;
 
-    const prevBtn = document.querySelector(`.carousel-controls .prev[data-target="${containerId}"]`);
-    const nextBtn = document.querySelector(`.carousel-controls .next[data-target="${containerId}"]`);
+  // Continue while we can still pull at least one item from any source
+  while (added < maxCards) {
+    let progressed = false;
+    for (let s = 0; s < perSourceItems.length; s++) {
+      const sourceList = perSourceItems[s];
+      if (index < sourceList.length) {
+        result.push(sourceList[index]);
+        added++;
+        progressed = true;
+        if (added >= maxCards) break;
+      }
+    }
+    if (!progressed) break; // all sources exhausted
+    index++;
+  }
 
-    let position = 0;
-    const step = 310; // card width + gap
+  // Build cards
+  result.forEach(({ item, img }) => {
+    const card = document.createElement("a");
+    card.className = "hub-card carousel-card";
+    card.href = item.link;
+    card.target = "_blank";
+    card.rel = "noopener noreferrer";
+    card.innerHTML = `
+      <img src="${img}" alt="" class="carousel-img">
+      <h3>${item.title}</h3>
+      <p>${new Date(item.pubDate).toLocaleDateString()}</p>
+    `;
+    track.appendChild(card);
+  });
+}
 
-    const updateTransform = () => {
-      track.style.transform = `translateX(-${position * step}px)`;
-    };
+    function setupControls(containerId) {
+      const track = document.querySelector(`#${containerId} .carousel-track`);
+      const prevBtn = document.querySelector(`.carousel-controls .prev[data-target="${containerId}"]`);
+      const nextBtn = document.querySelector(`.carousel-controls .next[data-target="${containerId}"]`);
 
-    // Auto-scroll every 5 seconds
-    setInterval(() => {
-      position = (position + 1) % track.children.length;
-      updateTransform();
-    }, 5000);
+      let position = 0;
+      const step = 310; // card width + ~gap
 
-    if (prevBtn) {
+      // Auto-scroll (5 seconds)
+      setInterval(() => {
+        position++;
+        if (position >= track.children.length) position = 0;
+        track.style.transform = `translateX(-${position * step}px)`;
+      }, 5000);
+
+      // Manual controls
       prevBtn.addEventListener("click", () => {
-        position = position === 0 ? track.children.length - 1 : position - 1;
-        updateTransform();
+        position = Math.max(0, position - 1);
+        track.style.transform = `translateX(-${position * step}px)`;
       });
-    }
 
-    if (nextBtn) {
       nextBtn.addEventListener("click", () => {
-        position = (position + 1) % track.children.length;
-        updateTransform();
+        position = Math.min(track.children.length - 1, position + 1);
+        track.style.transform = `translateX(-${position * step}px)`;
       });
     }
-  }
+  </script>
+  <script src="script.js"></script>
 
-  // Initialize carousels after DOM is ready
-  document.addEventListener('DOMContentLoaded', async () => {
+<script>
+  // Initialize carousels: load feeds then wire controls
+  (async () => {
     await loadSection("world", "world-news-carousel");
     await loadSection("finance", "finance-carousel");
     await loadSection("economy", "economy-carousel");
@@ -1101,119 +1192,193 @@
     setupControls("world-news-carousel");
     setupControls("finance-carousel");
     setupControls("economy-carousel");
-  });
+  })();
 </script>
 
-<!-- Load main script ONCE -->
-<script src="script.js?v=20251229"></script>
-
 <script>
-  // Force Home Hub tab to show on page load
+  // Force Home Hub tab to show on page load and highlight its button
   document.addEventListener("DOMContentLoaded", () => {
-    if (typeof showStartupHub === 'function') {
-      showStartupHub();
-    }
+    showStartupHub(); // Home Hub loads first and button is highlighted
   });
 </script>
 
-<!-- Load main script ONCE with cache busting -->
-<script src="script.js?v=20251229"></script>
+<!-- Load external script with full quiz logic -->
+<script src="script.js"></script>
 
 <script>
-  // Hamburger menu + click-outside close + link active state
+  async function loadSocialLinks() {
+    const res = await fetch('/social-links.json');
+    return await res.json();
+  }
+
+  async function renderAllSocialLinks() {
+    const data = await loadSocialLinks();
+
+    Object.keys(data).forEach(slug => {
+      const links = data[slug];
+
+      // Find the existing social container for this official
+      const container = document.getElementById(`social-${slug}`);
+      if (!container || !links) return;
+
+      // Clear any existing content
+      container.innerHTML = '';
+
+              // Add icons only for non-null links
+    if (links.facebook) container.innerHTML += `<a href="${links.facebook}" target="_blank" rel="noopener noreferrer"><img src="/assets/facebook.svg" alt="Facebook"></a>`;
+    if (links.instagram) container.innerHTML += `<a href="${links.instagram}" target="_blank" rel="noopener noreferrer"><img src="/assets/instagram.svg" alt="Instagram"></a>`;
+    if (links.x) container.innerHTML += `<a href="${links.x}" target="_blank" rel="noopener noreferrer"><img src="/assets/x.svg" alt="X"></a>`;
+    if (links.youtube) container.innerHTML += `<a href="${links.youtube}" target="_blank" rel="noopener noreferrer"><img src="/assets/youtube.svg" alt="YouTube"></a>`;
+    if (links.tiktok) container.innerHTML += `<a href="${links.tiktok}" target="_blank" rel="noopener noreferrer"><img src="/assets/tiktok.svg" alt="TikTok"></a>`;
+  });
+}
+
+  <!-- Load external script ONCE -->
+  <script src="script.js?v=2025-12-17-0715">
+
+  <!-- Unified inline script -->
+ <script>
   document.addEventListener('DOMContentLoaded', () => {
+    // Hamburger toggle + active tab styling
     const hamburger = document.getElementById('hamburger');
     const menu = document.getElementById('hamburger-menu');
 
     if (hamburger && menu) {
-      hamburger.addEventListener('click', (e) => {
-        e.stopPropagation();
+      hamburger.addEventListener('click', () => {
         menu.classList.toggle('open');
       });
 
-      // Close menu when clicking a link and add active class
+      // Close menu when clicking a link
       document.querySelectorAll('#hamburger-menu ul li a').forEach(link => {
         link.addEventListener('click', () => {
-          document.querySelectorAll('#hamburger-menu ul li a').forEach(l => l.classList.remove('active'));
+          document.querySelectorAll('#hamburger-menu ul li a')
+            .forEach(l => l.classList.remove('active'));
           link.classList.add('active');
           menu.classList.remove('open');
         });
       });
 
-      // Close menu when clicking outside
+      // NEW: Close menu when clicking anywhere outside of it
       document.addEventListener('click', (event) => {
-        if (menu.classList.contains('open') &&
-            !menu.contains(event.target) &&
+        if (menu.classList.contains('open') && 
+            !menu.contains(event.target) && 
             !hamburger.contains(event.target)) {
           menu.classList.remove('open');
         }
       });
     }
 
-    // RSS feed wiring for network cards
-    const feedTitle = document.getElementById('feed-title');
-    const feedStories = document.getElementById('feed-stories');
+   <!-- Load external script -->
+<script src="script.js?v=2025-12-17-0715"></script>
 
-    const rssFeeds = {
-      livenowfox: 'https://feeds.foxnews.com/foxnews/latest',
-      msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',
-      abc: 'https://abcnews.go.com/abcnews/topstories',
-      cbs: 'https://www.cbsnews.com/latest/rss/main',
-      fox: 'https://feeds.foxnews.com/foxnews/latest',
-      newsnation: 'https://www.newsnationnow.com/feed/'
-    };
+<!-- Unified inline script -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Default tab
+  showStartupHub();
 
-    async function loadFeed(network) {
-      const url = rssFeeds[network];
-      if (!url) return;
+  // Hamburger toggle + active tab + click-outside close
+  const hamburger = document.getElementById('hamburger');
+  const menu = document.getElementById('hamburger-menu');
+  if (hamburger && menu) {
+    hamburger.addEventListener('click', () => {
+      menu.classList.toggle('open');
+    });
 
-      if (feedTitle) feedTitle.textContent = `${network.toUpperCase()} Stories`;
-      if (feedStories) feedStories.innerHTML = '<p style="color:#fff;">Loading...</p>';
-
-      try {
-        const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`);
-        const data = await response.json();
-        const items = Array.isArray(data.items) ? data.items : [];
-
-        const normalized = items
-          .map(item => ({ item, date: item.pubDate ? new Date(item.pubDate) : null }))
-          .filter(x => x.date)
-          .sort((a, b) => b.date.getTime() - a.date.getTime());
-
-        if (feedStories) {
-          feedStories.innerHTML = '';
-
-          if (normalized.length === 0) {
-            feedStories.innerHTML = '<p style="color:#fff;">No stories available.</p>';
-            return;
-          }
-
-          normalized.slice(0, 10).forEach(({ item }) => {
-            const story = document.createElement('div');
-            story.className = 'story-card';
-            story.innerHTML = `
-              <a href="${item.link}" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none;">
-                <h4 style="margin-bottom:0.35rem;">${item.title}</h4>
-              </a>
-            `;
-            feedStories.appendChild(story);
-          });
-        }
-      } catch (err) {
-        console.error('Feed load error:', err);
-        if (feedStories) feedStories.innerHTML = '<p style="color:#fff;">Error loading feed.</p>';
-      }
-    }
-
-    // Wire all network cards using correct selector
-    document.querySelectorAll('.network-card[data-network]').forEach(card => {
-      card.addEventListener('click', () => {
-        const network = card.getAttribute('data-network');
-        if (network) loadFeed(network);
+    document.querySelectorAll('#hamburger-menu ul li a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelectorAll('#hamburger-menu ul li a')
+          .forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        menu.classList.remove('open');
       });
     });
-  });
-</script>
 
+    document.addEventListener('click', (event) => {
+      if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
+        menu.classList.remove('open');
+      }
+    });
+  }
+
+     // State dropdown wiring
+  const stateSelect = document.getElementById('state-dropdown');
+  if (stateSelect) {
+    stateSelect.addEventListener('change', (e) => {
+      window.selectedState = e.target.value;
+      if (typeof renderOfficials === 'function') {
+        renderOfficials(window.selectedState, '');
+      }
+    });
+  }
+
+  // Officials search bar wiring
+  wireSearchBar();
+
+  // RSS feed wiring for network cards
+  const feedTitle = document.getElementById('feed-title');
+  const feedStories = document.getElementById('feed-stories');
+
+  // Official RSS feeds per network
+  const rssFeeds = {
+    msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',   // NBC/MSNBC general news
+    abc:   'https://abcnews.go.com/abcnews/topstories',       // ABC Top Stories
+    cbs:   'https://www.cbsnews.com/latest/rss/main',         // CBS Latest
+    fox:   'https://feeds.foxnews.com/foxnews/latest',        // FOX News Latest
+    newsnation: "https://www.newsnationnow.com/feed/"         // NewsNation Top Stories
+  };
+
+  async function loadFeed(network) {
+    const url = rssFeeds[network];
+    feedTitle.textContent = `${network.toUpperCase()} Stories`;
+    feedStories.innerHTML = '<p style="color:#fff;">Loading...</p>';
+
+    try {
+      // Use rss2json proxy to bypass CORS
+      const response = await fetch(
+        `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`
+      );
+      const data = await response.json();
+
+      const items = Array.isArray(data.items) ? data.items.slice() : [];
+
+      // Sort by pubDate if available
+      const normalized = items
+        .map(item => ({ item, date: item.pubDate ? new Date(item.pubDate) : null }))
+        .filter(x => x.date)
+        .sort((a, b) => b.date.getTime() - a.date.getTime());
+
+      feedStories.innerHTML = '';
+
+      if (normalized.length === 0) {
+        feedStories.innerHTML = '<p style="color:#fff;">No stories available.</p>';
+        return;
+      }
+
+      normalized.slice(0, 10).forEach(({ item }) => {
+        const story = document.createElement('div');
+        story.className = 'story-card';
+        story.innerHTML = `
+          <a href="${item.link}" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none;">
+            <h4 style="margin-bottom:0.35rem;">${item.title}</h4>
+          </a>
+        `;
+        feedStories.appendChild(story);
+      });
+    } catch (err) {
+      console.error(err);
+      feedStories.innerHTML = '<p style="color:#fff;">Error loading feed.</p>';
+    }
+  }
+
+  // ✅ Updated selector for network cards
+  document.querySelectorAll('.network-card[data-network]').forEach(card => {
+    card.addEventListener('click', () => {
+      const network = card.getAttribute('data-network');
+      loadFeed(network);
+    });
+  });
+});
+</script>
 </body>
 </html>
