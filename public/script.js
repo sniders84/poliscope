@@ -249,47 +249,6 @@ function showPodcastsShows() {
   }
 }
 
-// === POLL CATEGORIES (authoritative sources) ===
-const pollCategories = [
-  {
-    label: "President",
-    polls: [
-      { name: "Presidential Approval Index", source: "Ballotpedia", logo: "ballotpedia.png", url: "https://ballotpedia.org/Ballotpedia%27s_Polling_Index:_Presidential_approval_rating" },
-      { name: "Polling Tracker", source: "AP-NORC", logo: "apnorc.png", url: "https://apnews.com/projects/polling-tracker/" },
-      { name: "Approval Polls", source: "RealClearPolling", logo: "rcp.png", url: "https://www.realclearpolling.com/latest-polls/president" },
-      { name: "Democratic Primary Polls", source: "270toWin", logo: "270towin.png", url: "https://www.270towin.com/2026-democratic-presidential-primary-polls/" },
-      { name: "Republican Primary Polls", source: "270toWin", logo: "270towin.png", url: "https://www.270towin.com/2026-republican-presidential-primary-polls/" }
-    ]
-  },
-  {
-    label: "Governor",
-    polls: [
-      { name: "Governor Polls", source: "270toWin", logo: "270towin.png", url: "https://www.270towin.com/polls/latest-2026-governor-election-polls/" },
-      { name: "Governor Polls", source: "RealClearPolling", logo: "rcp.png", url: "https://www.realclearpolling.com/latest-polls/governor" },
-      { name: "Governor Polls", source: "Race to the WH", logo: "racetowh.png", url: "https://www.racetothewh.com/governor/26polls" },
-      { name: "Governor Ratings", source: "Sabato’s Crystal Ball", logo: "sabato.png", url: "https://centerforpolitics.org/crystalball/2025-governor/" }
-    ]
-  },
-  {
-    label: "Senate",
-    polls: [
-      { name: "Senate Polls", source: "270toWin", logo: "270towin.png", url: "https://www.270towin.com/polls/latest-2026-senate-election-polls/" },
-      { name: "Senate Polls", source: "RealClearPolling", logo: "rcp.png", url: "https://www.realclearpolling.com/latest-polls/senate" },
-      { name: "Senate Polls", source: "Race to the WH", logo: "racetowh.png", url: "https://www.racetothewh.com/senate/26polls" },
-      { name: "Senate Ratings", source: "Sabato’s Crystal Ball", logo: "sabato.png", url: "https://centerforpolitics.org/crystalball/2026-senate/" }
-    ]
-  },
-  {
-    label: "House",
-    polls: [
-      { name: "House Polls", source: "270toWin", logo: "270towin.png", url: "https://www.270towin.com/polls/latest-2026-house-election-polls/index.php" },
-      { name: "House Polls", source: "RealClearPolling", logo: "rcp.png", url: "https://www.realclearpolling.com/latest-polls/house" },
-      { name: "House Polls", source: "Race to the WH", logo: "racetowh.png", url: "https://www.racetothewh.com/house/polls/24" },
-      { name: "House Ratings", source: "Sabato’s Crystal Ball", logo: "sabato.png", url: "https://centerforpolitics.org/crystalball/2026-house/" }
-    ]
-  }
-];
-
 // === COMMUNITY TAB ===
 function showCommunity() {
   showTab('community');
