@@ -1,443 +1,2202 @@
 [
-  { "slug": "barry-moore", "averageRating": 0, "votes": {} },
-  { "slug": "shomari-figures", "averageRating": 0, "votes": {} },
-  { "slug": "mike-rogers", "averageRating": 0, "votes": {} },
-  { "slug": "robert-aderholt", "averageRating": 0, "votes": {} },
-  { "slug": "dale-strong", "averageRating": 0, "votes": {} },
-  { "slug": "gary-palmer", "averageRating": 0, "votes": {} },
-  { "slug": "terri-sewell", "averageRating": 0, "votes": {} },
-  { "slug": "nick-begich", "averageRating": 0, "votes": {} },
-  { "slug": "aumua-amata-radewagen", "averageRating": 0, "votes": {} },
-  { "slug": "david-schweikert", "averageRating": 0, "votes": {} },
-  { "slug": "eli-crane", "averageRating": 0, "votes": {} },
-  { "slug": "yassamin-ansari", "averageRating": 0, "votes": {} },
-  { "slug": "greg-stanton", "averageRating": 0, "votes": {} },
-  { "slug": "andy-biggs", "averageRating": 0, "votes": {} },
-  { "slug": "juan-ciscomani", "averageRating": 0, "votes": {} },
-  { "slug": "adelita-grijalva", "averageRating": 0, "votes": {} },
-  { "slug": "abraham-hamadeh", "averageRating": 0, "votes": {} },
-  { "slug": "paul-gosar", "averageRating": 0, "votes": {} },
-  { "slug": "rick-crawford", "averageRating": 0, "votes": {} },
-  { "slug": "french-hill", "averageRating": 0, "votes": {} },
-  { "slug": "steve-womack", "averageRating": 0, "votes": {} },
-  { "slug": "bruce-westerman", "averageRating": 0, "votes": {} },
-  { "slug": "doug-lamalfa", "averageRating": 0, "votes": {} },
-  { "slug": "jared-huffman", "averageRating": 0, "votes": {} },
-  { "slug": "kevin-kiley", "averageRating": 0, "votes": {} },
-  { "slug": "mike-thompson", "averageRating": 0, "votes": {} },
-  { "slug": "tom-mcclintock", "averageRating": 0, "votes": {} },
-  { "slug": "ami-bera", "averageRating": 0, "votes": {} },
-  { "slug": "doris-matsui", "averageRating": 0, "votes": {} },
-  { "slug": "john-garamendi", "averageRating": 0, "votes": {} },
-  { "slug": "josh-harder", "averageRating": 0, "votes": {} },
-  { "slug": "mark-desaulnier", "averageRating": 0, "votes": {} },
-  { "slug": "nancy-pelosi", "averageRating": 0, "votes": {} },
-  { "slug": "lateefah-simon", "averageRating": 0, "votes": {} },
-  { "slug": "adam-gray", "averageRating": 0, "votes": {} },
-  { "slug": "eric-swalwell", "averageRating": 0, "votes": {} },
-  { "slug": "kevin-mullin", "averageRating": 0, "votes": {} },
-  { "slug": "sam-liccardo", "averageRating": 0, "votes": {} },
-  { "slug": "ro-khanna", "averageRating": 0, "votes": {} },
-  { "slug": "zoe-lofgren", "averageRating": 0, "votes": {} },
-  { "slug": "jimmy-panetta", "averageRating": 0, "votes": {} },
-  { "slug": "vince-fong", "averageRating": 0, "votes": {} },
-  { "slug": "jim-costa", "averageRating": 0, "votes": {} },
-  { "slug": "david-valadao", "averageRating": 0, "votes": {} },
-  { "slug": "jay-obernolte", "averageRating": 0, "votes": {} },
-  { "slug": "salud-carbajal", "averageRating": 0, "votes": {} },
-  { "slug": "raul-ruiz", "averageRating": 0, "votes": {} },
-  { "slug": "julia-brownley", "averageRating": 0, "votes": {} },
-  { "slug": "george-whitesides", "averageRating": 0, "votes": {} },
-  { "slug": "judy-chu", "averageRating": 0, "votes": {} },
-  { "slug": "luz-maria-rivas", "averageRating": 0, "votes": {} },
-  { "slug": "laura-friedman", "averageRating": 0, "votes": {} },
-  { "slug": "gil-cisneros", "averageRating": 0, "votes": {} },
-  { "slug": "brad-sherman", "averageRating": 0, "votes": {} },
-  { "slug": "pete-aguilar", "averageRating": 0, "votes": {} },
-  { "slug": "jimmy-gomez", "averageRating": 0, "votes": {} },
-  { "slug": "norma-torres", "averageRating": 0, "votes": {} },
-  { "slug": "ted-lieu", "averageRating": 0, "votes": {} },
-  { "slug": "sydney-kamlager-dove", "averageRating": 0, "votes": {} },
-  { "slug": "linda-sanchez", "averageRating": 0, "votes": {} },
-  { "slug": "mark-takano", "averageRating": 0, "votes": {} },
-  { "slug": "young-kim", "averageRating": 0, "votes": {} },
-  { "slug": "ken-calvert", "averageRating": 0, "votes": {} },
-  { "slug": "robert-garcia", "averageRating": 0, "votes": {} },
-  { "slug": "maxine-waters", "averageRating": 0, "votes": {} },
-  { "slug": "nanette-barragan", "averageRating": 0, "votes": {} },
-  { "slug": "derek-tran", "averageRating": 0, "votes": {} },
-  { "slug": "lou-correa", "averageRating": 0, "votes": {} },
-  { "slug": "dave-min", "averageRating": 0, "votes": {} },
-  { "slug": "darrell-issa", "averageRating": 0, "votes": {} },
-  { "slug": "mike-levin", "averageRating": 0, "votes": {} },
-  { "slug": "scott-peters", "averageRating": 0, "votes": {} },
-  { "slug": "sara-jacobs", "averageRating": 0, "votes": {} },
-  { "slug": "juan-vargas", "averageRating": 0, "votes": {} },
-  { "slug": "diana-degette", "averageRating": 0, "votes": {} },
-  { "slug": "joe-neguse", "averageRating": 0, "votes": {} },
-  { "slug": "jeff-hurd", "averageRating": 0, "votes": {} },
-  { "slug": "lauren-boebert", "averageRating": 0, "votes": {} },
-  { "slug": "jeff-crank", "averageRating": 0, "votes": {} },
-  { "slug": "jason-crow", "averageRating": 0, "votes": {} },
-  { "slug": "brittany-pettersen", "averageRating": 0, "votes": {} },
-  { "slug": "gabe-evans", "averageRating": 0, "votes": {} },
-  { "slug": "john-larson", "averageRating": 0, "votes": {} },
-  { "slug": "joe-courtney", "averageRating": 0, "votes": {} },
-  { "slug": "rosa-delauro", "averageRating": 0, "votes": {} },
-  { "slug": "jim-himes", "averageRating": 0, "votes": {} },
-  { "slug": "jahana-hayes", "averageRating": 0, "votes": {} },
-  { "slug": "sarah-mcbride", "averageRating": 0, "votes": {} },
-  { "slug": "jimmy-patronis", "averageRating": 0, "votes": {} },
-  { "slug": "neal-dunn", "averageRating": 0, "votes": {} },
-  { "slug": "kat-cammack", "averageRating": 0, "votes": {} },
-  { "slug": "aaron-bean", "averageRating": 0, "votes": {} },
-  { "slug": "john-rutherford", "averageRating": 0, "votes": {} },
-  { "slug": "randy-fine", "averageRating": 0, "votes": {} },
-  { "slug": "cory-mills", "averageRating": 0, "votes": {} },
-  { "slug": "mike-haridopolos", "averageRating": 0, "votes": {} },
-  { "slug": "darren-soto", "averageRating": 0, "votes": {} },
-  { "slug": "maxwell-alejandro-frost", "averageRating": 0, "votes": {} },
-  { "slug": "daniel-webster", "averageRating": 0, "votes": {} },
-  { "slug": "gus-bilirakis", "averageRating": 0, "votes": {} },
-  { "slug": "anna-paulina-luna", "averageRating": 0, "votes": {} },
-  { "slug": "kathy-castor", "averageRating": 0, "votes": {} },
-  { "slug": "laurel-lee", "averageRating": 0, "votes": {} },
-  { "slug": "vern-buchanan", "averageRating": 0, "votes": {} },
-  { "slug": "greg-steube", "averageRating": 0, "votes": {} },
-  { "slug": "scott-franklin", "averageRating": 0, "votes": {} },
-  { "slug": "byron-donalds", "averageRating": 0, "votes": {} },
-  { "slug": "sheila-cherfilus-mccormick", "averageRating": 0, "votes": {} },
-  { "slug": "brian-mast", "averageRating": 0, "votes": {} },
-  { "slug": "lois-frankel", "averageRating": 0, "votes": {} },
-  { "slug": "jared-moskowitz", "averageRating": 0, "votes": {} },
-  { "slug": "frederica-wilson", "averageRating": 0, "votes": {} },
-  { "slug": "debbie-wasserman-schultz", "averageRating": 0, "votes": {} },
-  { "slug": "mario-diaz-balart", "averageRating": 0, "votes": {} },
-  { "slug": "maria-elvira-salazar", "averageRating": 0, "votes": {} },
-  { "slug": "carlos-gimenez", "averageRating": 0, "votes": {} },
-  { "slug": "earl-carter", "averageRating": 0, "votes": {} },
-  { "slug": "sanford-bishop", "averageRating": 0, "votes": {} },
-  { "slug": "brian-jack", "averageRating": 0, "votes": {} },
-  { "slug": "hank-johnson", "averageRating": 0, "votes": {} },
-  { "slug": "nikema-williams", "averageRating": 0, "votes": {} },
-  { "slug": "lucy-mcbath", "averageRating": 0, "votes": {} },
-  { "slug": "rich-mccormick", "averageRating": 0, "votes": {} },
-  { "slug": "austin-scott", "averageRating": 0, "votes": {} },
-  { "slug": "andrew-clyde", "averageRating": 0, "votes": {} },
-  { "slug": "mike-collins", "averageRating": 0, "votes": {} },
-  { "slug": "barry-loudermilk", "averageRating": 0, "votes": {} },
-  { "slug": "rick-allen", "averageRating": 0, "votes": {} },
-  { "slug": "david-scott", "averageRating": 0, "votes": {} },
-  { "slug": "marjorie-taylor-greene", "averageRating": 0, "votes": {} },
-  { "slug": "james-moylan", "averageRating": 0, "votes": {} },
-  { "slug": "ed-case", "averageRating": 0, "votes": {} },
-  { "slug": "jill-tokuda", "averageRating": 0, "votes": {} },
-  { "slug": "russ-fulcher", "averageRating": 0, "votes": {} },
-  { "slug": "michael-simpson", "averageRating": 0, "votes": {} },
-  { "slug": "jonathan-jackson", "averageRating": 0, "votes": {} },
-  { "slug": "robin-kelly", "averageRating": 0, "votes": {} },
-  { "slug": "delia-ramirez", "averageRating": 0, "votes": {} },
-  { "slug": "jesus-garcia", "averageRating": 0, "votes": {} },
-  { "slug": "mike-quigley", "averageRating": 0, "votes": {} },
-  { "slug": "sean-casten", "averageRating": 0, "votes": {} },
-  { "slug": "danny-davis", "averageRating": 0, "votes": {} },
-  { "slug": "raja-krishnamoorthi", "averageRating": 0, "votes": {} },
-  { "slug": "jan-schakowsky", "averageRating": 0, "votes": {} },
-  { "slug": "brad-schneider", "averageRating": 0, "votes": {} },
-  { "slug": "bill-foster", "averageRating": 0, "votes": {} },
-  { "slug": "mike-bost", "averageRating": 0, "votes": {} },
-  { "slug": "nikki-budzinski", "averageRating": 0, "votes": {} },
-  { "slug": "lauren-underwood", "averageRating": 0, "votes": {} },
-  { "slug": "mary-miller", "averageRating": 0, "votes": {} },
-  { "slug": "darin-lahood", "averageRating": 0, "votes": {} }
-  { "slug": "eric-sorensen", "averageRating": 0, "votes": {} },
-  { "slug": "frank-mrvan", "averageRating": 0, "votes": {} },
-  { "slug": "rudy-yakym", "averageRating": 0, "votes": {} },
-  { "slug": "marlin-stutzman", "averageRating": 0, "votes": {} },
-  { "slug": "jim-baird", "averageRating": 0, "votes": {} },
-  { "slug": "victoria-spartz", "averageRating": 0, "votes": {} },
-  { "slug": "jefferson-shreve", "averageRating": 0, "votes": {} },
-  { "slug": "andre-carson", "averageRating": 0, "votes": {} },
-  { "slug": "mark-messmer", "averageRating": 0, "votes": {} },
-  { "slug": "erin-houchin", "averageRating": 0, "votes": {} },
-  { "slug": "mariannette-miller-meeks", "averageRating": 0, "votes": {} },
-  { "slug": "ashley-hinson", "averageRating": 0, "votes": {} },
-  { "slug": "zach-nunn", "averageRating": 0, "votes": {} },
-  { "slug": "randy-feenstra", "averageRating": 0, "votes": {} },
-  { "slug": "tracey-mann", "averageRating": 0, "votes": {} },
-  { "slug": "derek-schmidt", "averageRating": 0, "votes": {} },
-  { "slug": "sharice-davids", "averageRating": 0, "votes": {} },
-  { "slug": "ron-estes", "averageRating": 0, "votes": {} },
-  { "slug": "james-comer", "averageRating": 0, "votes": {} },
-  { "slug": "brett-guthrie", "averageRating": 0, "votes": {} },
-  { "slug": "morgan-mcgarvey", "averageRating": 0, "votes": {} },
-  { "slug": "thomas-massie", "averageRating": 0, "votes": {} },
-  { "slug": "hal-rogers", "averageRating": 0, "votes": {} },
-  { "slug": "andy-barr", "averageRating": 0, "votes": {} },
-  { "slug": "steve-scalise", "averageRating": 0, "votes": {} },
-  { "slug": "troy-carter", "averageRating": 0, "votes": {} },
-  { "slug": "clay-higgins", "averageRating": 0, "votes": {} },
-  { "slug": "mike-johnson", "averageRating": 0, "votes": {} },
-  { "slug": "julia-letlow", "averageRating": 0, "votes": {} },
-  { "slug": "cleo-fields", "averageRating": 0, "votes": {} },
-  { "slug": "chellie-pingree", "averageRating": 0, "votes": {} },
-  { "slug": "jared-golden", "averageRating": 0, "votes": {} },
-  { "slug": "andrew-harris", "averageRating": 0, "votes": {} },
-  { "slug": "john-olszewski-jr", "averageRating": 0, "votes": {} },
-  { "slug": "sarah-elfreth", "averageRating": 0, "votes": {} },
-  { "slug": "glenn-ivey", "averageRating": 0, "votes": {} },
-  { "slug": "steny-hoyer", "averageRating": 0, "votes": {} },
-  { "slug": "april-mcclain-delaney", "averageRating": 0, "votes": {} },
-  { "slug": "kweisi-mfume", "averageRating": 0, "votes": {} },
-  { "slug": "jamie-raskin", "averageRating": 0, "votes": {} },
-  { "slug": "richard-neal", "averageRating": 0, "votes": {} },
-  { "slug": "jim-mcgovern", "averageRating": 0, "votes": {} },
-  { "slug": "lori-trahan", "averageRating": 0, "votes": {} },
-  { "slug": "jake-auchincloss", "averageRating": 0, "votes": {} },
-  { "slug": "katherine-clark", "averageRating": 0, "votes": {} },
-  { "slug": "seth-moulton", "averageRating": 0, "votes": {} },
-  { "slug": "ayanna-pressley", "averageRating": 0, "votes": {} },
-  { "slug": "stephen-lynch", "averageRating": 0, "votes": {} },
-  { "slug": "bill-keating", "averageRating": 0, "votes": {} }
-  { "slug": "jack-bergman", "averageRating": 0, "votes": {} },
-  { "slug": "john-moolenaar", "averageRating": 0, "votes": {} },
-  { "slug": "hillary-scholten", "averageRating": 0, "votes": {} },
-  { "slug": "bill-huizenga", "averageRating": 0, "votes": {} },
-  { "slug": "tim-walberg", "averageRating": 0, "votes": {} },
-  { "slug": "debbie-dingell", "averageRating": 0, "votes": {} },
-  { "slug": "tom-barrett", "averageRating": 0, "votes": {} },
-  { "slug": "kristen-mcdonald-rivet", "averageRating": 0, "votes": {} },
-  { "slug": "lisa-mcclain", "averageRating": 0, "votes": {} },
-  { "slug": "john-james", "averageRating": 0, "votes": {} },
-  { "slug": "haley-stevens", "averageRating": 0, "votes": {} },
-  { "slug": "rashida-tlaib", "averageRating": 0, "votes": {} },
-  { "slug": "shri-thanedar", "averageRating": 0, "votes": {} },
-  { "slug": "brad-finstad", "averageRating": 0, "votes": {} },
-  { "slug": "angie-craig", "averageRating": 0, "votes": {} },
-  { "slug": "kelly-morrison", "averageRating": 0, "votes": {} },
-  { "slug": "betty-mccollum", "averageRating": 0, "votes": {} },
-  { "slug": "ilhan-omar", "averageRating": 0, "votes": {} },
-  { "slug": "tom-emmer", "averageRating": 0, "votes": {} },
-  { "slug": "michelle-fischbach", "averageRating": 0, "votes": {} },
-  { "slug": "pete-stauber", "averageRating": 0, "votes": {} },
-  { "slug": "trent-kelly", "averageRating": 0, "votes": {} },
-  { "slug": "bennie-thompson", "averageRating": 0, "votes": {} },
-  { "slug": "michael-guest", "averageRating": 0, "votes": {} },
-  { "slug": "mike-ezell", "averageRating": 0, "votes": {} },
-  { "slug": "wesley-bell", "averageRating": 0, "votes": {} },
-  { "slug": "ann-wagner", "averageRating": 0, "votes": {} },
-  { "slug": "bob-onder", "averageRating": 0, "votes": {} },
-  { "slug": "mark-alford", "averageRating": 0, "votes": {} },
-  { "slug": "emanuel-cleaver", "averageRating": 0, "votes": {} },
-  { "slug": "sam-graves", "averageRating": 0, "votes": {} },
-  { "slug": "eric-burlison", "averageRating": 0, "votes": {} },
-  { "slug": "jason-smith", "averageRating": 0, "votes": {} },
-  { "slug": "ryan-zinke", "averageRating": 0, "votes": {} },
-  { "slug": "troy-downing", "averageRating": 0, "votes": {} },
-  { "slug": "mike-flood", "averageRating": 0, "votes": {} },
-  { "slug": "don-bacon", "averageRating": 0, "votes": {} },
-  { "slug": "adrian-smith", "averageRating": 0, "votes": {} },
-  { "slug": "dina-titus", "averageRating": 0, "votes": {} },
-  { "slug": "mark-amodei", "averageRating": 0, "votes": {} },
-  { "slug": "susie-lee", "averageRating": 0, "votes": {} },
-  { "slug": "steven-horsford", "averageRating": 0, "votes": {} },
-  { "slug": "chris-pappas", "averageRating": 0, "votes": {} },
-  { "slug": "maggie-goodlander", "averageRating": 0, "votes": {} },
-  { "slug": "donald-norcross", "averageRating": 0, "votes": {} },
-  { "slug": "jeff-van-drew", "averageRating": 0, "votes": {} },
-  { "slug": "herbert-c-conaway-jr", "averageRating": 0, "votes": {} },
-  { "slug": "chris-smith", "averageRating": 0, "votes": {} },
-  { "slug": "josh-gottheimer", "averageRating": 0, "votes": {} },
-  { "slug": "frank-pallone", "averageRating": 0, "votes": {} },
-  { "slug": "thomas-kean-jr", "averageRating": 0, "votes": {} }
-  { "slug": "robert-menendez-jr", "averageRating": 0, "votes": {} },
-  { "slug": "nellie-pou", "averageRating": 0, "votes": {} },
-  { "slug": "lamonica-mciver", "averageRating": 0, "votes": {} },
-  { "slug": "mikie-sherrill", "averageRating": 0, "votes": {} },
-  { "slug": "bonnie-watson-coleman", "averageRating": 0, "votes": {} },
-  { "slug": "melanie-stansbury", "averageRating": 0, "votes": {} },
-  { "slug": "gabriel-vasquez", "averageRating": 0, "votes": {} },
-  { "slug": "teresa-leger-fernandez", "averageRating": 0, "votes": {} },
-  { "slug": "nicholas-lalota", "averageRating": 0, "votes": {} },
-  { "slug": "andrew-garbarino", "averageRating": 0, "votes": {} },
-  { "slug": "tom-suozzi", "averageRating": 0, "votes": {} },
-  { "slug": "laura-gillen", "averageRating": 0, "votes": {} },
-  { "slug": "gregory-meeks", "averageRating": 0, "votes": {} },
-  { "slug": "grace-meng", "averageRating": 0, "votes": {} },
-  { "slug": "nydia-velazquez", "averageRating": 0, "votes": {} },
-  { "slug": "hakeem-jeffries", "averageRating": 0, "votes": {} },
-  { "slug": "yvette-clarke", "averageRating": 0, "votes": {} },
-  { "slug": "daniel-goldman", "averageRating": 0, "votes": {} },
-  { "slug": "nicole-malliotakis", "averageRating": 0, "votes": {} },
-  { "slug": "jerrold-nadler", "averageRating": 0, "votes": {} },
-  { "slug": "adriano-espaillat", "averageRating": 0, "votes": {} },
-  { "slug": "alexandria-ocasio-cortez", "averageRating": 0, "votes": {} },
-  { "slug": "ritchie-torres", "averageRating": 0, "votes": {} },
-  { "slug": "george-latimer", "averageRating": 0, "votes": {} },
-  { "slug": "michael-lawler", "averageRating": 0, "votes": {} },
-  { "slug": "pat-ryan", "averageRating": 0, "votes": {} },
-  { "slug": "josh-riley", "averageRating": 0, "votes": {} },
-  { "slug": "paul-tonko", "averageRating": 0, "votes": {} },
-  { "slug": "elise-stefanik", "averageRating": 0, "votes": {} },
-  { "slug": "john-mannion", "averageRating": 0, "votes": {} },
-  { "slug": "nick-langworthy", "averageRating": 0, "votes": {} },
-  { "slug": "claudia-tenney", "averageRating": 0, "votes": {} },
-  { "slug": "joseph-morelle", "averageRating": 0, "votes": {} },
-  { "slug": "timothy-m.-kennedy", "averageRating": 0, "votes": {} },
-  { "slug": "eleanor-holmes-norton", "averageRating": 0, "votes": {} },
-  { "slug": "donald-davis", "averageRating": 0, "votes": {} },
-  { "slug": "deborah-ross", "averageRating": 0, "votes": {} },
-  { "slug": "gregory-murphy", "averageRating": 0, "votes": {} },
-  { "slug": "valerie-foushee", "averageRating": 0, "votes": {} },
-  { "slug": "virginia-foxx", "averageRating": 0, "votes": {} },
-  { "slug": "addison-mcdowell", "averageRating": 0, "votes": {} },
-  { "slug": "david-rouzer", "averageRating": 0, "votes": {} },
-  { "slug": "mark harris", "averageRating": 0, "votes": {} },
-  { "slug": "richard-hudson", "averageRating": 0, "votes": {} },
-  { "slug": "pat-harrigan", "averageRating": 0, "votes": {} },
-  { "slug": "chuck-edwards", "averageRating": 0, "votes": {} },
-  { "slug": "alma-adams", "averageRating": 0, "votes": {} },
-  { "slug": "brad-knott", "averageRating": 0, "votes": {} },
-  { "slug": "timothy-k.-moore", "averageRating": 0, "votes": {} }
-  { "slug": "julie-fedorchak", "averageRating": 0, "votes": {} },
-  { "slug": "kimberlyn-king-hinds", "averageRating": 0, "votes": {} },
-  { "slug": "greg-landsman", "averageRating": 0, "votes": {} },
-  { "slug": "david-taylor", "averageRating": 0, "votes": {} },
-  { "slug": "joyce-beatty", "averageRating": 0, "votes": {} },
-  { "slug": "jim-jordan", "averageRating": 0, "votes": {} },
-  { "slug": "bob-latta", "averageRating": 0, "votes": {} },
-  { "slug": "michael-rulli", "averageRating": 0, "votes": {} },
-  { "slug": "max-miller", "averageRating": 0, "votes": {} },
-  { "slug": "warren-davidson", "averageRating": 0, "votes": {} },
-  { "slug": "marcy-kaptur", "averageRating": 0, "votes": {} },
-  { "slug": "michael-turner", "averageRating": 0, "votes": {} },
-  { "slug": "shontel-brown", "averageRating": 0, "votes": {} },
-  { "slug": "troy-balderson", "averageRating": 0, "votes": {} },
-  { "slug": "emilia-sykes", "averageRating": 0, "votes": {} },
-  { "slug": "david-joyce", "averageRating": 0, "votes": {} },
-  { "slug": "mike-carey", "averageRating": 0, "votes": {} },
-  { "slug": "kevin-hern", "averageRating": 0, "votes": {} },
-  { "slug": "josh-brecheen", "averageRating": 0, "votes": {} },
-  { "slug": "frank-lucas", "averageRating": 0, "votes": {} },
-  { "slug": "tom-cole", "averageRating": 0, "votes": {} },
-  { "slug": "stephanie-bice", "averageRating": 0, "votes": {} },
-  { "slug": "suzanne-bonamici", "averageRating": 0, "votes": {} },
-  { "slug": "cliff-bentz", "averageRating": 0, "votes": {} },
-  { "slug": "maxine-dexter", "averageRating": 0, "votes": {} },
-  { "slug": "val-hoyle", "averageRating": 0, "votes": {} },
-  { "slug": "janelle-bynum", "averageRating": 0, "votes": {} },
-  { "slug": "andrea-salinas", "averageRating": 0, "votes": {} },
-  { "slug": "brian-fitzpatrick", "averageRating": 0, "votes": {} },
-  { "slug": "brendan-boyle", "averageRating": 0, "votes": {} },
-  { "slug": "dwight-evans", "averageRating": 0, "votes": {} },
-  { "slug": "madeleine-dean", "averageRating": 0, "votes": {} },
-  { "slug": "mary-gay-scanlon", "averageRating": 0, "votes": {} },
-  { "slug": "chrissy-houlahan", "averageRating": 0, "votes": {} },
-  { "slug": "ryan-mackenzie", "averageRating": 0, "votes": {} },
-  { "slug": "rob-bresnahan-jr", "averageRating": 0, "votes": {} },
-  { "slug": "dan-meuser", "averageRating": 0, "votes": {} },
-  { "slug": "scott-perry", "averageRating": 0, "votes": {} },
-  { "slug": "lloyd-smucker", "averageRating": 0, "votes": {} },
-  { "slug": "summer-lee", "averageRating": 0, "votes": {} },
-  { "slug": "john-joyce", "averageRating": 0, "votes": {} },
-  { "slug": "guy-reschenthaler", "averageRating": 0, "votes": {} },
-  { "slug": "glenn-thompson", "averageRating": 0, "votes": {} },
-  { "slug": "mike-kelly", "averageRating": 0, "votes": {} },
-  { "slug": "chris-deluzio", "averageRating": 0, "votes": {} },
-  { "slug": "gabe-amo", "averageRating": 0, "votes": {} },
-  { "slug": "seth-magaziner", "averageRating": 0, "votes": {} },
-  { "slug": "nancy-mace", "averageRating": 0, "votes": {} },
-  { "slug": "joe-wilson", "averageRating": 0, "votes": {} },
-  { "slug": "sheri-biggs", "averageRating": 0, "votes": {} },
-  { "slug": "william-timmons", "averageRating": 0, "votes": {} }
-  { "slug": "ralph-norman", "averageRating": 0, "votes": {} },
-  { "slug": "james-clyburn", "averageRating": 0, "votes": {} },
-  { "slug": "russell-fry", "averageRating": 0, "votes": {} },
-  { "slug": "dusty-johnson", "averageRating": 0, "votes": {} },
-  { "slug": "diana-harshbarger", "averageRating": 0, "votes": {} },
-  { "slug": "tim-burchett", "averageRating": 0, "votes": {} },
-  { "slug": "charles-fleischmann", "averageRating": 0, "votes": {} },
-  { "slug": "scott-desjarlais", "averageRating": 0, "votes": {} },
-  { "slug": "andy-ogles", "averageRating": 0, "votes": {} },
-  { "slug": "john-rose", "averageRating": 0, "votes": {} },
-  { "slug": "matt-van-epps", "averageRating": 0, "votes": {} },
-  { "slug": "david-kustoff", "averageRating": 0, "votes": {} },
-  { "slug": "steve-cohen", "averageRating": 0, "votes": {} },
-  { "slug": "nathaniel-moran", "averageRating": 0, "votes": {} },
-  { "slug": "dan-crenshaw", "averageRating": 0, "votes": {} },
-  { "slug": "keith-self", "averageRating": 0, "votes": {} },
-  { "slug": "pat-fallon", "averageRating": 0, "votes": {} },
-  { "slug": "lance-gooden", "averageRating": 0, "votes": {} },
-  { "slug": "jake-ellzey", "averageRating": 0, "votes": {} },
-  { "slug": "lizzie-fletcher", "averageRating": 0, "votes": {} },
-  { "slug": "morgan-luttrell", "averageRating": 0, "votes": {} },
-  { "slug": "al-green", "averageRating": 0, "votes": {} },
-  { "slug": "michael-mccaul", "averageRating": 0, "votes": {} },
-  { "slug": "august-pfluger", "averageRating": 0, "votes": {} },
-  { "slug": "craig-goldman", "averageRating": 0, "votes": {} },
-  { "slug": "ronny-jackson", "averageRating": 0, "votes": {} },
-  { "slug": "randy-weber", "averageRating": 0, "votes": {} },
-  { "slug": "monica-de-la-cruz", "averageRating": 0, "votes": {} },
-  { "slug": "veronica-escobar", "averageRating": 0, "votes": {} },
-  { "slug": "pete-sessions", "averageRating": 0, "votes": {} },
-  { "slug": "vacant", "averageRating": 0, "votes": {} },
-  { "slug": "jodey-arrington", "averageRating": 0, "votes": {} },
-  { "slug": "joaquin-castro", "averageRating": 0, "votes": {} },
-  { "slug": "chip-roy", "averageRating": 0, "votes": {} },
-  { "slug": "troy-nehls", "averageRating": 0, "votes": {} },
-  { "slug": "tony-gonzales", "averageRating": 0, "votes": {} },
-  { "slug": "beth-van-duyne", "averageRating": 0, "votes": {} },
-  { "slug": "roger-williams", "averageRating": 0, "votes": {} },
-  { "slug": "brandon-gill", "averageRating": 0, "votes": {} },
-  { "slug": "michael-cloud", "averageRating": 0, "votes": {} },
-  { "slug": "henry-cuellar", "averageRating": 0, "votes": {} },
-  { "slug": "sylvia-garcia", "averageRating": 0, "votes": {} },
-  { "slug": "jasmine-crockett", "averageRating": 0, "votes": {} },
-  { "slug": "john-carter", "averageRating": 0, "votes": {} },
-  { "slug": "julie-johnson", "averageRating": 0, "votes": {} },
-  { "slug": "marc-veasey", "averageRating": 0, "votes": {} },
-  { "slug": "vicente-gonzalez", "averageRating": 0, "votes": {} },
-  { "slug": "greg-casar", "averageRating": 0, "votes": {} },
-  { "slug": "brian-babin", "averageRating": 0, "votes": {} }
-  { "slug": "lloyd-doggett", "averageRating": 0, "votes": {} },
-  { "slug": "wesley-hunt", "averageRating": 0, "votes": {} },
-  { "slug": "blake-moore", "averageRating": 0, "votes": {} },
-  { "slug": "celeste-maloy", "averageRating": 0, "votes": {} },
-  { "slug": "mike-kennedy", "averageRating": 0, "votes": {} },
-  { "slug": "burgess-owens", "averageRating": 0, "votes": {} },
-  { "slug": "becca-balint", "averageRating": 0, "votes": {} },
-  { "slug": "stacey-plaskett", "averageRating": 0, "votes": {} },
-  { "slug": "robert-wittman", "averageRating": 0, "votes": {} },
-  { "slug": "jennifer-kiggans", "averageRating": 0, "votes": {} },
-  { "slug": "robert-scott", "averageRating": 0, "votes": {} },
-  { "slug": "jennifer-mcclellan", "averageRating": 0, "votes": {} },
-  { "slug": "john-mcguire", "averageRating": 0, "votes": {} },
-  { "slug": "ben-cline", "averageRating": 0, "votes": {} },
-  { "slug": "eugene-vindman", "averageRating": 0, "votes": {} },
-  { "slug": "don-beyer", "averageRating": 0, "votes": {} },
-  { "slug": "morgan-griffith", "averageRating": 0, "votes": {} },
-  { "slug": "suhas-subramanyam", "averageRating": 0, "votes": {} },
-  { "slug": "james-walkinshaw", "averageRating": 0, "votes": {} },
-  { "slug": "suzan-delbene", "averageRating": 0, "votes": {} },
-  { "slug": "rick-larsen", "averageRating": 0, "votes": {} },
-  { "slug": "marie-gluesenkamp-perez", "averageRating": 0, "votes": {} },
-  { "slug": "dan-newhouse", "averageRating": 0, "votes": {} },
-  { "slug": "michael-baumgartner", "averageRating": 0, "votes": {} },
-  { "slug": "emily-randall", "averageRating": 0, "votes": {} },
-  { "slug": "pramila-jayapal", "averageRating": 0, "votes": {} },
-  { "slug": "kim-schrier", "averageRating": 0, "votes": {} },
-  { "slug": "adam-smith", "averageRating": 0, "votes": {} },
-  { "slug": "marilyn-strickland", "averageRating": 0, "votes": {} },
-  { "slug": "carol-miller", "averageRating": 0, "votes": {} },
-  { "slug": "riley-moore", "averageRating": 0, "votes": {} },
-  { "slug": "bryan-steil", "averageRating": 0, "votes": {} },
-  { "slug": "mark-pocan", "averageRating": 0, "votes": {} },
-  { "slug": "derrick-van-orden", "averageRating": 0, "votes": {} },
-  { "slug": "gwen-moore", "averageRating": 0, "votes": {} },
-  { "slug": "scott-fitzgerald", "averageRating": 0, "votes": {} },
-  { "slug": "glenn-grothman", "averageRating": 0, "votes": {} },
-  { "slug": "tom-tiffany", "averageRating": 0, "votes": {} },
-  { "slug": "tony-wied", "averageRating": 0, "votes": {} },
-  { "slug": "harriet-hageman", "averageRating": 0, "votes": {} }
+    {
+        "slug": "barry-moore",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "shomari-figures",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "mike-rogers",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "robert-aderholt",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "dale-strong",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "gary-palmer",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "terri-sewell",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "nick-begich",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "aumua-amata-radewagen",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "david-schweikert",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "eli-crane",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "yassamin-ansari",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "greg-stanton",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "andy-biggs",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "juan-ciscomani",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "adelita-grijalva",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "abraham-hamadeh",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "paul-gosar",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "rick-crawford",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "french-hill",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "steve-womack",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "bruce-westerman",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "doug-lamalfa",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "jared-huffman",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "kevin-kiley",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "mike-thompson",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "tom-mcclintock",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "ami-bera",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "doris-matsui",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "john-garamendi",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "josh-harder",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "mark-desaulnier",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "nancy-pelosi",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "lateefah-simon",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "adam-gray",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "eric-swalwell",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "kevin-mullin",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "sam-liccardo",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "ro-khanna",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "zoe-lofgren",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "jimmy-panetta",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "vince-fong",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "jim-costa",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "david-valadao",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "jay-obernolte",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "salud-carbajal",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "raul-ruiz",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "julia-brownley",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "george-whitesides",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "judy-chu",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "luz-maria-rivas",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "laura-friedman",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "gil-cisneros",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "brad-sherman",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "pete-aguilar",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "jimmy-gomez",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "norma-torres",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "ted-lieu",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "sydney-kamlager-dove",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "linda-sanchez",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "mark-takano",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "young-kim",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "ken-calvert",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "robert-garcia",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "maxine-waters",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "nanette-barragan",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "derek-tran",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "lou-correa",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "dave-min",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "darrell-issa",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "mike-levin",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "scott-peters",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "sara-jacobs",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "juan-vargas",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "diana-degette",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "joe-neguse",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "jeff-hurd",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "lauren-boebert",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "jeff-crank",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "jason-crow",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "brittany-pettersen",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "gabe-evans",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "john-larson",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "joe-courtney",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "rosa-delauro",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "jim-himes",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "jahana-hayes",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "sarah-mcbride",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "jimmy-patronis",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "neal-dunn",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "kat-cammack",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "aaron-bean",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "john-rutherford",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "randy-fine",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "cory-mills",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "mike-haridopolos",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "darren-soto",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "maxwell-alejandro-frost",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "daniel-webster",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "gus-bilirakis",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "anna-paulina-luna",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "kathy-castor",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "laurel-lee",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "vern-buchanan",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "greg-steube",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "scott-franklin",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "byron-donalds",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "sheila-cherfilus-mccormick",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "brian-mast",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "lois-frankel",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "jared-moskowitz",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "frederica-wilson",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "debbie-wasserman-schultz",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "mario-diaz-balart",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "maria-elvira-salazar",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "carlos-gimenez",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "earl-carter",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "sanford-bishop",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "brian-jack",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "hank-johnson",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "nikema-williams",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "lucy-mcbath",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "rich-mccormick",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "austin-scott",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "andrew-clyde",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "mike-collins",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "barry-loudermilk",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "rick-allen",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "david-scott",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "marjorie-taylor-greene",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "james-moylan",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "ed-case",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "jill-tokuda",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "russ-fulcher",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "michael-simpson",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "jonathan-jackson",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "robin-kelly",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "delia-ramirez",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "jesus-garcia",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "mike-quigley",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "sean-casten",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "danny-davis",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "raja-krishnamoorthi",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "jan-schakowsky",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "brad-schneider",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "bill-foster",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "mike-bost",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "nikki-budzinski",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "lauren-underwood",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "mary-miller",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "darin-lahood",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "eric-sorensen",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "frank-mrvan",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "rudy-yakym",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "marlin-stutzman",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "jim-baird",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "victoria-spartz",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "jefferson-shreve",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "andre-carson",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "mark-messmer",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "erin-houchin",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "mariannette-miller-meeks",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "ashley-hinson",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "zach-nunn",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "randy-feenstra",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "tracey-mann",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "derek-schmidt",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "sharice-davids",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "ron-estes",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "james-comer",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "brett-guthrie",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "morgan-mcgarvey",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "thomas-massie",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "hal-rogers",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "andy-barr",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "steve-scalise",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "troy-carter",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "clay-higgins",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "mike-johnson",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "julia-letlow",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "cleo-fields",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "chellie-pingree",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "jared-golden",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "andrew-harris",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "john-olszewski-jr",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "sarah-elfreth",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "glenn-ivey",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "steny-hoyer",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "april-mcclain-delaney",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "kweisi-mfume",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "jamie-raskin",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "richard-neal",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "jim-mcgovern",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "lori-trahan",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "jake-auchincloss",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "katherine-clark",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "seth-moulton",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "ayanna-pressley",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "stephen-lynch",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "bill-keating",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "jack-bergman",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "john-moolenaar",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "hillary-scholten",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "bill-huizenga",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "tim-walberg",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "debbie-dingell",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "tom-barrett",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "kristen-mcdonald-rivet",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "lisa-mcclain",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "john-james",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "haley-stevens",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "rashida-tlaib",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "shri-thanedar",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "brad-finstad",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "angie-craig",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "kelly-morrison",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "betty-mccollum",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "ilhan-omar",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "tom-emmer",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "michelle-fischbach",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "pete-stauber",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "trent-kelly",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "bennie-thompson",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "michael-guest",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "mike-ezell",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "wesley-bell",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "ann-wagner",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "bob-onder",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "mark-alford",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "emanuel-cleaver",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "sam-graves",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "eric-burlison",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "jason-smith",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "ryan-zinke",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "troy-downing",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "mike-flood",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "don-bacon",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "adrian-smith",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "dina-titus",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "mark-amodei",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "susie-lee",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "steven-horsford",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "chris-pappas",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "maggie-goodlander",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "donald-norcross",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "jeff-van-drew",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "herbert-c-conaway-jr",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "chris-smith",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "josh-gottheimer",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "frank-pallone",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "thomas-kean-jr",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "robert-menendez-jr",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "nellie-pou",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "lamonica-mciver",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "mikie-sherrill",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "bonnie-watson-coleman",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "melanie-stansbury",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "gabriel-vasquez",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "teresa-leger-fernandez",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "nicholas-lalota",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "andrew-garbarino",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "tom-suozzi",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "laura-gillen",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "gregory-meeks",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "grace-meng",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "nydia-velazquez",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "hakeem-jeffries",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "yvette-clarke",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "daniel-goldman",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "nicole-malliotakis",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "jerrold-nadler",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "adriano-espaillat",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "alexandria-ocasio-cortez",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "ritchie-torres",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "george-latimer",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "michael-lawler",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "pat-ryan",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "josh-riley",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "paul-tonko",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "elise-stefanik",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "john-mannion",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "nick-langworthy",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "claudia-tenney",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "joseph-morelle",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "timothy-m.-kennedy",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "eleanor-holmes-norton",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "donald-davis",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "deborah-ross",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "gregory-murphy",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "valerie-foushee",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "virginia-foxx",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "addison-mcdowell",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "david-rouzer",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "mark harris",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "richard-hudson",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "pat-harrigan",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "chuck-edwards",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "alma-adams",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "brad-knott",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "timothy-k.-moore",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "julie-fedorchak",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "kimberlyn-king-hinds",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "greg-landsman",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "david-taylor",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "joyce-beatty",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "jim-jordan",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "bob-latta",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "michael-rulli",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "max-miller",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "warren-davidson",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "marcy-kaptur",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "michael-turner",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "shontel-brown",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "troy-balderson",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "emilia-sykes",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "david-joyce",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "mike-carey",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "kevin-hern",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "josh-brecheen",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "frank-lucas",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "tom-cole",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "stephanie-bice",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "suzanne-bonamici",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "cliff-bentz",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "maxine-dexter",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "val-hoyle",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "janelle-bynum",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "andrea-salinas",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "brian-fitzpatrick",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "brendan-boyle",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "dwight-evans",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "madeleine-dean",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "mary-gay-scanlon",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "chrissy-houlahan",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "ryan-mackenzie",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "rob-bresnahan-jr",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "dan-meuser",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "scott-perry",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "lloyd-smucker",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "summer-lee",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "john-joyce",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "guy-reschenthaler",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "glenn-thompson",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "mike-kelly",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "chris-deluzio",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "gabe-amo",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "seth-magaziner",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "nancy-mace",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "joe-wilson",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "sheri-biggs",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "william-timmons",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "ralph-norman",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "james-clyburn",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "russell-fry",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "dusty-johnson",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "diana-harshbarger",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "tim-burchett",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "charles-fleischmann",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "scott-desjarlais",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "andy-ogles",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "john-rose",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "matt-van-epps",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "david-kustoff",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "steve-cohen",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "nathaniel-moran",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "dan-crenshaw",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "keith-self",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "pat-fallon",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "lance-gooden",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "jake-ellzey",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "lizzie-fletcher",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "morgan-luttrell",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "al-green",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "michael-mccaul",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "august-pfluger",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "craig-goldman",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "ronny-jackson",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "randy-weber",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "monica-de-la-cruz",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "veronica-escobar",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "pete-sessions",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "vacant",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "jodey-arrington",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "joaquin-castro",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "chip-roy",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "troy-nehls",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "tony-gonzales",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "beth-van-duyne",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "roger-williams",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "brandon-gill",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "michael-cloud",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "henry-cuellar",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "sylvia-garcia",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "jasmine-crockett",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "john-carter",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "julie-johnson",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "marc-veasey",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "vicente-gonzalez",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "greg-casar",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "brian-babin",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "lloyd-doggett",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "wesley-hunt",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "blake-moore",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "celeste-maloy",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "mike-kennedy",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "burgess-owens",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "becca-balint",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "stacey-plaskett",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "robert-wittman",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "jennifer-kiggans",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "robert-scott",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "jennifer-mcclellan",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "john-mcguire",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "ben-cline",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "eugene-vindman",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "don-beyer",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "morgan-griffith",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "suhas-subramanyam",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "james-walkinshaw",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "suzan-delbene",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "rick-larsen",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "marie-gluesenkamp-perez",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "dan-newhouse",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "michael-baumgartner",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "emily-randall",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "pramila-jayapal",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "kim-schrier",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "adam-smith",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "marilyn-strickland",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "carol-miller",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "riley-moore",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "bryan-steil",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "mark-pocan",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "derrick-van-orden",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "gwen-moore",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "scott-fitzgerald",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "glenn-grothman",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "tom-tiffany",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "tony-wied",
+        "averageRating": 0,
+        "votes": {}
+    },
+    {
+        "slug": "harriet-hageman",
+        "averageRating": 0,
+        "votes": {}
+    }
 ]
-
