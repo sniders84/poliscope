@@ -6055,22 +6055,22 @@ section > h3 {
   justify-content: flex-start; /* align cards left */
 }
 
-/* Ratings card styling — horizontal layout */
+/* Ratings card styling — horizontal uniform layout */
 .info-card {
-  display: flex;              /* horizontal split inside card */
+  display: flex;
   flex-direction: row;        /* force horizontal */
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 420px;           /* compact width */
-  height: 140px;              /* ✅ fixed card height for uniformity */
+  max-width: 420px;           /* consistent width */
+  height: 160px;              /* ✅ fixed card height */
   border: 3px solid transparent;
   border-radius: 8px;
   padding: 12px;
   background-color: #2c2c2c;  /* dark gray background */
   color: #fff;
   transition: box-shadow 0.2s;
-  overflow: hidden;           /* prevent text overflow */
+  overflow: hidden;           /* prevent overflow */
 }
 
 .card-left {
@@ -6079,11 +6079,11 @@ section > h3 {
 }
 
 .card-left img {
-  width: 70px;                /* fixed width */
-  height: 70px;               /* fixed height */
+  width: 80px;                /* ✅ fixed photo width */
+  height: 80px;               /* ✅ fixed photo height */
   border-radius: 6px;
   margin-bottom: 6px;
-  object-fit: cover;          /* crop/scale to fill box */
+  object-fit: cover;          /* crop/scale to uniform size */
 }
 
 .card-right {
@@ -6096,15 +6096,15 @@ section > h3 {
 
 .card-right h3,
 .card-right p {
-  margin: 2px 0;              /* tighten spacing */
+  margin: 2px 0;
   line-height: 1.2;
-  white-space: nowrap;        /* prevent multi-line wrapping */
+  white-space: nowrap;        /* ✅ prevent wrapping */
   overflow: hidden;
-  text-overflow: ellipsis;    /* truncate if too long */
+  text-overflow: ellipsis;    /* truncate long text */
 }
 
 .rating-badge {
-  font-size: 22px;            /* balanced score size */
+  font-size: 22px;
   font-weight: bold;
   margin: 6px 0;
 }
@@ -6133,35 +6133,4 @@ section > h3 {
 
 .info-card:hover {
   box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-}
-
-/* Search bar & filters — dark gray with blue glow */
-#searchInput,
-#officeFilter,
-#stateFilter,
-#partyFilter {
-  padding: 10px 14px;
-  border: none;
-  border-radius: 6px;
-  font-size: 14px;
-  margin: 6px;
-  background-color: #2c2c2c;  /* dark grey background */
-  color: #fff;                /* white text */
-  transition: background-color 0.2s, box-shadow 0.2s;
-}
-
-#searchInput:hover,
-#officeFilter:hover,
-#stateFilter:hover,
-#partyFilter:hover {
-  background-color: #333;     /* slightly lighter grey on hover */
-}
-
-#searchInput:focus,
-#officeFilter:focus,
-#stateFilter:focus,
-#partyFilter:focus {
-  background-color: #2c2c2c;
-  box-shadow: 0 0 6px rgba(41,128,185,0.6); /* blue glow */
-  outline: none;
 }
