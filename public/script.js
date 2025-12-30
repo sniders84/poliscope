@@ -2896,60 +2896,59 @@ function openRatingsModal(slug) {
       }
 
       // Collect star selections
-      document.querySelectorAll('#rate-modal .star-rating').forEach(span => {
-        const category = span.dataset.category;
-        const selected = parseInt(span.dataset.selected || 0);
-        if (selected > 0) {
-          ratingEntry.votes[category].push(selected);
-        }
-      });
+document.querySelectorAll('#rate-modal .star-rating').forEach(span => {
+  const category = span.dataset.category;
+  const selected = parseInt(span.dataset.selected || 0);
+  if (selected > 0) {
+    ratingEntry.votes[category].push(selected);
+  }
+});
 
-      // Recalculate average
-      let total = 0, count = 0;
-      for (const category in ratingEntry.votes) {
-        const votes = ratingEntry.votes[category];
-        total += votes.reduce((a,b)=>a+b,0);
-        count += votes.length;
-      }
-      ratingEntry.averageRating = count ? total / count : 0;
-
-      // Save back to localStorage
-      saved[official.slug] = {
-        votes: ratingEntry.votes,
-        averageRating: ratingEntry.averageRating
-      };
-      localStorage.setItem('ratingsData', JSON.stringify(saved));
-
-      // Update modal details
-      let updatedDetails = '';
-      for (const category of ratingCategories) {
-        const votes = ratingEntry.votes[category] || [];
-        const avg = votes.length ? (votes.reduce((a,b)=>a+b,0)/votes.length).toFixed(1) : 'N/A';
-        const color = avg !== 'N/A' ? getRatingColor(avg) : '#ccc';
-        updatedDetails += `<p style="font-size:18px;">
-          <span class="category-label">${category}:</span>
-          <span style="color:${color}; font-size:22px; font-weight:bold;">${avg} ★</span>
-          (${votes.length} votes)
-        </p>`;
-      }
-      document.getElementById('ratings-details').innerHTML = updatedDetails;
-
-      // Update card badge in Ratings tab
-      const badge = document.querySelector(
-        `button[onclick="openRatingsModal('${official.slug}')"]`
-      ).previousElementSibling;
-      if (badge) {
-        badge.textContent = `${Math.round(ratingEntry.averageRating)} ★`;
-        badge.style.color = getRatingColor(ratingEntry.averageRating);
-      }
-
-      // Reset stars
-      initStarRatings();
-
-      // Close rate modal
-      closeModal('rate-modal');
-    };
+// Recalculate average
+let total = 0, count = 0;
+for (const category in ratingEntry.votes) {
+  const votes = ratingEntry.votes[category];
+  total += votes.reduce((a,b)=>a+b,0);
+  count += votes.length;
 }
+ratingEntry.averageRating = count ? total / count : 0;
+
+// Save back to localStorage
+saved[official.slug] = {
+  votes: ratingEntry.votes,
+  averageRating: ratingEntry.averageRating
+};
+localStorage.setItem('ratingsData', JSON.stringify(saved));
+
+// Update modal details
+let updatedDetails = '';
+for (const category of ratingCategories) {
+  const votes = ratingEntry.votes[category] || [];
+  const avg = votes.length ? (votes.reduce((a,b)=>a+b,0)/votes.length).toFixed(1) : 'N/A';
+  const color = avg !== 'N/A' ? getRatingColor(avg) : '#ccc';
+  updatedDetails += `<p style="font-size:18px;">
+    <span class="category-label">${category}:</span>
+    <span style="color:${color}; font-size:22px; font-weight:bold;">${avg} ★</span>
+    (${votes.length} votes)
+  </p>`;
+}
+document.getElementById('ratings-details').innerHTML = updatedDetails;
+
+// Update card badge in Ratings tab
+const badge = document.querySelector(
+  `button[onclick="openRatingsModal('${official.slug}')"]`
+)?.previousElementSibling;
+if (badge) {
+  badge.textContent = `${Math.round(ratingEntry.averageRating)} ★`;
+  badge.style.color = getRatingColor(ratingEntry.averageRating);
+}
+
+// Reset stars
+initStarRatings();
+
+// Close rate modal
+closeModal('rate-modal');
+};  // <-- closes form.onsubmit function ONLY
 
 function initStarRatings() {
   const stars = document.querySelectorAll('#rate-modal .star-rating');
@@ -2995,12 +2994,14 @@ function getRatingColor(avg) {
     default: return '#ccc';
   }
 }
+
 function closeModal(id) {
   const modal = document.getElementById(id);
   if (modal) {
     modal.style.display = 'none';
   }
 }
+
 document.getElementById('rate-me-btn').onclick = function() {
   const title = document.getElementById('ratings-modal-title').textContent;
   document.getElementById('rate-modal-title').textContent = `Rate ${title}`;
