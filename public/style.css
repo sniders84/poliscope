@@ -6075,7 +6075,7 @@ section > h3 {
 
 /* Left column: photo + name */
 .card-left {
-  flex: 0 0 120px;            /* fixed left column */
+  flex: 0 0 100px;            /* fixed left column footprint */
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -6083,11 +6083,12 @@ section > h3 {
 }
 
 .card-left .card-image {
-  width: 55px;                /* compact photo */
-  height: 55px;
+  width: 60px;                /* ✅ fixed width */
+  height: 60px;               /* ✅ fixed height */
   border-radius: 6px;
   margin-bottom: 6px;
-  object-fit: cover;
+  object-fit: cover;          /* ✅ crop/scale to fill box */
+  object-position: center;    /* ✅ center the crop */
 }
 
 /* Two-line name */
