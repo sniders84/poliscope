@@ -85,8 +85,6 @@ Promise.all([
 .catch(err => console.error('Error loading data files:', err));
 
 // === PODCASTS & SHOWS DATA ===
-let podcastsData = [];
-let showsData = [];
 
 Promise.all([
   fetch('podcasts.json').then(res => res.json()),
