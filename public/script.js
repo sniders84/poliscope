@@ -3025,8 +3025,11 @@ document.getElementById('rate-me-btn').onclick = function() {
   initStarRatings();
 };
 
-// ✅ Ratings/Rankings — search + filters driven by your JSON (no demo render)
-document.addEventListener('DOMContentLoaded', () => {
+// ✅ Unified Ratings/Rankings logic — one dataset, one render, one filter
+// Prerequisite: window.allOfficials MUST be populated before this runs.
+// Required keys per official: { slug, name, state, office, party }
+
+(function initRatingsRankings() {
   const $ = id => document.getElementById(id);
 
   const container = $('ratings-cards');
@@ -3035,14 +3038,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const stateEl   = $('stateFilter');
   const partyEl   = $('partyFilter');
 
-  // Hard guard: if any element is missing, bail
+  // Guard: all elements must exist
   if (!container || !searchEl || !officeEl || !stateEl || !partyEl) return;
 
-  // Expect your merged dataset to be available:
-  // window.allOfficials = [{ slug, name, state, office, party }, ...]
+  // Source of truth
   const officials = Array.isArray(window.allOfficials) ? window.allOfficials : [];
 
-  // Render cards from dataset (clickable via slug)
+  // Shared render: used by initial tab load and after every filter/search update
   function renderResults(list) {
     container.innerHTML = list.map(o => `
       <div class="official-card" data-slug="${o.slug || ''}">
@@ -3050,7 +3052,7 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     `).join('');
 
-    // Reattach click handlers after render
+    // Preserve clickability — reuse existing modal logic
     container.querySelectorAll('.official-card').forEach(card => {
       card.addEventListener('click', () => {
         const slug = card.getAttribute('data-slug');
@@ -3061,7 +3063,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Filters + search
+  // Shared filter logic: used by search + selects
   function applyFilters() {
     const q      = (searchEl.value || '').trim().toLowerCase();
     const office = officeEl.value || '';
@@ -3080,12 +3082,12 @@ document.addEventListener('DOMContentLoaded', () => {
     renderResults(out);
   }
 
-  // Wire events (input for search, change for selects)
+  // Wire events once, use same filter function
   searchEl.addEventListener('input', applyFilters);
   officeEl.addEventListener('change', applyFilters);
   stateEl.addEventListener('change', applyFilters);
   partyEl.addEventListener('change', applyFilters);
 
-  // Initial render strictly from your JSON (no flash, no demo)
+  // Initial tab render strictly from your JSON (no demo, no flash)
   renderResults(officials);
-});
+})();
