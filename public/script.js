@@ -2809,16 +2809,24 @@ function showRatings() {
       if (partyKey === 'gop') partyKey = 'republican';
       card.dataset.party = partyKey;
 
-      // ✅ Horizontal layout markup
+      // ✅ Split name into two lines: first + last
+      const nameParts = (official.name || '').trim().split(' ');
+      const firstName = nameParts.slice(0, -1).join(' ') || nameParts[0] || '';
+      const lastName = nameParts.slice(-1).join(' ') || '';
+
+      // ✅ Horizontal layout markup with uniform photo + name split
       card.innerHTML = `
         <div class="card-left">
           <img src="${official.photo}" alt="${official.name}" class="card-image" />
-          <h3>${official.name}</h3>
-          <p>${official.office}</p>
+          <h3 class="name-block">
+            <span class="first-name">${firstName}</span>
+            <span class="last-name">${lastName}</span>
+          </h3>
+          <p class="office">${official.office}</p>
         </div>
         <div class="card-right">
-          ${official.state ? `<p><strong>State:</strong> ${official.state}</p>` : ''}
-          ${official.district ? `<p><strong>District:</strong> ${official.district}</p>` : ''}
+          ${official.state ? `<p class="meta"><strong>State:</strong> ${official.state}</p>` : ''}
+          ${official.district ? `<p class="meta"><strong>District:</strong> ${official.district}</p>` : ''}
           <div class="rating-badge" style="color:${getRatingColor(r.averageRating)}">
             ${avg} ★
           </div>
