@@ -6077,10 +6077,11 @@ section > h3 {
 }
 
 .card-left img {
-  width: 70px;                /* compact photo */
-  height: 70px;
+  width: 70px;          /* fixed width */
+  height: 70px;         /* fixed height */
   border-radius: 6px;
   margin-bottom: 6px;
+  object-fit: cover;    /* ✅ crop/scale to fill box */
 }
 
 .card-right {
