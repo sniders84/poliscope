@@ -48,7 +48,6 @@ function updateFavoriteButton(btn, isFavorited) {
 }
 
 // === GLOBAL STATE ===
-let selectedState = 'North Carolina';
 let governors = [];
 let ltGovernors = [];
 let senators = [];
