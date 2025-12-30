@@ -2809,16 +2809,21 @@ function showRatings() {
       if (partyKey === 'gop') partyKey = 'republican';
       card.dataset.party = partyKey;
 
+      // ✅ Horizontal layout markup
       card.innerHTML = `
-        <img src="${official.photo}" alt="${official.name}" class="card-image" />
-        <h3>${official.name}</h3>
-        <p>${official.office}</p>
-        ${official.state ? `<p><strong>State:</strong> ${official.state}</p>` : ''}
-        ${official.district ? `<p><strong>District:</strong> ${official.district}</p>` : ''}
-        <div class="rating-badge" style="color:${getRatingColor(r.averageRating)}">
-          ${avg} ★
+        <div class="card-left">
+          <img src="${official.photo}" alt="${official.name}" class="card-image" />
+          <h3>${official.name}</h3>
+          <p>${official.office}</p>
         </div>
-        <button class="btn-view" onclick="openRatingsModal('${r.slug}')">View Ratings</button>
+        <div class="card-right">
+          ${official.state ? `<p><strong>State:</strong> ${official.state}</p>` : ''}
+          ${official.district ? `<p><strong>District:</strong> ${official.district}</p>` : ''}
+          <div class="rating-badge" style="color:${getRatingColor(r.averageRating)}">
+            ${avg} ★
+          </div>
+          <button class="btn-view" onclick="openRatingsModal('${r.slug}')">View Ratings</button>
+        </div>
       `;
       container.appendChild(card);
     });
