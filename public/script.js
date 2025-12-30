@@ -2800,6 +2800,7 @@ function showRatings() {
       card.className = 'info-card';
       // ✅ Tag each card with its canonical office key
       card.dataset.office = official.office.toLowerCase();
+      card.dataset.state = (official.state || '').toLowerCase();
 
       card.innerHTML = `
         <img src="${official.photo}" alt="${official.name}" class="card-image" />
