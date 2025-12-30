@@ -348,18 +348,19 @@
       <div id="officials-container" class="grid"></div>
     
     </section>
-<!-- Ratings/Rankings Tab -->
-<section id="ratings" class="tab-content" style="display: none;">
-  <h2>Ratings & Rankings</h2>
+<div id="ratings-filters" class="filters-bar">
+  <input type="text" id="searchInput" placeholder="Search officials..." />
 
-  <!-- Search bar only -->
-  <div id="ratings-filters" class="filters-bar">
-    <input type="text" id="searchInput" placeholder="Search officials..." />
-  </div>
-
-  <!-- Results container -->
-  <div id="ratings-cards" class="card-section"></div>
-</section>
+  <select id="officeFilter">
+    <option value="">All Offices</option>
+    <option value="President">President</option>
+    <option value="Vice President">Vice President</option>
+    <option value="Governor">Governor</option>
+    <option value="Lt. Governor">Lt. Governor</option>
+    <option value="Senator">Senator</option>
+    <option value="House Rep">House Rep</option>
+  </select>
+</div>
 
 <section id="learning-resources" class="tab-content" style="display: none;">
   <h2>Learning Resources</h2>
