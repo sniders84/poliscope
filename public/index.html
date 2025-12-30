@@ -351,6 +351,36 @@
     <!-- Ratings/Rankings Tab -->
 <section id="ratings" class="tab-content" style="display: none;">
   <h2>Ratings & Rankings</h2>
+
+  <!-- Filters/Search Bar -->
+  <div id="ratings-filters" class="filters-bar">
+    <!-- Search -->
+    <input type="text" id="searchInput" placeholder="Search officials..." />
+
+    <!-- Office filter -->
+    <select id="officeFilter">
+      <option value="">All Offices</option>
+      <option value="governors">Governors</option>
+      <option value="ltgovernors">Lt. Governors</option>
+      <option value="senators">Senators</option>
+      <option value="housereps">House Reps</option>
+    </select>
+
+    <!-- State filter -->
+    <select id="stateFilter">
+      <option value="">All States</option>
+      <!-- dynamically populate with 2-letter states -->
+    </select>
+
+    <!-- Sort selector -->
+    <select id="sortFilter">
+      <option value="top">Highest Rated</option>
+      <option value="votes">Most Votes</option>
+      <option value="alpha">Alphabetical</option>
+    </select>
+  </div>
+
+  <!-- Results container -->
   <div id="ratings-cards" class="card-section">
     <!-- Cards will be populated dynamically from JSON -->
   </div>
