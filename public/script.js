@@ -3024,3 +3024,53 @@ document.getElementById('rate-me-btn').onclick = function() {
   document.getElementById('rate-modal').style.display = 'block';
   initStarRatings();
 };
+// ✅ Ratings/Rankings Filters Logic (demo dataset for testing)
+window.allOfficials = [
+  { slug: "john-doe", name: "John Doe", state: "CA", office: "senators", averageRating: 4.2, votesCount: 120 },
+  { slug: "jane-smith", name: "Jane Smith", state: "TX", office: "governors", averageRating: 3.8, votesCount: 85 },
+  { slug: "alex-jones", name: "Alex Jones", state: "NY", office: "housereps", averageRating: 4.7, votesCount: 200 }
+];
+
+function filterOfficials(list) {
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  const office = document.getElementById('officeFilter').value;
+  const state = document.getElementById('stateFilter').value;
+  const sort = document.getElementById('sortFilter').value;
+
+  let out = list.filter(item => {
+    const matchesText = !q || item.name.toLowerCase().includes(q) || item.slug.includes(q);
+    const matchesOffice = !office || item.office === office;
+    const matchesState = !state || item.state === state;
+    return matchesText && matchesOffice && matchesState;
+  });
+
+  if (sort === 'top') out.sort((a,b) => (b.averageRating - a.averageRating) || (b.votesCount - a.votesCount));
+  else if (sort === 'votes') out.sort((a,b) => (b.votesCount - a.votesCount));
+  else if (sort === 'alpha') out.sort((a,b) => a.name.localeCompare(b.name));
+
+  return out;
+}
+
+function renderResults(list) {
+  const container = document.getElementById('ratings-cards');
+  container.innerHTML = list.map(o => `
+    <div class="official-card">
+      <strong>${o.name}</strong> (${o.state}, ${o.office})
+      <div>⭐ ${o.averageRating.toFixed(1)} | ${o.votesCount} votes</div>
+    </div>
+  `).join('');
+}
+
+// Hook up events
+['searchInput','officeFilter','stateFilter','sortFilter'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) {
+    el.addEventListener('input', () => {
+      const filtered = filterOfficials(window.allOfficials || []);
+      renderResults(filtered);
+    });
+  }
+});
+
+// Initial render
+renderResults(window.allOfficials);
