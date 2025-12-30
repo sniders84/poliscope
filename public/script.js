@@ -3025,12 +3025,12 @@ document.getElementById('rate-me-btn').onclick = function() {
   initStarRatings();
 };
 
-// ✅ Ratings/Rankings — minimal render only
-(function initRatingsRender() {
+// ✅ Ratings/Rankings — render + search only
+(function initRatingsSearch() {
   const container = document.getElementById('ratings-cards');
-  if (!container) return;
+  const searchEl  = document.getElementById('searchInput');
+  if (!container || !searchEl) return;
 
-  // Expect window.allOfficials to be populated earlier from your JSON files
   const officials = Array.isArray(window.allOfficials) ? window.allOfficials : [];
 
   function renderResults(list) {
@@ -3041,7 +3041,6 @@ document.getElementById('rate-me-btn').onclick = function() {
       </div>
     `).join('');
 
-    // Keep cards clickable
     container.querySelectorAll('.official-card').forEach(card => {
       card.addEventListener('click', () => {
         const slug = card.getAttribute('data-slug');
@@ -3051,6 +3050,17 @@ document.getElementById('rate-me-btn').onclick = function() {
       });
     });
   }
+
+  function applySearch() {
+    const q = (searchEl.value || '').trim().toLowerCase();
+    const out = officials.filter(o => {
+      const name = (o.name || '').toLowerCase();
+      return !q || name.includes(q);
+    });
+    renderResults(out);
+  }
+
+  searchEl.addEventListener('input', applySearch);
 
   // Initial render
   renderResults(officials);
