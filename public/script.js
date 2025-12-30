@@ -3025,23 +3025,31 @@ document.getElementById('rate-me-btn').onclick = function() {
   initStarRatings();
 };
 
-// ✅ Ratings/Rankings — search works on existing cards rendered by showRatings()
-(function initRatingsSearchOnCards() {
+// ✅ Ratings/Rankings — search + office filter
+(function initRatingsSearchAndOfficeFilter() {
   const searchEl  = document.getElementById('searchInput');
+  const officeEl  = document.getElementById('officeFilter');
   const container = document.getElementById('ratings-cards');
-  if (!searchEl || !container) return;
+  if (!searchEl || !officeEl || !container) return;
 
-  function applySearch() {
-    const q = (searchEl.value || '').trim().toLowerCase();
+  function applyFilters() {
+    const q      = (searchEl.value || '').trim().toLowerCase();
+    const office = officeEl.value || '';
 
-    // Loop through the cards already rendered by showRatings()
     container.querySelectorAll('.info-card').forEach(card => {
-      const nameEl = card.querySelector('h3');
-      const name   = nameEl ? nameEl.textContent.toLowerCase() : '';
-      const show   = !q || name.includes(q);
+      const nameEl   = card.querySelector('h3');
+      const officeEl = card.querySelector('p'); // first <p> is office
+      const name     = nameEl ? nameEl.textContent.toLowerCase() : '';
+      const officeTxt= officeEl ? officeEl.textContent : '';
+
+      const matchesText   = !q || name.includes(q);
+      const matchesOffice = !office || officeTxt === office;
+
+      const show = matchesText && matchesOffice;
       card.style.display = show ? '' : 'none';
     });
   }
 
-  searchEl.addEventListener('input', applySearch);
+  searchEl.addEventListener('input', applyFilters);
+  officeEl.addEventListener('change', applyFilters);
 })();
