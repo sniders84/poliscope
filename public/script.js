@@ -3024,48 +3024,61 @@ document.getElementById('rate-me-btn').onclick = function() {
   document.getElementById('rate-modal').style.display = 'block';
   initStarRatings();
 };
-// ✅ Ratings/Rankings Filters Logic (demo dataset for testing)
-window.allOfficials = [
-  { name: "John Doe", state: "CA", office: "senators", party: "Democrat" },
-  { name: "Jane Smith", state: "TX", office: "governors", party: "Republican" },
-  { name: "Alex Jones", state: "NY", office: "housereps", party: "Independent" }
-];
 
-function renderResults(list) {
-  const container = document.getElementById('ratings-cards');
-  if (!container) return; // safeguard if container not found
-  container.innerHTML = list.map(o => `
-    <div class="official-card">
-      <strong>${o.name}</strong> (${o.state}, ${o.office}, ${o.party})
-    </div>
-  `).join('');
-}
+// ✅ Ratings/Rankings — search + filters driven by JSON (no demo data, no DOM attributes)
+(function initRatingsFilters() {
+  const get = id => document.getElementById(id);
 
-// Initial render
-renderResults(window.allOfficials);
+  const searchEl = get('searchInput');
+  const officeEl = get('officeFilter');
+  const stateEl  = get('stateFilter');
+  const partyEl  = get('partyFilter');
+  const container = get('ratings-cards');
 
-function applyFilters() {
-  const q = document.getElementById('searchInput')?.value.trim().toLowerCase() || "";
-  const office = document.getElementById('officeFilter')?.value || "";
-  const state = document.getElementById('stateFilter')?.value || "";
-  const party = document.getElementById('partyFilter')?.value || "";
+  // Bail if elements aren’t present
+  if (!container || !searchEl || !officeEl || !stateEl || !partyEl) return;
 
-  let out = window.allOfficials.filter(o => {
-    const matchesText = !q || (o.name && o.name.toLowerCase().includes(q));
-    const matchesOffice = !office || o.office === office;
-    const matchesState = !state || o.state === state;
-    const matchesParty = !party || o.party === party;
-    return matchesText && matchesOffice && matchesState && matchesParty;
-  });
+  // Expect your merged officials JSON to be available globally
+  // Each object should have: slug, name, state, office, party
+  const officials = window.allOfficials || [];
 
-  renderResults(out);
-}
+  function renderResults(list) {
+    container.innerHTML = list.map(o => `
+      <div class="official-card" data-slug="${o.slug}">
+        <strong>${o.name}</strong> (${o.state}, ${o.office}, ${o.party})
+      </div>
+    `).join('');
 
-// Hook up events
-['searchInput','officeFilter','stateFilter','partyFilter'].forEach(id => {
-  const el = document.getElementById(id);
-  if (el) {
-    el.addEventListener('input', applyFilters);
-    el.addEventListener('change', applyFilters); // dropdowns fire on change
+    // Preserve clickability by re‑attaching your existing modal logic
+    container.querySelectorAll('.official-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const slug = card.getAttribute('data-slug');
+        openOfficialModal(slug); // your existing function to open the modal
+      });
+    });
   }
-});
+
+  function applyFilters() {
+    const q      = (searchEl.value || '').trim().toLowerCase();
+    const office = officeEl.value || '';
+    const state  = stateEl.value  || '';
+    const party  = partyEl.value  || '';
+
+    const out = officials.filter(o => {
+      const matchesText   = !q || (o.name && o.name.toLowerCase().includes(q));
+      const matchesOffice = !office || o.office === office;
+      const matchesState  = !state  || o.state === state;
+      const matchesParty  = !party || o.party === party;
+      return matchesText && matchesOffice && matchesState && matchesParty;
+    });
+
+    renderResults(out);
+  }
+
+  // Wire events
+  searchEl.addEventListener('input', applyFilters);
+  [officeEl, stateEl, partyEl].forEach(el => el.addEventListener('change', applyFilters));
+
+  // Initial render from JSON
+  renderResults(officials);
+})();
