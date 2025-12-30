@@ -3025,43 +3025,23 @@ document.getElementById('rate-me-btn').onclick = function() {
   initStarRatings();
 };
 
-// ✅ Ratings/Rankings — render + search only
-(function initRatingsSearch() {
-  const container = document.getElementById('ratings-cards');
+// ✅ Ratings/Rankings — search works on existing cards rendered by showRatings()
+(function initRatingsSearchOnCards() {
   const searchEl  = document.getElementById('searchInput');
-  if (!container || !searchEl) return;
-
-  const officials = Array.isArray(window.allOfficials) ? window.allOfficials : [];
-
-  function renderResults(list) {
-    container.innerHTML = list.map(o => `
-      <div class="official-card" data-slug="${o.slug || ''}">
-        <strong>${o.name || 'Unknown'}</strong>
-        <span>(${o.state || '—'}, ${o.office || '—'}, ${o.party || '—'})</span>
-      </div>
-    `).join('');
-
-    container.querySelectorAll('.official-card').forEach(card => {
-      card.addEventListener('click', () => {
-        const slug = card.getAttribute('data-slug');
-        if (slug && typeof openOfficialModal === 'function') {
-          openOfficialModal(slug);
-        }
-      });
-    });
-  }
+  const container = document.getElementById('ratings-cards');
+  if (!searchEl || !container) return;
 
   function applySearch() {
     const q = (searchEl.value || '').trim().toLowerCase();
-    const out = officials.filter(o => {
-      const name = (o.name || '').toLowerCase();
-      return !q || name.includes(q);
+
+    // Loop through the cards already rendered by showRatings()
+    container.querySelectorAll('.info-card').forEach(card => {
+      const nameEl = card.querySelector('h3');
+      const name   = nameEl ? nameEl.textContent.toLowerCase() : '';
+      const show   = !q || name.includes(q);
+      card.style.display = show ? '' : 'none';
     });
-    renderResults(out);
   }
 
   searchEl.addEventListener('input', applySearch);
-
-  // Initial render
-  renderResults(officials);
 })();
