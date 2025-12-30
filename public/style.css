@@ -5939,7 +5939,7 @@ section > h3 {
   font-size: 1.4rem;
   color: #fff;
 }
-/* Primary Rate Me button */
+/* Primary Rate Me button styles */
 #rate-me-btn,
 .btn-modern,
 .btn-rate-me {
@@ -5986,9 +5986,9 @@ section > h3 {
   color: #1e90ff; /* filled stars in blue */
 }
 
-/* Enlarged rating badge for cards */
+/* Rating badge for cards */
 .rating-badge {
-  font-size: 32px;
+  font-size: 24px;
   font-weight: bold;
   margin: 8px 0;
   display: inline-block;
@@ -6039,44 +6039,11 @@ section > h3 {
   color: #aaa;
 }
 
-.rating-row .star-rating span {
-  font-size: 22px;
-  cursor: pointer;
-  margin: 0 2px;
-}
-
-/* Labels, stars, vote counts */
-.category-label {
-  font-size: 15px;
-  font-weight: 600;
-  color: #fff;
-  display: block;
-  margin-bottom: 6px;
-}
-
-.avg-rating {
-  font-size: 18px;
-  font-weight: bold;
-  display: block;
-}
-
-.vote-count {
-  font-size: 13px;
-  color: #aaa;
-}
-
+.rating-row .star-rating span,
 .star-rating span {
   font-size: 22px;
   cursor: pointer;
   margin: 0 2px;
-}
-
-/* Ratings & Rankings grid container */
-#ratings-cards {
-  display: flex;              /* ✅ use flex instead of grid */
-  flex-wrap: wrap;            /* allow multiple cards per row */
-  gap: 16px;                  /* spacing between cards */
-  padding: 16px;
 }
 
 /* Ratings & Rankings container — flex row of cards */
@@ -6085,7 +6052,7 @@ section > h3 {
   flex-wrap: wrap;            /* wrap to next line if needed */
   gap: 16px;                  /* spacing between cards */
   padding: 16px;
-  justify-content: center;    /* center cards in the row */
+  justify-content: flex-start; /* align cards left */
 }
 
 /* Ratings card styling — horizontal layout */
@@ -6094,7 +6061,7 @@ section > h3 {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 500px;           /* cap width so they don’t stretch too wide */
+  max-width: 360px;           /* compact width */
   border: 3px solid transparent;
   border-radius: 8px;
   padding: 12px;
@@ -6104,15 +6071,15 @@ section > h3 {
 }
 
 .card-left {
-  flex: 1;
+  flex: 0 0 100px;            /* fixed width for left column */
   text-align: center;
 }
 
 .card-left img {
-  width: 80px;
-  height: 80px;
+  width: 60px;                /* smaller photo */
+  height: 60px;
   border-radius: 6px;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .card-right {
@@ -6120,15 +6087,9 @@ section > h3 {
   text-align: center;
 }
 
-.rating-badge {
-  font-size: 24px;            /* enlarged score */
-  font-weight: bold;
-  margin: 10px 0;
-}
-
 .info-card .btn-view {
   font-size: 12px;
-  padding: 7px 12px;
+  padding: 6px 10px;
   border-radius: 4px;
   background: #1e90ff;        /* app blue */
   color: #fff;
