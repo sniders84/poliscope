@@ -2797,7 +2797,8 @@ function showRatings() {
 
       const avg = r.averageRating ? r.averageRating.toFixed(1) : '0.0';
       const card = document.createElement('div');
-      card.className = 'info-card';
+card.className = 'info-card';
+card.dataset.office = official.office; // <-- add this line
 
       card.innerHTML = `
         <img src="${official.photo}" alt="${official.name}" class="card-image" />
@@ -3025,7 +3026,7 @@ document.getElementById('rate-me-btn').onclick = function() {
   initStarRatings();
 };
 
-// ✅ Ratings/Rankings — search + office filter aligned to JSON keys
+// ✅ Ratings/Rankings — search + office filter using official.office
 (function initRatingsSearchAndOfficeFilter() {
   const searchEl   = document.getElementById('searchInput');
   const officeSel  = document.getElementById('officeFilter');
@@ -3037,13 +3038,14 @@ document.getElementById('rate-me-btn').onclick = function() {
     const office = officeSel.value || '';
 
     container.querySelectorAll('.info-card').forEach(card => {
-      const nameEl    = card.querySelector('h3');
-      const officeEl  = card.querySelector('p'); // first <p> is office text
-      const nameTxt   = nameEl ? nameEl.textContent.toLowerCase() : '';
-      const officeTxt = officeEl ? officeEl.textContent.trim().toLowerCase() : '';
+      const nameEl = card.querySelector('h3');
+      const nameTxt = nameEl ? nameEl.textContent.toLowerCase() : '';
+
+      // Pull the office value from a data attribute instead of <p> text
+      const officeKey = card.dataset.office || '';
 
       const matchesText   = !q || nameTxt.includes(q);
-      const matchesOffice = !office || officeTxt.includes(office);
+      const matchesOffice = !office || officeKey === office;
 
       card.style.display = (matchesText && matchesOffice) ? '' : 'none';
     });
