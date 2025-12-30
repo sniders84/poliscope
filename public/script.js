@@ -2797,8 +2797,9 @@ function showRatings() {
 
       const avg = r.averageRating ? r.averageRating.toFixed(1) : '0.0';
       const card = document.createElement('div');
-card.className = 'info-card';
-card.dataset.office = official.office; // <-- add this line
+      card.className = 'info-card';
+      // ✅ Tag each card with its canonical office key
+      card.dataset.office = official.office.toLowerCase();
 
       card.innerHTML = `
         <img src="${official.photo}" alt="${official.name}" class="card-image" />
@@ -2815,6 +2816,7 @@ card.dataset.office = official.office; // <-- add this line
     });
   });
 }
+
 // Open Ratings Modal
 function openRatingsModal(slug) {
   Promise.all([
