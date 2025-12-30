@@ -2792,8 +2792,12 @@ function showRatings() {
     container.innerHTML = '';
 
     ratings.forEach(r => {
-      const official = federalOfficials.find(o => o.slug === r.slug);
-      if (!official) return;
+      // Use the global allOfficials to find matching official (instead of undefined federalOfficials)
+      const official = allOfficials.find(o => o.slug === r.slug);
+      if (!official) {
+        console.warn(`No matching official found for slug: ${r.slug}`); // Debug log - remove if not needed
+        return; // Skip if no match (prevents blank cards)
+      }
 
       const card = document.createElement('div');
       card.className = 'info-card';
@@ -2809,6 +2813,9 @@ function showRatings() {
       `;
       container.appendChild(card);
     });
+  }).catch(err => {
+    console.error('Error loading ratings data:', err);
+    document.getElementById('ratings-cards').innerHTML = '<p style="color:red; text-align:center;">Error loading ratings. Please try again.</p>';
   });
 }
 
