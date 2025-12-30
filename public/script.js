@@ -2792,7 +2792,7 @@ function showRatings() {
     container.innerHTML = '';
 
     ratings.forEach(r => {
-      const official = federalOfficials.find(o => o.slug === r.slug);
+      const official = window.allOfficials.find(o => o.slug === r.slug);
       if (!official) return;
 
       const card = document.createElement('div');
@@ -2840,7 +2840,7 @@ function openRatingsModal(slug) {
     });
 
     const ratingEntry = ratings.find(r => r.slug === slug);
-    const official = federalOfficials.find(o => o.slug === slug);
+    const official = window.allOfficials.find(o => o.slug === slug);
     if (!official || !ratingEntry) return;
 
     // Populate modal fields
@@ -2884,7 +2884,7 @@ function openRatingsModal(slug) {
       e.preventDefault();
 
       const officialName = document.getElementById('ratings-modal-title').textContent;
-      const official = federalOfficials.find(o => o.name === officialName);
+      const official = window.allOfficials.find(o => o.name === officialName);
       if (!official) return;
 
       const saved = JSON.parse(localStorage.getItem('ratingsData')) || {};
@@ -2996,12 +2996,15 @@ function getRatingColor(avg) {
     default: return '#ccc';
   }
 }
+
 function closeModal(id) {
   const modal = document.getElementById(id);
   if (modal) {
     modal.style.display = 'none';
   }
 }
+
+// Hook up the "Rate Me" button to open the rating modal
 document.getElementById('rate-me-btn').onclick = function() {
   const title = document.getElementById('ratings-modal-title').textContent;
   document.getElementById('rate-modal-title').textContent = `Rate ${title}`;
