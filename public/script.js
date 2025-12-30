@@ -2795,13 +2795,16 @@ function showRatings() {
       const official = window.allOfficials.find(o => o.slug === r.slug);
       if (!official) return;
 
+      const avg = r.averageRating ? r.averageRating.toFixed(1) : '0.0';
       const card = document.createElement('div');
       card.className = 'info-card';
-      const avg = r.averageRating ? r.averageRating.toFixed(1) : '0.0';
+
       card.innerHTML = `
         <img src="${official.photo}" alt="${official.name}" class="card-image" />
         <h3>${official.name}</h3>
         <p>${official.office}</p>
+        ${official.state ? `<p><strong>State:</strong> ${official.state}</p>` : ''}
+        ${official.district ? `<p><strong>District:</strong> ${official.district}</p>` : ''}
         <div class="rating-badge" style="color:${getRatingColor(r.averageRating)}">
           ${avg} ★
         </div>
@@ -2811,7 +2814,6 @@ function showRatings() {
     });
   });
 }
-
 // Open Ratings Modal
 function openRatingsModal(slug) {
   Promise.all([
@@ -2846,8 +2848,10 @@ function openRatingsModal(slug) {
     // Populate modal fields
     document.getElementById('ratings-modal-title').textContent = official.name;
     document.getElementById('ratings-modal-photo').src = official.photo;
-    document.getElementById('ratings-modal-position').textContent = official.office;
-
+    let positionText = official.office;
+    if (official.state) positionText += ` — ${official.state}`;
+    if (official.district) positionText += `, District ${official.district}`;
+    document.getElementById('ratings-modal-position').textContent = positionText;
     // Build category averages + vote counts
     let details = '';
     for (const category of ratingCategories) {
@@ -2951,7 +2955,6 @@ function openRatingsModal(slug) {
     };
   });
 }
-
 function initStarRatings() {
   const stars = document.querySelectorAll('#rate-modal .star-rating');
   stars.forEach(span => {
@@ -2966,10 +2969,13 @@ function initStarRatings() {
       star.style.cursor = 'pointer';
 
       star.addEventListener('click', function () {
+        // Clear previous selection
         span.querySelectorAll('span').forEach(s => {
           s.classList.remove('filled');
           s.style.color = '';
         });
+
+        // Fill stars up to the clicked one
         for (let j = 1; j <= i; j++) {
           const s = span.querySelector(`span[data-value="${j}"]`);
           if (s) {
@@ -2977,6 +2983,8 @@ function initStarRatings() {
             s.style.color = getRatingColor(j);
           }
         }
+
+        // Save selected value
         span.dataset.selected = String(i);
       });
 
@@ -2984,30 +2992,3 @@ function initStarRatings() {
     }
   });
 }
-
-function getRatingColor(avg) {
-  const rounded = Math.round(avg);
-  switch (rounded) {
-    case 5: return 'gold';
-    case 4: return 'green';
-    case 3: return 'yellow';
-    case 2: return 'orange';
-    case 1: return 'red';
-    default: return '#ccc';
-  }
-}
-
-function closeModal(id) {
-  const modal = document.getElementById(id);
-  if (modal) {
-    modal.style.display = 'none';
-  }
-}
-
-// Hook up the "Rate Me" button to open the rating modal
-document.getElementById('rate-me-btn').onclick = function() {
-  const title = document.getElementById('ratings-modal-title').textContent;
-  document.getElementById('rate-modal-title').textContent = `Rate ${title}`;
-  document.getElementById('rate-modal').style.display = 'block';
-  initStarRatings();
-};
