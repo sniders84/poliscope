@@ -5988,7 +5988,7 @@ section > h3 {
 
 /* Rating badge for cards */
 .rating-badge {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: bold;
   margin: 8px 0;
   display: inline-block;
@@ -6058,10 +6058,11 @@ section > h3 {
 /* Ratings card styling — horizontal layout */
 .info-card {
   display: flex;              /* horizontal split inside card */
+  flex-direction: row;        /* ✅ force horizontal */
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 360px;           /* compact width */
+  max-width: 420px;           /* compact width */
   border: 3px solid transparent;
   border-radius: 8px;
   padding: 12px;
@@ -6071,13 +6072,13 @@ section > h3 {
 }
 
 .card-left {
-  flex: 0 0 100px;            /* fixed width for left column */
+  flex: 0 0 120px;            /* fixed width for left column */
   text-align: center;
 }
 
 .card-left img {
-  width: 60px;                /* smaller photo */
-  height: 60px;
+  width: 70px;                /* compact photo */
+  height: 70px;
   border-radius: 6px;
   margin-bottom: 6px;
 }
