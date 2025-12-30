@@ -280,7 +280,7 @@ function showPodcastsShows() {
   container.appendChild(renderSection('Podcasts', podcastsData || [], 'podcasts'));
   container.appendChild(renderSection('Shows', showsData || [], 'shows'));
 
-  // Search filter
+    // Search filter
   const tabSearch = document.getElementById('podcasts-search-bar');
   if (tabSearch) {
     const handler = () => {
