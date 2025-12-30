@@ -3026,79 +3026,42 @@ document.getElementById('rate-me-btn').onclick = function() {
 };
 // ✅ Ratings/Rankings Filters Logic (demo dataset for testing)
 window.allOfficials = [
-  { slug: "john-doe", name: "John Doe", state: "CA", office: "senators", averageRating: 4.2, votesCount: 120 },
-  { slug: "jane-smith", name: "Jane Smith", state: "TX", office: "governors", averageRating: 3.8, votesCount: 85 },
-  { slug: "alex-jones", name: "Alex Jones", state: "NY", office: "housereps", averageRating: 4.7, votesCount: 200 }
+  { name: "John Doe", state: "CA", office: "senators", party: "Democrat" },
+  { name: "Jane Smith", state: "TX", office: "governors", party: "Republican" },
+  { name: "Alex Jones", state: "NY", office: "housereps", party: "Independent" }
 ];
 
-function filterOfficials(list) {
+function renderResults(list) {
+  const container = document.getElementById('ratings-cards');
+  container.innerHTML = list.map(o => `
+    <div class="official-card">
+      <strong>${o.name}</strong> (${o.state}, ${o.office}, ${o.party})
+    </div>
+  `).join('');
+}
+
+// Initial render
+renderResults(window.allOfficials);
+
+function applyFilters() {
   const q = document.getElementById('searchInput').value.trim().toLowerCase();
   const office = document.getElementById('officeFilter').value;
   const state = document.getElementById('stateFilter').value;
-  const sort = document.getElementById('sortFilter').value;
+  const party = document.getElementById('partyFilter') ? document.getElementById('partyFilter').value : "";
 
-  let out = list.filter(item => {
-    const matchesText = !q 
-      || (item.name && item.name.toLowerCase().includes(q)) 
-      || (item.slug && item.slug.includes(q));
-    const matchesOffice = !office || item.office === office;
-    const matchesState = !state || item.state === state;
-    return matchesText && matchesOffice && matchesState;
+  let out = window.allOfficials.filter(o => {
+    const matchesText = !q || o.name.toLowerCase().includes(q);
+    const matchesOffice = !office || o.office === office;
+    const matchesState = !state || o.state === state;
+    const matchesParty = !party || o.party === party;
+    return matchesText && matchesOffice && matchesState && matchesParty;
   });
 
-  if (sort === 'top') out.sort((a,b) => (b.averageRating - a.averageRating) || (b.votesCount - a.votesCount));
-  else if (sort === 'votes') out.sort((a,b) => (b.votesCount - a.votesCount));
-  else if (sort === 'alpha') out.sort((a,b) => a.name.localeCompare(b.name));
-
-  return out;
-}
-
-function renderResults(list) {
-  const container = document.getElementById('ratings-cards');
-  container.innerHTML = list.map(o => `
-    <div class="official-card">
-      <strong>${o.name}</strong> (${o.state}, ${o.office})
-      <div>⭐ ${o.averageRating.toFixed(1)} | ${o.votesCount} votes</div>
-    </div>
-  `).join('');
+  renderResults(out);
 }
 
 // Hook up events
-['searchInput','officeFilter','stateFilter','sortFilter'].forEach(id => {
+['searchInput','officeFilter','stateFilter','partyFilter'].forEach(id => {
   const el = document.getElementById(id);
-  if (el) {
-    el.addEventListener('input', () => {
-      const filtered = filterOfficials(window.allOfficials || []);
-      renderResults(filtered);
-    });
-  }
-});
-
-// Initial render
-renderResults(window.allOfficials);
-// Minimal Ratings/Rankings Filters Logic
-window.allOfficials = [
-  { name: "John Doe", state: "CA", office: "senators", averageRating: 4.2, votesCount: 120 },
-  { name: "Jane Smith", state: "TX", office: "governors", averageRating: 3.8, votesCount: 85 },
-  { name: "Alex Jones", state: "NY", office: "housereps", averageRating: 4.7, votesCount: 200 }
-];
-
-function renderResults(list) {
-  const container = document.getElementById('ratings-cards');
-  container.innerHTML = list.map(o => `
-    <div class="official-card">
-      <strong>${o.name}</strong> (${o.state}, ${o.office})
-      <div>⭐ ${o.averageRating.toFixed(1)} | ${o.votesCount} votes</div>
-    </div>
-  `).join('');
-}
-
-// Initial render
-renderResults(window.allOfficials);
-
-// Hook up search only (one step at a time)
-document.getElementById('searchInput').addEventListener('input', (e) => {
-  const q = e.target.value.trim().toLowerCase();
-  const filtered = window.allOfficials.filter(o => o.name.toLowerCase().includes(q));
-  renderResults(filtered);
+  if (el) el.addEventListener('input', applyFilters);
 });
