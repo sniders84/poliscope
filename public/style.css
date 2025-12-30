@@ -6241,3 +6241,40 @@ section > h3 {
 .info-card .btn-view:hover {
   background: #0056b3;
 }
+.info-card[data-party="republican"] {
+  border-top: 6px solid #C0392B; /* crimson red */
+}
+.info-card[data-party="democrat"] {
+  border-top: 6px solid #2980B9; /* deep blue */
+}
+.info-card[data-party="independent"] {
+  border-top: 6px solid #7F8C8D; /* neutral gray */
+}
+.info-card[data-party="libertarian"] {
+  border-top: 6px solid #F1C40F; /* gold */
+}
+.info-card[data-party="green"] {
+  border-top: 6px solid #27AE60; /* green */
+}
+#searchInput,
+#officeFilter,
+#stateFilter,
+#partyFilter {
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  margin: 6px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#searchInput:focus,
+#officeFilter:focus,
+#stateFilter:focus,
+#partyFilter:focus {
+  border-color: #2980B9; /* accent color */
+  box-shadow: 0 0 6px rgba(41,128,185,0.4);
+  outline: none;
+}
