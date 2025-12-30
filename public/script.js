@@ -3076,3 +3076,29 @@ function renderResults(list) {
 
 // Initial render
 renderResults(window.allOfficials);
+// Minimal Ratings/Rankings Filters Logic
+window.allOfficials = [
+  { name: "John Doe", state: "CA", office: "senators", averageRating: 4.2, votesCount: 120 },
+  { name: "Jane Smith", state: "TX", office: "governors", averageRating: 3.8, votesCount: 85 },
+  { name: "Alex Jones", state: "NY", office: "housereps", averageRating: 4.7, votesCount: 200 }
+];
+
+function renderResults(list) {
+  const container = document.getElementById('ratings-cards');
+  container.innerHTML = list.map(o => `
+    <div class="official-card">
+      <strong>${o.name}</strong> (${o.state}, ${o.office})
+      <div>⭐ ${o.averageRating.toFixed(1)} | ${o.votesCount} votes</div>
+    </div>
+  `).join('');
+}
+
+// Initial render
+renderResults(window.allOfficials);
+
+// Hook up search only (one step at a time)
+document.getElementById('searchInput').addEventListener('input', (e) => {
+  const q = e.target.value.trim().toLowerCase();
+  const filtered = window.allOfficials.filter(o => o.name.toLowerCase().includes(q));
+  renderResults(filtered);
+});
