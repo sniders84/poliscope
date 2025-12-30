@@ -2852,6 +2852,7 @@ function openRatingsModal(slug) {
     if (official.state) positionText += ` — ${official.state}`;
     if (official.district) positionText += `, District ${official.district}`;
     document.getElementById('ratings-modal-position').textContent = positionText;
+
     // Build category averages + vote counts
     let details = '';
     for (const category of ratingCategories) {
@@ -2955,6 +2956,8 @@ function openRatingsModal(slug) {
     };
   });
 }
+
+// Star rating initializer
 function initStarRatings() {
   const stars = document.querySelectorAll('#rate-modal .star-rating');
   stars.forEach(span => {
@@ -2992,3 +2995,32 @@ function initStarRatings() {
     }
   });
 }
+
+// Rating color helper
+function getRatingColor(avg) {
+  const rounded = Math.round(avg);
+  switch (rounded) {
+    case 5: return 'gold';
+    case 4: return 'green';
+    case 3: return 'yellow';
+    case 2: return 'orange';
+    case 1: return 'red';
+    default: return '#ccc';
+  }
+}
+
+// Modal closer
+function closeModal(id) {
+  const modal = document.getElementById(id);
+  if (modal) {
+    modal.style.display = 'none';
+  }
+}
+
+// Hook up the "Rate Me" button
+document.getElementById('rate-me-btn').onclick = function() {
+  const title = document.getElementById('ratings-modal-title').textContent;
+  document.getElementById('rate-modal-title').textContent = `Rate ${title}`;
+  document.getElementById('rate-modal').style.display = 'block';
+  initStarRatings();
+};
