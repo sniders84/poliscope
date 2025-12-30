@@ -6050,32 +6050,32 @@ section > h3 {
 #ratings-cards {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;                  /* spacing between cards */
+  gap: 20px;
   padding: 20px;
-  justify-content: flex-start; /* align cards left */
+  justify-content: flex-start;
 }
 
 /* Uniform horizontal card */
 .info-card {
   display: flex;
-  flex-direction: row;        /* force horizontal */
-  justify-content: space-between;
+  flex-direction: row;        /* horizontal split */
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
-  max-width: 600px;           /* ✅ stretch cards wider */
-  height: 140px;              /* fixed card height */
+  max-width: 600px;           /* stretch wider */
+  height: 160px;              /* fixed card height */
   border: 3px solid transparent;
   border-radius: 8px;
-  padding: 12px 20px;         /* extra horizontal padding */
+  padding: 12px 20px;
   background-color: #2c2c2c;  /* dark gray background */
   color: #fff;
   transition: box-shadow 0.2s;
   overflow: hidden;
 }
 
-/* Left column: photo + name + office */
+/* Left column: photo + name */
 .card-left {
-  flex: 0 0 100px;            /* fixed left column width */
+  flex: 0 0 120px;            /* fixed left column width */
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -6083,7 +6083,7 @@ section > h3 {
 }
 
 .card-left .card-image {
-  width: 60px;                /* ✅ smaller photo */
+  width: 60px;                /* smaller photo */
   height: 60px;
   border-radius: 6px;
   margin-bottom: 6px;
@@ -6098,11 +6098,11 @@ section > h3 {
 
 .name-block .first-name,
 .name-block .last-name {
-  display: block;             /* force each onto its own line */
+  display: block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 90px;            /* prevent spill */
+  max-width: 100px;
 }
 
 .name-block .first-name {
@@ -6113,32 +6113,29 @@ section > h3 {
   font-weight: 700;
 }
 
-.office {
-  margin: 2px 0;
-  font-size: 13px;
-  color: #ccc;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 90px;
-}
-
-/* Right column: state/district + rating + button */
+/* Right column: office + state/district + rating + button */
 .card-right {
   flex: 1;
-  text-align: center;
+  text-align: left;
   display: flex;
   flex-direction: column;
-  justify-content: center;    /* vertical alignment */
+  justify-content: center;
   padding: 0 12px;
 }
 
-.card-right .meta {
+.card-right .meta,
+.card-right .office {
   margin: 2px 0;
   line-height: 1.2;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.office {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
 }
 
 .rating-badge {
@@ -6156,7 +6153,7 @@ section > h3 {
   border: none;
   cursor: pointer;
   transition: background 0.3s ease;
-  align-self: center;
+  align-self: flex-start;     /* align button left */
 }
 
 .info-card .btn-view:hover {
