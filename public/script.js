@@ -47,14 +47,6 @@ function updateFavoriteButton(btn, isFavorited) {
   }
 }
 
-// === GLOBAL STATE ===
-let governors = [];
-let ltGovernors = [];
-let senators = [];
-let houseReps = [];
-let officialsContainer = null;
-let searchBar = null;
-
 // === DATA LOADING ===
 Promise.all([
   fetch('federalOfficials.json').then(res => res.json()),
