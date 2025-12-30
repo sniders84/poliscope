@@ -2761,61 +2761,82 @@ const ratingCategories = [
   "Toughness","Ability to Unify","Effectiveness","Health","Fashion Style","Electability"
 ];
 
-// Show Ratings tab
+// Show Ratings tab - IMPROVED VERSION (replace your old showRatings() with this)
 function showRatings() {
-  Promise.all([
-    fetch('president-ratings.json').then(res => res.json()),
-    fetch('vicepresident-ratings.json').then(res => res.json()),
-    fetch('governors-ratings.json').then(res => res.json()),
-    fetch('ltgovernors-ratings.json').then(res => res.json()),
-    fetch('senators-ratings.json').then(res => res.json()),
-    fetch('housereps-ratings.json').then(res => res.json())
-  ]).then(([presidents, vps, governors, ltgovs, senators, housereps]) => {
-    let ratings = [
-      ...presidents,
-      ...vps,
-      ...governors,
-      ...ltgovs,
-      ...senators,
-      ...housereps
-    ];
+  const container = document.getElementById('ratings-cards');
+  container.innerHTML = '<p>Loading ratings...</p>';
 
-    const saved = JSON.parse(localStorage.getItem('ratingsData')) || {};
-    ratings.forEach(r => {
+  const ratingFiles = [
+    'president-ratings.json',
+    'vicepresident-ratings.json',
+    'governors-ratings.json',
+    'ltgovernors-ratings.json',
+    'senators-ratings.json',
+    'housereps-ratings.json'
+  ];
+
+  const saved = JSON.parse(localStorage.getItem('ratingsData')) || {};
+  let allRatings = [];
+
+  // Load each file separately
+  Promise.allSettled(ratingFiles.map(file => 
+    fetch(file)
+      .then(res => {
+        if (!res.ok) throw new Error(`Failed to load ${file} (${res.status})`);
+        return res.json();
+      })
+      .then(data => {
+        if (Array.isArray(data)) {
+          allRatings = allRatings.concat(data);
+        } else if (data && data.slug) {
+          allRatings.push(data); // single object fallback
+        }
+      })
+  ))
+  .then(() => {
+    // Apply saved votes/averages
+    allRatings.forEach(r => {
       if (saved[r.slug]) {
-        r.votes = saved[r.slug].votes;
-        r.averageRating = saved[r.slug].averageRating;
+        r.votes = saved[r.slug].votes || {};
+        r.averageRating = saved[r.slug].averageRating || 0;
+      } else {
+        r.votes = r.votes || {};
+        r.averageRating = r.averageRating || 0;
       }
     });
 
-    const container = document.getElementById('ratings-cards');
     container.innerHTML = '';
 
-    ratings.forEach(r => {
-      // Use the global allOfficials to find matching official (instead of undefined federalOfficials)
+    if (allRatings.length === 0) {
+      container.innerHTML = '<p style="color:#aaa; text-align:center;">No ratings data available yet.</p>';
+      return;
+    }
+
+    allRatings.forEach(r => {
       const official = allOfficials.find(o => o.slug === r.slug);
       if (!official) {
-        console.warn(`No matching official found for slug: ${r.slug}`); // Debug log - remove if not needed
-        return; // Skip if no match (prevents blank cards)
+        console.warn(`No official found for slug: ${r.slug}`);
+        return;
       }
 
       const card = document.createElement('div');
       card.className = 'info-card';
       const avg = r.averageRating ? r.averageRating.toFixed(1) : '0.0';
       card.innerHTML = `
-        <img src="${official.photo}" alt="${official.name}" class="card-image" />
+        <img src="${official.photo || 'assets/default-photo.png'}" alt="${official.name}" class="card-image" onerror="this.src='assets/default-photo.png'">
         <h3>${official.name}</h3>
-        <p>${official.office}</p>
-        <div class="rating-badge" style="color:${getRatingColor(r.averageRating)}">
+        <p>${official.office} • ${official.state || 'Federal'}</p>
+        <div class="rating-badge" style="color:${getRatingColor(r.averageRating || 0)}">
           ${avg} ★
         </div>
-        <button class="btn-view" onclick="openRatingsModal('${r.slug}')">View Ratings</button>
+        <button class="btn-view" onclick="openRatingsModal('${r.slug}')">View / Rate</button>
       `;
       container.appendChild(card);
     });
-  }).catch(err => {
-    console.error('Error loading ratings data:', err);
-    document.getElementById('ratings-cards').innerHTML = '<p style="color:red; text-align:center;">Error loading ratings. Please try again.</p>';
+  })
+  .catch(err => {
+    console.error('Unexpected error in ratings:', err);
+    container.innerHTML = '<p style="color:red; text-align:center;">Unexpected error loading ratings.</p>';
   });
 }
 
