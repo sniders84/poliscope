@@ -3033,6 +3033,7 @@ window.allOfficials = [
 
 function renderResults(list) {
   const container = document.getElementById('ratings-cards');
+  if (!container) return; // safeguard if container not found
   container.innerHTML = list.map(o => `
     <div class="official-card">
       <strong>${o.name}</strong> (${o.state}, ${o.office}, ${o.party})
@@ -3044,13 +3045,13 @@ function renderResults(list) {
 renderResults(window.allOfficials);
 
 function applyFilters() {
-  const q = document.getElementById('searchInput').value.trim().toLowerCase();
-  const office = document.getElementById('officeFilter').value;
-  const state = document.getElementById('stateFilter').value;
-  const party = document.getElementById('partyFilter') ? document.getElementById('partyFilter').value : "";
+  const q = document.getElementById('searchInput')?.value.trim().toLowerCase() || "";
+  const office = document.getElementById('officeFilter')?.value || "";
+  const state = document.getElementById('stateFilter')?.value || "";
+  const party = document.getElementById('partyFilter')?.value || "";
 
   let out = window.allOfficials.filter(o => {
-    const matchesText = !q || o.name.toLowerCase().includes(q);
+    const matchesText = !q || (o.name && o.name.toLowerCase().includes(q));
     const matchesOffice = !office || o.office === office;
     const matchesState = !state || o.state === state;
     const matchesParty = !party || o.party === party;
@@ -3063,5 +3064,8 @@ function applyFilters() {
 // Hook up events
 ['searchInput','officeFilter','stateFilter','partyFilter'].forEach(id => {
   const el = document.getElementById(id);
-  if (el) el.addEventListener('input', applyFilters);
+  if (el) {
+    el.addEventListener('input', applyFilters);
+    el.addEventListener('change', applyFilters); // dropdowns fire on change
+  }
 });
