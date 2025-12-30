@@ -2949,7 +2949,6 @@ function openRatingsModal(slug) {
       // Close rate modal
       closeModal('rate-modal');
     };
-  });
 }
 
 function initStarRatings() {
