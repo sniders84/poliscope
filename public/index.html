@@ -1324,42 +1324,7 @@
   });
 }
 
-  <!-- Load external script ONCE -->
-  <script src="script.js?v=2025-12-17-0715">
-
-  <!-- Unified inline script -->
- <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    // Hamburger toggle + active tab styling
-    const hamburger = document.getElementById('hamburger');
-    const menu = document.getElementById('hamburger-menu');
-
-    if (hamburger && menu) {
-      hamburger.addEventListener('click', () => {
-        menu.classList.toggle('open');
-      });
-
-      // Close menu when clicking a link
-      document.querySelectorAll('#hamburger-menu ul li a').forEach(link => {
-        link.addEventListener('click', () => {
-          document.querySelectorAll('#hamburger-menu ul li a')
-            .forEach(l => l.classList.remove('active'));
-          link.classList.add('active');
-          menu.classList.remove('open');
-        });
-      });
-
-      // NEW: Close menu when clicking anywhere outside of it
-      document.addEventListener('click', (event) => {
-        if (menu.classList.contains('open') && 
-            !menu.contains(event.target) && 
-            !hamburger.contains(event.target)) {
-          menu.classList.remove('open');
-        }
-      });
-    }
-
-  <!-- Load external script -->
+ <!-- Load external script -->
 <script src="script.js?v=2025-12-17-0715"></script>
 
 <!-- Unified inline script -->
@@ -1391,6 +1356,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+});
+</script>
 
   // State dropdown wiring
   const stateSelect = document.getElementById('state-dropdown');
