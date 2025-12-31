@@ -6512,7 +6512,7 @@ section > h3 {
   transform: translateY(-2px);
 }
 /* ============================================================
-   Learning Resources Cards (Games + Videos)
+   Learning Resources Cards (Games + Videos only)
    ============================================================ */
 
 /* Grid container */
@@ -6534,7 +6534,7 @@ section > h3 {
   padding: 16px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;   /* let content stack naturally */
+  justify-content: flex-start;   /* stack naturally */
   align-items: flex-start;
   box-sizing: border-box;
   min-width: 0;
