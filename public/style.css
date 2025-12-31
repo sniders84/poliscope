@@ -6015,7 +6015,6 @@ section > h3 {
   border: 2px solid transparent;
   transition: border-color 0.2s ease, background 0.2s ease;
 }
-
 .rating-cell:hover,
 .rating-row:hover {
   border-color: #1e90ff;      /* blue outline on hover */
@@ -6029,18 +6028,15 @@ section > h3 {
   display: block;
   margin-bottom: 6px;
 }
-
 .avg-rating {
   font-size: 18px;
   font-weight: bold;
   display: block;
 }
-
 .vote-count {
   font-size: 13px;
   color: #aaa;
 }
-
 .rating-row .star-rating span,
 .star-rating span {
   font-size: 22px;
@@ -6082,7 +6078,19 @@ section > h3 {
   font-weight: 700;
 }
 
-/* Office/state/district moved higher */
+/* Photo thumbnail (if used) */
+.card-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;       /* crop instead of stretch */
+  object-position: center;
+  border-radius: 4px;
+  border: 1px solid #333;
+  display: block;
+  margin: 0 auto 6px auto; /* center with spacing */
+}
+
+/* Info text moved higher */
 .card-info {
   font-size: 12px;
   margin-bottom: auto; /* pushes rating block down */
@@ -6092,7 +6100,7 @@ section > h3 {
   color: #ccc;
 }
 
-/* Rating + button anchored bottom */
+/* Rating + button stacked at bottom */
 .rating-block {
   margin-top: auto;
   text-align: center;
@@ -6156,25 +6164,19 @@ section > h3 {
   position: relative;
   overflow: hidden;
 }
-
-/* Logo at top */
 .resource-card .logo {
   width: 80px;
   height: 80px;
   object-fit: contain;
   margin-bottom: 12px;
 }
-
-/* Text descriptors */
 .resource-card .description {
-  flex: 1;                  /* take available vertical space */
+  flex: 1;
   font-size: 14px;
   text-align: center;
   margin: 8px 0;
   color: #d3d3d3;
 }
-
-/* Play Now button anchored bottom */
 .resource-card .btn-play {
   font-size: 13px;
   padding: 8px 14px;
@@ -6188,95 +6190,4 @@ section > h3 {
 }
 .resource-card .btn-play:hover {
   background: #0d6efd;
-}
-/* Ratings cards grid */
-#ratings-cards {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 16px;
-  padding: 16px;
-  justify-items: center;
-}
-
-/* Base card */
-.info-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 240px;
-  min-height: 280px;
-  background: #2b2b2b;
-  color: #fff;
-  border-radius: 8px;
-  position: relative;
-  padding: 12px;
-  box-sizing: border-box;
-}
-
-/* Name block */
-.card-left {
-  text-align: center;
-  margin-bottom: 8px;
-}
-.name-block {
-  font-size: 14px;
-  font-weight: 700;
-}
-
-/* Info text moved higher */
-.card-info {
-  font-size: 12px;
-  margin-bottom: auto; /* pushes rating block down */
-}
-.office, .meta {
-  margin: 2px 0;
-  color: #ccc;
-}
-
-/* Rating + button stacked at bottom */
-.rating-block {
-  margin-top: auto;
-  text-align: center;
-}
-.rating-badge {
-  font-size: 16px;
-  font-weight: 800;
-  color: #ffd700;
-  margin-bottom: 6px;
-}
-.btn-view {
-  font-size: 12px;
-  padding: 6px 10px;
-  border-radius: 4px;
-  background: #1e90ff;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-.btn-view:hover {
-  background: #0d6efd;
-}
-
-/* Modern search bar + filters */
-#ratings-filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding: 12px 16px;
-}
-#ratings-filters input,
-#ratings-filters select {
-  background: #2b2b2b;
-  color: #d3d3d3;
-  border: 1px solid #444;
-  border-radius: 6px;
-  padding: 8px 12px;
-  font-size: 14px;
-}
-#ratings-filters input::placeholder { color: #9a9a9a; }
-#ratings-filters input:focus,
-#ratings-filters select:hover {
-  border-color: #1e90ff;
-  outline: none;
 }
