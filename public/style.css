@@ -6429,104 +6429,6 @@ section > h3 {
 .info-card[data-party="nonpartisan"] {
   border-color: #444; /* Dark neutral */
 }
-/* Base card style */
-.resource-card {
-  background-color: #2b2b2b;       /* dark gray background */
-  color: #fff;                     /* white text for contrast */
-  border-radius: 8px;
-  padding: 16px;
-  margin: 12px;
-  width: 300px;                    /* fixed width for uniformity */
-  height: 200px;                   /* fixed height so descriptors fit */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;  /* space out title/descriptor/button */
-  overflow: hidden;                /* prevent text bleed */
-  text-overflow: ellipsis;
-}
-
-/* Hover effect */
-.resource-card:hover {
-  background-color: #1e3a8a;       /* blue hover effect */
-  transition: background-color 0.3s ease;
-}
-
-/* Title styling */
-.resource-card h3 {
-  font-size: 1.2rem;
-  margin-bottom: 8px;
-}
-
-/* Descriptor styling */
-.resource-card p {
-  flex-grow: 1;
-  font-size: 0.95rem;
-  line-height: 1.4;
-  margin-bottom: 12px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Button styling */
-.resource-card .btn-view {
-  align-self: flex-start;
-  background-color: #2563eb;       /* blue button */
-  color: #fff;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.resource-card .btn-view:hover {
-  background-color: #1e40af;       /* darker blue on hover */
-}
-.resource-card {
-  background-color: #2b2b2b;       /* dark gray background */
-  color: #fff;
-  border-radius: 8px;
-  padding: 16px;
-  margin: 12px;
-  width: 320px;                    /* fixed width */
-  height: 220px;                   /* fixed height */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;  /* space out content */
-  overflow: hidden;
-}
-
-.resource-card:hover {
-  background-color: #1e3a8a;       /* blue hover effect */
-  transition: background-color 0.3s ease;
-}
-
-.resource-card h3 {
-  font-size: 1.2rem;
-  margin-bottom: 8px;
-}
-
-.resource-card p {
-  flex-grow: 1;
-  font-size: 0.95rem;
-  line-height: 1.4;
-  margin-bottom: 12px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.resource-card .btn-play {
-  align-self: flex-start;
-  background-color: #2563eb;
-  color: #fff;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.resource-card .btn-play:hover {
-  background-color: #1e40af;
-}
 /* Learning Resources card container */
 #learning-resources-cards {
   display: grid;
@@ -6536,37 +6438,58 @@ section > h3 {
   box-sizing: border-box;
 }
 
-/* Each card */
+/* Base card style */
 #learning-resources-cards .resource-card {
-  background-color: #2b2b2b;
-  color: #fff;
+  background-color: #2b2b2b;       /* dark gray background */
+  color: #fff;                     /* white text for contrast */
   border-radius: 8px;
   padding: 16px;
-  box-sizing: border-box;
-
+  margin: 12px;
+  width: 320px;                    /* fixed width for uniformity */
+  height: 220px;                   /* fixed height so descriptors fit */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-between;  /* space out title/descriptor/button */
+  box-sizing: border-box;
 
   /* Critical: allow text to wrap and prevent bleed */
   min-width: 0;
   max-width: 100%;
+  overflow: hidden;
   overflow-wrap: break-word;
   word-wrap: break-word;
   hyphens: auto;
+  text-overflow: ellipsis;
 }
 
-/* Card content */
-#learning-resources-cards .resource-card h3,
-#learning-resources-cards .resource-card p {
+/* Hover effect */
+#learning-resources-cards .resource-card:hover {
+  background-color: #1e3a8a;       /* blue hover effect */
+  transition: background-color 0.3s ease;
+}
+
+/* Title styling */
+#learning-resources-cards .resource-card h3 {
+  font-size: 1.2rem;
   margin: 8px 0;
+}
+
+/* Descriptor styling */
+#learning-resources-cards .resource-card p {
+  flex-grow: 1;
+  font-size: 0.95rem;
   line-height: 1.4;
+  margin: 8px 0 12px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
   overflow-wrap: break-word;
 }
 
 /* Buttons stay inside card */
-#learning-resources-cards .resource-card .btn {
-  margin-top: auto; /* pushes button to bottom */
+#learning-resources-cards .resource-card .btn,
+#learning-resources-cards .resource-card .btn-view,
+#learning-resources-cards .resource-card .btn-play {
+  margin-top: auto;                /* pushes button to bottom */
   align-self: flex-start;
   padding: 10px 16px;
   font-size: 0.95rem;
@@ -6577,11 +6500,14 @@ section > h3 {
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s ease;
-  max-width: 100%; /* prevents overflow */
-  white-space: normal; /* allow wrapping */
+  max-width: 100%;                 /* prevents overflow */
+  white-space: normal;             /* allow wrapping */
 }
 
-#learning-resources-cards .resource-card .btn:hover {
+/* Button hover effect */
+#learning-resources-cards .resource-card .btn:hover,
+#learning-resources-cards .resource-card .btn-view:hover,
+#learning-resources-cards .resource-card .btn-play:hover {
   background: linear-gradient(135deg, #1e40af, #0f172a);
   transform: translateY(-2px);
 }
