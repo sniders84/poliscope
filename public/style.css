@@ -6572,3 +6572,37 @@ section > h3 {
 #ratings-rankings .rating-card:hover .content {
   background-color: #2b2b2b !important;
 }
+/* ============================================================
+   Ratings/Rankings — force hover to outline only
+   ============================================================ */
+
+/* Base card (adjust selector to your exact class: .rating-card, .candidate-card, etc.) */
+#ratings-rankings .rating-card {
+  background-color: #2b2b2b;
+  color: #fff;
+  border: 3px solid transparent;
+  border-radius: 8px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover: outline only, keep background the same */
+#ratings-rankings .rating-card:hover {
+  border-color: #1e3a8a !important;         /* blue outline */
+  background-color: #2b2b2b !important;     /* preserve dark background */
+  box-shadow: 0 0 0 2px rgba(30,58,138,0.5);/* subtle glow outside border */
+}
+
+/* Neutralize any nested hover backgrounds that might be set elsewhere */
+#ratings-rankings .rating-card:hover *,
+#ratings-rankings .rating-card:hover .card-body,
+#ratings-rankings .rating-card:hover .content,
+#ratings-rankings .rating-card:hover .inner {
+  background-color: transparent !important; /* prevent inner blocks from turning blue */
+}
+
+/* If your previous CSS targets anchors or the whole card on hover */
+#ratings-rankings .rating-card:hover a,
+#ratings-rankings .rating-card:hover .btn,
+#ratings-rankings .rating-card:hover .meta {
+  background-color: transparent !important;
+}
