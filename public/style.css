@@ -6050,7 +6050,7 @@ section > h3 {
 #ratings-cards {
   display: grid;
   grid-template-columns: repeat(5, 1fr); /* ✅ exactly 5 per row */
-  gap: 16px;                  /* tight spacing */
+  gap: 20px;                  /* spacing between cards */
   padding: 20px;
   justify-items: center;
 }
@@ -6061,8 +6061,8 @@ section > h3 {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  width: 220px;               /* ✅ fixed width */
-  height: 280px;              /* ✅ fixed height for longest names */
+  width: 240px;               /* ✅ wider card */
+  height: 300px;              /* ✅ taller card for all info */
   border: 2px solid transparent;
   border-radius: 8px;
   padding: 12px;
@@ -6072,11 +6072,11 @@ section > h3 {
   overflow: hidden;
 }
 
-/* ✅ Force ALL photos to same size */
+/* ✅ Force ALL photos to small uniform size */
 .card-image {
-  width: 70px;
-  height: 70px;
-  border-radius: 6px;
+  width: 40px;                /* ✅ 1/4 size photo */
+  height: 40px;
+  border-radius: 4px;
   object-fit: cover;
   object-position: center;
   display: block;
@@ -6096,7 +6096,7 @@ section > h3 {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 200px;           /* ✅ accommodates long names */
+  max-width: 220px;           /* ✅ accommodates long names */
 }
 
 .name-block .first-name { font-weight: 600; font-size: 14px; }
@@ -6150,7 +6150,7 @@ section > h3 {
   box-shadow: 0 2px 6px rgba(0,0,0,0.4);
 }
 
-/* ✅ Modernized search bar & filters — always preserved */
+/* ✅ Modernized search bar & filters — preserved */
 #searchInput,
 select#officeFilter,
 select#stateFilter,
