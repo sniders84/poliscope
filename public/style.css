@@ -6062,33 +6062,35 @@ section > h3 {
 .info-card {
   display: flex;
   flex-direction: row;        /* photo left, info right */
-  width: 380px;               /* fixed width */
-  height: 240px;              /* fixed height */
+  width: 400px;               /* fixed width */
+  height: 260px;              /* fixed height */
   border: 3px solid #444;
   border-radius: 10px;
-  background: #2c2c2c;
-  color: #fff;
+  background: #fdfdfd;        /* light card background like trading cards */
+  color: #000;
   overflow: hidden;
   position: relative;
   padding: 12px;
+  font-family: 'Arial', sans-serif;
 }
 
 /* Left side photo */
 .card-left {
-  flex: 0 0 100px;
+  flex: 0 0 120px;
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  background: #111;
+  background: #eee;
   padding-top: 12px;
 }
 
 .card-image {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   border-radius: 6px;
   object-fit: cover;
   object-position: center;
+  border: 2px solid #333;
 }
 
 /* Right side info */
@@ -6105,8 +6107,8 @@ section > h3 {
   position: absolute;
   top: 8px;
   right: 8px;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
 }
 .party-icon img {
   width: 100%;
@@ -6127,9 +6129,9 @@ section > h3 {
   border: 1px solid #333;
 }
 
-/* Name + office info */
+/* Name + office info styled like card header */
 .name-block {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: bold;
   margin-bottom: 4px;
 }
@@ -6138,24 +6140,36 @@ section > h3 {
 
 .office, .meta {
   font-size: 13px;
-  color: #ccc;
+  color: #333;
   margin: 2px 0;
 }
 
-/* Ratings breakdown (stat lines) */
+/* Ratings breakdown (stat lines like batting stats) */
 .ratings-breakdown {
   margin-top: 8px;
   flex: 1;
+  border-top: 1px solid #ccc;
+  padding-top: 6px;
 }
 .rating-row {
   font-size: 12px;
-  color: #aaa;
+  color: #000;
   display: flex;
   justify-content: space-between;
   margin: 2px 0;
 }
-.rating-row .label { font-weight: 600; color: #fff; }
-.rating-row .value { color: #ffd700; }
+.rating-row .label { font-weight: 600; }
+.rating-row .value { color: #1e90ff; }
+
+/* Overall rating badge */
+.rating-badge {
+  font-size: 16px;
+  font-weight: bold;
+  color: #d4af37; /* gold */
+  position: absolute;
+  bottom: 8px;
+  right: 60px; /* sits above state flag */
+}
 
 /* Rate Me button */
 .btn-view {
