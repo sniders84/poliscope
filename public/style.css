@@ -6163,3 +6163,96 @@ section > h3 {
 .info-card:hover {
   box-shadow: 0 2px 6px rgba(0,0,0,0.4);
 }
+/* Card container */
+.info-card {
+  display: flex;
+  flex-direction: row;        /* photo left, info right */
+  width: 360px;               /* fixed width */
+  height: 200px;              /* fixed height */
+  border: 3px solid #444;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #2c2c2c 70%, #1e1e1e);
+  color: #fff;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Left side photo */
+.card-left {
+  flex: 0 0 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #111;
+}
+
+.card-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+/* Right side info */
+.card-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 12px;
+}
+
+/* State silhouette logo */
+.state-logo img {
+  width: 40px;
+  height: auto;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  opacity: 0.6;
+}
+
+/* Name + office */
+.name-block {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+.office, .meta {
+  font-size: 12px;
+  color: #ccc;
+}
+
+/* Ratings breakdown */
+.ratings-breakdown {
+  flex: 1;
+  margin-top: 6px;
+}
+.rating-row {
+  font-size: 12px;
+  color: #aaa;
+  margin: 2px 0;
+}
+
+/* Overall rating badge */
+.rating-badge {
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffd700;
+  text-align: right;
+  margin-top: auto;
+}
+
+/* Rate Me button */
+.btn-view {
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: #1e90ff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-top: 6px;
+}
+.btn-view:hover {
+  background: #0d6efd;
+}
