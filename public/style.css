@@ -6421,3 +6421,120 @@ section > h3 {
   border-color: #1e90ff;
   outline: none;
 }
+/* Ratings cards grid */
+#ratings-cards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  padding: 16px;
+  justify-items: center;
+}
+
+/* Base card: horizontal layout */
+.info-card {
+  display: flex;
+  flex-direction: row;       /* horizontal */
+  align-items: flex-start;
+  width: 280px;
+  height: 200px;
+  background: #2b2b2b;
+  color: #fff;
+  border-radius: 8px;
+  position: relative;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Left side: photo + name */
+.card-left {
+  flex: 0 0 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 12px;
+}
+.card-image {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 4px;
+  border: 1px solid #333;
+}
+.name-block {
+  margin-top: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Right side: info at top, rating at bottom */
+.card-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* info top, rating bottom */
+  height: 100%;
+}
+
+/* Info text pinned at top */
+.card-info {
+  font-size: 12px;
+  line-height: 1.2;
+  color: #ccc;
+}
+.office {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.meta {
+  margin: 2px 0;
+}
+
+/* Rating + button pinned bottom-right */
+.rating-block {
+  text-align: right;
+}
+.rating-badge {
+  font-size: 48px;   /* 3× larger */
+  font-weight: 900;
+  color: #ffd700;
+  margin-bottom: 6px;
+}
+.btn-view {
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: #1e90ff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.btn-view:hover {
+  background: #0d6efd;
+}
+
+/* Filters unchanged */
+#ratings-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px 16px;
+}
+#ratings-filters input,
+#ratings-filters select {
+  background: #2b2b2b;
+  color: #d3d3d3;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 14px;
+}
+#ratings-filters input::placeholder { color: #9a9a9a; }
+#ratings-filters input:focus,
+#ratings-filters select:hover {
+  border-color: #1e90ff;
+  outline: none;
+}
