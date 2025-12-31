@@ -347,7 +347,7 @@
       </div>
       <div id="officials-container" class="grid"></div>
     
-  </section>
+   </section>
 <section id="ratings" class="tab-content" style="display: none;">
   <h2>Ratings & Rankings</h2>
 
@@ -439,52 +439,47 @@
     </select>
   </div>
 
-  <!-- Cards container (5 per row via CSS grid) -->
+  <!-- Cards container -->
   <div id="ratings-cards" class="card-section">
-
-    <!-- Baseball-card style example -->
-    <div class="info-card" data-party="republican" data-state="florida">
-      <!-- Photo left -->
+    <!-- Example card -->
+    <div class="info-card" data-party="republican">
+      <!-- Left side: photo -->
       <div class="card-left">
         <img src="PHOTO_URL" alt="Official Name" class="card-image" />
       </div>
 
       <!-- Right side: info + ratings -->
       <div class="card-right">
-
-        <!-- Party icon (top-right corner) -->
-        <div class="party-icon">
-          <img src="PARTY_ICON_URL" alt="Party Icon" />
+        <!-- State flag top corner -->
+        <div class="state-flag">
+          <img src="STATE_FLAG_URL" alt="State Flag" />
         </div>
 
-        <!-- Name + office + state (stacked like card header) -->
-        <div class="card-header">
-          <div class="name-block">
-            <span class="first-name">Donald</span>
-            <span class="last-name">Trump</span>
-          </div>
-          <div class="office">President</div>
-          <div class="meta state">United States</div>
-          <div class="meta district">District: N/A</div>
+        <!-- Name + office info -->
+        <div class="name-block">
+          <span class="first-name">Donald</span>
+          <span class="last-name">Trump</span>
         </div>
+        <div class="office">President</div>
+        <div class="meta state">United States</div>
+        <div class="meta district">District: N/A</div>
 
-        <!-- Ratings breakdown (stat lines) -->
+        <!-- Ratings breakdown -->
         <div class="ratings-breakdown">
-          <div class="rating-row"><span class="label">Integrity</span><span class="value">0.0 ★</span></div>
-          <div class="rating-row"><span class="label">Leadership</span><span class="value">0.0 ★</span></div>
-          <div class="rating-row"><span class="label">Transparency</span><span class="value">0.0 ★</span></div>
-          <div class="rating-row"><span class="label">Responsiveness</span><span class="value">0.0 ★</span></div>
+          <div class="rating-row">Integrity: 0.0 ★</div>
+          <div class="rating-row">Leadership: 0.0 ★</div>
+          <div class="rating-row">Transparency: 0.0 ★</div>
         </div>
 
-        <!-- Overall rating badge (lower-right) -->
+        <!-- Overall rating badge -->
         <div class="rating-badge">Overall: 0.0 ★</div>
 
         <!-- Rate Me button -->
         <button class="btn-view">Rate Me</button>
 
-        <!-- State flag (lower-right corner) -->
-        <div class="state-flag">
-          <img src="STATE_FLAG_URL" alt="State Flag" />
+        <!-- Party icon bottom corner -->
+        <div class="party-icon">
+          <img src="PARTY_ICON_URL" alt="Party Icon" />
         </div>
       </div>
     </div>
@@ -1370,45 +1365,49 @@
   });
 }
 
- <!-- Load external script ONCE -->
+  <!-- Load external script ONCE -->
+  <script src="script.js?v=2025-12-17-0715">
+
+  <!-- Unified inline script -->
+ <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Hamburger toggle + active tab styling
+    const hamburger = document.getElementById('hamburger');
+    const menu = document.getElementById('hamburger-menu');
+
+    if (hamburger && menu) {
+      hamburger.addEventListener('click', () => {
+        menu.classList.toggle('open');
+      });
+
+      // Close menu when clicking a link
+      document.querySelectorAll('#hamburger-menu ul li a').forEach(link => {
+        link.addEventListener('click', () => {
+          document.querySelectorAll('#hamburger-menu ul li a')
+            .forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+          menu.classList.remove('open');
+        });
+      });
+
+      // NEW: Close menu when clicking anywhere outside of it
+      document.addEventListener('click', (event) => {
+        if (menu.classList.contains('open') && 
+            !menu.contains(event.target) && 
+            !hamburger.contains(event.target)) {
+          menu.classList.remove('open');
+        }
+      });
+    }
+
+  <!-- Load external script -->
 <script src="script.js?v=2025-12-17-0715"></script>
 
 <!-- Unified inline script -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  // Hamburger toggle + active tab styling
-  const hamburger = document.getElementById('hamburger');
-  const menu = document.getElementById('hamburger-menu');
-
-  if (hamburger && menu) {
-    hamburger.addEventListener('click', () => {
-      menu.classList.toggle('open');
-    });
-
-    // Close menu when clicking a link
-    document.querySelectorAll('#hamburger-menu ul li a').forEach(link => {
-      link.addEventListener('click', () => {
-        document.querySelectorAll('#hamburger-menu ul li a')
-          .forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-        menu.classList.remove('open');
-      });
-    });
-
-    // NEW: Close menu when clicking anywhere outside of it
-    document.addEventListener('click', (event) => {
-      if (menu.classList.contains('open') && 
-          !menu.contains(event.target) && 
-          !hamburger.contains(event.target)) {
-        menu.classList.remove('open');
-      }
-    });
-  }
-
   // Default tab
   showStartupHub();
-});
-</script>
 
   // Hamburger toggle + active tab + click-outside close
   const hamburger = document.getElementById('hamburger');
