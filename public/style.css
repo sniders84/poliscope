@@ -6481,3 +6481,49 @@ section > h3 {
 .resource-card .btn-view:hover {
   background-color: #1e40af;       /* darker blue on hover */
 }
+.resource-card {
+  background-color: #2b2b2b;       /* dark gray background */
+  color: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 12px;
+  width: 320px;                    /* fixed width */
+  height: 220px;                   /* fixed height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;  /* space out content */
+  overflow: hidden;
+}
+
+.resource-card:hover {
+  background-color: #1e3a8a;       /* blue hover effect */
+  transition: background-color 0.3s ease;
+}
+
+.resource-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.resource-card p {
+  flex-grow: 1;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin-bottom: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.resource-card .btn-play {
+  align-self: flex-start;
+  background-color: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.resource-card .btn-play:hover {
+  background-color: #1e40af;
+}
