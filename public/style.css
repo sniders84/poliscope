@@ -5939,7 +5939,6 @@ section > h3 {
   font-size: 1.4rem;
   color: #fff;
 }
-
 /* Primary Rate Me button styles */
 #rate-me-btn,
 .btn-modern,
@@ -5989,12 +5988,11 @@ section > h3 {
 
 /* Rating badge for cards */
 .rating-badge {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: bold;
+  margin: 8px 0;
+  display: inline-block;
   color: #ffd700; /* gold highlight */
-  position: absolute;
-  bottom: 8px;
-  right: 60px; /* sits above state flag */
 }
 
 /* Ratings details grid */
@@ -6049,7 +6047,7 @@ section > h3 {
   margin: 0 2px;
 }
 
-/* Ratings & Rankings container — 5-per-row vertical baseball card grid */
+/* Ratings & Rankings container — 5-per-row horizontal sports card grid */
 #ratings-cards {
   display: grid;
   grid-template-columns: repeat(5, 1fr); /* exactly 5 per row */
@@ -6058,101 +6056,84 @@ section > h3 {
   justify-items: center;
 }
 
-/* Baseball card style */
+/* Horizontal sports card */
 .info-card {
   display: flex;
-  flex-direction: column;     /* vertical stack */
-  width: 260px;               /* fixed width */
-  height: 380px;              /* fixed height */
-  border: 3px solid #444;
-  border-radius: 10px;
-  background: #fdfdfd;        /* light card background like trading cards */
-  color: #000;
-  overflow: hidden;
-  position: relative;
+  flex-direction: row;        /* ✅ horizontal layout */
+  align-items: center;
+  justify-content: flex-start;
+  width: 300px;               /* fixed width for uniformity */
+  height: 140px;              /* fixed height for consistency */
+  border: 2px solid transparent;
+  border-radius: 8px;
   padding: 12px;
-  font-family: 'Arial', sans-serif;
+  background-color: #2c2c2c;
+  color: #fff;
+  transition: box-shadow 0.2s;
+  overflow: hidden;
 }
 
-/* Photo at top */
+/* Uniform photo block */
+.card-left {
+  flex: 0 0 60px;             /* fixed footprint for photo */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 12px;
+}
+
 .card-image {
-  width: 120px;
-  height: 120px;
+  width: 60px;                /* ✅ consistent photo size */
+  height: 60px;
   border-radius: 6px;
   object-fit: cover;
   object-position: center;
-  border: 2px solid #333;
-  margin: 0 auto 8px auto;    /* centered at top */
-}
-
-/* Party icon top-right */
-.party-icon {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  width: 36px;
-  height: 36px;
-}
-.party-icon img {
-  width: 100%;
-  height: auto;
-}
-
-/* State flag bottom-right */
-.state-flag {
-  position: absolute;
-  bottom: 8px;
-  right: 8px;
-  width: 48px;
-  height: 32px;
-}
-.state-flag img {
-  width: 100%;
-  height: auto;
-  border: 1px solid #333;
-}
-
-/* Name + office info under photo */
-.name-block {
-  font-size: 16px;
-  font-weight: bold;
-  text-align: center;
+  display: block;
   margin-bottom: 4px;
 }
-.name-block .first-name { display: block; font-weight: 600; }
-.name-block .last-name { display: block; font-weight: 700; }
 
-.office, .meta {
-  font-size: 13px;
-  color: #333;
+/* Name block */
+.name-block {
   text-align: center;
-  margin: 2px 0;
+  line-height: 1.2;
 }
 
-/* Ratings breakdown (stat lines like batting stats) */
-.ratings-breakdown {
-  margin-top: 8px;
+.name-block .first-name {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.name-block .last-name {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* Right column: stats/info */
+.card-right {
   flex: 1;
-  border-top: 1px solid #ccc;
-  padding-top: 6px;
-}
-.rating-row {
-  font-size: 12px;
-  color: #000;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  margin: 2px 0;
+  height: 100%;
 }
-.rating-row .label { font-weight: 600; }
-.rating-row .value { color: #1e90ff; }
 
-/* Overall rating badge */
+/* Office, state, district */
+.office,
+.meta {
+  font-size: 12px;
+  margin: 2px 0;
+  color: #ccc;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Rating badge */
 .rating-badge {
   font-size: 16px;
   font-weight: bold;
-  color: #d4af37; /* gold */
-  text-align: center;
-  margin-top: 8px;
+  color: #ffd700;
+  margin: 4px 0;
 }
 
 /* Rate Me button */
@@ -6165,268 +6146,104 @@ section > h3 {
   border: none;
   cursor: pointer;
   transition: background 0.3s ease;
-  margin-top: 10px;
-  align-self: center;
+  align-self: flex-start;
 }
+
 .btn-view:hover {
   background: #0d6efd;
 }
-/* Primary Rate Me button styles */
-#rate-me-btn,
-.btn-modern,
-.btn-rate-me {
-  background: #1e90ff;   /* app blue */
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
-}
 
-#rate-me-btn {
-  padding: 10px 18px;
-  font-size: 16px;
-}
+/* Party outline colors */
+.info-card[data-party="republican"] { border-color: #C0392B; }
+.info-card[data-party="democrat"]   { border-color: #2980B9; }
+.info-card[data-party="independent"]{ border-color: #7F8C8D; }
+.info-card[data-party="libertarian"]{ border-color: #F1C40F; }
+.info-card[data-party="green"]      { border-color: #27AE60; }
 
-.btn-modern {
-  padding: 10px 18px;
-  font-size: 16px;
-  font-weight: 600;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  margin-top: 8px;
+.info-card:hover {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
 }
-
-.btn-rate-me {
-  padding: 6px 12px;
-  font-size: 14px;
-}
-
-#rate-me-btn:hover,
-.btn-modern:hover,
-.btn-rate-me:hover {
-  background: #0d6efd;   /* darker blue hover */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-}
-
-/* Star rating widget */
-.star-rating {
-  font-size: 24px;
-  color: #ccc; /* empty stars */
-  cursor: pointer;
-}
-.star-rating .filled {
-  color: #1e90ff; /* filled stars in blue */
-}
-
-/* Rating badge for cards (used inside cards too) */
-.rating-badge {
-  font-weight: 800;
-  color: #d4af37; /* gold */
-}
-
-/* Ratings details grid (modal forms, unchanged) */
-#ratings-details,
-#rate-form {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 12px;
-  margin-top: 20px;
-}
-
-/* Rating display cells */
-.rating-cell,
-.rating-row {
-  background: #2b2b2b;       /* dark gray background */
-  border-radius: 6px;
-  padding: 8px 10px;
-  text-align: center;
-  border: 2px solid transparent;
-  transition: border-color 0.2s ease, background 0.2s ease;
-}
-
-.rating-cell:hover,
-.rating-row:hover {
-  border-color: #1e90ff;      /* blue outline on hover */
-}
-
-/* Labels and text inside rating cells */
-.category-label {
-  font-size: 15px;
-  font-weight: 600;
-  color: #fff;
-  display: block;
-  margin-bottom: 6px;
-}
-
-.avg-rating {
-  font-size: 18px;
-  font-weight: bold;
-  display: block;
-}
-
-.vote-count {
-  font-size: 13px;
-  color: #aaa;
-}
-
-.rating-row .star-rating span,
-.star-rating span {
-  font-size: 22px;
-  cursor: pointer;
-  margin: 0 2px;
-}
-
-/* Ratings & Rankings container — 5-per-row vertical baseball card grid */
-#ratings-cards {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); /* exactly 5 per row */
-  gap: 20px;
-  padding: 20px;
-  justify-items: center;
-}
-
-/* Baseball card shell */
+/* Card container */
 .info-card {
-  width: 280px;               /* fixed width */
-  height: 420px;              /* fixed height */
+  display: flex;
+  flex-direction: row;        /* photo left, info right */
+  width: 360px;               /* fixed width */
+  height: 200px;              /* fixed height */
   border: 3px solid #444;
   border-radius: 10px;
-  background: #fdfdfd;        /* trading card vibe */
-  color: #000;
+  background: linear-gradient(135deg, #2c2c2c 70%, #1e1e1e);
+  color: #fff;
   overflow: hidden;
   position: relative;
-  padding: 12px;
-  font-family: Arial, Helvetica, sans-serif;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.18);
 }
 
-/* Party icon (top-right corner) */
-.info-card .party-icon {
+/* Left side photo */
+.card-left {
+  flex: 0 0 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #111;
+}
+
+.card-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+/* Right side info */
+.card-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 12px;
+}
+
+/* State silhouette logo */
+.state-logo img {
+  width: 40px;
+  height: auto;
   position: absolute;
   top: 8px;
   right: 8px;
-  width: 36px;
-  height: 36px;
-}
-.info-card .party-icon img {
-  width: 100%;
-  height: auto;
+  opacity: 0.6;
 }
 
-/* State flag (bottom-right corner) */
-.info-card .state-flag {
-  position: absolute;
-  bottom: 8px;
-  right: 8px;
-  width: 54px;
-  height: 36px;
-  border: 1px solid #333;
-  border-radius: 2px;
-  overflow: hidden;
+/* Name + office */
+.name-block {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 4px;
 }
-.info-card .state-flag img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.office, .meta {
+  font-size: 12px;
+  color: #ccc;
 }
 
-/* Top section: photo top-left, info to its right */
-.info-card .card-header {
-  display: grid;
-  grid-template-columns: 110px 1fr; /* photo column left, info column right */
-  grid-auto-rows: min-content;
-  column-gap: 10px;
-  align-items: start;
-  margin-bottom: 8px;
+/* Ratings breakdown */
+.ratings-breakdown {
+  flex: 1;
+  margin-top: 6px;
+}
+.rating-row {
+  font-size: 12px;
+  color: #aaa;
+  margin: 2px 0;
 }
 
-/* Photo (top-left corner) */
-.info-card .card-header .card-image {
-  width: 100px;
-  height: 100px;
-  border: 2px solid #333;
-  border-radius: 6px;
-  object-fit: cover;
-  object-position: center;
-}
-
-/* Info stack to the right of photo */
-.info-card .card-header .bio {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.info-card .name-block {
-  line-height: 1.1;
-  margin: 0;
-}
-.info-card .name-block .first-name {
-  display: block;
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 0.2px;
-}
-.info-card .name-block .last-name {
-  display: block;
+/* Overall rating badge */
+.rating-badge {
   font-size: 16px;
-  font-weight: 800;
-  letter-spacing: 0.2px;
-}
-
-.info-card .office,
-.info-card .meta {
-  font-size: 13px;
-  color: #333;
-}
-
-/* Divider before stats section (like card stat table) */
-.info-card .stats-divider {
-  margin: 8px 0 6px;
-  border-top: 1px solid #cfcfcf;
-}
-
-/* Ratings breakdown (compact stat lines) */
-.info-card .ratings-breakdown {
-  display: grid;
-  grid-template-columns: 1fr 60px; /* label left, value right */
-  row-gap: 4px;
-}
-
-.info-card .ratings-breakdown .label {
-  font-size: 12px;
-  font-weight: 700;
-  color: #000;
-}
-
-.info-card .ratings-breakdown .value {
-  font-size: 12px;
-  font-weight: 700;
-  color: #1e90ff; /* stat highlight */
+  font-weight: bold;
+  color: #ffd700;
   text-align: right;
+  margin-top: auto;
 }
 
-/* Enlarged overall rating badge (lower-right area) */
-.info-card .overall-rating {
-  position: absolute;
-  bottom: 52px; /* above state flag */
-  right: 12px;
-  font-size: 22px;
-  font-weight: 800;
-  color: #d4af37; /* gold */
-  background: #fff6d5;
-  border: 1px solid #bfa65a;
-  border-radius: 6px;
-  padding: 4px 8px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
-}
-
-/* Rate Me button centered under stats */
-.info-card .btn-view {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 8px;
+/* Rate Me button */
+.btn-view {
   font-size: 12px;
   padding: 6px 10px;
   border-radius: 4px;
@@ -6434,8 +6251,8 @@ section > h3 {
   color: #fff;
   border: none;
   cursor: pointer;
-  transition: background 0.3s ease;
+  margin-top: 6px;
 }
-.info-card .btn-view:hover {
+.btn-view:hover {
   background: #0d6efd;
 }
