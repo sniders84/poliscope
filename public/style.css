@@ -6053,14 +6053,14 @@ section > h3 {
   justify-items: center;
 }
 
-/* Base card */
+/* Base card: horizontal layout */
 .info-card {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 240px;
-  min-height: 280px;
-  background: #2b2b2b;  /* dark gray */
+  flex-direction: row;       /* horizontal */
+  align-items: flex-start;   /* align top */
+  width: 280px;
+  height: 180px;             /* shorter, wide card */
+  background: #2b2b2b;
   color: #fff;
   border-radius: 8px;
   position: relative;
@@ -6068,48 +6068,55 @@ section > h3 {
   box-sizing: border-box;
 }
 
-/* Name block */
+/* Left side: photo + name */
 .card-left {
-  text-align: center;
-  margin-bottom: 8px;
+  flex: 0 0 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 12px;
 }
-.name-block {
-  font-size: 14px;
-  font-weight: 700;
-}
-
-/* Photo thumbnail (if used) */
 .card-image {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;       /* crop instead of stretch */
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
   object-position: center;
   border-radius: 4px;
   border: 1px solid #333;
-  display: block;
-  margin: 0 auto 6px auto; /* center with spacing */
+}
+.name-block {
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
 }
 
-/* Info text moved higher */
+/* Right side: info text higher */
 .card-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* stick to top */
   font-size: 12px;
-  margin-bottom: auto; /* pushes rating block down */
+  margin-bottom: auto;         /* leave blank space below */
 }
 .office, .meta {
   margin: 2px 0;
   color: #ccc;
 }
 
-/* Rating + button stacked at bottom */
+/* Bottom-right: rating + button stacked */
 .rating-block {
-  margin-top: auto;
-  text-align: center;
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  text-align: right;
 }
 .rating-badge {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 800;
   color: #ffd700;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 .btn-view {
   font-size: 12px;
