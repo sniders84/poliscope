@@ -355,91 +355,108 @@
   <div id="ratings-filters" class="filters-bar">
     <input type="text" id="searchInput" placeholder="Search officials..." />
     <select id="officeFilter">
-  <option value="">All Offices</option>
-  <option value="president">President</option>
-  <option value="vice president">Vice President</option>
-  <option value="governor">Governor</option>
-  <option value="lieutenant governor">Lt. Governor</option>
-  <option value="senator">Senator</option>
-  <option value="u.s. representative">House Rep</option>
-</select>
-    <select id="stateFilter">
-  <option value="">All States & Territories</option>
-  <option value="united states">United States</option>
-  <option value="alabama">Alabama</option>
-  <option value="alaska">Alaska</option>
-  <option value="arizona">Arizona</option>
-  <option value="arkansas">Arkansas</option>
-  <option value="california">California</option>
-  <option value="colorado">Colorado</option>
-  <option value="connecticut">Connecticut</option>
-  <option value="delaware">Delaware</option>
-  <option value="florida">Florida</option>
-  <option value="georgia">Georgia</option>
-  <option value="hawaii">Hawaii</option>
-  <option value="idaho">Idaho</option>
-  <option value="illinois">Illinois</option>
-  <option value="indiana">Indiana</option>
-  <option value="iowa">Iowa</option>
-  <option value="kansas">Kansas</option>
-  <option value="kentucky">Kentucky</option>
-  <option value="louisiana">Louisiana</option>
-  <option value="maine">Maine</option>
-  <option value="maryland">Maryland</option>
-  <option value="massachusetts">Massachusetts</option>
-  <option value="michigan">Michigan</option>
-  <option value="minnesota">Minnesota</option>
-  <option value="mississippi">Mississippi</option>
-  <option value="missouri">Missouri</option>
-  <option value="montana">Montana</option>
-  <option value="nebraska">Nebraska</option>
-  <option value="nevada">Nevada</option>
-  <option value="new hampshire">New Hampshire</option>
-  <option value="new jersey">New Jersey</option>
-  <option value="new mexico">New Mexico</option>
-  <option value="new york">New York</option>
-  <option value="north carolina">North Carolina</option>
-  <option value="north dakota">North Dakota</option>
-  <option value="ohio">Ohio</option>
-  <option value="oklahoma">Oklahoma</option>
-  <option value="oregon">Oregon</option>
-  <option value="pennsylvania">Pennsylvania</option>
-  <option value="rhode island">Rhode Island</option>
-  <option value="south carolina">South Carolina</option>
-  <option value="south dakota">South Dakota</option>
-  <option value="tennessee">Tennessee</option>
-  <option value="texas">Texas</option>
-  <option value="utah">Utah</option>
-  <option value="vermont">Vermont</option>
-  <option value="virginia">Virginia</option>
-  <option value="washington">Washington</option>
-  <option value="west virginia">West Virginia</option>
-  <option value="wisconsin">Wisconsin</option>
-  <option value="wyoming">Wyoming</option>
+      <option value="">All Offices</option>
+      <option value="president">President</option>
+      <option value="vice president">Vice President</option>
+      <option value="governor">Governor</option>
+      <option value="lieutenant governor">Lt. Governor</option>
+      <option value="senator">Senator</option>
+      <option value="u.s. representative">House Rep</option>
+    </select>
 
-  <!-- Territories -->
-  <option value="puerto rico">Puerto Rico</option>
-  <option value="guam">Guam</option>
-  <option value="american samoa">American Samoa</option>
-  <option value="u.s. virgin islands">U.S. Virgin Islands</option>
-  <option value="northern mariana islands">Northern Mariana Islands</option>
-  <option value="district of columbia">District of Columbia</option>
-</select>
+    <select id="stateFilter">
+      <option value="">All States & Territories</option>
+      <option value="united states">United States</option>
+      <option value="alabama">Alabama</option>
+      <option value="alaska">Alaska</option>
+      <option value="arizona">Arizona</option>
+      <option value="arkansas">Arkansas</option>
+      <option value="california">California</option>
+      <option value="colorado">Colorado</option>
+      <option value="connecticut">Connecticut</option>
+      <option value="delaware">Delaware</option>
+      <option value="florida">Florida</option>
+      <option value="georgia">Georgia</option>
+      <option value="hawaii">Hawaii</option>
+      <option value="idaho">Idaho</option>
+      <option value="illinois">Illinois</option>
+      <option value="indiana">Indiana</option>
+      <option value="iowa">Iowa</option>
+      <option value="kansas">Kansas</option>
+      <option value="kentucky">Kentucky</option>
+      <option value="louisiana">Louisiana</option>
+      <option value="maine">Maine</option>
+      <option value="maryland">Maryland</option>
+      <option value="massachusetts">Massachusetts</option>
+      <option value="michigan">Michigan</option>
+      <option value="minnesota">Minnesota</option>
+      <option value="mississippi">Mississippi</option>
+      <option value="missouri">Missouri</option>
+      <option value="montana">Montana</option>
+      <option value="nebraska">Nebraska</option>
+      <option value="nevada">Nevada</option>
+      <option value="new hampshire">New Hampshire</option>
+      <option value="new jersey">New Jersey</option>
+      <option value="new mexico">New Mexico</option>
+      <option value="new york">New York</option>
+      <option value="north carolina">North Carolina</option>
+      <option value="north dakota">North Dakota</option>
+      <option value="ohio">Ohio</option>
+      <option value="oklahoma">Oklahoma</option>
+      <option value="oregon">Oregon</option>
+      <option value="pennsylvania">Pennsylvania</option>
+      <option value="rhode island">Rhode Island</option>
+      <option value="south carolina">South Carolina</option>
+      <option value="south dakota">South Dakota</option>
+      <option value="tennessee">Tennessee</option>
+      <option value="texas">Texas</option>
+      <option value="utah">Utah</option>
+      <option value="vermont">Vermont</option>
+      <option value="virginia">Virginia</option>
+      <option value="washington">Washington</option>
+      <option value="west virginia">West Virginia</option>
+      <option value="wisconsin">Wisconsin</option>
+      <option value="wyoming">Wyoming</option>
+
+      <!-- Territories -->
+      <option value="puerto rico">Puerto Rico</option>
+      <option value="guam">Guam</option>
+      <option value="american samoa">American Samoa</option>
+      <option value="u.s. virgin islands">U.S. Virgin Islands</option>
+      <option value="northern mariana islands">Northern Mariana Islands</option>
+      <option value="district of columbia">District of Columbia</option>
+    </select>
 
     <select id="partyFilter">
-  <option value="">All Parties</option>
-  <option value="republican">Republican</option>
-  <option value="democrat">Democrat</option>
-  <option value="independent">Independent</option>
-  <option value="libertarian">Libertarian</option>
-  <option value="green">Green</option>
-  <option value="constitution">Constitution</option>
-  <option value="nonpartisan">Nonpartisan</option>
-</select>
-
+      <option value="">All Parties</option>
+      <option value="republican">Republican</option>
+      <option value="democrat">Democrat</option>
+      <option value="independent">Independent</option>
+      <option value="libertarian">Libertarian</option>
+      <option value="green">Green</option>
+      <option value="constitution">Constitution</option>
+      <option value="nonpartisan">Nonpartisan</option>
+    </select>
   </div>
 
-  <div id="ratings-cards" class="card-section"></div>
+  <!-- Cards container -->
+  <div id="ratings-cards" class="card-section">
+    <!-- Example card -->
+    <div class="info-card" data-party="republican">
+      <img src="PHOTO_URL" alt="Official Name" class="card-image" />
+      <div class="name-block">
+        <span class="first-name">Donald</span>
+        <span class="last-name">Trump</span>
+      </div>
+      <div class="office">Office: President</div>
+      <div class="meta state">State: United States</div>
+      <div class="meta district">District: N/A</div>
+      <div class="rating-badge">0.0 ★</div>
+      <button class="btn-view">Rate Me</button>
+    </div>
+
+    <!-- Repeat .info-card for each official -->
+  </div>
 </section>
 
 <section id="learning-resources" class="tab-content" style="display: none;">
