@@ -6783,3 +6783,22 @@ section > h3 {
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(0,0,0,0.35);
 }
+/* Ratings/Rankings card container */
+#ratings-rankings-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+  gap: 20px; /* spacing between cards */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Individual cards */
+#ratings-rankings-cards .info-card {
+  background-color: #2b2b2b;
+  color: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
