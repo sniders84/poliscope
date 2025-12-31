@@ -6429,3 +6429,55 @@ section > h3 {
 .info-card[data-party="nonpartisan"] {
   border-color: #444; /* Dark neutral */
 }
+/* Base card style */
+.resource-card {
+  background-color: #2b2b2b;       /* dark gray background */
+  color: #fff;                     /* white text for contrast */
+  border-radius: 8px;
+  padding: 16px;
+  margin: 12px;
+  width: 300px;                    /* fixed width for uniformity */
+  height: 200px;                   /* fixed height so descriptors fit */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;  /* space out title/descriptor/button */
+  overflow: hidden;                /* prevent text bleed */
+  text-overflow: ellipsis;
+}
+
+/* Hover effect */
+.resource-card:hover {
+  background-color: #1e3a8a;       /* blue hover effect */
+  transition: background-color 0.3s ease;
+}
+
+/* Title styling */
+.resource-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+/* Descriptor styling */
+.resource-card p {
+  flex-grow: 1;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin-bottom: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Button styling */
+.resource-card .btn-view {
+  align-self: flex-start;
+  background-color: #2563eb;       /* blue button */
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.resource-card .btn-view:hover {
+  background-color: #1e40af;       /* darker blue on hover */
+}
