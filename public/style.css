@@ -5939,6 +5939,7 @@ section > h3 {
   font-size: 1.4rem;
   color: #fff;
 }
+
 /* Primary Rate Me button styles */
 #rate-me-btn,
 .btn-modern,
@@ -5988,11 +5989,12 @@ section > h3 {
 
 /* Rating badge for cards */
 .rating-badge {
-  font-size: 22px;
+  font-size: 18px;
   font-weight: bold;
-  margin: 8px 0;
-  display: inline-block;
   color: #ffd700; /* gold highlight */
+  position: absolute;
+  bottom: 8px;
+  right: 60px; /* sits above state flag */
 }
 
 /* Ratings details grid */
@@ -6060,11 +6062,11 @@ section > h3 {
 .info-card {
   display: flex;
   flex-direction: row;        /* photo left, info right */
-  width: 360px;               /* fixed width */
-  height: 220px;              /* fixed height */
+  width: 380px;               /* fixed width */
+  height: 240px;              /* fixed height */
   border: 3px solid #444;
   border-radius: 10px;
-  background: linear-gradient(135deg, #2c2c2c 70%, #1e1e1e);
+  background: #2c2c2c;
   color: #fff;
   overflow: hidden;
   position: relative;
@@ -6075,9 +6077,10 @@ section > h3 {
 .card-left {
   flex: 0 0 100px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   background: #111;
+  padding-top: 12px;
 }
 
 .card-image {
@@ -6115,8 +6118,8 @@ section > h3 {
   position: absolute;
   bottom: 8px;
   right: 8px;
-  width: 40px;
-  height: 28px;
+  width: 48px;
+  height: 32px;
 }
 .state-flag img {
   width: 100%;
@@ -6126,7 +6129,7 @@ section > h3 {
 
 /* Name + office info */
 .name-block {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: bold;
   margin-bottom: 4px;
 }
@@ -6134,15 +6137,15 @@ section > h3 {
 .name-block .last-name { display: block; font-weight: 700; }
 
 .office, .meta {
-  font-size: 12px;
+  font-size: 13px;
   color: #ccc;
   margin: 2px 0;
 }
 
 /* Ratings breakdown (stat lines) */
 .ratings-breakdown {
+  margin-top: 8px;
   flex: 1;
-  margin-top: 6px;
 }
 .rating-row {
   font-size: 12px;
@@ -6153,15 +6156,6 @@ section > h3 {
 }
 .rating-row .label { font-weight: 600; color: #fff; }
 .rating-row .value { color: #ffd700; }
-
-/* Overall rating badge */
-.rating-badge {
-  font-size: 16px;
-  font-weight: bold;
-  color: #ffd700;
-  text-align: right;
-  margin-top: auto;
-}
 
 /* Rate Me button */
 .btn-view {
