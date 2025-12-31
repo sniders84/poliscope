@@ -1294,28 +1294,27 @@
 </script>
 
 <!-- Load external script with full quiz logic -->
-<script src="script.js"></script>
+<script src="script.js?v=2025-12-17-0715"></script>
 
+<!-- Inline script for social links + tab/menu logic -->
 <script>
-  async function loadSocialLinks() {
-    const res = await fetch('/social-links.json');
-    return await res.json();
-  }
+async function loadSocialLinks() {
+  const res = await fetch('/social-links.json');
+  return await res.json();
+}
 
-  async function renderAllSocialLinks() {
-    const data = await loadSocialLinks();
+async function renderAllSocialLinks() {
+  const data = await loadSocialLinks();
 
-    Object.keys(data).forEach(slug => {
-      const links = data[slug];
+  Object.keys(data).forEach(slug => {
+    const links = data[slug];
+    const container = document.getElementById(`social-${slug}`);
+    if (!container || !links) return;
 
-      // Find the existing social container for this official
-      const container = document.getElementById(`social-${slug}`);
-      if (!container || !links) return;
+    // Clear any existing content
+    container.innerHTML = '';
 
-      // Clear any existing content
-      container.innerHTML = '';
-
-              // Add icons only for non-null links
+    // Add icons only for non-null links
     if (links.facebook) container.innerHTML += `<a href="${links.facebook}" target="_blank" rel="noopener noreferrer"><img src="/assets/facebook.svg" alt="Facebook"></a>`;
     if (links.instagram) container.innerHTML += `<a href="${links.instagram}" target="_blank" rel="noopener noreferrer"><img src="/assets/instagram.svg" alt="Instagram"></a>`;
     if (links.x) container.innerHTML += `<a href="${links.x}" target="_blank" rel="noopener noreferrer"><img src="/assets/x.svg" alt="X"></a>`;
@@ -1324,14 +1323,11 @@
   });
 }
 
- <!-- Load external script -->
-<script src="script.js?v=2025-12-17-0715"></script>
-
-<!-- Unified inline script -->
-<script>
 document.addEventListener('DOMContentLoaded', () => {
   // Default tab
-  showStartupHub();
+  if (typeof showStartupHub === 'function') {
+    showStartupHub();
+  }
 
   // Hamburger toggle + active tab + click-outside close
   const hamburger = document.getElementById('hamburger');
@@ -1356,6 +1352,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // Render social links once DOM is ready
+  renderAllSocialLinks();
 });
 </script>
 
