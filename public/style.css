@@ -6049,7 +6049,7 @@ section > h3 {
   margin: 0 2px;
 }
 
-/* Ratings & Rankings container — 5-per-row baseball card grid */
+/* Ratings & Rankings container — 5-per-row vertical baseball card grid */
 #ratings-cards {
   display: grid;
   grid-template-columns: repeat(5, 1fr); /* exactly 5 per row */
@@ -6061,9 +6061,9 @@ section > h3 {
 /* Baseball card style */
 .info-card {
   display: flex;
-  flex-direction: row;        /* photo left, info right */
-  width: 400px;               /* fixed width */
-  height: 260px;              /* fixed height */
+  flex-direction: column;     /* vertical stack */
+  width: 260px;               /* fixed width */
+  height: 380px;              /* fixed height */
   border: 3px solid #444;
   border-radius: 10px;
   background: #fdfdfd;        /* light card background like trading cards */
@@ -6074,32 +6074,15 @@ section > h3 {
   font-family: 'Arial', sans-serif;
 }
 
-/* Left side photo */
-.card-left {
-  flex: 0 0 120px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  background: #eee;
-  padding-top: 12px;
-}
-
+/* Photo at top */
 .card-image {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   border-radius: 6px;
   object-fit: cover;
   object-position: center;
   border: 2px solid #333;
-}
-
-/* Right side info */
-.card-right {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding: 0 12px;
-  position: relative;
+  margin: 0 auto 8px auto;    /* centered at top */
 }
 
 /* Party icon top-right */
@@ -6129,10 +6112,11 @@ section > h3 {
   border: 1px solid #333;
 }
 
-/* Name + office info styled like card header */
+/* Name + office info under photo */
 .name-block {
   font-size: 16px;
   font-weight: bold;
+  text-align: center;
   margin-bottom: 4px;
 }
 .name-block .first-name { display: block; font-weight: 600; }
@@ -6141,6 +6125,7 @@ section > h3 {
 .office, .meta {
   font-size: 13px;
   color: #333;
+  text-align: center;
   margin: 2px 0;
 }
 
@@ -6166,9 +6151,8 @@ section > h3 {
   font-size: 16px;
   font-weight: bold;
   color: #d4af37; /* gold */
-  position: absolute;
-  bottom: 8px;
-  right: 60px; /* sits above state flag */
+  text-align: center;
+  margin-top: 8px;
 }
 
 /* Rate Me button */
@@ -6181,9 +6165,10 @@ section > h3 {
   border: none;
   cursor: pointer;
   transition: background 0.3s ease;
-  margin-top: 6px;
-  align-self: flex-start;
+  margin-top: 10px;
+  align-self: center;
 }
 .btn-view:hover {
   background: #0d6efd;
 }
+
