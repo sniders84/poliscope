@@ -2751,6 +2751,7 @@ function showCitizenship() {
 // ==============================
 // Ratings/Rankings — tab renderer
 // ==============================
+
 // Define rating categories globally
 const ratingCategories = [
   "Honesty","Humility","Transparency","Integrity","Consistency","Accountability","Patience",
@@ -2822,15 +2823,19 @@ function showRatings() {
             <span class="first-name">${firstName}</span>
             <span class="last-name">${lastName}</span>
           </h3>
-          <p class="office">${official.office}</p>
         </div>
         <div class="card-right">
-          ${official.state ? `<p class="meta"><strong>State:</strong> ${official.state}</p>` : ''}
-          ${official.district ? `<p class="meta"><strong>District:</strong> ${official.district}</p>` : ''}
-          <div class="rating-badge" style="color:${getRatingColor(r.averageRating)}">
-            ${avg} ★
+          <div class="card-info">
+            <p class="office">${official.office}</p>
+            ${official.state ? `<p class="meta">State: ${official.state}</p>` : ''}
+            ${official.district ? `<p class="meta">District: ${official.district}</p>` : ''}
           </div>
-          <button class="btn-view" onclick="openRatingsModal('${r.slug}')">View Ratings</button>
+          <div class="rating-block">
+            <div class="rating-badge" style="color:${getRatingColor(r.averageRating)}">
+              ${avg} ★
+            </div>
+            <button class="btn-view" onclick="openRatingsModal('${r.slug}')">View Ratings</button>
+          </div>
         </div>
       `;
       container.appendChild(card);
