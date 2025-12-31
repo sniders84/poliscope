@@ -6606,3 +6606,26 @@ section > h3 {
 #ratings-rankings .rating-card:hover .meta {
   background-color: transparent !important;
 }
+/* ============================================================
+   Ratings & Rankings Tab — Hover Outline Only
+   ============================================================ */
+
+#ratings-cards .info-card {
+  background-color: #2b2b2b;       /* keep dark background */
+  color: #fff;
+  border: 3px solid transparent;   /* default transparent outline */
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+/* Hover: outline only, no background flood */
+#ratings-cards .info-card:hover {
+  border-color: #1e3a8a;           /* blue outline */
+  background-color: #2b2b2b;       /* preserve original background */
+}
