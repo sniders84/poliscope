@@ -6046,25 +6046,25 @@ section > h3 {
   margin: 0 2px;
 }
 
-/* Ratings & Rankings container — horizontal sports card grid */
+/* Ratings & Rankings container — spacious horizontal sports card grid */
 #ratings-cards {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;                  /* spacing between cards */
-  padding: 20px;
+  gap: 24px;                  /* ✅ more space between cards */
+  padding: 24px;
   justify-content: flex-start;
 }
 
 /* Horizontal sports card */
 .info-card {
   display: flex;
-  flex-direction: row;        /* horizontal layout */
+  flex-direction: row;
   align-items: center;
-  width: 480px;               /* ✅ wider card for breathing room */
-  height: 150px;              /* compact height */
+  width: 520px;               /* ✅ wider card for breathing room */
+  height: 180px;              /* ✅ taller card for clean layout */
   border: 3px solid transparent;
   border-radius: 10px;
-  padding: 16px;
+  padding: 20px;
   background: linear-gradient(135deg, #2c2c2c 70%, #1e1e1e);
   color: #fff;
   transition: box-shadow 0.2s;
@@ -6074,25 +6074,24 @@ section > h3 {
 
 /* Uniform photo block */
 .card-left {
-  flex: 0 0 80px;             /* ✅ smaller photo footprint */
+  flex: 0 0 90px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 16px;
+  margin-right: 20px;
 }
 
 .card-image {
-  width: 70px;                /* ✅ smaller photo size */
+  width: 70px;
   height: 70px;
   border-radius: 6px;
   object-fit: cover;
   object-position: center;
   display: block;
   margin-bottom: 6px;
-  /* outline removed */
 }
 
-/* Player-style name block */
+/* Name block */
 .name-block {
   text-align: center;
   line-height: 1.2;
@@ -6115,13 +6114,14 @@ section > h3 {
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+  padding-top: 4px;
 }
 
 /* Office, state, district styled like stats */
 .office,
 .meta {
-  font-size: 13px;
-  margin: 2px 0;
+  font-size: 14px;
+  margin: 4px 0;
   color: #ccc;
   display: flex;
   justify-content: space-between;
@@ -6133,20 +6133,20 @@ section > h3 {
 
 /* Rating badge styled like player stat */
 .rating-badge {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: bold;
-  color: #ffd700; /* gold highlight */
+  color: #ffd700;
   text-align: center;
-  margin: 8px 0;
+  margin: 10px 0;
   border-top: 1px solid #444;
   border-bottom: 1px solid #444;
-  padding: 4px 0;
+  padding: 6px 0;
 }
 
 /* Rate Me button */
 .btn-view {
-  font-size: 13px;
-  padding: 6px 12px;
+  font-size: 14px;
+  padding: 8px 14px;
   border-radius: 4px;
   background: #1e90ff;
   color: #fff;
