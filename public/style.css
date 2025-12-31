@@ -5944,107 +5944,47 @@ section > h3 {
 #rate-me-btn,
 .btn-modern,
 .btn-rate-me {
-  background: #1e90ff;   /* app blue */
+  background: #1e90ff;
   color: #fff;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
-
-#rate-me-btn {
-  padding: 10px 18px;
-  font-size: 16px;
-}
-
-.btn-modern {
-  padding: 10px 18px;
-  font-size: 16px;
-  font-weight: 600;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  margin-top: 8px;
-}
-
-.btn-rate-me {
-  padding: 6px 12px;
-  font-size: 14px;
-}
-
-#rate-me-btn:hover,
-.btn-modern:hover,
-.btn-rate-me:hover {
-  background: #0d6efd;   /* darker blue hover */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-}
+#rate-me-btn { padding: 10px 18px; font-size: 16px; }
+.btn-modern { padding: 10px 18px; font-size: 16px; font-weight: 600; box-shadow: 0 2px 6px rgba(0,0,0,0.15); margin-top: 8px; }
+.btn-rate-me { padding: 6px 12px; font-size: 14px; }
+#rate-me-btn:hover, .btn-modern:hover, .btn-rate-me:hover { background: #0d6efd; box-shadow: 0 4px 10px rgba(0,0,0,0.25); }
 
 /* Star rating widget */
-.star-rating {
-  font-size: 24px;
-  color: #ccc; /* empty stars */
-  cursor: pointer;
-}
-.star-rating .filled {
-  color: #1e90ff; /* filled stars in blue */
-}
+.star-rating { font-size: 24px; color: #ccc; cursor: pointer; }
+.star-rating .filled { color: #1e90ff; }
 
-/* Rating badge for cards */
-.rating-badge {
-  font-size: 22px;
-  font-weight: bold;
-  margin: 8px 0;
-  display: inline-block;
-  color: #ffd700; /* gold highlight */
-}
+/* Rating badge */
+.rating-badge { font-size: 22px; font-weight: bold; margin: 8px 0; display: inline-block; color: #ffd700; }
 
 /* Ratings details grid */
-#ratings-details,
-#rate-form {
+#ratings-details, #rate-form {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 12px;
   margin-top: 20px;
 }
-
-/* Rating display cells */
-.rating-cell,
-.rating-row {
-  background: #2b2b2b;       /* dark gray background */
+.rating-cell, .rating-row {
+  background: #2b2b2b;
   border-radius: 6px;
   padding: 8px 10px;
   text-align: center;
   border: 2px solid transparent;
   transition: border-color 0.2s ease, background 0.2s ease;
 }
-.rating-cell:hover,
-.rating-row:hover {
-  border-color: #1e90ff;      /* blue outline on hover */
-}
+.rating-cell:hover, .rating-row:hover { border-color: #1e90ff; }
+.category-label { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 6px; }
+.avg-rating { font-size: 18px; font-weight: bold; }
+.vote-count { font-size: 13px; color: #aaa; }
+.rating-row .star-rating span, .star-rating span { font-size: 22px; cursor: pointer; margin: 0 2px; }
 
-/* Labels and text inside rating cells */
-.category-label {
-  font-size: 15px;
-  font-weight: 600;
-  color: #fff;
-  display: block;
-  margin-bottom: 6px;
-}
-.avg-rating {
-  font-size: 18px;
-  font-weight: bold;
-  display: block;
-}
-.vote-count {
-  font-size: 13px;
-  color: #aaa;
-}
-.rating-row .star-rating span,
-.star-rating span {
-  font-size: 22px;
-  cursor: pointer;
-  margin: 0 2px;
-}
-
-/* Ratings & Rankings container — 5-per-row grid */
+/* Ratings cards grid */
 #ratings-cards {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -6053,13 +5993,13 @@ section > h3 {
   justify-items: center;
 }
 
-/* Base card: horizontal layout */
+/* Base card: horizontal layout, taller */
 .info-card {
   display: flex;
-  flex-direction: row;       /* horizontal */
-  align-items: flex-start;   /* align top */
+  flex-direction: row;
+  align-items: flex-start;
   width: 280px;
-  height: 180px;             /* shorter, wide card */
+  height: 240px;             /* increased height */
   background: #2b2b2b;
   color: #fff;
   border-radius: 8px;
@@ -6091,32 +6031,163 @@ section > h3 {
   text-align: center;
 }
 
-/* Right side: info text higher */
-.card-info {
+/* Right side: info at top, rating at bottom */
+.card-right {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* stick to top */
-  font-size: 12px;
-  margin-bottom: auto;         /* leave blank space below */
+  justify-content: space-between;
+  height: 100%;
 }
-.office, .meta {
-  margin: 2px 0;
+.card-info {
+  font-size: 12px;
+  line-height: 1.2;
   color: #ccc;
 }
+.office { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+.meta { margin: 2px 0; }
 
-/* Bottom-right: rating + button stacked */
+/* Rating + button bottom-right */
 .rating-block {
-  position: absolute;
-  bottom: 8px;
-  right: 8px;
   text-align: right;
 }
 .rating-badge {
-  font-size: 14px;
-  font-weight: 800;
+  font-size: 32px;   /* enlarged but fits */
+  font-weight: 900;
   color: #ffd700;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+}
+.btn-view {
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: #1e90ff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.btn-view:hover { background: #0d6efd; }
+
+/* Filters */
+#ratings-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px 16px;
+}
+#ratings-filters input, #ratings-filters select {
+  background: #2b2b2b;
+  color: #d3d3d3;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 14px;
+}
+#ratings-filters input::placeholder { color: #9a9a9a; }
+#ratings-filters input:focus, #ratings-filters select:hover { border-color: #1e90ff; outline: none; }
+
+/* Learning Resources cards */
+.resource-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 260px;
+  min-height: 320px;
+  background: #2b2b2b;
+  color: #fff;
+  border-radius: 8px;
+  padding: 12px;
+  box-sizing: border-box;
+  position: relative;
+}
+.resource-card .logo { width: 80px; height: 80px; object-fit: contain; margin-bottom: 12px; }
+.resource-card .description { flex: 1; font-size: 14px; text-align: center; margin: 8px 0; color: #d3d3d3; }
+.resource-card .btn-play { font-size: 13px; padding: 8px 14px; border-radius: 4px; background: #1e90ff; color: #fff; border: none; cursor: pointer; transition: background 0.3s ease; margin-top: 12px; }
+.resource-card .btn-play:hover { background: #0d6efd; }
+
+/* Left side: photo + name */
+.card-left {
+  flex: 0 0 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 12px;
+}
+.card-image {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 4px;
+  border: 1px solid #333;
+}
+.name-block {
+  margin-top: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Ratings cards grid */
+#ratings-cards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  padding: 16px;
+  justify-items: center;
+}
+
+/* Base card: horizontal layout, taller */
+.info-card {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 280px;
+  height: 240px;             /* increased height so nothing cuts off */
+  background: #2b2b2b;
+  color: #fff;
+  border-radius: 8px;
+  position: relative;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Right side: info at top, rating at bottom */
+.card-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* info top, rating bottom */
+  height: 100%;
+}
+
+/* Info text pinned at top */
+.card-info {
+  font-size: 12px;
+  line-height: 1.2;
+  color: #ccc;
+}
+.office {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 4px;        /* office above state/district */
+}
+.meta {
+  margin: 2px 0;
+}
+
+/* Rating + button pinned bottom-right */
+.rating-block {
+  text-align: right;
+  margin-top: auto;
+}
+.rating-badge {
+  font-size: 32px;           /* enlarged but balanced */
+  font-weight: 900;
+  color: #ffd700;
+  margin-bottom: 6px;
 }
 .btn-view {
   font-size: 12px;
@@ -6132,7 +6203,7 @@ section > h3 {
   background: #0d6efd;
 }
 
-/* Modern search bar + filters */
+/* Filters unchanged */
 #ratings-filters {
   display: flex;
   flex-wrap: wrap;
@@ -6155,21 +6226,146 @@ section > h3 {
   outline: none;
 }
 
+/* Filters */
+#ratings-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px 16px;
+}
+#ratings-filters input,
+#ratings-filters select {
+  background: #2b2b2b;
+  color: #d3d3d3;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 14px;
+}
+#ratings-filters input::placeholder { color: #9a9a9a; }
+#ratings-filters input:focus,
+#ratings-filters select:hover {
+  border-color: #1e90ff;
+  outline: none;
+}
+
+/* Ratings cards grid */
+#ratings-cards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  padding: 16px;
+  justify-items: center;
+}
+
+/* Base card: horizontal layout, taller */
+.info-card {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 280px;
+  height: 240px;             /* taller so nothing cuts off */
+  background: #2b2b2b;
+  color: #fff;
+  border-radius: 8px;
+  position: relative;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Left side: photo + name */
+.card-left {
+  flex: 0 0 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 12px;
+}
+.card-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 4px;
+  border: 1px solid #333;
+}
+.name-block {
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Right side: info at top, rating at bottom */
+.card-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* info top, rating bottom */
+  height: 100%;
+  min-width: 0;                   /* prevent overflow */
+}
+
+/* Info pinned at top: office above state/district */
+.card-info {
+  font-size: 12px;
+  line-height: 1.2;
+  color: #ccc;
+}
+.office {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.meta {
+  margin: 2px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Bottom-right: rating badge then button */
+.rating-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: auto;
+}
+.rating-badge {
+  font-size: 32px;        /* balanced size */
+  font-weight: 900;
+  color: #ffd700;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.btn-view {
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: #1e90ff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.btn-view:hover {
+  background: #0d6efd;
+}
+
 /* Learning Resources cards */
 .resource-card {
   display: flex;
-  flex-direction: column;   /* stack logo, text, button vertically */
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 260px;             /* wider so text fits */
-  min-height: 320px;        /* taller so descriptors + button are visible */
-  background: #2b2b2b;      /* dark gray background */
+  width: 260px;
+  min-height: 320px;
+  background: #2b2b2b;
   color: #fff;
   border-radius: 8px;
   padding: 12px;
   box-sizing: border-box;
   position: relative;
-  overflow: hidden;
 }
 .resource-card .logo {
   width: 80px;
@@ -6198,654 +6394,3 @@ section > h3 {
 .resource-card .btn-play:hover {
   background: #0d6efd;
 }
-/* Ratings cards grid */
-#ratings-cards {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 16px;
-  padding: 16px;
-  justify-items: center;
-}
-
-/* Base card: horizontal layout */
-.info-card {
-  display: flex;
-  flex-direction: row;       /* horizontal */
-  align-items: flex-start;
-  width: 240px;              /* keep card size */
-  height: 180px;             /* fixed height */
-  background: #2b2b2b;
-  color: #fff;
-  border-radius: 8px;
-  position: relative;
-  padding: 10px;
-  box-sizing: border-box;
-}
-
-/* Left side: photo + name */
-.card-left {
-  flex: 0 0 80px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-right: 10px;
-}
-.card-image {
-  width: 70px;
-  height: 70px;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 4px;
-  border: 1px solid #333;
-}
-.name-block {
-  margin-top: 4px;
-  font-size: 11px;   /* shrunk text */
-  font-weight: 700;
-  text-align: center;
-}
-
-/* Right side: info text pinned higher */
-.card-info {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* stick to top */
-  font-size: 11px;             /* shrunk text */
-  line-height: 1.2;
-  margin-bottom: auto;         /* leaves blank space below */
-}
-.office, .meta {
-  margin: 2px 0;
-  color: #ccc;
-}
-
-/* Lower-right: rating + button stacked */
-.rating-block {
-  position: absolute;
-  bottom: 8px;
-  right: 8px;
-  text-align: right;
-}
-.rating-badge {
-  font-size: 13px;   /* shrunk text */
-  font-weight: 800;
-  color: #ffd700;
-  margin-bottom: 4px;
-}
-.btn-view {
-  font-size: 11px;   /* shrunk text */
-  padding: 5px 8px;
-  border-radius: 4px;
-  background: #1e90ff;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-.btn-view:hover {
-  background: #0d6efd;
-}
-
-/* Modern search bar + filters (unchanged) */
-#ratings-filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding: 12px 16px;
-}
-#ratings-filters input,
-#ratings-filters select {
-  background: #2b2b2b;
-  color: #d3d3d3;
-  border: 1px solid #444;
-  border-radius: 6px;
-  padding: 8px 12px;
-  font-size: 14px;
-}
-#ratings-filters input::placeholder { color: #9a9a9a; }
-#ratings-filters input:focus,
-#ratings-filters select:hover {
-  border-color: #1e90ff;
-  outline: none;
-}
-/* Ratings cards grid */
-#ratings-cards {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 16px;
-  padding: 16px;
-  justify-items: center;
-}
-
-/* Base card: horizontal layout */
-.info-card {
-  display: flex;
-  flex-direction: row;       /* horizontal */
-  align-items: flex-start;
-  width: 260px;
-  height: 180px;
-  background: #2b2b2b;
-  color: #fff;
-  border-radius: 8px;
-  position: relative;
-  padding: 10px;
-  box-sizing: border-box;
-}
-
-/* Left side: photo + name */
-.card-left {
-  flex: 0 0 90px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-right: 12px;
-}
-.card-image {
-  width: 70px;
-  height: 70px;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 4px;
-  border: 1px solid #333;
-}
-.name-block {
-  margin-top: 4px;
-  font-size: 11px;
-  font-weight: 700;
-  text-align: center;
-}
-
-/* Right side: info at top, rating at bottom */
-.card-right {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* top info + bottom rating */
-  height: 100%;
-}
-
-/* Info text pinned at top */
-.card-info {
-  font-size: 11px;
-  line-height: 1.2;
-  color: #ccc;
-}
-.office, .meta {
-  margin: 2px 0;
-}
-
-/* Rating + button pinned bottom-right */
-.rating-block {
-  text-align: right;
-}
-.rating-badge {
-  font-size: 13px;
-  font-weight: 800;
-  color: #ffd700;
-  margin-bottom: 4px;
-}
-.btn-view {
-  font-size: 11px;
-  padding: 5px 8px;
-  border-radius: 4px;
-  background: #1e90ff;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-.btn-view:hover {
-  background: #0d6efd;
-}
-
-/* Filters unchanged */
-#ratings-filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding: 12px 16px;
-}
-#ratings-filters input,
-#ratings-filters select {
-  background: #2b2b2b;
-  color: #d3d3d3;
-  border: 1px solid #444;
-  border-radius: 6px;
-  padding: 8px 12px;
-  font-size: 14px;
-}
-#ratings-filters input::placeholder { color: #9a9a9a; }
-#ratings-filters input:focus,
-#ratings-filters select:hover {
-  border-color: #1e90ff;
-  outline: none;
-}
-/* Ratings cards grid */
-#ratings-cards {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 16px;
-  padding: 16px;
-  justify-items: center;
-}
-
-/* Base card: horizontal layout */
-.info-card {
-  display: flex;
-  flex-direction: row;       /* horizontal */
-  align-items: flex-start;
-  width: 280px;
-  height: 200px;
-  background: #2b2b2b;
-  color: #fff;
-  border-radius: 8px;
-  position: relative;
-  padding: 10px;
-  box-sizing: border-box;
-}
-
-/* Left side: photo + name */
-.card-left {
-  flex: 0 0 90px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-right: 12px;
-}
-.card-image {
-  width: 70px;
-  height: 70px;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 4px;
-  border: 1px solid #333;
-}
-.name-block {
-  margin-top: 4px;
-  font-size: 11px;
-  font-weight: 700;
-  text-align: center;
-}
-
-/* Right side: info at top, rating at bottom */
-.card-right {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* info top, rating bottom */
-  height: 100%;
-}
-
-/* Info text pinned at top */
-.card-info {
-  font-size: 12px;
-  line-height: 1.2;
-  color: #ccc;
-}
-.office {
-  font-size: 13px;
-  font-weight: 700;
-  margin-bottom: 4px;
-}
-.meta {
-  margin: 2px 0;
-}
-
-/* Rating + button pinned bottom-right */
-.rating-block {
-  text-align: right;
-}
-.rating-badge {
-  font-size: 48px;   /* 3× larger */
-  font-weight: 900;
-  color: #ffd700;
-  margin-bottom: 6px;
-}
-.btn-view {
-  font-size: 12px;
-  padding: 6px 10px;
-  border-radius: 4px;
-  background: #1e90ff;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-.btn-view:hover {
-  background: #0d6efd;
-}
-
-/* Filters unchanged */
-#ratings-filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding: 12px 16px;
-}
-#ratings-filters input,
-#ratings-filters select {
-  background: #2b2b2b;
-  color: #d3d3d3;
-  border: 1px solid #444;
-  border-radius: 6px;
-  padding: 8px 12px;
-  font-size: 14px;
-}
-#ratings-filters input::placeholder { color: #9a9a9a; }
-#ratings-filters input:focus,
-#ratings-filters select:hover {
-  border-color: #1e90ff;
-  outline: none;
-}
-/* Ratings cards grid */
-#ratings-cards {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 16px;
-  padding: 16px;
-  justify-items: center;
-}
-
-/* Base card: horizontal layout */
-.info-card {
-  display: flex;
-  flex-direction: row;       /* horizontal */
-  align-items: flex-start;
-  width: 280px;
-  height: 200px;
-  background: #2b2b2b;
-  color: #fff;
-  border-radius: 8px;
-  position: relative;
-  padding: 10px;
-  box-sizing: border-box;
-}
-
-/* Left side: photo + name */
-.card-left {
-  flex: 0 0 90px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-right: 12px;
-}
-.card-image {
-  width: 70px;
-  height: 70px;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 4px;
-  border: 1px solid #333;
-}
-.name-block {
-  margin-top: 4px;
-  font-size: 11px;
-  font-weight: 700;
-  text-align: center;
-}
-
-/* Right side container: info at top, rating at bottom-right */
-.card-right {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* keeps info at top, rating at bottom */
-  height: 100%;
-}
-
-/* Info pinned at top: office above state and district */
-.card-info {
-  font-size: 12px;
-  line-height: 1.2;
-  color: #ccc;
-}
-.office {
-  font-size: 13px;
-  font-weight: 700;
-  margin-bottom: 4px;        /* office above state/district */
-}
-.meta {
-  margin: 2px 0;
-}
-
-/* Bottom-right: rating badge then button */
-.rating-block {
-  align-self: flex-end;       /* push to right side */
-  text-align: right;
-}
-.rating-badge {
-  font-size: 32px;            /* shrunk by a third from 48px */
-  font-weight: 900;
-  color: #ffd700;
-  margin-bottom: 6px;
-}
-.btn-view {
-  font-size: 12px;
-  padding: 6px 10px;
-  border-radius: 4px;
-  background: #1e90ff;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-.btn-view:hover {
-  background: #0d6efd;
-}
-
-/* Filters unchanged */
-#ratings-filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding: 12px 16px;
-}
-#ratings-filters input,
-#ratings-filters select {
-  background: #2b2b2b;
-  color: #d3d3d3;
-  border: 1px solid #444;
-  border-radius: 6px;
-  padding: 8px 12px;
-  font-size: 14px;
-}
-#ratings-filters input::placeholder { color: #9a9a9a; }
-#ratings-filters input:focus,
-#ratings-filters select:hover {
-  border-color: #1e90ff;
-  outline: none;
-}
-/* Ratings cards grid */
-#ratings-cards {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 16px;
-  padding: 16px;
-  justify-items: center;
-}
-
-/* Base card: horizontal layout, taller, nothing outside */
-.info-card {
-  display: flex;
-  flex-direction: row;       /* horizontal */
-  align-items: flex-start;
-  width: 280px;              /* keep width */
-  height: 240px;             /* increased height */
-  background: #2b2b2b;
-  color: #fff;
-  border-radius: 8px;
-  position: relative;
-  padding: 10px;
-  box-sizing: border-box;
-  overflow: hidden;          /* ensure nothing renders outside */
-}
-
-/* Left side: photo + name */
-.card-left {
-  flex: 0 0 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-right: 12px;
-}
-.card-image {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 4px;
-  border: 1px solid #333;
-}
-.name-block {
-  margin-top: 6px;
-  font-size: 12px;
-  font-weight: 700;
-  text-align: center;
-}
-
-/* Right side: info at top, rating at bottom-right (contained) */
-.card-right {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* top info + bottom rating */
-  height: 100%;
-  min-width: 0;                   /* prevent overflow from long text */
-}
-
-/* Info pinned at top: office above state and district */
-.card-info {
-  font-size: 12px;
-  line-height: 1.2;
-  color: #ccc;
-  overflow: hidden;
-}
-.office {
-  font-size: 13px;
-  font-weight: 700;
-  margin-bottom: 4px;
-}
-.meta {
-  margin: 2px 0;
-  white-space: nowrap;   /* keep single line */
-  overflow: hidden;      /* clip excess */
-  text-overflow: ellipsis;
-}
-
-/* Bottom-right: rating badge then button (contained) */
-.rating-block {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;  /* right-align inside the card */
-  margin-top: auto;       /* stick to bottom of right column */
-}
-.rating-badge {
-  font-size: 32px;        /* balanced size (shrunk from 48px) */
-  font-weight: 900;
-  color: #ffd700;
-  line-height: 1;
-  margin-bottom: 6px;
-}
-.btn-view {
-  font-size: 12px;
-  padding: 6px 10px;
-  border-radius: 4px;
-  background: #1e90ff;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-.btn-view:hover {
-  background: #0d6efd;
-}
-
-/* Buttons (global styles retained) */
-#rate-me-btn,
-.btn-modern,
-.btn-rate-me {
-  background: #1e90ff;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
-}
-#rate-me-btn { padding: 10px 18px; font-size: 16px; }
-.btn-modern { padding: 10px 18px; font-size: 16px; font-weight: 600; box-shadow: 0 2px 6px rgba(0,0,0,0.15); margin-top: 8px; }
-.btn-rate-me { padding: 6px 12px; font-size: 14px; }
-#rate-me-btn:hover, .btn-modern:hover, .btn-rate-me:hover { background: #0d6efd; box-shadow: 0 4px 10px rgba(0,0,0,0.25); }
-
-/* Star rating widget (if used elsewhere) */
-.star-rating { font-size: 24px; color: #ccc; cursor: pointer; }
-.star-rating .filled { color: #1e90ff; }
-
-/* Rating badge (global) */
-.rating-badge-global { font-size: 22px; font-weight: bold; margin: 8px 0; display: inline-block; color: #ffd700; }
-
-/* Ratings details grid (modal/forms, unchanged) */
-#ratings-details,
-#rate-form {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 12px;
-  margin-top: 20px;
-}
-.rating-cell,
-.rating-row {
-  background: #2b2b2b;
-  border-radius: 6px;
-  padding: 8px 10px;
-  text-align: center;
-  border: 2px solid transparent;
-  transition: border-color 0.2s ease, background 0.2s ease;
-}
-.rating-cell:hover,
-.rating-row:hover { border-color: #1e90ff; }
-.category-label { font-size: 15px; font-weight: 600; color: #fff; display: block; margin-bottom: 6px; }
-.avg-rating { font-size: 18px; font-weight: bold; display: block; }
-.vote-count { font-size: 13px; color: #aaa; }
-.rating-row .star-rating span,
-.star-rating span { font-size: 22px; cursor: pointer; margin: 0 2px; }
-
-/* Filters unchanged */
-#ratings-filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding: 12px 16px;
-}
-#ratings-filters input,
-#ratings-filters select {
-  background: #2b2b2b;
-  color: #d3d3d3;
-  border: 1px solid #444;
-  border-radius: 6px;
-  padding: 8px 12px;
-  font-size: 14px;
-}
-#ratings-filters input::placeholder { color: #9a9a9a; }
-#ratings-filters input:focus,
-#ratings-filters select:hover { border-color: #1e90ff; outline: none; }
-
-/* Learning Resources cards (left intact) */
-.resource-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  width: 260px;
-  min-height: 320px;
-  background: #2b2b2b;
-  color: #fff;
-  border-radius: 8px;
-  padding: 12px;
-  box-sizing: border-box;
-  position: relative;
-  overflow: hidden;
-}
-.resource-card .logo { width: 80px; height: 80px; object-fit: contain; margin-bottom: 12px; }
-.resource-card .description { flex: 1; font-size: 14px; text-align: center; margin: 8px 0; color: #d3d3d3; }
-.resource-card .btn-play { font-size: 13px; padding: 8px 14px; border-radius: 4px; background: #1e90ff; color: #fff; border: none; cursor: pointer; transition: background 0.3s ease; margin-top: 12px; }
-.resource-card .btn-play:hover { background: #0d6efd; }
