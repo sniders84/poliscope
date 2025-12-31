@@ -6529,3 +6529,25 @@ section > h3 {
   background-color: #2b2b2b;       /* keep original dark background */
   transition: border-color 0.3s ease;
 }
+/* ============================================================
+   Ratings/Rankings Tab — Card Hover Outline
+   ============================================================ */
+
+#ratings-rankings .rating-card {
+  background-color: #2b2b2b;   /* keep dark background */
+  color: #fff;
+  border: 3px solid transparent; /* default transparent outline */
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+#ratings-rankings .rating-card:hover {
+  border-color: #1e3a8a;       /* blue outline on hover */
+  background-color: #2b2b2b;   /* keep background unchanged */
+}
