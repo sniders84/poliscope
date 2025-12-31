@@ -6715,3 +6715,24 @@ section > h3 {
   box-shadow: 0 0 8px rgba(37, 99, 235, 0.6); /* subtle blue glow */
   background-color: #2b2b2b;      /* keep dark gray background */
 }
+/* Ratings/Rankings cards base */
+.info-card {
+  background-color: #2b2b2b;   /* dark gray background */
+  color: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 12px;
+  display: flex;
+  flex-direction: row;          /* horizontal layout */
+  justify-content: space-between;
+  align-items: flex-start;
+  border: 2px solid transparent; /* neutral border */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect: outline only */
+.info-card:hover {
+  border-color: #2563eb;          /* blue outline */
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.6); /* subtle glow */
+  background-color: #2b2b2b;      /* keep dark gray background */
+}
