@@ -6625,3 +6625,37 @@ section > h3 {
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(0,0,0,0.35);
 }
+/* Resource cards: taller baseline */
+.resource-card {
+  background-color: #2b2b2b;       /* dark gray background */
+  color: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 12px;
+  width: 320px;                    /* consistent width */
+  min-height: 340px;               /* taller baseline height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Card images: logos larger */
+.resource-card .card-image {
+  width: 100%;
+  max-height: 160px;               /* more vertical space for logos */
+  object-fit: contain;
+  margin-bottom: 12px;
+}
+
+/* Text blocks: allow full descriptors */
+.resource-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.resource-card p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin-bottom: 8px;
+  overflow-wrap: break-word;
+}
