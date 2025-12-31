@@ -6046,109 +6046,93 @@ section > h3 {
   margin: 0 2px;
 }
 
-/* Ratings & Rankings container — flex row of uniform cards */
+/* Ratings & Rankings container — compact roster grid */
 #ratings-cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 32px;                  /* more space between cards */
-  padding: 24px;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); /* ✅ tight grid */
+  gap: 12px;                  /* minimal spacing between cards */
+  padding: 16px;
+  justify-items: center;      /* center each card in its grid cell */
 }
 
-/* Uniform horizontal card */
+/* Compact card */
 .info-card {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;     /* stack photo + text vertically */
+  align-items: center;
   justify-content: flex-start;
-  align-items: flex-start;
-  width: 100%;
-  max-width: 1100px;          /* stretch cards wider */
-  min-height: 180px;          /* taller to fit all text */
-  border: 3px solid transparent;
-  border-radius: 8px;
-  padding: 20px 28px;
+  width: 160px;               /* ✅ fixed compact width */
+  height: 220px;              /* ✅ fixed compact height */
+  border: 2px solid transparent;
+  border-radius: 6px;
+  padding: 10px;
   background-color: #2c2c2c;
   color: #fff;
   transition: box-shadow 0.2s;
-  overflow: visible;          /* allow content to show fully */
-}
-
-/* Left column: photo + name */
-.card-left {
-  flex: 0 0 100px;            /* fixed left column footprint */
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  overflow: hidden;
 }
 
 /* ✅ Uniform photo sizing */
-.card-left .card-image {
+.card-image {
   width: 80px;                /* fixed width */
   height: 80px;               /* fixed height */
   border-radius: 6px;
   margin-bottom: 6px;
   object-fit: cover;          /* crop/scale to fill box */
   object-position: center;    /* center the crop */
-  display: block;             /* ensure consistent rendering */
+  display: block;
 }
 
 /* Two-line name */
 .name-block {
+  text-align: center;
   margin: 4px 0;
-  line-height: 1.3;
+  line-height: 1.2;
 }
 
 .name-block .first-name,
 .name-block .last-name {
   display: block;
-  white-space: normal;        /* allow wrapping */
-  word-break: break-word;     /* break long names cleanly */
-  max-width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 140px;
 }
 
 .name-block .first-name { font-weight: 600; }
 .name-block .last-name { font-weight: 700; }
 
-/* Right column: office + state/district + rating + button */
-.card-right {
-  flex: 1;                    /* take all remaining width */
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding: 0 16px;
-}
-
-.card-right .office,
-.card-right .meta {
-  margin: 4px 0;
-  line-height: 1.3;
-  font-size: 15px;
-  color: #fff;
-  white-space: normal;        /* allow multi-line text */
-  word-break: break-word;
-}
-
-.rating-badge {
-  font-size: 24px;
-  font-weight: bold;
-  margin: 8px 0;
-}
-
-.info-card .btn-view {
+/* Office + state/district */
+.office,
+.meta {
   font-size: 13px;
-  padding: 8px 14px;
+  margin: 2px 0;
+  text-align: center;
+  color: #ccc;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Rating + button */
+.rating-badge {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 4px 0;
+}
+
+.btn-view {
+  font-size: 12px;
+  padding: 4px 8px;
   border-radius: 4px;
   background: #1e90ff;
   color: #fff;
   border: none;
   cursor: pointer;
   transition: background 0.3s ease;
-  align-self: flex-start;
 }
 
-.info-card .btn-view:hover {
+.btn-view:hover {
   background: #0d6efd;
 }
 
@@ -6160,70 +6144,68 @@ section > h3 {
 .info-card[data-party="green"]      { border-color: #27AE60; }
 
 .info-card:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
 }
+
 /* Modernized search bar & filters */
 #searchInput,
 #officeFilter,
 #stateFilter,
 #partyFilter {
   padding: 12px 16px;
-  border: 1px solid #444;          /* subtle border for definition */
-  border-radius: 8px;              /* ✅ modern rounded corners */
+  border: 1px solid #444;
+  border-radius: 8px;
   font-size: 15px;
   margin: 8px;
-  background-color: #2c2c2c;       /* dark grey background */
-  color: #fff;                     /* white text */
-  transition: all 0.25s ease;      /* smooth hover/focus transitions */
-  box-shadow: inset 0 1px 2px rgba(0,0,0,0.6); /* subtle inner shadow */
+  background-color: #2c2c2c;
+  color: #fff;
+  transition: all 0.25s ease;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.6);
 }
 
-/* Hover effect */
 #searchInput:hover,
 #officeFilter:hover,
 #stateFilter:hover,
 #partyFilter:hover {
-  background-color: #333;          /* slightly lighter grey */
-  border-color: #1e90ff;           /* blue border accent */
+  background-color: #333;
+  border-color: #1e90ff;
 }
 
-/* Focus effect */
 #searchInput:focus,
 #officeFilter:focus,
 #stateFilter:focus,
 #partyFilter:focus {
   background-color: #2c2c2c;
-  border-color: #1e90ff;           /* blue border glow */
-  box-shadow: 0 0 8px rgba(30,144,255,0.7); /* ✅ modern blue glow */
+  border-color: #1e90ff;
+  box-shadow: 0 0 8px rgba(30,144,255,0.7);
   outline: none;
 }
 
-/* Placeholder text styling */
 #searchInput::placeholder {
-  color: #aaa;                     /* lighter placeholder text */
-  font-style: italic;              /* sleek italic look */
+  color: #aaa;
+  font-style: italic;
 }
+
 /* Force modern dark theme styling for search + filters */
 #searchInput,
 select#officeFilter,
 select#stateFilter,
 select#partyFilter {
-  all: unset;                     /* ✅ reset browser defaults */
+  all: unset;
   box-sizing: border-box;
-  width: 220px;                   /* consistent width */
+  width: 220px;
   padding: 12px 16px;
   margin: 8px;
   border: 1px solid #444;
-  border-radius: 8px;             /* rounded corners */
+  border-radius: 8px;
   font-size: 15px;
-  background-color: #2c2c2c;      /* dark gray background */
-  color: #fff;                    /* white text */
+  background-color: #2c2c2c;
+  color: #fff;
   transition: all 0.25s ease;
-  appearance: none;               /* ✅ remove native dropdown arrow */
+  appearance: none;
   cursor: pointer;
 }
 
-/* Add custom dropdown arrow for selects */
 select#officeFilter,
 select#stateFilter,
 select#partyFilter {
@@ -6231,135 +6213,28 @@ select#partyFilter {
   background-repeat: no-repeat;
   background-position: right 12px center;
   background-size: 16px;
-  padding-right: 36px;            /* space for arrow */
+  padding-right: 36px;
 }
 
-/* Hover effect */
 #searchInput:hover,
 select#officeFilter:hover,
 select#stateFilter:hover,
 select#partyFilter:hover {
   background-color: #333;
-  border-color: #1e90ff;          /* blue border accent */
+  border-color: #1e90ff;
 }
 
-/* Focus effect */
 #searchInput:focus,
 select#officeFilter:focus,
 select#stateFilter:focus,
 select#partyFilter:focus {
   background-color: #2c2c2c;
   border-color: #1e90ff;
-  box-shadow: 0 0 8px rgba(30,144,255,0.7); /* blue glow */
+  box-shadow: 0 0 8px rgba(30,144,255,0.7);
   outline: none;
 }
 
-/* Placeholder text styling */
 #searchInput::placeholder {
   color: #aaa;
   font-style: italic;
-}
-/* Ratings & Rankings container — responsive grid */
-#ratings-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); 
-  gap: 32px;                  /* spacing between cards */
-  padding: 24px;
-  justify-items: center;      /* center cards in each column */
-}
-
-/* Uniform horizontal card */
-.info-card {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
-  width: 100%;
-  max-width: 1100px;          /* stretch wide on large screens */
-  min-height: 180px;          /* consistent vertical size */
-  border: 3px solid transparent;
-  border-radius: 8px;
-  padding: 20px 28px;
-  background-color: #2c2c2c;
-  color: #fff;
-  transition: box-shadow 0.2s;
-  overflow: hidden;
-}
-
-/* Left column: photo + name */
-.card-left {
-  flex: 0 0 100px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.card-left .card-image {
-  width: 80px;                /* ✅ uniform photo size */
-  height: 80px;
-  border-radius: 6px;
-  margin-bottom: 6px;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-}
-
-/* Two-line name */
-.name-block {
-  margin: 4px 0;
-  line-height: 1.3;
-}
-
-.name-block .first-name,
-.name-block .last-name {
-  display: block;
-  white-space: normal;
-  word-break: break-word;
-  max-width: 100px;
-}
-
-.name-block .first-name { font-weight: 600; }
-.name-block .last-name { font-weight: 700; }
-
-/* Right column: office + state/district + rating + button */
-.card-right {
-  flex: 1;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding: 0 16px;
-}
-
-.card-right .office,
-.card-right .meta {
-  margin: 4px 0;
-  line-height: 1.3;
-  font-size: 15px;
-  color: #fff;
-  white-space: normal;
-  word-break: break-word;
-}
-
-.rating-badge {
-  font-size: 24px;
-  font-weight: bold;
-  margin: 8px 0;
-}
-
-.info-card .btn-view {
-  font-size: 13px;
-  padding: 8px 14px;
-  border-radius: 4px;
-  background: #1e90ff;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  align-self: flex-start;
-}
-
-.info-card .btn-view:hover {
-  background: #0d6efd;
 }
