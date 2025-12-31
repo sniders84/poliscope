@@ -6527,3 +6527,24 @@ section > h3 {
 .resource-card .btn-play:hover {
   background-color: #1e40af;
 }
+/* Modern button style */
+.btn-modern {
+  display: inline-block;
+  padding: 10px 18px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #2563eb, #1e40af); /* blue gradient */
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+.btn-modern:hover {
+  background: linear-gradient(135deg, #1e40af, #0f172a); /* darker gradient */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+}
