@@ -6511,14 +6511,15 @@ section > h3 {
   background: linear-gradient(135deg, #1e40af, #0f172a);
   transform: translateY(-2px);
 }
+
 /* ============================================================
    Learning Resources Tab — Games + Videos Cards
    ============================================================ */
 
 #learning-resources .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* wider cards */
+  gap: 24px;
   padding: 20px;
   box-sizing: border-box;
 }
@@ -6530,7 +6531,7 @@ section > h3 {
   padding: 16px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;   /* stack content naturally */
+  justify-content: flex-start;   /* stack naturally */
   align-items: flex-start;
   box-sizing: border-box;
   min-width: 0;
@@ -6558,18 +6559,19 @@ section > h3 {
 }
 
 #learning-resources .info-card p {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   line-height: 1.4;
   margin: 4px 0 12px 0;
   color: #dcdcdc;
   overflow-wrap: break-word;
 }
 
+/* Buttons */
 #learning-resources .info-card .btn {
   margin-top: auto;                /* pushes button to bottom */
   align-self: flex-start;
-  padding: 8px 14px;
-  font-size: 0.85rem;
+  padding: 10px 16px;
+  font-size: 0.9rem;
   font-weight: 600;
   color: #fff;
   background: linear-gradient(135deg, #2563eb, #1e40af);
