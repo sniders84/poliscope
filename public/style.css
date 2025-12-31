@@ -6046,114 +6046,92 @@ section > h3 {
   margin: 0 2px;
 }
 
-/* Ratings & Rankings container — spacious horizontal sports card grid */
+/* Ratings & Rankings container — character select grid */
 #ratings-cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;                  /* ✅ more space between cards */
-  padding: 24px;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* ✅ uniform grid */
+  gap: 16px;                  /* tight but breathable spacing */
+  padding: 20px;
+  justify-items: center;      /* center each card */
 }
 
-/* Horizontal sports card */
+/* Uniform sports-card style */
 .info-card {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;     /* stacked layout */
   align-items: center;
-  width: 520px;               /* ✅ wider card for breathing room */
-  height: 180px;              /* ✅ taller card for clean layout */
-  border: 3px solid transparent;
-  border-radius: 10px;
-  padding: 20px;
-  background: linear-gradient(135deg, #2c2c2c 70%, #1e1e1e);
+  justify-content: flex-start;
+  width: 200px;               /* ✅ fixed width */
+  height: 260px;              /* ✅ fixed height for longest names */
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 12px;
+  background-color: #2c2c2c;
   color: #fff;
   transition: box-shadow 0.2s;
   overflow: hidden;
-  position: relative;
 }
 
-/* Uniform photo block */
-.card-left {
-  flex: 0 0 90px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-right: 20px;
-}
-
+/* ✅ Uniform photo sizing for ALL officials */
 .card-image {
-  width: 70px;
+  width: 70px;                /* fixed small size */
   height: 70px;
   border-radius: 6px;
   object-fit: cover;
   object-position: center;
   display: block;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 /* Name block */
 .name-block {
   text-align: center;
+  margin: 4px 0;
   line-height: 1.2;
 }
 
-.name-block .first-name {
-  font-weight: 600;
-  font-size: 14px;
-}
-
+.name-block .first-name,
 .name-block .last-name {
-  font-weight: 700;
-  font-size: 16px;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;           /* ✅ accommodates long names */
 }
 
-/* Right column: stats-style info */
-.card-right {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  padding-top: 4px;
-}
+.name-block .first-name { font-weight: 600; font-size: 14px; }
+.name-block .last-name { font-weight: 700; font-size: 15px; }
 
-/* Office, state, district styled like stats */
-.office,
+/* State + district info */
 .meta {
-  font-size: 14px;
-  margin: 4px 0;
+  font-size: 13px;
+  margin: 2px 0;
+  text-align: center;
   color: #ccc;
-  display: flex;
-  justify-content: space-between;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.office::before { content: "Office: "; font-weight: 600; color: #fff; }
-.meta.state::before { content: "State: "; font-weight: 600; color: #fff; }
-.meta.district::before { content: "District: "; font-weight: 600; color: #fff; }
-
-/* Rating badge styled like player stat */
+/* Rating badge */
 .rating-badge {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
-  color: #ffd700;
-  text-align: center;
-  margin: 10px 0;
-  border-top: 1px solid #444;
-  border-bottom: 1px solid #444;
-  padding: 6px 0;
+  color: #ffd700; /* gold highlight */
+  margin: 6px 0;
 }
 
 /* Rate Me button */
 .btn-view {
-  font-size: 14px;
-  padding: 8px 14px;
+  font-size: 12px;
+  padding: 6px 10px;
   border-radius: 4px;
   background: #1e90ff;
   color: #fff;
   border: none;
   cursor: pointer;
   transition: background 0.3s ease;
-  align-self: flex-start;
+  margin-top: auto;           /* ✅ pushes button to bottom */
 }
 
 .btn-view:hover {
@@ -6168,5 +6146,63 @@ section > h3 {
 .info-card[data-party="green"]      { border-color: #27AE60; }
 
 .info-card:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+/* ✅ Modernized search bar & filters (preserved no matter what) */
+#searchInput,
+select#officeFilter,
+select#stateFilter,
+select#partyFilter {
+  all: unset;
+  box-sizing: border-box;
+  width: 220px;
+  padding: 12px 16px;
+  margin: 8px;
+  border: 1px solid #444;
+  border-radius: 8px;
+  font-size: 15px;
+  background-color: #2c2c2c;
+  color: #fff;
+  transition: all 0.25s ease;
+  appearance: none;
+  cursor: pointer;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.6);
+}
+
+/* Custom dropdown arrow */
+select#officeFilter,
+select#stateFilter,
+select#partyFilter {
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%23aaa' height='20' width='20' viewBox='0 0 20 20'><path d='M5.5 7l4.5 4.5L14.5 7z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 36px;
+}
+
+/* Hover effect */
+#searchInput:hover,
+select#officeFilter:hover,
+select#stateFilter:hover,
+select#partyFilter:hover {
+  background-color: #333;
+  border-color: #1e90ff;
+}
+
+/* Focus effect */
+#searchInput:focus,
+select#officeFilter:focus,
+select#stateFilter:focus,
+select#partyFilter:focus {
+  background-color: #2c2c2c;
+  border-color: #1e90ff;
+  box-shadow: 0 0 8px rgba(30,144,255,0.7);
+  outline: none;
+}
+
+/* Placeholder text styling */
+#searchInput::placeholder {
+  color: #aaa;
+  font-style: italic;
 }
