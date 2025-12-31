@@ -6522,3 +6522,10 @@ section > h3 {
   background: linear-gradient(135deg, #1e40af, #0f172a);
   transform: translateY(-2px);
 }
+/* Hover effect — outline only */
+#learning-resources-cards .resource-card:hover,
+#learning-resources .info-card:hover {
+  border: 3px solid #1e3a8a;       /* blue outline on hover */
+  background-color: #2b2b2b;       /* keep original dark background */
+  transition: border-color 0.3s ease;
+}
