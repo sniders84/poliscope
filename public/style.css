@@ -5992,6 +5992,7 @@ section > h3 {
   font-weight: bold;
   margin: 8px 0;
   display: inline-block;
+  color: #ffd700; /* gold highlight */
 }
 
 /* Ratings details grid */
@@ -6050,19 +6051,19 @@ section > h3 {
 #ratings-cards {
   display: grid;
   grid-template-columns: repeat(5, 1fr); /* ✅ exactly 5 per row */
-  gap: 20px;                  /* spacing between cards */
+  gap: 16px;                  /* tighter spacing */
   padding: 20px;
   justify-items: center;
 }
 
-/* Uniform compact card */
+/* Uniform sports-card style */
 .info-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  width: 240px;               /* ✅ wider card */
-  height: 300px;              /* ✅ taller card for all info */
+  width: 220px;               /* ✅ fixed width */
+  height: 280px;              /* ✅ fixed height for long names */
   border: 2px solid transparent;
   border-radius: 8px;
   padding: 12px;
@@ -6074,7 +6075,7 @@ section > h3 {
 
 /* ✅ Force ALL photos to small uniform size */
 .card-image {
-  width: 40px;                /* ✅ 1/4 size photo */
+  width: 40px;                /* ✅ small photo */
   height: 40px;
   border-radius: 4px;
   object-fit: cover;
@@ -6096,7 +6097,7 @@ section > h3 {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 220px;           /* ✅ accommodates long names */
+  max-width: 200px;           /* ✅ accommodates long names */
 }
 
 .name-block .first-name { font-weight: 600; font-size: 14px; }
@@ -6112,14 +6113,6 @@ section > h3 {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-/* Rating badge */
-.rating-badge {
-  font-size: 20px;
-  font-weight: bold;
-  color: #ffd700;
-  margin: 6px 0;
 }
 
 /* Rate Me button */
