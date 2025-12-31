@@ -347,13 +347,13 @@
       </div>
       <div id="officials-container" class="grid"></div>
     
-</section>
 <section id="ratings" class="tab-content" style="display: none;">
   <h2>Ratings & Rankings</h2>
 
   <!-- Filters only for Ratings tab -->
   <div id="ratings-filters" class="filters-bar">
     <input type="text" id="searchInput" placeholder="Search officials..." />
+
     <select id="officeFilter">
       <option value="">All Offices</option>
       <option value="president">President</option>
@@ -437,146 +437,77 @@
     </select>
   </div>
 
-  <!-- Cards container: strict 4-column grid -->
+  <!-- Cards container -->
   <div id="ratings-cards" class="cards-grid">
     <!-- Example card -->
     <div class="info-card">
-      <!-- Left side: photo + name -->
-      <div class="card-left">
-        <img src="/assets/photos/trump.png" alt="Donald J. Trump" class="card-image" />
-        <div class="name-block">Donald J. Trump</div>
-      </div>
-
-      <!-- Right side -->
-      <div class="card-right">
-        <!-- Info at top -->
-        <div class="card-info">
-          <div class="office">President</div>
-          <div class="meta state">United States</div>
-          <div class="meta district">District: N/A</div>
-        </div>
-
-        <!-- Rating + button at bottom-right -->
-        <div class="rating-block">
-          <div class="rating-badge">0.0 ★</div>
-          <button class="btn-view">View Ratings</button>
-        </div>
-      </div>
+      <img src="/assets/photos/trump.png" alt="Donald J. Trump" class="card-image" />
+      <h3>Donald J. Trump</h3>
+      <p>President — United States</p>
+      <p>0.0 ★</p>
+      <button class="btn-view">View Ratings</button>
     </div>
 
     <!-- Repeat .info-card for each official -->
   </div>
 </section>
 
-<!-- Scoped layout hardening for Ratings grid (move to CSS file if preferred) -->
 <style>
-  /* Prevent any upstream nowrap/overflow from breaking the grid */
-  #ratings, #ratings * { white-space: normal; }
-
-  /* No horizontal scroll in this tab */
-  #ratings { overflow-x: hidden; box-sizing: border-box; }
-
-  /* 4-column grid with wrap */
+  /* Ratings grid: lock to 4 cards per row */
   #ratings-cards.cards-grid {
-    display: grid !important;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* exactly 4 columns */
     gap: 20px;
     padding: 20px;
     box-sizing: border-box;
-    align-items: start;
   }
 
-  /* Card must not overflow its grid cell */
+  /* Each card fits its grid cell */
   #ratings-cards .info-card {
-    min-width: 0;
-    max-width: 100%;
-    box-sizing: border-box;
     background-color: #2b2b2b;
     color: #fff;
     border-radius: 8px;
     padding: 16px;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 12px;
+    box-sizing: border-box;
+    min-width: 0;   /* prevents overflow */
+    text-align: center;
   }
 
-  .card-left {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    min-width: 0; /* allow text to shrink within */
-    flex: 1 1 auto;
-  }
-
-  .card-image {
-    width: 56px;
-    height: 56px;
+  #ratings-cards .card-image {
+    width: 100%;
+    height: auto;
     border-radius: 6px;
+    margin-bottom: 12px;
     object-fit: cover;
-    flex: 0 0 56px;
   }
 
-  .name-block {
+  #ratings-cards h3 {
+    margin: 8px 0;
+    font-size: 1.1rem;
     font-weight: 600;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
   }
 
-  .card-right {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-width: 0;
-    flex: 1 1 auto;
+  #ratings-cards p {
+    margin: 4px 0;
   }
 
-  .card-info .office { font-weight: 600; }
-  .card-info .meta { color: #c9c9c9; }
-
-  .rating-block {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 8px;
-    min-width: 0;
-  }
-
-  .rating-badge { font-weight: 700; }
-
-  /* Ensure buttons don’t expand the card width */
   .btn-view {
     display: inline-block;
-    padding: 10px 18px;
-    font-size: 1rem;
+    margin-top: 10px;
+    padding: 10px 16px;
+    font-size: 0.95rem;
     font-weight: 600;
     color: #fff;
     background: linear-gradient(135deg, #2563eb, #1e40af);
     border: none;
     border-radius: 6px;
-    text-decoration: none;
-    text-align: center;
+    cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-    max-width: 100%;
   }
+
   .btn-view:hover {
     background: linear-gradient(135deg, #1e40af, #0f172a);
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.35);
-  }
-
-  /* Optional responsiveness */
-  @media (max-width: 1200px) {
-    #ratings-cards.cards-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  }
-  @media (max-width: 900px) {
-    #ratings-cards.cards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  }
-  @media (max-width: 600px) {
-    #ratings-cards.cards-grid { grid-template-columns: 1fr; }
   }
 </style>
 
