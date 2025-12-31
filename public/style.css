@@ -6171,4 +6171,271 @@ section > h3 {
 .btn-view:hover {
   background: #0d6efd;
 }
+/* Primary Rate Me button styles */
+#rate-me-btn,
+.btn-modern,
+.btn-rate-me {
+  background: #1e90ff;   /* app blue */
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
 
+#rate-me-btn {
+  padding: 10px 18px;
+  font-size: 16px;
+}
+
+.btn-modern {
+  padding: 10px 18px;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  margin-top: 8px;
+}
+
+.btn-rate-me {
+  padding: 6px 12px;
+  font-size: 14px;
+}
+
+#rate-me-btn:hover,
+.btn-modern:hover,
+.btn-rate-me:hover {
+  background: #0d6efd;   /* darker blue hover */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+/* Star rating widget */
+.star-rating {
+  font-size: 24px;
+  color: #ccc; /* empty stars */
+  cursor: pointer;
+}
+.star-rating .filled {
+  color: #1e90ff; /* filled stars in blue */
+}
+
+/* Rating badge for cards (used inside cards too) */
+.rating-badge {
+  font-weight: 800;
+  color: #d4af37; /* gold */
+}
+
+/* Ratings details grid (modal forms, unchanged) */
+#ratings-details,
+#rate-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* Rating display cells */
+.rating-cell,
+.rating-row {
+  background: #2b2b2b;       /* dark gray background */
+  border-radius: 6px;
+  padding: 8px 10px;
+  text-align: center;
+  border: 2px solid transparent;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.rating-cell:hover,
+.rating-row:hover {
+  border-color: #1e90ff;      /* blue outline on hover */
+}
+
+/* Labels and text inside rating cells */
+.category-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.avg-rating {
+  font-size: 18px;
+  font-weight: bold;
+  display: block;
+}
+
+.vote-count {
+  font-size: 13px;
+  color: #aaa;
+}
+
+.rating-row .star-rating span,
+.star-rating span {
+  font-size: 22px;
+  cursor: pointer;
+  margin: 0 2px;
+}
+
+/* Ratings & Rankings container — 5-per-row vertical baseball card grid */
+#ratings-cards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* exactly 5 per row */
+  gap: 20px;
+  padding: 20px;
+  justify-items: center;
+}
+
+/* Baseball card shell */
+.info-card {
+  width: 280px;               /* fixed width */
+  height: 420px;              /* fixed height */
+  border: 3px solid #444;
+  border-radius: 10px;
+  background: #fdfdfd;        /* trading card vibe */
+  color: #000;
+  overflow: hidden;
+  position: relative;
+  padding: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+}
+
+/* Party icon (top-right corner) */
+.info-card .party-icon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 36px;
+  height: 36px;
+}
+.info-card .party-icon img {
+  width: 100%;
+  height: auto;
+}
+
+/* State flag (bottom-right corner) */
+.info-card .state-flag {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  width: 54px;
+  height: 36px;
+  border: 1px solid #333;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.info-card .state-flag img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Top section: photo top-left, info to its right */
+.info-card .card-header {
+  display: grid;
+  grid-template-columns: 110px 1fr; /* photo column left, info column right */
+  grid-auto-rows: min-content;
+  column-gap: 10px;
+  align-items: start;
+  margin-bottom: 8px;
+}
+
+/* Photo (top-left corner) */
+.info-card .card-header .card-image {
+  width: 100px;
+  height: 100px;
+  border: 2px solid #333;
+  border-radius: 6px;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Info stack to the right of photo */
+.info-card .card-header .bio {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.info-card .name-block {
+  line-height: 1.1;
+  margin: 0;
+}
+.info-card .name-block .first-name {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+.info-card .name-block .last-name {
+  display: block;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.info-card .office,
+.info-card .meta {
+  font-size: 13px;
+  color: #333;
+}
+
+/* Divider before stats section (like card stat table) */
+.info-card .stats-divider {
+  margin: 8px 0 6px;
+  border-top: 1px solid #cfcfcf;
+}
+
+/* Ratings breakdown (compact stat lines) */
+.info-card .ratings-breakdown {
+  display: grid;
+  grid-template-columns: 1fr 60px; /* label left, value right */
+  row-gap: 4px;
+}
+
+.info-card .ratings-breakdown .label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #000;
+}
+
+.info-card .ratings-breakdown .value {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1e90ff; /* stat highlight */
+  text-align: right;
+}
+
+/* Enlarged overall rating badge (lower-right area) */
+.info-card .overall-rating {
+  position: absolute;
+  bottom: 52px; /* above state flag */
+  right: 12px;
+  font-size: 22px;
+  font-weight: 800;
+  color: #d4af37; /* gold */
+  background: #fff6d5;
+  border: 1px solid #bfa65a;
+  border-radius: 6px;
+  padding: 4px 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+
+/* Rate Me button centered under stats */
+.info-card .btn-view {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 8px;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: #1e90ff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.info-card .btn-view:hover {
+  background: #0d6efd;
+}
