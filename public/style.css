@@ -6258,3 +6258,52 @@ section > h3 {
   height: auto;
   border: 1px solid #333;
 }
+/* Learning Resources cards */
+.resource-card {
+  display: flex;
+  flex-direction: column;   /* stack logo, text, button vertically */
+  justify-content: space-between;
+  align-items: center;
+  width: 260px;             /* wider so text fits */
+  min-height: 320px;        /* taller so descriptors + button are visible */
+  background: #2b2b2b;      /* dark gray background */
+  color: #fff;
+  border-radius: 8px;
+  padding: 12px;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Logo at top */
+.resource-card .logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 12px;
+}
+
+/* Text descriptors */
+.resource-card .description {
+  flex: 1;                  /* take available vertical space */
+  font-size: 14px;
+  text-align: center;
+  margin: 8px 0;
+  color: #d3d3d3;
+}
+
+/* Play Now button anchored bottom */
+.resource-card .btn-play {
+  font-size: 13px;
+  padding: 8px 14px;
+  border-radius: 4px;
+  background: #1e90ff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 12px;
+}
+.resource-card .btn-play:hover {
+  background: #0d6efd;
+}
