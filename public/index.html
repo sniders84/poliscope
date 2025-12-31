@@ -1270,33 +1270,32 @@
         track.style.transform = `translateX(-${position * step}px)`;
       });
     }
-  </script>
-  <script src="script.js"></script>
-
-<script>
-  // Initialize carousels: load feeds then wire controls
-  (async () => {
-    await loadSection("world", "world-news-carousel");
-    await loadSection("finance", "finance-carousel");
-    await loadSection("economy", "economy-carousel");
-
-    setupControls("world-news-carousel");
-    setupControls("finance-carousel");
-    setupControls("economy-carousel");
-  })();
-</script>
-
-<script>
-  // Force Home Hub tab to show on page load and highlight its button
-  document.addEventListener("DOMContentLoaded", () => {
-    showStartupHub(); // Home Hub loads first and button is highlighted
-  });
-</script>
-
-<!-- Load external script with full quiz logic -->
+ <!-- Load external script with full quiz logic -->
 <script src="script.js?v=2025-12-17-0715"></script>
 
-<!-- Inline script for social links + tab/menu logic -->
+<!-- Inline script: carousels -->
+<script>
+(async () => {
+  await loadSection("world", "world-news-carousel");
+  await loadSection("finance", "finance-carousel");
+  await loadSection("economy", "economy-carousel");
+
+  setupControls("world-news-carousel");
+  setupControls("finance-carousel");
+  setupControls("economy-carousel");
+})();
+</script>
+
+<!-- Inline script: force Home Hub tab -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  if (typeof showStartupHub === "function") {
+    showStartupHub(); // Home Hub loads first and button is highlighted
+  }
+});
+</script>
+
+<!-- Inline script: social links + hamburger/menu logic -->
 <script>
 async function loadSocialLinks() {
   const res = await fetch('/social-links.json');
@@ -1311,10 +1310,8 @@ async function renderAllSocialLinks() {
     const container = document.getElementById(`social-${slug}`);
     if (!container || !links) return;
 
-    // Clear any existing content
     container.innerHTML = '';
 
-    // Add icons only for non-null links
     if (links.facebook) container.innerHTML += `<a href="${links.facebook}" target="_blank" rel="noopener noreferrer"><img src="/assets/facebook.svg" alt="Facebook"></a>`;
     if (links.instagram) container.innerHTML += `<a href="${links.instagram}" target="_blank" rel="noopener noreferrer"><img src="/assets/instagram.svg" alt="Instagram"></a>`;
     if (links.x) container.innerHTML += `<a href="${links.x}" target="_blank" rel="noopener noreferrer"><img src="/assets/x.svg" alt="X"></a>`;
@@ -1324,11 +1321,6 @@ async function renderAllSocialLinks() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Default tab
-  if (typeof showStartupHub === 'function') {
-    showStartupHub();
-  }
-
   // Hamburger toggle + active tab + click-outside close
   const hamburger = document.getElementById('hamburger');
   const menu = document.getElementById('hamburger-menu');
@@ -1355,8 +1347,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Render social links once DOM is ready
   renderAllSocialLinks();
-});
-</script>
 
   // State dropdown wiring
   const stateSelect = document.getElementById('state-dropdown');
@@ -1368,6 +1358,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+});
+</script>
 
   // Officials search bar wiring
   wireSearchBar();
