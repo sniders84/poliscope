@@ -6551,3 +6551,24 @@ section > h3 {
   border-color: #1e3a8a;       /* blue outline on hover */
   background-color: #2b2b2b;   /* keep background unchanged */
 }
+/* Ratings/Rankings — force hover to outline only */
+#ratings-rankings .rating-card {
+  background-color: #2b2b2b;
+  color: #fff;
+  border: 3px solid transparent;
+  border-radius: 8px;
+  transition: border-color 0.25s ease;
+}
+
+/* Ensure any previous hover background is neutralized */
+#ratings-rankings .rating-card:hover {
+  border-color: #1e3a8a !important;     /* blue outline */
+  background-color: #2b2b2b !important; /* keep original background */
+}
+
+/* If you have a more specific rule like .rating-card:hover .inner, neutralize it too */
+#ratings-rankings .rating-card:hover,
+#ratings-rankings .rating-card:hover .card-body,
+#ratings-rankings .rating-card:hover .content {
+  background-color: #2b2b2b !important;
+}
