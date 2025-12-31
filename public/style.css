@@ -6047,7 +6047,7 @@ section > h3 {
   margin: 0 2px;
 }
 
-/* Ratings & Rankings container — 5-per-row horizontal sports card grid */
+/* Ratings & Rankings container — 5-per-row baseball card grid */
 #ratings-cards {
   display: grid;
   grid-template-columns: repeat(5, 1fr); /* exactly 5 per row */
@@ -6056,125 +6056,19 @@ section > h3 {
   justify-items: center;
 }
 
-/* Horizontal sports card */
-.info-card {
-  display: flex;
-  flex-direction: row;        /* ✅ horizontal layout */
-  align-items: center;
-  justify-content: flex-start;
-  width: 300px;               /* fixed width for uniformity */
-  height: 140px;              /* fixed height for consistency */
-  border: 2px solid transparent;
-  border-radius: 8px;
-  padding: 12px;
-  background-color: #2c2c2c;
-  color: #fff;
-  transition: box-shadow 0.2s;
-  overflow: hidden;
-}
-
-/* Uniform photo block */
-.card-left {
-  flex: 0 0 60px;             /* fixed footprint for photo */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-right: 12px;
-}
-
-.card-image {
-  width: 60px;                /* ✅ consistent photo size */
-  height: 60px;
-  border-radius: 6px;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  margin-bottom: 4px;
-}
-
-/* Name block */
-.name-block {
-  text-align: center;
-  line-height: 1.2;
-}
-
-.name-block .first-name {
-  font-weight: 600;
-  font-size: 13px;
-}
-
-.name-block .last-name {
-  font-weight: 700;
-  font-size: 14px;
-}
-
-/* Right column: stats/info */
-.card-right {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-}
-
-/* Office, state, district */
-.office,
-.meta {
-  font-size: 12px;
-  margin: 2px 0;
-  color: #ccc;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Rating badge */
-.rating-badge {
-  font-size: 16px;
-  font-weight: bold;
-  color: #ffd700;
-  margin: 4px 0;
-}
-
-/* Rate Me button */
-.btn-view {
-  font-size: 12px;
-  padding: 6px 10px;
-  border-radius: 4px;
-  background: #1e90ff;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  align-self: flex-start;
-}
-
-.btn-view:hover {
-  background: #0d6efd;
-}
-
-/* Party outline colors */
-.info-card[data-party="republican"] { border-color: #C0392B; }
-.info-card[data-party="democrat"]   { border-color: #2980B9; }
-.info-card[data-party="independent"]{ border-color: #7F8C8D; }
-.info-card[data-party="libertarian"]{ border-color: #F1C40F; }
-.info-card[data-party="green"]      { border-color: #27AE60; }
-
-.info-card:hover {
-  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-}
-/* Card container */
+/* Baseball card style */
 .info-card {
   display: flex;
   flex-direction: row;        /* photo left, info right */
   width: 360px;               /* fixed width */
-  height: 200px;              /* fixed height */
+  height: 220px;              /* fixed height */
   border: 3px solid #444;
   border-radius: 10px;
   background: linear-gradient(135deg, #2c2c2c 70%, #1e1e1e);
   color: #fff;
   overflow: hidden;
   position: relative;
+  padding: 12px;
 }
 
 /* Left side photo */
@@ -6191,6 +6085,7 @@ section > h3 {
   height: 80px;
   border-radius: 6px;
   object-fit: cover;
+  object-position: center;
 }
 
 /* Right side info */
@@ -6198,31 +6093,53 @@ section > h3 {
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 8px 12px;
+  padding: 0 12px;
+  position: relative;
 }
 
-/* State silhouette logo */
-.state-logo img {
-  width: 40px;
-  height: auto;
+/* Party icon top-right */
+.party-icon {
   position: absolute;
   top: 8px;
   right: 8px;
-  opacity: 0.6;
+  width: 32px;
+  height: 32px;
+}
+.party-icon img {
+  width: 100%;
+  height: auto;
 }
 
-/* Name + office */
+/* State flag bottom-right */
+.state-flag {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  width: 40px;
+  height: 28px;
+}
+.state-flag img {
+  width: 100%;
+  height: auto;
+  border: 1px solid #333;
+}
+
+/* Name + office info */
 .name-block {
   font-size: 14px;
   font-weight: bold;
   margin-bottom: 4px;
 }
+.name-block .first-name { display: block; font-weight: 600; }
+.name-block .last-name { display: block; font-weight: 700; }
+
 .office, .meta {
   font-size: 12px;
   color: #ccc;
+  margin: 2px 0;
 }
 
-/* Ratings breakdown */
+/* Ratings breakdown (stat lines) */
 .ratings-breakdown {
   flex: 1;
   margin-top: 6px;
@@ -6230,8 +6147,12 @@ section > h3 {
 .rating-row {
   font-size: 12px;
   color: #aaa;
+  display: flex;
+  justify-content: space-between;
   margin: 2px 0;
 }
+.rating-row .label { font-weight: 600; color: #fff; }
+.rating-row .value { color: #ffd700; }
 
 /* Overall rating badge */
 .rating-badge {
@@ -6251,7 +6172,9 @@ section > h3 {
   color: #fff;
   border: none;
   cursor: pointer;
+  transition: background 0.3s ease;
   margin-top: 6px;
+  align-self: flex-start;
 }
 .btn-view:hover {
   background: #0d6efd;
