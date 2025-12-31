@@ -6058,14 +6058,14 @@ section > h3 {
 /* Horizontal sports card */
 .info-card {
   display: flex;
-  flex-direction: row;        /* ✅ horizontal layout */
+  flex-direction: row;        /* horizontal layout */
   align-items: center;
-  width: 420px;               /* fixed width for sports card feel */
-  height: 160px;              /* compact height */
+  width: 480px;               /* ✅ wider card for breathing room */
+  height: 150px;              /* compact height */
   border: 3px solid transparent;
   border-radius: 10px;
   padding: 16px;
-  background: linear-gradient(135deg, #2c2c2c 70%, #1e1e1e); /* subtle gradient */
+  background: linear-gradient(135deg, #2c2c2c 70%, #1e1e1e);
   color: #fff;
   transition: box-shadow 0.2s;
   overflow: hidden;
@@ -6074,7 +6074,7 @@ section > h3 {
 
 /* Uniform photo block */
 .card-left {
-  flex: 0 0 100px;
+  flex: 0 0 80px;             /* ✅ smaller photo footprint */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6082,18 +6082,19 @@ section > h3 {
 }
 
 .card-image {
-  width: 90px;
-  height: 90px;
-  border-radius: 8px;
+  width: 70px;                /* ✅ smaller photo size */
+  height: 70px;
+  border-radius: 6px;
   object-fit: cover;
   object-position: center;
-  border: 2px solid #1e90ff; /* blue border for sports card vibe */
+  display: block;
+  margin-bottom: 6px;
+  /* outline removed */
 }
 
 /* Player-style name block */
 .name-block {
   text-align: center;
-  margin-top: 6px;
   line-height: 1.2;
 }
 
