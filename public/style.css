@@ -6046,104 +6046,113 @@ section > h3 {
   margin: 0 2px;
 }
 
-/* Ratings & Rankings container — compact roster grid */
+/* Ratings & Rankings container — horizontal sports card grid */
 #ratings-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* ✅ tight grid, slightly wider for all info */
-  gap: 12px;                  /* minimal spacing between cards */
-  padding: 16px;
-  justify-items: center;      /* center each card in its grid cell */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;                  /* spacing between cards */
+  padding: 20px;
+  justify-content: flex-start;
 }
 
-/* Compact stacked card */
+/* Horizontal sports card */
 .info-card {
   display: flex;
-  flex-direction: column;     /* stack everything vertically */
+  flex-direction: row;        /* ✅ horizontal layout */
   align-items: center;
-  justify-content: flex-start;
-  width: 200px;               /* ✅ fixed compact width */
-  height: auto;               /* expand vertically to fit all info */
-  border: 2px solid transparent;
-  border-radius: 6px;
-  padding: 12px;
-  background-color: #2c2c2c;
+  width: 420px;               /* fixed width for sports card feel */
+  height: 160px;              /* compact height */
+  border: 3px solid transparent;
+  border-radius: 10px;
+  padding: 16px;
+  background: linear-gradient(135deg, #2c2c2c 70%, #1e1e1e); /* subtle gradient */
   color: #fff;
   transition: box-shadow 0.2s;
   overflow: hidden;
+  position: relative;
 }
 
-/* ✅ Uniform photo sizing */
+/* Uniform photo block */
+.card-left {
+  flex: 0 0 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 16px;
+}
+
 .card-image {
-  width: 80px;
-  height: 80px;
-  border-radius: 6px;
-  margin-bottom: 6px;
+  width: 90px;
+  height: 90px;
+  border-radius: 8px;
   object-fit: cover;
   object-position: center;
-  display: block;
+  border: 2px solid #1e90ff; /* blue border for sports card vibe */
 }
 
-/* Name block */
+/* Player-style name block */
 .name-block {
   text-align: center;
-  margin: 4px 0;
+  margin-top: 6px;
   line-height: 1.2;
 }
 
-.name-block .first-name,
-.name-block .last-name {
-  display: block;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 180px;
-}
-
-.name-block .first-name { font-weight: 600; }
-.name-block .last-name { font-weight: 700; }
-
-/* Office */
-.office {
-  font-size: 13px;
-  margin: 2px 0;
-  text-align: center;
-  color: #fff;
+.name-block .first-name {
   font-weight: 600;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-size: 14px;
 }
 
-/* State + district */
+.name-block .last-name {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+/* Right column: stats-style info */
+.card-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* Office, state, district styled like stats */
+.office,
 .meta {
   font-size: 13px;
   margin: 2px 0;
-  text-align: center;
   color: #ccc;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  display: flex;
+  justify-content: space-between;
 }
 
-/* Rating badge */
+.office::before { content: "Office: "; font-weight: 600; color: #fff; }
+.meta.state::before { content: "State: "; font-weight: 600; color: #fff; }
+.meta.district::before { content: "District: "; font-weight: 600; color: #fff; }
+
+/* Rating badge styled like player stat */
 .rating-badge {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: bold;
-  margin: 6px 0;
-  color: #ffd700; /* gold star color */
+  color: #ffd700; /* gold highlight */
+  text-align: center;
+  margin: 8px 0;
+  border-top: 1px solid #444;
+  border-bottom: 1px solid #444;
+  padding: 4px 0;
 }
 
 /* Rate Me button */
 .btn-view {
-  font-size: 12px;
-  padding: 6px 10px;
+  font-size: 13px;
+  padding: 6px 12px;
   border-radius: 4px;
   background: #1e90ff;
   color: #fff;
   border: none;
   cursor: pointer;
   transition: background 0.3s ease;
-  margin-top: 6px;
+  align-self: flex-start;
 }
 
 .btn-view:hover {
@@ -6158,5 +6167,5 @@ section > h3 {
 .info-card[data-party="green"]      { border-color: #27AE60; }
 
 .info-card:hover {
-  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
