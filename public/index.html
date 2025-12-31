@@ -347,7 +347,7 @@
       </div>
       <div id="officials-container" class="grid"></div>
     
-   </section>
+  </section>
 <section id="ratings" class="tab-content" style="display: none;">
   <h2>Ratings & Rankings</h2>
 
@@ -443,45 +443,34 @@
   <div id="ratings-cards" class="card-section">
     <!-- Example card -->
     <div class="info-card" data-party="republican">
-      <!-- Left side: photo -->
-      <div class="card-left">
-        <img src="PHOTO_URL" alt="Official Name" class="card-image" />
+      <!-- Party icon top-right -->
+      <div class="party-icon">
+        <img src="/assets/party/republican.png" alt="Party Icon" />
       </div>
 
-      <!-- Right side: info + ratings -->
-      <div class="card-right">
-        <!-- State flag top corner -->
-        <div class="state-flag">
-          <img src="STATE_FLAG_URL" alt="State Flag" />
-        </div>
+      <!-- State flag bottom-right -->
+      <div class="state-flag">
+        <img src="/assets/flags/united_states.png" alt="State Flag" />
+      </div>
 
-        <!-- Name + office info -->
-        <div class="name-block">
-          <span class="first-name">Donald</span>
-          <span class="last-name">Trump</span>
-        </div>
+      <!-- Photo top-left with name underneath -->
+      <div class="card-left">
+        <img src="/assets/photos/trump.png" alt="Donald Trump" class="card-image" />
+        <div class="name-block">Donald Trump</div>
+      </div>
+
+      <!-- Office/state/district stacked on right side -->
+      <div class="card-info">
         <div class="office">President</div>
         <div class="meta state">United States</div>
         <div class="meta district">District: N/A</div>
-
-        <!-- Ratings breakdown -->
-        <div class="ratings-breakdown">
-          <div class="rating-row">Integrity: 0.0 ★</div>
-          <div class="rating-row">Leadership: 0.0 ★</div>
-          <div class="rating-row">Transparency: 0.0 ★</div>
-        </div>
-
-        <!-- Overall rating badge -->
-        <div class="rating-badge">Overall: 0.0 ★</div>
-
-        <!-- Rate Me button -->
-        <button class="btn-view">Rate Me</button>
-
-        <!-- Party icon bottom corner -->
-        <div class="party-icon">
-          <img src="PARTY_ICON_URL" alt="Party Icon" />
-        </div>
       </div>
+
+      <!-- Overall rating badge -->
+      <div class="rating-badge">Overall: 0.0 ★</div>
+
+      <!-- Rate Me button -->
+      <button class="btn-view">Rate Me</button>
     </div>
 
     <!-- Repeat .info-card for each official -->
