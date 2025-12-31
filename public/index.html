@@ -347,13 +347,13 @@
       </div>
       <div id="officials-container" class="grid"></div>
     
+</section>
 <section id="ratings" class="tab-content" style="display: none;">
   <h2>Ratings & Rankings</h2>
 
   <!-- Filters only for Ratings tab -->
   <div id="ratings-filters" class="filters-bar">
     <input type="text" id="searchInput" placeholder="Search officials..." />
-
     <select id="officeFilter">
       <option value="">All Offices</option>
       <option value="president">President</option>
@@ -438,78 +438,35 @@
   </div>
 
   <!-- Cards container -->
-  <div id="ratings-cards" class="cards-grid">
+  <div id="ratings-cards" class="card-section">
     <!-- Example card -->
     <div class="info-card">
-      <img src="/assets/photos/trump.png" alt="Donald J. Trump" class="card-image" />
-      <h3>Donald J. Trump</h3>
-      <p>President — United States</p>
-      <p>0.0 ★</p>
-      <button class="btn-view">View Ratings</button>
+      <!-- Left side: photo + name -->
+      <div class="card-left">
+        <img src="/assets/photos/trump.png" alt="Donald J. Trump" class="card-image" />
+        <div class="name-block">Donald J. Trump</div>
+      </div>
+
+      <!-- Right side -->
+      <div class="card-right">
+        <!-- Info at top -->
+        <div class="card-info">
+          <div class="office">President</div>
+          <div class="meta state">United States</div>
+          <div class="meta district">District: N/A</div>
+        </div>
+
+        <!-- Rating + button at bottom-right -->
+        <div class="rating-block">
+          <div class="rating-badge">0.0 ★</div>
+          <button class="btn-view">View Ratings</button>
+        </div>
+      </div>
     </div>
 
     <!-- Repeat .info-card for each official -->
   </div>
 </section>
-
-<style>
-  /* Ratings grid: lock to 4 cards per row */
-  #ratings-cards.cards-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* exactly 4 columns */
-    gap: 20px;
-    padding: 20px;
-    box-sizing: border-box;
-  }
-
-  /* Each card fits its grid cell */
-  #ratings-cards .info-card {
-    background-color: #2b2b2b;
-    color: #fff;
-    border-radius: 8px;
-    padding: 16px;
-    box-sizing: border-box;
-    min-width: 0;   /* prevents overflow */
-    text-align: center;
-  }
-
-  #ratings-cards .card-image {
-    width: 100%;
-    height: auto;
-    border-radius: 6px;
-    margin-bottom: 12px;
-    object-fit: cover;
-  }
-
-  #ratings-cards h3 {
-    margin: 8px 0;
-    font-size: 1.1rem;
-    font-weight: 600;
-  }
-
-  #ratings-cards p {
-    margin: 4px 0;
-  }
-
-  .btn-view {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 16px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: #fff;
-    background: linear-gradient(135deg, #2563eb, #1e40af);
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  .btn-view:hover {
-    background: linear-gradient(135deg, #1e40af, #0f172a);
-    transform: translateY(-2px);
-  }
-</style>
 
   </section>
 <section id="learning-resources" class="tab-content" style="display: none;">
