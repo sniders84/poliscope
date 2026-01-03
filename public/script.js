@@ -2850,6 +2850,38 @@ function showRatings() {
       container.appendChild(card);
     });
 
+    // Extract numeric GovTrack ID from a govtrackLink URL
+function getGovTrackId(link) {
+  if (!link || typeof link !== 'string') return null;
+  const match = link.match(/\/(\d+)(?:\/|$)/);
+  return match ? Number(match[1]) : null;
+}
+
+// --- GovTrack metrics fetcher (Rankings tab) ---
+async function fetchGovTrackMetrics(official) {
+  try {
+    const res = await fetch('/data/govtrack.json');
+    if (!res.ok) return null;
+    const allData = await res.json();
+
+    const id = getGovTrackId(official.govtrackLink);
+    const match = allData.find(p => p.id === Number(id));
+
+    if (!match) return null;
+
+    return {
+      bills_cosponsored: match.roles?.[0]?.bills_cosponsored || 0,
+      bills_sponsored: match.roles?.[0]?.bills_sponsored || 0,
+      missed_votes: match.roles?.[0]?.missed_votes_pct || 0,
+      ideology_score: match.roles?.[0]?.ideology_score || null,
+      leadership_score: match.roles?.[0]?.leadership_score || null
+    };
+  } catch (e) {
+    console.error('GovTrack local fetch failed', e);
+    return null;
+  }
+}
+
     // After render, apply filters once to reflect any defaults
     applyRatingsFilters();
   });
@@ -3157,7 +3189,7 @@ document.getElementById('rate-me-btn').onclick = function() {
   activateRatings();
 })();
 
-// Rankings — minimal Top 10 render by office (uses saved ratings only)
+// Rankings — Top 10 render by office (ratings + GovTrack metrics)
 (function initRankingsRender() {
   const officeSel   = document.getElementById('rankingsOfficeFilter');
   const categorySel = document.getElementById('rankingsCategoryFilter');
@@ -3170,32 +3202,41 @@ document.getElementById('rate-me-btn').onclick = function() {
     catch { return {}; }
   }
 
-  function computePowerScoreFromRatings(official, saved) {
+  async function computePowerScore(official, saved) {
     const entry = saved[official.slug];
     const avg = entry && typeof entry.averageRating === 'number' ? entry.averageRating : 0;
-    // Normalize 0–5 to 0–100 then apply 50% weight vs placeholder 50% performance
     const ratingsScore = Math.max(0, Math.min(100, (avg / 5) * 100));
-    const performanceScore = 50; // placeholder until we wire GovTrack metrics
-    const penalties = 0; // placeholder until penalties are wired
 
-    const hybrid = (ratingsScore * 0.5) + (performanceScore * 0.5) - penalties;
-    return Math.round(hybrid * 10) / 10;
+    // Pull GovTrack metrics
+    const metrics = await fetchGovTrackMetrics(official);
+    if (!metrics) {
+      return ratingsScore; // fallback if no GovTrack data
+    }
+
+    // Example hybrid weighting
+    const govScore =
+      (metrics.bills_cosponsored * 0.1) +
+      (metrics.bills_sponsored * 0.2) -
+      (metrics.missed_votes * 0.5) +
+      (metrics.ideology_score * 0.3) +
+      (metrics.leadership_score * 0.4);
+
+    return Math.round((ratingsScore + govScore) / 2);
   }
 
-  function render() {
+  async function render() {
     const office = (officeSel.value || '').toLowerCase();
     const saved = getSavedRatings();
 
-    // Filter officials by office
     const officials = (window.allOfficials || [])
       .filter(o => (o.office || '').toLowerCase() === office);
 
     // Build rows with scores
-    const rows = officials.map(o => ({
-      official: o,
-      score: computePowerScoreFromRatings(o, saved),
-      streak: '' // placeholder
-    }));
+    const rows = [];
+    for (const o of officials) {
+      const score = await computePowerScore(o, saved);
+      rows.push({ official: o, score, streak: '' });
+    }
 
     // Sort desc, take Top 10
     rows.sort((a, b) => b.score - a.score);
@@ -3216,109 +3257,7 @@ document.getElementById('rate-me-btn').onclick = function() {
     });
   }
 
-  // Expose for toggle hook
   window.renderRankingsLeaderboard = render;
-
-  // React to filter changes
-  officeSel.addEventListener('change', render);
-  categorySel.addEventListener('change', render);
-})();
-// Ratings & Rankings — section toggle logic
-(function initRatingsRankingsToggle() {
-  const btnRatings  = document.getElementById('btn-ratings');
-  const btnRankings = document.getElementById('btn-rankings');
-  const ratingsSec  = document.getElementById('ratings-section');
-  const rankingsSec = document.getElementById('rankings-section');
-
-  if (!btnRatings || !btnRankings || !ratingsSec || !rankingsSec) return;
-
-  function activateRatings() {
-    btnRatings.classList.add('rr-tab-active');
-    btnRankings.classList.remove('rr-tab-active');
-    ratingsSec.classList.add('rr-section-active');
-    rankingsSec.classList.remove('rr-section-active');
-    ratingsSec.removeAttribute('aria-hidden');
-    rankingsSec.setAttribute('aria-hidden', 'true');
-  }
-
-  function activateRankings() {
-    btnRankings.classList.add('rr-tab-active');
-    btnRatings.classList.remove('rr-tab-active');
-    rankingsSec.classList.add('rr-section-active');
-    ratingsSec.classList.remove('rr-section-active');
-    rankingsSec.removeAttribute('aria-hidden');
-    rankingsSec.setAttribute('aria-hidden', 'false');
-  }
-
-  btnRatings.addEventListener('click', activateRatings);
-  btnRankings.addEventListener('click', activateRankings);
-
-  // Default view: Ratings active
-  activateRatings();
-})();
-// Rankings — minimal Top 10 render by office (uses saved ratings only)
-(function initRankingsRender() {
-  const officeSel   = document.getElementById('rankingsOfficeFilter');
-  const categorySel = document.getElementById('rankingsCategoryFilter');
-  const tableBody   = document.querySelector('#rankings-leaderboard tbody');
-
-  if (!officeSel || !categorySel || !tableBody) return;
-
-  function getSavedRatings() {
-    try { return JSON.parse(localStorage.getItem('ratingsData')) || {}; }
-    catch { return {}; }
-  }
-
-  function computePowerScoreFromRatings(official, saved) {
-    const entry = saved[official.slug];
-    const avg = entry && typeof entry.averageRating === 'number' ? entry.averageRating : 0;
-    // Normalize 0–5 to 0–100 then apply 50% weight vs placeholder 50% performance
-    const ratingsScore = Math.max(0, Math.min(100, (avg / 5) * 100));
-    const performanceScore = 50; // placeholder until GovTrack metrics are wired
-    const penalties = 0; // placeholder until penalties are wired
-
-    const hybrid = (ratingsScore * 0.5) + (performanceScore * 0.5) - penalties;
-    return Math.round(hybrid * 10) / 10;
-  }
-
-  function render() {
-    const office = (officeSel.value || '').toLowerCase();
-    const saved = getSavedRatings();
-
-    // Filter officials by office
-    const officials = (window.allOfficials || [])
-      .filter(o => (o.office || '').toLowerCase() === office);
-
-    // Build rows with scores
-    const rows = officials.map(o => ({
-      official: o,
-      score: computePowerScoreFromRatings(o, saved),
-      streak: '' // placeholder
-    }));
-
-    // Sort desc, take Top 10
-    rows.sort((a, b) => b.score - a.score);
-    const top10 = rows.slice(0, 10);
-
-    // Render table
-    tableBody.innerHTML = '';
-    top10.forEach((row, idx) => {
-      const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td>${idx + 1}</td>
-        <td>${row.official.name}</td>
-        <td>${row.official.office}</td>
-        <td>${row.score.toFixed(1)}</td>
-        <td>${row.streak}</td>
-      `;
-      tableBody.appendChild(tr);
-    });
-  }
-
-  // Expose for toggle hook
-  window.renderRankingsLeaderboard = render;
-
-  // React to filter changes
   officeSel.addEventListener('change', render);
   categorySel.addEventListener('change', render);
 })();
