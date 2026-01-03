@@ -2748,6 +2748,24 @@ function showCitizenship() {
   });
 }
 
+function renderResults(list) {
+  const tableBody = document.getElementById('rankingsTableBody');
+  if (!tableBody) return;
+
+  tableBody.innerHTML = '';
+  list.forEach((official, idx) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${idx + 1}</td>
+      <td>${official.name}</td>
+      <td>${official.office}</td>
+      <td>${official.averageRating ? (official.averageRating * 20).toFixed(1) : 'N/A'}</td>
+      <td></td>
+    `;
+    tableBody.appendChild(tr);
+  });
+}
+
 function applyRatingsFilters() {
   // For now, just show all officials unchanged
   renderResults(window.allOfficials || []);
