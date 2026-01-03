@@ -2882,11 +2882,6 @@ async function fetchGovTrackMetrics(official) {
   }
 }
 
-    // After render, apply filters once to reflect any defaults
-    applyRatingsFilters();
-  });
-}
-
 // Robust tokenized search + office/state/party filters
 (function initRatingsSearchFilters() {
   const searchEl  = document.getElementById('searchInput');
@@ -3188,31 +3183,6 @@ document.getElementById('rate-me-btn').onclick = function() {
   // Default: Ratings active
   activateRatings();
 })();
-
-// --- GovTrack metrics fetcher (Rankings tab) ---
-async function fetchGovTrackMetrics(official) {
-  try {
-    const res = await fetch('/data/govtrack.json');
-    if (!res.ok) return null;
-    const allData = await res.json();
-
-    const id = getGovTrackId(official.govtrackLink);
-    const match = allData.find(p => p.id === Number(id));
-
-    if (!match) return null;
-
-    return {
-      bills_cosponsored: match.roles?.[0]?.bills_cosponsored || 0,
-      bills_sponsored: match.roles?.[0]?.bills_sponsored || 0,
-      missed_votes: match.roles?.[0]?.missed_votes_pct || 0,
-      ideology_score: match.roles?.[0]?.ideology_score || null,
-      leadership_score: match.roles?.[0]?.leadership_score || null
-    };
-  } catch (e) {
-    console.error('GovTrack local fetch failed', e);
-    return null;
-  }
-}
 
 // Rankings — Top 10 render by office (ratings + GovTrack metrics)
 (function initRankingsRender() {
