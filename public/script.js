@@ -2811,7 +2811,7 @@ function showRatings() {
       card.dataset.party = partyKey;
 
       // ✅ Split name into two lines: first + last
-      const nameParts = (official.name || '').trim().split(' ');
+      const nameParts = (official.name || '').trim().split(/\s+/);
       const firstName = nameParts.slice(0, -1).join(' ') || nameParts[0] || '';
       const lastName = nameParts.slice(-1).join(' ') || '';
 
@@ -2852,41 +2852,59 @@ function showRatings() {
   const container  = document.getElementById('ratings-cards');
   if (!searchEl || !officeSel || !stateSel || !partySel || !container) return;
 
+  // Treat "All Offices", "All States & Territories", "All Parties" as no filter
+  const isAll = v => {
+    if (!v) return true;
+    const x = String(v).trim().toLowerCase();
+    return x === '' || x === 'all' || x.startsWith('all ');
+  };
+
+  // Normalize helper: collapse whitespace, remove diacritics
+  const normalizeText = (s) => {
+    return String(s || '')
+      .normalize('NFKD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .toLowerCase();
+  };
+
   function applyFilters() {
-    const q      = (searchEl.value || '').trim().toLowerCase();
-    const office = (officeSel.value || '').toLowerCase();
-    const state  = (stateSel.value || '').toLowerCase();
-    const party  = (partySel.value || '').toLowerCase();
+    const qRaw   = (searchEl.value || '');
+    const q      = normalizeText(qRaw);
+    const office = normalizeText(officeSel.value);
+    const state  = normalizeText(stateSel.value);
+    const party  = normalizeText(partySel.value);
 
     container.querySelectorAll('.info-card').forEach(card => {
       const firstNameEl = card.querySelector('.first-name');
       const lastNameEl  = card.querySelector('.last-name');
-      const officeKey   = (card.dataset.office || '').toLowerCase();
-      const stateKey    = (card.dataset.state || '').toLowerCase();
-      const partyKey    = (card.dataset.party || '').toLowerCase();
 
-      // ✅ Normalize full name into one string
-      const fullName = [
-        firstNameEl ? firstNameEl.textContent : '',
-        lastNameEl ? lastNameEl.textContent : ''
-      ].join(' ').trim().toLowerCase();
+      // ✅ Normalize full name into one continuous string
+      const fullName = normalizeText(
+        `${firstNameEl ? firstNameEl.textContent : ''} ${lastNameEl ? lastNameEl.textContent : ''}`
+      );
 
-      // Robust substring matching against full name
+      const officeKey = normalizeText(card.dataset.office || '');
+      const stateKey  = normalizeText(card.dataset.state || '');
+      const partyKey  = normalizeText(card.dataset.party || '');
+
       const matchesText   = !q || fullName.includes(q);
-      const matchesOffice = !office || officeKey.includes(office);
-      const matchesState  = !state || stateKey.includes(state);
-      const matchesParty  = !party || partyKey.includes(party);
+      const matchesOffice = isAll(office) || officeKey.includes(office);
+      const matchesState  = isAll(state) || stateKey.includes(state);
+      const matchesParty  = isAll(party) || partyKey.includes(party);
 
       card.style.display = (matchesText && matchesOffice && matchesState && matchesParty) ? '' : 'none';
     });
   }
 
+  // Listeners
   searchEl.addEventListener('input', applyFilters);
   officeSel.addEventListener('change', applyFilters);
   stateSel.addEventListener('change', applyFilters);
   partySel.addEventListener('change', applyFilters);
 
-  // Run once on load
+  // Run once on load to apply defaults
   applyFilters();
 })();
 
