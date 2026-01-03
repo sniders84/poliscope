@@ -2766,6 +2766,60 @@ function renderResults(list) {
   });
 }
 
+// --- GovTrack local JSON generator (Rankings tab only) ---
+function buildGovtrackJson() {
+  const officials = window.allOfficials || [];
+  const seen = new Set();
+  const entries = [];
+
+  for (const o of officials) {
+    if (!o) continue;
+    const id = getGovTrackId(o.govtrackLink);
+    if (!id || seen.has(id)) continue;
+    seen.add(id);
+
+    entries.push({
+      id,
+      name: o.name || 'Unknown',
+      roles: [
+        {
+          // Placeholder metrics; you can backfill later
+          bills_cosponsored: 0,
+          bills_sponsored: 0,
+          missed_votes_pct: 0,
+          ideology_score: null,
+          leadership_score: null
+        }
+      ]
+    });
+  }
+
+  return entries;
+}
+
+function exportGovtrackJson() {
+  const data = buildGovtrackJson();
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'govtrack.json';
+  document.body.appendChild(a);
+  a.click();
+  URL.revokeObjectURL(url);
+  a.remove();
+  console.log(`Exported govtrack.json with ${data.length} entries.`);
+}
+
+// --- GovTrack helpers (Rankings tab) ---
+// Extract numeric GovTrack ID from a link like:
+// https://www.govtrack.us/congress/members/katie_britt/456874/report-card/2024
+function getGovTrackId(link) {
+  if (!link || typeof link !== 'string') return null;
+  const match = link.match(/\/(\d+)(?:\/|$)/);
+  return match ? Number(match[1]) : null;
+}
+
 function applyRatingsFilters() {
   // For now, just show all officials unchanged
   renderResults(window.allOfficials || []);
