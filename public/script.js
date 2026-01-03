@@ -3334,100 +3334,101 @@ document.getElementById('rate-me-btn').onclick = function() {
     return match ? match[1] : null;
   }
 
-  // Fetch metrics for one official
-  async function fetchGovTrackMetrics(official) {
-    const id = getGovTrackId(official.govtrackLink);
-    if (!id) return null;
-    try {
-      const res = await fetch(`https://www.govtrack.us/api/v2/person/${id}`);
-      if (!res.ok) return null;
-      const data = await res.json();
+ // Fetch metrics for one official (via your own API route)
+async function fetchGovTrackMetrics(official) {
+  const id = getGovTrackId(official.govtrackLink);
+  if (!id) return null;
+  try {
+    // Call your serverless function instead of GovTrack directly
+    const res = await fetch(`/api/govtrack?id=${id}`);
+    if (!res.ok) return null;
+    const data = await res.json();
 
-      // Example fields (GovTrack API returns a lot of info)
-      return {
-        bills_cosponsored: data.roles?.[0]?.bills_cosponsored || 0,
-        bills_sponsored: data.roles?.[0]?.bills_sponsored || 0,
-        missed_votes: data.roles?.[0]?.missed_votes_pct || 0,
-        ideology_score: data.roles?.[0]?.ideology_score || null,
-        leadership_score: data.roles?.[0]?.leadership_score || null
-      };
-    } catch (e) {
-      console.error('GovTrack fetch failed', e);
-      return null;
-    }
+    // Example fields (GovTrack API returns a lot of info)
+    return {
+      bills_cosponsored: data.roles?.[0]?.bills_cosponsored || 0,
+      bills_sponsored: data.roles?.[0]?.bills_sponsored || 0,
+      missed_votes: data.roles?.[0]?.missed_votes_pct || 0,
+      ideology_score: data.roles?.[0]?.ideology_score || null,
+      leadership_score: data.roles?.[0]?.leadership_score || null
+    };
+  } catch (e) {
+    console.error('GovTrack fetch failed', e);
+    return null;
+  }
+}
+
+// Compute hybrid score with metrics + penalties
+function computeHybridScore(official, saved, metrics) {
+  const entry = saved[official.slug];
+  const avg = entry && typeof entry.averageRating === 'number' ? entry.averageRating : 0;
+  const ratingsScore = Math.max(0, Math.min(100, (avg / 5) * 100));
+
+  if (!metrics) {
+    return { score: null, disclaimer: 'N/A (no GovTrack data)' };
   }
 
-  // Compute hybrid score with metrics + penalties
-  function computeHybridScore(official, saved, metrics) {
-    const entry = saved[official.slug];
-    const avg = entry && typeof entry.averageRating === 'number' ? entry.averageRating : 0;
-    const ratingsScore = Math.max(0, Math.min(100, (avg / 5) * 100));
+  // Simple weighting: Ratings 50%, Performance 50%
+  let performanceScore = 0;
+  performanceScore += metrics.bills_cosponsored * 0.5;
+  performanceScore += metrics.bills_sponsored * 0.5;
+  if (metrics.ideology_score) performanceScore += metrics.ideology_score;
+  if (metrics.leadership_score) performanceScore += metrics.leadership_score;
 
-    if (!metrics) {
-      return { score: null, disclaimer: 'N/A (no GovTrack data)' };
-    }
+  // Penalties
+  let penalties = 0;
+  penalties += metrics.missed_votes * 0.5; // missed votes penalty
 
-    // Simple weighting: Ratings 50%, Performance 50%
-    let performanceScore = 0;
-    performanceScore += metrics.bills_cosponsored * 0.5;
-    performanceScore += metrics.bills_sponsored * 0.5;
-    if (metrics.ideology_score) performanceScore += metrics.ideology_score;
-    if (metrics.leadership_score) performanceScore += metrics.leadership_score;
+  const hybrid = (ratingsScore * 0.5) + (performanceScore * 0.5) - penalties;
+  return { score: Math.round(hybrid * 10) / 10, disclaimer: null };
+}
 
-    // Penalties
-    let penalties = 0;
-    penalties += metrics.missed_votes * 0.5; // missed votes penalty
+// Render leaderboard with GovTrack data
+async function renderWithGovTrack(office) {
+  const saved = JSON.parse(localStorage.getItem('ratingsData')) || {};
+  const officials = (window.allOfficials || [])
+    .filter(o => (o.office || '').toLowerCase() === office);
 
-    const hybrid = (ratingsScore * 0.5) + (performanceScore * 0.5) - penalties;
-    return { score: Math.round(hybrid * 10) / 10, disclaimer: null };
+  const rows = [];
+  for (const o of officials) {
+    const metrics = await fetchGovTrackMetrics(o);
+    const { score, disclaimer } = computeHybridScore(o, saved, metrics);
+    rows.push({ official: o, score, disclaimer });
   }
 
-  // Render leaderboard with GovTrack data
-  async function renderWithGovTrack(office) {
-    const saved = JSON.parse(localStorage.getItem('ratingsData')) || {};
-    const officials = (window.allOfficials || [])
-      .filter(o => (o.office || '').toLowerCase() === office);
+  // Sort: valid scores first, then N/A at bottom
+  rows.sort((a, b) => {
+    if (a.score === null && b.score === null) return 0;
+    if (a.score === null) return 1;
+    if (b.score === null) return -1;
+    return b.score - a.score;
+  });
 
-    const rows = [];
-    for (const o of officials) {
-      const metrics = await fetchGovTrackMetrics(o);
-      const { score, disclaimer } = computeHybridScore(o, saved, metrics);
-      rows.push({ official: o, score, disclaimer });
-    }
+  const top10 = rows.slice(0, 10);
 
-    // Sort: valid scores first, then N/A at bottom
-    rows.sort((a, b) => {
-      if (a.score === null && b.score === null) return 0;
-      if (a.score === null) return 1;
-      if (b.score === null) return -1;
-      return b.score - a.score;
-    });
+  tableBody.innerHTML = '';
+  top10.forEach((row, idx) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${idx + 1}</td>
+      <td>${row.official.name}</td>
+      <td>${row.official.office}</td>
+      <td>${row.score !== null ? row.score.toFixed(1) : row.disclaimer}</td>
+      <td></td>
+    `;
+    tableBody.appendChild(tr);
+  });
+}
 
-    const top10 = rows.slice(0, 10);
-
-    tableBody.innerHTML = '';
-    top10.forEach((row, idx) => {
-      const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td>${idx + 1}</td>
-        <td>${row.official.name}</td>
-        <td>${row.official.office}</td>
-        <td>${row.score !== null ? row.score.toFixed(1) : row.disclaimer}</td>
-        <td></td>
-      `;
-      tableBody.appendChild(tr);
-    });
-  }
-
-  // Hook into Rankings toggle
-  const btnRankings = document.getElementById('btn-rankings');
-  const officeSel   = document.getElementById('rankingsOfficeFilter');
-  if (btnRankings && officeSel) {
-    btnRankings.addEventListener('click', () => {
-      renderWithGovTrack((officeSel.value || '').toLowerCase());
-    });
-    officeSel.addEventListener('change', () => {
-      renderWithGovTrack((officeSel.value || '').toLowerCase());
-    });
-  }
+// Hook into Rankings toggle
+const btnRankings = document.getElementById('btn-rankings');
+const officeSel   = document.getElementById('rankingsOfficeFilter');
+if (btnRankings && officeSel) {
+  btnRankings.addEventListener('click', () => {
+    renderWithGovTrack((officeSel.value || '').toLowerCase());
+  });
+  officeSel.addEventListener('change', () => {
+    renderWithGovTrack((officeSel.value || '').toLowerCase());
+  });
+}
 })();
