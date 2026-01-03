@@ -6791,3 +6791,55 @@ section > h3 {
   box-shadow: 0 0 12px rgba(255,255,255,0.25); /* neutral white glow */
   background-color: #2b2b2b;                   /* keep background consistent */
 }
+/* Ratings & Rankings — toggle + sections */
+.rr-toggle {
+  display: flex;
+  gap: 8px;
+  margin: 12px 0 16px;
+}
+
+.rr-tab {
+  border: 1px solid #1f6feb;
+  background: #fff;
+  color: #1f6feb;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.rr-tab-active {
+  background: #1f6feb;
+  color: #fff;
+}
+
+.rr-section { display: none; }
+.rr-section-active { display: block; }
+
+/* Filters row (Rankings section) */
+.filters-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+/* Leaderboard */
+.leaderboard-wrap { overflow-x: auto; }
+.leaderboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+.leaderboard-table thead th {
+  background: #f8fafc;
+  font-weight: 700;
+}
+.leaderboard-table th,
+.leaderboard-table td {
+  border-bottom: 1px solid #e5e7eb;
+  padding: 10px;
+  text-align: left;
+}
+
+/* Optional: subtle rank badges for top spots */
+.leaderboard-table tr:first-child td { font-weight: 700; }
