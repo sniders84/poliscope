@@ -2861,33 +2861,34 @@ function showRatings() {
   const officeSel = document.getElementById('officeFilter');
   const stateSel  = document.getElementById('stateFilter');
   const partySel  = document.getElementById('partyFilter');
+  const container = document.getElementById('ratings-cards');
+  if (!searchEl || !officeSel || !stateSel || !partySel || !container) return;
 
-  if (!searchEl || !officeSel || !stateSel || !partySel) return;
+  const normalize = s => String(s || '')
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .toLowerCase();
 
-  // Treat "All …" as no filter
   const isAll = v => {
-    const x = normalizeText(v);
-    return x === '' || x === 'all' || x.startsWith('all ');
+    const x = normalize(v);
+    return !x || x === 'all' || x.startsWith('all ');
   };
 
-  // Expose a single filter function used both on load and on input
-  window.applyRatingsFilters = function applyRatingsFilters() {
-    const container = document.getElementById('ratings-cards');
-    if (!container) return;
-
-    const qNorm   = normalizeText(searchEl.value);
-    const tokens  = qNorm.length ? qNorm.split(' ').filter(Boolean) : [];
-    const office  = normalizeText(officeSel.value);
-    const state   = normalizeText(stateSel.value);
-    const party   = normalizeText(partySel.value);
+  function applyFilters() {
+    const tokens = normalize(searchEl.value).split(' ').filter(Boolean);
+    const office = normalize(officeSel.value);
+    const state  = normalize(stateSel.value);
+    const party  = normalize(partySel.value);
 
     container.querySelectorAll('.info-card').forEach(card => {
-      const fullName   = card.dataset.fullname || '';
-      const officeKey  = card.dataset.office || '';
-      const stateKey   = card.dataset.state  || '';
-      const partyKey   = card.dataset.party  || '';
+      const fullName = normalize(card.dataset.fullname || '');
+      const officeKey = card.dataset.office || '';
+      const stateKey  = card.dataset.state || '';
+      const partyKey  = card.dataset.party || '';
 
-      // AND logic across tokens for progressive narrowing
+      // ✅ Every token must be present in the full name
       const matchesText   = !tokens.length || tokens.every(t => fullName.includes(t));
       const matchesOffice = isAll(office) || officeKey.includes(office);
       const matchesState  = isAll(state)  || stateKey.includes(state);
@@ -2895,13 +2896,15 @@ function showRatings() {
 
       card.style.display = (matchesText && matchesOffice && matchesState && matchesParty) ? '' : 'none';
     });
-  };
+  }
 
-  // Listeners (single, namespaced by function reference)
-  searchEl.addEventListener('input', window.applyRatingsFilters);
-  officeSel.addEventListener('change', window.applyRatingsFilters);
-  stateSel.addEventListener('change', window.applyRatingsFilters);
-  partySel.addEventListener('change', window.applyRatingsFilters);
+  searchEl.addEventListener('input', applyFilters);
+  officeSel.addEventListener('change', applyFilters);
+  stateSel.addEventListener('change', applyFilters);
+  partySel.addEventListener('change', applyFilters);
+
+  // Run once on load
+  applyFilters();
 })();
 
 // Open Ratings Modal
