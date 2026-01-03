@@ -3419,7 +3419,11 @@ async function fetchGovTrackMetrics(official) {
     const allData = await res.json();
 
     const id = getGovTrackId(official.govtrackLink);
+    console.log("Looking for GovTrack ID:", id, "for", official.name);
+
     const match = allData.find(p => p.id === Number(id));
+    console.log("Match found:", match);
+
     if (!match) return null;
 
     return {
