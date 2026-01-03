@@ -6721,3 +6721,38 @@ section > h3 {
   color: #1e90ff;
   margin-top: 4px;
 }
+/* ============================================================
+   Ratings & Rankings Tab — Party Stripe Borders
+   ============================================================ */
+
+#ratings-cards .info-card {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 280px;
+  height: 240px;
+  background: #2b2b2b;
+  color: #fff;
+  border-radius: 8px;
+  position: relative;
+  padding: 12px;
+  box-sizing: border-box;
+  border: 4px solid transparent;   /* default transparent border */
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Party-specific stripes */
+#ratings-cards .info-card[data-party="republican"]   { border-color: #c00; }       /* Republican red */
+#ratings-cards .info-card[data-party="democrat"]     { border-color: #0015bc; }    /* Democrat blue */
+#ratings-cards .info-card[data-party="independent"]  { border-color: #666; }       /* Neutral gray */
+#ratings-cards .info-card[data-party="libertarian"]  { border-color: #e6b800; }    /* Gold/yellow */
+#ratings-cards .info-card[data-party="green"]        { border-color: #228b22; }    /* Green */
+#ratings-cards .info-card[data-party="constitution"] { border-color: #8b0000; }    /* Dark red */
+#ratings-cards .info-card[data-party="nonpartisan"]  { border-color: #444; }       /* Dark neutral */
+
+/* Hover: outline only, keep background dark */
+#ratings-cards .info-card:hover {
+  border-color: #1e3a8a;           /* blue outline on hover */
+  background-color: #2b2b2b;       /* preserve background */
+  box-shadow: 0 0 8px rgba(30,58,138,0.5);
+}
