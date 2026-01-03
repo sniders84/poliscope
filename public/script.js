@@ -3223,8 +3223,14 @@ document.getElementById('rate-me-btn').onclick = function() {
     const office = (officeSel.value || '').toLowerCase();
     const saved = getSavedRatings();
 
-    const officials = (window.allOfficials || [])
-      .filter(o => (o.office || '').toLowerCase() === office);
+   const officials = (window.allOfficials || []).filter(o => {
+  const officeVal = (o.office || '').toLowerCase();
+  // If dropdown is "all" or empty, include everyone
+  if (!office || office === 'all offices' || office === 'all') {
+    return true;
+  }
+  return officeVal === office;
+});
 
     // Build rows with scores
     const rows = [];
