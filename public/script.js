@@ -3341,24 +3341,24 @@ document.getElementById('rate-me-btn').onclick = function() {
 
  // Fetch metrics for one official (via your own API route)
 async function fetchGovTrackMetrics(official) {
-  const id = getGovTrackId(official.govtrackLink);
-  if (!id) return null;
   try {
-    // Call your serverless function instead of GovTrack directly
-    const res = await fetch(`/api/govtrack?id=${id}`);
+    const res = await fetch('/data/govtrack.json');
     if (!res.ok) return null;
-    const data = await res.json();
+    const allData = await res.json();
 
-    // Example fields (GovTrack API returns a lot of info)
+    const id = getGovTrackId(official.govtrackLink);
+    const match = allData.find(p => p.id === Number(id));
+    if (!match) return null;
+
     return {
-      bills_cosponsored: data.roles?.[0]?.bills_cosponsored || 0,
-      bills_sponsored: data.roles?.[0]?.bills_sponsored || 0,
-      missed_votes: data.roles?.[0]?.missed_votes_pct || 0,
-      ideology_score: data.roles?.[0]?.ideology_score || null,
-      leadership_score: data.roles?.[0]?.leadership_score || null
+      bills_cosponsored: match.roles?.[0]?.bills_cosponsored || 0,
+      bills_sponsored: match.roles?.[0]?.bills_sponsored || 0,
+      missed_votes: match.roles?.[0]?.missed_votes_pct || 0,
+      ideology_score: match.roles?.[0]?.ideology_score || null,
+      leadership_score: match.roles?.[0]?.leadership_score || null
     };
   } catch (e) {
-    console.error('GovTrack fetch failed', e);
+    console.error('GovTrack local fetch failed', e);
     return null;
   }
 }
