@@ -2850,36 +2850,9 @@ function showRatings() {
       container.appendChild(card);
     });
 
-    // Extract numeric GovTrack ID from a govtrackLink URL
-function getGovTrackId(link) {
-  if (!link || typeof link !== 'string') return null;
-  const match = link.match(/\/(\d+)(?:\/|$)/);
-  return match ? Number(match[1]) : null;
-}
-
-// --- GovTrack metrics fetcher (Rankings tab) ---
-async function fetchGovTrackMetrics(official) {
-  try {
-    const res = await fetch('/data/govtrack.json');
-    if (!res.ok) return null;
-    const allData = await res.json();
-
-    const id = getGovTrackId(official.govtrackLink);
-    const match = allData.find(p => p.id === Number(id));
-
-    if (!match) return null;
-
-    return {
-      bills_cosponsored: match.roles?.[0]?.bills_cosponsored || 0,
-      bills_sponsored: match.roles?.[0]?.bills_sponsored || 0,
-      missed_votes: match.roles?.[0]?.missed_votes_pct || 0,
-      ideology_score: match.roles?.[0]?.ideology_score || null,
-      leadership_score: match.roles?.[0]?.leadership_score || null
-    };
-  } catch (e) {
-    console.error('GovTrack local fetch failed', e);
-    return null;
-  }
+    // After render, apply filters once to reflect any defaults
+    applyRatingsFilters();
+  });
 }
 
 // Robust tokenized search + office/state/party filters
@@ -3184,7 +3157,7 @@ document.getElementById('rate-me-btn').onclick = function() {
   activateRatings();
 })();
 
-// Rankings — Top 10 render by office (ratings + GovTrack metrics)
+// Rankings — minimal Top 10 render by office (uses saved ratings only)
 (function initRankingsRender() {
   const officeSel   = document.getElementById('rankingsOfficeFilter');
   const categorySel = document.getElementById('rankingsCategoryFilter');
@@ -3197,47 +3170,32 @@ document.getElementById('rate-me-btn').onclick = function() {
     catch { return {}; }
   }
 
-  async function computePowerScore(official, saved) {
+  function computePowerScoreFromRatings(official, saved) {
     const entry = saved[official.slug];
     const avg = entry && typeof entry.averageRating === 'number' ? entry.averageRating : 0;
+    // Normalize 0–5 to 0–100 then apply 50% weight vs placeholder 50% performance
     const ratingsScore = Math.max(0, Math.min(100, (avg / 5) * 100));
+    const performanceScore = 50; // placeholder until we wire GovTrack metrics
+    const penalties = 0; // placeholder until penalties are wired
 
-    // Pull GovTrack metrics
-    const metrics = await fetchGovTrackMetrics(official);
-    if (!metrics) {
-      return ratingsScore; // fallback if no GovTrack data
-    }
-
-    // Example hybrid weighting
-    const govScore =
-      (metrics.bills_cosponsored * 0.1) +
-      (metrics.bills_sponsored * 0.2) -
-      (metrics.missed_votes * 0.5) +
-      (metrics.ideology_score * 0.3) +
-      (metrics.leadership_score * 0.4);
-
-    return Math.round((ratingsScore + govScore) / 2);
+    const hybrid = (ratingsScore * 0.5) + (performanceScore * 0.5) - penalties;
+    return Math.round(hybrid * 10) / 10;
   }
 
-  async function render() {
+  function render() {
     const office = (officeSel.value || '').toLowerCase();
     const saved = getSavedRatings();
 
-   const officials = (window.allOfficials || []).filter(o => {
-  const officeVal = (o.office || '').toLowerCase();
-  // If dropdown is "all" or empty, include everyone
-  if (!office || office === 'all offices' || office === 'all') {
-    return true;
-  }
-  return officeVal === office;
-});
+    // Filter officials by office
+    const officials = (window.allOfficials || [])
+      .filter(o => (o.office || '').toLowerCase() === office);
 
     // Build rows with scores
-    const rows = [];
-    for (const o of officials) {
-      const score = await computePowerScore(o, saved);
-      rows.push({ official: o, score, streak: '' });
-    }
+    const rows = officials.map(o => ({
+      official: o,
+      score: computePowerScoreFromRatings(o, saved),
+      streak: '' // placeholder
+    }));
 
     // Sort desc, take Top 10
     rows.sort((a, b) => b.score - a.score);
@@ -3258,7 +3216,10 @@ document.getElementById('rate-me-btn').onclick = function() {
     });
   }
 
+  // Expose for toggle hook
   window.renderRankingsLeaderboard = render;
+
+  // React to filter changes
   officeSel.addEventListener('change', render);
   categorySel.addEventListener('change', render);
 })();
