@@ -2686,7 +2686,6 @@ document.getElementById("quiz-next").onclick = () => {
   }
 };
 
-
 // === Citizenship & Immigration tab renderer ===
 function showCitizenship() {
   showTab('citizenship');
@@ -2748,6 +2747,12 @@ function showCitizenship() {
     container.appendChild(grid);
   });
 }
+
+function applyRatingsFilters() {
+  // For now, just show all officials unchanged
+  renderResults(window.allOfficials || []);
+}
+
 // ==============================
 // Ratings/Rankings — tab renderer
 // ==============================
