@@ -2859,15 +2859,20 @@ function showRatings() {
     const party  = (partySel.value || '').toLowerCase();
 
     container.querySelectorAll('.info-card').forEach(card => {
-      const nameEl    = card.querySelector('.name-block');
-      const officeKey = (card.dataset.office || '').toLowerCase();
-      const stateKey  = (card.dataset.state || '').toLowerCase();
-      const partyKey  = (card.dataset.party || '').toLowerCase();
+      const firstNameEl = card.querySelector('.first-name');
+      const lastNameEl  = card.querySelector('.last-name');
+      const officeKey   = (card.dataset.office || '').toLowerCase();
+      const stateKey    = (card.dataset.state || '').toLowerCase();
+      const partyKey    = (card.dataset.party || '').toLowerCase();
 
-      const nameTxt   = nameEl ? nameEl.textContent.toLowerCase() : '';
+      // ✅ Normalize full name into one string
+      const fullName = [
+        firstNameEl ? firstNameEl.textContent : '',
+        lastNameEl ? lastNameEl.textContent : ''
+      ].join(' ').trim().toLowerCase();
 
-      // ✅ Robust substring matching
-      const matchesText   = !q || nameTxt.includes(q);
+      // Robust substring matching against full name
+      const matchesText   = !q || fullName.includes(q);
       const matchesOffice = !office || officeKey.includes(office);
       const matchesState  = !state || stateKey.includes(state);
       const matchesParty  = !party || partyKey.includes(party);
@@ -2881,7 +2886,7 @@ function showRatings() {
   stateSel.addEventListener('change', applyFilters);
   partySel.addEventListener('change', applyFilters);
 
-  // Run once on load to apply any default filter values
+  // Run once on load
   applyFilters();
 })();
 
