@@ -2843,6 +2843,48 @@ function showRatings() {
   });
 }
 
+// ✅ Ratings/Rankings — robust search + office + state + party filter
+(function initRatingsSearchFilters() {
+  const searchEl   = document.getElementById('searchInput');
+  const officeSel  = document.getElementById('officeFilter');
+  const stateSel   = document.getElementById('stateFilter');
+  const partySel   = document.getElementById('partyFilter');
+  const container  = document.getElementById('ratings-cards');
+  if (!searchEl || !officeSel || !stateSel || !partySel || !container) return;
+
+  function applyFilters() {
+    const q      = (searchEl.value || '').trim().toLowerCase();
+    const office = (officeSel.value || '').toLowerCase();
+    const state  = (stateSel.value || '').toLowerCase();
+    const party  = (partySel.value || '').toLowerCase();
+
+    container.querySelectorAll('.info-card').forEach(card => {
+      const nameEl    = card.querySelector('.name-block');
+      const officeKey = (card.dataset.office || '').toLowerCase();
+      const stateKey  = (card.dataset.state || '').toLowerCase();
+      const partyKey  = (card.dataset.party || '').toLowerCase();
+
+      const nameTxt   = nameEl ? nameEl.textContent.toLowerCase() : '';
+
+      // ✅ Robust substring matching
+      const matchesText   = !q || nameTxt.includes(q);
+      const matchesOffice = !office || officeKey.includes(office);
+      const matchesState  = !state || stateKey.includes(state);
+      const matchesParty  = !party || partyKey.includes(party);
+
+      card.style.display = (matchesText && matchesOffice && matchesState && matchesParty) ? '' : 'none';
+    });
+  }
+
+  searchEl.addEventListener('input', applyFilters);
+  officeSel.addEventListener('change', applyFilters);
+  stateSel.addEventListener('change', applyFilters);
+  partySel.addEventListener('change', applyFilters);
+
+  // Run once on load to apply any default filter values
+  applyFilters();
+})();
+
 // Open Ratings Modal
 function openRatingsModal(slug) {
   Promise.all([
