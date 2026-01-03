@@ -2815,7 +2815,7 @@ function showRatings() {
       if (partyKey === 'gop')        partyKey = 'republican';
       card.dataset.party    = partyKey;
 
-      // Full name normalization for robust searching (single string)
+      // ✅ Full name normalization for robust searching
       const fullNameRaw = String(official.name || '').trim();
       card.dataset.fullname = normalizeText(fullNameRaw);
 
