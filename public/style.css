@@ -6646,3 +6646,78 @@ section > h3 {
   border-color: #1e3a8a;           /* blue outline */
   background-color: #2b2b2b !important; /* force background to stay dark */
 }
+/* ============================================================
+   Voting Tab Cards — Compact, Uniform Tiles
+   ============================================================ */
+#voting-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* smaller min width */
+  gap: 12px;                  /* tighter horizontal + vertical spacing */
+  padding: 12px;              /* less padding around grid */
+  justify-items: center;
+}
+
+#voting-cards .voting-card {
+  background: #2b2b2b;
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 220px;               /* uniform width */
+  height: 160px;              /* uniform height, square-ish */
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;    /* center content vertically */
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+#voting-cards .voting-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-light);
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+/* Inner content */
+#voting-cards .voting-card a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+  width: 100%;
+  height: 100%;
+}
+
+#voting-cards .voting-card .card-icon {
+  font-size: 2rem;
+  margin-bottom: 4px;
+}
+
+#voting-cards .voting-card .card-label {
+  font-size: 0.95rem;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+#voting-cards .voting-card .card-description {
+  font-size: 0.8rem;
+  color: #ddd;
+  line-height: 1.2;
+  margin: 0;
+  padding: 0 4px;
+  text-align: center;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;       /* clamp to 2 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+#voting-cards .voting-card .card-date {
+  font-size: 0.75rem;
+  color: #1e90ff;
+  margin-top: 4px;
+}
