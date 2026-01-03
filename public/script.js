@@ -3223,3 +3223,36 @@ document.getElementById('rate-me-btn').onclick = function() {
   officeSel.addEventListener('change', render);
   categorySel.addEventListener('change', render);
 })();
+// Ratings & Rankings — section toggle logic
+(function initRatingsRankingsToggle() {
+  const btnRatings  = document.getElementById('btn-ratings');
+  const btnRankings = document.getElementById('btn-rankings');
+  const ratingsSec  = document.getElementById('ratings-section');
+  const rankingsSec = document.getElementById('rankings-section');
+
+  if (!btnRatings || !btnRankings || !ratingsSec || !rankingsSec) return;
+
+  function activateRatings() {
+    btnRatings.classList.add('rr-tab-active');
+    btnRankings.classList.remove('rr-tab-active');
+    ratingsSec.classList.add('rr-section-active');
+    rankingsSec.classList.remove('rr-section-active');
+    ratingsSec.removeAttribute('aria-hidden');
+    rankingsSec.setAttribute('aria-hidden', 'true');
+  }
+
+  function activateRankings() {
+    btnRankings.classList.add('rr-tab-active');
+    btnRatings.classList.remove('rr-tab-active');
+    rankingsSec.classList.add('rr-section-active');
+    ratingsSec.classList.remove('rr-section-active');
+    rankingsSec.removeAttribute('aria-hidden');
+    rankingsSec.setAttribute('aria-hidden', 'false');
+  }
+
+  btnRatings.addEventListener('click', activateRatings);
+  btnRankings.addEventListener('click', activateRankings);
+
+  // Default view: Ratings active
+  activateRatings();
+})();
