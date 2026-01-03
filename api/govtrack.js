@@ -1,7 +1,5 @@
-
 // /api/govtrack.js
 export default async function handler(req, res) {
-  // Allow GET only (simple and safe)
   if (req.method !== 'GET') {
     res.status(405).json({ error: 'Method not allowed' });
     return;
@@ -14,7 +12,12 @@ export default async function handler(req, res) {
   }
 
   try {
-    const upstream = await fetch(`https://www.govtrack.us/api/v2/person/${id}`);
+    const upstream = await fetch(`https://www.govtrack.us/api/v2/person/${id}`, {
+      headers: {
+        'User-Agent': 'PoliscopeApp/1.0 (mailto:your-email@example.com)'
+      }
+    });
+
     if (!upstream.ok) {
       res.status(upstream.status).json({ error: 'GovTrack request failed' });
       return;
@@ -22,12 +25,8 @@ export default async function handler(req, res) {
 
     const data = await upstream.json();
 
-    // Add simple caching to reduce repeated calls
-    // Cache for 6 hours (21600 seconds)
-    res.setHeader('Cache-Control', 's-maxage=21600, stale-while-revalidate=43200');
-
-    // Allow your frontend to read this response
     res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Cache-Control', 's-maxage=21600, stale-while-revalidate=43200');
 
     res.status(200).json(data);
   } catch (err) {
