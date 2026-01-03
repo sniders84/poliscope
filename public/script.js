@@ -3117,3 +3117,109 @@ document.getElementById('rate-me-btn').onclick = function() {
   document.getElementById('rate-modal').style.display = 'block';
   initStarRatings();
 };
+// Ratings & Rankings — section toggle
+(function initRatingsRankingsToggle() {
+  const btnRatings  = document.getElementById('btn-ratings');
+  const btnRankings = document.getElementById('btn-rankings');
+  const ratingsSec  = document.getElementById('ratings-section');
+  const rankingsSec = document.getElementById('rankings-section');
+
+  if (!btnRatings || !btnRankings || !ratingsSec || !rankingsSec) return;
+
+  function activateRatings() {
+    btnRatings.classList.add('rr-tab-active');
+    btnRankings.classList.remove('rr-tab-active');
+    ratingsSec.classList.add('rr-section-active');
+    rankingsSec.classList.remove('rr-section-active');
+    ratingsSec.removeAttribute('aria-hidden');
+    rankingsSec.setAttribute('aria-hidden', 'true');
+  }
+
+  function activateRankings() {
+    btnRankings.classList.add('rr-tab-active');
+    btnRatings.classList.remove('rr-tab-active');
+    rankingsSec.classList.add('rr-section-active');
+    ratingsSec.classList.remove('rr-section-active');
+    rankingsSec.removeAttribute('aria-hidden');
+    rankingsSec.setAttribute('aria-hidden', 'false');
+  }
+
+  btnRatings.addEventListener('click', activateRatings);
+  btnRankings.addEventListener('click', () => {
+    activateRankings();
+    // Trigger leaderboard render when Rankings opens
+    if (typeof window.renderRankingsLeaderboard === 'function') {
+      window.renderRankingsLeaderboard();
+    }
+  });
+
+  // Default: Ratings active
+  activateRatings();
+})();
+
+// Rankings — minimal Top 10 render by office (uses saved ratings only)
+(function initRankingsRender() {
+  const officeSel   = document.getElementById('rankingsOfficeFilter');
+  const categorySel = document.getElementById('rankingsCategoryFilter');
+  const tableBody   = document.querySelector('#rankings-leaderboard tbody');
+
+  if (!officeSel || !categorySel || !tableBody) return;
+
+  function getSavedRatings() {
+    try { return JSON.parse(localStorage.getItem('ratingsData')) || {}; }
+    catch { return {}; }
+  }
+
+  function computePowerScoreFromRatings(official, saved) {
+    const entry = saved[official.slug];
+    const avg = entry && typeof entry.averageRating === 'number' ? entry.averageRating : 0;
+    // Normalize 0–5 to 0–100 then apply 50% weight vs placeholder 50% performance
+    const ratingsScore = Math.max(0, Math.min(100, (avg / 5) * 100));
+    const performanceScore = 50; // placeholder until we wire GovTrack metrics
+    const penalties = 0; // placeholder until penalties are wired
+
+    const hybrid = (ratingsScore * 0.5) + (performanceScore * 0.5) - penalties;
+    return Math.round(hybrid * 10) / 10;
+  }
+
+  function render() {
+    const office = (officeSel.value || '').toLowerCase();
+    const saved = getSavedRatings();
+
+    // Filter officials by office
+    const officials = (window.allOfficials || [])
+      .filter(o => (o.office || '').toLowerCase() === office);
+
+    // Build rows with scores
+    const rows = officials.map(o => ({
+      official: o,
+      score: computePowerScoreFromRatings(o, saved),
+      streak: '' // placeholder
+    }));
+
+    // Sort desc, take Top 10
+    rows.sort((a, b) => b.score - a.score);
+    const top10 = rows.slice(0, 10);
+
+    // Render table
+    tableBody.innerHTML = '';
+    top10.forEach((row, idx) => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${idx + 1}</td>
+        <td>${row.official.name}</td>
+        <td>${row.official.office}</td>
+        <td>${row.score.toFixed(1)}</td>
+        <td>${row.streak}</td>
+      `;
+      tableBody.appendChild(tr);
+    });
+  }
+
+  // Expose for toggle hook
+  window.renderRankingsLeaderboard = render;
+
+  // React to filter changes
+  officeSel.addEventListener('change', render);
+  categorySel.addEventListener('change', render);
+})();
