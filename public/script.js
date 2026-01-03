@@ -2762,6 +2762,17 @@ const ratingCategories = [
   "Toughness","Ability to Unify","Effectiveness","Health","Fashion Style","Electability"
 ];
 
+// Normalize helper: collapse whitespace, strip diacritics, lowercase
+function normalizeText(s) {
+  return String(s || "")
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^\w\s'-]/g, "")     // remove non-word punctuation except apostrophes/hyphens
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+}
+
 // Show Ratings tab
 function showRatings() {
   Promise.all([
@@ -2772,15 +2783,11 @@ function showRatings() {
     fetch('senators-ratings.json').then(res => res.json()),
     fetch('housereps-ratings.json').then(res => res.json())
   ]).then(([presidents, vps, governors, ltgovs, senators, housereps]) => {
-    let ratings = [
-      ...presidents,
-      ...vps,
-      ...governors,
-      ...ltgovs,
-      ...senators,
-      ...housereps
+    const ratings = [
+      ...presidents, ...vps, ...governors, ...ltgovs, ...senators, ...housereps
     ];
 
+    // Merge saved ratings
     const saved = JSON.parse(localStorage.getItem('ratingsData')) || {};
     ratings.forEach(r => {
       if (saved[r.slug]) {
@@ -2800,22 +2807,24 @@ function showRatings() {
       const card = document.createElement('div');
       card.className = 'info-card';
 
-      // ✅ Tag each card with normalized dataset attributes
-      card.dataset.office = (official.office || '').toLowerCase();
-      card.dataset.state  = (official.state || '').toLowerCase();
-
-      // normalize party values
-      let partyKey = (official.party || '').toLowerCase();
+      // Dataset tags for filters (normalized)
+      card.dataset.office   = normalizeText(official.office || '');
+      card.dataset.state    = normalizeText(official.state || '');
+      let partyKey          = normalizeText(official.party || '');
       if (partyKey === 'democratic') partyKey = 'democrat';
-      if (partyKey === 'gop') partyKey = 'republican';
-      card.dataset.party = partyKey;
+      if (partyKey === 'gop')        partyKey = 'republican';
+      card.dataset.party    = partyKey;
 
-      // ✅ Split name into two lines: first + last
-      const nameParts = (official.name || '').trim().split(/\s+/);
+      // Full name normalization for robust searching (single string)
+      const fullNameRaw = String(official.name || '').trim();
+      card.dataset.fullname = normalizeText(fullNameRaw);
+
+      // UI name split (first/last) for display only
+      const nameParts = fullNameRaw.split(/\s+/);
       const firstName = nameParts.slice(0, -1).join(' ') || nameParts[0] || '';
-      const lastName = nameParts.slice(-1).join(' ') || '';
+      const lastName  = nameParts.slice(-1).join(' ') || '';
 
-      // ✅ Horizontal layout markup with uniform photo + name split
+      // Card markup
       card.innerHTML = `
         <div class="card-left">
           <img src="${official.photo}" alt="${official.name}" class="card-image" />
@@ -2840,72 +2849,59 @@ function showRatings() {
       `;
       container.appendChild(card);
     });
+
+    // After render, apply filters once to reflect any defaults
+    applyRatingsFilters();
   });
 }
 
-// ✅ Ratings/Rankings — robust search + office + state + party filter
+// Robust tokenized search + office/state/party filters
 (function initRatingsSearchFilters() {
-  const searchEl   = document.getElementById('searchInput');
-  const officeSel  = document.getElementById('officeFilter');
-  const stateSel   = document.getElementById('stateFilter');
-  const partySel   = document.getElementById('partyFilter');
-  const container  = document.getElementById('ratings-cards');
-  if (!searchEl || !officeSel || !stateSel || !partySel || !container) return;
+  const searchEl  = document.getElementById('searchInput');
+  const officeSel = document.getElementById('officeFilter');
+  const stateSel  = document.getElementById('stateFilter');
+  const partySel  = document.getElementById('partyFilter');
 
-  // Treat "All Offices", "All States & Territories", "All Parties" as no filter
+  if (!searchEl || !officeSel || !stateSel || !partySel) return;
+
+  // Treat "All …" as no filter
   const isAll = v => {
-    if (!v) return true;
-    const x = String(v).trim().toLowerCase();
+    const x = normalizeText(v);
     return x === '' || x === 'all' || x.startsWith('all ');
   };
 
-  // Normalize helper: collapse whitespace, remove diacritics
-  const normalizeText = (s) => {
-    return String(s || '')
-      .normalize('NFKD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .replace(/\s+/g, ' ')
-      .trim()
-      .toLowerCase();
-  };
+  // Expose a single filter function used both on load and on input
+  window.applyRatingsFilters = function applyRatingsFilters() {
+    const container = document.getElementById('ratings-cards');
+    if (!container) return;
 
-  function applyFilters() {
-    const qRaw   = (searchEl.value || '');
-    const q      = normalizeText(qRaw);
-    const office = normalizeText(officeSel.value);
-    const state  = normalizeText(stateSel.value);
-    const party  = normalizeText(partySel.value);
+    const qNorm   = normalizeText(searchEl.value);
+    const tokens  = qNorm.length ? qNorm.split(' ').filter(Boolean) : [];
+    const office  = normalizeText(officeSel.value);
+    const state   = normalizeText(stateSel.value);
+    const party   = normalizeText(partySel.value);
 
     container.querySelectorAll('.info-card').forEach(card => {
-      const firstNameEl = card.querySelector('.first-name');
-      const lastNameEl  = card.querySelector('.last-name');
+      const fullName   = card.dataset.fullname || '';
+      const officeKey  = card.dataset.office || '';
+      const stateKey   = card.dataset.state  || '';
+      const partyKey   = card.dataset.party  || '';
 
-      // ✅ Normalize full name into one continuous string
-      const fullName = normalizeText(
-        `${firstNameEl ? firstNameEl.textContent : ''} ${lastNameEl ? lastNameEl.textContent : ''}`
-      );
-
-      const officeKey = normalizeText(card.dataset.office || '');
-      const stateKey  = normalizeText(card.dataset.state || '');
-      const partyKey  = normalizeText(card.dataset.party || '');
-
-      const matchesText   = !q || fullName.includes(q);
+      // AND logic across tokens for progressive narrowing
+      const matchesText   = !tokens.length || tokens.every(t => fullName.includes(t));
       const matchesOffice = isAll(office) || officeKey.includes(office);
-      const matchesState  = isAll(state) || stateKey.includes(state);
-      const matchesParty  = isAll(party) || partyKey.includes(party);
+      const matchesState  = isAll(state)  || stateKey.includes(state);
+      const matchesParty  = isAll(party)  || partyKey.includes(party);
 
       card.style.display = (matchesText && matchesOffice && matchesState && matchesParty) ? '' : 'none';
     });
-  }
+  };
 
-  // Listeners
-  searchEl.addEventListener('input', applyFilters);
-  officeSel.addEventListener('change', applyFilters);
-  stateSel.addEventListener('change', applyFilters);
-  partySel.addEventListener('change', applyFilters);
-
-  // Run once on load to apply defaults
-  applyFilters();
+  // Listeners (single, namespaced by function reference)
+  searchEl.addEventListener('input', window.applyRatingsFilters);
+  officeSel.addEventListener('change', window.applyRatingsFilters);
+  stateSel.addEventListener('change', window.applyRatingsFilters);
+  partySel.addEventListener('change', window.applyRatingsFilters);
 })();
 
 // Open Ratings Modal
