@@ -3197,10 +3197,10 @@ function getGovTrackId(official, legislators) {
   return match ? match.id.govtrack : null;
 }
 
-// Fetch missed votes percentage from GovTrack
+// Fetch missed votes percentage from GovTrack (via proxy)
 async function fetchMissedVotes(govtrackId) {
   try {
-    const res = await fetch(`https://www.govtrack.us/api/v2/person/${govtrackId}`);
+    const res = await fetch(`/api/govtrack-proxy?endpoint=person&id=${govtrackId}`);
     if (!res.ok) throw new Error('GovTrack API error');
     const data = await res.json();
     return typeof data.missed_votes_pct === 'number' ? data.missed_votes_pct : 0;
@@ -3213,7 +3213,7 @@ async function fetchMissedVotes(govtrackId) {
 // Fetch number of bills introduced by a legislator
 async function fetchBillsIntroduced(govtrackId) {
   try {
-    const res = await fetch(`https://www.govtrack.us/api/v2/bill?sponsor=${govtrackId}`);
+    const res = await fetch(`/api/govtrack-proxy?endpoint=bill&sponsor=${govtrackId}`);
     if (!res.ok) throw new Error('GovTrack bill API error');
     const data = await res.json();
     return data.objects ? data.objects.length : 0;
@@ -3226,7 +3226,7 @@ async function fetchBillsIntroduced(govtrackId) {
 // Fetch number of bills cosponsored by a legislator
 async function fetchBillsCosponsored(govtrackId) {
   try {
-    const res = await fetch(`https://www.govtrack.us/api/v2/bill?cosponsor=${govtrackId}`);
+    const res = await fetch(`/api/govtrack-proxy?endpoint=bill&cosponsor=${govtrackId}`);
     if (!res.ok) throw new Error('GovTrack bill API error');
     const data = await res.json();
     return data.objects ? data.objects.length : 0;
@@ -3239,7 +3239,7 @@ async function fetchBillsCosponsored(govtrackId) {
 // Fetch number of laws enacted (bills sponsored that became law)
 async function fetchLawsEnacted(govtrackId) {
   try {
-    const res = await fetch(`https://www.govtrack.us/api/v2/bill?sponsor=${govtrackId}&current_status=enacted_signed`);
+    const res = await fetch(`/api/govtrack-proxy?endpoint=bill&sponsor=${govtrackId}&current_status=enacted_signed`);
     if (!res.ok) throw new Error('GovTrack bill API error');
     const data = await res.json();
     return data.objects ? data.objects.length : 0;
@@ -3252,7 +3252,7 @@ async function fetchLawsEnacted(govtrackId) {
 // Fetch committee positions for a legislator
 async function fetchCommitteePositions(govtrackId) {
   try {
-    const res = await fetch(`https://www.govtrack.us/api/v2/role?person=${govtrackId}`);
+    const res = await fetch(`/api/govtrack-proxy?endpoint=role&person=${govtrackId}`);
     if (!res.ok) throw new Error('GovTrack role API error');
     const data = await res.json();
 
@@ -3261,11 +3261,11 @@ async function fetchCommitteePositions(govtrackId) {
       let score = 0;
       committees.forEach(c => {
         if (c.position && c.position.toLowerCase().includes('chair')) {
-          score += 3; // weight chair positions higher
+          score += 3;
         } else if (c.position && c.position.toLowerCase().includes('ranking')) {
-          score += 2; // ranking member
+          score += 2;
         } else {
-          score += 1; // regular membership
+          score += 1;
         }
       });
       return score;
@@ -3280,7 +3280,7 @@ async function fetchCommitteePositions(govtrackId) {
 // Fetch count of bipartisan bills a legislator cosponsored
 async function fetchJoiningBipartisanBills(govtrackId) {
   try {
-    const res = await fetch(`https://www.govtrack.us/api/v2/bill?cosponsor=${govtrackId}`);
+    const res = await fetch(`/api/govtrack-proxy?endpoint=bill&cosponsor=${govtrackId}`);
     if (!res.ok) throw new Error('GovTrack bill API error');
     const data = await res.json();
 
@@ -3303,7 +3303,7 @@ async function fetchJoiningBipartisanBills(govtrackId) {
 // Fetch count of bipartisan bills a legislator introduced
 async function fetchWritingBipartisanBills(govtrackId) {
   try {
-    const res = await fetch(`https://www.govtrack.us/api/v2/bill?sponsor=${govtrackId}`);
+    const res = await fetch(`/api/govtrack-proxy?endpoint=bill&sponsor=${govtrackId}`);
     if (!res.ok) throw new Error('GovTrack bill API error');
     const data = await res.json();
 
@@ -3323,10 +3323,10 @@ async function fetchWritingBipartisanBills(govtrackId) {
   }
 }
 
-// Fetch count of bills with powerful cosponsors (chairs, ranking members, leaders)
+// Fetch count of bills with powerful cosponsors
 async function fetchPowerfulCosponsors(govtrackId) {
   try {
-    const res = await fetch(`https://www.govtrack.us/api/v2/bill?sponsor=${govtrackId}`);
+    const res = await fetch(`/api/govtrack-proxy?endpoint=bill&sponsor=${govtrackId}`);
     if (!res.ok) throw new Error('GovTrack bill API error');
     const data = await res.json();
 
@@ -3358,7 +3358,7 @@ async function fetchPowerfulCosponsors(govtrackId) {
 // Fetch leadership score based on role titles
 async function fetchLeadershipScore(govtrackId) {
   try {
-    const res = await fetch(`https://www.govtrack.us/api/v2/role?person=${govtrackId}`);
+    const res = await fetch(`/api/govtrack-proxy?endpoint=role&person=${govtrackId}`);
     if (!res.ok) throw new Error('GovTrack role API error');
     const data = await res.json();
 
@@ -3384,7 +3384,7 @@ async function fetchLeadershipScore(govtrackId) {
 // Fetch count of cross-chamber cosponsored bills
 async function fetchWorkingWithOtherChamber(govtrackId, office) {
   try {
-    const res = await fetch(`https://www.govtrack.us/api/v2/bill?cosponsor=${govtrackId}`);
+    const res = await fetch(`/api/govtrack-proxy?endpoint=bill&cosponsor=${govtrackId}`);
     if (!res.ok) throw new Error('GovTrack bill API error');
     const data = await res.json();
 
@@ -3393,10 +3393,8 @@ async function fetchWorkingWithOtherChamber(govtrackId, office) {
       data.objects.forEach(bill => {
         const type = (bill.bill_type || '').toLowerCase();
         if (office.includes('senator')) {
-          // Senator cosponsoring House bills
           if (type.startsWith('h')) count++;
         } else if (office.includes('representative')) {
-          // Representative cosponsoring Senate bills
           if (type.startsWith('s')) count++;
         }
       });
@@ -3411,7 +3409,7 @@ async function fetchWorkingWithOtherChamber(govtrackId, office) {
 // Fetch count of bills sponsored that made it out of committee
 async function fetchBillsOutOfCommittee(govtrackId) {
   try {
-    const res = await fetch(`https://www.govtrack.us/api/v2/bill?sponsor=${govtrackId}`);
+    const res = await fetch(`/api/govtrack-proxy?endpoint=bill&sponsor=${govtrackId}`);
     if (!res.ok) throw new Error('GovTrack bill API error');
     const data = await res.json();
 
@@ -3436,11 +3434,9 @@ async function fetchBillsOutOfCommittee(govtrackId) {
   }
 }
 
-// Fetch misconduct records (placeholder for external sources)
+// Fetch misconduct records (placeholder)
 async function fetchMisconduct(govtrackId, official) {
   try {
-    // TODO: Integrate ProPublica / Ballotpedia / Ethics Committee feeds
-    // For now, return 0 (no misconduct) until external data is wired in.
     return 0;
   } catch (err) {
     console.error('Error fetching misconduct:', err);
