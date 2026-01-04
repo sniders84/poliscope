@@ -3200,13 +3200,41 @@ function getGovTrackId(official, legislators) {
 
   if (!officeSel || !categorySel || !tableBody) return;
 
+// Weighted scoring configuration
+const WEIGHTS = {
+  billsCosponsored: 0.6,
+  billsIntroduced: 1.2,
+  lawsEnacted: 6.0,
+  committeePositions: 4.0,
+  joiningBipartisanBills: 2.0,
+  writingBipartisanBills: 3.0,
+  powerfulCosponsors: 1.5,
+  leadershipScore: 5.0,
+  workingWithOtherChamber: 2.5,
+  billsOutOfCommittee: 3.0,
+  missedVotes: -2.0,
+  misconduct: -10.0
+};
+
+const EXEC_WEIGHTS = {
+  executiveOrders: 2.5,
+  vetoes: 3.0,
+  budgetsProposed: 2.0,
+  appointmentsConfirmed: 3.0,
+  leadershipScore: 5.0,
+  workingWithLegislature: 3.5,
+  crisisResponse: 4.0,
+  misconduct: -12.0,
+  missedDuties: -3.0
+};
+
 // Scoring engine: branch by office type
 async function computeCompositeScore(official, legislators) {
   const office = (official.office || '').toLowerCase();
 
   if (office.includes('senator') || office.includes('representative')) {
     const result = await scoreLegislator(official, legislators);
-    console.log('Composite result for legislator', official.name, result); // DEBUG
+    console.log('Composite result for legislator', official.name, result);
     return result;
   }
 
@@ -3218,14 +3246,14 @@ async function computeCompositeScore(official, legislators) {
     office.includes('lieutenant governor')
   ) {
     const result = await scoreExecutive(official, legislators);
-    console.log('Composite result for executive', official.name, result); // DEBUG
+    console.log('Composite result for executive', official.name, result);
     return result;
   }
 
   return { composite: 0, breakdown: {} };
 }
 
-// Legislator scoring: read directly from rankings JSON
+// Legislator scoring: apply weights
 async function scoreLegislator(official, legislators) {
   let entry = legislators.find(l => l.id === official.id);
   if (!entry) {
@@ -3236,10 +3264,7 @@ async function scoreLegislator(official, legislators) {
     return { composite: 0, breakdown: {} };
   }
 
-  console.log('Legislator entry for', official.name, entry); // DEBUG
-  console.log('Legislator entry keys for', official.name, Object.keys(entry)); // DEBUG
-
-  const breakdown = {
+  const raw = {
     billsCosponsored: entry.bills_cosponsored || 0,
     billsIntroduced: entry.bills_introduced || 0,
     lawsEnacted: entry.laws_enacted || 0,
@@ -3254,24 +3279,28 @@ async function scoreLegislator(official, legislators) {
     misconduct: entry.misconduct || 0
   };
 
-  const composite =
-    breakdown.billsCosponsored +
-    breakdown.billsIntroduced +
-    breakdown.lawsEnacted +
-    breakdown.committeePositions +
-    breakdown.joiningBipartisanBills +
-    breakdown.writingBipartisanBills +
-    breakdown.powerfulCosponsors +
-    breakdown.leadershipScore +
-    breakdown.workingWithOtherChamber +
-    breakdown.billsOutOfCommittee -
-    breakdown.missedVotes -
-    breakdown.misconduct;
+  const contributions = {
+    billsCosponsored: raw.billsCosponsored * WEIGHTS.billsCosponsored,
+    billsIntroduced: raw.billsIntroduced * WEIGHTS.billsIntroduced,
+    lawsEnacted: raw.lawsEnacted * WEIGHTS.lawsEnacted,
+    committeePositions: raw.committeePositions * WEIGHTS.committeePositions,
+    joiningBipartisanBills: raw.joiningBipartisanBills * WEIGHTS.joiningBipartisanBills,
+    writingBipartisanBills: raw.writingBipartisanBills * WEIGHTS.writingBipartisanBills,
+    powerfulCosponsors: raw.powerfulCosponsors * WEIGHTS.powerfulCosponsors,
+    leadershipScore: raw.leadershipScore * WEIGHTS.leadershipScore,
+    workingWithOtherChamber: raw.workingWithOtherChamber * WEIGHTS.workingWithOtherChamber,
+    billsOutOfCommittee: raw.billsOutOfCommittee * WEIGHTS.billsOutOfCommittee,
+    missedVotes: raw.missedVotes * WEIGHTS.missedVotes,
+    misconduct: raw.misconduct * WEIGHTS.misconduct
+  };
 
-  return { composite: Math.round(composite * 10) / 10, breakdown };
+  const composite = Object.values(contributions).reduce((sum, v) => sum + v, 0);
+
+  const breakdown = { raw, weights: WEIGHTS, contributions, total: Math.round(composite * 10) / 10 };
+  return { composite: breakdown.total, breakdown };
 }
 
-// Executive scoring: read directly from rankings JSON
+// Executive scoring: apply weights
 async function scoreExecutive(official, legislators) {
   let entry = legislators.find(l => l.id === official.id);
   if (!entry) {
@@ -3282,10 +3311,7 @@ async function scoreExecutive(official, legislators) {
     return { composite: 0, breakdown: {} };
   }
 
-  console.log('Executive entry for', official.name, entry); // DEBUG
-  console.log('Executive entry keys for', official.name, Object.keys(entry)); // DEBUG
-
-  const breakdown = {
+  const raw = {
     executiveOrders: entry.executive_orders || 0,
     vetoes: entry.vetoes || 0,
     budgetsProposed: entry.budgets_proposed || 0,
@@ -3297,137 +3323,72 @@ async function scoreExecutive(official, legislators) {
     missedDuties: entry.missed_duties || 0
   };
 
-  const composite =
-    breakdown.executiveOrders +
-    breakdown.vetoes +
-    breakdown.budgetsProposed +
-    breakdown.appointmentsConfirmed +
-    breakdown.leadershipScore +
-    breakdown.workingWithLegislature +
-    breakdown.crisisResponse -
-    breakdown.misconduct -
-    breakdown.missedDuties;
+  const contributions = {
+    executiveOrders: raw.executiveOrders * EXEC_WEIGHTS.executiveOrders,
+    vetoes: raw.vetoes * EXEC_WEIGHTS.vetoes,
+    budgetsProposed: raw.budgetsProposed * EXEC_WEIGHTS.budgetsProposed,
+    appointmentsConfirmed: raw.appointmentsConfirmed * EXEC_WEIGHTS.appointmentsConfirmed,
+    leadershipScore: raw.leadershipScore * EXEC_WEIGHTS.leadershipScore,
+    workingWithLegislature: raw.workingWithLegislature * EXEC_WEIGHTS.workingWithLegislature,
+    crisisResponse: raw.crisisResponse * EXEC_WEIGHTS.crisisResponse,
+    misconduct: raw.misconduct * EXEC_WEIGHTS.misconduct,
+    missedDuties: raw.missedDuties * EXEC_WEIGHTS.missedDuties
+  };
 
-  return { composite: Math.round(composite * 10) / 10, breakdown };
+  const composite = Object.values(contributions).reduce((sum, v) => sum + v, 0);
+
+  const breakdown = { raw, weights: EXEC_WEIGHTS, contributions, total: Math.round(composite * 10) / 10 };
+  return { composite: breakdown.total, breakdown };
 }
 
-// Show scorecard modal with breakdown (scoped modal toggle)
+// Show scorecard modal with weighted breakdown
+function formatScore(value) {
+  const cls = value >= 0 ? 'score-positive' : 'score-negative';
+  return `<span class="${cls}">${value.toFixed(1)}</span>`;
+}
+
 function showScorecard(official, breakdown) {
   console.log('Opening modal for:', official.name);
   console.log('Breakdown object for', official.name, breakdown);
 
   document.getElementById('scorecardName').textContent = official.name;
   const table = document.getElementById('scorecardBreakdown');
-table.innerHTML = `
-  <tbody>
-    <tr><td>Bills Cosponsored</td><td>${breakdown.billsCosponsored}</td></tr>
-    <tr><td>Bills Introduced</td><td>${breakdown.billsIntroduced}</td></tr>
-    <tr><td>Laws Enacted</td><td>${breakdown.lawsEnacted}</td></tr>
-    <tr><td>Committee Positions</td><td>${breakdown.committeePositions}</td></tr>
-    <tr><td>Bipartisan Cosponsored</td><td>${breakdown.joiningBipartisanBills}</td></tr>
-    <tr><td>Bipartisan Sponsored</td><td>${breakdown.writingBipartisanBills}</td></tr>
-    <tr><td>Powerful Cosponsors</td><td>${breakdown.powerfulCosponsors}</td></tr>
-    <tr><td>Leadership Score</td><td>${breakdown.leadershipScore}</td></tr>
-    <tr><td>Cross Chamber</td><td>${breakdown.workingWithOtherChamber}</td></tr>
-    <tr><td>Bills Out of Committee</td><td>${breakdown.billsOutOfCommittee}</td></tr>
-    <tr><td>Missed Votes</td><td>${breakdown.missedVotes}</td></tr>
-    <tr><td>Misconduct</td><td>${breakdown.misconduct}</td></tr>
-  </tbody>
-`;
+
+  if (breakdown && breakdown.raw && breakdown.contributions && breakdown.weights) {
+    const b = breakdown;
+    const rows = Object.keys(b.contributions).map(key => `
+      <tr>
+        <td>${key}</td>
+        <td>${b.raw[key]}</td>
+        <td>${b.weights[key]}</td>
+        <td>${formatScore(b.contributions[key])}</td>
+      </tr>
+    `).join('');
+
+    table.innerHTML = `
+      <tbody>
+        <tr>
+          <td><strong>Power Score</strong></td>
+          <td colspan="3">${formatScore(b.total)}</td>
+        </tr>
+        <tr>
+          <td><strong>Category</strong></td>
+          <td><strong>Raw</strong></td>
+          <td><strong>Weight</strong></td>
+          <td><strong>Contribution</strong></td>
+        </tr>
+        ${rows}
+      </tbody>
+    `;
+  } else {
+    table.innerHTML = `
+      <tbody>
+        <tr><td>Power Score</td><td>${formatScore(breakdown.total || 0)}</td></tr>
+      </tbody>
+    `;
+  }
 
   const modal = document.getElementById('scorecardModal');
   modal.classList.add('is-open');
   modal.setAttribute('aria-hidden', 'false');
 }
-
-async function render() {
-  const office = (officeSel.value || '').toLowerCase();
-  const legislators = await loadRankingsFile(office);
-
-  if (Array.isArray(legislators) && legislators.length > 0) {
-    console.log('Sample object from rankings JSON:', legislators[0]);
-  } else {
-    console.warn('No officials loaded from rankings JSON');
-  }
-
-  const seen = new Set();
-  const officials = (window.allOfficials || [])
-    .filter(o => (o.office || '').toLowerCase() === office)
-    .filter(o => {
-      if (seen.has(o.slug)) return false;
-      seen.add(o.slug);
-      return true;
-    });
-
-  const rows = [];
-  for (const o of officials) {
-    const result = await computeCompositeScore(o, legislators);
-    rows.push({ official: o, score: result.composite, breakdown: result.breakdown || {}, streak: '' });
-  }
-
-  rows.sort((a, b) => b.score - a.score);
-
-  tableBody.innerHTML = '';
-  rows.forEach((row, idx) => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td>${idx + 1}</td>
-      <td>
-        <a href="#" class="scorecard-link" data-slug="${row.official.slug}">
-          ${row.official.name}
-        </a>
-      </td>
-      <td>${row.official.office}</td>
-      <td>${row.score.toFixed(1)}</td>
-      <td>${row.streak}</td>
-    `;
-    tableBody.appendChild(tr);
-  });
-
-  const links = tableBody.querySelectorAll('.scorecard-link');
-  links.forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      const slug = link.dataset.slug;
-      console.log('Scorecard link clicked:', slug); // DEBUG
-      const row = rows.find(r => r.official.slug === slug);
-      if (row) {
-        console.log('Found row for:', row.official.name); // DEBUG
-        showScorecard(row.official, row.breakdown);
-      } else {
-        console.warn('No breakdown found for slug:', slug);
-      }
-    });
-  });
-}
-
-// Close modal when clicking the close button
-document.getElementById('scorecardClose').addEventListener('click', () => {
-  const modal = document.getElementById('scorecardModal');
-  modal.classList.remove('is-open');
-  modal.setAttribute('aria-hidden', 'true');
-});
-
-document.getElementById('scorecardModal').addEventListener('click', e => {
-  if (e.target.id === 'scorecardModal') {
-    const modal = document.getElementById('scorecardModal');
-    modal.classList.remove('is-open');
-       modal.setAttribute('aria-hidden', 'true');
-  }
-});
-
-// Hook up leaderboard rendering and dropdown changes
-window.renderRankingsLeaderboard = () => {
-  render().catch(err => console.error('Error rendering leaderboard:', err));
-};
-
-officeSel.addEventListener('change', () => {
-  render().catch(err => console.error('Error rendering leaderboard:', err));
-});
-
-categorySel.addEventListener('change', () => {
-  render().catch(err => console.error('Error rendering leaderboard:', err));
-});
-
-// close the IIFE if this script is wrapped
-})();
