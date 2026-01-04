@@ -1,3 +1,37 @@
+// Debug: global error trap + DOM/JSON audit
+window.onerror = function(msg, src, line, col, err) {
+  console.error('GLOBAL ERROR:', { msg, src, line, col, stack: err?.stack });
+};
+
+(function auditDOMAndData() {
+  const ids = [
+    'officials-container','ratings-cards','rate-modal','ratings-modal',
+    'quiz-submit','quiz-next','typologyQuizModal','civicsQuizModal',
+    'cabinetModal','pollModal','network-stories'
+  ];
+  ids.forEach(id => {
+    if (!document.getElementById(id)) {
+      console.error(`MISSING ELEMENT: #${id}`);
+    }
+  });
+
+  const jsonPaths = [
+    '/governors.json','/ltgovernors.json','/senators.json','/housereps.json',
+    '/cabinet.json','/state-links.json','/political-groups.json',
+    '/president-ratings.json','/vicepresident-ratings.json','/governors-ratings.json',
+    '/ltgovernors-ratings.json','/senators-ratings.json','/housereps-ratings.json'
+  ];
+  jsonPaths.forEach(async path => {
+    try {
+      const res = await fetch(path);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      await res.json();
+    } catch (e) {
+      console.error(`JSON LOAD FAIL: ${path}`, e);
+    }
+  });
+})();
+
 // === FAVORITES STORAGE & HELPERS (FINAL & PERSISTENT) ===
 window.favorites = JSON.parse(localStorage.getItem('favorites')) || {
   podcasts: [],
