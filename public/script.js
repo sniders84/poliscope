@@ -3318,7 +3318,8 @@ function showScorecard(official, breakdown) {
 
   document.getElementById('scorecardName').textContent = official.name;
   const table = document.getElementById('scorecardBreakdown');
-  table.innerHTML = `
+table.innerHTML = `
+  <tbody>
     <tr><td>Bills Cosponsored</td><td>${breakdown.billsCosponsored}</td></tr>
     <tr><td>Bills Introduced</td><td>${breakdown.billsIntroduced}</td></tr>
     <tr><td>Laws Enacted</td><td>${breakdown.lawsEnacted}</td></tr>
@@ -3331,7 +3332,8 @@ function showScorecard(official, breakdown) {
     <tr><td>Bills Out of Committee</td><td>${breakdown.billsOutOfCommittee}</td></tr>
     <tr><td>Missed Votes</td><td>${breakdown.missedVotes}</td></tr>
     <tr><td>Misconduct</td><td>${breakdown.misconduct}</td></tr>
-  `;
+  </tbody>
+`;
 
   const modal = document.getElementById('scorecardModal');
   modal.classList.add('is-open');
