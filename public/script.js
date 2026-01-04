@@ -3470,6 +3470,29 @@ document.getElementById('scorecardModal').addEventListener('click', e => {
   }
 });
 
+// Open scoring logic modal
+document.getElementById('scoringLogicBtn').addEventListener('click', () => {
+  const modal = document.getElementById('scoringLogicModal');
+  modal.classList.add('is-open');
+  modal.setAttribute('aria-hidden', 'false');
+});
+
+// Close scoring logic modal with the ✕ button
+document.getElementById('scoringLogicClose').addEventListener('click', () => {
+  const modal = document.getElementById('scoringLogicModal');
+  modal.classList.remove('is-open');
+  modal.setAttribute('aria-hidden', 'true');
+});
+
+// Close scoring logic modal when clicking outside content
+document.getElementById('scoringLogicModal').addEventListener('click', e => {
+  if (e.target.id === 'scoringLogicModal') {
+    const modal = document.getElementById('scoringLogicModal');
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+  }
+});
+
 // Hook up leaderboard rendering and dropdown changes
 window.renderRankingsLeaderboard = () => {
   render().catch(err => console.error('Error rendering leaderboard:', err));
