@@ -3251,9 +3251,14 @@ async function computeCompositeScore(official, legislators) {
 
 // Legislator scoring: apply weights but preserve flat breakdown
 async function scoreLegislator(official, legislators) {
-  let entry = legislators.find(l => l.id === official.id) ||
-              legislators.find(l => (l.name || '').toLowerCase() === (official.name || '').toLowerCase());
-  if (!entry) return { composite: 0, breakdown: {} };
+  let entry =
+    legislators.find(l => l.id === official.id) ||
+    legislators.find(l => (l.name || '').toLowerCase() === (official.name || '').toLowerCase());
+
+  if (!entry) {
+    console.warn('No legislator entry found for', official.name);
+    return { composite: 0, breakdown: {} };
+  }
 
   const breakdown = {
     billsCosponsored: entry.bills_cosponsored || 0,
@@ -3289,9 +3294,14 @@ async function scoreLegislator(official, legislators) {
 
 // Executive scoring: apply weights but preserve flat breakdown
 async function scoreExecutive(official, legislators) {
-  let entry = legislators.find(l => l.id === official.id) ||
-              legislators.find(l => (l.name || '').toLowerCase() === (official.name || '').toLowerCase());
-  if (!entry) return { composite: 0, breakdown: {} };
+  let entry =
+    legislators.find(l => l.id === official.id) ||
+    legislators.find(l => (l.name || '').toLowerCase() === (official.name || '').toLowerCase());
+
+  if (!entry) {
+    console.warn('No executive entry found for', official.name);
+    return { composite: 0, breakdown: {} };
+  }
 
   const breakdown = {
     executiveOrders: entry.executive_orders || 0,
@@ -3322,7 +3332,7 @@ async function scoreExecutive(official, legislators) {
 // Show scorecard modal with weighted breakdown (calculate contributions on the fly)
 function formatScore(value) {
   const cls = value >= 0 ? 'score-positive' : 'score-negative';
-  return `<span class="${cls}">${value.toFixed(1)}</span>`;
+  return `<span class="${cls}">${Number.isFinite(value) ? value.toFixed(1) : '0.0'}</span>`;
 }
 
 function showScorecard(official, breakdown) {
@@ -3332,15 +3342,38 @@ function showScorecard(official, breakdown) {
   document.getElementById('scorecardName').textContent = official.name;
   const table = document.getElementById('scorecardBreakdown');
 
-  // Build rows dynamically: raw, weight, contribution
-  const rows = Object.keys(breakdown).map(key => {
-    const weight = WEIGHTS[key] ?? EXEC_WEIGHTS[key] ?? null;
-    if (weight === null) return '';
-    const raw = breakdown[key];
+  // Build rows: raw, weight, contribution. Only include keys that have a weight.
+  const keys = Object.keys(breakdown).filter(k => (k in WEIGHTS) || (k in EXEC_WEIGHTS));
+  const rowsHtml = keys.map(key => {
+    const raw = breakdown[key] || 0;
+    const weight = (key in WEIGHTS) ? WEIGHTS[key] : EXEC_WEIGHTS[key];
     const contrib = raw * weight;
+    // Friendly labels
+    const labelMap = {
+      billsCosponsored: 'Bills Cosponsored',
+      billsIntroduced: 'Bills Introduced',
+      lawsEnacted: 'Laws Enacted',
+      committeePositions: 'Committee Positions',
+      joiningBipartisanBills: 'Bipartisan Cosponsored',
+      writingBipartisanBills: 'Bipartisan Sponsored',
+      powerfulCosponsors: 'Powerful Cosponsors',
+      leadershipScore: 'Leadership Score',
+      workingWithOtherChamber: 'Cross Chamber',
+      billsOutOfCommittee: 'Bills Out of Committee',
+      missedVotes: 'Missed Votes (%)',
+      misconduct: 'Misconduct',
+      executiveOrders: 'Executive Orders',
+      vetoes: 'Vetoes',
+      budgetsProposed: 'Budgets Proposed',
+      appointmentsConfirmed: 'Appointments Confirmed',
+      workingWithLegislature: 'Working With Legislature',
+      crisisResponse: 'Crisis Response',
+      missedDuties: 'Missed Duties'
+    };
+    const label = labelMap[key] || key;
     return `
       <tr>
-        <td>${key}</td>
+        <td>${label}</td>
         <td>${raw}</td>
         <td>${weight}</td>
         <td>${formatScore(contrib)}</td>
@@ -3352,7 +3385,7 @@ function showScorecard(official, breakdown) {
     <tbody>
       <tr>
         <td><strong>Power Score</strong></td>
-        <td colspan="3">${formatScore(breakdown.composite || 0)}</td>
+        <td colspan="3">${formatScore(official.composite ?? 0)}</td>
       </tr>
       <tr>
         <td><strong>Category</strong></td>
@@ -3360,7 +3393,7 @@ function showScorecard(official, breakdown) {
         <td><strong>Weight</strong></td>
         <td><strong>Contribution</strong></td>
       </tr>
-      ${rows}
+      ${rowsHtml}
     </tbody>
   `;
 
