@@ -3333,154 +3333,154 @@ function getGovTrackId(official, legislators) {
     return `<span class="${cls}">${Number.isFinite(value) ? value.toFixed(1) : '0.0'}</span>`;
   }
 
-  // Show scorecard modal with weighted breakdown
-  function showScorecard(official, breakdown) {
-    document.getElementById('scorecardName').textContent = official.name;
-    const table = document.getElementById('scorecardBreakdown');
+ // Show scorecard modal with weighted breakdown
+function showScorecard(official, breakdown, composite) {
+  document.getElementById('scorecardName').textContent = official.name;
+  const table = document.getElementById('scorecardBreakdown');
 
-    const keys = Object.keys(breakdown).filter(k => (k in WEIGHTS) || (k in EXEC_WEIGHTS));
-    const rowsHtml = keys.map(key => {
-      const raw = breakdown[key] || 0;
-      const weight = (key in WEIGHTS) ? WEIGHTS[key] : EXEC_WEIGHTS[key];
-      const contrib = raw * weight;
-      const labelMap = {
-        billsCosponsored: 'Bills Cosponsored',
-        billsIntroduced: 'Bills Introduced',
-        lawsEnacted: 'Laws Enacted',
-        committeePositions: 'Committee Positions',
-        joiningBipartisanBills: 'Bipartisan Cosponsored',
-        writingBipartisanBills: 'Bipartisan Sponsored',
-        powerfulCosponsors: 'Powerful Cosponsors',
-        leadershipScore: 'Leadership Score',
-        workingWithOtherChamber: 'Cross Chamber',
-        billsOutOfCommittee: 'Bills Out of Committee',
-        missedVotes: 'Missed Votes (%)',
-        misconduct: 'Misconduct',
-        executiveOrders: 'Executive Orders',
-        vetoes: 'Vetoes',
-        budgetsProposed: 'Budgets Proposed',
-        appointmentsConfirmed: 'Appointments Confirmed',
-        workingWithLegislature: 'Working With Legislature',
-        crisisResponse: 'Crisis Response',
-        missedDuties: 'Missed Duties'
-      };
-      const label = labelMap[key] || key;
-      return `
-        <tr>
-          <td>${label}</td>
-          <td>${raw}</td>
-          <td>${weight}</td>
-          <td>${formatScore(contrib)}</td>
-        </tr>
-      `;
-    }).join('');
-
-    table.innerHTML = `
-      <tbody>
-        <tr>
-          <td><strong>Power Score</strong></td>
-          <td colspan="3">${formatScore(official.composite ?? 0)}</td>
-        </tr>
-        <tr>
-          <td><strong>Category</strong></td>
-          <td><strong>Raw</strong></td>
-          <td><strong>Weight</strong></td>
-          <td><strong>Contribution</strong></td>
-        </tr>
-        ${rowsHtml}
-      </tbody>
+  const keys = Object.keys(breakdown).filter(k => (k in WEIGHTS) || (k in EXEC_WEIGHTS));
+  const rowsHtml = keys.map(key => {
+    const raw = breakdown[key] || 0;
+    const weight = (key in WEIGHTS) ? WEIGHTS[key] : EXEC_WEIGHTS[key];
+    const contrib = raw * weight;
+    const labelMap = {
+      billsCosponsored: 'Bills Cosponsored',
+      billsIntroduced: 'Bills Introduced',
+      lawsEnacted: 'Laws Enacted',
+      committeePositions: 'Committee Positions',
+      joiningBipartisanBills: 'Bipartisan Cosponsored',
+      writingBipartisanBills: 'Bipartisan Sponsored',
+      powerfulCosponsors: 'Powerful Cosponsors',
+      leadershipScore: 'Leadership Score',
+      workingWithOtherChamber: 'Cross Chamber',
+      billsOutOfCommittee: 'Bills Out of Committee',
+      missedVotes: 'Missed Votes (%)',
+      misconduct: 'Misconduct',
+      executiveOrders: 'Executive Orders',
+      vetoes: 'Vetoes',
+      budgetsProposed: 'Budgets Proposed',
+      appointmentsConfirmed: 'Appointments Confirmed',
+      workingWithLegislature: 'Working With Legislature',
+      crisisResponse: 'Crisis Response',
+      missedDuties: 'Missed Duties'
+    };
+    const label = labelMap[key] || key;
+    return `
+      <tr>
+        <td>${label}</td>
+        <td>${raw}</td>
+        <td>${weight}</td>
+        <td>${formatScore(contrib)}</td>
+      </tr>
     `;
+  }).join('');
 
-    const modal = document.getElementById('scorecardModal');
-    modal.classList.add('is-open');
-    modal.setAttribute('aria-hidden', 'false');
-  }
+  table.innerHTML = `
+    <tbody>
+      <tr>
+        <td><strong>Power Score</strong></td>
+        <td colspan="3">${formatScore(composite ?? 0)}</td>
+      </tr>
+      <tr>
+        <td><strong>Category</strong></td>
+        <td><strong>Raw</strong></td>
+        <td><strong>Weight</strong></td>
+        <td><strong>Contribution</strong></td>
+      </tr>
+      ${rowsHtml}
+    </tbody>
+  `;
 
-   async function render() {
-    const office = (officeSel.value || '').toLowerCase();
-    const legislators = await loadRankingsFile(office);
+  const modal = document.getElementById('scorecardModal');
+  modal.classList.add('is-open');
+  modal.setAttribute('aria-hidden', 'false');
+}
 
-    const seen = new Set();
-    const officials = (window.allOfficials || [])
-      .filter(o => (o.office || '').toLowerCase() === office)
-      .filter(o => {
-        if (seen.has(o.slug)) return false;
-        seen.add(o.slug);
-        return true;
-      });
+async function render() {
+  const office = (officeSel.value || '').toLowerCase();
+  const legislators = await loadRankingsFile(office);
 
-    const rows = [];
-    for (const o of officials) {
-      const result = await computeCompositeScore(o, legislators);
-      rows.push({
-        official: o,
-        score: result.composite,
-        breakdown: result.breakdown || {},
-        streak: ''
-      });
-    }
-
-    rows.sort((a, b) => b.score - a.score);
-
-    tableBody.innerHTML = '';
-    rows.forEach((row, idx) => {
-      const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td>${idx + 1}</td>
-        <td>
-          <a href="#" class="scorecard-link" data-slug="${row.official.slug}">
-            ${row.official.name}
-          </a>
-        </td>
-        <td>${row.official.office}</td>
-        <td>${row.score.toFixed(1)}</td>
-        <td>${row.streak}</td>
-      `;
-      tableBody.appendChild(tr);
+  const seen = new Set();
+  const officials = (window.allOfficials || [])
+    .filter(o => (o.office || '').toLowerCase() === office)
+    .filter(o => {
+      if (seen.has(o.slug)) return false;
+      seen.add(o.slug);
+      return true;
     });
 
-    const links = tableBody.querySelectorAll('.scorecard-link');
-    links.forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const slug = link.dataset.slug;
-        const row = rows.find(r => r.official.slug === slug);
-        if (row) {
-          showScorecard(row.official, row.breakdown);
-        } else {
-          console.warn('No breakdown found for slug:', slug);
-        }
-      });
+  const rows = [];
+  for (const o of officials) {
+    const result = await computeCompositeScore(o, legislators);
+    rows.push({
+      official: o,
+      score: result.composite,
+      breakdown: result.breakdown || {},
+      streak: ''
     });
   }
 
-  // Close modal when clicking the close button
-  document.getElementById('scorecardClose').addEventListener('click', () => {
+  rows.sort((a, b) => b.score - a.score);
+
+  tableBody.innerHTML = '';
+  rows.forEach((row, idx) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${idx + 1}</td>
+      <td>
+        <a href="#" class="scorecard-link" data-slug="${row.official.slug}">
+          ${row.official.name}
+        </a>
+      </td>
+      <td>${row.official.office}</td>
+      <td>${row.score.toFixed(1)}</td>
+      <td>${row.streak}</td>
+    `;
+    tableBody.appendChild(tr);
+  });
+
+  const links = tableBody.querySelectorAll('.scorecard-link');
+  links.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const slug = link.dataset.slug;
+      const row = rows.find(r => r.official.slug === slug);
+      if (row) {
+        showScorecard(row.official, row.breakdown, row.score);
+      } else {
+        console.warn('No breakdown found for slug:', slug);
+      }
+    });
+  });
+}
+
+// Close modal when clicking the close button
+document.getElementById('scorecardClose').addEventListener('click', () => {
+  const modal = document.getElementById('scorecardModal');
+  modal.classList.remove('is-open');
+  modal.setAttribute('aria-hidden', 'true');
+});
+
+// Close modal when clicking outside content
+document.getElementById('scorecardModal').addEventListener('click', e => {
+  if (e.target.id === 'scorecardModal') {
     const modal = document.getElementById('scorecardModal');
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
-  });
+  }
+});
 
-  // Close modal when clicking outside content
-  document.getElementById('scorecardModal').addEventListener('click', e => {
-    if (e.target.id === 'scorecardModal') {
-      const modal = document.getElementById('scorecardModal');
-      modal.classList.remove('is-open');
-      modal.setAttribute('aria-hidden', 'true');
-    }
-  });
+// Hook up leaderboard rendering and dropdown changes
+window.renderRankingsLeaderboard = () => {
+  render().catch(err => console.error('Error rendering leaderboard:', err));
+};
 
-  // Hook up leaderboard rendering and dropdown changes
-  window.renderRankingsLeaderboard = () => {
-    render().catch(err => console.error('Error rendering leaderboard:', err));
-  };
+officeSel.addEventListener('change', () => {
+  render().catch(err => console.error('Error rendering leaderboard:', err));
+});
 
-  officeSel.addEventListener('change', () => {
-    render().catch(err => console.error('Error rendering leaderboard:', err));
-  });
-
-  categorySel.addEventListener('change', () => {
-    render().catch(err => console.error('Error rendering leaderboard:', err));
-  });
+categorySel.addEventListener('change', () => {
+  render().catch(err => console.error('Error rendering leaderboard:', err));
+});
 
 })(); // end IIFE
