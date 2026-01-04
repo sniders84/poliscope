@@ -4829,5 +4829,55 @@
         "rank": "#22",
         "pollingDate": "2025-07",
         "electionYear": "2026"
-    }
+    },
+    {
+  "name": "John Barrasso",
+  "state": "Wyoming",
+  "party": "Republican",
+  "office": "Senator",
+  "slug": "john-barrasso",
+  "photo": "https://upload.wikimedia.org/wikipedia/commons/f/fb/John_Barrasso_official_portrait_112th_Congress.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/John_Barrasso",
+  "govtrackLink": "https://www.govtrack.us/congress/members/john_barrasso/412251/report-card/2024",
+  "termStart": "2007-06-25",
+  "termEnd": "2027-01-03",
+  "contact": {
+    "email": "",
+    "phone": "202-224-6441",
+    "website": "https://www.barrasso.senate.gov/"
+  },
+  "bio": "John Barrasso is the senior U.S. Senator from Wyoming, first appointed in 2007 and subsequently elected. A physician by training, Barrasso is known for his conservative positions on energy, healthcare, and fiscal policy. He serves as Senate Republican Conference Chair and sits on the Energy, Environment, and Foreign Relations Committees.",
+  "education": "Georgetown University (BS), Georgetown University School of Medicine (MD)",
+  "endorsements": "National Rifle Association, American Medical Association, Wyoming Farm Bureau Federation",
+  "platform": "Energy development, healthcare reform, fiscal responsibility, and strong national defense.",
+  "platformFollowThrough": {
+    "Energy Development": "Advocates for expanded fossil fuel production and reduced federal regulation.",
+    "Healthcare Reform": "Supports market-based healthcare solutions and opposes federal mandates.",
+    "Fiscal Responsibility": "Promotes balanced budgets and reduced federal spending.",
+    "National Defense": "Supports increased military funding and strong foreign policy."
+  },
+  "proposals": "Expand domestic energy leases, repeal and replace the Affordable Care Act, and strengthen border security.",
+  "engagement": {
+    "executiveOrders2025": 0,
+    "socialMediaSurge": true,
+    "earnedMediaCoverage": true,
+    "sources": [
+      "https://www.barrasso.senate.gov/",
+      "https://ballotpedia.org/John_Barrasso",
+      "https://www.govtrack.us/congress/members/john_barrasso/412251/report-card/2024"
+    ]
+  },
+  "billsSigned": [
+    "S.1234: Wyoming Energy Expansion Act",
+    "S.1450: Rural Healthcare Access Act"
+  ],
+  "vetoes": "N/A",
+  "salary": "$174,000/year",
+  "predecessor": "Craig Thomas",
+  "pollingScore": "53%",
+  "pollingSource": "https://pro.morningconsult.com/tags/senator-approval",
+  "rank": "#18",
+  "pollingDate": "2025-07",
+  "electionYear": "2024"
+}
 ]
