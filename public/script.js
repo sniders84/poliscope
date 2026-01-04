@@ -3200,102 +3200,116 @@ function getGovTrackId(official, legislators) {
 
   if (!officeSel || !categorySel || !tableBody) return;
 
-  // Scoring engine: branch by office type
-  async function computeCompositeScore(official, legislators) {
-    const office = (official.office || '').toLowerCase();
+ // Scoring engine: branch by office type
+async function computeCompositeScore(official, legislators) {
+  const office = (official.office || '').toLowerCase();
 
-    if (office.includes('senator') || office.includes('representative')) {
-      return scoreLegislator(official, legislators);
-    }
+  if (office.includes('senator') || office.includes('representative')) {
+    const result = await scoreLegislator(official, legislators);
+    console.log('Composite result for legislator', official.name, result); // DEBUG
+    return result;
+  }
 
-    if (
-      office.includes('president') ||
-      office.includes('vice president') ||
-      office.includes('governor') ||
-      office.includes('lt. governor') ||
-      office.includes('lieutenant governor')
-    ) {
-      return scoreExecutive(official, legislators);
-    }
+  if (
+    office.includes('president') ||
+    office.includes('vice president') ||
+    office.includes('governor') ||
+    office.includes('lt. governor') ||
+    office.includes('lieutenant governor')
+  ) {
+    const result = await scoreExecutive(official, legislators);
+    console.log('Composite result for executive', official.name, result); // DEBUG
+    return result;
+  }
 
+  return { composite: 0, breakdown: {} };
+}
+
+// Legislator scoring: read directly from rankings JSON
+async function scoreLegislator(official, legislators) {
+  let entry = legislators.find(l => l.id === official.id);
+  if (!entry) {
+    entry = legislators.find(l => (l.name || '').toLowerCase() === (official.name || '').toLowerCase());
+  }
+  if (!entry) {
+    console.warn('No legislator entry found for', official.name);
     return { composite: 0, breakdown: {} };
   }
 
-  // Legislator scoring: read directly from rankings JSON
-  async function scoreLegislator(official, legislators) {
-    let entry = legislators.find(l => l.id === official.id);
-    if (!entry) {
-      entry = legislators.find(l => (l.name || '').toLowerCase() === (official.name || '').toLowerCase());
-    }
-    if (!entry) return { composite: 0, breakdown: {} };
+  console.log('Legislator entry for', official.name, entry); // DEBUG
 
-    const breakdown = {
-      billsCosponsored: entry.bills_cosponsored || 0,
-      billsIntroduced: entry.bills_introduced || 0,
-      lawsEnacted: entry.laws_enacted || 0,
-      committeePositions: entry.committee_positions_score || 0,
-      joiningBipartisanBills: entry.bipartisan_cosponsored_count || 0,
-      writingBipartisanBills: entry.bipartisan_sponsored_count || 0,
-      powerfulCosponsors: entry.powerful_cosponsors_count || 0,
-      leadershipScore: entry.leadership_score || 0,
-      workingWithOtherChamber: entry.cross_chamber_count || 0,
-      billsOutOfCommittee: entry.bills_out_of_committee || 0,
-      missedVotes: entry.missed_votes_pct || 0,
-      misconduct: entry.misconduct || 0
-    };
+  const breakdown = {
+    billsCosponsored: entry.bills_cosponsored || 0,
+    billsIntroduced: entry.bills_introduced || 0,
+    lawsEnacted: entry.laws_enacted || 0,
+    committeePositions: entry.committee_positions_score || 0,
+    joiningBipartisanBills: entry.bipartisan_cosponsored_count || 0,
+    writingBipartisanBills: entry.bipartisan_sponsored_count || 0,
+    powerfulCosponsors: entry.powerful_cosponsors_count || 0,
+    leadershipScore: entry.leadership_score || 0,
+    workingWithOtherChamber: entry.cross_chamber_count || 0,
+    billsOutOfCommittee: entry.bills_out_of_committee || 0,
+    missedVotes: entry.missed_votes_pct || 0,
+    misconduct: entry.misconduct || 0
+  };
 
-    const composite =
-      breakdown.billsCosponsored +
-      breakdown.billsIntroduced +
-      breakdown.lawsEnacted +
-      breakdown.committeePositions +
-      breakdown.joiningBipartisanBills +
-      breakdown.writingBipartisanBills +
-      breakdown.powerfulCosponsors +
-      breakdown.leadershipScore +
-      breakdown.workingWithOtherChamber +
-      breakdown.billsOutOfCommittee -
-      breakdown.missedVotes -
-      breakdown.misconduct;
+  const composite =
+    breakdown.billsCosponsored +
+    breakdown.billsIntroduced +
+    breakdown.lawsEnacted +
+    breakdown.committeePositions +
+    breakdown.joiningBipartisanBills +
+    breakdown.writingBipartisanBills +
+    breakdown.powerfulCosponsors +
+    breakdown.leadershipScore +
+    breakdown.workingWithOtherChamber +
+    breakdown.billsOutOfCommittee -
+    breakdown.missedVotes -
+    breakdown.misconduct;
 
-    return { composite: Math.round(composite * 10) / 10, breakdown };
+  return { composite: Math.round(composite * 10) / 10, breakdown };
+}
+
+// Executive scoring: read directly from rankings JSON
+async function scoreExecutive(official, legislators) {
+  let entry = legislators.find(l => l.id === official.id);
+  if (!entry) {
+    entry = legislators.find(l => (l.name || '').toLowerCase() === (official.name || '').toLowerCase());
+  }
+  if (!entry) {
+    console.warn('No executive entry found for', official.name);
+    return { composite: 0, breakdown: {} };
   }
 
-  // Executive scoring: read directly from rankings JSON
-  async function scoreExecutive(official, legislators) {
-    let entry = legislators.find(l => l.id === official.id);
-    if (!entry) {
-      entry = legislators.find(l => (l.name || '').toLowerCase() === (official.name || '').toLowerCase());
-    }
-    if (!entry) return { composite: 0, breakdown: {} };
+  console.log('Executive entry for', official.name, entry); // DEBUG
 
-    const breakdown = {
-      executiveOrders: entry.executive_orders || 0,
-      vetoes: entry.vetoes || 0,
-      budgetsProposed: entry.budgets_proposed || 0,
-      appointmentsConfirmed: entry.appointments_confirmed || 0,
-      leadershipScore: entry.leadership_score || 0,
-      workingWithLegislature: entry.working_with_legislature || 0,
-      crisisResponse: entry.crisis_response || 0,
-      misconduct: entry.misconduct || 0,
-      missedDuties: entry.missed_duties || 0
-    };
+  const breakdown = {
+    executiveOrders: entry.executive_orders || 0,
+    vetoes: entry.vetoes || 0,
+    budgetsProposed: entry.budgets_proposed || 0,
+    appointmentsConfirmed: entry.appointments_confirmed || 0,
+    leadershipScore: entry.leadership_score || 0,
+    workingWithLegislature: entry.working_with_legislature || 0,
+    crisisResponse: entry.crisis_response || 0,
+    misconduct: entry.misconduct || 0,
+    missedDuties: entry.missed_duties || 0
+  };
 
-    const composite =
-      breakdown.executiveOrders +
-      breakdown.vetoes +
-      breakdown.budgetsProposed +
-      breakdown.appointmentsConfirmed +
-      breakdown.leadershipScore +
-      breakdown.workingWithLegislature +
-      breakdown.crisisResponse -
-      breakdown.misconduct -
-      breakdown.missedDuties;
+  const composite =
+    breakdown.executiveOrders +
+    breakdown.vetoes +
+    breakdown.budgetsProposed +
+    breakdown.appointmentsConfirmed +
+    breakdown.leadershipScore +
+    breakdown.workingWithLegislature +
+    breakdown.crisisResponse -
+    breakdown.misconduct -
+    breakdown.missedDuties;
 
-    return { composite: Math.round(composite * 10) / 10, breakdown };
-  }
+  return { composite: Math.round(composite * 10) / 10, breakdown };
+}
 
-  // Show scorecard modal with breakdown (scoped modal toggle)
+// Show scorecard modal with breakdown (scoped modal toggle)
 function showScorecard(official, breakdown) {
   // Debug: confirm function is firing
   console.log('Opening modal for:', official.name);
@@ -3403,6 +3417,7 @@ document.getElementById('scorecardModal').addEventListener('click', e => {
   }
 });
 
+// Hook up leaderboard rendering and dropdown changes
 window.renderRankingsLeaderboard = () => {
   render().catch(err => console.error('Error rendering leaderboard:', err));
 };
@@ -3410,6 +3425,7 @@ window.renderRankingsLeaderboard = () => {
 officeSel.addEventListener('change', () => {
   render().catch(err => console.error('Error rendering leaderboard:', err));
 });
+
 categorySel.addEventListener('change', () => {
   render().catch(err => console.error('Error rendering leaderboard:', err));
 });
