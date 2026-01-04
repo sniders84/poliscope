@@ -3295,6 +3295,27 @@ function getGovTrackId(official, legislators) {
     return { composite: Math.round(composite * 10) / 10, breakdown };
   }
 
+  // Show scorecard modal with breakdown
+  function showScorecard(official, breakdown) {
+    document.getElementById('scorecardName').textContent = official.name;
+    const table = document.getElementById('scorecardBreakdown');
+    table.innerHTML = `
+      <tr><td>Bills Cosponsored</td><td>${breakdown.billsCosponsored}</td></tr>
+      <tr><td>Bills Introduced</td><td>${breakdown.billsIntroduced}</td></tr>
+      <tr><td>Laws Enacted</td><td>${breakdown.lawsEnacted}</td></tr>
+      <tr><td>Committee Positions</td><td>${breakdown.committeePositions}</td></tr>
+      <tr><td>Bipartisan Cosponsored</td><td>${breakdown.joiningBipartisanBills}</td></tr>
+      <tr><td>Bipartisan Sponsored</td><td>${breakdown.writingBipartisanBills}</td></tr>
+      <tr><td>Powerful Cosponsors</td><td>${breakdown.powerfulCosponsors}</td></tr>
+      <tr><td>Leadership Score</td><td>${breakdown.leadershipScore}</td></tr>
+      <tr><td>Cross Chamber</td><td>${breakdown.workingWithOtherChamber}</td></tr>
+      <tr><td>Bills Out of Committee</td><td>${breakdown.billsOutOfCommittee}</td></tr>
+      <tr><td>Missed Votes</td><td>${breakdown.missedVotes}</td></tr>
+      <tr><td>Misconduct</td><td>${breakdown.misconduct}</td></tr>
+    `;
+    document.getElementById('scorecardModal').classList.remove('hidden');
+  }
+
   async function render() {
     const office = (officeSel.value || '').toLowerCase();
     const legislators = await loadRankingsFile(office);
@@ -3327,14 +3348,36 @@ function getGovTrackId(official, legislators) {
       const tr = document.createElement('tr');
       tr.innerHTML = `
         <td>${idx + 1}</td>
-        <td>${row.official.name}</td>
+        <td><a href="#" class="scorecard-link" data-id="${row.official.id}">${row.official.name}</a></td>
         <td>${row.official.office}</td>
         <td>${row.score.toFixed(1)}</td>
         <td>${row.streak}</td>
       `;
       tableBody.appendChild(tr);
     });
+
+    // Attach click handlers for scorecard links
+    document.querySelectorAll('.scorecard-link').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const id = parseInt(link.dataset.id, 10);
+        const row = rows.find(r => r.official.id === id);
+        if (row) showScorecard(row.official, row.breakdown);
+      });
+    });
   }
+
+  // Close modal when clicking the close button
+document.getElementById('scorecardClose').addEventListener('click', () => {
+  document.getElementById('scorecardModal').classList.add('hidden');
+});
+
+// Optional: also close if user clicks outside the modal content
+document.getElementById('scorecardModal').addEventListener('click', e => {
+  if (e.target.id === 'scorecardModal') {
+    document.getElementById('scorecardModal').classList.add('hidden');
+  }
+});
 
   window.renderRankingsLeaderboard = () => {
     render().catch(err => console.error('Error rendering leaderboard:', err));
