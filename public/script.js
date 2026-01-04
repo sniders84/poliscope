@@ -3200,7 +3200,7 @@ function getGovTrackId(official, legislators) {
 
   if (!officeSel || !categorySel || !tableBody) return;
 
- // Scoring engine: branch by office type
+// Scoring engine: branch by office type
 async function computeCompositeScore(official, legislators) {
   const office = (official.office || '').toLowerCase();
 
@@ -3237,6 +3237,7 @@ async function scoreLegislator(official, legislators) {
   }
 
   console.log('Legislator entry for', official.name, entry); // DEBUG
+  console.log('Legislator entry keys for', official.name, Object.keys(entry)); // DEBUG
 
   const breakdown = {
     billsCosponsored: entry.bills_cosponsored || 0,
@@ -3282,6 +3283,7 @@ async function scoreExecutive(official, legislators) {
   }
 
   console.log('Executive entry for', official.name, entry); // DEBUG
+  console.log('Executive entry keys for', official.name, Object.keys(entry)); // DEBUG
 
   const breakdown = {
     executiveOrders: entry.executive_orders || 0,
@@ -3311,11 +3313,9 @@ async function scoreExecutive(official, legislators) {
 
 // Show scorecard modal with breakdown (scoped modal toggle)
 function showScorecard(official, breakdown) {
-  // Debug: confirm function is firing
   console.log('Opening modal for:', official.name);
   console.log('Breakdown object for', official.name, breakdown);
 
-  // Populate modal content
   document.getElementById('scorecardName').textContent = official.name;
   const table = document.getElementById('scorecardBreakdown');
   table.innerHTML = `
@@ -3333,7 +3333,6 @@ function showScorecard(official, breakdown) {
     <tr><td>Misconduct</td><td>${breakdown.misconduct}</td></tr>
   `;
 
-  // Open the scoped scorecard modal
   const modal = document.getElementById('scorecardModal');
   modal.classList.add('is-open');
   modal.setAttribute('aria-hidden', 'false');
@@ -3383,7 +3382,6 @@ async function render() {
     tableBody.appendChild(tr);
   });
 
-  // Attach click handlers for scorecard links AFTER rows are injected
   const links = tableBody.querySelectorAll('.scorecard-link');
   links.forEach(link => {
     link.addEventListener('click', e => {
@@ -3408,12 +3406,11 @@ document.getElementById('scorecardClose').addEventListener('click', () => {
   modal.setAttribute('aria-hidden', 'true');
 });
 
-// Optional: also close if user clicks outside the modal content
 document.getElementById('scorecardModal').addEventListener('click', e => {
   if (e.target.id === 'scorecardModal') {
     const modal = document.getElementById('scorecardModal');
     modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden', 'true');
+       modal.setAttribute('aria-hidden', 'true');
   }
 });
 
@@ -3429,4 +3426,6 @@ officeSel.addEventListener('change', () => {
 categorySel.addEventListener('change', () => {
   render().catch(err => console.error('Error rendering leaderboard:', err));
 });
+
+// close the IIFE if this script is wrapped
 })();
