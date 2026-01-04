@@ -3361,36 +3361,46 @@ async function render() {
     tableBody.appendChild(tr);
   });
 
-  // Attach click handlers for scorecard links
-  document.querySelectorAll('.scorecard-link').forEach(link => {
+  // Attach click handlers for scorecard links AFTER rows are injected
+  const links = tableBody.querySelectorAll('.scorecard-link');
+  links.forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
       const id = parseInt(link.dataset.id, 10);
       const row = rows.find(r => r.official.id === id);
-      if (row) showScorecard(row.official, row.breakdown);
+      if (row) {
+        showScorecard(row.official, row.breakdown);
+      } else {
+        console.warn('No breakdown found for id:', id);
+      }
     });
   });
 }
-  // Close modal when clicking the close button
+
+// Close modal when clicking the close button
 document.getElementById('scorecardClose').addEventListener('click', () => {
-  document.getElementById('scorecardModal').classList.add('hidden');
+  const modal = document.getElementById('scorecardModal');
+  modal.classList.remove('is-open');
+  modal.setAttribute('aria-hidden', 'true');
 });
 
 // Optional: also close if user clicks outside the modal content
 document.getElementById('scorecardModal').addEventListener('click', e => {
   if (e.target.id === 'scorecardModal') {
-    document.getElementById('scorecardModal').classList.add('hidden');
+    const modal = document.getElementById('scorecardModal');
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
   }
 });
 
-  window.renderRankingsLeaderboard = () => {
-    render().catch(err => console.error('Error rendering leaderboard:', err));
-  };
+window.renderRankingsLeaderboard = () => {
+  render().catch(err => console.error('Error rendering leaderboard:', err));
+};
 
-  officeSel.addEventListener('change', () => {
-    render().catch(err => console.error('Error rendering leaderboard:', err));
-  });
-  categorySel.addEventListener('change', () => {
-    render().catch(err => console.error('Error rendering leaderboard:', err));
-  });
+officeSel.addEventListener('change', () => {
+  render().catch(err => console.error('Error rendering leaderboard:', err));
+});
+categorySel.addEventListener('change', () => {
+  render().catch(err => console.error('Error rendering leaderboard:', err));
+});
 })();
