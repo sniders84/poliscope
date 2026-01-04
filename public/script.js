@@ -3179,7 +3179,7 @@ async function loadRankingsFile(office) {
   }
 }
 
-// Match official to GovTrack ID (still useful for consistency)
+// Match official to GovTrack ID (optional, only if needed for consistency)
 function getGovTrackId(official, legislators) {
   if (official.govtrackLink) {
     const match = official.govtrackLink.match(/\/members\/[^/]+\/(\d+)\//);
@@ -3193,150 +3193,6 @@ function getGovTrackId(official, legislators) {
   return match ? match.id.govtrack : null;
 }
 
-// Fetch missed votes percentage from local JSON
-async function fetchMissedVotes(govtrackId, office) {
-  try {
-    const data = await loadRankingsFile(office);
-    const official = data.find(o => o.id === govtrackId);
-    return official ? official.missed_votes_pct : 0;
-  } catch (err) {
-    console.error('Error fetching missed votes from local JSON:', err);
-    return 0;
-  }
-}
-
-// Fetch number of bills introduced
-async function fetchBillsIntroduced(govtrackId, office) {
-  try {
-    const data = await loadRankingsFile(office);
-    const official = data.find(o => o.id === govtrackId);
-    return official ? official.bills_introduced : 0;
-  } catch (err) {
-    console.error('Error fetching bills introduced from local JSON:', err);
-    return 0;
-  }
-}
-
-// Fetch number of bills cosponsored
-async function fetchBillsCosponsored(govtrackId, office) {
-  try {
-    const data = await loadRankingsFile(office);
-    const official = data.find(o => o.id === govtrackId);
-    return official ? official.bills_cosponsored : 0;
-  } catch (err) {
-    console.error('Error fetching bills cosponsored from local JSON:', err);
-    return 0;
-  }
-}
-
-// Fetch number of laws enacted
-async function fetchLawsEnacted(govtrackId, office) {
-  try {
-    const data = await loadRankingsFile(office);
-    const official = data.find(o => o.id === govtrackId);
-    return official ? official.laws_enacted : 0;
-  } catch (err) {
-    console.error('Error fetching laws enacted from local JSON:', err);
-    return 0;
-  }
-}
-
-// Fetch committee positions score
-async function fetchCommitteePositions(govtrackId, office) {
-  try {
-    const data = await loadRankingsFile(office);
-    const official = data.find(o => o.id === govtrackId);
-    return official ? official.committee_positions_score : 0;
-  } catch (err) {
-    console.error('Error fetching committee positions from local JSON:', err);
-    return 0;
-  }
-}
-
-// Fetch count of bipartisan bills cosponsored
-async function fetchJoiningBipartisanBills(govtrackId, office) {
-  try {
-    const data = await loadRankingsFile(office);
-    const official = data.find(o => o.id === govtrackId);
-    return official ? official.bipartisan_cosponsored_count : 0;
-  } catch (err) {
-    console.error('Error fetching bipartisan cosponsored bills from local JSON:', err);
-    return 0;
-  }
-}
-
-// Fetch count of bipartisan bills introduced
-async function fetchWritingBipartisanBills(govtrackId, office) {
-  try {
-    const data = await loadRankingsFile(office);
-    const official = data.find(o => o.id === govtrackId);
-    return official ? official.bipartisan_sponsored_count : 0;
-  } catch (err) {
-    console.error('Error fetching bipartisan sponsored bills from local JSON:', err);
-    return 0;
-  }
-}
-
-// Fetch count of bills with powerful cosponsors
-async function fetchPowerfulCosponsors(govtrackId, office) {
-  try {
-    const data = await loadRankingsFile(office);
-    const official = data.find(o => o.id === govtrackId);
-    return official ? official.powerful_cosponsors_count : 0;
-  } catch (err) {
-    console.error('Error fetching powerful cosponsors from local JSON:', err);
-    return 0;
-  }
-}
-
-// Fetch leadership score
-async function fetchLeadershipScore(govtrackId, office) {
-  try {
-    const data = await loadRankingsFile(office);
-    const official = data.find(o => o.id === govtrackId);
-    return official ? official.leadership_score : 0;
-  } catch (err) {
-    console.error('Error fetching leadership score from local JSON:', err);
-    return 0;
-  }
-}
-
-// Fetch count of cross-chamber cosponsored bills
-async function fetchWorkingWithOtherChamber(govtrackId, office) {
-  try {
-    const data = await loadRankingsFile(office);
-    const official = data.find(o => o.id === govtrackId);
-    return official ? official.cross_chamber_count : 0;
-  } catch (err) {
-    console.error('Error fetching cross-chamber bills from local JSON:', err);
-    return 0;
-  }
-}
-
-// Fetch count of bills out of committee
-async function fetchBillsOutOfCommittee(govtrackId, office) {
-  try {
-    const data = await loadRankingsFile(office);
-    const official = data.find(o => o.id === govtrackId);
-    return official ? official.bills_out_of_committee : 0;
-  } catch (err) {
-    console.error('Error fetching bills out of committee from local JSON:', err);
-    return 0;
-  }
-}
-
-// Fetch misconduct records
-async function fetchMisconduct(govtrackId, office) {
-  try {
-    const data = await loadRankingsFile(office);
-    const official = data.find(o => o.id === govtrackId);
-    return official ? official.misconduct : 0;
-  } catch (err) {
-    console.error('Error fetching misconduct from local JSON:', err);
-    return 0;
-  }
-}
-
 // Rankings — render by office using local rankings JSON
 (function initRankingsRender() {
   const officeSel   = document.getElementById('rankingsOfficeFilter');
@@ -3345,20 +3201,14 @@ async function fetchMisconduct(govtrackId, office) {
 
   if (!officeSel || !categorySel || !tableBody) return;
 
-  function getSavedRatings() {
-    try { return JSON.parse(localStorage.getItem('ratingsData')) || {}; }
-    catch { return {}; }
-  }
-
   // Scoring engine: branch by office type
-  async function computeCompositeScore(official, saved, legislators) {
+  async function computeCompositeScore(official, legislators) {
     const office = (official.office || '').toLowerCase();
 
     if (office.includes('senator') || office.includes('representative')) {
       return scoreLegislator(official, legislators);
     }
 
-    // Executives: President, Vice President, Governor, Lt. Governor
     if (
       office.includes('president') ||
       office.includes('vice president') ||
@@ -3366,49 +3216,32 @@ async function fetchMisconduct(govtrackId, office) {
       office.includes('lt. governor') ||
       office.includes('lieutenant governor')
     ) {
-      return scoreExecutive(official);
+      return scoreExecutive(official, legislators);
     }
 
-    // Fallback: no composite if office type unknown
     return { composite: 0, breakdown: {} };
   }
 
-  // Legislator scoring: empirical only
+  // Legislator scoring: read directly from rankings JSON
   async function scoreLegislator(official, legislators) {
+    const entry = legislators.find(l => l.id === official.id);
+    if (!entry) return { composite: 0, breakdown: {} };
+
     const breakdown = {
-      billsCosponsored: 0,
-      billsIntroduced: 0,
-      lawsEnacted: 0,
-      cosponsors: 0,
-      leadershipScore: 0,
-      workingWithOtherChamber: 0,
-      joiningBipartisanBills: 0,
-      writingBipartisanBills: 0,
-      billsOutOfCommittee: 0,
-      powerfulCosponsors: 0,
-      committeePositions: 0,
-      missedVotes: 0,
-      misconduct: 0
+      billsCosponsored: entry.bills_cosponsored || 0,
+      billsIntroduced: entry.bills_introduced || 0,
+      lawsEnacted: entry.laws_enacted || 0,
+      committeePositions: entry.committee_positions_score || 0,
+      joiningBipartisanBills: entry.bipartisan_cosponsored_count || 0,
+      writingBipartisanBills: entry.bipartisan_sponsored_count || 0,
+      powerfulCosponsors: entry.powerful_cosponsors_count || 0,
+      leadershipScore: entry.leadership_score || 0,
+      workingWithOtherChamber: entry.cross_chamber_count || 0,
+      billsOutOfCommittee: entry.bills_out_of_committee || 0,
+      missedVotes: entry.missed_votes_pct || 0,
+      misconduct: entry.misconduct || 0
     };
 
-    const govtrackId = getGovTrackId(official, legislators);
-    if (govtrackId) {
-      const office = official.office.toLowerCase();
-      breakdown.missedVotes = await fetchMissedVotes(govtrackId, office);
-      breakdown.billsIntroduced = await fetchBillsIntroduced(govtrackId, office);
-      breakdown.billsCosponsored = await fetchBillsCosponsored(govtrackId, office);
-      breakdown.lawsEnacted = await fetchLawsEnacted(govtrackId, office);
-      breakdown.committeePositions = await fetchCommitteePositions(govtrackId, office);
-      breakdown.joiningBipartisanBills = await fetchJoiningBipartisanBills(govtrackId, office);
-      breakdown.writingBipartisanBills = await fetchWritingBipartisanBills(govtrackId, office);
-      breakdown.powerfulCosponsors = await fetchPowerfulCosponsors(govtrackId, office);
-      breakdown.leadershipScore = await fetchLeadershipScore(govtrackId, office);
-      breakdown.workingWithOtherChamber = await fetchWorkingWithOtherChamber(govtrackId, office);
-      breakdown.billsOutOfCommittee = await fetchBillsOutOfCommittee(govtrackId, office);
-      breakdown.misconduct = await fetchMisconduct(govtrackId, office);
-    }
-
-    // Composite: sum of positives minus negatives
     const composite =
       breakdown.billsCosponsored +
       breakdown.billsIntroduced +
@@ -3423,24 +3256,24 @@ async function fetchMisconduct(govtrackId, office) {
       breakdown.missedVotes -
       breakdown.misconduct;
 
-    return {
-      composite: Math.round(composite * 10) / 10,
-      breakdown
-    };
+    return { composite: Math.round(composite * 10) / 10, breakdown };
   }
 
-  // Executive scoring: empirical only
-  async function scoreExecutive(official) {
+  // Executive scoring: read directly from rankings JSON
+  async function scoreExecutive(official, legislators) {
+    const entry = legislators.find(l => l.id === official.id);
+    if (!entry) return { composite: 0, breakdown: {} };
+
     const breakdown = {
-      executiveOrders: await fetchExecutiveOrders(official),
-      vetoes: await fetchVetoes(official),
-      budgetsProposed: await fetchBudgetsProposed(official),
-      appointmentsConfirmed: await fetchAppointmentsConfirmed(official),
-      leadershipScore: fetchExecutiveLeadershipScore(official),
-      workingWithLegislature: await fetchWorkingWithLegislature(official),
-      crisisResponse: await fetchCrisisResponse(official),
-      misconduct: await fetchExecutiveMisconduct(official),
-      missedDuties: await fetchMissedDuties(official)
+      executiveOrders: entry.executive_orders || 0,
+      vetoes: entry.vetoes || 0,
+      budgetsProposed: entry.budgets_proposed || 0,
+      appointmentsConfirmed: entry.appointments_confirmed || 0,
+      leadershipScore: entry.leadership_score || 0,
+      workingWithLegislature: entry.working_with_legislature || 0,
+      crisisResponse: entry.crisis_response || 0,
+      misconduct: entry.misconduct || 0,
+      missedDuties: entry.missed_duties || 0
     };
 
     const composite =
@@ -3454,25 +3287,19 @@ async function fetchMisconduct(govtrackId, office) {
       breakdown.misconduct -
       breakdown.missedDuties;
 
-    return {
-      composite: Math.round(composite * 10) / 10,
-      breakdown
-    };
+    return { composite: Math.round(composite * 10) / 10, breakdown };
   }
 
   async function render() {
     const office = (officeSel.value || '').toLowerCase();
-    const saved = getSavedRatings();
     const legislators = await loadRankingsFile(office);
 
-    // Debug: log a sample object
     if (Array.isArray(legislators) && legislators.length > 0) {
       console.log('Sample object from rankings JSON:', legislators[0]);
     } else {
       console.warn('No officials loaded from rankings JSON');
     }
 
-    // Filter officials by office and deduplicate by slug
     const seen = new Set();
     const officials = (window.allOfficials || [])
       .filter(o => (o.office || '').toLowerCase() === office)
@@ -3482,18 +3309,14 @@ async function fetchMisconduct(govtrackId, office) {
         return true;
       });
 
-    // Build rows with scores
     const rows = [];
     for (const o of officials) {
-      const result = await computeCompositeScore(o, saved, legislators);
-      const score = result.composite;
-      rows.push({ official: o, score, breakdown: result.breakdown || {}, streak: '' });
+      const result = await computeCompositeScore(o, legislators);
+      rows.push({ official: o, score: result.composite, breakdown: result.breakdown || {}, streak: '' });
     }
 
-    // Sort descending
     rows.sort((a, b) => b.score - a.score);
 
-    // Render full list
     tableBody.innerHTML = '';
     rows.forEach((row, idx) => {
       const tr = document.createElement('tr');
@@ -3508,12 +3331,10 @@ async function fetchMisconduct(govtrackId, office) {
     });
   }
 
-  // Expose for toggle hook
   window.renderRankingsLeaderboard = () => {
     render().catch(err => console.error('Error rendering leaderboard:', err));
   };
 
-  // React to filter changes
   officeSel.addEventListener('change', () => {
     render().catch(err => console.error('Error rendering leaderboard:', err));
   });
