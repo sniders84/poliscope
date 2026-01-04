@@ -6843,3 +6843,25 @@ section > h3 {
 
 /* Optional: subtle rank badges for top spots */
 .leaderboard-table tr:first-child td { font-weight: 700; }
+/* Rankings table styling */
+#rankings-leaderboard {
+  background-color: #2b2b2b; /* dark gray background */
+  color: #f0f0f0;           /* light text for contrast */
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#rankings-leaderboard th,
+#rankings-leaderboard td {
+  padding: 6px 10px;        /* tighter spacing */
+  border-bottom: 1px solid #444;
+}
+
+#rankings-leaderboard th {
+  background-color: #333;   /* darker sub-header row */
+  font-weight: 600;
+}
+
+#rankings-leaderboard tr:hover {
+  background-color: #3a3a3a; /* subtle hover effect */
+}
