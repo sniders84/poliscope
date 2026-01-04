@@ -3268,39 +3268,46 @@ async function fetchMissedVotes(govtrackId) {
   }
 
   async function render() {
-    const office = (officeSel.value || '').toLowerCase();
-    const saved = getSavedRatings();
-    const legislators = await loadLegislators();
+  const office = (officeSel.value || '').toLowerCase();
+  const saved = getSavedRatings();
+  const legislators = await loadLegislators();
 
-    // Filter officials by office
-    const officials = (window.allOfficials || [])
-      .filter(o => (o.office || '').toLowerCase() === office);
-
-    // Build rows with scores
-    const rows = [];
-    for (const o of officials) {
-      const score = await computePowerScore(o, saved, legislators);
-      rows.push({ official: o, score, streak: '' });
-    }
-
-    // Sort desc, take Top 10
-    rows.sort((a, b) => b.score - a.score);
-    const top10 = rows.slice(0, 10);
-
-    // Render table
-    tableBody.innerHTML = '';
-    top10.forEach((row, idx) => {
-      const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td>${idx + 1}</td>
-        <td>${row.official.name}</td>
-        <td>${row.official.office}</td>
-        <td>${row.score.toFixed(1)}</td>
-        <td>${row.streak}</td>
-      `;
-      tableBody.appendChild(tr);
-    });
+  // Debug: log a sample legislator object to confirm structure
+  if (Array.isArray(legislators) && legislators.length > 0) {
+    console.log('Legislator sample object:', legislators[0]);
+  } else {
+    console.warn('No legislators loaded from legislators-current.json');
   }
+
+  // Filter officials by office
+  const officials = (window.allOfficials || [])
+    .filter(o => (o.office || '').toLowerCase() === office);
+
+  // Build rows with scores
+  const rows = [];
+  for (const o of officials) {
+    const score = await computePowerScore(o, saved, legislators);
+    rows.push({ official: o, score, streak: '' });
+  }
+
+  // Sort desc, take Top 10
+  rows.sort((a, b) => b.score - a.score);
+  const top10 = rows.slice(0, 10);
+
+  // Render table
+  tableBody.innerHTML = '';
+  top10.forEach((row, idx) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${idx + 1}</td>
+      <td>${row.official.name}</td>
+      <td>${row.official.office}</td>
+      <td>${row.score.toFixed(1)}</td>
+      <td>${row.streak}</td>
+    `;
+    tableBody.appendChild(tr);
+  });
+}
 
   // Expose for toggle hook (wrap in async)
   window.renderRankingsLeaderboard = () => {
