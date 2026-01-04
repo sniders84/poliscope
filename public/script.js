@@ -3263,11 +3263,11 @@ const EXEC_WEIGHTS = {
 };
 
 // Scoring engine: branch by office type
-async function computeCompositeScore(official, legislators) {
+window.computeCompositeScore = async function (official, legislators) {
   const office = (official.office || '').toLowerCase();
 
   if (office.includes('senator') || office.includes('representative')) {
-    return scoreLegislator(official, legislators);
+    return window.scoreLegislator(official, legislators);
   }
 
   if (
@@ -3277,14 +3277,14 @@ async function computeCompositeScore(official, legislators) {
     office.includes('lt. governor') ||
     office.includes('lieutenant governor')
   ) {
-    return scoreExecutive(official, legislators);
+    return window.scoreExecutive(official, legislators);
   }
 
   return { composite: 0, breakdown: {} };
-}
+};
 
-// Legislator scoring: apply weights but preserve flat breakdown
-async function scoreLegislator(official, legislators) {
+// Legislator scoring
+window.scoreLegislator = async function (official, legislators) {
   let entry =
     legislators.find(l => l.id === official.id) ||
     legislators.find(l => (l.name || '').toLowerCase() === (official.name || '').toLowerCase());
@@ -3324,10 +3324,10 @@ async function scoreLegislator(official, legislators) {
     breakdown.misconduct * WEIGHTS.misconduct;
 
   return { composite: Math.round(composite * 10) / 10, breakdown };
-}
+};
 
-// Executive scoring: apply weights but preserve flat breakdown
-async function scoreExecutive(official, legislators) {
+// Executive scoring
+window.scoreExecutive = async function (official, legislators) {
   let entry =
     legislators.find(l => l.id === official.id) ||
     legislators.find(l => (l.name || '').toLowerCase() === (official.name || '').toLowerCase());
@@ -3361,28 +3361,33 @@ async function scoreExecutive(official, legislators) {
     breakdown.missedDuties * EXEC_WEIGHTS.missedDuties;
 
   return { composite: Math.round(composite * 10) / 10, breakdown };
-}
+};
 
-// Show scorecard modal with weighted breakdown (calculate contributions on the fly)
+// Score formatting
 function formatScore(value) {
   const cls = value >= 0 ? 'score-positive' : 'score-negative';
   return `<span class="${cls}">${Number.isFinite(value) ? value.toFixed(1) : '0.0'}</span>`;
 }
 
-function showScorecard(official, breakdown) {
+// Show scorecard modal
+window.showScorecard = function (official, breakdown) {
   console.log('Opening modal for:', official.name);
   console.log('Breakdown object for', official.name, breakdown);
 
-  document.getElementById('scorecardName').textContent = official.name;
+  const nameEl = document.getElementById('scorecardName');
   const table = document.getElementById('scorecardBreakdown');
+  if (!nameEl || !table) {
+    console.error("Scorecard elements missing in DOM");
+    return;
+  }
 
-  // Build rows: raw, weight, contribution. Only include keys that have a weight.
+  nameEl.textContent = official.name;
+
   const keys = Object.keys(breakdown).filter(k => (k in WEIGHTS) || (k in EXEC_WEIGHTS));
   const rowsHtml = keys.map(key => {
     const raw = breakdown[key] || 0;
     const weight = (key in WEIGHTS) ? WEIGHTS[key] : EXEC_WEIGHTS[key];
     const contrib = raw * weight;
-    // Friendly labels
     const labelMap = {
       billsCosponsored: 'Bills Cosponsored',
       billsIntroduced: 'Bills Introduced',
@@ -3432,6 +3437,8 @@ function showScorecard(official, breakdown) {
   `;
 
   const modal = document.getElementById('scorecardModal');
-  modal.classList.add('is-open');
-  modal.setAttribute('aria-hidden', 'false');
-}
+  if (modal) {
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+  }
+};
