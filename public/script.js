@@ -3243,34 +3243,48 @@ async function computeCompositeScore(official, saved, legislators) {
   }
 
   // Fallback: ratings-only if office type unknown
-  return scoreRatingsOnly(official, saved);
+  return { composite: scoreRatingsOnly(official, saved), breakdown: {} };
 }
 
-// Legislator scoring (Phase 1): Ratings + Attendance (missed_votes_pct from role API)
+// Legislator scoring (Phase 2 scaffold): 12 categories
 async function scoreLegislator(official, saved, legislators) {
-  const ratingsScore = scoreRatingsOnly(official, saved);
+  const breakdown = {
+    billsCosponsored: 0,
+    billsIntroduced: 0,
+    lawsEnacted: 0,
+    cosponsors: 0,
+    leadershipScore: 0,
+    workingWithOtherChamber: 0,
+    joiningBipartisanBills: 0,
+    writingBipartisanBills: 0,
+    billsOutOfCommittee: 0,
+    powerfulCosponsors: 0,
+    committeePositions: 0,
+    missedVotes: 0,
+    misconduct: 0,
+    ratingsScore: scoreRatingsOnly(official, saved)
+  };
 
+  // Attendance via GovTrack role API
   const govtrackId = getGovTrackId(official, legislators);
-  if (!govtrackId) {
-    console.log(`No GovTrack ID match for: ${official.name} (${official.office})`);
-    return ratingsScore;
+  if (govtrackId) {
+    breakdown.missedVotes = await fetchMissedVotes(govtrackId);
   }
 
-  // Attendance via GovTrack role API (missed_votes_pct)
-  const missedPct = await fetchMissedVotes(govtrackId);
-  console.log(`Official: ${official.name}, GovTrack ID: ${govtrackId}, Missed Votes %: ${missedPct}`);
+  // Temporary composite: ratings + attendance
+  const attendanceScore = 100 - breakdown.missedVotes;
+  const hybrid = (breakdown.ratingsScore + attendanceScore) / 2;
 
-  const attendanceScore = 100 - missedPct; // lower missed % = higher score
-
-  // Temporary blend: equal weights (will expand to 12-category schema next)
-  const hybrid = (ratingsScore + attendanceScore) / 2;
-  return Math.round(hybrid * 10) / 10;
+  return {
+    composite: Math.round(hybrid * 10) / 10,
+    breakdown
+  };
 }
 
 // Executive scoring (temporary Phase 1): Ratings only until executive metrics are added
 function scoreExecutive(official, saved) {
   const ratingsScore = scoreRatingsOnly(official, saved);
-  return Math.round(ratingsScore * 10) / 10;
+  return { composite: Math.round(ratingsScore * 10) / 10, breakdown: { ratingsScore } };
 }
 
 // Ratings-only helper (shared)
@@ -3305,8 +3319,9 @@ async function render() {
   // Build rows with scores
   const rows = [];
   for (const o of officials) {
-    const score = await computeCompositeScore(o, saved, legislators);
-    rows.push({ official: o, score, streak: '' });
+    const result = await computeCompositeScore(o, saved, legislators);
+    const score = result.composite;
+    rows.push({ official: o, score, breakdown: result.breakdown || {}, streak: '' });
   }
 
   // Sort descending
