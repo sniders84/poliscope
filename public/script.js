@@ -3333,7 +3333,7 @@ function getGovTrackId(official, legislators) {
     return `<span class="${cls}">${Number.isFinite(value) ? value.toFixed(1) : '0.0'}</span>`;
   }
 
- // Show scorecard modal with weighted breakdown
+// Show scorecard modal with weighted breakdown
 function showScorecard(official, breakdown, composite) {
   document.getElementById('scorecardName').textContent = official.name;
   const table = document.getElementById('scorecardBreakdown');
