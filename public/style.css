@@ -6934,3 +6934,6 @@ section > h3 {
   color: #e74c3c; /* red */
   font-weight: bold;
 }
+.scorecard-modal.wide .scorecard-modal-content {
+  max-width: 900px; /* wider than default */
+}
