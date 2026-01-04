@@ -6886,7 +6886,8 @@ section > h3 {
 
 /* Scorecard content box */
 .scorecard-modal-content {
-  background: #fff;
+  background: #2b2b2b;   /* dark gray background */
+  color: #fff;           /* default text white for contrast */
   padding: 20px;
   border-radius: 8px;
   max-width: 500px;
@@ -6902,6 +6903,7 @@ section > h3 {
   border: none;
   background: none;
   cursor: pointer;
+  color: #fff; /* ensure close button is visible on dark background */
 }
 
 /* Breakdown table */
@@ -6913,9 +6915,22 @@ section > h3 {
 
 .scorecard-table td {
   padding: 6px 8px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #555; /* lighter border for dark background */
 }
 
+/* First column labels */
 .scorecard-table td:first-child {
+  font-weight: bold;
+  color: #ddd; /* softer label color */
+}
+
+/* Positive and negative score styling */
+.score-positive {
+  color: #2ecc71; /* green */
+  font-weight: bold;
+}
+
+.score-negative {
+  color: #e74c3c; /* red */
   font-weight: bold;
 }
