@@ -3157,6 +3157,18 @@ document.getElementById('rate-me-btn').onclick = function() {
   activateRatings();
 })();
 
+// Utility: load legislators-current.json
+async function loadLegislators() {
+  try {
+    const res = await fetch('/legislators-current.json');
+    if (!res.ok) throw new Error('Failed to load legislators-current.json');
+    return await res.json();
+  } catch (err) {
+    console.error('Error loading legislators-current.json:', err);
+    return [];
+  }
+}
+
 // Rankings — minimal Top 10 render by office (uses saved ratings only)
 (function initRankingsRender() {
   const officeSel   = document.getElementById('rankingsOfficeFilter');
