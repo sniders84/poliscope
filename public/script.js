@@ -3169,51 +3169,32 @@ async function loadLegislators() {
   }
 }
 
-// Match official to GovTrack ID using official_full name + office
-function normalizeName(str) {
-  return String(str || '')
-    .toLowerCase()
-    .normalize('NFKD')               // handle accents
-    .replace(/[\u0300-\u036f]/g, '') // strip diacritics
-    .replace(/[^a-z]/g, '');         // strip spaces/punctuation
-}
-
+// Match official to GovTrack ID using govtrackLink if present, else fallback to legislators-current.json
 function getGovTrackId(official, legislators) {
-  const officialName = normalizeName(official.name);
+  // If govtrackLink exists, extract the numeric ID from the URL
+  if (official.govtrackLink) {
+    const match = official.govtrackLink.match(/\/members\/[^/]+\/(\d+)\//);
+    if (match) {
+      return parseInt(match[1], 10);
+    }
+  }
+
+  // Fallback: try to match against legislators-current.json
+  const officialName = (official.name || '').toLowerCase();
   const isSenator = (official.office || '').toLowerCase().includes('senator');
   const isRep     = (official.office || '').toLowerCase().includes('representative');
 
   const match = legislators.find(l => {
-    // Prefer GovTrack's official_full if present, fallback to first+last
-    const fullNameRaw =
-      (l.name && (l.name.official_full || `${l.name.first || ''} ${l.name.last || ''}`)) || '';
-    const fullName = normalizeName(fullNameRaw);
-
-    // Role type: look for any role with type 'sen' or 'rep'
-    const officeType = Array.isArray(l.roles) && l.roles.length
-      ? (l.roles.find(r => r && r.type)?.type || null)
+    const fullName = (l.name && l.name.official_full || '').toLowerCase();
+    const officeType = Array.isArray(l.terms) && l.terms.length
+      ? (l.terms[l.terms.length - 1].type || null)
       : null;
 
     const officeOk = (isSenator && officeType === 'sen') || (isRep && officeType === 'rep');
-    const nameOk   = officialName === fullName ||
-                     officialName.includes(fullName) ||
-                     fullName.includes(officialName);
-
-    return officeOk && nameOk;
+    return officeOk && fullName === officialName;
   });
 
-  if (!match) return null;
-
-  // Support both id.govtrack and ids.govtrack
-  const govId =
-    (match.id && match.id.govtrack) ||
-    (match.ids && match.ids.govtrack) ||
-    null;
-
-  if (!govId) {
-    console.warn('Matched name/office but missing GovTrack ID:', match);
-  }
-  return govId;
+  return match ? match.id.govtrack : null;
 }
 
 // Fetch missed votes percentage from GovTrack
@@ -3222,7 +3203,6 @@ async function fetchMissedVotes(govtrackId) {
     const res = await fetch(`https://www.govtrack.us/api/v2/person/${govtrackId}`);
     if (!res.ok) throw new Error('GovTrack API error');
     const data = await res.json();
-    // GovTrack returns missed_votes_pct as a number
     return typeof data.missed_votes_pct === 'number' ? data.missed_votes_pct : 0;
   } catch (err) {
     console.error('Error fetching missed votes:', err);
@@ -3268,46 +3248,46 @@ async function fetchMissedVotes(govtrackId) {
   }
 
   async function render() {
-  const office = (officeSel.value || '').toLowerCase();
-  const saved = getSavedRatings();
-  const legislators = await loadLegislators();
+    const office = (officeSel.value || '').toLowerCase();
+    const saved = getSavedRatings();
+    const legislators = await loadLegislators();
 
-  // Debug: log a sample legislator object to confirm structure
-  if (Array.isArray(legislators) && legislators.length > 0) {
-    console.log('Legislator sample object:', legislators[0]);
-  } else {
-    console.warn('No legislators loaded from legislators-current.json');
+    // Debug: log a sample legislator object to confirm structure
+    if (Array.isArray(legislators) && legislators.length > 0) {
+      console.log('Legislator sample object:', legislators[0]);
+    } else {
+      console.warn('No legislators loaded from legislators-current.json');
+    }
+
+    // Filter officials by office
+    const officials = (window.allOfficials || [])
+      .filter(o => (o.office || '').toLowerCase() === office);
+
+    // Build rows with scores
+    const rows = [];
+    for (const o of officials) {
+      const score = await computePowerScore(o, saved, legislators);
+      rows.push({ official: o, score, streak: '' });
+    }
+
+    // Sort desc, take Top 10
+    rows.sort((a, b) => b.score - a.score);
+    const top10 = rows.slice(0, 10);
+
+    // Render table
+    tableBody.innerHTML = '';
+    top10.forEach((row, idx) => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${idx + 1}</td>
+        <td>${row.official.name}</td>
+        <td>${row.official.office}</td>
+        <td>${row.score.toFixed(1)}</td>
+        <td>${row.streak}</td>
+      `;
+      tableBody.appendChild(tr);
+    });
   }
-
-  // Filter officials by office
-  const officials = (window.allOfficials || [])
-    .filter(o => (o.office || '').toLowerCase() === office);
-
-  // Build rows with scores
-  const rows = [];
-  for (const o of officials) {
-    const score = await computePowerScore(o, saved, legislators);
-    rows.push({ official: o, score, streak: '' });
-  }
-
-  // Sort desc, take Top 10
-  rows.sort((a, b) => b.score - a.score);
-  const top10 = rows.slice(0, 10);
-
-  // Render table
-  tableBody.innerHTML = '';
-  top10.forEach((row, idx) => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td>${idx + 1}</td>
-      <td>${row.official.name}</td>
-      <td>${row.official.office}</td>
-      <td>${row.score.toFixed(1)}</td>
-      <td>${row.streak}</td>
-    `;
-    tableBody.appendChild(tr);
-  });
-}
 
   // Expose for toggle hook (wrap in async)
   window.renderRankingsLeaderboard = () => {
