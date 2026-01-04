@@ -3169,7 +3169,7 @@ async function loadLegislators() {
   }
 }
 
-// Match official to GovTrack ID using name + office (with normalized matching)
+// Match official to GovTrack ID using official_full name + office
 function normalizeName(str) {
   return str.toLowerCase().replace(/[^a-z]/g, ''); // strip spaces, punctuation
 }
@@ -3177,14 +3177,17 @@ function normalizeName(str) {
 function getGovTrackId(official, legislators) {
   const officialName = normalizeName(official.name);
   const match = legislators.find(l => {
-    const firstLast = normalizeName(`${l.name.first} ${l.name.last}`);
+    // Prefer GovTrack's official_full if present, fallback to first+last
+    const fullName = normalizeName(l.name.official_full || `${l.name.first} ${l.name.last}`);
     const officeType = Array.isArray(l.roles) && l.roles.length > 0 ? l.roles[0].type : null;
+
     return (
-      (officialName.includes(firstLast) || firstLast.includes(officialName)) &&
+      (officialName === fullName || officialName.includes(fullName) || fullName.includes(officialName)) &&
       ((official.office.toLowerCase().includes('senator') && officeType === 'sen') ||
        (official.office.toLowerCase().includes('representative') && officeType === 'rep'))
     );
   });
+
   return match ? match.ids.govtrack : null;
 }
 
