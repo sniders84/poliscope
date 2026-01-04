@@ -3233,9 +3233,7 @@ async function computeCompositeScore(official, legislators) {
   const office = (official.office || '').toLowerCase();
 
   if (office.includes('senator') || office.includes('representative')) {
-    const result = await scoreLegislator(official, legislators);
-    console.log('Composite result for legislator', official.name, result);
-    return result;
+    return scoreLegislator(official, legislators);
   }
 
   if (
@@ -3245,26 +3243,19 @@ async function computeCompositeScore(official, legislators) {
     office.includes('lt. governor') ||
     office.includes('lieutenant governor')
   ) {
-    const result = await scoreExecutive(official, legislators);
-    console.log('Composite result for executive', official.name, result);
-    return result;
+    return scoreExecutive(official, legislators);
   }
 
   return { composite: 0, breakdown: {} };
 }
 
-// Legislator scoring: apply weights
+// Legislator scoring: apply weights but preserve flat breakdown
 async function scoreLegislator(official, legislators) {
-  let entry = legislators.find(l => l.id === official.id);
-  if (!entry) {
-    entry = legislators.find(l => (l.name || '').toLowerCase() === (official.name || '').toLowerCase());
-  }
-  if (!entry) {
-    console.warn('No legislator entry found for', official.name);
-    return { composite: 0, breakdown: {} };
-  }
+  let entry = legislators.find(l => l.id === official.id) ||
+              legislators.find(l => (l.name || '').toLowerCase() === (official.name || '').toLowerCase());
+  if (!entry) return { composite: 0, breakdown: {} };
 
-  const raw = {
+  const breakdown = {
     billsCosponsored: entry.bills_cosponsored || 0,
     billsIntroduced: entry.bills_introduced || 0,
     lawsEnacted: entry.laws_enacted || 0,
@@ -3279,39 +3270,30 @@ async function scoreLegislator(official, legislators) {
     misconduct: entry.misconduct || 0
   };
 
-  const contributions = {
-    billsCosponsored: raw.billsCosponsored * WEIGHTS.billsCosponsored,
-    billsIntroduced: raw.billsIntroduced * WEIGHTS.billsIntroduced,
-    lawsEnacted: raw.lawsEnacted * WEIGHTS.lawsEnacted,
-    committeePositions: raw.committeePositions * WEIGHTS.committeePositions,
-    joiningBipartisanBills: raw.joiningBipartisanBills * WEIGHTS.joiningBipartisanBills,
-    writingBipartisanBills: raw.writingBipartisanBills * WEIGHTS.writingBipartisanBills,
-    powerfulCosponsors: raw.powerfulCosponsors * WEIGHTS.powerfulCosponsors,
-    leadershipScore: raw.leadershipScore * WEIGHTS.leadershipScore,
-    workingWithOtherChamber: raw.workingWithOtherChamber * WEIGHTS.workingWithOtherChamber,
-    billsOutOfCommittee: raw.billsOutOfCommittee * WEIGHTS.billsOutOfCommittee,
-    missedVotes: raw.missedVotes * WEIGHTS.missedVotes,
-    misconduct: raw.misconduct * WEIGHTS.misconduct
-  };
+  const composite =
+    breakdown.billsCosponsored * WEIGHTS.billsCosponsored +
+    breakdown.billsIntroduced * WEIGHTS.billsIntroduced +
+    breakdown.lawsEnacted * WEIGHTS.lawsEnacted +
+    breakdown.committeePositions * WEIGHTS.committeePositions +
+    breakdown.joiningBipartisanBills * WEIGHTS.joiningBipartisanBills +
+    breakdown.writingBipartisanBills * WEIGHTS.writingBipartisanBills +
+    breakdown.powerfulCosponsors * WEIGHTS.powerfulCosponsors +
+    breakdown.leadershipScore * WEIGHTS.leadershipScore +
+    breakdown.workingWithOtherChamber * WEIGHTS.workingWithOtherChamber +
+    breakdown.billsOutOfCommittee * WEIGHTS.billsOutOfCommittee +
+    breakdown.missedVotes * WEIGHTS.missedVotes +
+    breakdown.misconduct * WEIGHTS.misconduct;
 
-  const composite = Object.values(contributions).reduce((sum, v) => sum + v, 0);
-
-  const breakdown = { raw, weights: WEIGHTS, contributions, total: Math.round(composite * 10) / 10 };
-  return { composite: breakdown.total, breakdown };
+  return { composite: Math.round(composite * 10) / 10, breakdown };
 }
 
-// Executive scoring: apply weights
+// Executive scoring: apply weights but preserve flat breakdown
 async function scoreExecutive(official, legislators) {
-  let entry = legislators.find(l => l.id === official.id);
-  if (!entry) {
-    entry = legislators.find(l => (l.name || '').toLowerCase() === (official.name || '').toLowerCase());
-  }
-  if (!entry) {
-    console.warn('No executive entry found for', official.name);
-    return { composite: 0, breakdown: {} };
-  }
+  let entry = legislators.find(l => l.id === official.id) ||
+              legislators.find(l => (l.name || '').toLowerCase() === (official.name || '').toLowerCase());
+  if (!entry) return { composite: 0, breakdown: {} };
 
-  const raw = {
+  const breakdown = {
     executiveOrders: entry.executive_orders || 0,
     vetoes: entry.vetoes || 0,
     budgetsProposed: entry.budgets_proposed || 0,
@@ -3323,25 +3305,21 @@ async function scoreExecutive(official, legislators) {
     missedDuties: entry.missed_duties || 0
   };
 
-  const contributions = {
-    executiveOrders: raw.executiveOrders * EXEC_WEIGHTS.executiveOrders,
-    vetoes: raw.vetoes * EXEC_WEIGHTS.vetoes,
-    budgetsProposed: raw.budgetsProposed * EXEC_WEIGHTS.budgetsProposed,
-    appointmentsConfirmed: raw.appointmentsConfirmed * EXEC_WEIGHTS.appointmentsConfirmed,
-    leadershipScore: raw.leadershipScore * EXEC_WEIGHTS.leadershipScore,
-    workingWithLegislature: raw.workingWithLegislature * EXEC_WEIGHTS.workingWithLegislature,
-    crisisResponse: raw.crisisResponse * EXEC_WEIGHTS.crisisResponse,
-    misconduct: raw.misconduct * EXEC_WEIGHTS.misconduct,
-    missedDuties: raw.missedDuties * EXEC_WEIGHTS.missedDuties
-  };
+  const composite =
+    breakdown.executiveOrders * EXEC_WEIGHTS.executiveOrders +
+    breakdown.vetoes * EXEC_WEIGHTS.vetoes +
+    breakdown.budgetsProposed * EXEC_WEIGHTS.budgetsProposed +
+    breakdown.appointmentsConfirmed * EXEC_WEIGHTS.appointmentsConfirmed +
+    breakdown.leadershipScore * EXEC_WEIGHTS.leadershipScore +
+    breakdown.workingWithLegislature * EXEC_WEIGHTS.workingWithLegislature +
+    breakdown.crisisResponse * EXEC_WEIGHTS.crisisResponse +
+    breakdown.misconduct * EXEC_WEIGHTS.misconduct +
+    breakdown.missedDuties * EXEC_WEIGHTS.missedDuties;
 
-  const composite = Object.values(contributions).reduce((sum, v) => sum + v, 0);
-
-  const breakdown = { raw, weights: EXEC_WEIGHTS, contributions, total: Math.round(composite * 10) / 10 };
-  return { composite: breakdown.total, breakdown };
+  return { composite: Math.round(composite * 10) / 10, breakdown };
 }
 
-// Show scorecard modal with weighted breakdown
+// Show scorecard modal with weighted breakdown (calculate contributions on the fly)
 function formatScore(value) {
   const cls = value >= 0 ? 'score-positive' : 'score-negative';
   return `<span class="${cls}">${value.toFixed(1)}</span>`;
@@ -3354,39 +3332,37 @@ function showScorecard(official, breakdown) {
   document.getElementById('scorecardName').textContent = official.name;
   const table = document.getElementById('scorecardBreakdown');
 
-  if (breakdown && breakdown.raw && breakdown.contributions && breakdown.weights) {
-    const b = breakdown;
-    const rows = Object.keys(b.contributions).map(key => `
+  // Build rows dynamically: raw, weight, contribution
+  const rows = Object.keys(breakdown).map(key => {
+    const weight = WEIGHTS[key] ?? EXEC_WEIGHTS[key] ?? null;
+    if (weight === null) return '';
+    const raw = breakdown[key];
+    const contrib = raw * weight;
+    return `
       <tr>
         <td>${key}</td>
-        <td>${b.raw[key]}</td>
-        <td>${b.weights[key]}</td>
-        <td>${formatScore(b.contributions[key])}</td>
+        <td>${raw}</td>
+        <td>${weight}</td>
+        <td>${formatScore(contrib)}</td>
       </tr>
-    `).join('');
+    `;
+  }).join('');
 
-    table.innerHTML = `
-      <tbody>
-        <tr>
-          <td><strong>Power Score</strong></td>
-          <td colspan="3">${formatScore(b.total)}</td>
-        </tr>
-        <tr>
-          <td><strong>Category</strong></td>
-          <td><strong>Raw</strong></td>
-          <td><strong>Weight</strong></td>
-          <td><strong>Contribution</strong></td>
-        </tr>
-        ${rows}
-      </tbody>
-    `;
-  } else {
-    table.innerHTML = `
-      <tbody>
-        <tr><td>Power Score</td><td>${formatScore(breakdown.total || 0)}</td></tr>
-      </tbody>
-    `;
-  }
+  table.innerHTML = `
+    <tbody>
+      <tr>
+        <td><strong>Power Score</strong></td>
+        <td colspan="3">${formatScore(breakdown.composite || 0)}</td>
+      </tr>
+      <tr>
+        <td><strong>Category</strong></td>
+        <td><strong>Raw</strong></td>
+        <td><strong>Weight</strong></td>
+        <td><strong>Contribution</strong></td>
+      </tr>
+      ${rows}
+    </tbody>
+  `;
 
   const modal = document.getElementById('scorecardModal');
   modal.classList.add('is-open');
