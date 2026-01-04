@@ -1379,48 +1379,52 @@
       container.innerHTML = '';
 
               // Add icons only for non-null links
-    if (links.facebook) container.innerHTML += `<a href="${links.facebook}" target="_blank" rel="noopener noreferrer"><img src="/assets/facebook.svg" alt="Facebook"></a>`;
-    if (links.instagram) container.innerHTML += `<a href="${links.instagram}" target="_blank" rel="noopener noreferrer"><img src="/assets/instagram.svg" alt="Instagram"></a>`;
-    if (links.x) container.innerHTML += `<a href="${links.x}" target="_blank" rel="noopener noreferrer"><img src="/assets/x.svg" alt="X"></a>`;
-    if (links.youtube) container.innerHTML += `<a href="${links.youtube}" target="_blank" rel="noopener noreferrer"><img src="/assets/youtube.svg" alt="YouTube"></a>`;
-    if (links.tiktok) container.innerHTML += `<a href="${links.tiktok}" target="_blank" rel="noopener noreferrer"><img src="/assets/tiktok.svg" alt="TikTok"></a>`;
-  });
+if (links.facebook) container.innerHTML += `<a href="${links.facebook}" target="_blank" rel="noopener noreferrer"><img src="/assets/facebook.svg" alt="Facebook"></a>`;
+if (links.instagram) container.innerHTML += `<a href="${links.instagram}" target="_blank" rel="noopener noreferrer"><img src="/assets/instagram.svg" alt="Instagram"></a>`;
+if (links.x) container.innerHTML += `<a href="${links.x}" target="_blank" rel="noopener noreferrer"><img src="/assets/x.svg" alt="X"></a>`;
+if (links.youtube) container.innerHTML += `<a href="${links.youtube}" target="_blank" rel="noopener noreferrer"><img src="/assets/youtube.svg" alt="YouTube"></a>`;
+if (links.tiktok) container.innerHTML += `<a href="${links.tiktok}" target="_blank" rel="noopener noreferrer"><img src="/assets/tiktok.svg" alt="TikTok"></a>`;
+});
 }
 
-  <!-- Load external script ONCE -->
-  <script src="script.js?v=2025-12-17-0715">
+// Load external script ONCE
+<script src="script.js?v=2025-12-17-0715"></script>
 
-  <!-- Unified inline script -->
- <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    // Hamburger toggle + active tab styling
-    const hamburger = document.getElementById('hamburger');
-    const menu = document.getElementById('hamburger-menu');
+<!-- Unified inline script -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Hamburger toggle + active tab styling
+  const hamburger = document.getElementById('hamburger');
+  const menu = document.getElementById('hamburger-menu');
 
-    if (hamburger && menu) {
-      hamburger.addEventListener('click', () => {
-        menu.classList.toggle('open');
+  if (hamburger && menu) {
+    hamburger.addEventListener('click', () => {
+      menu.classList.toggle('open');
+    });
+
+    // Close menu when clicking a link
+    document.querySelectorAll('#hamburger-menu ul li a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelectorAll('#hamburger-menu ul li a')
+          .forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        menu.classList.remove('open');
       });
+    });
 
-      // Close menu when clicking a link
-      document.querySelectorAll('#hamburger-menu ul li a').forEach(link => {
-        link.addEventListener('click', () => {
-          document.querySelectorAll('#hamburger-menu ul li a')
-            .forEach(l => l.classList.remove('active'));
-          link.classList.add('active');
-          menu.classList.remove('open');
-        });
-      });
-
-      // NEW: Close menu when clicking anywhere outside of it
-      document.addEventListener('click', (event) => {
-        if (menu.classList.contains('open') && 
-            !menu.contains(event.target) && 
-            !hamburger.contains(event.target)) {
-          menu.classList.remove('open');
-        }
-      });
-    }
+    // NEW: Close menu when clicking anywhere outside of it
+    document.addEventListener('click', (event) => {
+      if (
+        menu.classList.contains('open') &&
+        !menu.contains(event.target) &&
+        !hamburger.contains(event.target)
+      ) {
+        menu.classList.remove('open');
+      }
+    });
+  }
+});
+</script>
 
   <!-- Load external script -->
 <script src="script.js?v=2025-12-17-0715"></script>
