@@ -3169,6 +3169,34 @@ async function loadLegislators() {
   }
 }
 
+// Match official to GovTrack ID using name + office
+function getGovTrackId(official, legislators) {
+  const match = legislators.find(l => {
+    const name = `${l.name.first} ${l.name.last}`.toLowerCase();
+    const officeType = l.roles[0]?.type; // "sen" or "rep"
+    return (
+      name === official.name.toLowerCase() &&
+      ((official.office.toLowerCase().includes('senator') && officeType === 'sen') ||
+       (official.office.toLowerCase().includes('representative') && officeType === 'rep'))
+    );
+  });
+  return match ? match.ids.govtrack : null;
+}
+
+// Fetch missed votes percentage from GovTrack
+async function fetchMissedVotes(govtrackId) {
+  try {
+    const res = await fetch(`https://www.govtrack.us/api/v2/person/${govtrackId}`);
+    if (!res.ok) throw new Error('GovTrack API error');
+    const data = await res.json();
+    // GovTrack returns missed_votes_pct as a number
+    return typeof data.missed_votes_pct === 'number' ? data.missed_votes_pct : 0;
+  } catch (err) {
+    console.error('Error fetching missed votes:', err);
+    return 0;
+  }
+}
+
 // Rankings — minimal Top 10 render by office (uses saved ratings only)
 (function initRankingsRender() {
   const officeSel   = document.getElementById('rankingsOfficeFilter');
@@ -3182,56 +3210,73 @@ async function loadLegislators() {
     catch { return {}; }
   }
 
-  function computePowerScoreFromRatings(official, saved) {
-    const entry = saved[official.slug];
-    const avg = entry && typeof entry.averageRating === 'number' ? entry.averageRating : 0;
-    // Normalize 0–5 to 0–100 then apply 50% weight vs placeholder 50% performance
-    const ratingsScore = Math.max(0, Math.min(100, (avg / 5) * 100));
-    const performanceScore = 50; // placeholder until we wire GovTrack metrics
-    const penalties = 0; // placeholder until penalties are wired
+ // Compute hybrid Power Score: Ratings + Attendance
+async function computePowerScore(official, saved, legislators) {
+  const entry = saved[official.slug];
+  const avg = entry && typeof entry.averageRating === 'number' ? entry.averageRating : 0;
+  const ratingsScore = Math.max(0, Math.min(100, (avg / 5) * 100));
 
-    const hybrid = (ratingsScore * 0.5) + (performanceScore * 0.5) - penalties;
-    return Math.round(hybrid * 10) / 10;
+  // Map to GovTrack ID
+  const govtrackId = getGovTrackId(official, legislators);
+  if (!govtrackId) {
+    // If no match, just return ratings score
+    return ratingsScore;
   }
 
-  function render() {
-    const office = (officeSel.value || '').toLowerCase();
-    const saved = getSavedRatings();
+  // Pull missed votes %
+  const missedPct = await fetchMissedVotes(govtrackId);
+  const attendanceScore = 100 - missedPct; // lower missed % = higher score
 
-    // Filter officials by office
-    const officials = (window.allOfficials || [])
-      .filter(o => (o.office || '').toLowerCase() === office);
+  // Blend ratings + attendance evenly for now
+  const hybrid = (ratingsScore + attendanceScore) / 2;
+  return Math.round(hybrid * 10) / 10;
+}
 
-    // Build rows with scores
-    const rows = officials.map(o => ({
-      official: o,
-      score: computePowerScoreFromRatings(o, saved),
-      streak: '' // placeholder
-    }));
+async function render() {
+  const office = (officeSel.value || '').toLowerCase();
+  const saved = getSavedRatings();
+  const legislators = await loadLegislators();
 
-    // Sort desc, take Top 10
-    rows.sort((a, b) => b.score - a.score);
-    const top10 = rows.slice(0, 10);
+  // Filter officials by office
+  const officials = (window.allOfficials || [])
+    .filter(o => (o.office || '').toLowerCase() === office);
 
-    // Render table
-    tableBody.innerHTML = '';
-    top10.forEach((row, idx) => {
-      const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td>${idx + 1}</td>
-        <td>${row.official.name}</td>
-        <td>${row.official.office}</td>
-        <td>${row.score.toFixed(1)}</td>
-        <td>${row.streak}</td>
-      `;
-      tableBody.appendChild(tr);
-    });
+  // Build rows with scores
+  const rows = [];
+  for (const o of officials) {
+    const score = await computePowerScore(o, saved, legislators);
+    rows.push({ official: o, score, streak: '' });
   }
 
-  // Expose for toggle hook
-  window.renderRankingsLeaderboard = render;
+  // Sort desc, take Top 10
+  rows.sort((a, b) => b.score - a.score);
+  const top10 = rows.slice(0, 10);
 
-  // React to filter changes
-  officeSel.addEventListener('change', render);
-  categorySel.addEventListener('change', render);
+  // Render table
+  tableBody.innerHTML = '';
+  top10.forEach((row, idx) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${idx + 1}</td>
+      <td>${row.official.name}</td>
+      <td>${row.official.office}</td>
+      <td>${row.score.toFixed(1)}</td>
+      <td>${row.streak}</td>
+    `;
+    tableBody.appendChild(tr);
+  });
+}
+
+// Expose for toggle hook (wrap in async)
+window.renderRankingsLeaderboard = () => {
+  render().catch(err => console.error('Error rendering leaderboard:', err));
+};
+
+// React to filter changes (wrap in async)
+officeSel.addEventListener('change', () => {
+  render().catch(err => console.error('Error rendering leaderboard:', err));
+});
+categorySel.addEventListener('change', () => {
+  render().catch(err => console.error('Error rendering leaderboard:', err));
+});
 })();
