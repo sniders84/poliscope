@@ -3295,78 +3295,82 @@ function getGovTrackId(official, legislators) {
     return { composite: Math.round(composite * 10) / 10, breakdown };
   }
 
-  // Show scorecard modal with breakdown
-  function showScorecard(official, breakdown) {
-    document.getElementById('scorecardName').textContent = official.name;
-    const table = document.getElementById('scorecardBreakdown');
-    table.innerHTML = `
-      <tr><td>Bills Cosponsored</td><td>${breakdown.billsCosponsored}</td></tr>
-      <tr><td>Bills Introduced</td><td>${breakdown.billsIntroduced}</td></tr>
-      <tr><td>Laws Enacted</td><td>${breakdown.lawsEnacted}</td></tr>
-      <tr><td>Committee Positions</td><td>${breakdown.committeePositions}</td></tr>
-      <tr><td>Bipartisan Cosponsored</td><td>${breakdown.joiningBipartisanBills}</td></tr>
-      <tr><td>Bipartisan Sponsored</td><td>${breakdown.writingBipartisanBills}</td></tr>
-      <tr><td>Powerful Cosponsors</td><td>${breakdown.powerfulCosponsors}</td></tr>
-      <tr><td>Leadership Score</td><td>${breakdown.leadershipScore}</td></tr>
-      <tr><td>Cross Chamber</td><td>${breakdown.workingWithOtherChamber}</td></tr>
-      <tr><td>Bills Out of Committee</td><td>${breakdown.billsOutOfCommittee}</td></tr>
-      <tr><td>Missed Votes</td><td>${breakdown.missedVotes}</td></tr>
-      <tr><td>Misconduct</td><td>${breakdown.misconduct}</td></tr>
+  // Show scorecard modal with breakdown (scoped modal toggle)
+function showScorecard(official, breakdown) {
+  // Populate modal content
+  document.getElementById('scorecardName').textContent = official.name;
+  const table = document.getElementById('scorecardBreakdown');
+  table.innerHTML = `
+    <tr><td>Bills Cosponsored</td><td>${breakdown.billsCosponsored}</td></tr>
+    <tr><td>Bills Introduced</td><td>${breakdown.billsIntroduced}</td></tr>
+    <tr><td>Laws Enacted</td><td>${breakdown.lawsEnacted}</td></tr>
+    <tr><td>Committee Positions</td><td>${breakdown.committeePositions}</td></tr>
+    <tr><td>Bipartisan Cosponsored</td><td>${breakdown.joiningBipartisanBills}</td></tr>
+    <tr><td>Bipartisan Sponsored</td><td>${breakdown.writingBipartisanBills}</td></tr>
+    <tr><td>Powerful Cosponsors</td><td>${breakdown.powerfulCosponsors}</td></tr>
+    <tr><td>Leadership Score</td><td>${breakdown.leadershipScore}</td></tr>
+    <tr><td>Cross Chamber</td><td>${breakdown.workingWithOtherChamber}</td></tr>
+    <tr><td>Bills Out of Committee</td><td>${breakdown.billsOutOfCommittee}</td></tr>
+    <tr><td>Missed Votes</td><td>${breakdown.missedVotes}</td></tr>
+    <tr><td>Misconduct</td><td>${breakdown.misconduct}</td></tr>
+  `;
+
+  // Open the scoped scorecard modal
+  const modal = document.getElementById('scorecardModal');
+  modal.classList.add('is-open');
+  modal.setAttribute('aria-hidden', 'false');
+}
+
+async function render() {
+  const office = (officeSel.value || '').toLowerCase();
+  const legislators = await loadRankingsFile(office);
+
+  if (Array.isArray(legislators) && legislators.length > 0) {
+    console.log('Sample object from rankings JSON:', legislators[0]);
+  } else {
+    console.warn('No officials loaded from rankings JSON');
+  }
+
+  const seen = new Set();
+  const officials = (window.allOfficials || [])
+    .filter(o => (o.office || '').toLowerCase() === office)
+    .filter(o => {
+      if (seen.has(o.slug)) return false;
+      seen.add(o.slug);
+      return true;
+    });
+
+  const rows = [];
+  for (const o of officials) {
+    const result = await computeCompositeScore(o, legislators);
+    rows.push({ official: o, score: result.composite, breakdown: result.breakdown || {}, streak: '' });
+  }
+
+  rows.sort((a, b) => b.score - a.score);
+
+  tableBody.innerHTML = '';
+  rows.forEach((row, idx) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${idx + 1}</td>
+      <td><a href="#" class="scorecard-link" data-id="${row.official.id}">${row.official.name}</a></td>
+      <td>${row.official.office}</td>
+      <td>${row.score.toFixed(1)}</td>
+      <td>${row.streak}</td>
     `;
-    document.getElementById('scorecardModal').classList.remove('hidden');
-  }
+    tableBody.appendChild(tr);
+  });
 
-  async function render() {
-    const office = (officeSel.value || '').toLowerCase();
-    const legislators = await loadRankingsFile(office);
-
-    if (Array.isArray(legislators) && legislators.length > 0) {
-      console.log('Sample object from rankings JSON:', legislators[0]);
-    } else {
-      console.warn('No officials loaded from rankings JSON');
-    }
-
-    const seen = new Set();
-    const officials = (window.allOfficials || [])
-      .filter(o => (o.office || '').toLowerCase() === office)
-      .filter(o => {
-        if (seen.has(o.slug)) return false;
-        seen.add(o.slug);
-        return true;
-      });
-
-    const rows = [];
-    for (const o of officials) {
-      const result = await computeCompositeScore(o, legislators);
-      rows.push({ official: o, score: result.composite, breakdown: result.breakdown || {}, streak: '' });
-    }
-
-    rows.sort((a, b) => b.score - a.score);
-
-    tableBody.innerHTML = '';
-    rows.forEach((row, idx) => {
-      const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td>${idx + 1}</td>
-        <td><a href="#" class="scorecard-link" data-id="${row.official.id}">${row.official.name}</a></td>
-        <td>${row.official.office}</td>
-        <td>${row.score.toFixed(1)}</td>
-        <td>${row.streak}</td>
-      `;
-      tableBody.appendChild(tr);
+  // Attach click handlers for scorecard links
+  document.querySelectorAll('.scorecard-link').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const id = parseInt(link.dataset.id, 10);
+      const row = rows.find(r => r.official.id === id);
+      if (row) showScorecard(row.official, row.breakdown);
     });
-
-    // Attach click handlers for scorecard links
-    document.querySelectorAll('.scorecard-link').forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const id = parseInt(link.dataset.id, 10);
-        const row = rows.find(r => r.official.id === id);
-        if (row) showScorecard(row.official, row.breakdown);
-      });
-    });
-  }
-
+  });
+}
   // Close modal when clicking the close button
 document.getElementById('scorecardClose').addEventListener('click', () => {
   document.getElementById('scorecardModal').classList.add('hidden');
