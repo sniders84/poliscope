@@ -3366,9 +3366,11 @@ async function render() {
   links.forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
+      console.log('Scorecard link clicked:', link.dataset.id); // DEBUG
       const id = parseInt(link.dataset.id, 10);
       const row = rows.find(r => r.official.id === id);
       if (row) {
+        console.log('Found row for:', row.official.name); // DEBUG
         showScorecard(row.official, row.breakdown);
       } else {
         console.warn('No breakdown found for id:', id);
