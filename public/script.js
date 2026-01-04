@@ -3222,9 +3222,42 @@ function getGovTrackId(official, legislators) {
     return { composite: 0, breakdown: {} };
   }
 
+ // Rankings — render by office using local rankings JSON
+(function initRankingsRender() {
+  const officeSel   = document.getElementById('rankingsOfficeFilter');
+  const categorySel = document.getElementById('rankingsCategoryFilter');
+  const tableBody   = document.querySelector('#rankings-leaderboard tbody');
+
+  if (!officeSel || !categorySel || !tableBody) return;
+
+  // Scoring engine: branch by office type
+  async function computeCompositeScore(official, legislators) {
+    const office = (official.office || '').toLowerCase();
+
+    if (office.includes('senator') || office.includes('representative')) {
+      return scoreLegislator(official, legislators);
+    }
+
+    if (
+      office.includes('president') ||
+      office.includes('vice president') ||
+      office.includes('governor') ||
+      office.includes('lt. governor') ||
+      office.includes('lieutenant governor')
+    ) {
+      return scoreExecutive(official, legislators);
+    }
+
+    return { composite: 0, breakdown: {} };
+  }
+
   // Legislator scoring: read directly from rankings JSON
   async function scoreLegislator(official, legislators) {
-    const entry = legislators.find(l => l.id === official.id);
+    // Match by id first, fallback to name if needed
+    let entry = legislators.find(l => l.id === official.id);
+    if (!entry) {
+      entry = legislators.find(l => (l.name || '').toLowerCase() === (official.name || '').toLowerCase());
+    }
     if (!entry) return { composite: 0, breakdown: {} };
 
     const breakdown = {
@@ -3261,7 +3294,10 @@ function getGovTrackId(official, legislators) {
 
   // Executive scoring: read directly from rankings JSON
   async function scoreExecutive(official, legislators) {
-    const entry = legislators.find(l => l.id === official.id);
+    let entry = legislators.find(l => l.id === official.id);
+    if (!entry) {
+      entry = legislators.find(l => (l.name || '').toLowerCase() === (official.name || '').toLowerCase());
+    }
     if (!entry) return { composite: 0, breakdown: {} };
 
     const breakdown = {
