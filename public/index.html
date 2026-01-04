@@ -1387,13 +1387,16 @@ if (links.tiktok) container.innerHTML += `<a href="${links.tiktok}" target="_bla
 });
 }
 
-// Load external script ONCE
+<!-- Load external script ONCE -->
 <script src="script.js?v=2025-12-17-0715"></script>
 
-<!-- Unified inline script -->
+<!-- Inline script for hamburger + default tab -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  // Hamburger toggle + active tab styling
+  // Default tab
+  showStartupHub();
+
+  // Hamburger toggle + active tab + click-outside close
   const hamburger = document.getElementById('hamburger');
   const menu = document.getElementById('hamburger-menu');
 
@@ -1402,7 +1405,6 @@ document.addEventListener('DOMContentLoaded', () => {
       menu.classList.toggle('open');
     });
 
-    // Close menu when clicking a link
     document.querySelectorAll('#hamburger-menu ul li a').forEach(link => {
       link.addEventListener('click', () => {
         document.querySelectorAll('#hamburger-menu ul li a')
@@ -1412,7 +1414,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // NEW: Close menu when clicking anywhere outside of it
     document.addEventListener('click', (event) => {
       if (
         menu.classList.contains('open') &&
@@ -1425,39 +1426,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 </script>
-
-  <!-- Load external script -->
-<script src="script.js?v=2025-12-17-0715"></script>
-
-<!-- Unified inline script -->
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  // Default tab
-  showStartupHub();
-
-  // Hamburger toggle + active tab + click-outside close
-  const hamburger = document.getElementById('hamburger');
-  const menu = document.getElementById('hamburger-menu');
-  if (hamburger && menu) {
-    hamburger.addEventListener('click', () => {
-      menu.classList.toggle('open');
-    });
-
-    document.querySelectorAll('#hamburger-menu ul li a').forEach(link => {
-      link.addEventListener('click', () => {
-        document.querySelectorAll('#hamburger-menu ul li a')
-          .forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-        menu.classList.remove('open');
-      });
-    });
-
-    document.addEventListener('click', (event) => {
-      if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
-        menu.classList.remove('open');
-      }
-    });
-  }
 
   // State dropdown wiring
   const stateSelect = document.getElementById('state-dropdown');
