@@ -6919,3 +6919,6 @@ section > h3 {
 .scorecard-table td:first-child {
   font-weight: bold;
 }
+.modal.hidden {
+  display: none !important;
+}
