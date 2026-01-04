@@ -475,9 +475,7 @@
       </select>
     </div>
 
-    <!-- Leaderboard table placeholder -->
-    <div class="leaderboard-wrap">
-      <table id="rankings-leaderboard" class="leaderboard-table" aria-label="Rankings <!-- Leaderboard table placeholder -->
+  <!-- Leaderboard table placeholder -->
 <div class="leaderboard-wrap">
   <table id="rankings-leaderboard" class="leaderboard-table" aria-label="Rankings leaderboard">
     <thead>
@@ -495,7 +493,7 @@
   </table>
 </div>
 
-<!-- Info button for scoring logic -->
+<!-- Info button placed outside the table -->
 <div class="rankings-info">
   <button id="scoringLogicBtn" class="info-button">
     Rankings Scoring and Weight Logic
@@ -514,8 +512,8 @@
   </div>
 </div>
 
-<!-- Scoring Logic modal -->
-<div id="scoringLogicModal" class="scorecard-modal" aria-hidden="true">
+<!-- Scoring Logic modal (wider) -->
+<div id="scoringLogicModal" class="scorecard-modal wide" aria-hidden="true">
   <div class="scorecard-modal-content" role="dialog" aria-modal="true" aria-labelledby="scoringLogicTitle">
     <button id="scoringLogicClose" class="scorecard-modal-close" aria-label="Close scoring logic">&times;</button>
     <h2 id="scoringLogicTitle">Rankings Scoring and Weight Logic</h2>
@@ -525,61 +523,42 @@
         Each category has a raw value (e.g., bills introduced), a weight (importance factor),
         and a contribution (raw × weight). The sum of contributions forms the Power Score.
       </p>
-      <table class="scorecard-table">
-        <thead>
-          <tr><th>Category</th><th>Weight</th><th>Notes</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Bills Cosponsored</td><td>0.6</td><td>Shows collaboration</td></tr>
-          <tr><td>Bills Introduced</td><td>1.2</td><td>Measures initiative</td></tr>
-          <tr><td>Laws Enacted</td><td>6.0</td><td>Direct legislative impact</td></tr>
-          <tr><td>Committee Positions</td><td>4.0</td><td>Influence in committees</td></tr>
-          <tr><td>Bipartisan Cosponsored</td><td>2.0</td><td>Cross‑party cooperation</td></tr>
-          <tr><td>Bipartisan Sponsored</td><td>3.0</td><td>Leading bipartisan bills</td></tr>
-          <tr><td>Powerful Cosponsors</td><td>1.5</td><td>Support from influential peers</td></tr>
-          <tr><td>Leadership Score</td><td>5.0</td><td>Leadership effectiveness</td></tr>
-          <tr><td>Cross Chamber</td><td>2.5</td><td>Work with other chamber</td></tr>
-          <tr><td>Bills Out of Committee</td><td>3.0</td><td>Progress through committees</td></tr>
-          <tr><td>Missed Votes</td><td>-2.0</td><td>Penalty for absences</td></tr>
-          <tr><td>Misconduct</td><td>-10.0</td><td>Penalty for misconduct</td></tr>
-          <tr><td>Executive Orders</td><td>2.5</td><td>Executive action</td></tr>
-          <tr><td>Vetoes</td><td>3.0</td><td>Blocking legislation</td></tr>
-          <tr><td>Budgets Proposed</td><td>2.0</td><td>Fiscal leadership</td></tr>
-          <tr><td>Appointments Confirmed</td><td>3.0</td><td>Staffing effectiveness</td></tr>
-          <tr><td>Working With Legislature</td><td>3.5</td><td>Cross‑branch cooperation</td></tr>
-          <tr><td>Crisis Response</td><td>4.0</td><td>Handling emergencies</td></tr>
-          <tr><td>Missed Duties</td><td>-3.0</td><td>Penalty for neglect</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-">
-        <thead>
-          <tr>
-            <th>Rank</th>
-            <th>Official</th>
-            <th>Office</th>
-            <th>Power Score</th>
-            <th>Streak</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Populated by JS -->
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
 
-<!-- Scorecard modal (scoped) -->
-<div id="scorecardModal" class="scorecard-modal" aria-hidden="true">
-  <div class="scorecard-modal-content" role="dialog" aria-modal="true" aria-labelledby="scorecardName">
-    <button id="scorecardClose" class="scorecard-modal-close" aria-label="Close scorecard">&times;</button>
-    <h2 id="scorecardName"></h2>
-    <table id="scorecardBreakdown" class="scorecard-table">
-      <!-- rows injected dynamically -->
-    </table>
+      <h3>Legislative Offices (Senators & Representatives)</h3>
+      <table class="scorecard-table">
+        <thead><tr><th>Category</th><th>Weight</th><th>Rationale</th></tr></thead>
+        <tbody>
+          <tr><td>Bills Cosponsored</td><td>0.6</td><td>Collaboration matters, but less than leading bills.</td></tr>
+          <tr><td>Bills Introduced</td><td>1.2</td><td>Shows initiative, though not all bills advance.</td></tr>
+          <tr><td>Laws Enacted</td><td>6.0</td><td>Highest impact — turning proposals into law.</td></tr>
+          <tr><td>Committee Positions</td><td>4.0</td><td>Committees drive legislation; positions show influence.</td></tr>
+          <tr><td>Bipartisan Cosponsored</td><td>2.0</td><td>Cross‑party cooperation strengthens legitimacy.</td></tr>
+          <tr><td>Bipartisan Sponsored</td><td>3.0</td><td>Leading bipartisan bills shows leadership.</td></tr>
+          <tr><td>Powerful Cosponsors</td><td>1.5</td><td>Support from influential peers adds weight.</td></tr>
+          <tr><td>Leadership Score</td><td>5.0</td><td>Leadership effectiveness is critical to impact.</td></tr>
+          <tr><td>Cross Chamber</td><td>2.5</td><td>Working with the other chamber shows reach.</td></tr>
+          <tr><td>Bills Out of Committee</td><td>3.0</td><td>Progress through committees is a key hurdle.</td></tr>
+          <tr><td>Missed Votes</td><td>-2.0</td><td>Penalizes absenteeism.</td></tr>
+          <tr><td>Misconduct</td><td>-10.0</td><td>Severe penalty for misconduct.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Executive Offices (President, Vice President, Governors)</h3>
+      <table class="scorecard-table">
+        <thead><tr><th>Category</th><th>Weight</th><th>Rationale</th></tr></thead>
+        <tbody>
+          <tr><td>Executive Orders</td><td>2.5</td><td>Direct executive action, but less lasting than laws.</td></tr>
+          <tr><td>Vetoes</td><td>3.0</td><td>Blocking legislation shows influence, but is reactive.</td></tr>
+          <tr><td>Budgets Proposed</td><td>2.0</td><td>Fiscal leadership is important but shared with legislature.</td></tr>
+          <tr><td>Appointments Confirmed</td><td>3.0</td><td>Staffing effectiveness impacts governance.</td></tr>
+          <tr><td>Leadership Score</td><td>5.0</td><td>Leadership is central to executive performance.</td></tr>
+          <tr><td>Working With Legislature</td><td>3.5</td><td>Cross‑branch cooperation is vital.</td></tr>
+          <tr><td>Crisis Response</td><td>4.0</td><td>Handling emergencies is a defining test.</td></tr>
+          <tr><td>Missed Duties</td><td>-3.0</td><td>Penalty for neglecting responsibilities.</td></tr>
+          <tr><td>Misconduct</td><td>-12.0</td><td>Severe penalty for misconduct in executive office.</td></tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 
