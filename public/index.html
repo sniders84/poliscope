@@ -1378,10 +1378,54 @@
       // Clear any existing content
       container.innerHTML = '';
 
-              <!-- Load external script ONCE -->
+              // Add icons only for non-null links
+    if (links.facebook) container.innerHTML += `<a href="${links.facebook}" target="_blank" rel="noopener noreferrer"><img src="/assets/facebook.svg" alt="Facebook"></a>`;
+    if (links.instagram) container.innerHTML += `<a href="${links.instagram}" target="_blank" rel="noopener noreferrer"><img src="/assets/instagram.svg" alt="Instagram"></a>`;
+    if (links.x) container.innerHTML += `<a href="${links.x}" target="_blank" rel="noopener noreferrer"><img src="/assets/x.svg" alt="X"></a>`;
+    if (links.youtube) container.innerHTML += `<a href="${links.youtube}" target="_blank" rel="noopener noreferrer"><img src="/assets/youtube.svg" alt="YouTube"></a>`;
+    if (links.tiktok) container.innerHTML += `<a href="${links.tiktok}" target="_blank" rel="noopener noreferrer"><img src="/assets/tiktok.svg" alt="TikTok"></a>`;
+  });
+}
+
+  <!-- Load external script ONCE -->
+  <script src="script.js?v=2025-12-17-0715">
+
+  <!-- Unified inline script -->
+ <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Hamburger toggle + active tab styling
+    const hamburger = document.getElementById('hamburger');
+    const menu = document.getElementById('hamburger-menu');
+
+    if (hamburger && menu) {
+      hamburger.addEventListener('click', () => {
+        menu.classList.toggle('open');
+      });
+
+      // Close menu when clicking a link
+      document.querySelectorAll('#hamburger-menu ul li a').forEach(link => {
+        link.addEventListener('click', () => {
+          document.querySelectorAll('#hamburger-menu ul li a')
+            .forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+          menu.classList.remove('open');
+        });
+      });
+
+      // NEW: Close menu when clicking anywhere outside of it
+      document.addEventListener('click', (event) => {
+        if (menu.classList.contains('open') && 
+            !menu.contains(event.target) && 
+            !hamburger.contains(event.target)) {
+          menu.classList.remove('open');
+        }
+      });
+    }
+
+  <!-- Load external script -->
 <script src="script.js?v=2025-12-17-0715"></script>
 
-<!-- Inline script for hamburger, state dropdown, search, RSS, ratings -->
+<!-- Unified inline script -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   // Default tab
@@ -1405,11 +1449,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.addEventListener('click', (event) => {
-      if (
-        menu.classList.contains('open') &&
-        !menu.contains(event.target) &&
-        !hamburger.contains(event.target)
-      ) {
+      if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
         menu.classList.remove('open');
       }
     });
@@ -1427,13 +1467,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Officials search bar wiring
-  if (typeof wireSearchBar === 'function') {
-    wireSearchBar();
-  }
+  wireSearchBar();
 
   // RSS feed wiring for network cards
   const feedTitle = document.getElementById('feed-title');
   const feedStories = document.getElementById('feed-stories');
+
+  // Official RSS feeds per network
   const rssFeeds = {
     msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',
     abc:   'https://abcnews.go.com/abcnews/topstories',
@@ -1446,22 +1486,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const url = rssFeeds[network];
     feedTitle.textContent = `${network.toUpperCase()} Stories`;
     feedStories.innerHTML = '<p style="color:#fff;">Loading...</p>';
+
     try {
       const response = await fetch(
         `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`
       );
       const data = await response.json();
       const items = Array.isArray(data.items) ? data.items.slice() : [];
+
       const normalized = items
         .map(item => ({ item, date: item.pubDate ? new Date(item.pubDate) : null }))
         .filter(x => x.date)
         .sort((a, b) => b.date.getTime() - a.date.getTime());
 
       feedStories.innerHTML = '';
+
       if (normalized.length === 0) {
         feedStories.innerHTML = '<p style="color:#fff;">No stories available.</p>';
         return;
       }
+
       normalized.slice(0, 10).forEach(({ item }) => {
         const story = document.createElement('div');
         story.className = 'story-card';
@@ -1478,6 +1522,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // Updated selector for network cards
   document.querySelectorAll('.network-card[data-network]').forEach(card => {
     card.addEventListener('click', () => {
       const network = card.getAttribute('data-network');
@@ -1506,5 +1551,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   renderResults(window.allOfficials);
-});
+}); <!-- ✅ this closes DOMContentLoaded -->
 </script>
+
+</body>
+</html>
