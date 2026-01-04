@@ -3223,87 +3223,120 @@ async function fetchMissedVotes(govtrackId) {
     catch { return {}; }
   }
 
-  // Compute hybrid Power Score: Ratings + Attendance
-  async function computePowerScore(official, saved, legislators) {
-    const entry = saved[official.slug];
-    const avg = entry && typeof entry.averageRating === 'number' ? entry.averageRating : 0;
-    const ratingsScore = Math.max(0, Math.min(100, (avg / 5) * 100));
+ // Scoring engine: branch by office type
+async function computeCompositeScore(official, saved, legislators) {
+  const office = (official.office || '').toLowerCase();
 
-    // Map to GovTrack ID
-    const govtrackId = getGovTrackId(official, legislators);
-    if (!govtrackId) {
-      console.log(`No GovTrack ID match for: ${official.name} (${official.office})`);
-      return ratingsScore;
-    }
-
-    // Pull missed votes %
-    const missedPct = await fetchMissedVotes(govtrackId);
-    console.log(`Official: ${official.name}, GovTrack ID: ${govtrackId}, Missed Votes %: ${missedPct}`);
-
-    const attendanceScore = 100 - missedPct; // lower missed % = higher score
-
-    // Blend ratings + attendance evenly for now
-    const hybrid = (ratingsScore + attendanceScore) / 2;
-    return Math.round(hybrid * 10) / 10;
+  if (office.includes('senator') || office.includes('representative')) {
+    return scoreLegislator(official, saved, legislators);
   }
 
-  async function render() {
-    const office = (officeSel.value || '').toLowerCase();
-    const saved = getSavedRatings();
-    const legislators = await loadLegislators();
+  // Executives: President, Vice President, Governor, Lt. Governor
+  if (
+    office.includes('president') ||
+    office.includes('vice president') ||
+    office.includes('governor') ||
+    office.includes('lt. governor') ||
+    office.includes('lieutenant governor')
+  ) {
+    return scoreExecutive(official, saved);
+  }
 
-    // Debug: log a sample legislator object to confirm structure
-    if (Array.isArray(legislators) && legislators.length > 0) {
-      console.log('Legislator sample object:', legislators[0]);
-    } else {
-      console.warn('No legislators loaded from legislators-current.json');
-    }
+  // Fallback: ratings-only if office type unknown
+  return scoreRatingsOnly(official, saved);
+}
 
-    // Filter officials by office and deduplicate by slug
-    const seen = new Set();
-    const officials = (window.allOfficials || [])
-      .filter(o => (o.office || '').toLowerCase() === office)
-      .filter(o => {
-        if (seen.has(o.slug)) return false;
-        seen.add(o.slug);
-        return true;
-      });
+// Legislator scoring (Phase 1): Ratings + Attendance (missed_votes_pct from role API)
+async function scoreLegislator(official, saved, legislators) {
+  const ratingsScore = scoreRatingsOnly(official, saved);
 
-    // Build rows with scores
-    const rows = [];
-    for (const o of officials) {
-      const score = await computePowerScore(o, saved, legislators);
-      rows.push({ official: o, score, streak: '' });
-    }
+  const govtrackId = getGovTrackId(official, legislators);
+  if (!govtrackId) {
+    console.log(`No GovTrack ID match for: ${official.name} (${official.office})`);
+    return ratingsScore;
+  }
 
-    // Sort descending
-    rows.sort((a, b) => b.score - a.score);
+  // Attendance via GovTrack role API (missed_votes_pct)
+  const missedPct = await fetchMissedVotes(govtrackId);
+  console.log(`Official: ${official.name}, GovTrack ID: ${govtrackId}, Missed Votes %: ${missedPct}`);
 
-    // Render full list (no slice)
-    tableBody.innerHTML = '';
-    rows.forEach((row, idx) => {
-      const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td>${idx + 1}</td>
-        <td>${row.official.name}</td>
-        <td>${row.official.office}</td>
-        <td>${row.score.toFixed(1)}</td>
-        <td>${row.streak}</td>
-      `;
-      tableBody.appendChild(tr);
+  const attendanceScore = 100 - missedPct; // lower missed % = higher score
+
+  // Temporary blend: equal weights (will expand to 12-category schema next)
+  const hybrid = (ratingsScore + attendanceScore) / 2;
+  return Math.round(hybrid * 10) / 10;
+}
+
+// Executive scoring (temporary Phase 1): Ratings only until executive metrics are added
+function scoreExecutive(official, saved) {
+  const ratingsScore = scoreRatingsOnly(official, saved);
+  return Math.round(ratingsScore * 10) / 10;
+}
+
+// Ratings-only helper (shared)
+function scoreRatingsOnly(official, saved) {
+  const entry = saved[official.slug];
+  const avg = entry && typeof entry.averageRating === 'number' ? entry.averageRating : 0;
+  return Math.max(0, Math.min(100, (avg / 5) * 100));
+}
+
+async function render() {
+  const office = (officeSel.value || '').toLowerCase();
+  const saved = getSavedRatings();
+  const legislators = await loadLegislators();
+
+  // Debug: log a sample legislator object to confirm structure
+  if (Array.isArray(legislators) && legislators.length > 0) {
+    console.log('Legislator sample object:', legislators[0]);
+  } else {
+    console.warn('No legislators loaded from legislators-current.json');
+  }
+
+  // Filter officials by office and deduplicate by slug
+  const seen = new Set();
+  const officials = (window.allOfficials || [])
+    .filter(o => (o.office || '').toLowerCase() === office)
+    .filter(o => {
+      if (seen.has(o.slug)) return false;
+      seen.add(o.slug);
+      return true;
     });
+
+  // Build rows with scores
+  const rows = [];
+  for (const o of officials) {
+    const score = await computeCompositeScore(o, saved, legislators);
+    rows.push({ official: o, score, streak: '' });
   }
 
-  // Expose for toggle hook (wrap in async)
-  window.renderRankingsLeaderboard = () => {
-    render().catch(err => console.error('Error rendering leaderboard:', err));
-  };
+  // Sort descending
+  rows.sort((a, b) => b.score - a.score);
 
-  // React to filter changes (wrap in async)
-  officeSel.addEventListener('change', () => {
-    render().catch(err => console.error('Error rendering leaderboard:', err));
+  // Render full list (no slice)
+  tableBody.innerHTML = '';
+  rows.forEach((row, idx) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${idx + 1}</td>
+      <td>${row.official.name}</td>
+      <td>${row.official.office}</td>
+      <td>${row.score.toFixed(1)}</td>
+      <td>${row.streak}</td>
+    `;
+    tableBody.appendChild(tr);
   });
-  categorySel.addEventListener('change', () => {
-    render().catch(err => console.error('Error rendering leaderboard:', err));
-  });
+}
+
+// Expose for toggle hook (wrap in async)
+window.renderRankingsLeaderboard = () => {
+  render().catch(err => console.error('Error rendering leaderboard:', err));
+};
+
+// React to filter changes (wrap in async)
+officeSel.addEventListener('change', () => {
+  render().catch(err => console.error('Error rendering leaderboard:', err));
+});
+categorySel.addEventListener('change', () => {
+  render().catch(err => console.error('Error rendering leaderboard:', err));
+});
 })();
