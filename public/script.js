@@ -3355,7 +3355,7 @@ async function fetchMisconduct(govtrackId, office) {
     const office = (official.office || '').toLowerCase();
 
     if (office.includes('senator') || office.includes('representative')) {
-      return scoreLegislator(official, saved, legislators);
+      return scoreLegislator(official, legislators);
     }
 
     // Executives: President, Vice President, Governor, Lt. Governor
@@ -3366,15 +3366,15 @@ async function fetchMisconduct(govtrackId, office) {
       office.includes('lt. governor') ||
       office.includes('lieutenant governor')
     ) {
-      return scoreExecutive(official, saved);
+      return scoreExecutive(official);
     }
 
-    // Fallback: ratings-only if office type unknown
-    return { composite: scoreRatingsOnly(official, saved), breakdown: {} };
+    // Fallback: no composite if office type unknown
+    return { composite: 0, breakdown: {} };
   }
 
-  // Legislator scoring: 12 categories
-  async function scoreLegislator(official, saved, legislators) {
+  // Legislator scoring: empirical only
+  async function scoreLegislator(official, legislators) {
     const breakdown = {
       billsCosponsored: 0,
       billsIntroduced: 0,
@@ -3388,8 +3388,7 @@ async function fetchMisconduct(govtrackId, office) {
       powerfulCosponsors: 0,
       committeePositions: 0,
       missedVotes: 0,
-      misconduct: 0,
-      ratingsScore: scoreRatingsOnly(official, saved)
+      misconduct: 0
     };
 
     const govtrackId = getGovTrackId(official, legislators);
@@ -3409,75 +3408,56 @@ async function fetchMisconduct(govtrackId, office) {
       breakdown.misconduct = await fetchMisconduct(govtrackId, office);
     }
 
-    // Composite: ratings + attendance
-    const attendanceScore = 100 - breakdown.missedVotes;
-    const hybrid = (breakdown.ratingsScore + attendanceScore) / 2;
+    // Composite: sum of positives minus negatives
+    const composite =
+      breakdown.billsCosponsored +
+      breakdown.billsIntroduced +
+      breakdown.lawsEnacted +
+      breakdown.committeePositions +
+      breakdown.joiningBipartisanBills +
+      breakdown.writingBipartisanBills +
+      breakdown.powerfulCosponsors +
+      breakdown.leadershipScore +
+      breakdown.workingWithOtherChamber +
+      breakdown.billsOutOfCommittee -
+      breakdown.missedVotes -
+      breakdown.misconduct;
 
     return {
-      composite: Math.round(hybrid * 10) / 10,
+      composite: Math.round(composite * 10) / 10,
       breakdown
     };
   }
 
-  // Executive scoring scaffold
-  async function scoreExecutive(official, saved) {
+  // Executive scoring: empirical only
+  async function scoreExecutive(official) {
     const breakdown = {
-      executiveOrders: 0,
-      vetoes: 0,
-      budgetsProposed: 0,
-      appointmentsConfirmed: 0,
-      leadershipScore: 0,
-      workingWithLegislature: 0,
-      crisisResponse: 0,
-      misconduct: 0,
-      missedDuties: 0,
-      ratingsScore: scoreRatingsOnly(official, saved)
+      executiveOrders: await fetchExecutiveOrders(official),
+      vetoes: await fetchVetoes(official),
+      budgetsProposed: await fetchBudgetsProposed(official),
+      appointmentsConfirmed: await fetchAppointmentsConfirmed(official),
+      leadershipScore: fetchExecutiveLeadershipScore(official),
+      workingWithLegislature: await fetchWorkingWithLegislature(official),
+      crisisResponse: await fetchCrisisResponse(official),
+      misconduct: await fetchExecutiveMisconduct(official),
+      missedDuties: await fetchMissedDuties(official)
     };
 
-    // These will eventually read from executive JSON files
-    breakdown.executiveOrders = await fetchExecutiveOrders(official);
-    breakdown.vetoes = await fetchVetoes(official);
-    breakdown.budgetsProposed = await fetchBudgetsProposed(official);
-    breakdown.appointmentsConfirmed = await fetchAppointmentsConfirmed(official);
-    breakdown.leadershipScore = fetchExecutiveLeadershipScore(official);
-    breakdown.workingWithLegislature = await fetchWorkingWithLegislature(official);
-    breakdown.crisisResponse = await fetchCrisisResponse(official);
-    breakdown.misconduct = await fetchExecutiveMisconduct(official);
-    breakdown.missedDuties = await fetchMissedDuties(official);
-
-    function computeExecutiveComposite(breakdown) {
-      const weights = {
-        ratingsScore: 0.4,
-        executiveOrders: 0.1,
-        vetoes: 0.1,
-        budgetsProposed: 0.1,
-        appointmentsConfirmed: 0.1,
-        leadershipScore: 0.1,
-        workingWithLegislature: 0.05,
-        crisisResponse: 0.05,
-        misconduct: -0.05,
-        missedDuties: -0.05
-      };
-      let composite = 0;
-      for (const key in weights) {
-        composite += (breakdown[key] || 0) * weights[key];
-      }
-      return Math.round(composite * 10) / 10;
-    }
-
-    console.debug(`Executive scoring for ${official.name}:`, breakdown);
+    const composite =
+      breakdown.executiveOrders +
+      breakdown.vetoes +
+      breakdown.budgetsProposed +
+      breakdown.appointmentsConfirmed +
+      breakdown.leadershipScore +
+      breakdown.workingWithLegislature +
+      breakdown.crisisResponse -
+      breakdown.misconduct -
+      breakdown.missedDuties;
 
     return {
-      composite: computeExecutiveComposite(breakdown),
+      composite: Math.round(composite * 10) / 10,
       breakdown
     };
-  }
-
-  // Ratings-only helper
-  function scoreRatingsOnly(official, saved) {
-    const entry = saved[official.slug];
-    const avg = entry && typeof entry.averageRating === 'number' ? entry.averageRating : 0;
-    return Math.max(0, Math.min(100, (avg / 5) * 100));
   }
 
   async function render() {
