@@ -3157,226 +3157,146 @@ document.getElementById('rate-me-btn').onclick = function() {
   activateRatings();
 })();
 
-// Utility: load legislators-current.json
-async function loadLegislators() {
+// Utility: load rankings JSON by office type
+async function loadRankingsFile(office) {
+  let file = '';
+  const lower = (office || '').toLowerCase();
+
+  if (lower.includes('president') && !lower.includes('vice')) file = '/president-rankings.json';
+  else if (lower.includes('vice')) file = '/vicepresident-rankings.json';
+  else if (lower.includes('lt') && lower.includes('governor')) file = '/ltgovernors-rankings.json';
+  else if (lower.includes('governor')) file = '/governors-rankings.json';
+  else if (lower.includes('senator')) file = '/senators-rankings.json';
+  else if (lower.includes('representative')) file = '/housereps-rankings.json';
+
   try {
-    const res = await fetch('/legislators-current.json');
-    if (!res.ok) throw new Error('Failed to load legislators-current.json');
+    const res = await fetch(file);
+    if (!res.ok) throw new Error(`Failed to load ${file}`);
     return await res.json();
   } catch (err) {
-    console.error('Error loading legislators-current.json:', err);
+    console.error(`Error loading ${file}:`, err);
     return [];
   }
 }
 
-// Match official to GovTrack ID using govtrackLink if present, else fallback to legislators-current.json
+// Match official to GovTrack ID (still useful for consistency)
 function getGovTrackId(official, legislators) {
-  // If govtrackLink exists, extract the numeric ID from the URL
   if (official.govtrackLink) {
     const match = official.govtrackLink.match(/\/members\/[^/]+\/(\d+)\//);
-    if (match) {
-      return parseInt(match[1], 10);
-    }
+    if (match) return parseInt(match[1], 10);
   }
-
-  // Fallback: try to match against legislators-current.json
   const officialName = (official.name || '').toLowerCase();
-  const isSenator = (official.office || '').toLowerCase().includes('senator');
-  const isRep     = (official.office || '').toLowerCase().includes('representative');
-
   const match = legislators.find(l => {
     const fullName = (l.name && l.name.official_full || '').toLowerCase();
-    const officeType = Array.isArray(l.terms) && l.terms.length
-      ? (l.terms[l.terms.length - 1].type || null)
-      : null;
-
-    const officeOk = (isSenator && officeType === 'sen') || (isRep && officeType === 'rep');
-    return officeOk && fullName === officialName;
+    return fullName === officialName;
   });
-
   return match ? match.id.govtrack : null;
 }
 
-// Fetch missed votes percentage from GovTrack (via proxy)
-async function fetchMissedVotes(govtrackId) {
+// Fetch missed votes percentage from local JSON
+async function fetchMissedVotes(govtrackId, office) {
   try {
-    const res = await fetch(`/api/govtrack-proxy?endpoint=person&id=${govtrackId}`);
-    if (!res.ok) throw new Error('GovTrack API error');
-    const data = await res.json();
-    return typeof data.missed_votes_pct === 'number' ? data.missed_votes_pct : 0;
+    const data = await loadRankingsFile(office);
+    const official = data.find(o => o.id === govtrackId);
+    return official ? official.missed_votes_pct : 0;
   } catch (err) {
-    console.error('Error fetching missed votes:', err);
+    console.error('Error fetching missed votes from local JSON:', err);
     return 0;
   }
 }
 
-// Fetch number of bills introduced by a legislator
-async function fetchBillsIntroduced(govtrackId) {
+// Fetch number of bills introduced
+async function fetchBillsIntroduced(govtrackId, office) {
   try {
-    const res = await fetch(`/api/govtrack-proxy?endpoint=bill&sponsor=${govtrackId}`);
-    if (!res.ok) throw new Error('GovTrack bill API error');
-    const data = await res.json();
-    return data.objects ? data.objects.length : 0;
+    const data = await loadRankingsFile(office);
+    const official = data.find(o => o.id === govtrackId);
+    return official ? official.bills_introduced : 0;
   } catch (err) {
-    console.error('Error fetching bills introduced:', err);
+    console.error('Error fetching bills introduced from local JSON:', err);
     return 0;
   }
 }
 
-// Fetch number of bills cosponsored by a legislator
-async function fetchBillsCosponsored(govtrackId) {
+// Fetch number of bills cosponsored
+async function fetchBillsCosponsored(govtrackId, office) {
   try {
-    const res = await fetch(`/api/govtrack-proxy?endpoint=bill&cosponsor=${govtrackId}`);
-    if (!res.ok) throw new Error('GovTrack bill API error');
-    const data = await res.json();
-    return data.objects ? data.objects.length : 0;
+    const data = await loadRankingsFile(office);
+    const official = data.find(o => o.id === govtrackId);
+    return official ? official.bills_cosponsored : 0;
   } catch (err) {
-    console.error('Error fetching bills cosponsored:', err);
+    console.error('Error fetching bills cosponsored from local JSON:', err);
     return 0;
   }
 }
 
-// Fetch number of laws enacted (bills sponsored that became law)
-async function fetchLawsEnacted(govtrackId) {
+// Fetch number of laws enacted
+async function fetchLawsEnacted(govtrackId, office) {
   try {
-    const res = await fetch(`/api/govtrack-proxy?endpoint=bill&sponsor=${govtrackId}&current_status=enacted_signed`);
-    if (!res.ok) throw new Error('GovTrack bill API error');
-    const data = await res.json();
-    return data.objects ? data.objects.length : 0;
+    const data = await loadRankingsFile(office);
+    const official = data.find(o => o.id === govtrackId);
+    return official ? official.laws_enacted : 0;
   } catch (err) {
-    console.error('Error fetching laws enacted:', err);
+    console.error('Error fetching laws enacted from local JSON:', err);
     return 0;
   }
 }
 
-// Fetch committee positions for a legislator
-async function fetchCommitteePositions(govtrackId) {
+// Fetch committee positions score
+async function fetchCommitteePositions(govtrackId, office) {
   try {
-    const res = await fetch(`/api/govtrack-proxy?endpoint=role&person=${govtrackId}`);
-    if (!res.ok) throw new Error('GovTrack role API error');
-    const data = await res.json();
-
-    if (data.objects && data.objects.length > 0) {
-      const committees = data.objects[0].committees || [];
-      let score = 0;
-      committees.forEach(c => {
-        if (c.position && c.position.toLowerCase().includes('chair')) {
-          score += 3;
-        } else if (c.position && c.position.toLowerCase().includes('ranking')) {
-          score += 2;
-        } else {
-          score += 1;
-        }
-      });
-      return score;
-    }
-    return 0;
+    const data = await loadRankingsFile(office);
+    const official = data.find(o => o.id === govtrackId);
+    return official ? official.committee_positions_score : 0;
   } catch (err) {
-    console.error('Error fetching committee positions:', err);
+    console.error('Error fetching committee positions from local JSON:', err);
     return 0;
   }
 }
 
-// Fetch count of bipartisan bills a legislator cosponsored
-async function fetchJoiningBipartisanBills(govtrackId) {
+// Fetch count of bipartisan bills cosponsored
+async function fetchJoiningBipartisanBills(govtrackId, office) {
   try {
-    const res = await fetch(`/api/govtrack-proxy?endpoint=bill&cosponsor=${govtrackId}`);
-    if (!res.ok) throw new Error('GovTrack bill API error');
-    const data = await res.json();
-
-    let count = 0;
-    if (data.objects) {
-      data.objects.forEach(bill => {
-        if (bill.cosponsors && bill.cosponsors.length > 0) {
-          const hasOppositeParty = bill.cosponsors.some(c => c.party !== bill.sponsor_party);
-          if (hasOppositeParty) count++;
-        }
-      });
-    }
-    return count;
+    const data = await loadRankingsFile(office);
+    const official = data.find(o => o.id === govtrackId);
+    return official ? official.bipartisan_cosponsored_count : 0;
   } catch (err) {
-    console.error('Error fetching bipartisan cosponsored bills:', err);
+    console.error('Error fetching bipartisan cosponsored bills from local JSON:', err);
     return 0;
   }
 }
 
-// Fetch count of bipartisan bills a legislator introduced
-async function fetchWritingBipartisanBills(govtrackId) {
+// Fetch count of bipartisan bills introduced
+async function fetchWritingBipartisanBills(govtrackId, office) {
   try {
-    const res = await fetch(`/api/govtrack-proxy?endpoint=bill&sponsor=${govtrackId}`);
-    if (!res.ok) throw new Error('GovTrack bill API error');
-    const data = await res.json();
-
-    let count = 0;
-    if (data.objects) {
-      data.objects.forEach(bill => {
-        if (bill.cosponsors && bill.cosponsors.length > 0) {
-          const hasOppositeParty = bill.cosponsors.some(c => c.party !== bill.sponsor_party);
-          if (hasOppositeParty) count++;
-        }
-      });
-    }
-    return count;
+    const data = await loadRankingsFile(office);
+    const official = data.find(o => o.id === govtrackId);
+    return official ? official.bipartisan_sponsored_count : 0;
   } catch (err) {
-    console.error('Error fetching bipartisan sponsored bills:', err);
+    console.error('Error fetching bipartisan sponsored bills from local JSON:', err);
     return 0;
   }
 }
 
 // Fetch count of bills with powerful cosponsors
-async function fetchPowerfulCosponsors(govtrackId) {
+async function fetchPowerfulCosponsors(govtrackId, office) {
   try {
-    const res = await fetch(`/api/govtrack-proxy?endpoint=bill&sponsor=${govtrackId}`);
-    if (!res.ok) throw new Error('GovTrack bill API error');
-    const data = await res.json();
-
-    let count = 0;
-    if (data.objects) {
-      data.objects.forEach(bill => {
-        if (bill.cosponsors && bill.cosponsors.length > 0) {
-          const hasPowerful = bill.cosponsors.some(c => {
-            if (!c.role) return false;
-            const pos = (c.role.title || '').toLowerCase();
-            return (
-              pos.includes('chair') ||
-              pos.includes('ranking') ||
-              pos.includes('leader') ||
-              pos.includes('whip')
-            );
-          });
-          if (hasPowerful) count++;
-        }
-      });
-    }
-    return count;
+    const data = await loadRankingsFile(office);
+    const official = data.find(o => o.id === govtrackId);
+    return official ? official.powerful_cosponsors_count : 0;
   } catch (err) {
-    console.error('Error fetching powerful cosponsors:', err);
+    console.error('Error fetching powerful cosponsors from local JSON:', err);
     return 0;
   }
 }
 
-// Fetch leadership score based on role titles
-async function fetchLeadershipScore(govtrackId) {
+// Fetch leadership score
+async function fetchLeadershipScore(govtrackId, office) {
   try {
-    const res = await fetch(`/api/govtrack-proxy?endpoint=role&person=${govtrackId}`);
-    if (!res.ok) throw new Error('GovTrack role API error');
-    const data = await res.json();
-
-    let score = 0;
-    if (data.objects && data.objects.length > 0) {
-      data.objects.forEach(role => {
-        const title = (role.title || '').toLowerCase();
-        if (title.includes('speaker')) score += 10;
-        else if (title.includes('majority leader')) score += 8;
-        else if (title.includes('minority leader')) score += 7;
-        else if (title.includes('whip')) score += 6;
-        else if (title.includes('chair')) score += 5;
-        else if (title.includes('ranking')) score += 4;
-      });
-    }
-    return score;
+    const data = await loadRankingsFile(office);
+    const official = data.find(o => o.id === govtrackId);
+    return official ? official.leadership_score : 0;
   } catch (err) {
-    console.error('Error fetching leadership score:', err);
+    console.error('Error fetching leadership score from local JSON:', err);
     return 0;
   }
 }
@@ -3384,67 +3304,40 @@ async function fetchLeadershipScore(govtrackId) {
 // Fetch count of cross-chamber cosponsored bills
 async function fetchWorkingWithOtherChamber(govtrackId, office) {
   try {
-    const res = await fetch(`/api/govtrack-proxy?endpoint=bill&cosponsor=${govtrackId}`);
-    if (!res.ok) throw new Error('GovTrack bill API error');
-    const data = await res.json();
-
-    let count = 0;
-    if (data.objects) {
-      data.objects.forEach(bill => {
-        const type = (bill.bill_type || '').toLowerCase();
-        if (office.includes('senator')) {
-          if (type.startsWith('h')) count++;
-        } else if (office.includes('representative')) {
-          if (type.startsWith('s')) count++;
-        }
-      });
-    }
-    return count;
+    const data = await loadRankingsFile(office);
+    const official = data.find(o => o.id === govtrackId);
+    return official ? official.cross_chamber_count : 0;
   } catch (err) {
-    console.error('Error fetching cross-chamber bills:', err);
+    console.error('Error fetching cross-chamber bills from local JSON:', err);
     return 0;
   }
 }
 
-// Fetch count of bills sponsored that made it out of committee
-async function fetchBillsOutOfCommittee(govtrackId) {
+// Fetch count of bills out of committee
+async function fetchBillsOutOfCommittee(govtrackId, office) {
   try {
-    const res = await fetch(`/api/govtrack-proxy?endpoint=bill&sponsor=${govtrackId}`);
-    if (!res.ok) throw new Error('GovTrack bill API error');
-    const data = await res.json();
-
-    let count = 0;
-    if (data.objects) {
-      data.objects.forEach(bill => {
-        const status = (bill.current_status || '').toLowerCase();
-        if (
-          status.includes('reported') ||
-          status.includes('reported_out_of_committee') ||
-          status.includes('reported_to_house') ||
-          status.includes('reported_to_senate')
-        ) {
-          count++;
-        }
-      });
-    }
-    return count;
+    const data = await loadRankingsFile(office);
+    const official = data.find(o => o.id === govtrackId);
+    return official ? official.bills_out_of_committee : 0;
   } catch (err) {
-    console.error('Error fetching bills out of committee:', err);
+    console.error('Error fetching bills out of committee from local JSON:', err);
     return 0;
   }
 }
 
-// Fetch misconduct records (placeholder)
-async function fetchMisconduct(govtrackId, official) {
+// Fetch misconduct records
+async function fetchMisconduct(govtrackId, office) {
   try {
-    return 0;
+    const data = await loadRankingsFile(office);
+    const official = data.find(o => o.id === govtrackId);
+    return official ? official.misconduct : 0;
   } catch (err) {
-    console.error('Error fetching misconduct:', err);
+    console.error('Error fetching misconduct from local JSON:', err);
     return 0;
   }
 }
 
-// Rankings — minimal render by office (uses saved ratings + attendance)
+// Rankings — render by office using local rankings JSON
 (function initRankingsRender() {
   const officeSel   = document.getElementById('rankingsOfficeFilter');
   const categorySel = document.getElementById('rankingsCategoryFilter');
@@ -3457,211 +3350,194 @@ async function fetchMisconduct(govtrackId, official) {
     catch { return {}; }
   }
 
- // Scoring engine: branch by office type
-async function computeCompositeScore(official, saved, legislators) {
-  const office = (official.office || '').toLowerCase();
+  // Scoring engine: branch by office type
+  async function computeCompositeScore(official, saved, legislators) {
+    const office = (official.office || '').toLowerCase();
 
-  if (office.includes('senator') || office.includes('representative')) {
-    return scoreLegislator(official, saved, legislators);
+    if (office.includes('senator') || office.includes('representative')) {
+      return scoreLegislator(official, saved, legislators);
+    }
+
+    // Executives: President, Vice President, Governor, Lt. Governor
+    if (
+      office.includes('president') ||
+      office.includes('vice president') ||
+      office.includes('governor') ||
+      office.includes('lt. governor') ||
+      office.includes('lieutenant governor')
+    ) {
+      return scoreExecutive(official, saved);
+    }
+
+    // Fallback: ratings-only if office type unknown
+    return { composite: scoreRatingsOnly(official, saved), breakdown: {} };
   }
 
-  // Executives: President, Vice President, Governor, Lt. Governor
-if (
-  office.includes('president') ||
-  office.includes('vice president') ||
-  office.includes('governor') ||
-  office.includes('lt. governor') ||
-  office.includes('lieutenant governor')
-) {
-  return scoreExecutive(official, saved);
-}
-
-// Fallback: ratings-only if office type unknown
-return { composite: scoreRatingsOnly(official, saved), breakdown: {} };
-}
-
-// Legislator scoring (Phase 2 scaffold): 12 categories
-async function scoreLegislator(official, saved, legislators) {
-  const breakdown = {
-    billsCosponsored: 0,
-    billsIntroduced: 0,
-    lawsEnacted: 0,
-    cosponsors: 0,
-    leadershipScore: 0,
-    workingWithOtherChamber: 0,
-    joiningBipartisanBills: 0,
-    writingBipartisanBills: 0,
-    billsOutOfCommittee: 0,
-    powerfulCosponsors: 0,
-    committeePositions: 0,
-    missedVotes: 0,
-    misconduct: 0,
-    ratingsScore: scoreRatingsOnly(official, saved)
-  };
-
-  const govtrackId = getGovTrackId(official, legislators);
-  if (govtrackId) {
-    breakdown.missedVotes = await fetchMissedVotes(govtrackId);
-    breakdown.billsIntroduced = await fetchBillsIntroduced(govtrackId);
-    breakdown.billsCosponsored = await fetchBillsCosponsored(govtrackId);
-    breakdown.lawsEnacted = await fetchLawsEnacted(govtrackId);
-    breakdown.committeePositions = await fetchCommitteePositions(govtrackId);
-    breakdown.joiningBipartisanBills = await fetchJoiningBipartisanBills(govtrackId);
-    breakdown.writingBipartisanBills = await fetchWritingBipartisanBills(govtrackId);
-    breakdown.powerfulCosponsors = await fetchPowerfulCosponsors(govtrackId);
-    breakdown.leadershipScore = await fetchLeadershipScore(govtrackId);
-    breakdown.workingWithOtherChamber = await fetchWorkingWithOtherChamber(govtrackId, official.office.toLowerCase());
-    breakdown.billsOutOfCommittee = await fetchBillsOutOfCommittee(govtrackId);
-    breakdown.misconduct = await fetchMisconduct(govtrackId, official);
-  }
-
-  // Temporary composite: ratings + attendance
-  const attendanceScore = 100 - breakdown.missedVotes;
-  const hybrid = (breakdown.ratingsScore + attendanceScore) / 2;
-
-  return {
-    composite: Math.round(hybrid * 10) / 10,
-    breakdown
-  };
-}
-
-// Executive scoring scaffold: categories tailored to executive offices
-async function scoreExecutive(official, saved) {
-  const breakdown = {
-    executiveOrders: 0,
-    vetoes: 0,
-    budgetsProposed: 0,
-    appointmentsConfirmed: 0,
-    leadershipScore: 0,
-    workingWithLegislature: 0,
-    crisisResponse: 0,
-    misconduct: 0,
-    missedDuties: 0,
-    ratingsScore: scoreRatingsOnly(official, saved)
-  };
-
-  // Wire in executive orders (placeholder until feed connected)
-  breakdown.executiveOrders = await fetchExecutiveOrders(official);
-
-  // Wire in vetoes (placeholder until feed connected)
-  breakdown.vetoes = await fetchVetoes(official);
-
-  // Wire in budgets proposed (placeholder until feed connected)
-  breakdown.budgetsProposed = await fetchBudgetsProposed(official);
-
-  // Wire in appointments confirmed (placeholder until feed connected)
-  breakdown.appointmentsConfirmed = await fetchAppointmentsConfirmed(official);
-
-  // Leadership score based on office
-  breakdown.leadershipScore = fetchExecutiveLeadershipScore(official);
-
-  // Working with legislature (placeholder until feed connected)
-  breakdown.workingWithLegislature = await fetchWorkingWithLegislature(official);
-
-  // Crisis response (placeholder until feed connected)
-  breakdown.crisisResponse = await fetchCrisisResponse(official);
-
-  // Misconduct (placeholder until feed connected)
-  breakdown.misconduct = await fetchExecutiveMisconduct(official);
-
-  // Missed duties (placeholder until feed connected)
-  breakdown.missedDuties = await fetchMissedDuties(official);
-
-  // Compute composite using weighted executive metrics
-  function computeExecutiveComposite(breakdown) {
-    const weights = {
-      ratingsScore: 0.4,
-      executiveOrders: 0.1,
-      vetoes: 0.1,
-      budgetsProposed: 0.1,
-      appointmentsConfirmed: 0.1,
-      leadershipScore: 0.1,
-      workingWithLegislature: 0.05,
-      crisisResponse: 0.05,
-      misconduct: -0.05,   // negative weight
-      missedDuties: -0.05  // negative weight
+  // Legislator scoring: 12 categories
+  async function scoreLegislator(official, saved, legislators) {
+    const breakdown = {
+      billsCosponsored: 0,
+      billsIntroduced: 0,
+      lawsEnacted: 0,
+      cosponsors: 0,
+      leadershipScore: 0,
+      workingWithOtherChamber: 0,
+      joiningBipartisanBills: 0,
+      writingBipartisanBills: 0,
+      billsOutOfCommittee: 0,
+      powerfulCosponsors: 0,
+      committeePositions: 0,
+      missedVotes: 0,
+      misconduct: 0,
+      ratingsScore: scoreRatingsOnly(official, saved)
     };
 
-    let composite = 0;
-    for (const key in weights) {
-      composite += (breakdown[key] || 0) * weights[key];
+    const govtrackId = getGovTrackId(official, legislators);
+    if (govtrackId) {
+      const office = official.office.toLowerCase();
+      breakdown.missedVotes = await fetchMissedVotes(govtrackId, office);
+      breakdown.billsIntroduced = await fetchBillsIntroduced(govtrackId, office);
+      breakdown.billsCosponsored = await fetchBillsCosponsored(govtrackId, office);
+      breakdown.lawsEnacted = await fetchLawsEnacted(govtrackId, office);
+      breakdown.committeePositions = await fetchCommitteePositions(govtrackId, office);
+      breakdown.joiningBipartisanBills = await fetchJoiningBipartisanBills(govtrackId, office);
+      breakdown.writingBipartisanBills = await fetchWritingBipartisanBills(govtrackId, office);
+      breakdown.powerfulCosponsors = await fetchPowerfulCosponsors(govtrackId, office);
+      breakdown.leadershipScore = await fetchLeadershipScore(govtrackId, office);
+      breakdown.workingWithOtherChamber = await fetchWorkingWithOtherChamber(govtrackId, office);
+      breakdown.billsOutOfCommittee = await fetchBillsOutOfCommittee(govtrackId, office);
+      breakdown.misconduct = await fetchMisconduct(govtrackId, office);
     }
-    return Math.round(composite * 10) / 10;
+
+    // Composite: ratings + attendance
+    const attendanceScore = 100 - breakdown.missedVotes;
+    const hybrid = (breakdown.ratingsScore + attendanceScore) / 2;
+
+    return {
+      composite: Math.round(hybrid * 10) / 10,
+      breakdown
+    };
   }
 
-  // Audit log for transparency
-  console.debug(`Executive scoring for ${official.name}:`, breakdown);
+  // Executive scoring scaffold
+  async function scoreExecutive(official, saved) {
+    const breakdown = {
+      executiveOrders: 0,
+      vetoes: 0,
+      budgetsProposed: 0,
+      appointmentsConfirmed: 0,
+      leadershipScore: 0,
+      workingWithLegislature: 0,
+      crisisResponse: 0,
+      misconduct: 0,
+      missedDuties: 0,
+      ratingsScore: scoreRatingsOnly(official, saved)
+    };
 
-  return {
-    composite: computeExecutiveComposite(breakdown),
-    breakdown
-  };
-}
-  // Ratings-only helper (shared)
-function scoreRatingsOnly(official, saved) {
-  const entry = saved[official.slug];
-  const avg = entry && typeof entry.averageRating === 'number' ? entry.averageRating : 0;
-  return Math.max(0, Math.min(100, (avg / 5) * 100));
-}
+    // These will eventually read from executive JSON files
+    breakdown.executiveOrders = await fetchExecutiveOrders(official);
+    breakdown.vetoes = await fetchVetoes(official);
+    breakdown.budgetsProposed = await fetchBudgetsProposed(official);
+    breakdown.appointmentsConfirmed = await fetchAppointmentsConfirmed(official);
+    breakdown.leadershipScore = fetchExecutiveLeadershipScore(official);
+    breakdown.workingWithLegislature = await fetchWorkingWithLegislature(official);
+    breakdown.crisisResponse = await fetchCrisisResponse(official);
+    breakdown.misconduct = await fetchExecutiveMisconduct(official);
+    breakdown.missedDuties = await fetchMissedDuties(official);
 
-async function render() {
-  const office = (officeSel.value || '').toLowerCase();
-  const saved = getSavedRatings();
-  const legislators = await loadLegislators();
+    function computeExecutiveComposite(breakdown) {
+      const weights = {
+        ratingsScore: 0.4,
+        executiveOrders: 0.1,
+        vetoes: 0.1,
+        budgetsProposed: 0.1,
+        appointmentsConfirmed: 0.1,
+        leadershipScore: 0.1,
+        workingWithLegislature: 0.05,
+        crisisResponse: 0.05,
+        misconduct: -0.05,
+        missedDuties: -0.05
+      };
+      let composite = 0;
+      for (const key in weights) {
+        composite += (breakdown[key] || 0) * weights[key];
+      }
+      return Math.round(composite * 10) / 10;
+    }
 
-  // Debug: log a sample legislator object to confirm structure
-  if (Array.isArray(legislators) && legislators.length > 0) {
-    console.log('Legislator sample object:', legislators[0]);
-  } else {
-    console.warn('No legislators loaded from legislators-current.json');
+    console.debug(`Executive scoring for ${official.name}:`, breakdown);
+
+    return {
+      composite: computeExecutiveComposite(breakdown),
+      breakdown
+    };
   }
 
-  // Filter officials by office and deduplicate by slug
-  const seen = new Set();
-  const officials = (window.allOfficials || [])
-    .filter(o => (o.office || '').toLowerCase() === office)
-    .filter(o => {
-      if (seen.has(o.slug)) return false;
-      seen.add(o.slug);
-      return true;
+  // Ratings-only helper
+  function scoreRatingsOnly(official, saved) {
+    const entry = saved[official.slug];
+    const avg = entry && typeof entry.averageRating === 'number' ? entry.averageRating : 0;
+    return Math.max(0, Math.min(100, (avg / 5) * 100));
+  }
+
+  async function render() {
+    const office = (officeSel.value || '').toLowerCase();
+    const saved = getSavedRatings();
+    const legislators = await loadRankingsFile(office);
+
+    // Debug: log a sample object
+    if (Array.isArray(legislators) && legislators.length > 0) {
+      console.log('Sample object from rankings JSON:', legislators[0]);
+    } else {
+      console.warn('No officials loaded from rankings JSON');
+    }
+
+    // Filter officials by office and deduplicate by slug
+    const seen = new Set();
+    const officials = (window.allOfficials || [])
+      .filter(o => (o.office || '').toLowerCase() === office)
+      .filter(o => {
+        if (seen.has(o.slug)) return false;
+        seen.add(o.slug);
+        return true;
+      });
+
+    // Build rows with scores
+    const rows = [];
+    for (const o of officials) {
+      const result = await computeCompositeScore(o, saved, legislators);
+      const score = result.composite;
+      rows.push({ official: o, score, breakdown: result.breakdown || {}, streak: '' });
+    }
+
+    // Sort descending
+    rows.sort((a, b) => b.score - a.score);
+
+    // Render full list
+    tableBody.innerHTML = '';
+    rows.forEach((row, idx) => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${idx + 1}</td>
+        <td>${row.official.name}</td>
+        <td>${row.official.office}</td>
+        <td>${row.score.toFixed(1)}</td>
+        <td>${row.streak}</td>
+      `;
+      tableBody.appendChild(tr);
     });
-
-  // Build rows with scores
-  const rows = [];
-  for (const o of officials) {
-    const result = await computeCompositeScore(o, saved, legislators);
-    const score = result.composite;
-    rows.push({ official: o, score, breakdown: result.breakdown || {}, streak: '' });
   }
 
-  // Sort descending
-  rows.sort((a, b) => b.score - a.score);
+  // Expose for toggle hook
+  window.renderRankingsLeaderboard = () => {
+    render().catch(err => console.error('Error rendering leaderboard:', err));
+  };
 
-  // Render full list (no slice)
-  tableBody.innerHTML = '';
-  rows.forEach((row, idx) => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td>${idx + 1}</td>
-      <td>${row.official.name}</td>
-      <td>${row.official.office}</td>
-      <td>${row.score.toFixed(1)}</td>
-      <td>${row.streak}</td>
-    `;
-    tableBody.appendChild(tr);
+  // React to filter changes
+  officeSel.addEventListener('change', () => {
+    render().catch(err => console.error('Error rendering leaderboard:', err));
   });
-}
-
-// Expose for toggle hook (wrap in async)
-window.renderRankingsLeaderboard = () => {
-  render().catch(err => console.error('Error rendering leaderboard:', err));
-};
-
-// React to filter changes (wrap in async)
-officeSel.addEventListener('change', () => {
-  render().catch(err => console.error('Error rendering leaderboard:', err));
-});
-categorySel.addEventListener('change', () => {
-  render().catch(err => console.error('Error rendering leaderboard:', err));
-});
+  categorySel.addEventListener('change', () => {
+    render().catch(err => console.error('Error rendering leaderboard:', err));
+  });
 })();
