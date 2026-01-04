@@ -3171,24 +3171,49 @@ async function loadLegislators() {
 
 // Match official to GovTrack ID using official_full name + office
 function normalizeName(str) {
-  return str.toLowerCase().replace(/[^a-z]/g, ''); // strip spaces, punctuation
+  return String(str || '')
+    .toLowerCase()
+    .normalize('NFKD')               // handle accents
+    .replace(/[\u0300-\u036f]/g, '') // strip diacritics
+    .replace(/[^a-z]/g, '');         // strip spaces/punctuation
 }
 
 function getGovTrackId(official, legislators) {
   const officialName = normalizeName(official.name);
+  const isSenator = (official.office || '').toLowerCase().includes('senator');
+  const isRep     = (official.office || '').toLowerCase().includes('representative');
+
   const match = legislators.find(l => {
     // Prefer GovTrack's official_full if present, fallback to first+last
-    const fullName = normalizeName(l.name.official_full || `${l.name.first} ${l.name.last}`);
-    const officeType = Array.isArray(l.roles) && l.roles.length > 0 ? l.roles[0].type : null;
+    const fullNameRaw =
+      (l.name && (l.name.official_full || `${l.name.first || ''} ${l.name.last || ''}`)) || '';
+    const fullName = normalizeName(fullNameRaw);
 
-    return (
-      (officialName === fullName || officialName.includes(fullName) || fullName.includes(officialName)) &&
-      ((official.office.toLowerCase().includes('senator') && officeType === 'sen') ||
-       (official.office.toLowerCase().includes('representative') && officeType === 'rep'))
-    );
+    // Role type: look for any role with type 'sen' or 'rep'
+    const officeType = Array.isArray(l.roles) && l.roles.length
+      ? (l.roles.find(r => r && r.type)?.type || null)
+      : null;
+
+    const officeOk = (isSenator && officeType === 'sen') || (isRep && officeType === 'rep');
+    const nameOk   = officialName === fullName ||
+                     officialName.includes(fullName) ||
+                     fullName.includes(officialName);
+
+    return officeOk && nameOk;
   });
 
-  return match ? match.ids.govtrack : null;
+  if (!match) return null;
+
+  // Support both id.govtrack and ids.govtrack
+  const govId =
+    (match.id && match.id.govtrack) ||
+    (match.ids && match.ids.govtrack) ||
+    null;
+
+  if (!govId) {
+    console.warn('Matched name/office but missing GovTrack ID:', match);
+  }
+  return govId;
 }
 
 // Fetch missed votes percentage from GovTrack
