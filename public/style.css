@@ -6937,3 +6937,30 @@ section > h3 {
 .scorecard-modal.wide .scorecard-modal-content {
   max-width: 900px; /* wider than default */
 }
+/* Wider scoring logic modal */
+.scorecard-modal.wide .scorecard-modal-content {
+  max-width: 900px;   /* wider than default */
+  width: 90%;         /* responsive */
+  max-height: 80vh;   /* cap height to viewport */
+  overflow-y: auto;   /* scroll if content exceeds height */
+}
+
+/* Style for the info button */
+.info-button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #0078d4; /* same blue as other modern buttons */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.info-button:hover {
+  background-color: #005a9e; /* darker blue on hover */
+  transform: translateY(-1px);
+}
