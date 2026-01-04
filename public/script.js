@@ -3299,6 +3299,7 @@ function getGovTrackId(official, legislators) {
 function showScorecard(official, breakdown) {
   // Debug: confirm function is firing
   console.log('Opening modal for:', official.name);
+  console.log('Breakdown object for', official.name, breakdown);
 
   // Populate modal content
   document.getElementById('scorecardName').textContent = official.name;
