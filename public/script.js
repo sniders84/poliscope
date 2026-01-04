@@ -3297,6 +3297,9 @@ function getGovTrackId(official, legislators) {
 
   // Show scorecard modal with breakdown (scoped modal toggle)
 function showScorecard(official, breakdown) {
+  // Debug: confirm function is firing
+  console.log('Opening modal for:', official.name);
+
   // Populate modal content
   document.getElementById('scorecardName').textContent = official.name;
   const table = document.getElementById('scorecardBreakdown');
@@ -3353,7 +3356,11 @@ async function render() {
     const tr = document.createElement('tr');
     tr.innerHTML = `
       <td>${idx + 1}</td>
-      <td><a href="#" class="scorecard-link" data-id="${row.official.id}">${row.official.name}</a></td>
+      <td>
+        <a href="#" class="scorecard-link" data-slug="${row.official.slug}">
+          ${row.official.name}
+        </a>
+      </td>
       <td>${row.official.office}</td>
       <td>${row.score.toFixed(1)}</td>
       <td>${row.streak}</td>
@@ -3366,14 +3373,14 @@ async function render() {
   links.forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
-      console.log('Scorecard link clicked:', link.dataset.id); // DEBUG
-      const id = parseInt(link.dataset.id, 10);
-      const row = rows.find(r => r.official.id === id);
+      const slug = link.dataset.slug;
+      console.log('Scorecard link clicked:', slug); // DEBUG
+      const row = rows.find(r => r.official.slug === slug);
       if (row) {
         console.log('Found row for:', row.official.name); // DEBUG
         showScorecard(row.official, row.breakdown);
       } else {
-        console.warn('No breakdown found for id:', id);
+        console.warn('No breakdown found for slug:', slug);
       }
     });
   });
