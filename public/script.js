@@ -3530,7 +3530,7 @@ async function scoreLegislator(official, saved, legislators) {
 }
 
 // Executive scoring scaffold: categories tailored to executive offices
-function scoreExecutive(official, saved) {
+async function scoreExecutive(official, saved) {
   const breakdown = {
     executiveOrders: 0,
     vetoes: 0,
@@ -3544,16 +3544,64 @@ function scoreExecutive(official, saved) {
     ratingsScore: scoreRatingsOnly(official, saved)
   };
 
-  // TODO: Wire in real data sources (ProPublica, White House/Governor sites, Ballotpedia)
-  // For now, leave categories at 0 and just use ratingsScore as composite.
+  // Wire in executive orders (placeholder until feed connected)
+  breakdown.executiveOrders = await fetchExecutiveOrders(official);
+
+  // Wire in vetoes (placeholder until feed connected)
+  breakdown.vetoes = await fetchVetoes(official);
+
+  // Wire in budgets proposed (placeholder until feed connected)
+  breakdown.budgetsProposed = await fetchBudgetsProposed(official);
+
+  // Wire in appointments confirmed (placeholder until feed connected)
+  breakdown.appointmentsConfirmed = await fetchAppointmentsConfirmed(official);
+
+  // Leadership score based on office
+  breakdown.leadershipScore = fetchExecutiveLeadershipScore(official);
+
+  // Working with legislature (placeholder until feed connected)
+  breakdown.workingWithLegislature = await fetchWorkingWithLegislature(official);
+
+  // Crisis response (placeholder until feed connected)
+  breakdown.crisisResponse = await fetchCrisisResponse(official);
+
+  // Misconduct (placeholder until feed connected)
+  breakdown.misconduct = await fetchExecutiveMisconduct(official);
+
+  // Missed duties (placeholder until feed connected)
+  breakdown.missedDuties = await fetchMissedDuties(official);
+
+  // Compute composite using weighted executive metrics
+  function computeExecutiveComposite(breakdown) {
+    const weights = {
+      ratingsScore: 0.4,
+      executiveOrders: 0.1,
+      vetoes: 0.1,
+      budgetsProposed: 0.1,
+      appointmentsConfirmed: 0.1,
+      leadershipScore: 0.1,
+      workingWithLegislature: 0.05,
+      crisisResponse: 0.05,
+      misconduct: -0.05,   // negative weight
+      missedDuties: -0.05  // negative weight
+    };
+
+    let composite = 0;
+    for (const key in weights) {
+      composite += (breakdown[key] || 0) * weights[key];
+    }
+    return Math.round(composite * 10) / 10;
+  }
+
+  // Audit log for transparency
+  console.debug(`Executive scoring for ${official.name}:`, breakdown);
 
   return {
-    composite: Math.round(breakdown.ratingsScore * 10) / 10,
+    composite: computeExecutiveComposite(breakdown),
     breakdown
   };
 }
-
-// Ratings-only helper (shared)
+  // Ratings-only helper (shared)
 function scoreRatingsOnly(official, saved) {
   const entry = saved[official.slug];
   const avg = entry && typeof entry.averageRating === 'number' ? entry.averageRating : 0;
