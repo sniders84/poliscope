@@ -155,6 +155,14 @@ jobs:
             const pick = stateCandidates[0] || candidates[0];
             return pick ? bioguideMap[pick] : null;
           }
+          function normalizeParty(party) {
+            if (!party) return null;
+            const s = String(party).trim().toLowerCase();
+            if (s.startsWith('r')) return 'R';
+            if (s.startsWith('d')) return 'D';
+            if (s.startsWith('i')) return 'I';
+            return party;
+          }
           async function buildRecord(s) {
             const bioguide = resolveBioguide(s);
             let bills_introduced = null, bills_cosponsored = null, laws_enacted = null;
@@ -173,7 +181,7 @@ jobs:
               missed_votes_pct: null,
               bills_introduced,
               bills_cosponsored,
-                            laws_enacted,
+              laws_enacted,
               committee_positions_score: null,
               bills_out_of_committee: null,
               misconduct: 0
@@ -186,15 +194,7 @@ jobs:
               const rec = await buildRecord(s);
               records.push(rec);
               const resolved = resolveBioguide(s);
-              console.log(
-                'OK:',
-                rec.name,
-                rec.state || '',
-                'bioguide:',
-                resolved || 'MISSING',
-                'laws_enacted:',
-                rec.laws_enacted
-              );
+              console.log('OK:', rec.name, rec.state || '', 'bioguide:', resolved || 'MISSING', 'laws_enacted:', rec.laws_enacted);
             }
             const outFile = path.join(process.cwd(), 'public', 'senators-rankings.json');
             fs.writeFileSync(outFile, JSON.stringify(records, null, 2), 'utf-8');
@@ -213,4 +213,3 @@ jobs:
             git commit -m "chore: update senators-rankings.json (career laws_enacted)"
             git push
           fi
-
