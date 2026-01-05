@@ -22,7 +22,7 @@ jobs:
       - name: Install fetch dependency
         run: npm install node-fetch@2
 
-      - name: Generate senators-rankings.json from GovTrack
+            - name: Generate senators-rankings.json from GovTrack
         run: |
           node -e "
           const fs = require('fs');
@@ -55,23 +55,22 @@ jobs:
           async function buildRecord(role) {
             const person = await fetchPerson(role.person.id);
 
-            // Baby step: fill schema with available GovTrack fields.
             return {
               name: \`\${person.firstname} \${person.lastname}\`,
               office: 'Senator',
               party: normalizeParty(role.party),
               state: role.state,
               missed_votes_pct: role.missed_votes_pct ?? null,
-              bills_introduced: role.sponsored_bills ?? null,
-              bills_cosponsored: role.cosponsored_bills ?? null,
-              laws_enacted: role.enacted_bills ?? null,
-              committee_positions_score: role.committee_positions?.length ?? null,
-              bipartisan_cosponsored_count: role.bipartisan_cosponsored_bills ?? null,
-              bipartisan_sponsored_count: role.bipartisan_sponsored_bills ?? null,
-              powerful_cosponsors_count: role.powerful_cosponsors ?? null,
-              leadership_score: role.leadership_positions?.length ?? null,
-              cross_chamber_count: role.cross_chamber_bills ?? null,
-              bills_out_of_committee: role.bills_out_of_committee ?? null,
+              bills_introduced: null,
+              bills_cosponsored: null,
+              laws_enacted: null,
+              committee_positions_score: null,
+              bipartisan_cosponsored_count: null,
+              bipartisan_sponsored_count: null,
+              powerful_cosponsors_count: null,
+              leadership_score: null,
+              cross_chamber_count: null,
+              bills_out_of_committee: null,
               misconduct: 0
             };
           }
