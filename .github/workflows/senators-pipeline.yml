@@ -22,7 +22,7 @@ jobs:
       - name: Install fetch dependency
         run: npm install node-fetch@2
 
-            - name: Generate senators-rankings.json from GovTrack
+      - name: Generate senators-rankings.json from GovTrack
         run: |
           node -e "
           const fs = require('fs');
