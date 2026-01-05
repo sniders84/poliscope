@@ -64,7 +64,8 @@ jobs:
           fs.writeFileSync(outFile, JSON.stringify(records, null, 2), 'utf-8');
           console.log('Wrote', records.length, 'senators to', outFile);
           "
-           - name: Commit updated JSON
+
+      - name: Commit updated JSON
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -75,4 +76,3 @@ jobs:
             git commit -m "chore: update senators-rankings.json"
             git push
           fi
-
