@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: "18"
 
-      - name: Generate senators-rankings.json (with bills counts)
+      - name: Generate senators-rankings.json (with bills counts via bioguide map)
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: |
@@ -28,8 +28,20 @@ jobs:
           const path = require('path');
 
           const API_KEY = process.env.CONGRESS_API_KEY;
-          const rosterPath = path.join(process.cwd(), 'public', 'senators.json');
-          const legislators = JSON.parse(fs.readFileSync(rosterPath, 'utf-8'));
+          const senatorsPath = path.join(process.cwd(), 'public', 'senators.json');
+          const legislatorsPath = path.join(process.cwd(), 'public', 'legislators-current.json');
+
+          const senators = JSON.parse(fs.readFileSync(senatorsPath, 'utf-8'));
+          const legislators = JSON.parse(fs.readFileSync(legislatorsPath, 'utf-8'));
+
+          // Build lookup: 'First Last' -> bioguide
+          const bioguideMap = {};
+          legislators.forEach(l => {
+            if (l.id && l.id.bioguide) {
+              const fullName = \`\${l.name.first} \${l.name.last}\`.trim().toLowerCase();
+              bioguideMap[fullName] = l.id.bioguide;
+            }
+          });
 
           function normalizeParty(party) {
             if (!party) return null;
@@ -38,13 +50,6 @@ jobs:
             if (s.startsWith('d')) return 'D';
             if (s.startsWith('i')) return 'I';
             return party;
-          }
-
-          // Extract bioguide from congress.gov photo URL, e.g. .../member/b001319_200.jpg -> B001319
-          function getBioguideFromPhoto(url) {
-            if (!url || typeof url !== 'string') return null;
-            const m = url.match(/member\\/([a-z0-9]+)_/i);
-            return m ? m[1].toUpperCase() : null;
           }
 
           async function fetchCount(url) {
@@ -65,7 +70,7 @@ jobs:
           }
 
           async function buildRecord(l) {
-            const bioguide = getBioguideFromPhoto(l.photo);
+            const bioguide = bioguideMap[l.name.toLowerCase()] || null;
 
             let bills_introduced = null;
             let bills_cosponsored = null;
@@ -74,7 +79,7 @@ jobs:
               bills_introduced = await fetchCount(\`https://api.congress.gov/v3/member/\${bioguide}/sponsored-legislation?api_key=\${API_KEY}\`);
               bills_cosponsored = await fetchCount(\`https://api.congress.gov/v3/member/\${bioguide}/cosponsored-legislation?api_key=\${API_KEY}\`);
             } else {
-              console.warn('Missing bioguide or API key for', l.name);
+              console.warn('Missing bioguide for', l.name);
             }
 
             return {
@@ -94,10 +99,10 @@ jobs:
 
           (async () => {
             const records = [];
-            for (const l of legislators) {
+            for (const l of senators) {
               const rec = await buildRecord(l);
               records.push(rec);
-              console.log('OK:', rec.name, 'bioguide:', (rec.bills_introduced !== null || rec.bills_cosponsored !== null));
+              console.log('OK:', rec.name, 'bioguide:', bioguideMap[l.name.toLowerCase()] || 'MISSING');
             }
             const outFile = path.join(process.cwd(), 'public', 'senators-rankings.json');
             fs.writeFileSync(outFile, JSON.stringify(records, null, 2), 'utf-8');
