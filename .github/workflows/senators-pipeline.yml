@@ -22,6 +22,7 @@ jobs:
       - name: "Generate senators-rankings.json (full career metrics)"
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
+          PROPUBLICA_API_KEY: ${{ secrets.PROPUBLICA_API_KEY }}  # Add this secret in your repo settings from propublica.org
         shell: bash
         run: |
           set -euo pipefail
@@ -29,7 +30,8 @@ jobs:
           const fs = require('fs');
           const path = require('path');
 
-          const API_KEY = process.env.CONGRESS_API_KEY;
+          const CONGRESS_API_KEY = process.env.CONGRESS_API_KEY;
+          const PROPUBLICA_API_KEY = process.env.PROPUBLICA_API_KEY;
           const senatorsPath = path.join(process.cwd(), 'public', 'senators.json');
           const legislatorsPath = path.join(process.cwd(), 'public', 'legislators-current.json');
 
@@ -58,12 +60,13 @@ jobs:
             if (last && state) bioguideMap[`${last.toLowerCase()} (${state})`] = id;
           });
 
-          async function fetchJSON(url) {
-            try { const res = await fetch(url); if (!res.ok) return null; return res.json(); }
-            catch (e) { console.error('Fetch error:', url, e); return null; }
+          async function fetchJSON(url, headers = {}) {
+            try { const res = await fetch(url, { headers }); if (!res.ok) return null; return res.json(); }
+            catch { return null; }
           }
 
-          async function fetchCount(url) {
+          async function fetchCount(baseUrl) {
+            const url = `${baseUrl}?api_key=${CONGRESS_API_KEY}&limit=1`;
             const data = await fetchJSON(url);
             return data?.pagination?.count ?? null;
           }
@@ -80,12 +83,12 @@ jobs:
           function textIsBecameLaw(txt) {
             if (!txt) return false;
             const t = String(txt).toLowerCase();
-            return t.includes('became law') || t.includes('became public law') || t.includes('became private law') || t.includes('signed by the president');
+            return t.includes('became law') || t.includes('became public law') || t.includes('became private law') || t.includes('signed by') || t.includes('enacted');
           }
 
           function congressRangeForMember(bioguide) {
             const terms = termsByBioguide[bioguide] || [];
-            if (terms.length === 0) return { start: 93, end: currentCongress() };
+            if (terms.length === 0) return { start: currentCongress() - 10, end: currentCongress() };
             const years = terms.flatMap(t => {
               const ys = [];
               const s = parseInt(String(t.start).slice(0,4),10);
@@ -94,51 +97,52 @@ jobs:
               if (Number.isInteger(e)) ys.push(e);
               return ys;
             });
-            if (years.length === 0) return { start: currentCongress(), end: currentCongress() };
-            const minYear = Math.min(...years);
-            const maxYear = Math.max(...years);
-            return { start: yearToCongress(minYear), end: Math.max(yearToCongress(maxYear + 1), currentCongress()) };
+            const minYear = Math.min(...years) || 2013;
+            const maxYear = Math.max(...years) || new Date().getUTCFullYear();
+            return { start: yearToCongress(minYear), end: yearToCongress(maxYear) };
           }
 
           async function fetchLawsEnactedCareer(bioguide) {
             const { start, end } = congressRangeForMember(bioguide);
             let enacted = 0;
             for (let cn = start; cn <= end; cn++) {
+              const base = `https://api.congress.gov/v3/member/${bioguide}/sponsored-legislation?api_key=${CONGRESS_API_KEY}&limit=250&congress=${cn}`;
               let offset = 0;
-              const limit = 250;
               let items = [];
               while (true) {
-                const url = `https://api.congress.gov/v3/member/${bioguide}/sponsored-legislation?api_key=${API_KEY}&limit=${limit}&offset=${offset}&congress=${cn}`;
+                const url = `${base}&offset=${offset}`;
                 const d = await fetchJSON(url);
                 if (!d) break;
-                const newItems = d?.sponsoredLegislation || d?.results || [];
-                if (newItems.length === 0) break;
+                const newItems = d?.sponsoredLegislation || [];
                 items = items.concat(newItems);
-                if (newItems.length < limit) break;
-                offset += limit;
+                if (newItems.length < 250) break;
+                offset += 250;
               }
               for (const it of items) {
-                const latestAction = it?.latestAction || {};
-                const latestText = latestAction?.text || '';
-                if (textIsBecameLaw(latestText)) {
-                  enacted++;
-                  continue;
-                }
+                const latestText = (it?.latestAction?.text || '').toLowerCase();
+                if (textIsBecameLaw(latestText)) { enacted++; continue; }
                 const key = getBillKey(it);
                 if (!key) continue;
-                const billUrl = `https://api.congress.gov/v3/bill/${key.congress}/${key.billType}/${key.billNumber}?api_key=${API_KEY}`;
+                const billUrl = `https://api.congress.gov/v3/bill/${key.congress}/${key.billType}/${key.billNumber}?api_key=${CONGRESS_API_KEY}`;
                 const bill = await fetchJSON(billUrl);
                 if (!bill) continue;
-                if (bill?.bill?.policyArea || bill?.bill?.title?.toLowerCase().includes('law')) { // rough
-                }
-                const billLatestText = bill?.bill?.latestAction?.text || '';
-                if (textIsBecameLaw(billLatestText)) {
-                  enacted++;
-                  continue;
-                }
-                const pl = bill?.bill?.publicLawNumber || bill?.publicLawNumber || '';
-                if (pl) {
-                  enacted++;
+                const billLatestText = (bill?.bill?.latestAction?.text || '').toLowerCase();
+                if (textIsBecameLaw(billLatestText)) { enacted++; continue; }
+                const pl = bill?.bill?.publicLawNumber || '';
+                if (pl) enacted++;
+                // Additional check for actions
+                let actionOffset = 0;
+                while (true) {
+                  const actionsUrl = `https://api.congress.gov/v3/bill/${key.congress}/${key.billType}/${key.billNumber}/actions?api_key=${CONGRESS_API_KEY}&limit=250&offset=${actionOffset}`;
+                  const actionsData = await fetchJSON(actionsUrl);
+                  if (!actionsData) break;
+                  const actions = actionsData?.actions || [];
+                  for (const a of actions) {
+                    const t = (a?.text || '').toLowerCase();
+                    if (textIsBecameLaw(t)) { enacted++; break; }
+                  }
+                  if (actions.length < 250) break;
+                  actionOffset += 250;
                 }
               }
             }
@@ -146,33 +150,49 @@ jobs:
           }
 
           async function fetchMissedVotesPct(bioguide) {
-            const url = `https://api.congress.gov/v3/member/${bioguide}?api_key=${API_KEY}`;
-            const data = await fetchJSON(url);
-            const member = data?.member || {};
-            const currentTerm = member?.terms?.item?.slice(-1)[0] || {};
-            return currentTerm?.missedVotesPct || null;
+            if (!PROPUBLICA_API_KEY) return null;
+            const url = `https://api.propublica.org/congress/v1/members/${bioguide}.json`;
+            const headers = { 'X-API-Key': PROPUBLICA_API_KEY };
+            const data = await fetchJSON(url, headers);
+            const role = data?.results?.[0]?.roles?.[0] || {};
+            return role?.missed_votes_pct || null;
+          }
+
+          async function fetchCommitteePositionsScore(bioguide) {
+            if (!PROPUBLICA_API_KEY) return null;
+            const url = `https://api.propublica.org/congress/v1/members/${bioguide}.json`;
+            const headers = { 'X-API-Key': PROPUBLICA_API_KEY };
+            const data = await fetchJSON(url, headers);
+            const role = data?.results?.[0]?.roles?.[0] || {};
+            const committees = role?.committees || [];
+            let score = committees.length;
+            committees.forEach(c => {
+              if (c.title === 'Chair') score += 5;
+              else if (c.title === 'Vice Chair') score += 3;
+              else if (c.title === 'Ranking Member') score += 4;
+            });
+            return score;
           }
 
           async function fetchBillsOutOfCommittee(bioguide) {
-            // Approximate: count sponsored bills with latestAction including "reported" or "passed" or "floor"
             const { start, end } = congressRangeForMember(bioguide);
             let count = 0;
             for (let cn = start; cn <= end; cn++) {
+              const base = `https://api.congress.gov/v3/member/${bioguide}/sponsored-legislation?api_key=${CONGRESS_API_KEY}&limit=250&congress=${cn}`;
               let offset = 0;
-              const limit = 250;
               let items = [];
               while (true) {
-                const url = `https://api.congress.gov/v3/member/${bioguide}/sponsored-legislation?api_key=${API_KEY}&limit=${limit}&offset=${offset}&congress=${cn}`;
+                const url = `${base}&offset=${offset}`;
                 const d = await fetchJSON(url);
                 if (!d) break;
-                const newItems = d?.sponsoredLegislation || d?.results || [];
+                const newItems = d?.sponsoredLegislation || [];
                 items = items.concat(newItems);
-                if (newItems.length < limit) break;
-                offset += limit;
+                if (newItems.length < 250) break;
+                offset += 250;
               }
               for (const it of items) {
                 const latestText = (it?.latestAction?.text || '').toLowerCase();
-                if (latestText.includes('reported') || latestText.includes('passed senate') || latestText.includes('floor consideration')) {
+                if (latestText.includes('reported to senate') || latestText.includes('passed senate') || latestText.includes('discharged from committee') || latestText.includes('floor')) {
                   count++;
                 }
               }
@@ -218,16 +238,16 @@ jobs:
             let bills_out_of_committee = null;
             let misconduct = 0;
 
-            if (bioguide && API_KEY) {
-              bills_introduced = await fetchCount(`https://api.congress.gov/v3/member/${bioguide}/sponsored-legislation?api_key=${API_KEY}`);
-              bills_cosponsored = await fetchCount(`https://api.congress.gov/v3/member/${bioguide}/cosponsored-legislation?api_key=${API_KEY}`);
+            if (bioguide && CONGRESS_API_KEY) {
+              bills_introduced = await fetchCount(`https://api.congress.gov/v3/member/${bioguide}/sponsored-legislation`);
+              bills_cosponsored = await fetchCount(`https://api.congress.gov/v3/member/${bioguide}/cosponsored-legislation`);
               laws_enacted = await fetchLawsEnactedCareer(bioguide);
               missed_votes_pct = await fetchMissedVotesPct(bioguide);
+              committee_positions_score = await fetchCommitteePositionsScore(bioguide);
               bills_out_of_committee = await fetchBillsOutOfCommittee(bioguide);
-              // committee_positions_score would require separate logic or GovTrack data (not in congress.gov API)
-              // misconduct = from GovTrack misconduct database (requires separate source)
+              // misconduct remains 0; can add logic if needed
             } else {
-              console.warn('Missing bioguide for', s.name, s.state || '');
+              console.warn('Missing bioguide or API key for', s.name, s.state || '');
             }
 
             return {
@@ -256,6 +276,7 @@ jobs:
                 'cosponsored:', rec.bills_cosponsored, 
                 'enacted:', rec.laws_enacted, 
                 'missed_pct:', rec.missed_votes_pct,
+                'committee_score:', rec.committee_positions_score,
                 'out_of_committee:', rec.bills_out_of_committee);
             }
             const outFile = path.join(process.cwd(), 'public', 'senators-rankings.json');
