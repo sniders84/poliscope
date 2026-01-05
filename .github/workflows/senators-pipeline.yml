@@ -23,7 +23,7 @@ jobs:
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: |
-          node <<'NODE'
+          node - <<'NODE'
           const fs = require('fs');
           const path = require('path');
 
@@ -34,66 +34,37 @@ jobs:
           const senators = JSON.parse(fs.readFileSync(senatorsPath, 'utf-8'));
           const legislators = JSON.parse(fs.readFileSync(legislatorsPath, 'utf-8'));
 
-          // Congress math
-          function yearToCongress(year) {
-            return Math.floor((year - 1789) / 2) + 1;
-          }
-          function currentCongress() {
-            return yearToCongress(new Date().getUTCFullYear());
-          }
+          function yearToCongress(year) { return Math.floor((year - 1789) / 2) + 1; }
+          function currentCongress() { return yearToCongress(new Date().getUTCFullYear()); }
 
-          // Build lookup
           const bioguideMap = {};
           const termsByBioguide = {};
           legislators.forEach(l => {
             const id = l?.id?.bioguide;
             if (!id) return;
             termsByBioguide[id] = Array.isArray(l?.terms) ? l.terms : [];
-
             const first = l?.name?.first || '';
             const nick = l?.name?.nickname || '';
             const last = l?.name?.last || '';
             const full = l?.name?.official_full || '';
             const state = (l?.terms || []).slice(-1)[0]?.state || '';
-
-            [ `${first} ${last}`, `${nick} ${last}`, full ]
-              .filter(Boolean)
-              .forEach(v => {
-                const k = v.trim().toLowerCase();
-                bioguideMap[k] = id;
-                if (state) bioguideMap[`${k} (${state})`] = id;
-              });
-
-            if (last && state) {
-              bioguideMap[`${last.toLowerCase()} (${state})`] = id;
-            }
+            [ `${first} ${last}`, `${nick} ${last}`, full ].filter(Boolean).forEach(v => {
+              const k = v.trim().toLowerCase();
+              bioguideMap[k] = id;
+              if (state) bioguideMap[`${k} (${state})`] = id;
+            });
+            if (last && state) bioguideMap[`${last.toLowerCase()} (${state})`] = id;
           });
 
-          function normalizeParty(party) {
-            if (!party) return null;
-            const s = String(party).trim().toLowerCase();
-            if (s.startsWith('r')) return 'R';
-            if (s.startsWith('d')) return 'D';
-            if (s.startsWith('i')) return 'I';
-            return party;
-          }
-
           async function fetchJSON(url) {
-            try {
-              const res = await fetch(url);
-              if (!res.ok) return null;
-              return res.json();
-            } catch {
-              return null;
-            }
+            try { const res = await fetch(url); if (!res.ok) return null; return res.json(); }
+            catch { return null; }
           }
-
           async function fetchCount(url) {
             const data = await fetchJSON(url);
             const c = data?.pagination?.count;
             return typeof c === 'number' ? c : null;
           }
-
           function getBillKey(it) {
             const congress = it?.congress || it?.bill?.congress;
             const billNumber = it?.number || it?.billNumber || it?.bill?.number;
@@ -102,89 +73,69 @@ jobs:
             if (!congress || !billType || !billNumber) return null;
             return { congress, billType, billNumber };
           }
-
           function textIsBecameLaw(txt) {
             if (!txt) return false;
             const t = String(txt).toLowerCase();
-            return (
-              t.includes('became law') ||
-              t.includes('became public law') ||
-              t.includes('became private law')
-            );
+            return t.includes('became law') || t.includes('became public law') || t.includes('became private law');
           }
-
           function normalizeActions(bill) {
             const raw = bill?.bill?.actions || bill?.actions || bill?.data?.actions;
             if (Array.isArray(raw)) return raw;
             return raw ? [raw] : [];
           }
-
           function congressRangeForMember(bioguide) {
             const terms = termsByBioguide[bioguide] || [];
             if (terms.length === 0) return { start: 93, end: currentCongress() };
             const years = terms.flatMap(t => {
               const ys = [];
-              const s = parseInt(String(t.start).slice(0, 4), 10);
-              const e = parseInt(String(t.end).slice(0, 4), 10);
+              const s = parseInt(String(t.start).slice(0,4),10);
+              const e = parseInt(String(t.end).slice(0,4),10);
               if (Number.isInteger(s)) ys.push(s);
               if (Number.isInteger(e)) ys.push(e);
               return ys;
             });
             const minYear = Math.min(...years);
             const maxYear = Math.max(...years);
-            return {
-              start: yearToCongress(minYear),
-              end: Math.max(yearToCongress(maxYear), currentCongress())
-            };
+            return { start: yearToCongress(minYear), end: Math.max(yearToCongress(maxYear), currentCongress()) };
           }
-
           async function fetchLawsEnactedCareer(bioguide) {
             const { start, end } = congressRangeForMember(bioguide);
             let enacted = 0;
-
             for (let cn = start; cn <= end; cn++) {
               const base = `https://api.congress.gov/v3/member/${bioguide}/sponsored-legislation?api_key=${API_KEY}&limit=250&congress=${cn}`;
               const first = await fetchJSON(base);
               if (!first) continue;
-
               const pages = first?.pagination?.pages || 1;
               const collectItems = d => d?.results || d?.sponsoredLegislation || d?.data || [];
               let items = collectItems(first);
-
               for (let p = 2; p <= pages; p++) {
                 const d = await fetchJSON(`${base}&page=${p}`);
                 if (d) items = items.concat(collectItems(d));
               }
-
               for (const it of items) {
                 const key = getBillKey(it);
                 if (!key) continue;
                 const url = `https://api.congress.gov/v3/bill/${key.congress}/${key.billType}/${key.billNumber}?api_key=${API_KEY}`;
                 const bill = await fetchJSON(url);
                 if (!bill) continue;
-
                 const latestAction = bill?.bill?.latestAction || bill?.latestAction || bill?.data?.latestAction;
                 const latestText = latestAction?.text || latestAction?.action || latestAction?.description;
                 if (textIsBecameLaw(latestText)) { enacted++; continue; }
-
                 const actions = normalizeActions(bill);
                 for (const a of actions) {
                   const t = a?.text || a?.action || a?.description;
                   if (textIsBecameLaw(t)) { enacted++; break; }
                 }
-
                 const pl = bill?.bill?.publicLawNumber || bill?.data?.publicLawNumber || bill?.publicLawNumber;
                 if (pl) enacted++;
               }
             }
             return enacted;
           }
-
           function resolveBioguide(s) {
             const name = s.name?.trim() || '';
             const state = s.state?.trim().toUpperCase() || '';
-            const slug = s.slug ? s.slug.toLowerCase().replace(/-/g, ' ') : '';
-
+            const slug = s.slug ? s.slug.toLowerCase().replace(/-/g,' ') : '';
             const key1 = name.toLowerCase();
             if (bioguideMap[key1]) return bioguideMap[key1];
             const key2 = `${key1} (${state})`;
@@ -202,11 +153,9 @@ jobs:
             const pick = stateCandidates[0] || candidates[0];
             return pick ? bioguideMap[pick] : null;
           }
-
           async function buildRecord(s) {
             const bioguide = resolveBioguide(s);
             let bills_introduced = null, bills_cosponsored = null, laws_enacted = null;
-
             if (bioguide && API_KEY) {
               bills_introduced = await fetchCount(`https://api.congress.gov/v3/member/${bioguide}/sponsored-legislation?api_key=${API_KEY}`);
               bills_cosponsored = await fetchCount(`https://api.congress.gov/v3/member/${bioguide}/cosponsored-legislation?api_key=${API_KEY}`);
@@ -214,7 +163,6 @@ jobs:
             } else {
               console.warn('Missing bioguide for', s.name, s.state || '');
             }
-
             return {
               name: s.name,
               office: s.office || 'Senator',
@@ -225,7 +173,7 @@ jobs:
               bills_cosponsored,
               laws_enacted,
               committee_positions_score: null,
-              bills_out_of_committee: null,
+                            bills_out_of_committee: null,
               misconduct: 0
             };
           }
