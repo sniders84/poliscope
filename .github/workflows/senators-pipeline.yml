@@ -26,7 +26,6 @@ jobs:
           node -e "
           const fs = require('fs');
           const path = require('path');
-          const fetch = require('node-fetch');
 
           const API_KEY = process.env.CONGRESS_API_KEY;
           const rosterPath = path.join(process.cwd(), 'public', 'senators.json');
@@ -41,11 +40,18 @@ jobs:
             return party;
           }
 
+          // Extract bioguide from congress.gov photo URL, e.g. .../member/b001319_200.jpg -> B001319
+          function getBioguideFromPhoto(url) {
+            if (!url || typeof url !== 'string') return null;
+            const m = url.match(/member\\/([a-z0-9]+)_/i);
+            return m ? m[1].toUpperCase() : null;
+          }
+
           async function fetchCount(url) {
             try {
               const res = await fetch(url);
               if (!res.ok) {
-                console.error('Fetch failed:', res.status, res.statusText);
+                console.error('Fetch failed:', res.status, res.statusText, url);
                 return null;
               }
               const data = await res.json();
@@ -59,8 +65,7 @@ jobs:
           }
 
           async function buildRecord(l) {
-            const bioguideMatch = l.govtrackLink?.match(/members\\/([a-z0-9]+)/i);
-            const bioguide = bioguideMatch ? bioguideMatch[1] : null;
+            const bioguide = getBioguideFromPhoto(l.photo);
 
             let bills_introduced = null;
             let bills_cosponsored = null;
@@ -68,6 +73,8 @@ jobs:
             if (bioguide && API_KEY) {
               bills_introduced = await fetchCount(\`https://api.congress.gov/v3/member/\${bioguide}/sponsored-legislation?api_key=\${API_KEY}\`);
               bills_cosponsored = await fetchCount(\`https://api.congress.gov/v3/member/\${bioguide}/cosponsored-legislation?api_key=\${API_KEY}\`);
+            } else {
+              console.warn('Missing bioguide or API key for', l.name);
             }
 
             return {
@@ -90,7 +97,7 @@ jobs:
             for (const l of legislators) {
               const rec = await buildRecord(l);
               records.push(rec);
-              console.log('OK:', rec.name);
+              console.log('OK:', rec.name, 'bioguide:', (rec.bills_introduced !== null || rec.bills_cosponsored !== null));
             }
             const outFile = path.join(process.cwd(), 'public', 'senators-rankings.json');
             fs.writeFileSync(outFile, JSON.stringify(records, null, 2), 'utf-8');
