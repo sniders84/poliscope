@@ -1,40 +1,98 @@
+name: Senators Rankings Pipeline (Roster Only)
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: "0 5 * * *"   # nightly at 05:00 UTC
+
+jobs:
+  build-and-commit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
       - name: Generate senators-rankings.json (Roster Only)
         run: |
           node -e "
           const fs = require('fs');
           const path = require('path');
 
-          const rosterPath = path.join(process.cwd(), 'public', 'senators.json');
-          const legislators = JSON.parse(fs.readFileSync(rosterPath, 'utf-8'));
+          try {
+            const rosterPath = path.join(process.cwd(), 'public', 'senators.json');
+            const raw = fs.readFileSync(rosterPath, 'utf-8');
 
-          function normalizeParty(party) {
-            if (!party) return null;
-            const s = String(party).toLowerCase();
-            if (s.startsWith('r')) return 'R';
-            if (s.startsWith('d')) return 'D';
-            if (s.startsWith('i')) return 'I';
-            return party;
+            // Validate and parse roster JSON
+            let legislators;
+            try {
+              legislators = JSON.parse(raw);
+            } catch (parseErr) {
+              console.error('Failed to parse public/senators.json:', parseErr.message);
+              process.exit(1);
+            }
+
+            if (!Array.isArray(legislators)) {
+              console.error('public/senators.json is not an array. Found:', typeof legislators);
+              process.exit(1);
+            }
+
+            function normalizeParty(party) {
+              if (!party) return null;
+              const s = String(party).trim().toLowerCase();
+              if (s.startsWith('r')) return 'R';
+              if (s.startsWith('d')) return 'D';
+              if (s.startsWith('i')) return 'I';
+              return party;
+            }
+
+            const records = legislators.map(l => {
+              // Basic field guards to avoid undefined
+              const name = typeof l.name === 'string' ? l.name : null;
+              const office = typeof l.office === 'string' ? l.office : 'Senator';
+              const party = normalizeParty(l.party);
+              const state = typeof l.state === 'string' ? l.state : null;
+
+              return {
+                name,
+                office,
+                party,
+                state,
+                missed_votes_pct: null,
+                bills_introduced: null,
+                bills_cosponsored: null,
+                laws_enacted: null,
+                committee_positions_score: null,
+                bills_out_of_committee: null,
+                misconduct: 0
+              };
+            });
+
+            const outDir = path.join(process.cwd(), 'public');
+            const outFile = path.join(outDir, 'senators-rankings.json');
+            fs.mkdirSync(outDir, { recursive: true });
+            fs.writeFileSync(outFile, JSON.stringify(records, null, 2), 'utf-8');
+            console.log('Wrote', records.length, 'senators to', outFile);
+          } catch (err) {
+            console.error('Fatal error in generator:', err.message);
+            process.exit(1);
           }
-
-          const records = legislators.map(l => {
-            return {
-              name: l.name,   // <-- FIXED: use the string directly
-              office: l.office,
-              party: normalizeParty(l.party),
-              state: l.state,
-              missed_votes_pct: null,
-              bills_introduced: null,
-              bills_cosponsored: null,
-              laws_enacted: null,
-              committee_positions_score: null,
-              bills_out_of_committee: null,
-              misconduct: 0
-            };
-          });
-
-          const outDir = path.join(process.cwd(), 'public');
-          const outFile = path.join(outDir, 'senators-rankings.json');
-          fs.mkdirSync(outDir, { recursive: true });
-          fs.writeFileSync(outFile, JSON.stringify(records, null, 2), 'utf-8');
-          console.log('Wrote', records.length, 'senators to', outFile);
           "
+
+      - name: Commit updated JSON
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/senators-rankings.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: update senators-rankings.json"
+            git push
+          fi
