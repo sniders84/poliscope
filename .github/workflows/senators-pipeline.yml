@@ -25,7 +25,7 @@ jobs:
           const fs = require('fs');
           const path = require('path');
 
-          const rosterPath = path.join(process.cwd(), 'public', 'legislators-current.json');
+          const rosterPath = path.join(process.cwd(), 'public', 'senators.json');
           const legislators = JSON.parse(fs.readFileSync(rosterPath, 'utf-8'));
 
           function normalizeParty(party) {
@@ -37,17 +37,12 @@ jobs:
             return party;
           }
 
-          const senators = legislators.filter(l =>
-            Array.isArray(l.roles) && l.roles.some(r => r.type === 'sen' && r.current === true)
-          );
-
-          const records = senators.map(l => {
-            const role = l.roles.find(r => r.type === 'sen' && r.current === true);
+          const records = legislators.map(l => {
             return {
               name: \`\${l.name.first} \${l.name.last}\`,
               office: 'Senator',
-              party: normalizeParty(role.party),
-              state: role.state,
+              party: normalizeParty(l.party),
+              state: l.state,
               missed_votes_pct: null,
               bills_introduced: null,
               bills_cosponsored: null,
