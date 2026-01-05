@@ -1,25 +1,4 @@
-name: Senators Rankings Pipeline (with bills counts)
-
-on:
-  workflow_dispatch: {}
-  schedule:
-    - cron: "0 5 * * *"   # nightly at 05:00 UTC
-
-jobs:
-  build-and-commit:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "18"
-
-      - name: Generate senators-rankings.json (with bills counts via bioguide map)
+      - name: Generate senators-rankings.json (with robust bioguide matching)
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: |
@@ -34,12 +13,22 @@ jobs:
           const senators = JSON.parse(fs.readFileSync(senatorsPath, 'utf-8'));
           const legislators = JSON.parse(fs.readFileSync(legislatorsPath, 'utf-8'));
 
-          // Build lookup: 'First Last' -> bioguide
+          // Build lookup with multiple name variants
           const bioguideMap = {};
           legislators.forEach(l => {
             if (l.id && l.id.bioguide) {
-              const fullName = \`\${l.name.first} \${l.name.last}\`.trim().toLowerCase();
-              bioguideMap[fullName] = l.id.bioguide;
+              const id = l.id.bioguide;
+              const names = [];
+
+              if (l.name) {
+                if (l.name.official_full) names.push(l.name.official_full);
+                if (l.name.first && l.name.last) names.push(\`\${l.name.first} \${l.name.last}\`);
+                if (l.name.nickname && l.name.last) names.push(\`\${l.name.nickname} \${l.name.last}\`);
+              }
+
+              names.forEach(n => {
+                if (n) bioguideMap[n.trim().toLowerCase()] = id;
+              });
             }
           });
 
@@ -69,8 +58,21 @@ jobs:
             }
           }
 
+          function resolveBioguide(l) {
+            const nameKey = l.name.trim().toLowerCase();
+            if (bioguideMap[nameKey]) return bioguideMap[nameKey];
+
+            if (l.slug && bioguideMap[l.slug.toLowerCase().replace(/-/g, ' ')]) {
+              return bioguideMap[l.slug.toLowerCase().replace(/-/g, ' ')];
+            }
+
+            const lastName = l.name.split(' ').slice(-1)[0].toLowerCase();
+            const match = Object.keys(bioguideMap).find(k => k.endsWith(lastName));
+            return match ? bioguideMap[match] : null;
+          }
+
           async function buildRecord(l) {
-            const bioguide = bioguideMap[l.name.toLowerCase()] || null;
+            const bioguide = resolveBioguide(l);
 
             let bills_introduced = null;
             let bills_cosponsored = null;
@@ -102,22 +104,10 @@ jobs:
             for (const l of senators) {
               const rec = await buildRecord(l);
               records.push(rec);
-              console.log('OK:', rec.name, 'bioguide:', bioguideMap[l.name.toLowerCase()] || 'MISSING');
+              console.log('OK:', rec.name, 'bioguide:', resolveBioguide(l) || 'MISSING');
             }
             const outFile = path.join(process.cwd(), 'public', 'senators-rankings.json');
             fs.writeFileSync(outFile, JSON.stringify(records, null, 2), 'utf-8');
             console.log('Wrote', records.length, 'senators to', outFile);
           })();
           "
-
-      - name: Commit updated JSON
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add public/senators-rankings.json
-          if git diff --cached --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "chore: update senators-rankings.json"
-            git push
-          fi
