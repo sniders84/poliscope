@@ -60,7 +60,6 @@ jobs:
                 if (k && state) bioguideMap[`${k} (${state.toUpperCase()})`] = id;
               });
 
-            // Also index last name + state for fallback
             if (last && state) {
               bioguideMap[`${last.toLowerCase()} (${state.toUpperCase()})`] = id;
             }
@@ -101,32 +100,25 @@ jobs:
             }
           }
 
-          // Extract a bill identifier from a sponsoredLegislation item
           function getBillKey(it) {
-            // Try several shapes that Congress.gov may use
             const congress = it?.congress || it?.bill?.congress;
             const billNumber = it?.number || it?.billNumber || it?.bill?.number;
             let billType = it?.type || it?.billType || it?.bill?.type;
-            // Normalize billType to lowercase short code expected by API (e.g., 's', 'hr', 'sjres', etc.)
             if (typeof billType === 'string') billType = billType.toLowerCase();
             if (!congress || !billType || !billNumber) return null;
             return { congress, billType, billNumber };
           }
 
-          // Robust matcher for "Became Law" status
           function textIsBecameLaw(txt) {
             if (!txt) return false;
             const t = String(txt).toLowerCase();
             return (
               t.includes('became law') ||
               t.includes('became public law') ||
-              t.includes('became private law') ||
-              t.includes('public law') && t.includes('became') ||
-              t.includes('private law') && t.includes('became')
+              t.includes('became private law')
             );
           }
 
-          // Fetch all pages of sponsored legislation and count laws by inspecting bill details
           async function fetchLawsEnacted(bioguide) {
             const base = `https://api.congress.gov/v3/member/${bioguide}/sponsored-legislation?api_key=${API_KEY}&limit=250`;
             const first = await fetchJSON(base);
@@ -147,7 +139,6 @@ jobs:
               items = items.concat(collectItems(data));
             }
 
-            // Concurrency control to avoid hammering the API too hard
             const limit = 5;
             let idx = 0;
             let enacted = 0;
@@ -167,8 +158,8 @@ jobs:
                 return;
               }
 
-              // If not in latestAction, scan actions log if present
-              const actions = bill?.bill?.actions || bill?.actions || bill?.data?.actions || [];
+              const actionsRaw = bill?.bill?.actions || bill?.actions || bill?.data?.actions;
+              const actions = Array.isArray(actionsRaw) ? actionsRaw : (actionsRaw ? [actionsRaw] : []);
               for (const a of actions) {
                 const t = a?.text || a?.action || a?.description;
                 if (textIsBecameLaw(t)) {
@@ -248,13 +239,21 @@ jobs:
             };
           }
 
-          (async () => {
+                   (async () => {
             const records = [];
             for (const s of senators) {
               const rec = await buildRecord(s);
               records.push(rec);
               const resolved = resolveBioguide(s);
-              console.log('OK:', rec.name, rec.state || '', 'bioguide:', resolved || 'MISSING', 'laws_enacted:', rec.laws_enacted);
+              console.log(
+                'OK:',
+                rec.name,
+                rec.state || '',
+                'bioguide:',
+                resolved || 'MISSING',
+                'laws_enacted:',
+                rec.laws_enacted
+              );
             }
             const outFile = path.join(process.cwd(), 'public', 'senators-rankings.json');
             fs.writeFileSync(outFile, JSON.stringify(records, null, 2), 'utf-8');
