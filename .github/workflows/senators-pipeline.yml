@@ -31,14 +31,14 @@ jobs:
 
           async function fetchRoster() {
             const url = 'https://www.govtrack.us/api/v2/role?current=true&role_type=senator';
-            const res = await fetch(url);
+            const res = await fetch(url, { headers: { 'User-Agent': 'poliscope-bot/1.0' } });
             const data = await res.json();
             return data.objects || [];
           }
 
           async function fetchPerson(id) {
             const url = \`https://www.govtrack.us/api/v2/person/\${id}\`;
-            const res = await fetch(url);
+            const res = await fetch(url, { headers: { 'User-Agent': 'poliscope-bot/1.0' } });
             const data = await res.json();
             return data;
           }
