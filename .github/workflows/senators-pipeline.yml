@@ -1,24 +1,3 @@
-name: Senators Rankings Pipeline (Roster Only)
-
-on:
-  workflow_dispatch: {}
-  schedule:
-    - cron: "0 5 * * *"   # nightly at 05:00 UTC
-
-jobs:
-  build-and-commit:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "18"
-
       - name: Generate senators-rankings.json (Roster Only)
         run: |
           node -e "
@@ -39,8 +18,8 @@ jobs:
 
           const records = legislators.map(l => {
             return {
-              name: \`\${l.name.first} \${l.name.last}\`,
-              office: 'Senator',
+              name: l.name,   // <-- FIXED: use the string directly
+              office: l.office,
               party: normalizeParty(l.party),
               state: l.state,
               missed_votes_pct: null,
@@ -59,15 +38,3 @@ jobs:
           fs.writeFileSync(outFile, JSON.stringify(records, null, 2), 'utf-8');
           console.log('Wrote', records.length, 'senators to', outFile);
           "
-
-      - name: Commit updated JSON
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add public/senators-rankings.json
-          if git diff --cached --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "chore: update senators-rankings.json"
-            git push
-          fi
