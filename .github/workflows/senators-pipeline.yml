@@ -173,3 +173,44 @@ jobs:
               missed_votes_pct: null,
               bills_introduced,
               bills_cosponsored,
+                            laws_enacted,
+              committee_positions_score: null,
+              bills_out_of_committee: null,
+              misconduct: 0
+            };
+          }
+
+          (async () => {
+            const records = [];
+            for (const s of senators) {
+              const rec = await buildRecord(s);
+              records.push(rec);
+              const resolved = resolveBioguide(s);
+              console.log(
+                'OK:',
+                rec.name,
+                rec.state || '',
+                'bioguide:',
+                resolved || 'MISSING',
+                'laws_enacted:',
+                rec.laws_enacted
+              );
+            }
+            const outFile = path.join(process.cwd(), 'public', 'senators-rankings.json');
+            fs.writeFileSync(outFile, JSON.stringify(records, null, 2), 'utf-8');
+            console.log('Wrote', records.length, 'senators to', outFile);
+          })();
+          NODE
+
+      - name: Commit updated JSON
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/senators-rankings.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: update senators-rankings.json (career laws_enacted)"
+            git push
+          fi
+
