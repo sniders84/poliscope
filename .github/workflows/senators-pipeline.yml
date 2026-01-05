@@ -64,10 +64,15 @@ jobs:
           fs.writeFileSync(outFile, JSON.stringify(records, null, 2), 'utf-8');
           console.log('Wrote', records.length, 'senators to', outFile);
           "
-      - name: Commit updated JSON
+           - name: Commit updated JSON
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add public/senators-rankings.json
-          git commit -m "chore: update senators-rankings.json"
-          git push
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: update senators-rankings.json"
+            git push
+          fi
+
