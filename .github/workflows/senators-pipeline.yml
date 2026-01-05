@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: "18"
 
-      - name: Generate senators-rankings.json (career totals: laws enacted)
+      - name: "Generate senators-rankings.json (career totals: laws enacted)"
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         shell: bash
