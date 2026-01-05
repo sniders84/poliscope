@@ -1,43 +1,12 @@
-name: Senators Rankings Pipeline (Congress.gov)
-
-on:
-  workflow_dispatch: {}
-  schedule:
-    - cron: "0 5 * * *"   # nightly at 05:00 UTC
-
-jobs:
-  build-and-commit:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "18"
-
-      - name: Install dependencies
-        run: npm install node-fetch@2
-
-      - name: Generate senators-rankings.json
-        env:
-          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
+      - name: Generate senators-rankings.json (Roster Only)
         run: |
           node -e "
           const fs = require('fs');
           const path = require('path');
-          const fetch = require('node-fetch');
 
-          const API_KEY = process.env.CONGRESS_API_KEY;
-
-          // Load local roster
           const rosterPath = path.join(process.cwd(), 'public', 'legislators-current.json');
           const legislators = JSON.parse(fs.readFileSync(rosterPath, 'utf-8'));
 
-          // Helpers
           function normalizeParty(party) {
             if (!party) return null;
             const s = String(party).toLowerCase();
@@ -47,80 +16,30 @@ jobs:
             return party;
           }
 
-          async function fetchCount(url) {
-            const res = await fetch(url);
-            if (!res.ok) throw new Error(\`HTTP \${res.status}\`);
-            const data = await res.json();
-            return (data.pagination && typeof data.pagination.count === 'number')
-              ? data.pagination.count
-              : null;
-          }
+          const senators = legislators.filter(l =>
+            Array.isArray(l.roles) && l.roles.some(r => r.type === 'sen' && r.current === true)
+          );
 
-          async function buildRecord(member, role) {
-            const bioguide = member.id && member.id.bioguide;
-            let bills_introduced = null;
-            let bills_cosponsored = null;
-
-            if (bioguide && API_KEY) {
-              try {
-                bills_introduced = await fetchCount(\`https://api.congress.gov/v3/member/\${bioguide}/sponsored-legislation?api_key=\${API_KEY}\`);
-              } catch (e) {
-                console.error('sponsored-legislation failed for', bioguide, e.message);
-              }
-              try {
-                bills_cosponsored = await fetchCount(\`https://api.congress.gov/v3/member/\${bioguide}/cosponsored-legislation?api_key=\${API_KEY}\`);
-              } catch (e) {
-                console.error('cosponsored-legislation failed for', bioguide, e.message);
-              }
-            }
-
+          const records = senators.map(l => {
+            const role = l.roles.find(r => r.type === 'sen' && r.current === true);
             return {
-              name: \`\${member.name.first} \${member.name.last}\`,
+              name: \`\${l.name.first} \${l.name.last}\`,
               office: 'Senator',
               party: normalizeParty(role.party),
               state: role.state,
               missed_votes_pct: null,
-              bills_introduced,
-              bills_cosponsored,
+              bills_introduced: null,
+              bills_cosponsored: null,
               laws_enacted: null,
               committee_positions_score: null,
               bills_out_of_committee: null,
               misconduct: 0
             };
-          }
-
-          (async () => {
-            const senators = legislators.filter(l =>
-              Array.isArray(l.roles) && l.roles.some(r => r.type === 'sen' && r.current === true)
-            );
-
-            const records = [];
-            for (const l of senators) {
-              const role = l.roles.find(r => r.type === 'sen' && r.current === true);
-              try {
-                const rec = await buildRecord(l, role);
-                records.push(rec);
-                console.log('OK:', rec.name);
-              } catch (err) {
-                console.error('FAIL:', (l.id && l.id.bioguide) || 'unknown', err.message);
-              }
-            }
-
-            const outDir = path.join(process.cwd(), 'public');
-            const outFile = path.join(outDir, 'senators-rankings.json');
-            fs.mkdirSync(outDir, { recursive: true });
-            fs.writeFileSync(outFile, JSON.stringify(records, null, 2), 'utf-8');
-            console.log('Wrote', records.length, 'senators to', outFile);
-          })().catch(err => {
-            console.error('Fatal:', err);
-            process.exit(1);
           });
-          "
 
-      - name: Commit updated JSON
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add public/senators-rankings.json
-          git commit -m "chore: update senators-rankings.json"
-          git push
+          const outDir = path.join(process.cwd(), 'public');
+          const outFile = path.join(outDir, 'senators-rankings.json');
+          fs.mkdirSync(outDir, { recursive: true });
+          fs.writeFileSync(outFile, JSON.stringify(records, null, 2), 'utf-8');
+          console.log('Wrote', records.length, 'senators to', outFile);
+          "
