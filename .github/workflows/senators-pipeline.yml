@@ -1,4 +1,4 @@
-name: "Senators Rankings Pipeline (career totals: robust bioguide + laws enacted including cosponsored)"
+name: "Senators Rankings Pipeline (career totals: robust bioguide + laws enacted sponsored only)"
 
 on:
   workflow_dispatch: {}
@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: "18"
 
-      - name: "Generate senators-rankings.json (career totals: laws enacted)"
+      - name: "Generate senators-rankings.json (career totals: laws enacted sponsored)"
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         shell: bash
@@ -100,44 +100,39 @@ jobs:
             const maxYear = Math.max(...years);
             return { start: yearToCongress(minYear), end: Math.max(yearToCongress(maxYear), currentCongress()) };
           }
-          async function fetchEnactedCareer(bioguide, type = 'sponsored-legislation') {
+          async function fetchLawsEnactedCareer(bioguide) {
             const { start, end } = congressRangeForMember(bioguide);
             let enacted = 0;
             for (let cn = start; cn <= end; cn++) {
-              const base = `https://api.congress.gov/v3/member/${bioguide}/${type}?api_key=${API_KEY}&limit=250&congress=${cn}`;
+              const base = `https://api.congress.gov/v3/member/${bioguide}/sponsored-legislation?api_key=${API_KEY}&limit=250&congress=${cn}`;
               const first = await fetchJSON(base);
               if (!first) continue;
               const pages = first?.pagination?.pages || 1;
-              const collectItems = d => d?.results || d?.sponsoredLegislation || d?.cosponsoredLegislation || d?.data || [];
+              const collectItems = d => d?.sponsoredLegislation || d?.results || [];
               let items = collectItems(first);
               for (let p = 2; p <= pages; p++) {
-                const d = await fetchJSON(`${base}&page=${p}`);
+                const d = await fetchJSON(`${base}&offset=${(p-1)*250}`);
                 if (d) items = items.concat(collectItems(d));
               }
               for (const it of items) {
-                // First, check if latestAction indicates became law
-                const latestAction = it?.latestAction;
-                const latestText = latestAction?.text || latestAction?.action || latestAction?.description || '';
+                const latestAction = it?.latestAction || {};
+                const latestText = latestAction?.text || latestAction?.actionDate || '';
                 if (textIsBecameLaw(latestText)) { enacted++; continue; }
 
-                // If not, fetch full bill details
                 const key = getBillKey(it);
                 if (!key) continue;
                 const url = `https://api.congress.gov/v3/bill/${key.congress}/${key.billType}/${key.billNumber}?api_key=${API_KEY}`;
                 const bill = await fetchJSON(url);
                 if (!bill) continue;
-
-                // Check actions
-                let isEnacted = false;
                 const actions = normalizeActions(bill);
+                let isEnacted = false;
                 for (const a of actions) {
-                  const t = a?.text || a?.action || a?.description;
+                  const t = a?.text || a?.action || '';
                   if (textIsBecameLaw(t)) { isEnacted = true; break; }
                 }
                 if (isEnacted) { enacted++; continue; }
 
-                // Check public law number
-                const pl = bill?.bill?.publicLawNumber || bill?.data?.publicLawNumber || bill?.publicLawNumber;
+                const pl = bill?.bill?.publicLawNumber || bill?.publicLawNumber || '';
                 if (pl) enacted++;
               }
             }
@@ -178,9 +173,7 @@ jobs:
             if (bioguide && API_KEY) {
               bills_introduced = await fetchCount(`https://api.congress.gov/v3/member/${bioguide}/sponsored-legislation?api_key=${API_KEY}`);
               bills_cosponsored = await fetchCount(`https://api.congress.gov/v3/member/${bioguide}/cosponsored-legislation?api_key=${API_KEY}`);
-              const sponsored_enacted = await fetchEnactedCareer(bioguide, 'sponsored-legislation');
-              const cosponsored_enacted = await fetchEnactedCareer(bioguide, 'cosponsored-legislation');
-              laws_enacted = sponsored_enacted + cosponsored_enacted;
+              laws_enacted = await fetchLawsEnactedCareer(bioguide);
             } else {
               console.warn('Missing bioguide for', s.name, s.state || '');
             }
@@ -221,6 +214,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "chore: update senators-rankings.json (career laws_enacted including cosponsored)"
+            git commit -m "chore: update senators-rankings.json (career sponsored laws enacted)"
             git push
           fi
