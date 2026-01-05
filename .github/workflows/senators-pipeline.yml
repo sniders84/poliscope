@@ -1,0 +1,105 @@
+name: Senators Rankings Pipeline (GovTrack)
+
+on:
+  workflow_dispatch: {}   # manual trigger
+  schedule:
+    - cron: "0 5 * * *"   # nightly at 05:00 UTC
+
+jobs:
+  build-and-commit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Install fetch dependency
+        run: npm install node-fetch@2
+
+      - name: Generate senators-rankings.json from GovTrack
+        run: |
+          node -e "
+          const fs = require('fs');
+          const path = require('path');
+          const fetch = require('node-fetch');
+
+          async function fetchRoster() {
+            const url = 'https://www.govtrack.us/api/v2/role?current=true&role_type=senator';
+            const res = await fetch(url);
+            const data = await res.json();
+            return data.objects || [];
+          }
+
+          async function fetchPerson(id) {
+            const url = \`https://www.govtrack.us/api/v2/person/\${id}\`;
+            const res = await fetch(url);
+            const data = await res.json();
+            return data;
+          }
+
+          function normalizeParty(party) {
+            if (!party) return null;
+            const s = String(party).toLowerCase();
+            if (s.startsWith('r')) return 'R';
+            if (s.startsWith('d')) return 'D';
+            if (s.startsWith('i')) return 'I';
+            return party;
+          }
+
+          async function buildRecord(role) {
+            const person = await fetchPerson(role.person.id);
+
+            // Baby step: fill schema with available GovTrack fields.
+            return {
+              name: \`\${person.firstname} \${person.lastname}\`,
+              office: 'Senator',
+              party: normalizeParty(role.party),
+              state: role.state,
+              missed_votes_pct: role.missed_votes_pct ?? null,
+              bills_introduced: role.sponsored_bills ?? null,
+              bills_cosponsored: role.cosponsored_bills ?? null,
+              laws_enacted: role.enacted_bills ?? null,
+              committee_positions_score: role.committee_positions?.length ?? null,
+              bipartisan_cosponsored_count: role.bipartisan_cosponsored_bills ?? null,
+              bipartisan_sponsored_count: role.bipartisan_sponsored_bills ?? null,
+              powerful_cosponsors_count: role.powerful_cosponsors ?? null,
+              leadership_score: role.leadership_positions?.length ?? null,
+              cross_chamber_count: role.cross_chamber_bills ?? null,
+              bills_out_of_committee: role.bills_out_of_committee ?? null,
+              misconduct: 0
+            };
+          }
+
+          (async () => {
+            const roster = await fetchRoster();
+            const records = [];
+            for (const r of roster) {
+              try {
+                const rec = await buildRecord(r);
+                records.push(rec);
+                console.log('OK:', rec.name);
+              } catch (err) {
+                console.error('FAIL', r.person.id, err.message);
+              }
+            }
+            const outDir = path.join(process.cwd(), 'public');
+            const outFile = path.join(outDir, 'senators-rankings.json');
+            fs.mkdirSync(outDir, { recursive: true });
+            fs.writeFileSync(outFile, JSON.stringify(records, null, 2), 'utf-8');
+            console.log('Wrote', records.length, 'records to', outFile);
+          })();
+          "
+
+      - name: Commit updated JSON
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/senators-rankings.json
+          git commit -m "chore: update senators-rankings.json"
+          git push
