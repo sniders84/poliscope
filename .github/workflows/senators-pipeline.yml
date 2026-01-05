@@ -1,4 +1,4 @@
-name: Senators Rankings Pipeline (with robust bioguide matching)
+name: Senators Rankings Pipeline (robust bioguide + native fetch)
 
 on:
   workflow_dispatch: {}
@@ -19,120 +19,152 @@ jobs:
         with:
           node-version: "18"
 
-      - name: Generate senators-rankings.json (with robust bioguide matching)
+      - name: Generate senators-rankings.json (robust bioguide matching)
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: |
-          node -e "
-const fs = require('fs');
-const path = require('path');
+          node <<'NODE'
+          const fs = require('fs');
+          const path = require('path');
 
-const API_KEY = process.env.CONGRESS_API_KEY;
-const senatorsPath = path.join(process.cwd(), 'public', 'senators.json');
-const legislatorsPath = path.join(process.cwd(), 'public', 'legislators-current.json');
+          const API_KEY = process.env.CONGRESS_API_KEY;
+          const senatorsPath = path.join(process.cwd(), 'public', 'senators.json');
+          const legislatorsPath = path.join(process.cwd(), 'public', 'legislators-current.json');
 
-const senators = JSON.parse(fs.readFileSync(senatorsPath, 'utf-8'));
-const legislators = JSON.parse(fs.readFileSync(legislatorsPath, 'utf-8'));
+          const senators = JSON.parse(fs.readFileSync(senatorsPath, 'utf-8'));
+          const legislators = JSON.parse(fs.readFileSync(legislatorsPath, 'utf-8'));
 
-// Build lookup with multiple name variants
-const bioguideMap = {};
-legislators.forEach(l => {
-  if (l.id && l.id.bioguide) {
-    const id = l.id.bioguide;
-    const names = [];
+          // Build lookup: multiple variants + state-qualified keys
+          const bioguideMap = {};
+          legislators.forEach(l => {
+            const id = l?.id?.bioguide;
+            if (!id) return;
 
-    if (l.name) {
-      if (l.name.official_full) names.push(l.name.official_full);
-      if (l.name.first && l.name.last) names.push(`${l.name.first} ${l.name.last}`);
-      if (l.name.nickname && l.name.last) names.push(`${l.name.nickname} ${l.name.last}`);
-    }
+            const first = l?.name?.first || '';
+            const nick = l?.name?.nickname || '';
+            const last = l?.name?.last || '';
+            const full = l?.name?.official_full || '';
+            const state = (l?.terms || []).slice(-1)[0]?.state || (l?.terms || [])[0]?.state || '';
 
-    names.forEach(n => {
-      if (n) bioguideMap[n.trim().toLowerCase()] = id;
-    });
-  }
-});
+            const variants = [
+              `${first} ${last}`,
+              `${nick} ${last}`,
+              full
+            ];
 
-function normalizeParty(party) {
-  if (!party) return null;
-  const s = String(party).trim().toLowerCase();
-  if (s.startsWith('r')) return 'R';
-  if (s.startsWith('d')) return 'D';
-  if (s.startsWith('i')) return 'I';
-  return party;
-}
+            variants
+              .filter(Boolean)
+              .forEach(v => {
+                const k = v.trim().toLowerCase();
+                if (k) bioguideMap[k] = id;
+                if (k && state) bioguideMap[`${k} (${state.toUpperCase()})`] = id;
+              });
 
-async function fetchCount(url) {
-  try {
-    const res = await fetch(url);
-    if (!res.ok) {
-      console.error('Fetch failed:', res.status, res.statusText, url);
-      return null;
-    }
-    const data = await res.json();
-    return (data.pagination && typeof data.pagination.count === 'number')
-      ? data.pagination.count
-      : null;
-  } catch (err) {
-    console.error('Error fetching', url, err.message);
-    return null;
-  }
-}
+            // Also index last name + state for fallback
+            if (last && state) {
+              bioguideMap[`${last.toLowerCase()} (${state.toUpperCase()})`] = id;
+            }
+          });
 
-function resolveBioguide(l) {
-  const key = l.name.trim().toLowerCase();
-  if (bioguideMap[key]) return bioguideMap[key];
+          function normalizeParty(party) {
+            if (!party) return null;
+            const s = String(party).trim().toLowerCase();
+            if (s.startsWith('r')) return 'R';
+            if (s.startsWith('d')) return 'D';
+            if (s.startsWith('i')) return 'I';
+            return party;
+          }
 
-  if (l.slug) {
-    const slugKey = l.slug.toLowerCase().replace(/-/g, ' ');
-    if (bioguideMap[slugKey]) return bioguideMap[slugKey];
-  }
+          async function fetchCount(url) {
+            try {
+              const res = await fetch(url);
+              if (!res.ok) {
+                console.error('Fetch failed:', res.status, res.statusText, url);
+                return null;
+              }
+              const data = await res.json();
+              return (data.pagination && typeof data.pagination.count === 'number')
+                ? data.pagination.count
+                : null;
+            } catch (err) {
+              console.error('Error fetching', url, err.message);
+              return null;
+            }
+          }
 
-  const lastName = l.name.split(' ').slice(-1)[0].toLowerCase();
-  const match = Object.keys(bioguideMap).find(k => k.endsWith(lastName));
-  return match ? bioguideMap[match] : null;
-}
+          function resolveBioguide(s) {
+            const name = s.name?.trim() || '';
+            const state = s.state?.trim().toUpperCase() || '';
+            const slug = s.slug ? s.slug.toLowerCase().replace(/-/g, ' ') : '';
 
-async function buildRecord(l) {
-  const bioguide = resolveBioguide(l);
+            // 1) Exact name
+            const key1 = name.toLowerCase();
+            if (bioguideMap[key1]) return bioguideMap[key1];
 
-  let bills_introduced = null;
-  let bills_cosponsored = null;
+            // 2) Name + state
+            const key2 = `${key1} (${state})`;
+            if (bioguideMap[key2]) return bioguideMap[key2];
 
-  if (bioguide && API_KEY) {
-    bills_introduced = await fetchCount(`https://api.congress.gov/v3/member/${bioguide}/sponsored-legislation?api_key=${API_KEY}`);
-    bills_cosponsored = await fetchCount(`https://api.congress.gov/v3/member/${bioguide}/cosponsored-legislation?api_key=${API_KEY}`);
-  } else {
-    console.warn('Missing bioguide for', l.name);
-  }
+            // 3) Slug (words)
+            if (slug && bioguideMap[slug]) return bioguideMap[slug];
+            if (slug) {
+              const slugKeyState = `${slug} (${state})`;
+              if (bioguideMap[slugKeyState]) return bioguideMap[slugKeyState];
+            }
 
-  return {
-    name: l.name,
-    office: l.office || 'Senator',
-    party: normalizeParty(l.party),
-    state: l.state,
-    missed_votes_pct: null,
-    bills_introduced,
-    bills_cosponsored,
-    laws_enacted: null,
-    committee_positions_score: null,
-    bills_out_of_committee: null,
-    misconduct: 0
-  };
-}
+            // 4) Last name + state
+            const lastName = name.split(' ').slice(-1)[0].toLowerCase();
+            const lastStateKey = `${lastName} (${state})`;
+            if (bioguideMap[lastStateKey]) return bioguideMap[lastStateKey];
 
-(async () => {
-  const records = [];
-  for (const l of senators) {
-    const rec = await buildRecord(l);
-    records.push(rec);
-    console.log('OK:', rec.name, 'bioguide:', resolveBioguide(l) || 'MISSING');
-  }
-  const outFile = path.join(process.cwd(), 'public', 'senators-rankings.json');
-  fs.writeFileSync(outFile, JSON.stringify(records, null, 2), 'utf-8');
-  console.log('Wrote', records.length, 'senators to', outFile);
-})();
-          "
+            // 5) Fuzzy: any variant ending with last name, prefer those that include state
+            const candidates = Object.keys(bioguideMap).filter(k => k.endsWith(lastName));
+            const stateCandidates = candidates.filter(k => k.endsWith(`(${state})`.toLowerCase()));
+            const pick = (stateCandidates[0] || candidates[0]);
+            return pick ? bioguideMap[pick] : null;
+          }
+
+          async function buildRecord(s) {
+            const bioguide = resolveBioguide(s);
+
+            let bills_introduced = null;
+            let bills_cosponsored = null;
+
+            if (bioguide && API_KEY) {
+              bills_introduced = await fetchCount(`https://api.congress.gov/v3/member/${bioguide}/sponsored-legislation?api_key=${API_KEY}`);
+              bills_cosponsored = await fetchCount(`https://api.congress.gov/v3/member/${bioguide}/cosponsored-legislation?api_key=${API_KEY}`);
+            } else {
+              console.warn('Missing bioguide for', s.name, s.state || '');
+            }
+
+            return {
+              name: s.name,
+              office: s.office || 'Senator',
+              party: normalizeParty(s.party),
+              state: s.state,
+              missed_votes_pct: null,
+              bills_introduced,
+              bills_cosponsored,
+              laws_enacted: null,
+              committee_positions_score: null,
+              bills_out_of_committee: null,
+              misconduct: 0
+            };
+          }
+
+          (async () => {
+            const records = [];
+            for (const s of senators) {
+              const rec = await buildRecord(s);
+              records.push(rec);
+              const resolved = resolveBioguide(s);
+              console.log('OK:', rec.name, rec.state || '', 'bioguide:', resolved || 'MISSING');
+            }
+            const outFile = path.join(process.cwd(), 'public', 'senators-rankings.json');
+            fs.writeFileSync(outFile, JSON.stringify(records, null, 2), 'utf-8');
+            console.log('Wrote', records.length, 'senators to', outFile);
+          })();
+          NODE
 
       - name: Commit updated JSON
         run: |
