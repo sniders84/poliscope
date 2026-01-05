@@ -1,4 +1,4 @@
-name: Senators Rankings Pipeline (robust bioguide + native fetch)
+name: Senators Rankings Pipeline (robust bioguide + laws enacted)
 
 on:
   workflow_dispatch: {}
@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: "18"
 
-      - name: Generate senators-rankings.json (robust bioguide matching)
+      - name: Generate senators-rankings.json (robust bioguide + laws enacted)
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: |
@@ -75,19 +75,63 @@ jobs:
             return party;
           }
 
+          async function fetchJSON(url) {
+            const res = await fetch(url);
+            if (!res.ok) {
+              console.error('Fetch failed:', res.status, res.statusText, url);
+              return null;
+            }
+            return res.json();
+          }
+
           async function fetchCount(url) {
             try {
-              const res = await fetch(url);
-              if (!res.ok) {
-                console.error('Fetch failed:', res.status, res.statusText, url);
-                return null;
-              }
-              const data = await res.json();
-              return (data.pagination && typeof data.pagination.count === 'number')
-                ? data.pagination.count
-                : null;
+              const data = await fetchJSON(url);
+              if (!data) return null;
+              const c = data?.pagination?.count;
+              return typeof c === 'number' ? c : null;
             } catch (err) {
-              console.error('Error fetching', url, err.message);
+              console.error('Error fetching count', url, err.message);
+              return null;
+            }
+          }
+
+          // Fetch all pages for member sponsored legislation and count "Became Law"
+          async function fetchLawsEnacted(bioguide) {
+            try {
+              const base = `https://api.congress.gov/v3/member/${bioguide}/sponsored-legislation?api_key=${API_KEY}&limit=250`;
+              const first = await fetchJSON(base);
+              if (!first) return null;
+
+              const pages = first?.pagination?.pages || 1;
+              const collectItems = data => {
+                // Flexible extraction: different API shapes
+                return (
+                  data?.results ||
+                  data?.sponsoredLegislation ||
+                  data?.data ||
+                  []
+                );
+              };
+
+              let items = collectItems(first);
+              for (let p = 2; p <= pages; p++) {
+                const data = await fetchJSON(`${base}&page=${p}`);
+                if (!data) continue;
+                items = items.concat(collectItems(data));
+              }
+
+              // Match latest action containing "Became Law"
+              const isBecameLaw = it => {
+                const act = it?.latestAction;
+                const text = (act?.action || act?.text || '').toLowerCase();
+                return text.includes('became law');
+              };
+
+              const count = items.reduce((acc, it) => acc + (isBecameLaw(it) ? 1 : 0), 0);
+              return count;
+            } catch (err) {
+              console.error('Error fetching laws_enacted for', bioguide, err.message);
               return null;
             }
           }
@@ -129,10 +173,12 @@ jobs:
 
             let bills_introduced = null;
             let bills_cosponsored = null;
+            let laws_enacted = null;
 
             if (bioguide && API_KEY) {
               bills_introduced = await fetchCount(`https://api.congress.gov/v3/member/${bioguide}/sponsored-legislation?api_key=${API_KEY}`);
               bills_cosponsored = await fetchCount(`https://api.congress.gov/v3/member/${bioguide}/cosponsored-legislation?api_key=${API_KEY}`);
+              laws_enacted = await fetchLawsEnacted(bioguide);
             } else {
               console.warn('Missing bioguide for', s.name, s.state || '');
             }
@@ -145,7 +191,7 @@ jobs:
               missed_votes_pct: null,
               bills_introduced,
               bills_cosponsored,
-              laws_enacted: null,
+              laws_enacted,
               committee_positions_score: null,
               bills_out_of_committee: null,
               misconduct: 0
@@ -158,7 +204,7 @@ jobs:
               const rec = await buildRecord(s);
               records.push(rec);
               const resolved = resolveBioguide(s);
-              console.log('OK:', rec.name, rec.state || '', 'bioguide:', resolved || 'MISSING');
+              console.log('OK:', rec.name, rec.state || '', 'bioguide:', resolved || 'MISSING', 'laws_enacted:', rec.laws_enacted);
             }
             const outFile = path.join(process.cwd(), 'public', 'senators-rankings.json');
             fs.writeFileSync(outFile, JSON.stringify(records, null, 2), 'utf-8');
@@ -174,6 +220,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "chore: update senators-rankings.json"
+            git commit -m "chore: update senators-rankings.json (laws_enacted)"
             git push
           fi
