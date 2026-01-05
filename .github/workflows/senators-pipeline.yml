@@ -1,98 +1,79 @@
-name: Senators Rankings Pipeline (Roster Only)
-
-on:
-  workflow_dispatch: {}
-  schedule:
-    - cron: "0 5 * * *"   # nightly at 05:00 UTC
-
-jobs:
-  build-and-commit:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "18"
-
-      - name: Generate senators-rankings.json (Roster Only)
+      - name: Generate senators-rankings.json (with bills counts)
+        env:
+          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: |
           node -e "
           const fs = require('fs');
           const path = require('path');
+          const fetch = require('node-fetch');
 
-          try {
-            const rosterPath = path.join(process.cwd(), 'public', 'senators.json');
-            const raw = fs.readFileSync(rosterPath, 'utf-8');
+          const API_KEY = process.env.CONGRESS_API_KEY;
+          const rosterPath = path.join(process.cwd(), 'public', 'senators.json');
+          const legislators = JSON.parse(fs.readFileSync(rosterPath, 'utf-8'));
 
-            // Validate and parse roster JSON
-            let legislators;
+          function normalizeParty(party) {
+            if (!party) return null;
+            const s = String(party).trim().toLowerCase();
+            if (s.startsWith('r')) return 'R';
+            if (s.startsWith('d')) return 'D';
+            if (s.startsWith('i')) return 'I';
+            return party;
+          }
+
+          async function fetchCount(url) {
             try {
-              legislators = JSON.parse(raw);
-            } catch (parseErr) {
-              console.error('Failed to parse public/senators.json:', parseErr.message);
-              process.exit(1);
+              const res = await fetch(url);
+              if (!res.ok) {
+                console.error('Fetch failed:', res.status, res.statusText);
+                return null;
+              }
+              const data = await res.json();
+              return (data.pagination && typeof data.pagination.count === 'number')
+                ? data.pagination.count
+                : null;
+            } catch (err) {
+              console.error('Error fetching', url, err.message);
+              return null;
+            }
+          }
+
+          async function buildRecord(l) {
+            // Extract bioguide ID from govtrackLink
+            const bioguideMatch = l.govtrackLink?.match(/members\\/([a-z0-9]+)/i);
+            const bioguide = bioguideMatch ? bioguideMatch[1] : null;
+
+            let bills_introduced = null;
+            let bills_cosponsored = null;
+
+            if (bioguide && API_KEY) {
+              bills_introduced = await fetchCount(\`https://api.congress.gov/v3/member/\${bioguide}/sponsored-legislation?api_key=\${API_KEY}\`);
+              bills_cosponsored = await fetchCount(\`https://api.congress.gov/v3/member/\${bioguide}/cosponsored-legislation?api_key=\${API_KEY}\`);
             }
 
-            if (!Array.isArray(legislators)) {
-              console.error('public/senators.json is not an array. Found:', typeof legislators);
-              process.exit(1);
+            return {
+              name: l.name,
+              office: l.office || 'Senator',
+              party: normalizeParty(l.party),
+              state: l.state,
+              missed_votes_pct: null,
+              bills_introduced,
+              bills_cosponsored,
+              laws_enacted: null,
+              committee_positions_score: null,
+              bills_out_of_committee: null,
+              misconduct: 0
+            };
+          }
+
+          (async () => {
+            const records = [];
+            for (const l of legislators) {
+              const rec = await buildRecord(l);
+              records.push(rec);
+              console.log('OK:', rec.name);
             }
-
-            function normalizeParty(party) {
-              if (!party) return null;
-              const s = String(party).trim().toLowerCase();
-              if (s.startsWith('r')) return 'R';
-              if (s.startsWith('d')) return 'D';
-              if (s.startsWith('i')) return 'I';
-              return party;
-            }
-
-            const records = legislators.map(l => {
-              // Basic field guards to avoid undefined
-              const name = typeof l.name === 'string' ? l.name : null;
-              const office = typeof l.office === 'string' ? l.office : 'Senator';
-              const party = normalizeParty(l.party);
-              const state = typeof l.state === 'string' ? l.state : null;
-
-              return {
-                name,
-                office,
-                party,
-                state,
-                missed_votes_pct: null,
-                bills_introduced: null,
-                bills_cosponsored: null,
-                laws_enacted: null,
-                committee_positions_score: null,
-                bills_out_of_committee: null,
-                misconduct: 0
-              };
-            });
-
-            const outDir = path.join(process.cwd(), 'public');
-            const outFile = path.join(outDir, 'senators-rankings.json');
-            fs.mkdirSync(outDir, { recursive: true });
+            const outFile = path.join(process.cwd(), 'public', 'senators-rankings.json');
             fs.writeFileSync(outFile, JSON.stringify(records, null, 2), 'utf-8');
             console.log('Wrote', records.length, 'senators to', outFile);
-          } catch (err) {
-            console.error('Fatal error in generator:', err.message);
-            process.exit(1);
-          }
+          })();
           "
-
-      - name: Commit updated JSON
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add public/senators-rankings.json
-          if git diff --cached --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "chore: update senators-rankings.json"
-            git push
-          fi
