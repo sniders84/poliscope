@@ -1,113 +1,147 @@
+name: Senators Rankings Pipeline (with robust bioguide matching)
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: "0 5 * * *"   # nightly at 05:00 UTC
+
+jobs:
+  build-and-commit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
       - name: Generate senators-rankings.json (with robust bioguide matching)
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: |
           node -e "
-          const fs = require('fs');
-          const path = require('path');
+const fs = require('fs');
+const path = require('path');
 
-          const API_KEY = process.env.CONGRESS_API_KEY;
-          const senatorsPath = path.join(process.cwd(), 'public', 'senators.json');
-          const legislatorsPath = path.join(process.cwd(), 'public', 'legislators-current.json');
+const API_KEY = process.env.CONGRESS_API_KEY;
+const senatorsPath = path.join(process.cwd(), 'public', 'senators.json');
+const legislatorsPath = path.join(process.cwd(), 'public', 'legislators-current.json');
 
-          const senators = JSON.parse(fs.readFileSync(senatorsPath, 'utf-8'));
-          const legislators = JSON.parse(fs.readFileSync(legislatorsPath, 'utf-8'));
+const senators = JSON.parse(fs.readFileSync(senatorsPath, 'utf-8'));
+const legislators = JSON.parse(fs.readFileSync(legislatorsPath, 'utf-8'));
 
-          // Build lookup with multiple name variants
-          const bioguideMap = {};
-          legislators.forEach(l => {
-            if (l.id && l.id.bioguide) {
-              const id = l.id.bioguide;
-              const names = [];
+// Build lookup with multiple name variants
+const bioguideMap = {};
+legislators.forEach(l => {
+  if (l.id && l.id.bioguide) {
+    const id = l.id.bioguide;
+    const names = [];
 
-              if (l.name) {
-                if (l.name.official_full) names.push(l.name.official_full);
-                if (l.name.first && l.name.last) names.push(\`\${l.name.first} \${l.name.last}\`);
-                if (l.name.nickname && l.name.last) names.push(\`\${l.name.nickname} \${l.name.last}\`);
-              }
+    if (l.name) {
+      if (l.name.official_full) names.push(l.name.official_full);
+      if (l.name.first && l.name.last) names.push(`${l.name.first} ${l.name.last}`);
+      if (l.name.nickname && l.name.last) names.push(`${l.name.nickname} ${l.name.last}`);
+    }
 
-              names.forEach(n => {
-                if (n) bioguideMap[n.trim().toLowerCase()] = id;
-              });
-            }
-          });
+    names.forEach(n => {
+      if (n) bioguideMap[n.trim().toLowerCase()] = id;
+    });
+  }
+});
 
-          function normalizeParty(party) {
-            if (!party) return null;
-            const s = String(party).trim().toLowerCase();
-            if (s.startsWith('r')) return 'R';
-            if (s.startsWith('d')) return 'D';
-            if (s.startsWith('i')) return 'I';
-            return party;
-          }
+function normalizeParty(party) {
+  if (!party) return null;
+  const s = String(party).trim().toLowerCase();
+  if (s.startsWith('r')) return 'R';
+  if (s.startsWith('d')) return 'D';
+  if (s.startsWith('i')) return 'I';
+  return party;
+}
 
-          async function fetchCount(url) {
-            try {
-              const res = await fetch(url);
-              if (!res.ok) {
-                console.error('Fetch failed:', res.status, res.statusText, url);
-                return null;
-              }
-              const data = await res.json();
-              return (data.pagination && typeof data.pagination.count === 'number')
-                ? data.pagination.count
-                : null;
-            } catch (err) {
-              console.error('Error fetching', url, err.message);
-              return null;
-            }
-          }
+async function fetchCount(url) {
+  try {
+    const res = await fetch(url);
+    if (!res.ok) {
+      console.error('Fetch failed:', res.status, res.statusText, url);
+      return null;
+    }
+    const data = await res.json();
+    return (data.pagination && typeof data.pagination.count === 'number')
+      ? data.pagination.count
+      : null;
+  } catch (err) {
+    console.error('Error fetching', url, err.message);
+    return null;
+  }
+}
 
-          function resolveBioguide(l) {
-            const nameKey = l.name.trim().toLowerCase();
-            if (bioguideMap[nameKey]) return bioguideMap[nameKey];
+function resolveBioguide(l) {
+  const key = l.name.trim().toLowerCase();
+  if (bioguideMap[key]) return bioguideMap[key];
 
-            if (l.slug && bioguideMap[l.slug.toLowerCase().replace(/-/g, ' ')]) {
-              return bioguideMap[l.slug.toLowerCase().replace(/-/g, ' ')];
-            }
+  if (l.slug) {
+    const slugKey = l.slug.toLowerCase().replace(/-/g, ' ');
+    if (bioguideMap[slugKey]) return bioguideMap[slugKey];
+  }
 
-            const lastName = l.name.split(' ').slice(-1)[0].toLowerCase();
-            const match = Object.keys(bioguideMap).find(k => k.endsWith(lastName));
-            return match ? bioguideMap[match] : null;
-          }
+  const lastName = l.name.split(' ').slice(-1)[0].toLowerCase();
+  const match = Object.keys(bioguideMap).find(k => k.endsWith(lastName));
+  return match ? bioguideMap[match] : null;
+}
 
-          async function buildRecord(l) {
-            const bioguide = resolveBioguide(l);
+async function buildRecord(l) {
+  const bioguide = resolveBioguide(l);
 
-            let bills_introduced = null;
-            let bills_cosponsored = null;
+  let bills_introduced = null;
+  let bills_cosponsored = null;
 
-            if (bioguide && API_KEY) {
-              bills_introduced = await fetchCount(\`https://api.congress.gov/v3/member/\${bioguide}/sponsored-legislation?api_key=\${API_KEY}\`);
-              bills_cosponsored = await fetchCount(\`https://api.congress.gov/v3/member/\${bioguide}/cosponsored-legislation?api_key=\${API_KEY}\`);
-            } else {
-              console.warn('Missing bioguide for', l.name);
-            }
+  if (bioguide && API_KEY) {
+    bills_introduced = await fetchCount(`https://api.congress.gov/v3/member/${bioguide}/sponsored-legislation?api_key=${API_KEY}`);
+    bills_cosponsored = await fetchCount(`https://api.congress.gov/v3/member/${bioguide}/cosponsored-legislation?api_key=${API_KEY}`);
+  } else {
+    console.warn('Missing bioguide for', l.name);
+  }
 
-            return {
-              name: l.name,
-              office: l.office || 'Senator',
-              party: normalizeParty(l.party),
-              state: l.state,
-              missed_votes_pct: null,
-              bills_introduced,
-              bills_cosponsored,
-              laws_enacted: null,
-              committee_positions_score: null,
-              bills_out_of_committee: null,
-              misconduct: 0
-            };
-          }
+  return {
+    name: l.name,
+    office: l.office || 'Senator',
+    party: normalizeParty(l.party),
+    state: l.state,
+    missed_votes_pct: null,
+    bills_introduced,
+    bills_cosponsored,
+    laws_enacted: null,
+    committee_positions_score: null,
+    bills_out_of_committee: null,
+    misconduct: 0
+  };
+}
 
-          (async () => {
-            const records = [];
-            for (const l of senators) {
-              const rec = await buildRecord(l);
-              records.push(rec);
-              console.log('OK:', rec.name, 'bioguide:', resolveBioguide(l) || 'MISSING');
-            }
-            const outFile = path.join(process.cwd(), 'public', 'senators-rankings.json');
-            fs.writeFileSync(outFile, JSON.stringify(records, null, 2), 'utf-8');
-            console.log('Wrote', records.length, 'senators to', outFile);
-          })();
+(async () => {
+  const records = [];
+  for (const l of senators) {
+    const rec = await buildRecord(l);
+    records.push(rec);
+    console.log('OK:', rec.name, 'bioguide:', resolveBioguide(l) || 'MISSING');
+  }
+  const outFile = path.join(process.cwd(), 'public', 'senators-rankings.json');
+  fs.writeFileSync(outFile, JSON.stringify(records, null, 2), 'utf-8');
+  console.log('Wrote', records.length, 'senators to', outFile);
+})();
           "
+
+      - name: Commit updated JSON
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/senators-rankings.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: update senators-rankings.json"
+            git push
+          fi
