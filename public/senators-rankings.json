@@ -33,9 +33,9 @@
     "missed_votes_pct": null,
     "bills_introduced": 1179,
     "bills_cosponsored": 3550,
-    "laws_enacted": 1124,
+    "laws_enacted": 1143,
     "committee_positions_score": 0,
-    "bills_out_of_committee": 2,
+    "bills_out_of_committee": 3,
     "misconduct": 0
   },
   {
@@ -57,11 +57,11 @@
     "party": "D",
     "state": "Arizona",
     "missed_votes_pct": null,
-    "bills_introduced": null,
+    "bills_introduced": 200,
     "bills_cosponsored": null,
     "laws_enacted": 4,
     "committee_positions_score": 0,
-    "bills_out_of_committee": 2,
+    "bills_out_of_committee": 0,
     "misconduct": 0
   },
   {
@@ -72,7 +72,7 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 14,
+    "laws_enacted": 2,
     "committee_positions_score": 0,
     "bills_out_of_committee": 0,
     "misconduct": 0
@@ -85,9 +85,9 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 20,
+    "laws_enacted": 19,
     "committee_positions_score": 0,
-    "bills_out_of_committee": 6,
+    "bills_out_of_committee": 7,
     "misconduct": 0
   },
   {
@@ -98,7 +98,7 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 8,
+    "laws_enacted": 1,
     "committee_positions_score": 0,
     "bills_out_of_committee": 0,
     "misconduct": 0
@@ -124,9 +124,9 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 0,
+    "laws_enacted": 5,
     "committee_positions_score": 0,
-    "bills_out_of_committee": 2,
+    "bills_out_of_committee": 4,
     "misconduct": 0
   },
   {
@@ -137,9 +137,9 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 4,
+    "laws_enacted": 1,
     "committee_positions_score": 0,
-    "bills_out_of_committee": 2,
+    "bills_out_of_committee": 0,
     "misconduct": 0
   },
   {
@@ -162,10 +162,10 @@
     "state": "Connecticut",
     "missed_votes_pct": null,
     "bills_introduced": null,
-    "bills_cosponsored": 5999,
-    "laws_enacted": 2,
+    "bills_cosponsored": null,
+    "laws_enacted": 1,
     "committee_positions_score": 0,
-    "bills_out_of_committee": 1,
+    "bills_out_of_committee": 0,
     "misconduct": 0
   },
   {
@@ -187,11 +187,11 @@
     "party": "D",
     "state": "Delaware",
     "missed_votes_pct": null,
-    "bills_introduced": 175,
+    "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 5,
+    "laws_enacted": 1,
     "committee_positions_score": 0,
-    "bills_out_of_committee": 4,
+    "bills_out_of_committee": 0,
     "misconduct": 0
   },
   {
@@ -226,11 +226,11 @@
     "party": "R",
     "state": "Florida",
     "missed_votes_pct": null,
-    "bills_introduced": null,
-    "bills_cosponsored": 1667,
-    "laws_enacted": 3,
+    "bills_introduced": 603,
+    "bills_cosponsored": null,
+    "laws_enacted": 0,
     "committee_positions_score": 0,
-    "bills_out_of_committee": 1,
+    "bills_out_of_committee": 2,
     "misconduct": 0
   },
   {
@@ -241,7 +241,7 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 0,
+    "laws_enacted": 4,
     "committee_positions_score": 0,
     "bills_out_of_committee": 0,
     "misconduct": 0
@@ -252,11 +252,11 @@
     "party": "D",
     "state": "Georgia",
     "missed_votes_pct": null,
-    "bills_introduced": 219,
+    "bills_introduced": null,
     "bills_cosponsored": 1184,
     "laws_enacted": 3,
     "committee_positions_score": 0,
-    "bills_out_of_committee": 0,
+    "bills_out_of_committee": 1,
     "misconduct": 0
   },
   {
@@ -266,7 +266,7 @@
     "state": "Hawaii",
     "missed_votes_pct": null,
     "bills_introduced": null,
-    "bills_cosponsored": null,
+    "bills_cosponsored": 2269,
     "laws_enacted": 0,
     "committee_positions_score": 0,
     "bills_out_of_committee": 0,
@@ -280,7 +280,7 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 5,
+    "laws_enacted": 4,
     "committee_positions_score": 0,
     "bills_out_of_committee": 3,
     "misconduct": 0
@@ -293,9 +293,9 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 10,
+    "laws_enacted": 16,
     "committee_positions_score": 0,
-    "bills_out_of_committee": 24,
+    "bills_out_of_committee": 59,
     "misconduct": 0
   },
   {
@@ -305,8 +305,8 @@
     "state": "Idaho",
     "missed_votes_pct": null,
     "bills_introduced": null,
-    "bills_cosponsored": null,
-    "laws_enacted": 7,
+    "bills_cosponsored": 2786,
+    "laws_enacted": 6,
     "committee_positions_score": 0,
     "bills_out_of_committee": 0,
     "misconduct": 0
@@ -332,7 +332,7 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 9,
+    "laws_enacted": 2,
     "committee_positions_score": 0,
     "bills_out_of_committee": 0,
     "misconduct": 0
@@ -344,10 +344,10 @@
     "state": "Indiana",
     "missed_votes_pct": null,
     "bills_introduced": null,
-    "bills_cosponsored": null,
-    "laws_enacted": 6,
+    "bills_cosponsored": 2058,
+    "laws_enacted": 8,
     "committee_positions_score": 0,
-    "bills_out_of_committee": 6,
+    "bills_out_of_committee": 0,
     "misconduct": 0
   },
   {
@@ -358,7 +358,7 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 0,
+    "laws_enacted": 23,
     "committee_positions_score": 0,
     "bills_out_of_committee": 0,
     "misconduct": 0
@@ -371,7 +371,7 @@
     "missed_votes_pct": null,
     "bills_introduced": 2446,
     "bills_cosponsored": null,
-    "laws_enacted": 41,
+    "laws_enacted": 17,
     "committee_positions_score": 0,
     "bills_out_of_committee": 0,
     "misconduct": 0
@@ -386,7 +386,7 @@
     "bills_cosponsored": null,
     "laws_enacted": 0,
     "committee_positions_score": 0,
-    "bills_out_of_committee": 3,
+    "bills_out_of_committee": 1,
     "misconduct": 0
   },
   {
@@ -397,9 +397,9 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 8,
+    "laws_enacted": 16,
     "committee_positions_score": 0,
-    "bills_out_of_committee": 11,
+    "bills_out_of_committee": 22,
     "misconduct": 0
   },
   {
@@ -410,9 +410,9 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 4,
+    "laws_enacted": 0,
     "committee_positions_score": 0,
-    "bills_out_of_committee": 1,
+    "bills_out_of_committee": 0,
     "misconduct": 0
   },
   {
@@ -423,9 +423,9 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 24,
+    "laws_enacted": 9,
     "committee_positions_score": 0,
-    "bills_out_of_committee": 30,
+    "bills_out_of_committee": 45,
     "misconduct": 0
   },
   {
@@ -434,9 +434,9 @@
     "party": "R",
     "state": "Kentucky",
     "missed_votes_pct": null,
-    "bills_introduced": null,
-    "bills_cosponsored": 1105,
-    "laws_enacted": 0,
+    "bills_introduced": 1085,
+    "bills_cosponsored": null,
+    "laws_enacted": 4,
     "committee_positions_score": 0,
     "bills_out_of_committee": 1,
     "misconduct": 0
@@ -449,7 +449,7 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 18,
+    "laws_enacted": 8,
     "committee_positions_score": 0,
     "bills_out_of_committee": 0,
     "misconduct": 0
@@ -462,7 +462,7 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 7,
+    "laws_enacted": 0,
     "committee_positions_score": 0,
     "bills_out_of_committee": 0,
     "misconduct": 0
@@ -475,7 +475,7 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 23,
+    "laws_enacted": 22,
     "committee_positions_score": 0,
     "bills_out_of_committee": 8,
     "misconduct": 0
@@ -500,7 +500,7 @@
     "state": "Maryland",
     "missed_votes_pct": null,
     "bills_introduced": null,
-    "bills_cosponsored": 294,
+    "bills_cosponsored": null,
     "laws_enacted": 0,
     "committee_positions_score": 0,
     "bills_out_of_committee": 0,
@@ -514,7 +514,7 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 0,
+    "laws_enacted": 3,
     "committee_positions_score": 0,
     "bills_out_of_committee": 0,
     "misconduct": 0
@@ -540,9 +540,9 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 785,
+    "laws_enacted": 0,
     "committee_positions_score": 0,
-    "bills_out_of_committee": 4,
+    "bills_out_of_committee": 2,
     "misconduct": 0
   },
   {
@@ -553,9 +553,9 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 7,
+    "laws_enacted": 19,
     "committee_positions_score": 0,
-    "bills_out_of_committee": 2,
+    "bills_out_of_committee": 1,
     "misconduct": 0
   },
   {
@@ -566,9 +566,9 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 5,
+    "laws_enacted": 194,
     "committee_positions_score": 0,
-    "bills_out_of_committee": 3,
+    "bills_out_of_committee": 21,
     "misconduct": 0
   },
   {
@@ -577,11 +577,11 @@
     "party": "D",
     "state": "Minnesota",
     "missed_votes_pct": null,
-    "bills_introduced": null,
-    "bills_cosponsored": null,
-    "laws_enacted": 10,
+    "bills_introduced": 1398,
+    "bills_cosponsored": 5476,
+    "laws_enacted": 1048,
     "committee_positions_score": 0,
-    "bills_out_of_committee": 0,
+    "bills_out_of_committee": 49,
     "misconduct": 0
   },
   {
@@ -592,9 +592,9 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 0,
+    "laws_enacted": 3,
     "committee_positions_score": 0,
-    "bills_out_of_committee": 1,
+    "bills_out_of_committee": 0,
     "misconduct": 0
   },
   {
@@ -605,9 +605,9 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 50,
+    "laws_enacted": 84,
     "committee_positions_score": 0,
-    "bills_out_of_committee": 14,
+    "bills_out_of_committee": 21,
     "misconduct": 0
   },
   {
@@ -618,7 +618,7 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 8,
+    "laws_enacted": 20,
     "committee_positions_score": 0,
     "bills_out_of_committee": 0,
     "misconduct": 0
@@ -629,9 +629,9 @@
     "party": "R",
     "state": "Missouri",
     "missed_votes_pct": null,
-    "bills_introduced": null,
+    "bills_introduced": 329,
     "bills_cosponsored": null,
-    "laws_enacted": 10,
+    "laws_enacted": 16,
     "committee_positions_score": 0,
     "bills_out_of_committee": 0,
     "misconduct": 0
@@ -644,7 +644,7 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 5,
+    "laws_enacted": 7,
     "committee_positions_score": 0,
     "bills_out_of_committee": 0,
     "misconduct": 0
@@ -655,9 +655,9 @@
     "party": "R",
     "state": "Montana",
     "missed_votes_pct": null,
-    "bills_introduced": null,
-    "bills_cosponsored": null,
-    "laws_enacted": 3,
+    "bills_introduced": 52,
+    "bills_cosponsored": 231,
+    "laws_enacted": 4,
     "committee_positions_score": 0,
     "bills_out_of_committee": 0,
     "misconduct": 0
@@ -670,9 +670,9 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 14,
+    "laws_enacted": 46,
     "committee_positions_score": 0,
-    "bills_out_of_committee": 2,
+    "bills_out_of_committee": 6,
     "misconduct": 0
   },
   {
@@ -681,11 +681,11 @@
     "party": "R",
     "state": "Nebraska",
     "missed_votes_pct": null,
-    "bills_introduced": 338,
-    "bills_cosponsored": 1537,
-    "laws_enacted": 5,
+    "bills_introduced": null,
+    "bills_cosponsored": null,
+    "laws_enacted": 41,
     "committee_positions_score": 0,
-    "bills_out_of_committee": 6,
+    "bills_out_of_committee": 15,
     "misconduct": 0
   },
   {
@@ -696,7 +696,7 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 1,
+    "laws_enacted": 0,
     "committee_positions_score": 0,
     "bills_out_of_committee": 0,
     "misconduct": 0
@@ -707,9 +707,9 @@
     "party": "D",
     "state": "Nevada",
     "missed_votes_pct": null,
-    "bills_introduced": null,
+    "bills_introduced": 437,
     "bills_cosponsored": null,
-    "laws_enacted": 2,
+    "laws_enacted": 9,
     "committee_positions_score": 0,
     "bills_out_of_committee": 0,
     "misconduct": 0
@@ -722,9 +722,9 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 0,
+    "laws_enacted": 27,
     "committee_positions_score": 0,
-    "bills_out_of_committee": 1,
+    "bills_out_of_committee": 2,
     "misconduct": 0
   },
   {
@@ -733,11 +733,11 @@
     "party": "D",
     "state": "New Hampshire",
     "missed_votes_pct": null,
-    "bills_introduced": null,
+    "bills_introduced": 1145,
     "bills_cosponsored": null,
-    "laws_enacted": 2,
+    "laws_enacted": 0,
     "committee_positions_score": 0,
-    "bills_out_of_committee": 0,
+    "bills_out_of_committee": 1,
     "misconduct": 0
   },
   {
@@ -748,7 +748,7 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 3,
+    "laws_enacted": 18,
     "committee_positions_score": 0,
     "bills_out_of_committee": 0,
     "misconduct": 0
@@ -774,7 +774,7 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 2,
+    "laws_enacted": 3,
     "committee_positions_score": 0,
     "bills_out_of_committee": 0,
     "misconduct": 0
@@ -787,7 +787,7 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 2,
+    "laws_enacted": 4,
     "committee_positions_score": 0,
     "bills_out_of_committee": 6,
     "misconduct": 0
@@ -800,9 +800,9 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 2,
+    "laws_enacted": 15,
     "committee_positions_score": 0,
-    "bills_out_of_committee": 5,
+    "bills_out_of_committee": 11,
     "misconduct": 0
   },
   {
@@ -811,11 +811,11 @@
     "party": "D",
     "state": "New York",
     "missed_votes_pct": null,
-    "bills_introduced": null,
+    "bills_introduced": 2426,
     "bills_cosponsored": null,
-    "laws_enacted": 10,
+    "laws_enacted": 2468,
     "committee_positions_score": 0,
-    "bills_out_of_committee": 1,
+    "bills_out_of_committee": 0,
     "misconduct": 0
   },
   {
@@ -825,8 +825,8 @@
     "state": "New York",
     "missed_votes_pct": null,
     "bills_introduced": null,
-    "bills_cosponsored": 5052,
-    "laws_enacted": 4,
+    "bills_cosponsored": null,
+    "laws_enacted": 0,
     "committee_positions_score": 0,
     "bills_out_of_committee": 0,
     "misconduct": 0
@@ -839,7 +839,7 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 2,
+    "laws_enacted": 0,
     "committee_positions_score": 0,
     "bills_out_of_committee": 0,
     "misconduct": 0
@@ -852,9 +852,9 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 3,
+    "laws_enacted": 0,
     "committee_positions_score": 0,
-    "bills_out_of_committee": 1,
+    "bills_out_of_committee": 0,
     "misconduct": 0
   },
   {
@@ -865,9 +865,9 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 11,
+    "laws_enacted": 0,
     "committee_positions_score": 0,
-    "bills_out_of_committee": 9,
+    "bills_out_of_committee": 0,
     "misconduct": 0
   },
   {
@@ -878,9 +878,9 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 20,
+    "laws_enacted": 0,
     "committee_positions_score": 0,
-    "bills_out_of_committee": 1,
+    "bills_out_of_committee": 0,
     "misconduct": 0
   },
   {
@@ -902,9 +902,9 @@
     "party": "R",
     "state": "Ohio",
     "missed_votes_pct": null,
-    "bills_introduced": 25,
+    "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 4,
+    "laws_enacted": 0,
     "committee_positions_score": 0,
     "bills_out_of_committee": 0,
     "misconduct": 0
@@ -917,7 +917,7 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 13,
+    "laws_enacted": 0,
     "committee_positions_score": 0,
     "bills_out_of_committee": 0,
     "misconduct": 0
@@ -928,9 +928,9 @@
     "party": "R",
     "state": "Oklahoma",
     "missed_votes_pct": null,
-    "bills_introduced": 159,
+    "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 11,
+    "laws_enacted": 0,
     "committee_positions_score": 0,
     "bills_out_of_committee": 0,
     "misconduct": 0
@@ -942,10 +942,10 @@
     "state": "Oregon",
     "missed_votes_pct": null,
     "bills_introduced": null,
-    "bills_cosponsored": 8429,
-    "laws_enacted": 9,
+    "bills_cosponsored": null,
+    "laws_enacted": 0,
     "committee_positions_score": 0,
-    "bills_out_of_committee": 3,
+    "bills_out_of_committee": 0,
     "misconduct": 0
   },
   {
@@ -954,9 +954,9 @@
     "party": "D",
     "state": "Oregon",
     "missed_votes_pct": null,
-    "bills_introduced": 1177,
+    "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 2,
+    "laws_enacted": 0,
     "committee_positions_score": 0,
     "bills_out_of_committee": 0,
     "misconduct": 0
@@ -968,8 +968,8 @@
     "state": "Pennsylvania",
     "missed_votes_pct": null,
     "bills_introduced": null,
-    "bills_cosponsored": 138,
-    "laws_enacted": 2,
+    "bills_cosponsored": null,
+    "laws_enacted": 0,
     "committee_positions_score": 0,
     "bills_out_of_committee": 0,
     "misconduct": 0
@@ -982,7 +982,7 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 1,
+    "laws_enacted": 0,
     "committee_positions_score": 0,
     "bills_out_of_committee": 0,
     "misconduct": 0
@@ -995,9 +995,9 @@
     "missed_votes_pct": null,
     "bills_introduced": null,
     "bills_cosponsored": null,
-    "laws_enacted": 3,
+    "laws_enacted": 0,
     "committee_positions_score": 0,
-    "bills_out_of_committee": 92,
+    "bills_out_of_committee": 0,
     "misconduct": 0
   },
   {
@@ -1006,9 +1006,9 @@
     "party": "D",
     "state": "Rhode Island",
     "missed_votes_pct": null,
-    "bills_introduced": 720,
-    "bills_cosponsored": 4766,
-    "laws_enacted": 594,
+    "bills_introduced": null,
+    "bills_cosponsored": null,
+    "laws_enacted": 0,
     "committee_positions_score": 0,
     "bills_out_of_committee": 0,
     "misconduct": 0
