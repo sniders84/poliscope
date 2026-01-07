@@ -7,6 +7,7 @@
     const OUTPUT_PATH = "poliscope/public/senators-rankings.json";
     const LEGISLATORS_URL = "https://raw.githubusercontent.com/unitedstates/congress-legislators/master/legislators-current.json";
     const CONGRESS_API = "https://api.congress.gov/v3";
+    const API_KEY = process.env.CONGRESS_API_KEY; // set this in repo secrets
 
     async function getJSON(url) {
       const res = await fetch(url);
@@ -15,11 +16,16 @@
     }
 
     async function fetchMissedVotesPct(bioguideId) {
-      const res = await fetch(`${CONGRESS_API}/member/${bioguideId}/votes?congress=119`);
-      if (!res.ok) return 0;
+      const url = `${CONGRESS_API}/member/${bioguideId}/votes?congress=119&api_key=${API_KEY}`;
+      const res = await fetch(url);
+      if (!res.ok) {
+        console.error(`Congress.gov error for ${bioguideId}: ${res.status}`);
+        return 0;
+      }
       const data = await res.json();
-      const total = data.pagination?.count ?? 0;
-      const missed = data.results?.filter(v => v.voteCast === "Not Voting").length ?? 0;
+      const votes = data.results ?? [];
+      const total = votes.length;
+      const missed = votes.filter(v => v.voteCast === "Not Voting").length;
       return total > 0 ? ((missed / total) * 100).toFixed(2) : 0;
     }
 
@@ -63,4 +69,4 @@
     });
     EOF
 
-    node generate.mjs
+    node --experimental-fetch generate.mjs
