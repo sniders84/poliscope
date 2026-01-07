@@ -31,10 +31,35 @@ jobs:
           const CONGRESS_API_KEY = process.env.CONGRESS_API_KEY;
           const PROPUBLICA_API_KEY = process.env.PROPUBLICA_API_KEY;
 
-          const senators = JSON.parse(fs.readFileSync('poliscope/public/senators.json','utf-8'));
-          const legislators = JSON.parse(fs.readFileSync('poliscope/public/legislators-current.json','utf-8'));
+          // Detect base dir: prefer poliscope/public, fallback to public
+          const baseDirs = [
+            path.join(process.cwd(), 'poliscope', 'public'),
+            path.join(process.cwd(), 'public')
+          ];
+          let base = null;
+          for (const dir of baseDirs) {
+            if (fs.existsSync(path.join(dir, 'senators.json')) && fs.existsSync(path.join(dir, 'legislators-current.json'))) {
+              base = dir;
+              break;
+            }
+          }
+          if (!base) {
+            console.error('Missing input files. Checked:');
+            baseDirs.forEach(d => {
+              console.error('-', path.join(d, 'senators.json'), fs.existsSync(path.join(d, 'senators.json')) ? 'FOUND' : 'MISSING');
+              console.error('-', path.join(d, 'legislators-current.json'), fs.existsSync(path.join(d, 'legislators-current.json')) ? 'FOUND' : 'MISSING');
+            });
+            process.exit(1);
+          }
 
-          // Utility
+          const senatorsPath = path.join(base, 'senators.json');
+          const legislatorsPath = path.join(base, 'legislators-current.json');
+          const outFile = path.join(base, 'senators-rankings.json');
+
+          const senators = JSON.parse(fs.readFileSync(senatorsPath,'utf-8'));
+          const legislators = JSON.parse(fs.readFileSync(legislatorsPath,'utf-8'));
+
+          // Utilities
           async function fetchJSON(url, headers = {}) {
             try {
               const res = await fetch(url, { headers });
@@ -69,7 +94,7 @@ jobs:
             });
             if (govtrack) {
               govtrackByBioguide[bioguide] = govtrack;
-              bioguideByGovtrack[`${govtrack}`] = bioguide;
+              bioguideByGovtrack[String(govtrack)] = bioguide;
             }
           });
 
@@ -77,11 +102,9 @@ jobs:
             const terms = termsByBioguide[bioguide] || [];
             if (terms.length === 0) return { start: 93, end: currentCongress() };
             const years = terms.flatMap(t => {
-              const ys=[]; const s=parseInt(String(t.start).slice(0,4),10);
-              const e=parseInt(String(t.end).slice(0,4),10);
-              if(Number.isInteger(s)) ys.push(s);
-              if(Number.isInteger(e)) ys.push(e);
-              return ys;
+              const s = parseInt(String(t.start).slice(0,4), 10);
+              const e = parseInt(String(t.end).slice(0,4), 10);
+              return [s, e].filter(Number.isInteger);
             });
             const minYear = Math.min(...years);
             const maxYear = Math.max(...years);
@@ -91,10 +114,8 @@ jobs:
           function resolveBioguideFromSenator(s) {
             const nameKey = (s.name || '').toLowerCase();
             const state = (s.state || '').toUpperCase();
-            // Try name and name+state
             let id = bioguideByName[nameKey] || bioguideByName[`${nameKey} (${state})`];
             if (id) return id;
-            // Try govtrack URL in senators.json, extract numeric ID and map
             const url = s.govtrack || s.govtrack_url || s.govtrack_id || '';
             const m = String(url).match(/govtrack\.us\/congress\/members\/[^\/]+\/(\d+)/) || String(url).match(/(\d{4,})/);
             if (m && bioguideByGovtrack[m[1]]) return bioguideByGovtrack[m[1]];
@@ -107,16 +128,20 @@ jobs:
             for (let cn = start; cn <= end; cn++) {
               const url = `https://api.congress.gov/v3/member/${bioguide}/${memberPathKey}?api_key=${CONGRESS_API_KEY}&congress=${cn}&limit=1`;
               const data = await fetchJSON(url);
-              const count = data?.pagination?.count || 0;
-              total += count;
+              total += data?.pagination?.count || 0;
             }
             return total;
+          }
+
+          function becameLawLatest(txt) {
+            const t = (txt || '').toLowerCase();
+            return t.includes('became law') || t.includes('became public law') || t.includes('became private law');
           }
 
           async function fetchLawsEnactedCareer(bioguide, typeKey) {
             const { start, end } = congressRangeForMember(bioguide);
             let enacted = 0;
-            const seen = new Set(); // dedupe by bill identifier
+            const seen = new Set();
             for (let cn = start; cn <= end; cn++) {
               let offset = 0; const limit = 250;
               while (true) {
@@ -127,10 +152,9 @@ jobs:
                 const items = d[key] || [];
                 for (const it of items) {
                   const id = it?.number || it?.billNumber || `${cn}-${it?.title || ''}`;
-                  const latest = (it?.latestAction?.text || '').toLowerCase();
-                  const becameLaw = latest.includes('became law') || latest.includes('became public law') || latest.includes('became private law');
+                  const latest = it?.latestAction?.text || '';
                   const hasPL = !!it?.publicLawNumber;
-                  if ((becameLaw || hasPL) && id && !seen.has(id)) {
+                  if ((becameLawLatest(latest) || hasPL) && id && !seen.has(id)) {
                     seen.add(id);
                     enacted++;
                   }
@@ -149,10 +173,7 @@ jobs:
             const data = await fetchJSON(url, headers);
             const roles = data?.results?.[0]?.roles || [];
             let missed = 0, total = 0;
-            roles.forEach(r => {
-              missed += r.missed_votes || 0;
-              total += r.total_votes || 0;
-            });
+            roles.forEach(r => { missed += r.missed_votes || 0; total += r.total_votes || 0; });
             const pct = total > 0 ? Number(((missed / total) * 100).toFixed(2)) : null;
             return { missed, pct };
           }
@@ -198,7 +219,7 @@ jobs:
           }
 
           async function fetchMisconduct(govtrackId) {
-            // Placeholder until dataset wired
+            // Placeholder until dataset is wired in
             return 0;
           }
 
@@ -231,12 +252,12 @@ jobs:
               office: s.office || 'Senator',
               party: s.party,
               state: s.state,
-              not_vote,                      // { missed, pct }
-              bills_introduced,              // career sum
-              bills_cosponsored,             // career sum
-              laws_enacted,                  // deduped
-              committee_positions,           // career-weighted score
-              bills_out_of_committee,        // “Floor consideration”
+              not_vote,
+              bills_introduced,
+              bills_cosponsored,
+              laws_enacted,
+              committee_positions,
+              bills_out_of_committee,
               misconduct
             };
           }
@@ -248,9 +269,10 @@ jobs:
               records.push(rec);
               console.log('OK:', rec.name, rec.state || '', 'laws_enacted:', rec.laws_enacted, 'not_vote:', JSON.stringify(rec.not_vote));
             }
-            const outFile = path.join(process.cwd(), 'poliscope', 'public', 'senators-rankings.json');
             fs.mkdirSync(path.dirname(outFile), { recursive: true });
             fs.writeFileSync(outFile, JSON.stringify(records, null, 2), 'utf-8');
+            // Persist chosen path for the commit step
+            fs.writeFileSync('output_path.txt', outFile, 'utf-8');
             console.log('Wrote', records.length, 'senators to', outFile);
           })();
           NODE
@@ -259,10 +281,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add poliscope/public/senators-rankings.json
+          OUT=$(cat output_path.txt || echo "poliscope/public/senators-rankings.json")
+          git add "$OUT"
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "chore: update senators-rankings.json (career totals, deduped, fixed schema)"
+            git commit -m "chore: update senators-rankings.json (career totals)"
             git push
           fi
