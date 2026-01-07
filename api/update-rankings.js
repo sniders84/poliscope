@@ -17,15 +17,6 @@ async function getLegislationCount(bioguide, type) {
   return data?.pagination?.count ?? 0;
 }
 
-async function getMissedVotesPct(bioguide) {
-  const data = await getJSON(`member/${bioguide}/votes`);
-  if (!data?.results) return 0;
-  const votes = data.results;
-  const total = votes.length;
-  const missed = votes.filter(v => v.voteCast === "Not Voting").length;
-  return total > 0 ? ((missed / total) * 100).toFixed(2) : 0;
-}
-
 async function getLawsEnacted(bioguide) {
   const data = await getJSON(`member/${bioguide}/sponsored-legislation`);
   if (!data?.results) return 0;
@@ -37,13 +28,28 @@ async function getCommitteeScore(bioguide) {
   return data?.results?.length ?? 0;
 }
 
+// GovTrack roles for missed_votes_pct + misconduct
+async function getGovTrackRoles() {
+  const res = await fetch("https://www.govtrack.us/api/v2/role?current=true&limit=600");
+  const data = await res.json();
+  const map = {};
+  for (const role of data.objects) {
+    if (role.role_type === "senator") {
+      map[role.person.bioguideid] = {
+        missed_votes_pct: role.missed_votes_pct ?? 0,
+        misconduct: role.person.misconduct ?? 0
+      };
+    }
+  }
+  return map;
+}
+
 async function buildRankings() {
   const legislators = await fetch("https://unitedstates.github.io/congress-legislators/legislators-current.json").then(r => r.json());
   const today = new Date().toISOString().slice(0, 10);
+  const senators = legislators.filter(l => l.terms.some(t => t.type === "sen" && t.end > today));
 
-  const senators = legislators.filter(l =>
-    l.terms.some(t => t.type === "sen" && t.end > today)
-  );
+  const govtrackMap = await getGovTrackRoles();
 
   const rankings = [];
   for (const senator of senators) {
@@ -53,24 +59,25 @@ async function buildRankings() {
     const party = term.party;
     const state = term.state;
 
-    const missed_votes_pct = await getMissedVotesPct(bioguide);
     const bills_introduced = await getLegislationCount(bioguide, "sponsored-legislation");
     const bills_cosponsored = await getLegislationCount(bioguide, "cosponsored-legislation");
     const laws_enacted = await getLawsEnacted(bioguide);
     const committee_positions_score = await getCommitteeScore(bioguide);
+
+    const govtrack = govtrackMap[bioguide] || {};
 
     rankings.push({
       name,
       office: "Senator",
       party,
       state,
-      missed_votes_pct,
+      missed_votes_pct: govtrack.missed_votes_pct ?? 0,
       bills_introduced,
       bills_cosponsored,
       laws_enacted,
       committee_positions_score,
-      bills_out_of_committee: 0, // not exposed by Congress.gov
-      misconduct: 0              // GovTrack-only field
+      bills_out_of_committee: 0, // Congress.gov doesn’t expose this
+      misconduct: govtrack.misconduct ?? 0
     });
   }
 
@@ -81,14 +88,8 @@ export default async function handler(req, res) {
   try {
     const rankings = await buildRankings();
 
-    // Write to public/senators-rankings.json inside Vercel build output
-    const filePath = path.join(process.cwd(), "public", "senators-rankings.json");
-    fs.writeFileSync(filePath, JSON.stringify(rankings, null, 2));
-
-    res.status(200).json({
-      message: "✅ senators-rankings.json updated",
-      count: rankings.length
-    });
+    // Return JSON directly (Vercel functions can’t persist files in /public)
+    res.status(200).json(rankings);
   } catch (err) {
     console.error("Script failed:", err);
     res.status(500).json({ error: err.message });
