@@ -1,4 +1,4 @@
-// api/katie-britt.js
+// pages/api/katie-britt.js
 
 const BASE_URL = "https://api.congress.gov/v3";
 const API_KEY = process.env.CONGRESS_API_KEY; // store your key in env
@@ -16,31 +16,34 @@ async function fetchJSON(url) {
 
 export default async function handler(req, res) {
   try {
-    const bioguide = "B001316";
+    // Step 1: Look up Katie Britt’s numeric ID
+    const members = await fetchJSON(`${BASE_URL}/member?api_key=${API_KEY}&format=json`);
+    const britt = members?.members?.find(m => m.bioguideId === "B001319");
+    if (!britt) {
+      return res.status(404).json({ error: "Katie Britt not found" });
+    }
+    const memberId = britt.memberId;
 
-    // Sponsored bills
-    const sponsored = await fetchJSON(`${BASE_URL}/member/${bioguide}/sponsored-legislation?api_key=${API_KEY}&format=json`);
+    // Step 2: Use numeric ID in all calls
+    const sponsored = await fetchJSON(`${BASE_URL}/member/${memberId}/sponsored-legislation?api_key=${API_KEY}&format=json`);
     const bills_introduced = sponsored?.pagination?.count ?? 0;
     const laws_enacted = sponsored?.results?.filter(b => b.latestAction?.action === "BecameLaw").length ?? 0;
     const floor_consideration = sponsored?.results?.filter(b => b.actions?.some(a => a.action === "Floor Consideration")).length ?? 0;
 
-    // Cosponsored bills
-    const cosponsored = await fetchJSON(`${BASE_URL}/member/${bioguide}/cosponsored-legislation?api_key=${API_KEY}&format=json`);
+    const cosponsored = await fetchJSON(`${BASE_URL}/member/${memberId}/cosponsored-legislation?api_key=${API_KEY}&format=json`);
     const bills_cosponsored = cosponsored?.pagination?.count ?? 0;
 
-    // Committees
-    const committees = await fetchJSON(`${BASE_URL}/member/${bioguide}/committees?api_key=${API_KEY}&format=json`);
+    const committees = await fetchJSON(`${BASE_URL}/member/${memberId}/committees?api_key=${API_KEY}&format=json`);
     const committee_positions_score = committees?.results?.length ?? 0;
 
-    // Votes (missed votes)
-    const votes = await fetchJSON(`${BASE_URL}/member/${bioguide}/votes?api_key=${API_KEY}&format=json`);
+    const votes = await fetchJSON(`${BASE_URL}/member/${memberId}/votes?api_key=${API_KEY}&format=json`);
     const missed_votes = votes?.results?.filter(v => v.voteCast === "Not Voting").length ?? 0;
 
     const schema = {
-      name: "Katie Britt",
+      name: `${britt.firstName} ${britt.lastName}`,
       office: "Senator",
-      party: "R",
-      state: "Alabama",
+      party: britt.party,
+      state: britt.state,
       missed_votes,
       bills_introduced,
       bills_cosponsored,
