@@ -1,24 +1,3 @@
-name: "Senators Rankings Pipeline (current congress)"
-
-on:
-  workflow_dispatch:
-  schedule:
-    - cron: "0 5 * * *"
-
-jobs:
-  build-and-commit:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "18"
-
       - name: Generate senators-rankings.json
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
@@ -28,22 +7,9 @@ jobs:
 const fs = require('fs');
 const path = require('path');
 
-// your full scraper code goes here, starting at column 0
-// no leading spaces before any JS lines
+// … your full scraper code here, starting at column 0 …
 
 (async () => {
   console.log("this structure works");
 })();
 NODE
-
-      - name: Commit updated JSON
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add poliscope/public/senators-rankings.json
-          if git diff --cached --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "chore: update senators-rankings.json (current congress)"
-            git push
-          fi
