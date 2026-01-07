@@ -23,37 +23,39 @@
             for (const senator of senators) {
               const currentTerm = senator.terms.at(-1);
               const govtrackId = senator.id.govtrack;
-              const bioguide = senator.id.bioguide;  // Not used now, but available
               const name = `${senator.name.first} ${senator.name.last}`;
               const party = currentTerm.party === "Democrat" ? "Democrat" :
                             currentTerm.party === "Republican" ? "Republican" : "Independent";
               const state = currentTerm.state;
 
-              // Fetch GovTrack individual page for current stats
-              const pageUrl = `https://www.govtrack.us/congress/members/${senator.name.last.toLowerCase().replace(/ /g, '_')}_${senator.name.first.toLowerCase().replace(/ /g, '_')}/${govtrackId}`;
+              // GovTrack member page URL (uses govtrack ID for reliability)
+              const pageUrl = `https://www.govtrack.us/congress/members/${govtrackId}`;
+
               let missed_votes_pct = 0;
               let bills_introduced = 0;
               let bills_cosponsored = 0;
-              let committee_positions_score = 0;  // Proxy from committees or leadership
 
               try {
+                console.log(`Fetching ${pageUrl}`);
                 const res = await fetch(pageUrl);
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 const text = await res.text();
 
-                // Parse missed votes (lifetime or current - take the %)
-                const missedMatch = text.match(/missed \\d+ of \\d+ roll call votes \\(([\\d.]+)%\\)/);
+                // Missed votes % (current as of page load)
+                const missedMatch = text.match(/Missed Votes.*?<strong>([\d.]+)%/s);
                 if (missedMatch) missed_votes_pct = parseFloat(missedMatch[1]);
 
-                // Bills introduced (recent or count from "introduced bills" section)
-                const introducedMatch = text.match(/Recently introduced bills \\(119th Congress\\):.*?(\\d+) bills?/s);
-                if (introducedMatch) bills_introduced = parseInt(introducedMatch[1]) || 0;
+                // Bills sponsored/introduced this Congress
+                const sponsoredMatch = text.match(/Sponsored Legislation.*?<strong>(\d+) bills and resolutions/s);
+                if (sponsoredMatch) bills_introduced = parseInt(sponsoredMatch[1], 10);
 
-                // Cosponsored - harder, approximate from text or set to 0 if not easy
-                // For now, placeholder - GovTrack doesn't have direct current cosponsored count on page
+                // Cosponsored (GovTrack shows count)
+                const cosponsoredMatch = text.match(/Cosponsored Legislation.*?<strong>(\d+) bills and resolutions/s);
+                if (cosponsoredMatch) bills_cosponsored = parseInt(cosponsoredMatch[1], 10);
 
-                console.log(`Processed ${name}: missed ${missed_votes_pct}%, introduced ${bills_introduced}`);
+                console.log(`Processed ${name}: missed ${missed_votes_pct}%, introduced ${bills_introduced}, cosponsored ${bills_cosponsored}`);
               } catch (err) {
-                console.warn(`Failed to fetch/parse stats for ${name}: ${err.message}`);
+                console.warn(`Failed to fetch/parse stats for ${name} (${govtrackId}): ${err.message}`);
               }
 
               rankings.push({
@@ -65,19 +67,19 @@
                 bills_introduced,
                 bills_cosponsored,
                 laws_enacted: 0,
-                committee_positions_score,
+                committee_positions_score: 0,
                 bills_out_of_committee: 0,
                 misconduct: 0
               });
 
-              // Polite delay to avoid hammering the site
-              await new Promise(resolve => setTimeout(resolve, 1000));  // 1 second delay
+              // Polite 1-second delay (~2 minutes total run)
+              await new Promise(resolve => setTimeout(resolve, 1000));
             }
 
             rankings.sort((a, b) => a.name.localeCompare(b.name));
 
             fs.writeFileSync(OUTPUT_PATH, JSON.stringify(rankings, null, 2));
-            console.log(`✅ senators-rankings.json generated with real missed votes and introduced bills from GovTrack!`);
+            console.log(`✅ senators-rankings.json generated with ${rankings.length} senators using real GovTrack stats!`);
           }
 
           build().catch(err => {
