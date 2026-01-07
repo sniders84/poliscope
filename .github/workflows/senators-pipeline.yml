@@ -1,10 +1,13 @@
 name: update-rankings
+
 on:
   schedule:
-    - cron: "0 22 * * *" # 5pm EST daily
+    - cron: "0 22 * * *"  # 5pm EST daily (22 UTC = 5pm EST/EDT)
   workflow_dispatch:
+
 permissions:
   contents: write
+
 jobs:
   build-rankings:
     runs-on: ubuntu-latest
@@ -15,72 +18,72 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: "20"  # Updated to a more recent LTS version
 
       - name: Generate senators-rankings.json
-        env:
-          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}  # Optional, only needed if you add API calls later
         run: |
           mkdir -p poliscope/public
-          cat <<'EOF' > generate.mjs
-import fs from "fs";
 
-const OUTPUT_PATH = "poliscope/public/senators-rankings.json";
-const LEGISLATORS_URL = "https://raw.githubusercontent.com/unitedstates/congress-legislators/main/legislators-current.yaml";  // Switched to YAML for easier parsing if needed; JSON variant also exists
-const CONGRESS = 119;  // 119th Congress (2025-2027)
+          cat > generate.mjs << 'EOF'
+          import fs from "fs";
 
-async function getJSON(url) {
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`Failed to fetch ${url}`);
-  return res.json();
-}
+          const OUTPUT_PATH = "poliscope/public/senators-rankings.json";
+          const LEGISLATORS_URL = "https://unitedstates.github.io/congress-legislators/legislators-current.json";
+          const CONGRESS = 119;  // 119th Congress (2025-2027)
 
-async function build() {
-  const legislators = await getJSON(LEGISLATORS_URL.replace(".yaml", ".json"));  // Use JSON version for simplicity
+          async function getJSON(url) {
+            const res = await fetch(url);
+            if (!res.ok) throw new Error(`Failed to fetch ${url}`);
+            return res.json();
+          }
 
-  // Filter for current senators (terms active in 119th Congress)
-  const senators = legislators.filter(l =>
-    l.terms.some(t => t.type === "sen" && t.congress === CONGRESS)
-  );
+          async function build() {
+            const legislators = await getJSON(LEGISLATORS_URL);
 
-  const rankings = [];
-  for (const senator of senators) {
-    const currentTerm = senator.terms.at(-1);
-    const name = `${senator.name.first} ${senator.name.last}`;
-    const party = currentTerm.party;
-    const state = currentTerm.state;
+            // Filter for current senators in the 119th Congress
+            const senators = legislators.filter(l =>
+              l.terms.some(t => t.type === "sen" && t.congress === CONGRESS)
+            );
 
-    // Placeholder values (no reliable free API for these currently)
-    const missed_votes_pct = 0;  // Congress.gov lacks member missed vote % endpoint
-    const misconduct = 0;        // GovTrack API v2 deprecated, no misconduct field
+            const rankings = [];
+            for (const senator of senators) {
+              const currentTerm = senator.terms.at(-1);
+              const name = `${senator.name.first} ${senator.name.last}`;
+              const party = currentTerm.party;
+              const state = currentTerm.state;
 
-    rankings.push({
-      name,
-      office: "Senator",
-      party,
-      state,
-      missed_votes_pct,
-      bills_introduced: 0,
-      bills_cosponsored: 0,
-      laws_enacted: 0,
-      committee_positions_score: 0,
-      bills_out_of_committee: 0,
-      misconduct
-    });
-  }
+              // Placeholders (real missed votes/misconduct require paid or complex APIs)
+              const missed_votes_pct = 0;
+              const misconduct = 0;
 
-  // Sort alphabetically by name (optional)
-  rankings.sort((a, b) => a.name.localeCompare(b.name));
+              rankings.push({
+                name,
+                office: "Senator",
+                party,
+                state,
+                missed_votes_pct,
+                bills_introduced: 0,
+                bills_cosponsored: 0,
+                laws_enacted: 0,
+                committee_positions_score: 0,
+                bills_out_of_committee: 0,
+                misconduct
+              });
+            }
 
-  fs.writeFileSync(OUTPUT_PATH, JSON.stringify(rankings, null, 2));
-  console.log(`✅ senators-rankings.json written with ${rankings.length} records`);
-}
+            // Optional: sort by name
+            rankings.sort((a, b) => a.name.localeCompare(b.name));
 
-build().catch(err => {
-  console.error("Script failed:", err);
-  process.exit(1);
-});
-EOF
+            fs.writeFileSync(OUTPUT_PATH, JSON.stringify(rankings, null, 2));
+            console.log(`✅ senators-rankings.json written with ${rankings.length} records`);
+          }
+
+          build().catch(err => {
+            console.error("Script failed:", err);
+            process.exit(1);
+          });
+          EOF
+
           node generate.mjs
 
       - name: Commit and push if changed
@@ -88,11 +91,9 @@ EOF
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           git add poliscope/public/senators-rankings.json
-          git diff --quiet && git diff --staged --quiet || git commit -m "Update senators-rankings.json" && git push
-
-      - name: Push changes (fallback)
-        if: failure()  # Only run if previous step failed (e.g., no changes)
-        uses: ad-m/github-push-action@v0.8.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: main
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update senators-rankings.json [ci skip]"
+            git push
+          fi
