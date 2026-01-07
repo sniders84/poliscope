@@ -1,10 +1,8 @@
 name: "Senators Rankings Pipeline (current congress)"
-
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 5 * * *"   # nightly at 05:00 UTC
-
+    - cron: "0 5 * * *" # nightly at 05:00 UTC
 jobs:
   build-and-commit:
     runs-on: ubuntu-latest
@@ -24,10 +22,9 @@ jobs:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
           PROPUBLICA_API_KEY: ${{ secrets.PROPUBLICA_API_KEY }}
         run: |
-          node - <<'NODE'
+          node <<'NODE'
 const fs = require('fs');
 const path = require('path');
-
 const CONGRESS_API_KEY = process.env.CONGRESS_API_KEY;
 const PROPUBLICA_API_KEY = process.env.PROPUBLICA_API_KEY;
 
@@ -189,7 +186,6 @@ async function fetchCommitteeScoreCurrent(bioguide) {
 
 async function buildRecord(s) {
   const bioguide = resolveBioguideFromSenator(s);
-
   let bills_introduced = null;
   let bills_cosponsored = null;
   let laws_enacted = 0;
@@ -200,50 +196,4 @@ async function buildRecord(s) {
   let misconduct = 0;
 
   if (bioguide && CONGRESS_API_KEY) {
-    bills_introduced = await fetchCount(`https://api.congress.gov/v3/member/${bioguide}/sponsored-legislation?api_key=${CONGRESS_API_KEY}&congress=${congress}`);
-    bills_cosponsored = await fetchCount(`https://api.congress.gov/v3/member/${bioguide}/cosponsored-legislation?api_key=${CONGRESS_API_KEY}&congress=${congress}`);
-    const enactedSponsored = await fetchLawsEnactedCurrent(bioguide, 'sponsored-legislation');
-    const enactedCosponsored = await fetchLawsEnactedCurrent(bioguide, 'cosponsored-legislation');
-    laws_enacted = enactedSponsored + enactedCosponsored;
-    const mv = await fetchMissedVotesCurrent(bioguide);
-    missed_votes = mv.missed_votes;
-    missed_votes_pct = mv.missed_votes_pct;
-    const cs = await fetchCommitteeScoreCurrent(bioguide);
-    committee_positions_score = cs.committee_positions_score;
-    bills_out_of_committee = await fetchBillsOutOfCommitteeCurrent(bioguide);
-  }
-
-  return {
-    name: s.name,
-    office: s.office || 'Senator',
-    party: s.party,
-    state: s.state,
-    missed_votes_pct,
-    bills_introduced,
-    bills_cosponsored,
-    laws_enacted,
-    committee_positions_score,
-    bills_out_of_committee,
-    misconduct
-  };
-}
-
-(async () => {
-  const records = await Promise.all(senators.map(buildRecord));
-  fs.mkdirSync(path.dirname(outFile), { recursive: true });
-  fs.writeFileSync(outFile, JSON.stringify(records, null, 2), 'utf-8');
-  console.log('Wrote', records.length, 'senators to', outFile);
-})();
-NODE
-
-      - name: Commit updated JSON
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add poliscope/public/senators-rankings.json
-          if git diff --cached --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "chore: update senators-rankings.json (current congress)"
-            git push
-          fi
+    bills_introduced = await fetchCount(`https://api.congress.gov/v3/member/${bioguide}/sponsored-legislation?api_key=${CONGRESS_API_KEY}&con
