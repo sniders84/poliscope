@@ -35,25 +35,88 @@ jobs:
             return res.json();
           }
 
+          // Congress.gov API base
+          const CONGRESS_API = "https://api.congress.gov/v3";
+
+          async function fetchCongressVotesPct(bioguideId) {
+            const res = await fetch(`${CONGRESS_API}/member/${bioguideId}/votes`);
+            const data = await res.json();
+            return data.memberVotes?.missedVotesPct ?? 0;
+          }
+
+          async function fetchBillsIntroduced(bioguideId) {
+            const res = await fetch(`${CONGRESS_API}/member/${bioguideId}/bills/introduced`);
+            const data = await res.json();
+            return data.pagination?.count ?? 0;
+          }
+
+          async function fetchBillsCosponsored(bioguideId) {
+            const res = await fetch(`${CONGRESS_API}/member/${bioguideId}/bills/cosponsored`);
+            const data = await res.json();
+            return data.pagination?.count ?? 0;
+          }
+
+          async function fetchLawsEnacted(bioguideId) {
+            const res = await fetch(`${CONGRESS_API}/member/${bioguideId}/bills/enacted`);
+            const data = await res.json();
+            return data.pagination?.count ?? 0;
+          }
+
+          async function fetchCommitteeScore(bioguideId) {
+            const res = await fetch(`${CONGRESS_API}/member/${bioguideId}/committees`);
+            const data = await res.json();
+            return data.committees?.length ?? 0; // replace with your scoring rubric
+          }
+
+          async function fetchBillsOutOfCommittee(bioguideId) {
+            const res = await fetch(`${CONGRESS_API}/member/${bioguideId}/bills`);
+            const data = await res.json();
+            return data.results?.filter(b => b.latestAction?.text.includes("Reported")).length ?? 0;
+          }
+
+          async function fetchGovtrackMisconduct(govtrackId) {
+            const res = await fetch(`https://www.govtrack.us/api/v2/person/${govtrackId}`);
+            const data = await res.json();
+            return data.misconduct ?? 0;
+          }
+
           async function build() {
             const legislators = await getJSON(LEGISLATORS_URL);
+
             const senators = legislators.filter(l =>
               l.terms.some(t => t.type === "sen" && t.end >= "2025-01-03")
             );
 
-            const rankings = senators.map(senator => ({
-              name: `${senator.name.first} ${senator.name.last}`,
-              office: "Senator",
-              party: senator.terms.at(-1).party,
-              state: senator.terms.at(-1).state,
-              missed_votes_pct: 0,
-              bills_introduced: 0,
-              bills_cosponsored: 0,
-              laws_enacted: 0,
-              committee_positions_score: 0,
-              bills_out_of_committee: 0,
-              misconduct: 0
-            }));
+            const rankings = [];
+            for (const senator of senators) {
+              const name = `${senator.name.first} ${senator.name.last}`;
+              const party = senator.terms.at(-1).party;
+              const state = senator.terms.at(-1).state;
+              const bioguideId = senator.id.bioguide;
+              const govtrackId = senator.id.govtrack;
+
+              const missed_votes_pct = await fetchCongressVotesPct(bioguideId);
+              const bills_introduced = await fetchBillsIntroduced(bioguideId);
+              const bills_cosponsored = await fetchBillsCosponsored(bioguideId);
+              const laws_enacted = await fetchLawsEnacted(bioguideId);
+              const committee_positions_score = await fetchCommitteeScore(bioguideId);
+              const bills_out_of_committee = await fetchBillsOutOfCommittee(bioguideId);
+              const misconduct = await fetchGovtrackMisconduct(govtrackId);
+
+              rankings.push({
+                name,
+                office: "Senator",
+                party,
+                state,
+                missed_votes_pct,
+                bills_introduced,
+                bills_cosponsored,
+                laws_enacted,
+                committee_positions_score,
+                bills_out_of_committee,
+                misconduct
+              });
+            }
 
             fs.writeFileSync(OUTPUT_PATH, JSON.stringify(rankings, null, 2));
             console.log(`✅ senators-rankings.json written with ${rankings.length} records`);
