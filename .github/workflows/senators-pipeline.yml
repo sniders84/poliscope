@@ -5,62 +5,26 @@
 import fs from "fs";
 
 const OUTPUT_PATH = "poliscope/public/senators-rankings.json";
-const LEGISLATORS_URL = "https://raw.githubusercontent.com/unitedstates/congress-legislators/master/legislators-current.json";
-const CONGRESS_API = "https://api.congress.gov/v3";
-const API_KEY = process.env.CONGRESS_API_KEY; // set this in repo secrets
-
-async function getJSON(url) {
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`Failed to fetch ${url}`);
-  return res.json();
-}
-
-async function fetchMissedVotesPct(bioguideId) {
-  const url = `${CONGRESS_API}/member/${bioguideId}/votes?congress=119&api_key=${API_KEY}`;
-  const res = await fetch(url);
-  if (!res.ok) {
-    console.error(`Congress.gov error for ${bioguideId}: ${res.status}`);
-    return 0;
-  }
-  const data = await res.json();
-  const votes = data.results ?? [];
-  const total = votes.length;
-  const missed = votes.filter(v => v.voteCast === "Not Voting").length;
-  return total > 0 ? ((missed / total) * 100).toFixed(2) : 0;
-}
 
 async function build() {
-  const legislators = await getJSON(LEGISLATORS_URL);
-  const senators = legislators.filter(l =>
-    l.terms.some(t => t.type === "sen" && t.end >= "2025-01-03")
-  );
-
-  const rankings = [];
-  for (const senator of senators) {
-    const name = `${senator.name.first} ${senator.name.last}`;
-    const party = senator.terms.at(-1).party;
-    const state = senator.terms.at(-1).state;
-    const bioguideId = senator.id.bioguide;
-
-    const missed_votes_pct = await fetchMissedVotesPct(bioguideId);
-
-    rankings.push({
-      name,
+  const rankings = [
+    {
+      name: "Test Senator",
       office: "Senator",
-      party,
-      state,
-      missed_votes_pct,
+      party: "I",
+      state: "NC",
+      missed_votes_pct: 0,
       bills_introduced: 0,
       bills_cosponsored: 0,
       laws_enacted: 0,
       committee_positions_score: 0,
       bills_out_of_committee: 0,
       misconduct: 0
-    });
-  }
+    }
+  ];
 
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(rankings, null, 2));
-  console.log(`✅ senators-rankings.json written with ${rankings.length} records`);
+  console.log("✅ senators-rankings.json written");
 }
 
 build().catch(err => {
@@ -68,4 +32,4 @@ build().catch(err => {
   process.exit(1);
 });
 EOF
-    node --experimental-fetch generate.mjs
+    node generate.mjs
