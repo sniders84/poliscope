@@ -2,8 +2,11 @@ name: update-rankings
 
 on:
   schedule:
-    - cron: "0 22 * * *" # 5pm EST daily
+    - cron: "0 22 * * *"
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build-rankings:
@@ -21,45 +24,10 @@ jobs:
       - name: Generate senators-rankings.json
         run: |
           mkdir -p poliscope/public
-          cat <<'EOF' > generate.mjs
-          import fs from "fs";
+          echo '[{"name":"Test Senator","office":"Senator"}]' > poliscope/public/senators-rankings.json
 
-          const OUTPUT_PATH = "poliscope/public/senators-rankings.json";
-
-          async function build() {
-            // Minimal working output
-            const rankings = [
-              {
-                name: "Test Senator",
-                office: "Senator",
-                party: "I",
-                state: "NC",
-                missed_votes_pct: 0,
-                bills_introduced: 0,
-                bills_cosponsored: 0,
-                laws_enacted: 0,
-                committee_positions_score: 0,
-                bills_out_of_committee: 0,
-                misconduct: 0
-              }
-            ];
-
-            fs.writeFileSync(OUTPUT_PATH, JSON.stringify(rankings, null, 2));
-            console.log(`✅ senators-rankings.json written`);
-          }
-
-          build().catch(err => {
-            console.error("Script failed:", err);
-            process.exit(1);
-          });
-          EOF
-
-          node generate.mjs
-
-      - name: Commit and push updated rankings
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add poliscope/public/senators-rankings.json
-          git commit -m "Daily update senators-rankings.json" || echo "No changes to commit"
-          git push
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
