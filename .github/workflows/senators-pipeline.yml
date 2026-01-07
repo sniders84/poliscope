@@ -2,7 +2,7 @@ name: update-rankings
 
 on:
   schedule:
-    - cron: "0 22 * * *"  # 5pm EST daily (22 UTC = 5pm EST/EDT)
+    - cron: "0 22 * * *"  # 5pm EST daily
   workflow_dispatch:
 
 permissions:
@@ -18,7 +18,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"  # Updated to a more recent LTS version
+          node-version: "20"
 
       - name: Generate senators-rankings.json
         run: |
@@ -29,7 +29,6 @@ jobs:
 
           const OUTPUT_PATH = "poliscope/public/senators-rankings.json";
           const LEGISLATORS_URL = "https://unitedstates.github.io/congress-legislators/legislators-current.json";
-          const CONGRESS = 119;  // 119th Congress (2025-2027)
 
           async function getJSON(url) {
             const res = await fetch(url);
@@ -40,9 +39,11 @@ jobs:
           async function build() {
             const legislators = await getJSON(LEGISLATORS_URL);
 
-            // Filter for current senators in the 119th Congress
+            const currentDate = "2026-01-07";  // Today's date for reference
+
+            // Filter for current senators: have a "sen" term that is active now (end date > current date)
             const senators = legislators.filter(l =>
-              l.terms.some(t => t.type === "sen" && t.congress === CONGRESS)
+              l.terms.some(t => t.type === "sen" && t.end > currentDate)
             );
 
             const rankings = [];
@@ -52,7 +53,7 @@ jobs:
               const party = currentTerm.party;
               const state = currentTerm.state;
 
-              // Placeholders (real missed votes/misconduct require paid or complex APIs)
+              // Placeholders for metrics (can be filled later with APIs)
               const missed_votes_pct = 0;
               const misconduct = 0;
 
@@ -71,7 +72,7 @@ jobs:
               });
             }
 
-            // Optional: sort by name
+            // Sort alphabetically by name
             rankings.sort((a, b) => a.name.localeCompare(b.name));
 
             fs.writeFileSync(OUTPUT_PATH, JSON.stringify(rankings, null, 2));
