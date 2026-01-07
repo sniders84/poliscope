@@ -1,6 +1,5 @@
 // api/update-rankings.js
 
-// Safe fetch wrapper
 async function safeFetchJSON(url) {
   const res = await fetch(url, { headers: { Accept: "application/json" } });
   const text = await res.text();
@@ -12,7 +11,6 @@ async function safeFetchJSON(url) {
   }
 }
 
-// GovTrack roles for senators
 async function getGovTrackRoles() {
   const data = await safeFetchJSON("https://www.govtrack.us/api/v2/role?current=true&limit=600");
   return data?.objects || [];
@@ -22,7 +20,7 @@ async function buildRankings() {
   const roles = await getGovTrackRoles();
 
   const rankings = roles
-    .filter(role => role.role_type === "senator")
+    .filter(role => role.title === "Senator") // ✅ correct filter
     .map(role => {
       const person = role.person || {};
       const name = `${person.firstname || ""} ${person.lastname || ""}`.trim();
@@ -39,7 +37,7 @@ async function buildRankings() {
         bills_cosponsored: role.bills_cosponsored ?? 0,
         laws_enacted: role.bills_enacted ?? 0,
         committee_positions_score: role.committee_positions?.length ?? 0,
-        bills_out_of_committee: 0, // GovTrack doesn’t expose this directly
+        bills_out_of_committee: 0,
         misconduct: person.misconduct ?? 0,
       };
     });
