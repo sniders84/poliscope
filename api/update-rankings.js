@@ -1,30 +1,35 @@
 // api/update-rankings.js
-import fs from "fs";
 import path from "path";
 
+// Congress.gov base
 const BASE_URL = "https://api.congress.gov/v3";
-const API_KEY = "L3az0OJ7TiD0kHhf7g6XKauvHGE2yAvXvCodwaBB"; // your Congress.gov key
+const API_KEY = "L3az0OJ7TiD0kHhf7g6XKauvHGE2yAvXvCodwaBB"; // your key
 
-async function getJSON(pathSegment) {
-  const url = `${BASE_URL}/${pathSegment}?api_key=${API_KEY}&limit=250&format=json`;
+// Safe fetch wrapper: handles HTML error pages gracefully
+async function safeFetchJSON(url) {
   const res = await fetch(url);
-  if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
-  return res.json();
+  const text = await res.text();
+  try {
+    return JSON.parse(text);
+  } catch {
+    console.error("Non‑JSON response from", url, text.slice(0, 200));
+    return null;
+  }
 }
 
 async function getLegislationCount(bioguide, type) {
-  const data = await getJSON(`member/${bioguide}/${type}`);
+  const data = await safeFetchJSON(`${BASE_URL}/member/${bioguide}/${type}?api_key=${API_KEY}&limit=250&format=json`);
   return data?.pagination?.count ?? 0;
 }
 
 async function getLawsEnacted(bioguide) {
-  const data = await getJSON(`member/${bioguide}/sponsored-legislation`);
+  const data = await safeFetchJSON(`${BASE_URL}/member/${bioguide}/sponsored-legislation?api_key=${API_KEY}&limit=250&format=json`);
   if (!data?.results) return 0;
   return data.results.filter(b => b.latestAction?.action === "BecameLaw").length;
 }
 
 async function getCommitteeScore(bioguide) {
-  const data = await getJSON(`member/${bioguide}/committees`);
+  const data = await safeFetchJSON(`${BASE_URL}/member/${bioguide}/committees?api_key=${API_KEY}&limit=250&format=json`);
   return data?.results?.length ?? 0;
 }
 
@@ -87,8 +92,6 @@ async function buildRankings() {
 export default async function handler(req, res) {
   try {
     const rankings = await buildRankings();
-
-    // Return JSON directly (Vercel functions can’t persist files in /public)
     res.status(200).json(rankings);
   } catch (err) {
     console.error("Script failed:", err);
