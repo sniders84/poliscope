@@ -22,7 +22,7 @@ jobs:
       - name: Generate senators-rankings.json
         run: |
           mkdir -p poliscope/public
-          node <<'EOF'
+          cat <<'EOF' > generate.js
           import fs from "fs";
           import fetch from "node-fetch";
 
@@ -35,69 +35,42 @@ jobs:
             return res.json();
           }
 
-          async function fetchCongressVotesPct(senator) {
-            // TODO: Replace with real Congress.gov API call
-            return 0;
-          }
-          async function fetchBillsIntroduced(senator) { return 0; }
-          async function fetchBillsCosponsored(senator) { return 0; }
-          async function fetchLawsEnacted(senator) { return 0; }
-          async function fetchCommitteeScore(senator) { return 0; }
-          async function fetchBillsOutOfCommittee(senator) { return 0; }
-          async function fetchGovtrackMisconduct(govtrackId) { return 0; }
-
-          async function buildSenatorsRankings() {
+          async function build() {
             const legislators = await getJSON(LEGISLATORS_URL);
-
             const senators = legislators.filter(l =>
               l.terms.some(t => t.type === "sen" && t.end >= "2025-01-03")
             );
 
-            const rankings = [];
-
-            for (const senator of senators) {
-              const name = `${senator.name.first} ${senator.name.last}`;
-              const party = senator.terms[senator.terms.length - 1].party;
-              const state = senator.terms[senator.terms.length - 1].state;
-              const govtrackId = senator.id.govtrack;
-
-              const missed_votes_pct = await fetchCongressVotesPct(senator);
-              const bills_introduced = await fetchBillsIntroduced(senator);
-              const bills_cosponsored = await fetchBillsCosponsored(senator);
-              const laws_enacted = await fetchLawsEnacted(senator);
-              const committee_positions_score = await fetchCommitteeScore(senator);
-              const bills_out_of_committee = await fetchBillsOutOfCommittee(senator);
-              const misconduct = await fetchGovtrackMisconduct(govtrackId);
-
-              rankings.push({
-                name,
-                office: "Senator",
-                party,
-                state,
-                missed_votes_pct,
-                bills_introduced,
-                bills_cosponsored,
-                laws_enacted,
-                committee_positions_score,
-                bills_out_of_committee,
-                misconduct
-              });
-            }
+            const rankings = senators.map(senator => ({
+              name: `${senator.name.first} ${senator.name.last}`,
+              office: "Senator",
+              party: senator.terms.at(-1).party,
+              state: senator.terms.at(-1).state,
+              missed_votes_pct: 0,
+              bills_introduced: 0,
+              bills_cosponsored: 0,
+              laws_enacted: 0,
+              committee_positions_score: 0,
+              bills_out_of_committee: 0,
+              misconduct: 0
+            }));
 
             fs.writeFileSync(OUTPUT_PATH, JSON.stringify(rankings, null, 2));
-            console.log(`✅ senators-rankings.json updated at ${OUTPUT_PATH}`);
+            console.log(`✅ senators-rankings.json written with ${rankings.length} records`);
           }
 
-          buildSenatorsRankings().catch(err => {
+          build().catch(err => {
             console.error(err);
             process.exit(1);
           });
           EOF
+
+          node generate.js
 
       - name: Commit and push updated rankings
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add poliscope/public/senators-rankings.json
-          git commit -m "Daily update senators-rankings.json"
+          git commit -m "Daily update senators-rankings.json" || echo "No changes to commit"
           git push
