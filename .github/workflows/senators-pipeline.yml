@@ -4,47 +4,45 @@
           PROPUBLICA_API_KEY: ${{ secrets.PROPUBLICA_API_KEY }}
         run: |
           node - <<'NODE'
-          const fs = require('fs');
-          const path = require('path');
+const fs = require('fs');
+const path = require('path');
 
-          const CONGRESS_API_KEY = process.env.CONGRESS_API_KEY;
-          const PROPUBLICA_API_KEY = process.env.PROPUBLICA_API_KEY;
+const CONGRESS_API_KEY = process.env.CONGRESS_API_KEY;
+const PROPUBLICA_API_KEY = process.env.PROPUBLICA_API_KEY;
 
-          // Detect base dir: prefer poliscope/public, fallback to public
-          const baseDirs = [
-            path.join(process.cwd(), 'poliscope', 'public'),
-            path.join(process.cwd(), 'public')
-          ];
-          let base = null;
-          for (const dir of baseDirs) {
-            if (fs.existsSync(path.join(dir, 'senators.json')) &&
-                fs.existsSync(path.join(dir, 'legislators-current.json'))) {
-              base = dir;
-              break;
-            }
-          }
-          if (!base) {
-            console.error('Missing input files. Checked both poliscope/public and public.');
-            process.exit(1);
-          }
+// Detect base dir: prefer poliscope/public, fallback to public
+const baseDirs = [
+  path.join(process.cwd(), 'poliscope', 'public'),
+  path.join(process.cwd(), 'public')
+];
+let base = null;
+for (const dir of baseDirs) {
+  if (
+    fs.existsSync(path.join(dir, 'senators.json')) &&
+    fs.existsSync(path.join(dir, 'legislators-current.json'))
+  ) {
+    base = dir;
+    break;
+  }
+}
+if (!base) {
+  console.error('Missing input files. Checked both poliscope/public and public.');
+  process.exit(1);
+}
 
-          const senatorsPath = path.join(base, 'senators.json');
-          const legislatorsPath = path.join(base, 'legislators-current.json');
-          const outFile = path.join(base, 'senators-rankings.json');
+const senatorsPath = path.join(base, 'senators.json');
+const legislatorsPath = path.join(base, 'legislators-current.json');
+const outFile = path.join(base, 'senators-rankings.json');
 
-          const senators = JSON.parse(fs.readFileSync(senatorsPath,'utf-8'));
-          const legislators = JSON.parse(fs.readFileSync(legislatorsPath,'utf-8'));
+const senators = JSON.parse(fs.readFileSync(senatorsPath, 'utf-8'));
+const legislators = JSON.parse(fs.readFileSync(legislatorsPath, 'utf-8'));
 
-          // … your buildRecord helpers go here …
+// … all your helper functions and buildRecord go here …
 
-          (async () => {
-            const records = [];
-            for (const s of senators) {
-              const rec = await buildRecord(s);
-              records.push(rec);
-              console.log('OK:', rec.name, rec.state || '', 'laws_enacted:', rec.laws_enacted);
-            }
-            fs.writeFileSync(outFile, JSON.stringify(records,null,2), 'utf-8');
-            console.log('Wrote', records.length, 'senators to', outFile);
-          })();
-          NODE
+(async () => {
+  const records = await Promise.all(senators.map(buildRecord));
+  fs.mkdirSync(path.dirname(outFile), { recursive: true });
+  fs.writeFileSync(outFile, JSON.stringify(records, null, 2), 'utf-8');
+  console.log('Wrote', records.length, 'senators to', outFile);
+})();
+NODE
