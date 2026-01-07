@@ -21,6 +21,8 @@ jobs:
           node-version: "20"
 
       - name: Generate senators-rankings.json
+        env:
+          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}  # Add your key here in GitHub Secrets
         run: |
           mkdir -p poliscope/public
 
@@ -29,33 +31,79 @@ jobs:
 
           const OUTPUT_PATH = "poliscope/public/senators-rankings.json";
           const LEGISLATORS_URL = "https://unitedstates.github.io/congress-legislators/legislators-current.json";
+          const BASE_URL = "https://api.congress.gov/v3";
+          const API_KEY = process.env.CONGRESS_API_KEY;
+          const CONGRESS = 119;
+
+          if (!API_KEY) {
+            console.error("CONGRESS_API_KEY secret is missing!");
+            process.exit(1);
+          }
 
           async function getJSON(url) {
-            const res = await fetch(url);
-            if (!res.ok) throw new Error(`Failed to fetch ${url}`);
+            const res = await fetch(url + (url.includes('?') ? '&' : '?') + 'api_key=' + API_KEY);
+            if (!res.ok) {
+              const text = await res.text();
+              throw new Error(`HTTP ${res.status} for ${url}: ${text}`);
+            }
             return res.json();
           }
 
           async function build() {
             const legislators = await getJSON(LEGISLATORS_URL);
 
-            const currentDate = "2026-01-07";  // Today's date for reference
-
-            // Filter for current senators: have a "sen" term that is active now (end date > current date)
+            const currentDate = new Date().toISOString().slice(0, 10);
             const senators = legislators.filter(l =>
               l.terms.some(t => t.type === "sen" && t.end > currentDate)
             );
 
             const rankings = [];
+
             for (const senator of senators) {
               const currentTerm = senator.terms.at(-1);
+              const bioguide = senator.id.bioguide;
               const name = `${senator.name.first} ${senator.name.last}`;
-              const party = currentTerm.party;
+              const party = currentTerm.party === "D" ? "Democrat" : currentTerm.party === "R" ? "Republican" : "Independent";
               const state = currentTerm.state;
 
-              // Placeholders for metrics (can be filled later with APIs)
-              const missed_votes_pct = 0;
-              const misconduct = 0;
+              // Fetch member-specific data from congress.gov
+              let missed_votes_pct = 0;
+              let bills_introduced = 0;
+              let bills_cosponsored = 0;
+              let committee_positions_score = 0;
+
+              try {
+                const memberData = await getJSON(`${BASE_URL}/member/${bioguide}`);
+
+                if (memberData.member?.sponsoredLegislation) {
+                  bills_introduced = memberData.member.sponsoredLegislation.count || 0;
+                }
+                if (memberData.member?.cosponsoredLegislation) {
+                  bills_cosponsored = memberData.member.cosponsoredLegislation.count || 0;
+                }
+
+                // Calculate missed votes % from roll call votes in current Congress
+                const votesUrl = `${BASE_URL}/member/${bioguide}/votes/${CONGRESS}`;
+                const votesData = await getJSON(votesUrl);
+                const votes = votesData.votes || [];
+                const totalVotes = votes.length;
+                const missed = votes.filter(v => !v.vote).length;  // No vote recorded = missed
+                missed_votes_pct = totalVotes > 0 ? Number(((missed / totalVotes) * 100).toFixed(2)) : 0;
+
+                // Committee positions score
+                const assignments = memberData.member?.committeeAssignments || [];
+                assignments.forEach(comm => {
+                  committee_positions_score += 1;  // +1 for each committee/subcommittee
+                  if (comm.role) {
+                    if (comm.role.toLowerCase().includes("chair")) committee_positions_score += 3;
+                    if (comm.role.toLowerCase().includes("ranking")) committee_positions_score += 2;
+                  }
+                });
+
+              } catch (err) {
+                console.warn(`Warning: Failed to fetch data for ${name} (${bioguide}):`, err.message);
+                // Keep defaults at 0 if API fails for one member
+              }
 
               rankings.push({
                 name,
@@ -63,20 +111,19 @@ jobs:
                 party,
                 state,
                 missed_votes_pct,
-                bills_introduced: 0,
-                bills_cosponsored: 0,
+                bills_introduced,
+                bills_cosponsored,
                 laws_enacted: 0,
-                committee_positions_score: 0,
+                committee_positions_score,
                 bills_out_of_committee: 0,
-                misconduct
+                misconduct: 0
               });
             }
 
-            // Sort alphabetically by name
             rankings.sort((a, b) => a.name.localeCompare(b.name));
 
             fs.writeFileSync(OUTPUT_PATH, JSON.stringify(rankings, null, 2));
-            console.log(`✅ senators-rankings.json written with ${rankings.length} records`);
+            console.log(`✅ senators-rankings.json generated with ${rankings.length} senators and REAL DATA!`);
           }
 
           build().catch(err => {
@@ -93,8 +140,8 @@ jobs:
           git config --local user.name "GitHub Actions"
           git add poliscope/public/senators-rankings.json
           if git diff --staged --quiet; then
-            echo "No changes to commit"
+            echo "No changes"
           else
-            git commit -m "Update senators-rankings.json [ci skip]"
+            git commit -m "Update senators-rankings.json with real data [ci skip]"
             git push
           fi
