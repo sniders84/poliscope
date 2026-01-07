@@ -17,19 +17,19 @@
             process.exit(1);
           }
 
-          async function getJSON(baseUrl) {
-            const url = `${baseUrl}${baseUrl.includes('?') ? '&' : '?'}api_key=${API_KEY}&limit=250&format=json`;
+          async function getJSON(path) {
+            const url = `${BASE_URL}/${path}?api_key=${API_KEY}&limit=250&format=json`;
             const res = await fetch(url);
             if (!res.ok) {
               const text = await res.text();
-              throw new Error(`HTTP ${res.status} for ${url}: ${text.substring(0, 200)}`);
+              throw new Error(`HTTP ${res.status} for ${url}: ${text.substring(0, 300)}`);
             }
             return res.json();
           }
 
-          async function getLegislationCount(bioguide, type) {  // "sponsored-legislation" or "cosponsored-legislation"
+          async function getLegislationCount(bioguide, type) {  // type = "sponsored-legislation" or "cosponsored-legislation"
             try {
-              const data = await getJSON(`${BASE_URL}/member/${bioguide}/${type}`);
+              const data = await getJSON(`member/${bioguide}/${type}`);
               return data.pagination?.count ?? 0;
             } catch (err) {
               console.warn(`Failed to fetch ${type} for ${bioguide}: ${err.message}`);
@@ -38,10 +38,7 @@
           }
 
           async function build() {
-            const legislators = await fetch(LEGISLATORS_URL).then(r => {
-              if (!r.ok) throw new Error("Failed to fetch legislators");
-              return r.json();
-            });
+            const legislators = await fetch(LEGISLATORS_URL).then(r => r.json());
 
             const currentDate = new Date().toISOString().slice(0, 10);
             const senators = legislators.filter(l =>
@@ -54,4 +51,42 @@
 
             for (const senator of senators) {
               const currentTerm = senator.terms.at(-1);
-              const bioguide = senator.id.bioguide
+              const bioguide = senator.id.bioguide;
+              const name = `${senator.name.first} ${senator.name.last}`;
+              const party = currentTerm.party === "Democrat" ? "Democrat" :
+                            currentTerm.party === "Republican" ? "Republican" : "Independent";
+              const state = currentTerm.state;
+
+              console.log(`Processing ${name} (${bioguide})`);
+
+              const bills_introduced = await getLegislationCount(bioguide, "sponsored-legislation");
+              const bills_cosponsored = await getLegislationCount(bioguide, "cosponsored-legislation");
+
+              rankings.push({
+                name,
+                office: "Senator",
+                party,
+                state,
+                missed_votes_pct: 0,
+                bills_introduced,
+                bills_cosponsored,
+                laws_enacted: 0,
+                committee_positions_score: 0,
+                bills_out_of_committee: 0,
+                misconduct: 0
+              });
+            }
+
+            rankings.sort((a, b) => a.name.localeCompare(b.name));
+
+            fs.writeFileSync(OUTPUT_PATH, JSON.stringify(rankings, null, 2));
+            console.log(`✅ senators-rankings.json generated with ${rankings.length} senators and real sponsorship/cosponsorship counts!`);
+          }
+
+          build().catch(err => {
+            console.error("Script failed:", err);
+            process.exit(1);
+          });
+          EOF
+
+          node generate.mjs
