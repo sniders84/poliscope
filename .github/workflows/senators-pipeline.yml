@@ -27,7 +27,7 @@
             return res.json();
           }
 
-          async function getLegislationCount(bioguide, type) {  // type = "sponsored-legislation" or "cosponsored-legislation"
+          async function getLegislationCount(bioguide, type) {  // "sponsored-legislation" or "cosponsored-legislation"
             try {
               const data = await getJSON(`member/${bioguide}/${type}`);
               return data.pagination?.count ?? 0;
