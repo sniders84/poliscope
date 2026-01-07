@@ -20,17 +20,12 @@ jobs:
           node-version: "18"
 
       - name: Generate senators-rankings.json
+        env:
+          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
+          PROPUBLICA_API_KEY: ${{ secrets.PROPUBLICA_API_KEY }}
         run: |
           node - <<'NODE'
-          const fs = require('fs');
-          const path = require('path');
-
-          const outFile = path.join(process.cwd(),'poliscope','public','senators-rankings.json');
-          const data = [{ test: "This proves the workflow parses and writes correctly." }];
-
-          fs.mkdirSync(path.dirname(outFile), { recursive: true });
-          fs.writeFileSync(outFile, JSON.stringify(data,null,2), 'utf-8');
-          console.log("Wrote test file to", outFile);
+          // ... your scraper logic exactly as you pasted above ...
           NODE
 
       - name: Commit updated JSON
@@ -38,4 +33,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add poliscope/public/senators-rankings.json
-          git diff --cached --quiet || git commit -m "update senators-rankings.json (test)" && git push
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: update senators-rankings.json (career totals)"
+            git push
+          fi
