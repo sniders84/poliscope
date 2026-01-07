@@ -1,10 +1,8 @@
 name: "Senators Rankings Pipeline (current congress)"
-
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 5 * * *"   # nightly at 05:00 UTC
-
+    - cron: "0 5 * * *" # nightly at 05:00 UTC
 jobs:
   build-and-commit:
     runs-on: ubuntu-latest
@@ -24,10 +22,9 @@ jobs:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
           PROPUBLICA_API_KEY: ${{ secrets.PROPUBLICA_API_KEY }}
         run: |
-          node - <<'NODE'
+          node <<'NODE'
 const fs = require('fs');
 const path = require('path');
-
 const CONGRESS_API_KEY = process.env.CONGRESS_API_KEY;
 const PROPUBLICA_API_KEY = process.env.PROPUBLICA_API_KEY;
 
@@ -189,7 +186,6 @@ async function fetchCommitteeScoreCurrent(bioguide) {
 
 async function buildRecord(s) {
   const bioguide = resolveBioguideFromSenator(s);
-
   let bills_introduced = null;
   let bills_cosponsored = null;
   let laws_enacted = 0;
@@ -233,6 +229,7 @@ async function buildRecord(s) {
   fs.mkdirSync(path.dirname(outFile), { recursive: true });
   fs.writeFileSync(outFile, JSON.stringify(records, null, 2), 'utf-8');
   console.log('Wrote', records.length, 'senators to', outFile);
+  console.log('BASE_DIR=' + base);
 })();
 NODE
 
@@ -240,7 +237,13 @@ NODE
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add poliscope/public/senators-rankings.json
+          BASE_DIR=$(grep "^BASE_DIR=" /tmp/node_output.txt || echo "poliscope/public")
+          BASE_DIR=${BASE_DIR#BASE_DIR=}
+          if [ -z "$BASE_DIR" ] || [ "$BASE_DIR" = "null" ]; then
+            BASE_DIR="poliscope/public"
+          fi
+          git add "$BASE_DIR/senators-rankings.json" || true
+          git add public/senators-rankings.json || true
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
