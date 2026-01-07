@@ -1,6 +1,4 @@
       - name: Generate senators-rankings.json
-        env:
-          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: |
           mkdir -p poliscope/public
 
@@ -9,33 +7,6 @@
 
           const OUTPUT_PATH = "poliscope/public/senators-rankings.json";
           const LEGISLATORS_URL = "https://unitedstates.github.io/congress-legislators/legislators-current.json";
-          const BASE_URL = "https://api.congress.gov/v3";
-          const API_KEY = process.env.CONGRESS_API_KEY;
-
-          if (!API_KEY) {
-            console.error("CONGRESS_API_KEY secret is missing!");
-            process.exit(1);
-          }
-
-          async function getJSON(path) {
-            const url = `${BASE_URL}/${path}?api_key=${API_KEY}&limit=250&format=json`;
-            const res = await fetch(url);
-            if (!res.ok) {
-              const text = await res.text();
-              throw new Error(`HTTP ${res.status} for ${url}: ${text.substring(0, 300)}`);
-            }
-            return res.json();
-          }
-
-          async function getLegislationCount(bioguide, type) {  // "sponsored-legislation" or "cosponsored-legislation"
-            try {
-              const data = await getJSON(`member/${bioguide}/${type}`);
-              return data.pagination?.count ?? 0;
-            } catch (err) {
-              console.warn(`Failed to fetch ${type} for ${bioguide}: ${err.message}`);
-              return 0;
-            }
-          }
 
           async function build() {
             const legislators = await fetch(LEGISLATORS_URL).then(r => r.json());
@@ -51,36 +22,62 @@
 
             for (const senator of senators) {
               const currentTerm = senator.terms.at(-1);
-              const bioguide = senator.id.bioguide;
+              const govtrackId = senator.id.govtrack;
+              const bioguide = senator.id.bioguide;  // Not used now, but available
               const name = `${senator.name.first} ${senator.name.last}`;
               const party = currentTerm.party === "Democrat" ? "Democrat" :
                             currentTerm.party === "Republican" ? "Republican" : "Independent";
               const state = currentTerm.state;
 
-              console.log(`Processing ${name} (${bioguide})`);
+              // Fetch GovTrack individual page for current stats
+              const pageUrl = `https://www.govtrack.us/congress/members/${senator.name.last.toLowerCase().replace(/ /g, '_')}_${senator.name.first.toLowerCase().replace(/ /g, '_')}/${govtrackId}`;
+              let missed_votes_pct = 0;
+              let bills_introduced = 0;
+              let bills_cosponsored = 0;
+              let committee_positions_score = 0;  // Proxy from committees or leadership
 
-              const bills_introduced = await getLegislationCount(bioguide, "sponsored-legislation");
-              const bills_cosponsored = await getLegislationCount(bioguide, "cosponsored-legislation");
+              try {
+                const res = await fetch(pageUrl);
+                const text = await res.text();
+
+                // Parse missed votes (lifetime or current - take the %)
+                const missedMatch = text.match(/missed \\d+ of \\d+ roll call votes \\(([\\d.]+)%\\)/);
+                if (missedMatch) missed_votes_pct = parseFloat(missedMatch[1]);
+
+                // Bills introduced (recent or count from "introduced bills" section)
+                const introducedMatch = text.match(/Recently introduced bills \\(119th Congress\\):.*?(\\d+) bills?/s);
+                if (introducedMatch) bills_introduced = parseInt(introducedMatch[1]) || 0;
+
+                // Cosponsored - harder, approximate from text or set to 0 if not easy
+                // For now, placeholder - GovTrack doesn't have direct current cosponsored count on page
+
+                console.log(`Processed ${name}: missed ${missed_votes_pct}%, introduced ${bills_introduced}`);
+              } catch (err) {
+                console.warn(`Failed to fetch/parse stats for ${name}: ${err.message}`);
+              }
 
               rankings.push({
                 name,
                 office: "Senator",
                 party,
                 state,
-                missed_votes_pct: 0,
+                missed_votes_pct: Number(missed_votes_pct.toFixed(2)),
                 bills_introduced,
                 bills_cosponsored,
                 laws_enacted: 0,
-                committee_positions_score: 0,
+                committee_positions_score,
                 bills_out_of_committee: 0,
                 misconduct: 0
               });
+
+              // Polite delay to avoid hammering the site
+              await new Promise(resolve => setTimeout(resolve, 1000));  // 1 second delay
             }
 
             rankings.sort((a, b) => a.name.localeCompare(b.name));
 
             fs.writeFileSync(OUTPUT_PATH, JSON.stringify(rankings, null, 2));
-            console.log(`✅ senators-rankings.json generated with ${rankings.length} senators and real sponsorship/cosponsorship counts!`);
+            console.log(`✅ senators-rankings.json generated with real missed votes and introduced bills from GovTrack!`);
           }
 
           build().catch(err => {
