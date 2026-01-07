@@ -18,11 +18,12 @@ jobs:
           node-version: "18"
 
       - name: Generate senators-rankings.json
+        id: generate
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
           PROPUBLICA_API_KEY: ${{ secrets.PROPUBLICA_API_KEY }}
         run: |
-          node > node_output.txt <<'NODE'
+          node <<'NODE'
 const fs = require('fs');
 const path = require('path');
 
@@ -208,7 +209,7 @@ async function fetchCommitteeScoreCurrent(bioguide) {
     const t = (c.title || '').toLowerCase();
     if (t.includes('chair')) score += 5;
     else if (t.includes('ranking')) score += 4;
-    else if (t.includes('vice chair')) score += 3;
+    else if (t.includes('vice')) score += 3;
     else score += 1;
   });
 
@@ -265,7 +266,10 @@ async function buildRecord(s) {
   fs.mkdirSync(path.dirname(outFile), { recursive: true });
   fs.writeFileSync(outFile, JSON.stringify(records, null, 2), 'utf-8');
   console.log(`Wrote ${records.length} senators to ${outFile}`);
-  console.log('BASE_DIR=' + base);
+
+  // Set output for next step
+  const relativeBase = path.relative(process.cwd(), base);
+  console.log(`::set-output name=base_dir::${relativeBase}`);
 })();
 NODE
 
@@ -274,14 +278,14 @@ NODE
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          BASE_DIR=$(grep "^BASE_DIR=" node_output.txt | cut -d= -f2 || echo "poliscope/public")
-          if [ -z "$BASE_DIR" ] || [ "$BASE_DIR" = "null" ]; then
+          BASE_DIR="${{ steps.generate.outputs.base_dir }}"
+          if [ -z "$BASE_DIR" ]; then
             BASE_DIR="poliscope/public"
           fi
 
           echo "Using BASE_DIR: $BASE_DIR"
 
-          git add "${BASE_DIR}/senators-rankings.json" || true
+          git add "${BASE_DIR}/senators-rankings.json"
           git add public/senators-rankings.json || true
 
           if git diff --staged --quiet; then
