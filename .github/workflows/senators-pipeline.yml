@@ -23,14 +23,225 @@ jobs:
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
           PROPUBLICA_API_KEY: ${{ secrets.PROPUBLICA_API_KEY }}
+        shell: bash
         run: |
+          set -euo pipefail
           node - <<'NODE'
-          console.log("Workflow is parsing correctly.");
-          NODE
+          const fs = require('fs');
+          const path = require('path');
+
+          const CONGRESS_API_KEY = process.env.CONGRESS_API_KEY;
+          const PROPUBLICA_API_KEY = process.env.PROPUBLICA_API_KEY;
+
+          // Input files under poliscope/public
+          const senatorsPath = path.join(process.cwd(), 'poliscope', 'public', 'senators.json');
+          const legislatorsPath = path.join(process.cwd(), 'poliscope', 'public', 'legislators-current.json');
+
+          const senators = JSON.parse(fs.readFileSync(senatorsPath,'utf-8'));
+          const legislators = JSON.parse(fs.readFileSync(legislatorsPath,'utf-8'));
+
+          function yearToCongress(year){ return Math.floor((year-1789)/2)+1; }
+          function currentCongress(){ return yearToCongress(new Date().getUTCFullYear()); }
+
+          const bioguideMap = {};
+          const govtrackMap = {};
+          const termsByBioguide = {};
+          legislators.forEach(l=>{
+            const id=l?.id?.bioguide;
+            if(!id) return;
+            termsByBioguide[id]=Array.isArray(l?.terms)?l.terms:[];
+            const full=l?.name?.official_full||'';
+            const first=l?.name?.first||'';
+            const last=l?.name?.last||'';
+            const state=(l?.terms||[]).slice(-1)[0]?.state||'';
+            const keys=[full,`${first} ${last}`].filter(Boolean).map(k=>k.toLowerCase());
+            keys.forEach(k=>{
+              bioguideMap[k]=id;
+              if(state) bioguideMap[`${k} (${state})`]=id;
+            });
+            if(l?.id?.govtrack){ govtrackMap[id]=l.id.govtrack; }
+          });
+
+          async function fetchJSON(url,headers={}) {
+            try { const res = await fetch(url,{headers}); if (!res.ok) return null; return res.json(); }
+            catch { return null; }
+          }
+
+          async function fetchCount(url){
+            const data=await fetchJSON(url);
+            return data?.pagination?.count ?? null;
+          }
+
+          function congressRangeForMember(bioguide){
+            const terms=termsByBioguide[bioguide]||[];
+            if(terms.length===0) return {start:93,end:currentCongress()};
+            const years=terms.flatMap(t=>{
+              const ys=[]; const s=parseInt(String(t.start).slice(0,4),10);
+              const e=parseInt(String(t.end).slice(0,4),10);
+              if(Number.isInteger(s)) ys.push(s);
+              if(Number.isInteger(e)) ys.push(e);
+              return ys;
+            });
+            const minYear=Math.min(...years);
+            const maxYear=Math.max(...years);
+            return {start:yearToCongress(minYear),end:Math.max(yearToCongress(maxYear), currentCongress())};
+          }
+
+          function textIsBecameLaw(txt){
+            if(!txt) return false;
+            const t=String(txt).toLowerCase();
+            return t.includes('became law')||t.includes('became public law')||t.includes('became private law');
+          }
+
+          async function fetchLawsEnactedCareer(bioguide,type='sponsored-legislation'){
+            const {start,end}=congressRangeForMember(bioguide);
+            let enacted=0;
+            for(let cn=start;cn<=end;cn++){
+              let offset=0; const limit=250;
+              while(true){
+                const url=`https://api.congress.gov/v3/member/${bioguide}/${type}?api_key=${CONGRESS_API_KEY}&limit=${limit}&offset=${offset}&congress=${cn}`;
+                const d=await fetchJSON(url);
+                if(!d) break;
+                const key=type==='sponsored-legislation'?'sponsoredLegislation':'cosponsoredLegislation';
+                const items=d[key]||[];
+                for(const it of items){
+                  const latestText=(it?.latestAction?.text||'').toLowerCase();
+                  if(textIsBecameLaw(latestText)){ enacted++; continue; }
+                  const pl=it?.publicLawNumber||'';
+                  if(pl) enacted++;
+                }
+                if(items.length<limit) break;
+                offset+=limit;
+              }
+            }
+            return enacted;
+          }
+
+          async function fetchMissedVotesCareer(bioguide){
+            if(!PROPUBLICA_API_KEY) return {missed:null,pct:null};
+            const url=`https://api.propublica.org/congress/v1/members/${bioguide}.json`;
+            const headers={'X-API-Key':PROPUBLICA_API_KEY};
+            const data=await fetchJSON(url,headers);
+            const roles=data?.results?.[0]?.roles||[];
+            let missed=0,total=0;
+            roles.forEach(r=>{
+              missed+=r.missed_votes||0;
+              total+=r.total_votes||0;
+            });
+            const pct=total>0?Number(((missed/total)*100).toFixed(2)):null;
+            return {missed,pct};
+          }
+
+          async function fetchCommitteeScore(bioguide){
+            if(!PROPUBLICA_API_KEY) return null;
+            const url=`https://api.propublica.org/congress/v1/members/${bioguide}.json`;
+            const headers={'X-API-Key':PROPUBLICA_API_KEY};
+            const data=await fetchJSON(url,headers);
+            const roles=data?.results?.[0]?.roles||[];
+            let score=0;
+            roles.forEach(role=>{
+              const committees=role?.committees||[];
+              committees.forEach(c=>{
+                const title=(c.title||'').toLowerCase();
+                if(title.includes('chair')) score+=5;
+                else if(title.includes('ranking')) score+=4;
+                else if(title.includes('vice')) score+=3;
+                else score+=1;
+              });
+            });
+            return score;
+          }
+
+          async function fetchBillsOutOfCommittee(bioguide){
+            const {start,end}=congressRangeForMember(bioguide);
+            let count=0;
+            for(let cn=start;cn<=end;cn++){
+              let offset=0; const limit=250;
+              while(true){
+                const url=`https://api.congress.gov/v3/member/${bioguide}/sponsored-legislation?api_key=${CONGRESS_API_KEY}&limit=${limit}&offset=${offset}&congress=${cn}`;
+                const d=await fetchJSON(url);
+                if(!d) break;
+                const items=d.sponsoredLegislation||[];
+                for(const it of items){
+                  const latestText=(it?.latestAction?.text||'').toLowerCase();
+                  if(latestText.includes('floor consideration')) count++;
+                }
+                if(items.length<limit) break;
+                offset+=limit;
+              }
+            }
+            return count;
+          }
+
+          async function fetchMisconduct(govtrackId){
+            // Placeholder: wire to GovTrack source when available
+            return 0;
+          }
+
+          function resolveBioguideFromRecord(s){
+            const nameKey=(s.name||'').toLowerCase();
+            const state=(s.state||'').toUpperCase();
+            const key1=nameKey;
+            const key2=`${nameKey} (${state})`;
+            return bioguideMap[key1] || bioguideMap[key2] || null;
+          }
+
+          async function buildRecord(s){
+            const bioguide=resolveBioguideFromRecord(s);
+            const govtrackId=s.govtrack_id || (bioguide ? govtrackMap[bioguide] : null);
+            let bills_introduced=null,bills_cosponsored=null,laws_enacted=0,
+                not_vote={missed:null,pct:null},committee_positions=null,
+                bills_out_of_committee=null,misconduct=0;
+
+            if(bioguide && CONGRESS_API_KEY){
+              bills_introduced=await fetchCount(`https://api.congress.gov/v3/member/${bioguide}/sponsored-legislation?api_key=${CONGRESS_API_KEY}`);
+              bills_cosponsored=await fetchCount(`https://api.congress.gov/v3/member/${bioguide}/cosponsored-legislation?api_key=${CONGRESS_API_KEY}`);
+              const sponsored_enacted=await fetchLawsEnactedCareer(bioguide,'sponsored-legislation');
+              const cosponsored_enacted=await fetchLawsEnactedCareer(bioguide,'cosponsored-legislation');
+              laws_enacted=sponsored_enacted+cosponsored_enacted;
+              not_vote=await fetchMissedVotesCareer(bioguide);
+              committee_positions=await fetchCommitteeScore(bioguide);
+              bills_out_of_committee=await fetchBillsOutOfCommittee(bioguide);
+              misconduct=govtrackId?await fetchMisconduct(govtrackId):0;
+            }
+
+            return {
+              name:s.name,
+              office:s.office||'Senator',
+              party:s.party,
+              state:s.state,
+              not_vote,
+              bills_introduced,
+              bills_cosponsored,
+              laws_enacted,
+              committee_positions,
+              bills_out_of_committee,
+              misconduct
+            };
+          }
+
+          (async()=>{
+            const records=[];
+            for(const s of senators){
+              const rec=await buildRecord(s);
+              records.push(rec);
+              const bioguide=resolveBioguideFromRecord(s) || 'MISSING';
+              console.log('OK:', rec.name, rec.state || '', 'bioguide:', bioguide, 'laws_enacted:', rec.laws_enacted);
+            }
+            const outFile=path.join(process.cwd(),'poliscope','public','senators-rankings.json');
+            fs.writeFileSync(outFile, JSON.stringify(records,null,2), 'utf-8');
+            console.log('Wrote', records.length, 'senators to', outFile);
+          })();
+NODE
 
       - name: Commit updated JSON
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add public/senators-rankings.json
-          git diff --cached --quiet || git commit -m "update senators-rankings.json (career totals)" && git push
+          git add poliscope/public/senators-rankings.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: update senators-rankings.json (career totals)"
+            git push
+          fi
