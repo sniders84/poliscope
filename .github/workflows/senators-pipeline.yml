@@ -27,7 +27,7 @@ async function getJSON(path) {
   return res.json();
 }
 
-async function getLegislationCount(bioguide, type) {  // "sponsored-legislation" or "cosponsored-legislation"
+async function getLegislationCount(bioguide, type) {
   try {
     const data = await getJSON(`member/${bioguide}/${type}`);
     const count = data.pagination?.count ?? 0;
@@ -41,7 +41,6 @@ async function getLegislationCount(bioguide, type) {  // "sponsored-legislation"
 
 async function build() {
   const legislators = await fetch(LEGISLATORS_URL).then(r => r.json());
-
   const currentDate = new Date().toISOString().slice(0, 10);
   const senators = legislators.filter(l =>
     l.terms.some(t => t.type === "sen" && t.end > currentDate)
@@ -82,7 +81,7 @@ async function build() {
   rankings.sort((a, b) => a.name.localeCompare(b.name));
 
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(rankings, null, 2));
-  console.log(`✅ senators-rankings.json generated with ${rankings.length} senators and real sponsorship/cosponsorship counts!`);
+  console.log(`✅ senators-rankings.json generated with ${rankings.length} senators`);
 }
 
 build().catch(err => {
