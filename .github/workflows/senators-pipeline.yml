@@ -1,4 +1,6 @@
       - name: Generate senators-rankings.json
+        env:
+          PROPUBLICA_API_KEY: ${{ secrets.PROPUBLICA_API_KEY }}
         run: |
           mkdir -p poliscope/public
 
@@ -7,83 +9,63 @@
 
           const OUTPUT_PATH = "poliscope/public/senators-rankings.json";
           const LEGISLATORS_URL = "https://unitedstates.github.io/congress-legislators/legislators-current.json";
+          const API_KEY = process.env.PROPUBLICA_API_KEY;
+          const CONGRESS = "119"; // 119th
+
+          if (!API_KEY) {
+            console.error("PROPUBLICA_API_KEY secret missing!");
+            process.exit(1);
+          }
+
+          async function getJSON(url) {
+            const headers = { "X-API-Key": API_KEY };
+            const res = await fetch(url, { headers });
+            if (!res.ok) throw new Error(`API error: ${res.status}`);
+            return res.json();
+          }
 
           async function build() {
             const legislators = await fetch(LEGISLATORS_URL).then(r => r.json());
 
             const currentDate = new Date().toISOString().slice(0, 10);
-            const senators = legislators.filter(l =>
-              l.terms.some(t => t.type === "sen" && t.end > currentDate)
-            );
+            const senators = legislators.filter(l => l.terms.some(t => t.type === "sen" && t.end > currentDate));
 
-            console.log(`Found ${senators.length} current senators`);
+            // Get all current Senate members from ProPublica
+            const ppData = await getJSON(`https://api.propublica.org/congress/v1/${CONGRESS}/senate/members.json`);
+            const ppMembers = ppData.results[0].members;
 
-            const rankings = [];
-
-            for (const senator of senators) {
+            const rankings = senators.map(senator => {
               const currentTerm = senator.terms.at(-1);
-              const govtrackId = senator.id.govtrack;
               const name = `${senator.name.first} ${senator.name.last}`;
-              const party = currentTerm.party === "Democrat" ? "Democrat" :
-                            currentTerm.party === "Republican" ? "Republican" : "Independent";
+              const party = currentTerm.party === "Democrat" ? "Democrat" : currentTerm.party === "Republican" ? "Republican" : "Independent";
               const state = currentTerm.state;
 
-              // GovTrack member page URL (uses govtrack ID for reliability)
-              const pageUrl = `https://www.govtrack.us/congress/members/${govtrackId}`;
+              const ppMember = ppMembers.find(m => m.id === senator.id.bioguide) || {};
+              const role = ppMember.roles ? ppMember.roles[0] : {};
 
-              let missed_votes_pct = 0;
-              let bills_introduced = 0;
-              let bills_cosponsored = 0;
-
-              try {
-                console.log(`Fetching ${pageUrl}`);
-                const res = await fetch(pageUrl);
-                if (!res.ok) throw new Error(`HTTP ${res.status}`);
-                const text = await res.text();
-
-                // Missed votes % (current as of page load)
-                const missedMatch = text.match(/Missed Votes.*?<strong>([\d.]+)%/s);
-                if (missedMatch) missed_votes_pct = parseFloat(missedMatch[1]);
-
-                // Bills sponsored/introduced this Congress
-                const sponsoredMatch = text.match(/Sponsored Legislation.*?<strong>(\d+) bills and resolutions/s);
-                if (sponsoredMatch) bills_introduced = parseInt(sponsoredMatch[1], 10);
-
-                // Cosponsored (GovTrack shows count)
-                const cosponsoredMatch = text.match(/Cosponsored Legislation.*?<strong>(\d+) bills and resolutions/s);
-                if (cosponsoredMatch) bills_cosponsored = parseInt(cosponsoredMatch[1], 10);
-
-                console.log(`Processed ${name}: missed ${missed_votes_pct}%, introduced ${bills_introduced}, cosponsored ${bills_cosponsored}`);
-              } catch (err) {
-                console.warn(`Failed to fetch/parse stats for ${name} (${govtrackId}): ${err.message}`);
-              }
-
-              rankings.push({
+              return {
                 name,
                 office: "Senator",
                 party,
                 state,
-                missed_votes_pct: Number(missed_votes_pct.toFixed(2)),
-                bills_introduced,
-                bills_cosponsored,
-                laws_enacted: 0,
+                missed_votes_pct: role.missed_votes_pct || 0,
+                bills_introduced: role.bills_sponsored || 0,
+                bills_cosponsored: role.bills_cosponsored || 0,
+                laws_enacted: 0, // Not direct in API
                 committee_positions_score: 0,
                 bills_out_of_committee: 0,
                 misconduct: 0
-              });
-
-              // Polite 1-second delay (~2 minutes total run)
-              await new Promise(resolve => setTimeout(resolve, 1000));
-            }
+              };
+            });
 
             rankings.sort((a, b) => a.name.localeCompare(b.name));
 
             fs.writeFileSync(OUTPUT_PATH, JSON.stringify(rankings, null, 2));
-            console.log(`✅ senators-rankings.json generated with ${rankings.length} senators using real GovTrack stats!`);
+            console.log(`✅ Generated with ${rankings.length} senators and real current stats!`);
           }
 
           build().catch(err => {
-            console.error("Script failed:", err);
+            console.error("Failed:", err);
             process.exit(1);
           });
           EOF
