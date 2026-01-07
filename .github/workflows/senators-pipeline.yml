@@ -68,5 +68,4 @@ build().catch(err => {
   process.exit(1);
 });
 EOF
-
     node --experimental-fetch generate.mjs
