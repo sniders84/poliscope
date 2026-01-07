@@ -1,33 +1,66 @@
-name: update-rankings
+- name: Generate senators-rankings.json
+  run: |
+    mkdir -p poliscope/public
+    cat <<'EOF' > generate.mjs
+    import fs from "fs";
 
-on:
-  schedule:
-    - cron: "0 22 * * *"
-  workflow_dispatch:
+    const OUTPUT_PATH = "poliscope/public/senators-rankings.json";
+    const LEGISLATORS_URL = "https://raw.githubusercontent.com/unitedstates/congress-legislators/master/legislators-current.json";
+    const CONGRESS_API = "https://api.congress.gov/v3";
 
-permissions:
-  contents: write
+    async function getJSON(url) {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`Failed to fetch ${url}`);
+      return res.json();
+    }
 
-jobs:
-  build-rankings:
-    runs-on: ubuntu-latest
+    async function fetchMissedVotesPct(bioguideId) {
+      const res = await fetch(`${CONGRESS_API}/member/${bioguideId}/votes?congress=119`);
+      if (!res.ok) return 0;
+      const data = await res.json();
+      const total = data.pagination?.count ?? 0;
+      const missed = data.results?.filter(v => v.voteCast === "Not Voting").length ?? 0;
+      return total > 0 ? ((missed / total) * 100).toFixed(2) : 0;
+    }
 
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+    async function build() {
+      const legislators = await getJSON(LEGISLATORS_URL);
+      const senators = legislators.filter(l =>
+        l.terms.some(t => t.type === "sen" && t.end >= "2025-01-03")
+      );
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "18"
+      const rankings = [];
+      for (const senator of senators) {
+        const name = `${senator.name.first} ${senator.name.last}`;
+        const party = senator.terms.at(-1).party;
+        const state = senator.terms.at(-1).state;
+        const bioguideId = senator.id.bioguide;
 
-      - name: Generate senators-rankings.json
-        run: |
-          mkdir -p poliscope/public
-          echo '[{"name":"Test Senator","office":"Senator"}]' > poliscope/public/senators-rankings.json
+        const missed_votes_pct = await fetchMissedVotesPct(bioguideId);
 
-      - name: Push changes
-        uses: ad-m/github-push-action@v0.6.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: main
+        rankings.push({
+          name,
+          office: "Senator",
+          party,
+          state,
+          missed_votes_pct,
+          bills_introduced: 0,
+          bills_cosponsored: 0,
+          laws_enacted: 0,
+          committee_positions_score: 0,
+          bills_out_of_committee: 0,
+          misconduct: 0
+        });
+      }
+
+      fs.writeFileSync(OUTPUT_PATH, JSON.stringify(rankings, null, 2));
+      console.log(`✅ senators-rankings.json written with ${rankings.length} records`);
+    }
+
+    build().catch(err => {
+      console.error("Script failed:", err);
+      process.exit(1);
+    });
+    EOF
+
+    node generate.mjs
