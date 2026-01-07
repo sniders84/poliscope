@@ -1,15 +1,8 @@
 // generate.js
 import fs from "fs";
 
-const OUTPUT_PATH = "public/senators-rankings.json";  // ✅ fixed path
-const LEGISLATORS_URL = "https://unitedstates.github.io/congress-legislators/legislators-current.json";
-const BASE_URL = "https://api.congress.gov/v3";
-const API_KEY = process.env.CONGRESS_API_KEY;
-
-if (!API_KEY) {
-  console.error("❌ Missing CONGRESS_API_KEY in environment");
-  process.exit(1);
-}
+const OUTPUT_PATH = "public/senators-rankings.json";
+const BASE_URL = "https://www.govtrack.us/api/v2";
 
 async function safeFetch(url) {
   const res = await fetch(url);
@@ -20,50 +13,42 @@ async function safeFetch(url) {
   return res.json();
 }
 
-async function getLegislationCount(bioguide, type) {
-  const data = await safeFetch(`${BASE_URL}/member/${bioguide}/${type}?api_key=${API_KEY}&limit=250&format=json`);
+async function getBillsCount(query) {
+  const data = await safeFetch(`${BASE_URL}/bill?${query}`);
   return data?.pagination?.count ?? 0;
 }
 
-async function getMissedVotesPct(bioguide) {
-  const data = await safeFetch(`${BASE_URL}/member/${bioguide}/votes?api_key=${API_KEY}&limit=250&format=json`);
-  if (!data?.results) return 0;
-  const votes = data.results;
-  const total = votes.length;
-  const missed = votes.filter(v => v.voteCast === "Not Voting").length;
-  return total > 0 ? ((missed / total) * 100).toFixed(2) : 0;
-}
-
-async function getLawsEnacted(bioguide) {
-  const data = await safeFetch(`${BASE_URL}/member/${bioguide}/sponsored-legislation?api_key=${API_KEY}&limit=250&format=json`);
-  if (!data?.results) return 0;
-  return data.results.filter(b => b.latestAction?.action === "BecameLaw").length;
-}
-
 async function build() {
-  const legislators = await fetch(LEGISLATORS_URL).then(r => r.json());
-  const today = new Date().toISOString().slice(0, 10);
+  // Get all current senators
+  const roles = await safeFetch(`${BASE_URL}/role?current=true&role_type=senator`);
+  if (!roles?.objects) {
+    console.error("❌ Failed to fetch senators");
+    process.exit(1);
+  }
 
-  const senators = legislators.filter(l =>
-    l.terms.some(t => t.type === "sen" && t.end > today)
-  );
-
+  const senators = roles.objects;
   console.log(`Found ${senators.length} current senators`);
 
   const rankings = [];
-  for (const senator of senators) {
-    const term = senator.terms.at(-1);
-    const bioguide = senator.id.bioguide;
-    const name = `${senator.name.first} ${senator.name.last}`;
-    const party = term.party;
-    const state = term.state;
+  for (const role of senators) {
+    const person = role.person;
+    const id = person.id;
+    const name = `${person.firstname} ${person.lastname}`;
+    const party = role.party;
+    const state = role.state;
 
-    console.log(`Processing ${name} (${bioguide})`);
+    console.log(`Processing ${name} (${id})`);
 
-    const missed_votes_pct = await getMissedVotesPct(bioguide);
-    const bills_introduced = await getLegislationCount(bioguide, "sponsored-legislation");
-    const bills_cosponsored = await getLegislationCount(bioguide, "cosponsored-legislation");
-    const laws_enacted = await getLawsEnacted(bioguide);
+    // GovTrack stats
+    const missed_votes_pct = role.missed_votes_pct ?? 0;
+    const bills_introduced = await getBillsCount(`sponsor=${id}`);
+    const bills_cosponsored = await getBillsCount(`cosponsor=${id}`);
+    const laws_enacted = await getBillsCount(`sponsor=${id}&enacted=true`);
+
+    // Committee positions & misconduct (GovTrack has fields but may need mapping)
+    const committee_positions_score = role.committee?.length ?? 0;
+    const bills_out_of_committee = 0; // placeholder until mapped
+    const misconduct = person.misconduct ?? 0;
 
     rankings.push({
       name,
@@ -74,9 +59,9 @@ async function build() {
       bills_introduced,
       bills_cosponsored,
       laws_enacted,
-      committee_positions_score: 0, // placeholder until committee API wired
-      bills_out_of_committee: 0,    // placeholder
-      misconduct: 0                 // placeholder (GovTrack API)
+      committee_positions_score,
+      bills_out_of_committee,
+      misconduct
     });
   }
 
