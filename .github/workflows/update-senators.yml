@@ -1,0 +1,32 @@
+name: Update Senators Rankings
+
+on:
+  schedule:
+    - cron: "0 6 * * *"   # every day at 6 AM UTC
+  workflow_dispatch:       # allow manual runs
+
+jobs:
+  build-json:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install deps
+        run: npm install
+
+      - name: Generate senators-rankings.json
+        run: node scripts/updateSenators.js
+
+      - name: Commit and push
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/senators-rankings.json
+          git commit -m "Update senators-rankings.json"
+          git push
