@@ -22,6 +22,9 @@ jobs:
           npm install
           npm install node-fetch@2
 
+      - name: Export Congress.gov API key
+        run: echo "CONGRESS_API_KEY=${{ secrets.CONGRESS_API_KEY }}" >> $GITHUB_ENV
+
       - name: Generate senators-rankings.json
         run: node scripts/updateSenators.js
 
