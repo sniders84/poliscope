@@ -14,12 +14,13 @@ async function fetchJSON(url) {
 
 async function getSenators() {
   const data = await fetchJSON(`${BASE_URL}/member?api_key=${API_KEY}&format=json`);
-
-  // Defensive: Congress.gov may return members under "results" or "members"
   const members = data.results || data.members || [];
-  console.log("Raw members payload:", JSON.stringify(members, null, 2));
 
-  return members.filter(m => m.memberType === "Senator");
+  // Look inside terms.item for any Senate chamber
+  return members.filter(m =>
+    Array.isArray(m.terms?.item) &&
+    m.terms.item.some(term => term.chamber === "Senate")
+  );
 }
 
 async function buildSenator(member) {
