@@ -5,9 +5,15 @@ const path = require("path");
 const BASE = "https://api.congress.gov/v3";
 const API_KEY = process.env.CONGRESS_API_KEY;
 
+// Generic JSON fetch with headers
 async function safeFetchJSON(url) {
   try {
-    const res = await fetch(url);
+    const res = await fetch(url, {
+      headers: {
+        "User-Agent": "poliscope-bot/1.0",
+        "Accept": "application/json"
+      }
+    });
     if (!res.ok) {
       console.warn(`Skipping ${url} -> ${res.status}`);
       return {};
@@ -79,7 +85,7 @@ async function tallySponsored(id) {
       }
     }
 
-    const next = data.pagination?.next;
+    const next = data.results?.pagination?.next;
     if (!next) break;
     offset += limit;
   }
@@ -107,7 +113,7 @@ async function tallyCosponsored(id) {
       }
     }
 
-    const next = data.pagination?.next;
+    const next = data.results?.pagination?.next;
     if (!next) break;
     offset += limit;
   }
@@ -144,7 +150,6 @@ async function main() {
     console.log(`Built ${s.name} (${s.state})`);
   }
 
-  // ✅ Correct path: repo root + public/
   const filePath = path.join(process.cwd(), "public", "senators-rankings.json");
   fs.writeFileSync(filePath, JSON.stringify(results, null, 2));
   console.log(`Updated senators-rankings.json with ${results.length} current senators`);
