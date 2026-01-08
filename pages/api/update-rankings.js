@@ -1,7 +1,8 @@
 // /pages/api/update-rankings.js
+// Next.js API route for Vercel (Pages Router)
 
 const BASE_URL = "https://api.congress.gov/v3";
-const API_KEY = process.env.CONGRESS_API_KEY;
+const API_KEY = process.env.CONGRESS_API_KEY; // set in Vercel Environment Variables
 
 async function fetchJSON(url) {
   const res = await fetch(url);
@@ -14,10 +15,12 @@ async function fetchJSON(url) {
   }
 }
 
+// Get all members, then filter for Senators
 async function getSenators() {
   const data = await fetchJSON(`${BASE_URL}/members?api_key=${API_KEY}&format=json`);
   console.log("Raw members sample:", data?.results?.slice(0, 3));
-  return data?.results?.filter(m => m.chamber === "Senate") || [];
+  // Congress.gov often uses memberType for role
+  return data?.results?.filter(m => m.memberType === "Senator") || [];
 }
 
 async function buildSchema(member) {
@@ -45,7 +48,7 @@ async function buildSchema(member) {
 
   return {
     name: `${member.firstName} ${member.lastName}`,
-    office: member.chamber === "Senate" ? "Senator" : member.chamber,
+    office: "Senator",
     party: member.party,
     state: member.state,
     bills_introduced,
