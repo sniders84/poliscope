@@ -18,7 +18,9 @@ jobs:
           node-version: 18
 
       - name: Install deps
-        run: npm install
+        run: |
+          npm install
+          npm install node-fetch@2
 
       - name: Generate senators-rankings.json
         run: node scripts/updateSenators.js
