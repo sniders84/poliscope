@@ -1,9 +1,9 @@
 name: Update Senators Rankings
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:   # manual trigger
   schedule:
-    - cron: "0 0 * * 0" # weekly run
+    - cron: "0 0 * * 0"   # runs weekly at midnight Sunday
 
 permissions:
   contents: write
@@ -20,10 +20,10 @@ jobs:
         with:
           node-version: "18"
 
-      - name: Install deps
+      - name: Install dependencies
         run: npm install
 
-      - name: Run scraper
+      - name: Generate senators JSON
         run: node scripts/updateSenators.js
 
       - name: Commit changes
@@ -33,4 +33,3 @@ jobs:
           git add public/senators-rankings.json
           git commit -m "Update senators-rankings.json" || echo "No changes to commit"
           git push
-
