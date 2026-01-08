@@ -12,14 +12,15 @@ async function fetchJSON(url) {
   return res.json();
 }
 
-async function getCurrentMembers() {
+async function getSenators() {
   const data = await fetchJSON(`${BASE_URL}/member?api_key=${API_KEY}&format=json`);
   const members = data.results || data.members || [];
 
-  // Only include members with a current term (no endYear or endYear >= current year)
+  // Only include members with a current Senate term
   return members.filter(m =>
     Array.isArray(m.terms?.item) &&
     m.terms.item.some(term =>
+      term.chamber === "Senate" &&
       (!term.endYear || term.endYear >= new Date().getFullYear())
     )
   );
@@ -34,17 +35,16 @@ async function buildSenator(member) {
   const sponsoredData = await fetchJSON(`${BASE_URL}/member/${id}/sponsored-legislation?api_key=${API_KEY}&format=json`);
   const billsSponsored = sponsoredData.pagination?.count || 0;
   const becameLaw = sponsoredData.results?.filter(b => b.latestAction?.action === "BecameLaw").length || 0;
+  const floorConsideration = sponsoredData.results?.filter(b => b.latestAction?.action === "FloorConsideration").length || 0;
 
   const cosponsoredData = await fetchJSON(`${BASE_URL}/member/${id}/cosponsored-legislation?api_key=${API_KEY}&format=json`);
   const billsCosponsored = cosponsoredData.pagination?.count || 0;
-
-  const floorConsideration = sponsoredData.results?.filter(b => b.latestAction?.action === "FloorConsideration").length || 0;
 
   const committeesData = await fetchJSON(`${BASE_URL}/member/${id}/committees?api_key=${API_KEY}&format=json`);
   const committees = committeesData.results?.map(c => c.name) || [];
 
   return {
-    name: `${member.firstName} ${member.lastName}`,
+    name: member.name,
     office: "Senator",
     party: member.partyName,
     state: member.state,
@@ -59,13 +59,13 @@ async function buildSenator(member) {
 
 async function main() {
   try {
-    const members = await getCurrentMembers();
-    const data = await Promise.all(members.map(buildSenator));
+    const senators = await getSenators();
+    const data = await Promise.all(senators.map(buildSenator));
 
     const filePath = path.join(process.cwd(), "public", "senators-rankings.json");
     fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
 
-    console.log(`Updated senators-rankings.json with ${data.length} records`);
+    console.log(`Updated senators-rankings.json with ${data.length} current senators`);
   } catch (err) {
     console.error("Error updating senators-rankings.json:", err);
     process.exit(1);
