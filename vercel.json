@@ -1,0 +1,9 @@
+{
+  "crons": [
+    {
+      "path": "/api/update-rankings",
+      "schedule": "0 0 * * *",
+      "method": "GET"
+    }
+  ]
+}
