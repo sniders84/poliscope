@@ -1,79 +1,41 @@
 const fs = require('fs');
-const path = require('path');
-const fetch = require('node-fetch');
-const yaml = require('yaml');
+const fetch = require('node-fetch');  // GitHub Actions has node-fetch pre-installed in recent images
 
-async function updateSenators() {
-  const jsonPath = path.join(__dirname, '..', 'public', 'senators-rankings.json');
-  const data = fs.readFileSync(jsonPath, 'utf8');
-  let senators = JSON.parse(data);
+const jsonPath = 'senators-rankings.json';
+const senators = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
 
-  try {
-    console.log('Fetching current legislators mapping from unitedstates repo...');
-    const legislatorsRes = await fetch('https://raw.githubusercontent.com/unitedstates/congress-legislators/main/legislators-current.yaml');
-    if (!legislatorsRes.ok) throw new Error('Mapping fetch failed');
-    const yamlText = await legislatorsRes.text();
-    const legislators = yaml.parse(yamlText);
+const apiKey = process.env.CONGRESS_API_KEY || '';  // Optional header
+const headers = apiKey ? { 'X-API-Key': apiKey } : {};
 
-    const bioguideToGovtrack = {};
-    legislators.forEach(leg => {
-      if (leg.id?.bioguide) bioguideToGovtrack[leg.id.bioguide] = leg.id.govtrack;
-    });
+async function updateSenator(sen) {
+  const url = `https://api.congress.gov/v3/member/${sen.bioguideId}/sponsored-legislation?congress=119&limit=250`;
+  const res = await fetch(url, { headers });
+  if (!res.ok) {
+    console.log(`Error for ${sen.name}: ${res.status}`);
+    return;
+  }
+  const data = await res.json();
+  sen.sponsoredBills = data.pagination?.count || 0;
 
-    console.log('Trying to fetch 119th sponsorship stats from GovTrack...');
-    const statsUrl = 'https://www.govtrack.us/data/congress/119/stats/sponsorshipanalysis.json';
-    const statsRes = await fetch(statsUrl);
-    
-    if (statsRes.ok) {
-      const statsData = await statsRes.json();
-      console.log('Stats file found! Updating with real (early) counts...');
-      
-      senators.forEach(senator => {
-        const gtId = bioguideToGovtrack[senator.bioguideId];
-        if (gtId && statsData[gtId]) {
-          const s = statsData[gtId];
-          senator.sponsoredBills = s.sponsored || 0;
-          senator.cosponsoredBills = s.cosponsored || 0;
-          senator.becameLawBills = s.enacted || 0;
-        } else {
-          senator.sponsoredBills = 0;
-          senator.cosponsoredBills = 0;
-          senator.becameLawBills = 0;
-        }
-        // Amendments & votes still low
-        senator.sponsoredAmendments = 0;
-        senator.cosponsoredAmendments = 0;
-        senator.becameLawAmendments = 0;
-        senator.votes = 0;
-      });
-    } else {
-      console.log('Stats file not ready yet (normal for brand-new Congress). Setting all bill stats to 0...');
-      senators.forEach(senator => {
-        senator.sponsoredBills = 0;
-        senator.cosponsoredBills = 0;
-        senator.becameLawBills = 0;
-        senator.sponsoredAmendments = 0;
-        senator.cosponsoredAmendments = 0;
-        senator.becameLawAmendments = 0;
-        senator.votes = 0;
-      });
-    }
-  } catch (err) {
-    console.warn('Fetch error (likely early Congress—no data yet):', err.message);
-    console.log('Falling back to all zeros...');
-    senators.forEach(senator => {
-      senator.sponsoredBills = 0;
-      senator.cosponsoredBills = 0;
-      senator.becameLawBills = 0;
-      senator.sponsoredAmendments = 0;
-      senator.cosponsoredAmendments = 0;
-      senator.becameLawAmendments = 0;
-      senator.votes = 0;
-    });
+  // Cosponsored
+  const cosUrl = url.replace('sponsored-legislation', 'cosponsored-legislation');
+  const cosRes = await fetch(cosUrl, { headers });
+  if (cosRes.ok) {
+    const cosData = await cosRes.json();
+    sen.cosponsoredBills = cosData.pagination?.count || 0;
   }
 
-  fs.writeFileSync(jsonPath, JSON.stringify(senators, null, 2));
-  console.log('Update complete! Commit and push public/senators-rankings.json to see changes live.');
+  // Enacted: filter where becameLaw
+  // We'll add later if needed
 }
 
-updateSenators().catch(console.error);
+async function main() {
+  for (const sen of senators) {
+    await updateSenator(sen);
+    await new Promise(r => setTimeout(r, 500));  // Polite delay
+  }
+  fs.writeFileSync(jsonPath, JSON.stringify(senators, null, 2));
+  console.log('Updated!');
+}
+
+main().catch(console.error);
