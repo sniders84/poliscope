@@ -30,11 +30,11 @@ async function updateSenator(sen) {
       const items = data.sponsoredLegislation || [];
       items.forEach(item => {
         if (item.congress === 119) {
-          const type = (item.type || '').toLowerCase();
+          const number = (item.number || '').toLowerCase();
           const actionText = (item.latestAction?.text || '').toLowerCase();
-          if (type.includes('amendment')) {
+          if (number.startsWith('s.amdt.') || item.amendmentNumber) {
             sen.sponsoredAmendments++;
-            if (actionText.includes('became law') || actionText.includes('enacted')) sen.becameLawAmendments++;
+            if (actionText.includes('became law') || actionText.includes('enacted') || actionText.includes('agreed to')) sen.becameLawAmendments++;
           } else {
             sen.sponsoredBills++;
             if (actionText.includes('became law') || actionText.includes('enacted')) sen.becameLawBills++;
@@ -48,8 +48,8 @@ async function updateSenator(sen) {
       const cosItems = cosData.cosponsoredLegislation || [];
       cosItems.forEach(item => {
         if (item.congress === 119) {
-          const type = (item.type || '').toLowerCase();
-          if (type.includes('amendment')) {
+          const number = (item.number || '').toLowerCase();
+          if (number.startsWith('s.amdt.') || item.amendmentNumber) {
             sen.cosponsoredAmendments++;
           } else {
             sen.cosponsoredBills++;
@@ -58,19 +58,25 @@ async function updateSenator(sen) {
       });
     }
 
-    // Missed votes count from GovTrack scrape
+    // Missed votes count (scrape senate.gov votes and count "Not Voting" for this senator)
     sen.votes = 0;  // Missed count
-    try {
-      const gtUrl = `https://www.govtrack.us/congress/members/${sen.bioguideId}`;
-      const gtRes = await fetch(gtUrl);
-      if (gtRes.ok) {
-        const text = await gtRes.text();
-        const match = text.match(/Missed Votes<\/span>\s*<span[^>]*>(\d+)/);
-        if (match) sen.votes = parseInt(match[1], 10);
+    const totalVotes = 4;  // From senate.gov - update this manually when more votes happen
+    const voteUrls = [  // List of vote detail URLs from senate.gov
+      'https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00004.htm',
+      'https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00003.htm',
+      'https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00002.htm',
+      'https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00001.htm'
+    ];
+
+    for (const vUrl of voteUrls) {
+      const vRes = await fetch(vUrl);
+      if (vRes.ok) {
+        const vText = await vRes.text();
+        if (vText.includes(sen.name) && vText.includes('Not Voting')) sen.votes++;
       }
-    } catch (e) {
-      console.log(`GovTrack failed for ${sen.name}`);
     }
+
+    // If you want %, add: sen.missedPct = (sen.votes / totalVotes) * 100;
 
     console.log(`Updated ${sen.name}: sBills ${sen.sponsoredBills} sAmend ${sen.sponsoredAmendments} cBills ${sen.cosponsoredBills} cAmend ${sen.cosponsoredAmendments} becameLawB ${sen.becameLawBills} missed ${sen.votes}`);
   } catch (err) {
@@ -81,7 +87,7 @@ async function updateSenator(sen) {
 (async () => {
   for (const sen of senators) {
     await updateSenator(sen);
-    await new Promise(r => setTimeout(r, 1500));  // Polite delay
+    await new Promise(r => setTimeout(r, 1500));
   }
   fs.writeFileSync(jsonPath, JSON.stringify(senators, null, 2) + '\n');
   console.log('Schema fully updated!');
