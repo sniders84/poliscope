@@ -1,0 +1,7 @@
+{
+  "name": "poliscope",
+  "version": "1.0.0",
+  "scripts": {
+    "update-senators": "node scripts/updateSenators.js"
+  }
+}
