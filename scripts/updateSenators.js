@@ -67,7 +67,7 @@ async function tallySponsored(id) {
   while (true) {
     const url = `${BASE}/member/${id}/sponsored-legislation?api_key=${API_KEY}&format=json&offset=${offset}&limit=${limit}`;
     const data = await safeFetchJSON(url);
-    const items = data.results || [];
+    const items = data.legislation || data.results || [];
     if (items.length === 0) break;
 
     for (const item of items) {
@@ -99,7 +99,7 @@ async function tallyCosponsored(id) {
   while (true) {
     const url = `${BASE}/member/${id}/cosponsored-legislation?api_key=${API_KEY}&format=json&offset=${offset}&limit=${limit}`;
     const data = await safeFetchJSON(url);
-    const items = data.results || [];
+    const items = data.legislation || data.results || [];
     if (items.length === 0) break;
 
     for (const item of items) {
