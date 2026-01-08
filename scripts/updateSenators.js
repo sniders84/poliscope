@@ -5,7 +5,6 @@ const path = require("path");
 const BASE = "https://api.congress.gov/v3";
 const API_KEY = process.env.CONGRESS_API_KEY;
 
-// Generic JSON fetch
 async function safeFetchJSON(url) {
   try {
     const res = await fetch(url);
@@ -20,7 +19,6 @@ async function safeFetchJSON(url) {
   }
 }
 
-// Get current senators
 async function getSenatorsRoster() {
   const out = [];
   let offset = 0;
@@ -57,7 +55,6 @@ async function getSenatorsRoster() {
   return out;
 }
 
-// Tally sponsored legislation
 async function tallySponsored(id) {
   let offset = 0;
   const limit = 250;
@@ -67,7 +64,7 @@ async function tallySponsored(id) {
   while (true) {
     const url = `${BASE}/member/${id}/sponsored-legislation?api_key=${API_KEY}&format=json&offset=${offset}&limit=${limit}`;
     const data = await safeFetchJSON(url);
-    const items = data.legislation || data.results || [];
+    const items = data.legislation || (data.results?.legislation) || [];
     if (items.length === 0) break;
 
     for (const item of items) {
@@ -90,7 +87,6 @@ async function tallySponsored(id) {
   return { sponsoredBills, sponsoredAmendments, becameLawBills, becameLawAmendments };
 }
 
-// Tally cosponsored legislation
 async function tallyCosponsored(id) {
   let offset = 0;
   const limit = 250;
@@ -99,7 +95,7 @@ async function tallyCosponsored(id) {
   while (true) {
     const url = `${BASE}/member/${id}/cosponsored-legislation?api_key=${API_KEY}&format=json&offset=${offset}&limit=${limit}`;
     const data = await safeFetchJSON(url);
-    const items = data.legislation || data.results || [];
+    const items = data.legislation || (data.results?.legislation) || [];
     if (items.length === 0) break;
 
     for (const item of items) {
@@ -119,7 +115,6 @@ async function tallyCosponsored(id) {
   return { cosponsoredBills, cosponsoredAmendments };
 }
 
-// Build senator record
 async function buildRecord(s) {
   const sponsored = await tallySponsored(s.bioguideId);
   const cosponsored = await tallyCosponsored(s.bioguideId);
@@ -135,8 +130,8 @@ async function buildRecord(s) {
     cosponsoredAmendments: cosponsored.cosponsoredAmendments,
     becameLawBills: sponsored.becameLawBills,
     becameLawAmendments: sponsored.becameLawAmendments,
-    committees: [], // placeholder until committee membership endpoint is confirmed
-    votes: 0        // Congress.gov API does not expose per-senator vote totals
+    committees: [], // placeholder
+    votes: 0        // placeholder
   };
 }
 
@@ -149,7 +144,7 @@ async function main() {
     console.log(`Built ${s.name} (${s.state})`);
   }
 
-  const filePath = path.join(process.cwd(), "public", "senators-rankings.json");
+  const filePath = path.join(process.cwd(), "poliscope", "public", "senators-rankings.json");
   fs.writeFileSync(filePath, JSON.stringify(results, null, 2));
   console.log(`Updated senators-rankings.json with ${results.length} current senators`);
 }
