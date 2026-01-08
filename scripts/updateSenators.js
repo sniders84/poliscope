@@ -1,6 +1,7 @@
 // scripts/updateSenators.js
-import fs from "fs";
-import path from "path";
+const fs = require("fs");
+const path = require("path");
+const fetch = require("node-fetch"); // add to package.json deps
 
 const BASE_URL = "https://api.congress.gov/v3";
 const API_KEY = process.env.CONGRESS_API_KEY;
@@ -19,23 +20,18 @@ async function getSenators() {
 async function buildSenator(member) {
   const id = member.bioguideId;
 
-  // Votes
   const votesData = await fetchJSON(`${BASE_URL}/member/${id}/votes?api_key=${API_KEY}&format=json`);
   const votes = votesData.results?.length || 0;
 
-  // Sponsored bills
   const sponsoredData = await fetchJSON(`${BASE_URL}/member/${id}/sponsored-legislation?api_key=${API_KEY}&format=json`);
   const billsSponsored = sponsoredData.pagination?.count || 0;
   const becameLaw = sponsoredData.results?.filter(b => b.latestAction?.action === "BecameLaw").length || 0;
 
-  // Cosponsored bills
   const cosponsoredData = await fetchJSON(`${BASE_URL}/member/${id}/cosponsored-legislation?api_key=${API_KEY}&format=json`);
   const billsCosponsored = cosponsoredData.pagination?.count || 0;
 
-  // Floor consideration
   const floorConsideration = sponsoredData.results?.filter(b => b.latestAction?.action === "FloorConsideration").length || 0;
 
-  // Committees
   const committeesData = await fetchJSON(`${BASE_URL}/member/${id}/committees?api_key=${API_KEY}&format=json`);
   const committees = committeesData.results?.map(c => c.name) || [];
 
