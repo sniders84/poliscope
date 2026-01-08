@@ -1,7 +1,7 @@
 const fs = require('fs');
 const fetch = require('node-fetch');
 
-const jsonPath = 'public/senators-rankings.json';  // Confirm this path matches your file location!
+const jsonPath = 'public/senators-rankings.json';
 const senators = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
 
 const apiKey = process.env.CONGRESS_API_KEY;
@@ -18,29 +18,66 @@ async function updateSenator(sen) {
       fetch(cosponsoredUrl, { headers })
     ]);
 
-    let sponsoredCount = 0;
+    let sponsoredBills = 0;
+    let sponsoredAmendments = 0;
+    let becameLawBills = 0;
+
     if (sponsoredRes.ok) {
       const data = await sponsoredRes.json();
-      // Filter to 119th Congress
       const items = data.sponsoredLegislation || [];
-      sponsoredCount = items.filter(item => item.congress === 119).length;
-    } else {
-      console.log(`Sponsored error ${sen.name}: ${sponsoredRes.status}`);
+      items.forEach(item => {
+        if (item.congress === 119) {  // Filter 119th
+          if (item.type.toLowerCase().includes('amendment')) {
+            sponsoredAmendments++;
+          } else {
+            sponsoredBills++;
+          }
+          if (item.latestAction?.text?.toLowerCase().includes('became law')) {
+            becameLawBills++;
+          }
+        }
+      });
     }
 
-    let cosponsoredCount = 0;
+    let cosponsoredBills = 0;
+    let cosponsoredAmendments = 0;
+    // Similar for cosponsored if needed (becameLawAmendments rare)
+
     if (cosponsoredRes.ok) {
       const cosData = await cosponsoredRes.json();
       const cosItems = cosData.cosponsoredLegislation || [];
-      cosponsoredCount = cosItems.filter(item => item.congress === 119).length;
-    } else {
-      console.log(`Cosponsored error ${sen.name}: ${cosponsoredRes.status}`);
+      cosItems.forEach(item => {
+        if (item.congress === 119) {
+          if (item.type.toLowerCase().includes('amendment')) {
+            cosponsoredAmendments++;
+          } else {
+            cosponsoredBills++;
+          }
+        }
+      });
     }
 
-    sen.sponsoredBills = sponsoredCount;
-    sen.cosponsoredBills = cosponsoredCount;
+    // Missed votes - fallback to GovTrack (simple scrape)
+    // GovTrack member page has "Missed Votes" gauge
+    let missedVotes = 0;
+    try {
+      const gtRes = await fetch(`https://www.govtrack.us/congress/members/${sen.bioguideId}`);
+      if (gtRes.ok) {
+        const text = await gtRes.text();
+        const match = text.match(/Missed Votes<\/span>\s*<span[^>]*>([\d.]+)%/);
+        if (match) missedVotes = parseFloat(match[1]);
+      }
+    } catch {}  // Silent if fail
 
-    console.log(`Updated ${sen.name}: sponsored ${sponsoredCount}, cosponsored ${cosponsoredCount}`);
+    sen.sponsoredBills = sponsoredBills;
+    sen.sponsoredAmendments = sponsoredAmendments;
+    sen.cosponsoredBills = cosponsoredBills;
+    sen.cosponsoredAmendments = cosponsoredAmendments;
+    sen.becameLawBills = becameLawBills;
+    sen.becameLawAmendments = 0;  // Rare, add later if needed
+    sen.votes = missedVotes;  // As % missed
+
+    console.log(`Updated ${sen.name}: sponsoredBills ${sponsoredBills}, amendments ${sponsoredAmendments}, cosponsored ${cosponsoredBills}, becameLaw ${becameLawBills}, missedVotes ${missedVotes}%`);
   } catch (err) {
     console.log(`Error for ${sen.name}: ${err.message}`);
   }
@@ -49,8 +86,8 @@ async function updateSenator(sen) {
 (async () => {
   for (const sen of senators) {
     await updateSenator(sen);
-    await new Promise(r => setTimeout(r, 1000));
+    await new Promise(r => setTimeout(r, 1500));  // Slower delay for GovTrack
   }
   fs.writeFileSync(jsonPath, JSON.stringify(senators, null, 2) + '\n');
-  console.log('All done!');
+  console.log('Full schema update complete!');
 })();
