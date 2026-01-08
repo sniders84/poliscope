@@ -6,7 +6,6 @@ const BASE = "https://api.congress.gov/v3";
 const API_KEY = process.env.CONGRESS_API_KEY;
 const CONGRESS = 119; // current Congress
 
-// Generic JSON fetch with headers
 async function safeFetchJSON(url) {
   try {
     const res = await fetch(url, {
@@ -137,8 +136,8 @@ async function buildRecord(s) {
     cosponsoredAmendments: cosponsored.cosponsoredAmendments,
     becameLawBills: sponsored.becameLawBills,
     becameLawAmendments: sponsored.becameLawAmendments,
-    committees: [], // placeholder
-    votes: 0        // placeholder
+    committees: [],
+    votes: 0
   };
 }
 
