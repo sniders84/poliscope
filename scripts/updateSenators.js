@@ -1,7 +1,7 @@
 // scripts/updateSenators.js
 const fs = require("fs");
 const path = require("path");
-const fetch = require("node-fetch"); // add to package.json deps
+const fetch = require("node-fetch");
 
 const BASE_URL = "https://api.congress.gov/v3";
 const API_KEY = process.env.CONGRESS_API_KEY;
@@ -14,7 +14,12 @@ async function fetchJSON(url) {
 
 async function getSenators() {
   const data = await fetchJSON(`${BASE_URL}/member?api_key=${API_KEY}&format=json`);
-  return data.results.filter(m => m.memberType === "Senator");
+
+  // Defensive: Congress.gov may return members under "results" or "members"
+  const members = data.results || data.members || [];
+  console.log("Raw members payload:", JSON.stringify(members, null, 2));
+
+  return members.filter(m => m.memberType === "Senator");
 }
 
 async function buildSenator(member) {
