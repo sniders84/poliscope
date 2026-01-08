@@ -6964,3 +6964,8 @@ section > h3 {
   background-color: #005a9e; /* darker blue on hover */
   transform: translateY(-1px);
 }
+#rankings-leaderboard, #rankings-leaderboard tbody {
+  display: block;
+  max-height: none !important;
+  overflow: visible !important;
+}
