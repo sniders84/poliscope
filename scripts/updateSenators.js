@@ -6,14 +6,22 @@ const fetch = require("node-fetch");
 const BASE_URL = "https://api.congress.gov/v3";
 const API_KEY = process.env.CONGRESS_API_KEY;
 
-async function fetchJSON(url) {
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`Bad response ${res.status} from ${url}`);
-  return res.json();
+async function safeFetchJSON(url) {
+  try {
+    const res = await fetch(url);
+    if (!res.ok) {
+      console.warn(`Skipping ${url} → ${res.status}`);
+      return {};
+    }
+    return res.json();
+  } catch (err) {
+    console.warn(`Error fetching ${url}:`, err.message);
+    return {};
+  }
 }
 
 async function getSenators() {
-  const data = await fetchJSON(`${BASE_URL}/member?api_key=${API_KEY}&format=json`);
+  const data = await safeFetchJSON(`${BASE_URL}/member?api_key=${API_KEY}&format=json`);
   const members = data.results || data.members || [];
 
   // Only include members with a current Senate term
@@ -29,18 +37,18 @@ async function getSenators() {
 async function buildSenator(member) {
   const id = member.bioguideId;
 
-  const votesData = await fetchJSON(`${BASE_URL}/member/${id}/votes?api_key=${API_KEY}&format=json`);
+  const votesData = await safeFetchJSON(`${BASE_URL}/member/${id}/votes?api_key=${API_KEY}&format=json`);
   const votes = votesData.results?.length || 0;
 
-  const sponsoredData = await fetchJSON(`${BASE_URL}/member/${id}/sponsored-legislation?api_key=${API_KEY}&format=json`);
+  const sponsoredData = await safeFetchJSON(`${BASE_URL}/member/${id}/sponsored-legislation?api_key=${API_KEY}&format=json`);
   const billsSponsored = sponsoredData.pagination?.count || 0;
   const becameLaw = sponsoredData.results?.filter(b => b.latestAction?.action === "BecameLaw").length || 0;
   const floorConsideration = sponsoredData.results?.filter(b => b.latestAction?.action === "FloorConsideration").length || 0;
 
-  const cosponsoredData = await fetchJSON(`${BASE_URL}/member/${id}/cosponsored-legislation?api_key=${API_KEY}&format=json`);
+  const cosponsoredData = await safeFetchJSON(`${BASE_URL}/member/${id}/cosponsored-legislation?api_key=${API_KEY}&format=json`);
   const billsCosponsored = cosponsoredData.pagination?.count || 0;
 
-  const committeesData = await fetchJSON(`${BASE_URL}/member/${id}/committees?api_key=${API_KEY}&format=json`);
+  const committeesData = await safeFetchJSON(`${BASE_URL}/member/${id}/committees?api_key=${API_KEY}&format=json`);
   const committees = committeesData.results?.map(c => c.name) || [];
 
   return {
