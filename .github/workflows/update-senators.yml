@@ -24,6 +24,6 @@ jobs:
         run: |
           git config user.name "Data Bot"
           git config user.email "bot@electorate.app"
-          git add senators-rankings.json
-          git diff --quiet && echo "No changes" || git commit -m "Auto-update senators data $(date +'%Y-%m-%d')"
+          git add public/senators-rankings.json  # <-- match your path here
+          git diff --staged --quiet && echo "No changes" || git commit -m "Auto-update senators data $(date +'%Y-%m-%d')"
           git push
