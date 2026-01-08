@@ -30,7 +30,7 @@ jobs:
       - name: Generate senators-rankings.json
         run: node scripts/updateSenators.js
 
-         - name: Commit and push
+      - name: Commit and push
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
         run: |
