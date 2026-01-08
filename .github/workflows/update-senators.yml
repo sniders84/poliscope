@@ -12,7 +12,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
-          persist-credentials: false   # disable default GITHUB_TOKEN so PAT can be used
+          persist-credentials: false   # disable default GITHUB_TOKEN so PAT is used
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -22,13 +22,12 @@ jobs:
       - name: Install dependencies
         run: |
           npm install
-          # If your script still requires the older CommonJS version of fetch:
-          # npm install node-fetch@2
+          npm install cheerio
 
       - name: Generate senators-rankings.json
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
-        run: node ./scripts/updateSenators.js   # explicit relative path
+        run: node ./scripts/updateSenators.js
 
       - name: Commit and push if changed
         env:
