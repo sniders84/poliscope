@@ -1,16 +1,15 @@
 // scripts/updateSenators.js
 const fs = require("fs");
 const path = require("path");
-const fetch = require("node-fetch");
 
 const BASE_URL = "https://api.congress.gov/v3";
 const API_KEY = process.env.CONGRESS_API_KEY;
 
 async function safeFetchJSON(url) {
   try {
-    const res = await fetch(url);
+    const res = await fetch(url); // native fetch in Node 18+
     if (!res.ok) {
-      console.warn(`Skipping ${url} → ${res.status}`);
+      console.warn(`Skipping ${url} -> ${res.status}`);
       return {};
     }
     return res.json();
@@ -23,8 +22,6 @@ async function safeFetchJSON(url) {
 async function getSenators() {
   const data = await safeFetchJSON(`${BASE_URL}/member?api_key=${API_KEY}&format=json`);
   const members = data.results || data.members || [];
-
-  // Only include members with a current Senate term
   return members.filter(m =>
     Array.isArray(m.terms?.item) &&
     m.terms.item.some(term =>
@@ -37,26 +34,19 @@ async function getSenators() {
 async function buildSenator(member) {
   const id = member.bioguideId;
 
-  // Votes
   const votesData = await safeFetchJSON(`${BASE_URL}/member/${id}/votes?api_key=${API_KEY}&format=json`);
   const votes = votesData.results?.length || 0;
 
-  // Sponsored bills
   const sponsoredData = await safeFetchJSON(`${BASE_URL}/member/${id}/sponsored-legislation?api_key=${API_KEY}&format=json`);
   const billsSponsored = sponsoredData.pagination?.count || 0;
   const becameLaw = sponsoredData.results?.filter(b => b.latestAction?.action === "BecameLaw").length || 0;
   const floorConsideration = sponsoredData.results?.filter(b => b.latestAction?.action === "FloorConsideration").length || 0;
 
-  // Cosponsored bills
   const cosponsoredData = await safeFetchJSON(`${BASE_URL}/member/${id}/cosponsored-legislation?api_key=${API_KEY}&format=json`);
   const billsCosponsored = cosponsoredData.pagination?.count || 0;
 
-  // Committees
   const committeesData = await safeFetchJSON(`${BASE_URL}/member/${id}/committees?api_key=${API_KEY}&format=json`);
   const committees = committeesData.results?.map(c => c.name) || [];
-
-  // Misconduct score placeholder (Congress.gov doesn’t expose this directly)
-  const misconductScore = 0;
 
   return {
     name: member.name,
@@ -68,8 +58,7 @@ async function buildSenator(member) {
     billsCosponsored,
     floorConsideration,
     becameLaw,
-    committees,
-    misconductScore
+    committees
   };
 }
 
@@ -77,10 +66,8 @@ async function main() {
   try {
     const senators = await getSenators();
     const data = await Promise.all(senators.map(buildSenator));
-
     const filePath = path.join(process.cwd(), "public", "senators-rankings.json");
     fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
-
     console.log(`Updated senators-rankings.json with ${data.length} current senators`);
   } catch (err) {
     console.error("Error updating senators-rankings.json:", err);
