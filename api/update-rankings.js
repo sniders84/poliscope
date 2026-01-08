@@ -1,9 +1,7 @@
 // /api/update-rankings.js
-// Next.js API route for Vercel (Pages Router)
-// If you’re using App Router, rename to app/api/update-rankings/route.js and adjust export.
 
 const BASE_URL = "https://api.congress.gov/v3";
-const API_KEY = process.env.CONGRESS_API_KEY; // set in Vercel project settings
+const API_KEY = process.env.CONGRESS_API_KEY;
 
 async function fetchJSON(url) {
   const res = await fetch(url);
@@ -17,8 +15,7 @@ async function fetchJSON(url) {
 }
 
 async function getSenators() {
-  const data = await fetchJSON(`${BASE_URL}/member?api_key=${API_KEY}&format=json`);
-  // Debug: log first few entries to confirm structure
+  const data = await fetchJSON(`${BASE_URL}/members?api_key=${API_KEY}&format=json`);
   console.log("Sample members:", data?.results?.slice(0, 3));
   return data?.results?.filter(m => m.chamber === "Senate") || [];
 }
@@ -26,21 +23,17 @@ async function getSenators() {
 async function buildSchema(member) {
   const id = member.memberId;
 
-  // Sponsored bills
   const sponsored = await fetchJSON(`${BASE_URL}/member/${id}/sponsored-legislation?api_key=${API_KEY}&format=json`);
   const bills_introduced = sponsored?.pagination?.count ?? 0;
   const laws_enacted = sponsored?.results?.filter(b => b.latestAction?.action === "BecameLaw").length ?? 0;
   const floor_consideration = sponsored?.results?.filter(b => b.actions?.some(a => a.action === "Floor Consideration")).length ?? 0;
 
-  // Cosponsored bills
   const cosponsored = await fetchJSON(`${BASE_URL}/member/${id}/cosponsored-legislation?api_key=${API_KEY}&format=json`);
   const bills_cosponsored = cosponsored?.pagination?.count ?? 0;
 
-  // Committees
   const committees = await fetchJSON(`${BASE_URL}/member/${id}/committees?api_key=${API_KEY}&format=json`);
   const committee_positions_score = committees?.results?.length ?? 0;
 
-  // Votes (missed votes)
   const votes = await fetchJSON(`${BASE_URL}/member/${id}/votes?api_key=${API_KEY}&format=json`);
   const missed_votes = votes?.results?.filter(v => v.voteCast === "Not Voting").length ?? 0;
 
