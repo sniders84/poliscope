@@ -203,6 +203,215 @@
     ],
     "votes": 0
   },
+  Block 1 (Alabama to California):
+JSON[
+  {
+    "name": "Katie Britt",
+    "state": "AL",
+    "party": "Republican",
+    "office": "Senator",
+    "bioguideId": "B001319",
+    "sponsoredBills": 0,
+    "sponsoredAmendments": 0,
+    "cosponsoredBills": 0,
+    "cosponsoredAmendments": 0,
+    "becameLawBills": 0,
+    "becameLawAmendments": 0,
+    "committees": [
+      "Committee on Appropriations",
+      "Committee on Banking, Housing, and Urban Affairs",
+      "Committee on Rules and Administration",
+      "Committee on the Judiciary"
+    ],
+    "votes": 0
+  },
+  {
+    "name": "Tommy Tuberville",
+    "state": "AL",
+    "party": "Republican",
+    "office": "Senator",
+    "bioguideId": "T000278",
+    "sponsoredBills": 0,
+    "sponsoredAmendments": 0,
+    "cosponsoredBills": 0,
+    "cosponsoredAmendments": 0,
+    "becameLawBills": 0,
+    "becameLawAmendments": 0,
+    "committees": [
+      "Committee on Agriculture, Nutrition, and Forestry",
+      "Committee on Armed Services",
+      "Committee on Health, Education, Labor, and Pensions",
+      "Committee on Veterans' Affairs",
+      "Special Committee on Aging"
+    ],
+    "votes": 0
+  },
+  {
+    "name": "Lisa Murkowski",
+    "state": "AK",
+    "party": "Republican",
+    "office": "Senator",
+    "bioguideId": "M001153",
+    "sponsoredBills": 0,
+    "sponsoredAmendments": 0,
+    "cosponsoredBills": 0,
+    "cosponsoredAmendments": 0,
+    "becameLawBills": 0,
+    "becameLawAmendments": 0,
+    "committees": [
+      "Committee on Appropriations",
+      "Committee on Energy and Natural Resources",
+      "Committee on Health, Education, Labor, and Pensions",
+      "Committee on Indian Affairs"
+    ],
+    "votes": 0
+  },
+  {
+    "name": "Dan Sullivan",
+    "state": "AK",
+    "party": "Republican",
+    "office": "Senator",
+    "bioguideId": "S001198",
+    "sponsoredBills": 0,
+    "sponsoredAmendments": 0,
+    "cosponsoredBills": 0,
+    "cosponsoredAmendments": 0,
+    "becameLawBills": 0,
+    "becameLawAmendments": 0,
+    "committees": [
+      "Committee on Armed Services",
+      "Committee on Commerce, Science, and Transportation",
+      "Committee on Environment and Public Works",
+      "Committee on Veterans' Affairs"
+    ],
+    "votes": 0
+  },
+  {
+    "name": "Ruben Gallego",
+    "state": "AZ",
+    "party": "Democrat",
+    "office": "Senator",
+    "bioguideId": "G000003",
+    "sponsoredBills": 0,
+    "sponsoredAmendments": 0,
+    "cosponsoredBills": 0,
+    "cosponsoredAmendments": 0,
+    "becameLawBills": 0,
+    "becameLawAmendments": 0,
+    "committees": [
+      "Committee on Banking, Housing, and Urban Affairs",
+      "Committee on Energy and Natural Resources",
+      "Committee on Homeland Security and Governmental Affairs",
+      "Committee on Veterans' Affairs"
+    ],
+    "votes": 0
+  },
+  {
+    "name": "Mark Kelly",
+    "state": "AZ",
+    "party": "Democrat",
+    "office": "Senator",
+    "bioguideId": "K000377",
+    "sponsoredBills": 0,
+    "sponsoredAmendments": 0,
+    "cosponsoredBills": 0,
+    "cosponsoredAmendments": 0,
+    "becameLawBills": 0,
+    "becameLawAmendments": 0,
+    "committees": [
+      "Committee on Armed Services",
+      "Committee on Environment and Public Works",
+      "Joint Economic Committee",
+      "Select Committee on Intelligence",
+      "Special Committee on Aging"
+    ],
+    "votes": 0
+  },
+  {
+    "name": "John Boozman",
+    "state": "AR",
+    "party": "Republican",
+    "office": "Senator",
+    "bioguideId": "B001236",
+    "sponsoredBills": 0,
+    "sponsoredAmendments": 0,
+    "cosponsoredBills": 0,
+    "cosponsoredAmendments": 0,
+    "becameLawBills": 0,
+    "becameLawAmendments": 0,
+    "committees": [
+      "Committee on Agriculture, Nutrition, and Forestry",
+      "Committee on Appropriations",
+      "Committee on Environment and Public Works",
+      "Committee on Rules and Administration",
+      "Committee on Veterans' Affairs"
+    ],
+    "votes": 0
+  },
+  {
+    "name": "Tom Cotton",
+    "state": "AR",
+    "party": "Republican",
+    "office": "Senator",
+    "bioguideId": "C001095",
+    "sponsoredBills": 0,
+    "sponsoredAmendments": 0,
+    "cosponsoredBills": 0,
+    "cosponsoredAmendments": 0,
+    "becameLawBills": 0,
+    "becameLawAmendments": 0,
+    "committees": [
+      "Committee on Armed Services",
+      "Committee on Energy and Natural Resources",
+      "Joint Economic Committee",
+      "Select Committee on Intelligence"
+    ],
+    "votes": 0
+  },
+  {
+    "name": "Adam Schiff",
+    "state": "CA",
+    "party": "Democrat",
+    "office": "Senator",
+    "bioguideId": "S001222",
+    "sponsoredBills": 0,
+    "sponsoredAmendments": 0,
+    "cosponsoredBills": 0,
+    "cosponsoredAmendments": 0,
+    "becameLawBills": 0,
+    "becameLawAmendments": 0,
+    "committees": [
+      "Committee on Agriculture, Nutrition, and Forestry",
+      "Committee on Environment and Public Works",
+      "Committee on Small Business and Entrepreneurship",
+      "Committee on the Judiciary"
+    ],
+    "votes": 0
+  },
+  {
+    "name": "Alex Padilla",
+    "state": "CA",
+    "party": "Democrat",
+    "office": "Senator",
+    "bioguideId": "P000145",
+    "sponsoredBills": 0,
+    "sponsoredAmendments": 0,
+    "cosponsoredBills": 0,
+    "cosponsoredAmendments": 0,
+    "becameLawBills": 0,
+    "becameLawAmendments": 0,
+    "committees": [
+      "Committee on Energy and Natural Resources",
+      "Committee on Environment and Public Works",
+      "Committee on Rules and Administration",
+      "Committee on the Budget",
+      "Committee on the Judiciary"
+    ],
+    "votes": 0
+  }
+]
+Block 2 (Colorado to Florida):
+JSON[
   {
     "name": "Michael Bennet",
     "state": "CO",
@@ -1005,26 +1214,6 @@
     "votes": 0
   },
   {
-    "name": "Jon Tester",
-    "state": "MT",
-    "party": "Democrat",
-    "office": "Senator",
-    "bioguideId": "T000464",
-    "sponsoredBills": 0,
-    "sponsoredAmendments": 0,
-    "cosponsoredBills": 0,
-    "cosponsoredAmendments": 0,
-    "becameLawBills": 0,
-    "becameLawAmendments": 0,
-    "committees": [
-      "Committee on Appropriations",
-      "Committee on Banking, Housing, and Urban Affairs",
-      "Committee on Indian Affairs",
-      "Committee on Veterans' Affairs"
-    ],
-    "votes": 0
-  },
-  {
     "name": "Steve Daines",
     "state": "MT",
     "party": "Republican",
@@ -1041,6 +1230,26 @@
       "Committee on Finance",
       "Committee on Foreign Relations",
       "Committee on Indian Affairs"
+    ],
+    "votes": 0
+  },
+  {
+    "name": "Tim Sheehy",
+    "state": "MT",
+    "party": "Republican",
+    "office": "Senator",
+    "bioguideId": "S001233",
+    "sponsoredBills": 0,
+    "sponsoredAmendments": 0,
+    "cosponsoredBills": 0,
+    "cosponsoredAmendments": 0,
+    "becameLawBills": 0,
+    "becameLawAmendments": 0,
+    "committees": [
+      "Committee on Appropriations",
+      "Committee on Banking, Housing, and Urban Affairs",
+      "Committee on Indian Affairs",
+      "Committee on Veterans' Affairs"
     ],
     "votes": 0
   },
@@ -1386,11 +1595,11 @@
     "votes": 0
   },
   {
-    "name": "Sherrod Brown",
+    "name": "Jon Husted",
     "state": "OH",
-    "party": "Democrat",
+    "party": "Republican",
     "office": "Senator",
-    "bioguideId": "B000944",
+    "bioguideId": "H001088",
     "sponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredBills": 0,
@@ -1959,6 +2168,45 @@
       "Committee on Banking, Housing, and Urban Affairs",
       "Committee on Commerce, Science, and Transportation",
       "Committee on Environment and Public Works"
+    ],
+    "votes": 0
+  },
+  {
+    "name": "Bernie Sanders",
+    "state": "VT",
+    "party": "Independent",
+    "office": "Senator",
+    "bioguideId": "S000033",
+    "sponsoredBills": 0,
+    "sponsoredAmendments": 0,
+    "cosponsoredBills": 0,
+    "cosponsoredAmendments": 0,
+    "becameLawBills": 0,
+    "becameLawAmendments": 0,
+    "committees": [
+      "Committee on Health, Education, Labor, and Pensions",
+      "Committee on the Budget",
+      "Committee on Environment and Public Works",
+      "Committee on Veterans' Affairs"
+    ],
+    "votes": 0
+  },
+  {
+    "name": "Peter Welch",
+    "state": "VT",
+    "party": "Democrat",
+    "office": "Senator",
+    "bioguideId": "W000800",
+    "sponsoredBills": 0,
+    "sponsoredAmendments": 0,
+    "cosponsoredBills": 0,
+    "cosponsoredAmendments": 0,
+    "becameLawBills": 0,
+    "becameLawAmendments": 0,
+    "committees": [
+      "Committee on Agriculture, Nutrition, and Forestry",
+      "Committee on Commerce, Science, and Transportation",
+      "Committee on Rules and Administration"
     ],
     "votes": 0
   }
