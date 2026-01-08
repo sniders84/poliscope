@@ -18,66 +18,61 @@ async function updateSenator(sen) {
       fetch(cosponsoredUrl, { headers })
     ]);
 
-    let sponsoredBills = 0;
-    let sponsoredAmendments = 0;
-    let becameLawBills = 0;
+    sen.sponsoredBills = 0;
+    sen.sponsoredAmendments = 0;
+    sen.cosponsoredBills = 0;
+    sen.cosponsoredAmendments = 0;
+    sen.becameLawBills = 0;
+    sen.becameLawAmendments = 0;
 
     if (sponsoredRes.ok) {
       const data = await sponsoredRes.json();
       const items = data.sponsoredLegislation || [];
       items.forEach(item => {
-        if (item.congress === 119) {  // Filter 119th
-          if (item.type.toLowerCase().includes('amendment')) {
-            sponsoredAmendments++;
+        if (item.congress === 119) {
+          const type = (item.type || '').toLowerCase();
+          const actionText = (item.latestAction?.text || '').toLowerCase();
+          if (type.includes('amendment')) {
+            sen.sponsoredAmendments++;
+            if (actionText.includes('became law') || actionText.includes('enacted')) sen.becameLawAmendments++;
           } else {
-            sponsoredBills++;
-          }
-          if (item.latestAction?.text?.toLowerCase().includes('became law')) {
-            becameLawBills++;
+            sen.sponsoredBills++;
+            if (actionText.includes('became law') || actionText.includes('enacted')) sen.becameLawBills++;
           }
         }
       });
     }
-
-    let cosponsoredBills = 0;
-    let cosponsoredAmendments = 0;
-    // Similar for cosponsored if needed (becameLawAmendments rare)
 
     if (cosponsoredRes.ok) {
       const cosData = await cosponsoredRes.json();
       const cosItems = cosData.cosponsoredLegislation || [];
       cosItems.forEach(item => {
         if (item.congress === 119) {
-          if (item.type.toLowerCase().includes('amendment')) {
-            cosponsoredAmendments++;
+          const type = (item.type || '').toLowerCase();
+          if (type.includes('amendment')) {
+            sen.cosponsoredAmendments++;
           } else {
-            cosponsoredBills++;
+            sen.cosponsoredBills++;
           }
         }
       });
     }
 
-    // Missed votes - fallback to GovTrack (simple scrape)
-    // GovTrack member page has "Missed Votes" gauge
-    let missedVotes = 0;
+    // Missed votes count from GovTrack scrape
+    sen.votes = 0;  // Missed count
     try {
-      const gtRes = await fetch(`https://www.govtrack.us/congress/members/${sen.bioguideId}`);
+      const gtUrl = `https://www.govtrack.us/congress/members/${sen.bioguideId}`;
+      const gtRes = await fetch(gtUrl);
       if (gtRes.ok) {
         const text = await gtRes.text();
-        const match = text.match(/Missed Votes<\/span>\s*<span[^>]*>([\d.]+)%/);
-        if (match) missedVotes = parseFloat(match[1]);
+        const match = text.match(/Missed Votes<\/span>\s*<span[^>]*>(\d+)/);
+        if (match) sen.votes = parseInt(match[1], 10);
       }
-    } catch {}  // Silent if fail
+    } catch (e) {
+      console.log(`GovTrack failed for ${sen.name}`);
+    }
 
-    sen.sponsoredBills = sponsoredBills;
-    sen.sponsoredAmendments = sponsoredAmendments;
-    sen.cosponsoredBills = cosponsoredBills;
-    sen.cosponsoredAmendments = cosponsoredAmendments;
-    sen.becameLawBills = becameLawBills;
-    sen.becameLawAmendments = 0;  // Rare, add later if needed
-    sen.votes = missedVotes;  // As % missed
-
-    console.log(`Updated ${sen.name}: sponsoredBills ${sponsoredBills}, amendments ${sponsoredAmendments}, cosponsored ${cosponsoredBills}, becameLaw ${becameLawBills}, missedVotes ${missedVotes}%`);
+    console.log(`Updated ${sen.name}: sBills ${sen.sponsoredBills} sAmend ${sen.sponsoredAmendments} cBills ${sen.cosponsoredBills} cAmend ${sen.cosponsoredAmendments} becameLawB ${sen.becameLawBills} missed ${sen.votes}`);
   } catch (err) {
     console.log(`Error for ${sen.name}: ${err.message}`);
   }
@@ -86,8 +81,8 @@ async function updateSenator(sen) {
 (async () => {
   for (const sen of senators) {
     await updateSenator(sen);
-    await new Promise(r => setTimeout(r, 1500));  // Slower delay for GovTrack
+    await new Promise(r => setTimeout(r, 1500));  // Polite delay
   }
   fs.writeFileSync(jsonPath, JSON.stringify(senators, null, 2) + '\n');
-  console.log('Full schema update complete!');
+  console.log('Schema fully updated!');
 })();
