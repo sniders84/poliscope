@@ -37,19 +37,26 @@ async function getSenators() {
 async function buildSenator(member) {
   const id = member.bioguideId;
 
+  // Votes
   const votesData = await safeFetchJSON(`${BASE_URL}/member/${id}/votes?api_key=${API_KEY}&format=json`);
   const votes = votesData.results?.length || 0;
 
+  // Sponsored bills
   const sponsoredData = await safeFetchJSON(`${BASE_URL}/member/${id}/sponsored-legislation?api_key=${API_KEY}&format=json`);
   const billsSponsored = sponsoredData.pagination?.count || 0;
   const becameLaw = sponsoredData.results?.filter(b => b.latestAction?.action === "BecameLaw").length || 0;
   const floorConsideration = sponsoredData.results?.filter(b => b.latestAction?.action === "FloorConsideration").length || 0;
 
+  // Cosponsored bills
   const cosponsoredData = await safeFetchJSON(`${BASE_URL}/member/${id}/cosponsored-legislation?api_key=${API_KEY}&format=json`);
   const billsCosponsored = cosponsoredData.pagination?.count || 0;
 
+  // Committees
   const committeesData = await safeFetchJSON(`${BASE_URL}/member/${id}/committees?api_key=${API_KEY}&format=json`);
   const committees = committeesData.results?.map(c => c.name) || [];
+
+  // Misconduct score placeholder (Congress.gov doesn’t expose this directly)
+  const misconductScore = 0;
 
   return {
     name: member.name,
@@ -61,7 +68,8 @@ async function buildSenator(member) {
     billsCosponsored,
     floorConsideration,
     becameLaw,
-    committees
+    committees,
+    misconductScore
   };
 }
 
