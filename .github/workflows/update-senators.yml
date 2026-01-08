@@ -15,7 +15,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20   # bump to 20 to satisfy Next.js engine requirement
 
       - name: Install deps
         run: |
@@ -31,6 +31,8 @@ jobs:
         run: node scripts/updateSenators.js
 
       - name: Commit and push
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
