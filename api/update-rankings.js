@@ -18,7 +18,9 @@ async function fetchJSON(url) {
 
 async function getSenators() {
   const data = await fetchJSON(`${BASE_URL}/member?api_key=${API_KEY}&format=json`);
-  return data?.results?.filter(m => m.role === "Senator") || [];
+  // Debug: log first few entries to confirm structure
+  console.log("Sample members:", data?.results?.slice(0, 3));
+  return data?.results?.filter(m => m.chamber === "Senate") || [];
 }
 
 async function buildSchema(member) {
