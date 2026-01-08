@@ -4,6 +4,7 @@ const path = require("path");
 
 const BASE = "https://api.congress.gov/v3";
 const API_KEY = process.env.CONGRESS_API_KEY;
+const CONGRESS = 119; // current Congress
 
 // Generic JSON fetch with headers
 async function safeFetchJSON(url) {
@@ -32,7 +33,7 @@ async function getSenatorsRoster() {
   const year = new Date().getFullYear();
 
   while (true) {
-    const url = `${BASE}/member?api_key=${API_KEY}&format=json&offset=${offset}&limit=${limit}`;
+    const url = `${BASE}/member?congress=${CONGRESS}&api_key=${API_KEY}&format=json&offset=${offset}&limit=${limit}`;
     const data = await safeFetchJSON(url);
     const members = data.results || data.members || [];
     if (members.length === 0) break;
@@ -53,7 +54,7 @@ async function getSenatorsRoster() {
       }
     }
 
-    const next = data.pagination?.next;
+    const next = data.results?.pagination?.next;
     if (!next) break;
     offset += limit;
   }
@@ -68,7 +69,7 @@ async function tallySponsored(id) {
   let becameLawBills = 0, becameLawAmendments = 0;
 
   while (true) {
-    const url = `${BASE}/member/${id}/sponsored-legislation?api_key=${API_KEY}&format=json&offset=${offset}&limit=${limit}`;
+    const url = `${BASE}/member/${id}/sponsored-legislation?congress=${CONGRESS}&api_key=${API_KEY}&format=json&offset=${offset}&limit=${limit}`;
     const data = await safeFetchJSON(url);
     const items = data.results?.legislation || [];
     if (items.length === 0) break;
@@ -99,7 +100,7 @@ async function tallyCosponsored(id) {
   let cosponsoredBills = 0, cosponsoredAmendments = 0;
 
   while (true) {
-    const url = `${BASE}/member/${id}/cosponsored-legislation?api_key=${API_KEY}&format=json&offset=${offset}&limit=${limit}`;
+    const url = `${BASE}/member/${id}/cosponsored-legislation?congress=${CONGRESS}&api_key=${API_KEY}&format=json&offset=${offset}&limit=${limit}`;
     const data = await safeFetchJSON(url);
     const items = data.results?.legislation || [];
     if (items.length === 0) break;
