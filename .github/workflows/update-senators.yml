@@ -2,8 +2,8 @@ name: Update Senators Rankings Data
 
 on:
   schedule:
-    - cron: '0 8 * * 1'  # Every Monday at 8AM UTC (adjust if needed)
-  workflow_dispatch:  # Manual run button
+    - cron: '0 8 * * 1'  # Every Monday at 8AM UTC
+  workflow_dispatch:
 
 jobs:
   update:
@@ -14,14 +14,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+      - name: Install node-fetch
+        run: npm install node-fetch@2  # Use v2 for require() support
       - name: Update data
         env:
-          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}  # Add this secret in GitHub repo settings
+          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: node scripts/update-senators.js
       - name: Commit and push if changed
         run: |
           git config user.name "Data Bot"
           git config user.email "bot@electorate.app"
           git add senators-rankings.json
-          git diff --quiet && echo "No changes" || git commit -m "Auto-update senators data $(date)"
+          git diff --quiet && echo "No changes" || git commit -m "Auto-update senators data $(date +'%Y-%m-%d')"
           git push
