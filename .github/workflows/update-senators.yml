@@ -1,32 +1,27 @@
-name: Update Senators Rankings
+name: Update Senators Rankings Data
 
 on:
-  workflow_dispatch:   # manual trigger
   schedule:
-    - cron: "0 0 * * 0"   # runs weekly at midnight Sunday
-
-permissions:
-  contents: write
+    - cron: '0 8 * * 1'  # Every Monday at 8AM UTC (adjust if needed)
+  workflow_dispatch:  # Manual run button
 
 jobs:
-  build:
+  update:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-
+      - uses: actions/checkout@v4
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: "18"
-
-      - name: Generate senators JSON
-        run: node scripts/updateSenators.js
-
-      - name: Commit changes
+          node-version: 20
+      - name: Update data
+        env:
+          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}  # Add this secret in GitHub repo settings
+        run: node scripts/update-senators.js
+      - name: Commit and push if changed
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add public/senators-rankings.json
-          git commit -m "Update senators-rankings.json" || echo "No changes to commit"
+          git config user.name "Data Bot"
+          git config user.email "bot@electorate.app"
+          git add senators-rankings.json
+          git diff --quiet && echo "No changes" || git commit -m "Auto-update senators data $(date)"
           git push
