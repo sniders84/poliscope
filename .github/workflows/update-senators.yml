@@ -6,15 +6,14 @@ on:
     branches:
       - main
   schedule:
-    - cron: "0 6 * * *" # optional: run daily at 6am UTC
+    - cron: "0 6 * * *"
 
 permissions:
-  contents: write   # ✅ allow pushing commits back to repo
+  contents: write
 
 jobs:
   build-json:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
