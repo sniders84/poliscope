@@ -12,14 +12,16 @@ async function fetchJSON(url) {
   return res.json();
 }
 
-async function getSenators() {
+async function getCurrentMembers() {
   const data = await fetchJSON(`${BASE_URL}/member?api_key=${API_KEY}&format=json`);
   const members = data.results || data.members || [];
 
-  // Look inside terms.item for any Senate chamber
+  // Only include members with a current term (no endYear or endYear >= current year)
   return members.filter(m =>
     Array.isArray(m.terms?.item) &&
-    m.terms.item.some(term => term.chamber === "Senate")
+    m.terms.item.some(term =>
+      (!term.endYear || term.endYear >= new Date().getFullYear())
+    )
   );
 }
 
@@ -57,8 +59,8 @@ async function buildSenator(member) {
 
 async function main() {
   try {
-    const senators = await getSenators();
-    const data = await Promise.all(senators.map(buildSenator));
+    const members = await getCurrentMembers();
+    const data = await Promise.all(members.map(buildSenator));
 
     const filePath = path.join(process.cwd(), "public", "senators-rankings.json");
     fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
