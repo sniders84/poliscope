@@ -12,7 +12,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
-          persist-credentials: false   # disable default GITHUB_TOKEN
+          persist-credentials: false   # disable default GITHUB_TOKEN so PAT can be used
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -28,7 +28,7 @@ jobs:
       - name: Generate senators-rankings.json
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
-        run: node scripts/updateSenators.js
+        run: node ./scripts/updateSenators.js   # explicit relative path
 
       - name: Commit and push if changed
         env:
