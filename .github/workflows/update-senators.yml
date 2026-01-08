@@ -1,45 +1,42 @@
 name: Update Senators Rankings
-
 on:
   schedule:
-    - cron: "0 6 * * *"   # every day at 6 AM UTC
-  workflow_dispatch:       # allow manual runs
-
+    - cron: "0 6 * * *" # every day at 6 AM UTC
+  workflow_dispatch: # allow manual runs
 jobs:
   build-json:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Allows push to the repository using GITHUB_TOKEN
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
-        with:
-          persist-credentials: false   # important: prevents bot token from overriding your PAT
+        uses: actions/checkout@v4
+        # Default persist-credentials: true is fine here, as we use GITHUB_TOKEN for push
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 20
 
       - name: Install dependencies
-        run: |
-          npm install
-          npm install node-fetch@2
+        run: npm ci  # More reliable and faster than npm install
 
-      - name: Export secrets
-        run: |
-          echo "CONGRESS_API_KEY=${{ secrets.CONGRESS_API_KEY }}" >> $GITHUB_ENV
-          echo "GH_PAT=${{ secrets.GH_PAT }}" >> $GITHUB_ENV
+      # Remove separate node-fetch@2 install if your script uses native fetch (Node 20+)
+      # If the script still requires node-fetch@2, keep: npm install node-fetch@2
 
       - name: Generate senators-rankings.json
+        env:
+          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: node scripts/updateSenators.js
 
-      - name: Commit and push
-        env:
-          GH_PAT: ${{ secrets.GH_PAT }}
+      - name: Commit and push if changed
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git remote remove origin
-          git remote add origin https://x-access-token:${GH_PAT}@github.com/${{ github.repository }}
           git add public/senators-rankings.json
-          git commit -m "Update senators-rankings.json" || echo "No changes to commit"
-          git push origin HEAD:main
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "Update senators-rankings.json"
+          git push
