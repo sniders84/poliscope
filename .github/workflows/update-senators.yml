@@ -1,46 +1,39 @@
-name: Update Senators Rankings
+name: build-json
 
 on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
   schedule:
-    - cron: "0 6 * * *"   # every day at 6 AM UTC
-  workflow_dispatch:       # manual runs
+    - cron: "0 6 * * *" # optional: run daily at 6am UTC
+
+permissions:
+  contents: write   # ✅ allow pushing commits back to repo
 
 jobs:
   build-json:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-        with:
-          persist-credentials: false   # disable default GITHUB_TOKEN so PAT is used
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
       - name: Install dependencies
-        run: |
-          npm install
-          npm install cheerio
+        run: npm install
 
-      - name: Generate senators-rankings.json
-        env:
-          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
+      - name: Update senators JSON
         run: node ./scripts/updateSenators.js
 
-      - name: Commit and push if changed
-        env:
-          GH_PAT: ${{ secrets.GH_PAT }}
+      - name: Commit and push changes
         run: |
           git config --global user.name "sniders84"
           git config --global user.email "sniders84@users.noreply.github.com"
-          git remote remove origin || true
-          git remote add origin https://x-access-token:${GH_PAT}@github.com/${{ github.repository }}
           git add public/senators-rankings.json
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-            exit 0
-          fi
-          git commit -m "Update senators-rankings.json"
-          git push origin HEAD:main
+          git commit -m "Update senators-rankings.json" || echo "No changes to commit"
+          git push origin main
