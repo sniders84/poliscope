@@ -1,7 +1,7 @@
 // pages/api/katie-britt.js
 
 const BASE_URL = "https://api.congress.gov/v3";
-const API_KEY = process.env.CONGRESS_API_KEY; // store your key in env
+const API_KEY = process.env.CONGRESS_API_KEY;
 
 async function fetchJSON(url) {
   const res = await fetch(url);
@@ -18,7 +18,7 @@ export default async function handler(req, res) {
   try {
     // Step 1: Look up Katie Britt’s numeric ID
     const members = await fetchJSON(`${BASE_URL}/member?api_key=${API_KEY}&format=json`);
-    const britt = members?.members?.find(m => m.bioguideId === "B001319");
+    const britt = members?.results?.find(m => m.bioguideId === "B001319");
     if (!britt) {
       return res.status(404).json({ error: "Katie Britt not found" });
     }
