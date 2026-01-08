@@ -151,9 +151,8 @@ async function main() {
     console.log(`Built ${s.name} (${s.state})`);
   }
 
-  // ✅ Correct path: /home/runner/work/poliscope/public/senators-rankings.json
-  const repoRoot = path.join(process.cwd(), "..");
-  const filePath = path.join(repoRoot, "public", "senators-rankings.json");
+  // ✅ Correct path: inside repo root /public/senators-rankings.json
+  const filePath = path.join(process.cwd(), "public", "senators-rankings.json");
   fs.writeFileSync(filePath, JSON.stringify(results, null, 2));
   console.log(`Updated senators-rankings.json with ${results.length} current senators`);
 }
