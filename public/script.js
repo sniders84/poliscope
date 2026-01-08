@@ -3215,23 +3215,22 @@ function getGovTrackId(official, legislators) {
     misconduct: -10.0
   };
 
-  // Simple scoring function that uses ONLY fields from your senators-rankings.json schema
+  // Simple scoring function
   function scoreLegislator(senator) {
     const breakdown = {
       billsCosponsored: senator.cosponsoredBills || 0,
       billsIntroduced: senator.sponsoredBills || 0,
       lawsEnacted: (senator.becameLawBills || 0) + (senator.becameLawAmendments || 0),
       committeePositions: (senator.committees || []).length,
-      joiningBipartisanBills: 0,           // future enhancement
-      writingBipartisanBills: 0,           // future enhancement
-      powerfulCosponsors: 0,               // future enhancement
-      leadershipScore: 0,                  // future enhancement (or manual for leaders)
-      workingWithOtherChamber: 0,          // future enhancement
-      billsOutOfCommittee: 0,              // future enhancement
-      missedVotes: 0,                      // new Congress = basically 0 missed
+      joiningBipartisanBills: 0,
+      writingBipartisanBills: 0,
+      powerfulCosponsors: 0,
+      leadershipScore: 0,
+      workingWithOtherChamber: 0,
+      billsOutOfCommittee: 0,
+      missedVotes: 0,
       misconduct: 0
     };
-
     const composite =
       breakdown.billsCosponsored * WEIGHTS.billsCosponsored +
       breakdown.billsIntroduced * WEIGHTS.billsIntroduced +
@@ -3245,25 +3244,22 @@ function getGovTrackId(official, legislators) {
       breakdown.billsOutOfCommittee * WEIGHTS.billsOutOfCommittee +
       breakdown.missedVotes * WEIGHTS.missedVotes +
       breakdown.misconduct * WEIGHTS.misconduct;
-
     return {
       composite: Math.round(composite * 10) / 10,
       breakdown
     };
   }
 
-  // Format helper (unchanged)
+  // Format helper
   function formatScore(value) {
     const cls = value >= 0 ? 'score-positive' : 'score-negative';
     return `<span class="${cls}">${Number.isFinite(value) ? value.toFixed(1) : '0.0'}</span>`;
   }
 
-  // Updated scorecard modal – uses the same label map as your original
+  // Scorecard modal
   function showScorecard(senator, breakdown, composite) {
     document.getElementById('scorecardName').textContent = senator.name;
-
     const table = document.getElementById('scorecardBreakdown');
-
     const labelMap = {
       billsCosponsored: 'Bills Cosponsored',
       billsIntroduced: 'Bills Introduced',
@@ -3278,7 +3274,6 @@ function getGovTrackId(official, legislators) {
       missedVotes: 'Missed Votes (%)',
       misconduct: 'Misconduct'
     };
-
     const rowsHtml = Object.keys(breakdown).map(key => {
       const raw = breakdown[key];
       const weight = WEIGHTS[key] || 0;
@@ -3293,7 +3288,6 @@ function getGovTrackId(official, legislators) {
         </tr>
       `;
     }).join('');
-
     table.innerHTML = `
       <tbody>
         <tr>
@@ -3309,7 +3303,6 @@ function getGovTrackId(official, legislators) {
         ${rowsHtml}
       </tbody>
     `;
-
     const modal = document.getElementById('scorecardModal');
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
@@ -3317,35 +3310,32 @@ function getGovTrackId(official, legislators) {
 
   async function render() {
     const selectedOffice = officeSel.value.toLowerCase();
-
-    // Only handle senators for now (the file you have)
     if (!selectedOffice.includes('senator')) {
       tableBody.innerHTML = '<tr><td colspan="5">Select "Senators" to view rankings</td></tr>';
       return;
     }
 
-    const senators = await loadRankingsFile('senator'); // returns your JSON array
-
+    const senators = await loadRankingsFile('senator');
     if (!Array.isArray(senators) || senators.length === 0) {
       tableBody.innerHTML = '<tr><td colspan="5">No data loaded yet</td></tr>';
       return;
     }
 
-    // Compute scores and prepare rows
+    // DEBUG #1: How many did we actually load?
+    console.log("DEBUG: Loaded senators from JSON:", senators.length);
+
     const rows = senators.map(senator => {
       const { composite, breakdown } = scoreLegislator(senator);
       return {
         senator,
         score: composite,
         breakdown,
-        streak: '' // placeholder
+        streak: ''
       };
     });
 
-    // Sort highest to lowest
     rows.sort((a, b) => b.score - a.score);
 
-    // Render the leaderboard
     tableBody.innerHTML = '';
     rows.forEach((row, idx) => {
       const tr = document.createElement('tr');
@@ -3364,7 +3354,12 @@ function getGovTrackId(official, legislators) {
       tableBody.appendChild(tr);
     });
 
-    // Attach click handlers for scorecards
+    // DEBUG #2: How many did we render and who is dead last?
+    console.log("DEBUG: Rendered rows:", rows.length, 
+                "Last senator after sort:", rows[rows.length - 1].senator.name,
+                "(score:", rows[rows.length - 1].score, ")");
+
+    // Attach click handlers
     tableBody.querySelectorAll('.scorecard-link').forEach(link => {
       link.addEventListener('click', e => {
         e.preventDefault();
@@ -3377,13 +3372,12 @@ function getGovTrackId(official, legislators) {
     });
   }
 
-  // Modal close handlers (unchanged from your original)
+  // Modal close handlers unchanged
   document.getElementById('scorecardClose')?.addEventListener('click', () => {
     const modal = document.getElementById('scorecardModal');
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
   });
-
   document.getElementById('scorecardModal')?.addEventListener('click', e => {
     if (e.target.id === 'scorecardModal') {
       const modal = document.getElementById('scorecardModal');
@@ -3391,19 +3385,16 @@ function getGovTrackId(official, legislators) {
       modal.setAttribute('aria-hidden', 'true');
     }
   });
-
   document.getElementById('scoringLogicBtn')?.addEventListener('click', () => {
     const modal = document.getElementById('scoringLogicModal');
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
   });
-
   document.getElementById('scoringLogicClose')?.addEventListener('click', () => {
     const modal = document.getElementById('scoringLogicModal');
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
   });
-
   document.getElementById('scoringLogicModal')?.addEventListener('click', e => {
     if (e.target.id === 'scoringLogicModal') {
       const modal = document.getElementById('scoringLogicModal');
@@ -3412,9 +3403,7 @@ function getGovTrackId(official, legislators) {
     }
   });
 
-  // Expose render function and attach events
   window.renderRankingsLeaderboard = () => render().catch(console.error);
-
   officeSel.addEventListener('change', () => render().catch(console.error));
   categorySel.addEventListener('change', () => render().catch(console.error));
 })();
