@@ -31,7 +31,8 @@ async function getSenatorsRoster() {
   const limit = 250;
 
   while (true) {
-    const url = `${BASE}/member/congress/current?api_key=${API_KEY}&format=json&offset=${offset}&limit=${limit}`;
+    // ✅ Correct roster endpoint
+    const url = `${BASE}/member?congress=current&api_key=${API_KEY}&format=json&offset=${offset}&limit=${limit}`;
     const data = await safeFetchJSON(url);
     const members = data.results || data.members || [];
     if (members.length === 0) break;
@@ -131,8 +132,8 @@ async function buildRecord(s) {
     cosponsoredAmendments: cosponsored.cosponsoredAmendments,
     becameLawBills: sponsored.becameLawBills,
     becameLawAmendments: sponsored.becameLawAmendments,
-    committees: [], // placeholder
-    votes: 0        // placeholder
+    committees: [],
+    votes: 0
   };
 }
 
@@ -145,7 +146,7 @@ async function main() {
     console.log(`Built ${s.name} (${s.state})`);
   }
 
-  // ✅ Correct path: inside repo root /public/senators-rankings.json
+  // ✅ Write inside repo root /public/senators-rankings.json
   const filePath = path.join(process.cwd(), "public", "senators-rankings.json");
   fs.writeFileSync(filePath, JSON.stringify(results, null, 2));
   console.log(`Updated senators-rankings.json with ${results.length} current senators`);
