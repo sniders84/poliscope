@@ -2,7 +2,6 @@ const fs = require('fs');
 const fetch = require('node-fetch');
 const cheerio = require('cheerio');
 
-// Full list of Senate committees with membership URLs
 const COMMITTEES = [
   { name: "Agriculture, Nutrition, and Forestry", url: "https://www.agriculture.senate.gov/about/membership" },
   { name: "Appropriations", url: "https://www.appropriations.senate.gov/about/members" },
@@ -28,17 +27,14 @@ async function scrapeCommittee(committee) {
   const $ = cheerio.load(html);
 
   const members = [];
-  $('*').each((i, el) => {
+  $('li').each((i, el) => {
     const text = $(el).text().trim();
     if (text && /Senator/i.test(text)) {
       let role = 'Member';
       if (/Chairman|Chairwoman/i.test(text)) role = 'Chairman';
       if (/Ranking Member/i.test(text)) role = 'Ranking Member';
-      members.push({
-        name: text.replace(/Senator\s+/i, ''),
-        committee: committee.name,
-        role
-      });
+      const name = text.replace(/Senator\s+/i, '').replace(/Chairman|Chairwoman|Ranking Member/i, '').trim();
+      members.push({ name, committee: committee.name, role });
     }
   });
   return members;
