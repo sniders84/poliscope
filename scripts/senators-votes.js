@@ -54,4 +54,7 @@ async function buildMissedVotes(allNames) {
     missedVotes: missedLookup[s.name] || 0
   }));
 
-  fs.writeFileSync(jsonPath, JSON
+    fs.writeFileSync(jsonPath, JSON.stringify(output, null, 2) + '\n');
+  console.log('senators-votes.json fully updated!');
+})();
+
