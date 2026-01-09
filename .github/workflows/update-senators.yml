@@ -18,8 +18,7 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: |
-          npm install node-fetch@2 xml2js cheerio
+        run: npm install node-fetch@2 xml2js cheerio
 
       - name: Update legislation counts
         env:
@@ -34,9 +33,6 @@ jobs:
 
       - name: Merge all data
         run: node scripts/merge-senators.js
-
-      - name: Optional scoring
-        run: node scripts/score-senators.js
 
       - name: Commit and push if changed
         run: |
