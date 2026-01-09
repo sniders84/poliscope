@@ -2,10 +2,9 @@ const fs = require('fs');
 const fetch = require('node-fetch');
 const { parseStringPromise } = require('xml2js');
 
-const baseData = JSON.parse(fs.readFileSync('public/senators-base.json', 'utf8'));
+const baseData = JSON.parse(fs.readFileSync('public/senators-rankings.json', 'utf8'));
 const jsonPath = 'public/senators-votes.json';
 
-// Fetch index of votes for a given session
 async function fetchVoteIndex(session) {
   const url = `https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_${session}.xml`;
   const res = await fetch(url);
@@ -15,7 +14,6 @@ async function fetchVoteIndex(session) {
   return parsed.roll_call_vote_menu.vote_number.map(v => v._);
 }
 
-// Fetch details for a specific vote
 async function fetchVoteDetail(session, voteNum) {
   const num = voteNum.padStart(5, '0');
   const url = `https://www.senate.gov/legislative/LIS/roll_call_votes/vote119${session}/vote_119_${session}_${num}.xml`;
@@ -25,7 +23,6 @@ async function fetchVoteDetail(session, voteNum) {
   return await parseStringPromise(xml);
 }
 
-// Build missed votes tally for all senators
 async function buildMissedVotes(allNames) {
   const missed = Object.fromEntries(allNames.map(n => [n, 0]));
 
@@ -57,6 +54,4 @@ async function buildMissedVotes(allNames) {
     missedVotes: missedLookup[s.name] || 0
   }));
 
-  fs.writeFileSync(jsonPath, JSON.stringify(output, null, 2) + '\n');
-  console.log('senators-votes.json fully updated!');
-})();
+  fs.writeFileSync(jsonPath, JSON
