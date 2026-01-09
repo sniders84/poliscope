@@ -10,20 +10,39 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Install node-fetch
-        run: npm install node-fetch@2  # Use v2 for require() support
-      - name: Update data
+
+      - name: Install dependencies
+        run: npm install node-fetch@2 xml2js
+
+      - name: Update base metadata
+        run: node scripts/senators-base.js
+
+      - name: Update legislation counts
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
-        run: node scripts/update-senators.js
+        run: node scripts/senators-legislation.js
+
+      - name: Update committees
+        run: node scripts/senators-committees.js
+
+      - name: Update votes
+        run: node scripts/senators-votes.js
+
+      - name: Merge all data
+        run: node scripts/merge-senators.js
+
+      - name: Optional scoring
+        run: node scripts/score-senators.js
+
       - name: Commit and push if changed
         run: |
           git config user.name "Data Bot"
           git config user.email "bot@electorate.app"
-          git add public/senators-rankings.json  # <-- match your path here
+          git add public/*.json
           git diff --staged --quiet && echo "No changes" || git commit -m "Auto-update senators data $(date +'%Y-%m-%d')"
           git push
