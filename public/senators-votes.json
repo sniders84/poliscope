@@ -1,1 +1,1497 @@
-[]
+[
+  {
+    "name": "Alsobrooks , Yea",
+    "missedVotes": 293,
+    "totalVotes": 116
+  },
+  {
+    "name": "Baldwin , Yea",
+    "missedVotes": 308,
+    "totalVotes": 117
+  },
+  {
+    "name": "Banks , Yea",
+    "missedVotes": 1635,
+    "totalVotes": 440
+  },
+  {
+    "name": "Barrasso , Yea",
+    "missedVotes": 1671,
+    "totalVotes": 444
+  },
+  {
+    "name": "Bennet , Yea",
+    "missedVotes": 298,
+    "totalVotes": 117
+  },
+  {
+    "name": "Blackburn , Yea",
+    "missedVotes": 1531,
+    "totalVotes": 424
+  },
+  {
+    "name": "Blumenthal , Yea",
+    "missedVotes": 241,
+    "totalVotes": 98
+  },
+  {
+    "name": "Blunt Rochester , Yea",
+    "missedVotes": 248,
+    "totalVotes": 99
+  },
+  {
+    "name": "Booker , Nay",
+    "missedVotes": 1520,
+    "totalVotes": 400
+  },
+  {
+    "name": "Boozman , Yea",
+    "missedVotes": 1593,
+    "totalVotes": 432
+  },
+  {
+    "name": "Britt , Yea",
+    "missedVotes": 1619,
+    "totalVotes": 433
+  },
+  {
+    "name": "Budd , Yea",
+    "missedVotes": 1591,
+    "totalVotes": 430
+  },
+  {
+    "name": "Cantwell , Yea",
+    "missedVotes": 289,
+    "totalVotes": 112
+  },
+  {
+    "name": "Capito , Yea",
+    "missedVotes": 1635,
+    "totalVotes": 432
+  },
+  {
+    "name": "Cassidy , Yea",
+    "missedVotes": 1519,
+    "totalVotes": 415
+  },
+  {
+    "name": "Collins , Yea",
+    "missedVotes": 1694,
+    "totalVotes": 469
+  },
+  {
+    "name": "Coons , Yea",
+    "missedVotes": 369,
+    "totalVotes": 128
+  },
+  {
+    "name": "Cornyn , Yea",
+    "missedVotes": 1684,
+    "totalVotes": 444
+  },
+  {
+    "name": "Cortez Masto , Yea",
+    "missedVotes": 438,
+    "totalVotes": 140
+  },
+  {
+    "name": "Cotton , Yea",
+    "missedVotes": 1645,
+    "totalVotes": 434
+  },
+  {
+    "name": "Cramer , Yea",
+    "missedVotes": 1552,
+    "totalVotes": 424
+  },
+  {
+    "name": "Crapo , Yea",
+    "missedVotes": 1683,
+    "totalVotes": 442
+  },
+  {
+    "name": "Cruz , Yea",
+    "missedVotes": 1577,
+    "totalVotes": 415
+  },
+  {
+    "name": "Curtis , Yea",
+    "missedVotes": 1636,
+    "totalVotes": 439
+  },
+  {
+    "name": "Daines , Yea",
+    "missedVotes": 1565,
+    "totalVotes": 431
+  },
+  {
+    "name": "Duckworth , Yea",
+    "missedVotes": 238,
+    "totalVotes": 100
+  },
+  {
+    "name": "Durbin , Yea",
+    "missedVotes": 414,
+    "totalVotes": 137
+  },
+  {
+    "name": "Ernst , Yea",
+    "missedVotes": 1609,
+    "totalVotes": 435
+  },
+  {
+    "name": "Fetterman , Yea",
+    "missedVotes": 619,
+    "totalVotes": 183
+  },
+  {
+    "name": "Fischer , Yea",
+    "missedVotes": 1637,
+    "totalVotes": 441
+  },
+  {
+    "name": "Gallego , Yea",
+    "missedVotes": 387,
+    "totalVotes": 143
+  },
+  {
+    "name": "Gillibrand , Yea",
+    "missedVotes": 371,
+    "totalVotes": 125
+  },
+  {
+    "name": "Graham , Yea",
+    "missedVotes": 1487,
+    "totalVotes": 404
+  },
+  {
+    "name": "Grassley , Yea",
+    "missedVotes": 1677,
+    "totalVotes": 441
+  },
+  {
+    "name": "Hagerty , Yea",
+    "missedVotes": 1629,
+    "totalVotes": 433
+  },
+  {
+    "name": "Hassan , Not Voting",
+    "missedVotes": 41,
+    "totalVotes": 8
+  },
+  {
+    "name": "Hawley , Yea",
+    "missedVotes": 1505,
+    "totalVotes": 419
+  },
+  {
+    "name": "Heinrich , Yea",
+    "missedVotes": 378,
+    "totalVotes": 132
+  },
+  {
+    "name": "Hickenlooper , Yea",
+    "missedVotes": 411,
+    "totalVotes": 136
+  },
+  {
+    "name": "Hirono , Nay",
+    "missedVotes": 1638,
+    "totalVotes": 434
+  },
+  {
+    "name": "Hoeven , Yea",
+    "missedVotes": 1649,
+    "totalVotes": 440
+  },
+  {
+    "name": "Hyde-Smith , Yea",
+    "missedVotes": 1639,
+    "totalVotes": 436
+  },
+  {
+    "name": "Johnson , Yea",
+    "missedVotes": 1657,
+    "totalVotes": 442
+  },
+  {
+    "name": "Kaine , Yea",
+    "missedVotes": 558,
+    "totalVotes": 166
+  },
+  {
+    "name": "Kelly , Yea",
+    "missedVotes": 540,
+    "totalVotes": 160
+  },
+  {
+    "name": "Kennedy , Yea",
+    "missedVotes": 1601,
+    "totalVotes": 435
+  },
+  {
+    "name": "Kim , Nay",
+    "missedVotes": 1513,
+    "totalVotes": 409
+  },
+  {
+    "name": "King , Yea",
+    "missedVotes": 618,
+    "totalVotes": 185
+  },
+  {
+    "name": "Klobuchar , Yea",
+    "missedVotes": 420,
+    "totalVotes": 144
+  },
+  {
+    "name": "Lankford , Yea",
+    "missedVotes": 1691,
+    "totalVotes": 446
+  },
+  {
+    "name": "Lee , Yea",
+    "missedVotes": 1552,
+    "totalVotes": 423
+  },
+  {
+    "name": "Lujan , Yea",
+    "missedVotes": 286,
+    "totalVotes": 119
+  },
+  {
+    "name": "Lummis , Yea",
+    "missedVotes": 1603,
+    "totalVotes": 425
+  },
+  {
+    "name": "Markey , Nay",
+    "missedVotes": 1681,
+    "totalVotes": 445
+  },
+  {
+    "name": "Marshall , Yea",
+    "missedVotes": 1681,
+    "totalVotes": 444
+  },
+  {
+    "name": "McConnell , Yea",
+    "missedVotes": 1471,
+    "totalVotes": 399
+  },
+  {
+    "name": "McCormick , Yea",
+    "missedVotes": 1608,
+    "totalVotes": 428
+  },
+  {
+    "name": "Merkley , Nay",
+    "missedVotes": 1651,
+    "totalVotes": 437
+  },
+  {
+    "name": "Moran , Yea",
+    "missedVotes": 1381,
+    "totalVotes": 411
+  },
+  {
+    "name": "Moreno , Yea",
+    "missedVotes": 1702,
+    "totalVotes": 448
+  },
+  {
+    "name": "Mullin , Yea",
+    "missedVotes": 1480,
+    "totalVotes": 406
+  },
+  {
+    "name": "Murkowski , Not Voting",
+    "missedVotes": 203,
+    "totalVotes": 23
+  },
+  {
+    "name": "Murphy , Not Voting",
+    "missedVotes": 153,
+    "totalVotes": 20
+  },
+  {
+    "name": "Murray , Not Voting",
+    "missedVotes": 212,
+    "totalVotes": 44
+  },
+  {
+    "name": "Ossoff , Yea",
+    "missedVotes": 290,
+    "totalVotes": 115
+  },
+  {
+    "name": "Padilla , Not Voting",
+    "missedVotes": 177,
+    "totalVotes": 29
+  },
+  {
+    "name": "Paul , Yea",
+    "missedVotes": 1393,
+    "totalVotes": 392
+  },
+  {
+    "name": "Peters , Yea",
+    "missedVotes": 363,
+    "totalVotes": 132
+  },
+  {
+    "name": "Reed , Yea",
+    "missedVotes": 485,
+    "totalVotes": 139
+  },
+  {
+    "name": "Ricketts , Yea",
+    "missedVotes": 1675,
+    "totalVotes": 443
+  },
+  {
+    "name": "Risch , Yea",
+    "missedVotes": 1606,
+    "totalVotes": 435
+  },
+  {
+    "name": "Rosen , Yea",
+    "missedVotes": 532,
+    "totalVotes": 161
+  },
+  {
+    "name": "Rounds , Yea",
+    "missedVotes": 1650,
+    "totalVotes": 438
+  },
+  {
+    "name": "Rubio , Yea",
+    "missedVotes": 19,
+    "totalVotes": 4
+  },
+  {
+    "name": "Sanders , Nay",
+    "missedVotes": 1366,
+    "totalVotes": 389
+  },
+  {
+    "name": "Schatz , Nay",
+    "missedVotes": 1636,
+    "totalVotes": 430
+  },
+  {
+    "name": "Schiff , Not Voting",
+    "missedVotes": 185,
+    "totalVotes": 16
+  },
+  {
+    "name": "Schmitt , Yea",
+    "missedVotes": 1668,
+    "totalVotes": 442
+  },
+  {
+    "name": "Schumer , Yea",
+    "missedVotes": 244,
+    "totalVotes": 101
+  },
+  {
+    "name": "Scott , Yea",
+    "missedVotes": 3237,
+    "totalVotes": 450
+  },
+  {
+    "name": "Shaheen , Yea",
+    "missedVotes": 602,
+    "totalVotes": 185
+  },
+  {
+    "name": "Sheehy , Yea",
+    "missedVotes": 1602,
+    "totalVotes": 429
+  },
+  {
+    "name": "Slotkin , Yea",
+    "missedVotes": 462,
+    "totalVotes": 149
+  },
+  {
+    "name": "Smith , Nay",
+    "missedVotes": 1576,
+    "totalVotes": 422
+  },
+  {
+    "name": "Sullivan , Yea",
+    "missedVotes": 1566,
+    "totalVotes": 433
+  },
+  {
+    "name": "Thune , Yea",
+    "missedVotes": 1659,
+    "totalVotes": 436
+  },
+  {
+    "name": "Tillis , Yea",
+    "missedVotes": 1281,
+    "totalVotes": 373
+  },
+  {
+    "name": "Tuberville , Yea",
+    "missedVotes": 1517,
+    "totalVotes": 419
+  },
+  {
+    "name": "Vance , Yea",
+    "missedVotes": 6,
+    "totalVotes": 1
+  },
+  {
+    "name": "Van Hollen , Yea",
+    "missedVotes": 210,
+    "totalVotes": 92
+  },
+  {
+    "name": "Warner , Yea",
+    "missedVotes": 524,
+    "totalVotes": 165
+  },
+  {
+    "name": "Warnock , Yea",
+    "missedVotes": 376,
+    "totalVotes": 137
+  },
+  {
+    "name": "Warren , Nay",
+    "missedVotes": 1611,
+    "totalVotes": 433
+  },
+  {
+    "name": "Welch , Yea",
+    "missedVotes": 251,
+    "totalVotes": 109
+  },
+  {
+    "name": "Whitehouse , Yea",
+    "missedVotes": 327,
+    "totalVotes": 121
+  },
+  {
+    "name": "Wicker , Yea",
+    "missedVotes": 1542,
+    "totalVotes": 421
+  },
+  {
+    "name": "Wyden , Yea",
+    "missedVotes": 213,
+    "totalVotes": 91
+  },
+  {
+    "name": "Young , Yea",
+    "missedVotes": 1664,
+    "totalVotes": 440
+  },
+  {
+    "name": "Fetterman , Not Voting",
+    "missedVotes": 241,
+    "totalVotes": 45
+  },
+  {
+    "name": "Graham , Not Voting",
+    "missedVotes": 260,
+    "totalVotes": 43
+  },
+  {
+    "name": "Hassan , Yea",
+    "missedVotes": 613,
+    "totalVotes": 176
+  },
+  {
+    "name": "Lujan , Nay",
+    "missedVotes": 1569,
+    "totalVotes": 410
+  },
+  {
+    "name": "Mullin , Not Voting",
+    "missedVotes": 257,
+    "totalVotes": 39
+  },
+  {
+    "name": "Murkowski , Yea",
+    "missedVotes": 1483,
+    "totalVotes": 432
+  },
+  {
+    "name": "Murphy , Yea",
+    "missedVotes": 200,
+    "totalVotes": 89
+  },
+  {
+    "name": "Alsobrooks , Nay",
+    "missedVotes": 1563,
+    "totalVotes": 410
+  },
+  {
+    "name": "Blunt Rochester , Nay",
+    "missedVotes": 1616,
+    "totalVotes": 433
+  },
+  {
+    "name": "Duckworth , Nay",
+    "missedVotes": 1413,
+    "totalVotes": 378
+  },
+  {
+    "name": "Durbin , Nay",
+    "missedVotes": 1346,
+    "totalVotes": 380
+  },
+  {
+    "name": "Gillibrand , Nay",
+    "missedVotes": 1477,
+    "totalVotes": 399
+  },
+  {
+    "name": "Hagerty , Not Voting",
+    "missedVotes": 103,
+    "totalVotes": 18
+  },
+  {
+    "name": "Justice , Not Voting",
+    "missedVotes": 134,
+    "totalVotes": 27
+  },
+  {
+    "name": "Kaine , Nay",
+    "missedVotes": 1275,
+    "totalVotes": 363
+  },
+  {
+    "name": "King , Nay",
+    "missedVotes": 1151,
+    "totalVotes": 339
+  },
+  {
+    "name": "Lummis , Not Voting",
+    "missedVotes": 116,
+    "totalVotes": 22
+  },
+  {
+    "name": "Murphy , Nay",
+    "missedVotes": 1559,
+    "totalVotes": 426
+  },
+  {
+    "name": "Murray , Nay",
+    "missedVotes": 1535,
+    "totalVotes": 419
+  },
+  {
+    "name": "Padilla , Nay",
+    "missedVotes": 1552,
+    "totalVotes": 415
+  },
+  {
+    "name": "Reed , Nay",
+    "missedVotes": 1355,
+    "totalVotes": 388
+  },
+  {
+    "name": "Schiff , Nay",
+    "missedVotes": 1390,
+    "totalVotes": 402
+  },
+  {
+    "name": "Schumer , Nay",
+    "missedVotes": 1640,
+    "totalVotes": 431
+  },
+  {
+    "name": "Van Hollen , Nay",
+    "missedVotes": 1640,
+    "totalVotes": 431
+  },
+  {
+    "name": "Welch , Nay",
+    "missedVotes": 1331,
+    "totalVotes": 376
+  },
+  {
+    "name": "Whitehouse , Nay",
+    "missedVotes": 1441,
+    "totalVotes": 390
+  },
+  {
+    "name": "Wyden , Not Voting",
+    "missedVotes": 145,
+    "totalVotes": 17
+  },
+  {
+    "name": "Banks , Nay",
+    "missedVotes": 181,
+    "totalVotes": 86
+  },
+  {
+    "name": "Barrasso , Nay",
+    "missedVotes": 189,
+    "totalVotes": 87
+  },
+  {
+    "name": "Blackburn , Nay",
+    "missedVotes": 154,
+    "totalVotes": 77
+  },
+  {
+    "name": "Booker , Yea",
+    "missedVotes": 256,
+    "totalVotes": 105
+  },
+  {
+    "name": "Boozman , Nay",
+    "missedVotes": 202,
+    "totalVotes": 91
+  },
+  {
+    "name": "Britt , Nay",
+    "missedVotes": 188,
+    "totalVotes": 87
+  },
+  {
+    "name": "Budd , Nay",
+    "missedVotes": 170,
+    "totalVotes": 82
+  },
+  {
+    "name": "Capito , Nay",
+    "missedVotes": 197,
+    "totalVotes": 89
+  },
+  {
+    "name": "Cassidy , Nay",
+    "missedVotes": 151,
+    "totalVotes": 79
+  },
+  {
+    "name": "Collins , Nay",
+    "missedVotes": 198,
+    "totalVotes": 66
+  },
+  {
+    "name": "Cornyn , Nay",
+    "missedVotes": 198,
+    "totalVotes": 89
+  },
+  {
+    "name": "Cotton , Nay",
+    "missedVotes": 200,
+    "totalVotes": 90
+  },
+  {
+    "name": "Cramer , Nay",
+    "missedVotes": 196,
+    "totalVotes": 88
+  },
+  {
+    "name": "Crapo , Nay",
+    "missedVotes": 194,
+    "totalVotes": 88
+  },
+  {
+    "name": "Cruz , Nay",
+    "missedVotes": 169,
+    "totalVotes": 78
+  },
+  {
+    "name": "Curtis , Nay",
+    "missedVotes": 180,
+    "totalVotes": 85
+  },
+  {
+    "name": "Daines , Nay",
+    "missedVotes": 190,
+    "totalVotes": 84
+  },
+  {
+    "name": "Ernst , Nay",
+    "missedVotes": 190,
+    "totalVotes": 87
+  },
+  {
+    "name": "Fischer , Nay",
+    "missedVotes": 200,
+    "totalVotes": 90
+  },
+  {
+    "name": "Graham , Nay",
+    "missedVotes": 188,
+    "totalVotes": 88
+  },
+  {
+    "name": "Grassley , Nay",
+    "missedVotes": 202,
+    "totalVotes": 90
+  },
+  {
+    "name": "Hawley , Nay",
+    "missedVotes": 202,
+    "totalVotes": 85
+  },
+  {
+    "name": "Hirono , Yea",
+    "missedVotes": 242,
+    "totalVotes": 99
+  },
+  {
+    "name": "Hoeven , Nay",
+    "missedVotes": 195,
+    "totalVotes": 88
+  },
+  {
+    "name": "Hyde-Smith , Nay",
+    "missedVotes": 193,
+    "totalVotes": 88
+  },
+  {
+    "name": "Johnson , Nay",
+    "missedVotes": 178,
+    "totalVotes": 85
+  },
+  {
+    "name": "Kennedy , Nay",
+    "missedVotes": 183,
+    "totalVotes": 86
+  },
+  {
+    "name": "Kim , Yea",
+    "missedVotes": 366,
+    "totalVotes": 123
+  },
+  {
+    "name": "Lankford , Nay",
+    "missedVotes": 191,
+    "totalVotes": 87
+  },
+  {
+    "name": "Lee , Nay",
+    "missedVotes": 194,
+    "totalVotes": 89
+  },
+  {
+    "name": "Markey , Yea",
+    "missedVotes": 185,
+    "totalVotes": 85
+  },
+  {
+    "name": "Marshall , Nay",
+    "missedVotes": 187,
+    "totalVotes": 85
+  },
+  {
+    "name": "McConnell , Nay",
+    "missedVotes": 164,
+    "totalVotes": 81
+  },
+  {
+    "name": "McCormick , Nay",
+    "missedVotes": 190,
+    "totalVotes": 87
+  },
+  {
+    "name": "Merkley , Yea",
+    "missedVotes": 208,
+    "totalVotes": 92
+  },
+  {
+    "name": "Moran , Nay",
+    "missedVotes": 195,
+    "totalVotes": 89
+  },
+  {
+    "name": "Moreno , Nay",
+    "missedVotes": 190,
+    "totalVotes": 87
+  },
+  {
+    "name": "Mullin , Nay",
+    "missedVotes": 194,
+    "totalVotes": 90
+  },
+  {
+    "name": "Murkowski , Nay",
+    "missedVotes": 229,
+    "totalVotes": 80
+  },
+  {
+    "name": "Murray , Yea",
+    "missedVotes": 189,
+    "totalVotes": 72
+  },
+  {
+    "name": "Padilla , Yea",
+    "missedVotes": 192,
+    "totalVotes": 91
+  },
+  {
+    "name": "Paul , Nay",
+    "missedVotes": 309,
+    "totalVotes": 120
+  },
+  {
+    "name": "Ricketts , Nay",
+    "missedVotes": 200,
+    "totalVotes": 90
+  },
+  {
+    "name": "Risch , Nay",
+    "missedVotes": 194,
+    "totalVotes": 88
+  },
+  {
+    "name": "Rounds , Nay",
+    "missedVotes": 209,
+    "totalVotes": 93
+  },
+  {
+    "name": "Rubio , Nay",
+    "missedVotes": 4,
+    "totalVotes": 1
+  },
+  {
+    "name": "Sanders , Yea",
+    "missedVotes": 194,
+    "totalVotes": 88
+  },
+  {
+    "name": "Schatz , Yea",
+    "missedVotes": 229,
+    "totalVotes": 98
+  },
+  {
+    "name": "Schiff , Yea",
+    "missedVotes": 333,
+    "totalVotes": 117
+  },
+  {
+    "name": "Schmitt , Nay",
+    "missedVotes": 177,
+    "totalVotes": 84
+  },
+  {
+    "name": "Scott , Nay",
+    "missedVotes": 370,
+    "totalVotes": 89
+  },
+  {
+    "name": "Sheehy , Nay",
+    "missedVotes": 195,
+    "totalVotes": 87
+  },
+  {
+    "name": "Smith , Yea",
+    "missedVotes": 205,
+    "totalVotes": 81
+  },
+  {
+    "name": "Sullivan , Nay",
+    "missedVotes": 181,
+    "totalVotes": 82
+  },
+  {
+    "name": "Thune , Nay",
+    "missedVotes": 229,
+    "totalVotes": 98
+  },
+  {
+    "name": "Tillis , Nay",
+    "missedVotes": 186,
+    "totalVotes": 85
+  },
+  {
+    "name": "Tuberville , Nay",
+    "missedVotes": 190,
+    "totalVotes": 87
+  },
+  {
+    "name": "Warren , Yea",
+    "missedVotes": 195,
+    "totalVotes": 88
+  },
+  {
+    "name": "Wicker , Nay",
+    "missedVotes": 193,
+    "totalVotes": 88
+  },
+  {
+    "name": "Young , Nay",
+    "missedVotes": 199,
+    "totalVotes": 89
+  },
+  {
+    "name": "Baldwin , Nay",
+    "missedVotes": 1573,
+    "totalVotes": 415
+  },
+  {
+    "name": "Bennet , Nay",
+    "missedVotes": 1492,
+    "totalVotes": 407
+  },
+  {
+    "name": "Blumenthal , Nay",
+    "missedVotes": 1571,
+    "totalVotes": 428
+  },
+  {
+    "name": "Cantwell , Nay",
+    "missedVotes": 1597,
+    "totalVotes": 422
+  },
+  {
+    "name": "Coons , Not Voting",
+    "missedVotes": 286,
+    "totalVotes": 35
+  },
+  {
+    "name": "Heinrich , Nay",
+    "missedVotes": 1309,
+    "totalVotes": 369
+  },
+  {
+    "name": "Hickenlooper , Nay",
+    "missedVotes": 1432,
+    "totalVotes": 390
+  },
+  {
+    "name": "Justice , Yea",
+    "missedVotes": 1580,
+    "totalVotes": 418
+  },
+  {
+    "name": "Klobuchar , Nay",
+    "missedVotes": 1434,
+    "totalVotes": 384
+  },
+  {
+    "name": "McConnell , Not Voting",
+    "missedVotes": 312,
+    "totalVotes": 55
+  },
+  {
+    "name": "Warnock , Nay",
+    "missedVotes": 1353,
+    "totalVotes": 381
+  },
+  {
+    "name": "Wyden , Nay",
+    "missedVotes": 1551,
+    "totalVotes": 427
+  },
+  {
+    "name": "Coons , Nay",
+    "missedVotes": 1272,
+    "totalVotes": 372
+  },
+  {
+    "name": "Cortez Masto , Nay",
+    "missedVotes": 1361,
+    "totalVotes": 378
+  },
+  {
+    "name": "Gallego , Nay",
+    "missedVotes": 1041,
+    "totalVotes": 297
+  },
+  {
+    "name": "Hassan , Nay",
+    "missedVotes": 1246,
+    "totalVotes": 351
+  },
+  {
+    "name": "Husted , Yea",
+    "missedVotes": 1671,
+    "totalVotes": 441
+  },
+  {
+    "name": "Kelly , Nay",
+    "missedVotes": 1154,
+    "totalVotes": 335
+  },
+  {
+    "name": "Markey , Not Voting",
+    "missedVotes": 31,
+    "totalVotes": 5
+  },
+  {
+    "name": "Moody , Yea",
+    "missedVotes": 1649,
+    "totalVotes": 441
+  },
+  {
+    "name": "Ossoff , Nay",
+    "missedVotes": 1349,
+    "totalVotes": 370
+  },
+  {
+    "name": "Paul , Not Voting",
+    "missedVotes": 203,
+    "totalVotes": 21
+  },
+  {
+    "name": "Peters , Nay",
+    "missedVotes": 1380,
+    "totalVotes": 389
+  },
+  {
+    "name": "Rosen , Nay",
+    "missedVotes": 1226,
+    "totalVotes": 363
+  },
+  {
+    "name": "Shaheen , Nay",
+    "missedVotes": 1044,
+    "totalVotes": 327
+  },
+  {
+    "name": "Slotkin , Nay",
+    "missedVotes": 1319,
+    "totalVotes": 364
+  },
+  {
+    "name": "Warner , Nay",
+    "missedVotes": 1247,
+    "totalVotes": 353
+  },
+  {
+    "name": "Fetterman , Nay",
+    "missedVotes": 1077,
+    "totalVotes": 307
+  },
+  {
+    "name": "King , Not Voting",
+    "missedVotes": 134,
+    "totalVotes": 11
+  },
+  {
+    "name": "Merkley , Not Voting",
+    "missedVotes": 39,
+    "totalVotes": 6
+  },
+  {
+    "name": "Moran , Not Voting",
+    "missedVotes": 351,
+    "totalVotes": 35
+  },
+  {
+    "name": "Schatz , Not Voting",
+    "missedVotes": 34,
+    "totalVotes": 7
+  },
+  {
+    "name": "Smith , Not Voting",
+    "missedVotes": 143,
+    "totalVotes": 32
+  },
+  {
+    "name": "Warnock , Not Voting",
+    "missedVotes": 180,
+    "totalVotes": 17
+  },
+  {
+    "name": "Durbin , Not Voting",
+    "missedVotes": 150,
+    "totalVotes": 18
+  },
+  {
+    "name": "Klobuchar , Not Voting",
+    "missedVotes": 45,
+    "totalVotes": 7
+  },
+  {
+    "name": "Peters , Not Voting",
+    "missedVotes": 163,
+    "totalVotes": 14
+  },
+  {
+    "name": "Ossoff , Not Voting",
+    "missedVotes": 303,
+    "totalVotes": 50
+  },
+  {
+    "name": "Sheehy , Not Voting",
+    "missedVotes": 114,
+    "totalVotes": 19
+  },
+  {
+    "name": "Booker , Not Voting",
+    "missedVotes": 146,
+    "totalVotes": 30
+  },
+  {
+    "name": "Lankford , Not Voting",
+    "missedVotes": 12,
+    "totalVotes": 2
+  },
+  {
+    "name": "Hyde-Smith , Not Voting",
+    "missedVotes": 71,
+    "totalVotes": 11
+  },
+  {
+    "name": "Alsobrooks , Not Voting",
+    "missedVotes": 45,
+    "totalVotes": 9
+  },
+  {
+    "name": "Cruz , Not Voting",
+    "missedVotes": 188,
+    "totalVotes": 42
+  },
+  {
+    "name": "Crapo , Not Voting",
+    "missedVotes": 20,
+    "totalVotes": 5
+  },
+  {
+    "name": "Tillis , Not Voting",
+    "missedVotes": 502,
+    "totalVotes": 77
+  },
+  {
+    "name": "Boozman , Not Voting",
+    "missedVotes": 109,
+    "totalVotes": 12
+  },
+  {
+    "name": "Duckworth , Not Voting",
+    "missedVotes": 298,
+    "totalVotes": 57
+  },
+  {
+    "name": "Gallego , Not Voting",
+    "missedVotes": 559,
+    "totalVotes": 95
+  },
+  {
+    "name": "Johnson , Not Voting",
+    "missedVotes": 65,
+    "totalVotes": 8
+  },
+  {
+    "name": "Marshall , Not Voting",
+    "missedVotes": 30,
+    "totalVotes": 6
+  },
+  {
+    "name": "Cramer , Not Voting",
+    "missedVotes": 167,
+    "totalVotes": 23
+  },
+  {
+    "name": "Hoeven , Not Voting",
+    "missedVotes": 55,
+    "totalVotes": 7
+  },
+  {
+    "name": "Sullivan , Not Voting",
+    "missedVotes": 165,
+    "totalVotes": 20
+  },
+  {
+    "name": "Hagerty , Nay",
+    "missedVotes": 178,
+    "totalVotes": 84
+  },
+  {
+    "name": "Husted , Nay",
+    "missedVotes": 198,
+    "totalVotes": 89
+  },
+  {
+    "name": "Justice , Nay",
+    "missedVotes": 193,
+    "totalVotes": 88
+  },
+  {
+    "name": "Lummis , Nay",
+    "missedVotes": 195,
+    "totalVotes": 88
+  },
+  {
+    "name": "Moody , Nay",
+    "missedVotes": 182,
+    "totalVotes": 85
+  },
+  {
+    "name": "Warner , Not Voting",
+    "missedVotes": 138,
+    "totalVotes": 17
+  },
+  {
+    "name": "Kaine , Not Voting",
+    "missedVotes": 65,
+    "totalVotes": 6
+  },
+  {
+    "name": "Whitehouse , Not Voting",
+    "missedVotes": 148,
+    "totalVotes": 24
+  },
+  {
+    "name": "Young , Not Voting",
+    "missedVotes": 35,
+    "totalVotes": 6
+  },
+  {
+    "name": "Sanders , Not Voting",
+    "missedVotes": 390,
+    "totalVotes": 58
+  },
+  {
+    "name": "Tuberville , Not Voting",
+    "missedVotes": 214,
+    "totalVotes": 29
+  },
+  {
+    "name": "Van Hollen , Not Voting",
+    "missedVotes": 54,
+    "totalVotes": 12
+  },
+  {
+    "name": "Capito , Not Voting",
+    "missedVotes": 74,
+    "totalVotes": 14
+  },
+  {
+    "name": "Slotkin , Not Voting",
+    "missedVotes": 133,
+    "totalVotes": 22
+  },
+  {
+    "name": "Welch , Not Voting",
+    "missedVotes": 360,
+    "totalVotes": 50
+  },
+  {
+    "name": "Kelly , Not Voting",
+    "missedVotes": 238,
+    "totalVotes": 40
+  },
+  {
+    "name": "Hirono , Not Voting",
+    "missedVotes": 14,
+    "totalVotes": 2
+  },
+  {
+    "name": "Hawley , Not Voting",
+    "missedVotes": 216,
+    "totalVotes": 31
+  },
+  {
+    "name": "Cassidy , Not Voting",
+    "missedVotes": 263,
+    "totalVotes": 41
+  },
+  {
+    "name": "Hickenlooper , Not Voting",
+    "missedVotes": 58,
+    "totalVotes": 9
+  },
+  {
+    "name": "Fischer , Not Voting",
+    "missedVotes": 59,
+    "totalVotes": 4
+  },
+  {
+    "name": "Ricketts , Not Voting",
+    "missedVotes": 19,
+    "totalVotes": 2
+  },
+  {
+    "name": "Kennedy , Not Voting",
+    "missedVotes": 122,
+    "totalVotes": 14
+  },
+  {
+    "name": "Rounds , Not Voting",
+    "missedVotes": 37,
+    "totalVotes": 4
+  },
+  {
+    "name": "Schumer , Not Voting",
+    "missedVotes": 11,
+    "totalVotes": 3
+  },
+  {
+    "name": "Barrasso , Not Voting",
+    "missedVotes": 36,
+    "totalVotes": 4
+  },
+  {
+    "name": "Schmitt , Not Voting",
+    "missedVotes": 56,
+    "totalVotes": 9
+  },
+  {
+    "name": "Wicker , Not Voting",
+    "missedVotes": 183,
+    "totalVotes": 26
+  },
+  {
+    "name": "Bennet , Not Voting",
+    "missedVotes": 113,
+    "totalVotes": 11
+  },
+  {
+    "name": "Shaheen , Not Voting",
+    "missedVotes": 269,
+    "totalVotes": 23
+  },
+  {
+    "name": "Baldwin , Present",
+    "missedVotes": 3,
+    "totalVotes": 2
+  },
+  {
+    "name": "Curtis , Not Voting",
+    "missedVotes": 87,
+    "totalVotes": 11
+  },
+  {
+    "name": "McCormick , Not Voting",
+    "missedVotes": 114,
+    "totalVotes": 20
+  },
+  {
+    "name": "Gillibrand , Not Voting",
+    "missedVotes": 55,
+    "totalVotes": 11
+  },
+  {
+    "name": "Thune , Not Voting",
+    "missedVotes": 5,
+    "totalVotes": 1
+  },
+  {
+    "name": "Scott , Not Voting",
+    "missedVotes": 201,
+    "totalVotes": 23
+  },
+  {
+    "name": "Risch , Not Voting",
+    "missedVotes": 104,
+    "totalVotes": 12
+  },
+  {
+    "name": "Blackburn , Not Voting",
+    "missedVotes": 241,
+    "totalVotes": 34
+  },
+  {
+    "name": "Daines , Not Voting",
+    "missedVotes": 157,
+    "totalVotes": 20
+  },
+  {
+    "name": "Heinrich , Not Voting",
+    "missedVotes": 239,
+    "totalVotes": 34
+  },
+  {
+    "name": "Blumenthal , Not Voting",
+    "missedVotes": 89,
+    "totalVotes": 9
+  },
+  {
+    "name": "Britt , Not Voting",
+    "missedVotes": 100,
+    "totalVotes": 15
+  },
+  {
+    "name": "Cotton , Not Voting",
+    "missedVotes": 58,
+    "totalVotes": 11
+  },
+  {
+    "name": "Cortez Masto , Not Voting",
+    "missedVotes": 110,
+    "totalVotes": 17
+  },
+  {
+    "name": "Banks , Not Voting",
+    "missedVotes": 85,
+    "totalVotes": 9
+  },
+  {
+    "name": "Ernst , Not Voting",
+    "missedVotes": 106,
+    "totalVotes": 13
+  },
+  {
+    "name": "Blunt Rochester , Not Voting",
+    "missedVotes": 31,
+    "totalVotes": 3
+  },
+  {
+    "name": "Budd , Not Voting",
+    "missedVotes": 154,
+    "totalVotes": 23
+  },
+  {
+    "name": "Moody , Not Voting",
+    "missedVotes": 42,
+    "totalVotes": 4
+  },
+  {
+    "name": "Lee , Not Voting",
+    "missedVotes": 169,
+    "totalVotes": 23
+  },
+  {
+    "name": "Lujan , Not Voting",
+    "missedVotes": 43,
+    "totalVotes": 6
+  },
+  {
+    "name": "Warren , Not Voting",
+    "missedVotes": 100,
+    "totalVotes": 14
+  },
+  {
+    "name": "Baldwin , Not Voting",
+    "missedVotes": 9,
+    "totalVotes": 1
+  },
+  {
+    "name": "Reed , Not Voting",
+    "missedVotes": 60,
+    "totalVotes": 8
+  },
+  {
+    "name": "Paul , Present",
+    "missedVotes": 8,
+    "totalVotes": 2
+  },
+  {
+    "name": "Rosen , Not Voting",
+    "missedVotes": 145,
+    "totalVotes": 11
+  },
+  {
+    "name": "Kim , Not Voting",
+    "missedVotes": 16,
+    "totalVotes": 3
+  },
+  {
+    "name": "Cantwell , Not Voting",
+    "missedVotes": 7,
+    "totalVotes": 1
+  },
+  {
+    "name": "Cornyn , Not Voting",
+    "missedVotes": 12,
+    "totalVotes": 2
+  },
+  {
+    "name": "Grassley , Not Voting",
+    "missedVotes": 17,
+    "totalVotes": 4
+  }
+]
