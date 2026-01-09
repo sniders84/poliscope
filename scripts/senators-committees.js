@@ -2,7 +2,27 @@ const fs = require('fs');
 const fetch = require('node-fetch');
 const cheerio = require('cheerio');
 
-const COMMITTEES = require('./committees-config.json'); // keep your URLs in committees-config.json
+const COMMITTEES = require('./committees-config.json');
+
+// Map committee names to the right CSS selector for their roster list
+const selectorMap = {
+  "Appropriations": ".committee-members li",
+  "Judiciary": ".members-list li",
+  "Armed Services": ".member-list li",
+  "Agriculture, Nutrition, and Forestry": ".members li",
+  "Banking, Housing, and Urban Affairs": ".members li",
+  "Budget": ".members li",
+  "Commerce, Science, and Transportation": ".members li",
+  "Energy and Natural Resources": ".members li",
+  "Environment and Public Works": ".members li",
+  "Finance": ".members li",
+  "Foreign Relations": ".members li",
+  "Health, Education, Labor, and Pensions": ".members li",
+  "Homeland Security and Governmental Affairs": ".members li",
+  "Rules and Administration": ".members li",
+  "Small Business and Entrepreneurship": ".members li",
+  "Veterans' Affairs": ".members li"
+};
 
 function cleanName(text) {
   return text
@@ -24,8 +44,10 @@ async function scrapeCommittee(committee) {
   const html = await res.text();
   const $ = cheerio.load(html);
 
+  const selector = selectorMap[committee.name] || 'li';
   const members = [];
-  $('li, .member, .committee-member').each((i, el) => {
+
+  $(selector).each((i, el) => {
     const text = $(el).text().trim();
     if (!text) return;
     if (!/Senator/i.test(text) && !/^[A-Z][a-z]+,\s+[A-Z]/.test(text)) return;
