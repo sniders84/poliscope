@@ -27,14 +27,18 @@ async function scrapeCommittee(committee) {
   const $ = cheerio.load(html);
 
   const members = [];
-  $('li').each((i, el) => {
+  $('.member, .committee-member, li').each((i, el) => {
     const text = $(el).text().trim();
     if (text && /Senator/i.test(text)) {
       let role = 'Member';
       if (/Chairman|Chairwoman/i.test(text)) role = 'Chairman';
       if (/Ranking Member/i.test(text)) role = 'Ranking Member';
-      const name = text.replace(/Senator\s+/i, '').replace(/Chairman|Chairwoman|Ranking Member/i, '').trim();
-      members.push({ name, committee: committee.name, role });
+      const name = text.replace(/Senator\s+/i, '')
+                       .replace(/Chairman|Chairwoman|Ranking Member/i, '')
+                       .trim();
+      if (name) {
+        members.push({ name, committee: committee.name, role });
+      }
     }
   });
   return members;
