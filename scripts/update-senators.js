@@ -12,10 +12,12 @@ async function updateSenator(sen) {
     const base = `https://api.congress.gov/v3/member/${sen.bioguideId}`;
     const sponsoredUrl = `${base}/sponsored-legislation?limit=500`;
     const cosponsoredUrl = `${base}/cosponsored-legislation?limit=500`;
+    const committeesUrl = `${base}/committees`;
 
-    const [sponsoredRes, cosponsoredRes] = await Promise.all([
+    const [sponsoredRes, cosponsoredRes, committeesRes] = await Promise.all([
       fetch(sponsoredUrl, { headers }),
-      fetch(cosponsoredUrl, { headers })
+      fetch(cosponsoredUrl, { headers }),
+      fetch(committeesUrl, { headers })
     ]);
 
     sen.sponsoredBills = 0;
@@ -34,10 +36,14 @@ async function updateSenator(sen) {
           const actionText = (item.latestAction?.text || '').toLowerCase();
           if (number.startsWith('s.amdt.') || item.amendmentNumber) {
             sen.sponsoredAmendments++;
-            if (actionText.includes('became law') || actionText.includes('enacted') || actionText.includes('agreed to')) sen.becameLawAmendments++;
+            if (actionText.includes('became law') || actionText.includes('enacted') || actionText.includes('agreed to')) {
+              sen.becameLawAmendments++;
+            }
           } else {
             sen.sponsoredBills++;
-            if (actionText.includes('became law') || actionText.includes('enacted')) sen.becameLawBills++;
+            if (actionText.includes('became law') || actionText.includes('enacted')) {
+              sen.becameLawBills++;
+            }
           }
         }
       });
@@ -58,10 +64,23 @@ async function updateSenator(sen) {
       });
     }
 
+    // Committees and leadership roles
+    sen.committees = [];
+    if (committeesRes.ok) {
+      const cData = await committeesRes.json();
+      const cItems = cData.committees || [];
+      cItems.forEach(c => {
+        sen.committees.push({
+          name: c.name,
+          role: c.role || 'Member'
+        });
+      });
+    }
+
     // Missed votes count (scrape senate.gov votes and count "Not Voting" for this senator)
     sen.votes = 0;  // Missed count
     const totalVotes = 4;  // From senate.gov - update this manually when more votes happen
-    const voteUrls = [  // List of vote detail URLs from senate.gov
+    const voteUrls = [
       'https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00004.htm',
       'https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00003.htm',
       'https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00002.htm',
@@ -72,13 +91,16 @@ async function updateSenator(sen) {
       const vRes = await fetch(vUrl);
       if (vRes.ok) {
         const vText = await vRes.text();
-        if (vText.includes(sen.name) && vText.includes('Not Voting')) sen.votes++;
+        if (vText.includes(sen.name) && vText.includes('Not Voting')) {
+          sen.votes++;
+        }
       }
     }
 
-    // If you want %, add: sen.missedPct = (sen.votes / totalVotes) * 100;
+    // Optional: percentage of missed votes
+    sen.missedPct = (totalVotes > 0) ? (sen.votes / totalVotes) * 100 : 0;
 
-    console.log(`Updated ${sen.name}: sBills ${sen.sponsoredBills} sAmend ${sen.sponsoredAmendments} cBills ${sen.cosponsoredBills} cAmend ${sen.cosponsoredAmendments} becameLawB ${sen.becameLawBills} missed ${sen.votes}`);
+    console.log(`Updated ${sen.name}: sBills ${sen.sponsoredBills} sAmend ${sen.sponsoredAmendments} cBills ${sen.cosponsoredBills} cAmend ${sen.cosponsoredAmendments} becameLawB ${sen.becameLawBills} committees ${sen.committees.length} missed ${sen.votes}`);
   } catch (err) {
     console.log(`Error for ${sen.name}: ${err.message}`);
   }
