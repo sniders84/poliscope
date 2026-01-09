@@ -7,6 +7,7 @@ const jsonPath = 'public/senators-legislation.json';
 const apiKey = process.env.CONGRESS_API_KEY;
 const headers = apiKey ? { 'X-Api-Key': apiKey } : {};
 
+// Helper to fetch paginated results
 async function fetchAllLegislation(urlBase, key) {
   const pageSize = 500;
   let offset = 0;
@@ -33,7 +34,9 @@ async function updateLegislation(sen) {
   let cosponsoredAmendments = 0;
   let becameLawBills = 0;
   let becameLawAmendments = 0;
+  let becameLawCosponsoredAmendments = 0;
 
+  // Sponsored
   const sponsoredItems = await fetchAllLegislation(`${base}/sponsored-legislation`, 'sponsoredLegislation');
   sponsoredItems.forEach(item => {
     if (item.congress === 119) {
@@ -50,14 +53,21 @@ async function updateLegislation(sen) {
     }
   });
 
+  // Cosponsored
   const cosponsoredItems = await fetchAllLegislation(`${base}/cosponsored-legislation`, 'cosponsoredLegislation');
   cosponsoredItems.forEach(item => {
     if (item.congress === 119) {
       const number = (item.number || '').toLowerCase();
+      const actionText = (item.latestAction?.text || '').toLowerCase();
+      const enacted = /became law|enacted|signed by president|public law/i.test(actionText);
       if (number.startsWith('s.amdt.') || item.amendmentNumber) {
         cosponsoredAmendments++;
+        if (enacted || actionText.includes('agreed to')) becameLawCosponsoredAmendments++;
       } else {
         cosponsoredBills++;
+        if (enacted) {
+          // optional: track cosponsored bills became law if desired
+        }
       }
     }
   });
@@ -70,7 +80,8 @@ async function updateLegislation(sen) {
     cosponsoredBills,
     cosponsoredAmendments,
     becameLawBills,
-    becameLawAmendments
+    becameLawAmendments,
+    becameLawCosponsoredAmendments
   };
 }
 
@@ -80,7 +91,7 @@ async function updateLegislation(sen) {
     try {
       const record = await updateLegislation(sen);
       output.push(record);
-      console.log(`Updated ${sen.name}: sBills ${record.sponsoredBills} sAmend ${record.sponsoredAmendments} cBills ${record.cosponsoredBills} cAmend ${record.cosponsoredAmendments} becameLawB ${record.becameLawBills}`);
+      console.log(`Updated ${sen.name}: sBills ${record.sponsoredBills} sAmend ${record.sponsoredAmendments} cBills ${record.cosponsoredBills} cAmend ${record.cosponsoredAmendments} becameLawB ${record.becameLawBills} becameLawAmend ${record.becameLawAmendments} becameLawCosponsoredAmend ${record.becameLawCosponsoredAmendments}`);
     } catch (err) {
       console.log(`Error for ${sen.name}: ${err.message}`);
     }
