@@ -1,27 +1,178 @@
 [
   {
-    "name": "Chair Susan Collins  Official Website » Majority Senator Mitch McConnell  Official Website » Senator Lisa Murkowski  Official Website » Senator Lindsey Graham  Official Website » Senator Jerry Moran  Official Website » Senator John Hoeven  Official Website » Senator John Boozman  Official Website » Senator Shelley Moore Capito  Official Website » Senator John Kennedy  Official Website » Senator Cindy Hyde-Smith  Official Website » Senator Bill Hagerty  Official Website » Senator Katie Britt  Official Website » Senator Markwayne Mullin  Official Website » Senator Deb Fischer  Official Website » Senator Mike Rounds  Official Website » Vice Chair Patty Murray  Official Website » Minority Richard Durbin  Official Website » Jack Reed  Official Website » Jeanne Shaheen  Official Website » Jeff Merkley  Official Website » Christopher Coons  Official Website » Brian Schatz  Official Website » Tammy Baldwin  Official Website » Chris Murphy  Official Website » Chris Van Hollen  Official Website » Martin Heinrich  Official Website » Gary Peters  Official Website » Kirsten Gillibrand  Official Website » Jon Ossoff  Official Website »",
+    "name": "Agriculture, Rural Development, Food and Drug Administration, and Related Agencies",
     "committees": [
       {
-        "committee": "Appropriations",
+        "role": "Member"
+      },
+      {
         "role": "Member"
       }
     ]
   },
   {
-    "name": "Chair Susan Collins  Official Website » Majority Senator Mitch McConnell  Official Website » Senator Lisa Murkowski  Official Website » Senator Lindsey Graham  Official Website » Senator Jerry Moran  Official Website » Senator John Hoeven  Official Website » Senator John Boozman  Official Website » Senator Shelley Moore Capito  Official Website » Senator John Kennedy  Official Website » Senator Cindy Hyde-Smith  Official Website » Senator Bill Hagerty  Official Website » Senator Katie Britt  Official Website » Senator Markwayne Mullin  Official Website » Senator Deb Fischer  Official Website » Senator Mike Rounds  Official Website »",
+    "name": "Commerce, Justice, Science, and Related Agencies",
     "committees": [
       {
-        "committee": "Appropriations",
+        "role": "Member"
+      },
+      {
         "role": "Member"
       }
     ]
   },
   {
-    "name": "Mitch McConnell  Official Website » Senator Lisa Murkowski  Official Website » Senator Lindsey Graham  Official Website » Senator Jerry Moran  Official Website » Senator John Hoeven  Official Website » Senator John Boozman  Official Website » Senator Shelley Moore Capito  Official Website » Senator John Kennedy  Official Website » Senator Cindy Hyde-Smith  Official Website » Senator Bill Hagerty  Official Website » Senator Katie Britt  Official Website » Senator Markwayne Mullin  Official Website » Senator Deb Fischer  Official Website » Senator Mike Rounds  Official Website »",
+    "name": "Interior, Environment, and Related Agencies",
     "committees": [
       {
-        "committee": "Appropriations",
+        "role": "Member"
+      },
+      {
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Labor, Health and Human Services, Education, and Related Agencies",
+    "committees": [
+      {
+        "role": "Member"
+      },
+      {
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "State, Foreign Operations, and Related Programs",
+    "committees": [
+      {
+        "role": "Member"
+      },
+      {
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Transportation, Housing and Urban Development, and Related Agencies",
+    "committees": [
+      {
+        "role": "Member"
+      },
+      {
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Mitch McConnell  Official Website »",
+    "committees": [
+      {
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Lisa Murkowski  Official Website »",
+    "committees": [
+      {
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Lindsey Graham  Official Website »",
+    "committees": [
+      {
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Jerry Moran  Official Website »",
+    "committees": [
+      {
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "John Hoeven  Official Website »",
+    "committees": [
+      {
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "John Boozman  Official Website »",
+    "committees": [
+      {
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Shelley Moore Capito  Official Website »",
+    "committees": [
+      {
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "John Kennedy  Official Website »",
+    "committees": [
+      {
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Cindy Hyde-Smith  Official Website »",
+    "committees": [
+      {
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Bill Hagerty  Official Website »",
+    "committees": [
+      {
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Katie Britt  Official Website »",
+    "committees": [
+      {
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Markwayne Mullin  Official Website »",
+    "committees": [
+      {
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Deb Fischer  Official Website »",
+    "committees": [
+      {
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Mike Rounds  Official Website »",
+    "committees": [
+      {
         "role": "Member"
       }
     ]
@@ -30,11 +181,9 @@
     "name": "SENATORS Contact Your Senators Leadership & Officers Former Senators Qualifications & Terms of Service Facts & Milestones States in the Senate",
     "committees": [
       {
-        "committee": "Environment and Public Works",
         "role": "Member"
       },
       {
-        "committee": "Small Business and Entrepreneurship",
         "role": "Member"
       }
     ]
@@ -43,11 +192,9 @@
     "name": "Contact Your Senators",
     "committees": [
       {
-        "committee": "Environment and Public Works",
         "role": "Member"
       },
       {
-        "committee": "Small Business and Entrepreneurship",
         "role": "Member"
       }
     ]
@@ -56,11 +203,15 @@
     "name": "Former Senators",
     "committees": [
       {
-        "committee": "Environment and Public Works",
         "role": "Member"
       },
       {
-        "committee": "Small Business and Entrepreneurship",
+        "role": "Member"
+      },
+      {
+        "role": "Member"
+      },
+      {
         "role": "Member"
       }
     ]
@@ -69,11 +220,15 @@
     "name": "Bills, Acts, & Laws",
     "committees": [
       {
-        "committee": "Environment and Public Works",
         "role": "Member"
       },
       {
-        "committee": "Small Business and Entrepreneurship",
+        "role": "Member"
+      },
+      {
+        "role": "Member"
+      },
+      {
         "role": "Member"
       }
     ]
@@ -82,11 +237,9 @@
     "name": "ABOUT THE SENATE Officers & Staff Vice President President Pro Tempore Secretary of the Senate Sergeant at Arms Party Secretaries Chaplain Committee & Office Staff Pages Powers & Procedures Censure Declarations of War Expulsion Filibuster & Cloture Impeachment Investigations Nominations Rules Treaties Voting Origins & Foundations The Senate & the Constitution Electing & Appointing Senators Committee System Idea of the Senate Parties & Leadership Parties & Leadership Historic Buildings & Spaces The Capitol Senate Chamber Historic Rooms Senate Office Buildings Congressional Meeting Places Past Senate Chambers Traditions & Symbols Oral History Project Historical Highlights 1787-1800 1801-1850 1851-1877 1878-1920 1921-1940 1941-1963 1964-present Senate Stories Blog Research Tools",
     "committees": [
       {
-        "committee": "Environment and Public Works",
         "role": "Member"
       },
       {
-        "committee": "Small Business and Entrepreneurship",
         "role": "Member"
       }
     ]
@@ -95,11 +248,9 @@
     "name": "Origins & Foundations The Senate & the Constitution Electing & Appointing Senators Committee System Idea of the Senate Parties & Leadership",
     "committees": [
       {
-        "committee": "Environment and Public Works",
         "role": "Member"
       },
       {
-        "committee": "Small Business and Entrepreneurship",
         "role": "Member"
       }
     ]
@@ -108,11 +259,9 @@
     "name": "Electing & Appointing Senators",
     "committees": [
       {
-        "committee": "Environment and Public Works",
         "role": "Member"
       },
       {
-        "committee": "Small Business and Entrepreneurship",
         "role": "Member"
       }
     ]
@@ -121,11 +270,9 @@
     "name": "Find Senators by State: --Select State-- Alabama Alaska Arizona Arkansas California Colorado Connecticut Delaware Florida Georgia Hawaii Idaho Illinois Indiana Iowa Kansas Kentucky Louisiana Maine Maryland Massachusetts Michigan Minnesota Mississippi Missouri Montana Nebraska Nevada New Hampshire New Jersey New Mexico New York North Carolina North Dakota Ohio Oklahoma Oregon Pennsylvania Rhode Island South Carolina South Dakota Tennessee Texas Utah Vermont Virginia Washington West Virginia Wisconsin Wyoming",
     "committees": [
       {
-        "committee": "Environment and Public Works",
         "role": "Member"
       },
       {
-        "committee": "Small Business and Entrepreneurship",
         "role": "Member"
       }
     ]
@@ -134,11 +281,9 @@
     "name": "Contact: E-mail webmaster@sec.senate.gov to report a broken link, ask technical questions, or provide feedback on www.senate.gov. For all other correspondence contact your senators. *NOTE: Please do not ask the webmaster to forward mail to senators' offices.",
     "committees": [
       {
-        "committee": "Environment and Public Works",
         "role": "Member"
       },
       {
-        "committee": "Small Business and Entrepreneurship",
         "role": "Member"
       }
     ]
@@ -147,7 +292,6 @@
     "name": "Patients, Share Your Story",
     "committees": [
       {
-        "committee": "Health, Education, Labor, and Pensions",
         "role": "Member"
       }
     ]
@@ -156,7 +300,9 @@
     "name": "Facebook",
     "committees": [
       {
-        "committee": "Judiciary",
+        "role": "Member"
+      },
+      {
         "role": "Member"
       }
     ]
