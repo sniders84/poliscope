@@ -6825,197 +6825,28 @@ section > h3 {
 
 /* Leaderboard */
 .leaderboard-wrap { overflow-x: auto; }
+
 .leaderboard-table {
   width: 100%;
   border-collapse: collapse;
   font-size: 15px;
+  table-layout: fixed; /* ensures consistent column widths */
 }
+
 .leaderboard-table thead th {
   background: #f8fafc;
   font-weight: 700;
 }
+
 .leaderboard-table th,
 .leaderboard-table td {
   border-bottom: 1px solid #e5e7eb;
-  padding: 10px;
-  text-align: left;
-}
-
-/* Optional: subtle rank badges for top spots */
-.leaderboard-table tr:first-child td { font-weight: 700; }
-/* Rankings table styling */
-#rankings-leaderboard {
-  background-color: #2b2b2b; /* dark gray background */
-  color: #f0f0f0;           /* light text for contrast */
-  border-collapse: collapse;
-  width: 100%;
-}
-
-#rankings-leaderboard th,
-#rankings-leaderboard td {
-  padding: 6px 10px;        /* tighter spacing */
-  border-bottom: 1px solid #444;
-}
-
-#rankings-leaderboard th {
-  background-color: #333;   /* darker sub-header row */
-  font-weight: 600;
-}
-
-#rankings-leaderboard tr:hover {
-  background-color: #3a3a3a; /* subtle hover effect */
-}
-/* Scorecard modal overlay (scoped) */
-.scorecard-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
-  display: none;          /* hidden by default */
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
-
-/* Open state */
-.scorecard-modal.is-open {
-  display: flex;
-}
-
-/* Scorecard content box */
-.scorecard-modal-content {
-  background: #2b2b2b;   /* dark gray background */
-  color: #fff;           /* default text white for contrast */
-  padding: 20px;
-  border-radius: 8px;
-  max-width: 500px;
-  width: 90%;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-
-/* Close button */
-.scorecard-modal-close {
-  float: right;
-  font-size: 24px;
-  font-weight: bold;
-  border: none;
-  background: none;
-  cursor: pointer;
-  color: #fff; /* ensure close button is visible on dark background */
-}
-
-/* Breakdown table */
-.scorecard-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 15px;
-}
-
-.scorecard-table td {
-  padding: 6px 8px;
-  border-bottom: 1px solid #555; /* lighter border for dark background */
-}
-
-/* First column labels */
-.scorecard-table td:first-child {
-  font-weight: bold;
-  color: #ddd; /* softer label color */
-}
-
-/* Positive and negative score styling */
-.score-positive {
-  color: #2ecc71; /* green */
-  font-weight: bold;
-}
-
-.score-negative {
-  color: #e74c3c; /* red */
-  font-weight: bold;
-}
-.scorecard-modal.wide .scorecard-modal-content {
-  max-width: 900px; /* wider than default */
-}
-/* Wider scoring logic modal */
-.scorecard-modal.wide .scorecard-modal-content {
-  max-width: 900px;   /* wider than default */
-  width: 90%;         /* responsive */
-  max-height: 80vh;   /* cap height to viewport */
-  overflow-y: auto;   /* scroll if content exceeds height */
-}
-
-/* Style for the info button */
-.info-button {
-  display: inline-block;
-  padding: 10px 20px;
-  margin-top: 1rem;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #fff;
-  background-color: #0078d4; /* same blue as other modern buttons */
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
-}
-
-.info-button:hover {
-  background-color: #005a9e; /* darker blue on hover */
-  transform: translateY(-1px);
-}
-#rankings-leaderboard, #rankings-leaderboard tbody {
-  display: block;
-  max-height: none !important;
-  overflow: visible !important;
-}
-/* Leaderboard table styling */
-.leaderboard-table {
-  width: 100%;
-  border-collapse: collapse;
-  table-layout: fixed; /* ensures consistent column widths */
-}
-
-.leaderboard-table th,
-.leaderboard-table td {
   padding: 8px 12px;
-  text-align: center; /* centers all content under headers */
-  border-bottom: 1px solid #ddd;
   vertical-align: middle;
+  text-align: center; /* default center alignment */
 }
 
-/* Make the "Official" column left-aligned for readability */
-.leaderboard-table th:nth-child(2),
-.leaderboard-table td:nth-child(2) {
-  text-align: left;
-}
-
-/* Optional: fix column widths for consistency */
-.leaderboard-table th:nth-child(1),
-.leaderboard-table td:nth-child(1) { width: 8%; }   /* Rank */
-.leaderboard-table th:nth-child(2),
-.leaderboard-table td:nth-child(2) { width: 35%; }  /* Official */
-.leaderboard-table th:nth-child(3),
-.leaderboard-table td:nth-child(3) { width: 15%; }  /* Office */
-.leaderboard-table th:nth-child(4),
-.leaderboard-table td:nth-child(4) { width: 20%; }  /* Power Score */
-.leaderboard-table th:nth-child(5),
-.leaderboard-table td:nth-child(5) { width: 22%; }  /* Streak */
-/* Leaderboard table alignment */
-.leaderboard-table {
-  width: 100%;
-  border-collapse: collapse;
-  table-layout: fixed; /* force consistent column widths */
-}
-
-.leaderboard-table th,
-.leaderboard-table td {
-  padding: 8px 12px;
-  border-bottom: 1px solid #ddd;
-  vertical-align: middle;
-}
-
-/* Column widths */
+/* Column widths and alignment */
 .leaderboard-table th:nth-child(1),
 .leaderboard-table td:nth-child(1) { width: 8%; text-align: center; }   /* Rank */
 
@@ -7031,10 +6862,123 @@ section > h3 {
 .leaderboard-table th:nth-child(5),
 .leaderboard-table td:nth-child(5) { width: 22%; text-align: center; }  /* Streak */
 
-/* Make the small party/state line align neatly under Official */
+/* Sub‑line for state/party under Official */
 .leaderboard-table td:nth-child(2) small {
   display: block;
   margin-top: 2px;
   font-size: 0.85em;
   color: #555;
+}
+
+/* Optional: subtle rank badges for top spots */
+.leaderboard-table tr:first-child td { font-weight: 700; }
+
+/* Rankings table styling */
+#rankings-leaderboard {
+  background-color: #2b2b2b; /* dark gray background */
+  color: #f0f0f0;           /* light text for contrast */
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#rankings-leaderboard th,
+#rankings-leaderboard td {
+  padding: 6px 10px;
+  border-bottom: 1px solid #444;
+}
+
+#rankings-leaderboard th {
+  background-color: #333;
+  font-weight: 600;
+}
+
+#rankings-leaderboard tr:hover {
+  background-color: #3a3a3a;
+}
+
+/* Scorecard modal overlay */
+.scorecard-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.scorecard-modal.is-open { display: flex; }
+
+/* Scorecard content box */
+.scorecard-modal-content {
+  background: #2b2b2b;
+  color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Close button */
+.scorecard-modal-close {
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #fff;
+}
+
+/* Breakdown table */
+.scorecard-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.scorecard-table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #555;
+}
+
+.scorecard-table td:first-child {
+  font-weight: bold;
+  color: #ddd;
+}
+
+/* Positive and negative score styling */
+.score-positive { color: #2ecc71; font-weight: bold; }
+.score-negative { color: #e74c3c; font-weight: bold; }
+
+/* Wider scoring logic modal */
+.scorecard-modal.wide .scorecard-modal-content {
+  max-width: 900px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+/* Info button */
+.info-button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #0078d4;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.info-button:hover {
+  background-color: #005a9e;
+  transform: translateY(-1px);
 }
