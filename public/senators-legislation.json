@@ -1,9 +1,6 @@
 [
   {
     "name": "Katie Britt",
-    "state": "AL",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "B001319",
     "sponsoredBills": 21,
     "sponsoredAmendments": 5,
@@ -11,15 +8,10 @@
     "cosponsoredAmendments": 11,
     "becameLawBills": 1,
     "becameLawAmendments": 0,
-    "becameLawCosponsoredAmendments": 2,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 2
   },
   {
     "name": "Tommy Tuberville",
-    "state": "AL",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "T000278",
     "sponsoredBills": 33,
     "sponsoredAmendments": 24,
@@ -27,15 +19,10 @@
     "cosponsoredAmendments": 6,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "becameLawCosponsoredAmendments": 1,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 1
   },
   {
     "name": "Lisa Murkowski",
-    "state": "AK",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "M001153",
     "sponsoredBills": 38,
     "sponsoredAmendments": 22,
@@ -43,15 +30,10 @@
     "cosponsoredAmendments": 19,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "becameLawCosponsoredAmendments": 7,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 7
   },
   {
     "name": "Dan Sullivan",
-    "state": "AK",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "S001198",
     "sponsoredBills": 55,
     "sponsoredAmendments": 21,
@@ -59,15 +41,10 @@
     "cosponsoredAmendments": 19,
     "becameLawBills": 3,
     "becameLawAmendments": 3,
-    "becameLawCosponsoredAmendments": 4,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 4
   },
   {
     "name": "Ruben Gallego",
-    "state": "AZ",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "G000003",
     "sponsoredBills": 0,
     "sponsoredAmendments": 0,
@@ -75,15 +52,10 @@
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "becameLawCosponsoredAmendments": 0,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 0
   },
   {
     "name": "Mark Kelly",
-    "state": "AZ",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "K000377",
     "sponsoredBills": 25,
     "sponsoredAmendments": 72,
@@ -91,15 +63,10 @@
     "cosponsoredAmendments": 58,
     "becameLawBills": 1,
     "becameLawAmendments": 3,
-    "becameLawCosponsoredAmendments": 19,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 19
   },
   {
     "name": "John Boozman",
-    "state": "AR",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "B001236",
     "sponsoredBills": 13,
     "sponsoredAmendments": 3,
@@ -107,15 +74,10 @@
     "cosponsoredAmendments": 9,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "becameLawCosponsoredAmendments": 2,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 2
   },
   {
     "name": "Tom Cotton",
-    "state": "AR",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "C001095",
     "sponsoredBills": 65,
     "sponsoredAmendments": 11,
@@ -123,15 +85,10 @@
     "cosponsoredAmendments": 13,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "becameLawCosponsoredAmendments": 2,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 2
   },
   {
     "name": "Adam Schiff",
-    "state": "CA",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "S001222",
     "sponsoredBills": 0,
     "sponsoredAmendments": 0,
@@ -139,15 +96,10 @@
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "becameLawCosponsoredAmendments": 0,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 0
   },
   {
     "name": "Alex Padilla",
-    "state": "CA",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "P000145",
     "sponsoredBills": 74,
     "sponsoredAmendments": 124,
@@ -155,15 +107,10 @@
     "cosponsoredAmendments": 25,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "becameLawCosponsoredAmendments": 3,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 3
   },
   {
     "name": "Michael Bennet",
-    "state": "CO",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "B001267",
     "sponsoredBills": 46,
     "sponsoredAmendments": 181,
@@ -171,15 +118,10 @@
     "cosponsoredAmendments": 51,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "becameLawCosponsoredAmendments": 16,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 16
   },
   {
     "name": "John Hickenlooper",
-    "state": "CO",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "H001075",
     "sponsoredBills": 0,
     "sponsoredAmendments": 0,
@@ -187,15 +129,10 @@
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "becameLawCosponsoredAmendments": 0,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 0
   },
   {
     "name": "Richard Blumenthal",
-    "state": "CT",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "B001277",
     "sponsoredBills": 86,
     "sponsoredAmendments": 39,
@@ -203,15 +140,10 @@
     "cosponsoredAmendments": 18,
     "becameLawBills": 0,
     "becameLawAmendments": 4,
-    "becameLawCosponsoredAmendments": 7,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 7
   },
   {
     "name": "Chris Murphy",
-    "state": "CT",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "M001169",
     "sponsoredBills": 21,
     "sponsoredAmendments": 70,
@@ -219,15 +151,10 @@
     "cosponsoredAmendments": 13,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "becameLawCosponsoredAmendments": 1,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 1
   },
   {
     "name": "Lisa Blunt Rochester",
-    "state": "DE",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "B001313",
     "sponsoredBills": 14,
     "sponsoredAmendments": 0,
@@ -235,15 +162,10 @@
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "becameLawCosponsoredAmendments": 0,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 0
   },
   {
     "name": "Chris Coons",
-    "state": "DE",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "C001088",
     "sponsoredBills": 40,
     "sponsoredAmendments": 73,
@@ -251,15 +173,10 @@
     "cosponsoredAmendments": 21,
     "becameLawBills": 0,
     "becameLawAmendments": 6,
-    "becameLawCosponsoredAmendments": 2,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 2
   },
   {
     "name": "Ashley Moody",
-    "state": "FL",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "M001231",
     "sponsoredBills": 5,
     "sponsoredAmendments": 0,
@@ -267,15 +184,10 @@
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "becameLawCosponsoredAmendments": 0,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 0
   },
   {
     "name": "Rick Scott",
-    "state": "FL",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "S001217",
     "sponsoredBills": 121,
     "sponsoredAmendments": 15,
@@ -283,15 +195,10 @@
     "cosponsoredAmendments": 13,
     "becameLawBills": 0,
     "becameLawAmendments": 4,
-    "becameLawCosponsoredAmendments": 3,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 3
   },
   {
     "name": "Jon Ossoff",
-    "state": "GA",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "O000174",
     "sponsoredBills": 15,
     "sponsoredAmendments": 9,
@@ -299,15 +206,10 @@
     "cosponsoredAmendments": 31,
     "becameLawBills": 0,
     "becameLawAmendments": 4,
-    "becameLawCosponsoredAmendments": 3,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 3
   },
   {
     "name": "Raphael Warnock",
-    "state": "GA",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "W000790",
     "sponsoredBills": 18,
     "sponsoredAmendments": 47,
@@ -315,15 +217,10 @@
     "cosponsoredAmendments": 55,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "becameLawCosponsoredAmendments": 14,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 14
   },
   {
     "name": "Mazie Hirono",
-    "state": "HI",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "H001042",
     "sponsoredBills": 42,
     "sponsoredAmendments": 97,
@@ -331,15 +228,10 @@
     "cosponsoredAmendments": 29,
     "becameLawBills": 0,
     "becameLawAmendments": 6,
-    "becameLawCosponsoredAmendments": 3,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 3
   },
   {
     "name": "Brian Schatz",
-    "state": "HI",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "S001194",
     "sponsoredBills": 35,
     "sponsoredAmendments": 61,
@@ -347,15 +239,10 @@
     "cosponsoredAmendments": 67,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "becameLawCosponsoredAmendments": 15,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 15
   },
   {
     "name": "Mike Crapo",
-    "state": "ID",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "C000880",
     "sponsoredBills": 25,
     "sponsoredAmendments": 7,
@@ -363,15 +250,10 @@
     "cosponsoredAmendments": 15,
     "becameLawBills": 1,
     "becameLawAmendments": 2,
-    "becameLawCosponsoredAmendments": 5,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 5
   },
   {
     "name": "James Risch",
-    "state": "ID",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "R000584",
     "sponsoredBills": 48,
     "sponsoredAmendments": 35,
@@ -379,15 +261,10 @@
     "cosponsoredAmendments": 20,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "becameLawCosponsoredAmendments": 5,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 5
   },
   {
     "name": "Dick Durbin",
-    "state": "IL",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "D000563",
     "sponsoredBills": 83,
     "sponsoredAmendments": 51,
@@ -395,15 +272,10 @@
     "cosponsoredAmendments": 28,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "becameLawCosponsoredAmendments": 6,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 6
   },
   {
     "name": "Tammy Duckworth",
-    "state": "IL",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "D000622",
     "sponsoredBills": 35,
     "sponsoredAmendments": 35,
@@ -411,15 +283,10 @@
     "cosponsoredAmendments": 21,
     "becameLawBills": 1,
     "becameLawAmendments": 5,
-    "becameLawCosponsoredAmendments": 2,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 2
   },
   {
     "name": "Jim Banks",
-    "state": "IN",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "B001299",
     "sponsoredBills": 73,
     "sponsoredAmendments": 4,
@@ -427,15 +294,10 @@
     "cosponsoredAmendments": 6,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "becameLawCosponsoredAmendments": 2,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 2
   },
   {
     "name": "Todd Young",
-    "state": "IN",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "Y000064",
     "sponsoredBills": 36,
     "sponsoredAmendments": 7,
@@ -443,15 +305,10 @@
     "cosponsoredAmendments": 13,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "becameLawCosponsoredAmendments": 3,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 3
   },
   {
     "name": "Joni Ernst",
-    "state": "IA",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "E000295",
     "sponsoredBills": 75,
     "sponsoredAmendments": 20,
@@ -459,15 +316,10 @@
     "cosponsoredAmendments": 14,
     "becameLawBills": 0,
     "becameLawAmendments": 3,
-    "becameLawCosponsoredAmendments": 2,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 2
   },
   {
     "name": "Chuck Grassley",
-    "state": "IA",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "G000386",
     "sponsoredBills": 64,
     "sponsoredAmendments": 31,
@@ -475,15 +327,10 @@
     "cosponsoredAmendments": 19,
     "becameLawBills": 0,
     "becameLawAmendments": 3,
-    "becameLawCosponsoredAmendments": 6,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 6
   },
   {
     "name": "Roger Marshall",
-    "state": "KS",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "M001197",
     "sponsoredBills": 0,
     "sponsoredAmendments": 0,
@@ -491,15 +338,10 @@
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "becameLawCosponsoredAmendments": 0,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 0
   },
   {
     "name": "Jerry Moran",
-    "state": "KS",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "M000934",
     "sponsoredBills": 64,
     "sponsoredAmendments": 16,
@@ -507,15 +349,10 @@
     "cosponsoredAmendments": 11,
     "becameLawBills": 1,
     "becameLawAmendments": 5,
-    "becameLawCosponsoredAmendments": 1,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 1
   },
   {
     "name": "Mitch McConnell",
-    "state": "KY",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "M000355",
     "sponsoredBills": 12,
     "sponsoredAmendments": 1,
@@ -523,15 +360,10 @@
     "cosponsoredAmendments": 2,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "becameLawCosponsoredAmendments": 1,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 1
   },
   {
     "name": "Rand Paul",
-    "state": "KY",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "P000603",
     "sponsoredBills": 44,
     "sponsoredAmendments": 32,
@@ -539,15 +371,10 @@
     "cosponsoredAmendments": 1,
     "becameLawBills": 0,
     "becameLawAmendments": 6,
-    "becameLawCosponsoredAmendments": 0,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 0
   },
   {
     "name": "Bill Cassidy",
-    "state": "LA",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "C001075",
     "sponsoredBills": 89,
     "sponsoredAmendments": 12,
@@ -555,15 +382,10 @@
     "cosponsoredAmendments": 5,
     "becameLawBills": 1,
     "becameLawAmendments": 0,
-    "becameLawCosponsoredAmendments": 0,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 0
   },
   {
     "name": "John Kennedy",
-    "state": "LA",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "K000393",
     "sponsoredBills": 63,
     "sponsoredAmendments": 46,
@@ -571,15 +393,10 @@
     "cosponsoredAmendments": 2,
     "becameLawBills": 3,
     "becameLawAmendments": 5,
-    "becameLawCosponsoredAmendments": 0,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 0
   },
   {
     "name": "Susan Collins",
-    "state": "ME",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "C001035",
     "sponsoredBills": 18,
     "sponsoredAmendments": 17,
@@ -587,15 +404,10 @@
     "cosponsoredAmendments": 11,
     "becameLawBills": 0,
     "becameLawAmendments": 4,
-    "becameLawCosponsoredAmendments": 4,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 4
   },
   {
     "name": "Angus King",
-    "state": "ME",
-    "party": "Independent",
-    "office": "Senator",
     "bioguideId": "K000383",
     "sponsoredBills": 26,
     "sponsoredAmendments": 93,
@@ -603,15 +415,10 @@
     "cosponsoredAmendments": 24,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "becameLawCosponsoredAmendments": 5,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 5
   },
   {
     "name": "Angela Alsobrooks",
-    "state": "MD",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "A000382",
     "sponsoredBills": 19,
     "sponsoredAmendments": 24,
@@ -619,15 +426,10 @@
     "cosponsoredAmendments": 52,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "becameLawCosponsoredAmendments": 12,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 12
   },
   {
     "name": "Chris Van Hollen",
-    "state": "MD",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "V000128",
     "sponsoredBills": 46,
     "sponsoredAmendments": 74,
@@ -635,15 +437,10 @@
     "cosponsoredAmendments": 28,
     "becameLawBills": 0,
     "becameLawAmendments": 4,
-    "becameLawCosponsoredAmendments": 6,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 6
   },
   {
     "name": "Ed Markey",
-    "state": "MA",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "M000133",
     "sponsoredBills": 100,
     "sponsoredAmendments": 63,
@@ -651,15 +448,10 @@
     "cosponsoredAmendments": 23,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "becameLawCosponsoredAmendments": 0,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 0
   },
   {
     "name": "Elizabeth Warren",
-    "state": "MA",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "W000817",
     "sponsoredBills": 34,
     "sponsoredAmendments": 158,
@@ -667,15 +459,10 @@
     "cosponsoredAmendments": 35,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "becameLawCosponsoredAmendments": 3,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 3
   },
   {
     "name": "Gary Peters",
-    "state": "MI",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "P000595",
     "sponsoredBills": 62,
     "sponsoredAmendments": 100,
@@ -683,15 +470,10 @@
     "cosponsoredAmendments": 62,
     "becameLawBills": 1,
     "becameLawAmendments": 2,
-    "becameLawCosponsoredAmendments": 15,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 15
   },
   {
     "name": "Elissa Slotkin",
-    "state": "MI",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "S001208",
     "sponsoredBills": 15,
     "sponsoredAmendments": 21,
@@ -699,15 +481,10 @@
     "cosponsoredAmendments": 15,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "becameLawCosponsoredAmendments": 2,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 2
   },
   {
     "name": "Amy Klobuchar",
-    "state": "MN",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "K000367",
     "sponsoredBills": 76,
     "sponsoredAmendments": 57,
@@ -715,15 +492,10 @@
     "cosponsoredAmendments": 18,
     "becameLawBills": 0,
     "becameLawAmendments": 6,
-    "becameLawCosponsoredAmendments": 6,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 6
   },
   {
     "name": "Tina Smith",
-    "state": "MN",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "S001203",
     "sponsoredBills": 27,
     "sponsoredAmendments": 17,
@@ -731,15 +503,10 @@
     "cosponsoredAmendments": 17,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "becameLawCosponsoredAmendments": 5,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 5
   },
   {
     "name": "Cindy Hyde-Smith",
-    "state": "MS",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "H001079",
     "sponsoredBills": 32,
     "sponsoredAmendments": 0,
@@ -747,15 +514,10 @@
     "cosponsoredAmendments": 1,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "becameLawCosponsoredAmendments": 0,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 0
   },
   {
     "name": "Roger Wicker",
-    "state": "MS",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "W000437",
     "sponsoredBills": 33,
     "sponsoredAmendments": 13,
@@ -763,15 +525,10 @@
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "becameLawCosponsoredAmendments": 0,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 0
   },
   {
     "name": "Josh Hawley",
-    "state": "MO",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "H001089",
     "sponsoredBills": 40,
     "sponsoredAmendments": 31,
@@ -779,15 +536,10 @@
     "cosponsoredAmendments": 3,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "becameLawCosponsoredAmendments": 1,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 1
   },
   {
     "name": "Eric Schmitt",
-    "state": "MO",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "S001227",
     "sponsoredBills": 36,
     "sponsoredAmendments": 13,
@@ -795,15 +547,10 @@
     "cosponsoredAmendments": 7,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "becameLawCosponsoredAmendments": 2,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 2
   },
   {
     "name": "Steve Daines",
-    "state": "MT",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "D000618",
     "sponsoredBills": 46,
     "sponsoredAmendments": 28,
@@ -811,15 +558,10 @@
     "cosponsoredAmendments": 9,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "becameLawCosponsoredAmendments": 4,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 4
   },
   {
     "name": "Tim Sheehy",
-    "state": "MT",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "S001233",
     "sponsoredBills": 0,
     "sponsoredAmendments": 0,
@@ -827,15 +569,10 @@
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "becameLawCosponsoredAmendments": 0,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 0
   },
   {
     "name": "Deb Fischer",
-    "state": "NE",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "F000463",
     "sponsoredBills": 26,
     "sponsoredAmendments": 6,
@@ -843,15 +580,10 @@
     "cosponsoredAmendments": 2,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "becameLawCosponsoredAmendments": 0,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 0
   },
   {
     "name": "Pete Ricketts",
-    "state": "NE",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "R000618",
     "sponsoredBills": 41,
     "sponsoredAmendments": 16,
@@ -859,15 +591,10 @@
     "cosponsoredAmendments": 5,
     "becameLawBills": 1,
     "becameLawAmendments": 1,
-    "becameLawCosponsoredAmendments": 1,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 1
   },
   {
     "name": "Catherine Cortez Masto",
-    "state": "NV",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "C001113",
     "sponsoredBills": 72,
     "sponsoredAmendments": 82,
@@ -875,15 +602,10 @@
     "cosponsoredAmendments": 40,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "becameLawCosponsoredAmendments": 12,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 12
   },
   {
     "name": "Jacky Rosen",
-    "state": "NV",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "R000608",
     "sponsoredBills": 46,
     "sponsoredAmendments": 114,
@@ -891,15 +613,10 @@
     "cosponsoredAmendments": 49,
     "becameLawBills": 0,
     "becameLawAmendments": 4,
-    "becameLawCosponsoredAmendments": 15,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 15
   },
   {
     "name": "Jeanne Shaheen",
-    "state": "NH",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "S001181",
     "sponsoredBills": 58,
     "sponsoredAmendments": 166,
@@ -907,15 +624,10 @@
     "cosponsoredAmendments": 40,
     "becameLawBills": 0,
     "becameLawAmendments": 9,
-    "becameLawCosponsoredAmendments": 4,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 4
   },
   {
     "name": "Maggie Hassan",
-    "state": "NH",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "H001076",
     "sponsoredBills": 36,
     "sponsoredAmendments": 34,
@@ -923,15 +635,10 @@
     "cosponsoredAmendments": 19,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "becameLawCosponsoredAmendments": 1,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 1
   },
   {
     "name": "Andy Kim",
-    "state": "NJ",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "K000394",
     "sponsoredBills": 17,
     "sponsoredAmendments": 52,
@@ -939,15 +646,10 @@
     "cosponsoredAmendments": 36,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "becameLawCosponsoredAmendments": 10,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 10
   },
   {
     "name": "Cory Booker",
-    "state": "NJ",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "B001288",
     "sponsoredBills": 66,
     "sponsoredAmendments": 128,
@@ -955,15 +657,10 @@
     "cosponsoredAmendments": 27,
     "becameLawBills": 0,
     "becameLawAmendments": 5,
-    "becameLawCosponsoredAmendments": 5,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 5
   },
   {
     "name": "Martin Heinrich",
-    "state": "NM",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "H001046",
     "sponsoredBills": 32,
     "sponsoredAmendments": 65,
@@ -971,15 +668,10 @@
     "cosponsoredAmendments": 31,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "becameLawCosponsoredAmendments": 7,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 7
   },
   {
     "name": "Ben Ray Luján",
-    "state": "NM",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "L000570",
     "sponsoredBills": 49,
     "sponsoredAmendments": 72,
@@ -987,15 +679,10 @@
     "cosponsoredAmendments": 30,
     "becameLawBills": 0,
     "becameLawAmendments": 3,
-    "becameLawCosponsoredAmendments": 6,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 6
   },
   {
     "name": "Kirsten Gillibrand",
-    "state": "NY",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "G000555",
     "sponsoredBills": 37,
     "sponsoredAmendments": 12,
@@ -1003,15 +690,10 @@
     "cosponsoredAmendments": 30,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "becameLawCosponsoredAmendments": 10,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 10
   },
   {
     "name": "Chuck Schumer",
-    "state": "NY",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "S000148",
     "sponsoredBills": 18,
     "sponsoredAmendments": 27,
@@ -1019,15 +701,10 @@
     "cosponsoredAmendments": 13,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "becameLawCosponsoredAmendments": 4,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 4
   },
   {
     "name": "Ted Budd",
-    "state": "NC",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "B001305",
     "sponsoredBills": 27,
     "sponsoredAmendments": 11,
@@ -1035,15 +712,10 @@
     "cosponsoredAmendments": 10,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "becameLawCosponsoredAmendments": 1,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 1
   },
   {
     "name": "Thom Tillis",
-    "state": "NC",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "T000476",
     "sponsoredBills": 49,
     "sponsoredAmendments": 9,
@@ -1051,15 +723,10 @@
     "cosponsoredAmendments": 13,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "becameLawCosponsoredAmendments": 2,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 2
   },
   {
     "name": "Kevin Cramer",
-    "state": "ND",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "C001096",
     "sponsoredBills": 23,
     "sponsoredAmendments": 1,
@@ -1067,15 +734,10 @@
     "cosponsoredAmendments": 8,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "becameLawCosponsoredAmendments": 2,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 2
   },
   {
     "name": "John Hoeven",
-    "state": "ND",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "H001061",
     "sponsoredBills": 17,
     "sponsoredAmendments": 4,
@@ -1083,15 +745,10 @@
     "cosponsoredAmendments": 4,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "becameLawCosponsoredAmendments": 2,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 2
   },
   {
     "name": "Bernie Moreno",
-    "state": "OH",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "M001232",
     "sponsoredBills": 16,
     "sponsoredAmendments": 0,
@@ -1099,15 +756,10 @@
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "becameLawCosponsoredAmendments": 0,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 0
   },
   {
     "name": "Jon Husted",
-    "state": "OH",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "H001088",
     "sponsoredBills": 0,
     "sponsoredAmendments": 0,
@@ -1115,15 +767,10 @@
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "becameLawCosponsoredAmendments": 0,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 0
   },
   {
     "name": "James Lankford",
-    "state": "OK",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "L000575",
     "sponsoredBills": 59,
     "sponsoredAmendments": 24,
@@ -1131,15 +778,10 @@
     "cosponsoredAmendments": 6,
     "becameLawBills": 1,
     "becameLawAmendments": 1,
-    "becameLawCosponsoredAmendments": 2,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 2
   },
   {
     "name": "Markwayne Mullin",
-    "state": "OK",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "M001190",
     "sponsoredBills": 20,
     "sponsoredAmendments": 6,
@@ -1147,15 +789,10 @@
     "cosponsoredAmendments": 4,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "becameLawCosponsoredAmendments": 1,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 1
   },
   {
     "name": "Jeff Merkley",
-    "state": "OR",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "M001176",
     "sponsoredBills": 73,
     "sponsoredAmendments": 154,
@@ -1163,15 +800,10 @@
     "cosponsoredAmendments": 19,
     "becameLawBills": 0,
     "becameLawAmendments": 9,
-    "becameLawCosponsoredAmendments": 4,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 4
   },
   {
     "name": "Ron Wyden",
-    "state": "OR",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "W000779",
     "sponsoredBills": 48,
     "sponsoredAmendments": 45,
@@ -1179,15 +811,10 @@
     "cosponsoredAmendments": 27,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "becameLawCosponsoredAmendments": 5,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 5
   },
   {
     "name": "John Fetterman",
-    "state": "PA",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "F000479",
     "sponsoredBills": 20,
     "sponsoredAmendments": 3,
@@ -1195,15 +822,10 @@
     "cosponsoredAmendments": 5,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "becameLawCosponsoredAmendments": 0,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 0
   },
   {
     "name": "David McCormick",
-    "state": "PA",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "M001227",
     "sponsoredBills": 19,
     "sponsoredAmendments": 0,
@@ -1211,15 +833,10 @@
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "becameLawCosponsoredAmendments": 0,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 0
   },
   {
     "name": "Jack Reed",
-    "state": "RI",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "R000122",
     "sponsoredBills": 25,
     "sponsoredAmendments": 113,
@@ -1227,15 +844,10 @@
     "cosponsoredAmendments": 44,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "becameLawCosponsoredAmendments": 13,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 13
   },
   {
     "name": "Sheldon Whitehouse",
-    "state": "RI",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "W000802",
     "sponsoredBills": 65,
     "sponsoredAmendments": 33,
@@ -1243,15 +855,10 @@
     "cosponsoredAmendments": 36,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "becameLawCosponsoredAmendments": 4,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 4
   },
   {
     "name": "Lindsey Graham",
-    "state": "SC",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "G000359",
     "sponsoredBills": 22,
     "sponsoredAmendments": 10,
@@ -1259,15 +866,10 @@
     "cosponsoredAmendments": 5,
     "becameLawBills": 0,
     "becameLawAmendments": 4,
-    "becameLawCosponsoredAmendments": 0,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 0
   },
   {
     "name": "Tim Scott",
-    "state": "SC",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "S001184",
     "sponsoredBills": 46,
     "sponsoredAmendments": 14,
@@ -1275,15 +877,10 @@
     "cosponsoredAmendments": 1,
     "becameLawBills": 1,
     "becameLawAmendments": 2,
-    "becameLawCosponsoredAmendments": 0,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 0
   },
   {
     "name": "Mike Rounds",
-    "state": "SD",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "R000605",
     "sponsoredBills": 51,
     "sponsoredAmendments": 9,
@@ -1291,15 +888,10 @@
     "cosponsoredAmendments": 12,
     "becameLawBills": 0,
     "becameLawAmendments": 3,
-    "becameLawCosponsoredAmendments": 3,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 3
   },
   {
     "name": "John Thune",
-    "state": "SD",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "T000250",
     "sponsoredBills": 42,
     "sponsoredAmendments": 39,
@@ -1307,15 +899,10 @@
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "becameLawCosponsoredAmendments": 0,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 0
   },
   {
     "name": "Marsha Blackburn",
-    "state": "TN",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "B001243",
     "sponsoredBills": 113,
     "sponsoredAmendments": 21,
@@ -1323,15 +910,10 @@
     "cosponsoredAmendments": 12,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "becameLawCosponsoredAmendments": 1,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 1
   },
   {
     "name": "Bill Hagerty",
-    "state": "TN",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "H000601",
     "sponsoredBills": 19,
     "sponsoredAmendments": 12,
@@ -1339,15 +921,10 @@
     "cosponsoredAmendments": 2,
     "becameLawBills": 1,
     "becameLawAmendments": 2,
-    "becameLawCosponsoredAmendments": 0,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 0
   },
   {
     "name": "John Cornyn",
-    "state": "TX",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "C001056",
     "sponsoredBills": 97,
     "sponsoredAmendments": 46,
@@ -1355,15 +932,10 @@
     "cosponsoredAmendments": 13,
     "becameLawBills": 2,
     "becameLawAmendments": 6,
-    "becameLawCosponsoredAmendments": 2,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 2
   },
   {
     "name": "Ted Cruz",
-    "state": "TX",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "C001098",
     "sponsoredBills": 101,
     "sponsoredAmendments": 56,
@@ -1371,15 +943,10 @@
     "cosponsoredAmendments": 10,
     "becameLawBills": 1,
     "becameLawAmendments": 6,
-    "becameLawCosponsoredAmendments": 1,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 1
   },
   {
     "name": "John Curtis",
-    "state": "UT",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "C001131",
     "sponsoredBills": 2,
     "sponsoredAmendments": 0,
@@ -1387,15 +954,10 @@
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "becameLawCosponsoredAmendments": 0,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 0
   },
   {
     "name": "Mike Lee",
-    "state": "UT",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "L000577",
     "sponsoredBills": 99,
     "sponsoredAmendments": 88,
@@ -1403,15 +965,10 @@
     "cosponsoredAmendments": 7,
     "becameLawBills": 0,
     "becameLawAmendments": 3,
-    "becameLawCosponsoredAmendments": 1,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 1
   },
   {
     "name": "Tim Kaine",
-    "state": "VA",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "K000384",
     "sponsoredBills": 49,
     "sponsoredAmendments": 120,
@@ -1419,15 +976,10 @@
     "cosponsoredAmendments": 39,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "becameLawCosponsoredAmendments": 7,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 7
   },
   {
     "name": "Mark Warner",
-    "state": "VA",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "W000805",
     "sponsoredBills": 28,
     "sponsoredAmendments": 67,
@@ -1435,15 +987,10 @@
     "cosponsoredAmendments": 53,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "becameLawCosponsoredAmendments": 11,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 11
   },
   {
     "name": "Patty Murray",
-    "state": "WA",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "M001111",
     "sponsoredBills": 24,
     "sponsoredAmendments": 37,
@@ -1451,15 +998,10 @@
     "cosponsoredAmendments": 8,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "becameLawCosponsoredAmendments": 2,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 2
   },
   {
     "name": "Maria Cantwell",
-    "state": "WA",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "C000127",
     "sponsoredBills": 15,
     "sponsoredAmendments": 38,
@@ -1467,15 +1009,10 @@
     "cosponsoredAmendments": 17,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "becameLawCosponsoredAmendments": 5,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 5
   },
   {
     "name": "Shelley Moore Capito",
-    "state": "WV",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "C001047",
     "sponsoredBills": 22,
     "sponsoredAmendments": 2,
@@ -1483,15 +1020,10 @@
     "cosponsoredAmendments": 5,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "becameLawCosponsoredAmendments": 1,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 1
   },
   {
     "name": "Jim Justice",
-    "state": "WV",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "J000307",
     "sponsoredBills": 19,
     "sponsoredAmendments": 0,
@@ -1499,15 +1031,10 @@
     "cosponsoredAmendments": 0,
     "becameLawBills": 1,
     "becameLawAmendments": 0,
-    "becameLawCosponsoredAmendments": 0,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 0
   },
   {
     "name": "Tammy Baldwin",
-    "state": "WI",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "B001230",
     "sponsoredBills": 31,
     "sponsoredAmendments": 34,
@@ -1515,15 +1042,10 @@
     "cosponsoredAmendments": 30,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "becameLawCosponsoredAmendments": 8,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 8
   },
   {
     "name": "Ron Johnson",
-    "state": "WI",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "J000293",
     "sponsoredBills": 18,
     "sponsoredAmendments": 8,
@@ -1531,15 +1053,10 @@
     "cosponsoredAmendments": 4,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "becameLawCosponsoredAmendments": 1,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 1
   },
   {
     "name": "John Barrasso",
-    "state": "WY",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "B001261",
     "sponsoredBills": 41,
     "sponsoredAmendments": 5,
@@ -1547,15 +1064,10 @@
     "cosponsoredAmendments": 2,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "becameLawCosponsoredAmendments": 0,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 0
   },
   {
     "name": "Cynthia Lummis",
-    "state": "WY",
-    "party": "Republican",
-    "office": "Senator",
     "bioguideId": "L000571",
     "sponsoredBills": 37,
     "sponsoredAmendments": 14,
@@ -1563,15 +1075,10 @@
     "cosponsoredAmendments": 12,
     "becameLawBills": 1,
     "becameLawAmendments": 0,
-    "becameLawCosponsoredAmendments": 2,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 2
   },
   {
     "name": "Bernie Sanders",
-    "state": "VT",
-    "party": "Independent",
-    "office": "Senator",
     "bioguideId": "S000033",
     "sponsoredBills": 36,
     "sponsoredAmendments": 15,
@@ -1579,15 +1086,10 @@
     "cosponsoredAmendments": 15,
     "becameLawBills": 0,
     "becameLawAmendments": 3,
-    "becameLawCosponsoredAmendments": 3,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 3
   },
   {
     "name": "Peter Welch",
-    "state": "VT",
-    "party": "Democrat",
-    "office": "Senator",
     "bioguideId": "W000800",
     "sponsoredBills": 55,
     "sponsoredAmendments": 159,
@@ -1595,8 +1097,6 @@
     "cosponsoredAmendments": 23,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "becameLawCosponsoredAmendments": 6,
-    "committees": [],
-    "missedVotes": 0
+    "becameLawCosponsoredAmendments": 6
   }
 ]
