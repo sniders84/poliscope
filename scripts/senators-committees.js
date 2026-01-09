@@ -7,70 +7,74 @@ const COMMITTEES = require('./committees-config.json');
 function cleanName(text) {
   return text
     .replace(/Sen\.?\s*/gi, '')
-    .replace(/\s*\([RD]-[A-Z]{2}\)\s*/gi, '') // strip (R-AL)
-    .replace(/\s*Chairman|Chairwoman|Ranking Member|Vice Chair\s*/gi, '')
+    .replace(/\s*\([RDIA]-[A-Z]{2}\)\s*/gi, '')
+    .replace(/,\s*(Chairman|Ranking Member|Vice Chair|Member)\s*/gi, '')
+    .replace(/\s*\(.*?\)\s*/g, '')
     .replace(/\s+/g, ' ')
     .trim();
 }
 
 function detectRole(text) {
   text = text.toLowerCase();
-  if (text.includes('chairman') || text.includes('chair')) return 'Chairman';
-  if (text.includes('ranking member') || text.includes('ranking')) return 'Ranking Member';
-  if (text.includes('vice chair')) return 'Vice Chair';
+  if (/chairman|chair|chairwoman/.test(text)) return 'Chairman';
+  if (/ranking member|ranking/.test(text)) return 'Ranking Member';
+  if (/vice chair/.test(text)) return 'Vice Chair';
   return 'Member';
 }
 
 async function scrapeCommittee(committee) {
-  console.log(`Scraping ${committee.name || 'unnamed'} from ${committee.url}`);
+  console.log(`Scraping ${committee.name} from ${committee.url}`);
   try {
     const res = await fetch(committee.url);
     if (!res.ok) {
-      console.log(`Failed ${committee.name}: ${res.status}`);
+      console.log(`Failed ${committee.name}: ${res.status} - ${res.statusText}`);
       return [];
     }
     const html = await res.text();
     const $ = cheerio.load(html);
 
-    // Expanded selectors for senate.gov variations
-    const selectors = [
-      'li.member', '.member-list li', '.committee-members li', '.members-list li',
-      'table tr td:first-child', 'div.member-info', 'ul li a', 'p strong', 'li'
+    // Priority selectors for known patterns
+    const prioritySelectors = [
+      'ul.member-list li', 'ul.members li', '.committee-members li', '.member-list li',
+      'table.membership tr td:first-child', 'div.member-name', 'li a[href*="senator"]'
     ];
 
     let members = [];
-    for (const sel of selectors) {
+    for (const sel of prioritySelectors) {
       $(sel).each((i, el) => {
-        // Get text from element or its link
         let text = $(el).text().trim();
         if ($(el).find('a').length) text = $(el).find('a').text().trim() || text;
 
         if (!text || text.length < 5) return;
 
-        // Filter senator-like text
+        // Filter only senator-like entries
         if (!/^[A-Z][a-z]+/.test(text) && !/senator/i.test(text)) return;
 
-        const role = detectRole(text + $(el).html()); // include html for bold/italic roles
+        const role = detectRole(text + $(el).html());
         const name = cleanName(text);
 
-        if (name && name.split(' ').length >= 2) { // at least first + last
+        if (name.split(' ').length >= 2) { // First + last name
           members.push({ name, committee: committee.name, role });
         }
       });
-      if (members.length > 5) break; // good enough
+      if (members.length >= 15) break; // Stop early if we hit typical committee size
     }
 
-    // Dedupe, prioritize higher roles
+    // Dedupe with role priority
     const byName = new Map();
+    const rolePriority = { 'Chairman': 4, 'Vice Chair': 3, 'Ranking Member': 2, 'Member': 1 };
     members.forEach(m => {
       const existing = byName.get(m.name);
-      const pri = { 'Chairman': 4, 'Vice Chair': 3, 'Ranking Member': 2, 'Member': 1 }[m.role] || 0;
-      const exPri = existing ? { 'Chairman': 4, 'Vice Chair': 3, 'Ranking Member': 2, 'Member': 1 }[existing.role] || 0 : 0;
-      if (pri > exPri) byName.set(m.name, m);
+      const pri = rolePriority[m.role] || 0;
+      const exPri = existing ? rolePriority[existing.role] || 0 : 0;
+      if (pri > exPri || !existing) {
+        byName.set(m.name, m);
+      }
     });
 
-    console.log(`Found ${byName.size} members for ${committee.name}`);
-    return Array.from(byName.values());
+    const result = Array.from(byName.values());
+    console.log(`Found ${result.length} members for ${committee.name}`);
+    return result;
   } catch (err) {
     console.log(`Error scraping ${committee.name}: ${err.message}`);
     return [];
@@ -81,7 +85,7 @@ async function main() {
   const senators = {};
   for (const committee of COMMITTEES) {
     if (!committee.url || !committee.name) {
-      console.log('Skipping invalid committee entry');
+      console.log('Skipping invalid entry');
       continue;
     }
     const members = await scrapeCommittee(committee);
@@ -91,7 +95,7 @@ async function main() {
     }
   }
 
-  // Sort committees by role priority
+  // Sort by role priority
   Object.values(senators).forEach(s => {
     s.committees.sort((a, b) => {
       const pri = { 'Chairman': 4, 'Vice Chair': 3, 'Ranking Member': 2, 'Member': 1 };
