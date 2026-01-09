@@ -11,13 +11,9 @@
     "cosponsoredAmendments": 11,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "committees": [
-      "Committee on Appropriations",
-      "Committee on Banking, Housing, and Urban Affairs",
-      "Committee on Rules and Administration",
-      "Committee on the Judiciary"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Tommy Tuberville",
@@ -31,14 +27,9 @@
     "cosponsoredAmendments": 6,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "committees": [
-      "Committee on Agriculture, Nutrition, and Forestry",
-      "Committee on Armed Services",
-      "Committee on Health, Education, Labor, and Pensions",
-      "Committee on Veterans' Affairs",
-      "Special Committee on Aging"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Lisa Murkowski",
@@ -52,13 +43,9 @@
     "cosponsoredAmendments": 19,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "committees": [
-      "Committee on Appropriations",
-      "Committee on Energy and Natural Resources",
-      "Committee on Health, Education, Labor, and Pensions",
-      "Committee on Indian Affairs"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Dan Sullivan",
@@ -72,13 +59,9 @@
     "cosponsoredAmendments": 19,
     "becameLawBills": 0,
     "becameLawAmendments": 3,
-    "committees": [
-      "Committee on Armed Services",
-      "Committee on Commerce, Science, and Transportation",
-      "Committee on Environment and Public Works",
-      "Committee on Veterans' Affairs"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Ruben Gallego",
@@ -92,13 +75,9 @@
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "committees": [
-      "Committee on Banking, Housing, and Urban Affairs",
-      "Committee on Energy and Natural Resources",
-      "Committee on Homeland Security and Governmental Affairs",
-      "Committee on Veterans' Affairs"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Mark Kelly",
@@ -112,14 +91,9 @@
     "cosponsoredAmendments": 58,
     "becameLawBills": 0,
     "becameLawAmendments": 3,
-    "committees": [
-      "Committee on Armed Services",
-      "Committee on Environment and Public Works",
-      "Joint Economic Committee",
-      "Select Committee on Intelligence",
-      "Special Committee on Aging"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "John Boozman",
@@ -133,14 +107,9 @@
     "cosponsoredAmendments": 9,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "committees": [
-      "Committee on Agriculture, Nutrition, and Forestry",
-      "Committee on Appropriations",
-      "Committee on Environment and Public Works",
-      "Committee on Rules and Administration",
-      "Committee on Veterans' Affairs"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Tom Cotton",
@@ -148,19 +117,15 @@
     "party": "Republican",
     "office": "Senator",
     "bioguideId": "C001095",
-    "sponsoredBills": 64,
+    "sponsoredBills": 65,
     "sponsoredAmendments": 11,
     "cosponsoredBills": 125,
     "cosponsoredAmendments": 13,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "committees": [
-      "Committee on Armed Services",
-      "Committee on Energy and Natural Resources",
-      "Joint Economic Committee",
-      "Select Committee on Intelligence"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Adam Schiff",
@@ -174,13 +139,9 @@
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "committees": [
-      "Committee on Agriculture, Nutrition, and Forestry",
-      "Committee on Environment and Public Works",
-      "Committee on Small Business and Entrepreneurship",
-      "Committee on the Judiciary"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Alex Padilla",
@@ -194,14 +155,9 @@
     "cosponsoredAmendments": 25,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "committees": [
-      "Committee on Energy and Natural Resources",
-      "Committee on Environment and Public Works",
-      "Committee on Rules and Administration",
-      "Committee on the Budget",
-      "Committee on the Judiciary"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Michael Bennet",
@@ -209,19 +165,15 @@
     "party": "Democrat",
     "office": "Senator",
     "bioguideId": "B001267",
-    "sponsoredBills": 45,
+    "sponsoredBills": 46,
     "sponsoredAmendments": 181,
-    "cosponsoredBills": 198,
-    "cosponsoredAmendments": 52,
+    "cosponsoredBills": 199,
+    "cosponsoredAmendments": 51,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "committees": [
-      "Committee on Agriculture, Nutrition, and Forestry",
-      "Committee on Finance",
-      "Committee on Rules and Administration",
-      "Select Committee on Intelligence"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "John Hickenlooper",
@@ -235,13 +187,9 @@
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "committees": [
-      "Committee on Commerce, Science, and Transportation",
-      "Committee on Energy and Natural Resources",
-      "Committee on Health, Education, Labor, and Pensions",
-      "Committee on Small Business and Entrepreneurship"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Richard Blumenthal",
@@ -255,13 +203,9 @@
     "cosponsoredAmendments": 18,
     "becameLawBills": 0,
     "becameLawAmendments": 4,
-    "committees": [
-      "Committee on Armed Services",
-      "Committee on Homeland Security and Governmental Affairs",
-      "Committee on the Judiciary",
-      "Committee on Veterans' Affairs"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Chris Murphy",
@@ -271,16 +215,13 @@
     "bioguideId": "M001169",
     "sponsoredBills": 21,
     "sponsoredAmendments": 70,
-    "cosponsoredBills": 170,
+    "cosponsoredBills": 171,
     "cosponsoredAmendments": 13,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "committees": [
-      "Committee on Appropriations",
-      "Committee on Foreign Relations",
-      "Committee on Health, Education, Labor, and Pensions"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Lisa Blunt Rochester",
@@ -290,17 +231,13 @@
     "bioguideId": "B001313",
     "sponsoredBills": 14,
     "sponsoredAmendments": 0,
-    "cosponsoredBills": 246,
+    "cosponsoredBills": 247,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "committees": [
-      "Committee on Banking, Housing, and Urban Affairs",
-      "Committee on Commerce, Science, and Transportation",
-      "Committee on Environment and Public Works",
-      "Committee on Health, Education, Labor, and Pensions"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Chris Coons",
@@ -314,14 +251,9 @@
     "cosponsoredAmendments": 21,
     "becameLawBills": 0,
     "becameLawAmendments": 6,
-    "committees": [
-      "Committee on Appropriations",
-      "Committee on Foreign Relations",
-      "Committee on Small Business and Entrepreneurship",
-      "Committee on the Judiciary",
-      "Select Committee on Ethics"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Ashley Moody",
@@ -329,20 +261,15 @@
     "party": "Republican",
     "office": "Senator",
     "bioguideId": "M001231",
-    "sponsoredBills": 4,
+    "sponsoredBills": 5,
     "sponsoredAmendments": 0,
     "cosponsoredBills": 173,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "committees": [
-      "Committee on Health, Education, Labor, and Pensions",
-      "Committee on Homeland Security and Governmental Affairs",
-      "Committee on the Judiciary",
-      "Joint Economic Committee",
-      "Special Committee on Aging"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Rick Scott",
@@ -356,14 +283,9 @@
     "cosponsoredAmendments": 13,
     "becameLawBills": 0,
     "becameLawAmendments": 4,
-    "committees": [
-      "Committee on Armed Services",
-      "Committee on Foreign Relations",
-      "Committee on Homeland Security and Governmental Affairs",
-      "Committee on the Budget",
-      "Special Committee on Aging"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Jon Ossoff",
@@ -377,12 +299,9 @@
     "cosponsoredAmendments": 31,
     "becameLawBills": 0,
     "becameLawAmendments": 4,
-    "committees": [
-      "Committee on Appropriations",
-      "Committee on Rules and Administration",
-      "Select Committee on Intelligence"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Raphael Warnock",
@@ -396,13 +315,9 @@
     "cosponsoredAmendments": 55,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "committees": [
-      "Committee on Agriculture, Nutrition, and Forestry",
-      "Committee on Banking, Housing, and Urban Affairs",
-      "Committee on Finance",
-      "Special Committee on Aging"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Mazie Hirono",
@@ -416,14 +331,9 @@
     "cosponsoredAmendments": 29,
     "becameLawBills": 0,
     "becameLawAmendments": 6,
-    "committees": [
-      "Committee on Armed Services",
-      "Committee on Energy and Natural Resources",
-      "Committee on Small Business and Entrepreneurship",
-      "Committee on the Judiciary",
-      "Committee on Veterans' Affairs"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Brian Schatz",
@@ -437,13 +347,7 @@
     "cosponsoredAmendments": 67,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "committees": [
-      "Committee on Appropriations",
-      "Committee on Commerce, Science, and Transportation",
-      "Committee on Foreign Relations",
-      "Committee on Indian Affairs",
-      "Select Committee on Ethics"
-    ],
+    "committees": [],
     "votes": 0
   },
   {
@@ -458,12 +362,9 @@
     "cosponsoredAmendments": 15,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "committees": [
-      "Committee on Banking, Housing, and Urban Affairs",
-      "Committee on Finance",
-      "Committee on the Budget"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "James Risch",
@@ -477,14 +378,9 @@
     "cosponsoredAmendments": 20,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "committees": [
-      "Committee on Energy and Natural Resources",
-      "Committee on Foreign Relations",
-      "Committee on Small Business and Entrepreneurship",
-      "Select Committee on Ethics",
-      "Select Committee on Intelligence"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Dick Durbin",
@@ -498,12 +394,9 @@
     "cosponsoredAmendments": 28,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "committees": [
-      "Committee on Agriculture, Nutrition, and Forestry",
-      "Committee on Appropriations",
-      "Committee on the Judiciary"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Tammy Duckworth",
@@ -511,19 +404,15 @@
     "party": "Democrat",
     "office": "Senator",
     "bioguideId": "D000622",
-    "sponsoredBills": 34,
+    "sponsoredBills": 35,
     "sponsoredAmendments": 35,
     "cosponsoredBills": 229,
     "cosponsoredAmendments": 21,
     "becameLawBills": 0,
     "becameLawAmendments": 5,
-    "committees": [
-      "Committee on Armed Services",
-      "Committee on Commerce, Science, and Transportation",
-      "Committee on Foreign Relations",
-      "Committee on Veterans' Affairs"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Jim Banks",
@@ -531,19 +420,15 @@
     "party": "Republican",
     "office": "Senator",
     "bioguideId": "B001299",
-    "sponsoredBills": 72,
+    "sponsoredBills": 73,
     "sponsoredAmendments": 4,
-    "cosponsoredBills": 158,
+    "cosponsoredBills": 160,
     "cosponsoredAmendments": 6,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "committees": [
-      "Committee on Armed Services",
-      "Committee on Banking, Housing, and Urban Affairs",
-      "Committee on Health, Education, Labor, and Pensions",
-      "Committee on Veterans' Affairs"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Todd Young",
@@ -551,19 +436,15 @@
     "party": "Republican",
     "office": "Senator",
     "bioguideId": "Y000064",
-    "sponsoredBills": 35,
+    "sponsoredBills": 36,
     "sponsoredAmendments": 7,
-    "cosponsoredBills": 157,
+    "cosponsoredBills": 159,
     "cosponsoredAmendments": 13,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "committees": [
-      "Committee on Commerce, Science, and Transportation",
-      "Committee on Finance",
-      "Committee on Small Business and Entrepreneurship",
-      "Select Committee on Intelligence"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Joni Ernst",
@@ -577,13 +458,9 @@
     "cosponsoredAmendments": 14,
     "becameLawBills": 0,
     "becameLawAmendments": 3,
-    "committees": [
-      "Committee on Agriculture, Nutrition, and Forestry",
-      "Committee on Armed Services",
-      "Committee on Homeland Security and Governmental Affairs",
-      "Committee on Small Business and Entrepreneurship"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Chuck Grassley",
@@ -597,13 +474,9 @@
     "cosponsoredAmendments": 19,
     "becameLawBills": 0,
     "becameLawAmendments": 3,
-    "committees": [
-      "Committee on Agriculture, Nutrition, and Forestry",
-      "Committee on Finance",
-      "Committee on the Budget",
-      "Committee on the Judiciary"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Roger Marshall",
@@ -617,13 +490,9 @@
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "committees": [
-      "Committee on Agriculture, Nutrition, and Forestry",
-      "Committee on Finance",
-      "Committee on Health, Education, Labor, and Pensions",
-      "Committee on the Budget"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Jerry Moran",
@@ -637,15 +506,9 @@
     "cosponsoredAmendments": 11,
     "becameLawBills": 0,
     "becameLawAmendments": 5,
-    "committees": [
-      "Committee on Agriculture, Nutrition, and Forestry",
-      "Committee on Appropriations",
-      "Committee on Commerce, Science, and Transportation",
-      "Committee on Indian Affairs",
-      "Committee on Veterans' Affairs",
-      "Select Committee on Intelligence"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Mitch McConnell",
@@ -659,12 +522,9 @@
     "cosponsoredAmendments": 2,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "committees": [
-      "Committee on Agriculture, Nutrition, and Forestry",
-      "Committee on Appropriations",
-      "Committee on Rules and Administration"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Rand Paul",
@@ -678,13 +538,9 @@
     "cosponsoredAmendments": 1,
     "becameLawBills": 0,
     "becameLawAmendments": 6,
-    "committees": [
-      "Committee on Foreign Relations",
-      "Committee on Health, Education, Labor, and Pensions",
-      "Committee on Homeland Security and Governmental Affairs",
-      "Committee on Small Business and Entrepreneurship"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Bill Cassidy",
@@ -698,13 +554,9 @@
     "cosponsoredAmendments": 5,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "committees": [
-      "Committee on Energy and Natural Resources",
-      "Committee on Finance",
-      "Committee on Health, Education, Labor, and Pensions",
-      "Committee on Veterans' Affairs"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "John Kennedy",
@@ -714,17 +566,13 @@
     "bioguideId": "K000393",
     "sponsoredBills": 63,
     "sponsoredAmendments": 46,
-    "cosponsoredBills": 129,
+    "cosponsoredBills": 130,
     "cosponsoredAmendments": 2,
     "becameLawBills": 0,
     "becameLawAmendments": 5,
-    "committees": [
-      "Committee on Appropriations",
-      "Committee on Banking, Housing, and Urban Affairs",
-      "Committee on the Budget",
-      "Committee on the Judiciary"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Susan Collins",
@@ -738,12 +586,9 @@
     "cosponsoredAmendments": 11,
     "becameLawBills": 0,
     "becameLawAmendments": 4,
-    "committees": [
-      "Committee on Appropriations",
-      "Committee on Health, Education, Labor, and Pensions",
-      "Select Committee on Intelligence"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Angus King",
@@ -751,19 +596,15 @@
     "party": "Independent",
     "office": "Senator",
     "bioguideId": "K000383",
-    "sponsoredBills": 25,
+    "sponsoredBills": 26,
     "sponsoredAmendments": 93,
     "cosponsoredBills": 226,
     "cosponsoredAmendments": 24,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "committees": [
-      "Committee on Armed Services",
-      "Committee on Energy and Natural Resources",
-      "Committee on Veterans' Affairs",
-      "Select Committee on Intelligence"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Angela Alsobrooks",
@@ -773,17 +614,13 @@
     "bioguideId": "A000382",
     "sponsoredBills": 19,
     "sponsoredAmendments": 24,
-    "cosponsoredBills": 197,
-    "cosponsoredAmendments": 53,
+    "cosponsoredBills": 198,
+    "cosponsoredAmendments": 52,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "committees": [
-      "Committee on Banking, Housing, and Urban Affairs",
-      "Committee on Environment and Public Works",
-      "Committee on Health, Education, Labor, and Pensions",
-      "Special Committee on Aging"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Chris Van Hollen",
@@ -797,13 +634,9 @@
     "cosponsoredAmendments": 28,
     "becameLawBills": 0,
     "becameLawAmendments": 4,
-    "committees": [
-      "Committee on Appropriations",
-      "Committee on Banking, Housing, and Urban Affairs",
-      "Committee on Foreign Relations",
-      "Committee on the Budget"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Ed Markey",
@@ -817,13 +650,9 @@
     "cosponsoredAmendments": 23,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "committees": [
-      "Committee on Commerce, Science, and Transportation",
-      "Committee on Environment and Public Works",
-      "Committee on Health, Education, Labor, and Pensions",
-      "Committee on Small Business and Entrepreneurship"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Elizabeth Warren",
@@ -837,13 +666,9 @@
     "cosponsoredAmendments": 35,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "committees": [
-      "Committee on Armed Services",
-      "Committee on Banking, Housing, and Urban Affairs",
-      "Committee on Finance",
-      "Special Committee on Aging"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Gary Peters",
@@ -857,13 +682,9 @@
     "cosponsoredAmendments": 62,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "committees": [
-      "Committee on Appropriations",
-      "Committee on Armed Services",
-      "Committee on Commerce, Science, and Transportation",
-      "Committee on Homeland Security and Governmental Affairs"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Elissa Slotkin",
@@ -873,17 +694,13 @@
     "bioguideId": "S001208",
     "sponsoredBills": 15,
     "sponsoredAmendments": 21,
-    "cosponsoredBills": 168,
+    "cosponsoredBills": 170,
     "cosponsoredAmendments": 15,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "committees": [
-      "Committee on Agriculture, Nutrition, and Forestry",
-      "Committee on Armed Services",
-      "Committee on Homeland Security and Governmental Affairs",
-      "Committee on Veterans' Affairs"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Amy Klobuchar",
@@ -897,14 +714,9 @@
     "cosponsoredAmendments": 18,
     "becameLawBills": 0,
     "becameLawAmendments": 6,
-    "committees": [
-      "Committee on Agriculture, Nutrition, and Forestry",
-      "Committee on Commerce, Science, and Transportation",
-      "Committee on Rules and Administration",
-      "Committee on the Judiciary",
-      "Joint Economic Committee"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Tina Smith",
@@ -918,13 +730,9 @@
     "cosponsoredAmendments": 17,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "committees": [
-      "Committee on Agriculture, Nutrition, and Forestry",
-      "Committee on Banking, Housing, and Urban Affairs",
-      "Committee on Finance",
-      "Committee on Indian Affairs"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Cindy Hyde-Smith",
@@ -938,13 +746,9 @@
     "cosponsoredAmendments": 1,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "committees": [
-      "Committee on Agriculture, Nutrition, and Forestry",
-      "Committee on Appropriations",
-      "Committee on Energy and Natural Resources",
-      "Committee on Rules and Administration"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Roger Wicker",
@@ -954,16 +758,13 @@
     "bioguideId": "W000437",
     "sponsoredBills": 33,
     "sponsoredAmendments": 13,
-    "cosponsoredBills": 198,
+    "cosponsoredBills": 199,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "committees": [
-      "Committee on Armed Services",
-      "Committee on Commerce, Science, and Transportation",
-      "Committee on Environment and Public Works"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Josh Hawley",
@@ -977,13 +778,9 @@
     "cosponsoredAmendments": 3,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "committees": [
-      "Committee on Health, Education, Labor, and Pensions",
-      "Committee on Homeland Security and Governmental Affairs",
-      "Committee on Small Business and Entrepreneurship",
-      "Committee on the Judiciary"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Eric Schmitt",
@@ -993,16 +790,13 @@
     "bioguideId": "S001227",
     "sponsoredBills": 36,
     "sponsoredAmendments": 13,
-    "cosponsoredBills": 123,
+    "cosponsoredBills": 124,
     "cosponsoredAmendments": 7,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "committees": [
-      "Committee on Armed Services",
-      "Committee on Commerce, Science, and Transportation",
-      "Committee on Rules and Administration"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Steve Daines",
@@ -1012,17 +806,13 @@
     "bioguideId": "D000618",
     "sponsoredBills": 46,
     "sponsoredAmendments": 28,
-    "cosponsoredBills": 239,
+    "cosponsoredBills": 240,
     "cosponsoredAmendments": 9,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "committees": [
-      "Committee on Energy and Natural Resources",
-      "Committee on Finance",
-      "Committee on Foreign Relations",
-      "Committee on Indian Affairs"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Tim Sheehy",
@@ -1036,13 +826,9 @@
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "committees": [
-      "Committee on Appropriations",
-      "Committee on Banking, Housing, and Urban Affairs",
-      "Committee on Indian Affairs",
-      "Committee on Veterans' Affairs"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Deb Fischer",
@@ -1056,14 +842,9 @@
     "cosponsoredAmendments": 2,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "committees": [
-      "Committee on Agriculture, Nutrition, and Forestry",
-      "Committee on Appropriations",
-      "Committee on Armed Services",
-      "Committee on Commerce, Science, and Transportation",
-      "Committee on Rules and Administration"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Pete Ricketts",
@@ -1077,13 +858,9 @@
     "cosponsoredAmendments": 5,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "committees": [
-      "Committee on Banking, Housing, and Urban Affairs",
-      "Committee on Environment and Public Works",
-      "Committee on Foreign Relations",
-      "Committee on the Budget"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Catherine Cortez Masto",
@@ -1097,13 +874,9 @@
     "cosponsoredAmendments": 40,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "committees": [
-      "Committee on Banking, Housing, and Urban Affairs",
-      "Committee on Energy and Natural Resources",
-      "Committee on Finance",
-      "Committee on Indian Affairs"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Jacky Rosen",
@@ -1117,13 +890,9 @@
     "cosponsoredAmendments": 49,
     "becameLawBills": 0,
     "becameLawAmendments": 4,
-    "committees": [
-      "Committee on Armed Services",
-      "Committee on Commerce, Science, and Transportation",
-      "Committee on Foreign Relations",
-      "Committee on Small Business and Entrepreneurship"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Jeanne Shaheen",
@@ -1137,13 +906,9 @@
     "cosponsoredAmendments": 40,
     "becameLawBills": 0,
     "becameLawAmendments": 9,
-    "committees": [
-      "Committee on Appropriations",
-      "Committee on Armed Services",
-      "Committee on Foreign Relations",
-      "Committee on Small Business and Entrepreneurship"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Maggie Hassan",
@@ -1153,17 +918,13 @@
     "bioguideId": "H001076",
     "sponsoredBills": 36,
     "sponsoredAmendments": 34,
-    "cosponsoredBills": 224,
+    "cosponsoredBills": 226,
     "cosponsoredAmendments": 19,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "committees": [
-      "Committee on Finance",
-      "Committee on Health, Education, Labor, and Pensions",
-      "Committee on Homeland Security and Governmental Affairs",
-      "Committee on Veterans' Affairs"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Andy Kim",
@@ -1173,18 +934,13 @@
     "bioguideId": "K000394",
     "sponsoredBills": 17,
     "sponsoredAmendments": 52,
-    "cosponsoredBills": 213,
-    "cosponsoredAmendments": 37,
+    "cosponsoredBills": 214,
+    "cosponsoredAmendments": 36,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "committees": [
-      "Committee on Banking, Housing, and Urban Affairs",
-      "Committee on Commerce, Science, and Transportation",
-      "Committee on Health, Education, Labor, and Pensions",
-      "Committee on Homeland Security and Governmental Affairs",
-      "Special Committee on Aging"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Cory Booker",
@@ -1198,13 +954,9 @@
     "cosponsoredAmendments": 27,
     "becameLawBills": 0,
     "becameLawAmendments": 5,
-    "committees": [
-      "Committee on Agriculture, Nutrition, and Forestry",
-      "Committee on Foreign Relations",
-      "Committee on Small Business and Entrepreneurship",
-      "Committee on the Judiciary"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Martin Heinrich",
@@ -1218,13 +970,9 @@
     "cosponsoredAmendments": 31,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "committees": [
-      "Committee on Appropriations",
-      "Committee on Energy and Natural Resources",
-      "Joint Economic Committee",
-      "Select Committee on Intelligence"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Ben Ray Luján",
@@ -1232,20 +980,15 @@
     "party": "Democrat",
     "office": "Senator",
     "bioguideId": "L000570",
-    "sponsoredBills": 48,
+    "sponsoredBills": 49,
     "sponsoredAmendments": 72,
-    "cosponsoredBills": 219,
-    "cosponsoredAmendments": 31,
+    "cosponsoredBills": 220,
+    "cosponsoredAmendments": 30,
     "becameLawBills": 0,
     "becameLawAmendments": 3,
-    "committees": [
-      "Committee on Agriculture, Nutrition, and Forestry",
-      "Committee on Commerce, Science, and Transportation",
-      "Committee on Finance",
-      "Committee on Indian Affairs",
-      "Committee on the Budget"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Kirsten Gillibrand",
@@ -1259,13 +1002,9 @@
     "cosponsoredAmendments": 30,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "committees": [
-      "Committee on Appropriations",
-      "Committee on Armed Services",
-      "Select Committee on Intelligence",
-      "Special Committee on Aging"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Chuck Schumer",
@@ -1279,11 +1018,9 @@
     "cosponsoredAmendments": 13,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "committees": [
-      "Committee on Finance",
-      "Committee on Rules and Administration"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Ted Budd",
@@ -1297,14 +1034,9 @@
     "cosponsoredAmendments": 10,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "committees": [
-      "Committee on Armed Services",
-      "Committee on Commerce, Science, and Transportation",
-      "Committee on Small Business and Entrepreneurship",
-      "Joint Economic Committee",
-      "Select Committee on Intelligence"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Thom Tillis",
@@ -1318,12 +1050,9 @@
     "cosponsoredAmendments": 13,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "committees": [
-      "Committee on Finance",
-      "Committee on the Judiciary",
-      "Committee on Veterans' Affairs"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Kevin Cramer",
@@ -1337,13 +1066,9 @@
     "cosponsoredAmendments": 8,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "committees": [
-      "Committee on Armed Services",
-      "Committee on Banking, Housing, and Urban Affairs",
-      "Committee on Environment and Public Works",
-      "Committee on Veterans' Affairs"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "John Hoeven",
@@ -1357,13 +1082,9 @@
     "cosponsoredAmendments": 4,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "committees": [
-      "Committee on Agriculture, Nutrition, and Forestry",
-      "Committee on Appropriations",
-      "Committee on Energy and Natural Resources",
-      "Committee on Indian Affairs"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Bernie Moreno",
@@ -1377,13 +1098,9 @@
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "committees": [
-      "Committee on Banking, Housing, and Urban Affairs",
-      "Committee on Commerce, Science, and Transportation",
-      "Committee on Homeland Security and Governmental Affairs",
-      "Committee on the Budget"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Jon Husted",
@@ -1397,12 +1114,9 @@
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "committees": [
-      "Committee on Banking, Housing, and Urban Affairs",
-      "Committee on Finance",
-      "Committee on Veterans' Affairs"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "James Lankford",
@@ -1412,17 +1126,13 @@
     "bioguideId": "L000575",
     "sponsoredBills": 59,
     "sponsoredAmendments": 24,
-    "cosponsoredBills": 234,
+    "cosponsoredBills": 235,
     "cosponsoredAmendments": 6,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "committees": [
-      "Committee on Finance",
-      "Committee on Homeland Security and Governmental Affairs",
-      "Select Committee on Ethics",
-      "Select Committee on Intelligence"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Markwayne Mullin",
@@ -1432,17 +1142,13 @@
     "bioguideId": "M001190",
     "sponsoredBills": 20,
     "sponsoredAmendments": 6,
-    "cosponsoredBills": 134,
+    "cosponsoredBills": 136,
     "cosponsoredAmendments": 4,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "committees": [
-      "Committee on Appropriations",
-      "Committee on Armed Services",
-      "Committee on Health, Education, Labor, and Pensions",
-      "Committee on Indian Affairs"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Jeff Merkley",
@@ -1450,20 +1156,15 @@
     "party": "Democrat",
     "office": "Senator",
     "bioguideId": "M001176",
-    "sponsoredBills": 72,
+    "sponsoredBills": 73,
     "sponsoredAmendments": 154,
     "cosponsoredBills": 231,
     "cosponsoredAmendments": 19,
     "becameLawBills": 0,
     "becameLawAmendments": 9,
-    "committees": [
-      "Committee on Appropriations",
-      "Committee on Environment and Public Works",
-      "Committee on Foreign Relations",
-      "Committee on Rules and Administration",
-      "Committee on the Budget"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Ron Wyden",
@@ -1477,13 +1178,9 @@
     "cosponsoredAmendments": 27,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "committees": [
-      "Committee on Energy and Natural Resources",
-      "Committee on Finance",
-      "Committee on the Budget",
-      "Select Committee on Intelligence"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "John Fetterman",
@@ -1497,12 +1194,9 @@
     "cosponsoredAmendments": 5,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "committees": [
-      "Committee on Agriculture, Nutrition, and Forestry",
-      "Committee on Commerce, Science, and Transportation",
-      "Committee on Homeland Security and Governmental Affairs"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "David McCormick",
@@ -1516,14 +1210,9 @@
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "committees": [
-      "Committee on Banking, Housing, and Urban Affairs",
-      "Committee on Energy and Natural Resources",
-      "Committee on Foreign Relations",
-      "Joint Economic Committee",
-      "Special Committee on Aging"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Jack Reed",
@@ -1537,13 +1226,9 @@
     "cosponsoredAmendments": 44,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "committees": [
-      "Committee on Appropriations",
-      "Committee on Armed Services",
-      "Committee on Banking, Housing, and Urban Affairs",
-      "Select Committee on Intelligence"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Sheldon Whitehouse",
@@ -1557,13 +1242,9 @@
     "cosponsoredAmendments": 36,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "committees": [
-      "Committee on Environment and Public Works",
-      "Committee on Finance",
-      "Committee on the Budget",
-      "Committee on the Judiciary"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Lindsey Graham",
@@ -1577,13 +1258,9 @@
     "cosponsoredAmendments": 5,
     "becameLawBills": 0,
     "becameLawAmendments": 4,
-    "committees": [
-      "Committee on Appropriations",
-      "Committee on Environment and Public Works",
-      "Committee on the Budget",
-      "Committee on the Judiciary"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Tim Scott",
@@ -1597,13 +1274,9 @@
     "cosponsoredAmendments": 1,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "committees": [
-      "Committee on Banking, Housing, and Urban Affairs",
-      "Committee on Finance",
-      "Committee on Health, Education, Labor, and Pensions",
-      "Special Committee on Aging"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Mike Rounds",
@@ -1617,12 +1290,9 @@
     "cosponsoredAmendments": 12,
     "becameLawBills": 0,
     "becameLawAmendments": 3,
-    "committees": [
-      "Committee on Appropriations",
-      "Committee on Armed Services",
-      "Committee on Banking, Housing, and Urban Affairs"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "John Thune",
@@ -1636,12 +1306,9 @@
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "committees": [
-      "Committee on Agriculture, Nutrition, and Forestry",
-      "Committee on Commerce, Science, and Transportation",
-      "Committee on Finance"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Marsha Blackburn",
@@ -1649,20 +1316,15 @@
     "party": "Republican",
     "office": "Senator",
     "bioguideId": "B001243",
-    "sponsoredBills": 112,
+    "sponsoredBills": 113,
     "sponsoredAmendments": 21,
     "cosponsoredBills": 238,
     "cosponsoredAmendments": 12,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "committees": [
-      "Committee on Commerce, Science, and Transportation",
-      "Committee on Finance",
-      "Committee on the Judiciary",
-      "Committee on Veterans' Affairs",
-      "Joint Economic Committee"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Bill Hagerty",
@@ -1672,17 +1334,13 @@
     "bioguideId": "H000601",
     "sponsoredBills": 19,
     "sponsoredAmendments": 12,
-    "cosponsoredBills": 138,
+    "cosponsoredBills": 139,
     "cosponsoredAmendments": 2,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "committees": [
-      "Committee on Appropriations",
-      "Committee on Banking, Housing, and Urban Affairs",
-      "Committee on Foreign Relations",
-      "Committee on Rules and Administration"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "John Cornyn",
@@ -1690,20 +1348,15 @@
     "party": "Republican",
     "office": "Senator",
     "bioguideId": "C001056",
-    "sponsoredBills": 96,
+    "sponsoredBills": 97,
     "sponsoredAmendments": 46,
     "cosponsoredBills": 222,
     "cosponsoredAmendments": 13,
     "becameLawBills": 0,
     "becameLawAmendments": 6,
-    "committees": [
-      "Committee on Finance",
-      "Committee on Foreign Relations",
-      "Committee on the Budget",
-      "Committee on the Judiciary",
-      "Select Committee on Intelligence"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Ted Cruz",
@@ -1713,17 +1366,13 @@
     "bioguideId": "C001098",
     "sponsoredBills": 101,
     "sponsoredAmendments": 56,
-    "cosponsoredBills": 190,
+    "cosponsoredBills": 191,
     "cosponsoredAmendments": 10,
     "becameLawBills": 0,
     "becameLawAmendments": 6,
-    "committees": [
-      "Committee on Commerce, Science, and Transportation",
-      "Committee on Foreign Relations",
-      "Committee on Rules and Administration",
-      "Committee on the Judiciary"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "John Curtis",
@@ -1737,13 +1386,9 @@
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "committees": [
-      "Committee on Commerce, Science, and Transportation",
-      "Committee on Environment and Public Works",
-      "Committee on Foreign Relations",
-      "Committee on Small Business and Entrepreneurship"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Mike Lee",
@@ -1757,13 +1402,9 @@
     "cosponsoredAmendments": 7,
     "becameLawBills": 0,
     "becameLawAmendments": 3,
-    "committees": [
-      "Committee on Energy and Natural Resources",
-      "Committee on Foreign Relations",
-      "Committee on the Budget",
-      "Committee on the Judiciary"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Tim Kaine",
@@ -1777,13 +1418,9 @@
     "cosponsoredAmendments": 39,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "committees": [
-      "Committee on Armed Services",
-      "Committee on Foreign Relations",
-      "Committee on Health, Education, Labor, and Pensions",
-      "Committee on the Budget"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Mark Warner",
@@ -1797,12 +1434,9 @@
     "cosponsoredAmendments": 53,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "committees": [
-      "Committee on Finance",
-      "Committee on Rules and Administration",
-      "Select Committee on Intelligence"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Patty Murray",
@@ -1816,13 +1450,9 @@
     "cosponsoredAmendments": 8,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "committees": [
-      "Committee on Appropriations",
-      "Committee on Health, Education, Labor, and Pensions",
-      "Committee on the Budget",
-      "Committee on Veterans' Affairs"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Maria Cantwell",
@@ -1832,18 +1462,13 @@
     "bioguideId": "C000127",
     "sponsoredBills": 15,
     "sponsoredAmendments": 38,
-    "cosponsoredBills": 146,
+    "cosponsoredBills": 147,
     "cosponsoredAmendments": 17,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "committees": [
-      "Committee on Commerce, Science, and Transportation",
-      "Committee on Energy and Natural Resources",
-      "Committee on Finance",
-      "Committee on Indian Affairs",
-      "Committee on Small Business and Entrepreneurship"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Shelley Moore Capito",
@@ -1857,13 +1482,9 @@
     "cosponsoredAmendments": 5,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "committees": [
-      "Committee on Appropriations",
-      "Committee on Commerce, Science, and Transportation",
-      "Committee on Environment and Public Works",
-      "Committee on Rules and Administration"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Jim Justice",
@@ -1871,19 +1492,15 @@
     "party": "Republican",
     "office": "Senator",
     "bioguideId": "J000307",
-    "sponsoredBills": 17,
+    "sponsoredBills": 19,
     "sponsoredAmendments": 0,
     "cosponsoredBills": 72,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "committees": [
-      "Committee on Agriculture, Nutrition, and Forestry",
-      "Committee on Energy and Natural Resources",
-      "Committee on Small Business and Entrepreneurship",
-      "Special Committee on Aging"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Tammy Baldwin",
@@ -1897,12 +1514,9 @@
     "cosponsoredAmendments": 30,
     "becameLawBills": 0,
     "becameLawAmendments": 2,
-    "committees": [
-      "Committee on Appropriations",
-      "Committee on Commerce, Science, and Transportation",
-      "Committee on Health, Education, Labor, and Pensions"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Ron Johnson",
@@ -1916,13 +1530,9 @@
     "cosponsoredAmendments": 4,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "committees": [
-      "Committee on Finance",
-      "Committee on Homeland Security and Governmental Affairs",
-      "Committee on the Budget",
-      "Special Committee on Aging"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "John Barrasso",
@@ -1936,12 +1546,9 @@
     "cosponsoredAmendments": 2,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "committees": [
-      "Committee on Energy and Natural Resources",
-      "Committee on Finance",
-      "Committee on Foreign Relations"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Cynthia Lummis",
@@ -1951,16 +1558,13 @@
     "bioguideId": "L000571",
     "sponsoredBills": 37,
     "sponsoredAmendments": 14,
-    "cosponsoredBills": 235,
+    "cosponsoredBills": 236,
     "cosponsoredAmendments": 12,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
-    "committees": [
-      "Committee on Banking, Housing, and Urban Affairs",
-      "Committee on Commerce, Science, and Transportation",
-      "Committee on Environment and Public Works"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Bernie Sanders",
@@ -1974,13 +1578,9 @@
     "cosponsoredAmendments": 15,
     "becameLawBills": 0,
     "becameLawAmendments": 3,
-    "committees": [
-      "Committee on Health, Education, Labor, and Pensions",
-      "Committee on the Budget",
-      "Committee on Environment and Public Works",
-      "Committee on Veterans' Affairs"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   },
   {
     "name": "Peter Welch",
@@ -1994,11 +1594,8 @@
     "cosponsoredAmendments": 23,
     "becameLawBills": 0,
     "becameLawAmendments": 1,
-    "committees": [
-      "Committee on Agriculture, Nutrition, and Forestry",
-      "Committee on Commerce, Science, and Transportation",
-      "Committee on Rules and Administration"
-    ],
-    "votes": 0
+    "committees": [],
+    "votes": 0,
+    "missedPct": 0
   }
 ]
