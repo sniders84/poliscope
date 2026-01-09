@@ -1,74 +1,50 @@
 const fs = require('fs');
 const fetch = require('node-fetch');
+const cheerio = require('cheerio');
 
 const baseData = JSON.parse(fs.readFileSync('public/senators-rankings.json', 'utf8'));
 const jsonPath = 'public/senators-committees.json';
 
-async function fetchSenateCommitteesForSenator(senatorName) {
-  const url = 'https://www.senate.gov/general/committee_assignments/committee_assignments.htm';
+async function fetchCommitteeAssignments() {
+  const url = 'https://www.senate.gov/general/committee_assignments/assignments.htm';
   const res = await fetch(url);
-  if (!res.ok) return [];
-
+  if (!res.ok) throw new Error(`Failed to fetch ${url}`);
   const html = await res.text();
-  const nameEsc = senatorName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const senatorBlockRegex = new RegExp(`${nameEsc}[\\s\\S]*?(?=<strong>|<b>|<h3>|<h2>|<hr|</div>)`, 'i');
-  const blockMatch = html.match(senatorBlockRegex);
-  if (!blockMatch) return [];
-
-  const block = blockMatch[0];
-  const lines = block.split('\n').filter(l => /Committee on|Special Committee|Select Committee/i.test(l));
-  const committees = [];
-
-  lines.forEach(line => {
-    const clean = line.replace(/<[^>]+>/g, '').trim();
-    if (!clean) return;
-
-    let role = 'Member';
-    if (/\(Chairman\)/i.test(clean) || /\(Chair\)/i.test(clean)) role = 'Chairman';
-    else if (/\(Ranking\)/i.test(clean) || /\(Ranking Member\)/i.test(clean)) role = 'Ranking';
-
-    const name = clean.replace(/\s*\((Chairman|Chair|Ranking|Ranking Member)\)\s*$/i, '').trim();
-    if (/Subcommittee/i.test(name)) return;
-
-    committees.push({ name, role });
-  });
-
-  const byName = new Map();
-  committees.forEach(c => {
-    const prev = byName.get(c.name);
-    if (!prev || (prev.role === 'Member' && c.role !== 'Member')) {
-      byName.set(c.name, c);
-    }
-  });
-
-  return Array.from(byName.values());
+  return cheerio.load(html);
 }
 
-async function updateCommittees(sen) {
-  try {
-    const committees = await fetchSenateCommitteesForSenator(sen.name);
+(async () => {
+  const $ = await fetchCommitteeAssignments();
+
+  // Build senator → committees map
+  const senatorCommittees = {};
+  $('div.committee').each((_, div) => {
+    const committeeName = $(div).find('h3').text().trim();
+    const members = $(div).find('li');
+
+    members.each((_, li) => {
+      const text = $(li).text().trim();
+      if (!text) return;
+
+      let role = 'Member';
+      if (/Chair/i.test(text)) role = 'Chairman';
+      else if (/Ranking/i.test(text)) role = 'Ranking';
+
+      const name = text.replace(/\(.*?\)/, '').trim();
+
+      if (!senatorCommittees[name]) senatorCommittees[name] = [];
+      senatorCommittees[name].push({ name: committeeName, role });
+    });
+  });
+
+  const output = baseData.map(sen => {
+    const committees = senatorCommittees[sen.name] || [];
     return {
       name: sen.name,
       bioguideId: sen.bioguideId,
       committees
     };
-  } catch (err) {
-    console.log(`Error fetching committees for ${sen.name}: ${err.message}`);
-    return {
-      name: sen.name,
-      bioguideId: sen.bioguideId,
-      committees: []
-    };
-  }
-}
-
-(async () => {
-  const output = [];
-  for (const sen of baseData) {
-    const record = await updateCommittees(sen);
-    output.push(record);
-    console.log(`Updated ${sen.name}: committees ${record.committees.length}`);
-  }
+  });
 
   fs.writeFileSync(jsonPath, JSON.stringify(output, null, 2) + '\n');
   console.log('senators-committees.json fully updated!');
