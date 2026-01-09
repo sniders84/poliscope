@@ -1,10 +1,9 @@
 const fs = require('fs');
 const fetch = require('node-fetch');
 
-const baseData = JSON.parse(fs.readFileSync('public/senators-base.json', 'utf8'));
+const baseData = JSON.parse(fs.readFileSync('public/senators-rankings.json', 'utf8'));
 const jsonPath = 'public/senators-committees.json';
 
-// Scrape Senate.gov committee assignments and leadership roles
 async function fetchSenateCommitteesForSenator(senatorName) {
   const url = 'https://www.senate.gov/general/committee_assignments/committee_assignments.htm';
   const res = await fetch(url);
@@ -29,12 +28,11 @@ async function fetchSenateCommitteesForSenator(senatorName) {
     else if (/\(Ranking\)/i.test(clean) || /\(Ranking Member\)/i.test(clean)) role = 'Ranking';
 
     const name = clean.replace(/\s*\((Chairman|Chair|Ranking|Ranking Member)\)\s*$/i, '').trim();
-    if (/Subcommittee/i.test(name)) return; // skip subcommittees if you only want top-level
+    if (/Subcommittee/i.test(name)) return;
 
     committees.push({ name, role });
   });
 
-  // Deduplicate by committee name, preferring leadership roles
   const byName = new Map();
   committees.forEach(c => {
     const prev = byName.get(c.name);
