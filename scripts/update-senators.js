@@ -12,7 +12,7 @@ async function updateSenator(sen) {
     const base = `https://api.congress.gov/v3/member/${sen.bioguideId}`;
     const sponsoredUrl = `${base}/sponsored-legislation?limit=500`;
     const cosponsoredUrl = `${base}/cosponsored-legislation?limit=500`;
-    const committeesUrl = `${base}/committees`;
+    const committeesUrl = `${base}/committee-assignments`;
 
     const [sponsoredRes, cosponsoredRes, committeesRes] = await Promise.all([
       fetch(sponsoredUrl, { headers }),
@@ -68,24 +68,38 @@ async function updateSenator(sen) {
     sen.committees = [];
     if (committeesRes.ok) {
       const cData = await committeesRes.json();
-      const cItems = cData.committees || [];
+      const cItems = cData.committeeAssignments || [];
       cItems.forEach(c => {
         sen.committees.push({
-          name: c.name,
-          role: c.role || 'Member'
+          name: c.committeeName,
+          role: c.position || 'Member'
         });
       });
     }
 
-    // Missed votes count (scrape senate.gov votes and count "Not Voting" for this senator)
-    sen.votes = 0;  // Missed count
-    const totalVotes = 4;  // From senate.gov - update this manually when more votes happen
-    const voteUrls = [
-      'https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00004.htm',
-      'https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00003.htm',
-      'https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00002.htm',
-      'https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00001.htm'
+    // Missed votes count across entire 119th Congress
+    sen.votes = 0;
+    let voteUrls = [];
+
+    const indexUrls = [
+      'https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_1.xml',
+      'https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_2.xml'
     ];
+
+    for (const idxUrl of indexUrls) {
+      const idxRes = await fetch(idxUrl);
+      if (idxRes.ok) {
+        const xmlText = await idxRes.text();
+        const matches = [...xmlText.matchAll(/<vote_number>(\d+)<\/vote_number>/g)];
+        matches.forEach(m => {
+          const num = m[1].padStart(5, '0');
+          const session = idxUrl.includes('_1.xml') ? '1' : '2';
+          voteUrls.push(`https://www.senate.gov/legislative/LIS/roll_call_votes/vote119${session}/vote_119_${session}_${num}.htm`);
+        });
+      }
+    }
+
+    const totalVotes = voteUrls.length;
 
     for (const vUrl of voteUrls) {
       const vRes = await fetch(vUrl);
@@ -97,7 +111,6 @@ async function updateSenator(sen) {
       }
     }
 
-    // Optional: percentage of missed votes
     sen.missedPct = (totalVotes > 0) ? (sen.votes / totalVotes) * 100 : 0;
 
     console.log(`Updated ${sen.name}: sBills ${sen.sponsoredBills} sAmend ${sen.sponsoredAmendments} cBills ${sen.cosponsoredBills} cAmend ${sen.cosponsoredAmendments} becameLawB ${sen.becameLawBills} committees ${sen.committees.length} missed ${sen.votes}`);
