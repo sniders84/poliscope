@@ -18,7 +18,20 @@ async function scrapeVotes() {
 
   for (const indexUrl of INDEX_URLS) {
     const indexData = await fetchXML(indexUrl);
-    const votes = indexData.Vote_Menu.Vote;
+
+    // Normalize keys regardless of casing
+    const voteMenu = indexData.Vote_Menu || indexData.vote_menu;
+    if (!voteMenu) {
+      console.error(`No Vote_Menu found in ${indexUrl}`);
+      continue;
+    }
+
+    const votes = voteMenu.Vote || voteMenu.vote;
+    if (!votes) {
+      console.error(`No Vote array found in ${indexUrl}`);
+      continue;
+    }
+
     for (const v of votes) {
       const voteNum = v.vote_number[0];
       const congress = v.congress[0]; // "119"
