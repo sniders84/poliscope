@@ -1,66 +1,78 @@
 [
   {
-    "committee": "Agriculture, Nutrition, and Forestry",
+    "name": "Committee on Agriculture, Nutrition, and Forestry",
     "url": "https://www.agriculture.senate.gov/about/membership"
   },
   {
-    "committee": "Appropriations",
+    "name": "Committee on Appropriations",
     "url": "https://www.appropriations.senate.gov/about/members"
   },
   {
-    "committee": "Armed Services",
+    "name": "Committee on Armed Services",
     "url": "https://www.armed-services.senate.gov/about/members"
   },
   {
-    "committee": "Banking, Housing, and Urban Affairs",
+    "name": "Committee on Banking, Housing, and Urban Affairs",
     "url": "https://www.banking.senate.gov/about/membership"
   },
   {
-    "committee": "Budget",
+    "name": "Committee on the Budget",
     "url": "https://www.budget.senate.gov/about/members"
   },
   {
-    "committee": "Commerce, Science, and Transportation",
+    "name": "Committee on Commerce, Science, and Transportation",
     "url": "https://www.commerce.senate.gov/about/membership"
   },
   {
-    "committee": "Energy and Natural Resources",
+    "name": "Committee on Energy and Natural Resources",
     "url": "https://www.energy.senate.gov/about/membership"
   },
   {
-    "committee": "Environment and Public Works",
+    "name": "Committee on Environment and Public Works",
     "url": "https://www.epw.senate.gov/about/membership"
   },
   {
-    "committee": "Finance",
+    "name": "Committee on Finance",
     "url": "https://www.finance.senate.gov/about/membership"
   },
   {
-    "committee": "Foreign Relations",
+    "name": "Committee on Foreign Relations",
     "url": "https://www.foreign.senate.gov/about/membership"
   },
   {
-    "committee": "Health, Education, Labor, and Pensions",
+    "name": "Committee on Health, Education, Labor, and Pensions",
     "url": "https://www.help.senate.gov/about/membership"
   },
   {
-    "committee": "Homeland Security and Governmental Affairs",
+    "name": "Committee on Homeland Security and Governmental Affairs",
     "url": "https://www.hsgac.senate.gov/about/membership"
   },
   {
-    "committee": "Judiciary",
+    "name": "Committee on the Judiciary",
     "url": "https://www.judiciary.senate.gov/about/members"
   },
   {
-    "committee": "Rules and Administration",
+    "name": "Committee on Rules and Administration",
     "url": "https://www.rules.senate.gov/about/membership"
   },
   {
-    "committee": "Small Business and Entrepreneurship",
-    "url": "https://www.sbc.senate.gov/about/membership"
+    "name": "Committee on Small Business and Entrepreneurship",
+    "url": "https://www.sbc.senate.gov/public/index.cfm/about"
   },
   {
-    "committee": "Veterans' Affairs",
+    "name": "Committee on Veterans' Affairs",
     "url": "https://www.veterans.senate.gov/about/membership"
+  },
+  {
+    "name": "Select Committee on Intelligence",
+    "url": "https://www.intelligence.senate.gov/about/membership"
+  },
+  {
+    "name": "Special Committee on Aging",
+    "url": "https://www.aging.senate.gov/about/membership"
+  },
+  {
+    "name": "Committee on Indian Affairs",
+    "url": "https://www.indian.senate.gov/about/membership"
   }
 ]
