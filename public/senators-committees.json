@@ -1,8 +1,172 @@
 [
   {
+    "name": "Committee Membership",
+    "committees": [
+      {
+        "committee": "Committee on Agriculture, Nutrition, and Forestry",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Committee Rules",
+    "committees": [
+      {
+        "committee": "Committee on Agriculture, Nutrition, and Forestry",
+        "role": "Member"
+      },
+      {
+        "committee": "Committee on the Judiciary",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Press Contacts & Instructions",
+    "committees": [
+      {
+        "committee": "Committee on Agriculture, Nutrition, and Forestry",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Majority News",
+    "committees": [
+      {
+        "committee": "Committee on Agriculture, Nutrition, and Forestry",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Minority News",
+    "committees": [
+      {
+        "committee": "Committee on Agriculture, Nutrition, and Forestry",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Hearing Transcripts",
+    "committees": [
+      {
+        "committee": "Committee on Agriculture, Nutrition, and Forestry",
+        "role": "Member"
+      },
+      {
+        "committee": "Committee on Foreign Relations",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Privacy Policy",
+    "committees": [
+      {
+        "committee": "Committee on Agriculture, Nutrition, and Forestry",
+        "role": "Member"
+      },
+      {
+        "committee": "Committee on Appropriations",
+        "role": "Member"
+      },
+      {
+        "committee": "Committee on Armed Services",
+        "role": "Member"
+      },
+      {
+        "committee": "Committee on Foreign Relations",
+        "role": "Member"
+      },
+      {
+        "committee": "Committee on the Judiciary",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Photo Credits",
+    "committees": [
+      {
+        "committee": "Committee on Agriculture, Nutrition, and Forestry",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "About the Committee",
+    "committees": [
+      {
+        "committee": "Committee on Appropriations",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Chair Collins",
+    "committees": [
+      {
+        "committee": "Committee on Appropriations",
+        "role": "Chairman"
+      }
+    ]
+  },
+  {
+    "name": "Committee Members",
+    "committees": [
+      {
+        "committee": "Committee on Appropriations",
+        "role": "Member"
+      },
+      {
+        "committee": "Committee on Small Business and Entrepreneurship",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Committee History",
+    "committees": [
+      {
+        "committee": "Committee on Appropriations",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Committee Jurisdiction",
+    "committees": [
+      {
+        "committee": "Committee on Appropriations",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Majority News Releases",
+    "committees": [
+      {
+        "committee": "Committee on Appropriations",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Minority News Releases",
+    "committees": [
+      {
+        "committee": "Committee on Appropriations",
+        "role": "Member"
+      }
+    ]
+  },
+  {
     "name": "Agriculture, Rural Development, Food and Drug Administration, and Related Agencies",
     "committees": [
       {
+        "committee": "Committee on Appropriations",
         "role": "Member"
       }
     ]
@@ -11,6 +175,34 @@
     "name": "Commerce, Justice, Science, and Related Agencies",
     "committees": [
       {
+        "committee": "Committee on Appropriations",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Energy and Water Development",
+    "committees": [
+      {
+        "committee": "Committee on Appropriations",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Financial Services and General Government",
+    "committees": [
+      {
+        "committee": "Committee on Appropriations",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Homeland Security",
+    "committees": [
+      {
+        "committee": "Committee on Appropriations",
         "role": "Member"
       }
     ]
@@ -19,6 +211,7 @@
     "name": "Interior, Environment, and Related Agencies",
     "committees": [
       {
+        "committee": "Committee on Appropriations",
         "role": "Member"
       }
     ]
@@ -27,6 +220,25 @@
     "name": "Labor, Health and Human Services, Education, and Related Agencies",
     "committees": [
       {
+        "committee": "Committee on Appropriations",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Legislative Branch",
+    "committees": [
+      {
+        "committee": "Committee on Appropriations",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Military Construction, Veterans Affairs, and Related Agencies",
+    "committees": [
+      {
+        "committee": "Committee on Appropriations",
         "role": "Member"
       }
     ]
@@ -35,6 +247,7 @@
     "name": "State, Foreign Operations, and Related Programs",
     "committees": [
       {
+        "committee": "Committee on Appropriations",
         "role": "Member"
       }
     ]
@@ -43,151 +256,348 @@
     "name": "Transportation, Housing and Urban Development, and Related Agencies",
     "committees": [
       {
+        "committee": "Committee on Appropriations",
         "role": "Member"
       }
     ]
   },
   {
-    "name": "Senator Mitch McConnellOfficial Website »",
+    "name": "Official Website »",
     "committees": [
       {
-        "role": "Member"
-      }
-    ]
-  },
-  {
-    "name": "Senator Lisa MurkowskiOfficial Website »",
-    "committees": [
-      {
-        "role": "Member"
-      }
-    ]
-  },
-  {
-    "name": "Senator Lindsey GrahamOfficial Website »",
-    "committees": [
-      {
-        "role": "Member"
-      }
-    ]
-  },
-  {
-    "name": "Senator Jerry MoranOfficial Website »",
-    "committees": [
-      {
-        "role": "Member"
-      }
-    ]
-  },
-  {
-    "name": "Senator John HoevenOfficial Website »",
-    "committees": [
-      {
-        "role": "Member"
-      }
-    ]
-  },
-  {
-    "name": "Senator John BoozmanOfficial Website »",
-    "committees": [
-      {
-        "role": "Member"
-      }
-    ]
-  },
-  {
-    "name": "Senator Shelley Moore CapitoOfficial Website »",
-    "committees": [
-      {
-        "role": "Member"
-      }
-    ]
-  },
-  {
-    "name": "Senator John KennedyOfficial Website »",
-    "committees": [
-      {
-        "role": "Member"
-      }
-    ]
-  },
-  {
-    "name": "Senator Cindy Hyde-SmithOfficial Website »",
-    "committees": [
-      {
-        "role": "Member"
-      }
-    ]
-  },
-  {
-    "name": "Senator Bill HagertyOfficial Website »",
-    "committees": [
-      {
-        "role": "Member"
-      }
-    ]
-  },
-  {
-    "name": "Senator Katie BrittOfficial Website »",
-    "committees": [
-      {
-        "role": "Member"
-      }
-    ]
-  },
-  {
-    "name": "Senator Markwayne MullinOfficial Website »",
-    "committees": [
-      {
-        "role": "Member"
-      }
-    ]
-  },
-  {
-    "name": "Senator Deb FischerOfficial Website »",
-    "committees": [
-      {
-        "role": "Member"
-      }
-    ]
-  },
-  {
-    "name": "Senator Mike RoundsOfficial Website »",
-    "committees": [
-      {
-        "role": "Member"
-      }
-    ]
-  },
-  {
-    "name": "SENATORS Contact Your Senators Leadership & Officers Former Senators Qualifications & Terms of Service Facts & Milestones States in the Senate",
-    "committees": [
-      {
+        "committee": "Committee on Appropriations",
         "role": "Member"
       },
       {
+        "committee": "Committee on Finance",
         "role": "Member"
       }
     ]
   },
   {
-    "name": "Contact Your Senators",
+    "name": "Committee Staff",
     "committees": [
       {
+        "committee": "Committee on Armed Services",
         "role": "Member"
       },
       {
+        "committee": "Committee on Small Business and Entrepreneurship",
         "role": "Member"
       }
     ]
   },
   {
-    "name": "Former Senators",
+    "name": "Committee Actions",
     "committees": [
       {
+        "committee": "Committee on Armed Services",
         "role": "Member"
-      },
+      }
+    ]
+  },
+  {
+    "name": "AboutMembersCommittee StaffHistory/JurisdictionRules",
+    "committees": [
       {
+        "committee": "Committee on Armed Services",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Committee ActionsLegislationNominationsLibrary",
+    "committees": [
+      {
+        "committee": "Committee on Armed Services",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Tim Scott (R-South Carolina)",
+    "committees": [
+      {
+        "committee": "Committee on Banking, Housing, and Urban Affairs",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Mike Crapo (R-Idaho)",
+    "committees": [
+      {
+        "committee": "Committee on Banking, Housing, and Urban Affairs",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Mike Rounds (R-South Dakota)",
+    "committees": [
+      {
+        "committee": "Committee on Banking, Housing, and Urban Affairs",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Thom Tillis (R-North Carolina)",
+    "committees": [
+      {
+        "committee": "Committee on Banking, Housing, and Urban Affairs",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "John Kennedy (R-Louisiana)",
+    "committees": [
+      {
+        "committee": "Committee on Banking, Housing, and Urban Affairs",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Bill Hagerty (R-Tennessee)",
+    "committees": [
+      {
+        "committee": "Committee on Banking, Housing, and Urban Affairs",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Cynthia Lummis (R-Wyoming)",
+    "committees": [
+      {
+        "committee": "Committee on Banking, Housing, and Urban Affairs",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Katie Britt (R-Alabama)",
+    "committees": [
+      {
+        "committee": "Committee on Banking, Housing, and Urban Affairs",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Pete Ricketts (R-Nebraska)",
+    "committees": [
+      {
+        "committee": "Committee on Banking, Housing, and Urban Affairs",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Jim Banks (R-Indiana)",
+    "committees": [
+      {
+        "committee": "Committee on Banking, Housing, and Urban Affairs",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Kevin Cramer (R-North Dakota)",
+    "committees": [
+      {
+        "committee": "Committee on Banking, Housing, and Urban Affairs",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Bernie Moreno (R-Ohio)",
+    "committees": [
+      {
+        "committee": "Committee on Banking, Housing, and Urban Affairs",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Dave McCormick (R-Pennsylvania)",
+    "committees": [
+      {
+        "committee": "Committee on Banking, Housing, and Urban Affairs",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Elizabeth Warren (D-Massachusetts)",
+    "committees": [
+      {
+        "committee": "Committee on Banking, Housing, and Urban Affairs",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Jack Reed (D-Rhode Island)",
+    "committees": [
+      {
+        "committee": "Committee on Banking, Housing, and Urban Affairs",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Mark R. Warner (D-Virginia)",
+    "committees": [
+      {
+        "committee": "Committee on Banking, Housing, and Urban Affairs",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Chris Van Hollen (D-Maryland)",
+    "committees": [
+      {
+        "committee": "Committee on Banking, Housing, and Urban Affairs",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Catherine Cortez Masto (D-Nevada)",
+    "committees": [
+      {
+        "committee": "Committee on Banking, Housing, and Urban Affairs",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Tina Smith (D-Minnesota)",
+    "committees": [
+      {
+        "committee": "Committee on Banking, Housing, and Urban Affairs",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Raphael Warnock (D-Georgia)",
+    "committees": [
+      {
+        "committee": "Committee on Banking, Housing, and Urban Affairs",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Andy Kim (D-New Jersey)",
+    "committees": [
+      {
+        "committee": "Committee on Banking, Housing, and Urban Affairs",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Ruben Gallego (D-Arizona)",
+    "committees": [
+      {
+        "committee": "Committee on Banking, Housing, and Urban Affairs",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Lisa Blunt Rochester (D-Delaware)",
+    "committees": [
+      {
+        "committee": "Committee on Banking, Housing, and Urban Affairs",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Angela Alsobrooks (D-Maryland)",
+    "committees": [
+      {
+        "committee": "Committee on Banking, Housing, and Urban Affairs",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Contact Your ators",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Leadership & Officers",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Former ators",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Qualifications & Terms of Service",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Facts & Milestones",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "States in the ate",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Membership & Assignments",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Hearings & Meetings",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
         "role": "Member"
       }
     ]
@@ -196,72 +606,592 @@
     "name": "Bills, Acts, & Laws",
     "committees": [
       {
-        "role": "Member"
-      },
-      {
+        "committee": "Committee on Environment and Public Works",
         "role": "Member"
       }
     ]
   },
   {
-    "name": "ABOUT THE SENATE Officers & Staff Vice President President Pro Tempore Secretary of the Senate Sergeant at Arms Party Secretaries Chaplain Committee & Office Staff Pages Powers & Procedures Censure Declarations of War Expulsion Filibuster & Cloture Impeachment Investigations Nominations Rules Treaties Voting Origins & Foundations The Senate & the Constitution Electing & Appointing Senators Committee System Idea of the Senate Parties & Leadership Parties & Leadership Historic Buildings & Spaces The Capitol Senate Chamber Historic Rooms Senate Office Buildings Congressional Meeting Places Past Senate Chambers Traditions & Symbols Oral History Project Historical Highlights 1787-1800 1801-1850 1851-1877 1878-1920 1921-1940 1941-1963 1964-present Senate Stories Blog Research Tools",
+    "name": "Floor Proceedings",
     "committees": [
       {
-        "role": "Member"
-      },
-      {
+        "committee": "Committee on Environment and Public Works",
         "role": "Member"
       }
     ]
   },
   {
-    "name": "Origins & Foundations The Senate & the Constitution Electing & Appointing Senators Committee System Idea of the Senate Parties & Leadership",
+    "name": "Rules & Procedure",
     "committees": [
       {
-        "role": "Member"
-      },
-      {
+        "committee": "Committee on Environment and Public Works",
         "role": "Member"
       }
     ]
   },
   {
-    "name": "Electing & Appointing Senators",
+    "name": "Landmark Legislation",
     "committees": [
       {
-        "role": "Member"
-      },
-      {
+        "committee": "Committee on Environment and Public Works",
         "role": "Member"
       }
     ]
   },
   {
-    "name": "Find Senators by State: --Select State-- Alabama Alaska Arizona Arkansas California Colorado Connecticut Delaware Florida Georgia Hawaii Idaho Illinois Indiana Iowa Kansas Kentucky Louisiana Maine Maryland Massachusetts Michigan Minnesota Mississippi Missouri Montana Nebraska Nevada New Hampshire New Jersey New Mexico New York North Carolina North Dakota Ohio Oklahoma Oregon Pennsylvania Rhode Island South Carolina South Dakota Tennessee Texas Utah Vermont Virginia Washington West Virginia Wisconsin Wyoming",
+    "name": "Sessions of Congress",
     "committees": [
       {
-        "role": "Member"
-      },
-      {
+        "committee": "Committee on Environment and Public Works",
         "role": "Member"
       }
     ]
   },
   {
-    "name": "Contact: E-mail webmaster@sec.senate.gov to report a broken link, ask technical questions, or provide feedback on www.senate.gov. For all other correspondence contact your senators. *NOTE: Please do not ask the webmaster to forward mail to senators' offices.",
+    "name": "ate Archives",
     "committees": [
       {
-        "role": "Member"
-      },
-      {
+        "committee": "Committee on Environment and Public Works",
         "role": "Member"
       }
     ]
   },
   {
-    "name": "Senator Facebook",
+    "name": "Public Disclosure",
     "committees": [
       {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Collection Search",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Fine Art",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Decorative Art",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Historical Images",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Historical Artifacts",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Thematic Collections",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Exhibitions & Publications",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Officers & Staff",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Vice President",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "President Pro Tempore",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Secretary of the ate",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Sergeant at Arms",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Party Secretaries",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Committee & Office Staff",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Powers & Procedures",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Declarations of War",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Filibuster & Cloture",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Origins & Foundations",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "The ate & the Constitution",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Electing & Appointing ators",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Committee System",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Idea of the ate",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Parties & Leadership",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Historic Buildings & Spaces",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "The Capitol",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "ate Chamber",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Historic Rooms",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "ate Office Buildings",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Congressional Meeting Places",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Past ate Chambers",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Traditions & Symbols",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Oral History Project",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Historical Highlights",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "ate Stories Blog",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Research Tools",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "contact your ators",
+    "committees": [
+      {
+        "committee": "Committee on Environment and Public Works",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "History & Rules",
+    "committees": [
+      {
+        "committee": "Committee on Foreign Relations",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "'s Press",
+    "committees": [
+      {
+        "committee": "Committee on Foreign Relations",
+        "role": "Chairman"
+      }
+    ]
+  },
+  {
+    "name": "Committee Events",
+    "committees": [
+      {
+        "committee": "Committee on Foreign Relations",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Activities & Reports",
+    "committees": [
+      {
+        "committee": "Committee on Foreign Relations",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Business Meeting Transcripts",
+    "committees": [
+      {
+        "committee": "Committee on Foreign Relations",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Conference Reports",
+    "committees": [
+      {
+        "committee": "Committee on Foreign Relations",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Other Publications",
+    "committees": [
+      {
+        "committee": "Committee on Foreign Relations",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Committee Prints & Reports",
+    "committees": [
+      {
+        "committee": "Committee on Foreign Relations",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "All Publications",
+    "committees": [
+      {
+        "committee": "Committee on Foreign Relations",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "The Chair",
+    "committees": [
+      {
+        "committee": "Committee on the Judiciary",
+        "role": "Chairman"
+      }
+    ]
+  },
+  {
+    "name": "Committee Activity",
+    "committees": [
+      {
+        "committee": "Committee on the Judiciary",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Committee Documents",
+    "committees": [
+      {
+        "committee": "Committee on the Judiciary",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Executive Nominations",
+    "committees": [
+      {
+        "committee": "Committee on the Judiciary",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Judicial Nominations",
+    "committees": [
+      {
+        "committee": "Committee on the Judiciary",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Supreme Court",
+    "committees": [
+      {
+        "committee": "Committee on the Judiciary",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Confirmed Nominations",
+    "committees": [
+      {
+        "committee": "Committee on the Judiciary",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Latest News",
+    "committees": [
+      {
+        "committee": "Committee on the Judiciary",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Majority Press",
+    "committees": [
+      {
+        "committee": "Committee on the Judiciary",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Minority Press",
+    "committees": [
+      {
+        "committee": "Committee on the Judiciary",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Press Kit",
+    "committees": [
+      {
+        "committee": "Committee on the Judiciary",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "ator Facebook",
+    "committees": [
+      {
+        "committee": "Committee on the Judiciary",
+        "role": "Member"
+      }
+    ]
+  },
+  {
+    "name": "Chair Joni Ernst (IA)James Risch (ID)Rand Paul (KY)Tim Scott (SC)Todd Young (IN)Josh Hawley (MO)Ted Budd (NC)John Curtis (UT)Jim Justice (WV)Jon Husted (OH)",
+    "committees": [
+      {
+        "committee": "Committee on Small Business and Entrepreneurship",
+        "role": "Chairman"
+      }
+    ]
+  },
+  {
+    "name": "Contact Information",
+    "committees": [
+      {
+        "committee": "Committee on Small Business and Entrepreneurship",
         "role": "Member"
       }
     ]
