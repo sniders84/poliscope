@@ -16,7 +16,7 @@ function buildUrl(sessionPrefix, sessionNum, voteNum) {
 function parseGroups($) {
   const groups = { Yea: [], Nay: [], 'Not Voting': [] };
 
-  $('h3, h2, strong, b').each((i, el) => {
+  $('h3').each((i, el) => {
     const heading = $(el).text().trim();
     let group = null;
     if (/YEAs/i.test(heading)) group = 'Yea';
@@ -24,12 +24,12 @@ function parseGroups($) {
     else if (/Not Voting/i.test(heading)) group = 'Not Voting';
     if (!group) return;
 
-    const section = $(el).parent();
-    const textBlock = section.text();
-    const names = textBlock
+    // Names are usually in the next sibling <p> or <div>
+    const namesBlock = $(el).next().text();
+    const names = namesBlock
       .split(/\s{2,}|\n+/)
       .map(s => s.trim())
-      .filter(s => /\([DRI]-[A-Z]{2}\)/.test(s)); // senator entries
+      .filter(s => /\([DRI]-[A-Z]{2}\)/.test(s));
 
     names.forEach(n => {
       const cleaned = n.replace(/\s+/g, ' ').replace(/\(.*?\)/, '').trim();
