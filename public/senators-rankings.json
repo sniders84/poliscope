@@ -9,11 +9,12 @@
     "sponsoredAmendments": 5,
     "cosponsoredBills": 228,
     "cosponsoredAmendments": 11,
-    "becameLawBills": 0,
+    "becameLawBills": 1,
     "becameLawAmendments": 0,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Tommy Tuberville",
@@ -29,7 +30,8 @@
     "becameLawAmendments": 1,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Lisa Murkowski",
@@ -45,7 +47,8 @@
     "becameLawAmendments": 2,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Dan Sullivan",
@@ -57,11 +60,12 @@
     "sponsoredAmendments": 21,
     "cosponsoredBills": 186,
     "cosponsoredAmendments": 19,
-    "becameLawBills": 0,
+    "becameLawBills": 3,
     "becameLawAmendments": 3,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Ruben Gallego",
@@ -77,7 +81,8 @@
     "becameLawAmendments": 0,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Mark Kelly",
@@ -89,11 +94,12 @@
     "sponsoredAmendments": 72,
     "cosponsoredBills": 192,
     "cosponsoredAmendments": 58,
-    "becameLawBills": 0,
+    "becameLawBills": 1,
     "becameLawAmendments": 3,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "John Boozman",
@@ -109,7 +115,8 @@
     "becameLawAmendments": 0,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Tom Cotton",
@@ -125,7 +132,8 @@
     "becameLawAmendments": 1,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Adam Schiff",
@@ -141,7 +149,8 @@
     "becameLawAmendments": 0,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Alex Padilla",
@@ -157,7 +166,8 @@
     "becameLawAmendments": 2,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Michael Bennet",
@@ -173,7 +183,8 @@
     "becameLawAmendments": 2,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "John Hickenlooper",
@@ -189,7 +200,8 @@
     "becameLawAmendments": 0,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Richard Blumenthal",
@@ -205,7 +217,8 @@
     "becameLawAmendments": 4,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Chris Murphy",
@@ -221,7 +234,8 @@
     "becameLawAmendments": 2,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Lisa Blunt Rochester",
@@ -237,7 +251,8 @@
     "becameLawAmendments": 0,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Chris Coons",
@@ -253,7 +268,8 @@
     "becameLawAmendments": 6,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Ashley Moody",
@@ -269,7 +285,8 @@
     "becameLawAmendments": 0,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Rick Scott",
@@ -285,7 +302,8 @@
     "becameLawAmendments": 4,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Jon Ossoff",
@@ -301,7 +319,8 @@
     "becameLawAmendments": 4,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Raphael Warnock",
@@ -317,7 +336,8 @@
     "becameLawAmendments": 2,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Mazie Hirono",
@@ -333,7 +353,8 @@
     "becameLawAmendments": 6,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Brian Schatz",
@@ -348,7 +369,8 @@
     "becameLawBills": 0,
     "becameLawAmendments": 0,
     "committees": [],
-    "votes": 0
+    "votes": 0,
+    "missedVotes": 0
   },
   {
     "name": "Mike Crapo",
@@ -360,11 +382,12 @@
     "sponsoredAmendments": 7,
     "cosponsoredBills": 229,
     "cosponsoredAmendments": 15,
-    "becameLawBills": 0,
+    "becameLawBills": 1,
     "becameLawAmendments": 2,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "James Risch",
@@ -380,7 +403,8 @@
     "becameLawAmendments": 0,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Dick Durbin",
@@ -396,7 +420,8 @@
     "becameLawAmendments": 1,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Tammy Duckworth",
@@ -408,11 +433,12 @@
     "sponsoredAmendments": 35,
     "cosponsoredBills": 229,
     "cosponsoredAmendments": 21,
-    "becameLawBills": 0,
+    "becameLawBills": 1,
     "becameLawAmendments": 5,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Jim Banks",
@@ -428,7 +454,8 @@
     "becameLawAmendments": 0,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Todd Young",
@@ -444,7 +471,8 @@
     "becameLawAmendments": 0,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Joni Ernst",
@@ -460,7 +488,8 @@
     "becameLawAmendments": 3,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Chuck Grassley",
@@ -476,7 +505,8 @@
     "becameLawAmendments": 3,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Roger Marshall",
@@ -492,7 +522,8 @@
     "becameLawAmendments": 0,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Jerry Moran",
@@ -504,11 +535,12 @@
     "sponsoredAmendments": 16,
     "cosponsoredBills": 149,
     "cosponsoredAmendments": 11,
-    "becameLawBills": 0,
+    "becameLawBills": 1,
     "becameLawAmendments": 5,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Mitch McConnell",
@@ -524,7 +556,8 @@
     "becameLawAmendments": 0,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Rand Paul",
@@ -540,7 +573,8 @@
     "becameLawAmendments": 6,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Bill Cassidy",
@@ -552,11 +586,12 @@
     "sponsoredAmendments": 12,
     "cosponsoredBills": 245,
     "cosponsoredAmendments": 5,
-    "becameLawBills": 0,
+    "becameLawBills": 1,
     "becameLawAmendments": 0,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "John Kennedy",
@@ -568,11 +603,12 @@
     "sponsoredAmendments": 46,
     "cosponsoredBills": 130,
     "cosponsoredAmendments": 2,
-    "becameLawBills": 0,
+    "becameLawBills": 3,
     "becameLawAmendments": 5,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Susan Collins",
@@ -588,7 +624,8 @@
     "becameLawAmendments": 4,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Angus King",
@@ -604,7 +641,8 @@
     "becameLawAmendments": 2,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Angela Alsobrooks",
@@ -620,7 +658,8 @@
     "becameLawAmendments": 1,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Chris Van Hollen",
@@ -636,7 +675,8 @@
     "becameLawAmendments": 4,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Ed Markey",
@@ -652,7 +692,8 @@
     "becameLawAmendments": 2,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Elizabeth Warren",
@@ -668,7 +709,8 @@
     "becameLawAmendments": 2,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Gary Peters",
@@ -680,11 +722,12 @@
     "sponsoredAmendments": 100,
     "cosponsoredBills": 188,
     "cosponsoredAmendments": 62,
-    "becameLawBills": 0,
+    "becameLawBills": 1,
     "becameLawAmendments": 2,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Elissa Slotkin",
@@ -700,7 +743,8 @@
     "becameLawAmendments": 2,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Amy Klobuchar",
@@ -716,7 +760,8 @@
     "becameLawAmendments": 6,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Tina Smith",
@@ -732,7 +777,8 @@
     "becameLawAmendments": 1,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Cindy Hyde-Smith",
@@ -748,7 +794,8 @@
     "becameLawAmendments": 0,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Roger Wicker",
@@ -764,7 +811,8 @@
     "becameLawAmendments": 1,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Josh Hawley",
@@ -780,7 +828,8 @@
     "becameLawAmendments": 2,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Eric Schmitt",
@@ -796,7 +845,8 @@
     "becameLawAmendments": 1,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Steve Daines",
@@ -812,7 +862,8 @@
     "becameLawAmendments": 1,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Tim Sheehy",
@@ -828,7 +879,8 @@
     "becameLawAmendments": 0,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Deb Fischer",
@@ -844,7 +896,8 @@
     "becameLawAmendments": 1,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Pete Ricketts",
@@ -856,11 +909,12 @@
     "sponsoredAmendments": 16,
     "cosponsoredBills": 245,
     "cosponsoredAmendments": 5,
-    "becameLawBills": 0,
+    "becameLawBills": 1,
     "becameLawAmendments": 1,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Catherine Cortez Masto",
@@ -876,7 +930,8 @@
     "becameLawAmendments": 1,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Jacky Rosen",
@@ -892,7 +947,8 @@
     "becameLawAmendments": 4,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Jeanne Shaheen",
@@ -908,7 +964,8 @@
     "becameLawAmendments": 9,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Maggie Hassan",
@@ -924,7 +981,8 @@
     "becameLawAmendments": 1,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Andy Kim",
@@ -940,7 +998,8 @@
     "becameLawAmendments": 2,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Cory Booker",
@@ -956,7 +1015,8 @@
     "becameLawAmendments": 5,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Martin Heinrich",
@@ -972,7 +1032,8 @@
     "becameLawAmendments": 1,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Ben Ray Luján",
@@ -988,7 +1049,8 @@
     "becameLawAmendments": 3,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Kirsten Gillibrand",
@@ -1004,7 +1066,8 @@
     "becameLawAmendments": 0,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Chuck Schumer",
@@ -1020,7 +1083,8 @@
     "becameLawAmendments": 2,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Ted Budd",
@@ -1036,7 +1100,8 @@
     "becameLawAmendments": 1,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Thom Tillis",
@@ -1052,7 +1117,8 @@
     "becameLawAmendments": 1,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Kevin Cramer",
@@ -1068,7 +1134,8 @@
     "becameLawAmendments": 1,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "John Hoeven",
@@ -1084,7 +1151,8 @@
     "becameLawAmendments": 0,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Bernie Moreno",
@@ -1100,7 +1168,8 @@
     "becameLawAmendments": 0,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Jon Husted",
@@ -1116,7 +1185,8 @@
     "becameLawAmendments": 0,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "James Lankford",
@@ -1128,11 +1198,12 @@
     "sponsoredAmendments": 24,
     "cosponsoredBills": 235,
     "cosponsoredAmendments": 6,
-    "becameLawBills": 0,
+    "becameLawBills": 1,
     "becameLawAmendments": 1,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Markwayne Mullin",
@@ -1148,7 +1219,8 @@
     "becameLawAmendments": 1,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Jeff Merkley",
@@ -1164,7 +1236,8 @@
     "becameLawAmendments": 9,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Ron Wyden",
@@ -1180,7 +1253,8 @@
     "becameLawAmendments": 1,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "John Fetterman",
@@ -1196,7 +1270,8 @@
     "becameLawAmendments": 0,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "David McCormick",
@@ -1212,7 +1287,8 @@
     "becameLawAmendments": 0,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Jack Reed",
@@ -1228,7 +1304,8 @@
     "becameLawAmendments": 2,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Sheldon Whitehouse",
@@ -1244,7 +1321,8 @@
     "becameLawAmendments": 0,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Lindsey Graham",
@@ -1260,7 +1338,8 @@
     "becameLawAmendments": 4,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Tim Scott",
@@ -1272,11 +1351,12 @@
     "sponsoredAmendments": 14,
     "cosponsoredBills": 112,
     "cosponsoredAmendments": 1,
-    "becameLawBills": 0,
+    "becameLawBills": 1,
     "becameLawAmendments": 2,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Mike Rounds",
@@ -1292,7 +1372,8 @@
     "becameLawAmendments": 3,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "John Thune",
@@ -1308,7 +1389,8 @@
     "becameLawAmendments": 1,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Marsha Blackburn",
@@ -1324,7 +1406,8 @@
     "becameLawAmendments": 2,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Bill Hagerty",
@@ -1336,11 +1419,12 @@
     "sponsoredAmendments": 12,
     "cosponsoredBills": 139,
     "cosponsoredAmendments": 2,
-    "becameLawBills": 0,
+    "becameLawBills": 1,
     "becameLawAmendments": 2,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "John Cornyn",
@@ -1352,11 +1436,12 @@
     "sponsoredAmendments": 46,
     "cosponsoredBills": 222,
     "cosponsoredAmendments": 13,
-    "becameLawBills": 0,
+    "becameLawBills": 2,
     "becameLawAmendments": 6,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Ted Cruz",
@@ -1368,11 +1453,12 @@
     "sponsoredAmendments": 56,
     "cosponsoredBills": 191,
     "cosponsoredAmendments": 10,
-    "becameLawBills": 0,
+    "becameLawBills": 1,
     "becameLawAmendments": 6,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "John Curtis",
@@ -1388,7 +1474,8 @@
     "becameLawAmendments": 0,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Mike Lee",
@@ -1404,7 +1491,8 @@
     "becameLawAmendments": 3,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Tim Kaine",
@@ -1420,7 +1508,8 @@
     "becameLawAmendments": 2,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Mark Warner",
@@ -1436,7 +1525,8 @@
     "becameLawAmendments": 2,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Patty Murray",
@@ -1452,7 +1542,8 @@
     "becameLawAmendments": 2,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Maria Cantwell",
@@ -1468,7 +1559,8 @@
     "becameLawAmendments": 1,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Shelley Moore Capito",
@@ -1484,7 +1576,8 @@
     "becameLawAmendments": 1,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Jim Justice",
@@ -1496,11 +1589,12 @@
     "sponsoredAmendments": 0,
     "cosponsoredBills": 72,
     "cosponsoredAmendments": 0,
-    "becameLawBills": 0,
+    "becameLawBills": 1,
     "becameLawAmendments": 0,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Tammy Baldwin",
@@ -1516,7 +1610,8 @@
     "becameLawAmendments": 2,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Ron Johnson",
@@ -1532,7 +1627,8 @@
     "becameLawAmendments": 1,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "John Barrasso",
@@ -1548,7 +1644,8 @@
     "becameLawAmendments": 0,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Cynthia Lummis",
@@ -1560,11 +1657,12 @@
     "sponsoredAmendments": 14,
     "cosponsoredBills": 236,
     "cosponsoredAmendments": 12,
-    "becameLawBills": 0,
+    "becameLawBills": 1,
     "becameLawAmendments": 0,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Bernie Sanders",
@@ -1580,7 +1678,8 @@
     "becameLawAmendments": 3,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   },
   {
     "name": "Peter Welch",
@@ -1596,6 +1695,7 @@
     "becameLawAmendments": 1,
     "committees": [],
     "votes": 0,
-    "missedPct": 0
+    "missedPct": 0,
+    "missedVotes": 0
   }
 ]
