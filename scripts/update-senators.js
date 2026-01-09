@@ -7,6 +7,88 @@ const senators = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
 const apiKey = process.env.CONGRESS_API_KEY;
 const headers = apiKey ? { 'X-Api-Key': apiKey } : {};
 
+let missedLookup = { missed: {}, totalVotes: 0 };
+
+// Scrape Senate.gov committee assignments and leadership roles
+async function fetchSenateCommitteesForSenator(senatorName) {
+  const url = 'https://www.senate.gov/general/committee_assignments/committee_assignments.htm';
+  const res = await fetch(url);
+  if (!res.ok) return [];
+
+  const html = await res.text();
+  const nameEsc = senatorName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const senatorBlockRegex = new RegExp(`${nameEsc}[\\s\\S]*?(?=<strong>|<b>|<h3>|<h2>|<hr|</div>)`, 'i');
+  const blockMatch = html.match(senatorBlockRegex);
+  if (!blockMatch) return [];
+
+  const block = blockMatch[0];
+  const lines = block.split('\n').filter(l => /Committee on|Special Committee|Select Committee/i.test(l));
+  const committees = [];
+
+  lines.forEach(line => {
+    const clean = line.replace(/<[^>]+>/g, '').trim();
+    if (!clean) return;
+
+    let role = 'Member';
+    if (/\(Chairman\)/i.test(clean) || /\(Chair\)/i.test(clean)) role = 'Chairman';
+    else if (/\(Ranking\)/i.test(clean) || /\(Ranking Member\)/i.test(clean)) role = 'Ranking';
+
+    const name = clean.replace(/\s*\((Chairman|Chair|Ranking|Ranking Member)\)\s*$/i, '').trim();
+    if (/Subcommittee/i.test(name)) return; // skip subcommittees if you only want top-level
+
+    committees.push({ name, role });
+  });
+
+  const byName = new Map();
+  committees.forEach(c => {
+    const prev = byName.get(c.name);
+    if (!prev || (prev.role === 'Member' && c.role !== 'Member')) {
+      byName.set(c.name, c);
+    }
+  });
+
+  return Array.from(byName.values());
+}
+
+// Precompute missed votes across entire 119th Congress
+async function buildMissedVotesLookup(allSenatorNames) {
+  const indexUrls = [
+    'https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_1.xml',
+    'https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_2.xml'
+  ];
+
+  let voteUrls = [];
+  for (const idxUrl of indexUrls) {
+    const idxRes = await fetch(idxUrl);
+    if (!idxRes.ok) continue;
+    const xmlText = await idxRes.text();
+    const matches = [...xmlText.matchAll(/<vote_number>(\d+)<\/vote_number>/g)];
+    const session = idxUrl.includes('_1.xml') ? '1' : '2';
+    matches.forEach(m => {
+      const num = m[1].padStart(5, '0');
+      voteUrls.push(`https://www.senate.gov/legislative/LIS/roll_call_votes/vote119${session}/vote_119_${session}_${num}.htm`);
+    });
+  }
+
+  const chunkSize = 20;
+  const missed = Object.fromEntries(allSenatorNames.map(n => [n, 0]));
+
+  for (let i = 0; i < voteUrls.length; i += chunkSize) {
+    const chunk = voteUrls.slice(i, i + chunkSize);
+    const results = await Promise.all(chunk.map(url => fetch(url).then(r => r.ok ? r.text() : '')));
+    results.forEach(html => {
+      if (!html) return;
+      allSenatorNames.forEach(name => {
+        if (html.includes(name) && html.includes('Not Voting')) {
+          missed[name] = (missed[name] || 0) + 1;
+        }
+      });
+    });
+  }
+
+  return { missed, totalVotes: voteUrls.length };
+}
+
 async function updateSenator(sen) {
   try {
     const base = `https://api.congress.gov/v3/member/${sen.bioguideId}`;
@@ -32,12 +114,13 @@ async function updateSenator(sen) {
         if (item.congress === 119) {
           const number = (item.number || '').toLowerCase();
           const actionText = (item.latestAction?.text || '').toLowerCase();
+          const enacted = /became law|enacted|signed by president|public law/i.test(actionText);
           if (number.startsWith('s.amdt.') || item.amendmentNumber) {
             sen.sponsoredAmendments++;
-            if (actionText.includes('became law') || actionText.includes('enacted') || actionText.includes('agreed to')) sen.becameLawAmendments++;
+            if (enacted || actionText.includes('agreed to')) sen.becameLawAmendments++;
           } else {
             sen.sponsoredBills++;
-            if (actionText.includes('became law') || actionText.includes('enacted')) sen.becameLawBills++;
+            if (enacted) sen.becameLawBills++;
           }
         }
       });
@@ -58,37 +141,32 @@ async function updateSenator(sen) {
       });
     }
 
-    // Missed votes count (scrape senate.gov votes and count "Not Voting" for this senator)
-    sen.votes = 0;  // Missed count
-    const totalVotes = 4;  // From senate.gov - update this manually when more votes happen
-    const voteUrls = [  // List of vote detail URLs from senate.gov
-      'https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00004.htm',
-      'https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00003.htm',
-      'https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00002.htm',
-      'https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00001.htm'
-    ];
-
-    for (const vUrl of voteUrls) {
-      const vRes = await fetch(vUrl);
-      if (vRes.ok) {
-        const vText = await vRes.text();
-        if (vText.includes(sen.name) && vText.includes('Not Voting')) sen.votes++;
-      }
+    // Committees and leadership roles from Senate.gov
+    try {
+      const senateCommittees = await fetchSenateCommitteesForSenator(sen.name);
+      sen.committees = senateCommittees.length ? senateCommittees : [];
+    } catch {
+      sen.committees = [];
     }
 
-    // If you want %, add: sen.missedPct = (sen.votes / totalVotes) * 100;
+    // Missed votes from precomputed lookup
+    sen.votes = missedLookup.missed[sen.name] || 0;
+    sen.missedPct = (missedLookup.totalVotes > 0) ? (sen.votes / missedLookup.totalVotes) * 100 : 0;
 
-    console.log(`Updated ${sen.name}: sBills ${sen.sponsoredBills} sAmend ${sen.sponsoredAmendments} cBills ${sen.cosponsoredBills} cAmend ${sen.cosponsoredAmendments} becameLawB ${sen.becameLawBills} missed ${sen.votes}`);
+    console.log(`Updated ${sen.name}: sBills ${sen.sponsoredBills} sAmend ${sen.sponsoredAmendments} cBills ${sen.cosponsoredBills} cAmend ${sen.cosponsoredAmendments} becameLawB ${sen.becameLawBills} committees ${sen.committees.length} missed ${sen.votes}`);
   } catch (err) {
     console.log(`Error for ${sen.name}: ${err.message}`);
   }
 }
 
 (async () => {
+  const allNames = senators.map(s => s.name);
+  missedLookup = await buildMissedVotesLookup(allNames);
+
   for (const sen of senators) {
     await updateSenator(sen);
-    await new Promise(r => setTimeout(r, 1500));
   }
+
   fs.writeFileSync(jsonPath, JSON.stringify(senators, null, 2) + '\n');
   console.log('Schema fully updated!');
 })();
