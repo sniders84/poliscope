@@ -21,8 +21,9 @@ async function scrapeVotes() {
     const votes = indexData.Vote_Menu.Vote;
     for (const v of votes) {
       const voteNum = v.vote_number[0];
-      const session = v.congress[0] + v.session[0]; // e.g. "1191"
-      const detailUrl = `https://www.senate.gov/legislative/LIS/roll_call_votes/vote${session}/vote_${voteNum}.xml`;
+      const congress = v.congress[0]; // "119"
+      const session = v.session[0];   // "1" or "2"
+      const detailUrl = `https://www.senate.gov/legislative/LIS/roll_call_votes/vote${congress}${session}/vote_${voteNum}.xml`;
 
       try {
         const detailData = await fetchXML(detailUrl);
@@ -39,7 +40,7 @@ async function scrapeVotes() {
           }
         }
       } catch (err) {
-        console.error(`Failed to fetch vote ${voteNum} from ${session}:`, err.message);
+        console.error(`Failed to fetch vote ${voteNum} from ${congress}-${session}:`, err.message);
       }
     }
   }
