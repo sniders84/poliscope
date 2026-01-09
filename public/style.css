@@ -7001,3 +7001,40 @@ section > h3 {
 .leaderboard-table td:nth-child(4) { width: 20%; }  /* Power Score */
 .leaderboard-table th:nth-child(5),
 .leaderboard-table td:nth-child(5) { width: 22%; }  /* Streak */
+/* Leaderboard table alignment */
+.leaderboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* force consistent column widths */
+}
+
+.leaderboard-table th,
+.leaderboard-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #ddd;
+  vertical-align: middle;
+}
+
+/* Column widths */
+.leaderboard-table th:nth-child(1),
+.leaderboard-table td:nth-child(1) { width: 8%; text-align: center; }   /* Rank */
+
+.leaderboard-table th:nth-child(2),
+.leaderboard-table td:nth-child(2) { width: 35%; text-align: left; }    /* Official */
+
+.leaderboard-table th:nth-child(3),
+.leaderboard-table td:nth-child(3) { width: 15%; text-align: center; }  /* Office */
+
+.leaderboard-table th:nth-child(4),
+.leaderboard-table td:nth-child(4) { width: 20%; text-align: center; }  /* Power Score */
+
+.leaderboard-table th:nth-child(5),
+.leaderboard-table td:nth-child(5) { width: 22%; text-align: center; }  /* Streak */
+
+/* Make the small party/state line align neatly under Official */
+.leaderboard-table td:nth-child(2) small {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.85em;
+  color: #555;
+}
