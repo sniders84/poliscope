@@ -89,16 +89,58 @@ async function buildMissedVotesLookup(allSenatorNames) {
   return { missed, totalVotes: voteUrls.length };
 }
 
+// Helper to fetch all pages of legislation
+async function fetchAllLegislation(urlBase, key) {
+  const pageSize = 500;
+  let offset = 0;
+  let all = [];
+  while (true) {
+    const url = `${urlBase}?limit=${pageSize}&offset=${offset}`;
+    const res = await fetch(url, { headers });
+    if (!res.ok) break;
+    const data = await res.json();
+    const items = data[key] || [];
+    all = all.concat(items);
+    if (items.length < pageSize) break;
+    offset += pageSize;
+  }
+  return all;
+}
+
+// Calculate Power Score
+function calculateScore(sen) {
+  let score = 0;
+
+  // Sponsored bills/amendments
+  score += sen.sponsoredBills * 1.0;
+  score += sen.sponsoredAmendments * 0.5;
+
+  // Cosponsored bills/amendments
+  score += sen.cosponsoredBills * 0.5;
+  score += sen.cosponsoredAmendments * 0.25;
+
+  // Became law (extra credit)
+  score += sen.becameLawBills * 2.0;
+  score += sen.becameLawAmendments * 1.0;
+
+  // Committees with leadership bonuses
+  if (Array.isArray(sen.committees)) {
+    sen.committees.forEach(c => {
+      score += 2; // baseline for membership
+      if (c.role === 'Ranking') score += 2;
+      if (c.role === 'Chairman') score += 4;
+    });
+  }
+
+  // Missed votes penalty
+  score -= sen.votes * 0.5;
+
+  sen.powerScore = score;
+}
+
 async function updateSenator(sen) {
   try {
     const base = `https://api.congress.gov/v3/member/${sen.bioguideId}`;
-    const sponsoredUrl = `${base}/sponsored-legislation?limit=500`;
-    const cosponsoredUrl = `${base}/cosponsored-legislation?limit=500`;
-
-    const [sponsoredRes, cosponsoredRes] = await Promise.all([
-      fetch(sponsoredUrl, { headers }),
-      fetch(cosponsoredUrl, { headers })
-    ]);
 
     sen.sponsoredBills = 0;
     sen.sponsoredAmendments = 0;
@@ -107,39 +149,35 @@ async function updateSenator(sen) {
     sen.becameLawBills = 0;
     sen.becameLawAmendments = 0;
 
-    if (sponsoredRes.ok) {
-      const data = await sponsoredRes.json();
-      const items = data.sponsoredLegislation || [];
-      items.forEach(item => {
-        if (item.congress === 119) {
-          const number = (item.number || '').toLowerCase();
-          const actionText = (item.latestAction?.text || '').toLowerCase();
-          const enacted = /became law|enacted|signed by president|public law/i.test(actionText);
-          if (number.startsWith('s.amdt.') || item.amendmentNumber) {
-            sen.sponsoredAmendments++;
-            if (enacted || actionText.includes('agreed to')) sen.becameLawAmendments++;
-          } else {
-            sen.sponsoredBills++;
-            if (enacted) sen.becameLawBills++;
-          }
+    // Sponsored
+    const sponsoredItems = await fetchAllLegislation(`${base}/sponsored-legislation`, 'sponsoredLegislation');
+    sponsoredItems.forEach(item => {
+      if (item.congress === 119) {
+        const number = (item.number || '').toLowerCase();
+        const actionText = (item.latestAction?.text || '').toLowerCase();
+        const enacted = /became law|enacted|signed by president|public law/i.test(actionText);
+        if (number.startsWith('s.amdt.') || item.amendmentNumber) {
+          sen.sponsoredAmendments++;
+          if (enacted || actionText.includes('agreed to')) sen.becameLawAmendments++;
+        } else {
+          sen.sponsoredBills++;
+          if (enacted) sen.becameLawBills++;
         }
-      });
-    }
+      }
+    });
 
-    if (cosponsoredRes.ok) {
-      const cosData = await cosponsoredRes.json();
-      const cosItems = cosData.cosponsoredLegislation || [];
-      cosItems.forEach(item => {
-        if (item.congress === 119) {
-          const number = (item.number || '').toLowerCase();
-          if (number.startsWith('s.amdt.') || item.amendmentNumber) {
-            sen.cosponsoredAmendments++;
-          } else {
-            sen.cosponsoredBills++;
-          }
+    // Cosponsored
+    const cosponsoredItems = await fetchAllLegislation(`${base}/cosponsored-legislation`, 'cosponsoredLegislation');
+    cosponsoredItems.forEach(item => {
+      if (item.congress === 119) {
+        const number = (item.number || '').toLowerCase();
+        if (number.startsWith('s.amdt.') || item.amendmentNumber) {
+          sen.cosponsoredAmendments++;
+        } else {
+          sen.cosponsoredBills++;
         }
-      });
-    }
+      }
+    });
 
     // Committees and leadership roles from Senate.gov
     try {
@@ -153,7 +191,10 @@ async function updateSenator(sen) {
     sen.votes = missedLookup.missed[sen.name] || 0;
     sen.missedPct = (missedLookup.totalVotes > 0) ? (sen.votes / missedLookup.totalVotes) * 100 : 0;
 
-    console.log(`Updated ${sen.name}: sBills ${sen.sponsoredBills} sAmend ${sen.sponsoredAmendments} cBills ${sen.cosponsoredBills} cAmend ${sen.cosponsoredAmendments} becameLawB ${sen.becameLawBills} committees ${sen.committees.length} missed ${sen.votes}`);
+    // Calculate Power Score
+    calculateScore(sen);
+
+    console.log(`Updated ${sen.name}: powerScore ${sen.powerScore} sBills ${sen.sponsoredBills} sAmend ${sen.sponsoredAmendments} cBills ${sen.cosponsoredBills} cAmend ${sen.cosponsoredAmendments} becameLawB ${sen.becameLawBills} committees ${sen.committees.length} missed ${sen.votes}`);
   } catch (err) {
     console.log(`Error for ${sen.name}: ${err.message}`);
   }
