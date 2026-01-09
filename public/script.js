@@ -3117,13 +3117,12 @@ document.getElementById('rate-me-btn').onclick = function() {
   document.getElementById('rate-modal').style.display = 'block';
   initStarRatings();
 };
-// Ratings & Rankings — section toggle
+// Ratings & Rankings — section toggle (unchanged)
 (function initRatingsRankingsToggle() {
-  const btnRatings  = document.getElementById('btn-ratings');
+  const btnRatings = document.getElementById('btn-ratings');
   const btnRankings = document.getElementById('btn-rankings');
-  const ratingsSec  = document.getElementById('ratings-section');
+  const ratingsSec = document.getElementById('ratings-section');
   const rankingsSec = document.getElementById('rankings-section');
-
   if (!btnRatings || !btnRankings || !ratingsSec || !rankingsSec) return;
 
   function activateRatings() {
@@ -3136,68 +3135,58 @@ document.getElementById('rate-me-btn').onclick = function() {
   }
 
   function activateRankings() {
-  btnRankings.classList.add('rr-tab-active');
-  btnRatings.classList.remove('rr-tab-active');
-  rankingsSec.classList.add('rr-section-active');
-  ratingsSec.classList.remove('rr-section-active');
-  rankingsSec.removeAttribute('aria-hidden');
-  rankingsSec.setAttribute('aria-hidden', 'false');
-}
-
-btnRatings.addEventListener('click', activateRatings);
-btnRankings.addEventListener('click', () => {
-  activateRankings();
-  if (typeof window.renderRankingsLeaderboard === 'function') {
-    window.renderRankingsLeaderboard();
+    btnRankings.classList.add('rr-tab-active');
+    btnRatings.classList.remove('rr-tab-active');
+    rankingsSec.classList.add('rr-section-active');
+    ratingsSec.classList.remove('rr-section-active');
+    rankingsSec.removeAttribute('aria-hidden');
+    rankingsSec.setAttribute('aria-hidden', 'false');
   }
-});
 
-activateRatings();
+  btnRatings.addEventListener('click', activateRatings);
+  btnRankings.addEventListener('click', () => {
+    activateRankings();
+    if (typeof window.renderRankingsLeaderboard === 'function') {
+      window.renderRankingsLeaderboard();
+    }
+  });
+
+  activateRatings();
 })();
 
-// Utility: load rankings JSON by office type
-async function loadRankingsFile(office) {
-  let file = '';
-  const lower = (office || '').toLowerCase();
-
-  if (lower.includes('president') && !lower.includes('vice')) file = '/president-rankings.json';
-  else if (lower.includes('vice')) file = '/vicepresident-rankings.json';
-  else if (lower.includes('lt') && lower.includes('governor')) file = '/ltgovernors-rankings.json';
-  else if (lower.includes('governor')) file = '/governors-rankings.json';
-  else if (lower.includes('senator')) file = '/senators-rankings.json';
-  else if (lower.includes('representative')) file = '/housereps-rankings.json';
-
+// Utility: load full merged senator JSON (only senators for now)
+async function loadSenatorsData() {
   try {
-    const res = await fetch(file);
-    if (!res.ok) throw new Error(`Failed to load ${file}`);
+    const res = await fetch('/senators-full.json');
+    if (!res.ok) throw new Error(`Failed to load /senators-full.json: ${res.status}`);
     return await res.json();
   } catch (err) {
-    console.error(`Error loading ${file}:`, err);
+    console.error('Error loading senators-full.json:', err);
     return [];
   }
 }
 
-// Rankings — render by office using local rankings JSON
+// Rankings — render using the new full merged JSON
 (function initRankingsRender() {
   const officeSel = document.getElementById('rankingsOfficeFilter');
   const categorySel = document.getElementById('rankingsCategoryFilter');
   const tableBody = document.querySelector('#rankings-leaderboard tbody');
   if (!officeSel || !categorySel || !tableBody) return;
 
-  // Updated weights for schema fields
+  // Weights tuned to your schema (adjust as desired)
   const WEIGHTS = {
-    sponsoredBills: 1.2,
-    sponsoredAmendments: 1.0,
+    sponsoredBills: 1.2,               // Bills Sponsored
+    sponsoredAmendments: 1.0,          // Amendments Sponsored
     cosponsoredBills: 0.6,
     cosponsoredAmendments: 0.5,
-    becameLawBills: 6.0,
+    becameLawBills: 6.0,               // High impact for enacted laws
     becameLawAmendments: 4.0,
-    committees: 4.0,
-    committeeLeadership: 2.0,
-    missedVotes: -0.5 // penalty per missed vote
+    committees: 4.0,                   // Per committee membership
+    committeeLeadership: 2.0,          // Bonus for Chairman/Ranking/Vice
+    missedVotes: -0.5                  // Penalty per missed vote (raw count)
   };
 
-  // Scoring function
+  // Scoring function using full schema fields
   function scoreLegislator(senator) {
     const breakdown = {
       sponsoredBills: senator.sponsoredBills || 0,
@@ -3207,8 +3196,8 @@ async function loadRankingsFile(office) {
       becameLawBills: senator.becameLawBills || 0,
       becameLawAmendments: senator.becameLawAmendments || 0,
       committees: (senator.committees || []).length,
-      committeeLeadership: (senator.committees || []).filter(c =>
-        /chair|ranking/i.test(c.role)
+      committeeLeadership: (senator.committees || []).filter(c => 
+        /chairman|chair|ranking member|vice chair/i.test(c.role)
       ).length,
       missedVotes: senator.missedVotes || 0
     };
@@ -3225,7 +3214,7 @@ async function loadRankingsFile(office) {
       breakdown.missedVotes * WEIGHTS.missedVotes;
 
     return {
-      composite: Math.round(composite * 10) / 10,
+      composite: Math.round(composite * 10) / 10, // Round to 1 decimal
       breakdown
     };
   }
@@ -3235,7 +3224,7 @@ async function loadRankingsFile(office) {
     return `<span class="${cls}">${Number.isFinite(value) ? value.toFixed(1) : '0.0'}</span>`;
   }
 
-  // Scorecard modal
+  // Scorecard modal with updated labels
   function showScorecard(senator, breakdown, composite) {
     document.getElementById('scorecardName').textContent = senator.name;
     const table = document.getElementById('scorecardBreakdown');
@@ -3248,8 +3237,9 @@ async function loadRankingsFile(office) {
       becameLawAmendments: 'Amendments Enacted',
       committees: 'Committee Memberships',
       committeeLeadership: 'Committee Leadership Roles',
-      missedVotes: 'Missed Votes'
+      missedVotes: 'Missed Votes (Count)'
     };
+
     const rowsHtml = Object.keys(breakdown).map(key => {
       const raw = breakdown[key];
       const weight = WEIGHTS[key] || 0;
@@ -3264,6 +3254,7 @@ async function loadRankingsFile(office) {
         </tr>
       `;
     }).join('');
+
     table.innerHTML = `
       <tbody>
         <tr>
@@ -3279,6 +3270,7 @@ async function loadRankingsFile(office) {
         ${rowsHtml}
       </tbody>
     `;
+
     const modal = document.getElementById('scorecardModal');
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
@@ -3291,7 +3283,8 @@ async function loadRankingsFile(office) {
       return;
     }
 
-    const senators = await loadRankingsFile('senator');
+    // Load the new full merged file
+    const senators = await loadSenatorsData();
     if (!Array.isArray(senators) || senators.length === 0) {
       tableBody.innerHTML = '<tr><td colspan="5">No data loaded yet</td></tr>';
       return;
@@ -3303,7 +3296,7 @@ async function loadRankingsFile(office) {
         senator,
         score: composite,
         breakdown,
-        streak: ''
+        streak: '' // Add streak logic later if needed
       };
     });
 
@@ -3327,6 +3320,7 @@ async function loadRankingsFile(office) {
       tableBody.appendChild(tr);
     });
 
+    // Add scorecard click handlers
     tableBody.querySelectorAll('.scorecard-link').forEach(link => {
       link.addEventListener('click', e => {
         e.preventDefault();
@@ -3339,13 +3333,12 @@ async function loadRankingsFile(office) {
     });
   }
 
-  // Modal close handlers
+  // Modal close handlers (unchanged)
   document.getElementById('scorecardClose')?.addEventListener('click', () => {
     const modal = document.getElementById('scorecardModal');
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
   });
-
   document.getElementById('scorecardModal')?.addEventListener('click', e => {
     if (e.target.id === 'scorecardModal') {
       const modal = document.getElementById('scorecardModal');
@@ -3359,13 +3352,11 @@ async function loadRankingsFile(office) {
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
   });
-
-    document.getElementById('scoringLogicClose')?.addEventListener('click', () => {
+  document.getElementById('scoringLogicClose')?.addEventListener('click', () => {
     const modal = document.getElementById('scoringLogicModal');
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
   });
-
   document.getElementById('scoringLogicModal')?.addEventListener('click', e => {
     if (e.target.id === 'scoringLogicModal') {
       const modal = document.getElementById('scoringLogicModal');
@@ -3374,7 +3365,7 @@ async function loadRankingsFile(office) {
     }
   });
 
-  // Hook render function to global + filters
+  // Hook render function globally + filter changes
   window.renderRankingsLeaderboard = () => render().catch(console.error);
   officeSel.addEventListener('change', () => render().catch(console.error));
   categorySel.addEventListener('change', () => render().catch(console.error));
@@ -3382,4 +3373,3 @@ async function loadRankingsFile(office) {
   // Initial render
   render().catch(console.error);
 })();
-
