@@ -3136,23 +3136,23 @@ document.getElementById('rate-me-btn').onclick = function() {
   }
 
   function activateRankings() {
-    btnRankings.classList.add('rr-tab-active');
-    btnRatings.classList.remove('rr-tab-active');
-    rankingsSec.classList.add('rr-section-active');
-    ratingsSec.classList.remove('rr-section-active');
-    rankingsSec.removeAttribute('aria-hidden');
-    rankingsSec.setAttribute('aria-hidden', 'false');
+  btnRankings.classList.add('rr-tab-active');
+  btnRatings.classList.remove('rr-tab-active');
+  rankingsSec.classList.add('rr-section-active');
+  ratingsSec.classList.remove('rr-section-active');
+  rankingsSec.removeAttribute('aria-hidden');
+  rankingsSec.setAttribute('aria-hidden', 'false');
+}
+
+btnRatings.addEventListener('click', activateRatings);
+btnRankings.addEventListener('click', () => {
+  activateRankings();
+  if (typeof window.renderRankingsLeaderboard === 'function') {
+    window.renderRankingsLeaderboard();
   }
+});
 
-  btnRatings.addEventListener('click', activateRatings);
-  btnRankings.addEventListener('click', () => {
-    activateRankings();
-    if (typeof window.renderRankingsLeaderboard === 'function') {
-      window.renderRankingsLeaderboard();
-    }
-  });
-
-  activateRatings();
+activateRatings();
 })();
 
 // Utility: load rankings JSON by office type
@@ -3194,7 +3194,7 @@ async function loadRankingsFile(office) {
     becameLawAmendments: 4.0,
     committees: 4.0,
     committeeLeadership: 2.0,
-    votes: -2.0
+    missedVotes: -0.5 // penalty per missed vote
   };
 
   // Scoring function
@@ -3208,9 +3208,9 @@ async function loadRankingsFile(office) {
       becameLawAmendments: senator.becameLawAmendments || 0,
       committees: (senator.committees || []).length,
       committeeLeadership: (senator.committees || []).filter(c =>
-        /chair|ranking/i.test(c)
+        /chair|ranking/i.test(c.role)
       ).length,
-      votes: senator.votes || 0 // % missed votes
+      missedVotes: senator.missedVotes || 0
     };
 
     const composite =
@@ -3222,7 +3222,7 @@ async function loadRankingsFile(office) {
       breakdown.becameLawAmendments * WEIGHTS.becameLawAmendments +
       breakdown.committees * WEIGHTS.committees +
       breakdown.committeeLeadership * WEIGHTS.committeeLeadership +
-      breakdown.votes * WEIGHTS.votes;
+      breakdown.missedVotes * WEIGHTS.missedVotes;
 
     return {
       composite: Math.round(composite * 10) / 10,
@@ -3248,7 +3248,7 @@ async function loadRankingsFile(office) {
       becameLawAmendments: 'Amendments Enacted',
       committees: 'Committee Memberships',
       committeeLeadership: 'Committee Leadership Roles',
-      votes: 'Missed Votes (%)'
+      missedVotes: 'Missed Votes'
     };
     const rowsHtml = Object.keys(breakdown).map(key => {
       const raw = breakdown[key];
@@ -3339,7 +3339,7 @@ async function loadRankingsFile(office) {
     });
   }
 
-   // Modal close handlers
+  // Modal close handlers
   document.getElementById('scorecardClose')?.addEventListener('click', () => {
     const modal = document.getElementById('scorecardModal');
     modal.classList.remove('is-open');
@@ -3360,7 +3360,7 @@ async function loadRankingsFile(office) {
     modal.setAttribute('aria-hidden', 'false');
   });
 
-  document.getElementById('scoringLogicClose')?.addEventListener('click', () => {
+    document.getElementById('scoringLogicClose')?.addEventListener('click', () => {
     const modal = document.getElementById('scoringLogicModal');
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
@@ -3378,4 +3378,8 @@ async function loadRankingsFile(office) {
   window.renderRankingsLeaderboard = () => render().catch(console.error);
   officeSel.addEventListener('change', () => render().catch(console.error));
   categorySel.addEventListener('change', () => render().catch(console.error));
+
+  // Initial render
+  render().catch(console.error);
 })();
+
