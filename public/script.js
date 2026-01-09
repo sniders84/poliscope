@@ -3198,23 +3198,20 @@ async function loadRankingsFile(office) {
   };
 
   // Scoring function
-function scoreLegislator(senator) {
-  const breakdown = {
-    sponsoredBills: senator.sponsoredBills || 0,
-    sponsoredAmendments: senator.sponsoredAmendments || 0,
-    cosponsoredBills: senator.cosponsoredBills || 0,
-    cosponsoredAmendments: senator.cosponsoredAmendments || 0,
-    becameLawBills: senator.becameLawBills || 0,
-    becameLawAmendments: senator.becameLawAmendments || 0,
-    committees: (senator.committees || []).length,
-    committeeLeadership: (senator.committees || []).filter(c =>
-      /chair|ranking/i.test(c.role || '')
-    ).length,
-    votes: senator.votes || 0 // % missed votes
-  };
-
-  return breakdown;
-}
+  function scoreLegislator(senator) {
+    const breakdown = {
+      sponsoredBills: senator.sponsoredBills || 0,
+      sponsoredAmendments: senator.sponsoredAmendments || 0,
+      cosponsoredBills: senator.cosponsoredBills || 0,
+      cosponsoredAmendments: senator.cosponsoredAmendments || 0,
+      becameLawBills: senator.becameLawBills || 0,
+      becameLawAmendments: senator.becameLawAmendments || 0,
+      committees: (senator.committees || []).length,
+      committeeLeadership: (senator.committees || []).filter(c =>
+        /chair|ranking/i.test(c)
+      ).length,
+      votes: senator.votes || 0 // % missed votes
+    };
 
     const composite =
       breakdown.sponsoredBills * WEIGHTS.sponsoredBills +
@@ -3382,51 +3379,3 @@ function scoreLegislator(senator) {
   officeSel.addEventListener('change', () => render().catch(console.error));
   categorySel.addEventListener('change', () => render().catch(console.error));
 })();
-// ---- Global shims for legacy inline onclick handlers ----
-// Place this at the end of your main JS bundle, after all sections are initialized.
-
-// Ratings/Rankings navigation
-window.showRatings = function () {
-  const btn = document.getElementById('btn-ratings');
-  if (btn) btn.click();
-};
-
-window.showRankings = function () {
-  const btn = document.getElementById('btn-rankings');
-  if (btn) btn.click();
-};
-
-// Render officials (ratings cards)
-window.renderOfficials = function () {
-  // If you have a function that renders ratings cards, call it here.
-  // Example: window.renderRatingsCards()
-  if (typeof window.renderRatingsCards === 'function') {
-    window.renderRatingsCards();
-  } else {
-    // No-op to avoid breaking if not present
-    console.warn('renderRatingsCards not found; renderOfficials shim did nothing.');
-  }
-};
-
-// Community and Citizenship sections (adjust IDs to your actual sections)
-window.showCommunity = function () {
-  const section = document.getElementById('community');
-  if (section) {
-    // Hide other tabs if needed, then show community
-    document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
-    section.style.display = 'block';
-  } else {
-    console.warn('Community section not found.');
-  }
-};
-
-window.showCitizenship = function () {
-  const section = document.getElementById('citizenship');
-  if (section) {
-    document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
-    section.style.display = 'block';
-  } else {
-    console.warn('Citizenship section not found.');
-  }
-};
-
