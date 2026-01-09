@@ -3,43 +3,65 @@ const fs = require('fs');
 const rankingsData = JSON.parse(fs.readFileSync('public/senators-rankings.json', 'utf8'));
 const jsonPath = 'public/senators-scores.json';
 
-// Apply scoring weights to raw counts
+// Scoring weights
+const WEIGHTS = {
+  sponsoredBills: 1.2,
+  sponsoredAmendments: 1.0,
+  cosponsoredBills: 0.6,
+  cosponsoredAmendments: 0.5,
+  becameLawBills: 6.0,
+  becameLawAmendments: 4.0,
+  becameLawCosponsoredAmendments: 3.0, // new field
+  committees: 4.0,
+  committeeLeadership: 2.0,
+  missedVotes: -0.5 // penalty per missed vote
+};
+
+// Calculate score for one senator
 function calculateScore(sen) {
-  let score = 0;
+  const breakdown = {
+    sponsoredBills: sen.sponsoredBills || 0,
+    sponsoredAmendments: sen.sponsoredAmendments || 0,
+    cosponsoredBills: sen.cosponsoredBills || 0,
+    cosponsoredAmendments: sen.cosponsoredAmendments || 0,
+    becameLawBills: sen.becameLawBills || 0,
+    becameLawAmendments: sen.becameLawAmendments || 0,
+    becameLawCosponsoredAmendments: sen.becameLawCosponsoredAmendments || 0,
+    committees: (sen.committees || []).length,
+    committeeLeadership: (sen.committees || []).filter(c =>
+      /chair|ranking/i.test(c.role)
+    ).length,
+    missedVotes: sen.missedVotes || 0
+  };
 
-  // Sponsored bills/amendments
-  score += sen.sponsoredBills * 1.0;
-  score += sen.sponsoredAmendments * 0.5;
+  const composite =
+    breakdown.sponsoredBills * WEIGHTS.sponsoredBills +
+    breakdown.sponsoredAmendments * WEIGHTS.sponsoredAmendments +
+    breakdown.cosponsoredBills * WEIGHTS.cosponsoredBills +
+    breakdown.cosponsoredAmendments * WEIGHTS.cosponsoredAmendments +
+    breakdown.becameLawBills * WEIGHTS.becameLawBills +
+    breakdown.becameLawAmendments * WEIGHTS.becameLawAmendments +
+    breakdown.becameLawCosponsoredAmendments * WEIGHTS.becameLawCosponsoredAmendments +
+    breakdown.committees * WEIGHTS.committees +
+    breakdown.committeeLeadership * WEIGHTS.committeeLeadership +
+    breakdown.missedVotes * WEIGHTS.missedVotes;
 
-  // Cosponsored bills/amendments
-  score += sen.cosponsoredBills * 0.5;
-  score += sen.cosponsoredAmendments * 0.25;
-
-  // Became law (extra credit)
-  score += sen.becameLawBills * 2.0;
-  score += sen.becameLawAmendments * 1.0;
-
-  // Committees with leadership bonuses
-  if (Array.isArray(sen.committees)) {
-    sen.committees.forEach(c => {
-      score += 2; // baseline for membership
-      if (c.role === 'Ranking') score += 2;
-      if (c.role === 'Chairman') score += 4;
-    });
-  }
-
-  // Missed votes penalty
-  score -= sen.missedVotes * 0.5;
-
-  return score;
+  return {
+    powerScore: Math.round(composite * 10) / 10,
+    breakdown
+  };
 }
 
 (async () => {
-  const output = rankingsData.map(sen => ({
-    ...sen,
-    powerScore: calculateScore(sen)
-  }));
+  const output = rankingsData.map(sen => {
+    const { powerScore, breakdown } = calculateScore(sen);
+    return {
+      ...sen,
+      powerScore,
+      breakdown
+    };
+  });
 
   fs.writeFileSync(jsonPath, JSON.stringify(output, null, 2) + '\n');
-  console.log('senators-scores.json fully updated with powerScore!');
+  console.log('senators-scores.json fully updated with power scores!');
 })();
