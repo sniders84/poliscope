@@ -9,7 +9,8 @@ jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -33,7 +34,8 @@ jobs:
       - name: Merge all data
         run: node scripts/merge-senators.js
 
-      - name: Optional scoring
+      - name: Optional scoring (run only if script exists)
+        if: ${{ hashFiles('scripts/score-senators.js') != '' }}
         run: node scripts/score-senators.js
 
       - name: Commit and push if changed
