@@ -3198,20 +3198,23 @@ async function loadRankingsFile(office) {
   };
 
   // Scoring function
-  function scoreLegislator(senator) {
-    const breakdown = {
-      sponsoredBills: senator.sponsoredBills || 0,
-      sponsoredAmendments: senator.sponsoredAmendments || 0,
-      cosponsoredBills: senator.cosponsoredBills || 0,
-      cosponsoredAmendments: senator.cosponsoredAmendments || 0,
-      becameLawBills: senator.becameLawBills || 0,
-      becameLawAmendments: senator.becameLawAmendments || 0,
-      committees: (senator.committees || []).length,
-      committeeLeadership: (senator.committees || []).filter(c =>
-        /chair|ranking/i.test(c)
-      ).length,
-      votes: senator.votes || 0 // % missed votes
-    };
+function scoreLegislator(senator) {
+  const breakdown = {
+    sponsoredBills: senator.sponsoredBills || 0,
+    sponsoredAmendments: senator.sponsoredAmendments || 0,
+    cosponsoredBills: senator.cosponsoredBills || 0,
+    cosponsoredAmendments: senator.cosponsoredAmendments || 0,
+    becameLawBills: senator.becameLawBills || 0,
+    becameLawAmendments: senator.becameLawAmendments || 0,
+    committees: (senator.committees || []).length,
+    committeeLeadership: (senator.committees || []).filter(c =>
+      /chair|ranking/i.test(c.role || '')
+    ).length,
+    votes: senator.votes || 0 // % missed votes
+  };
+
+  return breakdown;
+}
 
     const composite =
       breakdown.sponsoredBills * WEIGHTS.sponsoredBills +
