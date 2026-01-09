@@ -6969,3 +6969,35 @@ section > h3 {
   max-height: none !important;
   overflow: visible !important;
 }
+/* Leaderboard table styling */
+.leaderboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* ensures consistent column widths */
+}
+
+.leaderboard-table th,
+.leaderboard-table td {
+  padding: 8px 12px;
+  text-align: center; /* centers all content under headers */
+  border-bottom: 1px solid #ddd;
+  vertical-align: middle;
+}
+
+/* Make the "Official" column left-aligned for readability */
+.leaderboard-table th:nth-child(2),
+.leaderboard-table td:nth-child(2) {
+  text-align: left;
+}
+
+/* Optional: fix column widths for consistency */
+.leaderboard-table th:nth-child(1),
+.leaderboard-table td:nth-child(1) { width: 8%; }   /* Rank */
+.leaderboard-table th:nth-child(2),
+.leaderboard-table td:nth-child(2) { width: 35%; }  /* Official */
+.leaderboard-table th:nth-child(3),
+.leaderboard-table td:nth-child(3) { width: 15%; }  /* Office */
+.leaderboard-table th:nth-child(4),
+.leaderboard-table td:nth-child(4) { width: 20%; }  /* Power Score */
+.leaderboard-table th:nth-child(5),
+.leaderboard-table td:nth-child(5) { width: 22%; }  /* Streak */
