@@ -1,7 +1,7 @@
 const fs = require('fs');
 const fetch = require('node-fetch');
 
-const baseData = JSON.parse(fs.readFileSync('public/senators-base.json', 'utf8'));
+const baseData = JSON.parse(fs.readFileSync('public/senators-rankings.json', 'utf8'));
 const jsonPath = 'public/senators-legislation.json';
 
 const apiKey = process.env.CONGRESS_API_KEY;
@@ -34,7 +34,6 @@ async function updateLegislation(sen) {
   let becameLawBills = 0;
   let becameLawAmendments = 0;
 
-  // Sponsored
   const sponsoredItems = await fetchAllLegislation(`${base}/sponsored-legislation`, 'sponsoredLegislation');
   sponsoredItems.forEach(item => {
     if (item.congress === 119) {
@@ -51,7 +50,6 @@ async function updateLegislation(sen) {
     }
   });
 
-  // Cosponsored
   const cosponsoredItems = await fetchAllLegislation(`${base}/cosponsored-legislation`, 'cosponsoredLegislation');
   cosponsoredItems.forEach(item => {
     if (item.congress === 119) {
