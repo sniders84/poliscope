@@ -12,12 +12,10 @@ async function updateSenator(sen) {
     const base = `https://api.congress.gov/v3/member/${sen.bioguideId}`;
     const sponsoredUrl = `${base}/sponsored-legislation?limit=500`;
     const cosponsoredUrl = `${base}/cosponsored-legislation?limit=500`;
-    const committeesUrl = `${base}/committee-assignments`;
 
-    const [sponsoredRes, cosponsoredRes, committeesRes] = await Promise.all([
+    const [sponsoredRes, cosponsoredRes] = await Promise.all([
       fetch(sponsoredUrl, { headers }),
-      fetch(cosponsoredUrl, { headers }),
-      fetch(committeesUrl, { headers })
+      fetch(cosponsoredUrl, { headers })
     ]);
 
     sen.sponsoredBills = 0;
@@ -36,14 +34,10 @@ async function updateSenator(sen) {
           const actionText = (item.latestAction?.text || '').toLowerCase();
           if (number.startsWith('s.amdt.') || item.amendmentNumber) {
             sen.sponsoredAmendments++;
-            if (actionText.includes('became law') || actionText.includes('enacted') || actionText.includes('agreed to')) {
-              sen.becameLawAmendments++;
-            }
+            if (actionText.includes('became law') || actionText.includes('enacted') || actionText.includes('agreed to')) sen.becameLawAmendments++;
           } else {
             sen.sponsoredBills++;
-            if (actionText.includes('became law') || actionText.includes('enacted')) {
-              sen.becameLawBills++;
-            }
+            if (actionText.includes('became law') || actionText.includes('enacted')) sen.becameLawBills++;
           }
         }
       });
@@ -64,56 +58,27 @@ async function updateSenator(sen) {
       });
     }
 
-    // Committees and leadership roles
-    sen.committees = [];
-    if (committeesRes.ok) {
-      const cData = await committeesRes.json();
-      const cItems = cData.committeeAssignments || [];
-      cItems.forEach(c => {
-        sen.committees.push({
-          name: c.committeeName,
-          role: c.position || 'Member'
-        });
-      });
-    }
-
-    // Missed votes count across entire 119th Congress
-    sen.votes = 0;
-    let voteUrls = [];
-
-    const indexUrls = [
-      'https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_1.xml',
-      'https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_2.xml'
+    // Missed votes count (scrape senate.gov votes and count "Not Voting" for this senator)
+    sen.votes = 0;  // Missed count
+    const totalVotes = 4;  // From senate.gov - update this manually when more votes happen
+    const voteUrls = [  // List of vote detail URLs from senate.gov
+      'https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00004.htm',
+      'https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00003.htm',
+      'https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00002.htm',
+      'https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00001.htm'
     ];
-
-    for (const idxUrl of indexUrls) {
-      const idxRes = await fetch(idxUrl);
-      if (idxRes.ok) {
-        const xmlText = await idxRes.text();
-        const matches = [...xmlText.matchAll(/<vote_number>(\d+)<\/vote_number>/g)];
-        matches.forEach(m => {
-          const num = m[1].padStart(5, '0');
-          const session = idxUrl.includes('_1.xml') ? '1' : '2';
-          voteUrls.push(`https://www.senate.gov/legislative/LIS/roll_call_votes/vote119${session}/vote_119_${session}_${num}.htm`);
-        });
-      }
-    }
-
-    const totalVotes = voteUrls.length;
 
     for (const vUrl of voteUrls) {
       const vRes = await fetch(vUrl);
       if (vRes.ok) {
         const vText = await vRes.text();
-        if (vText.includes(sen.name) && vText.includes('Not Voting')) {
-          sen.votes++;
-        }
+        if (vText.includes(sen.name) && vText.includes('Not Voting')) sen.votes++;
       }
     }
 
-    sen.missedPct = (totalVotes > 0) ? (sen.votes / totalVotes) * 100 : 0;
+    // If you want %, add: sen.missedPct = (sen.votes / totalVotes) * 100;
 
-    console.log(`Updated ${sen.name}: sBills ${sen.sponsoredBills} sAmend ${sen.sponsoredAmendments} cBills ${sen.cosponsoredBills} cAmend ${sen.cosponsoredAmendments} becameLawB ${sen.becameLawBills} committees ${sen.committees.length} missed ${sen.votes}`);
+    console.log(`Updated ${sen.name}: sBills ${sen.sponsoredBills} sAmend ${sen.sponsoredAmendments} cBills ${sen.cosponsoredBills} cAmend ${sen.cosponsoredAmendments} becameLawB ${sen.becameLawBills} missed ${sen.votes}`);
   } catch (err) {
     console.log(`Error for ${sen.name}: ${err.message}`);
   }
