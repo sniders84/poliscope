@@ -19,18 +19,13 @@ async function scrapeVotes() {
   for (const indexUrl of INDEX_URLS) {
     const indexData = await fetchXML(indexUrl);
 
-    const voteMenu = indexData.vote_menu || indexData.Vote_Menu;
-    if (!voteMenu) {
-      console.error(`No vote_menu found in ${indexUrl}`);
+    const voteList = indexData.roll_call_vote_list;
+    if (!voteList || !voteList.vote) {
+      console.error(`No roll_call_vote_list found in ${indexUrl}`);
       continue;
     }
 
-    const votes = voteMenu.vote || voteMenu.Vote;
-    if (!votes) {
-      console.error(`No vote array found in ${indexUrl}`);
-      continue;
-    }
-
+    const votes = voteList.vote;
     for (const v of votes) {
       const voteNum = v.vote_number[0];
       const congress = v.congress[0]; // "119"
