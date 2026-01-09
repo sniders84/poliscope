@@ -19,16 +19,15 @@ async function scrapeVotes() {
   for (const indexUrl of INDEX_URLS) {
     const indexData = await fetchXML(indexUrl);
 
-    // Normalize keys regardless of casing
-    const voteMenu = indexData.Vote_Menu || indexData.vote_menu;
+    const voteMenu = indexData.vote_menu || indexData.Vote_Menu;
     if (!voteMenu) {
-      console.error(`No Vote_Menu found in ${indexUrl}`);
+      console.error(`No vote_menu found in ${indexUrl}`);
       continue;
     }
 
-    const votes = voteMenu.Vote || voteMenu.vote;
+    const votes = voteMenu.vote || voteMenu.Vote;
     if (!votes) {
-      console.error(`No Vote array found in ${indexUrl}`);
+      console.error(`No vote array found in ${indexUrl}`);
       continue;
     }
 
