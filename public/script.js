@@ -3147,13 +3147,11 @@ document.getElementById('rate-me-btn').onclick = function() {
   btnRatings.addEventListener('click', activateRatings);
   btnRankings.addEventListener('click', () => {
     activateRankings();
-    // Trigger leaderboard render when Rankings opens
     if (typeof window.renderRankingsLeaderboard === 'function') {
       window.renderRankingsLeaderboard();
     }
   });
 
-  // Default: Ratings active
   activateRatings();
 })();
 
@@ -3179,19 +3177,6 @@ async function loadRankingsFile(office) {
   }
 }
 
-// Match official to GovTrack ID (optional, only if needed for consistency)
-function getGovTrackId(official, legislators) {
-  if (official.govtrackLink) {
-    const match = official.govtrackLink.match(/\/members\/[^/]+\/(\d+)\//);
-    if (match) return parseInt(match[1], 10);
-  }
-  const officialName = (official.name || '').toLowerCase();
-  const match = legislators.find(l => {
-    const fullName = (l.name && l.name.official_full || '').toLowerCase();
-    return fullName === officialName;
-  });
-  return match ? match.id.govtrack : null;
-}
 // Rankings — render by office using local rankings JSON
 (function initRankingsRender() {
   const officeSel = document.getElementById('rankingsOfficeFilter');
@@ -3199,58 +3184,52 @@ function getGovTrackId(official, legislators) {
   const tableBody = document.querySelector('#rankings-leaderboard tbody');
   if (!officeSel || !categorySel || !tableBody) return;
 
-  // Keep the weights exactly as shown in your modal
+  // Updated weights for schema fields
   const WEIGHTS = {
-    billsCosponsored: 0.6,
-    billsIntroduced: 1.2,
-    lawsEnacted: 6.0,
-    committeePositions: 4.0,
-    joiningBipartisanBills: 2.0,
-    writingBipartisanBills: 3.0,
-    powerfulCosponsors: 1.5,
-    leadershipScore: 5.0,
-    workingWithOtherChamber: 2.5,
-    billsOutOfCommittee: 3.0,
-    missedVotes: -2.0,
-    misconduct: -10.0
+    sponsoredBills: 1.2,
+    sponsoredAmendments: 1.0,
+    cosponsoredBills: 0.6,
+    cosponsoredAmendments: 0.5,
+    becameLawBills: 6.0,
+    becameLawAmendments: 4.0,
+    committees: 4.0,
+    committeeLeadership: 2.0,
+    votes: -2.0
   };
 
-  // Simple scoring function
+  // Scoring function
   function scoreLegislator(senator) {
     const breakdown = {
-      billsCosponsored: senator.cosponsoredBills || 0,
-      billsIntroduced: senator.sponsoredBills || 0,
-      lawsEnacted: (senator.becameLawBills || 0) + (senator.becameLawAmendments || 0),
-      committeePositions: (senator.committees || []).length,
-      joiningBipartisanBills: 0,
-      writingBipartisanBills: 0,
-      powerfulCosponsors: 0,
-      leadershipScore: 0,
-      workingWithOtherChamber: 0,
-      billsOutOfCommittee: 0,
-      missedVotes: 0,
-      misconduct: 0
+      sponsoredBills: senator.sponsoredBills || 0,
+      sponsoredAmendments: senator.sponsoredAmendments || 0,
+      cosponsoredBills: senator.cosponsoredBills || 0,
+      cosponsoredAmendments: senator.cosponsoredAmendments || 0,
+      becameLawBills: senator.becameLawBills || 0,
+      becameLawAmendments: senator.becameLawAmendments || 0,
+      committees: (senator.committees || []).length,
+      committeeLeadership: (senator.committees || []).filter(c =>
+        /chair|ranking/i.test(c)
+      ).length,
+      votes: senator.votes || 0 // % missed votes
     };
+
     const composite =
-      breakdown.billsCosponsored * WEIGHTS.billsCosponsored +
-      breakdown.billsIntroduced * WEIGHTS.billsIntroduced +
-      breakdown.lawsEnacted * WEIGHTS.lawsEnacted +
-      breakdown.committeePositions * WEIGHTS.committeePositions +
-      breakdown.joiningBipartisanBills * WEIGHTS.joiningBipartisanBills +
-      breakdown.writingBipartisanBills * WEIGHTS.writingBipartisanBills +
-      breakdown.powerfulCosponsors * WEIGHTS.powerfulCosponsors +
-      breakdown.leadershipScore * WEIGHTS.leadershipScore +
-      breakdown.workingWithOtherChamber * WEIGHTS.workingWithOtherChamber +
-      breakdown.billsOutOfCommittee * WEIGHTS.billsOutOfCommittee +
-      breakdown.missedVotes * WEIGHTS.missedVotes +
-      breakdown.misconduct * WEIGHTS.misconduct;
+      breakdown.sponsoredBills * WEIGHTS.sponsoredBills +
+      breakdown.sponsoredAmendments * WEIGHTS.sponsoredAmendments +
+      breakdown.cosponsoredBills * WEIGHTS.cosponsoredBills +
+      breakdown.cosponsoredAmendments * WEIGHTS.cosponsoredAmendments +
+      breakdown.becameLawBills * WEIGHTS.becameLawBills +
+      breakdown.becameLawAmendments * WEIGHTS.becameLawAmendments +
+      breakdown.committees * WEIGHTS.committees +
+      breakdown.committeeLeadership * WEIGHTS.committeeLeadership +
+      breakdown.votes * WEIGHTS.votes;
+
     return {
       composite: Math.round(composite * 10) / 10,
       breakdown
     };
   }
 
-  // Format helper
   function formatScore(value) {
     const cls = value >= 0 ? 'score-positive' : 'score-negative';
     return `<span class="${cls}">${Number.isFinite(value) ? value.toFixed(1) : '0.0'}</span>`;
@@ -3261,18 +3240,15 @@ function getGovTrackId(official, legislators) {
     document.getElementById('scorecardName').textContent = senator.name;
     const table = document.getElementById('scorecardBreakdown');
     const labelMap = {
-      billsCosponsored: 'Bills Cosponsored',
-      billsIntroduced: 'Bills Introduced',
-      lawsEnacted: 'Laws Enacted',
-      committeePositions: 'Committee Positions',
-      joiningBipartisanBills: 'Bipartisan Cosponsored',
-      writingBipartisanBills: 'Bipartisan Sponsored',
-      powerfulCosponsors: 'Powerful Cosponsors',
-      leadershipScore: 'Leadership Score',
-      workingWithOtherChamber: 'Cross Chamber',
-      billsOutOfCommittee: 'Bills Out of Committee',
-      missedVotes: 'Missed Votes (%)',
-      misconduct: 'Misconduct'
+      sponsoredBills: 'Bills Sponsored',
+      sponsoredAmendments: 'Amendments Sponsored',
+      cosponsoredBills: 'Bills Cosponsored',
+      cosponsoredAmendments: 'Amendments Cosponsored',
+      becameLawBills: 'Bills Enacted',
+      becameLawAmendments: 'Amendments Enacted',
+      committees: 'Committee Memberships',
+      committeeLeadership: 'Committee Leadership Roles',
+      votes: 'Missed Votes (%)'
     };
     const rowsHtml = Object.keys(breakdown).map(key => {
       const raw = breakdown[key];
@@ -3321,9 +3297,6 @@ function getGovTrackId(official, legislators) {
       return;
     }
 
-    // DEBUG #1: How many did we actually load?
-    console.log("DEBUG: Loaded senators from JSON:", senators.length);
-
     const rows = senators.map(senator => {
       const { composite, breakdown } = scoreLegislator(senator);
       return {
@@ -3354,12 +3327,6 @@ function getGovTrackId(official, legislators) {
       tableBody.appendChild(tr);
     });
 
-    // DEBUG #2: How many did we render and who is dead last?
-    console.log("DEBUG: Rendered rows:", rows.length, 
-                "Last senator after sort:", rows[rows.length - 1].senator.name,
-                "(score:", rows[rows.length - 1].score, ")");
-
-    // Attach click handlers
     tableBody.querySelectorAll('.scorecard-link').forEach(link => {
       link.addEventListener('click', e => {
         e.preventDefault();
@@ -3372,12 +3339,13 @@ function getGovTrackId(official, legislators) {
     });
   }
 
-  // Modal close handlers unchanged
+   // Modal close handlers
   document.getElementById('scorecardClose')?.addEventListener('click', () => {
     const modal = document.getElementById('scorecardModal');
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
   });
+
   document.getElementById('scorecardModal')?.addEventListener('click', e => {
     if (e.target.id === 'scorecardModal') {
       const modal = document.getElementById('scorecardModal');
@@ -3385,16 +3353,19 @@ function getGovTrackId(official, legislators) {
       modal.setAttribute('aria-hidden', 'true');
     }
   });
+
   document.getElementById('scoringLogicBtn')?.addEventListener('click', () => {
     const modal = document.getElementById('scoringLogicModal');
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
   });
+
   document.getElementById('scoringLogicClose')?.addEventListener('click', () => {
     const modal = document.getElementById('scoringLogicModal');
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
   });
+
   document.getElementById('scoringLogicModal')?.addEventListener('click', e => {
     if (e.target.id === 'scoringLogicModal') {
       const modal = document.getElementById('scoringLogicModal');
@@ -3403,6 +3374,7 @@ function getGovTrackId(official, legislators) {
     }
   });
 
+  // Hook render function to global + filters
   window.renderRankingsLeaderboard = () => render().catch(console.error);
   officeSel.addEventListener('change', () => render().catch(console.error));
   categorySel.addEventListener('change', () => render().catch(console.error));
