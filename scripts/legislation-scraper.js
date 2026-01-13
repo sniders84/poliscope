@@ -9,14 +9,33 @@ const legislators = JSON.parse(fs.readFileSync('public/legislators-current.json'
 const senators = legislators.filter(l => l.terms.some(t => t.type === 'sen'));
 
 const BASE_URL = 'https://api.congress.gov/v3';
+const API_KEY = process.env.CONGRESS_API_KEY;
 
-async function fetchJSON(url) {
-  const res = await fetch(url, { headers: { 'X-Api-Key': process.env.CONGRESS_API_KEY } });
-  if (!res.ok) {
-    console.error(`Failed to fetch ${url}: ${res.status}`);
-    return null;
+if (!API_KEY) {
+  console.error('Congress API key not found in environment');
+  process.exit(1);
+}
+
+async function fetchAllPages(url) {
+  let results = [];
+  let nextUrl = url;
+
+  while (nextUrl) {
+    const res = await fetch(nextUrl, { headers: { 'X-Api-Key': API_KEY } });
+    if (!res.ok) {
+      console.error(`Failed to fetch ${nextUrl}: ${res.status}`);
+      break;
+    }
+    const data = await res.json();
+
+    if (data?.bills) results.push(...data.bills);
+    if (data?.amendments) results.push(...data.amendments);
+
+    const next = data?.pagination?.next || null;
+    nextUrl = next ? `${BASE_URL}${next}&api_key=${API_KEY}` : null;
   }
-  return res.json();
+
+  return results;
 }
 
 async function scrapeSenator(sen) {
@@ -35,32 +54,40 @@ async function scrapeSenator(sen) {
   };
 
   // Sponsored bills/resolutions
-  const bills = await fetchJSON(`${BASE_URL}/member/${bioguideId}/bills?congress=119`);
-  if (bills && bills.bills) {
-    counts.sponsoredBills = bills.bills.length;
-    counts.becameLawSponsoredBills = bills.bills.filter(b => b.latestAction?.text?.includes('Became Public Law')).length;
-  }
+  const sponsoredBills = await fetchAllPages(
+    `${BASE_URL}/member/${bioguideId}/bills?congress=119&api_key=${API_KEY}`
+  );
+  counts.sponsoredBills = sponsoredBills.length;
+  counts.becameLawSponsoredBills = sponsoredBills.filter(
+    b => b.latestAction?.text?.includes('Became Public Law')
+  ).length;
 
   // Cosponsored bills/resolutions
-  const cosponsored = await fetchJSON(`${BASE_URL}/member/${bioguideId}/bills?congress=119&cosponsored=true`);
-  if (cosponsored && cosponsored.bills) {
-    counts.cosponsoredBills = cosponsored.bills.length;
-    counts.becameLawCosponsoredBills = cosponsored.bills.filter(b => b.latestAction?.text?.includes('Became Public Law')).length;
-  }
+  const cosponsoredBills = await fetchAllPages(
+    `${BASE_URL}/member/${bioguideId}/bills?congress=119&cosponsored=true&api_key=${API_KEY}`
+  );
+  counts.cosponsoredBills = cosponsoredBills.length;
+  counts.becameLawCosponsoredBills = cosponsoredBills.filter(
+    b => b.latestAction?.text?.includes('Became Public Law')
+  ).length;
 
   // Sponsored amendments
-  const amendments = await fetchJSON(`${BASE_URL}/member/${bioguideId}/amendments?congress=119`);
-  if (amendments && amendments.amendments) {
-    counts.sponsoredAmendments = amendments.amendments.length;
-    counts.becameLawSponsoredAmendments = amendments.amendments.filter(a => a.latestAction?.text?.includes('Agreed to')).length;
-  }
+  const sponsoredAmendments = await fetchAllPages(
+    `${BASE_URL}/member/${bioguideId}/amendments?congress=119&api_key=${API_KEY}`
+  );
+  counts.sponsoredAmendments = sponsoredAmendments.length;
+  counts.becameLawSponsoredAmendments = sponsoredAmendments.filter(
+    a => a.latestAction?.text?.includes('Agreed to')
+  ).length;
 
   // Cosponsored amendments
-  const coamendments = await fetchJSON(`${BASE_URL}/member/${bioguideId}/amendments?congress=119&cosponsored=true`);
-  if (coamendments && coamendments.amendments) {
-    counts.cosponsoredAmendments = coamendments.amendments.length;
-    counts.becameLawCosponsoredAmendments = coamendments.amendments.filter(a => a.latestAction?.text?.includes('Agreed to')).length;
-  }
+  const cosponsoredAmendments = await fetchAllPages(
+    `${BASE_URL}/member/${bioguideId}/amendments?congress=119&cosponsored=true&api_key=${API_KEY}`
+  );
+  counts.cosponsoredAmendments = cosponsoredAmendments.length;
+  counts.becameLawCosponsoredAmendments = cosponsoredAmendments.filter(
+    a => a.latestAction?.text?.includes('Agreed to')
+  ).length;
 
   return { bioguideId, ...counts };
 }
@@ -68,8 +95,14 @@ async function scrapeSenator(sen) {
 async function run() {
   const results = [];
   for (const sen of senators) {
-    const data = await scrapeSenator(sen);
-    results.push(data);
+    try {
+      const data = await scrapeSenator(sen);
+      results.push(data);
+      // small delay to be polite to API
+      await new Promise(r => setTimeout(r, 200));
+    } catch (err) {
+      console.error(`Error scraping ${sen.name.official_full}: ${err.message}`);
+    }
   }
   fs.writeFileSync('public/senators-legislation.json', JSON.stringify(results, null, 2));
   console.log('Legislation scraper complete!');
