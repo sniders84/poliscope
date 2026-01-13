@@ -18,7 +18,6 @@ if (!API_KEY) {
 
 const HEADERS = { 'X-Api-Key': API_KEY };
 
-// Generic fetch with JSON + error handling
 async function getJSON(url) {
   const res = await fetch(url, { headers: HEADERS });
   if (!res.ok) {
@@ -37,8 +36,9 @@ async function fetchAllPages(url, collectionKey) {
     const pageItems = data?.[collectionKey] || [];
     items.push(...pageItems);
 
+    // FIXED: use next directly, don't prepend BASE_URL again
     const next = data?.pagination?.next;
-    nextUrl = next ? `${BASE_URL}${next}&format=json` : null;
+    nextUrl = next || null;
   }
 
   return items;
