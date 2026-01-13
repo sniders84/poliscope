@@ -1,132 +1,67 @@
 // scripts/senators-legislation.js
 const fs = require('fs');
 const fetch = require('node-fetch');
-const cheerio = require('cheerio');
 
-const URL = 'https://www.congress.gov/sponsors-cosponsors/119th-congress/senators/all';
 const OUTPUT = 'public/senators-rankings.json';
+const API_KEY = process.env.CONGRESS_API_KEY;
 
-if (!fs.existsSync(OUTPUT)) {
-  console.error("Error: Base JSON file not found.");
-  process.exit(1);
+if (!API_KEY) {
+    console.error("Error: CONGRESS_API_KEY is not set in environment variables.");
+    process.exit(1);
 }
+
 const base = JSON.parse(fs.readFileSync(OUTPUT, 'utf8'));
 
-function normalizeName(n) {
-  return String(n).toLowerCase().replace(/\./g, '').replace(/\s+/g, ' ').trim();
-}
-
-const byFullName = new Map(base.map(s => [normalizeName(s.name), s]));
-const byLastNameState = new Map(
-  base.map(s => {
-    const parts = s.name.split(' ');
-    const last = normalizeName(parts[parts.length - 1]);
-    return [`${last}|${s.state}`, s];
-  })
-);
-
-/**
- * Robustly extract the first number found in a string.
- * This is safer than splitting by specific characters.
- */
-function extractFirstNumber(text) {
-  const match = text.replace(/,/g, '').match(/\d+/);
-  return match ? parseInt(match[0], 10) : 0;
-}
-
-async function fetchPage(url) {
-  const res = await fetch(url, { 
-    headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36' } 
-  });
-  if (!res.ok) throw new Error(`Failed to fetch ${url}: ${res.status}`);
-  return await res.text();
-}
-
-function extractCountsFromRow($, row) {
-  const tds = $(row).find('td');
-  if (tds.length < 4) return null;
-
-  // 1. Parse Senator Name and State
-  const senatorCell = $(tds[0]).text().replace(/\s+/g, ' ').trim();
-  const nameMatch = senatorCell.match(/^([^\[]+)\s+\[([DRI])-([A-Z]{2})\]/);
-  
-  if (!nameMatch) return null;
-  const rawName = nameMatch[1].trim();
-  const state = nameMatch[3];
-
-  // 2. Parse Sponsored Legislation (Column 2)
-  // Usually looks like: "10 (8 bills, 2 amendments)"
-  const sponsoredCell = $(tds[1]).text().trim();
-  const sponsoredLegislation = extractFirstNumber(sponsoredCell);
-  
-  // 3. Parse Cosponsored Legislation (Column 3)
-  const cosponsoredLegislation = extractFirstNumber($(tds[2]).text().trim());
-
-  // 4. Parse Cosponsored Amendments (Column 4)
-  const cosponsoredAmendments = extractFirstNumber($(tds[3]).text().trim());
-
-  return { 
-    rawName, 
-    state, 
-    sponsoredLegislation, 
-    cosponsoredLegislation, 
-    cosponsoredAmendments 
-  };
-}
-
-function matchSenator(rawName, state) {
-  let candidateName = rawName;
-  if (rawName.includes(',')) {
-    const [last, first] = rawName.split(',').map(p => p.trim());
-    candidateName = `${first} ${last}`;
-  }
-  
-  const normFull = normalizeName(candidateName);
-  if (byFullName.has(normFull)) return byFullName.get(normFull);
-
-  const parts = candidateName.split(' ');
-  const last = normalizeName(parts[parts.length - 1]);
-  const key = `${last}|${state}`;
-  
-  if (byLastNameState.has(key)) return byLastNameState.get(key);
-
-  return null;
+async function fetchAPI(endpoint) {
+    const url = `https://api.congress.gov/v3${endpoint}${endpoint.includes('?') ? '&' : '?'}api_key=${API_KEY}`;
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`API Error ${res.status}: ${url}`);
+    return await res.json();
 }
 
 async function main() {
-  console.log(`Fetching legislation data from ${URL}...`);
-  const html = await fetchPage(URL);
-  const $ = cheerio.load(html);
+    console.log("Fetching Senate member list from Congress.gov API...");
+    
+    // 1. Get all current Senators to get their Bioguide IDs
+    // We filter for 119th Congress (2025-2027)
+    const memberData = await fetchAPI('/member?chamber=senate&limit=250');
+    const apiMembers = memberData.members;
 
-  const rows = $('table.item_table tbody tr, table.item-table tbody tr');
-  let matched = 0, unmatched = 0;
+    let matchedCount = 0;
 
-  rows.each((i, row) => {
-    const counts = extractCountsFromRow($, row);
-    if (!counts) return;
+    // 2. Map local JSON senators to API data
+    for (let sen of base) {
+        // Match by state and last name (most reliable match across official datasets)
+        const match = apiMembers.find(m => 
+            m.state === sen.state && 
+            sen.name.toLowerCase().includes(m.name.toLowerCase().split(',')[0])
+        );
 
-    const sen = matchSenator(counts.rawName, counts.state);
-    if (!sen) { 
-      console.warn(`Could not match Senator: ${counts.rawName} [${counts.state}]`);
-      unmatched++; 
-      return; 
+        if (match && match.bioguideId) {
+            try {
+                // 3. Fetch detailed counts for this specific senator
+                console.log(`Updating ${sen.name} (${match.bioguideId})...`);
+                const details = await fetchAPI(`/member/${match.bioguideId}`);
+                
+                sen.billsSponsored = details.member.sponsoredLegislationCount || 0;
+                sen.billsCosponsored = details.member.cosponsoredLegislationCount || 0;
+                sen.bioguideId = match.bioguideId; // Save this for future API calls
+                
+                matchedCount++;
+                // Small delay to respect rate limits (5000/hr is generous, but stay safe)
+                await new Promise(r => setTimeout(r, 100)); 
+            } catch (e) {
+                console.warn(`Failed to fetch details for ${sen.name}: ${e.message}`);
+            }
+        }
     }
 
-    // Update the base object reference
-    sen.sponsoredLegislation = counts.sponsoredLegislation;
-    sen.cosponsoredLegislation = counts.cosponsoredLegislation;
-    sen.cosponsoredAmendments = counts.cosponsoredAmendments;
-    matched++;
-  });
-
-  fs.writeFileSync(OUTPUT, JSON.stringify(base, null, 2));
-  console.log(`\nSuccess!`);
-  console.log(`Matched: ${matched}`);
-  console.log(`Unmatched: ${unmatched}`);
-  console.log(`File updated: ${OUTPUT}`);
+    fs.writeFileSync(OUTPUT, JSON.stringify(base, null, 2));
+    console.log(`---`);
+    console.log(`Success! Updated ${matchedCount} senators with official legislation counts.`);
 }
 
 main().catch(err => {
-  console.error("Fatal Error:", err.message);
-  process.exit(1);
+    console.error('Fatal:', err);
+    process.exit(1);
 });
