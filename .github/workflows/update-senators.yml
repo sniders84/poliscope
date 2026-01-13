@@ -1,9 +1,9 @@
-name: Update Senators Rankings Data
+name: Nightly Update Senators Rankings Data
 
 on:
   schedule:
-    - cron: '0 8 * * 1'  # Every Monday at 8AM UTC
-  workflow_dispatch:
+    - cron: "0 5 * * *"   # Every day at 5:00 UTC (midnight EST)
+  workflow_dispatch:       # Allow manual trigger
 
 jobs:
   update:
@@ -20,20 +20,16 @@ jobs:
       - name: Install dependencies
         run: npm install node-fetch@2 xml2js cheerio
 
-      - name: Update legislation counts
+      - name: Run Legislation scraper
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
-        run: node scripts/senators-legislation.js
+        run: node scripts/legislation-scraper.js
 
-      - name: Update committees
-        env:
-          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
-        run: node scripts/senators-committees.js
+      - name: Run Committee scraper
+        run: node scripts/committee-scraper.js
 
-      - name: Update votes
-        env:
-          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
-        run: node scripts/senators-votes.js
+      - name: Run Votes scraper
+        run: node scripts/votes-scraper.js
 
       - name: Merge all data
         run: node scripts/merge-senators.js
@@ -42,5 +38,5 @@ jobs:
         run: |
           git config user.name "Data Bot"
           git config user.email "bot@electorate.app"
-          git add public/*.json
-          git diff --staged --quiet && echo "No changes" || (git commit -m "Auto-update senators data $(date +'%Y-%m-%d')" && git push)
+          git add public/senators-rankings.json
+          git diff --staged --quiet && echo "No changes" || (git commit -m "Nightly auto-update senators data $(date +'%Y-%m-%d')" && git push)
