@@ -6,42 +6,54 @@ const LEGISLATORS_PATH = path.join(__dirname, '../public/legislators-current.jso
 const OUTPUT_PATH = path.join(__dirname, '../public/senators-committees.json');
 
 function main() {
-  const baseSenators = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf8'));
-  const legislators = JSON.parse(fs.readFileSync(LEGISLATORS_PATH, 'utf8'));
+  let baseSenators;
+  let legislators;
 
-  // Map bioguideId -> committees
+  try {
+    baseSenators = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf8'));
+    legislators = JSON.parse(fs.readFileSync(LEGISLATORS_PATH, 'utf8'));
+  } catch (err) {
+    console.error('Error loading JSON files:', err.message);
+    process.exit(1);
+  }
+
+  // Build map: bioguideId → committees array
   const bioguideToCommittees = {};
 
   legislators.forEach(leg => {
     const currentTerm = leg.terms?.[leg.terms.length - 1];
     if (currentTerm?.type === 'sen') {
       const bioguide = leg.id?.bioguide;
-      if (bioguide) {
-        bioguideToCommittees[bioguide] = leg.committees || [];
+      if (bioguide && leg.committees?.length > 0) {
+        bioguideToCommittees[bioguide] = leg.committees.map(c => ({
+          committee: c.name,
+          role: c.role || 'Member',
+          subcommittees: (c.subcommittees || []).map(sub => ({
+            subcommittee: sub.name,
+            role: sub.role || 'Member'
+          }))
+        }));
       }
     }
   });
 
-  // Build output matching your base senators
+  // Build output for your base senators
   const output = baseSenators.map(sen => {
     const committees = bioguideToCommittees[sen.bioguideId] || [];
     return {
       name: sen.name,
       bioguideId: sen.bioguideId,
-      committees: committees.map(c => ({
-        committee: c.name,
-        role: c.role || 'Member',
-        subcommittees: c.subcommittees?.map(sub => ({
-          subcommittee: sub.name,
-          role: sub.role || 'Member'
-        })) || []
-      }))
+      committees
     };
   });
 
-  fs.writeFileSync(OUTPUT_PATH, JSON.stringify(output, null, 2));
-  console.log(`Generated committees for ${output.length} senators`);
-  console.log('senators-committees.json updated!');
+  try {
+    fs.writeFileSync(OUTPUT_PATH, JSON.stringify(output, null, 2));
+    console.log(`Generated committees for ${output.length} senators`);
+    console.log('senators-committees.json updated!');
+  } catch (err) {
+    console.error('Error writing output:', err.message);
+  }
 }
 
 main();
