@@ -34,35 +34,35 @@ async function scrapeSenator(sen) {
     becameLawCosponsoredAmendments: 0
   };
 
-  // Bills sponsored
-  const bills = await fetchJSON(`${BASE_URL}/bill?congress=119&sponsorId=${bioguideId}`);
+  // Sponsored bills/resolutions
+  const bills = await fetchJSON(`${BASE_URL}/member/${bioguideId}/bills?congress=119`);
   if (bills && bills.bills) {
     counts.sponsoredBills = bills.bills.length;
     counts.becameLawSponsoredBills = bills.bills.filter(b => b.latestAction?.text?.includes('Became Public Law')).length;
   }
 
-  // Bills cosponsored
-  const cosponsored = await fetchJSON(`${BASE_URL}/bill?congress=119&cosponsorId=${bioguideId}`);
+  // Cosponsored bills/resolutions
+  const cosponsored = await fetchJSON(`${BASE_URL}/member/${bioguideId}/bills?congress=119&cosponsored=true`);
   if (cosponsored && cosponsored.bills) {
     counts.cosponsoredBills = cosponsored.bills.length;
     counts.becameLawCosponsoredBills = cosponsored.bills.filter(b => b.latestAction?.text?.includes('Became Public Law')).length;
   }
 
-  // Amendments sponsored
-  const amendments = await fetchJSON(`${BASE_URL}/amendment?congress=119&sponsorId=${bioguideId}`);
+  // Sponsored amendments
+  const amendments = await fetchJSON(`${BASE_URL}/member/${bioguideId}/amendments?congress=119`);
   if (amendments && amendments.amendments) {
     counts.sponsoredAmendments = amendments.amendments.length;
     counts.becameLawSponsoredAmendments = amendments.amendments.filter(a => a.latestAction?.text?.includes('Agreed to')).length;
   }
 
-  // Amendments cosponsored
-  const coamendments = await fetchJSON(`${BASE_URL}/amendment?congress=119&cosponsorId=${bioguideId}`);
+  // Cosponsored amendments
+  const coamendments = await fetchJSON(`${BASE_URL}/member/${bioguideId}/amendments?congress=119&cosponsored=true`);
   if (coamendments && coamendments.amendments) {
     counts.cosponsoredAmendments = coamendments.amendments.length;
     counts.becameLawCosponsoredAmendments = coamendments.amendments.filter(a => a.latestAction?.text?.includes('Agreed to')).length;
   }
 
-  return { name: sen.name.official_full, bioguideId, ...counts };
+  return { bioguideId, ...counts };
 }
 
 async function run() {
