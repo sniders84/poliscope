@@ -6,39 +6,18 @@ const cheerio = require('cheerio');
 const OUTPUT = 'public/senators-rankings.json';
 const base = JSON.parse(fs.readFileSync(OUTPUT, 'utf8'));
 
-const COMMITTEE_URLS = [
-  'https://www.agriculture.senate.gov/about/members',
-  'https://www.appropriations.senate.gov/about/members',
-  'https://www.armed-services.senate.gov/about/members',
-  'https://www.banking.senate.gov/about/members',
-  'https://www.budget.senate.gov/committee-members',
-  'https://www.commerce.senate.gov/about/members',
-  'https://www.energy.senate.gov/about/members',
-  'https://www.epw.senate.gov/public/index.cfm/members',
-  'https://www.finance.senate.gov/about/members',
-  'https://www.foreign.senate.gov/about/members',
-  'https://www.help.senate.gov/about/members',
-  'https://www.hsgac.senate.gov/about/members',
-  'https://www.indian.senate.gov/about/members',
-  'https://www.judiciary.senate.gov/about/members',
-  'https://www.rules.senate.gov/about/members',
-  'https://www.sbc.senate.gov/about/members',
-  'https://www.veterans.senate.gov/about/members',
-  'https://www.aging.senate.gov/about/members',
-  'https://www.ethics.senate.gov/public/index.cfm/members',
-  'https://www.intelligence.senate.gov/about/members'
-];
-
 function normalizeName(n) {
   return String(n).toLowerCase().replace(/\./g, '').replace(/\s+/g, ' ').trim();
 }
 
-function roleFromText(t) {
-  const s = t.toLowerCase();
-  if (s.includes('chair')) return 'Chair';
-  if (s.includes('ranking')) return 'Ranking';
-  return 'Member';
-}
+const byFullName = new Map(base.map(s => [normalizeName(s.name), s]));
+const byLastNameState = new Map(
+  base.map(s => {
+    const parts = s.name.split(' ');
+    const last = normalizeName(parts[parts.length - 1]);
+    return [`${last}|${s.state}`, s];
+  })
+);
 
 async function fetchPage(url) {
   const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' } });
@@ -46,41 +25,64 @@ async function fetchPage(url) {
   return await res.text();
 }
 
-async function scrapeCommittee(url, committeeName) {
-  const html = await fetchPage(url);
-  const $ = cheerio.load(html);
+function extractCommitteeAssignments($, row) {
+  const tds = $(row).find('td');
+  if (tds.length < 2) return null;
 
-  const textBlocks = $('*').contents().map(function () {
-    return this.type === 'text' ? $(this).text().trim() : '';
-  }).get().filter(Boolean);
+  const senatorCell = $(tds[0]).text().trim();
+  const match = senatorCell.match(/^(.+?)\s+
 
-  textBlocks.forEach(t => {
-    const role = roleFromText(t);
-    const m = t.match(/Senator\s+([A-Za-z.\- ]+)/i);
-    if (m) {
-      const name = m[1].trim();
-      const sen = base.find(s => normalizeName(s.name).includes(normalizeName(name.split(' ').pop())));
-      if (sen) {
-        if (!sen.committees) sen.committees = [];
-        sen.committees.push({ committee: committeeName, role });
-      }
-    }
-  });
+\[[DRI]-([A-Z]{2})\]
+
+/);
+  if (!match) return null;
+  const rawName = match[1].trim();
+  const state = match[2];
+
+  const committees = $(tds[1]).text().trim().split('|').map(s => s.trim());
+
+  return { rawName, state, committees };
+}
+
+function matchSenator(rawName, state) {
+  const parts = rawName.split(',').map(p => p.trim());
+  let candidateName = rawName;
+  if (parts.length >= 2) {
+    const last = parts[0];
+    const first = parts[1].replace(/\s+[A-Z]\.?$/, '');
+    candidateName = `${first} ${last}`;
+  }
+  const normFull = normalizeName(candidateName);
+
+  if (byFullName.has(normFull)) return byFullName.get(normFull);
+
+  const last = normalizeName(candidateName.split(' ').pop());
+  const key = `${last}|${state}`;
+  if (byLastNameState.has(key)) return byLastNameState.get(key);
+
+  for (const [k, sen] of byFullName.entries()) {
+    if (k.includes(normFull) && sen.state === state) return sen;
+  }
+  return null;
 }
 
 async function main() {
-  for (const url of COMMITTEE_URLS) {
-    const committeeName = url.split('/')[2]; // crude name
-    try {
-      await scrapeCommittee(url, committeeName);
-      console.log(`Scraped ${committeeName}`);
-    } catch (e) {
-      console.error(`Failed ${committeeName}: ${e.message}`);
-    }
-  }
+  const html = await fetchPage('https://www.congress.gov/committees');
+  const $ = cheerio.load(html);
+
+  const rows = $('table tbody tr');
+  rows.each((i, row) => {
+    const data = extractCommitteeAssignments($, row);
+    if (!data) return;
+
+    const sen = matchSenator(data.rawName, data.state);
+    if (!sen) return;
+
+    sen.committees = data.committees;
+  });
 
   fs.writeFileSync(OUTPUT, JSON.stringify(base, null, 2));
-  console.log('senators-rankings.json updated with committees.');
+  console.log('senators-rankings.json updated with committees!');
 }
 
 main().catch(err => {
