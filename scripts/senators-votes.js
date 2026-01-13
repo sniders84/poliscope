@@ -1,59 +1,63 @@
-// scripts/senators-votes.js — Use Congress.gov API for vote positions (more accurate)
 const fs = require('fs');
 const fetch = require('node-fetch');
 
-const API_KEY = process.env.CONGRESS_API_KEY; // Add to GitHub secrets
-const headers = API_KEY ? { 'X-Api-Key': API_KEY } : {};
+const baseData = JSON.parse(fs.readFileSync('public/senators-rankings.json', 'utf8'));
+const jsonPath = 'public/senators-votes.json';
 
-async function getMissedVotesForSenator(bioguideId) {
-  let missed = 0;
-  let total = 0;
+const apiKey = process.env.CONGRESS_API_KEY;
+const headers = apiKey ? { 'X-Api-Key': apiKey } : {};
 
-  // Fetch member's votes (paginated)
+// Fetch paginated votes for a senator
+async function fetchAllVotes(bioguideId) {
+  const pageSize = 250;
   let offset = 0;
-  const limit = 250;
+  let allVotes = [];
   while (true) {
-    const url = `https://api.congress.gov/v3/member/${bioguideId}/votes?limit=${limit}&offset=${offset}`;
+    const url = `https://api.congress.gov/v3/member/${bioguideId}/votes?limit=${pageSize}&offset=${offset}`;
     const res = await fetch(url, { headers });
     if (!res.ok) break;
     const data = await res.json();
     const votes = data.votes || [];
-    if (votes.length === 0) break;
-
-    votes.forEach(vote => {
-      if (vote.congress === 119) {
-        total++;
-        if (vote.position === 'Not Voting') missed++;
-      }
-    });
-
-    if (votes.length < limit) break;
-    offset += limit;
+    allVotes = allVotes.concat(votes);
+    if (votes.length < pageSize) break;
+    offset += pageSize;
   }
-
-  return { missedVotes: missed, totalVotes: total };
+  return allVotes;
 }
 
-async function main() {
-  const base = JSON.parse(fs.readFileSync('public/senators-rankings.json', 'utf8'));
+async function updateVotes(sen) {
+  let missedVotes = 0;
+  let totalVotes = 0;
+
+  const allVotes = await fetchAllVotes(sen.bioguideId);
+
+  allVotes.forEach(vote => {
+    if (vote.congress === 119) {  // Full 119th only; comment out for entire career
+      totalVotes++;
+      if (vote.position === 'Not Voting') missedVotes++;
+    }
+  });
+
+  return {
+    name: sen.name,
+    bioguideId: sen.bioguideId,
+    missedVotes,
+    totalVotes
+  };
+}
+
+(async () => {
   const output = [];
-
-  for (const sen of base) {
-    if (!sen.bioguideId) continue;
-    console.log(`Fetching votes for ${sen.name} (${sen.bioguideId})`);
-    const { missedVotes, totalVotes } = await getMissedVotesForSenator(sen.bioguideId);
-    output.push({
-      name: sen.name,
-      missedVotes,
-      totalVotes
-    });
+  for (const sen of baseData) {
+    try {
+      const record = await updateVotes(sen);
+      output.push(record);
+      console.log(`Updated ${sen.name}: missedVotes ${record.missedVotes}, totalVotes ${record.totalVotes}`);
+    } catch (err) {
+      console.log(`Error for ${sen.name}: ${err.message}`);
+    }
   }
 
-  fs.writeFileSync('public/senators-votes.json', JSON.stringify(output, null, 2));
-  console.log(`senators-votes.json updated!`);
-}
-
-main().catch(err => {
-  console.error(err);
-  process.exit(1);
-});
+  fs.writeFileSync(jsonPath, JSON.stringify(output, null, 2) + '\n');
+  console.log('senators-votes.json fully updated!');
+})();
