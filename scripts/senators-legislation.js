@@ -46,11 +46,12 @@ function extractCountsFromRow($, row) {
 
   // Column 0: Senator (e.g., "Alsobrooks, Angela D. [D-MD]")
   const senatorCell = $(tds[0]).text().trim();
-  const nameMatch = senatorCell.match(/^(.+?)\s+
+  const nameRegex = new RegExp('^(.+?)\\s+\
 
-\[[DRI]-([A-Z]{2})\]
+\[[DRI]-([A-Z]{2})\\]
 
-/); // fixed regex
+');
+  const nameMatch = senatorCell.match(nameRegex);
   if (!nameMatch) return null;
   const rawName = nameMatch[1].trim();
   const state = nameMatch[2];
@@ -111,7 +112,7 @@ async function main() {
   const html = await fetchPage(URL);
   const $ = cheerio.load(html);
 
-  // Congress.gov renders one main table; guard for variations
+  // Guard for table variations
   const rows = $('table tbody tr');
   if (rows.length === 0) {
     console.log('No rows found on Congress.gov sponsors/cosponsors page.');
