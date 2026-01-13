@@ -36,7 +36,7 @@ function extractCountsFromRow($, row) {
   const tds = $(row).find('td');
   if (tds.length < 4) return null;
 
-  // SINGLE-LINE REGEX — DO NOT SPLIT ACROSS LINES
+  // Senator cell: "Last, First M. [P-SS]"
   const senatorCell = $(tds[0]).text().trim();
   const match = senatorCell.match(/^(.+?)\s+
 
@@ -47,24 +47,22 @@ function extractCountsFromRow($, row) {
   const rawName = match[1].trim();
   const state = match[2];
 
+  // Sponsored: "Bills | Amendments | Total"
   const sponsoredParts = $(tds[1]).text().trim().split('|').map(s => s.trim());
-  const sponsoredLegislation = parseIntSafe(sponsoredParts[0]);      // bills + resolutions
-  const sponsoredAmendments = parseIntSafe(sponsoredParts[1]);       // amendments
+  const sponsoredLegislation = parseIntSafe(sponsoredParts[0]);     // bills + resolutions
+  const sponsoredAmendments = parseIntSafe(sponsoredParts[1]);      // amendments
 
+  // Cosponsored Bills: "Original | Withdrawn | Total"
   const cosBillsParts = $(tds[2]).text().trim().split('|').map(s => s.trim());
-  const cosponsoredLegislation = parseIntSafe(cosBillsParts[2]);     // total
+  const cosponsoredLegislation = parseIntSafe(cosBillsParts[2]);    // All/Total
 
+  // Cosponsored Amendments: "Original | Withdrawn" → total = original + withdrawn
   const cosAmendsParts = $(tds[3]).text().trim().split('|').map(s => s.trim());
-  const cosponsoredAmendments = parseIntSafe(cosAmendsParts[0]);     // original
+  const cosAmendsOriginal = parseIntSafe(cosAmendsParts[0]);
+  const cosAmendsWithdrawn = parseIntSafe(cosAmendsParts[1]);
+  const cosponsoredAmendments = cosAmendsOriginal + cosAmendsWithdrawn;
 
-  return {
-    rawName,
-    state,
-    sponsoredLegislation,
-    sponsoredAmendments,
-    cosponsoredLegislation,
-    cosponsoredAmendments
-  };
+  return { rawName, state, sponsoredLegislation, sponsoredAmendments, cosponsoredLegislation, cosponsoredAmendments };
 }
 
 function matchSenator(rawName, state) {
@@ -73,20 +71,17 @@ function matchSenator(rawName, state) {
   let candidateName = rawName;
   if (parts.length >= 2) {
     const last = parts[0];
-    const first = parts[1].replace(/\s+[A-Z]\.?$/, ''); // drop middle initial
+    const first = parts[1].replace(/\s+[A-Z]\.?$/, '');
     candidateName = `${first} ${last}`;
   }
   const normFull = normalizeName(candidateName);
 
-  // Full name match
   if (byFullName.has(normFull)) return byFullName.get(normFull);
 
-  // Last name + state
   const last = normalizeName(candidateName.split(' ').pop());
   const key = `${last}|${state}`;
   if (byLastNameState.has(key)) return byLastNameState.get(key);
 
-  // Fallback: contains + state
   for (const [k, sen] of byFullName.entries()) {
     if (k.includes(normFull) && sen.state === state) return sen;
   }
