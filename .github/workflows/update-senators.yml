@@ -1,4 +1,4 @@
-name: Nightly Update Senators Rankings Data
+name: Nightly Update Senators Rankings & Scores
 
 on:
   schedule:
@@ -34,9 +34,12 @@ jobs:
       - name: Merge all data
         run: node scripts/merge-senators.js
 
+      - name: Generate scores
+        run: node scripts/senators-scores.js
+
       - name: Commit and push if changed
         run: |
           git config user.name "Data Bot"
           git config user.email "bot@electorate.app"
-          git add public/senators-rankings.json
+          git add public/senators-rankings.json public/senators-scores.json
           git diff --staged --quiet && echo "No changes" || (git commit -m "Nightly auto-update senators data $(date +'%Y-%m-%d')" && git push)
