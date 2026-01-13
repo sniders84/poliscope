@@ -6,64 +6,72 @@ const fs = require('fs');
 const fetch = require('node-fetch');
 const xml2js = require('xml2js');
 
-const ROLL_CALL_BASE = 'https://www.senate.gov/legislative/LIS/roll_call_votes/vote119';
+const INDEX_URL = 'https://www.senate.gov/legislative/LIS/roll_call_votes/vote119/vote_menu.xml';
 
-async function fetchRollCall(congress, session, voteNumber) {
-  const url = `${ROLL_CALL_BASE}${session}/vote_${congress}_${session}_${voteNumber}.xml`;
+async function fetchIndex() {
+  const res = await fetch(INDEX_URL);
+  const xml = await res.text();
+  return xml2js.parseStringPromise(xml, { strict: false });
+}
+
+async function fetchRollCall(url) {
   const res = await fetch(url);
   if (!res.ok) return null;
-
   const xml = await res.text();
 
-  // Sanitize malformed XML before parsing
   const safeXml = xml
-    .replace(/&(?!(amp|lt|gt|quot|apos);)/g, '&amp;') // fix stray &
-    .replace(/<\s+/g, '&lt; '); // neutralize stray < inside text
+    .replace(/&(?!(amp|lt|gt|quot|apos);)/g, '&amp;')
+    .replace(/<\s+/g, '&lt; ');
 
   try {
     return xml2js.parseStringPromise(safeXml, { strict: false });
-  } catch (err) {
-    console.error(`Failed to parse vote ${voteNumber} (session ${session}):`, err.message);
+  } catch {
     return null;
   }
 }
 
 async function scrapeVotes() {
-  const senators = JSON.parse(fs.readFileSync('public/senators.json', 'utf8'));
+  const legislators = JSON.parse(fs.readFileSync('public/legislators-current.json', 'utf8'));
+  const senators = legislators.filter(l => l.terms.some(t => t.type === 'sen'));
   const voteData = {};
 
-  for (let session = 1; session <= 2; session++) {
-    for (let voteNum = 1; voteNum <= 1000; voteNum++) {
-      const data = await fetchRollCall(119, session, voteNum);
-      if (!data) break;
+  const index = await fetchIndex();
+  const votes = index?.vote_menu?.vote || [];
 
-      const members = data.rollcall?.vote?.[0]?.members?.[0]?.member || [];
-      for (const m of members) {
-        const bioguideId = m.$?.member_id;
-        const voteCast = m.vote?.[0] || '';
+  for (const v of votes) {
+    const url = v.vote_url?.[0];
+    if (!url) continue;
 
-        if (!bioguideId) continue;
+    const data = await fetchRollCall(url);
+    if (!data) continue;
 
-        if (!voteData[bioguideId]) {
-          voteData[bioguideId] = { votesCast: 0, missedVotes: 0 };
-        }
+    const members = data.rollcall?.vote?.[0]?.members?.[0]?.member || [];
+    for (const m of members) {
+      const bioguideId = m.$?.member_id;
+      const voteCast = m.vote?.[0] || '';
 
-        if (/Not Voting/i.test(voteCast)) {
-          voteData[bioguideId].missedVotes++;
-        } else {
-          voteData[bioguideId].votesCast++;
-        }
+      if (!bioguideId) continue;
+
+      if (!voteData[bioguideId]) {
+        voteData[bioguideId] = { votesCast: 0, missedVotes: 0 };
+      }
+
+      if (/Not Voting/i.test(voteCast)) {
+        voteData[bioguideId].missedVotes++;
+      } else {
+        voteData[bioguideId].votesCast++;
       }
     }
   }
 
   const output = senators.map(sen => {
-    const stats = voteData[sen.bioguideId] || { votesCast: 0, missedVotes: 0 };
+    const bioguideId = sen.id.bioguide;
+    const stats = voteData[bioguideId] || { votesCast: 0, missedVotes: 0 };
     const total = stats.votesCast + stats.missedVotes;
     const missedPct = total > 0 ? (stats.missedVotes / total) * 100 : 0;
 
     return {
-      bioguideId: sen.bioguideId,
+      bioguideId,
       votesCast: stats.votesCast,
       missedVotes: stats.missedVotes,
       missedPct: Math.round(missedPct * 10) / 10
