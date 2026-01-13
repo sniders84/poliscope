@@ -1,24 +1,29 @@
 const fs = require('fs');
+const path = require('path');
 
-async function generateCommittees() {
-  // Load your base senators for bioguideIds
-  const base = JSON.parse(fs.readFileSync('public/senators-rankings.json', 'utf8'));
+const RANKINGS_PATH = path.join(__dirname, '../public/senators-rankings.json');
+const LEGISLATORS_PATH = path.join(__dirname, '../public/legislators-current.json');
+const OUTPUT_PATH = path.join(__dirname, '../public/senators-committees.json');
 
-  // Load the full legislators JSON (put this file in your repo or fetch from URL)
-  const legislators = JSON.parse(fs.readFileSync('data/legislators-current.json', 'utf8')); // adjust path if needed
+function main() {
+  const baseSenators = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf8'));
+  const legislators = JSON.parse(fs.readFileSync(LEGISLATORS_PATH, 'utf8'));
 
+  // Map bioguideId -> committees
   const bioguideToCommittees = {};
 
   legislators.forEach(leg => {
-    if (leg.terms && leg.terms[leg.terms.length - 1].type === 'sen') { // Current senator
-      const bioguide = leg.id.bioguide;
+    const currentTerm = leg.terms?.[leg.terms.length - 1];
+    if (currentTerm?.type === 'sen') {
+      const bioguide = leg.id?.bioguide;
       if (bioguide) {
         bioguideToCommittees[bioguide] = leg.committees || [];
       }
     }
   });
 
-  const output = base.map(sen => {
+  // Build output matching your base senators
+  const output = baseSenators.map(sen => {
     const committees = bioguideToCommittees[sen.bioguideId] || [];
     return {
       name: sen.name,
@@ -26,13 +31,17 @@ async function generateCommittees() {
       committees: committees.map(c => ({
         committee: c.name,
         role: c.role || 'Member',
-        subcommittees: c.subcommittees || [] // if subs are present
+        subcommittees: c.subcommittees?.map(sub => ({
+          subcommittee: sub.name,
+          role: sub.role || 'Member'
+        })) || []
       }))
     };
   });
 
-  fs.writeFileSync('public/senators-committees.json', JSON.stringify(output, null, 2));
+  fs.writeFileSync(OUTPUT_PATH, JSON.stringify(output, null, 2));
   console.log(`Generated committees for ${output.length} senators`);
+  console.log('senators-committees.json updated!');
 }
 
-generateCommittees();
+main();
