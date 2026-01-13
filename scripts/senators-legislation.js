@@ -6,6 +6,10 @@ const cheerio = require('cheerio');
 const URL = 'https://www.congress.gov/sponsors-cosponsors/119th-congress/senators/all';
 const OUTPUT = 'public/senators-rankings.json';
 
+if (!fs.existsSync(OUTPUT)) {
+  console.error("Error: Base JSON file not found.");
+  process.exit(1);
+}
 const base = JSON.parse(fs.readFileSync(OUTPUT, 'utf8'));
 
 function normalizeName(n) {
@@ -21,13 +25,19 @@ const byLastNameState = new Map(
   })
 );
 
-function parseIntSafe(text) {
-  const m = String(text || '').match(/\d+/);
-  return m ? parseInt(m[0], 10) : 0;
+/**
+ * Robustly extract the first number found in a string.
+ * This is safer than splitting by specific characters.
+ */
+function extractFirstNumber(text) {
+  const match = text.replace(/,/g, '').match(/\d+/);
+  return match ? parseInt(match[0], 10) : 0;
 }
 
 async function fetchPage(url) {
-  const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' } });
+  const res = await fetch(url, { 
+    headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36' } 
+  });
   if (!res.ok) throw new Error(`Failed to fetch ${url}: ${res.status}`);
   return await res.text();
 }
@@ -36,58 +46,59 @@ function extractCountsFromRow($, row) {
   const tds = $(row).find('td');
   if (tds.length < 4) return null;
 
-  const senatorCell = $(tds[0]).text().trim();
-  const match = senatorCell.match(/^(.+?)\s+
+  // 1. Parse Senator Name and State
+  const senatorCell = $(tds[0]).text().replace(/\s+/g, ' ').trim();
+  const nameMatch = senatorCell.match(/^([^\[]+)\s+\[([DRI])-([A-Z]{2})\]/);
+  
+  if (!nameMatch) return null;
+  const rawName = nameMatch[1].trim();
+  const state = nameMatch[3];
 
-\[[DRI]-([A-Z]{2})\]
+  // 2. Parse Sponsored Legislation (Column 2)
+  // Usually looks like: "10 (8 bills, 2 amendments)"
+  const sponsoredCell = $(tds[1]).text().trim();
+  const sponsoredLegislation = extractFirstNumber(sponsoredCell);
+  
+  // 3. Parse Cosponsored Legislation (Column 3)
+  const cosponsoredLegislation = extractFirstNumber($(tds[2]).text().trim());
 
-/);  // single-line regex
-  if (!match) return null;
-  const rawName = match[1].trim();
-  const state = match[2];
+  // 4. Parse Cosponsored Amendments (Column 4)
+  const cosponsoredAmendments = extractFirstNumber($(tds[3]).text().trim());
 
-  const sponsoredParts = $(tds[1]).text().trim().split('|').map(s => s.trim());
-  const sponsoredLegislation = parseIntSafe(sponsoredParts[0]);
-  const sponsoredAmendments = parseIntSafe(sponsoredParts[1]);
-
-  const cosBillsParts = $(tds[2]).text().trim().split('|').map(s => s.trim());
-  const cosponsoredLegislation = parseIntSafe(cosBillsParts[2]);
-
-  const cosAmendsParts = $(tds[3]).text().trim().split('|').map(s => s.trim());
-  const cosAmendsOriginal = parseIntSafe(cosAmendsParts[0]);
-  const cosAmendsWithdrawn = parseIntSafe(cosAmendsParts[1]);
-  const cosponsoredAmendments = cosAmendsOriginal + cosAmendsWithdrawn;
-
-  return { rawName, state, sponsoredLegislation, sponsoredAmendments, cosponsoredLegislation, cosponsoredAmendments };
+  return { 
+    rawName, 
+    state, 
+    sponsoredLegislation, 
+    cosponsoredLegislation, 
+    cosponsoredAmendments 
+  };
 }
 
 function matchSenator(rawName, state) {
-  const parts = rawName.split(',').map(p => p.trim());
   let candidateName = rawName;
-  if (parts.length >= 2) {
-    const last = parts[0];
-    const first = parts[1].replace(/\s+[A-Z]\.?$/, '');
+  if (rawName.includes(',')) {
+    const [last, first] = rawName.split(',').map(p => p.trim());
     candidateName = `${first} ${last}`;
   }
+  
   const normFull = normalizeName(candidateName);
-
   if (byFullName.has(normFull)) return byFullName.get(normFull);
 
-  const last = normalizeName(candidateName.split(' ').pop());
+  const parts = candidateName.split(' ');
+  const last = normalizeName(parts[parts.length - 1]);
   const key = `${last}|${state}`;
+  
   if (byLastNameState.has(key)) return byLastNameState.get(key);
 
-  for (const [k, sen] of byFullName.entries()) {
-    if (k.includes(normFull) && sen.state === state) return sen;
-  }
   return null;
 }
 
 async function main() {
+  console.log(`Fetching legislation data from ${URL}...`);
   const html = await fetchPage(URL);
   const $ = cheerio.load(html);
 
-  const rows = $('table tbody tr');
+  const rows = $('table.item_table tbody tr, table.item-table tbody tr');
   let matched = 0, unmatched = 0;
 
   rows.each((i, row) => {
@@ -95,20 +106,27 @@ async function main() {
     if (!counts) return;
 
     const sen = matchSenator(counts.rawName, counts.state);
-    if (!sen) { unmatched++; return; }
+    if (!sen) { 
+      console.warn(`Could not match Senator: ${counts.rawName} [${counts.state}]`);
+      unmatched++; 
+      return; 
+    }
 
+    // Update the base object reference
     sen.sponsoredLegislation = counts.sponsoredLegislation;
-    sen.sponsoredAmendments = counts.sponsoredAmendments;
     sen.cosponsoredLegislation = counts.cosponsoredLegislation;
     sen.cosponsoredAmendments = counts.cosponsoredAmendments;
     matched++;
   });
 
   fs.writeFileSync(OUTPUT, JSON.stringify(base, null, 2));
-  console.log(`senators-rankings.json updated with legislation! Matched: ${matched}, Unmatched: ${unmatched}`);
+  console.log(`\nSuccess!`);
+  console.log(`Matched: ${matched}`);
+  console.log(`Unmatched: ${unmatched}`);
+  console.log(`File updated: ${OUTPUT}`);
 }
 
 main().catch(err => {
-  console.error(err);
+  console.error("Fatal Error:", err.message);
   process.exit(1);
 });
