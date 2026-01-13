@@ -1,5 +1,5 @@
 // votes-scraper.js
-// Scrapes Senate.gov roll call XML indexes
+// Scrapes Senate roll call XML index
 // Outputs public/senators-votes.json
 
 const fs = require('fs');
@@ -10,6 +10,10 @@ const INDEX_URL = 'https://www.senate.gov/legislative/LIS/roll_call_votes/vote11
 
 async function fetchIndex() {
   const res = await fetch(INDEX_URL);
+  if (!res.ok) {
+    console.error(`Index fetch error: ${res.status} ${res.statusText}`);
+    return null;
+  }
   const xml = await res.text();
   return xml2js.parseStringPromise(xml, { strict: false });
 }
@@ -25,7 +29,8 @@ async function fetchRollCall(url) {
 
   try {
     return xml2js.parseStringPromise(safeXml, { strict: false });
-  } catch {
+  } catch (err) {
+    console.error(`Failed to parse roll call: ${err.message}`);
     return null;
   }
 }
@@ -36,6 +41,8 @@ async function scrapeVotes() {
   const voteData = {};
 
   const index = await fetchIndex();
+  if (!index) return;
+
   const votes = index?.vote_menu?.vote || [];
 
   for (const v of votes) {
@@ -66,20 +73,4 @@ async function scrapeVotes() {
 
   const output = senators.map(sen => {
     const bioguideId = sen.id.bioguide;
-    const stats = voteData[bioguideId] || { votesCast: 0, missedVotes: 0 };
-    const total = stats.votesCast + stats.missedVotes;
-    const missedPct = total > 0 ? (stats.missedVotes / total) * 100 : 0;
-
-    return {
-      bioguideId,
-      votesCast: stats.votesCast,
-      missedVotes: stats.missedVotes,
-      missedPct: Math.round(missedPct * 10) / 10
-    };
-  });
-
-  fs.writeFileSync('public/senators-votes.json', JSON.stringify(output, null, 2));
-  console.log('Votes scraper complete!');
-}
-
-scrapeVotes().catch(err => console.error(err));
+    const
