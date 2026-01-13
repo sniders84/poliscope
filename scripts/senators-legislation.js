@@ -38,14 +38,15 @@ function extractCountsFromRow($, row) {
 
   // Senator cell: "Last, First M. [P-SS]"
   const senatorCell = $(tds[0]).text().trim();
+  const match = senatorCell.match(/^(.+?)\s+
 
-  // Use RegExp constructor to avoid literal line-break issues
-  const re = new RegExp('^(.+?)\\s+\
 
-\[[DRI]-([A-Z]{2})\\]
 
-');
-  const match = senatorCell.match(re);
+\[[DRI]-([A-Z]{2})\]
+
+
+
+/);
   if (!match) return null;
   const rawName = match[1].trim();
   const state = match[2];
