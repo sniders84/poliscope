@@ -1,8 +1,10 @@
+// scripts/senators-votes.js
 const fs = require('fs');
 const fetch = require('node-fetch');
 const cheerio = require('cheerio');
 
-const base = JSON.parse(fs.readFileSync('public/senators-rankings.json', 'utf8'));
+const OUTPUT = 'public/senators-rankings.json';
+const base = JSON.parse(fs.readFileSync(OUTPUT, 'utf8'));
 
 const INDEX_URLS = [
   'https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_1.xml',
@@ -20,29 +22,45 @@ async function getVoteUrls(indexUrl, sessionPrefix, sessionNum) {
   });
 }
 
+function lastNameOf(fullName) {
+  const parts = fullName.split(' ');
+  return parts[parts.length - 1];
+}
+
 async function scrapeNotVoting(url) {
   const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' } });
   if (!res.ok) return [];
   const html = await res.text();
   const $ = cheerio.load(html);
 
-  const block = $('h3:contains("Not Voting")').next();
-  const names = block.text().split(/\s{2,}|\n+/).map(s => s.trim()).filter(Boolean);
+  // Find the "Not Voting" block robustly
+  const header = $('h3').filter((i, el) => $(el).text().trim().toLowerCase().includes('not voting')).first();
+  if (!header.length) return [];
 
+  // The names are typically in the next table or sibling block
+  let blockText = '';
+  const next = header.next();
+  if (next && next.text()) blockText = next.text();
+  else blockText = header.parent().text();
+
+  const tokens = blockText.split(/[\n,;]+/).map(t => t.trim()).filter(Boolean);
   const notVoting = [];
-  names.forEach(n => {
-    const match = n.match(/([A-Za-z.\- ]+)\s*\([DRI]-([A-Z]{2})\)/);
-    if (match) {
-      const cleaned = match[1].trim();
-      const state = match[2];
-      for (const sen of base) {
-        if (sen.state === state && sen.name.includes(cleaned)) {
-          notVoting.push(sen.name);
-          break;
-        }
+
+  tokens.forEach(tok => {
+    const m = tok.match(/([A-Za-z.\- ]+)\s*\([DRI]-([A-Z]{2})\)/);
+    if (!m) return;
+    const namePart = m[1].replace(/^Sen\.?\s*/i, '').trim();
+    const state = m[2];
+
+    // Try to match by last name + state
+    for (const sen of base) {
+      if (sen.state === state && lastNameOf(sen.name).replace(/\./g, '') === namePart.split(' ').pop().replace(/\./g, '')) {
+        notVoting.push(sen.name);
+        break;
       }
     }
   });
+
   return notVoting;
 }
 
@@ -55,21 +73,27 @@ async function main() {
   let urls = [];
   urls = urls.concat(await getVoteUrls(INDEX_URLS[0], 'vote1191', '1'));
   urls = urls.concat(await getVoteUrls(INDEX_URLS[1], 'vote1192', '2'));
-  console.log(`Total votes: ${urls.length}`);
+  urls.sort((a, b) => a.localeCompare(b)); // stable order
+
+  console.log(`Total roll calls discovered: ${urls.length}`);
 
   for (const url of urls) {
     const notV = await scrapeNotVoting(url);
     notV.forEach(n => missed[n] = (missed[n] || 0) + 1);
-    await delay(2000);
+    await delay(1000); // polite delay
   }
 
   base.forEach(s => {
-    s.missedVotes = missed[s.name] || 0;
     s.totalVotes = urls.length;
+    s.missedVotes = missed[s.name] || 0;
+    s.votedVotes = s.totalVotes - s.missedVotes;
   });
 
-  fs.writeFileSync('public/senators-rankings.json', JSON.stringify(base, null, 2));
-  console.log('senators-rankings.json updated with votes!');
+  fs.writeFileSync(OUTPUT, JSON.stringify(base, null, 2));
+  console.log('senators-rankings.json updated with votes (total/missed/voted).');
 }
 
-main();
+main().catch(err => {
+  console.error(err);
+  process.exit(1);
+});
