@@ -4,6 +4,7 @@ const cheerio = require('cheerio');
 
 const INDEX_URLS = [
   'https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_1.xml',
+  // Add '_2.xml' later when 2nd session starts
 ];
 
 function cleanName(text) {
@@ -15,16 +16,24 @@ function cleanName(text) {
     .trim();
 }
 
-async function getRecentVoteUrls(maxVotes = 100) {
+async function getRecentVoteUrls(maxVotes = 50) {
   const voteUrls = [];
   for (const indexUrl of INDEX_URLS) {
     try {
       const res = await fetch(indexUrl, {
-        headers: { 'User-Agent': 'Mozilla/5.0 (compatible; ElectorateBot/1.0)' }
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+          'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+          'Referer': 'https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_1.htm'
+        }
       });
-      if (!res.ok) continue;
-      const xml = await res.text();
 
+      if (!res.ok) {
+        console.log(`Index fetch failed: ${indexUrl} - ${res.status}`);
+        continue;
+      }
+
+      const xml = await res.text();
       const matches = [...xml.matchAll(/<vote_number>(\d+)<\/vote_number>/g)];
       const session = indexUrl.includes('_1.xml') ? '1' : '2';
 
@@ -34,34 +43,41 @@ async function getRecentVoteUrls(maxVotes = 100) {
         voteUrls.push(url);
       });
 
-      console.log(`Found ${matches.length} votes in session ${session}`);
+      console.log(`Found ${matches.length} votes in session ${session} from index`);
     } catch (err) {
       console.log(`Error fetching index ${indexUrl}: ${err.message}`);
     }
   }
 
-  // Sort descending (newest first) and limit to recent
+  // Sort descending (newest first) and limit
   voteUrls.sort((a, b) => b.localeCompare(a));
   const recent = voteUrls.slice(0, maxVotes);
-  console.log(`Processing ${recent.length} most recent vote URLs`);
+  console.log(`Selected ${recent.length} most recent vote URLs to process`);
   return recent;
 }
 
 async function scrapeNotVoting(url, senatorNamesSet) {
   try {
     const res = await fetch(url, {
-      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; ElectorateBot/1.0; +https://electorate.app)' }
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+        'Referer': 'https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_1.htm'
+      }
     });
+
     if (!res.ok) {
-      console.log(`Skipped ${url} - ${res.status}`);
+      console.log(`Skipped ${url} - ${res.status} ${res.statusText}`);
       return [];
     }
+
     const html = await res.text();
     const $ = cheerio.load(html);
 
     const notVoting = [];
-    $('h3:contains("Not Voting"), strong:contains("Not Voting")').each((i, el) => {
-      const block = $(el).nextAll().addBack().text();
+    // Broader selector for Not Voting section
+    $('h3:contains("Not Voting"), h3:contains("not voting"), strong:contains("Not Voting"), p:contains("Not Voting")').each((i, el) => {
+      const block = $(el).nextUntil('h3, strong, p').addBack().text() + $(el).text();
       block.split(/[\n,;]/).forEach(line => {
         const cleaned = cleanName(line.trim());
         if (cleaned && senatorNamesSet.has(cleaned)) {
@@ -69,9 +85,14 @@ async function scrapeNotVoting(url, senatorNamesSet) {
         }
       });
     });
+
+    if (notVoting.length > 0) {
+      console.log(`Found ${notVoting.length} not voting on ${url.split('/').pop()}`);
+    }
+
     return notVoting;
   } catch (err) {
-    console.log(`Error on ${url}: ${err.message}`);
+    console.log(`Error scraping ${url}: ${err.message}`);
     return [];
   }
 }
@@ -81,35 +102,40 @@ async function delay(ms) {
 }
 
 async function main() {
+  // Load senator names from base file
   const base = JSON.parse(fs.readFileSync('public/senators-rankings.json', 'utf8'));
   const senatorNames = base.map(s => cleanName(s.name));
   const senatorNamesSet = new Set(senatorNames);
 
-  const voteUrls = await getRecentVoteUrls(100); // Limit to 100 to avoid bans
+  const voteUrls = await getRecentVoteUrls(50); // Start with 50; increase if needed
 
   const missed = {};
   senatorNames.forEach(name => missed[name] = 0);
 
+  let processedCount = 0;
   for (const url of voteUrls) {
     console.log(`Processing ${url}`);
     const notVoting = await scrapeNotVoting(url, senatorNamesSet);
     notVoting.forEach(name => {
-      if (missed[name] !== undefined) missed[name]++;
+      if (missed[name] !== undefined) {
+        missed[name]++;
+      }
     });
-    await delay(2000); // 2-second delay to be polite
+    processedCount++;
+    await delay(3000); // 3-second delay to be very polite
   }
 
   const output = senatorNames.map(name => ({
     name,
     missedVotes: missed[name] || 0,
-    totalVotes: voteUrls.length // This is now "processed" count, not total discovered
+    totalVotes: processedCount // Number of successfully attempted/processed votes
   }));
 
   fs.writeFileSync('public/senators-votes.json', JSON.stringify(output, null, 2));
-  console.log(`Updated! Processed ${voteUrls.length} votes`);
+  console.log(`senators-votes.json updated! Processed ${processedCount} votes`);
 }
 
 main().catch(err => {
-  console.error(err);
+  console.error('Fatal error:', err);
   process.exit(1);
 });
