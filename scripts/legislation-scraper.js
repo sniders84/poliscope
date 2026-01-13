@@ -1,122 +1,77 @@
 // legislation-scraper.js
-// Scrapes Congress.gov API for sponsored/cosponsored legislation (bills + resolutions) and amendments
+// Scrapes Congress.gov API for bills and amendments sponsored/cosponsored by each senator
 // Outputs public/senators-legislation.json
 
 const fs = require('fs');
 const fetch = require('node-fetch');
 
-const API_KEY = process.env.CONGRESS_API_KEY;
-const BASE_BILL_URL = 'https://api.congress.gov/v3/bill';
-const BASE_AMEND_URL = 'https://api.congress.gov/v3/amendment';
+const legislators = JSON.parse(fs.readFileSync('public/legislators-current.json', 'utf8'));
+const senators = legislators.filter(l => l.terms.some(t => t.type === 'sen'));
 
-// Helper to fetch all pages of results
-async function fetchAllPages(url) {
-  let results = [];
-  let nextUrl = url;
+const BASE_URL = 'https://api.congress.gov/v3';
 
-  while (nextUrl) {
-    const res = await fetch(nextUrl);
-    if (!res.ok) {
-      console.error(`Congress API error: ${res.status} ${res.statusText} for ${nextUrl}`);
-      break;
-    }
-    const data = await res.json();
-
-    if (data.bills) results = results.concat(data.bills);
-    if (data.amendments) results = results.concat(data.amendments);
-
-    nextUrl = data.pagination?.next_url || null;
+async function fetchJSON(url) {
+  const res = await fetch(url, { headers: { 'X-Api-Key': process.env.CONGRESS_API_KEY } });
+  if (!res.ok) {
+    console.error(`Failed to fetch ${url}: ${res.status}`);
+    return null;
   }
-
-  return results;
+  return res.json();
 }
 
-// Scrape legislation (bills + resolutions) for one LIS ID
-async function scrapeLegislation(lisId) {
-  const sponsoredUrl = `${BASE_BILL_URL}?sponsorId=${lisId}&congress=119&api_key=${API_KEY}`;
-  const cosponsoredUrl = `${BASE_BILL_URL}?cosponsorId=${lisId}&congress=119&api_key=${API_KEY}`;
+async function scrapeSenator(sen) {
+  const bioguideId = sen.id.bioguide;
+  console.log(`Scraping legislation for ${sen.name.official_full} (${bioguideId})`);
 
-  const sponsoredBills = await fetchAllPages(sponsoredUrl);
-  const cosponsoredBills = await fetchAllPages(cosponsoredUrl);
-
-  let sponsoredCount = 0,
-      cosponsoredCount = 0,
-      becameLawSponsored = 0,
-      becameLawCosponsored = 0;
-
-  for (const b of sponsoredBills) {
-    sponsoredCount++;
-    if (b.latestAction?.text?.includes('Became Public Law')) becameLawSponsored++;
-  }
-  for (const b of cosponsoredBills) {
-    cosponsoredCount++;
-    if (b.latestAction?.text?.includes('Became Public Law')) becameLawCosponsored++;
-  }
-
-  return {
-    sponsoredBills: sponsoredCount,
-    cosponsoredBills: cosponsoredCount,
-    becameLawSponsoredBills: becameLawSponsored,
-    becameLawCosponsoredBills: becameLawCosponsored
+  const counts = {
+    sponsoredBills: 0,
+    sponsoredAmendments: 0,
+    cosponsoredBills: 0,
+    cosponsoredAmendments: 0,
+    becameLawSponsoredBills: 0,
+    becameLawSponsoredAmendments: 0,
+    becameLawCosponsoredBills: 0,
+    becameLawCosponsoredAmendments: 0
   };
-}
 
-// Scrape amendments for one LIS ID
-async function scrapeAmendments(lisId) {
-  const sponsoredUrl = `${BASE_AMEND_URL}?sponsorId=${lisId}&congress=119&api_key=${API_KEY}`;
-  const cosponsoredUrl = `${BASE_AMEND_URL}?cosponsorId=${lisId}&congress=119&api_key=${API_KEY}`;
-
-  const sponsoredAmends = await fetchAllPages(sponsoredUrl);
-  const cosponsoredAmends = await fetchAllPages(cosponsoredUrl);
-
-  let sponsoredCount = 0,
-      cosponsoredCount = 0,
-      becameLawSponsored = 0,
-      becameLawCosponsored = 0;
-
-  for (const a of sponsoredAmends) {
-    sponsoredCount++;
-    if (a.latestAction?.text?.includes('Became Public Law')) becameLawSponsored++;
-  }
-  for (const a of cosponsoredAmends) {
-    cosponsoredCount++;
-    if (a.latestAction?.text?.includes('Became Public Law')) becameLawCosponsored++;
+  // Bills sponsored
+  const bills = await fetchJSON(`${BASE_URL}/bill?congress=119&sponsorId=${bioguideId}`);
+  if (bills && bills.bills) {
+    counts.sponsoredBills = bills.bills.length;
+    counts.becameLawSponsoredBills = bills.bills.filter(b => b.latestAction?.text?.includes('Became Public Law')).length;
   }
 
-  return {
-    sponsoredAmendments: sponsoredCount,
-    cosponsoredAmendments: cosponsoredCount,
-    becameLawSponsoredAmendments: becameLawSponsored,
-    becameLawCosponsoredAmendments: becameLawCosponsored
-  };
+  // Bills cosponsored
+  const cosponsored = await fetchJSON(`${BASE_URL}/bill?congress=119&cosponsorId=${bioguideId}`);
+  if (cosponsored && cosponsored.bills) {
+    counts.cosponsoredBills = cosponsored.bills.length;
+    counts.becameLawCosponsoredBills = cosponsored.bills.filter(b => b.latestAction?.text?.includes('Became Public Law')).length;
+  }
+
+  // Amendments sponsored
+  const amendments = await fetchJSON(`${BASE_URL}/amendment?congress=119&sponsorId=${bioguideId}`);
+  if (amendments && amendments.amendments) {
+    counts.sponsoredAmendments = amendments.amendments.length;
+    counts.becameLawSponsoredAmendments = amendments.amendments.filter(a => a.latestAction?.text?.includes('Agreed to')).length;
+  }
+
+  // Amendments cosponsored
+  const coamendments = await fetchJSON(`${BASE_URL}/amendment?congress=119&cosponsorId=${bioguideId}`);
+  if (coamendments && coamendments.amendments) {
+    counts.cosponsoredAmendments = coamendments.amendments.length;
+    counts.becameLawCosponsoredAmendments = coamendments.amendments.filter(a => a.latestAction?.text?.includes('Agreed to')).length;
+  }
+
+  return { name: sen.name.official_full, bioguideId, ...counts };
 }
 
 async function run() {
-  const legislators = JSON.parse(fs.readFileSync('public/legislators-current.json', 'utf8'));
-  const senators = legislators.filter(l => l.terms.some(t => t.type === 'sen'));
-  const output = [];
-
+  const results = [];
   for (const sen of senators) {
-    const bioguideId = sen.id.bioguide;
-    const lisId = sen.id.lis;   // <-- use LIS ID directly
-    if (!lisId) {
-      console.error(`No LIS ID found for ${bioguideId}`);
-      continue;
-    }
-
-    console.log(`Scraping legislation for ${sen.name.official_full} (lisId ${lisId})`);
-    const billsData = await scrapeLegislation(lisId);
-    const amendData = await scrapeAmendments(lisId);
-
-    output.push({
-      bioguideId,
-      lisId,
-      ...billsData,
-      ...amendData
-    });
+    const data = await scrapeSenator(sen);
+    results.push(data);
   }
-
-  fs.writeFileSync('public/senators-legislation.json', JSON.stringify(output, null, 2));
+  fs.writeFileSync('public/senators-legislation.json', JSON.stringify(results, null, 2));
   console.log('Legislation scraper complete!');
 }
 
