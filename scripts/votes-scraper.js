@@ -12,8 +12,20 @@ async function fetchRollCall(congress, session, voteNumber) {
   const url = `${ROLL_CALL_BASE}${session}/vote_${congress}_${session}_${voteNumber}.xml`;
   const res = await fetch(url);
   if (!res.ok) return null;
+
   const xml = await res.text();
-  return xml2js.parseStringPromise(xml);
+
+  // Sanitize malformed XML before parsing
+  const safeXml = xml
+    .replace(/&(?!(amp|lt|gt|quot|apos);)/g, '&amp;') // fix stray &
+    .replace(/<\s+/g, '&lt; '); // neutralize stray < inside text
+
+  try {
+    return xml2js.parseStringPromise(safeXml, { strict: false });
+  } catch (err) {
+    console.error(`Failed to parse vote ${voteNumber} (session ${session}):`, err.message);
+    return null;
+  }
 }
 
 async function scrapeVotes() {
@@ -25,10 +37,12 @@ async function scrapeVotes() {
       const data = await fetchRollCall(119, session, voteNum);
       if (!data) break;
 
-      const members = data.rollcall.vote[0].members[0].member;
+      const members = data.rollcall?.vote?.[0]?.members?.[0]?.member || [];
       for (const m of members) {
-        const bioguideId = m.$.member_id;
-        const voteCast = m.vote[0];
+        const bioguideId = m.$?.member_id;
+        const voteCast = m.vote?.[0] || '';
+
+        if (!bioguideId) continue;
 
         if (!voteData[bioguideId]) {
           voteData[bioguideId] = { votesCast: 0, missedVotes: 0 };
