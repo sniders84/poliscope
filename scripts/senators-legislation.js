@@ -50,7 +50,7 @@ function extractCountsFromRow($, row) {
 
 \[[DRI]-([A-Z]{2})\]
 
-/);
+/); // fixed regex
   if (!nameMatch) return null;
   const rawName = nameMatch[1].trim();
   const state = nameMatch[2];
@@ -111,6 +111,7 @@ async function main() {
   const html = await fetchPage(URL);
   const $ = cheerio.load(html);
 
+  // Congress.gov renders one main table; guard for variations
   const rows = $('table tbody tr');
   if (rows.length === 0) {
     console.log('No rows found on Congress.gov sponsors/cosponsors page.');
