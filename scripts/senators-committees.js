@@ -1,87 +1,140 @@
 const fs = require('fs');
 const fetch = require('node-fetch');
+const cheerio = require('cheerio');
 
-const ASSIGNMENTS_URL = 'https://www.senate.gov/general/committee_assignments/assignments.htm';
+const INDEX_URL = 'https://www.senate.gov/committees/index.htm';
 
-function cleanName(text) {
-  return text
-    .replace(/\[|\]/g, '')
-    .replace(/\s*\(.*?\)\s*/g, '')
-    .trim();
-}
-
-function detectRole(text) {
-  const lower = text.toLowerCase();
-  if (/chairman|chair|chairwoman/.test(lower)) return 'Chairman';
-  if (/ranking member|ranking/.test(lower)) return 'Ranking Member';
-  if (/vice chair/.test(lower)) return 'Vice Chair';
-  return 'Member';
-}
-
-async function scrapeAssignments() {
-  console.log(`Scraping ${ASSIGNMENTS_URL}`);
-
-  const res = await fetch(ASSIGNMENTS_URL, {
+async function getCommitteeUrls() {
+  const res = await fetch(INDEX_URL, {
     headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36' }
   });
-
-  if (!res.ok) {
-    console.error(`Fetch failed: ${res.status} ${res.statusText}`);
-    return;
-  }
+  if (!res.ok) throw new Error(`Index fetch failed: ${res.status}`);
 
   const html = await res.text();
-  // Get plain text, normalize
-  let text = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  const $ = cheerio.load(html);
 
-  // Split on senator names (e.g., "Alsobrooks, Angela D. (D-MD)")
-  const blocks = text.split(/(?=[A-Z][a-z]+,\s[A-Z][a-z]+\s?[A-Z]?[a-z]*\s*\([A-Z]-[A-Z]{2}\))/g);
+  const committees = [];
 
-  const senators = [];
+  // The table has rows with committee name and link
+  $('table tr').each((i, row) => {
+    const nameCell = $(row).find('td:first-child');
+    const linkCell = $(row).find('td a:contains("Committee Member List")');
 
-  blocks.forEach(block => {
-    block = block.trim();
-    if (!block) return;
+    const committeeName = nameCell.text().trim();
+    const linkHref = linkCell.attr('href');
 
-    // Extract name + party
-    const nameMatch = block.match(/([A-Z][a-z]+,\s[A-Z][a-z]+\s?[A-Z]?[a-z]*)\s*\([A-Z]-[A-Z]{2}\)/);
-    if (!nameMatch) return;
-
-    const name = cleanName(nameMatch[1]);
-
-    // Get content after name
-    const content = block.substring(nameMatch[0].length).trim();
-
-    // Split on main committee bullets (•)
-    const committeeParts = content.split('•').map(p => p.trim()).filter(p => p);
-
-    const committees = [];
-    let current = null;
-
-    committeeParts.forEach(part => {
-      if (part.includes('Committee on') || part.includes('Select Committee') || part.includes('Special Committee')) {
-        const role = detectRole(part);
-        const committeeName = part.replace(/\s*\(.*?\)\s*/g, '').trim();
-        current = { committee: committeeName, role, subcommittees: [] };
-        committees.push(current);
-      } else if (current && part.startsWith('o ')) {
-        const subPart = part.replace('o ', '').trim();
-        const subRole = detectRole(subPart);
-        const subName = subPart.replace(/\s*\(.*?\)\s*/g, '').trim();
-        current.subcommittees.push({ subcommittee: subName, role: subRole });
-      }
-    });
-
-    if (committees.length > 0) {
-      senators.push({ name, committees });
-      console.log(`Parsed ${name}: ${committees.length} committees`);
+    if (committeeName && linkHref && linkHref.includes('committee_memberships_')) {
+      const fullUrl = new URL(linkHref, 'https://www.senate.gov').href;
+      committees.push({ name: committeeName, url: fullUrl });
     }
   });
 
-  console.log(`Total senators parsed: ${senators.length}`);
-
-  fs.writeFileSync('public/senators-committees.json', JSON.stringify(senators, null, 2));
-  console.log('senators-committees.json updated!');
+  console.log(`Found ${committees.length} committee membership URLs`);
+  return committees;
 }
 
-scrapeAssignments();
+async function parseCommitteeMembers(url) {
+  const res = await fetch(url, {
+    headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36' }
+  });
+  if (!res.ok) {
+    console.log(`Skipped ${url.split('/').pop()}: ${res.status}`);
+    return { members: [], chairman: null, ranking: null, subcommittees: [] };
+  }
+
+  const html = await res.text();
+  const $ = cheerio.load(html);
+
+  const members = [];
+  let chairman = null;
+  let ranking = null;
+  const subcommittees = [];
+
+  // Main members are in lists or tables
+  $('li, p strong, td').each((i, el) => {
+    const text = $(el).text().trim();
+    if (text.includes('Chairman')) chairman = text.replace('Chairman', '').trim();
+    if (text.includes('Ranking Member')) ranking = text.replace('Ranking Member', '').trim();
+    if (text && text.includes('(') && text.includes(')')) {
+      const cleaned = text.replace(/\s*\(.*?\)\s*/g, '').trim();
+      if (cleaned && !members.includes(cleaned)) members.push(cleaned);
+    }
+  });
+
+  // Subcommittees - look for headings and lists
+  $('h3, strong:contains("Subcommittee")').each((i, subHead) => {
+    const subName = $(subHead).text().trim().replace('Subcommittee on', '').trim();
+    const subMembers = [];
+    let subChair = null;
+    let subRanking = null;
+
+    // Find following list or text
+    $(subHead).nextAll('ul, ol, p').first().find('li, a').each((j, li) => {
+      const liText = $(li).text().trim();
+      if (liText.includes('Chairman')) subChair = liText.replace('Chairman', '').trim();
+      if (liText.includes('Ranking')) subRanking = liText.replace('Ranking Member', '').trim();
+      if (liText.includes('(')) subMembers.push(liText.replace(/\s*\(.*?\)\s*/g, '').trim());
+    });
+
+    if (subName) {
+      subcommittees.push({
+        subcommittee: subName,
+        chair: subChair,
+        ranking: subRanking,
+        members: subMembers
+      });
+    }
+  });
+
+  return { members, chairman, ranking, subcommittees };
+}
+
+async function main() {
+  try {
+    const committees = await getCommitteeUrls();
+
+    const senatorMap = {}; // name -> {committees: []}
+
+    for (const comm of committees) {
+      console.log(`Parsing ${comm.name} from ${comm.url.split('/').pop()}`);
+      const data = await parseCommitteeMembers(comm.url);
+
+      // Add main committee to each member
+      data.members.forEach(member => {
+        if (!senatorMap[member]) senatorMap[member] = { name: member, committees: [] };
+        const role = member === data.chairman ? 'Chairman' : (member === data.ranking ? 'Ranking Member' : 'Member');
+        senatorMap[member].committees.push({
+          committee: comm.name,
+          role
+        });
+      });
+
+      // Subcommittees - add to members if listed
+      data.subcommittees.forEach(sub => {
+        sub.members.forEach(member => {
+          if (senatorMap[member]) {
+            const mainComm = senatorMap[member].committees.find(c => c.committee === comm.name);
+            if (mainComm) {
+              if (!mainComm.subcommittees) mainComm.subcommittees = [];
+              const subRole = member === sub.chair ? 'Chairman' : (member === sub.ranking ? 'Ranking Member' : 'Member');
+              mainComm.subcommittees.push({
+                subcommittee: sub.subcommittee,
+                role: subRole
+              });
+            }
+          }
+        });
+      });
+    }
+
+    const result = Object.values(senatorMap);
+    console.log(`Parsed assignments for ${result.length} senators`);
+
+    fs.writeFileSync('public/senators-committees.json', JSON.stringify(result, null, 2));
+    console.log('senators-committees.json updated!');
+  } catch (err) {
+    console.error('Error:', err.message);
+  }
+}
+
+main();
