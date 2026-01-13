@@ -13,20 +13,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on Commerce, Science, and Transportation",
-        "role": "Ranking"
-      },
-      {
-        "name": "Committee on Finance",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Small Business and Entrepreneurship",
-        "role": "Ranking"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -68,15 +55,7 @@
     "becameLawCosponsoredAmendments": 0,
     "committees": [
       {
-        "name": "Committee on the Budget",
-        "role": "Member"
-      },
-      {
         "name": "Committee on Environment and Public Works",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Finance",
         "role": "Member"
       }
     ],
@@ -101,19 +80,16 @@
     "becameLawCosponsoredAmendments": 0,
     "committees": [
       {
-        "name": "Committee on the Budget",
-        "role": "Member"
-      },
+        "name": "Committee on Environment and Public Works",
+        "role": "Ranking"
+      }
+    ],
+    "committeeLeadership": [
       {
         "name": "Committee on Environment and Public Works",
         "role": "Ranking"
-      },
-      {
-        "name": "Committee on Finance",
-        "role": "Member"
       }
     ],
-    "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
     "missedPct": 0
@@ -132,12 +108,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on Finance",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -161,22 +132,6 @@
       {
         "name": "Committee on Environment and Public Works",
         "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
       }
     ],
     "committeeLeadership": [],
@@ -198,24 +153,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on Appropriations",
-        "role": "Chair"
-      },
-      {
-        "name": "Committee on Appropriations",
-        "role": "Chair"
-      },
-      {
-        "name": "Committee on Appropriations",
-        "role": "Chair"
-      },
-      {
-        "name": "Committee on Appropriations",
-        "role": "Chair"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -235,16 +173,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on the Budget",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Finance",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -264,12 +193,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on Appropriations",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -290,10 +214,6 @@
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
     "committees": [
-      {
-        "name": "Committee on Appropriations",
-        "role": "Member"
-      },
       {
         "name": "Committee on Environment and Public Works",
         "role": "Member"
@@ -318,28 +238,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on Appropriations",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -361,27 +260,7 @@
     "becameLawCosponsoredAmendments": 0,
     "committees": [
       {
-        "name": "Committee on Appropriations",
-        "role": "Member"
-      },
-      {
         "name": "Committee on Environment and Public Works",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
         "role": "Member"
       }
     ],
@@ -405,10 +284,6 @@
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
     "committees": [
-      {
-        "name": "Committee on Appropriations",
-        "role": "Member"
-      },
       {
         "name": "Committee on Banking, Housing, and Urban Affairs",
         "role": "Member"
@@ -457,12 +332,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on Appropriations",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -490,38 +360,6 @@
       {
         "name": "Committee on Banking, Housing, and Urban Affairs",
         "role": "Member"
-      },
-      {
-        "name": "Committee on the Budget",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Finance",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Select Committee on Intelligence",
-        "role": "Chair"
-      },
-      {
-        "name": "Select Committee on Intelligence",
-        "role": "Chair"
       }
     ],
     "committeeLeadership": [],
@@ -543,12 +381,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on Appropriations",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -568,12 +401,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on Appropriations",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -593,12 +421,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on Appropriations",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -618,28 +441,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on Finance",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -659,12 +461,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on Finance",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -706,10 +503,6 @@
     "becameLawCosponsoredAmendments": 0,
     "committees": [
       {
-        "name": "Committee on Appropriations",
-        "role": "Member"
-      },
-      {
         "name": "Committee on Environment and Public Works",
         "role": "Member"
       }
@@ -735,35 +528,16 @@
     "becameLawCosponsoredAmendments": 0,
     "committees": [
       {
-        "name": "Committee on Appropriations",
-        "role": "Member"
-      },
-      {
         "name": "Committee on Environment and Public Works",
         "role": "Chair"
-      },
-      {
-        "name": "Committee on Environment and Public Works",
-        "role": "Chair"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
       }
     ],
-    "committeeLeadership": [],
+    "committeeLeadership": [
+      {
+        "name": "Committee on Environment and Public Works",
+        "role": "Chair"
+      }
+    ],
     "votesCast": 0,
     "missedVotes": 0,
     "missedPct": 0
@@ -782,12 +556,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on Finance",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -815,10 +584,6 @@
       {
         "name": "Committee on Banking, Housing, and Urban Affairs",
         "role": "Member"
-      },
-      {
-        "name": "Committee on the Budget",
-        "role": "Member"
       }
     ],
     "committeeLeadership": [],
@@ -840,16 +605,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on the Budget",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Finance",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -869,12 +625,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on Appropriations",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -914,12 +665,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on Appropriations",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -939,16 +685,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on the Budget",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Finance",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -968,12 +705,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on Finance",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -993,12 +725,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on the Budget",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -1018,16 +745,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on the Budget",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Finance",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -1072,12 +790,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on Appropriations",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -1097,12 +810,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on Appropriations",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -1122,12 +830,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on Appropriations",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -1147,20 +850,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on Appropriations",
-        "role": "Chair"
-      },
-      {
-        "name": "Committee on Appropriations",
-        "role": "Chair"
-      },
-      {
-        "name": "Committee on the Budget",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -1180,40 +870,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on Homeland Security and Governmental Affairs",
-        "role": "Ranking"
-      },
-      {
-        "name": "Committee on Homeland Security and Governmental Affairs",
-        "role": "Chair"
-      },
-      {
-        "name": "Committee on Homeland Security and Governmental Affairs",
-        "role": "Ranking"
-      },
-      {
-        "name": "Committee on Homeland Security and Governmental Affairs",
-        "role": "Chair"
-      },
-      {
-        "name": "Committee on Homeland Security and Governmental Affairs",
-        "role": "Ranking"
-      },
-      {
-        "name": "Committee on Homeland Security and Governmental Affairs",
-        "role": "Chair"
-      },
-      {
-        "name": "Committee on Homeland Security and Governmental Affairs",
-        "role": "Ranking"
-      },
-      {
-        "name": "Committee on Homeland Security and Governmental Affairs",
-        "role": "Chair"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -1233,28 +890,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on Appropriations",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Homeland Security and Governmental Affairs",
-        "role": "Ranking"
-      },
-      {
-        "name": "Committee on Homeland Security and Governmental Affairs",
-        "role": "Ranking"
-      },
-      {
-        "name": "Committee on Homeland Security and Governmental Affairs",
-        "role": "Ranking"
-      },
-      {
-        "name": "Committee on Homeland Security and Governmental Affairs",
-        "role": "Ranking"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -1299,24 +935,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -1339,30 +958,6 @@
     "committees": [
       {
         "name": "Committee on Banking, Housing, and Urban Affairs",
-        "role": "Ranking"
-      },
-      {
-        "name": "Committee on Banking, Housing, and Urban Affairs",
-        "role": "Chair"
-      },
-      {
-        "name": "Committee on Banking, Housing, and Urban Affairs",
-        "role": "Ranking"
-      },
-      {
-        "name": "Committee on Banking, Housing, and Urban Affairs",
-        "role": "Chair"
-      },
-      {
-        "name": "Committee on Banking, Housing, and Urban Affairs",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on the Budget",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Finance",
         "role": "Member"
       }
     ],
@@ -1385,12 +980,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on Finance",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -1412,19 +1002,11 @@
     "becameLawCosponsoredAmendments": 0,
     "committees": [
       {
-        "name": "Committee on Appropriations",
-        "role": "Member"
-      },
-      {
         "name": "Committee on Banking, Housing, and Urban Affairs",
         "role": "Member"
       },
       {
         "name": "Committee on Banking, Housing, and Urban Affairs",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on the Budget",
         "role": "Member"
       }
     ],
@@ -1447,24 +1029,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on Finance",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -1484,12 +1049,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on the Budget",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -1509,12 +1069,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on Finance",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -1534,12 +1089,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on Appropriations",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -1602,18 +1152,6 @@
     "committees": [
       {
         "name": "Committee on Banking, Housing, and Urban Affairs",
-        "role": "Ranking"
-      },
-      {
-        "name": "Committee on Banking, Housing, and Urban Affairs",
-        "role": "Ranking"
-      },
-      {
-        "name": "Committee on Banking, Housing, and Urban Affairs",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Finance",
         "role": "Member"
       }
     ],
@@ -1656,12 +1194,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on Finance",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -1714,12 +1247,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on Appropriations",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -1739,12 +1267,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on Appropriations",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -1764,24 +1287,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -1801,12 +1307,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on the Budget",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -1928,10 +1429,6 @@
       {
         "name": "Committee on Banking, Housing, and Urban Affairs",
         "role": "Member"
-      },
-      {
-        "name": "Committee on Finance",
-        "role": "Member"
       }
     ],
     "committeeLeadership": [],
@@ -1954,10 +1451,6 @@
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
     "committees": [
-      {
-        "name": "Committee on Appropriations",
-        "role": "Member"
-      },
       {
         "name": "Committee on Banking, Housing, and Urban Affairs",
         "role": "Member"
@@ -1988,19 +1481,11 @@
     "becameLawCosponsoredAmendments": 0,
     "committees": [
       {
-        "name": "Committee on Appropriations",
-        "role": "Member"
-      },
-      {
         "name": "Committee on Banking, Housing, and Urban Affairs",
         "role": "Member"
       },
       {
         "name": "Committee on Banking, Housing, and Urban Affairs",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on the Budget",
         "role": "Member"
       }
     ],
@@ -2023,12 +1508,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on Finance",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -2055,10 +1535,6 @@
       },
       {
         "name": "Committee on Banking, Housing, and Urban Affairs",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Finance",
         "role": "Member"
       }
     ],
@@ -2143,16 +1619,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on the Budget",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Finance",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -2239,35 +1706,11 @@
     "becameLawCosponsoredAmendments": 0,
     "committees": [
       {
-        "name": "Committee on Appropriations",
-        "role": "Member"
-      },
-      {
         "name": "Committee on Banking, Housing, and Urban Affairs",
         "role": "Member"
       },
       {
         "name": "Committee on Banking, Housing, and Urban Affairs",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Finance",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
         "role": "Member"
       }
     ],
@@ -2499,31 +1942,11 @@
     "becameLawCosponsoredAmendments": 0,
     "committees": [
       {
-        "name": "Committee on Appropriations",
-        "role": "Member"
-      },
-      {
         "name": "Committee on Banking, Housing, and Urban Affairs",
         "role": "Member"
       },
       {
         "name": "Committee on Banking, Housing, and Urban Affairs",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
         "role": "Member"
       }
     ],
@@ -2548,27 +1971,7 @@
     "becameLawCosponsoredAmendments": 0,
     "committees": [
       {
-        "name": "Committee on the Budget",
-        "role": "Member"
-      },
-      {
         "name": "Committee on Environment and Public Works",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
         "role": "Member"
       }
     ],
@@ -2591,28 +1994,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on Appropriations",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -2640,10 +2022,6 @@
       {
         "name": "Committee on Banking, Housing, and Urban Affairs",
         "role": "Member"
-      },
-      {
-        "name": "Committee on Finance",
-        "role": "Member"
       }
     ],
     "committeeLeadership": [],
@@ -2667,31 +2045,11 @@
     "becameLawCosponsoredAmendments": 0,
     "committees": [
       {
-        "name": "Committee on Appropriations",
-        "role": "Member"
-      },
-      {
         "name": "Committee on Banking, Housing, and Urban Affairs",
         "role": "Member"
       },
       {
         "name": "Committee on Banking, Housing, and Urban Affairs",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Rules and Administration",
         "role": "Member"
       }
     ],
@@ -2761,10 +2119,6 @@
       },
       {
         "name": "Committee on Banking, Housing, and Urban Affairs",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on the Budget",
         "role": "Member"
       },
       {
@@ -2852,10 +2206,6 @@
       {
         "name": "Committee on Banking, Housing, and Urban Affairs",
         "role": "Member"
-      },
-      {
-        "name": "Committee on the Budget",
-        "role": "Member"
       }
     ],
     "committeeLeadership": [],
@@ -2877,16 +2227,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on Banking, Housing, and Urban Affairs",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Banking, Housing, and Urban Affairs",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
@@ -2906,24 +2247,7 @@
     "becameLawSponsoredAmendments": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "name": "Committee on Appropriations",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Appropriations",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Appropriations",
-        "role": "Member"
-      },
-      {
-        "name": "Committee on Appropriations",
-        "role": "Member"
-      }
-    ],
+    "committees": [],
     "committeeLeadership": [],
     "votesCast": 0,
     "missedVotes": 0,
