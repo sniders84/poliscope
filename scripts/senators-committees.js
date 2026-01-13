@@ -6,9 +6,10 @@ const ASSIGNMENTS_URL = 'https://www.senate.gov/general/committee_assignments/as
 
 function cleanName(text) {
   return text
-    .replace(/\[|\]/g, '')                    // Remove any brackets
-    .replace(/\s*\(.*?\)\s*/g, '')            // Strip (D-MD) or similar
-    .replace(/Senator\s*/gi, '')              // Remove "Senator" prefix
+    .replace(/$$   |   $$/g, '')
+    .replace(/\s*$$   .*?   $$\s*/g, '')  // strip (D-MD)
+    .replace(/\s*$$   .*?   $$/g, '')     // extra cleanup
+    .replace(/Senator\s*/gi, '')
     .replace(/\s+/g, ' ')
     .trim();
 }
@@ -22,17 +23,15 @@ function detectRole(text) {
 }
 
 async function scrapeAssignments() {
-  console.log(`Scraping all committee assignments from ${ASSIGNMENTS_URL}`);
+  console.log(`Scraping ${ASSIGNMENTS_URL}`);
 
   try {
     const res = await fetch(ASSIGNMENTS_URL, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (compatible; ElectorateBot/1.0; +https://electorate.app)'
-      }
+      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; ElectorateBot/1.0; +https://electorate.app)' }
     });
 
     if (!res.ok) {
-      console.error(`Failed to fetch assignments page: ${res.status} ${res.statusText}`);
+      console.error(`Failed: ${res.status}`);
       return [];
     }
 
@@ -41,70 +40,54 @@ async function scrapeAssignments() {
 
     const senators = {};
 
-    // The page structure: senator names in <a> or <strong> tags, followed by committee text in paragraphs or divs
-    // We'll iterate over strong/bold tags or links containing senator names
-    $('strong, b, a[href*="senator"], p > strong').each((i, el) => {
-      let nameText = $(el).text().trim();
+    // Iterate over all <p> (main content blocks)
+    $('p').each((i, p) => {
+      const pText = $(p).text().trim();
+      if (!pText) return;
 
-      if (!nameText || nameText.length < 5) return;
+      // Match senator start: [Name](link) (Party-State)
+      const senatorMatch = pText.match(/^$$   ([^   $$]+)\]$$   [^)]+   $$\s*$$   ([A-Z]-[A-Z]{2})   $$/);
+      if (!senatorMatch) return;
 
-      // Skip non-senator content (headers, instructions, etc.)
-      if (/committee assignments|senate committee|alphabetical/i.test(nameText)) return;
+      const rawName = senatorMatch[1];
+      const name = cleanName(rawName);
+      if (name.split(' ').length < 2) return;
 
-      const name = cleanName(nameText);
-      if (name.split(' ').length < 2) return; // Need at least first + last
-
-      // Get the following text content (committees are usually in the same <p> or next siblings)
-      let committeeBlock = '';
-      let current = $(el).parent();
-
-      // Collect text from current and next few elements until next senator-like block
-      for (let j = 0; j < 5; j++) { // Limit to avoid infinite loop
-        if (!current.length) break;
-        committeeBlock += current.text() + '\n';
-        current = current.next();
-        if (current.find('strong, b, a[href*="senator"]').length > 0) break; // Next senator
-      }
-
-      // Split into lines and parse committees
-      const lines = committeeBlock
+      // Get committee lines: after name, lines starting with * **Committee**
+      const committeeLines = pText
+        .substring(senatorMatch[0].length)
         .split('\n')
         .map(l => l.trim())
-        .filter(l => l && !/^\d/.test(l) && !/^committee assignments/i.test(l));
+        .filter(l => l.startsWith('*'));
 
       const committees = [];
-      let currentCommittee = null;
+      committeeLines.forEach(line => {
+        const cleanLine = line.replace(/^\*\s*\*\*(.*?)\*\*/, '$1').trim();
+        if (!cleanLine) return;
 
-      lines.forEach(line => {
-        if (line.includes('Committee on') || line.includes('Select Committee') || line.includes('Special Committee')) {
-          // New committee
-          const role = detectRole(line);
-          currentCommittee = {
-            committee: line.replace(/\s*\(.*?\)\s*/g, '').trim(),
-            role
-          };
-          committees.push(currentCommittee);
-        } else if (currentCommittee && (line.startsWith('*') || line.includes('Subcommittee'))) {
-          // Optional: append subcommittee as note (for now we skip to keep simple)
+        const role = detectRole(cleanLine);
+        const committee = cleanLine
+          .replace(/Chairman|Ranking Member|Vice Chair/gi, '')
+          .trim();
+
+        if (committee && committee.includes('Committee')) {
+          committees.push({ committee, role });
         }
       });
 
       if (committees.length > 0) {
-        senators[name] = {
-          name,
-          committees
-        };
+        senators[name] = { name, committees };
         console.log(`Parsed ${name}: ${committees.length} committees`);
       }
     });
 
     const result = Object.values(senators);
-    console.log(`Successfully parsed committees for ${result.length} senators`);
+    console.log(`Total senators: ${result.length}`);
 
     fs.writeFileSync('public/senators-committees.json', JSON.stringify(result, null, 2));
-    console.log('senators-committees.json fully updated!');
+    console.log('Updated!');
   } catch (err) {
-    console.error('Fatal error during scraping:', err.message);
+    console.error(err);
     process.exit(1);
   }
 }
