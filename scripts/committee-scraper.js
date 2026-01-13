@@ -11,54 +11,46 @@ const senators = legislators.filter(l => l.terms.some(t => t.type === 'sen'));
 const committeesConfig = JSON.parse(fs.readFileSync('scripts/committees-config.json', 'utf8'));
 
 function normalizeName(raw) {
-  return raw
-    .replace(/\s+/g, ' ')
-    .replace(/\(.*?\)/g, '') // strip (Party-State)
-    .replace(/,/g, '')       // strip commas
-    .trim();
+  let name = raw.replace(/\s+/g, ' ').replace(/\(.*?\)/g, '').trim();
+  if (name.includes(',')) {
+    const [last, first] = name.split(',');
+    name = `${first.trim()} ${last.trim()}`;
+  }
+  return name;
 }
 
 function findSenatorByName(name) {
   return senators.find(s => s.name.official_full.toLowerCase() === name.toLowerCase());
 }
 
-// Hard-coded fallback memberships for committees that block scraping or have brittle markup
+// Hard-coded fallbacks
 const hardcodedMemberships = {
   'Joint Committee on Taxation': [
-    'Ron Wyden', 'Mike Crapo', 'Maria Cantwell', 'Chuck Grassley',
-    'John Barrasso', 'Debbie Stabenow', 'John Cornyn', 'Ben Cardin',
-    'Michael Bennet', 'Bill Cassidy', 'Bob Casey'
+    'Ron Wyden','Mike Crapo','Maria Cantwell','Chuck Grassley','John Barrasso',
+    'Debbie Stabenow','John Cornyn','Ben Cardin','Michael Bennet','Bill Cassidy','Bob Casey'
   ],
   'Select Committee on Ethics': [
-    'James Lankford', 'Christopher Coons', 'Brian Schatz',
-    'Deb Fischer', 'Chris Murphy', 'Dan Sullivan'
+    'James Lankford','Christopher Coons','Brian Schatz','Deb Fischer','Chris Murphy','Dan Sullivan'
   ],
   'Joint Committee on Printing': [
-    'Mitch McConnell', 'Amy Klobuchar', 'Deb Fischer',
-    'Shelley Moore Capito', 'Charles E. Schumer'
+    'Mitch McConnell','Amy Klobuchar','Deb Fischer','Shelley Moore Capito','Charles E. Schumer'
   ],
   'Joint Committee on the Library': [
-    'Mitch McConnell', 'Amy Klobuchar', 'Deb Fischer',
-    'Shelley Moore Capito', 'Charles E. Schumer'
+    'Mitch McConnell','Amy Klobuchar','Deb Fischer','Shelley Moore Capito','Charles E. Schumer'
   ]
 };
 
 async function scrapeCommittee({ name, url }) {
   console.log(`Scraping committee: ${name}`);
 
-  // Use hard-coded membership if defined
   if (hardcodedMemberships[name]) {
     console.log(`Using hard-coded membership for ${name}`);
     return hardcodedMemberships[name].map(fullName => {
       const sen = findSenatorByName(fullName);
-      if (sen) {
-        return { bioguideId: sen.id.bioguide, committee: name, role: 'Member' };
-      }
-      return null;
+      return sen ? { bioguideId: sen.id.bioguide, committee: name, role: 'Member' } : null;
     }).filter(Boolean);
   }
 
-  // Normal scrape for other committees
   const res = await fetch(url);
   if (!res.ok) {
     console.error(`Failed to fetch ${url}: ${res.status}`);
@@ -85,11 +77,7 @@ async function scrapeCommittee({ name, url }) {
 
     const sen = findSenatorByName(clean);
     if (sen) {
-      assignments.push({
-        bioguideId: sen.id.bioguide,
-        committee: name,
-        role
-      });
+      assignments.push({ bioguideId: sen.id.bioguide, committee: name, role });
     }
   }
   return assignments;
@@ -104,14 +92,9 @@ async function run() {
 
   const output = senators.map(sen => {
     const bioguideId = sen.id.bioguide;
-    const committees = allAssignments
-      .filter(a => a.bioguideId === bioguideId)
+    const committees = allAssignments.filter(a => a.bioguideId === bioguideId)
       .map(a => ({ name: a.committee, role: a.role }));
-
-    const leadership = committees.filter(c =>
-      ['Chair', 'Ranking', 'Vice Chair'].includes(c.role)
-    );
-
+    const leadership = committees.filter(c => ['Chair','Ranking','Vice Chair'].includes(c.role));
     return { bioguideId, committees, committeeLeadership: leadership };
   });
 
