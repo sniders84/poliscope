@@ -3,8 +3,8 @@ const fetch = require('node-fetch');
 const cheerio = require('cheerio');
 
 const base = JSON.parse(fs.readFileSync('public/senators-rankings.json', 'utf8'));
-const senatorMap = new Map(base.map(s => [s.bioguideId, s.name]));
-const senatorSet = new Set(base.map(s => s.name));
+
+const senatorStateMap = new Map(base.map(s => [s.name.split(' ').pop(), s.state])); // Last name -> state for matching
 
 const INDEX_URL = 'https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_1.xml';
 
@@ -23,29 +23,26 @@ async function getVoteUrls() {
 
 async function scrapeNotVoting(url) {
   const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' } });
-  if (!res.ok) {
-    console.log(`Skipped ${url.split('/').pop()}: ${res.status}`);
-    return [];
-  }
+  if (!res.ok) return [];
   const html = await res.text();
   const $ = cheerio.load(html);
   const notVoting = [];
   const text = $('*:contains("Not Voting")').nextAll().addBack().text();
   text.split(/[\n,;]/).forEach(line => {
     const cleaned = line.trim().replace(/Sen\.?\s*/gi, '');
-    const match = cleaned.match(/(\w+)\s*\([RD]-[A-Z]{2}\)/);
+    const match = cleaned.match(/(\w+)\s*\([RD]-([A-Z]{2})\)/);
     if (match) {
       const lastName = match[1];
-      // Find matching senator by last name
-      for (const name of senatorSet) {
-        if (name.split(' ').pop() === lastName) {
-          notVoting.push(name);
+      const state = match[2];
+      // Find matching senator by last name and state
+      for (const sen of base) {
+        if (sen.name.split(' ').pop() === lastName && sen.state === state) {
+          notVoting.push(sen.name);
           break;
         }
       }
     }
   });
-  if (notVoting.length > 0) console.log(`Not Voting on ${url.split('/').pop()}: ${notVoting.join(', ')}`);
   return notVoting;
 }
 
@@ -61,17 +58,16 @@ async function main() {
   for (const url of urls) {
     const notV = await scrapeNotVoting(url);
     notV.forEach(n => missed[n] = (missed[n] || 0) + 1);
-    await delay(3000); // 3s delay
+    await delay(2000); // 2s delay to avoid blocks
   }
 
-  const output = base.map(s => ({
-    name: s.name,
-    missedVotes: missed[s.name] || 0,
-    totalVotes: urls.length
-  }));
+  base.forEach(s => {
+    s.missedVotes = missed[s.name] || 0;
+    s.totalVotes = urls.length;
+  });
 
-  fs.writeFileSync('public/senators-votes.json', JSON.stringify(output, null, 2));
-  console.log('senators-votes.json updated!');
+  fs.writeFileSync('public/senators-rankings.json', JSON.stringify(base, null, 2));
+  console.log('senators-rankings.json updated with votes!');
 }
 
-main().catch(console.error);
+main();
