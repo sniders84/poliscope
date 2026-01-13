@@ -6,6 +6,7 @@ const fs = require('fs');
 const fetch = require('node-fetch');
 
 const API_KEY = process.env.CONGRESS_API_KEY;
+const BASE_MEMBER_URL = 'https://api.congress.gov/v3/member';
 const BASE_BILL_URL = 'https://api.congress.gov/v3/bill';
 const BASE_AMEND_URL = 'https://api.congress.gov/v3/amendment';
 
@@ -31,10 +32,23 @@ async function fetchAllPages(url) {
   return results;
 }
 
-// Scrape legislation (bills + resolutions) for one member
-async function scrapeLegislation(bioguideId) {
-  const sponsoredUrl = `${BASE_BILL_URL}?sponsorId=${bioguideId}&congress=119&api_key=${API_KEY}`;
-  const cosponsoredUrl = `${BASE_BILL_URL}?cosponsorId=${bioguideId}&congress=119&api_key=${API_KEY}`;
+// Resolve bioguideId -> Congress.gov memberId
+async function resolveMemberId(bioguideId) {
+  const url = `${BASE_MEMBER_URL}?bioguideId=${bioguideId}&api_key=${API_KEY}`;
+  const res = await fetch(url);
+  if (!res.ok) {
+    console.error(`Failed to resolve memberId for ${bioguideId}: ${res.status} ${res.statusText}`);
+    return null;
+  }
+  const data = await res.json();
+  const member = data.members?.[0];
+  return member?.memberId || null;
+}
+
+// Scrape legislation (bills + resolutions) for one memberId
+async function scrapeLegislation(memberId) {
+  const sponsoredUrl = `${BASE_BILL_URL}?sponsorId=${memberId}&congress=119&api_key=${API_KEY}`;
+  const cosponsoredUrl = `${BASE_BILL_URL}?cosponsorId=${memberId}&congress=119&api_key=${API_KEY}`;
 
   const sponsoredBills = await fetchAllPages(sponsoredUrl);
   const cosponsoredBills = await fetchAllPages(cosponsoredUrl);
@@ -61,10 +75,10 @@ async function scrapeLegislation(bioguideId) {
   };
 }
 
-// Scrape amendments for one member
-async function scrapeAmendments(bioguideId) {
-  const sponsoredUrl = `${BASE_AMEND_URL}?sponsorId=${bioguideId}&congress=119&api_key=${API_KEY}`;
-  const cosponsoredUrl = `${BASE_AMEND_URL}?cosponsorId=${bioguideId}&congress=119&api_key=${API_KEY}`;
+// Scrape amendments for one memberId
+async function scrapeAmendments(memberId) {
+  const sponsoredUrl = `${BASE_AMEND_URL}?sponsorId=${memberId}&congress=119&api_key=${API_KEY}`;
+  const cosponsoredUrl = `${BASE_AMEND_URL}?cosponsorId=${memberId}&congress=119&api_key=${API_KEY}`;
 
   const sponsoredAmends = await fetchAllPages(sponsoredUrl);
   const cosponsoredAmends = await fetchAllPages(cosponsoredUrl);
@@ -100,13 +114,20 @@ async function run() {
     const bioguideId = sen.id.bioguide;
     if (!bioguideId) continue;
 
-    console.log(`Scraping legislation for ${sen.name.official_full} (${bioguideId})`);
+    console.log(`Resolving memberId for ${sen.name.official_full} (${bioguideId})`);
+    const memberId = await resolveMemberId(bioguideId);
+    if (!memberId) {
+      console.error(`No memberId found for ${bioguideId}`);
+      continue;
+    }
 
-    const billsData = await scrapeLegislation(bioguideId);
-    const amendData = await scrapeAmendments(bioguideId);
+    console.log(`Scraping legislation for ${sen.name.official_full} (memberId ${memberId})`);
+    const billsData = await scrapeLegislation(memberId);
+    const amendData = await scrapeAmendments(memberId);
 
     output.push({
       bioguideId,
+      memberId,
       ...billsData,
       ...amendData
     });
