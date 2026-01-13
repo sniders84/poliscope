@@ -22,7 +22,7 @@ const HEADERS = { 'X-Api-Key': API_KEY };
 async function getJSON(url) {
   const res = await fetch(url, { headers: HEADERS });
   if (!res.ok) {
-    throw new Error(`${res.status}`);
+    throw new Error(`HTTP ${res.status} for ${url}`);
   }
   return res.json();
 }
@@ -44,34 +44,11 @@ async function fetchAllPages(url, collectionKey) {
   return items;
 }
 
-// Build member endpoint URL (bioguide or LIS), with format=json and congress=119
-function memberUrl(memberId, type, opts = {}) {
+// Build endpoint URL for bills/amendments with memberIds
+function endpoint(type, memberId, opts = {}) {
   const params = new URLSearchParams({ congress: '119', format: 'json' });
   if (opts.cosponsored) params.set('cosponsored', 'true');
-  return `${BASE_URL}/member/${memberId}/${type}?${params.toString()}`;
-}
-
-// Try bioguide first, then LIS fallback if 404
-async function fetchMemberCollection(sen, type, opts = {}) {
-  const bioguideId = sen.id.bioguide;
-  const lisId = sen.id.lis;
-
-  // 1) Try Bioguide
-  try {
-    const url = memberUrl(bioguideId, type, opts);
-    return await fetchAllPages(url, type); // collectionKey matches path: 'bills' or 'amendments'
-  } catch (err) {
-    if (err.message !== '404') throw err;
-  }
-
-  // 2) Fallback to LIS
-  if (lisId) {
-    const urlLis = memberUrl(lisId, type, opts);
-    return await fetchAllPages(urlLis, type);
-  }
-
-  // If no LIS or both 404, return empty
-  return [];
+  return `${BASE_URL}/${type}?${params.toString()}&memberIds=${memberId}`;
 }
 
 function countBecameLawBills(bills) {
@@ -85,17 +62,38 @@ function countAgreedAmendments(amendments) {
 async function scrapeSenator(sen) {
   const name = sen.name.official_full;
   const bioguideId = sen.id.bioguide;
+  const lisId = sen.id.lis;
   console.log(`Scraping legislation for ${name} (${bioguideId})`);
 
-  // Sponsored bills/resolutions
-  const sponsoredBills = await fetchMemberCollection(sen, 'bills', { cosponsored: false });
-  // Cosponsored bills/resolutions
-  const cosponsoredBills = await fetchMemberCollection(sen, 'bills', { cosponsored: true });
+  let sponsoredBills = [];
+  let cosponsoredBills = [];
+  let sponsoredAmendments = [];
+  let cosponsoredAmendments = [];
 
-  // Sponsored amendments
-  const sponsoredAmendments = await fetchMemberCollection(sen, 'amendments', { cosponsored: false });
-  // Cosponsored amendments
-  const cosponsoredAmendments = await fetchMemberCollection(sen, 'amendments', { cosponsored: true });
+  // Try bioguide first, fallback to LIS if needed
+  try {
+    sponsoredBills = await fetchAllPages(endpoint('bill', bioguideId), 'bills');
+  } catch {
+    if (lisId) sponsoredBills = await fetchAllPages(endpoint('bill', lisId), 'bills');
+  }
+
+  try {
+    cosponsoredBills = await fetchAllPages(endpoint('bill', bioguideId, { cosponsored: true }), 'bills');
+  } catch {
+    if (lisId) cosponsoredBills = await fetchAllPages(endpoint('bill', lisId, { cosponsored: true }), 'bills');
+  }
+
+  try {
+    sponsoredAmendments = await fetchAllPages(endpoint('amendment', bioguideId), 'amendments');
+  } catch {
+    if (lisId) sponsoredAmendments = await fetchAllPages(endpoint('amendment', lisId), 'amendments');
+  }
+
+  try {
+    cosponsoredAmendments = await fetchAllPages(endpoint('amendment', bioguideId, { cosponsored: true }), 'amendments');
+  } catch {
+    if (lisId) cosponsoredAmendments = await fetchAllPages(endpoint('amendment', lisId, { cosponsored: true }), 'amendments');
+  }
 
   return {
     bioguideId,
