@@ -17,8 +17,20 @@ async function fetchXML(url) {
     console.error(`Failed to fetch ${url}: ${res.status}`);
     return null;
   }
-  const text = await res.text();
-  return xml2js.parseStringPromise(text);
+  let text = await res.text();
+
+  // Sanitize malformed XML characters
+  text = text
+    .replace(/&(?!(amp;|lt;|gt;|quot;|apos;))/g, '&amp;') // fix stray &
+    .replace(/<\s+/g, '<') // remove spaces after <
+    .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F]/g, ''); // strip control chars
+
+  try {
+    return await xml2js.parseStringPromise(text, { explicitArray: true });
+  } catch (err) {
+    console.error(`XML parse error for ${url}: ${err.message}`);
+    return null;
+  }
 }
 
 async function scrapeVotes() {
@@ -46,7 +58,7 @@ async function scrapeVotes() {
 
       const members = voteData.rollcall_vote.members[0].member || [];
       for (const m of members) {
-        const bioguideId = m.$.id; // Senate XML uses bioguideId in "id" attribute
+        const bioguideId = m.$.id;
         if (!bioguideId) continue;
 
         if (!voteRecords[bioguideId]) {
