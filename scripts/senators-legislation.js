@@ -1,6 +1,6 @@
 // scripts/senators-legislation.js
-// API-based (no HTML scraping). Pulls sponsored & cosponsored counts per senator from Congress.gov API.
-// Requires each senator in public/senators-rankings.json to have a bioguideId (e.g., "B001310").
+// Pulls sponsored & cosponsored counts per senator from Congress.gov API.
+// Requires each senator in public/senators-rankings.json to have a bioguideId.
 // Writes four top-level fields per senator:
 //   sponsoredLegislation, sponsoredAmendments, cosponsoredLegislation, cosponsoredAmendments
 
@@ -22,12 +22,10 @@ const base = JSON.parse(fs.readFileSync(OUTPUT, 'utf8'));
 function normalizeType(t) {
   const s = String(t || '').toLowerCase();
   if (s.includes('amendment')) return 'amendment';
-  // Congress.gov types include "bill", "resolution", "joint resolution", "concurrent resolution"
   return 'legislation';
 }
 
 async function fetchAllPages(url) {
-  // Congress.gov API paginates; follow "next" links until exhausted
   const results = [];
   let nextUrl = url;
 
@@ -39,9 +37,18 @@ async function fetchAllPages(url) {
     const items = data?.data || data?.results || [];
     if (Array.isArray(items)) results.push(...items);
 
-    // Congress.gov uses "pagination.next" or "next" depending on endpoint version
     const next = data?.pagination?.next || data?.next || null;
-    nextUrl = next ? `${API_BASE}${next}&api_key=${API_KEY}` : null;
+    if (next) {
+      // If "next" is already a full URL, just append the API key
+      if (next.startsWith('http')) {
+        nextUrl = `${next}&api_key=${API_KEY}`;
+      } else {
+        // Otherwise prefix with API_BASE
+        nextUrl = `${API_BASE}${next}&api_key=${API_KEY}`;
+      }
+    } else {
+      nextUrl = null;
+    }
   }
 
   return results;
@@ -98,8 +105,7 @@ async function main() {
       sen.cosponsoredLegislation = counts.cosponsoredLegislation;
       sen.cosponsoredAmendments = counts.cosponsoredAmendments;
       updated++;
-      // small delay to be polite to API
-      await new Promise(r => setTimeout(r, 200));
+      await new Promise(r => setTimeout(r, 200)); // polite delay
     } catch (e) {
       failed++;
       console.error(`Member ${sen.name} (${bioguideId}) failed: ${e.message}`);
