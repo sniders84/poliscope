@@ -4,21 +4,20 @@ const cheerio = require('cheerio');
 
 const base = JSON.parse(fs.readFileSync('public/senators-rankings.json', 'utf8'));
 
-const senatorStateMap = new Map(base.map(s => [s.name.split(' ').pop(), s.state])); // Last name -> state for matching
+const INDEX_URLS = [
+  'https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_1.xml',
+  'https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_2.xml'
+];
 
-const INDEX_URL = 'https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_1.xml';
-
-async function getVoteUrls() {
-  const res = await fetch(INDEX_URL, { headers: { 'User-Agent': 'Mozilla/5.0' } });
+async function getVoteUrls(indexUrl, sessionPrefix, sessionNum) {
+  const res = await fetch(indexUrl, { headers: { 'User-Agent': 'Mozilla/5.0' } });
   if (!res.ok) return [];
   const xml = await res.text();
   const matches = xml.match(/<vote_number>(\d+)<\/vote_number>/g) || [];
-  const urls = matches.map(m => {
+  return matches.map(m => {
     const num = m.match(/\d+/)[0].padStart(5, '0');
-    return `https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_${num}.htm`;
+    return `https://www.senate.gov/legislative/LIS/roll_call_votes/${sessionPrefix}/vote_119_${sessionNum}_${num}.htm`;
   });
-  urls.sort((a, b) => b.localeCompare(a)); // newest first
-  return urls;
 }
 
 async function scrapeNotVoting(url) {
@@ -26,17 +25,18 @@ async function scrapeNotVoting(url) {
   if (!res.ok) return [];
   const html = await res.text();
   const $ = cheerio.load(html);
+
+  const block = $('h3:contains("Not Voting")').next();
+  const names = block.text().split(/\s{2,}|\n+/).map(s => s.trim()).filter(Boolean);
+
   const notVoting = [];
-  const text = $('*:contains("Not Voting")').nextAll().addBack().text();
-  text.split(/[\n,;]/).forEach(line => {
-    const cleaned = line.trim().replace(/Sen\.?\s*/gi, '');
-    const match = cleaned.match(/(\w+)\s*\([RD]-([A-Z]{2})\)/);
+  names.forEach(n => {
+    const match = n.match(/([A-Za-z.\- ]+)\s*\([DRI]-([A-Z]{2})\)/);
     if (match) {
-      const lastName = match[1];
+      const cleaned = match[1].trim();
       const state = match[2];
-      // Find matching senator by last name and state
       for (const sen of base) {
-        if (sen.name.split(' ').pop() === lastName && sen.state === state) {
+        if (sen.state === state && sen.name.includes(cleaned)) {
           notVoting.push(sen.name);
           break;
         }
@@ -52,13 +52,15 @@ async function main() {
   const missed = {};
   base.forEach(s => missed[s.name] = 0);
 
-  const urls = await getVoteUrls();
+  let urls = [];
+  urls = urls.concat(await getVoteUrls(INDEX_URLS[0], 'vote1191', '1'));
+  urls = urls.concat(await getVoteUrls(INDEX_URLS[1], 'vote1192', '2'));
   console.log(`Total votes: ${urls.length}`);
 
   for (const url of urls) {
     const notV = await scrapeNotVoting(url);
     notV.forEach(n => missed[n] = (missed[n] || 0) + 1);
-    await delay(2000); // 2s delay to avoid blocks
+    await delay(2000);
   }
 
   base.forEach(s => {
