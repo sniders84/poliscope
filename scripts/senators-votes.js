@@ -6,73 +6,85 @@ const cheerio = require('cheerio');
 const OUTPUT = 'public/senators-rankings.json';
 const base = JSON.parse(fs.readFileSync(OUTPUT, 'utf8'));
 
-const INDEX_URLS = [
-  'https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_1.xml',
-  'https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_2.xml'
-];
+function normalizeName(n) {
+  return String(n).toLowerCase().replace(/\./g, '').replace(/\s+/g, ' ').trim();
+}
 
-async function fetchXml(url) {
+const byFullName = new Map(base.map(s => [normalizeName(s.name), s]));
+const byLastNameState = new Map(
+  base.map(s => {
+    const parts = s.name.split(' ');
+    const last = normalizeName(parts[parts.length - 1]);
+    return [`${last}|${s.state}`, s];
+  })
+);
+
+async function fetchPage(url) {
   const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' } });
   if (!res.ok) throw new Error(`Failed to fetch ${url}: ${res.status}`);
   return await res.text();
 }
 
-async function getVoteUrls(indexUrl, sessionPrefix, sessionNum) {
-  const xml = await fetchXml(indexUrl);
-  const matches = xml.match(/<vote_number>(\d+)<\/vote_number>/g) || [];
-  return matches.map(m => {
-    const num = m.match(/\d+/)[0].padStart(5, '0');
-    return `https://www.senate.gov/legislative/LIS/roll_call_votes/${sessionPrefix}/vote_119_${sessionNum}_${num}.htm`;
-  });
+function extractVoteCounts($, row) {
+  const tds = $(row).find('td');
+  if (tds.length < 3) return null;
+
+  const senatorCell = $(tds[0]).text().trim();
+  const match = senatorCell.match(/^(.+?)\s+
+
+\[[DRI]-([A-Z]{2})\]
+
+/);
+  if (!match) return null;
+  const rawName = match[1].trim();
+  const state = match[2];
+
+  const totalVotes = parseInt($(tds[1]).text().trim(), 10) || 0;
+  const missedVotes = parseInt($(tds[2]).text().trim(), 10) || 0;
+
+  return { rawName, state, totalVotes, missedVotes };
 }
 
-async function scrapeNotVoting(url) {
-  const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' } });
-  if (!res.ok) return [];
-  const html = await res.text();
-  const $ = cheerio.load(html);
+function matchSenator(rawName, state) {
+  const parts = rawName.split(',').map(p => p.trim());
+  let candidateName = rawName;
+  if (parts.length >= 2) {
+    const last = parts[0];
+    const first = parts[1].replace(/\s+[A-Z]\.?$/, '');
+    candidateName = `${first} ${last}`;
+  }
+  const normFull = normalizeName(candidateName);
 
-  const header = $('h3').filter((i, el) => $(el).text().toLowerCase().includes('not voting')).first();
-  if (!header.length) return [];
+  if (byFullName.has(normFull)) return byFullName.get(normFull);
 
-  const blockText = header.next().text() || header.parent().text();
-  const tokens = blockText.split(/[\n,;]+/).map(t => t.trim()).filter(Boolean);
+  const last = normalizeName(candidateName.split(' ').pop());
+  const key = `${last}|${state}`;
+  if (byLastNameState.has(key)) return byLastNameState.get(key);
 
-  const notVoting = [];
-  tokens.forEach(tok => {
-    const m = tok.match(/([A-Za-z.\- ]+)\s*\([DRI]-([A-Z]{2})\)/);
-    if (m) {
-      const state = m[2];
-      const last = m[1].split(' ').pop();
-      const sen = base.find(s => s.state === state && s.name.includes(last));
-      if (sen) notVoting.push(sen.name);
-    }
-  });
-  return notVoting;
+  for (const [k, sen] of byFullName.entries()) {
+    if (k.includes(normFull) && sen.state === state) return sen;
+  }
+  return null;
 }
 
 async function main() {
-  const missed = {};
-  base.forEach(s => missed[s.name] = 0);
+  const html = await fetchPage('https://www.congress.gov/members');
+  const $ = cheerio.load(html);
 
-  let urls = [];
-  urls = urls.concat(await getVoteUrls(INDEX_URLS[0], 'vote1191', '1'));
-  urls = urls.concat(await getVoteUrls(INDEX_URLS[1], 'vote1192', '2'));
+  const rows = $('table tbody tr');
+  rows.each((i, row) => {
+    const data = extractVoteCounts($, row);
+    if (!data) return;
 
-  for (const url of urls) {
-    const notV = await scrapeNotVoting(url);
-    notV.forEach(n => missed[n]++);
-    await new Promise(r => setTimeout(r, 500));
-  }
+    const sen = matchSenator(data.rawName, data.state);
+    if (!sen) return;
 
-  base.forEach(s => {
-    s.totalVotes = urls.length;
-    s.missedVotes = missed[s.name] || 0;
-    s.votedVotes = s.totalVotes - s.missedVotes;
+    sen.totalVotes = data.totalVotes;
+    sen.missedVotes = data.missedVotes;
   });
 
   fs.writeFileSync(OUTPUT, JSON.stringify(base, null, 2));
-  console.log('senators-rankings.json updated with votes.');
+  console.log('senators-rankings.json updated with votes!');
 }
 
 main().catch(err => {
