@@ -76,13 +76,14 @@ async function scrapeLegislationForMember(bioguideId) {
 }
 
 async function run() {
-  const senators = JSON.parse(fs.readFileSync('public/senators.json', 'utf8'));
+  const legislators = JSON.parse(fs.readFileSync('public/legislators-current.json', 'utf8'));
+  const senators = legislators.filter(l => l.terms.some(t => t.type === 'sen'));
   const output = [];
 
   for (const sen of senators) {
-    if (!sen.bioguideId) continue;
-    const data = await scrapeLegislationForMember(sen.bioguideId);
-    output.push({ ...sen, ...data });
+    const bioguideId = sen.id.bioguide;
+    const data = await scrapeLegislationForMember(bioguideId);
+    output.push({ bioguideId, ...data });
   }
 
   fs.writeFileSync('public/senators-legislation.json', JSON.stringify(output, null, 2));
