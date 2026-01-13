@@ -32,20 +32,31 @@ async function fetchPage(url) {
   return await res.text();
 }
 
+// Parse "Last, First M. [D-XX]" without regex
+function parseSenatorCell(cellText) {
+  const t = String(cellText || '').trim();
+  const lb = t.lastIndexOf('[');
+  const rb = t.lastIndexOf(']');
+  if (lb === -1 || rb === -1 || rb < lb) return null;
+
+  const namePart = t.slice(0, lb).trim();
+  const bracket = t.slice(lb + 1, rb).trim(); // e.g., "D-MD"
+  const dash = bracket.indexOf('-');
+  if (dash === -1) return null;
+
+  const state = bracket.slice(dash + 1).trim(); // "MD"
+  return { rawName: namePart, state };
+}
+
 function extractCountsFromRow($, row) {
   const tds = $(row).find('td');
   if (tds.length < 4) return null;
 
-  // Senator cell: "Last, First M. [P-SS]"
+  // Senator cell
   const senatorCell = $(tds[0]).text().trim();
-  const match = senatorCell.match(/^(.+?)\s+
-
-\[[DRI]-([A-Z]{2})\]
-
-/);  // FIXED single-line regex
-  if (!match) return null;
-  const rawName = match[1].trim();
-  const state = match[2];
+  const parsed = parseSenatorCell(senatorCell);
+  if (!parsed) return null;
+  const { rawName, state } = parsed;
 
   // Sponsored: "Bills | Amendments | Total"
   const sponsoredParts = $(tds[1]).text().trim().split('|').map(s => s.trim());
