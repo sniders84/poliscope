@@ -24,6 +24,26 @@ function findSenatorByName(name) {
 
 async function scrapeCommittee({ name, url }) {
   console.log(`Scraping committee: ${name}`);
+
+  // Special case: Joint Committee on Taxation blocks fetches
+  if (name === 'Joint Committee on Taxation') {
+    console.log('Using hard-coded membership for Joint Committee on Taxation');
+    const jctMembers = [
+      'Ron Wyden', 'Mike Crapo', 'Maria Cantwell', 'Chuck Grassley',
+      'John Barrasso', 'Debbie Stabenow', 'John Cornyn', 'Ben Cardin',
+      'Pat Toomey', 'Michael Bennet', 'Bill Cassidy', 'Bob Casey'
+    ];
+
+    return jctMembers.map(fullName => {
+      const sen = findSenatorByName(fullName);
+      if (sen) {
+        return { bioguideId: sen.id.bioguide, committee: name, role: 'Member' };
+      }
+      return null;
+    }).filter(Boolean);
+  }
+
+  // Normal scrape for other committees
   const res = await fetch(url);
   if (!res.ok) {
     console.error(`Failed to fetch ${url}: ${res.status}`);
