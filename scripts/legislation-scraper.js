@@ -1,11 +1,10 @@
 // legislation-scraper.js
 // Scrapes Congress.gov API for sponsored/cosponsored bills & amendments
-// Outputs senators-legislative.json
+// Outputs public/senators-legislation.json
 
 const fs = require('fs');
 const fetch = require('node-fetch');
 
-// Congress.gov API base (replace with your stored Vercel secret)
 const API_KEY = process.env.CONGRESS_API_KEY;
 const BASE_URL = 'https://api.congress.gov/v3/member';
 
@@ -77,16 +76,16 @@ async function scrapeLegislationForMember(bioguideId) {
 }
 
 async function run() {
-  // TODO: Load all senators from your master list (congress-legislators repo JSON)
-  const senators = JSON.parse(fs.readFileSync('senators.json', 'utf8'));
-
+  const senators = JSON.parse(fs.readFileSync('public/senators.json', 'utf8'));
   const output = [];
+
   for (const sen of senators) {
+    if (!sen.bioguideId) continue;
     const data = await scrapeLegislationForMember(sen.bioguideId);
     output.push({ ...sen, ...data });
   }
 
-  fs.writeFileSync('senators-legislative.json', JSON.stringify(output, null, 2));
+  fs.writeFileSync('public/senators-legislation.json', JSON.stringify(output, null, 2));
   console.log('Legislation scraper complete!');
 }
 
