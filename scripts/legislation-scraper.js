@@ -1,5 +1,5 @@
 // legislation-scraper.js
-// Scrapes Congress.gov API for bills and amendments sponsored/cosponsored by each senator
+// Scrapes Congress.gov API for bills and amendments sponsored/cosponsored by each senator (119th Congress)
 // Outputs public/senators-legislation.json
 
 const fs = require('fs');
@@ -16,80 +16,98 @@ if (!API_KEY) {
   process.exit(1);
 }
 
-async function fetchAllPages(url) {
-  let results = [];
+const HEADERS = { 'X-Api-Key': API_KEY };
+
+// Generic fetch with JSON + error handling
+async function getJSON(url) {
+  const res = await fetch(url, { headers: HEADERS });
+  if (!res.ok) {
+    throw new Error(`${res.status}`);
+  }
+  return res.json();
+}
+
+// Paginated fetch for bills/amendments arrays
+async function fetchAllPages(url, collectionKey) {
+  let items = [];
   let nextUrl = url;
 
   while (nextUrl) {
-    const res = await fetch(nextUrl, { headers: { 'X-Api-Key': API_KEY } });
-    if (!res.ok) {
-      console.error(`Failed to fetch ${nextUrl}: ${res.status}`);
-      break;
-    }
-    const data = await res.json();
+    const data = await getJSON(nextUrl);
+    const pageItems = data?.[collectionKey] || [];
+    items.push(...pageItems);
 
-    if (data?.bills) results.push(...data.bills);
-    if (data?.amendments) results.push(...data.amendments);
-
-    const next = data?.pagination?.next || null;
-    nextUrl = next ? `${BASE_URL}${next}&api_key=${API_KEY}` : null;
+    const next = data?.pagination?.next;
+    nextUrl = next ? `${BASE_URL}${next}&format=json` : null;
   }
 
-  return results;
+  return items;
+}
+
+// Build member endpoint URL (bioguide or LIS), with format=json and congress=119
+function memberUrl(memberId, type, opts = {}) {
+  const params = new URLSearchParams({ congress: '119', format: 'json' });
+  if (opts.cosponsored) params.set('cosponsored', 'true');
+  return `${BASE_URL}/member/${memberId}/${type}?${params.toString()}`;
+}
+
+// Try bioguide first, then LIS fallback if 404
+async function fetchMemberCollection(sen, type, opts = {}) {
+  const bioguideId = sen.id.bioguide;
+  const lisId = sen.id.lis;
+
+  // 1) Try Bioguide
+  try {
+    const url = memberUrl(bioguideId, type, opts);
+    return await fetchAllPages(url, type); // collectionKey matches path: 'bills' or 'amendments'
+  } catch (err) {
+    if (err.message !== '404') throw err;
+  }
+
+  // 2) Fallback to LIS
+  if (lisId) {
+    const urlLis = memberUrl(lisId, type, opts);
+    return await fetchAllPages(urlLis, type);
+  }
+
+  // If no LIS or both 404, return empty
+  return [];
+}
+
+function countBecameLawBills(bills) {
+  return bills.filter(b => b.latestAction?.text?.includes('Became Public Law')).length;
+}
+
+function countAgreedAmendments(amendments) {
+  return amendments.filter(a => a.latestAction?.text?.includes('Agreed to')).length;
 }
 
 async function scrapeSenator(sen) {
+  const name = sen.name.official_full;
   const bioguideId = sen.id.bioguide;
-  console.log(`Scraping legislation for ${sen.name.official_full} (${bioguideId})`);
-
-  const counts = {
-    sponsoredBills: 0,
-    sponsoredAmendments: 0,
-    cosponsoredBills: 0,
-    cosponsoredAmendments: 0,
-    becameLawSponsoredBills: 0,
-    becameLawSponsoredAmendments: 0,
-    becameLawCosponsoredBills: 0,
-    becameLawCosponsoredAmendments: 0
-  };
+  console.log(`Scraping legislation for ${name} (${bioguideId})`);
 
   // Sponsored bills/resolutions
-  const sponsoredBills = await fetchAllPages(
-    `${BASE_URL}/member/${bioguideId}/bills?congress=119&api_key=${API_KEY}`
-  );
-  counts.sponsoredBills = sponsoredBills.length;
-  counts.becameLawSponsoredBills = sponsoredBills.filter(
-    b => b.latestAction?.text?.includes('Became Public Law')
-  ).length;
-
+  const sponsoredBills = await fetchMemberCollection(sen, 'bills', { cosponsored: false });
   // Cosponsored bills/resolutions
-  const cosponsoredBills = await fetchAllPages(
-    `${BASE_URL}/member/${bioguideId}/bills?congress=119&cosponsored=true&api_key=${API_KEY}`
-  );
-  counts.cosponsoredBills = cosponsoredBills.length;
-  counts.becameLawCosponsoredBills = cosponsoredBills.filter(
-    b => b.latestAction?.text?.includes('Became Public Law')
-  ).length;
+  const cosponsoredBills = await fetchMemberCollection(sen, 'bills', { cosponsored: true });
 
   // Sponsored amendments
-  const sponsoredAmendments = await fetchAllPages(
-    `${BASE_URL}/member/${bioguideId}/amendments?congress=119&api_key=${API_KEY}`
-  );
-  counts.sponsoredAmendments = sponsoredAmendments.length;
-  counts.becameLawSponsoredAmendments = sponsoredAmendments.filter(
-    a => a.latestAction?.text?.includes('Agreed to')
-  ).length;
-
+  const sponsoredAmendments = await fetchMemberCollection(sen, 'amendments', { cosponsored: false });
   // Cosponsored amendments
-  const cosponsoredAmendments = await fetchAllPages(
-    `${BASE_URL}/member/${bioguideId}/amendments?congress=119&cosponsored=true&api_key=${API_KEY}`
-  );
-  counts.cosponsoredAmendments = cosponsoredAmendments.length;
-  counts.becameLawCosponsoredAmendments = cosponsoredAmendments.filter(
-    a => a.latestAction?.text?.includes('Agreed to')
-  ).length;
+  const cosponsoredAmendments = await fetchMemberCollection(sen, 'amendments', { cosponsored: true });
 
-  return { bioguideId, ...counts };
+  return {
+    bioguideId,
+    sponsoredBills: sponsoredBills.length,
+    cosponsoredBills: cosponsoredBills.length,
+    sponsoredAmendments: sponsoredAmendments.length,
+    cosponsoredAmendments: cosponsoredAmendments.length,
+    becameLawSponsoredBills: countBecameLawBills(sponsoredBills),
+    becameLawCosponsoredBills: countBecameLawBills(cosponsoredBills),
+    becameLawSponsoredAmendments: countAgreedAmendments(sponsoredAmendments),
+    becameLawCosponsoredAmendments: countAgreedAmendments(cosponsoredAmendments),
+  };
 }
 
 async function run() {
@@ -98,8 +116,8 @@ async function run() {
     try {
       const data = await scrapeSenator(sen);
       results.push(data);
-      // small delay to be polite to API
-      await new Promise(r => setTimeout(r, 200));
+      // small delay to avoid hammering
+      await new Promise(r => setTimeout(r, 150));
     } catch (err) {
       console.error(`Error scraping ${sen.name.official_full}: ${err.message}`);
     }
