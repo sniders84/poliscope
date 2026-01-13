@@ -9,9 +9,10 @@ const WEIGHTS = {
   sponsoredAmendments: 1.0,
   cosponsoredBills: 0.6,
   cosponsoredAmendments: 0.5,
-  becameLawBills: 6.0,
-  becameLawAmendments: 4.0,
-  becameLawCosponsoredAmendments: 3.0, // new field
+  becameLawSponsoredBills: 6.0,
+  becameLawCosponsoredBills: 5.0,
+  becameLawSponsoredAmendments: 4.0,
+  becameLawCosponsoredAmendments: 3.0,
   committees: 4.0,
   committeeLeadership: 2.0,
   missedVotes: -0.5 // penalty per missed vote
@@ -24,8 +25,9 @@ function calculateScore(sen) {
     sponsoredAmendments: sen.sponsoredAmendments || 0,
     cosponsoredBills: sen.cosponsoredBills || 0,
     cosponsoredAmendments: sen.cosponsoredAmendments || 0,
-    becameLawBills: sen.becameLawBills || 0,
-    becameLawAmendments: sen.becameLawAmendments || 0,
+    becameLawSponsoredBills: sen.becameLawSponsoredBills || 0,
+    becameLawCosponsoredBills: sen.becameLawCosponsoredBills || 0,
+    becameLawSponsoredAmendments: sen.becameLawSponsoredAmendments || 0,
     becameLawCosponsoredAmendments: sen.becameLawCosponsoredAmendments || 0,
     committees: (sen.committees || []).length,
     committeeLeadership: (sen.committees || []).filter(c =>
@@ -39,8 +41,9 @@ function calculateScore(sen) {
     breakdown.sponsoredAmendments * WEIGHTS.sponsoredAmendments +
     breakdown.cosponsoredBills * WEIGHTS.cosponsoredBills +
     breakdown.cosponsoredAmendments * WEIGHTS.cosponsoredAmendments +
-    breakdown.becameLawBills * WEIGHTS.becameLawBills +
-    breakdown.becameLawAmendments * WEIGHTS.becameLawAmendments +
+    breakdown.becameLawSponsoredBills * WEIGHTS.becameLawSponsoredBills +
+    breakdown.becameLawCosponsoredBills * WEIGHTS.becameLawCosponsoredBills +
+    breakdown.becameLawSponsoredAmendments * WEIGHTS.becameLawSponsoredAmendments +
     breakdown.becameLawCosponsoredAmendments * WEIGHTS.becameLawCosponsoredAmendments +
     breakdown.committees * WEIGHTS.committees +
     breakdown.committeeLeadership * WEIGHTS.committeeLeadership +
