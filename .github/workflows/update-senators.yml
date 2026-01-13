@@ -8,6 +8,8 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
+    env:
+      CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -18,11 +20,9 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: npm install node-fetch@2 xml2js cheerio
+        run: npm install node-fetch@2 xml2js cheerio fast-xml-parser
 
       - name: Run Legislation scraper
-        env:
-          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: node scripts/legislation-scraper.js
 
       - name: Run Committee scraper
