@@ -1,84 +1,145 @@
+// scripts/senators-legislation.js
 const fs = require('fs');
 const fetch = require('node-fetch');
+const cheerio = require('cheerio');
 
-const CONGRESS_API_KEY = process.env.CONGRESS_API_KEY;
-const base = JSON.parse(fs.readFileSync('public/senators-rankings.json', 'utf8'));
+const URL = 'https://www.congress.gov/sponsors-cosponsors/119th-congress/senators/all';
+const OUTPUT = 'public/senators-rankings.json';
 
-async function fetchAllLegislation(urlBase, key) {
-  const pageSize = 250;
-  let offset = 0;
-  let all = [];
-  while (true) {
-    const url = `${urlBase}?limit=${pageSize}&offset=${offset}&api_key=${CONGRESS_API_KEY}`;
-    const res = await fetch(url);
-    if (!res.ok) break;
-    const data = await res.json();
-    const items = data[key] || [];
-    all = all.concat(items);
-    if (items.length < pageSize) break;
-    offset += pageSize;
-  }
-  return all;
+const base = JSON.parse(fs.readFileSync(OUTPUT, 'utf8'));
+
+// Normalize names for matching
+function normalizeName(n) {
+  return String(n)
+    .toLowerCase()
+    .replace(/senator\s+/g, '')
+    .replace(/\./g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
-async function getLegislation(bioguideId) {
-  try {
-    const sponsoredItems = await fetchAllLegislation(
-      `https://api.congress.gov/v3/member/${bioguideId}/sponsored-legislation`,
-      'sponsoredLegislation'
-    );
-    const cosponsoredItems = await fetchAllLegislation(
-      `https://api.congress.gov/v3/member/${bioguideId}/cosponsored-legislation`,
-      'cosponsoredLegislation'
-    );
+// Build lookup maps from base
+const byFullName = new Map(base.map(s => [normalizeName(s.name), s]));
+const byLastNameState = new Map(
+  base.map(s => {
+    const parts = s.name.split(' ');
+    const last = normalizeName(parts[parts.length - 1]);
+    return [`${last}|${s.state}`, s];
+  })
+);
 
-    const sponsoredLegislation = sponsoredItems.filter(l => l.type !== 'amendment').length;
-    const sponsoredAmendments = sponsoredItems.filter(l => l.type === 'amendment').length;
+function parseIntSafe(text) {
+  const m = String(text || '').match(/\d+/);
+  return m ? parseInt(m[0], 10) : 0;
+}
 
-    const cosponsoredLegislation = cosponsoredItems.filter(l => l.type !== 'amendment').length;
-    const cosponsoredAmendments = cosponsoredItems.filter(l => l.type === 'amendment').length;
+async function fetchPage(url) {
+  const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' } });
+  if (!res.ok) throw new Error(`Failed to fetch ${url}: ${res.status}`);
+  return await res.text();
+}
 
-    const becameLawLegislation = sponsoredItems.filter(l =>
-      /became law|public law/i.test(l.latestAction?.actionDescription || '')
-    ).length;
-    const becameLawAmendments = sponsoredItems.filter(l =>
-      l.type === 'amendment' && /agreed to|became law|public law/i.test(l.latestAction?.actionDescription || '')
-    ).length;
-    const becameLawCosponsoredAmendments = cosponsoredItems.filter(l =>
-      l.type === 'amendment' && /agreed to|became law|public law/i.test(l.latestAction?.actionDescription || '')
-    ).length;
+// Extract counts from a table row
+function extractCountsFromRow($, row) {
+  const tds = $(row).find('td');
+  if (tds.length < 4) return null;
 
-    return {
-      sponsoredLegislation,
-      sponsoredAmendments,
-      cosponsoredLegislation,
-      cosponsoredAmendments,
-      becameLawLegislation,
-      becameLawAmendments,
-      becameLawCosponsoredAmendments
-    };
-  } catch (err) {
-    console.error(`Error for ${bioguideId}: ${err.message}`);
-    return {
-      sponsoredLegislation: 0,
-      sponsoredAmendments: 0,
-      cosponsoredLegislation: 0,
-      cosponsoredAmendments: 0,
-      becameLawLegislation: 0,
-      becameLawAmendments: 0,
-      becameLawCosponsoredAmendments: 0
-    };
+  // Column 0: Senator (e.g., "Alsobrooks, Angela D. [D-MD]")
+  const senatorCell = $(tds[0]).text().trim();
+  const nameMatch = senatorCell.match(/^(.+?)\s+
+
+\[[DRI]-([A-Z]{2})\]
+
+/);
+  if (!nameMatch) return null;
+  const rawName = nameMatch[1].trim();
+  const state = nameMatch[2];
+
+  // Column 1: Sponsored — "Bills | Amendments | Total"
+  const sponsoredCell = $(tds[1]).text().trim();
+  const sponsoredParts = sponsoredCell.split('|').map(s => s.trim());
+  const sponsoredBills = parseIntSafe(sponsoredParts[0]);       // Bills (includes resolutions)
+  const sponsoredAmendments = parseIntSafe(sponsoredParts[1]);  // Amendments
+
+  // Column 2: Cosponsored Bills — "Original | Withdrawn | Total"
+  const cosBillsCell = $(tds[2]).text().trim();
+  const cosBillsParts = cosBillsCell.split('|').map(s => s.trim());
+  const cosponsoredLegislation = parseIntSafe(cosBillsParts[2]); // Total
+
+  // Column 3: Cosponsored Amendments — "Original | Withdrawn"
+  const cosAmendsCell = $(tds[3]).text().trim();
+  const cosAmendsParts = cosAmendsCell.split('|').map(s => s.trim());
+  const cosponsoredAmendments = parseIntSafe(cosAmendsParts[0]); // Original
+
+  return {
+    rawName,
+    state,
+    sponsoredLegislation: sponsoredBills,      // bills + resolutions lumped as “Legislation”
+    sponsoredAmendments,
+    cosponsoredLegislation,
+    cosponsoredAmendments
+  };
+}
+
+// Convert "Last, First M." → "First Last" and match to base
+function matchSenator(rawName, state) {
+  const parts = rawName.split(',').map(p => p.trim());
+  let candidateName = rawName;
+  if (parts.length >= 2) {
+    const last = parts[0];
+    const first = parts[1].replace(/\s+[A-Z]\.?$/, ''); // drop middle initial
+    candidateName = `${first} ${last}`;
   }
+  const normFull = normalizeName(candidateName);
+
+  // Try full name match
+  if (byFullName.has(normFull)) return byFullName.get(normFull);
+
+  // Try last name + state
+  const last = normalizeName(candidateName.split(' ').pop());
+  const key = `${last}|${state}`;
+  if (byLastNameState.has(key)) return byLastNameState.get(key);
+
+  // Fallback: loose contains match with state guard
+  for (const [k, sen] of byFullName.entries()) {
+    if (k.includes(normFull) && sen.state === state) return sen;
+  }
+  return null;
 }
 
 async function main() {
-  for (const sen of base) {
-    const data = await getLegislation(sen.bioguideId);
-    Object.assign(sen, data);
-    console.log(`Updated ${sen.name}: sponsoredLegislation ${data.sponsoredLegislation}, cosponsoredLegislation ${data.cosponsoredLegislation}`);
+  const html = await fetchPage(URL);
+  const $ = cheerio.load(html);
+
+  const rows = $('table tbody tr');
+  if (rows.length === 0) {
+    console.log('No rows found on Congress.gov sponsors/cosponsors page.');
   }
-  fs.writeFileSync('public/senators-rankings.json', JSON.stringify(base, null, 2));
-  console.log('senators-rankings.json updated with legislation!');
+
+  let matched = 0, unmatched = 0;
+
+  rows.each((i, row) => {
+    const counts = extractCountsFromRow($, row);
+    if (!counts) return;
+
+    const sen = matchSenator(counts.rawName, counts.state);
+    if (!sen) {
+      unmatched++;
+      return;
+    }
+
+    sen.sponsoredLegislation = counts.sponsoredLegislation;
+    sen.sponsoredAmendments = counts.sponsoredAmendments;
+    sen.cosponsoredLegislation = counts.cosponsoredLegislation;
+    sen.cosponsoredAmendments = counts.cosponsoredAmendments;
+    matched++;
+  });
+
+  fs.writeFileSync(OUTPUT, JSON.stringify(base, null, 2));
+  console.log(`senators-rankings.json updated with legislation! Matched: ${matched}, Unmatched: ${unmatched}`);
 }
 
-main();
+main().catch(err => {
+  console.error(err);
+  process.exit(1);
+});
