@@ -1,15 +1,37 @@
 // committee-scraper.js
-// Scrapes Senate committee membership pages
+// Scrapes Senate committee membership pages defined in committees-config.json
 // Outputs public/senators-committees.json
 
 const fs = require('fs');
 const fetch = require('node-fetch');
 const cheerio = require('cheerio');
 
-async function scrapeCommittee(url, committeeName) {
+const legislators = JSON.parse(fs.readFileSync('public/legislators-current.json', 'utf8'));
+const senators = legislators.filter(l => l.terms.some(t => t.type === 'sen'));
+
+// Load committee config (25 entries)
+const committeesConfig = JSON.parse(fs.readFileSync('scripts/committees-config.json', 'utf8'));
+
+function normalizeName(raw) {
+  return raw
+    .replace(/\s+/g, ' ')
+    .replace(/\(.*?\)/g, '') // strip state/party markers
+    .trim();
+}
+
+function findSenatorByName(name) {
+  return senators.find(s => {
+    const full = s.name.official_full.toLowerCase();
+    return full.includes(name.toLowerCase().split(' ')[0]) &&
+           full.includes(name.toLowerCase().split(' ').slice(-1)[0]);
+  });
+}
+
+async function scrapeCommittee({ name, url }) {
+  console.log(`Scraping committee: ${name}`);
   const res = await fetch(url);
   if (!res.ok) {
-    console.error(`Committee page error: ${res.status} ${res.statusText}`);
+    console.error(`Failed to fetch ${url}: ${res.status}`);
     return [];
   }
   const html = await res.text();
@@ -17,45 +39,73 @@ async function scrapeCommittee(url, committeeName) {
 
   const members = [];
 
-  $('table tr, li').each((i, row) => {
-    const text = $(row).text().trim();
-    if (!text) return;
-
-    let role = "Member";
-    if (/Chair/i.test(text)) role = "Chair";
-    if (/Ranking/i.test(text)) role = "Ranking";
-
-    members.push({ rawName: text, committee: committeeName, role });
+  // Try list-based markup
+  $('li').each((_, el) => {
+    const text = $(el).text().trim();
+    if (text) {
+      members.push(text);
+    }
   });
 
-  return members;
-}
+  // Try table-based markup
+  $('tr').each((_, el) => {
+    const text = $(el).text().trim();
+    if (text) {
+      members.push(text);
+    }
+  });
 
-async function run() {
-  const legislators = JSON.parse(fs.readFileSync('public/legislators-current.json', 'utf8'));
-  const senators = legislators.filter(l => l.terms.some(t => t.type === 'sen'));
-  const committeeConfig = JSON.parse(fs.readFileSync('scripts/committees-config.json', 'utf8'));
+  // Deduplicate
+  const uniqueMembers = [...new Set(members)];
 
-  const committeeData = {};
+  const assignments = [];
+  for (const raw of uniqueMembers) {
+    const clean = normalizeName(raw);
+    if (!clean) continue;
 
-  for (const { name, url } of committeeConfig) {
-    console.log(`Scraping committee: ${name}`);
-    const members = await scrapeCommittee(url, name);
-    for (const m of members) {
-      // Normalize by checking if any senator's official_full name appears in the raw text
-      const sen = senators.find(s => m.rawName.includes(s.name.last) || m.rawName.includes(s.name.official_full));
-      if (!sen) continue;
-      const bioguideId = sen.id.bioguide;
+    let role = 'Member';
+    if (/Chair/i.test(raw)) role = 'Chair';
+    if (/Ranking/i.test(raw)) role = 'Ranking';
+    if (/Vice Chair/i.test(raw)) role = 'Vice Chair';
 
-      if (!committeeData[bioguideId]) committeeData[bioguideId] = [];
-      committeeData[bioguideId].push({ name, role: m.role });
+    const sen = findSenatorByName(clean);
+    if (sen) {
+      assignments.push({
+        bioguideId: sen.id.bioguide,
+        committee: name,
+        role
+      });
     }
   }
 
-  const output = senators.map(sen => ({
-    bioguideId: sen.id.bioguide,
-    committees: committeeData[sen.id.bioguide] || []
-  }));
+  return assignments;
+}
+
+async function run() {
+  const allAssignments = [];
+
+  for (const committee of committeesConfig) {
+    const assignments = await scrapeCommittee(committee);
+    allAssignments.push(...assignments);
+  }
+
+  // Group by senator
+  const output = senators.map(sen => {
+    const bioguideId = sen.id.bioguide;
+    const committees = allAssignments
+      .filter(a => a.bioguideId === bioguideId)
+      .map(a => ({ name: a.committee, role: a.role }));
+
+    const leadership = committees.filter(c =>
+      ['Chair', 'Ranking', 'Vice Chair'].includes(c.role)
+    );
+
+    return {
+      bioguideId,
+      committees,
+      committeeLeadership: leadership
+    };
+  });
 
   fs.writeFileSync('public/senators-committees.json', JSON.stringify(output, null, 2));
   console.log('Committee scraper complete!');
