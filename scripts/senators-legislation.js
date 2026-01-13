@@ -36,31 +36,23 @@ function extractCountsFromRow($, row) {
   const tds = $(row).find('td');
   if (tds.length < 4) return null;
 
-  // Senator cell: "Last, First M. [P-SS]"
   const senatorCell = $(tds[0]).text().trim();
   const match = senatorCell.match(/^(.+?)\s+
 
-
-
 \[[DRI]-([A-Z]{2})\]
 
-
-
-/);
+/);  // single-line regex
   if (!match) return null;
   const rawName = match[1].trim();
   const state = match[2];
 
-  // Sponsored: "Bills | Amendments | Total"
   const sponsoredParts = $(tds[1]).text().trim().split('|').map(s => s.trim());
-  const sponsoredLegislation = parseIntSafe(sponsoredParts[0]);     // bills + resolutions
-  const sponsoredAmendments = parseIntSafe(sponsoredParts[1]);      // amendments
+  const sponsoredLegislation = parseIntSafe(sponsoredParts[0]);
+  const sponsoredAmendments = parseIntSafe(sponsoredParts[1]);
 
-  // Cosponsored Bills: "Original | Withdrawn | Total"
   const cosBillsParts = $(tds[2]).text().trim().split('|').map(s => s.trim());
-  const cosponsoredLegislation = parseIntSafe(cosBillsParts[2]);    // All/Total
+  const cosponsoredLegislation = parseIntSafe(cosBillsParts[2]);
 
-  // Cosponsored Amendments: "Original | Withdrawn" → total = original + withdrawn
   const cosAmendsParts = $(tds[3]).text().trim().split('|').map(s => s.trim());
   const cosAmendsOriginal = parseIntSafe(cosAmendsParts[0]);
   const cosAmendsWithdrawn = parseIntSafe(cosAmendsParts[1]);
@@ -70,7 +62,6 @@ function extractCountsFromRow($, row) {
 }
 
 function matchSenator(rawName, state) {
-  // Convert "Last, First M." → "First Last"
   const parts = rawName.split(',').map(p => p.trim());
   let candidateName = rawName;
   if (parts.length >= 2) {
