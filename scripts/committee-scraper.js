@@ -6,54 +6,49 @@ const fs = require('fs');
 const fetch = require('node-fetch');
 const cheerio = require('cheerio');
 
-const COMMITTEE_URLS = [
-  "https://www.senate.gov/committees/energy_and_natural_resources.htm",
-  "https://www.senate.gov/committees/foreign_relations.htm"
-  // Add full list of committees here
-];
-
-async function scrapeCommittee(url) {
+async function scrapeCommittee(url, committeeName) {
   const res = await fetch(url);
   const html = await res.text();
   const $ = cheerio.load(html);
 
-  const committeeName = $('h1').first().text().trim();
   const members = [];
 
-  $('table tr').each((i, row) => {
-    const nameCell = $(row).find('td').first().text().trim();
-    const roleCell = $(row).find('td').eq(1).text().trim();
+  $('table tr, li').each((i, row) => {
+    const text = $(row).text().trim();
+    if (!text) return;
 
-    if (nameCell) {
-      let role = "Member";
-      if (/Chair/i.test(roleCell)) role = "Chair";
-      if (/Ranking/i.test(roleCell)) role = "Ranking";
+    let role = "Member";
+    if (/Chair/i.test(text)) role = "Chair";
+    if (/Ranking/i.test(text)) role = "Ranking";
 
-      members.push({ name: nameCell, committee: committeeName, role });
-    }
+    members.push({ name: text, committee: committeeName, role });
   });
 
   return members;
 }
 
 async function run() {
-  const senators = JSON.parse(fs.readFileSync('public/senators.json', 'utf8'));
+  const legislators = JSON.parse(fs.readFileSync('public/legislators-current.json', 'utf8'));
+  const senators = legislators.filter(l => l.terms.some(t => t.type === 'sen'));
+  const committeeConfig = JSON.parse(fs.readFileSync('scripts/committees-config.json', 'utf8'));
+
   const committeeData = {};
 
-  for (const url of COMMITTEE_URLS) {
-    const members = await scrapeCommittee(url);
+  for (const { name, url } of committeeConfig) {
+    const members = await scrapeCommittee(url, name);
     for (const m of members) {
-      const sen = senators.find(s => s.name.includes(m.name));
-      if (!sen || !sen.bioguideId) continue;
+      const sen = senators.find(s => s.name.official_full.includes(m.name));
+      if (!sen) continue;
+      const bioguideId = sen.id.bioguide;
 
-      if (!committeeData[sen.bioguideId]) committeeData[sen.bioguideId] = [];
-      committeeData[sen.bioguideId].push({ name: m.committee, role: m.role });
+      if (!committeeData[bioguideId]) committeeData[bioguideId] = [];
+      committeeData[bioguideId].push({ name, role: m.role });
     }
   }
 
   const output = senators.map(sen => ({
-    bioguideId: sen.bioguideId,
-    committees: committeeData[sen.bioguideId] || []
+    bioguideId: sen.id.bioguide,
+    committees: committeeData[sen.id.bioguide] || []
   }));
 
   fs.writeFileSync('public/senators-committees.json', JSON.stringify(output, null, 2));
