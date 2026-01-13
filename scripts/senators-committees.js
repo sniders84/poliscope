@@ -34,7 +34,7 @@ function extractCommitteeAssignments($, row) {
 
 \[[DRI]-([A-Z]{2})\]
 
-/);
+/);  // single-line regex
   if (!match) return null;
   const rawName = match[1].trim();
   const state = match[2];
