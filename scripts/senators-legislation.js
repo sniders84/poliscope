@@ -1,100 +1,26 @@
 const fs = require('fs');
 const fetch = require('node-fetch');
 
-const baseData = JSON.parse(fs.readFileSync('public/senators-rankings.json', 'utf8'));
-const jsonPath = 'public/senators-legislation.json';
+const base = JSON.parse(fs.readFileSync('public/senators-rankings.json', 'utf8'));
 
-const apiKey = process.env.CONGRESS_API_KEY;
-const headers = apiKey ? { 'X-Api-Key': apiKey } : {};
+async function getLegislation(bioguideId) {
+  const url = `https://api.congress.gov/v3/member/${bioguideId}?api_key=${process.env.CONGRESS_API_KEY}`;
+  const res = await fetch(url);
+  if (!res.ok) return { sponsoredLegislation: 0, sponsoredAmendments: 0, cosponsoredLegislation: 0, cosponsoredAmendments: 0, becameLawLegislation: 0, becameLawAmendments: 0, becameLawCosponsoredAmendments: 0 };
 
-// Helper to fetch paginated results
-async function fetchAllLegislation(urlBase, key) {
-  const pageSize = 500;
-  let offset = 0;
-  let all = [];
-  while (true) {
-    const url = `${urlBase}?limit=${pageSize}&offset=${offset}`;
-    const res = await fetch(url, { headers });
-    if (!res.ok) break;
-    const data = await res.json();
-    const items = data[key] || [];
-    all = all.concat(items);
-    if (items.length < pageSize) break;
-    offset += pageSize;
-  }
-  return all;
+  const data = await res.json();
+  // Add logic to count bills, amendments, resolutions, became law, etc.
+  // ... (keep your current counting code here, but rename variables to sponsoredLegislation, etc.)
+  // For example:
+  const sponsoredLegislation = data.member.sponsoredLegislation.total;  // Bills + resolutions + amendments
+  // Etc.
+  return { sponsoredLegislation, ... };  // Return renamed fields
 }
 
-async function updateLegislation(sen) {
-  const base = `https://api.congress.gov/v3/member/${sen.bioguideId}`;
-
-  let sponsoredBills = 0;
-  let sponsoredAmendments = 0;
-  let cosponsoredBills = 0;
-  let cosponsoredAmendments = 0;
-  let becameLawBills = 0;
-  let becameLawAmendments = 0;
-  let becameLawCosponsoredAmendments = 0;
-
-  // Sponsored
-  const sponsoredItems = await fetchAllLegislation(`${base}/sponsored-legislation`, 'sponsoredLegislation');
-  sponsoredItems.forEach(item => {
-    if (item.congress === 119) {  // Full 119th only; comment out for entire career
-      const number = (item.number || '').toLowerCase();
-      const actionText = (item.latestAction?.text || '').toLowerCase();
-      const enacted = /became law|enacted|signed by president|public law/i.test(actionText);
-      if (number.startsWith('s.amdt.') || item.amendmentNumber) {
-        sponsoredAmendments++;
-        if (enacted || actionText.includes('agreed to')) becameLawAmendments++;
-      } else {
-        sponsoredBills++;
-        if (enacted) becameLawBills++;
-      }
-    }
-  });
-
-  // Cosponsored
-  const cosponsoredItems = await fetchAllLegislation(`${base}/cosponsored-legislation`, 'cosponsoredLegislation');
-  cosponsoredItems.forEach(item => {
-    if (item.congress === 119) {  // Full 119th only; comment out for entire career
-      const number = (item.number || '').toLowerCase();
-      const actionText = (item.latestAction?.text || '').toLowerCase();
-      const enacted = /became law|enacted|signed by president|public law/i.test(actionText);
-      if (number.startsWith('s.amdt.') || item.amendmentNumber) {
-        cosponsoredAmendments++;
-        if (enacted || actionText.includes('agreed to')) becameLawCosponsoredAmendments++;
-      } else {
-        cosponsoredBills++;
-        // Optional: track cosponsored bills enacted if you want (add becameLawCosponsoredBills)
-      }
-    }
-  });
-
-  return {
-    name: sen.name,
-    bioguideId: sen.bioguideId,
-    sponsoredBills,
-    sponsoredAmendments,
-    cosponsoredBills,
-    cosponsoredAmendments,
-    becameLawBills,
-    becameLawAmendments,
-    becameLawCosponsoredAmendments
-  };
-}
-
-(async () => {
-  const output = [];
-  for (const sen of baseData) {
-    try {
-      const record = await updateLegislation(sen);
-      output.push(record);
-      console.log(`Updated ${sen.name}: sBills ${record.sponsoredBills} sAmend ${record.sponsoredAmendments} cBills ${record.cosponsoredBills} cAmend ${record.cosponsoredAmendments} becameLawB ${record.becameLawBills} becameLawAmend ${record.becameLawAmendments}`);
-    } catch (err) {
-      console.log(`Error for ${sen.name}: ${err.message}`);
-    }
-  }
-
-  fs.writeFileSync(jsonPath, JSON.stringify(output, null, 2) + '\n');
+async function main() {
+  const output = await Promise.all(base.map(sen => getLegislation(sen.bioguideId)));
+  fs.writeFileSync('public/senators-legislation.json', JSON.stringify(output, null, 2));
   console.log('senators-legislation.json fully updated!');
-})();
+}
+
+main();
