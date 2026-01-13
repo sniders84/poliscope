@@ -1,81 +1,80 @@
 // scripts/senators-legislation.js
+// API-based (no HTML scraping). Pulls sponsored & cosponsored counts per senator from Congress.gov API.
+// Requires each senator in public/senators-rankings.json to have a bioguideId (e.g., "B001310").
+// Writes four top-level fields per senator:
+//   sponsoredLegislation, sponsoredAmendments, cosponsoredLegislation, cosponsoredAmendments
+
 const fs = require('fs');
 const fetch = require('node-fetch');
-const cheerio = require('cheerio');
 
-const URL = 'https://www.congress.gov/sponsors-cosponsors/119th-congress/senators/all';
 const OUTPUT = 'public/senators-rankings.json';
+const CONGRESS = 119;
+const API_BASE = 'https://api.congress.gov/v3';
+const API_KEY = process.env.CONGRESS_API_KEY;
+
+if (!API_KEY) {
+  console.error('Missing CONGRESS_API_KEY environment variable.');
+  process.exit(1);
+}
 
 const base = JSON.parse(fs.readFileSync(OUTPUT, 'utf8'));
 
-function normalizeName(n) {
-  return String(n).toLowerCase().replace(/\./g, '').replace(/\s+/g, ' ').trim();
+function normalizeType(t) {
+  const s = String(t || '').toLowerCase();
+  if (s.includes('amendment')) return 'amendment';
+  // Congress.gov types include "bill", "resolution", "joint resolution", "concurrent resolution"
+  return 'legislation';
 }
 
-const byFullName = new Map(base.map(s => [normalizeName(s.name), s]));
-const byLastNameState = new Map(
-  base.map(s => {
-    const parts = s.name.split(' ');
-    const last = normalizeName(parts[parts.length - 1]);
-    return [`${last}|${s.state}`, s];
-  })
-);
+async function fetchAllPages(url) {
+  // Congress.gov API paginates; follow "next" links until exhausted
+  const results = [];
+  let nextUrl = url;
 
-function parseIntSafe(text) {
-  const m = String(text || '').match(/\d+/);
-  return m ? parseInt(m[0], 10) : 0;
+  while (nextUrl) {
+    const res = await fetch(nextUrl, { headers: { 'User-Agent': 'Mozilla/5.0' } });
+    if (!res.ok) throw new Error(`API fetch failed ${res.status} for ${nextUrl}`);
+    const data = await res.json();
+
+    const items = data?.data || data?.results || [];
+    if (Array.isArray(items)) results.push(...items);
+
+    // Congress.gov uses "pagination.next" or "next" depending on endpoint version
+    const next = data?.pagination?.next || data?.next || null;
+    nextUrl = next ? `${API_BASE}${next}&api_key=${API_KEY}` : null;
+  }
+
+  return results;
 }
 
-async function fetchPage(url) {
-  const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' } });
-  if (!res.ok) throw new Error(`Failed to fetch ${url}: ${res.status}`);
-  return await res.text();
-}
+async function countForMember(bioguideId) {
+  // Sponsored
+  const sponsoredUrl = `${API_BASE}/member/${bioguideId}/sponsored-legislation?congress=${CONGRESS}&api_key=${API_KEY}`;
+  const sponsoredItems = await fetchAllPages(sponsoredUrl);
 
-// Parse "Last, First M. [D-XX]" without regex
-function parseSenatorCell(cellText) {
-  const t = String(cellText || '').trim();
-  const lb = t.lastIndexOf('[');
-  const rb = t.lastIndexOf(']');
-  if (lb === -1 || rb === -1 || rb < lb) return null;
+  let sponsoredLegislation = 0;
+  let sponsoredAmendments = 0;
 
-  const namePart = t.slice(0, lb).trim();
-  const bracket = t.slice(lb + 1, rb).trim(); // e.g., "D-MD"
-  const dash = bracket.indexOf('-');
-  if (dash === -1) return null;
+  sponsoredItems.forEach(item => {
+    const type = normalizeType(item?.type || item?.bill_type || item?.document_type);
+    if (type === 'amendment') sponsoredAmendments += 1;
+    else sponsoredLegislation += 1;
+  });
 
-  const state = bracket.slice(dash + 1).trim(); // "MD"
-  return { rawName: namePart, state };
-}
+  // Cosponsored
+  const cosponsoredUrl = `${API_BASE}/member/${bioguideId}/cosponsored-legislation?congress=${CONGRESS}&api_key=${API_KEY}`;
+  const cosponsoredItems = await fetchAllPages(cosponsoredUrl);
 
-function extractCountsFromRow($, row) {
-  const tds = $(row).find('td');
-  if (tds.length < 4) return null;
+  let cosponsoredLegislation = 0;
+  let cosponsoredAmendments = 0;
 
-  // Senator cell
-  const senatorCell = $(tds[0]).text().trim();
-  const parsed = parseSenatorCell(senatorCell);
-  if (!parsed) return null;
-  const { rawName, state } = parsed;
-
-  // Sponsored: "Bills | Amendments | Total"
-  const sponsoredParts = $(tds[1]).text().trim().split('|').map(s => s.trim());
-  const sponsoredLegislation = parseIntSafe(sponsoredParts[0]);     // bills + resolutions
-  const sponsoredAmendments = parseIntSafe(sponsoredParts[1]);      // amendments
-
-  // Cosponsored Bills: "Original | Withdrawn | Total"
-  const cosBillsParts = $(tds[2]).text().trim().split('|').map(s => s.trim());
-  const cosponsoredLegislation = parseIntSafe(cosBillsParts[2]);    // All/Total
-
-  // Cosponsored Amendments: "Original | Withdrawn" → total = original + withdrawn
-  const cosAmendsParts = $(tds[3]).text().trim().split('|').map(s => s.trim());
-  const cosAmendsOriginal = parseIntSafe(cosAmendsParts[0]);
-  const cosAmendsWithdrawn = parseIntSafe(cosAmendsParts[1]);
-  const cosponsoredAmendments = cosAmendsOriginal + cosAmendsWithdrawn;
+  cosponsoredItems.forEach(item => {
+    const type = normalizeType(item?.type || item?.bill_type || item?.document_type);
+    if (type === 'amendment') cosponsoredAmendments += 1;
+    else cosponsoredLegislation += 1;
+  });
 
   return {
-    rawName,
-    state,
     sponsoredLegislation,
     sponsoredAmendments,
     cosponsoredLegislation,
@@ -83,52 +82,32 @@ function extractCountsFromRow($, row) {
   };
 }
 
-function matchSenator(rawName, state) {
-  // Convert "Last, First M." → "First Last"
-  const parts = rawName.split(',').map(p => p.trim());
-  let candidateName = rawName;
-  if (parts.length >= 2) {
-    const last = parts[0];
-    const first = parts[1].replace(/\s+[A-Z]\.?$/, '');
-    candidateName = `${first} ${last}`;
-  }
-  const normFull = normalizeName(candidateName);
-
-  if (byFullName.has(normFull)) return byFullName.get(normFull);
-
-  const last = normalizeName(candidateName.split(' ').pop());
-  const key = `${last}|${state}`;
-  if (byLastNameState.has(key)) return byLastNameState.get(key);
-
-  for (const [k, sen] of byFullName.entries()) {
-    if (k.includes(normFull) && sen.state === state) return sen;
-  }
-  return null;
-}
-
 async function main() {
-  const html = await fetchPage(URL);
-  const $ = cheerio.load(html);
+  let updated = 0, skipped = 0, failed = 0;
 
-  const rows = $('table tbody tr');
-  let matched = 0, unmatched = 0;
-
-  rows.each((i, row) => {
-    const counts = extractCountsFromRow($, row);
-    if (!counts) return;
-
-    const sen = matchSenator(counts.rawName, counts.state);
-    if (!sen) { unmatched++; return; }
-
-    sen.sponsoredLegislation = counts.sponsoredLegislation;
-    sen.sponsoredAmendments = counts.sponsoredAmendments;
-    sen.cosponsoredLegislation = counts.cosponsoredLegislation;
-    sen.cosponsoredAmendments = counts.cosponsoredAmendments;
-    matched++;
-  });
+  for (const sen of base) {
+    const bioguideId = sen.bioguideId || sen.bioguide || sen.bioguide_id;
+    if (!bioguideId) {
+      skipped++;
+      continue;
+    }
+    try {
+      const counts = await countForMember(bioguideId);
+      sen.sponsoredLegislation = counts.sponsoredLegislation;
+      sen.sponsoredAmendments = counts.sponsoredAmendments;
+      sen.cosponsoredLegislation = counts.cosponsoredLegislation;
+      sen.cosponsoredAmendments = counts.cosponsoredAmendments;
+      updated++;
+      // small delay to be polite to API
+      await new Promise(r => setTimeout(r, 200));
+    } catch (e) {
+      failed++;
+      console.error(`Member ${sen.name} (${bioguideId}) failed: ${e.message}`);
+    }
+  }
 
   fs.writeFileSync(OUTPUT, JSON.stringify(base, null, 2));
-  console.log(`senators-rankings.json updated with legislation! Matched: ${matched}, Unmatched: ${unmatched}`);
+  console.log(`Legislation counts updated. Updated: ${updated}, Skipped (no bioguideId): ${skipped}, Failed: ${failed}`);
 }
 
 main().catch(err => {
