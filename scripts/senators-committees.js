@@ -6,9 +6,8 @@ const ASSIGNMENTS_URL = 'https://www.senate.gov/general/committee_assignments/as
 
 function cleanName(text) {
   return text
-    .replace(/$$   |   $$/g, '')
-    .replace(/\s*$$   .*?   $$\s*/g, '')  // strip (D-MD)
-    .replace(/\s*$$   .*?   $$/g, '')     // extra cleanup
+    .replace(/\[|\]/g, '')
+    .replace(/\s*\(.*?\)\s*/g, '')  // strip (D-MD)
     .replace(/Senator\s*/gi, '')
     .replace(/\s+/g, ' ')
     .trim();
@@ -27,7 +26,7 @@ async function scrapeAssignments() {
 
   try {
     const res = await fetch(ASSIGNMENTS_URL, {
-      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; ElectorateBot/1.0; +https://electorate.app)' }
+      headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36' }
     });
 
     if (!res.ok) {
@@ -40,37 +39,32 @@ async function scrapeAssignments() {
 
     const senators = {};
 
-    // Iterate over all <p> (main content blocks)
+    // The content is in <p> tags with plain text
     $('p').each((i, p) => {
       const pText = $(p).text().trim();
       if (!pText) return;
 
-      // Match senator start: [Name](link) (Party-State)
-      const senatorMatch = pText.match(/^$$   ([^   $$]+)\]$$   [^)]+   $$\s*$$   ([A-Z]-[A-Z]{2})   $$/);
-      if (!senatorMatch) return;
+      // Match senator line: [Name](url) (Party-State)
+      const nameMatch = pText.match(/^\[([^\]]+)\]\([^)]+\)\s*\(([A-Z]-[A-Z]{2})\)/);
+      if (!nameMatch) return;
 
-      const rawName = senatorMatch[1];
+      const rawName = nameMatch[1];
       const name = cleanName(rawName);
       if (name.split(' ').length < 2) return;
 
-      // Get committee lines: after name, lines starting with * **Committee**
-      const committeeLines = pText
-        .substring(senatorMatch[0].length)
-        .split('\n')
-        .map(l => l.trim())
-        .filter(l => l.startsWith('*'));
+      // Get the rest of the text for committees
+      const committeeText = pText.substring(nameMatch[0].length).trim();
+
+      // Split lines starting with *
+      const lines = committeeText.split('\n').map(l => l.trim()).filter(l => l.startsWith('*'));
 
       const committees = [];
-      committeeLines.forEach(line => {
-        const cleanLine = line.replace(/^\*\s*\*\*(.*?)\*\*/, '$1').trim();
-        if (!cleanLine) return;
-
-        const role = detectRole(cleanLine);
-        const committee = cleanLine
-          .replace(/Chairman|Ranking Member|Vice Chair/gi, '')
-          .trim();
-
-        if (committee && committee.includes('Committee')) {
+      lines.forEach(line => {
+        const cleanLine = line.replace(/^\*\s*/, '').trim();
+        const roleMatch = cleanLine.match(/\s*\((Chairman|Chair|Chairwoman|Ranking Member|Ranking|Vice Chair)\)/i);
+        const role = roleMatch ? detectRole(roleMatch[1]) : 'Member';
+        const committee = cleanLine.replace(/\s*\(.*?\)\s*/g, '').replace(/\*\*/g, '').trim();
+        if (committee) {
           committees.push({ committee, role });
         }
       });
@@ -82,10 +76,10 @@ async function scrapeAssignments() {
     });
 
     const result = Object.values(senators);
-    console.log(`Total senators: ${result.length}`);
+    console.log(`Total parsed: ${result.length} senators`);
 
     fs.writeFileSync('public/senators-committees.json', JSON.stringify(result, null, 2));
-    console.log('Updated!');
+    console.log('senators-committees.json updated!');
   } catch (err) {
     console.error(err);
     process.exit(1);
