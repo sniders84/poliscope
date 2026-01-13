@@ -32,10 +32,15 @@ async function scrapeVotes() {
     if (!indexData || !indexData.VoteMenu) continue;
 
     const votes = indexData.VoteMenu.Vote || [];
+    console.log(`Found ${votes.length} votes in session ${session}`);
+
+    let count = 0;
     for (const v of votes) {
+      count++;
       const voteNumber = v.VoteNumber[0];
       const voteUrl = `${BASE_URL}/${session}/vote_${voteNumber}/vote.xml`;
 
+      console.log(`Fetching vote ${voteNumber} (${count}/${votes.length}) from session ${session}`);
       const voteData = await fetchXML(voteUrl);
       if (!voteData || !voteData.rollcall_vote) continue;
 
