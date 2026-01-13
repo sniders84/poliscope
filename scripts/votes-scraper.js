@@ -32,4 +32,61 @@ async function scrapeVotes() {
   const sessions = [1, 2];
   const voteRecords = {};
 
-  for (const session of
+  for (const session of sessions) {
+    const indexUrl = `${BASE_URL}/vote_menu_119_${session}.xml`;
+    console.log(`Fetching vote index: ${indexUrl}`);
+    const indexData = await fetchXML(indexUrl);
+    if (!indexData || !indexData.VoteMenu || !indexData.VoteMenu.Vote) continue;
+
+    const votes = indexData.VoteMenu.Vote;
+    console.log(`Found ${votes.length} votes in session ${session}`);
+
+    let count = 0;
+    for (const v of votes) {
+      count++;
+      const voteNumber = v.VoteNumber;
+      const voteUrl = `${BASE_URL}/${session}/vote_${voteNumber}/vote.xml`;
+
+      console.log(`Fetching vote ${voteNumber} (${count}/${votes.length}) from session ${session}`);
+      const voteData = await fetchXML(voteUrl);
+      if (!voteData || !voteData.rollcall_vote || !voteData.rollcall_vote.members) continue;
+
+      const members = voteData.rollcall_vote.members.member || [];
+      for (const m of members) {
+        const bioguideId = m.id;
+        if (!bioguideId) continue;
+
+        if (!voteRecords[bioguideId]) {
+          voteRecords[bioguideId] = { votesCast: 0, missedVotes: 0 };
+        }
+
+        const voteCast = m.vote_cast;
+        if (voteCast === 'Not Voting') {
+          voteRecords[bioguideId].missedVotes++;
+        } else {
+          voteRecords[bioguideId].votesCast++;
+        }
+      }
+    }
+  }
+
+  // Build output
+  const output = senators.map(sen => {
+    const bioguideId = sen.id.bioguide;
+    const record = voteRecords[bioguideId] || { votesCast: 0, missedVotes: 0 };
+    const total = record.votesCast + record.missedVotes;
+    const missedPct = total > 0 ? (record.missedVotes / total) * 100 : 0;
+
+    return {
+      bioguideId,
+      votesCast: record.votesCast,
+      missedVotes: record.missedVotes,
+      missedPct: +missedPct.toFixed(2)
+    };
+  });
+
+  fs.writeFileSync('public/senators-votes.json', JSON.stringify(output, null, 2));
+  console.log('Votes scraper complete!');
+}
+
+scrapeVotes().catch(err => console.error(err));
