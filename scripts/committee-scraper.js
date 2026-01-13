@@ -1,5 +1,5 @@
 // committee-scraper.js
-// Scrapes Senate committee pages for membership (119th Congress)
+// Scrapes Senate committee membership using committees-config.json as reference
 // Outputs public/senators-committees.json
 
 const fs = require('fs');
@@ -28,7 +28,8 @@ async function scrapeCommittee(url, name) {
   $('li, p, td').each((_, el) => {
     const text = $(el).text().trim();
     if (!text) return;
-    const match = text.match(/Senator\s+([A-Z][A-Za-z\.\-'\s]+)/i);
+    const match = text.match(/Senator\s+([A-Z][A-Za-z\.\-'\s]+)/i) ||
+                  text.match(/^([A-Z][A-Za-z\.\-'\s]+)\s+\([A-Z]{2}\)/);
     if (match) {
       const norm = normalize(match[1]);
       const sen = byName.get(norm);
@@ -42,26 +43,7 @@ async function scrapeCommittee(url, name) {
 }
 
 async function run() {
-  const committees = [
-    { name: 'Agriculture, Nutrition, and Forestry', url: 'https://www.agriculture.senate.gov/about/membership' },
-    { name: 'Appropriations', url: 'https://www.appropriations.senate.gov/about/members' },
-    { name: 'Armed Services', url: 'https://www.armed-services.senate.gov/about/members' },
-    { name: 'Banking, Housing, and Urban Affairs', url: 'https://www.banking.senate.gov/about/members' },
-    { name: 'Budget', url: 'https://www.budget.senate.gov/about/members' },
-    { name: 'Commerce, Science, and Transportation', url: 'https://www.commerce.senate.gov/about/members' },
-    { name: 'Energy and Natural Resources', url: 'https://www.energy.senate.gov/about/members' },
-    { name: 'Environment and Public Works', url: 'https://www.epw.senate.gov/about/members' },
-    { name: 'Finance', url: 'https://www.finance.senate.gov/about/members' },
-    { name: 'Foreign Relations', url: 'https://www.foreign.senate.gov/about/members' },
-    { name: 'Health, Education, Labor, and Pensions', url: 'https://www.help.senate.gov/about/members' },
-    { name: 'Homeland Security and Governmental Affairs', url: 'https://www.hsgac.senate.gov/about/members' },
-    { name: 'Judiciary', url: 'https://www.judiciary.senate.gov/about/members' },
-    { name: 'Rules and Administration', url: 'https://www.rules.senate.gov/about/members' },
-    { name: 'Small Business and Entrepreneurship', url: 'https://www.sbc.senate.gov/about/members' },
-    { name: 'Veterans\' Affairs', url: 'https://www.veterans.senate.gov/about/members' },
-    { name: 'Intelligence', url: 'https://www.intelligence.senate.gov/about/members' },
-  ];
-
+  const committees = JSON.parse(fs.readFileSync('scripts/committees-config.json', 'utf8'));
   const senatorCommittees = new Map();
 
   for (const c of committees) {
