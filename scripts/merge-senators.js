@@ -1,12 +1,22 @@
 const fs = require('fs');
 
 function normalizeName(name) {
-  // Handle "Last, First M." -> "First M. Last"
-  const parts = name.trim().split(',');
-  if (parts.length === 2) {
-    return `${parts[1].trim()} ${parts[0].trim()}`;
+  // Remove party-state, commas, middle initials, extra spaces
+  let cleaned = name.trim()
+    .replace(/\s*\([RD]-[A-Z]{2}\)/g, '')     // strip (R-AL)
+    .replace(/,/g, ' ')                        // remove comma
+    .replace(/\s+[A-Z]\./g, ' ')               // remove middle initial like " B."
+    .replace(/\s+/g, ' ')                      // normalize spaces
+    .trim();
+
+  // If it looks like "Last First", flip to "First Last"
+  const parts = cleaned.split(' ');
+  if (parts.length >= 2 && parts[0].length > 1 && parts[1].length > 1) {
+    // Assume first word is last name if short or followed by comma originally
+    return `${parts[1]} ${parts[0]}`.trim();
   }
-  return name.trim();
+
+  return cleaned;
 }
 
 function mergeData() {
@@ -15,9 +25,8 @@ function mergeData() {
   const committees = JSON.parse(fs.readFileSync('public/senators-committees.json', 'utf8'));
   const votes = JSON.parse(fs.readFileSync('public/senators-votes.json', 'utf8'));
 
-  // Create maps for quick lookup with normalized names
   const legMap = new Map(legislation.map(l => [normalizeName(l.name), l]));
-  const commMap = new Map(committees.map(c => [normalizeName(c.name), c.committees]));
+  const commMap = new Map(committees.map(c => [normalizeName(c.name), c.committees || []]));
   const voteMap = new Map(votes.map(v => [normalizeName(v.name), v]));
 
   const merged = base.map(sen => {
@@ -28,8 +37,8 @@ function mergeData() {
 
     return {
       name: sen.name,
-      state: sen.state,
-      party: sen.party,
+      state: sen.state || '',
+      party: sen.party || '',
       bioguideId: sen.bioguideId,
       committees: comm,
       missedVotes: vote.missedVotes,
