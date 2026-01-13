@@ -1,67 +1,54 @@
-// scripts/senators-legislation.js
 const fs = require('fs');
 const fetch = require('node-fetch');
 
 const OUTPUT = 'public/senators-rankings.json';
 const API_KEY = process.env.CONGRESS_API_KEY;
 
-if (!API_KEY) {
-    console.error("Error: CONGRESS_API_KEY is not set in environment variables.");
-    process.exit(1);
-}
-
-const base = JSON.parse(fs.readFileSync(OUTPUT, 'utf8'));
-
-async function fetchAPI(endpoint) {
-    const url = `https://api.congress.gov/v3${endpoint}${endpoint.includes('?') ? '&' : '?'}api_key=${API_KEY}`;
-    const res = await fetch(url);
-    if (!res.ok) throw new Error(`API Error ${res.status}: ${url}`);
-    return await res.json();
-}
+const stateMap = {
+    'AL': 'Alabama', 'AK': 'Alaska', 'AZ': 'Arizona', 'AR': 'Arkansas', 'CA': 'California',
+    'CO': 'Colorado', 'CT': 'Connecticut', 'DE': 'Delaware', 'FL': 'Florida', 'GA': 'Georgia',
+    'HI': 'Hawaii', 'ID': 'Idaho', 'IL': 'Illinois', 'IN': 'Indiana', 'IA': 'Iowa',
+    'KS': 'Kansas', 'KY': 'Kentucky', 'LA': 'Louisiana', 'ME': 'Maine', 'MD': 'Maryland',
+    'MA': 'Massachusetts', 'MI': 'Michigan', 'MN': 'Minnesota', 'MS': 'Mississippi', 'MO': 'Missouri',
+    'MT': 'Montana', 'NE': 'Nebraska', 'NV': 'Nevada', 'NH': 'New Hampshire', 'NJ': 'New Jersey',
+    'NM': 'New Mexico', 'NY': 'New York', 'NC': 'North Carolina', 'ND': 'North Dakota', 'OH': 'Ohio',
+    'OK': 'Oklahoma', 'OR': 'Oregon', 'PA': 'Pennsylvania', 'RI': 'Rhode Island', 'SC': 'South Carolina',
+    'SD': 'South Dakota', 'TN': 'Tennessee', 'TX': 'Texas', 'UT': 'Utah', 'VT': 'Vermont',
+    'VA': 'Virginia', 'WA': 'Washington', 'WV': 'West Virginia', 'WI': 'Wisconsin', 'WY': 'Wyoming'
+};
 
 async function main() {
-    console.log("Fetching Senate member list from Congress.gov API...");
+    const base = JSON.parse(fs.readFileSync(OUTPUT, 'utf8'));
+    console.log("Fetching Senate list from API...");
     
-    // 1. Get all current Senators to get their Bioguide IDs
-    // We filter for 119th Congress (2025-2027)
-    const memberData = await fetchAPI('/member?chamber=senate&limit=250');
-    const apiMembers = memberData.members;
+    const res = await fetch(`https://api.congress.gov/v3/member/senate?api_key=${API_KEY}&limit=250`);
+    const apiData = await res.json();
+    const apiMembers = apiData.members;
 
     let matchedCount = 0;
 
-    // 2. Map local JSON senators to API data
     for (let sen of base) {
-        // Match by state and last name (most reliable match across official datasets)
+        const fullStateName = stateMap[sen.state] || sen.state;
+        const lastName = sen.name.split(' ').pop().toLowerCase();
+
         const match = apiMembers.find(m => 
-            m.state === sen.state && 
-            sen.name.toLowerCase().includes(m.name.toLowerCase().split(',')[0])
+            m.state === fullStateName && 
+            m.name.toLowerCase().includes(lastName)
         );
 
-        if (match && match.bioguideId) {
-            try {
-                // 3. Fetch detailed counts for this specific senator
-                console.log(`Updating ${sen.name} (${match.bioguideId})...`);
-                const details = await fetchAPI(`/member/${match.bioguideId}`);
-                
-                sen.billsSponsored = details.member.sponsoredLegislationCount || 0;
-                sen.billsCosponsored = details.member.cosponsoredLegislationCount || 0;
-                sen.bioguideId = match.bioguideId; // Save this for future API calls
-                
-                matchedCount++;
-                // Small delay to respect rate limits (5000/hr is generous, but stay safe)
-                await new Promise(r => setTimeout(r, 100)); 
-            } catch (e) {
-                console.warn(`Failed to fetch details for ${sen.name}: ${e.message}`);
-            }
+        if (match) {
+            const detailRes = await fetch(`https://api.congress.gov/v3/member/${match.bioguideId}?api_key=${API_KEY}`);
+            const detail = await detailRes.json();
+            
+            sen.billsSponsored = detail.member.sponsoredLegislationCount || 0;
+            sen.billsCosponsored = detail.member.cosponsoredLegislationCount || 0;
+            sen.bioguideId = match.bioguideId;
+            matchedCount++;
         }
     }
 
     fs.writeFileSync(OUTPUT, JSON.stringify(base, null, 2));
-    console.log(`---`);
-    console.log(`Success! Updated ${matchedCount} senators with official legislation counts.`);
+    console.log(`Success! Updated ${matchedCount} senators.`);
 }
 
-main().catch(err => {
-    console.error('Fatal:', err);
-    process.exit(1);
-});
+main().catch(console.error);
