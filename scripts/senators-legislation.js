@@ -1,54 +1,93 @@
+// legislation-scraper.js
+// Scrapes Congress.gov API for sponsored/cosponsored bills & amendments
+// Outputs senators-legislative.json
+
 const fs = require('fs');
 const fetch = require('node-fetch');
 
-const OUTPUT = 'public/senators-rankings.json';
+// Congress.gov API base (replace with your stored Vercel secret)
 const API_KEY = process.env.CONGRESS_API_KEY;
+const BASE_URL = 'https://api.congress.gov/v3/member';
 
-const stateMap = {
-    'AL': 'Alabama', 'AK': 'Alaska', 'AZ': 'Arizona', 'AR': 'Arkansas', 'CA': 'California',
-    'CO': 'Colorado', 'CT': 'Connecticut', 'DE': 'Delaware', 'FL': 'Florida', 'GA': 'Georgia',
-    'HI': 'Hawaii', 'ID': 'Idaho', 'IL': 'Illinois', 'IN': 'Indiana', 'IA': 'Iowa',
-    'KS': 'Kansas', 'KY': 'Kentucky', 'LA': 'Louisiana', 'ME': 'Maine', 'MD': 'Maryland',
-    'MA': 'Massachusetts', 'MI': 'Michigan', 'MN': 'Minnesota', 'MS': 'Mississippi', 'MO': 'Missouri',
-    'MT': 'Montana', 'NE': 'Nebraska', 'NV': 'Nevada', 'NH': 'New Hampshire', 'NJ': 'New Jersey',
-    'NM': 'New Mexico', 'NY': 'New York', 'NC': 'North Carolina', 'ND': 'North Dakota', 'OH': 'Ohio',
-    'OK': 'Oklahoma', 'OR': 'Oregon', 'PA': 'Pennsylvania', 'RI': 'Rhode Island', 'SC': 'South Carolina',
-    'SD': 'South Dakota', 'TN': 'Tennessee', 'TX': 'Texas', 'UT': 'Utah', 'VT': 'Vermont',
-    'VA': 'Virginia', 'WA': 'Washington', 'WV': 'West Virginia', 'WI': 'Wisconsin', 'WY': 'Wyoming'
-};
+async function fetchAllPages(url) {
+  let results = [];
+  let nextUrl = url;
 
-async function main() {
-    const base = JSON.parse(fs.readFileSync(OUTPUT, 'utf8'));
-    console.log("Fetching Senate list from API...");
-    
-    const res = await fetch(`https://api.congress.gov/v3/member/senate?api_key=${API_KEY}&limit=250`);
-    const apiData = await res.json();
-    const apiMembers = apiData.members;
+  while (nextUrl) {
+    const res = await fetch(nextUrl);
+    const data = await res.json();
 
-    let matchedCount = 0;
+    if (data.bills) results = results.concat(data.bills);
+    if (data.amendments) results = results.concat(data.amendments);
 
-    for (let sen of base) {
-        const fullStateName = stateMap[sen.state] || sen.state;
-        const lastName = sen.name.split(' ').pop().toLowerCase();
+    nextUrl = data.pagination?.next_url || null;
+  }
 
-        const match = apiMembers.find(m => 
-            m.state === fullStateName && 
-            m.name.toLowerCase().includes(lastName)
-        );
-
-        if (match) {
-            const detailRes = await fetch(`https://api.congress.gov/v3/member/${match.bioguideId}?api_key=${API_KEY}`);
-            const detail = await detailRes.json();
-            
-            sen.billsSponsored = detail.member.sponsoredLegislationCount || 0;
-            sen.billsCosponsored = detail.member.cosponsoredLegislationCount || 0;
-            sen.bioguideId = match.bioguideId;
-            matchedCount++;
-        }
-    }
-
-    fs.writeFileSync(OUTPUT, JSON.stringify(base, null, 2));
-    console.log(`Success! Updated ${matchedCount} senators.`);
+  return results;
 }
 
-main().catch(console.error);
+async function scrapeLegislationForMember(bioguideId) {
+  const url = `${BASE_URL}/${bioguideId}/bills?sponsorType=all&api_key=${API_KEY}&congress=119`;
+  const bills = await fetchAllPages(url);
+
+  let sponsoredBills = 0,
+      cosponsoredBills = 0,
+      sponsoredAmendments = 0,
+      cosponsoredAmendments = 0,
+      becameLawSponsoredBills = 0,
+      becameLawCosponsoredBills = 0,
+      becameLawSponsoredAmendments = 0,
+      becameLawCosponsoredAmendments = 0;
+
+  for (const item of bills) {
+    const isAmendment = item.type === 'Amendment';
+    const isCosponsor = item.relationship === 'Cosponsor';
+    const becameLaw = item.latestAction?.text?.includes('Became Public Law');
+
+    if (isAmendment) {
+      if (isCosponsor) {
+        cosponsoredAmendments++;
+        if (becameLaw) becameLawCosponsoredAmendments++;
+      } else {
+        sponsoredAmendments++;
+        if (becameLaw) becameLawSponsoredAmendments++;
+      }
+    } else {
+      if (isCosponsor) {
+        cosponsoredBills++;
+        if (becameLaw) becameLawCosponsoredBills++;
+      } else {
+        sponsoredBills++;
+        if (becameLaw) becameLawSponsoredBills++;
+      }
+    }
+  }
+
+  return {
+    bioguideId,
+    sponsoredBills,
+    cosponsoredBills,
+    sponsoredAmendments,
+    cosponsoredAmendments,
+    becameLawSponsoredBills,
+    becameLawCosponsoredBills,
+    becameLawSponsoredAmendments,
+    becameLawCosponsoredAmendments
+  };
+}
+
+async function run() {
+  // TODO: Load all senators from your master list (congress-legislators repo JSON)
+  const senators = JSON.parse(fs.readFileSync('senators.json', 'utf8'));
+
+  const output = [];
+  for (const sen of senators) {
+    const data = await scrapeLegislationForMember(sen.bioguideId);
+    output.push({ ...sen, ...data });
+  }
+
+  fs.writeFileSync('senators-legislative.json', JSON.stringify(output, null, 2));
+  console.log('Legislation scraper complete!');
+}
+
+run().catch(err => console.error(err));
