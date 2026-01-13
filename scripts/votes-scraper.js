@@ -1,92 +1,123 @@
 // votes-scraper.js
-// Scrapes Senate roll call votes for ALL sessions of the 119th Congress
+// Scrapes Senate roll call vote indexes (119th Congress, sessions 1 & 2)
+// Tallies per-senator totals and missed votes
 // Outputs public/senators-votes.json
 
 const fs = require('fs');
 const fetch = require('node-fetch');
 const { XMLParser } = require('fast-xml-parser');
 
+const INDEXES = [
+  'https://www.senate.gov/legislative/LIS/roll_call_votes/vote119/vote_menu_119_1.xml',
+  'https://www.senate.gov/legislative/LIS/roll_call_votes/vote119/vote_menu_119_2.xml',
+];
+
 const legislators = JSON.parse(fs.readFileSync('public/legislators-current.json', 'utf8'));
 const senators = legislators.filter(l => l.terms.some(t => t.type === 'sen'));
+const byBioguide = new Map(senators.map(s => [s.id.bioguide, s]));
 
-const BASE_URL = 'https://www.senate.gov/legislative/LIS/roll_call_votes/vote119';
-
-const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '' });
-
-async function fetchXML(url) {
+async function get(url) {
   const res = await fetch(url);
-  if (!res.ok) {
-    console.error(`Failed to fetch ${url}: ${res.status}`);
-    return null;
-  }
-  const text = await res.text();
-  try {
-    return parser.parse(text);
-  } catch (err) {
-    console.error(`XML parse error for ${url}: ${err.message}`);
-    return null;
-  }
+  if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
+  return res.text();
 }
 
-async function scrapeVotes() {
-  const sessions = [1, 2];
-  const voteRecords = {};
+function parseXML(xml) {
+  const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '' });
+  return parser.parse(xml);
+}
 
-  for (const session of sessions) {
-    const indexUrl = `${BASE_URL}/vote_menu_119_${session}.xml`;
-    console.log(`Fetching vote index: ${indexUrl}`);
-    const indexData = await fetchXML(indexUrl);
-    if (!indexData || !indexData.VoteMenu || !indexData.VoteMenu.Vote) continue;
+function voteDetailUrl(congress, session, voteNumber) {
+  const padded = String(voteNumber).padStart(5, '0');
+  return `https://www.senate.gov/legislative/LIS/roll_call_votes/vote${congress}${session}/vote_${congress}_${session}_${padded}.xml`;
+}
 
-    const votes = indexData.VoteMenu.Vote;
-    console.log(`Found ${votes.length} votes in session ${session}`);
+async function fetchVoteMembers(congress, session, voteNumber) {
+  const xml = await get(voteDetailUrl(congress, session, voteNumber));
+  const data = parseXML(xml);
 
-    let count = 0;
-    for (const v of votes) {
-      count++;
-      const voteNumber = v.VoteNumber;
-      const voteUrl = `${BASE_URL}/${session}/vote_${voteNumber}/vote.xml`;
+  const members = data.roll_call_vote?.members?.member || [];
+  // Normalize to array
+  const arr = Array.isArray(members) ? members : [members];
 
-      console.log(`Fetching vote ${voteNumber} (${count}/${votes.length}) from session ${session}`);
-      const voteData = await fetchXML(voteUrl);
-      if (!voteData || !voteData.rollcall_vote || !voteData.rollcall_vote.members) continue;
+  return arr.map(m => ({
+    bioguideId: m['lis_member_id'] || m['bioguide_id'] || null,
+    vote: (m['vote_cast'] || '').trim(), // Yea, Nay, Present, Not Voting
+    name: `${m['last_name'] || ''}, ${m['first_name'] || ''}`.trim(),
+  }));
+}
 
-      const members = voteData.rollcall_vote.members.member || [];
-      for (const m of members) {
-        const bioguideId = m.id;
-        if (!bioguideId) continue;
+async function run() {
+  const totals = new Map(); // bioguideId -> { totalVotes, missedVotes }
 
-        if (!voteRecords[bioguideId]) {
-          voteRecords[bioguideId] = { votesCast: 0, missedVotes: 0 };
+  // Initialize totals
+  for (const s of senators) {
+    totals.set(s.id.bioguide, { totalVotes: 0, missedVotes: 0 });
+  }
+
+  for (const idxUrl of INDEXES) {
+    try {
+      const xml = await get(idxUrl);
+      const data = parseXML(xml);
+
+      const congress = data.vote_summary?.congress || '119';
+      const session = data.vote_summary?.session || '1';
+
+      const votes = data.vote_summary?.votes?.vote || [];
+      const voteList = Array.isArray(votes) ? votes : [votes];
+
+      for (const v of voteList) {
+        const voteNumber = v['vote_number'];
+        if (!voteNumber) continue;
+
+        let members = [];
+        try {
+          members = await fetchVoteMembers(congress, session, voteNumber);
+        } catch {
+          // If detail fetch fails, skip this vote
+          continue;
         }
 
-        const voteCast = m.vote_cast;
-        if (voteCast === 'Not Voting') {
-          voteRecords[bioguideId].missedVotes++;
-        } else {
-          voteRecords[bioguideId].votesCast++;
+        for (const m of members) {
+          // Prefer bioguide; if only LIS is present, try to map via name
+          let bioguideId = m.bioguideId;
+          if (!bioguideId) {
+            // Attempt name-based match
+            const match = senators.find(s => {
+              const last = s.name.last.toLowerCase();
+              return m.name.toLowerCase().includes(last);
+            });
+            bioguideId = match?.id?.bioguide || null;
+          }
+          if (!bioguideId || !totals.has(bioguideId)) continue;
+
+          const entry = totals.get(bioguideId);
+          entry.totalVotes += 1;
+          if (/not voting/i.test(m.vote)) {
+            entry.missedVotes += 1;
+          }
         }
+
+        // small delay to avoid hammering
+        await new Promise(r => setTimeout(r, 50));
       }
+    } catch (err) {
+      console.error(`Error processing index ${idxUrl}: ${err.message}`);
     }
   }
 
   // Build output
-  const output = senators.map(sen => {
-    const bioguideId = sen.id.bioguide;
-    const record = voteRecords[bioguideId] || { votesCast: 0, missedVotes: 0 };
-    const total = record.votesCast + record.missedVotes;
-    const missedPct = total > 0 ? (record.missedVotes / total) * 100 : 0;
-
-    return {
+  const results = [];
+  for (const [bioguideId, t] of totals.entries()) {
+    results.push({
       bioguideId,
-      votesCast: record.votesCast,
-      missedVotes: record.missedVotes,
-      missedPct: +missedPct.toFixed(2)
-    };
-  });
+      totalVotes: t.totalVotes,
+      missedVotes: t.missedVotes,
+    });
+  }
 
-  fs.writeFileSync('public/senators-votes.json', JSON.stringify(output, null, 2));
+  fs.writeFileSync('public/senators-votes.json', JSON.stringify(results, null, 2));
   console.log('Votes scraper complete!');
 }
 
-scrapeVotes().catch(err => console.error(err));
+run().catch(err => console.error(err));
