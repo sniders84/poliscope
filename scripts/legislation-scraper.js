@@ -1,5 +1,5 @@
 // legislation-scraper.js
-// Scrapes Congress.gov API for bills and amendments sponsored/cosponsored by each senator (119th Congress)
+// Fast scraper: uses Congress.gov API pagination.count for totals
 // Outputs public/senators-legislation.json
 
 const fs = require('fs');
@@ -26,37 +26,10 @@ async function getJSON(url) {
   return res.json();
 }
 
-// Paginated fetch for bills/amendments arrays
-async function fetchAllPages(url, collectionKey) {
-  let items = [];
-  let nextUrl = url;
-
-  while (nextUrl) {
-    const data = await getJSON(nextUrl);
-    const pageItems = data?.[collectionKey] || [];
-    items.push(...pageItems);
-
-    // FIXED: use next directly, don't prepend BASE_URL again
-    const next = data?.pagination?.next;
-    nextUrl = next || null;
-  }
-
-  return items;
-}
-
-// Build endpoint URL for bills/amendments with memberIds
 function endpoint(type, memberId, opts = {}) {
   const params = new URLSearchParams({ congress: '119', format: 'json' });
   if (opts.cosponsored) params.set('cosponsored', 'true');
   return `${BASE_URL}/${type}?${params.toString()}&memberIds=${memberId}`;
-}
-
-function countBecameLawBills(bills) {
-  return bills.filter(b => b.latestAction?.text?.includes('Became Public Law')).length;
-}
-
-function countAgreedAmendments(amendments) {
-  return amendments.filter(a => a.latestAction?.text?.includes('Agreed to')).length;
 }
 
 async function scrapeSenator(sen) {
@@ -65,46 +38,40 @@ async function scrapeSenator(sen) {
   const lisId = sen.id.lis;
   console.log(`Scraping legislation for ${name} (${bioguideId})`);
 
-  let sponsoredBills = [];
-  let cosponsoredBills = [];
-  let sponsoredAmendments = [];
-  let cosponsoredAmendments = [];
-
-  // Try bioguide first, fallback to LIS if needed
-  try {
-    sponsoredBills = await fetchAllPages(endpoint('bill', bioguideId), 'bills');
-  } catch {
-    if (lisId) sponsoredBills = await fetchAllPages(endpoint('bill', lisId), 'bills');
+  async function tryFetch(type, opts) {
+    try {
+      const data = await getJSON(endpoint(type, bioguideId, opts));
+      return { count: data.pagination.count, items: data[type] || [] };
+    } catch (err) {
+      if (lisId) {
+        const data = await getJSON(endpoint(type, lisId, opts));
+        return { count: data.pagination.count, items: data[type] || [] };
+      }
+      return { count: 0, items: [] };
+    }
   }
 
-  try {
-    cosponsoredBills = await fetchAllPages(endpoint('bill', bioguideId, { cosponsored: true }), 'bills');
-  } catch {
-    if (lisId) cosponsoredBills = await fetchAllPages(endpoint('bill', lisId, { cosponsored: true }), 'bills');
-  }
+  const sponsoredBills = await tryFetch('bill', {});
+  const cosponsoredBills = await tryFetch('bill', { cosponsored: true });
+  const sponsoredAmendments = await tryFetch('amendment', {});
+  const cosponsoredAmendments = await tryFetch('amendment', { cosponsored: true });
 
-  try {
-    sponsoredAmendments = await fetchAllPages(endpoint('amendment', bioguideId), 'amendments');
-  } catch {
-    if (lisId) sponsoredAmendments = await fetchAllPages(endpoint('amendment', lisId), 'amendments');
-  }
-
-  try {
-    cosponsoredAmendments = await fetchAllPages(endpoint('amendment', bioguideId, { cosponsored: true }), 'amendments');
-  } catch {
-    if (lisId) cosponsoredAmendments = await fetchAllPages(endpoint('amendment', lisId, { cosponsored: true }), 'amendments');
-  }
+  // Became law / agreed to counts only from first page items
+  const becameLawSponsoredBills = sponsoredBills.items.filter(b => b.latestAction?.text?.includes('Became Public Law')).length;
+  const becameLawCosponsoredBills = cosponsoredBills.items.filter(b => b.latestAction?.text?.includes('Became Public Law')).length;
+  const becameLawSponsoredAmendments = sponsoredAmendments.items.filter(a => a.latestAction?.text?.includes('Agreed to')).length;
+  const becameLawCosponsoredAmendments = cosponsoredAmendments.items.filter(a => a.latestAction?.text?.includes('Agreed to')).length;
 
   return {
     bioguideId,
-    sponsoredBills: sponsoredBills.length,
-    cosponsoredBills: cosponsoredBills.length,
-    sponsoredAmendments: sponsoredAmendments.length,
-    cosponsoredAmendments: cosponsoredAmendments.length,
-    becameLawSponsoredBills: countBecameLawBills(sponsoredBills),
-    becameLawCosponsoredBills: countBecameLawBills(cosponsoredBills),
-    becameLawSponsoredAmendments: countAgreedAmendments(sponsoredAmendments),
-    becameLawCosponsoredAmendments: countAgreedAmendments(cosponsoredAmendments),
+    sponsoredBills: sponsoredBills.count,
+    cosponsoredBills: cosponsoredBills.count,
+    sponsoredAmendments: sponsoredAmendments.count,
+    cosponsoredAmendments: cosponsoredAmendments.count,
+    becameLawSponsoredBills,
+    becameLawCosponsoredBills,
+    becameLawSponsoredAmendments,
+    becameLawCosponsoredAmendments,
   };
 }
 
@@ -114,8 +81,6 @@ async function run() {
     try {
       const data = await scrapeSenator(sen);
       results.push(data);
-      // small delay to avoid hammering
-      await new Promise(r => setTimeout(r, 150));
     } catch (err) {
       console.error(`Error scraping ${sen.name.official_full}: ${err.message}`);
     }
