@@ -13,11 +13,13 @@ function normalizeName(n) {
 }
 
 const byFullName = new Map(base.map(s => [normalizeName(s.name), s]));
-const byLastNameState = new Map(base.map(s => {
-  const parts = s.name.split(' ');
-  const last = normalizeName(parts[parts.length - 1]);
-  return [`${last}|${s.state}`, s];
-}));
+const byLastNameState = new Map(
+  base.map(s => {
+    const parts = s.name.split(' ');
+    const last = normalizeName(parts[parts.length - 1]);
+    return [`${last}|${s.state}`, s];
+  })
+);
 
 function parseIntSafe(text) {
   const m = String(text || '').match(/\d+/);
@@ -34,6 +36,7 @@ function extractCountsFromRow($, row) {
   const tds = $(row).find('td');
   if (tds.length < 4) return null;
 
+  // SINGLE-LINE REGEX — DO NOT SPLIT ACROSS LINES
   const senatorCell = $(tds[0]).text().trim();
   const match = senatorCell.match(/^(.+?)\s+
 
@@ -45,34 +48,45 @@ function extractCountsFromRow($, row) {
   const state = match[2];
 
   const sponsoredParts = $(tds[1]).text().trim().split('|').map(s => s.trim());
-  const sponsoredLegislation = parseIntSafe(sponsoredParts[0]);
-  const sponsoredAmendments = parseIntSafe(sponsoredParts[1]);
+  const sponsoredLegislation = parseIntSafe(sponsoredParts[0]);      // bills + resolutions
+  const sponsoredAmendments = parseIntSafe(sponsoredParts[1]);       // amendments
 
   const cosBillsParts = $(tds[2]).text().trim().split('|').map(s => s.trim());
-  const cosponsoredLegislation = parseIntSafe(cosBillsParts[2]);
+  const cosponsoredLegislation = parseIntSafe(cosBillsParts[2]);     // total
 
   const cosAmendsParts = $(tds[3]).text().trim().split('|').map(s => s.trim());
-  const cosponsoredAmendments = parseIntSafe(cosAmendsParts[0]);
+  const cosponsoredAmendments = parseIntSafe(cosAmendsParts[0]);     // original
 
-  return { rawName, state, sponsoredLegislation, sponsoredAmendments, cosponsoredLegislation, cosponsoredAmendments };
+  return {
+    rawName,
+    state,
+    sponsoredLegislation,
+    sponsoredAmendments,
+    cosponsoredLegislation,
+    cosponsoredAmendments
+  };
 }
 
 function matchSenator(rawName, state) {
+  // Convert "Last, First M." → "First Last"
   const parts = rawName.split(',').map(p => p.trim());
   let candidateName = rawName;
   if (parts.length >= 2) {
     const last = parts[0];
-    const first = parts[1].replace(/\s+[A-Z]\.?$/, '');
+    const first = parts[1].replace(/\s+[A-Z]\.?$/, ''); // drop middle initial
     candidateName = `${first} ${last}`;
   }
   const normFull = normalizeName(candidateName);
 
+  // Full name match
   if (byFullName.has(normFull)) return byFullName.get(normFull);
 
+  // Last name + state
   const last = normalizeName(candidateName.split(' ').pop());
   const key = `${last}|${state}`;
   if (byLastNameState.has(key)) return byLastNameState.get(key);
 
+  // Fallback: contains + state
   for (const [k, sen] of byFullName.entries()) {
     if (k.includes(normFull) && sen.state === state) return sen;
   }
@@ -89,6 +103,7 @@ async function main() {
   rows.each((i, row) => {
     const counts = extractCountsFromRow($, row);
     if (!counts) return;
+
     const sen = matchSenator(counts.rawName, counts.state);
     if (!sen) { unmatched++; return; }
 
