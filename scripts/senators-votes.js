@@ -7,7 +7,7 @@ const jsonPath = 'public/senators-votes.json';
 const apiKey = process.env.CONGRESS_API_KEY;
 const headers = apiKey ? { 'X-Api-Key': apiKey } : {};
 
-// Fetch paginated votes for a senator
+// Fetch paginated votes
 async function fetchAllVotes(bioguideId) {
   const pageSize = 250;
   let offset = 0;
@@ -32,10 +32,10 @@ async function updateVotes(sen) {
   const allVotes = await fetchAllVotes(sen.bioguideId);
 
   allVotes.forEach(vote => {
-    if (vote.congress === 119) {  // Full 119th only; comment out for entire career
+    // if (vote.congress === 119) {  // Uncomment for 119th-only; currently career-wide
       totalVotes++;
       if (vote.position === 'Not Voting') missedVotes++;
-    }
+    // }
   });
 
   return {
@@ -58,6 +58,6 @@ async function updateVotes(sen) {
     }
   }
 
-  fs.writeFileSync(jsonPath, JSON.stringify(output, null, 2) + '\n');
-  console.log('senators-votes.json fully updated!');
+  fs.writeFileSync(jsonPath, JSON.stringify(output, null, 2));
+  console.log('senators-votes.json updated!');
 })();
