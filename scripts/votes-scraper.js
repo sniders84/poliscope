@@ -1,87 +1,75 @@
 // votes-scraper.js
-// Scrapes Senate roll call XML index
+// Scrapes Senate roll call votes for ALL sessions of the current Congress (119th)
 // Outputs public/senators-votes.json
 
 const fs = require('fs');
 const fetch = require('node-fetch');
 const xml2js = require('xml2js');
 
-const INDEX_URL = 'https://www.senate.gov/legislative/LIS/roll_call_votes/vote119/vote_menu.xml';
+const legislators = JSON.parse(fs.readFileSync('public/legislators-current.json', 'utf8'));
+const senators = legislators.filter(l => l.terms.some(t => t.type === 'sen'));
 
-async function fetchIndex() {
-  const res = await fetch(INDEX_URL);
-  if (!res.ok) {
-    console.error(`Index fetch error: ${res.status} ${res.statusText}`);
-    return null;
-  }
-  const xml = await res.text();
-  return xml2js.parseStringPromise(xml, { strict: false });
-}
+const BASE_URL = 'https://www.senate.gov/legislative/LIS/roll_call_votes/vote119';
 
-async function fetchRollCall(url) {
+async function fetchXML(url) {
   const res = await fetch(url);
-  if (!res.ok) return null;
-  const xml = await res.text();
-
-  const safeXml = xml
-    .replace(/&(?!(amp|lt|gt|quot|apos);)/g, '&amp;')
-    .replace(/<\s+/g, '&lt; ');
-
-  try {
-    return xml2js.parseStringPromise(safeXml, { strict: false });
-  } catch (err) {
-    console.error(`Failed to parse roll call: ${err.message}`);
+  if (!res.ok) {
+    console.error(`Failed to fetch ${url}: ${res.status}`);
     return null;
   }
+  const text = await res.text();
+  return xml2js.parseStringPromise(text);
 }
 
 async function scrapeVotes() {
-  const legislators = JSON.parse(fs.readFileSync('public/legislators-current.json', 'utf8'));
-  const senators = legislators.filter(l => l.terms.some(t => t.type === 'sen'));
-  const voteData = {};
+  const sessions = [1, 2]; // both sessions of 119th Congress
+  const voteRecords = {};
 
-  const index = await fetchIndex();
-  if (!index) return;
+  for (const session of sessions) {
+    const indexUrl = `${BASE_URL}/vote_menu_119_${session}.xml`;
+    console.log(`Fetching vote index: ${indexUrl}`);
+    const indexData = await fetchXML(indexUrl);
+    if (!indexData || !indexData.VoteMenu) continue;
 
-  const votes = index?.vote_menu?.vote || [];
+    const votes = indexData.VoteMenu.Vote || [];
+    for (const v of votes) {
+      const voteNumber = v.VoteNumber[0];
+      const voteUrl = `${BASE_URL}/${session}/vote_${voteNumber}/vote.xml`;
 
-  for (const v of votes) {
-    const url = v.vote_url?.[0];
-    if (!url) continue;
+      const voteData = await fetchXML(voteUrl);
+      if (!voteData || !voteData.rollcall_vote) continue;
 
-    const data = await fetchRollCall(url);
-    if (!data) continue;
+      const members = voteData.rollcall_vote.members[0].member || [];
+      for (const m of members) {
+        const bioguideId = m.$.id; // Senate XML uses bioguideId in "id" attribute
+        if (!bioguideId) continue;
 
-    const members = data.rollcall?.vote?.[0]?.members?.[0]?.member || [];
-    for (const m of members) {
-      const bioguideId = m.$?.member_id;
-      const voteCast = m.vote?.[0] || '';
+        if (!voteRecords[bioguideId]) {
+          voteRecords[bioguideId] = { votesCast: 0, missedVotes: 0 };
+        }
 
-      if (!bioguideId) continue;
-
-      if (!voteData[bioguideId]) {
-        voteData[bioguideId] = { votesCast: 0, missedVotes: 0 };
-      }
-
-      if (/Not Voting/i.test(voteCast)) {
-        voteData[bioguideId].missedVotes++;
-      } else {
-        voteData[bioguideId].votesCast++;
+        const voteCast = m.vote_cast[0];
+        if (voteCast === 'Not Voting') {
+          voteRecords[bioguideId].missedVotes++;
+        } else {
+          voteRecords[bioguideId].votesCast++;
+        }
       }
     }
   }
 
+  // Build output
   const output = senators.map(sen => {
     const bioguideId = sen.id.bioguide;
-    const stats = voteData[bioguideId] || { votesCast: 0, missedVotes: 0 };
-    const total = stats.votesCast + stats.missedVotes;
-    const missedPct = total > 0 ? (stats.missedVotes / total) * 100 : 0;
+    const record = voteRecords[bioguideId] || { votesCast: 0, missedVotes: 0 };
+    const total = record.votesCast + record.missedVotes;
+    const missedPct = total > 0 ? (record.missedVotes / total) * 100 : 0;
 
     return {
       bioguideId,
-      votesCast: stats.votesCast,
-      missedVotes: stats.missedVotes,
-      missedPct: Math.round(missedPct * 10) / 10
+      votesCast: record.votesCast,
+      missedVotes: record.missedVotes,
+      missedPct: +missedPct.toFixed(2)
     };
   });
 
