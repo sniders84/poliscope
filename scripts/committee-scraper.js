@@ -1,16 +1,15 @@
 // committee-scraper.js
 // Scrapes Senate.gov committee membership pages
-// Outputs senators-committees.json
+// Outputs public/senators-committees.json
 
 const fs = require('fs');
 const fetch = require('node-fetch');
 const cheerio = require('cheerio');
 
 const COMMITTEE_URLS = [
-  // Add all committee URLs here (e.g., Energy, Foreign Relations, Judiciary, etc.)
   "https://www.senate.gov/committees/energy_and_natural_resources.htm",
   "https://www.senate.gov/committees/foreign_relations.htm"
-  // ... full list of 119th Congress committees
+  // Add full list of committees here
 ];
 
 async function scrapeCommittee(url) {
@@ -38,14 +37,14 @@ async function scrapeCommittee(url) {
 }
 
 async function run() {
-  const senators = JSON.parse(fs.readFileSync('senators.json', 'utf8'));
+  const senators = JSON.parse(fs.readFileSync('public/senators.json', 'utf8'));
   const committeeData = {};
 
   for (const url of COMMITTEE_URLS) {
     const members = await scrapeCommittee(url);
     for (const m of members) {
       const sen = senators.find(s => s.name.includes(m.name));
-      if (!sen) continue;
+      if (!sen || !sen.bioguideId) continue;
 
       if (!committeeData[sen.bioguideId]) committeeData[sen.bioguideId] = [];
       committeeData[sen.bioguideId].push({ name: m.committee, role: m.role });
@@ -57,7 +56,7 @@ async function run() {
     committees: committeeData[sen.bioguideId] || []
   }));
 
-  fs.writeFileSync('senators-committees.json', JSON.stringify(output, null, 2));
+  fs.writeFileSync('public/senators-committees.json', JSON.stringify(output, null, 2));
   console.log('Committee scraper complete!');
 }
 
