@@ -1,5 +1,5 @@
 // legislation-scraper.js
-// Fast scraper: uses Congress.gov API pagination.count for totals
+// Scrapes Congress.gov API for legislation sponsored/cosponsored by each senator (119th Congress)
 // Outputs public/senators-legislation.json
 
 const fs = require('fs');
@@ -26,52 +26,50 @@ async function getJSON(url) {
   return res.json();
 }
 
-function endpoint(type, memberId, opts = {}) {
-  const params = new URLSearchParams({ congress: '119', format: 'json' });
-  if (opts.cosponsored) params.set('cosponsored', 'true');
-  return `${BASE_URL}/${type}?${params.toString()}&memberIds=${memberId}`;
+// Build endpoint URL for sponsored/cosponsored legislation
+function endpoint(type, bioguideId) {
+  return `${BASE_URL}/member/${bioguideId}/${type}-legislation?congress=119&format=json`;
 }
 
 async function scrapeSenator(sen) {
   const name = sen.name.official_full;
   const bioguideId = sen.id.bioguide;
-  const lisId = sen.id.lis;
   console.log(`Scraping legislation for ${name} (${bioguideId})`);
 
-  async function tryFetch(type, opts) {
-    try {
-      const data = await getJSON(endpoint(type, bioguideId, opts));
-      return { count: data.pagination.count, items: data[type] || [] };
-    } catch (err) {
-      if (lisId) {
-        const data = await getJSON(endpoint(type, lisId, opts));
-        return { count: data.pagination.count, items: data[type] || [] };
-      }
-      return { count: 0, items: [] };
-    }
+  let sponsored = { count: 0, items: [] };
+  let cosponsored = { count: 0, items: [] };
+
+  try {
+    const data = await getJSON(endpoint('sponsored', bioguideId));
+    sponsored.count = data.pagination.count || 0;
+    sponsored.items = data.legislation || [];
+  } catch (err) {
+    console.error(`Error fetching sponsored for ${name}: ${err.message}`);
   }
 
-  const sponsoredBills = await tryFetch('bill', {});
-  const cosponsoredBills = await tryFetch('bill', { cosponsored: true });
-  const sponsoredAmendments = await tryFetch('amendment', {});
-  const cosponsoredAmendments = await tryFetch('amendment', { cosponsored: true });
+  try {
+    const data = await getJSON(endpoint('cosponsored', bioguideId));
+    cosponsored.count = data.pagination.count || 0;
+    cosponsored.items = data.legislation || [];
+  } catch (err) {
+    console.error(`Error fetching cosponsored for ${name}: ${err.message}`);
+  }
 
-  // Became law / agreed to counts only from first page items
-  const becameLawSponsoredBills = sponsoredBills.items.filter(b => b.latestAction?.text?.includes('Became Public Law')).length;
-  const becameLawCosponsoredBills = cosponsoredBills.items.filter(b => b.latestAction?.text?.includes('Became Public Law')).length;
-  const becameLawSponsoredAmendments = sponsoredAmendments.items.filter(a => a.latestAction?.text?.includes('Agreed to')).length;
-  const becameLawCosponsoredAmendments = cosponsoredAmendments.items.filter(a => a.latestAction?.text?.includes('Agreed to')).length;
+  // Became law counts from first page items
+  const becameLawSponsored = sponsored.items.filter(
+    l => l.latestAction?.text?.includes('Became Public Law')
+  ).length;
+  const becameLawCosponsored = cosponsored.items.filter(
+    l => l.latestAction?.text?.includes('Became Public Law')
+  ).length;
 
   return {
     bioguideId,
-    sponsoredBills: sponsoredBills.count,
-    cosponsoredBills: cosponsoredBills.count,
-    sponsoredAmendments: sponsoredAmendments.count,
-    cosponsoredAmendments: cosponsoredAmendments.count,
-    becameLawSponsoredBills,
-    becameLawCosponsoredBills,
-    becameLawSponsoredAmendments,
-    becameLawCosponsoredAmendments,
+    sponsoredBills: sponsored.count,
+    cosponsoredBills: cosponsored.count,
+    becameLawSponsoredBills: becameLawSponsored,
+    becameLawCosponsoredBills: becameLawCosponsored,
+    // Amendments are included in legislation results; you can filter by billType if needed
   };
 }
 
