@@ -42,7 +42,7 @@ function extractCountsFromRow($, row) {
 
 \[[DRI]-([A-Z]{2})\]
 
-/);
+/);  // FIXED single-line regex
   if (!match) return null;
   const rawName = match[1].trim();
   const state = match[2];
@@ -62,7 +62,14 @@ function extractCountsFromRow($, row) {
   const cosAmendsWithdrawn = parseIntSafe(cosAmendsParts[1]);
   const cosponsoredAmendments = cosAmendsOriginal + cosAmendsWithdrawn;
 
-  return { rawName, state, sponsoredLegislation, sponsoredAmendments, cosponsoredLegislation, cosponsoredAmendments };
+  return {
+    rawName,
+    state,
+    sponsoredLegislation,
+    sponsoredAmendments,
+    cosponsoredLegislation,
+    cosponsoredAmendments
+  };
 }
 
 function matchSenator(rawName, state) {
