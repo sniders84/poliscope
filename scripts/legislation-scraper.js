@@ -14,6 +14,10 @@ async function fetchAllPages(url) {
 
   while (nextUrl) {
     const res = await fetch(nextUrl);
+    if (!res.ok) {
+      console.error(`Congress API error: ${res.status} ${res.statusText}`);
+      break;
+    }
     const data = await res.json();
 
     if (data.bills) results = results.concat(data.bills);
@@ -82,6 +86,8 @@ async function run() {
 
   for (const sen of senators) {
     const bioguideId = sen.id.bioguide;
+    if (!bioguideId) continue;
+    console.log(`Scraping legislation for ${sen.name.official_full} (${bioguideId})`);
     const data = await scrapeLegislationForMember(bioguideId);
     output.push({ bioguideId, ...data });
   }
