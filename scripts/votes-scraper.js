@@ -73,4 +73,20 @@ async function scrapeVotes() {
 
   const output = senators.map(sen => {
     const bioguideId = sen.id.bioguide;
-    const
+    const stats = voteData[bioguideId] || { votesCast: 0, missedVotes: 0 };
+    const total = stats.votesCast + stats.missedVotes;
+    const missedPct = total > 0 ? (stats.missedVotes / total) * 100 : 0;
+
+    return {
+      bioguideId,
+      votesCast: stats.votesCast,
+      missedVotes: stats.missedVotes,
+      missedPct: Math.round(missedPct * 10) / 10
+    };
+  });
+
+  fs.writeFileSync('public/senators-votes.json', JSON.stringify(output, null, 2));
+  console.log('Votes scraper complete!');
+}
+
+scrapeVotes().catch(err => console.error(err));
