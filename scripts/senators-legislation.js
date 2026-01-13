@@ -39,7 +39,7 @@ async function updateLegislation(sen) {
   // Sponsored
   const sponsoredItems = await fetchAllLegislation(`${base}/sponsored-legislation`, 'sponsoredLegislation');
   sponsoredItems.forEach(item => {
-    if (item.congress === 119) {
+    if (item.congress === 119) {  // Full 119th only; comment out for entire career
       const number = (item.number || '').toLowerCase();
       const actionText = (item.latestAction?.text || '').toLowerCase();
       const enacted = /became law|enacted|signed by president|public law/i.test(actionText);
@@ -56,7 +56,7 @@ async function updateLegislation(sen) {
   // Cosponsored
   const cosponsoredItems = await fetchAllLegislation(`${base}/cosponsored-legislation`, 'cosponsoredLegislation');
   cosponsoredItems.forEach(item => {
-    if (item.congress === 119) {
+    if (item.congress === 119) {  // Full 119th only; comment out for entire career
       const number = (item.number || '').toLowerCase();
       const actionText = (item.latestAction?.text || '').toLowerCase();
       const enacted = /became law|enacted|signed by president|public law/i.test(actionText);
@@ -65,9 +65,7 @@ async function updateLegislation(sen) {
         if (enacted || actionText.includes('agreed to')) becameLawCosponsoredAmendments++;
       } else {
         cosponsoredBills++;
-        if (enacted) {
-          // optional: track cosponsored bills became law if desired
-        }
+        // Optional: track cosponsored bills enacted if you want (add becameLawCosponsoredBills)
       }
     }
   });
@@ -91,7 +89,7 @@ async function updateLegislation(sen) {
     try {
       const record = await updateLegislation(sen);
       output.push(record);
-      console.log(`Updated ${sen.name}: sBills ${record.sponsoredBills} sAmend ${record.sponsoredAmendments} cBills ${record.cosponsoredBills} cAmend ${record.cosponsoredAmendments} becameLawB ${record.becameLawBills} becameLawAmend ${record.becameLawAmendments} becameLawCosponsoredAmend ${record.becameLawCosponsoredAmendments}`);
+      console.log(`Updated ${sen.name}: sBills ${record.sponsoredBills} sAmend ${record.sponsoredAmendments} cBills ${record.cosponsoredBills} cAmend ${record.cosponsoredAmendments} becameLawB ${record.becameLawBills} becameLawAmend ${record.becameLawAmendments}`);
     } catch (err) {
       console.log(`Error for ${sen.name}: ${err.message}`);
     }
