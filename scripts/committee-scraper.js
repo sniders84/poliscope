@@ -1,5 +1,5 @@
 // committee-scraper.js
-// Scrapes Senate.gov committee membership pages
+// Scrapes Senate committee membership pages
 // Outputs public/senators-committees.json
 
 const fs = require('fs');
@@ -8,6 +8,10 @@ const cheerio = require('cheerio');
 
 async function scrapeCommittee(url, committeeName) {
   const res = await fetch(url);
+  if (!res.ok) {
+    console.error(`Committee page error: ${res.status} ${res.statusText}`);
+    return [];
+  }
   const html = await res.text();
   const $ = cheerio.load(html);
 
@@ -21,7 +25,7 @@ async function scrapeCommittee(url, committeeName) {
     if (/Chair/i.test(text)) role = "Chair";
     if (/Ranking/i.test(text)) role = "Ranking";
 
-    members.push({ name: text, committee: committeeName, role });
+    members.push({ rawName: text, committee: committeeName, role });
   });
 
   return members;
@@ -35,9 +39,11 @@ async function run() {
   const committeeData = {};
 
   for (const { name, url } of committeeConfig) {
+    console.log(`Scraping committee: ${name}`);
     const members = await scrapeCommittee(url, name);
     for (const m of members) {
-      const sen = senators.find(s => s.name.official_full.includes(m.name));
+      // Normalize by checking if any senator's official_full name appears in the raw text
+      const sen = senators.find(s => m.rawName.includes(s.name.last) || m.rawName.includes(s.name.official_full));
       if (!sen) continue;
       const bioguideId = sen.id.bioguide;
 
