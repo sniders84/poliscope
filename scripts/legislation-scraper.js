@@ -4,7 +4,7 @@
 
 const fs = require('fs');
 const fetch = require('node-fetch');
-const csvParse = require('csv-parse/lib/sync');
+const { parse } = require('csv-parse/sync');   // ✅ fixed import
 
 const legislators = JSON.parse(fs.readFileSync('public/legislators-current.json', 'utf8'));
 const senators = legislators.filter(l => l.terms.some(t => t.type === 'sen'));
@@ -18,7 +18,7 @@ async function getCSV(url) {
   const res = await fetch(url);
   if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
   const text = await res.text();
-  return csvParse(text, { columns: true });
+  return parse(text, { columns: true });       // ✅ use parse()
 }
 
 async function run() {
