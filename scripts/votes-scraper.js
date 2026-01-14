@@ -79,7 +79,7 @@ async function run() {
 
   const results = Array.from(totals.entries()).map(([bioguideId, t]) => ({ bioguideId, ...t }));
   if (results.length === 0) {
-    console.log("No data, skipping write.");
+    console.log('No data, skipping write.');
     process.exit(0);
   }
   fs.writeFileSync(OUT_PATH, JSON.stringify(results, null, 2));
