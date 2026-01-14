@@ -1,67 +1,69 @@
 /**
- * Legislation scraper (Senate-only, Congress.gov API)
- * - Counts sponsored and cosponsored items (bills + resolutions)
- * - Uses /member/{bioguide}/sponsored-legislation and /cosponsored-legislation
+ * Legislation scraper (Congress.gov API v3)
+ * - Fetches Senate bills & resolutions
+ * - Aggregates sponsored/cosponsored counts per senator
  * - Outputs public/senators-legislation.json
  */
 
 const fs = require('fs');
 const path = require('path');
-const https = require('https');
+const fetch = require('node-fetch');
 
+const OUT_PATH = path.join('public', 'senators-legislation.json');
 const API_KEY = process.env.CONGRESS_API_KEY;
 const CONGRESS = process.env.CONGRESS_NUMBER || '119';
-const OUT_PATH = path.join('public', 'senators-legislation.json');
+const BILL_TYPES = ['s', 'sjres', 'sconres', 'sres'];
 
-if (!API_KEY) throw new Error('Missing CONGRESS_API_KEY env.');
+function initTotals() { return { sponsored: 0, cosponsored: 0 }; }
 
-function sleep(ms){return new Promise(r=>setTimeout(r,ms));}
-function getJson(url){return new Promise((resolve,reject)=>{
-  https.get(url,res=>{
-    let data='';res.on('data',c=>data+=c);
-    res.on('end',()=>{try{resolve(JSON.parse(data));}catch(e){reject(e);}});
-  }).on('error',reject);
-});}
-async function fetchAllPages(baseUrl){
-  const results=[];let page=1;
-  while(true){
-    const url=`${baseUrl}&page=${page}`;
-    const json=await getJson(url);
-    const items=json?.data||[];
-    results.push(...items);
-    if(page>=(json?.pagination?.pages||1))break;
-    page++;await sleep(200);
+async function fetchBills(billType) {
+  let results = [];
+  let offset = 0;
+  const pageSize = 250;
+
+  while (true) {
+    const url = `https://api.congress.gov/v3/bill/${CONGRESS}/${billType}?pageSize=${pageSize}&offset=${offset}`;
+    const res = await fetch(url, { headers: { 'X-API-Key': API_KEY } });
+    if (!res.ok) throw new Error(`Failed ${url}: ${res.status}`);
+    const data = await res.json();
+
+    if (!data.bills || data.bills.length === 0) break;
+    results = results.concat(data.bills);
+    offset += pageSize;
   }
   return results;
 }
-function initTotals(){return{ sponsored:0, cosponsored:0 };}
 
-async function run(){
+async function run() {
   console.log(`Legislation scraper: Congress=${CONGRESS}, chamber=Senate`);
-  const senators=await fetchAllPages(
-    `https://api.congress.gov/v3/member?format=json&chamber=Senate&congress=${CONGRESS}&api_key=${API_KEY}`
-  );
-  const totals=new Map();
 
-  for(const s of senators){
-    const id=s.bioguideId; if(!id)continue;
-    if(!totals.has(id))totals.set(id,initTotals());
+  const totals = new Map();
 
-    const sponsored=await fetchAllPages(
-      `https://api.congress.gov/v3/member/${id}/sponsored-legislation?format=json&congress=${CONGRESS}&api_key=${API_KEY}`
-    );
-    const cosponsored=await fetchAllPages(
-      `https://api.congress.gov/v3/member/${id}/cosponsored-legislation?format=json&congress=${CONGRESS}&api_key=${API_KEY}`
-    );
-
-    const t=totals.get(id);
-    t.sponsored+=sponsored.length;
-    t.cosponsored+=cosponsored.length;
+  for (const type of BILL_TYPES) {
+    const bills = await fetchBills(type);
+    for (const bill of bills) {
+      const sponsor = bill.sponsor?.bioguideId;
+      if (sponsor) {
+        if (!totals.has(sponsor)) totals.set(sponsor, initTotals());
+        totals.get(sponsor).sponsored++;
+      }
+      for (const c of bill.cosponsors || []) {
+        const id = c.bioguideId;
+        if (!id) continue;
+        if (!totals.has(id)) totals.set(id, initTotals());
+        totals.get(id).cosponsored++;
+      }
+    }
   }
 
-  const results=Array.from(totals.entries()).map(([bioguideId,t])=>({bioguideId,...t}));
-  if(results.length===0){console.log('No data, skipping write.');process.exit(0);}
-  fs.writeFileSync(OUT_PATH,JSON.stringify(results,null,2));
+  const results = Array.from(totals.entries()).map(([bioguideId, t]) => ({ bioguideId, ...t }));
+  if (results.length === 0) {
+    console.log("No data, skipping write.");
+    return;
+  }
+
+  fs.writeFileSync(OUT_PATH, JSON.stringify(results, null, 2));
   console.log(`Wrote ${OUT_PATH} with ${results.length} senator entries.`);
 }
-run().catch(e=>{console.error('Legislation scraper failed:',e);process.exit(1);});
+
+run().catch(err => { console.error(err); process.exit(1); });
