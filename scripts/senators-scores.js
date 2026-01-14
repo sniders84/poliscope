@@ -1,82 +1,102 @@
 /**
- * Senators scores
+ * Senators Scores Calculator
  * - Reads public/senators-rankings.json
- * - Computes composite score per senator
- * - Outputs public/senators-scores.json
+ * - Computes composite score per senator based on legislation, committees, and missed votes
+ * - Updates senators-rankings.json directly with score and normalized score
+ * - No separate output file — consolidates everything
  */
-
 const fs = require('fs');
 const path = require('path');
 
-const INPUT = path.join('public', 'senators-rankings.json');
-const OUTPUT = path.join('public', 'senators-scores.json');
+const RANKINGS_PATH = path.join(__dirname, '../public/senators-rankings.json');
 
 const WEIGHTS = {
-  sponsored: 2.0,
-  cosponsored: 1.0,
-  committeeLeadershipBonus: 5.0,
-  committeeMembershipBonus: 1.0,
-  missedVotePenaltyPerPct: 0.5,
+  sponsoredBills: 2.0,          // Weight for sponsored legislation (bills + resolutions)
+  cosponsoredBills: 1.0,        // Weight for cosponsored legislation
+  sponsoredAmendments: 1.5,     // Slightly higher for amendments (more effort)
+  cosponsoredAmendments: 0.75,
+  committeeLeadershipBonus: 5.0, // Chairman / Ranking Member
+  committeeMembershipBonus: 1.0, // Regular member
+  missedVotePenaltyPerPct: 0.5   // Penalty per 1% missed
 };
 
-function safeNum(n) { return typeof n === 'number' && !isNaN(n) ? n : 0; }
+function safeNum(n) {
+  return typeof n === 'number' && !isNaN(n) ? n : 0;
+}
 
-function computeScore(s) {
-  const sponsored = safeNum(s.sponsored);
-  const cosponsored = safeNum(s.cosponsored);
-  const missedPct = safeNum(s.missedVotePct);
+function isLeadership(role) {
+  if (!role) return false;
+  const lower = role.toLowerCase();
+  return lower.includes('chair') || 
+         lower.includes('ranking') || 
+         lower.includes('vice chair') || 
+         lower.includes('chairman') || 
+         lower.includes('ranking member');
+}
 
-  const committees = Array.isArray(s.committees) ? s.committees : [];
-  let committeeMemberships = 0;
+function computeScore(sen) {
+  const sponsoredLeg = safeNum(sen.sponsoredBills) + safeNum(sen.sponsoredAmendments);
+  const cosponsoredLeg = safeNum(sen.cosponsoredBills) + safeNum(sen.cosponsoredAmendments);
+
+  const committees = Array.isArray(sen.committees) ? sen.committees : [];
+  let committeeMemberships = committees.length;
   let committeeLeaderships = 0;
 
   for (const c of committees) {
-    committeeMemberships += 1;
-    const role = (c.role || '').toLowerCase();
-    if (role.includes('chair') || role.includes('ranking')) {
-      committeeLeaderships += 1;
-    }
+    if (isLeadership(c.role)) committeeLeaderships++;
   }
 
-  const score =
-    sponsored * WEIGHTS.sponsored +
-    cosponsored * WEIGHTS.cosponsored +
+  const missedPct = safeNum(sen.totalVotes) > 0 
+    ? (safeNum(sen.missedVotes) / safeNum(sen.totalVotes)) * 100 
+    : 0;
+
+  const rawScore = 
+    sponsoredLeg * WEIGHTS.sponsoredBills +
+    cosponsoredLeg * WEIGHTS.cosponsoredBills +
+    safeNum(sen.sponsoredAmendments) * WEIGHTS.sponsoredAmendments +
+    safeNum(sen.cosponsoredAmendments) * WEIGHTS.cosponsoredAmendments +
     committeeLeaderships * WEIGHTS.committeeLeadershipBonus +
     committeeMemberships * WEIGHTS.committeeMembershipBonus -
     missedPct * WEIGHTS.missedVotePenaltyPerPct;
 
-  return +score.toFixed(2);
+  return +rawScore.toFixed(2);
 }
 
 function run() {
-  if (!fs.existsSync(INPUT)) {
-    console.log('No rankings file found, skipping scores.');
-    process.exit(0);
+  if (!fs.existsSync(RANKINGS_PATH)) {
+    console.log('No senators-rankings.json found, skipping scores.');
+    return;
   }
 
-  const rankings = JSON.parse(fs.readFileSync(INPUT, 'utf8'));
-  const results = rankings.map(s => ({
-    bioguideId: s.bioguideId,
-    sponsored: safeNum(s.sponsored),
-    cosponsored: safeNum(s.cosponsored),
-    totalVotes: safeNum(s.totalVotes),
-    missedVotes: safeNum(s.missedVotes),
-    missedVotePct: safeNum(s.missedVotePct),
-    committees: Array.isArray(s.committees) ? s.committees : [],
-    score: computeScore(s),
-  }));
+  let rankings;
+  try {
+    rankings = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf8'));
+  } catch (err) {
+    console.error('Failed to parse rankings.json:', err.message);
+    return;
+  }
 
-  const maxScore = results.reduce((m, r) => Math.max(m, r.score), 0);
-  const minScore = results.reduce((m, r) => Math.min(m, r.score), maxScore);
+  const scores = rankings.map(sen => computeScore(sen));
+
+  // Find min/max for normalization
+  const validScores = scores.filter(s => s !== 0);
+  const maxScore = validScores.length > 0 ? Math.max(...validScores) : 1;
+  const minScore = validScores.length > 0 ? Math.min(...validScores) : 0;
   const span = Math.max(1, maxScore - minScore);
 
-  const normalized = results.map(r => ({
-    ...r,
-    scoreNormalized: +(((r.score - minScore) / span) * 100).toFixed(2),
-  }));
+  rankings.forEach((sen, idx) => {
+    const raw = scores[idx];
+    sen.score = raw;
+    sen.scoreNormalized = span > 0 ? +(((raw - minScore) / span) * 100).toFixed(2) : 0;
+    console.log(`Scored ${sen.name}: raw ${raw}, normalized ${sen.scoreNormalized}`);
+  });
 
-  fs.writeFileSync(OUTPUT, JSON.stringify(normalized, null, 2));
-  console.log(`Wrote ${OUTPUT} with ${normalized.length} senator entries.`);
+  try {
+    fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
+    console.log(`Updated senators-rankings.json with scores for ${rankings.length} senators`);
+  } catch (err) {
+    console.error('Failed to write rankings.json:', err.message);
+  }
 }
 
 run();
