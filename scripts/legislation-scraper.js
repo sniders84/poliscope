@@ -1,5 +1,5 @@
 // legislation-scraper.js
-// Fetches LegiScan US.zip dataset, extracts bills.json for 119th Congress
+// Fetches LegiScan 119th Congress dataset ZIP, extracts bills.json
 // Outputs public/senators-legislation.json
 
 const fs = require('fs');
@@ -11,11 +11,11 @@ const legislators = JSON.parse(fs.readFileSync('public/legislators-current.json'
 const senators = legislators.filter(l => l.terms.some(t => t.type === 'sen'));
 const byBioguide = new Map(senators.map(s => [s.id.bioguide, s]));
 
-// LegiScan dataset ZIP URL
-const DATASET_URL = 'https://legiscan.com/US/datasets/US.zip';
+// LegiScan dataset ZIP URL (119th Congress)
+const DATASET_URL = 'https://legiscan.com/gaits/datasets/2199/json/US_2025-2026_119th_Congress_JSON_20260109_68e7bd7db67acea9876b963a8a573396.zip';
 
 async function getBills() {
-  console.log('Downloading LegiScan US.zip...');
+  console.log('Downloading LegiScan 119th Congress ZIP...');
   const res = await fetch(DATASET_URL);
   if (!res.ok) throw new Error(`HTTP ${res.status} for ${DATASET_URL}`);
   const buffer = await res.buffer();
@@ -30,9 +30,6 @@ async function getBills() {
 async function run() {
   const bills = await getBills();
 
-  // Filter to 119th Congress only
-  const bills119 = bills.filter(b => Number(b.congress) === 119);
-
   // Initialize tallies
   const totals = new Map();
   for (const s of senators) {
@@ -44,7 +41,7 @@ async function run() {
     });
   }
 
-  for (const bill of bills119) {
+  for (const bill of bills) {
     const sponsorId = bill.sponsor_bioguide;
     if (sponsorId && totals.has(sponsorId)) {
       const entry = totals.get(sponsorId);
