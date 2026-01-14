@@ -1,6 +1,7 @@
 /**
  * Legislation scraper (Senate-only, Congress.gov API)
- * - Uses /member endpoint to pull sponsored and cosponsored legislation
+ * - Counts sponsored and cosponsored items (bills + resolutions)
+ * - Uses /member/{bioguide}/sponsored-legislation and /cosponsored-legislation
  * - Outputs public/senators-legislation.json
  */
 
@@ -58,8 +59,8 @@ async function run(){
     t.cosponsored+=cosponsored.length;
   }
 
-  const results=Array.from(totals.entries()).map(([id,t])=>({bioguideId:id,...t}));
-  if(results.length===0){console.log("No data, skipping write.");process.exit(0);}
+  const results=Array.from(totals.entries()).map(([bioguideId,t])=>({bioguideId,...t}));
+  if(results.length===0){console.log('No data, skipping write.');process.exit(0);}
   fs.writeFileSync(OUT_PATH,JSON.stringify(results,null,2));
   console.log(`Wrote ${OUT_PATH} with ${results.length} senator entries.`);
 }
