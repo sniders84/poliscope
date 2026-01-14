@@ -1,20 +1,29 @@
 // committee-scraper.js
-// Reads senate-committee-membership-current.json
+// Fetches Senate committee membership JSON from congress-legislators repo
 // Outputs public/senators-committees.json
 
 const fs = require('fs');
+const fetch = require('node-fetch');
 
 // Load legislators metadata
 const legislators = JSON.parse(fs.readFileSync('public/legislators-current.json', 'utf8'));
 const senators = legislators.filter(l => l.terms.some(t => t.type === 'sen'));
 const byBioguide = new Map(senators.map(s => [s.id.bioguide, s]));
 
-// Load committee membership JSON
-const committees = JSON.parse(
-  fs.readFileSync('public/senate-committee-membership-current.json', 'utf8')
-);
+// Committee membership JSON URL (official repo)
+const COMMITTEE_URL = 'https://raw.githubusercontent.com/unitedstates/congress-legislators/master/senate-committee-membership-current.json';
+
+async function getCommittees() {
+  console.log('Downloading Senate committee membership JSON...');
+  const res = await fetch(COMMITTEE_URL);
+  if (!res.ok) throw new Error(`HTTP ${res.status} for ${COMMITTEE_URL}`);
+  const text = await res.text();
+  return JSON.parse(text);
+}
 
 async function run() {
+  const committees = await getCommittees();
+
   const senatorCommittees = new Map();
 
   for (const [committeeCode, committeeData] of Object.entries(committees)) {
