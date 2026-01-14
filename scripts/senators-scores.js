@@ -19,7 +19,7 @@ const path = require('path');
 const INPUT = path.join('public', 'senators-rankings.json');
 const OUTPUT = path.join('public', 'senators-scores.json');
 
-// Simple scoring weights (adjust later as needed)
+// Scoring weights (adjust as needed)
 const WEIGHTS = {
   legislation: {
     sponsoredBills: 2,
