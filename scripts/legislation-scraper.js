@@ -1,86 +1,118 @@
-/**
- * Legislation scraper (Congress.gov API v3)
- * - Fetches Senate bills & resolutions via path-form endpoints
- * - Aggregates sponsored/cosponsored counts per senator
- * - Outputs public/senators-legislation.json
- */
-
 const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
 
-const OUT_PATH = path.join('public', 'senators-legislation.json');
+const RANKINGS_PATH = path.join(__dirname, '../public/senators-rankings.json');
 const API_KEY = process.env.CONGRESS_API_KEY;
 const CONGRESS = process.env.CONGRESS_NUMBER || '119';
-const BILL_TYPES = ['s', 'sjres', 'sconres', 'sres'];
 
-function initTotals() { return { sponsored: 0, cosponsored: 0 }; }
+const BILL_TYPES = ['s', 'sjres', 'sconres', 'sres']; // Senate bills/resolutions
+const AMENDMENT_TYPES = ['samdt']; // Senate amendments
 
-function getSponsorId(bill) {
-  // v3 can expose sponsor as object or array
-  if (bill.sponsor?.bioguideId) return bill.sponsor.bioguideId;
-  if (Array.isArray(bill.sponsors) && bill.sponsors[0]?.bioguideId) return bill.sponsors[0].bioguideId;
-  return null;
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function getCosponsorIds(bill) {
-  // v3 can expose cosponsors as array or nested items
-  if (Array.isArray(bill.cosponsors)) {
-    return bill.cosponsors.map(c => c.bioguideId).filter(Boolean);
-  }
-  if (bill.cosponsors?.items && Array.isArray(bill.cosponsors.items)) {
-    return bill.cosponsors.items.map(c => c.bioguideId).filter(Boolean);
-  }
-  return [];
-}
-
-async function fetchBills(billType) {
+async function fetchPaginated(urlBase) {
   let results = [];
   let offset = 0;
   const pageSize = 250;
 
   while (true) {
-    const url = `https://api.congress.gov/v3/bill/${CONGRESS}/${billType}?pageSize=${pageSize}&offset=${offset}`;
+    const url = `${urlBase}&pageSize=${pageSize}&offset=${offset}`;
+    console.log(`Fetching ${url}`);
     const res = await fetch(url, { headers: { 'X-API-Key': API_KEY } });
-    if (!res.ok) throw new Error(`Failed ${url}: ${res.status}`);
+    if (!res.ok) {
+      console.error(`Failed ${url}: ${res.status} - ${await res.text()}`);
+      break;
+    }
     const data = await res.json();
-    const chunk = data.bills || [];
+    const chunk = data.bills || data.amendments || [];
     if (chunk.length === 0) break;
     results = results.concat(chunk);
     offset += pageSize;
+    await delay(1000); // 1s delay to avoid rate limits
   }
+
   return results;
 }
 
-async function run() {
-  console.log(`Legislation scraper: Congress=${CONGRESS}, chamber=Senate`);
+async function updateRankings() {
+  let rankings;
+  try {
+    rankings = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf8'));
+  } catch (err) {
+    console.error('Failed to load rankings.json:', err.message);
+    return;
+  }
 
-  const totals = new Map();
+  // Map bioguideId -> senator index
+  const idToIndex = new Map(rankings.map((sen, idx) => [sen.bioguideId, idx]));
 
+  console.log(`Processing ${BILL_TYPES.length} bill types + amendments...`);
+
+  // Bills/Resolutions
   for (const type of BILL_TYPES) {
-    const bills = await fetchBills(type);
+    const bills = await fetchPaginated(`https://api.congress.gov/v3/bill/${CONGRESS}/${type}?format=json`);
     for (const bill of bills) {
-      const sponsorId = getSponsorId(bill);
-      if (sponsorId) {
-        if (!totals.has(sponsorId)) totals.set(sponsorId, initTotals());
-        totals.get(sponsorId).sponsored++;
+      // Sponsor
+      const sponsorId = bill.sponsor?.bioguideId || (bill.sponsors?.[0]?.bioguideId);
+      if (sponsorId && idToIndex.has(sponsorId)) {
+        const idx = idToIndex.get(sponsorId);
+        rankings[idx].sponsoredLegislation = (rankings[idx].sponsoredLegislation || 0) + 1;
+        if (bill.latestAction?.text?.includes('Became Public Law')) {
+          rankings[idx].becameLawLegislation = (rankings[idx].becameLawLegislation || 0) + 1;
+        }
       }
-      const cosponsorIds = getCosponsorIds(bill);
-      for (const id of cosponsorIds) {
-        if (!totals.has(id)) totals.set(id, initTotals());
-        totals.get(id).cosponsored++;
+
+      // Cosponsors
+      const cosponsors = bill.cosponsors || bill.cosponsors?.items || [];
+      for (const cos of cosponsors) {
+        const cosId = cos.bioguideId;
+        if (cosId && idToIndex.has(cosId)) {
+          const idx = idToIndex.get(cosId);
+          rankings[idx].cosponsoredLegislation = (rankings[idx].cosponsoredLegislation || 0) + 1;
+          if (bill.latestAction?.text?.includes('Became Public Law')) {
+            rankings[idx].becameLawCosponsoredAmendments = (rankings[idx].becameLawCosponsoredAmendments || 0) + 1;
+          }
+        }
       }
     }
   }
 
-  const results = Array.from(totals.entries()).map(([bioguideId, t]) => ({ bioguideId, ...t }));
-  if (results.length === 0) {
-    console.log("No data, skipping write.");
-    return;
+  // Amendments
+  const amendments = await fetchPaginated(`https://api.congress.gov/v3/amendment/${CONGRESS}?format=json`);
+  for (const amd of amendments) {
+    const sponsorId = amd.sponsor?.bioguideId || (amd.sponsors?.[0]?.bioguideId);
+    if (sponsorId && idToIndex.has(sponsorId)) {
+      const idx = idToIndex.get(sponsorId);
+      rankings[idx].sponsoredAmendments = (rankings[idx].sponsoredAmendments || 0) + 1;
+      if (amd.latestAction?.text?.includes('Became Public Law')) {
+        rankings[idx].becameLawAmendments = (rankings[idx].becameLawAmendments || 0) + 1;
+      }
+    }
+
+    // Cosponsors for amendments (less common, but check)
+    const cosponsors = amd.cosponsors || [];
+    for (const cos of cosponsors) {
+      const cosId = cos.bioguideId;
+      if (cosId && idToIndex.has(cosId)) {
+        const idx = idToIndex.get(cosId);
+        rankings[idx].cosponsoredAmendments = (rankings[idx].cosponsoredAmendments || 0) + 1;
+      }
+    }
   }
 
-  fs.writeFileSync(OUT_PATH, JSON.stringify(results, null, 2));
-  console.log(`Wrote ${OUT_PATH} with ${results.length} senator entries.`);
+  // Save back to rankings.json
+  try {
+    fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
+    console.log(`Updated senators-rankings.json with legislation data for ${rankings.length} senators`);
+  } catch (err) {
+    console.error('Failed to write rankings.json:', err.message);
+  }
 }
 
-run().catch(err => { console.error(err); process.exit(1); });
+updateRankings().catch(err => {
+  console.error('Script failed:', err.message);
+  process.exit(1);
+});
