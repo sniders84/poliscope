@@ -16,22 +16,16 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Needed for git add/commit/push
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
-
-      - name: Cache node modules
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: ${{ runner.os }}-node-
 
       - name: Install dependencies
-        run: npm install  # Use npm install (creates lockfile if missing)
+        run: npm install  # Will create package-lock.json if missing
 
       - name: Debug API key prefix
         run: node -e "console.log('API key prefix:', (process.env.CONGRESS_API_KEY||'').slice(0,6))"
@@ -51,10 +45,10 @@ jobs:
       - name: Generate scores
         run: node scripts/senators-scores.js
 
-      - name: Commit and push changes
+      - name: Commit and push changes (including lockfile if generated)
         run: |
           git config user.name "Data Bot"
           git config user.email "bot@electorate.app"
-          git add public/*.json
-          git diff --cached --quiet || git commit -m "Automated update: senators rankings, committees, votes & scores $(date +'%Y-%m-%d %H:%M:%S UTC')"
+          git add public/*.json package-lock.json
+          git diff --cached --quiet || git commit -m "Automated update: senators data + package-lock.json $(date +'%Y-%m-%d %H:%M:%S UTC')"
           git push
