@@ -1,5 +1,5 @@
 /**
- * Congress.gov votes scraper (cloud-only, Senate-only)
+ * Votes scraper (Senate-only, Congress.gov API)
  * - Fetches roll call votes for the given Congress
  * - Aggregates total votes, missed votes per senator (bioguideId)
  * - Outputs public/senators-votes.json
@@ -73,7 +73,7 @@ function initTotals() {
 }
 
 async function run() {
-  console.log(`Congress.gov votes aggregation: Congress=${CONGRESS}, chamber=Senate`);
+  console.log(`Votes scraper: Congress=${CONGRESS}, chamber=Senate`);
 
   const votesBase = `https://api.congress.gov/v3/rollcallvote?format=json&congress=${CONGRESS}&chamber=Senate&api_key=${API_KEY}`;
   const rollcalls = await fetchAllPages(votesBase);
