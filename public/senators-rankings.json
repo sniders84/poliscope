@@ -17,63 +17,9 @@
         "party": "majority"
       },
       {
-        "committee": "SSAP16",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP22",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP14",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP18",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP20",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP24",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
         "committee": "SSBK",
         "role": "Member",
         "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committee": "SSBK08",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSBK09",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSBK04",
-        "role": "Member",
-        "rank": 5,
         "party": "majority"
       },
       {
@@ -89,30 +35,6 @@
         "party": "majority"
       },
       {
-        "committee": "SSJU01",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU22",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU04",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU26",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
         "committee": "JCSE",
         "role": "Member",
         "rank": 5,
@@ -122,8 +44,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 335.75,
-    "scoreNormalized": 23.79
+    "score": 312.75,
+    "scoreNormalized": 22.76
   },
   {
     "bioguideId": "T000278",
@@ -143,63 +65,15 @@
         "party": "majority"
       },
       {
-        "committee": "SSAF13",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAF16",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAF15",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
         "committee": "SSAS",
         "role": "Member",
         "rank": 9,
         "party": "majority"
       },
       {
-        "committee": "SSAS17",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS13",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS16",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
         "committee": "SSHR",
         "role": "Member",
         "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committee": "SSHR09",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSHR11",
-        "role": "Member",
-        "rank": 5,
         "party": "majority"
       },
       {
@@ -218,8 +92,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 354.5,
-    "scoreNormalized": 25.8
+    "score": 331.5,
+    "scoreNormalized": 24.8
   },
   {
     "bioguideId": "M001153",
@@ -239,73 +113,13 @@
         "party": "majority"
       },
       {
-        "committee": "SSAP16",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP02",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP22",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP14",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP17",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP19",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
         "committee": "SSEG",
         "role": "Member",
         "rank": 10,
         "party": "majority"
       },
       {
-        "committee": "SSEG04",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEG03",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
         "committee": "SSHR",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSHR09",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSHR12",
         "role": "Member",
         "rank": 4,
         "party": "majority"
@@ -320,8 +134,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 376.25,
-    "scoreNormalized": 28.13
+    "score": 351.25,
+    "scoreNormalized": 26.96
   },
   {
     "bioguideId": "S001198",
@@ -341,69 +155,15 @@
         "party": "majority"
       },
       {
-        "committee": "SSAS14",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS15",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS13",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
         "committee": "SSCM",
         "role": "Member",
         "rank": 6,
         "party": "majority"
       },
       {
-        "committee": "SSCM34",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM36",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM38",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
         "committee": "SSEV",
         "role": "Member",
         "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEV09",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEV15",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEV08",
-        "role": "Member",
-        "rank": 5,
         "party": "majority"
       },
       {
@@ -416,8 +176,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 430.75,
-    "scoreNormalized": 33.98
+    "score": 406.75,
+    "scoreNormalized": 33.01
   },
   {
     "bioguideId": "G000003",
@@ -434,7 +194,7 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 0,
-    "scoreNormalized": -12.23
+    "scoreNormalized": -11.34
   },
   {
     "bioguideId": "K000377",
@@ -454,45 +214,9 @@
         "party": "minority"
       },
       {
-        "committee": "SSAS14",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS20",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS16",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
         "committee": "SSEV",
         "role": "Member",
         "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEV10",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEV15",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEV08",
-        "role": "Member",
-        "rank": 4,
         "party": "minority"
       },
       {
@@ -517,8 +241,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 616.5,
-    "scoreNormalized": 53.9
+    "score": 600.5,
+    "scoreNormalized": 54.13
   },
   {
     "bioguideId": "B001236",
@@ -538,99 +262,15 @@
         "party": "majority"
       },
       {
-        "committee": "SSAF13",
-        "role": "Ex Officio",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAF14",
-        "role": "Ex Officio",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAF16",
-        "role": "Ex Officio",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAF17",
-        "role": "Ex Officio",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAF15",
-        "role": "Ex Officio",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
         "committee": "SSAP",
         "role": "Member",
         "rank": 7,
         "party": "majority"
       },
       {
-        "committee": "SSAP02",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP23",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP18",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP19",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP20",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP24",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
         "committee": "SSEV",
         "role": "Member",
         "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEV10",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEV15",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEV08",
-        "role": "Member",
-        "rank": 8,
         "party": "majority"
       },
       {
@@ -655,8 +295,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 277.25,
-    "scoreNormalized": 17.51
+    "score": 253.25,
+    "scoreNormalized": 16.27
   },
   {
     "bioguideId": "C001095",
@@ -676,45 +316,9 @@
         "party": "majority"
       },
       {
-        "committee": "SSAS14",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS21",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS20",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS16",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
         "committee": "SSEG",
         "role": "Member",
         "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEG01",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEG03",
-        "role": "Member",
-        "rank": 4,
         "party": "majority"
       },
       {
@@ -733,8 +337,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 353.25,
-    "scoreNormalized": 25.66
+    "score": 332.25,
+    "scoreNormalized": 24.88
   },
   {
     "bioguideId": "S001222",
@@ -751,7 +355,7 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 0,
-    "scoreNormalized": -12.23
+    "scoreNormalized": -11.34
   },
   {
     "bioguideId": "P000145",
@@ -771,50 +375,14 @@
         "party": "minority"
       },
       {
-        "committee": "SSEG01",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEG03",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEG07",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
         "committee": "SSEV",
         "role": "Member",
         "rank": 6,
         "party": "minority"
       },
       {
-        "committee": "SSEV10",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEV15",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEV08",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
         "committee": "SSRA",
-        "role": "Ranking Member",
+        "role": "Chairman",
         "rank": 1,
         "party": "minority"
       },
@@ -828,30 +396,6 @@
         "committee": "SSJU",
         "role": "Member",
         "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU25",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU04",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU28",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU21",
-        "role": "Member",
-        "rank": 5,
         "party": "minority"
       },
       {
@@ -870,8 +414,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 889.75,
-    "scoreNormalized": 83.21
+    "score": 874.75,
+    "scoreNormalized": 84.03
   },
   {
     "bioguideId": "B001267",
@@ -891,39 +435,9 @@
         "party": "minority"
       },
       {
-        "committee": "SSAF14",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAF15",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
         "committee": "SSFI",
         "role": "Member",
         "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI12",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI13",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI11",
-        "role": "Ranking Member",
-        "rank": 1,
         "party": "minority"
       },
       {
@@ -942,7 +456,7 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 1046.25,
+    "score": 1021.25,
     "scoreNormalized": 100
   },
   {
@@ -960,7 +474,7 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 0,
-    "scoreNormalized": -12.23
+    "scoreNormalized": -11.34
   },
   {
     "bioguideId": "B001277",
@@ -980,39 +494,9 @@
         "party": "minority"
       },
       {
-        "committee": "SSAS14",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS17",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS13",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
         "committee": "SSGA",
         "role": "Member",
         "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSGA01",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSGA20",
-        "role": "Ranking Member",
-        "rank": 2,
         "party": "minority"
       },
       {
@@ -1022,32 +506,8 @@
         "party": "minority"
       },
       {
-        "committee": "SSJU01",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU22",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU25",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU28",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
         "committee": "SSVA",
-        "role": "Ranking Member",
+        "role": "Chairman",
         "rank": 1,
         "party": "minority"
       },
@@ -1061,8 +521,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 621,
-    "scoreNormalized": 54.38
+    "score": 587,
+    "scoreNormalized": 52.66
   },
   {
     "bioguideId": "M001169",
@@ -1082,73 +542,13 @@
         "party": "minority"
       },
       {
-        "committee": "SSAP02",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP14",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP18",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP20",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP24",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
         "committee": "SSFR",
         "role": "Member",
         "rank": 3,
         "party": "minority"
       },
       {
-        "committee": "SSFR01",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR07",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR06",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
         "committee": "SSHR",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSHR11",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSHR12",
         "role": "Member",
         "rank": 4,
         "party": "minority"
@@ -1157,8 +557,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 509.75,
-    "scoreNormalized": 42.45
+    "score": 484.75,
+    "scoreNormalized": 41.51
   },
   {
     "bioguideId": "B001313",
@@ -1184,35 +584,17 @@
         "party": "minority"
       },
       {
-        "committee": "HSAG16",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "HSAG03",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
         "committee": "HSZS",
         "role": "Member",
         "rank": 9,
-        "party": "minority"
-      },
-      {
-        "committee": "HSGO12",
-        "role": "Ranking Member",
-        "rank": 1,
         "party": "minority"
       }
     ],
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 287,
-    "scoreNormalized": 18.56
+    "score": 279,
+    "scoreNormalized": 19.08
   },
   {
     "bioguideId": "C001088",
@@ -1232,67 +614,7 @@
         "party": "minority"
       },
       {
-        "committee": "SSAP16",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP02",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP22",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP23",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP20",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP24",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
         "committee": "SSFR",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR09",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR02",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR15",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR14",
         "role": "Ranking Member",
         "rank": 2,
         "party": "minority"
@@ -1310,30 +632,6 @@
         "party": "minority"
       },
       {
-        "committee": "SSJU22",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU04",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU26",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU28",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
         "committee": "SLET",
         "role": "Chairman",
         "rank": 1,
@@ -1343,8 +641,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 655.25,
-    "scoreNormalized": 58.06
+    "score": 616.25,
+    "scoreNormalized": 55.85
   },
   {
     "bioguideId": "M001231",
@@ -1368,37 +666,13 @@
         "role": "Member",
         "rank": 15,
         "party": "minority"
-      },
-      {
-        "committee": "HSAG22",
-        "role": "Member",
-        "rank": 10,
-        "party": "minority"
-      },
-      {
-        "committee": "HSAG14",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committee": "HSED14",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "HSED02",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
       }
     ],
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 195,
-    "scoreNormalized": 8.69
+    "score": 191,
+    "scoreNormalized": 9.48
   },
   {
     "bioguideId": "S001217",
@@ -1418,63 +692,15 @@
         "party": "majority"
       },
       {
-        "committee": "SSAS17",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS15",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS13",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
         "committee": "SSFR",
         "role": "Member",
         "rank": 10,
         "party": "majority"
       },
       {
-        "committee": "SSFR07",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR14",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR06",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
         "committee": "SSGA",
         "role": "Member",
         "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSGA01",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSGA20",
-        "role": "Ranking Member",
-        "rank": 2,
         "party": "majority"
       },
       {
@@ -1493,8 +719,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 589.25,
-    "scoreNormalized": 50.98
+    "score": 566.25,
+    "scoreNormalized": 50.4
   },
   {
     "bioguideId": "O000174",
@@ -1514,36 +740,6 @@
         "party": "minority"
       },
       {
-        "committee": "SSAP01",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP22",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP17",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP08",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP19",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
         "committee": "SSRA",
         "role": "Member",
         "rank": 6,
@@ -1559,8 +755,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 284.75,
-    "scoreNormalized": 18.32
+    "score": 269.75,
+    "scoreNormalized": 18.07
   },
   {
     "bioguideId": "W000790",
@@ -1580,69 +776,15 @@
         "party": "minority"
       },
       {
-        "committee": "SSAF14",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAF16",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAF15",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
         "committee": "SSBK",
         "role": "Member",
         "rank": 7,
         "party": "minority"
       },
       {
-        "committee": "SSBK12",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSBK08",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSBK04",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
         "committee": "SSFI",
         "role": "Member",
         "rank": 12,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI10",
-        "role": "Member",
-        "rank": 9,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI13",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI11",
-        "role": "Member",
-        "rank": 8,
         "party": "minority"
       },
       {
@@ -1655,8 +797,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 519.75,
-    "scoreNormalized": 43.52
+    "score": 495.75,
+    "scoreNormalized": 42.71
   },
   {
     "bioguideId": "H001042",
@@ -1676,45 +818,9 @@
         "party": "minority"
       },
       {
-        "committee": "SSAS17",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS15",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS13",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
         "committee": "SSEG",
         "role": "Member",
         "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEG01",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEG04",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEG03",
-        "role": "Member",
-        "rank": 3,
         "party": "minority"
       },
       {
@@ -1730,30 +836,6 @@
         "party": "minority"
       },
       {
-        "committee": "SSJU25",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU04",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU26",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU21",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
         "committee": "SSVA",
         "role": "Member",
         "rank": 4,
@@ -1763,8 +845,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 720.25,
-    "scoreNormalized": 65.03
+    "score": 700.25,
+    "scoreNormalized": 65
   },
   {
     "bioguideId": "S001194",
@@ -1784,67 +866,7 @@
         "party": "minority"
       },
       {
-        "committee": "SSAP16",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP02",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP18",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP19",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP20",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP24",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
         "committee": "SSCM",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM34",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM35",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM36",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM38",
         "role": "Member",
         "rank": 3,
         "party": "minority"
@@ -1853,24 +875,6 @@
         "committee": "SSFR",
         "role": "Member",
         "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR02",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR01",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR15",
-        "role": "Ranking Member",
-        "rank": 2,
         "party": "minority"
       },
       {
@@ -1889,8 +893,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 626.75,
-    "scoreNormalized": 55
+    "score": 598.75,
+    "scoreNormalized": 53.94
   },
   {
     "bioguideId": "C000880",
@@ -1910,63 +914,9 @@
         "party": "majority"
       },
       {
-        "committee": "SSBK08",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSBK09",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSBK04",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
         "committee": "SSFI",
         "role": "Chairman",
         "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI12",
-        "role": "Ex Officio",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI14",
-        "role": "Ex Officio",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI10",
-        "role": "Ex Officio",
-        "rank": 12,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI13",
-        "role": "Ex Officio",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI02",
-        "role": "Ex Officio",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI11",
-        "role": "Ex Officio",
-        "rank": 10,
         "party": "majority"
       },
       {
@@ -1985,8 +935,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 372.75,
-    "scoreNormalized": 27.76
+    "score": 348.75,
+    "scoreNormalized": 26.68
   },
   {
     "bioguideId": "R000584",
@@ -2006,69 +956,9 @@
         "party": "majority"
       },
       {
-        "committee": "SSEG01",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEG03",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEG07",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
         "committee": "SSFR",
         "role": "Chairman",
         "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR09",
-        "role": "Ex Officio",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR02",
-        "role": "Ex Officio",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR01",
-        "role": "Ex Officio",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR15",
-        "role": "Ex Officio",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR07",
-        "role": "Ex Officio",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR14",
-        "role": "Ex Officio",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR06",
-        "role": "Ex Officio",
-        "rank": 6,
         "party": "majority"
       },
       {
@@ -2099,8 +989,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 529.5,
-    "scoreNormalized": 44.57
+    "score": 509.5,
+    "scoreNormalized": 44.21
   },
   {
     "bioguideId": "D000563",
@@ -2120,68 +1010,14 @@
         "party": "minority"
       },
       {
-        "committee": "SSAF13",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAF17",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
         "committee": "SSAP",
         "role": "Ranking Member",
         "rank": 2,
         "party": "minority"
       },
       {
-        "committee": "SSAP02",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP22",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP23",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP18",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP20",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP24",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
         "committee": "SSJU",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU22",
-        "role": "Ranking Member",
+        "role": "Chairman",
         "rank": 1,
         "party": "minority"
       }
@@ -2189,8 +1025,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 667.5,
-    "scoreNormalized": 59.37
+    "score": 628.5,
+    "scoreNormalized": 57.18
   },
   {
     "bioguideId": "D000622",
@@ -2210,69 +1046,15 @@
         "party": "minority"
       },
       {
-        "committee": "SSAS14",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS17",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS15",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
         "committee": "SSCM",
         "role": "Member",
         "rank": 7,
         "party": "minority"
       },
       {
-        "committee": "SSCM33",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM34",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM38",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
         "committee": "SSFR",
         "role": "Member",
         "rank": 9,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR01",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR15",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR14",
-        "role": "Member",
-        "rank": 4,
         "party": "minority"
       },
       {
@@ -2285,8 +1067,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 486.25,
-    "scoreNormalized": 39.93
+    "score": 462.25,
+    "scoreNormalized": 39.06
   },
   {
     "bioguideId": "B001299",
@@ -2306,69 +1088,15 @@
         "party": "majority"
       },
       {
-        "committee": "SSAS17",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS13",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS16",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
         "committee": "SSBK",
         "role": "Member",
         "rank": 10,
         "party": "majority"
       },
       {
-        "committee": "SSBK12",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSBK05",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSBK04",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
         "committee": "SSHR",
         "role": "Member",
         "rank": 10,
-        "party": "majority"
-      },
-      {
-        "committee": "SSHR09",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSHR11",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSHR12",
-        "role": "Member",
-        "rank": 7,
         "party": "majority"
       },
       {
@@ -2381,8 +1109,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 345.5,
-    "scoreNormalized": 24.83
+    "score": 336.5,
+    "scoreNormalized": 25.35
   },
   {
     "bioguideId": "Y000064",
@@ -2402,51 +1130,9 @@
         "party": "majority"
       },
       {
-        "committee": "SSCM34",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM35",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM37",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM38",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
         "committee": "SSFI",
         "role": "Member",
         "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI10",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI13",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI02",
-        "role": "Ranking Member",
-        "rank": 2,
         "party": "majority"
       },
       {
@@ -2465,8 +1151,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 307.25,
-    "scoreNormalized": 20.73
+    "score": 285.25,
+    "scoreNormalized": 19.76
   },
   {
     "bioguideId": "E000295",
@@ -2486,63 +1172,15 @@
         "party": "majority"
       },
       {
-        "committee": "SSAF14",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAF17",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAF15",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
         "committee": "SSAS",
         "role": "Member",
         "rank": 5,
         "party": "majority"
       },
       {
-        "committee": "SSAS21",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS20",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS17",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
         "committee": "SSGA",
         "role": "Member",
         "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSGA20",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSGA22",
-        "role": "Member",
-        "rank": 4,
         "party": "majority"
       },
       {
@@ -2555,8 +1193,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 429.5,
-    "scoreNormalized": 33.84
+    "score": 406.5,
+    "scoreNormalized": 32.98
   },
   {
     "bioguideId": "G000386",
@@ -2576,43 +1214,7 @@
         "party": "majority"
       },
       {
-        "committee": "SSAF13",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAF16",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAF15",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
         "committee": "SSFI",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI13",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI02",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI11",
         "role": "Ranking Member",
         "rank": 2,
         "party": "majority"
@@ -2645,8 +1247,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 498.75,
-    "scoreNormalized": 41.27
+    "score": 472.75,
+    "scoreNormalized": 40.2
   },
   {
     "bioguideId": "M001197",
@@ -2663,7 +1265,7 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 0,
-    "scoreNormalized": -12.23
+    "scoreNormalized": -11.34
   },
   {
     "bioguideId": "M000934",
@@ -2683,81 +1285,15 @@
         "party": "majority"
       },
       {
-        "committee": "SSAF13",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAF15",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
         "committee": "SSAP",
         "role": "Member",
         "rank": 5,
         "party": "majority"
       },
       {
-        "committee": "SSAP01",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP16",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP02",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP18",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP20",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP24",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
         "committee": "SSCM",
         "role": "Member",
         "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM33",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM34",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM35",
-        "role": "Member",
-        "rank": 4,
         "party": "majority"
       },
       {
@@ -2782,8 +1318,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 384.25,
-    "scoreNormalized": 28.99
+    "score": 363.25,
+    "scoreNormalized": 28.26
   },
   {
     "bioguideId": "M000355",
@@ -2803,61 +1339,7 @@
         "party": "majority"
       },
       {
-        "committee": "SSAF13",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAF16",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAF15",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
         "committee": "SSAP",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP01",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP02",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP22",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP17",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP19",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP20",
         "role": "Ranking Member",
         "rank": 2,
         "party": "majority"
@@ -2884,8 +1366,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 148,
-    "scoreNormalized": 3.65
+    "score": 104,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "P000603",
@@ -2905,43 +1387,7 @@
         "party": "majority"
       },
       {
-        "committee": "SSFR09",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR01",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR15",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR14",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
         "committee": "SSHR",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSHR09",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSHR12",
         "role": "Ranking Member",
         "rank": 2,
         "party": "majority"
@@ -2950,24 +1396,6 @@
         "committee": "SSGA",
         "role": "Chairman",
         "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSGA01",
-        "role": "Ex Officio",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSGA20",
-        "role": "Ex Officio",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSGA22",
-        "role": "Ex Officio",
-        "rank": 6,
         "party": "majority"
       },
       {
@@ -2980,8 +1408,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 290.75,
-    "scoreNormalized": 18.96
+    "score": 266.75,
+    "scoreNormalized": 17.74
   },
   {
     "bioguideId": "C001075",
@@ -3001,69 +1429,15 @@
         "party": "majority"
       },
       {
-        "committee": "SSEG01",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEG04",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEG07",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
         "committee": "SSFI",
         "role": "Member",
         "rank": 6,
         "party": "majority"
       },
       {
-        "committee": "SSFI14",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI10",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI11",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
         "committee": "SSHR",
         "role": "Chairman",
         "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSHR09",
-        "role": "Ex Officio",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committee": "SSHR11",
-        "role": "Ex Officio",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committee": "SSHR12",
-        "role": "Ex Officio",
-        "rank": 10,
         "party": "majority"
       },
       {
@@ -3076,8 +1450,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 498.75,
-    "scoreNormalized": 41.27
+    "score": 484.75,
+    "scoreNormalized": 41.51
   },
   {
     "bioguideId": "K000393",
@@ -3097,63 +1471,9 @@
         "party": "majority"
       },
       {
-        "committee": "SSAP16",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP02",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP22",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP14",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP18",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP24",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
         "committee": "SSBK",
         "role": "Member",
         "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSBK12",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSBK08",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSBK04",
-        "role": "Member",
-        "rank": 3,
         "party": "majority"
       },
       {
@@ -3167,37 +1487,13 @@
         "role": "Member",
         "rank": 8,
         "party": "majority"
-      },
-      {
-        "committee": "SSJU25",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU04",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU28",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU21",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
       }
     ],
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 447.5,
-    "scoreNormalized": 35.77
+    "score": 424.5,
+    "scoreNormalized": 34.94
   },
   {
     "bioguideId": "C001035",
@@ -3217,85 +1513,7 @@
         "party": "majority"
       },
       {
-        "committee": "SSAP01",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP16",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP02",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP22",
-        "role": "Ex Officio",
-        "rank": 10,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP23",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP14",
-        "role": "Ex Officio",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP17",
-        "role": "Ex Officio",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP18",
-        "role": "Ex Officio",
-        "rank": 10,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP08",
-        "role": "Ex Officio",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP19",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP20",
-        "role": "Ex Officio",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP24",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
         "committee": "SSHR",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSHR12",
         "role": "Member",
         "rank": 3,
         "party": "majority"
@@ -3310,8 +1528,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 369.75,
-    "scoreNormalized": 27.43
+    "score": 346.75,
+    "scoreNormalized": 26.46
   },
   {
     "bioguideId": "K000383",
@@ -3331,45 +1549,9 @@
         "party": "minority"
       },
       {
-        "committee": "SSAS14",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS13",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS16",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
         "committee": "SSEG",
         "role": "Member",
         "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEG01",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEG04",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEG03",
-        "role": "Member",
-        "rank": 4,
         "party": "minority"
       },
       {
@@ -3388,8 +1570,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 665.5,
-    "scoreNormalized": 59.16
+    "score": 649.5,
+    "scoreNormalized": 59.47
   },
   {
     "bioguideId": "A000382",
@@ -3409,57 +1591,15 @@
         "party": "minority"
       },
       {
-        "committee": "SSBK08",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committee": "SSBK09",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSBK04",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
         "committee": "SSEV",
         "role": "Member",
         "rank": 9,
         "party": "minority"
       },
       {
-        "committee": "SSEV15",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEV08",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
         "committee": "SSHR",
         "role": "Member",
         "rank": 11,
-        "party": "minority"
-      },
-      {
-        "committee": "SSHR09",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSHR11",
-        "role": "Member",
-        "rank": 6,
         "party": "minority"
       },
       {
@@ -3472,8 +1612,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 425.5,
-    "scoreNormalized": 33.41
+    "score": 413.5,
+    "scoreNormalized": 33.74
   },
   {
     "bioguideId": "V000128",
@@ -3493,51 +1633,9 @@
         "party": "minority"
       },
       {
-        "committee": "SSAP16",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP23",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP14",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP17",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP24",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
         "committee": "SSBK",
         "role": "Member",
         "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSBK09",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSBK05",
-        "role": "Ranking Member",
-        "rank": 2,
         "party": "minority"
       },
       {
@@ -3547,41 +1645,17 @@
         "party": "minority"
       },
       {
-        "committee": "SSFR09",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR02",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR14",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
         "committee": "SSBU",
         "role": "Member",
         "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committee": "SSBK13",
-        "role": "Member",
-        "rank": 3,
         "party": "minority"
       }
     ],
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 662,
-    "scoreNormalized": 58.78
+    "score": 626,
+    "scoreNormalized": 56.91
   },
   {
     "bioguideId": "M000133",
@@ -3601,45 +1675,9 @@
         "party": "minority"
       },
       {
-        "committee": "SSCM34",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM35",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM38",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
         "committee": "SSEV",
         "role": "Member",
         "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEV09",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEV10",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEV08",
-        "role": "Member",
-        "rank": 3,
         "party": "minority"
       },
       {
@@ -3649,20 +1687,8 @@
         "party": "minority"
       },
       {
-        "committee": "SSHR09",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSHR12",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
         "committee": "SSSB",
-        "role": "Ranking Member",
+        "role": "Chairman",
         "rank": 1,
         "party": "minority"
       }
@@ -3670,8 +1696,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 710.25,
-    "scoreNormalized": 63.96
+    "score": 697.25,
+    "scoreNormalized": 64.68
   },
   {
     "bioguideId": "W000817",
@@ -3691,57 +1717,9 @@
         "party": "minority"
       },
       {
-        "committee": "SSAS17",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS15",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS16",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
         "committee": "SSBK",
-        "role": "Ranking Member",
+        "role": "Chairman",
         "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSBK12",
-        "role": "Ex Officio",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSBK08",
-        "role": "Ex Officio",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committee": "SSBK09",
-        "role": "Ex Officio",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSBK05",
-        "role": "Ex Officio",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSBK04",
-        "role": "Ex Officio",
-        "rank": 8,
         "party": "minority"
       },
       {
@@ -3751,41 +1729,17 @@
         "party": "minority"
       },
       {
-        "committee": "SSFI10",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI13",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI11",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
         "committee": "SPAG",
         "role": "Ranking Member",
         "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSBK13",
-        "role": "Ex Officio",
-        "rank": 5,
         "party": "minority"
       }
     ],
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 928.25,
-    "scoreNormalized": 87.34
+    "score": 911.25,
+    "scoreNormalized": 88.01
   },
   {
     "bioguideId": "P000595",
@@ -3805,57 +1759,9 @@
         "party": "minority"
       },
       {
-        "committee": "SSAP01",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP16",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP22",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP14",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP19",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
         "committee": "SSAS",
         "role": "Member",
         "rank": 9,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS14",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS21",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS20",
-        "role": "Member",
-        "rank": 5,
         "party": "minority"
       },
       {
@@ -3865,59 +1771,17 @@
         "party": "minority"
       },
       {
-        "committee": "SSCM34",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM36",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM37",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM38",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
         "committee": "SSGA",
-        "role": "Ranking Member",
+        "role": "Chairman",
         "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSGA01",
-        "role": "Ex Officio",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSGA20",
-        "role": "Ex Officio",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSGA22",
-        "role": "Ex Officio",
-        "rank": 5,
         "party": "minority"
       }
     ],
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 804.5,
-    "scoreNormalized": 74.07
+    "score": 779.5,
+    "scoreNormalized": 73.64
   },
   {
     "bioguideId": "S001208",
@@ -3937,57 +1801,15 @@
         "party": "minority"
       },
       {
-        "committee": "SSAF13",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAF17",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
         "committee": "SSAS",
         "role": "Member",
         "rank": 13,
         "party": "minority"
       },
       {
-        "committee": "SSAS14",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS21",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS20",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
         "committee": "SSGA",
         "role": "Member",
         "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committee": "SSGA20",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSGA22",
-        "role": "Member",
-        "rank": 4,
         "party": "minority"
       },
       {
@@ -4000,8 +1822,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 326.75,
-    "scoreNormalized": 22.82
+    "score": 309.75,
+    "scoreNormalized": 22.43
   },
   {
     "bioguideId": "K000367",
@@ -4016,60 +1838,12 @@
     "committees": [
       {
         "committee": "SSAF",
-        "role": "Ranking Member",
+        "role": "Chairman",
         "rank": 1,
         "party": "minority"
       },
       {
-        "committee": "SSAF13",
-        "role": "Ex Officio",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAF14",
-        "role": "Ex Officio",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAF16",
-        "role": "Ex Officio",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAF17",
-        "role": "Ex Officio",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAF15",
-        "role": "Ex Officio",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
         "committee": "SSCM",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM34",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM35",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM38",
         "role": "Ranking Member",
         "rank": 2,
         "party": "minority"
@@ -4084,30 +1858,6 @@
         "committee": "SSJU",
         "role": "Member",
         "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU01",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU22",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU04",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU28",
-        "role": "Ranking Member",
-        "rank": 1,
         "party": "minority"
       },
       {
@@ -4126,8 +1876,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 683.75,
-    "scoreNormalized": 61.12
+    "score": 641.75,
+    "scoreNormalized": 58.63
   },
   {
     "bioguideId": "S001203",
@@ -4147,63 +1897,15 @@
         "party": "minority"
       },
       {
-        "committee": "SSAF16",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAF17",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAF15",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
         "committee": "SSBK",
         "role": "Member",
         "rank": 6,
         "party": "minority"
       },
       {
-        "committee": "SSBK12",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSBK09",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
         "committee": "SSFI",
         "role": "Member",
         "rank": 10,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI14",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI10",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI13",
-        "role": "Member",
-        "rank": 7,
         "party": "minority"
       },
       {
@@ -4217,19 +1919,13 @@
         "role": "Member",
         "rank": 3,
         "party": "minority"
-      },
-      {
-        "committee": "SSBK13",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
       }
     ],
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 406,
-    "scoreNormalized": 31.32
+    "score": 382,
+    "scoreNormalized": 30.31
   },
   {
     "bioguideId": "H001079",
@@ -4249,81 +1945,15 @@
         "party": "majority"
       },
       {
-        "committee": "SSAF13",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAF14",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAF17",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
         "committee": "SSAP",
         "role": "Member",
         "rank": 10,
         "party": "majority"
       },
       {
-        "committee": "SSAP01",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP22",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP14",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP18",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP19",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP24",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
         "committee": "SSEG",
         "role": "Member",
         "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEG01",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEG03",
-        "role": "Member",
-        "rank": 6,
         "party": "majority"
       },
       {
@@ -4342,8 +1972,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 327.75,
-    "scoreNormalized": 22.93
+    "score": 306.75,
+    "scoreNormalized": 22.1
   },
   {
     "bioguideId": "W000437",
@@ -4363,67 +1993,7 @@
         "party": "majority"
       },
       {
-        "committee": "SSAS14",
-        "role": "Ex Officio",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS21",
-        "role": "Ex Officio",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS20",
-        "role": "Ex Officio",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS17",
-        "role": "Ex Officio",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS15",
-        "role": "Ex Officio",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS13",
-        "role": "Ex Officio",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS16",
-        "role": "Ex Officio",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
         "committee": "SSCM",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM34",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM36",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM38",
         "role": "Member",
         "rank": 3,
         "party": "majority"
@@ -4432,24 +2002,6 @@
         "committee": "SSEV",
         "role": "Member",
         "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEV09",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEV10",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEV08",
-        "role": "Member",
-        "rank": 7,
         "party": "majority"
       },
       {
@@ -4474,8 +2026,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 344.5,
-    "scoreNormalized": 24.73
+    "score": 326.5,
+    "scoreNormalized": 24.26
   },
   {
     "bioguideId": "H001089",
@@ -4495,33 +2047,9 @@
         "party": "majority"
       },
       {
-        "committee": "SSHR11",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSHR12",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
         "committee": "SSGA",
         "role": "Member",
         "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSGA01",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSGA20",
-        "role": "Chairman",
-        "rank": 1,
         "party": "majority"
       },
       {
@@ -4535,37 +2063,13 @@
         "role": "Member",
         "rank": 6,
         "party": "majority"
-      },
-      {
-        "committee": "SSJU01",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU22",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU28",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU21",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
       }
     ],
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 341.75,
-    "scoreNormalized": 24.43
+    "score": 318.75,
+    "scoreNormalized": 23.41
   },
   {
     "bioguideId": "S001227",
@@ -4585,87 +2089,15 @@
         "party": "majority"
       },
       {
-        "committee": "SSAS14",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS21",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS20",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS15",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
         "committee": "SSCM",
         "role": "Member",
         "rank": 10,
         "party": "majority"
       },
       {
-        "committee": "SSCM33",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM34",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM37",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM38",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
         "committee": "SSJU",
         "role": "Member",
         "rank": 10,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU01",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU25",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU26",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU21",
-        "role": "Chairman",
-        "rank": 1,
         "party": "majority"
       },
       {
@@ -4678,8 +2110,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 282.75,
-    "scoreNormalized": 18.1
+    "score": 265.75,
+    "scoreNormalized": 17.63
   },
   {
     "bioguideId": "D000618",
@@ -4699,69 +2131,15 @@
         "party": "majority"
       },
       {
-        "committee": "SSEG04",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEG03",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEG07",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
         "committee": "SSFI",
         "role": "Member",
         "rank": 8,
         "party": "majority"
       },
       {
-        "committee": "SSFI12",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI10",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI13",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
         "committee": "SSFR",
         "role": "Member",
         "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR09",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR01",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR07",
-        "role": "Member",
-        "rank": 5,
         "party": "majority"
       },
       {
@@ -4774,8 +2152,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 474.75,
-    "scoreNormalized": 38.7
+    "score": 450.75,
+    "scoreNormalized": 37.8
   },
   {
     "bioguideId": "S001233",
@@ -4792,7 +2170,7 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 0,
-    "scoreNormalized": -12.23
+    "scoreNormalized": -11.34
   },
   {
     "bioguideId": "F000463",
@@ -4812,57 +2190,9 @@
         "party": "majority"
       },
       {
-        "committee": "SSAF17",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAF15",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
         "committee": "SSAP",
         "role": "Member",
         "rank": 14,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP01",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP16",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP23",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP17",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP08",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP19",
-        "role": "Member",
-        "rank": 7,
         "party": "majority"
       },
       {
@@ -4872,43 +2202,7 @@
         "party": "majority"
       },
       {
-        "committee": "SSAS14",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS15",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS16",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
         "committee": "SSCM",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM34",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM35",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM38",
         "role": "Member",
         "rank": 4,
         "party": "majority"
@@ -4941,8 +2235,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 271.5,
-    "scoreNormalized": 16.89
+    "score": 232.5,
+    "scoreNormalized": 14.01
   },
   {
     "bioguideId": "R000618",
@@ -4962,69 +2256,15 @@
         "party": "majority"
       },
       {
-        "committee": "SSBK12",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSBK08",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSBK05",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
         "committee": "SSEV",
         "role": "Member",
         "rank": 7,
         "party": "majority"
       },
       {
-        "committee": "SSEV10",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEV15",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEV08",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
         "committee": "SSFR",
         "role": "Ranking Member",
         "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR02",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR01",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR14",
-        "role": "Member",
-        "rank": 4,
         "party": "majority"
       },
       {
@@ -5037,8 +2277,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 424.75,
-    "scoreNormalized": 33.33
+    "score": 400.75,
+    "scoreNormalized": 32.35
   },
   {
     "bioguideId": "C001113",
@@ -5058,69 +2298,15 @@
         "party": "minority"
       },
       {
-        "committee": "SSBK08",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSBK05",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSBK04",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
         "committee": "SSEG",
         "role": "Member",
         "rank": 6,
         "party": "minority"
       },
       {
-        "committee": "SSEG01",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEG03",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEG07",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
         "committee": "SSFI",
         "role": "Member",
         "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI10",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI13",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI02",
-        "role": "Ranking Member",
-        "rank": 2,
         "party": "minority"
       },
       {
@@ -5133,8 +2319,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 744,
-    "scoreNormalized": 67.58
+    "score": 715,
+    "scoreNormalized": 66.61
   },
   {
     "bioguideId": "R000608",
@@ -5154,69 +2340,15 @@
         "party": "minority"
       },
       {
-        "committee": "SSAS21",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS20",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS16",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
         "committee": "SSCM",
         "role": "Member",
         "rank": 8,
         "party": "minority"
       },
       {
-        "committee": "SSCM33",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM34",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM37",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
         "committee": "SSFR",
         "role": "Member",
         "rank": 10,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR15",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR07",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR06",
-        "role": "Member",
-        "rank": 3,
         "party": "minority"
       },
       {
@@ -5229,8 +2361,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 805.75,
-    "scoreNormalized": 74.2
+    "score": 781.75,
+    "scoreNormalized": 73.89
   },
   {
     "bioguideId": "S001181",
@@ -5250,111 +2382,15 @@
         "party": "minority"
       },
       {
-        "committee": "SSAP01",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP16",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP02",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP14",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP18",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP20",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
         "committee": "SSAS",
         "role": "Ranking Member",
         "rank": 2,
         "party": "minority"
       },
       {
-        "committee": "SSAS20",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS15",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS13",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
         "committee": "SSFR",
-        "role": "Ranking Member",
+        "role": "Chairman",
         "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR09",
-        "role": "Ex Officio",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR02",
-        "role": "Ex Officio",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR01",
-        "role": "Ex Officio",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR15",
-        "role": "Ex Officio",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR07",
-        "role": "Ex Officio",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR14",
-        "role": "Ex Officio",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR06",
-        "role": "Ex Officio",
-        "rank": 5,
         "party": "minority"
       },
       {
@@ -5379,8 +2415,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 1036,
-    "scoreNormalized": 98.9
+    "score": 1000,
+    "scoreNormalized": 97.68
   },
   {
     "bioguideId": "H001076",
@@ -5400,55 +2436,13 @@
         "party": "minority"
       },
       {
-        "committee": "SSFI12",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI10",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI11",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
         "committee": "SSHR",
         "role": "Member",
         "rank": 6,
         "party": "minority"
       },
       {
-        "committee": "SSHR11",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSHR12",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
         "committee": "SSGA",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSGA01",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSGA22",
         "role": "Ranking Member",
         "rank": 2,
         "party": "minority"
@@ -5461,7 +2455,7 @@
       },
       {
         "committee": "JSEC",
-        "role": "Ranking Member",
+        "role": "Chairman",
         "rank": 1,
         "party": "minority"
       }
@@ -5469,8 +2463,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 490.25,
-    "scoreNormalized": 40.36
+    "score": 468.25,
+    "scoreNormalized": 39.71
   },
   {
     "bioguideId": "K000394",
@@ -5490,45 +2484,9 @@
         "party": "minority"
       },
       {
-        "committee": "SSBK08",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSBK05",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSBK04",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
         "committee": "SSCM",
         "role": "Member",
         "rank": 12,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM33",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM34",
-        "role": "Member",
-        "rank": 11,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM38",
-        "role": "Member",
-        "rank": 7,
         "party": "minority"
       },
       {
@@ -5538,33 +2496,9 @@
         "party": "minority"
       },
       {
-        "committee": "SSHR09",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSHR12",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
         "committee": "SSGA",
         "role": "Member",
         "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSGA01",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSGA20",
-        "role": "Ranking Member",
-        "rank": 1,
         "party": "minority"
       },
       {
@@ -5577,8 +2511,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 517.25,
-    "scoreNormalized": 43.26
+    "score": 497.25,
+    "scoreNormalized": 42.87
   },
   {
     "bioguideId": "B001288",
@@ -5598,45 +2532,9 @@
         "party": "minority"
       },
       {
-        "committee": "SSAF13",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAF16",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAF17",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
         "committee": "SSFR",
         "role": "Member",
         "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR09",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR01",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR07",
-        "role": "Member",
-        "rank": 4,
         "party": "minority"
       },
       {
@@ -5650,37 +2548,13 @@
         "role": "Member",
         "rank": 7,
         "party": "minority"
-      },
-      {
-        "committee": "SSJU01",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU22",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU04",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU21",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
       }
     ],
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 879.25,
-    "scoreNormalized": 82.09
+    "score": 854.25,
+    "scoreNormalized": 81.79
   },
   {
     "bioguideId": "H001046",
@@ -5700,63 +2574,9 @@
         "party": "minority"
       },
       {
-        "committee": "SSAP01",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP22",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP17",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP08",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP19",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
         "committee": "SSEG",
-        "role": "Ranking Member",
+        "role": "Chairman",
         "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEG01",
-        "role": "Ex Officio",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEG04",
-        "role": "Ex Officio",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEG03",
-        "role": "Ex Officio",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEG07",
-        "role": "Ex Officio",
-        "rank": 6,
         "party": "minority"
       },
       {
@@ -5775,8 +2595,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 587.75,
-    "scoreNormalized": 50.82
+    "score": 573.75,
+    "scoreNormalized": 51.21
   },
   {
     "bioguideId": "L000570",
@@ -5796,69 +2616,15 @@
         "party": "minority"
       },
       {
-        "committee": "SSAF14",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAF16",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAF15",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
         "committee": "SSCM",
         "role": "Member",
         "rank": 9,
         "party": "minority"
       },
       {
-        "committee": "SSCM34",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM35",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM38",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
         "committee": "SSFI",
         "role": "Member",
         "rank": 11,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI12",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI10",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI11",
-        "role": "Member",
-        "rank": 7,
         "party": "minority"
       },
       {
@@ -5883,8 +2649,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 650.25,
-    "scoreNormalized": 57.52
+    "score": 626.25,
+    "scoreNormalized": 56.94
   },
   {
     "bioguideId": "G000555",
@@ -5904,57 +2670,9 @@
         "party": "minority"
       },
       {
-        "committee": "SSAP01",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP16",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP17",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP19",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP24",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
         "committee": "SSAS",
         "role": "Member",
         "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS21",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS20",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS16",
-        "role": "Ranking Member",
-        "rank": 2,
         "party": "minority"
       },
       {
@@ -5965,7 +2683,7 @@
       },
       {
         "committee": "SPAG",
-        "role": "Ranking Member",
+        "role": "Chairman",
         "rank": 1,
         "party": "minority"
       }
@@ -5973,8 +2691,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 421,
-    "scoreNormalized": 32.93
+    "score": 398,
+    "scoreNormalized": 32.05
   },
   {
     "bioguideId": "S000148",
@@ -6004,7 +2722,7 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 311.25,
-    "scoreNormalized": 21.16
+    "scoreNormalized": 22.59
   },
   {
     "bioguideId": "B001305",
@@ -6024,51 +2742,9 @@
         "party": "majority"
       },
       {
-        "committee": "SSAS14",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS21",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS20",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS17",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
         "committee": "SSCM",
         "role": "Member",
         "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM33",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM34",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM37",
-        "role": "Chairman",
-        "rank": 1,
         "party": "majority"
       },
       {
@@ -6093,8 +2769,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 367,
-    "scoreNormalized": 27.14
+    "score": 355,
+    "scoreNormalized": 27.36
   },
   {
     "bioguideId": "T000476",
@@ -6114,69 +2790,15 @@
         "party": "majority"
       },
       {
-        "committee": "SSBK12",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSBK08",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
         "committee": "SSFI",
         "role": "Member",
         "rank": 12,
         "party": "majority"
       },
       {
-        "committee": "SSFI10",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI13",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI11",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
         "committee": "SSJU",
         "role": "Member",
         "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU01",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU25",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU04",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU26",
-        "role": "Chairman",
-        "rank": 1,
         "party": "majority"
       },
       {
@@ -6190,19 +2812,13 @@
         "role": "Member",
         "rank": 3,
         "party": "majority"
-      },
-      {
-        "committee": "SSBK13",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
       }
     ],
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 419.25,
-    "scoreNormalized": 32.74
+    "score": 394.25,
+    "scoreNormalized": 31.64
   },
   {
     "bioguideId": "C001096",
@@ -6222,75 +2838,15 @@
         "party": "majority"
       },
       {
-        "committee": "SSAS14",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS20",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS15",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS16",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
         "committee": "SSBK",
         "role": "Member",
         "rank": 11,
         "party": "majority"
       },
       {
-        "committee": "SSBK08",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committee": "SSBK09",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSBK04",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
         "committee": "SSEV",
         "role": "Ranking Member",
         "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEV10",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEV15",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEV08",
-        "role": "Chairman",
-        "rank": 1,
         "party": "majority"
       },
       {
@@ -6303,8 +2859,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 344.5,
-    "scoreNormalized": 24.73
+    "score": 314.5,
+    "scoreNormalized": 22.95
   },
   {
     "bioguideId": "H001061",
@@ -6324,61 +2880,7 @@
         "party": "majority"
       },
       {
-        "committee": "SSAF14",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAF16",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAF17",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
         "committee": "SSAP",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP01",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP02",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP22",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP17",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP19",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP24",
         "role": "Member",
         "rank": 6,
         "party": "majority"
@@ -6387,18 +2889,6 @@
         "committee": "SSEG",
         "role": "Member",
         "rank": 11,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEG01",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEG07",
-        "role": "Chairman",
-        "rank": 1,
         "party": "majority"
       },
       {
@@ -6411,8 +2901,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 257,
-    "scoreNormalized": 15.34
+    "score": 231,
+    "scoreNormalized": 13.85
   },
   {
     "bioguideId": "M001232",
@@ -6436,31 +2926,13 @@
         "role": "Member",
         "rank": 23,
         "party": "minority"
-      },
-      {
-        "committee": "HSAG22",
-        "role": "Member",
-        "rank": 11,
-        "party": "minority"
-      },
-      {
-        "committee": "HSAG14",
-        "role": "Member",
-        "rank": 9,
-        "party": "minority"
-      },
-      {
-        "committee": "HSSY15",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
       }
     ],
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 287,
-    "scoreNormalized": 18.56
+    "score": 284,
+    "scoreNormalized": 19.62
   },
   {
     "bioguideId": "H001088",
@@ -6477,7 +2949,7 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 0,
-    "scoreNormalized": -12.23
+    "scoreNormalized": -11.34
   },
   {
     "bioguideId": "L000575",
@@ -6497,39 +2969,9 @@
         "party": "majority"
       },
       {
-        "committee": "SSFI12",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI10",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI11",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
         "committee": "SSGA",
         "role": "Member",
         "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSGA01",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSGA22",
-        "role": "Chairman",
-        "rank": 1,
         "party": "majority"
       },
       {
@@ -6548,8 +2990,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 476.5,
-    "scoreNormalized": 38.88
+    "score": 456.5,
+    "scoreNormalized": 38.43
   },
   {
     "bioguideId": "M001190",
@@ -6569,79 +3011,13 @@
         "party": "majority"
       },
       {
-        "committee": "SSAP01",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP23",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP17",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP18",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP08",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP20",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
         "committee": "SSAS",
         "role": "Member",
         "rank": 10,
         "party": "majority"
       },
       {
-        "committee": "SSAS14",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS20",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS13",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
         "committee": "SSHR",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSHR11",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSHR12",
         "role": "Member",
         "rank": 5,
         "party": "majority"
@@ -6656,8 +3032,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 231,
-    "scoreNormalized": 12.55
+    "score": 210,
+    "scoreNormalized": 11.56
   },
   {
     "bioguideId": "M001176",
@@ -6677,87 +3053,15 @@
         "party": "minority"
       },
       {
-        "committee": "SSAP01",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP16",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP22",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP17",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP18",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP20",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
         "committee": "SSEV",
         "role": "Member",
         "rank": 3,
         "party": "minority"
       },
       {
-        "committee": "SSEV09",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEV10",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEV08",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
         "committee": "SSFR",
         "role": "Member",
         "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR09",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR02",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR06",
-        "role": "Ranking Member",
-        "rank": 2,
         "party": "minority"
       },
       {
@@ -6768,7 +3072,7 @@
       },
       {
         "committee": "SSBU",
-        "role": "Ranking Member",
+        "role": "Chairman",
         "rank": 1,
         "party": "minority"
       },
@@ -6782,8 +3086,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 1009.25,
-    "scoreNormalized": 96.03
+    "score": 967.25,
+    "scoreNormalized": 94.11
   },
   {
     "bioguideId": "W000779",
@@ -6803,63 +3107,9 @@
         "party": "minority"
       },
       {
-        "committee": "SSEG01",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEG03",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEG07",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
         "committee": "SSFI",
-        "role": "Ranking Member",
+        "role": "Chairman",
         "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI12",
-        "role": "Ex Officio",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI14",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI10",
-        "role": "Ex Officio",
-        "rank": 11,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI13",
-        "role": "Ex Officio",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI02",
-        "role": "Ex Officio",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI11",
-        "role": "Ex Officio",
-        "rank": 9,
         "party": "minority"
       },
       {
@@ -6884,8 +3134,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 577.75,
-    "scoreNormalized": 49.75
+    "score": 548.75,
+    "scoreNormalized": 48.49
   },
   {
     "bioguideId": "F000479",
@@ -6905,51 +3155,15 @@
         "party": "minority"
       },
       {
-        "committee": "SSAF13",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAF16",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
         "committee": "SSCM",
         "role": "Member",
         "rank": 11,
         "party": "minority"
       },
       {
-        "committee": "SSCM33",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM34",
-        "role": "Member",
-        "rank": 10,
-        "party": "minority"
-      },
-      {
         "committee": "SSGA",
         "role": "Member",
         "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSGA01",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSGA22",
-        "role": "Ranking Member",
-        "rank": 1,
         "party": "minority"
       },
       {
@@ -6962,8 +3176,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 319.25,
-    "scoreNormalized": 22.02
+    "score": 308.25,
+    "scoreNormalized": 22.27
   },
   {
     "bioguideId": "M001227",
@@ -6981,25 +3195,13 @@
         "role": "Member",
         "rank": 24,
         "party": "minority"
-      },
-      {
-        "committee": "HSIF03",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "HSIF16",
-        "role": "Member",
-        "rank": 12,
-        "party": "minority"
       }
     ],
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 291,
-    "scoreNormalized": 18.99
+    "score": 289,
+    "scoreNormalized": 20.17
   },
   {
     "bioguideId": "R000122",
@@ -7019,109 +3221,13 @@
         "party": "minority"
       },
       {
-        "committee": "SSAP16",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP02",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP23",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP18",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP19",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP24",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
         "committee": "SSAS",
-        "role": "Ranking Member",
+        "role": "Chairman",
         "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS14",
-        "role": "Ex Officio",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS21",
-        "role": "Ex Officio",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS20",
-        "role": "Ex Officio",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS17",
-        "role": "Ex Officio",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS15",
-        "role": "Ex Officio",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS13",
-        "role": "Ex Officio",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS16",
-        "role": "Ex Officio",
-        "rank": 6,
         "party": "minority"
       },
       {
         "committee": "SSBK",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSBK12",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSBK08",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSBK04",
         "role": "Ranking Member",
         "rank": 2,
         "party": "minority"
@@ -7136,8 +3242,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 776.5,
-    "scoreNormalized": 71.06
+    "score": 735.5,
+    "scoreNormalized": 68.85
   },
   {
     "bioguideId": "W000802",
@@ -7152,56 +3258,14 @@
     "committees": [
       {
         "committee": "SSEV",
-        "role": "Ranking Member",
+        "role": "Chairman",
         "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEV09",
-        "role": "Ex Officio",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEV10",
-        "role": "Ex Officio",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEV15",
-        "role": "Ex Officio",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEV08",
-        "role": "Ex Officio",
-        "rank": 8,
         "party": "minority"
       },
       {
         "committee": "SSFI",
         "role": "Member",
         "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI10",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI13",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI11",
-        "role": "Member",
-        "rank": 3,
         "party": "minority"
       },
       {
@@ -7212,30 +3276,6 @@
       },
       {
         "committee": "SSJU",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU25",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU04",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU26",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU21",
         "role": "Ranking Member",
         "rank": 2,
         "party": "minority"
@@ -7256,8 +3296,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 581.5,
-    "scoreNormalized": 50.15
+    "score": 550.5,
+    "scoreNormalized": 48.68
   },
   {
     "bioguideId": "G000359",
@@ -7277,63 +3317,9 @@
         "party": "majority"
       },
       {
-        "committee": "SSAP16",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP02",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP22",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP18",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP20",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP24",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
         "committee": "SSEV",
         "role": "Member",
         "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEV09",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEV10",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEV08",
-        "role": "Member",
-        "rank": 4,
         "party": "majority"
       },
       {
@@ -7347,37 +3333,13 @@
         "role": "Ranking Member",
         "rank": 2,
         "party": "majority"
-      },
-      {
-        "committee": "SSJU22",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU25",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU04",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU28",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
       }
     ],
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 265.75,
-    "scoreNormalized": 16.28
+    "score": 217.75,
+    "scoreNormalized": 12.4
   },
   {
     "bioguideId": "S001184",
@@ -7397,57 +3359,9 @@
         "party": "majority"
       },
       {
-        "committee": "SSBK12",
-        "role": "Ex Officio",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSBK08",
-        "role": "Ex Officio",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committee": "SSBK09",
-        "role": "Ex Officio",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSBK05",
-        "role": "Ex Officio",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSBK04",
-        "role": "Ex Officio",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
         "committee": "SSFI",
         "role": "Member",
         "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI12",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI10",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI13",
-        "role": "Member",
-        "rank": 4,
         "party": "majority"
       },
       {
@@ -7457,35 +3371,17 @@
         "party": "majority"
       },
       {
-        "committee": "SSHR09",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSHR11",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
         "committee": "SSSB",
         "role": "Member",
         "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSBK13",
-        "role": "Ex Officio",
-        "rank": 6,
         "party": "majority"
       }
     ],
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 274.75,
-    "scoreNormalized": 17.24
+    "score": 263.75,
+    "scoreNormalized": 17.42
   },
   {
     "bioguideId": "R000605",
@@ -7505,87 +3401,15 @@
         "party": "majority"
       },
       {
-        "committee": "SSAP01",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP22",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP17",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP18",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP08",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP19",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
         "committee": "SSAS",
         "role": "Member",
         "rank": 4,
         "party": "majority"
       },
       {
-        "committee": "SSAS21",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS20",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS16",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
         "committee": "SSBK",
         "role": "Member",
         "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSBK12",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSBK09",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSBK04",
-        "role": "Chairman",
-        "rank": 1,
         "party": "majority"
       },
       {
@@ -7610,8 +3434,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 360.5,
-    "scoreNormalized": 26.44
+    "score": 333.5,
+    "scoreNormalized": 25.02
   },
   {
     "bioguideId": "T000250",
@@ -7631,73 +3455,13 @@
         "party": "majority"
       },
       {
-        "committee": "SSAF13",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAF14",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAF17",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
         "committee": "SSCM",
         "role": "Ranking Member",
         "rank": 2,
         "party": "majority"
       },
       {
-        "committee": "SSCM33",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM34",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM35",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM38",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
         "committee": "SSFI",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI10",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI13",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI11",
         "role": "Member",
         "rank": 4,
         "party": "majority"
@@ -7712,8 +3476,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 320.5,
-    "scoreNormalized": 22.15
+    "score": 280.5,
+    "scoreNormalized": 19.24
   },
   {
     "bioguideId": "B001243",
@@ -7733,75 +3497,15 @@
         "party": "majority"
       },
       {
-        "committee": "SSCM34",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM35",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM37",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
         "committee": "SSFI",
         "role": "Member",
         "rank": 13,
         "party": "majority"
       },
       {
-        "committee": "SSFI10",
-        "role": "Member",
-        "rank": 10,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI02",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI11",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
         "committee": "SSJU",
         "role": "Member",
         "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU22",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU26",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU28",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU21",
-        "role": "Member",
-        "rank": 7,
         "party": "majority"
       },
       {
@@ -7820,8 +3524,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 590.5,
-    "scoreNormalized": 51.11
+    "score": 565.5,
+    "scoreNormalized": 50.31
   },
   {
     "bioguideId": "H000601",
@@ -7841,81 +3545,15 @@
         "party": "majority"
       },
       {
-        "committee": "SSAP16",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP22",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP23",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP14",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP19",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP20",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
         "committee": "SSBK",
         "role": "Member",
         "rank": 6,
         "party": "majority"
       },
       {
-        "committee": "SSBK08",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSBK05",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
         "committee": "SSFR",
         "role": "Member",
         "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR15",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR14",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR06",
-        "role": "Member",
-        "rank": 3,
         "party": "majority"
       },
       {
@@ -7929,19 +3567,13 @@
         "role": "Member",
         "rank": 3,
         "party": "majority"
-      },
-      {
-        "committee": "SSBK13",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
       }
     ],
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 255.5,
-    "scoreNormalized": 15.18
+    "score": 228.5,
+    "scoreNormalized": 13.57
   },
   {
     "bioguideId": "C001056",
@@ -7961,45 +3593,9 @@
         "party": "majority"
       },
       {
-        "committee": "SSFI12",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI13",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI11",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
         "committee": "SSFR",
         "role": "Member",
         "rank": 12,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR09",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR02",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR06",
-        "role": "Ranking Member",
-        "rank": 2,
         "party": "majority"
       },
       {
@@ -8012,30 +3608,6 @@
         "committee": "SSJU",
         "role": "Member",
         "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU22",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU04",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU28",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU21",
-        "role": "Ranking Member",
-        "rank": 2,
         "party": "majority"
       },
       {
@@ -8060,8 +3632,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 647.75,
-    "scoreNormalized": 57.25
+    "score": 612.75,
+    "scoreNormalized": 55.46
   },
   {
     "bioguideId": "C001098",
@@ -8081,63 +3653,9 @@
         "party": "majority"
       },
       {
-        "committee": "SSCM33",
-        "role": "Ex Officio",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM34",
-        "role": "Ex Officio",
-        "rank": 15,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM35",
-        "role": "Ex Officio",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM36",
-        "role": "Ex Officio",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM37",
-        "role": "Ex Officio",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM38",
-        "role": "Ex Officio",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
         "committee": "SSFR",
         "role": "Member",
         "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR09",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR07",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR06",
-        "role": "Member",
-        "rank": 5,
         "party": "majority"
       },
       {
@@ -8151,37 +3669,13 @@
         "role": "Member",
         "rank": 5,
         "party": "majority"
-      },
-      {
-        "committee": "SSJU22",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU25",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU04",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU21",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
       }
     ],
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 649.5,
-    "scoreNormalized": 57.44
+    "score": 621.5,
+    "scoreNormalized": 56.42
   },
   {
     "bioguideId": "C001131",
@@ -8205,37 +3699,13 @@
         "role": "Member",
         "rank": 13,
         "party": "minority"
-      },
-      {
-        "committee": "HSGO06",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "HSED02",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "HSED10",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "HSGO16",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
       }
     ],
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 222,
-    "scoreNormalized": 11.58
+    "score": 218,
+    "scoreNormalized": 12.43
   },
   {
     "bioguideId": "L000577",
@@ -8255,51 +3725,9 @@
         "party": "majority"
       },
       {
-        "committee": "SSEG01",
-        "role": "Ex Officio",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEG04",
-        "role": "Ex Officio",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEG03",
-        "role": "Ex Officio",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEG07",
-        "role": "Ex Officio",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
         "committee": "SSFR",
         "role": "Member",
         "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR02",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR15",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR07",
-        "role": "Member",
-        "rank": 4,
         "party": "majority"
       },
       {
@@ -8313,37 +3741,13 @@
         "role": "Member",
         "rank": 4,
         "party": "majority"
-      },
-      {
-        "committee": "SSJU01",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU25",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU26",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU21",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
       }
     ],
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 713.25,
-    "scoreNormalized": 64.28
+    "score": 687.25,
+    "scoreNormalized": 63.59
   },
   {
     "bioguideId": "K000384",
@@ -8363,63 +3767,15 @@
         "party": "minority"
       },
       {
-        "committee": "SSAS20",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS15",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS13",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
         "committee": "SSFR",
         "role": "Member",
         "rank": 4,
         "party": "minority"
       },
       {
-        "committee": "SSFR07",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR14",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR06",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
         "committee": "SSHR",
         "role": "Member",
         "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSHR09",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSHR11",
-        "role": "Member",
-        "rank": 4,
         "party": "minority"
       },
       {
@@ -8432,8 +3788,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 819.25,
-    "scoreNormalized": 75.65
+    "score": 801.25,
+    "scoreNormalized": 76.02
   },
   {
     "bioguideId": "W000805",
@@ -8453,39 +3809,9 @@
         "party": "minority"
       },
       {
-        "committee": "SSBK08",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSBK04",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
         "committee": "SSFI",
         "role": "Member",
         "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI10",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI13",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI11",
-        "role": "Ranking Member",
-        "rank": 2,
         "party": "minority"
       },
       {
@@ -8505,19 +3831,13 @@
         "role": "Chairman",
         "rank": 1,
         "party": "minority"
-      },
-      {
-        "committee": "SSBK13",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
       }
     ],
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 616.25,
-    "scoreNormalized": 53.88
+    "score": 590.25,
+    "scoreNormalized": 53.01
   },
   {
     "bioguideId": "M001111",
@@ -8532,96 +3852,12 @@
     "committees": [
       {
         "committee": "SSAP",
-        "role": "Ranking Member",
+        "role": "Chairman",
         "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP01",
-        "role": "Ex Officio",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP16",
-        "role": "Ex Officio",
-        "rank": 9,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP02",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP22",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP23",
-        "role": "Ex Officio",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP14",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP17",
-        "role": "Ex Officio",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP18",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP08",
-        "role": "Ex Officio",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP19",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP20",
-        "role": "Ex Officio",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP24",
-        "role": "Ranking Member",
-        "rank": 2,
         "party": "minority"
       },
       {
         "committee": "SSHR",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSHR09",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSHR12",
         "role": "Ranking Member",
         "rank": 2,
         "party": "minority"
@@ -8642,8 +3878,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 469.5,
-    "scoreNormalized": 38.13
+    "score": 420.5,
+    "scoreNormalized": 34.51
   },
   {
     "bioguideId": "C000127",
@@ -8658,44 +3894,8 @@
     "committees": [
       {
         "committee": "SSCM",
-        "role": "Ranking Member",
+        "role": "Chairman",
         "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM33",
-        "role": "Ex Officio",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM34",
-        "role": "Ex Officio",
-        "rank": 13,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM35",
-        "role": "Ex Officio",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM36",
-        "role": "Ex Officio",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM37",
-        "role": "Ex Officio",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM38",
-        "role": "Ex Officio",
-        "rank": 8,
         "party": "minority"
       },
       {
@@ -8708,12 +3908,6 @@
         "committee": "SSFI",
         "role": "Ranking Member",
         "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI12",
-        "role": "Ranking Member",
-        "rank": 1,
         "party": "minority"
       },
       {
@@ -8738,8 +3932,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 388.75,
-    "scoreNormalized": 29.47
+    "score": 376.75,
+    "scoreNormalized": 29.74
   },
   {
     "bioguideId": "C001047",
@@ -8759,99 +3953,15 @@
         "party": "majority"
       },
       {
-        "committee": "SSAP16",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP02",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP14",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP17",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP18",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP24",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
         "committee": "SSCM",
         "role": "Member",
         "rank": 14,
         "party": "majority"
       },
       {
-        "committee": "SSCM33",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM34",
-        "role": "Member",
-        "rank": 13,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM35",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM38",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
         "committee": "SSEV",
         "role": "Chairman",
         "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEV09",
-        "role": "Ex Officio",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEV10",
-        "role": "Ex Officio",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEV15",
-        "role": "Ex Officio",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEV08",
-        "role": "Ex Officio",
-        "rank": 9,
         "party": "majority"
       },
       {
@@ -8864,8 +3974,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 332.75,
-    "scoreNormalized": 23.46
+    "score": 313.75,
+    "scoreNormalized": 22.87
   },
   {
     "bioguideId": "J000307",
@@ -8883,31 +3993,13 @@
         "role": "Member",
         "rank": 20,
         "party": "majority"
-      },
-      {
-        "committee": "HSIF03",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committee": "HSIF17",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "HSIF14",
-        "role": "Member",
-        "rank": 12,
-        "party": "majority"
       }
     ],
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 114,
-    "scoreNormalized": 0
+    "score": 111,
+    "scoreNormalized": 0.76
   },
   {
     "bioguideId": "B001230",
@@ -8927,85 +4019,13 @@
         "party": "minority"
       },
       {
-        "committee": "SSAP01",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP02",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP22",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP17",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP18",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP19",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
         "committee": "SSCM",
         "role": "Member",
         "rank": 6,
         "party": "minority"
       },
       {
-        "committee": "SSCM34",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM35",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM36",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM37",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
         "committee": "SSHR",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSHR11",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSHR12",
         "role": "Member",
         "rank": 3,
         "party": "minority"
@@ -9014,8 +4034,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 483.5,
-    "scoreNormalized": 39.64
+    "score": 456.5,
+    "scoreNormalized": 38.43
   },
   {
     "bioguideId": "J000293",
@@ -9035,37 +4055,7 @@
         "party": "majority"
       },
       {
-        "committee": "SSFI14",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI10",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI11",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
         "committee": "SSGA",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSGA01",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSGA22",
         "role": "Ranking Member",
         "rank": 2,
         "party": "majority"
@@ -9086,8 +4076,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 142,
-    "scoreNormalized": 3
+    "score": 122,
+    "scoreNormalized": 1.96
   },
   {
     "bioguideId": "B001261",
@@ -9107,45 +4097,9 @@
         "party": "majority"
       },
       {
-        "committee": "SSEG01",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEG04",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEG03",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
         "committee": "SSFI",
         "role": "Member",
         "rank": 10,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI12",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI10",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI11",
-        "role": "Chairman",
-        "rank": 1,
         "party": "majority"
       },
       {
@@ -9153,37 +4107,13 @@
         "role": "Member",
         "rank": 6,
         "party": "majority"
-      },
-      {
-        "committee": "SSFR09",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR01",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR15",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR14",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
       }
     ],
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 313,
-    "scoreNormalized": 21.35
+    "score": 278,
+    "scoreNormalized": 18.97
   },
   {
     "bioguideId": "L000571",
@@ -9203,39 +4133,9 @@
         "party": "majority"
       },
       {
-        "committee": "SSBK08",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSBK04",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
         "committee": "SSCM",
         "role": "Member",
         "rank": 15,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM34",
-        "role": "Member",
-        "rank": 14,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM35",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM37",
-        "role": "Member",
-        "rank": 6,
         "party": "majority"
       },
       {
@@ -9243,37 +4143,13 @@
         "role": "Member",
         "rank": 3,
         "party": "majority"
-      },
-      {
-        "committee": "SSEV10",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEV15",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEV08",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSBK13",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
       }
     ],
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 408,
-    "scoreNormalized": 31.54
+    "score": 384,
+    "scoreNormalized": 30.53
   },
   {
     "bioguideId": "S000033",
@@ -9293,69 +4169,15 @@
         "party": "minority"
       },
       {
-        "committee": "SSEV09",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEV10",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEV15",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
         "committee": "SSFI",
         "role": "Member",
         "rank": 9,
         "party": "minority"
       },
       {
-        "committee": "SSFI10",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI02",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI11",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
         "committee": "SSHR",
-        "role": "Ranking Member",
+        "role": "Chairman",
         "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSHR09",
-        "role": "Ex Officio",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committee": "SSHR11",
-        "role": "Ex Officio",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committee": "SSHR12",
-        "role": "Ex Officio",
-        "rank": 9,
         "party": "minority"
       },
       {
@@ -9374,8 +4196,8 @@
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 429.75,
-    "scoreNormalized": 33.87
+    "score": 400.75,
+    "scoreNormalized": 32.35
   },
   {
     "bioguideId": "W000800",
@@ -9395,39 +4217,9 @@
         "party": "minority"
       },
       {
-        "committee": "SSAF14",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAF17",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAF15",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
         "committee": "SSFI",
         "role": "Member",
         "rank": 13,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI12",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI10",
-        "role": "Member",
-        "rank": 10,
         "party": "minority"
       },
       {
@@ -9441,44 +4233,20 @@
         "role": "Member",
         "rank": 9,
         "party": "minority"
-      },
-      {
-        "committee": "SSJU01",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU25",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU26",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU21",
-        "role": "Ranking Member",
-        "rank": 1,
-        "party": "minority"
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 0,
+    "totalVotes": 659,
     "missedVotePct": 0,
-    "score": 963.75,
-    "scoreNormalized": 91.15
+    "score": 939.75,
+    "scoreNormalized": 91.11
   },
   {
     "name": "Peter Welch",
     "missedVotes": 0,
     "totalVotes": 0,
     "score": 0,
-    "scoreNormalized": -12.23,
+    "scoreNormalized": -11.34,
     "missedVotePct": 0
   }
 ]
