@@ -1,3 +1,10 @@
+/**
+ * Votes scraper (Senate.gov XML)
+ * - Fetches Senate roll call votes from XML index
+ * - Aggregates total and missed votes per senator
+ * - Outputs public/senators-votes.json
+ */
+
 const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
@@ -13,7 +20,7 @@ async function fetchRollCallIndex(session) {
   const res = await fetch(url);
   if (!res.ok) throw new Error(`Failed ${url}: ${res.status}`);
   const text = await res.text();
-  return await xml2js.parseStringPromise(text);
+  return await xml2js.parseStringPromise(text, { explicitArray: true, mergeAttrs: false });
 }
 
 async function run() {
@@ -21,17 +28,25 @@ async function run() {
   const totals = new Map();
 
   for (const session of ['1', '2']) {
-    const data = await fetchRollCallIndex(session);
-    const votes = data.rollcalls?.vote || [];
+    let data;
+    try {
+      data = await fetchRollCallIndex(session);
+    } catch (e) {
+      console.warn(`Session ${session} index fetch failed: ${e.message}`);
+      continue;
+    }
+
+    const votes = (data.rollcalls && data.rollcalls.vote) ? data.rollcalls.vote : [];
     for (const v of votes) {
       const members = v.members?.[0]?.member || [];
       for (const m of members) {
-        const id = m.$.id;
+        const id = m.$?.id || m.$?.lis_member_id || null;
         if (!id) continue;
         if (!totals.has(id)) totals.set(id, initTotals());
         const t = totals.get(id);
         t.totalVotes++;
-        if (m.vote[0] === 'Not Voting') t.missedVotes++;
+        const ballot = (m.vote && m.vote[0]) ? m.vote[0] : '';
+        if (ballot === 'Not Voting') t.missedVotes++;
       }
     }
   }
@@ -41,7 +56,11 @@ async function run() {
   }
 
   const results = Array.from(totals.entries()).map(([bioguideId, t]) => ({ bioguideId, ...t }));
-  if (results.length === 0) return console.log("No data, skipping write.");
+  if (results.length === 0) {
+    console.log("No data, skipping write.");
+    return;
+  }
+
   fs.writeFileSync(OUT_PATH, JSON.stringify(results, null, 2));
   console.log(`Wrote ${OUT_PATH} with ${results.length} senator entries.`);
 }
