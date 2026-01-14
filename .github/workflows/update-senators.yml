@@ -11,7 +11,7 @@ jobs:
     permissions:
       contents: write
     env:
-      CONGRESS_GOV_API_KEY: ${{ secrets.CONGRESS_GOV_API_KEY }}
+      CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
       CONGRESS_NUMBER: '119'
     steps:
       - name: Checkout
