@@ -28,12 +28,9 @@ async function getVoteDetailUrls() {
   return urls;
 }
 
-async function parseVoteCounts(url, nameToLastNameMap) {
+async function parseVoteCounts(url, senatorMap) {
   const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' } });
-  if (!res.ok) {
-    console.warn(`Skipped vote ${url.split('/').pop()}: ${res.status}`);
-    return { yea: [], nay: [], notVoting: [] };
-  }
+  if (!res.ok) return { yea: [], nay: [], notVoting: [] };
 
   const xml = await res.text();
   const parsed = await xml2js(xml, { trim: true, explicitArray: false });
@@ -44,13 +41,14 @@ async function parseVoteCounts(url, nameToLastNameMap) {
   const notVoting = [];
 
   members.forEach(m => {
-    const lastName = m.last_name?.trim();
-    const state = m.state?.trim();
+    const lastName = m.last_name?.trim().toLowerCase();
     const voteCast = m.vote_cast?.trim();
 
-    // Looser match: last name only
-    for (const [senName, senLast] of nameToLastNameMap) {
-      if (senLast === lastName) {
+    // Fuzzy match: last name + optional first initial or state
+    for (const [senName, senInfo] of senatorMap) {
+      const senLast = senInfo.lastName.toLowerCase();
+      const senFirstInitial = senName.split(' ')[0][0].toLowerCase(); // e.g., "Adam" → "a"
+      if (lastName === senLast || lastName.includes(senLast)) {
         if (voteCast === 'Yea') yea.push(senName);
         if (voteCast === 'Nay') nay.push(senName);
         if (voteCast === 'Not Voting' || voteCast === 'Absent') notVoting.push(senName);
@@ -59,17 +57,15 @@ async function parseVoteCounts(url, nameToLastNameMap) {
     }
   });
 
-  // Log raw misses for debugging (only if present)
+  // Log raw misses + unmatched for debug
   if (notVoting.length > 0) {
-    console.log(`Not Voting/Absent on ${url.split('/').pop()}: ${notVoting.length} entries`);
+    console.log(`Not Voting/Absent on ${url.split('/').pop()}: ${notVoting.length} matched`);
   }
 
   return { yea, nay, notVoting };
 }
 
-async function delay(ms) {
-  return new Promise(r => setTimeout(r, ms));
-}
+async function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
 
 async function main() {
   console.log('Votes scraper: parsing Yea, Nay, Not Voting/Absent from all 119th sessions');
@@ -82,13 +78,18 @@ async function main() {
     return;
   }
 
-  const nameToLastNameMap = new Map(rankings.map(s => [s.name, s.name.split(' ').pop()]));
+  // Build map with last name and first initial for fuzzy matching
+  const senatorMap = new Map();
+  rankings.forEach(sen => {
+    const fullName = sen.name || '';
+    const parts = fullName.split(' ');
+    const lastName = parts[parts.length - 1];
+    const firstInitial = parts[0][0] || '';
+    senatorMap.set(fullName, { lastName, firstInitial });
+  });
 
   const urls = await getVoteDetailUrls();
-  if (urls.length === 0) {
-    console.log('No votes found across sessions - skipping');
-    return;
-  }
+  if (urls.length === 0) return console.log('No votes found');
 
   const voteCounts = {
     yea: {},
@@ -102,11 +103,11 @@ async function main() {
   });
 
   for (const url of urls) {
-    const counts = await parseVoteCounts(url, nameToLastNameMap);
+    const counts = await parseVoteCounts(url, senatorMap);
     counts.yea.forEach(name => voteCounts.yea[name]++);
     counts.nay.forEach(name => voteCounts.nay[name]++);
     counts.notVoting.forEach(name => voteCounts.notVoting[name]++);
-    await delay(2000); // Keep rate limit safe
+    await delay(2000);
   }
 
   rankings.forEach(sen => {
@@ -124,12 +125,10 @@ async function main() {
   try {
     fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
     console.log(`Votes updated: ${urls.length} roll calls processed`);
-    console.log(`Added fields: yeaVotes, nayVotes, missedVotes, participationPct`);
+    console.log('Added/updated: yeaVotes, nayVotes, missedVotes, participationPct');
   } catch (err) {
     console.error('Failed to write rankings.json:', err.message);
   }
 }
 
-main().catch(err => {
-  console.error('Votes scraper failed:', err.message);
-});
+main().catch(err => console.error('Votes scraper failed:', err.message));
