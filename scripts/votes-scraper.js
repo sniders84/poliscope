@@ -1,97 +1,73 @@
 // votes-scraper.js
-// Scrapes Senate roll call votes (119th Congress sessions 1 & 2)
+// Reads LegiScan bulk roll call JSON for 119th Congress
 // Outputs public/senators-votes.json
 
 const fs = require('fs');
-const fetch = require('node-fetch');
-const { XMLParser } = require('fast-xml-parser');
+const path = require('path');
 
-const INDEXES = [
-  'https://www.senate.gov/legislative/LIS/roll_call_votes/vote119/vote_menu_119_1.xml',
-  'https://www.senate.gov/legislative/LIS/roll_call_votes/vote119/vote_menu_119_2.xml',
-];
-
+// Load legislators metadata
 const legislators = JSON.parse(fs.readFileSync('public/legislators-current.json', 'utf8'));
 const senators = legislators.filter(l => l.terms.some(t => t.type === 'sen'));
-const byBioguide = new Map(senators.map(s => [s.id.bioguide, s]));
-const byLis = new Map(senators.map(s => [String(s.id.lis || '').trim(), s]));
 
-async function get(url) {
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
-  return res.text();
+// Build mapping: govtrack -> bioguide
+const byGovtrack = new Map();
+for (const s of senators) {
+  if (s.id.govtrack) {
+    byGovtrack.set(String(s.id.govtrack), s.id.bioguide);
+  }
 }
 
-function parseXML(xml) {
-  const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '' });
-  return parser.parse(xml);
-}
+// Path to LegiScan roll call dataset (JSON file you mirror nightly)
+const VOTES_DIR = 'public/rollcalls-119'; // directory containing roll call JSON files
 
-function voteDetailUrl(congress, session, voteNumber) {
-  const padded = String(voteNumber).padStart(5, '0');
-  return `https://www.senate.gov/legislative/LIS/roll_call_votes/vote${congress}${session}/vote_${congress}_${session}_${padded}.xml`;
-}
-
-async function fetchVoteMembers(congress, session, voteNumber) {
-  const xml = await get(voteDetailUrl(congress, session, voteNumber));
-  const data = parseXML(xml);
-  const membersNode = data?.roll_call_vote?.members?.member || [];
-  const arr = Array.isArray(membersNode) ? membersNode : [membersNode];
-  return arr.map(m => ({
-    lisId: String(m['lis_member_id'] || '').trim(),
-    bioguideId: String(m['bioguide_id'] || '').trim(),
-    vote: String(m['vote_cast'] || '').trim(),
-    name: `${m['last_name'] || ''}, ${m['first_name'] || ''}`.trim(),
-  }));
+function loadRollCalls(dir) {
+  const files = fs.readdirSync(dir).filter(f => f.endsWith('.json'));
+  const rollcalls = [];
+  for (const file of files) {
+    const data = JSON.parse(fs.readFileSync(path.join(dir, file), 'utf8'));
+    if (data.roll_call && data.roll_call.chamber === 'S') { // Senate only
+      rollcalls.push(data.roll_call);
+    }
+  }
+  return rollcalls;
 }
 
 async function run() {
   const totals = new Map();
   for (const s of senators) {
-    totals.set(s.id.bioguide, { totalVotes: 0, missedVotes: 0 });
+    totals.set(s.id.bioguide, { votesCast: 0, missedVotes: 0 });
   }
 
-  for (const idxUrl of INDEXES) {
-    try {
-      const xml = await get(idxUrl);
-      const data = parseXML(xml);
-      const congress = String(data?.vote_summary?.congress || '119').trim();
-      const session = String(data?.vote_summary?.session || '1').trim();
-      const votesNode = data?.vote_summary?.votes?.vote || [];
-      const voteList = Array.isArray(votesNode) ? votesNode : [votesNode];
+  const rollcalls = loadRollCalls(VOTES_DIR);
 
-      for (const v of voteList) {
-        const voteNumber = v['vote_number'];
-        if (!voteNumber) continue;
-        let members = [];
-        try {
-          members = await fetchVoteMembers(congress, session, voteNumber);
-        } catch {
-          continue;
-        }
-        for (const m of members) {
-          let bioguideId = null;
-          if (m.bioguideId && byBioguide.has(m.bioguideId)) {
-            bioguideId = m.bioguideId;
-          } else if (m.lisId && byLis.has(m.lisId)) {
-            bioguideId = byLis.get(m.lisId).id.bioguide;
-          }
-          if (!bioguideId || !totals.has(bioguideId)) continue;
-          const entry = totals.get(bioguideId);
-          entry.totalVotes += 1;
-          if (/not voting/i.test(m.vote)) entry.missedVotes += 1;
-        }
-        await new Promise(r => setTimeout(r, 40));
+  for (const rc of rollcalls) {
+    for (const v of rc.votes) {
+      const govtrackId = String(v.people_id);
+      const bioguideId = byGovtrack.get(govtrackId);
+      if (!bioguideId || !totals.has(bioguideId)) continue;
+
+      const entry = totals.get(bioguideId);
+      if (/yea|nay|present/i.test(v.vote_text)) {
+        entry.votesCast += 1;
+      } else if (/absent|not voting/i.test(v.vote_text)) {
+        entry.missedVotes += 1;
       }
-    } catch (err) {
-      console.error(`Error processing index ${idxUrl}: ${err.message}`);
     }
   }
 
   const results = [];
   for (const [bioguideId, t] of totals.entries()) {
-    results.push({ bioguideId, totalVotes: t.totalVotes, missedVotes: t.missedVotes });
+    const missedPct = t.votesCast + t.missedVotes > 0
+      ? (t.missedVotes / (t.votesCast + t.missedVotes)) * 100
+      : 0;
+    results.push({
+      bioguideId,
+      votesCast: t.votesCast,
+      missedVotes: t.missedVotes,
+      missedPct: Number(missedPct.toFixed(2)),
+    });
   }
+
   fs.writeFileSync('public/senators-votes.json', JSON.stringify(results, null, 2));
   console.log('Votes scraper complete!');
 }
