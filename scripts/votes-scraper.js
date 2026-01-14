@@ -1,9 +1,10 @@
 // votes-scraper.js
-// Reads LegiScan bulk roll call JSON for 119th Congress
+// Fetches LegiScan US.zip dataset, extracts votes.json for 119th Congress
 // Outputs public/senators-votes.json
 
 const fs = require('fs');
-const path = require('path');
+const fetch = require('node-fetch');
+const AdmZip = require('adm-zip');
 
 // Load legislators metadata
 const legislators = JSON.parse(fs.readFileSync('public/legislators-current.json', 'utf8'));
@@ -17,30 +18,34 @@ for (const s of senators) {
   }
 }
 
-// Path to LegiScan roll call dataset (JSON file you mirror nightly)
-const VOTES_DIR = 'public/rollcalls-119'; // directory containing roll call JSON files
+// LegiScan dataset ZIP URL
+const DATASET_URL = 'https://legiscan.com/US/datasets/US.zip';
 
-function loadRollCalls(dir) {
-  const files = fs.readdirSync(dir).filter(f => f.endsWith('.json'));
-  const rollcalls = [];
-  for (const file of files) {
-    const data = JSON.parse(fs.readFileSync(path.join(dir, file), 'utf8'));
-    if (data.roll_call && data.roll_call.chamber === 'S') { // Senate only
-      rollcalls.push(data.roll_call);
-    }
-  }
-  return rollcalls;
+async function getVotes() {
+  console.log('Downloading LegiScan US.zip...');
+  const res = await fetch(DATASET_URL);
+  if (!res.ok) throw new Error(`HTTP ${res.status} for ${DATASET_URL}`);
+  const buffer = await res.buffer();
+
+  const zip = new AdmZip(buffer);
+  const entry = zip.getEntry('votes.json');
+  if (!entry) throw new Error('votes.json not found in dataset');
+  const votes = JSON.parse(entry.getData().toString('utf8'));
+  return votes;
 }
 
 async function run() {
+  const votesData = await getVotes();
+
+  // Filter to 119th Congress only, Senate chamber
+  const rollcalls119 = votesData.filter(v => Number(v.congress) === 119 && v.chamber === 'S');
+
   const totals = new Map();
   for (const s of senators) {
     totals.set(s.id.bioguide, { votesCast: 0, missedVotes: 0 });
   }
 
-  const rollcalls = loadRollCalls(VOTES_DIR);
-
-  for (const rc of rollcalls) {
+  for (const rc of rollcalls119) {
     for (const v of rc.votes) {
       const govtrackId = String(v.people_id);
       const bioguideId = byGovtrack.get(govtrackId);
