@@ -72,6 +72,7 @@ function run() {
   // Merge legislation
   for (const l of legislation) {
     const id = l.bioguideId;
+    if (!id) continue;
     if (!totals.has(id)) totals.set(id, initSenator(id));
     totals.get(id).legislation = { ...totals.get(id).legislation, ...l };
   }
@@ -79,6 +80,7 @@ function run() {
   // Merge committees
   for (const c of committees) {
     const id = c.bioguideId;
+    if (!id) continue;
     if (!totals.has(id)) totals.set(id, initSenator(id));
     totals.get(id).committees = c.committees || [];
   }
@@ -86,6 +88,7 @@ function run() {
   // Merge votes
   for (const v of votes) {
     const id = v.bioguideId;
+    if (!id) continue;
     if (!totals.has(id)) totals.set(id, initSenator(id));
     totals.get(id).votes = {
       totalVotes: v.totalVotes || 0,
