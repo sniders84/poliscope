@@ -3,7 +3,8 @@
  * - Loads public/senators-committee-membership-current.json
  * - Counts only top-level committees (ignores subcommittees)
  * - Preserves leadership titles ("Chairman", "Ranking Member") for scoring
- * - Adds full committee names (e.g., "Agriculture, Nutrition, and Forestry" instead of "SSAF")
+ * - Adds full committee names
+ * - Fallback to name matching if bioguide ID misses
  * - Updates senators-rankings.json directly
  */
 const fs = require('fs');
@@ -14,7 +15,6 @@ const COMMITTEE_SOURCE = path.join(__dirname, '../public/senators-committee-memb
 
 // Full mapping: Senate committee code → human-readable name
 const codeToName = {
-  // Standing Committees
   SSAF: 'Agriculture, Nutrition, and Forestry',
   SSAP: 'Appropriations',
   SSAS: 'Armed Services',
@@ -30,23 +30,17 @@ const codeToName = {
   SSRA: 'Rules and Administration',
   SSSC: 'Small Business and Entrepreneurship',
   SSVA: 'Veterans\' Affairs',
-
-  // Select/Intelligence/Special
   SLIA: 'Indian Affairs',
   SLIN: 'Intelligence',
   SLET: 'Ethics',
   SRES: 'Aging (Special)',
-
-  // Joint Committees
   JCSE: 'Economic',
   JSEC: 'Taxation',
   JSLC: 'Library of Congress',
   JSPW: 'Printing',
-
-  // Other common ones that appear in your JSON
-  SPAG: 'Agriculture (Joint?)',
-  SSEG: 'Energy (Joint?)',
-  SSNR: 'Natural Resources (Joint?)',
+  SPAG: 'Agriculture (Joint)',
+  SSEG: 'Energy (Joint)',
+  SSNR: 'Natural Resources (Joint)',
   SSIS: 'Intelligence (Select)',
   SSCM33: 'Commerce Subcommittee (skip if sub)',
   // Add any missing codes from your JSON if needed
@@ -65,11 +59,11 @@ function run() {
   }
 
   const byId = new Map(rankings.map(sen => [sen.bioguideId, sen]));
+  const byName = new Map(rankings.map(sen => [sen.name, sen])); // Fallback map
 
   const byBioguide = {};
 
   Object.entries(committeeData).forEach(([committeeCode, members]) => {
-    // Skip obvious subcommittees
     if (committeeCode.includes('Subcommittee') || committeeCode.length > 4 || !codeToName[committeeCode]) {
       console.log(`Skipping non-top-level or unknown: ${committeeCode}`);
       return;
@@ -77,19 +71,20 @@ function run() {
 
     members.forEach(member => {
       const bioguide = member.bioguide;
-      if (!bioguide) return;
+      const name = member.name;
+      if (!bioguide && !name) return;
 
-      if (!byBioguide[bioguide]) byBioguide[bioguide] = { committees: [] };
+      if (!byBioguide[bioguide] && !byBioguide[name]) byBioguide[bioguide || name] = { committees: [] };
 
-      if (byBioguide[bioguide].committees.some(c => c.committee === committeeCode)) return;
+      if (byBioguide[bioguide || name].committees.some(c => c.committee === committeeCode)) return;
 
       let role = member.title || 'Member';
       if (member.rank === 1 || role.toLowerCase().includes('chair')) role = 'Chairman';
       if (member.rank === 2 || role.toLowerCase().includes('ranking')) role = 'Ranking Member';
 
-      byBioguide[bioguide].committees.push({
+      byBioguide[bioguide || name].committees.push({
         committee: committeeCode,
-        committeeName: codeToName[committeeCode] || committeeCode, // Full name here
+        committeeName: codeToName[committeeCode] || committeeCode,
         role,
         rank: member.rank || null,
         party: member.party || null
@@ -99,19 +94,15 @@ function run() {
 
   let updatedCount = 0;
   rankings.forEach(sen => {
-    const agg = byBioguide[sen.bioguideId];
-    if (agg && agg.committees.length > 0) {
-      sen.committees = agg.committees;
-      updatedCount++;
-      console.log(`Updated ${sen.name} with ${agg.committees.length} committees`);
-      // Optional debug: log full names
-      console.log(`  Committees: ${agg.committees.map(c => `${c.committeeName} (${c.role})`).join(', ')}`);
-    }
+    let agg = byBioguide[sen.bioguideId] || byBioguide[sen.name];
+    sen.committees = agg ? agg.committees : []; // Empty if no match
+    if (agg && agg.committees.length > 0) updatedCount++;
+    console.log(`Updated ${sen.name} with ${sen.committees.length} committees: ${sen.committees.map(c => c.committeeName).join(', ')}`);
   });
 
   try {
     fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
-    console.log(`Committees updated for ${updatedCount} senators with full names`);
+    console.log(`Committees updated for ${updatedCount} senators (with name fallback)`);
   } catch (err) {
     console.error('Write error:', err.message);
   }
