@@ -2,12 +2,13 @@ name: Nightly Update Senators Rankings & Scores
 
 on:
   schedule:
-    - cron: "0 */6 * * *"   # Run every 6 hours
-  workflow_dispatch:         # Allow manual trigger
+    - cron: "0 */6 * * *"  # Every 6 hours
+  workflow_dispatch:       # Manual trigger
 
 jobs:
   update:
     runs-on: ubuntu-latest
+    timeout-minutes: 30     # Prevent infinite hangs
     env:
       CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
       CONGRESS_NUMBER: '119'
@@ -20,9 +21,17 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: 'npm'
+
+      - name: Cache node modules
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-node-
 
       - name: Install dependencies
-        run: npm install node-fetch@2 js-yaml xml2js
+        run: npm ci   # Faster and more reliable than npm install
 
       - name: Debug API key prefix
         run: node -e "console.log('API key prefix:', (process.env.CONGRESS_API_KEY||'').slice(0,6))"
@@ -47,5 +56,7 @@ jobs:
           git config user.name "Data Bot"
           git config user.email "bot@electorate.app"
           git add public/*.json
-          git diff --cached --quiet || git commit -m "Automated update senators data $(date +'%Y-%m-%d %H:%M:%S')"
+          git diff --cached --quiet || git commit -m "Automated update: senators rankings, committees, votes & scores $(date +'%Y-%m-%d %H:%M:%S UTC')"
           git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
