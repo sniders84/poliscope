@@ -1,54 +1,103 @@
-// senators-scores.js
-// Computes power scores from senators-rankings.json
-// Outputs public/senators-scores.json
+/**
+ * Senators scoring script
+ *
+ * Input:
+ *   public/senators-rankings.json
+ *
+ * Output:
+ *   public/senators-scores.json
+ *
+ * Logic:
+ *   - Reads merged rankings (legislation, committees, votes)
+ *   - Computes a composite score per senator
+ *   - Writes scores JSON for downstream use
+ */
 
 const fs = require('fs');
+const path = require('path');
 
-// Load merged rankings
-const rankings = JSON.parse(fs.readFileSync('public/senators-rankings.json', 'utf8'));
+const INPUT = path.join('public', 'senators-rankings.json');
+const OUTPUT = path.join('public', 'senators-scores.json');
 
-function computeScore(s) {
-  // Weighting factors — adjust as needed
-  const weights = {
-    sponsoredBills: 1.0,
-    cosponsoredBills: 0.5,
-    becameLawSponsoredBills: 5.0,
-    becameLawCosponsoredBills: 2.5,
-    committees: 10.0,
-    committeeLeadership: 20.0,
-    missedVotes: -2.0,
-  };
+// Simple scoring weights (adjust later as needed)
+const WEIGHTS = {
+  legislation: {
+    sponsoredBills: 2,
+    cosponsoredBills: 1,
+    sponsoredBillBecameLaw: 5,
+    cosponsoredBillBecameLaw: 3,
+    sponsoredAmendment: 1,
+    cosponsoredAmendment: 0.5,
+    sponsoredResolution: 1,
+    cosponsoredResolution: 0.5,
+    sponsoredJointResolution: 2,
+    cosponsoredJointResolution: 1,
+    sponsoredJointResolutionBecameLaw: 5,
+    cosponsoredJointResolutionBecameLaw: 3,
+    sponsoredConcurrentResolution: 1,
+    cosponsoredConcurrentResolution: 0.5,
+  },
+  committees: {
+    Chair: 5,
+    RankingMember: 4,
+    Member: 1,
+  },
+  votes: {
+    participationBonus: 2, // per 100 votes cast
+    penaltyMissedPct: -10, // subtract if missed > 10%
+  }
+};
 
-  const breakdown = {
-    sponsoredBills: s.sponsoredBills,
-    cosponsoredBills: s.cosponsoredBills,
-    becameLawSponsoredBills: s.becameLawSponsoredBills,
-    becameLawCosponsoredBills: s.becameLawCosponsoredBills,
-    committees: s.committees.length,
-    committeeLeadership: s.committeeLeadership.length,
-    missedVotes: s.missedVotes,
-  };
-
-  let score = 0;
-  for (const [key, val] of Object.entries(breakdown)) {
-    score += (val || 0) * (weights[key] || 0);
+function run() {
+  if (!fs.existsSync(INPUT)) {
+    throw new Error(`Missing ${INPUT}. Run merge-senators.js first.`);
   }
 
-  return { powerScore: Number(score.toFixed(1)), breakdown };
-}
+  const raw = fs.readFileSync(INPUT, 'utf8');
+  const senators = JSON.parse(raw);
 
-async function run() {
-  const results = rankings.map(s => {
-    const { powerScore, breakdown } = computeScore(s);
+  const scores = senators.map((s) => {
+    let score = 0;
+
+    // Legislation
+    for (const [field, weight] of Object.entries(WEIGHTS.legislation)) {
+      score += (s.legislation?.[field] || 0) * weight;
+    }
+
+    // Committees
+    for (const c of s.committees || []) {
+      const role = c.role;
+      if (role === 'Chair') score += WEIGHTS.committees.Chair;
+      else if (role === 'Ranking Member') score += WEIGHTS.committees.RankingMember;
+      else score += WEIGHTS.committees.Member;
+    }
+
+    // Votes
+    const totalVotes = s.votes?.totalVotes || 0;
+    const missedPct = s.votes?.missedVotePct || 0;
+    if (totalVotes > 0) {
+      score += Math.floor(totalVotes / 100) * WEIGHTS.votes.participationBonus;
+    }
+    if (missedPct > 10) {
+      score += WEIGHTS.votes.penaltyMissedPct;
+    }
+
     return {
-      ...s,
-      powerScore,
-      breakdown,
+      bioguideId: s.bioguideId,
+      score,
+      breakdown: {
+        legislation: s.legislation,
+        committees: s.committees,
+        votes: s.votes
+      }
     };
   });
 
-  fs.writeFileSync('public/senators-scores.json', JSON.stringify(results, null, 2));
-  console.log('senators-scores.json fully updated with power scores!');
+  const publicDir = path.join('public');
+  if (!fs.existsSync(publicDir)) fs.mkdirSync(publicDir, { recursive: true });
+
+  fs.writeFileSync(OUTPUT, JSON.stringify(scores, null, 2));
+  console.log(`Wrote ${OUTPUT} with ${scores.length} senator entries.`);
 }
 
-run().catch(err => console.error(err));
+run();
