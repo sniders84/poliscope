@@ -1,3 +1,9 @@
+/**
+ * Merge script
+ * - Combines legislation, committees, votes
+ * - Outputs public/senators-rankings.json
+ */
+
 const fs = require('fs');
 const path = require('path');
 
