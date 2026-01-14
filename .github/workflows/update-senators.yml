@@ -24,16 +24,16 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm install node-fetch@2 fast-xml-parser js-yaml csv-parse adm-zip
+          npm install js-yaml
 
-      - name: Run Legislation scraper (Congress.gov API)
-        run: node scripts/congressgov-legislation-scraper.js
+      - name: Run Legislation scraper
+        run: node scripts/legislation-scraper.js
 
-      - name: Run Committee scraper (Congress.gov API)
-        run: node scripts/congressgov-committee-scraper.js
+      - name: Run Committee scraper
+        run: node scripts/committee-scraper.js
 
-      - name: Run Votes scraper (Congress.gov API)
-        run: node scripts/congressgov-votes-scraper.js
+      - name: Run Votes scraper
+        run: node scripts/votes-scraper.js
 
       - name: Merge all data
         run: node scripts/merge-senators.js
