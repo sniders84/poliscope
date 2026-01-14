@@ -1,15 +1,8 @@
 /**
  * Senators scores
  * - Reads public/senators-rankings.json
- * - Computes a composite score per senator
+ * - Computes composite score per senator
  * - Outputs public/senators-scores.json
- *
- * Scoring model (tweakable weights):
- * - Sponsored weight: 2.0
- * - Cosponsored weight: 1.0
- * - Committee leadership bonus: +5 per leadership role (Chair, Ranking Member)
- * - Committee membership bonus: +1 per committee
- * - Missed vote penalty: -0.5 per percentage point missed (e.g., 3.2% => -1.6)
  */
 
 const fs = require('fs');
@@ -26,9 +19,7 @@ const WEIGHTS = {
   missedVotePenaltyPerPct: 0.5,
 };
 
-function safeNum(n) {
-  return typeof n === 'number' && !isNaN(n) ? n : 0;
-}
+function safeNum(n) { return typeof n === 'number' && !isNaN(n) ? n : 0; }
 
 function computeScore(s) {
   const sponsored = safeNum(s.sponsored);
@@ -75,7 +66,7 @@ function run() {
     score: computeScore(s),
   }));
 
-  // Optional: normalize to 0–100 scale
+  // Normalize to 0–100 scale
   const maxScore = results.reduce((m, r) => Math.max(m, r.score), 0);
   const minScore = results.reduce((m, r) => Math.min(m, r.score), maxScore);
   const span = Math.max(1, maxScore - minScore);
