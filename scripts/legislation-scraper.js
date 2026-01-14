@@ -1,34 +1,39 @@
 // legislation-scraper.js
-// Pulls LegiScan bulk dataset for 119th Congress
+// Fetches LegiScan US.zip dataset, extracts bills.json for 119th Congress
 // Outputs public/senators-legislation.json
 
 const fs = require('fs');
 const fetch = require('node-fetch');
-const { parse } = require('csv-parse/sync');   // ✅ fixed import
+const AdmZip = require('adm-zip');
 
+// Load legislators metadata
 const legislators = JSON.parse(fs.readFileSync('public/legislators-current.json', 'utf8'));
 const senators = legislators.filter(l => l.terms.some(t => t.type === 'sen'));
 const byBioguide = new Map(senators.map(s => [s.id.bioguide, s]));
 
-// LegiScan dataset URL (CSV snapshot of all bills)
-// You can swap this to JSON if you prefer
-const LEGISLATION_URL = 'https://legiscan.com/US/datasets/bills.csv';
+// LegiScan dataset ZIP URL
+const DATASET_URL = 'https://legiscan.com/US/datasets/US.zip';
 
-async function getCSV(url) {
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
-  const text = await res.text();
-  return parse(text, { columns: true });       // ✅ use parse()
+async function getBills() {
+  console.log('Downloading LegiScan US.zip...');
+  const res = await fetch(DATASET_URL);
+  if (!res.ok) throw new Error(`HTTP ${res.status} for ${DATASET_URL}`);
+  const buffer = await res.buffer();
+
+  const zip = new AdmZip(buffer);
+  const entry = zip.getEntry('bills.json');
+  if (!entry) throw new Error('bills.json not found in dataset');
+  const bills = JSON.parse(entry.getData().toString('utf8'));
+  return bills;
 }
 
 async function run() {
-  console.log('Fetching LegiScan dataset...');
-  const bills = await getCSV(LEGISLATION_URL);
+  const bills = await getBills();
 
   // Filter to 119th Congress only
   const bills119 = bills.filter(b => Number(b.congress) === 119);
 
-  // Tally per senator
+  // Initialize tallies
   const totals = new Map();
   for (const s of senators) {
     totals.set(s.id.bioguide, {
@@ -49,7 +54,6 @@ async function run() {
       }
     }
 
-    // Cosponsors are often a semicolon‑delimited list of bioguide IDs
     if (bill.cosponsors) {
       const cosponsors = bill.cosponsors.split(';').map(c => c.trim());
       for (const cos of cosponsors) {
