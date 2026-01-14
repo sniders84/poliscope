@@ -1,13 +1,13 @@
 // votes-scraper.js
-// Downloads LegiScan bulk dataset ZIP via API key, extracts votes.json
+// Downloads LegiScan bulk dataset ZIP via download token, extracts votes.json
 // Outputs public/senators-votes.json
 
 const fs = require('fs');
 const fetch = require('node-fetch');
 const AdmZip = require('adm-zip');
 
-const API_KEY = process.env.CONGRESS_API_KEY;
-const DATASET_URL = `https://api.legiscan.com/dl/?key=${API_KEY}&session=2199`;
+const TOKEN = process.env.CONGRESS_API_KEY; // your LegiScan download token
+const DATASET_URL = `https://api.legiscan.com/dl/?token=${TOKEN}&session=2199`;
 
 const legislators = JSON.parse(fs.readFileSync('public/legislators-current.json', 'utf8'));
 const senators = legislators.filter(l => l.terms.some(t => t.type === 'sen'));
@@ -18,6 +18,11 @@ async function getVotes() {
   const res = await fetch(DATASET_URL);
   if (!res.ok) throw new Error(`HTTP ${res.status} for ${DATASET_URL}`);
   const buffer = await res.buffer();
+
+  const header = buffer.toString('utf8', 0, 20);
+  if (header.startsWith('{')) {
+    throw new Error(`LegiScan returned JSON instead of ZIP: ${header}`);
+  }
 
   const zip = new AdmZip(buffer);
   const entry = zip.getEntry('votes.json');
