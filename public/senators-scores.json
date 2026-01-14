@@ -1,5133 +1,1112 @@
 [
   {
     "bioguideId": "B001319",
-    "score": 274,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 21,
-        "cosponsoredBills": 229,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Katie Britt",
-        "bioguideId": "B001319",
-        "sponsoredAmendments": 5,
-        "cosponsoredAmendments": 11,
-        "becameLawBills": 1,
-        "becameLawAmendments": 0,
-        "becameLawCosponsoredAmendments": 2
-      },
-      "committees": [
-        {
-          "committee": "SSAP",
-          "role": "Member"
-        },
-        {
-          "committee": "SSBK",
-          "role": "Member"
-        },
-        {
-          "committee": "SSJU",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "T000278",
-    "score": 236,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 33,
-        "cosponsoredBills": 166,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Tommy Tuberville",
-        "bioguideId": "T000278",
-        "sponsoredAmendments": 24,
-        "cosponsoredAmendments": 6,
-        "becameLawBills": 0,
-        "becameLawAmendments": 1,
-        "becameLawCosponsoredAmendments": 1
-      },
-      "committees": [
-        {
-          "committee": "SSAF",
-          "role": "Member"
-        },
-        {
-          "committee": "SSAS",
-          "role": "Member"
-        },
-        {
-          "committee": "SSHR",
-          "role": "Member"
-        },
-        {
-          "committee": "SSVA",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "M001153",
-    "score": 234,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 38,
-        "cosponsoredBills": 156,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Lisa Murkowski",
-        "bioguideId": "M001153",
-        "sponsoredAmendments": 22,
-        "cosponsoredAmendments": 19,
-        "becameLawBills": 0,
-        "becameLawAmendments": 2,
-        "becameLawCosponsoredAmendments": 7
-      },
-      "committees": [
-        {
-          "committee": "SSAP",
-          "role": "Member"
-        },
-        {
-          "committee": "SSHR",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "S001198",
-    "score": 299,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 55,
-        "cosponsoredBills": 186,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Dan Sullivan",
-        "bioguideId": "S001198",
-        "sponsoredAmendments": 21,
-        "cosponsoredAmendments": 19,
-        "becameLawBills": 3,
-        "becameLawAmendments": 3,
-        "becameLawCosponsoredAmendments": 4
-      },
-      "committees": [
-        {
-          "committee": "SSAS",
-          "role": "Member"
-        },
-        {
-          "committee": "SSCM",
-          "role": "Member"
-        },
-        {
-          "committee": "SSVA",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "G000003",
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
     "score": 0,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 0,
-        "cosponsoredBills": 0,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Ruben Gallego",
-        "bioguideId": "G000003",
-        "sponsoredAmendments": 0,
-        "cosponsoredAmendments": 0,
-        "becameLawBills": 0,
-        "becameLawAmendments": 0,
-        "becameLawCosponsoredAmendments": 0
-      },
-      "committees": [],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "K000377",
-    "score": 243,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 25,
-        "cosponsoredBills": 192,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Mark Kelly",
-        "bioguideId": "K000377",
-        "sponsoredAmendments": 72,
-        "cosponsoredAmendments": 58,
-        "becameLawBills": 1,
-        "becameLawAmendments": 3,
-        "becameLawCosponsoredAmendments": 19
-      },
-      "committees": [
-        {
-          "committee": "SSAS",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "B001236",
-    "score": 213,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 13,
-        "cosponsoredBills": 180,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "John Boozman",
-        "bioguideId": "B001236",
-        "sponsoredAmendments": 3,
-        "cosponsoredAmendments": 9,
-        "becameLawBills": 0,
-        "becameLawAmendments": 0,
-        "becameLawCosponsoredAmendments": 2
-      },
-      "committees": [
-        {
-          "committee": "SSAF",
-          "role": "Chair"
-        },
-        {
-          "committee": "SSAP",
-          "role": "Member"
-        },
-        {
-          "committee": "SSVA",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "C001095",
-    "score": 258,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 65,
-        "cosponsoredBills": 127,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Tom Cotton",
-        "bioguideId": "C001095",
-        "sponsoredAmendments": 11,
-        "cosponsoredAmendments": 13,
-        "becameLawBills": 0,
-        "becameLawAmendments": 1,
-        "becameLawCosponsoredAmendments": 2
-      },
-      "committees": [
-        {
-          "committee": "SSAS",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "S001222",
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
     "score": 0,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 0,
-        "cosponsoredBills": 0,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Adam Schiff",
-        "bioguideId": "S001222",
-        "sponsoredAmendments": 0,
-        "cosponsoredAmendments": 0,
-        "becameLawBills": 0,
-        "becameLawAmendments": 0,
-        "becameLawCosponsoredAmendments": 0
-      },
-      "committees": [],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "P000145",
-    "score": 377,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 75,
-        "cosponsoredBills": 225,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Alex Padilla",
-        "bioguideId": "P000145",
-        "sponsoredAmendments": 124,
-        "cosponsoredAmendments": 25,
-        "becameLawBills": 0,
-        "becameLawAmendments": 2,
-        "becameLawCosponsoredAmendments": 3
-      },
-      "committees": [
-        {
-          "committee": "SSBU",
-          "role": "Member"
-        },
-        {
-          "committee": "SSJU",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "B001267",
-    "score": 295,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 46,
-        "cosponsoredBills": 201,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Michael Bennet",
-        "bioguideId": "B001267",
-        "sponsoredAmendments": 181,
-        "cosponsoredAmendments": 49,
-        "becameLawBills": 0,
-        "becameLawAmendments": 2,
-        "becameLawCosponsoredAmendments": 16
-      },
-      "committees": [
-        {
-          "committee": "SSAF",
-          "role": "Member"
-        },
-        {
-          "committee": "SSFI",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "H001075",
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
     "score": 0,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 0,
-        "cosponsoredBills": 0,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "John Hickenlooper",
-        "bioguideId": "H001075",
-        "sponsoredAmendments": 0,
-        "cosponsoredAmendments": 0,
-        "becameLawBills": 0,
-        "becameLawAmendments": 0,
-        "becameLawCosponsoredAmendments": 0
-      },
-      "committees": [],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "B001277",
-    "score": 411,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 86,
-        "cosponsoredBills": 232,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Richard Blumenthal",
-        "bioguideId": "B001277",
-        "sponsoredAmendments": 39,
-        "cosponsoredAmendments": 18,
-        "becameLawBills": 0,
-        "becameLawAmendments": 4,
-        "becameLawCosponsoredAmendments": 7
-      },
-      "committees": [
-        {
-          "committee": "SSAS",
-          "role": "Member"
-        },
-        {
-          "committee": "SSGA",
-          "role": "Member"
-        },
-        {
-          "committee": "SSJU",
-          "role": "Member"
-        },
-        {
-          "committee": "SSVA",
-          "role": "Ranking Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "M001169",
-    "score": 217,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 21,
-        "cosponsoredBills": 172,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Chris Murphy",
-        "bioguideId": "M001169",
-        "sponsoredAmendments": 70,
-        "cosponsoredAmendments": 13,
-        "becameLawBills": 0,
-        "becameLawAmendments": 2,
-        "becameLawCosponsoredAmendments": 1
-      },
-      "committees": [
-        {
-          "committee": "SSAP",
-          "role": "Member"
-        },
-        {
-          "committee": "SSFR",
-          "role": "Member"
-        },
-        {
-          "committee": "SSHR",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "B001313",
-    "score": 276,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 14,
-        "cosponsoredBills": 248,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Lisa Blunt Rochester",
-        "bioguideId": "B001313",
-        "sponsoredAmendments": 0,
-        "cosponsoredAmendments": 0,
-        "becameLawBills": 0,
-        "becameLawAmendments": 0,
-        "becameLawCosponsoredAmendments": 0
-      },
-      "committees": [],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "C001088",
-    "score": 313,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 40,
-        "cosponsoredBills": 229,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Chris Coons",
-        "bioguideId": "C001088",
-        "sponsoredAmendments": 73,
-        "cosponsoredAmendments": 21,
-        "becameLawBills": 0,
-        "becameLawAmendments": 6,
-        "becameLawCosponsoredAmendments": 2
-      },
-      "committees": [
-        {
-          "committee": "SSAP",
-          "role": "Member"
-        },
-        {
-          "committee": "SSFR",
-          "role": "Member"
-        },
-        {
-          "committee": "SSSB",
-          "role": "Member"
-        },
-        {
-          "committee": "SSJU",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "M001231",
-    "score": 189,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 5,
-        "cosponsoredBills": 179,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Ashley Moody",
-        "bioguideId": "M001231",
-        "sponsoredAmendments": 0,
-        "cosponsoredAmendments": 0,
-        "becameLawBills": 0,
-        "becameLawAmendments": 0,
-        "becameLawCosponsoredAmendments": 0
-      },
-      "committees": [],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "S001217",
-    "score": 485,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 122,
-        "cosponsoredBills": 237,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Rick Scott",
-        "bioguideId": "S001217",
-        "sponsoredAmendments": 15,
-        "cosponsoredAmendments": 13,
-        "becameLawBills": 0,
-        "becameLawAmendments": 4,
-        "becameLawCosponsoredAmendments": 3
-      },
-      "committees": [
-        {
-          "committee": "SSAS",
-          "role": "Member"
-        },
-        {
-          "committee": "SSFR",
-          "role": "Member"
-        },
-        {
-          "committee": "SSGA",
-          "role": "Member"
-        },
-        {
-          "committee": "SSBU",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "O000174",
-    "score": 182,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 15,
-        "cosponsoredBills": 151,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Jon Ossoff",
-        "bioguideId": "O000174",
-        "sponsoredAmendments": 9,
-        "cosponsoredAmendments": 31,
-        "becameLawBills": 0,
-        "becameLawAmendments": 4,
-        "becameLawCosponsoredAmendments": 3
-      },
-      "committees": [
-        {
-          "committee": "SSAP",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "W000790",
-    "score": 234,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 18,
-        "cosponsoredBills": 195,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Raphael Warnock",
-        "bioguideId": "W000790",
-        "sponsoredAmendments": 47,
-        "cosponsoredAmendments": 55,
-        "becameLawBills": 0,
-        "becameLawAmendments": 2,
-        "becameLawCosponsoredAmendments": 14
-      },
-      "committees": [
-        {
-          "committee": "SSAF",
-          "role": "Member"
-        },
-        {
-          "committee": "SSBK",
-          "role": "Member"
-        },
-        {
-          "committee": "SSFI",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "H001042",
-    "score": 309,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 42,
-        "cosponsoredBills": 221,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Mazie Hirono",
-        "bioguideId": "H001042",
-        "sponsoredAmendments": 97,
-        "cosponsoredAmendments": 29,
-        "becameLawBills": 0,
-        "becameLawAmendments": 6,
-        "becameLawCosponsoredAmendments": 3
-      },
-      "committees": [
-        {
-          "committee": "SSAS",
-          "role": "Member"
-        },
-        {
-          "committee": "SSSB",
-          "role": "Member"
-        },
-        {
-          "committee": "SSJU",
-          "role": "Member"
-        },
-        {
-          "committee": "SSVA",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "S001194",
-    "score": 256,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 35,
-        "cosponsoredBills": 183,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Brian Schatz",
-        "bioguideId": "S001194",
-        "sponsoredAmendments": 61,
-        "cosponsoredAmendments": 67,
-        "becameLawBills": 0,
-        "becameLawAmendments": 0,
-        "becameLawCosponsoredAmendments": 15
-      },
-      "committees": [
-        {
-          "committee": "SSAP",
-          "role": "Member"
-        },
-        {
-          "committee": "SSCM",
-          "role": "Member"
-        },
-        {
-          "committee": "SSFR",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "C000880",
-    "score": 286,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 25,
-        "cosponsoredBills": 229,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Mike Crapo",
-        "bioguideId": "C000880",
-        "sponsoredAmendments": 7,
-        "cosponsoredAmendments": 15,
-        "becameLawBills": 1,
-        "becameLawAmendments": 2,
-        "becameLawCosponsoredAmendments": 5
-      },
-      "committees": [
-        {
-          "committee": "SSBK",
-          "role": "Member"
-        },
-        {
-          "committee": "SSFI",
-          "role": "Chair"
-        },
-        {
-          "committee": "SSBU",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "R000584",
-    "score": 332,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 48,
-        "cosponsoredBills": 230,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "James Risch",
-        "bioguideId": "R000584",
-        "sponsoredAmendments": 35,
-        "cosponsoredAmendments": 20,
-        "becameLawBills": 0,
-        "becameLawAmendments": 0,
-        "becameLawCosponsoredAmendments": 5
-      },
-      "committees": [
-        {
-          "committee": "SSFR",
-          "role": "Chair"
-        },
-        {
-          "committee": "SSSB",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "D000563",
-    "score": 394,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 83,
-        "cosponsoredBills": 222,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Dick Durbin",
-        "bioguideId": "D000563",
-        "sponsoredAmendments": 51,
-        "cosponsoredAmendments": 28,
-        "becameLawBills": 0,
-        "becameLawAmendments": 1,
-        "becameLawCosponsoredAmendments": 6
-      },
-      "committees": [
-        {
-          "committee": "SSAF",
-          "role": "Member"
-        },
-        {
-          "committee": "SSAP",
-          "role": "Member"
-        },
-        {
-          "committee": "SSJU",
-          "role": "Ranking Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "D000622",
-    "score": 303,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 35,
-        "cosponsoredBills": 229,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Tammy Duckworth",
-        "bioguideId": "D000622",
-        "sponsoredAmendments": 35,
-        "cosponsoredAmendments": 21,
-        "becameLawBills": 1,
-        "becameLawAmendments": 5,
-        "becameLawCosponsoredAmendments": 2
-      },
-      "committees": [
-        {
-          "committee": "SSAS",
-          "role": "Member"
-        },
-        {
-          "committee": "SSCM",
-          "role": "Member"
-        },
-        {
-          "committee": "SSFR",
-          "role": "Member"
-        },
-        {
-          "committee": "SSVA",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "B001299",
-    "score": 312,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 74,
-        "cosponsoredBills": 160,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Jim Banks",
-        "bioguideId": "B001299",
-        "sponsoredAmendments": 4,
-        "cosponsoredAmendments": 6,
-        "becameLawBills": 0,
-        "becameLawAmendments": 0,
-        "becameLawCosponsoredAmendments": 2
-      },
-      "committees": [
-        {
-          "committee": "SSAS",
-          "role": "Member"
-        },
-        {
-          "committee": "SSBK",
-          "role": "Member"
-        },
-        {
-          "committee": "SSHR",
-          "role": "Member"
-        },
-        {
-          "committee": "SSVA",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "Y000064",
-    "score": 237,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 37,
-        "cosponsoredBills": 160,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Todd Young",
-        "bioguideId": "Y000064",
-        "sponsoredAmendments": 7,
-        "cosponsoredAmendments": 13,
-        "becameLawBills": 0,
-        "becameLawAmendments": 0,
-        "becameLawCosponsoredAmendments": 3
-      },
-      "committees": [
-        {
-          "committee": "SSCM",
-          "role": "Member"
-        },
-        {
-          "committee": "SSFI",
-          "role": "Member"
-        },
-        {
-          "committee": "SSSB",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "E000295",
-    "score": 311,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 75,
-        "cosponsoredBills": 153,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Joni Ernst",
-        "bioguideId": "E000295",
-        "sponsoredAmendments": 20,
-        "cosponsoredAmendments": 14,
-        "becameLawBills": 0,
-        "becameLawAmendments": 3,
-        "becameLawCosponsoredAmendments": 2
-      },
-      "committees": [
-        {
-          "committee": "SSAF",
-          "role": "Member"
-        },
-        {
-          "committee": "SSAS",
-          "role": "Member"
-        },
-        {
-          "committee": "SSGA",
-          "role": "Member"
-        },
-        {
-          "committee": "SSSB",
-          "role": "Chair"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "G000386",
-    "score": 308,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 64,
-        "cosponsoredBills": 172,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Chuck Grassley",
-        "bioguideId": "G000386",
-        "sponsoredAmendments": 31,
-        "cosponsoredAmendments": 19,
-        "becameLawBills": 0,
-        "becameLawAmendments": 3,
-        "becameLawCosponsoredAmendments": 6
-      },
-      "committees": [
-        {
-          "committee": "SSAF",
-          "role": "Member"
-        },
-        {
-          "committee": "SSFI",
-          "role": "Member"
-        },
-        {
-          "committee": "SSBU",
-          "role": "Member"
-        },
-        {
-          "committee": "SSJU",
-          "role": "Chair"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "M001197",
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
     "score": 0,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 0,
-        "cosponsoredBills": 0,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Roger Marshall",
-        "bioguideId": "M001197",
-        "sponsoredAmendments": 0,
-        "cosponsoredAmendments": 0,
-        "becameLawBills": 0,
-        "becameLawAmendments": 0,
-        "becameLawCosponsoredAmendments": 0
-      },
-      "committees": [],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "M000934",
-    "score": 285,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 64,
-        "cosponsoredBills": 149,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Jerry Moran",
-        "bioguideId": "M000934",
-        "sponsoredAmendments": 16,
-        "cosponsoredAmendments": 11,
-        "becameLawBills": 1,
-        "becameLawAmendments": 5,
-        "becameLawCosponsoredAmendments": 1
-      },
-      "committees": [
-        {
-          "committee": "SSAF",
-          "role": "Member"
-        },
-        {
-          "committee": "SSAP",
-          "role": "Member"
-        },
-        {
-          "committee": "SSCM",
-          "role": "Member"
-        },
-        {
-          "committee": "SSVA",
-          "role": "Chair"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "M000355",
-    "score": 69,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 12,
-        "cosponsoredBills": 43,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Mitch McConnell",
-        "bioguideId": "M000355",
-        "sponsoredAmendments": 1,
-        "cosponsoredAmendments": 2,
-        "becameLawBills": 0,
-        "becameLawAmendments": 0,
-        "becameLawCosponsoredAmendments": 1
-      },
-      "committees": [
-        {
-          "committee": "SSAF",
-          "role": "Member"
-        },
-        {
-          "committee": "SSAP",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "P000603",
-    "score": 147,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 44,
-        "cosponsoredBills": 51,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Rand Paul",
-        "bioguideId": "P000603",
-        "sponsoredAmendments": 32,
-        "cosponsoredAmendments": 1,
-        "becameLawBills": 0,
-        "becameLawAmendments": 6,
-        "becameLawCosponsoredAmendments": 0
-      },
-      "committees": [
-        {
-          "committee": "SSFR",
-          "role": "Member"
-        },
-        {
-          "committee": "SSHR",
-          "role": "Member"
-        },
-        {
-          "committee": "SSGA",
-          "role": "Chair"
-        },
-        {
-          "committee": "SSSB",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "C001075",
-    "score": 432,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 90,
-        "cosponsoredBills": 245,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Bill Cassidy",
-        "bioguideId": "C001075",
-        "sponsoredAmendments": 12,
-        "cosponsoredAmendments": 5,
-        "becameLawBills": 1,
-        "becameLawAmendments": 0,
-        "becameLawCosponsoredAmendments": 0
-      },
-      "committees": [
-        {
-          "committee": "SSFI",
-          "role": "Member"
-        },
-        {
-          "committee": "SSHR",
-          "role": "Chair"
-        },
-        {
-          "committee": "SSVA",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "K000393",
-    "score": 260,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 63,
-        "cosponsoredBills": 130,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "John Kennedy",
-        "bioguideId": "K000393",
-        "sponsoredAmendments": 46,
-        "cosponsoredAmendments": 2,
-        "becameLawBills": 3,
-        "becameLawAmendments": 5,
-        "becameLawCosponsoredAmendments": 0
-      },
-      "committees": [
-        {
-          "committee": "SSAP",
-          "role": "Member"
-        },
-        {
-          "committee": "SSBK",
-          "role": "Member"
-        },
-        {
-          "committee": "SSBU",
-          "role": "Member"
-        },
-        {
-          "committee": "SSJU",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "C001035",
-    "score": 266,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 18,
-        "cosponsoredBills": 224,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Susan Collins",
-        "bioguideId": "C001035",
-        "sponsoredAmendments": 17,
-        "cosponsoredAmendments": 11,
-        "becameLawBills": 0,
-        "becameLawAmendments": 4,
-        "becameLawCosponsoredAmendments": 4
-      },
-      "committees": [
-        {
-          "committee": "SSAP",
-          "role": "Chair"
-        },
-        {
-          "committee": "SSHR",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "K000383",
-    "score": 280,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 26,
-        "cosponsoredBills": 226,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Angus King",
-        "bioguideId": "K000383",
-        "sponsoredAmendments": 93,
-        "cosponsoredAmendments": 24,
-        "becameLawBills": 0,
-        "becameLawAmendments": 2,
-        "becameLawCosponsoredAmendments": 5
-      },
-      "committees": [
-        {
-          "committee": "SSAS",
-          "role": "Member"
-        },
-        {
-          "committee": "SSVA",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "A000382",
-    "score": 240,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 19,
-        "cosponsoredBills": 200,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Angela Alsobrooks",
-        "bioguideId": "A000382",
-        "sponsoredAmendments": 24,
-        "cosponsoredAmendments": 50,
-        "becameLawBills": 0,
-        "becameLawAmendments": 1,
-        "becameLawCosponsoredAmendments": 12
-      },
-      "committees": [
-        {
-          "committee": "SSBK",
-          "role": "Member"
-        },
-        {
-          "committee": "SSHR",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "V000128",
-    "score": 318,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 46,
-        "cosponsoredBills": 222,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Chris Van Hollen",
-        "bioguideId": "V000128",
-        "sponsoredAmendments": 74,
-        "cosponsoredAmendments": 28,
-        "becameLawBills": 0,
-        "becameLawAmendments": 4,
-        "becameLawCosponsoredAmendments": 6
-      },
-      "committees": [
-        {
-          "committee": "SSAP",
-          "role": "Member"
-        },
-        {
-          "committee": "SSBK",
-          "role": "Member"
-        },
-        {
-          "committee": "SSFR",
-          "role": "Member"
-        },
-        {
-          "committee": "SSBU",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "M000133",
-    "score": 437,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 101,
-        "cosponsoredBills": 229,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Ed Markey",
-        "bioguideId": "M000133",
-        "sponsoredAmendments": 63,
-        "cosponsoredAmendments": 21,
-        "becameLawBills": 0,
-        "becameLawAmendments": 2,
-        "becameLawCosponsoredAmendments": 0
-      },
-      "committees": [
-        {
-          "committee": "SSCM",
-          "role": "Member"
-        },
-        {
-          "committee": "SSHR",
-          "role": "Member"
-        },
-        {
-          "committee": "SSSB",
-          "role": "Ranking Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "W000817",
-    "score": 289,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 34,
-        "cosponsoredBills": 215,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Elizabeth Warren",
-        "bioguideId": "W000817",
-        "sponsoredAmendments": 158,
-        "cosponsoredAmendments": 35,
-        "becameLawBills": 0,
-        "becameLawAmendments": 2,
-        "becameLawCosponsoredAmendments": 3
-      },
-      "committees": [
-        {
-          "committee": "SSAS",
-          "role": "Member"
-        },
-        {
-          "committee": "SSBK",
-          "role": "Ranking Member"
-        },
-        {
-          "committee": "SSFI",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "P000595",
-    "score": 319,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 62,
-        "cosponsoredBills": 188,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Gary Peters",
-        "bioguideId": "P000595",
-        "sponsoredAmendments": 100,
-        "cosponsoredAmendments": 62,
-        "becameLawBills": 1,
-        "becameLawAmendments": 2,
-        "becameLawCosponsoredAmendments": 15
-      },
-      "committees": [
-        {
-          "committee": "SSAP",
-          "role": "Member"
-        },
-        {
-          "committee": "SSAS",
-          "role": "Member"
-        },
-        {
-          "committee": "SSCM",
-          "role": "Member"
-        },
-        {
-          "committee": "SSGA",
-          "role": "Ranking Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "S001208",
-    "score": 210,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 16,
-        "cosponsoredBills": 174,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Elissa Slotkin",
-        "bioguideId": "S001208",
-        "sponsoredAmendments": 21,
-        "cosponsoredAmendments": 15,
-        "becameLawBills": 0,
-        "becameLawAmendments": 2,
-        "becameLawCosponsoredAmendments": 2
-      },
-      "committees": [
-        {
-          "committee": "SSAF",
-          "role": "Member"
-        },
-        {
-          "committee": "SSAS",
-          "role": "Member"
-        },
-        {
-          "committee": "SSGA",
-          "role": "Member"
-        },
-        {
-          "committee": "SSVA",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "K000367",
-    "score": 389,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 76,
-        "cosponsoredBills": 231,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Amy Klobuchar",
-        "bioguideId": "K000367",
-        "sponsoredAmendments": 57,
-        "cosponsoredAmendments": 19,
-        "becameLawBills": 0,
-        "becameLawAmendments": 6,
-        "becameLawCosponsoredAmendments": 6
-      },
-      "committees": [
-        {
-          "committee": "SSAF",
-          "role": "Ranking Member"
-        },
-        {
-          "committee": "SSCM",
-          "role": "Member"
-        },
-        {
-          "committee": "SSJU",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "S001203",
-    "score": 289,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 27,
-        "cosponsoredBills": 232,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Tina Smith",
-        "bioguideId": "S001203",
-        "sponsoredAmendments": 17,
-        "cosponsoredAmendments": 18,
-        "becameLawBills": 0,
-        "becameLawAmendments": 1,
-        "becameLawCosponsoredAmendments": 5
-      },
-      "committees": [
-        {
-          "committee": "SSAF",
-          "role": "Member"
-        },
-        {
-          "committee": "SSBK",
-          "role": "Member"
-        },
-        {
-          "committee": "SSFI",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "H001079",
-    "score": 302,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 32,
-        "cosponsoredBills": 236,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Cindy Hyde-Smith",
-        "bioguideId": "H001079",
-        "sponsoredAmendments": 0,
-        "cosponsoredAmendments": 1,
-        "becameLawBills": 0,
-        "becameLawAmendments": 0,
-        "becameLawCosponsoredAmendments": 0
-      },
-      "committees": [
-        {
-          "committee": "SSAF",
-          "role": "Member"
-        },
-        {
-          "committee": "SSAP",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "W000437",
-    "score": 271,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 33,
-        "cosponsoredBills": 199,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Roger Wicker",
-        "bioguideId": "W000437",
-        "sponsoredAmendments": 13,
-        "cosponsoredAmendments": 0,
-        "becameLawBills": 0,
-        "becameLawAmendments": 1,
-        "becameLawCosponsoredAmendments": 0
-      },
-      "committees": [
-        {
-          "committee": "SSAS",
-          "role": "Chair"
-        },
-        {
-          "committee": "SSCM",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "H001089",
-    "score": 205,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 40,
-        "cosponsoredBills": 121,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Josh Hawley",
-        "bioguideId": "H001089",
-        "sponsoredAmendments": 31,
-        "cosponsoredAmendments": 3,
-        "becameLawBills": 0,
-        "becameLawAmendments": 2,
-        "becameLawCosponsoredAmendments": 1
-      },
-      "committees": [
-        {
-          "committee": "SSHR",
-          "role": "Member"
-        },
-        {
-          "committee": "SSGA",
-          "role": "Member"
-        },
-        {
-          "committee": "SSSB",
-          "role": "Member"
-        },
-        {
-          "committee": "SSJU",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "S001227",
-    "score": 202,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 37,
-        "cosponsoredBills": 125,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Eric Schmitt",
-        "bioguideId": "S001227",
-        "sponsoredAmendments": 13,
-        "cosponsoredAmendments": 7,
-        "becameLawBills": 0,
-        "becameLawAmendments": 1,
-        "becameLawCosponsoredAmendments": 2
-      },
-      "committees": [
-        {
-          "committee": "SSAS",
-          "role": "Member"
-        },
-        {
-          "committee": "SSCM",
-          "role": "Member"
-        },
-        {
-          "committee": "SSJU",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "D000618",
-    "score": 335,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 46,
-        "cosponsoredBills": 241,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Steve Daines",
-        "bioguideId": "D000618",
-        "sponsoredAmendments": 28,
-        "cosponsoredAmendments": 9,
-        "becameLawBills": 0,
-        "becameLawAmendments": 1,
-        "becameLawCosponsoredAmendments": 4
-      },
-      "committees": [
-        {
-          "committee": "SSFI",
-          "role": "Member"
-        },
-        {
-          "committee": "SSFR",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "S001233",
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
     "score": 0,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 0,
-        "cosponsoredBills": 0,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Tim Sheehy",
-        "bioguideId": "S001233",
-        "sponsoredAmendments": 0,
-        "cosponsoredAmendments": 0,
-        "becameLawBills": 0,
-        "becameLawAmendments": 0,
-        "becameLawCosponsoredAmendments": 0
-      },
-      "committees": [],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "F000463",
-    "score": 189,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 26,
-        "cosponsoredBills": 133,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Deb Fischer",
-        "bioguideId": "F000463",
-        "sponsoredAmendments": 6,
-        "cosponsoredAmendments": 2,
-        "becameLawBills": 0,
-        "becameLawAmendments": 1,
-        "becameLawCosponsoredAmendments": 0
-      },
-      "committees": [
-        {
-          "committee": "SSAF",
-          "role": "Member"
-        },
-        {
-          "committee": "SSAP",
-          "role": "Member"
-        },
-        {
-          "committee": "SSAS",
-          "role": "Member"
-        },
-        {
-          "committee": "SSCM",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "R000618",
-    "score": 330,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 41,
-        "cosponsoredBills": 245,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Pete Ricketts",
-        "bioguideId": "R000618",
-        "sponsoredAmendments": 16,
-        "cosponsoredAmendments": 5,
-        "becameLawBills": 1,
-        "becameLawAmendments": 1,
-        "becameLawCosponsoredAmendments": 1
-      },
-      "committees": [
-        {
-          "committee": "SSBK",
-          "role": "Member"
-        },
-        {
-          "committee": "SSFR",
-          "role": "Member"
-        },
-        {
-          "committee": "SSBU",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "C001113",
-    "score": 356,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 72,
-        "cosponsoredBills": 210,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Catherine Cortez Masto",
-        "bioguideId": "C001113",
-        "sponsoredAmendments": 82,
-        "cosponsoredAmendments": 40,
-        "becameLawBills": 0,
-        "becameLawAmendments": 1,
-        "becameLawCosponsoredAmendments": 12
-      },
-      "committees": [
-        {
-          "committee": "SSBK",
-          "role": "Member"
-        },
-        {
-          "committee": "SSFI",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "R000608",
-    "score": 297,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 46,
-        "cosponsoredBills": 201,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Jacky Rosen",
-        "bioguideId": "R000608",
-        "sponsoredAmendments": 114,
-        "cosponsoredAmendments": 49,
-        "becameLawBills": 0,
-        "becameLawAmendments": 4,
-        "becameLawCosponsoredAmendments": 15
-      },
-      "committees": [
-        {
-          "committee": "SSAS",
-          "role": "Member"
-        },
-        {
-          "committee": "SSCM",
-          "role": "Member"
-        },
-        {
-          "committee": "SSFR",
-          "role": "Member"
-        },
-        {
-          "committee": "SSSB",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "S001181",
-    "score": 335,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 59,
-        "cosponsoredBills": 210,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Jeanne Shaheen",
-        "bioguideId": "S001181",
-        "sponsoredAmendments": 166,
-        "cosponsoredAmendments": 40,
-        "becameLawBills": 0,
-        "becameLawAmendments": 9,
-        "becameLawCosponsoredAmendments": 4
-      },
-      "committees": [
-        {
-          "committee": "SSAP",
-          "role": "Member"
-        },
-        {
-          "committee": "SSAS",
-          "role": "Member"
-        },
-        {
-          "committee": "SSFR",
-          "role": "Ranking Member"
-        },
-        {
-          "committee": "SSSB",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "H001076",
-    "score": 305,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 37,
-        "cosponsoredBills": 227,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Maggie Hassan",
-        "bioguideId": "H001076",
-        "sponsoredAmendments": 34,
-        "cosponsoredAmendments": 19,
-        "becameLawBills": 0,
-        "becameLawAmendments": 1,
-        "becameLawCosponsoredAmendments": 1
-      },
-      "committees": [
-        {
-          "committee": "SSFI",
-          "role": "Member"
-        },
-        {
-          "committee": "SSHR",
-          "role": "Member"
-        },
-        {
-          "committee": "SSGA",
-          "role": "Member"
-        },
-        {
-          "committee": "SSVA",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "K000394",
-    "score": 253,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 17,
-        "cosponsoredBills": 215,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Andy Kim",
-        "bioguideId": "K000394",
-        "sponsoredAmendments": 52,
-        "cosponsoredAmendments": 35,
-        "becameLawBills": 0,
-        "becameLawAmendments": 2,
-        "becameLawCosponsoredAmendments": 9
-      },
-      "committees": [
-        {
-          "committee": "SSBK",
-          "role": "Member"
-        },
-        {
-          "committee": "SSCM",
-          "role": "Member"
-        },
-        {
-          "committee": "SSHR",
-          "role": "Member"
-        },
-        {
-          "committee": "SSGA",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "B001288",
-    "score": 359,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 66,
-        "cosponsoredBills": 223,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Cory Booker",
-        "bioguideId": "B001288",
-        "sponsoredAmendments": 128,
-        "cosponsoredAmendments": 27,
-        "becameLawBills": 0,
-        "becameLawAmendments": 5,
-        "becameLawCosponsoredAmendments": 5
-      },
-      "committees": [
-        {
-          "committee": "SSAF",
-          "role": "Member"
-        },
-        {
-          "committee": "SSFR",
-          "role": "Member"
-        },
-        {
-          "committee": "SSSB",
-          "role": "Member"
-        },
-        {
-          "committee": "SSJU",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "H001046",
-    "score": 284,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 32,
-        "cosponsoredBills": 219,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Martin Heinrich",
-        "bioguideId": "H001046",
-        "sponsoredAmendments": 65,
-        "cosponsoredAmendments": 31,
-        "becameLawBills": 0,
-        "becameLawAmendments": 1,
-        "becameLawCosponsoredAmendments": 7
-      },
-      "committees": [
-        {
-          "committee": "SSAP",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "L000570",
-    "score": 325,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 49,
-        "cosponsoredBills": 223,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Ben Ray Luján",
-        "bioguideId": "L000570",
-        "sponsoredAmendments": 72,
-        "cosponsoredAmendments": 27,
-        "becameLawBills": 0,
-        "becameLawAmendments": 3,
-        "becameLawCosponsoredAmendments": 5
-      },
-      "committees": [
-        {
-          "committee": "SSAF",
-          "role": "Member"
-        },
-        {
-          "committee": "SSCM",
-          "role": "Member"
-        },
-        {
-          "committee": "SSFI",
-          "role": "Member"
-        },
-        {
-          "committee": "SSBU",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "G000555",
-    "score": 300,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 38,
-        "cosponsoredBills": 222,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Kirsten Gillibrand",
-        "bioguideId": "G000555",
-        "sponsoredAmendments": 12,
-        "cosponsoredAmendments": 28,
-        "becameLawBills": 0,
-        "becameLawAmendments": 0,
-        "becameLawCosponsoredAmendments": 10
-      },
-      "committees": [
-        {
-          "committee": "SSAP",
-          "role": "Member"
-        },
-        {
-          "committee": "SSAS",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "S000148",
-    "score": 187,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 18,
-        "cosponsoredBills": 151,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Chuck Schumer",
-        "bioguideId": "S000148",
-        "sponsoredAmendments": 27,
-        "cosponsoredAmendments": 13,
-        "becameLawBills": 0,
-        "becameLawAmendments": 2,
-        "becameLawCosponsoredAmendments": 4
-      },
-      "committees": [],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "B001305",
-    "score": 297,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 27,
-        "cosponsoredBills": 240,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Ted Budd",
-        "bioguideId": "B001305",
-        "sponsoredAmendments": 11,
-        "cosponsoredAmendments": 10,
-        "becameLawBills": 0,
-        "becameLawAmendments": 1,
-        "becameLawCosponsoredAmendments": 1
-      },
-      "committees": [
-        {
-          "committee": "SSAS",
-          "role": "Member"
-        },
-        {
-          "committee": "SSCM",
-          "role": "Member"
-        },
-        {
-          "committee": "SSSB",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "T000476",
-    "score": 339,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 49,
-        "cosponsoredBills": 237,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Thom Tillis",
-        "bioguideId": "T000476",
-        "sponsoredAmendments": 9,
-        "cosponsoredAmendments": 13,
-        "becameLawBills": 0,
-        "becameLawAmendments": 1,
-        "becameLawCosponsoredAmendments": 2
-      },
-      "committees": [
-        {
-          "committee": "SSBK",
-          "role": "Member"
-        },
-        {
-          "committee": "SSFI",
-          "role": "Member"
-        },
-        {
-          "committee": "SSJU",
-          "role": "Member"
-        },
-        {
-          "committee": "SSVA",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "C001096",
-    "score": 291,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 23,
-        "cosponsoredBills": 242,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Kevin Cramer",
-        "bioguideId": "C001096",
-        "sponsoredAmendments": 1,
-        "cosponsoredAmendments": 8,
-        "becameLawBills": 0,
-        "becameLawAmendments": 1,
-        "becameLawCosponsoredAmendments": 2
-      },
-      "committees": [
-        {
-          "committee": "SSAS",
-          "role": "Member"
-        },
-        {
-          "committee": "SSBK",
-          "role": "Member"
-        },
-        {
-          "committee": "SSVA",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "H001061",
-    "score": 203,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 17,
-        "cosponsoredBills": 167,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "John Hoeven",
-        "bioguideId": "H001061",
-        "sponsoredAmendments": 4,
-        "cosponsoredAmendments": 4,
-        "becameLawBills": 0,
-        "becameLawAmendments": 0,
-        "becameLawCosponsoredAmendments": 2
-      },
-      "committees": [
-        {
-          "committee": "SSAF",
-          "role": "Member"
-        },
-        {
-          "committee": "SSAP",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "M001232",
-    "score": 282,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 16,
-        "cosponsoredBills": 250,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Bernie Moreno",
-        "bioguideId": "M001232",
-        "sponsoredAmendments": 0,
-        "cosponsoredAmendments": 0,
-        "becameLawBills": 0,
-        "becameLawAmendments": 0,
-        "becameLawCosponsoredAmendments": 0
-      },
-      "committees": [],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "H001088",
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
     "score": 0,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 0,
-        "cosponsoredBills": 0,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Jon Husted",
-        "bioguideId": "H001088",
-        "sponsoredAmendments": 0,
-        "cosponsoredAmendments": 0,
-        "becameLawBills": 0,
-        "becameLawAmendments": 0,
-        "becameLawCosponsoredAmendments": 0
-      },
-      "committees": [],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "L000575",
-    "score": 355,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 59,
-        "cosponsoredBills": 235,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "James Lankford",
-        "bioguideId": "L000575",
-        "sponsoredAmendments": 24,
-        "cosponsoredAmendments": 6,
-        "becameLawBills": 1,
-        "becameLawAmendments": 1,
-        "becameLawCosponsoredAmendments": 2
-      },
-      "committees": [
-        {
-          "committee": "SSFI",
-          "role": "Member"
-        },
-        {
-          "committee": "SSGA",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "M001190",
-    "score": 181,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 20,
-        "cosponsoredBills": 138,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Markwayne Mullin",
-        "bioguideId": "M001190",
-        "sponsoredAmendments": 6,
-        "cosponsoredAmendments": 4,
-        "becameLawBills": 0,
-        "becameLawAmendments": 1,
-        "becameLawCosponsoredAmendments": 1
-      },
-      "committees": [
-        {
-          "committee": "SSAP",
-          "role": "Member"
-        },
-        {
-          "committee": "SSAS",
-          "role": "Member"
-        },
-        {
-          "committee": "SSHR",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "M001176",
-    "score": 385,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 74,
-        "cosponsoredBills": 231,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Jeff Merkley",
-        "bioguideId": "M001176",
-        "sponsoredAmendments": 154,
-        "cosponsoredAmendments": 19,
-        "becameLawBills": 0,
-        "becameLawAmendments": 9,
-        "becameLawCosponsoredAmendments": 4
-      },
-      "committees": [
-        {
-          "committee": "SSAP",
-          "role": "Member"
-        },
-        {
-          "committee": "SSFR",
-          "role": "Member"
-        },
-        {
-          "committee": "SSBU",
-          "role": "Ranking Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "W000779",
-    "score": 324,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 48,
-        "cosponsoredBills": 223,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Ron Wyden",
-        "bioguideId": "W000779",
-        "sponsoredAmendments": 45,
-        "cosponsoredAmendments": 27,
-        "becameLawBills": 0,
-        "becameLawAmendments": 1,
-        "becameLawCosponsoredAmendments": 5
-      },
-      "committees": [
-        {
-          "committee": "SSFI",
-          "role": "Ranking Member"
-        },
-        {
-          "committee": "SSBU",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "F000479",
-    "score": 288,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 20,
-        "cosponsoredBills": 245,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "John Fetterman",
-        "bioguideId": "F000479",
-        "sponsoredAmendments": 3,
-        "cosponsoredAmendments": 5,
-        "becameLawBills": 0,
-        "becameLawAmendments": 0,
-        "becameLawCosponsoredAmendments": 0
-      },
-      "committees": [
-        {
-          "committee": "SSAF",
-          "role": "Member"
-        },
-        {
-          "committee": "SSCM",
-          "role": "Member"
-        },
-        {
-          "committee": "SSGA",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "M001227",
-    "score": 288,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 19,
-        "cosponsoredBills": 250,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "David McCormick",
-        "bioguideId": "M001227",
-        "sponsoredAmendments": 0,
-        "cosponsoredAmendments": 0,
-        "becameLawBills": 0,
-        "becameLawAmendments": 0,
-        "becameLawCosponsoredAmendments": 0
-      },
-      "committees": [],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "R000122",
-    "score": 255,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 25,
-        "cosponsoredBills": 199,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Jack Reed",
-        "bioguideId": "R000122",
-        "sponsoredAmendments": 113,
-        "cosponsoredAmendments": 44,
-        "becameLawBills": 0,
-        "becameLawAmendments": 2,
-        "becameLawCosponsoredAmendments": 13
-      },
-      "committees": [
-        {
-          "committee": "SSAP",
-          "role": "Member"
-        },
-        {
-          "committee": "SSAS",
-          "role": "Ranking Member"
-        },
-        {
-          "committee": "SSBK",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "W000802",
-    "score": 349,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 66,
-        "cosponsoredBills": 214,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Sheldon Whitehouse",
-        "bioguideId": "W000802",
-        "sponsoredAmendments": 33,
-        "cosponsoredAmendments": 36,
-        "becameLawBills": 0,
-        "becameLawAmendments": 0,
-        "becameLawCosponsoredAmendments": 4
-      },
-      "committees": [
-        {
-          "committee": "SSFI",
-          "role": "Member"
-        },
-        {
-          "committee": "SSBU",
-          "role": "Member"
-        },
-        {
-          "committee": "SSJU",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "G000359",
-    "score": 167,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 23,
-        "cosponsoredBills": 114,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Lindsey Graham",
-        "bioguideId": "G000359",
-        "sponsoredAmendments": 10,
-        "cosponsoredAmendments": 5,
-        "becameLawBills": 0,
-        "becameLawAmendments": 4,
-        "becameLawCosponsoredAmendments": 0
-      },
-      "committees": [
-        {
-          "committee": "SSAP",
-          "role": "Member"
-        },
-        {
-          "committee": "SSBU",
-          "role": "Chair"
-        },
-        {
-          "committee": "SSJU",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "S001184",
-    "score": 212,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 46,
-        "cosponsoredBills": 112,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Tim Scott",
-        "bioguideId": "S001184",
-        "sponsoredAmendments": 14,
-        "cosponsoredAmendments": 1,
-        "becameLawBills": 1,
-        "becameLawAmendments": 2,
-        "becameLawCosponsoredAmendments": 0
-      },
-      "committees": [
-        {
-          "committee": "SSBK",
-          "role": "Chair"
-        },
-        {
-          "committee": "SSFI",
-          "role": "Member"
-        },
-        {
-          "committee": "SSHR",
-          "role": "Member"
-        },
-        {
-          "committee": "SSSB",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "R000605",
-    "score": 278,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 51,
-        "cosponsoredBills": 173,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Mike Rounds",
-        "bioguideId": "R000605",
-        "sponsoredAmendments": 9,
-        "cosponsoredAmendments": 12,
-        "becameLawBills": 0,
-        "becameLawAmendments": 3,
-        "becameLawCosponsoredAmendments": 3
-      },
-      "committees": [
-        {
-          "committee": "SSAP",
-          "role": "Member"
-        },
-        {
-          "committee": "SSAS",
-          "role": "Member"
-        },
-        {
-          "committee": "SSBK",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "T000250",
-    "score": 138,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 42,
-        "cosponsoredBills": 51,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "John Thune",
-        "bioguideId": "T000250",
-        "sponsoredAmendments": 39,
-        "cosponsoredAmendments": 0,
-        "becameLawBills": 0,
-        "becameLawAmendments": 1,
-        "becameLawCosponsoredAmendments": 0
-      },
-      "committees": [
-        {
-          "committee": "SSAF",
-          "role": "Member"
-        },
-        {
-          "committee": "SSCM",
-          "role": "Member"
-        },
-        {
-          "committee": "SSFI",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "B001243",
-    "score": 470,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 114,
-        "cosponsoredBills": 238,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Marsha Blackburn",
-        "bioguideId": "B001243",
-        "sponsoredAmendments": 21,
-        "cosponsoredAmendments": 12,
-        "becameLawBills": 0,
-        "becameLawAmendments": 2,
-        "becameLawCosponsoredAmendments": 1
-      },
-      "committees": [
-        {
-          "committee": "SSCM",
-          "role": "Member"
-        },
-        {
-          "committee": "SSFI",
-          "role": "Member"
-        },
-        {
-          "committee": "SSJU",
-          "role": "Member"
-        },
-        {
-          "committee": "SSVA",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "H000601",
-    "score": 181,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 19,
-        "cosponsoredBills": 140,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Bill Hagerty",
-        "bioguideId": "H000601",
-        "sponsoredAmendments": 12,
-        "cosponsoredAmendments": 2,
-        "becameLawBills": 1,
-        "becameLawAmendments": 2,
-        "becameLawCosponsoredAmendments": 0
-      },
-      "committees": [
-        {
-          "committee": "SSAP",
-          "role": "Member"
-        },
-        {
-          "committee": "SSBK",
-          "role": "Member"
-        },
-        {
-          "committee": "SSFR",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "C001056",
-    "score": 421,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 97,
-        "cosponsoredBills": 223,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "John Cornyn",
-        "bioguideId": "C001056",
-        "sponsoredAmendments": 46,
-        "cosponsoredAmendments": 13,
-        "becameLawBills": 2,
-        "becameLawAmendments": 6,
-        "becameLawCosponsoredAmendments": 2
-      },
-      "committees": [
-        {
-          "committee": "SSFI",
-          "role": "Member"
-        },
-        {
-          "committee": "SSFR",
-          "role": "Member"
-        },
-        {
-          "committee": "SSBU",
-          "role": "Member"
-        },
-        {
-          "committee": "SSJU",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "C001098",
-    "score": 401,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 101,
-        "cosponsoredBills": 192,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Ted Cruz",
-        "bioguideId": "C001098",
-        "sponsoredAmendments": 56,
-        "cosponsoredAmendments": 10,
-        "becameLawBills": 1,
-        "becameLawAmendments": 6,
-        "becameLawCosponsoredAmendments": 1
-      },
-      "committees": [
-        {
-          "committee": "SSCM",
-          "role": "Chair"
-        },
-        {
-          "committee": "SSFR",
-          "role": "Member"
-        },
-        {
-          "committee": "SSJU",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "C001131",
-    "score": 216,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 2,
-        "cosponsoredBills": 212,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "John Curtis",
-        "bioguideId": "C001131",
-        "sponsoredAmendments": 0,
-        "cosponsoredAmendments": 0,
-        "becameLawBills": 0,
-        "becameLawAmendments": 0,
-        "becameLawCosponsoredAmendments": 0
-      },
-      "committees": [],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "L000577",
-    "score": 361,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 99,
-        "cosponsoredBills": 160,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Mike Lee",
-        "bioguideId": "L000577",
-        "sponsoredAmendments": 88,
-        "cosponsoredAmendments": 7,
-        "becameLawBills": 0,
-        "becameLawAmendments": 3,
-        "becameLawCosponsoredAmendments": 1
-      },
-      "committees": [
-        {
-          "committee": "SSFR",
-          "role": "Member"
-        },
-        {
-          "committee": "SSBU",
-          "role": "Member"
-        },
-        {
-          "committee": "SSJU",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "K000384",
-    "score": 313,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 49,
-        "cosponsoredBills": 211,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Tim Kaine",
-        "bioguideId": "K000384",
-        "sponsoredAmendments": 120,
-        "cosponsoredAmendments": 39,
-        "becameLawBills": 0,
-        "becameLawAmendments": 2,
-        "becameLawCosponsoredAmendments": 7
-      },
-      "committees": [
-        {
-          "committee": "SSAS",
-          "role": "Member"
-        },
-        {
-          "committee": "SSFR",
-          "role": "Member"
-        },
-        {
-          "committee": "SSHR",
-          "role": "Member"
-        },
-        {
-          "committee": "SSBU",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "W000805",
-    "score": 256,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 28,
-        "cosponsoredBills": 197,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Mark Warner",
-        "bioguideId": "W000805",
-        "sponsoredAmendments": 67,
-        "cosponsoredAmendments": 53,
-        "becameLawBills": 0,
-        "becameLawAmendments": 2,
-        "becameLawCosponsoredAmendments": 11
-      },
-      "committees": [
-        {
-          "committee": "SSBK",
-          "role": "Member"
-        },
-        {
-          "committee": "SSFI",
-          "role": "Member"
-        },
-        {
-          "committee": "SSBU",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "M001111",
-    "score": 260,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 24,
-        "cosponsoredBills": 205,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Patty Murray",
-        "bioguideId": "M001111",
-        "sponsoredAmendments": 37,
-        "cosponsoredAmendments": 8,
-        "becameLawBills": 0,
-        "becameLawAmendments": 2,
-        "becameLawCosponsoredAmendments": 2
-      },
-      "committees": [
-        {
-          "committee": "SSAP",
-          "role": "Ranking Member"
-        },
-        {
-          "committee": "SSHR",
-          "role": "Member"
-        },
-        {
-          "committee": "SSBU",
-          "role": "Member"
-        },
-        {
-          "committee": "SSVA",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "C000127",
-    "score": 189,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 16,
-        "cosponsoredBills": 151,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Maria Cantwell",
-        "bioguideId": "C000127",
-        "sponsoredAmendments": 38,
-        "cosponsoredAmendments": 17,
-        "becameLawBills": 0,
-        "becameLawAmendments": 1,
-        "becameLawCosponsoredAmendments": 5
-      },
-      "committees": [
-        {
-          "committee": "SSCM",
-          "role": "Ranking Member"
-        },
-        {
-          "committee": "SSFI",
-          "role": "Member"
-        },
-        {
-          "committee": "SSSB",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "C001047",
-    "score": 291,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 22,
-        "cosponsoredBills": 245,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Shelley Moore Capito",
-        "bioguideId": "C001047",
-        "sponsoredAmendments": 2,
-        "cosponsoredAmendments": 5,
-        "becameLawBills": 0,
-        "becameLawAmendments": 1,
-        "becameLawCosponsoredAmendments": 1
-      },
-      "committees": [
-        {
-          "committee": "SSAP",
-          "role": "Member"
-        },
-        {
-          "committee": "SSCM",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "J000307",
-    "score": 110,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 19,
-        "cosponsoredBills": 72,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Jim Justice",
-        "bioguideId": "J000307",
-        "sponsoredAmendments": 0,
-        "cosponsoredAmendments": 0,
-        "becameLawBills": 1,
-        "becameLawAmendments": 0,
-        "becameLawCosponsoredAmendments": 0
-      },
-      "committees": [],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "B001230",
-    "score": 285,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 31,
-        "cosponsoredBills": 220,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Tammy Baldwin",
-        "bioguideId": "B001230",
-        "sponsoredAmendments": 34,
-        "cosponsoredAmendments": 30,
-        "becameLawBills": 0,
-        "becameLawAmendments": 2,
-        "becameLawCosponsoredAmendments": 8
-      },
-      "committees": [
-        {
-          "committee": "SSAP",
-          "role": "Member"
-        },
-        {
-          "committee": "SSCM",
-          "role": "Member"
-        },
-        {
-          "committee": "SSHR",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "J000293",
-    "score": 81,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 18,
-        "cosponsoredBills": 42,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Ron Johnson",
-        "bioguideId": "J000293",
-        "sponsoredAmendments": 8,
-        "cosponsoredAmendments": 4,
-        "becameLawBills": 0,
-        "becameLawAmendments": 1,
-        "becameLawCosponsoredAmendments": 1
-      },
-      "committees": [
-        {
-          "committee": "SSFI",
-          "role": "Member"
-        },
-        {
-          "committee": "SSGA",
-          "role": "Member"
-        },
-        {
-          "committee": "SSBU",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "B001261",
-    "score": 251,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 42,
-        "cosponsoredBills": 165,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "John Barrasso",
-        "bioguideId": "B001261",
-        "sponsoredAmendments": 5,
-        "cosponsoredAmendments": 2,
-        "becameLawBills": 0,
-        "becameLawAmendments": 0,
-        "becameLawCosponsoredAmendments": 0
-      },
-      "committees": [
-        {
-          "committee": "SSFI",
-          "role": "Member"
-        },
-        {
-          "committee": "SSFR",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "L000571",
-    "score": 313,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 37,
-        "cosponsoredBills": 237,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Cynthia Lummis",
-        "bioguideId": "L000571",
-        "sponsoredAmendments": 14,
-        "cosponsoredAmendments": 12,
-        "becameLawBills": 1,
-        "becameLawAmendments": 0,
-        "becameLawCosponsoredAmendments": 2
-      },
-      "committees": [
-        {
-          "committee": "SSBK",
-          "role": "Member"
-        },
-        {
-          "committee": "SSCM",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "S000033",
-    "score": 314,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 36,
-        "cosponsoredBills": 235,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Bernie Sanders",
-        "bioguideId": "S000033",
-        "sponsoredAmendments": 15,
-        "cosponsoredAmendments": 15,
-        "becameLawBills": 0,
-        "becameLawAmendments": 3,
-        "becameLawCosponsoredAmendments": 3
-      },
-      "committees": [
-        {
-          "committee": "SSFI",
-          "role": "Member"
-        },
-        {
-          "committee": "SSHR",
-          "role": "Ranking Member"
-        },
-        {
-          "committee": "SSBU",
-          "role": "Member"
-        },
-        {
-          "committee": "SSVA",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "W000800",
-    "score": 342,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 56,
-        "cosponsoredBills": 227,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0,
-        "name": "Peter Welch",
-        "bioguideId": "W000800",
-        "sponsoredAmendments": 159,
-        "cosponsoredAmendments": 23,
-        "becameLawBills": 0,
-        "becameLawAmendments": 1,
-        "becameLawCosponsoredAmendments": 6
-      },
-      "committees": [
-        {
-          "committee": "SSAF",
-          "role": "Member"
-        },
-        {
-          "committee": "SSFI",
-          "role": "Member"
-        },
-        {
-          "committee": "SSJU",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
-    "bioguideId": "M001198",
-    "score": 4,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 0,
-        "cosponsoredBills": 0,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0
-      },
-      "committees": [
-        {
-          "committee": "SSAF",
-          "role": "Member"
-        },
-        {
-          "committee": "SSFI",
-          "role": "Member"
-        },
-        {
-          "committee": "SSHR",
-          "role": "Member"
-        },
-        {
-          "committee": "SSBU",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
-  },
-  {
-    "bioguideId": "J000312",
-    "score": 2,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 0,
-        "cosponsoredBills": 0,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0
-      },
-      "committees": [
-        {
-          "committee": "SSAF",
-          "role": "Member"
-        },
-        {
-          "committee": "SSSB",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
-  },
-  {
-    "bioguideId": "S001150",
-    "score": 3,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 0,
-        "cosponsoredBills": 0,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0
-      },
-      "committees": [
-        {
-          "committee": "SSAF",
-          "role": "Member"
-        },
-        {
-          "committee": "SSSB",
-          "role": "Member"
-        },
-        {
-          "committee": "SSJU",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
-  },
-  {
-    "bioguideId": "S001232",
-    "score": 3,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 0,
-        "cosponsoredBills": 0,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0
-      },
-      "committees": [
-        {
-          "committee": "SSAS",
-          "role": "Member"
-        },
-        {
-          "committee": "SSCM",
-          "role": "Member"
-        },
-        {
-          "committee": "SSVA",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
-  },
-  {
-    "bioguideId": "M001242",
-    "score": 4,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 0,
-        "cosponsoredBills": 0,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0
-      },
-      "committees": [
-        {
-          "committee": "SSBK",
-          "role": "Member"
-        },
-        {
-          "committee": "SSCM",
-          "role": "Member"
-        },
-        {
-          "committee": "SSGA",
-          "role": "Member"
-        },
-        {
-          "committee": "SSBU",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
-  },
-  {
-    "bioguideId": "M001243",
-    "score": 2,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 0,
-        "cosponsoredBills": 0,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0
-      },
-      "committees": [
-        {
-          "committee": "SSBK",
-          "role": "Member"
-        },
-        {
-          "committee": "SSFR",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
-  },
-  {
-    "bioguideId": "G000574",
-    "score": 3,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 0,
-        "cosponsoredBills": 0,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0
-      },
-      "committees": [
-        {
-          "committee": "SSBK",
-          "role": "Member"
-        },
-        {
-          "committee": "SSGA",
-          "role": "Member"
-        },
-        {
-          "committee": "SSVA",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
-  },
-  {
-    "bioguideId": "B001303",
-    "score": 3,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 0,
-        "cosponsoredBills": 0,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0
-      },
-      "committees": [
-        {
-          "committee": "SSBK",
-          "role": "Member"
-        },
-        {
-          "committee": "SSCM",
-          "role": "Member"
-        },
-        {
-          "committee": "SSHR",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
-  },
-  {
-    "bioguideId": "C001114",
-    "score": 3,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 0,
-        "cosponsoredBills": 0,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0
-      },
-      "committees": [
-        {
-          "committee": "SSCM",
-          "role": "Member"
-        },
-        {
-          "committee": "SSFR",
-          "role": "Member"
-        },
-        {
-          "committee": "SSSB",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
-  },
-  {
-    "bioguideId": "H000273",
-    "score": 3,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 0,
-        "cosponsoredBills": 0,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0
-      },
-      "committees": [
-        {
-          "committee": "SSCM",
-          "role": "Member"
-        },
-        {
-          "committee": "SSHR",
-          "role": "Member"
-        },
-        {
-          "committee": "SSSB",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
-  },
-  {
-    "bioguideId": "H001104",
-    "score": 2,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 0,
-        "cosponsoredBills": 0,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0
-      },
-      "committees": [
-        {
-          "committee": "SSHR",
-          "role": "Member"
-        },
-        {
-          "committee": "SSSB",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
-  },
-  {
-    "bioguideId": "M001244",
-    "score": 3,
-    "breakdown": {
-      "legislation": {
-        "sponsoredBills": 0,
-        "cosponsoredBills": 0,
-        "sponsoredBillBecameLaw": 0,
-        "cosponsoredBillBecameLaw": 0,
-        "sponsoredAmendment": 0,
-        "cosponsoredAmendment": 0,
-        "sponsoredResolution": 0,
-        "cosponsoredResolution": 0,
-        "sponsoredJointResolution": 0,
-        "cosponsoredJointResolution": 0,
-        "sponsoredJointResolutionBecameLaw": 0,
-        "cosponsoredJointResolutionBecameLaw": 0,
-        "sponsoredConcurrentResolution": 0,
-        "cosponsoredConcurrentResolution": 0
-      },
-      "committees": [
-        {
-          "committee": "SSHR",
-          "role": "Member"
-        },
-        {
-          "committee": "SSGA",
-          "role": "Member"
-        },
-        {
-          "committee": "SSJU",
-          "role": "Member"
-        }
-      ],
-      "votes": {
-        "totalVotes": 0,
-        "missedVotes": 0,
-        "missedVotePct": 0
-      }
-    }
+    "sponsored": 0,
+    "cosponsored": 0,
+    "totalVotes": 0,
+    "missedVotes": 0,
+    "missedVotePct": 0,
+    "committees": [],
+    "score": 0,
+    "scoreNormalized": 0
   }
 ]
