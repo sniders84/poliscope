@@ -1,125 +1,80 @@
 // legislation-scraper.js
-// Strict 119th Congress ONLY — sponsored/cosponsored legislation per senator
+// Pulls LegiScan bulk dataset for 119th Congress
 // Outputs public/senators-legislation.json
 
 const fs = require('fs');
 const fetch = require('node-fetch');
-
-const CONGRESS = 119;
-const BASE_URL = 'https://api.congress.gov/v3';
-const LIMIT = 250; // max page size to minimize requests
-const SLEEP_MS = 40;
+const csvParse = require('csv-parse/lib/sync');
 
 const legislators = JSON.parse(fs.readFileSync('public/legislators-current.json', 'utf8'));
 const senators = legislators.filter(l => l.terms.some(t => t.type === 'sen'));
+const byBioguide = new Map(senators.map(s => [s.id.bioguide, s]));
 
-const API_KEY = process.env.CONGRESS_API_KEY;
-if (!API_KEY) {
-  console.error('Congress API key not found in environment');
-  process.exit(1);
-}
-const HEADERS = { 'X-Api-Key': API_KEY };
+// LegiScan dataset URL (CSV snapshot of all bills)
+// You can swap this to JSON if you prefer
+const LEGISLATION_URL = 'https://legiscan.com/US/datasets/bills.csv';
 
-async function sleep(ms) {
-  return new Promise(r => setTimeout(r, ms));
-}
-
-async function getJSON(url) {
-  const res = await fetch(url, { headers: HEADERS });
+async function getCSV(url) {
+  const res = await fetch(url);
   if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
-  return res.json();
-}
-
-// Correct member endpoints with explicit congress, limit, and offset
-function memberLegislationUrl(bioguideId, type, offset = 0) {
-  // type: 'sponsored' | 'cosponsored'
-  const params = new URLSearchParams({
-    congress: String(CONGRESS),
-    format: 'json',
-    limit: String(LIMIT),
-    offset: String(offset),
-  });
-  return `${BASE_URL}/member/${bioguideId}/${type}-legislation?${params.toString()}`;
-}
-
-// Page through results and filter strictly to 119th Congress
-async function fetchAllLegislation(bioguideId, type) {
-  let offset = 0;
-  let all = [];
-  let total = null;
-
-  while (true) {
-    const url = memberLegislationUrl(bioguideId, type, offset);
-    const data = await getJSON(url);
-
-    // Capture reported total for debugging, but we will compute our own filtered totals
-    if (total === null && data?.pagination?.count != null) {
-      total = data.pagination.count;
-    }
-
-    const items = Array.isArray(data?.legislation) ? data.legislation : [];
-    // Strict filter: only keep items where congress === 119
-    const filtered = items.filter(i => Number(i?.congress) === CONGRESS);
-    all.push(...filtered);
-
-    // If fewer than LIMIT returned, we’re done
-    if (items.length < LIMIT) break;
-
-    offset += LIMIT;
-    await sleep(SLEEP_MS);
-  }
-
-  return all;
-}
-
-function countBecamePublicLaw(items) {
-  return items.filter(i => i?.latestAction?.text?.includes('Became Public Law')).length;
-}
-
-async function scrapeSenator(sen) {
-  const bioguideId = sen.id.bioguide;
-  const name = sen.name.official_full;
-  console.log(`Scraping legislation for ${name} (${bioguideId})`);
-
-  let sponsoredItems = [];
-  let cosponsoredItems = [];
-
-  try {
-    sponsoredItems = await fetchAllLegislation(bioguideId, 'sponsored');
-  } catch (err) {
-    console.error(`Sponsored fetch failed for ${bioguideId}: ${err.message}`);
-  }
-
-  try {
-    cosponsoredItems = await fetchAllLegislation(bioguideId, 'cosponsored');
-  } catch (err) {
-    console.error(`Cosponsored fetch failed for ${bioguideId}: ${err.message}`);
-  }
-
-  const sponsoredCount = sponsoredItems.length;
-  const cosponsoredCount = cosponsoredItems.length;
-  const becameLawSponsored = countBecamePublicLaw(sponsoredItems);
-  const becameLawCosponsored = countBecamePublicLaw(cosponsoredItems);
-
-  return {
-    bioguideId,
-    sponsoredBills: sponsoredCount,
-    cosponsoredBills: cosponsoredCount,
-    becameLawSponsoredBills: becameLawSponsored,
-    becameLawCosponsoredBills: becameLawCosponsored,
-  };
+  const text = await res.text();
+  return csvParse(text, { columns: true });
 }
 
 async function run() {
-  const results = [];
-  for (const sen of senators) {
-    try {
-      const row = await scrapeSenator(sen);
-      results.push(row);
-    } catch (err) {
-      console.error(`Error scraping ${sen.name.official_full}: ${err.message}`);
+  console.log('Fetching LegiScan dataset...');
+  const bills = await getCSV(LEGISLATION_URL);
+
+  // Filter to 119th Congress only
+  const bills119 = bills.filter(b => Number(b.congress) === 119);
+
+  // Tally per senator
+  const totals = new Map();
+  for (const s of senators) {
+    totals.set(s.id.bioguide, {
+      sponsoredBills: 0,
+      cosponsoredBills: 0,
+      becameLawSponsoredBills: 0,
+      becameLawCosponsoredBills: 0,
+    });
+  }
+
+  for (const bill of bills119) {
+    const sponsorId = bill.sponsor_bioguide;
+    if (sponsorId && totals.has(sponsorId)) {
+      const entry = totals.get(sponsorId);
+      entry.sponsoredBills += 1;
+      if (/became public law/i.test(bill.status_text)) {
+        entry.becameLawSponsoredBills += 1;
+      }
+    }
+
+    // Cosponsors are often a semicolon‑delimited list of bioguide IDs
+    if (bill.cosponsors) {
+      const cosponsors = bill.cosponsors.split(';').map(c => c.trim());
+      for (const cos of cosponsors) {
+        if (totals.has(cos)) {
+          const entry = totals.get(cos);
+          entry.cosponsoredBills += 1;
+          if (/became public law/i.test(bill.status_text)) {
+            entry.becameLawCosponsoredBills += 1;
+          }
+        }
+      }
     }
   }
+
+  const results = [];
+  for (const [bioguideId, t] of totals.entries()) {
+    results.push({
+      bioguideId,
+      sponsoredBills: t.sponsoredBills,
+      cosponsoredBills: t.cosponsoredBills,
+      becameLawSponsoredBills: t.becameLawSponsoredBills,
+      becameLawCosponsoredBills: t.becameLawCosponsoredBills,
+    });
+  }
+
   fs.writeFileSync('public/senators-legislation.json', JSON.stringify(results, null, 2));
   console.log('Legislation scraper complete!');
 }
