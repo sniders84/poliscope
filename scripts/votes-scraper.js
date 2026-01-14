@@ -28,7 +28,7 @@ async function getVoteDetailUrls() {
   return urls;
 }
 
-async function parseVoteCounts(url, senatorMap) {
+async function parseVoteCounts(url, senatorLastNames) {
   const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' } });
   if (!res.ok) return { yea: [], nay: [], notVoting: [] };
 
@@ -39,27 +39,35 @@ async function parseVoteCounts(url, senatorMap) {
   const yea = [];
   const nay = [];
   const notVoting = [];
+  const unmatched = []; // Debug
 
   members.forEach(m => {
     const lastName = m.last_name?.trim().toLowerCase();
     const voteCast = m.vote_cast?.trim();
 
-    // Fuzzy match: last name + optional first initial or state
-    for (const [senName, senInfo] of senatorMap) {
-      const senLast = senInfo.lastName.toLowerCase();
-      const senFirstInitial = senName.split(' ')[0][0].toLowerCase(); // e.g., "Adam" → "a"
-      if (lastName === senLast || lastName.includes(senLast)) {
+    let matched = false;
+    for (const senName of senatorLastNames) {
+      const senLast = senName.split(' ').pop().toLowerCase();
+      if (lastName === senLast) {
         if (voteCast === 'Yea') yea.push(senName);
         if (voteCast === 'Nay') nay.push(senName);
         if (voteCast === 'Not Voting' || voteCast === 'Absent') notVoting.push(senName);
+        matched = true;
         break;
       }
     }
+
+    if (!matched && (voteCast === 'Yea' || voteCast === 'Nay' || voteCast === 'Not Voting' || voteCast === 'Absent')) {
+      unmatched.push(`${lastName} (${voteCast})`);
+    }
   });
 
-  // Log raw misses + unmatched for debug
-  if (notVoting.length > 0) {
-    console.log(`Not Voting/Absent on ${url.split('/').pop()}: ${notVoting.length} matched`);
+  // Debug log: show matches and unmatched
+  if (yea.length + nay.length + notVoting.length > 0) {
+    console.log(`Vote ${url.split('/').pop()}: ${yea.length} Yea, ${nay.length} Nay, ${notVoting.length} Not Voting`);
+  }
+  if (unmatched.length > 0 && notVoting.length > 0) {
+    console.log(`Unmatched raw votes: ${unmatched.slice(0, 10).join(', ')}...`);
   }
 
   return { yea, nay, notVoting };
@@ -78,15 +86,8 @@ async function main() {
     return;
   }
 
-  // Build map with last name and first initial for fuzzy matching
-  const senatorMap = new Map();
-  rankings.forEach(sen => {
-    const fullName = sen.name || '';
-    const parts = fullName.split(' ');
-    const lastName = parts[parts.length - 1];
-    const firstInitial = parts[0][0] || '';
-    senatorMap.set(fullName, { lastName, firstInitial });
-  });
+  // Use last names as keys for matching
+  const senatorLastNames = rankings.map(s => s.name);
 
   const urls = await getVoteDetailUrls();
   if (urls.length === 0) return console.log('No votes found');
@@ -103,7 +104,7 @@ async function main() {
   });
 
   for (const url of urls) {
-    const counts = await parseVoteCounts(url, senatorMap);
+    const counts = await parseVoteCounts(url, senatorLastNames);
     counts.yea.forEach(name => voteCounts.yea[name]++);
     counts.nay.forEach(name => voteCounts.nay[name]++);
     counts.notVoting.forEach(name => voteCounts.notVoting[name]++);
@@ -125,7 +126,7 @@ async function main() {
   try {
     fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
     console.log(`Votes updated: ${urls.length} roll calls processed`);
-    console.log('Added/updated: yeaVotes, nayVotes, missedVotes, participationPct');
+    console.log('Fields: yeaVotes, nayVotes, missedVotes, participationPct');
   } catch (err) {
     console.error('Failed to write rankings.json:', err.message);
   }
