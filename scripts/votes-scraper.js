@@ -24,65 +24,112 @@ async function getVoteDetailUrls() {
       }
     });
   }
-  console.log(`Total vote XML URLs: ${urls.length}`);
+  console.log(`Total vote XML URLs across sessions: ${urls.length}`);
   return urls;
 }
 
-async function parseNotVoting(url, nameToLastNameMap) {
+async function parseVoteCounts(url, nameToLastNameMap) {
   const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' } });
-  if (!res.ok) return [];
+  if (!res.ok) {
+    console.warn(`Skipped vote ${url.split('/').pop()}: ${res.status}`);
+    return { yea: [], nay: [], notVoting: [] };
+  }
+
   const xml = await res.text();
   const parsed = await xml2js(xml, { trim: true, explicitArray: false });
   const members = parsed.vote?.members?.member || [];
 
+  const yea = [];
+  const nay = [];
   const notVoting = [];
+
   members.forEach(m => {
-    if (m.vote_cast === 'Not Voting') {
-      const lastName = m.last_name?.trim();
-      const state = m.state?.trim();
-      const party = m.party?.trim();
-      console.log(`Raw Not Voting: ${lastName} (${party}-${state}) from ${url.split('/').pop()}`);
-      // Looser match: last name only (most reliable)
-      for (const [senName, senLast] of nameToLastNameMap) {
-        if (senLast === lastName) {
-          notVoting.push(senName);
-          console.log(`Matched: ${senName} on ${url.split('/').pop()}`);
-          break;
-        }
+    const lastName = m.last_name?.trim();
+    const state = m.state?.trim();
+    const voteCast = m.vote_cast?.trim();
+
+    // Looser match: last name only
+    for (const [senName, senLast] of nameToLastNameMap) {
+      if (senLast === lastName) {
+        if (voteCast === 'Yea') yea.push(senName);
+        if (voteCast === 'Nay') nay.push(senName);
+        if (voteCast === 'Not Voting' || voteCast === 'Absent') notVoting.push(senName);
+        break;
       }
     }
   });
-  return notVoting;
+
+  // Log raw misses for debugging (only if present)
+  if (notVoting.length > 0) {
+    console.log(`Not Voting/Absent on ${url.split('/').pop()}: ${notVoting.length} entries`);
+  }
+
+  return { yea, nay, notVoting };
 }
 
-async function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
+async function delay(ms) {
+  return new Promise(r => setTimeout(r, ms));
+}
 
 async function main() {
-  console.log('Votes scraper: parsing "Not Voting" from all 119th sessions');
+  console.log('Votes scraper: parsing Yea, Nay, Not Voting/Absent from all 119th sessions');
 
-  let rankings = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf8'));
+  let rankings;
+  try {
+    rankings = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf8'));
+  } catch (err) {
+    console.error('Failed to load rankings.json:', err.message);
+    return;
+  }
+
   const nameToLastNameMap = new Map(rankings.map(s => [s.name, s.name.split(' ').pop()]));
 
   const urls = await getVoteDetailUrls();
-  if (urls.length === 0) return console.log('No votes found');
+  if (urls.length === 0) {
+    console.log('No votes found across sessions - skipping');
+    return;
+  }
 
-  const missed = {};
-  rankings.forEach(s => missed[s.name] = 0);
+  const voteCounts = {
+    yea: {},
+    nay: {},
+    notVoting: {}
+  };
+  rankings.forEach(s => {
+    voteCounts.yea[s.name] = 0;
+    voteCounts.nay[s.name] = 0;
+    voteCounts.notVoting[s.name] = 0;
+  });
 
   for (const url of urls) {
-    const notV = await parseNotVoting(url, nameToLastNameMap);
-    notV.forEach(name => missed[name]++);
-    await delay(2000);
+    const counts = await parseVoteCounts(url, nameToLastNameMap);
+    counts.yea.forEach(name => voteCounts.yea[name]++);
+    counts.nay.forEach(name => voteCounts.nay[name]++);
+    counts.notVoting.forEach(name => voteCounts.notVoting[name]++);
+    await delay(2000); // Keep rate limit safe
   }
 
   rankings.forEach(sen => {
-    sen.missedVotes = missed[sen.name] || 0;
+    const yea = voteCounts.yea[sen.name] || 0;
+    const nay = voteCounts.nay[sen.name] || 0;
+    const missed = voteCounts.notVoting[sen.name] || 0;
+    sen.yeaVotes = yea;
+    sen.nayVotes = nay;
+    sen.missedVotes = missed;
     sen.totalVotes = urls.length;
-    sen.missedVotePct = sen.totalVotes > 0 ? +((sen.missedVotes / sen.totalVotes) * 100).toFixed(2) : 0;
+    sen.missedVotePct = sen.totalVotes > 0 ? +((missed / sen.totalVotes) * 100).toFixed(2) : 0;
+    sen.participationPct = sen.totalVotes > 0 ? +(((yea + nay) / sen.totalVotes) * 100).toFixed(2) : 0;
   });
 
-  fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
-  console.log(`Votes updated: ${urls.length} roll calls processed`);
+  try {
+    fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
+    console.log(`Votes updated: ${urls.length} roll calls processed`);
+    console.log(`Added fields: yeaVotes, nayVotes, missedVotes, participationPct`);
+  } catch (err) {
+    console.error('Failed to write rankings.json:', err.message);
+  }
 }
 
-main().catch(err => console.error('Votes failed:', err.message));
+main().catch(err => {
+  console.error('Votes scraper failed:', err.message);
+});
