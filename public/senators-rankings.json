@@ -9,7 +9,12 @@
     "becameLawBills": 1,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 2,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 307.75,
+    "scoreNormalized": 24.91
   },
   {
     "bioguideId": "T000278",
@@ -21,7 +26,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 1,
     "becameLawCosponsoredAmendments": 1,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 326.5,
+    "scoreNormalized": 26.91
   },
   {
     "bioguideId": "M001153",
@@ -33,7 +43,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 2,
     "becameLawCosponsoredAmendments": 7,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 342.25,
+    "scoreNormalized": 28.59
   },
   {
     "bioguideId": "S001198",
@@ -45,7 +60,12 @@
     "becameLawBills": 3,
     "becameLawAmendments": 3,
     "becameLawCosponsoredAmendments": 4,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 402.75,
+    "scoreNormalized": 35.04
   },
   {
     "bioguideId": "G000003",
@@ -57,7 +77,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 0,
+    "scoreNormalized": -7.89
   },
   {
     "bioguideId": "K000377",
@@ -69,7 +94,12 @@
     "becameLawBills": 1,
     "becameLawAmendments": 3,
     "becameLawCosponsoredAmendments": 19,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 595.5,
+    "scoreNormalized": 55.58
   },
   {
     "bioguideId": "B001236",
@@ -81,7 +111,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 2,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 232.25,
+    "scoreNormalized": 16.87
   },
   {
     "bioguideId": "C001095",
@@ -93,7 +128,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 1,
     "becameLawCosponsoredAmendments": 2,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 318.25,
+    "scoreNormalized": 26.03
   },
   {
     "bioguideId": "S001222",
@@ -105,7 +145,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 0,
+    "scoreNormalized": -7.89
   },
   {
     "bioguideId": "P000145",
@@ -117,7 +162,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 2,
     "becameLawCosponsoredAmendments": 3,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 852.75,
+    "scoreNormalized": 83
   },
   {
     "bioguideId": "B001267",
@@ -129,7 +179,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 2,
     "becameLawCosponsoredAmendments": 16,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 1012.25,
+    "scoreNormalized": 100
   },
   {
     "bioguideId": "H001075",
@@ -141,7 +196,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 0,
+    "scoreNormalized": -7.89
   },
   {
     "bioguideId": "B001277",
@@ -153,7 +213,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 4,
     "becameLawCosponsoredAmendments": 7,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 572,
+    "scoreNormalized": 53.08
   },
   {
     "bioguideId": "M001169",
@@ -165,7 +230,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 2,
     "becameLawCosponsoredAmendments": 1,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 481.75,
+    "scoreNormalized": 43.46
   },
   {
     "bioguideId": "B001313",
@@ -177,7 +247,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 276,
+    "scoreNormalized": 21.53
   },
   {
     "bioguideId": "C001088",
@@ -189,7 +264,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 6,
     "becameLawCosponsoredAmendments": 2,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 601.25,
+    "scoreNormalized": 56.2
   },
   {
     "bioguideId": "M001231",
@@ -201,7 +281,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 189,
+    "scoreNormalized": 12.26
   },
   {
     "bioguideId": "S001217",
@@ -213,7 +298,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 4,
     "becameLawCosponsoredAmendments": 3,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 556.25,
+    "scoreNormalized": 51.4
   },
   {
     "bioguideId": "O000174",
@@ -225,7 +315,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 4,
     "becameLawCosponsoredAmendments": 3,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 266.75,
+    "scoreNormalized": 20.54
   },
   {
     "bioguideId": "W000790",
@@ -237,7 +332,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 2,
     "becameLawCosponsoredAmendments": 14,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 491.75,
+    "scoreNormalized": 44.52
   },
   {
     "bioguideId": "H001042",
@@ -249,7 +349,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 6,
     "becameLawCosponsoredAmendments": 3,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 695.25,
+    "scoreNormalized": 66.21
   },
   {
     "bioguideId": "S001194",
@@ -261,7 +366,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 15,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 583.75,
+    "scoreNormalized": 54.33
   },
   {
     "bioguideId": "C000880",
@@ -273,7 +383,12 @@
     "becameLawBills": 1,
     "becameLawAmendments": 2,
     "becameLawCosponsoredAmendments": 5,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 329.75,
+    "scoreNormalized": 27.26
   },
   {
     "bioguideId": "R000584",
@@ -285,7 +400,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 5,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 483.5,
+    "scoreNormalized": 43.65
   },
   {
     "bioguideId": "D000563",
@@ -297,7 +417,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 1,
     "becameLawCosponsoredAmendments": 6,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 615.5,
+    "scoreNormalized": 57.71
   },
   {
     "bioguideId": "D000622",
@@ -309,7 +434,12 @@
     "becameLawBills": 1,
     "becameLawAmendments": 5,
     "becameLawCosponsoredAmendments": 2,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 458.25,
+    "scoreNormalized": 40.95
   },
   {
     "bioguideId": "B001299",
@@ -321,7 +451,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 2,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 332.5,
+    "scoreNormalized": 27.55
   },
   {
     "bioguideId": "Y000064",
@@ -333,7 +468,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 3,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 281.25,
+    "scoreNormalized": 22.09
   },
   {
     "bioguideId": "E000295",
@@ -345,7 +485,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 3,
     "becameLawCosponsoredAmendments": 2,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 397.5,
+    "scoreNormalized": 34.48
   },
   {
     "bioguideId": "G000386",
@@ -357,7 +502,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 3,
     "becameLawCosponsoredAmendments": 6,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 441.75,
+    "scoreNormalized": 39.2
   },
   {
     "bioguideId": "M001197",
@@ -369,7 +519,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 0,
+    "scoreNormalized": -7.89
   },
   {
     "bioguideId": "M000934",
@@ -381,7 +536,12 @@
     "becameLawBills": 1,
     "becameLawAmendments": 5,
     "becameLawCosponsoredAmendments": 1,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 352.25,
+    "scoreNormalized": 29.66
   },
   {
     "bioguideId": "M000355",
@@ -393,7 +553,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 1,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 74,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "P000603",
@@ -405,7 +570,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 6,
     "becameLawCosponsoredAmendments": 0,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 252.75,
+    "scoreNormalized": 19.05
   },
   {
     "bioguideId": "C001075",
@@ -417,7 +587,12 @@
     "becameLawBills": 1,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 475.75,
+    "scoreNormalized": 42.82
   },
   {
     "bioguideId": "K000393",
@@ -429,7 +604,12 @@
     "becameLawBills": 3,
     "becameLawAmendments": 5,
     "becameLawCosponsoredAmendments": 0,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 420.5,
+    "scoreNormalized": 36.93
   },
   {
     "bioguideId": "C001035",
@@ -441,7 +621,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 4,
     "becameLawCosponsoredAmendments": 4,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 338.75,
+    "scoreNormalized": 28.22
   },
   {
     "bioguideId": "K000383",
@@ -453,7 +638,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 2,
     "becameLawCosponsoredAmendments": 5,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 645.5,
+    "scoreNormalized": 60.91
   },
   {
     "bioguideId": "A000382",
@@ -465,7 +655,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 1,
     "becameLawCosponsoredAmendments": 12,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 409.5,
+    "scoreNormalized": 35.76
   },
   {
     "bioguideId": "V000128",
@@ -477,7 +672,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 4,
     "becameLawCosponsoredAmendments": 6,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 622,
+    "scoreNormalized": 58.41
   },
   {
     "bioguideId": "M000133",
@@ -489,7 +689,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 2,
     "becameLawCosponsoredAmendments": 0,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 688.25,
+    "scoreNormalized": 65.47
   },
   {
     "bioguideId": "W000817",
@@ -501,7 +706,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 2,
     "becameLawCosponsoredAmendments": 3,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 897.25,
+    "scoreNormalized": 87.74
   },
   {
     "bioguideId": "P000595",
@@ -513,7 +723,12 @@
     "becameLawBills": 1,
     "becameLawAmendments": 2,
     "becameLawCosponsoredAmendments": 15,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 770.5,
+    "scoreNormalized": 74.23
   },
   {
     "bioguideId": "S001208",
@@ -525,7 +740,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 2,
     "becameLawCosponsoredAmendments": 2,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 305.75,
+    "scoreNormalized": 24.7
   },
   {
     "bioguideId": "K000367",
@@ -537,7 +757,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 6,
     "becameLawCosponsoredAmendments": 6,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 615.75,
+    "scoreNormalized": 57.74
   },
   {
     "bioguideId": "S001203",
@@ -549,7 +774,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 1,
     "becameLawCosponsoredAmendments": 5,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 377,
+    "scoreNormalized": 32.29
   },
   {
     "bioguideId": "H001079",
@@ -561,7 +791,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 301.75,
+    "scoreNormalized": 24.27
   },
   {
     "bioguideId": "W000437",
@@ -573,7 +808,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 1,
     "becameLawCosponsoredAmendments": 0,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 310.5,
+    "scoreNormalized": 25.21
   },
   {
     "bioguideId": "H001089",
@@ -585,7 +825,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 2,
     "becameLawCosponsoredAmendments": 1,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 314.75,
+    "scoreNormalized": 25.66
   },
   {
     "bioguideId": "S001227",
@@ -597,7 +842,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 1,
     "becameLawCosponsoredAmendments": 2,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 256.75,
+    "scoreNormalized": 19.48
   },
   {
     "bioguideId": "D000618",
@@ -609,7 +859,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 1,
     "becameLawCosponsoredAmendments": 4,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 446.75,
+    "scoreNormalized": 39.73
   },
   {
     "bioguideId": "S001233",
@@ -621,7 +876,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 0,
+    "scoreNormalized": -7.89
   },
   {
     "bioguideId": "F000463",
@@ -633,7 +893,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 1,
     "becameLawCosponsoredAmendments": 0,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 209.5,
+    "scoreNormalized": 14.44
   },
   {
     "bioguideId": "R000618",
@@ -645,7 +910,12 @@
     "becameLawBills": 1,
     "becameLawAmendments": 1,
     "becameLawCosponsoredAmendments": 1,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 391.75,
+    "scoreNormalized": 33.87
   },
   {
     "bioguideId": "C001113",
@@ -657,7 +927,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 1,
     "becameLawCosponsoredAmendments": 12,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 711,
+    "scoreNormalized": 67.89
   },
   {
     "bioguideId": "R000608",
@@ -669,7 +944,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 4,
     "becameLawCosponsoredAmendments": 15,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 777.75,
+    "scoreNormalized": 75.01
   },
   {
     "bioguideId": "S001181",
@@ -681,7 +961,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 9,
     "becameLawCosponsoredAmendments": 4,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 979,
+    "scoreNormalized": 96.46
   },
   {
     "bioguideId": "H001076",
@@ -693,7 +978,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 1,
     "becameLawCosponsoredAmendments": 1,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 453.25,
+    "scoreNormalized": 40.42
   },
   {
     "bioguideId": "K000394",
@@ -705,7 +995,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 2,
     "becameLawCosponsoredAmendments": 9,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 492.25,
+    "scoreNormalized": 44.58
   },
   {
     "bioguideId": "B001288",
@@ -717,7 +1012,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 5,
     "becameLawCosponsoredAmendments": 5,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 850.25,
+    "scoreNormalized": 82.73
   },
   {
     "bioguideId": "H001046",
@@ -729,7 +1029,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 1,
     "becameLawCosponsoredAmendments": 7,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 564.75,
+    "scoreNormalized": 52.3
   },
   {
     "bioguideId": "L000570",
@@ -741,7 +1046,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 3,
     "becameLawCosponsoredAmendments": 5,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 620.25,
+    "scoreNormalized": 58.22
   },
   {
     "bioguideId": "G000555",
@@ -753,7 +1063,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 10,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 389,
+    "scoreNormalized": 33.57
   },
   {
     "bioguideId": "S000148",
@@ -765,7 +1080,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 2,
     "becameLawCosponsoredAmendments": 4,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 304.25,
+    "scoreNormalized": 24.54
   },
   {
     "bioguideId": "B001305",
@@ -777,7 +1097,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 1,
     "becameLawCosponsoredAmendments": 1,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 350,
+    "scoreNormalized": 29.42
   },
   {
     "bioguideId": "T000476",
@@ -789,7 +1114,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 1,
     "becameLawCosponsoredAmendments": 2,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 389.25,
+    "scoreNormalized": 33.6
   },
   {
     "bioguideId": "C001096",
@@ -801,7 +1131,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 1,
     "becameLawCosponsoredAmendments": 2,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 305.5,
+    "scoreNormalized": 24.67
   },
   {
     "bioguideId": "H001061",
@@ -813,7 +1148,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 2,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 222,
+    "scoreNormalized": 15.77
   },
   {
     "bioguideId": "M001232",
@@ -825,7 +1165,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 282,
+    "scoreNormalized": 22.17
   },
   {
     "bioguideId": "H001088",
@@ -837,7 +1182,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 0,
+    "scoreNormalized": -7.89
   },
   {
     "bioguideId": "L000575",
@@ -849,7 +1199,12 @@
     "becameLawBills": 1,
     "becameLawAmendments": 1,
     "becameLawCosponsoredAmendments": 2,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 447.5,
+    "scoreNormalized": 39.81
   },
   {
     "bioguideId": "M001190",
@@ -861,7 +1216,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 1,
     "becameLawCosponsoredAmendments": 1,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 206,
+    "scoreNormalized": 14.07
   },
   {
     "bioguideId": "M001176",
@@ -873,7 +1233,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 9,
     "becameLawCosponsoredAmendments": 4,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 951.25,
+    "scoreNormalized": 93.5
   },
   {
     "bioguideId": "W000779",
@@ -885,7 +1250,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 1,
     "becameLawCosponsoredAmendments": 5,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 523.75,
+    "scoreNormalized": 47.93
   },
   {
     "bioguideId": "F000479",
@@ -897,7 +1267,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 304.25,
+    "scoreNormalized": 24.54
   },
   {
     "bioguideId": "M001227",
@@ -909,7 +1284,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 288,
+    "scoreNormalized": 22.81
   },
   {
     "bioguideId": "R000122",
@@ -921,7 +1301,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 2,
     "becameLawCosponsoredAmendments": 13,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 721.5,
+    "scoreNormalized": 69.01
   },
   {
     "bioguideId": "W000802",
@@ -933,7 +1318,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 4,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 524.5,
+    "scoreNormalized": 48.01
   },
   {
     "bioguideId": "G000359",
@@ -945,7 +1335,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 4,
     "becameLawCosponsoredAmendments": 0,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 203.75,
+    "scoreNormalized": 13.83
   },
   {
     "bioguideId": "S001184",
@@ -957,7 +1352,12 @@
     "becameLawBills": 1,
     "becameLawAmendments": 2,
     "becameLawCosponsoredAmendments": 0,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 254.75,
+    "scoreNormalized": 19.26
   },
   {
     "bioguideId": "R000605",
@@ -969,7 +1369,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 3,
     "becameLawCosponsoredAmendments": 3,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 327.5,
+    "scoreNormalized": 27.02
   },
   {
     "bioguideId": "T000250",
@@ -981,7 +1386,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 1,
     "becameLawCosponsoredAmendments": 0,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 271.5,
+    "scoreNormalized": 21.05
   },
   {
     "bioguideId": "B001243",
@@ -993,7 +1403,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 2,
     "becameLawCosponsoredAmendments": 1,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 560.5,
+    "scoreNormalized": 51.85
   },
   {
     "bioguideId": "H000601",
@@ -1005,7 +1420,12 @@
     "becameLawBills": 1,
     "becameLawAmendments": 2,
     "becameLawCosponsoredAmendments": 0,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 223.5,
+    "scoreNormalized": 15.93
   },
   {
     "bioguideId": "C001056",
@@ -1017,7 +1437,12 @@
     "becameLawBills": 2,
     "becameLawAmendments": 6,
     "becameLawCosponsoredAmendments": 2,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 600.75,
+    "scoreNormalized": 56.14
   },
   {
     "bioguideId": "C001098",
@@ -1029,7 +1454,12 @@
     "becameLawBills": 1,
     "becameLawAmendments": 6,
     "becameLawCosponsoredAmendments": 1,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 607.5,
+    "scoreNormalized": 56.86
   },
   {
     "bioguideId": "C001131",
@@ -1041,7 +1471,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 216,
+    "scoreNormalized": 15.13
   },
   {
     "bioguideId": "L000577",
@@ -1053,7 +1488,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 3,
     "becameLawCosponsoredAmendments": 1,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 678.25,
+    "scoreNormalized": 64.4
   },
   {
     "bioguideId": "K000384",
@@ -1065,7 +1505,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 2,
     "becameLawCosponsoredAmendments": 7,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 797.25,
+    "scoreNormalized": 77.08
   },
   {
     "bioguideId": "W000805",
@@ -1077,7 +1522,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 2,
     "becameLawCosponsoredAmendments": 11,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 580.25,
+    "scoreNormalized": 53.96
   },
   {
     "bioguideId": "M001111",
@@ -1089,7 +1539,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 2,
     "becameLawCosponsoredAmendments": 2,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 396.5,
+    "scoreNormalized": 34.37
   },
   {
     "bioguideId": "C000127",
@@ -1101,7 +1556,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 1,
     "becameLawCosponsoredAmendments": 5,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 345.75,
+    "scoreNormalized": 28.96
   },
   {
     "bioguideId": "C001047",
@@ -1113,7 +1573,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 1,
     "becameLawCosponsoredAmendments": 1,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 304.75,
+    "scoreNormalized": 24.59
   },
   {
     "bioguideId": "J000307",
@@ -1125,7 +1590,12 @@
     "becameLawBills": 1,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 110,
+    "scoreNormalized": 3.84
   },
   {
     "bioguideId": "B001230",
@@ -1137,7 +1607,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 2,
     "becameLawCosponsoredAmendments": 8,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 453.5,
+    "scoreNormalized": 40.45
   },
   {
     "bioguideId": "J000293",
@@ -1149,7 +1624,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 1,
     "becameLawCosponsoredAmendments": 1,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 113,
+    "scoreNormalized": 4.16
   },
   {
     "bioguideId": "B001261",
@@ -1161,7 +1641,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 270,
+    "scoreNormalized": 20.89
   },
   {
     "bioguideId": "L000571",
@@ -1173,7 +1658,12 @@
     "becameLawBills": 1,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 2,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 381,
+    "scoreNormalized": 32.72
   },
   {
     "bioguideId": "S000033",
@@ -1185,7 +1675,12 @@
     "becameLawBills": 0,
     "becameLawAmendments": 3,
     "becameLawCosponsoredAmendments": 3,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 385.75,
+    "scoreNormalized": 33.23
   },
   {
     "bioguideId": "W000800",
@@ -1197,11 +1692,18 @@
     "becameLawBills": 0,
     "becameLawAmendments": 1,
     "becameLawCosponsoredAmendments": 6,
-    "committees": []
+    "committees": [],
+    "missedVotes": 0,
+    "totalVotes": 0,
+    "missedVotePct": 0,
+    "score": 935.75,
+    "scoreNormalized": 91.85
   },
   {
     "name": "Peter Welch",
     "missedVotes": 0,
-    "totalVotes": 0
+    "totalVotes": 0,
+    "score": 0,
+    "scoreNormalized": -7.89
   }
 ]
