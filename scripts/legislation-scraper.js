@@ -1,10 +1,3 @@
-/**
- * Legislation scraper (Congress.gov API v3)
- * - Fetches Senate bills & resolutions
- * - Aggregates sponsored/cosponsored counts per senator
- * - Outputs public/senators-legislation.json
- */
-
 const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
@@ -26,7 +19,6 @@ async function fetchBills(billType) {
     const res = await fetch(url, { headers: { 'X-API-Key': API_KEY } });
     if (!res.ok) throw new Error(`Failed ${url}: ${res.status}`);
     const data = await res.json();
-
     if (!data.bills || data.bills.length === 0) break;
     results = results.concat(data.bills);
     offset += pageSize;
@@ -36,7 +28,6 @@ async function fetchBills(billType) {
 
 async function run() {
   console.log(`Legislation scraper: Congress=${CONGRESS}, chamber=Senate`);
-
   const totals = new Map();
 
   for (const type of BILL_TYPES) {
@@ -57,11 +48,7 @@ async function run() {
   }
 
   const results = Array.from(totals.entries()).map(([bioguideId, t]) => ({ bioguideId, ...t }));
-  if (results.length === 0) {
-    console.log("No data, skipping write.");
-    return;
-  }
-
+  if (results.length === 0) return console.log("No data, skipping write.");
   fs.writeFileSync(OUT_PATH, JSON.stringify(results, null, 2));
   console.log(`Wrote ${OUT_PATH} with ${results.length} senator entries.`);
 }
