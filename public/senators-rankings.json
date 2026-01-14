@@ -1,7 +1,7 @@
 [
   {
     "bioguideId": "B001319",
-    "name": "Katie Boyd Britt",
+    "name": "Katie Britt",
     "sponsoredBills": 21,
     "sponsoredAmendments": 5,
     "cosponsoredBills": 229,
@@ -47,10 +47,13 @@
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 0,
+    "totalVotes": 667,
     "missedVotePct": 0,
     "score": 312.75,
-    "scoreNormalized": 23.26
+    "scoreNormalized": 30.42,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "T000278",
@@ -93,7 +96,7 @@
       },
       {
         "committee": "SPAG",
-        "committeeName": "Agriculture (Joint?)",
+        "committeeName": "Agriculture (Joint)",
         "role": "Member",
         "rank": 4,
         "party": "majority"
@@ -103,7 +106,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 331.5,
-    "scoreNormalized": 25.29
+    "scoreNormalized": 32.26,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "M001153",
@@ -125,7 +131,7 @@
       },
       {
         "committee": "SSEG",
-        "committeeName": "Energy (Joint?)",
+        "committeeName": "Energy (Joint)",
         "role": "Member",
         "rank": 10,
         "party": "majority"
@@ -149,7 +155,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 351.25,
-    "scoreNormalized": 27.43
+    "scoreNormalized": 34.2,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "S001198",
@@ -195,10 +204,13 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 406.75,
-    "scoreNormalized": 33.44
+    "scoreNormalized": 39.65,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
-    "bioguideId": "G000574",
+    "bioguideId": "G000003",
     "name": "Ruben Gallego",
     "sponsoredBills": 0,
     "sponsoredAmendments": 0,
@@ -207,12 +219,44 @@
     "becameLawBills": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [],
+    "committees": [
+      {
+        "committee": "SSBK",
+        "committeeName": "Banking, Housing, and Urban Affairs",
+        "role": "Member",
+        "rank": 9,
+        "party": "minority"
+      },
+      {
+        "committee": "SSEG",
+        "committeeName": "Energy (Joint)",
+        "role": "Member",
+        "rank": 9,
+        "party": "minority"
+      },
+      {
+        "committee": "SSGA",
+        "committeeName": "Homeland Security and Governmental Affairs",
+        "role": "Member",
+        "rank": 6,
+        "party": "minority"
+      },
+      {
+        "committee": "SSVA",
+        "committeeName": "Veterans' Affairs",
+        "role": "Member",
+        "rank": 8,
+        "party": "minority"
+      }
+    ],
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 0,
-    "scoreNormalized": -10.61
+    "score": 4,
+    "scoreNormalized": 0.1,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "K000377",
@@ -255,7 +299,7 @@
       },
       {
         "committee": "SPAG",
-        "committeeName": "Agriculture (Joint?)",
+        "committeeName": "Agriculture (Joint)",
         "role": "Member",
         "rank": 3,
         "party": "minority"
@@ -265,7 +309,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 600.5,
-    "scoreNormalized": 54.43
+    "scoreNormalized": 58.68,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "B001236",
@@ -325,7 +372,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 253.25,
-    "scoreNormalized": 16.82
+    "scoreNormalized": 24.58,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "C001095",
@@ -347,7 +397,7 @@
       },
       {
         "committee": "SSEG",
-        "committeeName": "Energy (Joint?)",
+        "committeeName": "Energy (Joint)",
         "role": "Member",
         "rank": 5,
         "party": "majority"
@@ -371,7 +421,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 332.25,
-    "scoreNormalized": 25.37
+    "scoreNormalized": 32.33,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "S001150",
@@ -383,12 +436,37 @@
     "becameLawBills": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [],
+    "committees": [
+      {
+        "committee": "SSAF",
+        "committeeName": "Agriculture, Nutrition, and Forestry",
+        "role": "Member",
+        "rank": 10,
+        "party": "minority"
+      },
+      {
+        "committee": "SSEV",
+        "committeeName": "Environment and Public Works",
+        "role": "Member",
+        "rank": 7,
+        "party": "minority"
+      },
+      {
+        "committee": "SSJU",
+        "committeeName": "Judiciary",
+        "role": "Member",
+        "rank": 10,
+        "party": "minority"
+      }
+    ],
     "missedVotes": 0,
-    "totalVotes": 0,
+    "totalVotes": 667,
     "missedVotePct": 0,
-    "score": 0,
-    "scoreNormalized": -10.61
+    "score": 3,
+    "scoreNormalized": 0,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "P000145",
@@ -403,7 +481,7 @@
     "committees": [
       {
         "committee": "SSEG",
-        "committeeName": "Energy (Joint?)",
+        "committeeName": "Energy (Joint)",
         "role": "Member",
         "rank": 8,
         "party": "minority"
@@ -441,11 +519,14 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 867.75,
-    "scoreNormalized": 83.37
+    "scoreNormalized": 84.93,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "B001267",
-    "name": "Michael F. Bennet",
+    "name": "Michael Bennet",
     "sponsoredBills": 46,
     "sponsoredAmendments": 181,
     "cosponsoredBills": 201,
@@ -484,10 +565,13 @@
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 0,
+    "totalVotes": 667,
     "missedVotePct": 0,
     "score": 1021.25,
-    "scoreNormalized": 100
+    "scoreNormalized": 100,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "H000273",
@@ -499,12 +583,37 @@
     "becameLawBills": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [],
+    "committees": [
+      {
+        "committee": "SSCM",
+        "committeeName": "Energy and Natural Resources",
+        "role": "Member",
+        "rank": 10,
+        "party": "minority"
+      },
+      {
+        "committee": "SSEG",
+        "committeeName": "Energy (Joint)",
+        "role": "Member",
+        "rank": 7,
+        "party": "minority"
+      },
+      {
+        "committee": "SSHR",
+        "committeeName": "Health, Education, Labor, and Pensions",
+        "role": "Member",
+        "rank": 7,
+        "party": "minority"
+      }
+    ],
     "missedVotes": 0,
-    "totalVotes": 0,
+    "totalVotes": 667,
     "missedVotePct": 0,
-    "score": 0,
-    "scoreNormalized": -10.61
+    "score": 3,
+    "scoreNormalized": 0,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "B001277",
@@ -550,11 +659,14 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 581,
-    "scoreNormalized": 52.32
+    "scoreNormalized": 56.76,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "M001169",
-    "name": "Christopher Murphy",
+    "name": "Chris Murphy",
     "sponsoredBills": 21,
     "sponsoredAmendments": 70,
     "cosponsoredBills": 172,
@@ -586,13 +698,16 @@
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 0,
+    "totalVotes": 667,
     "missedVotePct": 0,
     "score": 484.75,
-    "scoreNormalized": 41.89
+    "scoreNormalized": 47.31,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
-    "bioguideId": "B001303",
+    "bioguideId": "B001313",
     "name": "Lisa Blunt Rochester",
     "sponsoredBills": 14,
     "sponsoredAmendments": 0,
@@ -603,33 +718,46 @@
     "becameLawCosponsoredAmendments": 0,
     "committees": [
       {
-        "committee": "HSAG",
+        "committee": "SSBK",
+        "committeeName": "Banking, Housing, and Urban Affairs",
         "role": "Member",
-        "rank": 7,
+        "rank": 10,
         "party": "minority"
       },
       {
-        "committee": "HSGO",
+        "committee": "SSCM",
+        "committeeName": "Energy and Natural Resources",
         "role": "Member",
-        "rank": 7,
+        "rank": 13,
         "party": "minority"
       },
       {
-        "committee": "HSZS",
+        "committee": "SSEV",
+        "committeeName": "Environment and Public Works",
         "role": "Member",
-        "rank": 9,
+        "rank": 8,
+        "party": "minority"
+      },
+      {
+        "committee": "SSHR",
+        "committeeName": "Health, Education, Labor, and Pensions",
+        "role": "Member",
+        "rank": 10,
         "party": "minority"
       }
     ],
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 279,
-    "scoreNormalized": 19.6
+    "score": 280,
+    "scoreNormalized": 27.2,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "C001088",
-    "name": "Christopher A. Coons",
+    "name": "Chris Coons",
     "sponsoredBills": 40,
     "sponsoredAmendments": 73,
     "cosponsoredBills": 229,
@@ -668,13 +796,16 @@
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 0,
+    "totalVotes": 667,
     "missedVotePct": 0,
     "score": 615.25,
-    "scoreNormalized": 56.02
+    "scoreNormalized": 60.13,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
-    "bioguideId": "M001244",
+    "bioguideId": "M001231",
     "name": "Ashley Moody",
     "sponsoredBills": 5,
     "sponsoredAmendments": 0,
@@ -685,23 +816,49 @@
     "becameLawCosponsoredAmendments": 0,
     "committees": [
       {
-        "committee": "HSAG",
+        "committee": "SSHR",
+        "committeeName": "Health, Education, Labor, and Pensions",
         "role": "Member",
-        "rank": 22,
-        "party": "minority"
+        "rank": 12,
+        "party": "majority"
       },
       {
-        "committee": "HSED",
+        "committee": "SSGA",
+        "committeeName": "Homeland Security and Governmental Affairs",
         "role": "Member",
-        "rank": 15,
-        "party": "minority"
+        "rank": 8,
+        "party": "majority"
+      },
+      {
+        "committee": "SSJU",
+        "committeeName": "Judiciary",
+        "role": "Member",
+        "rank": 12,
+        "party": "majority"
+      },
+      {
+        "committee": "JSEC",
+        "committeeName": "Taxation",
+        "role": "Member",
+        "rank": 6,
+        "party": "majority"
+      },
+      {
+        "committee": "SPAG",
+        "committeeName": "Agriculture (Joint)",
+        "role": "Member",
+        "rank": 6,
+        "party": "majority"
       }
     ],
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 191,
-    "scoreNormalized": 10.07
+    "score": 194,
+    "scoreNormalized": 18.76,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "S001217",
@@ -737,7 +894,7 @@
       },
       {
         "committee": "SPAG",
-        "committeeName": "Agriculture (Joint?)",
+        "committeeName": "Agriculture (Joint)",
         "role": "Chairman",
         "rank": 1,
         "party": "majority"
@@ -747,7 +904,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 565.25,
-    "scoreNormalized": 50.61
+    "scoreNormalized": 55.22,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "O000174",
@@ -786,11 +946,14 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 269.75,
-    "scoreNormalized": 18.6
+    "scoreNormalized": 26.2,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "W000790",
-    "name": "Raphael G. Warnock",
+    "name": "Raphael Warnock",
     "sponsoredBills": 18,
     "sponsoredAmendments": 47,
     "cosponsoredBills": 195,
@@ -822,21 +985,24 @@
       },
       {
         "committee": "SPAG",
-        "committeeName": "Agriculture (Joint?)",
+        "committeeName": "Agriculture (Joint)",
         "role": "Member",
         "rank": 4,
         "party": "minority"
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 0,
+    "totalVotes": 667,
     "missedVotePct": 0,
     "score": 495.75,
-    "scoreNormalized": 43.08
+    "scoreNormalized": 48.39,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "H001042",
-    "name": "Mazie K. Hirono",
+    "name": "Mazie Hirono",
     "sponsoredBills": 42,
     "sponsoredAmendments": 97,
     "cosponsoredBills": 221,
@@ -854,7 +1020,7 @@
       },
       {
         "committee": "SSEG",
-        "committeeName": "Energy (Joint?)",
+        "committeeName": "Energy (Joint)",
         "role": "Member",
         "rank": 4,
         "party": "minority"
@@ -875,10 +1041,13 @@
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 0,
+    "totalVotes": 667,
     "missedVotePct": 0,
     "score": 699.25,
-    "scoreNormalized": 65.12
+    "scoreNormalized": 68.38,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "S001194",
@@ -931,7 +1100,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 598.75,
-    "scoreNormalized": 54.24
+    "scoreNormalized": 58.51,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "C000880",
@@ -963,11 +1135,14 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 341.75,
-    "scoreNormalized": 26.4
+    "scoreNormalized": 33.27,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "R000584",
-    "name": "James E. Risch",
+    "name": "James Risch",
     "sponsoredBills": 48,
     "sponsoredAmendments": 35,
     "cosponsoredBills": 230,
@@ -978,7 +1153,7 @@
     "committees": [
       {
         "committee": "SSEG",
-        "committeeName": "Energy (Joint?)",
+        "committeeName": "Energy (Joint)",
         "role": "Member",
         "rank": 3,
         "party": "majority"
@@ -1006,14 +1181,17 @@
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 0,
+    "totalVotes": 667,
     "missedVotePct": 0,
     "score": 502.5,
-    "scoreNormalized": 43.81
+    "scoreNormalized": 49.05,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "D000563",
-    "name": "Richard J. Durbin",
+    "name": "Dick Durbin",
     "sponsoredBills": 83,
     "sponsoredAmendments": 51,
     "cosponsoredBills": 222,
@@ -1045,10 +1223,13 @@
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 0,
+    "totalVotes": 667,
     "missedVotePct": 0,
     "score": 628.5,
-    "scoreNormalized": 57.46
+    "scoreNormalized": 61.43,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "D000622",
@@ -1094,7 +1275,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 462.25,
-    "scoreNormalized": 39.45
+    "scoreNormalized": 45.1,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "B001299",
@@ -1140,7 +1324,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 336.5,
-    "scoreNormalized": 25.83
+    "scoreNormalized": 32.75,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "Y000064",
@@ -1179,7 +1366,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 284.25,
-    "scoreNormalized": 20.17
+    "scoreNormalized": 27.62,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "E000295",
@@ -1218,7 +1408,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 400.5,
-    "scoreNormalized": 32.76
+    "scoreNormalized": 39.04,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "G000386",
@@ -1257,10 +1450,13 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 454.75,
-    "scoreNormalized": 38.64
+    "scoreNormalized": 44.37,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
-    "bioguideId": "M001198",
+    "bioguideId": "M001197",
     "name": "Roger Marshall",
     "sponsoredBills": 0,
     "sponsoredAmendments": 0,
@@ -1269,12 +1465,37 @@
     "becameLawBills": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [],
+    "committees": [
+      {
+        "committee": "SSAF",
+        "committeeName": "Agriculture, Nutrition, and Forestry",
+        "role": "Member",
+        "rank": 6,
+        "party": "majority"
+      },
+      {
+        "committee": "SSFI",
+        "committeeName": "Finance",
+        "role": "Member",
+        "rank": 14,
+        "party": "majority"
+      },
+      {
+        "committee": "SSHR",
+        "committeeName": "Health, Education, Labor, and Pensions",
+        "role": "Member",
+        "rank": 6,
+        "party": "majority"
+      }
+    ],
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 0,
-    "scoreNormalized": -10.61
+    "score": 3,
+    "scoreNormalized": 0,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "M000934",
@@ -1334,7 +1555,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 363.25,
-    "scoreNormalized": 28.73
+    "scoreNormalized": 35.38,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "M000355",
@@ -1380,7 +1604,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 98,
-    "scoreNormalized": 0
+    "scoreNormalized": 9.33,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "P000603",
@@ -1419,7 +1646,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 265.75,
-    "scoreNormalized": 18.17
+    "scoreNormalized": 25.8,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "C001075",
@@ -1434,7 +1664,7 @@
     "committees": [
       {
         "committee": "SSEG",
-        "committeeName": "Energy (Joint?)",
+        "committeeName": "Energy (Joint)",
         "role": "Member",
         "rank": 8,
         "party": "majority"
@@ -1465,7 +1695,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 484.75,
-    "scoreNormalized": 41.89
+    "scoreNormalized": 47.31,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "K000393",
@@ -1504,11 +1737,14 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 423.5,
-    "scoreNormalized": 35.26
+    "scoreNormalized": 41.3,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "C001035",
-    "name": "Susan M. Collins",
+    "name": "Susan Collins",
     "sponsoredBills": 18,
     "sponsoredAmendments": 17,
     "cosponsoredBills": 224,
@@ -1540,14 +1776,17 @@
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 0,
+    "totalVotes": 667,
     "missedVotePct": 0,
     "score": 346.75,
-    "scoreNormalized": 26.94
+    "scoreNormalized": 33.76,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "K000383",
-    "name": "Angus S. King, Jr.",
+    "name": "Angus King",
     "sponsoredBills": 26,
     "sponsoredAmendments": 93,
     "cosponsoredBills": 226,
@@ -1565,7 +1804,7 @@
       },
       {
         "committee": "SSEG",
-        "committeeName": "Energy (Joint?)",
+        "committeeName": "Energy (Joint)",
         "role": "Member",
         "rank": 5,
         "party": "minority"
@@ -1586,14 +1825,17 @@
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 0,
+    "totalVotes": 667,
     "missedVotePct": 0,
     "score": 649.5,
-    "scoreNormalized": 59.73
+    "scoreNormalized": 63.49,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "A000382",
-    "name": "Angela D. Alsobrooks",
+    "name": "Angela Alsobrooks",
     "sponsoredBills": 19,
     "sponsoredAmendments": 24,
     "cosponsoredBills": 200,
@@ -1625,17 +1867,20 @@
       },
       {
         "committee": "SPAG",
-        "committeeName": "Agriculture (Joint?)",
+        "committeeName": "Agriculture (Joint)",
         "role": "Member",
         "rank": 6,
         "party": "minority"
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 0,
+    "totalVotes": 667,
     "missedVotePct": 0,
     "score": 413.5,
-    "scoreNormalized": 34.17
+    "scoreNormalized": 40.31,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "V000128",
@@ -1674,11 +1919,14 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 625,
-    "scoreNormalized": 57.08
+    "scoreNormalized": 61.09,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "M000133",
-    "name": "Edward J. Markey",
+    "name": "Ed Markey",
     "sponsoredBills": 101,
     "sponsoredAmendments": 63,
     "cosponsoredBills": 229,
@@ -1710,10 +1958,13 @@
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 0,
+    "totalVotes": 667,
     "missedVotePct": 0,
     "score": 691.25,
-    "scoreNormalized": 64.26
+    "scoreNormalized": 67.59,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "W000817",
@@ -1749,7 +2000,7 @@
       },
       {
         "committee": "SPAG",
-        "committeeName": "Agriculture (Joint?)",
+        "committeeName": "Agriculture (Joint)",
         "role": "Ranking Member",
         "rank": 2,
         "party": "minority"
@@ -1759,11 +2010,14 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 911.25,
-    "scoreNormalized": 88.09
+    "scoreNormalized": 89.2,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "P000595",
-    "name": "Gary C. Peters",
+    "name": "Gary Peters",
     "sponsoredBills": 62,
     "sponsoredAmendments": 100,
     "cosponsoredBills": 188,
@@ -1802,10 +2056,13 @@
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 0,
+    "totalVotes": 667,
     "missedVotePct": 0,
     "score": 779.5,
-    "scoreNormalized": 73.82
+    "scoreNormalized": 76.26,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "S001208",
@@ -1851,7 +2108,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 309.75,
-    "scoreNormalized": 22.94
+    "scoreNormalized": 30.13,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "K000367",
@@ -1911,7 +2171,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 641.75,
-    "scoreNormalized": 58.9
+    "scoreNormalized": 62.73,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "S001203",
@@ -1964,7 +2227,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 382,
-    "scoreNormalized": 30.76
+    "scoreNormalized": 37.22,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "H001079",
@@ -1993,7 +2259,7 @@
       },
       {
         "committee": "SSEG",
-        "committeeName": "Energy (Joint?)",
+        "committeeName": "Energy (Joint)",
         "role": "Member",
         "rank": 9,
         "party": "majority"
@@ -2017,11 +2283,14 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 306.75,
-    "scoreNormalized": 22.61
+    "scoreNormalized": 29.83,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "W000437",
-    "name": "Roger F. Wicker",
+    "name": "Roger Wicker",
     "sponsoredBills": 33,
     "sponsoredAmendments": 13,
     "cosponsoredBills": 199,
@@ -2074,10 +2343,13 @@
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 0,
+    "totalVotes": 667,
     "missedVotePct": 0,
     "score": 326.5,
-    "scoreNormalized": 24.75
+    "scoreNormalized": 31.77,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "H001089",
@@ -2116,7 +2388,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 317.75,
-    "scoreNormalized": 23.8
+    "scoreNormalized": 30.91,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "S001227",
@@ -2162,7 +2437,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 265.75,
-    "scoreNormalized": 18.17
+    "scoreNormalized": 25.8,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "D000618",
@@ -2177,7 +2455,7 @@
     "committees": [
       {
         "committee": "SSEG",
-        "committeeName": "Energy (Joint?)",
+        "committeeName": "Energy (Joint)",
         "role": "Member",
         "rank": 4,
         "party": "majority"
@@ -2208,10 +2486,13 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 450.75,
-    "scoreNormalized": 38.21
+    "scoreNormalized": 43.97,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
-    "bioguideId": "S001232",
+    "bioguideId": "S001233",
     "name": "Tim Sheehy",
     "sponsoredBills": 0,
     "sponsoredAmendments": 0,
@@ -2220,12 +2501,37 @@
     "becameLawBills": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [],
+    "committees": [
+      {
+        "committee": "SSAS",
+        "committeeName": "Armed Services",
+        "role": "Member",
+        "rank": 14,
+        "party": "majority"
+      },
+      {
+        "committee": "SSCM",
+        "committeeName": "Energy and Natural Resources",
+        "role": "Member",
+        "rank": 13,
+        "party": "majority"
+      },
+      {
+        "committee": "SSVA",
+        "committeeName": "Veterans' Affairs",
+        "role": "Member",
+        "rank": 10,
+        "party": "majority"
+      }
+    ],
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 0,
-    "scoreNormalized": -10.61
+    "score": 3,
+    "scoreNormalized": 0,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "F000463",
@@ -2292,7 +2598,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 226.5,
-    "scoreNormalized": 13.92
+    "scoreNormalized": 21.95,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "R000618",
@@ -2331,7 +2640,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 399.75,
-    "scoreNormalized": 32.68
+    "scoreNormalized": 38.96,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "C001113",
@@ -2353,7 +2665,7 @@
       },
       {
         "committee": "SSEG",
-        "committeeName": "Energy (Joint?)",
+        "committeeName": "Energy (Joint)",
         "role": "Member",
         "rank": 6,
         "party": "minority"
@@ -2377,7 +2689,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 715,
-    "scoreNormalized": 66.83
+    "scoreNormalized": 69.92,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "R000608",
@@ -2416,7 +2731,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 780.75,
-    "scoreNormalized": 73.95
+    "scoreNormalized": 76.38,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "S001181",
@@ -2469,11 +2787,14 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 999,
-    "scoreNormalized": 97.59
+    "scoreNormalized": 97.81,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "H001076",
-    "name": "Margaret Wood Hassan",
+    "name": "Maggie Hassan",
     "sponsoredBills": 37,
     "sponsoredAmendments": 34,
     "cosponsoredBills": 227,
@@ -2519,10 +2840,13 @@
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 0,
+    "totalVotes": 667,
     "missedVotePct": 0,
     "score": 468.25,
-    "scoreNormalized": 40.1
+    "scoreNormalized": 45.69,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "K000394",
@@ -2565,7 +2889,7 @@
       },
       {
         "committee": "SPAG",
-        "committeeName": "Agriculture (Joint?)",
+        "committeeName": "Agriculture (Joint)",
         "role": "Member",
         "rank": 5,
         "party": "minority"
@@ -2575,11 +2899,14 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 497.25,
-    "scoreNormalized": 43.24
+    "scoreNormalized": 48.54,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "B001288",
-    "name": "Cory A. Booker",
+    "name": "Cory Booker",
     "sponsoredBills": 66,
     "sponsoredAmendments": 128,
     "cosponsoredBills": 223,
@@ -2611,10 +2938,13 @@
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 0,
+    "totalVotes": 667,
     "missedVotePct": 0,
     "score": 853.25,
-    "scoreNormalized": 81.8
+    "scoreNormalized": 83.5,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "H001046",
@@ -2636,7 +2966,7 @@
       },
       {
         "committee": "SSEG",
-        "committeeName": "Energy (Joint?)",
+        "committeeName": "Energy (Joint)",
         "role": "Chairman",
         "rank": 1,
         "party": "minority"
@@ -2660,7 +2990,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 573.75,
-    "scoreNormalized": 51.53
+    "scoreNormalized": 56.05,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "L000570",
@@ -2706,11 +3039,14 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 624.25,
-    "scoreNormalized": 57
+    "scoreNormalized": 61.01,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "G000555",
-    "name": "Kirsten E. Gillibrand",
+    "name": "Kirsten Gillibrand",
     "sponsoredBills": 38,
     "sponsoredAmendments": 12,
     "cosponsoredBills": 222,
@@ -2742,21 +3078,24 @@
       },
       {
         "committee": "SPAG",
-        "committeeName": "Agriculture (Joint?)",
+        "committeeName": "Agriculture (Joint)",
         "role": "Chairman",
         "rank": 1,
         "party": "minority"
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 0,
+    "totalVotes": 667,
     "missedVotePct": 0,
     "score": 398,
-    "scoreNormalized": 32.49
+    "scoreNormalized": 38.79,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "S000148",
-    "name": "Charles E. Schumer",
+    "name": "Chuck Schumer",
     "sponsoredBills": 18,
     "sponsoredAmendments": 27,
     "cosponsoredBills": 151,
@@ -2781,10 +3120,13 @@
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 0,
+    "totalVotes": 667,
     "missedVotePct": 0,
     "score": 311.25,
-    "scoreNormalized": 23.1
+    "scoreNormalized": 30.27,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "B001305",
@@ -2830,7 +3172,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 354,
-    "scoreNormalized": 27.73
+    "scoreNormalized": 34.47,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "T000476",
@@ -2883,7 +3228,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 394.25,
-    "scoreNormalized": 32.09
+    "scoreNormalized": 38.42,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "C001096",
@@ -2929,7 +3277,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 314.5,
-    "scoreNormalized": 23.45
+    "scoreNormalized": 30.59,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "H001061",
@@ -2958,7 +3309,7 @@
       },
       {
         "committee": "SSEG",
-        "committeeName": "Energy (Joint?)",
+        "committeeName": "Energy (Joint)",
         "role": "Member",
         "rank": 11,
         "party": "majority"
@@ -2975,10 +3326,13 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 231,
-    "scoreNormalized": 14.41
+    "scoreNormalized": 22.39,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
-    "bioguideId": "M001242",
+    "bioguideId": "M001232",
     "name": "Bernie Moreno",
     "sponsoredBills": 16,
     "sponsoredAmendments": 0,
@@ -2989,26 +3343,38 @@
     "becameLawCosponsoredAmendments": 0,
     "committees": [
       {
-        "committee": "HSSY",
+        "committee": "SSBK",
+        "committeeName": "Banking, Housing, and Urban Affairs",
         "role": "Member",
-        "rank": 15,
-        "party": "minority"
+        "rank": 12,
+        "party": "majority"
       },
       {
-        "committee": "HSAG",
+        "committee": "SSCM",
+        "committeeName": "Energy and Natural Resources",
         "role": "Member",
-        "rank": 23,
-        "party": "minority"
+        "rank": 12,
+        "party": "majority"
+      },
+      {
+        "committee": "SSGA",
+        "committeeName": "Homeland Security and Governmental Affairs",
+        "role": "Member",
+        "rank": 6,
+        "party": "majority"
       }
     ],
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 284,
-    "scoreNormalized": 20.15
+    "score": 285,
+    "scoreNormalized": 27.69,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
-    "bioguideId": "H001104",
+    "bioguideId": "H001088",
     "name": "Jon Husted",
     "sponsoredBills": 0,
     "sponsoredAmendments": 0,
@@ -3017,12 +3383,37 @@
     "becameLawBills": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [],
+    "committees": [
+      {
+        "committee": "SSEV",
+        "committeeName": "Environment and Public Works",
+        "role": "Member",
+        "rank": 10,
+        "party": "majority"
+      },
+      {
+        "committee": "SSHR",
+        "committeeName": "Health, Education, Labor, and Pensions",
+        "role": "Member",
+        "rank": 11,
+        "party": "majority"
+      },
+      {
+        "committee": "SPAG",
+        "committeeName": "Agriculture (Joint)",
+        "role": "Member",
+        "rank": 7,
+        "party": "majority"
+      }
+    ],
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 0,
-    "scoreNormalized": -10.61
+    "score": 3,
+    "scoreNormalized": 0,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "L000575",
@@ -3068,7 +3459,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 456.5,
-    "scoreNormalized": 38.83
+    "scoreNormalized": 44.54,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "M001190",
@@ -3114,7 +3508,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 210,
-    "scoreNormalized": 12.13
+    "scoreNormalized": 20.33,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "M001176",
@@ -3160,7 +3557,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 955.25,
-    "scoreNormalized": 92.85
+    "scoreNormalized": 93.52,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "W000779",
@@ -3175,7 +3575,7 @@
     "committees": [
       {
         "committee": "SSEG",
-        "committeeName": "Energy (Joint?)",
+        "committeeName": "Energy (Joint)",
         "role": "Ranking Member",
         "rank": 2,
         "party": "minority"
@@ -3199,7 +3599,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 541.75,
-    "scoreNormalized": 48.06
+    "scoreNormalized": 52.91,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "F000479",
@@ -3245,10 +3648,13 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 308.25,
-    "scoreNormalized": 22.77
+    "scoreNormalized": 29.98,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
-    "bioguideId": "M001243",
+    "bioguideId": "M001227",
     "name": "David McCormick",
     "sponsoredBills": 19,
     "sponsoredAmendments": 0,
@@ -3259,17 +3665,49 @@
     "becameLawCosponsoredAmendments": 0,
     "committees": [
       {
-        "committee": "HSIF",
+        "committee": "SSBK",
+        "committeeName": "Banking, Housing, and Urban Affairs",
         "role": "Member",
-        "rank": 24,
-        "party": "minority"
+        "rank": 13,
+        "party": "majority"
+      },
+      {
+        "committee": "SSEG",
+        "committeeName": "Energy (Joint)",
+        "role": "Member",
+        "rank": 6,
+        "party": "majority"
+      },
+      {
+        "committee": "SSFR",
+        "committeeName": "Foreign Relations",
+        "role": "Member",
+        "rank": 3,
+        "party": "majority"
+      },
+      {
+        "committee": "JSEC",
+        "committeeName": "Taxation",
+        "role": "Member",
+        "rank": 4,
+        "party": "majority"
+      },
+      {
+        "committee": "SPAG",
+        "committeeName": "Agriculture (Joint)",
+        "role": "Ranking Member",
+        "rank": 2,
+        "party": "majority"
       }
     ],
     "missedVotes": 0,
     "totalVotes": 0,
     "missedVotePct": 0,
-    "score": 289,
-    "scoreNormalized": 20.69
+    "score": 298,
+    "scoreNormalized": 28.97,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "R000122",
@@ -3315,7 +3753,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 735.5,
-    "scoreNormalized": 69.05
+    "scoreNormalized": 71.94,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "W000802",
@@ -3361,7 +3802,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 543.5,
-    "scoreNormalized": 48.25
+    "scoreNormalized": 53.08,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "G000359",
@@ -3400,7 +3844,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 211.75,
-    "scoreNormalized": 12.32
+    "scoreNormalized": 20.5,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "S001184",
@@ -3439,7 +3886,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 262.75,
-    "scoreNormalized": 17.84
+    "scoreNormalized": 25.51,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "R000605",
@@ -3499,7 +3949,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 333.5,
-    "scoreNormalized": 25.51
+    "scoreNormalized": 32.46,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "T000250",
@@ -3545,7 +3998,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 280.5,
-    "scoreNormalized": 19.77
+    "scoreNormalized": 27.25,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "B001243",
@@ -3598,7 +4054,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 565.5,
-    "scoreNormalized": 50.64
+    "scoreNormalized": 55.24,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "H000601",
@@ -3644,7 +4103,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 227.5,
-    "scoreNormalized": 14.03
+    "scoreNormalized": 22.05,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "C001056",
@@ -3690,7 +4152,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 604.75,
-    "scoreNormalized": 54.89
+    "scoreNormalized": 59.1,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "C001098",
@@ -3736,7 +4201,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 621.5,
-    "scoreNormalized": 56.7
+    "scoreNormalized": 60.74,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "C001114",
@@ -3750,23 +4218,35 @@
     "becameLawCosponsoredAmendments": 0,
     "committees": [
       {
-        "committee": "HSGO",
+        "committee": "SSCM",
+        "committeeName": "Energy and Natural Resources",
         "role": "Member",
         "rank": 11,
-        "party": "minority"
+        "party": "majority"
       },
       {
-        "committee": "HSED",
+        "committee": "SSEV",
+        "committeeName": "Environment and Public Works",
         "role": "Member",
-        "rank": 13,
-        "party": "minority"
+        "rank": 4,
+        "party": "majority"
+      },
+      {
+        "committee": "SSFR",
+        "committeeName": "Foreign Relations",
+        "role": "Member",
+        "rank": 11,
+        "party": "majority"
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 0,
+    "totalVotes": 667,
     "missedVotePct": 0,
-    "score": 218,
-    "scoreNormalized": 13
+    "score": 219,
+    "scoreNormalized": 21.21,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "L000577",
@@ -3781,7 +4261,7 @@
     "committees": [
       {
         "committee": "SSEG",
-        "committeeName": "Energy (Joint?)",
+        "committeeName": "Energy (Joint)",
         "role": "Chairman",
         "rank": 1,
         "party": "majority"
@@ -3805,7 +4285,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 686.25,
-    "scoreNormalized": 63.72
+    "scoreNormalized": 67.1,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "K000384",
@@ -3844,11 +4327,14 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 800.25,
-    "scoreNormalized": 76.06
+    "scoreNormalized": 78.3,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "W000805",
-    "name": "Mark R. Warner",
+    "name": "Mark Warner",
     "sponsoredBills": 28,
     "sponsoredAmendments": 67,
     "cosponsoredBills": 197,
@@ -3887,10 +4373,13 @@
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 0,
+    "totalVotes": 667,
     "missedVotePct": 0,
     "score": 589.25,
-    "scoreNormalized": 53.21
+    "scoreNormalized": 57.57,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "M001111",
@@ -3929,7 +4418,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 414.5,
-    "scoreNormalized": 34.28
+    "scoreNormalized": 40.41,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "C000127",
@@ -3951,7 +4443,7 @@
       },
       {
         "committee": "SSEG",
-        "committeeName": "Energy (Joint?)",
+        "committeeName": "Energy (Joint)",
         "role": "Member",
         "rank": 3,
         "party": "minority"
@@ -3975,7 +4467,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 364.75,
-    "scoreNormalized": 28.89
+    "scoreNormalized": 35.53,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "C001047",
@@ -4021,7 +4516,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 313.75,
-    "scoreNormalized": 23.37
+    "scoreNormalized": 30.52,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "J000312",
@@ -4035,17 +4533,35 @@
     "becameLawCosponsoredAmendments": 0,
     "committees": [
       {
-        "committee": "HSIF",
+        "committee": "SSAF",
+        "committeeName": "Agriculture, Nutrition, and Forestry",
         "role": "Member",
-        "rank": 20,
+        "rank": 8,
+        "party": "majority"
+      },
+      {
+        "committee": "SSEG",
+        "committeeName": "Energy (Joint)",
+        "role": "Member",
+        "rank": 7,
+        "party": "majority"
+      },
+      {
+        "committee": "SPAG",
+        "committeeName": "Agriculture (Joint)",
+        "role": "Member",
+        "rank": 3,
         "party": "majority"
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 0,
+    "totalVotes": 667,
     "missedVotePct": 0,
-    "score": 111,
-    "scoreNormalized": 1.41
+    "score": 113,
+    "scoreNormalized": 10.8,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "B001230",
@@ -4084,7 +4600,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 456.5,
-    "scoreNormalized": 38.83
+    "scoreNormalized": 44.54,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "J000293",
@@ -4113,7 +4632,7 @@
       },
       {
         "committee": "SPAG",
-        "committeeName": "Agriculture (Joint?)",
+        "committeeName": "Agriculture (Joint)",
         "role": "Member",
         "rank": 5,
         "party": "majority"
@@ -4123,7 +4642,10 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 121,
-    "scoreNormalized": 2.49
+    "scoreNormalized": 11.59,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "B001261",
@@ -4138,7 +4660,7 @@
     "committees": [
       {
         "committee": "SSEG",
-        "committeeName": "Energy (Joint?)",
+        "committeeName": "Energy (Joint)",
         "role": "Ranking Member",
         "rank": 2,
         "party": "majority"
@@ -4162,11 +4684,14 @@
     "totalVotes": 0,
     "missedVotePct": 0,
     "score": 278,
-    "scoreNormalized": 19.5
+    "scoreNormalized": 27.01,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "L000571",
-    "name": "Cynthia M. Lummis",
+    "name": "Cynthia Lummis",
     "sponsoredBills": 37,
     "sponsoredAmendments": 14,
     "cosponsoredBills": 237,
@@ -4198,14 +4723,17 @@
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 0,
+    "totalVotes": 667,
     "missedVotePct": 0,
     "score": 384,
-    "scoreNormalized": 30.98
+    "scoreNormalized": 37.42,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "S000033",
-    "name": "Bernard Sanders",
+    "name": "Bernie Sanders",
     "sponsoredBills": 36,
     "sponsoredAmendments": 15,
     "cosponsoredBills": 235,
@@ -4244,10 +4772,13 @@
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 0,
+    "totalVotes": 667,
     "missedVotePct": 0,
     "score": 399.75,
-    "scoreNormalized": 32.68
+    "scoreNormalized": 38.96,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "bioguideId": "W000800",
@@ -4293,14 +4824,21 @@
     "totalVotes": 667,
     "missedVotePct": 0,
     "score": 939.75,
-    "scoreNormalized": 91.17
+    "scoreNormalized": 92,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   },
   {
     "name": "Peter Welch",
     "missedVotes": 0,
     "totalVotes": 0,
     "score": 0,
-    "scoreNormalized": -10.61,
-    "missedVotePct": 0
+    "scoreNormalized": -0.29,
+    "missedVotePct": 0,
+    "committees": [],
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0
   }
 ]
