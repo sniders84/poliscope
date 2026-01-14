@@ -16,6 +16,24 @@ const BILL_TYPES = ['s', 'sjres', 'sconres', 'sres'];
 
 function initTotals() { return { sponsored: 0, cosponsored: 0 }; }
 
+function getSponsorId(bill) {
+  // v3 can expose sponsor as object or array
+  if (bill.sponsor?.bioguideId) return bill.sponsor.bioguideId;
+  if (Array.isArray(bill.sponsors) && bill.sponsors[0]?.bioguideId) return bill.sponsors[0].bioguideId;
+  return null;
+}
+
+function getCosponsorIds(bill) {
+  // v3 can expose cosponsors as array or nested items
+  if (Array.isArray(bill.cosponsors)) {
+    return bill.cosponsors.map(c => c.bioguideId).filter(Boolean);
+  }
+  if (bill.cosponsors?.items && Array.isArray(bill.cosponsors.items)) {
+    return bill.cosponsors.items.map(c => c.bioguideId).filter(Boolean);
+  }
+  return [];
+}
+
 async function fetchBills(billType) {
   let results = [];
   let offset = 0;
@@ -37,29 +55,18 @@ async function fetchBills(billType) {
 async function run() {
   console.log(`Legislation scraper: Congress=${CONGRESS}, chamber=Senate`);
 
-  // Probe one endpoint to confirm shape
-  const probeUrl = `https://api.congress.gov/v3/bill/${CONGRESS}/s?pageSize=1`;
-  const probeRes = await fetch(probeUrl, { headers: { 'X-API-Key': API_KEY } });
-  if (!probeRes.ok) {
-    console.warn(`Probe failed ${probeUrl}: ${probeRes.status}`);
-  } else {
-    const probe = await probeRes.json();
-    console.log(`Probe bills count: ${(probe.bills || []).length}`);
-  }
-
   const totals = new Map();
 
   for (const type of BILL_TYPES) {
     const bills = await fetchBills(type);
     for (const bill of bills) {
-      const sponsor = bill.sponsor?.bioguideId;
-      if (sponsor) {
-        if (!totals.has(sponsor)) totals.set(sponsor, initTotals());
-        totals.get(sponsor).sponsored++;
+      const sponsorId = getSponsorId(bill);
+      if (sponsorId) {
+        if (!totals.has(sponsorId)) totals.set(sponsorId, initTotals());
+        totals.get(sponsorId).sponsored++;
       }
-      for (const c of bill.cosponsors || []) {
-        const id = c.bioguideId;
-        if (!id) continue;
+      const cosponsorIds = getCosponsorIds(bill);
+      for (const id of cosponsorIds) {
         if (!totals.has(id)) totals.set(id, initTotals());
         totals.get(id).cosponsored++;
       }
