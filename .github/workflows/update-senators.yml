@@ -8,7 +8,7 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 30     # Prevent infinite hangs
+    timeout-minutes: 30
     env:
       CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
       CONGRESS_NUMBER: '119'
@@ -31,7 +31,7 @@ jobs:
           restore-keys: ${{ runner.os }}-node-
 
       - name: Install dependencies
-        run: npm ci   # Faster and more reliable than npm install
+        run: npm install  # Use npm install (creates lockfile if missing)
 
       - name: Debug API key prefix
         run: node -e "console.log('API key prefix:', (process.env.CONGRESS_API_KEY||'').slice(0,6))"
@@ -58,5 +58,3 @@ jobs:
           git add public/*.json
           git diff --cached --quiet || git commit -m "Automated update: senators rankings, committees, votes & scores $(date +'%Y-%m-%d %H:%M:%S UTC')"
           git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
