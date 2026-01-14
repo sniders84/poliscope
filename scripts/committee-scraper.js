@@ -1,9 +1,3 @@
-/**
- * Committee scraper (Congress.gov API v3)
- * - Fetches Senate committees
- * - Outputs public/senators-committees.json
- */
-
 const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
@@ -14,7 +8,6 @@ const CONGRESS = process.env.CONGRESS_NUMBER || '119';
 
 async function run() {
   console.log(`Committee scraper: Congress=${CONGRESS}, chamber=Senate`);
-
   const url = `https://api.congress.gov/v3/committee/${CONGRESS}/Senate`;
   const res = await fetch(url, { headers: { 'X-API-Key': API_KEY } });
   if (!res.ok) throw new Error(`Failed ${url}: ${res.status}`);
@@ -30,11 +23,7 @@ async function run() {
     }
   }
 
-  if (results.length === 0) {
-    console.log("No data, skipping write.");
-    return;
-  }
-
+  if (results.length === 0) return console.log("No data, skipping write.");
   fs.writeFileSync(OUT_PATH, JSON.stringify(results, null, 2));
   console.log(`Wrote ${OUT_PATH} with ${results.length} senator entries.`);
 }
