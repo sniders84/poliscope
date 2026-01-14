@@ -1,6 +1,6 @@
 /**
- * Votes scraper (Congress.gov API v3)
- * - Fetches Senate roll call votes
+ * Votes scraper (Senate.gov XML)
+ * - Fetches Senate roll call votes from XML index
  * - Aggregates total and missed votes per senator
  * - Outputs public/senators-votes.json
  */
@@ -8,18 +8,19 @@
 const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
+const xml2js = require('xml2js');
 
 const OUT_PATH = path.join('public', 'senators-votes.json');
-const API_KEY = process.env.CONGRESS_API_KEY;
 const CONGRESS = process.env.CONGRESS_NUMBER || '119';
 
 function initTotals() { return { totalVotes: 0, missedVotes: 0, missedVotePct: 0 }; }
 
-async function fetchVotes(session) {
-  const url = `https://api.congress.gov/v3/senate-vote/${CONGRESS}/${session}`;
-  const res = await fetch(url, { headers: { 'X-API-Key': API_KEY } });
+async function fetchRollCallIndex(session) {
+  const url = `https://www.senate.gov/legislative/LIS/roll_call_votes/vote${CONGRESS}${session}/rollcall.xml`;
+  const res = await fetch(url);
   if (!res.ok) throw new Error(`Failed ${url}: ${res.status}`);
-  return await res.json();
+  const text = await res.text();
+  return await xml2js.parseStringPromise(text);
 }
 
 async function run() {
@@ -27,17 +28,19 @@ async function run() {
 
   const totals = new Map();
 
-  for (const session of [1, 2]) {
-    const data = await fetchVotes(session);
-    for (const v of data.votes || []) {
-      for (const m of v.members || []) {
-        const id = m.bioguideId;
+  for (const session of ['1', '2']) {
+    const data = await fetchRollCallIndex(session);
+    const votes = data.rollcalls?.vote || [];
+    for (const v of votes) {
+      const members = v.members?.[0]?.member || [];
+      for (const m of members) {
+        const id = m.$.id;
         if (!id) continue;
         if (!totals.has(id)) totals.set(id, initTotals());
 
         const t = totals.get(id);
         t.totalVotes++;
-        if (m.vote === 'Not Voting') t.missedVotes++;
+        if (m.vote[0] === 'Not Voting') t.missedVotes++;
       }
     }
   }
