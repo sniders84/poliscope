@@ -1,6 +1,6 @@
 /**
  * Votes scraper (Senate-only, Congress.gov API)
- * - Fetches roll call votes across all sessions
+ * - Uses /rollcallvote endpoint with item=members
  * - Aggregates total votes, missed votes per senator
  * - Outputs public/senators-votes.json
  */
@@ -43,7 +43,6 @@ async function fetchAllPages(baseUrl) {
   return results;
 }
 
-function bioguide(m) { return m?.bioguideId || null; }
 function initTotals() { return { totalVotes: 0, missedVotes: 0, missedVotePct: 0 }; }
 
 async function run() {
@@ -59,38 +58,24 @@ async function run() {
     console.log(`Fetched Senate roll call votes (session ${session}): ${rollcalls.length}`);
 
     for (const rc of rollcalls) {
-      const members = rc?.members || [];
-      for (const m of members) {
-        const id = bioguide(m);
+      const members = await getJson(
+        `https://api.congress.gov/v3/rollcallvote/${CONGRESS}/Senate/${session}/${rc.rollNumber}/members?format=json&api_key=${API_KEY}`
+      );
+      for (const m of members?.data || []) {
+        const id = m.bioguideId;
         if (!id) continue;
         const t = ensure(id);
         t.totalVotes++;
-        if (m?.votePosition === 'Not Voting') {
+        if (m.votePosition === 'Not Voting') {
           t.missedVotes++;
         }
       }
     }
   }
 
-  // Calculate percentages
   for (const [id, t] of totals.entries()) {
-    t.missedVotePct =
-      t.totalVotes > 0 ? +(100 * t.missedVotes / t.totalVotes).toFixed(2) : 0;
+    t.missedVotePct = t.totalVotes > 0 ? +(100 * t.missedVotes / t.totalVotes).toFixed(2) : 0;
   }
 
-  const results = Array.from(totals.entries()).map(([bioguideId, t]) => ({
-    bioguideId,
-    ...t,
-  }));
-
-  const publicDir = path.join('public');
-  if (!fs.existsSync(publicDir)) fs.mkdirSync(publicDir, { recursive: true });
-
-  fs.writeFileSync(OUT_PATH, JSON.stringify(results, null, 2));
-  console.log(`Wrote ${OUT_PATH} with ${results.length} senator entries.`);
-}
-
-run().catch((err) => {
-  console.error('Votes scraper failed:', err);
-  process.exit(1);
-});
+  const results = Array.from(totals.entries()).map(([bioguideId, t]) => ({ bioguideId, ...t }));
+  fs.writeFileSync(OUT_PATH, JSON.stringify
