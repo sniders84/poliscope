@@ -1,8 +1,9 @@
-name: update
+name: Nightly Update Senators Rankings & Scores
+
 on:
   schedule:
-    - cron: '0 */6 * * *'
-  workflow_dispatch:
+    - cron: "0 */6 * * *"   # Run every 6 hours
+  workflow_dispatch:         # Allow manual trigger
 
 jobs:
   update:
@@ -10,40 +11,41 @@ jobs:
     env:
       CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
       CONGRESS_NUMBER: '119'
+
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: 20
 
-      - name: Install deps
-        run: npm install node-fetch@2 js-yaml
+      - name: Install dependencies
+        run: npm install node-fetch@2 js-yaml xml2js
 
-      - name: Debug key prefix
+      - name: Debug API key prefix
         run: node -e "console.log('API key prefix:', (process.env.CONGRESS_API_KEY||'').slice(0,6))"
 
-      - name: Legislation
+      - name: Run Legislation scraper
         run: node scripts/legislation-scraper.js
 
-      - name: Committees
+      - name: Run Committee scraper
         run: node scripts/committee-scraper.js
 
-      - name: Votes
+      - name: Run Votes scraper
         run: node scripts/votes-scraper.js
 
-      - name: Merge
+      - name: Merge all data
         run: node scripts/merge-senators.js
 
-      - name: Scores
+      - name: Generate scores
         run: node scripts/senators-scores.js
 
-      - name: Commit changes
+      - name: Commit and push changes
         run: |
           git config user.name "Data Bot"
-          git config user.email "bot@example.com"
+          git config user.email "bot@electorate.app"
           git add public/*.json
-          git diff --cached --quiet || git commit -m "Automated update"
+          git diff --cached --quiet || git commit -m "Automated update senators data $(date +'%Y-%m-%d %H:%M:%S')"
           git push
