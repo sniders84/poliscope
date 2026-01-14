@@ -66,7 +66,6 @@ function run() {
     score: computeScore(s),
   }));
 
-  // Normalize to 0–100 scale
   const maxScore = results.reduce((m, r) => Math.max(m, r.score), 0);
   const minScore = results.reduce((m, r) => Math.min(m, r.score), maxScore);
   const span = Math.max(1, maxScore - minScore);
