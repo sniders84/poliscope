@@ -78,4 +78,12 @@ async function run() {
   }
 
   const results = Array.from(totals.entries()).map(([bioguideId, t]) => ({ bioguideId, ...t }));
-  fs.writeFileSync(OUT_PATH, JSON.stringify
+    fs.writeFileSync(OUT_PATH, JSON.stringify(results, null, 2));
+  console.log(`Wrote ${OUT_PATH} with ${results.length} senator entries.`);
+}
+
+run().catch((err) => {
+  console.error('Votes scraper failed:', err);
+  process.exit(1);
+});
+
