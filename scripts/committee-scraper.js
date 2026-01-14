@@ -1,109 +1,70 @@
+/**
+ * Committee Aggregator (using your existing JSON file)
+ * - Loads public/senators-committee-membership-current.json
+ * - Groups committees and leadership roles per senator (by bioguide)
+ * - Updates senators-rankings.json directly with committees array
+ */
 const fs = require('fs');
 const path = require('path');
-const fetch = require('node-fetch');
-const cheerio = require('cheerio');
 
 const RANKINGS_PATH = path.join(__dirname, '../public/senators-rankings.json');
-const INDEX_URL = 'https://www.senate.gov/committees/index.htm';
+const COMMITTEE_SOURCE = path.join(__dirname, '../public/senators-committee-membership-current.json');
 
-async function getCommitteeMemberUrls() {
-  const res = await fetch(INDEX_URL, {
-    headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' }
-  });
-  if (!res.ok) throw new Error(`Index fetch failed: ${res.status}`);
+function run() {
+  console.log('Committee aggregator: using senators-committee-membership-current.json');
 
-  const html = await res.text();
-  const $ = cheerio.load(html);
-
-  const urls = [];
-  $('a').each((i, el) => {
-    const text = $(el).text().trim();
-    const href = $(el).attr('href');
-    if (text === 'Committee Member List' && href && href.includes('committee_memberships_')) {
-      urls.push('https://www.senate.gov' + href);
-    }
-  });
-
-  console.log(`Found ${urls.length} committee member list URLs`);
-  return urls;
-}
-
-async function parseCommitteeMembers(url) {
-  const res = await fetch(url, {
-    headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' }
-  });
-  if (!res.ok) {
-    console.warn(`Skipped ${url}: ${res.status}`);
-    return [];
+  let rankings, committeeData;
+  try {
+    rankings = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf8'));
+    committeeData = JSON.parse(fs.readFileSync(COMMITTEE_SOURCE, 'utf8'));
+  } catch (err) {
+    console.error('Failed to load files:', err.message);
+    return;
   }
 
-  const html = await res.text();
-  const $ = cheerio.load(html);
+  // Map bioguide -> senator object (reference)
+  const byId = new Map(rankings.map(sen => [sen.bioguideId, sen]));
 
-  const members = [];
-  let currentCommittee = $('h1, h2').first().text().trim() || 'Unknown Committee';
+  // Aggregate committees per bioguide
+  const byBioguide = {};
 
-  // Parse majority/minority lists
-  $('ul, ol, p strong').each((i, el) => {
-    const text = $(el).text().trim();
-    if (text.includes('Chairman') || text.includes('Ranking Member')) {
-      // Leadership
-      const role = text.includes('Chairman') ? 'Chairman' : 'Ranking Member';
-      const name = text.replace(/Chairman|Ranking Member/g, '').trim();
-      members.push({ name, role });
-    } else if (text.includes('(') && text.includes(')')) {
-      // Regular members
-      const name = text.replace(/\s*\([RD]-[A-Z]{2}\).*$/, '').trim();
-      if (name) members.push({ name, role: 'Member' });
-    }
-  });
+  Object.entries(committeeData).forEach(([committeeCode, members]) => {
+    members.forEach(member => {
+      const bioguide = member.bioguide;
+      if (!bioguide) return;
 
-  // Subcommittees (look for h3 or strong with "Subcommittee")
-  $('h3, strong:contains("Subcommittee")').each((i, sub) => {
-    const subName = $(sub).text().trim().replace('Subcommittee on', '').trim();
-    if (subName) {
-      // Add sub members similarly
-      const subMembers = [];
-      $(sub).nextAll('ul, p').first().find('li, a').each((j, li) => {
-        const liText = $(li).text().trim();
-        const name = liText.replace(/\s*\([RD]-[A-Z]{2}\).*$/, '').trim();
-        if (name) subMembers.push({ name, role: liText.includes('Chairman') ? 'Chairman' : (liText.includes('Ranking') ? 'Ranking Member' : 'Member') });
-      });
-      members.push(...subMembers); // Flatten for aggregation
-    }
-  });
-
-  return members;
-}
-
-async function aggregateBySenator() {
-  const rankings = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf8'));
-  const nameToSen = new Map(rankings.map(s => [s.name, s]));
-
-  const urls = await getCommitteeMemberUrls();
-
-  for (const url of urls) {
-    console.log(`Parsing ${url}`);
-    const members = await parseCommitteeMembers(url);
-    members.forEach(m => {
-      const sen = nameToSen.get(m.name);
-      if (sen) {
-        if (!sen.committees) sen.committees = [];
-        sen.committees.push({
-          committee: 'Unknown Committee', // Replace with actual if parsed
-          role: m.role,
-          // subcommittees: [] // Add if parsed
-        });
+      if (!byBioguide[bioguide]) {
+        byBioguide[bioguide] = { committees: [] };
       }
-    });
-    await new Promise(r => setTimeout(r, 2000)); // Delay to avoid rate limit
-  }
 
-  fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
-  console.log('senators-rankings.json updated with committees!');
+      const entry = {
+        committee: committeeCode,  // e.g., "SSAF" (can map to full name later if needed)
+        role: member.title || (member.rank === 1 ? 'Chairman' : (member.rank === 2 ? 'Ranking Member' : 'Member')),
+        rank: member.rank,
+        party: member.party  // majority/minority
+      };
+
+      byBioguide[bioguide].committees.push(entry);
+    });
+  });
+
+  // Merge into rankings
+  let updatedCount = 0;
+  rankings.forEach(sen => {
+    const agg = byBioguide[sen.bioguideId];
+    if (agg && agg.committees.length > 0) {
+      sen.committees = agg.committees;
+      updatedCount++;
+      console.log(`Updated ${sen.name} (${sen.bioguideId}) with ${agg.committees.length} committees`);
+    }
+  });
+
+  try {
+    fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
+    console.log(`Updated senators-rankings.json with committees for ${updatedCount} senators`);
+  } catch (err) {
+    console.error('Failed to write rankings.json:', err.message);
+  }
 }
 
-aggregateBySenator().catch(err => {
-  console.error(err);
-  process.exit(1);
-});
+run();
