@@ -38,16 +38,16 @@ function run() {
         byBioguide[bioguide] = { committees: [] };
       }
 
-      // Only add if not duplicate (some members appear multiple times)
+      // Only add if not duplicate
       const existing = byBioguide[bioguide].committees.find(c => c.committee === committeeCode);
       if (existing) return;
 
       let role = member.title || 'Member';
-      if (member.rank === 1) role = 'Chairman';
-      if (member.rank === 2) role = 'Ranking Member';
+      if (member.rank === 1 || member.title?.toLowerCase().includes('chair')) role = 'Chairman';
+      if (member.rank === 2 || member.title?.toLowerCase().includes('ranking')) role = 'Ranking Member';
 
       byBioguide[bioguide].committees.push({
-        committee: committeeCode,  // e.g., "SSAF"
+        committee: committeeCode,
         role,
         rank: member.rank,
         party: member.party
@@ -58,4 +58,20 @@ function run() {
   // Merge into rankings
   let updatedCount = 0;
   rankings.forEach(sen => {
-    const agg = byBiog
+    const agg = byBioguide[sen.bioguideId];
+    if (agg && agg.committees.length > 0) {
+      sen.committees = agg.committees;
+      updatedCount++;
+      console.log(`Updated ${sen.name} (${sen.bioguideId}) with ${agg.committees.length} top-level committees`);
+    }
+  });
+
+  try {
+    fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
+    console.log(`Updated senators-rankings.json with top-level committees for ${updatedCount} senators`);
+  } catch (err) {
+    console.error('Failed to write rankings.json:', err.message);
+  }
+}
+
+run();
