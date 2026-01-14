@@ -1,10 +1,3 @@
-/**
- * Votes scraper (Senate.gov XML)
- * - Fetches Senate roll call votes from XML index
- * - Aggregates total and missed votes per senator
- * - Outputs public/senators-votes.json
- */
-
 const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
@@ -25,7 +18,6 @@ async function fetchRollCallIndex(session) {
 
 async function run() {
   console.log(`Votes scraper: Congress=${CONGRESS}, chamber=Senate`);
-
   const totals = new Map();
 
   for (const session of ['1', '2']) {
@@ -37,7 +29,6 @@ async function run() {
         const id = m.$.id;
         if (!id) continue;
         if (!totals.has(id)) totals.set(id, initTotals());
-
         const t = totals.get(id);
         t.totalVotes++;
         if (m.vote[0] === 'Not Voting') t.missedVotes++;
@@ -50,11 +41,7 @@ async function run() {
   }
 
   const results = Array.from(totals.entries()).map(([bioguideId, t]) => ({ bioguideId, ...t }));
-  if (results.length === 0) {
-    console.log("No data, skipping write.");
-    return;
-  }
-
+  if (results.length === 0) return console.log("No data, skipping write.");
   fs.writeFileSync(OUT_PATH, JSON.stringify(results, null, 2));
   console.log(`Wrote ${OUT_PATH} with ${results.length} senator entries.`);
 }
