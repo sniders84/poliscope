@@ -1,47 +1,54 @@
-// committee-scraper.js
-// Reads committee-membership-current.json from public/
-// Outputs public/senators-committee-membership-current.json
+/**
+ * Committee scraper (local JSON version)
+ * - Reads public/senators-committee-membership-current.json
+ * - Aggregates committee memberships per senator
+ * - Captures leadership flags (Chair, Ranking Member)
+ * - Outputs public/senators-committees.json
+ */
 
 const fs = require('fs');
+const path = require('path');
 
-// Legislators metadata
-const legislators = JSON.parse(fs.readFileSync('public/legislators-current.json', 'utf8'));
-const senators = legislators.filter(l => l.terms.some(t => t.type === 'sen'));
-const byBioguide = new Map(senators.map(s => [s.id.bioguide, s]));
+const INPUT = path.join('public', 'senators-committee-membership-current.json');
+const OUTPUT = path.join('public', 'senators-committees.json');
 
-// Source file (you download this nightly into public/)
-const committees = JSON.parse(fs.readFileSync('public/committee-membership-current.json', 'utf8'));
+function run() {
+  if (!fs.existsSync(INPUT)) {
+    throw new Error(`Missing ${INPUT}. Make sure the committee membership file is present.`);
+  }
 
-const senatorCommittees = new Map();
+  const raw = fs.readFileSync(INPUT, 'utf8');
+  const committees = JSON.parse(raw);
 
-for (const [committeeCode, committeeData] of Object.entries(committees)) {
-  if (committeeData.chamber !== 'Senate') continue;
-  const committeeName = committeeData.name;
-  const members = committeeData.members || [];
+  // Map bioguideId -> committees[]
+  const totals = new Map();
 
-  for (const member of members) {
-    const bioguideId = member.bioguide;
-    if (!bioguideId) continue;
+  for (const [committeeId, committee] of Object.entries(committees)) {
+    const name = committee?.name || committeeId;
+    const members = committee?.members || [];
 
-    if (byBioguide.has(bioguideId)) {
-      if (!senatorCommittees.has(bioguideId)) {
-        senatorCommittees.set(bioguideId, { committees: [], committeeLeadership: [] });
-      }
-      const entry = senatorCommittees.get(bioguideId);
-      entry.committees.push(committeeName);
+    for (const m of members) {
+      const bioguideId = m?.bioguideId;
+      if (!bioguideId) continue;
 
-      if (member.role && /Chair|Ranking Member/i.test(member.role)) {
-        entry.committeeLeadership.push(`${member.role}: ${committeeName}`);
-      }
+      if (!totals.has(bioguideId)) totals.set(bioguideId, []);
+
+      totals.get(bioguideId).push({
+        committee: name,
+        role: m?.rank === 'Chairman' ? 'Chair' :
+              m?.rank === 'Ranking Member' ? 'Ranking Member' :
+              'Member'
+      });
     }
   }
+
+  const results = Array.from(totals.entries()).map(([bioguideId, committees]) => ({
+    bioguideId,
+    committees
+  }));
+
+  fs.writeFileSync(OUTPUT, JSON.stringify(results, null, 2));
+  console.log(`Wrote ${OUTPUT} with ${results.length} senator entries.`);
 }
 
-const results = Array.from(senatorCommittees.entries()).map(([bioguideId, data]) => ({
-  bioguideId,
-  committees: data.committees,
-  committeeLeadership: data.committeeLeadership,
-}));
-
-fs.writeFileSync('public/senators-committee-membership-current.json', JSON.stringify(results, null, 2));
-console.log('Committee scraper complete! Wrote public/senators-committee-membership-current.json');
+run();
