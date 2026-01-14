@@ -1,23 +1,25 @@
 /**
  * Senators Scores Calculator
  * - Reads public/senators-rankings.json
- * - Computes composite score per senator based on legislation, committees, and missed votes
+ * - Computes composite score using legislation, committees, missed votes, and participation
+ * - Adds participation bonus based on Yea + Nay percentage
  * - Updates senators-rankings.json directly with score and normalized score
- * - No separate output file — consolidates everything
  */
 const fs = require('fs');
 const path = require('path');
 
 const RANKINGS_PATH = path.join(__dirname, '../public/senators-rankings.json');
 
+// Updated weights with participation bonus
 const WEIGHTS = {
-  sponsoredBills: 2.0,          // Weight for sponsored legislation (bills + resolutions)
-  cosponsoredBills: 1.0,        // Weight for cosponsored legislation
-  sponsoredAmendments: 1.5,     // Slightly higher for amendments (more effort)
-  cosponsoredAmendments: 0.75,
-  committeeLeadershipBonus: 5.0, // Chairman / Ranking Member
-  committeeMembershipBonus: 1.0, // Regular member
-  missedVotePenaltyPerPct: 0.5   // Penalty per 1% missed
+  sponsoredBills: 2.0,               // Sponsored bills/resolutions
+  cosponsoredBills: 1.0,             // Cosponsored bills/resolutions
+  sponsoredAmendments: 1.5,          // Sponsored amendments (higher effort)
+  cosponsoredAmendments: 0.75,       // Cosponsored amendments
+  committeeLeadershipBonus: 5.0,     // Chairman / Ranking Member
+  committeeMembershipBonus: 1.0,     // Regular member
+  missedVotePenaltyPerPct: 0.75,     // Increased penalty per 1% missed
+  participationBonusPerPct: 0.5      // NEW: Bonus per 1% of votes cast (Yea + Nay)
 };
 
 function safeNum(n) {
@@ -27,10 +29,10 @@ function safeNum(n) {
 function isLeadership(role) {
   if (!role) return false;
   const lower = role.toLowerCase();
-  return lower.includes('chair') || 
-         lower.includes('ranking') || 
-         lower.includes('vice chair') || 
-         lower.includes('chairman') || 
+  return lower.includes('chair') ||
+         lower.includes('ranking') ||
+         lower.includes('vice chair') ||
+         lower.includes('chairman') ||
          lower.includes('ranking member');
 }
 
@@ -41,22 +43,22 @@ function computeScore(sen) {
   const committees = Array.isArray(sen.committees) ? sen.committees : [];
   let committeeMemberships = committees.length;
   let committeeLeaderships = 0;
-
   for (const c of committees) {
     if (isLeadership(c.role)) committeeLeaderships++;
   }
 
-  const missedPct = safeNum(sen.totalVotes) > 0 
-    ? (safeNum(sen.missedVotes) / safeNum(sen.totalVotes)) * 100 
-    : 0;
+  const totalVotes = safeNum(sen.totalVotes);
+  const missedPct = totalVotes > 0 ? (safeNum(sen.missedVotes) / totalVotes) * 100 : 0;
+  const participationPct = safeNum(sen.participationPct) || 0; // From votes scraper
 
-  const rawScore = 
+  const rawScore =
     sponsoredLeg * WEIGHTS.sponsoredBills +
     cosponsoredLeg * WEIGHTS.cosponsoredBills +
     safeNum(sen.sponsoredAmendments) * WEIGHTS.sponsoredAmendments +
     safeNum(sen.cosponsoredAmendments) * WEIGHTS.cosponsoredAmendments +
     committeeLeaderships * WEIGHTS.committeeLeadershipBonus +
-    committeeMemberships * WEIGHTS.committeeMembershipBonus -
+    committeeMemberships * WEIGHTS.committeeMembershipBonus +
+    participationPct * WEIGHTS.participationBonusPerPct -  // NEW bonus
     missedPct * WEIGHTS.missedVotePenaltyPerPct;
 
   return +rawScore.toFixed(2);
@@ -78,7 +80,7 @@ function run() {
 
   const scores = rankings.map(sen => computeScore(sen));
 
-  // Find min/max for normalization
+  // Find min/max for normalization (ignore pure zeros if possible)
   const validScores = scores.filter(s => s !== 0);
   const maxScore = validScores.length > 0 ? Math.max(...validScores) : 1;
   const minScore = validScores.length > 0 ? Math.min(...validScores) : 0;
@@ -88,12 +90,16 @@ function run() {
     const raw = scores[idx];
     sen.score = raw;
     sen.scoreNormalized = span > 0 ? +(((raw - minScore) / span) * 100).toFixed(2) : 0;
-    console.log(`Scored ${sen.name}: raw ${raw}, normalized ${sen.scoreNormalized}`);
+
+    // Extra logging for visibility
+    console.log(`Scored ${sen.name}: raw ${raw.toFixed(2)}, normalized ${sen.scoreNormalized} | ` +
+                `Participation: ${sen.participationPct || 0}%, Missed: ${sen.missedVotePct || 0}%`);
   });
 
   try {
     fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
     console.log(`Updated senators-rankings.json with scores for ${rankings.length} senators`);
+    console.log('New fields added/used: yeaVotes, nayVotes, participationPct, score');
   } catch (err) {
     console.error('Failed to write rankings.json:', err.message);
   }
