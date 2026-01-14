@@ -1,25 +1,32 @@
 // legislation-scraper.js
-// Uses LegiScan API with API key from secrets
+// Downloads LegiScan bulk dataset ZIP via API key, extracts bills.json
 // Outputs public/senators-legislation.json
 
 const fs = require('fs');
 const fetch = require('node-fetch');
+const AdmZip = require('adm-zip');
 
-const API_KEY = process.env.LEGISCAN_API_KEY;
-const MASTERLIST_URL = `https://api.legiscan.com/?key=${API_KEY}&op=getMasterList&state=US`;
+const API_KEY = process.env.CONGRESS_API_KEY;
+const DATASET_URL = `https://api.legiscan.com/dl/?key=${API_KEY}&session=2199`;
 
-// Load legislators metadata
 const legislators = JSON.parse(fs.readFileSync('public/legislators-current.json', 'utf8'));
 const senators = legislators.filter(l => l.terms.some(t => t.type === 'sen'));
 const byBioguide = new Map(senators.map(s => [s.id.bioguide, s]));
 
-async function run() {
-  console.log('Fetching LegiScan MasterList...');
-  const res = await fetch(MASTERLIST_URL);
-  if (!res.ok) throw new Error(`HTTP ${res.status} for ${MASTERLIST_URL}`);
-  const data = await res.json();
+async function getBills() {
+  console.log('Downloading LegiScan bulk ZIP...');
+  const res = await fetch(DATASET_URL);
+  if (!res.ok) throw new Error(`HTTP ${res.status} for ${DATASET_URL}`);
+  const buffer = await res.buffer();
 
-  const bills = Object.values(data.masterlist).filter(b => Number(b.congress) === 119);
+  const zip = new AdmZip(buffer);
+  const entry = zip.getEntry('bills.json');
+  if (!entry) throw new Error('bills.json not found in dataset');
+  return JSON.parse(entry.getData().toString('utf8'));
+}
+
+async function run() {
+  const bills = await getBills();
 
   const totals = new Map();
   for (const s of senators) {
@@ -35,29 +42,25 @@ async function run() {
     const sponsorId = bill.sponsor_bioguide;
     if (sponsorId && totals.has(sponsorId)) {
       const entry = totals.get(sponsorId);
-      entry.sponsoredBills += 1;
-      if (/became public law/i.test(bill.status)) {
-        entry.becameLawSponsoredBills += 1;
+      entry.sponsoredBills++;
+      if (/became public law/i.test(bill.status_text)) {
+        entry.becameLawSponsoredBills++;
       }
     }
     if (bill.cosponsors) {
       for (const cos of bill.cosponsors) {
         if (totals.has(cos.bioguide)) {
           const entry = totals.get(cos.bioguide);
-          entry.cosponsoredBills += 1;
-          if (/became public law/i.test(bill.status)) {
-            entry.becameLawCosponsoredBills += 1;
+          entry.cosponsoredBills++;
+          if (/became public law/i.test(bill.status_text)) {
+            entry.becameLawCosponsoredBills++;
           }
         }
       }
     }
   }
 
-  const results = [];
-  for (const [bioguideId, t] of totals.entries()) {
-    results.push({ bioguideId, ...t });
-  }
-
+  const results = Array.from(totals.entries()).map(([bioguideId, t]) => ({ bioguideId, ...t }));
   fs.writeFileSync('public/senators-legislation.json', JSON.stringify(results, null, 2));
   console.log('Legislation scraper complete!');
 }
