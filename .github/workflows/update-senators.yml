@@ -20,7 +20,7 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: npm install node-fetch@2 xml2js cheerio fast-xml-parser js-yaml
+        run: npm install node-fetch@2 xml2js cheerio fast-xml-parser js-yaml csv-parse
 
       - name: Run Legislation scraper
         run: node scripts/legislation-scraper.js
