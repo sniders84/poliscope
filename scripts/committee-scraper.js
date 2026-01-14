@@ -1,32 +1,26 @@
 // committee-scraper.js
-// Fetches Senate committee membership JSON from congress-legislators repo
+// Fetches committee membership JSON from congress-legislators repo
 // Outputs public/senators-committees.json
 
 const fs = require('fs');
 const fetch = require('node-fetch');
 
-// Load legislators metadata
 const legislators = JSON.parse(fs.readFileSync('public/legislators-current.json', 'utf8'));
 const senators = legislators.filter(l => l.terms.some(t => t.type === 'sen'));
 const byBioguide = new Map(senators.map(s => [s.id.bioguide, s]));
 
-// Committee membership JSON URL (official repo)
-const COMMITTEE_URL = 'https://raw.githubusercontent.com/unitedstates/congress-legislators/master/senate-committee-membership-current.json';
-
-async function getCommittees() {
-  console.log('Downloading Senate committee membership JSON...');
-  const res = await fetch(COMMITTEE_URL);
-  if (!res.ok) throw new Error(`HTTP ${res.status} for ${COMMITTEE_URL}`);
-  const text = await res.text();
-  return JSON.parse(text);
-}
+const COMMITTEE_URL = 'https://unitedstates.github.io/congress-legislators/committee-membership-current.json';
 
 async function run() {
-  const committees = await getCommittees();
+  console.log('Fetching committee membership JSON...');
+  const res = await fetch(COMMITTEE_URL);
+  if (!res.ok) throw new Error(`HTTP ${res.status} for ${COMMITTEE_URL}`);
+  const committees = await res.json();
 
   const senatorCommittees = new Map();
 
   for (const [committeeCode, committeeData] of Object.entries(committees)) {
+    if (committeeData.chamber !== 'Senate') continue;
     const committeeName = committeeData.name;
     const members = committeeData.members || [];
 
@@ -50,11 +44,7 @@ async function run() {
 
   const results = [];
   for (const [bioguideId, data] of senatorCommittees.entries()) {
-    results.push({
-      bioguideId,
-      committees: data.committees,
-      committeeLeadership: data.committeeLeadership,
-    });
+    results.push({ bioguideId, ...data });
   }
 
   fs.writeFileSync('public/senators-committees.json', JSON.stringify(results, null, 2));
