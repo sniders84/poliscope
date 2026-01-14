@@ -1,66 +1,119 @@
-// votes-scraper.js
-// Downloads LegiScan bulk dataset ZIP via download token, extracts votes.json
-// Outputs public/senators-votes.json
+/**
+ * Congress.gov votes scraper (cloud-only, Senate-only)
+ * - Fetches roll call votes for the given Congress
+ * - Aggregates total votes, missed votes per senator (bioguideId)
+ * - Outputs public/senators-votes.json
+ *
+ * Env:
+ *   CONGRESS_GOV_API_KEY (required)
+ *   CONGRESS_NUMBER (defaults to 119)
+ */
 
 const fs = require('fs');
-const fetch = require('node-fetch');
-const AdmZip = require('adm-zip');
+const path = require('path');
+const https = require('https');
 
-const TOKEN = process.env.CONGRESS_API_KEY; // your LegiScan download token
-const DATASET_URL = `https://api.legiscan.com/dl/?token=${TOKEN}&session=2199`;
+const API_KEY = process.env.CONGRESS_GOV_API_KEY;
+const CONGRESS = process.env.CONGRESS_NUMBER || '119';
+const OUT_PATH = path.join('public', 'senators-votes.json');
 
-const legislators = JSON.parse(fs.readFileSync('public/legislators-current.json', 'utf8'));
-const senators = legislators.filter(l => l.terms.some(t => t.type === 'sen'));
-const byGovtrack = new Map(senators.map(s => [String(s.id.govtrack), s.id.bioguide]));
+if (!API_KEY) throw new Error('Missing CONGRESS_GOV_API_KEY env.');
 
-async function getVotes() {
-  console.log('Downloading LegiScan bulk ZIP...');
-  const res = await fetch(DATASET_URL);
-  if (!res.ok) throw new Error(`HTTP ${res.status} for ${DATASET_URL}`);
-  const buffer = await res.buffer();
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
-  const header = buffer.toString('utf8', 0, 20);
-  if (header.startsWith('{')) {
-    throw new Error(`LegiScan returned JSON instead of ZIP: ${header}`);
+function getJson(url, retries = 3, backoffMs = 500) {
+  return new Promise((resolve, reject) => {
+    const attempt = (n) => {
+      https.get(url, (res) => {
+        let data = '';
+        res.on('data', (c) => data += c);
+        res.on('end', () => {
+          if (res.statusCode >= 200 && res.statusCode < 300) {
+            try { resolve(JSON.parse(data)); }
+            catch (e) { reject(new Error(`JSON parse error: ${e.message}`)); }
+          } else if (n < retries) {
+            setTimeout(() => attempt(n + 1), backoffMs * (n + 1));
+          } else {
+            reject(new Error(`HTTP ${res.statusCode}: ${data.slice(0, 200)}`));
+          }
+        });
+      }).on('error', (err) => {
+        if (n < retries) setTimeout(() => attempt(n + 1), backoffMs * (n + 1));
+        else reject(err);
+      });
+    };
+    attempt(0);
+  });
+}
+
+async function fetchAllPages(baseUrl) {
+  const results = [];
+  let page = 1;
+  while (true) {
+    const url = `${baseUrl}&page=${page}`;
+    const json = await getJson(url);
+    const items = json?.data || json?.votes || [];
+    results.push(...items);
+
+    const pages = json?.pagination?.pages || 1;
+    const current = json?.pagination?.page || page;
+    if (current >= pages) break;
+    page++;
+    await sleep(200);
   }
+  return results;
+}
 
-  const zip = new AdmZip(buffer);
-  const entry = zip.getEntry('votes.json');
-  if (!entry) throw new Error('votes.json not found in dataset');
-  return JSON.parse(entry.getData().toString('utf8'));
+function bioguide(member) {
+  return member?.bioguideId || member?.bioguide_id || null;
+}
+
+function initTotals() {
+  return { totalVotes: 0, missedVotes: 0, missedVotePct: 0 };
 }
 
 async function run() {
-  const votesData = await getVotes();
+  console.log(`Congress.gov votes aggregation: Congress=${CONGRESS}, chamber=Senate`);
+
+  const votesBase = `https://api.congress.gov/v3/rollcallvote?format=json&congress=${CONGRESS}&chamber=Senate&api_key=${API_KEY}`;
+  const rollcalls = await fetchAllPages(votesBase);
+  console.log(`Fetched Senate roll call votes: ${rollcalls.length}`);
 
   const totals = new Map();
-  for (const s of senators) {
-    totals.set(s.id.bioguide, { votesCast: 0, missedVotes: 0 });
-  }
 
-  for (const rc of votesData) {
-    if (rc.chamber !== 'S') continue;
-    for (const v of rc.votes) {
-      const bioguideId = byGovtrack.get(String(v.people_id));
-      if (!bioguideId || !totals.has(bioguideId)) continue;
+  const ensure = (id) => {
+    if (!totals.has(id)) totals.set(id, initTotals());
+    return totals.get(id);
+  };
 
-      const entry = totals.get(bioguideId);
-      if (/yea|nay|present/i.test(v.vote_text)) {
-        entry.votesCast++;
-      } else if (/absent|not voting/i.test(v.vote_text)) {
-        entry.missedVotes++;
+  for (const rc of rollcalls) {
+    const members = rc?.members || [];
+    for (const m of members) {
+      const id = bioguide(m);
+      if (!id) continue;
+      const t = ensure(id);
+      t.totalVotes++;
+      if (m?.votePosition === 'Not Voting') {
+        t.missedVotes++;
       }
     }
   }
 
-  const results = Array.from(totals.entries()).map(([bioguideId, t]) => {
-    const total = t.votesCast + t.missedVotes;
-    const missedPct = total > 0 ? (t.missedVotes / total) * 100 : 0;
-    return { bioguideId, ...t, missedPct: Number(missedPct.toFixed(2)) };
-  });
+  // Calculate percentages
+  for (const [id, t] of totals.entries()) {
+    t.missedVotePct = t.totalVotes > 0 ? +(100 * t.missedVotes / t.totalVotes).toFixed(2) : 0;
+  }
 
-  fs.writeFileSync('public/senators-votes.json', JSON.stringify(results, null, 2));
-  console.log('Votes scraper complete!');
+  const results = Array.from(totals.entries()).map(([bioguideId, t]) => ({ bioguideId, ...t }));
+
+  const publicDir = path.join('public');
+  if (!fs.existsSync(publicDir)) fs.mkdirSync(publicDir, { recursive: true });
+
+  fs.writeFileSync(OUT_PATH, JSON.stringify(results, null, 2));
+  console.log(`Wrote ${OUT_PATH} with ${results.length} senator entries.`);
 }
 
-run().catch(err => console.error(err));
+run().catch((err) => {
+  console.error('Votes scraper failed:', err);
+  process.exit(1);
+});
