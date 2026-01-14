@@ -1,6 +1,6 @@
 /**
  * Votes scraper (Senate.gov XML)
- * - Fetches Senate roll call votes from XML index
+ * - Fetches Senate roll call votes from the correct XML index
  * - Aggregates total and missed votes per senator
  * - Outputs public/senators-votes.json
  */
@@ -16,11 +16,12 @@ const CONGRESS = process.env.CONGRESS_NUMBER || '119';
 function initTotals() { return { totalVotes: 0, missedVotes: 0, missedVotePct: 0 }; }
 
 async function fetchRollCallIndex(session) {
-  const url = `https://www.senate.gov/legislative/LIS/roll_call_votes/vote${CONGRESS}${session}/rollcall.xml`;
-  const res = await fetch(url);
+  // Correct index path: vote{CONGRESS}{session}.xml
+  const url = `https://www.senate.gov/legislative/LIS/roll_call_votes/vote${CONGRESS}${session}.xml`;
+  const res = await fetch(url, { headers: { 'Accept': 'application/xml,text/xml' } });
   if (!res.ok) throw new Error(`Failed ${url}: ${res.status}`);
   const text = await res.text();
-  return await xml2js.parseStringPromise(text, { explicitArray: true, mergeAttrs: false });
+  return await xml2js.parseStringPromise(text, { explicitArray: true, trim: true });
 }
 
 async function run() {
@@ -36,11 +37,12 @@ async function run() {
       continue;
     }
 
-    const votes = (data.rollcalls && data.rollcalls.vote) ? data.rollcalls.vote : [];
+    // Structure: <roll_call_votes><vote><members><member id="..."><vote>...</vote></member>...</members></vote>...</roll_call_votes>
+    const votes = data.roll_call_votes?.vote || [];
     for (const v of votes) {
       const members = v.members?.[0]?.member || [];
       for (const m of members) {
-        const id = m.$?.id || m.$?.lis_member_id || null;
+        const id = m.$?.id || null;
         if (!id) continue;
         if (!totals.has(id)) totals.set(id, initTotals());
         const t = totals.get(id);
