@@ -1,74 +1,35 @@
 /**
  * Committee scraper
- * - Uses /member endpoint to pull committee assignments
- * - Captures leadership flags (Chair, Ranking Member)
+ * - Reads public/senators-committee-membership-current.json
+ * - Aggregates committee memberships per senator
  * - Outputs public/senators-committees.json
  */
 
 const fs = require('fs');
 const path = require('path');
-const https = require('https');
 
-const API_KEY = process.env.CONGRESS_API_KEY;
-const CONGRESS = process.env.CONGRESS_NUMBER || '119';
-const OUT_PATH = path.join('public', 'senators-committees.json');
+const INPUT = path.join('public','senators-committee-membership-current.json');
+const OUTPUT = path.join('public','senators-committees.json');
 
-if (!API_KEY) throw new Error('Missing CONGRESS_API_KEY env.');
+function run(){
+  if(!fs.existsSync(INPUT))throw new Error(`Missing ${INPUT}`);
+  const committees=JSON.parse(fs.readFileSync(INPUT,'utf8'));
+  const totals=new Map();
 
-function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
-function getJson(url) {
-  return new Promise((resolve, reject) => {
-    https.get(url, res => {
-      let data = '';
-      res.on('data', c => data += c);
-      res.on('end', () => {
-        try { resolve(JSON.parse(data)); } catch (e) { reject(e); }
-      });
-    }).on('error', reject);
-  });
-}
-
-async function fetchAllPages(baseUrl) {
-  const results = [];
-  let page = 1;
-  while (true) {
-    const url = `${baseUrl}&page=${page}`;
-    const json = await getJson(url);
-    const items = json?.data || [];
-    results.push(...items);
-    if (page >= (json?.pagination?.pages || 1)) break;
-    page++;
-    await sleep(200);
-  }
-  return results;
-}
-
-async function run() {
-  console.log(`Committee scraper: Congress=${CONGRESS}, chamber=Senate`);
-  const senators = await fetchAllPages(
-    `https://api.congress.gov/v3/member?format=json&chamber=Senate&congress=${CONGRESS}&api_key=${API_KEY}`
-  );
-
-  const results = [];
-
-  for (const s of senators) {
-    const id = s.bioguideId;
-    if (!id) continue;
-
-    const committees = await fetchAllPages(
-      `https://api.congress.gov/v3/member/${id}/committees?format=json&congress=${CONGRESS}&api_key=${API_KEY}`
-    );
-
-    const mapped = committees.map(c => ({
-      committee: c.name,
-      role: c.role || 'Member'
-    }));
-
-    results.push({ bioguideId: id, committees: mapped });
+  for(const [cid,members] of Object.entries(committees)){
+    for(const m of members){
+      const id=m?.bioguide; if(!id)continue;
+      if(!totals.has(id))totals.set(id,[]);
+      let role='Member';
+      if(m?.title==='Chairman') role='Chair';
+      else if(m?.title==='Ranking Member') role='Ranking Member';
+      totals.get(id).push({committee:cid,role});
+    }
   }
 
-  fs.writeFileSync(OUT_PATH, JSON.stringify(results, null, 2));
-  console.log(`Wrote ${OUT_PATH} with ${results.length} senator entries.`);
+  const results=Array.from(totals.entries()).map(([id,committees])=>({bioguideId:id,committees}));
+  if(results.length===0){console.log("No data, skipping write.");process.exit(0);}
+  fs.writeFileSync(OUTPUT,JSON.stringify(results,null,2));
+  console.log(`Wrote ${OUTPUT} with ${results.length} senator entries.`);
 }
-
-run().catch(e => { console.error('Committee scraper failed:', e); process.exit(1); });
+run();
