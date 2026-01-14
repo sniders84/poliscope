@@ -8,8 +8,11 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     env:
-      CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
+      CONGRESS_GOV_API_KEY: ${{ secrets.CONGRESS_GOV_API_KEY }}
+      CONGRESS_NUMBER: '119'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -20,16 +23,17 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: npm install node-fetch@2 xml2js cheerio fast-xml-parser js-yaml csv-parse adm-zip
+        run: |
+          npm install node-fetch@2 fast-xml-parser js-yaml csv-parse adm-zip
 
-      - name: Run Legislation scraper
-        run: node scripts/legislation-scraper.js
+      - name: Run Legislation scraper (Congress.gov API)
+        run: node scripts/congressgov-legislation-scraper.js
 
-      - name: Run Committee scraper
-        run: node scripts/committee-scraper.js
+      - name: Run Committee scraper (Congress.gov API)
+        run: node scripts/congressgov-committee-scraper.js
 
-      - name: Run Votes scraper
-        run: node scripts/votes-scraper.js
+      - name: Run Votes scraper (Congress.gov API)
+        run: node scripts/congressgov-votes-scraper.js
 
       - name: Merge all data
         run: node scripts/merge-senators.js
