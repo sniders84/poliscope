@@ -1,52 +1,108 @@
-// merge-senators.js
-// Combines legislation, votes, and committees into senators-rankings.json
+/**
+ * Merge script for senators-rankings.json
+ *
+ * Inputs:
+ *   public/senators-legislation.json
+ *   public/senators-committees.json
+ *   public/senators-votes.json
+ *
+ * Output:
+ *   public/senators-rankings.json
+ *
+ * Logic:
+ *   - Keyed by bioguideId
+ *   - Merge legislation tallies, committee memberships (with leadership flags), and vote stats
+ *   - Ensure no nulls; missing senators get empty/default structures
+ */
 
 const fs = require('fs');
+const path = require('path');
 
-// Load source files
-const legislators = JSON.parse(fs.readFileSync('public/legislators-current.json', 'utf8'));
-const legislation = JSON.parse(fs.readFileSync('public/senators-legislation.json', 'utf8'));
-const votes = JSON.parse(fs.readFileSync('public/senators-votes.json', 'utf8'));
-const committees = JSON.parse(fs.readFileSync('public/senators-committees.json', 'utf8'));
+const LEGISLATION = path.join('public', 'senators-legislation.json');
+const COMMITTEES = path.join('public', 'senators-committees.json');
+const VOTES = path.join('public', 'senators-votes.json');
+const OUTPUT = path.join('public', 'senators-rankings.json');
 
-// Index by bioguideId
-const byLegislation = new Map(legislation.map(l => [l.bioguideId, l]));
-const byVotes = new Map(votes.map(v => [v.bioguideId, v]));
-const byCommittees = new Map(committees.map(c => [c.bioguideId, c]));
-
-const senators = legislators.filter(l => l.terms.some(t => t.type === 'sen'));
-
-const results = [];
-
-for (const s of senators) {
-  const bioguideId = s.id.bioguide;
-  const leg = byLegislation.get(bioguideId) || {};
-  const vote = byVotes.get(bioguideId) || {};
-  const comm = byCommittees.get(bioguideId) || {};
-
-  results.push({
-    name: s.name.official_full,
-    state: s.terms[s.terms.length - 1].state,
-    party: s.terms[s.terms.length - 1].party,
-    office: 'Senator',
-    bioguideId,
-
-    // Legislation
-    sponsoredBills: leg.sponsoredBills || 0,
-    cosponsoredBills: leg.cosponsoredBills || 0,
-    becameLawSponsoredBills: leg.becameLawSponsoredBills || 0,
-    becameLawCosponsoredBills: leg.becameLawCosponsoredBills || 0,
-
-    // Committees
-    committees: comm.committees || [],
-    committeeLeadership: comm.committeeLeadership || [],
-
-    // Votes
-    votesCast: vote.votesCast || 0,
-    missedVotes: vote.missedVotes || 0,
-    missedPct: vote.missedPct || 0,
-  });
+// Helpers
+function loadJson(file) {
+  if (!fs.existsSync(file)) return [];
+  return JSON.parse(fs.readFileSync(file, 'utf8'));
 }
 
-fs.writeFileSync('public/senators-rankings.json', JSON.stringify(results, null, 2));
-console.log('Merged senators-rankings.json created! Legislative, committees, and votes unified by bioguideId.');
+// Default schema block
+function initSenator(bioguideId) {
+  return {
+    bioguideId,
+    legislation: {
+      sponsoredBills: 0,
+      cosponsoredBills: 0,
+      sponsoredBillBecameLaw: 0,
+      cosponsoredBillBecameLaw: 0,
+
+      sponsoredAmendment: 0,
+      cosponsoredAmendment: 0,
+
+      sponsoredResolution: 0,
+      cosponsoredResolution: 0,
+
+      sponsoredJointResolution: 0,
+      cosponsoredJointResolution: 0,
+      sponsoredJointResolutionBecameLaw: 0,
+      cosponsoredJointResolutionBecameLaw: 0,
+
+      sponsoredConcurrentResolution: 0,
+      cosponsoredConcurrentResolution: 0,
+    },
+    committees: [],
+    votes: {
+      totalVotes: 0,
+      missedVotes: 0,
+      missedVotePct: 0
+    }
+  };
+}
+
+function run() {
+  const legislation = loadJson(LEGISLATION);
+  const committees = loadJson(COMMITTEES);
+  const votes = loadJson(VOTES);
+
+  const totals = new Map();
+
+  // Merge legislation
+  for (const l of legislation) {
+    const id = l.bioguideId;
+    if (!totals.has(id)) totals.set(id, initSenator(id));
+    totals.get(id).legislation = { ...totals.get(id).legislation, ...l };
+  }
+
+  // Merge committees
+  for (const c of committees) {
+    const id = c.bioguideId;
+    if (!totals.has(id)) totals.set(id, initSenator(id));
+    totals.get(id).committees = c.committees || [];
+  }
+
+  // Merge votes
+  for (const v of votes) {
+    const id = v.bioguideId;
+    if (!totals.has(id)) totals.set(id, initSenator(id));
+    totals.get(id).votes = {
+      totalVotes: v.totalVotes || 0,
+      missedVotes: v.missedVotes || 0,
+      missedVotePct: v.missedVotePct || 0
+    };
+  }
+
+  // Final array
+  const results = Array.from(totals.values());
+
+  // Ensure public/ exists
+  const publicDir = path.join('public');
+  if (!fs.existsSync(publicDir)) fs.mkdirSync(publicDir, { recursive: true });
+
+  fs.writeFileSync(OUTPUT, JSON.stringify(results, null, 2));
+  console.log(`Wrote ${OUTPUT} with ${results.length} senator entries.`);
+}
+
+run();
