@@ -42,11 +42,7 @@ async function run() {
     }
   }
 
-  const results = [];
-  for (const [bioguideId, data] of senatorCommittees.entries()) {
-    results.push({ bioguideId, ...data });
-  }
-
+  const results = Array.from(senatorCommittees.entries()).map(([bioguideId, data]) => ({ bioguideId, ...data }));
   fs.writeFileSync('public/senators-committees.json', JSON.stringify(results, null, 2));
   console.log('Committee scraper complete!');
 }
