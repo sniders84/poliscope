@@ -7,46 +7,40 @@ const RANKINGS_PATH = path.join(__dirname, '../public/senators-rankings.json');
 const INDEX_URL = 'https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_1.xml';
 
 async function getVoteDetailUrls() {
-  const res = await fetch(INDEX_URL, {
-    headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' }
-  });
+  const res = await fetch(INDEX_URL, { headers: { 'User-Agent': 'Mozilla/5.0' } });
   if (!res.ok) {
     console.error(`Index fetch failed: ${res.status}`);
     return [];
   }
   const xml = await res.text();
-  const parsed = await xml2js(xml, { trim: true, explicitArray: false });
-  const votes = parsed.vote_summary.votes.vote || [];
-  const urls = votes.map(v => {
-    const num = v.vote_number.padStart(5, '0');
-    return `https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_${num}.xml`;
+  const parsed = await xml2js(xml, { trim: true });
+  const voteNumbers = parsed.vote_summary?.votes?.vote?.map(v => v.vote_number) || [];
+  const urls = voteNumbers.map(num => {
+    const padded = num.toString().padStart(5, '0');
+    return `https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_${padded}.xml`;
   });
   console.log(`Found ${urls.length} vote detail XML URLs`);
   return urls;
 }
 
 async function parseNotVoting(url, nameToStateMap) {
-  const res = await fetch(url, {
-    headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' }
-  });
+  const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' } });
   if (!res.ok) {
-    console.warn(`Skipped vote ${url.split('/').pop()}: ${res.status}`);
+    console.warn(`Skipped ${url.split('/').pop()}: ${res.status}`);
     return [];
   }
 
   const xml = await res.text();
-  const parsed = await xml2js(xml, { trim: true, explicitArray: false });
-  const members = parsed.vote.members.member || [];
+  const parsed = await xml2js(xml, { trim: true });
+  const members = parsed.vote?.members?.member || [];
 
   const notVoting = [];
   members.forEach(m => {
     if (m.vote_cast === 'Not Voting') {
       const lastName = m.last_name;
       const state = m.state;
-      // Match to your senators by last name + state
       for (const [senName, senState] of nameToStateMap) {
-        const senLast = senName.split(' ').pop();
-        if (senLast === lastName && senState === state) {
+        if (senName.split(' ').pop() === lastName && senState === state) {
           notVoting.push(senName);
           break;
         }
@@ -75,12 +69,11 @@ async function main() {
     return;
   }
 
-  // Map name -> state for matching
   const nameToStateMap = new Map(rankings.map(s => [s.name, s.state || '']));
 
   const urls = await getVoteDetailUrls();
   if (urls.length === 0) {
-    console.log('No votes found - skipping update');
+    console.log('No votes found - skipping');
     return;
   }
 
@@ -89,14 +82,20 @@ async function main() {
 
   for (const url of urls) {
     const notV = await parseNotVoting(url, nameToStateMap);
-    notV.forEach(name => missed[name] = (missed[name] || 0) + 1);
-    await delay(2000); // 2s delay
+    notV.forEach(name => missed[name]++);
+    await delay(2000);
   }
 
-  // Update rankings
   rankings.forEach(sen => {
     sen.missedVotes = missed[sen.name] || 0;
     sen.totalVotes = urls.length;
   });
 
-  fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings,
+  fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
+  console.log(`Updated senators-rankings.json with votes (total roll calls: ${urls.length})`);
+}
+
+main().catch(err => {
+  console.error('Votes scraper failed:', err.message);
+  process.exit(1);
+});
