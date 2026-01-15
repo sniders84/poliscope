@@ -1,5 +1,5 @@
 // scripts/legislation-reps-scraper.js
-// Purpose: Pull House legislation via Congress API and update representatives-rankings.json
+// Purpose: Pull House legislation via Congress.gov API and update representatives-rankings.json
 
 const fs = require('fs');
 const path = require('path');
@@ -9,7 +9,6 @@ const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.
 const API_KEY = process.env.CONGRESS_API_KEY;
 const BASE = 'https://api.congress.gov/v3';
 
-// Utility: ensure schema fields exist
 function ensureLegislationShape(rep) {
   rep.sponsoredBills = rep.sponsoredBills || 0;
   rep.cosponsoredBills = rep.cosponsoredBills || 0;
@@ -21,7 +20,6 @@ function ensureLegislationShape(rep) {
   return rep;
 }
 
-// Fetch helper with pagination
 async function fetchAllPages(url) {
   let results = [];
   let next = url;
@@ -29,14 +27,13 @@ async function fetchAllPages(url) {
     const res = await fetch(next);
     if (!res.ok) break;
     const data = await res.json();
-    const items = data?.bills || data?.amendments || [];
+    const items = data?.bills || [];
     results = results.concat(items);
     next = data?.pagination?.next_url ? `${BASE}${data.pagination.next_url}&api_key=${API_KEY}` : null;
   }
   return results;
 }
 
-// Count helpers (mirror your Senate logic)
 function countBecameLawBills(items) {
   return items.filter(b => (b.latest_action?.action?.toLowerCase() || '').includes('became public law')).length;
 }
@@ -57,24 +54,24 @@ function countBecameLawAmendments(items) {
     if (!bioguide) continue;
 
     // Sponsored bills
-    const sponsoredBillsUrl = `${BASE}/member/bioguideId/${bioguide}/bills?sponsor_type=primary&api_key=${API_KEY}`;
+    const sponsoredBillsUrl = `${BASE}/member/${bioguide}/sponsored-legislation?api_key=${API_KEY}`;
     const sponsoredBills = await fetchAllPages(sponsoredBillsUrl);
     r.sponsoredBills = sponsoredBills.length;
     r.becameLawBills = countBecameLawBills(sponsoredBills);
 
     // Cosponsored bills
-    const cosponsoredBillsUrl = `${BASE}/member/bioguideId/${bioguide}/bills?sponsor_type=cosponsor&api_key=${API_KEY}`;
+    const cosponsoredBillsUrl = `${BASE}/member/${bioguide}/cosponsored-legislation?api_key=${API_KEY}`;
     const cosponsoredBills = await fetchAllPages(cosponsoredBillsUrl);
     r.cosponsoredBills = cosponsoredBills.length;
 
     // Sponsored amendments
-    const sponsoredAmendmentsUrl = `${BASE}/member/bioguideId/${bioguide}/amendments?sponsor_type=primary&api_key=${API_KEY}`;
+    const sponsoredAmendmentsUrl = `${BASE}/member/${bioguide}/sponsored-legislation?bill_type=amendment&api_key=${API_KEY}`;
     const sponsoredAmendments = await fetchAllPages(sponsoredAmendmentsUrl);
     r.sponsoredAmendments = sponsoredAmendments.length;
     r.becameLawAmendments = countBecameLawAmendments(sponsoredAmendments);
 
     // Cosponsored amendments
-    const cosponsoredAmendmentsUrl = `${BASE}/member/bioguideId/${bioguide}/amendments?sponsor_type=cosponsor&api_key=${API_KEY}`;
+    const cosponsoredAmendmentsUrl = `${BASE}/member/${bioguide}/cosponsored-legislation?bill_type=amendment&api_key=${API_KEY}`;
     const cosponsoredAmendments = await fetchAllPages(cosponsoredAmendmentsUrl);
     r.cosponsoredAmendments = cosponsoredAmendments.length;
     r.becameLawCosponsoredAmendments = countBecameLawAmendments(cosponsoredAmendments);
