@@ -5,10 +5,10 @@ const xml2js = require('xml2js').parseStringPromise;
 
 const RANKINGS_PATH = path.join(__dirname, '../public/senators-rankings.json');
 
-// Define ranges (adjust 'end' values as needed based on current max vote numbers)
+// Define ranges (adjust 'end' as needed)
 const SESSION_RANGES = {
-  1: { start: 1, end: 658 },   // Session 1 up to your example 00658
-  2: { start: 1, end: 100 }    // Session 2 — increase if more votes appear
+  1: { start: 1, end: 658 },
+  2: { start: 1, end: 100 }
 };
 
 async function fetchVote(url) {
@@ -32,18 +32,40 @@ async function parseVoteCounts(parsed, senatorMap) {
   members.forEach(m => {
     const lisId = m.lis_member_id || '';
     const voteCast = m.vote_cast?.trim() || 'Unknown';
+    const fullName = (m.member_full || '').trim().toLowerCase();
+    const state = (m.state || '').trim().toUpperCase();
+    const party = (m.party || '').trim().toUpperCase();
 
     let matched = false;
-    if (senatorMap.has(lisId)) {
+
+    // Try LIS ID first
+    if (lisId && senatorMap.has(lisId)) {
       const senName = senatorMap.get(lisId);
       if (voteCast === 'Yea') yea.push(senName);
       if (voteCast === 'Nay') nay.push(senName);
       if (voteCast === 'Not Voting') notVoting.push(senName);
       matched = true;
+    } else {
+      // Fallback: match name + state + party
+      const xmlName = fullName.replace(/\s*\([r,d,i]-\w{2}\)\s*/i, '').trim(); // Remove (R-TX)
+      for (const [senName, senInfo] of senatorMap) {
+        const senLower = senName.toLowerCase();
+        const senState = senInfo.state?.toUpperCase() || '';
+        const senParty = senInfo.party?.toUpperCase() || '';
+        if (xmlName.includes(senLower.split(' ').pop()) && // Last name match
+            (!senState || senState === state) && 
+            (!senParty || senParty === party)) {
+          if (voteCast === 'Yea') yea.push(senName);
+          if (voteCast === 'Nay') nay.push(senName);
+          if (voteCast === 'Not Voting') notVoting.push(senName);
+          matched = true;
+          break;
+        }
+      }
     }
 
     if (!matched && voteCast !== 'Unknown') {
-      unmatched.push(`${m.last_name || 'Unknown'} (lis_id: ${lisId}, ${voteCast})`);
+      unmatched.push(`${fullName} (${state}-${party}, ${voteCast})`);
     }
   });
 
@@ -51,7 +73,7 @@ async function parseVoteCounts(parsed, senatorMap) {
 }
 
 async function main() {
-  console.log('Votes scraper: sequential URLs + lis_member_id matching');
+  console.log('Votes scraper: sequential + name/state/party fallback');
 
   let rankings;
   try {
@@ -61,8 +83,15 @@ async function main() {
     return;
   }
 
-  // Map: lis_member_id → senator name
-  const senatorMap = new Map(rankings.map(s => [s.bioguideId, s.name]));
+  // Map: bioguideId → {name, state, party}
+  const senatorMap = new Map();
+  rankings.forEach(sen => {
+    senatorMap.set(sen.bioguideId, {
+      name: sen.name,
+      state: sen.state || '',
+      party: sen.party || ''
+    });
+  });
 
   const voteCounts = {
     yea: {},
@@ -116,7 +145,6 @@ async function main() {
   try {
     fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
     console.log(`Votes updated: ${totalProcessed} roll calls processed`);
-    console.log('Fields: yeaVotes, nayVotes, missedVotes, participationPct');
   } catch (err) {
     console.error('Write error:', err.message);
   }
