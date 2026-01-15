@@ -133,50 +133,46 @@ async function parseVoteCounts(parsed, senatorMap, voteId) {
   const nay = [];
   const notVoting = [];
   const unmatched = [];
+  const seenInVote = new Set(); // Prevent double-counting the same senator in one vote
 
   members.forEach(m => {
     const voteCast = m.vote_cast?.trim() || 'Unknown';
     const lisId = m.lis_member_id?.trim();
-    const state = (m.state || '').trim().toUpperCase();
-    const party = (m.party || '').trim().toUpperCase();
+    let name = null;
 
+    // Priority: match by LIS ID
     if (lisId && LIS_TO_NAME_MAP[lisId]) {
-      const name = LIS_TO_NAME_MAP[lisId];
-      if (senatorMap.has(name) || true) { // Assume name is key
-        if (voteCast === 'Yea') yea.push(name);
-        if (voteCast === 'Nay') nay.push(name);
-        if (voteCast === 'Not Voting') notVoting.push(name);
-        return;
+      name = LIS_TO_NAME_MAP[lisId];
+    } else {
+      // Fallback: name-based match
+      let xmlFull = (m.member_full || '').trim().toLowerCase();
+      xmlFull = xmlFull.replace(/\s*\([d,r,i]-\w{2}\)\s*/i, '').trim();
+
+      for (const senInfo of senatorMap.values()) {
+        const senNameLower = senInfo.name.toLowerCase();
+        const senState = senInfo.state?.toUpperCase() || '';
+        const senParty = senInfo.party?.toUpperCase() || '';
+        const senLastParts = senNameLower.split(' ').slice(-2);
+
+        const lastMatch = senLastParts.some(part => xmlFull.includes(part));
+
+        if (lastMatch &&
+            (!senState || senState === (m.state || '').toUpperCase()) &&
+            (!senParty || senParty === (m.party || '').toUpperCase())) {
+          name = senInfo.name;
+          break;
+        }
       }
     }
 
-    // Fallback to previous name match if LIS missing
-    let xmlFull = (m.member_full || '').trim().toLowerCase();
-    xmlFull = xmlFull.replace(/\s*\([d,r,i]-\w{2}\)\s*/i, '').trim();
-
-    let matched = false;
-
-    for (const senInfo of senatorMap.values()) {
-      const senNameLower = senInfo.name.toLowerCase();
-      const senState = senInfo.state?.toUpperCase() || '';
-      const senParty = senInfo.party?.toUpperCase() || '';
-      const senLastParts = senNameLower.split(' ').slice(-2);
-
-      const lastMatch = senLastParts.some(part => xmlFull.includes(part));
-
-      if (lastMatch &&
-          (!senState || senState === state) &&
-          (!senParty || senParty === party)) {
-        if (voteCast === 'Yea') yea.push(senInfo.name);
-        if (voteCast === 'Nay') nay.push(senInfo.name);
-        if (voteCast === 'Not Voting') notVoting.push(senInfo.name);
-        matched = true;
-        break;
-      }
-    }
-
-    if (!matched && voteCast !== 'Unknown') {
-      unmatched.push(`${m.member_full} (${lisId || 'no_lis'}, ${state}-${party}, ${voteCast})`);
+    // Only count if we have a valid name and haven't seen this senator yet in this vote
+    if (name && !seenInVote.has(name)) {
+      seenInVote.add(name);
+      if (voteCast === 'Yea') yea.push(name);
+      if (voteCast === 'Nay') nay.push(name);
+      if (voteCast === 'Not Voting') notVoting.push(name);
+    } else if (voteCast !== 'Unknown') {
+      unmatched.push(`${m.member_full || 'unknown'} (${lisId || 'no_lis'}, ${m.state || '?'}-${m.party || '?'}, ${voteCast})`);
     }
   });
 
@@ -190,7 +186,7 @@ async function parseVoteCounts(parsed, senatorMap, voteId) {
 }
 
 async function main() {
-  console.log('Votes scraper: prioritize lis_member_id match + fallback');
+  console.log('Votes scraper: prioritize lis_member_id match + fallback + deduplication per vote');
 
   let rankings;
   try {
@@ -228,7 +224,7 @@ async function main() {
           if (!parsed) return;
           totalProcessed++;
           const voteId = `vote_119_${session}_${padded}`;
-          parseVoteCounts(parsed, senatorMap, voteId).then(counts => {
+          return parseVoteCounts(parsed, senatorMap, voteId).then(counts => {
             counts.yea.forEach(name => voteCounts.yea[name]++);
             counts.nay.forEach(name => voteCounts.nay[name]++);
             counts.notVoting.forEach(name => voteCounts.notVoting[name]++);
