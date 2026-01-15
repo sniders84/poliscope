@@ -4,7 +4,7 @@
  * - Counts only top-level committees (ignores subcommittees)
  * - Preserves leadership titles ("Chairman", "Ranking Member") for scoring
  * - Adds full committee names
- * - Fallback to name matching if bioguide ID misses
+ * - Robust matching: bioguide ID + name fallback (handles "Adam B. Schiff" vs "Adam Schiff")
  * - Updates senators-rankings.json directly
  */
 const fs = require('fs');
@@ -42,12 +42,10 @@ const codeToName = {
   SSEG: 'Energy (Joint)',
   SSNR: 'Natural Resources (Joint)',
   SSIS: 'Intelligence (Select)',
-  SSCM33: 'Commerce Subcommittee (skip if sub)',
-  // Add any missing codes from your JSON if needed
 };
 
 function run() {
-  console.log('Committee aggregator: top-level only + full names from senators-committee-membership-current.json');
+  console.log('Committee aggregator: top-level only + full names + robust matching');
 
   let rankings, committeeData;
   try {
@@ -58,8 +56,9 @@ function run() {
     return;
   }
 
+  // Maps for matching
   const byId = new Map(rankings.map(sen => [sen.bioguideId, sen]));
-  const byName = new Map(rankings.map(sen => [sen.name, sen])); // Fallback map
+  const byName = new Map(rankings.map(sen => [sen.name.toLowerCase(), sen]));
 
   const byBioguide = {};
 
@@ -71,18 +70,19 @@ function run() {
 
     members.forEach(member => {
       const bioguide = member.bioguide;
-      const name = member.name;
-      if (!bioguide && !name) return;
+      const name = member.name.toLowerCase();
+      const key = bioguide || name;
+      if (!key) return;
 
-      if (!byBioguide[bioguide] && !byBioguide[name]) byBioguide[bioguide || name] = { committees: [] };
+      if (!byBioguide[key]) byBioguide[key] = { committees: [] };
 
-      if (byBioguide[bioguide || name].committees.some(c => c.committee === committeeCode)) return;
+      if (byBioguide[key].committees.some(c => c.committee === committeeCode)) return;
 
       let role = member.title || 'Member';
       if (member.rank === 1 || role.toLowerCase().includes('chair')) role = 'Chairman';
       if (member.rank === 2 || role.toLowerCase().includes('ranking')) role = 'Ranking Member';
 
-      byBioguide[bioguide || name].committees.push({
+      byBioguide[key].committees.push({
         committee: committeeCode,
         committeeName: codeToName[committeeCode] || committeeCode,
         role,
@@ -93,16 +93,18 @@ function run() {
   });
 
   let updatedCount = 0;
+  let unmatched = [];
   rankings.forEach(sen => {
-    let agg = byBioguide[sen.bioguideId] || byBioguide[sen.name];
-    sen.committees = agg ? agg.committees : []; // Empty if no match
+    let agg = byBioguide[sen.bioguideId] || byBioguide[sen.name.toLowerCase()];
+    sen.committees = agg ? agg.committees : [];
     if (agg && agg.committees.length > 0) updatedCount++;
-    console.log(`Updated ${sen.name} with ${sen.committees.length} committees: ${sen.committees.map(c => c.committeeName).join(', ')}`);
+    else unmatched.push(sen.name);
   });
 
   try {
     fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
-    console.log(`Committees updated for ${updatedCount} senators (with name fallback)`);
+    console.log(`Committees updated for ${updatedCount} senators (with robust matching)`);
+    if (unmatched.length > 0) console.log(`Unmatched: ${unmatched.join(', ')}`);
   } catch (err) {
     console.error('Write error:', err.message);
   }
