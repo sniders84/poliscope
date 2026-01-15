@@ -1,72 +1,57 @@
 // scripts/merge-reps.js
-// Purpose: Consolidate representatives-rankings.json (dedupe + ensure office + metrics)
+// Purpose: Merge House data sources into representatives-rankings.json
 
 const fs = require('fs');
 const path = require('path');
 
 const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
 
-function ensureRepShape(rep) {
-  return {
-    name: rep.name,
-    bioguideId: rep.bioguideId,
-    state: rep.state,
-    party: rep.party,
-    office: rep.office || 'Representative',
-    sponsoredBills: rep.sponsoredBills || 0,
-    cosponsoredBills: rep.cosponsoredBills || 0,
-    sponsoredAmendments: rep.sponsoredAmendments || 0,
-    cosponsoredAmendments: rep.cosponsoredAmendments || 0,
-    yeaVotes: rep.yeaVotes || 0,
-    nayVotes: rep.nayVotes || 0,
-    missedVotes: rep.missedVotes || 0,
-    totalVotes: rep.totalVotes || 0,
-    committees: Array.isArray(rep.committees) ? rep.committees : [],
-    participationPct: rep.participationPct || 0,
-    missedVotePct: rep.missedVotePct || 0,
-    rawScore: rep.rawScore || 0,
-    scoreNormalized: rep.scoreNormalized || 0,
-  };
+const reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8'));
+const legislation = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'public', 'house-legislation.json'), 'utf-8'));
+const committees = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'public', 'house-committees.json'), 'utf-8'));
+const votes = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'public', 'house-votes.json'), 'utf-8'));
+
+const repMap = new Map(reps.map(r => [r.bioguideId, r]));
+
+// merge legislation
+for (const l of legislation) {
+  const rep = repMap.get(l.bioguideId);
+  if (rep) {
+    rep.sponsoredBills = l.sponsoredBills || 0;
+    rep.sponsoredAmendments = l.sponsoredAmendments || 0;
+    rep.cosponsoredBills = l.cosponsoredBills || 0;
+    rep.cosponsoredAmendments = l.cosponsoredAmendments || 0;
+    rep.becameLawBills = l.becameLawBills || 0;
+    rep.becameLawAmendments = l.becameLawAmendments || 0;
+    rep.becameLawCosponsoredAmendments = l.becameLawCosponsoredAmendments || 0;
+  }
 }
 
-(function main() {
-  const reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureRepShape);
+// merge committees
+for (const c of committees) {
+  const rep = repMap.get(c.bioguideId);
+  if (rep) {
+    rep.committees = c.committees || [];
+  }
+}
 
-  const seen = new Map();
-  reps.forEach(r => {
-    const key = r.bioguideId || r.name;
-    if (!seen.has(key)) {
-      seen.set(key, r);
-    } else {
-      const a = seen.get(key);
-      // Merge additive fields
-      a.sponsoredBills += r.sponsoredBills;
-      a.cosponsoredBills += r.cosponsoredBills;
-      a.sponsoredAmendments += r.sponsoredAmendments;
-      a.cosponsoredAmendments += r.cosponsoredAmendments;
-      a.yeaVotes += r.yeaVotes;
-      a.nayVotes += r.nayVotes;
-      a.missedVotes += r.missedVotes;
-      a.totalVotes += r.totalVotes;
-      // Merge committees (dedupe by code+role)
-      const existing = new Set(a.committees.map(c => `${c.committeeCode}|${c.role}`));
-      r.committees.forEach(c => {
-        const key = `${c.committeeCode}|${c.role}`;
-        if (!existing.has(key)) a.committees.push(c);
-      });
+// merge votes
+for (const [bioguideId, v] of Object.entries(votes)) {
+  const rep = repMap.get(bioguideId);
+  if (rep) {
+    rep.yeaVotes = v.yea;
+    rep.nayVotes = v.nay;
+    rep.missedVotes = v.missed;
+    rep.totalVotes = v.total;
+    if (v.total > 0) {
+      rep.participationPct = Number(((v.yea + v.nay) / v.total * 100).toFixed(2));
+      rep.missedVotePct = Number(((v.missed / v.total) * 100).toFixed(2));
     }
-  });
+  }
+}
 
-  const merged = Array.from(seen.values()).map(r => {
-    const total = r.totalVotes;
-    const missed = r.missedVotes;
-    const participationPct = total > 0 ? Math.round(((total - missed) / total) * 10000) / 100 : 0;
-    const missedVotePct = total > 0 ? Math.round((missed / total) * 10000) / 100 : 0;
-    return ensureRepShape({ ...r, participationPct, missedVotePct });
-  });
-
-  fs.writeFileSync(OUT_PATH, JSON.stringify(merged, null, 2));
-  console.log(`Merge complete: ${merged.length} representatives total`);
-  console.log(`- Legislation merged for ${merged.length} representatives`);
-  console.log(`- Votes merged for ${merged.filter(r => r.totalVotes > 0).length} representatives (with any vote data)`);
-})();
+fs.writeFileSync(OUT_PATH, JSON.stringify(reps, null, 2));
+console.log(`Merge complete: ${reps.length} representatives total
+- Legislation merged for ${legislation.length} reps
+- Committees merged for ${committees.length} reps
+- Votes merged for ${Object.keys(votes).length} reps`);
