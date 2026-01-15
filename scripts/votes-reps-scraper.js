@@ -1,5 +1,5 @@
 // scripts/votes-reps-scraper.js
-// House votes scraper using xml2js (no @xmldom/xmldom)
+// House votes scraper using xml2js
 
 const fs = require('fs');
 const path = require('path');
@@ -7,37 +7,18 @@ const fetch = require('node-fetch');
 const xml2js = require('xml2js');
 
 const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
-
-// Lock to current Congress year (adjust if needed)
-const YEAR = 2025;
+const YEAR = 2025; // lock to current Congress year
 const BASE_URL = `https://clerk.house.gov/evs/${YEAR}/`;
 const MAX_ROLL = 500;
 
 function ensureRepShape(rep) {
-  return {
-    name: rep.name,
-    bioguideId: rep.bioguideId,
-    state: rep.state,
-    party: rep.party,
-    office: rep.office || 'Representative',
-    sponsoredBills: rep.sponsoredBills || 0,
-    cosponsoredBills: rep.cosponsoredBills || 0,
-    sponsoredAmendments: rep.sponsoredAmendments || 0,
-    cosponsoredAmendments: rep.cosponsoredAmendments || 0,
-    yeaVotes: rep.yeaVotes || 0,
-    nayVotes: rep.nayVotes || 0,
-    missedVotes: rep.missedVotes || 0,
-    totalVotes: rep.totalVotes || 0,
-    committees: Array.isArray(rep.committees) ? rep.committees : [],
-    participationPct: rep.participationPct || 0,
-    missedVotePct: rep.missedVotePct || 0,
-    rawScore: rep.rawScore || 0,
-    scoreNormalized: rep.scoreNormalized || 0,
-    becameLawBills: rep.becameLawBills || 0,
-    becameLawAmendments: rep.becameLawAmendments || 0,
-    becameLawCosponsoredAmendments: rep.becameLawCosponsoredAmendments || 0,
-    score: rep.score || 0
-  };
+  rep.yeaVotes = rep.yeaVotes || 0;
+  rep.nayVotes = rep.nayVotes || 0;
+  rep.missedVotes = rep.missedVotes || 0;
+  rep.totalVotes = rep.totalVotes || 0;
+  rep.participationPct = rep.participationPct || 0;
+  rep.missedVotePct = rep.missedVotePct || 0;
+  return rep;
 }
 
 function indexByBioguide(list) {
@@ -70,7 +51,7 @@ async function fetchRollCall(num) {
     const votes = doc?.rollcall_vote?.vote_data?.[0]?.recorded_vote || [];
     for (const v of votes) {
       const legislator = v.legislator?.[0]?.$ || {};
-      const bioguideId = legislator.bioGuideID;
+      const bioguideId = legislator.bioGuideID || legislator.name_id;
       const choice = v.vote?.[0];
 
       if (!bioguideId || !repMap.has(bioguideId)) continue;
@@ -90,9 +71,6 @@ async function fetchRollCall(num) {
       const participated = r.yeaVotes + r.nayVotes;
       r.participationPct = Number(((participated / r.totalVotes) * 100).toFixed(2));
       r.missedVotePct = Number(((r.missedVotes / r.totalVotes) * 100).toFixed(2));
-    } else {
-      r.participationPct = 0;
-      r.missedVotePct = 0;
     }
   }
 
