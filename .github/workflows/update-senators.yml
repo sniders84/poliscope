@@ -17,15 +17,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Needed for git add/commit/push
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: Install dependencies
-        run: npm install
+      - name: Force fresh lockfile and install deps
+        run: |
+          rm -f package-lock.json
+          npm install --prefer-online --no-audit --no-fund
+          node -e "console.log('Deps installed:', Object.keys(require('./package.json').dependencies))"
 
       - name: Debug API key prefix
         run: node -e "console.log('API key prefix:', (process.env.CONGRESS_API_KEY||'').slice(0,6))"
@@ -92,11 +95,11 @@ jobs:
       - name: Generate House scores
         run: node scripts/reps-scores.js
 
-      # --- Commit all outputs ---
+      # --- Commit all outputs + regenerated lockfile ---
       - name: Commit and push changes
         run: |
           git config user.name "Data Bot"
           git config user.email "bot@electorate.app"
           git add public/*.json package-lock.json
-          git diff --cached --quiet || git commit -m "Automated update: senate + house data $(date +'%Y-%m-%d %H:%M:%S UTC')"
+          git diff --cached --quiet || git commit -m "Automated update: senate + house data + fresh lockfile $(date +'%Y-%m-%d %H:%M:%S UTC')"
           git push
