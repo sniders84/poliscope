@@ -1,16 +1,17 @@
 // scripts/votes-reps-scraper.js
-// Purpose: Fetch and parse House roll call votes from clerk.house.gov XML and merge into representatives-rankings.json
+// House votes scraper using xml2js (no @xmldom/xmldom)
 
 const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
-const { DOMParser } = require('@xmldom/xmldom');
+const xml2js = require('xml2js');
 
 const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
 
-// Clerk House roll call base URL (adjust year as needed)
-const YEAR = 2025;
+// Adjust year and max roll calls as needed
+const YEAR = new Date().getFullYear();
 const BASE_URL = `https://clerk.house.gov/evs/${YEAR}/`;
+const MAX_ROLL = 500; // upper bound; script will skip missing files
 
 function ensureRepShape(rep) {
   return {
@@ -31,15 +32,15 @@ function ensureRepShape(rep) {
     participationPct: rep.participationPct || 0,
     missedVotePct: rep.missedVotePct || 0,
     rawScore: rep.rawScore || 0,
-    scoreNormalized: rep.scoreNormalized || 0,
+    scoreNormalized: rep.scoreNormalized || 0
   };
 }
 
 function indexByBioguide(list) {
   const map = new Map();
-  list.forEach(r => {
+  for (const r of list) {
     if (r.bioguideId) map.set(r.bioguideId, r);
-  });
+  }
   return map;
 }
 
@@ -48,7 +49,7 @@ async function fetchRollCall(num) {
   const res = await fetch(url);
   if (!res.ok) return null;
   const xml = await res.text();
-  return new DOMParser().parseFromString(xml, 'text/xml');
+  return xml2js.parseStringPromise(xml);
 }
 
 (async function main() {
@@ -56,20 +57,20 @@ async function fetchRollCall(num) {
   const repMap = indexByBioguide(reps);
 
   let processed = 0;
-  // Adjust upper bound to expected number of roll calls in the session
-  for (let i = 1; i <= 300; i++) {
+  for (let i = 1; i <= MAX_ROLL; i++) {
     const doc = await fetchRollCall(i);
     if (!doc) continue;
 
-    const votes = doc.getElementsByTagName('recorded-vote');
-    for (let j = 0; j < votes.length; j++) {
-      const v = votes.item(j);
-      const legislator = v.getElementsByTagName('legislator').item(0);
-      const bioguideId = legislator?.getAttribute('bioGuideID');
-      const choice = v.getElementsByTagName('vote').item(0)?.textContent;
+    // Clerk XML structure: rollcall_vote > vote_data[0] > recorded_vote[]
+    const votes = doc?.rollcall_vote?.vote_data?.[0]?.recorded_vote || [];
+    for (const v of votes) {
+      const legislator = v.legislator?.[0]?.$ || {};
+      const bioguideId = legislator.bioGuideID;
+      const choice = v.vote?.[0];
 
       if (!bioguideId || !repMap.has(bioguideId)) continue;
       const rep = repMap.get(bioguideId);
+
       rep.totalVotes++;
       if (choice === 'Yea') rep.yeaVotes++;
       else if (choice === 'Nay') rep.nayVotes++;
@@ -78,12 +79,13 @@ async function fetchRollCall(num) {
     processed++;
   }
 
-  reps.forEach(r => {
+  for (const r of reps) {
     if (r.totalVotes > 0) {
-      r.participationPct = ((r.yeaVotes + r.nayVotes) / r.totalVotes * 100).toFixed(2);
-      r.missedVotePct = ((r.missedVotes / r.totalVotes) * 100).toFixed(2);
+      const participated = r.yeaVotes + r.nayVotes;
+      r.participationPct = Number(((participated / r.totalVotes) * 100).toFixed(2));
+      r.missedVotePct = Number(((r.missedVotes / r.totalVotes) * 100).toFixed(2));
     }
-  });
+  }
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(reps, null, 2));
   console.log(`House votes updated: ${processed} roll calls processed`);
