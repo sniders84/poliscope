@@ -5,8 +5,8 @@ const fs = require('fs');
 const path = require('path');
 
 const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
-// Input produced by your committee aggregator (House-only, top-level committees + subcommittees optional)
-const COMMITTEES_PATH = path.join(__dirname, '..', 'public', 'reps-committee-membership-current.json');
+// Input file: House committees membership data
+const COMMITTEES_PATH = path.join(__dirname, '..', 'public', 'house-committees-current.json');
 
 function ensureRepShape(rep) {
   return {
