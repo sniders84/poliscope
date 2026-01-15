@@ -6,19 +6,28 @@ const xml2js = require('xml2js').parseStringPromise;
 const RANKINGS_PATH = path.join(__dirname, '../public/representatives-rankings.json');
 
 // Adjust session ranges for House roll calls in the 119th Congress.
-// These ranges will need to be updated as more votes occur.
+// Update these ranges as more votes occur.
 const SESSION_RANGES = {
   1: { start: 1, end: 659 },
   2: { start: 1, end: 9 }
 };
 
-// Updated LIS ID to name map for House members in the 119th Congress.
-// This is a placeholder — you’ll need to populate with actual LIS IDs and names.
-const LIS_TO_NAME_MAP = {
-  'H001': 'Kevin McCarthy',
-  'H002': 'Hakeem Jeffries',
-  // … add all current House LIS IDs → names here
-};
+// Build LIS ID → name map dynamically from a sample roll call XML
+async function buildLisMap() {
+  const url = `https://clerk.house.gov/evs/2026/roll028.xml`; // any roll call with all members
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`Failed to fetch LIS map: ${res.status}`);
+  const xml = await res.text();
+  const parsed = await xml2js(xml, { explicitArray: false });
+  const members = parsed.roll_call_vote.members.member;
+  const map = {};
+  members.forEach(m => {
+    const id = m.lis_member_id;
+    const name = (m.member_full || '').replace(/\s*\([^)]+\)\s*/, '').trim();
+    if (id && name) map[id] = name;
+  });
+  return map;
+}
 
 async function fetchVote(url) {
   try {
@@ -31,12 +40,11 @@ async function fetchVote(url) {
   }
 }
 
-async function parseVoteCounts(parsed, repMap, voteId) {
+async function parseVoteCounts(parsed, repMap, lisMap, voteId) {
   const members = parsed?.roll_call_vote?.members?.member || [];
   const yea = [];
   const nay = [];
   const notVoting = [];
-  const unmatched = [];
   const seenInVote = new Set();
 
   members.forEach(m => {
@@ -44,25 +52,17 @@ async function parseVoteCounts(parsed, repMap, voteId) {
     const lisId = m.lis_member_id?.trim();
     let name = null;
 
-    if (lisId && LIS_TO_NAME_MAP[lisId]) {
-      name = LIS_TO_NAME_MAP[lisId];
+    if (lisId && lisMap[lisId]) {
+      name = lisMap[lisId];
     } else {
       let xmlFull = (m.member_full || '').trim().toLowerCase();
       xmlFull = xmlFull.replace(/\s*\([d,r,i]-\w{2}\)\s*/i, '').trim();
 
       for (const repInfo of repMap.values()) {
         const repNameLower = repInfo.name.toLowerCase();
-        const repState = repInfo.state?.toUpperCase() || '';
-        const repParty = repInfo.party?.toUpperCase() || '';
         const repLastParts = repNameLower.split(' ').slice(-2);
-
         const lastMatch = repLastParts.some(part => xmlFull.includes(part));
-
-        if (
-          lastMatch &&
-          (!repState || repState === (m.state || '').toUpperCase()) &&
-          (!repParty || repParty === (m.party || '').toUpperCase())
-        ) {
+        if (lastMatch) {
           name = repInfo.name;
           break;
         }
@@ -74,23 +74,15 @@ async function parseVoteCounts(parsed, repMap, voteId) {
       if (voteCast === 'Yea') yea.push(name);
       if (voteCast === 'Nay') nay.push(name);
       if (voteCast === 'Not Voting') notVoting.push(name);
-    } else if (voteCast !== 'Unknown') {
-      unmatched.push(
-        `${m.member_full || 'unknown'} (${lisId || 'no_lis'}, ${m.state || '?'}-${m.party || '?'}, ${voteCast})`
-      );
     }
   });
 
   console.log(`Vote ${voteId}: ${yea.length} Yea, ${nay.length} Nay, ${notVoting.length} Not Voting`);
-  if (unmatched.length > 0) {
-    console.log(`Unmatched in ${voteId}: ${unmatched.slice(0, 5).join(', ')}...`);
-  }
-
   return { yea, nay, notVoting };
 }
 
 async function main() {
-  console.log('House votes scraper: prioritize lis_member_id match + fallback + deduplication per vote');
+  console.log('House votes scraper: auto-build LIS map + parse votes');
 
   let rankings;
   try {
@@ -101,9 +93,9 @@ async function main() {
   }
 
   const repMap = new Map();
-  rankings.forEach(rep => {
-    repMap.set(rep.name, rep);
-  });
+  rankings.forEach(rep => repMap.set(rep.name, rep));
+
+  const lisMap = await buildLisMap();
 
   const voteCounts = { yea: {}, nay: {}, notVoting: {} };
   rankings.forEach(r => {
@@ -117,14 +109,14 @@ async function main() {
 
   for (const [session, range] of Object.entries(SESSION_RANGES)) {
     for (let num = range.start; num <= range.end; num++) {
-      const padded = num.toString().padStart(5, '0');
-      const url = `https://clerk.house.gov/evs/${CONGRESS}${session}/roll${padded}.xml`;
+      const padded = num.toString().padStart(3, '0');
+      const url = `https://clerk.house.gov/evs/2026/roll${padded}.xml`;
       promises.push(
         fetchVote(url).then(parsed => {
           if (!parsed) return;
           totalProcessed++;
           const voteId = `roll_${CONGRESS}_${session}_${padded}`;
-          return parseVoteCounts(parsed, repMap, voteId).then(counts => {
+          return parseVoteCounts(parsed, repMap, lisMap, voteId).then(counts => {
             counts.yea.forEach(name => voteCounts.yea[name]++);
             counts.nay.forEach(name => voteCounts.nay[name]++);
             counts.notVoting.forEach(name => voteCounts.notVoting[name]++);
