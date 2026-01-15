@@ -1,9 +1,9 @@
-name: Nightly Update Senators Rankings & Scores
+name: Nightly Update Congress Rankings & Scores
 
 on:
   schedule:
-    - cron: "0 */6 * * *"  # Every 6 hours
-  workflow_dispatch:       # Manual trigger
+    - cron: "0 */6 * * *"   # Every 6 hours
+  workflow_dispatch:        # Manual trigger
 
 jobs:
   update:
@@ -30,25 +30,43 @@ jobs:
       - name: Debug API key prefix
         run: node -e "console.log('API key prefix:', (process.env.CONGRESS_API_KEY||'').slice(0,6))"
 
-      - name: Run Legislation scraper
+      # --- Senate pipeline ---
+      - name: Run Senate Legislation scraper
         run: node scripts/legislation-scraper.js
 
-      - name: Run Committee scraper
+      - name: Run Senate Committee scraper
         run: node scripts/committee-scraper.js
 
-      - name: Run Votes scraper
+      - name: Run Senate Votes scraper
         run: node scripts/votes-scraper.js
 
-      - name: Merge all data
+      - name: Merge Senate data
         run: node scripts/merge-senators.js
 
-      - name: Generate scores
+      - name: Generate Senate scores
         run: node scripts/senators-scores.js
 
+      # --- House pipeline ---
+      - name: Run House Legislation scraper
+        run: node scripts/legislation-reps-scraper.js
+
+      - name: Run House Committee scraper
+        run: node scripts/committee-reps-scraper.js
+
+      - name: Run House Votes scraper
+        run: node scripts/votes-reps-scraper.js
+
+      - name: Merge House data
+        run: node scripts/merge-reps.js
+
+      - name: Generate House scores
+        run: node scripts/reps-scores.js
+
+      # --- Commit all outputs ---
       - name: Commit and push changes (including lockfile if generated)
         run: |
           git config user.name "Data Bot"
           git config user.email "bot@electorate.app"
           git add public/*.json package-lock.json
-          git diff --cached --quiet || git commit -m "Automated update: senators data + package-lock.json $(date +'%Y-%m-%d %H:%M:%S UTC')"
+          git diff --cached --quiet || git commit -m "Automated update: senate + house data $(date +'%Y-%m-%d %H:%M:%S UTC')"
           git push
