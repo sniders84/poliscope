@@ -28,7 +28,7 @@ async function getVoteDetailUrls() {
   return urls;
 }
 
-async function parseVoteCounts(url, senatorLastNames) {
+async function parseVoteCounts(url, senatorNames) {
   const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' } });
   if (!res.ok) return { yea: [], nay: [], notVoting: [] };
 
@@ -39,16 +39,16 @@ async function parseVoteCounts(url, senatorLastNames) {
   const yea = [];
   const nay = [];
   const notVoting = [];
-  const unmatched = []; // Debug
+  const unmatchedMisses = [];
 
   members.forEach(m => {
-    const lastName = m.last_name?.trim().toLowerCase();
+    const lastName = m.last_name?.trim().toLowerCase() || '';
     const voteCast = m.vote_cast?.trim();
 
     let matched = false;
-    for (const senName of senatorLastNames) {
+    for (const senName of senatorNames) {
       const senLast = senName.split(' ').pop().toLowerCase();
-      if (lastName === senLast) {
+      if (lastName.includes(senLast) || senLast.includes(lastName)) {
         if (voteCast === 'Yea') yea.push(senName);
         if (voteCast === 'Nay') nay.push(senName);
         if (voteCast === 'Not Voting' || voteCast === 'Absent') notVoting.push(senName);
@@ -57,17 +57,13 @@ async function parseVoteCounts(url, senatorLastNames) {
       }
     }
 
-    if (!matched && (voteCast === 'Yea' || voteCast === 'Nay' || voteCast === 'Not Voting' || voteCast === 'Absent')) {
-      unmatched.push(`${lastName} (${voteCast})`);
+    if (!matched && (voteCast === 'Not Voting' || voteCast === 'Absent')) {
+      unmatchedMisses.push(`${m.last_name || 'Unknown'} (${voteCast})`);
     }
   });
 
-  // Debug log: show matches and unmatched
-  if (yea.length + nay.length + notVoting.length > 0) {
-    console.log(`Vote ${url.split('/').pop()}: ${yea.length} Yea, ${nay.length} Nay, ${notVoting.length} Not Voting`);
-  }
-  if (unmatched.length > 0 && notVoting.length > 0) {
-    console.log(`Unmatched raw votes: ${unmatched.slice(0, 10).join(', ')}...`);
+  if (unmatchedMisses.length > 0) {
+    console.log(`Unmatched misses on ${url.split('/').pop()}: ${unmatchedMisses.slice(0, 10).join(', ')}...`);
   }
 
   return { yea, nay, notVoting };
@@ -86,8 +82,7 @@ async function main() {
     return;
   }
 
-  // Use last names as keys for matching
-  const senatorLastNames = rankings.map(s => s.name);
+  const senatorNames = rankings.map(s => s.name);
 
   const urls = await getVoteDetailUrls();
   if (urls.length === 0) return console.log('No votes found');
@@ -104,7 +99,7 @@ async function main() {
   });
 
   for (const url of urls) {
-    const counts = await parseVoteCounts(url, senatorLastNames);
+    const counts = await parseVoteCounts(url, senatorNames);
     counts.yea.forEach(name => voteCounts.yea[name]++);
     counts.nay.forEach(name => voteCounts.nay[name]++);
     counts.notVoting.forEach(name => voteCounts.notVoting[name]++);
