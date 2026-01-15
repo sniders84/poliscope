@@ -5,8 +5,9 @@ const xml2js = require('xml2js').parseStringPromise;
 
 const RANKINGS_PATH = path.join(__dirname, '../public/senators-rankings.json');
 
+// Define ranges (focus on recent to speed up)
 const SESSION_RANGES = {
-  1: { start: 560, end: 658 }, // Focus on recent votes where you saw data
+  1: { start: 1, end: 658 },
   2: { start: 1, end: 100 }
 };
 
@@ -22,13 +23,13 @@ async function fetchVote(url) {
 }
 
 async function parseVoteCounts(parsed, senatorMap, voteId) {
-  const members = parsed?.vote?.members?.member || [];
+  const members = parsed?.roll_call_vote?.members?.member || [];
   const yea = [];
   const nay = [];
   const notVoting = [];
   const unmatched = [];
 
-  // Debug: log raw structure of first few members
+  // Debug: log raw structure if present
   if (members.length > 0) {
     console.log(`Raw member structure in ${voteId} (first 2):`);
     members.slice(0, 2).forEach((m, i) => {
@@ -39,8 +40,8 @@ async function parseVoteCounts(parsed, senatorMap, voteId) {
   }
 
   members.forEach(m => {
-    const lisId = m.lis_member_id || m.member_id || '';
-    const voteCast = m.vote_cast || m['vote-cast'] || 'Unknown';
+    const lisId = m.lis_member_id || '';
+    const voteCast = m.vote_cast?.trim() || 'Unknown';
     const fullName = (m.member_full || '').trim().toLowerCase();
     const state = (m.state || '').trim().toUpperCase();
     const party = (m.party || '').trim().toUpperCase();
@@ -49,7 +50,7 @@ async function parseVoteCounts(parsed, senatorMap, voteId) {
 
     // Try ID
     if (lisId && senatorMap.has(lisId)) {
-      const senName = senatorMap.get(lisId);
+      const senName = senatorMap.get(lisId).name;
       if (voteCast === 'Yea') yea.push(senName);
       if (voteCast === 'Nay') nay.push(senName);
       if (voteCast === 'Not Voting') notVoting.push(senName);
@@ -58,18 +59,16 @@ async function parseVoteCounts(parsed, senatorMap, voteId) {
     } else {
       // Fallback name/state/party
       const xmlName = fullName.replace(/\s*\([r,d,i]-\w{2}\)\s*/i, '').trim();
-      for (const [senName, senInfo] of senatorMap) {
-        const senLower = senName.toLowerCase();
+      for (const [senId, senInfo] of senatorMap) {
+        const senLower = senInfo.name.toLowerCase();
         const senState = senInfo.state?.toUpperCase() || '';
         const senParty = senInfo.party?.toUpperCase() || '';
-        if (xmlName.includes(senLower.split(' ').pop()) &&
-            (!senState || senState === state) &&
-            (!senParty || senParty === party)) {
-          if (voteCast === 'Yea') yea.push(senName);
-          if (voteCast === 'Nay') nay.push(senName);
-          if (voteCast === 'Not Voting') notVoting.push(senName);
+        if (xmlName === senLower && senState === state && senParty === party) {
+          if (voteCast === 'Yea') yea.push(senInfo.name);
+          if (voteCast === 'Nay') nay.push(senInfo.name);
+          if (voteCast === 'Not Voting') notVoting.push(senInfo.name);
           matched = true;
-          console.log(`NAME MATCH in ${voteId}: ${senName} to "${fullName}" (${state}-${party}, ${voteCast})`);
+          console.log(`NAME MATCH in ${voteId}: ${senInfo.name} to "${fullName}" (${state}-${party}, ${voteCast})`);
           break;
         }
       }
@@ -89,7 +88,7 @@ async function parseVoteCounts(parsed, senatorMap, voteId) {
 }
 
 async function main() {
-  console.log('Votes scraper: aggressive debug + name fallback');
+  console.log('Votes scraper: fixed path + strict name match');
 
   let rankings;
   try {
