@@ -50,22 +50,18 @@ function indexByBioguide(list) {
     process.exit(1);
   }
 
-  if (!Array.isArray(committees)) {
-    console.error('Committee file is not an array—fix structure to an array of committee objects.');
-    process.exit(1);
-  }
+  // Normalize: if it's not an array, turn it into one
+  const committeeArray = Array.isArray(committees)
+    ? committees
+    : Object.entries(committees).map(([code, data]) => ({
+        code,
+        name: data.name,
+        members: data.members || []
+      }));
 
   const repMap = indexByBioguide(reps);
 
-  // Expected committee object shape:
-  // {
-  //   code: "HSJU",
-  //   name: "House Judiciary Committee",
-  //   members: [
-  //     { bioguideId: "J000289", name: "Jim Jordan", role: "Member" | "Chair" | "Ranking Member" }
-  //   ]
-  // }
-  committees.forEach(c => {
+  committeeArray.forEach(c => {
     const members = Array.isArray(c.members) ? c.members : [];
     members.forEach(m => {
       const rep = repMap.get(m.bioguideId);
