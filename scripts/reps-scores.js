@@ -12,6 +12,9 @@ const WEIGHTS = {
   cosponsoredBills: 1,
   sponsoredAmendments: 3,
   cosponsoredAmendments: 1,
+  becameLawBills: 5,
+  becameLawAmendments: 4,
+  becameLawCosponsoredAmendments: 2,
   yeaVotes: 0.5,
   nayVotes: 0.5,
   missedVotesPenalty: -2,
@@ -34,24 +37,51 @@ function committeePoints(committees) {
 (function main() {
   const reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8'));
 
-  // Raw score
   reps.forEach(r => {
+    // Ensure schema completeness
+    r.sponsoredBills = r.sponsoredBills || 0;
+    r.sponsoredAmendments = r.sponsoredAmendments || 0;
+    r.cosponsoredBills = r.cosponsoredBills || 0;
+    r.cosponsoredAmendments = r.cosponsoredAmendments || 0;
+    r.becameLawBills = r.becameLawBills || 0;
+    r.becameLawAmendments = r.becameLawAmendments || 0;
+    r.becameLawCosponsoredAmendments = r.becameLawCosponsoredAmendments || 0;
+    r.yeaVotes = r.yeaVotes || 0;
+    r.nayVotes = r.nayVotes || 0;
+    r.missedVotes = r.missedVotes || 0;
+    r.totalVotes = r.totalVotes || 0;
+    r.committees = Array.isArray(r.committees) ? r.committees : [];
+
+    // Raw score calculation
     const raw =
       r.sponsoredBills * WEIGHTS.sponsoredBills +
       r.cosponsoredBills * WEIGHTS.cosponsoredBills +
       r.sponsoredAmendments * WEIGHTS.sponsoredAmendments +
       r.cosponsoredAmendments * WEIGHTS.cosponsoredAmendments +
+      r.becameLawBills * WEIGHTS.becameLawBills +
+      r.becameLawAmendments * WEIGHTS.becameLawAmendments +
+      r.becameLawCosponsoredAmendments * WEIGHTS.becameLawCosponsoredAmendments +
       r.yeaVotes * WEIGHTS.yeaVotes +
       r.nayVotes * WEIGHTS.nayVotes +
-      committeePoints(Array.isArray(r.committees) ? r.committees : []) +
+      committeePoints(r.committees) +
       r.missedVotes * WEIGHTS.missedVotesPenalty;
 
     r.rawScore = Math.max(0, Math.round(raw * 100) / 100);
+
+    // Participation / missed vote percentages
+    if (r.totalVotes > 0) {
+      r.participationPct = Number(((r.yeaVotes + r.nayVotes) / r.totalVotes * 100).toFixed(2));
+      r.missedVotePct = Number(((r.missedVotes / r.totalVotes) * 100).toFixed(2));
+    } else {
+      r.participationPct = 0;
+      r.missedVotePct = 0;
+    }
   });
 
   // Normalize 0–100
   const maxRaw = reps.reduce((m, r) => Math.max(m, r.rawScore || 0), 0) || 1;
   reps.forEach(r => {
+    r.score = r.rawScore; // keep score field aligned with rawScore
     r.scoreNormalized = Math.round(((r.rawScore || 0) / maxRaw) * 10000) / 100;
   });
 
