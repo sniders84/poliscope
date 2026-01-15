@@ -47,12 +47,12 @@
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 214,
+    "totalVotes": 212,
     "missedVotePct": 0,
     "score": 362.06,
     "scoreNormalized": 33.13,
-    "yeaVotes": 165,
-    "nayVotes": 49,
+    "yeaVotes": 162,
+    "nayVotes": 50,
     "participationPct": 100,
     "rawScore": 1379
   },
@@ -103,15 +103,15 @@
         "party": "majority"
       }
     ],
-    "missedVotes": 1,
-    "totalVotes": 214,
-    "missedVotePct": 0.47,
+    "missedVotes": 8,
+    "totalVotes": 212,
+    "missedVotePct": 3.77,
     "score": 381.27,
-    "scoreNormalized": 37.46,
-    "yeaVotes": 164,
-    "nayVotes": 49,
-    "participationPct": 99.53,
-    "rawScore": 1559.53
+    "scoreNormalized": 37.38,
+    "yeaVotes": 154,
+    "nayVotes": 50,
+    "participationPct": 96.23,
+    "rawScore": 1556.23
   },
   {
     "bioguideId": "M001153",
@@ -153,15 +153,15 @@
         "party": "majority"
       }
     ],
-    "missedVotes": 11,
-    "totalVotes": 214,
-    "missedVotePct": 5.14,
+    "missedVotes": 4,
+    "totalVotes": 212,
+    "missedVotePct": 1.89,
     "score": 398.7,
-    "scoreNormalized": 40.38,
-    "yeaVotes": 67,
-    "nayVotes": 136,
-    "participationPct": 94.86,
-    "rawScore": 1680.86
+    "scoreNormalized": 40.45,
+    "yeaVotes": 165,
+    "nayVotes": 43,
+    "participationPct": 98.11,
+    "rawScore": 1684.11
   },
   {
     "bioguideId": "S001198",
@@ -203,15 +203,15 @@
         "party": "majority"
       }
     ],
-    "missedVotes": 12,
-    "totalVotes": 214,
-    "missedVotePct": 5.61,
+    "missedVotes": 4,
+    "totalVotes": 212,
+    "missedVotePct": 1.89,
     "score": 503.74,
-    "scoreNormalized": 58.86,
-    "yeaVotes": 151,
-    "nayVotes": 51,
-    "participationPct": 94.39,
-    "rawScore": 2450.39
+    "scoreNormalized": 58.95,
+    "yeaVotes": 165,
+    "nayVotes": 43,
+    "participationPct": 98.11,
+    "rawScore": 2454.11
   },
   {
     "bioguideId": "G000003",
@@ -225,14 +225,14 @@
     "becameLawCosponsoredAmendments": 0,
     "committees": [],
     "missedVotes": 10,
-    "totalVotes": 214,
-    "missedVotePct": 4.67,
+    "totalVotes": 212,
+    "missedVotePct": 4.72,
     "score": 47.69,
     "scoreNormalized": 2.29,
-    "yeaVotes": 92,
-    "nayVotes": 112,
-    "participationPct": 95.33,
-    "rawScore": 95.33
+    "yeaVotes": 89,
+    "nayVotes": 113,
+    "participationPct": 95.28,
+    "rawScore": 95.28
   },
   {
     "bioguideId": "K000377",
@@ -282,14 +282,14 @@
       }
     ],
     "missedVotes": 7,
-    "totalVotes": 214,
-    "missedVotePct": 3.27,
+    "totalVotes": 212,
+    "missedVotePct": 3.3,
     "score": 698.65,
     "scoreNormalized": 54.26,
-    "yeaVotes": 82,
-    "nayVotes": 125,
-    "participationPct": 96.73,
-    "rawScore": 2258.73
+    "yeaVotes": 84,
+    "nayVotes": 121,
+    "participationPct": 96.7,
+    "rawScore": 2258.7
   },
   {
     "bioguideId": "B001236",
@@ -345,15 +345,15 @@
         "party": "majority"
       }
     ],
-    "missedVotes": 6,
-    "totalVotes": 214,
-    "missedVotePct": 2.8,
+    "missedVotes": 7,
+    "totalVotes": 212,
+    "missedVotePct": 3.3,
     "score": 301.86,
-    "scoreNormalized": 22.7,
-    "yeaVotes": 157,
-    "nayVotes": 51,
-    "participationPct": 97.2,
-    "rawScore": 945.2
+    "scoreNormalized": 22.69,
+    "yeaVotes": 153,
+    "nayVotes": 52,
+    "participationPct": 96.7,
+    "rawScore": 944.7
   },
   {
     "bioguideId": "C001095",
@@ -396,12 +396,12 @@
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 214,
+    "totalVotes": 212,
     "missedVotePct": 0,
     "score": 382.25,
     "scoreNormalized": 47.25,
-    "yeaVotes": 164,
-    "nayVotes": 50,
+    "yeaVotes": 161,
+    "nayVotes": 51,
     "participationPct": 100,
     "rawScore": 1967
   },
@@ -439,7 +439,7 @@
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 214,
+    "totalVotes": 212,
     "missedVotePct": 0,
     "score": 3,
     "scoreNormalized": 0,
@@ -495,15 +495,15 @@
         "party": "minority"
       }
     ],
-    "missedVotes": 16,
-    "totalVotes": 214,
-    "missedVotePct": 7.48,
+    "missedVotes": 14,
+    "totalVotes": 212,
+    "missedVotePct": 6.6,
     "score": 914.04,
-    "scoreNormalized": 87.86,
-    "yeaVotes": 150,
-    "nayVotes": 48,
-    "participationPct": 92.52,
-    "rawScore": 3657.52
+    "scoreNormalized": 87.88,
+    "yeaVotes": 57,
+    "nayVotes": 141,
+    "participationPct": 93.4,
+    "rawScore": 3658.4
   },
   {
     "bioguideId": "B001267",
@@ -545,15 +545,15 @@
         "party": "minority"
       }
     ],
-    "missedVotes": 2,
-    "totalVotes": 214,
-    "missedVotePct": 0.93,
+    "missedVotes": 4,
+    "totalVotes": 212,
+    "missedVotePct": 1.89,
     "score": 1070.79,
-    "scoreNormalized": 87.2,
-    "yeaVotes": 79,
-    "nayVotes": 133,
-    "participationPct": 99.07,
-    "rawScore": 3630.07
+    "scoreNormalized": 87.18,
+    "yeaVotes": 78,
+    "nayVotes": 130,
+    "participationPct": 98.11,
+    "rawScore": 3629.11
   },
   {
     "bioguideId": "H000273",
@@ -589,7 +589,7 @@
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 214,
+    "totalVotes": 212,
     "missedVotePct": 0,
     "score": 3,
     "scoreNormalized": 0,
@@ -638,15 +638,15 @@
         "party": "minority"
       }
     ],
-    "missedVotes": 1,
-    "totalVotes": 214,
-    "missedVotePct": 0.47,
+    "missedVotes": 0,
+    "totalVotes": 212,
+    "missedVotePct": 0,
     "score": 630.77,
-    "scoreNormalized": 75.46,
-    "yeaVotes": 59,
-    "nayVotes": 154,
-    "participationPct": 99.53,
-    "rawScore": 3141.53
+    "scoreNormalized": 75.47,
+    "yeaVotes": 60,
+    "nayVotes": 152,
+    "participationPct": 100,
+    "rawScore": 3142
   },
   {
     "bioguideId": "M001169",
@@ -681,15 +681,15 @@
         "party": "minority"
       }
     ],
-    "missedVotes": 0,
-    "totalVotes": 214,
-    "missedVotePct": 0,
+    "missedVotes": 2,
+    "totalVotes": 212,
+    "missedVotePct": 0.94,
     "score": 484.75,
-    "scoreNormalized": 42.33,
-    "yeaVotes": 0,
-    "nayVotes": 0,
-    "participationPct": 0,
-    "rawScore": 1762
+    "scoreNormalized": 44.7,
+    "yeaVotes": 52,
+    "nayVotes": 158,
+    "participationPct": 99.06,
+    "rawScore": 1861.06
   },
   {
     "bioguideId": "B001313",
@@ -703,12 +703,12 @@
     "becameLawCosponsoredAmendments": 0,
     "committees": [],
     "missedVotes": 0,
-    "totalVotes": 214,
+    "totalVotes": 212,
     "missedVotePct": 0,
     "score": 326,
     "scoreNormalized": 27,
-    "yeaVotes": 54,
-    "nayVotes": 160,
+    "yeaVotes": 55,
+    "nayVotes": 157,
     "participationPct": 100,
     "rawScore": 1124
   },
@@ -752,15 +752,15 @@
         "party": "minority"
       }
     ],
-    "missedVotes": 5,
-    "totalVotes": 214,
-    "missedVotePct": 2.34,
+    "missedVotes": 7,
+    "totalVotes": 212,
+    "missedVotePct": 3.3,
     "score": 664.1,
-    "scoreNormalized": 63.82,
-    "yeaVotes": 73,
-    "nayVotes": 136,
-    "participationPct": 97.66,
-    "rawScore": 2656.66
+    "scoreNormalized": 63.79,
+    "yeaVotes": 70,
+    "nayVotes": 135,
+    "participationPct": 96.7,
+    "rawScore": 2655.7
   },
   {
     "bioguideId": "M001231",
@@ -774,14 +774,14 @@
     "becameLawCosponsoredAmendments": 0,
     "committees": [],
     "missedVotes": 0,
-    "totalVotes": 214,
+    "totalVotes": 212,
     "missedVotePct": 0,
     "score": 237.15,
     "scoreNormalized": 17.61,
-    "yeaVotes": 158,
-    "nayVotes": 48,
-    "participationPct": 96.26,
-    "rawScore": 733.26
+    "yeaVotes": 155,
+    "nayVotes": 49,
+    "participationPct": 96.23,
+    "rawScore": 733.23
   },
   {
     "bioguideId": "S001217",
@@ -824,12 +824,12 @@
       }
     ],
     "missedVotes": 1,
-    "totalVotes": 214,
+    "totalVotes": 212,
     "missedVotePct": 0.47,
     "score": 665.25,
     "scoreNormalized": 87.11,
-    "yeaVotes": 164,
-    "nayVotes": 49,
+    "yeaVotes": 161,
+    "nayVotes": 50,
     "participationPct": 99.53,
     "rawScore": 3626.53
   },
@@ -866,15 +866,15 @@
         "party": "minority"
       }
     ],
-    "missedVotes": 0,
-    "totalVotes": 214,
-    "missedVotePct": 0,
+    "missedVotes": 11,
+    "totalVotes": 212,
+    "missedVotePct": 5.19,
     "score": 319.75,
-    "scoreNormalized": 28.95,
-    "yeaVotes": 69,
-    "nayVotes": 145,
-    "participationPct": 100,
-    "rawScore": 1205
+    "scoreNormalized": 28.82,
+    "yeaVotes": 68,
+    "nayVotes": 133,
+    "participationPct": 94.81,
+    "rawScore": 1199.81
   },
   {
     "bioguideId": "W000790",
@@ -916,15 +916,15 @@
         "party": "minority"
       }
     ],
-    "missedVotes": 6,
-    "totalVotes": 214,
-    "missedVotePct": 2.8,
+    "missedVotes": 4,
+    "totalVotes": 212,
+    "missedVotePct": 1.89,
     "score": 544.6,
-    "scoreNormalized": 41.37,
-    "yeaVotes": 64,
-    "nayVotes": 144,
-    "participationPct": 97.2,
-    "rawScore": 1722.2
+    "scoreNormalized": 41.39,
+    "yeaVotes": 75,
+    "nayVotes": 133,
+    "participationPct": 98.11,
+    "rawScore": 1723.11
   },
   {
     "bioguideId": "H001042",
@@ -967,12 +967,12 @@
       }
     ],
     "missedVotes": 1,
-    "totalVotes": 214,
+    "totalVotes": 212,
     "missedVotePct": 0.47,
     "score": 749.02,
     "scoreNormalized": 70.39,
-    "yeaVotes": 50,
-    "nayVotes": 163,
+    "yeaVotes": 51,
+    "nayVotes": 160,
     "participationPct": 99.53,
     "rawScore": 2930.53
   },
@@ -1023,15 +1023,15 @@
         "party": "minority"
       }
     ],
-    "missedVotes": 0,
-    "totalVotes": 214,
-    "missedVotePct": 0,
+    "missedVotes": 3,
+    "totalVotes": 212,
+    "missedVotePct": 1.42,
     "score": 598.75,
-    "scoreNormalized": 47.87,
-    "yeaVotes": 0,
-    "nayVotes": 0,
-    "participationPct": 0,
-    "rawScore": 1993
+    "scoreNormalized": 50.24,
+    "yeaVotes": 60,
+    "nayVotes": 149,
+    "participationPct": 98.58,
+    "rawScore": 2091.58
   },
   {
     "bioguideId": "C000880",
@@ -1060,14 +1060,14 @@
       }
     ],
     "missedVotes": 2,
-    "totalVotes": 214,
-    "missedVotePct": 0.93,
+    "totalVotes": 212,
+    "missedVotePct": 0.94,
     "score": 391.28,
     "scoreNormalized": 38.1,
-    "yeaVotes": 161,
-    "nayVotes": 51,
-    "participationPct": 99.07,
-    "rawScore": 1586.07
+    "yeaVotes": 158,
+    "nayVotes": 52,
+    "participationPct": 99.06,
+    "rawScore": 1586.06
   },
   {
     "bioguideId": "R000584",
@@ -1110,7 +1110,7 @@
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 214,
+    "totalVotes": 212,
     "missedVotePct": 0,
     "score": 502.5,
     "scoreNormalized": 49,
@@ -1153,14 +1153,14 @@
       }
     ],
     "missedVotes": 6,
-    "totalVotes": 214,
-    "missedVotePct": 2.8,
+    "totalVotes": 212,
+    "missedVotePct": 2.83,
     "score": 677.11,
-    "scoreNormalized": 73.01,
-    "yeaVotes": 72,
-    "nayVotes": 136,
-    "participationPct": 97.2,
-    "rawScore": 3039.2
+    "scoreNormalized": 73,
+    "yeaVotes": 74,
+    "nayVotes": 132,
+    "participationPct": 97.17,
+    "rawScore": 3039.17
   },
   {
     "bioguideId": "D000622",
@@ -1203,14 +1203,14 @@
       }
     ],
     "missedVotes": 21,
-    "totalVotes": 214,
-    "missedVotePct": 9.81,
+    "totalVotes": 212,
+    "missedVotePct": 9.91,
     "score": 507.39,
     "scoreNormalized": 53.31,
-    "yeaVotes": 57,
+    "yeaVotes": 55,
     "nayVotes": 136,
-    "participationPct": 90.19,
-    "rawScore": 2219.19
+    "participationPct": 90.09,
+    "rawScore": 2219.09
   },
   {
     "bioguideId": "B001299",
@@ -1253,12 +1253,12 @@
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 214,
+    "totalVotes": 212,
     "missedVotePct": 0,
     "score": 386.5,
     "scoreNormalized": 50.73,
-    "yeaVotes": 164,
-    "nayVotes": 50,
+    "yeaVotes": 161,
+    "nayVotes": 51,
     "participationPct": 100,
     "rawScore": 2112
   },
@@ -1295,15 +1295,15 @@
         "party": "majority"
       }
     ],
-    "missedVotes": 0,
-    "totalVotes": 214,
-    "missedVotePct": 0,
+    "missedVotes": 3,
+    "totalVotes": 212,
+    "missedVotePct": 1.42,
     "score": 284.25,
-    "scoreNormalized": 31.61,
-    "yeaVotes": 0,
-    "nayVotes": 0,
-    "participationPct": 0,
-    "rawScore": 1316
+    "scoreNormalized": 33.98,
+    "yeaVotes": 158,
+    "nayVotes": 51,
+    "participationPct": 98.58,
+    "rawScore": 1414.58
   },
   {
     "bioguideId": "E000295",
@@ -1339,12 +1339,12 @@
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 214,
+    "totalVotes": 212,
     "missedVotePct": 0,
     "score": 450.5,
     "scoreNormalized": 58.54,
-    "yeaVotes": 165,
-    "nayVotes": 49,
+    "yeaVotes": 162,
+    "nayVotes": 50,
     "participationPct": 100,
     "rawScore": 2437
   },
@@ -1382,12 +1382,12 @@
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 214,
+    "totalVotes": 212,
     "missedVotePct": 0,
     "score": 504.75,
     "scoreNormalized": 57.51,
-    "yeaVotes": 163,
-    "nayVotes": 51,
+    "yeaVotes": 160,
+    "nayVotes": 52,
     "participationPct": 100,
     "rawScore": 2394
   },
@@ -1402,15 +1402,15 @@
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "committees": [],
-    "missedVotes": 0,
-    "totalVotes": 214,
-    "missedVotePct": 0,
+    "missedVotes": 2,
+    "totalVotes": 212,
+    "missedVotePct": 0.94,
     "score": 0,
-    "scoreNormalized": 0,
-    "yeaVotes": 0,
-    "nayVotes": 0,
-    "participationPct": 0,
-    "rawScore": 0
+    "scoreNormalized": 2.38,
+    "yeaVotes": 160,
+    "nayVotes": 50,
+    "participationPct": 99.06,
+    "rawScore": 99.06
   },
   {
     "bioguideId": "M000934",
@@ -1466,15 +1466,15 @@
         "party": "majority"
       }
     ],
-    "missedVotes": 0,
-    "totalVotes": 214,
-    "missedVotePct": 0,
+    "missedVotes": 9,
+    "totalVotes": 212,
+    "missedVotePct": 4.25,
     "score": 363.25,
-    "scoreNormalized": 54.26,
-    "yeaVotes": 0,
-    "nayVotes": 0,
-    "participationPct": 0,
-    "rawScore": 2259
+    "scoreNormalized": 56.56,
+    "yeaVotes": 151,
+    "nayVotes": 52,
+    "participationPct": 95.75,
+    "rawScore": 2354.75
   },
   {
     "bioguideId": "M000355",
@@ -1516,15 +1516,15 @@
         "party": "majority"
       }
     ],
-    "missedVotes": 2,
-    "totalVotes": 214,
-    "missedVotePct": 0.93,
+    "missedVotes": 1,
+    "totalVotes": 212,
+    "missedVotePct": 0.47,
     "score": 196.15,
-    "scoreNormalized": 11.58,
-    "yeaVotes": 157,
-    "nayVotes": 55,
-    "participationPct": 99.07,
-    "rawScore": 482.07
+    "scoreNormalized": 11.59,
+    "yeaVotes": 155,
+    "nayVotes": 56,
+    "participationPct": 99.53,
+    "rawScore": 482.53
   },
   {
     "bioguideId": "P000603",
@@ -1559,15 +1559,15 @@
         "party": "majority"
       }
     ],
-    "missedVotes": 0,
-    "totalVotes": 214,
-    "missedVotePct": 0,
+    "missedVotes": 7,
+    "totalVotes": 212,
+    "missedVotePct": 3.3,
     "score": 315.75,
-    "scoreNormalized": 42.16,
-    "yeaVotes": 92,
-    "nayVotes": 122,
-    "participationPct": 100,
-    "rawScore": 1755
+    "scoreNormalized": 42.08,
+    "yeaVotes": 144,
+    "nayVotes": 61,
+    "participationPct": 96.7,
+    "rawScore": 1751.7
   },
   {
     "bioguideId": "C001075",
@@ -1610,14 +1610,14 @@
       }
     ],
     "missedVotes": 5,
-    "totalVotes": 214,
-    "missedVotePct": 2.34,
+    "totalVotes": 212,
+    "missedVotePct": 2.36,
     "score": 533.6,
     "scoreNormalized": 68.76,
-    "yeaVotes": 159,
-    "nayVotes": 50,
-    "participationPct": 97.66,
-    "rawScore": 2862.66
+    "yeaVotes": 156,
+    "nayVotes": 51,
+    "participationPct": 97.64,
+    "rawScore": 2862.64
   },
   {
     "bioguideId": "K000393",
@@ -1653,12 +1653,12 @@
       }
     ],
     "missedVotes": 1,
-    "totalVotes": 214,
+    "totalVotes": 212,
     "missedVotePct": 0.47,
     "score": 473.27,
     "scoreNormalized": 66.38,
-    "yeaVotes": 164,
-    "nayVotes": 49,
+    "yeaVotes": 161,
+    "nayVotes": 50,
     "participationPct": 99.53,
     "rawScore": 2763.53
   },
@@ -1696,11 +1696,11 @@
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 214,
+    "totalVotes": 212,
     "missedVotePct": 0,
     "score": 396.75,
     "scoreNormalized": 36.61,
-    "yeaVotes": 179,
+    "yeaVotes": 177,
     "nayVotes": 35,
     "participationPct": 100,
     "rawScore": 1524
@@ -1746,14 +1746,14 @@
       }
     ],
     "missedVotes": 2,
-    "totalVotes": 214,
-    "missedVotePct": 0.93,
+    "totalVotes": 212,
+    "missedVotePct": 0.94,
     "score": 698.8,
     "scoreNormalized": 57.05,
-    "yeaVotes": 85,
-    "nayVotes": 127,
-    "participationPct": 99.07,
-    "rawScore": 2375.07
+    "yeaVotes": 84,
+    "nayVotes": 126,
+    "participationPct": 99.06,
+    "rawScore": 2375.06
   },
   {
     "bioguideId": "A000382",
@@ -1796,14 +1796,14 @@
       }
     ],
     "missedVotes": 4,
-    "totalVotes": 214,
-    "missedVotePct": 1.87,
+    "totalVotes": 212,
+    "missedVotePct": 1.89,
     "score": 462.57,
     "scoreNormalized": 35.27,
-    "yeaVotes": 62,
-    "nayVotes": 148,
-    "participationPct": 98.13,
-    "rawScore": 1468.13
+    "yeaVotes": 63,
+    "nayVotes": 145,
+    "participationPct": 98.11,
+    "rawScore": 1468.11
   },
   {
     "bioguideId": "V000128",
@@ -1838,15 +1838,15 @@
         "party": "minority"
       }
     ],
-    "missedVotes": 0,
-    "totalVotes": 214,
-    "missedVotePct": 0,
+    "missedVotes": 2,
+    "totalVotes": 212,
+    "missedVotePct": 0.94,
     "score": 625.23,
-    "scoreNormalized": 62.03,
-    "yeaVotes": 1,
-    "nayVotes": 0,
-    "participationPct": 0.47,
-    "rawScore": 2582.47
+    "scoreNormalized": 64.4,
+    "yeaVotes": 54,
+    "nayVotes": 156,
+    "participationPct": 99.06,
+    "rawScore": 2681.06
   },
   {
     "bioguideId": "M000133",
@@ -1881,15 +1881,15 @@
         "party": "minority"
       }
     ],
-    "missedVotes": 0,
-    "totalVotes": 214,
-    "missedVotePct": 0,
+    "missedVotes": 1,
+    "totalVotes": 212,
+    "missedVotePct": 0.47,
     "score": 741.25,
-    "scoreNormalized": 85.97,
-    "yeaVotes": 68,
-    "nayVotes": 146,
-    "participationPct": 100,
-    "rawScore": 3579
+    "scoreNormalized": 85.96,
+    "yeaVotes": 51,
+    "nayVotes": 160,
+    "participationPct": 99.53,
+    "rawScore": 3578.53
   },
   {
     "bioguideId": "W000817",
@@ -1932,12 +1932,12 @@
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 214,
+    "totalVotes": 212,
     "missedVotePct": 0,
     "score": 961.25,
     "scoreNormalized": 76.27,
-    "yeaVotes": 52,
-    "nayVotes": 162,
+    "yeaVotes": 53,
+    "nayVotes": 159,
     "participationPct": 100,
     "rawScore": 3175
   },
@@ -1981,15 +1981,15 @@
         "party": "minority"
       }
     ],
-    "missedVotes": 2,
-    "totalVotes": 214,
-    "missedVotePct": 0.93,
+    "missedVotes": 8,
+    "totalVotes": 212,
+    "missedVotePct": 3.77,
     "score": 877.65,
-    "scoreNormalized": 77.52,
-    "yeaVotes": 163,
-    "nayVotes": 49,
-    "participationPct": 99.07,
-    "rawScore": 3227.07
+    "scoreNormalized": 77.45,
+    "yeaVotes": 80,
+    "nayVotes": 124,
+    "participationPct": 96.23,
+    "rawScore": 3224.23
   },
   {
     "bioguideId": "S001208",
@@ -2032,14 +2032,14 @@
       }
     ],
     "missedVotes": 10,
-    "totalVotes": 214,
-    "missedVotePct": 4.67,
+    "totalVotes": 212,
+    "missedVotePct": 4.72,
     "score": 357.2,
     "scoreNormalized": 30.68,
     "yeaVotes": 89,
-    "nayVotes": 115,
-    "participationPct": 95.33,
-    "rawScore": 1277.33
+    "nayVotes": 113,
+    "participationPct": 95.28,
+    "rawScore": 1277.28
   },
   {
     "bioguideId": "K000367",
@@ -2096,14 +2096,14 @@
       }
     ],
     "missedVotes": 2,
-    "totalVotes": 214,
-    "missedVotePct": 0.93,
+    "totalVotes": 212,
+    "missedVotePct": 0.94,
     "score": 691.28,
     "scoreNormalized": 77.35,
-    "yeaVotes": 80,
-    "nayVotes": 132,
-    "participationPct": 99.07,
-    "rawScore": 3220.07
+    "yeaVotes": 77,
+    "nayVotes": 133,
+    "participationPct": 99.06,
+    "rawScore": 3220.06
   },
   {
     "bioguideId": "S001203",
@@ -2153,14 +2153,14 @@
       }
     ],
     "missedVotes": 2,
-    "totalVotes": 214,
-    "missedVotePct": 0.93,
+    "totalVotes": 212,
+    "missedVotePct": 0.94,
     "score": 480.85,
     "scoreNormalized": 38.22,
-    "yeaVotes": 57,
-    "nayVotes": 155,
-    "participationPct": 99.07,
-    "rawScore": 1591.07
+    "yeaVotes": 58,
+    "nayVotes": 152,
+    "participationPct": 99.06,
+    "rawScore": 1591.06
   },
   {
     "bioguideId": "H001079",
@@ -2210,14 +2210,14 @@
       }
     ],
     "missedVotes": 6,
-    "totalVotes": 214,
-    "missedVotePct": 2.8,
+    "totalVotes": 212,
+    "missedVotePct": 2.83,
     "score": 355.36,
     "scoreNormalized": 34.76,
-    "yeaVotes": 157,
-    "nayVotes": 51,
-    "participationPct": 97.2,
-    "rawScore": 1447.2
+    "yeaVotes": 154,
+    "nayVotes": 52,
+    "participationPct": 97.17,
+    "rawScore": 1447.17
   },
   {
     "bioguideId": "W000437",
@@ -2274,12 +2274,12 @@
       }
     ],
     "missedVotes": 1,
-    "totalVotes": 214,
+    "totalVotes": 212,
     "missedVotePct": 0.47,
     "score": 376.27,
     "scoreNormalized": 36.91,
-    "yeaVotes": 162,
-    "nayVotes": 51,
+    "yeaVotes": 159,
+    "nayVotes": 52,
     "participationPct": 99.53,
     "rawScore": 1536.53
   },
@@ -2316,15 +2316,15 @@
         "party": "majority"
       }
     ],
-    "missedVotes": 9,
-    "totalVotes": 214,
-    "missedVotePct": 4.21,
+    "missedVotes": 10,
+    "totalVotes": 212,
+    "missedVotePct": 4.72,
     "score": 365.9,
-    "scoreNormalized": 40.23,
-    "yeaVotes": 163,
+    "scoreNormalized": 40.22,
+    "yeaVotes": 160,
     "nayVotes": 42,
-    "participationPct": 95.79,
-    "rawScore": 1674.79
+    "participationPct": 95.28,
+    "rawScore": 1674.28
   },
   {
     "bioguideId": "S001227",
@@ -2366,15 +2366,15 @@
         "party": "majority"
       }
     ],
-    "missedVotes": 0,
-    "totalVotes": 214,
-    "missedVotePct": 0,
+    "missedVotes": 1,
+    "totalVotes": 212,
+    "missedVotePct": 0.47,
     "score": 265.75,
-    "scoreNormalized": 31.44,
-    "yeaVotes": 0,
-    "nayVotes": 0,
-    "participationPct": 0,
-    "rawScore": 1309
+    "scoreNormalized": 33.83,
+    "yeaVotes": 161,
+    "nayVotes": 50,
+    "participationPct": 99.53,
+    "rawScore": 1408.53
   },
   {
     "bioguideId": "D000618",
@@ -2416,15 +2416,15 @@
         "party": "majority"
       }
     ],
-    "missedVotes": 1,
-    "totalVotes": 214,
-    "missedVotePct": 0.47,
+    "missedVotes": 3,
+    "totalVotes": 212,
+    "missedVotePct": 1.42,
     "score": 500.52,
-    "scoreNormalized": 50.22,
-    "yeaVotes": 165,
-    "nayVotes": 48,
-    "participationPct": 99.53,
-    "rawScore": 2090.53
+    "scoreNormalized": 50.19,
+    "yeaVotes": 160,
+    "nayVotes": 49,
+    "participationPct": 98.58,
+    "rawScore": 2089.58
   },
   {
     "bioguideId": "S001233",
@@ -2438,14 +2438,14 @@
     "becameLawCosponsoredAmendments": 0,
     "committees": [],
     "missedVotes": 3,
-    "totalVotes": 214,
-    "missedVotePct": 1.4,
+    "totalVotes": 212,
+    "missedVotePct": 1.42,
     "score": 98.84,
     "scoreNormalized": 2.37,
-    "yeaVotes": 163,
-    "nayVotes": 48,
-    "participationPct": 98.6,
-    "rawScore": 98.6
+    "yeaVotes": 160,
+    "nayVotes": 49,
+    "participationPct": 98.58,
+    "rawScore": 98.58
   },
   {
     "bioguideId": "F000463",
@@ -2509,14 +2509,14 @@
       }
     ],
     "missedVotes": 2,
-    "totalVotes": 214,
-    "missedVotePct": 0.93,
+    "totalVotes": 212,
+    "missedVotePct": 0.94,
     "score": 276.03,
     "scoreNormalized": 27.19,
-    "yeaVotes": 161,
-    "nayVotes": 51,
-    "participationPct": 99.07,
-    "rawScore": 1132.07
+    "yeaVotes": 158,
+    "nayVotes": 52,
+    "participationPct": 99.06,
+    "rawScore": 1132.06
   },
   {
     "bioguideId": "R000618",
@@ -2551,15 +2551,15 @@
         "party": "majority"
       }
     ],
-    "missedVotes": 0,
-    "totalVotes": 214,
-    "missedVotePct": 0,
+    "missedVotes": 2,
+    "totalVotes": 212,
+    "missedVotePct": 0.94,
     "score": 449.75,
-    "scoreNormalized": 47.44,
-    "yeaVotes": 165,
-    "nayVotes": 49,
-    "participationPct": 100,
-    "rawScore": 1975
+    "scoreNormalized": 47.42,
+    "yeaVotes": 158,
+    "nayVotes": 52,
+    "participationPct": 99.06,
+    "rawScore": 1974.06
   },
   {
     "bioguideId": "C001113",
@@ -2602,12 +2602,12 @@
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 214,
+    "totalVotes": 212,
     "missedVotePct": 0,
     "score": 765,
     "scoreNormalized": 74.95,
-    "yeaVotes": 83,
-    "nayVotes": 131,
+    "yeaVotes": 85,
+    "nayVotes": 127,
     "participationPct": 100,
     "rawScore": 3120
   },
@@ -2644,15 +2644,15 @@
         "party": "minority"
       }
     ],
-    "missedVotes": 6,
-    "totalVotes": 214,
-    "missedVotePct": 2.8,
+    "missedVotes": 0,
+    "totalVotes": 212,
+    "missedVotePct": 0,
     "score": 829.36,
-    "scoreNormalized": 73.46,
-    "yeaVotes": 159,
-    "nayVotes": 49,
-    "participationPct": 97.2,
-    "rawScore": 3058.2
+    "scoreNormalized": 73.53,
+    "yeaVotes": 91,
+    "nayVotes": 121,
+    "participationPct": 100,
+    "rawScore": 3061
   },
   {
     "bioguideId": "S001181",
@@ -2701,15 +2701,15 @@
         "party": "minority"
       }
     ],
-    "missedVotes": 6,
-    "totalVotes": 214,
-    "missedVotePct": 2.8,
+    "missedVotes": 4,
+    "totalVotes": 212,
+    "missedVotePct": 1.89,
     "score": 1097.15,
-    "scoreNormalized": 98.42,
-    "yeaVotes": 148,
-    "nayVotes": 60,
-    "participationPct": 97.2,
-    "rawScore": 4097.2
+    "scoreNormalized": 98.44,
+    "yeaVotes": 99,
+    "nayVotes": 109,
+    "participationPct": 98.11,
+    "rawScore": 4098.11
   },
   {
     "bioguideId": "H001076",
@@ -2759,14 +2759,14 @@
       }
     ],
     "missedVotes": 3,
-    "totalVotes": 214,
-    "missedVotePct": 1.4,
+    "totalVotes": 212,
+    "missedVotePct": 1.42,
     "score": 517.55,
     "scoreNormalized": 46.78,
-    "yeaVotes": 96,
+    "yeaVotes": 94,
     "nayVotes": 115,
-    "participationPct": 98.6,
-    "rawScore": 1947.6
+    "participationPct": 98.58,
+    "rawScore": 1947.58
   },
   {
     "bioguideId": "K000394",
@@ -2816,12 +2816,12 @@
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 214,
+    "totalVotes": 212,
     "missedVotePct": 0,
     "score": 547.25,
     "scoreNormalized": 42.64,
     "yeaVotes": 68,
-    "nayVotes": 146,
+    "nayVotes": 144,
     "participationPct": 100,
     "rawScore": 1775
   },
@@ -2859,14 +2859,14 @@
       }
     ],
     "missedVotes": 13,
-    "totalVotes": 214,
-    "missedVotePct": 6.07,
+    "totalVotes": 212,
+    "missedVotePct": 6.13,
     "score": 900.01,
     "scoreNormalized": 88.08,
-    "yeaVotes": 62,
+    "yeaVotes": 60,
     "nayVotes": 139,
-    "participationPct": 93.93,
-    "rawScore": 3666.93
+    "participationPct": 93.87,
+    "rawScore": 3666.87
   },
   {
     "bioguideId": "H001046",
@@ -2909,12 +2909,12 @@
       }
     ],
     "missedVotes": 1,
-    "totalVotes": 214,
+    "totalVotes": 212,
     "missedVotePct": 0.47,
     "score": 623.75,
     "scoreNormalized": 51.85,
-    "yeaVotes": 73,
-    "nayVotes": 140,
+    "yeaVotes": 75,
+    "nayVotes": 136,
     "participationPct": 99.53,
     "rawScore": 2158.53
   },
@@ -2958,15 +2958,15 @@
         "party": "minority"
       }
     ],
-    "missedVotes": 37,
-    "totalVotes": 214,
-    "missedVotePct": 17.29,
+    "missedVotes": 0,
+    "totalVotes": 212,
+    "missedVotePct": 0,
     "score": 712.44,
-    "scoreNormalized": 63.79,
-    "yeaVotes": 34,
+    "scoreNormalized": 64.21,
+    "yeaVotes": 69,
     "nayVotes": 143,
-    "participationPct": 82.71,
-    "rawScore": 2655.71
+    "participationPct": 100,
+    "rawScore": 2673
   },
   {
     "bioguideId": "G000555",
@@ -3009,12 +3009,12 @@
       }
     ],
     "missedVotes": 1,
-    "totalVotes": 214,
+    "totalVotes": 212,
     "missedVotePct": 0.47,
     "score": 447.77,
     "scoreNormalized": 40.87,
-    "yeaVotes": 69,
-    "nayVotes": 144,
+    "yeaVotes": 71,
+    "nayVotes": 140,
     "participationPct": 99.53,
     "rawScore": 1701.53
   },
@@ -3045,12 +3045,12 @@
       }
     ],
     "missedVotes": 1,
-    "totalVotes": 214,
+    "totalVotes": 212,
     "missedVotePct": 0.47,
     "score": 361.02,
     "scoreNormalized": 31.43,
-    "yeaVotes": 59,
-    "nayVotes": 154,
+    "yeaVotes": 60,
+    "nayVotes": 151,
     "participationPct": 99.53,
     "rawScore": 1308.53
   },
@@ -3095,12 +3095,12 @@
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 214,
+    "totalVotes": 212,
     "missedVotePct": 0,
     "score": 404,
     "scoreNormalized": 36.99,
-    "yeaVotes": 163,
-    "nayVotes": 51,
+    "yeaVotes": 160,
+    "nayVotes": 52,
     "participationPct": 100,
     "rawScore": 1540
   },
@@ -3151,15 +3151,15 @@
         "party": "majority"
       }
     ],
-    "missedVotes": 5,
-    "totalVotes": 214,
-    "missedVotePct": 2.34,
+    "missedVotes": 6,
+    "totalVotes": 212,
+    "missedVotePct": 2.83,
     "score": 443.32,
-    "scoreNormalized": 46.95,
-    "yeaVotes": 158,
-    "nayVotes": 51,
-    "participationPct": 97.66,
-    "rawScore": 1954.66
+    "scoreNormalized": 46.94,
+    "yeaVotes": 154,
+    "nayVotes": 52,
+    "participationPct": 97.17,
+    "rawScore": 1954.17
   },
   {
     "bioguideId": "C001096",
@@ -3201,15 +3201,15 @@
         "party": "majority"
       }
     ],
-    "missedVotes": 14,
-    "totalVotes": 214,
-    "missedVotePct": 6.54,
+    "missedVotes": 13,
+    "totalVotes": 212,
+    "missedVotePct": 6.13,
     "score": 361.49,
-    "scoreNormalized": 32.56,
-    "yeaVotes": 150,
-    "nayVotes": 50,
-    "participationPct": 93.46,
-    "rawScore": 1355.46
+    "scoreNormalized": 32.57,
+    "yeaVotes": 148,
+    "nayVotes": 51,
+    "participationPct": 93.87,
+    "rawScore": 1355.87
   },
   {
     "bioguideId": "H001061",
@@ -3252,14 +3252,14 @@
       }
     ],
     "missedVotes": 3,
-    "totalVotes": 214,
-    "missedVotePct": 1.4,
+    "totalVotes": 212,
+    "missedVotePct": 1.42,
     "score": 280.31,
     "scoreNormalized": 23.72,
-    "yeaVotes": 160,
-    "nayVotes": 51,
-    "participationPct": 98.6,
-    "rawScore": 987.6
+    "yeaVotes": 157,
+    "nayVotes": 52,
+    "participationPct": 98.58,
+    "rawScore": 987.58
   },
   {
     "bioguideId": "M001232",
@@ -3272,15 +3272,15 @@
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "committees": [],
-    "missedVotes": 7,
-    "totalVotes": 214,
-    "missedVotePct": 3.27,
+    "missedVotes": 0,
+    "totalVotes": 212,
+    "missedVotePct": 0,
     "score": 330.38,
-    "scoreNormalized": 28.03,
-    "yeaVotes": 157,
+    "scoreNormalized": 28.1,
+    "yeaVotes": 162,
     "nayVotes": 50,
-    "participationPct": 96.73,
-    "rawScore": 1166.73
+    "participationPct": 100,
+    "rawScore": 1170
   },
   {
     "bioguideId": "H001088",
@@ -3294,14 +3294,14 @@
     "becameLawCosponsoredAmendments": 0,
     "committees": [],
     "missedVotes": 0,
-    "totalVotes": 214,
+    "totalVotes": 212,
     "missedVotePct": 0,
     "score": 48.15,
     "scoreNormalized": 2.31,
-    "yeaVotes": 158,
-    "nayVotes": 48,
-    "participationPct": 96.26,
-    "rawScore": 96.26
+    "yeaVotes": 155,
+    "nayVotes": 49,
+    "participationPct": 96.23,
+    "rawScore": 96.23
   },
   {
     "bioguideId": "L000575",
@@ -3344,12 +3344,12 @@
       }
     ],
     "missedVotes": 1,
-    "totalVotes": 214,
+    "totalVotes": 212,
     "missedVotePct": 0.47,
     "score": 506.27,
     "scoreNormalized": 57.33,
-    "yeaVotes": 162,
-    "nayVotes": 51,
+    "yeaVotes": 159,
+    "nayVotes": 52,
     "participationPct": 99.53,
     "rawScore": 2386.53
   },
@@ -3393,15 +3393,15 @@
         "party": "majority"
       }
     ],
-    "missedVotes": 4,
-    "totalVotes": 214,
-    "missedVotePct": 1.87,
+    "missedVotes": 13,
+    "totalVotes": 212,
+    "missedVotePct": 6.13,
     "score": 259.07,
-    "scoreNormalized": 24.74,
-    "yeaVotes": 74,
-    "nayVotes": 136,
-    "participationPct": 98.13,
-    "rawScore": 1030.13
+    "scoreNormalized": 24.64,
+    "yeaVotes": 147,
+    "nayVotes": 52,
+    "participationPct": 93.87,
+    "rawScore": 1025.87
   },
   {
     "bioguideId": "M001176",
@@ -3444,14 +3444,14 @@
       }
     ],
     "missedVotes": 4,
-    "totalVotes": 214,
-    "missedVotePct": 1.87,
+    "totalVotes": 212,
+    "missedVotePct": 1.89,
     "score": 1004.33,
     "scoreNormalized": 103.27,
-    "yeaVotes": 50,
-    "nayVotes": 160,
-    "participationPct": 98.13,
-    "rawScore": 4299.13
+    "yeaVotes": 51,
+    "nayVotes": 157,
+    "participationPct": 98.11,
+    "rawScore": 4299.11
   },
   {
     "bioguideId": "W000779",
@@ -3486,15 +3486,15 @@
         "party": "minority"
       }
     ],
-    "missedVotes": 2,
-    "totalVotes": 214,
-    "missedVotePct": 0.93,
+    "missedVotes": 9,
+    "totalVotes": 212,
+    "missedVotePct": 4.25,
     "score": 639.66,
-    "scoreNormalized": 54.82,
-    "yeaVotes": 161,
-    "nayVotes": 51,
-    "participationPct": 99.07,
-    "rawScore": 2282.07
+    "scoreNormalized": 54.74,
+    "yeaVotes": 53,
+    "nayVotes": 150,
+    "participationPct": 95.75,
+    "rawScore": 2278.75
   },
   {
     "bioguideId": "F000479",
@@ -3536,15 +3536,15 @@
         "party": "minority"
       }
     ],
-    "missedVotes": 28,
-    "totalVotes": 214,
-    "missedVotePct": 13.08,
+    "missedVotes": 27,
+    "totalVotes": 212,
+    "missedVotePct": 12.74,
     "score": 352,
-    "scoreNormalized": 30.31,
+    "scoreNormalized": 30.32,
     "yeaVotes": 93,
-    "nayVotes": 93,
-    "participationPct": 86.92,
-    "rawScore": 1261.92
+    "nayVotes": 92,
+    "participationPct": 87.26,
+    "rawScore": 1262.26
   },
   {
     "bioguideId": "M001227",
@@ -3557,15 +3557,15 @@
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "committees": [],
-    "missedVotes": 2,
-    "totalVotes": 214,
-    "missedVotePct": 0.93,
+    "missedVotes": 0,
+    "totalVotes": 212,
+    "missedVotePct": 0,
     "score": 337.53,
-    "scoreNormalized": 29.52,
-    "yeaVotes": 62,
-    "nayVotes": 150,
-    "participationPct": 99.07,
-    "rawScore": 1229.07
+    "scoreNormalized": 27.14,
+    "yeaVotes": 0,
+    "nayVotes": 0,
+    "participationPct": 0,
+    "rawScore": 1130
   },
   {
     "bioguideId": "R000122",
@@ -3607,15 +3607,15 @@
         "party": "minority"
       }
     ],
-    "missedVotes": 1,
-    "totalVotes": 214,
-    "missedVotePct": 0.47,
+    "missedVotes": 0,
+    "totalVotes": 212,
+    "missedVotePct": 0,
     "score": 785.27,
-    "scoreNormalized": 60.4,
-    "yeaVotes": 164,
-    "nayVotes": 49,
-    "participationPct": 99.53,
-    "rawScore": 2514.53
+    "scoreNormalized": 60.41,
+    "yeaVotes": 68,
+    "nayVotes": 144,
+    "participationPct": 100,
+    "rawScore": 2515
   },
   {
     "bioguideId": "W000802",
@@ -3657,15 +3657,15 @@
         "party": "minority"
       }
     ],
-    "missedVotes": 7,
-    "totalVotes": 214,
-    "missedVotePct": 3.27,
+    "missedVotes": 2,
+    "totalVotes": 212,
+    "missedVotePct": 0.94,
     "score": 591.65,
-    "scoreNormalized": 59.11,
-    "yeaVotes": 65,
-    "nayVotes": 142,
-    "participationPct": 96.73,
-    "rawScore": 2460.73
+    "scoreNormalized": 59.17,
+    "yeaVotes": 66,
+    "nayVotes": 144,
+    "participationPct": 99.06,
+    "rawScore": 2463.06
   },
   {
     "bioguideId": "G000359",
@@ -3700,15 +3700,15 @@
         "party": "majority"
       }
     ],
-    "missedVotes": 7,
-    "totalVotes": 214,
-    "missedVotePct": 3.27,
+    "missedVotes": 6,
+    "totalVotes": 212,
+    "missedVotePct": 2.83,
     "score": 260.13,
-    "scoreNormalized": 29.04,
-    "yeaVotes": 156,
-    "nayVotes": 51,
-    "participationPct": 96.73,
-    "rawScore": 1208.73
+    "scoreNormalized": 29.05,
+    "yeaVotes": 154,
+    "nayVotes": 52,
+    "participationPct": 97.17,
+    "rawScore": 1209.17
   },
   {
     "bioguideId": "S001184",
@@ -3743,15 +3743,15 @@
         "party": "majority"
       }
     ],
-    "missedVotes": 27,
-    "totalVotes": 214,
-    "missedVotePct": 12.62,
+    "missedVotes": 0,
+    "totalVotes": 212,
+    "missedVotePct": 0,
     "score": 306.73,
-    "scoreNormalized": 40.48,
-    "yeaVotes": 54,
-    "nayVotes": 133,
-    "participationPct": 87.38,
-    "rawScore": 1685.38
+    "scoreNormalized": 40.79,
+    "yeaVotes": 160,
+    "nayVotes": 52,
+    "participationPct": 100,
+    "rawScore": 1698
   },
   {
     "bioguideId": "R000605",
@@ -3807,15 +3807,15 @@
         "party": "majority"
       }
     ],
-    "missedVotes": 0,
-    "totalVotes": 214,
-    "missedVotePct": 0,
+    "missedVotes": 1,
+    "totalVotes": 212,
+    "missedVotePct": 0.47,
     "score": 333.5,
-    "scoreNormalized": 43.31,
-    "yeaVotes": 0,
-    "nayVotes": 0,
-    "participationPct": 0,
-    "rawScore": 1803
+    "scoreNormalized": 45.7,
+    "yeaVotes": 159,
+    "nayVotes": 52,
+    "participationPct": 99.53,
+    "rawScore": 1902.53
   },
   {
     "bioguideId": "T000250",
@@ -3857,15 +3857,15 @@
         "party": "majority"
       }
     ],
-    "missedVotes": 0,
-    "totalVotes": 214,
-    "missedVotePct": 0,
+    "missedVotes": 1,
+    "totalVotes": 212,
+    "missedVotePct": 0.47,
     "score": 280.5,
-    "scoreNormalized": 34.42,
-    "yeaVotes": 0,
-    "nayVotes": 0,
-    "participationPct": 0,
-    "rawScore": 1433
+    "scoreNormalized": 36.81,
+    "yeaVotes": 159,
+    "nayVotes": 52,
+    "participationPct": 99.53,
+    "rawScore": 1532.53
   },
   {
     "bioguideId": "B001243",
@@ -3914,15 +3914,15 @@
         "party": "majority"
       }
     ],
-    "missedVotes": 1,
-    "totalVotes": 214,
-    "missedVotePct": 0.47,
+    "missedVotes": 3,
+    "totalVotes": 212,
+    "missedVotePct": 1.42,
     "score": 615.27,
-    "scoreNormalized": 82.33,
-    "yeaVotes": 163,
-    "nayVotes": 50,
-    "participationPct": 99.53,
-    "rawScore": 3427.53
+    "scoreNormalized": 82.31,
+    "yeaVotes": 158,
+    "nayVotes": 51,
+    "participationPct": 98.58,
+    "rawScore": 3426.58
   },
   {
     "bioguideId": "H000601",
@@ -3965,14 +3965,14 @@
       }
     ],
     "missedVotes": 4,
-    "totalVotes": 214,
-    "missedVotePct": 1.87,
+    "totalVotes": 212,
+    "missedVotePct": 1.89,
     "score": 276.57,
     "scoreNormalized": 29.36,
-    "yeaVotes": 162,
-    "nayVotes": 48,
-    "participationPct": 98.13,
-    "rawScore": 1222.13
+    "yeaVotes": 159,
+    "nayVotes": 49,
+    "participationPct": 98.11,
+    "rawScore": 1222.11
   },
   {
     "bioguideId": "C001056",
@@ -4015,12 +4015,12 @@
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 214,
+    "totalVotes": 212,
     "missedVotePct": 0,
     "score": 654.75,
     "scoreNormalized": 88.76,
-    "yeaVotes": 164,
-    "nayVotes": 50,
+    "yeaVotes": 161,
+    "nayVotes": 51,
     "participationPct": 100,
     "rawScore": 3695
   },
@@ -4065,14 +4065,14 @@
       }
     ],
     "missedVotes": 11,
-    "totalVotes": 214,
-    "missedVotePct": 5.14,
+    "totalVotes": 212,
+    "missedVotePct": 5.19,
     "score": 668.96,
     "scoreNormalized": 88.18,
-    "yeaVotes": 154,
-    "nayVotes": 49,
-    "participationPct": 94.86,
-    "rawScore": 3670.86
+    "yeaVotes": 151,
+    "nayVotes": 50,
+    "participationPct": 94.81,
+    "rawScore": 3670.81
   },
   {
     "bioguideId": "C001114",
@@ -4108,7 +4108,7 @@
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 214,
+    "totalVotes": 212,
     "missedVotePct": 0,
     "score": 219,
     "scoreNormalized": 16.24,
@@ -4151,12 +4151,12 @@
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 214,
+    "totalVotes": 212,
     "missedVotePct": 0,
     "score": 785.78,
     "scoreNormalized": 86.57,
-    "yeaVotes": 164,
-    "nayVotes": 50,
+    "yeaVotes": 161,
+    "nayVotes": 51,
     "participationPct": 100,
     "rawScore": 3604
   },
@@ -4193,15 +4193,15 @@
         "party": "minority"
       }
     ],
-    "missedVotes": 3,
-    "totalVotes": 214,
-    "missedVotePct": 1.4,
+    "missedVotes": 2,
+    "totalVotes": 212,
+    "missedVotePct": 0.94,
     "score": 849.78,
-    "scoreNormalized": 74.22,
+    "scoreNormalized": 74.23,
     "yeaVotes": 86,
-    "nayVotes": 125,
-    "participationPct": 98.6,
-    "rawScore": 3089.6
+    "nayVotes": 124,
+    "participationPct": 99.06,
+    "rawScore": 3090.06
   },
   {
     "bioguideId": "W000805",
@@ -4244,14 +4244,14 @@
       }
     ],
     "missedVotes": 5,
-    "totalVotes": 214,
-    "missedVotePct": 2.34,
+    "totalVotes": 212,
+    "missedVotePct": 2.36,
     "score": 638.1,
     "scoreNormalized": 51.04,
-    "yeaVotes": 91,
+    "yeaVotes": 89,
     "nayVotes": 118,
-    "participationPct": 97.66,
-    "rawScore": 2124.66
+    "participationPct": 97.64,
+    "rawScore": 2124.64
   },
   {
     "bioguideId": "M001111",
@@ -4286,15 +4286,15 @@
         "party": "minority"
       }
     ],
-    "missedVotes": 1,
-    "totalVotes": 214,
-    "missedVotePct": 0.47,
+    "missedVotes": 37,
+    "totalVotes": 212,
+    "missedVotePct": 17.45,
     "score": 464.27,
-    "scoreNormalized": 40.37,
-    "yeaVotes": 162,
-    "nayVotes": 51,
-    "participationPct": 99.53,
-    "rawScore": 1680.53
+    "scoreNormalized": 39.96,
+    "yeaVotes": 34,
+    "nayVotes": 141,
+    "participationPct": 82.55,
+    "rawScore": 1663.55
   },
   {
     "bioguideId": "C000127",
@@ -4337,12 +4337,12 @@
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 214,
+    "totalVotes": 212,
     "missedVotePct": 0,
     "score": 414.75,
     "scoreNormalized": 32.12,
     "yeaVotes": 66,
-    "nayVotes": 148,
+    "nayVotes": 146,
     "participationPct": 100,
     "rawScore": 1337
   },
@@ -4387,14 +4387,14 @@
       }
     ],
     "missedVotes": 3,
-    "totalVotes": 214,
-    "missedVotePct": 1.4,
+    "totalVotes": 212,
+    "missedVotePct": 1.42,
     "score": 363.06,
-    "scoreNormalized": 32.52,
-    "yeaVotes": 160,
-    "nayVotes": 51,
-    "participationPct": 98.6,
-    "rawScore": 1353.6
+    "scoreNormalized": 32.51,
+    "yeaVotes": 157,
+    "nayVotes": 52,
+    "participationPct": 98.58,
+    "rawScore": 1353.58
   },
   {
     "bioguideId": "J000312",
@@ -4430,7 +4430,7 @@
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 214,
+    "totalVotes": 212,
     "missedVotePct": 0,
     "score": 113,
     "scoreNormalized": 16.72,
@@ -4473,14 +4473,14 @@
       }
     ],
     "missedVotes": 0,
-    "totalVotes": 214,
+    "totalVotes": 212,
     "missedVotePct": 0,
     "score": 506.03,
     "scoreNormalized": 45.14,
     "yeaVotes": 65,
-    "nayVotes": 147,
-    "participationPct": 99.07,
-    "rawScore": 1879.07
+    "nayVotes": 145,
+    "participationPct": 99.06,
+    "rawScore": 1879.06
   },
   {
     "bioguideId": "J000293",
@@ -4516,12 +4516,12 @@
       }
     ],
     "missedVotes": 1,
-    "totalVotes": 214,
+    "totalVotes": 212,
     "missedVotePct": 0.47,
     "score": 170.77,
     "scoreNormalized": 17.38,
-    "yeaVotes": 164,
-    "nayVotes": 49,
+    "yeaVotes": 161,
+    "nayVotes": 50,
     "participationPct": 99.53,
     "rawScore": 723.53
   },
@@ -4559,14 +4559,14 @@
       }
     ],
     "missedVotes": 3,
-    "totalVotes": 214,
-    "missedVotePct": 1.4,
+    "totalVotes": 212,
+    "missedVotePct": 1.42,
     "score": 327.53,
     "scoreNormalized": 35.73,
-    "yeaVotes": 161,
-    "nayVotes": 50,
-    "participationPct": 98.6,
-    "rawScore": 1487.6
+    "yeaVotes": 158,
+    "nayVotes": 51,
+    "participationPct": 98.58,
+    "rawScore": 1487.58
   },
   {
     "bioguideId": "L000571",
@@ -4601,15 +4601,15 @@
         "party": "majority"
       }
     ],
-    "missedVotes": 0,
-    "totalVotes": 214,
-    "missedVotePct": 0,
+    "missedVotes": 16,
+    "totalVotes": 212,
+    "missedVotePct": 7.55,
     "score": 384,
-    "scoreNormalized": 41.2,
-    "yeaVotes": 0,
-    "nayVotes": 0,
-    "participationPct": 0,
-    "rawScore": 1715
+    "scoreNormalized": 43.42,
+    "yeaVotes": 147,
+    "nayVotes": 49,
+    "participationPct": 92.45,
+    "rawScore": 1807.45
   },
   {
     "bioguideId": "S000033",
@@ -4651,15 +4651,15 @@
         "party": "minority"
       }
     ],
-    "missedVotes": 8,
-    "totalVotes": 214,
-    "missedVotePct": 3.74,
+    "missedVotes": 27,
+    "totalVotes": 212,
+    "missedVotePct": 12.74,
     "score": 447.67,
-    "scoreNormalized": 44.47,
-    "yeaVotes": 155,
-    "nayVotes": 51,
-    "participationPct": 96.26,
-    "rawScore": 1851.26
+    "scoreNormalized": 44.25,
+    "yeaVotes": 55,
+    "nayVotes": 130,
+    "participationPct": 87.26,
+    "rawScore": 1842.26
   },
   {
     "bioguideId": "W000800",
@@ -4701,14 +4701,14 @@
         "party": "minority"
       }
     ],
-    "missedVotes": 3,
-    "totalVotes": 214,
-    "missedVotePct": 1.4,
+    "missedVotes": 5,
+    "totalVotes": 212,
+    "missedVotePct": 2.36,
     "score": 988.01,
-    "scoreNormalized": 86.13,
-    "yeaVotes": 59,
-    "nayVotes": 152,
-    "participationPct": 98.6,
-    "rawScore": 3585.6
+    "scoreNormalized": 86.11,
+    "yeaVotes": 64,
+    "nayVotes": 143,
+    "participationPct": 97.64,
+    "rawScore": 3584.64
   }
 ]
