@@ -50,7 +50,7 @@ async function main() {
     fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
     console.log('Merge complete: ' + rankings.length + ' senators total');
     console.log('- Legislation merged for ' + rankings.filter(s => s.sponsoredBills !== undefined).length + ' senators');
-    console.log('- Votes merged for ' + rankings.filter(s => s.yeaVotes !== undefined && s.yeaVotes > 0).length + ' senators');
+    console.log('- Votes merged for ' + rankings.filter(s => s.totalVotes > 0).length + ' senators (with any vote data)');
   } catch (err) {
     console.error('Write error:', err.message);
   }
