@@ -1,5 +1,6 @@
 // scripts/committee-reps-scraper.js
-// Purpose: Map House committees from public/house-committees-current.json into representatives-rankings.json
+// Purpose: Map House committees (object keyed by committee code) into representatives-rankings.json
+// Explicitly parse "Chairman" and "Ranking Member" roles
 
 const fs = require('fs');
 const path = require('path');
@@ -14,35 +15,37 @@ function ensureCommitteesShape(rep) {
 
 (function main() {
   const reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureCommitteesShape);
-  const committeesData = JSON.parse(fs.readFileSync(COMMITTEES_PATH, 'utf-8'));
+  const committeesDataRaw = JSON.parse(fs.readFileSync(COMMITTEES_PATH, 'utf-8'));
 
   const repMap = new Map(reps.map(r => [r.bioguideId, r]));
 
-  // Expected committeesData shape:
-  // [
-  //   {
-  //     committee: "HSAP",
-  //     committeeName: "Appropriations",
-  //     members: [
-  //       { bioguideId: "A000055", role: "Member", rank: 12, party: "majority" },
-  //       ...
-  //     ]
-  //   },
-  //   ...
-  // ]
-  for (const entry of committeesData) {
-    const { committee, committeeName, members } = entry;
+  // committeesDataRaw is an object keyed by committee code, each value is an array of members
+  for (const [committeeCode, members] of Object.entries(committeesDataRaw)) {
     if (!Array.isArray(members)) continue;
 
     for (const m of members) {
-      const bio = m.bioguideId;
+      const bio = m.bioguide;
       if (!bio || !repMap.has(bio)) continue;
 
       const rep = repMap.get(bio);
+
+      // Normalize role
+      let role = 'Member';
+      if (m.title) {
+        const t = m.title.toLowerCase();
+        if (t.includes('chairman')) {
+          role = 'Chairman';
+        } else if (t.includes('ranking')) {
+          role = 'Ranking Member';
+        } else {
+          role = m.title;
+        }
+      }
+
       rep.committees.push({
-        committee,
-        committeeName,
-        role: m.role || 'Member',
+        committee: committeeCode,
+        committeeName: m.committeeName || committeeCode, // plug in a lookup table if you have one
+        role,
         rank: m.rank ?? null,
         party: m.party || null
       });
