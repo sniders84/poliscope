@@ -1,119 +1,89 @@
-// scripts/house-votes-scraper.js
+// scripts/votes-reps-scraper.js
+// Purpose: Fetch and parse House roll call votes from clerk.house.gov XML using xml2js
+
 const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
-const xml2js = require('xml2js').parseStringPromise;
+const xml2js = require('xml2js');
 
-const REPS_PATH = path.join(__dirname, '../public/representatives-rankings.json');
+const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
+const YEAR = 2025;
+const BASE_URL = `https://clerk.house.gov/evs/${YEAR}/`;
 
-const HOUSE_YEARS = [2025, 2026];
-const MAX_VOTES_PER_YEAR = 2000; // safety
-
-async function fetchHouseVote(year, rollNum) {
-  const padded = rollNum.toString().padStart(3, '0');
-  const url = `https://clerk.house.gov/evs/${year}/roll${padded}.xml`;
-  try {
-    const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' } });
-    if (!res.ok) return null;
-    const xml = await res.text();
-    return await xml2js(xml, { trim: true, explicitArray: false });
-  } catch {
-    return null;
-  }
+function ensureRepShape(rep) {
+  return {
+    name: rep.name,
+    bioguideId: rep.bioguideId,
+    state: rep.state,
+    party: rep.party,
+    office: rep.office || 'Representative',
+    sponsoredBills: rep.sponsoredBills || 0,
+    cosponsoredBills: rep.cosponsoredBills || 0,
+    sponsoredAmendments: rep.sponsoredAmendments || 0,
+    cosponsoredAmendments: rep.cosponsoredAmendments || 0,
+    yeaVotes: rep.yeaVotes || 0,
+    nayVotes: rep.nayVotes || 0,
+    missedVotes: rep.missedVotes || 0,
+    totalVotes: rep.totalVotes || 0,
+    committees: Array.isArray(rep.committees) ? rep.committees : [],
+    participationPct: rep.participationPct || 0,
+    missedVotePct: rep.missedVotePct || 0,
+    rawScore: rep.rawScore || 0,
+    scoreNormalized: rep.scoreNormalized || 0,
+  };
 }
 
-async function parseHouseVoteCounts(parsed, repMap, voteId) {
-  const members = parsed?.rollcallvote?.members?.member || [];
-  const yea = [];
-  const nay = [];
-  const notVoting = [];
-  const unmatched = [];
-  const seen = new Set();
+function indexByBioguide(list) {
+  const map = new Map();
+  list.forEach(r => {
+    if (r.bioguideId) map.set(r.bioguideId, r);
+  });
+  return map;
+}
 
-  members.forEach(m => {
-    const voteCast = (m.vote || 'Unknown').trim();
-    const bioguideId = m.bioguideID?.trim();
-    if (!bioguideId || seen.has(bioguideId)) return;
-    seen.add(bioguideId);
+async function fetchRollCall(num) {
+  const url = `${BASE_URL}roll${String(num).padStart(3, '0')}.xml`;
+  const res = await fetch(url);
+  if (!res.ok) return null;
+  const xml = await res.text();
+  return xml2js.parseStringPromise(xml);
+}
 
-    if (repMap.has(bioguideId)) {
-      const name = repMap.get(bioguideId).name;
-      if (voteCast === 'Yea') yea.push(name);
-      else if (voteCast === 'Nay') nay.push(name);
-      else if (voteCast === 'Not Voting') notVoting.push(name);
-    } else if (voteCast !== 'Unknown') {
-      unmatched.push(`${m.name || 'unknown'} (${bioguideId || '?'}, ${voteCast})`);
+(async function main() {
+  const reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureRepShape);
+  const repMap = indexByBioguide(reps);
+
+  let processed = 0;
+  for (let i = 1; i <= 300; i++) {
+    const doc = await fetchRollCall(i);
+    if (!doc) continue;
+
+    const votes = doc?.rollcall_vote?.vote_data?.[0]?.recorded_vote || [];
+    votes.forEach(v => {
+      const legislator = v.legislator?.[0]?.$ || {};
+      const bioguideId = legislator.bioGuideID;
+      const choice = v.vote?.[0];
+
+      if (!bioguideId || !repMap.has(bioguideId)) return;
+      const rep = repMap.get(bioguideId);
+      rep.totalVotes++;
+      if (choice === 'Yea') rep.yeaVotes++;
+      else if (choice === 'Nay') rep.nayVotes++;
+      else rep.missedVotes++;
+    });
+    processed++;
+  }
+
+  reps.forEach(r => {
+    if (r.totalVotes > 0) {
+      r.participationPct = ((r.yeaVotes + r.nayVotes) / r.totalVotes * 100).toFixed(2);
+      r.missedVotePct = ((r.missedVotes / r.totalVotes) * 100).toFixed(2);
     }
   });
 
-  console.log(`House Vote ${voteId}: ${yea.length} Yea, ${nay.length} Nay, ${notVoting.length} Not Voting`);
-
-  if (unmatched.length > 0) {
-    console.log(`Unmatched in ${voteId}: ${unmatched.slice(0,5).join(', ')}... (total unmatched: ${unmatched.length})`);
-  }
-
-  return { yea, nay, notVoting };
-}
-
-async function main() {
-  console.log('House votes scraper: Bioguide ID matching, 119th Congress');
-
-  let rankings;
-  try {
-    rankings = JSON.parse(fs.readFileSync(REPS_PATH, 'utf8'));
-  } catch (err) {
-    console.error('Failed to load representatives-rankings.json:', err.message);
-    return;
-  }
-
-  const repMap = new Map();
-  rankings.forEach(rep => {
-    if (rep.bioguideId) repMap.set(rep.bioguideId, rep);
-  });
-
-  const voteCounts = { yea: {}, nay: {}, notVoting: {} };
-  rankings.forEach(r => {
-    voteCounts.yea[r.name] = 0;
-    voteCounts.nay[r.name] = 0;
-    voteCounts.notVoting[r.name] = 0;
-  });
-
-  let totalProcessed = 0;
-
-  for (const year of HOUSE_YEARS) {
-    for (let num = 1; num <= MAX_VOTES_PER_YEAR; num++) {
-      const parsed = await fetchHouseVote(year, num);
-      if (!parsed) {
-        console.log(`No more votes found after roll ${num-1} in ${year}`);
-        break;
-      }
-      totalProcessed++;
-      const voteId = `${year}-roll${num}`;
-      const counts = await parseHouseVoteCounts(parsed, repMap, voteId);
-      counts.yea.forEach(n => voteCounts.yea[n]++);
-      counts.nay.forEach(n => voteCounts.nay[n]++);
-      counts.notVoting.forEach(n => voteCounts.notVoting[n]++);
-    }
-  }
-
-  rankings.forEach(rep => {
-    const yea = voteCounts.yea[rep.name] || 0;
-    const nay = voteCounts.nay[rep.name] || 0;
-    const missed = voteCounts.notVoting[rep.name] || 0;
-    rep.yeaVotes = yea;
-    rep.nayVotes = nay;
-    rep.missedVotes = missed;
-    rep.totalVotes = totalProcessed;
-    rep.missedVotePct = totalProcessed > 0 ? +((missed / totalProcessed) * 100).toFixed(2) : 0;
-    rep.participationPct = totalProcessed > 0 ? +(((yea + nay) / totalProcessed) * 100).toFixed(2) : 0;
-  });
-
-  try {
-    fs.writeFileSync(REPS_PATH, JSON.stringify(rankings, null, 2));
-    console.log(`House votes updated: ${totalProcessed} roll calls processed`);
-  } catch (err) {
-    console.error('Write error:', err.message);
-  }
-}
-
-main().catch(err => console.error('House votes failed:', err.message));
+  fs.writeFileSync(OUT_PATH, JSON.stringify(reps, null, 2));
+  console.log(`House votes updated: ${processed} roll calls processed`);
+})().catch(err => {
+  console.error('House votes scraper failed:', err);
+  process.exit(1);
+});
