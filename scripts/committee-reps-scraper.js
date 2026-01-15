@@ -2,23 +2,24 @@ const fs = require('fs');
 const path = require('path');
 
 const REPS_PATH = path.join(__dirname, '../public/representatives-rankings.json');
-const COMMITTEES_PATH = path.join(__dirname, '../public/house-committees-current.json'); 
-// adjust if your committee source file has a different name
+const COMMITTEES_PATH = path.join(__dirname, '../public/house-committees-current.json');
 
 function updateCommittees() {
-  let reps, committees;
-  try {
-    reps = JSON.parse(fs.readFileSync(REPS_PATH, 'utf8'));
-    committees = JSON.parse(fs.readFileSync(COMMITTEES_PATH, 'utf8'));
-  } catch (err) {
-    console.error('Failed to load input files:', err.message);
-    process.exit(1);
-  }
+  const reps = JSON.parse(fs.readFileSync(REPS_PATH, 'utf8'));
+  const committees = JSON.parse(fs.readFileSync(COMMITTEES_PATH, 'utf8'));
 
-  // Build lookup keyed by bioguideId
+  // Normalize committees into an array
+  const committeeArray = Array.isArray(committees)
+    ? committees
+    : Object.entries(committees).map(([code, data]) => ({
+        code,
+        name: data.name,
+        members: data.members || []
+      }));
+
   const committeeLookup = {};
-  committees.forEach(c => {
-    (c.members || []).forEach(m => {
+  committeeArray.forEach(c => {
+    c.members.forEach(m => {
       if (!m.bioguideId) return;
       if (!committeeLookup[m.bioguideId]) committeeLookup[m.bioguideId] = [];
       committeeLookup[m.bioguideId].push({
@@ -31,7 +32,6 @@ function updateCommittees() {
     });
   });
 
-  // Attach all committees to each rep
   reps.forEach(rep => {
     rep.committees = committeeLookup[rep.bioguideId] || [];
   });
