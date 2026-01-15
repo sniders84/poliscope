@@ -1,16 +1,17 @@
+// scripts/house-votes-scraper.js
 const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
 const xml2js = require('xml2js').parseStringPromise;
 
-const RANKINGS_PATH = path.join(__dirname, '../public/representatives-rankings.json');
+const REPS_PATH = path.join(__dirname, '../public/representatives-rankings.json');
 
-// Start from known first vote of 119th House
-const START_YEAR = 2025;
-const MAX_VOTES_PER_YEAR = 2000; // safety upper limit
+const HOUSE_YEARS = [2025, 2026];
+const MAX_VOTES_PER_YEAR = 2000; // safety
 
-async function fetchHouseVote(year, rollNumber) {
-  const url = `https://clerk.house.gov/evs/${year}/roll${rollNumber.toString().padStart(3, '0')}.xml`;
+async function fetchHouseVote(year, rollNum) {
+  const padded = rollNum.toString().padStart(3, '0');
+  const url = `https://clerk.house.gov/evs/${year}/roll${padded}.xml`;
   try {
     const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' } });
     if (!res.ok) return null;
@@ -30,27 +31,25 @@ async function parseHouseVoteCounts(parsed, repMap, voteId) {
   const seen = new Set();
 
   members.forEach(m => {
-    const voteCast = m.vote?.trim() || 'Unknown';
+    const voteCast = (m.vote || 'Unknown').trim();
     const bioguideId = m.bioguideID?.trim();
-    const name = m.name?.trim();
-
     if (!bioguideId || seen.has(bioguideId)) return;
     seen.add(bioguideId);
 
     if (repMap.has(bioguideId)) {
-      const repName = repMap.get(bioguideId).name;
-      if (voteCast === 'Yea') yea.push(repName);
-      else if (voteCast === 'Nay') nay.push(repName);
-      else if (voteCast === 'Not Voting') notVoting.push(repName);
+      const name = repMap.get(bioguideId).name;
+      if (voteCast === 'Yea') yea.push(name);
+      else if (voteCast === 'Nay') nay.push(name);
+      else if (voteCast === 'Not Voting') notVoting.push(name);
     } else if (voteCast !== 'Unknown') {
-      unmatched.push(`${name || 'unknown'} (${bioguideId || '?'}, ${voteCast})`);
+      unmatched.push(`${m.name || 'unknown'} (${bioguideId || '?'}, ${voteCast})`);
     }
   });
 
   console.log(`House Vote ${voteId}: ${yea.length} Yea, ${nay.length} Nay, ${notVoting.length} Not Voting`);
 
-  if (unmatched.length > 0 && unmatched.length > 5) {
-    console.log(`Unmatched in ${voteId}: ${unmatched.slice(0, 5).join(', ')}... (total unmatched: ${unmatched.length})`);
+  if (unmatched.length > 0) {
+    console.log(`Unmatched in ${voteId}: ${unmatched.slice(0,5).join(', ')}... (total unmatched: ${unmatched.length})`);
   }
 
   return { yea, nay, notVoting };
@@ -61,7 +60,7 @@ async function main() {
 
   let rankings;
   try {
-    rankings = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf8'));
+    rankings = JSON.parse(fs.readFileSync(REPS_PATH, 'utf8'));
   } catch (err) {
     console.error('Failed to load representatives-rankings.json:', err.message);
     return;
@@ -72,11 +71,7 @@ async function main() {
     if (rep.bioguideId) repMap.set(rep.bioguideId, rep);
   });
 
-  const voteCounts = {
-    yea: {},
-    nay: {},
-    notVoting: {}
-  };
+  const voteCounts = { yea: {}, nay: {}, notVoting: {} };
   rankings.forEach(r => {
     voteCounts.yea[r.name] = 0;
     voteCounts.nay[r.name] = 0;
@@ -85,23 +80,19 @@ async function main() {
 
   let totalProcessed = 0;
 
-  // Loop over years and vote numbers
-  for (const year of [2025, 2026]) {
+  for (const year of HOUSE_YEARS) {
     for (let num = 1; num <= MAX_VOTES_PER_YEAR; num++) {
       const parsed = await fetchHouseVote(year, num);
       if (!parsed) {
-        // Stop when we hit 404 / no more votes for this year
         console.log(`No more votes found after roll ${num-1} in ${year}`);
         break;
       }
-
       totalProcessed++;
       const voteId = `${year}-roll${num}`;
       const counts = await parseHouseVoteCounts(parsed, repMap, voteId);
-
-      counts.yea.forEach(name => voteCounts.yea[name]++);
-      counts.nay.forEach(name => voteCounts.nay[name]++);
-      counts.notVoting.forEach(name => voteCounts.notVoting[name]++);
+      counts.yea.forEach(n => voteCounts.yea[n]++);
+      counts.nay.forEach(n => voteCounts.nay[n]++);
+      counts.notVoting.forEach(n => voteCounts.notVoting[n]++);
     }
   }
 
@@ -118,7 +109,7 @@ async function main() {
   });
 
   try {
-    fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
+    fs.writeFileSync(REPS_PATH, JSON.stringify(rankings, null, 2));
     console.log(`House votes updated: ${totalProcessed} roll calls processed`);
   } catch (err) {
     console.error('Write error:', err.message);
