@@ -1,108 +1,75 @@
-/**
- * Senators Scores Calculator
- * - Reads public/senators-rankings.json
- * - Computes composite score using legislation, committees, missed votes, and participation
- * - Adds participation bonus based on Yea + Nay percentage
- * - Updates senators-rankings.json directly with score and normalized score
- */
 const fs = require('fs');
 const path = require('path');
 
 const RANKINGS_PATH = path.join(__dirname, '../public/senators-rankings.json');
 
-// Updated weights with participation bonus
-const WEIGHTS = {
-  sponsoredBills: 2.0,               // Sponsored bills/resolutions
-  cosponsoredBills: 1.0,             // Cosponsored bills/resolutions
-  sponsoredAmendments: 1.5,          // Sponsored amendments (higher effort)
-  cosponsoredAmendments: 0.75,       // Cosponsored amendments
-  committeeLeadershipBonus: 5.0,     // Chairman / Ranking Member
-  committeeMembershipBonus: 1.0,     // Regular member
-  missedVotePenaltyPerPct: 0.75,     // Increased penalty per 1% missed
-  participationBonusPerPct: 0.5      // NEW: Bonus per 1% of votes cast (Yea + Nay)
-};
-
-function safeNum(n) {
-  return typeof n === 'number' && !isNaN(n) ? n : 0;
-}
-
-function isLeadership(role) {
-  if (!role) return false;
-  const lower = role.toLowerCase();
-  return lower.includes('chair') ||
-         lower.includes('ranking') ||
-         lower.includes('vice chair') ||
-         lower.includes('chairman') ||
-         lower.includes('ranking member');
-}
-
-function computeScore(sen) {
-  const sponsoredLeg = safeNum(sen.sponsoredBills) + safeNum(sen.sponsoredAmendments);
-  const cosponsoredLeg = safeNum(sen.cosponsoredBills) + safeNum(sen.cosponsoredAmendments);
-
-  const committees = Array.isArray(sen.committees) ? sen.committees : [];
-  let committeeMemberships = committees.length;
-  let committeeLeaderships = 0;
-  for (const c of committees) {
-    if (isLeadership(c.role)) committeeLeaderships++;
-  }
-
-  const totalVotes = safeNum(sen.totalVotes);
-  const missedPct = totalVotes > 0 ? (safeNum(sen.missedVotes) / totalVotes) * 100 : 0;
-  const participationPct = safeNum(sen.participationPct) || 0; // From votes scraper
-
-  const rawScore =
-    sponsoredLeg * WEIGHTS.sponsoredBills +
-    cosponsoredLeg * WEIGHTS.cosponsoredBills +
-    safeNum(sen.sponsoredAmendments) * WEIGHTS.sponsoredAmendments +
-    safeNum(sen.cosponsoredAmendments) * WEIGHTS.cosponsoredAmendments +
-    committeeLeaderships * WEIGHTS.committeeLeadershipBonus +
-    committeeMemberships * WEIGHTS.committeeMembershipBonus +
-    participationPct * WEIGHTS.participationBonusPerPct -  // NEW bonus
-    missedPct * WEIGHTS.missedVotePenaltyPerPct;
-
-  return +rawScore.toFixed(2);
-}
-
-function run() {
-  if (!fs.existsSync(RANKINGS_PATH)) {
-    console.log('No senators-rankings.json found, skipping scores.');
-    return;
-  }
+async function main() {
+  console.log('Scoring senators based on legislation + votes');
 
   let rankings;
   try {
     rankings = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf8'));
   } catch (err) {
-    console.error('Failed to parse rankings.json:', err.message);
+    console.error('Failed to load senators-rankings.json:', err.message);
     return;
   }
 
-  const scores = rankings.map(sen => computeScore(sen));
+  const maxRaw = Math.max(...rankings.map(s => s.rawScore || 0), 1); // avoid division by zero
 
-  // Find min/max for normalization (ignore pure zeros if possible)
-  const validScores = scores.filter(s => s !== 0);
-  const maxScore = validScores.length > 0 ? Math.max(...validScores) : 1;
-  const minScore = validScores.length > 0 ? Math.min(...validScores) : 0;
-  const span = Math.max(1, maxScore - minScore);
+  rankings.forEach(sen => {
+    // Ensure vote fields are numbers
+    const yea = Number(sen.yeaVotes) || 0;
+    const nay = Number(sen.nayVotes) || 0;
+    const missed = Number(sen.missedVotes) || 0;
+    const total = Number(sen.totalVotes) || 0;
 
-  rankings.forEach((sen, idx) => {
-    const raw = scores[idx];
-    sen.score = raw;
-    sen.scoreNormalized = span > 0 ? +(((raw - minScore) / span) * 100).toFixed(2) : 0;
+    sen.yeaVotes = yea;
+    sen.nayVotes = nay;
+    sen.missedVotes = missed;
+    sen.totalVotes = total;
 
-    // Extra logging for visibility
-    console.log(`Scored ${sen.name}: raw ${raw.toFixed(2)}, normalized ${sen.scoreNormalized} | ` +
-                `Participation: ${sen.participationPct || 0}%, Missed: ${sen.missedVotePct || 0}%`);
+    // Participation: votes cast / total possible votes
+    sen.participationPct = total > 0 
+      ? Math.min(100, +(((yea + nay) / total) * 100).toFixed(2)) 
+      : 0;
+
+    sen.missedVotePct = total > 0 
+      ? +((missed / total) * 100).toFixed(2) 
+      : 0;
+
+    // Example raw score calculation (adjust weights as needed)
+    // This is just a placeholder — replace with your actual scoring logic
+    const legScore = (sen.sponsoredBills || 0) * 10 +
+                     (sen.cosponsoredBills || 0) * 2 +
+                     (sen.becameLawBills || 0) * 50 +
+                     (sen.sponsoredAmendments || 0) * 5 +
+                     (sen.cosponsoredAmendments || 0) * 1 +
+                     (sen.becameLawAmendments || 0) * 30;
+
+    // Add voting participation bonus (up to 100 points)
+    const voteBonus = sen.participationPct * 1;
+
+    sen.rawScore = legScore + voteBonus;
+    sen.scoreNormalized = maxRaw > 0 ? +((sen.rawScore / maxRaw) * 100).toFixed(2) : 0;
+
+    console.log(`Scored ${sen.name}: raw ${sen.rawScore.toFixed(2)}, normalized ${sen.scoreNormalized} | Participation: ${sen.participationPct}%, Missed: ${sen.missedVotePct}%`);
+  });
+
+  // Log a few examples to verify
+  ['Ted Cruz', 'Angela Alsobrooks', 'Ben Ray Luján', 'Peter Welch'].forEach(name => {
+    const sen = rankings.find(s => s.name === name);
+    if (sen) {
+      console.log(`Final - ${name}: yea=${sen.yeaVotes}, nay=${sen.nayVotes}, missed=${sen.missedVotes}, total=${sen.totalVotes}, part=${sen.participationPct}%`);
+    }
   });
 
   try {
     fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
-    console.log(`Updated senators-rankings.json with scores for ${rankings.length} senators`);
-    console.log('New fields added/used: yeaVotes, nayVotes, participationPct, score');
+    console.log('Updated senators-rankings.json with scores for ' + rankings.length + ' senators');
+    console.log('New fields added/used: yeaVotes, nayVotes, missedVotes, totalVotes, participationPct, rawScore, scoreNormalized');
   } catch (err) {
-    console.error('Failed to write rankings.json:', err.message);
+    console.error('Write error:', err.message);
   }
 }
 
-run();
+main().catch(err => console.error('Scoring failed:', err.message));
