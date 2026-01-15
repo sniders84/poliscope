@@ -14,10 +14,19 @@ async function main() {
     return;
   }
 
-  const maxRaw = Math.max(...rankings.map(s => s.rawScore || 0), 1); // avoid division by zero
+  // Find the maximum raw legislative score to normalize properly
+  const maxLegScore = Math.max(...rankings.map(s => {
+    return (
+      (s.sponsoredBills || 0) * 20 +
+      (s.cosponsoredBills || 0) * 3 +
+      (s.becameLawBills || 0) * 100 +
+      (s.sponsoredAmendments || 0) * 10 +
+      (s.becameLawAmendments || 0) * 50
+    );
+  }), 1); // avoid division by zero
 
   rankings.forEach(sen => {
-    // Ensure vote fields are numbers
+    // Ensure vote fields are valid numbers
     const yea = Number(sen.yeaVotes) || 0;
     const nay = Number(sen.nayVotes) || 0;
     const missed = Number(sen.missedVotes) || 0;
@@ -28,45 +37,69 @@ async function main() {
     sen.missedVotes = missed;
     sen.totalVotes = total;
 
-    // Participation: votes cast / total possible votes
+    // Votes cast cannot exceed total possible (safety clamp)
+    const votesCast = Math.min(yea + nay, total);
+
+    // Participation percentage (capped at 100%)
     sen.participationPct = total > 0 
-      ? Math.min(100, +(((yea + nay) / total) * 100).toFixed(2)) 
+      ? Math.min(100, +((votesCast / total) * 100).toFixed(2)) 
       : 0;
 
+    // Missed vote percentage
     sen.missedVotePct = total > 0 
       ? +((missed / total) * 100).toFixed(2) 
       : 0;
 
-    // Example raw score calculation (adjust weights as needed)
-    // This is just a placeholder — replace with your actual scoring logic
-    const legScore = (sen.sponsoredBills || 0) * 10 +
-                     (sen.cosponsoredBills || 0) * 2 +
-                     (sen.becameLawBills || 0) * 50 +
-                     (sen.sponsoredAmendments || 0) * 5 +
-                     (sen.cosponsoredAmendments || 0) * 1 +
-                     (sen.becameLawAmendments || 0) * 30;
+    // Calculate legislative component (adjust weights to taste)
+    const legScore = 
+      (sen.sponsoredBills || 0) * 20 +
+      (sen.cosponsoredBills || 0) * 3 +
+      (sen.becameLawBills || 0) * 100 +
+      (sen.sponsoredAmendments || 0) * 10 +
+      (sen.cosponsoredAmendments || 0) * 2 +
+      (sen.becameLawAmendments || 0) * 50;
 
-    // Add voting participation bonus (up to 100 points)
-    const voteBonus = sen.participationPct * 1;
+    // Voting participation bonus: 0–100 points
+    const voteBonus = sen.participationPct;
 
+    // Total raw score
     sen.rawScore = legScore + voteBonus;
-    sen.scoreNormalized = maxRaw > 0 ? +((sen.rawScore / maxRaw) * 100).toFixed(2) : 0;
 
-    console.log(`Scored ${sen.name}: raw ${sen.rawScore.toFixed(2)}, normalized ${sen.scoreNormalized} | Participation: ${sen.participationPct}%, Missed: ${sen.missedVotePct}%`);
+    // Normalize to 0–100 scale based on highest raw score in the dataset
+    sen.scoreNormalized = maxLegScore > 0 
+      ? +((sen.rawScore / maxLegScore) * 100).toFixed(2) 
+      : 0;
+
+    // Log every senator's score (useful for debugging)
+    console.log(
+      `Scored ${sen.name}: ` +
+      `raw ${sen.rawScore.toFixed(2)}, ` +
+      `normalized ${sen.scoreNormalized} | ` +
+      `Participation: ${sen.participationPct}%, ` +
+      `Missed: ${sen.missedVotePct}%`
+    );
   });
 
-  // Log a few examples to verify
-  ['Ted Cruz', 'Angela Alsobrooks', 'Ben Ray Luján', 'Peter Welch'].forEach(name => {
+  // Extra verification logging for key senators
+  const keySenators = ['Ted Cruz', 'Angela Alsobrooks', 'Ben Ray Luján', 'Peter Welch', 'Jeanne Shaheen'];
+  keySenators.forEach(name => {
     const sen = rankings.find(s => s.name === name);
     if (sen) {
-      console.log(`Final - ${name}: yea=${sen.yeaVotes}, nay=${sen.nayVotes}, missed=${sen.missedVotes}, total=${sen.totalVotes}, part=${sen.participationPct}%`);
+      console.log(
+        `Final check - ${name}: ` +
+        `yea=${sen.yeaVotes}, nay=${sen.nayVotes}, missed=${sen.missedVotes}, ` +
+        `total=${sen.totalVotes}, part=${sen.participationPct}%, ` +
+        `raw=${sen.rawScore.toFixed(2)}, norm=${sen.scoreNormalized}`
+      );
+    } else {
+      console.log(`Final check - ${name}: not found in rankings`);
     }
   });
 
   try {
     fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
-    console.log('Updated senators-rankings.json with scores for ' + rankings.length + ' senators');
-    console.log('New fields added/used: yeaVotes, nayVotes, missedVotes, totalVotes, participationPct, rawScore, scoreNormalized');
+    console.log(`Updated senators-rankings.json with scores for ${rankings.length} senators`);
+    console.log('New/updated fields: yeaVotes, nayVotes, missedVotes, totalVotes, participationPct, missedVotePct, rawScore, scoreNormalized');
   } catch (err) {
     console.error('Write error:', err.message);
   }
