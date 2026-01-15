@@ -8,10 +8,10 @@ const xml2js = require('xml2js');
 
 const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
 
-// Adjust year and max roll calls as needed
-const YEAR = new Date().getFullYear();
+// Lock to current Congress year (adjust if needed)
+const YEAR = 2025;
 const BASE_URL = `https://clerk.house.gov/evs/${YEAR}/`;
-const MAX_ROLL = 500; // upper bound; script will skip missing files
+const MAX_ROLL = 500;
 
 function ensureRepShape(rep) {
   return {
@@ -32,7 +32,11 @@ function ensureRepShape(rep) {
     participationPct: rep.participationPct || 0,
     missedVotePct: rep.missedVotePct || 0,
     rawScore: rep.rawScore || 0,
-    scoreNormalized: rep.scoreNormalized || 0
+    scoreNormalized: rep.scoreNormalized || 0,
+    becameLawBills: rep.becameLawBills || 0,
+    becameLawAmendments: rep.becameLawAmendments || 0,
+    becameLawCosponsoredAmendments: rep.becameLawCosponsoredAmendments || 0,
+    score: rep.score || 0
   };
 }
 
@@ -57,11 +61,12 @@ async function fetchRollCall(num) {
   const repMap = indexByBioguide(reps);
 
   let processed = 0;
+  let attached = 0;
+
   for (let i = 1; i <= MAX_ROLL; i++) {
     const doc = await fetchRollCall(i);
     if (!doc) continue;
 
-    // Clerk XML structure: rollcall_vote > vote_data[0] > recorded_vote[]
     const votes = doc?.rollcall_vote?.vote_data?.[0]?.recorded_vote || [];
     for (const v of votes) {
       const legislator = v.legislator?.[0]?.$ || {};
@@ -75,6 +80,7 @@ async function fetchRollCall(num) {
       if (choice === 'Yea') rep.yeaVotes++;
       else if (choice === 'Nay') rep.nayVotes++;
       else rep.missedVotes++;
+      attached++;
     }
     processed++;
   }
@@ -84,11 +90,14 @@ async function fetchRollCall(num) {
       const participated = r.yeaVotes + r.nayVotes;
       r.participationPct = Number(((participated / r.totalVotes) * 100).toFixed(2));
       r.missedVotePct = Number(((r.missedVotes / r.totalVotes) * 100).toFixed(2));
+    } else {
+      r.participationPct = 0;
+      r.missedVotePct = 0;
     }
   }
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(reps, null, 2));
-  console.log(`House votes updated: ${processed} roll calls processed`);
+  console.log(`House votes updated: ${processed} roll calls processed; ${attached} member-votes attached`);
 })().catch(err => {
   console.error('House votes scraper failed:', err);
   process.exit(1);
