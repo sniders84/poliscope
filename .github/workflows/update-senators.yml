@@ -17,7 +17,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Needed for git add/commit/push
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -25,7 +25,7 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: npm install  # Will create package-lock.json if missing
+        run: npm install
 
       - name: Debug API key prefix
         run: node -e "console.log('API key prefix:', (process.env.CONGRESS_API_KEY||'').slice(0,6))"
@@ -46,6 +46,36 @@ jobs:
       - name: Generate Senate scores
         run: node scripts/senators-scores.js
 
+      # --- Bootstrap House roster ---
+      - name: Bootstrap Representatives rankings file
+        run: |
+          node -e "
+          const fs = require('fs');
+          const legislators = JSON.parse(fs.readFileSync('public/legislators-current.json','utf8'));
+          const reps = legislators.filter(l => {
+            const lastTerm = l.terms[l.terms.length - 1];
+            return lastTerm.type === 'rep';
+          }).map(l => {
+            const lastTerm = l.terms[l.terms.length - 1];
+            return {
+              name: l.name.official_full,
+              bioguideId: l.id.bioguide,
+              state: lastTerm.state,
+              party: lastTerm.party[0].toUpperCase(),
+              sponsoredBills: 0,
+              cosponsoredBills: 0,
+              sponsoredAmendments: 0,
+              cosponsoredAmendments: 0,
+              yeaVotes: 0,
+              nayVotes: 0,
+              missedVotes: 0,
+              totalVotes: 0
+            };
+          });
+          fs.writeFileSync('public/representatives-rankings.json', JSON.stringify(reps,null,2));
+          console.log('Bootstrapped representatives-rankings.json with', reps.length, 'members');
+          "
+
       # --- House pipeline ---
       - name: Run House Legislation scraper
         run: node scripts/legislation-reps-scraper.js
@@ -63,7 +93,7 @@ jobs:
         run: node scripts/reps-scores.js
 
       # --- Commit all outputs ---
-      - name: Commit and push changes (including lockfile if generated)
+      - name: Commit and push changes
         run: |
           git config user.name "Data Bot"
           git config user.email "bot@electorate.app"
