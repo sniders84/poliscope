@@ -1,46 +1,32 @@
 // scripts/reps-scores.js
-// Purpose: Compute composite scores for House representatives based on 119th Congress data
-// Includes becameLawCosponsoredBills and becameLawCosponsoredAmendments in scoring
+// Purpose: Compute scores for House representatives, including new became-law cosponsor fields
 
 const fs = require('fs');
 const path = require('path');
 
 const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
 
-function computeScore(rep) {
-  // Example scoring weights — adjust to your model
-  const billWeight = 2;
-  const amendWeight = 1;
-  const committeeWeight = 3;
-  const voteWeight = 1;
-
-  const rawScore =
-    (rep.sponsoredBills * billWeight) +
-    (rep.cosponsoredBills * billWeight) +
-    (rep.becameLawBills * billWeight) +
-    (rep.becameLawCosponsoredBills * billWeight) +
-    (rep.sponsoredAmendments * amendWeight) +
-    (rep.cosponsoredAmendments * amendWeight) +
-    (rep.becameLawAmendments * amendWeight) +
-    (rep.becameLawCosponsoredAmendments * amendWeight) +
-    (Array.isArray(rep.committees) ? rep.committees.length * committeeWeight : 0) +
-    (rep.yeaVotes * voteWeight) +
-    (rep.nayVotes * voteWeight);
-
-  return rawScore;
-}
-
 (function main() {
   const reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8'));
 
   for (const r of reps) {
-    r.rawScore = computeScore(r);
+    const legis =
+      (r.sponsoredBills + r.cosponsoredBills) +
+      (r.sponsoredAmendments + r.cosponsoredAmendments);
+
+    const laws =
+      (r.becameLawBills + r.becameLawCosponsoredBills) +
+      (r.becameLawAmendments + r.becameLawCosponsoredAmendments);
+
+    const votes = (r.yeaVotes + r.nayVotes);
+
+    r.rawScore = legis + (laws * 3) + Math.round((r.participationPct || 0) / 10) + votes;
     r.score = r.rawScore;
   }
 
-  const maxScore = Math.max(...reps.map(r => r.score || 0));
+  const max = reps.reduce((m, r) => Math.max(m, r.score), 0) || 1;
   for (const r of reps) {
-    r.scoreNormalized = maxScore > 0 ? Number(((r.score / maxScore) * 100).toFixed(2)) : 0;
+    r.scoreNormalized = Number(((r.score / max) * 100).toFixed(2));
   }
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(reps, null, 2));
