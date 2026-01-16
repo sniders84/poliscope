@@ -31,10 +31,11 @@ async function fetchAllPages(url) {
     }
     const data = await res.json();
 
-    // Congress.gov returns "legislation" not "bills"
+    // Congress.gov member endpoints return "legislation"
     const items = data?.legislation || [];
     results = results.concat(items);
 
+    // Pagination uses next_url relative to BASE
     next = data?.pagination?.next_url
       ? `${BASE}${data.pagination.next_url}&api_key=${API_KEY}`
       : null;
@@ -43,9 +44,12 @@ async function fetchAllPages(url) {
 }
 
 function countBecameLawBills(items) {
+  // Bills that "became public law"
   return items.filter(b => (b.latestAction?.action?.toLowerCase() || '').includes('became public law')).length;
 }
-function countBecameLawAmendments(items) {
+
+function countAgreedTo(items) {
+  // Amendments that were "agreed to"
   return items.filter(a => (a.latestAction?.action?.toLowerCase() || '').includes('agreed to')).length;
 }
 
@@ -72,20 +76,20 @@ function countBecameLawAmendments(items) {
     const cosponsoredBills = await fetchAllPages(cosponsoredBillsUrl);
     r.cosponsoredBills = cosponsoredBills.length;
 
-    // Sponsored amendments
+    // Sponsored amendments (filter via bill_type=amendment)
     const sponsoredAmendmentsUrl = `${BASE}/member/${bioguide}/sponsored-legislation?bill_type=amendment&api_key=${API_KEY}`;
     const sponsoredAmendments = await fetchAllPages(sponsoredAmendmentsUrl);
     r.sponsoredAmendments = sponsoredAmendments.length;
-    r.becameLawAmendments = countBecameLawAmendments(sponsoredAmendments);
+    r.becameLawAmendments = countAgreedTo(sponsoredAmendments);
 
     // Cosponsored amendments
     const cosponsoredAmendmentsUrl = `${BASE}/member/${bioguide}/cosponsored-legislation?bill_type=amendment&api_key=${API_KEY}`;
     const cosponsoredAmendments = await fetchAllPages(cosponsoredAmendmentsUrl);
     r.cosponsoredAmendments = cosponsoredAmendments.length;
-    r.becameLawCosponsoredAmendments = countBecameLawAmendments(cosponsoredAmendments);
+    r.becameLawCosponsoredAmendments = countAgreedTo(cosponsoredAmendments);
 
-    // Debug: log one sample
-    if (bioguide === 'A000055') {
+    // Optional: debug one known rep to confirm payload shape
+    if (bioguide === 'A000055' && sponsoredBills.length) {
       console.log('Sample sponsored legislation for Aderholt:', sponsoredBills[0]);
     }
   }
