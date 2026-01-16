@@ -1,6 +1,6 @@
 // scripts/reps-scores.js
 // Purpose: Compute composite scores for House representatives based on 119th Congress data
-// Enriches representatives-rankings.json directly with rawScore, score, and scoreNormalized
+// Includes becameLawCosponsoredBills and becameLawCosponsoredAmendments in scoring
 
 const fs = require('fs');
 const path = require('path');
@@ -17,9 +17,10 @@ function computeScore(rep) {
   const rawScore =
     (rep.sponsoredBills * billWeight) +
     (rep.cosponsoredBills * billWeight) +
+    (rep.becameLawBills * billWeight) +
+    (rep.becameLawCosponsoredBills * billWeight) +
     (rep.sponsoredAmendments * amendWeight) +
     (rep.cosponsoredAmendments * amendWeight) +
-    (rep.becameLawBills * billWeight) +
     (rep.becameLawAmendments * amendWeight) +
     (rep.becameLawCosponsoredAmendments * amendWeight) +
     (Array.isArray(rep.committees) ? rep.committees.length * committeeWeight : 0) +
@@ -32,13 +33,11 @@ function computeScore(rep) {
 (function main() {
   const reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8'));
 
-  // Compute raw scores
   for (const r of reps) {
     r.rawScore = computeScore(r);
     r.score = r.rawScore;
   }
 
-  // Normalize scores 0–100
   const maxScore = Math.max(...reps.map(r => r.score || 0));
   for (const r of reps) {
     r.scoreNormalized = maxScore > 0 ? Number(((r.score / maxScore) * 100).toFixed(2)) : 0;
