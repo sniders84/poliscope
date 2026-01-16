@@ -14,45 +14,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI",
-        "committeeName": "Finance",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SLIA",
-        "committeeName": "Indian Affairs",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 12,
-    "score": 12,
-    "scoreNormalized": 27.27
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "K000367",
@@ -69,59 +40,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSRA",
-        "committeeName": "Rules and Administration",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "JSLC",
-        "committeeName": "Library of Congress",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "JSEC",
-        "committeeName": "Taxation",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 20,
-    "score": 20,
-    "scoreNormalized": 45.45
+    "rawScore": 1,
+    "score": 1,
+    "scoreNormalized": 6.25
   },
   {
     "bioguideId": "S000033",
@@ -138,45 +66,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 9,
-        "party": "minority"
-      },
-      {
-        "committee": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 14,
-    "score": 14,
-    "scoreNormalized": 31.82
+    "rawScore": 1,
+    "score": 1,
+    "scoreNormalized": 6.25
   },
   {
     "bioguideId": "W000802",
@@ -193,45 +92,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "JCSE",
-        "committeeName": "Economic",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 12,
-    "score": 12,
-    "scoreNormalized": 27.27
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "B001261",
@@ -248,38 +118,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 10,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 14,
-    "score": 14,
-    "scoreNormalized": 31.82
+    "rawScore": 3,
+    "score": 3,
+    "scoreNormalized": 18.75
   },
   {
     "bioguideId": "W000437",
@@ -296,59 +144,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committee": "SSRA",
-        "committeeName": "Rules and Administration",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Ex Officio",
-        "rank": 11,
-        "party": "majority"
-      },
-      {
-        "committee": "JCSE",
-        "committeeName": "Economic",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 20,
-    "score": 20,
-    "scoreNormalized": 45.45
+    "rawScore": 1,
+    "score": 1,
+    "scoreNormalized": 6.25
   },
   {
     "bioguideId": "C001035",
@@ -365,38 +170,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 9,
-    "score": 9,
-    "scoreNormalized": 20.45
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "C001056",
@@ -413,45 +196,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Member",
-        "rank": 12,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 13,
-    "score": 13,
-    "scoreNormalized": 29.55
+    "rawScore": 1,
+    "score": 1,
+    "scoreNormalized": 6.25
   },
   {
     "bioguideId": "D000563",
@@ -468,38 +222,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 9,
-    "score": 9,
-    "scoreNormalized": 20.45
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "G000359",
@@ -516,38 +248,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 11,
-    "score": 11,
-    "scoreNormalized": 25
+    "rawScore": 1,
+    "score": 1,
+    "scoreNormalized": 6.25
   },
   {
     "bioguideId": "M000355",
@@ -564,45 +274,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSRA",
-        "committeeName": "Rules and Administration",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "JSLC",
-        "committeeName": "Library of Congress",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 14,
-    "score": 14,
-    "scoreNormalized": 31.82
+    "rawScore": 1,
+    "score": 1,
+    "scoreNormalized": 6.25
   },
   {
     "bioguideId": "M001176",
@@ -619,45 +300,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSRA",
-        "committeeName": "Rules and Administration",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 16,
-    "score": 16,
-    "scoreNormalized": 36.36
+    "rawScore": 2,
+    "score": 2,
+    "scoreNormalized": 12.5
   },
   {
     "bioguideId": "R000122",
@@ -674,45 +326,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Ex Officio",
-        "rank": 9,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 12,
-    "score": 12,
-    "scoreNormalized": 27.27
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "R000584",
@@ -729,45 +352,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SLET",
-        "committeeName": "Ethics",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 14,
-    "score": 14,
-    "scoreNormalized": 31.82
+    "rawScore": 1,
+    "score": 1,
+    "scoreNormalized": 6.25
   },
   {
     "bioguideId": "S001181",
@@ -784,52 +378,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SLET",
-        "committeeName": "Ethics",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "JCSE",
-        "committeeName": "Economic",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 20,
-    "score": 20,
-    "scoreNormalized": 45.45
+    "rawScore": 5,
+    "score": 5,
+    "scoreNormalized": 31.25
   },
   {
     "bioguideId": "W000805",
@@ -846,45 +404,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSRA",
-        "committeeName": "Rules and Administration",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 12,
-    "score": 12,
-    "scoreNormalized": 27.27
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "G000555",
@@ -901,45 +430,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 13,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SPAG",
-        "committeeName": "Agriculture (Joint)",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 12,
-    "score": 12,
-    "scoreNormalized": 27.27
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "C001088",
@@ -956,45 +456,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SLET",
-        "committeeName": "Ethics",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 12,
-    "score": 12,
-    "scoreNormalized": 27.27
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "B001230",
@@ -1011,38 +482,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 9,
-    "score": 9,
-    "scoreNormalized": 20.45
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "B001267",
@@ -1059,45 +508,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSRA",
-        "committeeName": "Rules and Administration",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committee": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 14,
-    "score": 14,
-    "scoreNormalized": 31.82
+    "rawScore": 2,
+    "score": 2,
+    "scoreNormalized": 12.5
   },
   {
     "bioguideId": "B001243",
@@ -1114,52 +534,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 13,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committee": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "JSEC",
-        "committeeName": "Taxation",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 16,
-    "score": 16,
-    "scoreNormalized": 36.36
+    "rawScore": 1,
+    "score": 1,
+    "scoreNormalized": 6.25
   },
   {
     "bioguideId": "B001277",
@@ -1176,45 +560,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSGA",
-        "committeeName": "Homeland Security and Governmental Affairs",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 14,
-    "score": 14,
-    "scoreNormalized": 31.82
+    "rawScore": 1,
+    "score": 1,
+    "scoreNormalized": 6.25
   },
   {
     "bioguideId": "B001236",
@@ -1231,59 +586,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committee": "SSRA",
-        "committeeName": "Rules and Administration",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committee": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "JCSE",
-        "committeeName": "Economic",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 18,
-    "score": 18,
-    "scoreNormalized": 40.91
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "C001047",
@@ -1300,45 +612,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 14,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSRA",
-        "committeeName": "Rules and Administration",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 12,
-    "score": 12,
-    "scoreNormalized": 27.27
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "C001075",
@@ -1355,45 +638,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 18,
-    "score": 18,
-    "scoreNormalized": 40.91
+    "rawScore": 3,
+    "score": 3,
+    "scoreNormalized": 18.75
   },
   {
     "bioguideId": "C000880",
@@ -1410,31 +664,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI",
-        "committeeName": "Finance",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 10,
-    "score": 10,
-    "scoreNormalized": 22.73
+    "rawScore": 2,
+    "score": 2,
+    "scoreNormalized": 12.5
   },
   {
     "bioguideId": "G000386",
@@ -1451,38 +690,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI",
-        "committeeName": "Finance",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 9,
-    "score": 9,
-    "scoreNormalized": 20.45
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "H001046",
@@ -1499,45 +716,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 11,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "JSEC",
-        "committeeName": "Taxation",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 12,
-    "score": 12,
-    "scoreNormalized": 27.27
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "H001042",
@@ -1554,45 +742,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 14,
-    "score": 14,
-    "scoreNormalized": 31.82
+    "rawScore": 1,
+    "score": 1,
+    "scoreNormalized": 6.25
   },
   {
     "bioguideId": "H001061",
@@ -1609,45 +768,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Member",
-        "rank": 11,
-        "party": "majority"
-      },
-      {
-        "committee": "SLIA",
-        "committeeName": "Indian Affairs",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 14,
-    "score": 14,
-    "scoreNormalized": 31.82
+    "rawScore": 1,
+    "score": 1,
+    "scoreNormalized": 6.25
   },
   {
     "bioguideId": "J000293",
@@ -1664,38 +794,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 11,
-        "party": "majority"
-      },
-      {
-        "committee": "SSGA",
-        "committeeName": "Homeland Security and Governmental Affairs",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SPAG",
-        "committeeName": "Agriculture (Joint)",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 9,
-    "score": 9,
-    "scoreNormalized": 20.45
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "L000575",
@@ -1712,45 +820,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSGA",
-        "committeeName": "Homeland Security and Governmental Affairs",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SLET",
-        "committeeName": "Ethics",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 12,
-    "score": 12,
-    "scoreNormalized": 27.27
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "L000577",
@@ -1767,38 +846,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 11,
-    "score": 11,
-    "scoreNormalized": 25
+    "rawScore": 1,
+    "score": 1,
+    "scoreNormalized": 6.25
   },
   {
     "bioguideId": "L000570",
@@ -1815,45 +872,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 9,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 11,
-        "party": "minority"
-      },
-      {
-        "committee": "SLIA",
-        "committeeName": "Indian Affairs",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 12,
-    "score": 12,
-    "scoreNormalized": 27.27
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "M000133",
@@ -1870,38 +898,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 9,
-    "score": 9,
-    "scoreNormalized": 20.45
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "M000934",
@@ -1918,59 +924,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 12,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SLIA",
-        "committeeName": "Indian Affairs",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 18,
-    "score": 18,
-    "scoreNormalized": 40.91
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "M001153",
@@ -1987,45 +950,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Member",
-        "rank": 10,
-        "party": "majority"
-      },
-      {
-        "committee": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SLIA",
-        "committeeName": "Indian Affairs",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 12,
-    "score": 12,
-    "scoreNormalized": 27.27
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "M001169",
@@ -2042,38 +976,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 9,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 11,
-    "score": 11,
-    "scoreNormalized": 25
+    "rawScore": 2,
+    "score": 2,
+    "scoreNormalized": 12.5
   },
   {
     "bioguideId": "M001111",
@@ -2090,38 +1002,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 9,
-    "score": 9,
-    "scoreNormalized": 20.45
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "P000603",
@@ -2138,38 +1028,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committee": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSGA",
-        "committeeName": "Homeland Security and Governmental Affairs",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 15,
-    "score": 15,
-    "scoreNormalized": 34.09
+    "rawScore": 3,
+    "score": 3,
+    "scoreNormalized": 18.75
   },
   {
     "bioguideId": "P000595",
@@ -2186,45 +1054,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 12,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 9,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSGA",
-        "committeeName": "Homeland Security and Governmental Affairs",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 12,
-    "score": 12,
-    "scoreNormalized": 27.27
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "S001150",
@@ -2241,38 +1080,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 10,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Member",
-        "rank": 10,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 9,
-    "score": 9,
-    "scoreNormalized": 20.45
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "S000148",
@@ -2289,31 +1106,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSRA",
-        "committeeName": "Rules and Administration",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Ex Officio",
-        "rank": 10,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 12,
-    "score": 12,
-    "scoreNormalized": 27.27
+    "rawScore": 3,
+    "score": 3,
+    "scoreNormalized": 18.75
   },
   {
     "bioguideId": "S001184",
@@ -2330,38 +1132,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 11,
-    "score": 11,
-    "scoreNormalized": 25
+    "rawScore": 1,
+    "score": 1,
+    "scoreNormalized": 6.25
   },
   {
     "bioguideId": "T000250",
@@ -2378,44 +1158,15 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 10,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Ex Officio",
-        "rank": 10,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 44,
-    "score": 44,
+    "rawScore": 16,
+    "score": 16,
     "scoreNormalized": 100
   },
   {
@@ -2433,38 +1184,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 10,
-        "party": "minority"
-      },
-      {
-        "committee": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 11,
-    "score": 11,
-    "scoreNormalized": 25
+    "rawScore": 1,
+    "score": 1,
+    "scoreNormalized": 6.25
   },
   {
     "bioguideId": "W000800",
@@ -2481,45 +1210,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 13,
-        "party": "minority"
-      },
-      {
-        "committee": "SSRA",
-        "committeeName": "Rules and Administration",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Member",
-        "rank": 9,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 12,
-    "score": 12,
-    "scoreNormalized": 27.27
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "W000779",
@@ -2536,38 +1236,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI",
-        "committeeName": "Finance",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 9,
-    "score": 9,
-    "scoreNormalized": 20.45
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "Y000064",
@@ -2584,38 +1262,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committee": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 9,
-    "score": 9,
-    "scoreNormalized": 20.45
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "S001194",
@@ -2632,52 +1288,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committee": "SLIA",
-        "committeeName": "Indian Affairs",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SLET",
-        "committeeName": "Ethics",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 17,
-    "score": 17,
-    "scoreNormalized": 38.64
+    "rawScore": 1,
+    "score": 1,
+    "scoreNormalized": 6.25
   },
   {
     "bioguideId": "C001095",
@@ -2694,45 +1314,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "JSEC",
-        "committeeName": "Taxation",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 14,
-    "score": 14,
-    "scoreNormalized": 31.82
+    "rawScore": 1,
+    "score": 1,
+    "scoreNormalized": 6.25
   },
   {
     "bioguideId": "D000622",
@@ -2749,45 +1340,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 10,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Member",
-        "rank": 9,
-        "party": "minority"
-      },
-      {
-        "committee": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 16,
-    "score": 16,
-    "scoreNormalized": 36.36
+    "rawScore": 4,
+    "score": 4,
+    "scoreNormalized": 25
   },
   {
     "bioguideId": "W000817",
@@ -2804,45 +1366,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committee": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committee": "SPAG",
-        "committeeName": "Agriculture (Joint)",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 12,
-    "score": 12,
-    "scoreNormalized": 27.27
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "K000383",
@@ -2859,45 +1392,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 12,
-    "score": 12,
-    "scoreNormalized": 27.27
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "D000618",
@@ -2914,45 +1418,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SLIA",
-        "committeeName": "Indian Affairs",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 14,
-    "score": 14,
-    "scoreNormalized": 31.82
+    "rawScore": 1,
+    "score": 1,
+    "scoreNormalized": 6.25
   },
   {
     "bioguideId": "C001096",
@@ -2969,45 +1444,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 11,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 12,
-    "score": 12,
-    "scoreNormalized": 27.27
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "F000463",
@@ -3024,66 +1470,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 11,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 14,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSRA",
-        "committeeName": "Rules and Administration",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "JSLC",
-        "committeeName": "Library of Congress",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SLET",
-        "committeeName": "Ethics",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 21,
-    "score": 21,
-    "scoreNormalized": 47.73
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "M001190",
@@ -3100,45 +1496,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 13,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 10,
-        "party": "majority"
-      },
-      {
-        "committee": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SLIA",
-        "committeeName": "Indian Affairs",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 14,
-    "score": 14,
-    "scoreNormalized": 31.82
+    "rawScore": 1,
+    "score": 1,
+    "scoreNormalized": 6.25
   },
   {
     "bioguideId": "C001098",
@@ -3155,45 +1522,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committee": "SSRA",
-        "committeeName": "Rules and Administration",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 27,
-    "score": 27,
-    "scoreNormalized": 61.36
+    "rawScore": 8,
+    "score": 8,
+    "scoreNormalized": 50
   },
   {
     "bioguideId": "K000384",
@@ -3210,38 +1548,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 11,
-    "score": 11,
-    "scoreNormalized": 25
+    "rawScore": 1,
+    "score": 1,
+    "scoreNormalized": 6.25
   },
   {
     "bioguideId": "B001288",
@@ -3258,38 +1574,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 11,
-    "score": 11,
-    "scoreNormalized": 25
+    "rawScore": 1,
+    "score": 1,
+    "scoreNormalized": 6.25
   },
   {
     "bioguideId": "G000574",
@@ -3306,45 +1600,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 9,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Member",
-        "rank": 9,
-        "party": "minority"
-      },
-      {
-        "committee": "SSGA",
-        "committeeName": "Homeland Security and Governmental Affairs",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 12,
-    "score": 12,
-    "scoreNormalized": 27.27
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "S001198",
@@ -3361,45 +1626,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 12,
-    "score": 12,
-    "scoreNormalized": 27.27
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "E000295",
@@ -3416,38 +1652,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSGA",
-        "committeeName": "Homeland Security and Governmental Affairs",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 18,
-    "score": 18,
-    "scoreNormalized": 40.91
+    "rawScore": 5,
+    "score": 5,
+    "scoreNormalized": 31.25
   },
   {
     "bioguideId": "T000476",
@@ -3464,52 +1678,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 12,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "JCSE",
-        "committeeName": "Economic",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 15,
-    "score": 15,
-    "scoreNormalized": 34.09
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "R000605",
@@ -3526,59 +1704,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 15,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SLIA",
-        "committeeName": "Indian Affairs",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "JCSE",
-        "committeeName": "Economic",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 18,
-    "score": 18,
-    "scoreNormalized": 40.91
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "K000393",
@@ -3595,38 +1730,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committee": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 19,
-    "score": 19,
-    "scoreNormalized": 43.18
+    "rawScore": 5,
+    "score": 5,
+    "scoreNormalized": 31.25
   },
   {
     "bioguideId": "H001076",
@@ -3643,52 +1756,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSGA",
-        "committeeName": "Homeland Security and Governmental Affairs",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committee": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "JSEC",
-        "committeeName": "Taxation",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 15,
-    "score": 15,
-    "scoreNormalized": 34.09
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "C001113",
@@ -3705,45 +1782,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committee": "SLIA",
-        "committeeName": "Indian Affairs",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 12,
-    "score": 12,
-    "scoreNormalized": 27.27
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "B001303",
@@ -3760,45 +1808,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 10,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 13,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committee": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 10,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 14,
-    "score": 14,
-    "scoreNormalized": 31.82
+    "rawScore": 1,
+    "score": 1,
+    "scoreNormalized": 6.25
   },
   {
     "bioguideId": "B001299",
@@ -3815,45 +1834,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 13,
-        "party": "majority"
-      },
-      {
-        "committee": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 10,
-        "party": "majority"
-      },
-      {
-        "committee": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 10,
-        "party": "majority"
-      },
-      {
-        "committee": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 12,
-    "score": 12,
-    "scoreNormalized": 27.27
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "M001198",
@@ -3870,38 +1860,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 14,
-        "party": "majority"
-      },
-      {
-        "committee": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 11,
-    "score": 11,
-    "scoreNormalized": 25
+    "rawScore": 1,
+    "score": 1,
+    "scoreNormalized": 6.25
   },
   {
     "bioguideId": "B001305",
@@ -3918,45 +1886,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 11,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committee": "JSEC",
-        "committeeName": "Taxation",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 12,
-    "score": 12,
-    "scoreNormalized": 27.27
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "R000608",
@@ -3973,38 +1912,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 11,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Member",
-        "rank": 10,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 9,
-    "score": 9,
-    "scoreNormalized": 20.45
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "C001114",
@@ -4021,38 +1938,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 11,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Member",
-        "rank": 11,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 9,
-    "score": 9,
-    "scoreNormalized": 20.45
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "S001203",
@@ -4069,52 +1964,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committee": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 10,
-        "party": "minority"
-      },
-      {
-        "committee": "SLIA",
-        "committeeName": "Indian Affairs",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "JCSE",
-        "committeeName": "Economic",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 15,
-    "score": 15,
-    "scoreNormalized": 34.09
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "H001079",
@@ -4131,52 +1990,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 10,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committee": "SSRA",
-        "committeeName": "Rules and Administration",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "JSLC",
-        "committeeName": "Library of Congress",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 15,
-    "score": 15,
-    "scoreNormalized": 34.09
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "S001208",
@@ -4193,45 +2016,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 11,
-        "party": "minority"
-      },
-      {
-        "committee": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 13,
-        "party": "minority"
-      },
-      {
-        "committee": "SSGA",
-        "committeeName": "Homeland Security and Governmental Affairs",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committee": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Member",
-        "rank": 9,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 12,
-    "score": 12,
-    "scoreNormalized": 27.27
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "K000394",
@@ -4248,52 +2042,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 12,
-        "party": "minority"
-      },
-      {
-        "committee": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 9,
-        "party": "minority"
-      },
-      {
-        "committee": "SSGA",
-        "committeeName": "Homeland Security and Governmental Affairs",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "SPAG",
-        "committeeName": "Agriculture (Joint)",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 17,
-    "score": 17,
-    "scoreNormalized": 38.64
+    "rawScore": 1,
+    "score": 1,
+    "scoreNormalized": 6.25
   },
   {
     "bioguideId": "S001217",
@@ -4310,45 +2068,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Member",
-        "rank": 10,
-        "party": "majority"
-      },
-      {
-        "committee": "SSGA",
-        "committeeName": "Homeland Security and Governmental Affairs",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SPAG",
-        "committeeName": "Agriculture (Joint)",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 20,
-    "score": 20,
-    "scoreNormalized": 45.45
+    "rawScore": 4,
+    "score": 4,
+    "scoreNormalized": 25
   },
   {
     "bioguideId": "H001089",
@@ -4365,38 +2094,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committee": "SSGA",
-        "committeeName": "Homeland Security and Governmental Affairs",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 9,
-    "score": 9,
-    "scoreNormalized": 20.45
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "K000377",
@@ -4413,52 +2120,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 12,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committee": "JSEC",
-        "committeeName": "Taxation",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committee": "SPAG",
-        "committeeName": "Agriculture (Joint)",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 15,
-    "score": 15,
-    "scoreNormalized": 34.09
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "L000571",
@@ -4475,38 +2146,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 15,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 13,
-    "score": 13,
-    "scoreNormalized": 29.55
+    "rawScore": 2,
+    "score": 2,
+    "scoreNormalized": 12.5
   },
   {
     "bioguideId": "T000278",
@@ -4523,52 +2172,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committee": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committee": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committee": "SPAG",
-        "committeeName": "Agriculture (Joint)",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 18,
-    "score": 18,
-    "scoreNormalized": 40.91
+    "rawScore": 2,
+    "score": 2,
+    "scoreNormalized": 12.5
   },
   {
     "bioguideId": "H000273",
@@ -4585,38 +2198,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 10,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committee": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 9,
-    "score": 9,
-    "scoreNormalized": 20.45
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "H000601",
@@ -4633,45 +2224,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 11,
-        "party": "majority"
-      },
-      {
-        "committee": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committee": "SSRA",
-        "committeeName": "Rules and Administration",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 12,
-    "score": 12,
-    "scoreNormalized": 27.27
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "P000145",
@@ -4688,52 +2250,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SSRA",
-        "committeeName": "Rules and Administration",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committee": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committee": "JSLC",
-        "committeeName": "Library of Congress",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 15,
-    "score": 15,
-    "scoreNormalized": 34.09
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "O000174",
@@ -4750,38 +2276,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 14,
-        "party": "minority"
-      },
-      {
-        "committee": "SSRA",
-        "committeeName": "Rules and Administration",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committee": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 9,
-    "score": 9,
-    "scoreNormalized": 20.45
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "W000790",
@@ -4798,45 +2302,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committee": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committee": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 12,
-        "party": "minority"
-      },
-      {
-        "committee": "SPAG",
-        "committeeName": "Agriculture (Joint)",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 14,
-    "score": 14,
-    "scoreNormalized": 31.82
+    "rawScore": 1,
+    "score": 1,
+    "scoreNormalized": 6.25
   },
   {
     "bioguideId": "B001319",
@@ -4853,52 +2328,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 12,
-        "party": "majority"
-      },
-      {
-        "committee": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committee": "SSRA",
-        "committeeName": "Rules and Administration",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Member",
-        "rank": 11,
-        "party": "majority"
-      },
-      {
-        "committee": "JCSE",
-        "committeeName": "Economic",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 19,
-    "score": 19,
-    "scoreNormalized": 43.18
+    "rawScore": 2,
+    "score": 2,
+    "scoreNormalized": 12.5
   },
   {
     "bioguideId": "S001227",
@@ -4915,45 +2354,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 12,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 10,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Member",
-        "rank": 10,
-        "party": "majority"
-      },
-      {
-        "committee": "JSEC",
-        "committeeName": "Taxation",
-        "role": "Chairman",
-        "rank": 1,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 16,
-    "score": 16,
-    "scoreNormalized": 36.36
+    "rawScore": 2,
+    "score": 2,
+    "scoreNormalized": 12.5
   },
   {
     "bioguideId": "F000479",
@@ -4970,45 +2380,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 9,
-        "party": "minority"
-      },
-      {
-        "committee": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 11,
-        "party": "minority"
-      },
-      {
-        "committee": "SSGA",
-        "committeeName": "Homeland Security and Governmental Affairs",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committee": "JCSE",
-        "committeeName": "Economic",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 12,
-    "score": 12,
-    "scoreNormalized": 27.27
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "R000618",
@@ -5025,38 +2406,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 9,
-    "score": 9,
-    "scoreNormalized": 20.45
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "A000382",
@@ -5073,45 +2432,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 11,
-        "party": "minority"
-      },
-      {
-        "committee": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Member",
-        "rank": 9,
-        "party": "minority"
-      },
-      {
-        "committee": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 11,
-        "party": "minority"
-      },
-      {
-        "committee": "SPAG",
-        "committeeName": "Agriculture (Joint)",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 12,
-    "score": 12,
-    "scoreNormalized": 27.27
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "S001232",
@@ -5128,38 +2458,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 14,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 13,
-        "party": "majority"
-      },
-      {
-        "committee": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Member",
-        "rank": 10,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 9,
-    "score": 9,
-    "scoreNormalized": 20.45
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "M001242",
@@ -5176,38 +2484,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 12,
-        "party": "majority"
-      },
-      {
-        "committee": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 12,
-        "party": "majority"
-      },
-      {
-        "committee": "SSGA",
-        "committeeName": "Homeland Security and Governmental Affairs",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 9,
-    "score": 9,
-    "scoreNormalized": 20.45
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "M001243",
@@ -5224,52 +2510,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 13,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committee": "JSEC",
-        "committeeName": "Taxation",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committee": "SPAG",
-        "committeeName": "Agriculture (Joint)",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 15,
-    "score": 15,
-    "scoreNormalized": 34.09
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "J000312",
@@ -5286,38 +2536,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committee": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committee": "SPAG",
-        "committeeName": "Agriculture (Joint)",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 9,
-    "score": 9,
-    "scoreNormalized": 20.45
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "H001104",
@@ -5334,38 +2562,16 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Member",
-        "rank": 10,
-        "party": "majority"
-      },
-      {
-        "committee": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 11,
-        "party": "majority"
-      },
-      {
-        "committee": "SPAG",
-        "committeeName": "Agriculture (Joint)",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 9,
-    "score": 9,
-    "scoreNormalized": 20.45
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   },
   {
     "bioguideId": "M001244",
@@ -5382,51 +2588,15 @@
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
-    "committees": [
-      {
-        "committee": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 12,
-        "party": "majority"
-      },
-      {
-        "committee": "SSGA",
-        "committeeName": "Homeland Security and Governmental Affairs",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committee": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Member",
-        "rank": 12,
-        "party": "majority"
-      },
-      {
-        "committee": "JSEC",
-        "committeeName": "Taxation",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committee": "SPAG",
-        "committeeName": "Agriculture (Joint)",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "yeaVotes": 0,
     "nayVotes": 0,
     "missedVotes": 0,
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 15,
-    "score": 15,
-    "scoreNormalized": 34.09
+    "rawScore": 0,
+    "score": 0,
+    "scoreNormalized": 0
   }
 ]
