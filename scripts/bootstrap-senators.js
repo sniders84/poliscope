@@ -1,6 +1,5 @@
 // scripts/bootstrap-senators.js
 // Purpose: Bootstrap senators-rankings.json with all current Senators
-// Uses legislators-current.json; filters by last term type === 'sen' and end date in the future
 
 const fs = require('fs');
 const path = require('path');
@@ -44,13 +43,8 @@ function baseRecord(sen) {
   };
 }
 
-// Current Senators: last term is 'sen' and still serving
 const sens = roster
   .filter(r => {
     const t = r.terms[r.terms.length - 1];
     return t.type === 'sen' && new Date(t.end) > new Date();
   })
-  .map(baseRecord);
-
-fs.writeFileSync(OUT_PATH, JSON.stringify(sens, null, 2));
-console.log(`Bootstrapped senators-rankings.json with ${sens.length} current Senators`);
