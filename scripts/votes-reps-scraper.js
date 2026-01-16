@@ -1,7 +1,7 @@
 // scripts/votes-reps-scraper.js
 // Purpose: Scrape House roll call votes for the 119th Congress (sessions 2025 + 2026)
 // Directly fetches rollNNN.xml files from clerk.house.gov
-// Updates representatives-rankings.json with yea/nay/missed tallies
+// Enriches representatives-rankings.json with yea/nay/missed tallies
 
 const fs = require('fs');
 const path = require('path');
@@ -29,7 +29,7 @@ function findBioguide(last, state, district) {
   return match?.id.bioguide;
 }
 
-function ensureRepShape(rep) {
+function ensureVoteShape(rep) {
   rep.yeaVotes = rep.yeaVotes || 0;
   rep.nayVotes = rep.nayVotes || 0;
   rep.missedVotes = rep.missedVotes || 0;
@@ -53,7 +53,7 @@ async function fetchRoll(year, roll) {
 }
 
 (async function main() {
-  const reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureRepShape);
+  const reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureVoteShape);
   const repMap = new Map(reps.map(r => [r.bioguideId, r]));
 
   let attached = 0;
