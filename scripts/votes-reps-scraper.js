@@ -1,6 +1,6 @@
 // scripts/votes-reps-scraper.js
 // Purpose: Scrape House roll call votes for the 119th Congress (sessions 2025 + 2026)
-// Uses Clerk index pages to find all published roll calls, then parses XML
+// Directly fetches rollNNN.xml files from clerk.house.gov
 // Updates representatives-rankings.json with yea/nay/missed tallies
 
 const fs = require('fs');
@@ -11,11 +11,8 @@ const { DOMParser } = require('@xmldom/xmldom');
 const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
 const ROSTER_PATH = path.join(__dirname, '..', 'public', 'legislators-current.json');
 
-// Correct index pages for House votes
-const INDEX_URLS = [
-  'https://clerk.house.gov/evs/2025/index.asp',
-  'https://clerk.house.gov/evs/2026/index.asp'
-];
+// Sessions to cover (expandable for future years)
+const SESSIONS = [2025, 2026];
 
 // Load roster for matching
 const roster = JSON.parse(fs.readFileSync(ROSTER_PATH, 'utf-8'));
@@ -39,17 +36,17 @@ function ensureRepShape(rep) {
   return rep;
 }
 
-async function getRollUrls(indexUrl) {
-  const res = await fetch(indexUrl);
-  if (!res.ok) {
-    console.error(`Failed to fetch index ${indexUrl}: ${res.status}`);
-    return [];
+async function fetchRoll(year, roll) {
+  const rollStr = String(roll).padStart(3, '0');
+  const url = `https://clerk.house.gov/evs/${year}/roll${rollStr}.xml`;
+  try {
+    const res = await fetch(url);
+    if (!res.ok) return null;
+    const xml = await res.text();
+    return { url, xml };
+  } catch {
+    return null;
   }
-  const html = await res.text();
-  // Extract roll call XML links like /evs/2025/roll428.xml
-  const regex = /\/evs\/\d{4}\/roll\d{3}\.xml/g;
-  const matches = html.match(regex) || [];
-  return matches.map(m => `https://clerk.house.gov${m}`);
 }
 
 (async function main() {
@@ -58,25 +55,23 @@ async function getRollUrls(indexUrl) {
 
   let attached = 0;
 
-  for (const indexUrl of INDEX_URLS) {
-    const rollUrls = await getRollUrls(indexUrl);
-    console.log(`Found ${rollUrls.length} roll calls at ${indexUrl}`);
+  for (const year of SESSIONS) {
+    console.log(`Scanning roll calls for ${year}...`);
+    let consecutiveFails = 0;
 
-    for (const url of rollUrls) {
-      let res;
-      try {
-        res = await fetch(url);
-      } catch (err) {
-        console.error(`Fetch failed for ${url}: ${err.message}`);
+    for (let roll = 1; roll <= 1000; roll++) {
+      const result = await fetchRoll(year, roll);
+      if (!result) {
+        consecutiveFails++;
+        if (consecutiveFails > 20) {
+          console.log(`Stopping at roll ${roll} for ${year} (too many misses)`);
+          break;
+        }
         continue;
       }
-      if (!res.ok) {
-        console.error(`Bad response ${res.status} for ${url}`);
-        continue;
-      }
+      consecutiveFails = 0;
 
-      const xml = await res.text();
-      const doc = new DOMParser().parseFromString(xml, 'text/xml');
+      const doc = new DOMParser().parseFromString(result.xml, 'text/xml');
       const members = doc.getElementsByTagName('recorded-vote');
 
       for (let j = 0; j < members.length; j++) {
