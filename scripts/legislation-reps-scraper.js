@@ -25,20 +25,28 @@ async function fetchAllPages(url) {
   let next = url;
   while (next) {
     const res = await fetch(next);
-    if (!res.ok) break;
+    if (!res.ok) {
+      console.error(`Bad response for ${next}: ${res.status}`);
+      break;
+    }
     const data = await res.json();
-    const items = data?.bills || [];
+
+    // Congress.gov returns "legislation" not "bills"
+    const items = data?.legislation || [];
     results = results.concat(items);
-    next = data?.pagination?.next_url ? `${BASE}${data.pagination.next_url}&api_key=${API_KEY}` : null;
+
+    next = data?.pagination?.next_url
+      ? `${BASE}${data.pagination.next_url}&api_key=${API_KEY}`
+      : null;
   }
   return results;
 }
 
 function countBecameLawBills(items) {
-  return items.filter(b => (b.latest_action?.action?.toLowerCase() || '').includes('became public law')).length;
+  return items.filter(b => (b.latestAction?.action?.toLowerCase() || '').includes('became public law')).length;
 }
 function countBecameLawAmendments(items) {
-  return items.filter(a => (a.latest_action?.action?.toLowerCase() || '').includes('agreed to')).length;
+  return items.filter(a => (a.latestAction?.action?.toLowerCase() || '').includes('agreed to')).length;
 }
 
 (async function main() {
@@ -75,6 +83,11 @@ function countBecameLawAmendments(items) {
     const cosponsoredAmendments = await fetchAllPages(cosponsoredAmendmentsUrl);
     r.cosponsoredAmendments = cosponsoredAmendments.length;
     r.becameLawCosponsoredAmendments = countBecameLawAmendments(cosponsoredAmendments);
+
+    // Debug: log one sample
+    if (bioguide === 'A000055') {
+      console.log('Sample sponsored legislation for Aderholt:', sponsoredBills[0]);
+    }
   }
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(reps, null, 2));
