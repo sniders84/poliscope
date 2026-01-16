@@ -1,35 +1,70 @@
 // scripts/merge-reps.js
-// Purpose: Ensure representatives-rankings.json entries are complete and consistent after scrapers run
+// Purpose: Merge House representative data into a unified rankings file for the 119th Congress
 
 const fs = require('fs');
 const path = require('path');
 
 const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
 
+// Inputs: each scraper writes its own JSON file
+const LEGIS_PATH = path.join(__dirname, '..', 'public', 'representatives-legislation.json');
+const COMM_PATH  = path.join(__dirname, '..', 'public', 'representatives-committees.json');
+const VOTES_PATH = path.join(__dirname, '..', 'public', 'representatives-votes.json');
+
+function normalize(rep) {
+  return {
+    name: rep.name,
+    bioguideId: rep.bioguideId,
+    state: rep.state,
+    party: rep.party,
+    sponsoredBills: rep.sponsoredBills || 0,
+    cosponsoredBills: rep.cosponsoredBills || 0,
+    sponsoredAmendments: rep.sponsoredAmendments || 0,
+    cosponsoredAmendments: rep.cosponsoredAmendments || 0,
+    becameLawBills: rep.becameLawBills || 0,
+    becameLawAmendments: rep.becameLawAmendments || 0,
+    becameLawCosponsoredAmendments: rep.becameLawCosponsoredAmendments || 0,
+    committees: rep.committees || [],
+    yeaVotes: rep.yeaVotes || 0,
+    nayVotes: rep.nayVotes || 0,
+    missedVotes: rep.missedVotes || 0,
+    totalVotes: rep.totalVotes || 0,
+    participationPct: rep.participationPct || 0,
+    missedVotePct: rep.missedVotePct || 0,
+    rawScore: rep.rawScore || 0,
+    score: rep.score || 0,
+    scoreNormalized: rep.scoreNormalized || 0
+  };
+}
+
 (function main() {
-  const reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8'));
+  const legis = fs.existsSync(LEGIS_PATH) ? JSON.parse(fs.readFileSync(LEGIS_PATH)) : [];
+  const comms = fs.existsSync(COMM_PATH)  ? JSON.parse(fs.readFileSync(COMM_PATH))  : [];
+  const votes = fs.existsSync(VOTES_PATH) ? JSON.parse(fs.readFileSync(VOTES_PATH)) : [];
 
-  reps.forEach(r => {
-    // enforce schema completeness
-    r.sponsoredBills = r.sponsoredBills || 0;
-    r.sponsoredAmendments = r.sponsoredAmendments || 0;
-    r.cosponsoredBills = r.cosponsoredBills || 0;
-    r.cosponsoredAmendments = r.cosponsoredAmendments || 0;
-    r.becameLawBills = r.becameLawBills || 0;
-    r.becameLawAmendments = r.becameLawAmendments || 0;
-    r.becameLawCosponsoredAmendments = r.becameLawCosponsoredAmendments || 0;
-    r.committees = Array.isArray(r.committees) ? r.committees : [];
-    r.yeaVotes = r.yeaVotes || 0;
-    r.nayVotes = r.nayVotes || 0;
-    r.missedVotes = r.missedVotes || 0;
-    r.totalVotes = r.totalVotes || 0;
-    r.participationPct = r.participationPct || 0;
-    r.missedVotePct = r.missedVotePct || 0;
-    r.rawScore = r.rawScore || 0;
-    r.score = r.score || 0;
-    r.scoreNormalized = r.scoreNormalized || 0;
-  });
+  // Index by bioguideId
+  const map = new Map();
+  for (const r of legis) map.set(r.bioguideId, normalize(r));
 
-  fs.writeFileSync(OUT_PATH, JSON.stringify(reps, null, 2));
-  console.log(`Merge complete: ${reps.length} representatives normalized and schema enforced`);
+  for (const r of comms) {
+    if (!map.has(r.bioguideId)) map.set(r.bioguideId, normalize(r));
+    map.get(r.bioguideId).committees = r.committees || [];
+  }
+
+  for (const r of votes) {
+    if (!map.has(r.bioguideId)) map.set(r.bioguideId, normalize(r));
+    Object.assign(map.get(r.bioguideId), {
+      yeaVotes: r.yeaVotes || 0,
+      nayVotes: r.nayVotes || 0,
+      missedVotes: r.missedVotes || 0,
+      totalVotes: r.totalVotes || 0,
+      participationPct: r.participationPct || 0,
+      missedVotePct: r.missedVotePct || 0
+    });
+  }
+
+  const merged = Array.from(map.values());
+
+  fs.writeFileSync(OUT_PATH, JSON.stringify(merged, null, 2));
+  console.log(`Merge complete: ${merged.length} representatives normalized and schema enforced for Congress ${CONGRESS}`);
 })();
