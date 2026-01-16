@@ -107,4 +107,6 @@ async function fetchRoll(year, roll) {
     }
   }
 
-  fs.writeFileSync(OUT_PATH, JSON.stringify(re
+  fs.writeFileSync(OUT_PATH, JSON.stringify(reps, null, 2));
+  console.log(`House votes updated: ${attached} member-votes attached`);
+})();
