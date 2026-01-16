@@ -1,5 +1,5 @@
 // scripts/legislation-reps-scraper.js
-// Purpose: Pull House legislation via Congress.gov API and update representatives-rankings.json
+// Purpose: Pull House legislation for the 119th Congress via Congress.gov API
 
 const fs = require('fs');
 const path = require('path');
@@ -8,6 +8,7 @@ const fetch = require('node-fetch');
 const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
 const API_KEY = process.env.CONGRESS_API_KEY;
 const BASE = 'https://api.congress.gov/v3';
+const CONGRESS = 119; // lock to current "season"
 
 function ensureLegislationShape(rep) {
   rep.sponsoredBills = rep.sponsoredBills || 0;
@@ -30,11 +31,8 @@ async function fetchAllPages(url) {
       break;
     }
     const data = await res.json();
-
-    // Congress.gov member endpoints return "legislation"
     const items = data?.legislation || [];
     results = results.concat(items);
-
     next = data?.pagination?.next_url
       ? `${BASE}${data.pagination.next_url}&api_key=${API_KEY}`
       : null;
@@ -62,32 +60,27 @@ function countAgreedTo(items) {
     if (!bioguide) continue;
 
     // Sponsored bills
-    const sponsoredBillsUrl = `${BASE}/member/${bioguide}/sponsored-legislation?api_key=${API_KEY}`;
+    const sponsoredBillsUrl = `${BASE}/member/${bioguide}/sponsored-legislation?congress=${CONGRESS}&api_key=${API_KEY}`;
     const sponsoredBills = await fetchAllPages(sponsoredBillsUrl);
     r.sponsoredBills = sponsoredBills.length;
     r.becameLawBills = countBecameLawBills(sponsoredBills);
 
     // Cosponsored bills
-    const cosponsoredBillsUrl = `${BASE}/member/${bioguide}/cosponsored-legislation?api_key=${API_KEY}`;
+    const cosponsoredBillsUrl = `${BASE}/member/${bioguide}/cosponsored-legislation?congress=${CONGRESS}&api_key=${API_KEY}`;
     const cosponsoredBills = await fetchAllPages(cosponsoredBillsUrl);
     r.cosponsoredBills = cosponsoredBills.length;
 
     // Sponsored amendments
-    const sponsoredAmendmentsUrl = `${BASE}/member/${bioguide}/sponsored-legislation?bill_type=amendment&api_key=${API_KEY}`;
+    const sponsoredAmendmentsUrl = `${BASE}/member/${bioguide}/sponsored-legislation?congress=${CONGRESS}&bill_type=amendment&api_key=${API_KEY}`;
     const sponsoredAmendments = await fetchAllPages(sponsoredAmendmentsUrl);
     r.sponsoredAmendments = sponsoredAmendments.length;
     r.becameLawAmendments = countAgreedTo(sponsoredAmendments);
 
     // Cosponsored amendments
-    const cosponsoredAmendmentsUrl = `${BASE}/member/${bioguide}/cosponsored-legislation?bill_type=amendment&api_key=${API_KEY}`;
+    const cosponsoredAmendmentsUrl = `${BASE}/member/${bioguide}/cosponsored-legislation?congress=${CONGRESS}&bill_type=amendment&api_key=${API_KEY}`;
     const cosponsoredAmendments = await fetchAllPages(cosponsoredAmendmentsUrl);
     r.cosponsoredAmendments = cosponsoredAmendments.length;
     r.becameLawCosponsoredAmendments = countAgreedTo(cosponsoredAmendments);
-
-    // Debug: log one sample to confirm payload shape
-    if (bioguide === 'A000055' && sponsoredBills.length) {
-      console.log('Sample sponsored legislation for Aderholt:', sponsoredBills[0]);
-    }
   }
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(reps, null, 2));
