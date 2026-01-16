@@ -7468,7 +7468,7 @@
     "office": "Representative",
     "sponsoredBills": 1,
     "cosponsoredBills": 0,
-    "sponsoredAmendments": 1,
+    "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
     "becameLawAmendments": 0,
@@ -7502,9 +7502,9 @@
     "totalVotes": 362,
     "participationPct": 95.86,
     "missedVotePct": 4.14,
-    "rawScore": 359,
-    "score": 359,
-    "scoreNormalized": 95.73
+    "rawScore": 358,
+    "score": 358,
+    "scoreNormalized": 95.47
   },
   {
     "name": "Ted Lieu",
