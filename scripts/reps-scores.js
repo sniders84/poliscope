@@ -1,4 +1,3 @@
-
 // scripts/reps-scores.js
 // Purpose: Compute composite scores for House representatives based on 119th Congress data
 // Enriches representatives-rankings.json directly with rawScore, score, and scoreNormalized
@@ -21,6 +20,7 @@ function computeScore(rep) {
     (rep.sponsoredAmendments * amendWeight) +
     (rep.cosponsoredAmendments * amendWeight) +
     (rep.becameLawBills * billWeight) +
+    (rep.becameLawCosponsoredBills * billWeight) +              // added
     (rep.becameLawAmendments * amendWeight) +
     (rep.becameLawCosponsoredAmendments * amendWeight) +
     (Array.isArray(rep.committees) ? rep.committees.length * committeeWeight : 0) +
@@ -36,7 +36,7 @@ function computeScore(rep) {
   // Compute raw scores
   for (const r of reps) {
     r.rawScore = computeScore(r);
-    r.score = r.rawScore;
+    r.score = r.rawScore; // currently identical, but can diverge if you add scaling
   }
 
   // Normalize scores 0–100
