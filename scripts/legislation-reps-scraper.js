@@ -17,11 +17,11 @@ function ensureShape(rep) {
   rep.sponsoredBills ??= 0;
   rep.cosponsoredBills ??= 0;
   rep.becameLawBills ??= 0;
-  rep.becameLawCosponsoredBills ??= 0;
+  rep.becameLawCosponsoredBills ??= 0; // NEW FIELD
   rep.sponsoredAmendments ??= 0;
   rep.cosponsoredAmendments ??= 0;
   rep.becameLawAmendments ??= 0;
-  rep.becameLawCosponsoredAmendments ??= 0;
+  rep.becameLawCosponsoredAmendments ??= 0; // NEW FIELD
   return rep;
 }
 
