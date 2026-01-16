@@ -1,32 +1,24 @@
-// scripts/bootstrap-reps.js
-// Purpose: Bootstrap representatives-rankings.json with all House members in the 119th Congress
+// scripts/bootstrap-rankings.js
+// Purpose: Initialize representatives-rankings.json and senators-rankings.json
+// with full identity fields from legislators-current.json
 
 const fs = require('fs');
 const path = require('path');
-const fetch = require('node-fetch');
 
-const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
-const API_KEY = process.env.CONGRESS_API_KEY;
-const BASE = 'https://api.congress.gov/v3';
-const CONGRESS = 119;
+const ROSTER_PATH = path.join(__dirname, '..', 'public', 'legislators-current.json');
+const REPS_OUT = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
+const SENATORS_OUT = path.join(__dirname, '..', 'public', 'senators-rankings.json');
 
-(async function main() {
-  if (!API_KEY) {
-    console.error('Missing CONGRESS_API_KEY');
-    process.exit(1);
-  }
+const roster = JSON.parse(fs.readFileSync(ROSTER_PATH, 'utf-8'));
 
-  const url = `${BASE}/member/congress/${CONGRESS}?api_key=${API_KEY}`;
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`Failed to fetch members: ${res.status}`);
-  const data = await res.json();
-
-  const reps = (data.members || []).filter(m => m.chamber === 'House').map(m => ({
-    name: m.fullName,
-    bioguideId: m.bioguideId,
-    state: m.state,
-    district: m.district,
-    party: m.party,
+function baseRecord(rep, office) {
+  const lastTerm = rep.terms[rep.terms.length - 1];
+  return {
+    bioguideId: rep.id.bioguide,
+    name: `${rep.name.first} ${rep.name.last}`,
+    state: lastTerm.state,
+    party: lastTerm.party,
+    office,
     sponsoredBills: 0,
     cosponsoredBills: 0,
     sponsoredAmendments: 0,
@@ -44,8 +36,18 @@ const CONGRESS = 119;
     rawScore: 0,
     score: 0,
     scoreNormalized: 0
-  }));
+  };
+}
 
-  fs.writeFileSync(OUT_PATH, JSON.stringify(reps, null, 2));
-  console.log(`Bootstrapped representatives-rankings.json with ${reps.length} House members for Congress ${CONGRESS}`);
-})();
+const reps = roster
+  .filter(r => r.terms.some(t => t.type === 'rep'))
+  .map(r => baseRecord(r, 'Representative'));
+
+const senators = roster
+  .filter(r => r.terms.some(t => t.type === 'sen'))
+  .map(r => baseRecord(r, 'Senator'));
+
+fs.writeFileSync(REPS_OUT, JSON.stringify(reps, null, 2));
+fs.writeFileSync(SENATORS_OUT, JSON.stringify(senators, null, 2));
+
+console.log(`Bootstrapped ${reps.length} representatives and ${senators.length} senators`);
