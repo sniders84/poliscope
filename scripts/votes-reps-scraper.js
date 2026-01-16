@@ -17,12 +17,15 @@ const SESSIONS = [2025, 2026];
 // Load roster for matching
 const roster = JSON.parse(fs.readFileSync(ROSTER_PATH, 'utf-8'));
 
-function findBioguide(first, last, state, district) {
-  const match = roster.find(m =>
-    m.name.last.toLowerCase() === last.toLowerCase() &&
-    m.name.first.toLowerCase().startsWith(first.toLowerCase()) &&
-    m.terms.some(t => t.state === state && String(t.district) === String(district))
-  );
+function findBioguide(last, state, district) {
+  const match = roster.find(m => {
+    const lastTerm = m.terms[m.terms.length - 1];
+    return (
+      m.name.last.toLowerCase() === last.toLowerCase() &&
+      lastTerm.state === state &&
+      String(lastTerm.district) === String(district)
+    );
+  });
   return match?.id.bioguide;
 }
 
@@ -77,13 +80,12 @@ async function fetchRoll(year, roll) {
       for (let j = 0; j < members.length; j++) {
         const m = members.item(j);
         const legislator = m.getElementsByTagName('legislator')[0];
-        const first = legislator?.getAttribute('first');
         const last = legislator?.getAttribute('last');
         const state = legislator?.getAttribute('state');
         const district = legislator?.getAttribute('district');
         const voteCast = m.getElementsByTagName('vote')[0]?.textContent;
 
-        const bioguide = findBioguide(first, last, state, district);
+        const bioguide = findBioguide(last, state, district);
         if (!bioguide || !voteCast) continue;
         if (!repMap.has(bioguide)) continue;
 
