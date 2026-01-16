@@ -1,38 +1,57 @@
 // scripts/committee-reps-scraper.js
-// Purpose: Attach committee memberships + leadership flags for House Representatives
-// Source: public/house-committee-membership-current.json (or .yaml)
+// Purpose: Map House committees (object keyed by committee code) into representatives-rankings.json
+// Explicitly parse "Chairman" and "Ranking Member" roles
 
 const fs = require('fs');
 const path = require('path');
 
 const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
-const COMMITTEE_SOURCE = path.join(__dirname, '..', 'public', 'house-committee-membership-current.json');
+const COMMITTEES_PATH = path.join(__dirname, '..', 'public', 'house-committees-current.json');
+
+function ensureCommitteesShape(rep) {
+  rep.committees = Array.isArray(rep.committees) ? rep.committees : [];
+  return rep;
+}
 
 (function main() {
-  const reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8'));
+  const reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureCommitteesShape);
+  const committeesDataRaw = JSON.parse(fs.readFileSync(COMMITTEES_PATH, 'utf-8'));
+
   const repMap = new Map(reps.map(r => [r.bioguideId, r]));
 
-  if (!fs.existsSync(COMMITTEE_SOURCE)) {
-    console.log('No house-committee-membership-current.json found; skipping committees');
-    fs.writeFileSync(OUT_PATH, JSON.stringify(reps, null, 2));
-    return;
-  }
+  // committeesDataRaw is an object keyed by committee code, each value is an array of members
+  for (const [committeeCode, members] of Object.entries(committeesDataRaw)) {
+    if (!Array.isArray(members)) continue;
 
-  const memberships = JSON.parse(fs.readFileSync(COMMITTEE_SOURCE, 'utf-8'));
-  let updated = 0, skipped = 0;
+    for (const m of members) {
+      const bio = m.bioguide;
+      if (!bio || !repMap.has(bio)) continue;
 
-  for (const [bioguideId, committees] of Object.entries(memberships)) {
-    if (!repMap.has(bioguideId)) { skipped++; continue; }
-    const rep = repMap.get(bioguideId);
-    rep.committees = committees.map(c => ({
-      code: c.code,
-      name: c.name,
-      role: c.role || 'Member',
-      leadership: (c.role === 'Chairman' || c.role === 'Ranking Member')
-    }));
-    updated++;
+      const rep = repMap.get(bio);
+
+      // Normalize role
+      let role = 'Member';
+      if (m.title) {
+        const t = m.title.toLowerCase();
+        if (t.includes('chairman')) {
+          role = 'Chairman';
+        } else if (t.includes('ranking')) {
+          role = 'Ranking Member';
+        } else {
+          role = m.title;
+        }
+      }
+
+      rep.committees.push({
+        committee: committeeCode,
+        committeeName: m.committeeName || committeeCode, // plug in a lookup table if you have one
+        role,
+        rank: m.rank ?? null,
+        party: m.party || null
+      });
+    }
   }
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(reps, null, 2));
-  console.log(`Committees updated for ${updated} representatives (skipped ${skipped})`);
+  console.log(`Updated committees for ${reps.length} representatives`);
 })();
