@@ -1,6 +1,6 @@
 // scripts/votes-senators-scraper.js
 // Purpose: Scrape Senate roll call votes for the 119th Congress (2025 + 2026)
-// Robust XML parsing with fast-xml-parser, flood-controlled logging
+// Parses LIS XML feeds, flood-controlled logging
 
 const fs = require('fs');
 const path = require('path');
@@ -17,9 +17,6 @@ const parser = new XMLParser({
   ignoreAttributes: false,
   attributeNamePrefix: '',
   trimValues: true,
-  parseTagValue: true,
-  parseAttributeValue: true,
-  htmlEntities: true,
 });
 
 function ensureVoteShape(s) {
@@ -50,8 +47,7 @@ async function fetchRoll(year, roll) {
   try {
     const res = await fetch(url);
     if (!res.ok) return null;
-    const xml = await res.text();
-    return xml;
+    return await res.text();
   } catch {
     return null;
   }
@@ -66,33 +62,24 @@ async function fetchRoll(year, roll) {
   for (const year of SESSIONS) {
     console.log(`Scanning Senate roll calls for ${year}...`);
     let consecutiveFails = 0;
-    let processed = 0;
 
     for (let roll = 1; roll <= 1200; roll++) {
       const xml = await fetchRoll(year, roll);
       if (!xml) {
         consecutiveFails++;
-        if (consecutiveFails > 200) {
-          console.log(`Stopping at roll ${roll} for ${year} (too many misses)`);
-          break;
-        }
+        if (consecutiveFails > 200) break;
         continue;
       }
       consecutiveFails = 0;
-      processed++;
 
       let doc;
-      try {
-        doc = parser.parse(xml);
-      } catch {
-        continue;
-      }
+      try { doc = parser.parse(xml); } catch { continue; }
 
       const members = doc?.roll_call_vote?.members?.member || [];
       const arr = Array.isArray(members) ? members : [members];
 
       for (const m of arr) {
-        const lisId = m.lis_member_id || m.member_id || null;
+        const lisId = m.lis_member_id || null;
         const last = m.last_name || '';
         const state = m.state || '';
         const voteCast = (m.vote_cast || '').toLowerCase();
@@ -108,10 +95,6 @@ async function fetchRoll(year, roll) {
         else sen.missedVotes++;
         attached++;
       }
-
-      if (processed % 100 === 0) {
-        console.log(`Processed ${processed} rolls for ${year}...`);
-      }
     }
   }
 
@@ -120,9 +103,6 @@ async function fetchRoll(year, roll) {
       const participated = s.yeaVotes + s.nayVotes;
       s.participationPct = Number(((participated / s.totalVotes) * 100).toFixed(2));
       s.missedVotePct = Number(((s.missedVotes / s.totalVotes) * 100).toFixed(2));
-    } else {
-      s.participationPct = 0;
-      s.missedVotePct = 0;
     }
   }
 
