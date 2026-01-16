@@ -32,13 +32,11 @@ function computeScore(rep) {
 (function main() {
   const reps = JSON.parse(fs.readFileSync(IN_PATH, 'utf-8'));
 
-  // Compute raw scores
   for (const r of reps) {
     r.rawScore = computeScore(r);
-    r.score = r.rawScore; // can add adjustments if needed
+    r.score = r.rawScore;
   }
 
-  // Normalize scores to 0–100 scale
   const maxScore = Math.max(...reps.map(r => r.score));
   for (const r of reps) {
     r.scoreNormalized = maxScore > 0 ? Number(((r.score / maxScore) * 100).toFixed(2)) : 0;
