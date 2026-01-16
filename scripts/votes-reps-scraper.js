@@ -1,6 +1,7 @@
 // scripts/votes-reps-scraper.js
-// Purpose: Scrape House roll call votes from Clerk XML feeds for the 119th Congress (sessions 1 & 2)
-// Updates representatives-rankings.json with yea/nay/missed totals and participation percentages
+// Purpose: Scrape House roll call votes for the 119th Congress (sessions 2025 + 2026)
+// Uses Clerk index pages to find all published roll calls, then parses XML
+// Updates representatives-rankings.json with yea/nay/missed tallies
 
 const fs = require('fs');
 const path = require('path');
@@ -10,8 +11,11 @@ const { DOMParser } = require('@xmldom/xmldom');
 const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
 const ROSTER_PATH = path.join(__dirname, '..', 'public', 'legislators-current.json');
 
-const YEARS = [2025, 2026]; // Session 1 and Session 2
-const MAX_VOTE = 1000;      // safe upper bound of roll calls to attempt
+// Index pages for House votes
+const INDEX_URLS = [
+  'https://clerk.house.gov/Votes/2025',
+  'https://clerk.house.gov/Votes/2026'
+];
 
 // Load roster for matching
 const roster = JSON.parse(fs.readFileSync(ROSTER_PATH, 'utf-8'));
@@ -35,18 +39,30 @@ function ensureRepShape(rep) {
   return rep;
 }
 
+async function getRollUrls(indexUrl) {
+  const res = await fetch(indexUrl);
+  if (!res.ok) {
+    console.error(`Failed to fetch index ${indexUrl}: ${res.status}`);
+    return [];
+  }
+  const html = await res.text();
+  // Extract roll call XML links like /evs/2025/roll428.xml
+  const regex = /\/evs\/\d{4}\/roll\d{3}\.xml/g;
+  const matches = html.match(regex) || [];
+  return matches.map(m => `https://clerk.house.gov${m}`);
+}
+
 (async function main() {
   const reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureRepShape);
   const repMap = new Map(reps.map(r => [r.bioguideId, r]));
 
-  let processed = 0;
   let attached = 0;
 
-  for (const year of YEARS) {
-    for (let i = 1; i <= MAX_VOTE; i++) {
-      const roll = String(i).padStart(3, '0');
-      const url = `https://clerk.house.gov/evs/${year}/roll${roll}.xml`;
+  for (const indexUrl of INDEX_URLS) {
+    const rollUrls = await getRollUrls(indexUrl);
+    console.log(`Found ${rollUrls.length} roll calls at ${indexUrl}`);
 
+    for (const url of rollUrls) {
       let res;
       try {
         res = await fetch(url);
@@ -55,15 +71,13 @@ function ensureRepShape(rep) {
         continue;
       }
       if (!res.ok) {
-        if (res.status !== 404) console.error(`Bad response ${res.status} for ${url}`);
-        continue; // skip 404s gracefully
+        console.error(`Bad response ${res.status} for ${url}`);
+        continue;
       }
 
       const xml = await res.text();
       const doc = new DOMParser().parseFromString(xml, 'text/xml');
       const members = doc.getElementsByTagName('recorded-vote');
-
-      if (!members || members.length === 0) continue;
 
       for (let j = 0; j < members.length; j++) {
         const m = members.item(j);
@@ -88,8 +102,6 @@ function ensureRepShape(rep) {
 
         attached++;
       }
-
-      processed++;
     }
   }
 
@@ -103,5 +115,5 @@ function ensureRepShape(rep) {
   }
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(reps, null, 2));
-  console.log(`House votes updated: ${processed} roll calls processed; ${attached} member-votes attached`);
+  console.log(`House votes updated: ${attached} member-votes attached`);
 })();
