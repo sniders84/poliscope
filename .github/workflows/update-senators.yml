@@ -51,7 +51,7 @@ jobs:
         run: node scripts/merge-senators.js
 
       - name: Generate Senate scores
-        run: node scripts/senators-score.js
+        run: node scripts/senators-scores.js   # corrected filename
 
       # --- House pipeline ---
       - name: Bootstrap Representatives rankings file
