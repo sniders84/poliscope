@@ -1,13 +1,12 @@
 // scripts/bootstrap-senators.js
-// Purpose: Bootstrap senators-rankings.json with all Senate members in the 119th Congress
-// Uses legislators-current.json as source of truth (no API key required)
+// Purpose: Bootstrap senators-rankings.json with all current Senators
+// Uses legislators-current.json; filters by last term type === 'sen' and end date in the future
 
 const fs = require('fs');
 const path = require('path');
 
 const ROSTER_PATH = path.join(__dirname, '..', 'public', 'legislators-current.json');
 const OUT_PATH = path.join(__dirname, '..', 'public', 'senators-rankings.json');
-const CONGRESS = 119;
 
 const roster = JSON.parse(fs.readFileSync(ROSTER_PATH, 'utf-8'));
 
@@ -45,9 +44,13 @@ function baseRecord(sen) {
   };
 }
 
+// Current Senators: last term is 'sen' and still serving
 const sens = roster
-  .filter(r => r.terms.some(t => t.type === 'sen' && t.congress === CONGRESS))
+  .filter(r => {
+    const t = r.terms[r.terms.length - 1];
+    return t.type === 'sen' && new Date(t.end) > new Date();
+  })
   .map(baseRecord);
 
 fs.writeFileSync(OUT_PATH, JSON.stringify(sens, null, 2));
-console.log(`Bootstrapped senators-rankings.json with ${sens.length} Senators for Congress ${CONGRESS}`);
+console.log(`Bootstrapped senators-rankings.json with ${sens.length} current Senators`);
