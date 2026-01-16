@@ -1,6 +1,6 @@
 // scripts/legislation-senators-scraper.js
 // Purpose: Scrape Senate legislation (bills + resolutions + amendments) for the 119th Congress
-// Enriches senators-rankings.json with sponsor/cosponsor counts and became-law tallies (including cosponsored)
+// Enriches senators-rankings.json with sponsor/cosponsor counts and became-law tallies
 
 const fs = require('fs');
 const path = require('path');
@@ -10,6 +10,7 @@ const OUT_PATH = path.join(__dirname, '..', 'public', 'senators-rankings.json');
 const API_KEY = process.env.CONGRESS_API_KEY;
 const CONGRESS = 119;
 
+// Senate bill/resolution types
 const TYPES = ['s', 'sres', 'sconres', 'sjres'];
 
 function ensureShape(sen) {
@@ -100,12 +101,17 @@ function inc(map, id, field) {
         const sponsors = normalizePeople(bill.sponsors);
         const inlineCosponsors = bill.cosponsors?.items || [];
 
+        // Sponsors
         for (const s of sponsors) {
           if (inc(senMap, s.bioguideId, 'sponsoredBills')) attached++;
         }
+
+        // Cosponsors (inline)
         for (const c of inlineCosponsors) {
           if (inc(senMap, c.bioguideId, 'cosponsoredBills')) attached++;
         }
+
+        // Cosponsors (list URL)
         if (bill.cosponsors?.url) {
           const cosponsorPages = await fetchAllPages(`${bill.cosponsors.url}&api_key=${API_KEY}&format=json`);
           for (const c of cosponsorPages) {
@@ -113,6 +119,7 @@ function inc(map, id, field) {
           }
         }
 
+        // Became law
         if (becamePublicLaw(bill.latestAction)) {
           for (const s of sponsors) {
             if (inc(senMap, s.bioguideId, 'becameLawBills')) lawsBillsSponsor++;
@@ -130,7 +137,7 @@ function inc(map, id, field) {
       }
     }
 
-    // Amendments (Senate-origin)
+    // Amendments (Senate-origin only)
     const amdListUrl = `https://api.congress.gov/v3/amendment/${CONGRESS}?api_key=${API_KEY}&format=json&pageSize=250&offset=0`;
     const amendments = await fetchAllPages(amdListUrl);
 
@@ -178,8 +185,9 @@ function inc(map, id, field) {
       `became law — bills (sponsor): ${lawsBillsSponsor}, bills (cosponsor): ${lawsBillsCosponsor}, ` +
       `amendments (sponsor): ${lawsAmendsSponsor}, amendments (cosponsor): ${lawsAmendsCosponsor}`
     );
-  } catch (err) {
-    console.error('Senate legislation scraper failed:', err.message);
-    process.exit(1);
-  }
-})();
+
+    // Optional: log top counts per senator for sanity check
+    sens.slice(0,5).forEach(s => {
+      console.log(`${s.name}: sponsoredBills=${s.sponsoredBills}, cosponsoredBills=${s.cosponsoredBills}`);
+    });
+  } catch
