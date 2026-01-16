@@ -1,12 +1,12 @@
 // scripts/legislation-reps-scraper.js
 // Purpose: Scrape House legislation (bills + resolutions) for the 119th Congress
-// Updates representatives-legislation.json with sponsor/cosponsor counts
+// Enriches representatives-rankings.json with sponsor/cosponsor counts
 
 const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
 
-const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-legislation.json');
+const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
 const API_KEY = process.env.CONGRESS_API_KEY;
 const CONGRESS = 119;
 
@@ -41,8 +41,22 @@ async function fetchDetail(billUrl) {
   return data.bill;
 }
 
+function ensureLegislationShape(rep) {
+  rep.sponsoredBills = rep.sponsoredBills || 0;
+  rep.cosponsoredBills = rep.cosponsoredBills || 0;
+  rep.sponsoredAmendments = rep.sponsoredAmendments || 0;
+  rep.cosponsoredAmendments = rep.cosponsoredAmendments || 0;
+  rep.becameLawBills = rep.becameLawBills || 0;
+  rep.becameLawAmendments = rep.becameLawAmendments || 0;
+  rep.becameLawCosponsoredAmendments = rep.becameLawCosponsoredAmendments || 0;
+  return rep;
+}
+
 (async function main() {
-  const repsMap = new Map(); // keyed by bioguideId
+  const reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureLegislationShape);
+  const repMap = new Map(reps.map(r => [r.bioguideId, r]));
+
+  let attached = 0;
 
   for (const type of TYPES) {
     let url = `https://api.congress.gov/v3/bill/${CONGRESS}/${type}?api_key=${API_KEY}&format=json&pageSize=250&offset=0`;
@@ -52,27 +66,24 @@ async function fetchDetail(billUrl) {
       const detail = await fetchDetail(bill.url);
       if (!detail) continue;
 
-      // Sponsors: always an array
+      // Sponsors
       for (const s of detail.sponsors || []) {
-        if (s.bioguideId) {
-          const id = s.bioguideId;
-          if (!repsMap.has(id)) repsMap.set(id, { bioguideId: id, sponsoredBills: 0, cosponsoredBills: 0 });
-          repsMap.get(id).sponsoredBills++;
+        if (s.bioguideId && repMap.has(s.bioguideId)) {
+          repMap.get(s.bioguideId).sponsoredBills++;
+          attached++;
         }
       }
 
-      // Cosponsors: object with items array
+      // Cosponsors
       for (const c of detail.cosponsors?.items || []) {
-        if (c.bioguideId) {
-          const id = c.bioguideId;
-          if (!repsMap.has(id)) repsMap.set(id, { bioguideId: id, sponsoredBills: 0, cosponsoredBills: 0 });
-          repsMap.get(id).cosponsoredBills++;
+        if (c.bioguideId && repMap.has(c.bioguideId)) {
+          repMap.get(c.bioguideId).cosponsoredBills++;
+          attached++;
         }
       }
     }
   }
 
-  const output = Array.from(repsMap.values());
-  fs.writeFileSync(OUT_PATH, JSON.stringify(output, null, 2));
-  console.log(`Updated representatives-legislation.json with ${output.length} House members and their bill counts`);
+  fs.writeFileSync(OUT_PATH, JSON.stringify(reps, null, 2));
+  console.log(`Updated representatives-rankings.json with legislation counts (${attached} sponsor/cosponsor entries attached)`);
 })();
