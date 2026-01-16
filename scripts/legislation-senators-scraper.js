@@ -186,8 +186,13 @@ function inc(map, id, field) {
       `amendments (sponsor): ${lawsAmendsSponsor}, amendments (cosponsor): ${lawsAmendsCosponsor}`
     );
 
-    // Optional: log top counts per senator for sanity check
+        // Optional: log top counts per senator for sanity check
     sens.slice(0,5).forEach(s => {
       console.log(`${s.name}: sponsoredBills=${s.sponsoredBills}, cosponsoredBills=${s.cosponsoredBills}`);
     });
-  } catch
+  } catch (err) {
+    console.error('Senate legislation scraper failed:', err.message);
+    process.exit(1);
+  }
+})();
+
