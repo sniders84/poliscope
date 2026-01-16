@@ -1,4 +1,3 @@
-
 // scripts/votes-reps-scraper.js
 // Purpose: Scrape House roll call votes for the 119th Congress (sessions 2025 + 2026)
 // Directly fetches rollNNN.xml files from clerk.house.gov
@@ -7,7 +6,7 @@
 const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
-const { DOMParser } = require('@xmldom/xmldom');
+const { XMLParser } = require('fast-xml-parser');
 
 const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
 const ROSTER_PATH = path.join(__dirname, '..', 'public', 'legislators-current.json');
@@ -53,6 +52,12 @@ async function fetchRoll(year, roll) {
   }
 }
 
+const parser = new XMLParser({
+  ignoreAttributes: false,
+  attributeNamePrefix: '',
+  trimValues: true,
+});
+
 (async function main() {
   const reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureVoteShape);
   const repMap = new Map(reps.map(r => [r.bioguideId, r]));
@@ -75,16 +80,21 @@ async function fetchRoll(year, roll) {
       }
       consecutiveFails = 0;
 
-      const doc = new DOMParser().parseFromString(result.xml, 'text/xml');
-      const members = doc.getElementsByTagName('recorded-vote');
+      let doc;
+      try {
+        doc = parser.parse(result.xml);
+      } catch {
+        continue;
+      }
 
-      for (let j = 0; j < members.length; j++) {
-        const m = members.item(j);
-        const legislator = m.getElementsByTagName('legislator')[0];
-        const last = legislator?.getAttribute('last') || legislator?.getAttribute('sort-field');
-        const state = legislator?.getAttribute('state');
-        const district = legislator?.getAttribute('district');
-        const voteCast = m.getElementsByTagName('vote')[0]?.textContent;
+      const members = doc?.rollcall?.members?.member || [];
+      const arr = Array.isArray(members) ? members : [members];
+
+      for (const m of arr) {
+        const last = m.lastname || m.sort_field || '';
+        const state = m.state || '';
+        const district = m.district || 'At-Large';
+        const voteCast = (m.vote || '').trim();
 
         if (!last || !state || !voteCast) continue;
 
