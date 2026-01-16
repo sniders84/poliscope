@@ -1,6 +1,6 @@
 // scripts/legislation-reps-scraper.js
-// Purpose: Scrape House legislation for the 119th Congress
-// Adds sponsor/cosponsor counts and became-law tallies (new fields)
+// Purpose: Scrape House legislation (bills + resolutions + amendments) for the 119th Congress
+// Populates representatives-rankings.json with sponsor/cosponsor counts and became-law tallies
 
 const fs = require('fs');
 const path = require('path');
@@ -9,18 +9,20 @@ const fetch = require('node-fetch');
 const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
 const API_KEY = process.env.CONGRESS_API_KEY;
 const CONGRESS = 119;
+
+// House bill/resolution types
 const TYPES = ['hr', 'hres', 'hconres', 'hjres'];
 
-function ensureShape(r) {
-  r.sponsoredBills ??= 0;
-  r.cosponsoredBills ??= 0;
-  r.becameLawBills ??= 0;
-  r.becameLawCosponsoredBills ??= 0;
-  r.sponsoredAmendments ??= 0;
-  r.cosponsoredAmendments ??= 0;
-  r.becameLawAmendments ??= 0;
-  r.becameLawCosponsoredAmendments ??= 0;
-  return r;
+function ensureShape(rep) {
+  rep.sponsoredBills ??= 0;
+  rep.cosponsoredBills ??= 0;
+  rep.becameLawBills ??= 0;
+  rep.becameLawCosponsoredBills ??= 0;
+  rep.sponsoredAmendments ??= 0;
+  rep.cosponsoredAmendments ??= 0;
+  rep.becameLawAmendments ??= 0;
+  rep.becameLawCosponsoredAmendments ??= 0;
+  return rep;
 }
 
 async function fetchJSON(url) {
