@@ -1,57 +1,59 @@
-// scripts/merge-senators.js
-// Purpose: Consolidate all Senate data into senators-rankings.json
-// Sources: senators-legislation.json, senators-committees.json, senators-votes.json
-
 const fs = require('fs');
 const path = require('path');
 
-const OUT_PATH = path.join(__dirname, '..', 'public', 'senators-rankings.json');
-const LEGIS_PATH = path.join(__dirname, '..', 'public', 'senators-legislation.json');
-const COMM_PATH = path.join(__dirname, '..', 'public', 'senators-committees.json');
-const VOTES_PATH = path.join(__dirname, '..', 'public', 'senators-votes.json');
+const RANKINGS_PATH = path.join(__dirname, '../public/senators-rankings.json');
 
-(function main() {
-  let rankings = [];
+async function main() {
+  console.log('Merge script: consolidating into senators-rankings.json');
 
+  let rankings;
   try {
-    rankings = JSON.parse(fs.readFileSync(LEGIS_PATH, 'utf-8'));
-  } catch {
-    console.error('Failed to load senators-legislation.json');
+    rankings = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf8'));
+  } catch (err) {
+    console.error('Failed to load senators-rankings.json:', err.message);
     return;
   }
 
-  // Attach committees
-  try {
-    const committees = JSON.parse(fs.readFileSync(COMM_PATH, 'utf-8'));
-    for (const sen of rankings) {
-      if (committees[sen.bioguideId]) {
-        sen.committees = committees[sen.bioguideId];
-      }
-    }
-  } catch {
-    console.warn('No committees file found, skipping');
-  }
-
-  // Attach votes
-  try {
-    const votes = JSON.parse(fs.readFileSync(VOTES_PATH, 'utf-8'));
-    for (const sen of rankings) {
-      if (votes[sen.bioguideId]) {
-        Object.assign(sen, votes[sen.bioguideId]);
-      }
-    }
-  } catch {
-    console.warn('No votes file found, skipping');
-  }
-
-  // Deduplicate by bioguideId
+  // Remove duplicates by name (e.g. Peter Welch appearing twice)
   const seen = new Set();
-  rankings = rankings.filter(s => {
-    if (seen.has(s.bioguideId)) return false;
-    seen.add(s.bioguideId);
+  rankings = rankings.filter(sen => {
+    if (seen.has(sen.name)) {
+      console.log(`Removing duplicate entry for: ${sen.name}`);
+      return false;
+    }
+    seen.add(sen.name);
     return true;
   });
 
-  fs.writeFileSync(OUT_PATH, JSON.stringify(rankings, null, 2));
-  console.log(`Merge complete: ${rankings.length} senators written to senators-rankings.json`);
-})();
+  console.log(`After deduplication: ${rankings.length} senators`);
+
+  // Preserve vote fields if they exist from votes-scraper
+  rankings.forEach(sen => {
+    sen.yeaVotes = Number(sen.yeaVotes) || 0;
+    sen.nayVotes = Number(sen.nayVotes) || 0;
+    sen.missedVotes = Number(sen.missedVotes) || 0;
+    sen.totalVotes = Number(sen.totalVotes) || 0;
+  });
+
+  // Log some examples to verify votes are present
+  const sampleSenators = ['Ted Cruz', 'Angela Alsobrooks', 'Tammy Baldwin', 'Ben Ray Luján', 'Peter Welch'];
+  sampleSenators.forEach(name => {
+    const sen = rankings.find(s => s.name === name);
+    if (sen) {
+      console.log(`After merge - ${name}: yea=${sen.yeaVotes}, nay=${sen.nayVotes}, missed=${sen.missedVotes}, total=${sen.totalVotes}, participation=${sen.participationPct || 'N/A'}`);
+    } else {
+      console.log(`After merge - ${name}: not found`);
+    }
+  });
+
+  try {
+    fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
+    console.log('Merge complete: ' + rankings.length + ' senators total');
+    console.log('- Legislation merged for ' + rankings.filter(s => s.sponsoredBills !== undefined).length + ' senators');
+    console.log('- Votes merged for ' + rankings.filter(s => s.totalVotes > 0).length + ' senators (with any vote data)');
+  } catch (err) {
+    console.error('Write error:', err.message);
+  }
+}
+
+main().catch(err => console.error('Merge failed:', err.message));
