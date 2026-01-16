@@ -1,6 +1,6 @@
 // scripts/legislation-senators-scraper.js
 // Purpose: Scrape Senate legislation (bills + resolutions + amendments) for the 119th Congress
-// Adds sponsor/cosponsor counts and became-law tallies (new fields) without changing behavior shape
+// Populates senators-rankings.json with sponsor/cosponsor counts and became-law tallies
 
 const fs = require('fs');
 const path = require('path');
@@ -9,18 +9,20 @@ const fetch = require('node-fetch');
 const OUT_PATH = path.join(__dirname, '..', 'public', 'senators-rankings.json');
 const API_KEY = process.env.CONGRESS_API_KEY;
 const CONGRESS = 119;
+
+// Senate bill/resolution types
 const TYPES = ['s', 'sres', 'sconres', 'sjres'];
 
-function ensureShape(s) {
-  s.sponsoredBills ??= 0;
-  s.cosponsoredBills ??= 0;
-  s.becameLawBills ??= 0;
-  s.becameLawCosponsoredBills ??= 0;
-  s.sponsoredAmendments ??= 0;
-  s.cosponsoredAmendments ??= 0;
-  s.becameLawAmendments ??= 0;
-  s.becameLawCosponsoredAmendments ??= 0;
-  return s;
+function ensureShape(sen) {
+  sen.sponsoredBills ??= 0;
+  sen.cosponsoredBills ??= 0;
+  sen.becameLawBills ??= 0;
+  sen.becameLawCosponsoredBills ??= 0; // NEW FIELD
+  sen.sponsoredAmendments ??= 0;
+  sen.cosponsoredAmendments ??= 0;
+  sen.becameLawAmendments ??= 0;
+  sen.becameLawCosponsoredAmendments ??= 0; // NEW FIELD
+  return sen;
 }
 
 async function fetchJSON(url) {
