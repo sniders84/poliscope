@@ -1,24 +1,25 @@
-// scripts/bootstrap-rankings.js
-// Purpose: Initialize representatives-rankings.json and senators-rankings.json
-// with full identity fields from legislators-current.json
+// scripts/bootstrap-reps.js
+// Purpose: Bootstrap representatives-rankings.json with all House members in the 119th Congress
+// Uses legislators-current.json as source of truth (no API key required)
 
 const fs = require('fs');
 const path = require('path');
 
 const ROSTER_PATH = path.join(__dirname, '..', 'public', 'legislators-current.json');
-const REPS_OUT = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
-const SENATORS_OUT = path.join(__dirname, '..', 'public', 'senators-rankings.json');
+const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
+const CONGRESS = 119;
 
 const roster = JSON.parse(fs.readFileSync(ROSTER_PATH, 'utf-8'));
 
-function baseRecord(rep, office) {
+function baseRecord(rep) {
   const lastTerm = rep.terms[rep.terms.length - 1];
   return {
     bioguideId: rep.id.bioguide,
     name: `${rep.name.first} ${rep.name.last}`,
     state: lastTerm.state,
+    district: lastTerm.district || 'At-Large',
     party: lastTerm.party,
-    office,
+    office: 'Representative',
     sponsoredBills: 0,
     cosponsoredBills: 0,
     sponsoredAmendments: 0,
@@ -40,14 +41,8 @@ function baseRecord(rep, office) {
 }
 
 const reps = roster
-  .filter(r => r.terms.some(t => t.type === 'rep'))
-  .map(r => baseRecord(r, 'Representative'));
+  .filter(r => r.terms.some(t => t.type === 'rep' && t.congress === CONGRESS))
+  .map(baseRecord);
 
-const senators = roster
-  .filter(r => r.terms.some(t => t.type === 'sen'))
-  .map(r => baseRecord(r, 'Senator'));
-
-fs.writeFileSync(REPS_OUT, JSON.stringify(reps, null, 2));
-fs.writeFileSync(SENATORS_OUT, JSON.stringify(senators, null, 2));
-
-console.log(`Bootstrapped ${reps.length} representatives and ${senators.length} senators`);
+fs.writeFileSync(OUT_PATH, JSON.stringify(reps, null, 2));
+console.log(`Bootstrapped representatives-rankings.json with ${reps.length} House members for Congress ${CONGRESS}`);
