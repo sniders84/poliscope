@@ -1,47 +1,57 @@
 // scripts/merge-reps.js
-// Purpose: Consolidate and enforce schema for representatives-rankings.json
+// Purpose: Consolidate all House data into representatives-rankings.json
+// Sources: reps-legislation.json, reps-committees.json, reps-votes.json
 
 const fs = require('fs');
 const path = require('path');
 
 const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
-
-function ensureShape(r) {
-  return {
-    bioguideId: r.bioguideId,
-    name: r.name,
-    state: r.state,
-    district: r.district || 'At-Large',
-    party: r.party,
-    office: 'Representative',
-    sponsoredBills: r.sponsoredBills || 0,
-    cosponsoredBills: r.cosponsoredBills || 0,
-    becameLawBills: r.becameLawBills || 0,
-    becameLawCosponsoredBills: r.becameLawCosponsoredBills || 0,
-    sponsoredAmendments: r.sponsoredAmendments || 0,
-    cosponsoredAmendments: r.cosponsoredAmendments || 0,
-    becameLawAmendments: r.becameLawAmendments || 0,
-    becameLawCosponsoredAmendments: r.becameLawCosponsoredAmendments || 0,
-    committees: Array.isArray(r.committees) ? r.committees : [],
-    yeaVotes: r.yeaVotes || 0,
-    nayVotes: r.nayVotes || 0,
-    missedVotes: r.missedVotes || 0,
-    totalVotes: r.totalVotes || 0,
-    participationPct: r.participationPct || 0,
-    missedVotePct: r.missedVotePct || 0,
-    rawScore: r.rawScore || 0,
-    score: r.score || 0,
-    scoreNormalized: r.scoreNormalized || 0
-  };
-}
+const LEGIS_PATH = path.join(__dirname, '..', 'public', 'reps-legislation.json');
+const COMM_PATH = path.join(__dirname, '..', 'public', 'reps-committees.json');
+const VOTES_PATH = path.join(__dirname, '..', 'public', 'reps-votes.json');
 
 (function main() {
-  const reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8'));
-  const map = new Map();
-  for (const r of reps) {
-    map.set(r.bioguideId, ensureShape(r));
+  let rankings = [];
+
+  try {
+    rankings = JSON.parse(fs.readFileSync(LEGIS_PATH, 'utf-8'));
+  } catch {
+    console.error('Failed to load reps-legislation.json');
+    return;
   }
-  const merged = Array.from(map.values());
-  fs.writeFileSync(OUT_PATH, JSON.stringify(merged, null, 2));
-  console.log('Merge complete: representatives normalized and schema enforced');
+
+  // Attach committees
+  try {
+    const committees = JSON.parse(fs.readFileSync(COMM_PATH, 'utf-8'));
+    for (const rep of rankings) {
+      if (committees[rep.bioguideId]) {
+        rep.committees = committees[rep.bioguideId];
+      }
+    }
+  } catch {
+    console.warn('No committees file found, skipping');
+  }
+
+  // Attach votes
+  try {
+    const votes = JSON.parse(fs.readFileSync(VOTES_PATH, 'utf-8'));
+    for (const rep of rankings) {
+      if (votes[rep.bioguideId]) {
+        Object.assign(rep, votes[rep.bioguideId]);
+      }
+    }
+  } catch {
+    console.warn('No votes file found, skipping');
+  }
+
+  // Deduplicate by bioguideId
+  const seen = new Set();
+  rankings = rankings.filter(r => {
+    if (seen.has(r.bioguideId)) return false;
+    seen.add(r.bioguideId);
+    return true;
+  });
+
+  fs.writeFileSync(OUT_PATH, JSON.stringify(rankings, null, 2));
+  console.log(`Merge complete: ${rankings.length} representatives written to representatives-rankings.json`);
 })();
