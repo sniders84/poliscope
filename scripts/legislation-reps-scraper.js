@@ -1,7 +1,7 @@
-
 // scripts/legislation-reps-scraper.js
-// Purpose: Scrape House legislation (bills + resolutions) for the 119th Congress
+// Purpose: Scrape House legislation (bills + resolutions + amendments) for the 119th Congress
 // Enriches representatives-rankings.json with sponsor/cosponsor counts and became-law tallies
+// Uses Congress.gov member endpoints keyed by bioguideId
 
 const fs = require('fs');
 const path = require('path');
@@ -11,21 +11,18 @@ const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.
 const API_KEY = process.env.CONGRESS_API_KEY;
 const CONGRESS = 119;
 
-// House bill types
-const TYPES = ['hr', 'hres', 'hconres', 'hjres'];
-
 function ensureLegislationShape(rep) {
-  rep.sponsoredBills = rep.sponsoredBills || 0;
-  rep.cosponsoredBills = rep.cosponsoredBills || 0;
-  rep.sponsoredAmendments = rep.sponsoredAmendments || 0;
-  rep.cosponsoredAmendments = rep.cosponsoredAmendments || 0;
-  rep.becameLawBills = rep.becameLawBills || 0;
-  rep.becameLawAmendments = rep.becameLawAmendments || 0;
-  rep.becameLawCosponsoredAmendments = rep.becameLawCosponsoredAmendments || 0;
+  rep.sponsoredBills ??= 0;
+  rep.cosponsoredBills ??= 0;
+  rep.sponsoredAmendments ??= 0;
+  rep.cosponsoredAmendments ??= 0;
+  rep.becameLawBills ??= 0;
+  rep.becameLawAmendments ??= 0;
+  rep.becameLawCosponsoredAmendments ??= 0;
   return rep;
 }
 
-async function fetchAllPages(url) {
+async function fetchAllPages(url, key) {
   let results = [];
   while (url) {
     const res = await fetch(url);
@@ -34,7 +31,7 @@ async function fetchAllPages(url) {
       break;
     }
     const data = await res.json();
-    results = results.concat(data.bills || data.amendments || []);
+    results = results.concat(data[key] || []);
     url = data.pagination?.next_url
       ? `https://api.congress.gov${data.pagination.next_url}&api_key=${API_KEY}&format=json`
       : null;
@@ -42,27 +39,14 @@ async function fetchAllPages(url) {
   return results;
 }
 
-async function fetchBillDetail(billUrl) {
-  const detailUrl = `${billUrl}&api_key=${API_KEY}&format=json`;
-  const res = await fetch(detailUrl);
-  if (!res.ok) {
-    console.error(`Bad bill detail ${res.status} for ${detailUrl}`);
-    return null;
-  }
-  const data = await res.json();
-  return data.bill;
+async function fetchMemberLegislation(bioguideId, type) {
+  const base = `https://api.congress.gov/v3/member/${bioguideId}/${type}-legislation?congress=${CONGRESS}&api_key=${API_KEY}&format=json&pageSize=250&offset=0`;
+  return await fetchAllPages(base, 'bills');
 }
 
-async function fetchCosponsorsList(listUrl) {
-  // Follow the cosponsors list URL across pages
-  const url = `${listUrl}&api_key=${API_KEY}&format=json`;
-  return await fetchAllPages(url);
-}
-
-async function fetchHouseAmendments() {
-  // Amendments are separate; filter to House-origin amendments in the 119th Congress
-  const base = `https://api.congress.gov/v3/amendment/${CONGRESS}?api_key=${API_KEY}&format=json&pageSize=250&offset=0`;
-  return await fetchAllPages(base);
+async function fetchMemberAmendments(bioguideId, type) {
+  const base = `https://api.congress.gov/v3/member/${bioguideId}/${type}-legislation?congress=${CONGRESS}&bill_type=amendment&api_key=${API_KEY}&format=json&pageSize=250&offset=0`;
+  return await fetchAllPages(base, 'amendments');
 }
 
 (async function main() {
@@ -76,107 +60,32 @@ async function fetchHouseAmendments() {
 
   let attached = 0;
 
-  // Bills + resolutions
-  for (const type of TYPES) {
-    let url = `https://api.congress.gov/v3/bill/${CONGRESS}/${type}?api_key=${API_KEY}&format=json&pageSize=250&offset=0`;
-    const bills = await fetchAllPages(url);
+  for (const rep of reps) {
+    const id = rep.bioguideId;
+    if (!id) continue;
 
-    for (const bill of bills) {
-      const detail = await fetchBillDetail(bill.url);
-      if (!detail) continue;
+    // Sponsored bills/resolutions
+    const sponsored = await fetchMemberLegislation(id, 'sponsored');
+    rep.sponsoredBills += sponsored.length;
+    rep.becameLawBills += sponsored.filter(b => (b.latestAction?.action || '').toLowerCase().includes('became public law')).length;
+    attached += sponsored.length;
 
-      // Sponsors: array or single object
-      const sponsors = Array.isArray(detail.sponsors) ? detail.sponsors : (detail.sponsors ? [detail.sponsors] : []);
-      for (const s of sponsors) {
-        const id = s.bioguideId;
-        if (id && repMap.has(id)) {
-          repMap.get(id).sponsoredBills++;
-          attached++;
-        }
-      }
+    // Cosponsored bills/resolutions
+    const cosponsored = await fetchMemberLegislation(id, 'cosponsored');
+    rep.cosponsoredBills += cosponsored.length;
+    attached += cosponsored.length;
 
-      // Cosponsors: detail may include items and/or a list URL—follow both
-      const inlineCosponsors = detail.cosponsors?.items || [];
-      for (const c of inlineCosponsors) {
-        const id = c.bioguideId;
-        if (id && repMap.has(id)) {
-          repMap.get(id).cosponsoredBills++;
-          attached++;
-        }
-      }
+    // Sponsored amendments
+    const sponsoredAmendments = await fetchMemberAmendments(id, 'sponsored');
+    rep.sponsoredAmendments += sponsoredAmendments.length;
+    rep.becameLawAmendments += sponsoredAmendments.filter(a => (a.latestAction?.action || '').toLowerCase().includes('became public law')).length;
+    attached += sponsoredAmendments.length;
 
-      if (detail.cosponsors?.url) {
-        const list = await fetchCosponsorsList(detail.cosponsors.url);
-        for (const c of list) {
-          const id = c.bioguideId;
-          if (id && repMap.has(id)) {
-            repMap.get(id).cosponsoredBills++;
-            attached++;
-          }
-        }
-      }
-
-      // Became law: check latest status
-      const becameLaw = (detail.latestAction?.action?.toLowerCase() || '').includes('became public law');
-      if (becameLaw) {
-        for (const s of sponsors) {
-          const id = s.bioguideId;
-          if (id && repMap.has(id)) repMap.get(id).becameLawBills++;
-        }
-      }
-    }
-  }
-
-  // Amendments (House-origin)
-  const amendments = await fetchHouseAmendments();
-  for (const am of amendments) {
-    // Fetch amendment detail for sponsors/cosponsors and status
-    const detailUrl = `${am.url}&api_key=${API_KEY}&format=json`;
-    const res = await fetch(detailUrl);
-    if (!res.ok) continue;
-    const data = await res.json();
-    const amd = data.amendment;
-
-    const sponsors = Array.isArray(amd.sponsors) ? amd.sponsors : (amd.sponsors ? [amd.sponsors] : []);
-    for (const s of sponsors) {
-      const id = s.bioguideId;
-      if (id && repMap.has(id)) {
-        repMap.get(id).sponsoredAmendments++;
-        attached++;
-      }
-    }
-
-    const inlineCosponsors = amd.cosponsors?.items || [];
-    for (const c of inlineCosponsors) {
-      const id = c.bioguideId;
-      if (id && repMap.has(id)) {
-        repMap.get(id).cosponsoredAmendments++;
-        attached++;
-      }
-    }
-
-    if (amd.cosponsors?.url) {
-      const list = await fetchCosponsorsList(amd.cosponsors.url);
-      for (const c of list) {
-        const id = c.bioguideId;
-        if (id && repMap.has(id)) {
-          repMap.get(id).cosponsoredAmendments++;
-          attached++;
-        }
-      }
-    }
-
-    const becameLaw = (amd.latestAction?.action?.toLowerCase() || '').includes('became public law');
-    if (becameLaw) {
-      for (const s of sponsors) {
-        const id = s.bioguideId;
-        if (id && repMap.has(id)) repMap.get(id).becameLawAmendments++;
-      }
-      for (const c of inlineCosponsors) {
-        const id = c.bioguideId;
-        if (id && repMap.has(id)) repMap.get(id).becameLawCosponsoredAmendments++;
-      }
-    }
+    // Cosponsored amendments
+    const cosponsoredAmendments = await fetchMemberAmendments(id, 'cosponsored');
+    rep.cosponsoredAmendments += cosponsoredAmendments.length;
+    rep.becameLawCosponsoredAmendments += cosponsoredAmendments.filter(a => (a.latestAction?.action || '').toLowerCase().includes('became public law')).length;
+    attached += cosponsoredAmendments.length;
   }
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(reps, null, 2));
