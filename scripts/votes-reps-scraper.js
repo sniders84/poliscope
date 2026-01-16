@@ -10,7 +10,7 @@ const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.
 
 // Adjust to current Congress/session
 const CONGRESS = 119;
-const SESSION = 1;
+const SESSION = 2;   // <-- update this to the current session
 const MAX_VOTE = 500; // upper bound of roll calls to attempt
 
 function ensureRepShape(rep) {
@@ -34,7 +34,10 @@ function indexByBioguide(list) {
 async function fetchVotePage(num) {
   const url = `https://www.congress.gov/votes/house/${CONGRESS}-${SESSION}/${num}`;
   const res = await fetch(url);
-  if (!res.ok) return null;
+  if (!res.ok) {
+    console.error(`Vote page ${url} returned ${res.status}`);
+    return null;
+  }
   const html = await res.text();
   return cheerio.load(html);
 }
