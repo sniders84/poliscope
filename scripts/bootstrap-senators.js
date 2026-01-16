@@ -48,3 +48,7 @@ const sens = roster
     const t = r.terms[r.terms.length - 1];
     return t.type === 'sen' && new Date(t.end) > new Date();
   })
+  .map(baseRecord);
+
+fs.writeFileSync(OUT_PATH, JSON.stringify(sens, null, 2));
+console.log(`Bootstrapped senators-rankings.json with ${sens.length} current Senators`);
