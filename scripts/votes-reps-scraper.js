@@ -18,12 +18,12 @@ const SESSIONS = [2025, 2026];
 const roster = JSON.parse(fs.readFileSync(ROSTER_PATH, 'utf-8'));
 
 function findBioguide(last, state, district) {
-  const match = roster.find(m => {
-    const lastTerm = m.terms[m.terms.length - 1];
+  const match = roster.find(rep => {
+    const lastTerm = rep.terms[rep.terms.length - 1];
     return (
-      m.name.last.toLowerCase() === last.toLowerCase() &&
+      rep.name.last.toLowerCase() === last.toLowerCase() &&
       lastTerm.state === state &&
-      String(lastTerm.district) === String(district)
+      String(lastTerm.district || 'At-Large') === String(district || 'At-Large')
     );
   });
   return match?.id.bioguide;
