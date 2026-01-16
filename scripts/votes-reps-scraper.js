@@ -1,5 +1,5 @@
 // scripts/votes-reps-scraper.js
-// Purpose: Scrape House votes from Congress.gov vote pages and update representatives-rankings.json
+// Purpose: Scrape House votes for the 119th Congress via Congress.gov vote pages
 
 const fs = require('fs');
 const path = require('path');
@@ -8,10 +8,9 @@ const cheerio = require('cheerio');
 
 const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
 
-// Adjust to current Congress/session
-const CONGRESS = 119;
-const SESSION = 2;   // <-- update this to the current session
-const MAX_VOTE = 500; // upper bound of roll calls to attempt
+const CONGRESS = 119; // lock to current "season"
+const SESSIONS = [1, 2]; // cover both sessions
+const MAX_VOTE = 500;
 
 function ensureRepShape(rep) {
   rep.yeaVotes = rep.yeaVotes || 0;
@@ -31,8 +30,8 @@ function indexByBioguide(list) {
   return map;
 }
 
-async function fetchVotePage(num) {
-  const url = `https://www.congress.gov/votes/house/${CONGRESS}-${SESSION}/${num}`;
+async function fetchVotePage(session, num) {
+  const url = `https://www.congress.gov/votes/house/${CONGRESS}-${session}/${num}`;
   const res = await fetch(url);
   if (!res.ok) {
     console.error(`Vote page ${url} returned ${res.status}`);
@@ -49,35 +48,37 @@ async function fetchVotePage(num) {
   let processed = 0;
   let attached = 0;
 
-  for (let i = 1; i <= MAX_VOTE; i++) {
-    const $ = await fetchVotePage(i);
-    if (!$) continue;
+  for (const session of SESSIONS) {
+    for (let i = 1; i <= MAX_VOTE; i++) {
+      const $ = await fetchVotePage(session, i);
+      if (!$) continue;
 
-    const groups = [
-      { selector: 'section#yeas li a', choice: 'Yea' },
-      { selector: 'section#nays li a', choice: 'Nay' },
-      { selector: 'section#not-voting li a', choice: 'Not Voting' },
-      { selector: 'section#present li a', choice: 'Present' }
-    ];
+      const groups = [
+        { selector: 'section#yeas li a', choice: 'Yea' },
+        { selector: 'section#nays li a', choice: 'Nay' },
+        { selector: 'section#not-voting li a', choice: 'Not Voting' },
+        { selector: 'section#present li a', choice: 'Present' }
+      ];
 
-    for (const g of groups) {
-      $(g.selector).each((_, el) => {
-        const href = $(el).attr('href') || '';
-        const match = href.match(/\/member\/([A-Z0-9]+)/);
-        if (!match) return;
-        const bioguideId = match[1];
-        if (!repMap.has(bioguideId)) return;
+      for (const g of groups) {
+        $(g.selector).each((_, el) => {
+          const href = $(el).attr('href') || '';
+          const match = href.match(/\/member\/([A-Z0-9]+)/);
+          if (!match) return;
+          const bioguideId = match[1];
+          if (!repMap.has(bioguideId)) return;
 
-        const rep = repMap.get(bioguideId);
-        rep.totalVotes++;
-        if (g.choice === 'Yea') rep.yeaVotes++;
-        else if (g.choice === 'Nay') rep.nayVotes++;
-        else rep.missedVotes++; // treat Not Voting/Present as missed
-        attached++;
-      });
+          const rep = repMap.get(bioguideId);
+          rep.totalVotes++;
+          if (g.choice === 'Yea') rep.yeaVotes++;
+          else if (g.choice === 'Nay') rep.nayVotes++;
+          else rep.missedVotes++; // treat Not Voting/Present as missed
+          attached++;
+        });
+      }
+
+      processed++;
     }
-
-    processed++;
   }
 
   for (const r of reps) {
