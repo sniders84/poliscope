@@ -35,7 +35,6 @@ async function fetchAllPages(url) {
     const items = data?.legislation || [];
     results = results.concat(items);
 
-    // Pagination uses next_url relative to BASE
     next = data?.pagination?.next_url
       ? `${BASE}${data.pagination.next_url}&api_key=${API_KEY}`
       : null;
@@ -44,12 +43,9 @@ async function fetchAllPages(url) {
 }
 
 function countBecameLawBills(items) {
-  // Bills that "became public law"
   return items.filter(b => (b.latestAction?.action?.toLowerCase() || '').includes('became public law')).length;
 }
-
 function countAgreedTo(items) {
-  // Amendments that were "agreed to"
   return items.filter(a => (a.latestAction?.action?.toLowerCase() || '').includes('agreed to')).length;
 }
 
@@ -76,7 +72,7 @@ function countAgreedTo(items) {
     const cosponsoredBills = await fetchAllPages(cosponsoredBillsUrl);
     r.cosponsoredBills = cosponsoredBills.length;
 
-    // Sponsored amendments (filter via bill_type=amendment)
+    // Sponsored amendments
     const sponsoredAmendmentsUrl = `${BASE}/member/${bioguide}/sponsored-legislation?bill_type=amendment&api_key=${API_KEY}`;
     const sponsoredAmendments = await fetchAllPages(sponsoredAmendmentsUrl);
     r.sponsoredAmendments = sponsoredAmendments.length;
@@ -88,7 +84,7 @@ function countAgreedTo(items) {
     r.cosponsoredAmendments = cosponsoredAmendments.length;
     r.becameLawCosponsoredAmendments = countAgreedTo(cosponsoredAmendments);
 
-    // Optional: debug one known rep to confirm payload shape
+    // Debug: log one sample to confirm payload shape
     if (bioguide === 'A000055' && sponsoredBills.length) {
       console.log('Sample sponsored legislation for Aderholt:', sponsoredBills[0]);
     }
