@@ -11,10 +11,10 @@ const { DOMParser } = require('@xmldom/xmldom');
 const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
 const ROSTER_PATH = path.join(__dirname, '..', 'public', 'legislators-current.json');
 
-// Index pages for House votes
+// Correct index pages for House votes
 const INDEX_URLS = [
-  'https://clerk.house.gov/Votes/2025',
-  'https://clerk.house.gov/Votes/2026'
+  'https://clerk.house.gov/evs/2025/index.asp',
+  'https://clerk.house.gov/evs/2026/index.asp'
 ];
 
 // Load roster for matching
