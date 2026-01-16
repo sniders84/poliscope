@@ -1,23 +1,20 @@
 // scripts/merge-reps.js
-// Purpose: Merge House representative data into a unified rankings file for the 119th Congress
+// Purpose: Enforce schema consistency for representatives-rankings.json (119th Congress)
+// All scrapers now enrich representatives-rankings.json directly, so this step validates and normalizes
 
 const fs = require('fs');
 const path = require('path');
 
 const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
 
-// Inputs: each scraper writes its own JSON file
-const LEGIS_PATH = path.join(__dirname, '..', 'public', 'representatives-legislation.json');
-const COMM_PATH  = path.join(__dirname, '..', 'public', 'representatives-committees.json');
-const VOTES_PATH = path.join(__dirname, '..', 'public', 'representatives-votes.json');
-
 function normalize(rep) {
   return {
-    name: rep.name,
-    bioguideId: rep.bioguideId,
-    state: rep.state,
-    district: rep.district,
-    party: rep.party,
+    name: rep.name || '',
+    bioguideId: rep.bioguideId || '',
+    state: rep.state || '',
+    district: rep.district || '',
+    party: rep.party || '',
+    office: rep.office || 'Representative',
     sponsoredBills: rep.sponsoredBills || 0,
     cosponsoredBills: rep.cosponsoredBills || 0,
     sponsoredAmendments: rep.sponsoredAmendments || 0,
@@ -25,7 +22,7 @@ function normalize(rep) {
     becameLawBills: rep.becameLawBills || 0,
     becameLawAmendments: rep.becameLawAmendments || 0,
     becameLawCosponsoredAmendments: rep.becameLawCosponsoredAmendments || 0,
-    committees: rep.committees || [],
+    committees: Array.isArray(rep.committees) ? rep.committees : [],
     yeaVotes: rep.yeaVotes || 0,
     nayVotes: rep.nayVotes || 0,
     missedVotes: rep.missedVotes || 0,
@@ -39,32 +36,14 @@ function normalize(rep) {
 }
 
 (function main() {
-  const legis = fs.existsSync(LEGIS_PATH) ? JSON.parse(fs.readFileSync(LEGIS_PATH)) : [];
-  const comms = fs.existsSync(COMM_PATH)  ? JSON.parse(fs.readFileSync(COMM_PATH))  : [];
-  const votes = fs.existsSync(VOTES_PATH) ? JSON.parse(fs.readFileSync(VOTES_PATH)) : [];
-
-  const map = new Map();
-  for (const r of legis) map.set(r.bioguideId, normalize(r));
-
-  for (const r of comms) {
-    if (!map.has(r.bioguideId)) map.set(r.bioguideId, normalize(r));
-    map.get(r.bioguideId).committees = r.committees || [];
+  if (!fs.existsSync(OUT_PATH)) {
+    console.error('representatives-rankings.json not found. Run bootstrap first.');
+    process.exit(1);
   }
 
-  for (const r of votes) {
-    if (!map.has(r.bioguideId)) map.set(r.bioguideId, normalize(r));
-    Object.assign(map.get(r.bioguideId), {
-      yeaVotes: r.yeaVotes || 0,
-      nayVotes: r.nayVotes || 0,
-      missedVotes: r.missedVotes || 0,
-      totalVotes: r.totalVotes || 0,
-      participationPct: r.participationPct || 0,
-      missedVotePct: r.missedVotePct || 0
-    });
-  }
+  const reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8'));
+  const normalized = reps.map(normalize);
 
-  const merged = Array.from(map.values());
-
-  fs.writeFileSync(OUT_PATH, JSON.stringify(merged, null, 2));
-  console.log(`Merge complete: ${merged.length} representatives normalized and schema enforced for Congress ${119}`);
+  fs.writeFileSync(OUT_PATH, JSON.stringify(normalized, null, 2));
+  console.log(`Merge complete: ${normalized.length} representatives normalized and schema enforced for Congress ${119}`);
 })();
