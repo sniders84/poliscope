@@ -1,4 +1,3 @@
-
 // scripts/merge-reps.js
 // Purpose: Enforce schema consistency for representatives-rankings.json (119th Congress)
 // All scrapers now enrich representatives-rankings.json directly, so this step validates and normalizes
@@ -10,26 +9,36 @@ const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.
 
 function normalize(rep) {
   return {
+    // Identity
     name: rep.name || '',
     bioguideId: rep.bioguideId || '',
     state: rep.state || '',
     district: rep.district || '',
     party: rep.party || '',
     office: rep.office || 'Representative',
+
+    // Legislation
     sponsoredBills: rep.sponsoredBills || 0,
     cosponsoredBills: rep.cosponsoredBills || 0,
+    becameLawBills: rep.becameLawBills || 0,
+    becameLawCosponsoredBills: rep.becameLawCosponsoredBills || 0,   // added
     sponsoredAmendments: rep.sponsoredAmendments || 0,
     cosponsoredAmendments: rep.cosponsoredAmendments || 0,
-    becameLawBills: rep.becameLawBills || 0,
     becameLawAmendments: rep.becameLawAmendments || 0,
     becameLawCosponsoredAmendments: rep.becameLawCosponsoredAmendments || 0,
+
+    // Committees
     committees: Array.isArray(rep.committees) ? rep.committees : [],
+
+    // Votes
     yeaVotes: rep.yeaVotes || 0,
     nayVotes: rep.nayVotes || 0,
     missedVotes: rep.missedVotes || 0,
     totalVotes: rep.totalVotes || 0,
     participationPct: rep.participationPct || 0,
     missedVotePct: rep.missedVotePct || 0,
+
+    // Scores
     rawScore: rep.rawScore || 0,
     score: rep.score || 0,
     scoreNormalized: rep.scoreNormalized || 0
