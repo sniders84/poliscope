@@ -1,6 +1,5 @@
 // scripts/committee-reps-scraper.js
-// Purpose: Map House committees (object keyed by committee code) into representatives-rankings.json
-// Explicitly parse "Chairman" and "Ranking Member" roles
+// Purpose: Merge House committee memberships (with leadership flags) into representatives-rankings.json
 
 const fs = require('fs');
 const path = require('path');
@@ -8,13 +7,13 @@ const path = require('path');
 const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
 const COMMITTEES_PATH = path.join(__dirname, '..', 'public', 'house-committees-current.json');
 
-function ensureCommitteesShape(rep) {
+function ensureRepShape(rep) {
   rep.committees = Array.isArray(rep.committees) ? rep.committees : [];
   return rep;
 }
 
 (function main() {
-  const reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureCommitteesShape);
+  const reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureRepShape);
   const committeesDataRaw = JSON.parse(fs.readFileSync(COMMITTEES_PATH, 'utf-8'));
 
   const repMap = new Map(reps.map(r => [r.bioguideId, r]));
@@ -42,13 +41,21 @@ function ensureCommitteesShape(rep) {
         }
       }
 
-      rep.committees.push({
-        committee: committeeCode,
-        committeeName: m.committeeName || committeeCode, // plug in a lookup table if you have one
+      const entry = {
+        committeeCode,
+        committeeName: m.committeeName || committeeCode,
         role,
         rank: m.rank ?? null,
         party: m.party || null
-      });
+      };
+
+      // Avoid duplicates: same committee + same role
+      const exists = rep.committees.some(
+        x => x.committeeCode === entry.committeeCode && x.role === entry.role
+      );
+      if (!exists) {
+        rep.committees.push(entry);
+      }
     }
   }
 
