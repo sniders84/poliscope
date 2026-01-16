@@ -1,16 +1,15 @@
 // scripts/votes-reps-scraper.js
-// Purpose: Scrape House votes for the 119th Congress via Congress.gov vote pages
+// Purpose: Scrape House votes for the 119th Congress via Congress.gov API
 
 const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
-const cheerio = require('cheerio');
 
 const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
-
-const CONGRESS = 119; // lock to current "season"
-const SESSIONS = [1, 2]; // cover both sessions
-const MAX_VOTE = 500;
+const API_KEY = process.env.CONGRESS_API_KEY;
+const BASE = 'https://api.congress.gov/v3';
+const CONGRESS = 119;
+const SESSIONS = [1, 2];
 
 function ensureRepShape(rep) {
   rep.yeaVotes = rep.yeaVotes || 0;
@@ -22,76 +21,18 @@ function ensureRepShape(rep) {
   return rep;
 }
 
-function indexByBioguide(list) {
-  const map = new Map();
-  for (const r of list) {
-    if (r.bioguideId) map.set(r.bioguideId, r);
-  }
-  return map;
-}
-
-async function fetchVotePage(session, num) {
-  const url = `https://www.congress.gov/votes/house/${CONGRESS}-${session}/${num}`;
-  const res = await fetch(url);
-  if (!res.ok) {
-    console.error(`Vote page ${url} returned ${res.status}`);
-    return null;
-  }
-  const html = await res.text();
-  return cheerio.load(html);
-}
-
 (async function main() {
   const reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureRepShape);
-  const repMap = indexByBioguide(reps);
+  const repMap = new Map(reps.map(r => [r.bioguideId, r]));
 
   let processed = 0;
   let attached = 0;
 
   for (const session of SESSIONS) {
-    for (let i = 1; i <= MAX_VOTE; i++) {
-      const $ = await fetchVotePage(session, i);
-      if (!$) continue;
+    const url = `${BASE}/house-vote/${CONGRESS}/${session}?api_key=${API_KEY}`;
+    const res = await fetch(url);
+    if (!res.ok) continue;
+    const data = await res.json();
+    const votes = data.votes || [];
 
-      const groups = [
-        { selector: 'section#yeas li a', choice: 'Yea' },
-        { selector: 'section#nays li a', choice: 'Nay' },
-        { selector: 'section#not-voting li a', choice: 'Not Voting' },
-        { selector: 'section#present li a', choice: 'Present' }
-      ];
-
-      for (const g of groups) {
-        $(g.selector).each((_, el) => {
-          const href = $(el).attr('href') || '';
-          const match = href.match(/\/member\/([A-Z0-9]+)/);
-          if (!match) return;
-          const bioguideId = match[1];
-          if (!repMap.has(bioguideId)) return;
-
-          const rep = repMap.get(bioguideId);
-          rep.totalVotes++;
-          if (g.choice === 'Yea') rep.yeaVotes++;
-          else if (g.choice === 'Nay') rep.nayVotes++;
-          else rep.missedVotes++; // treat Not Voting/Present as missed
-          attached++;
-        });
-      }
-
-      processed++;
-    }
-  }
-
-  for (const r of reps) {
-    if (r.totalVotes > 0) {
-      const participated = r.yeaVotes + r.nayVotes;
-      r.participationPct = Number(((participated / r.totalVotes) * 100).toFixed(2));
-      r.missedVotePct = Number(((r.missedVotes / r.totalVotes) * 100).toFixed(2));
-    }
-  }
-
-  fs.writeFileSync(OUT_PATH, JSON.stringify(reps, null, 2));
-  console.log(`House votes updated: ${processed} vote pages processed; ${attached} member-votes attached`);
-})().catch(err => {
-  console.error('House votes scraper failed:', err);
-  process.exit(1);
-});
+    for (const v of votes) {
