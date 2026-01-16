@@ -28,6 +28,7 @@ jobs:
         run: |
           rm -f package-lock.json
           npm install --prefer-online --no-audit --no-fund
+          npm install @xmldom/xmldom fast-xml-parser
           node -e "console.log('Deps installed:', Object.keys(require('./package.json').dependencies))"
 
       - name: Debug API key prefix
