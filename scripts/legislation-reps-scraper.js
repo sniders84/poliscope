@@ -1,6 +1,6 @@
 // scripts/legislation-reps-scraper.js
 // Purpose: Scrape House legislation (bills + resolutions + amendments) for the 119th Congress
-// Enriches representatives-rankings.json with sponsor/cosponsor counts and became-law tallies
+// Enriches representatives-rankings.json with sponsor/cosponsor counts and became-law tallies (including cosponsored)
 
 const fs = require('fs');
 const path = require('path');
@@ -10,17 +10,15 @@ const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.
 const API_KEY = process.env.CONGRESS_API_KEY;
 const CONGRESS = 119;
 
-// House bill/resolution types (Congress.gov canonical slugs)
 const TYPES = ['hr', 'hres', 'hconres', 'hjres'];
 
-// --- Utilities ---------------------------------------------------------------
-
-function ensureLegislationShape(rep) {
+function ensureShape(rep) {
   rep.sponsoredBills = rep.sponsoredBills || 0;
   rep.cosponsoredBills = rep.cosponsoredBills || 0;
+  rep.becameLawBills = rep.becameLawBills || 0;
+  rep.becameLawCosponsoredBills = rep.becameLawCosponsoredBills || 0;
   rep.sponsoredAmendments = rep.sponsoredAmendments || 0;
   rep.cosponsoredAmendments = rep.cosponsoredAmendments || 0;
-  rep.becameLawBills = rep.becameLawBills || 0;
   rep.becameLawAmendments = rep.becameLawAmendments || 0;
   rep.becameLawCosponsoredAmendments = rep.becameLawCosponsoredAmendments || 0;
   return rep;
@@ -63,18 +61,16 @@ function normalizePeople(maybeArrayOrObject) {
   return Array.isArray(maybeArrayOrObject) ? maybeArrayOrObject : [maybeArrayOrObject];
 }
 
-function becamePublicLawFromLatestAction(latestAction) {
+function becamePublicLaw(latestAction) {
   const a = (latestAction?.action || '').toLowerCase();
   return a.includes('became public law') || a.includes('public law');
 }
 
-function increment(repMap, id, field) {
-  if (!id || !repMap.has(id)) return false;
-  repMap.get(id)[field]++;
+function inc(map, id, field) {
+  if (!id || !map.has(id)) return false;
+  map.get(id)[field]++;
   return true;
 }
-
-// --- Main -------------------------------------------------------------------
 
 (async function main() {
   try {
@@ -83,15 +79,16 @@ function increment(repMap, id, field) {
       process.exit(1);
     }
 
-    const reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureLegislationShape);
+    const reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureShape);
     const repMap = new Map(reps.map(r => [r.bioguideId, r]));
 
     let attached = 0;
-    let lawsAttachedBills = 0;
-    let lawsAttachedAmendsSponsor = 0;
-    let lawsAttachedAmendsCosponsor = 0;
+    let lawsBillsSponsor = 0;
+    let lawsBillsCosponsor = 0;
+    let lawsAmendsSponsor = 0;
+    let lawsAmendsCosponsor = 0;
 
-    // 1) Bills + resolutions (House-origin types)
+    // Bills + resolutions
     for (const type of TYPES) {
       const listUrl = `https://api.congress.gov/v3/bill/${CONGRESS}/${type}?api_key=${API_KEY}&format=json&pageSize=250&offset=0`;
       const bills = await fetchAllPages(listUrl);
@@ -100,36 +97,48 @@ function increment(repMap, id, field) {
         const bill = await fetchBillDetail(b.url);
         if (!bill) continue;
 
-        // Sponsors
         const sponsors = normalizePeople(bill.sponsors);
-        for (const s of sponsors) {
-          if (increment(repMap, s.bioguideId, 'sponsoredBills')) attached++;
-        }
-
-        // Cosponsors: inline items + full list via URL
         const inlineCosponsors = bill.cosponsors?.items || [];
-        for (const c of inlineCosponsors) {
-          if (increment(repMap, c.bioguideId, 'cosponsoredBills')) attached++;
+
+        // Sponsors
+        for (const s of sponsors) {
+          if (inc(repMap, s.bioguideId, 'sponsoredBills')) attached++;
         }
 
+        // Cosponsors (inline)
+        for (const c of inlineCosponsors) {
+          if (inc(repMap, c.bioguideId, 'cosponsoredBills')) attached++;
+        }
+
+        // Cosponsors (list URL)
         if (bill.cosponsors?.url) {
           const cosponsorPages = await fetchAllPages(`${bill.cosponsors.url}&api_key=${API_KEY}&format=json`);
           for (const c of cosponsorPages) {
-            if (increment(repMap, c.bioguideId, 'cosponsoredBills')) attached++;
+            if (inc(repMap, c.bioguideId, 'cosponsoredBills')) attached++;
           }
         }
 
-        // Became law (bill/resolution)
-        if (becamePublicLawFromLatestAction(bill.latestAction)) {
+        // Became law — sponsor & cosponsor tallies
+        if (becamePublicLaw(bill.latestAction)) {
           for (const s of sponsors) {
-            if (increment(repMap, s.bioguideId, 'becameLawBills')) lawsAttachedBills++;
+            if (inc(repMap, s.bioguideId, 'becameLawBills')) lawsBillsSponsor++;
+          }
+          // Inline cosponsors
+          for (const c of inlineCosponsors) {
+            if (inc(repMap, c.bioguideId, 'becameLawCosponsoredBills')) lawsBillsCosponsor++;
+          }
+          // Cosponsor list URL
+          if (bill.cosponsors?.url) {
+            const cosponsorPages = await fetchAllPages(`${bill.cosponsors.url}&api_key=${API_KEY}&format=json`);
+            for (const c of cosponsorPages) {
+              if (inc(repMap, c.bioguideId, 'becameLawCosponsoredBills')) lawsBillsCosponsor++;
+            }
           }
         }
       }
     }
 
-    // 2) Amendments (House-origin only)
-    // Paginate all amendments for the Congress, then filter by chamber === 'House'
+    // Amendments (House-origin)
     const amdListUrl = `https://api.congress.gov/v3/amendment/${CONGRESS}?api_key=${API_KEY}&format=json&pageSize=250&offset=0`;
     const amendments = await fetchAllPages(amdListUrl);
 
@@ -138,38 +147,39 @@ function increment(repMap, id, field) {
       if (!amd) continue;
       if ((amd.chamber || '').toLowerCase() !== 'house') continue;
 
-      // Sponsors
       const sponsors = normalizePeople(amd.sponsors);
-      for (const s of sponsors) {
-        if (increment(repMap, s.bioguideId, 'sponsoredAmendments')) attached++;
-      }
-
-      // Cosponsors: inline items + full list via URL
       const inlineCosponsors = amd.cosponsors?.items || [];
-      for (const c of inlineCosponsors) {
-        if (increment(repMap, c.bioguideId, 'cosponsoredAmendments')) attached++;
+
+      // Sponsors
+      for (const s of sponsors) {
+        if (inc(repMap, s.bioguideId, 'sponsoredAmendments')) attached++;
       }
 
+      // Cosponsors (inline)
+      for (const c of inlineCosponsors) {
+        if (inc(repMap, c.bioguideId, 'cosponsoredAmendments')) attached++;
+      }
+
+      // Cosponsors (list URL)
       if (amd.cosponsors?.url) {
         const cosponsorPages = await fetchAllPages(`${amd.cosponsors.url}&api_key=${API_KEY}&format=json`);
         for (const c of cosponsorPages) {
-          if (increment(repMap, c.bioguideId, 'cosponsoredAmendments')) attached++;
+          if (inc(repMap, c.bioguideId, 'cosponsoredAmendments')) attached++;
         }
       }
 
-      // Became law (amendment)
-      if (becamePublicLawFromLatestAction(amd.latestAction)) {
+      // Became law — sponsor & cosponsor tallies
+      if (becamePublicLaw(amd.latestAction)) {
         for (const s of sponsors) {
-          if (increment(repMap, s.bioguideId, 'becameLawAmendments')) lawsAttachedAmendsSponsor++;
+          if (inc(repMap, s.bioguideId, 'becameLawAmendments')) lawsAmendsSponsor++;
         }
         for (const c of inlineCosponsors) {
-          if (increment(repMap, c.bioguideId, 'becameLawCosponsoredAmendments')) lawsAttachedAmendsCosponsor++;
+          if (inc(repMap, c.bioguideId, 'becameLawCosponsoredAmendments')) lawsAmendsCosponsor++;
         }
-        // If cosponsors list URL exists, count those as well
         if (amd.cosponsors?.url) {
           const cosponsorPages = await fetchAllPages(`${amd.cosponsors.url}&api_key=${API_KEY}&format=json`);
           for (const c of cosponsorPages) {
-            if (increment(repMap, c.bioguideId, 'becameLawCosponsoredAmendments')) lawsAttachedAmendsCosponsor++;
+            if (inc(repMap, c.bioguideId, 'becameLawCosponsoredAmendments')) lawsAmendsCosponsor++;
           }
         }
       }
@@ -179,7 +189,8 @@ function increment(repMap, id, field) {
     console.log(
       `Updated representatives-rankings.json with legislation + amendments: ` +
       `${attached} sponsor/cosponsor entries; ` +
-      `became law — bills: ${lawsAttachedBills}, amendments (sponsor): ${lawsAttachedAmendsSponsor}, amendments (cosponsor): ${lawsAttachedAmendsCosponsor}`
+      `became law — bills (sponsor): ${lawsBillsSponsor}, bills (cosponsor): ${lawsBillsCosponsor}, ` +
+      `amendments (sponsor): ${lawsAmendsSponsor}, amendments (cosponsor): ${lawsAmendsCosponsor}`
     );
   } catch (err) {
     console.error('Legislation scraper failed:', err.message);
