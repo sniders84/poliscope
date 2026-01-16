@@ -1,11 +1,11 @@
 // scripts/reps-scores.js
 // Purpose: Compute composite scores for House representatives based on 119th Congress data
+// Enriches representatives-rankings.json directly with rawScore, score, and scoreNormalized
 
 const fs = require('fs');
 const path = require('path');
 
-const IN_PATH  = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
-const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-scores.json');
+const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
 
 function computeScore(rep) {
   // Example scoring weights — adjust to your model
@@ -22,7 +22,7 @@ function computeScore(rep) {
     (rep.becameLawBills * billWeight) +
     (rep.becameLawAmendments * amendWeight) +
     (rep.becameLawCosponsoredAmendments * amendWeight) +
-    (rep.committees.length * committeeWeight) +
+    (Array.isArray(rep.committees) ? rep.committees.length * committeeWeight : 0) +
     (rep.yeaVotes * voteWeight) +
     (rep.nayVotes * voteWeight);
 
@@ -30,14 +30,16 @@ function computeScore(rep) {
 }
 
 (function main() {
-  const reps = JSON.parse(fs.readFileSync(IN_PATH, 'utf-8'));
+  const reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8'));
 
+  // Compute raw scores
   for (const r of reps) {
     r.rawScore = computeScore(r);
     r.score = r.rawScore;
   }
 
-  const maxScore = Math.max(...reps.map(r => r.score));
+  // Normalize scores 0–100
+  const maxScore = Math.max(...reps.map(r => r.score || 0));
   for (const r of reps) {
     r.scoreNormalized = maxScore > 0 ? Number(((r.score / maxScore) * 100).toFixed(2)) : 0;
   }
