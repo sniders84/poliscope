@@ -80,14 +80,15 @@ async function fetchRoll(year, roll) {
       for (let j = 0; j < members.length; j++) {
         const m = members.item(j);
         const legislator = m.getElementsByTagName('legislator')[0];
-        const last = legislator?.getAttribute('last');
+        const last = legislator?.getAttribute('last') || legislator?.getAttribute('sort-field');
         const state = legislator?.getAttribute('state');
         const district = legislator?.getAttribute('district');
         const voteCast = m.getElementsByTagName('vote')[0]?.textContent;
 
+        if (!last || !state || !voteCast) continue;
+
         const bioguide = findBioguide(last, state, district);
-        if (!bioguide || !voteCast) continue;
-        if (!repMap.has(bioguide)) continue;
+        if (!bioguide || !repMap.has(bioguide)) continue;
 
         const rep = repMap.get(bioguide);
         rep.totalVotes++;
