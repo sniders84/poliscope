@@ -20,20 +20,25 @@ function baseRecord(rep) {
     district: lastTerm.district || 'At-Large',
     party: lastTerm.party,
     office: 'Representative',
+    // Legislation
     sponsoredBills: 0,
     cosponsoredBills: 0,
+    becameLawBills: 0,
+    becameLawCosponsoredBills: 0,
     sponsoredAmendments: 0,
     cosponsoredAmendments: 0,
-    becameLawBills: 0,
     becameLawAmendments: 0,
     becameLawCosponsoredAmendments: 0,
+    // Committees
     committees: [],
+    // Votes
     yeaVotes: 0,
     nayVotes: 0,
     missedVotes: 0,
     totalVotes: 0,
     participationPct: 0,
     missedVotePct: 0,
+    // Scores
     rawScore: 0,
     score: 0,
     scoreNormalized: 0
