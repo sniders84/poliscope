@@ -1,13 +1,11 @@
 // scripts/bootstrap-reps.js
-// Purpose: Bootstrap representatives-rankings.json with all House members in the 119th Congress
-// Uses legislators-current.json as source of truth (no API key required)
+// Purpose: Bootstrap representatives-rankings.json with all current House members
 
 const fs = require('fs');
 const path = require('path');
 
 const ROSTER_PATH = path.join(__dirname, '..', 'public', 'legislators-current.json');
 const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
-const CONGRESS = 119;
 
 const roster = JSON.parse(fs.readFileSync(ROSTER_PATH, 'utf-8'));
 
@@ -46,8 +44,11 @@ function baseRecord(rep) {
 }
 
 const reps = roster
-  .filter(r => r.terms.some(t => t.type === 'rep' && t.congress === CONGRESS))
+  .filter(r => {
+    const t = r.terms[r.terms.length - 1];
+    return t.type === 'rep' && new Date(t.end) > new Date();
+  })
   .map(baseRecord);
 
 fs.writeFileSync(OUT_PATH, JSON.stringify(reps, null, 2));
-console.log(`Bootstrapped representatives-rankings.json with ${reps.length} House members for Congress ${CONGRESS}`);
+console.log(`Bootstrapped representatives-rankings.json with ${reps.length} current House members`);
