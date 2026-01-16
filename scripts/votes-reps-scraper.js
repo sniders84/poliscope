@@ -1,6 +1,6 @@
 // scripts/votes-reps-scraper.js
 // Purpose: Scrape House roll call votes for the 119th Congress (2025 + 2026)
-// Flood-controlled logging; Clerk XML parsing via fast-xml-parser
+// Parses Clerk XML feeds, flood-controlled logging
 
 const fs = require('fs');
 const path = require('path');
@@ -17,9 +17,6 @@ const parser = new XMLParser({
   ignoreAttributes: false,
   attributeNamePrefix: '',
   trimValues: true,
-  parseTagValue: true,
-  parseAttributeValue: true,
-  htmlEntities: true,
 });
 
 function ensureVoteShape(r) {
@@ -32,7 +29,7 @@ function ensureVoteShape(r) {
   return r;
 }
 
-function findBioguide({ first, last, state, district }) {
+function findBioguide({ first, last, state }) {
   const match = roster.find(r => {
     const t = r.terms[r.terms.length - 1];
     return (
@@ -51,8 +48,7 @@ async function fetchRoll(year, roll) {
   try {
     const res = await fetch(url);
     if (!res.ok) return null;
-    const xml = await res.text();
-    return xml;
+    return await res.text();
   } catch {
     return null;
   }
@@ -65,29 +61,20 @@ async function fetchRoll(year, roll) {
   let attached = 0;
 
   for (const year of SESSIONS) {
-    console.log(`Scanning roll calls for ${year}...`);
+    console.log(`Scanning House roll calls for ${year}...`);
     let consecutiveFails = 0;
-    let processed = 0;
 
     for (let roll = 1; roll <= 1200; roll++) {
       const xml = await fetchRoll(year, roll);
       if (!xml) {
         consecutiveFails++;
-        if (consecutiveFails > 200) {
-          console.log(`Stopping at roll ${roll} for ${year} (too many misses)`);
-          break;
-        }
+        if (consecutiveFails > 200) break;
         continue;
       }
       consecutiveFails = 0;
-      processed++;
 
       let doc;
-      try {
-        doc = parser.parse(xml);
-      } catch {
-        continue;
-      }
+      try { doc = parser.parse(xml); } catch { continue; }
 
       const members = doc?.rollcall?.members?.member || [];
       const arr = Array.isArray(members) ? members : [members];
@@ -109,10 +96,6 @@ async function fetchRoll(year, roll) {
         else rep.missedVotes++;
         attached++;
       }
-
-      if (processed % 100 === 0) {
-        console.log(`Processed ${processed} rolls for ${year}...`);
-      }
     }
   }
 
@@ -121,12 +104,7 @@ async function fetchRoll(year, roll) {
       const participated = r.yeaVotes + r.nayVotes;
       r.participationPct = Number(((participated / r.totalVotes) * 100).toFixed(2));
       r.missedVotePct = Number(((r.missedVotes / r.totalVotes) * 100).toFixed(2));
-    } else {
-      r.participationPct = 0;
-      r.missedVotePct = 0;
     }
   }
 
-  fs.writeFileSync(OUT_PATH, JSON.stringify(reps, null, 2));
-  console.log(`House votes updated: ${attached} member-votes attached`);
-})();
+  fs.writeFileSync(OUT_PATH, JSON.stringify(re
