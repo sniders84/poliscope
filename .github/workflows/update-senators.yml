@@ -28,35 +28,58 @@ jobs:
         run: |
           rm -f package-lock.json
           npm install --prefer-online --no-audit --no-fund
-          npm install @xmldom/xmldom fast-xml-parser
           node -e "console.log('Deps installed:', Object.keys(require('./package.json').dependencies))"
 
       - name: Debug API key prefix
         run: node -e "console.log('API key prefix:', (process.env.CONGRESS_API_KEY||'').slice(0,6))"
 
       # --- Senate pipeline ---
-      - name: Bootstrap Senators rankings file
-        run: node scripts/bootstrap-senators.js
-
       - name: Run Senate Legislation scraper
-        run: node scripts/legislation-senators-scraper.js
+        run: node scripts/legislation-scraper.js
 
       - name: Run Senate Committee scraper
-        run: node scripts/committee-senators-scraper.js
+        run: node scripts/committee-scraper.js
 
       - name: Run Senate Votes scraper
-        run: node scripts/votes-senators-scraper.js
+        run: node scripts/votes-scraper.js
 
       - name: Merge Senate data
         run: node scripts/merge-senators.js
 
       - name: Generate Senate scores
-        run: node scripts/senators-score.js
+        run: node scripts/senators-scores.js
+
+      # --- Bootstrap House roster ---
+      - name: Bootstrap Representatives rankings file
+        run: |
+          node -e "
+          const fs = require('fs');
+          const legislators = JSON.parse(fs.readFileSync('public/legislators-current.json','utf8'));
+          const reps = legislators.filter(l => {
+            const lastTerm = l.terms[l.terms.length - 1];
+            return lastTerm.type === 'rep';
+          }).map(l => {
+            const lastTerm = l.terms[l.terms.length - 1];
+            return {
+              name: l.name.official_full,
+              bioguideId: l.id.bioguide,
+              state: lastTerm.state,
+              party: lastTerm.party[0].toUpperCase(),
+              sponsoredBills: 0,
+              cosponsoredBills: 0,
+              sponsoredAmendments: 0,
+              cosponsoredAmendments: 0,
+              yeaVotes: 0,
+              nayVotes: 0,
+              missedVotes: 0,
+              totalVotes: 0
+            };
+          });
+          fs.writeFileSync('public/representatives-rankings.json', JSON.stringify(reps,null,2));
+          console.log('Bootstrapped representatives-rankings.json with', reps.length, 'members');
+          "
 
       # --- House pipeline ---
-      - name: Bootstrap Representatives rankings file
-        run: node scripts/bootstrap-reps.js
-
       - name: Run House Legislation scraper
         run: node scripts/legislation-reps-scraper.js
 
