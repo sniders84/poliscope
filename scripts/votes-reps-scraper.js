@@ -1,15 +1,17 @@
 // scripts/votes-reps-scraper.js
-// House votes scraper using xml2js
+// Purpose: Scrape House votes from Congress.gov vote pages and update representatives-rankings.json
 
 const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
-const xml2js = require('xml2js');
+const cheerio = require('cheerio');
 
 const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
-const YEAR = 2025; // lock to current Congress year
-const BASE_URL = `https://clerk.house.gov/evs/${YEAR}/`;
-const MAX_ROLL = 500;
+
+// Adjust to current Congress/session
+const CONGRESS = 119;
+const SESSION = 1;
+const MAX_VOTE = 500; // upper bound of roll calls to attempt
 
 function ensureRepShape(rep) {
   rep.yeaVotes = rep.yeaVotes || 0;
@@ -29,12 +31,12 @@ function indexByBioguide(list) {
   return map;
 }
 
-async function fetchRollCall(num) {
-  const url = `${BASE_URL}roll${String(num).padStart(3, '0')}.xml`;
+async function fetchVotePage(num) {
+  const url = `https://www.congress.gov/votes/house/${CONGRESS}-${SESSION}/${num}`;
   const res = await fetch(url);
   if (!res.ok) return null;
-  const xml = await res.text();
-  return xml2js.parseStringPromise(xml);
+  const html = await res.text();
+  return cheerio.load(html);
 }
 
 (async function main() {
@@ -44,25 +46,34 @@ async function fetchRollCall(num) {
   let processed = 0;
   let attached = 0;
 
-  for (let i = 1; i <= MAX_ROLL; i++) {
-    const doc = await fetchRollCall(i);
-    if (!doc) continue;
+  for (let i = 1; i <= MAX_VOTE; i++) {
+    const $ = await fetchVotePage(i);
+    if (!$) continue;
 
-    const votes = doc?.rollcall_vote?.vote_data?.[0]?.recorded_vote || [];
-    for (const v of votes) {
-      const legislator = v.legislator?.[0]?.$ || {};
-      const bioguideId = legislator.bioGuideID || legislator.name_id;
-      const choice = v.vote?.[0];
+    const groups = [
+      { selector: 'section#yeas li a', choice: 'Yea' },
+      { selector: 'section#nays li a', choice: 'Nay' },
+      { selector: 'section#not-voting li a', choice: 'Not Voting' },
+      { selector: 'section#present li a', choice: 'Present' }
+    ];
 
-      if (!bioguideId || !repMap.has(bioguideId)) continue;
-      const rep = repMap.get(bioguideId);
+    for (const g of groups) {
+      $(g.selector).each((_, el) => {
+        const href = $(el).attr('href') || '';
+        const match = href.match(/\/member\/([A-Z0-9]+)/);
+        if (!match) return;
+        const bioguideId = match[1];
+        if (!repMap.has(bioguideId)) return;
 
-      rep.totalVotes++;
-      if (choice === 'Yea') rep.yeaVotes++;
-      else if (choice === 'Nay') rep.nayVotes++;
-      else rep.missedVotes++;
-      attached++;
+        const rep = repMap.get(bioguideId);
+        rep.totalVotes++;
+        if (g.choice === 'Yea') rep.yeaVotes++;
+        else if (g.choice === 'Nay') rep.nayVotes++;
+        else rep.missedVotes++; // treat Not Voting/Present as missed
+        attached++;
+      });
     }
+
     processed++;
   }
 
@@ -75,7 +86,7 @@ async function fetchRollCall(num) {
   }
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(reps, null, 2));
-  console.log(`House votes updated: ${processed} roll calls processed; ${attached} member-votes attached`);
+  console.log(`House votes updated: ${processed} vote pages processed; ${attached} member-votes attached`);
 })().catch(err => {
   console.error('House votes scraper failed:', err);
   process.exit(1);
