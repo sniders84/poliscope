@@ -42,7 +42,7 @@ jobs:
         run: node scripts/legislation-senators-scraper.js
 
       - name: Run Senate Committee scraper
-        run: node scripts/committee-senators-scraper.js
+        run: node scripts/committee-scraper.js
 
       - name: Run Senate Votes scraper
         run: node scripts/votes-senators-scraper.js
