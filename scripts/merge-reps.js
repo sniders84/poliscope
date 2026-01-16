@@ -16,6 +16,7 @@ function normalize(rep) {
     name: rep.name,
     bioguideId: rep.bioguideId,
     state: rep.state,
+    district: rep.district,
     party: rep.party,
     sponsoredBills: rep.sponsoredBills || 0,
     cosponsoredBills: rep.cosponsoredBills || 0,
@@ -42,7 +43,6 @@ function normalize(rep) {
   const comms = fs.existsSync(COMM_PATH)  ? JSON.parse(fs.readFileSync(COMM_PATH))  : [];
   const votes = fs.existsSync(VOTES_PATH) ? JSON.parse(fs.readFileSync(VOTES_PATH)) : [];
 
-  // Index by bioguideId
   const map = new Map();
   for (const r of legis) map.set(r.bioguideId, normalize(r));
 
@@ -66,5 +66,5 @@ function normalize(rep) {
   const merged = Array.from(map.values());
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(merged, null, 2));
-  console.log(`Merge complete: ${merged.length} representatives normalized and schema enforced for Congress ${CONGRESS}`);
+  console.log(`Merge complete: ${merged.length} representatives normalized and schema enforced for Congress ${119}`);
 })();
