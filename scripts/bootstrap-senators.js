@@ -1,5 +1,6 @@
 // scripts/bootstrap-senators.js
-// Purpose: Bootstrap senators-rankings.json with all current Senators
+// Purpose: Generate baseline senators-rankings.json from local legislators-current.json
+// Filters for current Senators and initializes sponsored/cosponsored bill tallies
 
 const fs = require('fs');
 const path = require('path');
@@ -10,7 +11,7 @@ const OUT_PATH = path.join(__dirname, '..', 'public', 'senators-rankings.json');
 const roster = JSON.parse(fs.readFileSync(ROSTER_PATH, 'utf-8'));
 
 function baseRecord(sen) {
-  const lastTerm = sen.terms[sen.terms.length - 1];
+  const lastTerm = sen.terms.at(-1);
   return {
     bioguideId: sen.id.bioguide,
     name: `${sen.name.first} ${sen.name.last}`,
@@ -18,34 +19,15 @@ function baseRecord(sen) {
     district: 'At-Large',
     party: lastTerm.party,
     office: 'Senator',
-    // Legislation
-    sponsoredBills: 0,
-    cosponsoredBills: 0,
-    becameLawBills: 0,
-    becameLawCosponsoredBills: 0,
-    sponsoredAmendments: 0,
-    cosponsoredAmendments: 0,
-    becameLawAmendments: 0,
-    becameLawCosponsoredAmendments: 0,
-    // Committees
-    committees: [],
-    // Votes
-    yeaVotes: 0,
-    nayVotes: 0,
-    missedVotes: 0,
-    totalVotes: 0,
-    participationPct: 0,
-    missedVotePct: 0,
-    // Scores
-    rawScore: 0,
-    score: 0,
-    scoreNormalized: 0
+    // initialize tallies
+    sponsoredBills119: 0,
+    cosponsoredBills119: 0
   };
 }
 
 const sens = roster
   .filter(r => {
-    const t = r.terms[r.terms.length - 1];
+    const t = r.terms.at(-1);
     return t.type === 'sen' && new Date(t.end) > new Date();
   })
   .map(baseRecord);
