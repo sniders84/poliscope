@@ -29,7 +29,6 @@ async function loadRoster() {
   const xml = await res.text();
   const doc = parser.parse(xml);
 
-  // Correct root element is "member-data"
   const members = doc['member-data']?.member || [];
 
   const parsed = members.map(m => ({
@@ -65,7 +64,9 @@ async function fetchRoll(year, roll) {
 function parseVotes(xml, roster) {
   let doc;
   try { doc = parser.parse(xml); } catch { return []; }
-  const records = doc?.rollcall?.recordedVote || [];
+
+  // Clerk roll call XML uses "vote-record" not "recordedVote"
+  const records = doc?.rollcall?.['vote-record']?.vote || [];
   const arr = Array.isArray(records) ? records : [records];
 
   return arr.map(rv => {
