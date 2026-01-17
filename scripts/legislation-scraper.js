@@ -1,105 +1,110 @@
 // scripts/legislation-scraper.js
-// Scrape aggregate sponsors/cosponsors ALL page for Senate in 119th Congress
-// Hardened fetch with full headers + retry logic
+// Pull sponsored/cosponsored counts for Senate from GovTrack bulk data (119th Congress)
+// Enriches senators-rankings.json seeded by bootstrap
 
 const fs = require('fs');
 const path = require('path');
-const cheerio = require('cheerio');
 const fetch = require('node-fetch');
 
 const RANKINGS_PATH = path.join(__dirname, '../public/senators-rankings.json');
-const ALL_URL = 'https://www.congress.gov/sponsors-cosponsors/119th-congress/senators/ALL';
+// GovTrack bulk bills endpoint (JSON index of all bills in 119th Congress)
+const GOVTRACK_BILLS_URL = 'https://www.govtrack.us/api/v2/bill?congress=119&limit=1000';
 
-// Hardened fetch with retries
-async function fetchWithRetry(url, options = {}, retries = 3, delay = 5000) {
-  for (let attempt = 1; attempt <= retries; attempt++) {
-    try {
-      const res = await fetch(url, options);
-      if (res.ok) return res;
-      console.error(`Attempt ${attempt} failed: ${res.status} ${res.statusText}`);
-    } catch (err) {
-      console.error(`Attempt ${attempt} error: ${err.message}`);
-    }
-    if (attempt < retries) {
-      console.log(`Retrying in ${delay / 1000}s...`);
-      await new Promise(r => setTimeout(r, delay));
-    }
+async function fetchAllBills() {
+  let bills = [];
+  let nextUrl = GOVTRACK_BILLS_URL;
+
+  while (nextUrl) {
+    const res = await fetch(nextUrl);
+    if (!res.ok) throw new Error(`GovTrack fetch failed: ${res.status}`);
+    const data = await res.json();
+    bills = bills.concat(data.objects);
+    nextUrl = data.meta.next; // pagination
   }
-  throw new Error(`Failed to fetch ${url} after ${retries} attempts`);
+  return bills;
 }
 
-async function scrapeSenateAggregate() {
-  console.log(`Fetching Senate sponsors/cosponsors aggregate: ${ALL_URL}`);
+async function scrapeSenateLegislation() {
+  console.log(`Fetching GovTrack bills for 119th Congress...`);
+
+  let rankings;
+  try {
+    rankings = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf8'));
+  } catch (err) {
+    console.error('Failed to load senators-rankings.json:', err.message);
+    return;
+  }
+
+  // Initialize tallies
+  const tallies = {};
+  rankings.forEach(s => {
+    tallies[s.bioguideId] = {
+      sponsoredBills: 0,
+      cosponsoredBills: 0,
+      becameLawBills: 0,
+      becameLawCosponsoredBills: 0,
+      sponsoredAmendments: 0,
+      cosponsoredAmendments: 0,
+      becameLawAmendments: 0,
+      becameLawCosponsoredAmendments: 0
+    };
+  });
 
   try {
-    const res = await fetchWithRetry(ALL_URL, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
-        'Accept-Language': 'en-US,en;q=0.9',
-        'Referer': 'https://www.congress.gov/',
-        'Connection': 'keep-alive',
-        'Upgrade-Insecure-Requests': '1'
-      }
-    });
+    const bills = await fetchAllBills();
+    console.log(`Processing ${bills.length} bills from GovTrack...`);
 
-    const html = await res.text();
-    const $ = cheerio.load(html);
+    for (const bill of bills) {
+      const sponsorId = bill.sponsor?.bioguide_id;
+      const cosponsors = bill.cosponsors || [];
+      const enacted = bill.enacted || false;
+      const isAmendment = bill.bill_type === 'amendment';
 
-    const table = $('table').first();
-    if (!table.length) {
-      console.error('No table found on Senate ALL page');
-      return;
-    }
-
-    let rankings;
-    try {
-      rankings = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf8'));
-    } catch (err) {
-      console.error('Failed to load senators-rankings.json:', err.message);
-      return;
-    }
-
-    let updated = 0;
-    table.find('tr').each((i, row) => {
-      if (i === 0) return; // skip header
-
-      const cells = $(row).find('td');
-      if (cells.length < 4) return;
-
-      const nameLink = cells.eq(0).find('a');
-      const memberUrl = nameLink.attr('href') || '';
-      const bioguideMatch = memberUrl.match(/\/([A-Z0-9]{7})\?/);
-      const bioguide = bioguideMatch ? bioguideMatch[1] : null;
-
-      const sponsored = parseInt(cells.eq(1).text().trim(), 10) || 0;
-      const sponsoredAmd = parseInt(cells.eq(2).text().trim(), 10) || 0;
-      const cosponsored = parseInt(cells.eq(3).text().trim(), 10) || 0;
-
-      if (bioguide) {
-        const senator = rankings.find(s => s.bioguideId === bioguide);
-        if (senator) {
-          senator.sponsoredBills = sponsored;
-          senator.sponsoredAmendments = sponsoredAmd;
-          senator.cosponsoredBills = cosponsored;
-          senator.cosponsoredAmendments = 0;
-          senator.becameLawBills = 0;
-          senator.becameLawCosponsoredBills = 0;
-          senator.becameLawAmendments = 0;
-          senator.becameLawCosponsoredAmendments = 0;
-
-          console.log(`Updated ${senator.name} (${bioguide}): ${sponsored} sponsored, ${cosponsored} cosponsored`);
-          updated++;
+      // Sponsored
+      if (sponsorId && tallies[sponsorId]) {
+        if (isAmendment) tallies[sponsorId].sponsoredAmendments++;
+        else tallies[sponsorId].sponsoredBills++;
+        if (enacted) {
+          if (isAmendment) tallies[sponsorId].becameLawAmendments++;
+          else tallies[sponsorId].becameLawBills++;
         }
+      }
+
+      // Cosponsored
+      for (const c of cosponsors) {
+        const cid = c.bioguide_id;
+        if (cid && tallies[cid]) {
+          if (isAmendment) tallies[cid].cosponsoredAmendments++;
+          else tallies[cid].cosponsoredBills++;
+          if (enacted) {
+            if (isAmendment) tallies[cid].becameLawCosponsoredAmendments++;
+            else tallies[cid].becameLawCosponsoredBills++;
+          }
+        }
+      }
+    }
+
+    // Merge tallies back into rankings
+    rankings.forEach(s => {
+      const t = tallies[s.bioguideId];
+      if (t) {
+        s.sponsoredBills = t.sponsoredBills;
+        s.cosponsoredBills = t.cosponsoredBills;
+        s.becameLawBills = t.becameLawBills;
+        s.becameLawCosponsoredBills = t.becameLawCosponsoredBills;
+        s.sponsoredAmendments = t.sponsoredAmendments;
+        s.cosponsoredAmendments = t.cosponsoredAmendments;
+        s.becameLawAmendments = t.becameLawAmendments;
+        s.becameLawCosponsoredAmendments = t.becameLawCosponsoredAmendments;
       }
     });
 
     fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
-    console.log(`Senate aggregate scraping complete - updated ${updated} senators`);
+    console.log(`Senate legislation updated for ${rankings.length} senators`);
 
   } catch (err) {
-    console.error('Scrape error:', err.message);
+    console.error('GovTrack scrape error:', err.message);
   }
 }
 
-scrapeSenateAggregate();
+scrapeSenateLegislation();
