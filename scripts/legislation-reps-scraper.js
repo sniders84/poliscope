@@ -2,6 +2,8 @@
 // Purpose: Scrape House legislation (bills + amendments) for the 119th Congress
 // Enriches representatives-rankings.json with sponsor/cosponsor counts and became-law tallies
 // Uses bill/amendment list endpoints, then fetches detail JSON for each item
+// Covers: sponsoredBills, cosponsoredBills, sponsoredAmendments, cosponsoredAmendments,
+//         becameLawBills, becameLawCosponsoredBills, becameLawAmendments, becameLawCosponsoredAmendments
 
 const fs = require('fs');
 const path = require('path');
@@ -17,6 +19,7 @@ function ensureLegislationShape(rep) {
   rep.sponsoredAmendments ??= 0;
   rep.cosponsoredAmendments ??= 0;
   rep.becameLawBills ??= 0;
+  rep.becameLawCosponsoredBills ??= 0;
   rep.becameLawAmendments ??= 0;
   rep.becameLawCosponsoredAmendments ??= 0;
   return rep;
@@ -39,9 +42,14 @@ async function fetchAllPages(url, key) {
 }
 
 async function fetchDetail(url) {
-  const res = await fetch(url + `&api_key=${API_KEY}`);
+  const sep = url.includes('?') ? '&' : '?';
+  const res = await fetch(`${url}${sep}api_key=${API_KEY}`);
   if (!res.ok) return null;
   return await res.json();
+}
+
+function isBecameLawText(txt) {
+  return (txt || '').toLowerCase().includes('became public law');
 }
 
 (async function main() {
@@ -67,21 +75,26 @@ async function fetchDetail(url) {
   for (const bill of bills) {
     const detail = await fetchDetail(bill.url);
     if (!detail) continue;
+
+    const latestText = detail.latestAction?.text || bill.latestAction?.text || '';
     const sponsorId = detail.sponsor?.bioguideId || detail.sponsor?.bioguide_id;
+
+    // Sponsored bills
     if (sponsorId && repMap.has(sponsorId)) {
       const rep = repMap.get(sponsorId);
       rep.sponsoredBills++;
-      if ((detail.latestAction?.text || '').toLowerCase().includes('became public law')) {
-        rep.becameLawBills++;
-      }
+      if (isBecameLawText(latestText)) rep.becameLawBills++;
       attached++;
     }
-    if (detail.cosponsors) {
+
+    // Cosponsored bills
+    if (Array.isArray(detail.cosponsors)) {
       for (const c of detail.cosponsors) {
         const cosponsorId = c.bioguideId || c.bioguide_id;
         if (cosponsorId && repMap.has(cosponsorId)) {
           const rep = repMap.get(cosponsorId);
           rep.cosponsoredBills++;
+          if (isBecameLawText(latestText)) rep.becameLawCosponsoredBills++;
           attached++;
         }
       }
@@ -100,24 +113,26 @@ async function fetchDetail(url) {
   for (const amendment of amendments) {
     const detail = await fetchDetail(amendment.url);
     if (!detail) continue;
+
+    const latestText = detail.latestAction?.text || amendment.latestAction?.text || '';
     const sponsorId = detail.sponsor?.bioguideId || detail.sponsor?.bioguide_id;
+
+    // Sponsored amendments
     if (sponsorId && repMap.has(sponsorId)) {
       const rep = repMap.get(sponsorId);
       rep.sponsoredAmendments++;
-      if ((detail.latestAction?.text || '').toLowerCase().includes('became public law')) {
-        rep.becameLawAmendments++;
-      }
+      if (isBecameLawText(latestText)) rep.becameLawAmendments++;
       attached++;
     }
-    if (detail.cosponsors) {
+
+    // Cosponsored amendments
+    if (Array.isArray(detail.cosponsors)) {
       for (const c of detail.cosponsors) {
         const cosponsorId = c.bioguideId || c.bioguide_id;
         if (cosponsorId && repMap.has(cosponsorId)) {
           const rep = repMap.get(cosponsorId);
           rep.cosponsoredAmendments++;
-          if ((detail.latestAction?.text || '').toLowerCase().includes('became public law')) {
-            rep.becameLawCosponsoredAmendments++;
-          }
+          if (isBecameLawText(latestText)) rep.becameLawCosponsoredAmendments++;
           attached++;
         }
       }
