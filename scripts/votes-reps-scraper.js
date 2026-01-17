@@ -1,5 +1,5 @@
 // scripts/votes-reps-scraper.js
-// Fetch LegiScan bulk dataset for Congress session and enrich representatives-rankings.json with vote tallies
+// Full replacement: fetch LegiScan bulk dataset, diagnostic logging, and enrichment of representatives-rankings.json with vote tallies
 
 const fs = require('fs');
 const path = require('path');
@@ -7,13 +7,13 @@ const https = require('https');
 const unzipper = require('unzipper');
 
 const RANKINGS_PATH = path.join(__dirname, '../public/representatives-rankings.json');
-const TOKEN = process.env.CONGRESS_API_KEY;
-const SESSION = process.env.CONGRESS_NUMBER;
+const TOKEN = process.env.CONGRESS_API_KEY;   // Bulk download token
+const SESSION = process.env.CONGRESS_NUMBER;  // e.g. "119"
 
 const ZIP_URL = `https://api.legiscan.com/dl/?token=${TOKEN}&session=${SESSION}`;
 
 async function fetchAndParse() {
-  console.log(`Downloading LegiScan bulk dataset for session ${SESSION} (votes)...`);
+  console.log(`Downloading LegiScan bulk dataset for session ${SESSION} (House votes)...`);
 
   const zipPath = path.join(__dirname, 'legiscan.zip');
   const file = fs.createWriteStream(zipPath);
@@ -21,11 +21,20 @@ async function fetchAndParse() {
   await new Promise((resolve, reject) => {
     https.get(ZIP_URL, res => {
       res.pipe(file);
-      file.on('finish', () => {
-        file.close(resolve);
-      });
+      file.on('finish', () => file.close(resolve));
     }).on('error', reject);
   });
+
+  // Diagnostic: check file signature + head
+  const buf = fs.readFileSync(zipPath);
+  const sig = buf.slice(0, 4).toString('hex');
+  console.log(`Downloaded file signature: ${sig}`);
+  console.log(`First 200 bytes:\n${buf.slice(0, 200).toString()}`);
+
+  if (sig !== '504b0304') {
+    console.error('Not a valid ZIP file — check your token or endpoint.');
+    return;
+  }
 
   console.log('Unzipping LegiScan dataset...');
   await fs.createReadStream(zipPath)
@@ -35,8 +44,12 @@ async function fetchAndParse() {
   const reps = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf8'));
 
   const votesDir = path.join(__dirname, 'legiscan', 'vote');
-  const files = fs.readdirSync(votesDir);
+  if (!fs.existsSync(votesDir)) {
+    console.error('Votes directory not found in LegiScan dataset.');
+    return;
+  }
 
+  const files = fs.readdirSync(votesDir);
   files.forEach(file => {
     const vote = JSON.parse(fs.readFileSync(path.join(votesDir, file), 'utf8'));
     const roll = vote.roll_call || [];
