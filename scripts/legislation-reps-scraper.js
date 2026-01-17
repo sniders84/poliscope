@@ -1,110 +1,58 @@
 // scripts/legislation-reps-scraper.js
-// Pull sponsored/cosponsored counts for House from GovTrack bulk data (119th Congress)
-// Enriches representatives-rankings.json seeded by bootstrap
+// Fetch LegiScan bulk dataset for Congress session and enrich representatives-rankings.json
 
 const fs = require('fs');
 const path = require('path');
-const fetch = require('node-fetch');
+const https = require('https');
+const unzipper = require('unzipper');
 
 const RANKINGS_PATH = path.join(__dirname, '../public/representatives-rankings.json');
-// GovTrack bulk bills endpoint (JSON index of all bills in 119th Congress)
-const GOVTRACK_BILLS_URL = 'https://www.govtrack.us/api/v2/bill?congress=119&limit=1000';
+const TOKEN = process.env.CONGRESS_API_KEY;
+const SESSION = process.env.CONGRESS_NUMBER;
 
-async function fetchAllBills() {
-  let bills = [];
-  let nextUrl = GOVTRACK_BILLS_URL;
+const ZIP_URL = `https://api.legiscan.com/dl/?token=${TOKEN}&session=${SESSION}`;
 
-  while (nextUrl) {
-    const res = await fetch(nextUrl);
-    if (!res.ok) throw new Error(`GovTrack fetch failed: ${res.status}`);
-    const data = await res.json();
-    bills = bills.concat(data.objects);
-    nextUrl = data.meta.next; // pagination
-  }
-  return bills;
-}
+async function fetchAndParse() {
+  console.log(`Downloading LegiScan bulk dataset for session ${SESSION}...`);
 
-async function scrapeHouseLegislation() {
-  console.log(`Fetching GovTrack bills for 119th Congress...`);
+  const zipPath = path.join(__dirname, 'legiscan.zip');
+  const file = fs.createWriteStream(zipPath);
 
-  let rankings;
-  try {
-    rankings = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf8'));
-  } catch (err) {
-    console.error('Failed to load representatives-rankings.json:', err.message);
-    return;
-  }
-
-  // Initialize tallies
-  const tallies = {};
-  rankings.forEach(r => {
-    tallies[r.bioguideId] = {
-      sponsoredBills: 0,
-      cosponsoredBills: 0,
-      becameLawBills: 0,
-      becameLawCosponsoredBills: 0,
-      sponsoredAmendments: 0,
-      cosponsoredAmendments: 0,
-      becameLawAmendments: 0,
-      becameLawCosponsoredAmendments: 0
-    };
+  await new Promise((resolve, reject) => {
+    https.get(ZIP_URL, res => {
+      res.pipe(file);
+      file.on('finish', () => {
+        file.close(resolve);
+      });
+    }).on('error', reject);
   });
 
-  try {
-    const bills = await fetchAllBills();
-    console.log(`Processing ${bills.length} bills from GovTrack...`);
+  console.log('Unzipping LegiScan dataset...');
+  await fs.createReadStream(zipPath)
+    .pipe(unzipper.Extract({ path: path.join(__dirname, 'legiscan') }))
+    .promise();
 
-    for (const bill of bills) {
-      const sponsorId = bill.sponsor?.bioguide_id;
-      const cosponsors = bill.cosponsors || [];
-      const enacted = bill.enacted || false;
-      const isAmendment = bill.bill_type === 'amendment';
+  const reps = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf8'));
 
-      // Sponsored
-      if (sponsorId && tallies[sponsorId]) {
-        if (isAmendment) tallies[sponsorId].sponsoredAmendments++;
-        else tallies[sponsorId].sponsoredBills++;
-        if (enacted) {
-          if (isAmendment) tallies[sponsorId].becameLawAmendments++;
-          else tallies[sponsorId].becameLawBills++;
+  const billsDir = path.join(__dirname, 'legiscan', 'bill');
+  const files = fs.readdirSync(billsDir);
+
+  files.forEach(file => {
+    const bill = JSON.parse(fs.readFileSync(path.join(billsDir, file), 'utf8'));
+    const sponsors = bill.sponsors || [];
+    sponsors.forEach(sp => {
+      const rep = reps.find(r => r.bioguideId === sp.bioguide_id);
+      if (rep) {
+        rep.sponsoredBills = (rep.sponsoredBills || 0) + 1;
+        if (bill.status === 'passed') {
+          rep.becameLawBills = (rep.becameLawBills || 0) + 1;
         }
-      }
-
-      // Cosponsored
-      for (const c of cosponsors) {
-        const cid = c.bioguide_id;
-        if (cid && tallies[cid]) {
-          if (isAmendment) tallies[cid].cosponsoredAmendments++;
-          else tallies[cid].cosponsoredBills++;
-          if (enacted) {
-            if (isAmendment) tallies[cid].becameLawCosponsoredAmendments++;
-            else tallies[cid].becameLawCosponsoredBills++;
-          }
-        }
-      }
-    }
-
-    // Merge tallies back into rankings
-    rankings.forEach(r => {
-      const t = tallies[r.bioguideId];
-      if (t) {
-        r.sponsoredBills = t.sponsoredBills;
-        r.cosponsoredBills = t.cosponsoredBills;
-        r.becameLawBills = t.becameLawBills;
-        r.becameLawCosponsoredBills = t.becameLawCosponsoredBills;
-        r.sponsoredAmendments = t.sponsoredAmendments;
-        r.cosponsoredAmendments = t.cosponsoredAmendments;
-        r.becameLawAmendments = t.becameLawAmendments;
-        r.becameLawCosponsoredAmendments = t.becameLawCosponsoredAmendments;
       }
     });
+  });
 
-    fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
-    console.log(`House legislation updated for ${rankings.length} representatives`);
-
-  } catch (err) {
-    console.error('GovTrack scrape error:', err.message);
-  }
+  fs.writeFileSync(RANKINGS_PATH, JSON.stringify(reps, null, 2));
+  console.log(`Updated legislation tallies for ${reps.length} representatives`);
 }
 
-scrapeHouseLegislation();
+fetchAndParse().catch(err => console.error('LegiScan scrape failed:', err));
