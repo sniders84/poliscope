@@ -28,6 +28,33 @@ const parser = new xml2js.Parser({
 const roster = JSON.parse(fs.readFileSync(ROSTER_PATH, 'utf-8'));
 const senators = roster.filter(r => r.terms?.at(-1)?.type === 'sen');
 
+function ensureSchema(sen) {
+  // Votes
+  sen.yeaVotes ??= 0;
+  sen.nayVotes ??= 0;
+  sen.missedVotes ??= 0;
+  sen.totalVotes ??= 0;
+  sen.participationPct ??= 0;
+  sen.missedVotePct ??= 0;
+
+  // Legislation
+  sen.sponsoredBills ??= 0;
+  sen.cosponsoredBills ??= 0;
+  sen.sponsoredAmendments ??= 0;
+  sen.cosponsoredAmendments ??= 0;
+  sen.becameLawBills ??= 0;
+
+  // Committees
+  sen.committees ??= [];
+
+  // Scores
+  sen.rawScore ??= 0;
+  sen.score ??= 0;
+  sen.scoreNormalized ??= 0;
+
+  return sen;
+}
+
 // Build LIS→bioguide map by sampling one roll call XML
 async function buildLisMap() {
   const url = 'https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00001.xml';
@@ -66,9 +93,9 @@ async function main() {
   console.log('Votes scraper: LIS ID mapping for senators');
   let rankings;
   try {
-    rankings = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf8'));
+    rankings = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf8')).map(ensureSchema);
   } catch (err) {
-    console.error('Failed to load rankings.json:', err.message);
+    console.error('Failed to load senators-rankings.json:', err.message);
     return;
   }
 
@@ -109,14 +136,14 @@ async function main() {
     sen.yeaVotes = counts.yea;
     sen.nayVotes = counts.nay;
     sen.missedVotes = counts.missed;
-    sen.totalVotes = totalProcessed;
-    sen.missedVotePct = totalProcessed > 0 ? +((counts.missed / totalProcessed) * 100).toFixed(2) : 0;
-    sen.participationPct = totalProcessed > 0 ? +(((counts.yea + counts.nay) / totalProcessed) * 100).toFixed(2) : 0;
+    sen.totalVotes = counts.yea + counts.nay + counts.missed;
+    sen.participationPct = sen.totalVotes > 0 ? +(((counts.yea + counts.nay) / sen.totalVotes) * 100).toFixed(2) : 0;
+    sen.missedVotePct = sen.totalVotes > 0 ? +((counts.missed / sen.totalVotes) * 100).toFixed(2) : 0;
   });
 
   try {
     fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
-    console.log(`Votes updated: ${totalProcessed} roll calls processed`);
+    console.log(`Senate votes updated: ${totalProcessed} roll calls processed`);
   } catch (err) {
     console.error('Write error:', err.message);
   }
