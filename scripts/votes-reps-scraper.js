@@ -1,6 +1,6 @@
 // scripts/votes-reps-scraper.js
 // Scrape House roll call votes from congress.gov aggregate index (both sessions of 119th)
-// Uniform with Senate - counts yea/nay/missed per representative
+// Hardened fetch with full headers + retry logic
 
 const fs = require('fs');
 const path = require('path');
@@ -12,6 +12,24 @@ const INDEX_URLS = [
   'https://www.congress.gov/votes/house/119th-congress/1st-session',
   'https://www.congress.gov/votes/house/119th-congress/2nd-session'
 ];
+
+// Hardened fetch with retries
+async function fetchWithRetry(url, options = {}, retries = 3, delay = 5000) {
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    try {
+      const res = await fetch(url, options);
+      if (res.ok) return res;
+      console.error(`Attempt ${attempt} failed: ${res.status} ${res.statusText}`);
+    } catch (err) {
+      console.error(`Attempt ${attempt} error: ${err.message}`);
+    }
+    if (attempt < retries) {
+      console.log(`Retrying in ${delay / 1000}s...`);
+      await new Promise(r => setTimeout(r, delay));
+    }
+  }
+  throw new Error(`Failed to fetch ${url} after ${retries} attempts`);
+}
 
 let reps = [];
 try {
@@ -34,16 +52,16 @@ async function scrapeHouseVotes() {
   for (const indexUrl of INDEX_URLS) {
     console.log(`Fetching votes index: ${indexUrl}`);
     try {
-      const res = await fetch(indexUrl, {
+      const res = await fetchWithRetry(indexUrl, {
         headers: {
-          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+          'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+          'Accept-Language': 'en-US,en;q=0.9',
+          'Referer': 'https://www.congress.gov/',
+          'Connection': 'keep-alive',
+          'Upgrade-Insecure-Requests': '1'
         }
       });
-
-      if (!res.ok) {
-        console.error(`Index fetch failed: ${res.status} for ${indexUrl}`);
-        continue;
-      }
 
       const html = await res.text();
       const $ = cheerio.load(html);
@@ -72,18 +90,20 @@ async function scrapeHouseVotes() {
   for (const url of allVoteUrls) {
     console.log(`Processing vote: ${url}`);
     try {
-      const voteRes = await fetch(url, {
-        headers: { 'User-Agent': 'Mozilla/5.0 (compatible; DataBot/1.0)' }
+      const voteRes = await fetchWithRetry(url, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+          'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+          'Accept-Language': 'en-US,en;q=0.9',
+          'Referer': 'https://www.congress.gov/',
+          'Connection': 'keep-alive',
+          'Upgrade-Insecure-Requests': '1'
+        }
       });
-      if (!voteRes.ok) {
-        console.error(`Vote fetch failed: ${voteRes.status} for ${url}`);
-        continue;
-      }
 
       const voteHtml = await voteRes.text();
       const $$ = cheerio.load(voteHtml);
 
-      // Adjust selector if needed; usually .vote-table or #members-vote
       $$('table tr').each((i, row) => {
         if (i === 0) return;
         const cells = $$(row).find('td');
@@ -93,7 +113,6 @@ async function scrapeHouseVotes() {
         const partyState = cells.eq(1).text().trim(); // e.g. "R-AL"
         const vote = cells.eq(2).text().trim().toLowerCase();
 
-        // Match representative by name + party/state
         const rep = reps.find(r => {
           const matchName = r.name.toLowerCase().includes(name.toLowerCase());
           const matchPartyState =
