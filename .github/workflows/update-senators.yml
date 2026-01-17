@@ -11,6 +11,7 @@ jobs:
     timeout-minutes: 360
     env:
       CONGRESS_NUMBER: '119'
+      CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}   # LegiScan token
 
     steps:
       - name: Checkout repository
@@ -29,11 +30,11 @@ jobs:
       # --- Senate pipeline ---
       - name: Bootstrap Senators rankings file
         run: node scripts/bootstrap-senators.js
-      - name: Run Senate Legislation scraper (GovTrack)
+      - name: Run Senate Legislation scraper (LegiScan)
         run: node scripts/legislation-scraper.js
       - name: Run Senate Committee scraper (Congress.gov)
         run: node scripts/committee-scraper.js
-      - name: Run Senate Votes scraper (GovTrack)
+      - name: Run Senate Votes scraper (LegiScan)
         run: node scripts/votes-scraper.js
       - name: Merge Senate data
         run: node scripts/merge-senators.js
@@ -43,16 +44,20 @@ jobs:
       # --- House pipeline ---
       - name: Bootstrap Representatives rankings file
         run: node scripts/bootstrap-reps.js
-      - name: Run House Legislation scraper (GovTrack)
+      - name: Run House Legislation scraper (LegiScan)
         run: node scripts/legislation-reps-scraper.js
       - name: Run House Committee scraper (Congress.gov)
         run: node scripts/committee-reps-scraper.js
-      - name: Run House Votes scraper (GovTrack)
+      - name: Run House Votes scraper (LegiScan)
         run: node scripts/votes-reps-scraper.js
       - name: Merge House data
         run: node scripts/merge-reps.js
       - name: Generate House scores
         run: node scripts/reps-scores.js
+
+      # --- Cleanup ---
+      - name: Cleanup LegiScan artifacts
+        run: node scripts/cleanup-legiscan.js
 
       # --- Commit changes ---
       - name: Commit and push changes
