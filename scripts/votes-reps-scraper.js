@@ -9,7 +9,6 @@ const fetch = require('node-fetch');
 const { XMLParser } = require('fast-xml-parser');
 
 const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
-const ROSTER_URL = 'https://clerk.house.gov/xml/lists/memberdata.xml';
 const SESSIONS = [2025, 2026];
 
 const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '', trimValues: true });
@@ -24,31 +23,6 @@ function ensureVoteShape(rep) {
   return rep;
 }
 
-async function loadRoster() {
-  const res = await fetch(ROSTER_URL);
-  const xml = await res.text();
-  const doc = parser.parse(xml);
-
-  const members = doc['member-data']?.member || [];
-
-  const parsed = members.map(m => ({
-    bioguideId: m.bioguideID,
-    name: m['official-name'] || `${m['first-name']} ${m['last-name']}`,
-    state: m.state,
-    district: m.district,
-    party: m.party
-  }));
-
-  const byDistrict = {};
-  const byName = {};
-  for (const m of parsed) {
-    byDistrict[`${m.state}-${m.district}`] = m;
-    const last = m.name.split(' ').slice(-1)[0].toLowerCase();
-    byName[`${m.state}-${last}-${m.party}`] = m;
-  }
-  return { byDistrict, byName };
-}
-
 async function fetchRoll(year, roll) {
   const rollStr = String(roll).padStart(3, '0');
   const url = `https://clerk.house.gov/evs/${year}/roll${rollStr}.xml`;
@@ -61,38 +35,25 @@ async function fetchRoll(year, roll) {
   }
 }
 
-function parseVotes(xml, roster) {
+function parseVotes(xml) {
   let doc;
   try { doc = parser.parse(xml); } catch { return []; }
 
-  // Clerk roll call XML uses "vote-record" not "recordedVote"
+  // House roll call XML uses "vote-record"
   const records = doc?.rollcall?.['vote-record']?.vote || [];
   const arr = Array.isArray(records) ? records : [records];
 
-  return arr.map(rv => {
-    const leg = rv.legislator;
-    const state = leg?.state || '';
-    const district = leg?.district || '';
-    const party = leg?.party || '';
-    const vote = rv.vote?.trim() || '';
-    const last = leg?.name?.split(' ').slice(-1)[0]?.toLowerCase();
-
-    let member = roster.byDistrict[`${state}-${district}`];
-    if (!member && last) member = roster.byName[`${state}-${last}-${party}`];
-
-    return {
-      bioguideId: member?.bioguideId || '',
-      name: member?.name || '',
-      state,
-      district,
-      party,
-      vote
-    };
-  });
+  return arr.map(rv => ({
+    bioguideId: rv?.legislator?.bioguideID || '',
+    name: rv?.legislator?.name || '',
+    state: rv?.legislator?.state || '',
+    district: rv?.legislator?.district || '',
+    party: rv?.legislator?.party || '',
+    vote: rv?.vote?.trim() || ''
+  }));
 }
 
 (async function main() {
-  const roster = await loadRoster();
   const reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureVoteShape);
   const repMap = new Map(reps.map(r => [r.bioguideId, r]));
 
@@ -111,7 +72,7 @@ function parseVotes(xml, roster) {
       }
       consecutiveFails = 0;
 
-      const votes = parseVotes(xml, roster);
+      const votes = parseVotes(xml);
       if (votes.length === 0) continue;
       totalVotesProcessed++;
 
