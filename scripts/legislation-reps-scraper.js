@@ -1,187 +1,163 @@
 // scripts/legislation-reps-scraper.js
-// This is a complete replacement for your original legislation-reps-scraper.js
-// It exclusively processes data for the 119th Congress (all sessions),
-// separates sponsored vs. cosponsored bills and amendments,
-// counts total and "became law" variants,
-// adds checkpoints every 20 reps with intermediate saves,
-// includes delays to avoid rate limits,
-// and robust error handling per rep.
+// Revamped to use GovInfo bulk BILLS XML (119th Congress, both sessions)
+// Parses sponsor/cosponsor from XML, counts unique bills, infers enacted via 'enr' version presence
+// Amendments = 0 for now
 
 const fs = require('fs');
+const https = require('https');
 const path = require('path');
+const { XMLParser } = require('fast-xml-parser'); // npm install fast-xml-parser
 
-// Load base reps data from public/representatives-rankings.json
-// (assumed to be bootstrapped with members, committees, etc.)
+// Config
+const BASE_URLS = [
+  'https://www.govinfo.gov/bulkdata/xml/BILLS/119/1/hr/',
+  'https://www.govinfo.gov/bulkdata/xml/BILLS/119/2/hr/'
+];
+const DOWNLOAD_DIR = path.join(__dirname, '../temp-bills-xml'); // Temp folder in repo or /tmp
+const CHECKPOINT_INTERVAL = 50; // Save after processing this many bills
+
+// Load reps
 let reps = [];
 try {
   reps = JSON.parse(fs.readFileSync('public/representatives-rankings.json', 'utf8'));
 } catch (err) {
-  console.error('Error loading base rankings JSON:', err.message);
+  console.error('Error loading rankings JSON:', err.message);
   process.exit(1);
 }
 
-const API_KEY = process.env.CONGRESS_API_KEY;
-if (!API_KEY) {
-  console.error('CONGRESS_API_KEY environment variable is required.');
-  process.exit(1);
-}
+// Map bioguideId → {sponsored: Set<string>, cosponsored: Set<string>, enactedSponsored: number, enactedCosponsored: number}
+const repData = new Map();
+reps.forEach(rep => {
+  repData.set(rep.bioguideId, {
+    sponsored: new Set(),
+    cosponsored: new Set(),
+    enactedSponsored: 0,
+    enactedCosponsored: 0
+  });
+});
 
-const CONGRESS = 119;
-const LIMIT = 250; // Max per page from API
-const DELAY_MS = 600; // ~100 req/min to avoid rate limits
-const CHECKPOINT_INTERVAL = 20;
+// Ensure download dir
+if (!fs.existsSync(DOWNLOAD_DIR)) fs.mkdirSync(DOWNLOAD_DIR, { recursive: true });
 
-// Helper to fetch paginated data from Congress.gov API
-async function fetchPaginated(urlBase) {
-  let items = [];
-  let offset = 0;
-  while (true) {
-    const url = `${urlBase}&limit=${LIMIT}&offset=${offset}&api_key=${API_KEY}&format=json`;
-    try {
-      const res = await fetch(url);
-      if (!res.ok) {
-        console.error(`API error: ${res.status} for ${url}`);
-        return items; // Return partial if error
-      }
-      const data = await res.json();
-      const pageItems = data.bills || data.amendments || [];
-      items = items.concat(pageItems);
-      if (pageItems.length < LIMIT) break;
-      offset += LIMIT;
-      await new Promise(resolve => setTimeout(resolve, DELAY_MS));
-    } catch (err) {
-      console.error(`Fetch error for ${url}: ${err.message}`);
-      break;
+// Helper: Download file if not exists or outdated
+function downloadFile(url, filePath) {
+  return new Promise((resolve, reject) => {
+    if (fs.existsSync(filePath)) {
+      console.log(`Skipping existing: ${path.basename(filePath)}`);
+      return resolve();
     }
-  }
-  return items;
+    const file = fs.createWriteStream(filePath);
+    https.get(url, res => {
+      if (res.statusCode !== 200) {
+        reject(new Error(`Download failed ${res.statusCode} for ${url}`));
+        return;
+      }
+      res.pipe(file);
+      file.on('finish', () => {
+        file.close();
+        console.log(`Downloaded: ${path.basename(filePath)}`);
+        resolve();
+      });
+    }).on('error', reject);
+  });
 }
 
-// Function to process a single rep
-async function processRep(rep) {
-  console.log(`Scraping API for ${rep.name} (${rep.bioguideId})...`);
-
-  try {
-    // Sponsored bills
-    const sponsoredBills = await fetchPaginated(
-      `https://api.congress.gov/v3/bill?congress=${CONGRESS}&sponsor=${rep.bioguideId}`
-    );
-
-    // Cosponsored bills
-    const cosponsoredBills = await fetchPaginated(
-      `https://api.congress.gov/v3/bill?congress=${CONGRESS}&cosponsor=${rep.bioguideId}`
-    );
-
-    // Sponsored amendments
-    const sponsoredAmendments = await fetchPaginated(
-      `https://api.congress.gov/v3/amendment?congress=${CONGRESS}&sponsor=${rep.bioguideId}`
-    );
-
-    // Cosponsored amendments
-    const cosponsoredAmendments = await fetchPaginated(
-      `https://api.congress.gov/v3/amendment?congress=${CONGRESS}&cosponsor=${rep.bioguideId}`
-    );
-
-    // Counts
-    const sponsoredCount = sponsoredBills.length;
-    const cosponsoredCount = cosponsoredBills.length;
-    const sponsoredAmdCount = sponsoredAmendments.length;
-    const cosponsoredAmdCount = cosponsoredAmendments.length;
-
-    let becameLawSponsored = 0;
-    let becameLawCosponsored = 0;
-    let becameLawAmdSponsored = 0;
-    let becameLawAmdCosponsored = 0;
-
-    // Robust "became law" detection for bills
-    const isEnacted = (item) => {
-      if (!item || !item.latestAction) return false;
-      const text = (item.latestAction.text || '').toLowerCase();
-      if (
-        text.includes('became public law') ||
-        text.includes('signed by president') ||
-        text.includes('enacted')
-      ) {
-        return true;
-      }
-      // Fallback: check actions array if present
-      if (item.actions && Array.isArray(item.actions)) {
-        return item.actions.some(a => {
-          const aText = (a.text || '').toLowerCase();
-          return (
-            (a.actionCode && a.actionCode === 'E') || // Common enactment code
-            aText.includes('enacted') ||
-            aText.includes('public law') ||
-            aText.includes('signed by president')
-          );
+// Helper: List directory files (simple HTML parse since no API)
+async function listDirectory(url) {
+  return new Promise((resolve, reject) => {
+    https.get(url, res => {
+      let data = '';
+      res.on('data', chunk => data += chunk);
+      res.on('end', () => {
+        // Crude HTML parse for <a href="...xml"> links
+        const files = [];
+        const matches = data.match(/<a href="([^"]+\.xml)">/g) || [];
+        matches.forEach(m => {
+          const href = m.match(/href="([^"]+)"/)[1];
+          if (href.endsWith('.xml')) files.push(href);
         });
-      }
-      return false;
-    };
-
-    // Count enacted bills
-    for (const bill of sponsoredBills) {
-      if (isEnacted(bill)) becameLawSponsored++;
-    }
-    for (const bill of cosponsoredBills) {
-      if (isEnacted(bill)) becameLawCosponsored++;
-    }
-
-    // For amendments: Use similar logic, but amendments often "agreed to" rather than "enacted"
-    // Adjust if needed based on amendment action texts (e.g., "Agreed to in House/Senate")
-    const isAmendmentSuccessful = (amd) => {
-      if (!amd || !amd.latestAction) return false;
-      const text = (amd.latestAction.text || '').toLowerCase();
-      return (
-        text.includes('agreed to') ||
-        text.includes('adopted') ||
-        text.includes('passed') ||
-        text.includes('incorporated') // Or other success indicators
-      );
-    };
-
-    for (const amd of sponsoredAmendments) {
-      if (isAmendmentSuccessful(amd)) becameLawAmdSponsored++;
-    }
-    for (const amd of cosponsoredAmendments) {
-      if (isAmendmentSuccessful(amd)) becameLawAmdCosponsored++;
-    }
-
-    // Update rep object
-    rep.sponsoredBills = sponsoredCount;
-    rep.cosponsoredBills = cosponsoredCount;
-    rep.becameLawBills = becameLawSponsored;
-    rep.becameLawCosponsoredBills = becameLawCosponsored;
-    rep.sponsoredAmendments = sponsoredAmdCount;
-    rep.cosponsoredAmendments = cosponsoredAmdCount;
-    rep.becameLawAmendments = becameLawAmdSponsored;
-    rep.becameLawCosponsoredAmendments = becameLawAmdCosponsored;
-
-    // Log summary like your original
-    console.log(
-      `→ ${rep.name}: ${sponsoredCount} sponsored, ${cosponsoredCount} cosponsored bills`
-    );
-
-  } catch (err) {
-    console.error(`Error processing ${rep.name}: ${err.message}`);
-    // Continue with defaults (0s) if error
-  }
-
-  return rep;
+        resolve(files);
+      });
+    }).on('error', reject);
+  });
 }
 
-// Main execution
+// Parse single XML file
+function parseBillXml(filePath) {
+  const xml = fs.readFileSync(filePath, 'utf8');
+  const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '@_' });
+  const json = parser.parse(xml);
+
+  const bill = json.bill || {};
+  const billNumber = bill.billNumber || 'unknown';
+  const sponsor = bill.sponsor?.['_']?.['@_bioguideId'] || bill.sponsor?.bioguideId;
+  const cosponsors = bill.cosponsors?.cosponsor || [];
+  const cosponsorIds = Array.isArray(cosponsors) 
+    ? cosponsors.map(c => c?.['_']?.['@_bioguideId'] || c.bioguideId).filter(Boolean)
+    : [];
+
+  const versions = bill.textVersions?.textVersion || [];
+  const isEnacted = versions.some(v => v?.['_']?.['@_version']?.toLowerCase().includes('enr')); // Enrolled = likely enacted
+
+  return { sponsor, cosponsorIds: [...new Set(cosponsorIds)], isEnacted, billId: billNumber };
+}
+
+// Main: Download + Parse
 (async () => {
-  let processed = 0;
-  for (const rep of reps) {
-    await processRep(rep);
-    processed++;
-    if (processed % CHECKPOINT_INTERVAL === 0) {
-      fs.writeFileSync('public/representatives-rankings.json', JSON.stringify(reps, null, 2));
-      console.log(`Checkpoint: ${processed} reps updated`);
+  for (const baseUrl of BASE_URLS) {
+    console.log(`Processing session: ${baseUrl}`);
+    const files = await listDirectory(baseUrl).catch(err => {
+      console.error(`Failed to list ${baseUrl}: ${err.message}`);
+      return [];
+    });
+
+    let processed = 0;
+    for (const fileName of files) {
+      const url = `${baseUrl}${fileName}`;
+      const filePath = path.join(DOWNLOAD_DIR, fileName);
+
+      try {
+        await downloadFile(url, filePath);
+        const { sponsor, cosponsorIds, isEnacted, billId } = parseBillXml(filePath);
+
+        if (sponsor && repData.has(sponsor)) {
+          const data = repData.get(sponsor);
+          data.sponsored.add(billId);
+          if (isEnacted) data.enactedSponsored++;
+        }
+
+        for (const cosId of cosponsorIds) {
+          if (repData.has(cosId)) {
+            const data = repData.get(cosId);
+            data.cosponsored.add(billId);
+            if (isEnacted) data.enactedCosponsored++;
+          }
+        }
+
+        processed++;
+        if (processed % CHECKPOINT_INTERVAL === 0) {
+          console.log(`Checkpoint: Processed ${processed} bills`);
+        }
+      } catch (err) {
+        console.error(`Error on ${fileName}: ${err.message}`);
+      }
     }
   }
-  // Final save
+
+  // Update reps JSON
+  reps.forEach(rep => {
+    const data = repData.get(rep.bioguideId) || { sponsored: new Set(), cosponsored: new Set(), enactedSponsored: 0, enactedCosponsored: 0 };
+    rep.sponsoredBills = data.sponsored.size;
+    rep.cosponsoredBills = data.cosponsored.size;
+    rep.becameLawBills = data.enactedSponsored;
+    rep.becameLawCosponsoredBills = data.enactedCosponsored;
+    // Amendments stay 0
+    rep.sponsoredAmendments = 0;
+    rep.cosponsoredAmendments = 0;
+    rep.becameLawAmendments = 0;
+    rep.becameLawCosponsoredAmendments = 0;
+  });
+
   fs.writeFileSync('public/representatives-rankings.json', JSON.stringify(reps, null, 2));
-  console.log('119th Congress rankings updated!');
+  console.log('119th Congress bill data updated from GovInfo bulk!');
 })();
