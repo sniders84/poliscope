@@ -1,54 +1,46 @@
 // scripts/bootstrap-reps.js
-// Purpose: Bootstrap representatives-rankings.json with all current House members
+// Purpose: Generate baseline representatives-rankings.json from Clerk roster
 
 const fs = require('fs');
 const path = require('path');
+const fetch = require('node-fetch');
+const { XMLParser } = require('fast-xml-parser');
 
-const ROSTER_PATH = path.join(__dirname, '..', 'public', 'legislators-current.json');
 const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
+const ROSTER_URL = 'https://clerk.house.gov/xml/lists/memberdata.xml';
 
-const roster = JSON.parse(fs.readFileSync(ROSTER_PATH, 'utf-8'));
+const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '', trimValues: true });
 
-function baseRecord(rep) {
-  const lastTerm = rep.terms[rep.terms.length - 1];
-  return {
-    bioguideId: rep.id.bioguide,
-    name: `${rep.name.first} ${rep.name.last}`,
-    state: lastTerm.state,
-    district: lastTerm.district || 'At-Large',
-    party: lastTerm.party,
-    office: 'Representative',
-    // Legislation
-    sponsoredBills: 0,
-    cosponsoredBills: 0,
-    becameLawBills: 0,
-    becameLawCosponsoredBills: 0,
-    sponsoredAmendments: 0,
-    cosponsoredAmendments: 0,
-    becameLawAmendments: 0,
-    becameLawCosponsoredAmendments: 0,
-    // Committees
-    committees: [],
-    // Votes
+(async () => {
+  const res = await fetch(ROSTER_URL);
+  const xml = await res.text();
+  const doc = parser.parse(xml);
+
+  // Correct root element is "member-data"
+  const members = doc['member-data']?.member || [];
+
+  const reps = members.map(m => ({
+    bioguideId: m.bioguideID,
+    name: m['official-name'] || `${m['first-name']} ${m['last-name']}`,
+    state: m.state,
+    district: m.district,
+    party: m.party,
     yeaVotes: 0,
     nayVotes: 0,
     missedVotes: 0,
     totalVotes: 0,
     participationPct: 0,
     missedVotePct: 0,
-    // Scores
-    rawScore: 0,
-    score: 0,
-    scoreNormalized: 0
-  };
-}
+    sponsoredBills: 0,
+    cosponsoredBills: 0,
+    sponsoredAmendments: 0,
+    cosponsoredAmendments: 0,
+    becameLawBills: 0,
+    becameLawAmendments: 0,
+    becameLawCosponsoredAmendments: 0,
+    committees: []
+  }));
 
-const reps = roster
-  .filter(r => {
-    const t = r.terms[r.terms.length - 1];
-    return t.type === 'rep' && new Date(t.end) > new Date();
-  })
-  .map(baseRecord);
-
-fs.writeFileSync(OUT_PATH, JSON.stringify(reps, null, 2));
-console.log(`Bootstrapped representatives-rankings.json with ${reps.length} current House members`);
+  fs.writeFileSync(OUT_PATH, JSON.stringify(reps, null, 2));
+  console.log(`Bootstrapped representatives-rankings.json with ${reps.length} current House members`);
+})();
