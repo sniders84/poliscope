@@ -1,82 +1,65 @@
 // scripts/votes-scraper.js
-// Pull Senate roll call votes from GovTrack bulk data (119th Congress)
-// Enriches senators-rankings.json seeded by bootstrap
+// Fetch LegiScan bulk dataset for Congress session and enrich senators-rankings.json with vote tallies
 
 const fs = require('fs');
 const path = require('path');
-const fetch = require('node-fetch');
+const https = require('https');
+const unzipper = require('unzipper');
 
 const RANKINGS_PATH = path.join(__dirname, '../public/senators-rankings.json');
-// GovTrack bulk votes endpoint (Senate, 119th Congress)
-const GOVTRACK_VOTES_URL = 'https://www.govtrack.us/api/v2/vote?congress=119&chamber=senate&limit=1000';
+const TOKEN = process.env.CONGRESS_API_KEY;   // LegiScan token
+const SESSION = process.env.CONGRESS_NUMBER;  // e.g. "119"
 
-async function fetchAllVotes() {
-  let votes = [];
-  let nextUrl = GOVTRACK_VOTES_URL;
+const ZIP_URL = `https://api.legiscan.com/dl/?token=${TOKEN}&session=${SESSION}`;
 
-  while (nextUrl) {
-    const res = await fetch(nextUrl);
-    if (!res.ok) throw new Error(`GovTrack fetch failed: ${res.status}`);
-    const data = await res.json();
-    votes = votes.concat(data.objects);
-    nextUrl = data.meta.next; // pagination
-  }
-  return votes;
-}
+async function fetchAndParse() {
+  console.log(`Downloading LegiScan bulk dataset for session ${SESSION} (votes)...`);
 
-async function scrapeSenateVotes() {
-  console.log(`Fetching GovTrack Senate votes for 119th Congress...`);
+  const zipPath = path.join(__dirname, 'legiscan.zip');
+  const file = fs.createWriteStream(zipPath);
 
-  let rankings;
-  try {
-    rankings = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf8'));
-  } catch (err) {
-    console.error('Failed to load senators-rankings.json:', err.message);
-    return;
-  }
-
-  // Initialize tallies
-  const tallies = {};
-  rankings.forEach(s => {
-    tallies[s.bioguideId] = { yea: 0, nay: 0, missed: 0 };
+  await new Promise((resolve, reject) => {
+    https.get(ZIP_URL, res => {
+      res.pipe(file);
+      file.on('finish', () => {
+        file.close(resolve);
+      });
+    }).on('error', reject);
   });
 
-  try {
-    const votes = await fetchAllVotes();
-    console.log(`Processing ${votes.length} Senate votes from GovTrack...`);
+  console.log('Unzipping LegiScan dataset...');
+  await fs.createReadStream(zipPath)
+    .pipe(unzipper.Extract({ path: path.join(__dirname, 'legiscan') }))
+    .promise();
 
-    for (const vote of votes) {
-      const voters = vote.voters || {};
-      for (const [bioguideId, record] of Object.entries(voters)) {
-        if (!tallies[bioguideId]) continue;
-        const cast = (record.vote || '').toLowerCase();
-        if (cast === 'yea' || cast === 'yes') tallies[bioguideId].yea++;
-        else if (cast === 'nay' || cast === 'no') tallies[bioguideId].nay++;
-        else tallies[bioguideId].missed++;
+  const senators = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf8'));
+
+  const votesDir = path.join(__dirname, 'legiscan', 'vote');
+  const files = fs.readdirSync(votesDir);
+
+  files.forEach(file => {
+    const vote = JSON.parse(fs.readFileSync(path.join(votesDir, file), 'utf8'));
+    const roll = vote.roll_call || [];
+    roll.forEach(entry => {
+      const senator = senators.find(s => s.bioguideId === entry.bioguide_id);
+      if (senator) {
+        senator.yeaVotes = (senator.yeaVotes || 0) + (entry.vote === 'Yea' ? 1 : 0);
+        senator.nayVotes = (senator.nayVotes || 0) + (entry.vote === 'Nay' ? 1 : 0);
+        senator.missedVotes = (senator.missedVotes || 0) + (entry.vote === 'Not Voting' ? 1 : 0);
+        senator.totalVotes = (senator.totalVotes || 0) + 1;
       }
-    }
-
-    const totalVotes = votes.length;
-
-    // Merge tallies back into rankings
-    rankings.forEach(s => {
-      const t = tallies[s.bioguideId] || { yea: 0, nay: 0, missed: 0 };
-      s.yeaVotes = t.yea;
-      s.nayVotes = t.nay;
-      s.missedVotes = t.missed;
-      s.totalVotes = totalVotes;
-      s.participationPct =
-        totalVotes > 0 ? ((t.yea + t.nay) / totalVotes * 100).toFixed(2) : '0.00';
-      s.missedVotePct =
-        totalVotes > 0 ? (t.missed / totalVotes * 100).toFixed(2) : '0.00';
     });
+  });
 
-    fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
-    console.log(`Senate votes updated for ${rankings.length} senators`);
+  // Participation %
+  senators.forEach(s => {
+    const total = s.totalVotes || 0;
+    const missed = s.missedVotes || 0;
+    s.participationPct = total > 0 ? (((total - missed) / total) * 100).toFixed(2) : "0.00";
+  });
 
-  } catch (err) {
-    console.error('GovTrack votes scrape error:', err.message);
-  }
+  fs.writeFileSync(RANKINGS_PATH, JSON.stringify(senators, null, 2));
+  console.log(`Updated vote tallies for ${senators.length} senators`);
 }
 
-scrapeSenateVotes();
+fetchAndParse().catch(err => console.error('LegiScan votes scrape failed:', err));
