@@ -1,6 +1,7 @@
 // scripts/legislation-reps-scraper.js
 // Purpose: Scrape House legislation (bills + resolutions + amendments) for the 119th Congress
 // Enriches representatives-rankings.json with sponsor/cosponsor counts and became-law tallies
+// Includes unconditional debug logging for Alma Adams (A000370)
 
 const fs = require('fs');
 const path = require('path');
@@ -80,10 +81,16 @@ async function fetchMemberLegislation(bioguideId, type, billType = null) {
     rep.becameLawCosponsoredAmendments += cosponsoredAmendments.filter(a => (a.latestAction?.action || '').toLowerCase().includes('became public law')).length;
     attached += cosponsoredAmendments.length;
 
-    // Debug: log one sample for Alma Adams
-    if (id === 'A000370' && sponsored.length > 0) {
-      console.log('Sample sponsored bill for Alma Adams:');
-      console.log(JSON.stringify(sponsored[0], null, 2));
+    // Unconditional debug logging for Alma Adams
+    if (id === 'A000370') {
+      console.log('DEBUG Alma Adams sponsored bills array:');
+      console.log(JSON.stringify(sponsored, null, 2));
+      console.log('DEBUG Alma Adams cosponsored bills array:');
+      console.log(JSON.stringify(cosponsored, null, 2));
+      console.log('DEBUG Alma Adams sponsored amendments array:');
+      console.log(JSON.stringify(sponsoredAmendments, null, 2));
+      console.log('DEBUG Alma Adams cosponsored amendments array:');
+      console.log(JSON.stringify(cosponsoredAmendments, null, 2));
     }
   }
 
