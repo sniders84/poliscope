@@ -2,13 +2,14 @@ name: Nightly Update Congress Rankings & Scores
 
 on:
   schedule:
-    - cron: "0 */6 * * *"   # Every 6 hours
-  workflow_dispatch:        # Manual trigger
+    - cron: "0 */6 * * *"  # Every 6 hours
+  workflow_dispatch:       # Manual trigger
 
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 360   # Increased to 6 hours for bulk download + parsing
+
     env:
       CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
       CONGRESS_NUMBER: '119'
@@ -24,17 +25,22 @@ jobs:
         with:
           node-version: 20
 
-      - name: Force fresh lockfile and install deps
+      - name: Install dependencies
         run: |
-          rm -f package-lock.json
-          npm install --prefer-online --no-audit --no-fund
-          npm install node-fetch fast-xml-parser
-          node -e "console.log('Deps installed:', Object.keys(require('./package.json').dependencies))"
+          npm ci
+          # Explicitly ensure required packages for bulk parser
+          npm install fast-xml-parser node-fetch --save
 
-      - name: Debug API key prefix
-        run: node -e "console.log('API key prefix:', (process.env.CONGRESS_API_KEY||'').slice(0,6))"
+      - name: Debug environment
+        run: |
+          node -e "console.log('Node version:', process.version)"
+          node -e "console.log('Deps installed:', Object.keys(require('./package.json').dependencies || {}))"
 
-      # --- Senate pipeline ---
+      # Optional: Clean temp dir if it persists (rare in Actions)
+      - name: Clean temp bills XML directory
+        run: rm -rf temp-bills-xml || true
+
+      # --- Senate pipeline (unchanged) ---
       - name: Bootstrap Senators rankings file
         run: node scripts/bootstrap-senators.js
 
@@ -51,13 +57,13 @@ jobs:
         run: node scripts/merge-senators.js
 
       - name: Generate Senate scores
-        run: node scripts/senators-scores.js   # corrected filename
+        run: node scripts/senators-scores.js
 
       # --- House pipeline ---
       - name: Bootstrap Representatives rankings file
         run: node scripts/bootstrap-reps.js
 
-      - name: Run House Legislation scraper
+      - name: Run House Legislation scraper (GovInfo bulk XML)
         run: node scripts/legislation-reps-scraper.js
 
       - name: Run House Committee scraper
@@ -72,11 +78,11 @@ jobs:
       - name: Generate House scores
         run: node scripts/reps-scores.js
 
-      # --- Commit all outputs + regenerated lockfile ---
+      # --- Commit all outputs ---
       - name: Commit and push changes
         run: |
           git config user.name "Data Bot"
           git config user.email "bot@electorate.app"
           git add public/*.json package-lock.json
-          git diff --cached --quiet || git commit -m "Automated update: senate + house data + fresh lockfile $(date +'%Y-%m-%d %H:%M:%S UTC')"
+          git diff --cached --quiet || git commit -m "Automated nightly update: Senate + House rankings/scores from bulk data (GovInfo BILLS XML) $(date +'%Y-%m-%d %H:%M:%S UTC')"
           git push
