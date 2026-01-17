@@ -29,8 +29,11 @@ async function loadRoster() {
   const xml = await res.text();
   const doc = parser.parse(xml);
 
-  const members = doc.memberdata.member.map(m => ({
-    bioguide: m.bioguideID,
+  // Correct root element is "member-data"
+  const members = doc['member-data']?.member || [];
+
+  const parsed = members.map(m => ({
+    bioguideId: m.bioguideID,
     name: m['official-name'] || `${m['first-name']} ${m['last-name']}`,
     state: m.state,
     district: m.district,
@@ -39,7 +42,7 @@ async function loadRoster() {
 
   const byDistrict = {};
   const byName = {};
-  for (const m of members) {
+  for (const m of parsed) {
     byDistrict[`${m.state}-${m.district}`] = m;
     const last = m.name.split(' ').slice(-1)[0].toLowerCase();
     byName[`${m.state}-${last}-${m.party}`] = m;
@@ -77,7 +80,7 @@ function parseVotes(xml, roster) {
     if (!member && last) member = roster.byName[`${state}-${last}-${party}`];
 
     return {
-      bioguide: member?.bioguide || '',
+      bioguideId: member?.bioguideId || '',
       name: member?.name || '',
       state,
       district,
@@ -112,8 +115,8 @@ function parseVotes(xml, roster) {
       totalVotesProcessed++;
 
       for (const v of votes) {
-        if (!v.bioguide || !repMap.has(v.bioguide)) continue;
-        const rep = repMap.get(v.bioguide);
+        if (!v.bioguideId || !repMap.has(v.bioguideId)) continue;
+        const rep = repMap.get(v.bioguideId);
         if (v.vote.toLowerCase() === 'yea' || v.vote.toLowerCase() === 'yes') rep.yeaVotes++;
         else if (v.vote.toLowerCase() === 'nay' || v.vote.toLowerCase() === 'no') rep.nayVotes++;
         else rep.missedVotes++;
