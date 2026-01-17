@@ -1,13 +1,14 @@
 const fs = require('fs');
 const path = require('path');
 
-const rankings = JSON.parse(fs.readFileSync(path.join(__dirname, '../public/senators-rankings.json')));
+const rankingsPath = path.join(__dirname, '../public/senators-rankings.json');
+const rankings = JSON.parse(fs.readFileSync(rankingsPath));
 
-rankings.forEach(sen => {
+for (const sen of rankings) {
   const sponsored = sen.legislation?.length || 0;
   const votes = sen.votes?.length || 0;
-  sen.score = sponsored + votes; // simple scoring logic, adjust as needed
-});
+  sen.score = sponsored + votes;
+}
 
 fs.writeFileSync(path.join(__dirname, '../public/senators-scores.json'), JSON.stringify(rankings, null, 2));
 console.log('Generated Senate scores');
