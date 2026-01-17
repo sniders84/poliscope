@@ -1,9 +1,9 @@
 // scripts/legislation-reps-scraper.js
 // Purpose: Scrape House legislation (bills + amendments) for the 119th Congress
 // Enriches representatives-rankings.json with sponsor/cosponsor counts and became-law tallies
-// Uses bill/amendment list endpoints, then fetches detail JSON for each item
 // Covers: sponsoredBills, cosponsoredBills, sponsoredAmendments, cosponsoredAmendments,
 //         becameLawBills, becameLawCosponsoredBills, becameLawAmendments, becameLawCosponsoredAmendments
+// Also attaches durable Congress.gov URLs for attribution
 
 const fs = require('fs');
 const path = require('path');
@@ -22,6 +22,7 @@ function ensureLegislationShape(rep) {
   rep.becameLawCosponsoredBills ??= 0;
   rep.becameLawAmendments ??= 0;
   rep.becameLawCosponsoredAmendments ??= 0;
+  rep.legislationUrls ??= []; // durable Congress.gov links
   return rep;
 }
 
@@ -50,6 +51,22 @@ async function fetchDetail(url) {
 
 function isBecameLawText(txt) {
   return (txt || '').toLowerCase().includes('became public law');
+}
+
+function durableBillUrl(congress, type, number) {
+  const chamber = type.startsWith('H') ? 'house' : 'senate';
+  let billType = '';
+  if (type.startsWith('HR')) billType = 'bill';
+  else if (type.startsWith('HJRES')) billType = 'joint-resolution';
+  else if (type.startsWith('HRES')) billType = 'resolution';
+  else if (type.startsWith('HCONRES')) billType = 'concurrent-resolution';
+  else billType = 'bill';
+  return `https://www.congress.gov/bill/${congress}th-congress/${chamber}-${billType}/${number}`;
+}
+
+function durableAmendmentUrl(congress, type, number) {
+  const chamber = type.startsWith('H') ? 'house' : 'senate';
+  return `https://www.congress.gov/amendment/${congress}th-congress/${chamber}-amendment/${number}`;
 }
 
 (async function main() {
@@ -84,6 +101,7 @@ function isBecameLawText(txt) {
       const rep = repMap.get(sponsorId);
       rep.sponsoredBills++;
       if (isBecameLawText(latestText)) rep.becameLawBills++;
+      rep.legislationUrls.push(durableBillUrl(CONGRESS, bill.type, bill.number));
       attached++;
     }
 
@@ -95,6 +113,7 @@ function isBecameLawText(txt) {
           const rep = repMap.get(cosponsorId);
           rep.cosponsoredBills++;
           if (isBecameLawText(latestText)) rep.becameLawCosponsoredBills++;
+          rep.legislationUrls.push(durableBillUrl(CONGRESS, bill.type, bill.number));
           attached++;
         }
       }
@@ -122,6 +141,7 @@ function isBecameLawText(txt) {
       const rep = repMap.get(sponsorId);
       rep.sponsoredAmendments++;
       if (isBecameLawText(latestText)) rep.becameLawAmendments++;
+      rep.legislationUrls.push(durableAmendmentUrl(CONGRESS, amendment.type, amendment.number));
       attached++;
     }
 
@@ -133,6 +153,7 @@ function isBecameLawText(txt) {
           const rep = repMap.get(cosponsorId);
           rep.cosponsoredAmendments++;
           if (isBecameLawText(latestText)) rep.becameLawCosponsoredAmendments++;
+          rep.legislationUrls.push(durableAmendmentUrl(CONGRESS, amendment.type, amendment.number));
           attached++;
         }
       }
