@@ -3,16 +3,27 @@ const path = require('path');
 const axios = require('axios');
 
 const API_KEY = process.env.CONGRESS_API_KEY;
-const URL = `https://api.congress.gov/v3/bill?congress=119&chamber=senate&api_key=${API_KEY}`;
 const OUT = path.join(__dirname, '../public/senate-legislation.json');
 
-async function run() {
-  const { data } = await axios.get(URL);
-  fs.writeFileSync(OUT, JSON.stringify(data, null, 2));
-  console.log(`Saved Senate legislation: ${data.bills?.length || 0} bills`);
+async function fetchAllBills() {
+  const base = `https://api.congress.gov/v3/bill?congress=119&chamber=senate&api_key=${API_KEY}&limit=250`;
+  let offset = 0;
+  const bills = [];
+  while (true) {
+    const url = `${base}&offset=${offset}`;
+    const { data } = await axios.get(url);
+    if (Array.isArray(data.bills)) bills.push(...data.bills);
+    if (!data.pagination || data.pagination.next === null) break;
+    offset = data.pagination.next;
+  }
+  return bills;
 }
 
-run().catch(err => {
+(async () => {
+  const bills = await fetchAllBills();
+  fs.writeFileSync(OUT, JSON.stringify({ bills }, null, 2));
+  console.log(`Saved Senate legislation: ${bills.length} bills`);
+})().catch(err => {
   console.error('Senate legislation fetch failed:', err.message);
   process.exit(1);
 });
