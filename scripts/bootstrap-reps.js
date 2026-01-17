@@ -1,6 +1,6 @@
 // scripts/bootstrap-reps.js
 // Purpose: Generate baseline representatives-rankings.json from local legislators-current.json
-// Filters for House members and initializes vote/legislation fields
+// Filters for current House members and initializes sponsored/cosponsored bill tallies
 
 const fs = require('fs');
 const path = require('path');
@@ -14,7 +14,7 @@ const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.
   // Filter for current House members
   const reps = data.filter(r => {
     const t = r.terms.at(-1);
-    return t.type === 'rep';
+    return t.type === 'rep' && new Date(t.end) > new Date();
   }).map(r => {
     const t = r.terms.at(-1);
     return {
@@ -23,21 +23,10 @@ const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.
       state: t.state,
       district: String(t.district || 'At-Large'),
       party: t.party,
+      office: 'Representative',
       // initialize tallies
-      yeaVotes: 0,
-      nayVotes: 0,
-      missedVotes: 0,
-      totalVotes: 0,
-      participationPct: 0,
-      missedVotePct: 0,
-      sponsoredBills: 0,
-      cosponsoredBills: 0,
-      sponsoredAmendments: 0,
-      cosponsoredAmendments: 0,
-      becameLawBills: 0,
-      becameLawAmendments: 0,
-      becameLawCosponsoredAmendments: 0,
-      committees: []
+      sponsoredBills119: 0,
+      cosponsoredBills119: 0
     };
   });
 
