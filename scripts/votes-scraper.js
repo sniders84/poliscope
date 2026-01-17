@@ -1,106 +1,104 @@
 // scripts/votes-scraper.js
-// Purpose: Scrape Senate roll call votes for the 119th Congress (sessions 2025 + 2026)
-// Uses LIS XML feeds and a LIS→bioguide map to avoid mismatches
-// Uses xml2js for parsing (no fast-xml-parser)
+// Scrape Senate roll call votes from LIS vote menu pages (both sessions of 119th)
+// Parses XML per vote for member yea/nay/not-voting
 
 const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
+const cheerio = require('cheerio');
 const xml2js = require('xml2js');
 
 const RANKINGS_PATH = path.join(__dirname, '../public/senators-rankings.json');
-const ROSTER_PATH = path.join(__dirname, '../public/legislators-current.json');
+const MENU_URLS = [
+  'https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_1.htm',
+  'https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_2.htm'
+];
 
-const SESSION_RANGES = {
-  1: { start: 1, end: 659 },
-  2: { start: 1, end: 9 } // adjust end as session progresses
-};
+const parser = new xml2js.Parser({ explicitArray: false });
 
-const parser = new xml2js.Parser({
-  explicitArray: false,
-  mergeAttrs: true,
-  attrValueProcessors: [xml2js.processors.parseNumbers, xml2js.processors.parseBooleans],
-  tagNameProcessors: [xml2js.processors.stripPrefix],
-  attrNameProcessors: [xml2js.processors.stripPrefix]
-});
+let rankings = [];
+try {
+  rankings = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf8'));
+} catch (err) {
+  console.error('Failed to load senators-rankings.json:', err.message);
+  process.exit(1);
+}
 
-// Load roster
-const roster = JSON.parse(fs.readFileSync(ROSTER_PATH, 'utf-8'));
-const senators = roster.filter(r => r.terms?.at(-1)?.type === 'sen');
+const senatorMap = new Map(rankings.map(s => [s.bioguideId, s]));
 
-// Build LIS→bioguide map by sampling one roll call XML
-async function buildLisMap() {
-  const url = 'https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00001.xml';
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`Failed to fetch map sample: ${res.status}`);
-  const xml = await res.text();
-  const doc = await parser.parseStringPromise(xml);
-  const members = doc.roll_call_vote?.members?.member || [];
-  const map = new Map();
+async function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
-  for (const m of members) {
-    const last = m.last_name?.toLowerCase();
-    const state = m.state;
-    const lis = m.lis_member_id;
-    const match = senators.find(s => {
-      const t = s.terms?.at(-1);
-      return s.name?.last?.toLowerCase() === last && t?.state === state;
+async function scrapeSenateVotes() {
+  let allXmlUrls = [];
+
+  for (const menuUrl of MENU_URLS) {
+    console.log(`Fetching Senate vote menu: ${menuUrl}`);
+
+    const res = await fetch(menuUrl, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+      }
     });
-    if (match) map.set(lis, match.id.bioguide);
-  }
-  return map;
-}
 
-async function fetchVote(url) {
-  try {
-    const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' } });
-    if (!res.ok) return null;
-    const xml = await res.text();
-    return await parser.parseStringPromise(xml);
-  } catch {
-    return null;
-  }
-}
+    if (!res.ok) {
+      console.error(`Menu fetch failed: ${res.status} for ${menuUrl}`);
+      continue;
+    }
 
-async function main() {
-  console.log('Votes scraper: LIS ID mapping for senators');
-  let rankings;
-  try {
-    rankings = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf8'));
-  } catch (err) {
-    console.error('Failed to load rankings.json:', err.message);
-    return;
+    const html = await res.text();
+    const $ = cheerio.load(html);
+
+    $('table tr').each((i, row) => {
+      if (i === 0) return;
+      const link = $(row).find('td a[href$=".xml"]').attr('href');
+      if (link) allXmlUrls.push('https://www.senate.gov' + link);
+    });
   }
 
-  const repMap = new Map(rankings.map(r => [r.bioguideId, r]));
-  const voteCounts = {};
+  console.log(`Found ${allXmlUrls.length} Senate vote XML files across both sessions`);
+
+  let totalVotes = allXmlUrls.length;
+  let voteCounts = {};
   rankings.forEach(s => {
     voteCounts[s.bioguideId] = { yea: 0, nay: 0, missed: 0 };
   });
 
-  const lisMap = await buildLisMap();
+  for (const xmlUrl of allXmlUrls) {
+    console.log(`Processing vote XML: ${xmlUrl}`);
+    try {
+      const xmlRes = await fetch(xmlUrl);
+      if (!xmlRes.ok) continue;
 
-  let totalProcessed = 0;
-  for (const [session, range] of Object.entries(SESSION_RANGES)) {
-    for (let num = range.start; num <= range.end; num++) {
-      const padded = num.toString().padStart(5, '0');
-      const url = `https://www.senate.gov/legislative/LIS/roll_call_votes/vote119${session}/vote_119_${session}_${padded}.xml`;
-      const parsed = await fetchVote(url);
-      if (!parsed) continue;
+      const xml = await xmlRes.text();
+      const parsed = await parser.parseStringPromise(xml);
 
-      totalProcessed++;
       const members = parsed.roll_call_vote?.members?.member || [];
       for (const m of members) {
-        const lis = m.lis_member_id;
-        const voteCast = (m.vote_cast || '').trim();
-        const bioguide = lisMap.get(lis);
-        if (!bioguide || !repMap.has(bioguide)) continue;
+        const name = (m.first_name + ' ' + m.last_name).trim();
+        const party = m.party;
+        const state = m.state;
+        const voteCast = (m.vote_cast || '').trim().toLowerCase();
 
-        const counts = voteCounts[bioguide];
-        if (voteCast === 'Yea') counts.yea++;
-        else if (voteCast === 'Nay') counts.nay++;
-        else if (voteCast === 'Not Voting') counts.missed++;
+        // Match senator (name + party + state fallback)
+        const senator = rankings.find(s => {
+          return s.name.toLowerCase().includes(name.toLowerCase()) &&
+                 s.party.toLowerCase() === party.toLowerCase() &&
+                 s.state === state;
+        });
+
+        if (!senator) continue;
+
+        const counts = voteCounts[senator.bioguideId];
+        if (voteCast === 'yea' || voteCast === 'yes') counts.yea++;
+        else if (voteCast === 'nay' || voteCast === 'no') counts.nay++;
+        else counts.missed++;
       }
+
+      await delay(3000); // 3s delay per XML to be polite
+    } catch (err) {
+      console.error(`Error on ${xmlUrl}: ${err.message}`);
     }
   }
 
@@ -109,17 +107,13 @@ async function main() {
     sen.yeaVotes = counts.yea;
     sen.nayVotes = counts.nay;
     sen.missedVotes = counts.missed;
-    sen.totalVotes = totalProcessed;
-    sen.missedVotePct = totalProcessed > 0 ? +((counts.missed / totalProcessed) * 100).toFixed(2) : 0;
-    sen.participationPct = totalProcessed > 0 ? +(((counts.yea + counts.nay) / totalProcessed) * 100).toFixed(2) : 0;
+    sen.totalVotes = totalVotes;
+    sen.participationPct = totalVotes > 0 ? ((counts.yea + counts.nay) / totalVotes * 100).toFixed(2) : 0;
+    sen.missedVotePct = totalVotes > 0 ? (counts.missed / totalVotes * 100).toFixed(2) : 0;
   });
 
-  try {
-    fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
-    console.log(`Votes updated: ${totalProcessed} roll calls processed`);
-  } catch (err) {
-    console.error('Write error:', err.message);
-  }
+  fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
+  console.log(`Senate votes updated: ${totalVotes} roll calls processed across both sessions`);
 }
 
-main().catch(err => console.error('Votes failed:', err.message));
+scrapeSenateVotes().catch(err => console.error('Senate votes scraper failed:', err.message));
