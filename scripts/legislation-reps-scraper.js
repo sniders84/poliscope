@@ -1,7 +1,7 @@
 // scripts/legislation-reps-scraper.js
-// Purpose: Scrape House legislation (bills + resolutions + amendments) for the 119th Congress
+// Purpose: Scrape House legislation (bills + amendments) for the 119th Congress
 // Enriches representatives-rankings.json with sponsor/cosponsor counts and became-law tallies
-// Includes unconditional debug logging for Alma Adams (A000370)
+// Uses bill-centric endpoints instead of member endpoints
 
 const fs = require('fs');
 const path = require('path');
@@ -36,11 +36,14 @@ async function fetchAllPages(url, key) {
   return results;
 }
 
-async function fetchMemberLegislation(bioguideId, type, billType = null) {
-  let base = `https://api.congress.gov/v3/member/${bioguideId}/${type}-legislation?congress=${CONGRESS}&api_key=${API_KEY}&format=json&pageSize=250&offset=0`;
-  if (billType) base += `&bill_type=${billType}`;
-  const key = billType === 'amendment' ? 'amendments' : 'bills';
-  return await fetchAllPages(base, key);
+async function fetchBills() {
+  const url = `https://api.congress.gov/v3/bill/${CONGRESS}?api_key=${API_KEY}&format=json&pageSize=250&offset=0`;
+  return await fetchAllPages(url, 'bills');
+}
+
+async function fetchAmendments() {
+  const url = `https://api.congress.gov/v3/amendment/${CONGRESS}?api_key=${API_KEY}&format=json&pageSize=250&offset=0`;
+  return await fetchAllPages(url, 'amendments');
 }
 
 (async function main() {
@@ -54,43 +57,58 @@ async function fetchMemberLegislation(bioguideId, type, billType = null) {
 
   let attached = 0;
 
-  for (const rep of reps) {
-    const id = rep.bioguideId;
-    if (!id) continue;
+  // Process bills
+  const bills = await fetchBills();
+  for (const bill of bills) {
+    const sponsorId = bill.sponsor?.bioguideId || bill.sponsor?.bioguide_id;
+    if (sponsorId && repMap.has(sponsorId)) {
+      const rep = repMap.get(sponsorId);
+      rep.sponsoredBills++;
+      if ((bill.latestAction?.action || '').toLowerCase().includes('became public law')) {
+        rep.becameLawBills++;
+      }
+      attached++;
+    }
 
-    // Sponsored bills/resolutions
-    const sponsored = await fetchMemberLegislation(id, 'sponsored');
-    rep.sponsoredBills += sponsored.length;
-    rep.becameLawBills += sponsored.filter(b => (b.latestAction?.action || '').toLowerCase().includes('became public law')).length;
-    attached += sponsored.length;
+    // Cosponsors
+    if (bill.cosponsors) {
+      for (const c of bill.cosponsors) {
+        const cosponsorId = c.bioguideId || c.bioguide_id;
+        if (cosponsorId && repMap.has(cosponsorId)) {
+          const rep = repMap.get(cosponsorId);
+          rep.cosponsoredBills++;
+          attached++;
+        }
+      }
+    }
+  }
 
-    // Cosponsored bills/resolutions
-    const cosponsored = await fetchMemberLegislation(id, 'cosponsored');
-    rep.cosponsoredBills += cosponsored.length;
-    attached += cosponsored.length;
+  // Process amendments
+  const amendments = await fetchAmendments();
+  for (const amendment of amendments) {
+    const sponsorId = amendment.sponsor?.bioguideId || amendment.sponsor?.bioguide_id;
+    if (sponsorId && repMap.has(sponsorId)) {
+      const rep = repMap.get(sponsorId);
+      rep.sponsoredAmendments++;
+      if ((amendment.latestAction?.action || '').toLowerCase().includes('became public law')) {
+        rep.becameLawAmendments++;
+      }
+      attached++;
+    }
 
-    // Sponsored amendments
-    const sponsoredAmendments = await fetchMemberLegislation(id, 'sponsored', 'amendment');
-    rep.sponsoredAmendments += sponsoredAmendments.length;
-    rep.becameLawAmendments += sponsoredAmendments.filter(a => (a.latestAction?.action || '').toLowerCase().includes('became public law')).length;
-    attached += sponsoredAmendments.length;
-
-    // Cosponsored amendments
-    const cosponsoredAmendments = await fetchMemberLegislation(id, 'cosponsored', 'amendment');
-    rep.cosponsoredAmendments += cosponsoredAmendments.length;
-    rep.becameLawCosponsoredAmendments += cosponsoredAmendments.filter(a => (a.latestAction?.action || '').toLowerCase().includes('became public law')).length;
-    attached += cosponsoredAmendments.length;
-
-    // Unconditional debug logging for Alma Adams
-    if (id === 'A000370') {
-      console.log('DEBUG Alma Adams sponsored bills array:');
-      console.log(JSON.stringify(sponsored, null, 2));
-      console.log('DEBUG Alma Adams cosponsored bills array:');
-      console.log(JSON.stringify(cosponsored, null, 2));
-      console.log('DEBUG Alma Adams sponsored amendments array:');
-      console.log(JSON.stringify(sponsoredAmendments, null, 2));
-      console.log('DEBUG Alma Adams cosponsored amendments array:');
-      console.log(JSON.stringify(cosponsoredAmendments, null, 2));
+    // Cosponsors
+    if (amendment.cosponsors) {
+      for (const c of amendment.cosponsors) {
+        const cosponsorId = c.bioguideId || c.bioguide_id;
+        if (cosponsorId && repMap.has(cosponsorId)) {
+          const rep = repMap.get(cosponsorId);
+          rep.cosponsoredAmendments++;
+          if ((amendment.latestAction?.action || '').toLowerCase().includes('became public law')) {
+            rep.becameLawCosponsoredAmendments++;
+          }
+          attached++;
+        }
+      }
     }
   }
 
