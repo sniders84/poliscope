@@ -1,67 +1,74 @@
-name: Nightly Update Congress Rankings & Scores
+name: Update civic data
 
 on:
+  workflow_dispatch:
   schedule:
-    - cron: "0 */6 * * *"   # Every 6 hours
-  workflow_dispatch:        # Manual trigger
+    - cron: '0 */6 * * *' # every 6 hours
 
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 360
+
     env:
       CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
-      CONGRESS_NUMBER: '119'
+      NODE_OPTIONS: --max_old_space_size=4096
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: '20'
 
       - name: Install dependencies
         run: |
           npm ci
-          npm install axios xml2js --no-save
+          npm install axios xml2js fast-xml-parser node-fetch --no-save
 
-      # --- Senate pipeline ---
-      - name: Bootstrap Senators rankings file
+      # Senate pipeline
+      - name: Bootstrap senators
         run: node scripts/bootstrap-senators.js
-      - name: Run Senate Legislation scraper
+
+      - name: Legislation (Senate)
         run: node scripts/legislation-scraper.js
-      - name: Run Senate Committee scraper
-        run: node scripts/committee-scraper.js
-      - name: Run Senate Votes scraper
+
+      - name: Committees (Senate)
+        run: node scripts/committee-senators-scraper.js
+
+      - name: Votes (Senate)
         run: node scripts/votes-scraper.js
-      - name: Merge Senate data
+
+      - name: Merge (Senate)
         run: node scripts/merge-senators.js
-      - name: Generate Senate scores
+
+      - name: Scores (Senate)
         run: node scripts/senators-scores.js
 
-      # --- House pipeline ---
-      - name: Bootstrap Representatives rankings file
+      # House pipeline
+      - name: Bootstrap representatives
         run: node scripts/bootstrap-reps.js
-      - name: Run House Legislation scraper
+
+      - name: Legislation (House)
         run: node scripts/legislation-reps-scraper.js
-      - name: Run House Committee scraper
+
+      - name: Committees (House)
         run: node scripts/committee-reps-scraper.js
-      - name: Run House Votes scraper
+
+      - name: Votes (House)
         run: node scripts/votes-reps-scraper.js
-      - name: Merge House data
+
+      - name: Merge (House)
         run: node scripts/merge-reps.js
-      - name: Generate House scores
+
+      - name: Scores (House)
         run: node scripts/reps-scores.js
 
-      # --- Commit changes ---
-      - name: Commit and push changes
-        run: |
-          git config user.name "Data Bot"
-          git config user.email "bot@electorate.app"
-          git add public/*.json
-          git diff --cached --quiet || git commit -m "Automated update: Senate + House data $(date +'%Y-%m-%d %H:%M:%S UTC')"
-          git push
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Automated update: legislation, committees, votes, merge, scores"
+          file_pattern: |
+            public/senators-rankings.json
+            public/representatives-rankings.json
