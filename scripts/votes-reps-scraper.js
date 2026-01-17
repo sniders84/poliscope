@@ -39,12 +39,14 @@ function parseVotes(xml) {
   let doc;
   try { doc = parser.parse(xml); } catch { return []; }
 
-  // House roll call XML uses "vote-record"
-  const records = doc?.rollcall?.['vote-record']?.vote || [];
+  // House roll call XML can use "vote-record.vote" or "recorded-vote"
+  const records = doc?.rollcall?.['vote-record']?.vote 
+               || doc?.rollcall?.['recorded-vote'] 
+               || [];
   const arr = Array.isArray(records) ? records : [records];
 
   return arr.map(rv => ({
-    bioguideId: rv?.legislator?.bioguideID || '',
+    bioguideId: rv?.legislator?.bioguideID || rv?.legislator?.bioguideId || '',
     name: rv?.legislator?.name || '',
     state: rv?.legislator?.state || '',
     district: rv?.legislator?.district || '',
