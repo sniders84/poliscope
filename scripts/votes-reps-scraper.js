@@ -60,4 +60,4 @@ async function fetchAndParse() {
   console.log(`Updated vote tallies for ${reps.length} representatives`);
 }
 
-fetchAndParse().catch(err => console.error('LegiScan votes scrape failed:', err));
+fetchAndParse().catch(err => console.error('Legiscan votes scrape failed:', err));
