@@ -1,7 +1,7 @@
 [
   {
-    "name": "Maria Cantwell",
     "bioguideId": "C000127",
+    "name": "Maria Cantwell",
     "state": "WA",
     "district": "At-Large",
     "party": "Democrat",
@@ -50,13 +50,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 30,
+    "score": 30,
+    "scoreNormalized": "75.00"
   },
   {
-    "name": "Amy Klobuchar",
     "bioguideId": "K000367",
+    "name": "Amy Klobuchar",
     "state": "MN",
     "district": "At-Large",
     "party": "Democrat",
@@ -119,13 +119,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 40,
+    "score": 40,
+    "scoreNormalized": "100.00"
   },
   {
-    "name": "Bernard Sanders",
     "bioguideId": "S000033",
+    "name": "Bernard Sanders",
     "state": "VT",
     "district": "At-Large",
     "party": "Independent",
@@ -174,13 +174,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 20,
+    "score": 20,
+    "scoreNormalized": "50.00"
   },
   {
-    "name": "Sheldon Whitehouse",
     "bioguideId": "W000802",
+    "name": "Sheldon Whitehouse",
     "state": "RI",
     "district": "At-Large",
     "party": "Democrat",
@@ -229,13 +229,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 30,
+    "score": 30,
+    "scoreNormalized": "75.00"
   },
   {
-    "name": "John Barrasso",
     "bioguideId": "B001261",
+    "name": "John Barrasso",
     "state": "WY",
     "district": "At-Large",
     "party": "Republican",
@@ -277,13 +277,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 10,
+    "score": 10,
+    "scoreNormalized": "25.00"
   },
   {
-    "name": "Roger Wicker",
     "bioguideId": "W000437",
+    "name": "Roger Wicker",
     "state": "MS",
     "district": "At-Large",
     "party": "Republican",
@@ -346,13 +346,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 20,
+    "score": 20,
+    "scoreNormalized": "50.00"
   },
   {
-    "name": "Susan Collins",
     "bioguideId": "C001035",
+    "name": "Susan Collins",
     "state": "ME",
     "district": "At-Large",
     "party": "Republican",
@@ -394,13 +394,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 10,
+    "score": 10,
+    "scoreNormalized": "25.00"
   },
   {
-    "name": "John Cornyn",
     "bioguideId": "C001056",
+    "name": "John Cornyn",
     "state": "TX",
     "district": "At-Large",
     "party": "Republican",
@@ -451,11 +451,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Richard Durbin",
     "bioguideId": "D000563",
+    "name": "Richard Durbin",
     "state": "IL",
     "district": "At-Large",
     "party": "Democrat",
@@ -497,13 +497,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 20,
+    "score": 20,
+    "scoreNormalized": "50.00"
   },
   {
-    "name": "Lindsey Graham",
     "bioguideId": "G000359",
+    "name": "Lindsey Graham",
     "state": "SC",
     "district": "At-Large",
     "party": "Republican",
@@ -545,13 +545,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 10,
+    "score": 10,
+    "scoreNormalized": "25.00"
   },
   {
-    "name": "Mitch McConnell",
     "bioguideId": "M000355",
+    "name": "Mitch McConnell",
     "state": "KY",
     "district": "At-Large",
     "party": "Republican",
@@ -600,13 +600,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 40,
+    "score": 40,
+    "scoreNormalized": "100.00"
   },
   {
-    "name": "Jeff Merkley",
     "bioguideId": "M001176",
+    "name": "Jeff Merkley",
     "state": "OR",
     "district": "At-Large",
     "party": "Democrat",
@@ -657,11 +657,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "John Reed",
     "bioguideId": "R000122",
+    "name": "John Reed",
     "state": "RI",
     "district": "At-Large",
     "party": "Democrat",
@@ -710,13 +710,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 20,
+    "score": 20,
+    "scoreNormalized": "50.00"
   },
   {
-    "name": "James Risch",
     "bioguideId": "R000584",
+    "name": "James Risch",
     "state": "ID",
     "district": "At-Large",
     "party": "Republican",
@@ -765,13 +765,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 30,
+    "score": 30,
+    "scoreNormalized": "75.00"
   },
   {
-    "name": "Jeanne Shaheen",
     "bioguideId": "S001181",
+    "name": "Jeanne Shaheen",
     "state": "NH",
     "district": "At-Large",
     "party": "Democrat",
@@ -827,13 +827,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 30,
+    "score": 30,
+    "scoreNormalized": "75.00"
   },
   {
-    "name": "Mark Warner",
     "bioguideId": "W000805",
+    "name": "Mark Warner",
     "state": "VA",
     "district": "At-Large",
     "party": "Democrat",
@@ -882,13 +882,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 10,
+    "score": 10,
+    "scoreNormalized": "25.00"
   },
   {
-    "name": "Kirsten Gillibrand",
     "bioguideId": "G000555",
+    "name": "Kirsten Gillibrand",
     "state": "NY",
     "district": "At-Large",
     "party": "Democrat",
@@ -937,13 +937,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 10,
+    "score": 10,
+    "scoreNormalized": "25.00"
   },
   {
-    "name": "Christopher Coons",
     "bioguideId": "C001088",
+    "name": "Christopher Coons",
     "state": "DE",
     "district": "At-Large",
     "party": "Democrat",
@@ -992,13 +992,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 20,
+    "score": 20,
+    "scoreNormalized": "50.00"
   },
   {
-    "name": "Tammy Baldwin",
     "bioguideId": "B001230",
+    "name": "Tammy Baldwin",
     "state": "WI",
     "district": "At-Large",
     "party": "Democrat",
@@ -1042,11 +1042,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Michael Bennet",
     "bioguideId": "B001267",
+    "name": "Michael Bennet",
     "state": "CO",
     "district": "At-Large",
     "party": "Democrat",
@@ -1095,13 +1095,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 10,
+    "score": 10,
+    "scoreNormalized": "25.00"
   },
   {
-    "name": "Marsha Blackburn",
     "bioguideId": "B001243",
+    "name": "Marsha Blackburn",
     "state": "TN",
     "district": "At-Large",
     "party": "Republican",
@@ -1159,11 +1159,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Richard Blumenthal",
     "bioguideId": "B001277",
+    "name": "Richard Blumenthal",
     "state": "CT",
     "district": "At-Large",
     "party": "Democrat",
@@ -1212,13 +1212,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 10,
+    "score": 10,
+    "scoreNormalized": "25.00"
   },
   {
-    "name": "John Boozman",
     "bioguideId": "B001236",
+    "name": "John Boozman",
     "state": "AR",
     "district": "At-Large",
     "party": "Republican",
@@ -1281,13 +1281,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 30,
+    "score": 30,
+    "scoreNormalized": "75.00"
   },
   {
-    "name": "Shelley Capito",
     "bioguideId": "C001047",
+    "name": "Shelley Capito",
     "state": "WV",
     "district": "At-Large",
     "party": "Republican",
@@ -1336,13 +1336,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 10,
+    "score": 10,
+    "scoreNormalized": "25.00"
   },
   {
-    "name": "Bill Cassidy",
     "bioguideId": "C001075",
+    "name": "Bill Cassidy",
     "state": "LA",
     "district": "At-Large",
     "party": "Republican",
@@ -1391,13 +1391,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 10,
+    "score": 10,
+    "scoreNormalized": "25.00"
   },
   {
-    "name": "Michael Crapo",
     "bioguideId": "C000880",
+    "name": "Michael Crapo",
     "state": "ID",
     "district": "At-Large",
     "party": "Republican",
@@ -1432,13 +1432,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 20,
+    "score": 20,
+    "scoreNormalized": "50.00"
   },
   {
-    "name": "Charles Grassley",
     "bioguideId": "G000386",
+    "name": "Charles Grassley",
     "state": "IA",
     "district": "At-Large",
     "party": "Republican",
@@ -1480,13 +1480,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 20,
+    "score": 20,
+    "scoreNormalized": "50.00"
   },
   {
-    "name": "Martin Heinrich",
     "bioguideId": "H001046",
+    "name": "Martin Heinrich",
     "state": "NM",
     "district": "At-Large",
     "party": "Democrat",
@@ -1535,13 +1535,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 10,
+    "score": 10,
+    "scoreNormalized": "25.00"
   },
   {
-    "name": "Mazie Hirono",
     "bioguideId": "H001042",
+    "name": "Mazie Hirono",
     "state": "HI",
     "district": "At-Large",
     "party": "Democrat",
@@ -1592,11 +1592,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "John Hoeven",
     "bioguideId": "H001061",
+    "name": "John Hoeven",
     "state": "ND",
     "district": "At-Large",
     "party": "Republican",
@@ -1645,13 +1645,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 10,
+    "score": 10,
+    "scoreNormalized": "25.00"
   },
   {
-    "name": "Ron Johnson",
     "bioguideId": "J000293",
+    "name": "Ron Johnson",
     "state": "WI",
     "district": "At-Large",
     "party": "Republican",
@@ -1693,13 +1693,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 10,
+    "score": 10,
+    "scoreNormalized": "25.00"
   },
   {
-    "name": "James Lankford",
     "bioguideId": "L000575",
+    "name": "James Lankford",
     "state": "OK",
     "district": "At-Large",
     "party": "Republican",
@@ -1748,13 +1748,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 10,
+    "score": 10,
+    "scoreNormalized": "25.00"
   },
   {
-    "name": "Mike Lee",
     "bioguideId": "L000577",
+    "name": "Mike Lee",
     "state": "UT",
     "district": "At-Large",
     "party": "Republican",
@@ -1796,13 +1796,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 10,
+    "score": 10,
+    "scoreNormalized": "25.00"
   },
   {
-    "name": "Ben Luján",
     "bioguideId": "L000570",
+    "name": "Ben Luján",
     "state": "NM",
     "district": "At-Large",
     "party": "Democrat",
@@ -1853,11 +1853,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Edward Markey",
     "bioguideId": "M000133",
+    "name": "Edward Markey",
     "state": "MA",
     "district": "At-Large",
     "party": "Democrat",
@@ -1901,11 +1901,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Jerry Moran",
     "bioguideId": "M000934",
+    "name": "Jerry Moran",
     "state": "KS",
     "district": "At-Large",
     "party": "Republican",
@@ -1968,13 +1968,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 10,
+    "score": 10,
+    "scoreNormalized": "25.00"
   },
   {
-    "name": "Lisa Murkowski",
     "bioguideId": "M001153",
+    "name": "Lisa Murkowski",
     "state": "AK",
     "district": "At-Large",
     "party": "Republican",
@@ -2023,13 +2023,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 10,
+    "score": 10,
+    "scoreNormalized": "25.00"
   },
   {
-    "name": "Christopher Murphy",
     "bioguideId": "M001169",
+    "name": "Christopher Murphy",
     "state": "CT",
     "district": "At-Large",
     "party": "Democrat",
@@ -2073,11 +2073,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Patty Murray",
     "bioguideId": "M001111",
+    "name": "Patty Murray",
     "state": "WA",
     "district": "At-Large",
     "party": "Democrat",
@@ -2119,13 +2119,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 30,
+    "score": 30,
+    "scoreNormalized": "75.00"
   },
   {
-    "name": "Rand Paul",
     "bioguideId": "P000603",
+    "name": "Rand Paul",
     "state": "KY",
     "district": "At-Large",
     "party": "Republican",
@@ -2167,13 +2167,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 20,
+    "score": 20,
+    "scoreNormalized": "50.00"
   },
   {
-    "name": "Gary Peters",
     "bioguideId": "P000595",
+    "name": "Gary Peters",
     "state": "MI",
     "district": "At-Large",
     "party": "Democrat",
@@ -2222,13 +2222,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 10,
+    "score": 10,
+    "scoreNormalized": "25.00"
   },
   {
-    "name": "Adam Schiff",
     "bioguideId": "S001150",
+    "name": "Adam Schiff",
     "state": "CA",
     "district": "At-Large",
     "party": "Democrat",
@@ -2272,11 +2272,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Charles Schumer",
     "bioguideId": "S000148",
+    "name": "Charles Schumer",
     "state": "NY",
     "district": "At-Large",
     "party": "Democrat",
@@ -2311,13 +2311,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 10,
+    "score": 10,
+    "scoreNormalized": "25.00"
   },
   {
-    "name": "Tim Scott",
     "bioguideId": "S001184",
+    "name": "Tim Scott",
     "state": "SC",
     "district": "At-Large",
     "party": "Republican",
@@ -2359,13 +2359,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 10,
+    "score": 10,
+    "scoreNormalized": "25.00"
   },
   {
-    "name": "John Thune",
     "bioguideId": "T000250",
+    "name": "John Thune",
     "state": "SD",
     "district": "At-Large",
     "party": "Republican",
@@ -2414,13 +2414,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 10,
+    "score": 10,
+    "scoreNormalized": "25.00"
   },
   {
-    "name": "Chris Van Hollen",
     "bioguideId": "V000128",
+    "name": "Chris Van Hollen",
     "state": "MD",
     "district": "At-Large",
     "party": "Democrat",
@@ -2464,11 +2464,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Peter Welch",
     "bioguideId": "W000800",
+    "name": "Peter Welch",
     "state": "VT",
     "district": "At-Large",
     "party": "Democrat",
@@ -2519,11 +2519,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Ron Wyden",
     "bioguideId": "W000779",
+    "name": "Ron Wyden",
     "state": "OR",
     "district": "At-Large",
     "party": "Democrat",
@@ -2565,13 +2565,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 30,
+    "score": 30,
+    "scoreNormalized": "75.00"
   },
   {
-    "name": "Todd Young",
     "bioguideId": "Y000064",
+    "name": "Todd Young",
     "state": "IN",
     "district": "At-Large",
     "party": "Republican",
@@ -2615,11 +2615,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Brian Schatz",
     "bioguideId": "S001194",
+    "name": "Brian Schatz",
     "state": "HI",
     "district": "At-Large",
     "party": "Democrat",
@@ -2675,13 +2675,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 20,
+    "score": 20,
+    "scoreNormalized": "50.00"
   },
   {
-    "name": "Tom Cotton",
     "bioguideId": "C001095",
+    "name": "Tom Cotton",
     "state": "AR",
     "district": "At-Large",
     "party": "Republican",
@@ -2730,13 +2730,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 20,
+    "score": 20,
+    "scoreNormalized": "50.00"
   },
   {
-    "name": "Tammy Duckworth",
     "bioguideId": "D000622",
+    "name": "Tammy Duckworth",
     "state": "IL",
     "district": "At-Large",
     "party": "Democrat",
@@ -2787,11 +2787,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Elizabeth Warren",
     "bioguideId": "W000817",
+    "name": "Elizabeth Warren",
     "state": "MA",
     "district": "At-Large",
     "party": "Democrat",
@@ -2840,13 +2840,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 20,
+    "score": 20,
+    "scoreNormalized": "50.00"
   },
   {
-    "name": "Angus King",
     "bioguideId": "K000383",
+    "name": "Angus King",
     "state": "ME",
     "district": "At-Large",
     "party": "Independent",
@@ -2897,11 +2897,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Steve Daines",
     "bioguideId": "D000618",
+    "name": "Steve Daines",
     "state": "MT",
     "district": "At-Large",
     "party": "Republican",
@@ -2952,11 +2952,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Kevin Cramer",
     "bioguideId": "C001096",
+    "name": "Kevin Cramer",
     "state": "ND",
     "district": "At-Large",
     "party": "Republican",
@@ -3005,13 +3005,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 10,
+    "score": 10,
+    "scoreNormalized": "25.00"
   },
   {
-    "name": "Deb Fischer",
     "bioguideId": "F000463",
+    "name": "Deb Fischer",
     "state": "NE",
     "district": "At-Large",
     "party": "Republican",
@@ -3081,13 +3081,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 20,
+    "score": 20,
+    "scoreNormalized": "50.00"
   },
   {
-    "name": "Markwayne Mullin",
     "bioguideId": "M001190",
+    "name": "Markwayne Mullin",
     "state": "OK",
     "district": "At-Large",
     "party": "Republican",
@@ -3138,11 +3138,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Ted Cruz",
     "bioguideId": "C001098",
+    "name": "Ted Cruz",
     "state": "TX",
     "district": "At-Large",
     "party": "Republican",
@@ -3191,13 +3191,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 20,
+    "score": 20,
+    "scoreNormalized": "50.00"
   },
   {
-    "name": "Timothy Kaine",
     "bioguideId": "K000384",
+    "name": "Timothy Kaine",
     "state": "VA",
     "district": "At-Large",
     "party": "Democrat",
@@ -3241,11 +3241,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Cory Booker",
     "bioguideId": "B001288",
+    "name": "Cory Booker",
     "state": "NJ",
     "district": "At-Large",
     "party": "Democrat",
@@ -3289,11 +3289,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Ruben Gallego",
     "bioguideId": "G000574",
+    "name": "Ruben Gallego",
     "state": "AZ",
     "district": "At-Large",
     "party": "Democrat",
@@ -3344,11 +3344,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Dan Sullivan",
     "bioguideId": "S001198",
+    "name": "Dan Sullivan",
     "state": "AK",
     "district": "At-Large",
     "party": "Republican",
@@ -3399,11 +3399,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Joni Ernst",
     "bioguideId": "E000295",
+    "name": "Joni Ernst",
     "state": "IA",
     "district": "At-Large",
     "party": "Republican",
@@ -3447,11 +3447,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Thom Tillis",
     "bioguideId": "T000476",
+    "name": "Thom Tillis",
     "state": "NC",
     "district": "At-Large",
     "party": "Republican",
@@ -3509,11 +3509,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Mike Rounds",
     "bioguideId": "R000605",
+    "name": "Mike Rounds",
     "state": "SD",
     "district": "At-Large",
     "party": "Republican",
@@ -3578,11 +3578,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "John Kennedy",
     "bioguideId": "K000393",
+    "name": "John Kennedy",
     "state": "LA",
     "district": "At-Large",
     "party": "Republican",
@@ -3626,11 +3626,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Margaret Hassan",
     "bioguideId": "H001076",
+    "name": "Margaret Hassan",
     "state": "NH",
     "district": "At-Large",
     "party": "Democrat",
@@ -3686,13 +3686,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 20,
+    "score": 20,
+    "scoreNormalized": "50.00"
   },
   {
-    "name": "Catherine Cortez Masto",
     "bioguideId": "C001113",
+    "name": "Catherine Cortez Masto",
     "state": "NV",
     "district": "At-Large",
     "party": "Democrat",
@@ -3743,11 +3743,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Lisa Blunt Rochester",
     "bioguideId": "B001303",
+    "name": "Lisa Blunt Rochester",
     "state": "DE",
     "district": "At-Large",
     "party": "Democrat",
@@ -3798,11 +3798,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Jim Banks",
     "bioguideId": "B001299",
+    "name": "Jim Banks",
     "state": "IN",
     "district": "At-Large",
     "party": "Republican",
@@ -3853,11 +3853,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Roger Marshall",
     "bioguideId": "M001198",
+    "name": "Roger Marshall",
     "state": "KS",
     "district": "At-Large",
     "party": "Republican",
@@ -3901,11 +3901,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Ted Budd",
     "bioguideId": "B001305",
+    "name": "Ted Budd",
     "state": "NC",
     "district": "At-Large",
     "party": "Republican",
@@ -3956,11 +3956,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Jacky Rosen",
     "bioguideId": "R000608",
+    "name": "Jacky Rosen",
     "state": "NV",
     "district": "At-Large",
     "party": "Democrat",
@@ -4004,11 +4004,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "John Curtis",
     "bioguideId": "C001114",
+    "name": "John Curtis",
     "state": "UT",
     "district": "At-Large",
     "party": "Republican",
@@ -4052,11 +4052,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Tina Smith",
     "bioguideId": "S001203",
+    "name": "Tina Smith",
     "state": "MN",
     "district": "At-Large",
     "party": "Democrat",
@@ -4114,11 +4114,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Cindy Hyde-Smith",
     "bioguideId": "H001079",
+    "name": "Cindy Hyde-Smith",
     "state": "MS",
     "district": "At-Large",
     "party": "Republican",
@@ -4176,11 +4176,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Elissa Slotkin",
     "bioguideId": "S001208",
+    "name": "Elissa Slotkin",
     "state": "MI",
     "district": "At-Large",
     "party": "Democrat",
@@ -4231,11 +4231,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Andy Kim",
     "bioguideId": "K000394",
+    "name": "Andy Kim",
     "state": "NJ",
     "district": "At-Large",
     "party": "Democrat",
@@ -4293,11 +4293,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Rick Scott",
     "bioguideId": "S001217",
+    "name": "Rick Scott",
     "state": "FL",
     "district": "At-Large",
     "party": "Republican",
@@ -4346,13 +4346,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 10,
+    "score": 10,
+    "scoreNormalized": "25.00"
   },
   {
-    "name": "Joshua Hawley",
     "bioguideId": "H001089",
+    "name": "Joshua Hawley",
     "state": "MO",
     "district": "At-Large",
     "party": "Republican",
@@ -4396,11 +4396,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Mark Kelly",
     "bioguideId": "K000377",
+    "name": "Mark Kelly",
     "state": "AZ",
     "district": "At-Large",
     "party": "Democrat",
@@ -4458,11 +4458,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Cynthia Lummis",
     "bioguideId": "L000571",
+    "name": "Cynthia Lummis",
     "state": "WY",
     "district": "At-Large",
     "party": "Republican",
@@ -4506,11 +4506,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Tommy Tuberville",
     "bioguideId": "T000278",
+    "name": "Tommy Tuberville",
     "state": "AL",
     "district": "At-Large",
     "party": "Republican",
@@ -4568,11 +4568,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "John Hickenlooper",
     "bioguideId": "H000273",
+    "name": "John Hickenlooper",
     "state": "CO",
     "district": "At-Large",
     "party": "Democrat",
@@ -4616,11 +4616,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Bill Hagerty",
     "bioguideId": "H000601",
+    "name": "Bill Hagerty",
     "state": "TN",
     "district": "At-Large",
     "party": "Republican",
@@ -4671,11 +4671,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Alejandro Padilla",
     "bioguideId": "P000145",
+    "name": "Alejandro Padilla",
     "state": "CA",
     "district": "At-Large",
     "party": "Democrat",
@@ -4731,13 +4731,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 20,
+    "score": 20,
+    "scoreNormalized": "50.00"
   },
   {
-    "name": "Jon Ossoff",
     "bioguideId": "O000174",
+    "name": "Jon Ossoff",
     "state": "GA",
     "district": "At-Large",
     "party": "Democrat",
@@ -4781,11 +4781,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Raphael Warnock",
     "bioguideId": "W000790",
+    "name": "Raphael Warnock",
     "state": "GA",
     "district": "At-Large",
     "party": "Democrat",
@@ -4836,11 +4836,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Katie Britt",
     "bioguideId": "B001319",
+    "name": "Katie Britt",
     "state": "AL",
     "district": "At-Large",
     "party": "Republican",
@@ -4898,11 +4898,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Eric Schmitt",
     "bioguideId": "S001227",
+    "name": "Eric Schmitt",
     "state": "MO",
     "district": "At-Large",
     "party": "Republican",
@@ -4951,13 +4951,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 10,
+    "score": 10,
+    "scoreNormalized": "25.00"
   },
   {
-    "name": "John Fetterman",
     "bioguideId": "F000479",
+    "name": "John Fetterman",
     "state": "PA",
     "district": "At-Large",
     "party": "Democrat",
@@ -5008,11 +5008,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Pete Ricketts",
     "bioguideId": "R000618",
+    "name": "Pete Ricketts",
     "state": "NE",
     "district": "At-Large",
     "party": "Republican",
@@ -5054,13 +5054,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 10,
+    "score": 10,
+    "scoreNormalized": "25.00"
   },
   {
-    "name": "Angela Alsobrooks",
     "bioguideId": "A000382",
+    "name": "Angela Alsobrooks",
     "state": "MD",
     "district": "At-Large",
     "party": "Democrat",
@@ -5111,11 +5111,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Tim Sheehy",
     "bioguideId": "S001232",
+    "name": "Tim Sheehy",
     "state": "MT",
     "district": "At-Large",
     "party": "Republican",
@@ -5159,11 +5159,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Bernie Moreno",
     "bioguideId": "M001242",
+    "name": "Bernie Moreno",
     "state": "OH",
     "district": "At-Large",
     "party": "Republican",
@@ -5207,11 +5207,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Dave McCormick",
     "bioguideId": "M001243",
+    "name": "Dave McCormick",
     "state": "PA",
     "district": "At-Large",
     "party": "Republican",
@@ -5267,13 +5267,13 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 0,
-    "score": 0,
-    "scoreNormalized": 0
+    "rawScore": 10,
+    "score": 10,
+    "scoreNormalized": "25.00"
   },
   {
-    "name": "Jim Justice",
     "bioguideId": "J000312",
+    "name": "Jim Justice",
     "state": "WV",
     "district": "At-Large",
     "party": "Republican",
@@ -5317,11 +5317,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Jon Husted",
     "bioguideId": "H001104",
+    "name": "Jon Husted",
     "state": "OH",
     "district": "At-Large",
     "party": "Republican",
@@ -5365,11 +5365,11 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   },
   {
-    "name": "Ashley Moody",
     "bioguideId": "M001244",
+    "name": "Ashley Moody",
     "state": "FL",
     "district": "At-Large",
     "party": "Republican",
@@ -5427,6 +5427,6 @@
     "missedVotePct": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": "0.00"
   }
 ]
