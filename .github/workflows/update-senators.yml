@@ -2,15 +2,17 @@ name: Nightly Update Congress Rankings & Scores
 
 on:
   schedule:
-    - cron: "0 */6 * * *" # Every 6 hours
-  workflow_dispatch: # Manual trigger
+    - cron: "0 */6 * * *"   # Every 6 hours
+  workflow_dispatch:        # Manual trigger
 
 jobs:
   update:
     runs-on: ubuntu-latest
+    timeout-minutes: 360
     env:
       CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
       CONGRESS_NUMBER: '119'
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -28,11 +30,11 @@ jobs:
       # --- Senate pipeline ---
       - name: Bootstrap Senators rankings file
         run: node scripts/bootstrap-senators.js
-      - name: Run Senate Legislation scraper
+      - name: Run Senate Legislation scraper (aggregate ALL page)
         run: node scripts/legislation-scraper.js
       - name: Run Senate Committee scraper
         run: node scripts/committee-scraper.js
-      - name: Run Senate Votes scraper
+      - name: Run Senate Votes scraper (LIS XML)
         run: node scripts/votes-scraper.js
       - name: Merge Senate data
         run: node scripts/merge-senators.js
@@ -42,11 +44,11 @@ jobs:
       # --- House pipeline ---
       - name: Bootstrap Representatives rankings file
         run: node scripts/bootstrap-reps.js
-      - name: Run House Legislation scraper
+      - name: Run House Legislation scraper (aggregate ALL page)
         run: node scripts/legislation-reps-scraper.js
       - name: Run House Committee scraper
         run: node scripts/committee-reps-scraper.js
-      - name: Run House Votes scraper
+      - name: Run House Votes scraper (LIS XML)
         run: node scripts/votes-reps-scraper.js
       - name: Merge House data
         run: node scripts/merge-reps.js
@@ -59,5 +61,5 @@ jobs:
           git config user.name "Data Bot"
           git config user.email "bot@electorate.app"
           git add public/*.json
-          git diff --cached --quiet || git commit -m "Automated update: senate + house data $(date +'%Y-%m-%d %H:%M:%S UTC')"
+          git diff --cached --quiet || git commit -m "Automated update: Senate + House rankings/scores $(date +'%Y-%m-%d %H:%M:%S UTC')"
           git push
