@@ -20,10 +20,10 @@ function normalize(sen) {
     // Legislation
     sponsoredBills: sen.sponsoredBills || 0,
     cosponsoredBills: sen.cosponsoredBills || 0,
-    becameLawBills: sen.becameLawBills || 0,
-    becameLawCosponsoredBills: sen.becameLawCosponsoredBills || 0,
     sponsoredAmendments: sen.sponsoredAmendments || 0,
     cosponsoredAmendments: sen.cosponsoredAmendments || 0,
+    becameLawBills: sen.becameLawBills || 0,
+    becameLawCosponsoredBills: sen.becameLawCosponsoredBills || 0,
     becameLawAmendments: sen.becameLawAmendments || 0,
     becameLawCosponsoredAmendments: sen.becameLawCosponsoredAmendments || 0,
 
@@ -35,18 +35,23 @@ function normalize(sen) {
     nayVotes: Number(sen.nayVotes) || 0,
     missedVotes: Number(sen.missedVotes) || 0,
     totalVotes: Number(sen.totalVotes) || 0,
-    participationPct: sen.participationPct || 0,
-    missedVotePct: sen.missedVotePct || 0,
+    participationPct: Number(sen.participationPct) || 0,
+    missedVotePct: Number(sen.missedVotePct) || 0,
 
     // Scores
-    rawScore: sen.rawScore || 0,
-    score: sen.score || 0,
-    scoreNormalized: sen.scoreNormalized || 0
+    rawScore: Number(sen.rawScore) || 0,
+    score: Number(sen.score) || 0,
+    scoreNormalized: Number(sen.scoreNormalized) || 0
   };
 }
 
-async function main() {
+function main() {
   console.log('Merge script: consolidating into senators-rankings.json');
+
+  if (!fs.existsSync(RANKINGS_PATH)) {
+    console.error('senators-rankings.json not found. Run bootstrap first.');
+    process.exit(1);
+  }
 
   let rankings;
   try {
@@ -77,7 +82,9 @@ async function main() {
   sampleSenators.forEach(name => {
     const sen = normalized.find(s => s.name === name);
     if (sen) {
-      console.log(`After merge - ${name}: yea=${sen.yeaVotes}, nay=${sen.nayVotes}, missed=${sen.missedVotes}, total=${sen.totalVotes}, participation=${sen.participationPct}`);
+      console.log(
+        `After merge - ${name}: yea=${sen.yeaVotes}, nay=${sen.nayVotes}, missed=${sen.missedVotes}, total=${sen.totalVotes}, participation=${sen.participationPct}`
+      );
     } else {
       console.log(`After merge - ${name}: not found`);
     }
@@ -93,4 +100,4 @@ async function main() {
   }
 }
 
-main().catch(err => console.error('Merge failed:', err.message));
+main();
