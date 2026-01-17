@@ -1,32 +1,62 @@
-// Original: House scores script
+// scripts/reps-scores.js
+// Purpose: Compute composite scores for House representatives based on 119th Congress data
+// Enriches representatives-rankings.json directly with rawScore, score, and scoreNormalized
+
 const fs = require('fs');
 const path = require('path');
 
-const repsPath = path.join(__dirname, '../public/representatives-rankings.json');
-const reps = JSON.parse(fs.readFileSync(repsPath));
+const OUT_PATH = path.join(__dirname, '../public/representatives-rankings.json');
+const reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8'));
 
-for (const rep of reps) {
-  // Pull raw counts from rankings JSON
-  const sponsored = rep.sponsoredBills || 0;
-  const cosponsored = rep.cosponsoredBills || 0;
-  const amendments = rep.amendments || 0;
-  const votes = rep.votes || 0;
+function computeScore(rep) {
+  // Weighting factors — adjust as needed
+  const billWeight = 2;
+  const cosponsorWeight = 1;
+  const amendmentWeight = 1;
+  const voteWeight = 1;
+  const committeeMembershipWeight = 2;
+  const rankingBonus = 2;
+  const chairBonus = 4;
 
-  // Raw totals
-  rep.totalActivity = sponsored + cosponsored + amendments + votes;
+  let score = 0;
 
-  // Individual metrics
-  rep.sponsoredScore = sponsored;
-  rep.cosponsoredScore = cosponsored;
-  rep.amendmentScore = amendments;
-  rep.voteScore = votes;
+  // Legislation
+  score += (rep.sponsoredBills || 0) * billWeight;
+  score += (rep.cosponsoredBills || 0) * cosponsorWeight;
+  score += (rep.sponsoredAmendments || 0) * amendmentWeight;
+  score += (rep.cosponsoredAmendments || 0) * amendmentWeight;
+  score += (rep.becameLawBills || 0) * billWeight;
 
-  // Composite score (example: sum of all activity)
-  rep.compositeScore = rep.totalActivity;
+  // Votes
+  score += (rep.yeaVotes || 0) * voteWeight;
+  score += (rep.nayVotes || 0) * voteWeight;
+  score -= (rep.missedVotes || 0) * 0.5; // penalty for missed votes
+
+  // Committees
+  if (Array.isArray(rep.committees)) {
+    for (const c of rep.committees) {
+      score += committeeMembershipWeight;
+      if (c.role === 'Ranking Member') score += rankingBonus;
+      if (c.role === 'Chair' || c.role === 'Chairman') score += chairBonus;
+    }
+  }
+
+  return score;
 }
 
-fs.writeFileSync(
-  path.join(__dirname, '../public/representatives-scores.json'),
-  JSON.stringify(reps, null, 2)
-);
-console.log('Generated House scores with composite activity metrics');
+(function main() {
+  // Compute raw scores
+  for (const r of reps) {
+    r.rawScore = computeScore(r);
+    r.score = r.rawScore;
+  }
+
+  // Normalize scores 0–100
+  const maxScore = Math.max(...reps.map(r => r.score || 0));
+  for (const r of reps) {
+    r.scoreNormalized = maxScore > 0 ? Number(((r.score / maxScore) * 100).toFixed(2)) : 0;
+  }
+
+  fs.writeFileSync(OUT_PATH, JSON.stringify(reps, null, 2));
+  console.log(`Scoring complete for House representatives (${reps.length} entries)`);
+})();
