@@ -2,6 +2,7 @@
 // Purpose: Scrape House legislation (bills + amendments) for the 119th Congress
 // Enriches representatives-rankings.json with sponsor/cosponsor counts and became-law tallies
 // Uses bill-centric endpoints instead of member endpoints
+// Includes unconditional debug logging for raw bill and amendment responses
 
 const fs = require('fs');
 const path = require('path');
@@ -24,16 +25,18 @@ function ensureLegislationShape(rep) {
 
 async function fetchAllPages(url, key) {
   let results = [];
+  let firstPayload = null;
   while (url) {
     const res = await fetch(url);
     if (!res.ok) break;
     const data = await res.json();
+    if (!firstPayload) firstPayload = data; // capture first payload for debugging
     results = results.concat(data[key] || []);
     url = data.pagination?.next_url
       ? `https://api.congress.gov${data.pagination.next_url}&api_key=${API_KEY}&format=json`
       : null;
   }
-  return results;
+  return { results, firstPayload };
 }
 
 async function fetchBills() {
@@ -58,7 +61,11 @@ async function fetchAmendments() {
   let attached = 0;
 
   // Process bills
-  const bills = await fetchBills();
+  const { results: bills, firstPayload: billsPayload } = await fetchBills();
+  if (bills.length === 0) {
+    console.log('DEBUG raw bill API response:');
+    console.log(JSON.stringify(billsPayload, null, 2));
+  }
   for (const bill of bills) {
     const sponsorId = bill.sponsor?.bioguideId || bill.sponsor?.bioguide_id;
     if (sponsorId && repMap.has(sponsorId)) {
@@ -69,8 +76,6 @@ async function fetchAmendments() {
       }
       attached++;
     }
-
-    // Cosponsors
     if (bill.cosponsors) {
       for (const c of bill.cosponsors) {
         const cosponsorId = c.bioguideId || c.bioguide_id;
@@ -84,7 +89,11 @@ async function fetchAmendments() {
   }
 
   // Process amendments
-  const amendments = await fetchAmendments();
+  const { results: amendments, firstPayload: amendmentsPayload } = await fetchAmendments();
+  if (amendments.length === 0) {
+    console.log('DEBUG raw amendment API response:');
+    console.log(JSON.stringify(amendmentsPayload, null, 2));
+  }
   for (const amendment of amendments) {
     const sponsorId = amendment.sponsor?.bioguideId || amendment.sponsor?.bioguide_id;
     if (sponsorId && repMap.has(sponsorId)) {
@@ -95,8 +104,6 @@ async function fetchAmendments() {
       }
       attached++;
     }
-
-    // Cosponsors
     if (amendment.cosponsors) {
       for (const c of amendment.cosponsors) {
         const cosponsorId = c.bioguideId || c.bioguide_id;
