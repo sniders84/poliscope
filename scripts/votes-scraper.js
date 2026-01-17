@@ -16,6 +16,7 @@ const MENU_URLS = [
 
 const parser = new xml2js.Parser({ explicitArray: false });
 
+// Load rankings once
 let rankings = [];
 try {
   rankings = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf8'));
@@ -24,6 +25,7 @@ try {
   process.exit(1);
 }
 
+// Pre-map senators by bioguide for faster lookups
 const senatorMap = new Map(rankings.map(s => [s.bioguideId, s]));
 
 async function delay(ms) {
@@ -33,43 +35,52 @@ async function delay(ms) {
 async function scrapeSenateVotes() {
   let allXmlUrls = [];
 
+  // Collect XML links from both session menu pages
   for (const menuUrl of MENU_URLS) {
     console.log(`Fetching Senate vote menu: ${menuUrl}`);
 
-    const res = await fetch(menuUrl, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+    try {
+      const res = await fetch(menuUrl, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+        }
+      });
+
+      if (!res.ok) {
+        console.error(`Menu fetch failed: ${res.status} for ${menuUrl}`);
+        continue;
       }
-    });
 
-    if (!res.ok) {
-      console.error(`Menu fetch failed: ${res.status} for ${menuUrl}`);
-      continue;
+      const html = await res.text();
+      const $ = cheerio.load(html);
+
+      $('table tr').each((i, row) => {
+        if (i === 0) return; // skip header
+        const link = $(row).find('td a[href$=".xml"]').attr('href');
+        if (link) allXmlUrls.push('https://www.senate.gov' + link);
+      });
+    } catch (err) {
+      console.error(`Error fetching menu ${menuUrl}: ${err.message}`);
     }
-
-    const html = await res.text();
-    const $ = cheerio.load(html);
-
-    $('table tr').each((i, row) => {
-      if (i === 0) return;
-      const link = $(row).find('td a[href$=".xml"]').attr('href');
-      if (link) allXmlUrls.push('https://www.senate.gov' + link);
-    });
   }
 
   console.log(`Found ${allXmlUrls.length} Senate vote XML files across both sessions`);
 
-  let totalVotes = allXmlUrls.length;
-  let voteCounts = {};
+  const totalVotes = allXmlUrls.length;
+  const voteCounts = {};
   rankings.forEach(s => {
     voteCounts[s.bioguideId] = { yea: 0, nay: 0, missed: 0 };
   });
 
+  // Process each vote XML
   for (const xmlUrl of allXmlUrls) {
     console.log(`Processing vote XML: ${xmlUrl}`);
     try {
       const xmlRes = await fetch(xmlUrl);
-      if (!xmlRes.ok) continue;
+      if (!xmlRes.ok) {
+        console.error(`Vote XML fetch failed: ${xmlRes.status} for ${xmlUrl}`);
+        continue;
+      }
 
       const xml = await xmlRes.text();
       const parsed = await parser.parseStringPromise(xml);
@@ -77,16 +88,16 @@ async function scrapeSenateVotes() {
       const members = parsed.roll_call_vote?.members?.member || [];
       for (const m of members) {
         const name = (m.first_name + ' ' + m.last_name).trim();
-        const party = m.party;
+        const party = (m.party || '').toLowerCase();
         const state = m.state;
         const voteCast = (m.vote_cast || '').trim().toLowerCase();
 
-        // Match senator (name + party + state fallback)
-        const senator = rankings.find(s => {
-          return s.name.toLowerCase().includes(name.toLowerCase()) &&
-                 s.party.toLowerCase() === party.toLowerCase() &&
-                 s.state === state;
-        });
+        // Match senator by name + party + state
+        const senator = rankings.find(s =>
+          s.name.toLowerCase().includes(name.toLowerCase()) &&
+          s.party.toLowerCase() === party &&
+          s.state === state
+        );
 
         if (!senator) continue;
 
@@ -96,20 +107,21 @@ async function scrapeSenateVotes() {
         else counts.missed++;
       }
 
-      await delay(3000); // 3s delay per XML to be polite
+      await delay(3000); // polite delay per XML
     } catch (err) {
       console.error(`Error on ${xmlUrl}: ${err.message}`);
     }
   }
 
+  // Update rankings with tallies
   rankings.forEach(sen => {
     const counts = voteCounts[sen.bioguideId] || { yea: 0, nay: 0, missed: 0 };
     sen.yeaVotes = counts.yea;
     sen.nayVotes = counts.nay;
     sen.missedVotes = counts.missed;
     sen.totalVotes = totalVotes;
-    sen.participationPct = totalVotes > 0 ? ((counts.yea + counts.nay) / totalVotes * 100).toFixed(2) : 0;
-    sen.missedVotePct = totalVotes > 0 ? (counts.missed / totalVotes * 100).toFixed(2) : 0;
+    sen.participationPct = totalVotes > 0 ? ((counts.yea + counts.nay) / totalVotes * 100).toFixed(2) : '0.00';
+    sen.missedVotePct = totalVotes > 0 ? (counts.missed / totalVotes * 100).toFixed(2) : '0.00';
   });
 
   fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
