@@ -1,32 +1,59 @@
+// scripts/merge-reps.js
+// Purpose: Enforce schema consistency for representatives-rankings.json (119th Congress)
+// All scrapers now enrich representatives-rankings.json directly, so this step validates and normalizes
+
 const fs = require('fs');
 const path = require('path');
 
-const rankingsPath = path.join(__dirname, '../public/representatives-rankings.json');
-const bills = JSON.parse(fs.readFileSync(path.join(__dirname, '../public/house-legislation.json'))).bills || [];
-const votes = JSON.parse(fs.readFileSync(path.join(__dirname, '../public/house-votes.json'))).votes || [];
-const rankings = JSON.parse(fs.readFileSync(rankingsPath));
+const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
 
-const bySponsor = new Map();
-for (const b of bills) {
-  const sponsorId = b.sponsor?.bioguideId || b.sponsor?.bioguide_id || null;
-  if (!sponsorId) continue;
-  if (!bySponsor.has(sponsorId)) bySponsor.set(sponsorId, []);
-  bySponsor.get(sponsorId).push(b);
+function normalize(rep) {
+  return {
+    // Identity
+    name: rep.name || '',
+    bioguideId: rep.bioguideId || '',
+    state: rep.state || '',
+    district: rep.district || '',
+    party: rep.party || '',
+    office: rep.office || 'Representative',
+
+    // Legislation
+    sponsoredBills: rep.sponsoredBills || 0,
+    cosponsoredBills: rep.cosponsoredBills || 0,
+    becameLawBills: rep.becameLawBills || 0,
+    becameLawCosponsoredBills: rep.becameLawCosponsoredBills || 0,   // added
+    sponsoredAmendments: rep.sponsoredAmendments || 0,
+    cosponsoredAmendments: rep.cosponsoredAmendments || 0,
+    becameLawAmendments: rep.becameLawAmendments || 0,
+    becameLawCosponsoredAmendments: rep.becameLawCosponsoredAmendments || 0,
+
+    // Committees
+    committees: Array.isArray(rep.committees) ? rep.committees : [],
+
+    // Votes
+    yeaVotes: rep.yeaVotes || 0,
+    nayVotes: rep.nayVotes || 0,
+    missedVotes: rep.missedVotes || 0,
+    totalVotes: rep.totalVotes || 0,
+    participationPct: rep.participationPct || 0,
+    missedVotePct: rep.missedVotePct || 0,
+
+    // Scores
+    rawScore: rep.rawScore || 0,
+    score: rep.score || 0,
+    scoreNormalized: rep.scoreNormalized || 0
+  };
 }
 
-const votesByMember = new Map();
-for (const v of votes) {
-  const memberId = v.member?.bioguideId || v.member?.bioguide_id || null;
-  if (!memberId) continue;
-  if (!votesByMember.has(memberId)) votesByMember.set(memberId, []);
-  votesByMember.get(memberId).push(v);
-}
+(function main() {
+  if (!fs.existsSync(OUT_PATH)) {
+    console.error('representatives-rankings.json not found. Run bootstrap first.');
+    process.exit(1);
+  }
 
-for (const rep of rankings) {
-  const id = rep.bioguideId || rep.bioguide_id;
-  rep.legislation = bySponsor.get(id) || [];
-  rep.votes = votesByMember.get(id) || [];
-}
+  const reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8'));
+  const normalized = reps.map(normalize);
 
-fs.writeFileSync(rankingsPath, JSON.stringify(rankings, null, 2));
-console.log('Merged House legislation and votes into representatives-rankings.json');
+  fs.writeFileSync(OUT_PATH, JSON.stringify(normalized, null, 2));
+  console.log(`Merge complete: ${normalized.length} representatives normalized and schema enforced for Congress ${119}`);
+})();
