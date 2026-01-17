@@ -20,10 +20,10 @@ function normalize(rep) {
     // Legislation
     sponsoredBills: rep.sponsoredBills || 0,
     cosponsoredBills: rep.cosponsoredBills || 0,
-    becameLawBills: rep.becameLawBills || 0,
-    becameLawCosponsoredBills: rep.becameLawCosponsoredBills || 0,   // added
     sponsoredAmendments: rep.sponsoredAmendments || 0,
     cosponsoredAmendments: rep.cosponsoredAmendments || 0,
+    becameLawBills: rep.becameLawBills || 0,
+    becameLawCosponsoredBills: rep.becameLawCosponsoredBills || 0,
     becameLawAmendments: rep.becameLawAmendments || 0,
     becameLawCosponsoredAmendments: rep.becameLawCosponsoredAmendments || 0,
 
@@ -55,5 +55,5 @@ function normalize(rep) {
   const normalized = reps.map(normalize);
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(normalized, null, 2));
-  console.log(`Merge complete: ${normalized.length} representatives normalized and schema enforced for Congress ${119}`);
+  console.log(`Merge complete: ${normalized.length} representatives normalized and schema enforced for Congress ${CONGRESS}`);
 })();
