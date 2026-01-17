@@ -1,50 +1,19 @@
-// scripts/reps-scores.js
-// Purpose: Compute composite scores for House representatives based on 119th Congress data
-// Enriches representatives-rankings.json directly with rawScore, score, and scoreNormalized
-
+// Full replacement: House scores for 119th Congress
 const fs = require('fs');
 const path = require('path');
 
-const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
+const repsPath = path.join(__dirname, '../public/representatives-rankings.json');
+const reps = JSON.parse(fs.readFileSync(repsPath));
 
-function computeScore(rep) {
-  // Example scoring weights — adjust to your model
-  const billWeight = 2;
-  const amendWeight = 1;
-  const committeeWeight = 3;
-  const voteWeight = 1;
-
-  const rawScore =
-    (rep.sponsoredBills * billWeight) +
-    (rep.cosponsoredBills * billWeight) +
-    (rep.sponsoredAmendments * amendWeight) +
-    (rep.cosponsoredAmendments * amendWeight) +
-    (rep.becameLawBills * billWeight) +
-    (rep.becameLawCosponsoredBills * billWeight) +              // added
-    (rep.becameLawAmendments * amendWeight) +
-    (rep.becameLawCosponsoredAmendments * amendWeight) +
-    (Array.isArray(rep.committees) ? rep.committees.length * committeeWeight : 0) +
-    (rep.yeaVotes * voteWeight) +
-    (rep.nayVotes * voteWeight);
-
-  return rawScore;
+for (const rep of reps) {
+  // Leadership quality = sponsored bills in 119th Congress
+  rep.leadershipQuality = rep.sponsoredBills119 || 0;
+  // Follower quality = cosponsored bills in 119th Congress
+  rep.followerQuality = rep.cosponsoredBills119 || 0;
 }
 
-(function main() {
-  const reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8'));
-
-  // Compute raw scores
-  for (const r of reps) {
-    r.rawScore = computeScore(r);
-    r.score = r.rawScore; // currently identical, but can diverge if you add scaling
-  }
-
-  // Normalize scores 0–100
-  const maxScore = Math.max(...reps.map(r => r.score || 0));
-  for (const r of reps) {
-    r.scoreNormalized = maxScore > 0 ? Number(((r.score / maxScore) * 100).toFixed(2)) : 0;
-  }
-
-  fs.writeFileSync(OUT_PATH, JSON.stringify(reps, null, 2));
-  console.log(`Scoring complete for House representatives (${reps.length} entries)`);
-})();
+fs.writeFileSync(
+  path.join(__dirname, '../public/representatives-scores.json'),
+  JSON.stringify(reps, null, 2)
+);
+console.log('Generated House scores (leadership/follower counts only)');
