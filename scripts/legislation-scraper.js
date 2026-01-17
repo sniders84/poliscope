@@ -1,119 +1,100 @@
+// scripts/legislation-scraper.js
+// Scrape aggregate sponsors/cosponsors ALL page for Senate in 119th Congress
+// Uniform with House version - single request, fast, no API key
 
 const fs = require('fs');
-const path = require('path');
+const cheerio = require('cheerio');
 const fetch = require('node-fetch');
 
 const RANKINGS_PATH = path.join(__dirname, '../public/senators-rankings.json');
-const API_KEY = process.env.CONGRESS_API_KEY;
-const CONGRESS = process.env.CONGRESS_NUMBER || '119';
+const ALL_URL = 'https://www.congress.gov/sponsors-cosponsors/119th-congress/senators/ALL';
 
-const BILL_TYPES = ['s', 'sjres', 'sconres', 'sres']; // Senate bills/resolutions
-const AMENDMENT_TYPES = ['samdt']; // Senate amendments
+async function scrapeSenateAggregate() {
+  console.log(`Fetching Senate sponsors/cosponsors aggregate: ${ALL_URL}`);
 
-function delay(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
+  try {
+    const res = await fetch(ALL_URL, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.5',
+        'Referer': 'https://www.congress.gov/'
+      }
+    });
 
-async function fetchPaginated(urlBase) {
-  let results = [];
-  let offset = 0;
-  const pageSize = 250;
+    console.log(`Status: ${res.status} ${res.statusText}`);
 
-  while (true) {
-    const url = `${urlBase}&pageSize=${pageSize}&offset=${offset}`;
-    console.log(`Fetching ${url}`);
-    const res = await fetch(url, { headers: { 'X-API-Key': API_KEY } });
     if (!res.ok) {
-      console.error(`Failed ${url}: ${res.status} - ${await res.text()}`);
-      break;
+      console.error(`Failed to fetch Senate aggregate page: ${res.status}`);
+      return;
     }
-    const data = await res.json();
-    const chunk = data.bills || data.amendments || [];
-    if (chunk.length === 0) break;
-    results = results.concat(chunk);
-    offset += pageSize;
-    await delay(1000); // 1s delay to avoid rate limits
-  }
 
-  return results;
-}
+    const html = await res.text();
+    const $ = cheerio.load(html);
 
-async function updateRankings() {
-  let rankings;
-  try {
-    rankings = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf8'));
-  } catch (err) {
-    console.error('Failed to load rankings.json:', err.message);
-    return;
-  }
+    // Find the main table (likely .table or #content table)
+    const table = $('table').first();
+    if (!table.length) {
+      console.error('No table found on Senate ALL page');
+      return;
+    }
 
-  // Map bioguideId -> senator index
-  const idToIndex = new Map(rankings.map((sen, idx) => [sen.bioguideId, idx]));
+    let updated = 0;
 
-  console.log(`Processing ${BILL_TYPES.length} bill types + amendments...`);
+    table.find('tr').each((i, row) => {
+      if (i === 0) return; // skip header
 
-  // Bills/Resolutions
-  for (const type of BILL_TYPES) {
-    const bills = await fetchPaginated(`https://api.congress.gov/v3/bill/${CONGRESS}/${type}?format=json`);
-    for (const bill of bills) {
-      // Sponsor
-      const sponsorId = bill.sponsor?.bioguideId || (bill.sponsors?.[0]?.bioguideId);
-      if (sponsorId && idToIndex.has(sponsorId)) {
-        const idx = idToIndex.get(sponsorId);
-        rankings[idx].sponsoredLegislation = (rankings[idx].sponsoredLegislation || 0) + 1;
-        if (bill.latestAction?.text?.includes('Became Public Law')) {
-          rankings[idx].becameLawLegislation = (rankings[idx].becameLawLegislation || 0) + 1;
+      const cells = $(row).find('td');
+      if (cells.length < 5) return;
+
+      const nameLink = cells.eq(0).find('a');
+      const nameText = nameLink.text().trim();
+      const memberUrl = nameLink.attr('href') || '';
+      const bioguideMatch = memberUrl.match(/\/([A-Z0-9]{7})\?/);
+      const bioguide = bioguideMatch ? bioguideMatch[1] : null;
+
+      const sponsored = parseInt(cells.eq(1).text().trim(), 10) || 0;
+      const sponsoredAmd = parseInt(cells.eq(2).text().trim(), 10) || 0;
+      const cosponsored = parseInt(cells.eq(3).text().trim(), 10) || 0;
+      // Original/Withdrawn in cells 4/5 if present
+
+      if (bioguide) {
+        let rankings;
+        try {
+          rankings = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf8'));
+        } catch (err) {
+          console.error('Failed to load senators-rankings.json:', err.message);
+          return;
         }
-      }
 
-      // Cosponsors
-      const cosponsors = bill.cosponsors || bill.cosponsors?.items || [];
-      for (const cos of cosponsors) {
-        const cosId = cos.bioguideId;
-        if (cosId && idToIndex.has(cosId)) {
-          const idx = idToIndex.get(cosId);
-          rankings[idx].cosponsoredLegislation = (rankings[idx].cosponsoredLegislation || 0) + 1;
-          if (bill.latestAction?.text?.includes('Became Public Law')) {
-            rankings[idx].becameLawCosponsoredAmendments = (rankings[idx].becameLawCosponsoredAmendments || 0) + 1;
-          }
+        const senator = rankings.find(s => s.bioguideId === bioguide);
+        if (senator) {
+          senator.sponsoredBills = sponsored;
+          senator.cosponsoredBills = cosponsored;
+          senator.sponsoredAmendments = sponsoredAmd;
+          senator.cosponsoredAmendments = 0; // no cosponsored amd column
+          senator.becameLawBills = 0;        // no enactment data on aggregate page
+          senator.becameLawCosponsoredBills = 0;
+          senator.becameLawAmendments = 0;
+          senator.becameLawCosponsoredAmendments = 0;
+
+          console.log(`Updated ${senator.name} (${bioguide}): ${sponsored} sponsored, ${cosponsored} cosponsored`);
+
+          updated++;
+        } else {
+          console.log(`No match for ${nameText} (bioguide: ${bioguide})`);
         }
-      }
-    }
-  }
 
-  // Amendments
-  const amendments = await fetchPaginated(`https://api.congress.gov/v3/amendment/${CONGRESS}?format=json`);
-  for (const amd of amendments) {
-    const sponsorId = amd.sponsor?.bioguideId || (amd.sponsors?.[0]?.bioguideId);
-    if (sponsorId && idToIndex.has(sponsorId)) {
-      const idx = idToIndex.get(sponsorId);
-      rankings[idx].sponsoredAmendments = (rankings[idx].sponsoredAmendments || 0) + 1;
-      if (amd.latestAction?.text?.includes('Became Public Law')) {
-        rankings[idx].becameLawAmendments = (rankings[idx].becameLawAmendments || 0) + 1;
+        // Save after each update (safe but slow; or batch)
+        fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
       }
-    }
+    });
 
-    // Cosponsors for amendments (less common, but check)
-    const cosponsors = amd.cosponsors || [];
-    for (const cos of cosponsors) {
-      const cosId = cos.bioguideId;
-      if (cosId && idToIndex.has(cosId)) {
-        const idx = idToIndex.get(cosId);
-        rankings[idx].cosponsoredAmendments = (rankings[idx].cosponsoredAmendments || 0) + 1;
-      }
-    }
-  }
+    console.log(`Senate aggregate scraping complete - updated ${updated} senators`);
 
-  // Save back to rankings.json
-  try {
-    fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
-    console.log(`Updated senators-rankings.json with legislation data for ${rankings.length} senators`);
   } catch (err) {
-    console.error('Failed to write rankings.json:', err.message);
+    console.error('Scrape error:', err.message);
   }
 }
 
-updateRankings().catch(err => {
-  console.error('Script failed:', err.message);
-  process.exit(1);
-});
+scrapeSenateAggregate();
