@@ -1,154 +1,82 @@
 // scripts/votes-reps-scraper.js
-// Scrape House roll call votes from congress.gov aggregate index (both sessions of 119th)
-// Hardened fetch with full headers + retry logic
+// Pull House roll call votes from GovTrack bulk data (119th Congress)
+// Enriches representatives-rankings.json seeded by bootstrap
 
 const fs = require('fs');
 const path = require('path');
-const cheerio = require('cheerio');
 const fetch = require('node-fetch');
 
 const RANKINGS_PATH = path.join(__dirname, '../public/representatives-rankings.json');
-const INDEX_URLS = [
-  'https://www.congress.gov/votes/house/119th-congress/1st-session',
-  'https://www.congress.gov/votes/house/119th-congress/2nd-session'
-];
+// GovTrack bulk votes endpoint (House, 119th Congress)
+const GOVTRACK_VOTES_URL = 'https://www.govtrack.us/api/v2/vote?congress=119&chamber=house&limit=1000';
 
-// Hardened fetch with retries
-async function fetchWithRetry(url, options = {}, retries = 3, delay = 5000) {
-  for (let attempt = 1; attempt <= retries; attempt++) {
-    try {
-      const res = await fetch(url, options);
-      if (res.ok) return res;
-      console.error(`Attempt ${attempt} failed: ${res.status} ${res.statusText}`);
-    } catch (err) {
-      console.error(`Attempt ${attempt} error: ${err.message}`);
-    }
-    if (attempt < retries) {
-      console.log(`Retrying in ${delay / 1000}s...`);
-      await new Promise(r => setTimeout(r, delay));
-    }
+async function fetchAllVotes() {
+  let votes = [];
+  let nextUrl = GOVTRACK_VOTES_URL;
+
+  while (nextUrl) {
+    const res = await fetch(nextUrl);
+    if (!res.ok) throw new Error(`GovTrack fetch failed: ${res.status}`);
+    const data = await res.json();
+    votes = votes.concat(data.objects);
+    nextUrl = data.meta.next; // pagination
   }
-  throw new Error(`Failed to fetch ${url} after ${retries} attempts`);
-}
-
-let reps = [];
-try {
-  reps = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf8'));
-} catch (err) {
-  console.error('Failed to load representatives-rankings.json:', err.message);
-  process.exit(1);
-}
-
-const repMap = new Map(reps.map(r => [r.bioguideId, r]));
-
-async function delay(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+  return votes;
 }
 
 async function scrapeHouseVotes() {
-  let allVoteUrls = [];
+  console.log(`Fetching GovTrack House votes for 119th Congress...`);
 
-  // Collect roll call vote detail links from both session index pages
-  for (const indexUrl of INDEX_URLS) {
-    console.log(`Fetching votes index: ${indexUrl}`);
-    try {
-      const res = await fetchWithRetry(indexUrl, {
-        headers: {
-          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
-          'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
-          'Accept-Language': 'en-US,en;q=0.9',
-          'Referer': 'https://www.congress.gov/',
-          'Connection': 'keep-alive',
-          'Upgrade-Insecure-Requests': '1'
-        }
-      });
-
-      const html = await res.text();
-      const $ = cheerio.load(html);
-
-      $('table tr').each((i, row) => {
-        if (i === 0) return; // skip header
-        const link = $(row).find('td a').first().attr('href');
-        if (link && link.includes('/roll-call-vote/')) {
-          allVoteUrls.push('https://www.congress.gov' + link);
-        }
-      });
-    } catch (err) {
-      console.error(`Error fetching index ${indexUrl}: ${err.message}`);
-    }
+  let rankings;
+  try {
+    rankings = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf8'));
+  } catch (err) {
+    console.error('Failed to load representatives-rankings.json:', err.message);
+    return;
   }
 
-  console.log(`Found ${allVoteUrls.length} House roll call vote detail pages`);
-
-  const totalVotes = allVoteUrls.length;
-  const voteCounts = {};
-  reps.forEach(r => {
-    voteCounts[r.bioguideId] = { yea: 0, nay: 0, missed: 0 };
+  // Initialize tallies
+  const tallies = {};
+  rankings.forEach(r => {
+    tallies[r.bioguideId] = { yea: 0, nay: 0, missed: 0 };
   });
 
-  // Process each roll call vote detail page
-  for (const url of allVoteUrls) {
-    console.log(`Processing vote: ${url}`);
-    try {
-      const voteRes = await fetchWithRetry(url, {
-        headers: {
-          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
-          'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
-          'Accept-Language': 'en-US,en;q=0.9',
-          'Referer': 'https://www.congress.gov/',
-          'Connection': 'keep-alive',
-          'Upgrade-Insecure-Requests': '1'
-        }
-      });
+  try {
+    const votes = await fetchAllVotes();
+    console.log(`Processing ${votes.length} House votes from GovTrack...`);
 
-      const voteHtml = await voteRes.text();
-      const $$ = cheerio.load(voteHtml);
-
-      $$('table tr').each((i, row) => {
-        if (i === 0) return;
-        const cells = $$(row).find('td');
-        if (cells.length < 3) return;
-
-        const name = cells.eq(0).text().trim();
-        const partyState = cells.eq(1).text().trim(); // e.g. "R-AL"
-        const vote = cells.eq(2).text().trim().toLowerCase();
-
-        const rep = reps.find(r => {
-          const matchName = r.name.toLowerCase().includes(name.toLowerCase());
-          const matchPartyState =
-            partyState.includes(r.party.charAt(0)) && partyState.includes(r.state);
-          return matchName || matchPartyState;
-        });
-
-        if (!rep) return;
-
-        const counts = voteCounts[rep.bioguideId];
-        if (vote === 'yea' || vote === 'yes') counts.yea++;
-        else if (vote === 'nay' || vote === 'no') counts.nay++;
-        else counts.missed++;
-      });
-
-      await delay(3000); // polite delay per vote page
-    } catch (err) {
-      console.error(`Error on vote ${url}: ${err.message}`);
+    for (const vote of votes) {
+      const voters = vote.voters || {};
+      for (const [bioguideId, record] of Object.entries(voters)) {
+        if (!tallies[bioguideId]) continue;
+        const cast = (record.vote || '').toLowerCase();
+        if (cast === 'yea' || cast === 'yes') tallies[bioguideId].yea++;
+        else if (cast === 'nay' || cast === 'no') tallies[bioguideId].nay++;
+        else tallies[bioguideId].missed++;
+      }
     }
+
+    const totalVotes = votes.length;
+
+    // Merge tallies back into rankings
+    rankings.forEach(r => {
+      const t = tallies[r.bioguideId] || { yea: 0, nay: 0, missed: 0 };
+      r.yeaVotes = t.yea;
+      r.nayVotes = t.nay;
+      r.missedVotes = t.missed;
+      r.totalVotes = totalVotes;
+      r.participationPct =
+        totalVotes > 0 ? ((t.yea + t.nay) / totalVotes * 100).toFixed(2) : '0.00';
+      r.missedVotePct =
+        totalVotes > 0 ? (t.missed / totalVotes * 100).toFixed(2) : '0.00';
+    });
+
+    fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
+    console.log(`House votes updated for ${rankings.length} representatives`);
+
+  } catch (err) {
+    console.error('GovTrack votes scrape error:', err.message);
   }
-
-  // Update reps with tallies
-  reps.forEach(rep => {
-    const counts = voteCounts[rep.bioguideId] || { yea: 0, nay: 0, missed: 0 };
-    rep.yeaVotes = counts.yea;
-    rep.nayVotes = counts.nay;
-    rep.missedVotes = counts.missed;
-    rep.totalVotes = totalVotes;
-    rep.participationPct =
-      totalVotes > 0 ? ((counts.yea + counts.nay) / totalVotes * 100).toFixed(2) : '0.00';
-    rep.missedVotePct =
-      totalVotes > 0 ? (counts.missed / totalVotes * 100).toFixed(2) : '0.00';
-  });
-
-  fs.writeFileSync(RANKINGS_PATH, JSON.stringify(reps, null, 2));
-  console.log(`House votes updated: ${totalVotes} roll calls processed across both sessions`);
 }
 
-scrapeHouseVotes().catch(err => console.error('House votes scraper failed:', err.message));
+scrapeHouseVotes();
