@@ -1,5 +1,5 @@
 // scripts/votes-reps-scraper.js
-// Full replacement: fetch LegiScan bulk dataset, diagnostic logging, and enrichment of representatives-rankings.json with vote tallies
+// Full replacement: fetch LegiScan bulk dataset, unzip, and enrich representatives-rankings.json with vote tallies
 
 const fs = require('fs');
 const path = require('path');
@@ -7,34 +7,20 @@ const https = require('https');
 const unzipper = require('unzipper');
 
 const RANKINGS_PATH = path.join(__dirname, '../public/representatives-rankings.json');
-const TOKEN = process.env.CONGRESS_API_KEY;   // Bulk download token
-const SESSION = process.env.CONGRESS_NUMBER;  // e.g. "119"
-
-const ZIP_URL = `https://api.legiscan.com/dl/?token=${TOKEN}&session=${SESSION}`;
+const DATASET_URL = 'https://legiscan.com/gaits/datasets/2199/json/US_2025-2026_119th_Congress_JSON_20260109_68e7bd7db67acea9876b963a8a573396.zip';
 
 async function fetchAndParse() {
-  console.log(`Downloading LegiScan bulk dataset for session ${SESSION} (House votes)...`);
+  console.log(`Downloading LegiScan bulk dataset for 119th Congress (House votes)...`);
 
   const zipPath = path.join(__dirname, 'legiscan.zip');
   const file = fs.createWriteStream(zipPath);
 
   await new Promise((resolve, reject) => {
-    https.get(ZIP_URL, res => {
+    https.get(DATASET_URL, res => {
       res.pipe(file);
       file.on('finish', () => file.close(resolve));
     }).on('error', reject);
   });
-
-  // Diagnostic: check file signature + head
-  const buf = fs.readFileSync(zipPath);
-  const sig = buf.slice(0, 4).toString('hex');
-  console.log(`Downloaded file signature: ${sig}`);
-  console.log(`First 200 bytes:\n${buf.slice(0, 200).toString()}`);
-
-  if (sig !== '504b0304') {
-    console.error('Not a valid ZIP file — check your token or endpoint.');
-    return;
-  }
 
   console.log('Unzipping LegiScan dataset...');
   await fs.createReadStream(zipPath)
