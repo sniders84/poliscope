@@ -79,6 +79,12 @@ async function fetchMemberLegislation(bioguideId, type, billType = null) {
     rep.cosponsoredAmendments += cosponsoredAmendments.length;
     rep.becameLawCosponsoredAmendments += cosponsoredAmendments.filter(a => (a.latestAction?.action || '').toLowerCase().includes('became public law')).length;
     attached += cosponsoredAmendments.length;
+
+    // Debug: log one sample for Alma Adams
+    if (id === 'A000370' && sponsored.length > 0) {
+      console.log('Sample sponsored bill for Alma Adams:');
+      console.log(JSON.stringify(sponsored[0], null, 2));
+    }
   }
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(reps, null, 2));
