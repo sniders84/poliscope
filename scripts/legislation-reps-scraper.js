@@ -1,17 +1,28 @@
 // scripts/legislation-reps-scraper.js
-// Purpose: Scrape House legislation counts directly from Congress.gov member search pages
+// Purpose: Fetch House legislation counts via Congress.gov API v3 for current members (119th Congress)
 // Enriches representatives-rankings.json with sponsor/cosponsor counts and became-law tallies
 // Covers: sponsoredBills, cosponsoredBills, sponsoredAmendments, cosponsoredAmendments,
 //         becameLawBills, becameLawCosponsoredBills, becameLawAmendments, becameLawCosponsoredAmendments
-// Also attaches durable Congress.gov URLs for attribution
+// Uses member/sponsored-legislation and member/cosponsored-legislation endpoints (bills/resolutions only)
+// Amendments: currently 0 (no direct API endpoint; can add HTML scraping fallback if needed)
+// Also attaches durable Congress.gov profile URLs for attribution
 
 const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
-const cheerio = require('cheerio');
 
 const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
-const CONGRESS = process.env.CONGRESS_NUMBER || 119;
+const CONGRESS = process.env.CONGRESS_NUMBER || '119';
+const API_KEY = process.env.CONGRESS_API_KEY;
+
+if (!API_KEY) {
+  console.error('Missing CONGRESS_API_KEY environment variable. Set it in .env or GitHub Secrets.');
+  process.exit(1);
+}
+
+const API_BASE = 'https://api.congress.gov/v3';
+const FORMAT = 'json';
+const MAX_LIMIT = 250; // API max per page
 
 function ensureLegislationShape(rep) {
   rep.sponsoredBills ??= 0;
@@ -26,110 +37,158 @@ function ensureLegislationShape(rep) {
   return rep;
 }
 
-// Build slug from name (lowercase, spaces -> hyphens)
 function slugifyName(name) {
-  return name.toLowerCase().replace(/[^a-z\s]/g, '').trim().replace(/\s+/g, '-');
+  return (name || '').toLowerCase().replace(/[^a-z\s-]/g, '').trim().replace(/\s+/g, '-');
 }
 
-// Build the search-scoped URL
-function memberSearchUrl(rep) {
-  const slug = slugifyName(rep.name || '');
-  const q = encodeURIComponent(
-    JSON.stringify({
-      search: [rep.bioguideId],
-      within: [rep.bioguideId],
-      congress: String(CONGRESS)
-    })
-  );
-  return `https://www.congress.gov/member/${slug}/${rep.bioguideId}?q=${q}`;
+async function apiRequest(endpoint, params = {}) {
+  const query = new URLSearchParams({
+    api_key: API_KEY,
+    format: FORMAT,
+    ...params,
+  });
+  const url = `${API_BASE}${endpoint}?${query.toString()}`;
+  
+  try {
+    const res = await fetch(url, {
+      headers: { 'User-Agent': 'electorate.app scraper (contact via GitHub)' },
+    });
+    
+    if (!res.ok) {
+      const text = await res.text().catch(() => '');
+      console.error(`API error: ${res.status} for ${url} → ${text.slice(0, 200)}`);
+      return { success: false, data: null };
+    }
+    
+    const data = await res.json();
+    return { success: true, data };
+  } catch (err) {
+    console.error(`Fetch failed for ${url}: ${err.message}`);
+    return { success: false, data: null };
+  }
+}
+
+// Get total count without fetching full list
+async function getCount(endpoint, extraParams = {}) {
+  const { success, data } = await apiRequest(endpoint, { limit: 1, ...extraParams });
+  if (!success || !data?.pagination) return 0;
+  return data.pagination.count || 0;
+}
+
+// Fetch full paginated list (for became-law filtering)
+async function getFullList(endpoint, extraParams = {}) {
+  let items = [];
+  let offset = 0;
+  
+  while (true) {
+    const params = { limit: MAX_LIMIT, offset, ...extraParams };
+    const { success, data } = await apiRequest(endpoint, params);
+    if (!success || !data) break;
+    
+    const pageItems = data.bills || []; // member endpoints return { bills: [...] }
+    items = items.concat(pageItems);
+    
+    if (pageItems.length < MAX_LIMIT) break;
+    offset += MAX_LIMIT;
+    
+    // Optional: avoid hitting rate limits too hard (1000 req/hour)
+    // await new Promise(r => setTimeout(r, 500));
+  }
+  
+  return items;
+}
+
+function isBecamePublicLaw(item) {
+  const actionText = item?.latestAction?.text || '';
+  const hasLaw = !!(item?.laws?.length > 0);
+  return actionText.includes('Became Public Law') || hasLaw;
 }
 
 async function scrapeProfile(rep) {
-  const url = memberSearchUrl(rep);
-  const res = await fetch(url, {
-    headers: {
-      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
-      'Accept': 'text/html'
-    }
-  });
-  if (!res.ok) {
-    console.log(`Failed to fetch ${url} (${res.status})`);
+  if (!rep.bioguideId) {
+    console.log(`Skipping ${rep.name || 'unknown'} - no bioguideId`);
     return null;
   }
-  const html = await res.text();
-  const $ = cheerio.load(html);
-
+  
+  const bioguide = rep.bioguideId;
+  const congressFilter = { congress: CONGRESS };
+  
+  console.log(`Scraping API for ${rep.name || bioguide} (${bioguide})...`);
+  
+  // Sponsored bills count + list for became-law
+  const sponsoredCount = await getCount(`/member/${bioguide}/sponsored-legislation`, congressFilter);
+  const sponsoredList = sponsoredCount > 0 
+    ? await getFullList(`/member/${bioguide}/sponsored-legislation`, congressFilter)
+    : [];
+  const becameLawSponsored = sponsoredList.filter(isBecamePublicLaw).length;
+  
+  // Cosponsored bills count + list
+  const cosponsoredCount = await getCount(`/member/${bioguide}/cosponsored-legislation`, congressFilter);
+  const cosponsoredList = cosponsoredCount > 0 
+    ? await getFullList(`/member/${bioguide}/cosponsored-legislation`, congressFilter)
+    : [];
+  const becameLawCosponsored = cosponsoredList.filter(isBecamePublicLaw).length;
+  
+  // Amendments not directly available via API → set to 0 for now
+  const sponsoredAmendments = 0;
+  const cosponsoredAmendments = 0;
+  const becameLawAmendments = 0;
+  const becameLawCosponsoredAmendments = 0;
+  
   const counts = {
-    sponsoredBills: 0,
-    cosponsoredBills: 0,
-    sponsoredAmendments: 0,
-    cosponsoredAmendments: 0,
-    becameLawBills: 0,
-    becameLawCosponsoredBills: 0,
-    becameLawAmendments: 0,
-    becameLawCosponsoredAmendments: 0,
+    sponsoredBills: sponsoredCount,
+    cosponsoredBills: cosponsoredCount,
+    sponsoredAmendments,
+    cosponsoredAmendments,
+    becameLawBills: becameLawSponsored,
+    becameLawCosponsoredBills: becameLawCosponsored,
+    becameLawAmendments,
+    becameLawCosponsoredAmendments,
     urls: []
   };
-
-  // Sponsored bills
-  const sponsoredText = $('a[href*="sponsored-legislation"]').text();
-  const sponsoredMatch = sponsoredText.match(/\((\d+)\)/);
-  if (sponsoredMatch) counts.sponsoredBills = parseInt(sponsoredMatch[1], 10);
-
-  // Cosponsored bills
-  const cosponsoredText = $('a[href*="cosponsored-legislation"]').text();
-  const cosponsoredMatch = cosponsoredText.match(/\((\d+)\)/);
-  if (cosponsoredMatch) counts.cosponsoredBills = parseInt(cosponsoredMatch[1], 10);
-
-  // Amendments
-  const amendmentText = $('a[href*="amendments"]').text();
-  const amendMatch = amendmentText.match(/\((\d+)\)/);
-  if (amendMatch) counts.sponsoredAmendments = parseInt(amendMatch[1], 10);
-
-  // Became law filters
-  const lawSponsoredText = $('a[href*="sponsored-legislation"][href*="bill-status=law"]').text();
-  const lawSponsoredMatch = lawSponsoredText.match(/\((\d+)\)/);
-  if (lawSponsoredMatch) counts.becameLawBills = parseInt(lawSponsoredMatch[1], 10);
-
-  const lawCosponsoredText = $('a[href*="cosponsored-legislation"][href*="bill-status=law"]').text();
-  const lawCosponsoredMatch = lawCosponsoredText.match(/\((\d+)\)/);
-  if (lawCosponsoredMatch) counts.becameLawCosponsoredBills = parseInt(lawCosponsoredMatch[1], 10);
-
-  const lawAmendText = $('a[href*="amendments"][href*="bill-status=law"]').text();
-  const lawAmendMatch = lawAmendText.match(/\((\d+)\)/);
-  if (lawAmendMatch) counts.becameLawAmendments = parseInt(lawAmendMatch[1], 10);
-
-  // Durable URLs
-  if (counts.sponsoredBills > 0) counts.urls.push(`${url}#sponsored-legislation`);
-  if (counts.cosponsoredBills > 0) counts.urls.push(`${url}#cosponsored-legislation`);
-  if (counts.sponsoredAmendments > 0) counts.urls.push(`${url}#amendments`);
-
+  
+  // Build durable profile URLs for attribution
+  const baseProfile = `https://www.congress.gov/member/${slugifyName(rep.name)}/${bioguide}`;
+  if (sponsoredCount > 0 || becameLawSponsored > 0) {
+    counts.urls.push(`${baseProfile}#sponsored-legislation`);
+  }
+  if (cosponsoredCount > 0 || becameLawCosponsored > 0) {
+    counts.urls.push(`${baseProfile}#cosponsored-legislation`);
+  }
+  // If we later add amendments, add #amendments or search params
+  
+  console.log(`→ ${rep.name || bioguide}: ${sponsoredCount} sponsored, ${cosponsoredCount} cosponsored bills`);
+  
   return counts;
 }
 
 (async function main() {
-  const reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureLegislationShape);
-  let attached = 0;
-
+  let reps;
+  try {
+    reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf8')).map(ensureLegislationShape);
+  } catch (err) {
+    console.error(`Failed to read ${OUT_PATH}: ${err.message}`);
+    process.exit(1);
+  }
+  
+  let updated = 0;
+  
   for (const rep of reps) {
-    if (!rep.bioguideId) continue;
     const counts = await scrapeProfile(rep);
     if (!counts) continue;
-
-    rep.sponsoredBills = counts.sponsoredBills;
-    rep.cosponsoredBills = counts.cosponsoredBills;
-    rep.sponsoredAmendments = counts.sponsoredAmendments;
-    rep.cosponsoredAmendments = counts.cosponsoredAmendments;
-    rep.becameLawBills = counts.becameLawBills;
-    rep.becameLawCosponsoredBills = counts.becameLawCosponsoredBills;
-    rep.becameLawAmendments = counts.becameLawAmendments;
-    rep.becameLawCosponsoredAmendments = counts.becameLawCosponsoredAmendments;
-    rep.legislationUrls.push(...counts.urls);
-
-    attached++;
-    console.log(`Updated ${rep.name || rep.bioguideId} with profile counts`);
+    
+    Object.assign(rep, counts);
+    // Merge URLs (avoid duplicates if run multiple times)
+    rep.legislationUrls = [...new Set([...(rep.legislationUrls || []), ...counts.urls])];
+    
+    updated++;
+    // Optional: write incrementally every 20 reps to avoid losing progress
+    if (updated % 20 === 0) {
+      fs.writeFileSync(OUT_PATH, JSON.stringify(reps, null, 2));
+      console.log(`Checkpoint: ${updated} reps updated`);
+    }
   }
-
+  
   fs.writeFileSync(OUT_PATH, JSON.stringify(reps, null, 2));
-  console.log(`Updated representatives-rankings.json with profile legislation counts (${attached} profiles scraped)`);
+  console.log(`Finished: Updated ${updated} representatives with API legislation data`);
 })();
