@@ -1,7 +1,7 @@
 // scripts/legislation-reps-scraper.js
 // Purpose: Scrape House legislation (bills + amendments) for the 119th Congress
 // Enriches representatives-rankings.json with sponsor/cosponsor counts and became-law tallies
-// Uses bill-centric endpoints instead of member endpoints
+// Uses bill-centric endpoints and reads from `results`
 // Includes unconditional debug logging for raw bill and amendment responses
 
 const fs = require('fs');
@@ -23,15 +23,15 @@ function ensureLegislationShape(rep) {
   return rep;
 }
 
-async function fetchAllPages(url, key) {
+async function fetchAllPages(url) {
   let results = [];
   let firstPayload = null;
   while (url) {
     const res = await fetch(url);
     if (!res.ok) break;
     const data = await res.json();
-    if (!firstPayload) firstPayload = data; // capture first payload for debugging
-    results = results.concat(data[key] || []);
+    if (!firstPayload) firstPayload = data;
+    results = results.concat(data.results || []);
     url = data.pagination?.next_url
       ? `https://api.congress.gov${data.pagination.next_url}&api_key=${API_KEY}&format=json`
       : null;
@@ -41,12 +41,12 @@ async function fetchAllPages(url, key) {
 
 async function fetchBills() {
   const url = `https://api.congress.gov/v3/bill/${CONGRESS}?api_key=${API_KEY}&format=json&pageSize=250&offset=0`;
-  return await fetchAllPages(url, 'bills');
+  return await fetchAllPages(url);
 }
 
 async function fetchAmendments() {
   const url = `https://api.congress.gov/v3/amendment/${CONGRESS}?api_key=${API_KEY}&format=json&pageSize=250&offset=0`;
-  return await fetchAllPages(url, 'amendments');
+  return await fetchAllPages(url);
 }
 
 (async function main() {
