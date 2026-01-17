@@ -1,6 +1,6 @@
 // scripts/votes-scraper.js
 // Scrape Senate roll call votes from LIS vote menu pages (both sessions of 119th)
-// Parses XML per vote for member yea/nay/not-voting
+// Hardened fetch with full headers + retry logic
 
 const fs = require('fs');
 const path = require('path');
@@ -16,7 +16,24 @@ const MENU_URLS = [
 
 const parser = new xml2js.Parser({ explicitArray: false });
 
-// Load rankings once
+// Hardened fetch with retries
+async function fetchWithRetry(url, options = {}, retries = 3, delay = 5000) {
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    try {
+      const res = await fetch(url, options);
+      if (res.ok) return res;
+      console.error(`Attempt ${attempt} failed: ${res.status} ${res.statusText}`);
+    } catch (err) {
+      console.error(`Attempt ${attempt} error: ${err.message}`);
+    }
+    if (attempt < retries) {
+      console.log(`Retrying in ${delay / 1000}s...`);
+      await new Promise(r => setTimeout(r, delay));
+    }
+  }
+  throw new Error(`Failed to fetch ${url} after ${retries} attempts`);
+}
+
 let rankings = [];
 try {
   rankings = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf8'));
@@ -24,9 +41,6 @@ try {
   console.error('Failed to load senators-rankings.json:', err.message);
   process.exit(1);
 }
-
-// Pre-map senators by bioguide for faster lookups
-const senatorMap = new Map(rankings.map(s => [s.bioguideId, s]));
 
 async function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -38,24 +52,23 @@ async function scrapeSenateVotes() {
   // Collect XML links from both session menu pages
   for (const menuUrl of MENU_URLS) {
     console.log(`Fetching Senate vote menu: ${menuUrl}`);
-
     try {
-      const res = await fetch(menuUrl, {
+      const res = await fetchWithRetry(menuUrl, {
         headers: {
-          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+          'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+          'Accept-Language': 'en-US,en;q=0.9',
+          'Referer': 'https://www.senate.gov/',
+          'Connection': 'keep-alive',
+          'Upgrade-Insecure-Requests': '1'
         }
       });
-
-      if (!res.ok) {
-        console.error(`Menu fetch failed: ${res.status} for ${menuUrl}`);
-        continue;
-      }
 
       const html = await res.text();
       const $ = cheerio.load(html);
 
       $('table tr').each((i, row) => {
-        if (i === 0) return; // skip header
+        if (i === 0) return;
         const link = $(row).find('td a[href$=".xml"]').attr('href');
         if (link) allXmlUrls.push('https://www.senate.gov' + link);
       });
@@ -76,11 +89,13 @@ async function scrapeSenateVotes() {
   for (const xmlUrl of allXmlUrls) {
     console.log(`Processing vote XML: ${xmlUrl}`);
     try {
-      const xmlRes = await fetch(xmlUrl);
-      if (!xmlRes.ok) {
-        console.error(`Vote XML fetch failed: ${xmlRes.status} for ${xmlUrl}`);
-        continue;
-      }
+      const xmlRes = await fetchWithRetry(xmlUrl, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+          'Accept': 'application/xml,text/xml;q=0.9,*/*;q=0.8',
+          'Connection': 'keep-alive'
+        }
+      });
 
       const xml = await xmlRes.text();
       const parsed = await parser.parseStringPromise(xml);
@@ -92,7 +107,6 @@ async function scrapeSenateVotes() {
         const state = m.state;
         const voteCast = (m.vote_cast || '').trim().toLowerCase();
 
-        // Match senator by name + party + state
         const senator = rankings.find(s =>
           s.name.toLowerCase().includes(name.toLowerCase()) &&
           s.party.toLowerCase() === party &&
@@ -120,8 +134,10 @@ async function scrapeSenateVotes() {
     sen.nayVotes = counts.nay;
     sen.missedVotes = counts.missed;
     sen.totalVotes = totalVotes;
-    sen.participationPct = totalVotes > 0 ? ((counts.yea + counts.nay) / totalVotes * 100).toFixed(2) : '0.00';
-    sen.missedVotePct = totalVotes > 0 ? (counts.missed / totalVotes * 100).toFixed(2) : '0.00';
+    sen.participationPct =
+      totalVotes > 0 ? ((counts.yea + counts.nay) / totalVotes * 100).toFixed(2) : '0.00';
+    sen.missedVotePct =
+      totalVotes > 0 ? (counts.missed / totalVotes * 100).toFixed(2) : '0.00';
   });
 
   fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
