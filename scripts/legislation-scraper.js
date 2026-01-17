@@ -6,7 +6,8 @@ const https = require('https');
 const unzipper = require('unzipper');
 
 const RANKINGS_PATH = path.join(__dirname, '../public/senators-rankings.json');
-const DATASET_URL = 'https://legiscan.com/gaits/datasets/2199/json/US_2025-2026_119th_Congress_JSON_20260109_68e7bd7db67acea9876b963a8a573396.zip';
+// Use your bulk download token via env var
+const DATASET_URL = `https://api.legiscan.com/dl/?token=${process.env.CONGRESS_API_KEY}&dataset=2199`;
 
 async function fetchAndParse() {
   console.log(`Downloading LegiScan bulk dataset for 119th Congress (Senate legislation)...`);
