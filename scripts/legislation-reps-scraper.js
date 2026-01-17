@@ -1,7 +1,6 @@
 // scripts/legislation-reps-scraper.js
 // Purpose: Scrape House legislation (bills + resolutions + amendments) for the 119th Congress
 // Enriches representatives-rankings.json with sponsor/cosponsor counts and became-law tallies
-// Uses Congress.gov member endpoints keyed by bioguideId
 
 const fs = require('fs');
 const path = require('path');
@@ -26,10 +25,7 @@ async function fetchAllPages(url, key) {
   let results = [];
   while (url) {
     const res = await fetch(url);
-    if (!res.ok) {
-      console.error(`Bad response ${res.status} for ${url}`);
-      break;
-    }
+    if (!res.ok) break;
     const data = await res.json();
     results = results.concat(data[key] || []);
     url = data.pagination?.next_url
