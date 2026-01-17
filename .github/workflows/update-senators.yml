@@ -10,7 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 360
     env:
-      CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
       CONGRESS_NUMBER: '119'
 
     steps:
@@ -30,11 +29,11 @@ jobs:
       # --- Senate pipeline ---
       - name: Bootstrap Senators rankings file
         run: node scripts/bootstrap-senators.js
-      - name: Run Senate Legislation scraper (aggregate ALL page)
+      - name: Run Senate Legislation scraper (GovTrack)
         run: node scripts/legislation-scraper.js
-      - name: Run Senate Committee scraper
+      - name: Run Senate Committee scraper (Congress.gov)
         run: node scripts/committee-scraper.js
-      - name: Run Senate Votes scraper (LIS XML)
+      - name: Run Senate Votes scraper (GovTrack)
         run: node scripts/votes-scraper.js
       - name: Merge Senate data
         run: node scripts/merge-senators.js
@@ -44,11 +43,11 @@ jobs:
       # --- House pipeline ---
       - name: Bootstrap Representatives rankings file
         run: node scripts/bootstrap-reps.js
-      - name: Run House Legislation scraper (aggregate ALL page)
+      - name: Run House Legislation scraper (GovTrack)
         run: node scripts/legislation-reps-scraper.js
-      - name: Run House Committee scraper
+      - name: Run House Committee scraper (Congress.gov)
         run: node scripts/committee-reps-scraper.js
-      - name: Run House Votes scraper (LIS XML)
+      - name: Run House Votes scraper (GovTrack)
         run: node scripts/votes-reps-scraper.js
       - name: Merge House data
         run: node scripts/merge-reps.js
