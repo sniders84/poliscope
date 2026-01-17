@@ -1,5 +1,5 @@
 // scripts/legislation-reps-scraper.js
-// Purpose: Scrape House legislation counts directly from Congress.gov member profile pages
+// Purpose: Scrape House legislation counts directly from Congress.gov member search pages
 // Enriches representatives-rankings.json with sponsor/cosponsor counts and became-law tallies
 // Covers: sponsoredBills, cosponsoredBills, sponsoredAmendments, cosponsoredAmendments,
 //         becameLawBills, becameLawCosponsoredBills, becameLawAmendments, becameLawCosponsoredAmendments
@@ -31,14 +31,27 @@ function slugifyName(name) {
   return name.toLowerCase().replace(/[^a-z\s]/g, '').trim().replace(/\s+/g, '-');
 }
 
-function memberProfileUrl(rep) {
+// Build the search-scoped URL
+function memberSearchUrl(rep) {
   const slug = slugifyName(rep.name || '');
-  return `https://www.congress.gov/member/${slug}/${rep.bioguideId}?congress=${CONGRESS}`;
+  const q = encodeURIComponent(
+    JSON.stringify({
+      search: [rep.bioguideId],
+      within: [rep.bioguideId],
+      congress: String(CONGRESS)
+    })
+  );
+  return `https://www.congress.gov/member/${slug}/${rep.bioguideId}?q=${q}`;
 }
 
 async function scrapeProfile(rep) {
-  const url = memberProfileUrl(rep);
-  const res = await fetch(url);
+  const url = memberSearchUrl(rep);
+  const res = await fetch(url, {
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
+      'Accept': 'text/html'
+    }
+  });
   if (!res.ok) {
     console.log(`Failed to fetch ${url} (${res.status})`);
     return null;
@@ -73,7 +86,7 @@ async function scrapeProfile(rep) {
   const amendMatch = amendmentText.match(/\((\d+)\)/);
   if (amendMatch) counts.sponsoredAmendments = parseInt(amendMatch[1], 10);
 
-  // Became law filters (search results links include bill-status=law)
+  // Became law filters
   const lawSponsoredText = $('a[href*="sponsored-legislation"][href*="bill-status=law"]').text();
   const lawSponsoredMatch = lawSponsoredText.match(/\((\d+)\)/);
   if (lawSponsoredMatch) counts.becameLawBills = parseInt(lawSponsoredMatch[1], 10);
