@@ -1,6 +1,6 @@
 // scripts/legislation-reps-scraper.js
 // Purpose: Update representatives-rankings.json with sponsored/cosponsored bill counts for the 119th Congress
-// Handles Congress.gov pagination to avoid zero/partial counts
+// Handles Congress.gov pagination and sends proper headers
 
 const fs = require('fs');
 const path = require('path');
@@ -20,7 +20,12 @@ async function getLegislationCount(baseUrl) {
   let next = baseUrl;
 
   while (next) {
-    const res = await axios.get(next, { headers: { 'User-Agent': 'Poliscope/1.0' } });
+    const res = await axios.get(next, {
+      headers: {
+        'User-Agent': 'Poliscope/1.0',
+        'Accept': 'application/json'
+      }
+    });
     const data = res.data || {};
     total += (data.legislation?.length || 0);
     next = data.pagination?.next || null;
