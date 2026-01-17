@@ -9,9 +9,9 @@
       "version": "1.0.0",
       "dependencies": {
         "cheerio": "^1.0.0-rc.12",
-        "fast-xml-parser": "^5.3.3",  // Pinned to latest stable (v5.3.3 as of Jan 2026) - backward compatible with v4 usage
+        "fast-xml-parser": "^5.3.3",
         "node-fetch": "^2.7.0",
-        "xml2js": "^0.6.2"  // Optional - keep if used in other scripts; otherwise remove
+        "xml2js": "^0.6.2"
       }
     }
   }
