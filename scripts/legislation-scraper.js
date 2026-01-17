@@ -52,4 +52,4 @@ async function fetchAndParse() {
   console.log(`Updated legislation tallies for ${senators.length} senators`);
 }
 
-fetchAndParse().catch(err => console.error('LegiScan scrape failed:', err));
+fetchAndParse().catch(err => console.error('Legiscan scrape failed:', err));
