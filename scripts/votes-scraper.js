@@ -1,42 +1,50 @@
 // scripts/votes-scraper.js
 // Purpose: Scrape Senate roll call votes for the 119th Congress (sessions 2025 + 2026)
 // Uses LIS XML feeds and a LIS→bioguide map to avoid mismatches
+// Uses xml2js for parsing (no fast-xml-parser)
 
 const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
-const { XMLParser } = require('fast-xml-parser');
+const xml2js = require('xml2js');
 
 const RANKINGS_PATH = path.join(__dirname, '../public/senators-rankings.json');
 const ROSTER_PATH = path.join(__dirname, '../public/legislators-current.json');
 
 const SESSION_RANGES = {
   1: { start: 1, end: 659 },
-  2: { start: 1, end: 9 }
+  2: { start: 1, end: 9 } // adjust end as session progresses
 };
 
-const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '' });
+const parser = new xml2js.Parser({
+  explicitArray: false,
+  mergeAttrs: true,
+  attrValueProcessors: [xml2js.processors.parseNumbers, xml2js.processors.parseBooleans],
+  tagNameProcessors: [xml2js.processors.stripPrefix],
+  attrNameProcessors: [xml2js.processors.stripPrefix]
+});
 
 // Load roster
 const roster = JSON.parse(fs.readFileSync(ROSTER_PATH, 'utf-8'));
-const senators = roster.filter(r => r.terms.at(-1).type === 'sen');
+const senators = roster.filter(r => r.terms?.at(-1)?.type === 'sen');
 
 // Build LIS→bioguide map by sampling one roll call XML
 async function buildLisMap() {
   const url = 'https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00001.xml';
   const res = await fetch(url);
+  if (!res.ok) throw new Error(`Failed to fetch map sample: ${res.status}`);
   const xml = await res.text();
-  const doc = parser.parse(xml);
-  const members = doc.roll_call_vote.members.member;
-
+  const doc = await parser.parseStringPromise(xml);
+  const members = doc.roll_call_vote?.members?.member || [];
   const map = new Map();
+
   for (const m of members) {
-    const last = m.last_name;
+    const last = m.last_name?.toLowerCase();
     const state = m.state;
     const lis = m.lis_member_id;
     const match = senators.find(s => {
-      const t = s.terms.at(-1);
-      return s.name.last.toLowerCase() === last.toLowerCase() && t.state === state;
+      const t = s.terms?.at(-1);
+      return s.name?.last?.toLowerCase() === last && t?.state === state;
     });
     if (match) map.set(lis, match.id.bioguide);
   }
@@ -48,7 +56,7 @@ async function fetchVote(url) {
     const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' } });
     if (!res.ok) return null;
     const xml = await res.text();
-    return parser.parse(xml);
+    return await parser.parseStringPromise(xml);
   } catch {
     return null;
   }
@@ -56,7 +64,6 @@ async function fetchVote(url) {
 
 async function main() {
   console.log('Votes scraper: LIS ID mapping for senators');
-
   let rankings;
   try {
     rankings = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf8'));
@@ -72,17 +79,17 @@ async function main() {
   });
 
   const lisMap = await buildLisMap();
-  let totalProcessed = 0;
 
+  let totalProcessed = 0;
   for (const [session, range] of Object.entries(SESSION_RANGES)) {
     for (let num = range.start; num <= range.end; num++) {
       const padded = num.toString().padStart(5, '0');
       const url = `https://www.senate.gov/legislative/LIS/roll_call_votes/vote119${session}/vote_119_${session}_${padded}.xml`;
       const parsed = await fetchVote(url);
       if (!parsed) continue;
-      totalProcessed++;
 
-      const members = parsed.roll_call_vote.members.member || [];
+      totalProcessed++;
+      const members = parsed.roll_call_vote?.members?.member || [];
       for (const m of members) {
         const lis = m.lis_member_id;
         const voteCast = (m.vote_cast || '').trim();
