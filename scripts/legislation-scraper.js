@@ -5,27 +5,22 @@ const https = require('https');
 const unzipper = require('unzipper');
 
 const RANKINGS_PATH = path.join(__dirname, '../public/senators-rankings.json');
-const TOKEN = process.env.CONGRESS_API_KEY;   // Bulk download token
-const SESSION = process.env.CONGRESS_NUMBER;  // e.g. "119"
-
+const TOKEN = process.env.CONGRESS_API_KEY;
+const SESSION = process.env.CONGRESS_NUMBER;
 const ZIP_URL = `https://api.legiscan.com/dl/?token=${TOKEN}&session=${SESSION}`;
 
 async function fetchAndParse() {
   console.log(`Downloading LegiScan bulk dataset for session ${SESSION}...`);
-
   const zipPath = path.join(__dirname, 'legiscan.zip');
   const file = fs.createWriteStream(zipPath);
 
   await new Promise((resolve, reject) => {
     https.get(ZIP_URL, res => {
       res.pipe(file);
-      file.on('finish', () => {
-        file.close(resolve);
-      });
+      file.on('finish', () => file.close(resolve));
     }).on('error', reject);
   });
 
-  // Diagnostic: check file signature + head
   const buf = fs.readFileSync(zipPath);
   const sig = buf.slice(0, 4).toString('hex');
   console.log(`Downloaded file signature: ${sig}`);
@@ -41,7 +36,7 @@ async function fetchAndParse() {
     .pipe(unzipper.Extract({ path: path.join(__dirname, 'legiscan') }))
     .promise();
 
-  // … continue with your enrichment logic here …
+  // … enrichment logic …
 }
 
 fetchAndParse().catch(err => console.error('LegiScan scrape failed:', err));
