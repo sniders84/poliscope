@@ -1,39 +1,18 @@
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
-const cheerio = require('cheerio');
 
-const RANKINGS_PATH = path.join(__dirname, '../public/senators-rankings.json');
-const URL = 'https://www.congress.gov/sponsors-cosponsors/119th-congress/senators/ALL';
+const API_KEY = process.env.CONGRESS_API_KEY;
+const URL = `https://api.congress.gov/v3/bill?congress=119&chamber=senate&api_key=${API_KEY}`;
+const OUT = path.join(__dirname, '../public/senate-legislation.json');
 
-async function scrape() {
+async function run() {
   const { data } = await axios.get(URL);
-  const $ = cheerio.load(data);
-  const senators = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf8'));
-
-  $('table tbody tr').each((i, row) => {
-    const cells = $(row).find('td');
-    if (cells.length >= 6) {
-      const name = $(cells[0]).text().trim();
-      const state = $(cells[2]).text().trim();
-      const sponsored = parseInt($(cells[3]).text().trim(), 10) || 0;
-      const cosponsored = parseInt($(cells[4]).text().trim(), 10) || 0;
-      const amendments = parseInt($(cells[5]).text().trim(), 10) || 0;
-
-      const senator = senators.find(s => s.name.includes(name) && s.state === state);
-      if (senator) {
-        senator.sponsoredBills = sponsored;
-        senator.cosponsoredBills = cosponsored;
-        senator.sponsoredAmendments = amendments;
-      }
-    }
-  });
-
-  fs.writeFileSync(RANKINGS_PATH, JSON.stringify(senators, null, 2));
-  console.log(`Updated sponsor/cosponsor tallies for ${senators.length} senators`);
+  fs.writeFileSync(OUT, JSON.stringify(data, null, 2));
+  console.log(`Saved Senate legislation: ${data.bills?.length || 0} bills`);
 }
 
-scrape().catch(err => {
-  console.error('Congress.gov scrape failed:', err);
-  process.exitCode = 1;
+run().catch(err => {
+  console.error('Senate legislation fetch failed:', err.message);
+  process.exit(1);
 });
