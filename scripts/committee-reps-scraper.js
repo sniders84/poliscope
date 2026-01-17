@@ -7,13 +7,38 @@ const path = require('path');
 const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
 const COMMITTEES_PATH = path.join(__dirname, '..', 'public', 'house-committees-current.json');
 
-function ensureRepShape(rep) {
+function ensureSchema(rep) {
+  // Votes
+  rep.yeaVotes ??= 0;
+  rep.nayVotes ??= 0;
+  rep.missedVotes ??= 0;
+  rep.totalVotes ??= 0;
+  rep.participationPct ??= 0;
+  rep.missedVotePct ??= 0;
+
+  // Legislation
+  rep.sponsoredBills ??= 0;
+  rep.cosponsoredBills ??= 0;
+  rep.sponsoredAmendments ??= 0;
+  rep.cosponsoredAmendments ??= 0;
+  rep.becameLawBills ??= 0;
+  rep.becameLawCosponsoredBills ??= 0;
+  rep.becameLawAmendments ??= 0;
+  rep.becameLawCosponsoredAmendments ??= 0;
+
+  // Committees
   rep.committees = Array.isArray(rep.committees) ? rep.committees : [];
+
+  // Scores
+  rep.rawScore ??= 0;
+  rep.score ??= 0;
+  rep.scoreNormalized ??= 0;
+
   return rep;
 }
 
 (function main() {
-  const reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureRepShape);
+  const reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureSchema);
   const committeesDataRaw = JSON.parse(fs.readFileSync(COMMITTEES_PATH, 'utf-8'));
 
   const repMap = new Map(reps.map(r => [r.bioguideId, r]));
@@ -32,8 +57,8 @@ function ensureRepShape(rep) {
       let role = 'Member';
       if (m.title) {
         const t = m.title.toLowerCase();
-        if (t.includes('chairman')) {
-          role = 'Chairman';
+        if (t.includes('chairman') || t.includes('chair')) {
+          role = 'Chair';
         } else if (t.includes('ranking')) {
           role = 'Ranking Member';
         } else {
