@@ -1,12 +1,8 @@
-/**
- * Committee Aggregator (using your JSON file)
- * - Loads public/senators-committee-membership-current.json
- * - Counts only top-level committees (ignores subcommittees)
- * - Preserves leadership titles ("Chairman", "Ranking Member") for scoring
- * - Adds full committee names
- * - Robust matching: bioguide ID + name fallback (handles "Adam B. Schiff" vs "Adam Schiff")
- * - Updates senators-rankings.json directly
- */
+// scripts/committee-senators-scraper.js
+// Purpose: Merge Senate committee memberships (with leadership flags) into senators-rankings.json
+// Counts only top-level committees, preserves leadership titles, adds full committee names,
+// and enforces schema consistency.
+
 const fs = require('fs');
 const path = require('path');
 
@@ -44,21 +40,47 @@ const codeToName = {
   SSIS: 'Intelligence (Select)',
 };
 
+function ensureSchema(sen) {
+  // Votes
+  sen.yeaVotes ??= 0;
+  sen.nayVotes ??= 0;
+  sen.missedVotes ??= 0;
+  sen.totalVotes ??= 0;
+  sen.participationPct ??= 0;
+  sen.missedVotePct ??= 0;
+
+  // Legislation
+  sen.sponsoredBills ??= 0;
+  sen.cosponsoredBills ??= 0;
+  sen.sponsoredAmendments ??= 0;
+  sen.cosponsoredAmendments ??= 0;
+  sen.becameLawBills ??= 0;
+  sen.becameLawCosponsoredBills ??= 0;
+  sen.becameLawAmendments ??= 0;
+  sen.becameLawCosponsoredAmendments ??= 0;
+
+  // Committees
+  sen.committees = Array.isArray(sen.committees) ? sen.committees : [];
+
+  // Scores
+  sen.rawScore ??= 0;
+  sen.score ??= 0;
+  sen.scoreNormalized ??= 0;
+
+  return sen;
+}
+
 function run() {
   console.log('Committee aggregator: top-level only + full names + robust matching');
 
   let rankings, committeeData;
   try {
-    rankings = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf8'));
+    rankings = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf8')).map(ensureSchema);
     committeeData = JSON.parse(fs.readFileSync(COMMITTEE_SOURCE, 'utf8'));
   } catch (err) {
     console.error('Load error:', err.message);
     return;
   }
-
-  // Maps for matching
-  const byId = new Map(rankings.map(sen => [sen.bioguideId, sen]));
-  const byName = new Map(rankings.map(sen => [sen.name.toLowerCase(), sen]));
 
   const byBioguide = {};
 
@@ -70,23 +92,23 @@ function run() {
 
     members.forEach(member => {
       const bioguide = member.bioguide;
-      const name = member.name.toLowerCase();
+      const name = (member.name || '').toLowerCase();
       const key = bioguide || name;
       if (!key) return;
 
       if (!byBioguide[key]) byBioguide[key] = { committees: [] };
 
-      if (byBioguide[key].committees.some(c => c.committee === committeeCode)) return;
+      if (byBioguide[key].committees.some(c => c.committeeCode === committeeCode)) return;
 
       let role = member.title || 'Member';
-      if (member.rank === 1 || role.toLowerCase().includes('chair')) role = 'Chairman';
+      if (member.rank === 1 || role.toLowerCase().includes('chair')) role = 'Chair';
       if (member.rank === 2 || role.toLowerCase().includes('ranking')) role = 'Ranking Member';
 
       byBioguide[key].committees.push({
-        committee: committeeCode,
+        committeeCode,
         committeeName: codeToName[committeeCode] || committeeCode,
         role,
-        rank: member.rank || null,
+        rank: member.rank ?? null,
         party: member.party || null
       });
     });
@@ -95,7 +117,7 @@ function run() {
   let updatedCount = 0;
   let unmatched = [];
   rankings.forEach(sen => {
-    let agg = byBioguide[sen.bioguideId] || byBioguide[sen.name.toLowerCase()];
+    const agg = byBioguide[sen.bioguideId] || byBioguide[sen.name.toLowerCase()];
     sen.committees = agg ? agg.committees : [];
     if (agg && agg.committees.length > 0) updatedCount++;
     else unmatched.push(sen.name);
