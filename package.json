@@ -1,18 +1,9 @@
 {
   "name": "poliscope",
   "version": "1.0.0",
-  "lockfileVersion": 3,
-  "requires": true,
-  "packages": {
-    "": {
-      "name": "poliscope",
-      "version": "1.0.0",
-      "dependencies": {
-        "cheerio": "^1.0.0-rc.12",
-        "fast-xml-parser": "^5.3.3",
-        "node-fetch": "^2.7.0",
-        "xml2js": "^0.6.2"
-      }
-    }
+  "private": true,
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "node-fetch": "^2.7.0"
   }
 }
