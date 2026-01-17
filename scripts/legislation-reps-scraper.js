@@ -1,8 +1,7 @@
 // scripts/legislation-reps-scraper.js
 // Purpose: Scrape House legislation (bills + amendments) for the 119th Congress
 // Enriches representatives-rankings.json with sponsor/cosponsor counts and became-law tallies
-// Uses bill-centric endpoints and reads from `results`
-// Includes unconditional debug logging for raw bill and amendment responses
+// Uses bill/amendment list endpoints, then fetches detail JSON for each item
 
 const fs = require('fs');
 const path = require('path');
@@ -23,7 +22,7 @@ function ensureLegislationShape(rep) {
   return rep;
 }
 
-async function fetchAllPages(url) {
+async function fetchAllPages(url, key) {
   let results = [];
   let firstPayload = null;
   while (url) {
@@ -31,22 +30,18 @@ async function fetchAllPages(url) {
     if (!res.ok) break;
     const data = await res.json();
     if (!firstPayload) firstPayload = data;
-    results = results.concat(data.results || []);
-    url = data.pagination?.next_url
-      ? `https://api.congress.gov${data.pagination.next_url}&api_key=${API_KEY}&format=json`
+    results = results.concat(data[key] || []);
+    url = data.pagination?.next
+      ? `${data.pagination.next}&api_key=${API_KEY}`
       : null;
   }
   return { results, firstPayload };
 }
 
-async function fetchBills() {
-  const url = `https://api.congress.gov/v3/bill/${CONGRESS}?api_key=${API_KEY}&format=json&pageSize=250&offset=0`;
-  return await fetchAllPages(url);
-}
-
-async function fetchAmendments() {
-  const url = `https://api.congress.gov/v3/amendment/${CONGRESS}?api_key=${API_KEY}&format=json&pageSize=250&offset=0`;
-  return await fetchAllPages(url);
+async function fetchDetail(url) {
+  const res = await fetch(url + `&api_key=${API_KEY}`);
+  if (!res.ok) return null;
+  return await res.json();
 }
 
 (async function main() {
@@ -60,24 +55,29 @@ async function fetchAmendments() {
 
   let attached = 0;
 
-  // Process bills
-  const { results: bills, firstPayload: billsPayload } = await fetchBills();
+  // Bills
+  const { results: bills, firstPayload: billsPayload } = await fetchAllPages(
+    `https://api.congress.gov/v3/bill/${CONGRESS}?api_key=${API_KEY}&format=json&pageSize=250&offset=0`,
+    'bills'
+  );
   if (bills.length === 0) {
     console.log('DEBUG raw bill API response:');
     console.log(JSON.stringify(billsPayload, null, 2));
   }
   for (const bill of bills) {
-    const sponsorId = bill.sponsor?.bioguideId || bill.sponsor?.bioguide_id;
+    const detail = await fetchDetail(bill.url);
+    if (!detail) continue;
+    const sponsorId = detail.sponsor?.bioguideId || detail.sponsor?.bioguide_id;
     if (sponsorId && repMap.has(sponsorId)) {
       const rep = repMap.get(sponsorId);
       rep.sponsoredBills++;
-      if ((bill.latestAction?.action || '').toLowerCase().includes('became public law')) {
+      if ((detail.latestAction?.text || '').toLowerCase().includes('became public law')) {
         rep.becameLawBills++;
       }
       attached++;
     }
-    if (bill.cosponsors) {
-      for (const c of bill.cosponsors) {
+    if (detail.cosponsors) {
+      for (const c of detail.cosponsors) {
         const cosponsorId = c.bioguideId || c.bioguide_id;
         if (cosponsorId && repMap.has(cosponsorId)) {
           const rep = repMap.get(cosponsorId);
@@ -88,29 +88,34 @@ async function fetchAmendments() {
     }
   }
 
-  // Process amendments
-  const { results: amendments, firstPayload: amendmentsPayload } = await fetchAmendments();
+  // Amendments
+  const { results: amendments, firstPayload: amendmentsPayload } = await fetchAllPages(
+    `https://api.congress.gov/v3/amendment/${CONGRESS}?api_key=${API_KEY}&format=json&pageSize=250&offset=0`,
+    'amendments'
+  );
   if (amendments.length === 0) {
     console.log('DEBUG raw amendment API response:');
     console.log(JSON.stringify(amendmentsPayload, null, 2));
   }
   for (const amendment of amendments) {
-    const sponsorId = amendment.sponsor?.bioguideId || amendment.sponsor?.bioguide_id;
+    const detail = await fetchDetail(amendment.url);
+    if (!detail) continue;
+    const sponsorId = detail.sponsor?.bioguideId || detail.sponsor?.bioguide_id;
     if (sponsorId && repMap.has(sponsorId)) {
       const rep = repMap.get(sponsorId);
       rep.sponsoredAmendments++;
-      if ((amendment.latestAction?.action || '').toLowerCase().includes('became public law')) {
+      if ((detail.latestAction?.text || '').toLowerCase().includes('became public law')) {
         rep.becameLawAmendments++;
       }
       attached++;
     }
-    if (amendment.cosponsors) {
-      for (const c of amendment.cosponsors) {
+    if (detail.cosponsors) {
+      for (const c of detail.cosponsors) {
         const cosponsorId = c.bioguideId || c.bioguide_id;
         if (cosponsorId && repMap.has(cosponsorId)) {
           const rep = repMap.get(cosponsorId);
           rep.cosponsoredAmendments++;
-          if ((amendment.latestAction?.action || '').toLowerCase().includes('became public law')) {
+          if ((detail.latestAction?.text || '').toLowerCase().includes('became public law')) {
             rep.becameLawCosponsoredAmendments++;
           }
           attached++;
