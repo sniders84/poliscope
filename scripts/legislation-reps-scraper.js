@@ -8,7 +8,7 @@ const fetch = require('node-fetch');
 
 const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
 const API_KEY = process.env.CONGRESS_API_KEY;
-const CONGRESS = 119;
+const CONGRESS = process.env.CONGRESS_NUMBER || 119;
 
 function ensureLegislationShape(rep) {
   rep.sponsoredBills ??= 0;
@@ -35,14 +35,11 @@ async function fetchAllPages(url, key) {
   return results;
 }
 
-async function fetchMemberLegislation(bioguideId, type) {
-  const base = `https://api.congress.gov/v3/member/${bioguideId}/${type}-legislation?congress=${CONGRESS}&api_key=${API_KEY}&format=json&pageSize=250&offset=0`;
-  return await fetchAllPages(base, 'bills');
-}
-
-async function fetchMemberAmendments(bioguideId, type) {
-  const base = `https://api.congress.gov/v3/member/${bioguideId}/${type}-legislation?congress=${CONGRESS}&bill_type=amendment&api_key=${API_KEY}&format=json&pageSize=250&offset=0`;
-  return await fetchAllPages(base, 'amendments');
+async function fetchMemberLegislation(bioguideId, type, billType = null) {
+  let base = `https://api.congress.gov/v3/member/${bioguideId}/${type}-legislation?congress=${CONGRESS}&api_key=${API_KEY}&format=json&pageSize=250&offset=0`;
+  if (billType) base += `&bill_type=${billType}`;
+  const key = billType === 'amendment' ? 'amendments' : 'bills';
+  return await fetchAllPages(base, key);
 }
 
 (async function main() {
@@ -72,13 +69,13 @@ async function fetchMemberAmendments(bioguideId, type) {
     attached += cosponsored.length;
 
     // Sponsored amendments
-    const sponsoredAmendments = await fetchMemberAmendments(id, 'sponsored');
+    const sponsoredAmendments = await fetchMemberLegislation(id, 'sponsored', 'amendment');
     rep.sponsoredAmendments += sponsoredAmendments.length;
     rep.becameLawAmendments += sponsoredAmendments.filter(a => (a.latestAction?.action || '').toLowerCase().includes('became public law')).length;
     attached += sponsoredAmendments.length;
 
     // Cosponsored amendments
-    const cosponsoredAmendments = await fetchMemberAmendments(id, 'cosponsored');
+    const cosponsoredAmendments = await fetchMemberLegislation(id, 'cosponsored', 'amendment');
     rep.cosponsoredAmendments += cosponsoredAmendments.length;
     rep.becameLawCosponsoredAmendments += cosponsoredAmendments.filter(a => (a.latestAction?.action || '').toLowerCase().includes('became public law')).length;
     attached += cosponsoredAmendments.length;
