@@ -1,5 +1,6 @@
 // scripts/legislation-scraper.js
 // Purpose: Update senators-rankings.json with sponsored/cosponsored bill counts for the 119th Congress
+// Handles Congress.gov pagination to avoid zero/partial counts
 
 const fs = require('fs');
 const path = require('path');
@@ -7,57 +8,77 @@ const axios = require('axios');
 
 const API_KEY = process.env.CONGRESS_API_KEY;
 const CONGRESS = 119;
-const sensPath = path.join(__dirname, '../public/senators-rankings.json');
-const sens = JSON.parse(fs.readFileSync(sensPath));
+const OUT_PATH = path.join(__dirname, '../public/senators-rankings.json');
+
+if (!API_KEY) {
+  console.error('Missing CONGRESS_API_KEY environment variable.');
+  process.exit(1);
+}
+
+async function getLegislationCount(baseUrl) {
+  let total = 0;
+  let next = baseUrl;
+
+  while (next) {
+    const res = await axios.get(next, { headers: { 'User-Agent': 'Poliscope/1.0' } });
+    const data = res.data || {};
+    total += (data.legislation?.length || 0);
+    next = data.pagination?.next || null;
+  }
+  return total;
+}
 
 async function getCounts(bioguideId) {
   const sponsoredURL = `https://api.congress.gov/v3/member/${bioguideId}/sponsored-legislation?congress=${CONGRESS}&api_key=${API_KEY}`;
   const cosponsoredURL = `https://api.congress.gov/v3/member/${bioguideId}/cosponsored-legislation?congress=${CONGRESS}&api_key=${API_KEY}`;
 
-  const [sponsoredRes, cosponsoredRes] = await Promise.all([
-    axios.get(sponsoredURL),
-    axios.get(cosponsoredURL)
+  const [sponsored, cosponsored] = await Promise.all([
+    getLegislationCount(sponsoredURL),
+    getLegislationCount(cosponsoredURL)
   ]);
 
-  return {
-    sponsored: sponsoredRes.data?.legislation?.length || 0,
-    cosponsored: cosponsoredRes.data?.legislation?.length || 0
-  };
+  return { sponsored, cosponsored };
+}
+
+function ensureSchema(sen) {
+  sen.sponsoredBills ??= 0;
+  sen.cosponsoredBills ??= 0;
+  sen.sponsoredAmendments ??= 0;
+  sen.cosponsoredAmendments ??= 0;
+  sen.becameLawBills ??= 0;
+  sen.becameLawCosponsoredBills ??= 0;
+  sen.becameLawAmendments ??= 0;
+  sen.becameLawCosponsoredAmendments ??= 0;
+
+  sen.yeaVotes ??= 0;
+  sen.nayVotes ??= 0;
+  sen.missedVotes ??= 0;
+  sen.totalVotes ??= 0;
+  sen.participationPct ??= 0;
+  sen.missedVotePct ??= 0;
+
+  sen.committees = Array.isArray(sen.committees) ? sen.committees : [];
+  sen.rawScore ??= 0;
+  sen.score ??= 0;
+  sen.scoreNormalized ??= 0;
+
+  return sen;
 }
 
 (async () => {
+  const sens = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureSchema);
+
   for (const sen of sens) {
     try {
-      const counts = await getCounts(sen.bioguideId);
-
-      // Update schema fields
-      sen.sponsoredBills = counts.sponsored;
-      sen.cosponsoredBills = counts.cosponsored;
-
-      // Ensure other schema fields exist (don’t wipe them out)
-      sen.sponsoredAmendments = sen.sponsoredAmendments || 0;
-      sen.cosponsoredAmendments = sen.cosponsoredAmendments || 0;
-      sen.becameLawBills = sen.becameLawBills || 0;
-
-      sen.yeaVotes = sen.yeaVotes || 0;
-      sen.nayVotes = sen.nayVotes || 0;
-      sen.missedVotes = sen.missedVotes || 0;
-      sen.totalVotes = sen.totalVotes || 0;
-      sen.participationPct = sen.participationPct || 0;
-      sen.missedVotePct = sen.missedVotePct || 0;
-
-      sen.committees = sen.committees || [];
-
-      sen.rawScore = sen.rawScore || 0;
-      sen.score = sen.score || 0;
-      sen.scoreNormalized = sen.scoreNormalized || 0;
-
-      console.log(`${sen.name}: sponsored=${counts.sponsored}, cosponsored=${counts.cosponsored}`);
+      const { sponsored, cosponsored } = await getCounts(sen.bioguideId);
+      sen.sponsoredBills = sponsored;
+      sen.cosponsoredBills = cosponsored;
+      console.log(`${sen.name}: sponsored=${sponsored}, cosponsored=${cosponsored}`);
     } catch (err) {
-      console.error(`Failed for ${sen.bioguideId}: ${err.message}`);
+      console.error(`Legislation failed for ${sen.bioguideId} (${sen.name}): ${err.message}`);
     }
   }
 
-  fs.writeFileSync(sensPath, JSON.stringify(sens, null, 2));
-  console.log('Updated senators-rankings.json with 119th Congress sponsored/cosponsored counts');
+  fs.writeFileSync(OUT_PATH, JSON.stringify(sens, null, 2));
+  console.log('Updated senators-rankings.json with 119th Congress sponsored/cosponsored counts (paginated)');
 })();
