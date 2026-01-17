@@ -27,6 +27,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Install unzipper (for LegiScan scrapers)
+        run: npm install unzipper --no-save
+
       # --- Senate pipeline ---
       - name: Bootstrap Senators rankings file
         run: node scripts/bootstrap-senators.js
