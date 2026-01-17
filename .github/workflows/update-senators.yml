@@ -35,7 +35,7 @@ jobs:
         run: node scripts/legislation-scraper.js
 
       - name: Committees (Senate)
-        run: node scripts/committee-senators-scraper.js
+        run: node scripts/committee-scraper.js   # <-- fixed to match your actual file
 
       - name: Votes (Senate)
         run: node scripts/votes-scraper.js
