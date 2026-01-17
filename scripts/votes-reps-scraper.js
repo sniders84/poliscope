@@ -13,13 +13,30 @@ const SESSIONS = [2025, 2026];
 
 const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '', trimValues: true });
 
-function ensureVoteShape(rep) {
+function ensureSchema(rep) {
+  // Votes
   rep.yeaVotes ??= 0;
   rep.nayVotes ??= 0;
   rep.missedVotes ??= 0;
   rep.totalVotes ??= 0;
   rep.participationPct ??= 0;
   rep.missedVotePct ??= 0;
+
+  // Legislation
+  rep.sponsoredBills ??= 0;
+  rep.cosponsoredBills ??= 0;
+  rep.sponsoredAmendments ??= 0;
+  rep.cosponsoredAmendments ??= 0;
+  rep.becameLawBills ??= 0;
+
+  // Committees
+  rep.committees ??= [];
+
+  // Scores
+  rep.rawScore ??= 0;
+  rep.score ??= 0;
+  rep.scoreNormalized ??= 0;
+
   return rep;
 }
 
@@ -40,23 +57,19 @@ function parseVotes(xml) {
   try { doc = parser.parse(xml); } catch { return []; }
 
   // House roll call XML can use "vote-record.vote" or "recorded-vote"
-  const records = doc?.rollcall?.['vote-record']?.vote 
-               || doc?.rollcall?.['recorded-vote'] 
+  const records = doc?.rollcall?.['vote-record']?.vote
+               || doc?.rollcall?.['recorded-vote']
                || [];
   const arr = Array.isArray(records) ? records : [records];
 
   return arr.map(rv => ({
     bioguideId: rv?.legislator?.bioguideID || rv?.legislator?.bioguideId || '',
-    name: rv?.legislator?.name || '',
-    state: rv?.legislator?.state || '',
-    district: rv?.legislator?.district || '',
-    party: rv?.legislator?.party || '',
     vote: rv?.vote?.trim() || ''
   }));
 }
 
 (async function main() {
-  const reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureVoteShape);
+  const reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureSchema);
   const repMap = new Map(reps.map(r => [r.bioguideId, r]));
 
   let attached = 0;
@@ -90,6 +103,7 @@ function parseVotes(xml) {
     }
   }
 
+  // Calculate participation percentages
   for (const r of reps) {
     if (r.totalVotes > 0) {
       const participated = r.yeaVotes + r.nayVotes;
