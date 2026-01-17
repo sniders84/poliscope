@@ -1,16 +1,16 @@
 // scripts/legislation-reps-scraper.js
-// Purpose: Scrape House legislation (bills + amendments) for the 119th Congress
-// Enriches representatives-rankings.json with sponsor/cosponsor counts and became-law tallies
+// Purpose: Scrape House legislation counts directly from Congress.gov member profile pages
+// Enriches representatives-rankings.json with sponsor/cosponsor counts and durable URLs
 // Covers: sponsoredBills, cosponsoredBills, sponsoredAmendments, cosponsoredAmendments,
 //         becameLawBills, becameLawCosponsoredBills, becameLawAmendments, becameLawCosponsoredAmendments
-// Also attaches durable Congress.gov URLs for attribution
+// Became-law fields left at 0 for speed (require deeper detail crawl)
 
 const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
+const cheerio = require('cheerio'); // HTML parser
 
 const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
-const API_KEY = process.env.CONGRESS_API_KEY;
 const CONGRESS = process.env.CONGRESS_NUMBER || 119;
 
 function ensureLegislationShape(rep) {
@@ -26,140 +26,76 @@ function ensureLegislationShape(rep) {
   return rep;
 }
 
-async function fetchAllPages(url, key) {
-  let results = [];
-  let firstPayload = null;
-  while (url) {
-    const res = await fetch(url);
-    if (!res.ok) break;
-    const data = await res.json();
-    if (!firstPayload) firstPayload = data;
-    results = results.concat(data[key] || []);
-    url = data.pagination?.next
-      ? `${data.pagination.next}&api_key=${API_KEY}`
-      : null;
-  }
-  return { results, firstPayload };
+// Construct durable Congress.gov profile URL
+function memberProfileUrl(bioguideId) {
+  return `https://www.congress.gov/member/${bioguideId}?congress=${CONGRESS}`;
 }
 
-async function fetchDetail(url) {
-  const sep = url.includes('?') ? '&' : '?';
-  const res = await fetch(`${url}${sep}api_key=${API_KEY}`);
+async function scrapeProfile(rep) {
+  const url = memberProfileUrl(rep.bioguideId);
+  const res = await fetch(url);
   if (!res.ok) return null;
-  return await res.json();
-}
+  const html = await res.text();
+  const $ = cheerio.load(html);
 
-function isBecameLawText(txt) {
-  return (txt || '').toLowerCase().includes('became public law');
-}
+  const counts = {
+    sponsoredBills: 0,
+    cosponsoredBills: 0,
+    sponsoredAmendments: 0,
+    cosponsoredAmendments: 0,
+    becameLawBills: 0,
+    becameLawCosponsoredBills: 0,
+    becameLawAmendments: 0,
+    becameLawCosponsoredAmendments: 0,
+    urls: []
+  };
 
-function durableBillUrl(congress, type, number) {
-  const chamber = type.startsWith('H') ? 'house' : 'senate';
-  let billType = '';
-  if (type.startsWith('HR')) billType = 'bill';
-  else if (type.startsWith('HJRES')) billType = 'joint-resolution';
-  else if (type.startsWith('HRES')) billType = 'resolution';
-  else if (type.startsWith('HCONRES')) billType = 'concurrent-resolution';
-  else billType = 'bill';
-  return `https://www.congress.gov/bill/${congress}th-congress/${chamber}-${billType}/${number}`;
-}
+  // Sponsored bills
+  const sponsoredText = $('a[href*="sponsored-legislation"]').text();
+  const sponsoredMatch = sponsoredText.match(/\((\d+)\)/);
+  if (sponsoredMatch) counts.sponsoredBills = parseInt(sponsoredMatch[1], 10);
 
-function durableAmendmentUrl(congress, type, number) {
-  const chamber = type.startsWith('H') ? 'house' : 'senate';
-  return `https://www.congress.gov/amendment/${congress}th-congress/${chamber}-amendment/${number}`;
+  // Cosponsored bills
+  const cosponsoredText = $('a[href*="cosponsored-legislation"]').text();
+  const cosponsoredMatch = cosponsoredText.match(/\((\d+)\)/);
+  if (cosponsoredMatch) counts.cosponsoredBills = parseInt(cosponsoredMatch[1], 10);
+
+  // Amendments
+  const amendmentText = $('a[href*="amendments"]').text();
+  const amendMatch = amendmentText.match(/\((\d+)\)/);
+  if (amendMatch) counts.sponsoredAmendments = parseInt(amendMatch[1], 10);
+
+  // Durable URLs for attribution
+  if (counts.sponsoredBills > 0) counts.urls.push(`${url}#sponsored-legislation`);
+  if (counts.cosponsoredBills > 0) counts.urls.push(`${url}#cosponsored-legislation`);
+  if (counts.sponsoredAmendments > 0) counts.urls.push(`${url}#amendments`);
+
+  return counts;
 }
 
 (async function main() {
-  if (!API_KEY) {
-    console.error('Missing CONGRESS_API_KEY');
-    process.exit(1);
-  }
-
   const reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureLegislationShape);
-  const repMap = new Map(reps.map(r => [r.bioguideId, r]));
-
   let attached = 0;
 
-  // Bills
-  const { results: bills, firstPayload: billsPayload } = await fetchAllPages(
-    `https://api.congress.gov/v3/bill/${CONGRESS}?api_key=${API_KEY}&format=json&pageSize=250&offset=0`,
-    'bills'
-  );
-  if (bills.length === 0) {
-    console.log('DEBUG raw bill API response:');
-    console.log(JSON.stringify(billsPayload, null, 2));
-  }
-  for (const bill of bills) {
-    const detail = await fetchDetail(bill.url);
-    if (!detail) continue;
+  for (const rep of reps) {
+    if (!rep.bioguideId) continue;
+    const counts = await scrapeProfile(rep);
+    if (!counts) continue;
 
-    const latestText = detail.latestAction?.text || bill.latestAction?.text || '';
-    const sponsorId = detail.sponsor?.bioguideId || detail.sponsor?.bioguide_id;
+    rep.sponsoredBills = counts.sponsoredBills;
+    rep.cosponsoredBills = counts.cosponsoredBills;
+    rep.sponsoredAmendments = counts.sponsoredAmendments;
+    rep.cosponsoredAmendments = counts.cosponsoredAmendments;
+    rep.becameLawBills = counts.becameLawBills;
+    rep.becameLawCosponsoredBills = counts.becameLawCosponsoredBills;
+    rep.becameLawAmendments = counts.becameLawAmendments;
+    rep.becameLawCosponsoredAmendments = counts.becameLawCosponsoredAmendments;
+    rep.legislationUrls.push(...counts.urls);
 
-    // Sponsored bills
-    if (sponsorId && repMap.has(sponsorId)) {
-      const rep = repMap.get(sponsorId);
-      rep.sponsoredBills++;
-      if (isBecameLawText(latestText)) rep.becameLawBills++;
-      rep.legislationUrls.push(durableBillUrl(CONGRESS, bill.type, bill.number));
-      attached++;
-    }
-
-    // Cosponsored bills
-    if (Array.isArray(detail.cosponsors)) {
-      for (const c of detail.cosponsors) {
-        const cosponsorId = c.bioguideId || c.bioguide_id;
-        if (cosponsorId && repMap.has(cosponsorId)) {
-          const rep = repMap.get(cosponsorId);
-          rep.cosponsoredBills++;
-          if (isBecameLawText(latestText)) rep.becameLawCosponsoredBills++;
-          rep.legislationUrls.push(durableBillUrl(CONGRESS, bill.type, bill.number));
-          attached++;
-        }
-      }
-    }
-  }
-
-  // Amendments
-  const { results: amendments, firstPayload: amendmentsPayload } = await fetchAllPages(
-    `https://api.congress.gov/v3/amendment/${CONGRESS}?api_key=${API_KEY}&format=json&pageSize=250&offset=0`,
-    'amendments'
-  );
-  if (amendments.length === 0) {
-    console.log('DEBUG raw amendment API response:');
-    console.log(JSON.stringify(amendmentsPayload, null, 2));
-  }
-  for (const amendment of amendments) {
-    const detail = await fetchDetail(amendment.url);
-    if (!detail) continue;
-
-    const latestText = detail.latestAction?.text || amendment.latestAction?.text || '';
-    const sponsorId = detail.sponsor?.bioguideId || detail.sponsor?.bioguide_id;
-
-    // Sponsored amendments
-    if (sponsorId && repMap.has(sponsorId)) {
-      const rep = repMap.get(sponsorId);
-      rep.sponsoredAmendments++;
-      if (isBecameLawText(latestText)) rep.becameLawAmendments++;
-      rep.legislationUrls.push(durableAmendmentUrl(CONGRESS, amendment.type, amendment.number));
-      attached++;
-    }
-
-    // Cosponsored amendments
-    if (Array.isArray(detail.cosponsors)) {
-      for (const c of detail.cosponsors) {
-        const cosponsorId = c.bioguideId || c.bioguide_id;
-        if (cosponsorId && repMap.has(cosponsorId)) {
-          const rep = repMap.get(cosponsorId);
-          rep.cosponsoredAmendments++;
-          if (isBecameLawText(latestText)) rep.becameLawCosponsoredAmendments++;
-          rep.legislationUrls.push(durableAmendmentUrl(CONGRESS, amendment.type, amendment.number));
-          attached++;
-        }
-      }
-    }
+    attached++;
+    console.log(`Updated ${rep.name || rep.bioguideId} with profile counts`);
   }
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(reps, null, 2));
-  console.log(`Updated representatives-rankings.json with legislation + amendments (${attached} entries attached)`);
+  console.log(`Updated representatives-rankings.json with profile legislation counts (${attached} profiles scraped)`);
 })();
