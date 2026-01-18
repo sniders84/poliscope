@@ -20,25 +20,20 @@ function ensureSchema(sen) {
   return sen;
 }
 
-async function getLegislationCount(memberId, type, countBecameLaw = false) {
-  const endpoint = type === 'sponsored' ? 'sponsored-legislation' : 'cosponsored-legislation';
+async function getLegislationStats(memberId, type) {  // type: 'sponsored' or 'cosponsored'
+  const endpoint = `${type}-legislation`;
   let url = `https://api.congress.gov/v3/member/${memberId}/${endpoint}?limit=250&api_key=${API_KEY}`;
-  
   let total = 0;
   let becameLaw = 0;
 
-  if (!countBecameLaw) {
-    // For simple total, one call is enough to get pagination.count (grand total)
-    const resp = await axios.get(url, { timeout: 60000 });
-    return resp.data.pagination.count;
-  } else {
-    // For became-law count, paginate and filter items
-    while (url) {
+  while (url) {
+    try {
       const resp = await axios.get(url, { timeout: 60000 });
-      total = resp.data.pagination.count; // Set once (grand total)
+      const dataKey = `${type}Legislation`;
+      const items = resp.data?.[dataKey]?.item || [];
 
-      // Filter items where latestAction.text indicates became law
-      const items = resp.data[`${type}Legislation`].item || [];
+      total = resp.data?.pagination?.count || total;  // Set grand total once
+
       items.forEach(item => {
         const actionText = item.latestAction?.text || '';
         if (actionText.includes('Became Public Law No:') || actionText.includes('Became Private Law No:')) {
@@ -46,10 +41,14 @@ async function getLegislationCount(memberId, type, countBecameLaw = false) {
         }
       });
 
-      url = resp.data.pagination.next ? `${resp.data.pagination.next}&api_key=${API_KEY}` : null;
+      url = resp.data?.pagination?.next ? `${resp.data.pagination.next}&api_key=${API_KEY}` : null;
+    } catch (err) {
+      console.error(`API error for ${type} on ${memberId}: ${err.message}`);
+      url = null;
     }
-    return { total, becameLaw };
   }
+
+  return { total, becameLaw };
 }
 
 (async () => {
@@ -60,17 +59,15 @@ async function getLegislationCount(memberId, type, countBecameLaw = false) {
       continue;
     }
     try {
-      // Get sponsored totals
-      const sponsoredResult = await getLegislationCount(sen.congressgovId, 'sponsored', true);
-      sen.sponsoredBills = sponsoredResult.total;
-      sen.becameLawBills = sponsoredResult.becameLaw;
+      const sponsored = await getLegislationStats(sen.congressgovId, 'sponsored');
+      const cosponsored = await getLegislationStats(sen.congressgovId, 'cosponsored');
 
-      // Get cosponsored totals
-      const cosponsoredResult = await getLegislationCount(sen.congressgovId, 'cosponsored', true);
-      sen.cosponsoredBills = cosponsoredResult.total;
-      sen.becameLawCosponsoredBills = cosponsoredResult.becameLaw;
+      sen.sponsoredBills = sponsored.total;
+      sen.becameLawBills = sponsored.becameLaw;
+      sen.cosponsoredBills = cosponsored.total;
+      sen.becameLawCosponsoredBills = cosponsored.becameLaw;
 
-      console.log(`${sen.name}: sponsored=${sen.sponsoredBills} (becameLaw=${sen.becameLawBills}), cosponsored=${sen.cosponsoredBills} (becameLaw=${sen.becameLawCosponsoredBills})`);
+      console.log(`${sen.name}: sponsored=${sen.sponsoredBills} (law=${sen.becameLawBills}), cosponsored=${sen.cosponsoredBills} (law=${sen.becameLawCosponsoredBills})`);
     } catch (err) {
       console.error(`Failed for ${sen.name}: ${err.message}`);
     }
