@@ -1,44 +1,42 @@
-name: Update Senate data
+name: Senate Workflow
+
 on:
-  workflow_dispatch:
   schedule:
-    - cron: '0 2 * * *' # run nightly at 2am UTC
-permissions:
-  contents: write
+    - cron: '0 6 * * *'   # runs daily at 6 AM UTC
+  workflow_dispatch:
+
 jobs:
-  update-senate:
+  senate:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
+
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: '18'
+
       - name: Install dependencies
-        run: npm install axios cheerio
+        run: npm install
+
       - name: Bootstrap senators
         run: node scripts/bootstrap-senators.js
-        env:
-          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
-      - name: Scrape legislation (career totals + enacted from GovTrack)
+
+      - name: Generate enacted fallback
+        run: node scripts/generate-enacted-fallback.js   # NEW STEP
+
+      - name: Scrape legislation
         run: node scripts/legislation-scraper.js
-        env:
-          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
+
       - name: Scrape committees
-        run: node scripts/committee-scraper.js
-        env:
-          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
+        run: node scripts/committee-senators-scraper.js
+
       - name: Scrape votes
-        run: node scripts/votes-scraper.js
-        env:
-          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
+        run: node scripts/votes-senators-scraper.js
+
       - name: Merge senator data
         run: node scripts/merge-senators.js
-      - name: Generate scores
-        run: node scripts/senators-scores.js
-      - name: Commit and push changes
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "Automated Senate update (career totals + enacted via GovTrack)"
-          file_pattern: public/senators-*.json
+
+      - name: Score senators
+        run: node scripts/senators-score.js
