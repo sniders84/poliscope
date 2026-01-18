@@ -1687,15 +1687,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 510,
+    "yeaVotes": 511,
     "nayVotes": 149,
-    "missedVotes": 8,
+    "missedVotes": 7,
     "totalVotes": 667,
-    "participationPct": 98.8,
-    "missedVotePct": 1.2,
-    "rawScore": 663,
-    "score": 663,
-    "scoreNormalized": 97.29
+    "participationPct": 98.95,
+    "missedVotePct": 1.05,
+    "rawScore": 664.5,
+    "score": 664.5,
+    "scoreNormalized": 97.51
   },
   {
     "name": "James Lankford",
@@ -1790,15 +1790,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 491,
+    "yeaVotes": 490,
     "nayVotes": 154,
-    "missedVotes": 22,
+    "missedVotes": 23,
     "totalVotes": 667,
-    "participationPct": 96.7,
-    "missedVotePct": 3.3,
-    "rawScore": 644,
-    "score": 644,
-    "scoreNormalized": 94.5
+    "participationPct": 96.55,
+    "missedVotePct": 3.45,
+    "rawScore": 642.5,
+    "score": 642.5,
+    "scoreNormalized": 94.28
   },
   {
     "name": "Ben Luján",
@@ -2457,14 +2457,14 @@
       }
     ],
     "yeaVotes": 158,
-    "nayVotes": 497,
-    "missedVotes": 12,
+    "nayVotes": 498,
+    "missedVotes": 11,
     "totalVotes": 667,
-    "participationPct": 98.2,
-    "missedVotePct": 1.8,
-    "rawScore": 655,
-    "score": 655,
-    "scoreNormalized": 96.11
+    "participationPct": 98.35,
+    "missedVotePct": 1.65,
+    "rawScore": 656.5,
+    "score": 656.5,
+    "scoreNormalized": 96.33
   },
   {
     "name": "Peter Welch",
@@ -2511,8 +2511,8 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 178,
-    "nayVotes": 439,
+    "yeaVotes": 177,
+    "nayVotes": 440,
     "missedVotes": 50,
     "totalVotes": 667,
     "participationPct": 92.5,
@@ -2560,14 +2560,14 @@
       }
     ],
     "yeaVotes": 157,
-    "nayVotes": 493,
-    "missedVotes": 17,
+    "nayVotes": 494,
+    "missedVotes": 16,
     "totalVotes": 667,
-    "participationPct": 97.45,
-    "missedVotePct": 2.55,
-    "rawScore": 655.5,
-    "score": 655.5,
-    "scoreNormalized": 96.18
+    "participationPct": 97.6,
+    "missedVotePct": 2.4,
+    "rawScore": 657,
+    "score": 657,
+    "scoreNormalized": 96.4
   },
   {
     "name": "Todd Young",
@@ -3845,15 +3845,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 509,
+    "yeaVotes": 508,
     "nayVotes": 150,
-    "missedVotes": 8,
+    "missedVotes": 9,
     "totalVotes": 667,
-    "participationPct": 98.8,
-    "missedVotePct": 1.2,
-    "rawScore": 663,
-    "score": 663,
-    "scoreNormalized": 97.29
+    "participationPct": 98.65,
+    "missedVotePct": 1.35,
+    "rawScore": 661.5,
+    "score": 661.5,
+    "scoreNormalized": 97.07
   },
   {
     "name": "Roger Marshall",
