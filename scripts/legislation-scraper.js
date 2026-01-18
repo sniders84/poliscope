@@ -15,12 +15,20 @@ if (!API_KEY) {
 }
 
 async function fetchMembers(congress = 119) {
-  let url = `https://api.congress.gov/v3/member/congress/${congress}?api_key=${API_KEY}&limit=250`;
+  let url = `https://api.congress.gov/v3/member/congress/${congress}?limit=250&api_key=${API_KEY}`;
   let all = [];
+
   while (url) {
     const resp = await axios.get(url, { timeout: 60000 });
     all = all.concat(resp.data.members);
-    url = resp.data.pagination.next;
+
+    // The API’s pagination.next does not include your api_key — add it back
+    if (resp.data.pagination && resp.data.pagination.next) {
+      const nextUrl = resp.data.pagination.next;
+      url = `${nextUrl}&api_key=${API_KEY}`;
+    } else {
+      url = null;
+    }
   }
   return all;
 }
@@ -65,7 +73,6 @@ function baseRecord(sen) {
     return t.type === 'sen' && new Date(t.end) > new Date();
   }).map(baseRecord);
 
-  // Fetch authoritative member list from Congress.gov
   const members = await fetchMembers(119);
   const map = {};
   for (const m of members) {
@@ -74,7 +81,6 @@ function baseRecord(sen) {
     }
   }
 
-  // Enrich senators with congressgovId
   for (const sen of sens) {
     if (map[sen.bioguideId]) {
       sen.congressgovId = map[sen.bioguideId];
