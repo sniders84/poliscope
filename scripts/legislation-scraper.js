@@ -1,12 +1,11 @@
-// Purpose: Generate baseline senators-rankings.json from local legislators-current.json
-// Filters for current Senators, initializes full schema, and enriches with Congress.gov memberId
+// Career totals scraper using Congress.gov API memberId
+// Requires CONGRESS_API_KEY in environment
 
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
 
-const ROSTER_PATH = path.join(__dirname, '..', 'public', 'legislators-current.json');
-const OUT_PATH = path.join(__dirname, '..', 'public', 'senators-rankings.json');
+const OUT_PATH = path.join(__dirname, '../public/senators-rankings.json');
 const API_KEY = process.env.CONGRESS_API_KEY;
 
 if (!API_KEY) {
@@ -14,79 +13,53 @@ if (!API_KEY) {
   process.exit(1);
 }
 
-async function fetchMembers(congress = 119) {
-  let url = `https://api.congress.gov/v3/member/congress/${congress}?limit=250&api_key=${API_KEY}`;
-  let all = [];
+function ensureSchema(sen) {
+  sen.congressgovId ??= null;
+  sen.sponsoredBills ??= 0;
+  sen.cosponsoredBills ??= 0;
+  sen.becameLawBills ??= 0;
+  sen.becameLawCosponsoredBills ??= 0;
+  return sen;
+}
+
+async function countLegislation(memberId, sponsorship) {
+  let total = 0;
+  let url = `https://api.congress.gov/v3/member/${memberId}/legislation?sponsorship=${sponsorship}&limit=250&api_key=${API_KEY}`;
 
   while (url) {
     const resp = await axios.get(url, { timeout: 60000 });
-    all = all.concat(resp.data.members);
+    total += resp.data.pagination.count;
 
-    // The API’s pagination.next does not include your api_key — add it back
     if (resp.data.pagination && resp.data.pagination.next) {
-      const nextUrl = resp.data.pagination.next;
-      url = `${nextUrl}&api_key=${API_KEY}`;
+      // Always re‑append api_key when following next
+      url = `${resp.data.pagination.next}&api_key=${API_KEY}`;
     } else {
       url = null;
     }
   }
-  return all;
-}
-
-function baseRecord(sen) {
-  const lastTerm = sen.terms.at(-1);
-  return {
-    bioguideId: sen.id.bioguide,
-    name: `${sen.name.first} ${sen.name.last}`,
-    state: lastTerm.state,
-    district: 'At-Large',
-    party: lastTerm.party,
-    office: 'Senator',
-    congressgovId: null,
-    // Votes
-    yeaVotes: 0,
-    nayVotes: 0,
-    missedVotes: 0,
-    totalVotes: 0,
-    participationPct: 0,
-    missedVotePct: 0,
-    // Legislation
-    sponsoredBills: 0,
-    cosponsoredBills: 0,
-    sponsoredAmendments: 0,
-    cosponsoredAmendments: 0,
-    becameLawBills: 0,
-    becameLawCosponsoredBills: 0,
-    // Committees
-    committees: [],
-    // Scores
-    rawScore: 0,
-    score: 0,
-    scoreNormalized: 0
-  };
+  return total;
 }
 
 (async () => {
-  const roster = JSON.parse(fs.readFileSync(ROSTER_PATH, 'utf-8'));
-  const sens = roster.filter(r => {
-    const t = r.terms.at(-1);
-    return t.type === 'sen' && new Date(t.end) > new Date();
-  }).map(baseRecord);
-
-  const members = await fetchMembers(119);
-  const map = {};
-  for (const m of members) {
-    if (m.bioguideId) {
-      map[m.bioguideId] = m.memberId;
-    }
-  }
+  const sens = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureSchema);
 
   for (const sen of sens) {
-    if (map[sen.bioguideId]) {
-      sen.congressgovId = map[sen.bioguideId];
+    if (!sen.congressgovId) {
+      console.error(`No congressgovId for ${sen.name}`);
+      continue;
+    }
+    try {
+      const sponsored = await countLegislation(sen.congressgovId, 'Sponsored');
+      const cosponsored = await countLegislation(sen.congressgovId, 'Cosponsored');
+
+      sen.sponsoredBills = sponsored;
+      sen.cosponsoredBills = cosponsored;
+      console.log(`${sen.name}: sponsored=${sponsored}, cosponsored=${cosponsored}`);
+    } catch (err) {
+      console.error(`Failed for ${sen.name}: ${err.message}`);
     }
   }
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(sens, null, 2));
-  console.log(`Bootstrapped senators-rankings.json with ${sens.length} current Senators (with congressgovId)`);
+  console.log('Senate legislation updated with career totals (via Congress.gov API)');
 })();
