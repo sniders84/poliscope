@@ -44,15 +44,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 68,
-    "nayVotes": 167,
-    "missedVotes": 0,
-    "totalVotes": 235,
-    "participationPct": 100,
-    "missedVotePct": 0,
-    "rawScore": 251,
-    "score": 251,
-    "scoreNormalized": 98.82
+    "yeaVotes": 180,
+    "nayVotes": 487,
+    "missedVotes": 1,
+    "totalVotes": 668,
+    "participationPct": 99.85,
+    "missedVotePct": 0.15,
+    "rawScore": 682.5,
+    "score": 682.5,
+    "scoreNormalized": 100
   },
   {
     "name": "Amy Klobuchar",
@@ -113,15 +113,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 83,
-    "nayVotes": 150,
-    "missedVotes": 2,
-    "totalVotes": 235,
-    "participationPct": 99.15,
-    "missedVotePct": 0.85,
-    "rawScore": 254,
-    "score": 254,
-    "scoreNormalized": 100
+    "yeaVotes": 214,
+    "nayVotes": 447,
+    "missedVotes": 7,
+    "totalVotes": 668,
+    "participationPct": 98.95,
+    "missedVotePct": 1.05,
+    "rawScore": 679.5,
+    "score": 679.5,
+    "scoreNormalized": 99.56
   },
   {
     "name": "Bernard Sanders",
@@ -168,15 +168,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 55,
-    "nayVotes": 144,
-    "missedVotes": 36,
-    "totalVotes": 235,
-    "participationPct": 84.68,
-    "missedVotePct": 15.32,
-    "rawScore": 195,
-    "score": 195,
-    "scoreNormalized": 76.77
+    "yeaVotes": 153,
+    "nayVotes": 457,
+    "missedVotes": 58,
+    "totalVotes": 668,
+    "participationPct": 91.32,
+    "missedVotePct": 8.68,
+    "rawScore": 595,
+    "score": 595,
+    "scoreNormalized": 87.18
   },
   {
     "name": "Sheldon Whitehouse",
@@ -223,15 +223,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 65,
-    "nayVotes": 153,
-    "missedVotes": 17,
-    "totalVotes": 235,
-    "participationPct": 92.77,
-    "missedVotePct": 7.23,
-    "rawScore": 227.5,
-    "score": 227.5,
-    "scoreNormalized": 89.57
+    "yeaVotes": 188,
+    "nayVotes": 456,
+    "missedVotes": 24,
+    "totalVotes": 668,
+    "participationPct": 96.41,
+    "missedVotePct": 3.59,
+    "rawScore": 650,
+    "score": 650,
+    "scoreNormalized": 95.24
   },
   {
     "name": "John Barrasso",
@@ -271,15 +271,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 181,
-    "nayVotes": 51,
-    "missedVotes": 3,
-    "totalVotes": 235,
-    "participationPct": 98.72,
-    "missedVotePct": 1.28,
-    "rawScore": 238.5,
-    "score": 238.5,
-    "scoreNormalized": 93.9
+    "yeaVotes": 513,
+    "nayVotes": 151,
+    "missedVotes": 4,
+    "totalVotes": 668,
+    "participationPct": 99.4,
+    "missedVotePct": 0.6,
+    "rawScore": 670,
+    "score": 670,
+    "scoreNormalized": 98.17
   },
   {
     "name": "Roger Wicker",
@@ -340,15 +340,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 182,
-    "nayVotes": 52,
-    "missedVotes": 1,
-    "totalVotes": 235,
-    "participationPct": 99.57,
-    "missedVotePct": 0.43,
-    "rawScore": 253.5,
-    "score": 253.5,
-    "scoreNormalized": 99.8
+    "yeaVotes": 489,
+    "nayVotes": 153,
+    "missedVotes": 26,
+    "totalVotes": 668,
+    "participationPct": 96.11,
+    "missedVotePct": 3.89,
+    "rawScore": 649,
+    "score": 649,
+    "scoreNormalized": 95.09
   },
   {
     "name": "Susan Collins",
@@ -388,15 +388,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 200,
-    "nayVotes": 35,
+    "yeaVotes": 547,
+    "nayVotes": 121,
     "missedVotes": 0,
-    "totalVotes": 235,
+    "totalVotes": 668,
     "participationPct": 100,
     "missedVotePct": 0,
-    "rawScore": 245,
-    "score": 245,
-    "scoreNormalized": 96.46
+    "rawScore": 678,
+    "score": 678,
+    "scoreNormalized": 99.34
   },
   {
     "name": "John Cornyn",
@@ -443,15 +443,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 184,
-    "nayVotes": 51,
-    "missedVotes": 0,
-    "totalVotes": 235,
-    "participationPct": 100,
-    "missedVotePct": 0,
-    "rawScore": 243,
-    "score": 243,
-    "scoreNormalized": 95.67
+    "yeaVotes": 512,
+    "nayVotes": 153,
+    "missedVotes": 3,
+    "totalVotes": 668,
+    "participationPct": 99.55,
+    "missedVotePct": 0.45,
+    "rawScore": 671.5,
+    "score": 671.5,
+    "scoreNormalized": 98.39
   },
   {
     "name": "Richard Durbin",
@@ -491,15 +491,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 76,
-    "nayVotes": 153,
-    "missedVotes": 6,
-    "totalVotes": 235,
-    "participationPct": 97.45,
-    "missedVotePct": 2.55,
-    "rawScore": 238,
-    "score": 238,
-    "scoreNormalized": 93.7
+    "yeaVotes": 215,
+    "nayVotes": 435,
+    "missedVotes": 18,
+    "totalVotes": 668,
+    "participationPct": 97.31,
+    "missedVotePct": 2.69,
+    "rawScore": 653,
+    "score": 653,
+    "scoreNormalized": 95.68
   },
   {
     "name": "Lindsey Graham",
@@ -539,15 +539,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 175,
-    "nayVotes": 52,
-    "missedVotes": 8,
-    "totalVotes": 235,
-    "participationPct": 96.6,
-    "missedVotePct": 3.4,
-    "rawScore": 231,
-    "score": 231,
-    "scoreNormalized": 90.94
+    "yeaVotes": 472,
+    "nayVotes": 153,
+    "missedVotes": 43,
+    "totalVotes": 668,
+    "participationPct": 93.56,
+    "missedVotePct": 6.44,
+    "rawScore": 611.5,
+    "score": 611.5,
+    "scoreNormalized": 89.6
   },
   {
     "name": "Mitch McConnell",
@@ -594,15 +594,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 173,
-    "nayVotes": 55,
-    "missedVotes": 7,
-    "totalVotes": 235,
-    "participationPct": 97.02,
-    "missedVotePct": 2.98,
-    "rawScore": 244.5,
-    "score": 244.5,
-    "scoreNormalized": 96.26
+    "yeaVotes": 464,
+    "nayVotes": 149,
+    "missedVotes": 55,
+    "totalVotes": 668,
+    "participationPct": 91.77,
+    "missedVotePct": 8.23,
+    "rawScore": 605.5,
+    "score": 605.5,
+    "scoreNormalized": 88.72
   },
   {
     "name": "Jeff Merkley",
@@ -649,15 +649,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 51,
-    "nayVotes": 180,
-    "missedVotes": 4,
-    "totalVotes": 235,
-    "participationPct": 98.3,
-    "missedVotePct": 1.7,
-    "rawScore": 237,
-    "score": 237,
-    "scoreNormalized": 93.31
+    "yeaVotes": 158,
+    "nayVotes": 504,
+    "missedVotes": 6,
+    "totalVotes": 668,
+    "participationPct": 99.1,
+    "missedVotePct": 0.9,
+    "rawScore": 667,
+    "score": 667,
+    "scoreNormalized": 97.73
   },
   {
     "name": "John Reed",
@@ -704,15 +704,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 73,
-    "nayVotes": 162,
-    "missedVotes": 0,
-    "totalVotes": 235,
-    "participationPct": 100,
-    "missedVotePct": 0,
-    "rawScore": 249,
-    "score": 249,
-    "scoreNormalized": 98.03
+    "yeaVotes": 207,
+    "nayVotes": 453,
+    "missedVotes": 8,
+    "totalVotes": 668,
+    "participationPct": 98.8,
+    "missedVotePct": 1.2,
+    "rawScore": 670,
+    "score": 670,
+    "scoreNormalized": 98.17
   },
   {
     "name": "James Risch",
@@ -759,15 +759,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 182,
-    "nayVotes": 50,
-    "missedVotes": 3,
-    "totalVotes": 235,
-    "participationPct": 98.72,
-    "missedVotePct": 1.28,
-    "rawScore": 246.5,
-    "score": 246.5,
-    "scoreNormalized": 97.05
+    "yeaVotes": 504,
+    "nayVotes": 151,
+    "missedVotes": 13,
+    "totalVotes": 668,
+    "participationPct": 98.05,
+    "missedVotePct": 1.95,
+    "rawScore": 664.5,
+    "score": 664.5,
+    "scoreNormalized": 97.36
   },
   {
     "name": "Jeanne Shaheen",
@@ -821,15 +821,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 106,
-    "nayVotes": 124,
-    "missedVotes": 5,
-    "totalVotes": 235,
-    "participationPct": 97.87,
-    "missedVotePct": 2.13,
-    "rawScore": 245.5,
-    "score": 245.5,
-    "scoreNormalized": 96.65
+    "yeaVotes": 269,
+    "nayVotes": 376,
+    "missedVotes": 23,
+    "totalVotes": 668,
+    "participationPct": 96.56,
+    "missedVotePct": 3.44,
+    "rawScore": 651.5,
+    "score": 651.5,
+    "scoreNormalized": 95.46
   },
   {
     "name": "Mark Warner",
@@ -876,15 +876,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 99,
-    "nayVotes": 130,
-    "missedVotes": 6,
-    "totalVotes": 235,
-    "participationPct": 97.45,
-    "missedVotePct": 2.55,
-    "rawScore": 238,
-    "score": 238,
-    "scoreNormalized": 93.7
+    "yeaVotes": 237,
+    "nayVotes": 414,
+    "missedVotes": 17,
+    "totalVotes": 668,
+    "participationPct": 97.46,
+    "missedVotePct": 2.54,
+    "rawScore": 654.5,
+    "score": 654.5,
+    "scoreNormalized": 95.9
   },
   {
     "name": "Kirsten Gillibrand",
@@ -931,15 +931,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 74,
-    "nayVotes": 160,
-    "missedVotes": 1,
-    "totalVotes": 235,
-    "participationPct": 99.57,
-    "missedVotePct": 0.43,
-    "rawScore": 245.5,
-    "score": 245.5,
-    "scoreNormalized": 96.65
+    "yeaVotes": 194,
+    "nayVotes": 463,
+    "missedVotes": 11,
+    "totalVotes": 668,
+    "participationPct": 98.35,
+    "missedVotePct": 1.65,
+    "rawScore": 663.5,
+    "score": 663.5,
+    "scoreNormalized": 97.22
   },
   {
     "name": "Christopher Coons",
@@ -986,15 +986,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 76,
-    "nayVotes": 151,
-    "missedVotes": 8,
-    "totalVotes": 235,
-    "participationPct": 96.6,
-    "missedVotePct": 3.4,
-    "rawScore": 237,
-    "score": 237,
-    "scoreNormalized": 93.31
+    "yeaVotes": 197,
+    "nayVotes": 436,
+    "missedVotes": 35,
+    "totalVotes": 668,
+    "participationPct": 94.76,
+    "missedVotePct": 5.24,
+    "rawScore": 629.5,
+    "score": 629.5,
+    "scoreNormalized": 92.23
   },
   {
     "name": "Tammy Baldwin",
@@ -1034,15 +1034,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 67,
-    "nayVotes": 166,
-    "missedVotes": 0,
-    "totalVotes": 233,
-    "participationPct": 100,
-    "missedVotePct": 0,
-    "rawScore": 239,
-    "score": 239,
-    "scoreNormalized": 94.09
+    "yeaVotes": 185,
+    "nayVotes": 480,
+    "missedVotes": 1,
+    "totalVotes": 666,
+    "participationPct": 99.85,
+    "missedVotePct": 0.15,
+    "rawScore": 670.5,
+    "score": 670.5,
+    "scoreNormalized": 98.24
   },
   {
     "name": "Michael Bennet",
@@ -1089,15 +1089,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 82,
-    "nayVotes": 148,
-    "missedVotes": 5,
-    "totalVotes": 235,
-    "participationPct": 97.87,
-    "missedVotePct": 2.13,
-    "rawScore": 237.5,
-    "score": 237.5,
-    "scoreNormalized": 93.5
+    "yeaVotes": 185,
+    "nayVotes": 472,
+    "missedVotes": 11,
+    "totalVotes": 668,
+    "participationPct": 98.35,
+    "missedVotePct": 1.65,
+    "rawScore": 661.5,
+    "score": 661.5,
+    "scoreNormalized": 96.92
   },
   {
     "name": "Marsha Blackburn",
@@ -1151,15 +1151,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 180,
-    "nayVotes": 51,
-    "missedVotes": 4,
-    "totalVotes": 235,
-    "participationPct": 98.3,
-    "missedVotePct": 1.7,
-    "rawScore": 239,
-    "score": 239,
-    "scoreNormalized": 94.09
+    "yeaVotes": 493,
+    "nayVotes": 141,
+    "missedVotes": 34,
+    "totalVotes": 668,
+    "participationPct": 94.91,
+    "missedVotePct": 5.09,
+    "rawScore": 627,
+    "score": 627,
+    "scoreNormalized": 91.87
   },
   {
     "name": "Richard Blumenthal",
@@ -1206,15 +1206,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 60,
-    "nayVotes": 174,
-    "missedVotes": 1,
-    "totalVotes": 235,
-    "participationPct": 99.57,
-    "missedVotePct": 0.43,
-    "rawScore": 245.5,
-    "score": 245.5,
-    "scoreNormalized": 96.65
+    "yeaVotes": 165,
+    "nayVotes": 494,
+    "missedVotes": 9,
+    "totalVotes": 668,
+    "participationPct": 98.65,
+    "missedVotePct": 1.35,
+    "rawScore": 666.5,
+    "score": 666.5,
+    "scoreNormalized": 97.66
   },
   {
     "name": "John Boozman",
@@ -1275,15 +1275,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 174,
-    "nayVotes": 52,
-    "missedVotes": 9,
-    "totalVotes": 235,
-    "participationPct": 96.17,
-    "missedVotePct": 3.83,
-    "rawScore": 241.5,
-    "score": 241.5,
-    "scoreNormalized": 95.08
+    "yeaVotes": 499,
+    "nayVotes": 157,
+    "missedVotes": 12,
+    "totalVotes": 668,
+    "participationPct": 98.2,
+    "missedVotePct": 1.8,
+    "rawScore": 670,
+    "score": 670,
+    "scoreNormalized": 98.17
   },
   {
     "name": "Shelley Capito",
@@ -1330,15 +1330,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 180,
-    "nayVotes": 52,
-    "missedVotes": 3,
-    "totalVotes": 235,
-    "participationPct": 98.72,
-    "missedVotePct": 1.28,
-    "rawScore": 242.5,
-    "score": 242.5,
-    "scoreNormalized": 95.47
+    "yeaVotes": 500,
+    "nayVotes": 154,
+    "missedVotes": 14,
+    "totalVotes": 668,
+    "participationPct": 97.9,
+    "missedVotePct": 2.1,
+    "rawScore": 659,
+    "score": 659,
+    "scoreNormalized": 96.56
   },
   {
     "name": "Bill Cassidy",
@@ -1385,15 +1385,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 179,
-    "nayVotes": 51,
-    "missedVotes": 5,
-    "totalVotes": 235,
-    "participationPct": 97.87,
-    "missedVotePct": 2.13,
-    "rawScore": 239.5,
-    "score": 239.5,
-    "scoreNormalized": 94.29
+    "yeaVotes": 485,
+    "nayVotes": 142,
+    "missedVotes": 41,
+    "totalVotes": 668,
+    "participationPct": 93.86,
+    "missedVotePct": 6.14,
+    "rawScore": 618.5,
+    "score": 618.5,
+    "scoreNormalized": 90.62
   },
   {
     "name": "Michael Crapo",
@@ -1426,15 +1426,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 181,
-    "nayVotes": 52,
-    "missedVotes": 2,
-    "totalVotes": 235,
-    "participationPct": 99.15,
-    "missedVotePct": 0.85,
-    "rawScore": 242,
-    "score": 242,
-    "scoreNormalized": 95.28
+    "yeaVotes": 510,
+    "nayVotes": 153,
+    "missedVotes": 5,
+    "totalVotes": 668,
+    "participationPct": 99.25,
+    "missedVotePct": 0.75,
+    "rawScore": 670.5,
+    "score": 670.5,
+    "scoreNormalized": 98.24
   },
   {
     "name": "Charles Grassley",
@@ -1474,15 +1474,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 183,
-    "nayVotes": 52,
-    "missedVotes": 0,
-    "totalVotes": 235,
-    "participationPct": 100,
-    "missedVotePct": 0,
-    "rawScore": 247,
-    "score": 247,
-    "scoreNormalized": 97.24
+    "yeaVotes": 509,
+    "nayVotes": 155,
+    "missedVotes": 4,
+    "totalVotes": 668,
+    "participationPct": 99.4,
+    "missedVotePct": 0.6,
+    "rawScore": 674,
+    "score": 674,
+    "scoreNormalized": 98.75
   },
   {
     "name": "Martin Heinrich",
@@ -1529,15 +1529,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 78,
-    "nayVotes": 155,
-    "missedVotes": 2,
-    "totalVotes": 235,
-    "participationPct": 99.15,
-    "missedVotePct": 0.85,
-    "rawScore": 244,
-    "score": 244,
-    "scoreNormalized": 96.06
+    "yeaVotes": 203,
+    "nayVotes": 431,
+    "missedVotes": 34,
+    "totalVotes": 668,
+    "participationPct": 94.91,
+    "missedVotePct": 5.09,
+    "rawScore": 629,
+    "score": 629,
+    "scoreNormalized": 92.16
   },
   {
     "name": "Mazie Hirono",
@@ -1584,15 +1584,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 51,
-    "nayVotes": 183,
-    "missedVotes": 1,
-    "totalVotes": 235,
-    "participationPct": 99.57,
-    "missedVotePct": 0.43,
-    "rawScore": 241.5,
-    "score": 241.5,
-    "scoreNormalized": 95.08
+    "yeaVotes": 164,
+    "nayVotes": 502,
+    "missedVotes": 2,
+    "totalVotes": 668,
+    "participationPct": 99.7,
+    "missedVotePct": 0.3,
+    "rawScore": 673,
+    "score": 673,
+    "scoreNormalized": 98.61
   },
   {
     "name": "John Hoeven",
@@ -1639,15 +1639,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 180,
-    "nayVotes": 52,
-    "missedVotes": 3,
-    "totalVotes": 235,
-    "participationPct": 98.72,
-    "missedVotePct": 1.28,
-    "rawScore": 240.5,
-    "score": 240.5,
-    "scoreNormalized": 94.69
+    "yeaVotes": 507,
+    "nayVotes": 154,
+    "missedVotes": 7,
+    "totalVotes": 668,
+    "participationPct": 98.95,
+    "missedVotePct": 1.05,
+    "rawScore": 667.5,
+    "score": 667.5,
+    "scoreNormalized": 97.8
   },
   {
     "name": "Ron Johnson",
@@ -1687,15 +1687,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 184,
-    "nayVotes": 50,
-    "missedVotes": 1,
-    "totalVotes": 235,
-    "participationPct": 99.57,
-    "missedVotePct": 0.43,
-    "rawScore": 241.5,
-    "score": 241.5,
-    "scoreNormalized": 95.08
+    "yeaVotes": 511,
+    "nayVotes": 149,
+    "missedVotes": 8,
+    "totalVotes": 668,
+    "participationPct": 98.8,
+    "missedVotePct": 1.2,
+    "rawScore": 664,
+    "score": 664,
+    "scoreNormalized": 97.29
   },
   {
     "name": "James Lankford",
@@ -1742,15 +1742,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 182,
-    "nayVotes": 52,
-    "missedVotes": 1,
-    "totalVotes": 235,
-    "participationPct": 99.57,
-    "missedVotePct": 0.43,
-    "rawScore": 245.5,
-    "score": 245.5,
-    "scoreNormalized": 96.65
+    "yeaVotes": 514,
+    "nayVotes": 152,
+    "missedVotes": 2,
+    "totalVotes": 668,
+    "participationPct": 99.7,
+    "missedVotePct": 0.3,
+    "rawScore": 677,
+    "score": 677,
+    "scoreNormalized": 99.19
   },
   {
     "name": "Mike Lee",
@@ -1790,15 +1790,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 184,
-    "nayVotes": 51,
-    "missedVotes": 0,
-    "totalVotes": 235,
-    "participationPct": 100,
-    "missedVotePct": 0,
-    "rawScore": 245,
-    "score": 245,
-    "scoreNormalized": 96.46
+    "yeaVotes": 491,
+    "nayVotes": 154,
+    "missedVotes": 23,
+    "totalVotes": 668,
+    "participationPct": 96.56,
+    "missedVotePct": 3.44,
+    "rawScore": 643.5,
+    "score": 643.5,
+    "scoreNormalized": 94.29
   },
   {
     "name": "Ben Luján",
@@ -1853,7 +1853,7 @@
     "missedVotePct": 0,
     "rawScore": 8,
     "score": 8,
-    "scoreNormalized": 3.15
+    "scoreNormalized": 1.17
   },
   {
     "name": "Edward Markey",
@@ -1893,15 +1893,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 51,
-    "nayVotes": 183,
-    "missedVotes": 1,
-    "totalVotes": 235,
-    "participationPct": 99.57,
-    "missedVotePct": 0.43,
-    "rawScore": 239.5,
-    "score": 239.5,
-    "scoreNormalized": 94.29
+    "yeaVotes": 148,
+    "nayVotes": 515,
+    "missedVotes": 5,
+    "totalVotes": 668,
+    "participationPct": 99.25,
+    "missedVotePct": 0.75,
+    "rawScore": 666.5,
+    "score": 666.5,
+    "scoreNormalized": 97.66
   },
   {
     "name": "Jerry Moran",
@@ -1962,15 +1962,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 171,
-    "nayVotes": 52,
-    "missedVotes": 12,
-    "totalVotes": 235,
-    "participationPct": 94.89,
-    "missedVotePct": 5.11,
-    "rawScore": 233,
-    "score": 233,
-    "scoreNormalized": 91.73
+    "yeaVotes": 480,
+    "nayVotes": 152,
+    "missedVotes": 36,
+    "totalVotes": 668,
+    "participationPct": 94.61,
+    "missedVotePct": 5.39,
+    "rawScore": 630,
+    "score": 630,
+    "scoreNormalized": 92.31
   },
   {
     "name": "Lisa Murkowski",
@@ -2017,15 +2017,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 186,
-    "nayVotes": 44,
-    "missedVotes": 5,
-    "totalVotes": 235,
-    "participationPct": 97.87,
-    "missedVotePct": 2.13,
-    "rawScore": 239.5,
-    "score": 239.5,
-    "scoreNormalized": 94.29
+    "yeaVotes": 512,
+    "nayVotes": 133,
+    "missedVotes": 23,
+    "totalVotes": 668,
+    "participationPct": 96.56,
+    "missedVotePct": 3.44,
+    "rawScore": 645.5,
+    "score": 645.5,
+    "scoreNormalized": 94.58
   },
   {
     "name": "Christopher Murphy",
@@ -2065,15 +2065,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 52,
-    "nayVotes": 180,
-    "missedVotes": 3,
-    "totalVotes": 235,
-    "participationPct": 98.72,
-    "missedVotePct": 1.28,
-    "rawScore": 236.5,
-    "score": 236.5,
-    "scoreNormalized": 93.11
+    "yeaVotes": 153,
+    "nayVotes": 495,
+    "missedVotes": 20,
+    "totalVotes": 668,
+    "participationPct": 97.01,
+    "missedVotePct": 2.99,
+    "rawScore": 644,
+    "score": 644,
+    "scoreNormalized": 94.36
   },
   {
     "name": "Patty Murray",
@@ -2113,15 +2113,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 34,
-    "nayVotes": 162,
-    "missedVotes": 39,
-    "totalVotes": 235,
-    "participationPct": 83.4,
-    "missedVotePct": 16.6,
-    "rawScore": 190.5,
-    "score": 190.5,
-    "scoreNormalized": 75
+    "yeaVotes": 139,
+    "nayVotes": 485,
+    "missedVotes": 44,
+    "totalVotes": 668,
+    "participationPct": 93.41,
+    "missedVotePct": 6.59,
+    "rawScore": 616,
+    "score": 616,
+    "scoreNormalized": 90.26
   },
   {
     "name": "Rand Paul",
@@ -2161,15 +2161,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 165,
-    "nayVotes": 61,
-    "missedVotes": 9,
-    "totalVotes": 235,
-    "participationPct": 96.17,
-    "missedVotePct": 3.83,
-    "rawScore": 233.5,
-    "score": 233.5,
-    "scoreNormalized": 91.93
+    "yeaVotes": 444,
+    "nayVotes": 200,
+    "missedVotes": 22,
+    "totalVotes": 666,
+    "participationPct": 96.7,
+    "missedVotePct": 3.3,
+    "rawScore": 645,
+    "score": 645,
+    "scoreNormalized": 94.51
   },
   {
     "name": "Gary Peters",
@@ -2216,15 +2216,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 84,
-    "nayVotes": 141,
-    "missedVotes": 10,
-    "totalVotes": 235,
-    "participationPct": 95.74,
-    "missedVotePct": 4.26,
-    "rawScore": 232,
-    "score": 232,
-    "scoreNormalized": 91.34
+    "yeaVotes": 203,
+    "nayVotes": 451,
+    "missedVotes": 14,
+    "totalVotes": 668,
+    "participationPct": 97.9,
+    "missedVotePct": 2.1,
+    "rawScore": 659,
+    "score": 659,
+    "scoreNormalized": 96.56
   },
   {
     "name": "Adam Schiff",
@@ -2264,15 +2264,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 67,
-    "nayVotes": 166,
-    "missedVotes": 2,
-    "totalVotes": 235,
-    "participationPct": 99.15,
-    "missedVotePct": 0.85,
-    "rawScore": 238,
-    "score": 238,
-    "scoreNormalized": 93.7
+    "yeaVotes": 186,
+    "nayVotes": 466,
+    "missedVotes": 16,
+    "totalVotes": 668,
+    "participationPct": 97.6,
+    "missedVotePct": 2.4,
+    "rawScore": 650,
+    "score": 650,
+    "scoreNormalized": 95.24
   },
   {
     "name": "Charles Schumer",
@@ -2305,15 +2305,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 60,
-    "nayVotes": 174,
-    "missedVotes": 1,
-    "totalVotes": 235,
-    "participationPct": 99.57,
-    "missedVotePct": 0.43,
-    "rawScore": 239.5,
-    "score": 239.5,
-    "scoreNormalized": 94.29
+    "yeaVotes": 168,
+    "nayVotes": 497,
+    "missedVotes": 3,
+    "totalVotes": 668,
+    "participationPct": 99.55,
+    "missedVotePct": 0.45,
+    "rawScore": 669.5,
+    "score": 669.5,
+    "scoreNormalized": 98.1
   },
   {
     "name": "Tim Scott",
@@ -2353,15 +2353,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 183,
-    "nayVotes": 52,
-    "missedVotes": 0,
-    "totalVotes": 235,
-    "participationPct": 100,
-    "missedVotePct": 0,
-    "rawScore": 245,
-    "score": 245,
-    "scoreNormalized": 96.46
+    "yeaVotes": 493,
+    "nayVotes": 153,
+    "missedVotes": 22,
+    "totalVotes": 668,
+    "participationPct": 96.71,
+    "missedVotePct": 3.29,
+    "rawScore": 645,
+    "score": 645,
+    "scoreNormalized": 94.51
   },
   {
     "name": "John Thune",
@@ -2408,15 +2408,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 182,
-    "nayVotes": 52,
+    "yeaVotes": 502,
+    "nayVotes": 165,
     "missedVotes": 1,
-    "totalVotes": 235,
-    "participationPct": 99.57,
-    "missedVotePct": 0.43,
-    "rawScore": 243.5,
-    "score": 243.5,
-    "scoreNormalized": 95.87
+    "totalVotes": 668,
+    "participationPct": 99.85,
+    "missedVotePct": 0.15,
+    "rawScore": 676.5,
+    "score": 676.5,
+    "scoreNormalized": 99.12
   },
   {
     "name": "Chris Van Hollen",
@@ -2456,15 +2456,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 54,
-    "nayVotes": 179,
-    "missedVotes": 2,
-    "totalVotes": 235,
-    "participationPct": 99.15,
-    "missedVotePct": 0.85,
-    "rawScore": 238,
-    "score": 238,
-    "scoreNormalized": 93.7
+    "yeaVotes": 158,
+    "nayVotes": 498,
+    "missedVotes": 12,
+    "totalVotes": 668,
+    "participationPct": 98.2,
+    "missedVotePct": 1.8,
+    "rawScore": 656,
+    "score": 656,
+    "scoreNormalized": 96.12
   },
   {
     "name": "Peter Welch",
@@ -2511,15 +2511,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 65,
-    "nayVotes": 162,
-    "missedVotes": 8,
-    "totalVotes": 235,
-    "participationPct": 96.6,
-    "missedVotePct": 3.4,
-    "rawScore": 231,
-    "score": 231,
-    "scoreNormalized": 90.94
+    "yeaVotes": 178,
+    "nayVotes": 440,
+    "missedVotes": 50,
+    "totalVotes": 668,
+    "participationPct": 92.51,
+    "missedVotePct": 7.49,
+    "rawScore": 601,
+    "score": 601,
+    "scoreNormalized": 88.06
   },
   {
     "name": "Ron Wyden",
@@ -2559,15 +2559,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 55,
-    "nayVotes": 170,
-    "missedVotes": 10,
-    "totalVotes": 235,
-    "participationPct": 95.74,
-    "missedVotePct": 4.26,
-    "rawScore": 234,
-    "score": 234,
-    "scoreNormalized": 92.13
+    "yeaVotes": 157,
+    "nayVotes": 494,
+    "missedVotes": 17,
+    "totalVotes": 668,
+    "participationPct": 97.46,
+    "missedVotePct": 2.54,
+    "rawScore": 656.5,
+    "score": 656.5,
+    "scoreNormalized": 96.19
   },
   {
     "name": "Todd Young",
@@ -2607,15 +2607,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 180,
-    "nayVotes": 51,
-    "missedVotes": 4,
-    "totalVotes": 235,
-    "participationPct": 98.3,
-    "missedVotePct": 1.7,
-    "rawScore": 235,
-    "score": 235,
-    "scoreNormalized": 92.52
+    "yeaVotes": 509,
+    "nayVotes": 153,
+    "missedVotes": 6,
+    "totalVotes": 668,
+    "participationPct": 99.1,
+    "missedVotePct": 0.9,
+    "rawScore": 665,
+    "score": 665,
+    "scoreNormalized": 97.44
   },
   {
     "name": "Brian Schatz",
@@ -2669,15 +2669,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 60,
-    "nayVotes": 172,
-    "missedVotes": 3,
-    "totalVotes": 235,
-    "participationPct": 98.72,
-    "missedVotePct": 1.28,
-    "rawScore": 246.5,
-    "score": 246.5,
-    "scoreNormalized": 97.05
+    "yeaVotes": 164,
+    "nayVotes": 497,
+    "missedVotes": 7,
+    "totalVotes": 668,
+    "participationPct": 98.95,
+    "missedVotePct": 1.05,
+    "rawScore": 673.5,
+    "score": 673.5,
+    "scoreNormalized": 98.68
   },
   {
     "name": "Tom Cotton",
@@ -2724,15 +2724,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 184,
-    "nayVotes": 51,
-    "missedVotes": 0,
-    "totalVotes": 235,
-    "participationPct": 100,
-    "missedVotePct": 0,
-    "rawScore": 249,
-    "score": 249,
-    "scoreNormalized": 98.03
+    "yeaVotes": 502,
+    "nayVotes": 155,
+    "missedVotes": 11,
+    "totalVotes": 668,
+    "participationPct": 98.35,
+    "missedVotePct": 1.65,
+    "rawScore": 665.5,
+    "score": 665.5,
+    "scoreNormalized": 97.51
   },
   {
     "name": "Tammy Duckworth",
@@ -2779,15 +2779,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 59,
-    "nayVotes": 155,
-    "missedVotes": 21,
-    "totalVotes": 235,
-    "participationPct": 91.06,
-    "missedVotePct": 8.94,
-    "rawScore": 211.5,
-    "score": 211.5,
-    "scoreNormalized": 83.27
+    "yeaVotes": 166,
+    "nayVotes": 445,
+    "missedVotes": 57,
+    "totalVotes": 668,
+    "participationPct": 91.47,
+    "missedVotePct": 8.53,
+    "rawScore": 590.5,
+    "score": 590.5,
+    "scoreNormalized": 86.52
   },
   {
     "name": "Elizabeth Warren",
@@ -2834,15 +2834,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 53,
-    "nayVotes": 182,
-    "missedVotes": 0,
-    "totalVotes": 235,
-    "participationPct": 100,
-    "missedVotePct": 0,
-    "rawScore": 249,
-    "score": 249,
-    "scoreNormalized": 98.03
+    "yeaVotes": 151,
+    "nayVotes": 503,
+    "missedVotes": 14,
+    "totalVotes": 668,
+    "participationPct": 97.9,
+    "missedVotePct": 2.1,
+    "rawScore": 661,
+    "score": 661,
+    "scoreNormalized": 96.85
   },
   {
     "name": "Angus King",
@@ -2889,15 +2889,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 90,
-    "nayVotes": 142,
-    "missedVotes": 3,
-    "totalVotes": 235,
-    "participationPct": 98.72,
-    "missedVotePct": 1.28,
-    "rawScore": 238.5,
-    "score": 238.5,
-    "scoreNormalized": 93.9
+    "yeaVotes": 269,
+    "nayVotes": 388,
+    "missedVotes": 11,
+    "totalVotes": 668,
+    "participationPct": 98.35,
+    "missedVotePct": 1.65,
+    "rawScore": 659.5,
+    "score": 659.5,
+    "scoreNormalized": 96.63
   },
   {
     "name": "Steve Daines",
@@ -2944,15 +2944,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 182,
-    "nayVotes": 49,
-    "missedVotes": 4,
-    "totalVotes": 235,
-    "participationPct": 98.3,
-    "missedVotePct": 1.7,
-    "rawScore": 237,
-    "score": 237,
-    "scoreNormalized": 93.31
+    "yeaVotes": 500,
+    "nayVotes": 148,
+    "missedVotes": 20,
+    "totalVotes": 668,
+    "participationPct": 97.01,
+    "missedVotePct": 2.99,
+    "rawScore": 646,
+    "score": 646,
+    "scoreNormalized": 94.65
   },
   {
     "name": "Kevin Cramer",
@@ -2999,15 +2999,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 170,
-    "nayVotes": 51,
-    "missedVotes": 14,
-    "totalVotes": 235,
-    "participationPct": 94.04,
-    "missedVotePct": 5.96,
-    "rawScore": 224,
-    "score": 224,
-    "scoreNormalized": 88.19
+    "yeaVotes": 491,
+    "nayVotes": 154,
+    "missedVotes": 23,
+    "totalVotes": 668,
+    "participationPct": 96.56,
+    "missedVotePct": 3.44,
+    "rawScore": 643.5,
+    "score": 643.5,
+    "scoreNormalized": 94.29
   },
   {
     "name": "Deb Fischer",
@@ -3075,15 +3075,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 181,
-    "nayVotes": 52,
-    "missedVotes": 2,
-    "totalVotes": 235,
-    "participationPct": 99.15,
-    "missedVotePct": 0.85,
-    "rawScore": 250,
-    "score": 250,
-    "scoreNormalized": 98.43
+    "yeaVotes": 510,
+    "nayVotes": 154,
+    "missedVotes": 4,
+    "totalVotes": 668,
+    "participationPct": 99.4,
+    "missedVotePct": 0.6,
+    "rawScore": 680,
+    "score": 680,
+    "scoreNormalized": 99.63
   },
   {
     "name": "Markwayne Mullin",
@@ -3130,15 +3130,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 167,
-    "nayVotes": 52,
-    "missedVotes": 16,
-    "totalVotes": 235,
-    "participationPct": 93.19,
-    "missedVotePct": 6.81,
-    "rawScore": 219,
-    "score": 219,
-    "scoreNormalized": 86.22
+    "yeaVotes": 473,
+    "nayVotes": 156,
+    "missedVotes": 39,
+    "totalVotes": 668,
+    "participationPct": 94.16,
+    "missedVotePct": 5.84,
+    "rawScore": 617.5,
+    "score": 617.5,
+    "scoreNormalized": 90.48
   },
   {
     "name": "Ted Cruz",
@@ -3185,15 +3185,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 173,
-    "nayVotes": 50,
-    "missedVotes": 12,
-    "totalVotes": 235,
-    "participationPct": 94.89,
-    "missedVotePct": 5.11,
-    "rawScore": 231,
-    "score": 231,
-    "scoreNormalized": 90.94
+    "yeaVotes": 483,
+    "nayVotes": 142,
+    "missedVotes": 43,
+    "totalVotes": 668,
+    "participationPct": 93.56,
+    "missedVotePct": 6.44,
+    "rawScore": 617.5,
+    "score": 617.5,
+    "scoreNormalized": 90.48
   },
   {
     "name": "Timothy Kaine",
@@ -3233,15 +3233,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 93,
-    "nayVotes": 139,
-    "missedVotes": 3,
-    "totalVotes": 235,
-    "participationPct": 98.72,
-    "missedVotePct": 1.28,
-    "rawScore": 236.5,
-    "score": 236.5,
-    "scoreNormalized": 93.11
+    "yeaVotes": 241,
+    "nayVotes": 421,
+    "missedVotes": 6,
+    "totalVotes": 668,
+    "participationPct": 99.1,
+    "missedVotePct": 0.9,
+    "rawScore": 665,
+    "score": 665,
+    "scoreNormalized": 97.44
   },
   {
     "name": "Cory Booker",
@@ -3281,15 +3281,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 64,
-    "nayVotes": 157,
-    "missedVotes": 14,
-    "totalVotes": 235,
-    "participationPct": 94.04,
-    "missedVotePct": 5.96,
-    "rawScore": 220,
-    "score": 220,
-    "scoreNormalized": 86.61
+    "yeaVotes": 171,
+    "nayVotes": 467,
+    "missedVotes": 30,
+    "totalVotes": 668,
+    "participationPct": 95.51,
+    "missedVotePct": 4.49,
+    "rawScore": 629,
+    "score": 629,
+    "scoreNormalized": 92.16
   },
   {
     "name": "Ruben Gallego",
@@ -3336,15 +3336,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 94,
-    "nayVotes": 131,
-    "missedVotes": 10,
-    "totalVotes": 235,
-    "participationPct": 95.74,
-    "missedVotePct": 4.26,
-    "rawScore": 228,
-    "score": 228,
-    "scoreNormalized": 89.76
+    "yeaVotes": 215,
+    "nayVotes": 358,
+    "missedVotes": 95,
+    "totalVotes": 668,
+    "participationPct": 85.78,
+    "missedVotePct": 14.22,
+    "rawScore": 533.5,
+    "score": 533.5,
+    "scoreNormalized": 78.17
   },
   {
     "name": "Dan Sullivan",
@@ -3391,15 +3391,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 188,
-    "nayVotes": 43,
-    "missedVotes": 4,
-    "totalVotes": 235,
-    "participationPct": 98.3,
-    "missedVotePct": 1.7,
-    "rawScore": 237,
-    "score": 237,
-    "scoreNormalized": 93.31
+    "yeaVotes": 507,
+    "nayVotes": 141,
+    "missedVotes": 20,
+    "totalVotes": 668,
+    "participationPct": 97.01,
+    "missedVotePct": 2.99,
+    "rawScore": 646,
+    "score": 646,
+    "scoreNormalized": 94.65
   },
   {
     "name": "Joni Ernst",
@@ -3439,15 +3439,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 185,
-    "nayVotes": 50,
-    "missedVotes": 0,
-    "totalVotes": 235,
-    "participationPct": 100,
-    "missedVotePct": 0,
-    "rawScore": 241,
-    "score": 241,
-    "scoreNormalized": 94.88
+    "yeaVotes": 503,
+    "nayVotes": 151,
+    "missedVotes": 14,
+    "totalVotes": 668,
+    "participationPct": 97.9,
+    "missedVotePct": 2.1,
+    "rawScore": 653,
+    "score": 653,
+    "scoreNormalized": 95.68
   },
   {
     "name": "Thom Tillis",
@@ -3501,15 +3501,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 175,
-    "nayVotes": 52,
-    "missedVotes": 8,
-    "totalVotes": 235,
-    "participationPct": 96.6,
-    "missedVotePct": 3.4,
-    "rawScore": 233,
-    "score": 233,
-    "scoreNormalized": 91.73
+    "yeaVotes": 438,
+    "nayVotes": 153,
+    "missedVotes": 77,
+    "totalVotes": 668,
+    "participationPct": 88.47,
+    "missedVotePct": 11.53,
+    "rawScore": 562.5,
+    "score": 562.5,
+    "scoreNormalized": 82.42
   },
   {
     "name": "Mike Rounds",
@@ -3570,15 +3570,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 182,
-    "nayVotes": 52,
-    "missedVotes": 1,
-    "totalVotes": 235,
-    "participationPct": 99.57,
-    "missedVotePct": 0.43,
-    "rawScore": 245.5,
-    "score": 245.5,
-    "scoreNormalized": 96.65
+    "yeaVotes": 505,
+    "nayVotes": 159,
+    "missedVotes": 4,
+    "totalVotes": 668,
+    "participationPct": 99.4,
+    "missedVotePct": 0.6,
+    "rawScore": 674,
+    "score": 674,
+    "scoreNormalized": 98.75
   },
   {
     "name": "John Kennedy",
@@ -3618,15 +3618,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 184,
-    "nayVotes": 50,
-    "missedVotes": 1,
-    "totalVotes": 235,
-    "participationPct": 99.57,
-    "missedVotePct": 0.43,
-    "rawScore": 239.5,
-    "score": 239.5,
-    "scoreNormalized": 94.29
+    "yeaVotes": 507,
+    "nayVotes": 147,
+    "missedVotes": 14,
+    "totalVotes": 668,
+    "participationPct": 97.9,
+    "missedVotePct": 2.1,
+    "rawScore": 653,
+    "score": 653,
+    "scoreNormalized": 95.68
   },
   {
     "name": "Margaret Hassan",
@@ -3680,15 +3680,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 102,
-    "nayVotes": 130,
-    "missedVotes": 3,
-    "totalVotes": 235,
-    "participationPct": 98.72,
-    "missedVotePct": 1.28,
-    "rawScore": 246.5,
-    "score": 246.5,
-    "scoreNormalized": 97.05
+    "yeaVotes": 261,
+    "nayVotes": 399,
+    "missedVotes": 8,
+    "totalVotes": 668,
+    "participationPct": 98.8,
+    "missedVotePct": 1.2,
+    "rawScore": 672,
+    "score": 672,
+    "scoreNormalized": 98.46
   },
   {
     "name": "Catherine Cortez Masto",
@@ -3735,15 +3735,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 88,
-    "nayVotes": 147,
-    "missedVotes": 0,
-    "totalVotes": 235,
-    "participationPct": 100,
-    "missedVotePct": 0,
-    "rawScore": 243,
-    "score": 243,
-    "scoreNormalized": 95.67
+    "yeaVotes": 223,
+    "nayVotes": 428,
+    "missedVotes": 17,
+    "totalVotes": 668,
+    "participationPct": 97.46,
+    "missedVotePct": 2.54,
+    "rawScore": 650.5,
+    "score": 650.5,
+    "scoreNormalized": 95.31
   },
   {
     "name": "Lisa Blunt Rochester",
@@ -3790,15 +3790,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 55,
-    "nayVotes": 180,
-    "missedVotes": 0,
-    "totalVotes": 235,
-    "participationPct": 100,
-    "missedVotePct": 0,
-    "rawScore": 243,
-    "score": 243,
-    "scoreNormalized": 95.67
+    "yeaVotes": 166,
+    "nayVotes": 499,
+    "missedVotes": 3,
+    "totalVotes": 668,
+    "participationPct": 99.55,
+    "missedVotePct": 0.45,
+    "rawScore": 671.5,
+    "score": 671.5,
+    "scoreNormalized": 98.39
   },
   {
     "name": "Jim Banks",
@@ -3845,15 +3845,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 184,
-    "nayVotes": 51,
-    "missedVotes": 0,
-    "totalVotes": 235,
-    "participationPct": 100,
-    "missedVotePct": 0,
-    "rawScore": 243,
-    "score": 243,
-    "scoreNormalized": 95.67
+    "yeaVotes": 509,
+    "nayVotes": 150,
+    "missedVotes": 9,
+    "totalVotes": 668,
+    "participationPct": 98.65,
+    "missedVotePct": 1.35,
+    "rawScore": 662.5,
+    "score": 662.5,
+    "scoreNormalized": 97.07
   },
   {
     "name": "Roger Marshall",
@@ -3893,15 +3893,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 183,
-    "nayVotes": 50,
-    "missedVotes": 2,
-    "totalVotes": 235,
-    "participationPct": 99.15,
-    "missedVotePct": 0.85,
-    "rawScore": 238,
-    "score": 238,
-    "scoreNormalized": 93.7
+    "yeaVotes": 513,
+    "nayVotes": 149,
+    "missedVotes": 6,
+    "totalVotes": 668,
+    "participationPct": 99.1,
+    "missedVotePct": 0.9,
+    "rawScore": 665,
+    "score": 665,
+    "scoreNormalized": 97.44
   },
   {
     "name": "Ted Budd",
@@ -3948,15 +3948,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 183,
-    "nayVotes": 52,
-    "missedVotes": 0,
-    "totalVotes": 235,
-    "participationPct": 100,
-    "missedVotePct": 0,
-    "rawScore": 243,
-    "score": 243,
-    "scoreNormalized": 95.67
+    "yeaVotes": 499,
+    "nayVotes": 146,
+    "missedVotes": 23,
+    "totalVotes": 668,
+    "participationPct": 96.56,
+    "missedVotePct": 3.44,
+    "rawScore": 641.5,
+    "score": 641.5,
+    "scoreNormalized": 93.99
   },
   {
     "name": "Jacky Rosen",
@@ -3996,15 +3996,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 98,
-    "nayVotes": 137,
-    "missedVotes": 0,
-    "totalVotes": 235,
-    "participationPct": 100,
-    "missedVotePct": 0,
-    "rawScore": 241,
-    "score": 241,
-    "scoreNormalized": 94.88
+    "yeaVotes": 238,
+    "nayVotes": 419,
+    "missedVotes": 11,
+    "totalVotes": 668,
+    "participationPct": 98.35,
+    "missedVotePct": 1.65,
+    "rawScore": 657.5,
+    "score": 657.5,
+    "scoreNormalized": 96.34
   },
   {
     "name": "John Curtis",
@@ -4044,15 +4044,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 183,
-    "nayVotes": 51,
-    "missedVotes": 1,
-    "totalVotes": 235,
-    "participationPct": 99.57,
-    "missedVotePct": 0.43,
-    "rawScore": 239.5,
-    "score": 239.5,
-    "scoreNormalized": 94.29
+    "yeaVotes": 508,
+    "nayVotes": 149,
+    "missedVotes": 11,
+    "totalVotes": 668,
+    "participationPct": 98.35,
+    "missedVotePct": 1.65,
+    "rawScore": 657.5,
+    "score": 657.5,
+    "scoreNormalized": 96.34
   },
   {
     "name": "Tina Smith",
@@ -4106,15 +4106,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 58,
-    "nayVotes": 175,
-    "missedVotes": 2,
-    "totalVotes": 235,
-    "participationPct": 99.15,
-    "missedVotePct": 0.85,
-    "rawScore": 242,
-    "score": 242,
-    "scoreNormalized": 95.28
+    "yeaVotes": 147,
+    "nayVotes": 489,
+    "missedVotes": 32,
+    "totalVotes": 668,
+    "participationPct": 95.21,
+    "missedVotePct": 4.79,
+    "rawScore": 630,
+    "score": 630,
+    "scoreNormalized": 92.31
   },
   {
     "name": "Cindy Hyde-Smith",
@@ -4168,15 +4168,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 177,
-    "nayVotes": 52,
-    "missedVotes": 6,
-    "totalVotes": 235,
-    "participationPct": 97.45,
-    "missedVotePct": 2.55,
-    "rawScore": 236,
-    "score": 236,
-    "scoreNormalized": 92.91
+    "yeaVotes": 504,
+    "nayVotes": 153,
+    "missedVotes": 11,
+    "totalVotes": 668,
+    "participationPct": 98.35,
+    "missedVotePct": 1.65,
+    "rawScore": 661.5,
+    "score": 661.5,
+    "scoreNormalized": 96.92
   },
   {
     "name": "Elissa Slotkin",
@@ -4223,15 +4223,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 94,
-    "nayVotes": 130,
-    "missedVotes": 11,
-    "totalVotes": 235,
-    "participationPct": 95.32,
-    "missedVotePct": 4.68,
-    "rawScore": 226.5,
-    "score": 226.5,
-    "scoreNormalized": 89.17
+    "yeaVotes": 222,
+    "nayVotes": 424,
+    "missedVotes": 22,
+    "totalVotes": 668,
+    "participationPct": 96.71,
+    "missedVotePct": 3.29,
+    "rawScore": 643,
+    "score": 643,
+    "scoreNormalized": 94.21
   },
   {
     "name": "Andy Kim",
@@ -4285,15 +4285,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 73,
-    "nayVotes": 162,
-    "missedVotes": 0,
-    "totalVotes": 235,
-    "participationPct": 100,
-    "missedVotePct": 0,
-    "rawScore": 245,
-    "score": 245,
-    "scoreNormalized": 96.46
+    "yeaVotes": 190,
+    "nayVotes": 475,
+    "missedVotes": 3,
+    "totalVotes": 668,
+    "participationPct": 99.55,
+    "missedVotePct": 0.45,
+    "rawScore": 673.5,
+    "score": 673.5,
+    "scoreNormalized": 98.68
   },
   {
     "name": "Rick Scott",
@@ -4340,15 +4340,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 184,
-    "nayVotes": 50,
-    "missedVotes": 1,
-    "totalVotes": 235,
-    "participationPct": 99.57,
-    "missedVotePct": 0.43,
-    "rawScore": 245.5,
-    "score": 245.5,
-    "scoreNormalized": 96.65
+    "yeaVotes": 518,
+    "nayVotes": 148,
+    "missedVotes": 2,
+    "totalVotes": 668,
+    "participationPct": 99.7,
+    "missedVotePct": 0.3,
+    "rawScore": 677,
+    "score": 677,
+    "scoreNormalized": 99.19
   },
   {
     "name": "Joshua Hawley",
@@ -4388,15 +4388,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 180,
-    "nayVotes": 42,
-    "missedVotes": 13,
-    "totalVotes": 235,
-    "participationPct": 94.47,
-    "missedVotePct": 5.53,
-    "rawScore": 221.5,
-    "score": 221.5,
-    "scoreNormalized": 87.2
+    "yeaVotes": 491,
+    "nayVotes": 146,
+    "missedVotes": 31,
+    "totalVotes": 668,
+    "participationPct": 95.36,
+    "missedVotePct": 4.64,
+    "rawScore": 627.5,
+    "score": 627.5,
+    "scoreNormalized": 91.94
   },
   {
     "name": "Mark Kelly",
@@ -4450,15 +4450,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 87,
-    "nayVotes": 141,
-    "missedVotes": 7,
-    "totalVotes": 235,
-    "participationPct": 97.02,
-    "missedVotePct": 2.98,
-    "rawScore": 234.5,
-    "score": 234.5,
-    "scoreNormalized": 92.32
+    "yeaVotes": 230,
+    "nayVotes": 398,
+    "missedVotes": 40,
+    "totalVotes": 668,
+    "participationPct": 94.01,
+    "missedVotePct": 5.99,
+    "rawScore": 618,
+    "score": 618,
+    "scoreNormalized": 90.55
   },
   {
     "name": "Cynthia Lummis",
@@ -4498,15 +4498,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 170,
-    "nayVotes": 49,
-    "missedVotes": 16,
-    "totalVotes": 235,
-    "participationPct": 93.19,
-    "missedVotePct": 6.81,
-    "rawScore": 217,
-    "score": 217,
-    "scoreNormalized": 85.43
+    "yeaVotes": 495,
+    "nayVotes": 151,
+    "missedVotes": 22,
+    "totalVotes": 668,
+    "participationPct": 96.71,
+    "missedVotePct": 3.29,
+    "rawScore": 641,
+    "score": 641,
+    "scoreNormalized": 93.92
   },
   {
     "name": "Tommy Tuberville",
@@ -4560,15 +4560,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 176,
-    "nayVotes": 50,
-    "missedVotes": 9,
-    "totalVotes": 235,
-    "participationPct": 96.17,
-    "missedVotePct": 3.83,
-    "rawScore": 231.5,
-    "score": 231.5,
-    "scoreNormalized": 91.14
+    "yeaVotes": 489,
+    "nayVotes": 150,
+    "missedVotes": 29,
+    "totalVotes": 668,
+    "participationPct": 95.66,
+    "missedVotePct": 4.34,
+    "rawScore": 634.5,
+    "score": 634.5,
+    "scoreNormalized": 92.97
   },
   {
     "name": "John Hickenlooper",
@@ -4608,15 +4608,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 94,
-    "nayVotes": 138,
-    "missedVotes": 3,
-    "totalVotes": 235,
-    "participationPct": 98.72,
-    "missedVotePct": 1.28,
-    "rawScore": 236.5,
-    "score": 236.5,
-    "scoreNormalized": 93.11
+    "yeaVotes": 204,
+    "nayVotes": 455,
+    "missedVotes": 9,
+    "totalVotes": 668,
+    "participationPct": 98.65,
+    "missedVotePct": 1.35,
+    "rawScore": 660.5,
+    "score": 660.5,
+    "scoreNormalized": 96.78
   },
   {
     "name": "Bill Hagerty",
@@ -4663,15 +4663,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 182,
-    "nayVotes": 49,
-    "missedVotes": 4,
-    "totalVotes": 235,
-    "participationPct": 98.3,
-    "missedVotePct": 1.7,
-    "rawScore": 237,
-    "score": 237,
-    "scoreNormalized": 93.31
+    "yeaVotes": 502,
+    "nayVotes": 147,
+    "missedVotes": 19,
+    "totalVotes": 668,
+    "participationPct": 97.16,
+    "missedVotePct": 2.84,
+    "rawScore": 647.5,
+    "score": 647.5,
+    "scoreNormalized": 94.87
   },
   {
     "name": "Alejandro Padilla",
@@ -4725,15 +4725,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 59,
-    "nayVotes": 161,
-    "missedVotes": 15,
-    "totalVotes": 235,
-    "participationPct": 93.62,
-    "missedVotePct": 6.38,
-    "rawScore": 230.5,
-    "score": 230.5,
-    "scoreNormalized": 90.75
+    "yeaVotes": 158,
+    "nayVotes": 481,
+    "missedVotes": 29,
+    "totalVotes": 668,
+    "participationPct": 95.66,
+    "missedVotePct": 4.34,
+    "rawScore": 642.5,
+    "score": 642.5,
+    "scoreNormalized": 94.14
   },
   {
     "name": "Jon Ossoff",
@@ -4773,15 +4773,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 70,
-    "nayVotes": 154,
-    "missedVotes": 11,
-    "totalVotes": 235,
-    "participationPct": 95.32,
-    "missedVotePct": 4.68,
-    "rawScore": 224.5,
-    "score": 224.5,
-    "scoreNormalized": 88.39
+    "yeaVotes": 188,
+    "nayVotes": 430,
+    "missedVotes": 50,
+    "totalVotes": 668,
+    "participationPct": 92.51,
+    "missedVotePct": 7.49,
+    "rawScore": 599,
+    "score": 599,
+    "scoreNormalized": 87.77
   },
   {
     "name": "Raphael Warnock",
@@ -4828,15 +4828,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 77,
-    "nayVotes": 154,
-    "missedVotes": 4,
-    "totalVotes": 235,
-    "participationPct": 98.3,
-    "missedVotePct": 1.7,
-    "rawScore": 237,
-    "score": 237,
-    "scoreNormalized": 93.31
+    "yeaVotes": 208,
+    "nayVotes": 442,
+    "missedVotes": 18,
+    "totalVotes": 668,
+    "participationPct": 97.31,
+    "missedVotePct": 2.69,
+    "rawScore": 649,
+    "score": 649,
+    "scoreNormalized": 95.09
   },
   {
     "name": "Katie Britt",
@@ -4890,15 +4890,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 182,
-    "nayVotes": 50,
-    "missedVotes": 3,
-    "totalVotes": 235,
-    "participationPct": 98.72,
-    "missedVotePct": 1.28,
-    "rawScore": 240.5,
-    "score": 240.5,
-    "scoreNormalized": 94.69
+    "yeaVotes": 503,
+    "nayVotes": 150,
+    "missedVotes": 15,
+    "totalVotes": 668,
+    "participationPct": 97.75,
+    "missedVotePct": 2.25,
+    "rawScore": 655.5,
+    "score": 655.5,
+    "scoreNormalized": 96.04
   },
   {
     "name": "Eric Schmitt",
@@ -4945,15 +4945,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 184,
-    "nayVotes": 50,
-    "missedVotes": 1,
-    "totalVotes": 235,
-    "participationPct": 99.57,
-    "missedVotePct": 0.43,
-    "rawScore": 245.5,
-    "score": 245.5,
-    "scoreNormalized": 96.65
+    "yeaVotes": 512,
+    "nayVotes": 147,
+    "missedVotes": 9,
+    "totalVotes": 668,
+    "participationPct": 98.65,
+    "missedVotePct": 1.35,
+    "rawScore": 666.5,
+    "score": 666.5,
+    "scoreNormalized": 97.66
   },
   {
     "name": "John Fetterman",
@@ -5000,15 +5000,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 98,
-    "nayVotes": 108,
-    "missedVotes": 29,
-    "totalVotes": 235,
-    "participationPct": 87.66,
-    "missedVotePct": 12.34,
-    "rawScore": 199.5,
-    "score": 199.5,
-    "scoreNormalized": 78.54
+    "yeaVotes": 271,
+    "nayVotes": 352,
+    "missedVotes": 45,
+    "totalVotes": 668,
+    "participationPct": 93.26,
+    "missedVotePct": 6.74,
+    "rawScore": 608.5,
+    "score": 608.5,
+    "scoreNormalized": 89.16
   },
   {
     "name": "Pete Ricketts",
@@ -5048,15 +5048,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 181,
-    "nayVotes": 52,
+    "yeaVotes": 510,
+    "nayVotes": 156,
     "missedVotes": 2,
-    "totalVotes": 235,
-    "participationPct": 99.15,
-    "missedVotePct": 0.85,
-    "rawScore": 240,
-    "score": 240,
-    "scoreNormalized": 94.49
+    "totalVotes": 668,
+    "participationPct": 99.7,
+    "missedVotePct": 0.3,
+    "rawScore": 673,
+    "score": 673,
+    "scoreNormalized": 98.61
   },
   {
     "name": "Angela Alsobrooks",
@@ -5103,15 +5103,15 @@
         "party": "minority"
       }
     ],
-    "yeaVotes": 63,
-    "nayVotes": 168,
-    "missedVotes": 4,
-    "totalVotes": 235,
-    "participationPct": 98.3,
-    "missedVotePct": 1.7,
-    "rawScore": 237,
-    "score": 237,
-    "scoreNormalized": 93.31
+    "yeaVotes": 183,
+    "nayVotes": 476,
+    "missedVotes": 9,
+    "totalVotes": 668,
+    "participationPct": 98.65,
+    "missedVotePct": 1.35,
+    "rawScore": 662.5,
+    "score": 662.5,
+    "scoreNormalized": 97.07
   },
   {
     "name": "Tim Sheehy",
@@ -5151,15 +5151,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 183,
-    "nayVotes": 49,
-    "missedVotes": 3,
-    "totalVotes": 235,
-    "participationPct": 98.72,
-    "missedVotePct": 1.28,
-    "rawScore": 236.5,
-    "score": 236.5,
-    "scoreNormalized": 93.11
+    "yeaVotes": 498,
+    "nayVotes": 151,
+    "missedVotes": 19,
+    "totalVotes": 668,
+    "participationPct": 97.16,
+    "missedVotePct": 2.84,
+    "rawScore": 645.5,
+    "score": 645.5,
+    "scoreNormalized": 94.58
   },
   {
     "name": "Bernie Moreno",
@@ -5199,15 +5199,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 185,
-    "nayVotes": 50,
+    "yeaVotes": 519,
+    "nayVotes": 149,
     "missedVotes": 0,
-    "totalVotes": 235,
+    "totalVotes": 668,
     "participationPct": 100,
     "missedVotePct": 0,
-    "rawScore": 241,
-    "score": 241,
-    "scoreNormalized": 94.88
+    "rawScore": 674,
+    "score": 674,
+    "scoreNormalized": 98.75
   },
   {
     "name": "Dave McCormick",
@@ -5261,15 +5261,15 @@
         "party": "majority"
       }
     ],
-    "yeaVotes": 177,
-    "nayVotes": 51,
-    "missedVotes": 7,
-    "totalVotes": 235,
-    "participationPct": 97.02,
-    "missedVotePct": 2.98,
-    "rawScore": 236.5,
-    "score": 236.5,
-    "scoreNormalized": 93.11
+    "yeaVotes": 496,
+    "nayVotes": 152,
+    "missedVotes": 20,
+    "totalVotes": 668,
+    "participationPct": 97.01,
+    "missedVotePct": 2.99,
+    "rawScore": 650,
+    "score": 650,
+    "scoreNormalized": 95.24
   },
   {
     "name": "Jim Justice",
@@ -5317,7 +5317,7 @@
     "missedVotePct": 0,
     "rawScore": 6,
     "score": 6,
-    "scoreNormalized": 2.36
+    "scoreNormalized": 0.88
   },
   {
     "name": "Jon Husted",
@@ -5365,7 +5365,7 @@
     "missedVotePct": 0,
     "rawScore": 6,
     "score": 6,
-    "scoreNormalized": 2.36
+    "scoreNormalized": 0.88
   },
   {
     "name": "Ashley Moody",
@@ -5427,6 +5427,6 @@
     "missedVotePct": 0,
     "rawScore": 10,
     "score": 10,
-    "scoreNormalized": 3.94
+    "scoreNormalized": 1.47
   }
 ]
