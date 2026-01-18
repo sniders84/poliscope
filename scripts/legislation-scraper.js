@@ -21,9 +21,9 @@ function ensureSchema(sen) {
   return sen;
 }
 
-async function getTotalCount(memberId, type) { // type: 'sponsored' or 'cosponsored'
+async function getTotalCount(memberId, type) {
   const endpoint = `${type}-legislation`;
-  const url = `https://api.congress.gov/v3/member/${memberId}/${endpoint}?limit=1&api_key=${API_KEY}`; // limit=1 for count only
+  const url = `https://api.congress.gov/v3/member/${memberId}/${endpoint}?limit=1&api_key=${API_KEY}`;
   try {
     const resp = await axios.get(url, { timeout: 60000 });
     return resp.data?.pagination?.count || 0;
@@ -33,20 +33,52 @@ async function getTotalCount(memberId, type) { // type: 'sponsored' or 'cosponso
   }
 }
 
-async function getEnactedCount(bioguideId, role) { // role: 'sponsor' or 'cosponsor'
-  const url = `https://api.congress.gov/v3/bill?sponsor=${bioguideId}&law-type=public&limit=1&api_key=${API_KEY}`;
-  if (role === 'cosponsor') {
-    url = url.replace('sponsor=', 'cosponsor=');
-  }
+async function getSponsoredEnactedCount(bioguideId) {
+  let url = `https://api.congress.gov/v3/bill?sponsor=${bioguideId}&law-type=public&limit=1&api_key=${API_KEY}`;
   try {
     const resp = await axios.get(url, { timeout: 60000 });
     const count = resp.data?.pagination?.count || 0;
-    console.log(`Enacted ${role} count for ${bioguideId}: ${count}`);
+    console.log(`Enacted sponsored (public law) count for ${bioguideId}: ${count}`);
     return count;
   } catch (err) {
-    console.error(`Enacted count error for ${role} on ${bioguideId}: ${err.message}`);
+    console.error(`Enacted sponsored error for ${bioguideId}: ${err.message}`);
     return 0;
   }
+}
+
+async function getCosponsoredEnactedCount(memberId) {
+  let url = `https://api.congress.gov/v3/member/${memberId}/cosponsored-legislation?limit=250&api_key=${API_KEY}`;
+  let enacted = 0;
+  let sampledAction = null; // For debug
+
+  while (url) {
+    try {
+      const resp = await axios.get(url, { timeout: 60000 });
+      const items = resp.data?.cosponsoredLegislation?.item || [];
+
+      items.forEach(item => {
+        const actionText = (item.latestAction?.text || '').trim();
+        const lower = actionText.toLowerCase();
+        if (lower.includes('became public law no:') || lower.includes('became public law')) {
+          enacted++;
+          if (!sampledAction) sampledAction = actionText; // Sample one for log
+        }
+      });
+
+      url = resp.data?.pagination?.next ? `${resp.data.pagination.next}&api_key=${API_KEY}` : null;
+    } catch (err) {
+      console.error(`Cosponsored enacted error on ${memberId}: ${err.message}`);
+      url = null;
+    }
+  }
+
+  if (sampledAction) {
+    console.log(`Sample latestAction.text for potential enacted cosponsored bill on ${memberId}: "${sampledAction}"`);
+  } else if (enacted === 0) {
+    console.warn(`No enacted cosponsored detected for ${memberId} — check if latestAction has enacted info`);
+  }
+
+  return enacted;
 }
 
 (async () => {
@@ -64,13 +96,11 @@ async function getEnactedCount(bioguideId, role) { // role: 'sponsor' or 'cospon
       continue;
     }
     try {
-      // Totals from member endpoint (fast)
       sen.sponsoredBills = await getTotalCount(sen.congressgovId, 'sponsored');
       sen.cosponsoredBills = await getTotalCount(sen.congressgovId, 'cosponsored');
 
-      // Enacted counts from bill endpoint filtered by law-type
-      sen.becameLawBills = await getEnactedCount(sen.congressgovId, 'sponsor');
-      sen.becameLawCosponsoredBills = await getEnactedCount(sen.congressgovId, 'cosponsor');
+      sen.becameLawBills = await getSponsoredEnactedCount(sen.congressgovId);
+      sen.becameLawCosponsoredBills = await getCosponsoredEnactedCount(sen.congressgovId);
 
       console.log(`${sen.name}: sponsored=${sen.sponsoredBills} (law=${sen.becameLawBills}), cosponsored=${sen.cosponsoredBills} (law=${sen.becameLawCosponsoredBills})`);
     } catch (err) {
