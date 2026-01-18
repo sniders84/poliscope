@@ -1,75 +1,47 @@
-// Bulk legislation scraper for 119th Congress
-// Fetches all bills once, then filters by senator locally
+// Career totals scraper for senators
+// Pulls lifetime sponsored/cosponsored counts from Congress.gov profile pages
 
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
 
 const OUT_PATH = path.join(__dirname, '../public/senators-rankings.json');
-const API_KEY = process.env.CONGRESS_API_KEY;
-const CONGRESS = 119;
-const PAGE_SIZE = 250;
-
-if (!API_KEY) {
-  console.error('Missing CONGRESS_API_KEY');
-  process.exit(1);
-}
 
 const client = axios.create({
-  baseURL: 'https://api.congress.gov/v3',
   timeout: 30000,
   headers: {
-    'X-Api-Key': API_KEY,
     'User-Agent': 'poliscope/1.0',
-    'Accept': 'application/json'
-  },
-  validateStatus: s => s >= 200 && s < 500
+    'Accept': 'text/html'
+  }
 });
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function fetchAllBills() {
-  let bills = [];
-  let page = 1;
-  while (true) {
-    const url = `/bill?congress=${CONGRESS}&page=${page}&pageSize=${PAGE_SIZE}&fields=congress,lawNumber,latestAction,sponsor,cosponsors`;
+async function getCareerTotals(bioguideId) {
+  const url = `https://www.congress.gov/member/${bioguideId}`;
+  try {
     const resp = await client.get(url);
-    if (resp.status === 429) {
-      console.warn(`Rate limited on page ${page}, backing off 60s...`);
-      await sleep(60000);
-      continue;
-    }
-    if (!resp.data?.bills || resp.data.bills.length === 0) break;
-    bills = bills.concat(resp.data.bills);
-    console.log(`Fetched page ${page}, total bills=${bills.length}`);
-    if (resp.data.bills.length < PAGE_SIZE) break;
-    page++;
-    await sleep(5000); // pause between pages
+    const html = resp.data;
+
+    const sponsoredMatch = html.match(/Sponsored Bills:\s*([0-9,]+)/i);
+    const cosponsoredMatch = html.match(/Cosponsored Bills:\s*([0-9,]+)/i);
+
+    const sponsored = sponsoredMatch ? parseInt(sponsoredMatch[1].replace(/,/g, ''), 10) : 0;
+    const cosponsored = cosponsoredMatch ? parseInt(cosponsoredMatch[1].replace(/,/g, ''), 10) : 0;
+
+    return { sponsored, cosponsored };
+  } catch (err) {
+    console.error(`Failed to fetch career totals for ${bioguideId}: ${err.message}`);
+    return { sponsored: 0, cosponsored: 0 };
   }
-  return bills;
-}
-
-function countForSenator(bills, bioguideId) {
-  const sponsored = bills.filter(b => b.sponsor?.bioguideId === bioguideId);
-  const cosponsored = bills.filter(b => (b.cosponsors || []).some(c => c.bioguideId === bioguideId));
-
-  const becameLawSponsored = sponsored.filter(b => (b.lawNumber || (b.latestAction?.text || '').includes('Public Law'))).length;
-  const becameLawCosponsored = cosponsored.filter(b => (b.lawNumber || (b.latestAction?.text || '').includes('Public Law'))).length;
-
-  return {
-    sponsored: sponsored.length,
-    cosponsored: cosponsored.length,
-    becameLawSponsored,
-    becameLawCosponsored
-  };
 }
 
 function ensureSchema(sen) {
   sen.sponsoredBills ??= 0;
   sen.cosponsoredBills ??= 0;
-  sen.becameLawBills ??= 0;
+  sen.becameLawBills ??= 0; // career totals don’t separate became-law, leave 0
   sen.becameLawCosponsoredBills ??= 0;
   return sen;
 }
@@ -77,20 +49,16 @@ function ensureSchema(sen) {
 (async () => {
   const sens = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureSchema);
 
-  console.log(`Fetching all bills for ${CONGRESS}th Congress...`);
-  const bills = await fetchAllBills();
-  console.log(`Fetched ${bills.length} bills total`);
-
   for (const sen of sens) {
-    const { sponsored, cosponsored, becameLawSponsored, becameLawCosponsored } =
-      countForSenator(bills, sen.bioguideId);
+    const { sponsored, cosponsored } = await getCareerTotals(sen.bioguideId);
     sen.sponsoredBills = sponsored;
     sen.cosponsoredBills = cosponsored;
-    sen.becameLawBills = becameLawSponsored;
-    sen.becameLawCosponsoredBills = becameLawCosponsored;
-    console.log(`${sen.name}: sponsored=${sponsored}, cosponsored=${cosponsored}, becameLawSponsored=${becameLawSponsored}, becameLawCosponsored=${becameLawCosponsored}`);
+    sen.becameLawBills = 0;
+    sen.becameLawCosponsoredBills = 0;
+    console.log(`${sen.name}: sponsored=${sponsored}, cosponsored=${cosponsored}`);
+    await sleep(5000); // pause between senators to avoid hammering
   }
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(sens, null, 2));
-  console.log('Senate legislation updated with 119th-only counts + became-law detection (bulk fetch)');
+  console.log('Senate legislation updated with career totals');
 })();
