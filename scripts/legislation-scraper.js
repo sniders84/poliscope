@@ -1,5 +1,5 @@
 // Senate legislation scraper using Congress.gov API
-// Iterates through each senator, queries sponsored/cosponsored bills, counts totals and became-law bills
+// Iterates through each senator sequentially, throttled to avoid 429 errors
 
 const fs = require('fs');
 const path = require('path');
@@ -26,16 +26,27 @@ const client = axios.create({
   validateStatus: s => s >= 200 && s < 500
 });
 
-async function getWithRetry(url, attempts = 2) {
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function getWithRetry(url, attempts = 3, delay = 2000) {
   let lastErr;
-  for (let i = 0; i <= attempts; i++) {
+  for (let i = 0; i < attempts; i++) {
     try {
       const resp = await client.get(url);
+      if (resp.status === 429) {
+        console.warn(`Rate limited on ${url}, sleeping ${delay}ms...`);
+        await sleep(delay);
+        delay *= 2; // exponential backoff
+        continue;
+      }
       if (resp.status >= 400) throw new Error(`HTTP ${resp.status}`);
       return resp;
     } catch (err) {
       lastErr = err;
-      await new Promise(r => setTimeout(r, 800));
+      await sleep(delay);
+      delay *= 2;
     }
   }
   throw lastErr;
@@ -55,18 +66,11 @@ async function getBecameLawCount(baseUrl) {
   let count = countLawItems(first.data.bills || []);
   const pages = Math.ceil(total / PAGE_SIZE);
 
-  const urls = [];
   for (let p = 2; p <= pages; p++) {
-    urls.push(`${baseUrl}&page=${p}&pageSize=${PAGE_SIZE}&fields=lawNumber,latestAction,congress`);
-  }
-
-  const concurrency = 10;
-  for (let i = 0; i < urls.length; i += concurrency) {
-    const batch = urls.slice(i, i + concurrency);
-    const resps = await Promise.all(batch.map(u => getWithRetry(u).catch(() => null)));
-    for (const r of resps) {
-      if (r) count += countLawItems(r.data.bills || []);
-    }
+    const url = `${baseUrl}&page=${p}&pageSize=${PAGE_SIZE}&fields=lawNumber,latestAction,congress`;
+    const resp = await getWithRetry(url).catch(() => null);
+    if (resp) count += countLawItems(resp.data.bills || []);
+    await sleep(500); // small pause between pages
   }
 
   return count;
@@ -82,15 +86,13 @@ async function getCounts(bioguideId) {
   const sponsoredURL = `/bill?congress=${CONGRESS}&sponsorId=${bioguideId}`;
   const cosponsoredURL = `/bill?congress=${CONGRESS}&cosponsorId=${bioguideId}`;
 
-  const [sponsored, cosponsored] = await Promise.all([
-    getCount(sponsoredURL),
-    getCount(cosponsoredURL)
-  ]);
+  const sponsored = await getCount(sponsoredURL);
+  await sleep(1000);
+  const cosponsored = await getCount(cosponsoredURL);
 
-  const [becameLawSponsored, becameLawCosponsored] = await Promise.all([
-    getBecameLawCount(sponsoredURL),
-    getBecameLawCount(cosponsoredURL)
-  ]);
+  const becameLawSponsored = await getBecameLawCount(sponsoredURL);
+  await sleep(1000);
+  const becameLawCosponsored = await getBecameLawCount(cosponsoredURL);
 
   return { sponsored, cosponsored, becameLawSponsored, becameLawCosponsored };
 }
@@ -105,23 +107,20 @@ function ensureSchema(sen) {
 
 (async () => {
   const sens = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureSchema);
-  const concurrency = 5; // keep concurrency modest to avoid API throttling
 
-  for (let i = 0; i < sens.length; i += concurrency) {
-    const batch = sens.slice(i, i + concurrency);
-    await Promise.all(batch.map(async sen => {
-      try {
-        const { sponsored, cosponsored, becameLawSponsored, becameLawCosponsored } =
-          await getCounts(sen.bioguideId);
-        sen.sponsoredBills = sponsored;
-        sen.cosponsoredBills = cosponsored;
-        sen.becameLawBills = becameLawSponsored;
-        sen.becameLawCosponsoredBills = becameLawCosponsored;
-        console.log(`${sen.name}: sponsored=${sponsored}, cosponsored=${cosponsored}, becameLawSponsored=${becameLawSponsored}, becameLawCosponsored=${becameLawCosponsored}`);
-      } catch (err) {
-        console.error(`Legislation failed for ${sen.bioguideId} (${sen.name}): ${err.message}`);
-      }
-    }));
+  for (const sen of sens) {
+    try {
+      const { sponsored, cosponsored, becameLawSponsored, becameLawCosponsored } =
+        await getCounts(sen.bioguideId);
+      sen.sponsoredBills = sponsored;
+      sen.cosponsoredBills = cosponsored;
+      sen.becameLawBills = becameLawSponsored;
+      sen.becameLawCosponsoredBills = becameLawCosponsored;
+      console.log(`${sen.name}: sponsored=${sponsored}, cosponsored=${cosponsored}, becameLawSponsored=${becameLawSponsored}, becameLawCosponsored=${becameLawCosponsored}`);
+    } catch (err) {
+      console.error(`Legislation failed for ${sen.bioguideId} (${sen.name}): ${err.message}`);
+    }
+    await sleep(2000); // pause between senators to avoid 429
   }
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(sens, null, 2));
