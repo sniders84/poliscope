@@ -26,14 +26,29 @@ jobs:
       - name: Bootstrap senators
         run: node scripts/bootstrap-senators.js
 
+      - name: Verify Congress.gov API key
+        run: |
+          if [ -z "${CONGRESS_API_KEY}" ]; then
+            echo "ERROR: CONGRESS_API_KEY is not set. Add it in Settings → Secrets → Actions."
+            exit 1
+          fi
+        env:
+          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
+
       - name: Scrape legislation (career totals)
         run: node scripts/legislation-scraper.js
+        env:
+          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
 
       - name: Scrape committees
         run: node scripts/committee-scraper.js
+        env:
+          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
 
       - name: Scrape votes
         run: node scripts/votes-scraper.js
+        env:
+          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
 
       - name: Merge senator data
         run: node scripts/merge-senators.js
