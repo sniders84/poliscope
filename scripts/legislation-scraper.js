@@ -1,4 +1,4 @@
-// Accurate + scoped Senate legislation scraper for the 119th Congress
+// Senate legislation scraper using correct endpoints for 119th Congress
 // Totals via pagination.count; became-law via minimal-field pagination
 
 const fs = require('fs');
@@ -41,13 +41,13 @@ async function getWithRetry(url, attempts = 2) {
   throw lastErr;
 }
 
-async function getCount(baseUrl) {
-  const resp = await getWithRetry(`${baseUrl}&congress=${CONGRESS}`);
+async function getCount(url) {
+  const resp = await getWithRetry(url);
   return resp.data?.pagination?.count || 0;
 }
 
 async function getBecameLawCount(baseUrl, key) {
-  const firstUrl = `${baseUrl}&congress=${CONGRESS}&pageSize=${PAGE_SIZE}&fields=lawNumber,latestAction,congress`;
+  const firstUrl = `${baseUrl}&pageSize=${PAGE_SIZE}&fields=lawNumber,latestAction,congress`;
   const first = await getWithRetry(firstUrl);
   const total = first.data?.pagination?.count || 0;
   if (total === 0) return 0;
@@ -57,7 +57,7 @@ async function getBecameLawCount(baseUrl, key) {
 
   const urls = [];
   for (let p = 2; p <= pages; p++) {
-    urls.push(`${baseUrl}&congress=${CONGRESS}&page=${p}&pageSize=${PAGE_SIZE}&fields=lawNumber,latestAction,congress`);
+    urls.push(`${baseUrl}&page=${p}&pageSize=${PAGE_SIZE}&fields=lawNumber,latestAction,congress`);
   }
 
   const concurrency = 10;
@@ -79,8 +79,8 @@ function countLawItems(items) {
 }
 
 async function getCounts(bioguideId) {
-  const sponsoredBase = `/member/${bioguideId}/sponsored-legislation`;
-  const cosponsoredBase = `/member/${bioguideId}/cosponsored-legislation`;
+  const sponsoredBase = `/member/${bioguideId}/legislation?sponsor=true&congress=${CONGRESS}`;
+  const cosponsoredBase = `/member/${bioguideId}/legislation?cosponsor=true&congress=${CONGRESS}`;
 
   const [sponsored, cosponsored] = await Promise.all([
     getCount(sponsoredBase),
@@ -88,8 +88,8 @@ async function getCounts(bioguideId) {
   ]);
 
   const [becameLawSponsored, becameLawCosponsored] = await Promise.all([
-    getBecameLawCount(sponsoredBase, 'sponsoredLegislation'),
-    getBecameLawCount(cosponsoredBase, 'cosponsoredLegislation')
+    getBecameLawCount(sponsoredBase, 'legislation'),
+    getBecameLawCount(cosponsoredBase, 'legislation')
   ]);
 
   return { sponsored, cosponsored, becameLawSponsored, becameLawCosponsored };
