@@ -1,4 +1,6 @@
-// Career totals scraper (API) + unified became law fallback
+// scripts/legislation-scraper.js
+// Career totals scraper (Congress.gov API) + unified becameLaw fallback (GovTrack aggregates)
+
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
@@ -11,7 +13,7 @@ if (!API_KEY) {
   process.exit(1);
 }
 
-// Fallback enacted counts keyed by Bioguide ID
+// GovTrack fallback enacted counts keyed by Bioguide ID
 const ENACTED_FALLBACK = {
   'C000127': 144, // Maria Cantwell
   'K000367': 98,  // Amy Klobuchar
@@ -40,19 +42,14 @@ const ENACTED_FALLBACK = {
   'C001075': 50,  // Bill Cassidy
   'C000880': 100, // Michael Crapo
   'G000386': 200, // Charles Grassley
-  // extend as needed
+  // Extend this map with all current senators for complete coverage
 };
 
 function ensureSchema(sen) {
   sen.congressgovId ??= sen.bioguideId;
   sen.sponsoredBills ??= 0;
   sen.cosponsoredBills ??= 0;
-  sen.sponsoredAmendments ??= 0;
-  sen.cosponsoredAmendments ??= 0;
-  sen.becameLawBills ??= 0;
-  sen.becameLawCosponsoredBills ??= 0;
-  sen.becameLawAmendments ??= 0;
-  sen.becameLawCosponsoredAmendments ??= 0;
+  sen.becameLaw ??= 0; // unified enacted count
   return sen;
 }
 
@@ -86,11 +83,9 @@ async function getTotalCount(memberId, type) {
       sen.sponsoredBills = await getTotalCount(sen.congressgovId, 'sponsored');
       sen.cosponsoredBills = await getTotalCount(sen.congressgovId, 'cosponsored');
 
-      // Unified enacted count from fallback
+      // GovTrack fallback enacted count
       const enacted = ENACTED_FALLBACK[sen.bioguideId] || 0;
-      sen.becameLawBills = enacted;              // put unified count here
-      sen.becameLawCosponsoredBills = 0;         // if you want split, adjust
-      sen.becameLaw = enacted;                   // optional unified field
+      sen.becameLaw = enacted;
 
       console.log(`${sen.name}: sponsored=${sen.sponsoredBills}, cosponsored=${sen.cosponsoredBills}, becameLaw=${sen.becameLaw}`);
     } catch (err) {
@@ -99,5 +94,5 @@ async function getTotalCount(memberId, type) {
   }
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(sens, null, 2));
-  console.log('Senate legislation updated with career sponsored/cosponsored totals + becameLaw counts');
+  console.log('Senate legislation updated with career sponsored/cosponsored totals + unified becameLaw count');
 })();
