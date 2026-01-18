@@ -3,7 +3,10 @@ name: Update civic data
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 */6 * * *' # every 6 hours
+    - cron: '0 */6 * * *'
+
+permissions:
+  contents: write  # ensure the job can commit/push
 
 jobs:
   update:
@@ -16,11 +19,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: 'npm'
 
       - name: Install dependencies
         run: |
@@ -35,7 +42,7 @@ jobs:
         run: node scripts/legislation-scraper.js
 
       - name: Committees (Senate)
-        run: node scripts/committee-scraper.js   # <-- fixed to match your actual file
+        run: node scripts/committee-scraper.js
 
       - name: Votes (Senate)
         run: node scripts/votes-scraper.js
@@ -65,10 +72,33 @@ jobs:
       - name: Scores (House)
         run: node scripts/reps-scores.js
 
+      - name: Show file sizes (sanity check)
+        run: |
+          ls -lh public/senators-rankings.json || true
+          ls -lh public/representatives-rankings.json || true
+          head -n 5 public/senators-rankings.json || true
+          head -n 5 public/representatives-rankings.json || true
+
+      - name: Upload JSON artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: civic-jsons
+          path: |
+            public/senators-rankings.json
+            public/representatives-rankings.json
+
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Automated update: legislation, committees, votes, merge, scores"
+          commit_author: "Poliscope Bot <actions@github.com>"
           file_pattern: |
             public/senators-rankings.json
             public/representatives-rankings.json
+            public/senators-scores.json
+            public/representatives-scores.json
+
+      - name: Show git status (post-commit)
+        run: |
+          git status
+          git log -1 --stat
