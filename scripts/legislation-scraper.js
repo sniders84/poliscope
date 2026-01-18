@@ -1,4 +1,4 @@
-// 119th Congress: Grab sponsored/cosponsored bills, then check each for became-law status
+// Career sponsored/cosponsored totals scraper (simple, reliable version)
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
@@ -20,62 +20,18 @@ function ensureSchema(sen) {
   return sen;
 }
 
-async function getBills(memberId, type) { // type: 'sponsored' or 'cosponsored'
+async function getTotal(memberId, type) {
   const endpoint = `${type}-legislation`;
-  let url = `https://api.congress.gov/v3/member/${memberId}/${endpoint}?congress=119&limit=250&api_key=${API_KEY}`;
-  let bills = [];
-
-  while (url) {
-    try {
-      const resp = await axios.get(url, { timeout: 60000 });
-      const dataKey = `${type}Legislation`;
-      const items = resp.data?.[dataKey]?.item || [];
-      bills = bills.concat(items.map(item => ({
-        congress: item.congress,
-        type: item.type,
-        number: item.number
-      })));
-
-      url = resp.data?.pagination?.next ? `${resp.data.pagination.next}&api_key=${API_KEY}` : null;
-    } catch (err) {
-      console.error(`Error paginating ${type} for ${memberId}: ${err.message}`);
-      url = null;
-    }
-  }
-
-  return bills;
-}
-
-async function isEnacted(congress, type, number) {
-  const url = `https://api.congress.gov/v3/bill/${congress}/${type.toLowerCase()}/${number}?api_key=${API_KEY}`;
+  const url = `https://api.congress.gov/v3/member/${memberId}/${endpoint}?limit=1&api_key=${API_KEY}`;
   try {
     const resp = await axios.get(url, { timeout: 60000 });
-    const bill = resp.data?.bill || {};
-    const latestAction = bill.latestAction?.text || '';
-    const lower = latestAction.toLowerCase();
-
-    // Check for enacted indicators
-    return lower.includes('became public law') ||
-           lower.includes('became private law') ||
-           lower.includes('signed by president') ||
-           lower.includes('enacted') ||
-           lower.includes('public law no:') ||
-           bill.status?.toLowerCase().includes('enacted') ||
-           bill.status?.toLowerCase().includes('law');
+    const count = resp.data?.pagination?.count;
+    console.log(`${type} count for ${memberId}: ${count}`);
+    return count || 0;
   } catch (err) {
-    console.error(`Bill detail error for ${congress}/${type}/${number}: ${err.message}`);
-    return false;
+    console.error(`Error getting ${type} for ${memberId}: ${err.message}`);
+    return 0;
   }
-}
-
-async function countEnactedBills(bills) {
-  let enacted = 0;
-  for (const bill of bills) {
-    if (await isEnacted(bill.congress, bill.type, bill.number)) {
-      enacted++;
-    }
-  }
-  return enacted;
 }
 
 (async () => {
@@ -93,14 +49,11 @@ async function countEnactedBills(bills) {
       continue;
     }
     try {
-      const sponsoredBills = await getBills(sen.congressgovId, 'sponsored');
-      const cosponsoredBills = await getBills(sen.congressgovId, 'cosponsored');
+      sen.sponsoredBills = await getTotal(sen.congressgovId, 'sponsored');
+      sen.cosponsoredBills = await getTotal(sen.congressgovId, 'cosponsored');
 
-      sen.sponsoredBills = sponsoredBills.length;
-      sen.cosponsoredBills = cosponsoredBills.length;
-
-      sen.becameLawBills = await countEnactedBills(sponsoredBills);
-      sen.becameLawCosponsoredBills = await countEnactedBills(cosponsoredBills);
+      sen.becameLawBills = 0;
+      sen.becameLawCosponsoredBills = 0;
 
       console.log(`${sen.name}: sponsored=${sen.sponsoredBills} (law=${sen.becameLawBills}), cosponsored=${sen.cosponsoredBills} (law=${sen.becameLawCosponsoredBills})`);
     } catch (err) {
@@ -109,5 +62,5 @@ async function countEnactedBills(bills) {
   }
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(sens, null, 2));
-  console.log('Senate legislation updated with 119th Congress bills + enacted filtered on detail endpoint');
+  console.log('Senate legislation updated with career sponsored/cosponsored totals (enacted=0)');
 })();
