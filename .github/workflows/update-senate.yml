@@ -29,8 +29,11 @@ jobs:
       - name: Scrape legislation
         run: node scripts/legislation-scraper.js
 
+      # ⚠️ Fix committee scraper reference:
+      # If you have a file like scripts/senators-committees.js, use that.
+      # Otherwise comment/remove until you implement committee scraping.
       - name: Scrape committees
-        run: node scripts/committee-senators-scraper.js   # ensure filename matches your repo
+        run: node scripts/senators-committees.js
 
       - name: Scrape votes
         run: node scripts/votes-senators-scraper.js
