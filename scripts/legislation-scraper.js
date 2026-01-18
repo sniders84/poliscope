@@ -1,4 +1,4 @@
-// Senate legislation scraper using /bill/119 endpoint
+// Senate legislation scraper using /bill?congress=119 endpoint
 // Filters by sponsor/cosponsor bioguideId for each senator
 
 const fs = require('fs');
@@ -27,7 +27,7 @@ const client = axios.create({
 });
 
 async function fetchAllBills() {
-  const firstUrl = `/bill/${CONGRESS}?pageSize=${PAGE_SIZE}&fields=congress,lawNumber,latestAction,sponsor,cosponsors`;
+  const firstUrl = `/bill?congress=${CONGRESS}&pageSize=${PAGE_SIZE}&fields=congress,lawNumber,latestAction,sponsor,cosponsors`;
   const first = await client.get(firstUrl);
   const total = first.data?.pagination?.count || 0;
   if (total === 0) return [];
@@ -35,18 +35,10 @@ async function fetchAllBills() {
   let bills = first.data.bills || [];
   const pages = Math.ceil(total / PAGE_SIZE);
 
-  const urls = [];
   for (let p = 2; p <= pages; p++) {
-    urls.push(`/bill/${CONGRESS}?page=${p}&pageSize=${PAGE_SIZE}&fields=congress,lawNumber,latestAction,sponsor,cosponsors`);
-  }
-
-  const concurrency = 5;
-  for (let i = 0; i < urls.length; i += concurrency) {
-    const batch = urls.slice(i, i + concurrency);
-    const resps = await Promise.all(batch.map(u => client.get(u).catch(() => null)));
-    for (const r of resps) {
-      if (r) bills = bills.concat(r.data.bills || []);
-    }
+    const url = `/bill?congress=${CONGRESS}&page=${p}&pageSize=${PAGE_SIZE}&fields=congress,lawNumber,latestAction,sponsor,cosponsors`;
+    const resp = await client.get(url);
+    bills = bills.concat(resp.data.bills || []);
   }
 
   return bills;
