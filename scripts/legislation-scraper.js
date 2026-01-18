@@ -1,16 +1,17 @@
-// Career totals scraper using GovTrack bulk data
-// Fetches sponsored/cosponsored counts keyed by bioguide
+// Career totals scraper using Congress.gov member HTML pages
+// Reads senators JSON, hits /member/{slug}/{bioguide}, extracts facet counts
 
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
+const cheerio = require('cheerio');
 
 const OUT_PATH = path.join(__dirname, '../public/senators-rankings.json');
 
-async function fetchGovTrackData() {
-  const url = 'https://www.govtrack.us/data/congress-legislators/legislators-historical.json';
-  const resp = await axios.get(url, { timeout: 60000 });
-  return resp.data;
+// Build a member URL from name + bioguide (slug is first-last lowercase)
+function memberUrl(name, bioguideId) {
+  const slug = name.toLowerCase().replace(/[^a-z\s-]/g, '').replace(/\s+/g, '-');
+  return `https://www.congress.gov/member/${slug}/${bioguideId}`;
 }
 
 function ensureSchema(sen) {
@@ -21,36 +22,60 @@ function ensureSchema(sen) {
   return sen;
 }
 
+async function fetchCountsFromMemberPage(url) {
+  try {
+    const resp = await axios.get(url, {
+      timeout: 60000,
+      headers: {
+        'User-Agent': 'poliscope-scraper/1.0',
+        'Accept': 'text/html,application/xhtml+xml',
+      }
+    });
+    const $ = cheerio.load(resp.data);
+
+    // Facet counts live under #innerbox_sponsorship
+    const sponsoredText = $('#facetItemsponsorshipSponsored_Legislationcount').text() || '';
+    const cosponsoredText = $('#facetItemsponsorshipCosponsored_Legislationcount').text() || '';
+
+    const sponsored = parseInt((sponsoredText.match(/
+
+\[(\d+)\]
+
+/) || [0, 0])[1], 10) || 0;
+    const cosponsored = parseInt((cosponsoredText.match(/
+
+\[(\d+)\]
+
+/) || [0, 0])[1], 10) || 0;
+
+    return { sponsored, cosponsored };
+  } catch (err) {
+    console.error(`Failed to fetch ${url}: ${err.message}`);
+    return { sponsored: 0, cosponsored: 0 };
+  }
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 (async () => {
   const sens = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureSchema);
 
-  console.log('Fetching GovTrack bulk data...');
-  const govtrack = await fetchGovTrackData();
-
-  // Build bioguide -> totals map
-  const totals = {};
-  for (const leg of govtrack) {
-    if (leg.id?.bioguide) {
-      totals[leg.id.bioguide] = {
-        sponsored: leg.sponsored_bills || 0,
-        cosponsored: leg.cosponsored_bills || 0
-      };
-    }
-  }
-
   for (const sen of sens) {
-    const t = totals[sen.bioguideId];
-    if (t) {
-      sen.sponsoredBills = t.sponsored;
-      sen.cosponsoredBills = t.cosponsored;
-      sen.becameLawBills = 0; // GovTrack doesn’t break this out
-      sen.becameLawCosponsoredBills = 0;
-      console.log(`${sen.name}: sponsored=${t.sponsored}, cosponsored=${t.cosponsored}`);
-    } else {
-      console.warn(`No GovTrack totals found for ${sen.name} (${sen.bioguideId})`);
-    }
+    const url = memberUrl(sen.name, sen.bioguideId);
+    const { sponsored, cosponsored } = await fetchCountsFromMemberPage(url);
+
+    sen.sponsoredBills = sponsored;
+    sen.cosponsoredBills = cosponsored;
+    // Congress.gov facet doesn’t expose “became law” totals here—leave at 0
+    sen.becameLawBills = sen.becameLawBills || 0;
+    sen.becameLawCosponsoredBills = sen.becameLawCosponsoredBills || 0;
+
+    console.log(`${sen.name}: sponsored=${sponsored}, cosponsored=${cosponsored}`);
+    await sleep(3000); // gentle pacing to avoid anti-bot triggers
   }
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(sens, null, 2));
-  console.log('Senate legislation updated with career totals (via GovTrack)');
+  console.log('Senate legislation updated with career totals (via Congress.gov HTML facets)');
 })();
