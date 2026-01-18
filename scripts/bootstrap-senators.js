@@ -1,5 +1,5 @@
 // Purpose: Generate baseline senators-rankings.json from local legislators-current.json
-// Filters for current Senators, initializes full schema, sets congressgovId directly from bioguide (no API fetch needed)
+// Filters for current Senators (119th Congress), initializes updated schema with unified becameLaw
 const fs = require('fs');
 const path = require('path');
 
@@ -29,7 +29,7 @@ const OUT_PATH = path.join(__dirname, '..', 'public', 'senators-rankings.json');
       district: 'At-Large',
       party: lastTerm?.party || 'Unknown',
       office: 'Senator',
-      congressgovId: sen.id?.bioguide || null,  // ← Direct set: this is the Bioguide ID needed!
+      congressgovId: sen.id?.bioguide || null,  // Direct Bioguide ID for API calls
       // Votes
       yeaVotes: 0,
       nayVotes: 0,
@@ -37,13 +37,10 @@ const OUT_PATH = path.join(__dirname, '..', 'public', 'senators-rankings.json');
       totalVotes: 0,
       participationPct: 0,
       missedVotePct: 0,
-      // Legislation
+      // Legislation (updated schema - unified becameLaw)
       sponsoredBills: 0,
       cosponsoredBills: 0,
-      sponsoredAmendments: 0,
-      cosponsoredAmendments: 0,
-      becameLawBills: 0,
-      becameLawCosponsoredBills: 0,
+      becameLaw: 0,  // Unified combined enacted/became-law count
       // Committees
       committees: [],
       // Scores
