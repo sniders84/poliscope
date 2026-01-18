@@ -1,6 +1,5 @@
-// scripts/legislation-scraper.js
-// Fast + complete Senate legislation scraper for the 119th Congress
-// Uses pagination.count for totals and filtered queries for became-law counts
+// Accurate + fast Senate legislation scraper for the 119th Congress
+// Totals via pagination.count; became-law via minimal-field pagination
 
 const fs = require('fs');
 const path = require('path');
@@ -9,6 +8,7 @@ const axios = require('axios');
 const OUT_PATH = path.join(__dirname, '../public/senators-rankings.json');
 const API_KEY = process.env.CONGRESS_API_KEY;
 const CONGRESS = 119;
+const PAGE_SIZE = 250; // large page size to minimize requests
 
 if (!API_KEY) {
   console.error('Missing CONGRESS_API_KEY');
@@ -26,7 +26,6 @@ const client = axios.create({
   validateStatus: s => s >= 200 && s < 500
 });
 
-// Basic GET with retry for transient 502/503
 async function getWithRetry(url, attempts = 2) {
   let lastErr;
   for (let i = 0; i <= attempts; i++) {
@@ -47,30 +46,72 @@ async function getWithRetry(url, attempts = 2) {
   throw lastErr || new Error('Unknown request error');
 }
 
-// Get count from pagination (exact total)
+// Exact totals from pagination.count
 async function getCount(url) {
   const resp = await getWithRetry(url);
   return resp.data?.pagination?.count || 0;
 }
 
-// Get became-law count by filtering for lawNumber (exact total)
-async function getLawCount(url) {
-  // Ensure we keep the congress filter and add lawNumber filter
-  const lawUrl = url.includes('?') ? `${url}&lawNumber=*` : `${url}?lawNumber=*`;
-  const resp = await getWithRetry(lawUrl);
-  return resp.data?.pagination?.count || 0;
+// Became-law count by paginating minimal fields and checking markers
+async function getBecameLawCount(baseUrl, key) {
+  // First request to get total pages
+  const firstUrl = `${baseUrl}&pageSize=${PAGE_SIZE}&fields=lawNumber,latestAction,congress`;
+  const first = await getWithRetry(firstUrl);
+  const total = first.data?.pagination?.count || 0;
+  if (total === 0) return 0;
+
+  const pages = Math.ceil(total / PAGE_SIZE);
+  let count = 0;
+
+  // Count from first page
+  count += countLawItems(first.data[key] || []);
+
+  // Fetch remaining pages in parallel batches
+  const urls = [];
+  for (let p = 2; p <= pages; p++) {
+    urls.push(`${baseUrl}&page=${p}&pageSize=${PAGE_SIZE}&fields=lawNumber,latestAction,congress`);
+  }
+
+  const concurrency = 10;
+  for (let i = 0; i < urls.length; i += concurrency) {
+    const batch = urls.slice(i, i + concurrency);
+    const resps = await Promise.all(batch.map(u => getWithRetry(u).catch(e => ({ error: e }))));
+    for (const r of resps) {
+      if (r.error) continue;
+      count += countLawItems(r.data[key] || []);
+    }
+  }
+
+  return count;
+}
+
+function countLawItems(items) {
+  // Strictly count 119th Congress items that became law
+  let c = 0;
+  for (const i of items) {
+    if (i.congress !== CONGRESS) continue;
+    const law = !!i.lawNumber;
+    const latest = (i.latestAction?.text || '').toLowerCase();
+    const hasPublicLaw = latest.includes('public law') || latest.includes('became public law');
+    if (law || hasPublicLaw) c++;
+  }
+  return c;
 }
 
 async function getCounts(bioguideId) {
-  // Strictly filter to the 119th Congress on every base URL
-  const sponsoredURL = `/member/${bioguideId}/sponsored-legislation?congress=${CONGRESS}`;
-  const cosponsoredURL = `/member/${bioguideId}/cosponsored-legislation?congress=${CONGRESS}`;
+  const sponsoredBase = `/member/${bioguideId}/sponsored-legislation?congress=${CONGRESS}`;
+  const cosponsoredBase = `/member/${bioguideId}/cosponsored-legislation?congress=${CONGRESS}`;
 
-  const [sponsored, cosponsored, becameLawSponsored, becameLawCosponsored] = await Promise.all([
-    getCount(sponsoredURL),
-    getCount(cosponsoredURL),
-    getLawCount(sponsoredURL),
-    getLawCount(cosponsoredURL)
+  // Totals (fast)
+  const [sponsored, cosponsored] = await Promise.all([
+    getCount(sponsoredBase),
+    getCount(cosponsoredBase)
+  ]);
+
+  // Became-law (accurate, minimal payload pagination)
+  const [becameLawSponsored, becameLawCosponsored] = await Promise.all([
+    getBecameLawCount(sponsoredBase, 'sponsoredLegislation'),
+    getBecameLawCount(cosponsoredBase, 'cosponsoredLegislation')
   ]);
 
   return { sponsored, cosponsored, becameLawSponsored, becameLawCosponsored };
@@ -101,7 +142,6 @@ function ensureSchema(sen) {
 (async () => {
   const sens = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureSchema);
 
-  // Concurrency to finish in minutes
   const concurrency = 10;
   for (let i = 0; i < sens.length; i += concurrency) {
     const batch = sens.slice(i, i + concurrency);
@@ -123,5 +163,5 @@ function ensureSchema(sen) {
   }
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(sens, null, 2));
-  console.log('Senate legislation updated with complete 119th counts + became-law detection');
+  console.log('Senate legislation updated with complete 119th counts + accurate became-law detection');
 })();
