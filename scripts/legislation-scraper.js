@@ -37,6 +37,7 @@ async function fetchCountsFromMemberPage(url) {
     const sponsoredText = $('#facetItemsponsorshipSponsored_Legislationcount').text() || '';
     const cosponsoredText = $('#facetItemsponsorshipCosponsored_Legislationcount').text() || '';
 
+    // Correct regex to capture digits inside [ ]
     const sponsored = parseInt((sponsoredText.match(/
 
 \[(\d+)\]
