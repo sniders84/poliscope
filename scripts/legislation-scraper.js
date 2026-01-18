@@ -1,5 +1,5 @@
-// Update senators-rankings.json with sponsored/cosponsored counts for the 119th Congress
-// Includes retry handling and became-law detection for bills
+// Senate legislation scraper using Congress.gov API
+// Processes senators in batches with heavy throttling to avoid 429 errors
 
 const fs = require('fs');
 const path = require('path');
@@ -8,6 +8,7 @@ const axios = require('axios');
 const OUT_PATH = path.join(__dirname, '../public/senators-rankings.json');
 const API_KEY = process.env.CONGRESS_API_KEY;
 const CONGRESS = 119;
+const PAGE_SIZE = 250;
 
 if (!API_KEY) {
   console.error('Missing CONGRESS_API_KEY');
@@ -19,63 +20,78 @@ const client = axios.create({
   timeout: 20000,
   headers: {
     'X-Api-Key': API_KEY,
-    'User-Agent': 'poliscope/1.0 (+https://github.com/sniders84/poliscope)',
+    'User-Agent': 'poliscope/1.0',
     'Accept': 'application/json'
   },
   validateStatus: s => s >= 200 && s < 500
 });
 
-async function fetchPaginated(url, key) {
-  let next = url;
-  let items = [];
-  while (next) {
-    let resp;
-    let attempts = 0;
-    while (attempts < 2) {
-      try {
-        resp = await client.get(next);
-        if (resp.status === 502 || resp.status === 503) {
-          attempts++;
-          console.warn(`Retrying ${url} due to ${resp.status}...`);
-          await new Promise(r => setTimeout(r, 1000));
-          continue;
-        }
-        break;
-      } catch (err) {
-        attempts++;
-        console.warn(`Error fetching ${url}, retrying...`);
-        await new Promise(r => setTimeout(r, 1000));
-      }
-    }
-    if (!resp || resp.status >= 400) throw new Error(`HTTP ${resp?.status || 'unknown'}`);
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
-    const data = resp.data || {};
-    const batch = (data[key] || []).filter(i => i.congress === CONGRESS);
-    items = items.concat(batch);
-    next = data.pagination?.next || null;
+async function getWithRetry(url, attempts = 3) {
+  let lastErr;
+  for (let i = 0; i < attempts; i++) {
+    try {
+      const resp = await client.get(url);
+      if (resp.status === 429) {
+        console.warn(`Rate limited on ${url}, backing off 60s...`);
+        await sleep(60000); // wait 1 minute before retry
+        continue;
+      }
+      if (resp.status >= 400) throw new Error(`HTTP ${resp.status}`);
+      return resp;
+    } catch (err) {
+      lastErr = err;
+      await sleep(30000); // 30s pause before retry
+    }
   }
-  return items;
+  throw lastErr;
+}
+
+async function getCount(url) {
+  const resp = await getWithRetry(url);
+  return resp?.data?.pagination?.count || 0;
+}
+
+async function getBecameLawCount(baseUrl) {
+  const firstUrl = `${baseUrl}&pageSize=${PAGE_SIZE}&fields=lawNumber,latestAction,congress`;
+  const first = await getWithRetry(firstUrl);
+  if (!first) return 0;
+  const total = first.data?.pagination?.count || 0;
+  if (total === 0) return 0;
+
+  let count = countLawItems(first.data.bills || []);
+  const pages = Math.ceil(total / PAGE_SIZE);
+
+  for (let p = 2; p <= pages; p++) {
+    const url = `${baseUrl}&page=${p}&pageSize=${PAGE_SIZE}&fields=lawNumber,latestAction,congress`;
+    const resp = await getWithRetry(url);
+    if (resp) count += countLawItems(resp.data.bills || []);
+    await sleep(10000); // 10s pause between pages
+  }
+
+  return count;
+}
+
+function countLawItems(items) {
+  return items.filter(i => i.congress === CONGRESS &&
+    (i.lawNumber || (i.latestAction?.text || '').toLowerCase().includes('public law'))
+  ).length;
 }
 
 async function getCounts(bioguideId) {
-  const sponsoredURL = `/member/${bioguideId}/sponsored-legislation?congress=${CONGRESS}`;
-  const cosponsoredURL = `/member/${bioguideId}/cosponsored-legislation?congress=${CONGRESS}`;
+  const sponsoredURL = `/bill?congress=${CONGRESS}&sponsorId=${bioguideId}`;
+  const cosponsoredURL = `/bill?congress=${CONGRESS}&cosponsorId=${bioguideId}`;
 
-  const [sponsoredItems, cosponsoredItems] = await Promise.all([
-    fetchPaginated(sponsoredURL, 'sponsoredLegislation'),
-    fetchPaginated(cosponsoredURL, 'cosponsoredLegislation')
-  ]);
+  const sponsored = await getCount(sponsoredURL);
+  await sleep(5000);
+  const cosponsored = await getCount(cosponsoredURL);
 
-  const sponsored = sponsoredItems.length;
-  const cosponsored = cosponsoredItems.length;
-
-  const becameLawSponsored = sponsoredItems.filter(
-    i => i.lawNumber || (i.latestAction?.text || '').includes('Public Law')
-  ).length;
-
-  const becameLawCosponsored = cosponsoredItems.filter(
-    i => i.lawNumber || (i.latestAction?.text || '').includes('Public Law')
-  ).length;
+  const becameLawSponsored = await getBecameLawCount(sponsoredURL);
+  await sleep(5000);
+  const becameLawCosponsored = await getBecameLawCount(cosponsoredURL);
 
   return { sponsored, cosponsored, becameLawSponsored, becameLawCosponsored };
 }
@@ -83,27 +99,23 @@ async function getCounts(bioguideId) {
 function ensureSchema(sen) {
   sen.sponsoredBills ??= 0;
   sen.cosponsoredBills ??= 0;
-  sen.sponsoredAmendments ??= 0;
-  sen.cosponsoredAmendments ??= 0;
   sen.becameLawBills ??= 0;
   sen.becameLawCosponsoredBills ??= 0;
-  sen.becameLawAmendments ??= 0;
-  sen.becameLawCosponsoredAmendments ??= 0;
-  sen.yeaVotes ??= 0;
-  sen.nayVotes ??= 0;
-  sen.missedVotes ??= 0;
-  sen.totalVotes ??= 0;
-  sen.participationPct ??= 0;
-  sen.missedVotePct ??= 0;
-  sen.committees = Array.isArray(sen.committees) ? sen.committees : [];
-  sen.rawScore ??= 0;
-  sen.score ??= 0;
-  sen.scoreNormalized ??= 0;
   return sen;
 }
 
 (async () => {
-  const sens = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureSchema);
+  const allSens = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureSchema);
+
+  // Batch logic
+  const batchIndex = parseInt(process.argv[2] || "0", 10);
+  const batchSize = 25;
+  const start = batchIndex * batchSize;
+  const end = start + batchSize;
+  const sens = allSens.slice(start, end);
+
+  console.log(`Processing batch ${batchIndex} (senators ${start}–${end - 1})`);
+
   for (const sen of sens) {
     try {
       const { sponsored, cosponsored, becameLawSponsored, becameLawCosponsored } =
@@ -112,13 +124,13 @@ function ensureSchema(sen) {
       sen.cosponsoredBills = cosponsored;
       sen.becameLawBills = becameLawSponsored;
       sen.becameLawCosponsoredBills = becameLawCosponsored;
-      console.log(
-        `${sen.name}: sponsored=${sponsored}, cosponsored=${cosponsored}, becameLawSponsored=${becameLawSponsored}, becameLawCosponsored=${becameLawCosponsored}`
-      );
+      console.log(`${sen.name}: sponsored=${sponsored}, cosponsored=${cosponsored}, becameLawSponsored=${becameLawSponsored}, becameLawCosponsored=${becameLawCosponsored}`);
     } catch (err) {
       console.error(`Legislation failed for ${sen.bioguideId} (${sen.name}): ${err.message}`);
     }
+    await sleep(15000); // 15s pause between senators
   }
-  fs.writeFileSync(OUT_PATH, JSON.stringify(sens, null, 2));
-  console.log('Senate legislation updated with 119th Congress counts + became-law detection');
+
+  fs.writeFileSync(OUT_PATH, JSON.stringify(allSens, null, 2));
+  console.log(`Batch ${batchIndex} complete. Senate legislation updated with 119th-only counts + became-law detection`);
 })();
