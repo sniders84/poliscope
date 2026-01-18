@@ -90,13 +90,6 @@ function baseRecord(sen) {
     }
   }
 
-  // Debug: show a few mappings
-  console.log("Sample mappings:", sens.slice(0, 5).map(s => ({
-    name: s.name,
-    bioguideId: s.bioguideId,
-    congressgovId: s.congressgovId
-  })));
-
   fs.writeFileSync(OUT_PATH, JSON.stringify(sens, null, 2));
   console.log(`Bootstrapped senators-rankings.json with ${sens.length} current Senators (with congressgovId)`);
 })();
