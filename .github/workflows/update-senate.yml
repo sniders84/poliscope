@@ -15,7 +15,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'   # ✅ bumped from 18 to 20
+          node-version: '20'
 
       - name: Install dependencies
         run: npm install
@@ -24,13 +24,13 @@ jobs:
         run: node scripts/bootstrap-senators.js
 
       - name: Generate enacted fallback
-        run: node scripts/generate-enacted-fallback.js   # runs before legislation scraper
+        run: node scripts/generate-enacted-fallback.js
 
       - name: Scrape legislation
         run: node scripts/legislation-scraper.js
 
       - name: Scrape committees
-        run: node scripts/committee-senators-scraper.js
+        run: node scripts/committee-senators-scraper.js   # ensure filename matches your repo
 
       - name: Scrape votes
         run: node scripts/votes-senators-scraper.js
