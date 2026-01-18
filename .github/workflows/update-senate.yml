@@ -19,10 +19,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
+        run: npm install   # use install instead of ci to avoid lockfile mismatch
 
       - name: Bootstrap senators
         run: node scripts/bootstrap-senators.js
