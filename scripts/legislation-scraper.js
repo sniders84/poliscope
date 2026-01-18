@@ -5,7 +5,6 @@
 
 const fs = require('fs');
 const path = require('path');
-const axios = require('axios');
 
 // Load enacted fallback JSON
 const ENACTED_FALLBACK = JSON.parse(
