@@ -27,7 +27,13 @@ const enactedCounts = {};
 
 async function scrapeGovTrack(link, govtrackId, name) {
   try {
-    const resp = await axios.get(link, { timeout: 60000 });
+    const resp = await axios.get(link, {
+      timeout: 60000,
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 ' +
+                      '(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+      }
+    });
     const $ = cheerio.load(resp.data);
     const text = $('body').text();
     const match = text.match(/Bills enacted:\s*(\d+)/);
