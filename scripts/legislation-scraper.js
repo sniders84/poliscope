@@ -1,4 +1,5 @@
-// Fast + complete Senate legislation scraper
+// scripts/legislation-scraper.js
+// Fast + complete Senate legislation scraper for the 119th Congress
 // Uses pagination.count for totals and filtered queries for became-law counts
 
 const fs = require('fs');
@@ -25,21 +26,43 @@ const client = axios.create({
   validateStatus: s => s >= 200 && s < 500
 });
 
-// Get count from pagination
-async function getCount(url) {
-  const resp = await client.get(url);
-  if (resp.status >= 400) throw new Error(`HTTP ${resp.status}`);
-  return resp.data.pagination?.count || 0;
+// Basic GET with retry for transient 502/503
+async function getWithRetry(url, attempts = 2) {
+  let lastErr;
+  for (let i = 0; i <= attempts; i++) {
+    try {
+      const resp = await client.get(url);
+      if (resp.status === 502 || resp.status === 503) {
+        lastErr = new Error(`HTTP ${resp.status}`);
+        await new Promise(r => setTimeout(r, 800));
+        continue;
+      }
+      if (resp.status >= 400) throw new Error(`HTTP ${resp.status}`);
+      return resp;
+    } catch (err) {
+      lastErr = err;
+      await new Promise(r => setTimeout(r, 800));
+    }
+  }
+  throw lastErr || new Error('Unknown request error');
 }
 
-// Get became-law count by filtering for lawNumber
+// Get count from pagination (exact total)
+async function getCount(url) {
+  const resp = await getWithRetry(url);
+  return resp.data?.pagination?.count || 0;
+}
+
+// Get became-law count by filtering for lawNumber (exact total)
 async function getLawCount(url) {
-  const resp = await client.get(url + '&lawNumber=*');
-  if (resp.status >= 400) throw new Error(`HTTP ${resp.status}`);
-  return resp.data.pagination?.count || 0;
+  // Ensure we keep the congress filter and add lawNumber filter
+  const lawUrl = url.includes('?') ? `${url}&lawNumber=*` : `${url}?lawNumber=*`;
+  const resp = await getWithRetry(lawUrl);
+  return resp.data?.pagination?.count || 0;
 }
 
 async function getCounts(bioguideId) {
+  // Strictly filter to the 119th Congress on every base URL
   const sponsoredURL = `/member/${bioguideId}/sponsored-legislation?congress=${CONGRESS}`;
   const cosponsoredURL = `/member/${bioguideId}/cosponsored-legislation?congress=${CONGRESS}`;
 
@@ -78,7 +101,7 @@ function ensureSchema(sen) {
 (async () => {
   const sens = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureSchema);
 
-  // Run senators in parallel batches to speed up
+  // Concurrency to finish in minutes
   const concurrency = 10;
   for (let i = 0; i < sens.length; i += concurrency) {
     const batch = sens.slice(i, i + concurrency);
@@ -100,5 +123,5 @@ function ensureSchema(sen) {
   }
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(sens, null, 2));
-  console.log('Senate legislation updated with complete counts + became-law detection');
+  console.log('Senate legislation updated with complete 119th counts + became-law detection');
 })();
