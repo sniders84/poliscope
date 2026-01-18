@@ -26,7 +26,7 @@ jobs:
       - name: Bootstrap senators
         run: node scripts/bootstrap-senators.js
 
-      - name: Scrape legislation (career totals via GovTrack)
+      - name: Scrape legislation (career totals via Congress.gov HTML)
         run: node scripts/legislation-scraper.js
 
       - name: Scrape committees
@@ -44,5 +44,5 @@ jobs:
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Automated Senate update (career totals via GovTrack)"
+          commit_message: "Automated Senate update (career totals via Congress.gov HTML facets)"
           file_pattern: public/senators-*.json
