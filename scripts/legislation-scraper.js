@@ -33,14 +33,14 @@ async function fetchAllPages(url) {
   return results;
 }
 
-// Fetch sponsored bills for a member
+// Fetch sponsored bills for a member (119th Congress)
 async function fetchSponsored(bioguideId) {
   const url = `${BASE_URL}/bill/119?sponsorId=${bioguideId}`;
   const bills = await fetchAllPages(url);
   return bills.length;
 }
 
-// Fetch cosponsored bills for a member
+// Fetch cosponsored bills for a member (119th Congress)
 async function fetchCosponsored(bioguideId) {
   const url = `${BASE_URL}/bill/119?cosponsorId=${bioguideId}`;
   const bills = await fetchAllPages(url);
