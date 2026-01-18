@@ -6,8 +6,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 966,
-    "cosponsoredBills": 4198,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -50,9 +50,9 @@
     "totalVotes": 668,
     "participationPct": 99.85,
     "missedVotePct": 0.15,
-    "rawScore": 6812.5,
-    "score": 6812.5,
-    "scoreNormalized": 44.83
+    "rawScore": 682.5,
+    "score": 682.5,
+    "scoreNormalized": 100
   },
   {
     "name": "Amy Klobuchar",
@@ -61,8 +61,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 1400,
-    "cosponsoredBills": 5494,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -119,9 +119,9 @@
     "totalVotes": 668,
     "participationPct": 98.95,
     "missedVotePct": 1.05,
-    "rawScore": 8973.5,
-    "score": 8973.5,
-    "scoreNormalized": 59.05
+    "rawScore": 679.5,
+    "score": 679.5,
+    "scoreNormalized": 99.56
   },
   {
     "name": "Bernard Sanders",
@@ -130,8 +130,8 @@
     "district": "At-Large",
     "party": "Independent",
     "office": "Senator",
-    "sponsoredBills": 1151,
-    "cosponsoredBills": 7797,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -174,9 +174,9 @@
     "totalVotes": 668,
     "participationPct": 91.32,
     "missedVotePct": 8.68,
-    "rawScore": 10694,
-    "score": 10694,
-    "scoreNormalized": 70.37
+    "rawScore": 595,
+    "score": 595,
+    "scoreNormalized": 87.18
   },
   {
     "name": "Sheldon Whitehouse",
@@ -185,8 +185,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 727,
-    "cosponsoredBills": 4773,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -229,9 +229,9 @@
     "totalVotes": 668,
     "participationPct": 96.41,
     "missedVotePct": 3.59,
-    "rawScore": 6877,
-    "score": 6877,
-    "scoreNormalized": 45.26
+    "rawScore": 650,
+    "score": 650,
+    "scoreNormalized": 95.24
   },
   {
     "name": "John Barrasso",
@@ -240,8 +240,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 692,
-    "cosponsoredBills": 2402,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -277,9 +277,9 @@
     "totalVotes": 668,
     "participationPct": 99.4,
     "missedVotePct": 0.6,
-    "rawScore": 4456,
-    "score": 4456,
-    "scoreNormalized": 29.32
+    "rawScore": 670,
+    "score": 670,
+    "scoreNormalized": 98.17
   },
   {
     "name": "Roger Wicker",
@@ -288,8 +288,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 745,
-    "cosponsoredBills": 4441,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -346,9 +346,9 @@
     "totalVotes": 668,
     "participationPct": 96.11,
     "missedVotePct": 3.89,
-    "rawScore": 6580,
-    "score": 6580,
-    "scoreNormalized": 43.3
+    "rawScore": 649,
+    "score": 649,
+    "scoreNormalized": 95.09
   },
   {
     "name": "Susan Collins",
@@ -357,8 +357,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 1189,
-    "cosponsoredBills": 6541,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -394,9 +394,9 @@
     "totalVotes": 668,
     "participationPct": 100,
     "missedVotePct": 0,
-    "rawScore": 9597,
-    "score": 9597,
-    "scoreNormalized": 63.15
+    "rawScore": 678,
+    "score": 678,
+    "scoreNormalized": 99.34
   },
   {
     "name": "John Cornyn",
@@ -405,8 +405,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 1582,
-    "cosponsoredBills": 3990,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -449,9 +449,9 @@
     "totalVotes": 668,
     "participationPct": 99.55,
     "missedVotePct": 0.45,
-    "rawScore": 7825.5,
-    "score": 7825.5,
-    "scoreNormalized": 51.5
+    "rawScore": 671.5,
+    "score": 671.5,
+    "scoreNormalized": 98.39
   },
   {
     "name": "Richard Durbin",
@@ -460,8 +460,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 2090,
-    "cosponsoredBills": 10363,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -497,9 +497,9 @@
     "totalVotes": 668,
     "participationPct": 97.31,
     "missedVotePct": 2.69,
-    "rawScore": 15196,
-    "score": 15196,
-    "scoreNormalized": 100
+    "rawScore": 653,
+    "score": 653,
+    "scoreNormalized": 95.68
   },
   {
     "name": "Lindsey Graham",
@@ -508,8 +508,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 749,
-    "cosponsoredBills": 3594,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -545,9 +545,9 @@
     "totalVotes": 668,
     "participationPct": 93.56,
     "missedVotePct": 6.44,
-    "rawScore": 5703.5,
-    "score": 5703.5,
-    "scoreNormalized": 37.53
+    "rawScore": 611.5,
+    "score": 611.5,
+    "scoreNormalized": 89.6
   },
   {
     "name": "Mitch McConnell",
@@ -556,8 +556,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 1294,
-    "cosponsoredBills": 2824,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -600,9 +600,9 @@
     "totalVotes": 668,
     "participationPct": 91.77,
     "missedVotePct": 8.23,
-    "rawScore": 6017.5,
-    "score": 6017.5,
-    "scoreNormalized": 39.6
+    "rawScore": 605.5,
+    "score": 605.5,
+    "scoreNormalized": 88.72
   },
   {
     "name": "Jeff Merkley",
@@ -611,8 +611,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 1186,
-    "cosponsoredBills": 4760,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -655,9 +655,9 @@
     "totalVotes": 668,
     "participationPct": 99.1,
     "missedVotePct": 0.9,
-    "rawScore": 7799,
-    "score": 7799,
-    "scoreNormalized": 51.32
+    "rawScore": 667,
+    "score": 667,
+    "scoreNormalized": 97.73
   },
   {
     "name": "John Reed",
@@ -666,8 +666,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 1245,
-    "cosponsoredBills": 4905,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -710,9 +710,9 @@
     "totalVotes": 668,
     "participationPct": 98.8,
     "missedVotePct": 1.2,
-    "rawScore": 8065,
-    "score": 8065,
-    "scoreNormalized": 53.07
+    "rawScore": 670,
+    "score": 670,
+    "scoreNormalized": 98.17
   },
   {
     "name": "James Risch",
@@ -721,8 +721,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 629,
-    "cosponsoredBills": 2790,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -765,9 +765,9 @@
     "totalVotes": 668,
     "participationPct": 98.05,
     "missedVotePct": 1.95,
-    "rawScore": 4712.5,
-    "score": 4712.5,
-    "scoreNormalized": 31.01
+    "rawScore": 664.5,
+    "score": 664.5,
+    "scoreNormalized": 97.36
   },
   {
     "name": "Jeanne Shaheen",
@@ -776,8 +776,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 1149,
-    "cosponsoredBills": 4174,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -827,9 +827,9 @@
     "totalVotes": 668,
     "participationPct": 96.56,
     "missedVotePct": 3.44,
-    "rawScore": 7123.5,
-    "score": 7123.5,
-    "scoreNormalized": 46.88
+    "rawScore": 651.5,
+    "score": 651.5,
+    "scoreNormalized": 95.46
   },
   {
     "name": "Mark Warner",
@@ -838,8 +838,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 716,
-    "cosponsoredBills": 2447,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -882,9 +882,9 @@
     "totalVotes": 668,
     "participationPct": 97.46,
     "missedVotePct": 2.54,
-    "rawScore": 4533.5,
-    "score": 4533.5,
-    "scoreNormalized": 29.83
+    "rawScore": 654.5,
+    "score": 654.5,
+    "scoreNormalized": 95.9
   },
   {
     "name": "Kirsten Gillibrand",
@@ -893,8 +893,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 888,
-    "cosponsoredBills": 5065,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -937,9 +937,9 @@
     "totalVotes": 668,
     "participationPct": 98.35,
     "missedVotePct": 1.65,
-    "rawScore": 7504.5,
-    "score": 7504.5,
-    "scoreNormalized": 49.38
+    "rawScore": 663.5,
+    "score": 663.5,
+    "scoreNormalized": 97.22
   },
   {
     "name": "Christopher Coons",
@@ -948,8 +948,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 749,
-    "cosponsoredBills": 3966,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -992,9 +992,9 @@
     "totalVotes": 668,
     "participationPct": 94.76,
     "missedVotePct": 5.24,
-    "rawScore": 6093.5,
-    "score": 6093.5,
-    "scoreNormalized": 40.1
+    "rawScore": 629.5,
+    "score": 629.5,
+    "scoreNormalized": 92.23
   },
   {
     "name": "Tammy Baldwin",
@@ -1003,8 +1003,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 720,
-    "cosponsoredBills": 6740,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -1040,9 +1040,9 @@
     "totalVotes": 666,
     "participationPct": 99.85,
     "missedVotePct": 0.15,
-    "rawScore": 8850.5,
-    "score": 8850.5,
-    "scoreNormalized": 58.24
+    "rawScore": 670.5,
+    "score": 670.5,
+    "scoreNormalized": 98.24
   },
   {
     "name": "Michael Bennet",
@@ -1051,8 +1051,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 855,
-    "cosponsoredBills": 3128,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -1095,9 +1095,9 @@
     "totalVotes": 668,
     "participationPct": 98.35,
     "missedVotePct": 1.65,
-    "rawScore": 5499.5,
-    "score": 5499.5,
-    "scoreNormalized": 36.19
+    "rawScore": 661.5,
+    "score": 661.5,
+    "scoreNormalized": 96.92
   },
   {
     "name": "Marsha Blackburn",
@@ -1106,8 +1106,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 769,
-    "cosponsoredBills": 4742,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -1157,9 +1157,9 @@
     "totalVotes": 668,
     "participationPct": 94.91,
     "missedVotePct": 5.09,
-    "rawScore": 6907,
-    "score": 6907,
-    "scoreNormalized": 45.45
+    "rawScore": 627,
+    "score": 627,
+    "scoreNormalized": 91.87
   },
   {
     "name": "Richard Blumenthal",
@@ -1168,8 +1168,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 1049,
-    "cosponsoredBills": 6013,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -1212,9 +1212,9 @@
     "totalVotes": 668,
     "participationPct": 98.65,
     "missedVotePct": 1.35,
-    "rawScore": 8777.5,
-    "score": 8777.5,
-    "scoreNormalized": 57.76
+    "rawScore": 666.5,
+    "score": 666.5,
+    "scoreNormalized": 97.66
   },
   {
     "name": "John Boozman",
@@ -1223,8 +1223,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 395,
-    "cosponsoredBills": 4179,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -1281,9 +1281,9 @@
     "totalVotes": 668,
     "participationPct": 98.2,
     "missedVotePct": 1.8,
-    "rawScore": 5639,
-    "score": 5639,
-    "scoreNormalized": 37.11
+    "rawScore": 670,
+    "score": 670,
+    "scoreNormalized": 98.17
   },
   {
     "name": "Shelley Capito",
@@ -1292,8 +1292,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 387,
-    "cosponsoredBills": 3890,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -1336,9 +1336,9 @@
     "totalVotes": 668,
     "participationPct": 97.9,
     "missedVotePct": 2.1,
-    "rawScore": 5323,
-    "score": 5323,
-    "scoreNormalized": 35.03
+    "rawScore": 659,
+    "score": 659,
+    "scoreNormalized": 96.56
   },
   {
     "name": "Bill Cassidy",
@@ -1347,8 +1347,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 678,
-    "cosponsoredBills": 2446,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -1391,9 +1391,9 @@
     "totalVotes": 668,
     "participationPct": 93.86,
     "missedVotePct": 6.14,
-    "rawScore": 4420.5,
-    "score": 4420.5,
-    "scoreNormalized": 29.09
+    "rawScore": 618.5,
+    "score": 618.5,
+    "scoreNormalized": 90.62
   },
   {
     "name": "Michael Crapo",
@@ -1402,8 +1402,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 616,
-    "cosponsoredBills": 4359,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -1432,9 +1432,9 @@
     "totalVotes": 668,
     "participationPct": 99.25,
     "missedVotePct": 0.75,
-    "rawScore": 6261.5,
-    "score": 6261.5,
-    "scoreNormalized": 41.2
+    "rawScore": 670.5,
+    "score": 670.5,
+    "scoreNormalized": 98.24
   },
   {
     "name": "Charles Grassley",
@@ -1443,8 +1443,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 2446,
-    "cosponsoredBills": 7516,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -1480,9 +1480,9 @@
     "totalVotes": 668,
     "participationPct": 99.4,
     "missedVotePct": 0.6,
-    "rawScore": 13082,
-    "score": 13082,
-    "scoreNormalized": 86.09
+    "rawScore": 674,
+    "score": 674,
+    "scoreNormalized": 98.75
   },
   {
     "name": "Martin Heinrich",
@@ -1491,8 +1491,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 529,
-    "cosponsoredBills": 3187,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -1535,9 +1535,9 @@
     "totalVotes": 668,
     "participationPct": 94.91,
     "missedVotePct": 5.09,
-    "rawScore": 4874,
-    "score": 4874,
-    "scoreNormalized": 32.07
+    "rawScore": 629,
+    "score": 629,
+    "scoreNormalized": 92.16
   },
   {
     "name": "Mazie Hirono",
@@ -1546,8 +1546,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 736,
-    "cosponsoredBills": 4945,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -1590,9 +1590,9 @@
     "totalVotes": 668,
     "participationPct": 99.7,
     "missedVotePct": 0.3,
-    "rawScore": 7090,
-    "score": 7090,
-    "scoreNormalized": 46.66
+    "rawScore": 673,
+    "score": 673,
+    "scoreNormalized": 98.61
   },
   {
     "name": "John Hoeven",
@@ -1601,8 +1601,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 491,
-    "cosponsoredBills": 1992,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -1645,9 +1645,9 @@
     "totalVotes": 668,
     "participationPct": 98.95,
     "missedVotePct": 1.05,
-    "rawScore": 3641.5,
-    "score": 3641.5,
-    "scoreNormalized": 23.96
+    "rawScore": 667.5,
+    "score": 667.5,
+    "scoreNormalized": 97.8
   },
   {
     "name": "Ron Johnson",
@@ -1656,8 +1656,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 594,
-    "cosponsoredBills": 1321,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -1693,9 +1693,9 @@
     "totalVotes": 668,
     "participationPct": 98.8,
     "missedVotePct": 1.2,
-    "rawScore": 3173,
-    "score": 3173,
-    "scoreNormalized": 20.88
+    "rawScore": 664,
+    "score": 664,
+    "scoreNormalized": 97.29
   },
   {
     "name": "James Lankford",
@@ -1704,8 +1704,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 644,
-    "cosponsoredBills": 2318,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -1748,9 +1748,9 @@
     "totalVotes": 668,
     "participationPct": 99.7,
     "missedVotePct": 0.3,
-    "rawScore": 4283,
-    "score": 4283,
-    "scoreNormalized": 28.19
+    "rawScore": 677,
+    "score": 677,
+    "scoreNormalized": 99.19
   },
   {
     "name": "Mike Lee",
@@ -1759,8 +1759,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 2054,
-    "cosponsoredBills": 1730,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -1796,9 +1796,9 @@
     "totalVotes": 668,
     "participationPct": 96.56,
     "missedVotePct": 3.44,
-    "rawScore": 6481.5,
-    "score": 6481.5,
-    "scoreNormalized": 42.65
+    "rawScore": 643.5,
+    "score": 643.5,
+    "scoreNormalized": 94.29
   },
   {
     "name": "Ben Luján",
@@ -1807,8 +1807,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 470,
-    "cosponsoredBills": 3127,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -1851,9 +1851,9 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 4075,
-    "score": 4075,
-    "scoreNormalized": 26.82
+    "rawScore": 8,
+    "score": 8,
+    "scoreNormalized": 1.17
   },
   {
     "name": "Edward Markey",
@@ -1862,8 +1862,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 1617,
-    "cosponsoredBills": 10073,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -1899,9 +1899,9 @@
     "totalVotes": 668,
     "participationPct": 99.25,
     "missedVotePct": 0.75,
-    "rawScore": 13973.5,
-    "score": 13973.5,
-    "scoreNormalized": 91.96
+    "rawScore": 666.5,
+    "score": 666.5,
+    "scoreNormalized": 97.66
   },
   {
     "name": "Jerry Moran",
@@ -1910,8 +1910,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 759,
-    "cosponsoredBills": 3793,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -1968,9 +1968,9 @@
     "totalVotes": 668,
     "participationPct": 94.61,
     "missedVotePct": 5.39,
-    "rawScore": 5941,
-    "score": 5941,
-    "scoreNormalized": 39.1
+    "rawScore": 630,
+    "score": 630,
+    "scoreNormalized": 92.31
   },
   {
     "name": "Lisa Murkowski",
@@ -1979,8 +1979,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 1180,
-    "cosponsoredBills": 3554,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -2023,9 +2023,9 @@
     "totalVotes": 668,
     "participationPct": 96.56,
     "missedVotePct": 3.44,
-    "rawScore": 6559.5,
-    "score": 6559.5,
-    "scoreNormalized": 43.17
+    "rawScore": 645.5,
+    "score": 645.5,
+    "scoreNormalized": 94.58
   },
   {
     "name": "Christopher Murphy",
@@ -2034,8 +2034,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 572,
-    "cosponsoredBills": 3372,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -2071,9 +2071,9 @@
     "totalVotes": 668,
     "participationPct": 97.01,
     "missedVotePct": 2.99,
-    "rawScore": 5160,
-    "score": 5160,
-    "scoreNormalized": 33.96
+    "rawScore": 644,
+    "score": 644,
+    "scoreNormalized": 94.36
   },
   {
     "name": "Patty Murray",
@@ -2082,8 +2082,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 1163,
-    "cosponsoredBills": 6312,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -2119,9 +2119,9 @@
     "totalVotes": 668,
     "participationPct": 93.41,
     "missedVotePct": 6.59,
-    "rawScore": 9254,
-    "score": 9254,
-    "scoreNormalized": 60.9
+    "rawScore": 616,
+    "score": 616,
+    "scoreNormalized": 90.26
   },
   {
     "name": "Rand Paul",
@@ -2130,8 +2130,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 1090,
-    "cosponsoredBills": 1108,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -2167,9 +2167,9 @@
     "totalVotes": 666,
     "participationPct": 96.7,
     "missedVotePct": 3.3,
-    "rawScore": 3933,
-    "score": 3933,
-    "scoreNormalized": 25.88
+    "rawScore": 645,
+    "score": 645,
+    "scoreNormalized": 94.51
   },
   {
     "name": "Gary Peters",
@@ -2178,11 +2178,11 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 859,
-    "cosponsoredBills": 3486,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
-    "becameLawBills": 4,
+    "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
@@ -2222,9 +2222,9 @@
     "totalVotes": 668,
     "participationPct": 97.9,
     "missedVotePct": 2.1,
-    "rawScore": 5871,
-    "score": 5871,
-    "scoreNormalized": 38.64
+    "rawScore": 659,
+    "score": 659,
+    "scoreNormalized": 96.56
   },
   {
     "name": "Adam Schiff",
@@ -2233,8 +2233,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 449,
-    "cosponsoredBills": 5733,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -2270,9 +2270,9 @@
     "totalVotes": 668,
     "participationPct": 97.6,
     "missedVotePct": 2.4,
-    "rawScore": 7281,
-    "score": 7281,
-    "scoreNormalized": 47.91
+    "rawScore": 650,
+    "score": 650,
+    "scoreNormalized": 95.24
   },
   {
     "name": "Charles Schumer",
@@ -2281,8 +2281,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 2427,
-    "cosponsoredBills": 8027,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -2311,9 +2311,9 @@
     "totalVotes": 668,
     "participationPct": 99.55,
     "missedVotePct": 0.45,
-    "rawScore": 13550.5,
-    "score": 13550.5,
-    "scoreNormalized": 89.17
+    "rawScore": 669.5,
+    "score": 669.5,
+    "scoreNormalized": 98.1
   },
   {
     "name": "Tim Scott",
@@ -2322,8 +2322,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 440,
-    "cosponsoredBills": 1856,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -2359,9 +2359,9 @@
     "totalVotes": 668,
     "participationPct": 96.71,
     "missedVotePct": 3.29,
-    "rawScore": 3381,
-    "score": 3381,
-    "scoreNormalized": 22.25
+    "rawScore": 645,
+    "score": 645,
+    "scoreNormalized": 94.51
   },
   {
     "name": "John Thune",
@@ -2370,8 +2370,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 1024,
-    "cosponsoredBills": 2793,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -2414,9 +2414,9 @@
     "totalVotes": 668,
     "participationPct": 99.85,
     "missedVotePct": 0.15,
-    "rawScore": 5517.5,
-    "score": 5517.5,
-    "scoreNormalized": 36.31
+    "rawScore": 676.5,
+    "score": 676.5,
+    "scoreNormalized": 99.12
   },
   {
     "name": "Chris Van Hollen",
@@ -2425,8 +2425,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 564,
-    "cosponsoredBills": 6671,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -2462,9 +2462,9 @@
     "totalVotes": 668,
     "participationPct": 98.2,
     "missedVotePct": 1.8,
-    "rawScore": 8455,
-    "score": 8455,
-    "scoreNormalized": 55.64
+    "rawScore": 656,
+    "score": 656,
+    "scoreNormalized": 96.12
   },
   {
     "name": "Peter Welch",
@@ -2473,8 +2473,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 648,
-    "cosponsoredBills": 5317,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -2517,9 +2517,9 @@
     "totalVotes": 668,
     "participationPct": 92.51,
     "missedVotePct": 7.49,
-    "rawScore": 7214,
-    "score": 7214,
-    "scoreNormalized": 47.47
+    "rawScore": 601,
+    "score": 601,
+    "scoreNormalized": 88.06
   },
   {
     "name": "Ron Wyden",
@@ -2528,8 +2528,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 1870,
-    "cosponsoredBills": 8445,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -2565,9 +2565,9 @@
     "totalVotes": 668,
     "participationPct": 97.46,
     "missedVotePct": 2.54,
-    "rawScore": 12841.5,
-    "score": 12841.5,
-    "scoreNormalized": 84.51
+    "rawScore": 656.5,
+    "score": 656.5,
+    "scoreNormalized": 96.19
   },
   {
     "name": "Todd Young",
@@ -2576,8 +2576,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 405,
-    "cosponsoredBills": 2067,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -2613,9 +2613,9 @@
     "totalVotes": 668,
     "participationPct": 99.1,
     "missedVotePct": 0.9,
-    "rawScore": 3542,
-    "score": 3542,
-    "scoreNormalized": 23.31
+    "rawScore": 665,
+    "score": 665,
+    "scoreNormalized": 97.44
   },
   {
     "name": "Brian Schatz",
@@ -2624,8 +2624,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 677,
-    "cosponsoredBills": 2273,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -2675,9 +2675,9 @@
     "totalVotes": 668,
     "participationPct": 98.95,
     "missedVotePct": 1.05,
-    "rawScore": 4300.5,
-    "score": 4300.5,
-    "scoreNormalized": 28.3
+    "rawScore": 673.5,
+    "score": 673.5,
+    "scoreNormalized": 98.68
   },
   {
     "name": "Tom Cotton",
@@ -2686,8 +2686,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 545,
-    "cosponsoredBills": 1899,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -2730,9 +2730,9 @@
     "totalVotes": 668,
     "participationPct": 98.35,
     "missedVotePct": 1.65,
-    "rawScore": 3654.5,
-    "score": 3654.5,
-    "scoreNormalized": 24.05
+    "rawScore": 665.5,
+    "score": 665.5,
+    "scoreNormalized": 97.51
   },
   {
     "name": "Tammy Duckworth",
@@ -2741,8 +2741,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 534,
-    "cosponsoredBills": 3158,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -2785,9 +2785,9 @@
     "totalVotes": 668,
     "participationPct": 91.47,
     "missedVotePct": 8.53,
-    "rawScore": 4816.5,
-    "score": 4816.5,
-    "scoreNormalized": 31.7
+    "rawScore": 590.5,
+    "score": 590.5,
+    "scoreNormalized": 86.52
   },
   {
     "name": "Elizabeth Warren",
@@ -2796,8 +2796,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 844,
-    "cosponsoredBills": 4252,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -2840,9 +2840,9 @@
     "totalVotes": 668,
     "participationPct": 97.9,
     "missedVotePct": 2.1,
-    "rawScore": 6601,
-    "score": 6601,
-    "scoreNormalized": 43.44
+    "rawScore": 661,
+    "score": 661,
+    "scoreNormalized": 96.85
   },
   {
     "name": "Angus King",
@@ -2851,8 +2851,8 @@
     "district": "At-Large",
     "party": "Independent",
     "office": "Senator",
-    "sponsoredBills": 455,
-    "cosponsoredBills": 3057,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -2895,9 +2895,9 @@
     "totalVotes": 668,
     "participationPct": 98.35,
     "missedVotePct": 1.65,
-    "rawScore": 4626.5,
-    "score": 4626.5,
-    "scoreNormalized": 30.45
+    "rawScore": 659.5,
+    "score": 659.5,
+    "scoreNormalized": 96.63
   },
   {
     "name": "Steve Daines",
@@ -2906,8 +2906,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 618,
-    "cosponsoredBills": 2427,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -2950,9 +2950,9 @@
     "totalVotes": 668,
     "participationPct": 97.01,
     "missedVotePct": 2.99,
-    "rawScore": 4309,
-    "score": 4309,
-    "scoreNormalized": 28.36
+    "rawScore": 646,
+    "score": 646,
+    "scoreNormalized": 94.65
   },
   {
     "name": "Kevin Cramer",
@@ -2961,8 +2961,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 238,
-    "cosponsoredBills": 3227,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -3005,9 +3005,9 @@
     "totalVotes": 668,
     "participationPct": 96.56,
     "missedVotePct": 3.44,
-    "rawScore": 4346.5,
-    "score": 4346.5,
-    "scoreNormalized": 28.6
+    "rawScore": 643.5,
+    "score": 643.5,
+    "scoreNormalized": 94.29
   },
   {
     "name": "Deb Fischer",
@@ -3016,8 +3016,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 339,
-    "cosponsoredBills": 1540,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -3081,9 +3081,9 @@
     "totalVotes": 668,
     "participationPct": 99.4,
     "missedVotePct": 0.6,
-    "rawScore": 2898,
-    "score": 2898,
-    "scoreNormalized": 19.07
+    "rawScore": 680,
+    "score": 680,
+    "scoreNormalized": 99.63
   },
   {
     "name": "Markwayne Mullin",
@@ -3092,8 +3092,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 159,
-    "cosponsoredBills": 1583,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -3136,9 +3136,9 @@
     "totalVotes": 668,
     "participationPct": 94.16,
     "missedVotePct": 5.84,
-    "rawScore": 2518.5,
-    "score": 2518.5,
-    "scoreNormalized": 16.57
+    "rawScore": 617.5,
+    "score": 617.5,
+    "scoreNormalized": 90.48
   },
   {
     "name": "Ted Cruz",
@@ -3147,8 +3147,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 1086,
-    "cosponsoredBills": 2027,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -3191,9 +3191,9 @@
     "totalVotes": 668,
     "participationPct": 93.56,
     "missedVotePct": 6.44,
-    "rawScore": 4816.5,
-    "score": 4816.5,
-    "scoreNormalized": 31.7
+    "rawScore": 617.5,
+    "score": 617.5,
+    "scoreNormalized": 90.48
   },
   {
     "name": "Timothy Kaine",
@@ -3202,8 +3202,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 548,
-    "cosponsoredBills": 2765,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -3239,9 +3239,9 @@
     "totalVotes": 668,
     "participationPct": 99.1,
     "missedVotePct": 0.9,
-    "rawScore": 4526,
-    "score": 4526,
-    "scoreNormalized": 29.78
+    "rawScore": 665,
+    "score": 665,
+    "scoreNormalized": 97.44
   },
   {
     "name": "Cory Booker",
@@ -3250,8 +3250,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 944,
-    "cosponsoredBills": 4031,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -3287,9 +3287,9 @@
     "totalVotes": 668,
     "participationPct": 95.51,
     "missedVotePct": 4.49,
-    "rawScore": 6548,
-    "score": 6548,
-    "scoreNormalized": 43.09
+    "rawScore": 629,
+    "score": 629,
+    "scoreNormalized": 92.16
   },
   {
     "name": "Ruben Gallego",
@@ -3298,8 +3298,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 203,
-    "cosponsoredBills": 2652,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -3342,9 +3342,9 @@
     "totalVotes": 668,
     "participationPct": 85.78,
     "missedVotePct": 14.22,
-    "rawScore": 3591.5,
-    "score": 3591.5,
-    "scoreNormalized": 23.63
+    "rawScore": 533.5,
+    "score": 533.5,
+    "scoreNormalized": 78.17
   },
   {
     "name": "Dan Sullivan",
@@ -3353,11 +3353,11 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 524,
-    "cosponsoredBills": 1726,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
-    "becameLawBills": 3,
+    "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
@@ -3397,9 +3397,9 @@
     "totalVotes": 668,
     "participationPct": 97.01,
     "missedVotePct": 2.99,
-    "rawScore": 3426,
-    "score": 3426,
-    "scoreNormalized": 22.55
+    "rawScore": 646,
+    "score": 646,
+    "scoreNormalized": 94.65
   },
   {
     "name": "Joni Ernst",
@@ -3408,8 +3408,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 635,
-    "cosponsoredBills": 1876,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -3445,9 +3445,9 @@
     "totalVotes": 668,
     "participationPct": 97.9,
     "missedVotePct": 2.1,
-    "rawScore": 3799,
-    "score": 3799,
-    "scoreNormalized": 25
+    "rawScore": 653,
+    "score": 653,
+    "scoreNormalized": 95.68
   },
   {
     "name": "Thom Tillis",
@@ -3456,8 +3456,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 667,
-    "cosponsoredBills": 2545,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -3507,9 +3507,9 @@
     "totalVotes": 668,
     "participationPct": 88.47,
     "missedVotePct": 11.53,
-    "rawScore": 4441.5,
-    "score": 4441.5,
-    "scoreNormalized": 29.23
+    "rawScore": 562.5,
+    "score": 562.5,
+    "scoreNormalized": 82.42
   },
   {
     "name": "Mike Rounds",
@@ -3518,8 +3518,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 385,
-    "cosponsoredBills": 1816,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -3576,9 +3576,9 @@
     "totalVotes": 668,
     "participationPct": 99.4,
     "missedVotePct": 0.6,
-    "rawScore": 3260,
-    "score": 3260,
-    "scoreNormalized": 21.45
+    "rawScore": 674,
+    "score": 674,
+    "scoreNormalized": 98.75
   },
   {
     "name": "John Kennedy",
@@ -3587,8 +3587,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 642,
-    "cosponsoredBills": 1106,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -3624,9 +3624,9 @@
     "totalVotes": 668,
     "participationPct": 97.9,
     "missedVotePct": 2.1,
-    "rawScore": 3043,
-    "score": 3043,
-    "scoreNormalized": 20.03
+    "rawScore": 653,
+    "score": 653,
+    "scoreNormalized": 95.68
   },
   {
     "name": "Margaret Hassan",
@@ -3635,8 +3635,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 360,
-    "cosponsoredBills": 2416,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -3686,9 +3686,9 @@
     "totalVotes": 668,
     "participationPct": 98.8,
     "missedVotePct": 1.2,
-    "rawScore": 3808,
-    "score": 3808,
-    "scoreNormalized": 25.06
+    "rawScore": 672,
+    "score": 672,
+    "scoreNormalized": 98.46
   },
   {
     "name": "Catherine Cortez Masto",
@@ -3697,8 +3697,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 624,
-    "cosponsoredBills": 2180,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -3741,9 +3741,9 @@
     "totalVotes": 668,
     "participationPct": 97.46,
     "missedVotePct": 2.54,
-    "rawScore": 4078.5,
-    "score": 4078.5,
-    "scoreNormalized": 26.84
+    "rawScore": 650.5,
+    "score": 650.5,
+    "scoreNormalized": 95.31
   },
   {
     "name": "Lisa Blunt Rochester",
@@ -3752,8 +3752,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 180,
-    "cosponsoredBills": 2320,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -3796,9 +3796,9 @@
     "totalVotes": 668,
     "participationPct": 99.55,
     "missedVotePct": 0.45,
-    "rawScore": 3351.5,
-    "score": 3351.5,
-    "scoreNormalized": 22.06
+    "rawScore": 671.5,
+    "score": 671.5,
+    "scoreNormalized": 98.39
   },
   {
     "name": "Jim Banks",
@@ -3807,8 +3807,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 240,
-    "cosponsoredBills": 1302,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -3851,9 +3851,9 @@
     "totalVotes": 668,
     "participationPct": 98.65,
     "missedVotePct": 1.35,
-    "rawScore": 2444.5,
-    "score": 2444.5,
-    "scoreNormalized": 16.09
+    "rawScore": 662.5,
+    "score": 662.5,
+    "scoreNormalized": 97.07
   },
   {
     "name": "Roger Marshall",
@@ -3862,8 +3862,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 499,
-    "cosponsoredBills": 1749,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -3899,9 +3899,9 @@
     "totalVotes": 668,
     "participationPct": 99.1,
     "missedVotePct": 0.9,
-    "rawScore": 3412,
-    "score": 3412,
-    "scoreNormalized": 22.45
+    "rawScore": 665,
+    "score": 665,
+    "scoreNormalized": 97.44
   },
   {
     "name": "Ted Budd",
@@ -3910,8 +3910,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 239,
-    "cosponsoredBills": 1901,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -3954,9 +3954,9 @@
     "totalVotes": 668,
     "participationPct": 96.56,
     "missedVotePct": 3.44,
-    "rawScore": 3020.5,
-    "score": 3020.5,
-    "scoreNormalized": 19.88
+    "rawScore": 641.5,
+    "score": 641.5,
+    "scoreNormalized": 93.99
   },
   {
     "name": "Jacky Rosen",
@@ -3965,8 +3965,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 439,
-    "cosponsoredBills": 2470,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -4002,9 +4002,9 @@
     "totalVotes": 668,
     "participationPct": 98.35,
     "missedVotePct": 1.65,
-    "rawScore": 4005.5,
-    "score": 4005.5,
-    "scoreNormalized": 26.36
+    "rawScore": 657.5,
+    "score": 657.5,
+    "scoreNormalized": 96.34
   },
   {
     "name": "John Curtis",
@@ -4013,8 +4013,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 186,
-    "cosponsoredBills": 870,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -4050,9 +4050,9 @@
     "totalVotes": 668,
     "participationPct": 98.35,
     "missedVotePct": 1.65,
-    "rawScore": 1899.5,
-    "score": 1899.5,
-    "scoreNormalized": 12.5
+    "rawScore": 657.5,
+    "score": 657.5,
+    "scoreNormalized": 96.34
   },
   {
     "name": "Tina Smith",
@@ -4061,8 +4061,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 327,
-    "cosponsoredBills": 2691,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -4112,9 +4112,9 @@
     "totalVotes": 668,
     "participationPct": 95.21,
     "missedVotePct": 4.79,
-    "rawScore": 3975,
-    "score": 3975,
-    "scoreNormalized": 26.16
+    "rawScore": 630,
+    "score": 630,
+    "scoreNormalized": 92.31
   },
   {
     "name": "Cindy Hyde-Smith",
@@ -4123,8 +4123,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 150,
-    "cosponsoredBills": 1466,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -4174,9 +4174,9 @@
     "totalVotes": 668,
     "participationPct": 98.35,
     "missedVotePct": 1.65,
-    "rawScore": 2427.5,
-    "score": 2427.5,
-    "scoreNormalized": 15.97
+    "rawScore": 661.5,
+    "score": 661.5,
+    "scoreNormalized": 96.92
   },
   {
     "name": "Elissa Slotkin",
@@ -4185,8 +4185,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 198,
-    "cosponsoredBills": 1463,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -4229,9 +4229,9 @@
     "totalVotes": 668,
     "participationPct": 96.71,
     "missedVotePct": 3.29,
-    "rawScore": 2502,
-    "score": 2502,
-    "scoreNormalized": 16.46
+    "rawScore": 643,
+    "score": 643,
+    "scoreNormalized": 94.21
   },
   {
     "name": "Andy Kim",
@@ -4240,8 +4240,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 163,
-    "cosponsoredBills": 1827,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -4291,9 +4291,9 @@
     "totalVotes": 668,
     "participationPct": 99.55,
     "missedVotePct": 0.45,
-    "rawScore": 2826.5,
-    "score": 2826.5,
-    "scoreNormalized": 18.6
+    "rawScore": 673.5,
+    "score": 673.5,
+    "scoreNormalized": 98.68
   },
   {
     "name": "Rick Scott",
@@ -4302,8 +4302,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 609,
-    "cosponsoredBills": 1675,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -4346,9 +4346,9 @@
     "totalVotes": 668,
     "participationPct": 99.7,
     "missedVotePct": 0.3,
-    "rawScore": 3570,
-    "score": 3570,
-    "scoreNormalized": 23.49
+    "rawScore": 677,
+    "score": 677,
+    "scoreNormalized": 99.19
   },
   {
     "name": "Joshua Hawley",
@@ -4357,8 +4357,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 330,
-    "cosponsoredBills": 920,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -4394,9 +4394,9 @@
     "totalVotes": 668,
     "participationPct": 95.36,
     "missedVotePct": 4.64,
-    "rawScore": 2207.5,
-    "score": 2207.5,
-    "scoreNormalized": 14.53
+    "rawScore": 627.5,
+    "score": 627.5,
+    "scoreNormalized": 91.94
   },
   {
     "name": "Mark Kelly",
@@ -4405,8 +4405,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 233,
-    "cosponsoredBills": 1122,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -4456,9 +4456,9 @@
     "totalVotes": 668,
     "participationPct": 94.01,
     "missedVotePct": 5.99,
-    "rawScore": 2206,
-    "score": 2206,
-    "scoreNormalized": 14.52
+    "rawScore": 618,
+    "score": 618,
+    "scoreNormalized": 90.55
   },
   {
     "name": "Cynthia Lummis",
@@ -4467,8 +4467,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 235,
-    "cosponsoredBills": 2155,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -4504,9 +4504,9 @@
     "totalVotes": 668,
     "participationPct": 96.71,
     "missedVotePct": 3.29,
-    "rawScore": 3266,
-    "score": 3266,
-    "scoreNormalized": 21.49
+    "rawScore": 641,
+    "score": 641,
+    "scoreNormalized": 93.92
   },
   {
     "name": "Tommy Tuberville",
@@ -4515,8 +4515,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 302,
-    "cosponsoredBills": 620,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -4566,9 +4566,9 @@
     "totalVotes": 668,
     "participationPct": 95.66,
     "missedVotePct": 4.34,
-    "rawScore": 1858.5,
-    "score": 1858.5,
-    "scoreNormalized": 12.23
+    "rawScore": 634.5,
+    "score": 634.5,
+    "scoreNormalized": 92.97
   },
   {
     "name": "John Hickenlooper",
@@ -4577,8 +4577,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 210,
-    "cosponsoredBills": 950,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -4614,9 +4614,9 @@
     "totalVotes": 668,
     "participationPct": 98.65,
     "missedVotePct": 1.35,
-    "rawScore": 2030.5,
-    "score": 2030.5,
-    "scoreNormalized": 13.36
+    "rawScore": 660.5,
+    "score": 660.5,
+    "scoreNormalized": 96.78
   },
   {
     "name": "Bill Hagerty",
@@ -4625,8 +4625,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 313,
-    "cosponsoredBills": 823,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -4669,9 +4669,9 @@
     "totalVotes": 668,
     "participationPct": 97.16,
     "missedVotePct": 2.84,
-    "rawScore": 2096.5,
-    "score": 2096.5,
-    "scoreNormalized": 13.8
+    "rawScore": 647.5,
+    "score": 647.5,
+    "scoreNormalized": 94.87
   },
   {
     "name": "Alejandro Padilla",
@@ -4680,8 +4680,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 496,
-    "cosponsoredBills": 1958,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -4731,9 +4731,9 @@
     "totalVotes": 668,
     "participationPct": 95.66,
     "missedVotePct": 4.34,
-    "rawScore": 3592.5,
-    "score": 3592.5,
-    "scoreNormalized": 23.64
+    "rawScore": 642.5,
+    "score": 642.5,
+    "scoreNormalized": 94.14
   },
   {
     "name": "Jon Ossoff",
@@ -4742,8 +4742,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 215,
-    "cosponsoredBills": 749,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -4779,9 +4779,9 @@
     "totalVotes": 668,
     "participationPct": 92.51,
     "missedVotePct": 7.49,
-    "rawScore": 1778,
-    "score": 1778,
-    "scoreNormalized": 11.7
+    "rawScore": 599,
+    "score": 599,
+    "scoreNormalized": 87.77
   },
   {
     "name": "Raphael Warnock",
@@ -4790,8 +4790,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 220,
-    "cosponsoredBills": 1187,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -4834,9 +4834,9 @@
     "totalVotes": 668,
     "participationPct": 97.31,
     "missedVotePct": 2.69,
-    "rawScore": 2276,
-    "score": 2276,
-    "scoreNormalized": 14.98
+    "rawScore": 649,
+    "score": 649,
+    "scoreNormalized": 95.09
   },
   {
     "name": "Katie Britt",
@@ -4845,8 +4845,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 46,
-    "cosponsoredBills": 618,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -4896,9 +4896,9 @@
     "totalVotes": 668,
     "participationPct": 97.75,
     "missedVotePct": 2.25,
-    "rawScore": 1365.5,
-    "score": 1365.5,
-    "scoreNormalized": 8.99
+    "rawScore": 655.5,
+    "score": 655.5,
+    "scoreNormalized": 96.04
   },
   {
     "name": "Eric Schmitt",
@@ -4907,8 +4907,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 97,
-    "cosponsoredBills": 363,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -4951,9 +4951,9 @@
     "totalVotes": 668,
     "participationPct": 98.65,
     "missedVotePct": 1.35,
-    "rawScore": 1223.5,
-    "score": 1223.5,
-    "scoreNormalized": 8.05
+    "rawScore": 666.5,
+    "score": 666.5,
+    "scoreNormalized": 97.66
   },
   {
     "name": "John Fetterman",
@@ -4962,8 +4962,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 68,
-    "cosponsoredBills": 755,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -5006,9 +5006,9 @@
     "totalVotes": 668,
     "participationPct": 93.26,
     "missedVotePct": 6.74,
-    "rawScore": 1499.5,
-    "score": 1499.5,
-    "scoreNormalized": 9.87
+    "rawScore": 608.5,
+    "score": 608.5,
+    "scoreNormalized": 89.16
   },
   {
     "name": "Pete Ricketts",
@@ -5017,8 +5017,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 105,
-    "cosponsoredBills": 657,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -5054,9 +5054,9 @@
     "totalVotes": 668,
     "participationPct": 99.7,
     "missedVotePct": 0.3,
-    "rawScore": 1540,
-    "score": 1540,
-    "scoreNormalized": 10.13
+    "rawScore": 673,
+    "score": 673,
+    "scoreNormalized": 98.61
   },
   {
     "name": "Angela Alsobrooks",
@@ -5065,8 +5065,8 @@
     "district": "At-Large",
     "party": "Democrat",
     "office": "Senator",
-    "sponsoredBills": 44,
-    "cosponsoredBills": 310,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -5109,9 +5109,9 @@
     "totalVotes": 668,
     "participationPct": 98.65,
     "missedVotePct": 1.35,
-    "rawScore": 1060.5,
-    "score": 1060.5,
-    "scoreNormalized": 6.98
+    "rawScore": 662.5,
+    "score": 662.5,
+    "scoreNormalized": 97.07
   },
   {
     "name": "Tim Sheehy",
@@ -5120,8 +5120,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 53,
-    "cosponsoredBills": 238,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -5157,9 +5157,9 @@
     "totalVotes": 668,
     "participationPct": 97.16,
     "missedVotePct": 2.84,
-    "rawScore": 989.5,
-    "score": 989.5,
-    "scoreNormalized": 6.51
+    "rawScore": 645.5,
+    "score": 645.5,
+    "scoreNormalized": 94.58
   },
   {
     "name": "Bernie Moreno",
@@ -5168,8 +5168,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 25,
-    "cosponsoredBills": 147,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -5205,9 +5205,9 @@
     "totalVotes": 668,
     "participationPct": 100,
     "missedVotePct": 0,
-    "rawScore": 871,
-    "score": 871,
-    "scoreNormalized": 5.73
+    "rawScore": 674,
+    "score": 674,
+    "scoreNormalized": 98.75
   },
   {
     "name": "Dave McCormick",
@@ -5216,8 +5216,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 36,
-    "cosponsoredBills": 150,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -5267,9 +5267,9 @@
     "totalVotes": 668,
     "participationPct": 97.01,
     "missedVotePct": 2.99,
-    "rawScore": 872,
-    "score": 872,
-    "scoreNormalized": 5.74
+    "rawScore": 650,
+    "score": 650,
+    "scoreNormalized": 95.24
   },
   {
     "name": "Jim Justice",
@@ -5278,8 +5278,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 8,
-    "cosponsoredBills": 208,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -5315,9 +5315,9 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 230,
-    "score": 230,
-    "scoreNormalized": 1.51
+    "rawScore": 6,
+    "score": 6,
+    "scoreNormalized": 0.88
   },
   {
     "name": "Jon Husted",
@@ -5326,8 +5326,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 33,
-    "cosponsoredBills": 98,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -5363,9 +5363,9 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 170,
-    "score": 170,
-    "scoreNormalized": 1.12
+    "rawScore": 6,
+    "score": 6,
+    "scoreNormalized": 0.88
   },
   {
     "name": "Ashley Moody",
@@ -5374,8 +5374,8 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "Senator",
-    "sponsoredBills": 27,
-    "cosponsoredBills": 136,
+    "sponsoredBills": 0,
+    "cosponsoredBills": 0,
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawBills": 0,
@@ -5425,8 +5425,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "rawScore": 200,
-    "score": 200,
-    "scoreNormalized": 1.32
+    "rawScore": 10,
+    "score": 10,
+    "scoreNormalized": 1.47
   }
 ]
