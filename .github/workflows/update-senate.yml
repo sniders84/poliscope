@@ -1,0 +1,32 @@
+name: Update Senate data
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 2 * * *'   # 2 AM daily
+
+permissions:
+  contents: write
+
+jobs:
+  update-senate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm ci
+
+      - run: node scripts/bootstrap-senators.js
+      - run: node scripts/legislation-scraper.js
+      - run: node scripts/committee-scraper.js
+      - run: node scripts/votes-scraper.js
+      - run: node scripts/merge-senators.js
+      - run: node scripts/senators-scores.js
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Automated Senate update"
+          file_pattern: public/senators-*.json
