@@ -1,4 +1,4 @@
-// Career totals scraper (API) + enacted from GovTrack page scrape
+// Career totals scraper (API) + enacted from GovTrack page scrape (improved)
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
@@ -34,26 +34,34 @@ async function getTotalCount(memberId, type) {
 }
 
 async function getEnactedFromGovTrack(name, state) {
-  // Build GovTrack search URL
-  const query = encodeURIComponent(`${name} ${state} senator`);
-  const searchUrl = `https://www.govtrack.us/search?q=${query}`;
+  const query = encodeURIComponent(`${name} ${state}`);
+  const searchUrl = `https://www.govtrack.us/search?q=${query}+senator`;
   try {
     const searchResp = await axios.get(searchUrl, {
       headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.9'
       },
       timeout: 60000
     });
     const $ = cheerio.load(searchResp.data);
 
-    // Find the first senator profile link
-    let profileUrl = $('.search-result a').first().attr('href');
+    // Improved selector: look for links in search results with senator profiles
+    let profileUrl = null;
+    $('a').each((i, el) => {
+      const href = $(el).attr('href');
+      const text = $(el).text().trim();
+      if (href && href.includes('/congress/members/') && text.includes(name)) {
+        profileUrl = 'https://www.govtrack.us' + href;
+        return false; // stop on first match
+      }
+    });
+
     if (!profileUrl) {
-      console.warn(`No GovTrack profile found for ${name}`);
+      console.warn(`No GovTrack profile link found for ${name} in search results`);
       return 0;
     }
-    profileUrl = 'https://www.govtrack.us' + profileUrl;
 
     const profileResp = await axios.get(profileUrl, {
       headers: {
@@ -66,7 +74,7 @@ async function getEnactedFromGovTrack(name, state) {
     let enacted = 0;
     $$('dt').each((i, el) => {
       const text = $$(el).text().trim();
-      if (text.includes('Bills Enacted') || text.includes('Enacted') || text.includes('Laws')) {
+      if (text.toLowerCase().includes('enacted') || text.toLowerCase().includes('bills enacted') || text.toLowerCase().includes('laws')) {
         const dd = $$(el).next('dd').text().trim();
         const match = dd.match(/(\d+)/);
         if (match) {
@@ -103,7 +111,7 @@ async function getEnactedFromGovTrack(name, state) {
 
       const enacted = await getEnactedFromGovTrack(sen.name, sen.state);
       sen.becameLawBills = enacted;
-      sen.becameLawCosponsoredBills = enacted; // Combined figure
+      sen.becameLawCosponsoredBills = enacted;
 
       console.log(`${sen.name}: sponsored=${sen.sponsoredBills} (law=${sen.becameLawBills}), cosponsored=${sen.cosponsoredBills} (law=${sen.becameLawCosponsoredBills})`);
     } catch (err) {
