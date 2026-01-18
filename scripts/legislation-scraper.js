@@ -21,65 +21,50 @@ function ensureSchema(sen) {
   return sen;
 }
 
-async function getTotalCount(memberId, type) {
+async function getLegislationCounts(memberId, type) { // type: 'sponsored' or 'cosponsored'
   const endpoint = `${type}-legislation`;
-  const url = `https://api.congress.gov/v3/member/${memberId}/${endpoint}?congress=119&limit=1&api_key=${API_KEY}`;
-  try {
-    const resp = await axios.get(url, { timeout: 60000 });
-    return resp.data?.pagination?.count || 0;
-  } catch (err) {
-    console.error(`Total count error for ${type} on ${memberId}: ${err.message}`);
-    return 0;
-  }
-}
-
-async function getSponsoredEnactedCount(bioguideId) {
-  // Try with bill-type=hr,s (common for enacted public laws); congress=119
-  const url = `https://api.congress.gov/v3/bill?congress=119&sponsor=${bioguideId}&law-type=public&bill-type=hr,s&limit=1&api_key=${API_KEY}`;
-  console.log(`Calling enacted sponsored URL (119th): ${url}`);
-  try {
-    const resp = await axios.get(url, { timeout: 60000 });
-    const pagination = resp.data?.pagination || {};
-    console.log(`Enacted sponsored response pagination for ${bioguideId}:`, JSON.stringify(pagination, null, 2));
-    const count = pagination.count || 0;
-    console.log(`Enacted sponsored (119th public law) count for ${bioguideId}: ${count}`);
-    return count;
-  } catch (err) {
-    console.error(`Enacted sponsored error for ${bioguideId}: ${err.message}`);
-    return 0;
-  }
-}
-
-async function getCosponsoredEnactedCount(memberId) {
-  let url = `https://api.congress.gov/v3/member/${memberId}/cosponsored-legislation?congress=119&limit=250&api_key=${API_KEY}`;
+  let url = `https://api.congress.gov/v3/member/${memberId}/${endpoint}?congress=119&limit=250&api_key=${API_KEY}`;
+  let total = 0;
   let enacted = 0;
+  let sampleEnactedText = null;
 
   while (url) {
     try {
       const resp = await axios.get(url, { timeout: 60000 });
-      const items = resp.data?.cosponsoredLegislation?.item || [];
+      const dataKey = `${type}Legislation`;
+      const items = resp.data?.[dataKey]?.item || [];
+
+      if (total === 0) {
+        total = resp.data?.pagination?.count || items.length;
+      }
 
       items.forEach(item => {
-        const actionText = (item.latestAction?.text || '').toLowerCase().trim();
-        if (actionText.includes('became public law') || actionText.includes('signed by president') || actionText.includes('enacted')) {
+        const actionText = (item.latestAction?.text || '').trim();
+        const lower = actionText.toLowerCase();
+        if (lower.includes('became public law') || 
+            lower.includes('signed by president') || 
+            lower.includes('enacted') || 
+            lower.includes('public law no:') ||
+            lower.includes('approved by president')) {
           enacted++;
+          if (!sampleEnactedText) sampleEnactedText = actionText; // Sample one for debug
         }
       });
 
       url = resp.data?.pagination?.next ? `${resp.data.pagination.next}&api_key=${API_KEY}` : null;
     } catch (err) {
-      console.error(`Cosponsored enacted error on ${memberId}: ${err.message}`);
+      console.error(`Error paginating ${type} for ${memberId}: ${err.message}`);
       url = null;
     }
   }
 
-  if (enacted > 0) {
-    console.log(`Enacted cosponsored in 119th for ${memberId}: ${enacted}`);
-  } else {
-    console.warn(`No enacted cosponsored detected for ${memberId} in 119th — expected early in Congress`);
+  if (enacted > 0 && sampleEnactedText) {
+    console.log(`Sample enacted action text for ${type} (${memberId}): "${sampleEnactedText}"`);
+  } else if (enacted === 0 && total > 0) {
+    console.warn(`No enacted detected for ${type} on ${memberId} despite ${total} items in 119th`);
   }
 
-  return enacted;
+  return { total, enacted };
 }
 
 (async () => {
@@ -97,11 +82,13 @@ async function getCosponsoredEnactedCount(memberId) {
       continue;
     }
     try {
-      sen.sponsoredBills = await getTotalCount(sen.congressgovId, 'sponsored');
-      sen.cosponsoredBills = await getTotalCount(sen.congressgovId, 'cosponsored');
+      const sponsored = await getLegislationCounts(sen.congressgovId, 'sponsored');
+      const cosponsored = await getLegislationCounts(sen.congressgovId, 'cosponsored');
 
-      sen.becameLawBills = await getSponsoredEnactedCount(sen.congressgovId);
-      sen.becameLawCosponsoredBills = await getCosponsoredEnactedCount(sen.congressgovId);
+      sen.sponsoredBills = sponsored.total;
+      sen.becameLawBills = sponsored.enacted;
+      sen.cosponsoredBills = cosponsored.total;
+      sen.becameLawCosponsoredBills = cosponsored.enacted;
 
       console.log(`${sen.name}: sponsored=${sen.sponsoredBills} (law=${sen.becameLawBills}), cosponsored=${sen.cosponsoredBills} (law=${sen.becameLawCosponsoredBills})`);
     } catch (err) {
