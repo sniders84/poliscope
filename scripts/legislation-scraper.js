@@ -33,23 +33,19 @@ async function getLegislationStats(memberId, type) { // type: 'sponsored' or 'co
       const dataKey = `${type}Legislation`;
       const items = resp.data?.[dataKey]?.item || [];
 
-      // Set grand total from pagination (only needs to happen once)
       if (total === 0) {
         total = resp.data?.pagination?.count || items.length;
       }
 
       items.forEach(item => {
-        const actionText = (item.latestAction?.text || '').toLowerCase();
-        // Broader, case-insensitive detection of enacted / became law
-        if (
-          actionText.includes('became public law') ||
-          actionText.includes('became private law') ||
-          actionText.includes('signed by president') ||
-          actionText.includes('enacted') ||
-          actionText.includes('public law') ||
-          actionText.includes('approved by president') ||
-          actionText.includes('became law')
-        ) {
+        const actionText = (item.latestAction?.text || '').trim();
+        const lowerText = actionText.toLowerCase();
+
+        // Primary match: "Became Public Law No:" (case-insensitive, allows for PL number)
+        if (lowerText.includes('became public law no:') ||
+            lowerText.includes('became public law') ||  // Fallback if "No:" missing in some
+            lowerText.includes('became private law no:') ||
+            lowerText.includes('became private law')) {
           becameLaw++;
         }
       });
@@ -63,9 +59,9 @@ async function getLegislationStats(memberId, type) { // type: 'sponsored' or 'co
     }
   }
 
-  // Optional debug log if counts seem off (comment out later if desired)
-  if (becameLaw === 0 && total > 500) {
-    console.warn(`Zero becameLaw detected for ${type} on ${memberId} despite ${total} total items — may need deeper check`);
+  // Debug warn only if suspiciously low
+  if (becameLaw === 0 && total > 100) {
+    console.warn(`Zero becameLaw detected for ${type} on ${memberId} despite ${total} total items — check latestAction phrasing`);
   }
 
   return { total, becameLaw };
