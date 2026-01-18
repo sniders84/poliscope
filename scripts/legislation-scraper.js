@@ -1,4 +1,4 @@
-// Career totals scraper using Congress.gov API (Bioguide memberId)
+// 119th Congress totals scraper using Congress.gov API (Bioguide memberId)
 // Requires CONGRESS_API_KEY in environment
 const fs = require('fs');
 const path = require('path');
@@ -23,7 +23,7 @@ function ensureSchema(sen) {
 
 async function getTotalCount(memberId, type) {
   const endpoint = `${type}-legislation`;
-  const url = `https://api.congress.gov/v3/member/${memberId}/${endpoint}?limit=1&api_key=${API_KEY}`;
+  const url = `https://api.congress.gov/v3/member/${memberId}/${endpoint}?congress=119&limit=1&api_key=${API_KEY}`;
   try {
     const resp = await axios.get(url, { timeout: 60000 });
     return resp.data?.pagination?.count || 0;
@@ -34,11 +34,11 @@ async function getTotalCount(memberId, type) {
 }
 
 async function getSponsoredEnactedCount(bioguideId) {
-  let url = `https://api.congress.gov/v3/bill?sponsor=${bioguideId}&law-type=public&limit=1&api_key=${API_KEY}`;
+  const url = `https://api.congress.gov/v3/bill?congress=119&sponsor=${bioguideId}&law-type=public&limit=1&api_key=${API_KEY}`;
   try {
     const resp = await axios.get(url, { timeout: 60000 });
     const count = resp.data?.pagination?.count || 0;
-    console.log(`Enacted sponsored (public law) count for ${bioguideId}: ${count}`);
+    console.log(`Enacted sponsored (119th public law) count for ${bioguideId}: ${count}`);
     return count;
   } catch (err) {
     console.error(`Enacted sponsored error for ${bioguideId}: ${err.message}`);
@@ -47,9 +47,8 @@ async function getSponsoredEnactedCount(bioguideId) {
 }
 
 async function getCosponsoredEnactedCount(memberId) {
-  let url = `https://api.congress.gov/v3/member/${memberId}/cosponsored-legislation?limit=250&api_key=${API_KEY}`;
+  let url = `https://api.congress.gov/v3/member/${memberId}/cosponsored-legislation?congress=119&limit=250&api_key=${API_KEY}`;
   let enacted = 0;
-  let sampledAction = null; // For debug
 
   while (url) {
     try {
@@ -57,11 +56,9 @@ async function getCosponsoredEnactedCount(memberId) {
       const items = resp.data?.cosponsoredLegislation?.item || [];
 
       items.forEach(item => {
-        const actionText = (item.latestAction?.text || '').trim();
-        const lower = actionText.toLowerCase();
-        if (lower.includes('became public law no:') || lower.includes('became public law')) {
+        const actionText = (item.latestAction?.text || '').toLowerCase().trim();
+        if (actionText.includes('became public law no:') || actionText.includes('became public law')) {
           enacted++;
-          if (!sampledAction) sampledAction = actionText; // Sample one for log
         }
       });
 
@@ -72,10 +69,8 @@ async function getCosponsoredEnactedCount(memberId) {
     }
   }
 
-  if (sampledAction) {
-    console.log(`Sample latestAction.text for potential enacted cosponsored bill on ${memberId}: "${sampledAction}"`);
-  } else if (enacted === 0) {
-    console.warn(`No enacted cosponsored detected for ${memberId} — check if latestAction has enacted info`);
+  if (enacted === 0) {
+    console.warn(`No enacted cosponsored detected for ${memberId} in 119th — normal for current Congress if few laws yet`);
   }
 
   return enacted;
@@ -109,5 +104,5 @@ async function getCosponsoredEnactedCount(memberId) {
   }
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(sens, null, 2));
-  console.log('Senate legislation updated with career totals (via Congress.gov API)');
+  console.log('Senate legislation updated with 119th Congress totals (via Congress.gov API)');
 })();
