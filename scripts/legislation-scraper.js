@@ -37,7 +37,6 @@ async function fetchCountsFromMemberPage(url) {
     });
     const $ = cheerio.load(resp.data);
 
-    // Facet counts live under #innerbox_sponsorship
     const sponsoredText = $('#facetItemsponsorshipSponsored_Legislationcount').text() || '';
     const cosponsoredText = $('#facetItemsponsorshipCosponsored_Legislationcount').text() || '';
 
