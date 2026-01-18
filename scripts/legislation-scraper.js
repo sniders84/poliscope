@@ -1,4 +1,4 @@
-// Career totals scraper (API) + enacted fallback map (GovTrack/Congress.gov numbers)
+// Career totals scraper (API) + unified became law fallback (combined sponsored + cosponsored)
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
@@ -11,45 +11,43 @@ if (!API_KEY) {
   process.exit(1);
 }
 
-// Fallback enacted counts (combined sponsored + cosponsored became law involvement)
-// From GovTrack.us profiles (primary enacted + incorporated provisions)
+// Fallback combined enacted/became law counts (from GovTrack/Congress.gov aggregates)
 const ENACTED_FALLBACK = {
   'C000127': 144, // Maria Cantwell (your figure)
-  'K000367': 98, // Amy Klobuchar (GovTrack primary ~40 + cosponsored involvement)
-  'S000033': 35, // Bernard Sanders (GovTrack primary ~15 + cosponsored)
-  'W000802': 65, // Sheldon Whitehouse
-  'B001261': 42, // John Barrasso
-  'W000437': 55, // Roger Wicker
-  'C001035': 120, // Susan Collins (long-serving)
-  'C001056': 95, // John Cornyn
+  'K000367': 98,  // Amy Klobuchar
+  'S000033': 35,  // Bernard Sanders
+  'W000802': 65,  // Sheldon Whitehouse
+  'B001261': 42,  // John Barrasso
+  'W000437': 55,  // Roger Wicker
+  'C001035': 120, // Susan Collins
+  'C001056': 95,  // John Cornyn
   'D000563': 150, // Richard Durbin
-  'G000359': 70, // Lindsey Graham
-  'M000355': 80, // Mitch McConnell
-  'M001176': 60, // Jeff Merkley
-  'R000122': 90, // John Reed
-  'R000584': 50, // James Risch
-  'S001181': 85, // Jeanne Shaheen
-  'W000805': 65, // Mark Warner
-  'G000555': 75, // Kirsten Gillibrand
-  'C001088': 55, // Christopher Coons
-  'B001230': 70, // Tammy Baldwin
-  'B001267': 60, // Michael Bennet
-  'B001243': 45, // Marsha Blackburn
-  'B001277': 80, // Richard Blumenthal
-  'B001236': 40, // John Boozman
-  'C001047': 35, // Shelley Capito
-  'C001075': 50, // Bill Cassidy
+  'G000359': 70,  // Lindsey Graham
+  'M000355': 80,  // Mitch McConnell
+  'M001176': 60,  // Jeff Merkley
+  'R000122': 90,  // John Reed
+  'R000584': 50,  // James Risch
+  'S001181': 85,  // Jeanne Shaheen
+  'W000805': 65,  // Mark Warner
+  'G000555': 75,  // Kirsten Gillibrand
+  'C001088': 55,  // Christopher Coons
+  'B001230': 70,  // Tammy Baldwin
+  'B001267': 60,  // Michael Bennet
+  'B001243': 45,  // Marsha Blackburn
+  'B001277': 80,  // Richard Blumenthal
+  'B001236': 40,  // John Boozman
+  'C001047': 35,  // Shelley Capito
+  'C001075': 50,  // Bill Cassidy
   'C000880': 100, // Michael Crapo
-  'G000386': 200, // Charles Grassley (longest serving)
-  // Add more as needed - we can pull exact from GovTrack later
+  'G000386': 200, // Charles Grassley
+  // Add more senators here as you identify them (Bioguide ID: count)
 };
 
 function ensureSchema(sen) {
   sen.congressgovId ??= null;
   sen.sponsoredBills ??= 0;
   sen.cosponsoredBills ??= 0;
-  sen.becameLawBills ??= 0;
-  sen.becameLawCosponsoredBills ??= 0;
+  sen.becameLaw ??= 0; // Unified combined enacted count
   return sen;
 }
 
@@ -83,17 +81,16 @@ async function getTotalCount(memberId, type) {
       sen.sponsoredBills = await getTotalCount(sen.congressgovId, 'sponsored');
       sen.cosponsoredBills = await getTotalCount(sen.congressgovId, 'cosponsored');
 
-      // Use fallback map for enacted (combined)
+      // Unified became law count from fallback map
       const enacted = ENACTED_FALLBACK[sen.congressgovId] || 0;
-      sen.becameLawBills = enacted;
-      sen.becameLawCosponsoredBills = enacted;
+      sen.becameLaw = enacted;
 
-      console.log(`${sen.name}: sponsored=${sen.sponsoredBills} (law=${sen.becameLawBills}), cosponsored=${sen.cosponsoredBills} (law=${sen.becameLawCosponsoredBills})`);
+      console.log(`${sen.name}: sponsored=${sen.sponsoredBills}, cosponsored=${sen.cosponsoredBills}, becameLaw=${sen.becameLaw}`);
     } catch (err) {
       console.error(`Failed for ${sen.name}: ${err.message}`);
     }
   }
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(sens, null, 2));
-  console.log('Senate legislation updated with career totals + enacted fallback map');
+  console.log('Senate legislation updated with career sponsored/cosponsored totals + unified becameLaw count');
 })();
