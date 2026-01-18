@@ -1,3 +1,4 @@
+
 name: Update Senate data
 
 on:
@@ -12,42 +13,31 @@ jobs:
   update-senate:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - run: npm install   # use install instead of ci to avoid lockfile mismatch
 
-      - name: Install dependencies
-        run: npm install   # use install instead of ci to avoid lockfile mismatch
+      - run: node scripts/bootstrap-senators.js
 
-      - name: Bootstrap senators
-        run: node scripts/bootstrap-senators.js
-
-      - name: Scrape legislation
-        run: node scripts/legislation-scraper.js
+      - run: node scripts/legislation-scraper.js
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
 
-      - name: Scrape committees
-        run: node scripts/committee-scraper.js
+      - run: node scripts/committee-scraper.js
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
 
-      - name: Scrape votes
-        run: node scripts/votes-scraper.js
+      - run: node scripts/votes-scraper.js
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
 
-      - name: Merge senator data
-        run: node scripts/merge-senators.js
+      - run: node scripts/merge-senators.js
 
-      - name: Generate scores
-        run: node scripts/senators-scores.js
+      - run: node scripts/senators-scores.js
 
-      - name: Commit and push changes
+      - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Automated Senate update"
