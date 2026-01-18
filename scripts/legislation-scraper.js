@@ -1,5 +1,4 @@
-// Career sponsored/cosponsored totals scraper (with retry for robustness)
-// Matches Congress.gov member profile numbers
+// Career sponsored/cosponsored totals scraper (robust retry + delay)
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
@@ -16,14 +15,16 @@ function ensureSchema(sen) {
   sen.congressgovId ??= null;
   sen.sponsoredBills ??= 0;
   sen.cosponsoredBills ??= 0;
-  sen.becameLawBills ??= 0; // API limitation: enacted not reliable here
+  sen.becameLawBills ??= 0;
   sen.becameLawCosponsoredBills ??= 0;
   return sen;
 }
 
-async function getTotal(memberId, type, retries = 3) {
+async function getTotal(memberId, type, retries = 5) {
   const endpoint = `${type}-legislation`;
   const url = `https://api.congress.gov/v3/member/${memberId}/${endpoint}?limit=1&api_key=${API_KEY}`;
+  let lastCount = 0;
+
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {
       const resp = await axios.get(url, { timeout: 60000 });
@@ -32,14 +33,17 @@ async function getTotal(memberId, type, retries = 3) {
         console.log(`${type} count for ${memberId} (attempt ${attempt}): ${count}`);
         return count;
       } else {
-        console.warn(`${type} count for ${memberId} (attempt ${attempt}): undefined or 0 — retrying...`);
+        console.warn(`${type} count for ${memberId} (attempt ${attempt}): undefined or 0`);
+        if (count !== undefined) lastCount = count; // Keep last non-undefined even if 0
       }
     } catch (err) {
       console.error(`Error getting ${type} for ${memberId} (attempt ${attempt}): ${err.message}`);
     }
+    if (attempt < retries) await new Promise(resolve => setTimeout(resolve, 1000)); // 1s backoff
   }
-  console.error(`Failed to get ${type} for ${memberId} after ${retries} attempts — returning 0`);
-  return 0;
+
+  console.error(`Failed to get reliable ${type} for ${memberId} after ${retries} attempts — using last known: ${lastCount}`);
+  return lastCount;
 }
 
 (async () => {
