@@ -25,6 +25,8 @@ jobs:
 
       - name: Bootstrap senators
         run: node scripts/bootstrap-senators.js
+        env:
+          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
 
       - name: Scrape legislation (career totals via Congress.gov API)
         run: node scripts/legislation-scraper.js
