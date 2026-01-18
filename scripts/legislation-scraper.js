@@ -1,4 +1,4 @@
-// Senate legislation scraper using correct endpoints for 119th Congress
+// Senate legislation scraper using /bill endpoints for 119th Congress
 // Totals via pagination.count; became-law via minimal-field pagination
 
 const fs = require('fs');
@@ -46,13 +46,13 @@ async function getCount(url) {
   return resp.data?.pagination?.count || 0;
 }
 
-async function getBecameLawCount(baseUrl, key) {
+async function getBecameLawCount(baseUrl) {
   const firstUrl = `${baseUrl}&pageSize=${PAGE_SIZE}&fields=lawNumber,latestAction,congress`;
   const first = await getWithRetry(firstUrl);
   const total = first.data?.pagination?.count || 0;
   if (total === 0) return 0;
 
-  let count = countLawItems(first.data[key] || []);
+  let count = countLawItems(first.data.bills || []);
   const pages = Math.ceil(total / PAGE_SIZE);
 
   const urls = [];
@@ -65,7 +65,7 @@ async function getBecameLawCount(baseUrl, key) {
     const batch = urls.slice(i, i + concurrency);
     const resps = await Promise.all(batch.map(u => getWithRetry(u).catch(() => null)));
     for (const r of resps) {
-      if (r) count += countLawItems(r.data[key] || []);
+      if (r) count += countLawItems(r.data.bills || []);
     }
   }
 
@@ -79,17 +79,17 @@ function countLawItems(items) {
 }
 
 async function getCounts(bioguideId) {
-  const sponsoredBase = `/member/${bioguideId}/legislation?sponsor=true&congress=${CONGRESS}`;
-  const cosponsoredBase = `/member/${bioguideId}/legislation?cosponsor=true&congress=${CONGRESS}`;
+  const sponsoredURL = `/bill?congress=${CONGRESS}&sponsorIds=${bioguideId}`;
+  const cosponsoredURL = `/bill?congress=${CONGRESS}&cosponsorIds=${bioguideId}`;
 
   const [sponsored, cosponsored] = await Promise.all([
-    getCount(sponsoredBase),
-    getCount(cosponsoredBase)
+    getCount(sponsoredURL),
+    getCount(cosponsoredURL)
   ]);
 
   const [becameLawSponsored, becameLawCosponsored] = await Promise.all([
-    getBecameLawCount(sponsoredBase, 'legislation'),
-    getBecameLawCount(cosponsoredBase, 'legislation')
+    getBecameLawCount(sponsoredURL),
+    getBecameLawCount(cosponsoredURL)
   ]);
 
   return { sponsored, cosponsored, becameLawSponsored, becameLawCosponsored };
