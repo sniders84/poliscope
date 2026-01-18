@@ -1,4 +1,4 @@
-// 119th Congress totals scraper using Congress.gov API (Bioguide memberId)
+// Career totals scraper using Congress.gov API (Bioguide memberId)
 // Requires CONGRESS_API_KEY in environment
 const fs = require('fs');
 const path = require('path');
@@ -23,10 +23,10 @@ function ensureSchema(sen) {
 
 async function getLegislationCounts(memberId, type) { // type: 'sponsored' or 'cosponsored'
   const endpoint = `${type}-legislation`;
-  let url = `https://api.congress.gov/v3/member/${memberId}/${endpoint}?congress=119&limit=250&api_key=${API_KEY}`;
+  let url = `https://api.congress.gov/v3/member/${memberId}/${endpoint}?limit=250&api_key=${API_KEY}`;
   let total = 0;
   let enacted = 0;
-  let sampleEnactedText = null;
+  let sampleText = null;
 
   while (url) {
     try {
@@ -34,20 +34,20 @@ async function getLegislationCounts(memberId, type) { // type: 'sponsored' or 'c
       const dataKey = `${type}Legislation`;
       const items = resp.data?.[dataKey]?.item || [];
 
-      if (total === 0) {
-        total = resp.data?.pagination?.count || items.length;
-      }
+      if (total === 0) total = resp.data?.pagination?.count || items.length;
 
       items.forEach(item => {
         const actionText = (item.latestAction?.text || '').trim();
         const lower = actionText.toLowerCase();
-        if (lower.includes('became public law') || 
-            lower.includes('signed by president') || 
-            lower.includes('enacted') || 
-            lower.includes('public law no:') ||
-            lower.includes('approved by president')) {
+        if (lower.includes('became public law') ||
+            lower.includes('became private law') ||
+            lower.includes('signed by president') ||
+            lower.includes('enacted') ||
+            lower.includes('public law') ||
+            lower.includes('approved by president') ||
+            lower.includes('became law')) {
           enacted++;
-          if (!sampleEnactedText) sampleEnactedText = actionText; // Sample one for debug
+          if (!sampleText) sampleText = actionText;
         }
       });
 
@@ -58,10 +58,10 @@ async function getLegislationCounts(memberId, type) { // type: 'sponsored' or 'c
     }
   }
 
-  if (enacted > 0 && sampleEnactedText) {
-    console.log(`Sample enacted action text for ${type} (${memberId}): "${sampleEnactedText}"`);
-  } else if (enacted === 0 && total > 0) {
-    console.warn(`No enacted detected for ${type} on ${memberId} despite ${total} items in 119th`);
+  if (enacted > 0 && sampleText) {
+    console.log(`Sample enacted action for ${type} (${memberId}): "${sampleText}"`);
+  } else if (enacted === 0 && total > 500) {
+    console.warn(`No enacted detected for ${type} on ${memberId} despite ${total} total items`);
   }
 
   return { total, enacted };
@@ -97,5 +97,5 @@ async function getLegislationCounts(memberId, type) { // type: 'sponsored' or 'c
   }
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(sens, null, 2));
-  console.log('Senate legislation updated with 119th Congress totals (via Congress.gov API)');
+  console.log('Senate legislation updated with career totals (via Congress.gov API)');
 })();
