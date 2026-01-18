@@ -1,6 +1,5 @@
-// scripts/legislation-scraper.js
-// Purpose: Update senators-rankings.json with sponsored/cosponsored counts (119th Congress)
-// Uses Congress.gov v3 endpoints with X-Api-Key header, handles pagination via `pagination.next`, with simple retries.
+// Update senators-rankings.json with sponsored/cosponsored counts (119th Congress)
+// Uses Congress.gov v3 endpoints with X-Api-Key header and pagination
 
 const fs = require('fs');
 const path = require('path');
@@ -29,20 +28,10 @@ const client = axios.create({
 async function fetchPaginated(url) {
   let next = url;
   let total = 0;
-  let attempts = 0;
-
   while (next) {
     const resp = await client.get(next);
-    if (resp.status === 403) {
-      // brief backoff and retry a couple times
-      if (++attempts <= 2) {
-        await new Promise(r => setTimeout(r, 500));
-        continue;
-      }
-      throw new Error('403');
-    }
+    if (resp.status === 403) throw new Error('403 Forbidden');
     if (resp.status >= 400) throw new Error(`HTTP ${resp.status}`);
-
     const data = resp.data || {};
     total += (data.legislation?.length || 0);
     next = data.pagination?.next || null;
@@ -53,12 +42,10 @@ async function fetchPaginated(url) {
 async function getCounts(bioguideId) {
   const sponsoredURL = `/member/${bioguideId}/sponsored-legislation?congress=${CONGRESS}`;
   const cosponsoredURL = `/member/${bioguideId}/cosponsored-legislation?congress=${CONGRESS}`;
-
   const [sponsored, cosponsored] = await Promise.all([
     fetchPaginated(sponsoredURL),
     fetchPaginated(cosponsoredURL)
   ]);
-
   return { sponsored, cosponsored };
 }
 
@@ -71,40 +58,31 @@ function ensureSchema(sen) {
   sen.becameLawCosponsoredBills ??= 0;
   sen.becameLawAmendments ??= 0;
   sen.becameLawCosponsoredAmendments ??= 0;
-
   sen.yeaVotes ??= 0;
   sen.nayVotes ??= 0;
   sen.missedVotes ??= 0;
   sen.totalVotes ??= 0;
   sen.participationPct ??= 0;
   sen.missedVotePct ??= 0;
-
   sen.committees = Array.isArray(sen.committees) ? sen.committees : [];
   sen.rawScore ??= 0;
   sen.score ??= 0;
   sen.scoreNormalized ??= 0;
-
   return sen;
 }
 
 (async () => {
   const sens = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureSchema);
-
   for (const sen of sens) {
-    const bio = sen.bioguideId;
-    if (!bio) continue;
-
     try {
-      const { sponsored, cosponsored } = await getCounts(bio);
+      const { sponsored, cosponsored } = await getCounts(sen.bioguideId);
       sen.sponsoredBills = sponsored;
       sen.cosponsoredBills = cosponsored;
       console.log(`${sen.name}: sponsored=${sponsored}, cosponsored=${cosponsored}`);
     } catch (err) {
-      console.error(`Legislation failed for ${bio} (${sen.name}): ${err.message}`);
-      // Keep zeros to preserve schema
+      console.error(`Legislation failed for ${sen.bioguideId} (${sen.name}): ${err.message}`);
     }
   }
-
   fs.writeFileSync(OUT_PATH, JSON.stringify(sens, null, 2));
   console.log('Senate legislation updated (paginated, header auth)');
 })();
