@@ -1,4 +1,4 @@
-// Career totals scraper (API) + unified became law fallback (combined sponsored + cosponsored)
+// Career totals scraper (API) + unified became law fallback
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
@@ -11,9 +11,9 @@ if (!API_KEY) {
   process.exit(1);
 }
 
-// Fallback combined enacted/became law counts (from GovTrack/Congress.gov aggregates)
+// Fallback enacted counts keyed by Bioguide ID
 const ENACTED_FALLBACK = {
-  'C000127': 144, // Maria Cantwell (your figure)
+  'C000127': 144, // Maria Cantwell
   'K000367': 98,  // Amy Klobuchar
   'S000033': 35,  // Bernard Sanders
   'W000802': 65,  // Sheldon Whitehouse
@@ -25,7 +25,7 @@ const ENACTED_FALLBACK = {
   'G000359': 70,  // Lindsey Graham
   'M000355': 80,  // Mitch McConnell
   'M001176': 60,  // Jeff Merkley
-  'R000122': 90,  // John Reed
+  'R000122': 90,  // Jack Reed
   'R000584': 50,  // James Risch
   'S001181': 85,  // Jeanne Shaheen
   'W000805': 65,  // Mark Warner
@@ -40,14 +40,19 @@ const ENACTED_FALLBACK = {
   'C001075': 50,  // Bill Cassidy
   'C000880': 100, // Michael Crapo
   'G000386': 200, // Charles Grassley
-  // Add more senators here as you identify them (Bioguide ID: count)
+  // extend as needed
 };
 
 function ensureSchema(sen) {
-  sen.congressgovId ??= null;
+  sen.congressgovId ??= sen.bioguideId;
   sen.sponsoredBills ??= 0;
   sen.cosponsoredBills ??= 0;
-  sen.becameLaw ??= 0; // Unified combined enacted count
+  sen.sponsoredAmendments ??= 0;
+  sen.cosponsoredAmendments ??= 0;
+  sen.becameLawBills ??= 0;
+  sen.becameLawCosponsoredBills ??= 0;
+  sen.becameLawAmendments ??= 0;
+  sen.becameLawCosponsoredAmendments ??= 0;
   return sen;
 }
 
@@ -81,9 +86,11 @@ async function getTotalCount(memberId, type) {
       sen.sponsoredBills = await getTotalCount(sen.congressgovId, 'sponsored');
       sen.cosponsoredBills = await getTotalCount(sen.congressgovId, 'cosponsored');
 
-      // Unified became law count from fallback map
-      const enacted = ENACTED_FALLBACK[sen.congressgovId] || 0;
-      sen.becameLaw = enacted;
+      // Unified enacted count from fallback
+      const enacted = ENACTED_FALLBACK[sen.bioguideId] || 0;
+      sen.becameLawBills = enacted;              // put unified count here
+      sen.becameLawCosponsoredBills = 0;         // if you want split, adjust
+      sen.becameLaw = enacted;                   // optional unified field
 
       console.log(`${sen.name}: sponsored=${sen.sponsoredBills}, cosponsored=${sen.cosponsoredBills}, becameLaw=${sen.becameLaw}`);
     } catch (err) {
@@ -92,5 +99,5 @@ async function getTotalCount(memberId, type) {
   }
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(sens, null, 2));
-  console.log('Senate legislation updated with career sponsored/cosponsored totals + unified becameLaw count');
+  console.log('Senate legislation updated with career sponsored/cosponsored totals + becameLaw counts');
 })();
