@@ -23,22 +23,19 @@ jobs:
       - name: Bootstrap senators
         run: node scripts/bootstrap-senators.js
 
-      - name: Generate enacted fallback
-        run: node scripts/generate-enacted-fallback.js
-
-      - name: Scrape legislation
+      - name: Scrape legislation (119th Congress sponsored/cosponsored)
         run: node scripts/legislation-scraper.js
 
-      # ⚠️ Committee scraper disabled until file exists
+      # ⚠️ Disabled until you have these scripts implemented
       # - name: Scrape committees
       #   run: node scripts/committee-senators-scraper.js
 
-      # ⚠️ Votes scraper disabled until file exists
       # - name: Scrape votes
       #   run: node scripts/votes-senators-scraper.js
 
       - name: Merge senator data
         run: node scripts/merge-senators.js
 
-      - name: Score senators
-        run: node scripts/senators-score.js
+      # ⚠️ Disabled until senators-score.js exists
+      # - name: Score senators
+      #   run: node scripts/senators-score.js
