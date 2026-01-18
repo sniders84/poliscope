@@ -1,9 +1,7 @@
-// Career totals scraper using Congress.gov API and page scraping for became law count
-// Requires CONGRESS_API_KEY in environment
+// Career totals scraper + enacted from GovTrack page scrape
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
-const cheerio = require('cheerio');
 
 const OUT_PATH = path.join(__dirname, '../public/senators-rankings.json');
 const API_KEY = process.env.CONGRESS_API_KEY;
@@ -34,25 +32,33 @@ async function getTotalCount(memberId, type) {
   }
 }
 
-async function getBecameLawCount(memberId) {
-  const url = `https://www.congress.gov/member/${memberId}`;
+async function getEnactedFromGovTrack(name, state) {
+  const query = `${name} ${state}`.replace(/\s+/g, '+');
+  const searchUrl = `https://www.govtrack.us/search?q=${query}+senator`;
   try {
-    const resp = await axios.get(url, { timeout: 60000 });
-    const $ = cheerio.load(resp.data);
-    let count = 0;
-    $('.facet-value').each((i, el) => {
-      const text = $(el).text().trim();
-      if (text.includes('Became Law')) {
-        const match = text.match(/\[\d+\]/);
-        if (match) {
-          count = parseInt(match[0].slice(1, -1), 10);
-        }
+    const searchResp = await axios.get(searchUrl, { timeout: 60000 });
+    const $ = cheerio.load(searchResp.data);
+    let profileUrl = $('.search-result a').first().attr('href');
+    if (!profileUrl) return 0;
+
+    profileUrl = 'https://www.govtrack.us' + profileUrl;
+    const profileResp = await axios.get(profileUrl, { timeout: 60000 });
+    const $$ = cheerio.load(profileResp.data);
+
+    let enacted = 0;
+    $$('dt').each((i, el) => {
+      const text = $$(el).text().trim();
+      if (text.includes('Bills Enacted') || text.includes('Enacted')) {
+        const dd = $$(el).next('dd').text().trim();
+        const match = dd.match(/\d+/);
+        if (match) enacted = parseInt(match[0], 10);
       }
     });
-    console.log(`Became Law count for ${memberId}: ${count}`);
-    return count;
+
+    console.log(`GovTrack enacted count for ${name}: ${enacted}`);
+    return enacted;
   } catch (err) {
-    console.error(`Became Law scrape error for ${memberId}: ${err.message}`);
+    console.error(`GovTrack scrape error for ${name}: ${err.message}`);
     return 0;
   }
 }
@@ -75,9 +81,9 @@ async function getBecameLawCount(memberId) {
       sen.sponsoredBills = await getTotalCount(sen.congressgovId, 'sponsored');
       sen.cosponsoredBills = await getTotalCount(sen.congressgovId, 'cosponsored');
 
-      const becameLaw = await getBecameLawCount(sen.congressgovId);
-      sen.becameLawBills = becameLaw; // Combined sponsored + cosponsored became law
-      sen.becameLawCosponsoredBills = becameLaw; // Same, since no split
+      const enacted = await getEnactedFromGovTrack(sen.name, sen.state);
+      sen.becameLawBills = enacted;
+      sen.becameLawCosponsoredBills = enacted; // Combined, as GovTrack doesn't split
 
       console.log(`${sen.name}: sponsored=${sen.sponsoredBills} (law=${sen.becameLawBills}), cosponsored=${sen.cosponsoredBills} (law=${sen.becameLawCosponsoredBills})`);
     } catch (err) {
@@ -86,5 +92,5 @@ async function getBecameLawCount(memberId) {
   }
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(sens, null, 2));
-  console.log('Senate legislation updated with career totals (became law from page scrape)');
+  console.log('Senate legislation updated with career totals + enacted from GovTrack scrape');
 })();
