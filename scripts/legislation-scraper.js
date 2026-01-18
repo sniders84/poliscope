@@ -1,11 +1,12 @@
-// Career totals scraper using Congress.gov API memberId
-// Requires CONGRESS_API_KEY in environment
+// Purpose: Generate baseline senators-rankings.json from local legislators-current.json
+// Filters for current Senators, initializes full schema, and enriches with Congress.gov memberId
 
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
 
-const OUT_PATH = path.join(__dirname, '../public/senators-rankings.json');
+const ROSTER_PATH = path.join(__dirname, '..', 'public', 'legislators-current.json');
+const OUT_PATH = path.join(__dirname, '..', 'public', 'senators-rankings.json');
 const API_KEY = process.env.CONGRESS_API_KEY;
 
 if (!API_KEY) {
@@ -13,47 +14,73 @@ if (!API_KEY) {
   process.exit(1);
 }
 
-function ensureSchema(sen) {
-  sen.congressgovId ??= null;
-  sen.sponsoredBills ??= 0;
-  sen.cosponsoredBills ??= 0;
-  sen.becameLawBills ??= 0;
-  sen.becameLawCosponsoredBills ??= 0;
-  return sen;
-}
-
-async function countLegislation(memberId, sponsorship) {
-  let total = 0;
-  let url = `https://api.congress.gov/v3/member/${memberId}/legislation?sponsorship=${sponsorship}&api_key=${API_KEY}&limit=250`;
-
+async function fetchMembers(congress = 119) {
+  let url = `https://api.congress.gov/v3/member/congress/${congress}?api_key=${API_KEY}&limit=250`;
+  let all = [];
   while (url) {
     const resp = await axios.get(url, { timeout: 60000 });
-    total += resp.data.pagination.count;
+    all = all.concat(resp.data.members);
     url = resp.data.pagination.next;
   }
-  return total;
+  return all;
+}
+
+function baseRecord(sen) {
+  const lastTerm = sen.terms.at(-1);
+  return {
+    bioguideId: sen.id.bioguide,
+    name: `${sen.name.first} ${sen.name.last}`,
+    state: lastTerm.state,
+    district: 'At-Large',
+    party: lastTerm.party,
+    office: 'Senator',
+    congressgovId: null,
+    // Votes
+    yeaVotes: 0,
+    nayVotes: 0,
+    missedVotes: 0,
+    totalVotes: 0,
+    participationPct: 0,
+    missedVotePct: 0,
+    // Legislation
+    sponsoredBills: 0,
+    cosponsoredBills: 0,
+    sponsoredAmendments: 0,
+    cosponsoredAmendments: 0,
+    becameLawBills: 0,
+    becameLawCosponsoredBills: 0,
+    // Committees
+    committees: [],
+    // Scores
+    rawScore: 0,
+    score: 0,
+    scoreNormalized: 0
+  };
 }
 
 (async () => {
-  const sens = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureSchema);
+  const roster = JSON.parse(fs.readFileSync(ROSTER_PATH, 'utf-8'));
+  const sens = roster.filter(r => {
+    const t = r.terms.at(-1);
+    return t.type === 'sen' && new Date(t.end) > new Date();
+  }).map(baseRecord);
 
-  for (const sen of sens) {
-    if (!sen.congressgovId) {
-      console.error(`No congressgovId for ${sen.name}`);
-      continue;
+  // Fetch authoritative member list from Congress.gov
+  const members = await fetchMembers(119);
+  const map = {};
+  for (const m of members) {
+    if (m.bioguideId) {
+      map[m.bioguideId] = m.memberId;
     }
-    try {
-      const sponsored = await countLegislation(sen.congressgovId, 'Sponsored');
-      const cosponsored = await countLegislation(sen.congressgovId, 'Cosponsored');
+  }
 
-      sen.sponsoredBills = sponsored;
-      sen.cosponsoredBills = cosponsored;
-      console.log(`${sen.name}: sponsored=${sponsored}, cosponsored=${cosponsored}`);
-    } catch (err) {
-      console.error(`Failed for ${sen.name}: ${err.message}`);
+  // Enrich senators with congressgovId
+  for (const sen of sens) {
+    if (map[sen.bioguideId]) {
+      sen.congressgovId = map[sen.bioguideId];
     }
   }
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(sens, null, 2));
-  console.log('Senate legislation updated with career totals (via Congress.gov API)');
+  console.log(`Bootstrapped senators-rankings.json with ${sens.length} current Senators (with congressgovId)`);
 })();
