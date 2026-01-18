@@ -1,6 +1,5 @@
 // scripts/legislation-scraper.js
-// Update senators-rankings.json with sponsored/cosponsored counts (119th Congress)
-// Correctly parses Congress.gov API response keys: sponsoredLegislation and cosponsoredLegislation
+// Update senators-rankings.json with sponsored/cosponsored counts for the 119th Congress only
 
 const fs = require('fs');
 const path = require('path');
@@ -36,7 +35,10 @@ async function fetchPaginated(url, key) {
 
     const data = resp.data || {};
     const items = data[key] || [];
-    total += items.length;
+
+    // Only count items from the 119th Congress
+    total += items.filter(item => item.congress === CONGRESS).length;
+
     next = data.pagination?.next || null;
   }
   return total;
@@ -89,5 +91,5 @@ function ensureSchema(sen) {
     }
   }
   fs.writeFileSync(OUT_PATH, JSON.stringify(sens, null, 2));
-  console.log('Senate legislation updated with sponsored/cosponsored counts (119th Congress)');
+  console.log('Senate legislation updated with 119th Congress counts only');
 })();
