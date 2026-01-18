@@ -1,6 +1,7 @@
 // scripts/generate-enacted-fallback.js
 //
-// Full replacement file: scrapes GovTrack member profile pages
+// Scrapes GovTrack member profile pages using senators.json links,
+// joins with legislators-current.json to get bioguideId,
 // and builds enacted-fallback.json keyed by bioguideId.
 
 const fs = require('fs');
@@ -8,47 +9,61 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const path = require('path');
 
-// Load your senators.json (must include bioguideId + govtrackLink for each senator)
-const senators = JSON.parse(
-  fs.readFileSync(path.join(__dirname, '../public/senators.json'), 'utf-8')
-);
+// Load both files
+const senators = JSON.parse(fs.readFileSync(path.join(__dirname, '../public/senators.json'), 'utf-8'));
+const legislators = JSON.parse(fs.readFileSync(path.join(__dirname, '../public/legislators-current.json'), 'utf-8'));
+
+// Build a lookup: govtrackId → bioguideId
+const govtrackToBioguide = {};
+for (const leg of legislators) {
+  const bioguideId = leg.id?.bioguide;
+  const govtrackId = leg.id?.govtrack;
+  if (bioguideId && govtrackId) {
+    govtrackToBioguide[govtrackId] = bioguideId;
+  }
+}
 
 const enactedCounts = {};
 
-async function scrapeGovTrack(link, bioguideId, name) {
+async function scrapeGovTrack(link, govtrackId, name) {
   try {
     const resp = await axios.get(link, { timeout: 60000 });
     const $ = cheerio.load(resp.data);
-
-    // Look for "Bills enacted: <number>" text anywhere in the page
     const text = $('body').text();
     const match = text.match(/Bills enacted:\s*(\d+)/);
 
     if (match) {
-      enactedCounts[bioguideId] = parseInt(match[1], 10);
-      console.log(`${name} (${bioguideId}) → ${match[1]}`);
+      const bioguideId = govtrackToBioguide[govtrackId];
+      if (bioguideId) {
+        enactedCounts[bioguideId] = parseInt(match[1], 10);
+        console.log(`${name} (${bioguideId}) → ${match[1]}`);
+      } else {
+        console.warn(`No bioguideId found for GovTrack ID ${govtrackId}`);
+      }
     } else {
-      console.warn(`No enacted count found for ${name} (${bioguideId})`);
+      console.warn(`No enacted count found for ${name}`);
     }
   } catch (err) {
-    console.error(`Error scraping ${name} (${bioguideId}): ${err.message}`);
+    console.error(`Error scraping ${name}: ${err.message}`);
   }
 }
 
 (async () => {
   for (const sen of senators) {
-    const bioguideId = sen.bioguideId; // ensure this field exists in senators.json
     const govtrackLink = sen.govtrackLink;
     const name = sen.name;
 
-    if (bioguideId && govtrackLink) {
-      await scrapeGovTrack(govtrackLink, bioguideId, name);
+    // Extract govtrackId from the link (last numeric segment)
+    const match = govtrackLink.match(/\/(\d+)(?:\/|$)/);
+    const govtrackId = match ? match[1] : null;
+
+    if (govtrackId && govtrackLink) {
+      await scrapeGovTrack(govtrackLink, govtrackId, name);
     } else {
-      console.warn(`Missing bioguideId or govtrackLink for ${name}`);
+      console.warn(`Missing govtrackId for ${name}`);
     }
   }
 
-  // Write out the complete fallback JSON
   const outputPath = path.join(__dirname, '../public/enacted-fallback.json');
   fs.writeFileSync(outputPath, JSON.stringify(enactedCounts, null, 2));
   console.log(`Generated enacted-fallback.json with ${Object.keys(enactedCounts).length} entries`);
