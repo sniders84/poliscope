@@ -8,9 +8,7 @@ const cheerio = require('cheerio');
 
 const OUT_PATH = path.join(__dirname, '../public/senators-rankings.json');
 
-// Build a member URL from name + bioguide (slug is first-last lowercase)
 function memberUrl(name, bioguideId) {
-  // Normalize: keep letters/spaces/hyphens, collapse spaces to hyphens
   const slug = name
     .toLowerCase()
     .replace(/[^a-z\s-]/g, '')
@@ -38,11 +36,10 @@ async function fetchCountsFromMemberPage(url) {
     });
     const $ = cheerio.load(resp.data);
 
-    // Facet counts live under #innerbox_sponsorship
     const sponsoredText = $('#facetItemsponsorshipSponsored_Legislationcount').text() || '';
     const cosponsoredText = $('#facetItemsponsorshipCosponsored_Legislationcount').text() || '';
 
-    // Valid regex to capture digits inside [ ]
+    // ✅ Valid regex literals
     const sponsoredMatch = sponsoredText.match(/
 
 \[(\d+)\]
@@ -77,12 +74,11 @@ function sleep(ms) {
 
     sen.sponsoredBills = sponsored;
     sen.cosponsoredBills = cosponsored;
-    // Congress.gov facet doesn’t expose “became law” totals here—leave at 0
     sen.becameLawBills = sen.becameLawBills || 0;
     sen.becameLawCosponsoredBills = sen.becameLawCosponsoredBills || 0;
 
     console.log(`${sen.name}: sponsored=${sponsored}, cosponsored=${cosponsored}`);
-    await sleep(3000); // gentle pacing to avoid anti-bot triggers
+    await sleep(3000);
   }
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(sens, null, 2));
