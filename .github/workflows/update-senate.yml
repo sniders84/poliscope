@@ -1,10 +1,9 @@
-
 name: Update Senate data
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 2 * * *'   # 2 AM daily
+    - cron: '0 2 * * *'
 
 permissions:
   contents: write
@@ -12,33 +11,47 @@ permissions:
 jobs:
   update-senate:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        batch: [0, 1, 2, 3]   # 4 runs, each handling 25 senators
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - run: npm install   # use install instead of ci to avoid lockfile mismatch
 
-      - run: node scripts/bootstrap-senators.js
+      - name: Install dependencies
+        run: npm install
 
-      - run: node scripts/legislation-scraper.js
+      - name: Bootstrap senators
+        run: node scripts/bootstrap-senators.js
+
+      - name: Scrape legislation (batch ${{ matrix.batch }})
+        run: node scripts/legislation-scraper.js ${{ matrix.batch }}
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
 
-      - run: node scripts/committee-scraper.js
+      - name: Scrape committees
+        run: node scripts/committee-scraper.js
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
 
-      - run: node scripts/votes-scraper.js
+      - name: Scrape votes
+        run: node scripts/votes-scraper.js
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
 
-      - run: node scripts/merge-senators.js
+      - name: Merge senator data
+        run: node scripts/merge-senators.js
 
-      - run: node scripts/senators-scores.js
+      - name: Generate scores
+        run: node scripts/senators-scores.js
 
-      - name: Commit changes
+      - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Automated Senate update"
+          commit_message: "Automated Senate update (batch ${{ matrix.batch }})"
           file_pattern: public/senators-*.json
