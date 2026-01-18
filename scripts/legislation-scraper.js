@@ -1,74 +1,16 @@
-// Career totals scraper using Congress.gov numeric memberId
-// Pages through /member to build bioguide -> memberId map, then fetches totals
+// Career totals scraper using GovTrack bulk data
+// Fetches sponsored/cosponsored counts keyed by bioguide
 
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
 
 const OUT_PATH = path.join(__dirname, '../public/senators-rankings.json');
-const API_KEY = process.env.CONGRESS_API_KEY;
 
-if (!API_KEY) {
-  console.error('Missing CONGRESS_API_KEY');
-  process.exit(1);
-}
-
-const client = axios.create({
-  baseURL: 'https://api.congress.gov/v3',
-  timeout: 30000,
-  headers: {
-    'X-Api-Key': API_KEY,
-    'User-Agent': 'poliscope/1.0',
-    'Accept': 'application/json'
-  },
-  validateStatus: s => s >= 200 && s < 500
-});
-
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-// Build a complete bioguide -> memberId map
-async function buildMemberMap() {
-  let map = {};
-  let page = 1;
-  while (true) {
-    const url = `/member?page=${page}&pageSize=250`;
-    const resp = await client.get(url);
-    if (resp.status === 429) {
-      console.warn(`Rate limited on member list page ${page}, backing off 60s...`);
-      await sleep(60000);
-      continue;
-    }
-    const members = resp.data?.members || [];
-    if (members.length === 0) break;
-    for (const m of members) {
-      if (m.bioguideId && m.memberId) {
-        map[m.bioguideId] = m.memberId;
-      }
-    }
-    console.log(`Fetched member list page ${page}, total mapped=${Object.keys(map).length}`);
-    if (members.length < 250) break; // last page
-    page++;
-    await sleep(5000);
-  }
-  return map;
-}
-
-// Fetch career totals for one memberId
-async function getCareerTotals(memberId) {
-  try {
-    const sponsoredResp = await client.get(`/member/${memberId}/sponsored-legislation`);
-    const cosponsoredResp = await client.get(`/member/${memberId}/cosponsored-legislation`);
-
-    const sponsored = sponsoredResp.data?.pagination?.count || 0;
-    const cosponsored = cosponsoredResp.data?.pagination?.count || 0;
-
-    return { sponsored, cosponsored };
-  } catch (err) {
-    console.error(`Failed to fetch totals for memberId ${memberId}: ${err.message}`);
-    return { sponsored: 0, cosponsored: 0 };
-  }
+async function fetchGovTrackData() {
+  const url = 'https://www.govtrack.us/data/congress-legislators/legislators-historical.json';
+  const resp = await axios.get(url, { timeout: 60000 });
+  return resp.data;
 }
 
 function ensureSchema(sen) {
@@ -82,24 +24,33 @@ function ensureSchema(sen) {
 (async () => {
   const sens = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureSchema);
 
-  console.log('Building bioguide -> memberId map from Congress.gov...');
-  const memberMap = await buildMemberMap();
+  console.log('Fetching GovTrack bulk data...');
+  const govtrack = await fetchGovTrackData();
+
+  // Build bioguide -> totals map
+  const totals = {};
+  for (const leg of govtrack) {
+    if (leg.id?.bioguide) {
+      totals[leg.id.bioguide] = {
+        sponsored: leg.sponsored_bills || 0,
+        cosponsored: leg.cosponsored_bills || 0
+      };
+    }
+  }
 
   for (const sen of sens) {
-    const memberId = memberMap[sen.bioguideId];
-    if (!memberId) {
-      console.warn(`No memberId found for ${sen.name} (${sen.bioguideId})`);
-      continue;
+    const t = totals[sen.bioguideId];
+    if (t) {
+      sen.sponsoredBills = t.sponsored;
+      sen.cosponsoredBills = t.cosponsored;
+      sen.becameLawBills = 0; // GovTrack doesn’t break this out
+      sen.becameLawCosponsoredBills = 0;
+      console.log(`${sen.name}: sponsored=${t.sponsored}, cosponsored=${t.cosponsored}`);
+    } else {
+      console.warn(`No GovTrack totals found for ${sen.name} (${sen.bioguideId})`);
     }
-    const { sponsored, cosponsored } = await getCareerTotals(memberId);
-    sen.sponsoredBills = sponsored;
-    sen.cosponsoredBills = cosponsored;
-    sen.becameLawBills = 0; // career totals don’t break this out
-    sen.becameLawCosponsoredBills = 0;
-    console.log(`${sen.name}: sponsored=${sponsored}, cosponsored=${cosponsored}`);
-    await sleep(5000); // pause between senators
   }
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(sens, null, 2));
-  console.log('Senate legislation updated with career totals (via memberId resolution)');
+  console.log('Senate legislation updated with career totals (via GovTrack)');
 })();
