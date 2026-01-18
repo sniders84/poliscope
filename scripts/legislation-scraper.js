@@ -1,12 +1,11 @@
-// Career totals scraper using LIS IDs from legislators-current.json
-// Reads local roster, maps bioguide -> LIS, then queries Congress.gov
+// Career totals scraper using Congress.gov numeric memberId
+// Pages through /member to build bioguide -> memberId map, then fetches totals
 
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
 
 const OUT_PATH = path.join(__dirname, '../public/senators-rankings.json');
-const ROSTER_PATH = path.join(__dirname, '../public/legislators-current.json');
 const API_KEY = process.env.CONGRESS_API_KEY;
 
 if (!API_KEY) {
@@ -29,30 +28,45 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-// Build bioguide -> LIS map from local roster
-function buildLisMap() {
-  const roster = JSON.parse(fs.readFileSync(ROSTER_PATH, 'utf-8'));
-  const map = {};
-  for (const leg of roster) {
-    if (leg.id?.bioguide && leg.id?.lis) {
-      map[leg.id.bioguide] = leg.id.lis;
+// Build a complete bioguide -> memberId map
+async function buildMemberMap() {
+  let map = {};
+  let page = 1;
+  while (true) {
+    const url = `/member?page=${page}&pageSize=250`;
+    const resp = await client.get(url);
+    if (resp.status === 429) {
+      console.warn(`Rate limited on member list page ${page}, backing off 60s...`);
+      await sleep(60000);
+      continue;
     }
+    const members = resp.data?.members || [];
+    if (members.length === 0) break;
+    for (const m of members) {
+      if (m.bioguideId && m.memberId) {
+        map[m.bioguideId] = m.memberId;
+      }
+    }
+    console.log(`Fetched member list page ${page}, total mapped=${Object.keys(map).length}`);
+    if (members.length < 250) break; // last page
+    page++;
+    await sleep(5000);
   }
   return map;
 }
 
-// Fetch career totals for one LIS ID
-async function getCareerTotals(lisId) {
+// Fetch career totals for one memberId
+async function getCareerTotals(memberId) {
   try {
-    const sponsoredResp = await client.get(`/member/${lisId}/sponsored-legislation`);
-    const cosponsoredResp = await client.get(`/member/${lisId}/cosponsored-legislation`);
+    const sponsoredResp = await client.get(`/member/${memberId}/sponsored-legislation`);
+    const cosponsoredResp = await client.get(`/member/${memberId}/cosponsored-legislation`);
 
     const sponsored = sponsoredResp.data?.pagination?.count || 0;
     const cosponsored = cosponsoredResp.data?.pagination?.count || 0;
 
     return { sponsored, cosponsored };
   } catch (err) {
-    console.error(`Failed to fetch totals for LIS ${lisId}: ${err.message}`);
+    console.error(`Failed to fetch totals for memberId ${memberId}: ${err.message}`);
     return { sponsored: 0, cosponsored: 0 };
   }
 }
@@ -68,16 +82,16 @@ function ensureSchema(sen) {
 (async () => {
   const sens = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureSchema);
 
-  console.log('Building bioguide -> LIS map from legislators-current.json...');
-  const lisMap = buildLisMap();
+  console.log('Building bioguide -> memberId map from Congress.gov...');
+  const memberMap = await buildMemberMap();
 
   for (const sen of sens) {
-    const lisId = lisMap[sen.bioguideId];
-    if (!lisId) {
-      console.warn(`No LIS ID found for ${sen.name} (${sen.bioguideId})`);
+    const memberId = memberMap[sen.bioguideId];
+    if (!memberId) {
+      console.warn(`No memberId found for ${sen.name} (${sen.bioguideId})`);
       continue;
     }
-    const { sponsored, cosponsored } = await getCareerTotals(lisId);
+    const { sponsored, cosponsored } = await getCareerTotals(memberId);
     sen.sponsoredBills = sponsored;
     sen.cosponsoredBills = cosponsored;
     sen.becameLawBills = 0; // career totals don’t break this out
@@ -87,5 +101,5 @@ function ensureSchema(sen) {
   }
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(sens, null, 2));
-  console.log('Senate legislation updated with career totals (via LIS IDs)');
+  console.log('Senate legislation updated with career totals (via memberId resolution)');
 })();
