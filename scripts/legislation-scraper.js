@@ -1,5 +1,5 @@
 // Senate legislation scraper using Congress.gov API
-// Iterates through each senator sequentially, throttled to avoid 429 errors
+// Sequential, heavily throttled to avoid 429 errors
 
 const fs = require('fs');
 const path = require('path');
@@ -30,23 +30,20 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function getWithRetry(url, attempts = 3, delay = 2000) {
+async function getWithRetry(url, attempts = 2) {
   let lastErr;
   for (let i = 0; i < attempts; i++) {
     try {
       const resp = await client.get(url);
       if (resp.status === 429) {
-        console.warn(`Rate limited on ${url}, sleeping ${delay}ms...`);
-        await sleep(delay);
-        delay *= 2; // exponential backoff
-        continue;
+        console.warn(`Rate limited on ${url}, skipping for now`);
+        return null; // skip instead of retrying endlessly
       }
       if (resp.status >= 400) throw new Error(`HTTP ${resp.status}`);
       return resp;
     } catch (err) {
       lastErr = err;
-      await sleep(delay);
-      delay *= 2;
+      await sleep(5000); // longer pause before retry
     }
   }
   throw lastErr;
@@ -54,12 +51,13 @@ async function getWithRetry(url, attempts = 3, delay = 2000) {
 
 async function getCount(url) {
   const resp = await getWithRetry(url);
-  return resp.data?.pagination?.count || 0;
+  return resp?.data?.pagination?.count || 0;
 }
 
 async function getBecameLawCount(baseUrl) {
   const firstUrl = `${baseUrl}&pageSize=${PAGE_SIZE}&fields=lawNumber,latestAction,congress`;
   const first = await getWithRetry(firstUrl);
+  if (!first) return 0;
   const total = first.data?.pagination?.count || 0;
   if (total === 0) return 0;
 
@@ -68,9 +66,9 @@ async function getBecameLawCount(baseUrl) {
 
   for (let p = 2; p <= pages; p++) {
     const url = `${baseUrl}&page=${p}&pageSize=${PAGE_SIZE}&fields=lawNumber,latestAction,congress`;
-    const resp = await getWithRetry(url).catch(() => null);
+    const resp = await getWithRetry(url);
     if (resp) count += countLawItems(resp.data.bills || []);
-    await sleep(500); // small pause between pages
+    await sleep(3000); // pause between pages
   }
 
   return count;
@@ -87,11 +85,11 @@ async function getCounts(bioguideId) {
   const cosponsoredURL = `/bill?congress=${CONGRESS}&cosponsorId=${bioguideId}`;
 
   const sponsored = await getCount(sponsoredURL);
-  await sleep(1000);
+  await sleep(5000);
   const cosponsored = await getCount(cosponsoredURL);
 
   const becameLawSponsored = await getBecameLawCount(sponsoredURL);
-  await sleep(1000);
+  await sleep(5000);
   const becameLawCosponsored = await getBecameLawCount(cosponsoredURL);
 
   return { sponsored, cosponsored, becameLawSponsored, becameLawCosponsored };
@@ -120,7 +118,7 @@ function ensureSchema(sen) {
     } catch (err) {
       console.error(`Legislation failed for ${sen.bioguideId} (${sen.name}): ${err.message}`);
     }
-    await sleep(2000); // pause between senators to avoid 429
+    await sleep(10000); // heavy pause between senators
   }
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(sens, null, 2));
