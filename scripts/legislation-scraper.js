@@ -1,5 +1,5 @@
-// Senate legislation scraper using Congress.gov API
-// Processes senators in batches with heavy throttling to avoid 429 errors
+// Bulk legislation scraper for 119th Congress
+// Fetches all bills once, then filters by senator locally
 
 const fs = require('fs');
 const path = require('path');
@@ -17,7 +17,7 @@ if (!API_KEY) {
 
 const client = axios.create({
   baseURL: 'https://api.congress.gov/v3',
-  timeout: 20000,
+  timeout: 30000,
   headers: {
     'X-Api-Key': API_KEY,
     'User-Agent': 'poliscope/1.0',
@@ -30,70 +30,40 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function getWithRetry(url, attempts = 3) {
-  let lastErr;
-  for (let i = 0; i < attempts; i++) {
-    try {
-      const resp = await client.get(url);
-      if (resp.status === 429) {
-        console.warn(`Rate limited on ${url}, backing off 60s...`);
-        await sleep(60000); // wait 1 minute before retry
-        continue;
-      }
-      if (resp.status >= 400) throw new Error(`HTTP ${resp.status}`);
-      return resp;
-    } catch (err) {
-      lastErr = err;
-      await sleep(30000); // 30s pause before retry
+async function fetchAllBills() {
+  let bills = [];
+  let page = 1;
+  while (true) {
+    const url = `/bill?congress=${CONGRESS}&page=${page}&pageSize=${PAGE_SIZE}&fields=congress,lawNumber,latestAction,sponsor,cosponsors`;
+    const resp = await client.get(url);
+    if (resp.status === 429) {
+      console.warn(`Rate limited on page ${page}, backing off 60s...`);
+      await sleep(60000);
+      continue;
     }
+    if (!resp.data?.bills || resp.data.bills.length === 0) break;
+    bills = bills.concat(resp.data.bills);
+    console.log(`Fetched page ${page}, total bills=${bills.length}`);
+    if (resp.data.bills.length < PAGE_SIZE) break;
+    page++;
+    await sleep(5000); // pause between pages
   }
-  throw lastErr;
+  return bills;
 }
 
-async function getCount(url) {
-  const resp = await getWithRetry(url);
-  return resp?.data?.pagination?.count || 0;
-}
+function countForSenator(bills, bioguideId) {
+  const sponsored = bills.filter(b => b.sponsor?.bioguideId === bioguideId);
+  const cosponsored = bills.filter(b => (b.cosponsors || []).some(c => c.bioguideId === bioguideId));
 
-async function getBecameLawCount(baseUrl) {
-  const firstUrl = `${baseUrl}&pageSize=${PAGE_SIZE}&fields=lawNumber,latestAction,congress`;
-  const first = await getWithRetry(firstUrl);
-  if (!first) return 0;
-  const total = first.data?.pagination?.count || 0;
-  if (total === 0) return 0;
+  const becameLawSponsored = sponsored.filter(b => (b.lawNumber || (b.latestAction?.text || '').includes('Public Law'))).length;
+  const becameLawCosponsored = cosponsored.filter(b => (b.lawNumber || (b.latestAction?.text || '').includes('Public Law'))).length;
 
-  let count = countLawItems(first.data.bills || []);
-  const pages = Math.ceil(total / PAGE_SIZE);
-
-  for (let p = 2; p <= pages; p++) {
-    const url = `${baseUrl}&page=${p}&pageSize=${PAGE_SIZE}&fields=lawNumber,latestAction,congress`;
-    const resp = await getWithRetry(url);
-    if (resp) count += countLawItems(resp.data.bills || []);
-    await sleep(10000); // 10s pause between pages
-  }
-
-  return count;
-}
-
-function countLawItems(items) {
-  return items.filter(i => i.congress === CONGRESS &&
-    (i.lawNumber || (i.latestAction?.text || '').toLowerCase().includes('public law'))
-  ).length;
-}
-
-async function getCounts(bioguideId) {
-  const sponsoredURL = `/bill?congress=${CONGRESS}&sponsorId=${bioguideId}`;
-  const cosponsoredURL = `/bill?congress=${CONGRESS}&cosponsorId=${bioguideId}`;
-
-  const sponsored = await getCount(sponsoredURL);
-  await sleep(5000);
-  const cosponsored = await getCount(cosponsoredURL);
-
-  const becameLawSponsored = await getBecameLawCount(sponsoredURL);
-  await sleep(5000);
-  const becameLawCosponsored = await getBecameLawCount(cosponsoredURL);
-
-  return { sponsored, cosponsored, becameLawSponsored, becameLawCosponsored };
+  return {
+    sponsored: sponsored.length,
+    cosponsored: cosponsored.length,
+    becameLawSponsored,
+    becameLawCosponsored
+  };
 }
 
 function ensureSchema(sen) {
@@ -105,32 +75,22 @@ function ensureSchema(sen) {
 }
 
 (async () => {
-  const allSens = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureSchema);
+  const sens = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureSchema);
 
-  // Batch logic
-  const batchIndex = parseInt(process.argv[2] || "0", 10);
-  const batchSize = 25;
-  const start = batchIndex * batchSize;
-  const end = start + batchSize;
-  const sens = allSens.slice(start, end);
-
-  console.log(`Processing batch ${batchIndex} (senators ${start}–${end - 1})`);
+  console.log(`Fetching all bills for ${CONGRESS}th Congress...`);
+  const bills = await fetchAllBills();
+  console.log(`Fetched ${bills.length} bills total`);
 
   for (const sen of sens) {
-    try {
-      const { sponsored, cosponsored, becameLawSponsored, becameLawCosponsored } =
-        await getCounts(sen.bioguideId);
-      sen.sponsoredBills = sponsored;
-      sen.cosponsoredBills = cosponsored;
-      sen.becameLawBills = becameLawSponsored;
-      sen.becameLawCosponsoredBills = becameLawCosponsored;
-      console.log(`${sen.name}: sponsored=${sponsored}, cosponsored=${cosponsored}, becameLawSponsored=${becameLawSponsored}, becameLawCosponsored=${becameLawCosponsored}`);
-    } catch (err) {
-      console.error(`Legislation failed for ${sen.bioguideId} (${sen.name}): ${err.message}`);
-    }
-    await sleep(15000); // 15s pause between senators
+    const { sponsored, cosponsored, becameLawSponsored, becameLawCosponsored } =
+      countForSenator(bills, sen.bioguideId);
+    sen.sponsoredBills = sponsored;
+    sen.cosponsoredBills = cosponsored;
+    sen.becameLawBills = becameLawSponsored;
+    sen.becameLawCosponsoredBills = becameLawCosponsored;
+    console.log(`${sen.name}: sponsored=${sponsored}, cosponsored=${cosponsored}, becameLawSponsored=${becameLawSponsored}, becameLawCosponsored=${becameLawCosponsored}`);
   }
 
-  fs.writeFileSync(OUT_PATH, JSON.stringify(allSens, null, 2));
-  console.log(`Batch ${batchIndex} complete. Senate legislation updated with 119th-only counts + became-law detection`);
+  fs.writeFileSync(OUT_PATH, JSON.stringify(sens, null, 2));
+  console.log('Senate legislation updated with 119th-only counts + became-law detection (bulk fetch)');
 })();
