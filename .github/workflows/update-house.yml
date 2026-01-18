@@ -1,0 +1,32 @@
+name: Update House data
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 4 * * *'   # 4 AM daily, staggered after Senate
+
+permissions:
+  contents: write
+
+jobs:
+  update-house:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm ci
+
+      - run: node scripts/bootstrap-reps.js
+      - run: node scripts/legislation-reps-scraper.js
+      - run: node scripts/committee-reps-scraper.js
+      - run: node scripts/votes-reps-scraper.js
+      - run: node scripts/merge-reps.js
+      - run: node scripts/reps-scores.js
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Automated House update"
+          file_pattern: public/representatives-*.json
