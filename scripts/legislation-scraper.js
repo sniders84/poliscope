@@ -34,10 +34,14 @@ async function getTotalCount(memberId, type) {
 }
 
 async function getSponsoredEnactedCount(bioguideId) {
-  const url = `https://api.congress.gov/v3/bill?congress=119&sponsor=${bioguideId}&law-type=public&limit=1&api_key=${API_KEY}`;
+  // Try with bill-type=hr,s (common for enacted public laws); congress=119
+  const url = `https://api.congress.gov/v3/bill?congress=119&sponsor=${bioguideId}&law-type=public&bill-type=hr,s&limit=1&api_key=${API_KEY}`;
+  console.log(`Calling enacted sponsored URL (119th): ${url}`);
   try {
     const resp = await axios.get(url, { timeout: 60000 });
-    const count = resp.data?.pagination?.count || 0;
+    const pagination = resp.data?.pagination || {};
+    console.log(`Enacted sponsored response pagination for ${bioguideId}:`, JSON.stringify(pagination, null, 2));
+    const count = pagination.count || 0;
     console.log(`Enacted sponsored (119th public law) count for ${bioguideId}: ${count}`);
     return count;
   } catch (err) {
@@ -57,7 +61,7 @@ async function getCosponsoredEnactedCount(memberId) {
 
       items.forEach(item => {
         const actionText = (item.latestAction?.text || '').toLowerCase().trim();
-        if (actionText.includes('became public law no:') || actionText.includes('became public law')) {
+        if (actionText.includes('became public law') || actionText.includes('signed by president') || actionText.includes('enacted')) {
           enacted++;
         }
       });
@@ -69,8 +73,10 @@ async function getCosponsoredEnactedCount(memberId) {
     }
   }
 
-  if (enacted === 0) {
-    console.warn(`No enacted cosponsored detected for ${memberId} in 119th — normal for current Congress if few laws yet`);
+  if (enacted > 0) {
+    console.log(`Enacted cosponsored in 119th for ${memberId}: ${enacted}`);
+  } else {
+    console.warn(`No enacted cosponsored detected for ${memberId} in 119th — expected early in Congress`);
   }
 
   return enacted;
