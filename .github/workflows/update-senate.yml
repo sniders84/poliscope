@@ -21,7 +21,7 @@ jobs:
         run: node scripts/bootstrap-senators.js
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
-      - name: Scrape legislation (career totals via Congress.gov API)
+      - name: Scrape legislation (career totals + enacted from GovTrack)
         run: node scripts/legislation-scraper.js
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
@@ -40,5 +40,5 @@ jobs:
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Automated Senate update (career totals via Congress.gov API)"
+          commit_message: "Automated Senate update (career totals + enacted via GovTrack)"
           file_pattern: public/senators-*.json
