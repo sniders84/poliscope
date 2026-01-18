@@ -30,12 +30,12 @@ jobs:
         run: node scripts/legislation-scraper.js
 
       # ⚠️ Committee scraper disabled until file exists
-      # If you have a committee scraper, fix the filename here.
       # - name: Scrape committees
       #   run: node scripts/committee-senators-scraper.js
 
-      - name: Scrape votes
-        run: node scripts/votes-senators-scraper.js
+      # ⚠️ Votes scraper disabled until file exists
+      # - name: Scrape votes
+      #   run: node scripts/votes-senators-scraper.js
 
       - name: Merge senator data
         run: node scripts/merge-senators.js
