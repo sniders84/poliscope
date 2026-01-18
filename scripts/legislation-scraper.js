@@ -1,5 +1,5 @@
 // Senate legislation scraper using /bill?congress=119 endpoint
-// Filters by sponsor/cosponsor bioguideId for each senator
+// Fetches all bills once, then filters by sponsor/cosponsor bioguideId
 
 const fs = require('fs');
 const path = require('path');
@@ -27,16 +27,19 @@ const client = axios.create({
 });
 
 async function fetchAllBills() {
-  const firstUrl = `/bill?congress=${CONGRESS}&pageSize=${PAGE_SIZE}&fields=congress,lawNumber,latestAction,sponsor,cosponsors`;
+  const firstUrl = `/bill?congress=${CONGRESS}&pageSize=${PAGE_SIZE}`;
   const first = await client.get(firstUrl);
   const total = first.data?.pagination?.count || 0;
-  if (total === 0) return [];
+  if (total === 0) {
+    console.warn('No bills returned for Congress', CONGRESS);
+    return [];
+  }
 
   let bills = first.data.bills || [];
   const pages = Math.ceil(total / PAGE_SIZE);
 
   for (let p = 2; p <= pages; p++) {
-    const url = `/bill?congress=${CONGRESS}&page=${p}&pageSize=${PAGE_SIZE}&fields=congress,lawNumber,latestAction,sponsor,cosponsors`;
+    const url = `/bill?congress=${CONGRESS}&page=${p}&pageSize=${PAGE_SIZE}`;
     const resp = await client.get(url);
     bills = bills.concat(resp.data.bills || []);
   }
