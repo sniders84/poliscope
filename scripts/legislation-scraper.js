@@ -1,25 +1,18 @@
-// Senate legislation scraper using /bill?congress=119 endpoint
-// Fetches all bills once, then filters by sponsor/cosponsor bioguideId
+// Senate legislation scraper using Congress.gov search endpoint for 119th Congress
+// Fetches search results, parses sponsor/cosponsor info, and counts totals per senator
 
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
 
 const OUT_PATH = path.join(__dirname, '../public/senators-rankings.json');
-const API_KEY = process.env.CONGRESS_API_KEY;
 const CONGRESS = 119;
-const PAGE_SIZE = 250;
-
-if (!API_KEY) {
-  console.error('Missing CONGRESS_API_KEY');
-  process.exit(1);
-}
+const PAGE_SIZE = 100; // Congress.gov search caps at 100 per page
 
 const client = axios.create({
-  baseURL: 'https://api.congress.gov/v3',
+  baseURL: 'https://www.congress.gov',
   timeout: 20000,
   headers: {
-    'X-Api-Key': API_KEY,
     'User-Agent': 'poliscope/1.0',
     'Accept': 'application/json'
   },
@@ -27,23 +20,17 @@ const client = axios.create({
 });
 
 async function fetchAllBills() {
-  const firstUrl = `/bill?congress=${CONGRESS}&pageSize=${PAGE_SIZE}`;
-  const first = await client.get(firstUrl);
-  const total = first.data?.pagination?.count || 0;
-  if (total === 0) {
-    console.warn('No bills returned for Congress', CONGRESS);
-    return [];
-  }
-
-  let bills = first.data.bills || [];
-  const pages = Math.ceil(total / PAGE_SIZE);
-
-  for (let p = 2; p <= pages; p++) {
-    const url = `/bill?congress=${CONGRESS}&page=${p}&pageSize=${PAGE_SIZE}`;
+  let bills = [];
+  let page = 1;
+  while (true) {
+    const url = `/search?q={"source":"legislation","congress":${CONGRESS}}&pageSize=${PAGE_SIZE}&page=${page}&format=json`;
     const resp = await client.get(url);
-    bills = bills.concat(resp.data.bills || []);
+    const data = resp.data;
+    if (!data || !data.results || data.results.length === 0) break;
+    bills = bills.concat(data.results);
+    if (data.results.length < PAGE_SIZE) break;
+    page++;
   }
-
   return bills;
 }
 
@@ -51,8 +38,8 @@ function countForSenator(bills, bioguideId) {
   const sponsored = bills.filter(b => b.sponsor?.bioguideId === bioguideId);
   const cosponsored = bills.filter(b => (b.cosponsors || []).some(c => c.bioguideId === bioguideId));
 
-  const becameLawSponsored = sponsored.filter(b => b.lawNumber || (b.latestAction?.text || '').includes('Public Law')).length;
-  const becameLawCosponsored = cosponsored.filter(b => b.lawNumber || (b.latestAction?.text || '').includes('Public Law')).length;
+  const becameLawSponsored = sponsored.filter(b => (b.latestAction?.text || '').includes('Public Law')).length;
+  const becameLawCosponsored = cosponsored.filter(b => (b.latestAction?.text || '').includes('Public Law')).length;
 
   return {
     sponsored: sponsored.length,
@@ -73,7 +60,7 @@ function ensureSchema(sen) {
 (async () => {
   const sens = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureSchema);
 
-  console.log('Fetching all bills for 119th Congress...');
+  console.log(`Fetching all bills for ${CONGRESS}th Congress via Congress.gov search...`);
   const bills = await fetchAllBills();
   console.log(`Fetched ${bills.length} bills`);
 
@@ -88,5 +75,5 @@ function ensureSchema(sen) {
   }
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(sens, null, 2));
-  console.log('Senate legislation updated with 119th-only counts + accurate became-law detection');
+  console.log('Senate legislation updated with 119th-only counts + accurate became-law detection (via Congress.gov search)');
 })();
