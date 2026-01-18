@@ -13,7 +13,7 @@ const path = require('path');
 const senators = JSON.parse(fs.readFileSync(path.join(__dirname, '../public/senators.json'), 'utf-8'));
 const legislators = JSON.parse(fs.readFileSync(path.join(__dirname, '../public/legislators-current.json'), 'utf-8'));
 
-// Build a lookup: govtrackId → bioguideId
+// Build lookup: govtrackId → bioguideId
 const govtrackToBioguide = {};
 for (const leg of legislators) {
   const bioguideId = leg.id?.bioguide;
