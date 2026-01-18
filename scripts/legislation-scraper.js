@@ -1,6 +1,3 @@
-// Career totals scraper using Congress.gov member HTML pages
-// Reads senators JSON, hits /member/{slug}/{bioguide}, extracts facet counts
-
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
@@ -8,7 +5,6 @@ const cheerio = require('cheerio');
 
 const OUT_PATH = path.join(__dirname, '../public/senators-rankings.json');
 
-// Build a member URL from name + bioguide (slug is first-last lowercase)
 function memberUrl(name, bioguideId) {
   const slug = name
     .toLowerCase()
@@ -40,20 +36,9 @@ async function fetchCountsFromMemberPage(url) {
     const sponsoredText = $('#facetItemsponsorshipSponsored_Legislationcount').text() || '';
     const cosponsoredText = $('#facetItemsponsorshipCosponsored_Legislationcount').text() || '';
 
-    // ✅ Valid regex to capture digits inside [ ]
-    const sponsoredMatch = sponsoredText.match(/
-
-\[(\d+)\]
-
-/);
-    const cosponsoredMatch = cosponsoredText.match(/
-
-\[(\d+)\]
-
-/);
-
-    const sponsored = sponsoredMatch ? parseInt(sponsoredMatch[1], 10) : 0;
-    const cosponsored = cosponsoredMatch ? parseInt(cosponsoredMatch[1], 10) : 0;
+    // Safer digit extraction (no dangling regex literal)
+    const sponsored = parseInt(sponsoredText.replace(/\D/g, ''), 10) || 0;
+    const cosponsored = parseInt(cosponsoredText.replace(/\D/g, ''), 10) || 0;
 
     return { sponsored, cosponsored };
   } catch (err) {
@@ -75,12 +60,11 @@ function sleep(ms) {
 
     sen.sponsoredBills = sponsored;
     sen.cosponsoredBills = cosponsored;
-    // Congress.gov facet doesn’t expose “became law” totals here—leave at 0
     sen.becameLawBills = sen.becameLawBills || 0;
     sen.becameLawCosponsoredBills = sen.becameLawCosponsoredBills || 0;
 
     console.log(`${sen.name}: sponsored=${sponsored}, cosponsored=${cosponsored}`);
-    await sleep(3000); // gentle pacing to avoid anti-bot triggers
+    await sleep(3000);
   }
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(sens, null, 2));
