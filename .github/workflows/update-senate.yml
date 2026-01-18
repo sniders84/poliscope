@@ -19,10 +19,21 @@ jobs:
       - run: npm install   # use install instead of ci to avoid lockfile mismatch
 
       - run: node scripts/bootstrap-senators.js
+
       - run: node scripts/legislation-scraper.js
+        env:
+          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
+
       - run: node scripts/committee-scraper.js
+        env:
+          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
+
       - run: node scripts/votes-scraper.js
+        env:
+          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
+
       - run: node scripts/merge-senators.js
+
       - run: node scripts/senators-scores.js
 
       - name: Commit changes
