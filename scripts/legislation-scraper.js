@@ -1,32 +1,49 @@
 // scripts/legislation-scraper.js
-// Purpose: Update senators-rankings.json with sponsored/cosponsored bill counts for the 119th Congress
-// Handles Congress.gov pagination and sends proper headers
+// Purpose: Update senators-rankings.json with sponsored/cosponsored counts (119th Congress)
+// Uses Congress.gov v3 endpoints with X-Api-Key header, handles pagination via `pagination.next`, with simple retries.
 
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
 
+const OUT_PATH = path.join(__dirname, '../public/senators-rankings.json');
 const API_KEY = process.env.CONGRESS_API_KEY;
 const CONGRESS = 119;
-const OUT_PATH = path.join(__dirname, '../public/senators-rankings.json');
 
 if (!API_KEY) {
-  console.error('Missing CONGRESS_API_KEY environment variable.');
+  console.error('Missing CONGRESS_API_KEY');
   process.exit(1);
 }
 
-async function getLegislationCount(baseUrl) {
+const client = axios.create({
+  baseURL: 'https://api.congress.gov/v3',
+  timeout: 20000,
+  headers: {
+    'X-Api-Key': API_KEY,
+    'User-Agent': 'poliscope/1.0 (+https://github.com/sniders84/poliscope)',
+    'Accept': 'application/json'
+  },
+  validateStatus: s => s >= 200 && s < 500
+});
+
+async function fetchPaginated(url) {
+  let next = url;
   let total = 0;
-  let next = baseUrl;
+  let attempts = 0;
 
   while (next) {
-    const res = await axios.get(next, {
-      headers: {
-        'User-Agent': 'Poliscope/1.0',
-        'Accept': 'application/json'
+    const resp = await client.get(next);
+    if (resp.status === 403) {
+      // brief backoff and retry a couple times
+      if (++attempts <= 2) {
+        await new Promise(r => setTimeout(r, 500));
+        continue;
       }
-    });
-    const data = res.data || {};
+      throw new Error('403');
+    }
+    if (resp.status >= 400) throw new Error(`HTTP ${resp.status}`);
+
+    const data = resp.data || {};
     total += (data.legislation?.length || 0);
     next = data.pagination?.next || null;
   }
@@ -34,12 +51,12 @@ async function getLegislationCount(baseUrl) {
 }
 
 async function getCounts(bioguideId) {
-  const sponsoredURL = `https://api.congress.gov/v3/member/${bioguideId}/sponsored-legislation?congress=${CONGRESS}&api_key=${API_KEY}`;
-  const cosponsoredURL = `https://api.congress.gov/v3/member/${bioguideId}/cosponsored-legislation?congress=${CONGRESS}&api_key=${API_KEY}`;
+  const sponsoredURL = `/member/${bioguideId}/sponsored-legislation?congress=${CONGRESS}`;
+  const cosponsoredURL = `/member/${bioguideId}/cosponsored-legislation?congress=${CONGRESS}`;
 
   const [sponsored, cosponsored] = await Promise.all([
-    getLegislationCount(sponsoredURL),
-    getLegislationCount(cosponsoredURL)
+    fetchPaginated(sponsoredURL),
+    fetchPaginated(cosponsoredURL)
   ]);
 
   return { sponsored, cosponsored };
@@ -74,16 +91,20 @@ function ensureSchema(sen) {
   const sens = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureSchema);
 
   for (const sen of sens) {
+    const bio = sen.bioguideId;
+    if (!bio) continue;
+
     try {
-      const { sponsored, cosponsored } = await getCounts(sen.bioguideId);
+      const { sponsored, cosponsored } = await getCounts(bio);
       sen.sponsoredBills = sponsored;
       sen.cosponsoredBills = cosponsored;
       console.log(`${sen.name}: sponsored=${sponsored}, cosponsored=${cosponsored}`);
     } catch (err) {
-      console.error(`Legislation failed for ${sen.bioguideId} (${sen.name}): ${err.message}`);
+      console.error(`Legislation failed for ${bio} (${sen.name}): ${err.message}`);
+      // Keep zeros to preserve schema
     }
   }
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(sens, null, 2));
-  console.log('Updated senators-rankings.json with 119th Congress sponsored/cosponsored counts (paginated)');
+  console.log('Senate legislation updated (paginated, header auth)');
 })();
