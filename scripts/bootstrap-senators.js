@@ -14,25 +14,35 @@ if (!API_KEY) {
   process.exit(1);
 }
 
-const roster = JSON.parse(fs.readFileSync(ROSTER_PATH, 'utf-8'));
+// Fetch all members for a given Congress and build a bioguide → memberId map
+async function fetchMembers(congress = 119) {
+  let url = `https://api.congress.gov/v3/member/congress/${congress}?limit=250&api_key=${API_KEY}`;
+  let all = [];
 
-async function resolveCongressGovId(bioguideId) {
-  try {
-    const url = `https://api.congress.gov/v3/member?bioguideId=${bioguideId}&api_key=${API_KEY}`;
+  while (url) {
     const resp = await axios.get(url, { timeout: 60000 });
-    if (resp.data.members && resp.data.members.length > 0) {
-      return resp.data.members[0].memberId;
+    all = all.concat(resp.data.members);
+
+    if (resp.data.pagination && resp.data.pagination.next) {
+      // Always re‑append api_key when following next
+      url = `${resp.data.pagination.next}&api_key=${API_KEY}`;
+    } else {
+      url = null;
     }
-    return null;
-  } catch (err) {
-    console.error(`Failed to resolve congressgovId for ${bioguideId}: ${err.message}`);
-    return null;
   }
+
+  const map = {};
+  for (const m of all) {
+    if (m.bioguideId) {
+      map[m.bioguideId] = m.memberId;
+    }
+  }
+  return map;
 }
 
-async function baseRecord(sen) {
+function baseRecord(sen) {
   const lastTerm = sen.terms.at(-1);
-  const record = {
+  return {
     bioguideId: sen.id.bioguide,
     name: `${sen.name.first} ${sen.name.last}`,
     state: lastTerm.state,
@@ -61,19 +71,31 @@ async function baseRecord(sen) {
     score: 0,
     scoreNormalized: 0
   };
-
-  record.congressgovId = await resolveCongressGovId(record.bioguideId);
-  return record;
 }
 
 (async () => {
-  const sens = [];
-  for (const r of roster) {
+  const roster = JSON.parse(fs.readFileSync(ROSTER_PATH, 'utf-8'));
+  const sens = roster.filter(r => {
     const t = r.terms.at(-1);
-    if (t.type === 'sen' && new Date(t.end) > new Date()) {
-      sens.push(await baseRecord(r));
+    return t.type === 'sen' && new Date(t.end) > new Date();
+  }).map(baseRecord);
+
+  // Fetch authoritative mapping from Congress.gov
+  const map = await fetchMembers(119);
+
+  // Enrich with congressgovId
+  for (const sen of sens) {
+    if (map[sen.bioguideId]) {
+      sen.congressgovId = map[sen.bioguideId];
     }
   }
+
+  // Debug: show a few mappings
+  console.log("Sample mappings:", sens.slice(0, 5).map(s => ({
+    name: s.name,
+    bioguideId: s.bioguideId,
+    congressgovId: s.congressgovId
+  })));
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(sens, null, 2));
   console.log(`Bootstrapped senators-rankings.json with ${sens.length} current Senators (with congressgovId)`);
