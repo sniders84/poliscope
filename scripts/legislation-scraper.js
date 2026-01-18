@@ -1,29 +1,22 @@
-// Career totals scraper using Congress.gov JSON API
-// Reads senators JSON, resolves bioguide -> memberId, fetches sponsored/cosponsored counts
+// Career totals scraper using Congress.gov member HTML pages
+// Reads senators JSON, hits /member/{slug}/{bioguide}, extracts facet counts
 
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
+const cheerio = require('cheerio');
 
 const OUT_PATH = path.join(__dirname, '../public/senators-rankings.json');
-const LEGISLATORS_PATH = path.join(__dirname, '../public/legislators-current.json');
 
-const API_KEY = process.env.CONGRESS_API_KEY;
-if (!API_KEY) {
-  console.error('Missing CONGRESS_API_KEY');
-  process.exit(1);
+// Build a member URL from name + bioguide (slug is first-last lowercase)
+function memberUrl(name, bioguideId) {
+  const slug = name
+    .toLowerCase()
+    .replace(/[^a-z\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-');
+  return `https://www.congress.gov/member/${slug}/${bioguideId}`;
 }
-
-const client = axios.create({
-  baseURL: 'https://api.congress.gov/v3',
-  timeout: 30000,
-  headers: {
-    'X-Api-Key': API_KEY,
-    'User-Agent': 'poliscope/1.0',
-    'Accept': 'application/json'
-  },
-  validateStatus: s => s >= 200 && s < 500
-});
 
 function ensureSchema(sen) {
   sen.sponsoredBills ??= 0;
@@ -33,17 +26,39 @@ function ensureSchema(sen) {
   return sen;
 }
 
-async function getCareerTotals(memberId) {
+async function fetchCountsFromMemberPage(url) {
   try {
-    const sponsoredResp = await client.get(`/member/${memberId}/sponsored-legislation`);
-    const cosponsoredResp = await client.get(`/member/${memberId}/cosponsored-legislation`);
+    const resp = await axios.get(url, {
+      timeout: 60000,
+      headers: {
+        'User-Agent': 'poliscope-scraper/1.0',
+        'Accept': 'text/html,application/xhtml+xml',
+      }
+    });
+    const $ = cheerio.load(resp.data);
 
-    const sponsored = sponsoredResp.data?.pagination?.count || 0;
-    const cosponsored = cosponsoredResp.data?.pagination?.count || 0;
+    // Facet counts live under #innerbox_sponsorship
+    const sponsoredText = $('#facetItemsponsorshipSponsored_Legislationcount').text() || '';
+    const cosponsoredText = $('#facetItemsponsorshipCosponsored_Legislationcount').text() || '';
+
+    // ✅ Valid regex to capture digits inside [ ]
+    const sponsoredMatch = sponsoredText.match(/
+
+\[(\d+)\]
+
+/);
+    const cosponsoredMatch = cosponsoredText.match(/
+
+\[(\d+)\]
+
+/);
+
+    const sponsored = sponsoredMatch ? parseInt(sponsoredMatch[1], 10) : 0;
+    const cosponsored = cosponsoredMatch ? parseInt(cosponsoredMatch[1], 10) : 0;
 
     return { sponsored, cosponsored };
   } catch (err) {
-    console.error(`Failed to fetch totals for memberId ${memberId}: ${err.message}`);
+    console.error(`Failed to fetch ${url}: ${err.message}`);
     return { sponsored: 0, cosponsored: 0 };
   }
 }
@@ -54,31 +69,21 @@ function sleep(ms) {
 
 (async () => {
   const sens = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureSchema);
-  const legislators = JSON.parse(fs.readFileSync(LEGISLATORS_PATH, 'utf-8'));
-
-  // Build bioguide -> memberId map
-  const memberMap = {};
-  for (const leg of legislators) {
-    if (leg.id?.bioguide && leg.id?.congressgov_id) {
-      memberMap[leg.id.bioguide] = leg.id.congressgov_id;
-    }
-  }
 
   for (const sen of sens) {
-    const memberId = memberMap[sen.bioguideId];
-    if (!memberId) {
-      console.warn(`No memberId found for ${sen.name} (${sen.bioguideId})`);
-      continue;
-    }
-    const { sponsored, cosponsored } = await getCareerTotals(memberId);
+    const url = memberUrl(sen.name, sen.bioguideId);
+    const { sponsored, cosponsored } = await fetchCountsFromMemberPage(url);
+
     sen.sponsoredBills = sponsored;
     sen.cosponsoredBills = cosponsored;
-    sen.becameLawBills = 0;
-    sen.becameLawCosponsoredBills = 0;
+    // Congress.gov facet doesn’t expose “became law” totals here—leave at 0
+    sen.becameLawBills = sen.becameLawBills || 0;
+    sen.becameLawCosponsoredBills = sen.becameLawCosponsoredBills || 0;
+
     console.log(`${sen.name}: sponsored=${sponsored}, cosponsored=${cosponsored}`);
-    await sleep(5000);
+    await sleep(3000); // gentle pacing to avoid anti-bot triggers
   }
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(sens, null, 2));
-  console.log('Senate legislation updated with career totals (via Congress.gov JSON API)');
+  console.log('Senate legislation updated with career totals (via Congress.gov HTML facets)');
 })();
