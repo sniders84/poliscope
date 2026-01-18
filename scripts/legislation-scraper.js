@@ -10,7 +10,11 @@ const OUT_PATH = path.join(__dirname, '../public/senators-rankings.json');
 
 // Build a member URL from name + bioguide (slug is first-last lowercase)
 function memberUrl(name, bioguideId) {
-  const slug = name.toLowerCase().replace(/[^a-z\s-]/g, '').replace(/\s+/g, '-');
+  const slug = name
+    .toLowerCase()
+    .replace(/[^a-z\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-');
   return `https://www.congress.gov/member/${slug}/${bioguideId}`;
 }
 
@@ -37,17 +41,20 @@ async function fetchCountsFromMemberPage(url) {
     const sponsoredText = $('#facetItemsponsorshipSponsored_Legislationcount').text() || '';
     const cosponsoredText = $('#facetItemsponsorshipCosponsored_Legislationcount').text() || '';
 
-    // Correct regex to capture digits inside [ ]
-    const sponsored = parseInt((sponsoredText.match(/
+    // Regex to capture digits inside [ ]
+    const sponsoredMatch = sponsoredText.match(/
 
 \[(\d+)\]
 
-/) || [0, 0])[1], 10) || 0;
-    const cosponsored = parseInt((cosponsoredText.match(/
+/);
+    const cosponsoredMatch = cosponsoredText.match(/
 
 \[(\d+)\]
 
-/) || [0, 0])[1], 10) || 0;
+/);
+
+    const sponsored = sponsoredMatch ? parseInt(sponsoredMatch[1], 10) : 0;
+    const cosponsored = cosponsoredMatch ? parseInt(cosponsoredMatch[1], 10) : 0;
 
     return { sponsored, cosponsored };
   } catch (err) {
