@@ -5,18 +5,21 @@
   "description": "Congressional transparency and rankings app",
   "main": "index.js",
   "scripts": {
+    "bootstrap:senate": "node scripts/bootstrap-senators.js",
+    "scrape:legislation": "node scripts/legislation-scraper.js",
+    "scrape:committees": "node scripts/committee-scraper.js",
+    "scrape:votes": "node scripts/votes-scraper.js",
+    "merge:senate": "node scripts/merge-senators.js",
+    "score:senate": "node scripts/senators-scores.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "congress",
-    "rankings",
-    "transparency"
-  ],
+  "keywords": ["congress", "rankings", "transparency"],
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "axios": "^1.6.8",
     "cheerio": "^1.0.0-rc.12",
     "node-fetch": "^2.7.0",
-    "axios": "^1.6.7"
+    "xml2js": "^0.6.2"
   }
 }
