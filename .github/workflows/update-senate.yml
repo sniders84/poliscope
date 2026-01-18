@@ -26,24 +26,14 @@ jobs:
       - name: Bootstrap senators
         run: node scripts/bootstrap-senators.js
 
-      # Bulk legislation scraper (single run, fewer API calls)
-      - name: Scrape legislation
-        run: |
-          echo "Sleeping 60s before hitting Congress.gov..."
-          sleep 60
-          node scripts/legislation-scraper.js
-        env:
-          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
+      - name: Scrape legislation (career totals)
+        run: node scripts/legislation-scraper.js
 
       - name: Scrape committees
         run: node scripts/committee-scraper.js
-        env:
-          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
 
       - name: Scrape votes
         run: node scripts/votes-scraper.js
-        env:
-          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
 
       - name: Merge senator data
         run: node scripts/merge-senators.js
@@ -54,5 +44,5 @@ jobs:
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Automated Senate update"
+          commit_message: "Automated Senate update (career totals)"
           file_pattern: public/senators-*.json
