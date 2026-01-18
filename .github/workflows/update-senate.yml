@@ -24,18 +24,18 @@ jobs:
         run: node scripts/bootstrap-senators.js
 
       - name: Scrape legislation (119th Congress sponsored/cosponsored)
+        env:
+          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: node scripts/legislation-scraper.js
 
-      # ⚠️ Disabled until you have these scripts implemented
-      # - name: Scrape committees
-      #   run: node scripts/committee-senators-scraper.js
+      - name: Scrape committees
+        run: node public/scripts/committee-scraper.js
 
-      # - name: Scrape votes
-      #   run: node scripts/votes-senators-scraper.js
+      - name: Scrape votes
+        run: node scripts/votes-senators-scraper.js
 
       - name: Merge senator data
         run: node scripts/merge-senators.js
 
-      # ⚠️ Disabled until senators-score.js exists
-      # - name: Score senators
-      #   run: node scripts/senators-score.js
+      - name: Score senators
+        run: node scripts/senators-score.js
