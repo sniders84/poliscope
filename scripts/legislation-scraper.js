@@ -1,4 +1,4 @@
-// Career totals scraper (API) + enacted from GovTrack page scrape (improved)
+// Career totals scraper (API) + enacted from direct GovTrack page scrape
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
@@ -33,11 +33,19 @@ async function getTotalCount(memberId, type) {
   }
 }
 
-async function getEnactedFromGovTrack(name, state) {
-  const query = encodeURIComponent(`${name} ${state}`);
-  const searchUrl = `https://www.govtrack.us/search?q=${query}+senator`;
+async function getEnactedFromGovTrack(name, state, bioguideId) {
+  // Construct direct GovTrack URL using name slug (lowercase, spaces to -)
+  let slug = name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z-]/g, '');
+  let profileUrl = `https://www.govtrack.us/congress/members/${slug}/${bioguideId.toLowerCase()}`;
+
+  // Fallback to numeric ID if needed (GovTrack uses numeric for some)
+  if (!bioguideId.startsWith('S')) { // Senate Bioguide starts with S
+    profileUrl = `https://www.govtrack.us/congress/members/${slug}/300000`; // placeholder - adjust if known
+  }
+
   try {
-    const searchResp = await axios.get(searchUrl, {
+    console.log(`Fetching GovTrack profile for ${name}: ${profileUrl}`);
+    const resp = await axios.get(profileUrl, {
       headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
@@ -45,37 +53,13 @@ async function getEnactedFromGovTrack(name, state) {
       },
       timeout: 60000
     });
-    const $ = cheerio.load(searchResp.data);
-
-    // Improved selector: look for links in search results with senator profiles
-    let profileUrl = null;
-    $('a').each((i, el) => {
-      const href = $(el).attr('href');
-      const text = $(el).text().trim();
-      if (href && href.includes('/congress/members/') && text.includes(name)) {
-        profileUrl = 'https://www.govtrack.us' + href;
-        return false; // stop on first match
-      }
-    });
-
-    if (!profileUrl) {
-      console.warn(`No GovTrack profile link found for ${name} in search results`);
-      return 0;
-    }
-
-    const profileResp = await axios.get(profileUrl, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-      },
-      timeout: 60000
-    });
-    const $$ = cheerio.load(profileResp.data);
+    const $ = cheerio.load(resp.data);
 
     let enacted = 0;
-    $$('dt').each((i, el) => {
-      const text = $$(el).text().trim();
-      if (text.toLowerCase().includes('enacted') || text.toLowerCase().includes('bills enacted') || text.toLowerCase().includes('laws')) {
-        const dd = $$(el).next('dd').text().trim();
+    $('dt').each((i, el) => {
+      const text = $(el).text().trim().toLowerCase();
+      if (text.includes('enacted') || text.includes('bills enacted') || text.includes('laws')) {
+        const dd = $(el).next('dd').text().trim();
         const match = dd.match(/(\d+)/);
         if (match) {
           enacted = parseInt(match[1], 10);
@@ -84,9 +68,13 @@ async function getEnactedFromGovTrack(name, state) {
       }
     });
 
+    if (enacted === 0) {
+      console.warn(`No enacted count found on GovTrack for ${name} — page may not have it or selector miss`);
+    }
+
     return enacted;
   } catch (err) {
-    console.error(`GovTrack scrape error for ${name}: ${err.message}`);
+    console.error(`GovTrack direct URL error for ${name} (${profileUrl}): ${err.message}`);
     return 0;
   }
 }
@@ -109,9 +97,9 @@ async function getEnactedFromGovTrack(name, state) {
       sen.sponsoredBills = await getTotalCount(sen.congressgovId, 'sponsored');
       sen.cosponsoredBills = await getTotalCount(sen.congressgovId, 'cosponsored');
 
-      const enacted = await getEnactedFromGovTrack(sen.name, sen.state);
+      const enacted = await getEnactedFromGovTrack(sen.name, sen.state, sen.congressgovId);
       sen.becameLawBills = enacted;
-      sen.becameLawCosponsoredBills = enacted;
+      sen.becameLawCosponsoredBills = enacted; // Combined
 
       console.log(`${sen.name}: sponsored=${sen.sponsoredBills} (law=${sen.becameLawBills}), cosponsored=${sen.cosponsoredBills} (law=${sen.becameLawCosponsoredBills})`);
     } catch (err) {
@@ -120,5 +108,5 @@ async function getEnactedFromGovTrack(name, state) {
   }
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(sens, null, 2));
-  console.log('Senate legislation updated with career totals + enacted from GovTrack');
+  console.log('Senate legislation updated with career totals + enacted from GovTrack direct URL');
 })();
