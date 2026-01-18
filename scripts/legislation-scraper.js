@@ -10,6 +10,7 @@ const OUT_PATH = path.join(__dirname, '../public/senators-rankings.json');
 
 // Build a member URL from name + bioguide (slug is first-last lowercase)
 function memberUrl(name, bioguideId) {
+  // Normalize: keep letters/spaces/hyphens, collapse spaces to hyphens
   const slug = name
     .toLowerCase()
     .replace(/[^a-z\s-]/g, '')
@@ -41,7 +42,7 @@ async function fetchCountsFromMemberPage(url) {
     const sponsoredText = $('#facetItemsponsorshipSponsored_Legislationcount').text() || '';
     const cosponsoredText = $('#facetItemsponsorshipCosponsored_Legislationcount').text() || '';
 
-    // Regex to capture digits inside [ ]
+    // Valid regex to capture digits inside [ ]
     const sponsoredMatch = sponsoredText.match(/
 
 \[(\d+)\]
