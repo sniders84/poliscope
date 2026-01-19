@@ -29,7 +29,7 @@ jobs:
       - name: Scrape legislation (119th Congress)
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
-        run: node scripts/legislation-representatives.js
+        run: node scripts/legislation-representatives-scraper.js
 
       - name: Scrape committees
         env:
