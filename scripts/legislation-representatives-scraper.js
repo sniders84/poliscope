@@ -30,18 +30,11 @@ async function getWithRetry(url, params = {}, tries = 3) {
   throw lastErr;
 }
 
-// Resolve numeric memberId from bioguideId using search endpoint
+// Resolve numeric memberId from bioguideId using path form
 async function resolveMemberId(bioguideId) {
-  const url = `${BASE_URL}/member`;
-  const data = await getWithRetry(url, {
-    api_key: API_KEY,
-    format: 'json',
-    bioguideId
-  });
-  if (data.members && data.members.length > 0) {
-    return data.members[0].memberId;
-  }
-  return null;
+  const url = `${BASE_URL}/member/${bioguideId}`;
+  const data = await getWithRetry(url, { api_key: API_KEY, format: 'json' });
+  return data.member?.memberId || null;
 }
 
 async function fetchBills(memberId) {
