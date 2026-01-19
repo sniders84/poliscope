@@ -3,7 +3,7 @@ name: Update Senate data
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 2 * * *'   # 2 AM daily
+    - cron: '0 2 * * *'   # run nightly at 2 AM UTC
 
 permissions:
   contents: write
@@ -26,7 +26,7 @@ jobs:
       - name: Bootstrap senators
         run: node scripts/bootstrap-senators.js
 
-      - name: Scrape legislation (119th Congress)
+      - name: Scrape legislation (career totals via Congress.gov)
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: node scripts/legislation-scraper.js
@@ -50,8 +50,5 @@ jobs:
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Automated Senate update"
+          commit_message: "Automated Senate update (career totals via Congress.gov)"
           file_pattern: public/senators-*.json
-          commit_user_name: github-actions[bot]
-          commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
-          push_options: "--force-with-lease"
