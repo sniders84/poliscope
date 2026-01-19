@@ -1,46 +1,47 @@
 // scripts/legislation-scraper.js
 //
-// Purpose: Fetch career totals for sponsored, cosponsored, becameLawSponsored, becameLawCosponsored
-// Source: Congress.gov member profile pages (bioguide-based URLs)
+// Purpose: Pull sponsored/cosponsored bills and became-law counts for the 119th Congress
+// Source: Congress.gov API
 // Output: public/legislation-senators.json
 
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
 
+const API_KEY = process.env.CONGRESS_API_KEY;
+const BASE_URL = 'https://api.congress.gov/v3';
+
 const legislatorsPath = path.join(__dirname, '../public/legislators-current.json');
 const outputPath = path.join(__dirname, '../public/legislation-senators.json');
 
 const legislators = JSON.parse(fs.readFileSync(legislatorsPath, 'utf-8'));
 
-// Helper: fetch with retries
-async function getWithRetry(url, tries = 3) {
-  let lastErr;
-  for (let i = 0; i < tries; i++) {
-    try {
-      const resp = await axios.get(url);
-      return resp.data;
-    } catch (err) {
-      lastErr = err;
-      await new Promise(r => setTimeout(r, 1000 * (i + 1)));
+async function fetchBills(url) {
+  let sponsored = 0, cosponsored = 0, becameLawSponsored = 0, becameLawCosponsored = 0;
+  let next = url;
+
+  while (next) {
+    const resp = await axios.get(next, { params: { api_key: API_KEY, format: 'json' } });
+    const data = resp.data;
+    if (!data.bills) break;
+
+    for (const bill of data.bills) {
+      if (bill.sponsors && bill.sponsors.some(s => s.isOriginal)) {
+        sponsored++;
+        if (bill.latestAction?.action?.toLowerCase().includes('became law')) {
+          becameLawSponsored++;
+        }
+      } else {
+        cosponsored++;
+        if (bill.latestAction?.action?.toLowerCase().includes('became law')) {
+          becameLawCosponsored++;
+        }
+      }
     }
-  }
-  throw lastErr;
-}
-
-// Extract numbers from Congress.gov profile HTML
-function extractTotals(html) {
-  function extract(regex) {
-    const m = html.match(regex);
-    return m ? Number(m[1]) : 0;
+    next = data.pagination?.next;
   }
 
-  return {
-    sponsored: extract(/Sponsored Bills:\s*<\/span>\s*<span[^>]*>(\d+)/i),
-    cosponsored: extract(/Cosponsored Bills:\s*<\/span>\s*<span[^>]*>(\d+)/i),
-    becameLawSponsored: extract(/Sponsored Bills that Became Law:\s*<\/span>\s*<span[^>]*>(\d+)/i),
-    becameLawCosponsored: extract(/Cosponsored Bills that Became Law:\s*<\/span>\s*<span[^>]*>(\d+)/i),
-  };
+  return { sponsored, cosponsored, becameLawSponsored, becameLawCosponsored };
 }
 
 (async () => {
@@ -55,11 +56,8 @@ function extractTotals(html) {
     const party = leg.terms?.[leg.terms.length - 1]?.party || '';
 
     try {
-      // Direct Congress.gov profile URL using bioguide
-      const url = `https://www.congress.gov/member/${name.toLowerCase().replace(/ /g, '-')}/${bioguideId}`;
-      const html = await getWithRetry(url, 3);
-
-      const totals = extractTotals(html);
+      const url = `${BASE_URL}/member/${bioguideId}/sponsored-legislation?congress=119`;
+      const totals = await fetchBills(url);
 
       results.push({
         bioguideId,
