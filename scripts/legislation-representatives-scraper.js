@@ -1,4 +1,5 @@
-// scripts/legislation-representatives.js
+// scripts/legislation-representatives-scraper.js
+//
 // Purpose: Pull sponsored/cosponsored bills and became-law counts for the 119th Congress (House)
 // Source: Congress.gov API (memberId resolution)
 // Output: public/legislation-representatives.json
@@ -66,11 +67,11 @@ async function fetchBills(memberId) {
   const results = [];
 
   for (const leg of legislators) {
-    const bioguideId = leg.id?.bioguide;
-    if (!bioguideId) continue;
-
     const lastTerm = leg.terms?.[leg.terms.length - 1];
     if (!lastTerm || lastTerm.type !== 'rep') continue;
+
+    const bioguideId = leg.id?.bioguide;
+    if (!bioguideId) continue;
 
     const name = `${leg.name.first} ${leg.name.last}`;
     const state = lastTerm.state || '';
