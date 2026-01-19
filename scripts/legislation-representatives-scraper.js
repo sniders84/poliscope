@@ -40,9 +40,10 @@ async function fetchBills(bioguideId) {
     if (!data.bills) break;
 
     for (const bill of data.bills) {
-      const becameLaw = bill.latestAction?.action?.toLowerCase().includes('became law');
       sponsored++;
-      if (becameLaw) becameLawSponsored++;
+      if (bill.latestAction?.action?.toLowerCase().includes('became law')) {
+        becameLawSponsored++;
+      }
     }
     next = data.pagination?.next;
   }
@@ -54,9 +55,10 @@ async function fetchBills(bioguideId) {
     if (!data.bills) break;
 
     for (const bill of data.bills) {
-      const becameLaw = bill.latestAction?.action?.toLowerCase().includes('became law');
       cosponsored++;
-      if (becameLaw) becameLawCosponsored++;
+      if (bill.latestAction?.action?.toLowerCase().includes('became law')) {
+        becameLawCosponsored++;
+      }
     }
     next = data.pagination?.next;
   }
