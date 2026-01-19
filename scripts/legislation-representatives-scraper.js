@@ -1,7 +1,7 @@
 // scripts/legislation-representatives-scraper.js
 //
-// Purpose: Pull sponsored/cosponsored bills and became-law counts for the 119th Congress (House)
-// Source: Congress.gov API v3 — uses bioguideId directly in /member/{bioguideId}/sponsored-legislation etc.
+// Purpose: Pull sponsored/cosponsored bills and became-law counts *only for the 119th Congress* (House)
+// Source: Congress.gov API v3 — uses bioguideId directly; filters response to congress=119
 // Output: public/legislation-representatives.json
 
 const fs = require('fs');
@@ -27,7 +27,7 @@ async function getWithRetry(url, params = {}, tries = 5) {
       lastErr = err;
       const status = err.response?.status || 'unknown';
       console.warn(`Retry ${i+1}/${tries} for ${url} (params: ${JSON.stringify(params)}) - status ${status}: ${err.message}`);
-      await new Promise(r => setTimeout(r, status === 429 ? 10000 : 3000 * (i + 1))); // longer for rate limits
+      await new Promise(r => setTimeout(r, status === 429 ? 10000 : 3000 * (i + 1)));
     }
   }
   throw lastErr || new Error(`All retries failed for ${url}`);
@@ -36,7 +36,16 @@ async function getWithRetry(url, params = {}, tries = 5) {
 async function fetchBills(bioguideId) {
   let sponsored = 0, cosponsored = 0, becameLawSponsored = 0, becameLawCosponsored = 0;
   const limit = 250;
-  const congress = 119;
+
+  const is119th = (bill) => {
+    const cong = bill.congress;
+    if (cong === 119 || cong === '119') return true;
+    // Fallback: check introducedDate (119th started ~Jan 3, 2025)
+    if (bill.introducedDate && bill.introducedDate >= '2025-01-03' && bill.introducedDate < '2027-01-01') {
+      return true;
+    }
+    return false;
+  };
 
   const isBecameLaw = (bill) => {
     const action = (bill.latestAction?.action || '').toLowerCase();
@@ -46,14 +55,16 @@ async function fetchBills(bioguideId) {
            /public law no/i.test(text);
   };
 
-  // Helper to paginate one endpoint
+  // Helper to paginate and filter one endpoint
   async function paginate(endpoint) {
     let count = 0;
     let lawCount = 0;
     let offset = 0;
+    let totalPagesProcessed = 0;
+
     while (true) {
       const url = `${BASE_URL}/member/${bioguideId}/${endpoint}`;
-      const params = { congress, limit, offset };
+      const params = { congress: 119, limit, offset };
       let data;
       try {
         data = await getWithRetry(url, params);
@@ -67,13 +78,18 @@ async function fetchBills(bioguideId) {
       if (bills.length === 0) break;
 
       for (const bill of bills) {
-        count++;
-        if (isBecameLaw(bill)) lawCount++;
+        if (is119th(bill)) {
+          count++;
+          if (isBecameLaw(bill)) lawCount++;
+        }
       }
 
       offset += limit;
-      await new Promise(r => setTimeout(r, 600)); // gentle intra-page delay
+      totalPagesProcessed++;
+      await new Promise(r => setTimeout(r, 600)); // intra-page delay
     }
+
+    console.log(`Processed ${totalPagesProcessed} pages for ${endpoint} (filtered count: ${count})`);
     return { count, lawCount };
   }
 
@@ -106,7 +122,7 @@ async function fetchBills(bioguideId) {
     console.log(`\nProcessing ${name} (${bioguideId}, ${state}-${district})...`);
 
     try {
-      // Quick verification fetch (optional; comment out if too verbose/slow)
+      // Optional verification fetch (logs snippet)
       const memberUrl = `${BASE_URL}/member/${bioguideId}`;
       const memberData = await getWithRetry(memberUrl, {});
       const snippet = JSON.stringify(memberData.member || memberData, null, 2).slice(0, 400);
