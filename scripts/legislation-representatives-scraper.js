@@ -1,7 +1,7 @@
 // scripts/legislation-representatives-scraper.js
 //
 // Purpose: Pull sponsored/cosponsored bills and became-law counts for the 119th Congress (House)
-// Source: Congress.gov API (resolve bioguideId -> memberId, then fetch sponsored/cosponsored endpoints)
+// Source: Congress.gov API (bioguideId endpoints)
 // Output: public/legislation-representatives.json
 
 const fs = require('fs');
@@ -16,11 +16,11 @@ const outputPath = path.join(__dirname, '../public/legislation-representatives.j
 
 const legislators = JSON.parse(fs.readFileSync(legislatorsPath, 'utf-8'));
 
-async function getWithRetry(url, params = {}, tries = 3) {
+async function getWithRetry(url, tries = 3) {
   let lastErr;
   for (let i = 0; i < tries; i++) {
     try {
-      const resp = await axios.get(url, { params });
+      const resp = await axios.get(url);
       return resp.data;
     } catch (err) {
       lastErr = err;
@@ -30,18 +30,11 @@ async function getWithRetry(url, params = {}, tries = 3) {
   throw lastErr;
 }
 
-// Resolve numeric memberId from bioguideId
-async function resolveMemberId(bioguideId) {
-  const url = `${BASE_URL}/member/${bioguideId}`;
-  const data = await getWithRetry(url, { api_key: API_KEY, format: 'json' });
-  return data.member?.memberId || null;
-}
-
-async function fetchBills(memberId) {
+async function fetchBills(bioguideId) {
   let sponsored = 0, cosponsored = 0, becameLawSponsored = 0, becameLawCosponsored = 0;
 
   // Sponsored bills
-  let next = `${BASE_URL}/member/${memberId}/sponsored-legislation?congress=119&api_key=${API_KEY}&format=json`;
+  let next = `${BASE_URL}/member/${bioguideId}/sponsored-legislation?congress=119&api_key=${API_KEY}&format=json`;
   while (next) {
     const data = await getWithRetry(next);
     if (!data.bills) break;
@@ -56,7 +49,7 @@ async function fetchBills(memberId) {
   }
 
   // Cosponsored bills
-  next = `${BASE_URL}/member/${memberId}/cosponsored-legislation?congress=119&api_key=${API_KEY}&format=json`;
+  next = `${BASE_URL}/member/${bioguideId}/cosponsored-legislation?congress=119&api_key=${API_KEY}&format=json`;
   while (next) {
     const data = await getWithRetry(next);
     if (!data.bills) break;
@@ -89,13 +82,7 @@ async function fetchBills(memberId) {
     const party = lastTerm.party || '';
 
     try {
-      const memberId = await resolveMemberId(bioguideId);
-      if (!memberId) {
-        console.warn(`No Congress.gov memberId for ${bioguideId} (${name}) — skipping`);
-        continue;
-      }
-
-      const totals = await fetchBills(memberId);
+      const totals = await fetchBills(bioguideId);
 
       results.push({
         bioguideId,
