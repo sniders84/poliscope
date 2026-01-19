@@ -1,57 +1,48 @@
-name: Update House data
+name: Update House Data
 
 on:
-  workflow_dispatch:
   schedule:
-    - cron: '0 4 * * *'   # 4 AM daily, staggered after Senate
-
-permissions:
-  contents: write
+    - cron: '0 4 * * *'  # example: daily at 4 AM UTC (~11 PM EST previous day)
+  workflow_dispatch:     # allows manual trigger
 
 jobs:
   update-house:
     runs-on: ubuntu-latest
+    timeout-minutes: 420   # 7 hours — gives plenty of buffer
+
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: 20
 
       - name: Install dependencies
-        run: npm install   # use install instead of ci to avoid lockfile mismatch
+        run: npm install
 
       - name: Bootstrap representatives
         run: node scripts/bootstrap-representatives.js
 
-      - name: Scrape legislation (119th Congress)
+      - name: Run legislation representatives scraper
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: node scripts/legislation-representatives-scraper.js
 
-      - name: Scrape committees
+      - name: Run committee reps scraper
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
-        run: node scripts/committee-representatives.js
+        run: node scripts/committee-reps-scraper.js   # ← fixed filename
 
-      - name: Scrape votes
-        env:
-          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
-        run: node scripts/votes-representatives.js
+      # Optional: add any other steps you have (e.g. merge, scores, etc.)
+      # - name: Merge representatives data
+      #   run: node scripts/merge-representatives.js
 
-      - name: Merge representative data
-        run: node scripts/merge-representatives.js
-
-      - name: Generate scores
-        run: node scripts/representatives-scores.js
-
-      - name: Commit and push changes
+      - name: Commit updated files
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Automated House update (119th Congress)"
-          file_pattern: public/representatives-*.json
-          commit_user_name: github-actions[bot]
-          commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
-          push_options: "--force-with-lease"
+          commit_message: Update House legislation and committee data
+          file_pattern: public/*.json
+          skip_dirty_check: false
+          skip_fetch: true
