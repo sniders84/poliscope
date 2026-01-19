@@ -1,7 +1,7 @@
 // scripts/legislation-representatives-scraper.js
 //
 // Purpose: Pull sponsored/cosponsored bills and became-law counts for the 119th Congress (House)
-// Source: Congress.gov API (resolve bioguideId -> memberId, then fetch sponsored/cosponsored endpoints)
+// Source: Congress.gov API v3 — uses bioguideId directly in member/{bioguideId}/... endpoints
 // Output: public/legislation-representatives.json
 
 const fs = require('fs');
@@ -16,58 +16,60 @@ const outputPath = path.join(__dirname, '../public/legislation-representatives.j
 
 const legislators = JSON.parse(fs.readFileSync(legislatorsPath, 'utf-8'));
 
-async function getWithRetry(url, params = {}, tries = 3) {
+async function getWithRetry(url, params = {}, tries = 4) {
   let lastErr;
   for (let i = 0; i < tries; i++) {
     try {
-      const resp = await axios.get(url, { params });
+      const resp = await axios.get(url, { params: { ...params, api_key: API_KEY, format: 'json' } });
       return resp.data;
     } catch (err) {
       lastErr = err;
-      await new Promise(r => setTimeout(r, 1000 * (i + 1)));
+      console.warn(`Retry ${i+1}/${tries} for ${url}: ${err.message}`);
+      await new Promise(r => setTimeout(r, 1500 * (i + 1))); // exponential backoff
     }
   }
   throw lastErr;
 }
 
-// Resolve numeric memberId from bioguideId using path form
-async function resolveMemberId(bioguideId) {
-  const url = `${BASE_URL}/member/${bioguideId}`;
-  const data = await getWithRetry(url, { api_key: API_KEY, format: 'json' });
-  return data.member?.memberId || null;
-}
-
-async function fetchBills(memberId) {
+async function fetchBills(bioguideId) {
   let sponsored = 0, cosponsored = 0, becameLawSponsored = 0, becameLawCosponsored = 0;
 
-  // Sponsored bills
-  let next = `${BASE_URL}/member/${memberId}/sponsored-legislation?congress=119&api_key=${API_KEY}&format=json`;
-  while (next) {
-    const data = await getWithRetry(next);
-    if (!data.bills) break;
+  const commonParams = { congress: 119, limit: 250 }; // max per page
 
-    for (const bill of data.bills) {
+  // Sponsored bills
+  let next = `${BASE_URL}/member/${bioguideId}/sponsored-legislation`;
+  while (next) {
+    const data = await getWithRetry(next, commonParams);
+    if (!data.sponsoredLegislation || !Array.isArray(data.sponsoredLegislation)) break;
+
+    for (const bill of data.sponsoredLegislation) {
       sponsored++;
-      if (bill.latestAction?.action?.toLowerCase().includes('became law')) {
+      const action = (bill.latestAction?.action || '').toLowerCase();
+      const text = (bill.latestAction?.text || '').toLowerCase();
+      if (action.includes('became law') || action.includes('became public law') ||
+          text.includes('became public law') || text.includes('signed by president')) {
         becameLawSponsored++;
       }
     }
-    next = data.pagination?.next;
+    next = data.pagination?.next ? `${BASE_URL}${data.pagination.next}` : null;
   }
 
   // Cosponsored bills
-  next = `${BASE_URL}/member/${memberId}/cosponsored-legislation?congress=119&api_key=${API_KEY}&format=json`;
+  next = `${BASE_URL}/member/${bioguideId}/cosponsored-legislation`;
   while (next) {
-    const data = await getWithRetry(next);
-    if (!data.bills) break;
+    const data = await getWithRetry(next, commonParams);
+    if (!data.cosponsoredLegislation || !Array.isArray(data.cosponsoredLegislation)) break;
 
-    for (const bill of data.bills) {
+    for (const bill of data.cosponsoredLegislation) {
       cosponsored++;
-      if (bill.latestAction?.action?.toLowerCase().includes('became law')) {
+      const action = (bill.latestAction?.action || '').toLowerCase();
+      const text = (bill.latestAction?.text || '').toLowerCase();
+      if (action.includes('became law') || action.includes('became public law') ||
+          text.includes('became public law') || text.includes('signed by president')) {
         becameLawCosponsored++;
       }
     }
-    next = data.pagination?.next;
+    next = data.pagination?.next ? `${BASE_URL}${data.pagination.next}` : null;
   }
 
   return { sponsored, cosponsored, becameLawSponsored, becameLawCosponsored };
@@ -78,7 +80,7 @@ async function fetchBills(memberId) {
 
   for (const leg of legislators) {
     const lastTerm = leg.terms?.[leg.terms.length - 1];
-    if (!lastTerm || lastTerm.type !== 'rep') continue;
+    if (!lastTerm || lastTerm.type !== 'rep' || !lastTerm.start || !lastTerm.end) continue;
 
     const bioguideId = leg.id?.bioguide;
     if (!bioguideId) continue;
@@ -88,14 +90,10 @@ async function fetchBills(memberId) {
     const district = lastTerm.district || '';
     const party = lastTerm.party || '';
 
-    try {
-      const memberId = await resolveMemberId(bioguideId);
-      if (!memberId) {
-        console.warn(`No Congress.gov memberId for ${bioguideId} (${name}) — skipping`);
-        continue;
-      }
+    console.log(`Processing ${name} (${bioguideId})...`);
 
-      const totals = await fetchBills(memberId);
+    try {
+      const totals = await fetchBills(bioguideId);
 
       results.push({
         bioguideId,
@@ -111,8 +109,11 @@ async function fetchBills(memberId) {
 
       console.log(
         `${name}: sponsored=${totals.sponsored}, cosponsored=${totals.cosponsored}, ` +
-        `becameLawBills=${totals.becameLawSponsored}, becameLawCosponsoredBills=${totals.becameLawCosponsored}`
+        `becameLaw=${totals.becameLawSponsored}, becameLawCosponsored=${totals.becameLawCosponsored}`
       );
+
+      // Gentle rate limiting: ~1 request every 1.5s on average (adjust up if you get 429s)
+      await new Promise(r => setTimeout(r, 1500));
     } catch (err) {
       console.error(`Error for ${bioguideId} (${name}): ${err.message}`);
     }
