@@ -1,7 +1,7 @@
 // scripts/legislation-representatives-scraper.js
 //
 // Purpose: Pull sponsored/cosponsored bills and became-law counts for the 119th Congress (House)
-// Source: Congress.gov API (memberId resolution)
+// Source: Congress.gov API (memberId resolution via bioguideId search)
 // Output: public/legislation-representatives.json
 
 const fs = require('fs');
@@ -30,10 +30,18 @@ async function getWithRetry(url, params = {}, tries = 3) {
   throw lastErr;
 }
 
+// Updated: use search endpoint with bioguideId param
 async function resolveMemberId(bioguideId) {
-  const url = `${BASE_URL}/member/${bioguideId}`;
-  const data = await getWithRetry(url, { api_key: API_KEY, format: 'json' });
-  return data.member?.memberId || null;
+  const url = `${BASE_URL}/member`;
+  const data = await getWithRetry(url, {
+    api_key: API_KEY,
+    format: 'json',
+    bioguideId
+  });
+  if (data.members && data.members.length > 0) {
+    return data.members[0].memberId;
+  }
+  return null;
 }
 
 async function fetchBills(memberId) {
