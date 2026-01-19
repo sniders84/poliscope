@@ -12,21 +12,46 @@ jobs:
   update-house:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - run: npm install   # same here
 
-      - run: node scripts/bootstrap-reps.js
-      - run: node scripts/legislation-reps-scraper.js
-      - run: node scripts/committee-reps-scraper.js
-      - run: node scripts/votes-reps-scraper.js
-      - run: node scripts/merge-reps.js
-      - run: node scripts/reps-scores.js
+      - name: Install dependencies
+        run: npm install   # use install instead of ci to avoid lockfile mismatch
 
-      - name: Commit changes
+      - name: Bootstrap representatives
+        run: node scripts/bootstrap-representatives.js
+
+      - name: Scrape legislation (119th Congress)
+        env:
+          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
+        run: node scripts/legislation-representatives.js
+
+      - name: Scrape committees
+        env:
+          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
+        run: node scripts/committee-representatives.js
+
+      - name: Scrape votes
+        env:
+          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
+        run: node scripts/votes-representatives.js
+
+      - name: Merge representative data
+        run: node scripts/merge-representatives.js
+
+      - name: Generate scores
+        run: node scripts/representatives-scores.js
+
+      - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Automated House update"
+          commit_message: "Automated House update (119th Congress)"
           file_pattern: public/representatives-*.json
+          commit_user_name: github-actions[bot]
+          commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
+          push_options: "--force-with-lease"
