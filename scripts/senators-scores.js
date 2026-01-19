@@ -1,62 +1,80 @@
 // scripts/senators-scores.js
-// Purpose: Compute composite scores for Senators based on 119th Congress data
-// Enriches senators-rankings.json directly with rawScore, score, and scoreNormalized
+// Purpose: Compute scores for senators based on votes + bills only (no amendments)
 
 const fs = require('fs');
 const path = require('path');
 
-const OUT_PATH = path.join(__dirname, '../public/senators-rankings.json');
-const sens = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8'));
+const rankingsPath = path.join(__dirname, '../public/senators-rankings.json');
+const outputPath = path.join(__dirname, '../public/senators-scores.json');
 
-function computeScore(sen) {
-  // Weighting factors — adjust as needed
-  const billWeight = 2;
-  const cosponsorWeight = 1;
-  const amendmentWeight = 1;
-  const voteWeight = 1;
-  const committeeMembershipWeight = 2;
-  const rankingBonus = 2;
-  const chairBonus = 4;
+const senators = JSON.parse(fs.readFileSync(rankingsPath, 'utf-8'));
 
+const WEIGHTS = {
+  bills: {
+    sponsoredBills: 2,
+    cosponsoredBills: 1,
+    becameLawBills: 5,
+    becameLawCosponsoredBills: 3
+  },
+  votes: {
+    participationBonus: 2, // per 100 votes cast
+    penaltyMissedPct: -10  // subtract if missed > 10%
+  },
+  committees: {
+    Chair: 5,
+    RankingMember: 4,
+    Member: 1
+  }
+};
+
+const scores = senators.map((s) => {
   let score = 0;
 
-  // Legislation
-  score += (sen.sponsoredBills || 0) * billWeight;
-  score += (sen.cosponsoredBills || 0) * cosponsorWeight;
-  score += (sen.sponsoredAmendments || 0) * amendmentWeight;
-  score += (sen.cosponsoredAmendments || 0) * amendmentWeight;
-  score += (sen.becameLawBills || 0) * billWeight;
-
-  // Votes
-  score += (sen.yeaVotes || 0) * voteWeight;
-  score += (sen.nayVotes || 0) * voteWeight;
-  score -= (sen.missedVotes || 0) * 0.5; // penalty for missed votes
+  // Legislation (bills only)
+  for (const [field, weight] of Object.entries(WEIGHTS.bills)) {
+    score += (s[field] || 0) * weight;
+  }
 
   // Committees
-  if (Array.isArray(sen.committees)) {
-    for (const c of sen.committees) {
-      score += committeeMembershipWeight;
-      if (c.role === 'Ranking Member') score += rankingBonus;
-      if (c.role === 'Chair' || c.role === 'Chairman') score += chairBonus;
+  for (const c of s.committees || []) {
+    if (c.role === 'Chair') score += WEIGHTS.committees.Chair;
+    else if (c.role === 'Ranking Member') score += WEIGHTS.committees.RankingMember;
+    else score += WEIGHTS.committees.Member;
+  }
+
+  // Votes
+  const totalVotes = s.totalVotes || 0;
+  const missedPct = s.missedVotePct || 0;
+  if (totalVotes > 0) {
+    score += Math.floor(totalVotes / 100) * WEIGHTS.votes.participationBonus;
+  }
+  if (missedPct > 10) {
+    score += WEIGHTS.votes.penaltyMissedPct;
+  }
+
+  return {
+    bioguideId: s.bioguideId,
+    name: s.name,
+    state: s.state,
+    party: s.party,
+    score,
+    breakdown: {
+      sponsoredBills: s.sponsoredBills,
+      cosponsoredBills: s.cosponsoredBills,
+      becameLawBills: s.becameLawBills,
+      becameLawCosponsoredBills: s.becameLawCosponsoredBills,
+      committees: s.committees,
+      votes: {
+        yeaVotes: s.yeaVotes,
+        nayVotes: s.nayVotes,
+        missedVotes: s.missedVotes,
+        totalVotes: s.totalVotes,
+        participationPct: s.participationPct,
+        missedVotePct: s.missedVotePct
+      }
     }
-  }
+  };
+});
 
-  return score;
-}
-
-(function main() {
-  // Compute raw scores
-  for (const s of sens) {
-    s.rawScore = computeScore(s);
-    s.score = s.rawScore;
-  }
-
-  // Normalize scores 0–100
-  const maxScore = Math.max(...sens.map(s => s.score || 0));
-  for (const s of sens) {
-    s.scoreNormalized = maxScore > 0 ? Number(((s.score / maxScore) * 100).toFixed(2)) : 0;
-  }
-
-  fs.writeFileSync(OUT_PATH, JSON.stringify(sens, null, 2));
-  console.log(`Scoring complete for Senators (${sens.length} entries)`);
-})();
+fs.writeFileSync(outputPath, JSON.stringify(scores, null, 2));
+console.log(`Wrote ${scores.length} senator score entries to ${outputPath}`);
