@@ -40,7 +40,6 @@ async function fetchBills(bioguideId) {
   const is119th = (bill) => {
     const cong = bill.congress;
     if (cong === 119 || cong === '119') return true;
-    // Fallback: check introducedDate (119th started ~Jan 3, 2025)
     if (bill.introducedDate && bill.introducedDate >= '2025-01-03' && bill.introducedDate < '2027-01-01') {
       return true;
     }
@@ -55,7 +54,6 @@ async function fetchBills(bioguideId) {
            /public law no/i.test(text);
   };
 
-  // Helper to paginate and filter one endpoint
   async function paginate(endpoint) {
     let count = 0;
     let lawCount = 0;
@@ -86,7 +84,7 @@ async function fetchBills(bioguideId) {
 
       offset += limit;
       totalPagesProcessed++;
-      await new Promise(r => setTimeout(r, 600)); // intra-page delay
+      await new Promise(r => setTimeout(r, 600));
     }
 
     console.log(`Processed ${totalPagesProcessed} pages for ${endpoint} (filtered count: ${count})`);
@@ -101,11 +99,14 @@ async function fetchBills(bioguideId) {
   cosponsored = cosponsoredData.count;
   becameLawCosponsored = cosponsoredData.lawCount;
 
+  console.log(`Completed fetch for ${bioguideId}: sponsored=${sponsored}, cosponsored=${cosponsored}`);
   return { sponsored, cosponsored, becameLawSponsored, becameLawCosponsored };
 }
 
 (async () => {
+  const startTime = Date.now();
   const results = [];
+  let failedCount = 0;
 
   for (const leg of legislators) {
     const lastTerm = leg.terms?.[leg.terms.length - 1];
@@ -122,7 +123,7 @@ async function fetchBills(bioguideId) {
     console.log(`\nProcessing ${name} (${bioguideId}, ${state}-${district})...`);
 
     try {
-      // Optional verification fetch (logs snippet)
+      // Optional: member detail for logging/verification
       const memberUrl = `${BASE_URL}/member/${bioguideId}`;
       const memberData = await getWithRetry(memberUrl, {});
       const snippet = JSON.stringify(memberData.member || memberData, null, 2).slice(0, 400);
@@ -139,7 +140,8 @@ async function fetchBills(bioguideId) {
         sponsoredBills: totals.sponsored,
         cosponsoredBills: totals.cosponsored,
         becameLawBills: totals.becameLawSponsored,
-        becameLawCosponsoredBills: totals.becameLawCosponsored
+        becameLawCosponsoredBills: totals.becameLawCosponsored,
+        lastUpdated: new Date().toISOString()
       });
 
       console.log(
@@ -148,11 +150,14 @@ async function fetchBills(bioguideId) {
       );
     } catch (err) {
       console.error(`Error for ${bioguideId} (${name}): ${err.message}`);
+      failedCount++;
     }
 
-    await new Promise(r => setTimeout(r, 3000)); // 3s between members
+    await new Promise(r => setTimeout(r, 3000));
   }
 
   fs.writeFileSync(outputPath, JSON.stringify(results, null, 2));
-  console.log(`\nWrote ${results.length} records to ${outputPath}`);
+  const durationHours = ((Date.now() - startTime) / 1000 / 3600).toFixed(2);
+  console.log(`\nWrote ${results.length} records to ${outputPath} (failed/skipped: ${failedCount})`);
+  console.log(`Total runtime: ${durationHours} hours`);
 })();
