@@ -1,1112 +1,2508 @@
 [
   {
-    "bioguideId": "B001319",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "T000278",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "M001153",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "S001198",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "G000003",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "K000377",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "B001236",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "C001095",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "S001222",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "P000145",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "B001267",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "H001075",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "B001277",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "M001169",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "B001313",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "C001088",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "M001231",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "S001217",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "O000174",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "W000790",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "H001042",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "S001194",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "C000880",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "R000584",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "D000563",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "D000622",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "B001299",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "Y000064",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "E000295",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "G000386",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "M001197",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "M000934",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "M000355",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "P000603",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "C001075",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "K000393",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "C001035",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "K000383",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "A000382",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "V000128",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "M000133",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "W000817",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "P000595",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "S001208",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
+    "bioguideId": "C000127",
+    "name": "Maria Cantwell",
+    "state": "WA",
+    "party": "Democrat",
+    "score": 297,
+    "breakdown": {
+      "sponsoredBills": 55,
+      "cosponsoredBills": 172,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 1,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 180,
+        "nayVotes": 487,
+        "missedVotes": 1,
+        "totalVotes": 668,
+        "participationPct": 99.85,
+        "missedVotePct": 0.15
+      }
+    }
   },
   {
     "bioguideId": "K000367",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "S001203",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "H001079",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "W000437",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "H001089",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "S001227",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "D000618",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "S001233",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "F000463",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "R000618",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "C001113",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "R000608",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "S001181",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "H001076",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "K000394",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "B001288",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "H001046",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "L000570",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "G000555",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "S000148",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "B001305",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "T000476",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "C001096",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "H001061",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "M001232",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "H001088",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "L000575",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "M001190",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "M001176",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "W000779",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "F000479",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "M001227",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "R000122",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "W000802",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "G000359",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "S001184",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "R000605",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "T000250",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "B001243",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "H000601",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "C001056",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "C001098",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "C001131",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "L000577",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "K000384",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "W000805",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "M001111",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "C000127",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "C001047",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "J000307",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "B001230",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "J000293",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "B001261",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
-  },
-  {
-    "bioguideId": "L000571",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
+    "name": "Amy Klobuchar",
+    "state": "MN",
+    "party": "Democrat",
+    "score": 790,
+    "breakdown": {
+      "sponsoredBills": 135,
+      "cosponsoredBills": 502,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 2,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 214,
+        "nayVotes": 447,
+        "missedVotes": 7,
+        "totalVotes": 668,
+        "participationPct": 98.95,
+        "missedVotePct": 1.05
+      }
+    }
   },
   {
     "bioguideId": "S000033",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
+    "name": "Bernard Sanders",
+    "state": "VT",
+    "party": "Independent",
+    "score": 462,
+    "breakdown": {
+      "sponsoredBills": 53,
+      "cosponsoredBills": 338,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 2,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 153,
+        "nayVotes": 457,
+        "missedVotes": 58,
+        "totalVotes": 668,
+        "participationPct": 91.32,
+        "missedVotePct": 8.68
+      }
+    }
+  },
+  {
+    "bioguideId": "W000802",
+    "name": "Sheldon Whitehouse",
+    "state": "RI",
+    "party": "Democrat",
+    "score": 553,
+    "breakdown": {
+      "sponsoredBills": 104,
+      "cosponsoredBills": 327,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 2,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 188,
+        "nayVotes": 456,
+        "missedVotes": 24,
+        "totalVotes": 668,
+        "participationPct": 96.41,
+        "missedVotePct": 3.59
+      }
+    }
+  },
+  {
+    "bioguideId": "B001261",
+    "name": "John Barrasso",
+    "state": "WY",
+    "party": "Republican",
+    "score": 284,
+    "breakdown": {
+      "sponsoredBills": 47,
+      "cosponsoredBills": 169,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 3,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 513,
+        "nayVotes": 151,
+        "missedVotes": 4,
+        "totalVotes": 668,
+        "participationPct": 99.4,
+        "missedVotePct": 0.6
+      }
+    }
+  },
+  {
+    "bioguideId": "W000437",
+    "name": "Roger Wicker",
+    "state": "MS",
+    "party": "Republican",
+    "score": 325,
+    "breakdown": {
+      "sponsoredBills": 47,
+      "cosponsoredBills": 204,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 5,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 489,
+        "nayVotes": 153,
+        "missedVotes": 26,
+        "totalVotes": 668,
+        "participationPct": 96.11,
+        "missedVotePct": 3.89
+      }
+    }
+  },
+  {
+    "bioguideId": "C001035",
+    "name": "Susan Collins",
+    "state": "ME",
+    "party": "Republican",
+    "score": 327,
+    "breakdown": {
+      "sponsoredBills": 35,
+      "cosponsoredBills": 236,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 3,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 547,
+        "nayVotes": 121,
+        "missedVotes": 0,
+        "totalVotes": 668,
+        "participationPct": 100,
+        "missedVotePct": 0
+      }
+    }
+  },
+  {
+    "bioguideId": "C001056",
+    "name": "John Cornyn",
+    "state": "TX",
+    "party": "Republican",
+    "score": 561,
+    "breakdown": {
+      "sponsoredBills": 146,
+      "cosponsoredBills": 241,
+      "becameLawBills": 2,
+      "becameLawCosponsoredBills": 2,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 512,
+        "nayVotes": 153,
+        "missedVotes": 3,
+        "totalVotes": 668,
+        "participationPct": 99.55,
+        "missedVotePct": 0.45
+      }
+    }
+  },
+  {
+    "bioguideId": "D000563",
+    "name": "Richard Durbin",
+    "state": "IL",
+    "party": "Democrat",
+    "score": 678,
+    "breakdown": {
+      "sponsoredBills": 137,
+      "cosponsoredBills": 392,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 0,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 215,
+        "nayVotes": 435,
+        "missedVotes": 18,
+        "totalVotes": 668,
+        "participationPct": 97.31,
+        "missedVotePct": 2.69
+      }
+    }
+  },
+  {
+    "bioguideId": "G000359",
+    "name": "Lindsey Graham",
+    "state": "SC",
+    "party": "Republican",
+    "score": 205,
+    "breakdown": {
+      "sponsoredBills": 33,
+      "cosponsoredBills": 121,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 2,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 472,
+        "nayVotes": 153,
+        "missedVotes": 43,
+        "totalVotes": 668,
+        "participationPct": 93.56,
+        "missedVotePct": 6.44
+      }
+    }
+  },
+  {
+    "bioguideId": "M000355",
+    "name": "Mitch McConnell",
+    "state": "KY",
+    "party": "Republican",
+    "score": 87,
+    "breakdown": {
+      "sponsoredBills": 13,
+      "cosponsoredBills": 46,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 1,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 464,
+        "nayVotes": 149,
+        "missedVotes": 55,
+        "totalVotes": 668,
+        "participationPct": 91.77,
+        "missedVotePct": 8.23
+      }
+    }
+  },
+  {
+    "bioguideId": "M001176",
+    "name": "Jeff Merkley",
+    "state": "OR",
+    "party": "Democrat",
+    "score": 952,
+    "breakdown": {
+      "sponsoredBills": 235,
+      "cosponsoredBills": 467,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 1,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 158,
+        "nayVotes": 504,
+        "missedVotes": 6,
+        "totalVotes": 668,
+        "participationPct": 99.1,
+        "missedVotePct": 0.9
+      }
+    }
+  },
+  {
+    "bioguideId": "R000122",
+    "name": "John Reed",
+    "state": "RI",
+    "party": "Democrat",
+    "score": 538,
+    "breakdown": {
+      "sponsoredBills": 138,
+      "cosponsoredBills": 250,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 0,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 207,
+        "nayVotes": 453,
+        "missedVotes": 8,
+        "totalVotes": 668,
+        "participationPct": 98.8,
+        "missedVotePct": 1.2
+      }
+    }
+  },
+  {
+    "bioguideId": "R000584",
+    "name": "James Risch",
+    "state": "ID",
+    "party": "Republican",
+    "score": 461,
+    "breakdown": {
+      "sponsoredBills": 83,
+      "cosponsoredBills": 268,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 5,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 504,
+        "nayVotes": 151,
+        "missedVotes": 13,
+        "totalVotes": 668,
+        "participationPct": 98.05,
+        "missedVotePct": 1.95
+      }
+    }
+  },
+  {
+    "bioguideId": "S001181",
+    "name": "Jeanne Shaheen",
+    "state": "NH",
+    "party": "Democrat",
+    "score": 897,
+    "breakdown": {
+      "sponsoredBills": 228,
+      "cosponsoredBills": 420,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 3,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 269,
+        "nayVotes": 376,
+        "missedVotes": 23,
+        "totalVotes": 668,
+        "participationPct": 96.56,
+        "missedVotePct": 3.44
+      }
+    }
+  },
+  {
+    "bioguideId": "W000805",
+    "name": "Mark Warner",
+    "state": "VA",
+    "party": "Democrat",
+    "score": 485,
+    "breakdown": {
+      "sponsoredBills": 96,
+      "cosponsoredBills": 278,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 1,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 237,
+        "nayVotes": 414,
+        "missedVotes": 17,
+        "totalVotes": 668,
+        "participationPct": 97.46,
+        "missedVotePct": 2.54
+      }
+    }
+  },
+  {
+    "bioguideId": "G000555",
+    "name": "Kirsten Gillibrand",
+    "state": "NY",
+    "party": "Democrat",
+    "score": 455,
+    "breakdown": {
+      "sponsoredBills": 51,
+      "cosponsoredBills": 338,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 1,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 194,
+        "nayVotes": 463,
+        "missedVotes": 11,
+        "totalVotes": 668,
+        "participationPct": 98.35,
+        "missedVotePct": 1.65
+      }
+    }
+  },
+  {
+    "bioguideId": "C001088",
+    "name": "Christopher Coons",
+    "state": "DE",
+    "party": "Democrat",
+    "score": 628,
+    "breakdown": {
+      "sponsoredBills": 114,
+      "cosponsoredBills": 388,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 0,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 197,
+        "nayVotes": 436,
+        "missedVotes": 35,
+        "totalVotes": 668,
+        "participationPct": 94.76,
+        "missedVotePct": 5.24
+      }
+    }
+  },
+  {
+    "bioguideId": "B001230",
+    "name": "Tammy Baldwin",
+    "state": "WI",
+    "party": "Democrat",
+    "score": 449,
+    "breakdown": {
+      "sponsoredBills": 66,
+      "cosponsoredBills": 305,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 0,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 185,
+        "nayVotes": 480,
+        "missedVotes": 1,
+        "totalVotes": 666,
+        "participationPct": 99.85,
+        "missedVotePct": 0.15
+      }
+    }
+  },
+  {
+    "bioguideId": "B001267",
+    "name": "Michael Bennet",
+    "state": "CO",
+    "party": "Democrat",
+    "score": 780,
+    "breakdown": {
+      "sponsoredBills": 234,
+      "cosponsoredBills": 294,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 2,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 185,
+        "nayVotes": 472,
+        "missedVotes": 11,
+        "totalVotes": 668,
+        "participationPct": 98.35,
+        "missedVotePct": 1.65
+      }
+    }
+  },
+  {
+    "bioguideId": "B001243",
+    "name": "Marsha Blackburn",
+    "state": "TN",
+    "party": "Republican",
+    "score": 684,
+    "breakdown": {
+      "sponsoredBills": 149,
+      "cosponsoredBills": 362,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 4,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 493,
+        "nayVotes": 141,
+        "missedVotes": 34,
+        "totalVotes": 668,
+        "participationPct": 94.91,
+        "missedVotePct": 5.09
+      }
+    }
+  },
+  {
+    "bioguideId": "B001277",
+    "name": "Richard Blumenthal",
+    "state": "CT",
+    "party": "Democrat",
+    "score": 881,
+    "breakdown": {
+      "sponsoredBills": 128,
+      "cosponsoredBills": 607,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 2,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 165,
+        "nayVotes": 494,
+        "missedVotes": 9,
+        "totalVotes": 668,
+        "participationPct": 98.65,
+        "missedVotePct": 1.35
+      }
+    }
+  },
+  {
+    "bioguideId": "B001236",
+    "name": "John Boozman",
+    "state": "AR",
+    "party": "Republican",
+    "score": 244,
+    "breakdown": {
+      "sponsoredBills": 16,
+      "cosponsoredBills": 191,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 3,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 499,
+        "nayVotes": 157,
+        "missedVotes": 12,
+        "totalVotes": 668,
+        "participationPct": 98.2,
+        "missedVotePct": 1.8
+      }
+    }
+  },
+  {
+    "bioguideId": "C001047",
+    "name": "Shelley Capito",
+    "state": "WV",
+    "party": "Republican",
+    "score": 327,
+    "breakdown": {
+      "sponsoredBills": 24,
+      "cosponsoredBills": 252,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 5,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 500,
+        "nayVotes": 154,
+        "missedVotes": 14,
+        "totalVotes": 668,
+        "participationPct": 97.9,
+        "missedVotePct": 2.1
+      }
+    }
+  },
+  {
+    "bioguideId": "C001075",
+    "name": "Bill Cassidy",
+    "state": "LA",
+    "party": "Republican",
+    "score": 500,
+    "breakdown": {
+      "sponsoredBills": 102,
+      "cosponsoredBills": 267,
+      "becameLawBills": 1,
+      "becameLawCosponsoredBills": 4,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 485,
+        "nayVotes": 142,
+        "missedVotes": 41,
+        "totalVotes": 668,
+        "participationPct": 93.86,
+        "missedVotePct": 6.14
+      }
+    }
+  },
+  {
+    "bioguideId": "C000880",
+    "name": "Michael Crapo",
+    "state": "ID",
+    "party": "Republican",
+    "score": 343,
+    "breakdown": {
+      "sponsoredBills": 32,
+      "cosponsoredBills": 247,
+      "becameLawBills": 1,
+      "becameLawCosponsoredBills": 5,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 510,
+        "nayVotes": 153,
+        "missedVotes": 5,
+        "totalVotes": 668,
+        "participationPct": 99.25,
+        "missedVotePct": 0.75
+      }
+    }
+  },
+  {
+    "bioguideId": "G000386",
+    "name": "Charles Grassley",
+    "state": "IA",
+    "party": "Republican",
+    "score": 408,
+    "breakdown": {
+      "sponsoredBills": 95,
+      "cosponsoredBills": 194,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 4,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 509,
+        "nayVotes": 155,
+        "missedVotes": 4,
+        "totalVotes": 668,
+        "participationPct": 99.4,
+        "missedVotePct": 0.6
+      }
+    }
+  },
+  {
+    "bioguideId": "H001046",
+    "name": "Martin Heinrich",
+    "state": "NM",
+    "party": "Democrat",
+    "score": 544,
+    "breakdown": {
+      "sponsoredBills": 98,
+      "cosponsoredBills": 321,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 5,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 203,
+        "nayVotes": 431,
+        "missedVotes": 34,
+        "totalVotes": 668,
+        "participationPct": 94.91,
+        "missedVotePct": 5.09
+      }
+    }
+  },
+  {
+    "bioguideId": "H001042",
+    "name": "Mazie Hirono",
+    "state": "HI",
+    "party": "Democrat",
+    "score": 708,
+    "breakdown": {
+      "sponsoredBills": 141,
+      "cosponsoredBills": 408,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 2,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 164,
+        "nayVotes": 502,
+        "missedVotes": 2,
+        "totalVotes": 668,
+        "participationPct": 99.7,
+        "missedVotePct": 0.3
+      }
+    }
+  },
+  {
+    "bioguideId": "H001061",
+    "name": "John Hoeven",
+    "state": "ND",
+    "party": "Republican",
+    "score": 235,
+    "breakdown": {
+      "sponsoredBills": 21,
+      "cosponsoredBills": 175,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 2,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 507,
+        "nayVotes": 154,
+        "missedVotes": 7,
+        "totalVotes": 668,
+        "participationPct": 98.95,
+        "missedVotePct": 1.05
+      }
+    }
+  },
+  {
+    "bioguideId": "J000293",
+    "name": "Ron Johnson",
+    "state": "WI",
+    "party": "Republican",
+    "score": 116,
+    "breakdown": {
+      "sponsoredBills": 27,
+      "cosponsoredBills": 47,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 1,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 511,
+        "nayVotes": 149,
+        "missedVotes": 8,
+        "totalVotes": 668,
+        "participationPct": 98.8,
+        "missedVotePct": 1.2
+      }
+    }
+  },
+  {
+    "bioguideId": "L000575",
+    "name": "James Lankford",
+    "state": "OK",
+    "party": "Republican",
+    "score": 434,
+    "breakdown": {
+      "sponsoredBills": 83,
+      "cosponsoredBills": 248,
+      "becameLawBills": 1,
+      "becameLawCosponsoredBills": 1,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 514,
+        "nayVotes": 152,
+        "missedVotes": 2,
+        "totalVotes": 668,
+        "participationPct": 99.7,
+        "missedVotePct": 0.3
+      }
+    }
+  },
+  {
+    "bioguideId": "L000577",
+    "name": "Mike Lee",
+    "state": "UT",
+    "party": "Republican",
+    "score": 566,
+    "breakdown": {
+      "sponsoredBills": 188,
+      "cosponsoredBills": 169,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 3,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 491,
+        "nayVotes": 154,
+        "missedVotes": 23,
+        "totalVotes": 668,
+        "participationPct": 96.56,
+        "missedVotePct": 3.44
+      }
+    }
+  },
+  {
+    "bioguideId": "L000570",
+    "name": "Ben Luján",
+    "state": "NM",
+    "party": "Democrat",
+    "score": 631,
+    "breakdown": {
+      "sponsoredBills": 127,
+      "cosponsoredBills": 371,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 2,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 0,
+        "nayVotes": 0,
+        "missedVotes": 0,
+        "totalVotes": 0,
+        "participationPct": 0,
+        "missedVotePct": 0
+      }
+    }
+  },
+  {
+    "bioguideId": "M000133",
+    "name": "Edward Markey",
+    "state": "MA",
+    "party": "Democrat",
+    "score": 723,
+    "breakdown": {
+      "sponsoredBills": 166,
+      "cosponsoredBills": 379,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 0,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 148,
+        "nayVotes": 515,
+        "missedVotes": 5,
+        "totalVotes": 668,
+        "participationPct": 99.25,
+        "missedVotePct": 0.75
+      }
+    }
+  },
+  {
+    "bioguideId": "M000934",
+    "name": "Jerry Moran",
+    "state": "KS",
+    "party": "Republican",
+    "score": 349,
+    "breakdown": {
+      "sponsoredBills": 81,
+      "cosponsoredBills": 161,
+      "becameLawBills": 1,
+      "becameLawCosponsoredBills": 3,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 480,
+        "nayVotes": 152,
+        "missedVotes": 36,
+        "totalVotes": 668,
+        "participationPct": 94.61,
+        "missedVotePct": 5.39
+      }
+    }
+  },
+  {
+    "bioguideId": "M001153",
+    "name": "Lisa Murkowski",
+    "state": "AK",
+    "party": "Republican",
+    "score": 324,
+    "breakdown": {
+      "sponsoredBills": 61,
+      "cosponsoredBills": 178,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 4,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 512,
+        "nayVotes": 133,
+        "missedVotes": 23,
+        "totalVotes": 668,
+        "participationPct": 96.56,
+        "missedVotePct": 3.44
+      }
+    }
+  },
+  {
+    "bioguideId": "M001169",
+    "name": "Christopher Murphy",
+    "state": "CT",
+    "party": "Democrat",
+    "score": 391,
+    "breakdown": {
+      "sponsoredBills": 96,
+      "cosponsoredBills": 187,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 0,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 153,
+        "nayVotes": 495,
+        "missedVotes": 20,
+        "totalVotes": 668,
+        "participationPct": 97.01,
+        "missedVotePct": 2.99
+      }
+    }
+  },
+  {
+    "bioguideId": "M001111",
+    "name": "Patty Murray",
+    "state": "WA",
+    "party": "Democrat",
+    "score": 354,
+    "breakdown": {
+      "sponsoredBills": 61,
+      "cosponsoredBills": 214,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 2,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 139,
+        "nayVotes": 485,
+        "missedVotes": 44,
+        "totalVotes": 668,
+        "participationPct": 93.41,
+        "missedVotePct": 6.59
+      }
+    }
+  },
+  {
+    "bioguideId": "P000603",
+    "name": "Rand Paul",
+    "state": "KY",
+    "party": "Republican",
+    "score": 230,
+    "breakdown": {
+      "sponsoredBills": 80,
+      "cosponsoredBills": 55,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 1,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 444,
+        "nayVotes": 200,
+        "missedVotes": 22,
+        "totalVotes": 666,
+        "participationPct": 96.7,
+        "missedVotePct": 3.3
+      }
+    }
+  },
+  {
+    "bioguideId": "P000595",
+    "name": "Gary Peters",
+    "state": "MI",
+    "party": "Democrat",
+    "score": 615,
+    "breakdown": {
+      "sponsoredBills": 163,
+      "cosponsoredBills": 269,
+      "becameLawBills": 1,
+      "becameLawCosponsoredBills": 1,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 203,
+        "nayVotes": 451,
+        "missedVotes": 14,
+        "totalVotes": 668,
+        "participationPct": 97.9,
+        "missedVotePct": 2.1
+      }
+    }
+  },
+  {
+    "bioguideId": "S001150",
+    "name": "Adam Schiff",
+    "state": "CA",
+    "party": "Democrat",
+    "score": 697,
+    "breakdown": {
+      "sponsoredBills": 121,
+      "cosponsoredBills": 434,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 2,
+      "committees": [
+        {
+          "committeeCode": "SSAF",
+          "committeeName": "Agriculture, Nutrition, and Forestry",
+          "role": "Member",
+          "rank": 10,
+          "party": "minority"
+        },
+        {
+          "committeeCode": "SSEV",
+          "committeeName": "Environment and Public Works",
+          "role": "Member",
+          "rank": 7,
+          "party": "minority"
+        },
+        {
+          "committeeCode": "SSJU",
+          "committeeName": "Judiciary",
+          "role": "Member",
+          "rank": 10,
+          "party": "minority"
+        }
+      ],
+      "votes": {
+        "yeaVotes": 186,
+        "nayVotes": 466,
+        "missedVotes": 16,
+        "totalVotes": 668,
+        "participationPct": 97.6,
+        "missedVotePct": 2.4
+      }
+    }
+  },
+  {
+    "bioguideId": "S000148",
+    "name": "Charles Schumer",
+    "state": "NY",
+    "party": "Democrat",
+    "score": 273,
+    "breakdown": {
+      "sponsoredBills": 46,
+      "cosponsoredBills": 169,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 0,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 168,
+        "nayVotes": 497,
+        "missedVotes": 3,
+        "totalVotes": 668,
+        "participationPct": 99.55,
+        "missedVotePct": 0.45
+      }
+    }
+  },
+  {
+    "bioguideId": "S001184",
+    "name": "Tim Scott",
+    "state": "SC",
+    "party": "Republican",
+    "score": 266,
+    "breakdown": {
+      "sponsoredBills": 60,
+      "cosponsoredBills": 117,
+      "becameLawBills": 1,
+      "becameLawCosponsoredBills": 4,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 493,
+        "nayVotes": 153,
+        "missedVotes": 22,
+        "totalVotes": 668,
+        "participationPct": 96.71,
+        "missedVotePct": 3.29
+      }
+    }
+  },
+  {
+    "bioguideId": "T000250",
+    "name": "John Thune",
+    "state": "SD",
+    "party": "Republican",
+    "score": 245,
+    "breakdown": {
+      "sponsoredBills": 87,
+      "cosponsoredBills": 53,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 2,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 502,
+        "nayVotes": 165,
+        "missedVotes": 1,
+        "totalVotes": 668,
+        "participationPct": 99.85,
+        "missedVotePct": 0.15
+      }
+    }
+  },
+  {
+    "bioguideId": "V000128",
+    "name": "Chris Van Hollen",
+    "state": "MD",
+    "party": "Democrat",
+    "score": 760,
+    "breakdown": {
+      "sponsoredBills": 123,
+      "cosponsoredBills": 502,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 0,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 158,
+        "nayVotes": 498,
+        "missedVotes": 12,
+        "totalVotes": 668,
+        "participationPct": 98.2,
+        "missedVotePct": 1.8
+      }
+    }
   },
   {
     "bioguideId": "W000800",
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
+    "name": "Peter Welch",
+    "state": "VT",
+    "party": "Democrat",
+    "score": 966,
+    "breakdown": {
+      "sponsoredBills": 216,
+      "cosponsoredBills": 519,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 1,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 178,
+        "nayVotes": 440,
+        "missedVotes": 50,
+        "totalVotes": 668,
+        "participationPct": 92.51,
+        "missedVotePct": 7.49
+      }
+    }
   },
   {
-    "sponsored": 0,
-    "cosponsored": 0,
-    "totalVotes": 0,
-    "missedVotes": 0,
-    "missedVotePct": 0,
-    "committees": [],
-    "score": 0,
-    "scoreNormalized": 0
+    "bioguideId": "W000779",
+    "name": "Ron Wyden",
+    "state": "OR",
+    "party": "Democrat",
+    "score": 660,
+    "breakdown": {
+      "sponsoredBills": 96,
+      "cosponsoredBills": 453,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 1,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 157,
+        "nayVotes": 494,
+        "missedVotes": 17,
+        "totalVotes": 668,
+        "participationPct": 97.46,
+        "missedVotePct": 2.54
+      }
+    }
+  },
+  {
+    "bioguideId": "Y000064",
+    "name": "Todd Young",
+    "state": "IN",
+    "party": "Republican",
+    "score": 287,
+    "breakdown": {
+      "sponsoredBills": 44,
+      "cosponsoredBills": 178,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 3,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 509,
+        "nayVotes": 153,
+        "missedVotes": 6,
+        "totalVotes": 668,
+        "participationPct": 99.1,
+        "missedVotePct": 0.9
+      }
+    }
+  },
+  {
+    "bioguideId": "S001194",
+    "name": "Brian Schatz",
+    "state": "HI",
+    "party": "Democrat",
+    "score": 501,
+    "breakdown": {
+      "sponsoredBills": 96,
+      "cosponsoredBills": 297,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 0,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 164,
+        "nayVotes": 497,
+        "missedVotes": 7,
+        "totalVotes": 668,
+        "participationPct": 98.95,
+        "missedVotePct": 1.05
+      }
+    }
+  },
+  {
+    "bioguideId": "C001095",
+    "name": "Tom Cotton",
+    "state": "AR",
+    "party": "Republican",
+    "score": 317,
+    "breakdown": {
+      "sponsoredBills": 78,
+      "cosponsoredBills": 143,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 2,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 502,
+        "nayVotes": 155,
+        "missedVotes": 11,
+        "totalVotes": 668,
+        "participationPct": 98.35,
+        "missedVotePct": 1.65
+      }
+    }
+  },
+  {
+    "bioguideId": "D000622",
+    "name": "Tammy Duckworth",
+    "state": "IL",
+    "party": "Democrat",
+    "score": 571,
+    "breakdown": {
+      "sponsoredBills": 75,
+      "cosponsoredBills": 401,
+      "becameLawBills": 1,
+      "becameLawCosponsoredBills": 1,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 166,
+        "nayVotes": 445,
+        "missedVotes": 57,
+        "totalVotes": 668,
+        "participationPct": 91.47,
+        "missedVotePct": 8.53
+      }
+    }
+  },
+  {
+    "bioguideId": "W000817",
+    "name": "Elizabeth Warren",
+    "state": "MA",
+    "party": "Democrat",
+    "score": 794,
+    "breakdown": {
+      "sponsoredBills": 192,
+      "cosponsoredBills": 398,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 0,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 151,
+        "nayVotes": 503,
+        "missedVotes": 14,
+        "totalVotes": 668,
+        "participationPct": 97.9,
+        "missedVotePct": 2.1
+      }
+    }
+  },
+  {
+    "bioguideId": "K000383",
+    "name": "Angus King",
+    "state": "ME",
+    "party": "Independent",
+    "score": 598,
+    "breakdown": {
+      "sponsoredBills": 119,
+      "cosponsoredBills": 339,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 3,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 269,
+        "nayVotes": 388,
+        "missedVotes": 11,
+        "totalVotes": 668,
+        "participationPct": 98.35,
+        "missedVotePct": 1.65
+      }
+    }
+  },
+  {
+    "bioguideId": "D000618",
+    "name": "Steve Daines",
+    "state": "MT",
+    "party": "Republican",
+    "score": 441,
+    "breakdown": {
+      "sponsoredBills": 76,
+      "cosponsoredBills": 256,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 7,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 500,
+        "nayVotes": 148,
+        "missedVotes": 20,
+        "totalVotes": 668,
+        "participationPct": 97.01,
+        "missedVotePct": 2.99
+      }
+    }
+  },
+  {
+    "bioguideId": "C001096",
+    "name": "Kevin Cramer",
+    "state": "ND",
+    "party": "Republican",
+    "score": 351,
+    "breakdown": {
+      "sponsoredBills": 24,
+      "cosponsoredBills": 279,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 4,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 491,
+        "nayVotes": 154,
+        "missedVotes": 23,
+        "totalVotes": 668,
+        "participationPct": 96.56,
+        "missedVotePct": 3.44
+      }
+    }
+  },
+  {
+    "bioguideId": "F000463",
+    "name": "Deb Fischer",
+    "state": "NE",
+    "party": "Republican",
+    "score": 225,
+    "breakdown": {
+      "sponsoredBills": 33,
+      "cosponsoredBills": 138,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 3,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 510,
+        "nayVotes": 154,
+        "missedVotes": 4,
+        "totalVotes": 668,
+        "participationPct": 99.4,
+        "missedVotePct": 0.6
+      }
+    }
+  },
+  {
+    "bioguideId": "M001190",
+    "name": "Markwayne Mullin",
+    "state": "OK",
+    "party": "Republican",
+    "score": 220,
+    "breakdown": {
+      "sponsoredBills": 26,
+      "cosponsoredBills": 147,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 3,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 473,
+        "nayVotes": 156,
+        "missedVotes": 39,
+        "totalVotes": 668,
+        "participationPct": 94.16,
+        "missedVotePct": 5.84
+      }
+    }
+  },
+  {
+    "bioguideId": "C001098",
+    "name": "Ted Cruz",
+    "state": "TX",
+    "party": "Republican",
+    "score": 567,
+    "breakdown": {
+      "sponsoredBills": 164,
+      "cosponsoredBills": 207,
+      "becameLawBills": 1,
+      "becameLawCosponsoredBills": 5,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 483,
+        "nayVotes": 142,
+        "missedVotes": 43,
+        "totalVotes": 668,
+        "participationPct": 93.56,
+        "missedVotePct": 6.44
+      }
+    }
+  },
+  {
+    "bioguideId": "K000384",
+    "name": "Timothy Kaine",
+    "state": "VA",
+    "party": "Democrat",
+    "score": 745,
+    "breakdown": {
+      "sponsoredBills": 169,
+      "cosponsoredBills": 395,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 0,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 241,
+        "nayVotes": 421,
+        "missedVotes": 6,
+        "totalVotes": 668,
+        "participationPct": 99.1,
+        "missedVotePct": 0.9
+      }
+    }
+  },
+  {
+    "bioguideId": "B001288",
+    "name": "Cory Booker",
+    "state": "NJ",
+    "party": "Democrat",
+    "score": 948,
+    "breakdown": {
+      "sponsoredBills": 195,
+      "cosponsoredBills": 540,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 2,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 171,
+        "nayVotes": 467,
+        "missedVotes": 30,
+        "totalVotes": 668,
+        "participationPct": 95.51,
+        "missedVotePct": 4.49
+      }
+    }
+  },
+  {
+    "bioguideId": "G000574",
+    "name": "Ruben Gallego",
+    "state": "AZ",
+    "party": "Democrat",
+    "score": 471,
+    "breakdown": {
+      "sponsoredBills": 72,
+      "cosponsoredBills": 309,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 4,
+      "committees": [
+        {
+          "committeeCode": "SSBK",
+          "committeeName": "Banking, Housing, and Urban Affairs",
+          "role": "Member",
+          "rank": 9,
+          "party": "minority"
+        },
+        {
+          "committeeCode": "SSEG",
+          "committeeName": "Energy (Joint)",
+          "role": "Member",
+          "rank": 9,
+          "party": "minority"
+        },
+        {
+          "committeeCode": "SSGA",
+          "committeeName": "Homeland Security and Governmental Affairs",
+          "role": "Member",
+          "rank": 6,
+          "party": "minority"
+        },
+        {
+          "committeeCode": "SSVA",
+          "committeeName": "Veterans' Affairs",
+          "role": "Member",
+          "rank": 8,
+          "party": "minority"
+        }
+      ],
+      "votes": {
+        "yeaVotes": 215,
+        "nayVotes": 358,
+        "missedVotes": 95,
+        "totalVotes": 668,
+        "participationPct": 85.78,
+        "missedVotePct": 14.22
+      }
+    }
+  },
+  {
+    "bioguideId": "S001198",
+    "name": "Dan Sullivan",
+    "state": "AK",
+    "party": "Republican",
+    "score": 403,
+    "breakdown": {
+      "sponsoredBills": 77,
+      "cosponsoredBills": 207,
+      "becameLawBills": 3,
+      "becameLawCosponsoredBills": 5,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 507,
+        "nayVotes": 141,
+        "missedVotes": 20,
+        "totalVotes": 668,
+        "participationPct": 97.01,
+        "missedVotePct": 2.99
+      }
+    }
+  },
+  {
+    "bioguideId": "E000295",
+    "name": "Joni Ernst",
+    "state": "IA",
+    "party": "Republican",
+    "score": 384,
+    "breakdown": {
+      "sponsoredBills": 95,
+      "cosponsoredBills": 170,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 4,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 503,
+        "nayVotes": 151,
+        "missedVotes": 14,
+        "totalVotes": 668,
+        "participationPct": 97.9,
+        "missedVotePct": 2.1
+      }
+    }
+  },
+  {
+    "bioguideId": "T000476",
+    "name": "Thom Tillis",
+    "state": "NC",
+    "party": "Republican",
+    "score": 430,
+    "breakdown": {
+      "sponsoredBills": 58,
+      "cosponsoredBills": 294,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 6,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 438,
+        "nayVotes": 153,
+        "missedVotes": 77,
+        "totalVotes": 668,
+        "participationPct": 88.47,
+        "missedVotePct": 11.53
+      }
+    }
+  },
+  {
+    "bioguideId": "R000605",
+    "name": "Mike Rounds",
+    "state": "SD",
+    "party": "Republican",
+    "score": 334,
+    "breakdown": {
+      "sponsoredBills": 61,
+      "cosponsoredBills": 191,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 3,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 505,
+        "nayVotes": 159,
+        "missedVotes": 4,
+        "totalVotes": 668,
+        "participationPct": 99.4,
+        "missedVotePct": 0.6
+      }
+    }
+  },
+  {
+    "bioguideId": "K000393",
+    "name": "John Kennedy",
+    "state": "LA",
+    "party": "Republican",
+    "score": 389,
+    "breakdown": {
+      "sponsoredBills": 109,
+      "cosponsoredBills": 138,
+      "becameLawBills": 3,
+      "becameLawCosponsoredBills": 2,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 507,
+        "nayVotes": 147,
+        "missedVotes": 14,
+        "totalVotes": 668,
+        "participationPct": 97.9,
+        "missedVotePct": 2.1
+      }
+    }
+  },
+  {
+    "bioguideId": "H001076",
+    "name": "Margaret Hassan",
+    "state": "NH",
+    "party": "Democrat",
+    "score": 412,
+    "breakdown": {
+      "sponsoredBills": 71,
+      "cosponsoredBills": 249,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 3,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 261,
+        "nayVotes": 399,
+        "missedVotes": 8,
+        "totalVotes": 668,
+        "participationPct": 98.8,
+        "missedVotePct": 1.2
+      }
+    }
+  },
+  {
+    "bioguideId": "C001113",
+    "name": "Catherine Cortez Masto",
+    "state": "NV",
+    "party": "Democrat",
+    "score": 666,
+    "breakdown": {
+      "sponsoredBills": 159,
+      "cosponsoredBills": 324,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 4,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 223,
+        "nayVotes": 428,
+        "missedVotes": 17,
+        "totalVotes": 668,
+        "participationPct": 97.46,
+        "missedVotePct": 2.54
+      }
+    }
+  },
+  {
+    "bioguideId": "B001303",
+    "name": "Lisa Blunt Rochester",
+    "state": "DE",
+    "party": "Democrat",
+    "score": 391,
+    "breakdown": {
+      "sponsoredBills": 76,
+      "cosponsoredBills": 220,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 1,
+      "committees": [
+        {
+          "committeeCode": "SSBK",
+          "committeeName": "Banking, Housing, and Urban Affairs",
+          "role": "Member",
+          "rank": 10,
+          "party": "minority"
+        },
+        {
+          "committeeCode": "SSCM",
+          "committeeName": "Energy and Natural Resources",
+          "role": "Member",
+          "rank": 13,
+          "party": "minority"
+        },
+        {
+          "committeeCode": "SSEV",
+          "committeeName": "Environment and Public Works",
+          "role": "Member",
+          "rank": 8,
+          "party": "minority"
+        },
+        {
+          "committeeCode": "SSHR",
+          "committeeName": "Health, Education, Labor, and Pensions",
+          "role": "Member",
+          "rank": 10,
+          "party": "minority"
+        }
+      ],
+      "votes": {
+        "yeaVotes": 166,
+        "nayVotes": 499,
+        "missedVotes": 3,
+        "totalVotes": 668,
+        "participationPct": 99.55,
+        "missedVotePct": 0.45
+      }
+    }
+  },
+  {
+    "bioguideId": "B001299",
+    "name": "Jim Banks",
+    "state": "IN",
+    "party": "Republican",
+    "score": 356,
+    "breakdown": {
+      "sponsoredBills": 78,
+      "cosponsoredBills": 176,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 4,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 509,
+        "nayVotes": 150,
+        "missedVotes": 9,
+        "totalVotes": 668,
+        "participationPct": 98.65,
+        "missedVotePct": 1.35
+      }
+    }
+  },
+  {
+    "bioguideId": "M001198",
+    "name": "Roger Marshall",
+    "state": "KS",
+    "party": "Republican",
+    "score": 386,
+    "breakdown": {
+      "sponsoredBills": 71,
+      "cosponsoredBills": 215,
+      "becameLawBills": 1,
+      "becameLawCosponsoredBills": 3,
+      "committees": [
+        {
+          "committeeCode": "SSAF",
+          "committeeName": "Agriculture, Nutrition, and Forestry",
+          "role": "Member",
+          "rank": 6,
+          "party": "majority"
+        },
+        {
+          "committeeCode": "SSFI",
+          "committeeName": "Finance",
+          "role": "Member",
+          "rank": 14,
+          "party": "majority"
+        },
+        {
+          "committeeCode": "SSHR",
+          "committeeName": "Health, Education, Labor, and Pensions",
+          "role": "Member",
+          "rank": 6,
+          "party": "majority"
+        }
+      ],
+      "votes": {
+        "yeaVotes": 513,
+        "nayVotes": 149,
+        "missedVotes": 6,
+        "totalVotes": 668,
+        "participationPct": 99.1,
+        "missedVotePct": 0.9
+      }
+    }
+  },
+  {
+    "bioguideId": "B001305",
+    "name": "Ted Budd",
+    "state": "NC",
+    "party": "Republican",
+    "score": 406,
+    "breakdown": {
+      "sponsoredBills": 42,
+      "cosponsoredBills": 298,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 4,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 499,
+        "nayVotes": 146,
+        "missedVotes": 23,
+        "totalVotes": 668,
+        "participationPct": 96.56,
+        "missedVotePct": 3.44
+      }
+    }
+  },
+  {
+    "bioguideId": "R000608",
+    "name": "Jacky Rosen",
+    "state": "NV",
+    "party": "Democrat",
+    "score": 690,
+    "breakdown": {
+      "sponsoredBills": 162,
+      "cosponsoredBills": 348,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 2,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 238,
+        "nayVotes": 419,
+        "missedVotes": 11,
+        "totalVotes": 668,
+        "participationPct": 98.35,
+        "missedVotePct": 1.65
+      }
+    }
+  },
+  {
+    "bioguideId": "C001114",
+    "name": "John Curtis",
+    "state": "UT",
+    "party": "Republican",
+    "score": 276,
+    "breakdown": {
+      "sponsoredBills": 46,
+      "cosponsoredBills": 155,
+      "becameLawBills": 1,
+      "becameLawCosponsoredBills": 3,
+      "committees": [
+        {
+          "committeeCode": "SSCM",
+          "committeeName": "Energy and Natural Resources",
+          "role": "Member",
+          "rank": 11,
+          "party": "majority"
+        },
+        {
+          "committeeCode": "SSEV",
+          "committeeName": "Environment and Public Works",
+          "role": "Member",
+          "rank": 4,
+          "party": "majority"
+        },
+        {
+          "committeeCode": "SSFR",
+          "committeeName": "Foreign Relations",
+          "role": "Member",
+          "rank": 11,
+          "party": "majority"
+        }
+      ],
+      "votes": {
+        "yeaVotes": 508,
+        "nayVotes": 149,
+        "missedVotes": 11,
+        "totalVotes": 668,
+        "participationPct": 98.35,
+        "missedVotePct": 1.65
+      }
+    }
+  },
+  {
+    "bioguideId": "S001203",
+    "name": "Tina Smith",
+    "state": "MN",
+    "party": "Democrat",
+    "score": 453,
+    "breakdown": {
+      "sponsoredBills": 45,
+      "cosponsoredBills": 351,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 0,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 147,
+        "nayVotes": 489,
+        "missedVotes": 32,
+        "totalVotes": 668,
+        "participationPct": 95.21,
+        "missedVotePct": 4.79
+      }
+    }
+  },
+  {
+    "bioguideId": "H001079",
+    "name": "Cindy Hyde-Smith",
+    "state": "MS",
+    "party": "Republican",
+    "score": 330,
+    "breakdown": {
+      "sponsoredBills": 33,
+      "cosponsoredBills": 240,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 4,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 504,
+        "nayVotes": 153,
+        "missedVotes": 11,
+        "totalVotes": 668,
+        "participationPct": 98.35,
+        "missedVotePct": 1.65
+      }
+    }
+  },
+  {
+    "bioguideId": "S001208",
+    "name": "Elissa Slotkin",
+    "state": "MI",
+    "party": "Democrat",
+    "score": 284,
+    "breakdown": {
+      "sponsoredBills": 37,
+      "cosponsoredBills": 192,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 2,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 222,
+        "nayVotes": 424,
+        "missedVotes": 22,
+        "totalVotes": 668,
+        "participationPct": 96.71,
+        "missedVotePct": 3.29
+      }
+    }
+  },
+  {
+    "bioguideId": "K000394",
+    "name": "Andy Kim",
+    "state": "NJ",
+    "party": "Democrat",
+    "score": 481,
+    "breakdown": {
+      "sponsoredBills": 70,
+      "cosponsoredBills": 329,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 0,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 190,
+        "nayVotes": 475,
+        "missedVotes": 3,
+        "totalVotes": 668,
+        "participationPct": 99.55,
+        "missedVotePct": 0.45
+      }
+    }
+  },
+  {
+    "bioguideId": "S001217",
+    "name": "Rick Scott",
+    "state": "FL",
+    "party": "Republican",
+    "score": 610,
+    "breakdown": {
+      "sponsoredBills": 140,
+      "cosponsoredBills": 309,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 3,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 518,
+        "nayVotes": 148,
+        "missedVotes": 2,
+        "totalVotes": 668,
+        "participationPct": 99.7,
+        "missedVotePct": 0.3
+      }
+    }
+  },
+  {
+    "bioguideId": "H001089",
+    "name": "Joshua Hawley",
+    "state": "MO",
+    "party": "Republican",
+    "score": 291,
+    "breakdown": {
+      "sponsoredBills": 72,
+      "cosponsoredBills": 126,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 3,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 491,
+        "nayVotes": 146,
+        "missedVotes": 31,
+        "totalVotes": 668,
+        "participationPct": 95.36,
+        "missedVotePct": 4.64
+      }
+    }
+  },
+  {
+    "bioguideId": "K000377",
+    "name": "Mark Kelly",
+    "state": "AZ",
+    "party": "Democrat",
+    "score": 553,
+    "breakdown": {
+      "sponsoredBills": 100,
+      "cosponsoredBills": 324,
+      "becameLawBills": 1,
+      "becameLawCosponsoredBills": 4,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 230,
+        "nayVotes": 398,
+        "missedVotes": 40,
+        "totalVotes": 668,
+        "participationPct": 94.01,
+        "missedVotePct": 5.99
+      }
+    }
+  },
+  {
+    "bioguideId": "L000571",
+    "name": "Cynthia Lummis",
+    "state": "WY",
+    "party": "Republican",
+    "score": 390,
+    "breakdown": {
+      "sponsoredBills": 52,
+      "cosponsoredBills": 254,
+      "becameLawBills": 1,
+      "becameLawCosponsoredBills": 5,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 495,
+        "nayVotes": 151,
+        "missedVotes": 22,
+        "totalVotes": 668,
+        "participationPct": 96.71,
+        "missedVotePct": 3.29
+      }
+    }
+  },
+  {
+    "bioguideId": "T000278",
+    "name": "Tommy Tuberville",
+    "state": "AL",
+    "party": "Republican",
+    "score": 313,
+    "breakdown": {
+      "sponsoredBills": 57,
+      "cosponsoredBills": 178,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 3,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 489,
+        "nayVotes": 150,
+        "missedVotes": 29,
+        "totalVotes": 668,
+        "participationPct": 95.66,
+        "missedVotePct": 4.34
+      }
+    }
+  },
+  {
+    "bioguideId": "H000273",
+    "name": "John Hickenlooper",
+    "state": "CO",
+    "party": "Democrat",
+    "score": 511,
+    "breakdown": {
+      "sponsoredBills": 91,
+      "cosponsoredBills": 305,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 3,
+      "committees": [
+        {
+          "committeeCode": "SSCM",
+          "committeeName": "Energy and Natural Resources",
+          "role": "Member",
+          "rank": 10,
+          "party": "minority"
+        },
+        {
+          "committeeCode": "SSEG",
+          "committeeName": "Energy (Joint)",
+          "role": "Member",
+          "rank": 7,
+          "party": "minority"
+        },
+        {
+          "committeeCode": "SSHR",
+          "committeeName": "Health, Education, Labor, and Pensions",
+          "role": "Member",
+          "rank": 7,
+          "party": "minority"
+        }
+      ],
+      "votes": {
+        "yeaVotes": 204,
+        "nayVotes": 455,
+        "missedVotes": 9,
+        "totalVotes": 668,
+        "participationPct": 98.65,
+        "missedVotePct": 1.35
+      }
+    }
+  },
+  {
+    "bioguideId": "H000601",
+    "name": "Bill Hagerty",
+    "state": "TN",
+    "party": "Republican",
+    "score": 237,
+    "breakdown": {
+      "sponsoredBills": 31,
+      "cosponsoredBills": 146,
+      "becameLawBills": 1,
+      "becameLawCosponsoredBills": 4,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 502,
+        "nayVotes": 147,
+        "missedVotes": 19,
+        "totalVotes": 668,
+        "participationPct": 97.16,
+        "missedVotePct": 2.84
+      }
+    }
+  },
+  {
+    "bioguideId": "P000145",
+    "name": "Alejandro Padilla",
+    "state": "CA",
+    "party": "Democrat",
+    "score": 947,
+    "breakdown": {
+      "sponsoredBills": 207,
+      "cosponsoredBills": 515,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 2,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 158,
+        "nayVotes": 481,
+        "missedVotes": 29,
+        "totalVotes": 668,
+        "participationPct": 95.66,
+        "missedVotePct": 4.34
+      }
+    }
+  },
+  {
+    "bioguideId": "O000174",
+    "name": "Jon Ossoff",
+    "state": "GA",
+    "party": "Democrat",
+    "score": 246,
+    "breakdown": {
+      "sponsoredBills": 24,
+      "cosponsoredBills": 186,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 0,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 188,
+        "nayVotes": 430,
+        "missedVotes": 50,
+        "totalVotes": 668,
+        "participationPct": 92.51,
+        "missedVotePct": 7.49
+      }
+    }
+  },
+  {
+    "bioguideId": "W000790",
+    "name": "Raphael Warnock",
+    "state": "GA",
+    "party": "Democrat",
+    "score": 484,
+    "breakdown": {
+      "sponsoredBills": 66,
+      "cosponsoredBills": 331,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 3,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 208,
+        "nayVotes": 442,
+        "missedVotes": 18,
+        "totalVotes": 668,
+        "participationPct": 97.31,
+        "missedVotePct": 2.69
+      }
+    }
+  },
+  {
+    "bioguideId": "B001319",
+    "name": "Katie Britt",
+    "state": "AL",
+    "party": "Republican",
+    "score": 318,
+    "breakdown": {
+      "sponsoredBills": 26,
+      "cosponsoredBills": 243,
+      "becameLawBills": 1,
+      "becameLawCosponsoredBills": 2,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 503,
+        "nayVotes": 150,
+        "missedVotes": 15,
+        "totalVotes": 668,
+        "participationPct": 97.75,
+        "missedVotePct": 2.25
+      }
+    }
+  },
+  {
+    "bioguideId": "S001227",
+    "name": "Eric Schmitt",
+    "state": "MO",
+    "party": "Republican",
+    "score": 254,
+    "breakdown": {
+      "sponsoredBills": 51,
+      "cosponsoredBills": 134,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 2,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 512,
+        "nayVotes": 147,
+        "missedVotes": 9,
+        "totalVotes": 668,
+        "participationPct": 98.65,
+        "missedVotePct": 1.35
+      }
+    }
+  },
+  {
+    "bioguideId": "F000479",
+    "name": "John Fetterman",
+    "state": "PA",
+    "party": "Democrat",
+    "score": 334,
+    "breakdown": {
+      "sponsoredBills": 24,
+      "cosponsoredBills": 268,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 2,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 271,
+        "nayVotes": 352,
+        "missedVotes": 45,
+        "totalVotes": 668,
+        "participationPct": 93.26,
+        "missedVotePct": 6.74
+      }
+    }
+  },
+  {
+    "bioguideId": "R000618",
+    "name": "Pete Ricketts",
+    "state": "NE",
+    "party": "Republican",
+    "score": 414,
+    "breakdown": {
+      "sponsoredBills": 58,
+      "cosponsoredBills": 266,
+      "becameLawBills": 1,
+      "becameLawCosponsoredBills": 5,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 510,
+        "nayVotes": 156,
+        "missedVotes": 2,
+        "totalVotes": 668,
+        "participationPct": 99.7,
+        "missedVotePct": 0.3
+      }
+    }
+  },
+  {
+    "bioguideId": "A000382",
+    "name": "Angela Alsobrooks",
+    "state": "MD",
+    "party": "Democrat",
+    "score": 410,
+    "breakdown": {
+      "sponsoredBills": 44,
+      "cosponsoredBills": 310,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 0,
+      "committees": [],
+      "votes": {
+        "yeaVotes": 183,
+        "nayVotes": 476,
+        "missedVotes": 9,
+        "totalVotes": 668,
+        "participationPct": 98.65,
+        "missedVotePct": 1.35
+      }
+    }
+  },
+  {
+    "bioguideId": "S001232",
+    "name": "Tim Sheehy",
+    "state": "MT",
+    "party": "Republican",
+    "score": 373,
+    "breakdown": {
+      "sponsoredBills": 53,
+      "cosponsoredBills": 238,
+      "becameLawBills": 1,
+      "becameLawCosponsoredBills": 3,
+      "committees": [
+        {
+          "committeeCode": "SSAS",
+          "committeeName": "Armed Services",
+          "role": "Member",
+          "rank": 14,
+          "party": "majority"
+        },
+        {
+          "committeeCode": "SSCM",
+          "committeeName": "Energy and Natural Resources",
+          "role": "Member",
+          "rank": 13,
+          "party": "majority"
+        },
+        {
+          "committeeCode": "SSVA",
+          "committeeName": "Veterans' Affairs",
+          "role": "Member",
+          "rank": 10,
+          "party": "majority"
+        }
+      ],
+      "votes": {
+        "yeaVotes": 498,
+        "nayVotes": 151,
+        "missedVotes": 19,
+        "totalVotes": 668,
+        "participationPct": 97.16,
+        "missedVotePct": 2.84
+      }
+    }
+  },
+  {
+    "bioguideId": "M001242",
+    "name": "Bernie Moreno",
+    "state": "OH",
+    "party": "Republican",
+    "score": 224,
+    "breakdown": {
+      "sponsoredBills": 25,
+      "cosponsoredBills": 147,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 4,
+      "committees": [
+        {
+          "committeeCode": "SSBK",
+          "committeeName": "Banking, Housing, and Urban Affairs",
+          "role": "Member",
+          "rank": 12,
+          "party": "majority"
+        },
+        {
+          "committeeCode": "SSCM",
+          "committeeName": "Energy and Natural Resources",
+          "role": "Member",
+          "rank": 12,
+          "party": "majority"
+        },
+        {
+          "committeeCode": "SSGA",
+          "committeeName": "Homeland Security and Governmental Affairs",
+          "role": "Member",
+          "rank": 6,
+          "party": "majority"
+        }
+      ],
+      "votes": {
+        "yeaVotes": 519,
+        "nayVotes": 149,
+        "missedVotes": 0,
+        "totalVotes": 668,
+        "participationPct": 100,
+        "missedVotePct": 0
+      }
+    }
+  },
+  {
+    "bioguideId": "M001243",
+    "name": "Dave McCormick",
+    "state": "PA",
+    "party": "Republican",
+    "score": 251,
+    "breakdown": {
+      "sponsoredBills": 36,
+      "cosponsoredBills": 150,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 3,
+      "committees": [
+        {
+          "committeeCode": "SSBK",
+          "committeeName": "Banking, Housing, and Urban Affairs",
+          "role": "Member",
+          "rank": 13,
+          "party": "majority"
+        },
+        {
+          "committeeCode": "SSEG",
+          "committeeName": "Energy (Joint)",
+          "role": "Member",
+          "rank": 6,
+          "party": "majority"
+        },
+        {
+          "committeeCode": "SSFR",
+          "committeeName": "Foreign Relations",
+          "role": "Member",
+          "rank": 3,
+          "party": "majority"
+        },
+        {
+          "committeeCode": "JSEC",
+          "committeeName": "Taxation",
+          "role": "Member",
+          "rank": 4,
+          "party": "majority"
+        },
+        {
+          "committeeCode": "SPAG",
+          "committeeName": "Agriculture (Joint)",
+          "role": "Ranking Member",
+          "rank": 2,
+          "party": "majority"
+        }
+      ],
+      "votes": {
+        "yeaVotes": 496,
+        "nayVotes": 152,
+        "missedVotes": 20,
+        "totalVotes": 668,
+        "participationPct": 97.01,
+        "missedVotePct": 2.99
+      }
+    }
+  },
+  {
+    "bioguideId": "J000312",
+    "name": "Jim Justice",
+    "state": "WV",
+    "party": "Republican",
+    "score": 236,
+    "breakdown": {
+      "sponsoredBills": 8,
+      "cosponsoredBills": 208,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 3,
+      "committees": [
+        {
+          "committeeCode": "SSAF",
+          "committeeName": "Agriculture, Nutrition, and Forestry",
+          "role": "Member",
+          "rank": 8,
+          "party": "majority"
+        },
+        {
+          "committeeCode": "SSEG",
+          "committeeName": "Energy (Joint)",
+          "role": "Member",
+          "rank": 7,
+          "party": "majority"
+        },
+        {
+          "committeeCode": "SPAG",
+          "committeeName": "Agriculture (Joint)",
+          "role": "Member",
+          "rank": 3,
+          "party": "majority"
+        }
+      ],
+      "votes": {
+        "yeaVotes": 0,
+        "nayVotes": 0,
+        "missedVotes": 0,
+        "totalVotes": 0,
+        "participationPct": 0,
+        "missedVotePct": 0
+      }
+    }
+  },
+  {
+    "bioguideId": "H001104",
+    "name": "Jon Husted",
+    "state": "OH",
+    "party": "Republican",
+    "score": 170,
+    "breakdown": {
+      "sponsoredBills": 33,
+      "cosponsoredBills": 98,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 1,
+      "committees": [
+        {
+          "committeeCode": "SSEV",
+          "committeeName": "Environment and Public Works",
+          "role": "Member",
+          "rank": 10,
+          "party": "majority"
+        },
+        {
+          "committeeCode": "SSHR",
+          "committeeName": "Health, Education, Labor, and Pensions",
+          "role": "Member",
+          "rank": 11,
+          "party": "majority"
+        },
+        {
+          "committeeCode": "SPAG",
+          "committeeName": "Agriculture (Joint)",
+          "role": "Member",
+          "rank": 7,
+          "party": "majority"
+        }
+      ],
+      "votes": {
+        "yeaVotes": 0,
+        "nayVotes": 0,
+        "missedVotes": 0,
+        "totalVotes": 0,
+        "participationPct": 0,
+        "missedVotePct": 0
+      }
+    }
+  },
+  {
+    "bioguideId": "M001244",
+    "name": "Ashley Moody",
+    "state": "FL",
+    "party": "Republican",
+    "score": 198,
+    "breakdown": {
+      "sponsoredBills": 27,
+      "cosponsoredBills": 136,
+      "becameLawBills": 0,
+      "becameLawCosponsoredBills": 1,
+      "committees": [
+        {
+          "committeeCode": "SSHR",
+          "committeeName": "Health, Education, Labor, and Pensions",
+          "role": "Member",
+          "rank": 12,
+          "party": "majority"
+        },
+        {
+          "committeeCode": "SSGA",
+          "committeeName": "Homeland Security and Governmental Affairs",
+          "role": "Member",
+          "rank": 8,
+          "party": "majority"
+        },
+        {
+          "committeeCode": "SSJU",
+          "committeeName": "Judiciary",
+          "role": "Member",
+          "rank": 12,
+          "party": "majority"
+        },
+        {
+          "committeeCode": "JSEC",
+          "committeeName": "Taxation",
+          "role": "Member",
+          "rank": 6,
+          "party": "majority"
+        },
+        {
+          "committeeCode": "SPAG",
+          "committeeName": "Agriculture (Joint)",
+          "role": "Member",
+          "rank": 6,
+          "party": "majority"
+        }
+      ],
+      "votes": {
+        "yeaVotes": 0,
+        "nayVotes": 0,
+        "missedVotes": 0,
+        "totalVotes": 0,
+        "participationPct": 0,
+        "missedVotePct": 0
+      }
+    }
   }
 ]
