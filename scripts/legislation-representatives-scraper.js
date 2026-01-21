@@ -2,7 +2,7 @@
 //
 // Purpose: Pull sponsored/cosponsored bills and became-law counts *only for the 119th Congress* (House)
 // Source: Congress.gov API v3 — uses bioguideId directly; filters response to congress=119
-// Output: public/legislation-representatives.json
+// Output: public/legislation-representatives.json (separate file for modularity)
 
 const fs = require('fs');
 const path = require('path');
@@ -123,7 +123,6 @@ async function fetchBills(bioguideId) {
     console.log(`\nProcessing ${name} (${bioguideId}, ${state}-${district})...`);
 
     try {
-      // Optional: member detail for logging/verification
       const memberUrl = `${BASE_URL}/member/${bioguideId}`;
       const memberData = await getWithRetry(memberUrl, {});
       const snippet = JSON.stringify(memberData.member || memberData, null, 2).slice(0, 400);
