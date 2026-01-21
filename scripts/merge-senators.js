@@ -1,54 +1,69 @@
 // scripts/merge-senators.js
-// Purpose: Merge bootstrap, legislation, committees, votes into senators-rankings.json
-// Amendment fields removed
-
 const fs = require('fs');
 const path = require('path');
 
-const bootstrapPath = path.join(__dirname, '../public/senators-rankings.json');
-const legislationPath = path.join(__dirname, '../public/legislation-senators.json');
-const committeesPath = path.join(__dirname, '../public/committees-senators.json');
-const votesPath = path.join(__dirname, '../public/votes-senators.json');
+const rankingsPath = path.join(__dirname, '../public/senators-rankings.json');
+const legisPath = path.join(__dirname, '../public/legislation-senators.json');
+const committeesPath = path.join(__dirname, '../public/senators-committees.json');  // ← your actual file
 
-const senators = JSON.parse(fs.readFileSync(bootstrapPath, 'utf-8'));
-const legislation = JSON.parse(fs.readFileSync(legislationPath, 'utf-8'));
-const committees = JSON.parse(fs.readFileSync(committeesPath, 'utf-8'));
-const votes = JSON.parse(fs.readFileSync(votesPath, 'utf-8'));
+console.log('Starting merge-senators.js');
 
-function findLegislation(bioguideId) {
-  return legislation.find(l => l.bioguideId === bioguideId);
-}
-function findCommittees(bioguideId) {
-  return committees.find(c => c.bioguideId === bioguideId);
-}
-function findVotes(bioguideId) {
-  return votes.find(v => v.bioguideId === bioguideId);
+let rankings;
+try {
+  rankings = JSON.parse(fs.readFileSync(rankingsPath, 'utf-8'));
+  console.log(`Loaded ${rankings.length} senators from rankings file`);
+} catch (err) {
+  console.error('Failed to read senators-rankings.json:', err.message);
+  process.exit(1);
 }
 
-for (const sen of senators) {
-  const leg = findLegislation(sen.bioguideId);
-  if (leg) {
-    sen.sponsoredBills = leg.sponsoredBills;
-    sen.cosponsoredBills = leg.cosponsoredBills;
-    sen.becameLawBills = leg.becameLawBills;
-    sen.becameLawCosponsoredBills = leg.becameLawCosponsoredBills;
-  }
+let legis;
+try {
+  legis = JSON.parse(fs.readFileSync(legisPath, 'utf-8'));
+  console.log(`Loaded ${legis.length} legislation records`);
+} catch (err) {
+  console.error('Failed to read legislation-senators.json:', err.message);
+  process.exit(1);
+}
 
-  const com = findCommittees(sen.bioguideId);
-  if (com) {
-    sen.committees = com.committees;
-  }
-
-  const v = findVotes(sen.bioguideId);
-  if (v) {
-    sen.yeaVotes = v.yeaVotes;
-    sen.nayVotes = v.nayVotes;
-    sen.missedVotes = v.missedVotes;
-    sen.totalVotes = v.totalVotes;
-    sen.participationPct = v.participationPct;
-    sen.missedVotePct = v.missedVotePct;
+// Merge legislation data
+const legisMap = new Map(legis.map(m => [m.bioguideId, m]));
+for (const sen of rankings) {
+  const legData = legisMap.get(sen.bioguideId);
+  if (legData) {
+    Object.assign(sen, {
+      sponsoredBills: legData.sponsoredBills || 0,
+      cosponsoredBills: legData.cosponsoredBills || 0,
+      becameLawBills: legData.becameLawBills || 0,
+      becameLawCosponsoredBills: legData.becameLawCosponsoredBills || 0,
+      lastUpdated: legData.lastUpdated || new Date().toISOString()
+    });
+  } else {
+    console.warn(`No legislation data for ${sen.bioguideId} (${sen.name})`);
   }
 }
 
-fs.writeFileSync(bootstrapPath, JSON.stringify(senators, null, 2));
-console.log(`Merge complete: ${senators.length} senators updated`);
+// Committee merge — only if file exists
+if (fs.existsSync(committeesPath)) {
+  try {
+    const committees = JSON.parse(fs.readFileSync(committeesPath, 'utf-8'));
+    console.log(`Loaded committees from ${committeesPath}`);
+    // Assuming structure is array of { bioguideId, committees: [...] }
+    const commMap = new Map(committees.map(c => [c.bioguideId, c]));
+    for (const sen of rankings) {
+      const commData = commMap.get(sen.bioguideId);
+      if (commData) {
+        sen.committees = commData.committees || [];
+      }
+    }
+    console.log('Merged committee data successfully');
+  } catch (err) {
+    console.error('Failed to parse/load senators-committees.json:', err.message);
+    // Continue anyway — don't crash workflow
+  }
+} else {
+  console.warn('senators-committees.json not found — skipping committee merge');
+}
+
+fs.writeFileSync(rankingsPath, JSON.stringify(rankings, null, 2));
+console.log(`Finished merge: ${rankings.length} senators updated in senators-rankings.json`);
