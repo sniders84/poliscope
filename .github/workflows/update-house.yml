@@ -1,3 +1,5 @@
+# .github/workflows/update-house.yml
+
 name: Update House Data
 
 on:
@@ -33,16 +35,15 @@ jobs:
       - name: Run committee reps scraper
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
-        run: node scripts/committee-reps-scraper.js   # ← fixed filename
+        run: node scripts/committee-reps-scraper.js
 
-      # Optional: add any other steps you have (e.g. merge, scores, etc.)
-      # - name: Merge representatives data
-      #   run: node scripts/merge-representatives.js
+      - name: Merge legislation into rankings
+        run: node scripts/merge-representatives.js
 
       - name: Commit updated files
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: Update House legislation and committee data
+          commit_message: Update House legislation and rankings data
           file_pattern: public/*.json
           skip_dirty_check: false
           skip_fetch: true
