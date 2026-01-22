@@ -11,32 +11,43 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+
       - name: Install dependencies
-        run: npm install # use install instead of ci to avoid lockfile mismatch
+        run: npm install
+
       - name: Bootstrap senators
         run: node scripts/bootstrap-senators.js
+
       - name: Scrape legislation (119th Congress)
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: node scripts/legislation-scraper.js
+
       - name: Scrape committees
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
-        run: node scripts/committee-scraper.js
+        run: node scripts/committee-senators-scraper.js
+
       - name: Scrape votes
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: node scripts/votes-scraper.js
+
       - name: Merge senator data
         run: node scripts/merge-senators.js
+
+      - name: Scrape misconduct (Senate)
+        run: node scripts/misconduct-scraper.js senate
+
       - name: Generate scores
         run: node scripts/senators-scores.js
 
-      # NEW: Pull and rebase before commit (prevents conflict if House pushed first)
+      # Pull and rebase before commit (prevents conflict if House pushed first)
       - name: Pull and rebase before commit
         run: |
           git config --global user.name "github-actions[bot]"
