@@ -352,7 +352,34 @@
       </div>
       <div id="officials-container" class="grid"></div>
     
-<!-- Rankings section -->
+<!-- Ratings & Rankings toggle (must come before sections) -->
+<div id="rr-toggle" class="rr-toggle">
+  <button id="btn-ratings" class="rr-tab rr-tab-active" aria-controls="ratings-section">Ratings</button>
+  <button id="btn-rankings" class="rr-tab" aria-controls="rankings-section">Rankings</button>
+</div>
+
+<!-- Ratings section (restored so toggle works) -->
+<div id="ratings-section" class="rr-section rr-section-active" aria-hidden="false">
+  <div id="ratings-filters" class="filters-bar">
+    <input type="text" id="searchInput" placeholder="Search officials..." />
+    <select id="officeFilter">
+      <option value="">All Offices</option>
+      <option value="president">President</option>
+      <option value="vice president">Vice President</option>
+      <option value="governor">Governor</option>
+      <option value="lieutenant governor">Lt. Governor</option>
+      <option value="senator">Senator</option>
+      <option value="u.s. representative">House Rep</option>
+    </select>
+    <!-- Add your state/party filters back here if they exist -->
+  </div>
+  <div id="ratings-cards" class="card-section">
+    <!-- Your ratings cards will load here via script.js -->
+    <p>Loading ratings cards...</p> <!-- Placeholder until script runs -->
+  </div>
+</div>
+
+<!-- Rankings section (fixed, no amendments in filter) -->
 <div id="rankings-section" class="rr-section" aria-hidden="true">
   <div class="filters-row">
     <select id="rankingsOfficeFilter" aria-label="Rankings office filter">
@@ -391,15 +418,13 @@
   </div>
 </div>
 
-<!-- Scorecard modal (updated with photo/header area) -->
+<!-- Scorecard modal (with photo/header area) -->
 <div id="scorecardModal" class="scorecard-modal" aria-hidden="true">
   <div class="scorecard-modal-content" role="dialog" aria-modal="true" aria-labelledby="scorecardName">
     <button id="scorecardClose" class="scorecard-modal-close" aria-label="Close scorecard">&times;</button>
     
-    <!-- New header area for photo + name/state/party/district -->
-    <div id="scorecardHeader" style="text-align: center; margin-bottom: 20px;">
-      <!-- Photo and details will be inserted here by script.js -->
-    </div>
+    <!-- Header for photo + state/party/district -->
+    <div id="scorecardHeader" style="text-align: center; margin-bottom: 20px;"></div>
     
     <h2 id="scorecardName"></h2>
     <table id="scorecardBreakdown" class="scorecard-table"></table>
@@ -447,7 +472,6 @@
     </div>
   </div>
 </div>
-</section>
     
   </section>
 <section id="learning-resources" class="tab-content" style="display: none;">
