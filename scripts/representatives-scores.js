@@ -1,13 +1,20 @@
 // scripts/representatives-scores.js
-// Purpose: Compute scores for representatives based on votes + bills only (no amendments)
-
+// Purpose: Compute scores and add vote stats to representatives-rankings.json (overwrites it)
 const fs = require('fs');
 const path = require('path');
 
 const rankingsPath = path.join(__dirname, '../public/representatives-rankings.json');
-const outputPath = path.join(__dirname, '../public/representatives-scores.json');
 
-const reps = JSON.parse(fs.readFileSync(rankingsPath, 'utf-8'));
+console.log('Starting representatives-scores.js');
+
+let reps;
+try {
+  reps = JSON.parse(fs.readFileSync(rankingsPath, 'utf-8'));
+  console.log(`Loaded ${reps.length} representatives`);
+} catch (err) {
+  console.error('Failed to read representatives-rankings.json:', err.message);
+  process.exit(1);
+}
 
 const WEIGHTS = {
   bills: {
@@ -17,8 +24,8 @@ const WEIGHTS = {
     becameLawCosponsoredBills: 3
   },
   votes: {
-    participationBonus: 2, // per 100 votes cast
-    penaltyMissedPct: -10  // subtract if missed > 10%
+    participationBonus: 2,      // per 100 votes cast
+    penaltyMissedPct: -10       // subtract if missed > 10%
   },
   committees: {
     Chair: 5,
@@ -27,7 +34,7 @@ const WEIGHTS = {
   }
 };
 
-const scores = reps.map((r) => {
+reps = reps.map(r => {
   let score = 0;
 
   // Legislation (bills only)
@@ -42,7 +49,7 @@ const scores = reps.map((r) => {
     else score += WEIGHTS.committees.Member;
   }
 
-  // Votes
+  // Votes (placeholders if missing)
   const totalVotes = r.totalVotes || 0;
   const missedPct = r.missedVotePct || 0;
   if (totalVotes > 0) {
@@ -52,30 +59,20 @@ const scores = reps.map((r) => {
     score += WEIGHTS.votes.penaltyMissedPct;
   }
 
+  // Add vote stats if missing
+  if (!r.yeaVotes) r.yeaVotes = 0;
+  if (!r.nayVotes) r.nayVotes = 0;
+  if (!r.missedVotes) r.missedVotes = 0;
+  if (!r.totalVotes) r.totalVotes = 0;
+  if (!r.participationPct) r.participationPct = totalVotes > 0 ? (1 - missedPct / 100) * 100 : 100;
+  if (!r.missedVotePct) r.missedVotePct = missedPct;
+
   return {
-    bioguideId: r.bioguideId,
-    name: r.name,
-    state: r.state,
-    district: r.district,
-    party: r.party,
-    score,
-    breakdown: {
-      sponsoredBills: r.sponsoredBills,
-      cosponsoredBills: r.cosponsoredBills,
-      becameLawBills: r.becameLawBills,
-      becameLawCosponsoredBills: r.becameLawCosponsoredBills,
-      committees: r.committees,
-      votes: {
-        yeaVotes: r.yeaVotes,
-        nayVotes: r.nayVotes,
-        missedVotes: r.missedVotes,
-        totalVotes: r.totalVotes,
-        participationPct: r.participationPct,
-        missedVotePct: r.missedVotePct
-      }
-    }
+    ...r,
+    powerScore: score,
+    lastUpdated: new Date().toISOString()
   };
 });
 
-fs.writeFileSync(outputPath, JSON.stringify(scores, null, 2));
-console.log(`Wrote ${scores.length} representative score entries to ${outputPath}`);
+fs.writeFileSync(rankingsPath, JSON.stringify(reps, null, 2));
+console.log(`Updated representatives-rankings.json with scores and vote stats (${reps.length} records)`);
