@@ -36,6 +36,8 @@ function baseRecord(sen) {
     totalVotes: 0,
     participationPct: 0,
     missedVotePct: 0,
+    // Streak (consecutive weeks with activity)
+    streak: 0,
     // Scores (filled by senators-scores.js)
     powerScore: 0,
     lastUpdated: new Date().toISOString()
