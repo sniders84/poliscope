@@ -1,5 +1,7 @@
 // scripts/senators-scores.js
 // Purpose: Compute scores and add vote stats to senators-rankings.json (overwrites it)
+// Includes misconduct penalty based on misconductCount
+
 const fs = require('fs');
 const path = require('path');
 
@@ -31,13 +33,16 @@ const WEIGHTS = {
     Chair: 5,
     RankingMember: 4,
     Member: 1
+  },
+  misconduct: {
+    penaltyPerInfraction: -15   // subtract 15 points per misconductCount
   }
 };
 
 senators = senators.map(s => {
   let score = 0;
 
-  // Legislation (bills only)
+  // Legislation
   for (const [field, weight] of Object.entries(WEIGHTS.bills)) {
     score += (s[field] || 0) * weight;
   }
@@ -49,7 +54,7 @@ senators = senators.map(s => {
     else score += WEIGHTS.committees.Member;
   }
 
-  // Votes (using existing fields — will be 0 if not present yet)
+  // Votes
   const totalVotes = s.totalVotes || 0;
   const missedPct = s.missedVotePct || 0;
   if (totalVotes > 0) {
@@ -59,7 +64,13 @@ senators = senators.map(s => {
     score += WEIGHTS.votes.penaltyMissedPct;
   }
 
-  // Add vote stats if missing (placeholders)
+  // Misconduct penalty
+  const misconductCount = s.misconductCount || 0;
+  if (misconductCount > 0) {
+    score += misconductCount * WEIGHTS.misconduct.penaltyPerInfraction;
+  }
+
+  // Ensure vote stats exist
   if (!s.yeaVotes) s.yeaVotes = 0;
   if (!s.nayVotes) s.nayVotes = 0;
   if (!s.missedVotes) s.missedVotes = 0;
@@ -69,10 +80,10 @@ senators = senators.map(s => {
 
   return {
     ...s,
-    powerScore: score,  // or whatever your final score field is called
+    powerScore: score,
     lastUpdated: new Date().toISOString()
   };
 });
 
 fs.writeFileSync(rankingsPath, JSON.stringify(senators, null, 2));
-console.log(`Updated senators-rankings.json with scores and vote stats (${senators.length} records)`);
+console.log(`Updated senators-rankings.json with scores, vote stats, and misconduct penalties (${senators.length} records)`);
