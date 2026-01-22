@@ -1,6 +1,6 @@
 // scripts/senators-scores.js
 // Purpose: Compute scores and add vote stats to senators-rankings.json (overwrites it)
-// Includes misconduct penalty based on misconductCount
+// Amendments removed, misconduct penalty added
 
 const fs = require('fs');
 const path = require('path');
