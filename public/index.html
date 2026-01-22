@@ -349,19 +349,23 @@
     
 </section>
 
-<section id="ratings" class="tab-content" style="display: none;">
+<section id="ratings" class="tab-content" hidden>
   <h2>Ratings & Rankings</h2>
 
   <!-- Ratings & Rankings toggle -->
   <div id="rr-toggle" class="rr-toggle" role="tablist" aria-label="Ratings & Rankings toggle">
-    <button id="btn-ratings" class="rr-tab rr-tab-active" role="tab" aria-selected="true" aria-controls="ratings-section">Ratings</button>
-    <button id="btn-rankings" class="rr-tab" role="tab" aria-selected="false" aria-controls="rankings-section">Rankings</button>
+    <button id="btn-ratings" class="rr-tab rr-tab-active" role="tab" aria-selected="true" aria-controls="ratings-section">
+      Ratings
+    </button>
+    <button id="btn-rankings" class="rr-tab" role="tab" aria-selected="false" aria-controls="rankings-section">
+      Rankings
+    </button>
   </div>
 
   <!-- Ratings section -->
   <div id="ratings-section" class="rr-section rr-section-active" role="tabpanel" aria-labelledby="btn-ratings">
     <div id="ratings-filters" class="filters-bar">
-      <input type="text" id="searchInput" class="filter-select" placeholder="Search officials..." />
+      <input type="text" id="searchInput" class="filter-select" placeholder="Search officials…" aria-label="Search officials" />
       <select id="officeFilter" class="filter-select" aria-label="Office filter">
         <option value="">All Offices</option>
         <option value="president">President</option>
@@ -405,11 +409,11 @@
       <table id="rankings-leaderboard" class="leaderboard-table" aria-label="Rankings leaderboard">
         <thead>
           <tr>
-            <th data-sort="rank">Rank</th>
-            <th data-sort="name">Official</th>
-            <th data-sort="office">Office</th>
-            <th data-sort="score">Power Score</th>
-            <th data-sort="streak">Streak</th>
+            <th scope="col" data-sort="rank">Rank</th>
+            <th scope="col" data-sort="name">Official</th>
+            <th scope="col" data-sort="office">Office</th>
+            <th scope="col" data-sort="score">Power Score</th>
+            <th scope="col" data-sort="streak">Streak</th>
           </tr>
         </thead>
         <tbody></tbody>
@@ -417,14 +421,16 @@
     </div>
 
     <div class="rankings-info">
-      <button id="scoringLogicBtn" class="info-button">Rankings Scoring and Weight Logic</button>
+      <button id="scoringLogicBtn" class="info-button" type="button">
+        Rankings Scoring and Weight Logic
+      </button>
     </div>
   </div>
 
   <!-- Scorecard modal -->
   <div id="scorecardModal" class="scorecard-modal" aria-hidden="true">
     <div class="scorecard-modal-content" role="dialog" aria-modal="true" aria-labelledby="scorecardName">
-      <button id="scorecardClose" class="scorecard-modal-close" aria-label="Close scorecard">&times;</button>
+      <button id="scorecardClose" class="scorecard-modal-close" aria-label="Close scorecard" type="button">&times;</button>
       <div id="scorecardHeader" class="scorecard-header"></div>
       <h2 id="scorecardName"></h2>
       <table id="scorecardBreakdown" class="scorecard-table"></table>
@@ -434,7 +440,7 @@
   <!-- Scoring Logic modal -->
   <div id="scoringLogicModal" class="scorecard-modal wide" aria-hidden="true">
     <div class="scorecard-modal-content" role="dialog" aria-modal="true" aria-labelledby="scoringLogicTitle">
-      <button id="scoringLogicClose" class="scorecard-modal-close" aria-label="Close scoring logic">&times;</button>
+      <button id="scoringLogicClose" class="scorecard-modal-close" aria-label="Close scoring logic" type="button">&times;</button>
       <h2 id="scoringLogicTitle">Rankings Scoring and Weight Logic</h2>
       <div id="scoringLogicBody" class="scoring-logic-body"></div>
     </div>
@@ -581,7 +587,9 @@ function showScorecard(person, breakdown, composite) {
   modal.classList.add('is-open');
   modal.setAttribute('aria-hidden', 'false');
 }
+</script>
 
+<script>
 /* ---------- Rankings table: sort + render ---------- */
 function attachSortableHeaders(rows, officeType) {
   const headers = document.querySelectorAll('#rankings-leaderboard th');
@@ -650,8 +658,9 @@ function renderTableBody(rows, officeType) {
   });
 }
 
+<script>
 /* ---------- Rankings render pipeline ---------- */
-async function renderRankings() {
+async function renderRankingsLeaderboard() {
   const officeSel = document.getElementById('rankingsOfficeFilter');
   const categorySel = document.getElementById('rankingsCategoryFilter');
 
@@ -719,10 +728,12 @@ async function renderRankings() {
   const categorySel = document.getElementById('rankingsCategoryFilter');
 
   // Initial render
-  renderRankings().catch(console.error);
+  renderRankingsLeaderboard().catch(console.error);
 
-  officeSel.addEventListener('change', () => renderRankings().catch(console.error));
-  categorySel.addEventListener('change', () => renderRankings().catch(console.error));
+  officeSel.addEventListener('change', () => renderRankingsLeaderboard().catch(console.error));
+  categorySel.addEventListener('change', () => renderRankingsLeaderboard().catch(console.error));
+})();
+</script>
 
   // Scoring Logic modal handlers
   document.getElementById('scoringLogicBtn')?.addEventListener('click', () => {
