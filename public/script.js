@@ -3231,6 +3231,22 @@ async function loadRankingsData() {
     return `<span class="badge badge-drought">inactive</span>`;
   }
 
+  // ⚠️ Misconduct badge helper
+  function renderMisconductBadge(person) {
+    const count = person.misconductCount || 0;
+    if (count === 0) return '';
+    const tags = (person.misconductTags || []).map(t => `<span class="tag">${t}</span>`).join('');
+    return `
+      <span class="tooltip">
+        <span class="badge-misconduct">${count} issue${count > 1 ? 's' : ''}</span>
+        <div class="tooltip-content">
+          <h4>Misconduct tags</h4>
+          ${tags || '<span class="tag">Unspecified</span>'}
+        </div>
+      </span>
+    `;
+  }
+
   // Scorecard modal with photo, header, and breakdown
   function showScorecard(person, breakdown, composite) {
     const modal = document.getElementById('scorecardModal');
@@ -3359,7 +3375,7 @@ async function loadRankingsData() {
       return bVal - aVal;
     });
 
-    tableBody.innerHTML = '';
+       tableBody.innerHTML = '';
     rows.forEach((row, idx) => {
       const tr = document.createElement('tr');
       tr.innerHTML = `
@@ -3368,6 +3384,7 @@ async function loadRankingsData() {
           <a href="#" class="scorecard-link" data-name="${row.person.name.replace(/"/g, '&quot;')}">
             ${row.person.name}
           </a>
+          ${renderMisconductBadge(row.person)}
           <br><small>${row.person.state} • ${row.person.party}${officeType === 'rep' ? ` • District ${row.person.district || 'At-Large'}` : ''}</small>
         </td>
         <td>${row.person.office}</td>
