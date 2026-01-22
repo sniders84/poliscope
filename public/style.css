@@ -6835,23 +6835,66 @@ section > h3 {
 .leaderboard-table tr:first-child td { font-weight: 700; }
 /* Rankings table styling */
 #rankings-leaderboard {
-  background-color: #2b2b2b; /* dark gray background */
-  color: #f0f0f0; /* light text for contrast */
-  border-collapse: collapse;
   width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  table-layout: fixed;
+  background-color: #1e293b; /* dark gray background always */
+  color: #f1f5f9;            /* light text for contrast */
 }
+
 #rankings-leaderboard th,
 #rankings-leaderboard td {
-  padding: 6px 10px;
-  border-bottom: 1px solid #444;
+  padding: 8px 12px;
+  border-bottom: 1px solid #334155;
+  vertical-align: middle;
 }
+
 #rankings-leaderboard th {
-  background-color: #333;
+  background: #0f172a; /* darker header */
+  text-align: left;
   font-weight: 600;
+  color: #38bdf8;      /* cyan accent for headers */
 }
-#rankings-leaderboard tr:hover {
-  background-color: #3a3a3a;
+
+#rankings-leaderboard td:first-child {
+  text-align: center; /* Rank column centered */
+  font-weight: 700;
+  color: #f1f5f9;
+  width: 50px;
 }
+
+#rankings-leaderboard td:nth-child(3),
+#rankings-leaderboard td:nth-child(4),
+#rankings-leaderboard td:nth-child(5) {
+  text-align: center; /* Office, Power Score, Streak columns centered */
+}
+
+#rankings-leaderboard tbody tr:hover {
+  background: #334155; /* subtle hover highlight */
+}
+
+/* Party row accents */
+.row-dem {
+  border-left: 4px solid #2563eb; /* Dem blue */
+}
+.row-rep {
+  border-left: 4px solid #dc2626; /* GOP red */
+}
+.row-ind {
+  border-left: 4px solid #7c3aed; /* Indie purple */
+}
+
+/* Name link: high contrast, readable */
+.scorecard-link {
+  color: #f1f5f9;
+  font-weight: 600;
+  text-decoration: none;
+}
+.scorecard-link:hover {
+  text-decoration: underline;
+}
+
 /* Scorecard modal overlay */
 .scorecard-modal {
   position: fixed;
@@ -6866,6 +6909,7 @@ section > h3 {
   z-index: 9999;
 }
 .scorecard-modal.is-open { display: flex; }
+
 /* Scorecard content box */
 .scorecard-modal-content {
   background: #2b2b2b;
@@ -6876,6 +6920,7 @@ section > h3 {
   width: 90%;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
+
 /* Close button */
 .scorecard-modal-close {
   float: right;
@@ -6886,6 +6931,7 @@ section > h3 {
   cursor: pointer;
   color: #fff;
 }
+
 /* Breakdown table */
 .scorecard-table {
   width: 100%;
@@ -6900,9 +6946,11 @@ section > h3 {
   font-weight: bold;
   color: #ddd;
 }
+
 /* Positive and negative score styling */
 .score-positive { color: #2ecc71; font-weight: bold; }
 .score-negative { color: #e74c3c; font-weight: bold; }
+
 /* Wider scoring logic modal */
 .scorecard-modal.wide .scorecard-modal-content {
   max-width: 900px;
@@ -6910,6 +6958,7 @@ section > h3 {
   max-height: 80vh;
   overflow-y: auto;
 }
+
 /* Info button */
 .info-button {
   display: inline-block;
@@ -6929,12 +6978,11 @@ section > h3 {
   transform: translateY(-1px);
 }
 
-/* NEW: Rankings-specific additions for photo and details */
+/* Rankings-specific additions for photo and details */
 #scorecardHeader {
   text-align: center;
   margin-bottom: 20px;
 }
-
 .profile-photo {
   width: 120px;
   height: 120px;
@@ -6943,7 +6991,6 @@ section > h3 {
   border: 3px solid #444;
   margin-bottom: 10px;
 }
-
 #scorecardHeader p {
   margin: 0;
   font-size: 1.1em;
@@ -6958,6 +7005,7 @@ section > h3 {
   font-size: 0.85em;
   color: #aaa;
 }
+
 /* Streak/Drought badges */
 .badge {
   display: inline-flex;
@@ -6969,16 +7017,8 @@ section > h3 {
   border-radius: 999px;
   border: 1px solid #d6dee9;
 }
-
-.badge-streak::before {
-  content: "🔥";
-  font-size: 14px;
-}
-.badge-drought::before {
-  content: "❄️";
-  font-size: 14px;
-}
-
+.badge-streak::before { content: "🔥"; font-size: 14px; }
+.badge-drought::before { content: "❄️"; font-size: 14px; }
 .badge-streak {
   border-color: #ff7a59;
   background: #fff3ef;
@@ -6989,6 +7029,7 @@ section > h3 {
   background: #f0f7ff;
   color: #1f4a7a;
 }
+
 /* Misconduct badge + tooltip */
 .badge-misconduct {
   display: inline-flex;
@@ -7002,16 +7043,10 @@ section > h3 {
   border: 1px solid #ffb3b3;
   margin-left: 6px;
 }
-.badge-misconduct::before {
-  content: "⚠️";
-  font-size: 14px;
-}
+.badge-misconduct::before { content: "⚠️"; font-size: 14px; }
 
 /* Tooltip */
-.tooltip {
-  position: relative;
-  display: inline-block;
-}
+.tooltip { position: relative; display: inline-block; }
 .tooltip .tooltip-content {
   position: absolute;
   z-index: 10;
@@ -7046,6 +7081,8 @@ section > h3 {
   background: #2b2b2b;
   font-size: 11px;
 }
+
+/* Committee role badges */
 .role-badge {
   display: inline-block;
   font-size: 11px;
@@ -7054,146 +7091,22 @@ section > h3 {
   margin: 2px 6px 2px 0;
   border: 1px solid #d6dee9;
 }
-
 .role-chair {
   background: #fff3ef;
   border-color: #ff7a59;
   color: #b23a1f;
 }
-
 .role-ranking {
   background: #eef3ff;
   border-color: #7b9cff;
   color: #1f3a8a;
 }
-
 .role-member {
   background: #f6f7f9;
   border-color: #cfd6e4;
   color: #3b4252;
 }
-/* Accessible text colors */
-:root {
-  --text-primary: #0f172a;   /* near-black */
-  --text-muted: #475569;
-  --bg-elev-1: #ffffff;
-  --border-muted: #d6dee9;
-}
 
-/* Party row accents (subtle left border + light background) */
-.row-dem {
-  border-left: 4px solid #2563eb;       /* Dem blue */
-  background: #f5f9ff;
-}
-.row-rep {
-  border-left: 4px solid #dc2626;       /* GOP red */
-  background: #fff5f5;
-}
-.row-ind {
-  border-left: 4px solid #7c3aed;       /* Indie purple */
-  background: #f8f5ff;
-}
-
-/* Name link: high contrast, readable */
-.scorecard-link {
-  color: var(--text-primary);
-  font-weight: 600;
-  text-decoration: none;
-}
-.scorecard-link:hover {
-  text-decoration: underline;
-}
-/* Leaderboard table base */
-#rankings-leaderboard {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
-  table-layout: fixed; /* ensures consistent column widths */
-}
-
-#rankings-leaderboard th,
-#rankings-leaderboard td {
-  padding: 8px 12px;
-  border-bottom: 1px solid #e2e8f0;
-  vertical-align: middle;
-}
-
-#rankings-leaderboard th {
-  background: #f8fafc;
-  text-align: left;
-  font-weight: 600;
-  color: #0f172a;
-}
-
-/* Column alignment */
-#rankings-leaderboard td:first-child {
-  text-align: center; /* Rank column centered */
-  font-weight: 700;
-  color: #1e293b;
-  width: 50px;
-}
-
-#rankings-leaderboard td:nth-child(3),
-#rankings-leaderboard td:nth-child(4),
-#rankings-leaderboard td:nth-child(5) {
-  text-align: center; /* Office, Power Score, Streak columns centered */
-}
-
-/* Hover highlight for readability */
-#rankings-leaderboard tbody tr:hover {
-  background: #f1f5f9;
-}
-
-/* Party row accents */
-.row-dem {
-  border-left: 4px solid #2563eb;       /* Dem blue */
-  background: #f5f9ff;
-}
-.row-rep {
-  border-left: 4px solid #dc2626;       /* GOP red */
-  background: #fff5f5;
-}
-.row-ind {
-  border-left: 4px solid #7c3aed;       /* Indie purple */
-  background: #f8f5ff;
-}
-
-/* Name link: high contrast, readable */
-.scorecard-link {
-  color: #0f172a;
-  font-weight: 600;
-  text-decoration: none;
-}
-.scorecard-link:hover {
-  text-decoration: underline;
-}
-/* Leaderboard table dark theme */
-#rankings-leaderboard {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
-  table-layout: fixed;
-  background-color: #1e293b; /* dark gray background */
-  color: #f1f5f9;            /* light text for contrast */
-}
-
-#rankings-leaderboard th,
-#rankings-leaderboard td {
-  padding: 8px 12px;
-  border-bottom: 1px solid #334155;
-  vertical-align: middle;
-}
-
-#rankings-leaderboard th {
-  background: #0f172a; /* darker header */
-  text-align: left;
-  font-weight: 600;
-  color: #38bdf8;      /* cyan accent for headers */
-}
-
-#rankings-leaderboard tbody tr:hover {
-  background: #334155; /* subtle hover highlight */
-}
 /* Filter buttons/dropdowns */
 .filter-btn, .filter-select {
   background-color: #1e293b;
@@ -7205,7 +7118,6 @@ section > h3 {
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
-
 .filter-btn:hover, .filter-select:hover {
   background-color: #2563eb; /* modern blue hover */
   border-color: #2563eb;
