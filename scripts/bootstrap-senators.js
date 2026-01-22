@@ -1,6 +1,7 @@
 // scripts/bootstrap-senators.js
 // Purpose: Generate baseline senators-rankings.json from local legislators-current.json
 // Filters for current Senators and initializes clean schema (no amendments, no votes)
+
 const fs = require('fs');
 const path = require('path');
 
@@ -25,6 +26,16 @@ function baseRecord(sen) {
     becameLawCosponsoredBills: 0,
     // Committees (filled by merge)
     committees: [],
+    // Misconduct (filled by misconduct-scraper.js)
+    misconductCount: 0,
+    misconductTags: [],
+    // Votes (filled by votes-scraper.js)
+    yeaVotes: 0,
+    nayVotes: 0,
+    missedVotes: 0,
+    totalVotes: 0,
+    participationPct: 0,
+    missedVotePct: 0,
     // Scores (filled by senators-scores.js)
     powerScore: 0,
     lastUpdated: new Date().toISOString()
