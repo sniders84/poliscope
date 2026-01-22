@@ -3124,7 +3124,6 @@ document.getElementById('rate-me-btn').onclick = function() {
   const ratingsSec = document.getElementById('ratings-section');
   const rankingsSec = document.getElementById('rankings-section');
   if (!btnRatings || !btnRankings || !ratingsSec || !rankingsSec) return;
-
   function activateRatings() {
     btnRatings.classList.add('rr-tab-active');
     btnRankings.classList.remove('rr-tab-active');
@@ -3133,7 +3132,6 @@ document.getElementById('rate-me-btn').onclick = function() {
     ratingsSec.removeAttribute('aria-hidden');
     rankingsSec.setAttribute('aria-hidden', 'true');
   }
-
   function activateRankings() {
     btnRankings.classList.add('rr-tab-active');
     btnRatings.classList.remove('rr-tab-active');
@@ -3142,7 +3140,6 @@ document.getElementById('rate-me-btn').onclick = function() {
     rankingsSec.removeAttribute('aria-hidden');
     rankingsSec.setAttribute('aria-hidden', 'false');
   }
-
   btnRatings.addEventListener('click', activateRatings);
   btnRankings.addEventListener('click', () => {
     activateRankings();
@@ -3150,71 +3147,70 @@ document.getElementById('rate-me-btn').onclick = function() {
       window.renderRankingsLeaderboard();
     }
   });
-
   activateRatings();
 })();
 
-// Utility: load full merged senator JSON (only senators for now)
-async function loadSenatorsData() {
+// Utility: load merged rankings JSONs
+async function loadRankingsData() {
   try {
-    const res = await fetch('/senators-full.json');
-    if (!res.ok) throw new Error(`Failed to load /senators-full.json: ${res.status}`);
-    return await res.json();
+    const senatorsRes = await fetch('/public/senators-rankings.json');
+    if (!senatorsRes.ok) throw new Error(`Failed to load senators-rankings.json: ${senatorsRes.status}`);
+    const senators = await senatorsRes.json();
+
+    const repsRes = await fetch('/public/representatives-rankings.json');
+    if (!repsRes.ok) throw new Error(`Failed to load representatives-rankings.json: ${repsRes.status}`);
+    const reps = await repsRes.json();
+
+    return { senators, reps };
   } catch (err) {
-    console.error('Error loading senators-full.json:', err);
-    return [];
+    console.error('Error loading rankings data:', err);
+    return { senators: [], reps: [] };
   }
 }
 
-// Rankings — render using the new full merged JSON
+// Rankings — render using merged JSONs
 (function initRankingsRender() {
   const officeSel = document.getElementById('rankingsOfficeFilter');
   const categorySel = document.getElementById('rankingsCategoryFilter');
   const tableBody = document.querySelector('#rankings-leaderboard tbody');
   if (!officeSel || !categorySel || !tableBody) return;
 
-  // Weights tuned to your schema (adjust as desired)
+  // Weights tuned to current schema (no amendments)
   const WEIGHTS = {
-    sponsoredBills: 1.2,               // Bills Sponsored
-    sponsoredAmendments: 1.0,          // Amendments Sponsored
+    sponsoredBills: 1.2,
     cosponsoredBills: 0.6,
-    cosponsoredAmendments: 0.5,
-    becameLawBills: 6.0,               // High impact for enacted laws
-    becameLawAmendments: 4.0,
-    committees: 4.0,                   // Per committee membership
-    committeeLeadership: 2.0,          // Bonus for Chairman/Ranking/Vice
-    missedVotes: -0.5                  // Penalty per missed vote (raw count)
+    becameLawBills: 6.0,
+    becameLawCosponsoredBills: 3.0,
+    committees: 4.0,           // per committee
+    committeeLeadership: 2.0,  // bonus for Chair/Ranking/Vice
+    missedVotes: -0.5          // penalty per missed vote
   };
 
-  // Scoring function using full schema fields
-  function scoreLegislator(senator) {
+  // Scoring function using current schema
+  function scoreLegislator(person) {
     const breakdown = {
-      sponsoredBills: senator.sponsoredBills || 0,
-      sponsoredAmendments: senator.sponsoredAmendments || 0,
-      cosponsoredBills: senator.cosponsoredBills || 0,
-      cosponsoredAmendments: senator.cosponsoredAmendments || 0,
-      becameLawBills: senator.becameLawBills || 0,
-      becameLawAmendments: senator.becameLawAmendments || 0,
-      committees: (senator.committees || []).length,
-      committeeLeadership: (senator.committees || []).filter(c => 
+      sponsoredBills: person.sponsoredBills || 0,
+      cosponsoredBills: person.cosponsoredBills || 0,
+      becameLawBills: person.becameLawBills || 0,
+      becameLawCosponsoredBills: person.becameLawCosponsoredBills || 0,
+      committees: (person.committees || []).length,
+      committeeLeadership: (person.committees || []).filter(c =>
         /chairman|chair|ranking member|vice chair/i.test(c.role)
       ).length,
-      missedVotes: senator.missedVotes || 0
+      missedVotes: person.missedVotes || 0
     };
 
     const composite =
       breakdown.sponsoredBills * WEIGHTS.sponsoredBills +
-      breakdown.sponsoredAmendments * WEIGHTS.sponsoredAmendments +
       breakdown.cosponsoredBills * WEIGHTS.cosponsoredBills +
-      breakdown.cosponsoredAmendments * WEIGHTS.cosponsoredAmendments +
       breakdown.becameLawBills * WEIGHTS.becameLawBills +
-      breakdown.becameLawAmendments * WEIGHTS.becameLawAmendments +
+      breakdown.becameLawCosponsoredBills * WEIGHTS.becameLawCosponsoredBills +
       breakdown.committees * WEIGHTS.committees +
       breakdown.committeeLeadership * WEIGHTS.committeeLeadership +
       breakdown.missedVotes * WEIGHTS.missedVotes;
 
     return {
-      composite: Math.round(composite * 10) / 10, // Round to 1 decimal
+      composite: Math.round(composite * 10) / 10,
       breakdown
     };
   }
@@ -3224,17 +3220,26 @@ async function loadSenatorsData() {
     return `<span class="${cls}">${Number.isFinite(value) ? value.toFixed(1) : '0.0'}</span>`;
   }
 
-  // Scorecard modal with updated labels
-  function showScorecard(senator, breakdown, composite) {
-    document.getElementById('scorecardName').textContent = senator.name;
+  // Scorecard modal with photo, header, and breakdown
+  function showScorecard(person, breakdown, composite) {
+    const modal = document.getElementById('scorecardModal');
+    const nameEl = document.getElementById('scorecardName');
     const table = document.getElementById('scorecardBreakdown');
+
+    nameEl.textContent = person.name;
+
+    const photoUrl = `https://bioguide.congress.gov/search/bio/${person.bioguideId}.jpg`;
+    const district = person.district ? ` / District ${person.district}` : '';
+    document.getElementById('scorecardHeader').innerHTML = `
+      <img src="${photoUrl}" alt="${person.name}" class="profile-photo" onerror="this.src='assets/fallback-photo.jpg';">
+      <p>${person.state}${district} • ${person.party}</p>
+    `;
+
     const labelMap = {
       sponsoredBills: 'Bills Sponsored',
-      sponsoredAmendments: 'Amendments Sponsored',
       cosponsoredBills: 'Bills Cosponsored',
-      cosponsoredAmendments: 'Amendments Cosponsored',
       becameLawBills: 'Bills Enacted',
-      becameLawAmendments: 'Amendments Enacted',
+      becameLawCosponsoredBills: 'Bills Enacted (Cosponsored)',
       committees: 'Committee Memberships',
       committeeLeadership: 'Committee Leadership Roles',
       missedVotes: 'Missed Votes (Count)'
@@ -3271,36 +3276,56 @@ async function loadSenatorsData() {
       </tbody>
     `;
 
-    const modal = document.getElementById('scorecardModal');
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
   }
 
   async function render() {
     const selectedOffice = officeSel.value.toLowerCase();
-    if (!selectedOffice.includes('senator')) {
-      tableBody.innerHTML = '<tr><td colspan="5">Select "Senators" to view rankings</td></tr>';
+    const selectedCategory = categorySel.value;
+
+    const { senators, reps } = await loadRankingsData();
+
+    let data = [];
+    let officeType = 'senator';
+
+    if (selectedOffice.includes('senator')) {
+      data = senators;
+      officeType = 'senator';
+    } else if (selectedOffice.includes('rep')) {
+      data = reps;
+      officeType = 'rep';
+    } else {
+      tableBody.innerHTML = '<tr><td colspan="5">Select an office to view rankings</td></tr>';
       return;
     }
 
-    // Load the new full merged file
-    const senators = await loadSenatorsData();
-    if (!Array.isArray(senators) || senators.length === 0) {
+    if (!Array.isArray(data) || data.length === 0) {
       tableBody.innerHTML = '<tr><td colspan="5">No data loaded yet</td></tr>';
       return;
     }
 
-    const rows = senators.map(senator => {
-      const { composite, breakdown } = scoreLegislator(senator);
+    const rows = data.map(person => {
+      const { composite, breakdown } = scoreLegislator(person);
       return {
-        senator,
+        person,
         score: composite,
         breakdown,
-        streak: '' // Add streak logic later if needed
+        streak: '' // Placeholder — expand later if needed
       };
     });
 
-    rows.sort((a, b) => b.score - a.score);
+    // Sort by selected category (default powerScore)
+    let sortField = 'score';
+    if (selectedCategory === 'sponsoredBills') sortField = 'sponsoredBills';
+    else if (selectedCategory === 'missedVotes') sortField = 'missedVotes';
+    // Add more category mappings as needed
+
+    rows.sort((a, b) => {
+      const aVal = a.person[sortField] || (sortField === 'score' ? a.score : 0);
+      const bVal = b.person[sortField] || (sortField === 'score' ? b.score : 0);
+      return bVal - aVal;
+    });
 
     tableBody.innerHTML = '';
     rows.forEach((row, idx) => {
@@ -3308,12 +3333,12 @@ async function loadSenatorsData() {
       tr.innerHTML = `
         <td>${idx + 1}</td>
         <td>
-          <a href="#" class="scorecard-link" data-name="${row.senator.name.replace(/"/g, '&quot;')}">
-            ${row.senator.name}
+          <a href="#" class="scorecard-link" data-name="${row.person.name.replace(/"/g, '&quot;')}">
+            ${row.person.name}
           </a>
-          <br><small>${row.senator.state} • ${row.senator.party}</small>
+          <br><small>${row.person.state} • ${row.person.party}${officeType === 'rep' ? ` • District ${row.person.district || 'At-Large'}` : ''}</small>
         </td>
-        <td>Senator</td>
+        <td>${row.person.office}</td>
         <td>${row.score.toFixed(1)}</td>
         <td>${row.streak}</td>
       `;
@@ -3325,15 +3350,15 @@ async function loadSenatorsData() {
       link.addEventListener('click', e => {
         e.preventDefault();
         const name = link.dataset.name;
-        const row = rows.find(r => r.senator.name === name);
+        const row = rows.find(r => r.person.name === name);
         if (row) {
-          showScorecard(row.senator, row.breakdown, row.score);
+          showScorecard(row.person, row.breakdown, row.score);
         }
       });
     });
   }
 
-  // Modal close handlers (unchanged)
+  // Modal close handlers (unchanged from your original)
   document.getElementById('scorecardClose')?.addEventListener('click', () => {
     const modal = document.getElementById('scorecardModal');
     modal.classList.remove('is-open');
@@ -3346,7 +3371,6 @@ async function loadSenatorsData() {
       modal.setAttribute('aria-hidden', 'true');
     }
   });
-
   document.getElementById('scoringLogicBtn')?.addEventListener('click', () => {
     const modal = document.getElementById('scoringLogicModal');
     modal.classList.add('is-open');
