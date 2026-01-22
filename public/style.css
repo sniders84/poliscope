@@ -7123,3 +7123,67 @@ section > h3 {
   border-color: #2563eb;
   color: #fff;
 }
+/* Rankings table dark theme */
+#rankings-leaderboard {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  table-layout: fixed;
+  background-color: #1e293b; /* dark gray background always */
+  color: #f1f5f9;            /* light text for contrast */
+}
+
+#rankings-leaderboard th,
+#rankings-leaderboard td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #334155;
+  vertical-align: middle;
+}
+
+#rankings-leaderboard th {
+  background: #0f172a; /* darker header */
+  text-align: left;
+  font-weight: 600;
+  color: #38bdf8;      /* cyan accent for headers */
+}
+
+#rankings-leaderboard td:first-child {
+  text-align: center; /* Rank column centered */
+  font-weight: 700;
+  color: #f1f5f9;
+  width: 50px;
+}
+
+#rankings-leaderboard td:nth-child(3),
+#rankings-leaderboard td:nth-child(4),
+#rankings-leaderboard td:nth-child(5) {
+  text-align: center; /* Office, Power Score, Streak columns centered */
+}
+
+#rankings-leaderboard tbody tr:hover {
+  background: #334155; /* subtle hover highlight */
+}
+
+/* ✅ Party row accents with subtle tint over dark background */
+.row-dem {
+  border-left: 4px solid #2563eb; /* Dem blue */
+  background-color: rgba(37, 99, 235, 0.08); /* subtle blue tint */
+}
+.row-rep {
+  border-left: 4px solid #dc2626; /* GOP red */
+  background-color: rgba(220, 38, 38, 0.08); /* subtle red tint */
+}
+.row-ind {
+  border-left: 4px solid #7c3aed; /* Indie purple */
+  background-color: rgba(124, 58, 237, 0.08); /* subtle purple tint */
+}
+
+/* Name link: high contrast, readable */
+.scorecard-link {
+  color: #f1f5f9;
+  font-weight: 600;
+  text-decoration: none;
+}
+.scorecard-link:hover {
+  text-decoration: underline;
+}
