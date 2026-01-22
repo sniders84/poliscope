@@ -6530,290 +6530,47 @@ section > h3 {
   transition: border-color 0.3s ease;
 }
 /* ============================================================
-   Ratings/Rankings Tab — Card Hover Outline
+   Rankings Leaderboard Table
    ============================================================ */
-
-#ratings-rankings .rating-card {
-  background-color: #2b2b2b;   /* keep dark background */
-  color: #fff;
-  border: 3px solid transparent; /* default transparent outline */
-  border-radius: 8px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  box-sizing: border-box;
-  transition: border-color 0.3s ease;
-}
-
-#ratings-rankings .rating-card:hover {
-  border-color: #1e3a8a;       /* blue outline on hover */
-  background-color: #2b2b2b;   /* keep background unchanged */
-}
-/* Ratings/Rankings — force hover to outline only */
-#ratings-rankings .rating-card {
-  background-color: #2b2b2b;
-  color: #fff;
-  border: 3px solid transparent;
-  border-radius: 8px;
-  transition: border-color 0.25s ease;
-}
-
-/* Ensure any previous hover background is neutralized */
-#ratings-rankings .rating-card:hover {
-  border-color: #1e3a8a !important;     /* blue outline */
-  background-color: #2b2b2b !important; /* keep original background */
-}
-
-/* If you have a more specific rule like .rating-card:hover .inner, neutralize it too */
-#ratings-rankings .rating-card:hover,
-#ratings-rankings .rating-card:hover .card-body,
-#ratings-rankings .rating-card:hover .content {
-  background-color: #2b2b2b !important;
-}
-/* ============================================================
-   Ratings/Rankings — force hover to outline only
-   ============================================================ */
-
-/* Base card (adjust selector to your exact class: .rating-card, .candidate-card, etc.) */
-#ratings-rankings .rating-card {
-  background-color: #2b2b2b;
-  color: #fff;
-  border: 3px solid transparent;
-  border-radius: 8px;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-/* Hover: outline only, keep background the same */
-#ratings-rankings .rating-card:hover {
-  border-color: #1e3a8a !important;         /* blue outline */
-  background-color: #2b2b2b !important;     /* preserve dark background */
-  box-shadow: 0 0 0 2px rgba(30,58,138,0.5);/* subtle glow outside border */
-}
-
-/* Neutralize any nested hover backgrounds that might be set elsewhere */
-#ratings-rankings .rating-card:hover *,
-#ratings-rankings .rating-card:hover .card-body,
-#ratings-rankings .rating-card:hover .content,
-#ratings-rankings .rating-card:hover .inner {
-  background-color: transparent !important; /* prevent inner blocks from turning blue */
-}
-
-/* If your previous CSS targets anchors or the whole card on hover */
-#ratings-rankings .rating-card:hover a,
-#ratings-rankings .rating-card:hover .btn,
-#ratings-rankings .rating-card:hover .meta {
-  background-color: transparent !important;
-}
-/* ============================================================
-   Ratings & Rankings Tab — Hover Outline Only
-   ============================================================ */
-
-#ratings-cards .info-card {
-  background-color: #2b2b2b;       /* keep dark background */
-  color: #fff;
-  border: 3px solid transparent;   /* default transparent outline */
-  border-radius: 8px;
-  padding: 16px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-  box-sizing: border-box;
-  transition: border-color 0.3s ease;
-}
-
-/* Hover: outline only, no background flood */
-#ratings-cards .info-card:hover {
-  border-color: #1e3a8a;           /* blue outline */
-  background-color: #2b2b2b;       /* preserve original background */
-}
-/* ============================================================
-   Ratings & Rankings Tab — Hover Outline Only
-   ============================================================ */
-
-#ratings-cards .info-card {
-  background-color: #2b2b2b;       /* keep dark background */
-  color: #fff;
-  border: 3px solid transparent;   /* default transparent outline */
-  border-radius: 8px;
-  transition: border-color 0.3s ease;
-}
-
-/* Override global hover: outline only */
-#ratings-cards .info-card:hover {
-  border-color: #1e3a8a;           /* blue outline */
-  background-color: #2b2b2b !important; /* force background to stay dark */
-}
-/* ============================================================
-   Voting Tab Cards — Compact, Uniform Tiles
-   ============================================================ */
-#voting-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* smaller min width */
-  gap: 12px;                  /* tighter horizontal + vertical spacing */
-  padding: 12px;              /* less padding around grid */
-  justify-items: center;
-}
-
-#voting-cards .voting-card {
-  background: #2b2b2b;
-  border: 1px solid var(--card-border);
-  border-radius: 10px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.25);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  width: 220px;               /* uniform width */
-  height: 160px;              /* uniform height, square-ish */
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;    /* center content vertically */
-  align-items: center;
-  text-align: center;
-  box-sizing: border-box;
-}
-
-#voting-cards .voting-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--accent-light);
-  box-shadow: 0 0 8px var(--accent-glow);
-}
-
-/* Inner content */
-#voting-cards .voting-card a {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  color: #fff;
+#rankings-leaderboard {
+  background-color: #2b2b2b; /* dark gray background */
+  color: #f0f0f0; /* light text for contrast */
+  border-collapse: collapse;
   width: 100%;
-  height: 100%;
 }
-
-#voting-cards .voting-card .card-icon {
-  font-size: 2rem;
-  margin-bottom: 4px;
+#rankings-leaderboard th,
+#rankings-leaderboard td {
+  padding: 6px 10px;
+  border-bottom: 1px solid #444;
 }
-
-#voting-cards .voting-card .card-label {
-  font-size: 0.95rem;
-  font-weight: bold;
-  margin-bottom: 2px;
-}
-
-#voting-cards .voting-card .card-description {
-  font-size: 0.8rem;
-  color: #ddd;
-  line-height: 1.2;
-  margin: 0;
-  padding: 0 4px;
-  text-align: center;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;       /* clamp to 2 lines */
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-#voting-cards .voting-card .card-date {
-  font-size: 0.75rem;
-  color: #1e90ff;
-  margin-top: 4px;
-}
-/* ============================================================
-   Ratings & Rankings Tab — Party Stripe Borders
-   ============================================================ */
-
-#ratings-cards .info-card {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  width: 280px;
-  height: 240px;
-  background: #2b2b2b;
-  color: #fff;
-  border-radius: 8px;
-  position: relative;
-  padding: 12px;
-  box-sizing: border-box;
-  border: 4px solid transparent;   /* default transparent border */
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
-}
-
-/* Party-specific stripes */
-#ratings-cards .info-card[data-party="republican"]   { border-color: #c00; }       /* Republican red */
-#ratings-cards .info-card[data-party="democrat"]     { border-color: #0015bc; }    /* Democrat blue */
-#ratings-cards .info-card[data-party="independent"]  { border-color: #666; }       /* Neutral gray */
-#ratings-cards .info-card[data-party="libertarian"]  { border-color: #e6b800; }    /* Gold/yellow */
-#ratings-cards .info-card[data-party="green"]        { border-color: #228b22; }    /* Green */
-#ratings-cards .info-card[data-party="constitution"] { border-color: #8b0000; }    /* Dark red */
-#ratings-cards .info-card[data-party="nonpartisan"]  { border-color: #444; }       /* Dark neutral */
-
-/* Hover: outline only, keep background dark */
-#ratings-cards .info-card:hover {
-  border-color: #1e3a8a;           /* blue outline on hover */
-  background-color: #2b2b2b;       /* preserve background */
-  box-shadow: 0 0 8px rgba(30,58,138,0.5);
-}
-/* ============================================================
-   Ratings & Rankings Tab — Distinct Hover Effect
-   ============================================================ */
-
-#ratings-cards .info-card {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  width: 280px;
-  height: 240px;
-  background: #2b2b2b;
-  color: #fff;
-  border-radius: 8px;
-  position: relative;
-  padding: 12px;
-  box-sizing: border-box;
-  border: 4px solid transparent;   /* party stripe applied via data-party */
-  transition: box-shadow 0.25s ease, transform 0.25s ease;
-}
-
-/* Party-specific stripes */
-#ratings-cards .info-card[data-party="republican"]   { border-color: #c00; }
-#ratings-cards .info-card[data-party="democrat"]     { border-color: #0015bc; }
-#ratings-cards .info-card[data-party="independent"]  { border-color: #666; }
-#ratings-cards .info-card[data-party="libertarian"]  { border-color: #e6b800; }
-#ratings-cards .info-card[data-party="green"]        { border-color: #228b22; }
-#ratings-cards .info-card[data-party="constitution"] { border-color: #8b0000; }
-#ratings-cards .info-card[data-party="nonpartisan"]  { border-color: #444; }
-
-/* Hover: subtle lift + glow, no color override */
-#ratings-cards .info-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 0 12px rgba(255,255,255,0.25); /* neutral white glow */
-  background-color: #2b2b2b;                   /* keep background consistent */
-}
-/* Ratings & Rankings — toggle + sections */
-.rr-toggle {
-  display: flex;
-  gap: 8px;
-  margin: 12px 0 16px;
-}
-
-.rr-tab {
-  border: 1px solid #1f6feb;
-  background: #fff;
-  color: #1f6feb;
-  padding: 8px 12px;
-  border-radius: 6px;
+#rankings-leaderboard th {
+  background-color: #333;
   font-weight: 600;
-  cursor: pointer;
 }
-.rr-tab-active {
-  background: #1f6feb;
-  color: #fff;
+#rankings-leaderboard tr:hover {
+  background-color: #3a3a3a;
 }
 
-.rr-section { display: none; }
-.rr-section-active { display: block; }
+/* Sub-line for state/party/district under Official name */
+.leaderboard-table td:nth-child(2) small,
+.details {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.85em;
+  color: #aaa; /* lighter gray for details */
+}
+
+/* Column widths and alignment (unchanged) */
+.leaderboard-table th:nth-child(1),
+.leaderboard-table td:nth-child(1) { width: 8%; text-align: center; } /* Rank */
+.leaderboard-table th:nth-child(2),
+.leaderboard-table td:nth-child(2) { width: 35%; text-align: left; } /* Official */
+.leaderboard-table th:nth-child(3),
+.leaderboard-table td:nth-child(3) { width: 15%; text-align: center; } /* Office */
+.leaderboard-table th:nth-child(4),
+.leaderboard-table td:nth-child(4) { width: 20%; text-align: center; } /* Power Score */
+.leaderboard-table th:nth-child(5),
+.leaderboard-table td:nth-child(5) { width: 22%; text-align: center; } /* Streak */
 
 /* Filters row (Rankings section) */
 .filters-row {
@@ -6821,79 +6578,6 @@ section > h3 {
   flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 12px;
-}
-
-/* Leaderboard */
-.leaderboard-wrap { overflow-x: auto; }
-
-.leaderboard-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 15px;
-  table-layout: fixed; /* ensures consistent column widths */
-}
-
-.leaderboard-table thead th {
-  background: #f8fafc;
-  font-weight: 700;
-}
-
-.leaderboard-table th,
-.leaderboard-table td {
-  border-bottom: 1px solid #e5e7eb;
-  padding: 8px 12px;
-  vertical-align: middle;
-  text-align: center; /* default center alignment */
-}
-
-/* Column widths and alignment */
-.leaderboard-table th:nth-child(1),
-.leaderboard-table td:nth-child(1) { width: 8%; text-align: center; }   /* Rank */
-
-.leaderboard-table th:nth-child(2),
-.leaderboard-table td:nth-child(2) { width: 35%; text-align: left; }    /* Official */
-
-.leaderboard-table th:nth-child(3),
-.leaderboard-table td:nth-child(3) { width: 15%; text-align: center; }  /* Office */
-
-.leaderboard-table th:nth-child(4),
-.leaderboard-table td:nth-child(4) { width: 20%; text-align: center; }  /* Power Score */
-
-.leaderboard-table th:nth-child(5),
-.leaderboard-table td:nth-child(5) { width: 22%; text-align: center; }  /* Streak */
-
-/* Sub‑line for state/party under Official */
-.leaderboard-table td:nth-child(2) small {
-  display: block;
-  margin-top: 2px;
-  font-size: 0.85em;
-  color: #555;
-}
-
-/* Optional: subtle rank badges for top spots */
-.leaderboard-table tr:first-child td { font-weight: 700; }
-
-/* Rankings table styling */
-#rankings-leaderboard {
-  background-color: #2b2b2b; /* dark gray background */
-  color: #f0f0f0;           /* light text for contrast */
-  border-collapse: collapse;
-  width: 100%;
-}
-
-#rankings-leaderboard th,
-#rankings-leaderboard td {
-  padding: 6px 10px;
-  border-bottom: 1px solid #444;
-}
-
-#rankings-leaderboard th {
-  background-color: #333;
-  font-weight: 600;
-}
-
-#rankings-leaderboard tr:hover {
-  background-color: #3a3a3a;
 }
 
 /* Scorecard modal overlay */
@@ -6909,7 +6593,6 @@ section > h3 {
   justify-content: center;
   z-index: 9999;
 }
-
 .scorecard-modal.is-open { display: flex; }
 
 /* Scorecard content box */
@@ -6934,18 +6617,39 @@ section > h3 {
   color: #fff;
 }
 
+/* New: Modal header with photo and details */
+#scorecardHeader {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* New: Profile photo in modal */
+.profile-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #444;
+  margin-bottom: 10px;
+}
+
+/* New: State/party/district line under name */
+#scorecardHeader p {
+  margin: 0;
+  font-size: 1.1em;
+  color: #ddd;
+}
+
 /* Breakdown table */
 .scorecard-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 15px;
 }
-
 .scorecard-table td {
   padding: 6px 8px;
   border-bottom: 1px solid #555;
 }
-
 .scorecard-table td:first-child {
   font-weight: bold;
   color: #ddd;
@@ -6977,7 +6681,6 @@ section > h3 {
   cursor: pointer;
   transition: background-color 0.2s ease, transform 0.1s ease;
 }
-
 .info-button:hover {
   background-color: #005a9e;
   transform: translateY(-1px);
