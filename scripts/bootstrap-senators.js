@@ -1,7 +1,6 @@
 // scripts/bootstrap-senators.js
 // Purpose: Generate baseline senators-rankings.json from local legislators-current.json
-// Filters for current Senators and initializes schema (no amendment fields)
-
+// Filters for current Senators and initializes clean schema (no amendments, no votes)
 const fs = require('fs');
 const path = require('path');
 
@@ -19,24 +18,16 @@ function baseRecord(sen) {
     district: 'At-Large',
     party: lastTerm.party,
     office: 'Senator',
-    // Votes
-    yeaVotes: 0,
-    nayVotes: 0,
-    missedVotes: 0,
-    totalVotes: 0,
-    participationPct: 0,
-    missedVotePct: 0,
-    // Legislation (bills only)
+    // Legislation (placeholders — filled by merge)
     sponsoredBills: 0,
     cosponsoredBills: 0,
     becameLawBills: 0,
     becameLawCosponsoredBills: 0,
-    // Committees
+    // Committees (filled by merge)
     committees: [],
-    // Scores
-    rawScore: 0,
-    score: 0,
-    scoreNormalized: 0
+    // Scores (filled by senators-scores.js)
+    powerScore: 0,
+    lastUpdated: new Date().toISOString()
   };
 }
 
