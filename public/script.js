@@ -3464,15 +3464,20 @@ async function render() {
     };
   });
 
-  // Sort by selected category (default powerScore)
+   // Sort by selected category (default powerScore)
   let sortField = 'score';
   if (selectedCategory === 'sponsoredBills') sortField = 'sponsoredBills';
+  else if (selectedCategory === 'sponsoredAmendments') sortField = 'sponsoredAmendments';
+  else if (selectedCategory === 'cosponsoredBills') sortField = 'cosponsoredBills';
+  else if (selectedCategory === 'cosponsoredAmendments') sortField = 'cosponsoredAmendments';
+  else if (selectedCategory === 'becameLawBills') sortField = 'becameLawBills';
+  else if (selectedCategory === 'becameLawCosponsoredBills') sortField = 'becameLawCosponsoredBills';
+  else if (selectedCategory === 'committees') sortField = 'committees';
   else if (selectedCategory === 'missedVotes') sortField = 'missedVotes';
-  // Add more category mappings as needed
 
   rows.sort((a, b) => {
-    const aVal = a.person[sortField] || (sortField === 'score' ? a.score : 0);
-    const bVal = b.person[sortField] || (sortField === 'score' ? b.score : 0);
+    const aVal = a.person[sortField] ?? (sortField === 'score' ? a.score : 0);
+    const bVal = b.person[sortField] ?? (sortField === 'score' ? b.score : 0);
     return bVal - aVal;
   });
 
@@ -3484,4 +3489,50 @@ async function render() {
 }
 
 // Hook render function globally + filter changes
-window.renderRankingsLeaderboard = () => render().catch
+window.renderRankingsLeaderboard = () => render().catch(console.error);
+document.getElementById('rankingsOfficeFilter')
+  ?.addEventListener('change', () => render().catch(console.error));
+document.getElementById('rankingsCategoryFilter')
+  ?.addEventListener('change', () => render().catch(console.error));
+
+// Initial render
+render().catch(console.error);
+
+// Scoring Logic modal handlers
+document.getElementById('scoringLogicBtn')?.addEventListener('click', () => {
+  renderScoringLogic();
+  const modal = document.getElementById('scoringLogicModal');
+  modal.classList.add('is-open');
+  modal.setAttribute('aria-hidden', 'false');
+});
+
+document.getElementById('scoringLogicClose')?.addEventListener('click', () => {
+  const modal = document.getElementById('scoringLogicModal');
+  modal.classList.remove('is-open');
+  modal.setAttribute('aria-hidden', 'true');
+});
+
+document.getElementById('scoringLogicModal')?.addEventListener('click', e => {
+  if (e.target.id === 'scoringLogicModal') {
+    const modal = document.getElementById('scoringLogicModal');
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+  }
+});
+
+// Scorecard modal close
+document.getElementById('scorecardClose')?.addEventListener('click', () => {
+  const modal = document.getElementById('scorecardModal');
+  modal.classList.remove('is-open');
+  modal.setAttribute('aria-hidden', 'true');
+});
+
+document.getElementById('scorecardModal')?.addEventListener('click', e => {
+  if (e.target.id === 'scorecardModal') {
+    const modal = document.getElementById('scorecardModal');
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+  }
+});
+
+// ✅ End of script — everything closed properly
