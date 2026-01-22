@@ -7167,3 +7167,47 @@ section > h3 {
 .scorecard-link:hover {
   text-decoration: underline;
 }
+/* Leaderboard table dark theme */
+#rankings-leaderboard {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  table-layout: fixed;
+  background-color: #1e293b; /* dark gray background */
+  color: #f1f5f9;            /* light text for contrast */
+}
+
+#rankings-leaderboard th,
+#rankings-leaderboard td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #334155;
+  vertical-align: middle;
+}
+
+#rankings-leaderboard th {
+  background: #0f172a; /* darker header */
+  text-align: left;
+  font-weight: 600;
+  color: #38bdf8;      /* cyan accent for headers */
+}
+
+#rankings-leaderboard tbody tr:hover {
+  background: #334155; /* subtle hover highlight */
+}
+/* Filter buttons/dropdowns */
+.filter-btn, .filter-select {
+  background-color: #1e293b;
+  color: #f1f5f9;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.filter-btn:hover, .filter-select:hover {
+  background-color: #2563eb; /* modern blue hover */
+  border-color: #2563eb;
+  color: #fff;
+}
