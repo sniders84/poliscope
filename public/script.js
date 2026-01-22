@@ -3150,7 +3150,25 @@ document.getElementById('rate-me-btn').onclick = function() {
   activateRatings();
 })();
 
-// Rankings — render using the new merged JSONs
+// Utility: load merged rankings JSONs
+async function loadRankingsData() {
+  try {
+    const senatorsRes = await fetch('/senators-rankings.json');
+    if (!senatorsRes.ok) throw new Error(`Failed to load senators-rankings.json: ${senatorsRes.status}`);
+    const senators = await senatorsRes.json();
+
+   const repsRes = await fetch('/representatives-rankings.json');
+    if (!repsRes.ok) throw new Error(`Failed to load representatives-rankings.json: ${repsRes.status}`);
+    const reps = await repsRes.json();
+
+    return { senators, reps };
+  } catch (err) {
+    console.error('Error loading rankings data:', err);
+    return { senators: [], reps: [] };
+  }
+}
+
+// Rankings — render using merged JSONs
 (function initRankingsRender() {
   const officeSel = document.getElementById('rankingsOfficeFilter');
   const categorySel = document.getElementById('rankingsCategoryFilter');
@@ -3202,17 +3220,20 @@ document.getElementById('rate-me-btn').onclick = function() {
     return `<span class="${cls}">${Number.isFinite(value) ? value.toFixed(1) : '0.0'}</span>`;
   }
 
-  // Scorecard modal with photo, name, state/district/party, and breakdown
+  // Scorecard modal with photo, header, and breakdown
   function showScorecard(person, breakdown, composite) {
-    document.getElementById('scorecardName').textContent = person.name;
+    const modal = document.getElementById('scorecardModal');
+    const nameEl = document.getElementById('scorecardName');
+    const table = document.getElementById('scorecardBreakdown');
+
+    nameEl.textContent = person.name;
 
     const photoUrl = `https://bioguide.congress.gov/search/bio/${person.bioguideId}.jpg`;
     const district = person.district ? ` / District ${person.district}` : '';
-    const headerHtml = `
+    document.getElementById('scorecardHeader').innerHTML = `
       <img src="${photoUrl}" alt="${person.name}" class="profile-photo" onerror="this.src='assets/fallback-photo.jpg';">
       <p>${person.state}${district} • ${person.party}</p>
     `;
-    document.getElementById('scorecardHeader').innerHTML = headerHtml;  // Insert into #scorecardHeader
 
     const labelMap = {
       sponsoredBills: 'Bills Sponsored',
@@ -3239,25 +3260,22 @@ document.getElementById('rate-me-btn').onclick = function() {
       `;
     }).join('');
 
-    document.getElementById('scorecardBreakdown').innerHTML = `
-      <table class="scorecard-table">
-        <tbody>
-          <tr>
-            <td><strong>Power Score</strong></td>
-            <td colspan="3">${formatScore(composite)}</td>
-          </tr>
-          <tr>
-            <td><strong>Category</strong></td>
-            <td><strong>Raw</strong></td>
-            <td><strong>Weight</strong></td>
-            <td><strong>Contribution</strong></td>
-          </tr>
-          ${rowsHtml}
-        </tbody>
-      </table>
+    table.innerHTML = `
+      <tbody>
+        <tr>
+          <td><strong>Power Score</strong></td>
+          <td colspan="3">${formatScore(composite)}</td>
+        </tr>
+        <tr>
+          <td><strong>Category</strong></td>
+          <td><strong>Raw</strong></td>
+          <td><strong>Weight</strong></td>
+          <td><strong>Contribution</strong></td>
+        </tr>
+        ${rowsHtml}
+      </tbody>
     `;
 
-    const modal = document.getElementById('scorecardModal');
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
   }
@@ -3266,18 +3284,15 @@ document.getElementById('rate-me-btn').onclick = function() {
     const selectedOffice = officeSel.value.toLowerCase();
     const selectedCategory = categorySel.value;
 
-    const senatorsRes = await fetch('/senators-rankings.json');
-    const repsRes = await fetch('/representatives-rankings.json');
-    const senators = await senatorsRes.json().catch(() => []);
-    const reps = await repsRes.json().catch(() => []);
+    const { senators, reps } = await loadRankingsData();
 
     let data = [];
     let officeType = 'senator';
 
-    if (selectedOffice === 'senator') {
+    if (selectedOffice.includes('senator')) {
       data = senators;
       officeType = 'senator';
-    } else if (selectedOffice === 'u.s. representative') {
+    } else if (selectedOffice.includes('rep')) {
       data = reps;
       officeType = 'rep';
     } else {
@@ -3300,15 +3315,17 @@ document.getElementById('rate-me-btn').onclick = function() {
       };
     });
 
-    // Sort by selected category
+    // Sort by selected category (default powerScore)
     let sortField = 'score';
-    if (selectedCategory === 'sponsored_bills') sortField = 'sponsoredBills';
-    else if (selectedCategory === 'cosponsored_bills') sortField = 'cosponsoredBills';
-    else if (selectedCategory === 'laws_enacted') sortField = 'becameLawBills';
-    else if (selectedCategory === 'committees') sortField = 'committees.length';
-    else if (selectedCategory === 'votes') sortField = 'missedVotes';
+    if (selectedCategory === 'sponsoredBills') sortField = 'sponsoredBills';
+    else if (selectedCategory === 'missedVotes') sortField = 'missedVotes';
+    // Add more category mappings as needed
 
-    rows.sort((a, b) => b[sortField] - a[sortField]);
+    rows.sort((a, b) => {
+      const aVal = a.person[sortField] || (sortField === 'score' ? a.score : 0);
+      const bVal = b.person[sortField] || (sortField === 'score' ? b.score : 0);
+      return bVal - aVal;
+    });
 
     tableBody.innerHTML = '';
     rows.forEach((row, idx) => {
@@ -3341,7 +3358,7 @@ document.getElementById('rate-me-btn').onclick = function() {
     });
   }
 
-  // Modal close handlers (unchanged)
+  // Modal close handlers (unchanged from your original)
   document.getElementById('scorecardClose')?.addEventListener('click', () => {
     const modal = document.getElementById('scorecardModal');
     modal.classList.remove('is-open');
