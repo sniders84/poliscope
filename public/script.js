@@ -3153,11 +3153,11 @@ document.getElementById('rate-me-btn').onclick = function() {
 // Utility: load merged rankings JSONs
 async function loadRankingsData() {
   try {
-    const senatorsRes = await fetch('/public/senators-rankings.json');
+    const senatorsRes = await fetch('/senators-rankings.json');
     if (!senatorsRes.ok) throw new Error(`Failed to load senators-rankings.json: ${senatorsRes.status}`);
     const senators = await senatorsRes.json();
 
-    const repsRes = await fetch('/public/representatives-rankings.json');
+   const repsRes = await fetch('/representatives-rankings.json');
     if (!repsRes.ok) throw new Error(`Failed to load representatives-rankings.json: ${repsRes.status}`);
     const reps = await repsRes.json();
 
