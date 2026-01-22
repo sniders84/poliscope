@@ -348,20 +348,21 @@
       <div id="officials-container" class="grid"></div>
     
 </section>
+
 <section id="ratings" class="tab-content" style="display: none;">
   <h2>Ratings & Rankings</h2>
 
   <!-- Ratings & Rankings toggle -->
-  <div id="rr-toggle" class="rr-toggle">
-    <button id="btn-ratings" class="rr-tab rr-tab-active" aria-controls="ratings-section">Ratings</button>
-    <button id="btn-rankings" class="rr-tab" aria-controls="rankings-section">Rankings</button>
+  <div id="rr-toggle" class="rr-toggle" role="tablist" aria-label="Ratings & Rankings toggle">
+    <button id="btn-ratings" class="rr-tab rr-tab-active" role="tab" aria-selected="true" aria-controls="ratings-section">Ratings</button>
+    <button id="btn-rankings" class="rr-tab" role="tab" aria-selected="false" aria-controls="rankings-section">Rankings</button>
   </div>
 
   <!-- Ratings section -->
-  <div id="ratings-section" class="rr-section rr-section-active">
+  <div id="ratings-section" class="rr-section rr-section-active" role="tabpanel" aria-labelledby="btn-ratings">
     <div id="ratings-filters" class="filters-bar">
-      <input type="text" id="searchInput" placeholder="Search officials..." />
-      <select id="officeFilter">
+      <input type="text" id="searchInput" class="filter-select" placeholder="Search officials..." />
+      <select id="officeFilter" class="filter-select" aria-label="Office filter">
         <option value="">All Offices</option>
         <option value="president">President</option>
         <option value="vice president">Vice President</option>
@@ -370,16 +371,16 @@
         <option value="senator">Senator</option>
         <option value="u.s. representative">U.S. Representative</option>
       </select>
-      <select id="stateFilter">…</select>
-      <select id="partyFilter">…</select>
+      <select id="stateFilter" class="filter-select" aria-label="State filter"></select>
+      <select id="partyFilter" class="filter-select" aria-label="Party filter"></select>
     </div>
     <div id="ratings-cards" class="card-section"></div>
   </div>
 
   <!-- Rankings section -->
-  <div id="rankings-section" class="rr-section" aria-hidden="true">
+  <div id="rankings-section" class="rr-section" role="tabpanel" aria-labelledby="btn-rankings" aria-hidden="true">
     <div class="filters-row">
-      <select id="rankingsOfficeFilter" aria-label="Rankings office filter">
+      <select id="rankingsOfficeFilter" class="filter-select" aria-label="Rankings office filter">
         <option value="senator" selected>Senators</option>
         <option value="u.s. representative">House Reps</option>
         <option value="governor">Governors</option>
@@ -387,32 +388,33 @@
         <option value="president">President</option>
         <option value="vice president">Vice President</option>
       </select>
-      <select id="rankingsCategoryFilter" aria-label="Rankings category filter">
+      <select id="rankingsCategoryFilter" class="filter-select" aria-label="Rankings category filter">
         <option value="overall" selected>Overall</option>
-        <option value="sponsored_bills">Bills Sponsored</option>
-        <option value="sponsored_amendments">Amendments Sponsored</option>
-        <option value="cosponsored_bills">Bills Cosponsored</option>
-        <option value="cosponsored_amendments">Amendments Cosponsored</option>
-        <option value="laws_enacted">Laws Enacted</option>
+        <option value="sponsoredBills">Bills Sponsored</option>
+        <option value="sponsoredAmendments">Amendments Sponsored</option>
+        <option value="cosponsoredBills">Bills Cosponsored</option>
+        <option value="cosponsoredAmendments">Amendments Cosponsored</option>
+        <option value="becameLawBills">Laws Enacted (Sponsored)</option>
+        <option value="becameLawCosponsoredBills">Laws Enacted (Cosponsored)</option>
         <option value="committees">Committees</option>
-        <option value="votes">Missed Votes</option>
+        <option value="missedVotes">Missed Votes</option>
       </select>
     </div>
 
-   <div class="leaderboard-wrap">
-  <table id="rankings-leaderboard" class="leaderboard-table" aria-label="Rankings leaderboard">
-    <thead>
-      <tr>
-        <th data-sort="rank">Rank</th>
-        <th data-sort="name">Official</th>
-        <th data-sort="office">Office</th>
-        <th data-sort="score">Power Score</th>
-        <th data-sort="streak">Streak</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
-</div>
+    <div class="leaderboard-wrap">
+      <table id="rankings-leaderboard" class="leaderboard-table" aria-label="Rankings leaderboard">
+        <thead>
+          <tr>
+            <th data-sort="rank">Rank</th>
+            <th data-sort="name">Official</th>
+            <th data-sort="office">Office</th>
+            <th data-sort="score">Power Score</th>
+            <th data-sort="streak">Streak</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
 
     <div class="rankings-info">
       <button id="scoringLogicBtn" class="info-button">Rankings Scoring and Weight Logic</button>
@@ -423,6 +425,7 @@
   <div id="scorecardModal" class="scorecard-modal" aria-hidden="true">
     <div class="scorecard-modal-content" role="dialog" aria-modal="true" aria-labelledby="scorecardName">
       <button id="scorecardClose" class="scorecard-modal-close" aria-label="Close scorecard">&times;</button>
+      <div id="scorecardHeader" class="scorecard-header"></div>
       <h2 id="scorecardName"></h2>
       <table id="scorecardBreakdown" class="scorecard-table"></table>
     </div>
@@ -433,48 +436,332 @@
     <div class="scorecard-modal-content" role="dialog" aria-modal="true" aria-labelledby="scoringLogicTitle">
       <button id="scoringLogicClose" class="scorecard-modal-close" aria-label="Close scoring logic">&times;</button>
       <h2 id="scoringLogicTitle">Rankings Scoring and Weight Logic</h2>
-      <div class="scoring-logic-body">
-        <p>
-          Officials are ranked using weighted contributions from legislative and executive activity.
-          Each category has a raw value (e.g., bills sponsored), a weight (importance factor),
-          and a contribution (raw × weight). The sum of contributions forms the Power Score.
-        </p>
-
-        <h3>Legislative Offices (Senators & Representatives)</h3>
-        <table class="scorecard-table">
-          <thead><tr><th>Category</th><th>Weight</th><th>Rationale</th></tr></thead>
-          <tbody>
-            <tr><td>Bills Sponsored</td><td>1.2</td><td>Shows initiative and legislative drive.</td></tr>
-            <tr><td>Amendments Sponsored</td><td>1.0</td><td>Refines legislation; smaller scope than full bills.</td></tr>
-            <tr><td>Bills Cosponsored</td><td>0.6</td><td>Collaboration matters, but less than leading bills.</td></tr>
-            <tr><td>Amendments Cosponsored</td><td>0.5</td><td>Cooperative input; smaller scope than bills.</td></tr>
-            <tr><td>Bills Enacted</td><td>6.0</td><td>Highest impact — turning proposals into law.</td></tr>
-            <tr><td>Amendments Enacted</td><td>4.0</td><td>Influence through amendments that become law.</td></tr>
-            <tr><td>Committee Memberships</td><td>4.0</td><td>Committees drive legislation; membership shows influence.</td></tr>
-            <tr><td>Committee Leadership Roles</td><td>2.0</td><td>Chair or Ranking Member positions add weight.</td></tr>
-            <tr><td>Missed Votes (%)</td><td>-2.0</td><td>Penalizes absenteeism.</td></tr>
-          </tbody>
-        </table>
-
-        <h3>Executive Offices (President, Vice President, Governors)</h3>
-        <table class="scorecard-table">
-          <thead><tr><th>Category</th><th>Weight</th><th>Rationale</th></tr></thead>
-          <tbody>
-            <tr><td>Executive Orders</td><td>2.5</td><td>Direct executive action, but less lasting than laws.</td></tr>
-            <tr><td>Vetoes</td><td>3.0</td><td>Blocking legislation shows influence, but is reactive.</td></tr>
-            <tr><td>Budgets Proposed</td><td>2.0</td><td>Fiscal leadership is important but shared with legislature.</td></tr>
-            <tr><td>Appointments Confirmed</td><td>3.0</td><td>Staffing effectiveness impacts governance.</td></tr>
-            <tr><td>Leadership Score</td><td>5.0</td><td>Leadership is central to executive performance.</td></tr>
-            <tr><td>Working With Legislature</td><td>3.5</td><td>Cross‑branch cooperation is vital.</td></tr>
-            <tr><td>Crisis Response</td><td>4.0</td><td>Handling emergencies is a defining test.</td></tr>
-            <tr><td>Missed Duties</td><td>-3.0</td><td>Penalty for neglecting responsibilities.</td></tr>
-            <tr><td>Misconduct</td><td>-12.0</td><td>Severe penalty for misconduct in executive office.</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <div id="scoringLogicBody" class="scoring-logic-body"></div>
     </div>
   </div>
 </section>
+
+<script>
+/* ---------- Tabs: Ratings vs Rankings ---------- */
+(() => {
+  const ratingsTabBtn = document.getElementById('btn-ratings');
+  const rankingsTabBtn = document.getElementById('btn-rankings');
+  const ratingsSection = document.getElementById('ratings-section');
+  const rankingsSection = document.getElementById('rankings-section');
+
+  function activateTab(target) {
+    const isRatings = target === 'ratings';
+    ratingsTabBtn.classList.toggle('rr-tab-active', isRatings);
+    rankingsTabBtn.classList.toggle('rr-tab-active', !isRatings);
+
+    ratingsSection.classList.toggle('rr-section-active', isRatings);
+    rankingsSection.classList.toggle('rr-section-active', !isRatings);
+
+    ratingsSection.setAttribute('aria-hidden', String(!isRatings));
+    rankingsSection.setAttribute('aria-hidden', String(isRatings));
+  }
+
+  ratingsTabBtn.addEventListener('click', () => activateTab('ratings'));
+  rankingsTabBtn.addEventListener('click', () => activateTab('rankings'));
+})();
+
+/* ---------- Scoring logic modal renderer ---------- */
+function renderScoringLogic() {
+  const modalBody = document.getElementById('scoringLogicBody');
+  modalBody.innerHTML = `
+    <p>
+      Officials are ranked using weighted contributions from legislative and executive activity.
+      Each category has a raw value (e.g., bills sponsored), a weight (importance factor),
+      and a contribution (raw × weight). The sum of contributions forms the Power Score.
+    </p>
+
+    <h3>Legislative Offices (Senators & Representatives)</h3>
+    <table class="scorecard-table">
+      <thead><tr><th>Category</th><th>Weight</th><th>Rationale</th></tr></thead>
+      <tbody>
+        <tr><td>Bills Sponsored</td><td>1.2</td><td>Shows initiative and legislative drive.</td></tr>
+        <tr><td>Amendments Sponsored</td><td>1.0</td><td>Refines legislation; smaller scope than full bills.</td></tr>
+        <tr><td>Bills Cosponsored</td><td>0.6</td><td>Collaboration matters, but less than leading bills.</td></tr>
+        <tr><td>Amendments Cosponsored</td><td>0.5</td><td>Cooperative input; smaller scope than bills.</td></tr>
+        <tr><td>Laws Enacted (Sponsored)</td><td>6.0</td><td>Turning proposals into law.</td></tr>
+        <tr><td>Laws Enacted (Cosponsored)</td><td>4.0</td><td>Influence via amendments/bills that become law.</td></tr>
+        <tr><td>Committee Memberships</td><td>4.0</td><td>Committees drive legislation; membership shows influence.</td></tr>
+        <tr><td>Committee Leadership Roles</td><td>2.0</td><td>Chair/Ranking roles add weight.</td></tr>
+        <tr><td>Missed Votes (%)</td><td>-2.0</td><td>Penalizes absenteeism.</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Executive Offices (President, Vice President, Governors)</h3>
+    <table class="scorecard-table">
+      <thead><tr><th>Category</th><th>Weight</th><th>Rationale</th></tr></thead>
+      <tbody>
+        <tr><td>Executive Orders</td><td>2.5</td><td>Direct action; less lasting than laws.</td></tr>
+        <tr><td>Vetoes</td><td>3.0</td><td>Blocks legislation—reactive but impactful.</td></tr>
+        <tr><td>Budgets Proposed</td><td>2.0</td><td>Fiscal leadership shared with legislature.</td></tr>
+        <tr><td>Appointments Confirmed</td><td>3.0</td><td>Staffing effectiveness impacts governance.</td></tr>
+        <tr><td>Leadership Score</td><td>5.0</td><td>Central to executive performance.</td></tr>
+        <tr><td>Working With Legislature</td><td>3.5</td><td>Cross‑branch cooperation is vital.</td></tr>
+        <tr><td>Crisis Response</td><td>4.0</td><td>Handling emergencies is defining.</td></tr>
+        <tr><td>Missed Duties</td><td>-3.0</td><td>Penalty for neglecting responsibilities.</td></tr>
+        <tr><td>Misconduct</td><td>-12.0</td><td>Severe penalty for misconduct.</td></tr>
+      </tbody>
+    </table>
+  `;
+}
+
+/* ---------- Scorecard modal ---------- */
+function showScorecard(person, breakdown, composite) {
+  const modal = document.getElementById('scorecardModal');
+  const nameEl = document.getElementById('scorecardName');
+  const table = document.getElementById('scorecardBreakdown');
+  const header = document.getElementById('scorecardHeader');
+
+  nameEl.textContent = person.name;
+
+  const photoUrl = person.photoUrl || '/assets/photos/fallback-photo.jpg';
+  const district = person.district ? ` • District ${person.district}` : '';
+  header.innerHTML = `
+    <img src="${photoUrl}" alt="${person.name}" class="profile-photo" onerror="this.src='/assets/photos/fallback-photo.jpg';">
+    <div class="scorecard-header-info">
+      <p>${person.state}${district} • ${person.party}</p>
+      <p>Office: ${person.office}</p>
+      <p>Power Score: ${Number(composite).toFixed(1)}</p>
+      <p>Streak: ${person.streak || 0} weeks</p>
+    </div>
+  `;
+
+  const legislationHtml = `
+    <h3>Legislation</h3>
+    <ul>
+      <li>Bills Sponsored: ${person.sponsoredBills ?? 0}</li>
+      <li>Bills Cosponsored: ${person.cosponsoredBills ?? 0}</li>
+      <li>Laws Enacted (Sponsored): ${person.becameLawBills ?? 0}</li>
+      <li>Laws Enacted (Cosponsored): ${person.becameLawCosponsoredBills ?? 0}</li>
+    </ul>
+  `;
+  const votesHtml = `
+    <h3>Votes</h3>
+    <ul>
+      <li>Yea Votes: ${person.yeaVotes ?? 0}</li>
+      <li>Nay Votes: ${person.nayVotes ?? 0}</li>
+      <li>Missed Votes: ${person.missedVotes ?? 0}</li>
+      <li>Total Votes: ${person.totalVotes ?? 0}</li>
+      <li>Participation %: ${(person.participationPct ?? 0).toFixed(2)}</li>
+      <li>Missed Vote %: ${(person.missedVotePct ?? 0).toFixed(2)}</li>
+    </ul>
+  `;
+  const committeesHtml = `
+    <h3>Committees</h3>
+    <div class="committee-badges">
+      ${typeof renderCommitteeBadges === 'function' ? renderCommitteeBadges(person) : ''}
+    </div>
+  `;
+  const misconductHtml = `
+    <h3>Misconduct</h3>
+    <ul>
+      <li>Infractions: ${person.misconductCount ?? 0}</li>
+      <li>Tags: ${(person.misconductTags ?? []).join(', ') || 'None'}</li>
+      <li>Penalty Applied: ${(person.misconductCount ?? 0) * -10}</li>
+    </ul>
+  `;
+
+  table.innerHTML = `
+    <tbody>
+      <tr>
+        <td colspan="4">
+          ${legislationHtml}
+          ${votesHtml}
+          ${committeesHtml}
+          ${misconductHtml}
+        </td>
+      </tr>
+    </tbody>
+  `;
+
+  modal.classList.add('is-open');
+  modal.setAttribute('aria-hidden', 'false');
+}
+
+/* ---------- Rankings table: sort + render ---------- */
+function attachSortableHeaders(rows, officeType) {
+  const headers = document.querySelectorAll('#rankings-leaderboard th');
+  headers.forEach(header => {
+    header.addEventListener('click', () => {
+      const sortField = header.dataset.sort;
+      const sortedRows = [...rows];
+
+      if (sortField === 'rank') {
+        sortedRows.sort((a, b) => a.rank - b.rank);
+      } else if (sortField === 'name') {
+        sortedRows.sort((a, b) => a.person.name.localeCompare(b.person.name));
+      } else if (sortField === 'office') {
+        sortedRows.sort((a, b) => a.person.office.localeCompare(b.person.office));
+      } else if (sortField === 'score') {
+        sortedRows.sort((a, b) => b.score - a.score);
+      } else if (sortField === 'streak') {
+        sortedRows.sort((a, b) => b.streak - a.streak);
+      }
+
+      renderTableBody(sortedRows, officeType);
+    });
+  });
+}
+
+function partyRowClass(party) {
+  const p = (party || '').toLowerCase();
+  if (p.includes('dem')) return 'row-dem';
+  if (p.includes('rep')) return 'row-rep';
+  return 'row-ind'; // independents/others = neutral gray
+}
+
+function renderTableBody(rows, officeType) {
+  const tableBody = document.querySelector('#rankings-leaderboard tbody');
+  tableBody.innerHTML = '';
+
+  rows.forEach((row, idx) => {
+    const tr = document.createElement('tr');
+    tr.className = partyRowClass(row.person.party);
+    tr.innerHTML = `
+      <td>${idx + 1}</td>
+      <td>
+        <a href="#" class="scorecard-link" data-slug="${row.person.slug}">
+          ${row.person.name}
+        </a>
+        ${typeof renderMisconductBadge === 'function' ? renderMisconductBadge(row.person) : ''}
+        <br><small>${row.person.state} • ${row.person.party}${officeType === 'rep' ? ` • District ${row.person.district || 'At-Large'}` : ''}</small>
+      </td>
+      <td>${row.person.office}</td>
+      <td>${row.score.toFixed(1)}</td>
+      <td>${typeof renderStreakBadge === 'function' ? renderStreakBadge(row.streak) : (row.streak ?? 0)}</td>
+    `;
+    tableBody.appendChild(tr);
+  });
+
+  // Name click → open scorecard modal
+  tableBody.querySelectorAll('.scorecard-link').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const slug = link.dataset.slug;
+      const row = rows.find(r => r.person.slug === slug);
+      if (row) {
+        showScorecard({ ...row.person }, row.breakdown, row.score);
+      }
+    });
+  });
+}
+
+/* ---------- Rankings render pipeline ---------- */
+async function renderRankings() {
+  const officeSel = document.getElementById('rankingsOfficeFilter');
+  const categorySel = document.getElementById('rankingsCategoryFilter');
+
+  const selectedOffice = (officeSel.value || '').toLowerCase();
+  const selectedCategory = categorySel.value;
+
+  const { senators, reps } = await loadRankingsData(); // must return arrays with slug + photoUrl
+
+  let data = [];
+  let officeType = 'senator';
+
+  if (selectedOffice.includes('senator')) {
+    data = senators;
+    officeType = 'senator';
+  } else if (selectedOffice.includes('representative') || selectedOffice.includes('rep')) {
+    data = reps;
+    officeType = 'rep';
+  } else {
+    document.querySelector('#rankings-leaderboard tbody').innerHTML =
+      '<tr><td colspan="5">Select an office to view rankings</td></tr>';
+    return;
+  }
+
+  if (!Array.isArray(data) || data.length === 0) {
+    document.querySelector('#rankings-leaderboard tbody').innerHTML =
+      '<tr><td colspan="5">No data loaded yet</td></tr>';
+    return;
+  }
+
+  const rows = data.map((person, idx) => {
+    const { composite, breakdown } = scoreLegislator(person);
+    return {
+      person,
+      score: composite,
+      breakdown,
+      streak: person.streak || 0,
+      rank: idx + 1
+    };
+  });
+
+  // Category sort mapping
+  let sortField = 'score';
+  if (selectedCategory === 'sponsoredBills') sortField = 'sponsoredBills';
+  else if (selectedCategory === 'sponsoredAmendments') sortField = 'sponsoredAmendments';
+  else if (selectedCategory === 'cosponsoredBills') sortField = 'cosponsoredBills';
+  else if (selectedCategory === 'cosponsoredAmendments') sortField = 'cosponsoredAmendments';
+  else if (selectedCategory === 'becameLawBills') sortField = 'becameLawBills';
+  else if (selectedCategory === 'becameLawCosponsoredBills') sortField = 'becameLawCosponsoredBills';
+  else if (selectedCategory === 'committees') sortField = 'committees';
+  else if (selectedCategory === 'missedVotes') sortField = 'missedVotes';
+
+  rows.sort((a, b) => {
+    const aVal = a.person[sortField] ?? (sortField === 'score' ? a.score : 0);
+    const bVal = b.person[sortField] ?? (sortField === 'score' ? b.score : 0);
+    return bVal - aVal;
+  });
+
+  renderTableBody(rows, officeType);
+  attachSortableHeaders(rows, officeType);
+}
+
+/* ---------- Wire filters + modals ---------- */
+(() => {
+  const officeSel = document.getElementById('rankingsOfficeFilter');
+  const categorySel = document.getElementById('rankingsCategoryFilter');
+
+  // Initial render
+  renderRankings().catch(console.error);
+
+  officeSel.addEventListener('change', () => renderRankings().catch(console.error));
+  categorySel.addEventListener('change', () => renderRankings().catch(console.error));
+
+  // Scoring Logic modal handlers
+  document.getElementById('scoringLogicBtn')?.addEventListener('click', () => {
+    renderScoringLogic();
+    const modal = document.getElementById('scoringLogicModal');
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+  });
+
+  document.getElementById('scoringLogicClose')?.addEventListener('click', () => {
+    const modal = document.getElementById('scoringLogicModal');
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+  });
+
+  document.getElementById('scoringLogicModal')?.addEventListener('click', e => {
+    if (e.target.id === 'scoringLogicModal') {
+      const modal = document.getElementById('scoringLogicModal');
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+  });
+
+  // Scorecard modal close
+  document.getElementById('scorecardClose')?.addEventListener('click', () => {
+    const modal = document.getElementById('scorecardModal');
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+  });
+
+  document.getElementById('scorecardModal')?.addEventListener('click', e => {
+    if (e.target.id === 'scorecardModal') {
+      const modal = document.getElementById('scorecardModal');
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+  });
+})();
+</script>
 
   </section>
 <section id="learning-resources" class="tab-content" style="display: none;">
