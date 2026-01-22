@@ -6958,3 +6958,34 @@ section > h3 {
   font-size: 0.85em;
   color: #aaa;
 }
+/* Streak/Drought badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  line-height: 1;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid #d6dee9;
+}
+
+.badge-streak::before {
+  content: "🔥";
+  font-size: 14px;
+}
+.badge-drought::before {
+  content: "❄️";
+  font-size: 14px;
+}
+
+.badge-streak {
+  border-color: #ff7a59;
+  background: #fff3ef;
+  color: #b23a1f;
+}
+.badge-drought {
+  border-color: #7fb3ff;
+  background: #f0f7ff;
+  color: #1f4a7a;
+}
