@@ -4,7 +4,8 @@ const path = require('path');
 
 const rankingsPath = path.join(__dirname, '../public/senators-rankings.json');
 const legisPath = path.join(__dirname, '../public/legislation-senators.json');
-const committeesPath = path.join(__dirname, '../public/senators-committees.json'); // Your exact file
+const committeesPath = path.join(__dirname, '../public/senators-committees.json');
+const misconductPath = path.join(__dirname, '../public/misconduct-senators.json');
 
 console.log('Starting merge-senators.js');
 
@@ -46,10 +47,10 @@ if (fs.existsSync(committeesPath)) {
   try {
     const committees = JSON.parse(fs.readFileSync(committeesPath, 'utf-8'));
     console.log(`Loaded committees from ${committeesPath} (${committees.length} entries)`);
-    
+
     // Create lookup map (assuming array of { bioguideId, committees: [...] })
     const commMap = new Map(committees.map(c => [c.bioguideId, c.committees || []]));
-    
+
     let mergedCount = 0;
     for (const sen of rankings) {
       const commData = commMap.get(sen.bioguideId);
@@ -65,6 +66,30 @@ if (fs.existsSync(committeesPath)) {
   }
 } else {
   console.warn('senators-committees.json not found — committees remain empty');
+}
+
+// Merge misconduct — only if file exists
+if (fs.existsSync(misconductPath)) {
+  try {
+    const misconduct = JSON.parse(fs.readFileSync(misconductPath, 'utf-8'));
+    console.log(`Loaded misconduct from ${misconductPath} (${misconduct.length} entries)`);
+
+    const misconductMap = new Map(misconduct.map(m => [m.bioguideId, m]));
+    let mergedCount = 0;
+    for (const sen of rankings) {
+      const misData = misconductMap.get(sen.bioguideId);
+      if (misData) {
+        sen.misconductCount = misData.misconductCount || 0;
+        sen.misconductTags = misData.misconductTags || [];
+        mergedCount++;
+      }
+    }
+    console.log(`Merged misconduct for ${mergedCount} senators`);
+  } catch (err) {
+    console.error('Failed to parse/load misconduct-senators.json:', err.message);
+  }
+} else {
+  console.warn('misconduct-senators.json not found — misconduct remains empty');
 }
 
 fs.writeFileSync(rankingsPath, JSON.stringify(rankings, null, 2));
