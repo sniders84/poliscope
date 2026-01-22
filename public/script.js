@@ -3366,53 +3366,32 @@ function showScorecard(person, breakdown, composite) {
   modal.setAttribute('aria-hidden', 'false');
 }
 
-async function render() {
-  const selectedOffice = officeSel.value.toLowerCase();
-  const selectedCategory = categorySel.value;
+// 🔽 Sortable headers + reusable table renderer
+function attachSortableHeaders(rows, officeType) {
+  const headers = document.querySelectorAll('#rankings-leaderboard th');
+  headers.forEach(header => {
+    header.addEventListener('click', () => {
+      const sortField = header.dataset.sort;
+      let sortedRows = [...rows];
 
-  const { senators, reps } = await loadRankingsData();
+      if (sortField === 'rank') {
+        sortedRows.sort((a, b) => a.rank - b.rank);
+      } else if (sortField === 'name') {
+        sortedRows.sort((a, b) => a.person.name.localeCompare(b.person.name));
+      } else if (sortField === 'office') {
+        sortedRows.sort((a, b) => a.person.office.localeCompare(b.person.office));
+      } else if (sortField === 'score') {
+        sortedRows.sort((a, b) => b.score - a.score);
+      } else if (sortField === 'streak') {
+        sortedRows.sort((a, b) => b.streak - a.streak);
+      }
 
-  let data = [];
-  let officeType = 'senator';
-
-  if (selectedOffice.includes('senator')) {
-    data = senators;
-    officeType = 'senator';
-  } else if (selectedOffice.includes('rep')) {
-    data = reps;
-    officeType = 'rep';
-  } else {
-    tableBody.innerHTML = '<tr><td colspan="5">Select an office to view rankings</td></tr>';
-    return;
-  }
-
-  if (!Array.isArray(data) || data.length === 0) {
-    tableBody.innerHTML = '<tr><td colspan="5">No data loaded yet</td></tr>';
-    return;
-  }
-
-  const rows = data.map(person => {
-    const { composite, breakdown } = scoreLegislator(person);
-    return {
-      person,
-      score: composite,
-      breakdown,
-      streak: person.streak || 0
-    };
+      renderTableBody(sortedRows, officeType);
+    });
   });
+}
 
-  // Sort by selected category (default powerScore)
-  let sortField = 'score';
-  if (selectedCategory === 'sponsoredBills') sortField = 'sponsoredBills';
-  else if (selectedCategory === 'missedVotes') sortField = 'missedVotes';
-  // Add more category mappings as needed
-
-  rows.sort((a, b) => {
-    const aVal = a.person[sortField] || (sortField === 'score' ? a.score : 0);
-    const bVal = b.person[sortField] || (sortField === 'score' ? b.score : 0);
-    return bVal - aVal;
-  });
-
+function renderTableBody(rows, officeType) {
   tableBody.innerHTML = '';
   rows.forEach((row, idx) => {
     const tr = document.createElement('tr');
@@ -3446,6 +3425,61 @@ async function render() {
   });
 }
 
+async function render() {
+  const selectedOffice = officeSel.value.toLowerCase();
+  const selectedCategory = categorySel.value;
+
+  const { senators, reps } = await loadRankingsData();
+
+  let data = [];
+  let officeType = 'senator';
+
+  if (selectedOffice.includes('senator')) {
+    data = senators;
+    officeType = 'senator';
+  } else if (selectedOffice.includes('rep')) {
+    data = reps;
+    officeType = 'rep';
+  } else {
+    tableBody.innerHTML = '<tr><td colspan="5">Select an office to view rankings</td></tr>';
+    return;
+  }
+
+  if (!Array.isArray(data) || data.length === 0) {
+    tableBody.innerHTML = '<tr><td colspan="5">No data loaded yet</td></tr>';
+    return;
+  }
+
+  const rows = data.map((person, idx) => {
+    const { composite, breakdown } = scoreLegislator(person);
+    return {
+      person,
+      score: composite,
+      breakdown,
+      streak: person.streak || 0,
+      rank: idx + 1
+    };
+  });
+
+  // Sort by selected category (default powerScore)
+  let sortField = 'score';
+  if (selectedCategory === 'sponsoredBills') sortField = 'sponsoredBills';
+  else if (selectedCategory === 'missedVotes') sortField = 'missedVotes';
+  // Add more category mappings as needed
+
+  rows.sort((a, b) => {
+    const aVal = a.person[sortField] || (sortField === 'score' ? a.score : 0);
+    const bVal = b.person[sortField] || (sortField === 'score' ? b.score : 0);
+    return bVal - aVal;
+  });
+
+  // Render table body
+renderTableBody(rows, officeType);
+
+// Attach sortable headers
+attachSortableHeaders(rows, officeType);
+}
+
 // Hook render function globally + filter changes
 window.renderRankingsLeaderboard = () => render().catch(console.error);
 officeSel.addEventListener('change', () => render().catch(console.error));
@@ -3475,3 +3509,6 @@ document.getElementById('scoringLogicModal')?.addEventListener('click', e => {
     modal.setAttribute('aria-hidden', 'true');
   }
 });
+
+// ✅ Close out the IIFE wrapper
+})();
