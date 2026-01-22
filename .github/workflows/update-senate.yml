@@ -1,4 +1,4 @@
-name: Update Senate data
+name: Update Senate Data
 on:
   workflow_dispatch:
   schedule:
@@ -46,6 +46,9 @@ jobs:
 
       - name: Generate scores
         run: node scripts/senators-scores.js
+
+      - name: Update streaks (Senate + House)
+        run: node scripts/update-streaks.js
 
       # Pull and rebase before commit (prevents conflict if House pushed first)
       - name: Pull and rebase before commit
