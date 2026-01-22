@@ -1,44 +1,40 @@
-# .github/workflows/update-house.yml
-
 name: Update House Data
-
 on:
   schedule:
-    - cron: '0 4 * * *'  # example: daily at 4 AM UTC (~11 PM EST previous day)
-  workflow_dispatch:     # allows manual trigger
-
+    - cron: '0 4 * * *' # example: daily at 4 AM UTC (~11 PM EST previous day)
+  workflow_dispatch: # allows manual trigger
 jobs:
   update-house:
     runs-on: ubuntu-latest
-    timeout-minutes: 420   # 7 hours — gives plenty of buffer
-
+    timeout-minutes: 420 # 7 hours — gives plenty of buffer
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-
       - name: Install dependencies
         run: npm install
-
       - name: Bootstrap representatives
         run: node scripts/bootstrap-representatives.js
-
       - name: Run legislation representatives scraper
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: node scripts/legislation-representatives-scraper.js
-
       - name: Run committee reps scraper
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: node scripts/committee-reps-scraper.js
-
       - name: Merge legislation into rankings
         run: node scripts/merge-representatives.js
+
+      # NEW: Pull and rebase before commit (prevents conflict if Senate pushed first)
+      - name: Pull and rebase before commit
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git pull origin main --rebase
 
       - name: Commit updated files
         uses: stefanzweifel/git-auto-commit-action@v5
