@@ -3212,7 +3212,7 @@ document.getElementById('rate-me-btn').onclick = function() {
       <img src="${photoUrl}" alt="${person.name}" class="profile-photo" onerror="this.src='assets/fallback-photo.jpg';">
       <p>${person.state}${district} • ${person.party}</p>
     `;
-    document.getElementById('scorecardBreakdown').insertAdjacentHTML('afterbegin', headerHtml);
+    document.getElementById('scorecardHeader').innerHTML = headerHtml;  // Insert into #scorecardHeader
 
     const labelMap = {
       sponsoredBills: 'Bills Sponsored',
@@ -3239,7 +3239,7 @@ document.getElementById('rate-me-btn').onclick = function() {
       `;
     }).join('');
 
-    document.getElementById('scorecardBreakdown').innerHTML += `
+    document.getElementById('scorecardBreakdown').innerHTML = `
       <table class="scorecard-table">
         <tbody>
           <tr>
@@ -3268,8 +3268,8 @@ document.getElementById('rate-me-btn').onclick = function() {
 
     const senatorsRes = await fetch('/senators-rankings.json');
     const repsRes = await fetch('/representatives-rankings.json');
-    const senators = await senatorsRes.json();
-    const reps = await repsRes.json();
+    const senators = await senatorsRes.json().catch(() => []);
+    const reps = await repsRes.json().catch(() => []);
 
     let data = [];
     let officeType = 'senator';
