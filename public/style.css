@@ -7214,3 +7214,66 @@ section > h3 {
   max-width: 800px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
+/* ===== Modal Base Styles ===== */
+.scorecard-modal {
+  display: none;              /* hidden by default */
+  position: fixed;
+  z-index: 1000;              /* sits above page content */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background-color: rgba(0,0,0,0.6); /* semi-transparent backdrop */
+}
+
+/* Show modal when .is-open is added */
+.scorecard-modal.is-open {
+  display: block;
+}
+
+/* ===== Modal Content Box ===== */
+.scorecard-modal .scorecard-modal-content {
+  background: #fff;
+  margin: 5% auto;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 800px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+/* Wider variant for Scoring Logic modal */
+.scorecard-modal.wide .scorecard-modal-content {
+  max-width: 1000px;
+}
+
+/* ===== Modal Header & Close Button ===== */
+.scorecard-modal .scorecard-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.scorecard-modal .profile-photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.scorecard-modal .scorecard-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.scorecard-modal .scorecard-modal-close:hover {
+  color: #000;
+}
