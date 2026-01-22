@@ -1357,11 +1357,11 @@
   });
 }
 
-  <!-- Load external script ONCE -->
-  <script src="script.js?v=2025-12-17-0715">
+ <!-- Load external script ONCE -->
+<script src="script.js?v=2025-12-17-0715"></script>
 
-  <!-- Unified inline script -->
- <script>
+<!-- Unified inline script -->
+<script>
   document.addEventListener('DOMContentLoaded', () => {
     // Hamburger toggle + active tab styling
     const hamburger = document.getElementById('hamburger');
@@ -1381,6 +1381,9 @@
           menu.classList.remove('open');
         });
       });
+    }
+  });
+</script>
 
       // NEW: Close menu when clicking anywhere outside of it
       document.addEventListener('click', (event) => {
