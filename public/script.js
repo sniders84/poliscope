@@ -3412,7 +3412,7 @@ function renderTableBody(rows, officeType) {
     tableBody.appendChild(tr);
   });
 
-  // Add scorecard click handlers
+  // ✅ Attach scorecard click handlers so names open the modal
   tableBody.querySelectorAll('.scorecard-link').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
@@ -3474,10 +3474,10 @@ async function render() {
   });
 
   // Render table body
-renderTableBody(rows, officeType);
+  renderTableBody(rows, officeType);
 
-// Attach sortable headers
-attachSortableHeaders(rows, officeType);
+  // Attach sortable headers
+  attachSortableHeaders(rows, officeType);
 }
 
 // Hook render function globally + filter changes
