@@ -3291,16 +3291,26 @@ async function loadRankingsData() {
       </ul>
     `;
 
-    const committeesHtml = `
-      <h3>Committees</h3>
-      <ul>
-        ${(person.committees || []).map(c => `
-          <li>${c.committeeName} — ${c.role} 
-            ${c.role === 'Chair' ? '(+5)' : c.role === 'Ranking Member' ? '(+4)' : '(+1)'}
-          </li>
-        `).join('')}
-      </ul>
-    `;
+   function roleClass(role) {
+  if (/chairman|chair/i.test(role)) return 'role-chair';
+  if (/ranking member/i.test(role)) return 'role-ranking';
+  return 'role-member';
+}
+
+function renderCommitteeBadges(person) {
+  return (person.committees || []).map(c => `
+    <div class="role-badge ${roleClass(c.role)}">
+      ${c.role} — ${c.committeeName}
+    </div>
+  `).join('');
+}
+
+const committeesHtml = `
+  <h3>Committees</h3>
+  <div class="committee-badges">
+    ${renderCommitteeBadges(person)}
+  </div>
+`;
 
     const misconductHtml = `
       <h3>Misconduct</h3>
