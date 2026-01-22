@@ -6929,7 +6929,7 @@ section > h3 {
   transform: translateY(-1px);
 }
 
-/* NEW: Rankings-specific styles for modal photo and details */
+/* NEW: Rankings-specific additions for photo and details */
 #scorecardHeader {
   text-align: center;
   margin-bottom: 20px;
@@ -6950,7 +6950,7 @@ section > h3 {
   color: #ddd;
 }
 
-/* State/party/district under name in table rows */
+/* Sub-line for state/party/district under Official name in table */
 .leaderboard-table td:nth-child(2) small,
 .details {
   display: block;
