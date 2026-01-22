@@ -4,7 +4,7 @@ const path = require('path');
 
 const rankingsPath = path.join(__dirname, '../public/senators-rankings.json');
 const legisPath = path.join(__dirname, '../public/legislation-senators.json');
-const committeesPath = path.join(__dirname, '../public/senators-committees.json');  // ← your actual file
+const committeesPath = path.join(__dirname, '../public/senators-committees.json'); // Your exact file
 
 console.log('Starting merge-senators.js');
 
@@ -31,38 +31,40 @@ const legisMap = new Map(legis.map(m => [m.bioguideId, m]));
 for (const sen of rankings) {
   const legData = legisMap.get(sen.bioguideId);
   if (legData) {
-    Object.assign(sen, {
-      sponsoredBills: legData.sponsoredBills || 0,
-      cosponsoredBills: legData.cosponsoredBills || 0,
-      becameLawBills: legData.becameLawBills || 0,
-      becameLawCosponsoredBills: legData.becameLawCosponsoredBills || 0,
-      lastUpdated: legData.lastUpdated || new Date().toISOString()
-    });
+    sen.sponsoredBills = legData.sponsoredBills || 0;
+    sen.cosponsoredBills = legData.cosponsoredBills || 0;
+    sen.becameLawBills = legData.becameLawBills || 0;
+    sen.becameLawCosponsoredBills = legData.becameLawCosponsoredBills || 0;
+    sen.lastUpdated = legData.lastUpdated || new Date().toISOString();
   } else {
     console.warn(`No legislation data for ${sen.bioguideId} (${sen.name})`);
   }
 }
 
-// Committee merge — only if file exists
+// Merge committees — only if file exists
 if (fs.existsSync(committeesPath)) {
   try {
     const committees = JSON.parse(fs.readFileSync(committeesPath, 'utf-8'));
-    console.log(`Loaded committees from ${committeesPath}`);
-    // Assuming structure is array of { bioguideId, committees: [...] }
-    const commMap = new Map(committees.map(c => [c.bioguideId, c]));
+    console.log(`Loaded committees from ${committeesPath} (${committees.length} entries)`);
+    
+    // Create lookup map (assuming array of { bioguideId, committees: [...] })
+    const commMap = new Map(committees.map(c => [c.bioguideId, c.committees || []]));
+    
+    let mergedCount = 0;
     for (const sen of rankings) {
       const commData = commMap.get(sen.bioguideId);
-      if (commData) {
-        sen.committees = commData.committees || [];
+      if (commData && commData.length > 0) {
+        sen.committees = commData;
+        mergedCount++;
       }
     }
-    console.log('Merged committee data successfully');
+    console.log(`Merged committees for ${mergedCount} senators`);
   } catch (err) {
     console.error('Failed to parse/load senators-committees.json:', err.message);
-    // Continue anyway — don't crash workflow
+    // Continue anyway
   }
 } else {
-  console.warn('senators-committees.json not found — skipping committee merge');
+  console.warn('senators-committees.json not found — committees remain empty');
 }
 
 fs.writeFileSync(rankingsPath, JSON.stringify(rankings, null, 2));
