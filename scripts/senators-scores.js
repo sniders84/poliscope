@@ -1,13 +1,20 @@
 // scripts/senators-scores.js
-// Purpose: Compute scores for senators based on votes + bills only (no amendments)
-
+// Purpose: Compute scores and add vote stats to senators-rankings.json (overwrites it)
 const fs = require('fs');
 const path = require('path');
 
 const rankingsPath = path.join(__dirname, '../public/senators-rankings.json');
-const outputPath = path.join(__dirname, '../public/senators-scores.json');
 
-const senators = JSON.parse(fs.readFileSync(rankingsPath, 'utf-8'));
+console.log('Starting senators-scores.js');
+
+let senators;
+try {
+  senators = JSON.parse(fs.readFileSync(rankingsPath, 'utf-8'));
+  console.log(`Loaded ${senators.length} senators`);
+} catch (err) {
+  console.error('Failed to read senators-rankings.json:', err.message);
+  process.exit(1);
+}
 
 const WEIGHTS = {
   bills: {
@@ -17,8 +24,8 @@ const WEIGHTS = {
     becameLawCosponsoredBills: 3
   },
   votes: {
-    participationBonus: 2, // per 100 votes cast
-    penaltyMissedPct: -10  // subtract if missed > 10%
+    participationBonus: 2,      // per 100 votes cast
+    penaltyMissedPct: -10       // subtract if missed > 10%
   },
   committees: {
     Chair: 5,
@@ -27,7 +34,7 @@ const WEIGHTS = {
   }
 };
 
-const scores = senators.map((s) => {
+senators = senators.map(s => {
   let score = 0;
 
   // Legislation (bills only)
@@ -42,7 +49,7 @@ const scores = senators.map((s) => {
     else score += WEIGHTS.committees.Member;
   }
 
-  // Votes
+  // Votes (using existing fields — will be 0 if not present yet)
   const totalVotes = s.totalVotes || 0;
   const missedPct = s.missedVotePct || 0;
   if (totalVotes > 0) {
@@ -52,29 +59,20 @@ const scores = senators.map((s) => {
     score += WEIGHTS.votes.penaltyMissedPct;
   }
 
+  // Add vote stats if missing (placeholders)
+  if (!s.yeaVotes) s.yeaVotes = 0;
+  if (!s.nayVotes) s.nayVotes = 0;
+  if (!s.missedVotes) s.missedVotes = 0;
+  if (!s.totalVotes) s.totalVotes = 0;
+  if (!s.participationPct) s.participationPct = totalVotes > 0 ? (1 - missedPct / 100) * 100 : 100;
+  if (!s.missedVotePct) s.missedVotePct = missedPct;
+
   return {
-    bioguideId: s.bioguideId,
-    name: s.name,
-    state: s.state,
-    party: s.party,
-    score,
-    breakdown: {
-      sponsoredBills: s.sponsoredBills,
-      cosponsoredBills: s.cosponsoredBills,
-      becameLawBills: s.becameLawBills,
-      becameLawCosponsoredBills: s.becameLawCosponsoredBills,
-      committees: s.committees,
-      votes: {
-        yeaVotes: s.yeaVotes,
-        nayVotes: s.nayVotes,
-        missedVotes: s.missedVotes,
-        totalVotes: s.totalVotes,
-        participationPct: s.participationPct,
-        missedVotePct: s.missedVotePct
-      }
-    }
+    ...s,
+    powerScore: score,  // or whatever your final score field is called
+    lastUpdated: new Date().toISOString()
   };
 });
 
-fs.writeFileSync(outputPath, JSON.stringify(scores, null, 2));
-console.log(`Wrote ${scores.length} senator score entries to ${outputPath}`);
+fs.writeFileSync(rankingsPath, JSON.stringify(senators, null, 2));
+console.log(`Updated senators-rankings.json with scores and vote stats (${senators.length} records)`);
