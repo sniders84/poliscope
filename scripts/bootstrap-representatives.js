@@ -10,9 +10,22 @@ const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.
 
 const roster = JSON.parse(fs.readFileSync(ROSTER_PATH, 'utf-8'));
 
+function makeSlug(rep) {
+  // Prefer bioguide ID for uniqueness, fallback to name-based slug
+  if (rep.id && rep.id.bioguide) return rep.id.bioguide.toLowerCase();
+  const fullName = `${rep.name.first} ${rep.name.last}`.trim();
+  return fullName
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .toLowerCase();
+}
+
 function baseRecord(rep) {
   const lastTerm = rep.terms.at(-1);
   return {
+    slug: makeSlug(rep),
     bioguideId: rep.id.bioguide,
     name: `${rep.name.first} ${rep.name.last}`,
     state: lastTerm.state,
