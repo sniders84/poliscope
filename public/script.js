@@ -3399,7 +3399,7 @@ function renderTableBody(rows, officeType) {
     tr.innerHTML = `
       <td>${idx + 1}</td>
       <td>
-        <a href="#" class="scorecard-link" data-name="${row.person.name.replace(/"/g, '&quot;')}">
+        <a href="#" class="scorecard-link" data-slug="${row.person.slug}">
           ${row.person.name}
         </a>
         ${renderMisconductBadge(row.person)}
@@ -3412,14 +3412,17 @@ function renderTableBody(rows, officeType) {
     tableBody.appendChild(tr);
   });
 
-  // ✅ Attach scorecard click handlers so names open the modal
+  // ✅ Attach scorecard click handlers using slug
   tableBody.querySelectorAll('.scorecard-link').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
-      const name = link.dataset.name;
-      const row = rows.find(r => r.person.name === name);
+      const slug = link.dataset.slug;
+      const row = rows.find(r => r.person.slug === slug);
       if (row) {
-        showScorecard(row.person, row.breakdown, row.score);
+        showScorecard({
+          ...row.person,
+          photoUrl: row.person.photoUrl
+        }, row.breakdown, row.score);
       }
     });
   });
