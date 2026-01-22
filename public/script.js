@@ -3391,43 +3391,58 @@ async function loadRankingsData() {
     });
   }
 
-  function renderTableBody(rows, officeType) {
-    tableBody.innerHTML = '';
-    rows.forEach((row, idx) => {
-      const tr = document.createElement('tr');
-      tr.className = partyRowClass(row.person.party);
-      tr.innerHTML = `
-        <td>${idx + 1}</td>
-        <td>
-          <a href="#" class="scorecard-link" data-slug="${row.person.slug}">
-            ${row.person.name}
-          </a>
-          ${renderMisconductBadge(row.person)}
-          <br><small>${row.person.state} • ${row.person.party}${officeType === 'rep' ? ` • District ${row.person.district || 'At-Large'}` : ''}</small>
-        </td>
-        <td>${row.person.office}</td>
-        <td>${row.score.toFixed(1)}</td>
-        <td>${renderStreakBadge(row.streak)}</td>
-      `;
-      tableBody.appendChild(tr);
-    });
+ function renderTableBody(rows, officeType) {
+  tableBody.innerHTML = '';
+  rows.forEach((row, idx) => {
+    // Cross-reference with allOfficials for richer info
+    const official = window.allOfficials?.find(o => o.slug === row.person.slug);
 
-    // ✅ Attach scorecard click handlers using slug
-    tableBody.querySelectorAll('.scorecard-link').forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const slug = link.dataset.slug;
-        const row = rows.find(r => r.person.slug === slug);
-        if (row) {
-          showScorecard(
-            { ...row.person, photoUrl: row.person.photoUrl },
-            row.breakdown,
-            row.score
-          );
-        }
-      });
+    const officeLabel = official?.office || row.person.office || (officeType === 'rep' ? 'Representative' : 'Senator');
+    const stateLabel = official?.state || row.person.state;
+    const partyLabel = official?.party || row.person.party;
+    const photoUrl = official?.photo || row.person.photoUrl;
+
+    const tr = document.createElement('tr');
+    tr.className = partyRowClass(partyLabel);
+    tr.innerHTML = `
+      <td>${idx + 1}</td>
+      <td>
+        <a href="#" class="scorecard-link" data-slug="${row.person.slug}">
+          ${row.person.name}
+        </a>
+        ${renderMisconductBadge(row.person)}
+        <br><small>${stateLabel} • ${partyLabel}${officeType === 'rep' ? ` • District ${row.person.district || 'At-Large'}` : ''}</small>
+      </td>
+      <td>${officeLabel}</td>
+      <td>${row.score.toFixed(1)}</td>
+      <td>${renderStreakBadge(row.streak)}</td>
+    `;
+    tableBody.appendChild(tr);
+  });
+
+  // ✅ Attach scorecard click handlers using slug
+  tableBody.querySelectorAll('.scorecard-link').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const slug = link.dataset.slug;
+      const row = rows.find(r => r.person.slug === slug);
+      if (row) {
+        const official = window.allOfficials?.find(o => o.slug === row.person.slug);
+        showScorecard(
+          {
+            ...row.person,
+            office: official?.office || row.person.office,
+            state: official?.state || row.person.state,
+            party: official?.party || row.person.party,
+            photoUrl: official?.photo || row.person.photoUrl
+          },
+          row.breakdown,
+          row.score
+        );
+      }
     });
-  }
+  });
+}
 
   // 🚀 Render pipeline
   async function render() {
