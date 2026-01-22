@@ -3269,168 +3269,209 @@ async function loadRankingsData() {
     return 'row-ind';
   }
 
-  // Scorecard modal with photo, header, and breakdown
-  function showScorecard(person, breakdown, composite) {
-    const modal = document.getElementById('scorecardModal');
-    const nameEl = document.getElementById('scorecardName');
-    const table = document.getElementById('scorecardBreakdown');
+// ⚖️ Scoring logic modal renderer
+function renderScoringLogic() {
+  const modalBody = document.getElementById('scoringLogicBody');
+  modalBody.innerHTML = `
+    <h3>Scoring Formula</h3>
+    <p>Each legislator’s Power Score is calculated using the following weighted factors:</p>
+    <ul>
+      <li><strong>Sponsored Bills:</strong> × ${WEIGHTS.sponsoredBills}</li>
+      <li><strong>Cosponsored Bills:</strong> × ${WEIGHTS.cosponsoredBills}</li>
+      <li><strong>Bills Enacted (Sponsored):</strong> × ${WEIGHTS.becameLawBills}</li>
+      <li><strong>Bills Enacted (Cosponsored):</strong> × ${WEIGHTS.becameLawCosponsoredBills}</li>
+      <li><strong>Committee Memberships:</strong> × ${WEIGHTS.committees}</li>
+      <li><strong>Committee Leadership:</strong> × ${WEIGHTS.committeeLeadership}</li>
+      <li><strong>Missed Votes:</strong> × ${WEIGHTS.missedVotes}</li>
+      <li><strong>Misconduct Infractions:</strong> × ${WEIGHTS.misconductCount}</li>
+    </ul>
+    <p>The composite score is the sum of all these weighted values, rounded to one decimal place.</p>
+  `;
+}
 
-    nameEl.textContent = person.name;
+// Scorecard modal with photo, header, and breakdown
+function showScorecard(person, breakdown, composite) {
+  const modal = document.getElementById('scorecardModal');
+  const nameEl = document.getElementById('scorecardName');
+  const table = document.getElementById('scorecardBreakdown');
 
-    // Use roster photo field, fallback to local silhouette
-    const photoUrl = person.photo || '/assets/photos/fallback-photo.jpg';
-    const district = person.district ? ` / District ${person.district}` : '';
-    document.getElementById('scorecardHeader').innerHTML = `
-      <img src="${photoUrl}" alt="${person.name}" class="profile-photo" onerror="this.src='/assets/photos/fallback-photo.jpg';">
-      <div class="scorecard-header-info">
-        <p>${person.state}${district} • ${person.party}</p>
-        <p>Office: ${person.office}</p>
-        <p>Power Score: ${formatScore(composite)}</p>
-        <p>Streak: ${person.streak || 0} weeks</p>
-      </div>
-    `;
+  nameEl.textContent = person.name;
 
-    // Build breakdown sections
-    const legislationHtml = `
-      <h3>Legislation</h3>
-      <ul>
-        <li>Bills Sponsored: ${person.sponsoredBills}</li>
-        <li>Bills Cosponsored: ${person.cosponsoredBills}</li>
-        <li>Bills Enacted (Sponsored): ${person.becameLawBills}</li>
-        <li>Bills Enacted (Cosponsored): ${person.becameLawCosponsoredBills}</li>
-      </ul>
-    `;
+  // Use roster photo field, fallback to local silhouette
+  const photoUrl = person.photo || '/assets/photos/fallback-photo.jpg';
+  const district = person.district ? ` / District ${person.district}` : '';
+  document.getElementById('scorecardHeader').innerHTML = `
+    <img src="${photoUrl}" alt="${person.name}" class="profile-photo" onerror="this.src='/assets/photos/fallback-photo.jpg';">
+    <div class="scorecard-header-info">
+      <p>${person.state}${district} • ${person.party}</p>
+      <p>Office: ${person.office}</p>
+      <p>Power Score: ${formatScore(composite)}</p>
+      <p>Streak: ${person.streak || 0} weeks</p>
+    </div>
+  `;
 
-    const votesHtml = `
-      <h3>Votes</h3>
-      <ul>
-        <li>Yea Votes: ${person.yeaVotes}</li>
-        <li>Nay Votes: ${person.nayVotes}</li>
-        <li>Missed Votes: ${person.missedVotes}</li>
-        <li>Total Votes: ${person.totalVotes}</li>
-        <li>Participation %: ${person.participationPct?.toFixed(2) || 0}</li>
-        <li>Missed Vote %: ${person.missedVotePct?.toFixed(2) || 0}</li>
-      </ul>
-    `;
+  // Build breakdown sections
+  const legislationHtml = `
+    <h3>Legislation</h3>
+    <ul>
+      <li>Bills Sponsored: ${person.sponsoredBills}</li>
+      <li>Bills Cosponsored: ${person.cosponsoredBills}</li>
+      <li>Bills Enacted (Sponsored): ${person.becameLawBills}</li>
+      <li>Bills Enacted (Cosponsored): ${person.becameLawCosponsoredBills}</li>
+    </ul>
+  `;
 
-    const committeesHtml = `
-      <h3>Committees</h3>
-      <div class="committee-badges">
-        ${renderCommitteeBadges(person)}
-      </div>
-    `;
+  const votesHtml = `
+    <h3>Votes</h3>
+    <ul>
+      <li>Yea Votes: ${person.yeaVotes}</li>
+      <li>Nay Votes: ${person.nayVotes}</li>
+      <li>Missed Votes: ${person.missedVotes}</li>
+      <li>Total Votes: ${person.totalVotes}</li>
+      <li>Participation %: ${person.participationPct?.toFixed(2) || 0}</li>
+      <li>Missed Vote %: ${person.missedVotePct?.toFixed(2) || 0}</li>
+    </ul>
+  `;
 
-    const misconductHtml = `
-      <h3>Misconduct</h3>
-      <ul>
-        <li>Infractions: ${person.misconductCount || 0}</li>
-        <li>Tags: ${(person.misconductTags || []).join(', ') || 'None'}</li>
-        <li>Penalty Applied: ${(person.misconductCount || 0) * -10}</li>
-      </ul>
-    `;
+  const committeesHtml = `
+    <h3>Committees</h3>
+    <div class="committee-badges">
+      ${renderCommitteeBadges(person)}
+    </div>
+  `;
 
-    table.innerHTML = `
-      <tbody>
-        <tr>
-          <td colspan="4">
-            ${legislationHtml}
-            ${votesHtml}
-            ${committeesHtml}
-            ${misconductHtml}
-          </td>
-        </tr>
-      </tbody>
-    `;
+  const misconductHtml = `
+    <h3>Misconduct</h3>
+    <ul>
+      <li>Infractions: ${person.misconductCount || 0}</li>
+      <li>Tags: ${(person.misconductTags || []).join(', ') || 'None'}</li>
+      <li>Penalty Applied: ${(person.misconductCount || 0) * -10}</li>
+    </ul>
+  `;
 
-    modal.classList.add('is-open');
-    modal.setAttribute('aria-hidden', 'false');
-  }
-
-  async function render() {
-    const selectedOffice = officeSel.value.toLowerCase();
-    const selectedCategory = categorySel.value;
-
-    const { senators, reps } = await loadRankingsData();
-
-    let data = [];
-    let officeType = 'senator';
-
-    if (selectedOffice.includes('senator')) {
-      data = senators;
-      officeType = 'senator';
-    } else if (selectedOffice.includes('rep')) {
-      data = reps;
-      officeType = 'rep';
-    } else {
-      tableBody.innerHTML = '<tr><td colspan="5">Select an office to view rankings</td></tr>';
-      return;
-    }
-
-    if (!Array.isArray(data) || data.length === 0) {
-      tableBody.innerHTML = '<tr><td colspan="5">No data loaded yet</td></tr>';
-      return;
-    }
-
-    const rows = data.map(person => {
-      const { composite, breakdown } = scoreLegislator(person);
-      return {
-        person,
-        score: composite,
-        breakdown,
-        streak: person.streak || 0
-      };
-    });
-
-    // Sort by selected category (default powerScore)
-    let sortField = 'score';
-    if (selectedCategory === 'sponsoredBills') sortField = 'sponsoredBills';
-    else if (selectedCategory === 'missedVotes') sortField = 'missedVotes';
-    // Add more category mappings as needed
-
-    rows.sort((a, b) => {
-      const aVal = a.person[sortField] || (sortField === 'score' ? a.score : 0);
-      const bVal = b.person[sortField] || (sortField === 'score' ? b.score : 0);
-      return bVal - aVal;
-    });
-
-    tableBody.innerHTML = '';
-    rows.forEach((row, idx) => {
-      const tr = document.createElement('tr');
-      tr.className = partyRowClass(row.person.party);
-      tr.innerHTML = `
-        <td>${idx + 1}</td>
-        <td>
-          <a href="#" class="scorecard-link" data-name="${row.person.name.replace(/"/g, '&quot;')}">
-            ${row.person.name}
-          </a>
-          ${renderMisconductBadge(row.person)}
-          <br><small>${row.person.state} • ${row.person.party}${officeType === 'rep' ? ` • District ${row.person.district || 'At-Large'}` : ''}</small>
+  table.innerHTML = `
+    <tbody>
+      <tr>
+        <td colspan="4">
+          ${legislationHtml}
+          ${votesHtml}
+          ${committeesHtml}
+          ${misconductHtml}
         </td>
-        <td>${row.person.office}</td>
-        <td>${row.score.toFixed(1)}</td>
-        <td>${renderStreakBadge(row.streak)}</td>
-      `;
-      tableBody.appendChild(tr);
-    });
+      </tr>
+    </tbody>
+  `;
 
-    // Add scorecard click handlers
-    tableBody.querySelectorAll('.scorecard-link').forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const name = link.dataset.name;
-        const row = rows.find(r => r.person.name === name);
-        if (row) {
-          showScorecard(row.person, row.breakdown, row.score);
-        }
-      });
-    });
+  modal.classList.add('is-open');
+  modal.setAttribute('aria-hidden', 'false');
+}
+
+async function render() {
+  const selectedOffice = officeSel.value.toLowerCase();
+  const selectedCategory = categorySel.value;
+
+  const { senators, reps } = await loadRankingsData();
+
+  let data = [];
+  let officeType = 'senator';
+
+  if (selectedOffice.includes('senator')) {
+    data = senators;
+    officeType = 'senator';
+  } else if (selectedOffice.includes('rep')) {
+    data = reps;
+    officeType = 'rep';
+  } else {
+    tableBody.innerHTML = '<tr><td colspan="5">Select an office to view rankings</td></tr>';
+    return;
   }
 
-  // Hook render function globally + filter changes
-  window.renderRankingsLeaderboard = () => render().catch(console.error);
-  officeSel.addEventListener('change', () => render().catch(console.error));
-  categorySel.addEventListener('change', () => render().catch(console.error));
+  if (!Array.isArray(data) || data.length === 0) {
+    tableBody.innerHTML = '<tr><td colspan="5">No data loaded yet</td></tr>';
+    return;
+  }
 
-  // Initial render
-  render().catch(console.error);
-})();
+  const rows = data.map(person => {
+    const { composite, breakdown } = scoreLegislator(person);
+    return {
+      person,
+      score: composite,
+      breakdown,
+      streak: person.streak || 0
+    };
+  });
+
+  // Sort by selected category (default powerScore)
+  let sortField = 'score';
+  if (selectedCategory === 'sponsoredBills') sortField = 'sponsoredBills';
+  else if (selectedCategory === 'missedVotes') sortField = 'missedVotes';
+  // Add more category mappings as needed
+
+  rows.sort((a, b) => {
+    const aVal = a.person[sortField] || (sortField === 'score' ? a.score : 0);
+    const bVal = b.person[sortField] || (sortField === 'score' ? b.score : 0);
+    return bVal - aVal;
+  });
+
+  tableBody.innerHTML = '';
+  rows.forEach((row, idx) => {
+    const tr = document.createElement('tr');
+    tr.className = partyRowClass(row.person.party);
+    tr.innerHTML = `
+      <td>${idx + 1}</td>
+      <td>
+        <a href="#" class="scorecard-link" data-name="${row.person.name.replace(/"/g, '&quot;')}">
+          ${row.person.name}
+        </a>
+        ${renderMisconductBadge(row.person)}
+        <br><small>${row.person.state} • ${row.person.party}${officeType === 'rep' ? ` • District ${row.person.district || 'At-Large'}` : ''}</small>
+      </td>
+      <td>${row.person.office}</td>
+      <td>${row.score.toFixed(1)}</td>
+      <td>${renderStreakBadge(row.streak)}</td>
+    `;
+    tableBody.appendChild(tr);
+  });
+
+  // Add scorecard click handlers
+  tableBody.querySelectorAll('.scorecard-link').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const name = link.dataset.name;
+      const row = rows.find(r => r.person.name === name);
+      if (row) {
+        showScorecard(row.person, row.breakdown, row.score);
+      }
+    });
+  });
+}
+
+// Hook render function globally + filter changes
+window.renderRankingsLeaderboard = () => render().catch(console.error);
+officeSel.addEventListener('change', () => render().catch(console.error));
+categorySel.addEventListener('change', () => render().catch(console.error));
+
+// Initial render
+render().catch(console.error);
+
+// Scoring Logic modal handlers
+document.getElementById('scoringLogicBtn')?.addEventListener('click', () => {
+  renderScoringLogic(); // populate modal body dynamically
+  const modal = document.getElementById('scoringLogicModal');
+  modal.classList.add('is-open');
+  modal.setAttribute('aria-hidden', 'false');
+});
+
+document.getElementById('scoringLogicClose')?.addEventListener('click', () => {
+  const modal = document.getElementById('scoringLogicModal');
+  modal.classList.remove('is-open');
+  modal.setAttribute('aria-hidden', 'true');
+});
+
+document.getElementById('scoringLogicModal')?.addEventListener('click', e => {
+  if (e.target.id === 'scoringLogicModal') {
+    const modal = document.getElementById('scoringLogicModal');
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+  }
+});
