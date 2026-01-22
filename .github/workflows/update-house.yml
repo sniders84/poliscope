@@ -46,6 +46,9 @@ jobs:
       - name: Generate scores
         run: node scripts/representatives-scores.js
 
+      - name: Update streaks (House + Senate)
+        run: node scripts/update-streaks.js
+
       # Pull and rebase before commit (prevents conflict if Senate pushed first)
       - name: Pull and rebase before commit
         run: |
