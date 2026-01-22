@@ -92,20 +92,15 @@
 </head>
 
 <body>
-<!-- Header -->
-<header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 20px;">
-  <div class="header-left">
-    <button id="hamburger" aria-label="Open menu">&#9776;</button>
-  </div>
-  <div class="header-center" style="flex: 1; text-align: center;">
-    <img
-      src="assets/electorate-logo.png"
-      alt="Electorate Logo"
-      class="logo"
-      style="max-height: 400px; height: auto; width: auto; margin-top: 40px; display: block; margin-left: auto; margin-right: auto;"
-    />
-  </div>
-</header>
+    <!-- Header -->
+  <header>
+    <div class="header-left">
+      <button id="hamburger" aria-label="Open menu">&#9776;</button>
+    </div>
+    <div class="header-center">
+      <img src="assets/electorate-logo.png" alt="Logo" class="logo" style="max-height: 200px; height: auto; width: auto;" />
+    </div>
+    </header>
 
   <!-- Slide-out hamburger menu -->
   <nav id="hamburger-menu" aria-label="Primary">
@@ -352,127 +347,135 @@
       </div>
       <div id="officials-container" class="grid"></div>
     
-<!-- Ratings & Rankings toggle (must come before sections) -->
-<div id="rr-toggle" class="rr-toggle">
-  <button id="btn-ratings" class="rr-tab rr-tab-active" aria-controls="ratings-section">Ratings</button>
-  <button id="btn-rankings" class="rr-tab" aria-controls="rankings-section">Rankings</button>
-</div>
+</section>
+<section id="ratings" class="tab-content" style="display: none;">
+  <h2>Ratings & Rankings</h2>
 
-<!-- Ratings section (restored so toggle works) -->
-<div id="ratings-section" class="rr-section rr-section-active" aria-hidden="false">
-  <div id="ratings-filters" class="filters-bar">
-    <input type="text" id="searchInput" placeholder="Search officials..." />
-    <select id="officeFilter">
-      <option value="">All Offices</option>
-      <option value="president">President</option>
-      <option value="vice president">Vice President</option>
-      <option value="governor">Governor</option>
-      <option value="lieutenant governor">Lt. Governor</option>
-      <option value="senator">Senator</option>
-      <option value="u.s. representative">House Rep</option>
-    </select>
-    <!-- Add your state/party filters back here if they exist -->
+  <!-- Ratings & Rankings toggle -->
+  <div id="rr-toggle" class="rr-toggle">
+    <button id="btn-ratings" class="rr-tab rr-tab-active" aria-controls="ratings-section">Ratings</button>
+    <button id="btn-rankings" class="rr-tab" aria-controls="rankings-section">Rankings</button>
   </div>
-  <div id="ratings-cards" class="card-section">
-    <!-- Your ratings cards will load here via script.js -->
-    <p>Loading ratings cards...</p> <!-- Placeholder until script runs -->
-  </div>
-</div>
 
-<!-- Rankings section (fixed, no amendments in filter) -->
-<div id="rankings-section" class="rr-section" aria-hidden="true">
-  <div class="filters-row">
-    <select id="rankingsOfficeFilter" aria-label="Rankings office filter">
-      <option value="senator" selected>Senators</option>
-      <option value="u.s. representative">House Reps</option>
-      <option value="governor">Governors</option>
-      <option value="lieutenant governor">Lt. Governors</option>
-      <option value="president">President</option>
-      <option value="vice president">Vice President</option>
-    </select>
-    <select id="rankingsCategoryFilter" aria-label="Rankings category filter">
-      <option value="overall" selected>Overall</option>
-      <option value="sponsored_bills">Bills Sponsored</option>
-      <option value="cosponsored_bills">Bills Cosponsored</option>
-      <option value="laws_enacted">Laws Enacted</option>
-      <option value="committees">Committees</option>
-      <option value="votes">Missed Votes</option>
-    </select>
+  <!-- Ratings section -->
+  <div id="ratings-section" class="rr-section rr-section-active">
+    <div id="ratings-filters" class="filters-bar">
+      <input type="text" id="searchInput" placeholder="Search officials..." />
+      <select id="officeFilter">
+        <option value="">All Offices</option>
+        <option value="president">President</option>
+        <option value="vice president">Vice President</option>
+        <option value="governor">Governor</option>
+        <option value="lieutenant governor">Lt. Governor</option>
+        <option value="senator">Senator</option>
+        <option value="u.s. representative">House Rep</option>
+      </select>
+      <select id="stateFilter">…</select>
+      <select id="partyFilter">…</select>
+    </div>
+    <div id="ratings-cards" class="card-section"></div>
   </div>
-  <div class="leaderboard-wrap">
-    <table id="rankings-leaderboard" class="leaderboard-table" aria-label="Rankings leaderboard">
-      <thead>
-        <tr>
-          <th>Rank</th>
-          <th>Official</th>
-          <th>Office</th>
-          <th>Power Score</th>
-          <th>Streak</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </div>
-  <div class="rankings-info">
-    <button id="scoringLogicBtn" class="info-button">Rankings Scoring and Weight Logic</button>
-  </div>
-</div>
 
-<!-- Scorecard modal (with photo/header area) -->
-<div id="scorecardModal" class="scorecard-modal" aria-hidden="true">
-  <div class="scorecard-modal-content" role="dialog" aria-modal="true" aria-labelledby="scorecardName">
-    <button id="scorecardClose" class="scorecard-modal-close" aria-label="Close scorecard">&times;</button>
-    
-    <!-- Header for photo + state/party/district -->
-    <div id="scorecardHeader" style="text-align: center; margin-bottom: 20px;"></div>
-    
-    <h2 id="scorecardName"></h2>
-    <table id="scorecardBreakdown" class="scorecard-table"></table>
-  </div>
-</div>
+  <!-- Rankings section -->
+  <div id="rankings-section" class="rr-section" aria-hidden="true">
+    <div class="filters-row">
+      <select id="rankingsOfficeFilter" aria-label="Rankings office filter">
+        <option value="senator" selected>Senators</option>
+        <option value="u.s. representative">House Reps</option>
+        <option value="governor">Governors</option>
+        <option value="lieutenant governor">Lt. Governors</option>
+        <option value="president">President</option>
+        <option value="vice president">Vice President</option>
+      </select>
+      <select id="rankingsCategoryFilter" aria-label="Rankings category filter">
+        <option value="overall" selected>Overall</option>
+        <option value="sponsored_bills">Bills Sponsored</option>
+        <option value="sponsored_amendments">Amendments Sponsored</option>
+        <option value="cosponsored_bills">Bills Cosponsored</option>
+        <option value="cosponsored_amendments">Amendments Cosponsored</option>
+        <option value="laws_enacted">Laws Enacted</option>
+        <option value="committees">Committees</option>
+        <option value="votes">Missed Votes</option>
+      </select>
+    </div>
 
-<!-- Scoring Logic modal (unchanged) -->
-<div id="scoringLogicModal" class="scorecard-modal wide" aria-hidden="true">
-  <div class="scorecard-modal-content" role="dialog" aria-modal="true" aria-labelledby="scoringLogicTitle">
-    <button id="scoringLogicClose" class="scorecard-modal-close" aria-label="Close scoring logic">&times;</button>
-    <h2 id="scoringLogicTitle">Rankings Scoring and Weight Logic</h2>
-    <div class="scoring-logic-body">
-      <p>
-        Officials are ranked using weighted contributions from legislative and executive activity.
-        Each category has a raw value (e.g., bills sponsored), a weight (importance factor),
-        and a contribution (raw × weight). The sum of contributions forms the Power Score.
-      </p>
-      <h3>Legislative Offices (Senators & Representatives)</h3>
-      <table class="scorecard-table">
-        <thead><tr><th>Category</th><th>Weight</th><th>Rationale</th></tr></thead>
-        <tbody>
-          <tr><td>Bills Sponsored</td><td>1.2</td><td>Shows initiative and legislative drive.</td></tr>
-          <tr><td>Bills Cosponsored</td><td>0.6</td><td>Collaboration matters, but less than leading bills.</td></tr>
-          <tr><td>Bills Enacted</td><td>6.0</td><td>Highest impact — turning proposals into law.</td></tr>
-          <tr><td>Committee Memberships</td><td>4.0</td><td>Committees drive legislation; membership shows influence.</td></tr>
-          <tr><td>Committee Leadership Roles</td><td>2.0</td><td>Chair or Ranking Member positions add weight.</td></tr>
-          <tr><td>Missed Votes (%)</td><td>-2.0</td><td>Penalizes absenteeism.</td></tr>
-        </tbody>
-      </table>
-      <h3>Executive Offices (President, Vice President, Governors)</h3>
-      <table class="scorecard-table">
-        <thead><tr><th>Category</th><th>Weight</th><th>Rationale</th></tr></thead>
-        <tbody>
-          <tr><td>Executive Orders</td><td>2.5</td><td>Direct executive action, but less lasting than laws.</td></tr>
-          <tr><td>Vetoes</td><td>3.0</td><td>Blocking legislation shows influence, but is reactive.</td></tr>
-          <tr><td>Budgets Proposed</td><td>2.0</td><td>Fiscal leadership is important but shared with legislature.</td></tr>
-          <tr><td>Appointments Confirmed</td><td>3.0</td><td>Staffing effectiveness impacts governance.</td></tr>
-          <tr><td>Leadership Score</td><td>5.0</td><td>Leadership is central to executive performance.</td></tr>
-          <tr><td>Working With Legislature</td><td>3.5</td><td>Cross‑branch cooperation is vital.</td></tr>
-          <tr><td>Crisis Response</td><td>4.0</td><td>Handling emergencies is a defining test.</td></tr>
-          <tr><td>Missed Duties</td><td>-3.0</td><td>Penalty for neglecting responsibilities.</td></tr>
-          <tr><td>Misconduct</td><td>-12.0</td><td>Severe penalty for misconduct in executive office.</td></tr>
-        </tbody>
+    <div class="leaderboard-wrap">
+      <table id="rankings-leaderboard" class="leaderboard-table" aria-label="Rankings leaderboard">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Official</th>
+            <th>Office</th>
+            <th>Power Score</th>
+            <th>Streak</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
       </table>
     </div>
+
+    <div class="rankings-info">
+      <button id="scoringLogicBtn" class="info-button">Rankings Scoring and Weight Logic</button>
+    </div>
   </div>
-</div>
-    
+
+  <!-- Scorecard modal -->
+  <div id="scorecardModal" class="scorecard-modal" aria-hidden="true">
+    <div class="scorecard-modal-content" role="dialog" aria-modal="true" aria-labelledby="scorecardName">
+      <button id="scorecardClose" class="scorecard-modal-close" aria-label="Close scorecard">&times;</button>
+      <h2 id="scorecardName"></h2>
+      <table id="scorecardBreakdown" class="scorecard-table"></table>
+    </div>
+  </div>
+
+  <!-- Scoring Logic modal -->
+  <div id="scoringLogicModal" class="scorecard-modal wide" aria-hidden="true">
+    <div class="scorecard-modal-content" role="dialog" aria-modal="true" aria-labelledby="scoringLogicTitle">
+      <button id="scoringLogicClose" class="scorecard-modal-close" aria-label="Close scoring logic">&times;</button>
+      <h2 id="scoringLogicTitle">Rankings Scoring and Weight Logic</h2>
+      <div class="scoring-logic-body">
+        <p>
+          Officials are ranked using weighted contributions from legislative and executive activity.
+          Each category has a raw value (e.g., bills sponsored), a weight (importance factor),
+          and a contribution (raw × weight). The sum of contributions forms the Power Score.
+        </p>
+
+        <h3>Legislative Offices (Senators & Representatives)</h3>
+        <table class="scorecard-table">
+          <thead><tr><th>Category</th><th>Weight</th><th>Rationale</th></tr></thead>
+          <tbody>
+            <tr><td>Bills Sponsored</td><td>1.2</td><td>Shows initiative and legislative drive.</td></tr>
+            <tr><td>Amendments Sponsored</td><td>1.0</td><td>Refines legislation; smaller scope than full bills.</td></tr>
+            <tr><td>Bills Cosponsored</td><td>0.6</td><td>Collaboration matters, but less than leading bills.</td></tr>
+            <tr><td>Amendments Cosponsored</td><td>0.5</td><td>Cooperative input; smaller scope than bills.</td></tr>
+            <tr><td>Bills Enacted</td><td>6.0</td><td>Highest impact — turning proposals into law.</td></tr>
+            <tr><td>Amendments Enacted</td><td>4.0</td><td>Influence through amendments that become law.</td></tr>
+            <tr><td>Committee Memberships</td><td>4.0</td><td>Committees drive legislation; membership shows influence.</td></tr>
+            <tr><td>Committee Leadership Roles</td><td>2.0</td><td>Chair or Ranking Member positions add weight.</td></tr>
+            <tr><td>Missed Votes (%)</td><td>-2.0</td><td>Penalizes absenteeism.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Executive Offices (President, Vice President, Governors)</h3>
+        <table class="scorecard-table">
+          <thead><tr><th>Category</th><th>Weight</th><th>Rationale</th></tr></thead>
+          <tbody>
+            <tr><td>Executive Orders</td><td>2.5</td><td>Direct executive action, but less lasting than laws.</td></tr>
+            <tr><td>Vetoes</td><td>3.0</td><td>Blocking legislation shows influence, but is reactive.</td></tr>
+            <tr><td>Budgets Proposed</td><td>2.0</td><td>Fiscal leadership is important but shared with legislature.</td></tr>
+            <tr><td>Appointments Confirmed</td><td>3.0</td><td>Staffing effectiveness impacts governance.</td></tr>
+            <tr><td>Leadership Score</td><td>5.0</td><td>Leadership is central to executive performance.</td></tr>
+            <tr><td>Working With Legislature</td><td>3.5</td><td>Cross‑branch cooperation is vital.</td></tr>
+            <tr><td>Crisis Response</td><td>4.0</td><td>Handling emergencies is a defining test.</td></tr>
+            <tr><td>Missed Duties</td><td>-3.0</td><td>Penalty for neglecting responsibilities.</td></tr>
+            <tr><td>Misconduct</td><td>-12.0</td><td>Severe penalty for misconduct in executive office.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
   </section>
 <section id="learning-resources" class="tab-content" style="display: none;">
   <h2>Learning Resources</h2>
