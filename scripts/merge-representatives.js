@@ -4,7 +4,8 @@ const path = require('path');
 
 const rankingsPath = path.join(__dirname, '../public/representatives-rankings.json');
 const legisPath = path.join(__dirname, '../public/legislation-representatives.json');
-const committeesPath = path.join(__dirname, '../public/house-committees-current.json'); // Your actual file from list
+const committeesPath = path.join(__dirname, '../public/house-committees-current.json');
+const misconductPath = path.join(__dirname, '../public/misconduct-representatives.json');
 
 console.log('Starting merge-representatives.js');
 
@@ -46,10 +47,10 @@ if (fs.existsSync(committeesPath)) {
   try {
     const committees = JSON.parse(fs.readFileSync(committeesPath, 'utf-8'));
     console.log(`Loaded committees from ${committeesPath} (${committees.length} entries)`);
-    
+
     // Assuming structure is array of { bioguideId, committees: [...] }
     const commMap = new Map(committees.map(c => [c.bioguideId, c.committees || []]));
-    
+
     let mergedCount = 0;
     for (const rep of rankings) {
       const commData = commMap.get(rep.bioguideId);
@@ -65,6 +66,30 @@ if (fs.existsSync(committeesPath)) {
   }
 } else {
   console.warn('house-committees-current.json not found — committees remain empty');
+}
+
+// Merge misconduct — only if file exists
+if (fs.existsSync(misconductPath)) {
+  try {
+    const misconduct = JSON.parse(fs.readFileSync(misconductPath, 'utf-8'));
+    console.log(`Loaded misconduct from ${misconductPath} (${misconduct.length} entries)`);
+
+    const misconductMap = new Map(misconduct.map(m => [m.bioguideId, m]));
+    let mergedCount = 0;
+    for (const rep of rankings) {
+      const misData = misconductMap.get(rep.bioguideId);
+      if (misData) {
+        rep.misconductCount = misData.misconductCount || 0;
+        rep.misconductTags = misData.misconductTags || [];
+        mergedCount++;
+      }
+    }
+    console.log(`Merged misconduct for ${mergedCount} representatives`);
+  } catch (err) {
+    console.error('Failed to parse/load misconduct-representatives.json:', err.message);
+  }
+} else {
+  console.warn('misconduct-representatives.json not found — misconduct remains empty');
 }
 
 fs.writeFileSync(rankingsPath, JSON.stringify(rankings, null, 2));
