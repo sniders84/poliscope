@@ -7103,3 +7103,67 @@ section > h3 {
 .scorecard-link:hover {
   text-decoration: underline;
 }
+/* Leaderboard table base */
+#rankings-leaderboard {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  table-layout: fixed; /* ensures consistent column widths */
+}
+
+#rankings-leaderboard th,
+#rankings-leaderboard td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #e2e8f0;
+  vertical-align: middle;
+}
+
+#rankings-leaderboard th {
+  background: #f8fafc;
+  text-align: left;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* Column alignment */
+#rankings-leaderboard td:first-child {
+  text-align: center; /* Rank column centered */
+  font-weight: 700;
+  color: #1e293b;
+  width: 50px;
+}
+
+#rankings-leaderboard td:nth-child(3),
+#rankings-leaderboard td:nth-child(4),
+#rankings-leaderboard td:nth-child(5) {
+  text-align: center; /* Office, Power Score, Streak columns centered */
+}
+
+/* Hover highlight for readability */
+#rankings-leaderboard tbody tr:hover {
+  background: #f1f5f9;
+}
+
+/* Party row accents */
+.row-dem {
+  border-left: 4px solid #2563eb;       /* Dem blue */
+  background: #f5f9ff;
+}
+.row-rep {
+  border-left: 4px solid #dc2626;       /* GOP red */
+  background: #fff5f5;
+}
+.row-ind {
+  border-left: 4px solid #7c3aed;       /* Indie purple */
+  background: #f8f5ff;
+}
+
+/* Name link: high contrast, readable */
+.scorecard-link {
+  color: #0f172a;
+  font-weight: 600;
+  text-decoration: none;
+}
+.scorecard-link:hover {
+  text-decoration: underline;
+}
