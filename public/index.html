@@ -1612,8 +1612,7 @@ async function renderRankingsLeaderboard() {
       });
     }
   </script>
-  <script src="script.js"></script>
-
+ 
 <script>
   // Initialize carousels: load feeds then wire controls
   (async () => {
@@ -1634,194 +1633,92 @@ async function renderRankingsLeaderboard() {
   });
 </script>
 
-<!-- Load external script with full quiz logic -->
-<script src="script.js"></script>
+<!-- NO external script.js — it 404s on Vercel and causes < token errors. All logic is inline now -->
 
 <script>
-  async function loadSocialLinks() {
-    const res = await fetch('/social-links.json');
-    return await res.json();
+document.addEventListener('DOMContentLoaded', () => {
+  console.log("Inline DOMContentLoaded running – tabs & hamburger should work");
+
+  // === Hamburger Menu Fix ===
+  const hamburger = document.getElementById('hamburger');
+  const menu = document.getElementById('hamburger-menu');
+  if (hamburger && menu) {
+    console.log("Hamburger found – attaching click");
+    hamburger.addEventListener('click', (e) => {
+      e.stopPropagation(); // prevent outside click from closing immediately
+      menu.classList.toggle('open');
+      console.log("Menu toggled:", menu.classList.contains('open') ? 'open' : 'closed');
+    });
+
+    // Close on outside click
+    document.addEventListener('click', (event) => {
+      if (menu.classList.contains('open') &&
+          !menu.contains(event.target) &&
+          !hamburger.contains(event.target)) {
+        menu.classList.remove('open');
+        console.log("Menu closed by outside click");
+      }
+    });
+  } else {
+    console.warn("Hamburger or menu element missing");
   }
 
-  async function renderAllSocialLinks() {
-    const data = await loadSocialLinks();
+  // === Menu Link Clicks – Switch Tabs & Call Functions ===
+  document.querySelectorAll('#hamburger-menu ul li a').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href')?.substring(1);
+      if (!targetId) return;
 
-    Object.keys(data).forEach(slug => {
-      const links = data[slug];
+      console.log("Menu clicked:", targetId);
 
-      // Find the existing social container for this official
-      const container = document.getElementById(`social-${slug}`);
-      if (!container || !links) return;
-
-      // Clear any existing content
-      container.innerHTML = '';
-
-              // Add icons only for non-null links
-    if (links.facebook) container.innerHTML += `<a href="${links.facebook}" target="_blank" rel="noopener noreferrer"><img src="/assets/facebook.svg" alt="Facebook"></a>`;
-    if (links.instagram) container.innerHTML += `<a href="${links.instagram}" target="_blank" rel="noopener noreferrer"><img src="/assets/instagram.svg" alt="Instagram"></a>`;
-    if (links.x) container.innerHTML += `<a href="${links.x}" target="_blank" rel="noopener noreferrer"><img src="/assets/x.svg" alt="X"></a>`;
-    if (links.youtube) container.innerHTML += `<a href="${links.youtube}" target="_blank" rel="noopener noreferrer"><img src="/assets/youtube.svg" alt="YouTube"></a>`;
-    if (links.tiktok) container.innerHTML += `<a href="${links.tiktok}" target="_blank" rel="noopener noreferrer"><img src="/assets/tiktok.svg" alt="TikTok"></a>`;
-  });
-}
-
-<!-- No external script.js — it's failing to load on Vercel. All critical JS is now inline below -->
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    // === Hamburger Menu Toggle + Close on Outside Click ===
-    const hamburger = document.getElementById('hamburger');
-    const menu = document.getElementById('hamburger-menu');
-    if (hamburger && menu) {
-      hamburger.addEventListener('click', () => {
-        menu.classList.toggle('open');
+      // Hide all tabs
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.style.display = 'none';
+        tab.hidden = true;
       });
 
-      // Close menu when clicking a link + set active style
-      document.querySelectorAll('#hamburger-menu ul li a').forEach(link => {
-        link.addEventListener('click', (e) => {
-          e.preventDefault(); // Stop default anchor jump
-          const targetId = link.getAttribute('href').substring(1); // e.g. "ratings"
+      // Show target tab
+      const targetTab = document.getElementById(targetId);
+      if (targetTab) {
+        targetTab.style.display = 'block';
+        targetTab.hidden = false;
+      }
 
-          // Hide all tabs
-          document.querySelectorAll('.tab-content').forEach(tab => {
-            tab.style.display = 'none';
-            tab.hidden = true;
-          });
-
-          // Show the clicked tab
-          const targetTab = document.getElementById(targetId);
-          if (targetTab) {
-            targetTab.style.display = 'block';
-            targetTab.hidden = false;
-          }
-
-          // Call tab-specific functions safely
-          if (targetId === 'ratings') {
-            showRatings?.();               // Ratings tab data load
-            renderRankingsLeaderboard?.(); // Rankings leaderboard
-          }
-          if (targetId === 'my-officials') {
-            renderOfficials?.(window.selectedState || 'North Carolina', '');
-          }
-          if (targetId === 'startup-hub') showStartupHub?.();
-          if (targetId === 'podcasts-shows') showPodcastsShows?.();
-          if (targetId === 'voting') showVoting?.();
-          if (targetId === 'citizenship') showCitizenship?.();
-          if (targetId === 'community') showCommunity?.();
-          if (targetId === 'organizations') showOrganizations?.();
-
-          // Close menu + highlight active link
-          menu.classList.remove('open');
-          document.querySelectorAll('#hamburger-menu ul li a').forEach(l => l.classList.remove('active'));
-          link.classList.add('active');
-        });
-      });
-
-      // Close menu when clicking outside
-      document.addEventListener('click', (event) => {
-        if (menu.classList.contains('open') &&
-            !menu.contains(event.target) &&
-            !hamburger.contains(event.target)) {
-          menu.classList.remove('open');
-        }
-      });
-    }
-
-    // === State Dropdown Wiring ===
-    const stateSelect = document.getElementById('state-dropdown');
-    if (stateSelect) {
-      stateSelect.value = window.selectedState || 'North Carolina';
-      stateSelect.addEventListener('change', (e) => {
-        window.selectedState = e.target.value;
+      // Run tab-specific code safely
+      if (targetId === 'ratings') {
+        console.log("Calling Ratings functions");
+        if (typeof showRatings === 'function') showRatings();
+        if (typeof renderRankingsLeaderboard === 'function') renderRankingsLeaderboard();
+      }
+      if (targetId === 'my-officials') {
+        console.log("Calling renderOfficials");
         if (typeof renderOfficials === 'function') {
-          renderOfficials(window.selectedState, '');
+          renderOfficials(window.selectedState || 'North Carolina', '');
         }
-      });
-    }
-
-    // === Officials Search Bar Wiring (if function exists) ===
-    if (typeof wireSearchBar === 'function') {
-      wireSearchBar();
-    }
-
-    // === RSS Feed Wiring for Network Cards ===
-    const feedTitle = document.getElementById('feed-title');
-    const feedStories = document.getElementById('feed-stories');
-    const rssFeeds = {
-      msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',
-      abc: 'https://abcnews.go.com/abcnews/topstories',
-      cbs: 'https://www.cbsnews.com/latest/rss/main',
-      fox: 'https://feeds.foxnews.com/foxnews/latest',
-      newsnation: "https://www.newsnationnow.com/feed/"
-    };
-
-    async function loadFeed(network) {
-      if (!feedTitle || !feedStories) return;
-      const url = rssFeeds[network];
-      feedTitle.textContent = `${network.toUpperCase()} Stories`;
-      feedStories.innerHTML = '<p style="color:#fff;">Loading...</p>';
-
-      try {
-        const response = await fetch(
-          `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`
-        );
-        const data = await response.json();
-        const items = Array.isArray(data.items) ? data.items.slice() : [];
-        const normalized = items
-          .map(item => ({ item, date: item.pubDate ? new Date(item.pubDate) : null }))
-          .filter(x => x.date)
-          .sort((a, b) => b.date.getTime() - a.date.getTime());
-
-        feedStories.innerHTML = '';
-        if (normalized.length === 0) {
-          feedStories.innerHTML = '<p style="color:#fff;">No stories available.</p>';
-          return;
-        }
-
-        normalized.slice(0, 10).forEach(({ item }) => {
-          const story = document.createElement('div');
-          story.className = 'story-card';
-          story.innerHTML = `
-            <a href="${item.link}" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none;">
-              <h4 style="margin-bottom:0.35rem;">${item.title}</h4>
-            </a>
-          `;
-          feedStories.appendChild(story);
-        });
-      } catch (err) {
-        console.error('RSS error:', err);
-        feedStories.innerHTML = '<p style="color:#fff;">Error loading feed.</p>';
       }
-    }
 
-    // Click handler for network cards
-    document.querySelectorAll('.network-card[data-network]').forEach(card => {
-      card.addEventListener('click', () => {
-        const network = card.getAttribute('data-network');
-        loadFeed(network);
-      });
+      // Close menu
+      menu?.classList.remove('open');
     });
-
-    // === Dummy allOfficials for testing (remove once real data loads) ===
-    window.allOfficials = window.allOfficials || [
-      { slug: "john-doe", name: "John Doe", state: "CA", office: "senators", averageRating: 4.2, votesCount: 120 },
-      { slug: "jane-smith", name: "Jane Smith", state: "TX", office: "governors", averageRating: 3.8, votesCount: 85 },
-      { slug: "alex-jones", name: "Alex Jones", state: "NY", office: "housereps", averageRating: 4.7, votesCount: 200 }
-    ];
-
-    // === Ratings/Rankings Filters Wiring (dummy for now) ===
-    ['searchInput', 'officeFilter', 'stateFilter', 'partyFilter'].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.addEventListener('input', () => {
-          console.log(`Filter changed: ${id} = ${el.value}`);
-          // Add real filter logic here later if needed
-        });
-      }
-    });
-
-    // === Force Home Hub on first load ===
-    showTab('startup-hub');
   });
+
+  // === State Dropdown (keep your existing) ===
+  const stateSelect = document.getElementById('state-dropdown');
+  if (stateSelect) {
+    stateSelect.value = window.selectedState || 'North Carolina';
+    stateSelect.addEventListener('change', (e) => {
+      window.selectedState = e.target.value;
+      console.log("State changed to:", window.selectedState);
+      if (typeof renderOfficials === 'function') {
+        renderOfficials(window.selectedState, '');
+      }
+    });
+  }
+
+  // === Force Home Hub on load ===
+  if (typeof showTab === 'function') {
+    showTab('startup-hub');
+  }
+});
 </script>
