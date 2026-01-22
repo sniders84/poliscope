@@ -3247,6 +3247,28 @@ async function loadRankingsData() {
     `;
   }
 
+  // 🏛 Committee role badges
+  function roleClass(role) {
+    if (/chairman|chair/i.test(role)) return 'role-chair';
+    if (/ranking member/i.test(role)) return 'role-ranking';
+    return 'role-member';
+  }
+
+  function renderCommitteeBadges(person) {
+    return (person.committees || []).map(c => `
+      <div class="role-badge ${roleClass(c.role)}">
+        ${c.role} — ${c.committeeName}
+      </div>
+    `).join('');
+  }
+
+  // 🟦 Party row accents
+  function partyRowClass(party) {
+    if (/dem/i.test(party)) return 'row-dem';
+    if (/rep|gop/i.test(party)) return 'row-rep';
+    return 'row-ind';
+  }
+
   // Scorecard modal with photo, header, and breakdown
   function showScorecard(person, breakdown, composite) {
     const modal = document.getElementById('scorecardModal');
@@ -3291,26 +3313,12 @@ async function loadRankingsData() {
       </ul>
     `;
 
-   function roleClass(role) {
-  if (/chairman|chair/i.test(role)) return 'role-chair';
-  if (/ranking member/i.test(role)) return 'role-ranking';
-  return 'role-member';
-}
-
-function renderCommitteeBadges(person) {
-  return (person.committees || []).map(c => `
-    <div class="role-badge ${roleClass(c.role)}">
-      ${c.role} — ${c.committeeName}
-    </div>
-  `).join('');
-}
-
-const committeesHtml = `
-  <h3>Committees</h3>
-  <div class="committee-badges">
-    ${renderCommitteeBadges(person)}
-  </div>
-`;
+    const committeesHtml = `
+      <h3>Committees</h3>
+      <div class="committee-badges">
+        ${renderCommitteeBadges(person)}
+      </div>
+    `;
 
     const misconductHtml = `
       <h3>Misconduct</h3>
@@ -3385,9 +3393,10 @@ const committeesHtml = `
       return bVal - aVal;
     });
 
-       tableBody.innerHTML = '';
+    tableBody.innerHTML = '';
     rows.forEach((row, idx) => {
       const tr = document.createElement('tr');
+      tr.className = partyRowClass(row.person.party);
       tr.innerHTML = `
         <td>${idx + 1}</td>
         <td>
