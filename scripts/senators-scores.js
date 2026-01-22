@@ -1,6 +1,6 @@
 // scripts/senators-scores.js
 // Purpose: Compute scores and add vote stats to senators-rankings.json (overwrites it)
-// Amendments removed, misconduct penalty added
+// Amendments removed, misconduct penalty added, streak field preserved
 
 const fs = require('fs');
 const path = require('path');
@@ -35,7 +35,7 @@ const WEIGHTS = {
     Member: 1
   },
   misconduct: {
-    penaltyPerInfraction: -15   // subtract 15 points per misconductCount
+    penaltyPerInfraction: -10   // subtract 10 points per misconductCount
   }
 };
 
@@ -81,6 +81,8 @@ senators = senators.map(s => {
   return {
     ...s,
     powerScore: score,
+    // streak is preserved from workflow updates
+    streak: s.streak || 0,
     lastUpdated: new Date().toISOString()
   };
 });
