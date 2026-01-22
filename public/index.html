@@ -1438,7 +1438,7 @@ async function renderRankingsLeaderboard() {
       </div>
     </div>
   </div>
-  <script>
+ 
     // Show Home Hub tab
     function showStartupHub() {
       showTab('startup-hub');
@@ -1611,9 +1611,7 @@ async function renderRankingsLeaderboard() {
         track.style.transform = `translateX(-${position * step}px)`;
       });
     }
-  </script>
- 
-<script>
+   
   // Initialize carousels: load feeds then wire controls
   (async () => {
     await loadSection("world", "world-news-carousel");
@@ -1624,9 +1622,7 @@ async function renderRankingsLeaderboard() {
     setupControls("finance-carousel");
     setupControls("economy-carousel");
   })();
-</script>
 
-<script>
   // Force Home Hub tab to show on page load and highlight its button
   document.addEventListener("DOMContentLoaded", () => {
     showStartupHub(); // Home Hub loads first and button is highlighted
@@ -1635,7 +1631,6 @@ async function renderRankingsLeaderboard() {
 
 <!-- NO external script.js — it 404s on Vercel and causes < token errors. All logic is inline now -->
 
-<script>
 document.addEventListener('DOMContentLoaded', () => {
   console.log("Inline DOMContentLoaded running – tabs & hamburger should work");
 
