@@ -3289,7 +3289,7 @@ function renderScoringLogic() {
   `;
 }
 
-// Scorecard modal with photo, header, and breakdown
+// 🗂️ Scorecard modal with photo, header, and breakdown
 function showScorecard(person, breakdown, composite) {
   const modal = document.getElementById('scorecardModal');
   const nameEl = document.getElementById('scorecardName');
@@ -3297,8 +3297,8 @@ function showScorecard(person, breakdown, composite) {
 
   nameEl.textContent = person.name;
 
-  // Use roster photo field, fallback to local silhouette
-  const photoUrl = person.photo || '/assets/photos/fallback-photo.jpg';
+  // Use photoUrl from JSON, fallback to silhouette
+  const photoUrl = person.photoUrl || '/assets/photos/fallback-photo.jpg';
   const district = person.district ? ` / District ${person.district}` : '';
   document.getElementById('scorecardHeader').innerHTML = `
     <img src="${photoUrl}" alt="${person.name}" class="profile-photo" onerror="this.src='/assets/photos/fallback-photo.jpg';">
@@ -3484,34 +3484,4 @@ async function render() {
 }
 
 // Hook render function globally + filter changes
-window.renderRankingsLeaderboard = () => render().catch(console.error);
-officeSel.addEventListener('change', () => render().catch(console.error));
-categorySel.addEventListener('change', () => render().catch(console.error));
-
-// Initial render
-render().catch(console.error);
-
-// Scoring Logic modal handlers
-document.getElementById('scoringLogicBtn')?.addEventListener('click', () => {
-  renderScoringLogic(); // populate modal body dynamically
-  const modal = document.getElementById('scoringLogicModal');
-  modal.classList.add('is-open');
-  modal.setAttribute('aria-hidden', 'false');
-});
-
-document.getElementById('scoringLogicClose')?.addEventListener('click', () => {
-  const modal = document.getElementById('scoringLogicModal');
-  modal.classList.remove('is-open');
-  modal.setAttribute('aria-hidden', 'true');
-});
-
-document.getElementById('scoringLogicModal')?.addEventListener('click', e => {
-  if (e.target.id === 'scoringLogicModal') {
-    const modal = document.getElementById('scoringLogicModal');
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden', 'true');
-  }
-});
-
-// ✅ Close out the IIFE wrapper
-})();
+window.renderRankingsLeaderboard = () => render().catch
