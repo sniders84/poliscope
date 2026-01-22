@@ -1,10 +1,13 @@
 name: Update Senate Data
+
 on:
   workflow_dispatch:
   schedule:
     - cron: '0 2 * * *' # run nightly at 2 AM UTC
+
 permissions:
   contents: write
+
 jobs:
   update-senate:
     runs-on: ubuntu-latest
@@ -18,7 +21,7 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm install
+        run: npm install   # use install instead of ci to avoid lockfile mismatch
 
       - name: Bootstrap senators
         run: node scripts/bootstrap-senators.js
@@ -31,7 +34,7 @@ jobs:
       - name: Scrape committees
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
-        run: node scripts/committee-senators-scraper.js
+        run: node scripts/committee-scraper.js
 
       - name: Scrape votes
         env:
