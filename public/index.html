@@ -1665,32 +1665,60 @@ async function renderRankingsLeaderboard() {
   });
 }
 
-<!-- Load external script ONCE -->
-<script src="script.js?v=2025-12-17-0715"></script>
+<!-- No external script.js — it's failing to load on Vercel. All critical JS is now inline below -->
 
-<!-- Unified inline script -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    // Hamburger toggle + active tab styling
+    // === Hamburger Menu Toggle + Close on Outside Click ===
     const hamburger = document.getElementById('hamburger');
     const menu = document.getElementById('hamburger-menu');
-
     if (hamburger && menu) {
       hamburger.addEventListener('click', () => {
         menu.classList.toggle('open');
       });
 
-      // Close menu when clicking a link
+      // Close menu when clicking a link + set active style
       document.querySelectorAll('#hamburger-menu ul li a').forEach(link => {
-        link.addEventListener('click', () => {
-          document.querySelectorAll('#hamburger-menu ul li a')
-            .forEach(l => l.classList.remove('active'));
-          link.classList.add('active');
+        link.addEventListener('click', (e) => {
+          e.preventDefault(); // Stop default anchor jump
+          const targetId = link.getAttribute('href').substring(1); // e.g. "ratings"
+
+          // Hide all tabs
+          document.querySelectorAll('.tab-content').forEach(tab => {
+            tab.style.display = 'none';
+            tab.hidden = true;
+          });
+
+          // Show the clicked tab
+          const targetTab = document.getElementById(targetId);
+          if (targetTab) {
+            targetTab.style.display = 'block';
+            targetTab.hidden = false;
+          }
+
+          // Call tab-specific functions safely
+          if (targetId === 'ratings') {
+            showRatings?.();               // Ratings tab data load
+            renderRankingsLeaderboard?.(); // Rankings leaderboard
+          }
+          if (targetId === 'my-officials') {
+            renderOfficials?.(window.selectedState || 'North Carolina', '');
+          }
+          if (targetId === 'startup-hub') showStartupHub?.();
+          if (targetId === 'podcasts-shows') showPodcastsShows?.();
+          if (targetId === 'voting') showVoting?.();
+          if (targetId === 'citizenship') showCitizenship?.();
+          if (targetId === 'community') showCommunity?.();
+          if (targetId === 'organizations') showOrganizations?.();
+
+          // Close menu + highlight active link
           menu.classList.remove('open');
+          document.querySelectorAll('#hamburger-menu ul li a').forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
         });
       });
 
-      // Close menu when clicking anywhere outside of it
+      // Close menu when clicking outside
       document.addEventListener('click', (event) => {
         if (menu.classList.contains('open') &&
             !menu.contains(event.target) &&
@@ -1700,9 +1728,10 @@ async function renderRankingsLeaderboard() {
       });
     }
 
-    // State dropdown wiring
+    // === State Dropdown Wiring ===
     const stateSelect = document.getElementById('state-dropdown');
     if (stateSelect) {
+      stateSelect.value = window.selectedState || 'North Carolina';
       stateSelect.addEventListener('change', (e) => {
         window.selectedState = e.target.value;
         if (typeof renderOfficials === 'function') {
@@ -1711,24 +1740,24 @@ async function renderRankingsLeaderboard() {
       });
     }
 
-    // Officials search bar wiring
+    // === Officials Search Bar Wiring (if function exists) ===
     if (typeof wireSearchBar === 'function') {
       wireSearchBar();
     }
 
-    // RSS feed wiring for network cards
+    // === RSS Feed Wiring for Network Cards ===
     const feedTitle = document.getElementById('feed-title');
     const feedStories = document.getElementById('feed-stories');
-
     const rssFeeds = {
       msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',
-      abc:   'https://abcnews.go.com/abcnews/topstories',
-      cbs:   'https://www.cbsnews.com/latest/rss/main',
-      fox:   'https://feeds.foxnews.com/foxnews/latest',
+      abc: 'https://abcnews.go.com/abcnews/topstories',
+      cbs: 'https://www.cbsnews.com/latest/rss/main',
+      fox: 'https://feeds.foxnews.com/foxnews/latest',
       newsnation: "https://www.newsnationnow.com/feed/"
     };
 
     async function loadFeed(network) {
+      if (!feedTitle || !feedStories) return;
       const url = rssFeeds[network];
       feedTitle.textContent = `${network.toUpperCase()} Stories`;
       feedStories.innerHTML = '<p style="color:#fff;">Loading...</p>';
@@ -1739,14 +1768,12 @@ async function renderRankingsLeaderboard() {
         );
         const data = await response.json();
         const items = Array.isArray(data.items) ? data.items.slice() : [];
-
         const normalized = items
           .map(item => ({ item, date: item.pubDate ? new Date(item.pubDate) : null }))
           .filter(x => x.date)
           .sort((a, b) => b.date.getTime() - a.date.getTime());
 
         feedStories.innerHTML = '';
-
         if (normalized.length === 0) {
           feedStories.innerHTML = '<p style="color:#fff;">No stories available.</p>';
           return;
@@ -1763,11 +1790,12 @@ async function renderRankingsLeaderboard() {
           feedStories.appendChild(story);
         });
       } catch (err) {
-        console.error(err);
+        console.error('RSS error:', err);
         feedStories.innerHTML = '<p style="color:#fff;">Error loading feed.</p>';
       }
     }
 
+    // Click handler for network cards
     document.querySelectorAll('.network-card[data-network]').forEach(card => {
       card.addEventListener('click', () => {
         const network = card.getAttribute('data-network');
@@ -1775,26 +1803,25 @@ async function renderRankingsLeaderboard() {
       });
     });
 
-    // Ratings/Rankings Filters Logic
-    window.allOfficials = [
+    // === Dummy allOfficials for testing (remove once real data loads) ===
+    window.allOfficials = window.allOfficials || [
       { slug: "john-doe", name: "John Doe", state: "CA", office: "senators", averageRating: 4.2, votesCount: 120 },
       { slug: "jane-smith", name: "Jane Smith", state: "TX", office: "governors", averageRating: 3.8, votesCount: 85 },
       { slug: "alex-jones", name: "Alex Jones", state: "NY", office: "housereps", averageRating: 4.7, votesCount: 200 }
     ];
 
-    function filterOfficials(list) { /* … */ }
-    function renderResults(list) { /* … */ }
-
-    ['searchInput','officeFilter','stateFilter','sortFilter'].forEach(id => {
+    // === Ratings/Rankings Filters Wiring (dummy for now) ===
+    ['searchInput', 'officeFilter', 'stateFilter', 'partyFilter'].forEach(id => {
       const el = document.getElementById(id);
       if (el) {
         el.addEventListener('input', () => {
-          const filtered = filterOfficials(window.allOfficials || []);
-          renderResults(filtered);
+          console.log(`Filter changed: ${id} = ${el.value}`);
+          // Add real filter logic here later if needed
         });
       }
     });
 
-    renderResults(window.allOfficials);
+    // === Force Home Hub on first load ===
+    showTab('startup-hub');
   });
 </script>
