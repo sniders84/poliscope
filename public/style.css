@@ -7187,3 +7187,30 @@ section > h3 {
 .scorecard-link:hover {
   text-decoration: underline;
 }
+/* Base modal hidden by default */
+.scorecard-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000; /* ensure it sits above page content */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background-color: rgba(0,0,0,0.6); /* semi-transparent backdrop */
+}
+
+/* When .is-open is added, show the modal */
+.scorecard-modal.is-open {
+  display: block;
+}
+
+/* Modal content box */
+.scorecard-modal .scorecard-modal-content {
+  background: #fff;
+  margin: 5% auto;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 800px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
