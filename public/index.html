@@ -438,52 +438,50 @@
   </div>
 
   <!-- Scoring Logic modal -->
-  <div id="scoringLogicModal" class="scorecard-modal wide" aria-hidden="true">
-    <div class="scorecard-modal-content" role="dialog" aria-modal="true" aria-labelledby="scoringLogicTitle">
-      <button id="scoringLogicClose" class="scorecard-modal-close" aria-label="Close scoring logic">&times;</button>
-      <h2 id="scoringLogicTitle">Rankings Scoring and Weight Logic</h2>
-      <div class="scoring-logic-body">
-        <p>
-          Officials are ranked using weighted contributions from legislative and executive activity.
-          Each category has a raw value (e.g., bills sponsored), a weight (importance factor),
-          and a contribution (raw × weight). The sum of contributions forms the Power Score.
-        </p>
+<div id="scoringLogicModal" class="scorecard-modal wide" aria-hidden="true">
+  <div class="scorecard-modal-content" role="dialog" aria-modal="true" aria-labelledby="scoringLogicTitle">
+    <button id="scoringLogicClose" class="scorecard-modal-close" aria-label="Close scoring logic">&times;</button>
+    <h2 id="scoringLogicTitle">Rankings Scoring and Weight Logic</h2>
+    <div class="scoring-logic-body">
+      <p>
+        Officials are ranked using weighted contributions from legislative and executive activity.
+        Each category has a raw value (e.g., bills sponsored), a weight (importance factor),
+        and a contribution (raw × weight). The sum of contributions forms the Power Score.
+      </p>
 
-        <h3>Legislative Offices (Senators & Representatives)</h3>
-        <table class="scorecard-table">
-          <thead><tr><th>Category</th><th>Weight</th><th>Rationale</th></tr></thead>
-          <tbody>
-            <tr><td>Bills Sponsored</td><td>1.2</td><td>Shows initiative and legislative drive.</td></tr>
-            <tr><td>Amendments Sponsored</td><td>1.0</td><td>Refines legislation; smaller scope than full bills.</td></tr>
-            <tr><td>Bills Cosponsored</td><td>0.6</td><td>Collaboration matters, but less than leading bills.</td></tr>
-            <tr><td>Amendments Cosponsored</td><td>0.5</td><td>Cooperative input; smaller scope than bills.</td></tr>
-            <tr><td>Bills Enacted</td><td>6.0</td><td>Highest impact — turning proposals into law.</td></tr>
-            <tr><td>Amendments Enacted</td><td>4.0</td><td>Influence through amendments that become law.</td></tr>
-            <tr><td>Committee Memberships</td><td>4.0</td><td>Committees drive legislation; membership shows influence.</td></tr>
-            <tr><td>Committee Leadership Roles</td><td>2.0</td><td>Chair or Ranking Member positions add weight.</td></tr>
-            <tr><td>Missed Votes (%)</td><td>-2.0</td><td>Penalizes absenteeism.</td></tr>
-          </tbody>
-        </table>
+      <h3>Legislative Offices (Senators & Representatives)</h3>
+      <table class="scorecard-table">
+        <thead><tr><th>Category</th><th>Weight</th><th>Rationale</th></tr></thead>
+        <tbody>
+          <tr><td>Bills Sponsored</td><td>1.2</td><td>Shows initiative and legislative drive.</td></tr>
+          <tr><td>Bills Cosponsored</td><td>0.6</td><td>Collaboration matters, but less than leading bills.</td></tr>
+          <tr><td>Bills Enacted (Sponsored)</td><td>6.0</td><td>Highest impact — turning proposals into law.</td></tr>
+          <tr><td>Bills Enacted (Cosponsored)</td><td>3.0</td><td>Influence through cosponsored bills that become law.</td></tr>
+          <tr><td>Committee Memberships</td><td>4.0</td><td>Committees drive legislation; membership shows influence.</td></tr>
+          <tr><td>Committee Leadership Roles</td><td>2.0</td><td>Chair, Ranking Member, or Vice Chair positions add leadership weight.</td></tr>
+          <tr><td>Missed Votes (Count)</td><td>-0.5</td><td>Penalizes absenteeism by raw missed vote count.</td></tr>
+          <tr><td>Misconduct Infractions</td><td>-10.0</td><td>Severe penalty for misconduct; reduces trust and effectiveness.</td></tr>
+        </tbody>
+      </table>
 
-        <h3>Executive Offices (President, Vice President, Governors)</h3>
-        <table class="scorecard-table">
-          <thead><tr><th>Category</th><th>Weight</th><th>Rationale</th></tr></thead>
-          <tbody>
-            <tr><td>Executive Orders</td><td>2.5</td><td>Direct executive action, but less lasting than laws.</td></tr>
-            <tr><td>Vetoes</td><td>3.0</td><td>Blocking legislation shows influence, but is reactive.</td></tr>
-            <tr><td>Budgets Proposed</td><td>2.0</td><td>Fiscal leadership is important but shared with legislature.</td></tr>
-            <tr><td>Appointments Confirmed</td><td>3.0</td><td>Staffing effectiveness impacts governance.</td></tr>
-            <tr><td>Leadership Score</td><td>5.0</td><td>Leadership is central to executive performance.</td></tr>
-            <tr><td>Working With Legislature</td><td>3.5</td><td>Cross‑branch cooperation is vital.</td></tr>
-            <tr><td>Crisis Response</td><td>4.0</td><td>Handling emergencies is a defining test.</td></tr>
-            <tr><td>Missed Duties</td><td>-3.0</td><td>Penalty for neglecting responsibilities.</td></tr>
-            <tr><td>Misconduct</td><td>-12.0</td><td>Severe penalty for misconduct in executive office.</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <h3>Executive Offices (President, Vice President, Governors)</h3>
+      <table class="scorecard-table">
+        <thead><tr><th>Category</th><th>Weight</th><th>Rationale</th></tr></thead>
+        <tbody>
+          <tr><td>Executive Orders</td><td>2.5</td><td>Direct executive action, but less lasting than laws.</td></tr>
+          <tr><td>Vetoes</td><td>3.0</td><td>Blocking legislation shows influence, but is reactive.</td></tr>
+          <tr><td>Budgets Proposed</td><td>2.0</td><td>Fiscal leadership is important but shared with legislature.</td></tr>
+          <tr><td>Appointments Confirmed</td><td>3.0</td><td>Staffing effectiveness impacts governance.</td></tr>
+          <tr><td>Leadership Score</td><td>5.0</td><td>Leadership is central to executive performance.</td></tr>
+          <tr><td>Working With Legislature</td><td>3.5</td><td>Cross‑branch cooperation is vital.</td></tr>
+          <tr><td>Crisis Response</td><td>4.0</td><td>Handling emergencies is a defining test.</td></tr>
+          <tr><td>Missed Duties</td><td>-3.0</td><td>Penalty for neglecting responsibilities.</td></tr>
+          <tr><td>Misconduct Infractions</td><td>-10.0</td><td>Severe penalty for misconduct in executive office.</td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
-</section>
+</div>
 
   </section>
 <section id="learning-resources" class="tab-content" style="display: none;">
