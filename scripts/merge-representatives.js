@@ -4,17 +4,17 @@
 const fs = require('fs');
 const path = require('path');
 
-const RANKINGS_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
+const RANKINGS_PATH    = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
 const LEGISLATION_PATH = path.join(__dirname, '..', 'public', 'legislation-reps.json');
-const COMMITTEES_PATH = path.join(__dirname, '..', 'public', 'reps-committees.json');
-const VOTES_PATH = path.join(__dirname, '..', 'public', 'votes-reps.json');
-const MISCONDUCT_PATH = path.join(__dirname, '..', 'public', 'misconduct-reps.json');
-const STREAKS_PATH = path.join(__dirname, '..', 'public', 'streaks-reps.json');
+const COMMITTEES_PATH  = path.join(__dirname, '..', 'public', 'reps-committees.json');
+const VOTES_PATH       = path.join(__dirname, '..', 'public', 'votes-reps.json');
+const MISCONDUCT_PATH  = path.join(__dirname, '..', 'public', 'misconduct-reps.json');
+const STREAKS_PATH     = path.join(__dirname, '..', 'public', 'streaks-reps.json');
 
-const rankings = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf-8'));
+const rankings   = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf-8'));
 const legislation = JSON.parse(fs.readFileSync(LEGISLATION_PATH, 'utf-8'));
-const committees = JSON.parse(fs.readFileSync(COMMITTEES_PATH, 'utf-8'));
-const votes = JSON.parse(fs.readFileSync(VOTES_PATH, 'utf-8'));
+const committees  = JSON.parse(fs.readFileSync(COMMITTEES_PATH, 'utf-8'));
+const votes       = JSON.parse(fs.readFileSync(VOTES_PATH, 'utf-8'));
 
 let misconduct = [];
 if (fs.existsSync(MISCONDUCT_PATH)) {
@@ -34,10 +34,10 @@ if (fs.existsSync(STREAKS_PATH)) {
 
 // Index helpers
 const legislationMap = Object.fromEntries(legislation.map(l => [l.bioguideId, l]));
-const committeesMap = Object.fromEntries(committees.map(c => [c.bioguideId, c]));
-const votesMap = Object.fromEntries(votes.map(v => [v.bioguideId, v]));
-const misconductMap = Object.fromEntries(misconduct.map(m => [m.bioguideId, m]));
-const streaksMap = Object.fromEntries(streaks.map(s => [s.bioguideId, s]));
+const committeesMap  = Object.fromEntries(committees.map(c => [c.bioguideId, c]));
+const votesMap       = Object.fromEntries(votes.map(v => [v.bioguideId, v]));
+const misconductMap  = Object.fromEntries(misconduct.map(m => [m.bioguideId, m]));
+const streaksMap     = Object.fromEntries(streaks.map(s => [s.bioguideId, s]));
 
 // Merge
 const merged = rankings.map(rep => {
@@ -45,12 +45,10 @@ const merged = rankings.map(rep => {
 
   // Legislation
   if (legislationMap[id]) {
-    Object.assign(rep, {
-      sponsoredBills: legislationMap[id].sponsoredBills,
-      cosponsoredBills: legislationMap[id].cosponsoredBills,
-      becameLawBills: legislationMap[id].becameLawBills,
-      becameLawCosponsoredBills: legislationMap[id].becameLawCosponsoredBills
-    });
+    rep.sponsoredBills            = legislationMap[id].sponsoredBills;
+    rep.cosponsoredBills          = legislationMap[id].cosponsoredBills;
+    rep.becameLawBills            = legislationMap[id].becameLawBills;
+    rep.becameLawCosponsoredBills = legislationMap[id].becameLawCosponsoredBills;
   }
 
   // Committees
@@ -60,32 +58,44 @@ const merged = rankings.map(rep => {
 
   // Votes
   if (votesMap[id]) {
-    Object.assign(rep, {
-      yeaVotes: votesMap[id].yeaVotes,
-      nayVotes: votesMap[id].nayVotes,
-      missedVotes: votesMap[id].missedVotes,
-      totalVotes: votesMap[id].totalVotes,
-      participationPct: votesMap[id].participationPct,
-      missedVotePct: votesMap[id].missedVotePct
-    });
+    rep.yeaVotes        = votesMap[id].yeaVotes;
+    rep.nayVotes        = votesMap[id].nayVotes;
+    rep.missedVotes     = votesMap[id].missedVotes;
+    rep.totalVotes      = votesMap[id].totalVotes;
+    rep.participationPct = votesMap[id].participationPct;
+    rep.missedVotePct    = votesMap[id].missedVotePct;
   }
 
   // Misconduct
   if (misconductMap[id]) {
     rep.misconductCount = misconductMap[id].misconductCount;
-    rep.misconductTags = misconductMap[id].misconductTags;
+    rep.misconductTags  = misconductMap[id].misconductTags;
   } else {
     rep.misconductCount = 0;
-    rep.misconductTags = [];
+    rep.misconductTags  = [];
   }
 
   // Streaks
   if (streaksMap[id]) {
-    rep.streak = streaksMap[id].streak;
+    rep.streaks = streaksMap[id].streaks || { activity: 0, voting: 0, leader: 0 };
+    rep.streak  = streaksMap[id].streak || 0;
   } else {
-    rep.streak = 0;
+    rep.streaks = rep.streaks || { activity: 0, voting: 0, leader: 0 };
+    rep.streak  = rep.streak || 0;
   }
 
+  // Ensure metrics snapshot exists and update with current totals
+  rep.metrics = rep.metrics || { lastTotals: {} };
+  rep.metrics.lastTotals = {
+    sponsoredBills: rep.sponsoredBills || 0,
+    cosponsoredBills: rep.cosponsoredBills || 0,
+    yeaVotes: rep.yeaVotes || 0,
+    nayVotes: rep.nayVotes || 0,
+    missedVotes: rep.missedVotes || 0,
+    totalVotes: rep.totalVotes || 0
+  };
+
+  rep.lastUpdated = new Date().toISOString();
   return rep;
 });
 
