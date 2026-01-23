@@ -1409,3 +1409,57 @@
     showTab?.('startup-hub');
   });
 </script>
+
+<!-- Define all missing tab functions as safe stubs – stops the "not defined" errors -->
+<script>
+function showCivic() {
+  showTab('civic');
+  console.log("Civic Intelligence tab activated");
+  const calendar = document.getElementById('calendar');
+  if (calendar) calendar.innerHTML = '<p>Civic calendar loading... (placeholder)</p>';
+}
+
+function showPolls() {
+  showTab('polls');
+  console.log("Polls & Elections tab activated");
+  const polls = document.getElementById('polls-cards');
+  if (polls) polls.innerHTML = '<p>Polls loading... (placeholder)</p>';
+}
+
+function showOrganizations() {
+  showTab('organizations');
+  console.log("Political Groups tab activated");
+  const grid = document.querySelector('.organization-grid');
+  if (grid) grid.innerHTML = '<p>Organizations loading... (placeholder)</p>';
+}
+
+function showVoting() {
+  showTab('voting');
+  console.log("Voting tab activated");
+  const cards = document.getElementById('voting-cards');
+  if (cards) cards.innerHTML = '<p>Voting info loading... (placeholder)</p>';
+}
+
+function showCitizenship() {
+  showTab('citizenship');
+  console.log("Citizenship & Immigration tab activated");
+  ['citizenship-cards', 'immigration-cards', 'asylum-cards', 'study-cards', 'legal-cards', 'news-cards', 'rights-cards'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = '<p>Loading... (placeholder)</p>';
+  });
+}
+
+function showCommunity() {
+  showTab('community');
+  console.log("Community tab activated");
+  const cards = document.getElementById('community-cards');
+  if (cards) cards.innerHTML = '<p>Community loading... (placeholder)</p>';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  console.log("Extra init: tab stubs loaded");
+});
+</script>
+
+</body>
+</html>
