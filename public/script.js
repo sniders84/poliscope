@@ -3206,7 +3206,7 @@ document.getElementById('rate-me-btn').onclick = function() {
 function showScorecard(person, breakdown, composite) {
   document.getElementById('scorecardName').textContent = person.name;
 
-  const photoUrl = person.photo; // merged in from senators.json / house-reps.json
+  const photoUrl = person.photo; // merged in from senators.json / representatives.json
   const district = person.district ? ` / District ${person.district}` : '';
   const headerHtml = `
     <img src="${photoUrl}" alt="${person.name}" class="profile-photo">
@@ -3281,7 +3281,7 @@ async function render() {
   const senatorsRes = await fetch('/senators-rankings.json');
   const senatorsInfoRes = await fetch('/senators.json');
   const repsRes = await fetch('/representatives-rankings.json');
-  const repsInfoRes = await fetch('/house-reps.json');
+  const repsInfoRes = await fetch('/representatives.json'); // ✅ corrected path
 
   const senatorsRankings = await senatorsRes.json();
   const senatorsInfo = await senatorsInfoRes.json();
