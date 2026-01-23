@@ -14,8 +14,10 @@ const roster = JSON.parse(fs.readFileSync(ROSTER_PATH, 'utf-8'));
 const repsInfo = JSON.parse(fs.readFileSync(INFO_PATH, 'utf-8'));
 
 function extractGovtrackId(link) {
-  const match = link.match(/members\/(\d+)/);
-  return match ? match[1] : null;
+  if (!link) return null;
+  const parts = link.split('/');
+  const id = parts.find(p => /^\d+$/.test(p));
+  return id || null;
 }
 
 // Build a map of govtrackId → photo
@@ -39,7 +41,7 @@ function makeSlug(rep) {
 function baseRecord(rep) {
   const lastTerm = rep.terms.at(-1);
   const slug = makeSlug(rep);
-  const govtrackId = rep.id.govtrack.toString();
+  const govtrackId = String(rep.id.govtrack);
 
   return {
     slug,
