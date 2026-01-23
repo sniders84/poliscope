@@ -3202,181 +3202,184 @@ document.getElementById('rate-me-btn').onclick = function() {
     return `<span class="${cls}">${Number.isFinite(value) ? value.toFixed(1) : '0.0'}</span>`;
   }
 
-  // Scorecard modal with photo, name, state/district/party, and breakdown
-  function showScorecard(person, breakdown, composite) {
-    document.getElementById('scorecardName').textContent = person.name;
+ // Scorecard modal with photo, name, state/district/party, and breakdown
+function showScorecard(person, breakdown, composite) {
+  document.getElementById('scorecardName').textContent = person.name;
 
-    const photoUrl = `https://bioguide.congress.gov/search/bio/${person.bioguideId}.jpg`;
-    const district = person.district ? ` / District ${person.district}` : '';
-    const headerHtml = `
-      <img src="${photoUrl}" alt="${person.name}" class="profile-photo" onerror="this.src='assets/fallback-photo.jpg';">
-      <p>${person.state}${district} • ${person.party}</p>
+  const photoUrl = person.photo; // use photo field from senators.json / house-reps.json
+  const district = person.district ? ` / District ${person.district}` : '';
+  const headerHtml = `
+    <img src="${photoUrl}" alt="${person.name}" class="profile-photo">
+    <p>${person.state}${district} • ${person.party}</p>
+  `;
+
+  const breakdownEl = document.getElementById('scorecardBreakdown');
+  breakdownEl.innerHTML = ''; // clear duplicates
+  breakdownEl.insertAdjacentHTML('afterbegin', headerHtml);
+
+  const labelMap = {
+    sponsoredBills: 'Bills Sponsored',
+    cosponsoredBills: 'Bills Cosponsored',
+    becameLawBills: 'Bills Enacted',
+    becameLawCosponsoredBills: 'Bills Enacted (Cosponsored)',
+    committees: 'Committee Memberships',
+    committeeLeadership: 'Committee Leadership Roles',
+    missedVotes: 'Missed Votes (Count)'
+  };
+
+  const rowsHtml = Object.keys(breakdown).map(key => {
+    const raw = breakdown[key];
+    const weight = WEIGHTS[key] || 0;
+    const contrib = raw * weight;
+    const label = labelMap[key] || key;
+    return `
+      <tr>
+        <td>${label}</td>
+        <td>${raw}</td>
+        <td>${weight.toFixed(1)}</td>
+        <td>${formatScore(contrib)}</td>
+      </tr>
     `;
-    document.getElementById('scorecardBreakdown').insertAdjacentHTML('afterbegin', headerHtml);
+  }).join('');
 
-    const labelMap = {
-      sponsoredBills: 'Bills Sponsored',
-      cosponsoredBills: 'Bills Cosponsored',
-      becameLawBills: 'Bills Enacted',
-      becameLawCosponsoredBills: 'Bills Enacted (Cosponsored)',
-      committees: 'Committee Memberships',
-      committeeLeadership: 'Committee Leadership Roles',
-      missedVotes: 'Missed Votes (Count)'
-    };
-
-    const rowsHtml = Object.keys(breakdown).map(key => {
-      const raw = breakdown[key];
-      const weight = WEIGHTS[key] || 0;
-      const contrib = raw * weight;
-      const label = labelMap[key] || key;
-      return `
+  breakdownEl.innerHTML += `
+    <table class="scorecard-table">
+      <tbody>
         <tr>
-          <td>${label}</td>
-          <td>${raw}</td>
-          <td>${weight.toFixed(1)}</td>
-          <td>${formatScore(contrib)}</td>
+          <td><strong>Power Score</strong></td>
+          <td colspan="3">${formatScore(composite)}</td>
         </tr>
-      `;
-    }).join('');
+        <tr>
+          <td><strong>Category</strong></td>
+          <td><strong>Raw</strong></td>
+          <td><strong>Weight</strong></td>
+          <td><strong>Contribution</strong></td>
+        </tr>
+        ${rowsHtml}
+      </tbody>
+    </table>
+  `;
 
-    document.getElementById('scorecardBreakdown').innerHTML += `
-      <table class="scorecard-table">
-        <tbody>
-          <tr>
-            <td><strong>Power Score</strong></td>
-            <td colspan="3">${formatScore(composite)}</td>
-          </tr>
-          <tr>
-            <td><strong>Category</strong></td>
-            <td><strong>Raw</strong></td>
-            <td><strong>Weight</strong></td>
-            <td><strong>Contribution</strong></td>
-          </tr>
-          ${rowsHtml}
-        </tbody>
-      </table>
+  const modal = document.getElementById('scorecardModal');
+  modal.classList.add('is-open', 'modal-dark'); // ensure dark background
+  modal.setAttribute('aria-hidden', 'false');
+}
+
+async function render() {
+  const selectedOffice = officeSel.value.toLowerCase();
+  const selectedCategory = categorySel.value;
+
+  const senatorsRes = await fetch('/senators-rankings.json');
+  const repsRes = await fetch('/house-reps.json'); // corrected path
+  const senators = await senatorsRes.json();
+  const reps = await repsRes.json();
+
+  let data = [];
+  let officeType = 'senator';
+
+  if (selectedOffice === 'senator') {
+    data = senators;
+    officeType = 'senator';
+  } else if (selectedOffice === 'u.s. representative') {
+    data = reps;
+    officeType = 'rep';
+  } else {
+    tableBody.innerHTML = '<tr><td colspan="5">Select an office to view rankings</td></tr>';
+    return;
+  }
+
+  if (!Array.isArray(data) || data.length === 0) {
+    tableBody.innerHTML = '<tr><td colspan="5">No data loaded yet</td></tr>';
+    return;
+  }
+
+  const rows = data.map(person => {
+    const { composite, breakdown } = scoreLegislator(person);
+    return {
+      person,
+      score: composite,
+      breakdown,
+      streak: '' // Placeholder — expand later if needed
+    };
+  });
+
+  // Sort by selected category
+  let sortField = 'score';
+  if (selectedCategory === 'sponsored_bills') sortField = 'sponsoredBills';
+  else if (selectedCategory === 'cosponsored_bills') sortField = 'cosponsoredBills';
+  else if (selectedCategory === 'laws_enacted') sortField = 'becameLawBills';
+  else if (selectedCategory === 'committees') sortField = 'committees.length';
+  else if (selectedCategory === 'votes') sortField = 'missedVotes';
+
+  rows.sort((a, b) => b[sortField] - a[sortField]);
+
+  tableBody.innerHTML = '';
+  rows.forEach((row, idx) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${idx + 1}</td>
+      <td>
+        <a href="#" class="scorecard-link" data-name="${row.person.name.replace(/"/g, '&quot;')}">
+          ${row.person.name}
+        </a>
+        <br><small>${row.person.state} • ${row.person.party}${officeType === 'rep' ? ` • District ${row.person.district || 'At-Large'}` : ''}</small>
+      </td>
+      <td>${row.person.office}</td>
+      <td>${row.score.toFixed(1)}</td>
+      <td>${row.streak}</td>
     `;
+    tableBody.appendChild(tr);
+  });
 
-    const modal = document.getElementById('scorecardModal');
-    modal.classList.add('is-open');
-    modal.setAttribute('aria-hidden', 'false');
-  }
-
-  async function render() {
-    const selectedOffice = officeSel.value.toLowerCase();
-    const selectedCategory = categorySel.value;
-
-    const senatorsRes = await fetch('/senators-rankings.json');
-    const repsRes = await fetch('/representatives-rankings.json');
-    const senators = await senatorsRes.json();
-    const reps = await repsRes.json();
-
-    let data = [];
-    let officeType = 'senator';
-
-    if (selectedOffice === 'senator') {
-      data = senators;
-      officeType = 'senator';
-    } else if (selectedOffice === 'u.s. representative') {
-      data = reps;
-      officeType = 'rep';
-    } else {
-      tableBody.innerHTML = '<tr><td colspan="5">Select an office to view rankings</td></tr>';
-      return;
-    }
-
-    if (!Array.isArray(data) || data.length === 0) {
-      tableBody.innerHTML = '<tr><td colspan="5">No data loaded yet</td></tr>';
-      return;
-    }
-
-    const rows = data.map(person => {
-      const { composite, breakdown } = scoreLegislator(person);
-      return {
-        person,
-        score: composite,
-        breakdown,
-        streak: '' // Placeholder — expand later if needed
-      };
+  // Add scorecard click handlers
+  tableBody.querySelectorAll('.scorecard-link').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const name = link.dataset.name;
+      const row = rows.find(r => r.person.name === name);
+      if (row) {
+        showScorecard(row.person, row.breakdown, row.score);
+      }
     });
+  });
+}
 
-    // Sort by selected category
-    let sortField = 'score';
-    if (selectedCategory === 'sponsored_bills') sortField = 'sponsoredBills';
-    else if (selectedCategory === 'cosponsored_bills') sortField = 'cosponsoredBills';
-    else if (selectedCategory === 'laws_enacted') sortField = 'becameLawBills';
-    else if (selectedCategory === 'committees') sortField = 'committees.length';
-    else if (selectedCategory === 'votes') sortField = 'missedVotes';
-
-    rows.sort((a, b) => b[sortField] - a[sortField]);
-
-    tableBody.innerHTML = '';
-    rows.forEach((row, idx) => {
-      const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td>${idx + 1}</td>
-        <td>
-          <a href="#" class="scorecard-link" data-name="${row.person.name.replace(/"/g, '&quot;')}">
-            ${row.person.name}
-          </a>
-          <br><small>${row.person.state} • ${row.person.party}${officeType === 'rep' ? ` • District ${row.person.district || 'At-Large'}` : ''}</small>
-        </td>
-        <td>${row.person.office}</td>
-        <td>${row.score.toFixed(1)}</td>
-        <td>${row.streak}</td>
-      `;
-      tableBody.appendChild(tr);
-    });
-
-    // Add scorecard click handlers
-    tableBody.querySelectorAll('.scorecard-link').forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const name = link.dataset.name;
-        const row = rows.find(r => r.person.name === name);
-        if (row) {
-          showScorecard(row.person, row.breakdown, row.score);
-        }
-      });
-    });
-  }
-
-  // Modal close handlers (unchanged)
-  document.getElementById('scorecardClose')?.addEventListener('click', () => {
+// Modal close handlers (unchanged)
+document.getElementById('scorecardClose')?.addEventListener('click', () => {
+  const modal = document.getElementById('scorecardModal');
+  modal.classList.remove('is-open');
+  modal.setAttribute('aria-hidden', 'true');
+});
+document.getElementById('scorecardModal')?.addEventListener('click', e => {
+  if (e.target.id === 'scorecardModal') {
     const modal = document.getElementById('scorecardModal');
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
-  });
-  document.getElementById('scorecardModal')?.addEventListener('click', e => {
-    if (e.target.id === 'scorecardModal') {
-      const modal = document.getElementById('scorecardModal');
-      modal.classList.remove('is-open');
-      modal.setAttribute('aria-hidden', 'true');
-    }
-  });
-  document.getElementById('scoringLogicBtn')?.addEventListener('click', () => {
-    const modal = document.getElementById('scoringLogicModal');
-    modal.classList.add('is-open');
-    modal.setAttribute('aria-hidden', 'false');
-  });
-  document.getElementById('scoringLogicClose')?.addEventListener('click', () => {
+  }
+});
+document.getElementById('scoringLogicBtn')?.addEventListener('click', () => {
+  const modal = document.getElementById('scoringLogicModal');
+  modal.classList.add('is-open');
+  modal.setAttribute('aria-hidden', 'false');
+});
+document.getElementById('scoringLogicClose')?.addEventListener('click', () => {
+  const modal = document.getElementById('scoringLogicModal');
+  modal.classList.remove('is-open');
+  modal.setAttribute('aria-hidden', 'true');
+});
+document.getElementById('scoringLogicModal')?.addEventListener('click', e => {
+  if (e.target.id === 'scoringLogicModal') {
     const modal = document.getElementById('scoringLogicModal');
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
-  });
-  document.getElementById('scoringLogicModal')?.addEventListener('click', e => {
-    if (e.target.id === 'scoringLogicModal') {
-      const modal = document.getElementById('scoringLogicModal');
-      modal.classList.remove('is-open');
-      modal.setAttribute('aria-hidden', 'true');
-    }
-  });
+  }
+});
 
-  // Hook render function globally + filter changes
-  window.renderRankingsLeaderboard = () => render().catch(console.error);
-  officeSel.addEventListener('change', () => render().catch(console.error));
-  categorySel.addEventListener('change', () => render().catch(console.error));
+// Hook render function globally + filter changes
+window.renderRankingsLeaderboard = () => render().catch(console.error);
+officeSel.addEventListener('change', () => render().catch(console.error));
+categorySel.addEventListener('change', () => render().catch(console.error));
 
-  // Initial render
-  render().catch(console.error);
+// Initial render
+render().catch(console.error);
 })();
