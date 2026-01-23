@@ -7241,3 +7241,18 @@ section > h3 {
 .scorecard-modal .scorecard-modal-close:hover {
   color: #38bdf8; /* cyan hover accent */
 }
+.streak-badge {
+  font-size: 1.25rem;   /* bump emoji size */
+  line-height: 1.5;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-right: 0.5rem;
+  padding: 2px 6px;
+  border-radius: 12px;  /* pill shape */
+  background-color: #f5f5f5; /* neutral background */
+}
+
+.streak-badge.activity { background-color: #ffe5e5; }  /* soft red for 🔥 */
+.streak-badge.voting   { background-color: #e5f0ff; }  /* soft blue for 🗳 */
+.streak-badge.leader   { background-color: #fff5cc; }  /* soft gold for 👑 */
