@@ -262,8 +262,8 @@
     </section>
 
     <section id="my-officials" class="tab-content" style="display: none; position: relative;">
-      <h2>My Officials</h2>
-        <div style="text-align: center; margin: 30px 0; padding: 20px; background: #2b2b2b; border-radius: 12px;">
+  <h2>My Officials</h2>
+  <div style="text-align: center; margin: 30px 0; padding: 20px; background: #2b2b2b; border-radius: 12px;">
     <label for="state-dropdown" style="font-size: 1.4rem; font-weight: bold; color: #fff; margin-right: 20px;">
       Select your state to view officials:
     </label>
@@ -324,28 +324,32 @@
       <option value="West Virginia">West Virginia</option>
       <option value="Wisconsin">Wisconsin</option>
       <option value="Wyoming">Wyoming</option>
-      <input type="text" id="search-bar" 
-       placeholder="Search officials..." 
-       style="padding: 12px 16px; font-size: 1.1rem; border-radius: 8px; background: #1f1f1f; color: #fff; border: 1px solid #444; min-width: 320px; margin-left: 20px;" />
     </select>
+
+    <input type="text" id="search-bar" 
+           placeholder="Search officials..." 
+           style="padding: 12px 16px; font-size: 1.1rem; border-radius: 8px; background: #1f1f1f; color: #fff; border: 1px solid #444; min-width: 320px; margin-left: 20px;" />
   </div>
-      <div id="loading-overlay" style="
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: rgba(255,255,255,0.8);
-          font-size: 1.5rem;
-          font-weight: bold;
-          z-index: 1000;
-        ">
-        Loading officials...
-      </div>
-      <div id="officials-container" class="grid"></div>
+
+  <div id="loading-overlay" style="
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.8);
+      font-size: 1.5rem;
+      font-weight: bold;
+      z-index: 1000;
+    ">
+    Loading officials...
+  </div>
+
+  <div id="officials-container" class="grid"></div>
+</section>
     
 </section>
 <section id="ratings" class="tab-content" style="display: none;">
