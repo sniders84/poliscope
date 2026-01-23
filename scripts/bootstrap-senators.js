@@ -53,20 +53,49 @@ function baseRecord(sen) {
     party: lastTerm.party,
     office: 'Senator',
     photo: sensPhotoMap[govtrackId] || null, // ✅ merge by GovTrack ID
+
+    // Legislative totals
     sponsoredBills: 0,
     cosponsoredBills: 0,
     becameLawBills: 0,
     becameLawCosponsoredBills: 0,
+
+    // Committees
     committees: [],
+
+    // Misconduct
     misconductCount: 0,
     misconductTags: [],
+
+    // Voting totals (top-level)
     yeaVotes: 0,
     nayVotes: 0,
     missedVotes: 0,
     totalVotes: 0,
     participationPct: 0,
     missedVotePct: 0,
-    streak: 0,
+
+    // Streaks (multi-dimension)
+    streaks: {
+      activity: 0, // consecutive weeks with legislative activity
+      voting: 0,   // consecutive weeks with full participation (no missed votes)
+      leader: 0    // consecutive weeks ranked #1 in powerScore
+    },
+
+    // Metrics snapshot for weekly diffs
+    metrics: {
+      lastTotals: {
+        sponsoredBills: 0,
+        cosponsoredBills: 0,
+        yeaVotes: 0,
+        nayVotes: 0,
+        missedVotes: 0,
+        totalVotes: 0
+      }
+    },
+
+    // Legacy + scoring
+    streak: 0,        // legacy field; kept for backward compatibility
     powerScore: 0,
     lastUpdated: new Date().toISOString()
   };
