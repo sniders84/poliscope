@@ -6,9 +6,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const ROSTER_PATH = path.join(__dirname, '..', 'public', 'legislators-current.json');
-const INFO_PATH = path.join(__dirname, '..', 'public', 'housereps.json');
-const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
+const ROSTER_PATH = path.join(process.cwd(), 'poliscope', 'public', 'legislators-current.json');
+const INFO_PATH = path.join(process.cwd(), 'poliscope', 'public', 'housereps.json');
+const OUT_PATH = path.join(process.cwd(), 'poliscope', 'public', 'representatives-rankings.json');
 
 const roster = JSON.parse(fs.readFileSync(ROSTER_PATH, 'utf-8'));
 const repsInfo = JSON.parse(fs.readFileSync(INFO_PATH, 'utf-8'));
@@ -39,27 +39,21 @@ function baseRecord(rep) {
     district: lastTerm.district || '',
     party: lastTerm.party,
     office: 'Representative',
-    photo: infoMatch ? infoMatch.photo : null, // ✅ merged photo
-    // Legislation (placeholders — filled by merge)
+    photo: infoMatch ? infoMatch.photo : null, // merged photo from housereps.json
     sponsoredBills: 0,
     cosponsoredBills: 0,
     becameLawBills: 0,
     becameLawCosponsoredBills: 0,
-    // Committees (filled by merge)
     committees: [],
-    // Misconduct (filled by misconduct-scraper.js)
     misconductCount: 0,
     misconductTags: [],
-    // Votes (filled by votes-reps-scraper.js)
     yeaVotes: 0,
     nayVotes: 0,
     missedVotes: 0,
     totalVotes: 0,
     participationPct: 0,
     missedVotePct: 0,
-    // Streak (consecutive weeks with activity)
     streak: 0,
-    // Scores (filled by representatives-scores.js)
     powerScore: 0,
     lastUpdated: new Date().toISOString()
   };
