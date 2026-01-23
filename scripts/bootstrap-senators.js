@@ -1,7 +1,7 @@
 // scripts/bootstrap-senators.js
-// Purpose: Generate baseline senators-rankings.json from local legislators-current.json
-// Filters for current Senators and initializes clean schema (no amendments, no votes)
-// Merges photo field from senators.json
+// Purpose: Generate baseline senators-rankings.json from legislators-current.json
+// Filters for current Senators and initializes clean schema
+// Merges photo field from senators.json by GovTrack ID
 
 const fs = require('fs');
 const path = require('path');
@@ -12,6 +12,18 @@ const OUT_PATH    = path.join(process.cwd(), 'public', 'senators-rankings.json')
 
 const roster = JSON.parse(fs.readFileSync(ROSTER_PATH, 'utf-8'));
 const sensInfo = JSON.parse(fs.readFileSync(INFO_PATH, 'utf-8'));
+
+function extractGovtrackId(link) {
+  const match = link.match(/members\/(\d+)/);
+  return match ? match[1] : null;
+}
+
+// Build a map of govtrackId → photo
+const sensPhotoMap = {};
+sensInfo.forEach(i => {
+  const id = extractGovtrackId(i.govtrackLink);
+  if (id) sensPhotoMap[id] = i.photo;
+});
 
 function makeSlug(sen) {
   if (sen.id && sen.id.bioguide) return sen.id.bioguide.toLowerCase();
@@ -27,19 +39,18 @@ function makeSlug(sen) {
 function baseRecord(sen) {
   const lastTerm = sen.terms.at(-1);
   const slug = makeSlug(sen);
-
-  // Find matching entry in senators.json
-  const infoMatch = sensInfo.find(i => i.slug === slug || i.bioguideId === sen.id.bioguide);
+  const govtrackId = sen.id.govtrack.toString();
 
   return {
     slug,
     bioguideId: sen.id.bioguide,
+    govtrackId,
     name: `${sen.name.first} ${sen.name.last}`,
     state: lastTerm.state,
     district: 'At-Large',
     party: lastTerm.party,
     office: 'Senator',
-    photo: infoMatch ? infoMatch.photo : null,
+    photo: sensPhotoMap[govtrackId] || null, // ✅ merge by GovTrack ID
     sponsoredBills: 0,
     cosponsoredBills: 0,
     becameLawBills: 0,
@@ -68,3 +79,4 @@ const sens = roster
 
 fs.writeFileSync(OUT_PATH, JSON.stringify(sens, null, 2));
 console.log(`Bootstrapped senators-rankings.json with ${sens.length} current Senators`);
+console.log('Sample record:', sens[0]);
