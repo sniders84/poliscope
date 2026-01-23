@@ -7277,3 +7277,7 @@ section > h3 {
 .scorecard-modal .scorecard-modal-close:hover {
   color: #000;
 }
+.modal-dark {
+  background-color: #2e2e2e; /* dark gray */
+  color: #fff;
+}
