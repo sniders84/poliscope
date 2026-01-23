@@ -10,8 +10,18 @@ const yaml = require('js-yaml');
 const LEGISLATORS_PATH = path.join(__dirname, '../public/legislators-current.json');
 const MISCONDUCT_PATH = path.join(__dirname, '../public/misconduct.yaml');
 
-// Choose target via env var or CLI arg: "senate" or "house"
-const target = process.env.CHAMBER || process.argv[2] || 'senate';
+// Normalize chamber input
+const arg = (process.env.CHAMBER || process.argv[2] || 'senate').toLowerCase();
+let target;
+if (arg.startsWith('sen')) {
+  target = 'senate';
+} else if (arg.startsWith('rep') || arg.startsWith('house')) {
+  target = 'house';
+} else {
+  console.warn(`Unknown chamber "${arg}", defaulting to senate`);
+  target = 'senate';
+}
+
 const RANKINGS_PATH = path.join(
   __dirname,
   `../public/${target === 'house' ? 'representatives' : 'senators'}-rankings.json`
@@ -22,7 +32,7 @@ console.log(`Running misconduct-scraper.js for ${target}...`);
 let legislators, misconduct, rankings;
 try {
   legislators = JSON.parse(fs.readFileSync(LEGISLATORS_PATH, 'utf-8'));
-  misconduct = yaml.load(fs.readFileSync(MISCONDUCT_PATH, 'utf-8'));
+  misconduct = yaml.load(fs.readFileSync(MISCONDUCT_PATH, 'utf-8')) || [];
   rankings = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf-8'));
 } catch (err) {
   console.error('Failed to load input files:', err.message);
