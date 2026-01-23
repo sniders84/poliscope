@@ -3270,7 +3270,7 @@ async function render() {
   const selectedCategory = categorySel.value;
 
   const senatorsRes = await fetch('/senators-rankings.json');
-  const repsRes = await fetch('/house-reps.json'); // corrected path
+  const repsRes = await fetch('/representatives-rankings.json'); // corrected path
   const senators = await senatorsRes.json();
   const reps = await repsRes.json();
 
