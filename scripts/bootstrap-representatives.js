@@ -53,21 +53,52 @@ function baseRecord(rep) {
     party: lastTerm.party,
     office: 'Representative',
     photo: repsPhotoMap[govtrackId] || null, // ✅ merge by GovTrack ID
+
+    // Legislation
     sponsoredBills: 0,
     cosponsoredBills: 0,
     becameLawBills: 0,
     becameLawCosponsoredBills: 0,
+
+    // Committees
     committees: [],
+
+    // Misconduct
     misconductCount: 0,
     misconductTags: [],
+
+    // Votes
     yeaVotes: 0,
     nayVotes: 0,
     missedVotes: 0,
     totalVotes: 0,
     participationPct: 0,
     missedVotePct: 0,
+
+    // Streaks
+    streaks: {
+      activity: 0,
+      voting: 0,
+      leader: 0
+    },
+    // Legacy field for backward compatibility
     streak: 0,
+
+    // Metrics snapshot for streak comparison
+    metrics: {
+      lastTotals: {
+        sponsoredBills: 0,
+        cosponsoredBills: 0,
+        yeaVotes: 0,
+        nayVotes: 0,
+        missedVotes: 0,
+        totalVotes: 0
+      }
+    },
+
+    // Scores
     powerScore: 0,
+
     lastUpdated: new Date().toISOString()
   };
 }
