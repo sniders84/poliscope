@@ -3337,16 +3337,20 @@ document.getElementById('rate-me-btn').onclick = function() {
     });
 
     // Sort by selected category
-    rows.sort((a, b) => {
-      const key = selectedCategory;
-      if (key === "committees") {
-        return (b.person.committees?.length || 0) - (a.person.committees?.length || 0);
-      }
-      if (key === "misconductTags") {
-        return (b.person.misconductTags?.length || 0) - (a.person.misconductTags?.length || 0);
-      }
-      return (b.person[key] || 0) - (a.person[key] || 0);
-    });
+   rows.sort((a, b) => {
+  const key = selectedCategory;
+
+  if (key === "powerScore") {
+    return b.score - a.score; // sort by computed composite
+  }
+  if (key === "committees") {
+    return (b.person.committees?.length || 0) - (a.person.committees?.length || 0);
+  }
+  if (key === "misconductTags") {
+    return (b.person.misconductTags?.length || 0) - (a.person.misconductTags?.length || 0);
+  }
+  return (b.person[key] || 0) - (a.person[key] || 0);
+});
 
    tableBody.innerHTML = '';
 rows.forEach((row, idx) => {
