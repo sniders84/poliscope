@@ -56,9 +56,13 @@ for (const entry of misconduct) {
 
   const current = misconductMap.get(bio) || { count: 0, tags: [] };
   current.count += 1;
+
   if (Array.isArray(entry.tags)) {
     current.tags.push(...entry.tags);
+  } else if (typeof entry.tags === 'string') {
+    current.tags.push(entry.tags);
   }
+
   misconductMap.set(bio, current);
 }
 
