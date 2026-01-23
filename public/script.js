@@ -3206,7 +3206,7 @@ document.getElementById('rate-me-btn').onclick = function() {
 function showScorecard(person, breakdown, composite) {
   document.getElementById('scorecardName').textContent = person.name;
 
-  const photoUrl = person.photo; // use photo field from senators.json / house-reps.json
+  const photoUrl = person.photo;
   const district = person.district ? ` / District ${person.district}` : '';
   const headerHtml = `
     <img src="${photoUrl}" alt="${person.name}" class="profile-photo">
@@ -3324,7 +3324,7 @@ async function render() {
         </a>
         <br><small>${row.person.state} • ${row.person.party}${officeType === 'rep' ? ` • District ${row.person.district || 'At-Large'}` : ''}</small>
       </td>
-      <td>${row.person.office}</td>
+      <td>${row.person.office || (officeType === 'rep' ? 'U.S. Representative' : 'U.S. Senator')}</td>
       <td>${row.score.toFixed(1)}</td>
       <td>${row.streak}</td>
     `;
