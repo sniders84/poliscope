@@ -6,9 +6,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const ROSTER_PATH = path.join(process.cwd(), 'poliscope', 'public', 'legislators-current.json');
-const INFO_PATH = path.join(process.cwd(), 'poliscope', 'public', 'senators.json');
-const OUT_PATH = path.join(process.cwd(), 'poliscope', 'public', 'senators-rankings.json');
+const ROSTER_PATH = path.join(process.cwd(), 'public', 'legislators-current.json');
+const INFO_PATH   = path.join(process.cwd(), 'public', 'senators.json');
+const OUT_PATH    = path.join(process.cwd(), 'public', 'senators-rankings.json');
 
 const roster = JSON.parse(fs.readFileSync(ROSTER_PATH, 'utf-8'));
 const sensInfo = JSON.parse(fs.readFileSync(INFO_PATH, 'utf-8'));
@@ -39,7 +39,7 @@ function baseRecord(sen) {
     district: 'At-Large',
     party: lastTerm.party,
     office: 'Senator',
-    photo: infoMatch ? infoMatch.photo : null, // merged photo from senators.json
+    photo: infoMatch ? infoMatch.photo : null,
     sponsoredBills: 0,
     cosponsoredBills: 0,
     becameLawBills: 0,
