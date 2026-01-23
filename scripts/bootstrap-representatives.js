@@ -6,9 +6,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const ROSTER_PATH = path.join(process.cwd(), 'poliscope', 'public', 'legislators-current.json');
-const INFO_PATH = path.join(process.cwd(), 'poliscope', 'public', 'housereps.json');
-const OUT_PATH = path.join(process.cwd(), 'poliscope', 'public', 'representatives-rankings.json');
+const ROSTER_PATH = path.join(process.cwd(), 'public', 'legislators-current.json');
+const INFO_PATH   = path.join(process.cwd(), 'public', 'housereps.json');
+const OUT_PATH    = path.join(process.cwd(), 'public', 'representatives-rankings.json');
 
 const roster = JSON.parse(fs.readFileSync(ROSTER_PATH, 'utf-8'));
 const repsInfo = JSON.parse(fs.readFileSync(INFO_PATH, 'utf-8'));
@@ -39,7 +39,7 @@ function baseRecord(rep) {
     district: lastTerm.district || '',
     party: lastTerm.party,
     office: 'Representative',
-    photo: infoMatch ? infoMatch.photo : null, // merged photo from housereps.json
+    photo: infoMatch ? infoMatch.photo : null,
     sponsoredBills: 0,
     cosponsoredBills: 0,
     becameLawBills: 0,
