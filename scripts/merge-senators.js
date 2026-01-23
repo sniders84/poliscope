@@ -7,7 +7,7 @@ const path = require('path');
 const RANKINGS_PATH = path.join(__dirname, '..', 'public', 'senators-rankings.json');
 const LEGISLATION_PATH = path.join(__dirname, '..', 'public', 'legislation-senators.json');
 const COMMITTEES_PATH = path.join(__dirname, '..', 'public', 'senators-committees.json');
-const VOTES_PATH = path.join(__dirname, '..', 'public', 'votes-senators.json');
+const VOTES_PATH = path.join(__dirname, '..', 'public', 'senators-votes.json'); // ✅ corrected filename
 const MISCONDUCT_PATH = path.join(__dirname, '..', 'public', 'misconduct-senators.json');
 
 const rankings = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf-8'));
@@ -48,16 +48,25 @@ const merged = rankings.map(sen => {
     sen.committees = committeesMap[id].committees || [];
   }
 
-  // Votes
+  // Votes (nested schema)
   if (votesMap[id]) {
-    Object.assign(sen, {
-      yeaVotes: votesMap[id].yeaVotes,
-      nayVotes: votesMap[id].nayVotes,
-      missedVotes: votesMap[id].missedVotes,
-      totalVotes: votesMap[id].totalVotes,
-      participationPct: votesMap[id].participationPct,
-      missedVotePct: votesMap[id].missedVotePct
-    });
+    sen.votes = votesMap[id].votes || {
+      yeaVotes: 0,
+      nayVotes: 0,
+      missedVotes: 0,
+      totalVotes: 0,
+      participationPct: 0,
+      missedVotePct: 0
+    };
+  } else {
+    sen.votes = {
+      yeaVotes: 0,
+      nayVotes: 0,
+      missedVotes: 0,
+      totalVotes: 0,
+      participationPct: 0,
+      missedVotePct: 0
+    };
   }
 
   // Misconduct
