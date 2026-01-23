@@ -1,45 +1,101 @@
 // scripts/update-streaks.js
-// Purpose: Update streak field for Senators and Representatives once per week
-// Increments streak if activity occurred, resets to 0 if inactive
+// Purpose: Update activity, voting, and leader streaks based on weekly deltas and current rankings
 
 const fs = require('fs');
 const path = require('path');
 
-function updateFile(filePath) {
-  let data;
-  try {
-    data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-  } catch (err) {
-    console.error(`Failed to read ${filePath}:`, err.message);
-    return;
-  }
+const RANKINGS_PATH = path.join(__dirname, '..', 'public', 'senators-rankings.json');
 
-  const updated = data.map(person => {
-    // Define "activity" as any new legislation, cosponsorship, vote, or committee change
-    const activity =
-      (person.sponsoredBills || 0) > 0 ||
-      (person.cosponsoredBills || 0) > 0 ||
-      (person.yeaVotes || 0) > 0 ||
-      (person.nayVotes || 0) > 0 ||
-      (person.committees && person.committees.length > 0);
-
-    if (activity) {
-      person.streak = (person.streak || 0) + 1;
-    } else {
-      person.streak = 0;
-    }
-
-    person.lastUpdated = new Date().toISOString();
-    return person;
-  });
-
-  fs.writeFileSync(filePath, JSON.stringify(updated, null, 2));
-  console.log(`Updated streaks in ${filePath} (${updated.length} records)`);
+// Load rankings
+let rankings;
+try {
+  rankings = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf-8'));
+} catch (err) {
+  console.error('Failed to load senators-rankings.json:', err.message);
+  process.exit(1);
 }
 
-// Paths to rankings files
-const senatorsPath = path.join(__dirname, '../public/senators-rankings.json');
-const repsPath = path.join(__dirname, '../public/representatives-rankings.json');
+// Helper: safe number
+const num = v => (typeof v === 'number' && !Number.isNaN(v)) ? v : 0;
 
-updateFile(senatorsPath);
-updateFile(repsPath);
+// Determine current leader by powerScore
+const sortedByPower = [...rankings].sort((a, b) => num(b.powerScore) - num(a.powerScore));
+const leaderBioguide = sortedByPower[0]?.bioguideId || null;
+
+// Update streaks
+let updated = 0;
+for (const sen of rankings) {
+  // Ensure containers exist
+  sen.streaks = sen.streaks || { activity: 0, voting: 0, leader: 0 };
+  sen.metrics = sen.metrics || { lastTotals: {} };
+  const last = sen.metrics.lastTotals || {};
+
+  // Current totals
+  const sponsored = num(sen.sponsoredBills);
+  const cosponsored = num(sen.cosponsoredBills);
+  const yea = num(sen.yeaVotes);
+  const nay = num(sen.nayVotes);
+  const missed = num(sen.missedVotes);
+  const total = num(sen.totalVotes);
+
+  // Previous snapshot
+  const prevSponsored = num(last.sponsoredBills);
+  const prevCosponsored = num(last.cosponsoredBills);
+  const prevYea = num(last.yeaVotes);
+  const prevNay = num(last.nayVotes);
+  const prevMissed = num(last.missedVotes);
+  const prevTotal = num(last.totalVotes);
+
+  // ---- Activity streak: any new sponsored or cosponsored items since last snapshot ----
+  const newActivity =
+    (sponsored > prevSponsored) ||
+    (cosponsored > prevCosponsored);
+
+  if (newActivity) {
+    sen.streaks.activity += 1;
+  } else {
+    sen.streaks.activity = 0;
+  }
+
+  // ---- Voting streak: participated in all new roll calls since last snapshot ----
+  const newTotalVotes = total - prevTotal;
+  const newMissedVotes = missed - prevMissed;
+
+  if (newTotalVotes > 0 && newMissedVotes === 0) {
+    sen.streaks.voting += 1;
+  } else if (newTotalVotes > 0 && newMissedVotes > 0) {
+    sen.streaks.voting = 0;
+  }
+  // If no new votes, leave voting streak unchanged
+
+  // ---- Leader streak: #1 by powerScore this run ----
+  if (leaderBioguide && sen.bioguideId === leaderBioguide) {
+    sen.streaks.leader += 1;
+  } else {
+    sen.streaks.leader = 0;
+  }
+
+  // Legacy field: keep as the max of the three for backward compatibility
+  sen.streak = Math.max(
+    num(sen.streaks.activity),
+    num(sen.streaks.voting),
+    num(sen.streaks.leader)
+  );
+
+  // Update snapshot to current totals for next run
+  sen.metrics.lastTotals = {
+    sponsoredBills: sponsored,
+    cosponsoredBills: cosponsored,
+    yeaVotes: yea,
+    nayVotes: nay,
+    missedVotes: missed,
+    totalVotes: total
+  };
+
+  sen.lastUpdated = new Date().toISOString();
+  updated++;
+}
+
+// Write back
+fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
+console.log(`Streaks updated for ${updated} senators`);
