@@ -3268,8 +3268,11 @@ function showScorecard(person, breakdown, composite) {
 // Merge rankings JSON with info JSON by slug
 function mergeData(rankings, info) {
   return rankings.map(r => {
-    const match = info.find(i => i.slug === r.slug);
-    return { ...r, ...match }; // combine score + descriptive fields
+    let match = info.find(i => i.slug === r.slug);
+    if (!match && r.bioguideId) {
+      match = info.find(i => i.bioguideId === r.bioguideId);
+    }
+    return { ...r, ...match };
   });
 }
 
