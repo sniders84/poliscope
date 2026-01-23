@@ -7123,6 +7123,7 @@ section > h3 {
   border-color: #2563eb;
   color: #fff;
 }
+
 /* Rankings table dark theme */
 #rankings-leaderboard {
   width: 100%;
@@ -7132,53 +7133,48 @@ section > h3 {
   background-color: #1e293b; /* dark gray background always */
   color: #f1f5f9;            /* light text for contrast */
 }
-
 #rankings-leaderboard th,
 #rankings-leaderboard td {
   padding: 8px 12px;
   border-bottom: 1px solid #334155;
   vertical-align: middle;
 }
-
 #rankings-leaderboard th {
   background: #0f172a; /* darker header */
   text-align: left;
   font-weight: 600;
   color: #38bdf8;      /* cyan accent for headers */
 }
-
 #rankings-leaderboard td:first-child {
   text-align: center; /* Rank column centered */
   font-weight: 700;
   color: #f1f5f9;
   width: 50px;
 }
-
 #rankings-leaderboard td:nth-child(3),
 #rankings-leaderboard td:nth-child(4),
 #rankings-leaderboard td:nth-child(5) {
   text-align: center; /* Office, Power Score, Streak columns centered */
 }
-
 #rankings-leaderboard tbody tr:hover {
   background: #334155; /* subtle hover highlight */
 }
 
-/* ✅ Party row accents with subtle tint over dark background */
+/* Party row accents with subtle tint */
 .row-dem {
-  border-left: 4px solid #2563eb; /* Dem blue */
-  background-color: rgba(37, 99, 235, 0.08); /* subtle blue tint */
+  border-left: 4px solid #2563eb;
+  background-color: rgba(37, 99, 235, 0.08);
 }
 .row-rep {
-  border-left: 4px solid #dc2626; /* GOP red */
-  background-color: rgba(220, 38, 38, 0.08); /* subtle red tint */
+  border-left: 4px solid #dc2626;
+  background-color: rgba(220, 38, 38, 0.08);
 }
 .row-ind {
-  border-left: 4px solid #7c3aed; /* Indie purple */
-  background-color: rgba(124, 58, 237, 0.08); /* subtle purple tint */
+  border-left: 4px solid #7c3aed;
+  background-color: rgba(124, 58, 237, 0.08);
 }
 
-/* Name link: high contrast, readable */
+/* Name link */
 .scorecard-link {
   color: #f1f5f9;
   font-weight: 600;
@@ -7187,11 +7183,12 @@ section > h3 {
 .scorecard-link:hover {
   text-decoration: underline;
 }
-/* Base modal hidden by default */
+
+/* Base modal overlay */
 .scorecard-modal {
   display: none;
   position: fixed;
-  z-index: 1000; /* ensure it sits above page content */
+  z-index: 1000;
   left: 0;
   top: 0;
   width: 100%;
@@ -7199,42 +7196,14 @@ section > h3 {
   overflow-y: auto;
   background-color: rgba(0,0,0,0.6); /* semi-transparent backdrop */
 }
-
-/* When .is-open is added, show the modal */
 .scorecard-modal.is-open {
   display: block;
 }
 
-/* Modal content box */
+/* Modal content box — dark theme */
 .scorecard-modal .scorecard-modal-content {
-  background: #fff;
-  margin: 5% auto;
-  padding: 20px;
-  border-radius: 8px;
-  max-width: 800px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-/* ===== Modal Base Styles ===== */
-.scorecard-modal {
-  display: none;              /* hidden by default */
-  position: fixed;
-  z-index: 1000;              /* sits above page content */
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow-y: auto;
-  background-color: rgba(0,0,0,0.6); /* semi-transparent backdrop */
-}
-
-/* Show modal when .is-open is added */
-.scorecard-modal.is-open {
-  display: block;
-}
-
-/* ===== Modal Content Box ===== */
-.scorecard-modal .scorecard-modal-content {
-  background: #fff;
+  background: #2b2b2b; /* dark gray */
+  color: #fff;
   margin: 5% auto;
   padding: 20px;
   border-radius: 8px;
@@ -7242,42 +7211,33 @@ section > h3 {
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   position: relative;
 }
-
-/* Wider variant for Scoring Logic modal */
 .scorecard-modal.wide .scorecard-modal-content {
   max-width: 1000px;
 }
 
-/* ===== Modal Header & Close Button ===== */
+/* Modal header & close button */
 .scorecard-modal .scorecard-header {
   display: flex;
   align-items: center;
   margin-bottom: 15px;
 }
-
 .scorecard-modal .profile-photo {
   width: 80px;
   height: 80px;
   border-radius: 50%;
   margin-right: 15px;
 }
-
 .scorecard-modal .scorecard-modal-close {
   position: absolute;
   top: 10px;
   right: 15px;
   font-size: 28px;
   font-weight: bold;
-  color: #333;
+  color: #fff;
   background: none;
   border: none;
   cursor: pointer;
 }
-
 .scorecard-modal .scorecard-modal-close:hover {
-  color: #000;
-}
-.modal-dark {
-  background-color: #2e2e2e; /* dark gray */
-  color: #fff;
+  color: #38bdf8; /* cyan hover accent */
 }
