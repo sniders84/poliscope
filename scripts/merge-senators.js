@@ -1,96 +1,76 @@
 // scripts/merge-senators.js
+// Purpose: Merge legislation, committees, votes, and misconduct into senators-rankings.json
+
 const fs = require('fs');
 const path = require('path');
 
-const rankingsPath = path.join(__dirname, '../public/senators-rankings.json');
-const legisPath = path.join(__dirname, '../public/legislation-senators.json');
-const committeesPath = path.join(__dirname, '../public/senators-committees.json');
-const misconductPath = path.join(__dirname, '../public/misconduct-senators.json');
+const RANKINGS_PATH = path.join(__dirname, '..', 'public', 'senators-rankings.json');
+const LEGISLATION_PATH = path.join(__dirname, '..', 'public', 'legislation-senators.json');
+const COMMITTEES_PATH = path.join(__dirname, '..', 'public', 'senators-committees.json');
+const VOTES_PATH = path.join(__dirname, '..', 'public', 'votes-senators.json');
+const MISCONDUCT_PATH = path.join(__dirname, '..', 'public', 'misconduct-senators.json');
 
-console.log('Starting merge-senators.js');
+const rankings = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf-8'));
+const legislation = JSON.parse(fs.readFileSync(LEGISLATION_PATH, 'utf-8'));
+const committees = JSON.parse(fs.readFileSync(COMMITTEES_PATH, 'utf-8'));
+const votes = JSON.parse(fs.readFileSync(VOTES_PATH, 'utf-8'));
 
-let rankings;
-try {
-  rankings = JSON.parse(fs.readFileSync(rankingsPath, 'utf-8'));
-  console.log(`Loaded ${rankings.length} senators from rankings file`);
-} catch (err) {
-  console.error('Failed to read senators-rankings.json:', err.message);
-  process.exit(1);
+let misconduct = [];
+if (fs.existsSync(MISCONDUCT_PATH)) {
+  misconduct = JSON.parse(fs.readFileSync(MISCONDUCT_PATH, 'utf-8'));
+  console.log(`Loaded misconduct data for ${misconduct.length} senators`);
+} else {
+  console.log('misconduct-senators.json not found — misconduct remains empty');
 }
 
-let legis;
-try {
-  legis = JSON.parse(fs.readFileSync(legisPath, 'utf-8'));
-  console.log(`Loaded ${legis.length} legislation records`);
-} catch (err) {
-  console.error('Failed to read legislation-senators.json:', err.message);
-  process.exit(1);
-}
+// Index helpers
+const legislationMap = Object.fromEntries(legislation.map(l => [l.bioguideId, l]));
+const committeesMap = Object.fromEntries(committees.map(c => [c.bioguideId, c]));
+const votesMap = Object.fromEntries(votes.map(v => [v.bioguideId, v]));
+const misconductMap = Object.fromEntries(misconduct.map(m => [m.bioguideId, m]));
 
-// Merge legislation data
-const legisMap = new Map(legis.map(m => [m.bioguideId, m]));
-for (const sen of rankings) {
-  const legData = legisMap.get(sen.bioguideId);
-  if (legData) {
-    sen.sponsoredBills = legData.sponsoredBills || 0;
-    sen.cosponsoredBills = legData.cosponsoredBills || 0;
-    sen.becameLawBills = legData.becameLawBills || 0;
-    sen.becameLawCosponsoredBills = legData.becameLawCosponsoredBills || 0;
-    sen.lastUpdated = legData.lastUpdated || new Date().toISOString();
+// Merge
+const merged = rankings.map(sen => {
+  const id = sen.bioguideId;
+
+  // Legislation
+  if (legislationMap[id]) {
+    Object.assign(sen, {
+      sponsoredBills: legislationMap[id].sponsoredBills,
+      cosponsoredBills: legislationMap[id].cosponsoredBills,
+      becameLawBills: legislationMap[id].becameLawBills,
+      becameLawCosponsoredBills: legislationMap[id].becameLawCosponsoredBills
+    });
+  }
+
+  // Committees
+  if (committeesMap[id]) {
+    sen.committees = committeesMap[id].committees || [];
+  }
+
+  // Votes
+  if (votesMap[id]) {
+    Object.assign(sen, {
+      yeaVotes: votesMap[id].yeaVotes,
+      nayVotes: votesMap[id].nayVotes,
+      missedVotes: votesMap[id].missedVotes,
+      totalVotes: votesMap[id].totalVotes,
+      participationPct: votesMap[id].participationPct,
+      missedVotePct: votesMap[id].missedVotePct
+    });
+  }
+
+  // Misconduct
+  if (misconductMap[id]) {
+    sen.misconductCount = misconductMap[id].misconductCount;
+    sen.misconductTags = misconductMap[id].misconductTags;
   } else {
-    console.warn(`No legislation data for ${sen.bioguideId} (${sen.name})`);
+    sen.misconductCount = 0;
+    sen.misconductTags = [];
   }
-}
 
-// Merge committees — only if file exists
-if (fs.existsSync(committeesPath)) {
-  try {
-    const committees = JSON.parse(fs.readFileSync(committeesPath, 'utf-8'));
-    console.log(`Loaded committees from ${committeesPath} (${committees.length} entries)`);
+  return sen;
+});
 
-    // Create lookup map (assuming array of { bioguideId, committees: [...] })
-    const commMap = new Map(committees.map(c => [c.bioguideId, c.committees || []]));
-
-    let mergedCount = 0;
-    for (const sen of rankings) {
-      const commData = commMap.get(sen.bioguideId);
-      if (commData && commData.length > 0) {
-        sen.committees = commData;
-        mergedCount++;
-      }
-    }
-    console.log(`Merged committees for ${mergedCount} senators`);
-  } catch (err) {
-    console.error('Failed to parse/load senators-committees.json:', err.message);
-    // Continue anyway
-  }
-} else {
-  console.warn('senators-committees.json not found — committees remain empty');
-}
-
-// Merge misconduct — only if file exists
-if (fs.existsSync(misconductPath)) {
-  try {
-    const misconduct = JSON.parse(fs.readFileSync(misconductPath, 'utf-8'));
-    console.log(`Loaded misconduct from ${misconductPath} (${misconduct.length} entries)`);
-
-    const misconductMap = new Map(misconduct.map(m => [m.bioguideId, m]));
-    let mergedCount = 0;
-    for (const sen of rankings) {
-      const misData = misconductMap.get(sen.bioguideId);
-      if (misData) {
-        sen.misconductCount = misData.misconductCount || 0;
-        sen.misconductTags = misData.misconductTags || [];
-        mergedCount++;
-      }
-    }
-    console.log(`Merged misconduct for ${mergedCount} senators`);
-  } catch (err) {
-    console.error('Failed to parse/load misconduct-senators.json:', err.message);
-  }
-} else {
-  console.warn('misconduct-senators.json not found — misconduct remains empty');
-}
-
-fs.writeFileSync(rankingsPath, JSON.stringify(rankings, null, 2));
-console.log(`Finished merge: ${rankings.length} senators updated in senators-rankings.json`);
+fs.writeFileSync(RANKINGS_PATH, JSON.stringify(merged, null, 2));
+console.log(`Finished merge: ${merged.length} senators updated in senators-rankings.json`);
