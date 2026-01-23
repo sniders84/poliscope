@@ -3348,29 +3348,31 @@ document.getElementById('rate-me-btn').onclick = function() {
       return (b.person[key] || 0) - (a.person[key] || 0);
     });
 
-    tableBody.innerHTML = '';
-    rows.forEach((row, idx) => {
-      const tr = document.createElement('tr');
-      const displayVal = selectedCategory === "powerScore"
-        ? row.person.powerScore.toFixed(1)
-        : Array.isArray(row.person[selectedCategory])
-          ? row.person[selectedCategory].length
-          : row.person[selectedCategory] || 0;
+   tableBody.innerHTML = '';
+rows.forEach((row, idx) => {
+  const tr = document.createElement('tr');
 
-      tr.innerHTML = `
-        <td>${idx + 1}</td>
-        <td>
-          <a href="#" class="scorecard-link" data-name="${row.person.name.replace(/"/g, '&quot;')}">
-            ${row.person.name}
-          </a>
-          <br><small>${row.person.state} • ${row.person.party}${officeType === 'rep' ? ` • District ${row.person.district || 'At-Large'}` : ''}</small>
-        </td>
-        <td>${row.person.office || (officeType === 'rep' ? 'U.S. Representative' : 'U.S. Senator')}</td>
-        <td>${displayVal}</td>
-        <td>${row.streak}</td>
-      `;
-      tableBody.appendChild(tr);
-    });
+  // Decide what value to display based on the selected filter
+  const displayVal = selectedCategory === "powerScore"
+    ? row.score.toFixed(1)   // use the computed composite score
+    : Array.isArray(row.person[selectedCategory])
+      ? row.person[selectedCategory].length
+      : row.person[selectedCategory] || 0;
+
+  tr.innerHTML = `
+    <td>${idx + 1}</td>
+    <td>
+      <a href="#" class="scorecard-link" data-name="${row.person.name.replace(/"/g, '&quot;')}">
+        ${row.person.name}
+      </a>
+      <br><small>${row.person.state} • ${row.person.party}${officeType === 'rep' ? ` • District ${row.person.district || 'At-Large'}` : ''}</small>
+    </td>
+    <td>${row.person.office || (officeType === 'rep' ? 'U.S. Representative' : 'U.S. Senator')}</td>
+    <td>${displayVal}</td>
+    <td>${row.streak}</td>
+  `;
+  tableBody.appendChild(tr);
+});
 
      // Add scorecard click handlers
   tableBody.querySelectorAll('.scorecard-link').forEach(link => {
