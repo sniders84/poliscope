@@ -2749,7 +2749,7 @@ function showCitizenship() {
   });
 }
 // ==============================
-// Ratings/Rankings — tab renderer
+// Ratings/Rankings — tab renderer (Block 1 – FIXED)
 // ==============================
 
 // Define rating categories globally
@@ -2762,12 +2762,25 @@ const ratingCategories = [
   "Toughness","Ability to Unify","Effectiveness","Health","Fashion Style","Electability"
 ];
 
-// Normalize helper: collapse whitespace, strip diacritics, lowercase
+// Rating color helper – MOVED TO TOP so it's available everywhere
+function getRatingColor(avg) {
+  const rounded = Math.round(Number(avg) || 0);
+  switch (rounded) {
+    case 5: return 'gold';
+    case 4: return 'green';
+    case 3: return 'yellow';
+    case 2: return 'orange';
+    case 1: return 'red';
+    default: return '#ccc';
+  }
+}
+
+// Normalize helper
 function normalizeText(s) {
   return String(s || "")
     .normalize("NFKD")
     .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^\w\s'-]/g, "")     // remove non-word punctuation except apostrophes/hyphens
+    .replace(/[^\w\s'-]/g, "")
     .replace(/\s+/g, " ")
     .trim()
     .toLowerCase();
@@ -2775,19 +2788,27 @@ function normalizeText(s) {
 
 // Show Ratings tab
 function showRatings() {
-  Promise.all([
-    fetch('president-ratings.json').then(res => res.json()),
-    fetch('vicepresident-ratings.json').then(res => res.json()),
-    fetch('governors-ratings.json').then(res => res.json()),
-    fetch('ltgovernors-ratings.json').then(res => res.json()),
-    fetch('senators-ratings.json').then(res => res.json()),
-    fetch('housereps-ratings.json').then(res => res.json())
-  ]).then(([presidents, vps, governors, ltgovs, senators, housereps]) => {
-    const ratings = [
-      ...presidents, ...vps, ...governors, ...ltgovs, ...senators, ...housereps
-    ];
+  const container = document.getElementById('ratings-cards');
+  if (!container) {
+    console.error("Ratings container (#ratings-cards) not found");
+    return;
+  }
 
-    // Merge saved ratings
+  // Show loading state
+  container.innerHTML = '<p style="color:#fff; text-align:center;">Loading officials and ratings...</p>';
+
+  Promise.all([
+    fetch('president-ratings.json').then(res => res.ok ? res.json() : Promise.reject(`HTTP ${res.status}`)),
+    fetch('vicepresident-ratings.json').then(res => res.ok ? res.json() : Promise.reject(`HTTP ${res.status}`)),
+    fetch('governors-ratings.json').then(res => res.ok ? res.json() : Promise.reject(`HTTP ${res.status}`)),
+    fetch('ltgovernors-ratings.json').then(res => res.ok ? res.json() : Promise.reject(`HTTP ${res.status}`)),
+    fetch('senators-ratings.json').then(res => res.ok ? res.json() : Promise.reject(`HTTP ${res.status}`)),
+    fetch('housereps-ratings.json').then(res => res.ok ? res.json() : Promise.reject(`HTTP ${res.status}`))
+  ])
+  .then(([presidents, vps, governors, ltgovs, senators, housereps]) => {
+    const ratings = [...presidents, ...vps, ...governors, ...ltgovs, ...senators, ...housereps];
+
+    // Merge saved user ratings from localStorage
     const saved = JSON.parse(localStorage.getItem('ratingsData')) || {};
     ratings.forEach(r => {
       if (saved[r.slug]) {
@@ -2796,38 +2817,45 @@ function showRatings() {
       }
     });
 
-    const container = document.getElementById('ratings-cards');
-    container.innerHTML = '';
+    container.innerHTML = ''; // Clear loading message
+
+    if (!window.allOfficials || !Array.isArray(window.allOfficials) || window.allOfficials.length === 0) {
+      container.innerHTML = '<p style="color:#ff4444; text-align:center;">Error: Official data (allOfficials) not loaded yet.</p>';
+      console.warn("window.allOfficials is empty or missing – cards cannot render.");
+      return;
+    }
 
     ratings.forEach(r => {
       const official = window.allOfficials.find(o => o.slug === r.slug);
-      if (!official) return;
+      if (!official) return; // Skip if no matching official
 
       const avg = r.averageRating ? r.averageRating.toFixed(1) : '0.0';
       const card = document.createElement('div');
       card.className = 'info-card';
-
+      
       // Dataset tags for filters (normalized)
-      card.dataset.office   = normalizeText(official.office || '');
-      card.dataset.state    = normalizeText(official.state || '');
-      let partyKey          = normalizeText(official.party || '');
+      card.dataset.office = normalizeText(official.office || '');
+      card.dataset.state = normalizeText(official.state || '');
+      let partyKey = normalizeText(official.party || '');
       if (partyKey === 'democratic') partyKey = 'democrat';
-      if (partyKey === 'gop')        partyKey = 'republican';
-      card.dataset.party    = partyKey;
-
-      // ✅ Full name normalization for robust searching
+      if (partyKey === 'gop') partyKey = 'republican';
+      card.dataset.party = partyKey;
+      
+      // Full name normalization for search
       const fullNameRaw = String(official.name || '').trim();
       card.dataset.fullname = normalizeText(fullNameRaw);
-
-      // UI name split (first/last) for display only
+      
+      // Split name for display
       const nameParts = fullNameRaw.split(/\s+/);
       const firstName = nameParts.slice(0, -1).join(' ') || nameParts[0] || '';
-      const lastName  = nameParts.slice(-1).join(' ') || '';
+      const lastName = nameParts.slice(-1).join(' ') || '';
 
-      // Card markup
       card.innerHTML = `
         <div class="card-left">
-          <img src="${official.photo}" alt="${official.name}" class="card-image" />
+          <img src="${official.photo || '/assets/photos/fallback-photo.jpg'}" 
+               alt="${official.name}" 
+               class="card-image" 
+               onerror="this.src='/assets/photos/fallback-photo.jpg';" />
           <h3 class="name-block">
             <span class="first-name">${firstName}</span>
             <span class="last-name">${lastName}</span>
@@ -2835,12 +2863,12 @@ function showRatings() {
         </div>
         <div class="card-right">
           <div class="card-info">
-            <p class="office">${official.office}</p>
+            <p class="office">${official.office || 'Unknown Office'}</p>
             ${official.state ? `<p class="meta">State: ${official.state}</p>` : ''}
             ${official.district ? `<p class="meta">District: ${official.district}</p>` : ''}
           </div>
           <div class="rating-block">
-            <div class="rating-badge" style="color:${getRatingColor(r.averageRating)}">
+            <div class="rating-badge" style="color:${getRatingColor(r.averageRating)};">
               ${avg} ★
             </div>
             <button class="btn-view" onclick="openRatingsModal('${r.slug}')">View Ratings</button>
@@ -2850,19 +2878,31 @@ function showRatings() {
       container.appendChild(card);
     });
 
-    // After render, apply filters once to reflect any defaults
-    applyRatingsFilters();
+    // Apply filters after render
+    if (typeof applyRatingsFilters === 'function') {
+      applyRatingsFilters();
+    } else {
+      console.warn("applyRatingsFilters() not defined yet – filters won't work.");
+    }
+  })
+  .catch(err => {
+    console.error("Ratings data load failed:", err);
+    container.innerHTML = `<p style="color:#ff4444; text-align:center;">Failed to load ratings data: ${err}</p>`;
   });
 }
 
 // Robust tokenized search + office/state/party filters
 (function initRatingsSearchFilters() {
-  const searchEl  = document.getElementById('searchInput');
+  const searchEl = document.getElementById('searchInput');
   const officeSel = document.getElementById('officeFilter');
-  const stateSel  = document.getElementById('stateFilter');
-  const partySel  = document.getElementById('partyFilter');
+  const stateSel = document.getElementById('stateFilter');
+  const partySel = document.getElementById('partyFilter');
   const container = document.getElementById('ratings-cards');
-  if (!searchEl || !officeSel || !stateSel || !partySel || !container) return;
+
+  if (!searchEl || !officeSel || !stateSel || !partySel || !container) {
+    console.warn("One or more ratings filter elements missing");
+    return;
+  }
 
   const normalize = s => String(s || '')
     .normalize('NFKD')
@@ -2879,20 +2919,19 @@ function showRatings() {
   function applyFilters() {
     const tokens = normalize(searchEl.value).split(' ').filter(Boolean);
     const office = normalize(officeSel.value);
-    const state  = normalize(stateSel.value);
-    const party  = normalize(partySel.value);
+    const state = normalize(stateSel.value);
+    const party = normalize(partySel.value);
 
     container.querySelectorAll('.info-card').forEach(card => {
       const fullName = normalize(card.dataset.fullname || '');
       const officeKey = card.dataset.office || '';
-      const stateKey  = card.dataset.state || '';
-      const partyKey  = card.dataset.party || '';
+      const stateKey = card.dataset.state || '';
+      const partyKey = card.dataset.party || '';
 
-      // ✅ Every token must be present in the full name
-      const matchesText   = !tokens.length || tokens.every(t => fullName.includes(t));
+      const matchesText = !tokens.length || tokens.every(t => fullName.includes(t));
       const matchesOffice = isAll(office) || officeKey.includes(office);
-      const matchesState  = isAll(state)  || stateKey.includes(state);
-      const matchesParty  = isAll(party)  || partyKey.includes(party);
+      const matchesState = isAll(state) || stateKey.includes(state);
+      const matchesParty = isAll(party) || partyKey.includes(party);
 
       card.style.display = (matchesText && matchesOffice && matchesState && matchesParty) ? '' : 'none';
     });
@@ -2907,171 +2946,29 @@ function showRatings() {
   applyFilters();
 })();
 
-// Open Ratings Modal
-function openRatingsModal(slug) {
-  Promise.all([
-    fetch('president-ratings.json').then(res => res.json()),
-    fetch('vicepresident-ratings.json').then(res => res.json()),
-    fetch('governors-ratings.json').then(res => res.json()),
-    fetch('ltgovernors-ratings.json').then(res => res.json()),
-    fetch('senators-ratings.json').then(res => res.json()),
-    fetch('housereps-ratings.json').then(res => res.json())
-  ]).then(([presidents, vps, governors, ltgovs, senators, housereps]) => {
-    let ratings = [
-      ...presidents,
-      ...vps,
-      ...governors,
-      ...ltgovs,
-      ...senators,
-      ...housereps
-    ];
-
-    const saved = JSON.parse(localStorage.getItem('ratingsData')) || {};
-    ratings.forEach(r => {
-      if (saved[r.slug]) {
-        r.votes = saved[r.slug].votes;
-        r.averageRating = saved[r.slug].averageRating;
-      }
-    });
-
-    const ratingEntry = ratings.find(r => r.slug === slug);
-    const official = window.allOfficials.find(o => o.slug === slug);
-    if (!official || !ratingEntry) return;
-
-    // Populate modal fields
-    document.getElementById('ratings-modal-title').textContent = official.name;
-    document.getElementById('ratings-modal-photo').src = official.photo;
-    let positionText = official.office;
-    if (official.state) positionText += ` — ${official.state}`;
-    if (official.district) positionText += `, District ${official.district}`;
-    document.getElementById('ratings-modal-position').textContent = positionText;
-
-    // Build category averages + vote counts
-    let details = '';
-    for (const category of ratingCategories) {
-      const votes = ratingEntry.votes[category] || [];
-      const avg = votes.length ? (votes.reduce((a,b)=>a+b,0)/votes.length).toFixed(1) : 'N/A';
-      const color = avg !== 'N/A' ? getRatingColor(avg) : '#ccc';
-      details += `
-        <div class="rating-cell">
-          <span class="category-label">${category}</span>
-          <span class="avg-rating" style="color:${color};">${avg} ★</span>
-          <span class="vote-count">(${votes.length} votes)</span>
-        </div>
-      `;
-    }
-    document.getElementById('ratings-details').innerHTML = details;
-
-    // Show modal
-    document.getElementById('ratings-modal').style.display = 'block';
-
-    // Build rating form dynamically
-    const form = document.getElementById('rate-form');
-    form.innerHTML = ratingCategories.map(cat => `
-      <div class="rating-row">
-        <span class="category-label">${cat}</span>
-        <span class="star-rating" data-category="${cat}"></span>
-      </div>
-    `).join('') + `
-      <button type="submit" id="submit-rating-btn" class="btn-modern">Submit Rating</button>
-    `;
-    initStarRatings();
-
-    // Handle rating form submission
-    document.getElementById('rate-form').onsubmit = function(e) {
-      e.preventDefault();
-
-      const officialName = document.getElementById('ratings-modal-title').textContent;
-      const official = window.allOfficials.find(o => o.name === officialName);
-      if (!official) return;
-
-      const saved = JSON.parse(localStorage.getItem('ratingsData')) || {};
-      let ratingEntry = saved[official.slug];
-      if (!ratingEntry) {
-        ratingEntry = { votes: {}, averageRating: 0 };
-        ratingCategories.forEach(cat => ratingEntry.votes[cat] = []);
-        saved[official.slug] = ratingEntry;
-      }
-
-      // Collect star selections
-      document.querySelectorAll('#rate-modal .star-rating').forEach(span => {
-        const category = span.dataset.category;
-        const selected = parseInt(span.dataset.selected || 0);
-        if (selected > 0) {
-          ratingEntry.votes[category].push(selected);
-        }
-      });
-
-      // Recalculate average
-      let total = 0, count = 0;
-      for (const category in ratingEntry.votes) {
-        const votes = ratingEntry.votes[category];
-        total += votes.reduce((a,b)=>a+b,0);
-        count += votes.length;
-      }
-      ratingEntry.averageRating = count ? total / count : 0;
-
-      // Save back to localStorage
-      saved[official.slug] = {
-        votes: ratingEntry.votes,
-        averageRating: ratingEntry.averageRating
-      };
-      localStorage.setItem('ratingsData', JSON.stringify(saved));
-
-      // Update modal details
-      let updatedDetails = '';
-      for (const category of ratingCategories) {
-        const votes = ratingEntry.votes[category] || [];
-        const avg = votes.length ? (votes.reduce((a,b)=>a+b,0)/votes.length).toFixed(1) : 'N/A';
-        const color = avg !== 'N/A' ? getRatingColor(avg) : '#ccc';
-        updatedDetails += `<p style="font-size:18px;">
-          <span class="category-label">${category}:</span>
-          <span style="color:${color}; font-size:22px; font-weight:bold;">${avg} ★</span>
-          (${votes.length} votes)
-        </p>`;
-      }
-      document.getElementById('ratings-details').innerHTML = updatedDetails;
-
-      // Update card badge in Ratings tab
-      const badge = document.querySelector(
-        `button[onclick="openRatingsModal('${official.slug}')"]`
-      ).previousElementSibling;
-      if (badge) {
-        badge.textContent = `${Math.round(ratingEntry.averageRating)} ★`;
-        badge.style.color = getRatingColor(ratingEntry.averageRating);
-      }
-
-      // Reset stars
-      initStarRatings();
-
-      // Close rate modal
-      closeModal('rate-modal');
-    };
-  });
+// Modal closer (used in openRatingsModal)
+function closeModal(id) {
+  const modal = document.getElementById(id);
+  if (modal) modal.style.display = 'none';
 }
 
-// Star rating initializer
+// Star rating initializer (used in openRatingsModal)
 function initStarRatings() {
   const stars = document.querySelectorAll('#rate-modal .star-rating');
   stars.forEach(span => {
     span.innerHTML = '';
     span.dataset.selected = '';
-
     for (let i = 1; i <= 5; i++) {
       const star = document.createElement('span');
       star.textContent = '★';
       star.dataset.value = i;
       star.style.fontSize = '28px';
       star.style.cursor = 'pointer';
-
       star.addEventListener('click', function () {
-        // Clear previous selection
         span.querySelectorAll('span').forEach(s => {
           s.classList.remove('filled');
           s.style.color = '';
         });
-
-        // Fill stars up to the clicked one
         for (let j = 1; j <= i; j++) {
           const s = span.querySelector(`span[data-value="${j}"]`);
           if (s) {
@@ -3079,51 +2976,35 @@ function initStarRatings() {
             s.style.color = getRatingColor(j);
           }
         }
-
-        // Save selected value
         span.dataset.selected = String(i);
       });
-
       span.appendChild(star);
     }
   });
 }
 
-// Rating color helper
-function getRatingColor(avg) {
-  const rounded = Math.round(avg);
-  switch (rounded) {
-    case 5: return 'gold';
-    case 4: return 'green';
-    case 3: return 'yellow';
-    case 2: return 'orange';
-    case 1: return 'red';
-    default: return '#ccc';
-  }
-}
-
-// Modal closer
-function closeModal(id) {
-  const modal = document.getElementById(id);
-  if (modal) {
-    modal.style.display = 'none';
-  }
-}
-
 // Hook up the "Rate Me" button
-document.getElementById('rate-me-btn').onclick = function() {
-  const title = document.getElementById('ratings-modal-title').textContent;
-  document.getElementById('rate-modal-title').textContent = `Rate ${title}`;
-  document.getElementById('rate-modal').style.display = 'block';
-  initStarRatings();
+document.getElementById('rate-me-btn')?.onclick = function() {
+  const title = document.getElementById('ratings-modal-title')?.textContent || 'Official';
+  const rateTitle = document.getElementById('rate-modal-title');
+  if (rateTitle) rateTitle.textContent = `Rate ${title}`;
+  const rateModal = document.getElementById('rate-modal');
+  if (rateModal) rateModal.style.display = 'block';
+  initStarRatings?.(); // safe call
 };
-// Ratings & Rankings — section toggle (unchanged)
+
+// Ratings & Rankings — section toggle (unchanged, but added null checks)
 (function initRatingsRankingsToggle() {
-  const btnRatings = document.getElementById('btn-ratings');
-  const btnRankings = document.getElementById('btn-rankings');
-  const ratingsSec = document.getElementById('ratings-section');
-  const rankingsSec = document.getElementById('rankings-section');
-  if (!btnRatings || !btnRankings || !ratingsSec || !rankingsSec) return;
+  const btnRatings   = document.getElementById('btn-ratings');
+  const btnRankings  = document.getElementById('btn-rankings');
+  const ratingsSec   = document.getElementById('ratings-section');
+  const rankingsSec  = document.getElementById('rankings-section');
+
+  if (!btnRatings || !btnRankings || !ratingsSec || !rankingsSec) {
+    console.warn("Ratings/Rankings toggle elements missing – sub-tabs may not work");
+    return;
+  }
+
   function activateRatings() {
     btnRatings.classList.add('rr-tab-active');
     btnRankings.classList.remove('rr-tab-active');
@@ -3132,6 +3013,7 @@ document.getElementById('rate-me-btn').onclick = function() {
     ratingsSec.removeAttribute('aria-hidden');
     rankingsSec.setAttribute('aria-hidden', 'true');
   }
+
   function activateRankings() {
     btnRankings.classList.add('rr-tab-active');
     btnRatings.classList.remove('rr-tab-active');
@@ -3139,18 +3021,21 @@ document.getElementById('rate-me-btn').onclick = function() {
     ratingsSec.classList.remove('rr-section-active');
     rankingsSec.removeAttribute('aria-hidden');
     rankingsSec.setAttribute('aria-hidden', 'false');
-  }
-  btnRatings.addEventListener('click', activateRatings);
-  btnRankings.addEventListener('click', () => {
-    activateRankings();
     if (typeof window.renderRankingsLeaderboard === 'function') {
       window.renderRankingsLeaderboard();
+    } else {
+      console.warn("renderRankingsLeaderboard not defined yet");
     }
-  });
+  }
+
+  btnRatings.addEventListener('click', activateRatings);
+  btnRankings.addEventListener('click', activateRankings);
+
+  // Default to Ratings
   activateRatings();
 })();
 
-// ✅ Utility: load merged rankings JSONs (GLOBAL)
+// ✅ Utility: load merged rankings JSONs (GLOBAL) – already solid, added fallback message
 async function loadRankingsData() {
   try {
     const [senatorsRes, repsRes] = await Promise.all([
@@ -3158,12 +3043,8 @@ async function loadRankingsData() {
       fetch('/representatives-rankings.json', { cache: 'no-store' })
     ]);
 
-    if (!senatorsRes.ok) {
-      throw new Error(`Failed to load senators-rankings.json: ${senatorsRes.status}`);
-    }
-    if (!repsRes.ok) {
-      throw new Error(`Failed to load representatives-rankings.json: ${repsRes.status}`);
-    }
+    if (!senatorsRes.ok) throw new Error(`senators-rankings.json: ${senatorsRes.status}`);
+    if (!repsRes.ok)     throw new Error(`representatives-rankings.json: ${repsRes.status}`);
 
     const [senators, reps] = await Promise.all([
       senatorsRes.json(),
@@ -3172,20 +3053,23 @@ async function loadRankingsData() {
 
     return {
       senators: Array.isArray(senators) ? senators : [],
-      reps: Array.isArray(reps) ? reps : []
+      reps:     Array.isArray(reps)     ? reps     : []
     };
   } catch (err) {
     console.error('Error loading rankings data:', err);
+    // Optional: show user message (uncomment if you want UI feedback)
+    // const tbody = document.querySelector('#rankings-leaderboard tbody');
+    // if (tbody) tbody.innerHTML = '<tr><td colspan="5">Failed to load rankings data</td></tr>';
     return { senators: [], reps: [] };
   }
 }
 
-// ✅ Globals for Rankings tab
-const officeSel = document.getElementById('rankingsOfficeFilter');
+// ✅ Globals for Rankings tab – good
+const officeSel   = document.getElementById('rankingsOfficeFilter');
 const categorySel = document.getElementById('rankingsCategoryFilter');
-const tableBody = document.querySelector('#rankings-leaderboard tbody');
+const tableBody   = document.querySelector('#rankings-leaderboard tbody');
 
-// Updated weights tuned to current schema (misconduct penalty included)
+// Updated weights – good
 const WEIGHTS = {
   sponsoredBills: 2.0,
   cosponsoredBills: 1.0,
@@ -3197,7 +3081,7 @@ const WEIGHTS = {
   misconductCount: -10.0
 };
 
-// ✅ Scoring function using current schema
+// ✅ Scoring function – excellent
 function scoreLegislator(person) {
   const breakdown = {
     sponsoredBills: person.sponsoredBills || 0,
@@ -3233,7 +3117,7 @@ function formatScore(value) {
   return `<span class="${cls}">${Number.isFinite(value) ? value.toFixed(1) : '0.0'}</span>`;
 }
 
-// 🔥 Streak/Drought badge helper
+// 🔥 Streak/Drought badge helper – good
 function renderStreakBadge(streakWeeks) {
   if ((streakWeeks || 0) >= 1) {
     return `<span class="badge badge-streak">${streakWeeks} wk streak</span>`;
@@ -3241,7 +3125,7 @@ function renderStreakBadge(streakWeeks) {
   return `<span class="badge badge-drought">inactive</span>`;
 }
 
-// ⚠️ Misconduct badge helper
+// ⚠️ Misconduct badge helper – good
 function renderMisconductBadge(person) {
   const count = person.misconductCount || 0;
   if (count === 0) return '';
@@ -3257,7 +3141,7 @@ function renderMisconductBadge(person) {
   `;
 }
 
-// 🏛 Committee role badges
+// 🏛 Committee role badges – good
 function roleClass(role) {
   if (/chairman|chair/i.test(role)) return 'role-chair';
   if (/ranking member/i.test(role)) return 'role-ranking';
@@ -3272,17 +3156,20 @@ function renderCommitteeBadges(person) {
   `).join('');
 }
 
-// 🟦 Party row accents
+// 🟦 Party row accents – good
 function partyRowClass(party) {
   if (/dem/i.test(party)) return 'row-dem';
   if (/rep|gop/i.test(party)) return 'row-rep';
   return 'row-ind';
 }
 
-// ⚖️ Scoring logic modal renderer
+// ⚖️ Scoring logic modal renderer – added null check
 function renderScoringLogic() {
   const modalBody = document.getElementById('scoringLogicBody');
-  if (!modalBody) return;
+  if (!modalBody) {
+    console.warn("Scoring logic modal body (#scoringLogicBody) not found");
+    return;
+  }
   modalBody.innerHTML = `
     <h3>Scoring Formula</h3>
     <p>Each legislator’s Power Score is calculated using the following weighted factors:</p>
@@ -3303,22 +3190,32 @@ function renderScoringLogic() {
 // Expose for nav triggers that call showRatings()
 window.renderScoringLogic = renderScoringLogic;
 
-// 🗂️ Scorecard modal with photo, header, and breakdown
+// 🗂️ Scorecard modal with photo, header, and breakdown – IMPROVED
 function showScorecard(person, breakdown, composite) {
   const modal = document.getElementById('scorecardModal');
   const nameEl = document.getElementById('scorecardName');
   const table = document.getElementById('scorecardBreakdown');
-  if (!modal || !nameEl || !table) return;
+  if (!modal || !nameEl || !table) {
+    console.warn("Scorecard modal elements missing");
+    return;
+  }
 
-  nameEl.textContent = person.name;
-  const photoUrl = person.photoUrl || '/assets/photos/fallback-photo.jpg';
+  nameEl.textContent = person.name || 'Unknown Official';
+
+  // Prefer allOfficials data for photo/office/state/party if available
+  const official = window.allOfficials?.find(o => o.slug === person.slug);
+  const photoUrl = official?.photo || person.photoUrl || '/assets/photos/fallback-photo.jpg';
+  const office = official?.office || person.office || 'Unknown';
+  const state = official?.state || person.state || '';
+  const party = official?.party || person.party || 'N/A';
   const district = person.district ? ` / District ${person.district}` : '';
+
   document.getElementById('scorecardHeader').innerHTML = `
-    <img src="${photoUrl}" alt="${person.name}" class="profile-photo"
+    <img src="${photoUrl}" alt="${person.name || 'Official'}" class="profile-photo"
          onerror="this.src='/assets/photos/fallback-photo.jpg';">
     <div class="scorecard-header-info">
-      <p>${person.state}${district} • ${person.party}</p>
-      <p>Office: ${person.office}</p>
+      <p>${state}${district} • ${party}</p>
+      <p>Office: ${office}</p>
       <p>Power Score: ${formatScore(composite)}</p>
       <p>Streak: ${person.streak || 0} weeks</p>
     </div>
@@ -3346,7 +3243,7 @@ function showScorecard(person, breakdown, composite) {
     </ul>
   `;
 
-    const committeesHtml = `
+  const committeesHtml = `
     <h3>Committees</h3>
     <div class="committee-badges">
       ${renderCommitteeBadges(person)}
@@ -3366,10 +3263,7 @@ function showScorecard(person, breakdown, composite) {
     <tbody>
       <tr>
         <td colspan="4">
-          ${legislationHtml}
-          ${votesHtml}
-          ${committeesHtml}
-          ${misconductHtml}
+          ${legislationHtml}${votesHtml}${committeesHtml}${misconductHtml}
         </td>
       </tr>
     </tbody>
@@ -3379,18 +3273,20 @@ function showScorecard(person, breakdown, composite) {
   modal.setAttribute('aria-hidden', 'false');
 }
 
-// 🔽 Sortable headers + reusable table renderer (scoped to this table)
+// 🔽 Sortable headers + reusable table renderer – FIXED duplicates, improved fallback
 function attachSortableHeaders(rows, officeType) {
-  const headers = document.querySelectorAll('#rankings-leaderboard th');
+  const headers = document.querySelectorAll('#rankings-leaderboard th[data-sort]');
   headers.forEach(header => {
-    header.addEventListener('click', () => {
-      const sortField = header.dataset.sort;
+    // Remove existing listeners to prevent duplicates
+    const newHeader = header.cloneNode(true);
+    header.parentNode.replaceChild(newHeader, header);
+    newHeader.addEventListener('click', () => {
+      const sortField = newHeader.dataset.sort;
       const sortedRows = [...rows];
-
       if (sortField === 'rank') {
         sortedRows.sort((a, b) => a.rank - b.rank);
       } else if (sortField === 'name') {
-        sortedRows.sort((a, b) => a.person.name.localeCompare(b.person.name));
+        sortedRows.sort((a, b) => (a.person.name || '').localeCompare(b.person.name || ''));
       } else if (sortField === 'office') {
         sortedRows.sort((a, b) => (a.person.office || '').localeCompare(b.person.office || ''));
       } else if (sortField === 'score') {
@@ -3398,88 +3294,89 @@ function attachSortableHeaders(rows, officeType) {
       } else if (sortField === 'streak') {
         sortedRows.sort((a, b) => b.streak - a.streak);
       }
-
       renderTableBody(sortedRows, officeType);
     });
   });
 }
 
 function renderTableBody(rows, officeType) {
+  if (!tableBody) {
+    console.warn("#rankings-leaderboard tbody missing");
+    return;
+  }
   tableBody.innerHTML = '';
 
   rows.forEach((row, idx) => {
+    // Prefer allOfficials for most accurate party/office/state/photo
     const official = window.allOfficials?.find(o => o.slug === row.person.slug);
-
-    const officeLabel =
-      official?.office ||
-      row.person.office ||
-      (officeType === 'rep' ? 'Representative' : 'Senator');
-
-    const stateLabel = official?.state || row.person.state || '';
     const partyLabel = official?.party || row.person.party || '';
-    const photoUrl = official?.photo || row.person.photoUrl || '';
+    const officeLabel = official?.office || row.person.office ||
+      (officeType === 'rep' ? 'U.S. Representative' : 'Senator');
+    const stateLabel = official?.state || row.person.state || '';
+    const district = row.person.district || 'At-Large';
 
     const tr = document.createElement('tr');
-    tr.className = partyRowClass(partyLabel);
+    tr.className = partyRowClass(partyLabel); // Correct party color highlight!
 
     tr.innerHTML = `
       <td>${idx + 1}</td>
       <td>
-        <a href="#" class="scorecard-link" data-slug="${row.person.slug}">
-          ${row.person.name}
+        <a href="#" class="scorecard-link" data-slug="${row.person.slug || ''}">
+          ${row.person.name || 'Unknown'}
         </a>
         ${renderMisconductBadge(row.person)}
         <br><small>${stateLabel} • ${partyLabel}${
-      officeType === 'rep'
-        ? ` • District ${row.person.district || 'At-Large'}`
-        : ''
-    }</small>
+          officeType === 'rep' ? ` • District ${district}` : ''
+        }</small>
       </td>
       <td>${officeLabel}</td>
       <td>${row.score.toFixed(1)}</td>
       <td>${renderStreakBadge(row.streak)}</td>
     `;
-
     tableBody.appendChild(tr);
   });
 
+  // Clickable scorecard links – IMPROVED with best data merge
   tableBody.querySelectorAll('.scorecard-link').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
       const slug = link.dataset.slug;
       const row = rows.find(r => r.person.slug === slug);
-      if (row) {
-        const official = window.allOfficials?.find(o => o.slug === row.person.slug);
-        showScorecard(
-          {
-            ...row.person,
-            office: official?.office || row.person.office,
-            state: official?.state || row.person.state,
-            party: official?.party || row.person.party,
-            photoUrl: official?.photo || row.person.photoUrl
-          },
-          row.breakdown,
-          row.score
-        );
-      }
+      if (!row) return;
+
+      const official = window.allOfficials?.find(o => o.slug === slug) || {};
+      const enhancedPerson = {
+        ...row.person,
+        name: row.person.name || official.name,
+        office: official.office || row.person.office,
+        state: official.state || row.person.state,
+        party: official.party || row.person.party,
+        photoUrl: official.photo || row.person.photoUrl || '/assets/photos/fallback-photo.jpg',
+        district: official.district || row.person.district
+      };
+
+      showScorecard(enhancedPerson, row.breakdown, row.score);
     });
   });
 }
 
-// 🚀 Render pipeline
+// 🚀 Render pipeline – IMPROVED with null checks
 async function render() {
-  const selectedOffice = officeSel.value.toLowerCase();
-  const selectedCategory = categorySel.value;
+  if (!officeSel || !categorySel || !tableBody) {
+    console.warn("Rankings UI elements missing – cannot render");
+    return;
+  }
+
+  const selectedOffice = officeSel.value?.toLowerCase() || '';
+  const selectedCategory = categorySel.value || 'overall';
 
   const { senators, reps } = await loadRankingsData();
 
-  let data = [];
-  let officeType = 'senator';
-
+  let data = [], officeType = 'senator';
   if (selectedOffice.includes('senator')) {
     data = senators;
     officeType = 'senator';
-  } else if (selectedOffice.includes('rep')) {
+  } else if (selectedOffice.includes('rep') || selectedOffice.includes('representative')) {
     data = reps;
     officeType = 'rep';
   } else {
@@ -3488,7 +3385,7 @@ async function render() {
   }
 
   if (!Array.isArray(data) || data.length === 0) {
-    tableBody.innerHTML = '<tr><td colspan="5">No data loaded yet</td></tr>';
+    tableBody.innerHTML = '<tr><td colspan="5">No rankings data available</td></tr>';
     return;
   }
 
@@ -3512,8 +3409,8 @@ async function render() {
   else if (selectedCategory === 'missedVotes') sortField = 'missedVotes';
 
   rows.sort((a, b) => {
-    const aVal = a.person[sortField] ?? (sortField === 'score' ? a.score : 0);
-    const bVal = b.person[sortField] ?? (sortField === 'score' ? b.score : 0);
+    const aVal = sortField === 'score' ? a.score : (a.person[sortField] ?? 0);
+    const bVal = sortField === 'score' ? b.score : (b.person[sortField] ?? 0);
     return bVal - aVal;
   });
 
@@ -3523,232 +3420,45 @@ async function render() {
 
 // 🌐 Expose render + filter hooks
 window.renderRankingsLeaderboard = () => render().catch(console.error);
-officeSel.addEventListener('change', () => render().catch(console.error));
-categorySel.addEventListener('change', () => render().catch(console.error));
+
+// Attach change listeners safely
+officeSel?.addEventListener('change', () => render().catch(console.error));
+categorySel?.addEventListener('change', () => render().catch(console.error));
 
 // 🚀 Initial render
 render().catch(console.error);
 
-// 📘 Scoring Logic modal handlers
+// 📘 Scoring Logic modal handlers – good, added null safety
 document.getElementById('scoringLogicBtn')?.addEventListener('click', () => {
   renderScoringLogic();
-  const modal = document.getElementById('scoringLogicModal');
-  modal.classList.add('is-open');
-  modal.setAttribute('aria-hidden', 'false');
+  document.getElementById('scoringLogicModal')?.classList.add('is-open');
+  document.getElementById('scoringLogicModal')?.setAttribute('aria-hidden', 'false');
 });
 
 document.getElementById('scoringLogicClose')?.addEventListener('click', () => {
   const modal = document.getElementById('scoringLogicModal');
-  modal.classList.remove('is-open');
-  modal.setAttribute('aria-hidden', 'true');
+  modal?.classList.remove('is-open');
+  modal?.setAttribute('aria-hidden', 'true');
 });
 
 document.getElementById('scoringLogicModal')?.addEventListener('click', e => {
   if (e.target.id === 'scoringLogicModal') {
-    const modal = document.getElementById('scoringLogicModal');
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden', 'true');
+    e.target.classList.remove('is-open');
+    e.target.setAttribute('aria-hidden', 'true');
   }
 });
 
-// 🧾 Scorecard modal close
+// 🧾 Scorecard modal close – good
 document.getElementById('scorecardClose')?.addEventListener('click', () => {
   const modal = document.getElementById('scorecardModal');
-  modal.classList.remove('is-open');
-  modal.setAttribute('aria-hidden', 'true');
+  modal?.classList.remove('is-open');
+  modal?.setAttribute('aria-hidden', 'true');
 });
 
 document.getElementById('scorecardModal')?.addEventListener('click', e => {
   if (e.target.id === 'scorecardModal') {
-    const modal = document.getElementById('scorecardModal');
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden', 'true');
-  }
-});
-
-// 🔽 Sortable headers + reusable table renderer (scoped to this table)
-function attachSortableHeaders(rows, officeType) {
-  const headers = document.querySelectorAll('#rankings-leaderboard th');
-  headers.forEach(header => {
-    header.addEventListener('click', () => {
-      const sortField = header.dataset.sort;
-      const sortedRows = [...rows];
-
-      if (sortField === 'rank') {
-        sortedRows.sort((a, b) => a.rank - b.rank);
-      } else if (sortField === 'name') {
-        sortedRows.sort((a, b) => a.person.name.localeCompare(b.person.name));
-      } else if (sortField === 'office') {
-        sortedRows.sort((a, b) => (a.person.office || '').localeCompare(b.person.office || ''));
-      } else if (sortField === 'score') {
-        sortedRows.sort((a, b) => b.score - a.score);
-      } else if (sortField === 'streak') {
-        sortedRows.sort((a, b) => b.streak - a.streak);
-      }
-
-      renderTableBody(sortedRows, officeType);
-    });
-  });
-}
-
-function renderTableBody(rows, officeType) {
-  tableBody.innerHTML = '';
-
-  rows.forEach((row, idx) => {
-    const official = window.allOfficials?.find(o => o.slug === row.person.slug);
-
-    const officeLabel =
-      official?.office ||
-      row.person.office ||
-      (officeType === 'rep' ? 'Representative' : 'Senator');
-
-    const stateLabel = official?.state || row.person.state || '';
-    const partyLabel = official?.party || row.person.party || '';
-
-    const tr = document.createElement('tr');
-    tr.className = partyRowClass(partyLabel);
-
-    tr.innerHTML = `
-      <td>${idx + 1}</td>
-      <td>
-        <a href="#" class="scorecard-link" data-slug="${row.person.slug}">
-          ${row.person.name}
-        </a>
-        ${renderMisconductBadge(row.person)}
-        <br><small>${stateLabel} • ${partyLabel}${
-      officeType === 'rep'
-        ? ` • District ${row.person.district || 'At-Large'}`
-        : ''
-    }</small>
-      </td>
-      <td>${officeLabel}</td>
-      <td>${row.score.toFixed(1)}</td>
-      <td>${renderStreakBadge(row.streak)}</td>
-    `;
-
-    tableBody.appendChild(tr);
-  });
-
-  tableBody.querySelectorAll('.scorecard-link').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      const slug = link.dataset.slug;
-      const row = rows.find(r => r.person.slug === slug);
-      if (row) {
-        const official = window.allOfficials?.find(o => o.slug === row.person.slug);
-        showScorecard(
-          {
-            ...row.person,
-            office: official?.office || row.person.office,
-            state: official?.state || row.person.state,
-            party: official?.party || row.person.party,
-            photoUrl: official?.photo || row.person.photoUrl
-          },
-          row.breakdown,
-          row.score
-        );
-      }
-    });
-  });
-}
-
-// 🚀 Render pipeline
-async function render() {
-  const selectedOffice = officeSel.value.toLowerCase();
-  const selectedCategory = categorySel.value;
-
-  const { senators, reps } = await loadRankingsData();
-
-  let data = [];
-  let officeType = 'senator';
-
-  if (selectedOffice.includes('senator')) {
-    data = senators;
-    officeType = 'senator';
-  } else if (selectedOffice.includes('rep')) {
-    data = reps;
-    officeType = 'rep';
-  } else {
-    tableBody.innerHTML = '<tr><td colspan="5">Select an office to view rankings</td></tr>';
-    return;
-  }
-
-  if (!Array.isArray(data) || data.length === 0) {
-    tableBody.innerHTML = '<tr><td colspan="5">No data loaded yet</td></tr>';
-    return;
-  }
-
-  const rows = data.map((person, idx) => {
-    const { composite, breakdown } = scoreLegislator(person);
-    return {
-      person,
-      score: composite,
-      breakdown,
-      streak: person.streak || 0,
-      rank: idx + 1
-    };
-  });
-
-  let sortField = 'score';
-  if (selectedCategory === 'sponsoredBills') sortField = 'sponsoredBills';
-  else if (selectedCategory === 'cosponsoredBills') sortField = 'cosponsoredBills';
-  else if (selectedCategory === 'becameLawBills') sortField = 'becameLawBills';
-  else if (selectedCategory === 'becameLawCosponsoredBills') sortField = 'becameLawCosponsoredBills';
-  else if (selectedCategory === 'committees') sortField = 'committees';
-  else if (selectedCategory === 'missedVotes') sortField = 'missedVotes';
-
-  rows.sort((a, b) => {
-    const aVal = a.person[sortField] ?? (sortField === 'score' ? a.score : 0);
-    const bVal = b.person[sortField] ?? (sortField === 'score' ? b.score : 0);
-    return bVal - aVal;
-  });
-
-  renderTableBody(rows, officeType);
-  attachSortableHeaders(rows, officeType);
-}
-
-// 🌐 Expose render + filter hooks
-window.renderRankingsLeaderboard = () => render().catch(console.error);
-officeSel.addEventListener('change', () => render().catch(console.error));
-categorySel.addEventListener('change', () => render().catch(console.error));
-
-// 🚀 Initial render
-render().catch(console.error);
-
-// 📘 Scoring Logic modal handlers
-document.getElementById('scoringLogicBtn')?.addEventListener('click', () => {
-  renderScoringLogic();
-  const modal = document.getElementById('scoringLogicModal');
-  modal.classList.add('is-open');
-  modal.setAttribute('aria-hidden', 'false');
-});
-
-document.getElementById('scoringLogicClose')?.addEventListener('click', () => {
-  const modal = document.getElementById('scoringLogicModal');
-  modal.classList.remove('is-open');
-  modal.setAttribute('aria-hidden', 'true');
-});
-
-document.getElementById('scoringLogicModal')?.addEventListener('click', e => {
-  if (e.target.id === 'scoringLogicModal') {
-    const modal = document.getElementById('scoringLogicModal');
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden', 'true');
-  }
-});
-
-// 🧾 Scorecard modal close
-document.getElementById('scorecardClose')?.addEventListener('click', () => {
-  const modal = document.getElementById('scorecardModal');
-  modal.classList.remove('is-open');
-  modal.setAttribute('aria-hidden', 'true');
-});
-
-document.getElementById('scorecardModal')?.addEventListener('click', e => {
-  if (e.target.id === 'scorecardModal') {
-    const modal = document.getElementById('scorecardModal');
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden', 'true');
+    e.target.classList.remove('is-open');
+    e.target.setAttribute('aria-hidden', 'true');
   }
 });
 
