@@ -86,7 +86,18 @@ const merged = rankings.map(sen => {
     sen.misconductTags = [];
   }
 
-  // Preserve existing fields like streak, powerScore, lastUpdated if present
+  // ---- Snapshot current totals for weekly diff tracking ----
+  sen.metrics = sen.metrics || { lastTotals: {} };
+  sen.metrics.lastTotals = {
+    sponsoredBills: sen.sponsoredBills ?? 0,
+    cosponsoredBills: sen.cosponsoredBills ?? 0,
+    yeaVotes: sen.yeaVotes ?? 0,
+    nayVotes: sen.nayVotes ?? 0,
+    missedVotes: sen.missedVotes ?? 0,
+    totalVotes: sen.totalVotes ?? 0
+  };
+
+  // Preserve existing fields like streaks, powerScore; update timestamp
   sen.lastUpdated = new Date().toISOString();
 
   return sen;
