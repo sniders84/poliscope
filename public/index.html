@@ -380,43 +380,48 @@
     <div id="ratings-cards" class="card-section"></div>
   </div>
 
-  <!-- Rankings section -->
-  <div id="rankings-section" class="rr-section" aria-hidden="true">
-    <div class="filters-row">
-      <select id="rankingsOfficeFilter" aria-label="Rankings office filter">
-        <option value="senator" selected>Senators</option>
-        <option value="u.s. representative">House Reps</option>
-        <option value="governor">Governors</option>
-        <option value="lieutenant governor">Lt. Governors</option>
-        <option value="president">President</option>
-        <option value="vice president">Vice President</option>
-      </select>
-      <select id="rankingsCategoryFilter" aria-label="Rankings category filter">
-        <option value="overall" selected>Overall</option>
-        <option value="sponsored_bills">Bills Sponsored</option>
-        <option value="sponsored_amendments">Amendments Sponsored</option>
-        <option value="cosponsored_bills">Bills Cosponsored</option>
-        <option value="cosponsored_amendments">Amendments Cosponsored</option>
-        <option value="laws_enacted">Laws Enacted</option>
-        <option value="committees">Committees</option>
-        <option value="votes">Missed Votes</option>
-      </select>
-    </div>
+ <!-- Rankings section -->
+<div id="rankings-section" class="rr-section" aria-hidden="true">
+  <div class="filters-row">
+    <select id="rankingsOfficeFilter" aria-label="Rankings office filter">
+      <option value="senator" selected>Senators</option>
+      <option value="u.s. representative">U.S. Representatives</option>
+      <option value="governor">Governors</option>
+      <option value="lieutenant governor">Lt. Governors</option>
+      <option value="president">President</option>
+      <option value="vice president">Vice President</option>
+    </select>
+    <select id="rankingsCategoryFilter" aria-label="Rankings category filter">
+      <option value="powerScore" selected>Overall Power Score</option>
+      <option value="sponsoredBills">Sponsored Bills</option>
+      <option value="cosponsoredBills">Cosponsored Bills</option>
+      <option value="becameLawBills">Bills Enacted</option>
+      <option value="becameLawCosponsoredBills">Bills Enacted (Cosponsored)</option>
+      <option value="committees">Committee Memberships</option>
+      <option value="misconductCount">Misconduct Count</option>
+      <option value="misconductTags">Misconduct Tags</option>
+      <option value="yeaVotes">Yea Votes</option>
+      <option value="nayVotes">Nay Votes</option>
+      <option value="missedVotes">Missed Votes</option>
+      <option value="streak">Streak</option>
+    </select>
+  </div>
 
-    <div class="leaderboard-wrap">
-      <table id="rankings-leaderboard" class="leaderboard-table" aria-label="Rankings leaderboard">
-        <thead>
-          <tr>
-            <th>Rank</th>
-            <th>Official</th>
-            <th>Office</th>
-            <th>Power Score</th>
-            <th>Streak</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </div>
+  <div class="leaderboard-wrap">
+    <table id="rankings-leaderboard" class="leaderboard-table" aria-label="Rankings leaderboard">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Official</th>
+          <th>Office</th>
+          <th>Value</th>
+          <th>Streak</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
 
     <div class="rankings-info">
       <button id="scoringLogicBtn" class="info-button">Rankings Scoring and Weight Logic</button>
