@@ -6,20 +6,30 @@
   "main": "index.js",
   "scripts": {
     "bootstrap:senate": "node scripts/bootstrap-senators.js",
+    "bootstrap:house": "node scripts/bootstrap-representatives.js",
     "scrape:legislation": "node scripts/legislation-scraper.js",
     "scrape:committees": "node scripts/committee-scraper.js",
-    "scrape:votes": "node scripts/votes-scraper.js",
+    "scrape:committees:house": "node scripts/committee-reps-scraper.js",
+    "scrape:votes:senate": "node scripts/votes-scraper.js",
+    "scrape:votes:house": "node scripts/votes-reps-scraper.js",
     "merge:senate": "node scripts/merge-senators.js",
+    "merge:house": "node scripts/merge-representatives.js",
     "score:senate": "node scripts/senators-scores.js",
+    "score:house": "node scripts/representatives-scores.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["congress", "rankings", "transparency"],
+  "keywords": [
+    "congress",
+    "rankings",
+    "transparency"
+  ],
   "author": "",
   "license": "MIT",
   "dependencies": {
     "axios": "^1.6.8",
     "cheerio": "^1.0.0-rc.12",
     "node-fetch": "^2.7.0",
-    "xml2js": "^0.6.2"
+    "xml2js": "^0.6.2",
+    "fast-xml-parser": "^4.3.6"
   }
 }
