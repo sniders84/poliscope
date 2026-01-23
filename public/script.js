@@ -3218,6 +3218,21 @@ document.getElementById('rate-me-btn').onclick = function() {
     return `<span class="${cls}">${Number.isFinite(value) ? value.toFixed(1) : '0.0'}</span>`;
   }
 
+  // Helper: render streak badges
+  function renderStreakBadges(streaks) {
+    const badges = [];
+    if (streaks?.activity > 0) {
+      badges.push(`🔥 ${streaks.activity} weeks activity streak`);
+    }
+    if (streaks?.voting > 0) {
+      badges.push(`🗳 ${streaks.voting} weeks voting streak`);
+    }
+    if (streaks?.leader > 0) {
+      badges.push(`👑 ${streaks.leader} weeks as Leader`);
+    }
+    return badges;
+  }
+
   // Scorecard modal with photo, name, state/district/party, and breakdown
   function showScorecard(person, breakdown, composite) {
     document.getElementById('scorecardName').textContent = person.name;
@@ -3332,101 +3347,105 @@ document.getElementById('rate-me-btn').onclick = function() {
         person,
         score: composite,
         breakdown,
-        streak: person.streak || ''
+        streaks: person.streaks || {}
       };
     });
 
     // Sort by selected category
-   rows.sort((a, b) => {
-  const key = selectedCategory;
+    rows.sort((a, b) => {
+      const key = selectedCategory;
 
-  if (key === "powerScore") {
-    return b.score - a.score; // sort by computed composite
-  }
-  if (key === "committees") {
-    return (b.person.committees?.length || 0) - (a.person.committees?.length || 0);
-  }
-  if (key === "misconductTags") {
-    return (b.person.misconductTags?.length || 0) - (a.person.misconductTags?.length || 0);
-  }
-  return (b.person[key] || 0) - (a.person[key] || 0);
-});
-
-   tableBody.innerHTML = '';
-rows.forEach((row, idx) => {
-  const tr = document.createElement('tr');
-
-  // Decide what value to display based on the selected filter
-  const displayVal = selectedCategory === "powerScore"
-    ? row.score.toFixed(1)   // use the computed composite score
-    : Array.isArray(row.person[selectedCategory])
-      ? row.person[selectedCategory].length
-      : row.person[selectedCategory] || 0;
-
-  tr.innerHTML = `
-    <td>${idx + 1}</td>
-    <td>
-      <a href="#" class="scorecard-link" data-name="${row.person.name.replace(/"/g, '&quot;')}">
-        ${row.person.name}
-      </a>
-      <br><small>${row.person.state} • ${row.person.party}${officeType === 'rep' ? ` • District ${row.person.district || 'At-Large'}` : ''}</small>
-    </td>
-    <td>${row.person.office || (officeType === 'rep' ? 'U.S. Representative' : 'U.S. Senator')}</td>
-    <td>${displayVal}</td>
-    <td>${row.streak}</td>
-  `;
-  tableBody.appendChild(tr);
-});
-
-     // Add scorecard click handlers
-  tableBody.querySelectorAll('.scorecard-link').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      const name = link.dataset.name;
-      const row = rows.find(r => r.person.name === name);
-      if (row) {
-        showScorecard(row.person, row.breakdown, row.score);
+      if (key === "powerScore") {
+        return b.score - a.score; // sort by computed composite
       }
+      if (key === "committees") {
+        return (b.person.committees?.length || 0) - (a.person.committees?.length || 0);
+      }
+      if (key === "misconductTags") {
+        return (b.person.misconductTags?.length || 0) - (a.person.misconductTags?.length || 0);
+      }
+      return (b.person[key] || 0) - (a.person[key] || 0);
     });
-  });
-}
 
-// Modal close handlers (unchanged)
-document.getElementById('scorecardClose')?.addEventListener('click', () => {
-  const modal = document.getElementById('scorecardModal');
-  modal.classList.remove('is-open', 'modal-dark');
-  modal.setAttribute('aria-hidden', 'true');
-});
-document.getElementById('scorecardModal')?.addEventListener('click', e => {
-  if (e.target.id === 'scorecardModal') {
+    tableBody.innerHTML = '';
+    rows.forEach((row, idx) => {
+      const tr = document.createElement('tr');
+
+      // Decide what value to display based on the selected filter
+      const displayVal = selectedCategory === "powerScore"
+        ? row.score.toFixed(1)   // use the computed composite score
+        : Array.isArray(row.person[selectedCategory])
+          ? row.person[selectedCategory].length
+          : row.person[selectedCategory] || 0;
+
+           tr.innerHTML = `
+        <td>${idx + 1}</td>
+        <td>
+          <a href="#" class="scorecard-link" data-name="${row.person.name.replace(/"/g, '&quot;')}">
+            ${row.person.name}
+          </a>
+          <br><small>${row.person.state} • ${row.person.party}${officeType === 'rep' ? ` • District ${row.person.district || 'At-Large'}` : ''}</small>
+        </td>
+        <td>${row.person.office || (officeType === 'rep' ? 'U.S. Representative' : 'U.S. Senator')}</td>
+        <td>${displayVal}</td>
+        <td class="streak-cell">
+          ${renderStreakBadges(row.person.streaks)
+            .map(b => `<span class="streak-badge">${b}</span>`)
+            .join(' ')}
+        </td>
+      `;
+      tableBody.appendChild(tr);
+    });
+
+    // Add scorecard click handlers
+    tableBody.querySelectorAll('.scorecard-link').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const name = link.dataset.name;
+        const row = rows.find(r => r.person.name === name);
+        if (row) {
+          showScorecard(row.person, row.breakdown, row.score);
+        }
+      });
+    });
+  }
+
+  // Modal close handlers (unchanged)
+  document.getElementById('scorecardClose')?.addEventListener('click', () => {
     const modal = document.getElementById('scorecardModal');
     modal.classList.remove('is-open', 'modal-dark');
     modal.setAttribute('aria-hidden', 'true');
-  }
-});
-document.getElementById('scoringLogicBtn')?.addEventListener('click', () => {
-  const modal = document.getElementById('scoringLogicModal');
-  modal.classList.add('is-open');
-  modal.setAttribute('aria-hidden', 'false');
-});
-document.getElementById('scoringLogicClose')?.addEventListener('click', () => {
-  const modal = document.getElementById('scoringLogicModal');
-  modal.classList.remove('is-open');
-  modal.setAttribute('aria-hidden', 'true');
-});
-document.getElementById('scoringLogicModal')?.addEventListener('click', e => {
-  if (e.target.id === 'scoringLogicModal') {
+  });
+  document.getElementById('scorecardModal')?.addEventListener('click', e => {
+    if (e.target.id === 'scorecardModal') {
+      const modal = document.getElementById('scorecardModal');
+      modal.classList.remove('is-open', 'modal-dark');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+  });
+  document.getElementById('scoringLogicBtn')?.addEventListener('click', () => {
+    const modal = document.getElementById('scoringLogicModal');
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+  });
+  document.getElementById('scoringLogicClose')?.addEventListener('click', () => {
     const modal = document.getElementById('scoringLogicModal');
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
-  }
-});
+  });
+  document.getElementById('scoringLogicModal')?.addEventListener('click', e => {
+    if (e.target.id === 'scoringLogicModal') {
+      const modal = document.getElementById('scoringLogicModal');
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+  });
 
-// Hook render function globally + filter changes
-window.renderRankingsLeaderboard = () => render().catch(console.error);
-officeSel.addEventListener('change', () => render().catch(console.error));
-categorySel.addEventListener('change', () => render().catch(console.error));
+  // Hook render function globally + filter changes
+  window.renderRankingsLeaderboard = () => render().catch(console.error);
+  officeSel.addEventListener('change', () => render().catch(console.error));
+  categorySel.addEventListener('change', () => render().catch(console.error));
 
-// Initial render
-render().catch(console.error);
+  // Initial render
+  render().catch(console.error);
 })();
