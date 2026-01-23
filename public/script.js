@@ -3206,7 +3206,7 @@ document.getElementById('rate-me-btn').onclick = function() {
 function showScorecard(person, breakdown, composite) {
   document.getElementById('scorecardName').textContent = person.name;
 
-  const photoUrl = person.photo; // merged in from senators.json / representatives.json
+  const photoUrl = person.photo; // comes from housereps.json / senators.json
   const district = person.district ? ` / District ${person.district}` : '';
   const headerHtml = `
     <img src="${photoUrl}" alt="${person.name}" class="profile-photo">
@@ -3261,7 +3261,7 @@ function showScorecard(person, breakdown, composite) {
   `;
 
   const modal = document.getElementById('scorecardModal');
-  modal.classList.add('is-open', 'modal-dark'); // ensure dark background
+  modal.classList.add('is-open', 'modal-dark');
   modal.setAttribute('aria-hidden', 'false');
 }
 
@@ -3281,7 +3281,7 @@ async function render() {
   const senatorsRes = await fetch('/senators-rankings.json');
   const senatorsInfoRes = await fetch('/senators.json');
   const repsRes = await fetch('/representatives-rankings.json');
-  const repsInfoRes = await fetch('/representatives.json'); // ✅ corrected path
+  const repsInfoRes = await fetch('/housereps.json'); // ✅ corrected
 
   const senatorsRankings = await senatorsRes.json();
   const senatorsInfo = await senatorsInfoRes.json();
@@ -3313,7 +3313,7 @@ async function render() {
       person,
       score: composite,
       breakdown,
-      streak: '' // Placeholder — expand later if needed
+      streak: '' // Placeholder
     };
   });
 
