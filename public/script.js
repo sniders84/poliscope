@@ -3206,7 +3206,7 @@ document.getElementById('rate-me-btn').onclick = function() {
 function showScorecard(person, breakdown, composite) {
   document.getElementById('scorecardName').textContent = person.name;
 
-  const photoUrl = person.photo; // use photo field from JSON
+  const photoUrl = person.photo; // merged in from senators.json / house-reps.json
   const district = person.district ? ` / District ${person.district}` : '';
   const headerHtml = `
     <img src="${photoUrl}" alt="${person.name}" class="profile-photo">
@@ -3265,23 +3265,37 @@ function showScorecard(person, breakdown, composite) {
   modal.setAttribute('aria-hidden', 'false');
 }
 
+// Merge rankings JSON with info JSON by slug
+function mergeData(rankings, info) {
+  return rankings.map(r => {
+    const match = info.find(i => i.slug === r.slug);
+    return { ...r, ...match }; // combine score + descriptive fields
+  });
+}
+
 async function render() {
   const selectedOffice = officeSel.value.toLowerCase();
   const selectedCategory = categorySel.value;
 
+  // Load both rankings and info files
   const senatorsRes = await fetch('/senators-rankings.json');
-  const repsRes = await fetch('/representatives-rankings.json'); // correct path
-  const senators = await senatorsRes.json();
-  const reps = await repsRes.json();
+  const senatorsInfoRes = await fetch('/senators.json');
+  const repsRes = await fetch('/representatives-rankings.json');
+  const repsInfoRes = await fetch('/house-reps.json');
+
+  const senatorsRankings = await senatorsRes.json();
+  const senatorsInfo = await senatorsInfoRes.json();
+  const repsRankings = await repsRes.json();
+  const repsInfo = await repsInfoRes.json();
 
   let data = [];
   let officeType = 'senator';
 
   if (selectedOffice === 'senator') {
-    data = senators;
+    data = mergeData(senatorsRankings, senatorsInfo);
     officeType = 'senator';
   } else if (selectedOffice === 'u.s. representative') {
-    data = reps;
+    data = mergeData(repsRankings, repsInfo);
     officeType = 'rep';
   } else {
     tableBody.innerHTML = '<tr><td colspan="5">Select an office to view rankings</td></tr>';
@@ -3347,13 +3361,13 @@ async function render() {
 // Modal close handlers (unchanged)
 document.getElementById('scorecardClose')?.addEventListener('click', () => {
   const modal = document.getElementById('scorecardModal');
-  modal.classList.remove('is-open');
+  modal.classList.remove('is-open', 'modal-dark');
   modal.setAttribute('aria-hidden', 'true');
 });
 document.getElementById('scorecardModal')?.addEventListener('click', e => {
   if (e.target.id === 'scorecardModal') {
     const modal = document.getElementById('scorecardModal');
-    modal.classList.remove('is-open');
+    modal.classList.remove('is-open', 'modal-dark');
     modal.setAttribute('aria-hidden', 'true');
   }
 });
