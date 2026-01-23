@@ -3202,11 +3202,11 @@ document.getElementById('rate-me-btn').onclick = function() {
     return `<span class="${cls}">${Number.isFinite(value) ? value.toFixed(1) : '0.0'}</span>`;
   }
 
- // Scorecard modal with photo, name, state/district/party, and breakdown
+// Scorecard modal with photo, name, state/district/party, and breakdown
 function showScorecard(person, breakdown, composite) {
   document.getElementById('scorecardName').textContent = person.name;
 
-  const photoUrl = person.photo;
+  const photoUrl = person.photo; // use photo field from JSON
   const district = person.district ? ` / District ${person.district}` : '';
   const headerHtml = `
     <img src="${photoUrl}" alt="${person.name}" class="profile-photo">
@@ -3270,7 +3270,7 @@ async function render() {
   const selectedCategory = categorySel.value;
 
   const senatorsRes = await fetch('/senators-rankings.json');
-  const repsRes = await fetch('/representatives-rankings.json'); // corrected path
+  const repsRes = await fetch('/representatives-rankings.json'); // correct path
   const senators = await senatorsRes.json();
   const reps = await repsRes.json();
 
