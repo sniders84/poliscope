@@ -439,7 +439,6 @@
   </div>
 </section>
 <script>
-<script>
 // ────────────────────────────────────────────────────────────────
 // Ratings/Rankings Sub-Tab Toggle – FULLY FIXED, NO ERRORS
 // ────────────────────────────────────────────────────────────────
@@ -454,12 +453,11 @@
     return;
   }
 
-  // These functions are now DEFINED so no "not defined" errors
   function showRatings() {
     console.log("showRatings executed");
     const container = document.getElementById('ratings-cards');
     if (container) {
-      container.innerHTML = '<p style="text-align:center;color:#fff;">Ratings loading... (your real code will go here)</p>';
+      container.innerHTML = '<p style="text-align:center;color:#fff;">Ratings loading... (real code will go here)</p>';
     }
   }
 
@@ -467,7 +465,7 @@
     console.log("renderRankingsLeaderboard executed");
     const tbody = document.querySelector('#rankings-leaderboard tbody');
     if (tbody) {
-      tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:#fff;">Rankings loading... (your real code will go here)</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:#fff;">Rankings loading... (real code will go here)</td></tr>';
     }
   }
 
@@ -486,7 +484,6 @@
   ratingsBtn.addEventListener('click', () => activateTab(true));
   rankingsBtn.addEventListener('click', () => activateTab(false));
 
-  // Default to Ratings tab
   activateTab(true);
 })();
 </script>
