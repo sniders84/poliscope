@@ -3150,18 +3150,32 @@ document.getElementById('rate-me-btn').onclick = function() {
   activateRatings();
 })();
 
-// ✅ Utility: load merged rankings JSONs
+// ✅ Utility: load merged rankings JSONs (GLOBAL)
 async function loadRankingsData() {
   try {
-    const senatorsRes = await fetch('/senators-rankings.json');
-    if (!senatorsRes.ok) throw new Error(`Failed to load senators-rankings.json: ${senatorsRes.status}`);
-    const senators = await senatorsRes.json();
+    // Prefer absolute paths from site root; avoids relative path issues on nested routes
+    const [senatorsRes, repsRes] = await Promise.all([
+      fetch('/senators-rankings.json', { cache: 'no-store' }),
+      fetch('/representatives-rankings.json', { cache: 'no-store' })
+    ]);
 
-    const repsRes = await fetch('/representatives-rankings.json');
-    if (!repsRes.ok) throw new Error(`Failed to load representatives-rankings.json: ${repsRes.status}`);
-    const reps = await repsRes.json();
+    if (!senatorsRes.ok) {
+      throw new Error(`Failed to load senators-rankings.json: ${senatorsRes.status}`);
+    }
+    if (!repsRes.ok) {
+      throw new Error(`Failed to load representatives-rankings.json: ${repsRes.status}`);
+    }
 
-    return { senators, reps };
+    const [senators, reps] = await Promise.all([
+      senatorsRes.json(),
+      repsRes.json()
+    ]);
+
+    // Ensure arrays even if files are valid but empty
+    return {
+      senators: Array.isArray(senators) ? senators : [],
+      reps: Array.isArray(reps) ? reps : []
+    };
   } catch (err) {
     console.error('Error loading rankings data:', err);
     return { senators: [], reps: [] };
@@ -3272,6 +3286,7 @@ async function loadRankingsData() {
   // ⚖️ Scoring logic modal renderer
   function renderScoringLogic() {
     const modalBody = document.getElementById('scoringLogicBody');
+    if (!modalBody) return;
     modalBody.innerHTML = `
       <h3>Scoring Formula</h3>
       <p>Each legislator’s Power Score is calculated using the following weighted factors:</p>
@@ -3289,113 +3304,119 @@ async function loadRankingsData() {
     `;
   }
 
-  // 🗂️ Scorecard modal with photo, header, and breakdown
-  function showScorecard(person, breakdown, composite) {
-    const modal = document.getElementById('scorecardModal');
-    const nameEl = document.getElementById('scorecardName');
-    const table = document.getElementById('scorecardBreakdown');
+ // Expose for nav triggers that call showRatings()
+window.renderScoringLogic = renderScoringLogic;
+})(); // ✅ close IIFE
 
-    nameEl.textContent = person.name;
+// 🗂️ Scorecard modal with photo, header, and breakdown
+function showScorecard(person, breakdown, composite) {
+  const modal = document.getElementById('scorecardModal');
+  const nameEl = document.getElementById('scorecardName');
+  const table = document.getElementById('scorecardBreakdown');
 
-    // Use photoUrl from JSON, fallback to silhouette
-    const photoUrl = person.photoUrl || '/assets/photos/fallback-photo.jpg';
-    const district = person.district ? ` / District ${person.district}` : '';
-    document.getElementById('scorecardHeader').innerHTML = `
-      <img src="${photoUrl}" alt="${person.name}" class="profile-photo" onerror="this.src='/assets/photos/fallback-photo.jpg';">
-      <div class="scorecard-header-info">
-        <p>${person.state}${district} • ${person.party}</p>
-        <p>Office: ${person.office}</p>
-        <p>Power Score: ${formatScore(composite)}</p>
-        <p>Streak: ${person.streak || 0} weeks</p>
-      </div>
-    `;
+  if (!modal || !nameEl || !table) return;
 
-    // Build breakdown sections
-    const legislationHtml = `
-      <h3>Legislation</h3>
-      <ul>
-        <li>Bills Sponsored: ${person.sponsoredBills}</li>
-        <li>Bills Cosponsored: ${person.cosponsoredBills}</li>
-        <li>Bills Enacted (Sponsored): ${person.becameLawBills}</li>
-        <li>Bills Enacted (Cosponsored): ${person.becameLawCosponsoredBills}</li>
-      </ul>
-    `;
+  nameEl.textContent = person.name;
 
-    const votesHtml = `
-      <h3>Votes</h3>
-      <ul>
-        <li>Yea Votes: ${person.yeaVotes}</li>
-        <li>Nay Votes: ${person.nayVotes}</li>
-        <li>Missed Votes: ${person.missedVotes}</li>
-        <li>Total Votes: ${person.totalVotes}</li>
-        <li>Participation %: ${person.participationPct?.toFixed(2) || 0}</li>
-        <li>Missed Vote %: ${person.missedVotePct?.toFixed(2) || 0}</li>
-      </ul>
-    `;
+  // Use photoUrl from JSON, fallback to silhouette
+  const photoUrl = person.photoUrl || '/assets/photos/fallback-photo.jpg';
+  const district = person.district ? ` / District ${person.district}` : '';
+  document.getElementById('scorecardHeader').innerHTML = `
+    <img src="${photoUrl}" alt="${person.name}" class="profile-photo"
+         onerror="this.src='/assets/photos/fallback-photo.jpg';">
+    <div class="scorecard-header-info">
+      <p>${person.state}${district} • ${person.party}</p>
+      <p>Office: ${person.office}</p>
+      <p>Power Score: ${formatScore(composite)}</p>
+      <p>Streak: ${person.streak || 0} weeks</p>
+    </div>
+  `;
 
-    const committeesHtml = `
-      <h3>Committees</h3>
-      <div class="committee-badges">
-        ${renderCommitteeBadges(person)}
-      </div>
-    `;
+  // Build breakdown sections
+  const legislationHtml = `
+    <h3>Legislation</h3>
+    <ul>
+      <li>Bills Sponsored: ${person.sponsoredBills || 0}</li>
+      <li>Bills Cosponsored: ${person.cosponsoredBills || 0}</li>
+      <li>Bills Enacted (Sponsored): ${person.becameLawBills || 0}</li>
+      <li>Bills Enacted (Cosponsored): ${person.becameLawCosponsoredBills || 0}</li>
+    </ul>
+  `;
 
-    const misconductHtml = `
-  <h3>Misconduct</h3>
-  <ul>
-    <li>Infractions: ${person.misconductCount || 0}</li>
-    <li>Tags: ${(person.misconductTags || []).join(', ') || 'None'}</li>
-    <li>Penalty Applied: ${(person.misconductCount || 0) * WEIGHTS.misconductCount}</li>
-  </ul>
-`;
+  const votesHtml = `
+    <h3>Votes</h3>
+    <ul>
+      <li>Yea Votes: ${person.yeaVotes || 0}</li>
+      <li>Nay Votes: ${person.nayVotes || 0}</li>
+      <li>Missed Votes: ${person.missedVotes || 0}</li>
+      <li>Total Votes: ${person.totalVotes || 0}</li>
+      <li>Participation %: ${Number(person.participationPct)?.toFixed(2) || 0}</li>
+      <li>Missed Vote %: ${Number(person.missedVotePct)?.toFixed(2) || 0}</li>
+    </ul>
+  `;
 
-    table.innerHTML = `
-      <tbody>
-        <tr>
-          <td colspan="4">
-            ${legislationHtml}
-            ${votesHtml}
-            ${committeesHtml}
-            ${misconductHtml}
-          </td>
-        </tr>
-      </tbody>
-    `;
+  const committeesHtml = `
+    <h3>Committees</h3>
+    <div class="committee-badges">
+      ${renderCommitteeBadges(person)}
+    </div>
+  `;
 
-    modal.classList.add('is-open');
-    modal.setAttribute('aria-hidden', 'false');
-  }
+  const misconductHtml = `
+    <h3>Misconduct</h3>
+    <ul>
+      <li>Infractions: ${person.misconductCount || 0}</li>
+      <li>Tags: ${(person.misconductTags || []).join(', ') || 'None'}</li>
+      <li>Penalty Applied: ${(person.misconductCount || 0) * WEIGHTS.misconductCount}</li>
+    </ul>
+  `;
 
-  // 🔽 Sortable headers + reusable table renderer (scoped to this table)
-  function attachSortableHeaders(rows, officeType) {
-    const headers = document.querySelectorAll('#rankings-leaderboard th');
-    headers.forEach(header => {
-      header.addEventListener('click', () => {
-        const sortField = header.dataset.sort;
-        let sortedRows = [...rows];
+  table.innerHTML = `
+    <tbody>
+      <tr>
+        <td colspan="4">
+          ${legislationHtml}
+          ${votesHtml}
+          ${committeesHtml}
+          ${misconductHtml}
+        </td>
+      </tr>
+    </tbody>
+  `;
 
-        if (sortField === 'rank') {
-          sortedRows.sort((a, b) => a.rank - b.rank);
-        } else if (sortField === 'name') {
-          sortedRows.sort((a, b) => a.person.name.localeCompare(b.person.name));
-        } else if (sortField === 'office') {
-          sortedRows.sort((a, b) => a.person.office.localeCompare(b.person.office));
-        } else if (sortField === 'score') {
-          sortedRows.sort((a, b) => b.score - a.score);
-        } else if (sortField === 'streak') {
-          sortedRows.sort((a, b) => b.streak - a.streak);
-        }
+  modal.classList.add('is-open');
+  modal.setAttribute('aria-hidden', 'false');
+}
 
-        renderTableBody(sortedRows, officeType);
-      });
+// 🔽 Sortable headers + reusable table renderer (scoped to this table)
+function attachSortableHeaders(rows, officeType) {
+  const headers = document.querySelectorAll('#rankings-leaderboard th');
+  headers.forEach(header => {
+    header.addEventListener('click', () => {
+      const sortField = header.dataset.sort;
+      const sortedRows = [...rows];
+
+      if (sortField === 'rank') {
+        sortedRows.sort((a, b) => a.rank - b.rank);
+      } else if (sortField === 'name') {
+        sortedRows.sort((a, b) => a.person.name.localeCompare(b.person.name));
+      } else if (sortField === 'office') {
+        sortedRows.sort((a, b) => (a.person.office || '').localeCompare(b.person.office || ''));
+      } else if (sortField === 'score') {
+        sortedRows.sort((a, b) => b.score - a.score);
+      } else if (sortField === 'streak') {
+        sortedRows.sort((a, b) => b.streak - a.streak);
+      }
+
+      renderTableBody(sortedRows, officeType);
     });
-  }
+  });
+}
 
- function renderTableBody(rows, officeType) {
+function renderTableBody(rows, officeType) {
   tableBody.innerHTML = '';
 
   rows.forEach((row, idx) => {
-    // Cross-reference with allOfficials for richer info
     const official = window.allOfficials?.find(o => o.slug === row.person.slug);
 
     const officeLabel =
@@ -3407,7 +3428,6 @@ async function loadRankingsData() {
     const partyLabel = official?.party || row.person.party || '';
     const photoUrl = official?.photo || row.person.photoUrl || '';
 
-    // Assign party row class
     const tr = document.createElement('tr');
     tr.className = partyRowClass(partyLabel);
 
@@ -3432,7 +3452,6 @@ async function loadRankingsData() {
     tableBody.appendChild(tr);
   });
 
-  // Attach scorecard click handlers using slug
   tableBody.querySelectorAll('.scorecard-link').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
@@ -3456,7 +3475,7 @@ async function loadRankingsData() {
   });
 }
 
- // 🚀 Render pipeline
+// 🚀 Render pipeline
 async function render() {
   const selectedOffice = officeSel.value.toLowerCase();
   const selectedCategory = categorySel.value;
@@ -3493,7 +3512,6 @@ async function render() {
     };
   });
 
-  // Sort by selected category (default: score)
   let sortField = 'score';
   if (selectedCategory === 'sponsoredBills') sortField = 'sponsoredBills';
   else if (selectedCategory === 'cosponsoredBills') sortField = 'cosponsoredBills';
@@ -3508,7 +3526,6 @@ async function render() {
     return bVal - aVal;
   });
 
-  // Render table body and wire headers
   renderTableBody(rows, officeType);
   attachSortableHeaders(rows, officeType);
 }
@@ -3558,13 +3575,30 @@ document.getElementById('scorecardModal')?.addEventListener('click', e => {
   }
 });
 
+// === Rankings: end-of-script block (END) ===
+
+// 🧾 Scorecard modal close
+document.getElementById('scorecardClose')?.addEventListener('click', () => {
+  const modal = document.getElementById('scorecardModal');
+  modal.classList.remove('is-open');
+  modal.setAttribute('aria-hidden', 'true');
+});
+
+document.getElementById('scorecardModal')?.addEventListener('click', e => {
+  if (e.target.id === 'scorecardModal') {
+    const modal = document.getElementById('scorecardModal');
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+  }
+});
+
 // 🔽 Sortable headers + reusable table renderer
 function attachSortableHeaders(rows, officeType) {
   const headers = document.querySelectorAll('#rankings-leaderboard th');
   headers.forEach(header => {
     header.addEventListener('click', () => {
       const sortField = header.dataset.sort;
-      let sortedRows = [...rows];
+      const sortedRows = [...rows];
 
       if (sortField === 'rank') {
         sortedRows.sort((a, b) => a.rank - b.rank);
@@ -3615,17 +3649,4 @@ document.getElementById('scoringLogicModal')?.addEventListener('click', e => {
   }
 });
 
-// 🧾 Scorecard modal close
-document.getElementById('scorecardClose')?.addEventListener('click', () => {
-  const modal = document.getElementById('scorecardModal');
-  modal.classList.remove('is-open');
-  modal.setAttribute('aria-hidden', 'true');
-});
-
-document.getElementById('scorecardModal')?.addEventListener('click', e => {
-  if (e.target.id === 'scorecardModal') {
-    const modal = document.getElementById('scorecardModal');
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden', 'true');
-  }
-});
+// === End of Rankings script ===
