@@ -1529,7 +1529,8 @@ document.addEventListener('DOMContentLoaded', () => {
     { slug: "jane-smith", name: "Jane Smith", state: "TX", office: "governors", averageRating: 3.8, votesCount: 85 },
     { slug: "alex-jones", name: "Alex Jones", state: "NY", office: "housereps", averageRating: 4.7, votesCount: 200 }
   ];
-
+<script>
+document.addEventListener('DOMContentLoaded', () => {
   function filterOfficials(list) { /* … */ }
   function renderResults(list) { /* … */ }
 
@@ -1547,12 +1548,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 🔧 Hamburger morph into X toggle
   const hamburger = document.getElementById('hamburger');
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('open'); // triggers the CSS animation
-    document.getElementById('hamburger-menu').classList.toggle('open'); // shows/hides the menu
-  });
+  const menu = document.getElementById('hamburger-menu');
 
-}); <!-- ✅ this closes DOMContentLoaded -->
+  if (hamburger && menu) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open'); // triggers the CSS animation
+      menu.classList.toggle('open');      // shows/hides the menu
+    });
+  }
+}); <!-- ✅ closes DOMContentLoaded -->
 </script>
 
 </body>
