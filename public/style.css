@@ -7278,7 +7278,7 @@ header {
 
 /* Force desktop logo size */
 header .logo {
-  max-height: 280px !important;  /* larger desktop size */
+  height: 120px !important;       /* explicit height for desktop */
   width: auto !important;
   max-width: 100% !important;
   object-fit: contain !important;
@@ -7373,7 +7373,7 @@ select {
 @media (max-width: 600px) {
   /* Shrink the logo so it doesn’t dominate the header */
   header .logo {
-    max-height: 120px !important; /* shrink only on phones */
+    height: 70px !important; /* explicit smaller height for phones */
   }
 
   /* Stack header items vertically if needed */
