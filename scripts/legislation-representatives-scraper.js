@@ -1,8 +1,9 @@
 // scripts/legislation-representatives-scraper.js
 //
 // Purpose: Pull sponsored/cosponsored bills and became-law counts *only for the 119th Congress* (House)
+// Optimized: Uses existing legislation-representatives.json as baseline and only fetches new pages
 // Source: Congress.gov API v3 — uses bioguideId directly; filters response to congress=119
-// Output: public/legislation-representatives.json (separate file for modularity)
+// Output: public/legislation-representatives.json
 
 const fs = require('fs');
 const path = require('path');
@@ -16,6 +17,19 @@ const outputPath = path.join(__dirname, '../public/legislation-representatives.j
 
 const legislators = JSON.parse(fs.readFileSync(legislatorsPath, 'utf-8'));
 
+// Load existing data if present
+let existing = [];
+if (fs.existsSync(outputPath)) {
+  try {
+    existing = JSON.parse(fs.readFileSync(outputPath, 'utf-8'));
+    console.log(`Loaded existing legislation data for ${existing.length} representatives`);
+  } catch {
+    console.warn('Failed to parse existing legislation-representatives.json, starting fresh');
+    existing = [];
+  }
+}
+const existingMap = Object.fromEntries(existing.map(r => [r.bioguideId, r]));
+
 async function getWithRetry(url, params = {}, tries = 5) {
   let lastErr;
   for (let i = 0; i < tries; i++) {
@@ -26,39 +40,43 @@ async function getWithRetry(url, params = {}, tries = 5) {
     } catch (err) {
       lastErr = err;
       const status = err.response?.status || 'unknown';
-      console.warn(`Retry ${i+1}/${tries} for ${url} (params: ${JSON.stringify(params)}) - status ${status}: ${err.message}`);
+      console.warn(`Retry ${i+1}/${tries} for ${url} - status ${status}: ${err.message}`);
       await new Promise(r => setTimeout(r, status === 429 ? 10000 : 3000 * (i + 1)));
     }
   }
   throw lastErr || new Error(`All retries failed for ${url}`);
 }
 
-async function fetchBills(bioguideId) {
-  let sponsored = 0, cosponsored = 0, becameLawSponsored = 0, becameLawCosponsored = 0;
+function is119th(bill) {
+  const cong = bill.congress;
+  if (cong === 119 || cong === '119') return true;
+  if (bill.introducedDate && bill.introducedDate >= '2025-01-03' && bill.introducedDate < '2027-01-01') {
+    return true;
+  }
+  return false;
+}
+
+function isBecameLaw(bill) {
+  const action = (bill.latestAction?.action || '').toLowerCase();
+  const text = (bill.latestAction?.text || '').toLowerCase();
+  return /became (public )?law/.test(action) || /became (public )?law/.test(text) ||
+         /signed by president/.test(text) || /enacted/.test(action) ||
+         /public law no/i.test(text);
+}
+
+async function fetchBills(bioguideId, prevTotals) {
+  let sponsored = prevTotals?.sponsoredBills || 0;
+  let cosponsored = prevTotals?.cosponsoredBills || 0;
+  let becameLawSponsored = prevTotals?.becameLawBills || 0;
+  let becameLawCosponsored = prevTotals?.becameLawCosponsoredBills || 0;
+
   const limit = 250;
 
-  const is119th = (bill) => {
-    const cong = bill.congress;
-    if (cong === 119 || cong === '119') return true;
-    if (bill.introducedDate && bill.introducedDate >= '2025-01-03' && bill.introducedDate < '2027-01-01') {
-      return true;
-    }
-    return false;
-  };
-
-  const isBecameLaw = (bill) => {
-    const action = (bill.latestAction?.action || '').toLowerCase();
-    const text = (bill.latestAction?.text || '').toLowerCase();
-    return /became (public )?law/.test(action) || /became (public )?law/.test(text) ||
-           /signed by president/.test(text) || /enacted/.test(action) ||
-           /public law no/i.test(text);
-  };
-
-  async function paginate(endpoint) {
-    let count = 0;
-    let lawCount = 0;
-    let offset = 0;
-    let totalPagesProcessed = 0;
+  async function paginate(endpoint, prevCount) {
+    let count = prevCount;
+    let lawCount = endpoint === 'sponsored-legislation' ? becameLawSponsored : becameLawCosponsored;
+    let offset = prevCount; // start from where we left off
+    let newPages = 0;
 
     while (true) {
       const url = `${BASE_URL}/member/${bioguideId}/${endpoint}`;
@@ -83,23 +101,22 @@ async function fetchBills(bioguideId) {
       }
 
       offset += limit;
-      totalPagesProcessed++;
+      newPages++;
       await new Promise(r => setTimeout(r, 600));
     }
 
-    console.log(`Processed ${totalPagesProcessed} pages for ${endpoint} (filtered count: ${count})`);
+    console.log(`Processed ${newPages} new pages for ${endpoint} (new count: ${count})`);
     return { count, lawCount };
   }
 
-  const sponsoredData = await paginate('sponsored-legislation');
+  const sponsoredData = await paginate('sponsored-legislation', sponsored);
   sponsored = sponsoredData.count;
   becameLawSponsored = sponsoredData.lawCount;
 
-  const cosponsoredData = await paginate('cosponsored-legislation');
+  const cosponsoredData = await paginate('cosponsored-legislation', cosponsored);
   cosponsored = cosponsoredData.count;
   becameLawCosponsored = cosponsoredData.lawCount;
 
-  console.log(`Completed fetch for ${bioguideId}: sponsored=${sponsored}, cosponsored=${cosponsored}`);
   return { sponsored, cosponsored, becameLawSponsored, becameLawCosponsored };
 }
 
@@ -123,12 +140,8 @@ async function fetchBills(bioguideId) {
     console.log(`\nProcessing ${name} (${bioguideId}, ${state}-${district})...`);
 
     try {
-      const memberUrl = `${BASE_URL}/member/${bioguideId}`;
-      const memberData = await getWithRetry(memberUrl, {});
-      const snippet = JSON.stringify(memberData.member || memberData, null, 2).slice(0, 400);
-      console.log(`Member detail snippet: ${snippet}`);
-
-      const totals = await fetchBills(bioguideId);
+      const prevTotals = existingMap[bioguideId];
+      const totals = await fetchBills(bioguideId, prevTotals);
 
       results.push({
         bioguideId,
@@ -152,7 +165,7 @@ async function fetchBills(bioguideId) {
       failedCount++;
     }
 
-    await new Promise(r => setTimeout(r, 3000));
+    await new Promise(r => setTimeout(r, 1500)); // shorter delay since fewer pages
   }
 
   fs.writeFileSync(outputPath, JSON.stringify(results, null, 2));
