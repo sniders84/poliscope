@@ -48,11 +48,11 @@
     #hamburger:hover { background-color: #0066cc; transform: scale(1.05); }
 
     /* Center: logo */
-    .-center { flex: 1 1 auto; text-align: center; }
-    .logo { max-height: 100px; width: auto; max-width: 100%; object-fit: contain; }
+    .header-center { flex: 1 1 auto; text-align: center; }
+    .logo { max-height: 200px; width: auto; max-width: 100%; object-fit: contain; }
 
     /* Right: search + dropdown */
-    .-right { flex: 0 0 auto; display: flex; align-items: center; gap: 8px; }
+    .header-right { flex: 0 0 auto; display: flex; align-items: center; gap: 8px; }
     #search-bar {
       padding: 8px 10px; border-radius: 6px; border: 1px solid #444;
       background: #1f1f1f; color: #fff;
@@ -83,7 +83,7 @@
     }
     #hamburger-menu a:hover { background-color: #0066cc; }
 
-    /* Simple carousel track class (used by inline carousel scripts) */
+    /* Simple carousel track class */
     .carousel { position: relative; overflow: hidden; }
     .carousel-track { display: flex; gap: 12px; transition: transform 0.3s ease; }
     .carousel-card { min-width: 298px; background: #262626; border: 1px solid #444; border-radius: 8px; overflow: hidden; }
@@ -93,28 +93,30 @@
 
     /* --- Mobile tweaks --- */
     @media (max-width: 600px) {
-      .logo { max-height: 60px; }
-       { flex-direction: row; padding: 8px; }
-      .-right { flex-direction: column; gap: 6px; }
+      .logo { max-height: 100px; }
+      header { flex-direction: column; padding: 8px; }
+      .header-right { flex-direction: column; gap: 6px; }
       #search-bar, #state-dropdown { width: 100%; }
     }
   </style>
 </head>
 
 <body>
-  <!--  -->
-  <>
-    <div class="-left">
-    <button id="hamburger" aria-label="Open menu">
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-    <rect class="line top" y="5" width="24" height="2" rx="1" fill="currentColor"/>
-    <rect class="line middle" y="11" width="24" height="2" rx="1" fill="currentColor"/>
-    <rect class="line bottom" y="17" width="24" height="2" rx="1" fill="currentColor"/>
-  </svg>
-</button>
+  <header>
+    <div class="header-left">
+      <button id="hamburger" aria-label="Open menu">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+          <rect class="line top" y="5" width="24" height="2" rx="1" fill="currentColor"/>
+          <rect class="line middle" y="11" width="24" height="2" rx="1" fill="currentColor"/>
+          <rect class="line bottom" y="17" width="24" height="2" rx="1" fill="currentColor"/>
+        </svg>
+      </button>
     </div>
     <div class="header-center">
-      <img src="assets/electorate-logo.png" alt="Logo" class="logo" style="height: auto; width: auto;" />
+      <img src="assets/electorate-logo.png" alt="Logo" class="logo" />
+    </div>
+    <div class="header-right">
+      <!-- search bar + dropdown go here -->
     </div>
   </header>
 
