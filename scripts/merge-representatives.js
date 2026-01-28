@@ -5,15 +5,18 @@ const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
 
+// Paths
+const INFO_PATH        = path.join(__dirname, '..', 'public', 'representatives.json'); // ✅ baseline info with photos
 const RANKINGS_PATH    = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
 const LEGISLATION_PATH = path.join(__dirname, '..', 'public', 'legislation-reps.json');
 const COMMITTEES_PATH  = path.join(__dirname, '..', 'public', 'reps-committees.json');
 const VOTES_PATH       = path.join(__dirname, '..', 'public', 'votes-reps.json');
-const MISCONDUCT_PATH  = path.join(__dirname, '..', 'public', 'misconduct.yaml'); // ✅ unified YAML source
+const MISCONDUCT_PATH  = path.join(__dirname, '..', 'public', 'misconduct.yaml');
 const STREAKS_PATH     = path.join(__dirname, '..', 'public', 'streaks-reps.json');
 
 // Load inputs
-const rankings   = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf-8'));
+const info        = JSON.parse(fs.readFileSync(INFO_PATH, 'utf-8'));
+const rankings    = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf-8'));
 const legislation = JSON.parse(fs.readFileSync(LEGISLATION_PATH, 'utf-8'));
 const committees  = JSON.parse(fs.readFileSync(COMMITTEES_PATH, 'utf-8'));
 const votes       = JSON.parse(fs.readFileSync(VOTES_PATH, 'utf-8'));
@@ -41,6 +44,7 @@ if (fs.existsSync(STREAKS_PATH)) {
 }
 
 // Index helpers
+const infoMap        = Object.fromEntries(info.map(r => [r.bioguideId, r]));
 const legislationMap = Object.fromEntries(legislation.map(l => [l.bioguideId, l]));
 const committeesMap  = Object.fromEntries(committees.map(c => [c.bioguideId, c]));
 const votesMap       = Object.fromEntries(votes.map(v => [v.bioguideId, v]));
@@ -50,6 +54,16 @@ const streaksMap     = Object.fromEntries(streaks.map(s => [s.bioguideId, s]));
 // Merge
 const merged = rankings.map(rep => {
   const id = rep.bioguideId;
+
+  // ✅ Preserve baseline info (including photo)
+  if (infoMap[id]) {
+    rep.name   = infoMap[id].name;
+    rep.state  = infoMap[id].state;
+    rep.district = infoMap[id].district;
+    rep.party  = infoMap[id].party;
+    rep.office = infoMap[id].office;
+    rep.photo  = infoMap[id].photo; // critical for scorecard modals
+  }
 
   // Legislation
   if (legislationMap[id]) {
@@ -66,10 +80,10 @@ const merged = rankings.map(rep => {
 
   // Votes
   if (votesMap[id]) {
-    rep.yeaVotes        = votesMap[id].yeaVotes;
-    rep.nayVotes        = votesMap[id].nayVotes;
-    rep.missedVotes     = votesMap[id].missedVotes;
-    rep.totalVotes      = votesMap[id].totalVotes;
+    rep.yeaVotes         = votesMap[id].yeaVotes;
+    rep.nayVotes         = votesMap[id].nayVotes;
+    rep.missedVotes      = votesMap[id].missedVotes;
+    rep.totalVotes       = votesMap[id].totalVotes;
     rep.participationPct = votesMap[id].participationPct;
     rep.missedVotePct    = votesMap[id].missedVotePct;
   } else {
@@ -81,7 +95,7 @@ const merged = rankings.map(rep => {
     rep.missedVotePct = 0;
   }
 
-  // Misconduct (from YAML)
+  // Misconduct
   if (misconductMap[id]) {
     rep.misconductCount = misconductMap[id].misconductCount ?? 0;
     rep.misconductTags  = misconductMap[id].misconductTags ?? [];
@@ -99,7 +113,7 @@ const merged = rankings.map(rep => {
     rep.streak  = rep.streak || 0;
   }
 
-  // Ensure metrics snapshot exists and update with current totals
+  // Metrics snapshot
   rep.metrics = rep.metrics || { lastTotals: {} };
   rep.metrics.lastTotals = {
     sponsoredBills: rep.sponsoredBills || 0,
@@ -114,5 +128,6 @@ const merged = rankings.map(rep => {
   return rep;
 });
 
+// Write merged rankings
 fs.writeFileSync(RANKINGS_PATH, JSON.stringify(merged, null, 2));
 console.log(`Finished merge: ${merged.length} representatives updated in representatives-rankings.json`);
