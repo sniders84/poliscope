@@ -7455,3 +7455,19 @@ header .logo {
 #hamburger svg rect {
   transition: all 0.3s ease;
 }
+#hamburger svg .line {
+  transition: all 0.3s ease;
+}
+
+/* When menu is open, morph lines into an X */
+#hamburger.open .top {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+#hamburger.open .middle {
+  opacity: 0; /* hide middle line */
+}
+
+#hamburger.open .bottom {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
