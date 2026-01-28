@@ -2,7 +2,7 @@ name: "Update House Data"
 
 on:
   schedule:
-    - cron: "0 4 * * *" # daily at 4 AM UTC (~11 PM EST previous day)
+    - cron: "0 4 * * *"  # daily at 4 AM UTC (~11 PM EST previous day)
   workflow_dispatch:
 
 permissions:
@@ -14,20 +14,26 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "20"
+
       - name: Install dependencies
         run: npm install
+
       - name: Bootstrap representatives
         run: node scripts/bootstrap-representatives.js
+
       - name: Run legislation scraper (Part 1: reps 0–109)
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: node scripts/legislation-representatives-scraper.js 1
+
       - name: Rename output
         run: mv public/legislation-representatives.json public/legislation-representatives-part1.json
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
@@ -39,20 +45,26 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "20"
+
       - name: Install dependencies
         run: npm install
+
       - name: Bootstrap representatives
         run: node scripts/bootstrap-representatives.js
+
       - name: Run legislation scraper (Part 2: reps 110–219)
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: node scripts/legislation-representatives-scraper.js 2
+
       - name: Rename output
         run: mv public/legislation-representatives.json public/legislation-representatives-part2.json
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
@@ -64,20 +76,26 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "20"
+
       - name: Install dependencies
         run: npm install
+
       - name: Bootstrap representatives
         run: node scripts/bootstrap-representatives.js
+
       - name: Run legislation scraper (Part 3: reps 220–329)
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: node scripts/legislation-representatives-scraper.js 3
+
       - name: Rename output
         run: mv public/legislation-representatives.json public/legislation-representatives-part3.json
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
@@ -89,20 +107,26 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "20"
+
       - name: Install dependencies
         run: npm install
+
       - name: Bootstrap representatives
         run: node scripts/bootstrap-representatives.js
+
       - name: Run legislation scraper (Part 4: reps 330–439)
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: node scripts/legislation-representatives-scraper.js 4
+
       - name: Rename output
         run: mv public/legislation-representatives.json public/legislation-representatives-part4.json
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
@@ -120,17 +144,11 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Download all artifacts
+      - name: Download all part artifacts
         uses: actions/download-artifact@v4
         with:
           path: public
-
-      - name: Move artifacts into public
-        run: |
-          mv public/house-part1/*.json public/
-          mv public/house-part2/*.json public/
-          mv public/house-part3/*.json public/
-          mv public/house-part4/*.json public/
+          merge-multiple: true
 
       - name: Merge part files
         run: node scripts/merge-legislation-parts.js
@@ -164,6 +182,6 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Automated House update (119th Congress)"
-          file_pattern: poliscope/public/*.json
+          file_pattern: public/*.json
           push_options: "--force"
           skip_fetch: true
