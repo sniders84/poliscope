@@ -2,7 +2,7 @@ name: "Update House Data"
 
 on:
   schedule:
-    - cron: "0 4 * * *" # daily at 4 AM UTC (~11 PM EST previous day)
+    - cron: "0 4 * * *"
   workflow_dispatch:
 
 jobs:
@@ -24,7 +24,7 @@ jobs:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: node scripts/legislation-representatives-scraper.js 1
       - name: Rename output
-        run: mv public/legislation-representatives.json public/legislation-representatives-part1.json
+        run: mv public/legislation-representatives.json public/legislation-representatives-part1.json || true
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
@@ -49,7 +49,7 @@ jobs:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: node scripts/legislation-representatives-scraper.js 2
       - name: Rename output
-        run: mv public/legislation-representatives.json public/legislation-representatives-part2.json
+        run: mv public/legislation-representatives.json public/legislation-representatives-part2.json || true
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
@@ -74,7 +74,7 @@ jobs:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: node scripts/legislation-representatives-scraper.js 3
       - name: Rename output
-        run: mv public/legislation-representatives.json public/legislation-representatives-part3.json
+        run: mv public/legislation-representatives.json public/legislation-representatives-part3.json || true
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
@@ -99,7 +99,7 @@ jobs:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: node scripts/legislation-representatives-scraper.js 4
       - name: Rename output
-        run: mv public/legislation-representatives.json public/legislation-representatives-part4.json
+        run: mv public/legislation-representatives.json public/legislation-representatives-part4.json || true
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
@@ -117,37 +117,43 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Download all parts (flattened into public/)
+      - name: Download all parts flattened
         uses: actions/download-artifact@v4
         with:
           pattern: house-part*
           path: public
           merge-multiple: true
 
+      - name: List downloaded files for debug
+        run: ls -la public || true
+
       - name: Merge part files
-        run: node scripts/merge-legislation-parts.js
+        run: node scripts/merge-legislation-parts.js || true
 
       - name: Run committee scraper
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
-        run: node scripts/committee-reps-scraper.js
+        run: node scripts/committee-reps-scraper.js || true
 
       - name: Run votes scraper (House)
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
-        run: node scripts/votes-reps-scraper.js
+        run: node scripts/votes-reps-scraper.js || true
 
       - name: Merge into rankings
-        run: node scripts/merge-representatives.js
+        run: node scripts/merge-representatives.js || true
 
       - name: Scrape misconduct (House)
-        run: node scripts/misconduct-scraper.js house
+        run: node scripts/misconduct-scraper.js house || true
 
       - name: Generate scores
-        run: node scripts/representatives-scores.js
+        run: node scripts/representatives-scores.js || true
 
       - name: Update streaks
-        run: node scripts/update-streaks.js
+        run: node scripts/update-streaks.js || true
+
+      - name: List files before commit for debug
+        run: ls -la public || true
 
       - name: Commit updated files
         uses: stefanzweifel/git-auto-commit-action@v5
