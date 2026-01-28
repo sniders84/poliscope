@@ -7276,13 +7276,14 @@ header {
   text-align: center; 
 }
 
-.logo { 
-  max-height: 200px;   /* enlarged for desktop */
-  width: auto; 
-  max-width: 100%; 
-  object-fit: contain; 
-  display: block;
-  margin: 0 auto;      /* centers horizontally inside header-center */
+/* Force desktop logo size */
+header .logo {
+  max-height: 280px !important;  /* larger desktop size */
+  width: auto !important;
+  max-width: 100% !important;
+  object-fit: contain !important;
+  display: block !important;
+  margin: 0 auto !important;
 }
 
 /* Sleek hamburger button */
@@ -7371,8 +7372,8 @@ select {
 /* Mobile adjustments */
 @media (max-width: 600px) {
   /* Shrink the logo so it doesn’t dominate the header */
-  .logo {
-    max-height: 100px !important;
+  header .logo {
+    max-height: 120px !important; /* shrink only on phones */
   }
 
   /* Stack header items vertically if needed */
@@ -7427,14 +7428,4 @@ select {
 /* Small phone adjustments */
 @media (max-width: 480px) {
   /* add extra-small screen tweaks here if needed */
-}
-
-/* Force desktop logo size override */
-header .logo {
-  max-height: 240px !important;
-  width: auto !important;
-  max-width: 100% !important;
-  object-fit: contain !important;
-  display: block !important;
-  margin: 0 auto !important;
 }
