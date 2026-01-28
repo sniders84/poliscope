@@ -1,9 +1,9 @@
-name: Update Senate Data
+name: "Update Senate Data"
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 2 * * *' # run nightly at 2 AM UTC
+    - cron: "0 2 * * *" # run nightly at 2 AM UTC
 
 permissions:
   contents: write
@@ -18,7 +18,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
 
       - name: Install dependencies
         run: npm install   # use install instead of ci to avoid lockfile mismatch
@@ -53,13 +53,6 @@ jobs:
       - name: Update streaks (Senate + House)
         run: node scripts/update-streaks.js
 
-      # Pull and rebase before commit (prevents conflict if House pushed first)
-      - name: Pull and rebase before commit
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git pull origin main --rebase
-
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
@@ -67,4 +60,5 @@ jobs:
           file_pattern: poliscope/public/senators-*.json
           commit_user_name: github-actions[bot]
           commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
-          push_options: "--force-with-lease"
+          push_options: "--force"
+          skip_fetch: true
