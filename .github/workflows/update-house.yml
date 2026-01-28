@@ -19,7 +19,7 @@ jobs:
         run: npm install
       - name: Bootstrap representatives
         run: node scripts/bootstrap-representatives.js
-      - name: Run legislation scraper (Part 1: reps 0-109)
+      - name: Run legislation scraper (Part 1: reps 0–109)
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: node scripts/legislation-representatives-scraper.js 1
@@ -44,7 +44,7 @@ jobs:
         run: npm install
       - name: Bootstrap representatives
         run: node scripts/bootstrap-representatives.js
-      - name: Run legislation scraper (Part 2: reps 110-219)
+      - name: Run legislation scraper (Part 2: reps 110–219)
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: node scripts/legislation-representatives-scraper.js 2
@@ -69,7 +69,7 @@ jobs:
         run: npm install
       - name: Bootstrap representatives
         run: node scripts/bootstrap-representatives.js
-      - name: Run legislation scraper (Part 3: reps 220-329)
+      - name: Run legislation scraper (Part 3: reps 220–329)
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: node scripts/legislation-representatives-scraper.js 3
@@ -94,7 +94,7 @@ jobs:
         run: npm install
       - name: Bootstrap representatives
         run: node scripts/bootstrap-representatives.js
-      - name: Run legislation scraper (Part 4: reps 330-439)
+      - name: Run legislation scraper (Part 4: reps 330–439)
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: node scripts/legislation-representatives-scraper.js 4
@@ -116,12 +116,26 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-      - name: Download all part artifacts (flattened)
+      - name: Download part1
         uses: actions/download-artifact@v4
         with:
-          pattern: house-part*
+          name: house-part1
           path: public
-          merge-multiple: true
+      - name: Download part2
+        uses: actions/download-artifact@v4
+        with:
+          name: house-part2
+          path: public
+      - name: Download part3
+        uses: actions/download-artifact@v4
+        with:
+          name: house-part3
+          path: public
+      - name: Download part4
+        uses: actions/download-artifact@v4
+        with:
+          name: house-part4
+          path: public
       - name: Merge part files
         run: node scripts/merge-legislation-parts.js
       - name: Run committee scraper
@@ -144,8 +158,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Automated House update (119th Congress)"
-          file_pattern: public/*.json
-          skip_dirty_check: false
-          skip_commit: false
-          # Prevents failure if no changes (useful for debugging)
-          # But remove or set to error once working
+          file_pattern: poliscope/public/*.json
