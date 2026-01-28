@@ -1,4 +1,5 @@
 name: Update House Data
+
 on:
   schedule:
     - cron: '0 4 * * *' # daily at 4 AM UTC (~11 PM EST previous day)
@@ -144,3 +145,7 @@ jobs:
         with:
           commit_message: "Automated House update (119th Congress)"
           file_pattern: public/*.json
+          skip_dirty_check: false
+          skip_commit: false
+          # Prevents failure if no changes (useful for debugging)
+          # But remove or set to error once working
