@@ -1,8 +1,8 @@
-name: "Update House Data"
+name: Update House Data
 
 on:
   schedule:
-    - cron: "0 4 * * *"  # daily at 4 AM UTC (~11 PM EST previous day)
+    - cron: '0 4 * * *'  # daily at 4 AM UTC (~11 PM EST previous day)
   workflow_dispatch:
 
 permissions:
@@ -18,7 +18,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: '20'
 
       - name: Install dependencies
         run: npm install
@@ -49,7 +49,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: '20'
 
       - name: Install dependencies
         run: npm install
@@ -80,7 +80,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: '20'
 
       - name: Install dependencies
         run: npm install
@@ -111,7 +111,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: '20'
 
       - name: Install dependencies
         run: npm install
@@ -181,7 +181,7 @@ jobs:
       - name: Commit updated files
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Automated House update (119th Congress)"
+          commit_message: 'Automated House update (119th Congress)'
           file_pattern: public/*.json
-          push_options: "--force"
+          push_options: '--force'
           skip_fetch: true
