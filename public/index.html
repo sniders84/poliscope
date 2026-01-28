@@ -1525,14 +1525,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Ratings/Rankings Filters Logic
-  window.allOfficials = [
-    { slug: "john-doe", name: "John Doe", state: "CA", office: "senators", averageRating: 4.2, votesCount: 120 },
-    { slug: "jane-smith", name: "Jane Smith", state: "TX", office: "governors", averageRating: 3.8, votesCount: 85 },
-    { slug: "alex-jones", name: "Alex Jones", state: "NY", office: "housereps", averageRating: 4.7, votesCount: 200 }
-  ];
-  
-<script>
+ <script>
+// Ratings/Rankings Filters Logic
+window.allOfficials = [
+  { slug: "john-doe", name: "John Doe", state: "CA", office: "senators", averageRating: 4.2, votesCount: 120 },
+  { slug: "jane-smith", name: "Jane Smith", state: "TX", office: "governors", averageRating: 3.8, votesCount: 85 },
+  { slug: "alex-jones", name: "Alex Jones", state: "NY", office: "housereps", averageRating: 4.7, votesCount: 200 }
+];
+
 document.addEventListener('DOMContentLoaded', () => {
   function filterOfficials(list) { /* … */ }
   function renderResults(list) { /* … */ }
