@@ -7292,25 +7292,44 @@ header {
   border: none;
   color: #fff;
   cursor: pointer;
-  border-radius: 8px;
-  width: 44px;
-  height: 44px;
+  border-radius: 50%; /* circular button */
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: background-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
   box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  position: relative;
+  z-index: 2001; /* ensures button is always clickable */
 }
 
 #hamburger:hover {
-  background-color: #0066cc;
+  background-color: #0066cc; /* your blue */
   transform: scale(1.05);
   box-shadow: 0 4px 10px rgba(0,0,0,0.6);
 }
 
 #hamburger:active {
   transform: scale(0.95);
-  background-color: #005bb5;
+  background-color: #005bb5; /* darker blue press */
+}
+
+/* SVG lines animate */
+#hamburger svg rect,
+#hamburger svg .line {
+  transition: all 0.3s ease;
+}
+
+/* Morph into X when open */
+#hamburger.open .top {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+#hamburger.open .middle {
+  opacity: 0;
+}
+#hamburger.open .bottom {
+  transform: rotate(-45deg) translate(5px, -5px);
 }
 
 /* Rankings table */
@@ -7321,7 +7340,6 @@ header {
   -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
   white-space: nowrap; /* keep cells from wrapping awkwardly */
 }
-
 .rankings-table th,
 .rankings-table td {
   padding: 8px;
@@ -7336,11 +7354,10 @@ button,
   min-width: 44px;
   padding: 10px 14px;
 }
-
 button:active,
 .carousel-btn:active,
 #hamburger:active {
-  background-color: #005bb5; /* darker shade for press */
+  background-color: #005bb5;
   transform: scale(0.97);
 }
 
@@ -7355,7 +7372,7 @@ select {
 @media (max-width: 600px) {
   /* Shrink the logo so it doesn’t dominate the header */
   .logo {
-    max-height: 100px; /* shrink for phones */
+    max-height: 100px !important;
   }
 
   /* Stack header items vertically if needed */
@@ -7378,8 +7395,8 @@ select {
   }
 
   body {
-    font-size: 15px;   /* comfortable reading size */
-    line-height: 1.5;  /* extra breathing room */
+    font-size: 15px;
+    line-height: 1.5;
   }
 
   h1, h2, h3 {
@@ -7411,86 +7428,13 @@ select {
 @media (max-width: 480px) {
   /* add extra-small screen tweaks here if needed */
 }
-/* Force desktop logo size */
+
+/* Force desktop logo size override */
 header .logo {
-  max-height: 240px !important;  /* or 300px if you want it even bigger */
+  max-height: 240px !important;
   width: auto !important;
   max-width: 100% !important;
   object-fit: contain !important;
   display: block !important;
   margin: 0 auto !important;
-}
-
-/* Mobile adjustment */
-@media (max-width: 600px) {
-  header .logo {
-    max-height: 100px !important; /* shrink only on phones */
-  }
-}
-
-/* Sleek hamburger button */
-#hamburger {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%; /* circular button */
-  transition: background-color 0.25s ease, transform 0.2s ease;
-}
-
-#hamburger:hover {
-  background-color: rgba(0,102,204,0.15); /* subtle blue hover */
-  transform: scale(1.05);
-}
-
-#hamburger:active {
-  transform: scale(0.95);
-}
-
-/* SVG lines inherit currentColor */
-#hamburger svg rect {
-  transition: all 0.3s ease;
-}
-#hamburger svg .line {
-  transition: all 0.3s ease;
-}
-
-/* When menu is open, morph lines into an X */
-#hamburger.open .top {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-
-#hamburger.open .middle {
-  opacity: 0; /* hide middle line */
-}
-
-#hamburger.open .bottom {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
-header .logo {
-  max-height: 240px !important;  /* or bigger if you want */
-  width: auto !important;
-  max-width: 100% !important;
-  object-fit: contain !important;
-  display: block !important;
-  margin: 0 auto !important;
-}
-
-@media (max-width: 600px) {
-  header .logo {
-    max-height: 100px !important;
-  }
-}
-#hamburger:hover {
-  background-color: #0066cc; /* your blue */
-  transform: scale(1.05);
-}
-
-#hamburger:active {
-  background-color: #005bb5; /* darker blue press */
-  transform: scale(0.95);
 }
