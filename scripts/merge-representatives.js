@@ -3,14 +3,16 @@
 
 const fs = require('fs');
 const path = require('path');
+const yaml = require('js-yaml');
 
 const RANKINGS_PATH    = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
 const LEGISLATION_PATH = path.join(__dirname, '..', 'public', 'legislation-reps.json');
 const COMMITTEES_PATH  = path.join(__dirname, '..', 'public', 'reps-committees.json');
 const VOTES_PATH       = path.join(__dirname, '..', 'public', 'votes-reps.json');
-const MISCONDUCT_PATH  = path.join(__dirname, '..', 'public', 'misconduct-reps.json');
+const MISCONDUCT_PATH  = path.join(__dirname, '..', 'public', 'misconduct.yaml'); // ✅ unified YAML source
 const STREAKS_PATH     = path.join(__dirname, '..', 'public', 'streaks-reps.json');
 
+// Load inputs
 const rankings   = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf-8'));
 const legislation = JSON.parse(fs.readFileSync(LEGISLATION_PATH, 'utf-8'));
 const committees  = JSON.parse(fs.readFileSync(COMMITTEES_PATH, 'utf-8'));
@@ -18,10 +20,16 @@ const votes       = JSON.parse(fs.readFileSync(VOTES_PATH, 'utf-8'));
 
 let misconduct = [];
 if (fs.existsSync(MISCONDUCT_PATH)) {
-  misconduct = JSON.parse(fs.readFileSync(MISCONDUCT_PATH, 'utf-8'));
-  console.log(`Loaded misconduct data for ${misconduct.length} representatives`);
+  try {
+    const raw = fs.readFileSync(MISCONDUCT_PATH, 'utf-8');
+    misconduct = yaml.load(raw) || [];
+    console.log(`Loaded misconduct.yaml entries: ${Array.isArray(misconduct) ? misconduct.length : 0}`);
+  } catch (e) {
+    console.warn('Failed to parse misconduct.yaml — proceeding without misconduct data:', e.message);
+    misconduct = [];
+  }
 } else {
-  console.log('misconduct-reps.json not found — misconduct remains empty');
+  console.log('misconduct.yaml not found — misconduct remains empty');
 }
 
 let streaks = [];
@@ -36,7 +44,7 @@ if (fs.existsSync(STREAKS_PATH)) {
 const legislationMap = Object.fromEntries(legislation.map(l => [l.bioguideId, l]));
 const committeesMap  = Object.fromEntries(committees.map(c => [c.bioguideId, c]));
 const votesMap       = Object.fromEntries(votes.map(v => [v.bioguideId, v]));
-const misconductMap  = Object.fromEntries(misconduct.map(m => [m.bioguideId, m]));
+const misconductMap  = Object.fromEntries((Array.isArray(misconduct) ? misconduct : []).map(m => [m.bioguideId, m]));
 const streaksMap     = Object.fromEntries(streaks.map(s => [s.bioguideId, s]));
 
 // Merge
@@ -64,12 +72,19 @@ const merged = rankings.map(rep => {
     rep.totalVotes      = votesMap[id].totalVotes;
     rep.participationPct = votesMap[id].participationPct;
     rep.missedVotePct    = votesMap[id].missedVotePct;
+  } else {
+    rep.yeaVotes = 0;
+    rep.nayVotes = 0;
+    rep.missedVotes = 0;
+    rep.totalVotes = 0;
+    rep.participationPct = 0;
+    rep.missedVotePct = 0;
   }
 
-  // Misconduct
+  // Misconduct (from YAML)
   if (misconductMap[id]) {
-    rep.misconductCount = misconductMap[id].misconductCount;
-    rep.misconductTags  = misconductMap[id].misconductTags;
+    rep.misconductCount = misconductMap[id].misconductCount ?? 0;
+    rep.misconductTags  = misconductMap[id].misconductTags ?? [];
   } else {
     rep.misconductCount = 0;
     rep.misconductTags  = [];
