@@ -7256,10 +7256,106 @@ section > h3 {
 .streak-badge.activity { background-color: #ffe5e5; }  /* soft red for 🔥 */
 .streak-badge.voting   { background-color: #e5f0ff; }  /* soft blue for 🗳 */
 .streak-badge.leader   { background-color: #fff5cc; }  /* soft gold for 👑 */
+
+/* Header layout */
+header {
+  display: flex;
+  justify-content: space-between; /* left, center, right */
+  align-items: center;            /* centers items vertically */
+  background-color: #2b2b2b;
+  border-bottom: 1px solid #444;
+  padding: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 900;
+}
+
+/* Center: logo */
+.header-center { 
+  flex: 1 1 auto; 
+  text-align: center; 
+}
+
+.logo { 
+  max-height: 200px;   /* enlarged for desktop */
+  width: auto; 
+  max-width: 100%; 
+  object-fit: contain; 
+  display: block;
+  margin: 0 auto;      /* centers horizontally inside header-center */
+}
+
+/* Sleek hamburger button */
+#hamburger {
+  font-size: 22px;
+  background: #1f1f1f;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 8px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+#hamburger:hover {
+  background-color: #0066cc;
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+}
+
+#hamburger:active {
+  transform: scale(0.95);
+  background-color: #005bb5;
+}
+
+/* Rankings table */
+.rankings-table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;   /* allows side scroll on small screens */
+  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+  white-space: nowrap; /* keep cells from wrapping awkwardly */
+}
+
+.rankings-table th,
+.rankings-table td {
+  padding: 8px;
+  font-size: 14px;
+}
+
+/* Touch-friendly buttons */
+button,
+.carousel-btn,
+#hamburger {
+  min-height: 44px;   /* recommended minimum tap target */
+  min-width: 44px;
+  padding: 10px 14px;
+}
+
+button:active,
+.carousel-btn:active,
+#hamburger:active {
+  background-color: #005bb5; /* darker shade for press */
+  transform: scale(0.97);
+}
+
+/* Inputs */
+input[type="text"],
+select {
+  min-height: 44px;
+  font-size: 16px; /* prevents iOS zoom on focus */
+}
+
+/* Mobile adjustments */
 @media (max-width: 600px) {
   /* Shrink the logo so it doesn’t dominate the header */
   .logo {
-    max-height: 60px;
+    max-height: 100px; /* shrink for phones */
   }
 
   /* Stack header items vertically if needed */
@@ -7280,40 +7376,7 @@ section > h3 {
   #hamburger-menu a {
     padding: 10px;
   }
-}
-/* Rankings table */
-.rankings-table {
-  display: block;
-  width: 100%;
-  overflow-x: auto;   /* allows side scroll on small screens */
-  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
-  white-space: nowrap; /* keep cells from wrapping awkwardly */
-}
 
-.rankings-table th,
-.rankings-table td {
-  padding: 8px;
-  font-size: 14px;
-}
-button,
-.carousel-btn,
-#hamburger {
-  min-height: 44px;   /* recommended minimum tap target */
-  min-width: 44px;
-  padding: 10px 14px;
-}
-button:active,
-.carousel-btn:active,
-#hamburger:active {
-  background-color: #005bb5; /* darker shade for press */
-  transform: scale(0.97);
-}
-input[type="text"],
-select {
-  min-height: 44px;
-  font-size: 16px; /* prevents iOS zoom on focus */
-}
-@media (max-width: 600px) {
   body {
     font-size: 15px;   /* comfortable reading size */
     line-height: 1.5;  /* extra breathing room */
@@ -7327,8 +7390,7 @@ select {
     font-size: 14px;
     line-height: 1.4;
   }
-}
-@media (max-width: 600px) {
+
   .section {
     padding: 12px;
     margin-bottom: 16px;
@@ -7339,9 +7401,13 @@ select {
     padding: 6px 8px;
   }
 }
+
+/* Tablet adjustments */
 @media (max-width: 768px) {
-  /* tablet adjustments */
+  /* add tablet-specific tweaks here if needed */
 }
+
+/* Small phone adjustments */
 @media (max-width: 480px) {
-  /* small phone adjustments */
+  /* add extra-small screen tweaks here if needed */
 }
