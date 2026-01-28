@@ -7428,10 +7428,30 @@ header .logo {
   }
 }
 
-<button id="hamburger" aria-label="Open menu">
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-    <rect y="4" width="24" height="2" fill="currentColor"/>
-    <rect y="11" width="24" height="2" fill="currentColor"/>
-    <rect y="18" width="24" height="2" fill="currentColor"/>
-  </svg>
-</button>
+/* Sleek hamburger button */
+#hamburger {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%; /* circular button */
+  transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+#hamburger:hover {
+  background-color: rgba(0,102,204,0.15); /* subtle blue hover */
+  transform: scale(1.05);
+}
+
+#hamburger:active {
+  transform: scale(0.95);
+}
+
+/* SVG lines inherit currentColor */
+#hamburger svg rect {
+  transition: all 0.3s ease;
+}
