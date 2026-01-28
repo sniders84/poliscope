@@ -7471,3 +7471,26 @@ header .logo {
 #hamburger.open .bottom {
   transform: rotate(-45deg) translate(5px, -5px);
 }
+header .logo {
+  max-height: 240px !important;  /* or bigger if you want */
+  width: auto !important;
+  max-width: 100% !important;
+  object-fit: contain !important;
+  display: block !important;
+  margin: 0 auto !important;
+}
+
+@media (max-width: 600px) {
+  header .logo {
+    max-height: 100px !important;
+  }
+}
+#hamburger:hover {
+  background-color: #0066cc; /* your blue */
+  transform: scale(1.05);
+}
+
+#hamburger:active {
+  background-color: #005bb5; /* darker blue press */
+  transform: scale(0.95);
+}
