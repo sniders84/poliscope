@@ -48,11 +48,11 @@
     #hamburger:hover { background-color: #0066cc; transform: scale(1.05); }
 
     /* Center: logo */
-    .header-center { flex: 1 1 auto; text-align: center; }
+    .-center { flex: 1 1 auto; text-align: center; }
     .logo { max-height: 100px; width: auto; max-width: 100%; object-fit: contain; }
 
     /* Right: search + dropdown */
-    .header-right { flex: 0 0 auto; display: flex; align-items: center; gap: 8px; }
+    .-right { flex: 0 0 auto; display: flex; align-items: center; gap: 8px; }
     #search-bar {
       padding: 8px 10px; border-radius: 6px; border: 1px solid #444;
       background: #1f1f1f; color: #fff;
@@ -94,18 +94,24 @@
     /* --- Mobile tweaks --- */
     @media (max-width: 600px) {
       .logo { max-height: 60px; }
-      header { flex-direction: row; padding: 8px; }
-      .header-right { flex-direction: column; gap: 6px; }
+       { flex-direction: row; padding: 8px; }
+      .-right { flex-direction: column; gap: 6px; }
       #search-bar, #state-dropdown { width: 100%; }
     }
   </style>
 </head>
 
 <body>
-  <!-- Header -->
-  <header>
-    <div class="header-left">
-      <button id="hamburger" aria-label="Open menu">&#9776;</button>
+  <!--  -->
+  <>
+    <div class="-left">
+    <button id="hamburger" aria-label="Open menu">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+    <rect class="line top" y="5" width="24" height="2" rx="1" fill="currentColor"/>
+    <rect class="line middle" y="11" width="24" height="2" rx="1" fill="currentColor"/>
+    <rect class="line bottom" y="17" width="24" height="2" rx="1" fill="currentColor"/>
+  </svg>
+</button>
     </div>
     <div class="header-center">
       <img src="assets/electorate-logo.png" alt="Logo" class="logo" style="height: auto; width: auto;" />
