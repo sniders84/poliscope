@@ -4809,46 +4809,6 @@ nav .tab.active {
 .ps-social-links a:hover img { transform: scale(1.1); }
 
 /* ============================================================
-   Header Layout
-   ============================================================ */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #2b2b2b;
-  border-bottom: 1px solid #444;
-  padding: 10px;
-}
-.header-left { flex: 0 0 auto; }
-#hamburger {
-  font-size: 24px;
-  background: none;
-  border: 1px solid #444;
-  color: #fff;
-  cursor: pointer;
-  border-radius: 6px;
-  width: 40px;
-  height: 40px;
-  display: grid;
-  place-items: center;
-  transition: background-color 0.2s ease, transform 0.2s ease;
-}
-#hamburger:hover { background-color: #0066cc; transform: scale(1.05); }
-.header-center { flex: 1 1 auto; text-align: center; }
-.logo {
-  max-height: 100px;
-  width: auto;
-  max-width: 100%;
-  object-fit: contain;
-}
-.header-right {
-  flex: 0 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-/* ============================================================
    Voting Tab Grid
    ============================================================ */
 #voting .card-grid {
