@@ -7237,12 +7237,13 @@ header {
 }
 
 /* Force desktop logo size */
-header .logo {
-  height: 120px !important;       /* explicit height for desktop */
+header .header-center .logo {
+  height: 160px !important;       /* explicit height for desktop */
+  min-height: 160px !important;   /* prevents shrinking */
   width: auto !important;
   max-width: 100% !important;
   object-fit: contain !important;
-  display: block !important;
+  display: inline-block !important;
   margin: 0 auto !important;
 }
 
@@ -7332,8 +7333,9 @@ select {
 /* Mobile adjustments */
 @media (max-width: 600px) {
   /* Shrink the logo so it doesn’t dominate the header */
-  header .logo {
-    height: 70px !important; /* explicit smaller height for phones */
+  header .header-center .logo {
+    height: 90px !important;
+    min-height: 90px !important;
   }
 
   /* Stack header items vertically if needed */
