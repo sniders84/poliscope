@@ -1,107 +1,123 @@
 // scripts/merge-senators.js
-// Purpose: Merge legislation, committees, votes, and misconduct into senators-rankings.json
 
-const fs = require('fs');
-const path = require('path');
-const yaml = require('js-yaml');
+const fs = require("fs");
 
-const RANKINGS_PATH = path.join(__dirname, '..', 'public', 'senators-rankings.json');
-const LEGISLATION_PATH = path.join(__dirname, '..', 'public', 'legislation-senators.json');
-const COMMITTEES_PATH = path.join(__dirname, '..', 'public', 'senators-committees.json');
-const VOTES_PATH = path.join(__dirname, '..', 'public', 'senators-votes.json'); // ✅ correct filename
-const MISCONDUCT_PATH = path.join(__dirname, '..', 'public', 'misconduct.yaml'); // ✅ YAML source
-
-// Load inputs
-const rankings = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf-8'));
-const legislation = JSON.parse(fs.readFileSync(LEGISLATION_PATH, 'utf-8'));
-const committees = JSON.parse(fs.readFileSync(COMMITTEES_PATH, 'utf-8'));
-const votes = JSON.parse(fs.readFileSync(VOTES_PATH, 'utf-8'));
-
-let misconduct = [];
-if (fs.existsSync(MISCONDUCT_PATH)) {
-  try {
-    const raw = fs.readFileSync(MISCONDUCT_PATH, 'utf-8');
-    misconduct = yaml.load(raw) || [];
-    console.log(`Loaded misconduct.yaml entries: ${Array.isArray(misconduct) ? misconduct.length : 0}`);
-  } catch (e) {
-    console.warn('Failed to parse misconduct.yaml — proceeding without misconduct data:', e.message);
-    misconduct = [];
-  }
-} else {
-  console.log('misconduct.yaml not found — misconduct remains empty');
-}
-
-// Index helpers
-const legislationMap = Object.fromEntries(legislation.map(l => [l.bioguideId, l]));
-const committeesMap = Object.fromEntries(committees.map(c => [c.bioguideId, c]));
-const votesMap = Object.fromEntries(votes.map(v => [v.bioguideId, v]));
-// Expect misconduct YAML entries to include bioguideId + tags/count
-const misconductMap = Object.fromEntries(
-  (Array.isArray(misconduct) ? misconduct : []).map(m => [m.bioguideId, m])
+// Load baseline info (with photos, names, etc.)
+const senatorsInfo = JSON.parse(
+  fs.readFileSync("public/senators.json", "utf8")
 );
 
-// Merge
-const merged = rankings.map(sen => {
-  const id = sen.bioguideId;
+// Load legislation, committees, votes, misconduct
+const legislation = JSON.parse(
+  fs.readFileSync("public/legislation-senators.json", "utf8")
+);
+const committees = JSON.parse(
+  fs.readFileSync("public/senators-committees.json", "utf8")
+);
+const votes = JSON.parse(
+  fs.readFileSync("public/senators-votes.json", "utf8")
+);
+const misconduct = JSON.parse(
+  fs.readFileSync("public/misconduct.yaml", "utf8")
+); // assuming YAML parsed earlier in pipeline
 
-  // Legislation
-  if (legislationMap[id]) {
-    Object.assign(sen, {
-      sponsoredBills: legislationMap[id].sponsoredBills,
-      cosponsoredBills: legislationMap[id].cosponsoredBills,
-      becameLawBills: legislationMap[id].becameLawBills,
-      becameLawCosponsoredBills: legislationMap[id].becameLawCosponsoredBills
-    });
-  }
+// Helper: find senator info by bioguideId
+function findSenatorInfo(bioguideId) {
+  return senatorsInfo.find((s) => s.bioguideId === bioguideId);
+}
 
-  // Committees
-  if (committeesMap[id]) {
-    sen.committees = committeesMap[id].committees || [];
-  }
+function findLegislation(bioguideId) {
+  return legislation.find((l) => l.bioguideId === bioguideId);
+}
 
-  // Votes (flatten to top-level fields per your schema)
-  if (votesMap[id]) {
-    const v = votesMap[id].votes || {};
-    sen.yeaVotes = v.yeaVotes ?? 0;
-    sen.nayVotes = v.nayVotes ?? 0;
-    sen.missedVotes = v.missedVotes ?? 0;
-    sen.totalVotes = v.totalVotes ?? (sen.yeaVotes + sen.nayVotes + sen.missedVotes);
-    sen.participationPct = v.participationPct ?? (sen.totalVotes ? +(((sen.yeaVotes + sen.nayVotes) / sen.totalVotes) * 100).toFixed(2) : 0);
-    sen.missedVotePct = v.missedVotePct ?? (sen.totalVotes ? +((sen.missedVotes / sen.totalVotes) * 100).toFixed(2) : 0);
-  } else {
-    sen.yeaVotes = 0;
-    sen.nayVotes = 0;
-    sen.missedVotes = 0;
-    sen.totalVotes = 0;
-    sen.participationPct = 0;
-    sen.missedVotePct = 0;
-  }
+function findCommittees(bioguideId) {
+  return committees.find((c) => c.bioguideId === bioguideId);
+}
 
-  // Misconduct (from YAML)
-  if (misconductMap[id]) {
-    sen.misconductCount = misconductMap[id].misconductCount ?? 0;
-    sen.misconductTags = misconductMap[id].misconductTags ?? [];
-  } else {
-    sen.misconductCount = 0;
-    sen.misconductTags = [];
-  }
+function findVotes(bioguideId) {
+  return votes.find((v) => v.bioguideId === bioguideId);
+}
 
-  // ---- Snapshot current totals for weekly diff tracking ----
-  sen.metrics = sen.metrics || { lastTotals: {} };
-  sen.metrics.lastTotals = {
-    sponsoredBills: sen.sponsoredBills ?? 0,
-    cosponsoredBills: sen.cosponsoredBills ?? 0,
-    yeaVotes: sen.yeaVotes ?? 0,
-    nayVotes: sen.nayVotes ?? 0,
-    missedVotes: sen.missedVotes ?? 0,
-    totalVotes: sen.totalVotes ?? 0
+function findMisconduct(bioguideId) {
+  return misconduct.find((m) => m.bioguideId === bioguideId);
+}
+
+// Merge everything into rankings
+const rankings = senatorsInfo.map((info) => {
+  const bioguideId = info.bioguideId;
+
+  const record = {
+    slug: info.slug,
+    bioguideId,
+    govtrackId: info.govtrackId,
+    name: info.name,
+    state: info.state,
+    district: info.district,
+    party: info.party,
+    office: info.office,
+    // ✅ Preserve photo from baseline info
+    photo: info.photo,
+
+    sponsoredBills: 0,
+    cosponsoredBills: 0,
+    becameLawBills: 0,
+    becameLawCosponsoredBills: 0,
+    committees: [],
+    misconductCount: 0,
+    misconductTags: [],
+    yeaVotes: 0,
+    nayVotes: 0,
+    missedVotes: 0,
+    totalVotes: 0,
+    participationPct: 0,
+    missedVotePct: 0,
+    streaks: { activity: 0, voting: 0, leader: 0 },
+    metrics: { lastTotals: {} },
+    streak: 0,
+    powerScore: 0,
+    lastUpdated: new Date().toISOString(),
   };
 
-  // Preserve existing fields like streaks, powerScore; update timestamp
-  sen.lastUpdated = new Date().toISOString();
+  // Merge legislation
+  const leg = findLegislation(bioguideId);
+  if (leg) {
+    record.sponsoredBills = leg.sponsoredBills || 0;
+    record.cosponsoredBills = leg.cosponsoredBills || 0;
+    record.becameLawBills = leg.becameLawSponsored || 0;
+    record.becameLawCosponsoredBills = leg.becameLawCosponsored || 0;
+  }
 
-  return sen;
+  // Merge committees
+  const comm = findCommittees(bioguideId);
+  if (comm) {
+    record.committees = comm.committees || [];
+  }
+
+  // Merge votes
+  const v = findVotes(bioguideId);
+  if (v) {
+    record.yeaVotes = v.yeaVotes || 0;
+    record.nayVotes = v.nayVotes || 0;
+    record.missedVotes = v.missedVotes || 0;
+    record.totalVotes = v.totalVotes || 0;
+    record.participationPct = v.participationPct || 0;
+    record.missedVotePct = v.missedVotePct || 0;
+  }
+
+  // Merge misconduct
+  const m = findMisconduct(bioguideId);
+  if (m) {
+    record.misconductCount = m.count || 0;
+    record.misconductTags = m.tags || [];
+  }
+
+  return record;
 });
 
-fs.writeFileSync(RANKINGS_PATH, JSON.stringify(merged, null, 2));
-console.log(`Finished merge: ${merged.length} senators updated in senators-rankings.json`);
+// Write merged rankings
+fs.writeFileSync(
+  "public/senators-rankings.json",
+  JSON.stringify(rankings, null, 2)
+);
+
+console.log(`Finished merge: ${rankings.length} senators updated in senators-rankings.json`);
