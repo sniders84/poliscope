@@ -7411,3 +7411,27 @@ select {
 @media (max-width: 480px) {
   /* add extra-small screen tweaks here if needed */
 }
+/* Force desktop logo size */
+header .logo {
+  max-height: 240px !important;  /* or 300px if you want it even bigger */
+  width: auto !important;
+  max-width: 100% !important;
+  object-fit: contain !important;
+  display: block !important;
+  margin: 0 auto !important;
+}
+
+/* Mobile adjustment */
+@media (max-width: 600px) {
+  header .logo {
+    max-height: 100px !important; /* shrink only on phones */
+  }
+}
+
+<button id="hamburger" aria-label="Open menu">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <rect y="4" width="24" height="2" fill="currentColor"/>
+    <rect y="11" width="24" height="2" fill="currentColor"/>
+    <rect y="18" width="24" height="2" fill="currentColor"/>
+  </svg>
+</button>
