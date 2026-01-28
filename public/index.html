@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <title>Your Officials</title>
+  <!-- Viewport for mobile responsiveness -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- Main stylesheet with cache busting -->
   <link rel="stylesheet" href="style.css?v=2025-12-17-0715" />
   <link rel="icon" href="favicon.ico" onerror="this.href='data:,';" />
@@ -88,19 +90,27 @@
     .carousel-img { width: 100%; height: 160px; object-fit: cover; display: block; }
     .carousel-controls { display: flex; gap: 8px; margin-top: 8px; }
     .carousel-btn { padding: 6px 10px; border-radius: 6px; border: 1px solid #444; background: #1f1f1f; color: #fff; cursor: pointer; }
+
+    /* --- Mobile tweaks --- */
+    @media (max-width: 600px) {
+      .logo { max-height: 60px; }
+      header { flex-direction: row; padding: 8px; }
+      .header-right { flex-direction: column; gap: 6px; }
+      #search-bar, #state-dropdown { width: 100%; }
+    }
   </style>
 </head>
 
 <body>
-    <!-- Header -->
+  <!-- Header -->
   <header>
     <div class="header-left">
       <button id="hamburger" aria-label="Open menu">&#9776;</button>
     </div>
     <div class="header-center">
-      <img src="assets/electorate-logo.png" alt="Logo" class="logo" style="max-height: 200px; height: auto; width: auto;" />
+      <img src="assets/electorate-logo.png" alt="Logo" class="logo" style="height: auto; width: auto;" />
     </div>
-    </header>
+  </header>
 
   <!-- Slide-out hamburger menu -->
   <nav id="hamburger-menu" aria-label="Primary">
