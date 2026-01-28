@@ -6,154 +6,77 @@ on:
   workflow_dispatch:
 
 jobs:
-  update-house-part1:
+  update-house:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        part: [1, 2, 3, 4]
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-      - name: Install dependencies
-        run: npm install
-      - name: Bootstrap representatives
-        run: node scripts/bootstrap-representatives.js
-      - name: Run legislation scraper (Part 1: reps 0–109)
-        env:
-          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
-        run: node scripts/legislation-representatives-scraper.js 1
-      - name: Rename output
-        run: mv public/legislation-representatives.json public/legislation-representatives-part1.json
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: house-part1
-          path: public/legislation-representatives-part1.json
 
-  update-house-part2:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-      - name: Install dependencies
-        run: npm install
-      - name: Bootstrap representatives
-        run: node scripts/bootstrap-representatives.js
-      - name: Run legislation scraper (Part 2: reps 110–219)
-        env:
-          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
-        run: node scripts/legislation-representatives-scraper.js 2
-      - name: Rename output
-        run: mv public/legislation-representatives.json public/legislation-representatives-part2.json
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: house-part2
-          path: public/legislation-representatives-part2.json
 
-  update-house-part3:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
       - name: Install dependencies
         run: npm install
-      - name: Bootstrap representatives
-        run: node scripts/bootstrap-representatives.js
-      - name: Run legislation scraper (Part 3: reps 220–329)
-        env:
-          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
-        run: node scripts/legislation-representatives-scraper.js 3
-      - name: Rename output
-        run: mv public/legislation-representatives.json public/legislation-representatives-part3.json
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: house-part3
-          path: public/legislation-representatives-part3.json
 
-  update-house-part4:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-      - name: Install dependencies
-        run: npm install
       - name: Bootstrap representatives
         run: node scripts/bootstrap-representatives.js
-      - name: Run legislation scraper (Part 4: reps 330–439)
+
+      - name: Run legislation scraper (Part ${{ matrix.part }})
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
-        run: node scripts/legislation-representatives-scraper.js 4
+        run: node scripts/legislation-representatives-scraper.js ${{ matrix.part }}
+
       - name: Rename output
-        run: mv public/legislation-representatives.json public/legislation-representatives-part4.json
+        run: mv public/legislation-representatives.json public/legislation-representatives-part${{ matrix.part }}.json
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: house-part4
-          path: public/legislation-representatives-part4.json
+          name: house-part${{ matrix.part }}
+          path: public/legislation-representatives-part${{ matrix.part }}.json
 
   merge-house:
     runs-on: ubuntu-latest
-    needs:
-      - update-house-part1
-      - update-house-part2
-      - update-house-part3
-      - update-house-part4
+    needs: update-house
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-      - name: Download part1
+
+      - name: Download all parts
         uses: actions/download-artifact@v4
         with:
-          name: house-part1
           path: public
-      - name: Download part2
-        uses: actions/download-artifact@v4
-        with:
-          name: house-part2
-          path: public
-      - name: Download part3
-        uses: actions/download-artifact@v4
-        with:
-          name: house-part3
-          path: public
-      - name: Download part4
-        uses: actions/download-artifact@v4
-        with:
-          name: house-part4
-          path: public
+
       - name: Merge part files
         run: node scripts/merge-legislation-parts.js
+
       - name: Run committee scraper
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: node scripts/committee-reps-scraper.js
+
       - name: Run votes scraper (House)
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: node scripts/votes-reps-scraper.js
+
       - name: Merge into rankings
         run: node scripts/merge-representatives.js
+
       - name: Scrape misconduct (House)
         run: node scripts/misconduct-scraper.js house
+
       - name: Generate scores
         run: node scripts/representatives-scores.js
+
       - name: Update streaks
         run: node scripts/update-streaks.js
+
       - name: Commit updated files
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
