@@ -1,9 +1,9 @@
 // scripts/legislation-representatives-scraper.js
 //
 // Purpose: Pull sponsored/cosponsored bills and became-law counts *only for the 119th Congress* (House)
-// Supports range filtering (A–F, G–L, etc.) so workflow jobs can split the workload
-// Source: Congress.gov API v3 — uses bioguideId directly; filters response to congress=119
-// Output: public/legislation-representatives.json (or renamed part file in workflow)
+// Split mode: accepts --part argument (1–4) to divide 440 reps into equal slices by index
+// Safety: enforces max page limit per member to avoid cancellations
+// Output: public/legislation-representatives.json (workflow renames to partX.json)
 
 const fs = require('fs');
 const path = require('path');
@@ -17,21 +17,14 @@ const outputPath = path.join(__dirname, '../public/legislation-representatives.j
 
 const legislators = JSON.parse(fs.readFileSync(legislatorsPath, 'utf-8'));
 
-// Accept a range argument like "A-F" from command line
-const rangeArg = process.argv[2]; // e.g. "A-F"
-let rangeStart, rangeEnd;
-if (rangeArg) {
-  [rangeStart, rangeEnd] = rangeArg.split('-');
-  rangeStart = rangeStart.toUpperCase();
-  rangeEnd = rangeEnd.toUpperCase();
-}
+// Accept part argument (1–4)
+const partArg = parseInt(process.argv[2], 10);
+const sliceSize = Math.ceil(440 / 4); // ~110 per slice
+const startIndex = (partArg - 1) * sliceSize;
+const endIndex = startIndex + sliceSize;
+const slice = legislators.slice(startIndex, endIndex);
 
-// Helper to check if a last name falls in the range
-function inRange(lastName) {
-  if (!rangeArg) return true; // no filter, include all
-  const firstLetter = (lastName[0] || '').toUpperCase();
-  return firstLetter >= rangeStart && firstLetter <= rangeEnd;
-}
+console.log(`Running House scraper part ${partArg}: processing reps ${startIndex}–${endIndex - 1}`);
 
 async function getWithRetry(url, params = {}, tries = 5) {
   let lastErr;
@@ -70,6 +63,7 @@ function isBecameLaw(bill) {
 async function fetchBills(bioguideId) {
   let sponsored = 0, cosponsored = 0, becameLawSponsored = 0, becameLawCosponsored = 0;
   const limit = 250;
+  const maxPages = 50; // safety cap per member
 
   async function paginate(endpoint) {
     let count = 0;
@@ -78,6 +72,11 @@ async function fetchBills(bioguideId) {
     let totalPagesProcessed = 0;
 
     while (true) {
+      if (totalPagesProcessed >= maxPages) {
+        console.warn(`Reached max page limit (${maxPages}) for ${bioguideId} ${endpoint}`);
+        break;
+      }
+
       const url = `${BASE_URL}/member/${bioguideId}/${endpoint}`;
       const params = { congress: 119, limit, offset };
       let data;
@@ -125,7 +124,7 @@ async function fetchBills(bioguideId) {
   const results = [];
   let failedCount = 0;
 
-  for (const leg of legislators) {
+  for (const leg of slice) {
     const lastTerm = leg.terms?.[leg.terms.length - 1];
     if (!lastTerm || lastTerm.type !== 'rep') continue;
 
@@ -136,8 +135,6 @@ async function fetchBills(bioguideId) {
     const state = lastTerm.state || '';
     const district = lastTerm.district || '';
     const party = lastTerm.party || '';
-
-    if (!inRange(leg.name.last)) continue; // ✅ filter by range
 
     console.log(`\nProcessing ${name} (${bioguideId}, ${state}-${district})...`);
 
