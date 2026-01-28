@@ -1,9 +1,9 @@
 // scripts/legislation-representatives-scraper.js
 //
 // Purpose: Pull sponsored/cosponsored bills and became-law counts *only for the 119th Congress* (House)
-// Optimized: Uses existing legislation-representatives.json as baseline and only fetches new pages
+// Supports range filtering (A–F, G–L, etc.) so workflow jobs can split the workload
 // Source: Congress.gov API v3 — uses bioguideId directly; filters response to congress=119
-// Output: public/legislation-representatives.json
+// Output: public/legislation-representatives.json (or renamed part file in workflow)
 
 const fs = require('fs');
 const path = require('path');
@@ -17,18 +17,21 @@ const outputPath = path.join(__dirname, '../public/legislation-representatives.j
 
 const legislators = JSON.parse(fs.readFileSync(legislatorsPath, 'utf-8'));
 
-// Load existing data if present
-let existing = [];
-if (fs.existsSync(outputPath)) {
-  try {
-    existing = JSON.parse(fs.readFileSync(outputPath, 'utf-8'));
-    console.log(`Loaded existing legislation data for ${existing.length} representatives`);
-  } catch {
-    console.warn('Failed to parse existing legislation-representatives.json, starting fresh');
-    existing = [];
-  }
+// Accept a range argument like "A-F" from command line
+const rangeArg = process.argv[2]; // e.g. "A-F"
+let rangeStart, rangeEnd;
+if (rangeArg) {
+  [rangeStart, rangeEnd] = rangeArg.split('-');
+  rangeStart = rangeStart.toUpperCase();
+  rangeEnd = rangeEnd.toUpperCase();
 }
-const existingMap = Object.fromEntries(existing.map(r => [r.bioguideId, r]));
+
+// Helper to check if a last name falls in the range
+function inRange(lastName) {
+  if (!rangeArg) return true; // no filter, include all
+  const firstLetter = (lastName[0] || '').toUpperCase();
+  return firstLetter >= rangeStart && firstLetter <= rangeEnd;
+}
 
 async function getWithRetry(url, params = {}, tries = 5) {
   let lastErr;
@@ -64,19 +67,15 @@ function isBecameLaw(bill) {
          /public law no/i.test(text);
 }
 
-async function fetchBills(bioguideId, prevTotals) {
-  let sponsored = prevTotals?.sponsoredBills || 0;
-  let cosponsored = prevTotals?.cosponsoredBills || 0;
-  let becameLawSponsored = prevTotals?.becameLawBills || 0;
-  let becameLawCosponsored = prevTotals?.becameLawCosponsoredBills || 0;
-
+async function fetchBills(bioguideId) {
+  let sponsored = 0, cosponsored = 0, becameLawSponsored = 0, becameLawCosponsored = 0;
   const limit = 250;
 
-  async function paginate(endpoint, prevCount) {
-    let count = prevCount;
-    let lawCount = endpoint === 'sponsored-legislation' ? becameLawSponsored : becameLawCosponsored;
-    let offset = prevCount; // start from where we left off
-    let newPages = 0;
+  async function paginate(endpoint) {
+    let count = 0;
+    let lawCount = 0;
+    let offset = 0;
+    let totalPagesProcessed = 0;
 
     while (true) {
       const url = `${BASE_URL}/member/${bioguideId}/${endpoint}`;
@@ -101,22 +100,23 @@ async function fetchBills(bioguideId, prevTotals) {
       }
 
       offset += limit;
-      newPages++;
+      totalPagesProcessed++;
       await new Promise(r => setTimeout(r, 600));
     }
 
-    console.log(`Processed ${newPages} new pages for ${endpoint} (new count: ${count})`);
+    console.log(`Processed ${totalPagesProcessed} pages for ${endpoint} (filtered count: ${count})`);
     return { count, lawCount };
   }
 
-  const sponsoredData = await paginate('sponsored-legislation', sponsored);
+  const sponsoredData = await paginate('sponsored-legislation');
   sponsored = sponsoredData.count;
   becameLawSponsored = sponsoredData.lawCount;
 
-  const cosponsoredData = await paginate('cosponsored-legislation', cosponsored);
+  const cosponsoredData = await paginate('cosponsored-legislation');
   cosponsored = cosponsoredData.count;
   becameLawCosponsored = cosponsoredData.lawCount;
 
+  console.log(`Completed fetch for ${bioguideId}: sponsored=${sponsored}, cosponsored=${cosponsored}`);
   return { sponsored, cosponsored, becameLawSponsored, becameLawCosponsored };
 }
 
@@ -137,11 +137,12 @@ async function fetchBills(bioguideId, prevTotals) {
     const district = lastTerm.district || '';
     const party = lastTerm.party || '';
 
+    if (!inRange(leg.name.last)) continue; // ✅ filter by range
+
     console.log(`\nProcessing ${name} (${bioguideId}, ${state}-${district})...`);
 
     try {
-      const prevTotals = existingMap[bioguideId];
-      const totals = await fetchBills(bioguideId, prevTotals);
+      const totals = await fetchBills(bioguideId);
 
       results.push({
         bioguideId,
@@ -165,7 +166,7 @@ async function fetchBills(bioguideId, prevTotals) {
       failedCount++;
     }
 
-    await new Promise(r => setTimeout(r, 1500)); // shorter delay since fewer pages
+    await new Promise(r => setTimeout(r, 1500));
   }
 
   fs.writeFileSync(outputPath, JSON.stringify(results, null, 2));
