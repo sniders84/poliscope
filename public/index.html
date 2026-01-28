@@ -1544,6 +1544,14 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   renderResults(window.allOfficials);
+
+  // 🔧 Hamburger morph into X toggle
+  const hamburger = document.getElementById('hamburger');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open'); // triggers the CSS animation
+    document.getElementById('hamburger-menu').classList.toggle('open'); // shows/hides the menu
+  });
+
 }); <!-- ✅ this closes DOMContentLoaded -->
 </script>
 
