@@ -1,5 +1,5 @@
 // scripts/merge-senators.js
-// Purpose: Merge legislation, committees, votes, misconduct into senators-rankings.json
+// Purpose: Merge legislation, committees, votes, misconduct, and streaks into senators-rankings.json
 
 const fs = require("fs");
 const path = require("path");
@@ -12,6 +12,7 @@ const LEGISLATION_PATH = path.join(__dirname, "..", "public", "senators-legislat
 const COMMITTEES_PATH  = path.join(__dirname, "..", "public", "senators-committees.json");
 const VOTES_PATH       = path.join(__dirname, "..", "public", "senators-votes.json");       // ✅ corrected filename
 const MISCONDUCT_PATH  = path.join(__dirname, "..", "public", "misconduct.yaml");
+const STREAKS_PATH     = path.join(__dirname, "..", "public", "senators-streaks.json");     // ✅ new streaks file
 
 // Load inputs
 const senatorsInfo = JSON.parse(fs.readFileSync(INFO_PATH, "utf8"));
@@ -33,11 +34,20 @@ if (fs.existsSync(MISCONDUCT_PATH)) {
   console.log("misconduct.yaml not found — misconduct remains empty");
 }
 
+let streaks = [];
+if (fs.existsSync(STREAKS_PATH)) {
+  streaks = JSON.parse(fs.readFileSync(STREAKS_PATH, "utf8"));
+  console.log(`Loaded streak data for ${streaks.length} senators`);
+} else {
+  console.log("senators-streaks.json not found — streaks remain empty");
+}
+
 // Index helpers
 const legislationMap = Object.fromEntries(legislation.map(l => [l.bioguideId, l]));
 const committeesMap  = Object.fromEntries(committees.map(c => [c.bioguideId, c]));
 const votesMap       = Object.fromEntries(votes.map(v => [v.bioguideId, v]));
 const misconductMap  = Object.fromEntries((Array.isArray(misconduct) ? misconduct : []).map(m => [m.bioguideId, m]));
+const streaksMap     = Object.fromEntries(streaks.map(s => [s.bioguideId, s]));
 
 // Merge everything into rankings
 const rankings = senatorsInfo.map(info => {
@@ -101,6 +111,12 @@ const rankings = senatorsInfo.map(info => {
   if (misconductMap[id]) {
     record.misconductCount = misconductMap[id].misconductCount ?? 0;
     record.misconductTags  = misconductMap[id].misconductTags ?? [];
+  }
+
+  // Streaks
+  if (streaksMap[id]) {
+    record.streaks = streaksMap[id].streaks || { activity: 0, voting: 0, leader: 0 };
+    record.streak  = streaksMap[id].streak || 0;
   }
 
   // Metrics snapshot
