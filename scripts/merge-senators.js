@@ -8,9 +8,9 @@ const yaml = require("js-yaml");
 // Paths
 const INFO_PATH        = path.join(__dirname, "..", "public", "senators.json");
 const RANKINGS_PATH    = path.join(__dirname, "..", "public", "senators-rankings.json");
-const LEGISLATION_PATH = path.join(__dirname, "..", "public", "legislation-senators.json");
+const LEGISLATION_PATH = path.join(__dirname, "..", "public", "senators-legislation.json"); // ✅ corrected filename
 const COMMITTEES_PATH  = path.join(__dirname, "..", "public", "senators-committees.json");
-const VOTES_PATH       = path.join(__dirname, "..", "public", "senators-votes.json");
+const VOTES_PATH       = path.join(__dirname, "..", "public", "senators-votes.json");       // ✅ corrected filename
 const MISCONDUCT_PATH  = path.join(__dirname, "..", "public", "misconduct.yaml");
 
 // Load inputs
@@ -102,6 +102,16 @@ const rankings = senatorsInfo.map(info => {
     record.misconductCount = misconductMap[id].misconductCount ?? 0;
     record.misconductTags  = misconductMap[id].misconductTags ?? [];
   }
+
+  // Metrics snapshot
+  record.metrics.lastTotals = {
+    sponsoredBills: record.sponsoredBills,
+    cosponsoredBills: record.cosponsoredBills,
+    yeaVotes: record.yeaVotes,
+    nayVotes: record.nayVotes,
+    missedVotes: record.missedVotes,
+    totalVotes: record.totalVotes
+  };
 
   return record;
 });
