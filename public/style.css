@@ -7391,3 +7391,10 @@ select {
 @media (max-width: 480px) {
   /* add extra-small screen tweaks here if needed */
 }
+header .header-center .logo {
+  height: 180px !important;
+  width: auto !important;
+  object-fit: contain !important;
+  display: inline-block !important;
+  margin: 0 auto !important;
+}
