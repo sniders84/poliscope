@@ -62,7 +62,7 @@ const merged = rankings.map(rep => {
     rep.district = infoMap[id].district;
     rep.party    = infoMap[id].party;
     rep.office   = infoMap[id].office;
-    rep.photo    = infoMap[id].photo || rep.photo || null; // ✅ always preserve photo
+    rep.photo    = infoMap[id].photo || rep.photo || null; // always preserve photo
   }
 
   // Legislation
@@ -74,4 +74,60 @@ const merged = rankings.map(rep => {
   }
 
   // Committees
-  if (
+  if (committeesMap[id]) {
+    rep.committees = committeesMap[id].committees || [];
+  }
+
+  // Votes
+  if (votesMap[id]) {
+    rep.yeaVotes         = votesMap[id].yeaVotes;
+    rep.nayVotes         = votesMap[id].nayVotes;
+    rep.missedVotes      = votesMap[id].missedVotes;
+    rep.totalVotes       = votesMap[id].totalVotes;
+    rep.participationPct = votesMap[id].participationPct;
+    rep.missedVotePct    = votesMap[id].missedVotePct;
+  } else {
+    rep.yeaVotes = 0;
+    rep.nayVotes = 0;
+    rep.missedVotes = 0;
+    rep.totalVotes = 0;
+    rep.participationPct = 0;
+    rep.missedVotePct = 0;
+  }
+
+  // Misconduct
+  if (misconductMap[id]) {
+    rep.misconductCount = misconductMap[id].misconductCount ?? 0;
+    rep.misconductTags  = misconductMap[id].misconductTags ?? [];
+  } else {
+    rep.misconductCount = 0;
+    rep.misconductTags  = [];
+  }
+
+  // Streaks
+  if (streaksMap[id]) {
+    rep.streaks = streaksMap[id].streaks || { activity: 0, voting: 0, leader: 0 };
+    rep.streak  = streaksMap[id].streak || 0;
+  } else {
+    rep.streaks = rep.streaks || { activity: 0, voting: 0, leader: 0 };
+    rep.streak  = rep.streak || 0;
+  }
+
+  // Metrics snapshot
+  rep.metrics = rep.metrics || { lastTotals: {} };
+  rep.metrics.lastTotals = {
+    sponsoredBills: rep.sponsoredBills || 0,
+    cosponsoredBills: rep.cosponsoredBills || 0,
+    yeaVotes: rep.yeaVotes || 0,
+    nayVotes: rep.nayVotes || 0,
+    missedVotes: rep.missedVotes || 0,
+    totalVotes: rep.totalVotes || 0
+  };
+
+  rep.lastUpdated = new Date().toISOString();
+  return rep;
+});
+
+// Write merged rankings
+fs.writeFileSync(RANKINGS_PATH, JSON.stringify(merged, null, 2));
+console.log(`Finished merge: ${merged.length} representatives updated in representatives-rankings.json`);
