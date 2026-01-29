@@ -8,7 +8,7 @@ const yaml = require('js-yaml');
 // Paths
 const INFO_PATH        = path.join(__dirname, '..', 'public', 'housereps.json'); // ✅ baseline info with photos
 const RANKINGS_PATH    = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
-const LEGISLATION_PATH = path.join(__dirname, '..', 'public', 'legislation-reps.json');
+const LEGISLATION_PATH = path.join(__dirname, '..', 'public', 'legislation-housereps.json'); // ✅ corrected House legislation file
 const COMMITTEES_PATH  = path.join(__dirname, '..', 'public', 'reps-committees.json');
 const VOTES_PATH       = path.join(__dirname, '..', 'public', 'votes-reps.json');
 const MISCONDUCT_PATH  = path.join(__dirname, '..', 'public', 'misconduct.yaml');
