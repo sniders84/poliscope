@@ -12,7 +12,7 @@ const LEGISLATION_PATH = path.join(__dirname, '..', 'public', 'representatives-l
 const COMMITTEES_PATH  = path.join(__dirname, '..', 'public', 'reps-committees.json');
 const VOTES_PATH       = path.join(__dirname, '..', 'public', 'representatives-votes.json');       // ✅ corrected filename
 const MISCONDUCT_PATH  = path.join(__dirname, '..', 'public', 'misconduct.yaml');
-const STREAKS_PATH     = path.join(__dirname, '..', 'public', 'streaks-reps.json');
+const STREAKS_PATH     = path.join(__dirname, '..', 'public', 'representatives-streaks.json');     // ✅ corrected filename
 
 // Load inputs
 const info        = JSON.parse(fs.readFileSync(INFO_PATH, 'utf-8'));
@@ -40,7 +40,7 @@ if (fs.existsSync(STREAKS_PATH)) {
   streaks = JSON.parse(fs.readFileSync(STREAKS_PATH, 'utf-8'));
   console.log(`Loaded streak data for ${streaks.length} representatives`);
 } else {
-  console.log('streaks-reps.json not found — streaks remain empty');
+  console.log('representatives-streaks.json not found — streaks remain empty');
 }
 
 // Index helpers
@@ -69,4 +69,65 @@ const merged = rankings.map(rep => {
   if (legislationMap[id]) {
     rep.sponsoredBills            = legislationMap[id].sponsoredBills || 0;
     rep.cosponsoredBills          = legislationMap[id].cosponsoredBills || 0;
-    rep
+    rep.becameLawBills            = legislationMap[id].becameLawBills || 0;
+    rep.becameLawCosponsoredBills = legislationMap[id].becameLawCosponsoredBills || 0;
+  }
+
+  // Committees
+  if (committeesMap[id]) {
+    rep.committees = committeesMap[id].committees || [];
+  }
+
+  // Votes
+  if (votesMap[id]) {
+    rep.yeaVotes         = votesMap[id].yeaVotes || 0;
+    rep.nayVotes         = votesMap[id].nayVotes || 0;
+    rep.missedVotes      = votesMap[id].missedVotes || 0;
+    rep.totalVotes       = votesMap[id].totalVotes || 0;
+    rep.participationPct = votesMap[id].participationPct || 0;
+    rep.missedVotePct    = votesMap[id].missedVotePct || 0;
+  } else {
+    rep.yeaVotes = 0;
+    rep.nayVotes = 0;
+    rep.missedVotes = 0;
+    rep.totalVotes = 0;
+    rep.participationPct = 0;
+    rep.missedVotePct = 0;
+  }
+
+  // Misconduct
+  if (misconductMap[id]) {
+    rep.misconductCount = misconductMap[id].misconductCount ?? 0;
+    rep.misconductTags  = misconductMap[id].misconductTags ?? [];
+  } else {
+    rep.misconductCount = 0;
+    rep.misconductTags  = [];
+  }
+
+  // Streaks
+  if (streaksMap[id]) {
+    rep.streaks = streaksMap[id].streaks || { activity: 0, voting: 0, leader: 0 };
+    rep.streak  = streaksMap[id].streak || 0;
+  } else {
+    rep.streaks = rep.streaks || { activity: 0, voting: 0, leader: 0 };
+    rep.streak  = rep.streak || 0;
+  }
+
+  // Metrics snapshot
+  rep.metrics = rep.metrics || { lastTotals: {} };
+  rep.metrics.lastTotals = {
+    sponsoredBills: rep.sponsoredBills || 0,
+    cosponsoredBills: rep.cosponsoredBills || 0,
+    yeaVotes: rep.yeaVotes || 0,
+    nayVotes: rep.nayVotes || 0,
+    missedVotes: rep.missedVotes || 0,
+    totalVotes: rep.totalVotes || 0
+  };
+
+  rep.lastUpdated = new Date().toISOString();
+  return rep;
+});
+
+// Write merged rankings
+fs.writeFileSync(RANKINGS_PATH, JSON.stringify(merged, null, 2));
+console.log(`Finished merge: ${merged.length} representatives updated in representatives-rankings.json`);
