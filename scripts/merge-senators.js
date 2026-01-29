@@ -52,7 +52,7 @@ const rankings = senatorsInfo.map(info => {
     district: info.district,
     party: info.party,
     office: info.office,
-    photo: info.photo, // ✅ preserve photo
+    photo: info.photo || null, // ✅ always preserve photo
 
     sponsoredBills: 0,
     cosponsoredBills: 0,
