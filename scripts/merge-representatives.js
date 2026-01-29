@@ -8,9 +8,9 @@ const yaml = require('js-yaml');
 // Paths
 const INFO_PATH        = path.join(__dirname, '..', 'public', 'housereps.json'); // ✅ baseline info with photos
 const RANKINGS_PATH    = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
-const LEGISLATION_PATH = path.join(__dirname, '..', 'public', 'legislation-reps.json');
+const LEGISLATION_PATH = path.join(__dirname, '..', 'public', 'representatives-legislation.json'); // ✅ corrected filename
 const COMMITTEES_PATH  = path.join(__dirname, '..', 'public', 'reps-committees.json');
-const VOTES_PATH       = path.join(__dirname, '..', 'public', 'votes-reps.json');
+const VOTES_PATH       = path.join(__dirname, '..', 'public', 'representatives-votes.json');       // ✅ corrected filename
 const MISCONDUCT_PATH  = path.join(__dirname, '..', 'public', 'misconduct.yaml');
 const STREAKS_PATH     = path.join(__dirname, '..', 'public', 'streaks-reps.json');
 
@@ -67,67 +67,6 @@ const merged = rankings.map(rep => {
 
   // Legislation
   if (legislationMap[id]) {
-    rep.sponsoredBills            = legislationMap[id].sponsoredBills;
-    rep.cosponsoredBills          = legislationMap[id].cosponsoredBills;
-    rep.becameLawBills            = legislationMap[id].becameLawBills;
-    rep.becameLawCosponsoredBills = legislationMap[id].becameLawCosponsoredBills;
-  }
-
-  // Committees
-  if (committeesMap[id]) {
-    rep.committees = committeesMap[id].committees || [];
-  }
-
-  // Votes
-  if (votesMap[id]) {
-    rep.yeaVotes         = votesMap[id].yeaVotes;
-    rep.nayVotes         = votesMap[id].nayVotes;
-    rep.missedVotes      = votesMap[id].missedVotes;
-    rep.totalVotes       = votesMap[id].totalVotes;
-    rep.participationPct = votesMap[id].participationPct;
-    rep.missedVotePct    = votesMap[id].missedVotePct;
-  } else {
-    rep.yeaVotes = 0;
-    rep.nayVotes = 0;
-    rep.missedVotes = 0;
-    rep.totalVotes = 0;
-    rep.participationPct = 0;
-    rep.missedVotePct = 0;
-  }
-
-  // Misconduct
-  if (misconductMap[id]) {
-    rep.misconductCount = misconductMap[id].misconductCount ?? 0;
-    rep.misconductTags  = misconductMap[id].misconductTags ?? [];
-  } else {
-    rep.misconductCount = 0;
-    rep.misconductTags  = [];
-  }
-
-  // Streaks
-  if (streaksMap[id]) {
-    rep.streaks = streaksMap[id].streaks || { activity: 0, voting: 0, leader: 0 };
-    rep.streak  = streaksMap[id].streak || 0;
-  } else {
-    rep.streaks = rep.streaks || { activity: 0, voting: 0, leader: 0 };
-    rep.streak  = rep.streak || 0;
-  }
-
-  // Metrics snapshot
-  rep.metrics = rep.metrics || { lastTotals: {} };
-  rep.metrics.lastTotals = {
-    sponsoredBills: rep.sponsoredBills || 0,
-    cosponsoredBills: rep.cosponsoredBills || 0,
-    yeaVotes: rep.yeaVotes || 0,
-    nayVotes: rep.nayVotes || 0,
-    missedVotes: rep.missedVotes || 0,
-    totalVotes: rep.totalVotes || 0
-  };
-
-  rep.lastUpdated = new Date().toISOString();
-  return rep;
-});
-
-// Write merged rankings
-fs.writeFileSync(RANKINGS_PATH, JSON.stringify(merged, null, 2));
-console.log(`Finished merge: ${merged.length} representatives updated in representatives-rankings.json`);
+    rep.sponsoredBills            = legislationMap[id].sponsoredBills || 0;
+    rep.cosponsoredBills          = legislationMap[id].cosponsoredBills || 0;
+    rep
