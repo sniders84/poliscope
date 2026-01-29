@@ -8,17 +8,30 @@ const yaml = require("js-yaml");
 // Paths
 const INFO_PATH        = path.join(__dirname, "..", "public", "senators.json");
 const RANKINGS_PATH    = path.join(__dirname, "..", "public", "senators-rankings.json");
-const LEGISLATION_PATH = path.join(__dirname, "..", "public", "senators-legislation.json"); // ✅ corrected filename
+const LEGISLATION_PATH = path.join(__dirname, "..", "public", "senators-legislation.json");
 const COMMITTEES_PATH  = path.join(__dirname, "..", "public", "senators-committees.json");
-const VOTES_PATH       = path.join(__dirname, "..", "public", "senators-votes.json");       // ✅ corrected filename
+const VOTES_PATH       = path.join(__dirname, "..", "public", "senators-votes.json");
 const MISCONDUCT_PATH  = path.join(__dirname, "..", "public", "misconduct.yaml");
-const STREAKS_PATH     = path.join(__dirname, "..", "public", "senators-streaks.json");     // ✅ new streaks file
+const STREAKS_PATH     = path.join(__dirname, "..", "public", "senators-streaks.json");
+
+// Safe JSON loader
+function safeLoadJSON(filePath, fallback = []) {
+  if (!fs.existsSync(filePath)) return fallback;
+  try {
+    const raw = fs.readFileSync(filePath, "utf8").trim();
+    return raw ? JSON.parse(raw) : fallback;
+  } catch (e) {
+    console.warn(`Failed to parse ${path.basename(filePath)} — using fallback:`, e.message);
+    return fallback;
+  }
+}
 
 // Load inputs
-const senatorsInfo = JSON.parse(fs.readFileSync(INFO_PATH, "utf8"));
-const legislation  = JSON.parse(fs.readFileSync(LEGISLATION_PATH, "utf8"));
-const committees   = JSON.parse(fs.readFileSync(COMMITTEES_PATH, "utf8"));
-const votes        = JSON.parse(fs.readFileSync(VOTES_PATH, "utf8"));
+const senatorsInfo = safeLoadJSON(INFO_PATH, []);
+const legislation  = safeLoadJSON(LEGISLATION_PATH, []);
+const committees   = safeLoadJSON(COMMITTEES_PATH, []);
+const votes        = safeLoadJSON(VOTES_PATH, []);
+const streaks      = safeLoadJSON(STREAKS_PATH, []);
 
 let misconduct = [];
 if (fs.existsSync(MISCONDUCT_PATH)) {
@@ -32,14 +45,6 @@ if (fs.existsSync(MISCONDUCT_PATH)) {
   }
 } else {
   console.log("misconduct.yaml not found — misconduct remains empty");
-}
-
-let streaks = [];
-if (fs.existsSync(STREAKS_PATH)) {
-  streaks = JSON.parse(fs.readFileSync(STREAKS_PATH, "utf8"));
-  console.log(`Loaded streak data for ${streaks.length} senators`);
-} else {
-  console.log("senators-streaks.json not found — streaks remain empty");
 }
 
 // Index helpers
@@ -62,7 +67,7 @@ const rankings = senatorsInfo.map(info => {
     district: info.district,
     party: info.party,
     office: info.office,
-    photo: info.photo || null, // ✅ always preserve photo
+    photo: info.photo || null,
 
     sponsoredBills: 0,
     cosponsoredBills: 0,
