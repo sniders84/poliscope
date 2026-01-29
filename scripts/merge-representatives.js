@@ -6,7 +6,7 @@ const path = require('path');
 const yaml = require('js-yaml');
 
 // Paths
-const INFO_PATH        = path.join(__dirname, '..', 'public', 'representatives.json'); // ✅ baseline info with photos
+const INFO_PATH        = path.join(__dirname, '..', 'public', 'housereps.json'); // ✅ baseline info with photos
 const RANKINGS_PATH    = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
 const LEGISLATION_PATH = path.join(__dirname, '..', 'public', 'legislation-reps.json');
 const COMMITTEES_PATH  = path.join(__dirname, '..', 'public', 'reps-committees.json');
