@@ -28,12 +28,6 @@ function safeLoadJSON(filePath, fallback) {
   }
 }
 
-function normalizeArray(input) {
-  if (Array.isArray(input)) return input;
-  if (input && typeof input === 'object') return Object.values(input);
-  return [];
-}
-
 // ---------- LOAD FILES ----------
 const senators    = safeLoadJSON(senatorsPath, []);
 console.log(`Loaded senators.json → ${senators.length} items`);
@@ -45,7 +39,7 @@ const legislation = safeLoadJSON(legislationPath, []);
 console.log(`Loaded legislation-senators.json → ${legislation.length} items`);
 
 const committeesRaw = safeLoadJSON(committeesPath, {});
-console.log(`Loaded senators-committee-membership-current.json → ${Array.isArray(committeesRaw) ? committeesRaw.length : 'object items'}`);
+console.log(`Loaded senators-committee-membership-current.json`);
 
 const votesRaw   = safeLoadJSON(votesPath, {});
 console.log(`Loaded senators-votes.json`);
@@ -57,21 +51,36 @@ const streaksRaw  = safeLoadJSON(streaksPath, {});
 console.log(`Loaded senators-streaks.json`);
 
 // ---------- NORMALIZE STRUCTURES ----------
-const committeesArr = normalizeArray(committeesRaw);
-const committeesMap = Object.fromEntries(
-  committeesArr.map(c => [c.bioguideId, c])
-);
+function buildCommitteesMap(committeesObj) {
+  const map = {};
+  for (const [committeeCode, members] of Object.entries(committeesObj)) {
+    for (const m of members) {
+      const id = m.bioguide;
+      if (!map[id]) map[id] = { committees: [] };
+      map[id].committees.push({
+        committeeCode,
+        committeeName: committeeCode,
+        role: m.title || 'Member',
+        rank: m.rank,
+        party: m.party
+      });
+    }
+  }
+  return map;
+}
+
+const committeesMap = buildCommitteesMap(committeesRaw);
 
 const votesMap = Array.isArray(votesRaw)
-  ? Object.fromEntries(votesRaw.map(v => [v.bioguideId, v]))
-  : votesRaw;
+  ? Object.fromEntries(votesRaw.map(v => [v.bioguideId, v.votes]))
+  : Object.fromEntries(Object.values(votesRaw).map(v => [v.bioguideId, v.votes]));
 
 const streaksMap = Array.isArray(streaksRaw)
   ? Object.fromEntries(streaksRaw.map(s => [s.bioguideId, s]))
   : streaksRaw;
 
 const legislationMap = Object.fromEntries(
-  legislation.map(l => [l.bioguideId, l])
+  legislation.map(l => [l.bioguideID || l.bioguideId, l])
 );
 
 const misconductMap = Object.fromEntries(
@@ -115,8 +124,12 @@ rankings = rankings.map(r => {
     misconductTags: mis.tags || [],
 
     // Streaks
-    streak: str.streak || 0,
-    streaks: str.streaks || {},
+    streaks: {
+      activity: str.activity || 0,
+      voting: str.voting || 0,
+      leader: str.leader || 0
+    },
+    streak: Math.max(str.activity || 0, str.voting || 0, str.leader || 0),
 
     lastUpdated: new Date().toISOString()
   };
