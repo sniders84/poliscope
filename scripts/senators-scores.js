@@ -1,6 +1,7 @@
 // scripts/senators-scores.js
 // Purpose: Compute scores and add vote stats to senators-rankings.json (overwrites it)
 // Amendments removed, misconduct penalty added, streak field preserved
+// Uses rubric weights with committee leadership > membership
 
 const fs = require('fs');
 const path = require('path');
@@ -20,22 +21,21 @@ try {
 
 const WEIGHTS = {
   bills: {
-    sponsoredBills: 2,
-    cosponsoredBills: 1,
-    becameLawBills: 5,
-    becameLawCosponsoredBills: 3
-  },
-  votes: {
-    participationBonus: 2,      // per 100 votes cast
-    penaltyMissedPct: -10       // subtract if missed > 10%
+    sponsoredBills: 1.2,
+    cosponsoredBills: 0.6,
+    becameLawBills: 6.0,
+    becameLawCosponsoredBills: 3.0
   },
   committees: {
-    Chair: 5,
-    RankingMember: 4,
-    Member: 1
+    Chair: 4.0,            // heavier weight for leadership
+    RankingMember: 4.0,    // treat Ranking Member same as Chair
+    Member: 2.0            // lighter weight for membership
+  },
+  votes: {
+    missedVotePenalty: -0.5 // penalty per missed vote
   },
   misconduct: {
-    penaltyPerInfraction: -10   // subtract 10 points per misconductCount
+    penaltyPerInfraction: -10.0 // penalty per misconductCount
   }
 };
 
@@ -49,20 +49,14 @@ senators = senators.map(s => {
 
   // Committees
   for (const c of s.committees || []) {
-    if (c.role === 'Chair') score += WEIGHTS.committees.Chair;
-    else if (c.role === 'Ranking Member') score += WEIGHTS.committees.RankingMember;
+    if (/chair/i.test(c.role)) score += WEIGHTS.committees.Chair;
+    else if (/ranking/i.test(c.role)) score += WEIGHTS.committees.RankingMember;
     else score += WEIGHTS.committees.Member;
   }
 
   // Votes
-  const totalVotes = s.totalVotes || 0;
-  const missedPct = s.missedVotePct || 0;
-  if (totalVotes > 0) {
-    score += Math.floor(totalVotes / 100) * WEIGHTS.votes.participationBonus;
-  }
-  if (missedPct > 10) {
-    score += WEIGHTS.votes.penaltyMissedPct;
-  }
+  const missedVotes = s.missedVotes || 0;
+  score += missedVotes * WEIGHTS.votes.missedVotePenalty;
 
   // Misconduct penalty
   const misconductCount = s.misconductCount || 0;
@@ -70,13 +64,24 @@ senators = senators.map(s => {
     score += misconductCount * WEIGHTS.misconduct.penaltyPerInfraction;
   }
 
+  // Clamp to >= 0
+  if (score < 0) score = 0;
+
   // Ensure vote stats exist
   if (!s.yeaVotes) s.yeaVotes = 0;
   if (!s.nayVotes) s.nayVotes = 0;
   if (!s.missedVotes) s.missedVotes = 0;
   if (!s.totalVotes) s.totalVotes = 0;
-  if (!s.participationPct) s.participationPct = totalVotes > 0 ? (1 - missedPct / 100) * 100 : 100;
-  if (!s.missedVotePct) s.missedVotePct = missedPct;
+  if (!s.participationPct) {
+    s.participationPct = s.totalVotes > 0
+      ? (1 - (s.missedVotes / s.totalVotes)) * 100
+      : 100;
+  }
+  if (!s.missedVotePct) {
+    s.missedVotePct = s.totalVotes > 0
+      ? (s.missedVotes / s.totalVotes) * 100
+      : 0;
+  }
 
   return {
     ...s,
@@ -88,4 +93,4 @@ senators = senators.map(s => {
 });
 
 fs.writeFileSync(rankingsPath, JSON.stringify(senators, null, 2));
-console.log(`Updated senators-rankings.json with scores, vote stats, and misconduct penalties (${senators.length} records)`);
+console.log(`Updated senators-rankings.json with rubric-based scores, vote stats, and misconduct penalties (${senators.length} records)`);
