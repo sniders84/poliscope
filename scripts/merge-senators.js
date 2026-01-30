@@ -1,5 +1,6 @@
 // scripts/merge-senators.js
 // Enriches senators-rankings.json in-place, pulls photos from senators.json
+// Cleans out unwanted amendment fields
 
 const fs = require('fs');
 const path = require('path');
@@ -10,8 +11,8 @@ const DIR = path.join(__dirname, '..', 'public');
 const paths = {
   rankings:    path.join(DIR, 'senators-rankings.json'),
   info:        path.join(DIR, 'senators.json'),
-  legislation: path.join(DIR, 'senators-legislation.json'),
-  committees:  path.join(DIR, 'senators-committees.json'),
+  legislation: path.join(DIR, 'legislation-senators.json'),
+  committees:  path.join(DIR, 'senators-committee-membership-current.json'),
   votes:       path.join(DIR, 'senators-votes.json'),
   misconduct:  path.join(DIR, 'misconduct.yaml'),
   streaks:     path.join(DIR, 'senators-streaks.json'),
@@ -24,7 +25,7 @@ function loadJson(p, def = []) {
   }
   try {
     const data = JSON.parse(fs.readFileSync(p, 'utf8'));
-    console.log(`Loaded \( {path.basename(p)} ( \){Array.isArray(data) ? data.length : 'obj'})`);
+    console.log(`Loaded ${path.basename(p)} (${Array.isArray(data) ? data.length : 'obj'})`);
     return data;
   } catch (e) {
     console.error(`Parse fail ${path.basename(p)}: ${e.message}`);
@@ -44,7 +45,7 @@ function loadYaml(p) {
   }
 }
 
-// Load base (existing rankings if any, fallback to empty)
+// Load base
 let rankings = loadJson(paths.rankings, []);
 const info = loadJson(paths.info, []);
 const legislation = loadJson(paths.legislation, []);
@@ -53,32 +54,10 @@ const votes = loadJson(paths.votes, []);
 const misconduct = loadYaml(paths.misconduct);
 const streaks = loadJson(paths.streaks, []);
 
-// If rankings is empty, bootstrap from info
-if (rankings.length === 0 && info.length > 0) {
-  console.log('Bootstrapping senators-rankings from senators.json');
-  rankings = info.map(s => ({
-    slug: s.slug,
-    bioguideId: s.bioguideId,
-    govtrackId: s.govtrackId,
-    name: s.name,
-    state: s.state,
-    party: s.party,
-    photo: s.photo || null,
-    // defaults for everything else
-    sponsoredBills: 0, cosponsoredBills: 0, becameLawBills: 0, becameLawCosponsoredBills: 0,
-    committees: [], misconductCount: 0, misconductTags: [], 
-    yeaVotes: 0, nayVotes: 0, missedVotes: 0, totalVotes: 0,
-    participationPct: 0, missedVotePct: 0,
-    streaks: { activity: 0, voting: 0, leader: 0 }, streak: 0,
-    powerScore: 0, metrics: { lastTotals: {} },
-    lastUpdated: new Date().toISOString(),
-  }));
-}
-
 // Maps
 const infoMap = new Map(info.map(i => [i.bioguideId, i]));
 const legMap = new Map(legislation.map(l => [l.bioguideId, l]));
-const commMap = new Map(committees.map(c => [c.bioguideId, c]));
+const commMap = new Map(committees.map(c => [c.bioguide, c]));
 const voteMap = new Map(votes.map(v => [v.bioguideId, v]));
 const mcMap = new Map(misconduct.map(m => [m.bioguideId, m]));
 const streakMap = new Map(streaks.map(s => [s.bioguideId, s]));
@@ -95,7 +74,6 @@ rankings = rankings.map(sen => {
     sen.party = base.party ?? sen.party;
     sen.slug = base.slug ?? sen.slug;
     sen.govtrackId = base.govtrackId ?? sen.govtrackId;
-    // FORCE photo update from source of truth
     sen.photo = base.photo || sen.photo || null;
   }
 
@@ -110,7 +88,7 @@ rankings = rankings.map(sen => {
   const c = commMap.get(id);
   if (c?.committees) sen.committees = c.committees;
 
-  const v = voteMap.get(id);
+  const v = voteMap.get(id)?.votes;
   if (v) {
     Object.assign(sen, {
       yeaVotes: v.yeaVotes ?? 0,
@@ -134,19 +112,10 @@ rankings = rankings.map(sen => {
     sen.streak = str.streak ?? sen.streak ?? 0;
   }
 
+  // Metrics snapshot
   sen.metrics = sen.metrics || { lastTotals: {} };
   sen.metrics.lastTotals = {
     sponsoredBills: sen.sponsoredBills ?? 0,
     cosponsoredBills: sen.cosponsoredBills ?? 0,
     yeaVotes: sen.yeaVotes ?? 0,
-    nayVotes: sen.nayVotes ?? 0,
-    missedVotes: sen.missedVotes ?? 0,
-    totalVotes: sen.totalVotes ?? 0,
-  };
-
-  sen.lastUpdated = new Date().toISOString();
-  return sen;
-});
-
-fs.writeFileSync(paths.rankings, JSON.stringify(rankings, null, 2));
-console.log(`Senate merge: ${rankings.length} senators updated (photos forced from senators.json)`);
+    nayVotes: sen.nay
