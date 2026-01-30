@@ -77,9 +77,9 @@ function baseRecord(sen) {
 
     // Streaks (multi-dimension)
     streaks: {
-      activity: 0, // consecutive weeks with legislative activity
-      voting: 0,   // consecutive weeks with full participation (no missed votes)
-      leader: 0    // consecutive weeks ranked #1 in powerScore
+      activity: 0,
+      voting: 0,
+      leader: 0
     },
 
     // Metrics snapshot for weekly diffs
@@ -95,7 +95,7 @@ function baseRecord(sen) {
     },
 
     // Legacy + scoring
-    streak: 0,        // legacy field; kept for backward compatibility
+    streak: 0,
     powerScore: 0,
     lastUpdated: new Date().toISOString()
   };
