@@ -1,20 +1,20 @@
 // scripts/update-streaks.js
 // Purpose: Update activity, voting, and leader streaks for Senators and Representatives
-// Compares current totals against last snapshot and increments/resets streaks
+// Ensures streaks.json files are populated and defaults to 0 if missing
 
 const fs = require('fs');
 const path = require('path');
 
 const FILES = [
-  { label: 'Senators', path: path.join(__dirname, '..', 'public', 'senators-rankings.json') },
-  { label: 'Representatives', path: path.join(__dirname, '..', 'public', 'representatives-rankings.json') }
+  { label: 'Senators', path: path.join(__dirname, '..', 'public', 'senators-rankings.json'), streakFile: path.join(__dirname, '..', 'public', 'senators-streaks.json') },
+  { label: 'Representatives', path: path.join(__dirname, '..', 'public', 'representatives-rankings.json'), streakFile: path.join(__dirname, '..', 'public', 'representatives-streaks.json') }
 ];
 
 function num(v) {
   return (typeof v === 'number' && !Number.isNaN(v)) ? v : 0;
 }
 
-function updateFile(filePath, label) {
+function updateFile(filePath, label, streakFile) {
   let rankings;
   try {
     rankings = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
@@ -28,6 +28,8 @@ function updateFile(filePath, label) {
   const leaderBioguide = sortedByPower[0]?.bioguideId || null;
 
   let updated = 0;
+  const streaksOutput = [];
+
   for (const person of rankings) {
     person.streaks = person.streaks || { activity: 0, voting: 0, leader: 0 };
     person.metrics = person.metrics || { lastTotals: {} };
@@ -50,26 +52,17 @@ function updateFile(filePath, label) {
     const prevTotal = num(last.totalVotes);
 
     // ---- Activity streak ----
-    const newActivity =
-      (sponsored > prevSponsored) ||
-      (cosponsored > prevCosponsored);
-
-    if (newActivity) {
-      person.streaks.activity += 1;
-    } else {
-      person.streaks.activity = 0;
-    }
+    const newActivity = (sponsored > prevSponsored) || (cosponsored > prevCosponsored);
+    person.streaks.activity = newActivity ? person.streaks.activity + 1 : 0;
 
     // ---- Voting streak ----
     const newTotalVotes = total - prevTotal;
     const newMissedVotes = missed - prevMissed;
-
     if (newTotalVotes > 0 && newMissedVotes === 0) {
       person.streaks.voting += 1;
     } else if (newTotalVotes > 0 && newMissedVotes > 0) {
       person.streaks.voting = 0;
     }
-    // If no new votes, leave voting streak unchanged
 
     // ---- Leader streak ----
     if (leaderBioguide && person.bioguideId === leaderBioguide) {
@@ -97,11 +90,19 @@ function updateFile(filePath, label) {
 
     person.lastUpdated = new Date().toISOString();
     updated++;
+
+    streaksOutput.push({
+      bioguideId: person.bioguideId,
+      activity: person.streaks.activity,
+      voting: person.streaks.voting,
+      leader: person.streaks.leader
+    });
   }
 
   fs.writeFileSync(filePath, JSON.stringify(rankings, null, 2));
+  fs.writeFileSync(streakFile, JSON.stringify(streaksOutput, null, 2));
   console.log(`Streaks updated for ${updated} ${label}`);
 }
 
 // Run for both Senators and Representatives
-FILES.forEach(f => updateFile(f.path, f.label));
+FILES.forEach(f => updateFile(f.path, f.label, f.streakFile));
