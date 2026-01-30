@@ -118,4 +118,20 @@ rankings = rankings.map(sen => {
     sponsoredBills: sen.sponsoredBills ?? 0,
     cosponsoredBills: sen.cosponsoredBills ?? 0,
     yeaVotes: sen.yeaVotes ?? 0,
-    nayVotes: sen.nay
+    nayVotes: sen.nayVotes ?? 0,
+    missedVotes: sen.missedVotes ?? 0,
+    totalVotes: sen.totalVotes ?? 0,
+  };
+
+  // Strip unwanted amendment fields if present
+  delete sen.sponsoredAmendments;
+  delete sen.cosponsoredAmendments;
+  delete sen.becameLawAmendments;
+  delete sen.becameLawCosponsoredAmendments;
+
+  sen.lastUpdated = new Date().toISOString();
+  return sen;
+});
+
+fs.writeFileSync(paths.rankings, JSON.stringify(rankings, null, 2));
+console.log(`Senate merge: ${rankings.length} senators updated (photos forced from senators.json)`);
