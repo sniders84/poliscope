@@ -3,7 +3,7 @@ name: "Update Senate Data"
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 2 * * *" # run nightly at 2 AM UTC
+    - cron: "0 5 * * *" # daily at 5 AM UTC (~12 AM EST)
 
 permissions:
   contents: write
@@ -12,53 +12,30 @@ jobs:
   update-senate:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: "20"
-
-      - name: Install dependencies
-        run: npm install   # use install instead of ci to avoid lockfile mismatch
-
-      - name: Bootstrap senators
-        run: node scripts/bootstrap-senators.js
-
-      - name: Scrape legislation (119th Congress)
-        env:
+      - run: npm install
+      - env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: node scripts/legislation-scraper.js
-
-      - name: Scrape committees
-        env:
+      - env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: node scripts/committee-scraper.js
-
-      - name: Scrape votes
-        env:
+      - env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: node scripts/votes-scraper.js
-
-      - name: Merge senator data
-        run: node scripts/merge-senators.js
-
-      - name: Scrape misconduct (Senate)
-        run: node scripts/misconduct-scraper.js senate
-
-      - name: Generate scores
-        run: node scripts/senators-scores.js
-
-      - name: Update streaks (Senate + House)
-        run: node scripts/update-streaks.js
-
-      - name: Commit and push changes
-        uses: stefanzweifel/git-auto-commit-action@v5
+      - run: node scripts/merge-senators.js
+      - run: node scripts/misconduct-scraper.js senate
+      - run: node scripts/senators-scores.js
+      - run: node scripts/update-streaks.js
+      - name: Sync with remote main
+        run: git pull --rebase origin main
+      - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Automated Senate update (119th Congress)"
           file_pattern: public/senators-*.json
           commit_user_name: github-actions[bot]
           commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
           push_options: "--force-with-lease"
-          skip_fetch: false   # ✅ fetch latest main before pushing
