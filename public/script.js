@@ -3218,20 +3218,27 @@ document.getElementById('rate-me-btn').onclick = function() {
     return `<span class="${cls}">${Number.isFinite(value) ? value.toFixed(1) : '0.0'}</span>`;
   }
 
-  // Helper: render streak badges
-  function renderStreakBadges(streaks) {
-    const badges = [];
-    if (streaks?.activity > 0) {
-      badges.push(`🔥 ${streaks.activity} weeks activity streak`);
-    }
-    if (streaks?.voting > 0) {
-      badges.push(`🗳 ${streaks.voting} weeks voting streak`);
-    }
-    if (streaks?.leader > 0) {
-      badges.push(`👑 ${streaks.leader} weeks as Leader`);
-    }
-    return badges;
+ // Helper: render streak badges
+function renderStreakBadges(streaks) {
+  const badges = [];
+
+  if (streaks?.activity > 0) {
+    const unit = streaks.activity === 1 ? 'week' : 'weeks';
+    badges.push(`🔥 ${streaks.activity} ${unit} activity streak`);
   }
+
+  if (streaks?.voting > 0) {
+    const unit = streaks.voting === 1 ? 'week' : 'weeks';
+    badges.push(`🗳 ${streaks.voting} ${unit} voting streak`);
+  }
+
+  if (streaks?.leader > 0) {
+    const unit = streaks.leader === 1 ? 'week' : 'weeks';
+    badges.push(`👑 ${streaks.leader} ${unit} as Leader`);
+  }
+
+  return badges;
+}
 
   // Scorecard modal with photo, name, state/district/party, and breakdown
   function showScorecard(person, breakdown, composite) {
