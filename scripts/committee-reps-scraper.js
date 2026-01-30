@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 
 const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
-const COMMITTEES_PATH = path.join(__dirname, '..', 'public', 'house-committees-current.json');
+const COMMITTEES_PATH = path.join(__dirname, '..', 'public', 'representatives-committees.json');
 
 function ensureSchema(rep) {
   // Votes
@@ -19,12 +19,8 @@ function ensureSchema(rep) {
   // Legislation
   rep.sponsoredBills ??= 0;
   rep.cosponsoredBills ??= 0;
-  rep.sponsoredAmendments ??= 0;
-  rep.cosponsoredAmendments ??= 0;
   rep.becameLawBills ??= 0;
   rep.becameLawCosponsoredBills ??= 0;
-  rep.becameLawAmendments ??= 0;
-  rep.becameLawCosponsoredAmendments ??= 0;
 
   // Committees
   rep.committees = Array.isArray(rep.committees) ? rep.committees : [];
@@ -33,6 +29,12 @@ function ensureSchema(rep) {
   rep.rawScore ??= 0;
   rep.score ??= 0;
   rep.scoreNormalized ??= 0;
+
+  // Strip unwanted amendment fields if present
+  delete rep.sponsoredAmendments;
+  delete rep.cosponsoredAmendments;
+  delete rep.becameLawAmendments;
+  delete rep.becameLawCosponsoredAmendments;
 
   return rep;
 }
