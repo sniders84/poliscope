@@ -1,137 +1,127 @@
 // scripts/merge-senators.js
-// Enriches senators-rankings.json in-place, pulls photos from senators.json
-// Cleans out unwanted amendment fields
+// Purpose: Merge all Senate data sources into senators-rankings.json
+// Handles empty/truncated JSON files, object-vs-array formats, and preserves streaks
 
 const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
 
-const DIR = path.join(__dirname, '..', 'public');
+const senatorsPath     = path.join(__dirname, '../public/senators.json');
+const rankingsPath     = path.join(__dirname, '../public/senators-rankings.json');
+const legislationPath  = path.join(__dirname, '../public/legislation-senators.json');
+const committeesPath   = path.join(__dirname, '../public/senators-committee-membership-current.json');
+const votesPath        = path.join(__dirname, '../public/senators-votes.json');
+const misconductPath   = path.join(__dirname, '../public/misconduct.yaml');
+const streaksPath      = path.join(__dirname, '../public/senators-streaks.json');
 
-const paths = {
-  rankings:    path.join(DIR, 'senators-rankings.json'),
-  info:        path.join(DIR, 'senators.json'),
-  legislation: path.join(DIR, 'legislation-senators.json'),
-  committees:  path.join(DIR, 'senators-committee-membership-current.json'),
-  votes:       path.join(DIR, 'senators-votes.json'),
-  misconduct:  path.join(DIR, 'misconduct.yaml'),
-  streaks:     path.join(DIR, 'senators-streaks.json'),
-};
+console.log('Starting merge-senators.js');
 
-function loadJson(p, def = []) {
-  if (!fs.existsSync(p)) {
-    console.log(`No ${path.basename(p)} → empty`);
-    return def;
-  }
+// ---------- SAFE LOADERS ----------
+function safeLoadJSON(filePath, fallback) {
   try {
-    const data = JSON.parse(fs.readFileSync(p, 'utf8'));
-    console.log(`Loaded ${path.basename(p)} (${Array.isArray(data) ? data.length : 'obj'})`);
-    return data;
-  } catch (e) {
-    console.error(`Parse fail ${path.basename(p)}: ${e.message}`);
-    return def;
+    const raw = fs.readFileSync(filePath, 'utf-8').trim();
+    if (!raw) return fallback;
+    return JSON.parse(raw);
+  } catch (err) {
+    console.warn(`Failed to parse ${path.basename(filePath)}: ${err.message}`);
+    return fallback;
   }
 }
 
-function loadYaml(p) {
-  if (!fs.existsSync(p)) return [];
-  try {
-    const data = yaml.load(fs.readFileSync(p, 'utf8')) || [];
-    console.log(`misconduct: ${Array.isArray(data) ? data.length : 0} entries`);
-    return Array.isArray(data) ? data : [];
-  } catch (e) {
-    console.warn(`misconduct parse fail: ${e}`);
-    return [];
-  }
+function normalizeArray(input) {
+  if (Array.isArray(input)) return input;
+  if (input && typeof input === 'object') return Object.values(input);
+  return [];
 }
 
-// Load base
-let rankings = loadJson(paths.rankings, []);
-const info = loadJson(paths.info, []);
-const legislation = loadJson(paths.legislation, []);
-const committees = loadJson(paths.committees, []);
-const votes = loadJson(paths.votes, []);
-const misconduct = loadYaml(paths.misconduct);
-const streaks = loadJson(paths.streaks, []);
+// ---------- LOAD FILES ----------
+const senators    = safeLoadJSON(senatorsPath, []);
+console.log(`Loaded senators.json → ${senators.length} items`);
 
-// Maps
-const infoMap = new Map(info.map(i => [i.bioguideId, i]));
-const legMap = new Map(legislation.map(l => [l.bioguideId, l]));
-const commMap = new Map(committees.map(c => [c.bioguide, c]));
-const voteMap = new Map(votes.map(v => [v.bioguideId, v]));
-const mcMap = new Map(misconduct.map(m => [m.bioguideId, m]));
-const streakMap = new Map(streaks.map(s => [s.bioguideId, s]));
+let rankings      = safeLoadJSON(rankingsPath, []);
+console.log(`Loaded senators-rankings.json → ${rankings.length} items`);
 
-// Enrich
-rankings = rankings.map(sen => {
-  const id = sen.bioguideId;
-  if (!id) return sen;
+const legislation = safeLoadJSON(legislationPath, []);
+console.log(`Loaded legislation-senators.json → ${legislation.length} items`);
 
-  const base = infoMap.get(id);
-  if (base) {
-    sen.name = base.name ?? sen.name;
-    sen.state = base.state ?? sen.state;
-    sen.party = base.party ?? sen.party;
-    sen.slug = base.slug ?? sen.slug;
-    sen.govtrackId = base.govtrackId ?? sen.govtrackId;
-    sen.photo = base.photo || sen.photo || null;
-  }
+const committeesRaw = safeLoadJSON(committeesPath, {});
+console.log(`Loaded senators-committee-membership-current.json → ${Array.isArray(committeesRaw) ? committeesRaw.length : 'object items'}`);
 
-  const l = legMap.get(id);
-  if (l) {
-    sen.sponsoredBills = l.sponsoredBills ?? sen.sponsoredBills ?? 0;
-    sen.cosponsoredBills = l.cosponsoredBills ?? sen.cosponsoredBills ?? 0;
-    sen.becameLawBills = l.becameLawBills ?? sen.becameLawBills ?? 0;
-    sen.becameLawCosponsoredBills = l.becameLawCosponsoredBills ?? sen.becameLawCosponsoredBills ?? 0;
-  }
+const votesRaw   = safeLoadJSON(votesPath, {});
+console.log(`Loaded senators-votes.json`);
 
-  const c = commMap.get(id);
-  if (c?.committees) sen.committees = c.committees;
+const misconduct  = yaml.load(fs.readFileSync(misconductPath, 'utf-8'));
+console.log(`Loaded misconduct.yaml → ${misconduct.length} entries`);
 
-  const v = voteMap.get(id)?.votes;
-  if (v) {
-    Object.assign(sen, {
-      yeaVotes: v.yeaVotes ?? 0,
-      nayVotes: v.nayVotes ?? 0,
-      missedVotes: v.missedVotes ?? 0,
-      totalVotes: v.totalVotes ?? 0,
-      participationPct: v.participationPct ?? 0,
-      missedVotePct: v.missedVotePct ?? 0,
-    });
-  }
+const streaksRaw  = safeLoadJSON(streaksPath, {});
+console.log(`Loaded senators-streaks.json`);
 
-  const mc = mcMap.get(id);
-  if (mc) {
-    sen.misconductCount = mc.misconductCount ?? 0;
-    sen.misconductTags = Array.isArray(mc.misconductTags) ? mc.misconductTags : [];
-  }
+// ---------- NORMALIZE STRUCTURES ----------
+const committeesArr = normalizeArray(committeesRaw);
+const committeesMap = Object.fromEntries(
+  committeesArr.map(c => [c.bioguideId, c])
+);
 
-  const str = streakMap.get(id);
-  if (str) {
-    sen.streaks = str.streaks ?? sen.streaks ?? { activity: 0, voting: 0, leader: 0 };
-    sen.streak = str.streak ?? sen.streak ?? 0;
-  }
+const votesMap = Array.isArray(votesRaw)
+  ? Object.fromEntries(votesRaw.map(v => [v.bioguideId, v]))
+  : votesRaw;
 
-  // Metrics snapshot
-  sen.metrics = sen.metrics || { lastTotals: {} };
-  sen.metrics.lastTotals = {
-    sponsoredBills: sen.sponsoredBills ?? 0,
-    cosponsoredBills: sen.cosponsoredBills ?? 0,
-    yeaVotes: sen.yeaVotes ?? 0,
-    nayVotes: sen.nayVotes ?? 0,
-    missedVotes: sen.missedVotes ?? 0,
-    totalVotes: sen.totalVotes ?? 0,
+const streaksMap = Array.isArray(streaksRaw)
+  ? Object.fromEntries(streaksRaw.map(s => [s.bioguideId, s]))
+  : streaksRaw;
+
+const legislationMap = Object.fromEntries(
+  legislation.map(l => [l.bioguideId, l])
+);
+
+const misconductMap = Object.fromEntries(
+  misconduct.map(m => [m.bioguideId, m])
+);
+
+// ---------- MERGE ----------
+console.log(`Merging data into ${rankings.length} senators...`);
+
+rankings = rankings.map(r => {
+  const id = r.bioguideId;
+
+  const leg = legislationMap[id] || {};
+  const com = committeesMap[id] || { committees: [] };
+  const vot = votesMap[id] || {};
+  const mis = misconductMap[id] || {};
+  const str = streaksMap[id] || {};
+
+  return {
+    ...r,
+
+    // Legislation
+    sponsoredBills: leg.sponsoredBills || 0,
+    cosponsoredBills: leg.cosponsoredBills || 0,
+    becameLawBills: leg.becameLawBills || 0,
+    becameLawCosponsoredBills: leg.becameLawCosponsoredBills || 0,
+
+    // Committees
+    committees: com.committees || [],
+
+    // Votes
+    yeaVotes: vot.yeaVotes || 0,
+    nayVotes: vot.nayVotes || 0,
+    missedVotes: vot.missedVotes || 0,
+    totalVotes: vot.totalVotes || 0,
+    participationPct: vot.participationPct || 0,
+    missedVotePct: vot.missedVotePct || 0,
+
+    // Misconduct
+    misconductCount: mis.count || 0,
+    misconductTags: mis.tags || [],
+
+    // Streaks
+    streak: str.streak || 0,
+    streaks: str.streaks || {},
+
+    lastUpdated: new Date().toISOString()
   };
-
-  // Strip unwanted amendment fields if present
-  delete sen.sponsoredAmendments;
-  delete sen.cosponsoredAmendments;
-  delete sen.becameLawAmendments;
-  delete sen.becameLawCosponsoredAmendments;
-
-  sen.lastUpdated = new Date().toISOString();
-  return sen;
 });
 
-fs.writeFileSync(paths.rankings, JSON.stringify(rankings, null, 2));
-console.log(`Senate merge: ${rankings.length} senators updated (photos forced from senators.json)`);
+// ---------- WRITE OUTPUT ----------
+fs.writeFileSync(rankingsPath, JSON.stringify(rankings, null, 2));
+console.log(`Updated senators-rankings.json with merged data (${rankings.length} records)`);
