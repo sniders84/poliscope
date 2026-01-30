@@ -7398,3 +7398,21 @@ header .header-center .logo {
   display: inline-block !important;
   margin: 0 auto !important;
 }
+/* Leaderboard overrides */
+.leaderboard-row,
+.leaderboard-table tr {
+  background-color: #2e2e2e !important; /* uniform dark gray background */
+  color: #f0f0f0 !important;            /* light gray text for readability */
+}
+
+.leaderboard-row .streak-text,
+.leaderboard-table .streak-text {
+  color: #f0f0f0 !important;            /* ensure streak text is visible */
+  font-weight: 500;                     /* slightly bold for emphasis */
+}
+
+.leaderboard-row .streak-badge,
+.leaderboard-table .streak-badge {
+  color: gold !important;               /* crown or badge stands out */
+  font-weight: bold;
+}
