@@ -7408,11 +7408,11 @@ header .header-center .logo {
 .leaderboard-row .streak-text,
 .leaderboard-table .streak-text {
   color: #f0f0f0 !important;            /* ensure streak text is visible */
-  font-weight: 500;                     /* slightly bold for emphasis */
+  font-weight: 500;
 }
 
 .leaderboard-row .streak-badge,
 .leaderboard-table .streak-badge {
-  color: gold !important;               /* crown or badge stands out */
+  color: #000 !important;               /* crown or badge text in black */
   font-weight: bold;
 }
