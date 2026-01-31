@@ -3300,54 +3300,68 @@ function showScorecard(person, breakdown, composite) {
     </table>
   `;
 
-  // Append misconduct details inline with safe guards
-  if (person.misconductCount && person.misconductCount > 0) {
-    const tbody = breakdownEl.querySelector('tbody');
+ // Append misconduct details inline with safe guards
+if (person.misconductCount && person.misconductCount > 0) {
+  const tbody = breakdownEl.querySelector('tbody');
 
-    const misconductRow = document.createElement('tr');
-    misconductRow.innerHTML = `
-      <td>⚠️ Misconduct</td>
-      <td>${person.misconductCount} infractions</td>
-      <td>${WEIGHTS.misconductCount ? WEIGHTS.misconductCount.toFixed(1) : '0.0'}</td>
-      <td>${formatScore(person.misconductCount * (WEIGHTS.misconductCount || 0))}</td>
+  // Show the scored infractions row
+  const misconductRow = document.createElement('tr');
+  misconductRow.innerHTML = `
+    <td>⚠️ Misconduct</td>
+    <td>${person.misconductCount} infractions</td>
+    <td>${WEIGHTS.misconductCount ? WEIGHTS.misconductCount.toFixed(1) : '0.0'}</td>
+    <td>${formatScore(person.misconductCount * (WEIGHTS.misconductCount || 0))}</td>
+  `;
+  tbody.appendChild(misconductRow);
+
+  // Tags from YAML
+  if (Array.isArray(person.misconductTags) && person.misconductTags.length) {
+    const tagsRow = document.createElement('tr');
+    tagsRow.innerHTML = `
+      <td>Tags</td>
+      <td colspan="3">${person.misconductTags.join(', ')}</td>
     `;
-    tbody.appendChild(misconductRow);
-
-    if (Array.isArray(person.misconductTags) && person.misconductTags.length) {
-      const tagsRow = document.createElement('tr');
-      tagsRow.innerHTML = `
-        <td>Tags</td>
-        <td colspan="3">${person.misconductTags.join(', ')}</td>
-      `;
-      tbody.appendChild(tagsRow);
-    }
-
-    if (typeof person.misconductText === 'string' && person.misconductText.trim() !== '') {
-      const textRow = document.createElement('tr');
-      textRow.innerHTML = `
-        <td>Allegation</td>
-        <td colspan="3">${person.misconductText}</td>
-      `;
-      tbody.appendChild(textRow);
-    }
-
-    if (Array.isArray(person.misconductConsequences) && person.misconductConsequences.length) {
-      person.misconductConsequences.forEach(c => {
-        const consRow = document.createElement('tr');
-        consRow.innerHTML = `
-          <td>Consequence</td>
-          <td colspan="3">${c.date || ''} — ${c.body || ''}: ${c.action || ''}
-            ${c.link ? `<a href="${c.link}" target="_blank" rel="noopener noreferrer">[source]</a>` : ''}
-          </td>
-        `;
-        tbody.appendChild(consRow);
-      });
-    }
+    tbody.appendChild(tagsRow);
   }
 
-  const modal = document.getElementById('scorecardModal');
-  modal.classList.add('is-open', 'modal-dark');
-  modal.setAttribute('aria-hidden', 'false');
+  // Allegation from YAML
+  if (typeof person.allegation === 'string' && person.allegation.trim() !== '') {
+    const allegationRow = document.createElement('tr');
+    allegationRow.innerHTML = `
+      <td>Allegation</td>
+      <td colspan="3">${person.allegation}</td>
+    `;
+    tbody.appendChild(allegationRow);
+  }
+
+  // Detailed text from YAML
+  if (typeof person.text === 'string' && person.text.trim() !== '') {
+    const textRow = document.createElement('tr');
+    textRow.innerHTML = `
+      <td>Details</td>
+      <td colspan="3">${person.text}</td>
+    `;
+    tbody.appendChild(textRow);
+  }
+
+  // Consequences from YAML
+  if (Array.isArray(person.consequences) && person.consequences.length) {
+    person.consequences.forEach(c => {
+      const consRow = document.createElement('tr');
+      consRow.innerHTML = `
+        <td>Consequence</td>
+        <td colspan="3">${c.date || ''} — ${c.text || ''} 
+          ${c.link ? `<a href="${c.link}" target="_blank" rel="noopener noreferrer">[source]</a>` : ''}
+        </td>
+      `;
+      tbody.appendChild(consRow);
+    });
+  }
+}
+
+const modal = document.getElementById('scorecardModal');
+modal.classList.add('is-open', 'modal-dark');
+modal.setAttribute('aria-hidden', 'false');
 }
 
 // Merge rankings JSON with info JSON by slug
