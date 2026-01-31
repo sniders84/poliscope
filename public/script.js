@@ -3310,7 +3310,7 @@ document.getElementById('rate-me-btn').onclick = function() {
             .join(' ')}
         </td>
       `;
-            tableBody.appendChild(tr);
+          tableBody.appendChild(tr);
     });
 
     // Attach click handlers for scorecard modals
@@ -3336,7 +3336,7 @@ document.getElementById('rate-me-btn').onclick = function() {
 
   // Initial render
   render().catch(console.error);
-})();
+})();   // <-- closes the initRankingsRender IIFE
 
 // --- Global helpers for other tabs ---
 function renderOfficials(state, query) {
