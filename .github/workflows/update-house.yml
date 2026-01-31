@@ -6,11 +6,11 @@ on:
   workflow_dispatch:
 
 jobs:
-  merge-house:
+  update-house:
     runs-on: ubuntu-latest
     steps:
       - name: Set up job
-        run: echo "Starting House merge workflow"
+        run: echo "Starting House workflow"
 
       - name: Checkout repository
         uses: actions/checkout@v4
