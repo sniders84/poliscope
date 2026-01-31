@@ -1,6 +1,6 @@
 // scripts/votes-reps-scraper.js
-// Purpose: Scrape House roll call votes for the 119th Congress (2025 + 2026)
-// Fetches roll call XML from clerk.house.gov/Votes/YYYYNNN.xml
+// Purpose: Scrape House roll call votes for the 119th Congress (2025+)
+// Correct URL: https://clerk.house.gov/Votes/YYYYNNN (no /evs/, no zero-pad)
 const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
@@ -24,7 +24,13 @@ function ensureSchema(rep) {
   rep.totalVotes ??= 0;
   rep.participationPct ??= 0;
   rep.missedVotePct ??= 0;
-  // ... other defaults you had
+  rep.sponsoredBills ??= 0;
+  rep.cosponsoredBills ??= 0;
+  rep.becameLawBills ??= 0;
+  rep.committees ??= [];
+  rep.rawScore ??= 0;
+  rep.score ??= 0;
+  rep.scoreNormalized ??= 0;
   return rep;
 }
 
@@ -32,12 +38,14 @@ async function fetchRoll(year, roll) {
   const url = `https://clerk.house.gov/Votes/${year}${roll}`;
   log(`Fetching: ${url}`);
   try {
-    const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0 (compatible; PoliscopeBot/1.0)' } });
+    const res = await fetch(url, {
+      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; PoliscopeBot/1.0)' }
+    });
     log(`Status: ${res.status} ${res.statusText}`);
     if (!res.ok) return null;
     const text = await res.text();
-    if (!text.includes('<rollcall>')) {
-      log(`Warning: Response does not look like roll call XML`);
+    if (!text.includes('<rollcall-vote') && !text.includes('<recorded-vote')) {
+      log(`Warning: Response not valid roll call XML`);
       return null;
     }
     return text;
@@ -56,38 +64,41 @@ function parseVotes(xml) {
     return [];
   }
 
-  const voteRecords = doc?.rollcall?.vote?.['recorded-vote'] || doc?.rollcall?.['recorded-vote'] || [];
-  const arr = Array.isArray(voteRecords) ? voteRecords : [voteRecords];
+  let voteRecords = doc?.rollcallvote?.['recorded-vote'] || [];
+  if (!Array.isArray(voteRecords)) voteRecords = [voteRecords];
 
-  return arr.map(v => {
-    const leg = v?.legislator || {};
-    return {
-      bioguideId: leg.bioguideID || leg.bioguideId || '',
-      vote: (leg.vote || '').trim().toLowerCase()
-    };
-  }).filter(v => v.bioguideId);
+  return voteRecords
+    .filter(v => v?.legislator)
+    .map(v => {
+      const leg = v.legislator;
+      return {
+        bioguideId: (leg.bioguideID || leg.bioguideId || '').trim(),
+        vote: (v.vote || '').trim().toLowerCase()
+      };
+    })
+    .filter(v => v.bioguideId);
 }
 
 (async function main() {
   // Clear debug log
-  fs.writeFileSync(DEBUG_LOG, '');
+  fs.writeFileSync(DEBUG_LOG, '--- Votes Scraper Debug Log ---\n');
 
   let reps;
   try {
     reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureSchema);
   } catch (err) {
-    log(`Error reading ${OUT_PATH}: ${err.message}`);
+    log(`ERROR reading ${OUT_PATH}: ${err.message}`);
     return;
   }
 
-  const repMap = new Map(reps.map(r => [r.bioguideId?.toLowerCase(), r]));
-  log(`Loaded ${reps.length} representatives with Bioguide IDs`);
+  const repMap = new Map(reps.map(r => [r.bioguideId?.toLowerCase?.() || '', r]));
+  log(`Loaded ${reps.length} representatives`);
 
   let attached = 0;
   let totalVotesProcessed = 0;
 
   for (const year of SESSIONS) {
-    log(`Scanning House roll calls for ${year}...`);
+    log(`\nScanning House roll calls for ${year}...`);
     let consecutiveFails = 0;
     let roll = 1;
 
@@ -96,7 +107,7 @@ function parseVotes(xml) {
       if (!xml) {
         consecutiveFails++;
         if (consecutiveFails > 50) {
-          log(`Stopping ${year} scan after 50 consecutive failures`);
+          log(`Stopping ${year} scan after 50 consecutive 404s/empty`);
           break;
         }
         roll++;
@@ -115,7 +126,10 @@ function parseVotes(xml) {
       totalVotesProcessed++;
       for (const v of votes) {
         const idLower = v.bioguideId.toLowerCase();
-        if (!repMap.has(idLower)) continue;
+        if (!repMap.has(idLower)) {
+          log(`Bioguide mismatch: ${v.bioguideId} not found in roster`);
+          continue;
+        }
 
         const rep = repMap.get(idLower);
         const voteLower = v.vote.toLowerCase();
@@ -129,12 +143,14 @@ function parseVotes(xml) {
       }
 
       roll++;
-      // Safety cap — House rarely exceeds ~2000 rolls per session
-      if (roll > 3000) break;
+      if (roll > 3000) {
+        log(`Hit safety cap at roll 3000`);
+        break;
+      }
     }
   }
 
-  // Final stats & percentages
+  // Calculate percentages
   for (const r of reps) {
     if (r.totalVotes > 0) {
       const participated = r.yeaVotes + r.nayVotes;
@@ -144,6 +160,6 @@ function parseVotes(xml) {
   }
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(reps, null, 2));
-  log(`House votes updated: ${attached} member-votes attached across ${totalVotesProcessed} roll calls`);
+  log(`\nFINAL: ${attached} member-votes attached across ${totalVotesProcessed} roll calls`);
   console.log(`House votes updated: ${attached} member-votes attached across ${totalVotesProcessed} roll calls`);
 })();
