@@ -3368,8 +3368,15 @@ function mergeData(rankings, info, misconduct = []) {
       govtrackId = Number(parts[parts.length - 1]); // ensure numeric
     }
 
+    // Debug: log IDs to console
+    console.log("Merging:", r.name, "bioguide:", r.bioguideId, "govtrackId:", govtrackId);
+
     // Match misconduct by GovTrack ID
     let misconductEntry = misconduct.find(m => Number(m.person) === govtrackId);
+
+    if (misconductEntry) {
+      console.log("Found misconduct for", r.name, misconductEntry);
+    }
 
     return {
       ...r,
