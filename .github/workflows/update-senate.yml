@@ -18,7 +18,7 @@ jobs:
       - name: Download artifacts
         uses: actions/download-artifact@v4
 
-      # Senate does not use split artifacts — no mv step here
+      # Senate did not have split artifacts, so no mv step here
 
       - name: Merge legislation parts
         run: node scripts/merge-legislation-parts.js
@@ -27,10 +27,10 @@ jobs:
         run: npm install node-fetch@2
 
       - name: Scrape committees
-        run: node scripts/committee-senators-scraper.js
+        run: node scripts/committee-scraper.js
 
       - name: Scrape votes
-        run: node scripts/votes-senators-scraper.js
+        run: node scripts/votes-scraper.js
 
       - name: Merge senators
         run: node scripts/merge-senators.js
@@ -43,6 +43,9 @@ jobs:
 
       - name: Update streaks
         run: node scripts/update-streaks.js
+
+      - name: Sync with remote main
+        run: git pull --rebase origin main
 
       - name: Commit and push changes
         run: |
