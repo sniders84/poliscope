@@ -3353,42 +3353,14 @@ modal.classList.add('is-open', 'modal-dark');
 modal.setAttribute('aria-hidden', 'false');
 }
 
-// Merge rankings JSON with info JSON by slug + misconduct
-function mergeData(rankings, info, misconduct = []) {
+// Merge rankings JSON with info JSON
+function mergeData(rankings, info) {
   return rankings.map(r => {
     let match = info.find(i => i.slug === r.slug);
     if (!match && r.bioguideId) {
       match = info.find(i => i.bioguideId === r.bioguideId);
     }
-
-    // Extract GovTrack ID from govtrackLink
-    let govtrackId = null;
-    if (match && match.govtrackLink) {
-      const parts = match.govtrackLink.split('/');
-      govtrackId = Number(parts[parts.length - 1]); // ensure numeric
-    }
-
-    // Debug: log IDs to console
-    console.log("Merging:", r.name, "bioguide:", r.bioguideId, "govtrackId:", govtrackId);
-
-    // Match misconduct by GovTrack ID
-    let misconductEntry = misconduct.find(m => Number(m.person) === govtrackId);
-
-    if (misconductEntry) {
-      console.log("Found misconduct for", r.name, misconductEntry);
-    }
-
-    return {
-      ...r,
-      ...match,
-      ...(misconductEntry ? {
-        misconductCount: misconductEntry.misconductCount || 1,
-        misconductTags: misconductEntry.tags || [],
-        allegation: misconductEntry.allegation || '',
-        text: misconductEntry.text || '',
-        consequences: misconductEntry.consequences || []
-      } : {})
-    };
+    return { ...r, ...match };
   });
 }
 
@@ -3402,18 +3374,6 @@ async function render() {
   const repsRes = await fetch('/representatives-rankings.json');
   const repsInfoRes = await fetch('/housereps.json');
 
-  // Load misconduct.yaml
-  let misconductData = [];
-  try {
-    const misconductRes = await fetch('/misconduct.yaml');
-    if (misconductRes.ok) {
-      const misconductText = await misconductRes.text();
-      misconductData = jsyaml.load(misconductText); // requires js-yaml
-    }
-  } catch (err) {
-    console.warn("No misconduct.yaml loaded or invalid YAML", err);
-  }
-
   const senatorsRankings = await senatorsRes.json();
   const senatorsInfo = await senatorsInfoRes.json();
   const repsRankings = await repsRes.json();
@@ -3423,10 +3383,10 @@ async function render() {
   let officeType = 'senator';
 
   if (selectedOffice === 'senator') {
-    data = mergeData(senatorsRankings, senatorsInfo, misconductData);
+    data = mergeData(senatorsRankings, senatorsInfo);
     officeType = 'senator';
   } else if (selectedOffice === 'u.s. representative') {
-    data = mergeData(repsRankings, repsInfo, misconductData);
+    data = mergeData(repsRankings, repsInfo);
     officeType = 'rep';
   } else {
     tableBody.innerHTML = '<tr><td colspan="5">Select an office to view rankings</td></tr>';
