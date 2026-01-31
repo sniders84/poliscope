@@ -3367,7 +3367,7 @@ function mergeData(rankings, info, misconduct = []) {
       ...r,
       ...match,
       ...(misconductEntry ? {
-        misconductCount: misconductEntry.misconductCount || 1, // default to 1 if entry exists
+        misconductCount: misconductEntry.misconductCount || 1,
         misconductTags: misconductEntry.tags || [],
         allegation: misconductEntry.allegation || '',
         text: misconductEntry.text || '',
@@ -3495,3 +3495,66 @@ async function render() {
     });
   });
 }
+
+// Modal close handlers
+document.getElementById('scorecardClose')?.addEventListener('click', () => {
+  const modal = document.getElementById('scorecardModal');
+  modal.classList.remove('is-open', 'modal-dark');
+  modal.setAttribute('aria-hidden', 'true');
+});
+document.getElementById('scorecardModal')?.addEventListener('click', e => {
+  if (e.target.id === 'scorecardModal') {
+    const modal = document.getElementById('scorecardModal');
+    modal.classList.remove('is-open', 'modal-dark');
+    modal.setAttribute('aria-hidden', 'true');
+  }
+});
+document.getElementById('scoringLogicBtn')?.addEventListener('click', () => {
+  const modal = document.getElementById('scoringLogicModal');
+  modal.classList.add('is-open');
+  modal.setAttribute('aria-hidden', 'false');
+});
+document.getElementById('scoringLogicClose')?.addEventListener('click', () => {
+  const modal = document.getElementById('scoringLogicModal');
+  modal.classList.remove('is-open');
+  modal.setAttribute('aria-hidden', 'true');
+});
+document.getElementById('scoringLogicModal')?.addEventListener('click', e => {
+  if (e.target.id === 'scoringLogicModal') {
+    const modal = document.getElementById('scoringLogicModal');
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+  }
+});
+
+// Hook render function globally + filter changes
+window.renderRankingsLeaderboard = () => render().catch(console.error);
+officeSel.addEventListener('change', () => render().catch(console.error));
+categorySel.addEventListener('change', () => render().catch(console.error));
+
+// Initial render
+render().catch(console.error);
+
+// --- Global helpers for menu links ---
+function renderOfficials(state, query) {
+  console.log("Render officials for:", state, query);
+  // Hook into your officials rendering logic here
+}
+
+function showRatings() {
+  showTab('ratings');
+}
+
+function showCitizenship() {
+  showTab('citizenship');
+}
+
+function showCommunity() {
+  showTab('community');
+}
+
+// Expose tab functions globally so HTML onclick works
+window.renderOfficials = renderOfficials;
+window.showRatings = showRatings;
+window.showCitizenship = showCitizenship;
+window.showCommunity = showCommunity;
