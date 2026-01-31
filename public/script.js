@@ -3224,113 +3224,104 @@ document.getElementById('rate-me-btn').onclick = function() {
   }
 
   // Scorecard modal with photo, name, state/district/party, and breakdown
-  function showScorecard(person, breakdown, composite) {
-    document.getElementById('scorecardName').textContent = person.name;
+function showScorecard(person, breakdown, composite) {
+  document.getElementById('scorecardName').textContent = person.name;
 
-    const photoUrl = person.photo;
-    const district = person.district ? ` / District ${person.district}` : '';
-    const headerHtml = `
-      <img src="${photoUrl}" alt="${person.name}" class="profile-photo">
-      <p>${person.state}${district} • ${person.party}</p>
+  const photoUrl = person.photo;
+  const district = person.district ? ` / District ${person.district}` : '';
+  const headerHtml = `
+    <img src="${photoUrl}" alt="${person.name}" class="profile-photo">
+    <p>${person.state}${district} • ${person.party}</p>
+  `;
+
+  const breakdownEl = document.getElementById('scorecardBreakdown');
+  breakdownEl.innerHTML = '';
+  breakdownEl.insertAdjacentHTML('afterbegin', headerHtml);
+
+  const labelMap = {
+    sponsoredBills: 'Bills Sponsored',
+    cosponsoredBills: 'Bills Cosponsored',
+    becameLawBills: 'Bills Enacted',
+    becameLawCosponsoredBills: 'Bills Enacted (Cosponsored)',
+    committees: 'Committee Memberships',
+    committeeLeadership: 'Committee Leadership Roles',
+    missedVotes: 'Missed Votes (Count)',
+    misconductCount: 'Misconduct Infractions'   // penalty shows here
+  };
+
+  const rowsHtml = Object.keys(breakdown).map(key => {
+    const raw = breakdown[key];
+    const weight = WEIGHTS[key] || 0;
+    const contrib = raw * weight;
+    const label = labelMap[key] || key;
+    return `
+      <tr>
+        <td>${label}</td>
+        <td>${raw}</td>
+        <td>${weight.toFixed(1)}</td>
+        <td>${formatScore(contrib)}</td>
+      </tr>
     `;
+  }).join('');
 
-    const breakdownEl = document.getElementById('scorecardBreakdown');
-    breakdownEl.innerHTML = '';
-    breakdownEl.insertAdjacentHTML('afterbegin', headerHtml);
-
-    const labelMap = {
-      sponsoredBills: 'Bills Sponsored',
-      cosponsoredBills: 'Bills Cosponsored',
-      becameLawBills: 'Bills Enacted',
-      becameLawCosponsoredBills: 'Bills Enacted (Cosponsored)',
-      committees: 'Committee Memberships',
-      committeeLeadership: 'Committee Leadership Roles',
-      missedVotes: 'Missed Votes (Count)',
-      misconductCount: 'Misconduct Infractions'
-    };
-
-    const rowsHtml = Object.keys(breakdown).map(key => {
-      const raw = breakdown[key];
-      const weight = WEIGHTS[key] || 0;
-      const contrib = raw * weight;
-      const label = labelMap[key] || key;
-      return `
+  breakdownEl.innerHTML += `
+    <table class="scorecard-table">
+      <tbody>
         <tr>
-          <td>${label}</td>
-          <td>${raw}</td>
-          <td>${weight.toFixed(1)}</td>
-          <td>${formatScore(contrib)}</td>
+          <td><strong>Power Score</strong></td>
+          <td colspan="3">${formatScore(composite)}</td>
         </tr>
-      `;
-    }).join('');
+        <tr>
+          <td><strong>Category</strong></td>
+          <td><strong>Raw</strong></td>
+          <td><strong>Weight</strong></td>
+          <td><strong>Contribution</strong></td>
+        </tr>
+        ${rowsHtml}
+      </tbody>
+    </table>
+  `;
 
-    breakdownEl.innerHTML += `
-      <table class="scorecard-table">
-        <tbody>
-          <tr>
-            <td><strong>Power Score</strong></td>
-            <td colspan="3">${formatScore(composite)}</td>
-          </tr>
-          <tr>
-            <td><strong>Category</strong></td>
-            <td><strong>Raw</strong></td>
-            <td><strong>Weight</strong></td>
-            <td><strong>Contribution</strong></td>
-          </tr>
-          ${rowsHtml}
-        </tbody>
-      </table>
-    `;
+  // Misconduct details (no extra penalty here)
+  if (person.misconductCount && person.misconductCount > 0) {
+    const tbody = breakdownEl.querySelector('tbody');
 
-    // Append misconduct details inline with safe guards
-    if (person.misconductCount && person.misconductCount > 0) {
-      const tbody = breakdownEl.querySelector('tbody');
-
-      const misconductRow = document.createElement('tr');
-      misconductRow.innerHTML = `
+    if (Array.isArray(person.misconductTags) && person.misconductTags.length) {
+      const tagsRow = document.createElement('tr');
+      tagsRow.innerHTML = `
         <td>⚠️ Misconduct</td>
-        <td>${person.misconductCount} infractions</td>
-        <td>${WEIGHTS.misconductCount.toFixed(1)}</td>
-        <td>${formatScore(person.misconductCount * WEIGHTS.misconductCount)}</td>
+        <td colspan="3">Tags: ${person.misconductTags.join(', ')}</td>
       `;
-      tbody.appendChild(misconductRow);
-
-      if (Array.isArray(person.misconductTags) && person.misconductTags.length) {
-        const tagsRow = document.createElement('tr');
-        tagsRow.innerHTML = `
-          <td>Tags</td>
-          <td colspan="3">${person.misconductTags.join(', ')}</td>
-        `;
-        tbody.appendChild(tagsRow);
-      }
-
-      if (typeof person.misconductText === 'string' && person.misconductText.trim() !== '') {
-        const textRow = document.createElement('tr');
-        textRow.innerHTML = `
-          <td>Allegation</td>
-          <td colspan="3">${person.misconductText}</td>
-        `;
-        tbody.appendChild(textRow);
-      }
-
-      if (Array.isArray(person.misconductConsequences) && person.misconductConsequences.length) {
-        person.misconductConsequences.forEach(c => {
-          const consRow = document.createElement('tr');
-          consRow.innerHTML = `
-            <td>Consequence</td>
-            <td colspan="3">${c.date || ''} — ${c.body || ''}: ${c.action || ''}
-              ${c.link ? `<a href="${c.link}" target="_blank" rel="noopener noreferrer">[source]</a>` : ''}
-            </td>
-          `;
-          tbody.appendChild(consRow);
-        });
-      }
+      tbody.appendChild(tagsRow);
     }
 
-    const modal = document.getElementById('scorecardModal');
-    modal.classList.add('is-open', 'modal-dark');
-    modal.setAttribute('aria-hidden', 'false');
+    if (typeof person.misconductText === 'string' && person.misconductText.trim() !== '') {
+      const textRow = document.createElement('tr');
+      textRow.innerHTML = `
+        <td>Allegation</td>
+        <td colspan="3">${person.misconductText}</td>
+      `;
+      tbody.appendChild(textRow);
+    }
+
+    if (Array.isArray(person.misconductConsequences) && person.misconductConsequences.length) {
+      person.misconductConsequences.forEach(c => {
+        const consRow = document.createElement('tr');
+        consRow.innerHTML = `
+          <td>Consequence</td>
+          <td colspan="3">${c.date || ''} — ${c.body || ''}: ${c.action || ''}
+            ${c.link ? `<a href="${c.link}" target="_blank" rel="noopener noreferrer">[source]</a>` : ''}
+          </td>
+        `;
+        tbody.appendChild(consRow);
+      });
+    }
   }
+
+  const modal = document.getElementById('scorecardModal');
+  modal.classList.add('is-open', 'modal-dark');
+  modal.setAttribute('aria-hidden', 'false');
+}
 
   // Merge rankings JSON with info JSON by slug + misconduct
   function mergeData(rankings, info, misconduct = []) {
