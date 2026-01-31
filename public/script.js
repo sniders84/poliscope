@@ -3240,7 +3240,7 @@ function renderStreakBadges(streaks) {
   return badges;
 }
 
- // Scorecard modal with photo, name, state/district/party, and breakdown
+// Scorecard modal with photo, name, state/district/party, and breakdown
 function showScorecard(person, breakdown, composite) {
   document.getElementById('scorecardName').textContent = person.name;
 
@@ -3299,7 +3299,7 @@ function showScorecard(person, breakdown, composite) {
     </table>
   `;
 
-  // Add misconduct tags if present
+  // Append misconduct tags separately so they don’t interfere with the table
   if (person.misconductTags && person.misconductTags.length > 0) {
     breakdownEl.innerHTML += `
       <div class="misconduct-tags">
@@ -3469,4 +3469,3 @@ categorySel.addEventListener('change', () => render().catch(console.error));
 
 // Initial render
 render().catch(console.error);
-
