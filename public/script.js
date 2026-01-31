@@ -3186,38 +3186,37 @@ const WEIGHTS = {
   };
 
   // Scoring function using current schema
-  function scoreLegislator(person) {
-    const breakdown = {
-      sponsoredBills: person.sponsoredBills || 0,
-      cosponsoredBills: person.cosponsoredBills || 0,
-      becameLawBills: person.becameLawBills || 0,
-      becameLawCosponsoredBills: person.becameLawCosponsoredBills || 0,
-      committees: (person.committees || []).length,
-      committeeLeadership: (person.committees || []).filter(c =>
-        /chairman|chair|ranking member|vice chair/i.test(c.role)
-      ).length,
-      missedVotes: person.missedVotes || 0
-    };
+function scoreLegislator(person) {
+  const breakdown = {
+    sponsoredBills: person.sponsoredBills || 0,
+    cosponsoredBills: person.cosponsoredBills || 0,
+    becameLawBills: person.becameLawBills || 0,
+    becameLawCosponsoredBills: person.becameLawCosponsoredBills || 0,
+    committees: (person.committees || []).length,
+    committeeLeadership: (person.committees || []).filter(c =>
+      /chairman|chair|ranking member|vice chair/i.test(c.role)
+    ).length,
+    missedVotes: person.missedVotes || 0,
+    misconductCount: person.misconductCount || 0   // include misconduct infractions
+  };
 
-    const composite =
-      breakdown.sponsoredBills * WEIGHTS.sponsoredBills +
-      breakdown.cosponsoredBills * WEIGHTS.cosponsoredBills +
-      breakdown.becameLawBills * WEIGHTS.becameLawBills +
-      breakdown.becameLawCosponsoredBills * WEIGHTS.becameLawCosponsoredBills +
-      breakdown.committees * WEIGHTS.committees +
-      breakdown.committeeLeadership * WEIGHTS.committeeLeadership +
-      breakdown.missedVotes * WEIGHTS.missedVotes;
+  let composite = 0;
+  Object.keys(breakdown).forEach(key => {
+    const raw = breakdown[key];
+    const weight = WEIGHTS[key] || 0;
+    composite += raw * weight;
+  });
 
-    return {
-      composite: Math.round(composite * 10) / 10,
-      breakdown
-    };
-  }
+  return {
+    composite: Math.round(composite * 10) / 10,
+    breakdown
+  };
+}
 
-  function formatScore(value) {
-    const cls = value >= 0 ? 'score-positive' : 'score-negative';
-    return `<span class="${cls}">${Number.isFinite(value) ? value.toFixed(1) : '0.0'}</span>`;
-  }
+function formatScore(value) {
+  const cls = value >= 0 ? 'score-positive' : 'score-negative';
+  return `<span class="${cls}">${Number.isFinite(value) ? value.toFixed(1) : '0.0'}</span>`;
+}
 
  // Helper: render streak badges
 function renderStreakBadges(streaks) {
@@ -3364,14 +3363,27 @@ modal.classList.add('is-open', 'modal-dark');
 modal.setAttribute('aria-hidden', 'false');
 }
 
-// Merge rankings JSON with info JSON by slug
-function mergeData(rankings, info) {
+// Merge rankings JSON with info JSON by slug + misconduct
+function mergeData(rankings, info, misconduct = []) {
   return rankings.map(r => {
     let match = info.find(i => i.slug === r.slug);
     if (!match && r.bioguideId) {
       match = info.find(i => i.bioguideId === r.bioguideId);
     }
-    return { ...r, ...match };
+    let misconductEntry = misconduct.find(m => m.person === r.bioguideId);
+
+    // Merge misconduct fields if present
+    return {
+      ...r,
+      ...match,
+      ...(misconductEntry ? {
+        misconductCount: misconductEntry.misconductCount || 1, // default to 1 if entry exists
+        misconductTags: misconductEntry.tags || [],
+        allegation: misconductEntry.allegation || '',
+        text: misconductEntry.text || '',
+        consequences: misconductEntry.consequences || []
+      } : {})
+    };
   });
 }
 
