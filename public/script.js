@@ -3299,7 +3299,7 @@ function showScorecard(person, breakdown, composite) {
     </table>
   `;
 
-  // Append misconduct details inline
+  // Append misconduct details inline with safe guards
   if (person.misconductCount && person.misconductCount > 0) {
     const tbody = breakdownEl.querySelector('tbody');
 
@@ -3307,12 +3307,12 @@ function showScorecard(person, breakdown, composite) {
     misconductRow.innerHTML = `
       <td>⚠️ Misconduct</td>
       <td>${person.misconductCount} infractions</td>
-      <td>${WEIGHTS.misconductCount.toFixed(1)}</td>
-      <td>${formatScore(person.misconductCount * WEIGHTS.misconductCount)}</td>
+      <td>${WEIGHTS.misconductCount ? WEIGHTS.misconductCount.toFixed(1) : '0.0'}</td>
+      <td>${formatScore(person.misconductCount * (WEIGHTS.misconductCount || 0))}</td>
     `;
     tbody.appendChild(misconductRow);
 
-    if (person.misconductTags && person.misconductTags.length) {
+    if (Array.isArray(person.misconductTags) && person.misconductTags.length) {
       const tagsRow = document.createElement('tr');
       tagsRow.innerHTML = `
         <td>Tags</td>
@@ -3321,7 +3321,7 @@ function showScorecard(person, breakdown, composite) {
       tbody.appendChild(tagsRow);
     }
 
-    if (person.misconductText) {
+    if (typeof person.misconductText === 'string' && person.misconductText.trim() !== '') {
       const textRow = document.createElement('tr');
       textRow.innerHTML = `
         <td>Allegation</td>
@@ -3330,12 +3330,12 @@ function showScorecard(person, breakdown, composite) {
       tbody.appendChild(textRow);
     }
 
-    if (person.misconductConsequences && person.misconductConsequences.length) {
+    if (Array.isArray(person.misconductConsequences) && person.misconductConsequences.length) {
       person.misconductConsequences.forEach(c => {
         const consRow = document.createElement('tr');
         consRow.innerHTML = `
           <td>Consequence</td>
-          <td colspan="3">${c.date} — ${c.body}: ${c.action}
+          <td colspan="3">${c.date || ''} — ${c.body || ''}: ${c.action || ''}
             ${c.link ? `<a href="${c.link}" target="_blank" rel="noopener noreferrer">[source]</a>` : ''}
           </td>
         `;
@@ -3348,6 +3348,7 @@ function showScorecard(person, breakdown, composite) {
   modal.classList.add('is-open', 'modal-dark');
   modal.setAttribute('aria-hidden', 'false');
 }
+
 // Merge rankings JSON with info JSON by slug
 function mergeData(rankings, info) {
   return rankings.map(r => {
