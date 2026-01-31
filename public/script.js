@@ -3371,7 +3371,6 @@ function mergeData(rankings, info, misconduct = []) {
     // Find misconduct entry by GovTrack ID
     let misconductEntry = misconduct.find(m => m.person === govtrackId);
 
-    // Merge misconduct fields if present
     return {
       ...r,
       ...match,
