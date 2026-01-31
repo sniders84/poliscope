@@ -1,1 +1,2202 @@
-
+[
+  {
+    "bioguideId": "A000055",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "B001257",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "B000490",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "B001260",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C000059",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001072",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001051",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001066",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001080",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001067",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001061",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C000537",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001068",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001053",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001059",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001069",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001087",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001063",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "D000096",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "D000197",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "D000216",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "D000616",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "D000600",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "D000399",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "F000459",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "F000450",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "G000559",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "G000565",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "G000546",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "G000553",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "G000568",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "G000558",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "H001052",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "H001047",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "H000874",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "H001058",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "J000288",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "J000289",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "K000009",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "K000375",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "K000376",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "L000560",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "L000557",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "L000566",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "L000397",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "L000491",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "L000562",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001163",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001157",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001177",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001143",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M000312",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001137",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001160",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "N000002",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "N000015",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "N000147",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "P000034",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "P000197",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "P000597",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "Q000023",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "R000395",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "R000575",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S001176",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S001145",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S001183",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S001189",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S001157",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S000185",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S001185",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S000344",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S001148",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S000510",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S001172",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S000522",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S001156",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "T000193",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "T000460",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "T000467",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "T000469",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "T000463",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "V000081",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "W000798",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "W000797",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "W000187",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "W000806",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "W000795",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "W000808",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "W000804",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "W000809",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "A000369",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "B001278",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "D000617",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001184",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "F000454",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "T000468",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "L000578",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "H001068",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "B001287",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S001193",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "B001285",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "R000599",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "T000472",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "V000130",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "P000608",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "F000462",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "B001282",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "W000812",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "H001067",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001188",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "J000294",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "B001281",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "J000295",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "P000605",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "W000814",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001091",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "W000816",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "V000131",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "P000607",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "K000385",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S001195",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001101",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "N000188",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "A000370",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "P000609",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "H001072",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "W000821",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "D000623",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "A000371",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "L000582",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "T000474",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001103",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "L000583",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "A000372",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "B001295",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001196",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001194",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "D000624",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "E000294",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "R000603",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "W000822",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S001196",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "B001296",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "B001291",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "B001292",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "P000610",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "N000189",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "G000576",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "R000600",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "K000388",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "L000585",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "D000626",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001108",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "E000296",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S001190",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "B001302",
+    "activity": null,
+    "leader": null
+  },
+  {
+    "bioguideId": "K000389",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "P000613",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001112",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "B001300",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001110",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "D000628",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "R000609",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S001200",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001199",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "K000391",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "H001077",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "J000299",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "R000606",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "B001301",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "B001298",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "G000583",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "E000297",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "F000466",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S001199",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "K000392",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "G000581",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "A000375",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "J000298",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "E000298",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "N000190",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "G000585",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001115",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "B001306",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "H001082",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001206",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S001205",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001055",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "H001066",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S001211",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "H001090",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "L000593",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "N000191",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001121",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "H001081",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S001214",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001208",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "F000469",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "G000586",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001117",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "U000040",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "B001307",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "D000629",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "T000482",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "P000617",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S001215",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "T000481",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001119",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "O000173",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S001212",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "G000591",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "P000614",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "V000133",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S001207",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "L000590",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "O000172",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "D000631",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "H001085",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001204",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "J000302",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "R000610",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "T000480",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "J000301",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "B001309",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "R000612",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001120",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "G000589",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "F000468",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "E000299",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "R000614",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "G000587",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001118",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S001216",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S001213",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001205",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "G000592",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001210",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M000687",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "T000165",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "I000056",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S000250",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "V000129",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001212",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "O000019",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "K000397",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "J000305",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "B000825",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001039",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "F000472",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "D000032",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "G000593",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S000168",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "W000788",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001116",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "G000596",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "H001091",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001215",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "F000446",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001211",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001214",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S000929",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M000871",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "A000148",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001136",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "F000470",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "R000305",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "L000273",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "G000597",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M000317",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "T000486",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "B000740",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "B000668",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M000194",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "H001086",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "F000246",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "P000048",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "J000304",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "N000026",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "G000594",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "V000134",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001213",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "O000086",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S001159",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "F000471",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "T000478",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "L000595",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001125",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S001218",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "E000071",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "B001313",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001126",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001127",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "F000474",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "F000475",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "R000579",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "Y000067",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "Z000018",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S001220",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001132",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001133",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "K000401",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001225",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "K000400",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "G000598",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "P000620",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "B001314",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001216",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "F000476",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "L000596",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "L000597",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001217",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001218",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001129",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001219",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "T000487",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "N000193",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "J000309",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "R000617",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "B001315",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S001225",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "H001093",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001220",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "I000058",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S001221",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "J000307",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "T000488",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "A000379",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "B001316",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "E000235",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "D000230",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "F000477",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "E000246",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "K000398",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001226",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "V000136",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "L000598",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "G000599",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "L000599",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "L000600",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "L000601",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001222",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S001223",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "B001317",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "H001094",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S001226",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "L000602",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "D000530",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001223",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "F000478",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "O000175",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001224",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S001224",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "L000603",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "D000594",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001130",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001131",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "H001095",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "K000399",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "B001318",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "G000600",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "V000135",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "H001096",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001227",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "A000380",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001228",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S001201",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "K000402",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "F000480",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "R000619",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001229",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "W000829",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "F000110",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S001188",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001123",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "B001323",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "F000481",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "A000381",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "H001098",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S001231",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "G000605",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "L000607",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "W000830",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "R000620",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "F000483",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "T000491",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001241",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "H001100",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001137",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "E000300",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001238",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "H001099",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "J000311",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S001229",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001233",
+    "activity": null,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S001228",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "O000176",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "E000301",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001232",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "B001321",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001237",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001234",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "B001324",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "O000177",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "K000404",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "D000634",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001240",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "H001102",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "H001101",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "K000405",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001236",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "F000482",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "G000604",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "C001136",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "P000621",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "G000602",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "L000606",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "R000622",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001231",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "T000490",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "D000635",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "B001326",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001230",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "B001327",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "H001103",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "B001325",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "G000601",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "G000603",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "J000310",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "K000403",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001239",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "V000138",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "S001230",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "B001322",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "R000621",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "M001235",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "P000622",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "F000484",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "W000831",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "G000606",
+    "activity": 0,
+    "leader": 0
+  },
+  {
+    "bioguideId": "V000139",
+    "activity": 0,
+    "leader": 0
+  }
+]
