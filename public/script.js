@@ -3469,3 +3469,24 @@ categorySel.addEventListener('change', () => render().catch(console.error));
 
 // Initial render
 render().catch(console.error);
+
+// --- Missing global helpers for menu links ---
+function renderOfficials(state, query) {
+  console.log("Render officials for:", state, query);
+  // Hook into your officials rendering logic here
+}
+
+function showRatings() {
+  showTab('ratings');
+}
+
+function showCitizenship() {
+  showTab('citizenship');
+}
+
+function showCommunity() {
+  showTab('community');
+}
+
+// If your script is wrapped in an IIFE, close it here:
+})(); 
