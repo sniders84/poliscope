@@ -3252,19 +3252,20 @@ function formatScore(value) {
   tableBody.appendChild(tr);
 });
 
-// Add scorecard click handlers
-tableBody.querySelectorAll('.scorecard-link').forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    const name = link.dataset.name;
-    const row = rows.find(r => r.person.name === name);
-    if (row) {
-      showScorecard(row.person, row.breakdown, row.score);
-    }
+  // Add scorecard click handlers (inside render so tableBody exists)
+  tableBody.querySelectorAll('.scorecard-link').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const name = link.dataset.name;
+      const row = rows.find(r => r.person.name === name);
+      if (row) {
+        showScorecard(row.person, row.breakdown, row.score);
+      }
+    });
   });
-});
+}
 
-// Modal close handlers
+// Modal close handlers (global, so keep outside)
 document.getElementById('scorecardClose')?.addEventListener('click', () => {
   const modal = document.getElementById('scorecardModal');
   modal.classList.remove('is-open', 'modal-dark');
