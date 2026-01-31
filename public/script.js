@@ -3223,7 +3223,7 @@ document.getElementById('rate-me-btn').onclick = function() {
     return badges;
   }
 
-  // Scorecard modal with photo, name, state/district/party, and breakdown
+ // Scorecard modal with photo, name, state/district/party, and breakdown
 function showScorecard(person, breakdown, composite) {
   document.getElementById('scorecardName').textContent = person.name;
 
@@ -3323,19 +3323,33 @@ function showScorecard(person, breakdown, composite) {
   modal.setAttribute('aria-hidden', 'false');
 }
 
-  // Merge rankings JSON with info JSON by slug + misconduct
-  function mergeData(rankings, info, misconduct = []) {
-    return rankings.map(r => {
-      let match = info.find(i => i.slug === r.slug);
-      if (!match && r.bioguideId) {
-        match = info.find(i => i.bioguideId === r.bioguideId);
-      }
-      let misconductEntry = misconduct.find(m => m.person === r.bioguideId);
-      return { ...r, ...match, ...misconductEntry };
-    });
+// Modal close handlers
+document.getElementById('scorecardClose')?.addEventListener('click', () => {
+  const modal = document.getElementById('scorecardModal');
+  modal.classList.remove('is-open', 'modal-dark');
+  modal.setAttribute('aria-hidden', 'true');
+});
+document.getElementById('scorecardModal')?.addEventListener('click', e => {
+  if (e.target.id === 'scorecardModal') {
+    const modal = document.getElementById('scorecardModal');
+    modal.classList.remove('is-open', 'modal-dark');
+    modal.setAttribute('aria-hidden', 'true');
   }
+});
 
-  async function render() {
+// Merge rankings JSON with info JSON by slug + misconduct
+function mergeData(rankings, info, misconduct = []) {
+  return rankings.map(r => {
+    let match = info.find(i => i.slug === r.slug);
+    if (!match && r.bioguideId) {
+      match = info.find(i => i.bioguideId === r.bioguideId);
+    }
+    let misconductEntry = misconduct.find(m => m.person === r.bioguideId);
+    return { ...r, ...match, ...misconductEntry };
+  });
+}
+
+async function render() {
   const selectedOffice = officeSel.value.toLowerCase();
   const selectedCategory = categorySel.value;
 
@@ -3419,7 +3433,7 @@ function showScorecard(person, breakdown, composite) {
       </td>
       <td>${row.person.office || (officeType === 'rep' ? 'U.S. Representative' : 'U.S. Senator')}</td>
       <td>${displayVal}</td>
-      <td class="streak-cell">
+            <td class="streak-cell">
         ${renderStreakBadges(row.person.streaks)
           .map(b => {
             if (b.includes('🔥')) return `<span class="streak-badge activity">${b}</span>`;
