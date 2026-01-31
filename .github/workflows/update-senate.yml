@@ -2,32 +2,36 @@ name: Update Senate Data
 
 on:
   schedule:
-    - cron: '0 12 * * *'
+    - cron: '0 12 * * *'    # daily at 12:00 UTC
   workflow_dispatch:
 
 jobs:
   update-senate:
     runs-on: ubuntu-latest
     steps:
-      - name: Set up job
-        run: echo "Starting Senate workflow"
-
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # helpful for history if needed later
 
-      - name: Download artifacts
-        uses: actions/download-artifact@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'   # match your House workflow or change to 18/22 as needed
+          cache: 'npm'
 
-      # Senate does not use split artifacts — no mv step
+      - name: Install dependencies
+        run: npm ci          # cleaner & more reproducible than npm install
 
+      # ────────────────────────────────────────────────
+      # Senate scraping & processing steps
+      # (no artifact download/merge needed unlike House)
+      # ────────────────────────────────────────────────
       - name: Scrape legislation
         run: node scripts/legislation-senators-scraper.js
 
       - name: Merge legislation parts
         run: node scripts/merge-legislation-parts.js
-
-      - name: Install dependencies
-        run: npm install node-fetch@2
 
       - name: Scrape committees
         run: node scripts/committee-scraper.js
@@ -35,24 +39,37 @@ jobs:
       - name: Scrape votes
         run: node scripts/votes-scraper.js
 
-      - name: Merge senators
+      - name: Merge senators data
         run: node scripts/merge-senators.js
 
       - name: Scrape misconduct
         run: node scripts/misconduct-scraper.js senate
 
-      - name: Compute scores
+      - name: Compute senator scores
         run: node scripts/senators-scores.js
 
-      - name: Update streaks
+      - name: Update voting streaks
         run: node scripts/update-streaks.js
 
-      # Removed git pull --rebase
-
-      - name: Commit and push changes
+      # ────────────────────────────────────────────────
+      # Commit & push — only if meaningful changes exist
+      # ────────────────────────────────────────────────
+      - name: Configure git user
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -m "Update Senate data [skip ci]" || echo "No changes to commit"
-          git push origin main
+
+      - name: Commit updated Senate data
+        run: |
+          # Add the folders/files your scripts actually write to
+          git add -A public/ data/   # adjust if Senate JSONs go elsewhere
+          git diff --staged --quiet && echo "No changes to commit" && exit 0
+          git commit -m "Update Senate data [skip ci]" || echo "Commit failed (already clean?)"
+          git push origin HEAD:main || echo "Push failed (maybe no changes or other issue)"
+
+      - name: Show final status (debug helper)
+        if: always()
+        run: |
+          echo "Senate workflow completed"
+          git status --short || true
+          ls -la public/ || true    # change to your output folder if different
