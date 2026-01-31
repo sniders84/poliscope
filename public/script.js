@@ -3558,3 +3558,6 @@ window.renderOfficials = renderOfficials;
 window.showRatings = showRatings;
 window.showCitizenship = showCitizenship;
 window.showCommunity = showCommunity;
+
+// ✅ Properly close the IIFE
+})();
