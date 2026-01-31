@@ -1382,16 +1382,14 @@
   });
 }
 
- <!-- Load external script ONCE -->
-<script src="/script.js?v=1"></script>
+<!-- Load external script ONCE -->
+<script src="/script.js"></script>
 
 <!-- Unified inline script -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  // Default tab
   showStartupHub();
 
-  // Hamburger toggle + active tab + click-outside close
   const hamburger = document.getElementById('hamburger');
   const menu = document.getElementById('hamburger-menu');
   if (hamburger && menu) {
@@ -1413,7 +1411,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // State dropdown wiring
   const stateSelect = document.getElementById('state-dropdown');
   if (stateSelect) {
     stateSelect.addEventListener('change', (e) => {
@@ -1424,12 +1421,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Officials search bar wiring
   if (typeof wireSearchBar === 'function') {
     wireSearchBar();
   }
 
-  // RSS feed wiring for network cards (using reliable proxy)
   const feedTitle = document.getElementById('feed-title');
   const feedStories = document.getElementById('feed-stories');
   const rssFeeds = {
@@ -1444,29 +1439,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const url = rssFeeds[network];
     feedTitle.textContent = `${network.toUpperCase()} Stories`;
     feedStories.innerHTML = '<p style="color:#fff;">Loading...</p>';
-
     try {
-      // Switched to codetabs proxy — fixes rss2json 422/500 issues
       const response = await fetch(
         `https://api.codetabs.com/v1/rss-to-json?url=${encodeURIComponent(url)}`
       );
       if (!response.ok) throw new Error(`Proxy status: ${response.status}`);
-      
       const data = await response.json();
       const items = Array.isArray(data.items) ? data.items.slice() : [];
-      
       const normalized = items
         .map(item => ({ item, date: item.pubDate ? new Date(item.pubDate) : null }))
         .filter(x => x.date)
         .sort((a, b) => b.date.getTime() - a.date.getTime());
-
       feedStories.innerHTML = '';
-
       if (normalized.length === 0) {
         feedStories.innerHTML = '<p style="color:#fff;">No stories available.</p>';
         return;
       }
-
       normalized.slice(0, 10).forEach(({ item }) => {
         const story = document.createElement('div');
         story.className = 'story-card';
@@ -1490,15 +1478,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Ratings/Rankings Filters Logic (placeholder – keep as-is)
   window.allOfficials = [
     { slug: "john-doe", name: "John Doe", state: "CA", office: "senators", averageRating: 4.2, votesCount: 120 },
     { slug: "jane-smith", name: "Jane Smith", state: "TX", office: "governors", averageRating: 3.8, votesCount: 85 },
     { slug: "alex-jones", name: "Alex Jones", state: "NY", office: "housereps", averageRating: 4.7, votesCount: 200 }
   ];
 
-  function filterOfficials(list) { /* … */ }
-  function renderResults(list) { /* … */ }
+  function filterOfficials(list) { return list; }
+  function renderResults(list) { console.log('Rendering results:', list); }
 
   ['searchInput','officeFilter','stateFilter','sortFilter'].forEach(id => {
     const el = document.getElementById(id);
