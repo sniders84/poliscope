@@ -19,7 +19,7 @@ jobs:
         uses: actions/download-artifact@v4
 
       - name: Move JSON parts
-        run: mv public/senate-part1/*.json public/
+        run: mv senate-part1/*.json public/
 
       - name: Merge legislation parts
         run: node scripts/merge-legislation-parts.js
