@@ -200,7 +200,7 @@
   </div>
 </div>
 
-      <!-- Single feed viewer -->
+           <!-- Single feed viewer -->
       <div id="feed-viewer" class="feed-viewer">
         <h3 id="feed-title">Select a network to view stories</h3>
         <div class="story-grid" id="feed-stories">
@@ -254,6 +254,7 @@
         <div id="social-feed" class="grid"></div>
       </div>
     </section>
+
     <section id="podcasts-shows" class="tab-content" style="display: none;">
       <h2>Podcasts & Shows</h2>
       <input 
@@ -280,166 +281,112 @@
     </section>
 
     <section id="my-officials" class="tab-content" style="display: none; position: relative;">
-  <h2>My Officials</h2>
-  <div style="text-align: center; margin: 30px 0; padding: 20px; background: #2b2b2b; border-radius: 12px;">
-    <label for="state-dropdown" style="font-size: 1.4rem; font-weight: bold; color: #fff; margin-right: 20px;">
-      Select your state to view officials:
-    </label>
-    <select id="state-dropdown" style="padding: 12px 16px; font-size: 1.1rem; border-radius: 8px; background: #1f1f1f; color: #fff; border: 1px solid #444; min-width: 320px;">
-      <option value="Alabama">Alabama</option>
-      <option value="Alaska">Alaska</option>
-      <option value="American Samoa">American Samoa</option>
-      <option value="Arizona">Arizona</option>
-      <option value="Arkansas">Arkansas</option>
-      <option value="California">California</option>
-      <option value="Colorado">Colorado</option>
-      <option value="Connecticut">Connecticut</option>
-      <option value="Delaware">Delaware</option>
-      <option value="District of Columbia">District of Columbia</option>
-      <option value="Florida">Florida</option>
-      <option value="Georgia">Georgia</option>
-      <option value="Guam">Guam</option>
-      <option value="Hawaii">Hawaii</option>
-      <option value="Idaho">Idaho</option>
-      <option value="Illinois">Illinois</option>
-      <option value="Indiana">Indiana</option>
-      <option value="Iowa">Iowa</option>
-      <option value="Kansas">Kansas</option>
-      <option value="Kentucky">Kentucky</option>
-      <option value="Louisiana">Louisiana</option>
-      <option value="Maine">Maine</option>
-      <option value="Maryland">Maryland</option>
-      <option value="Massachusetts">Massachusetts</option>
-      <option value="Michigan">Michigan</option>
-      <option value="Minnesota">Minnesota</option>
-      <option value="Mississippi">Mississippi</option>
-      <option value="Missouri">Missouri</option>
-      <option value="Montana">Montana</option>
-      <option value="Nebraska">Nebraska</option>
-      <option value="Nevada">Nevada</option>
-      <option value="New Hampshire">New Hampshire</option>
-      <option value="New Jersey">New Jersey</option>
-      <option value="New Mexico">New Mexico</option>
-      <option value="New York">New York</option>
-      <option value="North Carolina" selected>North Carolina</option>
-      <option value="North Dakota">North Dakota</option>
-      <option value="Northern Mariana Islands">Northern Mariana Islands</option>
-      <option value="Ohio">Ohio</option>
-      <option value="Oklahoma">Oklahoma</option>
-      <option value="Oregon">Oregon</option>
-      <option value="Pennsylvania">Pennsylvania</option>
-      <option value="Puerto Rico">Puerto Rico</option>
-      <option value="Rhode Island">Rhode Island</option>
-      <option value="South Carolina">South Carolina</option>
-      <option value="South Dakota">South Dakota</option>
-      <option value="Tennessee">Tennessee</option>
-      <option value="Texas">Texas</option>
-      <option value="Utah">Utah</option>
-      <option value="Vermont">Vermont</option>
-      <option value="Virgin Islands">U.S. Virgin Islands</option>
-      <option value="Virginia">Virginia</option>
-      <option value="Washington">Washington</option>
-      <option value="West Virginia">West Virginia</option>
-      <option value="Wisconsin">Wisconsin</option>
-      <option value="Wyoming">Wyoming</option>
-    </select>
+      <h2>My Officials</h2>
+      <div style="text-align: center; margin: 30px 0; padding: 20px; background: #2b2b2b; border-radius: 12px;">
+        <label for="state-dropdown" style="font-size: 1.4rem; font-weight: bold; color: #fff; margin-right: 20px;">
+          Select your state to view officials:
+        </label>
+        <select id="state-dropdown" style="padding: 12px 16px; font-size: 1.1rem; border-radius: 8px; background: #1f1f1f; color: #fff; border: 1px solid #444; min-width: 320px;">
+          <!-- full state options here -->
+          <option value="North Carolina" selected>North Carolina</option>
+          <!-- ... -->
+        </select>
 
-    <input type="text" id="search-bar" 
-           placeholder="Search officials..." 
-           style="padding: 12px 16px; font-size: 1.1rem; border-radius: 8px; background: #1f1f1f; color: #fff; border: 1px solid #444; min-width: 320px; margin-left: 20px;" />
-  </div>
+        <input type="text" id="search-bar" 
+               placeholder="Search officials..." 
+               style="padding: 12px 16px; font-size: 1.1rem; border-radius: 8px; background: #1f1f1f; color: #fff; border: 1px solid #444; min-width: 320px; margin-left: 20px;" />
+      </div>
 
-  <div id="loading-overlay" style="
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255,255,255,0.8);
-      font-size: 1.5rem;
-      font-weight: bold;
-      z-index: 1000;
-    ">
-    Loading officials...
-  </div>
+      <div id="loading-overlay" style="
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: rgba(255,255,255,0.8);
+          font-size: 1.5rem;
+          font-weight: bold;
+          z-index: 1000;
+        ">
+        Loading officials...
+      </div>
 
-  <div id="officials-container" class="grid"></div>
-</section>
-    
-</section>
-<section id="ratings" class="tab-content" style="display: none;">
-  <h2>Ratings & Rankings</h2>
+      <div id="officials-container" class="grid"></div>
+    </section>
 
-  <!-- Ratings & Rankings toggle -->
-  <div id="rr-toggle" class="rr-toggle">
-    <button id="btn-ratings" class="rr-tab rr-tab-active" aria-controls="ratings-section">Ratings</button>
-    <button id="btn-rankings" class="rr-tab" aria-controls="rankings-section">Rankings</button>
-  </div>
+    <section id="ratings" class="tab-content" style="display: none;">
+      <h2>Ratings & Rankings</h2>
 
-  <!-- Ratings section -->
-  <div id="ratings-section" class="rr-section rr-section-active">
-    <div id="ratings-filters" class="filters-bar">
-      <input type="text" id="searchInput" placeholder="Search officials..." />
-      <select id="officeFilter">
-        <option value="">All Offices</option>
+      <!-- Ratings & Rankings toggle -->
+      <div id="rr-toggle" class="rr-toggle">
+        <button id="btn-ratings" class="rr-tab rr-tab-active" aria-controls="ratings-section">Ratings</button>
+        <button id="btn-rankings" class="rr-tab" aria-controls="rankings-section">Rankings</button>
+      </div>
+
+      <!-- Ratings section -->
+      <div id="ratings-section" class="rr-section rr-section-active">
+        <div id="ratings-filters" class="filters-bar">
+          <input type="text" id="searchInput" placeholder="Search officials..." />
+          <select id="officeFilter">
+            <option value="">All Offices</option>
+            <option value="president">President</option>
+            <option value="vice president">Vice President</option>
+            <option value="governor">Governor</option>
+            <option value="lieutenant governor">Lt. Governor</option>
+            <option value="senator">Senator</option>
+            <option value="u.s. representative">House Rep</option>
+          </select>
+          <select id="stateFilter">…</select>
+          <select id="partyFilter">…</select>
+        </div>
+        <div id="ratings-cards" class="card-section"></div>
+      </div>
+    </section>
+
+  <!-- Rankings section -->
+  <div id="rankings-section" class="rr-section" aria-hidden="true">
+    <div class="filters-row">
+      <select id="rankingsOfficeFilter" aria-label="Rankings office filter">
+        <option value="senator" selected>Senators</option>
+        <option value="u.s. representative">U.S. Representatives</option>
+        <option value="governor">Governors</option>
+        <option value="lieutenant governor">Lt. Governors</option>
         <option value="president">President</option>
         <option value="vice president">Vice President</option>
-        <option value="governor">Governor</option>
-        <option value="lieutenant governor">Lt. Governor</option>
-        <option value="senator">Senator</option>
-        <option value="u.s. representative">House Rep</option>
       </select>
-      <select id="stateFilter">…</select>
-      <select id="partyFilter">…</select>
+      <select id="rankingsCategoryFilter" aria-label="Rankings category filter">
+        <option value="powerScore" selected>Overall Power Score</option>
+        <option value="sponsoredBills">Sponsored Bills</option>
+        <option value="cosponsoredBills">Cosponsored Bills</option>
+        <option value="becameLawBills">Bills Enacted</option>
+        <option value="becameLawCosponsoredBills">Bills Enacted (Cosponsored)</option>
+        <option value="committees">Committee Memberships</option>
+        <option value="misconductCount">Misconduct Count</option>
+        <option value="misconductTags">Misconduct Tags</option>
+        <option value="yeaVotes">Yea Votes</option>
+        <option value="nayVotes">Nay Votes</option>
+        <option value="missedVotes">Missed Votes</option>
+        <option value="streak">Streak</option>
+      </select>
     </div>
-    <div id="ratings-cards" class="card-section"></div>
-  </div>
 
- <!-- Rankings section -->
-<div id="rankings-section" class="rr-section" aria-hidden="true">
-  <div class="filters-row">
-    <select id="rankingsOfficeFilter" aria-label="Rankings office filter">
-      <option value="senator" selected>Senators</option>
-      <option value="u.s. representative">U.S. Representatives</option>
-      <option value="governor">Governors</option>
-      <option value="lieutenant governor">Lt. Governors</option>
-      <option value="president">President</option>
-      <option value="vice president">Vice President</option>
-    </select>
-    <select id="rankingsCategoryFilter" aria-label="Rankings category filter">
-      <option value="powerScore" selected>Overall Power Score</option>
-      <option value="sponsoredBills">Sponsored Bills</option>
-      <option value="cosponsoredBills">Cosponsored Bills</option>
-      <option value="becameLawBills">Bills Enacted</option>
-      <option value="becameLawCosponsoredBills">Bills Enacted (Cosponsored)</option>
-      <option value="committees">Committee Memberships</option>
-      <option value="misconductCount">Misconduct Count</option>
-      <option value="misconductTags">Misconduct Tags</option>
-      <option value="yeaVotes">Yea Votes</option>
-      <option value="nayVotes">Nay Votes</option>
-      <option value="missedVotes">Missed Votes</option>
-      <option value="streak">Streak</option>
-    </select>
-  </div>
-
-  <div class="leaderboard-wrap">
-    <table id="rankings-leaderboard" class="leaderboard-table" aria-label="Rankings leaderboard">
-      <thead>
-        <tr>
-          <th>Rank</th>
-          <th>Official</th>
-          <th>Office</th>
-          <th>Value</th>
-          <th>Streak</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </div>
-</div>
+    <div class="leaderboard-wrap">
+      <table id="rankings-leaderboard" class="leaderboard-table" aria-label="Rankings leaderboard">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Official</th>
+            <th>Office</th>
+            <th>Value</th>
+            <th>Streak</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
 
     <div class="rankings-info">
       <button id="scoringLogicBtn" class="info-button">Rankings Scoring and Weight Logic</button>
@@ -456,52 +403,53 @@
   </div>
 
   <!-- Scoring Logic modal -->
-<div id="scoringLogicModal" class="scorecard-modal wide" aria-hidden="true">
-  <div class="scorecard-modal-content" role="dialog" aria-modal="true" aria-labelledby="scoringLogicTitle">
-    <button id="scoringLogicClose" class="scorecard-modal-close" aria-label="Close scoring logic">&times;</button>
-    <h2 id="scoringLogicTitle">Rankings Scoring and Weight Logic</h2>
-    <div class="scoring-logic-body">
-      <p>
-        Officials are ranked using weighted contributions from legislative and executive activity.
-        Each category has a raw value (e.g., bills sponsored), a weight (importance factor),
-        and a contribution (raw × weight). The sum of contributions forms the Power Score.
-      </p>
+  <div id="scoringLogicModal" class="scorecard-modal wide" aria-hidden="true">
+    <div class="scorecard-modal-content" role="dialog" aria-modal="true" aria-labelledby="scoringLogicTitle">
+      <button id="scoringLogicClose" class="scorecard-modal-close" aria-label="Close scoring logic">&times;</button>
+      <h2 id="scoringLogicTitle">Rankings Scoring and Weight Logic</h2>
+      <div class="scoring-logic-body">
+        <p>
+          Officials are ranked using weighted contributions from legislative and executive activity.
+          Each category has a raw value (e.g., bills sponsored), a weight (importance factor),
+          and a contribution (raw × weight). The sum of contributions forms the Power Score.
+        </p>
 
-      <h3>Legislative Offices (Senators & Representatives)</h3>
-      <table class="scorecard-table">
-        <thead><tr><th>Category</th><th>Weight</th><th>Rationale</th></tr></thead>
-        <tbody>
-          <tr><td>Bills Sponsored</td><td>1.2</td><td>Shows initiative and legislative drive.</td></tr>
-          <tr><td>Bills Cosponsored</td><td>0.6</td><td>Collaboration matters, but less than leading bills.</td></tr>
-          <tr><td>Bills Enacted (Sponsored)</td><td>6.0</td><td>Highest impact — turning proposals into law.</td></tr>
-          <tr><td>Bills Enacted (Cosponsored)</td><td>3.0</td><td>Influence through cosponsored bills that become law.</td></tr>
-          <tr><td>Committee Memberships</td><td>4.0</td><td>Committees drive legislation; membership shows influence.</td></tr>
-          <tr><td>Committee Leadership Roles</td><td>2.0</td><td>Chair, Ranking Member, or Vice Chair positions add leadership weight.</td></tr>
-          <tr><td>Missed Votes (Count)</td><td>-0.5</td><td>Penalizes absenteeism by raw missed vote count.</td></tr>
-          <tr><td>Misconduct Infractions</td><td>-10.0</td><td>Severe penalty for misconduct; reduces trust and effectiveness.</td></tr>
-        </tbody>
-      </table>
+        <h3>Legislative Offices (Senators & Representatives)</h3>
+        <table class="scorecard-table">
+          <thead><tr><th>Category</th><th>Weight</th><th>Rationale</th></tr></thead>
+          <tbody>
+            <tr><td>Bills Sponsored</td><td>1.2</td><td>Shows initiative and legislative drive.</td></tr>
+            <tr><td>Bills Cosponsored</td><td>0.6</td><td>Collaboration matters, but less than leading bills.</td></tr>
+            <tr><td>Bills Enacted (Sponsored)</td><td>6.0</td><td>Highest impact — turning proposals into law.</td></tr>
+            <tr><td>Bills Enacted (Cosponsored)</td><td>3.0</td><td>Influence through cosponsored bills that become law.</td></tr>
+            <tr><td>Committee Memberships</td><td>4.0</td><td>Committees drive legislation; membership shows influence.</td></tr>
+            <tr><td>Committee Leadership Roles</td><td>2.0</td><td>Chair, Ranking Member, or Vice Chair positions add leadership weight.</td></tr>
+            <tr><td>Missed Votes (Count)</td><td>-0.5</td><td>Penalizes absenteeism by raw missed vote count.</td></tr>
+            <tr><td>Misconduct Infractions</td><td>-10.0</td><td>Severe penalty for misconduct; reduces trust and effectiveness.</td></tr>
+          </tbody>
+        </table>
 
-      <h3>Executive Offices (President, Vice President, Governors)</h3>
-      <table class="scorecard-table">
-        <thead><tr><th>Category</th><th>Weight</th><th>Rationale</th></tr></thead>
-        <tbody>
-          <tr><td>Executive Orders</td><td>2.5</td><td>Direct executive action, but less lasting than laws.</td></tr>
-          <tr><td>Vetoes</td><td>3.0</td><td>Blocking legislation shows influence, but is reactive.</td></tr>
-          <tr><td>Budgets Proposed</td><td>2.0</td><td>Fiscal leadership is important but shared with legislature.</td></tr>
-          <tr><td>Appointments Confirmed</td><td>3.0</td><td>Staffing effectiveness impacts governance.</td></tr>
-          <tr><td>Leadership Score</td><td>5.0</td><td>Leadership is central to executive performance.</td></tr>
-          <tr><td>Working With Legislature</td><td>3.5</td><td>Cross‑branch cooperation is vital.</td></tr>
-          <tr><td>Crisis Response</td><td>4.0</td><td>Handling emergencies is a defining test.</td></tr>
-          <tr><td>Missed Duties</td><td>-3.0</td><td>Penalty for neglecting responsibilities.</td></tr>
-          <tr><td>Misconduct Infractions</td><td>-10.0</td><td>Severe penalty for misconduct in executive office.</td></tr>
-        </tbody>
-      </table>
+        <h3>Executive Offices (President, Vice President, Governors)</h3>
+        <table class="scorecard-table">
+          <thead><tr><th>Category</th><th>Weight</th><th>Rationale</th></tr></thead>
+          <tbody>
+            <tr><td>Executive Orders</td><td>2.5</td><td>Direct executive action, but less lasting than laws.</td></tr>
+            <tr><td>Vetoes</td><td>3.0</td><td>Blocking legislation shows influence, but is reactive.</td></tr>
+            <tr><td>Budgets Proposed</td><td>2.0</td><td>Fiscal leadership is important but shared with legislature.</td></tr>
+            <tr><td>Appointments Confirmed</td><td>3.0</td><td>Staffing effectiveness impacts governance.</td></tr>
+            <tr><td>Leadership Score</td><td>5.0</td><td>Leadership is central to executive performance.</td></tr>
+            <tr><td>Working With Legislature</td><td>3.5</td><td>Cross‑branch cooperation is vital.</td></tr>
+            <tr><td>Crisis Response</td><td>4.0</td><td>Handling emergencies is a defining test.</td></tr>
+            <tr><td>Missed Duties</td><td>-3.0</td><td>Penalty for neglecting responsibilities.</td></tr>
+            <tr><td>Misconduct Infractions</td><td>-10.0</td><td>Severe penalty for misconduct in executive office.</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-</div>
 
-  </section>
+</section>
+
 <section id="learning-resources" class="tab-content" style="display: none;">
   <h2>Learning Resources</h2>
 
