@@ -2,39 +2,70 @@ name: Update House Data
 
 on:
   schedule:
-    - cron: '0 12 * * *'
+    - cron: '0 12 * * *'    # daily at 12:00 UTC
   workflow_dispatch:
 
 jobs:
   update-house:
     runs-on: ubuntu-latest
     steps:
-      - name: Set up job
-        run: echo "Starting House workflow"
-
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # useful if you later need history / blame
 
-      - name: Download artifacts
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'   # or '18', '22' — pick what your scripts need
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci   # faster & more reliable than npm install
+
+      # ────────────────────────────────────────────────
+      # Download & merge the pre-split representative JSON parts
+      # ────────────────────────────────────────────────
+      - name: Download house-part1 artifact
         uses: actions/download-artifact@v4
+        with:
+          name: house-part1
+          path: house-part1/
 
-      - name: Move JSON parts 1
-        run: mv house-part1/*.json public/
-      - name: Move JSON parts 2
-        run: mv house-part2/*.json public/
-      - name: Move JSON parts 3
-        run: mv house-part3/*.json public/
-      - name: Move JSON parts 4
-        run: mv house-part4/*.json public/
+      - name: Download house-part2 artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: house-part2
+          path: house-part2/
 
+      - name: Download house-part3 artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: house-part3
+          path: house-part3/
+
+      - name: Download house-part4 artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: house-part4
+          path: house-part4/
+
+      - name: Move & combine part JSON files to public/
+        run: |
+          mkdir -p public/
+          # Safely move only .json files (ignore if folder missing/empty)
+          find house-part*/ -type f -name "*.json" -exec mv {} public/ \;
+          # Optional: list what we actually moved (helps debugging)
+          ls -la public/ || true
+
+      # ────────────────────────────────────────────────
+      # Now run your actual scraping & processing steps
+      # ────────────────────────────────────────────────
       - name: Scrape legislation
         run: node scripts/legislation-reps-scraper.js
 
       - name: Merge legislation parts
         run: node scripts/merge-legislation-parts.js
-
-      - name: Install dependencies
-        run: npm install node-fetch@2
 
       - name: Scrape committees
         run: node scripts/committee-reps-scraper.js
@@ -42,24 +73,36 @@ jobs:
       - name: Scrape votes
         run: node scripts/votes-reps-scraper.js
 
-      - name: Merge representatives
+      - name: Merge representatives data
         run: node scripts/merge-representatives.js
 
       - name: Scrape misconduct
         run: node scripts/misconduct-scraper.js house
 
-      - name: Compute scores
+      - name: Compute representative scores
         run: node scripts/representatives-scores.js
 
-      - name: Update streaks
+      - name: Update voting streaks
         run: node scripts/update-streaks.js
 
-      # Removed git pull --rebase
-
-      - name: Commit and push changes
+      # ────────────────────────────────────────────────
+      # Commit & push — only if there are actual changes
+      # ────────────────────────────────────────────────
+      - name: Configure git user
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -m "Update House data [skip ci]" || echo "No changes to commit"
-          git push origin main
+
+      - name: Commit updated House data
+        run: |
+          git add -A public/ data/   # adjust paths if your JSONs are elsewhere
+          git diff --staged --quiet && echo "No changes to commit" && exit 0
+          git commit -m "Update House data [skip ci]" || echo "Commit failed (already clean?)"
+          git push origin HEAD:main || echo "Push failed (maybe no changes or permission issue)"
+
+      - name: Show final status (debug)
+        if: always()
+        run: |
+          echo "Workflow completed"
+          git status --short || true
+          ls -la public/ || true
