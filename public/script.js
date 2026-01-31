@@ -2176,6 +2176,7 @@ const federalOfficials = [
     "electionYear": "2024"
   }
 ];
+
 // === OFFICIALS RENDERING ===
 function renderOfficials(stateFilter = null, query = '') {
   showTab('my-officials');
@@ -2748,6 +2749,7 @@ function showCitizenship() {
     container.appendChild(grid);
   });
 }
+
 // ==============================
 // Ratings/Rankings — tab renderer
 // ==============================
@@ -3110,46 +3112,6 @@ function closeModal(id) {
   }
 }
 
-// Hook up the "Rate Me" button
-document.getElementById('rate-me-btn').onclick = function() {
-  const title = document.getElementById('ratings-modal-title').textContent;
-  document.getElementById('rate-modal-title').textContent = `Rate ${title}`;
-  document.getElementById('rate-modal').style.display = 'block';
-  initStarRatings();
-};
-// Ratings & Rankings — section toggle (unchanged)
-(function initRatingsRankingsToggle() {
-  const btnRatings = document.getElementById('btn-ratings');
-  const btnRankings = document.getElementById('btn-rankings');
-  const ratingsSec = document.getElementById('ratings-section');
-  const rankingsSec = document.getElementById('rankings-section');
-  if (!btnRatings || !btnRankings || !ratingsSec || !rankingsSec) return;
-  function activateRatings() {
-    btnRatings.classList.add('rr-tab-active');
-    btnRankings.classList.remove('rr-tab-active');
-    ratingsSec.classList.add('rr-section-active');
-    rankingsSec.classList.remove('rr-section-active');
-    ratingsSec.removeAttribute('aria-hidden');
-    rankingsSec.setAttribute('aria-hidden', 'true');
-  }
-  function activateRankings() {
-    btnRankings.classList.add('rr-tab-active');
-    btnRatings.classList.remove('rr-tab-active');
-    rankingsSec.classList.add('rr-section-active');
-    ratingsSec.classList.remove('rr-section-active');
-    rankingsSec.removeAttribute('aria-hidden');
-    rankingsSec.setAttribute('aria-hidden', 'false');
-  }
-  btnRatings.addEventListener('click', activateRatings);
-  btnRankings.addEventListener('click', () => {
-    activateRankings();
-    if (typeof window.renderRankingsLeaderboard === 'function') {
-      window.renderRankingsLeaderboard();
-    }
-  });
-  activateRatings();
-})();
-
 // Rankings — render using the new merged JSONs
 (function initRankingsRender() {
   const officeSel = document.getElementById('rankingsOfficeFilter');
@@ -3165,92 +3127,64 @@ document.getElementById('rate-me-btn').onclick = function() {
     becameLawCosponsoredBills: 3.0,
     committees: 4.0,           // per committee
     committeeLeadership: 2.0,  // bonus for Chair/Ranking/Vice
-    missedVotes: -0.5          // penalty per missed vote
+    missedVotes: -0.5,         // penalty per missed vote
+    misconductCount: -5.0      // penalty per misconduct count
   };
 
   // Map schema keys to human-friendly labels
-const CATEGORY_LABELS = {
-  powerScore: "Overall Power Score",
-  sponsoredBills: "Sponsored Bills",
-  cosponsoredBills: "Cosponsored Bills",
-  becameLawBills: "Bills Enacted",
-  becameLawCosponsoredBills: "Bills Enacted (Cosponsored)",
-  committees: "Committee Memberships",
-  committeeLeadership: "Committee Leadership Roles",
-  misconductCount: "Misconduct Count",
-  misconductTags: "Misconduct Tags",
-  yeaVotes: "Yea Votes",
-  nayVotes: "Nay Votes",
-  missedVotes: "Missed Votes",
-  streak: "Streak"
-};
-
-// Scoring function using current schema
-function scoreLegislator(person) {
-  const breakdown = {
-    sponsoredBills: person.sponsoredBills || 0,
-    cosponsoredBills: person.cosponsoredBills || 0,
-    becameLawBills: person.becameLawBills || 0,
-    becameLawCosponsoredBills: person.becameLawCosponsoredBills || 0,
-    committees: (person.committees || []).length,
-    committeeLeadership: (person.committees || []).filter(c =>
-      /chairman|chair|ranking member|vice chair/i.test(c.role)
-    ).length,
-    missedVotes: person.missedVotes || 0,
-    misconductCount: person.misconductCount || 0
+  const CATEGORY_LABELS = {
+    powerScore: "Overall Power Score",
+    sponsoredBills: "Sponsored Bills",
+    cosponsoredBills: "Cosponsored Bills",
+    becameLawBills: "Bills Enacted",
+    becameLawCosponsoredBills: "Bills Enacted (Cosponsored)",
+    committees: "Committee Memberships",
+    committeeLeadership: "Committee Leadership Roles",
+    misconductCount: "Misconduct Count",
+    misconductTags: "Misconduct Tags",
+    yeaVotes: "Yea Votes",
+    nayVotes: "Nay Votes",
+    missedVotes: "Missed Votes",
+    streak: "Streak"
   };
 
-  const composite =
-    breakdown.sponsoredBills * WEIGHTS.sponsoredBills +
-    breakdown.cosponsoredBills * WEIGHTS.cosponsoredBills +
-    breakdown.becameLawBills * WEIGHTS.becameLawBills +
-    breakdown.becameLawCosponsoredBills * WEIGHTS.becameLawCosponsoredBills +
-    breakdown.committees * WEIGHTS.committees +
-    breakdown.committeeLeadership * WEIGHTS.committeeLeadership +
-    breakdown.missedVotes * WEIGHTS.missedVotes +
-    breakdown.misconductCount * WEIGHTS.misconduct; // penalty
+  // Scoring function using current schema
+  function scoreLegislator(person) {
+    const breakdown = {
+      sponsoredBills: person.sponsoredBills || 0,
+      cosponsoredBills: person.cosponsoredBills || 0,
+      becameLawBills: person.becameLawBills || 0,
+      becameLawCosponsoredBills: person.becameLawCosponsoredBills || 0,
+      committees: (person.committees || []).length,
+      committeeLeadership: (person.committees || []).filter(c =>
+        /chairman|chair|ranking member|vice chair/i.test(c.role)
+      ).length,
+      missedVotes: person.missedVotes || 0,
+      misconductCount: person.misconductCount || 0
+    };
 
-  return {
-    composite: Math.round(composite * 10) / 10,
-    breakdown
-  };
-}
+    const composite =
+      breakdown.sponsoredBills * WEIGHTS.sponsoredBills +
+      breakdown.cosponsoredBills * WEIGHTS.cosponsoredBills +
+      breakdown.becameLawBills * WEIGHTS.becameLawBills +
+      breakdown.becameLawCosponsoredBills * WEIGHTS.becameLawCosponsoredBills +
+      breakdown.committees * WEIGHTS.committees +
+      breakdown.committeeLeadership * WEIGHTS.committeeLeadership +
+      breakdown.missedVotes * WEIGHTS.missedVotes +
+      breakdown.misconductCount * WEIGHTS.misconductCount;
 
-function formatScore(value) {
-  const cls = value >= 0 ? 'score-positive' : 'score-negative';
-  return `<span class="${cls}">${Number.isFinite(value) ? value.toFixed(1) : '0.0'}</span>`;
-}
+    return {
+      composite: Math.round(composite * 10) / 10,
+      breakdown
+    };
+  }
 
-  // Decide what value to display based on the selected filter
-  const displayVal = selectedCategory === "powerScore"
-    ? row.score.toFixed(1)
-    : Array.isArray(row.person[selectedCategory])
-      ? row.person[selectedCategory].length
-      : row.person[selectedCategory] || 0;
+  function formatScore(value) {
+    const cls = value >= 0 ? 'score-positive' : 'score-negative';
+    return `<span class="${cls}">${Number.isFinite(value) ? value.toFixed(1) : '0.0'}</span>`;
+  }
 
-  tr.innerHTML = `
-    <td>${idx + 1}</td>
-    <td>
-      <a href="#" class="scorecard-link" data-name="${row.person.name.replace(/"/g, '&quot;')}">
-        ${row.person.name}
-      </a>
-      <br><small>${row.person.state} • ${row.person.party}${officeType === 'rep' ? ` • District ${row.person.district || 'At-Large'}` : ''}</small>
-    </td>
-    <td>${row.person.office || (officeType === 'rep' ? 'U.S. Representative' : 'U.S. Senator')}</td>
-    <td>${displayVal}</td>
-    <td class="streak-cell">
-      ${renderStreakBadges(row.person.streaks)
-        .map(b => {
-          if (b.includes('🔥')) return `<span class="streak-badge activity">${b}</span>`;
-          if (b.includes('🗳')) return `<span class="streak-badge voting">${b}</span>`;
-          if (b.includes('👑')) return `<span class="streak-badge leader">${b}</span>`;
-          return `<span class="streak-badge">${b}</span>`;
-        })
-        .join(' ')}
-    </td>
-  `;
-  tableBody.appendChild(tr);
-});
+  })();
 
   // Add scorecard click handlers (inside render so tableBody exists)
   tableBody.querySelectorAll('.scorecard-link').forEach(link => {
