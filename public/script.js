@@ -2787,7 +2787,7 @@ function showRatings() {
       ...presidents, ...vps, ...governors, ...ltgovs, ...senators, ...housereps
     ];
 
-    // Merge saved ratings
+    // Merge saved ratings from localStorage
     const saved = JSON.parse(localStorage.getItem('ratingsData')) || {};
     ratings.forEach(r => {
       if (saved[r.slug]) {
