@@ -2787,7 +2787,7 @@ function showRatings() {
       ...presidents, ...vps, ...governors, ...ltgovs, ...senators, ...housereps
     ];
 
-    // Merge saved ratings from localStorage
+    // Merge saved ratings
     const saved = JSON.parse(localStorage.getItem('ratingsData')) || {};
     ratings.forEach(r => {
       if (saved[r.slug]) {
@@ -3165,8 +3165,23 @@ document.getElementById('rate-me-btn').onclick = function() {
     becameLawCosponsoredBills: 3.0,
     committees: 4.0,           // per committee
     committeeLeadership: 2.0,  // bonus for Chair/Ranking/Vice
-    missedVotes: -0.5,         // penalty per missed vote
-    misconductCount: -10.0     // penalty per misconduct infraction
+    missedVotes: -0.5          // penalty per missed vote
+  };
+
+  // Map schema keys to human-friendly labels
+  const CATEGORY_LABELS = {
+    powerScore: "Overall Power Score",
+    sponsoredBills: "Sponsored Bills",
+    cosponsoredBills: "Cosponsored Bills",
+    becameLawBills: "Bills Enacted",
+    becameLawCosponsoredBills: "Bills Enacted (Cosponsored)",
+    committees: "Committee Memberships",
+    misconductCount: "Misconduct Count",
+    misconductTags: "Misconduct Tags",
+    yeaVotes: "Yea Votes",
+    nayVotes: "Nay Votes",
+    missedVotes: "Missed Votes",
+    streak: "Streak"
   };
 
   // Scoring function using current schema
@@ -3180,8 +3195,7 @@ document.getElementById('rate-me-btn').onclick = function() {
       committeeLeadership: (person.committees || []).filter(c =>
         /chairman|chair|ranking member|vice chair/i.test(c.role)
       ).length,
-      missedVotes: person.missedVotes || 0,
-      misconductCount: person.misconductCount || 0
+      missedVotes: person.missedVotes || 0
     };
 
     const composite =
@@ -3191,8 +3205,7 @@ document.getElementById('rate-me-btn').onclick = function() {
       breakdown.becameLawCosponsoredBills * WEIGHTS.becameLawCosponsoredBills +
       breakdown.committees * WEIGHTS.committees +
       breakdown.committeeLeadership * WEIGHTS.committeeLeadership +
-      breakdown.missedVotes * WEIGHTS.missedVotes +
-      breakdown.misconductCount * WEIGHTS.misconductCount;
+      breakdown.missedVotes * WEIGHTS.missedVotes;
 
     return {
       composite: Math.round(composite * 10) / 10,
@@ -3205,23 +3218,27 @@ document.getElementById('rate-me-btn').onclick = function() {
     return `<span class="${cls}">${Number.isFinite(value) ? value.toFixed(1) : '0.0'}</span>`;
   }
 
-  // Helper: render streak badges
-  function renderStreakBadges(streaks) {
-    const badges = [];
-    if (streaks?.activity > 0) {
-      const unit = streaks.activity === 1 ? 'week' : 'weeks';
-      badges.push(`🔥 ${streaks.activity} ${unit} activity streak`);
-    }
-    if (streaks?.voting > 0) {
-      const unit = streaks.voting === 1 ? 'week' : 'weeks';
-      badges.push(`🗳 ${streaks.voting} ${unit} voting streak`);
-    }
-    if (streaks?.leader > 0) {
-      const unit = streaks.leader === 1 ? 'week' : 'weeks';
-      badges.push(`👑 ${streaks.leader} ${unit} as Leader`);
-    }
-    return badges;
+ // Helper: render streak badges
+function renderStreakBadges(streaks) {
+  const badges = [];
+
+  if (streaks?.activity > 0) {
+    const unit = streaks.activity === 1 ? 'week' : 'weeks';
+    badges.push(`🔥 ${streaks.activity} ${unit} activity streak`);
   }
+
+  if (streaks?.voting > 0) {
+    const unit = streaks.voting === 1 ? 'week' : 'weeks';
+    badges.push(`🗳 ${streaks.voting} ${unit} voting streak`);
+  }
+
+  if (streaks?.leader > 0) {
+    const unit = streaks.leader === 1 ? 'week' : 'weeks';
+    badges.push(`👑 ${streaks.leader} ${unit} as Leader`);
+  }
+
+  return badges;
+}
 
 // Scorecard modal with photo, name, state/district/party, and breakdown
 function showScorecard(person, breakdown, composite) {
@@ -3246,7 +3263,7 @@ function showScorecard(person, breakdown, composite) {
     committees: 'Committee Memberships',
     committeeLeadership: 'Committee Leadership Roles',
     missedVotes: 'Missed Votes (Count)',
-    misconductCount: 'Misconduct Infractions'   // penalty shows here
+    misconductCount: 'Misconduct Infractions'
   };
 
   const rowsHtml = Object.keys(breakdown).map(key => {
@@ -3282,39 +3299,39 @@ function showScorecard(person, breakdown, composite) {
     </table>
   `;
 
-  // Misconduct details (no extra penalty here)
+  // Append misconduct details inline with safe guards
   if (person.misconductCount && person.misconductCount > 0) {
     const tbody = breakdownEl.querySelector('tbody');
+
+    const misconductRow = document.createElement('tr');
+    misconductRow.innerHTML = `
+      <td>⚠️ Misconduct</td>
+      <td>${person.misconductCount} infractions</td>
+      <td>${WEIGHTS.misconductCount ? WEIGHTS.misconductCount.toFixed(1) : '0.0'}</td>
+      <td>${formatScore(person.misconductCount * (WEIGHTS.misconductCount || 0))}</td>
+    `;
+    tbody.appendChild(misconductRow);
 
     if (Array.isArray(person.misconductTags) && person.misconductTags.length) {
       const tagsRow = document.createElement('tr');
       tagsRow.innerHTML = `
-        <td>⚠️ Misconduct</td>
-        <td colspan="3">Tags: ${person.misconductTags.join(', ')}</td>
+        <td>Tags</td>
+        <td colspan="3">${person.misconductTags.join(', ')}</td>
       `;
       tbody.appendChild(tagsRow);
     }
 
-    if (typeof person.allegation === 'string' && person.allegation.trim() !== '') {
-      const allegationRow = document.createElement('tr');
-      allegationRow.innerHTML = `
-        <td>Allegation</td>
-        <td colspan="3">${person.allegation}</td>
-      `;
-      tbody.appendChild(allegationRow);
-    }
-
-    if (typeof person.text === 'string' && person.text.trim() !== '') {
+    if (typeof person.misconductText === 'string' && person.misconductText.trim() !== '') {
       const textRow = document.createElement('tr');
       textRow.innerHTML = `
-        <td>Details</td>
-        <td colspan="3">${person.text}</td>
+        <td>Allegation</td>
+        <td colspan="3">${person.misconductText}</td>
       `;
       tbody.appendChild(textRow);
     }
 
-    if (Array.isArray(person.consequences) && person.consequences.length) {
-      person.consequences.forEach(c => {
+    if (Array.isArray(person.misconductConsequences) && person.misconductConsequences.length) {
+      person.misconductConsequences.forEach(c => {
         const consRow = document.createElement('tr');
         consRow.innerHTML = `
           <td>Consequence</td>
@@ -3332,52 +3349,26 @@ function showScorecard(person, breakdown, composite) {
   modal.setAttribute('aria-hidden', 'false');
 }
 
-// Modal close handlers
-document.getElementById('scorecardClose')?.addEventListener('click', () => {
-  const modal = document.getElementById('scorecardModal');
-  modal.classList.remove('is-open', 'modal-dark');
-  modal.setAttribute('aria-hidden', 'true');
-});
-document.getElementById('scorecardModal')?.addEventListener('click', e => {
-  if (e.target.id === 'scorecardModal') {
-    const modal = document.getElementById('scorecardModal');
-    modal.classList.remove('is-open', 'modal-dark');
-    modal.setAttribute('aria-hidden', 'true');
-  }
-});
-
-// Merge rankings JSON with info JSON by slug + misconduct
-function mergeData(rankings, info, misconduct = []) {
+// Merge rankings JSON with info JSON by slug
+function mergeData(rankings, info) {
   return rankings.map(r => {
     let match = info.find(i => i.slug === r.slug);
     if (!match && r.bioguideId) {
       match = info.find(i => i.bioguideId === r.bioguideId);
     }
-    let misconductEntry = misconduct.find(m => m.person === r.bioguideId);
-    return { ...r, ...match, ...misconductEntry };
+    return { ...r, ...match };
   });
 }
+
 async function render() {
   const selectedOffice = officeSel.value.toLowerCase();
   const selectedCategory = categorySel.value;
 
-  // Load rankings/info files
+  // Load both rankings and info files
   const senatorsRes = await fetch('/senators-rankings.json');
   const senatorsInfoRes = await fetch('/senators.json');
   const repsRes = await fetch('/representatives-rankings.json');
   const repsInfoRes = await fetch('/housereps.json');
-
-  // Load misconduct.yaml safely
-  let misconductData = [];
-  try {
-    const misconductRes = await fetch('/misconduct.yaml');
-    if (misconductRes.ok) {
-      const misconductText = await misconductRes.text();
-      misconductData = jsyaml.load(misconductText); // requires js-yaml
-    }
-  } catch (err) {
-    console.warn("No misconduct.yaml loaded or invalid YAML", err);
-  }
 
   const senatorsRankings = await senatorsRes.json();
   const senatorsInfo = await senatorsInfoRes.json();
@@ -3388,10 +3379,10 @@ async function render() {
   let officeType = 'senator';
 
   if (selectedOffice === 'senator') {
-    data = mergeData(senatorsRankings, senatorsInfo, misconductData);
+    data = mergeData(senatorsRankings, senatorsInfo);
     officeType = 'senator';
   } else if (selectedOffice === 'u.s. representative') {
-    data = mergeData(repsRankings, repsInfo, misconductData);
+    data = mergeData(repsRankings, repsInfo);
     officeType = 'rep';
   } else {
     tableBody.innerHTML = '<tr><td colspan="5">Select an office to view rankings</td></tr>';
@@ -3416,15 +3407,23 @@ async function render() {
   // Sort by selected category
   rows.sort((a, b) => {
     const key = selectedCategory;
-    if (key === "powerScore") return b.score - a.score;
-    if (key === "committees") return (b.person.committees?.length || 0) - (a.person.committees?.length || 0);
-    if (key === "misconductTags") return (b.person.misconductTags?.length || 0) - (a.person.misconductTags?.length || 0);
+
+    if (key === "powerScore") {
+      return b.score - a.score;
+    }
+    if (key === "committees") {
+      return (b.person.committees?.length || 0) - (a.person.committees?.length || 0);
+    }
+    if (key === "misconductTags") {
+      return (b.person.misconductTags?.length || 0) - (a.person.misconductTags?.length || 0);
+    }
     return (b.person[key] || 0) - (a.person[key] || 0);
   });
 
   tableBody.innerHTML = '';
   rows.forEach((row, idx) => {
     const tr = document.createElement('tr');
+
     const displayVal = selectedCategory === "powerScore"
       ? row.score.toFixed(1)
       : Array.isArray(row.person[selectedCategory])
@@ -3468,8 +3467,36 @@ async function render() {
   });
 }
 
-// Expose render globally
-window.render = render;
+// Modal close handlers (unchanged)
+document.getElementById('scorecardClose')?.addEventListener('click', () => {
+  const modal = document.getElementById('scorecardModal');
+  modal.classList.remove('is-open', 'modal-dark');
+  modal.setAttribute('aria-hidden', 'true');
+});
+document.getElementById('scorecardModal')?.addEventListener('click', e => {
+  if (e.target.id === 'scorecardModal') {
+    const modal = document.getElementById('scorecardModal');
+    modal.classList.remove('is-open', 'modal-dark');
+    modal.setAttribute('aria-hidden', 'true');
+  }
+});
+document.getElementById('scoringLogicBtn')?.addEventListener('click', () => {
+  const modal = document.getElementById('scoringLogicModal');
+  modal.classList.add('is-open');
+  modal.setAttribute('aria-hidden', 'false');
+});
+document.getElementById('scoringLogicClose')?.addEventListener('click', () => {
+  const modal = document.getElementById('scoringLogicModal');
+  modal.classList.remove('is-open');
+  modal.setAttribute('aria-hidden', 'true');
+});
+document.getElementById('scoringLogicModal')?.addEventListener('click', e => {
+  if (e.target.id === 'scoringLogicModal') {
+    const modal = document.getElementById('scoringLogicModal');
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+  }
+});
 
 // Hook render function globally + filter changes
 window.renderRankingsLeaderboard = () => render().catch(console.error);
@@ -3478,11 +3505,11 @@ categorySel.addEventListener('change', () => render().catch(console.error));
 
 // Initial render
 render().catch(console.error);
-})();   // <-- closes the Rankings IIFE cleanly
 
-// --- Global helpers for other tabs ---
+// --- Missing global helpers for menu links ---
 function renderOfficials(state, query) {
   console.log("Render officials for:", state, query);
+  // Hook into your officials rendering logic here
 }
 
 function showRatings() {
@@ -3496,3 +3523,6 @@ function showCitizenship() {
 function showCommunity() {
   showTab('community');
 }
+
+// If your script is wrapped in an IIFE, close it here:
+})();
