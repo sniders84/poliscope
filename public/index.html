@@ -1302,203 +1302,127 @@
   });
 }
 
-    function setupControls(containerId) {
-      const track = document.querySelector(`#${containerId} .carousel-track`);
-      const prevBtn = document.querySelector(`.carousel-controls .prev[data-target="${containerId}"]`);
-      const nextBtn = document.querySelector(`.carousel-controls .next[data-target="${containerId}"]`);
+     </script>
 
-      let position = 0;
-      const step = 310; // card width + ~gap
+  <!-- Load external script ONCE only – root-relative path fixes loading -->
+  <script src="/script.js"></script>
 
-      // Auto-scroll (5 seconds)
-      setInterval(() => {
-        position++;
-        if (position >= track.children.length) position = 0;
-        track.style.transform = `translateX(-${position * step}px)`;
-      }, 5000);
+  <!-- Unified inline script – no duplicates -->
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    showStartupHub(); // Home Hub on load
 
-      // Manual controls
-      prevBtn.addEventListener("click", () => {
-        position = Math.max(0, position - 1);
-        track.style.transform = `translateX(-${position * step}px)`;
+    const hamburger = document.getElementById('hamburger');
+    const menu = document.getElementById('hamburger-menu');
+    if (hamburger && menu) {
+      hamburger.addEventListener('click', () => {
+        menu.classList.toggle('open');
       });
-
-      nextBtn.addEventListener("click", () => {
-        position = Math.min(track.children.length - 1, position + 1);
-        track.style.transform = `translateX(-${position * step}px)`;
+      document.querySelectorAll('#hamburger-menu ul li a').forEach(link => {
+        link.addEventListener('click', () => {
+          document.querySelectorAll('#hamburger-menu ul li a').forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+          menu.classList.remove('open');
+        });
+      });
+      document.addEventListener('click', (event) => {
+        if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
+          menu.classList.remove('open');
+        }
       });
     }
+
+    const stateSelect = document.getElementById('state-dropdown');
+    if (stateSelect) {
+      stateSelect.addEventListener('change', (e) => {
+        window.selectedState = e.target.value;
+        if (typeof renderOfficials === 'function') {
+          renderOfficials(window.selectedState, '');
+        }
+      });
+    }
+
+    if (typeof wireSearchBar === 'function') {
+      wireSearchBar();
+    }
+
+    // RSS feed wiring – single instance, codetabs proxy
+    const feedTitle = document.getElementById('feed-title');
+    const feedStories = document.getElementById('feed-stories');
+    const rssFeeds = {
+      msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',
+      abc: 'https://abcnews.go.com/abcnews/topstories',
+      cbs: 'https://www.cbsnews.com/latest/rss/main',
+      fox: 'https://feeds.foxnews.com/foxnews/latest',
+      newsnation: "https://www.newsnationnow.com/feed/"
+    };
+
+    async function loadFeed(network) {
+      const url = rssFeeds[network];
+      if (!feedTitle || !feedStories) return;
+      feedTitle.textContent = `${network.toUpperCase()} Stories`;
+      feedStories.innerHTML = '<p style="color:#fff;">Loading...</p>';
+      try {
+        const response = await fetch(
+          `https://api.codetabs.com/v1/rss-to-json?url=${encodeURIComponent(url)}`
+        );
+        if (!response.ok) throw new Error(`Proxy status: ${response.status}`);
+        const data = await response.json();
+        const items = Array.isArray(data.items) ? data.items.slice() : [];
+        const normalized = items
+          .map(item => ({ item, date: item.pubDate ? new Date(item.pubDate) : null }))
+          .filter(x => x.date)
+          .sort((a, b) => b.date.getTime() - a.date.getTime());
+        feedStories.innerHTML = '';
+        if (normalized.length === 0) {
+          feedStories.innerHTML = '<p style="color:#fff;">No stories available.</p>';
+          return;
+        }
+        normalized.slice(0, 10).forEach(({ item }) => {
+          const story = document.createElement('div');
+          story.className = 'story-card';
+          story.innerHTML = `
+            <a href="${item.link}" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none;">
+              <h4 style="margin-bottom:0.35rem;">${item.title}</h4>
+            </a>
+          `;
+          feedStories.appendChild(story);
+        });
+      } catch (err) {
+        console.error('Feed load error:', err);
+        feedStories.innerHTML = '<p style="color:#fff;">Error loading feed.</p>';
+      }
+    }
+
+    document.querySelectorAll('.network-card[data-network]').forEach(card => {
+      card.addEventListener('click', () => {
+        const network = card.getAttribute('data-network');
+        loadFeed(network);
+      });
+    });
+
+    // Ratings/Rankings Filters Logic (placeholder)
+    window.allOfficials = [
+      { slug: "john-doe", name: "John Doe", state: "CA", office: "senators", averageRating: 4.2, votesCount: 120 },
+      { slug: "jane-smith", name: "Jane Smith", state: "TX", office: "governors", averageRating: 3.8, votesCount: 85 },
+      { slug: "alex-jones", name: "Alex Jones", state: "NY", office: "housereps", averageRating: 4.7, votesCount: 200 }
+    ];
+
+    function filterOfficials(list) { return list; }
+    function renderResults(list) { console.log('Rendering results:', list); }
+
+    ['searchInput','officeFilter','stateFilter','sortFilter'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('input', () => {
+          const filtered = filterOfficials(window.allOfficials || []);
+          renderResults(filtered);
+        });
+      }
+    });
+
+    renderResults(window.allOfficials);
+  });
   </script>
-  <script src="script.js"></script>
-
-<script>
-  // Initialize carousels: load feeds then wire controls
-  (async () => {
-    await loadSection("world", "world-news-carousel");
-    await loadSection("finance", "finance-carousel");
-    await loadSection("economy", "economy-carousel");
-
-    setupControls("world-news-carousel");
-    setupControls("finance-carousel");
-    setupControls("economy-carousel");
-  })();
-</script>
-
-<script>
-  // Force Home Hub tab to show on page load and highlight its button
-  document.addEventListener("DOMContentLoaded", () => {
-    showStartupHub(); // Home Hub loads first and button is highlighted
-  });
-</script>
-
-<!-- Load external script with full quiz logic -->
-<script src="script.js"></script>
-
-<script>
-  async function loadSocialLinks() {
-    const res = await fetch('/social-links.json');
-    return await res.json();
-  }
-
-  async function renderAllSocialLinks() {
-    const data = await loadSocialLinks();
-
-    Object.keys(data).forEach(slug => {
-      const links = data[slug];
-
-      // Find the existing social container for this official
-      const container = document.getElementById(`social-${slug}`);
-      if (!container || !links) return;
-
-      // Clear any existing content
-      container.innerHTML = '';
-
-              // Add icons only for non-null links
-    if (links.facebook) container.innerHTML += `<a href="${links.facebook}" target="_blank" rel="noopener noreferrer"><img src="/assets/facebook.svg" alt="Facebook"></a>`;
-    if (links.instagram) container.innerHTML += `<a href="${links.instagram}" target="_blank" rel="noopener noreferrer"><img src="/assets/instagram.svg" alt="Instagram"></a>`;
-    if (links.x) container.innerHTML += `<a href="${links.x}" target="_blank" rel="noopener noreferrer"><img src="/assets/x.svg" alt="X"></a>`;
-    if (links.youtube) container.innerHTML += `<a href="${links.youtube}" target="_blank" rel="noopener noreferrer"><img src="/assets/youtube.svg" alt="YouTube"></a>`;
-    if (links.tiktok) container.innerHTML += `<a href="${links.tiktok}" target="_blank" rel="noopener noreferrer"><img src="/assets/tiktok.svg" alt="TikTok"></a>`;
-  });
-}
-
-<!-- Load external script ONCE -->
-<script src="/script.js?v=fix-now"></script>
-
-<!-- Unified inline script -->
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  showStartupHub();
-
-  const hamburger = document.getElementById('hamburger');
-  const menu = document.getElementById('hamburger-menu');
-  if (hamburger && menu) {
-    hamburger.addEventListener('click', () => {
-      menu.classList.toggle('open');
-    });
-    document.querySelectorAll('#hamburger-menu ul li a').forEach(link => {
-      link.addEventListener('click', () => {
-        document.querySelectorAll('#hamburger-menu ul li a')
-          .forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-        menu.classList.remove('open');
-      });
-    });
-    document.addEventListener('click', (event) => {
-      if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
-        menu.classList.remove('open');
-      }
-    });
-  }
-
-  const stateSelect = document.getElementById('state-dropdown');
-  if (stateSelect) {
-    stateSelect.addEventListener('change', (e) => {
-      window.selectedState = e.target.value;
-      if (typeof renderOfficials === 'function') {
-        renderOfficials(window.selectedState, '');
-      }
-    });
-  }
-
-  if (typeof wireSearchBar === 'function') {
-    wireSearchBar();
-  }
-
-  const feedTitle = document.getElementById('feed-title');
-  const feedStories = document.getElementById('feed-stories');
-  const rssFeeds = {
-    msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',
-    abc: 'https://abcnews.go.com/abcnews/topstories',
-    cbs: 'https://www.cbsnews.com/latest/rss/main',
-    fox: 'https://feeds.foxnews.com/foxnews/latest',
-    newsnation: "https://www.newsnationnow.com/feed/"
-  };
-
-  async function loadFeed(network) {
-    const url = rssFeeds[network];
-    feedTitle.textContent = `${network.toUpperCase()} Stories`;
-    feedStories.innerHTML = '<p style="color:#fff;">Loading...</p>';
-    try {
-      const response = await fetch(
-        `https://api.codetabs.com/v1/rss-to-json?url=${encodeURIComponent(url)}`
-      );
-      if (!response.ok) throw new Error(`Proxy status: ${response.status}`);
-      const data = await response.json();
-      const items = Array.isArray(data.items) ? data.items.slice() : [];
-      const normalized = items
-        .map(item => ({ item, date: item.pubDate ? new Date(item.pubDate) : null }))
-        .filter(x => x.date)
-        .sort((a, b) => b.date.getTime() - a.date.getTime());
-      feedStories.innerHTML = '';
-      if (normalized.length === 0) {
-        feedStories.innerHTML = '<p style="color:#fff;">No stories available.</p>';
-        return;
-      }
-      normalized.slice(0, 10).forEach(({ item }) => {
-        const story = document.createElement('div');
-        story.className = 'story-card';
-        story.innerHTML = `
-          <a href="${item.link}" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none;">
-            <h4 style="margin-bottom:0.35rem;">${item.title}</h4>
-          </a>
-        `;
-        feedStories.appendChild(story);
-      });
-    } catch (err) {
-      console.error('Feed load error:', err);
-      feedStories.innerHTML = '<p style="color:#fff;">Error loading feed.</p>';
-    }
-  }
-
-  document.querySelectorAll('.network-card[data-network]').forEach(card => {
-    card.addEventListener('click', () => {
-      const network = card.getAttribute('data-network');
-      loadFeed(network);
-    });
-  });
-
-  window.allOfficials = [
-    { slug: "john-doe", name: "John Doe", state: "CA", office: "senators", averageRating: 4.2, votesCount: 120 },
-    { slug: "jane-smith", name: "Jane Smith", state: "TX", office: "governors", averageRating: 3.8, votesCount: 85 },
-    { slug: "alex-jones", name: "Alex Jones", state: "NY", office: "housereps", averageRating: 4.7, votesCount: 200 }
-  ];
-
-  function filterOfficials(list) { return list; }
-  function renderResults(list) { console.log('Rendering results:', list); }
-
-  ['searchInput','officeFilter','stateFilter','sortFilter'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.addEventListener('input', () => {
-        const filtered = filterOfficials(window.allOfficials || []);
-        renderResults(filtered);
-      });
-    }
-  });
-
-  renderResults(window.allOfficials);
-});
-</script>
 </body>
 </html>
