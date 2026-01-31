@@ -3431,7 +3431,7 @@ document.getElementById('rate-me-btn').onclick = function() {
       tableBody.appendChild(tr);
     });
 
-    // Add scorecard click handlers
+        // Add scorecard click handlers
     tableBody.querySelectorAll('.scorecard-link').forEach(link => {
       link.addEventListener('click', e => {
         e.preventDefault();
@@ -3454,7 +3454,7 @@ document.getElementById('rate-me-btn').onclick = function() {
 
   // Initial render
   render().catch(console.error);
-})();
+})();   // <-- closes the Rankings IIFE cleanly
 
 // --- Global helpers for other tabs ---
 function renderOfficials(state, query) {
