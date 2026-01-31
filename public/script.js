@@ -3300,7 +3300,7 @@ function showScorecard(person, breakdown, composite) {
     </table>
   `;
 
- // Append misconduct details inline with safe guards
+// Append misconduct details inline with safe guards
 if (person.misconductCount && person.misconductCount > 0) {
   const tbody = breakdownEl.querySelector('tbody');
 
