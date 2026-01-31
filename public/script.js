@@ -3124,6 +3124,7 @@ document.getElementById('rate-me-btn').onclick = function() {
   const ratingsSec = document.getElementById('ratings-section');
   const rankingsSec = document.getElementById('rankings-section');
   if (!btnRatings || !btnRankings || !ratingsSec || !rankingsSec) return;
+
   function activateRatings() {
     btnRatings.classList.add('rr-tab-active');
     btnRankings.classList.remove('rr-tab-active');
@@ -3163,29 +3164,13 @@ document.getElementById('rate-me-btn').onclick = function() {
     cosponsoredBills: 0.6,
     becameLawBills: 6.0,
     becameLawCosponsoredBills: 3.0,
-    committees: 4.0,           // per committee
-    committeeLeadership: 2.0,  // bonus for Chair/Ranking/Vice
-    missedVotes: -0.5,         // penalty per missed vote
-    misconductCount: -10.0     // penalty per misconduct infraction
+    committees: 4.0,
+    committeeLeadership: 2.0,
+    missedVotes: -0.5,
+    misconductCount: -10.0
   };
 
-  // Map schema keys to human-friendly labels
-  const CATEGORY_LABELS = {
-    powerScore: "Overall Power Score",
-    sponsoredBills: "Sponsored Bills",
-    cosponsoredBills: "Cosponsored Bills",
-    becameLawBills: "Bills Enacted",
-    becameLawCosponsoredBills: "Bills Enacted (Cosponsored)",
-    committees: "Committee Memberships",
-    misconductCount: "Misconduct Count",
-    misconductTags: "Misconduct Tags",
-    yeaVotes: "Yea Votes",
-    nayVotes: "Nay Votes",
-    missedVotes: "Missed Votes",
-    streak: "Streak"
-  };
-
-  // Scoring function using current schema
+  // Scoring function
   function scoreLegislator(person) {
     const breakdown = {
       sponsoredBills: person.sponsoredBills || 0,
@@ -3210,10 +3195,7 @@ document.getElementById('rate-me-btn').onclick = function() {
       breakdown.missedVotes * WEIGHTS.missedVotes +
       breakdown.misconductCount * WEIGHTS.misconductCount;
 
-    return {
-      composite: Math.round(composite * 10) / 10,
-      breakdown
-    };
+    return { composite: Math.round(composite * 10) / 10, breakdown };
   }
 
   function formatScore(value) {
@@ -3221,7 +3203,6 @@ document.getElementById('rate-me-btn').onclick = function() {
     return `<span class="${cls}">${Number.isFinite(value) ? value.toFixed(1) : '0.0'}</span>`;
   }
 
-  // Helper: render streak badges
   function renderStreakBadges(streaks) {
     const badges = [];
     if (streaks?.activity > 0) {
@@ -3248,7 +3229,7 @@ document.getElementById('rate-me-btn').onclick = function() {
     const senatorsInfoRes = await fetch('/senators.json');
     const repsRes = await fetch('/representatives-rankings.json');
     const repsInfoRes = await fetch('/housereps.json');
-    const misconductRes = await fetch('/misconduct.json'); // YAML scrape converted to JSON
+    const misconductRes = await fetch('/misconduct.json');
     const misconductData = await misconductRes.json();
 
     const senatorsRankings = await senatorsRes.json();
@@ -3288,12 +3269,7 @@ document.getElementById('rate-me-btn').onclick = function() {
 
     const rows = data.map(person => {
       const { composite, breakdown } = scoreLegislator(person);
-      return {
-        person,
-        score: composite,
-        breakdown,
-        streaks: person.streaks || {}
-      };
+      return { person, score: composite, breakdown, streaks: person.streaks || {} };
     });
 
     rows.sort((a, b) => {
@@ -3334,9 +3310,10 @@ document.getElementById('rate-me-btn').onclick = function() {
             .join(' ')}
         </td>
       `;
-      tableBody.appendChild(tr);
+            tableBody.appendChild(tr);
     });
 
+    // Attach click handlers for scorecard modals
     tableBody.querySelectorAll('.scorecard-link').forEach(link => {
       link.addEventListener('click', e => {
         e.preventDefault();
@@ -3355,4 +3332,26 @@ document.getElementById('rate-me-btn').onclick = function() {
   // Hook render function globally + filter changes
   window.renderRankingsLeaderboard = () => render().catch(console.error);
   officeSel.addEventListener('change', () => render().catch(console.error));
-  categorySel.addEventListener('change', () => render().catch
+  categorySel.addEventListener('change', () => render().catch(console.error));
+
+  // Initial render
+  render().catch(console.error);
+})();
+
+// --- Global helpers for other tabs ---
+function renderOfficials(state, query) {
+  console.log("Render officials for:", state, query);
+  // Hook into your officials rendering logic here
+}
+
+function showRatings() {
+  showTab('ratings');
+}
+
+function showCitizenship() {
+  showTab('citizenship');
+}
+
+function showCommunity() {
+  showTab('community');
+}
