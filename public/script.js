@@ -3158,15 +3158,16 @@ document.getElementById('rate-me-btn').onclick = function() {
   if (!officeSel || !categorySel || !tableBody) return;
 
   // Weights tuned to current schema (no amendments)
-  const WEIGHTS = {
-    sponsoredBills: 1.2,
-    cosponsoredBills: 0.6,
-    becameLawBills: 6.0,
-    becameLawCosponsoredBills: 3.0,
-    committees: 4.0,           // per committee
-    committeeLeadership: 2.0,  // bonus for Chair/Ranking/Vice
-    missedVotes: -0.5          // penalty per missed vote
-  };
+const WEIGHTS = {
+  sponsoredBills: 1.2,
+  cosponsoredBills: 0.6,
+  becameLawBills: 6.0,
+  becameLawCosponsoredBills: 3.0,
+  committees: 4.0,           // per committee
+  committeeLeadership: 2.0,  // bonus for Chair/Ranking/Vice
+  missedVotes: -0.5,         // penalty per missed vote
+  misconductCount: -10.0     // penalty per misconduct infraction
+};
 
   // Map schema keys to human-friendly labels
   const CATEGORY_LABELS = {
