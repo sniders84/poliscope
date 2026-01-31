@@ -1,9 +1,9 @@
-name: "Update Senate Data"
+name: Update Senate Data
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 2 * * *" # run nightly at 2 AM UTC
+    - cron: '0 2 * * *'  # nightly at 2 AM UTC
 
 permissions:
   contents: write
@@ -12,16 +12,19 @@ jobs:
   update-senate:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # needed for git-auto-commit to compare properly
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: '20'
+          cache: 'npm'
 
       - name: Install dependencies
-        run: npm install   # avoid lockfile churn
+        run: npm install
 
       - name: Bootstrap senators
         run: node scripts/bootstrap-senators.js
@@ -53,14 +56,26 @@ jobs:
       - name: Update streaks (Senate + House)
         run: node scripts/update-streaks.js
 
-      - name: Sync with remote main
-        run: git pull --rebase origin main
+      - name: Debug — list generated files
+        if: always()
+        run: |
+          echo "Listing public/ contents after processing:"
+          ls -la public/ | grep -E 'senators|legislation|committees|scores|streaks|misconduct' || echo "No matching files found"
 
-      - name: Commit and push changes
+      - name: Commit and push updated Senate files
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Automated Senate update (119th Congress)"
-          file_pattern: public/senators-*.json
+          commit_message: "Automated Senate update (119th Congress) [skip ci]"
+          file_pattern: |
+            public/senators*.json
+            public/senators-*.json
+            public/legislation*.json
+            public/committee*.json
+            public/*scores.json
+            public/*streaks.json
           commit_user_name: github-actions[bot]
           commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
-          push_options: "--force-with-lease"
+          push_options: '--force-with-lease'
+          skip_dirty_check: false          # only commit if there are changes
+          skip_fetch: false
+          branch: main
