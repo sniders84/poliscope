@@ -3319,9 +3319,9 @@ function showScorecard(person, breakdown, composite) {
   modal.setAttribute('aria-hidden', 'false');
 }
 
-  // Decide what value to display based on the selected filter
+   // Decide what value to display based on the selected filter
   const displayVal = selectedCategory === "powerScore"
-    ? row.score.toFixed(1)   // use the computed composite score
+    ? row.score.toFixed(1)
     : Array.isArray(row.person[selectedCategory])
       ? row.person[selectedCategory].length
       : row.person[selectedCategory] || 0;
@@ -3350,20 +3350,19 @@ function showScorecard(person, breakdown, composite) {
   tableBody.appendChild(tr);
 });
 
-    // Add scorecard click handlers
-  tableBody.querySelectorAll('.scorecard-link').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      const name = link.dataset.name;
-      const row = rows.find(r => r.person.name === name);
-      if (row) {
-        showScorecard(row.person, row.breakdown, row.score);
-      }
-    });
+// Add scorecard click handlers
+tableBody.querySelectorAll('.scorecard-link').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const name = link.dataset.name;
+    const row = rows.find(r => r.person.name === name);
+    if (row) {
+      showScorecard(row.person, row.breakdown, row.score);
+    }
   });
-}
+});
 
-// Modal close handlers (unchanged)
+// Modal close handlers
 document.getElementById('scorecardClose')?.addEventListener('click', () => {
   const modal = document.getElementById('scorecardModal');
   modal.classList.remove('is-open', 'modal-dark');
@@ -3401,3 +3400,4 @@ categorySel.addEventListener('change', () => render().catch(console.error));
 
 // Initial render
 render().catch(console.error);
+})();  // only one closer
