@@ -4,9 +4,9 @@
     "name": "Maria Cantwell",
     "votes": {
       "yeaVotes": 180,
-      "nayVotes": 486,
+      "nayVotes": 487,
       "missedVotes": 1,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 99.85,
       "missedVotePct": 0.15
     }
@@ -16,9 +16,9 @@
     "name": "Amy Klobuchar",
     "votes": {
       "yeaVotes": 214,
-      "nayVotes": 446,
+      "nayVotes": 447,
       "missedVotes": 7,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 98.95,
       "missedVotePct": 1.05
     }
@@ -28,33 +28,33 @@
     "name": "Bernard Sanders",
     "votes": {
       "yeaVotes": 153,
-      "nayVotes": 456,
+      "nayVotes": 457,
       "missedVotes": 58,
-      "totalVotes": 667,
-      "participationPct": 91.3,
-      "missedVotePct": 8.7
+      "totalVotes": 668,
+      "participationPct": 91.32,
+      "missedVotePct": 8.68
     }
   },
   {
     "bioguideId": "W000802",
     "name": "Sheldon Whitehouse",
     "votes": {
-      "yeaVotes": 187,
+      "yeaVotes": 188,
       "nayVotes": 456,
       "missedVotes": 24,
-      "totalVotes": 667,
-      "participationPct": 96.4,
-      "missedVotePct": 3.6
+      "totalVotes": 668,
+      "participationPct": 96.41,
+      "missedVotePct": 3.59
     }
   },
   {
     "bioguideId": "B001261",
     "name": "John Barrasso",
     "votes": {
-      "yeaVotes": 512,
+      "yeaVotes": 513,
       "nayVotes": 151,
       "missedVotes": 4,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 99.4,
       "missedVotePct": 0.6
     }
@@ -63,22 +63,22 @@
     "bioguideId": "W000437",
     "name": "Roger Wicker",
     "votes": {
-      "yeaVotes": 488,
+      "yeaVotes": 489,
       "nayVotes": 153,
       "missedVotes": 26,
-      "totalVotes": 667,
-      "participationPct": 96.1,
-      "missedVotePct": 3.9
+      "totalVotes": 668,
+      "participationPct": 96.11,
+      "missedVotePct": 3.89
     }
   },
   {
     "bioguideId": "C001035",
     "name": "Susan Collins",
     "votes": {
-      "yeaVotes": 546,
+      "yeaVotes": 547,
       "nayVotes": 121,
       "missedVotes": 0,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 100,
       "missedVotePct": 0
     }
@@ -87,10 +87,10 @@
     "bioguideId": "C001056",
     "name": "John Cornyn",
     "votes": {
-      "yeaVotes": 511,
+      "yeaVotes": 512,
       "nayVotes": 153,
       "missedVotes": 3,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 99.55,
       "missedVotePct": 0.45
     }
@@ -100,35 +100,35 @@
     "name": "Richard Durbin",
     "votes": {
       "yeaVotes": 215,
-      "nayVotes": 434,
+      "nayVotes": 435,
       "missedVotes": 18,
-      "totalVotes": 667,
-      "participationPct": 97.3,
-      "missedVotePct": 2.7
+      "totalVotes": 668,
+      "participationPct": 97.31,
+      "missedVotePct": 2.69
     }
   },
   {
     "bioguideId": "G000359",
     "name": "Lindsey Graham",
     "votes": {
-      "yeaVotes": 471,
+      "yeaVotes": 472,
       "nayVotes": 153,
       "missedVotes": 43,
-      "totalVotes": 667,
-      "participationPct": 93.55,
-      "missedVotePct": 6.45
+      "totalVotes": 668,
+      "participationPct": 93.56,
+      "missedVotePct": 6.44
     }
   },
   {
     "bioguideId": "M000355",
     "name": "Mitch McConnell",
     "votes": {
-      "yeaVotes": 463,
+      "yeaVotes": 464,
       "nayVotes": 149,
       "missedVotes": 55,
-      "totalVotes": 667,
-      "participationPct": 91.75,
-      "missedVotePct": 8.25
+      "totalVotes": 668,
+      "participationPct": 91.77,
+      "missedVotePct": 8.23
     }
   },
   {
@@ -136,9 +136,9 @@
     "name": "Jeff Merkley",
     "votes": {
       "yeaVotes": 158,
-      "nayVotes": 503,
+      "nayVotes": 504,
       "missedVotes": 6,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 99.1,
       "missedVotePct": 0.9
     }
@@ -148,9 +148,9 @@
     "name": "John Reed",
     "votes": {
       "yeaVotes": 207,
-      "nayVotes": 452,
+      "nayVotes": 453,
       "missedVotes": 8,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 98.8,
       "missedVotePct": 1.2
     }
@@ -159,10 +159,10 @@
     "bioguideId": "R000584",
     "name": "James Risch",
     "votes": {
-      "yeaVotes": 503,
+      "yeaVotes": 504,
       "nayVotes": 151,
       "missedVotes": 13,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 98.05,
       "missedVotePct": 1.95
     }
@@ -171,12 +171,12 @@
     "bioguideId": "S001181",
     "name": "Jeanne Shaheen",
     "votes": {
-      "yeaVotes": 268,
+      "yeaVotes": 269,
       "nayVotes": 376,
       "missedVotes": 23,
-      "totalVotes": 667,
-      "participationPct": 96.55,
-      "missedVotePct": 3.45
+      "totalVotes": 668,
+      "participationPct": 96.56,
+      "missedVotePct": 3.44
     }
   },
   {
@@ -184,11 +184,11 @@
     "name": "Mark Warner",
     "votes": {
       "yeaVotes": 237,
-      "nayVotes": 413,
+      "nayVotes": 414,
       "missedVotes": 17,
-      "totalVotes": 667,
-      "participationPct": 97.45,
-      "missedVotePct": 2.55
+      "totalVotes": 668,
+      "participationPct": 97.46,
+      "missedVotePct": 2.54
     }
   },
   {
@@ -196,9 +196,9 @@
     "name": "Kirsten Gillibrand",
     "votes": {
       "yeaVotes": 194,
-      "nayVotes": 462,
+      "nayVotes": 463,
       "missedVotes": 11,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 98.35,
       "missedVotePct": 1.65
     }
@@ -208,11 +208,11 @@
     "name": "Christopher Coons",
     "votes": {
       "yeaVotes": 197,
-      "nayVotes": 435,
+      "nayVotes": 436,
       "missedVotes": 35,
-      "totalVotes": 667,
-      "participationPct": 94.75,
-      "missedVotePct": 5.25
+      "totalVotes": 668,
+      "participationPct": 94.76,
+      "missedVotePct": 5.24
     }
   },
   {
@@ -220,9 +220,9 @@
     "name": "Tammy Baldwin",
     "votes": {
       "yeaVotes": 185,
-      "nayVotes": 479,
+      "nayVotes": 480,
       "missedVotes": 1,
-      "totalVotes": 665,
+      "totalVotes": 666,
       "participationPct": 99.85,
       "missedVotePct": 0.15
     }
@@ -232,9 +232,9 @@
     "name": "Michael Bennet",
     "votes": {
       "yeaVotes": 185,
-      "nayVotes": 471,
+      "nayVotes": 472,
       "missedVotes": 11,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 98.35,
       "missedVotePct": 1.65
     }
@@ -243,12 +243,12 @@
     "bioguideId": "B001243",
     "name": "Marsha Blackburn",
     "votes": {
-      "yeaVotes": 492,
+      "yeaVotes": 493,
       "nayVotes": 141,
       "missedVotes": 34,
-      "totalVotes": 667,
-      "participationPct": 94.9,
-      "missedVotePct": 5.1
+      "totalVotes": 668,
+      "participationPct": 94.91,
+      "missedVotePct": 5.09
     }
   },
   {
@@ -256,9 +256,9 @@
     "name": "Richard Blumenthal",
     "votes": {
       "yeaVotes": 165,
-      "nayVotes": 493,
+      "nayVotes": 494,
       "missedVotes": 9,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 98.65,
       "missedVotePct": 1.35
     }
@@ -267,10 +267,10 @@
     "bioguideId": "B001236",
     "name": "John Boozman",
     "votes": {
-      "yeaVotes": 498,
+      "yeaVotes": 499,
       "nayVotes": 157,
       "missedVotes": 12,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 98.2,
       "missedVotePct": 1.8
     }
@@ -279,10 +279,10 @@
     "bioguideId": "C001047",
     "name": "Shelley Capito",
     "votes": {
-      "yeaVotes": 499,
+      "yeaVotes": 500,
       "nayVotes": 154,
       "missedVotes": 14,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 97.9,
       "missedVotePct": 2.1
     }
@@ -291,22 +291,22 @@
     "bioguideId": "C001075",
     "name": "Bill Cassidy",
     "votes": {
-      "yeaVotes": 484,
+      "yeaVotes": 485,
       "nayVotes": 142,
       "missedVotes": 41,
-      "totalVotes": 667,
-      "participationPct": 93.85,
-      "missedVotePct": 6.15
+      "totalVotes": 668,
+      "participationPct": 93.86,
+      "missedVotePct": 6.14
     }
   },
   {
     "bioguideId": "C000880",
     "name": "Michael Crapo",
     "votes": {
-      "yeaVotes": 509,
+      "yeaVotes": 510,
       "nayVotes": 153,
       "missedVotes": 5,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 99.25,
       "missedVotePct": 0.75
     }
@@ -315,10 +315,10 @@
     "bioguideId": "G000386",
     "name": "Charles Grassley",
     "votes": {
-      "yeaVotes": 508,
+      "yeaVotes": 509,
       "nayVotes": 155,
       "missedVotes": 4,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 99.4,
       "missedVotePct": 0.6
     }
@@ -328,11 +328,11 @@
     "name": "Martin Heinrich",
     "votes": {
       "yeaVotes": 203,
-      "nayVotes": 430,
+      "nayVotes": 431,
       "missedVotes": 34,
-      "totalVotes": 667,
-      "participationPct": 94.9,
-      "missedVotePct": 5.1
+      "totalVotes": 668,
+      "participationPct": 94.91,
+      "missedVotePct": 5.09
     }
   },
   {
@@ -340,9 +340,9 @@
     "name": "Mazie Hirono",
     "votes": {
       "yeaVotes": 164,
-      "nayVotes": 501,
+      "nayVotes": 502,
       "missedVotes": 2,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 99.7,
       "missedVotePct": 0.3
     }
@@ -351,10 +351,10 @@
     "bioguideId": "H001061",
     "name": "John Hoeven",
     "votes": {
-      "yeaVotes": 506,
+      "yeaVotes": 507,
       "nayVotes": 154,
       "missedVotes": 7,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 98.95,
       "missedVotePct": 1.05
     }
@@ -363,10 +363,10 @@
     "bioguideId": "J000293",
     "name": "Ron Johnson",
     "votes": {
-      "yeaVotes": 510,
+      "yeaVotes": 511,
       "nayVotes": 149,
       "missedVotes": 8,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 98.8,
       "missedVotePct": 1.2
     }
@@ -375,10 +375,10 @@
     "bioguideId": "L000575",
     "name": "James Lankford",
     "votes": {
-      "yeaVotes": 513,
+      "yeaVotes": 514,
       "nayVotes": 152,
       "missedVotes": 2,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 99.7,
       "missedVotePct": 0.3
     }
@@ -387,12 +387,12 @@
     "bioguideId": "L000577",
     "name": "Mike Lee",
     "votes": {
-      "yeaVotes": 490,
+      "yeaVotes": 491,
       "nayVotes": 154,
       "missedVotes": 23,
-      "totalVotes": 667,
-      "participationPct": 96.55,
-      "missedVotePct": 3.45
+      "totalVotes": 668,
+      "participationPct": 96.56,
+      "missedVotePct": 3.44
     }
   },
   {
@@ -412,9 +412,9 @@
     "name": "Edward Markey",
     "votes": {
       "yeaVotes": 148,
-      "nayVotes": 514,
+      "nayVotes": 515,
       "missedVotes": 5,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 99.25,
       "missedVotePct": 0.75
     }
@@ -423,24 +423,24 @@
     "bioguideId": "M000934",
     "name": "Jerry Moran",
     "votes": {
-      "yeaVotes": 479,
+      "yeaVotes": 480,
       "nayVotes": 152,
       "missedVotes": 36,
-      "totalVotes": 667,
-      "participationPct": 94.6,
-      "missedVotePct": 5.4
+      "totalVotes": 668,
+      "participationPct": 94.61,
+      "missedVotePct": 5.39
     }
   },
   {
     "bioguideId": "M001153",
     "name": "Lisa Murkowski",
     "votes": {
-      "yeaVotes": 511,
+      "yeaVotes": 512,
       "nayVotes": 133,
       "missedVotes": 23,
-      "totalVotes": 667,
-      "participationPct": 96.55,
-      "missedVotePct": 3.45
+      "totalVotes": 668,
+      "participationPct": 96.56,
+      "missedVotePct": 3.44
     }
   },
   {
@@ -448,11 +448,11 @@
     "name": "Christopher Murphy",
     "votes": {
       "yeaVotes": 153,
-      "nayVotes": 494,
+      "nayVotes": 495,
       "missedVotes": 20,
-      "totalVotes": 667,
-      "participationPct": 97,
-      "missedVotePct": 3
+      "totalVotes": 668,
+      "participationPct": 97.01,
+      "missedVotePct": 2.99
     }
   },
   {
@@ -460,23 +460,23 @@
     "name": "Patty Murray",
     "votes": {
       "yeaVotes": 139,
-      "nayVotes": 484,
+      "nayVotes": 485,
       "missedVotes": 44,
-      "totalVotes": 667,
-      "participationPct": 93.4,
-      "missedVotePct": 6.6
+      "totalVotes": 668,
+      "participationPct": 93.41,
+      "missedVotePct": 6.59
     }
   },
   {
     "bioguideId": "P000603",
     "name": "Rand Paul",
     "votes": {
-      "yeaVotes": 443,
+      "yeaVotes": 444,
       "nayVotes": 200,
       "missedVotes": 22,
-      "totalVotes": 665,
-      "participationPct": 96.69,
-      "missedVotePct": 3.31
+      "totalVotes": 666,
+      "participationPct": 96.7,
+      "missedVotePct": 3.3
     }
   },
   {
@@ -484,9 +484,9 @@
     "name": "Gary Peters",
     "votes": {
       "yeaVotes": 203,
-      "nayVotes": 450,
+      "nayVotes": 451,
       "missedVotes": 14,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 97.9,
       "missedVotePct": 2.1
     }
@@ -496,9 +496,9 @@
     "name": "Adam Schiff",
     "votes": {
       "yeaVotes": 186,
-      "nayVotes": 465,
+      "nayVotes": 466,
       "missedVotes": 16,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 97.6,
       "missedVotePct": 2.4
     }
@@ -508,9 +508,9 @@
     "name": "Charles Schumer",
     "votes": {
       "yeaVotes": 168,
-      "nayVotes": 496,
+      "nayVotes": 497,
       "missedVotes": 3,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 99.55,
       "missedVotePct": 0.45
     }
@@ -519,22 +519,22 @@
     "bioguideId": "S001184",
     "name": "Tim Scott",
     "votes": {
-      "yeaVotes": 492,
+      "yeaVotes": 493,
       "nayVotes": 153,
       "missedVotes": 22,
-      "totalVotes": 667,
-      "participationPct": 96.7,
-      "missedVotePct": 3.3
+      "totalVotes": 668,
+      "participationPct": 96.71,
+      "missedVotePct": 3.29
     }
   },
   {
     "bioguideId": "T000250",
     "name": "John Thune",
     "votes": {
-      "yeaVotes": 501,
+      "yeaVotes": 502,
       "nayVotes": 165,
       "missedVotes": 1,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 99.85,
       "missedVotePct": 0.15
     }
@@ -544,9 +544,9 @@
     "name": "Chris Van Hollen",
     "votes": {
       "yeaVotes": 158,
-      "nayVotes": 497,
+      "nayVotes": 498,
       "missedVotes": 12,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 98.2,
       "missedVotePct": 1.8
     }
@@ -555,12 +555,12 @@
     "bioguideId": "W000800",
     "name": "Peter Welch",
     "votes": {
-      "yeaVotes": 177,
+      "yeaVotes": 178,
       "nayVotes": 440,
       "missedVotes": 50,
-      "totalVotes": 667,
-      "participationPct": 92.5,
-      "missedVotePct": 7.5
+      "totalVotes": 668,
+      "participationPct": 92.51,
+      "missedVotePct": 7.49
     }
   },
   {
@@ -568,21 +568,21 @@
     "name": "Ron Wyden",
     "votes": {
       "yeaVotes": 157,
-      "nayVotes": 493,
+      "nayVotes": 494,
       "missedVotes": 17,
-      "totalVotes": 667,
-      "participationPct": 97.45,
-      "missedVotePct": 2.55
+      "totalVotes": 668,
+      "participationPct": 97.46,
+      "missedVotePct": 2.54
     }
   },
   {
     "bioguideId": "Y000064",
     "name": "Todd Young",
     "votes": {
-      "yeaVotes": 508,
+      "yeaVotes": 509,
       "nayVotes": 153,
       "missedVotes": 6,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 99.1,
       "missedVotePct": 0.9
     }
@@ -592,9 +592,9 @@
     "name": "Brian Schatz",
     "votes": {
       "yeaVotes": 164,
-      "nayVotes": 496,
+      "nayVotes": 497,
       "missedVotes": 7,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 98.95,
       "missedVotePct": 1.05
     }
@@ -605,10 +605,10 @@
     "votes": {
       "yeaVotes": 502,
       "nayVotes": 155,
-      "missedVotes": 10,
-      "totalVotes": 667,
-      "participationPct": 98.5,
-      "missedVotePct": 1.5
+      "missedVotes": 11,
+      "totalVotes": 668,
+      "participationPct": 98.35,
+      "missedVotePct": 1.65
     }
   },
   {
@@ -616,11 +616,11 @@
     "name": "Tammy Duckworth",
     "votes": {
       "yeaVotes": 166,
-      "nayVotes": 444,
+      "nayVotes": 445,
       "missedVotes": 57,
-      "totalVotes": 667,
-      "participationPct": 91.45,
-      "missedVotePct": 8.55
+      "totalVotes": 668,
+      "participationPct": 91.47,
+      "missedVotePct": 8.53
     }
   },
   {
@@ -628,9 +628,9 @@
     "name": "Elizabeth Warren",
     "votes": {
       "yeaVotes": 151,
-      "nayVotes": 502,
+      "nayVotes": 503,
       "missedVotes": 14,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 97.9,
       "missedVotePct": 2.1
     }
@@ -640,9 +640,9 @@
     "name": "Angus King",
     "votes": {
       "yeaVotes": 269,
-      "nayVotes": 387,
+      "nayVotes": 388,
       "missedVotes": 11,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 98.35,
       "missedVotePct": 1.65
     }
@@ -651,34 +651,34 @@
     "bioguideId": "D000618",
     "name": "Steve Daines",
     "votes": {
-      "yeaVotes": 499,
+      "yeaVotes": 500,
       "nayVotes": 148,
       "missedVotes": 20,
-      "totalVotes": 667,
-      "participationPct": 97,
-      "missedVotePct": 3
+      "totalVotes": 668,
+      "participationPct": 97.01,
+      "missedVotePct": 2.99
     }
   },
   {
     "bioguideId": "C001096",
     "name": "Kevin Cramer",
     "votes": {
-      "yeaVotes": 490,
+      "yeaVotes": 491,
       "nayVotes": 154,
       "missedVotes": 23,
-      "totalVotes": 667,
-      "participationPct": 96.55,
-      "missedVotePct": 3.45
+      "totalVotes": 668,
+      "participationPct": 96.56,
+      "missedVotePct": 3.44
     }
   },
   {
     "bioguideId": "F000463",
     "name": "Deb Fischer",
     "votes": {
-      "yeaVotes": 509,
+      "yeaVotes": 510,
       "nayVotes": 154,
       "missedVotes": 4,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 99.4,
       "missedVotePct": 0.6
     }
@@ -687,24 +687,24 @@
     "bioguideId": "M001190",
     "name": "Markwayne Mullin",
     "votes": {
-      "yeaVotes": 472,
+      "yeaVotes": 473,
       "nayVotes": 156,
       "missedVotes": 39,
-      "totalVotes": 667,
-      "participationPct": 94.15,
-      "missedVotePct": 5.85
+      "totalVotes": 668,
+      "participationPct": 94.16,
+      "missedVotePct": 5.84
     }
   },
   {
     "bioguideId": "C001098",
     "name": "Ted Cruz",
     "votes": {
-      "yeaVotes": 482,
+      "yeaVotes": 483,
       "nayVotes": 142,
       "missedVotes": 43,
-      "totalVotes": 667,
-      "participationPct": 93.55,
-      "missedVotePct": 6.45
+      "totalVotes": 668,
+      "participationPct": 93.56,
+      "missedVotePct": 6.44
     }
   },
   {
@@ -712,9 +712,9 @@
     "name": "Timothy Kaine",
     "votes": {
       "yeaVotes": 241,
-      "nayVotes": 420,
+      "nayVotes": 421,
       "missedVotes": 6,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 99.1,
       "missedVotePct": 0.9
     }
@@ -724,11 +724,11 @@
     "name": "Cory Booker",
     "votes": {
       "yeaVotes": 171,
-      "nayVotes": 466,
+      "nayVotes": 467,
       "missedVotes": 30,
-      "totalVotes": 667,
-      "participationPct": 95.5,
-      "missedVotePct": 4.5
+      "totalVotes": 668,
+      "participationPct": 95.51,
+      "missedVotePct": 4.49
     }
   },
   {
@@ -737,32 +737,32 @@
     "votes": {
       "yeaVotes": 215,
       "nayVotes": 358,
-      "missedVotes": 94,
-      "totalVotes": 667,
-      "participationPct": 85.91,
-      "missedVotePct": 14.09
+      "missedVotes": 95,
+      "totalVotes": 668,
+      "participationPct": 85.78,
+      "missedVotePct": 14.22
     }
   },
   {
     "bioguideId": "S001198",
     "name": "Dan Sullivan",
     "votes": {
-      "yeaVotes": 506,
+      "yeaVotes": 507,
       "nayVotes": 141,
       "missedVotes": 20,
-      "totalVotes": 667,
-      "participationPct": 97,
-      "missedVotePct": 3
+      "totalVotes": 668,
+      "participationPct": 97.01,
+      "missedVotePct": 2.99
     }
   },
   {
     "bioguideId": "E000295",
     "name": "Joni Ernst",
     "votes": {
-      "yeaVotes": 502,
+      "yeaVotes": 503,
       "nayVotes": 151,
       "missedVotes": 14,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 97.9,
       "missedVotePct": 2.1
     }
@@ -771,22 +771,22 @@
     "bioguideId": "T000476",
     "name": "Thom Tillis",
     "votes": {
-      "yeaVotes": 437,
+      "yeaVotes": 438,
       "nayVotes": 153,
       "missedVotes": 77,
-      "totalVotes": 667,
-      "participationPct": 88.46,
-      "missedVotePct": 11.54
+      "totalVotes": 668,
+      "participationPct": 88.47,
+      "missedVotePct": 11.53
     }
   },
   {
     "bioguideId": "R000605",
     "name": "Mike Rounds",
     "votes": {
-      "yeaVotes": 504,
+      "yeaVotes": 505,
       "nayVotes": 159,
       "missedVotes": 4,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 99.4,
       "missedVotePct": 0.6
     }
@@ -795,10 +795,10 @@
     "bioguideId": "K000393",
     "name": "John Kennedy",
     "votes": {
-      "yeaVotes": 506,
+      "yeaVotes": 507,
       "nayVotes": 147,
       "missedVotes": 14,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 97.9,
       "missedVotePct": 2.1
     }
@@ -807,10 +807,10 @@
     "bioguideId": "H001076",
     "name": "Margaret Hassan",
     "votes": {
-      "yeaVotes": 260,
+      "yeaVotes": 261,
       "nayVotes": 399,
       "missedVotes": 8,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 98.8,
       "missedVotePct": 1.2
     }
@@ -820,11 +820,11 @@
     "name": "Catherine Cortez Masto",
     "votes": {
       "yeaVotes": 223,
-      "nayVotes": 427,
+      "nayVotes": 428,
       "missedVotes": 17,
-      "totalVotes": 667,
-      "participationPct": 97.45,
-      "missedVotePct": 2.55
+      "totalVotes": 668,
+      "participationPct": 97.46,
+      "missedVotePct": 2.54
     }
   },
   {
@@ -832,9 +832,9 @@
     "name": "Lisa Blunt Rochester",
     "votes": {
       "yeaVotes": 166,
-      "nayVotes": 498,
+      "nayVotes": 499,
       "missedVotes": 3,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 99.55,
       "missedVotePct": 0.45
     }
@@ -843,10 +843,10 @@
     "bioguideId": "B001299",
     "name": "Jim Banks",
     "votes": {
-      "yeaVotes": 508,
+      "yeaVotes": 509,
       "nayVotes": 150,
       "missedVotes": 9,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 98.65,
       "missedVotePct": 1.35
     }
@@ -855,10 +855,10 @@
     "bioguideId": "M001198",
     "name": "Roger Marshall",
     "votes": {
-      "yeaVotes": 512,
+      "yeaVotes": 513,
       "nayVotes": 149,
       "missedVotes": 6,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 99.1,
       "missedVotePct": 0.9
     }
@@ -867,12 +867,12 @@
     "bioguideId": "B001305",
     "name": "Ted Budd",
     "votes": {
-      "yeaVotes": 498,
+      "yeaVotes": 499,
       "nayVotes": 146,
       "missedVotes": 23,
-      "totalVotes": 667,
-      "participationPct": 96.55,
-      "missedVotePct": 3.45
+      "totalVotes": 668,
+      "participationPct": 96.56,
+      "missedVotePct": 3.44
     }
   },
   {
@@ -880,9 +880,9 @@
     "name": "Jacky Rosen",
     "votes": {
       "yeaVotes": 238,
-      "nayVotes": 418,
+      "nayVotes": 419,
       "missedVotes": 11,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 98.35,
       "missedVotePct": 1.65
     }
@@ -891,10 +891,10 @@
     "bioguideId": "C001114",
     "name": "John Curtis",
     "votes": {
-      "yeaVotes": 507,
+      "yeaVotes": 508,
       "nayVotes": 149,
       "missedVotes": 11,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 98.35,
       "missedVotePct": 1.65
     }
@@ -904,21 +904,21 @@
     "name": "Tina Smith",
     "votes": {
       "yeaVotes": 147,
-      "nayVotes": 488,
+      "nayVotes": 489,
       "missedVotes": 32,
-      "totalVotes": 667,
-      "participationPct": 95.2,
-      "missedVotePct": 4.8
+      "totalVotes": 668,
+      "participationPct": 95.21,
+      "missedVotePct": 4.79
     }
   },
   {
     "bioguideId": "H001079",
     "name": "Cindy Hyde-Smith",
     "votes": {
-      "yeaVotes": 503,
+      "yeaVotes": 504,
       "nayVotes": 153,
       "missedVotes": 11,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 98.35,
       "missedVotePct": 1.65
     }
@@ -928,11 +928,11 @@
     "name": "Elissa Slotkin",
     "votes": {
       "yeaVotes": 222,
-      "nayVotes": 423,
+      "nayVotes": 424,
       "missedVotes": 22,
-      "totalVotes": 667,
-      "participationPct": 96.7,
-      "missedVotePct": 3.3
+      "totalVotes": 668,
+      "participationPct": 96.71,
+      "missedVotePct": 3.29
     }
   },
   {
@@ -940,9 +940,9 @@
     "name": "Andy Kim",
     "votes": {
       "yeaVotes": 190,
-      "nayVotes": 474,
+      "nayVotes": 475,
       "missedVotes": 3,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 99.55,
       "missedVotePct": 0.45
     }
@@ -951,10 +951,10 @@
     "bioguideId": "S001217",
     "name": "Rick Scott",
     "votes": {
-      "yeaVotes": 517,
+      "yeaVotes": 518,
       "nayVotes": 148,
       "missedVotes": 2,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 99.7,
       "missedVotePct": 0.3
     }
@@ -963,12 +963,12 @@
     "bioguideId": "H001089",
     "name": "Joshua Hawley",
     "votes": {
-      "yeaVotes": 490,
+      "yeaVotes": 491,
       "nayVotes": 146,
       "missedVotes": 31,
-      "totalVotes": 667,
-      "participationPct": 95.35,
-      "missedVotePct": 4.65
+      "totalVotes": 668,
+      "participationPct": 95.36,
+      "missedVotePct": 4.64
     }
   },
   {
@@ -977,34 +977,34 @@
     "votes": {
       "yeaVotes": 230,
       "nayVotes": 398,
-      "missedVotes": 39,
-      "totalVotes": 667,
-      "participationPct": 94.15,
-      "missedVotePct": 5.85
+      "missedVotes": 40,
+      "totalVotes": 668,
+      "participationPct": 94.01,
+      "missedVotePct": 5.99
     }
   },
   {
     "bioguideId": "L000571",
     "name": "Cynthia Lummis",
     "votes": {
-      "yeaVotes": 494,
+      "yeaVotes": 495,
       "nayVotes": 151,
       "missedVotes": 22,
-      "totalVotes": 667,
-      "participationPct": 96.7,
-      "missedVotePct": 3.3
+      "totalVotes": 668,
+      "participationPct": 96.71,
+      "missedVotePct": 3.29
     }
   },
   {
     "bioguideId": "T000278",
     "name": "Tommy Tuberville",
     "votes": {
-      "yeaVotes": 488,
+      "yeaVotes": 489,
       "nayVotes": 150,
       "missedVotes": 29,
-      "totalVotes": 667,
-      "participationPct": 95.65,
-      "missedVotePct": 4.35
+      "totalVotes": 668,
+      "participationPct": 95.66,
+      "missedVotePct": 4.34
     }
   },
   {
@@ -1012,9 +1012,9 @@
     "name": "John Hickenlooper",
     "votes": {
       "yeaVotes": 204,
-      "nayVotes": 454,
+      "nayVotes": 455,
       "missedVotes": 9,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 98.65,
       "missedVotePct": 1.35
     }
@@ -1023,12 +1023,12 @@
     "bioguideId": "H000601",
     "name": "Bill Hagerty",
     "votes": {
-      "yeaVotes": 501,
+      "yeaVotes": 502,
       "nayVotes": 147,
       "missedVotes": 19,
-      "totalVotes": 667,
-      "participationPct": 97.15,
-      "missedVotePct": 2.85
+      "totalVotes": 668,
+      "participationPct": 97.16,
+      "missedVotePct": 2.84
     }
   },
   {
@@ -1036,11 +1036,11 @@
     "name": "Alejandro Padilla",
     "votes": {
       "yeaVotes": 158,
-      "nayVotes": 480,
+      "nayVotes": 481,
       "missedVotes": 29,
-      "totalVotes": 667,
-      "participationPct": 95.65,
-      "missedVotePct": 4.35
+      "totalVotes": 668,
+      "participationPct": 95.66,
+      "missedVotePct": 4.34
     }
   },
   {
@@ -1048,33 +1048,33 @@
     "name": "Jon Ossoff",
     "votes": {
       "yeaVotes": 188,
-      "nayVotes": 429,
+      "nayVotes": 430,
       "missedVotes": 50,
-      "totalVotes": 667,
-      "participationPct": 92.5,
-      "missedVotePct": 7.5
+      "totalVotes": 668,
+      "participationPct": 92.51,
+      "missedVotePct": 7.49
     }
   },
   {
     "bioguideId": "W000790",
     "name": "Raphael Warnock",
     "votes": {
-      "yeaVotes": 207,
+      "yeaVotes": 208,
       "nayVotes": 442,
       "missedVotes": 18,
-      "totalVotes": 667,
-      "participationPct": 97.3,
-      "missedVotePct": 2.7
+      "totalVotes": 668,
+      "participationPct": 97.31,
+      "missedVotePct": 2.69
     }
   },
   {
     "bioguideId": "B001319",
     "name": "Katie Britt",
     "votes": {
-      "yeaVotes": 502,
+      "yeaVotes": 503,
       "nayVotes": 150,
       "missedVotes": 15,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 97.75,
       "missedVotePct": 2.25
     }
@@ -1083,10 +1083,10 @@
     "bioguideId": "S001227",
     "name": "Eric Schmitt",
     "votes": {
-      "yeaVotes": 511,
+      "yeaVotes": 512,
       "nayVotes": 147,
       "missedVotes": 9,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 98.65,
       "missedVotePct": 1.35
     }
@@ -1096,21 +1096,21 @@
     "name": "John Fetterman",
     "votes": {
       "yeaVotes": 271,
-      "nayVotes": 351,
+      "nayVotes": 352,
       "missedVotes": 45,
-      "totalVotes": 667,
-      "participationPct": 93.25,
-      "missedVotePct": 6.75
+      "totalVotes": 668,
+      "participationPct": 93.26,
+      "missedVotePct": 6.74
     }
   },
   {
     "bioguideId": "R000618",
     "name": "Pete Ricketts",
     "votes": {
-      "yeaVotes": 509,
+      "yeaVotes": 510,
       "nayVotes": 156,
       "missedVotes": 2,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 99.7,
       "missedVotePct": 0.3
     }
@@ -1120,9 +1120,9 @@
     "name": "Angela Alsobrooks",
     "votes": {
       "yeaVotes": 183,
-      "nayVotes": 475,
+      "nayVotes": 476,
       "missedVotes": 9,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 98.65,
       "missedVotePct": 1.35
     }
@@ -1131,22 +1131,22 @@
     "bioguideId": "S001232",
     "name": "Tim Sheehy",
     "votes": {
-      "yeaVotes": 497,
+      "yeaVotes": 498,
       "nayVotes": 151,
       "missedVotes": 19,
-      "totalVotes": 667,
-      "participationPct": 97.15,
-      "missedVotePct": 2.85
+      "totalVotes": 668,
+      "participationPct": 97.16,
+      "missedVotePct": 2.84
     }
   },
   {
     "bioguideId": "M001242",
     "name": "Bernie Moreno",
     "votes": {
-      "yeaVotes": 518,
+      "yeaVotes": 519,
       "nayVotes": 149,
       "missedVotes": 0,
-      "totalVotes": 667,
+      "totalVotes": 668,
       "participationPct": 100,
       "missedVotePct": 0
     }
@@ -1155,12 +1155,12 @@
     "bioguideId": "M001243",
     "name": "Dave McCormick",
     "votes": {
-      "yeaVotes": 495,
+      "yeaVotes": 496,
       "nayVotes": 152,
       "missedVotes": 20,
-      "totalVotes": 667,
-      "participationPct": 97,
-      "missedVotePct": 3
+      "totalVotes": 668,
+      "participationPct": 97.01,
+      "missedVotePct": 2.99
     }
   },
   {
