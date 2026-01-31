@@ -18,8 +18,14 @@ jobs:
       - name: Download artifacts
         uses: actions/download-artifact@v4
 
-      - name: Move JSON parts
-        run: mv public/house-part1/*.json public/
+      - name: Move JSON parts 1
+        run: mv house-part1/*.json public/
+      - name: Move JSON parts 2
+        run: mv house-part2/*.json public/
+      - name: Move JSON parts 3
+        run: mv house-part3/*.json public/
+      - name: Move JSON parts 4
+        run: mv house-part4/*.json public/
 
       - name: Merge legislation parts
         run: node scripts/merge-legislation-parts.js
