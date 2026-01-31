@@ -27,6 +27,9 @@ jobs:
       - name: Move JSON parts 4
         run: mv house-part4/*.json public/
 
+      - name: Scrape legislation
+        run: node scripts/legislation-reps-scraper.js
+
       - name: Merge legislation parts
         run: node scripts/merge-legislation-parts.js
 
@@ -51,7 +54,7 @@ jobs:
       - name: Update streaks
         run: node scripts/update-streaks.js
 
-      # Removed the git pull --rebase step
+      # Removed git pull --rebase
 
       - name: Commit and push changes
         run: |
