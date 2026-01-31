@@ -1302,12 +1302,12 @@
   });
 }
 
-  </script>
+   </script>
 
-  <!-- Load external script ONCE – root-relative path, no duplicates -->
+  <!-- Load external script ONCE – correct root-relative path -->
   <script src="/script.js"></script>
 
-  <!-- Unified inline script – no duplicates, no carousel init here if it's in script.js -->
+  <!-- Unified inline script – no duplicates -->
   <script>
   document.addEventListener('DOMContentLoaded', () => {
     showStartupHub();
@@ -1346,7 +1346,6 @@
       wireSearchBar();
     }
 
-    // RSS feed wiring – single instance
     const feedTitle = document.getElementById('feed-title');
     const feedStories = document.getElementById('feed-stories');
     const rssFeeds = {
