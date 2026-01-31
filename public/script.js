@@ -3223,7 +3223,7 @@ document.getElementById('rate-me-btn').onclick = function() {
     return badges;
   }
 
- // Scorecard modal with photo, name, state/district/party, and breakdown
+// Scorecard modal with photo, name, state/district/party, and breakdown
 function showScorecard(person, breakdown, composite) {
   document.getElementById('scorecardName').textContent = person.name;
 
@@ -3295,17 +3295,26 @@ function showScorecard(person, breakdown, composite) {
       tbody.appendChild(tagsRow);
     }
 
-    if (typeof person.misconductText === 'string' && person.misconductText.trim() !== '') {
+    if (typeof person.allegation === 'string' && person.allegation.trim() !== '') {
+      const allegationRow = document.createElement('tr');
+      allegationRow.innerHTML = `
+        <td>Allegation</td>
+        <td colspan="3">${person.allegation}</td>
+      `;
+      tbody.appendChild(allegationRow);
+    }
+
+    if (typeof person.text === 'string' && person.text.trim() !== '') {
       const textRow = document.createElement('tr');
       textRow.innerHTML = `
-        <td>Allegation</td>
-        <td colspan="3">${person.misconductText}</td>
+        <td>Details</td>
+        <td colspan="3">${person.text}</td>
       `;
       tbody.appendChild(textRow);
     }
 
-    if (Array.isArray(person.misconductConsequences) && person.misconductConsequences.length) {
-      person.misconductConsequences.forEach(c => {
+    if (Array.isArray(person.consequences) && person.consequences.length) {
+      person.consequences.forEach(c => {
         const consRow = document.createElement('tr');
         consRow.innerHTML = `
           <td>Consequence</td>
@@ -3348,7 +3357,6 @@ function mergeData(rankings, info, misconduct = []) {
     return { ...r, ...match, ...misconductEntry };
   });
 }
-
 async function render() {
   const selectedOffice = officeSel.value.toLowerCase();
   const selectedCategory = categorySel.value;
@@ -3433,7 +3441,7 @@ async function render() {
       </td>
       <td>${row.person.office || (officeType === 'rep' ? 'U.S. Representative' : 'U.S. Senator')}</td>
       <td>${displayVal}</td>
-            <td class="streak-cell">
+      <td class="streak-cell">
         ${renderStreakBadges(row.person.streaks)
           .map(b => {
             if (b.includes('🔥')) return `<span class="streak-badge activity">${b}</span>`;
