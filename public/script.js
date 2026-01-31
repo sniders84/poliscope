@@ -2945,7 +2945,6 @@ function openRatingsModal(slug) {
     if (official.state) positionText += ` — ${official.state}`;
     if (official.district) positionText += `, District ${official.district}`;
     document.getElementById('ratings-modal-position').textContent = positionText;
-
     // Build category averages + vote counts
     let details = '';
     for (const category of ratingCategories) {
@@ -2976,7 +2975,6 @@ function openRatingsModal(slug) {
       <button type="submit" id="submit-rating-btn" class="btn-modern">Submit Rating</button>
     `;
     initStarRatings();
-
     // Handle rating form submission
     document.getElementById('rate-form').onsubmit = function(e) {
       e.preventDefault();
@@ -3001,7 +2999,6 @@ function openRatingsModal(slug) {
           ratingEntry.votes[category].push(selected);
         }
       });
-
       // Recalculate average
       let total = 0, count = 0;
       for (const category in ratingEntry.votes) {
@@ -3031,7 +3028,6 @@ function openRatingsModal(slug) {
         </p>`;
       }
       document.getElementById('ratings-details').innerHTML = updatedDetails;
-
       // Update card badge in Ratings tab
       const badge = document.querySelector(
         `button[onclick="openRatingsModal('${official.slug}')"]`
@@ -3065,13 +3061,10 @@ function initStarRatings() {
       star.style.cursor = 'pointer';
 
       star.addEventListener('click', function () {
-        // Clear previous selection
         span.querySelectorAll('span').forEach(s => {
           s.classList.remove('filled');
           s.style.color = '';
         });
-
-        // Fill stars up to the clicked one
         for (let j = 1; j <= i; j++) {
           const s = span.querySelector(`span[data-value="${j}"]`);
           if (s) {
@@ -3079,8 +3072,6 @@ function initStarRatings() {
             s.style.color = getRatingColor(j);
           }
         }
-
-        // Save selected value
         span.dataset.selected = String(i);
       });
 
@@ -3088,7 +3079,6 @@ function initStarRatings() {
     }
   });
 }
-
 // Rating color helper
 function getRatingColor(avg) {
   const rounded = Math.round(avg);
@@ -3109,7 +3099,6 @@ function closeModal(id) {
     modal.style.display = 'none';
   }
 }
-
 // Hook up the "Rate Me" button
 document.getElementById('rate-me-btn').onclick = function() {
   const title = document.getElementById('ratings-modal-title').textContent;
@@ -3124,6 +3113,7 @@ document.getElementById('rate-me-btn').onclick = function() {
   const ratingsSec = document.getElementById('ratings-section');
   const rankingsSec = document.getElementById('rankings-section');
   if (!btnRatings || !btnRankings || !ratingsSec || !rankingsSec) return;
+
   function activateRatings() {
     btnRatings.classList.add('rr-tab-active');
     btnRankings.classList.remove('rr-tab-active');
@@ -3132,14 +3122,16 @@ document.getElementById('rate-me-btn').onclick = function() {
     ratingsSec.removeAttribute('aria-hidden');
     rankingsSec.setAttribute('aria-hidden', 'true');
   }
+
   function activateRankings() {
     btnRankings.classList.add('rr-tab-active');
     btnRatings.classList.remove('rr-tab-active');
     rankingsSec.classList.add('rr-section-active');
     ratingsSec.classList.remove('rr-section-active');
     rankingsSec.removeAttribute('aria-hidden');
-    rankingsSec.setAttribute('aria-hidden', 'false');
+    ratingsSec.setAttribute('aria-hidden', 'false');
   }
+
   btnRatings.addEventListener('click', activateRatings);
   btnRankings.addEventListener('click', () => {
     activateRankings();
@@ -3147,6 +3139,8 @@ document.getElementById('rate-me-btn').onclick = function() {
       window.renderRankingsLeaderboard();
     }
   });
+
+  // Default to Ratings tab active
   activateRatings();
 })();
 
@@ -3158,16 +3152,16 @@ document.getElementById('rate-me-btn').onclick = function() {
   if (!officeSel || !categorySel || !tableBody) return;
 
   // Weights tuned to current schema (no amendments)
-const WEIGHTS = {
-  sponsoredBills: 1.2,
-  cosponsoredBills: 0.6,
-  becameLawBills: 6.0,
-  becameLawCosponsoredBills: 3.0,
-  committees: 4.0,           // per committee
-  committeeLeadership: 2.0,  // bonus for Chair/Ranking/Vice
-  missedVotes: -0.5,         // penalty per missed vote
-  misconductCount: -10.0     // penalty per misconduct infraction
-};
+  const WEIGHTS = {
+    sponsoredBills: 1.2,
+    cosponsoredBills: 0.6,
+    becameLawBills: 6.0,
+    becameLawCosponsoredBills: 3.0,
+    committees: 4.0,           // per committee
+    committeeLeadership: 2.0,  // bonus for Chair/Ranking/Vice
+    missedVotes: -0.5,         // penalty per missed vote
+    misconductCount: -10.0     // penalty per misconduct infraction
+  };
 
   // Map schema keys to human-friendly labels
   const CATEGORY_LABELS = {
@@ -3186,172 +3180,165 @@ const WEIGHTS = {
   };
 
   // Scoring function using current schema
-function scoreLegislator(person) {
-  const breakdown = {
-    sponsoredBills: person.sponsoredBills || 0,
-    cosponsoredBills: person.cosponsoredBills || 0,
-    becameLawBills: person.becameLawBills || 0,
-    becameLawCosponsoredBills: person.becameLawCosponsoredBills || 0,
-    committees: (person.committees || []).length,
-    committeeLeadership: (person.committees || []).filter(c =>
-      /chairman|chair|ranking member|vice chair/i.test(c.role)
-    ).length,
-    missedVotes: person.missedVotes || 0,
-    misconductCount: person.misconductCount || 0   // include misconduct infractions
-  };
+  function scoreLegislator(person) {
+    const breakdown = {
+      sponsoredBills: person.sponsoredBills || 0,
+      cosponsoredBills: person.cosponsoredBills || 0,
+      becameLawBills: person.becameLawBills || 0,
+      becameLawCosponsoredBills: person.becameLawCosponsoredBills || 0,
+      committees: (person.committees || []).length,
+      committeeLeadership: (person.committees || []).filter(c =>
+        /chairman|chair|ranking member|vice chair/i.test(c.role)
+      ).length,
+      missedVotes: person.missedVotes || 0,
+      misconductCount: person.misconductCount || 0   // include misconduct infractions
+    };
 
-  let composite = 0;
-  Object.keys(breakdown).forEach(key => {
-    const raw = breakdown[key];
-    const weight = WEIGHTS[key] || 0;
-    composite += raw * weight;
-  });
-
-  return {
-    composite: Math.round(composite * 10) / 10,
-    breakdown
-  };
-}
-
-function formatScore(value) {
-  const cls = value >= 0 ? 'score-positive' : 'score-negative';
-  return `<span class="${cls}">${Number.isFinite(value) ? value.toFixed(1) : '0.0'}</span>`;
-}
-
- // Helper: render streak badges
-function renderStreakBadges(streaks) {
-  const badges = [];
-
-  if (streaks?.activity > 0) {
-    const unit = streaks.activity === 1 ? 'week' : 'weeks';
-    badges.push(`🔥 ${streaks.activity} ${unit} activity streak`);
-  }
-
-  if (streaks?.voting > 0) {
-    const unit = streaks.voting === 1 ? 'week' : 'weeks';
-    badges.push(`🗳 ${streaks.voting} ${unit} voting streak`);
-  }
-
-  if (streaks?.leader > 0) {
-    const unit = streaks.leader === 1 ? 'week' : 'weeks';
-    badges.push(`👑 ${streaks.leader} ${unit} as Leader`);
-  }
-
-  return badges;
-}
-
-// Scorecard modal with photo, name, state/district/party, and breakdown
-function showScorecard(person, breakdown, composite) {
-  document.getElementById('scorecardName').textContent = person.name;
-
-  const photoUrl = person.photo;
-  const district = person.district ? ` / District ${person.district}` : '';
-  const headerHtml = `
-    <img src="${photoUrl}" alt="${person.name}" class="profile-photo">
-    <p>${person.state}${district} • ${person.party}</p>
-  `;
-
-  const breakdownEl = document.getElementById('scorecardBreakdown');
-  breakdownEl.innerHTML = '';
-  breakdownEl.insertAdjacentHTML('afterbegin', headerHtml);
-
-  const labelMap = {
-    sponsoredBills: 'Bills Sponsored',
-    cosponsoredBills: 'Bills Cosponsored',
-    becameLawBills: 'Bills Enacted',
-    becameLawCosponsoredBills: 'Bills Enacted (Cosponsored)',
-    committees: 'Committee Memberships',
-    committeeLeadership: 'Committee Leadership Roles',
-    missedVotes: 'Missed Votes (Count)',
-    misconductCount: 'Misconduct Infractions'
-  };
-
-  const rowsHtml = Object.keys(breakdown).map(key => {
-    const raw = breakdown[key];
-    const weight = WEIGHTS[key] || 0;
-    const contrib = raw * weight;
-    const label = labelMap[key] || key;
-    return `
-      <tr>
-        <td>${label}</td>
-        <td>${raw}</td>
-        <td>${weight.toFixed(1)}</td>
-        <td>${formatScore(contrib)}</td>
-      </tr>
-    `;
-  }).join('');
-
-  breakdownEl.innerHTML += `
-    <table class="scorecard-table">
-      <tbody>
-        <tr>
-          <td><strong>Power Score</strong></td>
-          <td colspan="3">${formatScore(composite)}</td>
-        </tr>
-        <tr>
-          <td><strong>Category</strong></td>
-          <td><strong>Raw</strong></td>
-          <td><strong>Weight</strong></td>
-          <td><strong>Contribution</strong></td>
-        </tr>
-        ${rowsHtml}
-      </tbody>
-    </table>
-  `;
-
-// Append misconduct reasoning inline with safe guards
-if (person.misconductCount && person.misconductCount > 0) {
-  const tbody = breakdownEl.querySelector('tbody');
-
-  // Tags from YAML
-  if (Array.isArray(person.misconductTags) && person.misconductTags.length) {
-    const tagsRow = document.createElement('tr');
-    tagsRow.innerHTML = `
-      <td>⚠️ Misconduct</td>
-      <td colspan="3">Tags: ${person.misconductTags.join(', ')}</td>
-    `;
-    tbody.appendChild(tagsRow);
-  }
-
-  // Allegation from YAML
-  if (typeof person.allegation === 'string' && person.allegation.trim() !== '') {
-    const allegationRow = document.createElement('tr');
-    allegationRow.innerHTML = `
-      <td>Allegation</td>
-      <td colspan="3">${person.allegation}</td>
-    `;
-    tbody.appendChild(allegationRow);
-  }
-
-  // Detailed text from YAML
-  if (typeof person.text === 'string' && person.text.trim() !== '') {
-    const textRow = document.createElement('tr');
-    textRow.innerHTML = `
-      <td>Details</td>
-      <td colspan="3">${person.text}</td>
-    `;
-    tbody.appendChild(textRow);
-  }
-
-  // Consequences from YAML
-  if (Array.isArray(person.consequences) && person.consequences.length) {
-    person.consequences.forEach(c => {
-      const consRow = document.createElement('tr');
-      consRow.innerHTML = `
-        <td>Consequence</td>
-        <td colspan="3">${c.date || ''} — ${c.text || ''} 
-          ${c.link ? `<a href="${c.link}" target="_blank" rel="noopener noreferrer">[source]</a>` : ''}
-        </td>
-      `;
-      tbody.appendChild(consRow);
+    let composite = 0;
+    Object.keys(breakdown).forEach(key => {
+      const raw = breakdown[key];
+      const weight = WEIGHTS[key] || 0;
+      composite += raw * weight;
     });
-  }
-}
 
-const modal = document.getElementById('scorecardModal');
-modal.classList.add('is-open', 'modal-dark');
-modal.setAttribute('aria-hidden', 'false');
-}
+    return {
+      composite: Math.round(composite * 10) / 10,
+      breakdown
+    };
+  }
+
+  function formatScore(value) {
+    const cls = value >= 0 ? 'score-positive' : 'score-negative';
+    return `<span class="${cls}">${Number.isFinite(value) ? value.toFixed(1) : '0.0'}</span>`;
+  }
+
+  // Helper: render streak badges
+  function renderStreakBadges(streaks) {
+    const badges = [];
+
+    if (streaks?.activity > 0) {
+      const unit = streaks.activity === 1 ? 'week' : 'weeks';
+      badges.push(`🔥 ${streaks.activity} ${unit} activity streak`);
+    }
+
+    if (streaks?.voting > 0) {
+      const unit = streaks.voting === 1 ? 'week' : 'weeks';
+      badges.push(`🗳 ${streaks.voting} ${unit} voting streak`);
+    }
+
+    if (streaks?.leader > 0) {
+      const unit = streaks.leader === 1 ? 'week' : 'weeks';
+      badges.push(`👑 ${streaks.leader} ${unit} as Leader`);
+    }
+
+    return badges;
+  }
+
+  // Scorecard modal with photo, name, state/district/party, and breakdown
+  function showScorecard(person, breakdown, composite) {
+    document.getElementById('scorecardName').textContent = person.name;
+
+    const photoUrl = person.photo;
+    const district = person.district ? ` / District ${person.district}` : '';
+    const headerHtml = `
+      <img src="${photoUrl}" alt="${person.name}" class="profile-photo">
+      <p>${person.state}${district} • ${person.party}</p>
+    `;
+
+    const breakdownEl = document.getElementById('scorecardBreakdown');
+    breakdownEl.innerHTML = '';
+    breakdownEl.insertAdjacentHTML('afterbegin', headerHtml);
+
+    const labelMap = {
+      sponsoredBills: 'Bills Sponsored',
+      cosponsoredBills: 'Bills Cosponsored',
+      becameLawBills: 'Bills Enacted',
+      becameLawCosponsoredBills: 'Bills Enacted (Cosponsored)',
+      committees: 'Committee Memberships',
+      committeeLeadership: 'Committee Leadership Roles',
+      missedVotes: 'Missed Votes (Count)',
+      misconductCount: 'Misconduct Infractions'
+    };
+
+    const rowsHtml = Object.keys(breakdown).map(key => {
+      const raw = breakdown[key];
+      const weight = WEIGHTS[key] || 0;
+      const contrib = raw * weight;
+      const label = labelMap[key] || key;
+      return `
+        <tr>
+          <td>${label}</td>
+          <td>${raw}</td>
+          <td>${weight.toFixed(1)}</td>
+          <td>${formatScore(contrib)}</td>
+        </tr>
+      `;
+    }).join('');
+
+    breakdownEl.innerHTML += `
+      <table class="scorecard-table">
+        <tbody>
+          <tr>
+            <td><strong>Power Score</strong></td>
+            <td colspan="3">${formatScore(composite)}</td>
+          </tr>
+          <tr>
+            <td><strong>Category</strong></td>
+            <td><strong>Raw</strong></td>
+            <td><strong>Weight</strong></td>
+            <td><strong>Contribution</strong></td>
+          </tr>
+          ${rowsHtml}
+        </tbody>
+      </table>
+    `;
+
+    // Append misconduct reasoning inline
+    if (person.misconductCount && person.misconductCount > 0) {
+      const tbody = breakdownEl.querySelector('tbody');
+
+      // Tags
+      if (Array.isArray(person.misconductTags) && person.misconductTags.length) {
+        const tagsRow = document.createElement('tr');
+        tagsRow.innerHTML = `
+          <td>⚠️ Misconduct</td>
+          <td colspan="3">Tags: ${person.misconductTags.join(', ')}</td>
+        `;
+        tbody.appendChild(tagsRow);
+      }
+
+      // Detailed texts
+      if (Array.isArray(person.misconductTexts) && person.misconductTexts.length) {
+        person.misconductTexts.forEach(txt => {
+          const textRow = document.createElement('tr');
+          textRow.innerHTML = `
+            <td>Details</td>
+            <td colspan="3">${txt}</td>
+          `;
+          tbody.appendChild(textRow);
+        });
+      }
+
+      // Consequences
+      if (Array.isArray(person.misconductConsequences) && person.misconductConsequences.length) {
+        person.misconductConsequences.forEach(c => {
+          const consRow = document.createElement('tr');
+          consRow.innerHTML = `
+            <td>Consequence</td>
+            <td colspan="3">${c.date || ''} — ${c.text || ''} 
+              ${c.link ? `<a href="${c.link}" target="_blank" rel="noopener noreferrer">[source]</a>` : ''}
+            </td>
+          `;
+          tbody.appendChild(consRow);
+        });
+      }
+    }
+
+    const modal = document.getElementById('scorecardModal');
+    modal.classList.add('is-open', 'modal-dark');
+    modal.setAttribute('aria-hidden', 'false');
+  }
+})();
 
 // Merge rankings JSON with info JSON
 function mergeData(rankings, info) {
