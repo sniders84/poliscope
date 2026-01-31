@@ -3221,105 +3221,7 @@ function formatScore(value) {
   return `<span class="${cls}">${Number.isFinite(value) ? value.toFixed(1) : '0.0'}</span>`;
 }
 
-// Helper: render streak badges
-function renderStreakBadges(streaks) {
-  const badges = [];
-
-  if (streaks?.activity > 0) {
-    const unit = streaks.activity === 1 ? 'week' : 'weeks';
-    badges.push(`🔥 ${streaks.activity} ${unit} activity streak`);
-  }
-
-  if (streaks?.voting > 0) {
-    const unit = streaks.voting === 1 ? 'week' : 'weeks';
-    badges.push(`🗳 ${streaks.voting} ${unit} voting streak`);
-  }
-
-  if (streaks?.leader > 0) {
-    const unit = streaks.leader === 1 ? 'week' : 'weeks';
-    badges.push(`👑 ${streaks.leader} ${unit} as Leader`);
-  }
-
-  return badges;
-}
-
-// Scorecard modal with photo, name, state/district/party, and breakdown
-function showScorecard(person, breakdown, composite) {
-  document.getElementById('scorecardName').textContent = person.name;
-
-  const photoUrl = person.photo;
-  const district = person.district ? ` / District ${person.district}` : '';
-  const headerHtml = `
-    <img src="${photoUrl}" alt="${person.name}" class="profile-photo">
-    <p>${person.state}${district} • ${person.party}</p>
-  `;
-
-  const breakdownEl = document.getElementById('scorecardBreakdown');
-  breakdownEl.innerHTML = '';
-  breakdownEl.insertAdjacentHTML('afterbegin', headerHtml);
-
-  const labelMap = {
-    sponsoredBills: 'Bills Sponsored',
-    cosponsoredBills: 'Bills Cosponsored',
-    becameLawBills: 'Bills Enacted',
-    becameLawCosponsoredBills: 'Bills Enacted (Cosponsored)',
-    committees: 'Committee Memberships',
-    committeeLeadership: 'Committee Leadership Roles',
-    missedVotes: 'Missed Votes (Count)',
-    misconductCount: 'Misconduct Infractions'
-  };
-
-  const rowsHtml = Object.keys(breakdown).map(key => {
-    const raw = breakdown[key];
-    const weight = WEIGHTS[key] || 0;
-    const contrib = raw * weight;
-    const label = labelMap[key] || key;
-    return `
-      <tr>
-        <td>${label}</td>
-        <td>${raw}</td>
-        <td>${weight.toFixed(1)}</td>
-        <td>${formatScore(contrib)}</td>
-      </tr>
-    `;
-  }).join('');
-
-  // Add misconduct tags if present
-  let misconductTagsRow = '';
-  if (person.misconductTags && person.misconductTags.length > 0) {
-    misconductTagsRow = `
-      <tr>
-        <td>Misconduct Tags</td>
-        <td colspan="3">${person.misconductTags.join(', ')}</td>
-      </tr>
-    `;
-  }
-
-  breakdownEl.innerHTML += `
-    <table class="scorecard-table">
-      <tbody>
-        <tr>
-          <td><strong>Power Score</strong></td>
-          <td colspan="3">${formatScore(composite)}</td>
-        </tr>
-        <tr>
-          <td><strong>Category</strong></td>
-          <td><strong>Raw</strong></td>
-          <td><strong>Weight</strong></td>
-          <td><strong>Contribution</strong></td>
-        </tr>
-        ${rowsHtml}
-        ${misconductTagsRow}
-      </tbody>
-    </table>
-  `;
-
-  const modal = document.getElementById('scorecardModal');
-  modal.classList.add('is-open', 'modal-dark');
-  modal.setAttribute('aria-hidden', 'false');
-}
-
-   // Decide what value to display based on the selected filter
+  // Decide what value to display based on the selected filter
   const displayVal = selectedCategory === "powerScore"
     ? row.score.toFixed(1)
     : Array.isArray(row.person[selectedCategory])
@@ -3400,4 +3302,3 @@ categorySel.addEventListener('change', () => render().catch(console.error));
 
 // Initial render
 render().catch(console.error);
-})();  // only one closer
