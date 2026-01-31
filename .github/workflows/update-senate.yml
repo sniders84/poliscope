@@ -1,75 +1,66 @@
-name: Update Senate Data
+name: "Update Senate Data"
 
 on:
-  schedule:
-    - cron: '0 12 * * *'    # daily at 12:00 UTC
   workflow_dispatch:
+  schedule:
+    - cron: "0 2 * * *" # run nightly at 2 AM UTC
+
+permissions:
+  contents: write
 
 jobs:
   update-senate:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0   # helpful for history if needed later
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'   # match your House workflow or change to 18/22 as needed
-          cache: 'npm'
+          node-version: "20"
 
       - name: Install dependencies
-        run: npm ci          # cleaner & more reproducible than npm install
+        run: npm install   # avoid lockfile churn
 
-      # ────────────────────────────────────────────────
-      # Senate scraping & processing steps
-      # (no artifact download/merge needed unlike House)
-      # ────────────────────────────────────────────────
-      - name: Scrape legislation
-        run: node scripts/legislation-senators-scraper.js
+      - name: Bootstrap senators
+        run: node scripts/bootstrap-senators.js
 
-      - name: Merge legislation parts
-        run: node scripts/merge-legislation-parts.js
+      - name: Scrape legislation (119th Congress)
+        env:
+          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
+        run: node scripts/legislation-scraper.js
 
       - name: Scrape committees
+        env:
+          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: node scripts/committee-scraper.js
 
       - name: Scrape votes
+        env:
+          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: node scripts/votes-scraper.js
 
-      - name: Merge senators data
+      - name: Merge senator data
         run: node scripts/merge-senators.js
 
-      - name: Scrape misconduct
+      - name: Scrape misconduct (Senate)
         run: node scripts/misconduct-scraper.js senate
 
-      - name: Compute senator scores
+      - name: Generate scores
         run: node scripts/senators-scores.js
 
-      - name: Update voting streaks
+      - name: Update streaks (Senate + House)
         run: node scripts/update-streaks.js
 
-      # ────────────────────────────────────────────────
-      # Commit & push — only if meaningful changes exist
-      # ────────────────────────────────────────────────
-      - name: Configure git user
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      - name: Sync with remote main
+        run: git pull --rebase origin main
 
-      - name: Commit updated Senate data
-        run: |
-          # Add the folders/files your scripts actually write to
-          git add -A public/ data/   # adjust if Senate JSONs go elsewhere
-          git diff --staged --quiet && echo "No changes to commit" && exit 0
-          git commit -m "Update Senate data [skip ci]" || echo "Commit failed (already clean?)"
-          git push origin HEAD:main || echo "Push failed (maybe no changes or other issue)"
-
-      - name: Show final status (debug helper)
-        if: always()
-        run: |
-          echo "Senate workflow completed"
-          git status --short || true
-          ls -la public/ || true    # change to your output folder if different
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Automated Senate update (119th Congress)"
+          file_pattern: public/senators-*.json
+          commit_user_name: github-actions[bot]
+          commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
+          push_options: "--force-with-lease"
