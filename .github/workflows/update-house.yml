@@ -1,118 +1,54 @@
-name: "Update House Data"
+name: Update House Data
 
 on:
-  workflow_dispatch:
   schedule:
-    - cron: "0 4 * * *" # daily at 4 AM UTC (~11 PM EST previous day)
-
-permissions:
-  contents: write
+    - cron: '0 12 * * *'
+  workflow_dispatch:
 
 jobs:
-  update-house-part1:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-      - run: npm install
-      - run: node scripts/bootstrap-representatives.js
-      - env:
-          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
-        run: node scripts/legislation-representatives-scraper.js 1
-      - run: mv public/legislation-representatives.json public/legislation-representatives-part1.json
-      - uses: actions/upload-artifact@v4
-        with:
-          name: house-part1
-          path: public/legislation-representatives-part1.json
-
-  update-house-part2:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-      - run: npm install
-      - run: node scripts/bootstrap-representatives.js
-      - env:
-          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
-        run: node scripts/legislation-representatives-scraper.js 2
-      - run: mv public/legislation-representatives.json public/legislation-representatives-part2.json
-      - uses: actions/upload-artifact@v4
-        with:
-          name: house-part2
-          path: public/legislation-representatives-part2.json
-
-  update-house-part3:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-      - run: npm install
-      - run: node scripts/bootstrap-representatives.js
-      - env:
-          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
-        run: node scripts/legislation-representatives-scraper.js 3
-      - run: mv public/legislation-representatives.json public/legislation-representatives-part3.json
-      - uses: actions/upload-artifact@v4
-        with:
-          name: house-part3
-          path: public/legislation-representatives-part3.json
-
-  update-house-part4:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-      - run: npm install
-      - run: node scripts/bootstrap-representatives.js
-      - env:
-          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
-        run: node scripts/legislation-representatives-scraper.js 4
-      - run: mv public/legislation-representatives.json public/legislation-representatives-part4.json
-      - uses: actions/upload-artifact@v4
-        with:
-          name: house-part4
-          path: public/legislation-representatives-part4.json
-
   merge-house:
     runs-on: ubuntu-latest
-    needs: [update-house-part1, update-house-part2, update-house-part3, update-house-part4]
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
-        with:
-          path: public
-      - run: |
-          mv public/house-part1/*.json public/
-          mv public/house-part2/*.json public/
-          mv public/house-part3/*.json public/
-          mv public/house-part4/*.json public/
-      - run: node scripts/merge-legislation-parts.js
-      - run: npm install node-fetch@2
-      - env:
-          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
+      - name: Set up job
+        run: echo "Starting House merge workflow"
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+
+      - name: Move JSON parts
+        run: mv public/house-part1/*.json public/
+
+      - name: Merge legislation parts
+        run: node scripts/merge-legislation-parts.js
+
+      - name: Install dependencies
+        run: npm install node-fetch@2
+
+      - name: Scrape committees
         run: node scripts/committee-reps-scraper.js
-      - env:
-          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
+
+      - name: Scrape votes
         run: node scripts/votes-reps-scraper.js
-      - run: node scripts/merge-representatives.js
-      - run: node scripts/misconduct-scraper.js house
-      - run: node scripts/representatives-scores.js
-      - run: node scripts/update-streaks.js
-      - name: Sync with remote main
-        run: git pull --rebase origin main
+
+      - name: Merge representatives
+        run: node scripts/merge-representatives.js
+
+      - name: Scrape misconduct
+        run: node scripts/misconduct-scraper.js house
+
+      - name: Compute scores
+        run: node scripts/representatives-scores.js
+
+      - name: Update streaks
+        run: node scripts/update-streaks.js
+
       - name: Commit and push changes
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "Automated House update (119th Congress)"
-          file_pattern: public/representatives-*.json
-          commit_user_name: github-actions[bot]
-          commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
-          push_options: "--force-with-lease"
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Update House data [skip ci]" || echo "No changes to commit"
+          git push origin main
