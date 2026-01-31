@@ -3401,4 +3401,4 @@ categorySel.addEventListener('change', () => render().catch(console.error));
 
 // Initial render
 render().catch(console.error);
-})();  // ← ONLY THIS ONE — keep it, delete anything after
+})();  
