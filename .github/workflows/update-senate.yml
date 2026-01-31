@@ -6,11 +6,11 @@ on:
   workflow_dispatch:
 
 jobs:
-  merge-senate:
+  update-senate:
     runs-on: ubuntu-latest
     steps:
       - name: Set up job
-        run: echo "Starting Senate merge workflow"
+        run: echo "Starting Senate workflow"
 
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -18,8 +18,7 @@ jobs:
       - name: Download artifacts
         uses: actions/download-artifact@v4
 
-      - name: Move JSON parts
-        run: mv senate-part1/*.json public/
+      # Senate does not use split artifacts — no mv step here
 
       - name: Merge legislation parts
         run: node scripts/merge-legislation-parts.js
