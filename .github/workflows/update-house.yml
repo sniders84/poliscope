@@ -51,8 +51,7 @@ jobs:
       - name: Update streaks
         run: node scripts/update-streaks.js
 
-      - name: Sync with remote main
-        run: git pull --rebase origin main
+      # Removed the git pull --rebase step
 
       - name: Commit and push changes
         run: |
