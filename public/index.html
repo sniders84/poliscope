@@ -1302,15 +1302,15 @@
   });
 }
 
-     </script>
+  </script>
 
-  <!-- Load external script ONCE only – root-relative path fixes loading -->
+  <!-- Load external script ONCE – root-relative path, no duplicates -->
   <script src="/script.js"></script>
 
-  <!-- Unified inline script – no duplicates -->
+  <!-- Unified inline script – no duplicates, no carousel init here if it's in script.js -->
   <script>
   document.addEventListener('DOMContentLoaded', () => {
-    showStartupHub(); // Home Hub on load
+    showStartupHub();
 
     const hamburger = document.getElementById('hamburger');
     const menu = document.getElementById('hamburger-menu');
@@ -1346,7 +1346,7 @@
       wireSearchBar();
     }
 
-    // RSS feed wiring – single instance, codetabs proxy
+    // RSS feed wiring – single instance
     const feedTitle = document.getElementById('feed-title');
     const feedStories = document.getElementById('feed-stories');
     const rssFeeds = {
@@ -1401,7 +1401,6 @@
       });
     });
 
-    // Ratings/Rankings Filters Logic (placeholder)
     window.allOfficials = [
       { slug: "john-doe", name: "John Doe", state: "CA", office: "senators", averageRating: 4.2, votesCount: 120 },
       { slug: "jane-smith", name: "Jane Smith", state: "TX", office: "governors", averageRating: 3.8, votesCount: 85 },
