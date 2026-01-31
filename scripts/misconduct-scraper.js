@@ -1,5 +1,5 @@
 // scripts/misconduct-scraper.js
-// Purpose: Parse GovTrack misconduct.yaml and attach misconductCount/tags to rankings.json
+// Purpose: Parse GovTrack misconduct.yaml and attach misconductCount/tags/text/consequences to rankings.json
 // Works for both Senate and House depending on target file
 
 const fs = require('fs');
@@ -47,20 +47,37 @@ for (const leg of legislators) {
   if (bio && gov) govtrackMap.set(gov, bio);
 }
 
-// Aggregate misconduct counts
+// Aggregate misconduct counts and details
 const misconductMap = new Map();
 for (const entry of misconduct) {
   const govId = entry.person;
   const bio = govtrackMap.get(govId);
   if (!bio) continue;
 
-  const current = misconductMap.get(bio) || { count: 0, tags: [] };
+  const current = misconductMap.get(bio) || {
+    count: 0,
+    tags: [],
+    texts: [],
+    consequences: []
+  };
+
   current.count += 1;
 
+  // Tags
   if (Array.isArray(entry.tags)) {
     current.tags.push(...entry.tags);
   } else if (typeof entry.tags === 'string') {
     current.tags.push(entry.tags);
+  }
+
+  // Detailed text
+  if (entry.text) {
+    current.texts.push(entry.text);
+  }
+
+  // Consequences
+  if (Array.isArray(entry.consequences)) {
+    current.consequences.push(...entry.consequences);
   }
 
   misconductMap.set(bio, current);
@@ -73,10 +90,14 @@ for (const rec of rankings) {
   if (data) {
     rec.misconductCount = data.count;
     rec.misconductTags = [...new Set(data.tags)];
+    rec.misconductTexts = data.texts;
+    rec.misconductConsequences = data.consequences;
     updated++;
   } else {
     rec.misconductCount = rec.misconductCount || 0;
     rec.misconductTags = rec.misconductTags || [];
+    rec.misconductTexts = rec.misconductTexts || [];
+    rec.misconductConsequences = rec.misconductConsequences || [];
   }
   rec.lastUpdated = new Date().toISOString();
 }
