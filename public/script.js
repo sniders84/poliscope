@@ -3360,7 +3360,16 @@ function mergeData(rankings, info, misconduct = []) {
     if (!match && r.bioguideId) {
       match = info.find(i => i.bioguideId === r.bioguideId);
     }
-    let misconductEntry = misconduct.find(m => m.person === r.bioguideId);
+
+    // Extract GovTrack ID from govtrackLink if present
+    let govtrackId = null;
+    if (match && match.govtrackLink) {
+      const parts = match.govtrackLink.split('/');
+      govtrackId = parseInt(parts[parts.length - 1], 10);
+    }
+
+    // Find misconduct entry by GovTrack ID
+    let misconductEntry = misconduct.find(m => m.person === govtrackId);
 
     // Merge misconduct fields if present
     return {
