@@ -3299,26 +3299,16 @@ function showScorecard(person, breakdown, composite) {
     </table>
   `;
 
-// Append misconduct details inline with safe guards
+// Append misconduct reasoning inline with safe guards
 if (person.misconductCount && person.misconductCount > 0) {
   const tbody = breakdownEl.querySelector('tbody');
-
-  // Show the scored infractions row
-  const misconductRow = document.createElement('tr');
-  misconductRow.innerHTML = `
-    <td>⚠️ Misconduct</td>
-    <td>${person.misconductCount} infractions</td>
-    <td>${WEIGHTS.misconductCount ? WEIGHTS.misconductCount.toFixed(1) : '0.0'}</td>
-    <td>${formatScore(person.misconductCount * (WEIGHTS.misconductCount || 0))}</td>
-  `;
-  tbody.appendChild(misconductRow);
 
   // Tags from YAML
   if (Array.isArray(person.misconductTags) && person.misconductTags.length) {
     const tagsRow = document.createElement('tr');
     tagsRow.innerHTML = `
-      <td>Tags</td>
-      <td colspan="3">${person.misconductTags.join(', ')}</td>
+      <td>⚠️ Misconduct</td>
+      <td colspan="3">Tags: ${person.misconductTags.join(', ')}</td>
     `;
     tbody.appendChild(tagsRow);
   }
@@ -3397,6 +3387,18 @@ async function render() {
   const repsRes = await fetch('/representatives-rankings.json');
   const repsInfoRes = await fetch('/housereps.json');
 
+  // Load misconduct.yaml
+  let misconductData = [];
+  try {
+    const misconductRes = await fetch('/misconduct.yaml');
+    if (misconductRes.ok) {
+      const misconductText = await misconductRes.text();
+      misconductData = jsyaml.load(misconductText); // requires js-yaml
+    }
+  } catch (err) {
+    console.warn("No misconduct.yaml loaded or invalid YAML", err);
+  }
+
   const senatorsRankings = await senatorsRes.json();
   const senatorsInfo = await senatorsInfoRes.json();
   const repsRankings = await repsRes.json();
@@ -3406,10 +3408,10 @@ async function render() {
   let officeType = 'senator';
 
   if (selectedOffice === 'senator') {
-    data = mergeData(senatorsRankings, senatorsInfo);
+    data = mergeData(senatorsRankings, senatorsInfo, misconductData);
     officeType = 'senator';
   } else if (selectedOffice === 'u.s. representative') {
-    data = mergeData(repsRankings, repsInfo);
+    data = mergeData(repsRankings, repsInfo, misconductData);
     officeType = 'rep';
   } else {
     tableBody.innerHTML = '<tr><td colspan="5">Select an office to view rankings</td></tr>';
@@ -3493,63 +3495,3 @@ async function render() {
     });
   });
 }
-
-// Modal close handlers (unchanged)
-document.getElementById('scorecardClose')?.addEventListener('click', () => {
-  const modal = document.getElementById('scorecardModal');
-  modal.classList.remove('is-open', 'modal-dark');
-  modal.setAttribute('aria-hidden', 'true');
-});
-document.getElementById('scorecardModal')?.addEventListener('click', e => {
-  if (e.target.id === 'scorecardModal') {
-    const modal = document.getElementById('scorecardModal');
-    modal.classList.remove('is-open', 'modal-dark');
-    modal.setAttribute('aria-hidden', 'true');
-  }
-});
-document.getElementById('scoringLogicBtn')?.addEventListener('click', () => {
-  const modal = document.getElementById('scoringLogicModal');
-  modal.classList.add('is-open');
-  modal.setAttribute('aria-hidden', 'false');
-});
-document.getElementById('scoringLogicClose')?.addEventListener('click', () => {
-  const modal = document.getElementById('scoringLogicModal');
-  modal.classList.remove('is-open');
-  modal.setAttribute('aria-hidden', 'true');
-});
-document.getElementById('scoringLogicModal')?.addEventListener('click', e => {
-  if (e.target.id === 'scoringLogicModal') {
-    const modal = document.getElementById('scoringLogicModal');
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden', 'true');
-  }
-});
-
-// Hook render function globally + filter changes
-window.renderRankingsLeaderboard = () => render().catch(console.error);
-officeSel.addEventListener('change', () => render().catch(console.error));
-categorySel.addEventListener('change', () => render().catch(console.error));
-
-// Initial render
-render().catch(console.error);
-
-// --- Missing global helpers for menu links ---
-function renderOfficials(state, query) {
-  console.log("Render officials for:", state, query);
-  // Hook into your officials rendering logic here
-}
-
-function showRatings() {
-  showTab('ratings');
-}
-
-function showCitizenship() {
-  showTab('citizenship');
-}
-
-function showCommunity() {
-  showTab('community');
-}
-
-// If your script is wrapped in an IIFE, close it here:
-})();
