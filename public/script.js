@@ -3345,121 +3345,131 @@ document.getElementById('rate-me-btn').onclick = function() {
   }
 
   async function render() {
-    const selectedOffice = officeSel.value.toLowerCase();
-    const selectedCategory = categorySel.value;
+  const selectedOffice = officeSel.value.toLowerCase();
+  const selectedCategory = categorySel.value;
 
-    const senatorsRes = await fetch('/senators-rankings.json');
-    const senatorsInfoRes = await fetch('/senators.json');
-    const repsRes = await fetch('/representatives-rankings.json');
-    const repsInfoRes = await fetch('/housereps.json');
-    const misconductRes = await fetch('/misconduct.json');
-    const misconductData = await misconductRes.json();
+  // Load rankings/info files
+  const senatorsRes = await fetch('/senators-rankings.json');
+  const senatorsInfoRes = await fetch('/senators.json');
+  const repsRes = await fetch('/representatives-rankings.json');
+  const repsInfoRes = await fetch('/housereps.json');
 
-    const senatorsRankings = await senatorsRes.json();
-    const senatorsInfo = await senatorsInfoRes.json();
-    const repsRankings = await repsRes.json();
-    const repsInfo = await repsInfoRes.json();
-
-    let data = [];
-    let officeType = 'senator';
-
-        if (selectedOffice === 'senator') {
-      data = mergeData(senatorsRankings, senatorsInfo, misconductData);
-      officeType = 'senator';
-    } else if (selectedOffice === 'u.s. representative') {
-      data = mergeData(repsRankings, repsInfo, misconductData);
-      officeType = 'rep';
-    } else {
-      tableBody.innerHTML = '<tr><td colspan="5">Select an office to view rankings</td></tr>';
-      return;
+  // Load misconduct.yaml safely
+  let misconductData = [];
+  try {
+    const misconductRes = await fetch('/misconduct.yaml');
+    if (misconductRes.ok) {
+      const misconductText = await misconductRes.text();
+      misconductData = jsyaml.load(misconductText); // requires js-yaml
     }
-
-    if (!Array.isArray(data) || data.length === 0) {
-      tableBody.innerHTML = '<tr><td colspan="5">No data loaded yet</td></tr>';
-      return;
-    }
-
-    const rows = data.map(person => {
-      const { composite, breakdown } = scoreLegislator(person);
-      return {
-        person,
-        score: composite,
-        breakdown,
-        streaks: person.streaks || {}
-      };
-    });
-
-    // Sort by selected category
-    rows.sort((a, b) => {
-      const key = selectedCategory;
-      if (key === "powerScore") return b.score - a.score;
-      if (key === "committees") return (b.person.committees?.length || 0) - (a.person.committees?.length || 0);
-      if (key === "misconductTags") return (b.person.misconductTags?.length || 0) - (a.person.misconductTags?.length || 0);
-      return (b.person[key] || 0) - (a.person[key] || 0);
-    });
-
-    tableBody.innerHTML = '';
-    rows.forEach((row, idx) => {
-      const tr = document.createElement('tr');
-      const displayVal = selectedCategory === "powerScore"
-        ? row.score.toFixed(1)
-        : Array.isArray(row.person[selectedCategory])
-          ? row.person[selectedCategory].length
-          : row.person[selectedCategory] || 0;
-
-      tr.innerHTML = `
-        <td>${idx + 1}</td>
-        <td>
-          <a href="#" class="scorecard-link" data-name="${row.person.name.replace(/"/g, '&quot;')}">
-            ${row.person.name}
-          </a>
-          <br><small>${row.person.state} • ${row.person.party}${officeType === 'rep' ? ` • District ${row.person.district || 'At-Large'}` : ''}</small>
-        </td>
-        <td>${row.person.office || (officeType === 'rep' ? 'U.S. Representative' : 'U.S. Senator')}</td>
-        <td>${displayVal}</td>
-        <td class="streak-cell">
-          ${renderStreakBadges(row.person.streaks)
-            .map(b => {
-              if (b.includes('🔥')) return `<span class="streak-badge activity">${b}</span>`;
-              if (b.includes('🗳')) return `<span class="streak-badge voting">${b}</span>`;
-              if (b.includes('👑')) return `<span class="streak-badge leader">${b}</span>`;
-              return `<span class="streak-badge">${b}</span>`;
-            })
-            .join(' ')}
-        </td>
-      `;
-      tableBody.appendChild(tr);
-    });
-
-        // Add scorecard click handlers
-    tableBody.querySelectorAll('.scorecard-link').forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const name = link.dataset.name;
-        const row = rows.find(r => r.person.name === name);
-        if (row) {
-          showScorecard(row.person, row.breakdown, row.score);
-        }
-      });
-    });
+  } catch (err) {
+    console.warn("No misconduct.yaml loaded or invalid YAML", err);
   }
 
-  // Expose render globally
-  window.render = render;
+  const senatorsRankings = await senatorsRes.json();
+  const senatorsInfo = await senatorsInfoRes.json();
+  const repsRankings = await repsRes.json();
+  const repsInfo = await repsInfoRes.json();
 
-  // Hook render function globally + filter changes
-  window.renderRankingsLeaderboard = () => render().catch(console.error);
-  officeSel.addEventListener('change', () => render().catch(console.error));
-  categorySel.addEventListener('change', () => render().catch(console.error));
+  let data = [];
+  let officeType = 'senator';
 
-  // Initial render
-  render().catch(console.error);
+  if (selectedOffice === 'senator') {
+    data = mergeData(senatorsRankings, senatorsInfo, misconductData);
+    officeType = 'senator';
+  } else if (selectedOffice === 'u.s. representative') {
+    data = mergeData(repsRankings, repsInfo, misconductData);
+    officeType = 'rep';
+  } else {
+    tableBody.innerHTML = '<tr><td colspan="5">Select an office to view rankings</td></tr>';
+    return;
+  }
+
+  if (!Array.isArray(data) || data.length === 0) {
+    tableBody.innerHTML = '<tr><td colspan="5">No data loaded yet</td></tr>';
+    return;
+  }
+
+  const rows = data.map(person => {
+    const { composite, breakdown } = scoreLegislator(person);
+    return {
+      person,
+      score: composite,
+      breakdown,
+      streaks: person.streaks || {}
+    };
+  });
+
+  // Sort by selected category
+  rows.sort((a, b) => {
+    const key = selectedCategory;
+    if (key === "powerScore") return b.score - a.score;
+    if (key === "committees") return (b.person.committees?.length || 0) - (a.person.committees?.length || 0);
+    if (key === "misconductTags") return (b.person.misconductTags?.length || 0) - (a.person.misconductTags?.length || 0);
+    return (b.person[key] || 0) - (a.person[key] || 0);
+  });
+
+  tableBody.innerHTML = '';
+  rows.forEach((row, idx) => {
+    const tr = document.createElement('tr');
+    const displayVal = selectedCategory === "powerScore"
+      ? row.score.toFixed(1)
+      : Array.isArray(row.person[selectedCategory])
+        ? row.person[selectedCategory].length
+        : row.person[selectedCategory] || 0;
+
+    tr.innerHTML = `
+      <td>${idx + 1}</td>
+      <td>
+        <a href="#" class="scorecard-link" data-name="${row.person.name.replace(/"/g, '&quot;')}">
+          ${row.person.name}
+        </a>
+        <br><small>${row.person.state} • ${row.person.party}${officeType === 'rep' ? ` • District ${row.person.district || 'At-Large'}` : ''}</small>
+      </td>
+      <td>${row.person.office || (officeType === 'rep' ? 'U.S. Representative' : 'U.S. Senator')}</td>
+      <td>${displayVal}</td>
+      <td class="streak-cell">
+        ${renderStreakBadges(row.person.streaks)
+          .map(b => {
+            if (b.includes('🔥')) return `<span class="streak-badge activity">${b}</span>`;
+            if (b.includes('🗳')) return `<span class="streak-badge voting">${b}</span>`;
+            if (b.includes('👑')) return `<span class="streak-badge leader">${b}</span>`;
+            return `<span class="streak-badge">${b}</span>`;
+          })
+          .join(' ')}
+      </td>
+    `;
+    tableBody.appendChild(tr);
+  });
+
+  // Add scorecard click handlers
+  tableBody.querySelectorAll('.scorecard-link').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const name = link.dataset.name;
+      const row = rows.find(r => r.person.name === name);
+      if (row) {
+        showScorecard(row.person, row.breakdown, row.score);
+      }
+    });
+  });
+}
+
+// Expose render globally
+window.render = render;
+
+// Hook render function globally + filter changes
+window.renderRankingsLeaderboard = () => render().catch(console.error);
+officeSel.addEventListener('change', () => render().catch(console.error));
+categorySel.addEventListener('change', () => render().catch(console.error));
+
+// Initial render
+render().catch(console.error);
 })();   // <-- closes the Rankings IIFE cleanly
 
 // --- Global helpers for other tabs ---
 function renderOfficials(state, query) {
   console.log("Render officials for:", state, query);
-  // Hook into your officials rendering logic here
 }
 
 function showRatings() {
