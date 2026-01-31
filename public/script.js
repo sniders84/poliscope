@@ -3361,15 +3361,15 @@ function mergeData(rankings, info, misconduct = []) {
       match = info.find(i => i.bioguideId === r.bioguideId);
     }
 
-    // Extract GovTrack ID from govtrackLink if present
+    // Extract GovTrack ID from govtrackLink
     let govtrackId = null;
     if (match && match.govtrackLink) {
       const parts = match.govtrackLink.split('/');
-      govtrackId = parseInt(parts[parts.length - 1], 10);
+      govtrackId = Number(parts[parts.length - 1]); // ensure numeric
     }
 
-    // Find misconduct entry by GovTrack ID
-    let misconductEntry = misconduct.find(m => m.person === govtrackId);
+    // Match misconduct by GovTrack ID
+    let misconductEntry = misconduct.find(m => Number(m.person) === govtrackId);
 
     return {
       ...r,
