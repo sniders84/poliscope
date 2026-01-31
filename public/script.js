@@ -3351,54 +3351,54 @@ function showScorecard(person, breakdown, composite) {
 });
 
     // Add scorecard click handlers
-    tableBody.querySelectorAll('.scorecard-link').forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const name = link.dataset.name;
-        const row = rows.find(r => r.person.name === name);
-        if (row) {
-          showScorecard(row.person, row.breakdown, row.score);
-        }
-      });
+  tableBody.querySelectorAll('.scorecard-link').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const name = link.dataset.name;
+      const row = rows.find(r => r.person.name === name);
+      if (row) {
+        showScorecard(row.person, row.breakdown, row.score);
+      }
     });
-  }
+  });
+}
 
-  // Modal close handlers (unchanged)
-  document.getElementById('scorecardClose')?.addEventListener('click', () => {
+// Modal close handlers (unchanged)
+document.getElementById('scorecardClose')?.addEventListener('click', () => {
+  const modal = document.getElementById('scorecardModal');
+  modal.classList.remove('is-open', 'modal-dark');
+  modal.setAttribute('aria-hidden', 'true');
+});
+document.getElementById('scorecardModal')?.addEventListener('click', e => {
+  if (e.target.id === 'scorecardModal') {
     const modal = document.getElementById('scorecardModal');
     modal.classList.remove('is-open', 'modal-dark');
     modal.setAttribute('aria-hidden', 'true');
-  });
-  document.getElementById('scorecardModal')?.addEventListener('click', e => {
-    if (e.target.id === 'scorecardModal') {
-      const modal = document.getElementById('scorecardModal');
-      modal.classList.remove('is-open', 'modal-dark');
-      modal.setAttribute('aria-hidden', 'true');
-    }
-  });
-  document.getElementById('scoringLogicBtn')?.addEventListener('click', () => {
-    const modal = document.getElementById('scoringLogicModal');
-    modal.classList.add('is-open');
-    modal.setAttribute('aria-hidden', 'false');
-  });
-  document.getElementById('scoringLogicClose')?.addEventListener('click', () => {
+  }
+});
+document.getElementById('scoringLogicBtn')?.addEventListener('click', () => {
+  const modal = document.getElementById('scoringLogicModal');
+  modal.classList.add('is-open');
+  modal.setAttribute('aria-hidden', 'false');
+});
+document.getElementById('scoringLogicClose')?.addEventListener('click', () => {
+  const modal = document.getElementById('scoringLogicModal');
+  modal.classList.remove('is-open');
+  modal.setAttribute('aria-hidden', 'true');
+});
+document.getElementById('scoringLogicModal')?.addEventListener('click', e => {
+  if (e.target.id === 'scoringLogicModal') {
     const modal = document.getElementById('scoringLogicModal');
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
-  });
-  document.getElementById('scoringLogicModal')?.addEventListener('click', e => {
-    if (e.target.id === 'scoringLogicModal') {
-      const modal = document.getElementById('scoringLogicModal');
-      modal.classList.remove('is-open');
-      modal.setAttribute('aria-hidden', 'true');
-    }
-  });
+  }
+});
 
-  // Hook render function globally + filter changes
-  window.renderRankingsLeaderboard = () => render().catch(console.error);
-  officeSel.addEventListener('change', () => render().catch(console.error));
-  categorySel.addEventListener('change', () => render().catch(console.error));
+// Hook render function globally + filter changes
+window.renderRankingsLeaderboard = () => render().catch(console.error);
+officeSel.addEventListener('change', () => render().catch(console.error));
+categorySel.addEventListener('change', () => render().catch(console.error));
 
-  // Initial render
-  render().catch(console.error);
-})();
+// Initial render
+render().catch(console.error);
+})();  // ← ONLY THIS ONE — keep it, delete anything after
