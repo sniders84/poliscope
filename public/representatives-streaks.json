@@ -16,7 +16,7 @@
   },
   {
     "bioguideId": "B001260",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -61,7 +61,7 @@
   },
   {
     "bioguideId": "C001068",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -146,12 +146,12 @@
   },
   {
     "bioguideId": "G000553",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
     "bioguideId": "G000568",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -161,7 +161,7 @@
   },
   {
     "bioguideId": "H001052",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -246,7 +246,7 @@
   },
   {
     "bioguideId": "M001177",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -306,7 +306,7 @@
   },
   {
     "bioguideId": "R000395",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -316,7 +316,7 @@
   },
   {
     "bioguideId": "S001176",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -441,12 +441,12 @@
   },
   {
     "bioguideId": "W000804",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
     "bioguideId": "W000809",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -456,7 +456,7 @@
   },
   {
     "bioguideId": "B001278",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -546,7 +546,7 @@
   },
   {
     "bioguideId": "M001188",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -566,7 +566,7 @@
   },
   {
     "bioguideId": "P000605",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -621,7 +621,7 @@
   },
   {
     "bioguideId": "P000609",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -641,7 +641,7 @@
   },
   {
     "bioguideId": "A000371",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -711,7 +711,7 @@
   },
   {
     "bioguideId": "B001296",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -751,12 +751,12 @@
   },
   {
     "bioguideId": "L000585",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
     "bioguideId": "D000626",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -776,7 +776,7 @@
   },
   {
     "bioguideId": "B001302",
-    "activity": null,
+    "activity": 0,
     "leader": null
   },
   {
@@ -851,7 +851,7 @@
   },
   {
     "bioguideId": "B001298",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -866,7 +866,7 @@
   },
   {
     "bioguideId": "F000466",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -876,7 +876,7 @@
   },
   {
     "bioguideId": "K000392",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -886,7 +886,7 @@
   },
   {
     "bioguideId": "A000375",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -901,7 +901,7 @@
   },
   {
     "bioguideId": "N000190",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -976,7 +976,7 @@
   },
   {
     "bioguideId": "S001214",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -1021,7 +1021,7 @@
   },
   {
     "bioguideId": "P000617",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -1046,7 +1046,7 @@
   },
   {
     "bioguideId": "S001212",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -1126,7 +1126,7 @@
   },
   {
     "bioguideId": "C001120",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -1146,7 +1146,7 @@
   },
   {
     "bioguideId": "R000614",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -1191,7 +1191,7 @@
   },
   {
     "bioguideId": "T000165",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -1216,7 +1216,7 @@
   },
   {
     "bioguideId": "O000019",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -1261,7 +1261,7 @@
   },
   {
     "bioguideId": "W000788",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -1316,12 +1316,12 @@
   },
   {
     "bioguideId": "M001136",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
     "bioguideId": "F000470",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -1341,7 +1341,7 @@
   },
   {
     "bioguideId": "M000317",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -1381,7 +1381,7 @@
   },
   {
     "bioguideId": "J000304",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -1401,7 +1401,7 @@
   },
   {
     "bioguideId": "M001213",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -1476,7 +1476,7 @@
   },
   {
     "bioguideId": "Y000067",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -1576,7 +1576,7 @@
   },
   {
     "bioguideId": "N000193",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -1636,7 +1636,7 @@
   },
   {
     "bioguideId": "B001316",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -1746,7 +1746,7 @@
   },
   {
     "bioguideId": "O000175",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -1796,7 +1796,7 @@
   },
   {
     "bioguideId": "G000600",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -1886,7 +1886,7 @@
   },
   {
     "bioguideId": "H001098",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
@@ -1966,7 +1966,7 @@
   },
   {
     "bioguideId": "M001233",
-    "activity": null,
+    "activity": 0,
     "leader": 0
   },
   {
