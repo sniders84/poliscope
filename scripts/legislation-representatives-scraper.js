@@ -15,6 +15,7 @@ const legislatorsPath = path.join(__dirname, '../public/legislators-current.json
 const outputPath = path.join(__dirname, '../public/legislation-representatives.json');
 const legislators = JSON.parse(fs.readFileSync(legislatorsPath, 'utf-8'));
 
+// Accept part argument (1–4)
 const partArg = parseInt(process.argv[2], 10);
 const sliceSize = Math.ceil(440 / 4);
 const startIndex = (partArg - 1) * sliceSize;
@@ -22,6 +23,9 @@ const endIndex = startIndex + sliceSize;
 const slice = legislators.slice(startIndex, endIndex);
 
 console.log(`Running House scraper part ${partArg}: reps ${startIndex}–${endIndex - 1}`);
+
+// Cache for bill detail requests
+const billCache = new Map();
 
 async function getWithRetry(url, params = {}, tries = 5) {
   let lastErr;
@@ -34,7 +38,9 @@ async function getWithRetry(url, params = {}, tries = 5) {
       lastErr = err;
       const status = err.response?.status || 'unknown';
       console.warn(`Retry ${i+1}/${tries} for ${url} - status ${status}: ${err.message}`);
-      await new Promise(r => setTimeout(r, status === 429 ? 10000 : 3000 * (i + 1)));
+      // Exponential backoff, longer wait on 429
+      const delay = status === 429 ? 60000 * (i + 1) : 3000 * (i + 1);
+      await new Promise(r => setTimeout(r, delay));
     }
   }
   throw lastErr || new Error(`All retries failed for ${url}`);
@@ -57,10 +63,22 @@ function isBecameLaw(detail) {
          /public law no/i.test(text);
 }
 
+async function fetchBillDetail(url) {
+  if (billCache.has(url)) return billCache.get(url);
+  try {
+    const detail = await getWithRetry(url);
+    billCache.set(url, detail);
+    return detail;
+  } catch (err) {
+    console.warn(`Failed detail fetch for ${url}: ${err.message}`);
+    return null;
+  }
+}
+
 async function fetchBills(bioguideId) {
   let sponsored = 0, cosponsored = 0, becameLawSponsored = 0, becameLawCosponsored = 0;
-  const limit = 250;
-  const maxPages = 50;
+  const limit = 100; // smaller page size to reduce load
+  const maxPages = 10; // cap pages per member
 
   async function paginate(endpoint) {
     let count = 0;
@@ -87,18 +105,16 @@ async function fetchBills(bioguideId) {
 
       for (const bill of bills) {
         if (!is119th(bill)) continue;
-        try {
-          const detail = await getWithRetry(bill.url);
+        const detail = await fetchBillDetail(bill.url);
+        if (detail) {
           count++;
           if (isBecameLaw(detail)) lawCount++;
-        } catch (err) {
-          console.warn(`Failed detail fetch for ${bill.number}: ${err.message}`);
         }
       }
 
       offset += limit;
       totalPagesProcessed++;
-      await new Promise(r => setTimeout(r, 500));
+      await new Promise(r => setTimeout(r, 1000)); // pacing
     }
 
     return { count, lawCount };
@@ -156,7 +172,7 @@ async function fetchBills(bioguideId) {
       failedCount++;
     }
 
-    await new Promise(r => setTimeout(r, 1200));
+    await new Promise(r => setTimeout(r, 2000)); // pacing between members
   }
 
   fs.writeFileSync(outputPath, JSON.stringify(results, null, 2));
