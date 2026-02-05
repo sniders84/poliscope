@@ -89,6 +89,7 @@ console.log(`Merging data into ${rankings.length} representatives...`);
 rankings = rankings.map(r => {
   const id = r.bioguideId;
 
+  const base = reps.find(rep => rep.bioguideId === id) || {};
   const leg = legislationMap[id] || {};
   const com = committeesMap[id] || { committees: [] };
   const vot = votesMap[id] || {};
@@ -97,6 +98,13 @@ rankings = rankings.map(r => {
 
   return {
     ...r,
+
+    // Identity fields from housereps.json
+    name: base.name || r.name,
+    state: base.state || r.state,
+    district: base.district || r.district,
+    party: base.party || r.party,
+    photo: base.photo || r.photo || null,
 
     // Legislation
     sponsoredBills: leg.sponsoredBills || 0,
