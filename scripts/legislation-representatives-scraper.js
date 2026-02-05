@@ -1,4 +1,9 @@
 // scripts/legislation-representatives-scraper.js
+//
+// Purpose: Pull sponsored/cosponsored bills and became-law counts for the 119th Congress (House)
+// Split mode: accepts --part argument (1–4) to divide 440 reps into equal slices
+// Output: public/legislation-representatives.json (workflow renames to partX.json)
+
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
@@ -20,10 +25,17 @@ async function getWithRetry(url, tries = 5) {
   let lastErr;
   for (let i = 0; i < tries; i++) {
     try {
-      const resp = await axios.get(url);
+      const resp = await axios.get(url, {
+        headers: {
+          'Accept': 'application/json',
+          'User-Agent': 'Poliscope/1.0'
+        }
+      });
       return resp.data;
     } catch (err) {
       lastErr = err;
+      const status = err.response?.status || 'unknown';
+      console.warn(`Retry ${i+1}/${tries} for ${url} - status ${status}: ${err.message}`);
       await new Promise(r => setTimeout(r, 3000 * (i + 1)));
     }
   }
@@ -33,6 +45,7 @@ async function getWithRetry(url, tries = 5) {
 async function fetchBills(bioguideId) {
   let sponsored = 0, cosponsored = 0, becameLawSponsored = 0, becameLawCosponsored = 0;
 
+  // Sponsored bills
   let next = `${BASE_URL}/member/${bioguideId}/sponsored-legislation?congress=119&api_key=${API_KEY}&format=json`;
   while (next) {
     const data = await getWithRetry(next);
@@ -47,6 +60,7 @@ async function fetchBills(bioguideId) {
     next = data.pagination?.next;
   }
 
+  // Cosponsored bills
   next = `${BASE_URL}/member/${bioguideId}/cosponsored-legislation?congress=119&api_key=${API_KEY}&format=json`;
   while (next) {
     const data = await getWithRetry(next);
@@ -74,13 +88,22 @@ async function fetchBills(bioguideId) {
     const name = `${leg.name.first} ${leg.name.last}`;
     try {
       const totals = await fetchBills(bioguideId);
-      results.push({ bioguideId, name, state: lastTerm.state, district: lastTerm.district, party: lastTerm.party,
-        sponsoredBills: totals.sponsored, cosponsoredBills: totals.cosponsored,
-        becameLawBills: totals.becameLawSponsored, becameLawCosponsoredBills: totals.becameLawCosponsored });
+      results.push({
+        bioguideId,
+        name,
+        state: lastTerm.state,
+        district: lastTerm.district,
+        party: lastTerm.party,
+        sponsoredBills: totals.sponsored,
+        cosponsoredBills: totals.cosponsored,
+        becameLawBills: totals.becameLawSponsored,
+        becameLawCosponsoredBills: totals.becameLawCosponsored
+      });
       console.log(`${name}: sponsored=${totals.sponsored}, cosponsored=${totals.cosponsored}`);
     } catch (err) {
       console.error(`Error for ${bioguideId} (${name}): ${err.message}`);
     }
   }
   fs.writeFileSync(outputPath, JSON.stringify(results, null, 2));
+  console.log(`Wrote ${results.length} representative records to ${outputPath}`);
 })();
