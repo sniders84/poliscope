@@ -3303,49 +3303,31 @@ function showScorecard(person, breakdown, composite) {
 if (person.misconductCount && person.misconductCount > 0) {
   const tbody = breakdownEl.querySelector('tbody');
 
-  // Show the scored infractions row
-  const misconductRow = document.createElement('tr');
-  misconductRow.innerHTML = `
-    <td>⚠️ Misconduct</td>
-    <td>${person.misconductCount} infractions</td>
-    <td>${WEIGHTS.misconductCount ? WEIGHTS.misconductCount.toFixed(1) : '0.0'}</td>
-    <td>${formatScore(person.misconductCount * (WEIGHTS.misconductCount || 0))}</td>
-  `;
-  tbody.appendChild(misconductRow);
-
-  // Tags from YAML
+  // Tags
   if (Array.isArray(person.misconductTags) && person.misconductTags.length) {
     const tagsRow = document.createElement('tr');
     tagsRow.innerHTML = `
-      <td>Tags</td>
-      <td colspan="3">${person.misconductTags.join(', ')}</td>
+      <td>⚠️ Misconduct</td>
+      <td colspan="3">Tags: ${person.misconductTags.join(', ')}</td>
     `;
     tbody.appendChild(tagsRow);
   }
 
-  // Allegation from YAML
-  if (typeof person.allegation === 'string' && person.allegation.trim() !== '') {
-    const allegationRow = document.createElement('tr');
-    allegationRow.innerHTML = `
-      <td>Allegation</td>
-      <td colspan="3">${person.allegation}</td>
-    `;
-    tbody.appendChild(allegationRow);
+  // Detailed texts
+  if (Array.isArray(person.misconductTexts) && person.misconductTexts.length) {
+    person.misconductTexts.forEach(txt => {
+      const textRow = document.createElement('tr');
+      textRow.innerHTML = `
+        <td>Details</td>
+        <td colspan="3">${txt}</td>
+      `;
+      tbody.appendChild(textRow);
+    });
   }
 
-  // Detailed text from YAML
-  if (typeof person.text === 'string' && person.text.trim() !== '') {
-    const textRow = document.createElement('tr');
-    textRow.innerHTML = `
-      <td>Details</td>
-      <td colspan="3">${person.text}</td>
-    `;
-    tbody.appendChild(textRow);
-  }
-
-  // Consequences from YAML
-  if (Array.isArray(person.consequences) && person.consequences.length) {
-    person.consequences.forEach(c => {
+  // Consequences
+  if (Array.isArray(person.misconductConsequences) && person.misconductConsequences.length) {
+    person.misconductConsequences.forEach(c => {
       const consRow = document.createElement('tr');
       consRow.innerHTML = `
         <td>Consequence</td>
@@ -3377,11 +3359,10 @@ function mergeData(rankings, info, misconduct = []) {
       ...r,
       ...match,
       ...(misconductEntry ? {
-        misconductCount: misconductEntry.misconductCount || 1, // default to 1 if entry exists
+        misconductCount: misconductEntry.misconductCount || 1,
         misconductTags: misconductEntry.tags || [],
-        allegation: misconductEntry.allegation || '',
-        text: misconductEntry.text || '',
-        consequences: misconductEntry.consequences || []
+        misconductTexts: misconductEntry.texts || [],
+        misconductConsequences: misconductEntry.consequences || []
       } : {})
     };
   });
