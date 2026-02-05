@@ -1,6 +1,6 @@
 // scripts/votes-reps-scraper.js
-// Purpose: Scrape House roll call votes for the 119th Congress (2025+)
-// Correct URL: https://clerk.house.gov/Votes/YYYYNNN (no /evs/, no zero-pad)
+// Purpose: Scrape House roll call votes for the 119th Congress (2025–2026)
+
 const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
@@ -24,31 +24,17 @@ function ensureSchema(rep) {
   rep.totalVotes ??= 0;
   rep.participationPct ??= 0;
   rep.missedVotePct ??= 0;
-  rep.sponsoredBills ??= 0;
-  rep.cosponsoredBills ??= 0;
-  rep.becameLawBills ??= 0;
-  rep.committees ??= [];
-  rep.rawScore ??= 0;
-  rep.score ??= 0;
-  rep.scoreNormalized ??= 0;
   return rep;
 }
 
 async function fetchRoll(year, roll) {
-  const url = `https://clerk.house.gov/Votes/${year}${roll}`;
+  const rollStr = String(roll).padStart(3, '0');
+  const url = `https://clerk.house.gov/Votes/${year}/roll${rollStr}.xml`;
   log(`Fetching: ${url}`);
   try {
-    const res = await fetch(url, {
-      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; PoliscopeBot/1.0)' }
-    });
-    log(`Status: ${res.status} ${res.statusText}`);
+    const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0 (PoliscopeBot/1.0)' } });
     if (!res.ok) return null;
-    const text = await res.text();
-    if (!text.includes('<rollcall-vote') && !text.includes('<recorded-vote')) {
-      log(`Warning: Response not valid roll call XML`);
-      return null;
-    }
-    return text;
+    return await res.text();
   } catch (err) {
     log(`Fetch error: ${err.message}`);
     return null;
@@ -64,23 +50,20 @@ function parseVotes(xml) {
     return [];
   }
 
-  let voteRecords = doc?.rollcallvote?.['recorded-vote'] || [];
+  let voteRecords = doc?.['rollcall-vote']?.['recorded-vote'] || [];
   if (!Array.isArray(voteRecords)) voteRecords = [voteRecords];
 
-  return voteRecords
-    .filter(v => v?.legislator)
-    .map(v => {
-      const leg = v.legislator;
-      return {
-        bioguideId: (leg.bioguideID || leg.bioguideId || '').trim(),
-        vote: (v.vote || '').trim().toLowerCase()
-      };
-    })
-    .filter(v => v.bioguideId);
+  return voteRecords.map(v => {
+    const leg = v.legislator || {};
+    const id = leg.bioguideID || leg.bioguideId || leg['@bioGuideID'] || leg['@name-id'] || '';
+    return {
+      bioguideId: id.trim(),
+      vote: (v.vote || '').trim().toLowerCase()
+    };
+  }).filter(v => v.bioguideId);
 }
 
 (async function main() {
-  // Clear debug log
   fs.writeFileSync(DEBUG_LOG, '--- Votes Scraper Debug Log ---\n');
 
   let reps;
@@ -91,7 +74,7 @@ function parseVotes(xml) {
     return;
   }
 
-  const repMap = new Map(reps.map(r => [r.bioguideId?.toLowerCase?.() || '', r]));
+  const repMap = new Map(reps.map(r => [r.bioguideId.toLowerCase(), r]));
   log(`Loaded ${reps.length} representatives`);
 
   let attached = 0;
@@ -100,57 +83,39 @@ function parseVotes(xml) {
   for (const year of SESSIONS) {
     log(`\nScanning House roll calls for ${year}...`);
     let consecutiveFails = 0;
-    let roll = 1;
 
-    while (true) {
+    for (let roll = 1; roll <= 3000; roll++) {
       const xml = await fetchRoll(year, roll);
       if (!xml) {
         consecutiveFails++;
-        if (consecutiveFails > 50) {
-          log(`Stopping ${year} scan after 50 consecutive 404s/empty`);
+        if (consecutiveFails > 100) {
+          log(`Stopping ${year} scan after 100 consecutive misses`);
           break;
         }
-        roll++;
         continue;
       }
 
       consecutiveFails = 0;
       const votes = parseVotes(xml);
-      log(`Roll ${roll}: ${votes.length} vote records parsed`);
-
-      if (votes.length === 0) {
-        roll++;
-        continue;
-      }
+      if (votes.length === 0) continue;
 
       totalVotesProcessed++;
       for (const v of votes) {
         const idLower = v.bioguideId.toLowerCase();
         if (!repMap.has(idLower)) {
-          log(`Bioguide mismatch: ${v.bioguideId} not found in roster`);
+          log(`Bioguide mismatch: ${v.bioguideId}`);
           continue;
         }
-
         const rep = repMap.get(idLower);
-        const voteLower = v.vote.toLowerCase();
-
-        if (voteLower === 'yea' || voteLower === 'yes') rep.yeaVotes++;
-        else if (voteLower === 'nay' || voteLower === 'no') rep.nayVotes++;
+        if (v.vote === 'yea' || v.vote === 'yes') rep.yeaVotes++;
+        else if (v.vote === 'nay' || v.vote === 'no') rep.nayVotes++;
         else rep.missedVotes++;
-
         rep.totalVotes++;
         attached++;
-      }
-
-      roll++;
-      if (roll > 3000) {
-        log(`Hit safety cap at roll 3000`);
-        break;
       }
     }
   }
 
-  // Calculate percentages
   for (const r of reps) {
     if (r.totalVotes > 0) {
       const participated = r.yeaVotes + r.nayVotes;
