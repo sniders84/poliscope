@@ -46,9 +46,10 @@ async function fetchBills(bioguideId) {
   let next = `${BASE_URL}/member/${bioguideId}/sponsored-legislation?congress=119&api_key=${API_KEY}&format=json`;
   while (next) {
     const data = await getWithRetry(next);
-    if (!data.bills) break;
+    const bills = data.sponsoredLegislation || [];
+    if (bills.length === 0) break;
 
-    for (const bill of data.bills) {
+    for (const bill of bills) {
       sponsored++;
       if (bill.latestAction?.action?.toLowerCase().includes('became law')) {
         becameLawSponsored++;
@@ -61,9 +62,10 @@ async function fetchBills(bioguideId) {
   next = `${BASE_URL}/member/${bioguideId}/cosponsored-legislation?congress=119&api_key=${API_KEY}&format=json`;
   while (next) {
     const data = await getWithRetry(next);
-    if (!data.bills) break;
+    const bills = data.cosponsoredLegislation || [];
+    if (bills.length === 0) break;
 
-    for (const bill of data.bills) {
+    for (const bill of bills) {
       cosponsored++;
       if (bill.latestAction?.action?.toLowerCase().includes('became law')) {
         becameLawCosponsored++;
@@ -90,6 +92,8 @@ async function fetchBills(bioguideId) {
     const district = lastTerm.district || '';
     const party = lastTerm.party || '';
 
+    console.log(`\nProcessing ${name} (${bioguideId}, ${state}-${district})...`);
+
     try {
       const totals = await fetchBills(bioguideId);
 
@@ -105,10 +109,7 @@ async function fetchBills(bioguideId) {
         becameLawCosponsoredBills: totals.becameLawCosponsored
       });
 
-      console.log(
-        `${name}: sponsored=${totals.sponsored}, cosponsored=${totals.cosponsored}, ` +
-        `becameLawBills=${totals.becameLawSponsored}, becameLawCosponsoredBills=${totals.becameLawCosponsored}`
-      );
+      console.log(`${name}: sponsored=${totals.sponsored}, cosponsored=${totals.cosponsored}, becameLawBills=${totals.becameLawSponsored}, becameLawCosponsoredBills=${totals.becameLawCosponsored}`);
     } catch (err) {
       console.error(`Error for ${bioguideId} (${name}): ${err.message}`);
     }
