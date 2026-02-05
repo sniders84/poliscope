@@ -1,5 +1,5 @@
 // scripts/misconduct-scraper.js
-// Purpose: Parse GovTrack misconduct.yaml and attach misconductCount/tags/text/consequences to rankings.json
+// Purpose: Parse GovTrack misconduct.yaml and attach misconductCount/tags/texts/allegations/consequences to rankings.json
 // Works for both Senate and House depending on target file
 
 const fs = require('fs');
@@ -58,6 +58,7 @@ for (const entry of misconduct) {
     count: 0,
     tags: [],
     texts: [],
+    allegations: [],
     consequences: []
   };
 
@@ -68,6 +69,11 @@ for (const entry of misconduct) {
     current.tags.push(...entry.tags);
   } else if (typeof entry.tags === 'string') {
     current.tags.push(entry.tags);
+  }
+
+  // Allegation
+  if (entry.allegation) {
+    current.allegations.push(entry.allegation);
   }
 
   // Detailed text
@@ -91,12 +97,14 @@ for (const rec of rankings) {
     rec.misconductCount = data.count;
     rec.misconductTags = [...new Set(data.tags)];
     rec.misconductTexts = data.texts;
+    rec.misconductAllegations = data.allegations;
     rec.misconductConsequences = data.consequences;
     updated++;
   } else {
     rec.misconductCount = rec.misconductCount || 0;
     rec.misconductTags = rec.misconductTags || [];
     rec.misconductTexts = rec.misconductTexts || [];
+    rec.misconductAllegations = rec.misconductAllegations || [];
     rec.misconductConsequences = rec.misconductConsequences || [];
   }
   rec.lastUpdated = new Date().toISOString();
