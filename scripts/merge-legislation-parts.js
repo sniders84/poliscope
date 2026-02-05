@@ -1,5 +1,5 @@
 // scripts/merge-legislation-parts.js
-// Purpose: Combine part files from House legislation scraper into one complete legislation-representatives.json
+// Purpose: Combine part files from House legislation scraper into one complete representatives-legislation.json
 
 const fs = require('fs');
 const path = require('path');
@@ -11,7 +11,8 @@ const parts = [
   path.join(__dirname, '..', 'public', 'legislation-representatives-part4.json')
 ];
 
-const outputPath = path.join(__dirname, '..', 'public', 'legislation-representatives.json');
+// IMPORTANT: final output must match what merge-representatives.js expects
+const outputPath = path.join(__dirname, '..', 'public', 'representatives-legislation.json');
 
 let merged = [];
 
@@ -33,5 +34,13 @@ for (const file of parts) {
   }
 }
 
-fs.writeFileSync(outputPath, JSON.stringify(merged, null, 2));
-console.log(`\nFinal merged file written: ${merged.length} representatives in legislation-representatives.json`);
+// Deduplicate by bioguideId
+const seen = new Map();
+for (const rec of merged) {
+  if (!rec.bioguideId) continue;
+  seen.set(rec.bioguideId, rec);
+}
+const deduped = Array.from(seen.values());
+
+fs.writeFileSync(outputPath, JSON.stringify(deduped, null, 2));
+console.log(`\nFinal merged file written: ${deduped.length} representatives in representatives-legislation.json`);
