@@ -120,21 +120,23 @@ jobs:
       - name: Merge legislation parts
         run: node scripts/merge-legislation-parts.js
 
-      - env:
-          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
+      - name: Attach committees
         run: node scripts/committee-reps-scraper.js
 
-      - env:
-          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
+      - name: Attach votes
         run: node scripts/votes-reps-scraper.js
 
-      - run: node scripts/merge-representatives.js
+      - name: Merge all House data
+        run: node scripts/merge-representatives.js
 
-      - run: node scripts/misconduct-scraper.js house
+      - name: Attach misconduct
+        run: node scripts/misconduct-scraper.js house
 
-      - run: node scripts/representatives-scores.js
+      - name: Compute scores
+        run: node scripts/representatives-scores.js
 
-      - run: node scripts/update-streaks.js
+      - name: Update streaks
+        run: node scripts/update-streaks.js
 
       - name: Commit updated House files
         uses: stefanzweifel/git-auto-commit-action@v5
@@ -144,6 +146,6 @@ jobs:
           commit_user_name: github-actions[bot]
           commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
           push_options: '--force-with-lease'
-          skip_dirty_check: false          # only commit if changes exist
+          skip_dirty_check: false
           skip_fetch: false
           branch: main
