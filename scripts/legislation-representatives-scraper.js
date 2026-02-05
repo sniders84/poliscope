@@ -1,3 +1,4 @@
+
 // scripts/legislation-representatives-scraper.js
 //
 // Purpose: Pull sponsored/cosponsored bills and became-law counts for the 119th Congress (House)
