@@ -8,7 +8,6 @@ const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.
 const COMMITTEES_PATH = path.join(__dirname, '..', 'public', 'representatives-committees.json');
 
 function ensureSchema(rep) {
-  // Votes
   rep.yeaVotes ??= 0;
   rep.nayVotes ??= 0;
   rep.missedVotes ??= 0;
@@ -16,21 +15,17 @@ function ensureSchema(rep) {
   rep.participationPct ??= 0;
   rep.missedVotePct ??= 0;
 
-  // Legislation
   rep.sponsoredBills ??= 0;
   rep.cosponsoredBills ??= 0;
   rep.becameLawBills ??= 0;
   rep.becameLawCosponsoredBills ??= 0;
 
-  // Committees
   rep.committees = Array.isArray(rep.committees) ? rep.committees : [];
 
-  // Scores
   rep.rawScore ??= 0;
   rep.score ??= 0;
   rep.scoreNormalized ??= 0;
 
-  // Strip unwanted amendment fields if present
   delete rep.sponsoredAmendments;
   delete rep.cosponsoredAmendments;
   delete rep.becameLawAmendments;
@@ -41,15 +36,29 @@ function ensureSchema(rep) {
 
 (function main() {
   const reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureSchema);
-  const committeesDataRaw = JSON.parse(fs.readFileSync(COMMITTEES_PATH, 'utf-8'));
+  let committeesDataRaw;
+  try {
+    committeesDataRaw = JSON.parse(fs.readFileSync(COMMITTEES_PATH, 'utf-8'));
+  } catch (err) {
+    console.error(`Failed to read committees file: ${err.message}`);
+    process.exit(1);
+  }
 
   const repMap = new Map(reps.map(r => [r.bioguideId, r]));
 
-  // committeesDataRaw is an object keyed by committee code, each value is an array of members
-  for (const [committeeCode, members] of Object.entries(committeesDataRaw)) {
-    if (!Array.isArray(members)) continue;
+  // Normalize committees data into array of { code, name, members }
+  const committeeArray = Array.isArray(committeesDataRaw)
+    ? committeesDataRaw
+    : Object.entries(committeesDataRaw).map(([code, data]) => ({
+        code,
+        name: data.name || code,
+        members: data.members || []
+      }));
 
-    for (const m of members) {
+  for (const c of committeeArray) {
+    if (!Array.isArray(c.members)) continue;
+
+    for (const m of c.members) {
       const bio = m.bioguide;
       if (!bio || !repMap.has(bio)) continue;
 
@@ -63,20 +72,22 @@ function ensureSchema(rep) {
           role = 'Chair';
         } else if (t.includes('ranking')) {
           role = 'Ranking Member';
+        } else if (t.includes('vice')) {
+          role = 'Vice Chair';
         } else {
           role = m.title;
         }
       }
 
       const entry = {
-        committeeCode,
-        committeeName: m.committeeName || committeeCode,
+        committeeCode: c.code,
+        committeeName: c.name,
         role,
         rank: m.rank ?? null,
         party: m.party || null
       };
 
-      // Avoid duplicates: same committee + same role
+      // Avoid duplicates: same committee + same role + same bioguide
       const exists = rep.committees.some(
         x => x.committeeCode === entry.committeeCode && x.role === entry.role
       );
