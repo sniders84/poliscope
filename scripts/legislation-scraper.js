@@ -19,17 +19,11 @@ async function getWithRetry(url, tries = 5) {
   let lastErr;
   for (let i = 0; i < tries; i++) {
     try {
-      const resp = await axios.get(url, {
-        headers: {
-          'Accept': 'application/json',
-          'User-Agent': 'Poliscope/1.0'
-        }
-      });
+      const resp = await axios.get(url);
       return resp.data;
     } catch (err) {
       lastErr = err;
-      const status = err.response?.status || 'unknown';
-      console.warn(`Retry ${i+1}/${tries} for ${url} - status ${status}: ${err.message}`);
+      console.warn(`Retry ${i+1}/${tries} for ${url}: ${err.message}`);
       await new Promise(r => setTimeout(r, 3000 * (i + 1)));
     }
   }
