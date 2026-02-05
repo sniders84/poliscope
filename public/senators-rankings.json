@@ -9,7 +9,7 @@
     "party": "Democrat",
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/c000127_200.jpg",
-    "sponsoredBills": 56,
+    "sponsoredBills": 57,
     "cosponsoredBills": 174,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 1,
@@ -109,36 +109,39 @@
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 180,
-    "nayVotes": 487,
+    "nayVotes": 484,
     "missedVotes": 1,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 99.85,
     "missedVotePct": 0.15,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
-        "sponsoredBills": 56,
+        "sponsoredBills": 57,
         "cosponsoredBills": 174,
         "yeaVotes": 180,
-        "nayVotes": 487,
+        "nayVotes": 484,
         "missedVotes": 1,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 204.1,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 205.29999999999998,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "k000367",
@@ -151,7 +154,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/k000367_200.jpg",
     "sponsoredBills": 136,
-    "cosponsoredBills": 509,
+    "cosponsoredBills": 514,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 2,
     "committees": [
@@ -284,37 +287,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 214,
-    "nayVotes": 447,
+    "yeaVotes": 212,
+    "nayVotes": 446,
     "missedVotes": 7,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 98.95,
     "missedVotePct": 1.05,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 136,
-        "cosponsoredBills": 509,
-        "yeaVotes": 214,
-        "nayVotes": 447,
+        "cosponsoredBills": 514,
+        "yeaVotes": 212,
+        "nayVotes": 446,
         "missedVotes": 7,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 511.0999999999999,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 514.0999999999999,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "s000033",
@@ -326,7 +332,7 @@
     "party": "Independent",
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/s000033_200.jpg",
-    "sponsoredBills": 54,
+    "sponsoredBills": 55,
     "cosponsoredBills": 342,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 2,
@@ -433,36 +439,39 @@
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 153,
-    "nayVotes": 457,
+    "nayVotes": 454,
     "missedVotes": 58,
-    "totalVotes": 668,
-    "participationPct": 91.32,
-    "missedVotePct": 8.68,
+    "totalVotes": 665,
+    "participationPct": 91.28,
+    "missedVotePct": 8.72,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
-        "sponsoredBills": 54,
+        "sponsoredBills": 55,
         "cosponsoredBills": 342,
         "yeaVotes": 153,
-        "nayVotes": 457,
+        "nayVotes": 454,
         "missedVotes": 58,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 279,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 280.2,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "w000802",
@@ -474,8 +483,8 @@
     "party": "Democrat",
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/w000802_200.jpg",
-    "sponsoredBills": 105,
-    "cosponsoredBills": 328,
+    "sponsoredBills": 106,
+    "cosponsoredBills": 332,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 2,
     "committees": [
@@ -601,37 +610,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 188,
-    "nayVotes": 456,
+    "yeaVotes": 186,
+    "nayVotes": 455,
     "missedVotes": 24,
-    "totalVotes": 668,
-    "participationPct": 96.41,
-    "missedVotePct": 3.59,
+    "totalVotes": 665,
+    "participationPct": 96.39,
+    "missedVotePct": 3.61,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
-        "sponsoredBills": 105,
-        "cosponsoredBills": 328,
-        "yeaVotes": 188,
-        "nayVotes": 456,
+        "sponsoredBills": 106,
+        "cosponsoredBills": 332,
+        "yeaVotes": 186,
+        "nayVotes": 455,
         "missedVotes": 24,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 356.79999999999995,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 360.4,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "b001261",
@@ -742,14 +754,14 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 513,
+    "yeaVotes": 510,
     "nayVotes": 151,
     "missedVotes": 4,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 99.4,
     "missedVotePct": 0.6,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
@@ -757,22 +769,25 @@
       "lastTotals": {
         "sponsoredBills": 48,
         "cosponsoredBills": 173,
-        "yeaVotes": 513,
+        "yeaVotes": 510,
         "nayVotes": 151,
         "missedVotes": 4,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
+    "streak": 1,
     "powerScore": 198.39999999999998,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "w000437",
@@ -785,7 +800,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/f49ac425119375e9fe6a075762734079_200.jpg",
     "sponsoredBills": 47,
-    "cosponsoredBills": 209,
+    "cosponsoredBills": 210,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 5,
     "committees": [
@@ -925,37 +940,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 489,
+    "yeaVotes": 486,
     "nayVotes": 153,
     "missedVotes": 26,
-    "totalVotes": 668,
-    "participationPct": 96.11,
-    "missedVotePct": 3.89,
+    "totalVotes": 665,
+    "participationPct": 96.09,
+    "missedVotePct": 3.91,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 47,
-        "cosponsoredBills": 209,
-        "yeaVotes": 489,
+        "cosponsoredBills": 210,
+        "yeaVotes": 486,
         "nayVotes": 153,
         "missedVotes": 26,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 225.79999999999998,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 226.4,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "c001035",
@@ -1087,37 +1105,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 547,
+    "yeaVotes": 544,
     "nayVotes": 121,
     "missedVotes": 0,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 100,
     "missedVotePct": 0,
     "streaks": {
-      "activity": 0,
-      "voting": 1,
+      "activity": 1,
+      "voting": 2,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 36,
         "cosponsoredBills": 239,
-        "yeaVotes": 547,
+        "yeaVotes": 544,
         "nayVotes": 121,
         "missedVotes": 0,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 1,
+    "streak": 2,
     "powerScore": 229.6,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "c001056",
@@ -1130,7 +1151,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/c001056_200.jpg",
     "sponsoredBills": 146,
-    "cosponsoredBills": 247,
+    "cosponsoredBills": 250,
     "becameLawBills": 2,
     "becameLawCosponsoredBills": 2,
     "committees": [
@@ -1256,37 +1277,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 512,
+    "yeaVotes": 509,
     "nayVotes": 153,
     "missedVotes": 3,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 99.55,
     "missedVotePct": 0.45,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 146,
-        "cosponsoredBills": 247,
-        "yeaVotes": 512,
+        "cosponsoredBills": 250,
+        "yeaVotes": 509,
         "nayVotes": 153,
         "missedVotes": 3,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 379.9,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 381.7,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "d000563",
@@ -1298,7 +1322,7 @@
     "party": "Democrat",
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/d000563_200.jpg",
-    "sponsoredBills": 139,
+    "sponsoredBills": 141,
     "cosponsoredBills": 394,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
@@ -1390,37 +1414,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 215,
-    "nayVotes": 435,
+    "yeaVotes": 213,
+    "nayVotes": 434,
     "missedVotes": 18,
-    "totalVotes": 668,
-    "participationPct": 97.31,
-    "missedVotePct": 2.69,
+    "totalVotes": 665,
+    "participationPct": 97.29,
+    "missedVotePct": 2.71,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
-        "sponsoredBills": 139,
+        "sponsoredBills": 141,
         "cosponsoredBills": 394,
-        "yeaVotes": 215,
-        "nayVotes": 435,
+        "yeaVotes": 213,
+        "nayVotes": 434,
         "missedVotes": 18,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 422.19999999999993,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 424.59999999999997,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "g000359",
@@ -1432,7 +1459,7 @@
     "party": "Republican",
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/g000359_200.jpg",
-    "sponsoredBills": 35,
+    "sponsoredBills": 36,
     "cosponsoredBills": 125,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 2,
@@ -1559,37 +1586,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 472,
+    "yeaVotes": 469,
     "nayVotes": 153,
     "missedVotes": 43,
-    "totalVotes": 668,
-    "participationPct": 93.56,
-    "missedVotePct": 6.44,
+    "totalVotes": 665,
+    "participationPct": 93.53,
+    "missedVotePct": 6.47,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
-        "sponsoredBills": 35,
+        "sponsoredBills": 36,
         "cosponsoredBills": 125,
-        "yeaVotes": 472,
+        "yeaVotes": 469,
         "nayVotes": 153,
         "missedVotes": 43,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 139.5,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 140.7,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "m000355",
@@ -1707,14 +1737,14 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 464,
+    "yeaVotes": 461,
     "nayVotes": 149,
     "missedVotes": 55,
-    "totalVotes": 668,
-    "participationPct": 91.77,
-    "missedVotePct": 8.23,
+    "totalVotes": 665,
+    "participationPct": 91.73,
+    "missedVotePct": 8.27,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
@@ -1722,22 +1752,25 @@
       "lastTotals": {
         "sponsoredBills": 13,
         "cosponsoredBills": 49,
-        "yeaVotes": 464,
+        "yeaVotes": 461,
         "nayVotes": 149,
         "missedVotes": 55,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
+    "streak": 1,
     "powerScore": 58.5,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "m001176",
@@ -1750,7 +1783,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/m001176_200.jpg",
     "sponsoredBills": 238,
-    "cosponsoredBills": 477,
+    "cosponsoredBills": 479,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 1,
     "committees": [
@@ -1884,36 +1917,39 @@
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 158,
-    "nayVotes": 504,
+    "nayVotes": 501,
     "missedVotes": 6,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 99.1,
     "missedVotePct": 0.9,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
-      "leader": 6
+      "leader": 7
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 238,
-        "cosponsoredBills": 477,
+        "cosponsoredBills": 479,
         "yeaVotes": 158,
-        "nayVotes": 504,
+        "nayVotes": 501,
         "missedVotes": 6,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 6,
-    "powerScore": 613.8,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 7,
+    "powerScore": 615,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "r000122",
@@ -1925,7 +1961,7 @@
     "party": "Democrat",
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/r000122_200.jpg",
-    "sponsoredBills": 138,
+    "sponsoredBills": 140,
     "cosponsoredBills": 253,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
@@ -2073,37 +2109,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 207,
-    "nayVotes": 453,
+    "yeaVotes": 205,
+    "nayVotes": 452,
     "missedVotes": 8,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 98.8,
     "missedVotePct": 1.2,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
-        "sponsoredBills": 138,
+        "sponsoredBills": 140,
         "cosponsoredBills": 253,
-        "yeaVotes": 207,
-        "nayVotes": 453,
+        "yeaVotes": 205,
+        "nayVotes": 452,
         "missedVotes": 8,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 357.4,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 359.79999999999995,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "r000584",
@@ -2116,7 +2155,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/r000584_200.jpg",
     "sponsoredBills": 83,
-    "cosponsoredBills": 272,
+    "cosponsoredBills": 273,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 5,
     "committees": [
@@ -2235,37 +2274,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 504,
+    "yeaVotes": 501,
     "nayVotes": 151,
     "missedVotes": 13,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 98.05,
     "missedVotePct": 1.95,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 83,
-        "cosponsoredBills": 272,
-        "yeaVotes": 504,
+        "cosponsoredBills": 273,
+        "yeaVotes": 501,
         "nayVotes": 151,
         "missedVotes": 13,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 305.29999999999995,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 305.9,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "s001181",
@@ -2277,8 +2319,8 @@
     "party": "Democrat",
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/s001181_200.jpg",
-    "sponsoredBills": 230,
-    "cosponsoredBills": 425,
+    "sponsoredBills": 231,
+    "cosponsoredBills": 427,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 3,
     "committees": [
@@ -2439,37 +2481,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 269,
-    "nayVotes": 376,
+    "yeaVotes": 267,
+    "nayVotes": 375,
     "missedVotes": 23,
-    "totalVotes": 668,
-    "participationPct": 96.56,
-    "missedVotePct": 3.44,
+    "totalVotes": 665,
+    "participationPct": 96.54,
+    "missedVotePct": 3.46,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
-        "sponsoredBills": 230,
-        "cosponsoredBills": 425,
-        "yeaVotes": 269,
-        "nayVotes": 376,
+        "sponsoredBills": 231,
+        "cosponsoredBills": 427,
+        "yeaVotes": 267,
+        "nayVotes": 375,
         "missedVotes": 23,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 576.5,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 578.9,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "w000805",
@@ -2482,7 +2527,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/w000805_200.jpg",
     "sponsoredBills": 97,
-    "cosponsoredBills": 283,
+    "cosponsoredBills": 284,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 1,
     "committees": [
@@ -2566,37 +2611,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 237,
-    "nayVotes": 414,
+    "yeaVotes": 235,
+    "nayVotes": 413,
     "missedVotes": 17,
-    "totalVotes": 668,
-    "participationPct": 97.46,
-    "missedVotePct": 2.54,
+    "totalVotes": 665,
+    "participationPct": 97.44,
+    "missedVotePct": 2.56,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 97,
-        "cosponsoredBills": 283,
-        "yeaVotes": 237,
-        "nayVotes": 414,
+        "cosponsoredBills": 284,
+        "yeaVotes": 235,
+        "nayVotes": 413,
         "missedVotes": 17,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 306.7,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 307.3,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "g000555",
@@ -2700,14 +2748,14 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 194,
-    "nayVotes": 463,
+    "yeaVotes": 192,
+    "nayVotes": 462,
     "missedVotes": 11,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 98.35,
     "missedVotePct": 1.65,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
@@ -2715,22 +2763,25 @@
       "lastTotals": {
         "sponsoredBills": 51,
         "cosponsoredBills": 348,
-        "yeaVotes": 194,
-        "nayVotes": 463,
+        "yeaVotes": 192,
+        "nayVotes": 462,
         "missedVotes": 11,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
+    "streak": 1,
     "powerScore": 295.5,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "c001088",
@@ -2743,7 +2794,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/c001088_200.jpg",
     "sponsoredBills": 114,
-    "cosponsoredBills": 395,
+    "cosponsoredBills": 397,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
     "committees": [
@@ -2883,37 +2934,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 197,
-    "nayVotes": 436,
+    "yeaVotes": 195,
+    "nayVotes": 435,
     "missedVotes": 35,
-    "totalVotes": 668,
-    "participationPct": 94.76,
-    "missedVotePct": 5.24,
+    "totalVotes": 665,
+    "participationPct": 94.74,
+    "missedVotePct": 5.26,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 114,
-        "cosponsoredBills": 395,
-        "yeaVotes": 197,
-        "nayVotes": 436,
+        "cosponsoredBills": 397,
+        "yeaVotes": 195,
+        "nayVotes": 435,
         "missedVotes": 35,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 400.29999999999995,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 401.5,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "b001230",
@@ -2926,7 +2980,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/b001230_200.jpg",
     "sponsoredBills": 67,
-    "cosponsoredBills": 310,
+    "cosponsoredBills": 312,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
     "committees": [
@@ -3038,37 +3092,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 185,
-    "nayVotes": 480,
+    "yeaVotes": 183,
+    "nayVotes": 479,
     "missedVotes": 1,
-    "totalVotes": 666,
+    "totalVotes": 663,
     "participationPct": 99.85,
     "missedVotePct": 0.15,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 67,
-        "cosponsoredBills": 310,
-        "yeaVotes": 185,
-        "nayVotes": 480,
+        "cosponsoredBills": 312,
+        "yeaVotes": 183,
+        "nayVotes": 479,
         "missedVotes": 1,
-        "totalVotes": 666
+        "totalVotes": 663
       }
     },
-    "streak": 0,
-    "powerScore": 299.9,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 301.09999999999997,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "b001267",
@@ -3081,7 +3138,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/b001267_200.jpg",
     "sponsoredBills": 243,
-    "cosponsoredBills": 301,
+    "cosponsoredBills": 303,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 2,
     "committees": [
@@ -3152,36 +3209,39 @@
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 185,
-    "nayVotes": 472,
+    "nayVotes": 469,
     "missedVotes": 11,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 98.35,
     "missedVotePct": 1.65,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 243,
-        "cosponsoredBills": 301,
+        "cosponsoredBills": 303,
         "yeaVotes": 185,
-        "nayVotes": 472,
+        "nayVotes": 469,
         "missedVotes": 11,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 494.69999999999993,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 495.9,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "b001243",
@@ -3194,7 +3254,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/b001243_200.jpg",
     "sponsoredBills": 151,
-    "cosponsoredBills": 368,
+    "cosponsoredBills": 369,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 4,
     "committees": [
@@ -3306,37 +3366,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 493,
+    "yeaVotes": 490,
     "nayVotes": 141,
     "missedVotes": 34,
-    "totalVotes": 668,
-    "participationPct": 94.91,
-    "missedVotePct": 5.09,
+    "totalVotes": 665,
+    "participationPct": 94.89,
+    "missedVotePct": 5.11,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 151,
-        "cosponsoredBills": 368,
-        "yeaVotes": 493,
+        "cosponsoredBills": 369,
+        "yeaVotes": 490,
         "nayVotes": 141,
         "missedVotes": 34,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 431,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 431.6,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "b001277",
@@ -3349,7 +3412,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/b001277_200.jpg",
     "sponsoredBills": 133,
-    "cosponsoredBills": 615,
+    "cosponsoredBills": 621,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 2,
     "committees": [
@@ -3454,37 +3517,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 165,
-    "nayVotes": 494,
+    "yeaVotes": 163,
+    "nayVotes": 493,
     "missedVotes": 9,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 98.65,
     "missedVotePct": 1.35,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 133,
-        "cosponsoredBills": 615,
-        "yeaVotes": 165,
-        "nayVotes": 494,
+        "cosponsoredBills": 621,
+        "yeaVotes": 163,
+        "nayVotes": 493,
         "missedVotes": 9,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 562.1,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 565.6999999999999,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "b001236",
@@ -3496,8 +3562,8 @@
     "party": "Republican",
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/b001236_200.jpg",
-    "sponsoredBills": 16,
-    "cosponsoredBills": 197,
+    "sponsoredBills": 17,
+    "cosponsoredBills": 199,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 3,
     "committees": [
@@ -3644,37 +3710,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 499,
+    "yeaVotes": 496,
     "nayVotes": 157,
     "missedVotes": 12,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 98.2,
     "missedVotePct": 1.8,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
-        "sponsoredBills": 16,
-        "cosponsoredBills": 197,
-        "yeaVotes": 499,
+        "sponsoredBills": 17,
+        "cosponsoredBills": 199,
+        "yeaVotes": 496,
         "nayVotes": 157,
         "missedVotes": 12,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 184.39999999999998,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 186.79999999999998,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "c001047",
@@ -3687,7 +3756,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/c001047_200.jpg",
     "sponsoredBills": 24,
-    "cosponsoredBills": 256,
+    "cosponsoredBills": 257,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 5,
     "committees": [
@@ -3820,37 +3889,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 500,
+    "yeaVotes": 497,
     "nayVotes": 154,
     "missedVotes": 14,
-    "totalVotes": 668,
-    "participationPct": 97.9,
-    "missedVotePct": 2.1,
+    "totalVotes": 665,
+    "participationPct": 97.89,
+    "missedVotePct": 2.11,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 24,
-        "cosponsoredBills": 256,
-        "yeaVotes": 500,
+        "cosponsoredBills": 257,
+        "yeaVotes": 497,
         "nayVotes": 154,
         "missedVotes": 14,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 230.39999999999998,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 231,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "c001075",
@@ -3862,8 +3934,8 @@
     "party": "Republican",
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/c001075_200.jpg",
-    "sponsoredBills": 103,
-    "cosponsoredBills": 270,
+    "sponsoredBills": 104,
+    "cosponsoredBills": 274,
     "becameLawBills": 1,
     "becameLawCosponsoredBills": 4,
     "committees": [
@@ -3961,37 +4033,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 485,
+    "yeaVotes": 482,
     "nayVotes": 142,
     "missedVotes": 41,
-    "totalVotes": 668,
-    "participationPct": 93.86,
-    "missedVotePct": 6.14,
+    "totalVotes": 665,
+    "participationPct": 93.83,
+    "missedVotePct": 6.17,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
-        "sponsoredBills": 103,
-        "cosponsoredBills": 270,
-        "yeaVotes": 485,
+        "sponsoredBills": 104,
+        "cosponsoredBills": 274,
+        "yeaVotes": 482,
         "nayVotes": 142,
         "missedVotes": 41,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 311.1,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 314.7,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "c000880",
@@ -4102,14 +4177,14 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 510,
+    "yeaVotes": 507,
     "nayVotes": 153,
     "missedVotes": 5,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 99.25,
     "missedVotePct": 0.75,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
@@ -4117,22 +4192,25 @@
       "lastTotals": {
         "sponsoredBills": 32,
         "cosponsoredBills": 250,
-        "yeaVotes": 510,
+        "yeaVotes": 507,
         "nayVotes": 153,
         "missedVotes": 5,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
+    "streak": 1,
     "powerScore": 236.9,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "g000386",
@@ -4144,7 +4222,7 @@
     "party": "Republican",
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/g000386_200.jpg",
-    "sponsoredBills": 96,
+    "sponsoredBills": 97,
     "cosponsoredBills": 199,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 4,
@@ -4236,37 +4314,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 509,
+    "yeaVotes": 506,
     "nayVotes": 155,
     "missedVotes": 4,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 99.4,
     "missedVotePct": 0.6,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
-        "sponsoredBills": 96,
+        "sponsoredBills": 97,
         "cosponsoredBills": 199,
-        "yeaVotes": 509,
+        "yeaVotes": 506,
         "nayVotes": 155,
         "missedVotes": 4,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 272.59999999999997,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 273.79999999999995,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "h001046",
@@ -4279,7 +4360,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/h001046_200.jpg",
     "sponsoredBills": 98,
-    "cosponsoredBills": 331,
+    "cosponsoredBills": 332,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 5,
     "committees": [
@@ -4377,37 +4458,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 203,
-    "nayVotes": 431,
+    "yeaVotes": 201,
+    "nayVotes": 430,
     "missedVotes": 34,
-    "totalVotes": 668,
-    "participationPct": 94.91,
-    "missedVotePct": 5.09,
+    "totalVotes": 665,
+    "participationPct": 94.89,
+    "missedVotePct": 5.11,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 98,
-        "cosponsoredBills": 331,
-        "yeaVotes": 203,
-        "nayVotes": 431,
+        "cosponsoredBills": 332,
+        "yeaVotes": 201,
+        "nayVotes": 430,
         "missedVotes": 34,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 344.2,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 344.79999999999995,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "h001042",
@@ -4532,14 +4616,14 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 164,
-    "nayVotes": 502,
+    "yeaVotes": 162,
+    "nayVotes": 501,
     "missedVotes": 2,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 99.7,
     "missedVotePct": 0.3,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
@@ -4547,22 +4631,25 @@
       "lastTotals": {
         "sponsoredBills": 142,
         "cosponsoredBills": 413,
-        "yeaVotes": 164,
-        "nayVotes": 502,
+        "yeaVotes": 162,
+        "nayVotes": 501,
         "missedVotes": 2,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
+    "streak": 1,
     "powerScore": 455.2,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "h001061",
@@ -4575,7 +4662,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/h001061_200.jpg",
     "sponsoredBills": 21,
-    "cosponsoredBills": 178,
+    "cosponsoredBills": 179,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 2,
     "committees": [
@@ -4687,37 +4774,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 507,
+    "yeaVotes": 504,
     "nayVotes": 154,
     "missedVotes": 7,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 98.95,
     "missedVotePct": 1.05,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 21,
-        "cosponsoredBills": 178,
-        "yeaVotes": 507,
+        "cosponsoredBills": 179,
+        "yeaVotes": 504,
         "nayVotes": 154,
         "missedVotes": 7,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 170.5,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 171.1,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "j000293",
@@ -4800,14 +4890,14 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 511,
+    "yeaVotes": 508,
     "nayVotes": 149,
     "missedVotes": 8,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 98.8,
     "missedVotePct": 1.2,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
@@ -4815,22 +4905,25 @@
       "lastTotals": {
         "sponsoredBills": 28,
         "cosponsoredBills": 49,
-        "yeaVotes": 511,
+        "yeaVotes": 508,
         "nayVotes": 149,
         "missedVotes": 8,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
+    "streak": 1,
     "powerScore": 84,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "l000575",
@@ -4843,7 +4936,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/l000575_200.jpg",
     "sponsoredBills": 83,
-    "cosponsoredBills": 252,
+    "cosponsoredBills": 253,
     "becameLawBills": 1,
     "becameLawCosponsoredBills": 1,
     "committees": [
@@ -4913,37 +5006,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 514,
+    "yeaVotes": 511,
     "nayVotes": 152,
     "missedVotes": 2,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 99.7,
     "missedVotePct": 0.3,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 83,
-        "cosponsoredBills": 252,
-        "yeaVotes": 514,
+        "cosponsoredBills": 253,
+        "yeaVotes": 511,
         "nayVotes": 152,
         "missedVotes": 2,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 282.79999999999995,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 283.4,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "l000577",
@@ -5068,14 +5164,14 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 491,
-    "nayVotes": 154,
+    "yeaVotes": 490,
+    "nayVotes": 152,
     "missedVotes": 23,
-    "totalVotes": 668,
-    "participationPct": 96.56,
-    "missedVotePct": 3.44,
+    "totalVotes": 665,
+    "participationPct": 96.54,
+    "missedVotePct": 3.46,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
@@ -5083,22 +5179,25 @@
       "lastTotals": {
         "sponsoredBills": 199,
         "cosponsoredBills": 175,
-        "yeaVotes": 491,
-        "nayVotes": 154,
+        "yeaVotes": 490,
+        "nayVotes": 152,
         "missedVotes": 23,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
+    "streak": 1,
     "powerScore": 377.29999999999995,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "l000570",
@@ -5110,7 +5209,7 @@
     "party": "Democrat",
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/l000570_200.jpg",
-    "sponsoredBills": 127,
+    "sponsoredBills": 128,
     "cosponsoredBills": 375,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 2,
@@ -5232,13 +5331,13 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
-        "sponsoredBills": 127,
+        "sponsoredBills": 128,
         "cosponsoredBills": 375,
         "yeaVotes": 0,
         "nayVotes": 0,
@@ -5246,16 +5345,42 @@
         "totalVotes": 0
       }
     },
-    "streak": 0,
-    "powerScore": 407.4,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 408.6,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [
+      "In 2017 Lujan was investigated for requesting that his congressional campaign committee issue communications, including requests for donations, using images of him in a “sit-in” demonstration in the House. The House Committee on Ethics [concluded that no action was needed](https://www.congress.gov/115/crpt/hrpt272/CRPT-115hrpt272.pdf)."
+    ],
+    "misconductAllegations": [
+      "requesting that his congressional campaign committee issue communications, including requests for donations, using images of him in a “sit-in” demonstration in the House"
+    ],
+    "misconductConsequences": [
+      {
+        "date": "2017-05-11T00:00:00.000Z",
+        "body": "House Office of Congressional Ethics",
+        "action": "recommended that the Committee on Ethics further review the allegation",
+        "link": "https://oce.house.gov/reports/investigations/oce-referral-regarding-rep-ben-ray-luj-n"
+      },
+      {
+        "date": "2017-06-26T00:00:00.000Z",
+        "body": "House Committee on Ethics",
+        "action": "decided to extend the matter",
+        "link": "https://ethics.house.gov/press-release/statement-chairwoman-and-ranking-member-committee-ethics-regarding-representative-ben"
+      },
+      {
+        "date": "2017-08-01T00:00:00.000Z",
+        "body": "House Committee on Ethics",
+        "action": "adopted a report concluding that no action was needed",
+        "link": "https://www.congress.gov/115/crpt/hrpt272/CRPT-115hrpt272.pdf"
+      }
+    ]
   },
   {
     "slug": "m000133",
@@ -5360,13 +5485,13 @@
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 148,
-    "nayVotes": 515,
+    "nayVotes": 512,
     "missedVotes": 5,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 99.25,
     "missedVotePct": 0.75,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
@@ -5375,21 +5500,24 @@
         "sponsoredBills": 167,
         "cosponsoredBills": 383,
         "yeaVotes": 148,
-        "nayVotes": 515,
+        "nayVotes": 512,
         "missedVotes": 5,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
+    "streak": 1,
     "powerScore": 455.7,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "m000934",
@@ -5401,8 +5529,8 @@
     "party": "Republican",
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/m000934_200.jpg",
-    "sponsoredBills": 82,
-    "cosponsoredBills": 166,
+    "sponsoredBills": 83,
+    "cosponsoredBills": 167,
     "becameLawBills": 1,
     "becameLawCosponsoredBills": 3,
     "committees": [
@@ -5528,37 +5656,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 480,
-    "nayVotes": 152,
-    "missedVotes": 36,
-    "totalVotes": 668,
-    "participationPct": 94.61,
-    "missedVotePct": 5.39,
+    "yeaVotes": 479,
+    "nayVotes": 151,
+    "missedVotes": 35,
+    "totalVotes": 665,
+    "participationPct": 94.74,
+    "missedVotePct": 5.26,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
-        "sponsoredBills": 82,
-        "cosponsoredBills": 166,
-        "yeaVotes": 480,
-        "nayVotes": 152,
-        "missedVotes": 36,
-        "totalVotes": 668
+        "sponsoredBills": 83,
+        "cosponsoredBills": 167,
+        "yeaVotes": 479,
+        "nayVotes": 151,
+        "missedVotes": 35,
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 235,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 237.3,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "m001153",
@@ -5570,7 +5701,7 @@
     "party": "Republican",
     "office": "Senator",
     "photo": "https://img.legistorm.com/people/386/52386.jpg?rand=11339",
-    "sponsoredBills": 61,
+    "sponsoredBills": 63,
     "cosponsoredBills": 179,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 4,
@@ -5676,37 +5807,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 512,
+    "yeaVotes": 509,
     "nayVotes": 133,
     "missedVotes": 23,
-    "totalVotes": 668,
-    "participationPct": 96.56,
-    "missedVotePct": 3.44,
+    "totalVotes": 665,
+    "participationPct": 96.54,
+    "missedVotePct": 3.46,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
-        "sponsoredBills": 61,
+        "sponsoredBills": 63,
         "cosponsoredBills": 179,
-        "yeaVotes": 512,
+        "yeaVotes": 509,
         "nayVotes": 133,
         "missedVotes": 23,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 213.1,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 215.5,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "m001169",
@@ -5719,7 +5853,7 @@
     "office": "Senator",
     "photo": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Chris_Murphy_official_photo.jpg",
     "sponsoredBills": 108,
-    "cosponsoredBills": 189,
+    "cosponsoredBills": 190,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
     "committees": [
@@ -5818,36 +5952,39 @@
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 153,
-    "nayVotes": 495,
+    "nayVotes": 492,
     "missedVotes": 20,
-    "totalVotes": 668,
-    "participationPct": 97.01,
-    "missedVotePct": 2.99,
+    "totalVotes": 665,
+    "participationPct": 96.99,
+    "missedVotePct": 3.01,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 108,
-        "cosponsoredBills": 189,
+        "cosponsoredBills": 190,
         "yeaVotes": 153,
-        "nayVotes": 495,
+        "nayVotes": 492,
         "missedVotes": 20,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 263,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 263.6,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "m001111",
@@ -5994,13 +6131,13 @@
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 139,
-    "nayVotes": 485,
+    "nayVotes": 482,
     "missedVotes": 44,
-    "totalVotes": 668,
-    "participationPct": 93.41,
-    "missedVotePct": 6.59,
+    "totalVotes": 665,
+    "participationPct": 93.38,
+    "missedVotePct": 6.62,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
@@ -6009,21 +6146,24 @@
         "sponsoredBills": 61,
         "cosponsoredBills": 219,
         "yeaVotes": 139,
-        "nayVotes": 485,
+        "nayVotes": 482,
         "missedVotes": 44,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
+    "streak": 1,
     "powerScore": 228.60000000000002,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "p000603",
@@ -6134,14 +6274,14 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 444,
-    "nayVotes": 200,
+    "yeaVotes": 443,
+    "nayVotes": 198,
     "missedVotes": 22,
-    "totalVotes": 666,
-    "participationPct": 96.7,
-    "missedVotePct": 3.3,
+    "totalVotes": 663,
+    "participationPct": 96.68,
+    "missedVotePct": 3.32,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
@@ -6149,22 +6289,25 @@
       "lastTotals": {
         "sponsoredBills": 81,
         "cosponsoredBills": 58,
-        "yeaVotes": 444,
-        "nayVotes": 200,
+        "yeaVotes": 443,
+        "nayVotes": 198,
         "missedVotes": 22,
-        "totalVotes": 666
+        "totalVotes": 663
       }
     },
-    "streak": 0,
+    "streak": 1,
     "powerScore": 152,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "p000595",
@@ -6177,7 +6320,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/p000595_200.jpg",
     "sponsoredBills": 164,
-    "cosponsoredBills": 270,
+    "cosponsoredBills": 271,
     "becameLawBills": 1,
     "becameLawCosponsoredBills": 1,
     "committees": [
@@ -6317,37 +6460,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 203,
-    "nayVotes": 451,
+    "yeaVotes": 201,
+    "nayVotes": 450,
     "missedVotes": 14,
-    "totalVotes": 668,
-    "participationPct": 97.9,
-    "missedVotePct": 2.1,
+    "totalVotes": 665,
+    "participationPct": 97.89,
+    "missedVotePct": 2.11,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 164,
-        "cosponsoredBills": 270,
-        "yeaVotes": 203,
-        "nayVotes": 451,
+        "cosponsoredBills": 271,
+        "yeaVotes": 201,
+        "nayVotes": 450,
         "missedVotes": 14,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 402.79999999999995,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 403.4,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "s001150",
@@ -6360,7 +6506,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/677d870dfdb6cf36bbb649b3_200.jpg",
     "sponsoredBills": 123,
-    "cosponsoredBills": 443,
+    "cosponsoredBills": 444,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 2,
     "committees": [
@@ -6461,36 +6607,51 @@
       "ethics resolved"
     ],
     "yeaVotes": 186,
-    "nayVotes": 466,
-    "missedVotes": 16,
-    "totalVotes": 668,
-    "participationPct": 97.6,
-    "missedVotePct": 2.4,
+    "nayVotes": 464,
+    "missedVotes": 15,
+    "totalVotes": 665,
+    "participationPct": 97.74,
+    "missedVotePct": 2.26,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 123,
-        "cosponsoredBills": 443,
+        "cosponsoredBills": 444,
         "yeaVotes": 186,
-        "nayVotes": 466,
-        "missedVotes": 16,
-        "totalVotes": 668
+        "nayVotes": 464,
+        "missedVotes": 15,
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 431.4,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 432.5,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [
+      "Schiff was [censured by the House of Representatives 213-209](https://www.govtrack.us/congress/votes/118-2023/h283) on June 21, 2023 for various statements and misstatements he made between 2017-2019 related to President Trump and Trump's presidential campaign. The misstatements include Schiff's reading of parts of the discredited Steele Dossier into the Congressional Record and claims of not having had contact with the whistleblower in the impeachment of Trump for withholding of aid to Ukraine in exchange for political favors. The censure resolution itself contains misstatements including denying that the 2016 Trump Campaign attempted to coordinate with Russia."
+    ],
+    "misconductAllegations": [
+      "bringing disrepute on the House by lying to or misleading the public"
+    ],
+    "misconductConsequences": [
+      {
+        "date": "2023-06-21T00:00:00.000Z",
+        "body": "House of Representatives",
+        "action": "censured 213-209",
+        "link": "https://www.govtrack.us/congress/votes/118-2023/h283",
+        "tags": "censure"
+      }
+    ]
   },
   {
     "slug": "s000148",
@@ -6503,7 +6664,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/s000148_200.jpg",
     "sponsoredBills": 46,
-    "cosponsoredBills": 171,
+    "cosponsoredBills": 172,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
     "committees": [
@@ -6524,37 +6685,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 168,
-    "nayVotes": 497,
+    "yeaVotes": 166,
+    "nayVotes": 496,
     "missedVotes": 3,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 99.55,
     "missedVotePct": 0.45,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 46,
-        "cosponsoredBills": 171,
-        "yeaVotes": 168,
-        "nayVotes": 497,
+        "cosponsoredBills": 172,
+        "yeaVotes": 166,
+        "nayVotes": 496,
         "missedVotes": 3,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 160.29999999999998,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 160.9,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "s001184",
@@ -6679,14 +6843,14 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 493,
+    "yeaVotes": 490,
     "nayVotes": 153,
     "missedVotes": 22,
-    "totalVotes": 668,
-    "participationPct": 96.71,
-    "missedVotePct": 3.29,
+    "totalVotes": 665,
+    "participationPct": 96.69,
+    "missedVotePct": 3.31,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
@@ -6694,22 +6858,25 @@
       "lastTotals": {
         "sponsoredBills": 62,
         "cosponsoredBills": 122,
-        "yeaVotes": 493,
+        "yeaVotes": 490,
         "nayVotes": 153,
         "missedVotes": 22,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
+    "streak": 1,
     "powerScore": 186.6,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "t000250",
@@ -6827,14 +6994,14 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 502,
+    "yeaVotes": 499,
     "nayVotes": 165,
     "missedVotes": 1,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 99.85,
     "missedVotePct": 0.15,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
@@ -6842,22 +7009,25 @@
       "lastTotals": {
         "sponsoredBills": 89,
         "cosponsoredBills": 54,
-        "yeaVotes": 502,
+        "yeaVotes": 499,
         "nayVotes": 165,
         "missedVotes": 1,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
+    "streak": 1,
     "powerScore": 172.7,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "v000128",
@@ -6983,13 +7153,13 @@
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 158,
-    "nayVotes": 498,
+    "nayVotes": 495,
     "missedVotes": 12,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 98.2,
     "missedVotePct": 1.8,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
@@ -6998,21 +7168,24 @@
         "sponsoredBills": 124,
         "cosponsoredBills": 509,
         "yeaVotes": 158,
-        "nayVotes": 498,
+        "nayVotes": 495,
         "missedVotes": 12,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
+    "streak": 1,
     "powerScore": 482.19999999999993,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "w000800",
@@ -7024,8 +7197,8 @@
     "party": "Democrat",
     "office": "Senator",
     "photo": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Peter_Welch_official_Senate_photo.jpg",
-    "sponsoredBills": 218,
-    "cosponsoredBills": 523,
+    "sponsoredBills": 220,
+    "cosponsoredBills": 527,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 1,
     "committees": [
@@ -7124,36 +7297,39 @@
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 178,
-    "nayVotes": 440,
+    "nayVotes": 437,
     "missedVotes": 50,
-    "totalVotes": 668,
-    "participationPct": 92.51,
-    "missedVotePct": 7.49,
+    "totalVotes": 665,
+    "participationPct": 92.48,
+    "missedVotePct": 7.52,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
-        "sponsoredBills": 218,
-        "cosponsoredBills": 523,
+        "sponsoredBills": 220,
+        "cosponsoredBills": 527,
         "yeaVotes": 178,
-        "nayVotes": 440,
+        "nayVotes": 437,
         "missedVotes": 50,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 583.4,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 588.2,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "w000779",
@@ -7166,7 +7342,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/w000779_200.jpg",
     "sponsoredBills": 96,
-    "cosponsoredBills": 460,
+    "cosponsoredBills": 462,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 1,
     "committees": [
@@ -7272,36 +7448,39 @@
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 157,
-    "nayVotes": 494,
+    "nayVotes": 491,
     "missedVotes": 17,
-    "totalVotes": 668,
-    "participationPct": 97.46,
-    "missedVotePct": 2.54,
+    "totalVotes": 665,
+    "participationPct": 97.44,
+    "missedVotePct": 2.56,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 96,
-        "cosponsoredBills": 460,
+        "cosponsoredBills": 462,
         "yeaVotes": 157,
-        "nayVotes": 494,
+        "nayVotes": 491,
         "missedVotes": 17,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 417.7,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 418.9,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "y000064",
@@ -7313,7 +7492,7 @@
     "party": "Republican",
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/y000064_200.jpg",
-    "sponsoredBills": 44,
+    "sponsoredBills": 45,
     "cosponsoredBills": 183,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 3,
@@ -7398,37 +7577,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 509,
+    "yeaVotes": 506,
     "nayVotes": 153,
     "missedVotes": 6,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 99.1,
     "missedVotePct": 0.9,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
-        "sponsoredBills": 44,
+        "sponsoredBills": 45,
         "cosponsoredBills": 183,
-        "yeaVotes": 509,
+        "yeaVotes": 506,
         "nayVotes": 153,
         "missedVotes": 6,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 194.6,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 195.8,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "s001194",
@@ -7575,13 +7757,13 @@
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 164,
-    "nayVotes": 497,
+    "nayVotes": 494,
     "missedVotes": 7,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 98.95,
     "missedVotePct": 1.05,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
@@ -7590,21 +7772,24 @@
         "sponsoredBills": 96,
         "cosponsoredBills": 297,
         "yeaVotes": 164,
-        "nayVotes": 497,
+        "nayVotes": 494,
         "missedVotes": 7,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
+    "streak": 1,
     "powerScore": 329.9,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "c001095",
@@ -7694,14 +7879,14 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 502,
+    "yeaVotes": 499,
     "nayVotes": 155,
     "missedVotes": 11,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 98.35,
     "missedVotePct": 1.65,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
@@ -7709,22 +7894,25 @@
       "lastTotals": {
         "sponsoredBills": 80,
         "cosponsoredBills": 147,
-        "yeaVotes": 502,
+        "yeaVotes": 499,
         "nayVotes": 155,
         "missedVotes": 11,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
+    "streak": 1,
     "powerScore": 206.7,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "d000622",
@@ -7736,8 +7924,8 @@
     "party": "Democrat",
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/d000622_200.jpg",
-    "sponsoredBills": 77,
-    "cosponsoredBills": 409,
+    "sponsoredBills": 78,
+    "cosponsoredBills": 410,
     "becameLawBills": 1,
     "becameLawCosponsoredBills": 1,
     "committees": [
@@ -7836,36 +8024,39 @@
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 166,
-    "nayVotes": 445,
+    "nayVotes": 442,
     "missedVotes": 57,
-    "totalVotes": 668,
-    "participationPct": 91.47,
-    "missedVotePct": 8.53,
+    "totalVotes": 665,
+    "participationPct": 91.43,
+    "missedVotePct": 8.57,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
-        "sponsoredBills": 77,
-        "cosponsoredBills": 409,
+        "sponsoredBills": 78,
+        "cosponsoredBills": 410,
         "yeaVotes": 166,
-        "nayVotes": 445,
+        "nayVotes": 442,
         "missedVotes": 57,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 348.29999999999995,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 350.1,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "w000817",
@@ -7878,7 +8069,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/w000817_200.jpg",
     "sponsoredBills": 192,
-    "cosponsoredBills": 403,
+    "cosponsoredBills": 406,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
     "committees": [
@@ -7998,36 +8189,39 @@
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 151,
-    "nayVotes": 503,
+    "nayVotes": 500,
     "missedVotes": 14,
-    "totalVotes": 668,
-    "participationPct": 97.9,
-    "missedVotePct": 2.1,
+    "totalVotes": 665,
+    "participationPct": 97.89,
+    "missedVotePct": 2.11,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 192,
-        "cosponsoredBills": 403,
+        "cosponsoredBills": 406,
         "yeaVotes": 151,
-        "nayVotes": 503,
+        "nayVotes": 500,
         "missedVotes": 14,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 501.19999999999993,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 503,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "k000383",
@@ -8040,7 +8234,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/k000383_200.jpg",
     "sponsoredBills": 119,
-    "cosponsoredBills": 345,
+    "cosponsoredBills": 347,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 3,
     "committees": [
@@ -8117,37 +8311,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 269,
-    "nayVotes": 388,
+    "yeaVotes": 267,
+    "nayVotes": 387,
     "missedVotes": 11,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 98.35,
     "missedVotePct": 1.65,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 119,
-        "cosponsoredBills": 345,
-        "yeaVotes": 269,
-        "nayVotes": 388,
+        "cosponsoredBills": 347,
+        "yeaVotes": 267,
+        "nayVotes": 387,
         "missedVotes": 11,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 377.29999999999995,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 378.5,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "d000618",
@@ -8160,7 +8357,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/d000618_200.jpg",
     "sponsoredBills": 77,
-    "cosponsoredBills": 261,
+    "cosponsoredBills": 264,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 7,
     "committees": [
@@ -8258,37 +8455,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 500,
+    "yeaVotes": 499,
     "nayVotes": 148,
-    "missedVotes": 20,
-    "totalVotes": 668,
-    "participationPct": 97.01,
-    "missedVotePct": 2.99,
+    "missedVotes": 18,
+    "totalVotes": 665,
+    "participationPct": 97.29,
+    "missedVotePct": 2.71,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 77,
-        "cosponsoredBills": 261,
-        "yeaVotes": 500,
+        "cosponsoredBills": 264,
+        "yeaVotes": 499,
         "nayVotes": 148,
-        "missedVotes": 20,
-        "totalVotes": 668
+        "missedVotes": 18,
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 290,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 292.8,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "c001096",
@@ -8406,14 +8606,14 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 491,
+    "yeaVotes": 488,
     "nayVotes": 154,
     "missedVotes": 23,
-    "totalVotes": 668,
-    "participationPct": 96.56,
-    "missedVotePct": 3.44,
+    "totalVotes": 665,
+    "participationPct": 96.54,
+    "missedVotePct": 3.46,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
@@ -8421,22 +8621,25 @@
       "lastTotals": {
         "sponsoredBills": 24,
         "cosponsoredBills": 285,
-        "yeaVotes": 491,
+        "yeaVotes": 488,
         "nayVotes": 154,
         "missedVotes": 23,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
+    "streak": 1,
     "powerScore": 232.3,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "f000463",
@@ -8610,14 +8813,14 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 510,
+    "yeaVotes": 507,
     "nayVotes": 154,
     "missedVotes": 4,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 99.4,
     "missedVotePct": 0.6,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
@@ -8625,22 +8828,25 @@
       "lastTotals": {
         "sponsoredBills": 34,
         "cosponsoredBills": 140,
-        "yeaVotes": 510,
+        "yeaVotes": 507,
         "nayVotes": 154,
         "missedVotes": 4,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
+    "streak": 1,
     "powerScore": 179.8,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "m001190",
@@ -8767,14 +8973,14 @@
     "misconductTags": [
       "ethics resolved"
     ],
-    "yeaVotes": 473,
+    "yeaVotes": 470,
     "nayVotes": 156,
     "missedVotes": 39,
-    "totalVotes": 668,
-    "participationPct": 94.16,
-    "missedVotePct": 5.84,
+    "totalVotes": 665,
+    "participationPct": 94.14,
+    "missedVotePct": 5.86,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
@@ -8782,22 +8988,60 @@
       "lastTotals": {
         "sponsoredBills": 26,
         "cosponsoredBills": 149,
-        "yeaVotes": 473,
+        "yeaVotes": 470,
         "nayVotes": 156,
         "missedVotes": 39,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
+    "streak": 1,
     "powerScore": 134.1,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [
+      "In 2013 Mullin was investigated for receiving excess outside earned income, endorsing companies or products as part of outside employment and serving as a board member or officer of outside companies --- his family's businesses. Because Mullin was already consulting with the House Committee on Ethics about how to handle his relationship with his family's businesses when the Office of Congressional Ethics began its investigation, the House Committee on Ethics concluded that Mullin had been making a good faith effort to be compliant with House rules and [that apart from rectifying a $40,000 accounting error, no further action was warranted](https://ethics.house.gov/press-release/statement-chairwoman-and-ranking-member-committee-ethics-regarding-representative-21)."
+    ],
+    "misconductAllegations": [
+      "receiving excess outside earned income, endorsing companies or products as part of outside employment and serving as a board member or officer for outside companies"
+    ],
+    "misconductConsequences": [
+      {
+        "date": "2013-12-23T00:00:00.000Z",
+        "body": "House Office of Congressional Ethics",
+        "action": "recommended that the Committee on Ethics further review the allegations",
+        "link": "https://oce.house.gov/reports/investigations/oce-referral-regarding-rep-markwayne-mullin"
+      },
+      {
+        "date": "2014-03-24T00:00:00.000Z",
+        "body": "House Committee on Ethics",
+        "action": "published the Office of Congressional Ethics Report and Findings and the member's response",
+        "link": "https://ethics.house.gov/press-release/statement-chairman-and-ranking-member-committee-ethics-regarding-representative-9"
+      },
+      {
+        "date": "2015-01-02T00:00:00.000Z",
+        "body": "House Committee on Ethics",
+        "action": "reported that the review would continue into the next Congress",
+        "link": "https://www.congress.gov/113/crpt/hrpt727/CRPT-113hrpt727.pdf#page=+29"
+      },
+      {
+        "date": "2017-01-02T00:00:00.000Z",
+        "body": "House Committee on Ethics",
+        "action": "reported that the review would continue into the next Congress",
+        "link": "https://www.congress.gov/114/crpt/hrpt910/CRPT-114hrpt910.pdf#page=+30"
+      },
+      {
+        "date": "2018-08-10T00:00:00.000Z",
+        "body": "House Committee on Ethics",
+        "action": "concluded that because Rep. Mullin was already consulting with the House Committee on Ethics about how to handle his relationship to his family's businesses when the Office of Congressional Ethics began a separate investigation, the House Committee on Ethics concluded that Rep. Mullins was making a good faith effort to be in compliance with House rules and that apart from rectifying a $40,000 accounting error, no further action was warranted",
+        "link": "https://ethics.house.gov/press-release/statement-chairwoman-and-ranking-member-committee-ethics-regarding-representative-21"
+      }
+    ]
   },
   {
     "slug": "c001098",
@@ -8810,7 +9054,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/c001098_200.jpg",
     "sponsoredBills": 169,
-    "cosponsoredBills": 212,
+    "cosponsoredBills": 213,
     "becameLawBills": 1,
     "becameLawCosponsoredBills": 5,
     "committees": [
@@ -8936,37 +9180,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 483,
-    "nayVotes": 142,
+    "yeaVotes": 482,
+    "nayVotes": 140,
     "missedVotes": 43,
-    "totalVotes": 668,
-    "participationPct": 93.56,
-    "missedVotePct": 6.44,
+    "totalVotes": 665,
+    "participationPct": 93.53,
+    "missedVotePct": 6.47,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 169,
-        "cosponsoredBills": 212,
-        "yeaVotes": 483,
-        "nayVotes": 142,
+        "cosponsoredBills": 213,
+        "yeaVotes": 482,
+        "nayVotes": 140,
         "missedVotes": 43,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 369.5,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 370.09999999999997,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "k000384",
@@ -8979,7 +9226,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/k000384_200.jpg",
     "sponsoredBills": 171,
-    "cosponsoredBills": 401,
+    "cosponsoredBills": 403,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
     "committees": [
@@ -9070,37 +9317,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 241,
-    "nayVotes": 421,
+    "yeaVotes": 239,
+    "nayVotes": 420,
     "missedVotes": 6,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 99.1,
     "missedVotePct": 0.9,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 171,
-        "cosponsoredBills": 401,
-        "yeaVotes": 241,
-        "nayVotes": 421,
+        "cosponsoredBills": 403,
+        "yeaVotes": 239,
+        "nayVotes": 420,
         "missedVotes": 6,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 470.79999999999995,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 472,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "b001288",
@@ -9219,13 +9469,13 @@
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 171,
-    "nayVotes": 467,
+    "nayVotes": 464,
     "missedVotes": 30,
-    "totalVotes": 668,
-    "participationPct": 95.51,
-    "missedVotePct": 4.49,
+    "totalVotes": 665,
+    "participationPct": 95.49,
+    "missedVotePct": 4.51,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
@@ -9234,21 +9484,24 @@
         "sponsoredBills": 198,
         "cosponsoredBills": 548,
         "yeaVotes": 171,
-        "nayVotes": 467,
+        "nayVotes": 464,
         "missedVotes": 30,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
+    "streak": 1,
     "powerScore": 591.4,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "g000574",
@@ -9260,8 +9513,8 @@
     "party": "Democrat",
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/c6870f487cf4bc9a568d8afbe61d754b_200.jpg",
-    "sponsoredBills": 73,
-    "cosponsoredBills": 315,
+    "sponsoredBills": 74,
+    "cosponsoredBills": 317,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 4,
     "committees": [
@@ -9345,37 +9598,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 215,
-    "nayVotes": 358,
+    "yeaVotes": 213,
+    "nayVotes": 357,
     "missedVotes": 95,
-    "totalVotes": 668,
-    "participationPct": 85.78,
-    "missedVotePct": 14.22,
+    "totalVotes": 665,
+    "participationPct": 85.71,
+    "missedVotePct": 14.29,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
-        "sponsoredBills": 73,
-        "cosponsoredBills": 315,
-        "yeaVotes": 215,
-        "nayVotes": 358,
+        "sponsoredBills": 74,
+        "cosponsoredBills": 317,
+        "yeaVotes": 213,
+        "nayVotes": 357,
         "missedVotes": 95,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 267.1,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 269.5,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "s001198",
@@ -9388,7 +9644,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/s001198_200.jpg",
     "sponsoredBills": 77,
-    "cosponsoredBills": 207,
+    "cosponsoredBills": 208,
     "becameLawBills": 3,
     "becameLawCosponsoredBills": 5,
     "committees": [
@@ -9486,37 +9742,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 507,
+    "yeaVotes": 504,
     "nayVotes": 141,
     "missedVotes": 20,
-    "totalVotes": 668,
-    "participationPct": 97.01,
-    "missedVotePct": 2.99,
+    "totalVotes": 665,
+    "participationPct": 96.99,
+    "missedVotePct": 3.01,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 77,
-        "cosponsoredBills": 207,
-        "yeaVotes": 507,
+        "cosponsoredBills": 208,
+        "yeaVotes": 504,
         "nayVotes": 141,
         "missedVotes": 20,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 269.59999999999997,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 270.2,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "e000295",
@@ -9529,7 +9788,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/e000295_200.jpg",
     "sponsoredBills": 96,
-    "cosponsoredBills": 175,
+    "cosponsoredBills": 177,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 4,
     "committees": [
@@ -9620,37 +9879,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 503,
+    "yeaVotes": 501,
     "nayVotes": 151,
-    "missedVotes": 14,
-    "totalVotes": 668,
-    "participationPct": 97.9,
-    "missedVotePct": 2.1,
+    "missedVotes": 13,
+    "totalVotes": 665,
+    "participationPct": 98.05,
+    "missedVotePct": 1.95,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 96,
-        "cosponsoredBills": 175,
-        "yeaVotes": 503,
+        "cosponsoredBills": 177,
+        "yeaVotes": 501,
         "nayVotes": 151,
-        "missedVotes": 14,
-        "totalVotes": 668
+        "missedVotes": 13,
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 255.2,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 256.9,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "t000476",
@@ -9775,14 +10037,14 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 438,
+    "yeaVotes": 435,
     "nayVotes": 153,
     "missedVotes": 77,
-    "totalVotes": 668,
-    "participationPct": 88.47,
-    "missedVotePct": 11.53,
+    "totalVotes": 665,
+    "participationPct": 88.42,
+    "missedVotePct": 11.58,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
@@ -9790,22 +10052,25 @@
       "lastTotals": {
         "sponsoredBills": 60,
         "cosponsoredBills": 304,
-        "yeaVotes": 438,
+        "yeaVotes": 435,
         "nayVotes": 153,
         "missedVotes": 77,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
+    "streak": 1,
     "powerScore": 267.9,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "r000605",
@@ -9818,7 +10083,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/r000605_200.jpg",
     "sponsoredBills": 62,
-    "cosponsoredBills": 198,
+    "cosponsoredBills": 200,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 3,
     "committees": [
@@ -9951,37 +10216,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 505,
+    "yeaVotes": 502,
     "nayVotes": 159,
     "missedVotes": 4,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 99.4,
     "missedVotePct": 0.6,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 62,
-        "cosponsoredBills": 198,
-        "yeaVotes": 505,
+        "cosponsoredBills": 200,
+        "yeaVotes": 502,
         "nayVotes": 159,
         "missedVotes": 4,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 240.2,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 241.39999999999998,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "k000393",
@@ -9993,7 +10261,7 @@
     "party": "Republican",
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/k000393_200.jpg",
-    "sponsoredBills": 112,
+    "sponsoredBills": 113,
     "cosponsoredBills": 144,
     "becameLawBills": 3,
     "becameLawCosponsoredBills": 2,
@@ -10120,37 +10388,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 507,
+    "yeaVotes": 504,
     "nayVotes": 147,
     "missedVotes": 14,
-    "totalVotes": 668,
-    "participationPct": 97.9,
-    "missedVotePct": 2.1,
+    "totalVotes": 665,
+    "participationPct": 97.89,
+    "missedVotePct": 2.11,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
-        "sponsoredBills": 112,
+        "sponsoredBills": 113,
         "cosponsoredBills": 144,
-        "yeaVotes": 507,
+        "yeaVotes": 504,
         "nayVotes": 147,
         "missedVotes": 14,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 275.8,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 277,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "h001076",
@@ -10254,14 +10525,14 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 261,
-    "nayVotes": 399,
+    "yeaVotes": 259,
+    "nayVotes": 398,
     "missedVotes": 8,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 98.8,
     "missedVotePct": 1.2,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
@@ -10269,22 +10540,25 @@
       "lastTotals": {
         "sponsoredBills": 72,
         "cosponsoredBills": 252,
-        "yeaVotes": 261,
-        "nayVotes": 399,
+        "yeaVotes": 259,
+        "nayVotes": 398,
         "missedVotes": 8,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
+    "streak": 1,
     "powerScore": 270.59999999999997,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "c001113",
@@ -10296,8 +10570,8 @@
     "party": "Democrat",
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/c001113_200.jpg",
-    "sponsoredBills": 166,
-    "cosponsoredBills": 328,
+    "sponsoredBills": 167,
+    "cosponsoredBills": 332,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 4,
     "committees": [
@@ -10395,37 +10669,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 223,
-    "nayVotes": 428,
+    "yeaVotes": 221,
+    "nayVotes": 427,
     "missedVotes": 17,
-    "totalVotes": 668,
-    "participationPct": 97.46,
-    "missedVotePct": 2.54,
+    "totalVotes": 665,
+    "participationPct": 97.44,
+    "missedVotePct": 2.56,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
-        "sponsoredBills": 166,
-        "cosponsoredBills": 328,
-        "yeaVotes": 223,
-        "nayVotes": 428,
+        "sponsoredBills": 167,
+        "cosponsoredBills": 332,
+        "yeaVotes": 221,
+        "nayVotes": 427,
         "missedVotes": 17,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 429.5,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 433.1,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "b001303",
@@ -10438,7 +10715,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/b001303_200.jpg",
     "sponsoredBills": 77,
-    "cosponsoredBills": 227,
+    "cosponsoredBills": 230,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 1,
     "committees": [
@@ -10557,37 +10834,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 166,
-    "nayVotes": 499,
+    "yeaVotes": 164,
+    "nayVotes": 498,
     "missedVotes": 3,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 99.55,
     "missedVotePct": 0.45,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 77,
-        "cosponsoredBills": 227,
-        "yeaVotes": 166,
-        "nayVotes": 499,
+        "cosponsoredBills": 230,
+        "yeaVotes": 164,
+        "nayVotes": 498,
         "missedVotes": 3,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 266.09999999999997,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 267.9,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "b001299",
@@ -10600,7 +10880,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/677d83cbfdb6cf36bbb64998_200.jpg",
     "sponsoredBills": 78,
-    "cosponsoredBills": 182,
+    "cosponsoredBills": 183,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 4,
     "committees": [
@@ -10698,37 +10978,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 509,
+    "yeaVotes": 506,
     "nayVotes": 150,
     "missedVotes": 9,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 98.65,
     "missedVotePct": 1.35,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 78,
-        "cosponsoredBills": 182,
-        "yeaVotes": 509,
+        "cosponsoredBills": 183,
+        "yeaVotes": 506,
         "nayVotes": 150,
         "missedVotes": 9,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 236.3,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 236.89999999999998,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "m001198",
@@ -10741,7 +11024,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/m001198_200.jpg",
     "sponsoredBills": 72,
-    "cosponsoredBills": 222,
+    "cosponsoredBills": 225,
     "becameLawBills": 1,
     "becameLawCosponsoredBills": 3,
     "committees": [
@@ -10825,37 +11108,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 513,
+    "yeaVotes": 510,
     "nayVotes": 149,
     "missedVotes": 6,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 99.1,
     "missedVotePct": 0.9,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 72,
-        "cosponsoredBills": 222,
-        "yeaVotes": 513,
+        "cosponsoredBills": 225,
+        "yeaVotes": 510,
         "nayVotes": 149,
         "missedVotes": 6,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 257.59999999999997,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 259.4,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "b001305",
@@ -10868,7 +11154,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/b001305_200.jpg",
     "sponsoredBills": 44,
-    "cosponsoredBills": 302,
+    "cosponsoredBills": 305,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 4,
     "committees": [
@@ -10959,37 +11245,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 499,
+    "yeaVotes": 496,
     "nayVotes": 146,
     "missedVotes": 23,
-    "totalVotes": 668,
-    "participationPct": 96.56,
-    "missedVotePct": 3.44,
+    "totalVotes": 665,
+    "participationPct": 96.54,
+    "missedVotePct": 3.46,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 44,
-        "cosponsoredBills": 302,
-        "yeaVotes": 499,
+        "cosponsoredBills": 305,
+        "yeaVotes": 496,
         "nayVotes": 146,
         "missedVotes": 23,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 260.5,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 262.3,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "r000608",
@@ -11002,7 +11291,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/r000608_200.jpg",
     "sponsoredBills": 163,
-    "cosponsoredBills": 352,
+    "cosponsoredBills": 353,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 2,
     "committees": [
@@ -11100,37 +11389,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 238,
-    "nayVotes": 419,
+    "yeaVotes": 236,
+    "nayVotes": 418,
     "missedVotes": 11,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 98.35,
     "missedVotePct": 1.65,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 163,
-        "cosponsoredBills": 352,
-        "yeaVotes": 238,
-        "nayVotes": 419,
+        "cosponsoredBills": 353,
+        "yeaVotes": 236,
+        "nayVotes": 418,
         "missedVotes": 11,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 437.29999999999995,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 437.9,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "c001114",
@@ -11241,14 +11533,14 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 508,
+    "yeaVotes": 505,
     "nayVotes": 149,
     "missedVotes": 11,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 98.35,
     "missedVotePct": 1.65,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
@@ -11256,22 +11548,25 @@
       "lastTotals": {
         "sponsoredBills": 46,
         "cosponsoredBills": 158,
-        "yeaVotes": 508,
+        "yeaVotes": 505,
         "nayVotes": 149,
         "missedVotes": 11,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
+    "streak": 1,
     "powerScore": 189.5,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "s001203",
@@ -11284,7 +11579,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/s001203_200.jpg",
     "sponsoredBills": 46,
-    "cosponsoredBills": 356,
+    "cosponsoredBills": 360,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
     "committees": [
@@ -11390,36 +11685,39 @@
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 147,
-    "nayVotes": 489,
+    "nayVotes": 486,
     "missedVotes": 32,
-    "totalVotes": 668,
-    "participationPct": 95.21,
-    "missedVotePct": 4.79,
+    "totalVotes": 665,
+    "participationPct": 95.19,
+    "missedVotePct": 4.81,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 46,
-        "cosponsoredBills": 356,
+        "cosponsoredBills": 360,
         "yeaVotes": 147,
-        "nayVotes": 489,
+        "nayVotes": 486,
         "missedVotes": 32,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 284.8,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 287.2,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "h001079",
@@ -11551,14 +11849,14 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 504,
+    "yeaVotes": 501,
     "nayVotes": 153,
     "missedVotes": 11,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 98.35,
     "missedVotePct": 1.65,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
@@ -11566,22 +11864,25 @@
       "lastTotals": {
         "sponsoredBills": 35,
         "cosponsoredBills": 243,
-        "yeaVotes": 504,
+        "yeaVotes": 501,
         "nayVotes": 153,
         "missedVotes": 11,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
+    "streak": 1,
     "powerScore": 230.29999999999998,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "s001208",
@@ -11593,8 +11894,8 @@
     "party": "Democrat",
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/s001208_200.jpg",
-    "sponsoredBills": 37,
-    "cosponsoredBills": 197,
+    "sponsoredBills": 38,
+    "cosponsoredBills": 199,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 2,
     "committees": [
@@ -11678,37 +11979,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 222,
-    "nayVotes": 424,
+    "yeaVotes": 220,
+    "nayVotes": 423,
     "missedVotes": 22,
-    "totalVotes": 668,
-    "participationPct": 96.71,
-    "missedVotePct": 3.29,
+    "totalVotes": 665,
+    "participationPct": 96.69,
+    "missedVotePct": 3.31,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
-        "sponsoredBills": 37,
-        "cosponsoredBills": 197,
-        "yeaVotes": 222,
-        "nayVotes": 424,
+        "sponsoredBills": 38,
+        "cosponsoredBills": 199,
+        "yeaVotes": 220,
+        "nayVotes": 423,
         "missedVotes": 22,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 183.6,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 186,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "k000394",
@@ -11721,7 +12025,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/677d84cbfdb6cf36bbb649a1_200.jpg",
     "sponsoredBills": 70,
-    "cosponsoredBills": 334,
+    "cosponsoredBills": 336,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
     "committees": [
@@ -11834,36 +12138,39 @@
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 190,
-    "nayVotes": 475,
+    "nayVotes": 472,
     "missedVotes": 3,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 99.55,
     "missedVotePct": 0.45,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 70,
-        "cosponsoredBills": 334,
+        "cosponsoredBills": 336,
         "yeaVotes": 190,
-        "nayVotes": 475,
+        "nayVotes": 472,
         "missedVotes": 3,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 316.9,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 318.1,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "s001217",
@@ -11974,14 +12281,14 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 518,
+    "yeaVotes": 515,
     "nayVotes": 148,
     "missedVotes": 2,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 99.7,
     "missedVotePct": 0.3,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
@@ -11989,22 +12296,25 @@
       "lastTotals": {
         "sponsoredBills": 142,
         "cosponsoredBills": 316,
-        "yeaVotes": 518,
+        "yeaVotes": 515,
         "nayVotes": 148,
         "missedVotes": 2,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
+    "streak": 1,
     "powerScore": 398,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "h001089",
@@ -12108,14 +12418,14 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 491,
+    "yeaVotes": 489,
     "nayVotes": 146,
-    "missedVotes": 31,
-    "totalVotes": 668,
-    "participationPct": 95.36,
-    "missedVotePct": 4.64,
+    "missedVotes": 30,
+    "totalVotes": 665,
+    "participationPct": 95.49,
+    "missedVotePct": 4.51,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
@@ -12123,22 +12433,25 @@
       "lastTotals": {
         "sponsoredBills": 72,
         "cosponsoredBills": 129,
-        "yeaVotes": 491,
+        "yeaVotes": 489,
         "nayVotes": 146,
-        "missedVotes": 31,
-        "totalVotes": 668
+        "missedVotes": 30,
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 185.29999999999998,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 185.79999999999998,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "k000377",
@@ -12151,7 +12464,7 @@
     "office": "Senator",
     "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Mark_Kelly%2C_Official_Portrait_117th.jpg/500px-Mark_Kelly%2C_Official_Portrait_117th.jpg",
     "sponsoredBills": 102,
-    "cosponsoredBills": 326,
+    "cosponsoredBills": 331,
     "becameLawBills": 1,
     "becameLawCosponsoredBills": 4,
     "committees": [
@@ -12235,37 +12548,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 230,
-    "nayVotes": 398,
+    "yeaVotes": 228,
+    "nayVotes": 397,
     "missedVotes": 40,
-    "totalVotes": 668,
-    "participationPct": 94.01,
-    "missedVotePct": 5.99,
+    "totalVotes": 665,
+    "participationPct": 93.98,
+    "missedVotePct": 6.02,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 102,
-        "cosponsoredBills": 326,
-        "yeaVotes": 230,
-        "nayVotes": 398,
+        "cosponsoredBills": 331,
+        "yeaVotes": 228,
+        "nayVotes": 397,
         "missedVotes": 40,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 342,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 345,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "l000571",
@@ -12369,14 +12685,14 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 495,
+    "yeaVotes": 492,
     "nayVotes": 151,
     "missedVotes": 22,
-    "totalVotes": 668,
-    "participationPct": 96.71,
-    "missedVotePct": 3.29,
+    "totalVotes": 665,
+    "participationPct": 96.69,
+    "missedVotePct": 3.31,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
@@ -12384,22 +12700,25 @@
       "lastTotals": {
         "sponsoredBills": 52,
         "cosponsoredBills": 259,
-        "yeaVotes": 495,
+        "yeaVotes": 492,
         "nayVotes": 151,
         "missedVotes": 22,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
+    "streak": 1,
     "powerScore": 255.8,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "t000278",
@@ -12412,7 +12731,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/t000278_200.jpg",
     "sponsoredBills": 57,
-    "cosponsoredBills": 180,
+    "cosponsoredBills": 181,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 3,
     "committees": [
@@ -12512,37 +12831,51 @@
     "misconductTags": [
       "ethics resolved"
     ],
-    "yeaVotes": 489,
+    "yeaVotes": 486,
     "nayVotes": 150,
     "missedVotes": 29,
-    "totalVotes": 668,
-    "participationPct": 95.66,
-    "missedVotePct": 4.34,
+    "totalVotes": 665,
+    "participationPct": 95.64,
+    "missedVotePct": 4.36,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 57,
-        "cosponsoredBills": 180,
-        "yeaVotes": 489,
+        "cosponsoredBills": 181,
+        "yeaVotes": 486,
         "nayVotes": 150,
         "missedVotes": 29,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 190.89999999999998,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 191.5,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [
+      "In July 2021, Sen. Tuberville was accused of violating the STOCK Act by [failing to meet a financial disclosure deadline](https://www.cnbc.com/2021/07/27/china-critic-sen-tommy-tuberville-of-alabama-violated-stock-act.html)."
+    ],
+    "misconductAllegations": [
+      "violating the STOCK Act"
+    ],
+    "misconductConsequences": [
+      {
+        "date": "2021-07-27T00:00:00.000Z",
+        "text": "CNBC reported the accusation.",
+        "link": "https://www.cnbc.com/2021/07/27/china-critic-sen-tommy-tuberville-of-alabama-violated-stock-act.html",
+        "tags": "confirmation"
+      }
+    ]
   },
   {
     "slug": "h000273",
@@ -12555,7 +12888,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/h000273_200.jpg",
     "sponsoredBills": 91,
-    "cosponsoredBills": 310,
+    "cosponsoredBills": 311,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 3,
     "committees": [
@@ -12653,37 +12986,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 204,
-    "nayVotes": 455,
+    "yeaVotes": 202,
+    "nayVotes": 454,
     "missedVotes": 9,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 98.65,
     "missedVotePct": 1.35,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 91,
-        "cosponsoredBills": 310,
-        "yeaVotes": 204,
-        "nayVotes": 455,
+        "cosponsoredBills": 311,
+        "yeaVotes": 202,
+        "nayVotes": 454,
         "missedVotes": 9,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 329.7,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 330.3,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "h000601",
@@ -12822,14 +13158,14 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 502,
+    "yeaVotes": 499,
     "nayVotes": 147,
     "missedVotes": 19,
-    "totalVotes": 668,
-    "participationPct": 97.16,
-    "missedVotePct": 2.84,
+    "totalVotes": 665,
+    "participationPct": 97.14,
+    "missedVotePct": 2.86,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
@@ -12837,22 +13173,25 @@
       "lastTotals": {
         "sponsoredBills": 31,
         "cosponsoredBills": 151,
-        "yeaVotes": 502,
+        "yeaVotes": 499,
         "nayVotes": 147,
         "missedVotes": 19,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
+    "streak": 1,
     "powerScore": 176.29999999999998,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "p000145",
@@ -12865,7 +13204,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/p000145_200.jpg",
     "sponsoredBills": 209,
-    "cosponsoredBills": 525,
+    "cosponsoredBills": 526,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 2,
     "committees": [
@@ -12992,36 +13331,39 @@
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 158,
-    "nayVotes": 481,
+    "nayVotes": 478,
     "missedVotes": 29,
-    "totalVotes": 668,
-    "participationPct": 95.66,
-    "missedVotePct": 4.34,
+    "totalVotes": 665,
+    "participationPct": 95.64,
+    "missedVotePct": 4.36,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 209,
-        "cosponsoredBills": 525,
+        "cosponsoredBills": 526,
         "yeaVotes": 158,
-        "nayVotes": 481,
+        "nayVotes": 478,
         "missedVotes": 29,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 595.3,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 595.9,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "o000174",
@@ -13097,14 +13439,14 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 188,
-    "nayVotes": 430,
+    "yeaVotes": 186,
+    "nayVotes": 429,
     "missedVotes": 50,
-    "totalVotes": 668,
-    "participationPct": 92.51,
-    "missedVotePct": 7.49,
+    "totalVotes": 665,
+    "participationPct": 92.48,
+    "missedVotePct": 7.52,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
@@ -13112,22 +13454,25 @@
       "lastTotals": {
         "sponsoredBills": 24,
         "cosponsoredBills": 189,
-        "yeaVotes": 188,
-        "nayVotes": 430,
+        "yeaVotes": 186,
+        "nayVotes": 429,
         "missedVotes": 50,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
+    "streak": 1,
     "powerScore": 135.2,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "w000790",
@@ -13139,7 +13484,7 @@
     "party": "Democrat",
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/w000790_200.jpg",
-    "sponsoredBills": 66,
+    "sponsoredBills": 68,
     "cosponsoredBills": 333,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 3,
@@ -13238,37 +13583,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 208,
-    "nayVotes": 442,
-    "missedVotes": 18,
-    "totalVotes": 668,
-    "participationPct": 97.31,
-    "missedVotePct": 2.69,
+    "yeaVotes": 207,
+    "nayVotes": 441,
+    "missedVotes": 17,
+    "totalVotes": 665,
+    "participationPct": 97.44,
+    "missedVotePct": 2.56,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
-        "sponsoredBills": 66,
+        "sponsoredBills": 68,
         "cosponsoredBills": 333,
-        "yeaVotes": 208,
-        "nayVotes": 442,
-        "missedVotes": 18,
-        "totalVotes": 668
+        "yeaVotes": 207,
+        "nayVotes": 441,
+        "missedVotes": 17,
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 309,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 311.9,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "b001319",
@@ -13281,7 +13629,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/b001319_200.jpg",
     "sponsoredBills": 26,
-    "cosponsoredBills": 248,
+    "cosponsoredBills": 250,
     "becameLawBills": 1,
     "becameLawCosponsoredBills": 2,
     "committees": [
@@ -13414,37 +13762,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 503,
+    "yeaVotes": 500,
     "nayVotes": 150,
     "missedVotes": 15,
-    "totalVotes": 668,
-    "participationPct": 97.75,
-    "missedVotePct": 2.25,
+    "totalVotes": 665,
+    "participationPct": 97.74,
+    "missedVotePct": 2.26,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 26,
-        "cosponsoredBills": 248,
-        "yeaVotes": 503,
+        "cosponsoredBills": 250,
+        "yeaVotes": 500,
         "nayVotes": 150,
         "missedVotes": 15,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 224.49999999999997,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 225.7,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "s001227",
@@ -13457,7 +13808,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/b66a0806e77f63e862391b15a0b1f753_200.jpg",
     "sponsoredBills": 54,
-    "cosponsoredBills": 134,
+    "cosponsoredBills": 136,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 2,
     "committees": [
@@ -13576,37 +13927,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 512,
+    "yeaVotes": 509,
     "nayVotes": 147,
     "missedVotes": 9,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 98.65,
     "missedVotePct": 1.35,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 54,
-        "cosponsoredBills": 134,
-        "yeaVotes": 512,
+        "cosponsoredBills": 136,
+        "yeaVotes": 509,
         "nayVotes": 147,
         "missedVotes": 9,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 182.7,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 183.89999999999998,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "f000479",
@@ -13619,7 +13973,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/f000479_200.jpg",
     "sponsoredBills": 25,
-    "cosponsoredBills": 272,
+    "cosponsoredBills": 273,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 2,
     "committees": [
@@ -13696,37 +14050,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 271,
-    "nayVotes": 352,
+    "yeaVotes": 269,
+    "nayVotes": 351,
     "missedVotes": 45,
-    "totalVotes": 668,
-    "participationPct": 93.26,
-    "missedVotePct": 6.74,
+    "totalVotes": 665,
+    "participationPct": 93.23,
+    "missedVotePct": 6.77,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 25,
-        "cosponsoredBills": 272,
-        "yeaVotes": 271,
-        "nayVotes": 352,
+        "cosponsoredBills": 273,
+        "yeaVotes": 269,
+        "nayVotes": 351,
         "missedVotes": 45,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 198.7,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 199.29999999999998,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "r000618",
@@ -13837,14 +14194,14 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 510,
+    "yeaVotes": 507,
     "nayVotes": 156,
     "missedVotes": 2,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 99.7,
     "missedVotePct": 0.3,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
@@ -13852,22 +14209,25 @@
       "lastTotals": {
         "sponsoredBills": 58,
         "cosponsoredBills": 270,
-        "yeaVotes": 510,
+        "yeaVotes": 507,
         "nayVotes": 156,
         "missedVotes": 2,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
+    "streak": 1,
     "powerScore": 281.6,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "a000382",
@@ -13880,7 +14240,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/67acdbbf044eb506e25958f2_200.jpg",
     "sponsoredBills": 44,
-    "cosponsoredBills": 321,
+    "cosponsoredBills": 325,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
     "committees": [
@@ -13964,37 +14324,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 183,
-    "nayVotes": 476,
+    "yeaVotes": 181,
+    "nayVotes": 475,
     "missedVotes": 9,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 98.65,
     "missedVotePct": 1.35,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 44,
-        "cosponsoredBills": 321,
-        "yeaVotes": 183,
-        "nayVotes": 476,
+        "cosponsoredBills": 325,
+        "yeaVotes": 181,
+        "nayVotes": 475,
         "missedVotes": 9,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 264.9,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 267.3,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "s001232",
@@ -14007,7 +14370,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/677d8231fdb6cf36bbb6498b_200.jpg",
     "sponsoredBills": 54,
-    "cosponsoredBills": 244,
+    "cosponsoredBills": 250,
     "becameLawBills": 1,
     "becameLawCosponsoredBills": 3,
     "committees": [
@@ -14077,37 +14440,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 498,
+    "yeaVotes": 495,
     "nayVotes": 151,
     "missedVotes": 19,
-    "totalVotes": 668,
-    "participationPct": 97.16,
-    "missedVotePct": 2.84,
+    "totalVotes": 665,
+    "participationPct": 97.14,
+    "missedVotePct": 2.86,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 54,
-        "cosponsoredBills": 244,
-        "yeaVotes": 498,
+        "cosponsoredBills": 250,
+        "yeaVotes": 495,
         "nayVotes": 151,
         "missedVotes": 19,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 234.7,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 238.3,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "m001242",
@@ -14120,7 +14486,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/67c8694e6159152e59828afb_200.jpg",
     "sponsoredBills": 26,
-    "cosponsoredBills": 149,
+    "cosponsoredBills": 152,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 4,
     "committees": [
@@ -14225,37 +14591,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 519,
+    "yeaVotes": 516,
     "nayVotes": 149,
     "missedVotes": 0,
-    "totalVotes": 668,
+    "totalVotes": 665,
     "participationPct": 100,
     "missedVotePct": 0,
     "streaks": {
-      "activity": 0,
-      "voting": 1,
+      "activity": 1,
+      "voting": 2,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 26,
-        "cosponsoredBills": 149,
-        "yeaVotes": 519,
+        "cosponsoredBills": 152,
+        "yeaVotes": 516,
         "nayVotes": 149,
         "missedVotes": 0,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 1,
-    "powerScore": 160.6,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 2,
+    "powerScore": 162.4,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "m001243",
@@ -14268,7 +14637,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/677d85e0fdb6cf36bbb649aa_200.jpg",
     "sponsoredBills": 37,
-    "cosponsoredBills": 156,
+    "cosponsoredBills": 157,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 3,
     "committees": [
@@ -14366,37 +14735,40 @@
     ],
     "misconductCount": 0,
     "misconductTags": [],
-    "yeaVotes": 496,
+    "yeaVotes": 493,
     "nayVotes": 152,
     "missedVotes": 20,
-    "totalVotes": 668,
-    "participationPct": 97.01,
-    "missedVotePct": 2.99,
+    "totalVotes": 665,
+    "participationPct": 96.99,
+    "missedVotePct": 3.01,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 37,
-        "cosponsoredBills": 156,
-        "yeaVotes": 496,
+        "cosponsoredBills": 157,
+        "yeaVotes": 493,
         "nayVotes": 152,
         "missedVotes": 20,
-        "totalVotes": 668
+        "totalVotes": 665
       }
     },
-    "streak": 0,
-    "powerScore": 167,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 167.6,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "j000312",
@@ -14409,7 +14781,7 @@
     "office": "Senator",
     "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Senator_Jim_Justice_Official_Portrait.jpg/960px-Senator_Jim_Justice_Official_Portrait.jpg",
     "sponsoredBills": 8,
-    "cosponsoredBills": 210,
+    "cosponsoredBills": 213,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 3,
     "committees": [
@@ -14493,30 +14865,33 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
         "sponsoredBills": 8,
-        "cosponsoredBills": 210,
+        "cosponsoredBills": 213,
         "yeaVotes": 0,
         "nayVotes": 0,
         "missedVotes": 0,
         "totalVotes": 0
       }
     },
-    "streak": 0,
-    "powerScore": 164.6,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 166.4,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "h001104",
@@ -14528,8 +14903,8 @@
     "party": "Republican",
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/67f0316b1b05a5a598f7fdf3_200.jpg",
-    "sponsoredBills": 34,
-    "cosponsoredBills": 104,
+    "sponsoredBills": 35,
+    "cosponsoredBills": 105,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 1,
     "committees": [
@@ -14613,30 +14988,33 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
     "metrics": {
       "lastTotals": {
-        "sponsoredBills": 34,
-        "cosponsoredBills": 104,
+        "sponsoredBills": 35,
+        "cosponsoredBills": 105,
         "yeaVotes": 0,
         "nayVotes": 0,
         "missedVotes": 0,
         "totalVotes": 0
       }
     },
-    "streak": 0,
-    "powerScore": 126.19999999999999,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "streak": 1,
+    "powerScore": 128,
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   },
   {
     "slug": "m001244",
@@ -14754,7 +15132,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "streaks": {
-      "activity": 0,
+      "activity": 1,
       "voting": 0,
       "leader": 0
     },
@@ -14768,15 +15146,18 @@
         "totalVotes": 0
       }
     },
-    "streak": 0,
+    "streak": 1,
     "powerScore": 149,
-    "lastUpdated": "2026-02-04T07:15:24.123Z",
+    "lastUpdated": "2026-02-05T10:20:06.812Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
     "becameLawCosponsoredAmendments": 0,
     "rawScore": 0,
     "score": 0,
-    "scoreNormalized": 0
+    "scoreNormalized": 0,
+    "misconductTexts": [],
+    "misconductAllegations": [],
+    "misconductConsequences": []
   }
 ]
