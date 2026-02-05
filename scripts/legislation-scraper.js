@@ -103,3 +103,8 @@ async function fetchBills(bioguideId) {
     } catch (err) {
       console.error(`Error for ${bioguideId} (${name}): ${err.message}`);
     }
+  }
+
+  fs.writeFileSync(outputPath, JSON.stringify(results, null, 2));
+  console.log(`Wrote ${results.length} senator records to ${outputPath}`);
+})();
