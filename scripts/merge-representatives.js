@@ -10,7 +10,8 @@ function loadJson(p) {
   return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf-8')) : [];
 }
 
-const basePath = path.join(__dirname, '../public/housereps.json'); // baseline with photos, bios, etc.
+// Baseline file already contains photos, bios, links, etc.
+const basePath = path.join(__dirname, '../public/housereps.json');
 const legislationPath = path.join(__dirname, '../public/legislation-representatives.json');
 const committeesPath = path.join(__dirname, '../public/committee-reps.json');
 const votesPath = path.join(__dirname, '../public/votes-reps.json');
@@ -28,6 +29,7 @@ const streaks = loadJson(streaksPath);
 
 const merged = base.map(rep => {
   const bioguideId = rep.bioguideId || null;
+
   const legData = legislation.find(x => x.bioguideId === bioguideId) || {};
   const committeeData = committees.find(x => x.bioguideId === bioguideId) || {};
   const voteData = votes.find(x => x.bioguideId === bioguideId) || {};
