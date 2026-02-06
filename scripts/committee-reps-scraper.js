@@ -26,16 +26,18 @@ function ensureSchema(rep) {
   rep.score ??= 0;
   rep.scoreNormalized ??= 0;
 
-  delete rep.sponsoredAmendments;
-  delete rep.cosponsoredAmendments;
-  delete rep.becameLawAmendments;
-  delete rep.becameLawCosponsoredAmendments;
-
   return rep;
 }
 
 (function main() {
-  const reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureSchema);
+  let reps;
+  try {
+    reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureSchema);
+  } catch (err) {
+    console.error(`Failed to read rankings file: ${err.message}`);
+    process.exit(1);
+  }
+
   let committeesDataRaw;
   try {
     committeesDataRaw = JSON.parse(fs.readFileSync(COMMITTEES_PATH, 'utf-8'));
@@ -46,7 +48,6 @@ function ensureSchema(rep) {
 
   const repMap = new Map(reps.map(r => [r.bioguideId, r]));
 
-  // Normalize committees data into array of { code, name, members }
   const committeeArray = Array.isArray(committeesDataRaw)
     ? committeesDataRaw
     : Object.entries(committeesDataRaw).map(([code, data]) => ({
@@ -64,7 +65,6 @@ function ensureSchema(rep) {
 
       const rep = repMap.get(bio);
 
-      // Normalize role
       let role = 'Member';
       if (m.title) {
         const t = m.title.toLowerCase();
@@ -87,7 +87,6 @@ function ensureSchema(rep) {
         party: m.party || null
       };
 
-      // Avoid duplicates: same committee + same role + same bioguide
       const exists = rep.committees.some(
         x => x.committeeCode === entry.committeeCode && x.role === entry.role
       );
