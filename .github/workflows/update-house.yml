@@ -138,11 +138,11 @@ jobs:
       - name: Update streaks
         run: node scripts/update-streaks.js
 
-      - name: Commit updated House files
+      - name: Commit updated House file
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Automated House update (119th Congress) [skip ci]"
-          file_pattern: public/*.json
+          file_pattern: public/housereps.json
           commit_user_name: github-actions[bot]
           commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
           push_options: '--force-with-lease'
