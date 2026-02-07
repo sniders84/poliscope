@@ -122,4 +122,37 @@ async function fetchBills(bioguideId) {
     const name = `${leg.name.first} ${leg.name.last}`;
     const state = lastTerm.state || '';
     const district = lastTerm.district || '';
-    const party
+    const party = lastTerm.party || '';
+
+    console.log(`\nProcessing ${name} (${bioguideId}, ${state}-${district})...`);
+
+    try {
+      const totals = await fetchBills(bioguideId);
+
+      results.push({
+        bioguideId,
+        name,
+        state,
+        district,
+        party,
+        sponsoredBills: totals.sponsored,
+        cosponsoredBills: totals.cosponsored,
+        becameLawBills: totals.becameLawSponsored,
+        becameLawCosponsoredBills: totals.becameLawCosponsored,
+        lastUpdated: new Date().toISOString()
+      });
+
+      console.log(
+        `${name}: sponsored=${totals.sponsored}, cosponsored=${totals.cosponsored}, ` +
+        `becameLawSponsored=${totals.becameLawSponsored}, becameLawCosponsored=${totals.becameLawCosponsored}`
+      );
+    } catch (err) {
+      console.error(`Error for ${bioguideId} (${name}): ${err.message}`);
+    }
+
+    await new Promise(r => setTimeout(r, 3000)); // gentle delay
+  }
+
+  fs.writeFileSync(outputPath, JSON.stringify(results, null, 2));
+  console.log(`Wrote ${results.length} representative records to ${outputPath}`);
+})();
