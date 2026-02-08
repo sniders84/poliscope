@@ -8,24 +8,7 @@ const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.
 const COMMITTEES_PATH = path.join(__dirname, '..', 'public', 'representatives-committees.json');
 
 function ensureSchema(rep) {
-  rep.yeaVotes ??= 0;
-  rep.nayVotes ??= 0;
-  rep.missedVotes ??= 0;
-  rep.totalVotes ??= 0;
-  rep.participationPct ??= 0;
-  rep.missedVotePct ??= 0;
-
-  rep.sponsoredBills ??= 0;
-  rep.cosponsoredBills ??= 0;
-  rep.becameLawBills ??= 0;
-  rep.becameLawCosponsoredBills ??= 0;
-
   rep.committees = Array.isArray(rep.committees) ? rep.committees : [];
-
-  rep.rawScore ??= 0;
-  rep.score ??= 0;
-  rep.scoreNormalized ??= 0;
-
   return rep;
 }
 
@@ -46,7 +29,7 @@ function ensureSchema(rep) {
     process.exit(1);
   }
 
-  const repMap = new Map(reps.map(r => [r.bioguideId, r]));
+  const repMap = new Map(reps.map(r => [r.bioguideId.toUpperCase(), r]));
 
   const committeeArray = Array.isArray(committeesDataRaw)
     ? committeesDataRaw
@@ -60,7 +43,7 @@ function ensureSchema(rep) {
     if (!Array.isArray(c.members)) continue;
 
     for (const m of c.members) {
-      const bio = m.bioguide;
+      const bio = (m.bioguide || m.bioguideId || m.id || '').toUpperCase();
       if (!bio || !repMap.has(bio)) continue;
 
       const rep = repMap.get(bio);
@@ -68,15 +51,10 @@ function ensureSchema(rep) {
       let role = 'Member';
       if (m.title) {
         const t = m.title.toLowerCase();
-        if (t.includes('chairman') || t.includes('chair')) {
-          role = 'Chair';
-        } else if (t.includes('ranking')) {
-          role = 'Ranking Member';
-        } else if (t.includes('vice')) {
-          role = 'Vice Chair';
-        } else {
-          role = m.title;
-        }
+        if (t.includes('chair')) role = 'Chair';
+        else if (t.includes('ranking')) role = 'Ranking Member';
+        else if (t.includes('vice')) role = 'Vice Chair';
+        else role = m.title;
       }
 
       const entry = {
