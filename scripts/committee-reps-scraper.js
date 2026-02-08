@@ -48,10 +48,11 @@ function ensureSchema(rep) {
 
       const rep = repMap.get(bio);
 
+      // Normalize role
       let role = 'Member';
       if (m.title) {
         const t = m.title.toLowerCase();
-        if (t.includes('chair')) role = 'Chair';
+        if (t.includes('chairman') || t.includes('chair')) role = 'Chair';
         else if (t.includes('ranking')) role = 'Ranking Member';
         else if (t.includes('vice')) role = 'Vice Chair';
         else role = m.title;
@@ -65,6 +66,7 @@ function ensureSchema(rep) {
         party: m.party || null
       };
 
+      // Prevent duplicates by committeeCode + role
       const exists = rep.committees.some(
         x => x.committeeCode === entry.committeeCode && x.role === entry.role
       );
