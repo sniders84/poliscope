@@ -29,7 +29,7 @@ function ensureSchema(rep) {
 
 async function fetchRoll(year, roll) {
   const rollStr = String(roll).padStart(3, '0');
-  const url = `https://clerk.house.gov/Votes/${year}/roll${rollStr}.xml`;
+  const url = `https://clerk.house.gov/evs/${year}/roll${rollStr}.xml`;
   log(`Fetching: ${url}`);
   try {
     const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0 (PoliscopeBot/1.0)' } });
@@ -55,9 +55,10 @@ function parseVotes(xml) {
 
   return voteRecords.map(v => {
     const leg = v.legislator || {};
-    const id = leg.bioguideID || leg.bioguideId || leg['@bioGuideID'] || leg['@name-id'] || '';
+    // Normalize ID extraction
+    const id = leg.bioguideID || leg.bioguideId || leg['name-id'] || leg['@name-id'] || leg['bioGuideID'] || '';
     return {
-      bioguideId: id.trim(),
+      bioguideId: id.trim().toUpperCase(),
       vote: (v.vote || '').trim().toLowerCase()
     };
   }).filter(v => v.bioguideId);
@@ -74,7 +75,7 @@ function parseVotes(xml) {
     return;
   }
 
-  const repMap = new Map(reps.map(r => [r.bioguideId.toLowerCase(), r]));
+  const repMap = new Map(reps.map(r => [r.bioguideId.toUpperCase(), r]));
   log(`Loaded ${reps.length} representatives`);
 
   let attached = 0;
@@ -101,12 +102,11 @@ function parseVotes(xml) {
 
       totalVotesProcessed++;
       for (const v of votes) {
-        const idLower = v.bioguideId.toLowerCase();
-        if (!repMap.has(idLower)) {
+        if (!repMap.has(v.bioguideId)) {
           log(`Bioguide mismatch: ${v.bioguideId}`);
           continue;
         }
-        const rep = repMap.get(idLower);
+        const rep = repMap.get(v.bioguideId);
         if (v.vote === 'yea' || v.vote === 'yes') rep.yeaVotes++;
         else if (v.vote === 'nay' || v.vote === 'no') rep.nayVotes++;
         else rep.missedVotes++;
