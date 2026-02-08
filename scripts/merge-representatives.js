@@ -12,38 +12,73 @@ function loadJson(p) {
 
 const rankingsPath = path.join(__dirname, '../public/representatives-rankings.json');
 const legislationPath = path.join(__dirname, '../public/representatives-legislation.json');
+const committeesPath = path.join(__dirname, '../public/representatives-committees.json');
 const misconductPath = path.join(__dirname, '../public/misconduct-house.json');
 const scoresPath = path.join(__dirname, '../public/representatives-scores.json');
 const streaksPath = path.join(__dirname, '../public/representatives-streaks.json');
+const votesPath = path.join(__dirname, '../public/representatives-votes.json');
+const legislatorsPath = path.join(__dirname, '../public/legislators-current.json'); // for photos + baseline info
 
 let reps = loadJson(rankingsPath);
 const legislation = loadJson(legislationPath);
+const committees = loadJson(committeesPath);
 const misconduct = loadJson(misconductPath);
 const scores = loadJson(scoresPath);
 const streaks = loadJson(streaksPath);
+const votes = loadJson(votesPath);
+const legislators = loadJson(legislatorsPath);
 
 const merged = reps.map(rep => {
   const bioguideId = rep.bioguideId || null;
 
   const legData = legislation.find(x => x.bioguideId === bioguideId) || {};
+  const committeeData = committees.find(x => x.bioguideId === bioguideId) || {};
   const misconductData = misconduct.find(x => x.bioguideId === bioguideId) || {};
   const scoreData = scores.find(x => x.bioguideId === bioguideId) || {};
   const streakData = streaks.find(x => x.bioguideId === bioguideId) || {};
+  const voteData = votes.find(x => x.bioguideId === bioguideId) || {};
+  const legislatorData = legislators.find(x => x.bioguide_id === bioguideId) || {};
 
   return {
     ...rep,
-    sponsoredBills: legData.sponsoredBills ?? rep.sponsoredBills ?? 0,
-    cosponsoredBills: legData.cosponsoredBills ?? rep.cosponsoredBills ?? 0,
-    becameLawBills: legData.becameLawBills ?? rep.becameLawBills ?? 0,
-    becameLawCosponsoredBills: legData.becameLawCosponsoredBills ?? rep.becameLawCosponsoredBills ?? 0,
-    misconductCount: misconductData.misconductCount ?? rep.misconductCount ?? 0,
-    misconductTags: misconductData.misconductTags ?? rep.misconductTags ?? [],
-    misconductTexts: misconductData.misconductTexts ?? rep.misconductTexts ?? [],
-    misconductAllegations: misconductData.misconductAllegations ?? rep.misconductAllegations ?? [],
-    misconductConsequences: misconductData.misconductConsequences ?? rep.misconductConsequences ?? [],
-    score: scoreData.score ?? rep.score ?? 0,
-    scoreNormalized: scoreData.scoreNormalized ?? rep.scoreNormalized ?? 0,
-    streak: streakData.streak ?? rep.streak ?? 0,
+    // Legislation
+    sponsoredBills: legData.sponsoredBills ?? 0,
+    cosponsoredBills: legData.cosponsoredBills ?? 0,
+    becameLawBills: legData.becameLawBills ?? 0,
+    becameLawCosponsoredBills: legData.becameLawCosponsoredBills ?? 0,
+
+    // Committees
+    committees: committeeData.committees ?? [],
+
+    // Misconduct
+    misconductCount: misconductData.misconductCount ?? 0,
+    misconductTags: misconductData.misconductTags ?? [],
+    misconductTexts: misconductData.misconductTexts ?? [],
+    misconductAllegations: misconductData.misconductAllegations ?? [],
+    misconductConsequences: misconductData.misconductConsequences ?? [],
+
+    // Scores
+    score: scoreData.score ?? 0,
+    scoreNormalized: scoreData.scoreNormalized ?? 0,
+
+    // Streaks
+    streak: streakData.streak ?? 0,
+
+    // Votes
+    yeaVotes: voteData.yeaVotes ?? 0,
+    nayVotes: voteData.nayVotes ?? 0,
+    missedVotes: voteData.missedVotes ?? 0,
+    totalVotes: voteData.totalVotes ?? 0,
+    participationPct: voteData.participationPct ?? 0,
+    missedVotePct: voteData.missedVotePct ?? 0,
+
+    // Photos + baseline info
+    photoUrl: legislatorData?.photo_url || `https://theunitedstates.io/images/congress/225x275/${bioguideId}.jpg`,
+    firstName: legislatorData?.first_name || rep.firstName,
+    lastName: legislatorData?.last_name || rep.lastName,
+    party: legislatorData?.party || rep.party,
+    state: legislatorData?.state || rep.state,
+
     lastUpdated: new Date().toISOString()
   };
 });
