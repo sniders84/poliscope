@@ -17,16 +17,32 @@ const misconductPath = path.join(__dirname, '../public/misconduct-house.json');
 const scoresPath = path.join(__dirname, '../public/representatives-scores.json');
 const streaksPath = path.join(__dirname, '../public/representatives-streaks.json');
 const votesPath = path.join(__dirname, '../public/representatives-votes.json');
-const legislatorsPath = path.join(__dirname, '../public/legislators-current.json'); // for photos + baseline info
+const legislatorsPath = path.join(__dirname, '../public/legislators-current.json');
 
 let reps = loadJson(rankingsPath);
 const legislation = loadJson(legislationPath);
-const committees = loadJson(committeesPath);
+let committees = loadJson(committeesPath);
 const misconduct = loadJson(misconductPath);
 const scores = loadJson(scoresPath);
 const streaks = loadJson(streaksPath);
 const votes = loadJson(votesPath);
 const legislators = loadJson(legislatorsPath);
+
+// Normalize committees: ensure it's always an array of { bioguideId, committees }
+if (!Array.isArray(committees)) {
+  committees = Object.values(committees).flatMap(c =>
+    (c.members || []).map(m => ({
+      bioguideId: (m.bioguide || m.bioguideId || m.id || '').toUpperCase(),
+      committees: [{
+        committeeCode: c.code,
+        committeeName: c.name || c.code,
+        role: m.title || 'Member',
+        rank: m.rank ?? null,
+        party: m.party || null
+      }]
+    }))
+  );
+}
 
 const merged = reps.map(rep => {
   const bioguideId = rep.bioguideId || null;
