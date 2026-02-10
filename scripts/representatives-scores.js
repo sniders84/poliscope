@@ -68,18 +68,22 @@ let maxScore = 0;
 reps = reps.map(r => {
   let score = 0;
 
+  // Bills
   for (const [field, weight] of Object.entries(WEIGHTS.bills)) {
     score += (r[field] || 0) * weight;
   }
 
+  // Committees
   for (const c of r.committees || []) {
     if (/chair/i.test(c.role)) score += WEIGHTS.committees.Chair;
     else if (/ranking/i.test(c.role)) score += WEIGHTS.committees.RankingMember;
     else score += WEIGHTS.committees.Member;
   }
 
+  // Votes
   score += (r.missedVotes || 0) * WEIGHTS.votes.missedVotePenalty;
 
+  // Misconduct
   const misconductCount = r.misconductCount || 0;
   if (misconductCount > 0) {
     score += misconductCount * WEIGHTS.misconduct.penaltyPerInfraction;
