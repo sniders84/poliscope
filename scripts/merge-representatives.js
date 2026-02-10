@@ -17,7 +17,7 @@ const misconductPath = path.join(__dirname, '../public/misconduct-house.json');
 const scoresPath = path.join(__dirname, '../public/representatives-scores.json');
 const streaksPath = path.join(__dirname, '../public/representatives-streaks.json');
 const votesPath = path.join(__dirname, '../public/representatives-votes.json');
-const legislatorsPath = path.join(__dirname, '../public/legislators-current.json');
+const houserepsPath = path.join(__dirname, '../public/housereps.json');
 
 let reps = loadJson(rankingsPath);
 const legislation = loadJson(legislationPath);
@@ -26,7 +26,7 @@ const misconduct = loadJson(misconductPath);
 const scores = loadJson(scoresPath);
 const streaks = loadJson(streaksPath);
 const votes = loadJson(votesPath);
-const legislators = loadJson(legislatorsPath);
+const housereps = loadJson(houserepsPath);
 
 // Normalize committees: ensure it's always an array of { bioguideId, committees }
 if (!Array.isArray(committees)) {
@@ -53,7 +53,7 @@ const merged = reps.map(rep => {
   const scoreData = scores.find(x => x.bioguideId === bioguideId) || {};
   const streakData = streaks.find(x => x.bioguideId === bioguideId) || {};
   const voteData = votes.find(x => x.bioguideId === bioguideId) || {};
-  const legislatorData = legislators.find(x => x.bioguide_id === bioguideId) || {};
+  const houseData = housereps.find(x => x.bioguideId === bioguideId) || {};
 
   return {
     ...rep,
@@ -88,12 +88,14 @@ const merged = reps.map(rep => {
     participationPct: voteData.participationPct ?? 0,
     missedVotePct: voteData.missedVotePct ?? 0,
 
-    // Photos + baseline info
-    photoUrl: legislatorData?.photo_url || `https://theunitedstates.io/images/congress/225x275/${bioguideId}.jpg`,
-    firstName: legislatorData?.first_name || rep.firstName,
-    lastName: legislatorData?.last_name || rep.lastName,
-    party: legislatorData?.party || rep.party,
-    state: legislatorData?.state || rep.state,
+    // Photos + baseline info from housereps.json
+    photoUrl: houseData.photo || null,
+    firstName: houseData.firstName || rep.firstName,
+    lastName: houseData.lastName || rep.lastName,
+    party: houseData.party || rep.party,
+    state: houseData.state || rep.state,
+    district: houseData.district || rep.district,
+    office: houseData.office || rep.office,
 
     lastUpdated: new Date().toISOString()
   };
