@@ -1,105 +1,60 @@
 // scripts/merge-representatives.js
-//
-// Purpose: Consolidate House data sources into representatives-rankings.json
-// Output: public/representatives-rankings.json
+// Purpose: Consolidate House data directly into representatives-rankings.json
+// Removes dependency on empty sidecar files like representatives-votes.json
 
 const fs = require('fs');
 const path = require('path');
 
-function loadJson(p) {
-  return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf-8')) : [];
-}
-
 const rankingsPath = path.join(__dirname, '../public/representatives-rankings.json');
 const legislationPath = path.join(__dirname, '../public/representatives-legislation.json');
 const committeesPath = path.join(__dirname, '../public/representatives-committees.json');
-const misconductPath = path.join(__dirname, '../public/misconduct-house.json');
-const scoresPath = path.join(__dirname, '../public/representatives-scores.json');
-const streaksPath = path.join(__dirname, '../public/representatives-streaks.json');
-const votesPath = path.join(__dirname, '../public/representatives-votes.json');
-const houserepsPath = path.join(__dirname, '../public/housereps.json');
+// Add other sources if you still want them for audit, but they’re optional now
 
-let reps = loadJson(rankingsPath);
-const legislation = loadJson(legislationPath);
-let committees = loadJson(committeesPath);
-const misconduct = loadJson(misconductPath);
-const scores = loadJson(scoresPath);
-const streaks = loadJson(streaksPath);
-const votes = loadJson(votesPath);
-const housereps = loadJson(houserepsPath);
-
-// Normalize committees: ensure it's always an array of { bioguideId, committees }
-if (!Array.isArray(committees)) {
-  committees = Object.values(committees).flatMap(c =>
-    (c.members || []).map(m => ({
-      bioguideId: (m.bioguide || m.bioguideId || m.id || '').toUpperCase(),
-      committees: [{
-        committeeCode: c.code,
-        committeeName: c.name || c.code,
-        role: m.title || 'Member',
-        rank: m.rank ?? null,
-        party: m.party || null
-      }]
-    }))
-  );
+function loadJson(file) {
+  try {
+    return JSON.parse(fs.readFileSync(file, 'utf-8'));
+  } catch (err) {
+    console.warn(`Skipping ${file}: ${err.message}`);
+    return [];
+  }
 }
 
-const merged = reps.map(rep => {
-  const bioguideId = rep.bioguideId || null;
+(function main() {
+  let reps;
+  try {
+    reps = JSON.parse(fs.readFileSync(rankingsPath, 'utf-8'));
+  } catch (err) {
+    console.error(`Failed to read rankings file: ${err.message}`);
+    process.exit(1);
+  }
 
-  const legData = legislation.find(x => x.bioguideId === bioguideId) || {};
-  const committeeData = committees.find(x => x.bioguideId === bioguideId) || {};
-  const misconductData = misconduct.find(x => x.bioguideId === bioguideId) || {};
-  const scoreData = scores.find(x => x.bioguideId === bioguideId) || {};
-  const streakData = streaks.find(x => x.bioguideId === bioguideId) || {};
-  const voteData = votes.find(x => x.bioguideId === bioguideId) || {};
-  const houseData = housereps.find(x => x.bioguideId === bioguideId) || {};
+  const repMap = new Map(reps.map(r => [r.bioguideId.toUpperCase(), r]));
 
-  return {
-    ...rep,
-    // Legislation
-    sponsoredBills: legData.sponsoredBills ?? 0,
-    cosponsoredBills: legData.cosponsoredBills ?? 0,
-    becameLawBills: legData.becameLawBills ?? 0,
-    becameLawCosponsoredBills: legData.becameLawCosponsoredBills ?? 0,
+  // Merge legislation
+  const legislation = loadJson(legislationPath);
+  for (const l of legislation) {
+    const bio = (l.bioguideId || '').toUpperCase();
+    if (!bio || !repMap.has(bio)) continue;
+    const rep = repMap.get(bio);
+    rep.sponsoredBills = l.sponsoredBills ?? rep.sponsoredBills ?? 0;
+    rep.cosponsoredBills = l.cosponsoredBills ?? rep.cosponsoredBills ?? 0;
+    rep.becameLawBills = l.becameLawBills ?? rep.becameLawBills ?? 0;
+    rep.becameLawCosponsoredBills = l.becameLawCosponsoredBills ?? rep.becameLawCosponsoredBills ?? 0;
+  }
 
-    // Committees
-    committees: committeeData.committees ?? [],
+  // Merge committees
+  const committees = loadJson(committeesPath);
+  for (const c of committees) {
+    const bio = (c.bioguideId || '').toUpperCase();
+    if (!bio || !repMap.has(bio)) continue;
+    const rep = repMap.get(bio);
+    rep.committees = c.committees || rep.committees || [];
+  }
 
-    // Misconduct
-    misconductCount: misconductData.misconductCount ?? 0,
-    misconductTags: misconductData.misconductTags ?? [],
-    misconductTexts: misconductData.misconductTexts ?? [],
-    misconductAllegations: misconductData.misconductAllegations ?? [],
-    misconductConsequences: misconductData.misconductConsequences ?? [],
+  // At this point, votes, misconduct, scores, streaks are already written
+  // directly into representatives-rankings.json by their own scripts.
+  // No need to parse empty files like representatives-votes.json.
 
-    // Scores
-    score: scoreData.score ?? 0,
-    scoreNormalized: scoreData.scoreNormalized ?? 0,
-
-    // Streaks
-    streak: streakData.streak ?? 0,
-
-    // Votes
-    yeaVotes: voteData.yeaVotes ?? 0,
-    nayVotes: voteData.nayVotes ?? 0,
-    missedVotes: voteData.missedVotes ?? 0,
-    totalVotes: voteData.totalVotes ?? 0,
-    participationPct: voteData.participationPct ?? 0,
-    missedVotePct: voteData.missedVotePct ?? 0,
-
-    // Photos + baseline info from housereps.json
-    photoUrl: houseData.photo || null,
-    firstName: houseData.firstName || rep.firstName,
-    lastName: houseData.lastName || rep.lastName,
-    party: houseData.party || rep.party,
-    state: houseData.state || rep.state,
-    district: houseData.district || rep.district,
-    office: houseData.office || rep.office,
-
-    lastUpdated: new Date().toISOString()
-  };
-});
-
-fs.writeFileSync(rankingsPath, JSON.stringify(merged, null, 2));
-console.log(`Merged ${merged.length} House records into ${rankingsPath}`);
+  fs.writeFileSync(rankingsPath, JSON.stringify(Array.from(repMap.values()), null, 2));
+  console.log(`Merged House data into ${rankingsPath} (${repMap.size} records)`);
+})();
