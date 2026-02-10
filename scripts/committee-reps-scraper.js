@@ -6,21 +6,8 @@ const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.
 const COMMITTEES_PATH = path.join(__dirname, '..', 'public', 'representatives-committees.json');
 
 (function main() {
-  let reps;
-  try {
-    reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8'));
-  } catch (err) {
-    console.error(`Failed to read rankings file: ${err.message}`);
-    process.exit(1);
-  }
-
-  let committeesDataRaw;
-  try {
-    committeesDataRaw = JSON.parse(fs.readFileSync(COMMITTEES_PATH, 'utf-8'));
-  } catch (err) {
-    console.error(`Failed to read committees file: ${err.message}`);
-    process.exit(1);
-  }
+  let reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8'));
+  let committeesDataRaw = JSON.parse(fs.readFileSync(COMMITTEES_PATH, 'utf-8'));
 
   const repMap = new Map(reps.map(r => [r.bioguideId.toUpperCase(), r]));
 
