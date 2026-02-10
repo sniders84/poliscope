@@ -41,14 +41,7 @@ function parseVotes(xml) {
 }
 
 (async function main() {
-  let reps;
-  try {
-    reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8'));
-  } catch {
-    console.error(`ERROR reading ${OUT_PATH}`);
-    return;
-  }
-
+  let reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8'));
   const repMap = new Map(reps.map(r => [r.bioguideId.toUpperCase(), r]));
 
   for (const year of SESSIONS) {
