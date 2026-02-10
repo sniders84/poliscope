@@ -1,21 +1,14 @@
 // scripts/committee-reps-scraper.js
-// Purpose: Merge House committee memberships (with leadership flags) into representatives-rankings.json
-
 const fs = require('fs');
 const path = require('path');
 
 const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
 const COMMITTEES_PATH = path.join(__dirname, '..', 'public', 'representatives-committees.json');
 
-function ensureSchema(rep) {
-  rep.committees = Array.isArray(rep.committees) ? rep.committees : [];
-  return rep;
-}
-
 (function main() {
   let reps;
   try {
-    reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8')).map(ensureSchema);
+    reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8'));
   } catch (err) {
     console.error(`Failed to read rankings file: ${err.message}`);
     process.exit(1);
@@ -47,12 +40,12 @@ function ensureSchema(rep) {
       if (!bio || !repMap.has(bio)) continue;
 
       const rep = repMap.get(bio);
+      rep.committees = rep.committees || [];
 
-      // Normalize role
       let role = 'Member';
       if (m.title) {
         const t = m.title.toLowerCase();
-        if (t.includes('chairman') || t.includes('chair')) role = 'Chair';
+        if (t.includes('chair')) role = 'Chair';
         else if (t.includes('ranking')) role = 'Ranking Member';
         else if (t.includes('vice')) role = 'Vice Chair';
         else role = m.title;
@@ -66,7 +59,6 @@ function ensureSchema(rep) {
         party: m.party || null
       };
 
-      // Prevent duplicates by committeeCode + role
       const exists = rep.committees.some(
         x => x.committeeCode === entry.committeeCode && x.role === entry.role
       );
@@ -76,6 +68,6 @@ function ensureSchema(rep) {
     }
   }
 
-  fs.writeFileSync(OUT_PATH, JSON.stringify(reps, null, 2));
-  console.log(`Updated committees for ${reps.length} representatives`);
+  fs.writeFileSync(OUT_PATH, JSON.stringify(Array.from(repMap.values()), null, 2));
+  console.log(`Updated committees in ${OUT_PATH}`);
 })();
