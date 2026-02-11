@@ -1,12 +1,27 @@
-// merge-representatives.js
+// scripts/merge-representatives.js
 
 const fs = require("fs");
+const yaml = require("js-yaml");
 
-// Load rankings and housereps.json
-const rankings = JSON.parse(fs.readFileSync("representatives-rankings.json", "utf8"));
-const housereps = JSON.parse(fs.readFileSync("public/housereps.json", "utf8"));
+// Safe JSON loader
+function loadJSON(path) {
+  try {
+    return JSON.parse(fs.readFileSync(path, "utf8"));
+  } catch (e) {
+    console.warn(`Warning: could not load ${path}, defaulting to []`);
+    return [];
+  }
+}
 
-// Build a map of slug → info
+// Load all input files
+const rankings = loadJSON("representatives-rankings.json");
+const committees = loadJSON("representatives-committees.json");
+const legislation = loadJSON("representatives-legislation.json");
+const misconduct = yaml.load(fs.readFileSync("representatives-misconduct.yaml", "utf8")) || {};
+const streaks = loadJSON("representatives-streaks.json");
+const housereps = loadJSON("public/housereps.json");
+
+// Build slug → info map from housereps.json
 const repMap = new Map();
 housereps.forEach(rep => {
   repMap.set(rep.slug, {
@@ -18,12 +33,29 @@ housereps.forEach(rep => {
     govtrackLink: rep.govtrackLink,
     contact: rep.contact,
     social: rep.social
-    // add other fields if you want them merged
   });
 });
 
-// Enrich rankings with photo and metadata
+// Merge everything into rankings
 rankings.forEach(r => {
+  // Committees
+  const c = committees.find(x => x.slug === r.slug);
+  if (c) r.committees = c.committees;
+
+  // Legislation
+  const l = legislation.find(x => x.slug === r.slug);
+  if (l) r.legislation = l.legislation;
+
+  // Misconduct
+  if (misconduct[r.slug]) {
+    r.misconduct = misconduct[r.slug];
+  }
+
+  // Streaks
+  const s = streaks.find(x => x.slug === r.slug);
+  if (s) r.streak = s.streak;
+
+  // Photos + metadata from housereps.json
   if (repMap.has(r.slug)) {
     const info = repMap.get(r.slug);
     r.photo = info.photo;
@@ -35,10 +67,10 @@ rankings.forEach(r => {
     r.contact = info.contact;
     r.social = info.social;
   } else {
-    console.warn(`No match for slug: ${r.slug}`);
+    console.warn(`No housereps.json match for slug: ${r.slug}`);
   }
 });
 
-// Write enriched rankings back out
+// Write out enriched rankings
 fs.writeFileSync("representatives-rankings.json", JSON.stringify(rankings, null, 2));
-console.log("representatives-rankings.json updated with photos and metadata via slug matching.");
+console.log("representatives-rankings.json updated with committees, legislation, misconduct, streaks, and photos via slug matching.");
