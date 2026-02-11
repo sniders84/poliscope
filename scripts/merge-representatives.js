@@ -1,6 +1,6 @@
 // scripts/merge-representatives.js
 // Purpose: Consolidate House data directly into representatives-rankings.json
-// Removes dependency on empty sidecar files like representatives-votes.json
+// Handles committees JSON keyed by committee code (e.g. "SSAF": [ ... ])
 
 const fs = require('fs');
 const path = require('path');
@@ -8,14 +8,13 @@ const path = require('path');
 const rankingsPath = path.join(__dirname, '../public/representatives-rankings.json');
 const legislationPath = path.join(__dirname, '../public/representatives-legislation.json');
 const committeesPath = path.join(__dirname, '../public/representatives-committees.json');
-// Add other sources if you still want them for audit, but they’re optional now
 
 function loadJson(file) {
   try {
     return JSON.parse(fs.readFileSync(file, 'utf-8'));
   } catch (err) {
     console.warn(`Skipping ${file}: ${err.message}`);
-    return [];
+    return {};
   }
 }
 
@@ -32,28 +31,46 @@ function loadJson(file) {
 
   // Merge legislation
   const legislation = loadJson(legislationPath);
-  for (const l of legislation) {
-    const bio = (l.bioguideId || '').toUpperCase();
-    if (!bio || !repMap.has(bio)) continue;
-    const rep = repMap.get(bio);
-    rep.sponsoredBills = l.sponsoredBills ?? rep.sponsoredBills ?? 0;
-    rep.cosponsoredBills = l.cosponsoredBills ?? rep.cosponsoredBills ?? 0;
-    rep.becameLawBills = l.becameLawBills ?? rep.becameLawBills ?? 0;
-    rep.becameLawCosponsoredBills = l.becameLawCosponsoredBills ?? rep.becameLawCosponsoredBills ?? 0;
+  if (Array.isArray(legislation)) {
+    for (const l of legislation) {
+      const bio = (l.bioguideId || '').toUpperCase();
+      if (!bio || !repMap.has(bio)) continue;
+      const rep = repMap.get(bio);
+      rep.sponsoredBills = l.sponsoredBills ?? rep.sponsoredBills ?? 0;
+      rep.cosponsoredBills = l.cosponsoredBills ?? rep.cosponsoredBills ?? 0;
+      rep.becameLawBills = l.becameLawBills ?? rep.becameLawBills ?? 0;
+      rep.becameLawCosponsoredBills = l.becameLawCosponsoredBills ?? rep.becameLawCosponsoredBills ?? 0;
+    }
   }
 
-  // Merge committees
-  const committees = loadJson(committeesPath);
-  for (const c of committees) {
-    const bio = (c.bioguideId || '').toUpperCase();
-    if (!bio || !repMap.has(bio)) continue;
-    const rep = repMap.get(bio);
-    rep.committees = c.committees || rep.committees || [];
-  }
+  // Merge committees (object keyed by committee code)
+  const committeesRaw = loadJson(committeesPath);
+  for (const [code, members] of Object.entries(committeesRaw)) {
+    if (!Array.isArray(members)) continue;
+    for (const m of members) {
+      const bio = (m.bioguide || m.bioguideId || '').toUpperCase();
+      if (!bio || !repMap.has(bio)) continue;
 
-  // At this point, votes, misconduct, scores, streaks are already written
-  // directly into representatives-rankings.json by their own scripts.
-  // No need to parse empty files like representatives-votes.json.
+      const rep = repMap.get(bio);
+      rep.committees = rep.committees || [];
+
+      let role = 'Member';
+      if (m.title) {
+        const t = m.title.toLowerCase();
+        if (t.includes('chair')) role = 'Chair';
+        else if (t.includes('ranking')) role = 'Ranking Member';
+        else role = m.title;
+      }
+
+      rep.committees.push({
+        committeeCode: code,
+        committeeName: code, // replace with full name mapping if available
+        role,
+        rank: m.rank ?? null,
+        party: m.party || null
+      });
+    }
+  }
 
   fs.writeFileSync(rankingsPath, JSON.stringify(Array.from(repMap.values()), null, 2));
   console.log(`Merged House data into ${rankingsPath} (${repMap.size} records)`);
