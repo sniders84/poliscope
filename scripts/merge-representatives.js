@@ -1,6 +1,6 @@
 // scripts/merge-representatives.js
 // Purpose: Consolidate House data directly into representatives-rankings.json
-// Handles committees JSON keyed by committee code (e.g. "SSAF": [ ... ])
+// Adds photos from housereps.json, merges legislation + committees
 
 const fs = require('fs');
 const path = require('path');
@@ -8,13 +8,14 @@ const path = require('path');
 const rankingsPath = path.join(__dirname, '../public/representatives-rankings.json');
 const legislationPath = path.join(__dirname, '../public/representatives-legislation.json');
 const committeesPath = path.join(__dirname, '../public/representatives-committees.json');
+const houserepsPath = path.join(__dirname, '../public/housereps.json');
 
 function loadJson(file) {
   try {
     return JSON.parse(fs.readFileSync(file, 'utf-8'));
   } catch (err) {
     console.warn(`Skipping ${file}: ${err.message}`);
-    return {};
+    return Array.isArray(file) ? [] : {};
   }
 }
 
@@ -64,11 +65,28 @@ function loadJson(file) {
 
       rep.committees.push({
         committeeCode: code,
-        committeeName: code, // replace with full name mapping if available
+        committeeName: code,
         role,
         rank: m.rank ?? null,
         party: m.party || null
       });
+    }
+  }
+
+  // Merge photos from housereps.json
+  const housereps = loadJson(houserepsPath);
+  for (const hr of housereps) {
+    const slug = (hr.slug || '').toLowerCase();
+    const photo = hr.photo || null;
+    if (!photo) continue;
+
+    // Match by slug or name
+    for (const [bio, rep] of repMap.entries()) {
+      if (rep.slug && rep.slug.toLowerCase() === slug) {
+        rep.photo = photo;
+      } else if (rep.name && rep.name.toLowerCase() === hr.name.toLowerCase()) {
+        rep.photo = photo;
+      }
     }
   }
 
