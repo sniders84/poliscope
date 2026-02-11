@@ -1,73 +1,68 @@
 // scripts/votes-reps-scraper.js
+// Purpose: Scrape House roll call votes and update representatives-rankings.json
+
 const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
-const { XMLParser } = require('fast-xml-parser');
+const { JSDOM } = require('jsdom');
 
-const OUT_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
-const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '', trimValues: true });
-const SESSIONS = [2025, 2026];
+const rankingsPath = path.join(__dirname, '../public/representatives-rankings.json');
 
-async function fetchRoll(year, roll) {
-  const rollStr = String(roll).padStart(3, '0');
-  const url = `https://clerk.house.gov/evs/${year}/roll${rollStr}.xml`;
-  try {
-    const res = await fetch(url);
-    if (!res.ok) return null;
-    return await res.text();
-  } catch {
-    return null;
-  }
+console.log('Starting votes-reps-scraper.js');
+
+let reps;
+try {
+  reps = JSON.parse(fs.readFileSync(rankingsPath, 'utf-8'));
+  console.log(`Loaded ${reps.length} representatives`);
+} catch (err) {
+  console.error('Failed to read representatives-rankings.json:', err.message);
+  process.exit(1);
 }
 
-function parseVotes(xml) {
-  let doc;
-  try {
-    doc = parser.parse(xml);
-  } catch {
-    return [];
-  }
-  let voteRecords = doc?.['rollcall-vote']?.['recorded-vote'] || [];
-  if (!Array.isArray(voteRecords)) voteRecords = [voteRecords];
+const repMap = new Map(reps.map(r => [r.bioguideId.toUpperCase(), r]));
 
-  return voteRecords.map(v => {
-    const leg = v.legislator || {};
-    const id = leg['name-id'] || leg.bioguideID || leg.bioguideId || '';
-    return {
-      bioguideId: id.trim().toUpperCase(),
-      vote: (v.vote || '').trim().toLowerCase()
-    };
-  }).filter(v => v.bioguideId);
+async function scrapeRollCall(roll) {
+  const url = `https://clerk.house.gov/Votes/${roll}`;
+  const res = await fetch(url);
+  if (!res.ok) {
+    console.warn(`Failed to fetch roll call ${roll}: ${res.status}`);
+    return;
+  }
+  const html = await res.text();
+  const dom = new JSDOM(html);
+  const rows = dom.window.document.querySelectorAll('table tr');
+
+  for (const row of rows) {
+    const cells = row.querySelectorAll('td');
+    if (cells.length < 3) continue;
+
+    const bioguide = (cells[0].textContent || '').trim().toUpperCase();
+    const vote = (cells[2].textContent || '').trim().toLowerCase();
+
+    if (!bioguide || !repMap.has(bioguide)) continue;
+    const rep = repMap.get(bioguide);
+
+    rep.totalVotes = (rep.totalVotes || 0) + 1;
+    if (vote.includes('yea')) rep.yeaVotes = (rep.yeaVotes || 0) + 1;
+    else if (vote.includes('nay')) rep.nayVotes = (rep.nayVotes || 0) + 1;
+    else rep.missedVotes = (rep.missedVotes || 0) + 1;
+  }
 }
 
 (async function main() {
-  let reps = JSON.parse(fs.readFileSync(OUT_PATH, 'utf-8'));
-  const repMap = new Map(reps.map(r => [r.bioguideId.toUpperCase(), r]));
-
-  for (const year of SESSIONS) {
-    for (let roll = 1; roll <= 500; roll++) {
-      const xml = await fetchRoll(year, roll);
-      if (!xml) continue;
-      const votes = parseVotes(xml);
-      for (const v of votes) {
-        if (!repMap.has(v.bioguideId)) continue;
-        const rep = repMap.get(v.bioguideId);
-        if (v.vote === 'yea' || v.vote === 'yes') rep.yeaVotes = (rep.yeaVotes || 0) + 1;
-        else if (v.vote === 'nay' || v.vote === 'no') rep.nayVotes = (rep.nayVotes || 0) + 1;
-        else rep.missedVotes = (rep.missedVotes || 0) + 1;
-        rep.totalVotes = (rep.totalVotes || 0) + 1;
-      }
-    }
+  // Example: scrape first 25 roll calls of 119th Congress
+  for (let i = 1; i <= 25; i++) {
+    await scrapeRollCall(i.toString().padStart(3, '0'));
   }
 
+  // Compute participation percentages
   for (const rep of repMap.values()) {
-    if (rep.totalVotes > 0) {
-      const participated = (rep.yeaVotes || 0) + (rep.nayVotes || 0);
-      rep.participationPct = Number(((participated / rep.totalVotes) * 100).toFixed(2));
-      rep.missedVotePct = Number(((rep.missedVotes / rep.totalVotes) * 100).toFixed(2));
-    }
+    const total = rep.totalVotes || 0;
+    const missed = rep.missedVotes || 0;
+    rep.participationPct = total > 0 ? Number(((total - missed) / total * 100).toFixed(2)) : 100;
+    rep.missedVotePct = total > 0 ? Number((missed / total * 100).toFixed(2)) : 0;
   }
 
-  fs.writeFileSync(OUT_PATH, JSON.stringify(Array.from(repMap.values()), null, 2));
-  console.log(`House votes updated in ${OUT_PATH}`);
+  fs.writeFileSync(rankingsPath, JSON.stringify(Array.from(repMap.values()), null, 2));
+  console.log(`House votes updated in ${rankingsPath}`);
 })();
