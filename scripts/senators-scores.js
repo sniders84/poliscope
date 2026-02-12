@@ -1,6 +1,6 @@
 // scripts/senators-scores.js
 // Purpose: Compute rubric-based scores for senators and overwrite senators-rankings.json
-// Misconduct penalty applied, streak preserved, legacy score fields removed
+// Schema preserved exactly as before. Uses aggregated vote totals from senators-votes.json.
 
 const fs = require('fs');
 const path = require('path');
@@ -41,32 +41,34 @@ const WEIGHTS = {
 senators = senators.map(s => {
   let score = 0;
 
-  // Legislation
+  // --- LEGISLATION ---
   for (const [field, weight] of Object.entries(WEIGHTS.bills)) {
     score += (s[field] || 0) * weight;
   }
 
-  // Committees
+  // --- COMMITTEES ---
   for (const c of s.committees || []) {
     if (/chair/i.test(c.role)) score += WEIGHTS.committees.Chair;
     else if (/ranking/i.test(c.role)) score += WEIGHTS.committees.RankingMember;
     else score += WEIGHTS.committees.Member;
   }
 
-  // Votes
+  // --- VOTES ---
+  // Your new scraper provides complete totals, so this is now accurate.
   const missedVotes = s.missedVotes || 0;
   score += missedVotes * WEIGHTS.votes.missedVotePenalty;
 
-  // Misconduct
+  // --- MISCONDUCT ---
   const misconductCount = s.misconductCount || 0;
   score += misconductCount * WEIGHTS.misconduct.penaltyPerInfraction;
 
+  // No negative scores
   if (score < 0) score = 0;
 
   return {
     ...s,
     powerScore: score,
-    streak: s.streak || 0,
+    streak: s.streak || 0, // preserve streak
     lastUpdated: new Date().toISOString()
   };
 });
