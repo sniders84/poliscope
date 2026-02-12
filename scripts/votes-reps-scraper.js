@@ -1,14 +1,14 @@
 // scripts/votes-reps-scraper.js
-// Purpose: Fetch and parse House roll call votes from clerk.house.gov XML
-// and update representatives-rankings.json with vote tallies and participation percentages
+// Purpose: Scrape ALL House roll call votes for the 119th Congress
+// and update representatives-rankings.json
 
 const fs = require("fs");
 const path = require("path");
 const fetch = require("node-fetch");
 const { DOMParser } = require("xmldom");
 
-const OUT_PATH = path.join(__dirname, "..", "public", "representatives-rankings.json");
-const YEAR = 2026; // adjust as needed for current Congress
+const rankingsPath = path.join(__dirname, "../public/representatives-rankings.json");
+const YEAR = 2026; // adjust if needed
 const BASE_URL = `https://clerk.house.gov/evs/${YEAR}/`;
 
 console.log("Starting votes-reps-scraper.js");
@@ -40,20 +40,21 @@ function indexByBioguide(list) {
 
 async function fetchRollCall(num) {
   const url = `${BASE_URL}roll${String(num).padStart(3, "0")}.xml`;
-  const res = await fetch(url);
-  if (!res.ok) {
-    console.warn(`Failed to fetch roll call ${num}: ${res.status}`);
+  try {
+    const res = await fetch(url);
+    if (!res.ok) return null;
+    const xml = await res.text();
+    const doc = new DOMParser().parseFromString(xml, "application/xml");
+    return doc;
+  } catch {
     return null;
   }
-  const xml = await res.text();
-  const doc = new DOMParser().parseFromString(xml, "application/xml");
-  return doc;
 }
 
 (async function main() {
   let reps;
   try {
-    reps = JSON.parse(fs.readFileSync(OUT_PATH, "utf-8")).map(ensureRepShape);
+    reps = JSON.parse(fs.readFileSync(rankingsPath, "utf-8")).map(ensureRepShape);
     console.log(`Loaded ${reps.length} representatives`);
   } catch (err) {
     console.error("Failed to read representatives-rankings.json:", err.message);
@@ -63,12 +64,24 @@ async function fetchRollCall(num) {
   const repMap = indexByBioguide(reps);
 
   let processed = 0;
-  // Example: scrape first 25 roll calls
-  for (let i = 1; i <= 25; i++) {
-    const doc = await fetchRollCall(i);
-    if (!doc) continue;
+  let roll = 1;
+
+  // Loop until no more roll call XML files are found
+  while (true) {
+    const doc = await fetchRollCall(roll);
+    if (!doc) {
+      console.log(`No more roll calls after ${roll - 1}`);
+      break;
+    }
 
     const votes = doc.getElementsByTagName("recorded-vote");
+    if (!votes || votes.length === 0) {
+      roll++;
+      continue;
+    }
+
+    let yeaCount = 0, nayCount = 0, nvCount = 0;
+
     for (let v of votes) {
       const legislator = v.getElementsByTagName("legislator")[0];
       const voteNode = v.getElementsByTagName("vote")[0];
@@ -81,11 +94,21 @@ async function fetchRollCall(num) {
       const rep = repMap.get(bioguideId.toUpperCase());
 
       rep.totalVotes++;
-      if (choice === "Yea") rep.yeaVotes++;
-      else if (choice === "Nay") rep.nayVotes++;
-      else rep.missedVotes++;
+      if (choice === "Yea") {
+        rep.yeaVotes++;
+        yeaCount++;
+      } else if (choice === "Nay") {
+        rep.nayVotes++;
+        nayCount++;
+      } else {
+        rep.missedVotes++;
+        nvCount++;
+      }
     }
+
+    console.log(`Roll ${roll}: Yeas=${yeaCount}, Nays=${nayCount}, NV=${nvCount}`);
     processed++;
+    roll++;
   }
 
   reps.forEach(r => {
@@ -95,9 +118,6 @@ async function fetchRollCall(num) {
     }
   });
 
-  fs.writeFileSync(OUT_PATH, JSON.stringify(reps, null, 2));
+  fs.writeFileSync(rankingsPath, JSON.stringify(reps, null, 2));
   console.log(`House votes updated: ${processed} roll calls processed`);
-})().catch(err => {
-  console.error("House votes scraper failed:", err);
-  process.exit(1);
-});
+})();
