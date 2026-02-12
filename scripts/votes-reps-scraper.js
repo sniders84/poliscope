@@ -1,68 +1,103 @@
 // scripts/votes-reps-scraper.js
-// Purpose: Scrape House roll call votes and update representatives-rankings.json
+// Purpose: Fetch and parse House roll call votes from clerk.house.gov XML
+// and update representatives-rankings.json with vote tallies and participation percentages
 
-const fs = require('fs');
-const path = require('path');
-const fetch = require('node-fetch');
-const { JSDOM } = require('jsdom');
+const fs = require("fs");
+const path = require("path");
+const fetch = require("node-fetch");
+const { DOMParser } = require("xmldom");
 
-const rankingsPath = path.join(__dirname, '../public/representatives-rankings.json');
+const OUT_PATH = path.join(__dirname, "..", "public", "representatives-rankings.json");
+const YEAR = 2026; // adjust as needed for current Congress
+const BASE_URL = `https://clerk.house.gov/evs/${YEAR}/`;
 
-console.log('Starting votes-reps-scraper.js');
+console.log("Starting votes-reps-scraper.js");
 
-let reps;
-try {
-  reps = JSON.parse(fs.readFileSync(rankingsPath, 'utf-8'));
-  console.log(`Loaded ${reps.length} representatives`);
-} catch (err) {
-  console.error('Failed to read representatives-rankings.json:', err.message);
-  process.exit(1);
+function ensureRepShape(rep) {
+  return {
+    slug: rep.slug,
+    bioguideId: rep.bioguideId,
+    name: rep.name,
+    state: rep.state,
+    party: rep.party,
+    office: rep.office || "Representative",
+    yeaVotes: rep.yeaVotes || 0,
+    nayVotes: rep.nayVotes || 0,
+    missedVotes: rep.missedVotes || 0,
+    totalVotes: rep.totalVotes || 0,
+    participationPct: rep.participationPct || 0,
+    missedVotePct: rep.missedVotePct || 0
+  };
 }
 
-const repMap = new Map(reps.map(r => [r.bioguideId.toUpperCase(), r]));
+function indexByBioguide(list) {
+  const map = new Map();
+  list.forEach(r => {
+    if (r.bioguideId) map.set(r.bioguideId.toUpperCase(), r);
+  });
+  return map;
+}
 
-async function scrapeRollCall(roll) {
-  const url = `https://clerk.house.gov/Votes/${roll}`;
+async function fetchRollCall(num) {
+  const url = `${BASE_URL}roll${String(num).padStart(3, "0")}.xml`;
   const res = await fetch(url);
   if (!res.ok) {
-    console.warn(`Failed to fetch roll call ${roll}: ${res.status}`);
-    return;
+    console.warn(`Failed to fetch roll call ${num}: ${res.status}`);
+    return null;
   }
-  const html = await res.text();
-  const dom = new JSDOM(html);
-  const rows = dom.window.document.querySelectorAll('table tr');
-
-  for (const row of rows) {
-    const cells = row.querySelectorAll('td');
-    if (cells.length < 3) continue;
-
-    const bioguide = (cells[0].textContent || '').trim().toUpperCase();
-    const vote = (cells[2].textContent || '').trim().toLowerCase();
-
-    if (!bioguide || !repMap.has(bioguide)) continue;
-    const rep = repMap.get(bioguide);
-
-    rep.totalVotes = (rep.totalVotes || 0) + 1;
-    if (vote.includes('yea')) rep.yeaVotes = (rep.yeaVotes || 0) + 1;
-    else if (vote.includes('nay')) rep.nayVotes = (rep.nayVotes || 0) + 1;
-    else rep.missedVotes = (rep.missedVotes || 0) + 1;
-  }
+  const xml = await res.text();
+  const doc = new DOMParser().parseFromString(xml, "application/xml");
+  return doc;
 }
 
 (async function main() {
-  // Example: scrape first 25 roll calls of 119th Congress
+  let reps;
+  try {
+    reps = JSON.parse(fs.readFileSync(OUT_PATH, "utf-8")).map(ensureRepShape);
+    console.log(`Loaded ${reps.length} representatives`);
+  } catch (err) {
+    console.error("Failed to read representatives-rankings.json:", err.message);
+    process.exit(1);
+  }
+
+  const repMap = indexByBioguide(reps);
+
+  let processed = 0;
+  // Example: scrape first 25 roll calls
   for (let i = 1; i <= 25; i++) {
-    await scrapeRollCall(i.toString().padStart(3, '0'));
+    const doc = await fetchRollCall(i);
+    if (!doc) continue;
+
+    const votes = doc.getElementsByTagName("recorded-vote");
+    for (let v of votes) {
+      const legislator = v.getElementsByTagName("legislator")[0];
+      const voteNode = v.getElementsByTagName("vote")[0];
+      if (!legislator || !voteNode) continue;
+
+      const bioguideId = legislator.getAttribute("id");
+      const choice = voteNode.textContent.trim();
+
+      if (!bioguideId || !repMap.has(bioguideId.toUpperCase())) continue;
+      const rep = repMap.get(bioguideId.toUpperCase());
+
+      rep.totalVotes++;
+      if (choice === "Yea") rep.yeaVotes++;
+      else if (choice === "Nay") rep.nayVotes++;
+      else rep.missedVotes++;
+    }
+    processed++;
   }
 
-  // Compute participation percentages
-  for (const rep of repMap.values()) {
-    const total = rep.totalVotes || 0;
-    const missed = rep.missedVotes || 0;
-    rep.participationPct = total > 0 ? Number(((total - missed) / total * 100).toFixed(2)) : 100;
-    rep.missedVotePct = total > 0 ? Number((missed / total * 100).toFixed(2)) : 0;
-  }
+  reps.forEach(r => {
+    if (r.totalVotes > 0) {
+      r.participationPct = Number(((r.yeaVotes + r.nayVotes) / r.totalVotes * 100).toFixed(2));
+      r.missedVotePct = Number((r.missedVotes / r.totalVotes * 100).toFixed(2));
+    }
+  });
 
-  fs.writeFileSync(rankingsPath, JSON.stringify(Array.from(repMap.values()), null, 2));
-  console.log(`House votes updated in ${rankingsPath}`);
-})();
+  fs.writeFileSync(OUT_PATH, JSON.stringify(reps, null, 2));
+  console.log(`House votes updated: ${processed} roll calls processed`);
+})().catch(err => {
+  console.error("House votes scraper failed:", err);
+  process.exit(1);
+});
