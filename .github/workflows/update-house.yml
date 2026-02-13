@@ -57,7 +57,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses:actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
@@ -99,7 +99,11 @@ jobs:
 
   merge-house:
     runs-on: ubuntu-latest
-    needs: [update-house-part1, update-house-part2, update-house-part3, update-house-part4]
+    needs:
+      - update-house-part1
+      - update-house-part2
+      - update-house-part3
+      - update-house-part4
     steps:
       - uses: actions/checkout@v4
         with:
