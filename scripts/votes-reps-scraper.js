@@ -1,162 +1,213 @@
 // scripts/votes-reps-scraper.js
-// Purpose: Scrape House roll call votes for the 119th Congress
-// Output schema preserved EXACTLY as before:
-// [
-//   {
-//     bioguideId: "A000360",
-//     votes: {
-//       yeaVotes: 0,
-//       nayVotes: 0,
-//       missedVotes: 0,
-//       totalVotes: 0,
-//       participationPct: 0,
-//       missedVotePct: 0
-//     }
-//   },
-//   ...
-// ]
+// Scrapes the FULL 119th Congress House roll call voting record from Congress.gov
+// Aggregates per-member stats across ALL sessions and ALL votes in the Congress.
 
-const fs = require('fs');
-const path = require('path');
-const fetch = require('node-fetch');
-const xml2js = require('xml2js');
+const fs = require("fs");
+const path = require("path");
+const fetch = require("node-fetch");
 
-const ROSTER_PATH = path.join(__dirname, '../public/legislators-current.json');
-const OUTPUT_PATH = path.join(__dirname, '../public/representatives-votes.json');
+const API_KEY = process.env.CONGRESS_API_KEY;
+if (!API_KEY) {
+  console.error("CONGRESS_API_KEY is not set in the environment.");
+  process.exit(1);
+}
 
-const parser = new xml2js.Parser({
-  explicitArray: false,
-  mergeAttrs: true,
-  tagNameProcessors: [xml2js.processors.stripPrefix],
-  attrNameProcessors: [xml2js.processors.stripPrefix]
-});
+const CONGRESS = 119;
+const SESSIONS = [1, 2]; // cover the entire Congress (all sessions)
 
-// Load roster and filter to current House members
-const roster = JSON.parse(fs.readFileSync(ROSTER_PATH, 'utf-8'));
-const reps = roster.filter(r => r.terms?.at(-1)?.type === 'rep');
+const ROSTER_PATH = path.join(__dirname, "../public/legislators-current.json");
+const OUTPUT_PATH = path.join(__dirname, "../public/representatives-votes.json");
+const BASE_URL = "https://api.congress.gov/v3";
 
-// Build ICPSR → bioguide map
-function buildIcpsrMap() {
-  const map = new Map();
+async function fetchJSON(url) {
+  const res = await fetch(url, {
+    headers: {
+      "User-Agent": "poliscope/1.0",
+      Accept: "application/json",
+    },
+  });
+  if (!res.ok) {
+    throw new Error(`HTTP ${res.status} for ${url}`);
+  }
+  return res.json();
+}
+
+function loadHouseRoster() {
+  const roster = JSON.parse(fs.readFileSync(ROSTER_PATH, "utf8"));
+  return roster.filter((m) => m.terms && m.terms[m.terms.length - 1]?.type === "rep");
+}
+
+async function fetchAllHouseVotesForSession(session) {
+  console.log(`Discovering House roll calls for Congress ${CONGRESS}, session ${session}...`);
+
+  let page = 1;
+  const pageSize = 250;
+  let allVotes = [];
+
+  while (true) {
+    const url = `${BASE_URL}/house-vote/${CONGRESS}/${session}?api_key=${API_KEY}&page=${page}&pageSize=${pageSize}`;
+    console.log(`  Fetching vote list page ${page} for session ${session}...`);
+
+    const data = await fetchJSON(url);
+    const votes = data?.votes || data?.results || data?.houseVotes || [];
+
+    if (!Array.isArray(votes) || votes.length === 0) {
+      break;
+    }
+
+    allVotes = allVotes.concat(
+      votes.map((v) => ({
+        session,
+        voteNumber: v.voteNumber || v.rollNumber || v.roll || v.number,
+      }))
+    );
+
+    const pagination = data.pagination || data.meta || {};
+    const totalPages = pagination.totalPages || pagination.total_pages || null;
+    if (!totalPages || page >= totalPages) break;
+    page++;
+  }
+
+  console.log(
+    `Discovered ${allVotes.length} roll calls for Congress ${CONGRESS}, session ${session}.`
+  );
+  return allVotes;
+}
+
+async function fetchMembersForVote(session, voteNumber) {
+  let page = 1;
+  const pageSize = 250;
+  let members = [];
+
+  while (true) {
+    const url = `${BASE_URL}/house-vote/${CONGRESS}/${session}/${voteNumber}/members?api_key=${API_KEY}&page=${page}&pageSize=${pageSize}`;
+    const data = await fetchJSON(url);
+
+    const chunk =
+      data?.members ||
+      data?.results ||
+      data?.votePositions ||
+      data?.positions ||
+      [];
+
+    if (!Array.isArray(chunk) || chunk.length === 0) break;
+
+    members = members.concat(chunk);
+
+    const pagination = data.pagination || data.meta || {};
+    const totalPages = pagination.totalPages || pagination.total_pages || null;
+    if (!totalPages || page >= totalPages) break;
+    page++;
+  }
+
+  return members;
+}
+
+function normalizePosition(raw) {
+  if (!raw) return "missed";
+  const v = String(raw).trim().toLowerCase();
+  if (v === "yea" || v === "yes" || v === "aye") return "yea";
+  if (v === "nay" || v === "no") return "nay";
+  // present, not voting, unknown, etc.
+  return "missed";
+}
+
+async function aggregateVotesByMember(reps) {
+  // Initialize counts for every current rep
+  const counts = new Map();
   for (const r of reps) {
-    const icpsr = r.id?.icpsr;
     const bioguide = r.id?.bioguide;
-    if (icpsr && bioguide) {
-      map.set(String(icpsr), bioguide);
+    if (!bioguide) continue;
+    counts.set(bioguide, { yea: 0, nay: 0, missed: 0 });
+  }
+
+  let totalRollCalls = 0;
+
+  for (const session of SESSIONS) {
+    const votes = await fetchAllHouseVotesForSession(session);
+
+    for (const v of votes) {
+      if (!v.voteNumber) continue;
+      totalRollCalls++;
+
+      const members = await fetchMembersForVote(session, v.voteNumber);
+      for (const m of members) {
+        const bioguide =
+          m.bioguideId ||
+          m.bioguide_id ||
+          m.memberId ||
+          m.member_id ||
+          null;
+
+        if (!bioguide || !counts.has(bioguide)) continue;
+
+        const pos =
+          m.votePosition ||
+          m.vote_position ||
+          m.position ||
+          m.vote ||
+          m.cast ||
+          null;
+
+        const norm = normalizePosition(pos);
+        const c = counts.get(bioguide);
+
+        if (norm === "yea") c.yea++;
+        else if (norm === "nay") c.nay++;
+        else c.missed++;
+      }
     }
   }
-  return map;
+
+  console.log(`Total roll calls processed across all sessions: ${totalRollCalls}`);
+  return counts;
 }
 
-async function fetchXML(url) {
-  try {
-    const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' } });
-    if (!res.ok) return null;
-    const xml = await res.text();
-    return await parser.parseStringPromise(xml);
-  } catch {
-    return null;
+function buildOutput(reps, counts) {
+  const output = [];
+
+  for (const r of reps) {
+    const bioguide = r.id?.bioguide;
+    if (!bioguide) continue;
+
+    const c = counts.get(bioguide) || { yea: 0, nay: 0, missed: 0 };
+    const total = c.yea + c.nay + c.missed;
+
+    const participationPct =
+      total > 0 ? +(((c.yea + c.nay) / total) * 100).toFixed(2) : 0;
+    const missedVotePct =
+      total > 0 ? +((c.missed / total) * 100).toFixed(2) : 0;
+
+    output.push({
+      bioguideId: bioguide,
+      votes: {
+        yeaVotes: c.yea,
+        nayVotes: c.nay,
+        missedVotes: c.missed,
+        totalVotes: total,
+        participationPct,
+        missedVotePct,
+      },
+    });
   }
-}
 
-// Discover max roll call number for a given session via binary search
-async function discoverMaxRollCall(session) {
-  let low = 1;
-  let high = 1200; // safe upper bound for House
-  let max = 0;
-
-  while (low <= high) {
-    const mid = Math.floor((low + high) / 2);
-    const padded = mid.toString().padStart(4, '0');
-    const url = `https://clerk.house.gov/evs/2025/roll${padded}.xml`;
-
-    const parsed = await fetchXML(url);
-    if (parsed) {
-      max = mid;
-      low = mid + 1;
-    } else {
-      high = mid - 1;
-    }
-  }
-  return max;
+  return output;
 }
 
 async function main() {
-  console.log('Starting votes-reps-scraper.js');
-  console.log(`Loaded ${reps.length} representatives`);
+  console.log("Starting votes-reps-scraper.js for FULL 119th Congress House record...");
 
-  const icpsrMap = buildIcpsrMap();
+  const reps = loadHouseRoster();
+  console.log(`Loaded ${reps.length} current House members from legislators-current.json`);
 
-  // Initialize aggregate counts per rep
-  const voteCounts = {};
-  reps.forEach(r => {
-    const bioguide = r.id?.bioguide;
-    if (!bioguide) return;
-    voteCounts[bioguide] = { yea: 0, nay: 0, missed: 0 };
-  });
-
-  console.log('Discovering House roll calls for 2025...');
-  const maxRoll = await discoverMaxRollCall(1);
-  console.log(`Discovered ${maxRoll} roll calls`);
-
-  let processed = 0;
-
-  for (let num = 1; num <= maxRoll; num++) {
-    const padded = num.toString().padStart(4, '0');
-    const url = `https://clerk.house.gov/evs/2025/roll${padded}.xml`;
-
-    const parsed = await fetchXML(url);
-    if (!parsed) continue;
-
-    processed++;
-
-    const rc = parsed.rollcall || parsed.rollCall || parsed.roll_call_vote;
-    if (!rc) continue;
-
-    const members = rc.vote_data?.recorded_vote || rc.members?.member || [];
-    const arr = Array.isArray(members) ? members : [members];
-
-    for (const m of arr) {
-      const icpsr = m.icpsr || m.icpsr_id || m.icpsrId;
-      const bioguide = icpsrMap.get(String(icpsr));
-      if (!bioguide || !voteCounts[bioguide]) continue;
-
-      const voteCast = (m.vote || m.vote_cast || '').trim();
-      const counts = voteCounts[bioguide];
-
-      if (/yea/i.test(voteCast)) counts.yea++;
-      else if (/nay/i.test(voteCast)) counts.nay++;
-      else counts.missed++;
-    }
-  }
-
-  // Build output in the ORIGINAL expected schema
-  const output = reps.map(r => {
-    const bioguide = r.id?.bioguide;
-    const counts = voteCounts[bioguide] || { yea: 0, nay: 0, missed: 0 };
-    const total = counts.yea + counts.nay + counts.missed;
-
-    const participationPct =
-      total > 0 ? +(((counts.yea + counts.nay) / total) * 100).toFixed(2) : 0;
-    const missedVotePct =
-      total > 0 ? +((counts.missed / total) * 100).toFixed(2) : 0;
-
-    return {
-      bioguideId: bioguide,
-      votes: {
-        yeaVotes: counts.yea,
-        nayVotes: counts.nay,
-        missedVotes: counts.missed,
-        totalVotes: total,
-        participationPct,
-        missedVotePct
-      }
-    };
-  });
+  const counts = await aggregateVotesByMember(reps);
+  const output = buildOutput(reps, counts);
 
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(output, null, 2));
   console.log(`Wrote ${output.length} representative vote records to ${OUTPUT_PATH}`);
-  console.log(`Total roll calls processed: ${processed}`);
 }
 
-main().catch(err => console.error(err));
+main().catch((err) => {
+  console.error("votes-reps-scraper.js failed:", err);
+  process.exit(1);
+});
