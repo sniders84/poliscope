@@ -17,7 +17,10 @@ function loadJSON(path) {
 const rankings = loadJSON("representatives-rankings.json");
 const committees = loadJSON("representatives-committees.json");
 const legislation = loadJSON("representatives-legislation.json");
-const misconduct = yaml.load(fs.readFileSync("representatives-misconduct.yaml", "utf8")) || {};
+
+// FIXED: correct misconduct path
+const misconduct = yaml.load(fs.readFileSync("public/misconduct.yaml", "utf8")) || {};
+
 const streaks = loadJSON("representatives-streaks.json");
 const housereps = loadJSON("public/housereps.json");
 
