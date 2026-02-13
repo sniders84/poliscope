@@ -57,7 +57,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses:actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
@@ -103,7 +103,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0   # needed for git-auto-commit to work properly
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
@@ -134,6 +134,8 @@ jobs:
         run: node scripts/committee-reps-scraper.js
 
       - name: Attach votes
+        env:
+          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: node scripts/votes-reps-scraper.js
 
       - name: Merge all House data
