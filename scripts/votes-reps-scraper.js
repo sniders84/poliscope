@@ -74,7 +74,9 @@ async function aggregateVotes() {
   for (const year of YEARS) {
     for (let rc = 1; rc <= MAX_ROLLCALL; rc++) {
       const num = rc.toString().padStart(3, "0");
-      const url = `https://clerk.house.gov/evs/${year}/${num}.xml`;
+
+      // CORRECT HOUSE URL FORMAT
+      const url = `https://clerk.house.gov/evs/${year}/roll${num}.xml`;
 
       const xml = await fetchXML(url);
       if (!xml) {
