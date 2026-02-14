@@ -1,122 +1,170 @@
 // scripts/votes-reps-scraper.js
-// Scrapes the FULL 119th Congress House roll call voting record from Congress.gov
-// Aggregates per-member stats across ALL sessions and ALL votes in the Congress.
+// Scrape FULL 119th Congress House roll call votes from Congress.gov HTML (both sessions)
+// and aggregate per-member stats into public/representatives-votes.json
 
 const fs = require("fs");
 const path = require("path");
 const fetch = require("node-fetch");
-
-const API_KEY = process.env.CONGRESS_API_KEY;
-if (!API_KEY) {
-  console.error("CONGRESS_API_KEY is not set in the environment.");
-  process.exit(1);
-}
+const { JSDOM } = require("jsdom");
 
 const CONGRESS = 119;
-const SESSIONS = [1, 2]; // cover the entire Congress (all sessions)
+const SESSIONS = [1, 2];
 
 const ROSTER_PATH = path.join(__dirname, "../public/legislators-current.json");
 const OUTPUT_PATH = path.join(__dirname, "../public/representatives-votes.json");
-const BASE_URL = "https://api.congress.gov/v3";
 
-async function fetchJSON(url) {
+const BASE_LIST_URL = "https://www.congress.gov/votes/house";
+
+async function fetchHTML(url) {
+  console.log(`FETCH: ${url}`);
   const res = await fetch(url, {
     headers: {
       "User-Agent": "poliscope/1.0",
-      Accept: "application/json",
+      Accept: "text/html",
     },
   });
   if (!res.ok) {
     throw new Error(`HTTP ${res.status} for ${url}`);
   }
-  return res.json();
+  return res.text();
 }
 
 function loadHouseRoster() {
-  const roster = JSON.parse(fs.readFileSync(ROSTER_PATH, "utf8"));
-  return roster.filter((m) => m.terms && m.terms[m.terms.length - 1]?.type === "rep");
+  const raw = fs.readFileSync(ROSTER_PATH, "utf8");
+  const roster = JSON.parse(raw);
+  return roster.filter((m) => {
+    const lastTerm = m.terms && m.terms[m.terms.length - 1];
+    return lastTerm && lastTerm.type === "rep";
+  });
 }
 
-async function fetchAllHouseVotesForSession(session) {
-  console.log(`Discovering House roll calls for Congress ${CONGRESS}, session ${session}...`);
-
-  let page = 1;
-  const pageSize = 250;
-  let allVotes = [];
-
-  while (true) {
-    const url = `${BASE_URL}/house-vote/${CONGRESS}/${session}?api_key=${API_KEY}&page=${page}&pageSize=${pageSize}`;
-    console.log(`  Fetching vote list page ${page} for session ${session}...`);
-
-    const data = await fetchJSON(url);
-    const votes = data?.votes || data?.results || data?.houseVotes || [];
-
-    if (!Array.isArray(votes) || votes.length === 0) {
-      break;
-    }
-
-    allVotes = allVotes.concat(
-      votes.map((v) => ({
-        session,
-        voteNumber: v.voteNumber || v.rollNumber || v.roll || v.number,
-      }))
-    );
-
-    const pagination = data.pagination || data.meta || {};
-    const totalPages = pagination.totalPages || pagination.total_pages || null;
-    if (!totalPages || page >= totalPages) break;
-    page++;
-  }
-
-  console.log(
-    `Discovered ${allVotes.length} roll calls for Congress ${CONGRESS}, session ${session}.`
-  );
-  return allVotes;
-}
-
-async function fetchMembersForVote(session, voteNumber) {
-  let page = 1;
-  const pageSize = 250;
-  let members = [];
-
-  while (true) {
-    const url = `${BASE_URL}/house-vote/${CONGRESS}/${session}/${voteNumber}/members?api_key=${API_KEY}&page=${page}&pageSize=${pageSize}`;
-    const data = await fetchJSON(url);
-
-    const chunk =
-      data?.members ||
-      data?.results ||
-      data?.votePositions ||
-      data?.positions ||
-      [];
-
-    if (!Array.isArray(chunk) || chunk.length === 0) break;
-
-    members = members.concat(chunk);
-
-    const pagination = data.pagination || data.meta || {};
-    const totalPages = pagination.totalPages || pagination.total_pages || null;
-    if (!totalPages || page >= totalPages) break;
-    page++;
-  }
-
-  return members;
-}
-
-function normalizePosition(raw) {
-  if (!raw) return "missed";
-  const v = String(raw).trim().toLowerCase();
-  if (v === "yea" || v === "yes" || v === "aye") return "yea";
-  if (v === "nay" || v === "no") return "nay";
-  // present, not voting, unknown, etc.
+function normalizeVote(v) {
+  if (!v) return "missed";
+  const s = String(v).trim().toLowerCase();
+  if (s === "yea" || s === "aye" || s === "yes") return "yea";
+  if (s === "nay" || s === "no") return "nay";
+  // present, not voting, etc.
   return "missed";
 }
 
+function extractBioguideFromCell(cell) {
+  const link = cell.querySelector("a[href*='/member/']");
+  if (!link) return null;
+  try {
+    const href = link.getAttribute("href") || "";
+    // examples: /member/alma-adams/A000370
+    const parts = href.split("/").filter(Boolean);
+    const last = parts[parts.length - 1];
+    if (last && /^[A-Z0-9]{7}$/.test(last)) {
+      return last;
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+async function getRollCallUrlsForSession(session) {
+  const listUrl = `${BASE_LIST_URL}/${CONGRESS}-${session}`;
+  const html = await fetchHTML(listUrl);
+  const dom = new JSDOM(html);
+  const doc = dom.window.document;
+
+  const anchors = Array.from(doc.querySelectorAll("a[href*='/votes/house/']"));
+  const urls = new Set();
+
+  const pattern = new RegExp(`/votes/house/${CONGRESS}-${session}/\\d+/?$`);
+
+  for (const a of anchors) {
+    const href = a.getAttribute("href") || "";
+    if (pattern.test(href)) {
+      const full = href.startsWith("http")
+        ? href
+        : `https://www.congress.gov${href}`;
+      urls.add(full.replace(/\/+$/, "")); // normalize trailing slash
+    }
+  }
+
+  const result = Array.from(urls).sort((a, b) => {
+    const ma = a.match(/(\d+)$/);
+    const mb = b.match(/(\d+)$/);
+    const na = ma ? parseInt(ma[1], 10) : 0;
+    const nb = mb ? parseInt(mb[1], 10) : 0;
+    return na - nb;
+  });
+
+  console.log(
+    `Discovered ${result.length} roll call URLs for Congress ${CONGRESS}, session ${session}.`
+  );
+  return result;
+}
+
+async function parseVotePage(url) {
+  const html = await fetchHTML(url);
+  const dom = new JSDOM(html);
+  const doc = dom.window.document;
+
+  // Find the "All Votes" table: look for a table whose header row has Representative / Party / State / Vote
+  const tables = Array.from(doc.querySelectorAll("table"));
+  let target = null;
+
+  for (const t of tables) {
+    const headers = Array.from(t.querySelectorAll("thead tr th")).map((th) =>
+      th.textContent.trim().toLowerCase()
+    );
+    if (
+      headers.length >= 4 &&
+      headers[0].includes("representative") &&
+      headers[1].includes("party") &&
+      headers[2].includes("state") &&
+      headers[3].includes("vote")
+    ) {
+      target = t;
+      break;
+    }
+  }
+
+  if (!target) {
+    console.warn(`WARNING: No matching "All Votes" table found on ${url}`);
+    return [];
+  }
+
+  const rows = Array.from(target.querySelectorAll("tbody tr"));
+  const records = [];
+
+  for (const row of rows) {
+    const cells = row.querySelectorAll("td");
+    if (cells.length < 4) continue;
+
+    const repCell = cells[0];
+    const partyCell = cells[1];
+    const stateCell = cells[2];
+    const voteCell = cells[3];
+
+    const bioguideId = extractBioguideFromCell(repCell);
+    const repName = repCell.textContent.trim();
+    const party = partyCell.textContent.trim();
+    const state = stateCell.textContent.trim();
+    const voteRaw = voteCell.textContent.trim();
+
+    records.push({
+      bioguideId: bioguideId || null,
+      name: repName,
+      party,
+      state,
+      vote: normalizeVote(voteRaw),
+    });
+  }
+
+  return records;
+}
+
 async function aggregateVotesByMember(reps) {
-  // Initialize counts for every current rep
   const counts = new Map();
+
+  // Initialize counts for all current reps
   for (const r of reps) {
-    const bioguide = r.id?.bioguide;
+    const bioguide = r.id && r.id.bioguide;
     if (!bioguide) continue;
     counts.set(bioguide, { yea: 0, nay: 0, missed: 0 });
   }
@@ -124,36 +172,25 @@ async function aggregateVotesByMember(reps) {
   let totalRollCalls = 0;
 
   for (const session of SESSIONS) {
-    const votes = await fetchAllHouseVotesForSession(session);
+    const voteUrls = await getRollCallUrlsForSession(session);
 
-    for (const v of votes) {
-      if (!v.voteNumber) continue;
+    for (const voteUrl of voteUrls) {
       totalRollCalls++;
+      console.log(`Processing vote ${voteUrl} ...`);
 
-      const members = await fetchMembersForVote(session, v.voteNumber);
-      for (const m of members) {
-        const bioguide =
-          m.bioguideId ||
-          m.bioguide_id ||
-          m.memberId ||
-          m.member_id ||
-          null;
+      const records = await parseVotePage(voteUrl);
 
-        if (!bioguide || !counts.has(bioguide)) continue;
+      for (const rec of records) {
+        const { bioguideId, vote } = rec;
 
-        const pos =
-          m.votePosition ||
-          m.vote_position ||
-          m.position ||
-          m.vote ||
-          m.cast ||
-          null;
+        if (!bioguideId || !counts.has(bioguideId)) {
+          // If we can't map to a current rep, skip for aggregation
+          continue;
+        }
 
-        const norm = normalizePosition(pos);
-        const c = counts.get(bioguide);
-
-        if (norm === "yea") c.yea++;
-        else if (norm === "nay") c.nay++;
+        const c = counts.get(bioguideId);
+        if (vote === "yea") c.yea++;
+        else if (vote === "nay") c.nay++;
         else c.missed++;
       }
     }
@@ -167,7 +204,7 @@ function buildOutput(reps, counts) {
   const output = [];
 
   for (const r of reps) {
-    const bioguide = r.id?.bioguide;
+    const bioguide = r.id && r.id.bioguide;
     if (!bioguide) continue;
 
     const c = counts.get(bioguide) || { yea: 0, nay: 0, missed: 0 };
@@ -195,7 +232,9 @@ function buildOutput(reps, counts) {
 }
 
 async function main() {
-  console.log("Starting votes-reps-scraper.js for FULL 119th Congress House record...");
+  console.log(
+    "Starting votes-reps-scraper.js for FULL 119th Congress House record via Congress.gov HTML..."
+  );
 
   const reps = loadHouseRoster();
   console.log(`Loaded ${reps.length} current House members from legislators-current.json`);
