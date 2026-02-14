@@ -1,5 +1,5 @@
 // scripts/votes-reps-scraper.js
-// FULL REPLACEMENT — Clerk.House.gov XML scraper with correct vote mapping
+// FULL REPLACEMENT — Clerk.House.gov XML scraper for 119th Congress (2025 + 2026)
 
 const fs = require("fs");
 const path = require("path");
@@ -9,7 +9,7 @@ const { XMLParser } = require("fast-xml-parser");
 const OUTPUT_PATH = path.join(__dirname, "../public/representatives-votes.json");
 const ROSTER_PATH = path.join(__dirname, "../public/legislators-current.json");
 
-// Correct roll call ranges for 119th Congress
+// Known roll call ranges for 119th Congress
 const RANGES = {
   2025: 362,
   2026: 70,
@@ -20,7 +20,7 @@ const parser = new XMLParser({
   attributeNamePrefix: "",
 });
 
-// Load House roster
+// Load House roster (current reps only)
 function loadHouseRoster() {
   const raw = fs.readFileSync(ROSTER_PATH, "utf8");
   const all = JSON.parse(raw);
@@ -38,31 +38,47 @@ async function fetchXML(url) {
   return res.text();
 }
 
-// Parse a single roll call XML
+// Parse a single roll call XML into { bioguideId, rawVote }
 function parseRollCall(xml) {
   const data = parser.parse(xml);
-  if (!data["rollcall-vote"]) return null;
+  const root = data["rollcall-vote"];
+  if (!root) return [];
 
-  const votes = data["rollcall-vote"]["vote-data"]?.["recorded-vote"];
-  if (!votes) return [];
+  const votesNode = root["vote-data"]?.["recorded-vote"];
+  if (!votesNode) return [];
 
-  const arr = Array.isArray(votes) ? votes : [votes];
+  const arr = Array.isArray(votesNode) ? votesNode : [votesNode];
 
-  return arr.map((v) => ({
-    bioguideId: v.legislator?.["name-id"] || null,
-    vote: v.legislator?.vote || "0",
-  }));
+  return arr.map((v) => {
+    const leg = v.legislator || {};
+    return {
+      bioguideId: leg["name-id"] || null,
+      rawVote: leg.vote != null ? String(leg.vote).trim() : "",
+    };
+  });
 }
 
-// Correct Clerk XML vote mapping
+// Normalize Clerk vote codes (handles both text + numeric)
 function normalizeVote(v) {
-  if (v === "1") return "yea";      // Yea
-  if (v === "2") return "nay";      // Nay
-  if (v === "3") return "present";  // Present
-  return "missed";                  // 0 or anything else → Not Voting
+  const s = String(v).trim().toLowerCase();
+
+  // Text forms
+  if (s === "yea" || s === "aye" || s === "yes") return "yea";
+  if (s === "nay" || s === "no") return "nay";
+  if (s === "not voting" || s === "nv") return "missed";
+  if (s === "present") return "present";
+
+  // Numeric forms (if Clerk uses 0/1/2/3)
+  if (s === "1") return "yea";
+  if (s === "2") return "nay";
+  if (s === "3") return "present";
+  if (s === "0") return "missed";
+
+  // Fallback
+  return "missed";
 }
 
-// Aggregate votes for all members
+// Aggregate votes for all members across all roll calls
 async function aggregateVotes() {
   const reps = loadHouseRoster();
   const counts = new Map();
@@ -74,7 +90,8 @@ async function aggregateVotes() {
 
   let totalRollCalls = 0;
 
-  for (const year of Object.keys(RANGES)) {
+  for (const yearStr of Object.keys(RANGES)) {
+    const year = Number(yearStr);
     const max = RANGES[year];
 
     for (let rc = 1; rc <= max; rc++) {
@@ -92,12 +109,12 @@ async function aggregateVotes() {
         if (!id || !counts.has(id)) continue;
 
         const c = counts.get(id);
-        const vote = normalizeVote(rec.vote);
+        const vote = normalizeVote(rec.rawVote);
 
         if (vote === "yea") c.yea++;
         else if (vote === "nay") c.nay++;
         else if (vote === "missed") c.missed++;
-        // "present" is participation but not yea/nay; you can decide later how to score it
+        // "present" counts as participation but not yea/nay; you can adjust later if needed
       }
     }
   }
@@ -106,7 +123,7 @@ async function aggregateVotes() {
   return counts;
 }
 
-// Build final output
+// Build final output JSON
 function buildOutput(reps, counts) {
   return reps.map((r) => {
     const id = r.id?.bioguide;
