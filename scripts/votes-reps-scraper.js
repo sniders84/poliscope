@@ -1,5 +1,5 @@
 // scripts/votes-reps-scraper.js
-// FULL REPLACEMENT — Clerk.House.gov XML scraper for 119th Congress (2025 + 2026)
+// FULL REPLACEMENT — Clerk.House.gov XML scraper with derived "missed" counts
 
 const fs = require("fs");
 const path = require("path");
@@ -58,24 +58,20 @@ function parseRollCall(xml) {
   });
 }
 
-// Normalize Clerk vote codes (handles both text + numeric)
+// Normalize to just yea / nay / ignore
 function normalizeVote(v) {
   const s = String(v).trim().toLowerCase();
 
   // Text forms
   if (s === "yea" || s === "aye" || s === "yes") return "yea";
   if (s === "nay" || s === "no") return "nay";
-  if (s === "not voting" || s === "nv") return "missed";
-  if (s === "present") return "present";
 
-  // Numeric forms (if Clerk uses 0/1/2/3)
+  // Numeric guesses (if Clerk uses codes)
   if (s === "1") return "yea";
   if (s === "2") return "nay";
-  if (s === "3") return "present";
-  if (s === "0") return "missed";
 
-  // Fallback
-  return "missed";
+  // Everything else (present, not voting, blanks, weird codes) → ignore here
+  return null;
 }
 
 // Aggregate votes for all members across all roll calls
@@ -85,7 +81,7 @@ async function aggregateVotes() {
 
   for (const r of reps) {
     const id = r.id?.bioguide;
-    if (id) counts.set(id, { yea: 0, nay: 0, missed: 0 });
+    if (id) counts.set(id, { yea: 0, nay: 0 });
   }
 
   let totalRollCalls = 0;
@@ -113,34 +109,36 @@ async function aggregateVotes() {
 
         if (vote === "yea") c.yea++;
         else if (vote === "nay") c.nay++;
-        else if (vote === "missed") c.missed++;
-        // "present" counts as participation but not yea/nay; you can adjust later if needed
+        // everything else (present / not voting / unknown) is handled later as "missed"
       }
     }
   }
 
   console.log(`Processed ${totalRollCalls} roll calls total.`);
-  return counts;
+  return { counts, totalRollCalls };
 }
 
 // Build final output JSON
-function buildOutput(reps, counts) {
+function buildOutput(reps, counts, totalRollCalls) {
   return reps.map((r) => {
     const id = r.id?.bioguide;
-    const c = counts.get(id) || { yea: 0, nay: 0, missed: 0 };
-    const total = c.yea + c.nay + c.missed;
+    const c = counts.get(id) || { yea: 0, nay: 0 };
+    const yea = c.yea;
+    const nay = c.nay;
+    const missed = Math.max(totalRollCalls - (yea + nay), 0);
+    const total = yea + nay + missed;
 
     return {
       bioguideId: id,
       votes: {
-        yeaVotes: c.yea,
-        nayVotes: c.nay,
-        missedVotes: c.missed,
+        yeaVotes: yea,
+        nayVotes: nay,
+        missedVotes: missed,
         totalVotes: total,
         participationPct:
-          total > 0 ? +(((c.yea + c.nay) / total) * 100).toFixed(2) : 0,
+          total > 0 ? +(((yea + nay) / total) * 100).toFixed(2) : 0,
         missedVotePct:
-          total > 0 ? +((c.missed / total) * 100).toFixed(2) : 0,
+          total > 0 ? +((missed / total) * 100).toFixed(2) : 0,
       },
     };
   });
@@ -151,11 +149,13 @@ async function main() {
   console.log("Starting Clerk XML scraper for 119th Congress…");
 
   const reps = loadHouseRoster();
-  const counts = await aggregateVotes();
-  const output = buildOutput(reps, counts);
+  const { counts, totalRollCalls } = await aggregateVotes();
+  const output = buildOutput(reps, counts, totalRollCalls);
 
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(output, null, 2));
-  console.log(`Wrote ${output.length} records to ${OUTPUT_PATH}`);
+  console.log(
+    `Wrote ${output.length} records to ${OUTPUT_PATH} using ${totalRollCalls} roll calls.`,
+  );
 }
 
 main().catch((err) => {
