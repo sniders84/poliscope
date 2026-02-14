@@ -1,5 +1,5 @@
 // scripts/votes-reps-scraper.js
-// FULL REPLACEMENT — Clerk.House.gov XML scraper with derived "missed" counts
+// FULL REPLACEMENT — Clerk.House.gov XML scraper for 119th Congress (2025 + 2026)
 
 const fs = require("fs");
 const path = require("path");
@@ -52,26 +52,29 @@ function parseRollCall(xml) {
   return arr.map((v) => {
     const leg = v.legislator || {};
     return {
-      bioguideId: leg["name-id"] || null,
-      rawVote: leg.vote != null ? String(leg.vote).trim() : "",
+      bioguideId: leg["name-id"] || null,          // attribute on <legislator>
+      rawVote: v.vote != null ? String(v.vote).trim() : "", // <vote>Yea</vote>
     };
   });
 }
 
-// Normalize to just yea / nay / ignore
+// Normalize Clerk vote text/codes
 function normalizeVote(v) {
   const s = String(v).trim().toLowerCase();
 
   // Text forms
   if (s === "yea" || s === "aye" || s === "yes") return "yea";
   if (s === "nay" || s === "no") return "nay";
+  if (s === "not voting" || s === "nv") return "missed";
+  if (s === "present") return "present";
 
-  // Numeric guesses (if Clerk uses codes)
+  // Numeric fallbacks (if ever used)
   if (s === "1") return "yea";
   if (s === "2") return "nay";
+  if (s === "3") return "present";
+  if (s === "0") return "missed";
 
-  // Everything else (present, not voting, blanks, weird codes) → ignore here
-  return null;
+  return "missed";
 }
 
 // Aggregate votes for all members across all roll calls
@@ -81,7 +84,7 @@ async function aggregateVotes() {
 
   for (const r of reps) {
     const id = r.id?.bioguide;
-    if (id) counts.set(id, { yea: 0, nay: 0 });
+    if (id) counts.set(id, { yea: 0, nay: 0, missed: 0 });
   }
 
   let totalRollCalls = 0;
@@ -109,7 +112,8 @@ async function aggregateVotes() {
 
         if (vote === "yea") c.yea++;
         else if (vote === "nay") c.nay++;
-        // everything else (present / not voting / unknown) is handled later as "missed"
+        else if (vote === "missed") c.missed++;
+        // "present" counts as participation but not yea/nay; you can decide later how to score it
       }
     }
   }
@@ -122,10 +126,10 @@ async function aggregateVotes() {
 function buildOutput(reps, counts, totalRollCalls) {
   return reps.map((r) => {
     const id = r.id?.bioguide;
-    const c = counts.get(id) || { yea: 0, nay: 0 };
+    const c = counts.get(id) || { yea: 0, nay: 0, missed: 0 };
     const yea = c.yea;
     const nay = c.nay;
-    const missed = Math.max(totalRollCalls - (yea + nay), 0);
+    const missed = c.missed;
     const total = yea + nay + missed;
 
     return {
