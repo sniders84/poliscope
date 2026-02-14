@@ -3,7 +3,7 @@ name: house-votes
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 8 * * *" # optional daily run
+    - cron: "0 8 * * *"
 
 jobs:
   scrape-votes:
