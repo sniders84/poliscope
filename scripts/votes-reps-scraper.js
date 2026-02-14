@@ -1,5 +1,5 @@
 // scripts/votes-reps-scraper.js
-// FULL REPLACEMENT — Clerk.House.gov XML scraper for 119th Congress (2025 + 2026)
+// FULL REPLACEMENT — Clerk.House.gov XML scraper with correct roll call ranges
 
 const fs = require("fs");
 const path = require("path");
@@ -9,8 +9,11 @@ const { XMLParser } = require("fast-xml-parser");
 const OUTPUT_PATH = path.join(__dirname, "../public/representatives-votes.json");
 const ROSTER_PATH = path.join(__dirname, "../public/legislators-current.json");
 
-const YEARS = [2025, 2026]; // Full 119th Congress
-const MAX_ROLLCALL = 999;   // Safe upper bound
+// Correct roll call ranges for 119th Congress
+const RANGES = {
+  2025: 362,
+  2026: 70,
+};
 
 const parser = new XMLParser({
   ignoreAttributes: false,
@@ -71,18 +74,15 @@ async function aggregateVotes() {
 
   let totalRollCalls = 0;
 
-  for (const year of YEARS) {
-    for (let rc = 1; rc <= MAX_ROLLCALL; rc++) {
-      const num = rc.toString().padStart(3, "0");
+  for (const year of Object.keys(RANGES)) {
+    const max = RANGES[year];
 
-      // CORRECT HOUSE URL FORMAT
+    for (let rc = 1; rc <= max; rc++) {
+      const num = rc.toString().padStart(3, "0");
       const url = `https://clerk.house.gov/evs/${year}/roll${num}.xml`;
 
       const xml = await fetchXML(url);
-      if (!xml) {
-        if (rc > 50) break; // stop early if no votes for a while
-        continue;
-      }
+      if (!xml) continue;
 
       totalRollCalls++;
 
