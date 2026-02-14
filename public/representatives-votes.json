@@ -1,1 +1,4842 @@
-
+[
+  {
+    "bioguideId": "A000055",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "B001257",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "B000490",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "B001260",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C000059",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001072",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001051",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001066",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001080",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001067",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001061",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C000537",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001068",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001053",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001059",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001069",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001087",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001063",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "D000096",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "D000197",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "D000216",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "D000616",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "D000600",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "D000399",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "F000459",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "F000450",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "G000559",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "G000565",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "G000546",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "G000553",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "G000568",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "G000558",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "H001052",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "H001047",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "H000874",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "H001058",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "J000288",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "J000289",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "K000009",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "K000375",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "K000376",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "L000560",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "L000557",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "L000566",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "L000397",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "L000491",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "L000562",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001163",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001157",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001177",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001143",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M000312",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001137",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001160",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "N000002",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "N000015",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "N000147",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "P000034",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "P000197",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "P000597",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "Q000023",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "R000395",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "R000575",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S001176",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S001145",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S001183",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S001189",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S001157",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S000185",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S001185",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S000344",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S001148",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S000510",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S001172",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S000522",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S001156",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "T000193",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "T000460",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "T000467",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "T000469",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "T000463",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "V000081",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "W000798",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "W000797",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "W000187",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "W000806",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "W000795",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "W000808",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "W000804",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "W000809",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "A000369",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "B001278",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "D000617",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001184",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "F000454",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "T000468",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "L000578",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "H001068",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "B001287",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S001193",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "B001285",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "R000599",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "T000472",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "V000130",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "P000608",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "F000462",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "B001282",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "W000812",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "H001067",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001188",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "J000294",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "B001281",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "J000295",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "P000605",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "W000814",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001091",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "W000816",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "V000131",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "P000607",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "K000385",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S001195",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001101",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "N000188",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "A000370",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "P000609",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "H001072",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "W000821",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "D000623",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "A000371",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "L000582",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "T000474",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001103",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "L000583",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "A000372",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "B001295",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001196",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001194",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "D000624",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "E000294",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "R000603",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "W000822",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S001196",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "B001296",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "B001291",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "B001292",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "P000610",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "N000189",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "G000576",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "R000600",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "K000388",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "L000585",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "D000626",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001108",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "E000296",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S001190",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "B001302",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "K000389",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "P000613",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001112",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "B001300",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001110",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "D000628",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "R000609",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S001200",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001199",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "K000391",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "H001077",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "J000299",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "R000606",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "B001301",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "B001298",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "G000583",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "E000297",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "F000466",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S001199",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "K000392",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "G000581",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "A000375",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "J000298",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "E000298",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "N000190",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "G000585",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001115",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "B001306",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "H001082",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001206",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S001205",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001055",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "H001066",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S001211",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "H001090",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "L000593",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "N000191",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001121",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "H001081",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S001214",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001208",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "F000469",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "G000586",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001117",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "U000040",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "B001307",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "D000629",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "T000482",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "P000617",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S001215",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "T000481",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001119",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "O000173",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S001212",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "G000591",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "P000614",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "V000133",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S001207",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "L000590",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "O000172",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "D000631",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "H001085",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001204",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "J000302",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "R000610",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "T000480",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "J000301",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "B001309",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "R000612",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001120",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "G000589",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "F000468",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "E000299",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "R000614",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "G000587",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001118",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S001216",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S001213",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001205",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "G000592",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001210",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M000687",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "T000165",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "I000056",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S000250",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "V000129",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001212",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "O000019",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "K000397",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "J000305",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "B000825",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001039",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "F000472",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "D000032",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "G000593",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S000168",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "W000788",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001116",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "G000596",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "H001091",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001215",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "F000446",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001211",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001214",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S000929",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M000871",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "A000148",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001136",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "F000470",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "R000305",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "L000273",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "G000597",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M000317",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "T000486",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "B000740",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "B000668",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M000194",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "H001086",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "F000246",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "P000048",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "J000304",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "N000026",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "G000594",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "V000134",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001213",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "O000086",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S001159",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "F000471",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "T000478",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "L000595",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001125",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S001218",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "E000071",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "B001313",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001126",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001127",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "F000474",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "F000475",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "R000579",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "Y000067",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "Z000018",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S001220",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001132",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001133",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "K000401",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001225",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "K000400",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "G000598",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "P000620",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "B001314",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001216",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "F000476",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "L000596",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "L000597",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001217",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001218",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001129",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001219",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "T000487",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "N000193",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "J000309",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "R000617",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "B001315",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S001225",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "H001093",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001220",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "I000058",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S001221",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "J000307",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "T000488",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "A000379",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "B001316",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "E000235",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "D000230",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "F000477",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "E000246",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "K000398",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001226",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "V000136",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "L000598",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "G000599",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "L000599",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "L000600",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "L000601",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001222",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S001223",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "B001317",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "H001094",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S001226",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "L000602",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "D000530",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001223",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "F000478",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "O000175",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001224",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S001224",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "L000603",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "D000594",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001130",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001131",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "H001095",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "K000399",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "B001318",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "G000600",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "V000135",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "H001096",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001227",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "A000380",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001228",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S001201",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "K000402",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "F000480",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "R000619",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001229",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "W000829",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "F000110",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S001188",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001123",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "B001323",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "F000481",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "A000381",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "H001098",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S001231",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "G000605",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "L000607",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "W000830",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "R000620",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "F000483",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "T000491",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001241",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "H001100",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001137",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "E000300",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001238",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "H001099",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "J000311",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S001229",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001233",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S001228",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "O000176",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "E000301",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001232",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "B001321",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001237",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001234",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "B001324",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "O000177",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "K000404",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "D000634",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001240",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "H001102",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "H001101",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "K000405",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001236",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "F000482",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "G000604",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "C001136",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "P000621",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "G000602",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "L000606",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "R000622",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001231",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "T000490",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "D000635",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "B001326",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001230",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "B001327",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "H001103",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "B001325",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "G000601",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "G000603",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "J000310",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "K000403",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001239",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "V000138",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "S001230",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "B001322",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "R000621",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "M001235",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "P000622",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "F000484",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "W000831",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "G000606",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  },
+  {
+    "bioguideId": "V000139",
+    "votes": {
+      "yeaVotes": 0,
+      "nayVotes": 0,
+      "missedVotes": 0,
+      "totalVotes": 0,
+      "participationPct": 0,
+      "missedVotePct": 0
+    }
+  }
+]
