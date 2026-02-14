@@ -1,5 +1,5 @@
 // scripts/votes-reps-scraper.js
-// FULL REPLACEMENT — Clerk.House.gov XML scraper with correct roll call ranges
+// FULL REPLACEMENT — Clerk.House.gov XML scraper with correct vote mapping
 
 const fs = require("fs");
 const path = require("path");
@@ -50,16 +50,16 @@ function parseRollCall(xml) {
 
   return arr.map((v) => ({
     bioguideId: v.legislator?.["name-id"] || null,
-    vote: v.legislator?.vote || "Not Voting",
+    vote: v.legislator?.vote || "0",
   }));
 }
 
-// Normalize vote
+// Correct Clerk XML vote mapping
 function normalizeVote(v) {
-  const s = v.toLowerCase();
-  if (s.includes("yea") || s.includes("yes") || s.includes("aye")) return "yea";
-  if (s.includes("nay") || s.includes("no")) return "nay";
-  return "missed";
+  if (v === "1") return "yea";      // Yea
+  if (v === "2") return "nay";      // Nay
+  if (v === "3") return "present";  // Present
+  return "missed";                  // 0 or anything else → Not Voting
 }
 
 // Aggregate votes for all members
@@ -96,7 +96,8 @@ async function aggregateVotes() {
 
         if (vote === "yea") c.yea++;
         else if (vote === "nay") c.nay++;
-        else c.missed++;
+        else if (vote === "missed") c.missed++;
+        // "present" is participation but not yea/nay; you can decide later how to score it
       }
     }
   }
