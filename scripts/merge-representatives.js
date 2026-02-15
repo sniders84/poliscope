@@ -13,16 +13,20 @@ function loadJSON(path) {
   }
 }
 
-// Load all input files
-const rankings = loadJSON("representatives-rankings.json");
-const committees = loadJSON("representatives-committees.json");
-const legislation = loadJSON("representatives-legislation.json");
-const votes = loadJSON("representatives-votes.json");   // 🔥 ADDED
+// Load all input files (FIXED PATHS)
+const rankings = loadJSON("public/representatives-rankings.json");
+const committees = loadJSON("public/representatives-committees.json");
+const legislation = loadJSON("public/representatives-legislation.json");
+const votes = loadJSON("public/representatives-votes.json");
+const streaks = loadJSON("public/representatives-streaks.json");
+
+// Misconduct YAML
 const misconduct = yaml.load(fs.readFileSync("public/misconduct.yaml", "utf8")) || {};
-const streaks = loadJSON("representatives-streaks.json");
+
+// housereps.json (metadata)
 const housereps = loadJSON("public/housereps.json");
 
-// Build slug → info map from housereps.json
+// Build slug → metadata map
 const repMap = new Map();
 housereps.forEach(rep => {
   repMap.set(rep.slug, {
@@ -47,7 +51,7 @@ rankings.forEach(r => {
   const l = legislation.find(x => x.slug === r.slug);
   if (l) r.legislation = l.legislation;
 
-  // Votes 🔥 ADDED
+  // Votes
   const v = votes.find(x => x.bioguideId === r.bioguideId);
   if (v && v.votes) {
     r.yeaVotes = v.votes.yeaVotes;
@@ -67,7 +71,7 @@ rankings.forEach(r => {
   const s = streaks.find(x => x.slug === r.slug);
   if (s) r.streak = s.streak;
 
-  // Photos + metadata from housereps.json
+  // Metadata (photos, links, etc.)
   if (repMap.has(r.slug)) {
     const info = repMap.get(r.slug);
     r.photo = info.photo;
@@ -84,5 +88,5 @@ rankings.forEach(r => {
 });
 
 // Write out enriched rankings
-fs.writeFileSync("representatives-rankings.json", JSON.stringify(rankings, null, 2));
-console.log("representatives-rankings.json updated with committees, legislation, votes, misconduct, streaks, and photos via slug matching.");
+fs.writeFileSync("public/representatives-rankings.json", JSON.stringify(rankings, null, 2));
+console.log("representatives-rankings.json updated with committees, legislation, votes, misconduct, streaks, and metadata via slug matching.");
