@@ -62,7 +62,7 @@ async function fetchXML(url) {
 // Discover max roll call number for a given session via binary search
 async function discoverMaxRollCall(session) {
   let low = 1;
-  let high = 600; // safe upper bound
+  let high = 2000; // 🔥 updated future-proof upper bound
   let max = 0;
 
   while (low <= high) {
