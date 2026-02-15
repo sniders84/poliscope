@@ -1,4 +1,4 @@
-// scripts/merge-representatives.js
+// scripts/merge-senators.js
 
 const fs = require("fs");
 const yaml = require("js-yaml");
@@ -14,39 +14,34 @@ function loadJSON(path) {
 }
 
 // Load all input files (FIXED PATHS)
-const rankings = loadJSON("public/representatives-rankings.json");
-const committees = loadJSON("public/representatives-committees.json");
-const legislation = loadJSON("public/representatives-legislation.json");
-const votes = loadJSON("public/representatives-votes.json");
-const streaks = loadJSON("public/representatives-streaks.json");
+const rankings = loadJSON("public/senators-rankings.json");
+const legislation = loadJSON("public/senators-legislation.json");
+const votes = loadJSON("public/senators-votes.json");
+const streaks = loadJSON("public/senators-streaks.json");
 
-// Misconduct YAML (already correct)
+// Misconduct YAML
 const misconduct = yaml.load(fs.readFileSync("public/misconduct.yaml", "utf8")) || {};
 
-// housereps.json (already correct)
-const housereps = loadJSON("public/housereps.json");
+// senators.json (metadata: photos, links, etc.)
+const senatorsMeta = loadJSON("public/senators.json");
 
-// Build slug → info map from housereps.json
-const repMap = new Map();
-housereps.forEach(rep => {
-  repMap.set(rep.slug, {
-    photo: rep.photo,
-    office: rep.office,
-    party: rep.party,
-    state: rep.state,
-    ballotpediaLink: rep.ballotpediaLink,
-    govtrackLink: rep.govtrackLink,
-    contact: rep.contact,
-    social: rep.social
+// Build slug → metadata map
+const metaMap = new Map();
+senatorsMeta.forEach(s => {
+  metaMap.set(s.slug, {
+    photo: s.photo,
+    party: s.party,
+    state: s.state,
+    office: s.office,
+    ballotpediaLink: s.ballotpediaLink,
+    govtrackLink: s.govtrackLink,
+    contact: s.contact,
+    social: s.social
   });
 });
 
 // Merge everything into rankings
 rankings.forEach(r => {
-  // Committees
-  const c = committees.find(x => x.slug === r.slug);
-  if (c) r.committees = c.committees;
-
   // Legislation
   const l = legislation.find(x => x.slug === r.slug);
   if (l) r.legislation = l.legislation;
@@ -71,22 +66,22 @@ rankings.forEach(r => {
   const s = streaks.find(x => x.slug === r.slug);
   if (s) r.streak = s.streak;
 
-  // Photos + metadata from housereps.json
-  if (repMap.has(r.slug)) {
-    const info = repMap.get(r.slug);
+  // Metadata (photos, links, etc.)
+  if (metaMap.has(r.slug)) {
+    const info = metaMap.get(r.slug);
     r.photo = info.photo;
-    r.office = info.office;
     r.party = info.party;
     r.state = info.state;
+    r.office = info.office;
     r.ballotpediaLink = info.ballotpediaLink;
     r.govtrackLink = info.govtrackLink;
     r.contact = info.contact;
     r.social = info.social;
   } else {
-    console.warn(`No housereps.json match for slug: ${r.slug}`);
+    console.warn(`No senators.json match for slug: ${r.slug}`);
   }
 });
 
-// Write out enriched rankings (FIXED PATH)
-fs.writeFileSync("public/representatives-rankings.json", JSON.stringify(rankings, null, 2));
-console.log("representatives-rankings.json updated with committees, legislation, votes, misconduct, streaks, and photos via slug matching.");
+// Write out enriched rankings
+fs.writeFileSync("public/senators-rankings.json", JSON.stringify(rankings, null, 2));
+console.log("senators-rankings.json updated with legislation, votes, misconduct, streaks, and metadata via slug matching.");
