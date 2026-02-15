@@ -17,10 +17,8 @@ function loadJSON(path) {
 const rankings = loadJSON("representatives-rankings.json");
 const committees = loadJSON("representatives-committees.json");
 const legislation = loadJSON("representatives-legislation.json");
-
-// FIXED: correct misconduct path
+const votes = loadJSON("representatives-votes.json");   // 🔥 ADDED
 const misconduct = yaml.load(fs.readFileSync("public/misconduct.yaml", "utf8")) || {};
-
 const streaks = loadJSON("representatives-streaks.json");
 const housereps = loadJSON("public/housereps.json");
 
@@ -49,6 +47,17 @@ rankings.forEach(r => {
   const l = legislation.find(x => x.slug === r.slug);
   if (l) r.legislation = l.legislation;
 
+  // Votes 🔥 ADDED
+  const v = votes.find(x => x.bioguideId === r.bioguideId);
+  if (v && v.votes) {
+    r.yeaVotes = v.votes.yeaVotes;
+    r.nayVotes = v.votes.nayVotes;
+    r.missedVotes = v.votes.missedVotes;
+    r.totalVotes = v.votes.totalVotes;
+    r.participationPct = v.votes.participationPct;
+    r.missedVotePct = v.votes.missedVotePct;
+  }
+
   // Misconduct
   if (misconduct[r.slug]) {
     r.misconduct = misconduct[r.slug];
@@ -76,4 +85,4 @@ rankings.forEach(r => {
 
 // Write out enriched rankings
 fs.writeFileSync("representatives-rankings.json", JSON.stringify(rankings, null, 2));
-console.log("representatives-rankings.json updated with committees, legislation, misconduct, streaks, and photos via slug matching.");
+console.log("representatives-rankings.json updated with committees, legislation, votes, misconduct, streaks, and photos via slug matching.");
