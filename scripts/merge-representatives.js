@@ -1,5 +1,4 @@
 // merge-representatives.js
-// Purpose: Merge rankings + committee data (misconduct added later in workflow)
 
 const fs = require("fs");
 const path = require("path");
@@ -7,62 +6,66 @@ const path = require("path");
 function loadJSON(relativePath, defaultValue = {}) {
   const fullPath = path.join(__dirname, relativePath);
   try {
-    const content = fs.readFileSync(fullPath, "utf8");
-    return JSON.parse(content);
+    return JSON.parse(fs.readFileSync(fullPath, "utf8"));
   } catch (err) {
     console.error(`Failed to load ${relativePath}: ${err.message}`);
     return defaultValue;
   }
 }
 
-function writeJSON(relativePath, data) {
-  const fullPath = path.join(__dirname, relativePath);
-  fs.writeFileSync(fullPath, JSON.stringify(data, null, 2), "utf8");
-}
+// ── Load everything that should exist at this point ─────────────────────────────
+const rankings     = loadJSON("../public/representatives-rankings.json", [])   || [];
+const committees   = loadJSON("../public/representatives-committees.json", {}) || {};
+const votes        = loadJSON("../public/representatives-votes.json", [])      || [];
+const legislation  = loadJSON("../public/representatives-legislation.json", [])|| [];
 
-// ── Load only what actually exists ────────────────────────────────────────
-const rankings   = loadJSON("../public/representatives-rankings.json", []) || [];
-const committeesObj = loadJSON("../public/representatives-committees.json", {});
+// ── Build fast lookups ───────────────────────────────────────────────────────────
+const votesById = new Map(votes.map(v => [v.bioguideId || v.bioguide, v]));
+const legById   = new Map(legislation.map(l => [l.bioguideId || l.bioguide, l]));
 
-// Build fast lookup: bioguide → array of committee roles
-const committeesByBioguide = new Map();
+const committeesById = new Map();
 
-for (const [slug, members] of Object.entries(committeesObj)) {
-  if (!Array.isArray(members)) {
-    console.warn(`Committee ${slug} is not an array — skipping`);
-    continue;
-  }
-
+for (const [slug, members] of Object.entries(committees)) {
+  if (!Array.isArray(members)) continue;
   for (const m of members) {
-    const bioguide = m.bioguide;
-    if (!bioguide) continue;
-
-    if (!committeesByBioguide.has(bioguide)) {
-      committeesByBioguide.set(bioguide, []);
-    }
-
-    committeesByBioguide.get(bioguide).push({
+    const id = m.bioguide;
+    if (!id) continue;
+    if (!committeesById.has(id)) committeesById.set(id, []);
+    committeesById.get(id).push({
       slug,
       title: m.title || null,
       rank: m.rank || null,
-      party: m.party || "unknown",
-      name: m.name || null   // optional, for display if needed
+      party: m.party || null,
+      name: m.name || null
     });
   }
 }
 
-// ── Merge ──────────────────────────────────────────────────────────────────
+// ── Merge everything ─────────────────────────────────────────────────────────────
 const merged = rankings.map(entry => {
-  const bioguide = entry.bioguide || entry.bioguideId || null;
+  const id = entry.bioguideId || entry.bioguide || null;
+  if (!id) return entry;   // safety
+
+  const voteData    = votesById.get(id)    || {};
+  const legData     = legById.get(id)      || {};
+  const committeeData = committeesById.get(id) || [];
 
   return {
     ...entry,
-    committees: bioguide ? (committeesByBioguide.get(bioguide) || []) : []
-    // misconduct will be added in a later step by misconduct-scraper.js
+    ...voteData,           // ← yea, nay, missed, participation, etc.
+    ...legData,            // ← sponsored, cosponsored, becameLaw, etc.
+    committees: committeeData,
+    // misconduct comes later — don't touch it here
   };
 });
 
-writeJSON("../public/representatives-merged.json", merged);
+// Write
+fs.writeFileSync(
+  path.join(__dirname, "../public/representatives-merged.json"),
+  JSON.stringify(merged, null, 2)
+);
 
-console.log(`Wrote representatives-merged.json with ${merged.length} records`);
-console.log(`Members with committee assignments: ${committeesByBioguide.size}`);
+console.log(`Wrote merged file — ${merged.length} reps`);
+console.log(`Reps with vote data: ${[...votesById.keys()].length}`);
+console.log(`Reps with legislation data: ${[...legById.keys()].length}`);
+console.log(`Reps with committees: ${committeesById.size}`);
