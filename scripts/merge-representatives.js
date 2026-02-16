@@ -13,6 +13,11 @@ function loadJSON(relativePath, defaultValue = {}) {
   }
 }
 
+function writeJSON(relativePath, data) {
+  const fullPath = path.join(__dirname, relativePath);
+  fs.writeFileSync(fullPath, JSON.stringify(data, null, 2), "utf8");
+}
+
 // ── Load everything that should exist at this point ─────────────────────────────
 const rankings     = loadJSON("../public/representatives-rankings.json", [])   || [];
 const committees   = loadJSON("../public/representatives-committees.json", {}) || {};
@@ -26,44 +31,69 @@ const legById   = new Map(legislation.map(l => [l.bioguideId || l.bioguide, l]))
 const committeesById = new Map();
 
 for (const [slug, members] of Object.entries(committees)) {
-  if (!Array.isArray(members)) continue;
+  if (!Array.isArray(members)) {
+    console.warn(`Committee ${slug} is not an array — skipping`);
+    continue;
+  }
+
   for (const m of members) {
     const id = m.bioguide;
     if (!id) continue;
-    if (!committeesById.has(id)) committeesById.set(id, []);
-    committeesById.get(id).push({
+
+    if (!committeesById.has(id)) {
+      committeesById.set(id, []);
+    }
+
+    const committeeEntry = {
       slug,
       title: m.title || null,
       rank: m.rank || null,
       party: m.party || null,
       name: m.name || null
-    });
+    };
+
+    // Dedupe: Check if identical entry already exists
+    const existing = committeesById.get(id);
+    const isDuplicate = existing.some(c => 
+      c.slug === committeeEntry.slug && 
+      c.title === committeeEntry.title && 
+      c.rank === committeeEntry.rank
+    );
+
+    if (!isDuplicate) {
+      existing.push(committeeEntry);
+    }
   }
 }
 
 // ── Merge everything ─────────────────────────────────────────────────────────────
 const merged = rankings.map(entry => {
   const id = entry.bioguideId || entry.bioguide || null;
-  if (!id) return entry;   // safety
+  if (!id) return entry;  // safety
 
-  const voteData    = votesById.get(id)    || {};
-  const legData     = legById.get(id)      || {};
+  const voteData = votesById.get(id) || {};
+  const voteStats = voteData.votes || {};  // Flatten the nested 'votes' object
+
+  const legData = legById.get(id) || {};
   const committeeData = committeesById.get(id) || [];
+
+  // Photo fallback if missing
+  let photo = entry.photo;
+  if (!photo && id) {
+    photo = `https://www.congress.gov/img/member/${id.toLowerCase()}_200.jpg`;
+  }
 
   return {
     ...entry,
-    ...voteData,           // ← yea, nay, missed, participation, etc.
-    ...legData,            // ← sponsored, cosponsored, becameLaw, etc.
+    ...voteStats,  // yeaVotes, nayVotes, missedVotes, totalVotes, participationPct, missedVotePct
+    ...legData,    // sponsoredBills, cosponsoredBills, becameLawBills, etc.
     committees: committeeData,
-    // misconduct comes later — don't touch it here
+    photo
   };
 });
 
 // Write
-fs.writeFileSync(
-  path.join(__dirname, "../public/representatives-merged.json"),
-  JSON.stringify(merged, null, 2)
-);
+writeJSON("../public/representatives-merged.json", merged);
 
 console.log(`Wrote merged file — ${merged.length} reps`);
 console.log(`Reps with vote data: ${[...votesById.keys()].length}`);
