@@ -1,7 +1,13 @@
-name: Debug House - Fast (skip legislation)
+name: Debug House - Fast (legislation optional)
 
 on:
   workflow_dispatch:
+    inputs:
+      refresh_legislation:
+        description: 'Refresh legislation data? (adds ~2-3 hours - use only when needed)'
+        required: false
+        default: 'false'
+        type: boolean
 
 permissions:
   contents: write
@@ -14,7 +20,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Needed for git-auto-commit to work properly
+          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -29,30 +35,30 @@ jobs:
           npm install xmldom --save
 
       # ────────────────────────────────────────────────────────────────
-      # Optional: If you sometimes need the latest merged legislation,
-      # uncomment these 3 steps to download & merge the parts.
-      # Otherwise leave commented to save ~2 hours.
+      # Legislation refresh (only if toggle is enabled)
       # ────────────────────────────────────────────────────────────────
-      # - name: Download legislation artifacts (optional)
-      #   uses: actions/download-artifact@v4
-      #   with:
-      #     pattern: house-part*
-      #     path: artifacts/
-      #     merge-multiple: true
+      - name: Download latest legislation parts (if enabled)
+        if: github.event.inputs.refresh_legislation == 'true'
+        uses: actions/download-artifact@v4
+        with:
+          pattern: house-part*
+          path: artifacts/
+          merge-multiple: true
 
-      # - name: Move legislation parts to public/
-      #   run: |
-      #     mkdir -p public/
-      #     find artifacts/ -type f -name "*.json" -exec mv {} public/ \;
-      #     ls -la public/ || true
+      - name: Move legislation parts to public/ (if enabled)
+        if: github.event.inputs.refresh_legislation == 'true'
+        run: |
+          mkdir -p public/
+          find artifacts/ -type f -name "*.json" -exec mv {} public/ \;
+          ls -la public/ || true
 
-      # - name: Merge legislation parts (optional)
-      #   run: node scripts/merge-legislation-parts.js
+      - name: Merge fresh legislation parts (if enabled)
+        if: github.event.inputs.refresh_legislation == 'true'
+        run: node scripts/merge-legislation-parts.js
 
       # ────────────────────────────────────────────────────────────────
-      # Core fast steps — these usually take <45 min total
+      # Core fast steps (always run) - ~30-60s total
       # ────────────────────────────────────────────────────────────────
-
       - name: Attach committees
         run: node scripts/committee-reps-scraper.js
 
@@ -61,7 +67,7 @@ jobs:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: node scripts/votes-reps-scraper.js
 
-      - name: Merge representatives data
+      - name: Merge all data into rankings.json
         run: node scripts/merge-representatives.js
 
       - name: Attach misconduct (House)
@@ -74,22 +80,21 @@ jobs:
         run: node scripts/update-streaks.js
 
       # ────────────────────────────────────────────────────────────────
-      # Commit any changes made during this fast run
+      # Commit changes (only if files actually changed)
       # ────────────────────────────────────────────────────────────────
-      - name: Commit updated House files (fast debug run)
+      - name: Commit updated House files (fast debug)
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Debug fast House update [skip ci]"
+          commit_message: "Fast debug update - legislation ${{ github.event.inputs.refresh_legislation == 'true' && 'refreshed' || 'skipped' }} [skip ci]"
           file_pattern: |
             public/representatives-rankings.json
             public/representatives-votes.json
             public/representatives-committees.json
             public/representatives-scores.json
             public/representatives-streaks.json
-            public/representatives-merged.json
+            public/representatives-legislation.json  # Include this so refreshed version is committed
             public/housereps.json
           commit_user_name: github-actions[bot]
           commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
           push_options: '--force-with-lease'
-          skip_dirty_check: false
           branch: main
