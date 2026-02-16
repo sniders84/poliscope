@@ -1,13 +1,7 @@
-name: Debug House - Fast (legislation optional)
+name: Debug House - Fast (legislation merge always attempted)
 
 on:
   workflow_dispatch:
-    inputs:
-      refresh_legislation:
-        description: 'Refresh legislation data? (adds ~2-3 hours - use only when needed)'
-        required: false
-        default: 'false'
-        type: boolean
 
 permissions:
   contents: write
@@ -35,29 +29,20 @@ jobs:
           npm install xmldom --save
 
       # ────────────────────────────────────────────────────────────────
-      # Legislation refresh (only if toggle is enabled)
+      # Attempt to merge existing legislation parts (fast, ~5-10s)
+      # If parts are missing/old, log warning but continue
       # ────────────────────────────────────────────────────────────────
-      - name: Download latest legislation parts (if enabled)
-        if: github.event.inputs.refresh_legislation == 'true'
-        uses: actions/download-artifact@v4
-        with:
-          pattern: house-part*
-          path: artifacts/
-          merge-multiple: true
-
-      - name: Move legislation parts to public/ (if enabled)
-        if: github.event.inputs.refresh_legislation == 'true'
+      - name: Merge latest available legislation parts
         run: |
-          mkdir -p public/
-          find artifacts/ -type f -name "*.json" -exec mv {} public/ \;
-          ls -la public/ || true
-
-      - name: Merge fresh legislation parts (if enabled)
-        if: github.event.inputs.refresh_legislation == 'true'
-        run: node scripts/merge-legislation-parts.js
+          if ls public/legislation-representatives-part*.json 1> /dev/null 2>&1; then
+            echo "Found legislation part files - merging..."
+            node scripts/merge-legislation-parts.js || echo "Merge failed - using existing merged data if available"
+          else
+            echo "No legislation part files found in public/ - skipping merge (using stale data if present)"
+          fi
 
       # ────────────────────────────────────────────────────────────────
-      # Core fast steps (always run) - ~30-60s total
+      # Core fast steps (always run)
       # ────────────────────────────────────────────────────────────────
       - name: Attach committees
         run: node scripts/committee-reps-scraper.js
@@ -80,19 +65,19 @@ jobs:
         run: node scripts/update-streaks.js
 
       # ────────────────────────────────────────────────────────────────
-      # Commit changes (only if files actually changed)
+      # Commit changes
       # ────────────────────────────────────────────────────────────────
       - name: Commit updated House files (fast debug)
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Fast debug update - legislation ${{ github.event.inputs.refresh_legislation == 'true' && 'refreshed' || 'skipped' }} [skip ci]"
+          commit_message: "Fast debug update [skip ci]"
           file_pattern: |
             public/representatives-rankings.json
             public/representatives-votes.json
             public/representatives-committees.json
             public/representatives-scores.json
             public/representatives-streaks.json
-            public/representatives-legislation.json  # Include this so refreshed version is committed
+            public/representatives-legislation.json
             public/housereps.json
           commit_user_name: github-actions[bot]
           commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
