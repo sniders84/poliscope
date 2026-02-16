@@ -1,7 +1,13 @@
-name: Debug House - Fast (legislation merge always attempted)
+name: Debug House - Fast (legislation refresh optional)
 
 on:
   workflow_dispatch:
+    inputs:
+      refresh_legislation:
+        description: 'Refresh legislation from congress.gov API? (adds ~2-3 hours)'
+        required: false
+        default: 'false'
+        type: boolean
 
 permissions:
   contents: write
@@ -29,17 +35,47 @@ jobs:
           npm install xmldom --save
 
       # ────────────────────────────────────────────────────────────────
-      # Attempt to merge existing legislation parts (fast, ~5-10s)
-      # If parts are missing/old, log warning but continue
+      # Legislation refresh from API (only if toggle enabled)
       # ────────────────────────────────────────────────────────────────
-      - name: Merge latest available legislation parts
+      - name: Run legislation part 1 (if enabled)
+        if: github.event.inputs.refresh_legislation == 'true'
+        env:
+          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: |
-          if ls public/legislation-representatives-part*.json 1> /dev/null 2>&1; then
-            echo "Found legislation part files - merging..."
-            node scripts/merge-legislation-parts.js || echo "Merge failed - using existing merged data if available"
-          else
-            echo "No legislation part files found in public/ - skipping merge (using stale data if present)"
-          fi
+          node scripts/bootstrap-representatives.js
+          node scripts/legislation-representatives-scraper.js 1
+          mv public/legislation-representatives.json public/legislation-representatives-part1.json
+
+      - name: Run legislation part 2 (if enabled)
+        if: github.event.inputs.refresh_legislation == 'true'
+        env:
+          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
+        run: |
+          node scripts/bootstrap-representatives.js
+          node scripts/legislation-representatives-scraper.js 2
+          mv public/legislation-representatives.json public/legislation-representatives-part2.json
+
+      - name: Run legislation part 3 (if enabled)
+        if: github.event.inputs.refresh_legislation == 'true'
+        env:
+          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
+        run: |
+          node scripts/bootstrap-representatives.js
+          node scripts/legislation-representatives-scraper.js 3
+          mv public/legislation-representatives.json public/legislation-representatives-part3.json
+
+      - name: Run legislation part 4 (if enabled)
+        if: github.event.inputs.refresh_legislation == 'true'
+        env:
+          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
+        run: |
+          node scripts/bootstrap-representatives.js
+          node scripts/legislation-representatives-scraper.js 4
+          mv public/legislation-representatives.json public/legislation-representatives-part4.json
+
+      - name: Merge fresh legislation parts (if enabled)
+        if: github.event.inputs.refresh_legislation == 'true'
+        run: node scripts/merge-legislation-parts.js
 
       # ────────────────────────────────────────────────────────────────
       # Core fast steps (always run)
@@ -70,7 +106,7 @@ jobs:
       - name: Commit updated House files (fast debug)
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Fast debug update [skip ci]"
+          commit_message: "Fast debug update - legislation ${{ github.event.inputs.refresh_legislation == 'true' && 'refreshed from API' || 'skipped' }} [skip ci]"
           file_pattern: |
             public/representatives-rankings.json
             public/representatives-votes.json
@@ -78,6 +114,7 @@ jobs:
             public/representatives-scores.json
             public/representatives-streaks.json
             public/representatives-legislation.json
+            public/legislation-representatives-part*.json
             public/housereps.json
           commit_user_name: github-actions[bot]
           commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
