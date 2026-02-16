@@ -1,87 +1,89 @@
-// scripts/merge-senators.js
+// merge-senators.js
+// Enriches and overwrites senators-rankings.json with all scraper data
 
 const fs = require("fs");
-const yaml = require("js-yaml");
+const path = require("path");
 
-// Safe JSON loader
-function loadJSON(path) {
+function loadJSON(relativePath, defaultValue = {}) {
+  const fullPath = path.join(__dirname, relativePath);
   try {
-    return JSON.parse(fs.readFileSync(path, "utf8"));
-  } catch (e) {
-    console.warn(`Warning: could not load ${path}, defaulting to []`);
-    return [];
+    return JSON.parse(fs.readFileSync(fullPath, "utf8"));
+  } catch (err) {
+    console.error(`Failed to load ${relativePath}: ${err.message}`);
+    return defaultValue;
   }
 }
 
-// Load all input files (FIXED PATHS)
-const rankings = loadJSON("public/senators-rankings.json");
-const legislation = loadJSON("public/senators-legislation.json");
-const votes = loadJSON("public/senators-votes.json");
-const streaks = loadJSON("public/senators-streaks.json");
+function writeJSON(relativePath, data) {
+  const fullPath = path.join(__dirname, relativePath);
+  fs.writeFileSync(fullPath, JSON.stringify(data, null, 2), "utf8");
+  console.log(`Wrote/updated: ${relativePath}`);
+}
 
-// Misconduct YAML
-const misconduct = yaml.load(fs.readFileSync("public/misconduct.yaml", "utf8")) || {};
+// Load base (we will overwrite this file)
+let rankings = loadJSON("../public/senators-rankings.json", []) || [];
 
-// senators.json (metadata: photos, links, etc.)
-const senatorsMeta = loadJSON("public/senators.json");
+// Load intermediates (adjust filenames if different)
+const committees   = loadJSON("../public/senators-committees.json", {}) || {};
+const votes        = loadJSON("../public/senators-votes.json", [])      || [];
+const legislation  = loadJSON("../public/legislation-senators.json", [])|| []; // <--- this is the key missing one
 
-// Build slug → metadata map
-const metaMap = new Map();
-senatorsMeta.forEach(s => {
-  metaMap.set(s.slug, {
-    photo: s.photo,
-    party: s.party,
-    state: s.state,
-    office: s.office,
-    ballotpediaLink: s.ballotpediaLink,
-    govtrackLink: s.govtrackLink,
-    contact: s.contact,
-    social: s.social
-  });
+// Lookups
+const votesById = new Map(votes.map(v => [v.bioguideId || v.bioguide, v.votes || {}]));
+const legById   = new Map(legislation.map(l => [l.bioguideId || l.bioguide, l]));
+
+const committeesById = new Map();
+for (const [slug, members] of Object.entries(committees)) {
+  if (!Array.isArray(members)) continue;
+  for (const m of members) {
+    const id = m.bioguide;
+    if (!id) continue;
+    if (!committeesById.has(id)) committeesById.set(id, []);
+    const entry = {
+      slug,
+      title: m.title || null,
+      rank: m.rank || null,
+      party: m.party || null,
+      name: m.name || null
+    };
+    const existing = committeesById.get(id);
+    const isDup = existing.some(c => c.slug === entry.slug && c.title === entry.title && c.rank === entry.rank);
+    if (!isDup) existing.push(entry);
+  }
+}
+
+// Enrich
+const enriched = rankings.map(entry => {
+  const id = entry.bioguideId || entry.bioguide || null;
+  if (!id) return entry;
+
+  const voteStats     = votesById.get(id)    || {};
+  const legStats      = legById.get(id)      || {};
+  const committeeList = committeesById.get(id) || [];
+
+  let photo = entry.photo;
+  if (!photo && id) {
+    photo = `https://www.congress.gov/img/member/${id.toLowerCase()}_200.jpg`;
+  }
+
+  return {
+    ...entry,
+    ...voteStats,
+    ...legStats,            // sponsoredBills, cosponsoredBills, becameLawBills, etc.
+    committees: committeeList,
+    photo
+  };
 });
 
-// Merge everything into rankings
-rankings.forEach(r => {
-  // Legislation
-  const l = legislation.find(x => x.slug === r.slug);
-  if (l) r.legislation = l.legislation;
+// Overwrite rankings.json
+writeJSON("../public/senators-rankings.json", enriched);
 
-  // Votes
-  const v = votes.find(x => x.bioguideId === r.bioguideId);
-  if (v && v.votes) {
-    r.yeaVotes = v.votes.yeaVotes;
-    r.nayVotes = v.votes.nayVotes;
-    r.missedVotes = v.votes.missedVotes;
-    r.totalVotes = v.votes.totalVotes;
-    r.participationPct = v.votes.participationPct;
-    r.missedVotePct = v.votes.missedVotePct;
-  }
+// Stats
+const repsWithVotes = enriched.filter(r => (r.yeaVotes || 0) > 0 || (r.totalVotes || 0) > 0).length;
+const repsWithLeg   = enriched.filter(r => (r.sponsoredBills || 0) > 0 || (r.cosponsoredBills || 0) > 0).length;
+const repsWithCom   = enriched.filter(r => (r.committees || []).length > 0).length;
 
-  // Misconduct
-  if (misconduct[r.slug]) {
-    r.misconduct = misconduct[r.slug];
-  }
-
-  // Streaks
-  const s = streaks.find(x => x.slug === r.slug);
-  if (s) r.streak = s.streak;
-
-  // Metadata (photos, links, etc.)
-  if (metaMap.has(r.slug)) {
-    const info = metaMap.get(r.slug);
-    r.photo = info.photo;
-    r.party = info.party;
-    r.state = info.state;
-    r.office = info.office;
-    r.ballotpediaLink = info.ballotpediaLink;
-    r.govtrackLink = info.govtrackLink;
-    r.contact = info.contact;
-    r.social = info.social;
-  } else {
-    console.warn(`No senators.json match for slug: ${r.slug}`);
-  }
-});
-
-// Write out enriched rankings
-fs.writeFileSync("public/senators-rankings.json", JSON.stringify(rankings, null, 2));
-console.log("senators-rankings.json updated with legislation, votes, misconduct, streaks, and metadata via slug matching.");
+console.log(`Enriched and overwrote senators-rankings.json with ${enriched.length} senators`);
+console.log(`Senators with vote data: ${repsWithVotes}`);
+console.log(`Senators with legislation data: ${repsWithLeg}`);
+console.log(`Senators with committees: ${repsWithCom}`);
