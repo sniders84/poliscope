@@ -13,36 +13,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Chair",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSFI",
-        "committeeName": "Finance",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SLIA",
-        "committeeName": "Indian Affairs",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 180,
@@ -67,8 +38,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 13.5,
-    "lastUpdated": "2026-02-15T14:11:16.772Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.112Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -94,50 +65,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Chair",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSRA",
-        "committeeName": "Rules and Administration",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "JSLC",
-        "committeeName": "Library of Congress",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "JSEC",
-        "committeeName": "Taxation",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 214,
@@ -162,8 +90,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 16.5,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.112Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -189,36 +117,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 9,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Chair",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 153,
@@ -244,7 +143,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -270,36 +169,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Chair",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "JCSE",
-        "committeeName": "Economic",
-        "role": "Chair",
-        "rank": 1,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 188,
@@ -324,8 +194,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 2,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -351,29 +221,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 10,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 513,
@@ -398,8 +246,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 6,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -425,50 +273,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Chair",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSRA",
-        "committeeName": "Rules and Administration",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Ex Officio",
-        "rank": 11,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "JCSE",
-        "committeeName": "Economic",
-        "role": "Chair",
-        "rank": 1,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 489,
@@ -493,8 +298,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 3,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -520,29 +325,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Chair",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 547,
@@ -567,8 +350,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 8,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -594,36 +377,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Member",
-        "rank": 12,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 512,
@@ -648,8 +402,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 6.5,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -675,29 +429,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Chair",
-        "rank": 1,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 215,
@@ -722,8 +454,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 1,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -749,29 +481,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 472,
@@ -797,7 +507,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -823,36 +533,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSRA",
-        "committeeName": "Rules and Administration",
-        "role": "Chair",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "JSLC",
-        "committeeName": "Library of Congress",
-        "role": "Chair",
-        "rank": 1,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 464,
@@ -878,7 +559,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -904,36 +585,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSRA",
-        "committeeName": "Rules and Administration",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 158,
@@ -958,8 +610,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 5,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -985,36 +637,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Chair",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Ex Officio",
-        "rank": 9,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 207,
@@ -1039,8 +662,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 8,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -1066,36 +689,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Chair",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SLET",
-        "committeeName": "Ethics",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 504,
@@ -1120,8 +714,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 7.5,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -1147,43 +741,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Chair",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SLET",
-        "committeeName": "Ethics",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "JCSE",
-        "committeeName": "Economic",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 269,
@@ -1208,8 +766,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 4.5,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -1235,36 +793,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSRA",
-        "committeeName": "Rules and Administration",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Chair",
-        "rank": 1,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 237,
@@ -1289,8 +818,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 1.5,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -1316,36 +845,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 13,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SPAG",
-        "committeeName": "Agriculture (Joint)",
-        "role": "Chair",
-        "rank": 1,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 194,
@@ -1370,8 +870,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 4.5,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -1397,36 +897,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SLET",
-        "committeeName": "Ethics",
-        "role": "Chair",
-        "rank": 1,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 197,
@@ -1452,7 +923,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -1478,29 +949,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 185,
@@ -1525,8 +974,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 5.5,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -1552,36 +1001,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSRA",
-        "committeeName": "Rules and Administration",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 185,
@@ -1606,8 +1026,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 4.5,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -1633,43 +1053,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 13,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "JSEC",
-        "committeeName": "Taxation",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 493,
@@ -1695,7 +1079,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -1721,36 +1105,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSGA",
-        "committeeName": "Homeland Security and Governmental Affairs",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Chair",
-        "rank": 1,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 165,
@@ -1775,8 +1130,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 5.5,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -1802,50 +1157,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Chair",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSRA",
-        "committeeName": "Rules and Administration",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "JCSE",
-        "committeeName": "Economic",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 499,
@@ -1870,8 +1182,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 12,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -1897,36 +1209,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 14,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Chair",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSRA",
-        "committeeName": "Rules and Administration",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 500,
@@ -1951,8 +1234,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 3,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -1978,36 +1261,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Chair",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 485,
@@ -2033,7 +1287,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -2059,22 +1313,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSFI",
-        "committeeName": "Finance",
-        "role": "Chair",
-        "rank": 1,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 510,
@@ -2099,8 +1338,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 5.5,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -2126,29 +1365,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSFI",
-        "committeeName": "Finance",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Chair",
-        "rank": 1,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 509,
@@ -2173,8 +1390,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 8,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -2200,36 +1417,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 11,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Chair",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "JSEC",
-        "committeeName": "Taxation",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 203,
@@ -2255,7 +1443,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -2281,36 +1469,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 164,
@@ -2335,8 +1494,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 7,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -2362,36 +1521,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Member",
-        "rank": 11,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SLIA",
-        "committeeName": "Indian Affairs",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 507,
@@ -2416,8 +1546,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 6.5,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -2443,29 +1573,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 11,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSGA",
-        "committeeName": "Homeland Security and Governmental Affairs",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SPAG",
-        "committeeName": "Agriculture (Joint)",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 511,
@@ -2490,8 +1598,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 4,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -2517,36 +1625,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSGA",
-        "committeeName": "Homeland Security and Governmental Affairs",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SLET",
-        "committeeName": "Ethics",
-        "role": "Chair",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 514,
@@ -2571,8 +1650,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 9,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -2598,29 +1677,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Chair",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 491,
@@ -2646,7 +1703,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -2672,36 +1729,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 9,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 11,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SLIA",
-        "committeeName": "Indian Affairs",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 1,
     "misconductTags": [
       "elections ethics resolved"
@@ -2729,7 +1757,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -2778,29 +1806,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 148,
@@ -2825,8 +1831,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 3.5,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -2852,50 +1858,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 12,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SLIA",
-        "committeeName": "Indian Affairs",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Chair",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 480,
@@ -2921,7 +1884,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -2947,36 +1910,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Member",
-        "rank": 10,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SLIA",
-        "committeeName": "Indian Affairs",
-        "role": "Chair",
-        "rank": 1,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 512,
@@ -3002,7 +1936,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -3028,29 +1962,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 9,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 153,
@@ -3076,7 +1988,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -3102,29 +2014,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Chair",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 139,
@@ -3150,7 +2040,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -3176,29 +2066,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSGA",
-        "committeeName": "Homeland Security and Governmental Affairs",
-        "role": "Chair",
-        "rank": 1,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 444,
@@ -3224,7 +2092,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -3250,36 +2118,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 12,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 9,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSGA",
-        "committeeName": "Homeland Security and Governmental Affairs",
-        "role": "Chair",
-        "rank": 1,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 203,
@@ -3304,8 +2143,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 3,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -3331,29 +2170,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 10,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Member",
-        "rank": 10,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 1,
     "misconductTags": [
       "ethics resolved"
@@ -3381,7 +2198,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -3419,22 +2236,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSRA",
-        "committeeName": "Rules and Administration",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Ex Officio",
-        "rank": 10,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 168,
@@ -3459,8 +2261,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 4.5,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -3486,29 +2288,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Chair",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 493,
@@ -3534,7 +2314,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -3560,36 +2340,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 10,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Ex Officio",
-        "rank": 10,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 502,
@@ -3614,8 +2365,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 9.5,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -3641,29 +2392,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 10,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 158,
@@ -3689,7 +2418,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -3715,36 +2444,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 13,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSRA",
-        "committeeName": "Rules and Administration",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Member",
-        "rank": 9,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 178,
@@ -3770,7 +2470,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -3796,29 +2496,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSFI",
-        "committeeName": "Finance",
-        "role": "Chair",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 157,
@@ -3843,8 +2521,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 3.5,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -3870,29 +2548,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 509,
@@ -3917,8 +2573,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 3,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -3944,43 +2600,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SLIA",
-        "committeeName": "Indian Affairs",
-        "role": "Chair",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SLET",
-        "committeeName": "Ethics",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 164,
@@ -4005,8 +2625,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 10.5,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -4032,36 +2652,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "JSEC",
-        "committeeName": "Taxation",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Chair",
-        "rank": 1,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 502,
@@ -4086,8 +2677,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 6.5,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -4113,36 +2704,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 10,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Member",
-        "rank": 9,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 166,
@@ -4168,7 +2730,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -4194,36 +2756,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Chair",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SPAG",
-        "committeeName": "Agriculture (Joint)",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 151,
@@ -4248,8 +2781,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 5,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -4275,36 +2808,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 269,
@@ -4329,8 +2833,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 2.5,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -4356,36 +2860,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SLIA",
-        "committeeName": "Indian Affairs",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 500,
@@ -4411,7 +2886,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -4437,36 +2912,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 11,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 491,
@@ -4492,7 +2938,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -4518,57 +2964,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 11,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 14,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSRA",
-        "committeeName": "Rules and Administration",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "JSLC",
-        "committeeName": "Library of Congress",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SLET",
-        "committeeName": "Ethics",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 510,
@@ -4593,8 +2989,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 16,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -4620,36 +3016,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 13,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 10,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SLIA",
-        "committeeName": "Indian Affairs",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 1,
     "misconductTags": [
       "ethics resolved"
@@ -4677,7 +3044,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -4738,36 +3105,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Chair",
-        "rank": 1,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSRA",
-        "committeeName": "Rules and Administration",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 483,
@@ -4793,7 +3131,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -4819,29 +3157,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 241,
@@ -4866,8 +3182,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 3,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -4893,29 +3209,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 171,
@@ -4941,7 +3235,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -4967,36 +3261,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 9,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Member",
-        "rank": 9,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSGA",
-        "committeeName": "Homeland Security and Governmental Affairs",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 215,
@@ -5022,7 +3287,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -5048,36 +3313,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 507,
@@ -5103,7 +3339,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -5129,29 +3365,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSGA",
-        "committeeName": "Homeland Security and Governmental Affairs",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 503,
@@ -5177,7 +3391,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -5203,43 +3417,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 12,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "JCSE",
-        "committeeName": "Economic",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 438,
@@ -5265,7 +3443,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -5291,50 +3469,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 15,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SLIA",
-        "committeeName": "Indian Affairs",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "JCSE",
-        "committeeName": "Economic",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 505,
@@ -5359,8 +3494,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 10,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -5386,29 +3521,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 507,
@@ -5434,7 +3547,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -5460,43 +3573,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSGA",
-        "committeeName": "Homeland Security and Governmental Affairs",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "JSEC",
-        "committeeName": "Taxation",
-        "role": "Chair",
-        "rank": 1,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 261,
@@ -5521,8 +3598,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 10,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -5548,36 +3625,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SLIA",
-        "committeeName": "Indian Affairs",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 223,
@@ -5603,7 +3651,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -5629,36 +3677,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 10,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 13,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 10,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 166,
@@ -5683,8 +3702,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 6.5,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -5710,36 +3729,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 13,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 10,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 10,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 509,
@@ -5764,8 +3754,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 3.5,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -5791,29 +3781,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 14,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 513,
@@ -5838,8 +3806,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 3,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -5865,36 +3833,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 11,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "JSEC",
-        "committeeName": "Taxation",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 499,
@@ -5920,7 +3859,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -5946,29 +3885,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 11,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Member",
-        "rank": 10,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 238,
@@ -5993,8 +3910,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 0.5,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -6020,29 +3937,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 11,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Member",
-        "rank": 11,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 508,
@@ -6067,8 +3962,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 0.5,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -6094,43 +3989,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 10,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SLIA",
-        "committeeName": "Indian Affairs",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "JCSE",
-        "committeeName": "Economic",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 147,
@@ -6156,7 +4015,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -6182,43 +4041,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 10,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSRA",
-        "committeeName": "Rules and Administration",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "JSLC",
-        "committeeName": "Library of Congress",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 504,
@@ -6243,8 +4066,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 4.5,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -6270,36 +4093,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 11,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 13,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSGA",
-        "committeeName": "Homeland Security and Governmental Affairs",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Member",
-        "rank": 9,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 222,
@@ -6325,7 +4119,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -6351,43 +4145,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 12,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 9,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSGA",
-        "committeeName": "Homeland Security and Governmental Affairs",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SPAG",
-        "committeeName": "Agriculture (Joint)",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 190,
@@ -6412,8 +4170,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 8.5,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -6439,36 +4197,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Member",
-        "rank": 10,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSGA",
-        "committeeName": "Homeland Security and Governmental Affairs",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SPAG",
-        "committeeName": "Agriculture (Joint)",
-        "role": "Chair",
-        "rank": 1,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 518,
@@ -6493,8 +4222,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 9,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -6520,29 +4249,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSGA",
-        "committeeName": "Homeland Security and Governmental Affairs",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 491,
@@ -6568,7 +4275,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -6594,43 +4301,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 12,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Member",
-        "rank": 5,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "JSEC",
-        "committeeName": "Taxation",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SPAG",
-        "committeeName": "Agriculture (Joint)",
-        "role": "Member",
-        "rank": 3,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 230,
@@ -6656,7 +4327,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -6682,29 +4353,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 15,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 495,
@@ -6730,7 +4379,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -6756,43 +4405,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SPAG",
-        "committeeName": "Agriculture (Joint)",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 1,
     "misconductTags": [
       "ethics resolved"
@@ -6820,7 +4433,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -6857,29 +4470,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 10,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 204,
@@ -6904,8 +4495,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 1.5,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -6931,36 +4522,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 11,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSRA",
-        "committeeName": "Rules and Administration",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 502,
@@ -6986,7 +4548,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -7012,43 +4574,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSRA",
-        "committeeName": "Rules and Administration",
-        "role": "Chair",
-        "rank": 1,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Member",
-        "rank": 8,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "JSLC",
-        "committeeName": "Library of Congress",
-        "role": "Chair",
-        "rank": 1,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 158,
@@ -7074,7 +4600,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -7100,29 +4626,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 14,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSRA",
-        "committeeName": "Rules and Administration",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SLIN",
-        "committeeName": "Intelligence",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 188,
@@ -7148,7 +4652,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -7174,36 +4678,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 7,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSFI",
-        "committeeName": "Finance",
-        "role": "Member",
-        "rank": 12,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SPAG",
-        "committeeName": "Agriculture (Joint)",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 208,
@@ -7229,7 +4704,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -7255,43 +4730,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAP",
-        "committeeName": "Appropriations",
-        "role": "Member",
-        "rank": 12,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSRA",
-        "committeeName": "Rules and Administration",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Member",
-        "rank": 11,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "JCSE",
-        "committeeName": "Economic",
-        "role": "Member",
-        "rank": 5,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 503,
@@ -7316,8 +4755,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 2.5,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -7343,36 +4782,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 12,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 10,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Member",
-        "rank": 10,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "JSEC",
-        "committeeName": "Taxation",
-        "role": "Chair",
-        "rank": 1,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 512,
@@ -7397,8 +4807,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 5.5,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -7424,36 +4834,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 9,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 11,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSGA",
-        "committeeName": "Homeland Security and Governmental Affairs",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "JCSE",
-        "committeeName": "Economic",
-        "role": "Member",
-        "rank": 4,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 271,
@@ -7479,7 +4860,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -7505,29 +4886,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 9,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 510,
@@ -7552,8 +4911,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 7,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -7579,36 +4938,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 11,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Member",
-        "rank": 9,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 11,
-        "party": "minority"
-      },
-      {
-        "committeeCode": "SPAG",
-        "committeeName": "Agriculture (Joint)",
-        "role": "Member",
-        "rank": 6,
-        "party": "minority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 183,
@@ -7633,8 +4963,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 3.5,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -7660,29 +4990,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAS",
-        "committeeName": "Armed Services",
-        "role": "Member",
-        "rank": 14,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 13,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSVA",
-        "committeeName": "Veterans' Affairs",
-        "role": "Member",
-        "rank": 10,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 498,
@@ -7708,7 +5016,7 @@
     },
     "streak": 0,
     "powerScore": 0,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -7734,29 +5042,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 12,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSCM",
-        "committeeName": "Energy and Natural Resources",
-        "role": "Member",
-        "rank": 12,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSGA",
-        "committeeName": "Homeland Security and Governmental Affairs",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 519,
@@ -7781,8 +5067,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 6,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -7808,43 +5094,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSBK",
-        "committeeName": "Banking, Housing, and Urban Affairs",
-        "role": "Member",
-        "rank": 13,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSFR",
-        "committeeName": "Foreign Relations",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "JSEC",
-        "committeeName": "Taxation",
-        "role": "Member",
-        "rank": 4,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SPAG",
-        "committeeName": "Agriculture (Joint)",
-        "role": "Ranking Member",
-        "rank": 2,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 496,
@@ -7869,8 +5119,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 2,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -7896,29 +5146,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSAF",
-        "committeeName": "Agriculture, Nutrition, and Forestry",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSEG",
-        "committeeName": "Energy (Joint)",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SPAG",
-        "committeeName": "Agriculture (Joint)",
-        "role": "Member",
-        "rank": 3,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 0,
@@ -7943,8 +5171,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 6,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -7970,29 +5198,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSEV",
-        "committeeName": "Environment and Public Works",
-        "role": "Member",
-        "rank": 10,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 11,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SPAG",
-        "committeeName": "Agriculture (Joint)",
-        "role": "Member",
-        "rank": 7,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 0,
@@ -8017,8 +5223,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 6,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
@@ -8044,43 +5250,7 @@
     "cosponsoredBills": 0,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
-    "committees": [
-      {
-        "committeeCode": "SSHR",
-        "committeeName": "Health, Education, Labor, and Pensions",
-        "role": "Member",
-        "rank": 12,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSGA",
-        "committeeName": "Homeland Security and Governmental Affairs",
-        "role": "Member",
-        "rank": 8,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SSJU",
-        "committeeName": "Judiciary",
-        "role": "Member",
-        "rank": 12,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "JSEC",
-        "committeeName": "Taxation",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      },
-      {
-        "committeeCode": "SPAG",
-        "committeeName": "Agriculture (Joint)",
-        "role": "Member",
-        "rank": 6,
-        "party": "majority"
-      }
-    ],
+    "committees": [],
     "misconductCount": 0,
     "misconductTags": [],
     "yeaVotes": 0,
@@ -8105,8 +5275,8 @@
       }
     },
     "streak": 0,
-    "powerScore": 10,
-    "lastUpdated": "2026-02-15T14:11:16.773Z",
+    "powerScore": 0,
+    "lastUpdated": "2026-02-16T09:57:38.113Z",
     "sponsoredAmendments": 0,
     "cosponsoredAmendments": 0,
     "becameLawAmendments": 0,
