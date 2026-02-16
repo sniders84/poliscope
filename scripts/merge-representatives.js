@@ -1,15 +1,17 @@
 // merge-representatives.js
+// Purpose: Merge rankings + committee data (misconduct added later in workflow)
+
 const fs = require("fs");
 const path = require("path");
 
-function loadJSON(relativePath) {
+function loadJSON(relativePath, defaultValue = {}) {
   const fullPath = path.join(__dirname, relativePath);
   try {
     const content = fs.readFileSync(fullPath, "utf8");
     return JSON.parse(content);
   } catch (err) {
     console.error(`Failed to load ${relativePath}: ${err.message}`);
-    return err.code === 'ENOENT' ? {} : null;
+    return defaultValue;
   }
 }
 
@@ -18,91 +20,49 @@ function writeJSON(relativePath, data) {
   fs.writeFileSync(fullPath, JSON.stringify(data, null, 2), "utf8");
 }
 
-// Load base files
-const rankings = loadJSON("../public/representatives-rankings.json") || [];
-const info = loadJSON("../public/representatives-info.json") || [];
-const committees = loadJSON("../public/representatives-committees.json") || {};
-const misconduct = loadJSON("../public/representatives-misconduct.json") || [];
+// ── Load only what actually exists ────────────────────────────────────────
+const rankings   = loadJSON("../public/representatives-rankings.json", []) || [];
+const committeesObj = loadJSON("../public/representatives-committees.json", {});
 
-// Build lookup maps
-function getIdKey(obj) {
-  return obj.bioguideId || obj.bioguide || obj.slug || obj.id || null;
-}
+// Build fast lookup: bioguide → array of committee roles
+const committeesByBioguide = new Map();
 
-// Info by member id
-const infoById = new Map();
-for (const member of info) {
-  const key = getIdKey(member);
-  if (key) infoById.set(key, member);
-}
+for (const [slug, members] of Object.entries(committeesObj)) {
+  if (!Array.isArray(members)) {
+    console.warn(`Committee ${slug} is not an array — skipping`);
+    continue;
+  }
 
-// Committees by member id (now correctly using the slug → members structure)
-const committeesById = new Map();
+  for (const m of members) {
+    const bioguide = m.bioguide;
+    if (!bioguide) continue;
 
-for (const [committeeSlug, memberList] of Object.entries(committees)) {
-  if (!Array.isArray(memberList)) continue;
-
-  for (const m of memberList) {
-    const key = m.bioguide;  // bioguide is the reliable identifier here
-    if (!key) continue;
-
-    if (!committeesById.has(key)) {
-      committeesById.set(key, []);
+    if (!committeesByBioguide.has(bioguide)) {
+      committeesByBioguide.set(bioguide, []);
     }
 
-    committeesById.get(key).push({
-      slug: committeeSlug,
-      name: committeeSlug,          // can improve later if you add committee names
-      role: m.title || m.rank ? `${m.title || ""} (Rank ${m.rank})` : null,
-      rank: m.rank || null,
+    committeesByBioguide.get(bioguide).push({
+      slug,
       title: m.title || null,
-      party: m.party || null
+      rank: m.rank || null,
+      party: m.party || "unknown",
+      name: m.name || null   // optional, for display if needed
     });
   }
 }
 
-// Misconduct by member id
-const misconductById = new Map();
-for (const record of misconduct) {
-  const key = getIdKey(record);
-  if (!key) continue;
-  if (!misconductById.has(key)) {
-    misconductById.set(key, []);
-  }
-  misconductById.get(key).push(record);
-}
-
-// Merge everything into a single array
-const merged = rankings.map((rankEntry) => {
-  const key = getIdKey(rankEntry);
-  if (!key) {
-    console.warn(`No valid key found for ranking entry: ${JSON.stringify(rankEntry).slice(0, 100)}...`);
-    return rankEntry;
-  }
-
-  const baseInfo = infoById.get(key) || {};
-  const memberCommittees = committeesById.get(key) || [];
-  const memberMisconduct = misconductById.get(key) || [];
+// ── Merge ──────────────────────────────────────────────────────────────────
+const merged = rankings.map(entry => {
+  const bioguide = entry.bioguide || entry.bioguideId || null;
 
   return {
-    // ranking fields first
-    ...rankEntry,
-
-    // then info fields (avoid overwriting id keys)
-    ...Object.fromEntries(
-      Object.entries(baseInfo).filter(
-        ([k]) => !["bioguideId", "bioguide", "slug", "id"].includes(k)
-      )
-    ),
-
-    // attached collections
-    committees: memberCommittees,
-    misconduct: memberMisconduct,
+    ...entry,
+    committees: bioguide ? (committeesByBioguide.get(bioguide) || []) : []
+    // misconduct will be added in a later step by misconduct-scraper.js
   };
 });
 
-// Write merged output
 writeJSON("../public/representatives-merged.json", merged);
 
-console.log(`representatives-merged.json written with ${merged.length} records`);
-console.log(`Members with committee data: ${committeesById.size}`);
+console.log(`Wrote representatives-merged.json with ${merged.length} records`);
+console.log(`Members with committee assignments: ${committeesByBioguide.size}`);
