@@ -20,15 +20,15 @@ function writeJSON(relativePath, data) {
   console.log(`Wrote/updated: ${relativePath}`);
 }
 
-// Load base (we will overwrite this file)
+// ── Load base (we will overwrite this file) ────────────────────────────────────
 let rankings = loadJSON("../public/representatives-rankings.json", []) || [];
 
-// Load intermediates
+// ── Load intermediates ─────────────────────────────────────────────────────────
 const committees   = loadJSON("../public/representatives-committees.json", {}) || {};
 const votes        = loadJSON("../public/representatives-votes.json", [])      || [];
 const legislation  = loadJSON("../public/representatives-legislation.json", [])|| [];
 
-// Lookups
+// ── Build lookups ──────────────────────────────────────────────────────────────
 const votesById = new Map(votes.map(v => [v.bioguideId || v.bioguide, v.votes || {}]));
 const legById   = new Map(legislation.map(l => [l.bioguideId || l.bioguide, l]));
 
@@ -52,7 +52,7 @@ for (const [slug, members] of Object.entries(committees)) {
   }
 }
 
-// Enrich
+// ── Enrich each ranking entry ──────────────────────────────────────────────────
 const enriched = rankings.map(entry => {
   const id = entry.bioguideId || entry.bioguide || null;
   if (!id) return entry;
@@ -68,14 +68,14 @@ const enriched = rankings.map(entry => {
 
   return {
     ...entry,
-    ...voteStats,
-    ...legStats,
+    ...voteStats,           // yeaVotes, nayVotes, missedVotes, totalVotes, participationPct, missedVotePct
+    ...legStats,            // sponsoredBills, cosponsoredBills, becameLawBills, etc.
     committees: committeeList,
     photo
   };
 });
 
-// Overwrite rankings.json
+// ── Overwrite the original rankings file ───────────────────────────────────────
 writeJSON("../public/representatives-rankings.json", enriched);
 
 // Safe global stats
