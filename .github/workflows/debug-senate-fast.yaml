@@ -1,0 +1,65 @@
+name: Debug Senate - Fast
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fast-senate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          npm install
+          npm install jsdom --save
+          npm install xmldom --save
+
+      - name: Attach committees
+        env:
+          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
+        run: node scripts/committee-scraper.js
+
+      - name: Attach votes
+        env:
+          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
+        run: node scripts/votes-scraper.js
+
+      - name: Merge senator data
+        run: node scripts/merge-senators.js
+
+      - name: Attach misconduct (Senate)
+        run: node scripts/misconduct-scraper.js senate
+
+      - name: Generate scores
+        run: node scripts/senators-scores.js
+
+      - name: Update streaks (Senate)
+        run: node scripts/update-streaks.js
+
+      - name: Commit updated Senate files
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Fast debug Senate update [skip ci]"
+          file_pattern: |
+            public/senators*.json
+            public/legislation*.json
+            public/*scores.json
+            public/*streaks.json
+          commit_user_name: github-actions[bot]
+          commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
+          push_options: '--force-with-lease'
+          branch: main
