@@ -53,8 +53,8 @@ jobs:
       - name: Generate scores
         run: node scripts/senators-scores.js
 
-      - name: Update streaks (Senate + House)
-        run: node scripts/update-streaks.js
+      - name: Update streaks (Senate)
+        run: node scripts/update-streaks-senators.js
 
       - name: Debug — list generated files
         if: always()
@@ -68,7 +68,6 @@ jobs:
           commit_message: "Automated Senate update (119th Congress) [skip ci]"
           file_pattern: |
             public/senators*.json
-            public/senators-*.json
             public/legislation*.json
             public/committee*.json
             public/*scores.json
@@ -76,6 +75,6 @@ jobs:
           commit_user_name: github-actions[bot]
           commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
           push_options: '--force-with-lease'
-          skip_dirty_check: false          # only commit if there are changes
+          skip_dirty_check: false
           skip_fetch: false
           branch: main
