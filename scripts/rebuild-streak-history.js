@@ -67,6 +67,9 @@ async function fetchXML(url) {
 }
 
 async function discoverMaxRollCall(session) {
+  // Senate stores roll calls under vote{CONGRESS}{session}, e.g. vote1191, vote1192
+  const dir = `vote${CONGRESS}${session}`;
+
   let low = 1;
   let high = 2000;
   let max = 0;
@@ -74,10 +77,10 @@ async function discoverMaxRollCall(session) {
   while (low <= high) {
     const mid = Math.floor((low + high) / 2);
     const padded = mid.toString().padStart(5, '0');
-    const url = `https://www.senate.gov/legislative/LIS/roll_call_votes/vote${CONGRESS}/vote_${CONGRESS}_${session}_${padded}.xml`;
+    const url = `https://www.senate.gov/legislative/LIS/roll_call_votes/${dir}/vote_${CONGRESS}_${session}_${padded}.xml`;
 
     const parsed = await fetchXML(url);
-    if (parsed) {
+    if (parsed && parsed.roll_call_vote) {
       max = mid;
       low = mid + 1;
     } else {
@@ -197,9 +200,13 @@ async function buildDailyTimelines() {
     const maxRoll = await discoverMaxRollCall(session);
     console.log(`Session ${session}: ${maxRoll} roll calls found`);
 
+    if (maxRoll === 0) continue;
+
+    const dir = `vote${CONGRESS}${session}`;
+
     for (let num = 1; num <= maxRoll; num++) {
       const padded = num.toString().padStart(5, '0');
-      const url = `https://www.senate.gov/legislative/LIS/roll_call_votes/vote${CONGRESS}/vote_${CONGRESS}_${session}_${padded}.xml`;
+      const url = `https://www.senate.gov/legislative/LIS/roll_call_votes/${dir}/vote_${CONGRESS}_${session}_${padded}.xml`;
 
       const parsed = await fetchXML(url);
       if (!parsed || !parsed.roll_call_vote) continue;
