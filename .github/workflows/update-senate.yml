@@ -15,7 +15,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0   # needed for git-auto-commit to compare properly
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -34,10 +34,10 @@ jobs:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: node scripts/legislation-scraper.js
 
-      - name: Scrape committees
+      - name: Scrape Senate committees
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
-        run: node scripts/committee-scraper.js
+        run: node scripts/committee-scraper.js senate
 
       - name: Scrape votes
         env:
@@ -69,7 +69,7 @@ jobs:
           file_pattern: |
             public/senators*.json
             public/legislation*.json
-            public/committee*.json
+            public/senators-committees.json
             public/*scores.json
             public/*streaks.json
           commit_user_name: github-actions[bot]
