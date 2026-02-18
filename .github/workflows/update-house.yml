@@ -134,7 +134,8 @@ jobs:
       - name: Merge legislation parts
         run: node scripts/merge-legislation-parts.js
 
-      # ❌ REMOVED committee-reps-scraper.js
+      - name: Snapshot previous House rankings
+        run: cp public/representatives-rankings.json public/representatives-rankings-prev.json || true
 
       - name: Attach votes
         env:
