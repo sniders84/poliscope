@@ -15,7 +15,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0   # needed for git-auto-commit to compare properly
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -34,10 +34,10 @@ jobs:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: node scripts/legislation-scraper.js
 
-      - name: Scrape Senate committees
+      - name: Scrape committees
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
-        run: node scripts/committee-scraper.js senate
+        run: node scripts/committee-scraper.js
 
       - name: Scrape votes
         env:
@@ -53,8 +53,8 @@ jobs:
       - name: Generate scores
         run: node scripts/senators-scores.js
 
-      - name: Update streaks (Senate)
-        run: node scripts/update-streaks-senators.js
+      - name: Update streaks (Senate + House)
+        run: node scripts/update-streaks.js
 
       - name: Debug — list generated files
         if: always()
@@ -68,13 +68,14 @@ jobs:
           commit_message: "Automated Senate update (119th Congress) [skip ci]"
           file_pattern: |
             public/senators*.json
+            public/senators-*.json
             public/legislation*.json
-            public/senators-committees.json
+            public/committee*.json
             public/*scores.json
             public/*streaks.json
           commit_user_name: github-actions[bot]
           commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
           push_options: '--force-with-lease'
-          skip_dirty_check: false
+          skip_dirty_check: false          # only commit if there are changes
           skip_fetch: false
           branch: main
