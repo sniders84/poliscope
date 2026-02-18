@@ -34,12 +34,13 @@ jobs:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: node scripts/legislation-scraper.js
 
-      # ❌ REMOVED committee-scraper.js
-
       - name: Scrape votes
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: node scripts/votes-scraper.js
+
+      - name: Snapshot previous Senate rankings
+        run: cp public/senators-rankings.json public/senators-rankings-prev.json || true
 
       - name: Merge senator data
         run: node scripts/merge-senators.js
