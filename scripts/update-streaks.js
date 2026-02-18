@@ -1,113 +1,76 @@
-// scripts/update-streaks.js
-// Purpose: Update activity, voting, and leader streaks for Representatives
-// Ensures representatives-rankings.json is populated and defaults to 0 if missing
+for (const person of rankings) {
+  const last = person.metrics.lastTotals || {
+    sponsoredBills: 0,
+    cosponsoredBills: 0,
+    yeaVotes: 0,
+    nayVotes: 0,
+    missedVotes: 0,
+    totalVotes: 0
+  };
 
-const fs = require('fs');
-const path = require('path');
+  const sponsored   = num(person.sponsoredBills);
+  const cosponsored = num(person.cosponsoredBills);
+  const yea         = num(person.yeaVotes);
+  const nay         = num(person.nayVotes);
+  const missed      = num(person.missedVotes);
+  const total       = num(person.totalVotes);
 
-const RANKINGS_PATH = path.join(__dirname, '..', 'public', 'representatives-rankings.json');
-const STREAKS_PATH = path.join(__dirname, '..', 'public', 'representatives-streaks.json');
+  const prevSponsored   = num(last.sponsoredBills);
+  const prevCosponsored = num(last.cosponsoredBills);
+  const prevYea         = num(last.yeaVotes);
+  const prevNay         = num(last.nayVotes);
+  const prevMissed      = num(last.missedVotes);
+  const prevTotal       = num(last.totalVotes);
 
-function num(v) {
-  return (typeof v === 'number' && !Number.isNaN(v)) ? v : 0;
-}
+  // Activity: any new bill or vote action
+  const hadBillChange = sponsored > prevSponsored || cosponsored > prevCosponsored;
+  const hadVoteChange = (yea + nay) > (prevYea + prevNay);
+  person.streaks.activity = (hadBillChange || hadVoteChange)
+    ? person.streaks.activity + 1
+    : 0;
 
-function ensureSchema(rep) {
-  rep.sponsoredBills ??= 0;
-  rep.cosponsoredBills ??= 0;
-  rep.becameLawBills ??= 0;
-  rep.becameLawCosponsoredBills ??= 0;
-
-  rep.yeaVotes ??= 0;
-  rep.nayVotes ??= 0;
-  rep.missedVotes ??= 0;
-  rep.totalVotes ??= 0;
-
-  rep.streaks = rep.streaks || { activity: 0, voting: 0, leader: 0 };
-  rep.metrics = rep.metrics || { lastTotals: {} };
-
-  return rep;
-}
-
-(function main() {
-  let rankings;
-  try {
-    rankings = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf-8')).map(ensureSchema);
-  } catch (err) {
-    console.error(`Failed to load Representatives file: ${err.message}`);
-    process.exit(1);
-  }
-
-  const sortedByPower = [...rankings].sort((a, b) => num(b.powerScore) - num(a.powerScore));
-  const leaderBioguide = sortedByPower[0]?.bioguideId || null;
-
-  let updated = 0;
-  const streaksOutput = [];
-
-  for (const person of rankings) {
-    const last = person.metrics.lastTotals || {};
-
-    const sponsored = num(person.sponsoredBills);
-    const cosponsored = num(person.cosponsoredBills);
-    const yea = num(person.yeaVotes);
-    const nay = num(person.nayVotes);
-    const missed = num(person.missedVotes);
-    const total = num(person.totalVotes);
-
-    const prevSponsored = num(last.sponsoredBills);
-    const prevCosponsored = num(last.cosponsoredBills);
-    const prevMissed = num(last.missedVotes);
-    const prevTotal = num(last.totalVotes);
-
-    // Activity streak
-    const newActivity = (sponsored > prevSponsored) || (cosponsored > prevCosponsored);
-    person.streaks.activity = newActivity ? person.streaks.activity + 1 : 0;
-
-    // Voting streak
-    const newTotalVotes = total - prevTotal;
-    const newMissedVotes = missed - prevMissed;
-    if (newTotalVotes > 0 && newMissedVotes === 0) {
+  // Voting: reset only if missed increased when votes were cast
+  const newTotal = total - prevTotal;
+  const newMissed = missed - prevMissed;
+  if (newTotal > 0) {
+    if (newMissed <= 1) {           // allow 0–1 miss per update
       person.streaks.voting += 1;
-    } else if (newTotalVotes > 0 && newMissedVotes > 0) {
+    } else {
       person.streaks.voting = 0;
     }
-
-    // Leader streak
-    if (leaderBioguide && person.bioguideId === leaderBioguide) {
-      person.streaks.leader += 1;
-    } else {
-      person.streaks.leader = 0;
-    }
-
-    // Legacy field
-    person.streak = Math.max(
-      num(person.streaks.activity),
-      num(person.streaks.voting),
-      num(person.streaks.leader)
-    );
-
-    // Update snapshot
-    person.metrics.lastTotals = {
-      sponsoredBills: sponsored,
-      cosponsoredBills: cosponsored,
-      yeaVotes: yea,
-      nayVotes: nay,
-      missedVotes: missed,
-      totalVotes: total
-    };
-
-    person.lastUpdated = new Date().toISOString();
-    updated++;
-
-    streaksOutput.push({
-      bioguideId: person.bioguideId,
-      activity: person.streaks.activity,
-      voting: person.streaks.voting,
-      leader: person.streaks.leader
-    });
   }
+  // no new votes → preserve streak (quiet day)
 
-  fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
-  fs.writeFileSync(STREAKS_PATH, JSON.stringify(streaksOutput, null, 2));
-  console.log(`Streaks updated for ${updated} Representatives`);
-})();
+  // Leader: replace top-power logic with actual leadership list
+  const isLeader = [
+    'J000299', // Mike Johnson (Speaker)
+    'S001176', // Steve Scalise
+    'E000294', // Tom Emmer
+    'M001136', // Lisa McClain
+    'J000294', // Hakeem Jeffries
+    'C001101'  // Katherine Clark
+    // add more if you want committee chairs
+  ].includes(person.bioguideId);
+
+  person.streaks.leader = isLeader ? person.streaks.leader + 1 : 0;
+
+  // Legacy streak
+  person.streak = Math.max(
+    person.streaks.activity,
+    person.streaks.voting,
+    person.streaks.leader
+  );
+
+  // Save current as next baseline
+  person.metrics.lastTotals = {
+    sponsoredBills: sponsored,
+    cosponsoredBills: cosponsored,
+    yeaVotes: yea,
+    nayVotes: nay,
+    missedVotes: missed,
+    totalVotes: total
+  };
+
+  person.lastUpdated = new Date().toISOString();
+  updated++;
+}
