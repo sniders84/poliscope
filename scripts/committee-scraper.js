@@ -1,4 +1,4 @@
-// scripts/committee-senators-scraper.js
+// scripts/committee-scraper.js
 // Purpose: Merge Senate committee memberships (with leadership flags) into senators-rankings.json
 // Counts only top-level committees, preserves leadership titles, adds full committee names,
 // and enforces schema consistency.
@@ -41,7 +41,6 @@ const codeToName = {
 };
 
 function ensureSchema(sen) {
-  // Votes
   sen.yeaVotes ??= 0;
   sen.nayVotes ??= 0;
   sen.missedVotes ??= 0;
@@ -49,7 +48,6 @@ function ensureSchema(sen) {
   sen.participationPct ??= 0;
   sen.missedVotePct ??= 0;
 
-  // Legislation
   sen.sponsoredBills ??= 0;
   sen.cosponsoredBills ??= 0;
   sen.sponsoredAmendments ??= 0;
@@ -59,10 +57,8 @@ function ensureSchema(sen) {
   sen.becameLawAmendments ??= 0;
   sen.becameLawCosponsoredAmendments ??= 0;
 
-  // Committees
   sen.committees = Array.isArray(sen.committees) ? sen.committees : [];
 
-  // Scores
   sen.rawScore ??= 0;
   sen.score ??= 0;
   sen.scoreNormalized ??= 0;
@@ -91,7 +87,7 @@ function run() {
     }
 
     members.forEach(member => {
-      const bioguide = member.bioguide;
+      const bioguide = member.bioguide || member.bioguideId || null;
       const name = (member.name || '').toLowerCase();
       const key = bioguide || name;
       if (!key) return;
@@ -116,16 +112,27 @@ function run() {
 
   let updatedCount = 0;
   let unmatched = [];
+
   rankings.forEach(sen => {
-    const agg = byBioguide[sen.bioguideId] || byBioguide[sen.name.toLowerCase()];
+    const key1 = sen.bioguideId || null;
+    const key2 = sen.bioguide || null;
+    const key3 = sen.name ? sen.name.toLowerCase() : null;
+
+    const agg =
+      (key1 && byBioguide[key1]) ||
+      (key2 && byBioguide[key2]) ||
+      (key3 && byBioguide[key3]) ||
+      null;
+
     sen.committees = agg ? agg.committees : [];
+
     if (agg && agg.committees.length > 0) updatedCount++;
     else unmatched.push(sen.name);
   });
 
   try {
     fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
-    console.log(`Committees updated for ${updatedCount} senators (with robust matching)`);
+    console.log(`Committees updated for ${updatedCount} senators`);
     if (unmatched.length > 0) console.log(`Unmatched: ${unmatched.join(', ')}`);
   } catch (err) {
     console.error('Write error:', err.message);
