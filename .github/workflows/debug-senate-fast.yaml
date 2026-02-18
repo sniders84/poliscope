@@ -28,10 +28,7 @@ jobs:
           npm install jsdom --save
           npm install xmldom --save
 
-      - name: Attach committees
-        env:
-          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
-        run: node scripts/committee-scraper.js
+      # ❌ REMOVED committee-scraper.js
 
       - name: Attach votes
         env:
