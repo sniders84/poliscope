@@ -202,24 +202,24 @@ async function buildDailyTimelines() {
       const url = `https://www.senate.gov/legislative/LIS/roll_call_votes/vote${CONGRESS}/vote_${CONGRESS}_${session}_${padded}.xml`;
 
       const parsed = await fetchXML(url);
-      if (!parsed) continue;
+      if (!parsed || !parsed.roll_call_vote) continue;
 
       const rc = parsed.roll_call_vote;
 
-// Senate XML is inconsistent — some votes omit vote_date entirely.
-// Try every known field, then skip if still missing.
-const voteDate =
-  rc.vote_date ||
-  rc.action_date ||
-  rc.vote_date_time ||
-  rc.vote_date?.date ||
-  rc.vote_date?.text ||
-  null;
+      // Senate XML is inconsistent — some votes omit vote_date entirely.
+      // Try every known field, then skip if still missing.
+      const voteDate =
+        rc.vote_date ||
+        rc.action_date ||
+        rc.vote_date_time ||
+        rc.vote_date?.date ||
+        rc.vote_date?.text ||
+        null;
 
-if (!voteDate) {
-  // Skip malformed or undated roll calls
-  continue;
-}
+      if (!voteDate) {
+        // Skip malformed or undated roll calls
+        continue;
+      }
 
       const date = voteDate.slice(0, 10);
       if (date < START_DATE || date > todayKey) continue;
