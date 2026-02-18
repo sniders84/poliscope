@@ -80,8 +80,9 @@ jobs:
       # ────────────────────────────────────────────────────────────────
       # Core fast steps (always run)
       # ────────────────────────────────────────────────────────────────
-      - name: Attach committees
-        run: node scripts/committee-reps-scraper.js
+
+      # ❌ REMOVED committee-reps-scraper.js
+      # merge-representatives.js now handles committees exclusively
 
       - name: Attach votes
         env:
