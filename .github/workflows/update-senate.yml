@@ -15,7 +15,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0   # needed for git-auto-commit to compare properly
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -34,10 +34,7 @@ jobs:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: node scripts/legislation-scraper.js
 
-      - name: Scrape committees
-        env:
-          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
-        run: node scripts/committee-scraper.js
+      # ❌ REMOVED committee-scraper.js
 
       - name: Scrape votes
         env:
@@ -76,6 +73,6 @@ jobs:
           commit_user_name: github-actions[bot]
           commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
           push_options: '--force-with-lease'
-          skip_dirty_check: false          # only commit if there are changes
+          skip_dirty_check: false
           skip_fetch: false
           branch: main
