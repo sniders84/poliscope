@@ -134,8 +134,7 @@ jobs:
       - name: Merge legislation parts
         run: node scripts/merge-legislation-parts.js
 
-      - name: Attach committees
-        run: node scripts/committee-reps-scraper.js
+      # ❌ REMOVED committee-reps-scraper.js
 
       - name: Attach votes
         env:
