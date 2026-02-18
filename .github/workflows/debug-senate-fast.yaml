@@ -28,7 +28,8 @@ jobs:
           npm install jsdom --save
           npm install xmldom --save
 
-      # ❌ REMOVED committee-scraper.js
+      - name: Snapshot previous Senate rankings
+        run: cp public/senators-rankings.json public/senators-rankings-prev.json || true
 
       - name: Attach votes
         env:
