@@ -34,9 +34,6 @@ jobs:
           npm install jsdom --save
           npm install xmldom --save
 
-      # ────────────────────────────────────────────────────────────────
-      # Legislation refresh from API (only if toggle enabled)
-      # ────────────────────────────────────────────────────────────────
       - name: Run legislation part 1 (if enabled)
         if: github.event.inputs.refresh_legislation == 'true'
         env:
@@ -77,12 +74,8 @@ jobs:
         if: github.event.inputs.refresh_legislation == 'true'
         run: node scripts/merge-legislation-parts.js
 
-      # ────────────────────────────────────────────────────────────────
-      # Core fast steps (always run)
-      # ────────────────────────────────────────────────────────────────
-
-      # ❌ REMOVED committee-reps-scraper.js
-      # merge-representatives.js now handles committees exclusively
+      - name: Snapshot previous House rankings
+        run: cp public/representatives-rankings.json public/representatives-rankings-prev.json || true
 
       - name: Attach votes
         env:
@@ -101,9 +94,6 @@ jobs:
       - name: Update streaks
         run: node scripts/update-streaks.js
 
-      # ────────────────────────────────────────────────────────────────
-      # Commit changes
-      # ────────────────────────────────────────────────────────────────
       - name: Commit updated House files (fast debug)
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
