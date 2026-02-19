@@ -1,6 +1,6 @@
 // merge-representatives.js
 // Enriches and overwrites representatives-rankings.json with all scraper data,
-// including committees from representatives-committees.json.
+// including House committees from representatives-committees.json (HSxx only).
 
 const fs = require("fs");
 const path = require("path");
@@ -21,49 +21,39 @@ function writeJSON(relativePath, data) {
   console.log(`Wrote/updated: ${relativePath}`);
 }
 
-// Load base rankings (will be overwritten)
+// ------------------------------------------------------------
+// LOAD BASE FILES
+// ------------------------------------------------------------
+
 let rankings = loadJSON("../public/representatives-rankings.json", []) || [];
 
-// Load intermediates
-const votes        = loadJSON("../public/representatives-votes.json", []) || [];
-const legislation  = loadJSON("../public/representatives-legislation.json", []) || [];
+const votes       = loadJSON("../public/representatives-votes.json", []) || [];
+const legislation = loadJSON("../public/legislation-representatives.json", []) || [];
 const committeeRaw = loadJSON("../public/representatives-committees.json", {}) || {};
 
-// Lookups
-const votesById = new Map(votes.map(v => [v.bioguideId || v.bioguide, v.votes || {}]));
-const legById   = new Map(legislation.map(l => [l.bioguideId || l.bioguide, l]));
+// ------------------------------------------------------------
+// LOOKUPS
+// ------------------------------------------------------------
 
-// Committee code → full name (House)
-const codeToName = {
-  HSAG: "Agriculture",
-  HSAP: "Appropriations",
-  HSAS: "Armed Services",
-  HSBA: "Financial Services",
-  HSBU: "Budget",
-  HSED: "Education and the Workforce",
-  HSFA: "Foreign Affairs",
-  HSGO: "Oversight and Accountability",
-  HSHM: "Homeland Security",
-  HSIF: "Energy and Commerce",
-  HSII: "Natural Resources",
-  HSJU: "Judiciary",
-  HSPW: "Transportation and Infrastructure",
-  HSRU: "Rules",
-  HSSM: "Science, Space, and Technology",
-  HSSY: "Small Business",
-  HSVR: "Veterans' Affairs",
-  HSWM: "Ways and Means",
-  HLIG: "Intelligence",
-  HSHA: "House Administration",
-  HSQJ: "Joint Economic Committee"
-};
+const votesById = new Map(
+  votes.map(v => [v.bioguideId || v.bioguide, v.votes || {}])
+);
 
-// Build committeesById from committee membership file
+const legById = new Map(
+  legislation.map(l => [l.bioguideId || l.bioguide, l])
+);
+
+// ------------------------------------------------------------
+// BUILD committeesById (House only: HSxx codes)
+// ------------------------------------------------------------
+
 const committeesById = new Map();
 
 for (const [committeeCode, members] of Object.entries(committeeRaw)) {
   if (!Array.isArray(members)) continue;
-  if (!codeToName[committeeCode]) continue;
+
+  // Only House committees (HSxx)
+  if (!committeeCode.startsWith("HS")) continue;
 
   for (const m of members) {
     const id = m.bioguide || m.bioguideId || null;
@@ -73,13 +63,23 @@ for (const [committeeCode, members] of Object.entries(committeeRaw)) {
 
     if (!committeesById.has(key)) committeesById.set(key, []);
 
+    // Normalize role
     let role = m.title || "Member";
-    if (m.rank === 1 || role.toLowerCase().includes("chair")) role = "Chair";
-    if (m.rank === 2 || role.toLowerCase().includes("ranking")) role = "Ranking Member";
+    const lower = role.toLowerCase();
+
+    if (m.rank === 1 || lower.includes("chair")) {
+      role = "Chair";
+    } else if (m.rank === 2 || lower.includes("ranking")) {
+      role = "Ranking Member";
+    } else if (lower.includes("vice")) {
+      role = "Vice Chair";
+    } else {
+      role = "Member";
+    }
 
     committeesById.get(key).push({
       committeeCode,
-      committeeName: codeToName[committeeCode] || committeeCode,
+      committeeName: committeeCode, // House names not mapped; code is fine
       role,
       rank: m.rank ?? null,
       party: m.party || null
@@ -87,7 +87,10 @@ for (const [committeeCode, members] of Object.entries(committeeRaw)) {
   }
 }
 
-// Enrich rankings
+// ------------------------------------------------------------
+// ENRICH RANKINGS
+// ------------------------------------------------------------
+
 const enriched = rankings.map(entry => {
   const id = entry.bioguideId || entry.bioguide || null;
   const nameKey = entry.name ? entry.name.toLowerCase() : null;
@@ -115,7 +118,10 @@ const enriched = rankings.map(entry => {
   };
 });
 
-// Write final rankings
+// ------------------------------------------------------------
+// WRITE OUTPUT
+// ------------------------------------------------------------
+
 writeJSON("../public/representatives-rankings.json", enriched);
 
 // Stats
@@ -123,7 +129,7 @@ const withVotes = enriched.filter(r => (r.yeaVotes || 0) > 0 || (r.totalVotes ||
 const withLeg   = enriched.filter(r => (r.sponsoredBills || 0) > 0 || (r.cosponsoredBills || 0) > 0).length;
 const withCom   = enriched.filter(r => (r.committees || []).length > 0).length;
 
-console.log(`Enriched and overwrote representatives-rankings.json with ${enriched.length} representatives`);
-console.log(`Reps with vote data: ${withVotes}`);
-console.log(`Reps with legislation data: ${withLeg}`);
-console.log(`Reps with committees: ${withCom}`);
+console.log(`Enriched and overwrote representatives-rankings.json with ${enriched.length} members`);
+console.log(`Members with vote data: ${withVotes}`);
+console.log(`Members with legislation data: ${withLeg}`);
+console.log(`Members with committees: ${withCom}`);
