@@ -21,6 +21,10 @@ function writeJSON(relativePath, data) {
   console.log(`Wrote/updated: ${relativePath}`);
 }
 
+// ------------------------------------------------------------
+// LOAD BASE FILES
+// ------------------------------------------------------------
+
 // Load base rankings (will be overwritten)
 let rankings = loadJSON("../public/senators-rankings.json", []) || [];
 
@@ -29,9 +33,17 @@ const votes       = loadJSON("../public/senators-votes.json", []) || [];
 const legislation = loadJSON("../public/legislation-senators.json", []) || [];
 const committeeRaw = loadJSON("../public/senators-committee-membership-current.json", {}) || {};
 
-// Lookups
-const votesById = new Map(votes.map(v => [v.bioguideId || v.bioguide, v.votes || {}]));
-const legById   = new Map(legislation.map(l => [l.bioguideId || l.bioguide, l]));
+// ------------------------------------------------------------
+// LOOKUPS
+// ------------------------------------------------------------
+
+const votesById = new Map(
+  votes.map(v => [v.bioguideId || v.bioguide, v.votes || {}])
+);
+
+const legById = new Map(
+  legislation.map(l => [l.bioguideId || l.bioguide, l])
+);
 
 // Committee code → full name
 const codeToName = {
@@ -64,11 +76,16 @@ const codeToName = {
   SSIS: 'Intelligence (Select)',
 };
 
-// Build committeesById from committee membership file
+// ------------------------------------------------------------
+// BUILD committeesById FROM committee membership file
+// ------------------------------------------------------------
+
 const committeesById = new Map();
 
 for (const [committeeCode, members] of Object.entries(committeeRaw)) {
   if (!Array.isArray(members)) continue;
+
+  // Skip subcommittees or unknown codes
   if (committeeCode.includes("Subcommittee") || committeeCode.length > 4 || !codeToName[committeeCode]) {
     continue;
   }
@@ -81,9 +98,19 @@ for (const [committeeCode, members] of Object.entries(committeeRaw)) {
 
     if (!committeesById.has(key)) committeesById.set(key, []);
 
+    // Normalize role
     let role = m.title || "Member";
-    if (m.rank === 1 || role.toLowerCase().includes("chair")) role = "Chair";
-    if (m.rank === 2 || role.toLowerCase().includes("ranking")) role = "Ranking Member";
+    const lower = role.toLowerCase();
+
+    if (m.rank === 1 || lower.includes("chair")) {
+      role = "Chair";
+    } else if (m.rank === 2 || lower.includes("ranking")) {
+      role = "Ranking Member";
+    } else if (lower.includes("vice")) {
+      role = "Vice Chair";
+    } else {
+      role = "Member";
+    }
 
     committeesById.get(key).push({
       committeeCode,
@@ -95,7 +122,10 @@ for (const [committeeCode, members] of Object.entries(committeeRaw)) {
   }
 }
 
-// Enrich rankings
+// ------------------------------------------------------------
+// ENRICH RANKINGS
+// ------------------------------------------------------------
+
 const enriched = rankings.map(entry => {
   const id = entry.bioguideId || entry.bioguide || null;
   const nameKey = entry.name ? entry.name.toLowerCase() : null;
@@ -123,7 +153,10 @@ const enriched = rankings.map(entry => {
   };
 });
 
-// Write final rankings
+// ------------------------------------------------------------
+// WRITE OUTPUT
+// ------------------------------------------------------------
+
 writeJSON("../public/senators-rankings.json", enriched);
 
 // Stats
