@@ -1,6 +1,11 @@
 // scripts/senators-scores.js
-// Purpose: Compute rubric-based scores for senators and overwrite senators-rankings.json
-// Schema preserved exactly as before. Uses aggregated vote totals from senators-votes.json.
+// Purpose: Compute rubric-based Power Scores for senators and overwrite senators-rankings.json
+// Includes:
+//   - Legislation scoring
+//   - Committee hierarchy scoring
+//   - Missed vote penalties
+//   - Misconduct penalties
+//   - Full breakdown for UI
 
 const fs = require('fs');
 const path = require('path');
@@ -18,6 +23,10 @@ try {
   process.exit(1);
 }
 
+// ------------------------------------------------------------
+// SCORING CONSTANTS
+// ------------------------------------------------------------
+
 const WEIGHTS = {
   bills: {
     sponsoredBills: 1.2,
@@ -26,9 +35,10 @@ const WEIGHTS = {
     becameLawCosponsoredBills: 3.0
   },
   committees: {
-    Chair: 4.0,
-    RankingMember: 4.0,
-    Member: 2.0
+    Chair: 4,
+    Ranking: 3,
+    Vice: 2,
+    Member: 1
   },
   votes: {
     missedVotePenalty: -0.5
@@ -38,40 +48,131 @@ const WEIGHTS = {
   }
 };
 
+// ------------------------------------------------------------
+// SCORING ENGINE
+// ------------------------------------------------------------
+
 senators = senators.map(s => {
   let score = 0;
 
-  // --- LEGISLATION ---
-  for (const [field, weight] of Object.entries(WEIGHTS.bills)) {
-    score += (s[field] || 0) * weight;
-  }
+  // -----------------------------
+  // LEGISLATION
+  // -----------------------------
+  const billsSponsoredScore = (s.sponsoredBills || 0) * WEIGHTS.bills.sponsoredBills;
+  const billsCosponsoredScore = (s.cosponsoredBills || 0) * WEIGHTS.bills.cosponsoredBills;
+  const billsEnactedScore = (s.becameLawBills || 0) * WEIGHTS.bills.becameLawBills;
+  const billsEnactedCosponsoredScore =
+    (s.becameLawCosponsoredBills || 0) * WEIGHTS.bills.becameLawCosponsoredBills;
 
-  // --- COMMITTEES ---
+  score += billsSponsoredScore;
+  score += billsCosponsoredScore;
+  score += billsEnactedScore;
+  score += billsEnactedCosponsoredScore;
+
+  // -----------------------------
+  // COMMITTEES (Hierarchy Scoring)
+  // -----------------------------
+  let chairCount = 0;
+  let rankingCount = 0;
+  let viceCount = 0;
+  let memberCount = 0;
+
   for (const c of s.committees || []) {
-    if (/chair/i.test(c.role)) score += WEIGHTS.committees.Chair;
-    else if (/ranking/i.test(c.role)) score += WEIGHTS.committees.RankingMember;
-    else score += WEIGHTS.committees.Member;
+    const role = (c.role || "").toLowerCase();
+
+    if (role.includes("chair")) {
+      chairCount++;
+    } else if (role.includes("ranking")) {
+      rankingCount++;
+    } else if (role.includes("vice")) {
+      viceCount++;
+    } else {
+      memberCount++;
+    }
   }
 
-  // --- VOTES ---
-  // Your new scraper provides complete totals, so this is now accurate.
+  const chairScore = chairCount * WEIGHTS.committees.Chair;
+  const rankingScore = rankingCount * WEIGHTS.committees.Ranking;
+  const viceScore = viceCount * WEIGHTS.committees.Vice;
+  const memberScore = memberCount * WEIGHTS.committees.Member;
+
+  const committeeScore =
+    chairScore + rankingScore + viceScore + memberScore;
+
+  score += committeeScore;
+
+  // -----------------------------
+  // MISSED VOTES
+  // -----------------------------
   const missedVotes = s.missedVotes || 0;
-  score += missedVotes * WEIGHTS.votes.missedVotePenalty;
+  const missedVotesScore = missedVotes * WEIGHTS.votes.missedVotePenalty;
+  score += missedVotesScore;
 
-  // --- MISCONDUCT ---
+  // -----------------------------
+  // MISCONDUCT
+  // -----------------------------
   const misconductCount = s.misconductCount || 0;
-  score += misconductCount * WEIGHTS.misconduct.penaltyPerInfraction;
+  const misconductScore = misconductCount * WEIGHTS.misconduct.penaltyPerInfraction;
+  score += misconductScore;
 
-  // No negative scores
+  // -----------------------------
+  // FINALIZE
+  // -----------------------------
   if (score < 0) score = 0;
+
+  const finalScore = Number(score.toFixed(1));
 
   return {
     ...s,
-    powerScore: score,
-    streak: s.streak || 0, // preserve streak
+    powerScore: finalScore,
+    scoreBreakdown: {
+      billsSponsored: {
+        raw: s.sponsoredBills || 0,
+        weight: WEIGHTS.bills.sponsoredBills,
+        contribution: billsSponsoredScore
+      },
+      billsCosponsored: {
+        raw: s.cosponsoredBills || 0,
+        weight: WEIGHTS.bills.cosponsoredBills,
+        contribution: billsCosponsoredScore
+      },
+      billsEnacted: {
+        raw: s.becameLawBills || 0,
+        weight: WEIGHTS.bills.becameLawBills,
+        contribution: billsEnactedScore
+      },
+      billsEnactedCosponsored: {
+        raw: s.becameLawCosponsoredBills || 0,
+        weight: WEIGHTS.bills.becameLawCosponsoredBills,
+        contribution: billsEnactedCosponsoredScore
+      },
+      committees: {
+        chair: { count: chairCount, weight: WEIGHTS.committees.Chair, contribution: chairScore },
+        ranking: { count: rankingCount, weight: WEIGHTS.committees.Ranking, contribution: rankingScore },
+        vice: { count: viceCount, weight: WEIGHTS.committees.Vice, contribution: viceScore },
+        member: { count: memberCount, weight: WEIGHTS.committees.Member, contribution: memberScore },
+        total: committeeScore
+      },
+      missedVotes: {
+        raw: missedVotes,
+        weight: WEIGHTS.votes.missedVotePenalty,
+        contribution: missedVotesScore
+      },
+      misconduct: {
+        raw: misconductCount,
+        weight: WEIGHTS.misconduct.penaltyPerInfraction,
+        contribution: misconductScore
+      },
+      totalPowerScore: finalScore
+    },
+    streak: s.streak || 0,
     lastUpdated: new Date().toISOString()
   };
 });
 
+// ------------------------------------------------------------
+// WRITE OUTPUT
+// ------------------------------------------------------------
+
 fs.writeFileSync(rankingsPath, JSON.stringify(senators, null, 2));
-console.log(`Updated senators-rankings.json with rubric-based scores (${senators.length} records)`);
+console.log(`Updated senators-rankings.json with rubric-based Power Scores (${senators.length} records)`);
