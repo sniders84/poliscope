@@ -1,7 +1,11 @@
 // scripts/representatives-scores.js
-// Purpose: Compute scores and add vote stats to representatives-rankings.json
-// Amendments removed, misconduct penalty added, streak preserved
-// Uses rubric weights with committee leadership > membership
+// Purpose: Compute rubric-based Power Scores for House members and overwrite representatives-rankings.json
+// Includes:
+//   - Legislation scoring
+//   - Committee hierarchy scoring (HSxx only)
+//   - Missed vote penalties
+//   - Misconduct penalties
+//   - Full breakdown for UI
 
 const fs = require('fs');
 const path = require('path');
@@ -19,6 +23,10 @@ try {
   process.exit(1);
 }
 
+// ------------------------------------------------------------
+// SCORING CONSTANTS
+// ------------------------------------------------------------
+
 const WEIGHTS = {
   bills: {
     sponsoredBills: 1.2,
@@ -27,9 +35,10 @@ const WEIGHTS = {
     becameLawCosponsoredBills: 3.0
   },
   committees: {
-    Chair: 4.0,
-    RankingMember: 4.0,
-    Member: 2.0
+    Chair: 4,
+    Ranking: 3,
+    Vice: 2,
+    Member: 1
   },
   votes: {
     missedVotePenalty: -0.5
@@ -39,71 +48,131 @@ const WEIGHTS = {
   }
 };
 
-function ensureSchema(r) {
-  r.yeaVotes ??= 0;
-  r.nayVotes ??= 0;
-  r.missedVotes ??= 0;
-  r.totalVotes ??= 0;
-  r.participationPct ??= 0;
-  r.missedVotePct ??= 0;
+// ------------------------------------------------------------
+// SCORING ENGINE
+// ------------------------------------------------------------
 
-  r.sponsoredBills ??= 0;
-  r.cosponsoredBills ??= 0;
-  r.becameLawBills ??= 0;
-  r.becameLawCosponsoredBills ??= 0;
-
-  r.committees = Array.isArray(r.committees) ? r.committees : [];
-
-  r.misconductCount ??= 0;
-  r.rawScore ??= 0;
-  r.score ??= 0;
-  r.scoreNormalized ??= 0;
-
-  return r;
-}
-
-reps = reps.map(ensureSchema);
-
-let maxScore = 0;
-reps = reps.map(r => {
+reps = reps.map(s => {
   let score = 0;
 
-  // Bills
-  for (const [field, weight] of Object.entries(WEIGHTS.bills)) {
-    score += (r[field] || 0) * weight;
+  // -----------------------------
+  // LEGISLATION
+  // -----------------------------
+  const billsSponsoredScore = (s.sponsoredBills || 0) * WEIGHTS.bills.sponsoredBills;
+  const billsCosponsoredScore = (s.cosponsoredBills || 0) * WEIGHTS.bills.cosponsoredBills;
+  const billsEnactedScore = (s.becameLawBills || 0) * WEIGHTS.bills.becameLawBills;
+  const billsEnactedCosponsoredScore =
+    (s.becameLawCosponsoredBills || 0) * WEIGHTS.bills.becameLawCosponsoredBills;
+
+  score += billsSponsoredScore;
+  score += billsCosponsoredScore;
+  score += billsEnactedScore;
+  score += billsEnactedCosponsoredScore;
+
+  // -----------------------------
+  // COMMITTEES (Hierarchy Scoring)
+  // -----------------------------
+  let chairCount = 0;
+  let rankingCount = 0;
+  let viceCount = 0;
+  let memberCount = 0;
+
+  for (const c of s.committees || []) {
+    const role = (c.role || "").toLowerCase();
+
+    if (role.includes("chair")) {
+      chairCount++;
+    } else if (role.includes("ranking")) {
+      rankingCount++;
+    } else if (role.includes("vice")) {
+      viceCount++;
+    } else {
+      memberCount++;
+    }
   }
 
-  // Committees
-  for (const c of r.committees || []) {
-    if (/chair/i.test(c.role)) score += WEIGHTS.committees.Chair;
-    else if (/ranking/i.test(c.role)) score += WEIGHTS.committees.RankingMember;
-    else score += WEIGHTS.committees.Member;
-  }
+  const chairScore = chairCount * WEIGHTS.committees.Chair;
+  const rankingScore = rankingCount * WEIGHTS.committees.Ranking;
+  const viceScore = viceCount * WEIGHTS.committees.Vice;
+  const memberScore = memberCount * WEIGHTS.committees.Member;
 
-  // Votes
-  score += (r.missedVotes || 0) * WEIGHTS.votes.missedVotePenalty;
+  const committeeScore =
+    chairScore + rankingScore + viceScore + memberScore;
 
-  // Misconduct
-  const misconductCount = r.misconductCount || 0;
-  if (misconductCount > 0) {
-    score += misconductCount * WEIGHTS.misconduct.penaltyPerInfraction;
-  }
+  score += committeeScore;
 
+  // -----------------------------
+  // MISSED VOTES
+  // -----------------------------
+  const missedVotes = s.missedVotes || 0;
+  const missedVotesScore = missedVotes * WEIGHTS.votes.missedVotePenalty;
+  score += missedVotesScore;
+
+  // -----------------------------
+  // MISCONDUCT
+  // -----------------------------
+  const misconductCount = s.misconductCount || 0;
+  const misconductScore = misconductCount * WEIGHTS.misconduct.penaltyPerInfraction;
+  score += misconductScore;
+
+  // -----------------------------
+  // FINALIZE
+  // -----------------------------
   if (score < 0) score = 0;
-  if (score > maxScore) maxScore = score;
+
+  const finalScore = Number(score.toFixed(1));
 
   return {
-    ...r,
-    powerScore: score,
-    streak: r.streak || 0,
+    ...s,
+    powerScore: finalScore,
+    scoreBreakdown: {
+      billsSponsored: {
+        raw: s.sponsoredBills || 0,
+        weight: WEIGHTS.bills.sponsoredBills,
+        contribution: billsSponsoredScore
+      },
+      billsCosponsored: {
+        raw: s.cosponsoredBills || 0,
+        weight: WEIGHTS.bills.cosponsoredBills,
+        contribution: billsCosponsoredScore
+      },
+      billsEnacted: {
+        raw: s.becameLawBills || 0,
+        weight: WEIGHTS.bills.becameLawBills,
+        contribution: billsEnactedScore
+      },
+      billsEnactedCosponsored: {
+        raw: s.becameLawCosponsoredBills || 0,
+        weight: WEIGHTS.bills.becameLawCosponsoredBills,
+        contribution: billsEnactedCosponsoredScore
+      },
+      committees: {
+        chair: { count: chairCount, weight: WEIGHTS.committees.Chair, contribution: chairScore },
+        ranking: { count: rankingCount, weight: WEIGHTS.committees.Ranking, contribution: rankingScore },
+        vice: { count: viceCount, weight: WEIGHTS.committees.Vice, contribution: viceScore },
+        member: { count: memberCount, weight: WEIGHTS.committees.Member, contribution: memberScore },
+        total: committeeScore
+      },
+      missedVotes: {
+        raw: missedVotes,
+        weight: WEIGHTS.votes.missedVotePenalty,
+        contribution: missedVotesScore
+      },
+      misconduct: {
+        raw: misconductCount,
+        weight: WEIGHTS.misconduct.penaltyPerInfraction,
+        contribution: misconductScore
+      },
+      totalPowerScore: finalScore
+    },
+    streak: s.streak || 0,
     lastUpdated: new Date().toISOString()
   };
 });
 
-reps = reps.map(r => ({
-  ...r,
-  scoreNormalized: maxScore > 0 ? Number(((r.powerScore / maxScore) * 100).toFixed(2)) : 0
-}));
+// ------------------------------------------------------------
+// WRITE OUTPUT
+// ------------------------------------------------------------
 
 fs.writeFileSync(rankingsPath, JSON.stringify(reps, null, 2));
-console.log(`Updated representatives-rankings.json with rubric-based scores, normalized values, vote stats, and misconduct penalties (${reps.length} records)`);
+console.log(`Updated representatives-rankings.json with rubric-based Power Scores (${reps.length} records)`);
