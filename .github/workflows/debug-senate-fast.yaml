@@ -46,7 +46,7 @@ jobs:
         run: node scripts/senators-scores.js
 
       - name: Update streaks (Senate)
-        run: node scripts/update-streaks.js
+        run: node scripts/update-streaks-senators.js
 
       - name: Commit updated Senate files
         uses: stefanzweifel/git-auto-commit-action@v5
