@@ -1,4 +1,6 @@
 // scripts/update-streaks.js
+// HOUSE-ONLY streak updater
+
 const fs = require('fs');
 const path = require('path');
 
@@ -77,12 +79,14 @@ function updateChamberStreaks(opts) {
     const prevMissed      = num(last.missedVotes);
     const prevTotal       = num(last.totalVotes);
 
+    // Activity streak
     const hadBillChange = sponsored > prevSponsored || cosponsored > prevCosponsored;
     const hadVoteChange = (yea + nay) > (prevYea + prevNay);
     person.streaks.activity = (hadBillChange || hadVoteChange)
       ? person.streaks.activity + 1
       : 0;
 
+    // Voting streak
     const newTotal = total - prevTotal;
     const newMissed = missed - prevMissed;
     if (newTotal > 0) {
@@ -93,15 +97,18 @@ function updateChamberStreaks(opts) {
       }
     }
 
+    // Leader streak (House leadership only)
     const isLeader = leaderIds.includes(person.bioguideId);
     person.streaks.leader = isLeader ? person.streaks.leader + 1 : 0;
 
+    // Legacy streak
     person.streak = Math.max(
       person.streaks.activity,
       person.streaks.voting,
       person.streaks.leader
     );
 
+    // Update snapshot
     person.metrics.lastTotals = {
       sponsoredBills: sponsored,
       cosponsoredBills: cosponsored,
@@ -129,19 +136,12 @@ function updateChamberStreaks(opts) {
   console.log(`Streaks updated for ${updated} entries from ${path.basename(rankingsPath)}`);
 }
 
+// ------------------------------
+// HOUSE ONLY
+// ------------------------------
+
 (function main() {
   const base = path.join(__dirname, '..', 'public');
-
-  updateChamberStreaks({
-    rankingsPath: path.join(base, 'senators-rankings.json'),
-    prevRankingsPath: path.join(base, 'senators-rankings-prev.json'),
-    streaksPath: path.join(base, 'senators-streaks.json'),
-    leaderIds: [
-      'T000250', // John Thune
-      'B001261', // John Barrasso
-      'S000063'  // Chuck Schumer
-    ]
-  });
 
   updateChamberStreaks({
     rankingsPath: path.join(base, 'representatives-rankings.json'),
