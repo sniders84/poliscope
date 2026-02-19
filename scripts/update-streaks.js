@@ -35,11 +35,10 @@ function loadJSONSafe(p, fallback) {
 
 function updateChamberStreaks(opts) {
   const {
-    rankingsPath,
-    prevRankingsPath,
-    streaksPath,
-    leaderIds
-  } = opts;
+  rankingsPath,
+  prevRankingsPath,
+  streaksPath
+} = opts;
 
   let rankings = loadJSONSafe(rankingsPath, []).map(ensureSchema);
   const prevRankings = loadJSONSafe(prevRankingsPath, []);
@@ -49,6 +48,10 @@ function updateChamberStreaks(opts) {
       .map(ensureSchema)
       .map(p => [p.bioguideId || p.bioguide, p])
   );
+
+  // Determine today's #1 PowerScore leader
+const sortedByPower = [...rankings].sort((a, b) => num(b.powerScore) - num(a.powerScore));
+const todayLeaderId = sortedByPower[0]?.bioguideId;
 
   const streaksOutput = [];
   let updated = 0;
@@ -86,28 +89,30 @@ function updateChamberStreaks(opts) {
       ? person.streaks.activity + 1
       : 0;
 
-    // Voting streak
-    const newTotal = total - prevTotal;
-    const newMissed = missed - prevMissed;
-    if (newTotal > 0) {
-      if (newMissed <= 1) {
-        person.streaks.voting += 1;
-      } else {
-        person.streaks.voting = 0;
-      }
-    }
+   // Voting streak
+const newTotal = total - prevTotal;
+const newMissed = missed - prevMissed;
+if (newTotal > 0) {
+  if (newMissed <= 1) {
+    person.streaks.voting += 1;
+  } else {
+    person.streaks.voting = 0;
+  }
+}
 
-    // Leader streak (House leadership only)
-    const isLeader = leaderIds.includes(person.bioguideId);
-    person.streaks.leader = isLeader ? person.streaks.leader + 1 : 0;
+// Leader streak (correct logic)
+if (person.bioguideId === todayLeaderId) {
+  person.streaks.leader = (person.streaks.leader || 0) + 1;
+} else {
+  person.streaks.leader = 0;
+}
 
-    // Legacy streak
-    person.streak = Math.max(
-      person.streaks.activity,
-      person.streaks.voting,
-      person.streaks.leader
-    );
-
+// Legacy streak
+person.streak = Math.max(
+  person.streaks.activity,
+  person.streaks.voting,
+  person.streaks.leader
+);
     // Update snapshot
     person.metrics.lastTotals = {
       sponsoredBills: sponsored,
@@ -146,14 +151,6 @@ function updateChamberStreaks(opts) {
   updateChamberStreaks({
     rankingsPath: path.join(base, 'representatives-rankings.json'),
     prevRankingsPath: path.join(base, 'representatives-rankings-prev.json'),
-    streaksPath: path.join(base, 'representatives-streaks.json'),
-    leaderIds: [
-      'J000299', // Mike Johnson
-      'S001176', // Steve Scalise
-      'E000294', // Tom Emmer
-      'M001136', // Lisa McClain
-      'J000294', // Hakeem Jeffries
-      'C001101'  // Katherine Clark
-    ]
+    streaksPath: path.join(base, 'representatives-streaks.json')
   });
 })();
