@@ -3,7 +3,7 @@ name: Update Senate Data
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 2 * * *'  # nightly at 2 AM UTC
+    - cron: '0 0 * * *'  # nightly at 12 AM UTC (midnight)
 
 permissions:
   contents: write
