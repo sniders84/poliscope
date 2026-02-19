@@ -52,7 +52,7 @@ jobs:
         run: node scripts/senators-scores.js
 
       - name: Update streaks (Senate + House)
-        run: node scripts/update-streaks.js
+        run: node scripts/update-streaks-senators.js
 
       - name: Debug — list generated files
         if: always()
