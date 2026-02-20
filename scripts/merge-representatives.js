@@ -1,6 +1,6 @@
 // merge-representatives.js
 // Enriches and overwrites representatives-rankings.json with all scraper data,
-// including House committees from representatives-committees.json (HSxx only).
+// including House committees from representatives-committees.json.
 
 const fs = require("fs");
 const path = require("path");
@@ -32,17 +32,72 @@ const legislation  = loadJSON("../public/legislation-representatives.json", []) 
 const committeeRaw = loadJSON("../public/representatives-committees.json", {}) || {};
 
 // ------------------------------------------------------------
-// LOOKUPS
+// UNIFIED COMMITTEE NAME RESOLUTION
 // ------------------------------------------------------------
 
-// votes scraper now outputs FLAT fields (yeaVotes, nayVotes, etc.)
-const votesById = new Map(
-  votes.map(v => [v.bioguideId || v.bioguide, v])
-);
+function resolveCommitteeName(code) {
+  const parent = code.substring(0, 4);
 
-const legById = new Map(
-  legislation.map(l => [l.bioguideId || l.bioguide, l])
-);
+  const parentNames = {
+    // SENATE
+    SSAF: 'Agriculture, Nutrition, and Forestry',
+    SSAP: 'Appropriations',
+    SSAS: 'Armed Services',
+    SSBK: 'Banking, Housing, and Urban Affairs',
+    SSCV: 'Commerce, Science, and Transportation',
+    SSCM: 'Energy and Natural Resources',
+    SSEV: 'Environment and Public Works',
+    SSFI: 'Finance',
+    SSFR: 'Foreign Relations',
+    SSGA: 'Homeland Security and Governmental Affairs',
+    SSHR: 'Health, Education, Labor, and Pensions',
+    SSJU: 'Judiciary',
+    SSRA: 'Rules and Administration',
+    SSSC: 'Small Business and Entrepreneurship',
+    SSVA: 'Veterans\' Affairs',
+    SLIA: 'Indian Affairs',
+    SLIN: 'Intelligence',
+    SLET: 'Ethics',
+    SRES: 'Aging (Special)',
+    JCSE: 'Joint Economic Committee',
+    JSEC: 'Joint Committee on Taxation',
+    JSLC: 'Joint Committee on the Library',
+    JSPW: 'Joint Committee on Printing',
+    SPAG: 'Joint Agriculture',
+    SSEG: 'Joint Energy',
+    SSNR: 'Joint Natural Resources',
+    SSIS: 'Select Committee on Intelligence',
+
+    // HOUSE (parent committees)
+    HSIF: 'Energy and Commerce',
+    HSBA: 'Financial Services',
+    HSGO: 'Oversight and Accountability',
+    HSPW: 'Transportation and Infrastructure',
+    HSFA: 'Foreign Affairs',
+    HSED: 'Education and the Workforce',
+    HSAG: 'Agriculture',
+    HSAP: 'Appropriations',
+    HSAS: 'Armed Services',
+    HSBU: 'Budget',
+    HSJU: 'Judiciary',
+    HSHM: 'Homeland Security',
+    HSSM: 'Science, Space, and Technology',
+    HSSY: 'Small Business',
+    HSWM: 'Ways and Means',
+    HSVG: 'Veterans\' Affairs',
+    HSHR: 'House Administration',
+    HSNR: 'Natural Resources',
+  };
+
+  const parentName = parentNames[parent] || parent;
+
+  if (code.length > 4) {
+    const sub = code.substring(4);
+    return `${parentName} — Subcommittee ${sub}`;
+  }
+
+  return parentName;
+}
 
 // ------------------------------------------------------------
 // BUILD committeesById (House only: HSxx codes)
@@ -64,7 +119,6 @@ for (const [committeeCode, members] of Object.entries(committeeRaw)) {
 
     if (!committeesById.has(key)) committeesById.set(key, []);
 
-    // Normalize role
     let role = m.title || "Member";
     const lower = role.toLowerCase();
 
@@ -80,7 +134,7 @@ for (const [committeeCode, members] of Object.entries(committeeRaw)) {
 
     committeesById.get(key).push({
       committeeCode,
-      committeeName: committeeCode, // House names not mapped; code is fine
+      committeeName: resolveCommitteeName(committeeCode),
       role,
       rank: m.rank ?? null,
       party: m.party || null
@@ -124,7 +178,6 @@ const enriched = rankings.map(entry => {
 
 writeJSON("../public/representatives-rankings.json", enriched);
 
-// Stats
 const withVotes = enriched.filter(r => (r.yeaVotes || 0) > 0 || (r.totalVotes || 0) > 0).length;
 const withLeg   = enriched.filter(r => (r.sponsoredBills || 0) > 0 || (r.cosponsoredBills || 0) > 0).length;
 const withCom   = enriched.filter(r => (r.committees || []).length > 0).length;
