@@ -39,8 +39,9 @@ jobs:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
         run: node scripts/votes-scraper.js
 
-      - name: Snapshot previous Senate rankings
-        run: cp public/senators-rankings.json public/senators-rankings-prev.json || true
+      # ❌ REMOVED — streak snapshot
+      # - name: Snapshot previous Senate rankings
+      #   run: cp public/senators-rankings.json public/senators-rankings-prev.json || true
 
       - name: Merge senator data
         run: node scripts/merge-senators.js
@@ -51,14 +52,15 @@ jobs:
       - name: Generate scores
         run: node scripts/senators-scores.js
 
-      - name: Update streaks (Senate + House)
-        run: node scripts/update-streaks-senators.js
+      # ❌ REMOVED — streak updater
+      # - name: Update streaks (Senate + House)
+      #   run: node scripts/update-streaks-senators.js
 
       - name: Debug — list generated files
         if: always()
         run: |
           echo "Listing public/ contents after processing:"
-          ls -la public/ | grep -E 'senators|legislation|committees|scores|streaks|misconduct' || echo "No matching files found"
+          ls -la public/ | grep -E 'senators|legislation|committees|scores|misconduct' || echo "No matching files found"
 
       - name: Commit and push updated Senate files
         uses: stefanzweifel/git-auto-commit-action@v5
@@ -70,7 +72,6 @@ jobs:
             public/legislation*.json
             public/committee*.json
             public/*scores.json
-            public/*streaks.json
           commit_user_name: github-actions[bot]
           commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
           push_options: '--force-with-lease'
