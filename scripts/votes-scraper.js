@@ -1,17 +1,15 @@
 // scripts/votes-scraper.js
 // Purpose: Scrape Senate roll call votes for the 119th Congress (sessions 1 and 2)
-// Output schema is COMPATIBLE with existing merge-senators.js:
+// Output schema is FLAT and COMPATIBLE with merge-senators.js:
 // [
 //   {
 //     bioguideId: "A000360",
-//     votes: {
-//       yeaVotes: 0,
-//       nayVotes: 0,
-//       missedVotes: 0,
-//       totalVotes: 0,
-//       participationPct: 0,
-//       missedVotePct: 0
-//     }
+//     yeaVotes: 0,
+//     nayVotes: 0,
+//     missedVotes: 0,
+//     totalVotes: 0,
+//     participationPct: 0,
+//     missedVotePct: 0
 //   },
 //   ...
 // ]
@@ -31,17 +29,16 @@ const parser = new xml2js.Parser({
   attrNameProcessors: [xml2js.processors.stripPrefix]
 });
 
-// Load roster and filter to current senators
+// Load roster
 const roster = JSON.parse(fs.readFileSync(ROSTER_PATH, 'utf-8'));
 const senators = roster;
 
-// Build LIS → bioguide map using id.lis
+// Build LIS → bioguide map
 function buildLisMap() {
   const map = new Map();
   for (const s of senators) {
-   const lis = s.lis;
-const bioguide = s.bioguideId;
-
+    const lis = s.lis;
+    const bioguide = s.bioguideId;
     if (lis && bioguide) {
       map.set(lis, bioguide);
     }
@@ -60,10 +57,10 @@ async function fetchXML(url) {
   }
 }
 
-// Discover max roll call number for a given session via binary search
+// Discover max roll call number for a given session
 async function discoverMaxRollCall(session) {
   let low = 1;
-  let high = 2000; // 🔥 updated future-proof upper bound
+  let high = 2000;
   let max = 0;
 
   while (low <= high) {
@@ -83,17 +80,17 @@ async function discoverMaxRollCall(session) {
 }
 
 async function main() {
-  console.log('Senate votes scraper (119th Congress) — preserving original schema');
+  console.log('Senate votes scraper (119th Congress) — starting');
 
   const lisMap = buildLisMap();
 
-  // Initialize aggregate counts per senator
+  // Initialize aggregate counts
   const voteCounts = {};
- senators.forEach(s => {
-  const bioguide = s.bioguideId;
-  if (!bioguide) return;
-  voteCounts[bioguide] = { yea: 0, nay: 0, missed: 0 };
-});
+  senators.forEach(s => {
+    const bioguide = s.bioguideId;
+    if (!bioguide) return;
+    voteCounts[bioguide] = { yea: 0, nay: 0, missed: 0 };
+  });
 
   let totalRollCalls = 0;
 
@@ -111,12 +108,12 @@ async function main() {
 
       totalRollCalls++;
 
-     const rc = parsed?.roll_call_vote || parsed?.rollcallvote;
-     if (!rc || !rc.members) continue;
+      const rc = parsed?.roll_call_vote || parsed?.rollcallvote;
+      if (!rc || !rc.members) continue;
 
       const members = Array.isArray(rc.members.member)
-      ? rc.members.member
-    : [rc.members.member];
+        ? rc.members.member
+        : [rc.members.member];
 
       for (const m of members) {
         const lis = m.lis_member_id;
@@ -133,7 +130,7 @@ async function main() {
     }
   }
 
-  // Build output in the ORIGINAL expected schema
+  // Build output in FLAT schema
   const output = senators.map(s => {
     const bioguide = s.bioguideId;
     const counts = voteCounts[bioguide] || { yea: 0, nay: 0, missed: 0 };
@@ -146,14 +143,12 @@ async function main() {
 
     return {
       bioguideId: bioguide,
-      votes: {
-        yeaVotes: counts.yea,
-        nayVotes: counts.nay,
-        missedVotes: counts.missed,
-        totalVotes: total,
-        participationPct,
-        missedVotePct
-      }
+      yeaVotes: counts.yea,
+      nayVotes: counts.nay,
+      missedVotes: counts.missed,
+      totalVotes: total,
+      participationPct,
+      missedVotePct
     };
   });
 
