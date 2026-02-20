@@ -1,5 +1,20 @@
 // scripts/votes-reps-scraper.js
-// FULL REPLACEMENT — Clerk.House.gov XML scraper for 119th Congress (2025 + 2026)
+// Clerk.House.gov XML scraper for 119th Congress (2025 + 2026)
+// Output schema (unchanged):
+// [
+//   {
+//     bioguideId: "A000360",
+//     votes: {
+//       yeaVotes: 0,
+//       nayVotes: 0,
+//       missedVotes: 0,
+//       totalVotes: 0,
+//       participationPct: 0,
+//       missedVotePct: 0
+//     }
+//   },
+//   ...
+// ]
 
 const fs = require("fs");
 const path = require("path");
@@ -7,7 +22,7 @@ const fetch = require("node-fetch");
 const { XMLParser } = require("fast-xml-parser");
 
 const OUTPUT_PATH = path.join(__dirname, "../public/representatives-votes.json");
-const ROSTER_PATH = path.join(__dirname, "../public/legislators-current.json");
+const ROSTER_PATH = path.join(__dirname, "../public/housereps.json");
 
 // Known roll call ranges for 119th Congress
 const RANGES = {
@@ -20,15 +35,29 @@ const parser = new XMLParser({
   attributeNamePrefix: "",
 });
 
-// Load House roster (current reps only)
+// Load House roster (your housereps.json)
 function loadHouseRoster() {
   const raw = fs.readFileSync(ROSTER_PATH, "utf8");
   const all = JSON.parse(raw);
 
-  return all.filter((m) => {
-    const last = m.terms?.[m.terms.length - 1];
-    return last && last.type === "rep";
-  });
+  // We assume each entry is a current rep with termStart/termEnd and bioguideId
+  return all.filter((m) => m.office === "U.S. Representative");
+}
+
+// Build bioguide -> term window map
+function buildTermMap(reps) {
+  const map = new Map();
+  for (const r of reps) {
+    const bioguide = r.bioguideId;
+    const termStart = r.termStart;
+    const termEnd = r.termEnd;
+    if (!bioguide || !termStart || !termEnd) continue;
+    map.set(bioguide, {
+      start: new Date(termStart),
+      end: new Date(termEnd),
+    });
+  }
+  return map;
 }
 
 // Fetch XML safely
@@ -38,24 +67,29 @@ async function fetchXML(url) {
   return res.text();
 }
 
-// Parse a single roll call XML into { bioguideId, rawVote }
+// Parse a single roll call XML into { bioguideId, rawVote } and voteDate
 function parseRollCall(xml) {
   const data = parser.parse(xml);
   const root = data["rollcall-vote"];
-  if (!root) return [];
+  if (!root) return { voteDate: null, records: [] };
+
+  const dateStr = root["action-date"] || root["vote-date"] || null;
+  const voteDate = dateStr ? new Date(dateStr) : null;
 
   const votesNode = root["vote-data"]?.["recorded-vote"];
-  if (!votesNode) return [];
+  if (!votesNode) return { voteDate, records: [] };
 
   const arr = Array.isArray(votesNode) ? votesNode : [votesNode];
 
-  return arr.map((v) => {
+  const records = arr.map((v) => {
     const leg = v.legislator || {};
     return {
       bioguideId: leg["name-id"] || null,          // attribute on <legislator>
       rawVote: v.vote != null ? String(v.vote).trim() : "", // <vote>Yea</vote>
     };
   });
+
+  return { voteDate, records };
 }
 
 // Normalize Clerk vote text/codes
@@ -78,12 +112,11 @@ function normalizeVote(v) {
 }
 
 // Aggregate votes for all members across all roll calls
-async function aggregateVotes() {
-  const reps = loadHouseRoster();
+async function aggregateVotes(reps, termMap) {
   const counts = new Map();
 
   for (const r of reps) {
-    const id = r.id?.bioguide;
+    const id = r.bioguideId;
     if (id) counts.set(id, { yea: 0, nay: 0, missed: 0 });
   }
 
@@ -100,12 +133,20 @@ async function aggregateVotes() {
       const xml = await fetchXML(url);
       if (!xml) continue;
 
+      const { voteDate, records } = parseRollCall(xml);
+      if (!voteDate || Number.isNaN(voteDate.getTime())) continue;
+
       totalRollCalls++;
 
-      const records = parseRollCall(xml);
       for (const rec of records) {
         const id = rec.bioguideId;
         if (!id || !counts.has(id)) continue;
+
+        const term = termMap.get(id);
+        if (!term) continue;
+
+        // Only count votes within the representative's term window
+        if (voteDate < term.start || voteDate > term.end) continue;
 
         const c = counts.get(id);
         const vote = normalizeVote(rec.rawVote);
@@ -118,14 +159,14 @@ async function aggregateVotes() {
     }
   }
 
-  console.log(`Processed ${totalRollCalls} roll calls total.`);
+  console.log(`Processed ${totalRollCalls} roll calls total (before term filtering).`);
   return { counts, totalRollCalls };
 }
 
 // Build final output JSON
 function buildOutput(reps, counts, totalRollCalls) {
   return reps.map((r) => {
-    const id = r.id?.bioguide;
+    const id = r.bioguideId;
     const c = counts.get(id) || { yea: 0, nay: 0, missed: 0 };
     const yea = c.yea;
     const nay = c.nay;
@@ -153,7 +194,8 @@ async function main() {
   console.log("Starting Clerk XML scraper for 119th Congress…");
 
   const reps = loadHouseRoster();
-  const { counts, totalRollCalls } = await aggregateVotes();
+  const termMap = buildTermMap(reps);
+  const { counts, totalRollCalls } = await aggregateVotes(reps, termMap);
   const output = buildOutput(reps, counts, totalRollCalls);
 
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(output, null, 2));
