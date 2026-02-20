@@ -89,11 +89,11 @@ async function main() {
 
   // Initialize aggregate counts per senator
   const voteCounts = {};
-  senators.forEach(s => {
-    const bioguide = s.id?.bioguide;
-    if (!bioguide) return;
-    voteCounts[bioguide] = { yea: 0, nay: 0, missed: 0 };
-  });
+ senators.forEach(s => {
+  const bioguide = s.bioguideId;
+  if (!bioguide) return;
+  voteCounts[bioguide] = { yea: 0, nay: 0, missed: 0 };
+});
 
   let totalRollCalls = 0;
 
@@ -135,7 +135,7 @@ async function main() {
 
   // Build output in the ORIGINAL expected schema
   const output = senators.map(s => {
-    const bioguide = s.id?.bioguide;
+    const bioguide = s.bioguideId;
     const counts = voteCounts[bioguide] || { yea: 0, nay: 0, missed: 0 };
     const total = counts.yea + counts.nay + counts.missed;
 
