@@ -1,6 +1,7 @@
 // scripts/votes-scraper.js
 // Purpose: Scrape Senate roll call votes for the 119th Congress (sessions 1 and 2)
-// Output schema is FLAT and COMPATIBLE with merge-senators.js:
+// Uses legislators-current.json as the single source of truth for bioguide + term windows.
+// Output schema (unchanged, FLAT):
 // [
 //   {
 //     bioguideId: "A000360",
@@ -19,8 +20,7 @@ const path = require('path');
 const fetch = require('node-fetch');
 const xml2js = require('xml2js');
 
-const RANKINGS_PATH = path.join(__dirname, '../public/senators-rankings.json');
-const INFO_PATH = path.join(__dirname, '../public/senators.json');
+const LEGISLATORS_PATH = path.join(__dirname, '../public/legislators-current.json');
 const OUTPUT_PATH = path.join(__dirname, '../public/senators-votes.json');
 
 const parser = new xml2js.Parser({
@@ -30,37 +30,46 @@ const parser = new xml2js.Parser({
   attrNameProcessors: [xml2js.processors.stripPrefix]
 });
 
-// Load roster (rankings) and info (termStart/termEnd)
-const rankings = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf-8'));
-const info = JSON.parse(fs.readFileSync(INFO_PATH, 'utf-8'));
+// Load current legislators and filter to current senators
+function loadCurrentSenators() {
+  const raw = fs.readFileSync(LEGISLATORS_PATH, 'utf-8');
+  const all = JSON.parse(raw);
 
-// Build bioguide -> term window map
-function buildTermMap() {
-  const map = new Map();
-  for (const s of info) {
-    const bioguide = s.bioguideId;
-    const termStart = s.termStart;
-    const termEnd = s.termEnd;
-    if (!bioguide || !termStart || !termEnd) continue;
-    map.set(bioguide, {
-      start: new Date(termStart),
-      end: new Date(termEnd)
-    });
-  }
-  return map;
+  return all
+    .map(m => {
+      const terms = m.terms || [];
+      if (!terms.length) return null;
+      const last = terms[terms.length - 1];
+      if (last.type !== 'sen') return null;
+
+      return {
+        bioguideId: m.id?.bioguide,
+        lis: m.id?.lis,
+        termStart: last.start,
+        termEnd: last.end
+      };
+    })
+    .filter(Boolean);
 }
 
-// Build LIS → bioguide map from rankings
-function buildLisMap() {
-  const map = new Map();
-  for (const s of rankings) {
-    const lis = s.lis;
-    const bioguide = s.bioguideId;
-    if (lis && bioguide) {
-      map.set(lis, bioguide);
+// Build LIS → bioguide and bioguide → term window maps
+function buildMaps(senators) {
+  const lisMap = new Map();
+  const termMap = new Map();
+
+  for (const s of senators) {
+    if (s.lis && s.bioguideId) {
+      lisMap.set(s.lis, s.bioguideId);
+    }
+    if (s.bioguideId && s.termStart && s.termEnd) {
+      termMap.set(s.bioguideId, {
+        start: new Date(s.termStart),
+        end: new Date(s.termEnd)
+      });
     }
   }
-  return map;
+
+  return { lisMap, termMap };
 }
 
 async function fetchXML(url) {
@@ -99,15 +108,14 @@ async function discoverMaxRollCall(session) {
 async function main() {
   console.log('Senate votes scraper (119th Congress) — starting');
 
-  const lisMap = buildLisMap();
-  const termMap = buildTermMap();
+  const senators = loadCurrentSenators();
+  const { lisMap, termMap } = buildMaps(senators);
 
   // Initialize aggregate counts
   const voteCounts = {};
-  rankings.forEach(s => {
-    const bioguide = s.bioguideId;
-    if (!bioguide) return;
-    voteCounts[bioguide] = { yea: 0, nay: 0, missed: 0 };
+  senators.forEach(s => {
+    if (!s.bioguideId) return;
+    voteCounts[s.bioguideId] = { yea: 0, nay: 0, missed: 0 };
   });
 
   let totalRollCalls = 0;
@@ -127,7 +135,6 @@ async function main() {
       const rc = parsed?.roll_call_vote || parsed?.rollcallvote;
       if (!rc || !rc.members) continue;
 
-      // Parse vote date once per roll call
       const voteDateStr = rc.vote_date;
       if (!voteDateStr) continue;
       const voteDate = new Date(voteDateStr);
@@ -147,7 +154,7 @@ async function main() {
         const term = termMap.get(bioguide);
         if (!term) continue;
 
-        // Only count votes within the senator's term window
+        // Only count votes within the senator's current term window
         if (voteDate < term.start || voteDate > term.end) continue;
 
         const voteCast = (m.vote_cast || '').trim();
@@ -161,7 +168,7 @@ async function main() {
   }
 
   // Build output in FLAT schema
-  const output = rankings.map(s => {
+  const output = senators.map(s => {
     const bioguide = s.bioguideId;
     const counts = voteCounts[bioguide] || { yea: 0, nay: 0, missed: 0 };
     const total = counts.yea + counts.nay + counts.missed;
@@ -187,4 +194,7 @@ async function main() {
   console.log(`Total roll calls processed (before term filtering): ${totalRollCalls}`);
 }
 
-main().catch(err => console.error('Votes failed:', err.message));
+main().catch(err => {
+  console.error('Votes failed:', err);
+  process.exit(1);
+});
