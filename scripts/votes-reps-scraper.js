@@ -1,5 +1,6 @@
 // scripts/votes-reps-scraper.js
 // Clerk.House.gov XML scraper for 119th Congress (2025 + 2026)
+// Uses legislators-current.json as the single source of truth for bioguide + term windows.
 // Output schema (unchanged):
 // [
 //   {
@@ -22,7 +23,7 @@ const fetch = require("node-fetch");
 const { XMLParser } = require("fast-xml-parser");
 
 const OUTPUT_PATH = path.join(__dirname, "../public/representatives-votes.json");
-const ROSTER_PATH = path.join(__dirname, "../public/housereps.json");
+const LEGISLATORS_PATH = path.join(__dirname, "../public/legislators-current.json");
 
 // Known roll call ranges for 119th Congress
 const RANGES = {
@@ -35,26 +36,35 @@ const parser = new XMLParser({
   attributeNamePrefix: "",
 });
 
-// Load House roster (your housereps.json)
+// Load House roster from legislators-current.json (current reps only)
 function loadHouseRoster() {
-  const raw = fs.readFileSync(ROSTER_PATH, "utf8");
+  const raw = fs.readFileSync(LEGISLATORS_PATH, "utf8");
   const all = JSON.parse(raw);
 
-  // We assume each entry is a current rep with termStart/termEnd and bioguideId
-  return all.filter((m) => m.office === "U.S. Representative");
+  return all
+    .map((m) => {
+      const terms = m.terms || [];
+      if (!terms.length) return null;
+      const last = terms[terms.length - 1];
+      if (last.type !== "rep") return null;
+
+      return {
+        bioguideId: m.id?.bioguide,
+        termStart: last.start,
+        termEnd: last.end,
+      };
+    })
+    .filter(Boolean);
 }
 
 // Build bioguide -> term window map
 function buildTermMap(reps) {
   const map = new Map();
   for (const r of reps) {
-    const bioguide = r.bioguideId;
-    const termStart = r.termStart;
-    const termEnd = r.termEnd;
-    if (!bioguide || !termStart || !termEnd) continue;
-    map.set(bioguide, {
-      start: new Date(termStart),
-      end: new Date(termEnd),
+    if (!r.bioguideId || !r.termStart || !r.termEnd) continue;
+    map.set(r.bioguideId, {
+      start: new Date(r.termStart),
+      end: new Date(r.termEnd),
     });
   }
   return map;
@@ -67,7 +77,7 @@ async function fetchXML(url) {
   return res.text();
 }
 
-// Parse a single roll call XML into { bioguideId, rawVote } and voteDate
+// Parse a single roll call XML into { voteDate, records[] }
 function parseRollCall(xml) {
   const data = parser.parse(xml);
   const root = data["rollcall-vote"];
@@ -84,8 +94,8 @@ function parseRollCall(xml) {
   const records = arr.map((v) => {
     const leg = v.legislator || {};
     return {
-      bioguideId: leg["name-id"] || null,          // attribute on <legislator>
-      rawVote: v.vote != null ? String(v.vote).trim() : "", // <vote>Yea</vote>
+      bioguideId: leg["name-id"] || null,
+      rawVote: v.vote != null ? String(v.vote).trim() : "",
     };
   });
 
@@ -96,13 +106,11 @@ function parseRollCall(xml) {
 function normalizeVote(v) {
   const s = String(v).trim().toLowerCase();
 
-  // Text forms
   if (s === "yea" || s === "aye" || s === "yes") return "yea";
   if (s === "nay" || s === "no") return "nay";
   if (s === "not voting" || s === "nv") return "missed";
   if (s === "present") return "present";
 
-  // Numeric fallbacks (if ever used)
   if (s === "1") return "yea";
   if (s === "2") return "nay";
   if (s === "3") return "present";
@@ -145,7 +153,7 @@ async function aggregateVotes(reps, termMap) {
         const term = termMap.get(id);
         if (!term) continue;
 
-        // Only count votes within the representative's term window
+        // Only count votes within the representative's current term window
         if (voteDate < term.start || voteDate > term.end) continue;
 
         const c = counts.get(id);
