@@ -7391,3 +7391,6 @@ header .header-center .logo {
 
 /* (Removed streak text and streak badge styles — no longer used anywhere) */
 
+.sub-row td::before {
+  content: none !important;
+}
