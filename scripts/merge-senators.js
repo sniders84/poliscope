@@ -91,7 +91,7 @@ for (const [committeeCode, members] of Object.entries(committeeRaw)) {
   }
 
   for (const m of members) {
-    const id = m.bioguide || m.bioguideId || null;
+    const id = (m.bioguide || m.bioguideId || "").toUpperCase();
     const nameKey = (m.name || "").toLowerCase();
     const key = id || nameKey;
     if (!key) continue;
@@ -127,15 +127,14 @@ for (const [committeeCode, members] of Object.entries(committeeRaw)) {
 // ------------------------------------------------------------
 
 const enriched = rankings.map(entry => {
-  const id = entry.bioguideId || entry.bioguide || null;
-  const nameKey = entry.name ? entry.name.toLowerCase() : null;
+  const id = (entry.bioguideId || entry.bioguide || "").toUpperCase();
+  const nameKey = entry.name ? entry.name.toLowerCase() : "";
 
   const voteStats = votesById.get(id) || {};
   const legStats  = legById.get(id)   || {};
 
   const committees =
     committeesById.get(id) ||
-    committeesById.get(entry.bioguide) ||
     committeesById.get(nameKey) ||
     [];
 
