@@ -47,6 +47,7 @@ function baseRecord(sen) {
     slug,
     bioguideId: sen.id.bioguide,
     govtrackId,
+    lis: sen.id.lis,
     name: `${sen.name.first} ${sen.name.last}`,
     state: lastTerm.state,
     district: 'At-Large',
