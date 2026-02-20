@@ -27,16 +27,17 @@ function writeJSON(relativePath, data) {
 
 let rankings = loadJSON("../public/representatives-rankings.json", []) || [];
 
-const votes       = loadJSON("../public/representatives-votes.json", []) || [];
-const legislation = loadJSON("../public/legislation-representatives.json", []) || [];
+const votes        = loadJSON("../public/representatives-votes.json", []) || [];
+const legislation  = loadJSON("../public/legislation-representatives.json", []) || [];
 const committeeRaw = loadJSON("../public/representatives-committees.json", {}) || {};
 
 // ------------------------------------------------------------
 // LOOKUPS
 // ------------------------------------------------------------
 
+// votes scraper now outputs FLAT fields (yeaVotes, nayVotes, etc.)
 const votesById = new Map(
-  votes.map(v => [v.bioguideId || v.bioguide, v.votes || {}])
+  votes.map(v => [v.bioguideId || v.bioguide, v])
 );
 
 const legById = new Map(
@@ -56,7 +57,7 @@ for (const [committeeCode, members] of Object.entries(committeeRaw)) {
   if (!committeeCode.startsWith("HS")) continue;
 
   for (const m of members) {
-    const id = m.bioguide || m.bioguideId || null;
+    const id = (m.bioguide || m.bioguideId || "").toUpperCase();
     const nameKey = (m.name || "").toLowerCase();
     const key = id || nameKey;
     if (!key) continue;
@@ -92,15 +93,14 @@ for (const [committeeCode, members] of Object.entries(committeeRaw)) {
 // ------------------------------------------------------------
 
 const enriched = rankings.map(entry => {
-  const id = entry.bioguideId || entry.bioguide || null;
-  const nameKey = entry.name ? entry.name.toLowerCase() : null;
+  const id = (entry.bioguideId || entry.bioguide || "").toUpperCase();
+  const nameKey = entry.name ? entry.name.toLowerCase() : "";
 
   const voteStats = votesById.get(id) || {};
   const legStats  = legById.get(id)   || {};
 
   const committees =
     committeesById.get(id) ||
-    committeesById.get(entry.bioguide) ||
     committeesById.get(nameKey) ||
     [];
 
