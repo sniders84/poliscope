@@ -6775,15 +6775,29 @@ section > h3 {
 }
 /* Column widths and alignment */
 .leaderboard-table th:nth-child(1),
-.leaderboard-table td:nth-child(1) { width: 8%; text-align: center; } /* Rank */
+.leaderboard-table td:nth-child(1) {
+  width: 8%;
+  text-align: center; /* Rank */
+}
+
 .leaderboard-table th:nth-child(2),
-.leaderboard-table td:nth-child(2) { width: 35%; text-align: left; } /* Official */
+.leaderboard-table td:nth-child(2) {
+  width: 35%;
+  text-align: left; /* Official */
+}
+
 .leaderboard-table th:nth-child(3),
-.leaderboard-table td:nth-child(3) { width: 15%; text-align: center; } /* Office */
+.leaderboard-table td:nth-child(3) {
+  width: 15%;
+  text-align: center; /* Office */
+}
+
 .leaderboard-table th:nth-child(4),
-.leaderboard-table td:nth-child(4) { width: 20%; text-align: center; } /* Power Score */
-.leaderboard-table th:nth-child(5),
-.leaderboard-table td:nth-child(5) { width: 22%; text-align: center; } /* Streak */
+.leaderboard-table td:nth-child(4) {
+  width: 20%;
+  text-align: center; /* Power Score / Value */
+}
+
 /* Sub‑line for state/party under Official */
 .leaderboard-table td:nth-child(2) small {
   display: block;
@@ -6791,6 +6805,7 @@ section > h3 {
   font-size: 0.85em;
   color: #555;
 }
+
 /* Optional: subtle rank badges for top spots */
 .leaderboard-table tr:first-child td { font-weight: 700; }
 /* Rankings table styling */
@@ -6825,9 +6840,8 @@ section > h3 {
 }
 
 #rankings-leaderboard td:nth-child(3),
-#rankings-leaderboard td:nth-child(4),
-#rankings-leaderboard td:nth-child(5) {
-  text-align: center; /* Office, Power Score, Streak columns centered */
+#rankings-leaderboard td:nth-child(4) {
+  text-align: center; /* Office, Power Score columns centered */
 }
 
 #rankings-leaderboard tbody tr:hover {
@@ -6966,24 +6980,8 @@ section > h3 {
   color: #aaa;
 }
 
-/* Streak/Drought badges */
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 12px;
-  line-height: 1;
-  padding: 4px 8px;
-  border-radius: 999px;
-  border: 1px solid #d6dee9;
-}
-.badge-streak::before { content: "🔥"; font-size: 14px; }
-.badge-drought::before { content: "❄️"; font-size: 14px; }
-.badge-streak {
-  border-color: #ff7a59;
-  background: #fff3ef;
-  color: #b23a1f;
-}
+/* (Removed streak/drought badge styles — no longer used anywhere) */
+
 .badge-drought {
   border-color: #7fb3ff;
   background: #f0f7ff;
@@ -7112,10 +7110,10 @@ section > h3 {
   width: 50px;
 }
 #rankings-leaderboard td:nth-child(3),
-#rankings-leaderboard td:nth-child(4),
-#rankings-leaderboard td:nth-child(5) {
-  text-align: center; /* Office, Power Score, Streak columns centered */
+#rankings-leaderboard td:nth-child(4) {
+  text-align: center; /* Office and Power Score columns centered */
 }
+
 #rankings-leaderboard tbody tr:hover {
   background: #334155; /* subtle hover highlight */
 }
@@ -7201,21 +7199,7 @@ section > h3 {
 .scorecard-modal .scorecard-modal-close:hover {
   color: #38bdf8; /* cyan hover accent */
 }
-.streak-badge {
-  font-size: 1.25rem;   /* bump emoji size */
-  line-height: 1.5;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  margin-right: 0.5rem;
-  padding: 2px 6px;
-  border-radius: 12px;  /* pill shape */
-  background-color: #f5f5f5; /* neutral background */
-}
-
-.streak-badge.activity { background-color: #ffe5e5; }  /* soft red for 🔥 */
-.streak-badge.voting   { background-color: #e5f0ff; }  /* soft blue for 🗳 */
-.streak-badge.leader   { background-color: #fff5cc; }  /* soft gold for 👑 */
+/* (Removed streak badge styles — no longer used anywhere) */
 
 /* Header layout */
 header {
@@ -7405,14 +7389,5 @@ header .header-center .logo {
   color: #f0f0f0 !important;            /* light gray text for readability */
 }
 
-.leaderboard-row .streak-text,
-.leaderboard-table .streak-text {
-  color: #f0f0f0 !important;            /* ensure streak text is visible */
-  font-weight: 500;
-}
+/* (Removed streak text and streak badge styles — no longer used anywhere) */
 
-.leaderboard-row .streak-badge,
-.leaderboard-table .streak-badge {
-  color: #000 !important;               /* crown or badge text in black */
-  font-weight: bold;
-}
