@@ -165,7 +165,6 @@ reps = reps.map(s => {
       },
       totalPowerScore: finalScore
     },
-    streak: s.streak || 0,
     lastUpdated: new Date().toISOString()
   };
 });
