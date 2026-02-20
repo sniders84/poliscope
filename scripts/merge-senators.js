@@ -35,7 +35,6 @@ const committeeRaw = loadJSON("../public/senators-committee-membership-current.j
 // LOOKUPS
 // ------------------------------------------------------------
 
-// ⭐ votes scraper now outputs FLAT fields (yeaVotes, nayVotes, etc.)
 const votesById = new Map(
   votes.map(v => [v.bioguideId || v.bioguide, v])
 );
@@ -76,14 +75,13 @@ const codeToName = {
 };
 
 // ------------------------------------------------------------
-// BUILD committeesById FROM committee membership file
+// BUILD committeesById
 // ------------------------------------------------------------
 
 const committeesById = new Map();
 
 for (const [committeeCode, members] of Object.entries(committeeRaw)) {
   if (!Array.isArray(members)) continue;
-
   if (committeeCode.includes("Subcommittee") || committeeCode.length > 4 || !codeToName[committeeCode]) {
     continue;
   }
@@ -142,7 +140,7 @@ const enriched = rankings.map(entry => {
 
   return {
     ...entry,
-    ...voteStats,   // ⭐ now flat fields merge correctly
+    ...voteStats,
     ...legStats,
     committees,
     photo
