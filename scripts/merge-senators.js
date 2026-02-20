@@ -25,20 +25,19 @@ function writeJSON(relativePath, data) {
 // LOAD BASE FILES
 // ------------------------------------------------------------
 
-// Load base rankings (will be overwritten)
 let rankings = loadJSON("../public/senators-rankings.json", []) || [];
 
-// Load intermediates
-const votes       = loadJSON("../public/senators-votes.json", []) || [];
-const legislation = loadJSON("../public/legislation-senators.json", []) || [];
+const votes        = loadJSON("../public/senators-votes.json", []) || [];
+const legislation  = loadJSON("../public/legislation-senators.json", []) || [];
 const committeeRaw = loadJSON("../public/senators-committee-membership-current.json", {}) || {};
 
 // ------------------------------------------------------------
 // LOOKUPS
 // ------------------------------------------------------------
 
+// ⭐ votes scraper now outputs FLAT fields (yeaVotes, nayVotes, etc.)
 const votesById = new Map(
-  votes.map(v => [v.bioguideId || v.bioguide, v.votes || {}])
+  votes.map(v => [v.bioguideId || v.bioguide, v])
 );
 
 const legById = new Map(
@@ -85,7 +84,6 @@ const committeesById = new Map();
 for (const [committeeCode, members] of Object.entries(committeeRaw)) {
   if (!Array.isArray(members)) continue;
 
-  // Skip subcommittees or unknown codes
   if (committeeCode.includes("Subcommittee") || committeeCode.length > 4 || !codeToName[committeeCode]) {
     continue;
   }
@@ -98,7 +96,6 @@ for (const [committeeCode, members] of Object.entries(committeeRaw)) {
 
     if (!committeesById.has(key)) committeesById.set(key, []);
 
-    // Normalize role
     let role = m.title || "Member";
     const lower = role.toLowerCase();
 
@@ -145,7 +142,7 @@ const enriched = rankings.map(entry => {
 
   return {
     ...entry,
-    ...voteStats,
+    ...voteStats,   // ⭐ now flat fields merge correctly
     ...legStats,
     committees,
     photo
@@ -158,7 +155,6 @@ const enriched = rankings.map(entry => {
 
 writeJSON("../public/senators-rankings.json", enriched);
 
-// Stats
 const withVotes = enriched.filter(r => (r.yeaVotes || 0) > 0 || (r.totalVotes || 0) > 0).length;
 const withLeg   = enriched.filter(r => (r.sponsoredBills || 0) > 0 || (r.cosponsoredBills || 0) > 0).length;
 const withCom   = enriched.filter(r => (r.committees || []).length > 0).length;
