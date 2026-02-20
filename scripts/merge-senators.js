@@ -82,9 +82,9 @@ const committeesById = new Map();
 
 for (const [committeeCode, members] of Object.entries(committeeRaw)) {
   if (!Array.isArray(members)) continue;
-  if (committeeCode.includes("Subcommittee") || committeeCode.length > 4 || !codeToName[committeeCode]) {
-    continue;
-  }
+
+  // FIXED: Only skip subcommittees, not missing names or long codes
+  if (committeeCode.includes("Subcommittee")) continue;
 
   for (const m of members) {
     const id = (m.bioguide || m.bioguideId || "").toUpperCase();
