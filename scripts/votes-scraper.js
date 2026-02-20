@@ -21,7 +21,7 @@ const path = require('path');
 const fetch = require('node-fetch');
 const xml2js = require('xml2js');
 
-const ROSTER_PATH = path.join(__dirname, '../public/senators.json');
+const ROSTER_PATH = path.join(__dirname, '../public/senators-rankings.json');
 const OUTPUT_PATH = path.join(__dirname, '../public/senators-votes.json');
 
 const parser = new xml2js.Parser({
@@ -39,8 +39,9 @@ const senators = roster;
 function buildLisMap() {
   const map = new Map();
   for (const s of senators) {
-    const lis = s.id?.lis;
-    const bioguide = s.id?.bioguide;
+   const lis = s.lis;
+const bioguide = s.bioguideId;
+
     if (lis && bioguide) {
       map.set(lis, bioguide);
     }
