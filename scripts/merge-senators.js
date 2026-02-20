@@ -32,6 +32,18 @@ const legislation  = loadJSON("../public/legislation-senators.json", []) || [];
 const committeeRaw = loadJSON("../public/senators-committee-membership-current.json", {}) || {};
 
 // ------------------------------------------------------------
+// LOOKUPS (THIS WAS THE MISSING BLOCK CAUSING THE ERROR)
+// ------------------------------------------------------------
+
+const votesById = new Map(
+  votes.map(v => [v.bioguideId || v.bioguide, v])
+);
+
+const legById = new Map(
+  legislation.map(l => [l.bioguideId || l.bioguide, l])
+);
+
+// ------------------------------------------------------------
 // UNIFIED COMMITTEE NAME RESOLUTION
 // ------------------------------------------------------------
 
