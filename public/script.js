@@ -3263,9 +3263,6 @@ function showScorecard(person, breakdown, composite) {
         c.role === "Vice Chair" ? 2 : 1
     }));
 
-  const membershipTotal = membershipRows.reduce((a, b) => a + b.contribution, 0);
-  const leadershipTotal = leadershipRows.reduce((a, b) => a + b.contribution, 0);
-
   // -----------------------------
   // LABELS
   // -----------------------------
@@ -3357,12 +3354,9 @@ function showScorecard(person, breakdown, composite) {
     </table>
   `;
 
-  const modal = document.getElementById('scorecardModal');
-  modal.classList.add('is-open', 'modal-dark');
-  modal.setAttribute('aria-hidden', 'false');
-}
-
-  // Misconduct details
+  // -----------------------------
+  // MISCONDUCT DETAILS
+  // -----------------------------
   if (person.misconductCount && person.misconductCount > 0) {
     const tbody = breakdownEl.querySelector('tbody');
 
@@ -3400,10 +3394,14 @@ function showScorecard(person, breakdown, composite) {
     }
   }
 
+  // -----------------------------
+  // OPEN MODAL
+  // -----------------------------
   const modal = document.getElementById('scorecardModal');
   modal.classList.add('is-open', 'modal-dark');
   modal.setAttribute('aria-hidden', 'false');
 }
+
 // Merge rankings JSON with info JSON by slug + misconduct
 function mergeData(rankings, info, misconduct = []) {
   return rankings.map(r => {
