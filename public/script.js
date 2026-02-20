@@ -3169,23 +3169,22 @@ const WEIGHTS = {
   misconductCount: -10.0     // penalty per misconduct infraction
 };
 
-  // Map schema keys to human-friendly labels
-  const CATEGORY_LABELS = {
-    powerScore: "Overall Power Score",
-    sponsoredBills: "Sponsored Bills",
-    cosponsoredBills: "Cosponsored Bills",
-    becameLawBills: "Bills Enacted",
-    becameLawCosponsoredBills: "Bills Enacted (Cosponsored)",
-    committees: "Committee Memberships",
-    misconductCount: "Misconduct Count",
-    misconductTags: "Misconduct Tags",
-    yeaVotes: "Yea Votes",
-    nayVotes: "Nay Votes",
-    missedVotes: "Missed Votes",
-    streak: "Streak"
-  };
+ // Map schema keys to human-friendly labels
+const CATEGORY_LABELS = {
+  powerScore: "Overall Power Score",
+  sponsoredBills: "Sponsored Bills",
+  cosponsoredBills: "Cosponsored Bills",
+  becameLawBills: "Bills Enacted",
+  becameLawCosponsoredBills: "Bills Enacted (Cosponsored)",
+  committees: "Committee Memberships",
+  misconductCount: "Misconduct Count",
+  misconductTags: "Misconduct Tags",
+  yeaVotes: "Yea Votes",
+  nayVotes: "Nay Votes",
+  missedVotes: "Missed Votes"
+};
 
-  // Scoring function using current schema
+// Scoring function using current schema
 function scoreLegislator(person) {
   const breakdown = {
     sponsoredBills: person.sponsoredBills || 0,
@@ -3197,7 +3196,7 @@ function scoreLegislator(person) {
       /chairman|chair|ranking member|vice chair/i.test(c.role)
     ).length,
     missedVotes: person.missedVotes || 0,
-    misconductCount: person.misconductCount || 0   // include misconduct infractions
+    misconductCount: person.misconductCount || 0
   };
 
   let composite = 0;
@@ -3216,28 +3215,6 @@ function scoreLegislator(person) {
 function formatScore(value) {
   const cls = value >= 0 ? 'score-positive' : 'score-negative';
   return `<span class="${cls}">${Number.isFinite(value) ? value.toFixed(1) : '0.0'}</span>`;
-}
-
- // Helper: render streak badges
-function renderStreakBadges(streaks) {
-  const badges = [];
-
-  if (streaks?.activity > 0) {
-    const unit = streaks.activity === 1 ? 'week' : 'weeks';
-    badges.push(`🔥 ${streaks.activity} ${unit} activity streak`);
-  }
-
-  if (streaks?.voting > 0) {
-    const unit = streaks.voting === 1 ? 'week' : 'weeks';
-    badges.push(`🗳 ${streaks.voting} ${unit} voting streak`);
-  }
-
-  if (streaks?.leader > 0) {
-    const unit = streaks.leader === 1 ? 'week' : 'weeks';
-    badges.push(`👑 ${streaks.leader} ${unit} as Leader`);
-  }
-
-  return badges;
 }
 
 // Scorecard modal with photo, name, state/district/party, and breakdown
@@ -3299,52 +3276,48 @@ function showScorecard(person, breakdown, composite) {
     </table>
   `;
 
-// Append misconduct details inline with safe guards
-if (person.misconductCount && person.misconductCount > 0) {
-  const tbody = breakdownEl.querySelector('tbody');
+  // Misconduct details
+  if (person.misconductCount && person.misconductCount > 0) {
+    const tbody = breakdownEl.querySelector('tbody');
 
-  // Tags
-  if (Array.isArray(person.misconductTags) && person.misconductTags.length) {
-    const tagsRow = document.createElement('tr');
-    tagsRow.innerHTML = `
-      <td>⚠️ Misconduct</td>
-      <td colspan="3">Tags: ${person.misconductTags.join(', ')}</td>
-    `;
-    tbody.appendChild(tagsRow);
-  }
-
-  // Detailed texts
-  if (Array.isArray(person.misconductTexts) && person.misconductTexts.length) {
-    person.misconductTexts.forEach(txt => {
-      const textRow = document.createElement('tr');
-      textRow.innerHTML = `
-        <td>Details</td>
-        <td colspan="3">${txt}</td>
+    if (Array.isArray(person.misconductTags) && person.misconductTags.length) {
+      const tagsRow = document.createElement('tr');
+      tagsRow.innerHTML = `
+        <td>⚠️ Misconduct</td>
+        <td colspan="3">Tags: ${person.misconductTags.join(', ')}</td>
       `;
-      tbody.appendChild(textRow);
-    });
+      tbody.appendChild(tagsRow);
+    }
+
+    if (Array.isArray(person.misconductTexts) && person.misconductTexts.length) {
+      person.misconductTexts.forEach(txt => {
+        const textRow = document.createElement('tr');
+        textRow.innerHTML = `
+          <td>Details</td>
+          <td colspan="3">${txt}</td>
+        `;
+        tbody.appendChild(textRow);
+      });
+    }
+
+    if (Array.isArray(person.misconductConsequences) && person.misconductConsequences.length) {
+      person.misconductConsequences.forEach(c => {
+        const consRow = document.createElement('tr');
+        consRow.innerHTML = `
+          <td>Consequence</td>
+          <td colspan="3">${c.date || ''} — ${c.text || ''} 
+            ${c.link ? `<a href="${c.link}" target="_blank" rel="noopener noreferrer">[source]</a>` : ''}
+          </td>
+        `;
+        tbody.appendChild(consRow);
+      });
+    }
   }
 
-  // Consequences
-  if (Array.isArray(person.misconductConsequences) && person.misconductConsequences.length) {
-    person.misconductConsequences.forEach(c => {
-      const consRow = document.createElement('tr');
-      consRow.innerHTML = `
-        <td>Consequence</td>
-        <td colspan="3">${c.date || ''} — ${c.text || ''} 
-          ${c.link ? `<a href="${c.link}" target="_blank" rel="noopener noreferrer">[source]</a>` : ''}
-        </td>
-      `;
-      tbody.appendChild(consRow);
-    });
-  }
+  const modal = document.getElementById('scorecardModal');
+  modal.classList.add('is-open', 'modal-dark');
+  modal.setAttribute('aria-hidden', 'false');
 }
-
-const modal = document.getElementById('scorecardModal');
-modal.classList.add('is-open', 'modal-dark');
-modal.setAttribute('aria-hidden', 'false');
-}
-
 // Merge rankings JSON with info JSON by slug + misconduct
 function mergeData(rankings, info, misconduct = []) {
   return rankings.map(r => {
@@ -3354,7 +3327,6 @@ function mergeData(rankings, info, misconduct = []) {
     }
     let misconductEntry = misconduct.find(m => m.person === r.bioguideId);
 
-    // Merge misconduct fields if present
     return {
       ...r,
       ...match,
@@ -3407,8 +3379,7 @@ async function render() {
     return {
       person,
       score: composite,
-      breakdown,
-      streaks: person.streaks || {}
+      breakdown
     };
   });
 
@@ -3448,16 +3419,6 @@ async function render() {
       </td>
       <td>${row.person.office || (officeType === 'rep' ? 'U.S. Representative' : 'U.S. Senator')}</td>
       <td>${displayVal}</td>
-      <td class="streak-cell">
-        ${renderStreakBadges(row.person.streaks)
-          .map(b => {
-            if (b.includes('🔥')) return `<span class="streak-badge activity">${b}</span>`;
-            if (b.includes('🗳')) return `<span class="streak-badge voting">${b}</span>`;
-            if (b.includes('👑')) return `<span class="streak-badge leader">${b}</span>`;
-            return `<span class="streak-badge">${b}</span>`;
-          })
-          .join(' ')}
-      </td>
     `;
     tableBody.appendChild(tr);
   });
@@ -3517,7 +3478,6 @@ render().catch(console.error);
 // --- Missing global helpers for menu links ---
 function renderOfficials(state, query) {
   console.log("Render officials for:", state, query);
-  // Hook into your officials rendering logic here
 }
 
 function showRatings() {
@@ -3531,6 +3491,3 @@ function showCitizenship() {
 function showCommunity() {
   showTab('community');
 }
-
-// If your script is wrapped in an IIFE, close it here:
-})();
