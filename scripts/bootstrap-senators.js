@@ -53,7 +53,7 @@ function baseRecord(sen) {
     district: 'At-Large',
     party: lastTerm.party,
     office: 'Senator',
-    photo: sensPhotoMap[govtrackId] || null, // ✅ merge by GovTrack ID
+    photo: sensPhotoMap[govtrackId] || null,
 
     // Legislative totals
     sponsoredBills: 0,
@@ -68,7 +68,7 @@ function baseRecord(sen) {
     misconductCount: 0,
     misconductTags: [],
 
-    // Voting totals (top-level)
+    // Voting totals
     yeaVotes: 0,
     nayVotes: 0,
     missedVotes: 0,
@@ -76,28 +76,9 @@ function baseRecord(sen) {
     participationPct: 0,
     missedVotePct: 0,
 
-    // Streaks (multi-dimension)
-    streaks: {
-      activity: 0,
-      voting: 0,
-      leader: 0
-    },
-
-    // Metrics snapshot for weekly diffs
-    metrics: {
-      lastTotals: {
-        sponsoredBills: 0,
-        cosponsoredBills: 0,
-        yeaVotes: 0,
-        nayVotes: 0,
-        missedVotes: 0,
-        totalVotes: 0
-      }
-    },
-
-    // Legacy + scoring
-    streak: 0,
+    // Scoring
     powerScore: 0,
+
     lastUpdated: new Date().toISOString()
   };
 }
