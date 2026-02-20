@@ -21,7 +21,7 @@ const path = require('path');
 const fetch = require('node-fetch');
 const xml2js = require('xml2js');
 
-const ROSTER_PATH = path.join(__dirname, '../public/legislators-current.json');
+const ROSTER_PATH = path.join(__dirname, '../public/senators.json');
 const OUTPUT_PATH = path.join(__dirname, '../public/senators-votes.json');
 
 const parser = new xml2js.Parser({
@@ -33,7 +33,7 @@ const parser = new xml2js.Parser({
 
 // Load roster and filter to current senators
 const roster = JSON.parse(fs.readFileSync(ROSTER_PATH, 'utf-8'));
-const senators = roster.filter(r => r.terms?.at(-1)?.type === 'sen');
+const senators = roster;
 
 // Build LIS → bioguide map using id.lis
 function buildLisMap() {
@@ -110,8 +110,12 @@ async function main() {
 
       totalRollCalls++;
 
-      const rc = parsed.roll_call_vote;
-      const members = rc.members?.member || [];
+     const rc = parsed?.roll_call_vote || parsed?.rollcallvote;
+     if (!rc || !rc.members) continue;
+
+      const members = Array.isArray(rc.members.member)
+      ? rc.members.member
+    : [rc.members.member];
 
       for (const m of members) {
         const lis = m.lis_member_id;
