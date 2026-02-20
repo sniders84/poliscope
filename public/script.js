@@ -3491,3 +3491,4 @@ function showCitizenship() {
 function showCommunity() {
   showTab('community');
 }
+})();
