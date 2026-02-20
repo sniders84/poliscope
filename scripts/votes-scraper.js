@@ -19,7 +19,8 @@ const path = require('path');
 const fetch = require('node-fetch');
 const xml2js = require('xml2js');
 
-const ROSTER_PATH = path.join(__dirname, '../public/senators-rankings.json');
+const RANKINGS_PATH = path.join(__dirname, '../public/senators-rankings.json');
+const INFO_PATH = path.join(__dirname, '../public/senators.json');
 const OUTPUT_PATH = path.join(__dirname, '../public/senators-votes.json');
 
 const parser = new xml2js.Parser({
@@ -29,14 +30,30 @@ const parser = new xml2js.Parser({
   attrNameProcessors: [xml2js.processors.stripPrefix]
 });
 
-// Load roster
-const roster = JSON.parse(fs.readFileSync(ROSTER_PATH, 'utf-8'));
-const senators = roster;
+// Load roster (rankings) and info (termStart/termEnd)
+const rankings = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf-8'));
+const info = JSON.parse(fs.readFileSync(INFO_PATH, 'utf-8'));
 
-// Build LIS → bioguide map
+// Build bioguide -> term window map
+function buildTermMap() {
+  const map = new Map();
+  for (const s of info) {
+    const bioguide = s.bioguideId;
+    const termStart = s.termStart;
+    const termEnd = s.termEnd;
+    if (!bioguide || !termStart || !termEnd) continue;
+    map.set(bioguide, {
+      start: new Date(termStart),
+      end: new Date(termEnd)
+    });
+  }
+  return map;
+}
+
+// Build LIS → bioguide map from rankings
 function buildLisMap() {
   const map = new Map();
-  for (const s of senators) {
+  for (const s of rankings) {
     const lis = s.lis;
     const bioguide = s.bioguideId;
     if (lis && bioguide) {
@@ -83,10 +100,11 @@ async function main() {
   console.log('Senate votes scraper (119th Congress) — starting');
 
   const lisMap = buildLisMap();
+  const termMap = buildTermMap();
 
   // Initialize aggregate counts
   const voteCounts = {};
-  senators.forEach(s => {
+  rankings.forEach(s => {
     const bioguide = s.bioguideId;
     if (!bioguide) return;
     voteCounts[bioguide] = { yea: 0, nay: 0, missed: 0 };
@@ -106,10 +124,16 @@ async function main() {
       const parsed = await fetchXML(url);
       if (!parsed) continue;
 
-      totalRollCalls++;
-
       const rc = parsed?.roll_call_vote || parsed?.rollcallvote;
       if (!rc || !rc.members) continue;
+
+      // Parse vote date once per roll call
+      const voteDateStr = rc.vote_date;
+      if (!voteDateStr) continue;
+      const voteDate = new Date(voteDateStr);
+      if (Number.isNaN(voteDate.getTime())) continue;
+
+      totalRollCalls++;
 
       const members = Array.isArray(rc.members.member)
         ? rc.members.member
@@ -119,6 +143,12 @@ async function main() {
         const lis = m.lis_member_id;
         const bioguide = lisMap.get(lis);
         if (!bioguide || !voteCounts[bioguide]) continue;
+
+        const term = termMap.get(bioguide);
+        if (!term) continue;
+
+        // Only count votes within the senator's term window
+        if (voteDate < term.start || voteDate > term.end) continue;
 
         const voteCast = (m.vote_cast || '').trim();
         const counts = voteCounts[bioguide];
@@ -131,7 +161,7 @@ async function main() {
   }
 
   // Build output in FLAT schema
-  const output = senators.map(s => {
+  const output = rankings.map(s => {
     const bioguide = s.bioguideId;
     const counts = voteCounts[bioguide] || { yea: 0, nay: 0, missed: 0 };
     const total = counts.yea + counts.nay + counts.missed;
@@ -154,7 +184,7 @@ async function main() {
 
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(output, null, 2));
   console.log(`Wrote ${output.length} senator vote records to ${OUTPUT_PATH}`);
-  console.log(`Total roll calls processed: ${totalRollCalls}`);
+  console.log(`Total roll calls processed (before term filtering): ${totalRollCalls}`);
 }
 
 main().catch(err => console.error('Votes failed:', err.message));
