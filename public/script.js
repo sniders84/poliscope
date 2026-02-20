@@ -3232,22 +3232,63 @@ function showScorecard(person, breakdown, composite) {
   breakdownEl.innerHTML = '';
   breakdownEl.insertAdjacentHTML('afterbegin', headerHtml);
 
+  // -----------------------------
+  // COMMITTEE GROUPING (Option C)
+  // -----------------------------
+  const committees = person.committees || [];
+
+  const membershipRows = committees
+    .filter(c => c.role === "Member")
+    .map(c => ({
+      name: c.committeeName,
+      role: "Member",
+      raw: 1,
+      weight: 1,
+      contribution: 1
+    }));
+
+  const leadershipRows = committees
+    .filter(c => c.role !== "Member")
+    .map(c => ({
+      name: c.committeeName,
+      role: c.role,
+      raw: 1,
+      weight:
+        c.role === "Chair" ? 4 :
+        c.role === "Ranking Member" ? 3 :
+        c.role === "Vice Chair" ? 2 : 1,
+      contribution:
+        c.role === "Chair" ? 4 :
+        c.role === "Ranking Member" ? 3 :
+        c.role === "Vice Chair" ? 2 : 1
+    }));
+
+  const membershipTotal = membershipRows.reduce((a, b) => a + b.contribution, 0);
+  const leadershipTotal = leadershipRows.reduce((a, b) => a + b.contribution, 0);
+
+  // -----------------------------
+  // LABELS
+  // -----------------------------
   const labelMap = {
     sponsoredBills: 'Bills Sponsored',
     cosponsoredBills: 'Bills Cosponsored',
     becameLawBills: 'Bills Enacted',
     becameLawCosponsoredBills: 'Bills Enacted (Cosponsored)',
-    committees: 'Committee Memberships',
-    committeeLeadership: 'Committee Leadership Roles',
     missedVotes: 'Missed Votes (Count)',
     misconductCount: 'Misconduct Infractions'
   };
 
-  const rowsHtml = Object.keys(breakdown).map(key => {
+  // -----------------------------
+  // NORMAL CATEGORY ROWS
+  // -----------------------------
+  const normalRowsHtml = Object.keys(breakdown).map(key => {
+    if (key === "committees" || key === "committeeLeadership") return "";
+
     const raw = breakdown[key];
     const weight = WEIGHTS[key] || 0;
     const contrib = raw * weight;
     const label = labelMap[key] || key;
+
     return `
       <tr>
         <td>${label}</td>
@@ -3258,6 +3299,43 @@ function showScorecard(person, breakdown, composite) {
     `;
   }).join('');
 
+  // -----------------------------
+  // COMMITTEE MEMBERSHIP SECTION
+  // -----------------------------
+  const membershipSection = `
+    <tr>
+      <td colspan="4"><strong>Committee Memberships</strong></td>
+    </tr>
+    ${membershipRows.map(r => `
+      <tr class="sub-row">
+        <td>${r.name} (${r.role})</td>
+        <td>${r.raw}</td>
+        <td>${r.weight}</td>
+        <td>${formatScore(r.contribution)}</td>
+      </tr>
+    `).join('')}
+  `;
+
+  // -----------------------------
+  // COMMITTEE LEADERSHIP SECTION
+  // -----------------------------
+  const leadershipSection = `
+    <tr>
+      <td colspan="4"><strong>Committee Leadership Roles</strong></td>
+    </tr>
+    ${leadershipRows.map(r => `
+      <tr class="sub-row">
+        <td>${r.name} (${r.role})</td>
+        <td>${r.raw}</td>
+        <td>${r.weight}</td>
+        <td>${formatScore(r.contribution)}</td>
+      </tr>
+    `).join('')}
+  `;
+
+  // -----------------------------
+  // FINAL TABLE RENDER
+  // -----------------------------
   breakdownEl.innerHTML += `
     <table class="scorecard-table">
       <tbody>
@@ -3271,10 +3349,18 @@ function showScorecard(person, breakdown, composite) {
           <td><strong>Weight</strong></td>
           <td><strong>Contribution</strong></td>
         </tr>
-        ${rowsHtml}
+
+        ${normalRowsHtml}
+        ${membershipSection}
+        ${leadershipSection}
       </tbody>
     </table>
   `;
+
+  const modal = document.getElementById('scorecardModal');
+  modal.classList.add('is-open', 'modal-dark');
+  modal.setAttribute('aria-hidden', 'false');
+}
 
   // Misconduct details
   if (person.misconductCount && person.misconductCount > 0) {
