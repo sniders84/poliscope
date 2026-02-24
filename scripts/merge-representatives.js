@@ -32,6 +32,18 @@ const legislation  = loadJSON("../public/legislation-representatives.json", []) 
 const committeeRaw = loadJSON("../public/representatives-committees.json", {}) || {};
 
 // ------------------------------------------------------------
+// LOOKUPS (THIS BLOCK WAS MISSING IN YOUR FAILING VERSION)
+// ------------------------------------------------------------
+
+const votesById = new Map(
+  votes.map(v => [v.bioguideId || v.bioguide, v])
+);
+
+const legById = new Map(
+  legislation.map(l => [l.bioguideId || l.bioguide, l])
+);
+
+// ------------------------------------------------------------
 // UNIFIED COMMITTEE NAME RESOLUTION
 // ------------------------------------------------------------
 
