@@ -3157,21 +3157,44 @@ document.getElementById('rate-me-btn').onclick = function() {
   const tableBody = document.querySelector('#rankings-leaderboard tbody');
   if (!officeSel || !categorySel || !tableBody) return;
 
-  // Weights tuned to current schema (no amendments)
+// ------------------------------------------------------------
+// LEGISLATOR WEIGHTS (Senate + House)
+// ------------------------------------------------------------
 const WEIGHTS = {
   sponsoredBills: 1.2,
   cosponsoredBills: 0.6,
   becameLawBills: 6.0,
   becameLawCosponsoredBills: 3.0,
-  committees: 4.0,           // per committee
-  committeeLeadership: 2.0,  // bonus for Chair/Ranking/Vice
-  missedVotes: -0.5,         // penalty per missed vote
-  misconductCount: -10.0     // penalty per misconduct infraction
+  committees: 4.0,
+  committeeLeadership: 2.0,
+  missedVotes: -0.5,
+  misconductCount: -10.0
 };
 
- // Map schema keys to human-friendly labels
+// ------------------------------------------------------------
+// PRESIDENTIAL WEIGHTS
+// ------------------------------------------------------------
+const PRESIDENT_WEIGHTS = {
+  approvalRating: 1.5,
+  crisisSeverityIndex: 2.0,
+  majorBillsSigned: 1.2,
+  gdpGrowth: 1.0,
+  inflationRate: -0.8,
+  unemploymentRate: -0.8,
+  treatiesNegotiated: 1.0,
+  judicialAppointments: 1.0,
+  legislationPassed: 1.2,
+  scandalCount: -2.0,
+  executiveOrders: 0.3
+};
+
+// ------------------------------------------------------------
+// CATEGORY LABELS (Legislators + Presidents)
+// ------------------------------------------------------------
 const CATEGORY_LABELS = {
   powerScore: "Overall Power Score",
+
+  // Legislator categories
   sponsoredBills: "Sponsored Bills",
   cosponsoredBills: "Cosponsored Bills",
   becameLawBills: "Bills Enacted",
@@ -3181,10 +3204,25 @@ const CATEGORY_LABELS = {
   misconductTags: "Misconduct Tags",
   yeaVotes: "Yea Votes",
   nayVotes: "Nay Votes",
-  missedVotes: "Missed Votes"
+  missedVotes: "Missed Votes",
+
+  // Presidential categories
+  approvalRating: "Approval Rating",
+  crisisSeverityIndex: "Crisis Severity Index",
+  majorBillsSigned: "Major Bills Signed",
+  gdpGrowth: "GDP Growth",
+  inflationRate: "Inflation Rate",
+  unemploymentRate: "Unemployment Rate",
+  treatiesNegotiated: "Treaties Negotiated",
+  judicialAppointments: "Judicial Appointments",
+  legislationPassed: "Legislation Passed",
+  scandalCount: "Scandal Count",
+  executiveOrders: "Executive Orders"
 };
 
-// Scoring function using current schema
+// ------------------------------------------------------------
+// LEGISLATOR SCORING
+// ------------------------------------------------------------
 function scoreLegislator(person) {
   const breakdown = {
     sponsoredBills: person.sponsoredBills || 0,
@@ -3200,11 +3238,9 @@ function scoreLegislator(person) {
   };
 
   let composite = 0;
-  Object.keys(breakdown).forEach(key => {
-    const raw = breakdown[key];
-    const weight = WEIGHTS[key] || 0;
-    composite += raw * weight;
-  });
+  for (const key in breakdown) {
+    composite += breakdown[key] * (WEIGHTS[key] || 0);
+  }
 
   return {
     composite: Math.round(composite * 10) / 10,
@@ -3212,25 +3248,99 @@ function scoreLegislator(person) {
   };
 }
 
+// ------------------------------------------------------------
+// PRESIDENTIAL SCORING
+// ------------------------------------------------------------
+function scorePresident(p) {
+  const breakdown = {
+    approvalRating: p.approvalRating || 0,
+    crisisSeverityIndex: p.crisisSeverityIndex || 0,
+    majorBillsSigned: p.majorBillsSigned || 0,
+    gdpGrowth: p.gdpGrowth || 0,
+    inflationRate: p.inflationRate || 0,
+    unemploymentRate: p.unemploymentRate || 0,
+    treatiesNegotiated: p.treatiesNegotiated || 0,
+    judicialAppointments: p.judicialAppointments || 0,
+    legislationPassed: p.legislationPassed || 0,
+    scandalCount: p.scandalCount || 0,
+    executiveOrders: p.executiveOrders || 0
+  };
+
+  let composite = 0;
+  for (const key in breakdown) {
+    composite += breakdown[key] * (PRESIDENT_WEIGHTS[key] || 0);
+  }
+
+  return {
+    composite: Math.round(composite * 10) / 10,
+    breakdown
+  };
+}
+
+// ------------------------------------------------------------
+// SCORE FORMATTER
+// ------------------------------------------------------------
 function formatScore(value) {
   const cls = value >= 0 ? 'score-positive' : 'score-negative';
   return `<span class="${cls}">${Number.isFinite(value) ? value.toFixed(1) : '0.0'}</span>`;
 }
 
-// Scorecard modal with photo, name, state/district/party, and breakdown
+// ------------------------------------------------------------
+// UNIFIED SCORECARD (Legislators + Presidents)
+// ------------------------------------------------------------
 function showScorecard(person, breakdown, composite) {
+  const modal = document.getElementById('scorecardModal');
+  const breakdownEl = document.getElementById('scorecardBreakdown');
+
   document.getElementById('scorecardName').textContent = person.name;
 
-  const photoUrl = person.photo;
-  const district = person.district ? ` / District ${person.district}` : '';
-  const headerHtml = `
+  const photoUrl = person.photo || '';
+  const officeLine = [
+    person.office || '',
+    person.state || '',
+    person.party || '',
+    person.district ? `District ${person.district}` : ''
+  ].filter(Boolean).join(' • ');
+
+  breakdownEl.innerHTML = `
     <img src="${photoUrl}" alt="${person.name}" class="profile-photo">
-    <p>${person.state}${district} • ${person.party}</p>
+    <p>${officeLine}</p>
+    <table class="scorecard-table">
+      <tbody>
+        <tr>
+          <td><strong>Power Score</strong></td>
+          <td colspan="3">${formatScore(composite)}</td>
+        </tr>
+        <tr>
+          <td><strong>Category</strong></td>
+          <td><strong>Raw</strong></td>
+          <td><strong>Weight</strong></td>
+          <td><strong>Contribution</strong></td>
+        </tr>
+        ${Object.keys(breakdown).map(key => `
+          <tr>
+            <td>${CATEGORY_LABELS[key] || key}</td>
+            <td>${breakdown[key]}</td>
+            <td>${
+              (person.office === 'President' || person.office === 'Vice President')
+                ? (PRESIDENT_WEIGHTS[key] || 0)
+                : (WEIGHTS[key] || 0)
+            }</td>
+            <td>${formatScore(
+              breakdown[key] *
+              ((person.office === 'President' || person.office === 'Vice President')
+                ? (PRESIDENT_WEIGHTS[key] || 0)
+                : (WEIGHTS[key] || 0))
+            )}</td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
   `;
 
-  const breakdownEl = document.getElementById('scorecardBreakdown');
-  breakdownEl.innerHTML = '';
-  breakdownEl.insertAdjacentHTML('afterbegin', headerHtml);
+  modal.classList.add('is-open', 'modal-dark');
+  modal.setAttribute('aria-hidden', 'false');
+}
 
   // -----------------------------
   // COMMITTEE GROUPING (Option C)
