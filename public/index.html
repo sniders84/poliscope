@@ -454,51 +454,89 @@
     </div>
   </div>
 
-  <!-- Scoring Logic modal -->
-<div id="scoringLogicModal" class="scorecard-modal wide" aria-hidden="true">
-  <div class="scorecard-modal-content" role="dialog" aria-modal="true" aria-labelledby="scoringLogicTitle">
-    <button id="scoringLogicClose" class="scorecard-modal-close" aria-label="Close scoring logic">&times;</button>
-    <h2 id="scoringLogicTitle">Rankings Scoring and Weight Logic</h2>
-    <div class="scoring-logic-body">
-      <p>
-        Officials are ranked using weighted contributions from legislative and executive activity.
-        Each category has a raw value (e.g., bills sponsored), a weight (importance factor),
-        and a contribution (raw × weight). The sum of contributions forms the Power Score.
-      </p>
+  <h2>Rankings Scoring & Weight Logic</h2>
 
-      <h3>Legislative Offices (Senators & Representatives)</h3>
-      <table class="scorecard-table">
-        <thead><tr><th>Category</th><th>Weight</th><th>Rationale</th></tr></thead>
-        <tbody>
-          <tr><td>Bills Sponsored</td><td>1.2</td><td>Shows initiative and legislative drive.</td></tr>
-          <tr><td>Bills Cosponsored</td><td>0.6</td><td>Collaboration matters, but less than leading bills.</td></tr>
-          <tr><td>Bills Enacted (Sponsored)</td><td>6.0</td><td>Highest impact — turning proposals into law.</td></tr>
-          <tr><td>Bills Enacted (Cosponsored)</td><td>3.0</td><td>Influence through cosponsored bills that become law.</td></tr>
-          <tr><td>Committee Memberships</td><td>4.0</td><td>Committees drive legislation; membership shows influence.</td></tr>
-          <tr><td>Committee Leadership Roles</td><td>2.0</td><td>Chair, Ranking Member, or Vice Chair positions add leadership weight.</td></tr>
-          <tr><td>Missed Votes (Count)</td><td>-0.5</td><td>Penalizes absenteeism by raw missed vote count.</td></tr>
-          <tr><td>Misconduct Infractions</td><td>-10.0</td><td>Severe penalty for misconduct; reduces trust and effectiveness.</td></tr>
-        </tbody>
-      </table>
+<p>This page explains how Electorate calculates Power Scores for all offices. Each office type uses a different scoring model tailored to its constitutional role and available data.</p>
 
-      <h3>Executive Offices (President, Vice President, Governors)</h3>
-      <table class="scorecard-table">
-        <thead><tr><th>Category</th><th>Weight</th><th>Rationale</th></tr></thead>
-        <tbody>
-          <tr><td>Executive Orders</td><td>2.5</td><td>Direct executive action, but less lasting than laws.</td></tr>
-          <tr><td>Vetoes</td><td>3.0</td><td>Blocking legislation shows influence, but is reactive.</td></tr>
-          <tr><td>Budgets Proposed</td><td>2.0</td><td>Fiscal leadership is important but shared with legislature.</td></tr>
-          <tr><td>Appointments Confirmed</td><td>3.0</td><td>Staffing effectiveness impacts governance.</td></tr>
-          <tr><td>Leadership Score</td><td>5.0</td><td>Leadership is central to executive performance.</td></tr>
-          <tr><td>Working With Legislature</td><td>3.5</td><td>Cross‑branch cooperation is vital.</td></tr>
-          <tr><td>Crisis Response</td><td>4.0</td><td>Handling emergencies is a defining test.</td></tr>
-          <tr><td>Missed Duties</td><td>-3.0</td><td>Penalty for neglecting responsibilities.</td></tr>
-          <tr><td>Misconduct Infractions</td><td>-10.0</td><td>Severe penalty for misconduct in executive office.</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
+<hr>
+
+<h3>Presidential Scoring Model</h3>
+<p>The Presidential Power Score is calculated using a weighted composite of performance, governance, and historical impact metrics. These weights reflect the relative influence of each category on executive leadership.</p>
+
+<table class="logic-table">
+  <thead>
+    <tr>
+      <th>Metric</th>
+      <th>Description</th>
+      <th>Weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Approval Rating</td><td>Average public approval during term</td><td>1.5</td></tr>
+    <tr><td>Crisis Severity Index</td><td>Severity and frequency of major crises</td><td>2.0</td></tr>
+    <tr><td>Major Bills Signed</td><td>Landmark legislation signed into law</td><td>1.2</td></tr>
+    <tr><td>GDP Growth</td><td>Average economic growth during term</td><td>1.0</td></tr>
+    <tr><td>Inflation Rate</td><td>Average inflation (negative weight)</td><td>-0.8</td></tr>
+    <tr><td>Unemployment Rate</td><td>Average unemployment (negative weight)</td><td>-0.8</td></tr>
+    <tr><td>Treaties Negotiated</td><td>Major international agreements</td><td>1.0</td></tr>
+    <tr><td>Judicial Appointments</td><td>Supreme Court + major federal appointments</td><td>1.0</td></tr>
+    <tr><td>Legislation Passed</td><td>Executive‑driven legislative achievements</td><td>1.2</td></tr>
+    <tr><td>Scandal Count</td><td>Verified scandals (negative weight)</td><td>-2.0</td></tr>
+    <tr><td>Executive Orders</td><td>Executive actions issued</td><td>0.3</td></tr>
+  </tbody>
+</table>
+
+<h4>Presidential Event Categories</h4>
+<p>Presidential scorecards also include major historical events grouped into:</p>
+<ul>
+  <li>Major Crisis Events</li>
+  <li>Major Domestic Events</li>
+  <li>Major Economic Events</li>
+  <li>Major Foreign Policy Events</li>
+  <li>Major Judicial Events</li>
+  <li>Major Legislation Events</li>
+  <li>Major Scandal Events</li>
+  <li>Major Executive Actions</li>
+</ul>
+
+<p>These events do not directly affect the numeric score but provide historical context for each presidency.</p>
+
+<hr>
+
+<h3>Legislator Scoring Model (Senate & House)</h3>
+<p>Legislators are scored using productivity, influence, and conduct metrics.</p>
+
+<table class="logic-table">
+  <thead>
+    <tr>
+      <th>Metric</th>
+      <th>Description</th>
+      <th>Weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Sponsored Bills</td><td>Bills authored</td><td>1.2</td></tr>
+    <tr><td>Cosponsored Bills</td><td>Bills supported</td><td>0.6</td></tr>
+    <tr><td>Bills Enacted</td><td>Sponsored bills that became law</td><td>6.0</td></tr>
+    <tr><td>Cosponsored Bills Enacted</td><td>Supported bills that became law</td><td>3.0</td></tr>
+    <tr><td>Committee Memberships</td><td>Committee seats held</td><td>4.0</td></tr>
+    <tr><td>Committee Leadership</td><td>Chair/Ranking/Vice roles</td><td>2.0</td></tr>
+    <tr><td>Missed Votes</td><td>Absences from floor votes</td><td>-0.5</td></tr>
+    <tr><td>Misconduct Infractions</td><td>Verified ethics violations</td><td>-10.0</td></tr>
+  </tbody>
+</table>
+
+<p>Legislator scorecards also include committee breakdowns and misconduct details.</p>
+
+<hr>
+
+<h3>Power Score Formula</h3>
+<p>All offices use the same composite formula:</p>
+
+<pre><code>Power Score = Σ (Raw Value × Weight)
+</code></pre>
+
+<p>Scores are rounded to one decimal place.</p>
 
   </section>
 <section id="learning-resources" class="tab-content" style="display: none;">
