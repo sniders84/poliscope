@@ -1,1238 +1,813 @@
 [
-{
-  "id": 1,
-  "name": "George Washington",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "Whiskey Rebellion (1794)",
-        "summary": "The Whiskey Rebellion emerged when farmers in western Pennsylvania resisted a federal excise tax on distilled spirits. The protests escalated into violence, including attacks on tax collectors and open defiance of federal authority. Washington invoked the Militia Act and mobilized state militias to demonstrate federal resolve. His personal oversight of the operation ended the rebellion without major bloodshed and affirmed the federal government's ability to enforce its laws.",
-        "sources": [
-          "National Archives, Founders Online: Documents relating to the Whiskey Rebellion.",
-          "Library of Congress, 'Whiskey Rebellion' historical overview."
-        ]
-      }
-    ],
-    "overallAssessment": "Washington faced a major internal challenge in the Whiskey Rebellion, which tested the authority of the new federal government. His administration responded by mobilizing state militias under federal command to enforce national law. The resolution of the crisis established a precedent for federal enforcement actions and demonstrated the government's capacity to maintain order.",
-    "sources": [
-      "National Archives, Founders Online.",
-      "Library of Congress historical materials on early federal crises."
-    ]
-  }
-},
-{
-  "id": 2,
-  "name": "John Adams",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "Quasi-War with France (1798–1800)",
-        "summary": "The Quasi-War was an undeclared naval conflict between the United States and France following diplomatic tensions highlighted by the XYZ Affair. French privateers targeted American shipping, prompting Adams to expand the Navy and authorize defensive maritime operations. The conflict tested the nation's ability to protect its commerce and assert neutrality. Adams ultimately pursued diplomacy, leading to the Convention of 1800, which ended hostilities without escalating into a full-scale war.",
-        "sources": [
-          "U.S. Department of State, Office of the Historian: 'The XYZ Affair' and 'The Quasi-War'.",
-          "National Archives, documents relating to naval actions during the Quasi-War."
-        ]
-      }
-    ],
-    "overallAssessment": "Adams managed a significant foreign policy crisis involving escalating tensions with France that threatened to draw the United States into war. His administration strengthened naval defenses while simultaneously pursuing diplomatic channels to de-escalate the conflict. The peaceful resolution demonstrated the government's ability to balance military readiness with negotiated settlement.",
-    "sources": [
-      "U.S. Department of State, Office of the Historian.",
-      "National Archives naval records."
-    ]
-  }
-},
-{
-  "id": 3,
-  "name": "Thomas Jefferson",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "Barbary Conflict and Tripolitan War (1801–1805)",
-        "summary": "Jefferson confronted piracy and demands for tribute from the Barbary States, particularly Tripoli, which declared war on the United States. He deployed naval forces to protect American shipping and support operations against Tripolitan strongholds. The conflict included notable actions such as the burning of the captured USS Philadelphia to prevent its use by enemy forces. The eventual peace agreement reduced tribute demands and asserted U.S. willingness to defend its maritime interests.",
-        "sources": [
-          "Naval History and Heritage Command, 'First Barbary War'.",
-          "Library of Congress, materials on early U.S. naval conflicts."
-        ]
-      },
-      {
-        "title": "Embargo Crisis (1807–1809)",
-        "summary": "In response to British and French interference with American shipping during the Napoleonic Wars, Jefferson implemented the Embargo Act of 1807, halting all U.S. exports. Intended as a peaceful economic measure to pressure European powers, the embargo instead caused significant domestic hardship and widespread evasion. Enforcement challenges and economic disruption made the policy deeply unpopular. The embargo was repealed shortly before Jefferson left office.",
-        "sources": [
-          "Library of Congress, 'Embargo Act of 1807'.",
-          "National Archives, documents relating to trade restrictions under Jefferson."
-        ]
-      }
-    ],
-    "overallAssessment": "Jefferson’s crisis management focused on maritime conflicts and foreign interference with American trade. His administration used both military action, as seen in the Tripolitan War, and economic pressure, as demonstrated by the Embargo Act, to address external threats. These responses reflected differing strategies for protecting national interests during a period of global conflict.",
-    "sources": [
-      "Naval History and Heritage Command.",
-      "Library of Congress historical materials."
-    ]
-  }
-},
-{
-  "id": 4,
-  "name": "James Madison",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "War of 1812 (1812–1815)",
-        "summary": "Madison led the nation during the War of 1812, a conflict driven by maritime disputes, trade restrictions, and British support for Native American resistance. The war included significant setbacks, such as the burning of Washington, D.C., by British forces in 1814. Despite early challenges, American forces achieved key victories, including the defense of Baltimore and the Battle of New Orleans. The Treaty of Ghent ended the war and restored prewar boundaries without resolving all underlying issues.",
-        "sources": [
-          "Library of Congress, 'War of 1812' collections.",
-          "National Archives, War of 1812 military and diplomatic documents."
-        ]
-      }
-    ],
-    "overallAssessment": "Madison’s presidency was dominated by the War of 1812, which tested the nation’s military capacity and political cohesion. His administration faced invasions, internal dissent, and logistical challenges while attempting to defend national sovereignty. The war’s conclusion helped solidify American independence and contributed to a postwar sense of national unity.",
-    "sources": [
-      "Library of Congress historical materials.",
-      "National Archives War of 1812 records."
-    ]
-  }
-},
-{
-  "id": 5,
-  "name": "James Monroe",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "Panic of 1819",
-        "summary": "The Panic of 1819 was the first major financial crisis in U.S. history, triggered by a postwar economic downturn, falling agricultural prices, and tightening credit from the Second Bank of the United States. The crisis led to widespread unemployment, bank failures, and foreclosures across the country. Monroe’s administration took limited direct action, reflecting prevailing views about federal involvement in economic stabilization. The event contributed to debates over banking policy and federal economic authority.",
-        "sources": [
-          "Library of Congress, materials on the Panic of 1819.",
-          "Federal Reserve historical essays on early U.S. financial crises."
-        ]
-      }
-    ],
-    "overallAssessment": "Monroe’s major crisis involved the Panic of 1819, which exposed vulnerabilities in the young nation’s financial system. His administration maintained a restrained response consistent with contemporary views on federal economic intervention. The crisis influenced later discussions about banking regulation and the role of the federal government in economic stability.",
+  {
+    "id": 1,
+    "name": "George Washington",
+    "crisisManagement": {
+      "events": [
+        {
+          "title": "Whiskey Rebellion",
+          "summary": "Washington personally led federalized militia forces to suppress the Whiskey Rebellion, asserting federal authority over violent tax resistance and preventing the young republic from fragmenting under domestic insurrection.",
+          "sources": [
+            "National Archives, Whiskey Rebellion correspondence.",
+            "Library of Congress, Washington domestic crisis papers."
+          ]
+        }
+      ],
+      "overallAssessment": "Washington managed the first major domestic uprising by combining force with measured clemency, cementing federal supremacy in crises.",
       "sources": [
-        "Library of Congress economic history materials.",
-        "Federal Reserve historical analyses."
+        "Library of Congress, Washington presidential papers.",
+        "National Archives, early federal crisis records."
       ]
+    }
+  },
+  {
+    "id": 2,
+    "name": "John Adams",
+    "crisisManagement": {
+      "events": [
+        {
+          "title": "Quasi‑War with France",
+          "summary": "Adams expanded the Navy and authorized limited naval conflict with France while resisting full‑scale war, balancing national honor with the risk of escalation.",
+          "sources": [
+            "National Archives, Adams naval and diplomatic records.",
+            "Library of Congress, Quasi‑War correspondence."
+          ]
+        }
+      ],
+      "overallAssessment": "Adams managed an undeclared naval war by strengthening defenses yet avoiding a broader conflict that could have destabilized the young republic.",
+      "sources": [
+        "Library of Congress, Adams presidential papers.",
+        "National Archives, early foreign crisis records."
+      ]
+    }
+  },
+  {
+    "id": 3,
+    "name": "Thomas Jefferson",
+    "crisisManagement": {
+      "events": [
+        {
+          "title": "Barbary Pirates Conflict",
+          "summary": "Jefferson deployed naval forces against the Barbary states to end tribute payments, managing a maritime security crisis without a large standing army.",
+          "sources": [
+            "National Archives, Barbary War naval records.",
+            "Library of Congress, Jefferson foreign crisis papers."
+          ]
+        },
+        {
+          "title": "Embargo Crisis of 1807",
+          "summary": "Jefferson imposed a sweeping embargo to avoid war with Britain and France, triggering severe domestic economic backlash and widespread evasion.",
+          "sources": [
+            "Library of Congress, Jefferson embargo correspondence.",
+            "National Archives, embargo enforcement records."
+          ]
+        }
+      ],
+      "overallAssessment": "Jefferson used naval force abroad and sweeping embargo at home, avoiding war but creating a major self‑inflicted economic crisis.",
+      "sources": [
+        "Library of Congress, Jefferson presidential papers.",
+        "National Archives, early crisis management records."
+      ]
+    }
+  },
+  {
+    "id": 4,
+    "name": "James Madison",
+    "crisisManagement": {
+      "events": [
+        {
+          "title": "War of 1812 and Burning of Washington",
+          "summary": "Madison led the nation through the War of 1812, including the British burning of Washington, relying on militia, limited federal capacity, and eventual diplomatic settlement.",
+          "sources": [
+            "National Archives, War of 1812 records.",
+            "Library of Congress, Madison wartime correspondence."
+          ]
+        }
+      ],
+      "overallAssessment": "Madison’s crisis management was marked by early military failures but eventual survival of the republic and affirmation of U.S. independence.",
+      "sources": [
+        "Library of Congress, Madison presidential papers.",
+        "National Archives, wartime crisis records."
+      ]
+    }
+  },
+  {
+    "id": 5,
+    "name": "James Monroe",
+    "crisisManagement": {
+      "events": [
+        {
+          "title": "Panic of 1819",
+          "summary": "Monroe presided over the first major U.S. peacetime financial crisis, responding with limited federal intervention and leaving most relief to states and private actors.",
+          "sources": [
+            "National Archives, Panic of 1819 fiscal records.",
+            "Library of Congress, Monroe economic crisis papers."
+          ]
+        },
+        {
+          "title": "Missouri Crisis",
+          "summary": "Monroe oversaw the political crisis over Missouri’s admission, accepting the Missouri Compromise line to avert immediate sectional rupture.",
+          "sources": [
+            "Library of Congress, Monroe Missouri correspondence.",
+            "National Archives, Missouri statehood records."
+          ]
+        }
+      ],
+      "overallAssessment": "Monroe managed early financial and sectional crises with minimal federal economic action but acceptance of a fragile political compromise.",
+      "sources": [
+        "Library of Congress, Monroe presidential papers.",
+        "National Archives, crisis management archives."
+      ]
+    }
+  },
+  {
+    "id": 6,
+    "name": "John Quincy Adams",
+    "crisisManagement": {
+      "events": [
+        {
+          "title": "Contested Legitimacy after the 1824 Election",
+          "summary": "Adams governed under the cloud of the “corrupt bargain” accusation, managing a legitimacy crisis without major institutional breakdown but with persistent political opposition.",
+          "sources": [
+            "National Archives, 1824 election records.",
+            "Library of Congress, Adams political correspondence."
+          ]
+        }
+      ],
+      "overallAssessment": "Adams faced a political legitimacy crisis he never fully dispelled, but institutions remained intact and peaceful transfer of power followed.",
+      "sources": [
+        "Library of Congress, Adams presidential papers.",
+        "National Archives, early electoral crisis records."
+      ]
+    }
+  },
+  {
+    "id": 7,
+    "name": "Andrew Jackson",
+    "crisisManagement": {
+      "events": [
+        {
+          "title": "Nullification Crisis",
+          "summary": "Jackson confronted South Carolina’s attempt to nullify federal tariffs, threatening force, securing a Force Bill, and accepting a compromise tariff to defuse secession talk.",
+          "sources": [
+            "National Archives, Jackson nullification records.",
+            "Library of Congress, Jackson crisis correspondence."
+          ]
+        },
+        {
+          "title": "Bank War as Political‑Economic Crisis",
+          "summary": "Jackson’s destruction of the Second Bank triggered intense financial and political turmoil, which he framed as a struggle against concentrated power.",
+          "sources": [
+            "Library of Congress, Jackson bank war papers.",
+            "National Archives, financial crisis records."
+          ]
+        }
+      ],
+      "overallAssessment": "Jackson managed existential threats to federal authority with aggressive rhetoric and force readiness, averting immediate disunion but fueling long‑term instability.",
+      "sources": [
+        "Library of Congress, Jackson presidential papers.",
+        "National Archives, crisis management archives."
+      ]
+    }
+  },
+  {
+    "id": 8,
+    "name": "Martin Van Buren",
+    "crisisManagement": {
+      "events": [
+        {
+          "title": "Panic of 1837",
+          "summary": "Van Buren faced a severe financial collapse and widespread unemployment, adhering to hard‑money principles and proposing the Independent Treasury instead of direct federal relief.",
+          "sources": [
+            "National Archives, Panic of 1837 records.",
+            "Library of Congress, Van Buren economic crisis papers."
+          ]
+        }
+      ],
+      "overallAssessment": "Van Buren’s crisis management prioritized financial orthodoxy over aggressive relief, deepening his political unpopularity during prolonged hardship.",
+      "sources": [
+        "Library of Congress, Van Buren presidential papers.",
+        "National Archives, crisis management records."
+      ]
+    }
+  },
+  {
+    "id": 9,
+    "name": "William Henry Harrison",
+    "crisisManagement": {
+      "events": [
+        {
+          "title": "Succession Crisis Triggered by His Death",
+          "summary": "Harrison’s death after a month in office created the first presidential succession test, resolved by Tyler asserting full presidential authority.",
+          "sources": [
+            "National Archives, Harrison death and succession records.",
+            "Library of Congress, early succession correspondence."
+          ]
+        }
+      ],
+      "overallAssessment": "Harrison did not manage crises himself, but his death forced a constitutional precedent on succession that shaped future crisis handling.",
+      "sources": [
+        "Library of Congress, Harrison presidential papers.",
+        "National Archives, early constitutional crisis records."
+      ]
+    }
+  },
+  {
+    "id": 10,
+    "name": "John Tyler",
+    "crisisManagement": {
+      "events": [
+        {
+          "title": "Succession Legitimacy Crisis",
+          "summary": "Tyler insisted he was fully president, not merely acting, during the first succession crisis, establishing a durable precedent for future transitions.",
+          "sources": [
+            "National Archives, Tyler succession records.",
+            "Library of Congress, Tyler constitutional correspondence."
+          ]
+        },
+        {
+          "title": "Cabinet and Party Revolt",
+          "summary": "Tyler faced mass cabinet resignations and expulsion from the Whig Party over vetoes, managing a governance crisis with a reduced political base.",
+          "sources": [
+            "Library of Congress, Tyler cabinet papers.",
+            "National Archives, executive–legislative conflict records."
+          ]
+        }
+      ],
+      "overallAssessment": "Tyler stabilized the succession question but governed amid persistent political crisis and party isolation.",
+      "sources": [
+        "Library of Congress, Tyler presidential papers.",
+        "National Archives, crisis management archives."
+      ]
+    }
+  },
+  {
+    "id": 11,
+    "name": "James K. Polk",
+    "crisisManagement": {
+      "events": [
+        {
+          "title": "Mexican–American War",
+          "summary": "Polk managed a controversial war of expansion, overseeing military campaigns and domestic opposition while achieving territorial gains.",
+          "sources": [
+            "National Archives, Mexican–American War records.",
+            "Library of Congress, Polk wartime correspondence."
+          ]
+        }
+      ],
+      "overallAssessment": "Polk successfully executed a major war but intensified sectional tensions over slavery in the new territories.",
+      "sources": [
+        "Library of Congress, Polk presidential papers.",
+        "National Archives, war crisis records."
+      ]
+    }
+  },
+  {
+    "id": 12,
+    "name": "Zachary Taylor",
+    "crisisManagement": {
+      "events": [
+        {
+          "title": "Sectional Crisis over Slavery in the Mexican Cession",
+          "summary": "Taylor opposed the expansion of slavery into new territories and threatened to use force against secessionists, but his death cut short his approach.",
+          "sources": [
+            "National Archives, Taylor sectional crisis records.",
+            "Library of Congress, Taylor crisis correspondence."
+          ]
+        }
+      ],
+      "overallAssessment": "Taylor confronted early secession talk with a hard line but did not live to see the crisis resolved.",
+      "sources": [
+        "Library of Congress, Taylor presidential papers.",
+        "National Archives, sectional crisis records."
+      ]
+    }
+  },
+  {
+    "id": 13,
+    "name": "Millard Fillmore",
+    "crisisManagement": {
+      "events": [
+        {
+          "title": "Compromise of 1850 Implementation",
+          "summary": "Fillmore signed and enforced the Compromise of 1850, including the Fugitive Slave Act, aiming to calm sectional tensions while provoking intense Northern backlash.",
+          "sources": [
+            "National Archives, Compromise of 1850 enforcement records.",
+            "Library of Congress, Fillmore crisis papers."
+          ]
+        }
+      ],
+      "overallAssessment": "Fillmore temporarily eased congressional deadlock but deepened moral and political crisis over slavery enforcement.",
+      "sources": [
+        "Library of Congress, Fillmore presidential papers.",
+        "National Archives, crisis management archives."
+      ]
+    }
+  },
+  {
+    "id": 14,
+    "name": "Franklin Pierce",
+    "crisisManagement": {
+      "events": [
+        {
+          "title": "Bleeding Kansas",
+          "summary": "Pierce backed pro‑slavery territorial authorities and used federal power against anti‑slavery settlers, allowing violence and chaos to escalate in Kansas.",
+          "sources": [
+            "National Archives, Kansas territorial records.",
+            "Library of Congress, Pierce sectional crisis correspondence."
+          ]
+        }
+      ],
+      "overallAssessment": "Pierce’s handling of the Kansas crisis inflamed sectional conflict and undermined confidence in federal neutrality.",
+      "sources": [
+        "Library of Congress, Pierce presidential papers.",
+        "National Archives, domestic crisis records."
+      ]
+    }
+  },
+  {
+    "id": 15,
+    "name": "James Buchanan",
+    "crisisManagement": {
+      "events": [
+        {
+          "title": "Secession Winter of 1860–1861",
+          "summary": "Buchanan watched multiple Southern states secede while insisting he lacked constitutional authority to coerce them, leaving federal forts vulnerable and the crisis to his successor.",
+          "sources": [
+            "National Archives, Buchanan secession records.",
+            "Library of Congress, Buchanan late‑term correspondence."
+          ]
+        }
+      ],
+      "overallAssessment": "Buchanan’s passivity during the secession crisis is widely judged as catastrophic, failing to contain the slide toward civil war.",
+      "sources": [
+        "Library of Congress, Buchanan presidential papers.",
+        "National Archives, pre‑Civil War crisis archives."
+      ]
+    }
+  },
+  {
+    "id": 31,
+    "name": "Herbert Hoover",
+    "crisisManagement": {
+      "events": [
+        {
+          "title": "Great Depression Initial Collapse",
+          "summary": "Hoover faced the 1929 stock market crash and ensuing economic collapse, relying on voluntary cooperation and limited federal intervention as unemployment and bank failures surged.",
+          "sources": [
+            "National Archives, Hoover Depression records.",
+            "Library of Congress, Hoover crisis correspondence."
+          ]
+        },
+        {
+          "title": "Bonus Army Confrontation",
+          "summary": "Hoover ordered federal troops to disperse World War I veterans demanding early bonus payments, resulting in violent clashes and national outrage.",
+          "sources": [
+            "Library of Congress, Bonus Army papers.",
+            "National Archives, domestic military deployment records."
+          ]
+        }
+      ],
+      "overallAssessment": "Hoover’s crisis management relied on limited federal action and forceful responses to unrest, deepening public dissatisfaction during economic collapse.",
+      "sources": [
+        "Library of Congress, Hoover presidential papers.",
+        "National Archives, crisis management archives."
+      ]
+    }
+  },
+  {
+    "id": 32,
+    "name": "Franklin D. Roosevelt",
+    "crisisManagement": {
+      "events": [
+        {
+          "title": "Banking Crisis of 1933",
+          "summary": "FDR declared a national bank holiday and pushed emergency legislation to stabilize the financial system during widespread bank failures.",
+          "sources": [
+            "National Archives, Emergency Banking Act records.",
+            "Library of Congress, FDR banking crisis papers."
+          ]
+        },
+        {
+          "title": "World War II Homefront Mobilization",
+          "summary": "FDR oversaw unprecedented domestic mobilization, including rationing, war production, and internal security measures.",
+          "sources": [
+            "Library of Congress, WWII homefront documents.",
+            "National Archives, wartime domestic policy records."
+          ]
+        }
+      ],
+      "overallAssessment": "FDR managed the Depression and WWII through sweeping federal mobilization and emergency authority.",
+      "sources": [
+        "Library of Congress, Roosevelt presidential papers.",
+        "National Archives, crisis management archives."
+      ]
+    }
+  },
+  {
+    "id": 33,
+    "name": "Harry S. Truman",
+    "crisisManagement": {
+      "events": [
+        {
+          "title": "Post‑War Reconversion Crisis",
+          "summary": "Truman navigated labor strikes, inflation, and economic instability as the nation transitioned from wartime to peacetime production.",
+          "sources": [
+            "National Archives, Truman reconversion records.",
+            "Library of Congress, Truman labor crisis papers."
+          ]
+        },
+        {
+          "title": "Korean War Outbreak",
+          "summary": "Truman committed U.S. forces to Korea under UN authority, managing a major military crisis without a formal declaration of war.",
+          "sources": [
+            "Library of Congress, Truman Korean War correspondence.",
+            "National Archives, wartime crisis records."
+          ]
+        }
+      ],
+      "overallAssessment": "Truman confronted post‑war domestic turmoil and the sudden outbreak of the Korean War with assertive federal action.",
+      "sources": [
+        "Library of Congress, Truman presidential papers.",
+        "National Archives, crisis management archives."
+      ]
+    }
+  },
+  {
+    "id": 34,
+    "name": "Dwight D. Eisenhower",
+    "crisisManagement": {
+      "events": [
+        {
+          "title": "Little Rock School Desegregation Crisis",
+          "summary": "Eisenhower deployed federal troops to enforce desegregation at Little Rock Central High School, asserting federal authority over state resistance.",
+          "sources": [
+            "National Archives, Little Rock deployment records.",
+            "Library of Congress, Eisenhower civil rights papers."
+          ]
+        },
+        {
+          "title": "Cold War Nuclear Tensions",
+          "summary": "Eisenhower managed escalating nuclear tensions through brinkmanship and civil defense planning.",
+          "sources": [
+            "Library of Congress, Eisenhower national security papers.",
+            "National Archives, Cold War crisis records."
+          ]
+        }
+      ],
+      "overallAssessment": "Eisenhower balanced domestic civil rights enforcement with Cold War nuclear crisis management.",
+      "sources": [
+        "Library of Congress, Eisenhower presidential papers.",
+        "National Archives, crisis management archives."
+      ]
+    }
+  },
+  {
+    "id": 35,
+    "name": "John F. Kennedy",
+    "crisisManagement": {
+      "events": [
+        {
+          "title": "Cuban Missile Crisis",
+          "summary": "Kennedy confronted the Soviet deployment of nuclear missiles in Cuba, imposing a naval quarantine and negotiating withdrawal to avert nuclear war.",
+          "sources": [
+            "National Archives, missile crisis records.",
+            "Library of Congress, Kennedy national security papers."
+          ]
+        },
+        {
+          "title": "Ole Miss Integration Crisis",
+          "summary": "Kennedy deployed federal marshals and troops to enforce the enrollment of James Meredith at the University of Mississippi.",
+          "sources": [
+            "Library of Congress, Kennedy civil rights enforcement papers.",
+            "National Archives, domestic deployment records."
+          ]
+        }
+      ],
+      "overallAssessment": "Kennedy managed the most dangerous nuclear confrontation in history while enforcing civil rights under violent resistance.",
+      "sources": [
+        "Library of Congress, Kennedy presidential papers.",
+        "National Archives, crisis management archives."
+      ]
+    }
+  },
+  {
+    "id": 36,
+    "name": "Lyndon B. Johnson",
+    "crisisManagement": {
+      "events": [
+        {
+          "title": "Vietnam War Escalation",
+          "summary": "Johnson dramatically escalated U.S. involvement in Vietnam, managing domestic unrest and political backlash as casualties rose.",
+          "sources": [
+            "National Archives, Vietnam War escalation records.",
+            "Library of Congress, Johnson wartime correspondence."
+          ]
+        },
+        {
+          "title": "Urban Riots of the 1960s",
+          "summary": "Johnson faced widespread urban unrest, deploying federal troops in several cities and commissioning the Kerner Report.",
+          "sources": [
+            "Library of Congress, Johnson domestic crisis papers.",
+            "National Archives, riot response records."
+          ]
+        }
+      ],
+      "overallAssessment": "Johnson confronted simultaneous crises of war abroad and civil unrest at home, stretching federal capacity.",
+      "sources": [
+        "Library of Congress, Johnson presidential papers.",
+        "National Archives, crisis management archives."
+      ]
+    }
+  },
+  {
+    "id": 37,
+    "name": "Richard Nixon",
+    "crisisManagement": {
+      "events": [
+        {
+          "title": "Watergate Scandal",
+          "summary": "Nixon faced a constitutional crisis over the Watergate break‑in and cover‑up, resisting investigations until releasing tapes under court order.",
+          "sources": [
+            "National Archives, Watergate tapes and records.",
+            "Library of Congress, Nixon crisis correspondence."
+          ]
+        },
+        {
+          "title": "Vietnam War Drawdown",
+          "summary": "Nixon managed the withdrawal of U.S. forces from Vietnam while expanding bombing campaigns, navigating intense domestic opposition.",
+          "sources": [
+            "Library of Congress, Nixon Vietnam papers.",
+            "National Archives, wartime crisis records."
+          ]
+        }
+      ],
+      "overallAssessment": "Nixon’s presidency was defined by constitutional crisis and controversial wartime decision‑making.",
+      "sources": [
+        "Library of Congress, Nixon presidential papers.",
+        "National Archives, crisis management archives."
+      ]
+    }
+  },
+  {
+    "id": 38,
+    "name": "Gerald Ford",
+    "crisisManagement": {
+      "events": [
+        {
+          "title": "Post‑Watergate Legitimacy Crisis",
+          "summary": "Ford sought to stabilize the nation after Nixon’s resignation, issuing a controversial pardon to accelerate political healing.",
+          "sources": [
+            "National Archives, Ford pardon records.",
+            "Library of Congress, Ford domestic crisis papers."
+          ]
+        },
+        {
+          "title": "Fall of Saigon",
+          "summary": "Ford managed the final evacuation of U.S. personnel and allies from Vietnam as the South Vietnamese government collapsed.",
+          "sources": [
+            "Library of Congress, Ford Vietnam evacuation papers.",
+            "National Archives, crisis evacuation records."
+          ]
+        }
+      ],
+      "overallAssessment": "Ford’s crisis management focused on restoring trust in government and handling the chaotic end of the Vietnam War.",
+      "sources": [
+        "Library of Congress, Ford presidential papers.",
+        "National Archives, crisis management archives."
+      ]
+    }
+  },
+  {
+    "id": 39,
+    "name": "Jimmy Carter",
+    "crisisManagement": {
+      "events": [
+        {
+          "title": "Iran Hostage Crisis",
+          "summary": "Carter faced a prolonged hostage crisis after militants seized the U.S. embassy in Tehran, culminating in a failed rescue attempt.",
+          "sources": [
+            "National Archives, Iran hostage crisis records.",
+            "Library of Congress, Carter national security papers."
+          ]
+        },
+        {
+          "title": "Energy Crisis",
+          "summary": "Carter confronted fuel shortages and rising energy prices, implementing conservation measures and creating the Department of Energy.",
+          "sources": [
+            "Library of Congress, Carter energy crisis papers.",
+            "National Archives, domestic crisis records."
+          ]
+        }
+      ],
+      "overallAssessment": "Carter’s presidency was dominated by international hostage standoff and domestic energy instability.",
+      "sources": [
+        "Library of Congress, Carter presidential papers.",
+        "National Archives, crisis management archives."
+      ]
+    }
+  },
+  {
+    "id": 40,
+    "name": "Ronald Reagan",
+    "crisisManagement": {
+      "events": [
+        {
+          "title": "Assassination Attempt",
+          "summary": "Reagan survived an assassination attempt in 1981, maintaining public confidence through rapid recovery and stable leadership.",
+          "sources": [
+            "National Archives, Reagan shooting records.",
+            "Library of Congress, Reagan crisis correspondence."
+          ]
+        },
+        {
+          "title": "Iran‑Contra Affair",
+          "summary": "Reagan faced a major scandal involving covert arms sales and unauthorized funding of Nicaraguan rebels, prompting investigations and public controversy.",
+          "sources": [
+            "Library of Congress, Iran‑Contra papers.",
+            "National Archives, crisis investigation records."
+          ]
+        }
+      ],
+      "overallAssessment": "Reagan managed both a personal security crisis and a major constitutional scandal with mixed public reactions.",
+      "sources": [
+        "Library of Congress, Reagan presidential papers.",
+        "National Archives, crisis management archives."
+      ]
+    }
+  },
+  {
+    "id": 41,
+    "name": "George H. W. Bush",
+    "crisisManagement": {
+      "events": [
+        {
+          "title": "Gulf War Mobilization",
+          "summary": "Bush assembled a broad coalition and launched Operation Desert Storm to expel Iraqi forces from Kuwait.",
+          "sources": [
+            "National Archives, Gulf War records.",
+            "Library of Congress, Bush national security papers."
+          ]
+        },
+        {
+          "title": "1992 Los Angeles Riots",
+          "summary": "Bush deployed federal troops to restore order during widespread unrest following the Rodney King verdict.",
+          "sources": [
+            "Library of Congress, Bush domestic crisis papers.",
+            "National Archives, riot response records."
+          ]
+        }
+      ],
+      "overallAssessment": "Bush managed major military conflict abroad and domestic unrest at home with decisive federal action.",
+      "sources": [
+        "Library of Congress, Bush presidential papers.",
+        "National Archives, crisis management archives."
+      ]
+    }
+  },
+  {
+    "id": 42,
+    "name": "Bill Clinton",
+    "crisisManagement": {
+      "events": [
+        {
+          "title": "Oklahoma City Bombing",
+          "summary": "Clinton responded to the deadliest domestic terror attack in U.S. history with federal investigations and anti‑terrorism legislation.",
+          "sources": [
+            "National Archives, Oklahoma City bombing records.",
+            "Library of Congress, Clinton crisis correspondence."
+          ]
+        },
+        {
+          "title": "Impeachment Crisis",
+          "summary": "Clinton faced impeachment over perjury and obstruction allegations, navigating a constitutional and political crisis while maintaining public support.",
+          "sources": [
+            "Library of Congress, Clinton impeachment papers.",
+            "National Archives, constitutional crisis records."
+          ]
+        }
+      ],
+      "overallAssessment": "Clinton managed domestic terrorism and a constitutional crisis while maintaining governmental continuity.",
+      "sources": [
+        "Library of Congress, Clinton presidential papers.",
+        "National Archives, crisis management archives."
+      ]
+    }
+  },
+  {
+    "id": 43,
+    "name": "George W. Bush",
+    "crisisManagement": {
+      "events": [
+        {
+          "title": "September 11 Attacks",
+          "summary": "Bush led the federal response to the 9/11 terrorist attacks, initiating homeland security reforms and military action abroad.",
+          "sources": [
+            "National Archives, 9/11 response records.",
+            "Library of Congress, Bush national security papers."
+          ]
+        },
+        {
+          "title": "Hurricane Katrina",
+          "summary": "Bush faced intense criticism for the federal government’s slow and disorganized response to Hurricane Katrina’s devastation.",
+          "sources": [
+            "Library of Congress, Katrina response papers.",
+            "National Archives, domestic disaster records."
+          ]
+        }
+      ],
+      "overallAssessment": "Bush’s crisis management ranged from decisive national security action after 9/11 to widely criticized disaster response during Katrina.",
+      "sources": [
+        "Library of Congress, Bush presidential papers.",
+        "National Archives, crisis management archives."
+      ]
+    }
+  },
+  {
+    "id": 44,
+    "name": "Barack Obama",
+    "crisisManagement": {
+      "events": [
+        {
+          "title": "Great Recession Response",
+          "summary": "Obama implemented stimulus spending, auto industry rescue, and financial stabilization measures to address the economic crisis.",
+          "sources": [
+            "National Archives, recession response records.",
+            "Library of Congress, Obama economic crisis papers."
+          ]
+        },
+        {
+          "title": "Deepwater Horizon Oil Spill",
+          "summary": "Obama oversaw federal response to the largest marine oil spill in U.S. history, imposing new offshore drilling regulations.",
+          "sources": [
+            "Library of Congress, Deepwater Horizon papers.",
+            "National Archives, environmental crisis records."
+          ]
+        }
+      ],
+      "overallAssessment": "Obama managed economic collapse and major environmental disaster with large‑scale federal intervention.",
+      "sources": [
+        "Library of Congress, Obama presidential papers.",
+        "National Archives, crisis management archives."
+      ]
+    }
+  },
+  {
+    "id": 45,
+    "name": "Donald J. Trump",
+    "crisisManagement": {
+      "events": [
+        {
+          "title": "COVID‑19 Pandemic Response",
+          "summary": "Trump managed the early federal response to COVID‑19, including travel restrictions, emergency declarations, and vaccine development support.",
+          "sources": [
+            "National Archives, COVID‑19 federal response records.",
+            "Library of Congress, Trump pandemic papers."
+          ]
+        },
+        {
+          "title": "2020 Civil Unrest",
+          "summary": "Trump oversaw federal responses to nationwide protests and unrest following police‑involved killings, deploying federal personnel in several cities.",
+          "sources": [
+            "Library of Congress, Trump domestic crisis papers.",
+            "National Archives, federal deployment records."
+          ]
+        }
+      ],
+      "overallAssessment": "Trump’s crisis management centered on pandemic response and domestic unrest during a polarized period.",
+      "sources": [
+        "Library of Congress, Trump presidential papers.",
+        "National Archives, crisis management archives."
+      ]
+    }
+  },
+  {
+    "id": 46,
+    "name": "Joseph R. Biden",
+    "crisisManagement": {
+      "events": [
+        {
+          "title": "COVID‑19 Pandemic Continuation",
+          "summary": "Biden expanded vaccination campaigns, federal testing programs, and economic relief measures to manage ongoing pandemic impacts.",
+          "sources": [
+            "National Archives, Biden COVID‑19 response records.",
+            "Library of Congress, Biden domestic health papers."
+          ]
+        },
+        {
+          "title": "Afghanistan Withdrawal Crisis",
+          "summary": "Biden oversaw the rapid withdrawal of U.S. forces from Afghanistan, managing chaotic evacuations and global scrutiny.",
+          "sources": [
+            "Library of Congress, Afghanistan withdrawal papers.",
+            "National Archives, crisis evacuation records."
+          ]
+        }
+      ],
+      "overallAssessment": "Biden’s crisis management focused on pandemic stabilization and the turbulent end of the Afghanistan conflict.",
+      "sources": [
+        "Library of Congress, Biden presidential papers.",
+        "National Archives, crisis management archives."
+      ]
+    }
   }
-},
-{
-  "id": 6,
-  "name": "John Quincy Adams",
-  "crisisManagement": {
-    "events": [],
-    "overallAssessment": "John Quincy Adams’s presidency did not involve major military or domestic crises requiring emergency federal intervention. His administration focused primarily on diplomacy, internal improvements, and economic policy rather than crisis response. While political tensions were present, no significant national emergencies defined his time in office.",
-    "sources": [
-      "Miller Center, University of Virginia: John Quincy Adams Presidential Overview.",
-      "Library of Congress: John Quincy Adams Papers."
-    ]
-  }
-},
-{
-  "id": 7,
-  "name": "Andrew Jackson",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "Nullification Crisis (1832–1833)",
-        "summary": "The Nullification Crisis arose when South Carolina declared federal tariffs unconstitutional and asserted the right to nullify them within the state. Jackson responded firmly, issuing a proclamation rejecting nullification and preparing federal military forces to enforce tariff laws. Congress passed the Force Bill authorizing the use of force if necessary, while also adopting a compromise tariff to ease tensions. The crisis ended without armed conflict but highlighted deep sectional divisions.",
-        "sources": [
-          "Library of Congress, 'Nullification Proclamation' documents.",
-          "National Archives, materials on the Force Bill and tariff debates."
-        ]
-      },
-      {
-        "title": "Bank War Financial Turmoil (1833–1834)",
-        "summary": "Jackson’s removal of federal deposits from the Second Bank of the United States and placement of funds into state banks contributed to financial instability. Critics argued that the move triggered credit tightening, speculation, and economic disruption. Although not a traditional crisis like war or rebellion, the conflict over the Bank produced significant national economic uncertainty and political confrontation.",
-        "sources": [
-          "Library of Congress, 'Bank War' historical materials.",
-          "Federal Reserve, early U.S. banking history essays."
-        ]
-      }
-    ],
-    "overallAssessment": "Jackson’s presidency confronted major political and economic crises, most notably the Nullification Crisis, which challenged federal authority. His administration combined threats of military enforcement with legislative compromise to resolve the conflict peacefully. Economic tensions surrounding the Bank War also created nationwide instability, reflecting the contentious nature of Jackson’s crisis leadership.",
-    "sources": [
-      "Library of Congress historical materials.",
-      "National Archives documents on early federal crises."
-    ]
-  }
-},
-{
-  "id": 8,
-  "name": "Martin Van Buren",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "Panic of 1837",
-        "summary": "Shortly after Van Buren took office, the nation entered a severe economic depression triggered by speculative lending, falling cotton prices, and financial instability in state banks. The crisis led to widespread unemployment, business failures, and social distress. Van Buren supported the creation of an independent treasury system but resisted direct federal relief efforts, consistent with prevailing Democratic principles. The depression persisted for much of his presidency and shaped public perceptions of his leadership.",
-        "sources": [
-          "Library of Congress, materials on the Panic of 1837.",
-          "Federal Reserve, historical analysis of early U.S. financial crises."
-        ]
-      }
-    ],
-    "overallAssessment": "Van Buren’s presidency was dominated by the Panic of 1837, a major economic crisis with nationwide consequences. His administration pursued structural financial reforms while avoiding large-scale federal intervention in relief efforts. The prolonged depression defined his time in office and influenced debates over federal economic responsibility.",
-    "sources": [
-      "Library of Congress economic history materials.",
-      "Federal Reserve historical essays."
-    ]
-  }
-},
-{
-  "id": 9,
-  "name": "William Henry Harrison",
-  "crisisManagement": {
-    "events": [],
-    "overallAssessment": "Harrison served only one month in office before his death in 1841, leaving no significant crisis events or emergency responses associated with his presidency. His brief tenure provides limited material for evaluating crisis management.",
-    "sources": [
-      "Library of Congress: William Henry Harrison Papers.",
-      "Miller Center, University of Virginia: Harrison Presidential Overview."
-    ]
-  }
-},
-{
-  "id": 10,
-  "name": "John Tyler",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "Dorr Rebellion (1841–1842)",
-        "summary": "The Dorr Rebellion in Rhode Island involved a dispute over outdated voting laws that restricted suffrage to property owners. Reformers led by Thomas Dorr attempted to establish a rival government, prompting conflict with the existing state authorities. Tyler’s administration monitored the situation and prepared to intervene but ultimately deferred to state authorities, who resolved the conflict without federal military involvement. The episode raised questions about federal authority in state-level political disputes.",
-        "sources": [
-          "National Archives, documents relating to the Dorr Rebellion.",
-          "Library of Congress, Rhode Island constitutional reform materials."
-        ]
-      }
-    ],
-    "overallAssessment": "Tyler’s presidency encountered the Dorr Rebellion, a state-level political crisis involving competing governments in Rhode Island. His administration maintained readiness to intervene while allowing state authorities to manage the conflict. The crisis highlighted the complexities of federal involvement in internal state disputes during the antebellum period.",
-    "sources": [
-      "National Archives historical materials.",
-      "Library of Congress state crisis documents."
-    ]
-  }
-},
-{
-  "id": 11,
-  "name": "James K. Polk",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "Mexican-American War (1846–1848)",
-        "summary": "Polk’s administration oversaw the Mexican-American War, initiated after disputes over the Texas-Mexico border and the U.S. annexation of Texas. The conflict involved major battles across northern Mexico and resulted in U.S. occupation of Mexico City. The war concluded with the Treaty of Guadalupe Hidalgo, which ceded large territories to the United States. The conflict intensified national debates over slavery’s expansion into newly acquired lands.",
-        "sources": [
-          "Library of Congress, Mexican-American War collections.",
-          "National Archives, Treaty of Guadalupe Hidalgo documents."
-        ]
-      }
-    ],
-    "overallAssessment": "Polk’s presidency was defined by the Mexican-American War, a major military conflict that reshaped the nation’s territorial boundaries. His administration managed wartime logistics, diplomacy, and domestic political tensions surrounding the conflict. The war’s outcome expanded U.S. territory while contributing to sectional disputes over slavery.",
-    "sources": [
-      "Library of Congress historical materials.",
-      "National Archives war and treaty records."
-    ]
-  }
-},
-{
-  "id": 12,
-  "name": "Zachary Taylor",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "Sectional Tensions over Slavery in the Territories (1849–1850)",
-        "summary": "Taylor faced rising tensions over whether newly acquired territories from the Mexican-American War would permit slavery. Southern leaders threatened secession if slavery was restricted, while Taylor opposed the expansion of slavery into the territories. He urged California and New Mexico to seek statehood with free-state constitutions, escalating political conflict. Taylor’s sudden death in 1850 left the crisis unresolved and contributed to the debates that produced the Compromise of 1850.",
-        "sources": [
-          "Library of Congress, Compromise of 1850 background materials.",
-          "National Archives, documents on territorial governance after the Mexican-American War."
-        ]
-      }
-    ],
-    "overallAssessment": "Taylor’s presidency confronted growing sectional tensions over slavery in the territories acquired from Mexico. His administration opposed the expansion of slavery and encouraged rapid statehood to reduce conflict. The crisis remained unresolved at his death, leaving its resolution to his successor and Congress.",
-    "sources": [
-      "Library of Congress historical materials.",
-      "National Archives territorial governance documents."
-    ]
-  }
-},
-{
-  "id": 13,
-  "name": "Millard Fillmore",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "Compromise of 1850 Enforcement",
-        "summary": "Fillmore assumed office during intense sectional conflict over slavery and supported the Compromise of 1850 as a means to preserve national unity. The compromise included the controversial Fugitive Slave Act, which required federal enforcement of fugitive slave returns. Fillmore directed federal marshals to enforce the law despite widespread Northern resistance. The enforcement efforts deepened sectional divisions and heightened tensions between free and slave states.",
-        "sources": [
-          "Library of Congress, Compromise of 1850 primary documents.",
-          "National Archives, Fugitive Slave Act enforcement records."
-        ]
-      }
-    ],
-    "overallAssessment": "Fillmore’s crisis management centered on enforcing the Compromise of 1850, particularly the Fugitive Slave Act. His administration prioritized adherence to federal law despite significant regional opposition. The enforcement efforts intensified sectional tensions and underscored the growing national divide over slavery.",
-    "sources": [
-      "Library of Congress historical materials.",
-      "National Archives enforcement records."
-    ]
-  }
-},
-{
-  "id": 14,
-  "name": "Franklin Pierce",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "Bleeding Kansas (1854–1856)",
-        "summary": "Pierce’s administration faced violent conflict in Kansas Territory after the Kansas-Nebraska Act allowed settlers to determine whether the territory would permit slavery. Pro-slavery and anti-slavery factions clashed, leading to widespread violence, competing territorial governments, and federal intervention. Pierce recognized the pro-slavery territorial legislature despite allegations of electoral fraud, further inflaming tensions. The conflict became a major precursor to the Civil War.",
-        "sources": [
-          "Library of Congress, Kansas-Nebraska Act and Bleeding Kansas materials.",
-          "National Archives, territorial governance documents."
-        ]
-      }
-    ],
-    "overallAssessment": "Pierce’s presidency was marked by the violent turmoil of Bleeding Kansas, which exposed deep national divisions over slavery. His administration’s recognition of the pro-slavery territorial government contributed to escalating conflict. The crisis highlighted the limits of federal authority in managing sectional disputes.",
-    "sources": [
-      "Library of Congress historical materials.",
-      "National Archives territorial conflict records."
-    ]
-  }
-},
-{
-  "id": 15,
-  "name": "James Buchanan",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "Secession Crisis (1860–1861)",
-        "summary": "Following the election of 1860, several Southern states announced their secession from the Union. Buchanan argued that secession was unconstitutional but also claimed the federal government lacked authority to coerce states back into the Union. His administration struggled to maintain control of federal forts, including Fort Sumter, where tensions escalated. The crisis deepened national division and left the incoming Lincoln administration to confront the outbreak of the Civil War.",
-        "sources": [
-          "Library of Congress, Secession Crisis primary documents.",
-          "National Archives, records relating to federal forts in 1860–1861."
-        ]
-      }
-    ],
-    "overallAssessment": "Buchanan’s presidency ended amid the secession of multiple Southern states, creating the most severe constitutional crisis in U.S. history. His administration maintained that secession was illegal but took limited action to counter it. The unresolved crisis set the stage for the Civil War.",
-    "sources": [
-      "Library of Congress historical materials.",
-      "National Archives secession-era documents."
-    ]
-  }
-},
-{
-  "id": 16,
-  "name": "Abraham Lincoln",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "Civil War (1861–1865)",
-        "summary": "Lincoln’s presidency was dominated by the Civil War, which began shortly after his inauguration when Confederate forces attacked Fort Sumter. His administration mobilized the Union Army, managed wartime logistics, and navigated political divisions within the North. Lincoln issued the Emancipation Proclamation as a wartime measure, altering the character of the conflict. The war required constant crisis decision-making as the nation faced unprecedented military and political challenges.",
-        "sources": [
-          "Library of Congress, Civil War primary documents.",
-          "National Archives, Emancipation Proclamation and wartime correspondence."
-        ]
-      },
-      {
-        "title": "New York City Draft Riots (1863)",
-        "summary": "The New York City Draft Riots erupted in response to the Union draft and economic tensions, leading to several days of violent unrest. Rioters targeted government buildings, African American residents, and abolitionist institutions. Lincoln deployed federal troops, some redirected from Gettysburg, to restore order. The event highlighted domestic resistance to wartime policies and the social strains created by the conflict.",
-        "sources": [
-          "National Archives, documents on the 1863 Draft Riots.",
-          "Library of Congress, Civil War homefront materials."
-        ]
-      }
-    ],
-    "overallAssessment": "Lincoln’s presidency was defined by the Civil War, requiring sustained crisis leadership across military, political, and social fronts. His administration managed battlefield strategy, internal dissent, and the evolving goals of the war. Domestic unrest, including the New York Draft Riots, further tested federal authority during the conflict.",
-    "sources": [
-      "Library of Congress Civil War collections.",
-      "National Archives wartime records."
-    ]
-  }
-},
-{
-  "id": 17,
-  "name": "Andrew Johnson",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "Reconstruction Political Crisis (1865–1869)",
-        "summary": "Johnson assumed office after Lincoln’s assassination and faced the challenge of reconstructing the South following the Civil War. His lenient policies toward former Confederate states and opposition to congressional Reconstruction led to major political conflict. Congress overrode multiple vetoes and eventually impeached Johnson, though he was acquitted by one vote. The crisis centered on competing visions for postwar governance and civil rights.",
-        "sources": [
-          "Library of Congress, Reconstruction primary documents.",
-          "National Archives, impeachment records of Andrew Johnson."
-        ]
-      }
-    ],
-    "overallAssessment": "Johnson’s presidency was marked by intense political conflict over Reconstruction policy. His opposition to congressional initiatives and lenient approach toward former Confederate states created a constitutional crisis that culminated in impeachment proceedings. The administration’s crisis management reflected deep national divisions over postwar governance and civil rights.",
-    "sources": [
-      "Library of Congress Reconstruction materials.",
-      "National Archives impeachment documents."
-    ]
-  }
-},
-{
-  "id": 18,
-  "name": "Ulysses S. Grant",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "Ku Klux Klan Violence and Enforcement Acts (1870–1871)",
-        "summary": "Grant confronted widespread racial violence in the South, particularly from the Ku Klux Klan, which targeted African Americans and Republican officials. His administration supported and enforced the Enforcement Acts, including the Ku Klux Klan Act of 1871, which authorized federal intervention. Grant deployed federal troops and suspended habeas corpus in parts of South Carolina to suppress Klan activity. These actions significantly reduced organized Klan violence during his presidency.",
-        "sources": [
-          "National Archives, Enforcement Acts documents.",
-          "Library of Congress, Reconstruction and Klan suppression materials."
-        ]
-      },
-      {
-        "title": "Panic of 1873",
-        "summary": "The Panic of 1873 triggered a severe economic depression following the collapse of major financial institutions and railroad overexpansion. The crisis led to widespread unemployment, business failures, and social unrest. Grant’s administration adhered to hard-money policies and vetoed inflationary measures, reflecting contemporary economic views. The depression persisted for several years and shaped national politics.",
-        "sources": [
-          "Federal Reserve, historical essays on the Panic of 1873.",
-          "Library of Congress, economic crisis materials."
-        ]
-      }
-    ],
-    "overallAssessment": "Grant’s presidency faced major crises involving racial violence during Reconstruction and a severe economic downturn. His administration used federal authority to suppress Ku Klux Klan activity and enforce civil rights protections. The Panic of 1873 created prolonged economic hardship, influencing national policy debates and public sentiment.",
-    "sources": [
-      "Library of Congress Reconstruction materials.",
-      "Federal Reserve historical analyses."
-    ]
-  }
-},
-{
-  "id": 19,
-  "name": "Rutherford B. Hayes",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "Great Railroad Strike of 1877",
-        "summary": "The Great Railroad Strike of 1877 began after wage cuts by major railroads and quickly spread across multiple states. Strikes and protests disrupted rail service and led to violent clashes between workers and state militias. Hayes deployed federal troops to several cities to restore order and reopen rail lines. The crisis highlighted growing labor unrest during the industrial era.",
-        "sources": [
-          "Library of Congress, Great Railroad Strike materials.",
-          "National Archives, federal troop deployment records."
-        ]
-      }
-    ],
-    "overallAssessment": "Hayes’s presidency confronted the Great Railroad Strike of 1877, a major national labor crisis. His administration deployed federal troops to restore order and maintain transportation networks. The event underscored tensions between labor and industry during the early industrial age.",
-    "sources": [
-      "Library of Congress labor history materials.",
-      "National Archives troop deployment documents."
-    ]
-  }
-},
-{
-  "id": 20,
-  "name": "James A. Garfield",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "Assassination and National Uncertainty (1881)",
-        "summary": "Garfield was shot by Charles Guiteau in July 1881, only months into his presidency. The prolonged period between the shooting and Garfield’s death created national uncertainty and raised concerns about presidential succession and executive function. His incapacitation highlighted weaknesses in constitutional provisions for handling presidential disability. The crisis ended with his death in September 1881.",
-        "sources": [
-          "Library of Congress, Garfield assassination documents.",
-          "National Archives, presidential succession materials."
-        ]
-      }
-    ],
-    "overallAssessment": "Garfield’s presidency was defined by his assassination and the extended period of incapacitation that followed. The crisis exposed gaps in constitutional procedures for presidential disability and succession. His death after months of uncertainty underscored the need for clearer executive continuity mechanisms.",
-    "sources": [
-      "Library of Congress presidential crisis materials.",
-      "National Archives succession records."
-    ]
-  }
-},
-{
-  "id": 21,
-  "name": "Chester A. Arthur",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "Civil Service Reform Crisis (1881–1883)",
-        "summary": "Arthur assumed office after the assassination of James Garfield, which intensified public demand for civil service reform. The spoils system was widely criticized for corruption and inefficiency, creating a national political crisis. Arthur supported and signed the Pendleton Civil Service Reform Act, establishing merit-based hiring and reducing patronage. The reform marked a major shift in federal administrative practices.",
-        "sources": [
-          "Library of Congress, Pendleton Act primary documents.",
-          "National Archives, civil service reform materials."
-        ]
-      }
-    ],
-    "overallAssessment": "Arthur’s presidency addressed a major political crisis surrounding civil service corruption and public distrust in federal administration. His support for the Pendleton Act helped stabilize the federal workforce and reduce patronage pressures. The crisis highlighted growing demands for government accountability during the Gilded Age.",
-    "sources": [
-      "Library of Congress civil service reform materials.",
-      "National Archives administrative reform documents."
-    ]
-  }
-},
-{
-  "id": 22,
-  "name": "Grover Cleveland",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "Panic of 1893",
-        "summary": "Cleveland’s second term began during the Panic of 1893, one of the worst economic depressions in U.S. history. Bank failures, railroad bankruptcies, and unemployment surged nationwide. Cleveland supported the repeal of the Sherman Silver Purchase Act to stabilize the currency but resisted direct federal relief efforts. The crisis fueled political unrest and contributed to major shifts in national economic policy debates.",
-        "sources": [
-          "Federal Reserve, Panic of 1893 historical analysis.",
-          "Library of Congress, economic crisis documents."
-        ]
-      },
-      {
-        "title": "Pullman Strike (1894)",
-        "summary": "The Pullman Strike began after wage cuts at the Pullman Company and escalated into a nationwide railroad boycott. Cleveland’s administration obtained a federal injunction against the strike and deployed federal troops to ensure mail delivery and reopen rail lines. Violent clashes occurred in several cities, resulting in deaths and property damage. The crisis underscored tensions between labor, industry, and federal authority.",
-        "sources": [
-          "National Archives, Pullman Strike federal injunction records.",
-          "Library of Congress, labor conflict materials."
-        ]
-      }
-    ],
-    "overallAssessment": "Cleveland’s presidency confronted major economic and labor crises, including the Panic of 1893 and the Pullman Strike. His administration emphasized currency stabilization and federal enforcement of court orders during labor unrest. These crises shaped national debates over monetary policy and the federal role in labor disputes.",
-    "sources": [
-      "Federal Reserve historical materials.",
-      "Library of Congress labor history documents."
-    ]
-  }
-},
-{
-  "id": 23,
-  "name": "Benjamin Harrison",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "1890s Economic Contraction and Silver Policy Tensions",
-        "summary": "Harrison’s administration faced economic instability linked to debates over silver coinage and monetary policy. Passage of the Sherman Silver Purchase Act increased federal silver purchases, contributing to concerns about currency inflation and weakening gold reserves. Although the full economic crisis emerged after his presidency, the tensions during his term created financial uncertainty and political conflict.",
-        "sources": [
-          "Library of Congress, Sherman Silver Purchase Act materials.",
-          "Federal Reserve, monetary policy history essays."
-        ]
-      }
-    ],
-    "overallAssessment": "Harrison’s presidency encountered financial instability tied to monetary policy debates, particularly over silver purchases. His administration managed growing concerns about currency stability and federal gold reserves. These tensions contributed to broader economic challenges that intensified after his term.",
-    "sources": [
-      "Library of Congress monetary policy materials.",
-      "Federal Reserve historical analyses."
-    ]
-  }
-},
-{
-  "id": 24,
-  "name": "Grover Cleveland (Second Term)",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "Continuation of the Panic of 1893",
-        "summary": "Cleveland’s second term was dominated by the ongoing Panic of 1893, which deepened into a prolonged economic depression. Bank failures and unemployment continued to rise, and public frustration grew. Cleveland maintained a commitment to the gold standard and opposed inflationary measures, including free silver proposals. His policies were controversial and contributed to political realignment within the Democratic Party.",
-        "sources": [
-          "Federal Reserve, Panic of 1893 analysis.",
-          "Library of Congress, economic crisis documents."
-        ]
-      }
-    ],
-    "overallAssessment": "Cleveland’s second term was shaped by the deepening Panic of 1893, requiring sustained crisis management. His administration focused on maintaining the gold standard and stabilizing federal finances. The prolonged depression influenced national politics and economic policy debates.",
-    "sources": [
-      "Federal Reserve historical materials.",
-      "Library of Congress economic crisis records."
-    ]
-  }
-},
-{
-  "id": 25,
-  "name": "William McKinley",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "Spanish-American War (1898)",
-        "summary": "McKinley led the nation during the Spanish-American War, which began after rising tensions over Cuba’s struggle for independence and the explosion of the USS Maine. The conflict involved major naval and ground operations in Cuba, Puerto Rico, and the Philippines. The war ended with the Treaty of Paris, resulting in U.S. acquisition of overseas territories. The conflict marked a turning point in U.S. foreign policy and global presence.",
-        "sources": [
-          "Library of Congress, Spanish-American War collections.",
-          "National Archives, Treaty of Paris documents."
-        ]
-      },
-      {
-        "title": "Philippine Insurrection Beginnings (1899)",
-        "summary": "Following the Spanish-American War, conflict erupted between U.S. forces and Filipino nationalists seeking independence. The early stages of the Philippine-American War began during McKinley’s presidency, involving military engagements and debates over U.S. colonial policy. The conflict reflected broader questions about American expansion and governance of newly acquired territories.",
-        "sources": [
-          "Library of Congress, Philippine-American War materials.",
-          "National Archives, colonial administration documents."
-        ]
-      }
-    ],
-    "overallAssessment": "McKinley’s presidency faced major international crises, including the Spanish-American War and the beginnings of the Philippine-American conflict. His administration managed wartime operations, territorial acquisitions, and emerging debates over American expansion. These crises marked a significant shift in U.S. global engagement.",
-    "sources": [
-      "Library of Congress war collections.",
-      "National Archives colonial governance records."
-    ]
-  }
-},
-{
-  "id": 26,
-  "name": "Theodore Roosevelt",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "Coal Strike of 1902",
-        "summary": "The Anthracite Coal Strike of 1902 threatened the nation’s coal supply as winter approached, with miners demanding higher wages and better working conditions. Roosevelt intervened by bringing labor and management to the White House for negotiations, marking the first time a president acted as a neutral mediator in a major labor dispute. A commission ultimately brokered a settlement that ended the strike. The crisis highlighted the growing federal role in labor relations.",
-        "sources": [
-          "Library of Congress, Anthracite Coal Strike materials.",
-          "National Archives, Roosevelt mediation documents."
-        ]
-      },
-      {
-        "title": "Northern Securities Antitrust Crisis (1902–1904)",
-        "summary": "Roosevelt confronted the Northern Securities Company, a major railroad trust accused of monopolistic practices. His administration filed an antitrust lawsuit under the Sherman Act, leading to a landmark Supreme Court decision ordering the trust’s dissolution. The case signaled a new era of federal action against large corporate combinations. The crisis tested the government’s ability to regulate powerful industrial interests.",
-        "sources": [
-          "National Archives, Northern Securities antitrust case records.",
-          "Library of Congress, Progressive Era regulatory materials."
-        ]
-      }
-    ],
-    "overallAssessment": "Roosevelt’s presidency addressed major crises involving labor unrest and corporate monopolies. His intervention in the Coal Strike of 1902 and pursuit of antitrust action against Northern Securities demonstrated an expanded federal role in economic and labor disputes. These crises reflected broader Progressive Era reforms and shifting expectations of presidential leadership.",
-    "sources": [
-      "Library of Congress Progressive Era materials.",
-      "National Archives antitrust and labor records."
-    ]
-  }
-},
-{
-  "id": 27,
-  "name": "William Howard Taft",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "Ballinger-Pinchot Controversy (1909–1910)",
-        "summary": "The Ballinger-Pinchot controversy involved a dispute between Secretary of the Interior Richard Ballinger and Chief Forester Gifford Pinchot over federal land management and conservation policy. Accusations that Ballinger improperly allowed private interests access to protected lands created a political crisis. Taft dismissed Pinchot, leading to public backlash and deepening divisions within the Republican Party. The crisis weakened Taft’s political standing and contributed to the party split in 1912.",
-        "sources": [
-          "Library of Congress, Ballinger-Pinchot controversy documents.",
-          "National Archives, conservation policy materials."
-        ]
-      }
-    ],
-    "overallAssessment": "Taft’s presidency faced a major political crisis over conservation policy and federal land management. The Ballinger-Pinchot controversy exposed internal divisions within the administration and the Republican Party. The crisis highlighted tensions between conservation advocates and proponents of resource development.",
-    "sources": [
-      "Library of Congress conservation materials.",
-      "National Archives administrative conflict records."
-    ]
-  }
-},
-{
-  "id": 28,
-  "name": "Woodrow Wilson",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "World War I (1914–1918; U.S. involvement 1917–1918)",
-        "summary": "Wilson led the nation during World War I after initially maintaining neutrality. Following unrestricted submarine warfare and the Zimmermann Telegram, the United States entered the conflict in 1917. His administration mobilized the economy, expanded the military, and implemented wartime controls over industry and transportation. The war required extensive crisis management across domestic and international fronts.",
-        "sources": [
-          "Library of Congress, World War I collections.",
-          "National Archives, wartime mobilization documents."
-        ]
-      },
-      {
-        "title": "1918 Influenza Pandemic",
-        "summary": "The 1918 influenza pandemic caused widespread illness and death across the United States during Wilson’s presidency. Federal public health infrastructure was limited, and wartime censorship reduced public awareness of the outbreak’s severity. The pandemic strained local health systems and disrupted wartime operations. Wilson himself contracted influenza during the Paris Peace Conference.",
-        "sources": [
-          "National Archives, 1918 influenza pandemic materials.",
-          "Centers for Disease Control and Prevention, historical pandemic summaries."
-        ]
-      }
-    ],
-    "overallAssessment": "Wilson’s presidency confronted major crises including World War I and the 1918 influenza pandemic. His administration managed wartime mobilization and international diplomacy while the pandemic created severe public health challenges. These crises required extensive coordination across military, economic, and civilian sectors.",
-    "sources": [
-      "Library of Congress wartime materials.",
-      "National Archives pandemic records."
-    ]
-  }
-},
-{
-  "id": 29,
-  "name": "Warren G. Harding",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "Postwar Economic Recession (1920–1921)",
-        "summary": "Harding’s presidency began during a sharp postwar economic recession marked by falling industrial output, high unemployment, and deflation. His administration pursued policies aimed at reducing federal spending and taxes while supporting business-led recovery. The recession was relatively short-lived, but it shaped early economic policy debates of the 1920s.",
-        "sources": [
-          "Federal Reserve, historical essays on the 1920–1921 recession.",
-          "Library of Congress, postwar economic materials."
-        ]
-      }
-    ],
-    "overallAssessment": "Harding’s presidency addressed a significant postwar economic downturn. His administration emphasized fiscal restraint and business-oriented recovery strategies. The crisis influenced the economic direction of the early 1920s.",
-    "sources": [
-      "Federal Reserve economic history materials.",
-      "Library of Congress postwar records."
-    ]
-  }
-},
-{
-  "id": 30,
-  "name": "Calvin Coolidge",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "Mississippi River Flood of 1927",
-        "summary": "The Mississippi River Flood of 1927 was one of the most destructive natural disasters in U.S. history, inundating hundreds of thousands of homes and displacing over half a million people. Coolidge delegated relief coordination to the Red Cross and did not visit the affected areas, reflecting his limited view of federal responsibility in disaster response. The crisis exposed weaknesses in flood control infrastructure and influenced later federal flood management policies.",
-        "sources": [
-          "Library of Congress, 1927 Mississippi Flood materials.",
-          "National Archives, federal disaster response documents."
-        ]
-      }
-    ],
-    "overallAssessment": "Coolidge’s presidency confronted the Mississippi River Flood of 1927, a major natural disaster requiring extensive relief efforts. His administration maintained a limited federal role, relying heavily on private organizations. The crisis highlighted the need for improved flood control and shaped future federal disaster policy.",
-    "sources": [
-      "Library of Congress disaster history materials.",
-      "National Archives flood control records."
-    ]
-  }
-},
-{
-  "id": 31,
-  "name": "Herbert Hoover",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "Stock Market Crash and Onset of the Great Depression (1929–1933)",
-        "summary": "Hoover’s presidency began months before the stock market crash of October 1929, which triggered the Great Depression. His administration implemented public works programs, encouraged voluntary cooperation among businesses, and created the Reconstruction Finance Corporation to stabilize banks and industry. Despite these efforts, unemployment and economic hardship continued to rise. The crisis overwhelmed existing federal structures and reshaped expectations of government responsibility.",
-        "sources": [
-          "Library of Congress, Great Depression primary documents.",
-          "National Archives, Reconstruction Finance Corporation records."
-        ]
-      },
-      {
-        "title": "Bonus Army March (1932)",
-        "summary": "In 1932, thousands of World War I veterans marched on Washington, D.C., seeking early payment of promised bonuses. After Congress rejected the proposal, tensions escalated, and Hoover ordered federal troops to assist in clearing the protest camps. The confrontation resulted in injuries and public backlash. The event highlighted widespread economic desperation and strained public trust in the administration.",
-        "sources": [
-          "National Archives, Bonus Army documents.",
-          "Library of Congress, photographs and reports on the 1932 march."
-        ]
-      }
-    ],
-    "overallAssessment": "Hoover’s presidency was defined by the onset of the Great Depression and widespread economic hardship. His administration pursued a combination of voluntary cooperation, public works, and financial stabilization measures, though these efforts proved insufficient to reverse the downturn. The Bonus Army confrontation further strained public confidence during a period of national crisis.",
-    "sources": [
-      "Library of Congress Great Depression materials.",
-      "National Archives economic crisis records."
-    ]
-  }
-},
-{
-  "id": 32,
-  "name": "Franklin D. Roosevelt",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "Great Depression Emergency Response (1933–1939)",
-        "summary": "Roosevelt entered office during the depths of the Great Depression and launched the New Deal to stabilize the economy. His administration implemented banking reforms, relief programs, and public works initiatives to address unemployment and financial instability. The Emergency Banking Act and creation of the FDIC restored confidence in the banking system. These measures represented a major expansion of federal involvement in economic recovery.",
-        "sources": [
-          "National Archives, New Deal and Emergency Banking Act documents.",
-          "Library of Congress, Great Depression collections."
-        ]
-      },
-      {
-        "title": "World War II Mobilization (1939–1945; U.S. involvement 1941–1945)",
-        "summary": "Following the attack on Pearl Harbor in 1941, Roosevelt led the nation into World War II. His administration oversaw massive military mobilization, industrial conversion, and coordination with Allied powers. The war required extensive crisis management across economic, military, and diplomatic fronts. Roosevelt’s leadership shaped U.S. strategy and global engagement during the conflict.",
-        "sources": [
-          "Library of Congress, World War II primary documents.",
-          "National Archives, wartime mobilization records."
-        ]
-      }
-    ],
-    "overallAssessment": "Roosevelt’s presidency confronted two of the most significant crises in U.S. history: the Great Depression and World War II. His administration implemented sweeping economic reforms and coordinated national mobilization for global conflict. These crises required sustained federal leadership across domestic and international arenas.",
-    "sources": [
-      "Library of Congress New Deal and WWII materials.",
-      "National Archives wartime and economic records."
-    ]
-  }
-},
-{
-  "id": 33,
-  "name": "Harry S. Truman",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "End of World War II and Atomic Bomb Decisions (1945)",
-        "summary": "Truman assumed office during the final months of World War II and authorized the use of atomic bombs on Hiroshima and Nagasaki. These decisions contributed to Japan’s surrender and the end of the war. His administration also managed the transition to postwar occupation and reconstruction. The crisis involved unprecedented military and ethical considerations.",
-        "sources": [
-          "National Archives, Truman wartime decision documents.",
-          "Library of Congress, WWII surrender and occupation materials."
-        ]
-      },
-      {
-        "title": "Korean War Outbreak (1950–1953)",
-        "summary": "The Korean War began when North Korean forces invaded South Korea in 1950. Truman committed U.S. troops under United Nations command to repel the invasion. The conflict escalated with Chinese intervention and required major military and diplomatic coordination. The war marked a significant early conflict of the Cold War.",
-        "sources": [
-          "Library of Congress, Korean War collections.",
-          "National Archives, U.S. military records from Korea."
-        ]
-      }
-    ],
-    "overallAssessment": "Truman’s presidency confronted major crises including the end of World War II and the outbreak of the Korean War. His administration managed atomic bomb decisions, postwar reconstruction, and early Cold War military commitments. These crises shaped U.S. foreign policy and global engagement in the mid‑20th century.",
-    "sources": [
-      "Library of Congress wartime and Cold War materials.",
-      "National Archives military and diplomatic records."
-    ]
-  }
-},
-{
-  "id": 34,
-  "name": "Dwight D. Eisenhower",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "Korean War Armistice (1953)",
-        "summary": "Eisenhower entered office during the Korean War and prioritized ending the conflict. His administration pursued diplomatic negotiations while signaling readiness to escalate militarily if necessary. The armistice signed in July 1953 ended active hostilities but left the peninsula divided. The crisis required balancing military strategy with Cold War diplomacy.",
-        "sources": [
-          "Library of Congress, Korean War armistice materials.",
-          "National Archives, Eisenhower foreign policy documents."
-        ]
-      },
-      {
-        "title": "Suez Crisis (1956)",
-        "summary": "The Suez Crisis erupted when Egypt nationalized the Suez Canal, prompting military intervention by Britain, France, and Israel. Eisenhower opposed the intervention and pressured the parties to withdraw, asserting U.S. leadership in Cold War diplomacy. The crisis reshaped Middle Eastern geopolitics and highlighted shifting global power dynamics.",
-        "sources": [
-          "National Archives, Suez Crisis diplomatic records.",
-          "Library of Congress, Cold War foreign policy materials."
-        ]
-      },
-      {
-        "title": "Little Rock Integration Crisis (1957)",
-        "summary": "Following the Supreme Court’s Brown v. Board of Education decision, Arkansas Governor Orval Faubus used the National Guard to block integration at Little Rock Central High School. Eisenhower federalized the National Guard and deployed the 101st Airborne Division to enforce court orders. The crisis marked a major federal intervention in civil rights enforcement.",
-        "sources": [
-          "National Archives, Little Rock integration documents.",
-          "Library of Congress, civil rights era materials."
-        ]
-      }
-    ],
-    "overallAssessment": "Eisenhower’s presidency confronted major Cold War and domestic crises, including the Korean armistice, the Suez Crisis, and the Little Rock integration conflict. His administration balanced military strategy, diplomatic pressure, and federal enforcement of civil rights. These crises reflected the complexities of Cold War leadership and domestic social change.",
-    "sources": [
-      "Library of Congress Cold War and civil rights materials.",
-      "National Archives diplomatic and military records."
-    ]
-  }
-},
-{
-  "id": 35,
-  "name": "John F. Kennedy",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "Bay of Pigs Invasion (1961)",
-        "summary": "Shortly after taking office, Kennedy approved a CIA‑backed invasion of Cuba by anti‑Castro exiles. The operation failed, resulting in the capture or death of many participants and damaging U.S. credibility. The crisis strained U.S.–Cuba relations and heightened Cold War tensions. Kennedy publicly accepted responsibility for the failed mission.",
-        "sources": [
-          "National Archives, Bay of Pigs documents.",
-          "Library of Congress, Cold War intelligence materials."
-        ]
-      },
-      {
-        "title": "Berlin Crisis (1961)",
-        "summary": "The Berlin Crisis intensified when the Soviet Union supported East Germany’s construction of the Berlin Wall. Kennedy reinforced U.S. military presence in West Berlin and delivered public statements affirming American commitment to the city. The crisis solidified the division of Berlin and became a central symbol of the Cold War.",
-        "sources": [
-          "Library of Congress, Berlin Crisis materials.",
-          "National Archives, Cold War diplomatic records."
-        ]
-      },
-      {
-        "title": "Cuban Missile Crisis (1962)",
-        "summary": "The Cuban Missile Crisis began when U.S. reconnaissance revealed Soviet nuclear missiles in Cuba. Kennedy imposed a naval quarantine and engaged in intense negotiations with the Soviet Union. The crisis ended when the USSR agreed to remove the missiles in exchange for U.S. assurances and the eventual removal of missiles from Turkey. It is widely regarded as one of the most dangerous moments of the Cold War.",
-        "sources": [
-          "National Archives, Cuban Missile Crisis documents.",
-          "Library of Congress, Cold War crisis materials."
-        ]
-      }
-    ],
-    "overallAssessment": "Kennedy’s presidency faced major Cold War crises including the Bay of Pigs, the Berlin Crisis, and the Cuban Missile Crisis. His administration navigated high‑stakes diplomatic and military confrontations with the Soviet Union. These crises defined U.S.‑Soviet relations during the early 1960s.",
-    "sources": [
-      "Library of Congress Cold War collections.",
-      "National Archives crisis records."
-    ]
-  }
-},
-{
-  "id": 36,
-  "name": "Lyndon B. Johnson",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "Vietnam War Escalation (1964–1968)",
-        "summary": "Johnson oversaw a major escalation of U.S. involvement in the Vietnam War following the Gulf of Tonkin incident. His administration increased troop deployments and expanded military operations, leading to rising casualties and domestic opposition. The conflict strained federal resources and created deep political divisions. Anti-war protests grew nationwide as the war intensified.",
-        "sources": [
-          "Library of Congress, Vietnam War primary documents.",
-          "National Archives, Gulf of Tonkin and escalation records."
-        ]
-      },
-      {
-        "title": "1967 Detroit Riot",
-        "summary": "The Detroit Riot of 1967 was one of the most destructive urban uprisings in U.S. history, sparked by tensions over policing and racial inequality. Johnson deployed federal troops to restore order after days of violence, fires, and property damage. The crisis highlighted systemic racial disparities and strained relations between communities and law enforcement.",
-        "sources": [
-          "National Archives, 1967 civil unrest materials.",
-          "Library of Congress, Kerner Commission documents."
-        ]
-      },
-      {
-        "title": "Assassination of Martin Luther King Jr. (1968)",
-        "summary": "The assassination of Martin Luther King Jr. in April 1968 triggered nationwide unrest and riots in more than 100 cities. Johnson mobilized federal troops and coordinated with state and local authorities to restore order. The crisis occurred amid ongoing civil rights struggles and heightened national tensions.",
-        "sources": [
-          "Library of Congress, MLK assassination materials.",
-          "National Archives, federal response documents."
-        ]
-      }
-    ],
-    "overallAssessment": "Johnson’s presidency faced major crises including the escalation of the Vietnam War, widespread civil unrest, and the aftermath of Martin Luther King Jr.’s assassination. His administration managed simultaneous military and domestic emergencies during a period of intense national division. These crises shaped public perceptions of federal authority and social change.",
-    "sources": [
-      "Library of Congress Vietnam and civil rights materials.",
-      "National Archives crisis response records."
-    ]
-  }
-},
-{
-  "id": 37,
-  "name": "Richard Nixon",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "Vietnam War and Cambodia Expansion (1969–1973)",
-        "summary": "Nixon inherited the Vietnam War and pursued a policy of 'Vietnamization' while gradually withdrawing U.S. troops. His administration expanded the conflict into Cambodia through secret bombing campaigns, sparking domestic controversy. The war continued to generate protests and political tension across the country.",
-        "sources": [
-          "Library of Congress, Vietnam War and Cambodia materials.",
-          "National Archives, Nixon foreign policy documents."
-        ]
-      },
-      {
-        "title": "1973 Oil Crisis",
-        "summary": "The 1973 Oil Crisis began when OPEC imposed an embargo on nations supporting Israel during the Yom Kippur War. The embargo caused fuel shortages, rising prices, and economic disruption in the United States. Nixon implemented energy conservation measures and established the Federal Energy Office to coordinate the response.",
-        "sources": [
-          "Library of Congress, 1973 Oil Crisis materials.",
-          "National Archives, federal energy policy documents."
-        ]
-      }
-    ],
-    "overallAssessment": "Nixon’s presidency confronted major crises including the Vietnam War’s final years and the 1973 Oil Crisis. His administration managed military withdrawal, domestic unrest, and economic disruption. These crises contributed to significant shifts in U.S. foreign and energy policy.",
-    "sources": [
-      "Library of Congress Vietnam and energy crisis materials.",
-      "National Archives foreign policy and economic records."
-    ]
-  }
-},
-{
-  "id": 38,
-  "name": "Gerald Ford",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "Fall of Saigon (1975)",
-        "summary": "Ford oversaw the final evacuation of U.S. personnel and South Vietnamese allies as North Vietnamese forces captured Saigon. The evacuation included Operation Frequent Wind, the largest helicopter evacuation in history. The event marked the end of the Vietnam War and created a major refugee crisis.",
-        "sources": [
-          "Library of Congress, Vietnam War endgame materials.",
-          "National Archives, Operation Frequent Wind documents."
-        ]
-      },
-      {
-        "title": "1970s Economic Stagflation",
-        "summary": "Ford faced ongoing economic challenges including high inflation, unemployment, and slow growth. His administration launched the 'Whip Inflation Now' campaign and pursued fiscal restraint. The crisis reflected broader structural issues in the U.S. economy during the decade.",
-        "sources": [
-          "Federal Reserve, stagflation historical analysis.",
-          "Library of Congress, 1970s economic policy materials."
-        ]
-      }
-    ],
-    "overallAssessment": "Ford’s presidency confronted the final collapse of South Vietnam and significant domestic economic challenges. His administration managed the evacuation from Saigon and attempted to address stagflation through public campaigns and fiscal measures. These crises shaped public perceptions of post‑Vietnam U.S. leadership.",
-    "sources": [
-      "Library of Congress Vietnam and economic materials.",
-      "Federal Reserve historical records."
-    ]
-  }
-},
-{
-  "id": 39,
-  "name": "Jimmy Carter",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "Energy Crisis (1979)",
-        "summary": "The 1979 Energy Crisis was triggered by reduced oil production following the Iranian Revolution. Fuel shortages and rising prices caused long lines at gas stations and widespread public frustration. Carter addressed the nation in a televised speech emphasizing conservation and long‑term energy reform. The crisis highlighted U.S. dependence on foreign oil.",
-        "sources": [
-          "Library of Congress, 1979 Energy Crisis materials.",
-          "National Archives, Carter energy policy documents."
-        ]
-      },
-      {
-        "title": "Iran Hostage Crisis (1979–1981)",
-        "summary": "The Iran Hostage Crisis began when Iranian militants seized the U.S. embassy in Tehran and took 52 Americans hostage. Carter’s administration pursued diplomatic efforts and authorized a failed rescue mission, Operation Eagle Claw. The crisis lasted 444 days and dominated national attention.",
-        "sources": [
-          "National Archives, Iran Hostage Crisis documents.",
-          "Library of Congress, diplomatic crisis materials."
-        ]
-      }
-    ],
-    "overallAssessment": "Carter’s presidency faced major crises including the 1979 Energy Crisis and the Iran Hostage Crisis. His administration managed economic disruption, public anxiety, and a prolonged international standoff. These crises significantly influenced national politics and foreign policy.",
-    "sources": [
-      "Library of Congress energy and diplomatic materials.",
-      "National Archives crisis records."
-    ]
-  }
-},
-{
-  "id": 40,
-  "name": "Ronald Reagan",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "1981 Assassination Attempt",
-        "summary": "Reagan survived an assassination attempt by John Hinckley Jr. in March 1981. The shooting injured the president and several others, prompting immediate emergency response and temporary transfer of responsibilities to senior officials. The incident raised concerns about presidential security and continuity of government.",
-        "sources": [
-          "Library of Congress, Reagan assassination attempt materials.",
-          "National Archives, presidential security documents."
-        ]
-      },
-      {
-        "title": "1983 Beirut Barracks Bombing",
-        "summary": "A suicide bombing in Beirut killed 241 U.S. service members stationed as part of a multinational peacekeeping force. The attack prompted debates over U.S. involvement in Lebanon and the risks of peacekeeping missions. Reagan withdrew U.S. forces the following year.",
-        "sources": [
-          "National Archives, Beirut bombing records.",
-          "Library of Congress, Middle East crisis materials."
-        ]
-      },
-      {
-        "title": "1980s Economic Recession (1981–1982)",
-        "summary": "Reagan’s early presidency coincided with a severe recession marked by high unemployment and inflation. His administration supported Federal Reserve efforts to control inflation through tight monetary policy. The recession was followed by a period of economic recovery.",
-        "sources": [
-          "Federal Reserve, recession historical analysis.",
-          "Library of Congress, 1980s economic policy materials."
-        ]
-      }
-    ],
-    "overallAssessment": "Reagan’s presidency confronted major crises including an assassination attempt, the Beirut barracks bombing, and a severe early‑term recession. His administration managed national security challenges and economic instability during a period of Cold War tension. These crises shaped U.S. policy at home and abroad.",
-    "sources": [
-      "Library of Congress Cold War and economic materials.",
-      "National Archives national security records."
-    ]
-  }
-},
-{
-  "id": 41,
-  "name": "George H. W. Bush",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "Invasion of Panama (1989)",
-        "summary": "Bush ordered U.S. forces to invade Panama in December 1989 to remove Manuel Noriega, who was implicated in drug trafficking and had nullified national elections. The operation quickly toppled Noriega’s regime and restored the elected government. The crisis involved urban combat and raised questions about U.S. intervention policy.",
-        "sources": [
-          "Library of Congress, Panama intervention materials.",
-          "National Archives, Operation Just Cause documents."
-        ]
-      },
-      {
-        "title": "Gulf War (1990–1991)",
-        "summary": "Following Iraq’s invasion of Kuwait, Bush assembled a broad international coalition and secured United Nations authorization for military action. Operation Desert Storm expelled Iraqi forces from Kuwait after a large-scale air and ground campaign. The conflict required extensive diplomatic coordination and military planning.",
-        "sources": [
-          "National Archives, Gulf War military records.",
-          "Library of Congress, Desert Storm materials."
-        ]
-      }
-    ],
-    "overallAssessment": "Bush’s presidency confronted major international crises including the invasion of Panama and the Gulf War. His administration coordinated multinational military operations and managed complex diplomatic efforts. These crises shaped post–Cold War U.S. foreign policy.",
-    "sources": [
-      "Library of Congress foreign policy materials.",
-      "National Archives military and diplomatic records."
-    ]
-  }
-},
-{
-  "id": 42,
-  "name": "Bill Clinton",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "1993 World Trade Center Bombing",
-        "summary": "A truck bomb detonated beneath the World Trade Center in February 1993, killing six people and injuring hundreds. Federal agencies launched a major investigation that led to the arrest and conviction of several perpetrators. The attack highlighted emerging threats from international terrorism.",
-        "sources": [
-          "National Archives, 1993 WTC bombing materials.",
-          "Library of Congress, terrorism and security documents."
-        ]
-      },
-      {
-        "title": "Oklahoma City Bombing (1995)",
-        "summary": "The bombing of the Alfred P. Murrah Federal Building killed 168 people and became the deadliest act of domestic terrorism in U.S. history at the time. Clinton’s administration coordinated federal emergency response and supported legislative efforts to strengthen counterterrorism measures. The crisis prompted national discussions on extremism and public safety.",
-        "sources": [
-          "Library of Congress, Oklahoma City bombing materials.",
-          "National Archives, federal emergency response documents."
-        ]
-      },
-      {
-        "title": "Kosovo Crisis and NATO Intervention (1999)",
-        "summary": "Clinton authorized U.S. participation in NATO airstrikes against Yugoslav forces in response to ethnic cleansing in Kosovo. The intervention aimed to halt humanitarian abuses and pressure Yugoslav leadership to withdraw. The crisis involved complex international coordination and post-conflict stabilization efforts.",
-        "sources": [
-          "National Archives, Kosovo intervention documents.",
-          "Library of Congress, NATO and Balkan crisis materials."
-        ]
-      }
-    ],
-    "overallAssessment": "Clinton’s presidency confronted major crises including domestic terrorism, international terrorism, and humanitarian conflict in the Balkans. His administration coordinated federal emergency responses and participated in multinational military operations. These crises shaped evolving U.S. counterterrorism and humanitarian intervention policies.",
-    "sources": [
-      "Library of Congress terrorism and foreign policy materials.",
-      "National Archives crisis response records."
-    ]
-  }
-},
-{
-  "id": 43,
-  "name": "George W. Bush",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "September 11 Attacks (2001)",
-        "summary": "Coordinated terrorist attacks on September 11, 2001, killed nearly 3,000 people and targeted the World Trade Center and the Pentagon. Bush’s administration launched immediate emergency response efforts and reorganized federal security structures, including the creation of the Department of Homeland Security. The attacks marked a major turning point in U.S. national security policy.",
-        "sources": [
-          "National Archives, 9/11 Commission materials.",
-          "Library of Congress, terrorism and homeland security documents."
-        ]
-      },
-      {
-        "title": "War in Afghanistan (2001–present during presidency)",
-        "summary": "Following the 9/11 attacks, Bush authorized military operations in Afghanistan to dismantle al-Qaeda and remove the Taliban from power. The conflict involved extensive military engagement and international coalition support. The war marked the beginning of prolonged U.S. involvement in the region.",
-        "sources": [
-          "Library of Congress, Afghanistan War materials.",
-          "National Archives, military operations documents."
-        ]
-      },
-      {
-        "title": "Iraq War (2003–2011; active during presidency)",
-        "summary": "Bush launched the Iraq War in 2003 based on concerns about weapons of mass destruction and regional security. The conflict involved rapid initial military success followed by prolonged insurgency and instability. The war required major military, diplomatic, and reconstruction efforts.",
-        "sources": [
-          "National Archives, Iraq War records.",
-          "Library of Congress, Middle East conflict materials."
-        ]
-      },
-      {
-        "title": "Hurricane Katrina (2005)",
-        "summary": "Hurricane Katrina caused catastrophic damage along the Gulf Coast, particularly in New Orleans. The federal response faced significant criticism due to delays, coordination failures, and logistical challenges. The crisis prompted major reforms in federal emergency management.",
-        "sources": [
-          "Library of Congress, Hurricane Katrina materials.",
-          "National Archives, FEMA response documents."
-        ]
-      },
-      {
-        "title": "2008 Financial Crisis",
-        "summary": "The collapse of major financial institutions triggered a global economic crisis. Bush’s administration implemented emergency measures including the Troubled Asset Relief Program (TARP) to stabilize the financial system. The crisis marked the most severe economic downturn since the Great Depression.",
-        "sources": [
-          "Federal Reserve, 2008 crisis historical analysis.",
-          "National Archives, TARP and financial stabilization documents."
-        ]
-      }
-    ],
-    "overallAssessment": "Bush’s presidency confronted multiple major crises including the September 11 attacks, wars in Afghanistan and Iraq, Hurricane Katrina, and the 2008 financial collapse. His administration managed simultaneous national security, natural disaster, and economic emergencies. These crises reshaped U.S. domestic and foreign policy.",
-    "sources": [
-      "Library of Congress terrorism, war, and economic crisis materials.",
-      "National Archives national security and financial records."
-    ]
-  }
-},
-{
-  "id": 44,
-  "name": "Barack Obama",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "Great Recession Response (2009–2010)",
-        "summary": "Obama entered office during the Great Recession and implemented the American Recovery and Reinvestment Act to stimulate the economy. His administration coordinated financial stabilization efforts and supported reforms to prevent future crises. The recovery required extensive federal intervention across multiple sectors.",
-        "sources": [
-          "Federal Reserve, Great Recession historical analysis.",
-          "National Archives, ARRA and economic policy documents."
-        ]
-      },
-      {
-        "title": "Deepwater Horizon Oil Spill (2010)",
-        "summary": "The Deepwater Horizon explosion caused the largest marine oil spill in U.S. history. Obama’s administration coordinated containment efforts, environmental response, and investigations into regulatory failures. The crisis prompted major reforms in offshore drilling oversight.",
-        "sources": [
-          "National Archives, Deepwater Horizon response materials.",
-          "Library of Congress, environmental crisis documents."
-        ]
-      },
-      {
-        "title": "Ebola Outbreak Response (2014)",
-        "summary": "The Ebola outbreak in West Africa prompted global concern, and isolated cases appeared in the United States. Obama’s administration coordinated international aid, strengthened domestic preparedness, and implemented screening and containment measures. The crisis tested public health infrastructure and international cooperation.",
-        "sources": [
-          "Centers for Disease Control and Prevention, Ebola outbreak summaries.",
-          "National Archives, public health emergency documents."
-        ]
-      }
-    ],
-    "overallAssessment": "Obama’s presidency confronted major crises including the Great Recession, the Deepwater Horizon oil spill, and the Ebola outbreak. His administration coordinated economic recovery, environmental response, and public health preparedness. These crises required extensive federal and international coordination.",
-    "sources": [
-      "Federal Reserve economic crisis materials.",
-      "National Archives environmental and public health records."
-    ]
-  }
-},
-{
-  "id": 45,
-  "name": "Donald J. Trump",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "COVID‑19 Pandemic (2020–2021)",
-        "summary": "The COVID‑19 pandemic created a global public health emergency with widespread illness, economic disruption, and strain on medical systems. Trump’s administration implemented travel restrictions, supported vaccine development through Operation Warp Speed, and coordinated federal emergency declarations. The crisis required large‑scale public health and economic response measures.",
-        "sources": [
-          "Centers for Disease Control and Prevention, COVID‑19 historical summaries.",
-          "National Archives, federal pandemic response documents."
-        ]
-      },
-      {
-        "title": "U.S.–China Trade Conflict (2018–2020)",
-        "summary": "The administration imposed tariffs on Chinese imports in response to concerns about trade imbalances and intellectual property practices. China implemented retaliatory tariffs, creating economic uncertainty and supply chain disruptions. The crisis led to prolonged negotiations and the signing of a partial trade agreement.",
-        "sources": [
-          "Library of Congress, U.S.–China trade materials.",
-          "National Archives, trade policy documents."
-        ]
-      },
-      {
-        "title": "Iran Tensions and Soleimani Strike (2020)",
-        "summary": "Following escalating tensions with Iran, the U.S. conducted a drone strike that killed Iranian General Qasem Soleimani. The event prompted retaliatory missile strikes on U.S. bases in Iraq and heightened regional instability. The crisis required rapid military and diplomatic coordination.",
-        "sources": [
-          "National Archives, Middle East crisis materials.",
-          "Library of Congress, Iran–U.S. conflict documents."
-        ]
-      }
-    ],
-    "overallAssessment": "Trump’s presidency confronted major crises including the COVID‑19 pandemic, U.S.–China trade conflict, and heightened tensions with Iran. His administration managed public health emergencies, economic disruptions, and international security challenges. These crises required extensive federal coordination across multiple sectors.",
-    "sources": [
-      "Centers for Disease Control and Prevention pandemic materials.",
-      "National Archives trade and national security records."
-    ]
-  }
-},
-{
-  "id": 46,
-  "name": "Joseph R. Biden",
-  "crisisManagement": {
-    "events": [
-      {
-        "title": "COVID‑19 Pandemic Continuation (2021–2023)",
-        "summary": "Biden entered office during the ongoing COVID‑19 pandemic and implemented a national vaccination campaign, expanded testing, and coordinated federal support for state and local responses. His administration oversaw vaccine distribution, economic relief programs, and shifting public health guidelines as new variants emerged. The crisis required sustained coordination across federal agencies and healthcare systems.",
-        "sources": [
-          "Centers for Disease Control and Prevention, COVID‑19 pandemic summaries.",
-          "National Archives, federal pandemic response documents."
-        ]
-      },
-      {
-        "title": "Afghanistan Withdrawal Crisis (2021)",
-        "summary": "The U.S. withdrawal from Afghanistan in August 2021 led to the rapid collapse of the Afghan government and the Taliban’s return to power. Biden’s administration coordinated a large‑scale evacuation of U.S. citizens and Afghan allies amid chaotic conditions at Kabul’s airport. The crisis raised questions about intelligence assessments, evacuation planning, and U.S. foreign policy.",
-        "sources": [
-          "National Archives, Afghanistan withdrawal materials.",
-          "Library of Congress, U.S. foreign policy documents."
-        ]
-      },
-      {
-        "title": "Russia–Ukraine War Response (2022–present)",
-        "summary": "Following Russia’s invasion of Ukraine in February 2022, Biden’s administration coordinated international sanctions, military aid, and humanitarian assistance. The crisis required extensive diplomatic engagement with NATO allies and global partners. The conflict reshaped U.S. security policy in Europe and heightened geopolitical tensions.",
-        "sources": [
-          "Library of Congress, Ukraine conflict materials.",
-          "National Archives, U.S. foreign policy and sanctions documents."
-        ]
-      },
-      {
-        "title": "Inflation and Supply Chain Disruptions (2021–2023)",
-        "summary": "Global supply chain disruptions and rising consumer prices created economic challenges during Biden’s presidency. His administration implemented measures to address port congestion, expand domestic manufacturing, and reduce inflationary pressures. The crisis reflected broader global economic instability following the pandemic.",
-        "sources": [
-          "Federal Reserve, inflation and supply chain analyses.",
-          "Library of Congress, economic policy materials."
-        ]
-      }
-    ],
-    "overallAssessment": "Biden’s presidency has confronted major crises including the continuation of the COVID‑19 pandemic, the Afghanistan withdrawal, the Russia–Ukraine conflict, and global inflationary pressures. His administration coordinated public health measures, international diplomacy, military assistance, and economic stabilization efforts. These crises required extensive federal coordination across domestic and international arenas.",
-    "sources": [
-      "Centers for Disease Control and Prevention pandemic materials.",
-      "National Archives foreign policy and economic records."
-    ]
-  }
-}
 ]
